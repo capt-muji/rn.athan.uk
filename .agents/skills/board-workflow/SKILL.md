@@ -128,7 +128,11 @@ sight and notes the fix in one comment line. A defect is never reported and left
 3. One weight in three places, all equal: the estimate field, the `N pts` label, and the sum of
    the step weights. Verify the arithmetic before saving. A number that disagrees is a defect.
 4. Labels in the fixed order, number first, and no surface or area label that is not honestly
-   true.
+   true. Creation sorts labels by id, so after `create_issue` read the card back and re-send
+   the order through `update_issue`, which keeps it. The stored order is what the card shows.
+   A new label is created only when the vocabulary lacks the name, and it must match its set:
+   a number is white in the number group, kinds, weights, surfaces and areas carry their own
+   group's colors.
 5. `Lane` is set the moment a lane takes the ticket.
 6. `Waiting on` is set in the same breath as entering Blocked, Upstream or Owner-led.
 7. Every plan step has its subtask, and every subtask is ticked before Done.

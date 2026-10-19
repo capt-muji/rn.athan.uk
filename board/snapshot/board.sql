@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict qX1ZRIeVpeyaQ4aZsTNH6kW8w0dcdRLCM8r2Ha6tpIdetkN3LrFQrRFF87cp59r
+\restrict mWuE64HiWaohL1jxMy1QEsKS5hnt6Xqid7HA3uceyO2hoPxJe8jN55iZnXlLgMT
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5080,7 +5080,7 @@ INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, 
 -- Data for Name: apikey; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 2, NULL, '2026-10-19 02:08:29.831', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 02:08:29.835', NULL, 'null');
+INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 4, NULL, '2026-10-19 08:36:58.628', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 08:36:58.63', NULL, 'null');
 
 
 --
@@ -5203,6 +5203,17 @@ INSERT INTO public.custom_field_option (id, field_id, value, color, "position") 
 -- Data for Name: issue; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (19, 1, 141, 2, 4, 'Language switch flashes on Android: the spinner unmounts, a target-language flash, then a blank purple page', 'Goal: an Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No target-language flash, no blank page. A launch that does not switch renders exactly the lines it renders today.
+
+Where: stores/language.ts, modules/switchcover (new, first-party Android module), device/switchCover.ts (new), shared/i18n/index.ts, components/ui/LanguageLoader.tsx, app/index.tsx, the touched suites. The plan page (T-141) names the full mechanism from source before the fix.
+
+Acceptance:
+- [ ] stores/__tests__/rtlSwitch.test.ts: a fulfilled crossing reload leaves languageCommitBusyAtom true and pendingLanguageAtom set after the commit resolves; a rejected reload clears both and clears the marker; a second commit after a rejected one runs to its own reload
+- [ ] stores/__tests__/languageReloadFace.test.ts: on Android the cover is shown before reloadAsync carrying the loader''s purple, spinner colour, size, the #fff line colour and the target line string, and hidden on a rejected reload; on iOS reloadAsync is called with no arguments and the cover is never shown; __tests__/app/index.test.tsx: the first-content effect hides the cover once
+- [ ] stores/__tests__/languageConvergence.test.ts and stores/__tests__/rtlSwitch.test.ts reset busy and pending in their beforeEach, and every existing assertion outside the changed contract still passes
+- [ ] node scripts/check-changed-coverage.js covers every touched line, and the mutation pass (latch, platform gate, idempotence guards) is caught by failing tests
+- [ ] on the 3T, or the emulator with the substitution named in the record: both directions on both schedules read as one continuous loader face to the app, with the logcat timeline on the mock build''s Pino lines and the native restart reason showing no content commit between the reload and the new context''s first render (a prod build emits no Pino lines)
+- [ ] yarn validate green', NULL, NULL, NULL, 19000, '2026-10-18 23:35:55.787303+00', '2026-10-19 07:38:45.832517+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (46, 1, 103, 9, 4, 'The schedule pager under RTL: mirrored swipes and page order', 'THE OWNER''S QUESTION 2026-10-15, the owner''s own suggestion to ticket it: with the app under Arabic, should the schedule pager mirror - swipe right to left, the Extras page sitting where the Standard one does in English? Rows 58/68 mirrored the no-logical-form sites and left the pager physical; this row plans the mirror (or rules it stays), with the overlay infobox''s row-anchored positioning, the bar''s tip geometry and the countdown row''s own ltr pin as the surfaces to re-verify; the owner''s device read is the acceptance. RULINGS 2026-10-15 (planning interview): D103.1 MIRROR (the pager rides the native layoutDirection prop keyed off the app locale, never transforms, never child reordering); D103.2 acceptance is the owner''s read alone, no 3T step; D103.3 the owner''s XS test: today the pager stays physical LTR under ar (the library''s I18nManager deduction answers ltr). READY plan: `ai/plans/103-pager-rtl-mirror/` (planned at `f8884324` 2.0.784; two grill rounds, 16 findings applied; 2 steps: the prop with red tests and the simulator probe, then the owner''s XS read)
 
 Status note: 2026-10-15, audited: the schedule pager mirrors under every RTL locale through the native layoutDirection prop keyed off the app locale (en and every LTR locale byte-identical, page order and the overlay self-heal unchanged, the dots and the infobox tracking the mirror natively); simulator-proven under ar and owner-read on the XS (the owner''s words: the mirror works); both reviews clean of must and should, two blind nices fixed at 2.0.800 (the locale-reset afterEach, the stand-in mock''s why comment), two plan nices adjudicated in the audit; the plan folder and the sessions/103 evidence died in this merge', NULL, NULL, NULL, 25000, '2026-10-18 23:35:56.259802+00', '2026-10-19 02:54:08.057459+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5214,6 +5225,8 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban). Runs behind rows 37 to 39
 
 Needs first: #37, #39', NULL, NULL, NULL, 1000, '2026-10-18 23:35:55.447181+00', '2026-10-19 02:54:07.612296+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, 'Upstream `expo-widgets` device locale', 'Monitoring row for PR `expo/expo#51793`, tracked in `ai/UPSTREAM-PRS.md` (row: expo-widgets). The PR exposes the device locale to widget JS runtimes through a `__expoWidgetDeviceLocale` global; when a published release carries it, board row #233 deletes the local patch''s device-locale hunks and the ledger entry moves to shipped. Filed 2026-10-19 from the fork, one commit, four code files plus its changeset.', NULL, NULL, NULL, 7000, '2026-10-19 08:08:29.90607+00', '2026-10-19 08:08:29.99114+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (209, 1, 209, NULL, 4, 'Step 1: The expectation and margin table (weight 1)', '', NULL, NULL, NULL, 18000, '2026-10-19 03:18:21.915162+00', '2026-10-19 03:44:19.001112+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (37, 1, 112, 2, 4, 'The naked-app defaults: all four display toggles off', 'OWNER RULING 2026-10-16: a new (or never-toggled) user starts with a clean app - Show Hijri date, Show seconds, Show time passed and Show countdown bar all OFF by default; a user who manually toggled any switch keeps their stored choice untouched, no migration (the row-105 law, the owner''s explicit confirmation). Three of the four were already off; Show time passed defaulted ON and flipped
 
 Status note: 2026-10-16, landed direct at 2.0.837 by the owner''s order (all gates green, 5692 tests, 100 percent): the atom''s default pin false, the defaults suite re-pinned, and the prayer-page suite seeding the ago line through the shared harness helper beside the bar''s (the off-behaviour test unchanged, setting the atom itself)', NULL, NULL, NULL, 16000, '2026-10-18 23:35:56.108525+00', '2026-10-19 02:54:07.960939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5236,6 +5249,7 @@ Needs first: #39', NULL, NULL, NULL, 57000, '2026-10-18 23:35:56.830533+00', '20
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (70, 1, 71, 4, 4, 'AppState soft exception on the language relaunch teardown', 'Found by row 68''s device proof (2026-10-13): every RTL boundary crossing logs one non-fatal `ReactNoCrashSoftException` from `AppStateModule.onHostPause` racing the ReactContext teardown; the relaunch is an in-process JS reload (`Updates.reloadAsync`), pid unchanged, the launch line re-appearing about 1.5 s later. The row asks whether the AppState listener should pause before the reload, and fixes it if so
 
 Status note: 2026-10-13, audited: the row''s question answers NO (D88) - the soft exception is raised inside React''s own reload sequence (the six-hop trace through the pinned expo-updates and RN 0.88.0-rc.3 sources), log-only by contract, no consumer needs the dropped event, the three JS listeners sit downstream of the emitting module and cannot suppress it; the one repo-side route to silencing it is an upstream report (row 51''s discipline). The 3T capture pinned the line verbatim (one textbook cycle: 29-line block with the AppStateModule.onHostPause frame, span 1.397 s, pid unchanged, 0 FATAL); the same session recorded the reload starving on 3 of 6 crossings with a silent signature (FINDINGS section 8; the raw evidence died with the merge per the records rule) - the investigation is queue row 78. Two-reviewer audit fixed eight findings (the ledger''s subject/sha/session-line defects, two stale cross-references, the unqualified cost sentence, two row attributions, the teardown-timing figure); no code changed', NULL, NULL, NULL, 49000, '2026-10-18 23:35:56.692546+00', '2026-10-19 02:54:08.315413+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (210, 1, 210, NULL, 4, 'Step 2: The 3T readings (weight 3)', '', NULL, NULL, NULL, 19000, '2026-10-19 03:18:21.959321+00', '2026-10-19 03:48:16.466766+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (45, 1, 104, 2, 4, 'The post-close haptic on the change-athan sheet', 'THE OWNER''S REPORT 2026-10-15 late: closing the change-athan sheet delivers a haptic about two seconds AFTER the close when a different athan was picked, and immediately on close when nothing was changed. The app''s own code carries NO haptic on the commit path (verified: the ticket''s close-path miss was the shared Sheet close haptic, Sheet.tsx:180, the owner''s own 2026-09-08 rule - the immediate unchanged-close buzz the owner keeps); the late buzz is that close haptic arriving late, inside the commit''s recorded thread saturation. RULINGS 2026-10-15 (planning interview): D104.1 defect; D104.2 one on-time Light close buzz on every path, no completion haptic; D104.3 no banner shows (if a capture shows one anyway, the lane STOPs); D104.4 on-demand reproduction, phone connectable; D104.5 owner moments batched; D104.6 for verdicts T/T2 the sheet-side deferral past the next paint, store untouched. READY plan: `ai/plans/104-post-close-haptic/` (planned at `f8884324` 2.0.784; two grill rounds, 22 findings applied; 4 steps: the dispatch marks and simulator diagnosis, the XS reproduction with the owner, the fix gated on verdict T/T2, the owner''s read)
 
 Status note: 2026-10-16, audited: the close haptic lands when the sheet finishes closing on every path - the changed-pick commit defers past the next paint so the re-arm''s thread saturation cannot eat the buzz (verdict T pinned twice: gated PERF marks on the simulator and on the owner''s XS capture, settle +204-226ms inside 1.7-1.9s windows on all four changed closes, no delivery lines); owner-read twice on glass, final at 2.0.811: at the close, both times, never twice, never late; three-reviewer audit (plan-conformance clean, blind''s two test-honesty shoulds fixed at 2.0.810, threading''s park-window should rejected-as-fix and carried to row 108 with the second-dismiss race and the shared-deferral refactor); the plan folder and the sessions/104 evidence died in this merge', NULL, NULL, NULL, 24000, '2026-10-18 23:35:56.244426+00', '2026-10-19 02:54:08.046399+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5244,6 +5258,16 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-14, audited: the owner''s green-build refinements land - the timer under ar two points smaller (24), every colon on the timer, the time column and the ago badge padded with two thin spaces per side at 40 percent of its own digits'' strength, the seconds group never dimming while hours and minutes keep the row-79 treatment, the list gap down to 22.5 with the badge lifted four points; the two schedules'' list-to-ago gaps verified identical by construction (one shared Screen, List and Ago); the readable row time keeps one accessibility label over its split render and the unread sentinel stays one node. Every figure the owner did not pin is a recorded default under the owner''s dev-build read (Metro serving since 79''s delivery, status re-verified at audit); the owner''s verdict lands here through the lead. Two-reviewer audit: the records set straight (step-5 verdict, the cell''s date), one shared-gap-constant proposal rejected because the six literal sites are the guard the break scripts ride
 
 Needs first: #74', NULL, NULL, NULL, 39000, '2026-10-18 23:35:56.507096+00', '2026-10-19 02:54:08.208323+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (211, 1, 211, NULL, 4, 'Step 3: The XS readings (weight 3)', '', NULL, NULL, NULL, 20000, '2026-10-19 03:18:21.990563+00', '2026-10-19 04:11:28.055569+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (212, 1, 212, NULL, 4, 'Step 4: The vision ink reads (weight 1)', '', NULL, NULL, NULL, 21000, '2026-10-19 03:18:22.013555+00', '2026-10-19 04:49:41.051787+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 142, 3, 9, 'Settings: a Widgets option that opens the OS widget gallery at our section', 'Goal: A Widgets option in the settings sheet''s Other card that takes the user to the OS widget gallery at our widgets where the platform permits, else the closest legal surface the owner rules on - the investigation found no open-gallery API on either platform, so the ruling between the plan''s three options is this ticket''s gate.
+
+Where: the settings bottom sheet''s Other card (components/sheets/screens/Settings.tsx), the i18n catalogues, and the surface the ruling picks (an in-app how-to card and, under Option 1, an Android pin-request module).
+
+Acceptance:
+- [x] The ticket carries the investigation record quoting both platforms'' current documentation pages, with the per-platform verdict and the three numbered options.
+- [x] The ticket sits in Owner-led with Waiting on naming the ruling and the numbered options, the recommendation recorded.
+- [ ] After the ruling: the Other card shows the Widgets row following the card''s own row pattern, tapping it performs the ruled surface, the 3T transcript and the owner''s iPhone confirmation each land as a ticket comment.', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 08:30:49.445021+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (6, 1, 117, 4, 4, 'Expo widgets and different languages: the inventory', 'OWNER ORDER 2026-10-16 (111 planning session): the expo widgets and different languages get a ticket of their own; the owner is not familiar with the current state, so the row is INVESTIGATION ONLY first. The inventory: what every widget surface shows in each of the six languages today (all 14 widget variants: the 8 home-screen ones and the 6 iOS lock-screen ones), what rows 39 and 88 left behind (row 39 shipped localized footers baked into the widget props and per-locale native strings from committed config; row 88 made every widget digit Latin; D44/D79 keep device-keyed statics), what DEFERRED row 69 wanted (the Android ALabel countdown format, parked under the owner''s own ban), and the local-only device-locale injection hunk inside `patches/expo-widgets` whose upstreaming question moves here (planning 111 kept it local by the owner''s word). The row ends with the owner''s ruling; no code before it, and it names whether row 69 folds here, is superseded or stays parked
 
 Status note: 2026-10-18, investigation and preparation closed, audited (two reviewer passes, 7 findings adjudicated): the closeout landed clean - the 3T as-found proof confirms row 135''s delivered face on the installed 2.0.1067 fleettest build (the fleettest Next Prayer Dark widget read as found under app Arabic: every row time LEFT of the Arabic name, the hero block RIGHT with the prayer name and its time, the countdown 12 h 52 m in Latin digits with lowercase Latin h m, nothing system-formatted, nothing Arabic-Indic; the phone left exactly as found: same build, app Arabic, widget placed, device locale unchanged, verified after every contact), the gallery''s en fallback read live on both platforms (the 3T with device French: the picker chrome rendered in French while both Athan sections showed all eight entries in the English base display names, no French or Arabic label anywhere; the iOS 18.5 simulator with system French: all eight gallery pages showed the English base display names and descriptions; the per-locale native-string map exists only for the six supported languages, so every other locale falls back to the English base displayNames - the intended shape, recorded for parked row 130''s item 1), row 69 SUPERSEDED for good, rows 128 and 129 closed with row 135''s DONE, options 1 (status quo) and 3 (wider convergence) closed by the owner''s option-2 go (the lettered alignment). The upstream PR for the patch''s device-locale hunks is PREPARED AND HELD: branch feat/widgets-device-locale off upstream main cac62846e627e6b446ac2ded31adac8c8e9d5dd8 in the local expo clone ($HOME/athan-gitree/upstream/expo), description at $HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md, the held state in ai/UPSTREAM-PRS.md; NOTHING filed - publishing is the hard-rule stop, the owner''s explicit word files it (row 51''s discipline). WAITING ON HER: the word to file the PR (or drop it), and the owner''s glass read of the placed widget under Arabic on each phone (row 135''s named pending acceptance). No app code changed on uat.
@@ -5265,33 +5289,33 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: FOLDED into row 140 2026-10-18 by the owner''s order (the gaps the owner sees on glass are this row''s verdict made visible; the parity verdict, the numbers and both options carry into 140, and the owner''s ruling lands there). Was OWNER-LED awaiting the owner''s ruling
 
 Needs first: #140', NULL, NULL, NULL, 20000, '2026-10-18 23:35:55.799503+00', '2026-10-19 02:54:07.78126+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (15, 1, 139, 3, 1, 'Alert bottom sheet: one dim level, whole-header taps, reminder state restored', 'OWNER ORDER 2026-10-18 (evening, dictated): three changes to the alert bottom sheet in ONE ticket, HEAVILY planned (multiple grill rounds; the owner''s words: a massive change, plan and review the plan heavily). ITEM 1, ONE DIM LEVEL, HALVED: the sheet''s disabled content carries opacity today (the disabled reminder rows and their bodies under an off alert; the body content below an enabled alert''s header). Reduce everything to ONE uniform dim level at HALF its current visibility - whatever each value is now, 50 percent less (a 0.5 opacity becomes 0.25): the reminders and their bodies while the alert is off, and the enabled alert''s own body content, all at the same single level, matching the reminders exactly. The plan measures every dim site''s current value from the code first and pins each before and after. ITEM 2, WHOLE-HEADER TAP: the enable/disable toggle currently needs a direct press on the switch; the ENTIRE top part of each reminder (toggle, title, description) must toggle it - anywhere on that top part. ITEM 3, REMINDER STATE RESTORED: turning the whole alert off slides the reminder toggles off (keep exactly) and their sound/silent and minutes selections stay saved (keep); but turning the alert back on (sound or silent) must restore each reminder to the enabled state it had before the alert was turned off, not leave it disabled - the owner''s recap: the alert goes off to on and the reminders come back as they were. Preferences-backed, the values the app never deletes. The owner''s order is the explicit pixel say for the opacity change and only it; every other visual stays settled. Acceptance: the owner''s read of the sheet on the phones
-
-Status note: 2026-10-18, OWNER ORDER', NULL, NULL, NULL, 15000, '2026-10-18 23:35:55.731858+00', '2026-10-19 02:54:07.728917+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 123, 4, 10, 'Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'OWNER ORDER 2026-10-16 (111 planning session, changelog walk): re-evaluate the Android widgets'' update reliability on OEMs now the full SDK 58 release is in; the owner''s recollection of the preview era: it worked, but on some OEMs some widgets fell out of sync and stopped updating. FACTS: the repo carries its own refresh ground - `modules/widgetrefresh` (row 10''s self-refresh), the WorkManager keeps that the app.json R8 rules protect, and expo-widgets 58.0.19 still carries the openApp and device-locale patch row 111 rebuilds; the phone fleet covers the OEM matrix (the 3T on Android 9, the 8T, the S23, the Find X8). THE ROW investigates first: today''s refresh path end to end (the widgetrefresh module''s schedule, the widget runtime reload, the timeline re-push), what the out-of-sync reports on OEMs actually showed (git history and session evidence), and what SDK 58 stable changed in the widget runtime if anything; then it device-proves each OEM phone and fixes what drifts. The owner rules the scope after the inventory
 
 Status note: FOLDED into row 127 2026-10-18 by the owner''s order (the owner read them as the same thing; the delivered version-delta verdict carries in as 127''s technical ground, and 127 owns the single Android-widgets-on-OEMs question: prove-then-fix and the keep-or-withdraw ruling). Was DEFERRED, owner says go
 
 Needs first: #127', NULL, NULL, NULL, 7000, '2026-10-18 23:35:55.606979+00', '2026-10-19 02:54:07.636561+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (18, 1, 140, 4, 1, 'Arabic line height on Android: the gaps the owner sees on glass', 'OWNER REPORT 2026-10-18 (evening): comparing the phones under Arabic, every Arabic surface on the 3T sits taller than the iPhone - the owner''s named sites: the gap between the Arabic prayer name above the countdown and the countdown itself (big on Android, tight on iPhone), the gap between the location and the date on BOTH schedules (Standard and Extras), and the gap between the bottom sheet''s title and its subheading. Wording, lettering and clipping are perfect everywhere - only the spacing differs. This is row 137''s measured ground revisited on the live app: the same TTF renders a taller effective line box on Android by platform design (Rubik''s divergent metric sets, hhea/typo 1.185em against usWin 1.532em and bbox 1.55 to 1.58em; Android derives its box from the taller set), and NO spacing code has landed since (verified from git; row 137 changed no code, no negative pulling). THE TICKET: heavily investigate the gaps the owner names on glass - measure each surface''s rendered line box and inter-element gap on both phones, attribute each gap to the platform line box or to the layout, and bring options with numbers: accepting the platform box (row 87''s law unchanged) or pinning an ar lineHeight per surface family (row 137''s option 2, the owner''s dial, no negative pulling). Investigation and recommendation only before the owner''s ruling; no code
-
-Status note: 2026-10-18, OWNER REPORT NOT PLANNED 2026-10-18, OWNER REPORT; row 137 FOLDED HERE 2026-10-18 by the owner''s order: its parity verdict and numbers are this row''s ground (the taller Android line box is the standing explanation; the per-surface gap measurements decide what the pinning option would touch), and the owner''s ruling - accept the platform box or pin an ar lineHeight per surface family - lands at this row''s close. HEAVY INVESTIGATION, measurement and options only, no code before the owner''s ruling', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 02:54:07.760895+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (214, 1, 214, NULL, 4, 'Step 1: The commit path holds the loader through a fulfilled reload (the latch)', '', NULL, NULL, NULL, 23000, '2026-10-19 03:24:16.483001+00', '2026-10-19 04:27:09.816123+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (213, 1, 213, NULL, 4, 'Step 5: The attribution and options record (weight 1)', '', NULL, NULL, NULL, 22000, '2026-10-19 03:18:22.039783+00', '2026-10-19 05:08:10.524059+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (215, 1, 215, NULL, 4, 'Step 2: The native cover module sustains the loader''s face across the Android restart', '', NULL, NULL, NULL, 24000, '2026-10-19 03:24:16.53337+00', '2026-10-19 04:37:04.005001+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (221, 1, 221, NULL, 4, 'Step 5: device pass on the changed sheet', '', NULL, NULL, NULL, 30000, '2026-10-19 03:25:16.306819+00', '2026-10-19 05:18:36.146529+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (52, 1, 89, 9, 4, 'The volume note returns to both sheets at the foot', 'OWNER RULING 2026-10-15: an identical note lands on the alert sheet AND the athan sound sheet, at the very bottom - below the second reminder, below all content - text centred horizontally (every line of a wrapped note sits centred, never left or right), a good amount of padding lifting it off the body, an information icon beside it, the copy platform-keyed (Android: the alarm volume controls it; iOS: its own documented path, row 64''s wording the base), styling otherwise free at planning. Supersedes the 2.0.729 removal (the note left the sheets for the Help modal alone; the Help question stays). Lineage: row 64 shipped the copy, row 86 moved it, 2.0.729 removed it, this row brings it home to both sheets. READY plan `ai/plans/89-volume-note-return/` (planned at `5a3fba84` 2.0.733; 1 code step: the 2.0.728 copy bytes return to all six catalogs with the lock re-taken, a zero-prop `VolumeNote` part centred beside `Icon.INFO` at both sheets'' foot; no device step)
 
 Status note: 2026-10-15, audited (both passes clean bar one records nit that died with the plan folder): the note returned at 2.0.737, hook Tests: 2 skipped, 5650 passed, 5652 total, coverage 100% on all four measures, break script ALL AS EXPECTED; the Help question untouched', NULL, NULL, NULL, 31000, '2026-10-18 23:35:56.36085+00', '2026-10-19 02:54:08.123899+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (216, 1, 216, NULL, 4, 'Step 3: Device read on the 3T - both directions, both schedules, logcat timeline', '', NULL, NULL, NULL, 25000, '2026-10-19 03:24:16.572696+00', '2026-10-19 07:09:09.31532+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 2, 4, 'The clipping batch: the line-box pin, the note style, the loader face', 'Owner''s live test of 86 on the XS (2026-10-14): every pinned surface clipped - the metrics are the cause (Noto Sans Arabic''s natural box is 2.112em against the 1.172em Latin pin), so blockLineHeight and its five consumers died and the font''s own box serves everywhere; the ar header gap closes with an explicit -10 subtitle pull-up (the owner''s to dial); the loader''s typography resolves per render (a mid-switch line drew the old locale''s face and box, the English cut the owner saw); the note aligns to the header inset, title edge to icon edge on both sheets, the divider gained its air and the bottom gap dropped; the iOS note copy reworded per the owner''s ruling. Landed at 2.0.727 while the owner tested; the owner''s live read is the acceptance bar
 
 Status note: 2026-10-15, the owner''s XS read: no clipping on the language-switch loader, the settings, alert and sound sheets'' title/subtitle blocks perfectly spaced, the alert sheet clean; the residuals the owner named the same read (the compass sheet''s gap, the sound preview''s spacing, the Help questions'' vertical centre) open as rows 95 to 97', NULL, NULL, NULL, 33000, '2026-10-18 23:35:56.396717+00', '2026-10-19 02:54:08.143707+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 142, 3, 1, 'Settings: a Widgets option that opens the OS widget gallery at our section', 'OWNER ORDER 2026-10-18 (evening): in the settings bottom sheet''s Other card, add a Widgets option - tapping it takes the user straight to the widget gallery (the OS widget picker) showing our widgets, because users do not know widgets exist. INVESTIGATION FIRST: is there an API that opens the widget gallery, or our app''s section of it, on each platform (Android''s launcher picker, iOS''s WidgetKit gallery), and what each platform permits an app to do; where no open-gallery API exists the investigation names the closest legal surface (a how-to place card or deep link) with the owner''s ruling. THEN THE WHOLE WORKFLOW, the owner''s explicit word: research, planning, implementation, execution, the audit, the dead code removal - never plan-and-stop. QUEUED TOWARDS THE END of the board by the owner''s order, after the parked widget rows resume. Acceptance: the owner''s read on a phone
-
-Status note: 2026-10-18, OWNER ORDER, queued late', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 02:54:07.740191+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (27, 1, 124, 2, 4, 'iPhone XS automation channel: RSD allocation failure', 'PROBLEM, measured on this machine 2026-10-16 (including after a replug): `xcrun devicectl device process launch --device IPHONE_UDID com.apple.Preferences` returns `com.apple.dt.CoreDeviceError -1` with `Failed to allocate RSD device (com.apple.mobiledevice 0xE8000003)`, while `idevicepair validate` prints SUCCESS, `devicectl list devices` shows the XS `connected` with transport `wired` and pairing `paired`, and `agent-device doctor` fails at `target-app: iOS device is not ready for automation: command timeout of 15s`. It blocks ticket 111''s step 3 (the XS deep-dive loop) and ticket 120''s XS proof. The owner confirmed the phone is not screen-locked. FIX LADDER, one rung at a time, each verified before the next: (1) on the phone, Settings, Privacy & Security, Developer Mode ON, then reboot and keep it unlocked; (2) if already on, reboot the phone, replug the cable, retest; (3) host side, restart the device services and replug (`sudo pkill -f CoreDevice` and `sudo pkill -f remoted`; a Mac reboot also clears it); (4) another cable or port, then a re-pair. ACCEPTANCE: the launch command above exits 0 and `agent-device doctor` passes `target-app`. The agent records which rung fixed it and re-checks the assumption that the fault is host-side before acting. OWNER-ACTION by nature (the owner''s hands on the phone, the owner''s password for rung 3)
 
 Status note: 2026-10-16, cleared by the owner: the ladder''s rung 3 fixed it (`sudo pkill -9 remoted && sudo pkill -9 usbmuxd`, then replug the cable); verified the same session with `devicectl device process launch --device IPHONE_UDID com.apple.Preferences` printing `Launched application with com.apple.Preferences bundle identifier`, the XS at iOS 18.7.10. Ticket 111 step 3 and the XS-side readings are unblocked', NULL, NULL, NULL, 6000, '2026-10-18 23:35:55.916366+00', '2026-10-19 02:54:07.842991+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (217, 1, 217, NULL, 4, 'Step 1: halved dim values pinned in the suites', '', NULL, NULL, NULL, 26000, '2026-10-19 03:25:16.207445+00', '2026-10-19 04:07:24.451798+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (219, 1, 219, NULL, 4, 'Step 3: the store keeps reminder choices under an off athan', '', NULL, NULL, NULL, 28000, '2026-10-19 03:25:16.256629+00', '2026-10-19 04:23:45.311142+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (127, 1, 2, 2, 4, 'Alert sheet change is all or nothing', 'Queue status: DONE', NULL, NULL, NULL, 106000, '2026-10-18 23:35:57.683648+00', '2026-10-19 02:54:08.88521+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 4, 10, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'PROBLEM, two small widget-face items from row 117''s inventory, folded into one ticket: (1) the widget gallery shows English fallback content outside the six languages and nothing records whether that is intended; (2) the v1 fallback words predate the lettered law (rows 85/102) and the Latin-digits law (row 88), so a stale blob renders an obsolete face. RECOMMENDATION: for (1), decide the intended fallback for a device whose language is none of the six and pin it with a test, making the D44/D79 static-copy rule explicit rather than incidental; for (2), re-issue the v1 fallback strings under the current laws and pin them. The agent measures what a stale blob actually renders before changing anything
 
 Status note: 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. THE OWNER''S UPDATE 2026-10-18: item (1), the gallery''s en fallback, is ANSWERED and closed - row 117''s live reads proved the English base fallback is the intended shape on both platforms (the app card''s names are app-provided from the committed config for the six languages; the OS chrome around the picker is the phone''s, outside the app''s control). Item (2), the v1 fallback words, stays parked with the widget park; the owner is open to re-issuing the few words under the current laws as part of the widget work', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 02:54:07.681709+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (218, 1, 218, NULL, 4, 'Step 2: whole-header tap on the reminder rows', '', NULL, NULL, NULL, 27000, '2026-10-19 03:25:16.232789+00', '2026-10-19 04:09:12.361191+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (220, 1, 220, NULL, 4, 'Step 4: the sheet restores on off-to-on', '', NULL, NULL, NULL, 29000, '2026-10-19 03:25:16.282186+00', '2026-10-19 04:34:55.78627+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 2, 4, 'The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:54:08.614918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (108, 1, 22, 9, 4, 'Lock-screen countdown layout (iOS)', 'Queue status: DONE', NULL, NULL, NULL, 87000, '2026-10-18 23:35:57.338812+00', '2026-10-19 02:54:08.702113+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 115, 9, 4, 'The Thai face becomes Sarabun, the owner''s specimen pick', 'REVERSED 2026-10-16 by the owner''s read: Sarabun rejected on glass the same evening and the Noto pair restored at 2.0.848 (the specimen''s decision undone; the specimen and its files deleted in the deep clean). Original record: OWNER PICK 2026-10-16 (the ten-font specimen at $HOME/athan-gitree/sessions/115/thai-specimen.html, every number measured from the TTFs'' own tables): SARABUN - Thailand''s document standard, a true 500, its own Latin digits, the tightest sane line box (1.300em with win ink at 1.286em ascent and 0.567em descent, taking the script line box like Hindi and Arabic). The owner''s read of the current face: ''not really Thai'' - the Noto pair replaced after one session
@@ -5315,9 +5339,16 @@ Needs first: #6', NULL, NULL, NULL, 91000, '2026-10-18 23:35:57.406222+00', '202
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (114, 1, 16, 3, 4, 'iOS widgets flag flip after the G.1 protocol', 'Queue status: DONE', NULL, NULL, NULL, 93000, '2026-10-18 23:35:57.441819+00', '2026-10-19 02:54:08.759919+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (116, 1, 14, 3, 4, 'Widget timeline horizon 14 to 30 days', 'Queue status: DONE', NULL, NULL, NULL, 95000, '2026-10-18 23:35:57.475809+00', '2026-10-19 02:54:08.779611+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (124, 1, 5, 2, 4, 'Yesterday''s still-due rows survive 00:00', 'Queue status: DONE', NULL, NULL, NULL, 103000, '2026-10-18 23:35:57.617259+00', '2026-10-19 02:54:08.855344+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (17, 1, 143, 11, 1, 'Upstream: file the device-locale PR properly, and give every open PR its tracking row', 'OWNER ORDER 2026-10-18 (evening): file the prepared device-locale upstream PR - but NOT YET: this row sits in the backlog, a NEW session executes it, and the filing happens only after the full pass the owner orders here. THE OWNER HAS AUTHORIZED THE FILING ITSELF (the explicit word is this row); the execution re-verifies everything before it presses the button, because publishing is a hard-rule stop that only this recorded authorization unlocks. THE PREPARED ARTEFACT (from row 117, all verifiable on disk): branch `feat/widgets-device-locale` in the local expo clone `$HOME/athan-gitree/upstream/expo`, prepared off upstream main `cac62846e627e6b446ac2ded31adac8c8e9d5dd8` (upstream MOVES: at execution re-fetch, rebase the branch onto the then-current main, and re-port any signature drift by hand, recording the delta), one commit `b2fd020afa` touching exactly four files (the C++ runtime locale parameter and guarded `__expoWidgetDeviceLocale` global, the Kotlin LocaleList argument, the JNI signatures, the iOS context set), and the description at `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md` in the repo''s What/Why/How/Testing/Anything-else shape. THE OWNER''S QUALITY BAR, in the owner''s words: heavily tested, best practice, certain of how to do this properly, unit-test it, 100 percent perfection, as much detail as possible. Concretely: (1) study all FOUR open upstream PRs the repo tracks - 50581, 51290, 51291, 51292 - and match their commit-message, description and discipline exactly; (2) re-verify the four-file diff against the local patch''s locale hunks line by line and against the then-current upstream source; (3) verify the description passes the anonymity grep (no app name, no serial, no repo link, row 51''s discipline) and carries the physical-device evidence (a production widget surface on an Android 9 phone and an iOS device, no identifiers); (4) confirm the local suite green (`yarn validate`) and that nothing in THIS repo changes at filing time; (5) file from the clone''s fork remote, never force, never bypass hooks; (6) THE UPSTREAM COLUMN: the owner asks why only one PR shows there - the board renders only queue rows, and 50581, 51290 and 51292 have no rows (they live in `ai/UPSTREAM-PRS.md` only): at execution, open a monitoring row per open PR in the UPSTREAM status (row 51''s shape), link each to its ledger entry, and close this row''s filing half; (7) the DEAD CODE the owner names arrives LATER: when a published expo-widgets release carries the feature, a follow-up row deletes the local patch''s device-locale hunks and the ledger entry moves to shipped - record that hook in this row, do not do it now. Acceptance: the PR filed, its link in the ledger and its monitoring row live, the owner told
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (18, 1, 140, 4, 9, 'Arabic line height on Android: the gaps the owner sees on glass', 'Goal: measure each of the owner''s three named Arabic gap sites on both phones (the 3T and the iPhone XS), attribute each gap to the platform line box or to the layout, and bring the two options with exact numbers and blast radius. Investigation and recommendation only: no code, no pixel change, no install before the owner''s ruling.
 
-Status note: 2026-10-18, OWNER ORDER, backlog for a new session', NULL, NULL, NULL, 17000, '2026-10-18 23:35:55.759468+00', '2026-10-19 02:54:07.750243+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+Where: the Arabic prayer name above the countdown against the countdown itself (components/countdown/Countdown.tsx), the location against the date on both schedules (components/day/Day.tsx), the bottom sheet''s title against its subheading (components/sheets/parts/Header.tsx). Ground: row 137''s parity verdict and numbers, folded here by the owner''s order.
+
+Acceptance:
+- [x] The record''s measured table carries, per named site per phone, every cell the instrument publishes - rendered line box, node gap, ink gap, code margin - and a named void in the row-120 form where the instrument publishes nothing (site 1''s name node on both phones, site 3''s nodes on the XS).
+- [x] Each site carries one attribution line naming the platform line box or the layout, with the numbers that decide it.
+- [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).
+- [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.
+- [x] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines.', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 06:04:47.120723+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (22, 1, 138, 5, 4, 'Semver discipline: a thousand patches, never a minor', 'OWNER ORDER 2026-10-18, the owner''s word after seeing 2.0.1035: the version line is disingenuous - every commit takes a patch and the minor half of the standing rule ("patch per commit and minor per completed feature") has never fired in the whole 2.0 line, verified from git: no version other than 2.0.x exists anywhere in the history, so a thousand patches carry features whole. The owner has raised this before and the practice ignored the owner''s. THE OVERHAUL the owner orders looked at heavily: when a patch is right, when a minor is owed (a completed feature, a merged ticket, a user-visible change), and who decides - the owner''s division stands recorded here: SHE DICTATES MAJORS ONLY, the agent owns patch versus minor; how the guards enforce the split (check-version-uniqueness.js, the versionLockstep test, the queue''s own bump rules and the lane protocol); whether the 2.0.10xx history takes a reset, a grandfathered boundary or a jump at the overhaul; and how a minor bump interacts with the store builds and the OTA line. SUPERSEDED the same day by the owner''s live order, the owner''s words: "move it to the backlog, NOT PLANNED into your lane, deep-dive research online, progress it to production". The division of authority stands as the owner set it: SHE DICTATES MAJORS ONLY and any store-facing version jump (both tabled in the row and the lane''s return, never shipped); the agent owns patch versus minor and lands the discipline, the guards and the workflow text. Until this row lands, every commit keeps the patch-per-commit rule, this row''s own commits included
 
 Status note: 2026-10-18, audited (two reviewer passes, nine findings all confirmed and fixed at 2.0.1065, the conflicted-merge and unstaged-blob holes among them): the semver discipline landed - every commit''s bump class is machine-checked at commit time (a `feat`-typed subject requires the minor, every other subject the patch, majors only through the owner''s recorded order in `scripts/version-major-allowlist.json`), a merge into uat can no longer regress the version (the pre-merge gate refuses a non-increasing incoming line, and a conflicted merge''s concluding commit is checked too), the lockstep suite pins the semver normal form, and `ai/AGENTS.md` plus the lane protocol state the split in one place each. BOUNDARY RECOMMENDATION FOR THE OWNER''S VETO: grandfather - history untouched, the first completed user-visible feature after this landing takes the first free minor (2.1.0) and the 10xx tail dies by the spec''s own patch-reset rule; the owner''s one word upgrades it to a jump at the next store release. MEASURED, no code change needed: the GB storefront publishes 1.5.1 (the repo line is not store-facing on iOS today; moving it is the owner''s act), Play''s in-app updates arbitrate on the untouched versionCode 1000000, no OTA channel exists (no `updates` block, EAS read-only, releases.json dead) - a minor interacts with nothing until the owner publishes. The gates enforced themselves during the landing: the discipline refused the skipped patch the old weather habit would have taken when sibling 135 took 2.0.1064 mid-audit. This row''s own commits stayed patches per its own rule; the first `feat` after this merge takes 2.1.0', NULL, NULL, NULL, 1000, '2026-10-18 23:35:55.830083+00', '2026-10-19 02:54:07.790511+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5344,6 +5375,17 @@ Status note: 2026-10-15, audited: the eight visual fixes landed - the ago badge'
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (118, 1, 12, 9, 4, 'Android widgets: proportional sizing', 'Queue status: DONE', NULL, NULL, NULL, 97000, '2026-10-18 23:35:57.512173+00', '2026-10-19 02:54:08.797849+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (120, 1, 10, 9, 4, 'Android widget polish + self-refresh', 'Queue status: DONE', NULL, NULL, NULL, 99000, '2026-10-18 23:35:57.546282+00', '2026-10-19 02:54:08.81723+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (122, 1, 7, 5, 4, 'Agent tooling', 'Queue status: DONE', NULL, NULL, NULL, 101000, '2026-10-18 23:35:57.578621+00', '2026-10-19 02:54:08.836946+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (15, 1, 139, 2, 4, 'Alert bottom sheet: one dim level, whole-header taps, reminder state restored', 'Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.
+
+Where: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.
+
+Acceptance:
+- [x] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.
+- [x] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.
+- [x] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.
+- [x] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.
+- [x] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.
+- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes.', NULL, NULL, NULL, 15000, '2026-10-18 23:35:55.731858+00', '2026-10-19 05:45:17.594303+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 11, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (44, 1, 105, 3, 4, 'The countdown bar defaults off; no migration', 'OWNER RULING 2026-10-15 (live, twice): the countdown bar is DISABLED by default so new users start without it; a user who explicitly toggled the row keeps their stored choice; a user who never toggled gets the bar OFF and can turn it on in Settings. The migration question was asked and answered NO on the record (keep the codebase clean, no migration; the never-toggled class was named and the owner chose off for them, reversing the owner''s first broad answer). Landed at 2.0.781 with the default pin flipped and the bar-reading suites seeding their own state, folded into one harness helper at 2.0.782. The cold and blind pair both flagged the never-toggled reach as a must; the owner''s no-migration ruling closes it
 
 Status note: 2026-10-15, landed direct, both reviews adjudicated, no migration by the owner''s final word', NULL, NULL, NULL, 23000, '2026-10-18 23:35:56.227616+00', '2026-10-19 02:54:08.036931+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5391,6 +5433,7 @@ Status note: 2026-10-16, audited: under Arabic the whole face renders Rubik (wor
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (92, 1, 41, 3, 4, 'Qibla on an offline map', 'Queue status: DONE', NULL, NULL, NULL, 71000, '2026-10-18 23:35:57.062341+00', '2026-10-19 02:54:08.538894+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (96, 1, 37, 3, 4, 'D2 + D5: qibla finder on a cached location', 'Queue status: DONE', NULL, NULL, NULL, 75000, '2026-10-18 23:35:57.131928+00', '2026-10-19 02:54:08.577362+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (98, 1, 34, 5, 4, 'Dead-code sweep', 'Queue status: DONE', NULL, NULL, NULL, 77000, '2026-10-18 23:35:57.166776+00', '2026-10-19 02:54:08.595496+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (224, 1, 224, NULL, 4, 'Step 3: Line-by-line diff verification against the patch''s locale hunks', '', NULL, NULL, NULL, 19000, '2026-10-19 07:11:31.781181+00', '2026-10-19 07:45:44.706189+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (109, 1, 21, 5, 4, 'Dependency freshness sweep', 'Queue status: DONE', NULL, NULL, NULL, 88000, '2026-10-18 23:35:57.356414+00', '2026-10-19 02:54:08.712429+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (111, 1, 19, 4, 4, 'Android lock-screen widgets: investigation only', 'Queue status: DONE', NULL, NULL, NULL, 90000, '2026-10-18 23:35:57.388668+00', '2026-10-19 02:54:08.731662+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (125, 1, 4, 2, 4, 'iOS: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 104000, '2026-10-18 23:35:57.635715+00', '2026-10-19 02:54:08.864926+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5423,6 +5466,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (105, 1, 27, 3, 4, 'D1: sound through silent mode and DND', 'Queue status: DONE', NULL, NULL, NULL, 84000, '2026-10-18 23:35:57.280672+00', '2026-10-19 02:54:08.662858+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (106, 1, 26, 5, 4, 'SDK 58 preview.7 + RN 0.88.0-rc.2', 'Queue status: DONE', NULL, NULL, NULL, 85000, '2026-10-18 23:35:57.297622+00', '2026-10-19 02:54:08.671877+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (107, 1, 24, 3, 4, 'Android widget countdown', 'Queue status: DONE', NULL, NULL, NULL, 86000, '2026-10-18 23:35:57.318856+00', '2026-10-19 02:54:08.689179+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (229, 1, 229, NULL, 4, 'Step 8: Plan-conformance audit and fixes', '', NULL, NULL, NULL, 24000, '2026-10-19 07:11:31.934714+00', '2026-10-19 08:04:03.725796+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (113, 1, 17, 2, 4, 'Blank card at placement, horizon to 3 days', 'Queue status: DONE', NULL, NULL, NULL, 92000, '2026-10-18 23:35:57.423827+00', '2026-10-19 02:54:08.750385+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (115, 1, 15, 9, 4, 'Widget polish', 'Queue status: DONE', NULL, NULL, NULL, 94000, '2026-10-18 23:35:57.457033+00', '2026-10-19 02:54:08.769516+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (117, 1, 13, 3, 4, 'Android widgets open the app on tap', 'Queue status: DONE', NULL, NULL, NULL, 96000, '2026-10-18 23:35:57.492302+00', '2026-10-19 02:54:08.788541+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5457,6 +5501,8 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (101, 1, 31, 5, 4, 'Android updates natively, releases.json deleted', 'Queue status: DONE', NULL, NULL, NULL, 80000, '2026-10-18 23:35:57.213573+00', '2026-10-19 02:54:08.623925+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (102, 1, 30, 11, 4, 'Both stores answer for themselves', 'Queue status: DONE', NULL, NULL, NULL, 81000, '2026-10-18 23:35:57.229851+00', '2026-10-19 02:54:08.632705+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (103, 1, 29, 3, 4, 'D6: the help modal for a missed athan', 'Queue status: DONE', NULL, NULL, NULL, 82000, '2026-10-18 23:35:57.245488+00', '2026-10-19 02:54:08.643371+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (222, 1, 222, NULL, 4, 'Step 1: Discipline sheet from the four tracked PRs', '', NULL, NULL, NULL, 17000, '2026-10-19 07:11:31.677134+00', '2026-10-19 07:45:44.584545+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (227, 1, 227, NULL, 4, 'Step 6: Board writes, monitoring rows, ledger numbers, dead-code hook row', '', NULL, NULL, NULL, 22000, '2026-10-19 07:11:31.88066+00', '2026-10-19 07:45:44.849586+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (14, 1, 135, 3, 10, 'Widget mirroring under RTL and the widget countdown face', 'OWNER ORDER 2026-10-17, the owner''s read of the medium widget on the 3T at 2.0.908 with Arabic active - the owner''s order unparks exactly this slice of the widget park (rows 117/123/127/130/132 stay parked). ITEM 1, MIRROR THE WIDGET LAYOUTS under RTL on BOTH platforms, exactly like the app mirroring (rows 58/68 law: the APP locale drives direction, never the device locale, never transforms-based hacks where the runtime offers a native direction): under Arabic the medium widget prayer-list row flips - the time on the LEFT, the Arabic name on the RIGHT (today it matches the English column order: Arabic name left, time right); mirror every widget variant (the 8 home-screen kinds and the 6 iOS lock-screen kinds) with nothing redesigned, the mirrored face identical to the English face flipped, and every LTR locale byte-identical. The stamped-but-unread `rtl` field (row 68 P16, row 129) gets its fate here: the mechanism either consumes it or deletes it. ITEM 2, THE WIDGET COUNTDOWN MATCHES THE APP COUNTDOWN EXACTLY: unpadded Latin digits with lowercase Latin h m s letters (rows 85/102/83 law), no Arabic letters, no native numerals, on BOTH platforms - Android ALabel today renders Arabic unit letters beside Latin digits (`4 س 20 د`), and the iOS ticking countdown is system-formatted (row 128 record); both take the app face. The owner''s words: exactly like the app countdown, as it was before multiple languages. Acceptance: the owner''s read of a placed widget under Arabic on a real phone, both platforms. Provenance: the owner''s order transcribed above; the app-side mirroring ground is rows 58/68, the countdown law rows 83/85/88/102
 
 Status note: OWNER ORDER 2026-10-17, the owner''s read of the medium widget on the 3T at 2.0.908 with Arabic active - the owner''s order unparks exactly this slice of the widget park (rows 117/123/127/130/132 stay parked). ITEM 1, MIRROR THE WIDGET LAYOUTS under RTL on BOTH platforms, exactly like the app mirroring (rows 58/68 law: the APP locale drives direction, never the device locale, never transforms-based hacks where the runtime offers a native direction): under Arabic the medium widget prayer-list row flips - the time on the LEFT, the Arabic name on the RIGHT (today it matches the English column order: Arabic name left, time right); mirror every widget variant (the 8 home-screen kinds and the 6 iOS lock-screen kinds) with nothing redesigned, the mirrored face identical to the English face flipped, and every LTR locale byte-identical. The stamped-but-unread `rtl` field (row 68 P16, row 129) gets its fate here: the mechanism either consumes it or deletes it. ITEM 2, THE WIDGET COUNTDOWN MATCHES THE APP COUNTDOWN EXACTLY: unpadded Latin digits with lowercase Latin h m s letters (rows 85/102/83 law), no Arabic letters, no native numerals, on BOTH platforms - Android ALabel today renders Arabic unit letters beside Latin digits (`4 س 20 د`), and the iOS ticking countdown is system-formatted (row 128 record); both take the app face. The owner''s words: exactly like the app countdown, as it was before multiple languages. Acceptance: the owner''s read of a placed widget under Arabic on a real phone, both platforms. Provenance: the owner''s order transcribed above; the app-side mirroring ground is rows 58/68, the countdown law rows 83/85/88/102 DONE 2026-10-18, audited (both passes PASS, three findings fixed at 2.0.1066, one rejected with its reason in the plan''s AUDIT.md, folder and evidence dead here): the widgets mirror under an RTL app locale on both platforms - the Android kinds by a composition mirror keyed off the snapshot''s rtl (the time column left, names right, every start/end alignment, lead inset and textAlign swapped, nothing redesigned; the mirrored wrapper pins its width, D135.13, after the fill-first child starved the hero on the 3T), the iOS kinds by the patched entry view applying SwiftUI''s native layout direction from the stamped field (all 14 kinds from one patch site) - and the Android countdown label renders the app countdown component''s face at the owner''s amended HEAD sizing: Latin digits at the hero size with lowercase Latin h m tight at 0.95 x, centred on their digits (the audit''s alignment fix), groups 12 points apart, zero-groups dropped, minutes clamped at 1, in every language (the Arabic unit letters are gone; the dead duration catalog keys died with them). The iOS countdown is untouched by the owner''s own 2026-10-18 amendment ("on iOS it is just what it is right now"). The rtl field is consumed on both sides and the props versions stay 8/4 (row 129 closed here). LTR locales byte-identical (direction inputs pinned under every locale, en bytes pinned exactly). Device-proven on the 3T fleettest build under app Arabic and English, and on the XS Release build under its as-found app Arabic (the mirrored rows and the ticking Latin countdown read through the accessibility tree; the XS English re-read waived on evidence, D135.14: the patch''s falsy branch pins LTR and the iOS JS is untouched, so zero language switches touched the owner''s phone), with the iOS 18.5 simulator''s system-Arabic countdown transcribed as the confirmatory read; THE OWNER''S GLASS READ of a placed widget under Arabic on each phone is the acceptance (named, pending the owner''s look; the 3T fleettest 2.0.1066-class build and the XS 2.0.1054 Release are on the phones). Mid-run defect and repair recorded: step 4''s first 3T Arabic read found the hero half collapsed (R1.1 unmet), STOPped per PLAN 2.2, the lead repair D135.13 landed red-first at 2.0.1054 and the re-proof met every criterion. Rows 128 (discarded by the owner''s order) and 129 close here; rows 117 (unparked after this row), 123, 127, 130, 132 stay parked
@@ -5468,6 +5514,7 @@ Status note: 2026-10-15, audited: the crash''s caller pinned (the debug sequence
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (51, 1, 90, 10, 4, 'Ramadan decorations: the owner''s visual check', 'OWNER ASK 2026-10-15: the owner verifies the Ramadan face still renders after the lettered work. The session enables the force flag LOCALLY on the dev build (never committed; the gate patch dies with the tree restore) and the owner reads the phone; the owner''s read is the whole ticket. No production change; a defect the owner finds opens its own row
 
 Status note: 2026-10-15, the owner''s read: the Ramadan face confirmed in English and Arabic on the prod-armed dev build (decorations, mosque variant, settings toggle); no defect found, no production code changed; the local arm (the gate patch on `shared/time.ts` plus Metro on the force flag) dies with the session''s tree restore', NULL, NULL, NULL, 30000, '2026-10-18 23:35:56.345032+00', '2026-10-19 02:54:08.113296+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (223, 1, 223, NULL, 4, 'Step 2: Rebase and re-port onto then-current upstream main', '', NULL, NULL, NULL, 18000, '2026-10-19 07:11:31.738213+00', '2026-10-19 07:45:44.660161+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (94, 1, 39, 3, 4, 'D4b. Translation sweep', '`ai/plans/39-localisation/` (deleted at audit merge; the owner string-verification list survives at `ai/plans/provenance-39.json`)
 
 Status note: 2026-10-12, audited and pushed: the six-language confidence build landed end to end (en ar ms so hi th) - runtime locale resolution with the device-locale default, the Settings language row and sheet with the in-sheet progress face, forward-only convergence over notifications, channels and widgets with the last-armed stamp, catalog-composed dates, widget props v7 with precomposed localized footers, the widget-runtime locale patch, per-locale native strings from committed config, the catalog gates and lock file. English bytes and every frozen identifier held. Device-proven on the 3T (identifiers byte-stable across a switch, channels renamed in place under frozen ids, the Arabic Asr fire with `العصر الآن` on `athan_1_v4`, require timing 3-4 ms) and the S23 (tall fonts unclipped in ar/hi/th; widgets owner-verified in Thai). Seventeen steps plus eight assumption-ruled plan repairs; a shipped cold-start defect (bare-vs-JSON preference read) was caught and healed on-device same-day. Three-reviewer audit fixed five findings at 2.0.54 (locale config on every Android build, the What''s New stamp live, the launch init latched, plan-folder JSONs in-repo, stale comments) and carried three to rows 61 and 66 and the D41 verification. Two owner-deferred tails ride the confidence build: the XS widget and six-script checks (the orphaned-alert automation wedge) and the Arabic widget half of the S23 check
@@ -5481,6 +5528,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-12: waiting on Expo reviewing and releasing PR `expo/expo#51291` (https://github.com/expo/expo/pull/51291); the corrections land with the first re-pin past that release, which is also when the local patch dies. Three corrections to `expo-location`''s own code, so Expo maintains them and this repo carries nothing. iOS `headingFilter` is never set: on the XS, 731 of 731 readings were discarded. The Android 2-degree emission gate starves a slow turn (0.83 Hz at 2 degrees per second), so make it configurable. `headingAccuracy` is bucketed to 0-3 and the negative invalid-heading sentinel collapses into bucket 0, so propose an additional field. A 5-to-50 Hz rate change is weaker and optional. The FOP as an npm package is deliberately not recommended. Corrections go as PRs, there is no process to hand modules to Expo, and `ai/AGENTS.md` binds every post to anonymity: no app name, repo link, device serial or secret. UPDATE 2026-10-09: the corrections are filed as PR `expo/expo#51291` (all three in one, every option defaulting to today''s behaviour). The row now waits on review and a published release; the patch dies at the first re-pin past that
 
 Needs first: #50', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-19 02:54:08.918562+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (225, 1, 225, NULL, 4, 'Step 4: Description verification, anonymity check and device evidence', '', NULL, NULL, NULL, 20000, '2026-10-19 07:11:31.817335+00', '2026-10-19 07:45:44.756703+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (9, 1, 127, 4, 10, 'Android widgets on OEMs: is the feature worth keeping, and what hardening is left', 'PROBLEM, the owner''s own words 2026-10-16: on some OEM phones (the owner''s named case the Oppo Find X8) Android widgets drift out of sync after roughly three hours, deep sleep suspected; iPhone widgets never drift; in the owner''s words, if the Find X8 is not reliably showing widgets in sync, there is no point enabling Android widgets. The drift class is PROVEN and recorded in row 123 (the Find X8 three-widget disagreement, the ColorOS alarm window of 25 to 34 seconds, 58 of 61 deferred updates, the 3T freeze). Row 123''s reopened lane answers only what the new SDK versions changed; THIS row owns the product and hardening question. RECOMMENDATION: after row 123''s verdict, a deep options pass ending in one recommendation, each option carrying its blast radius and its battery cost: (a) harden what is left (the two reserve fixes: re-measure the double broadcast, isolate the app.json R8 keeps from the library''s consumer rules, ask-first); (b) add a self-heal path the app controls (a re-arm on foreground, or a bounded periodic nudge); (c) ship as-is with honest expectations; (d) withdraw Android widgets. The row ends with the owner''s ruling. The agent re-researches before recommending and may find a mechanism this list does not name
 
 Status note: 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. Row 123 FOLDED HERE 2026-10-18 by the owner''s order: its delivered version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or update path) is this row''s technical ground, and this row owns the single question: prove-then-fix on the OEM phones and the keep-or-withdraw ruling. Resumes when the owner says go', NULL, NULL, NULL, 9000, '2026-10-18 23:35:55.638498+00', '2026-10-19 02:54:07.659932+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5489,6 +5537,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-11, audited: a pass inside the final 30 seconds before an armed reminder now keeps it armed, no re-arm and no cancel, record intact; unarmed imminent reminders still skip and past ones still clean up; red-green in `stores/__tests__/reminderImminentKeepAlive.test.ts` and clock-proven on the 3T production build (cold launch at T minus 20 s left the target byte-identical and it fired once at T plus 208 ms with the armed content; the mock''s per-download re-seed had made the in-harness proof impossible, ruled onto the production vehicle by the owner). Three-pass audit, two blind findings fixed (`bb747947` pins the record guard against mutation, `097a7bcd` restores the docblock word); fix merged as `6dc9125b` into `09c13e46` (2.0.6, hook 5297 passed, coverage 100%), step 2 as `fc568fa7` into `eb3c2605` (2.0.12). Landed through 2.0.14. Group: notifications scheduling, `stores/notifications.ts` shared with row 39''s convergence work when it plans; same-group rows serialize. Queue order flipped by the owner: this row runs before row 39 (D39)
 
 Needs first: #53', NULL, NULL, NULL, 62000, '2026-10-18 23:35:56.912247+00', '2026-10-19 02:54:08.444361+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (226, 1, 226, NULL, 4, 'Step 5: Repo invariant, yarn validate green and main tree clean', '', NULL, NULL, NULL, 21000, '2026-10-19 07:11:31.849861+00', '2026-10-19 07:45:44.804956+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 3, 4, 'RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch
 
 Status note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief
@@ -5504,6 +5553,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-13, audited: four names shortened under the header rule (D81, the owner''s ms example verbatim; hi and th mechanical drops; D83 so Midnight from the owner''s flag, planner-sourced), glossary superseded on the two sourced entries and gaining so''s first sourced Midnight entry, width cache reset by key rename so the reserve tightens; all other names byte-identical. Executed as 2.0.143/2.0.144 through one planner-ruled stop (the dist round-trip files are gitignored artifacts, proven by on-disk import runs); the two-reviewer audit fixed five findings at 2.0.147 (the crash-window test''s stale seed narration and locale-less fixture key, the two "names never change" comments now teaching the re-key rule, the usePrayer/Prayer internal English-width names, the two glossary provenance notes)
 
 Needs first: #61, #63', NULL, NULL, NULL, 58000, '2026-10-18 23:35:56.846934+00', '2026-10-19 02:54:08.405354+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (228, 1, 228, NULL, 4, 'Step 7: Filing gate staged, STOP and wait for the lead''s go', '', NULL, NULL, NULL, 23000, '2026-10-19 07:11:31.906912+00', '2026-10-19 07:45:44.903029+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (62, 1, 79, 9, 4, 'Countdown dim levels, the no-shift rule, and prayer-list colon treatment', 'Owner rulings from the owner''s 3T + XS test of 2026-10-13 (~16:30): (1) DIM LEVELS - on the countdown timer, dim digits reduce by 30%, colons reduce by 60% consistently (the owner''s corrected figures; the landed dim treatment reads too strong); (2) NO-SHIFT - nothing in the countdown may ever shift horizontally except the digit pair that changes: going 20 to 19 must not shift because the glyph 2 is wider than 1 - the sections need equal-width digit rendering (tabular figures or per-glyph fixed boxes) for the Arabic-Indic digits too; (3) PRAYER LIST - the time-ago badge''s colon takes the 60% reduction in ALL languages including English, on the next-prayer and past-prayer rows, and the numerals need breathing space around the colon like the timer (the owner''s read: the Arabic numerals look squashed together); (4) recorded en-route defects from the same session, to verify on the current build before scoping: on the XS under system-arabic with app language English, the countdown rendered colon digits instead of the lettered English design (suspect: a device-locale-keyed format read, the row 67 audit''s finding class in app surfaces), and the layout stayed RTL after the app language switched to English (suspect: the row 68 direction bootstrap follows the system locale), plus the language-switch splash reads as a flat purple screen with no loading affordance (feeds row 66''s splash-cost ground). Owner available for the reads; ask, never guess The owner''s green-build read the same hour moved the prayer-time-colon and ago-gap refinements to row 81 (74''s ground); this row keeps the countdown dim levels and the no-shift rule
 
 Status note: 2026-10-13, audited: the timer''s dim levels land on the owner''s corrected figures (a spent 00 group white reduced 30 percent, every colon white reduced 60 percent, one design in every locale) and the no-shift rule is pinned: the timer style carries tabular figures, honored on both platforms at the pinned React Native, over the equal-advance Roboto-Medium verified at planning, so only the changing digit pair can move; muted untouched for every other reader. The dev build is installed on the owner''s iPhone XS with Metro serving and the owner''s read is the acceptance bar (the owner tests, per the owner''s instruction); the owner''s verdict lands here through the lead. Two-reviewer audit: one lean fix (the dead bar-background key deleted at 2.0.238), the records set straight (the step-2 verdict, the DONE version collision); future device steps grep the case expo prints. Row 81 lands next on this baseline
@@ -5517,6 +5567,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-13, audited: Arabic renders in the bundled Noto Sans Arabic Regular and Medium on every app text style, and weight surfaces render a real medium (help questions, step instructions, card titles, sheet and modal titles); the size factor stays 1 after the owner rejected 1.15 live (the family and weight carry the fix), en and the other four locales byte-identical, the width reserve re-measures on ar''s own key. The two-reviewer audit fixed the stale sweep probes, the version bump missing on the revert commit and three stale comments, and carried one finding to the owner''s parity pass (Latin or non-catalog content under ar takes the platform fallback face on iOS, from the Arabic-only bundled faces). Device-proven by the owner''s live iPhone XS reads
 
 Needs first: #72, #38, #39', NULL, NULL, NULL, 46000, '2026-10-18 23:35:56.642264+00', '2026-10-19 02:54:08.282236+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (234, 1, 234, NULL, 4, 'Step 1: The investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation', '', NULL, NULL, NULL, 25000, '2026-10-19 07:56:01.0853+00', '2026-10-19 08:18:15.465698+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 3, 10, 'Board mirror: an OWNER-LED row must read as awaiting the owner', 'PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism
 
 Status note: PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism
@@ -5525,22 +5576,38 @@ Needs first: #2026, #10, #17, #7', NULL, NULL, NULL, 8000, '2026-10-18 23:35:55.
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (61, 1, 80, 2, 4, 'Layout direction follows the app language, not the system language', 'The owner''s ruling from the XS test (2026-10-13, ~16:45, system Arabic + app English): the layout stayed RTL with English content - the owner ruled the layout must follow the SELECTED app language (English means left-to-right, Arabic means right-to-left, any language), with the system language only setting the INITIAL default on first launch. En-route evidence on the same pass: the en countdown rendered colon digits instead of the lettered design (the red build; re-verify on the current one - it may already be healed by row 72''s dispatcher), and row 68''s D59 direction bootstrap is the mechanism ground (73''s D92 diagnosis + 78''s starvation share it). Row 79''s items were recorded separately the same hour CONFIRMED ON 74''s GREEN BUILD the same hour (app English, system Arabic: everything RTL with English text), and one more en-route observation: a Maghrib notification fired in ENGLISH (with row 72''s ruled en unit word) while the app language was Arabic - the convergence either had not completed after the switch or the row 80 relaunch semantics interfere; scope the notification-language path here
 
 Status note: 2026-10-14, audited: the layout direction reads the app locale at the React tree''s root and the picker modal''s host (the direction style keying row 73 established, one level up), so every launch state renders the selected language''s direction - the owner''s XS ruling lands: system Arabic + app English lays out left-to-right, the system locale deciding only the initial default; forceRTL keeps the native half it can reach and the D59 crossing relaunch stays. The crossing''s relaunch context stops paying the cold-launch refresh-gate reopen through a one-shot relaunch handoff marker (an in-process reload cancels no alarm), closing row 78''s recorded aggravator; the notification-language path scoped and diagnosed - the English Maghrib was convergence not yet landed (copy is baked at arm time), now bounded by 78''s cap, the relaunch, and the relaunch context''s own reconcile, with what converges unchanged. QiblaWave''s mirror re-keys on the locale''s own direction (73''s reported sibling read folded in), the picker keeps its snapshot keying with its premise restated, and the en-countdown colon observation is superseded by row 82''s one-design ruling (row 85 would restore the en letters only when the owner says go). Device work waived by the owner''s run order; the owner''s device test is the acceptance bar', NULL, NULL, NULL, 40000, '2026-10-18 23:35:56.525403+00', '2026-10-19 02:54:08.218391+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (17, 1, 143, 5, 4, 'Upstream: file the device-locale PR properly, and give every open PR its tracking row', 'Goal: file the prepared device-locale PR upstream at the matched discipline of the four tracked PRs, and give every open tracked PR its board monitoring row.
+
+Where: the expo clone `$HOME/athan-gitree/upstream/expo` (branch `feat/widgets-device-locale`), the PR body `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md`, the ledger `ai/UPSTREAM-PRS.md` (edited only in the lane worktree), and the board''s Upstream and Backlog columns. The main tree stays on `uat`, clean, for the whole ticket.
+
+Acceptance:
+- [x] The branch sits rebased on then-current upstream main as one commit touching the four code files plus the changeset, and a comment records the delta (what moved, what was re-ported)
+- [x] Every locale hunk line of `patches/expo-widgets+58.0.20.patch` is present in that commit or named in the delta comment, and every changed-signature call site in then-current upstream source is accounted for
+- [x] The PR body and the changeset pass the anonymity check (no app name, serial, repo link, home path or personal namespace) and the body carries the Android 9 phone and iOS hardware evidence
+- [x] `yarn validate` exits 0 in the main tree and its `git status --porcelain` prints nothing
+- [x] PRs 50581, 51290 and 51292 each have a monitoring row in Upstream with `Waiting on` set (51291''s row is 51), and the ledger carries each new row''s number
+- [x] A dead-code hook row waits in Backlog, marked waiting on a published expo-widgets release that carries `__expoWidgetDeviceLocale`
+- [x] The gate comment records the filing gate reached and names what holds it, and no PR exists upstream yet
+
+Authorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane stops at the gate; the lead sends the go.', NULL, NULL, NULL, 17000, '2026-10-18 23:35:55.759468+00', '2026-10-19 08:10:51.004347+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (59, 1, 82, 9, 4, 'Latin numerals everywhere; the countdown identical in every language', 'The owner''s discovery ruling from the XS green-build read (2026-10-13, ~17:3x), reversing two earlier rulings of the owner''s: (1) DITCH the non-Latin numerals - Latin digits only (1 2 3 4 5 6 7 8 9) in EVERY language; Arabic switches from Eastern Arabic-Indic to Latin (this supersedes row 57''s D54/D57/D58 native-numeral ruling for ar; Somali/hi/th/ms were already Latin); (2) the COUNTDOWN TIMER IS IDENTICAL ACROSS ALL LANGUAGES - Latin digits, the dim colours, the gapped colons, the fixed-width sections, no letters anywhere: English loses the 1h 1m lettered design it regained in row 72''s revert (the owner''s words: ''no more 1h 1m, the letters''), and the en reminder titles and channel labels keep their row 72 reverted unit word (the owner named only the countdown timer). Rows 79/81''s refinements all stand (dim digits -30%, colons -60%, the seconds-never-dim rule, the no-shift rule - Latin digits still need the equal-width rendering). Ground: row 57''s digit map, row 72''s composer and dispatcher, row 74''s typography consumers; the three rows'' tests and pins re-derive from this ruling
 
 Status note: 2026-10-13, audited: Latin digits render in every language and the countdown timer is one design everywhere - fixed-width colon sections, dim gapped colons, dim 00 groups, no unit letters under any locale, the ago badge''s duration colon-shaped with the `now` word kept, the en reminder titles and channel labels keeping their row 72 unit word; the digit map (app and widget) is deleted with its tests; rows 79/81''s refinements land on this baseline; row 76(a) and row 67''s digit-map half are superseded; three-reviewer audit fixed the stale lettered prose, a cannot-fail negative and the formatTime pass-through, and carried two widget/break-script nices; simulator-proven under en and ar
 
 Needs first: #81, #82, #4, #79', NULL, NULL, NULL, 38000, '2026-10-18 23:35:56.490061+00', '2026-10-19 02:54:08.198021+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (230, 1, 230, 5, 11, 'Upstream `expo-background-task` network requirement', 'Monitoring row for PR `expo/expo#50581`, tracked in `ai/UPSTREAM-PRS.md` (row: expo-background-task). The PR makes the background network requirement configurable; the local patch dies at the first re-pin past its release. Opened 2026-10-09, open and unmerged at the 2026-10-17 re-check.', NULL, NULL, NULL, 4000, '2026-10-19 07:36:49.676207+00', '2026-10-19 07:36:49.844966+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (58, 1, 83, 9, 4, 'The time-ago badge: the countdown''s lettered format', 'OWNER RULING 2026-10-15 (the owner decided; the row leaves DEFERRED into the backlog): the badge takes the countdown timer''s lettered format EXACTLY as the old design held it - hours and minutes only, no seconds: `5h 20m` at five hours twenty, `33m` under an hour, the unpadded Latin digits and lowercase h m letters FIXED in every language (they never localise), only the surrounding words localising (the ago word, the `now` word under 60 seconds, from the catalogs). Lineage: the badge''s colon shape was row 82''s; this reverses it on the same grounds as row 85. Shares `shared/time.ts` with row 85: plans and runs after 85 lands. READY plan: `ai/plans/83-ago-letters/` (planned at `d9a4408a` 2.0.734 on the lane''s uat anchor; one code step: the lettered duration fixed Latin with the old composer''s zero-minute drop, the badge''s letters riding row 85''s ruled typography at the badge''s own ruled weak-glyph ink 0.4, `splitSingleColon` kept for the row time, the catalogs untouched)
 
 Status note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence
 
 Needs first: #85, #88', NULL, NULL, NULL, 37000, '2026-10-18 23:35:56.472517+00', '2026-10-19 02:54:08.188234+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (231, 1, 231, 5, 11, 'Upstream `expo-widgets` fillMaxWidth fraction', 'Monitoring row for PR `expo/expo#51290`, tracked in `ai/UPSTREAM-PRS.md` (related upstream PRs table). The PR fixes the Android Glance converter dropping the `fillMaxWidth` fraction; nothing in this repo changes until it merges, and the proportional-layout workaround simplifies only at the owner''s say.', NULL, NULL, NULL, 5000, '2026-10-19 07:36:59.463754+00', '2026-10-19 07:36:59.536909+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (232, 1, 232, 5, 11, 'Upstream `expo-widgets` Button openApp', 'Monitoring row for PR `expo/expo#51292`, tracked in `ai/UPSTREAM-PRS.md` (row: expo-widgets). The PR adds the `openApp` option to the Android widget Button; at the first re-pin past its release the openApp half of the widgets patch dies.', NULL, NULL, NULL, 6000, '2026-10-19 07:36:59.597075+00', '2026-10-19 07:36:59.640272+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (238, 1, 238, NULL, 1, 'Step 5: The device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (contingent on the ruling)', '', NULL, NULL, NULL, 29000, '2026-10-19 07:56:01.228712+00', '2026-10-19 07:56:01.228712+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (19, 1, 141, 2, 1, 'Language switch flashes on Android: the spinner unmounts, a target-language flash, then a blank purple page', 'OWNER REPORT 2026-10-18 (evening), Android-only (the iPhone behaves exactly as the owner wants): switching language in either direction (en to ar and ar to en) on the 3T shows, in order: the loading spinner; the spinner DISAPPEARING for a few milliseconds; a FLASH of the schedule itself - the owner read the TARGET language and saw the target layout switch during the flash when going ar to en; then a full-screen BLANK PURPLE page with no spinner for about half a second; then the full app. EXPECTED, the owner''s word: exactly the iPhone''s behavior - the spinner shows immediately on the language change and NEVER unmounts, moves or disables until the app is fully ready (all measurements done, the UI and layout measured), and only then the app appears - no flash of intermediate state, no blank page. THE TICKET: investigate the Android render and mount sequence through a language switch (what unmounts the spinner, what renders the schedule mid-switch, what renders the blank purple page, why iOS does not), then fix to the iPhone''s contract; red-first where a guard fits; both directions, both schedules; En byte-identical when not switching. Acceptance: the owner''s read of a language switch on the 3T
-
-Status note: 2026-10-18, OWNER REPORT', NULL, NULL, NULL, 19000, '2026-10-18 23:35:55.787303+00', '2026-10-19 02:54:07.771266+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (233, 1, 233, 5, 1, 'Dead-code hook: delete the device-locale patch hunks when expo-widgets ships them', 'Recorded by ticket 143 on the owner''s order. When a published `expo-widgets` release carries `__expoWidgetDeviceLocale`, this row deletes the local patch''s device-locale hunks (`patches/expo-widgets+58.0.20.patch`), moves the ledger entry in `ai/UPSTREAM-PRS.md` to shipped, and re-proves the widget faces on a phone at that re-pin. Do nothing before the release exists.', NULL, NULL, NULL, 7000, '2026-10-19 07:36:59.693263+00', '2026-10-19 07:36:59.806098+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 10, 4, 'iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history).', 'No plan folder; the record sits in the status cell and in git history.
 
 Status note: 2026-10-18, audited (plan-conformance and blind passes): the iPhone Duo runs the app through the existing layout with no Duo code path. Closed, one schedule fills the 466x678 display; open, iOS grants a 469x669 portrait window centred in the 951x669 inner display, one schedule inside it because the app is portrait-locked and the 500pt content cap never binds at 469. Both schedules, the overlay, the settings sheet and its Help row work in both poses; a fold keeps the same process (41562) and an open overlay alive; a cold launch lands on the Standard schedule. No production code changed (the range touches no layout file), so every other form factor renders what it rendered before. Filling the open panel needs landscape support, which turns rotation on for every iPhone and iPad and the owner''s order excludes. The plan folder and evidence died in this merge per the records rule.', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 02:54:07.916927+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5558,15 +5625,18 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-15, audited: the countdown TIME display is the lettered design in every language - unpadded Latin digit groups with small faint lowercase h m s on the digits'' baseline (inline spans, 2 pt gap, ink rgba(160, 200, 255, 0.4)), the 2024-11 composer''s exact zero-drop behaviour ported and git-verified (1h at a whole hour, seconds never 0s but alone), the colon machinery (splitColonSections, dim inks, per-digit fades) swept dead, bar and mosque untouched; owner-approved live on the XS across the session
 
 Needs first: #83', NULL, NULL, NULL, 35000, '2026-10-18 23:35:56.433194+00', '2026-10-19 02:54:08.166075+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (235, 1, 235, NULL, 4, 'Step 2: The Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set', '', NULL, NULL, NULL, 26000, '2026-10-19 07:56:01.129649+00', '2026-10-19 08:18:15.515869+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (65, 1, 76, 2, 4, 'Digit and string gaps under ar: the overlay''s Latin numerals, the Qibla instruction''s ellipsis, the cardinal letters', 'Owner''s RTL test (2026-10-13): (a) the Extras info boxes show Latin numerals under ar — opening Suhoor reads "20 minutes before Fajr" with a Latin 20 that must be Arabic-Indic, and the same localisation is checked across every info box (row 57''s digit map missed this surface); (b) the Qibla sheet''s instruction under the title ends in three dots — determine whether the string is truncated by the layout (numberOfLines/ellipsizeMode) or incomplete in the catalog, and fix it to the full sentence; (c) verify the Arabic cardinal letters on the compass are the correct letters for north/south/east/west. The owner''s confirmation recorded: the location name staying English at the sheet''s foot is correct (the device-keyed statics, D44/D79). OWNER RULING 2026-10-14 (in session): item (c) CHANGES - the compass ring''s cardinal LETTERS (the English letters and the Arabic letters alike) are REPLACED by LATIN NUMBERS carrying a small degree circle at the top right of each number: north 0, east 90, south 180, west 270, identical in every language, so the compass depends on no language at all; the item''s scope is no longer verify-the-Arabic-letters but this rebuild, and the ''cardinals locked to the dial convention'' test the execution recorded is superseded by it
 
 Status note: 2026-10-14, audited: the Extras info boxes verified on Arabic-Indic digits across all five sentences with a six-locale sweep lock (row 84''s law had healed the surface the owner''s 2026-10-13 test saw; the fix landed 2026-10-14 at 2.0.250), the Qibla subtitle''s three dots diagnosed as layout truncation (the catalog complete in all six) and fixed with a zero-height width donor so the box measures the wider sentence in every language (en pixels unchanged; the box-width mechanism is locked by tests and the rendered layout on glass falls to the owner''s QA), and the compass ring rebuilt on the owner''s 2026-10-14 ruling: the cardinal letters leave the catalogs for the four Latin bearing numbers 0, 90, 180, 270, each with a small degree circle, drawn on the language-free digit face so the ring is identical in every language. Simulator reads under ar on the iOS mock build: the waiting subtitle full and the Suhoor and Duha boxes on Arabic-Indic digits; the compass ring, the ready line and the en header could not be read because the simulator vouches no heading and the ar-to-en reload starved, so those fall to the owner''s QA. Versions 2.0.601-2.0.609 on ticket/76 off the 1b0d5229 base', NULL, NULL, NULL, 44000, '2026-10-18 23:35:56.605867+00', '2026-10-19 02:54:08.260387+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (236, 1, 236, NULL, 1, 'Step 3: The Widgets row in the Other card - settings.widgets in six locales, the row after Language, the yarn i18n:lock re-take with the catalog lock test green, red-then-green Settings.test.tsx coverage (contingent on the ruling)', '', NULL, NULL, NULL, 27000, '2026-10-19 07:56:01.16527+00', '2026-10-19 08:16:26.259775+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (73, 1, 65, 4, 4, 'perfName remnants: investigation only', 'Owner ask, 2026-10-12: why do `perfName={SHEET_PERF_NAME}` props remain across sheets when the performance/chaos testing era was deep-cleaned? The owner suspects they are load-bearing for e2e now and asks: INVESTIGATION ONLY - map every reader (Sheet machinery, perf marks, the EXPO_PUBLIC_PERF_MONITOR gate, maestro flows, frame-audit and baseline scripts), what breaks if removed, and whether removal is worth a job. No code changes in this row
 
 Status note: 2026-10-12, audited: the perfName investigation answers the owner''s three questions (FINDINGS.md folded here per D82, its folder closed): 196 reader hits on 178 lines across 31 files, 24 non-test - the seven Maestro flows and frame-audit.sh read nothing, baseline-compare.sh is the one true e2e reader; deleting the sheet wiring breaks only tests (tsc, Biome, ten Jest cases in three suites) and silently orphans eight baseline keys, with no runtime path reading the marks; recommendation KEEP - production builds pay nothing (the gate folds every mark out of store bundles), and removal stays a bounded nine-file, three-suite ticket if ever wanted. The audit fixed five findings: the sweep missed the jest-run `__tests__/` tree (five Navigation-suite hits), the describe holds six tests not five (ten deleted, not nine), the orphaning tally is eight keys (toggle_tap_ms included), the split sentence belongs to baseline-compare.sh alone, and the em dashes. No code changed', NULL, NULL, NULL, 52000, '2026-10-18 23:35:56.745383+00', '2026-10-19 02:54:08.347593+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 64, 8, 4, 'Volume-source copy: alert and sound sheets plus a help question', 'Owner ask, 2026-10-12: text in the alert sheet and the athan sound sheet explaining that Android plays these alarms at the ALARM volume, not the notification volume; plus a Help modal question "Which volume controls the sound level?" (owner wants the wording improved). OWNER RULINGS 2026-10-12 (in session): add the copy to BOTH sheets for absolute clarity even though Help already carries the question (verified in-repo: `help.a.quiet` "It plays at alarm volume, not ring volume" plus `help.step.alarmVolume` exist, and their wording is itself Android-flavoured, so the help answer joins the platform split); the copy is PLATFORM-SPECIFIC by rule - Android states the alarm volume (row 27''s proof), iOS states its own path, each rendered for the platform running (planning verifies the iOS path against Apple''s documentation before the copy is drafted; unverified at planning: standard iOS notification sounds follow the ringer volume and are silenced by the silent switch). Copy drafts in six languages take the owner''s D42 verification during planning. Serialized behind row 63: both edit the six catalog files
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (237, 1, 237, NULL, 1, 'Step 4: The ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 modules/widgetpin with the provider resolved from the built APK (contingent on the ruling)', '', NULL, NULL, NULL, 28000, '2026-10-19 07:56:01.201755+00', '2026-10-19 07:56:01.201755+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, NULL, NULL);
 
 
 --
@@ -6443,6 +6513,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1313, 70, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.26166+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "71"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1332, 77, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.365595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Somali prayer name wraps to two lines with room to spare"}, "from": {"value": "#61 Somali prayer name wraps to two lines with room to spare"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1333, 77, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.365595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner-reported defect, 2026-10-12: under so, Sunrise (\"Waaberi\") wraps its last letter to a second line although space remains - the owner suspects the prayer-name width is not recalculated on language change. Job 39''s width layer: per-locale keys seed 0 and widen on measure, InitialWidthMeasurement picks the longest row by rendered-label length. Red-first defect job in that layer; may explain other locales'' wrapping too\n\nStatus note: 2026-10-12, audited: the prayer-name reserve is now the widest label in rendered points, measured per name on both lists (the Somali Sunrise wrap healed at the root: character count picked the longest, not the widest); getLongestPrayerNameIndex and its tests deleted; widen-only store unchanged\n\nNeeds first: #39"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1869, 226, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.855761+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1140, 13, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.418177+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Android chevrons do not mirror under Arabic (settings sheet)"}, "from": {"value": "#136 Android chevrons do not mirror under Arabic (settings sheet)"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1141, 13, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.418177+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T\n\nStatus note: OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T DONE 2026-10-18, audited: the chevron paragraph is pinned ltr at every chevronFor() render site (the settings sheet''s rows, the colour-picker row inside it, the Help action row), so Android draws the authored glyph under ar: the signal was never stale (chevronFor reads the app locale, the root follows it since row 80) - Android resolves a lone neutral glyph against the RTL layout direction and bidi-mirrors U+2039 (Bidi_Mirrored=1) while iOS''s natural resolution does not, the whole platform split; en and every LTR locale byte-identical (the pin is inert under ltr), proven on the 3T both directions (left under ar, right under en, layout unchanged); the sweep suite kills a stripped pin at each of the three sites and the audit''s enumeration guard reds on any new caller outside them; Help''s step-mark guillemets stay untouched (same mirrored class, unreported, the plan''s D136.3 exclusion); the owner''s read on the 3T is the acceptance - the fleettest build at 2.0.1032 is installed and left in Arabic for it"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1165, 20, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.547644+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "137"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -6462,6 +6533,21 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1382, 97, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.641868+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "35"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1384, 98, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.655041+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "34"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1386, 99, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.667234+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "33"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1882, 19, 'comment', 'owner', 'Plan-conformance audit of T-141 (the lane''s five commits 2.0.1127 to 2.0.1131, read against the final tree).
+
+The final tree conforms point by point. F1 is exact: the per-invocation latch (stores/language.ts:155), the finally clearing busy and pending only when the latch is false and commitInFlight unconditionally (stores/language.ts:225-233), and the rejected path restoring cleanup, clearing the marker, logging and hiding the cover on Android (stores/language.ts:214-223). F2 matches the loader''s geometry (SwitchCoverModule.kt: dead-centre spinner, line at midpoint plus SIZE.activityIndicator/2 plus SPACING.xxxl, #fff, TEXT.size, 260 cap, dp times density), companion-object state, no lifecycle cleanup, idempotent show and hide, stale-view drop, Queues.MAIN on both, the show awaited before the argument-less reloadAsync behind IS_ANDROID, and the hide at app/index.tsx:206 after perfMark(''home_content''). The En-not-switching contract holds. All seven touched suites pass (90 tests) and tsc is clean. Every commit bumps package.json and app.json together.
+
+FINDINGS
+
+- major: modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt as committed at 0bf7b1b1 (2.0.1128), 145b58f0 (2.0.1129) and bce97518 (2.0.1130) carries unresolved merge-conflict markers (33, then 50, then 61 marker lines in the committed trees), so every checkout from 2.0.1128 through 2.0.1130 holds a module that cannot compile; only 8852c1b8 rewrites the file clean. Fix: rewrite the lane''s series before merge, squashing the 141 commits into the plan''s three steps, so no version points at a broken tree.
+
+- major: 21ec9b99 (2.0.1127, "the latch") contains only the version bump, and its twin 47b3f2a1 (2.0.1121) the same; the latch and every JS-side file of the plan (stores/language.ts, device/switchCover.ts, languageChangingLine, the loader line, the app/index.tsx hide, all suites) actually land in 98b7839c and 79318921 (2.0.1114 and 2.0.1115), which the lane''s commit list omits. Three replays burned three patch versions per step against the plan''s "each step lands as one commit". Fix: the same series rewrite, and the record should name 2.0.1114/1115 as where the JS work lives.
+
+- minor: stores/__tests__/rtlSwitch.test.ts has no per-file jest.mock of @/device/switchCover, which the plan''s Files list names for it. Harmless today because the suite runs on Jest''s default iOS platform and the wrapper no-ops when the native side is absent. Fix: add the mock or record the deviation on the ticket as was done for rtlReloadBound.
+
+- minor: the plan''s mutation pass names the idempotence guards in show and hide (SwitchCoverModule.kt:42 and 104-110), but no Jest suite can reach Kotlin and nothing on the record claims those guards were mutation-tested; the step 1 and 2 note predates the module''s first compile. Fix: state on the ticket that the Kotlin guards ride the device read, or amend the plan''s proof line.
+
+- minor: device/__tests__/switchCover.test.ts is new and is not on the plan''s Files list, and unlike the rtlReloadBound addition it was not noted on the ticket. It is what carries the "wrapper no-ops when the native module is absent" acceptance line, which the plan''s list never homed. Fix: one line on the ticket naming it; no code change.', NULL, '2026-10-19 07:23:46.819125+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1143, 13, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.434058+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevro"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1162, 19, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.531537+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "141"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1173, 24, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.594306+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "expo-location: the six named unverified readings"}, "from": {"value": "#131 expo-location: the six named unverified readings"}}', NULL);
@@ -6501,6 +6587,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1431, 121, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.948519+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1433, 122, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.962035+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1435, 123, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.97611+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1955, 238, 'activity', 'owner', NULL, 'created', '2026-10-19 07:56:01.232383+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1168, 22, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.562377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER ORDER 2026-10-18, the owner''s word after seeing 2.0.1035: the version line is disingenuous - every commit takes a patch and the minor half of the standing rule (\"patch per commit and minor per completed feature\") has never fired in the whole 2.0 line, verified from git: no version other than 2.0.x exists anywhere in the history, so a thousand patches carry features whole. The owner has raised this before and the practice ignored the owner''s. THE OVERHAUL the owner orders looked at heavily: when a patch is right, when a minor is owed (a completed feature, a merged ticket, a user-visible change), and who decides - the owner''s division stands recorded here: SHE DICTATES MAJORS ONLY, the agent owns patch versus minor; how the guards enforce the split (check-version-uniqueness.js, the versionLockstep test, the queue''s own bump rules and the lane protocol); whether the 2.0.10xx history takes a reset, a grandfathered boundary or a jump at the overhaul; and how a minor bump interacts with the store builds and the OTA line. SUPERSEDED the same day by the owner''s live order, the owner''s words: \"move it to the backlog, NOT PLANNED into your lane, deep-dive research online, progress it to production\". The division of authority stands as the owner set it: SHE DICTATES MAJORS ONLY and any store-facing version jump (both tabled in the row and the lane''s return, never shipped); the agent owns patch versus minor and lands the discipline, the guards and the workflow text. Until this row lands, every commit keeps the patch-per-commit rule, this row''s own commits included\n\nStatus note: 2026-10-18, audited (two reviewer passes, nine findings all confirmed and fixed at 2.0.1065, the conflicted-merge and unstaged-blob holes among them): the semver discipline landed - every commit''s bump class is machine-checked at commit time (a `feat`-typed subject requires the minor, every other subject the patch, majors only through the owner''s recorded order in `scripts/version-major-allowlist.json`), a merge into uat can no longer regress the version (the pre-merge gate refuses a non-increasing incoming line, and a conflicted merge''s concluding commit is checked too), the lockstep suite pins the semver normal form, and `ai/AGENTS.md` plus the lane protocol state the split in one place each. BOUNDARY RECOMMENDATION FOR THE OWNER''S VETO: grandfather - history untouched, the first completed user-visible feature after this landing takes the first free minor (2.1.0) and the 10xx tail dies by the spec''s own patch-reset rule; the owner''s one word upgrades it to a jump at the next store release. MEASURED, no code change needed: the GB storefront publishes 1.5.1 (the repo line is not store-facing on iOS today; moving it is the owner''s act), Play''s in-app updates arbitrate on the untouched versionCode 1000000, no OTA channel exists (no `updates` block, EAS read-only, releases.json dead) - a minor interacts with nothing until the owner publishes. The gates enforced themselves during the landing: the discipline refused the skipped patch the old weather habit would have taken when sibling 135 took 2.0.1064 mid-audit. This row''s own commits stayed patches per its own rule; the first `feat` after this merge takes 2.1.0"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1187, 28, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.658156+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "122"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1200, 33, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.725409+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}, "from": {"value": "#116 iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}}', NULL);
@@ -6555,6 +6642,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1410, 111, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.812662+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "19"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1411, 112, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.819434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "SDK 58 next re-pin + Babel 8 rider"}, "from": {"value": "#18 SDK 58 next re-pin + Babel 8 rider"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1420, 116, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.871937+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Widget timeline horizon 14 to 30 days"}, "from": {"value": "#14 Widget timeline horizon 14 to 30 days"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1736, 18, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:18:21.996066+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 211, "value": "T-211"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1194, 31, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.698458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The agent CLI: introduce @expo/agent-cli into the repository"}, "from": {"value": "#119 The agent CLI: introduce @expo/agent-cli into the repository"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1195, 31, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.698458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER ORDER 2026-10-16 (111 planning session): a ticket to introduce the new @expo/agent-cli into this repository, the owner''s words: it might make it easier and better to work with. Facts today: the repo already routes `npx @expo/agent-cli status` and `smoke --ios` (the ai/AGENTS.md routing table) and BANS `--eas`, `deploy`, `agents:setup`, `skills:sync` and `smoke --android` while a phone is connected; EAS stays read-only by hard rule. SDK 58 release notes (read at planning 111): the CLI is experimental, sits on Expo CLI, EAS CLI and expo-doctor; `dev` starts the app in one command and builds when needed; `smoke` is dev plus screenshot plus stop; `skills:sync` sets up co-located agent skills from node_modules; `agents:setup` wires the harness; Expo CLI itself gained machine-readable `command:ps` and `command:events`. THE ROW investigates which commands earn their place, which bans hold (anything EAS, deploy), and what agents:setup would change in this harness, then the owner rules before any repo change\n\nStatus note: 2026-10-16, audited: option B landed at 2.0.928 - ai/AGENTS.md routes the four measured reads (doctor the advisory health check, typecheck the quick tsc read that is not the gate, docs:sync/docs:search the SDK-matched docs lookup, npx expo command:ps and command:events the dev-server session tables) and the @expo/agent-cli bullet opens with the routed-reads allowlist and bans the measured set (--eas with its paid EAS Simulator ground, deploy, agents:setup, skills:sync, skills:clean, install, new, feedback, login, logout, register, whoami, status --explain, --device, and smoke --android while a phone is connected); nothing installed, no other file moved; every read-only claim re-measured live at @expo/agent-cli 1.0.19 and @expo/cli 58.1.10 before the wording was pinned (doctor 17/20 green today against 16/20 at the investigation; typecheck 1241 ms against 738 ms; the counts stay out of the file). Two-reviewer audit (the blind pass verified every routed claim live against the installed CLI): four findings confirmed and fixed at 2.0.930 (the executed commit carrying no bump, healed by the next-commit bump per the row-120 precedent; the stale records message; the missing LOG record; the break-script path), none rejected. Lane weather absorbed: the 2.0.925/2.0.926 collision rebased keeping both rows and the higher number, a rebase-introduced duplicate version key healed at 2.0.927, and two leaked commit locks from dead sibling windows removed after process-table verification (four routing rows and one widened ban line in ai/AGENTS.md, nothing installed): (blind plus plan-conformance, every number reproduced, four records findings fixed in the audit merge): the agent-CLI investigation answers at 1.0.19 (npm latest, verified against its own help and bundled source; @expo/cli 58.1.10 for the Expo CLI pair): 35 command names printed by --help, `stop` an alias, 34 distinct, classified across the four axes (writes, device-or-build, repo-owned path, hard rule) in the FINDINGS census. Routed today: `status` and `smoke --ios`. Earning a place (all read-only against the repo, measured live): `doctor` (expo-doctor''s normalized report, exit-coded: today 16 of 20 checks green, the four failures advisory, one naming the ahead-of-pin class the repo runs on purpose), `typecheck` (the project''s own tsc, 738ms, subordinate to `yarn validate` which stays the gate), `docs:sync`/`docs:search` (SDK-matched Expo docs, 9.9M user-home cache, ranked hits with file and line), `npx expo command:ps`/`command:events` (machine-readable session tables, cross-lane visibility). Every ban re-derived with measured grounds: deploy (eas deploy to EAS Hosting, an EAS write; the native form opens the store flow); the whole --eas flag family, smoke/dev/navigate/runtime:stop/runtime:reload/dev:stop and its stop alias (each drives an EAS Simulator session that bills until stopped, a money act); agents:setup (installs expo/skills into the governed .agents/skills, 157 tracked files in 22 folders, and writes an AGENTS.md managed block whose own text routes install --fix, deploy and lint against the hard rules, source-pinned at 271.index.js:632,643-644,654 and 2461.index.js:1352-1356); skills:sync (same directory, a measured no-op today: no installed package ships skills); skills:clean; smoke --android while a phone is connected (boots and binds a device); status --explain (an EAS service query, and --device launches the app on a phone); install (ask-first, install --fix hard-banned); new/feedback/login/logout/register/whoami (no use; feedback outbound; the account commands touch the shared ~/.expo session). OPTIONS for the owner''s ruling: A status quo; B the read-only set (RECOMMENDED: four routing rows and one widened ban line in ai/AGENTS.md, nothing else moves, no package installed); C the generated AGENTS.md block (rejected: the block contradicts two hard rules at once plus the Biome lint pattern). Unverified: the eas-cli version the CLI bundles or fetches, and the whole-CLI experimental label beyond the per-command marks. No repo change before the owner''s word; the plan folder and the sessions/119 evidence died in the audit merge\n\nNeeds first: #2026, #10, #16"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1197, 32, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.712969+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Variable fonts: one file per family, the investigation"}, "from": {"value": "#118 Variable fonts: one file per family, the investigation"}}', NULL);
@@ -6570,6 +6658,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1273, 57, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.070693+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner-driven, 2026-10-14 (no brief; the session''s own rulings): the countdown''s per-digit dim model (live zeros bright, padding zeros dim, the left-to-right spent cascade, seconds never), the fast linear tick fades against the overlay''s own 200ms swaps, the drawn colon dots with the ink compensation for the narrow 1, the row-time colon on margins with the next-prayer brightening, LTR rows under ar, Readex Pro replacing Noto Sans Arabic (natively bundled, the record table per locale, the RTL set and digit table as data), the ar line box as record data, the native date and sentence digits, the mirrored chevrons, the Extras list gap, the bar track on the dim colour, the slim tip, show-seconds default on, the mock''s Isha runway, and four pixel rulings recorded (the timer block 54, the name 17 lifted 2, the gap under the bar 48); the numeral ruling''s boundary recorded: the countdown and its bar keep Latin, every other sentence and value takes the locale''s digits\n\nStatus note: 2026-10-14, audited: 2.0.250 carries the batch (32 files, 5557 tests, 100 percent on statements, branches, functions and lines), the two-reviewer audit over the range, the dev build rebuilt with the native Readex faces; the locale rule made data - RTL membership, native-digit tables and the typography records replace every ar branch"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1287, 62, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.139688+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Countdown dim levels, the no-shift rule, and prayer-list colon treatment"}, "from": {"value": "#79 Countdown dim levels, the no-shift rule, and prayer-list colon treatment"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1321, 73, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.294162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner ask, 2026-10-12: why do `perfName={SHEET_PERF_NAME}` props remain across sheets when the performance/chaos testing era was deep-cleaned? The owner suspects they are load-bearing for e2e now and asks: INVESTIGATION ONLY - map every reader (Sheet machinery, perf marks, the EXPO_PUBLIC_PERF_MONITOR gate, maestro flows, frame-audit and baseline scripts), what breaks if removed, and whether removal is worth a job. No code changes in this row\n\nStatus note: 2026-10-12, audited: the perfName investigation answers the owner''s three questions (FINDINGS.md folded here per D82, its folder closed): 196 reader hits on 178 lines across 31 files, 24 non-test - the seven Maestro flows and frame-audit.sh read nothing, baseline-compare.sh is the one true e2e reader; deleting the sheet wiring breaks only tests (tsc, Biome, ten Jest cases in three suites) and silently orphans eight baseline keys, with no runtime path reading the marks; recommendation KEEP - production builds pay nothing (the gate folds every mark out of store bundles), and removal stays a bounded nine-file, three-suite ticket if ever wanted. The audit fixed five findings: the sweep missed the jest-run `__tests__/` tree (five Navigation-suite hits), the describe holds six tests not five (ten deleted, not nine), the orphaning tally is eight keys (toggle_tap_ms included), the split sentence belongs to baseline-compare.sh alone, and the em dashes. No code changed"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1730, 18, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:18:21.926759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 209, "value": "T-209"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1248, 49, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.960322+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s visual read batch: eight fixes in one ticket"}, "from": {"value": "#100 The owner''s visual read batch: eight fixes in one ticket"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1249, 49, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.960322+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s consolidation order 2026-10-15: rows 92 to 99 fold here so one lane works the set. ITEM 1 (row 92): the ago badge under ar renders `2M 35H` - the Latin digit-letter run reorders under the RTL context; it must read `2h 35m` left to right inside the Arabic line (the countdown timer row''s own `direction: ''ltr''` pin is the mechanism). The owner''s ruling on the letters: plain lowercase h m at the digits'' own font size, colour and face, the same everything as the digits, like the design many versions ago - NOT the timer''s small faint letters. Row 83''s zero-drop format and fixed never-localising letters stand. ITEM 2 (row 93, the owner''s A/B pick landed): the countdown letters become CAPITALS (the owner''s option A) made just a little larger than the current 55 percent - the owner''s words, slightly, slightly larger; planning pins the ratio as a recorded default, the owner''s next dev-build read the acceptance. The ink, the baseline, the gap span and everything else from row 85 stand. ITEM 3 (row 94): the note''s information glyph becomes a proper circled i (the bare letter i and the Help-page arrows the owner saw are both wrong); the note''s iOS path copy under ar becomes plain localized text - no arrows mid-line, no forward slash at line breaks; row 64''s wording the base, row 89''s placement, centring and padding standing. ITEM 4 (row 95): the compass sheet''s title-to-subtitle gap matches the settings, alert and sound sheets the owner confirmed perfectly spaced the same read. ITEM 5 (row 96): the sound preview under ar - tighten the white and dim pair above the animation, open the space and push the Arabic text below the animation down off it. ITEM 6 (row 97): the Help questions under ar vertically centre in their rows (dots and descenders clip today, the open rows included; the answers inside are fine). ITEM 7 (row 98): the Arabic sentences composing Latin digits carry the Arabic comma as their separator - the separator belongs to the sentence, not the number, the digits staying Latin per row 88; sweep the date label, the Hijri label and anywhere a comma rides an Arabic string. ITEM 8 (row 99): the location and date lines tighten on both schedule pages (no clipping remains, only the gap). The owner''s dev-build read after the merge is the visual acceptance for every item. READY plan: `ai/plans/100-visual-read-batch/` (planned at `f9af66c2` 2.0.751 in the lane; eight code steps, no device step, D93 to D98 the recorded defaults the owner''s read accepts)\n\nStatus note: 2026-10-15, audited: the eight visual fixes landed - the ago badge''s lettered run isolated LTR inside the Arabic sentence with plain full-size letters, the countdown''s capitals at 60 percent (D93), the circled i glyph and plain ar note copy, the qibla header''s ar gap matching the confirmed sheets, the sound sheet''s ar pair at 6 and 32 (D94), the Help question''s ar line box at 23 (D96), the Arabic comma in the date and Hijri labels, and the schedule header''s ar gap at 2 (D95). The owner''s dev-build read after the merge is the visual acceptance for every item; no device step ran"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1256, 51, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.994605+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "90"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -6592,6 +6681,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1314, 71, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.2676+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)"}, "from": {"value": "#68 RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1315, 71, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.2676+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch\n\nStatus note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief\n\nNeeds first: #58"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1320, 73, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.294162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "perfName remnants: investigation only"}, "from": {"value": "#65 perfName remnants: investigation only"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1734, 211, 'activity', 'owner', NULL, 'created', '2026-10-19 03:18:21.99466+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1261, 53, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.016414+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER RULING 2026-10-15: no native numerals anywhere, ever - every digit on every surface in every language is a Latin digit (1 2 3): the notifications, the widgets, the bottom sheets, the date and Hijri labels, the info boxes, anywhere a digit renders. This closes the boundary row 84 drew (the countdown and bar alone kept Latin) and sweeps the remaining native-digit surfaces (the row 84 native date and sentence digits, the widget footers and rows). RIDER, same ruling: the notification titles drop the unit word - `Fajr in 5`, never `Fajr in 5 minutes` nor its translation (too much text; the number is enough context). CARVE-OUT the owner named explicitly: the alert sheet''s reminder steppers (Latin number followed by the native-language word for minutes) are perfect and stay untouched. Planning maps every native-digit read site before a step runs\n\nStatus note: 2026-10-15, audited: every digit the app composes renders Latin in every language - the native-digit map (NATIVE_DIGITS, localizeDigits) is deleted with its tests, the ar date and Hijri labels, the Extras info boxes, the Help sentences and the alert sheet''s stepper values carry Latin digits (carve-out kept: number then the native word for minutes, design untouched), and the widget props bake Latin bytes through the shared formatters (footers and rows Latin by construction; the iOS SwiftUI ticking countdown stays system-formatted, row 69''s owner-blocked ground). The en reminder title drops its unit letter (`Fajr in 15`); the five translated titles keep their prepositions (none carried a unit word) and the channel labels keep theirs (not titles, frozen at creation). Scheduling untouched. NOTE 2026-10-15: the notification titles (`Fajr in 5`) CONFIRMED by the owner''s ruling the same day - the owner accepted the landed title without a device trigger; no unit word, the number alone\n\nNeeds first: #85"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1275, 58, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.085148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The time-ago badge: the countdown''s lettered format"}, "from": {"value": "#83 The time-ago badge: the countdown''s lettered format"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1276, 58, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.085148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER RULING 2026-10-15 (the owner decided; the row leaves DEFERRED into the backlog): the badge takes the countdown timer''s lettered format EXACTLY as the old design held it - hours and minutes only, no seconds: `5h 20m` at five hours twenty, `33m` under an hour, the unpadded Latin digits and lowercase h m letters FIXED in every language (they never localise), only the surrounding words localising (the ago word, the `now` word under 60 seconds, from the catalogs). Lineage: the badge''s colon shape was row 82''s; this reverses it on the same grounds as row 85. Shares `shared/time.ts` with row 85: plans and runs after 85 lands. READY plan: `ai/plans/83-ago-letters/` (planned at `d9a4408a` 2.0.734 on the lane''s uat anchor; one code step: the lettered duration fixed Latin with the old composer''s zero-minute drop, the badge''s letters riding row 85''s ruled typography at the badge''s own ruled weak-glyph ink 0.4, `splitSingleColon` kept for the row time, the catalogs untouched)\n\nStatus note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence\n\nNeeds first: #85, #88"}}', NULL);
@@ -6622,6 +6712,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1414, 113, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.832789+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Blank card at placement, horizon to 3 days"}, "from": {"value": "#17 Blank card at placement, horizon to 3 days"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1416, 114, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.846151+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "iOS widgets flag flip after the G.1 protocol"}, "from": {"value": "#16 iOS widgets flag flip after the G.1 protocol"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1418, 115, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.85845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Widget polish"}, "from": {"value": "#15 Widget polish"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1735, 211, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:18:21.996066+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 18, "value": "T-140"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1282, 60, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.113908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s live read of 74''s green build on the XS (2026-10-13, ~17:0x): the Arabic body size is ''really, really good'' and Help is ''absolutely perfect'' (bold and light both land); the refinements the owner ruled: (a) the countdown timer under ar is too large and pushes everything down - reduce it slightly; (b) the timer''s colon spacing doubles - one more thin space on the left and right of EACH colon (four gaps total), everything still squashed together; (c) the prayer TIME column''s colon gains the same thin-space gaps and dims to the 60% styling, on the next-prayer and past-prayer rows; (d) the time-ago badge still touches the round settings button - reduce the gap below the prayer list by 25% and push the badge up a little; (e) verify the Standard and Extras schedules'' list-to-ago gaps are identical (the owner suspects a difference; may be the owner''s eyes). Ride 74''s ground (the typography map and its consumers); execute behind 74''s audit; the owner''s reads are the acceptance bar ADDITIONAL RULING, same session (2026-10-13): the SECONDS group never dims - at exactly one minute (00:01:00) it renders 00 while staying bright, because seconds are constantly ticking and are never a spent category; only hours (under an hour to go) and minutes (under a minute to go) take the dim treatment. The current all-zero dim rule mis-dims the seconds at the 1:00 instant; the render''s dim mapping carves seconds out\n\nStatus note: 2026-10-14, audited: the owner''s green-build refinements land - the timer under ar two points smaller (24), every colon on the timer, the time column and the ago badge padded with two thin spaces per side at 40 percent of its own digits'' strength, the seconds group never dimming while hours and minutes keep the row-79 treatment, the list gap down to 22.5 with the badge lifted four points; the two schedules'' list-to-ago gaps verified identical by construction (one shared Screen, List and Ago); the readable row time keeps one accessibility label over its split render and the unread sentinel stays one node. Every figure the owner did not pin is a recorded default under the owner''s dev-build read (Metro serving since 79''s delivery, status re-verified at audit); the owner''s verdict lands here through the lead. Two-reviewer audit: the records set straight (step-5 verdict, the cell''s date), one shared-gap-constant proposal rejected because the six literal sites are the guard the break scripts ride\n\nNeeds first: #74"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1296, 65, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.181179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Digit and string gaps under ar: the overlay''s Latin numerals, the Qibla instruction''s ellipsis, the cardinal letters"}, "from": {"value": "#76 Digit and string gaps under ar: the overlay''s Latin numerals, the Qibla instruction''s ellipsis, the cardinal letters"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1297, 65, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.181179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner''s RTL test (2026-10-13): (a) the Extras info boxes show Latin numerals under ar — opening Suhoor reads \"20 minutes before Fajr\" with a Latin 20 that must be Arabic-Indic, and the same localisation is checked across every info box (row 57''s digit map missed this surface); (b) the Qibla sheet''s instruction under the title ends in three dots — determine whether the string is truncated by the layout (numberOfLines/ellipsizeMode) or incomplete in the catalog, and fix it to the full sentence; (c) verify the Arabic cardinal letters on the compass are the correct letters for north/south/east/west. The owner''s confirmation recorded: the location name staying English at the sheet''s foot is correct (the device-keyed statics, D44/D79). OWNER RULING 2026-10-14 (in session): item (c) CHANGES - the compass ring''s cardinal LETTERS (the English letters and the Arabic letters alike) are REPLACED by LATIN NUMBERS carrying a small degree circle at the top right of each number: north 0, east 90, south 180, west 270, identical in every language, so the compass depends on no language at all; the item''s scope is no longer verify-the-Arabic-letters but this rebuild, and the ''cardinals locked to the dial convention'' test the execution recorded is superseded by it\n\nStatus note: 2026-10-14, audited: the Extras info boxes verified on Arabic-Indic digits across all five sentences with a six-locale sweep lock (row 84''s law had healed the surface the owner''s 2026-10-13 test saw; the fix landed 2026-10-14 at 2.0.250), the Qibla subtitle''s three dots diagnosed as layout truncation (the catalog complete in all six) and fixed with a zero-height width donor so the box measures the wider sentence in every language (en pixels unchanged; the box-width mechanism is locked by tests and the rendered layout on glass falls to the owner''s QA), and the compass ring rebuilt on the owner''s 2026-10-14 ruling: the cardinal letters leave the catalogs for the four Latin bearing numbers 0, 90, 180, 270, each with a small degree circle, drawn on the language-free digit face so the ring is identical in every language. Simulator reads under ar on the iOS mock build: the waiting subtitle full and the Suhoor and Duha boxes on Arabic-Indic digits; the compass ring, the ready line and the en header could not be read because the simulator vouches no heading and the ar-to-en reload starved, so those fall to the owner''s QA. Versions 2.0.601-2.0.609 on ticket/76 off the 1b0d5229 base"}}', NULL);
@@ -6674,6 +6765,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1403, 108, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.768938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Lock-screen countdown layout (iOS)"}, "from": {"value": "#22 Lock-screen countdown layout (iOS)"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1405, 109, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.780811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Dependency freshness sweep"}, "from": {"value": "#21 Dependency freshness sweep"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1407, 110, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.793088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Non-SDK packages to absolute latest"}, "from": {"value": "#20 Non-SDK packages to absolute latest"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1737, 212, 'activity', 'owner', NULL, 'created', '2026-10-19 03:18:22.017507+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1412, 112, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.819434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`ai/plans/SDK58-PROGRAMME.md` section 16 (carries facts A1 to A11)\n\nStatus note: 2026-10-09, audited. Versions, incidents and durable lessons live in section 16. The owner’s ride-`next` policy stays in force: repin to the newest expo at every attempt, release candidates included, and the Babel 8 rider is re-attempted at every re-pin, still blocked upstream\n\nNeeds first: #6"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1452, 5, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:06.072323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "70"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1422, 117, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.884799+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Android widgets open the app on tap"}, "from": {"value": "#13 Android widgets open the app on tap"}}', NULL);
@@ -6960,6 +7052,588 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1695, 112, 'activity', 'owner', NULL, 'label_add', '2026-10-19 02:54:08.7423+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1705, 122, 'activity', 'owner', NULL, 'label_add', '2026-10-19 02:54:08.837764+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1710, 127, 'activity', 'owner', NULL, 'label_add', '2026-10-19 02:54:08.886095+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1716, 15, 'activity', 'owner', NULL, 'field', '2026-10-19 03:09:42.095396+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1717, 18, 'activity', 'owner', NULL, 'field', '2026-10-19 03:09:42.118521+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1718, 19, 'activity', 'owner', NULL, 'field', '2026-10-19 03:09:42.144892+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1719, 15, 'activity', 'owner', NULL, 'status', '2026-10-19 03:09:42.178996+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1720, 18, 'activity', 'owner', NULL, 'status', '2026-10-19 03:09:42.217528+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1721, 19, 'activity', 'owner', NULL, 'status', '2026-10-19 03:09:42.254309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1724, 18, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:18:21.883815+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 158, "value": "8 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1725, 18, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:18:21.883815+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1726, 18, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:18:21.883815+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1727, 18, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:18:21.883815+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1729, 209, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:18:21.926759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 18, "value": "T-140"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1731, 210, 'activity', 'owner', NULL, 'created', '2026-10-19 03:18:21.966222+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1722, 18, 'activity', 'owner', NULL, 'description', '2026-10-19 03:18:21.873242+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: measure each of the owner''s three named Arabic gap sites on both phones (the 3T and the iPhone XS), attribute each gap to the platform line box or to the layout, and bring the two options with exact numbers and blast radius. Investigation and recommendation only: no code, no pixel change, no install before the owner''s ruling.\n\nWhere: the Arabic prayer name above the countdown against the countdown itself (components/countdown/Countdown.tsx), the location against the date on both schedules (components/day/Day.tsx), the bottom sheet''s title against its subheading (components/sheets/parts/Header.tsx). Ground: row 137''s parity verdict and numbers, folded here by the owner''s order.\n\nAcceptance:\n- [ ] The record''s measured table carries, per named site per phone, the rendered line box, the node gap, the ink gap and the code margin.\n- [ ] Each site carries one attribution line naming the platform line box or the layout, with the numbers that decide it.\n- [ ] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling).\n- [ ] No source change on the branch: git diff uat..lane/140 shows no code or asset change.\n- [ ] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1723, 18, 'activity', 'owner', NULL, 'estimate', '2026-10-19 03:18:21.873242+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1728, 209, 'activity', 'owner', NULL, 'created', '2026-10-19 03:18:21.923949+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1732, 210, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:18:21.968102+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 18, "value": "T-140"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1733, 18, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:18:21.968102+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 210, "value": "T-210"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1740, 213, 'activity', 'owner', NULL, 'created', '2026-10-19 03:18:22.044251+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1761, 15, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:25:12.005756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1762, 15, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:25:12.005756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 161, "value": "11 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1763, 15, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:25:12.005756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1764, 15, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:25:12.005756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 5, "value": "notifications"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1765, 15, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 03:25:12.005756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1770, 218, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:25:16.238467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 15, "value": "T-139"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1771, 15, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:25:16.238467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 218, "value": "T-218"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1738, 212, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:18:22.018927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 18, "value": "T-140"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1739, 18, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:18:22.018927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 212, "value": "T-212"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1741, 213, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:18:22.045633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 18, "value": "T-140"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1742, 18, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:18:22.045633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 213, "value": "T-213"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1743, 18, 'comment', 'owner', 'agent-ruled 2026-10-19, six decisions taken at planning (D140.1 to D140.6, in the plan doc): drive the installed builds read-only because every style at the three named gaps is byte-identical from the installed versions to uat head; ink gaps are the deliverable with node bounds as corroboration, because the countdown-name node is a band artefact on both phones and the XS sheet publishes no accessibility nodes; repeatability against row 137''s bounds replaces fresh pin controls; both schedules read on both phones; the tables script runs from git history, never committed.', NULL, '2026-10-19 03:18:31.281376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1744, 19, 'activity', 'owner', NULL, 'description', '2026-10-19 03:24:10.652844+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: an Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No target-language flash, no blank page. A launch that does not switch renders exactly the lines it renders today.\n\nWhere: stores/language.ts, stores/bootstrap.ts, app/index.tsx, shared/__mocks__/expo-updates.ts, their tests. The plan page (T-141) names the full mechanism from source before the fix.\n\nAcceptance:\n- [ ] stores/__tests__/rtlSwitch.test.ts: a fulfilled crossing reload leaves languageCommitBusyAtom true and pendingLanguageAtom set; a rejected reload clears both and calls hideReloadScreen\n- [ ] stores/__tests__/languageReloadFace.test.ts: Android shows the reload screen (root purple, loader spinner colour) before the reload and passes the same options to reloadAsync; iOS calls reloadAsync with no arguments and never shows the reload screen\n- [ ] stores/__tests__/bootstrap.test.ts and __tests__/app/index.test.tsx: a fresh handoff marker stands the loader before the first render; an absent or stale marker stands nothing; the first contentExists commit settles it\n- [ ] the existing suites (languageCommitGuards, languageConvergence, rtlReloadBound, LanguageLoader, _layout) pass unchanged\n- [ ] on the 3T, or the emulator with the substitution named in the record: both directions on both schedules read as one continuous loader face to the app, and the logcat timeline shows no content commit between the reload and the new context''s first render\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1745, 19, 'activity', 'owner', NULL, 'estimate', '2026-10-19 03:24:10.652844+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1746, 19, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:24:10.660072+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 157, "value": "7 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1747, 19, 'activity', 'owner', NULL, 'label_add', '2026-10-19 03:24:10.660072+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1748, 214, 'activity', 'owner', NULL, 'created', '2026-10-19 03:24:16.49239+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1751, 215, 'activity', 'owner', NULL, 'created', '2026-10-19 03:24:16.540909+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1755, 216, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:24:16.580464+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 19, "value": "T-141"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1756, 19, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:24:16.580464+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 216, "value": "T-216"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1766, 217, 'activity', 'owner', NULL, 'created', '2026-10-19 03:25:16.211704+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1769, 218, 'activity', 'owner', NULL, 'created', '2026-10-19 03:25:16.236778+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1772, 219, 'activity', 'owner', NULL, 'created', '2026-10-19 03:25:16.260906+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1773, 219, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:25:16.262304+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 15, "value": "T-139"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1774, 15, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:25:16.262304+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 219, "value": "T-219"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1779, 221, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:25:16.312183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 15, "value": "T-139"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1780, 15, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:25:16.312183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 221, "value": "T-221"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1782, 18, 'activity', 'owner', NULL, 'description', '2026-10-19 03:33:18.268851+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: measure each of the owner''s three named Arabic gap sites on both phones (the 3T and the iPhone XS), attribute each gap to the platform line box or to the layout, and bring the two options with exact numbers and blast radius. Investigation and recommendation only: no code, no pixel change, no install before the owner''s ruling.\n\nWhere: the Arabic prayer name above the countdown against the countdown itself (components/countdown/Countdown.tsx), the location against the date on both schedules (components/day/Day.tsx), the bottom sheet''s title against its subheading (components/sheets/parts/Header.tsx). Ground: row 137''s parity verdict and numbers, folded here by the owner''s order.\n\nAcceptance:\n- [ ] The record''s measured table carries, per named site per phone, every cell the instrument publishes - rendered line box, node gap, ink gap, code margin - and a named void in the row-120 form where the instrument publishes nothing (site 1''s name node on both phones, site 3''s nodes on the XS).\n- [ ] Each site carries one attribution line naming the platform line box or the layout, with the numbers that decide it.\n- [ ] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).\n- [ ] No source change on the branch: git diff uat..lane/140 shows no code or asset change.\n- [ ] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1794, 215, 'activity', 'owner', NULL, 'title', '2026-10-19 03:49:12.844032+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 2: The native cover module sustains the loader''s face across the Android restart"}, "from": {"value": "Step 2: The relaunched context stands the loader from a fresh handoff marker and settles it at first content"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1806, 15, 'comment', 'owner', 'Steps 1 and 2 landed on lane/139: every disabled dim on the sheet now sits at half its uat value, the dead styles are gone, and a press anywhere on a reminder''s header row toggles it, with the suites pinning each value and each press. Steps 3 to 5 (the store keeping reminder choices under an off athan, the sheet''s restore, the device pass) are still to come.', NULL, '2026-10-19 04:09:20.13502+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1749, 214, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:24:16.497047+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 19, "value": "T-141"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1750, 19, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:24:16.497047+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 214, "value": "T-214"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1754, 216, 'activity', 'owner', NULL, 'created', '2026-10-19 03:24:16.579012+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1776, 220, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:25:16.286962+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 15, "value": "T-139"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1777, 15, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:25:16.286962+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 220, "value": "T-220"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1752, 215, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:24:16.543255+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 19, "value": "T-141"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1753, 19, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:24:16.543255+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 215, "value": "T-215"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1757, 19, 'comment', 'owner', 'agent-ruled 2026-10-19: native spinner size small (24) is the nearest step to the loader''s 20, because expo-updates offers only 24, 48 and 72; the native cover fades out over 300 ms so the bundle-end-to-first-frame tail reads as one face; the new context stands the loader only on a fresh handoff marker so a launch without a switch stays byte-identical; the bump set is package.json and app.json because android/app/build.gradle is prebuild-generated and untracked; iOS keeps today''s exact call shape. Every ruling keeps Android on the iPhone contract with no new visual.', NULL, '2026-10-19 03:24:16.604966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1758, 15, 'activity', 'owner', NULL, 'description', '2026-10-19 03:25:11.99324+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.\n\nWhere: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.\n\nAcceptance:\n- [ ] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.\n- [ ] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.\n- [ ] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.\n- [ ] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.\n- [ ] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.\n- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1759, 15, 'activity', 'owner', NULL, 'type', '2026-10-19 03:25:11.99324+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}, "from": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1760, 15, 'activity', 'owner', NULL, 'estimate', '2026-10-19 03:25:11.99324+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "11"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1778, 221, 'activity', 'owner', NULL, 'created', '2026-10-19 03:25:16.310788+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1797, 15, 'comment', 'owner', 'Planned. The T-139 plan page on this issue carries the measured dim table (six live values halved, two dead styles deleted), the whole-header tap on the LabeledToggle pattern, and the preferences-backed restore. Five steps, weight 11. Three grill rounds ran; every finding is fixed in the plan.', NULL, '2026-10-19 03:57:38.184356+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1767, 217, 'activity', 'owner', NULL, 'parent', '2026-10-19 03:25:16.21354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 15, "value": "T-139"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1768, 15, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 03:25:16.21354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 217, "value": "T-217"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1775, 220, 'activity', 'owner', NULL, 'created', '2026-10-19 03:25:16.285634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1781, 18, 'comment', 'owner', '**grill findings** on the T-140 plan, 9 items. Each names the plan text it attacks and the fix.
+
+1. The ink instrument is not reproducible as written. "a PIL row-scan locates candidate ink bands in the named regions" names no region source (the countdown name''s node is the excluded band artefact, the XS sheet publishes no nodes at all), no ink predicate or threshold, no treatment of the home gradient, no band rule (a 1px gap split one text line in row 137''s vision read), and no shadow rule although the countdown name, digits and location all carry a 3/6 text shadow a luminance scan reads as ink. Fix: add a row-scan contract per site: the region rect and its source, the ink predicate with gradient and shadow handled, the minimum band height and merge gap, and who runs PIL (the executor''s script produces the band list, the vision worker only names bands).
+
+2. Acceptance criterion 1 cannot be met as written. "per named site per phone, the rendered line box, the node gap, the ink gap and the code margin" demands cells the plan itself voids: site 1''s name box on both phones (D140.2 artefact) and every node cell of site 3 on the XS (D140.3). Row 137''s only pixel reads there recorded "no clean gap to subtitle" on the XS sheet and a 14px merge/offset uncertainty on the 3T home shot. Fix: reword the criterion to carry each cell where the instrument publishes and a named void otherwise, and define the record''s fallback shape when a site''s ink read voids on one phone.
+
+3. The byte-for-byte proof is unsatisfiable on the home screens. "Two independent captures per screen must agree byte for byte" fails against the digits node, whose accessibility label reticks every second. Row 137 only ever compared recorded bounds, never a ticking label. Fix: scope the agreement to the named sites'' bounds and the static labels, comparing the digits node''s bounds only.
+
+4. The attribution''s decisive input has no source. "the overhang deltas the metric sets predict" is not computable: the row-137 tables script prints line heights only, no ascent or descent, and step 1 extends SIZES without extending the metric columns. Fix: extend the step-1 script to print ascent and descent per metric set and state the overhang formula (box top to baseline per set).
+
+5. The attribution rule cannot fire where the plan itself voids nodes. "with the node gap equal to the margin on both phones" is unreadable for site 1 (name node void on both phones) and for site 3 on the XS (whole sheet void), so neither site can take either branch of the rule. The margin arithmetic is also unstated: site 1 is marginBottom 3 with a translateY of minus 2 (expected gap 3 or 5?), site 3 is a 0 plus 6 sum. Fix: state the per-site expected node gap in dp, and add an attribution branch for node-void sites that predicts the overhang from the metric set row 137 matched (3T the bbox set, XS hhea).
+
+6. Option (b) does not say what gets pinned. "pin an ar lineHeight per surface family" enumerates no family and no member surface: does the Latin digits row (row 82) take an ar parity pin, the name only, the sheet title and subtitle both? The floor citation also contradicts the option: "the repo''s own scriptLineHeight pattern pins at 1.5em for exactly this reason" cites a pattern that exists for clamped-block pitch, and if ink wholeness needed 1.5em every 1.185em pin would fail its own floor. Fix: list the pin set as exact per-node numbers (name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17, the digits ruled in or out) and restate the floor from the measured ink heights.
+
+7. The blast radius leans on a sweep no step performs. "every ar consumer of that face and size, named from the sweep": no step sweeps, and row 137''s sweep counted lineHeight pins, not consumers of a face and size. Fix: add the sweep to a step, name its command (grep the ar faces and sizes across components/, seeded by the typography sweep test), and let step 5 cite its output.
+
+8. D140.1''s stated evidence is narrower than its ruling. "every style that sets the three named gaps is byte-identical... (git diff of the three components...)": the gaps also depend on shared/typography.ts, shared/constants.ts, the sheet part, the hosting screens and the TTFs. I verified the wider tree from both vehicle commits to uat: only Countdown''s UNIT_SIZE_SHARE differs among geometry-bearing files, so the ruling stands, but the plan''s stated check does not prove it. Fix: widen D140.1''s named diff to the full dependency set so a stranger can re-derive the ruling.
+
+9. The repeatability controls are post-hoc only. D140.4 catches drift only after a device session is spent: no step verifies the 3T''s panel density and font scale or the XS''s text size before reading, though row 137 recorded the panel and scale as its vehicle line. The plan also leaves the not-ar arrival branch undefined against its own "no settings change" invariant, and D140.4''s letter ("every surface row 137 already read") overpromises the step control lists, which re-read only four bounds per phone. Fix: add a pre-flight vehicle line to steps 2 and 3, state the stop rule when a phone arrives not in Arabic, and align D140.4''s wording with the steps'' control lists.', NULL, '2026-10-19 03:30:54.75879+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1783, 18, 'comment', 'owner', 'All nine findings applied at plan version 2: the row-scan contract is now per-site with region source, two-threshold predicate, band rule and the executor-script/vision-name split (1); the table criterion carries published cells plus row-120 voids and the one-phone-void fallback (2); capture agreement is scoped to named bounds and static labels, digits on bounds only (3); step 1 prints ascent and descent per set with the overhang cross-check formula (4); per-site expected node gaps are in dp and the node-void attribution branch runs the margin-plus-box model (5); the pin set is enumerated per node with the digits variant and the floor is the measured ink plus 1px, the 1.5em claim dropped (6); the face-and-size sweep is step 1''s third output with its command (7); D140.1 now cites the full geometry-bearing diff from both vehicle commits, re-verified (8); steps 2 and 3 carry pre-flight vehicle lines, D140.7 governs a not-ar arrival, D140.4''s list matches the control lists (9).', NULL, '2026-10-19 03:33:18.294873+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 1781, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1784, 18, 'activity', 'owner', NULL, 'status', '2026-10-19 03:33:33.969379+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1785, 18, 'comment', 'owner', 'Planning done: the plan doc T-140 carries the goal, seven agent-ruled decisions, five steps at weight 9, and the grill round''s nine findings applied. The ticket is Ready for execution.', NULL, '2026-10-19 03:33:34.003898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1786, 18, 'activity', 'owner', NULL, 'status', '2026-10-19 03:34:40.6598+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1787, 18, 'comment', 'owner', '### Step 1 record: the expectation, margin and sweep table
+
+**The metric table.** Row 137''s script restored from 6ff7364d into session scratch, extended: SIZES now 14, 16, 17, 18, 22, 24, and every metric set prints its ascent and descent in em (win and bbox split their line exactly; hhea and typo carry no gap in Rubik, Roboto''s typo gap prints where nonzero), so the baseline position inside each candidate box is on the record. Run at the worktree root against the shipped TTFs; unrounded/nearest-integer layout pixels, scales 2.625 the 3T and 3 the XS. Verbatim output:
+
+```
+file assets/fonts/Rubik-Regular.ttf (Regular)
+  hhea line 1.1850em asc 0.9350 desc 0.2500
+  typo line 1.1850em asc 0.9350 desc 0.2500
+  win  line 1.5320em asc 1.0660 desc 0.4660
+  bbox line 1.5540em asc 1.0760 desc 0.4780
+  size 14 3T scale 2.625: hhea=43.55/44px typo=43.55/44px win=56.30/56px bbox=57.11/57px
+  size 14 XS scale 3.0: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=65.27/65px
+  size 16 3T scale 2.625: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=65.27/65px
+  size 16 XS scale 3.0: hhea=56.88/57px typo=56.88/57px win=73.54/74px bbox=74.59/75px
+  size 17 3T scale 2.625: hhea=52.88/53px typo=52.88/53px win=68.37/68px bbox=69.35/69px
+  size 17 XS scale 3.0: hhea=60.44/60px typo=60.44/60px win=78.13/78px bbox=79.25/79px
+  size 18 3T scale 2.625: hhea=55.99/56px typo=55.99/56px win=72.39/72px bbox=73.43/73px
+  size 18 XS scale 3.0: hhea=63.99/64px typo=63.99/64px win=82.73/83px bbox=83.92/84px
+  size 22 3T scale 2.625: hhea=68.43/68px typo=68.43/68px win=88.47/88px bbox=89.74/90px
+  size 22 XS scale 3.0: hhea=78.21/78px typo=78.21/78px win=101.11/101px bbox=102.56/103px
+  size 24 3T scale 2.625: hhea=74.66/75px typo=74.66/75px win=96.52/97px bbox=97.90/98px
+  size 24 XS scale 3.0: hhea=85.32/85px typo=85.32/85px win=110.30/110px bbox=111.89/112px
+file assets/fonts/Rubik-Medium.ttf (Medium)
+  hhea line 1.1850em asc 0.9350 desc 0.2500
+  typo line 1.1850em asc 0.9350 desc 0.2500
+  win  line 1.5320em asc 1.0660 desc 0.4660
+  bbox line 1.5810em asc 1.0880 desc 0.4930
+  size 14 3T scale 2.625: hhea=43.55/44px typo=43.55/44px win=56.30/56px bbox=58.10/58px
+  size 14 XS scale 3.0: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=66.40/66px
+  size 16 3T scale 2.625: hhea=49.77/50px typo=49.77/50px win=64.34/64px bbox=66.40/66px
+  size 16 XS scale 3.0: hhea=56.88/57px typo=56.88/57px win=73.54/74px bbox=75.89/76px
+  size 17 3T scale 2.625: hhea=52.88/53px typo=52.88/53px win=68.37/68px bbox=70.55/71px
+  size 17 XS scale 3.0: hhea=60.44/60px typo=60.44/60px win=78.13/78px bbox=80.63/81px
+  size 18 3T scale 2.625: hhea=55.99/56px typo=55.99/56px win=72.39/72px bbox=74.70/75px
+  size 18 XS scale 3.0: hhea=63.99/64px typo=63.99/64px win=82.73/83px bbox=85.37/85px
+  size 22 3T scale 2.625: hhea=68.43/68px typo=68.43/68px win=88.47/88px bbox=91.30/91px
+  size 22 XS scale 3.0: hhea=78.21/78px typo=78.21/78px win=101.11/101px bbox=104.35/104px
+  size 24 3T scale 2.625: hhea=74.66/75px typo=74.66/75px win=96.52/97px bbox=99.60/100px
+  size 24 XS scale 3.0: hhea=85.32/85px typo=85.32/85px win=110.30/110px bbox=113.83/114px
+file assets/fonts/Roboto-Regular.ttf (Roboto-Regular)
+  hhea line 1.1719em asc 0.9277 desc 0.2441
+  typo line 1.0498em asc 0.7500 desc 0.2500 gap 0.0498
+  win  line 1.2002em asc 0.9502 desc 0.2500
+  bbox line 1.3271em asc 1.0562 desc 0.2710
+  size 14 3T scale 2.625: hhea=43.07/43px typo=38.58/39px win=44.11/44px bbox=48.77/49px
+  size 14 XS scale 3.0: hhea=49.22/49px typo=44.09/44px win=50.41/50px bbox=55.74/56px
+  size 16 3T scale 2.625: hhea=49.22/49px typo=44.09/44px win=50.41/50px bbox=55.74/56px
+  size 16 XS scale 3.0: hhea=56.25/56px typo=50.39/50px win=57.61/58px bbox=63.70/64px
+  size 17 3T scale 2.625: hhea=52.29/52px typo=46.85/47px win=53.56/54px bbox=59.22/59px
+  size 17 XS scale 3.0: hhea=59.77/60px typo=53.54/54px win=61.21/61px bbox=67.68/68px
+  size 18 3T scale 2.625: hhea=55.37/55px typo=49.60/50px win=56.71/57px bbox=62.71/63px
+  size 18 XS scale 3.0: hhea=63.28/63px typo=56.69/57px win=64.81/65px bbox=71.67/72px
+  size 22 3T scale 2.625: hhea=67.68/68px typo=60.63/61px win=69.31/69px bbox=76.64/77px
+  size 22 XS scale 3.0: hhea=77.34/77px typo=69.29/69px win=79.21/79px bbox=87.59/88px
+  size 24 3T scale 2.625: hhea=73.83/74px typo=66.14/66px win=75.61/76px bbox=83.61/84px
+  size 24 XS scale 3.0: hhea=84.38/84px typo=75.59/76px win=86.41/86px bbox=95.55/96px
+```
+
+**The expected-gap table** (code margins under locale ar; the margins are dp, platform-independent, so any cross-platform node-gap delta above them is the platform line box, not the layout):
+
+| Site | Pair | Code margin | Node gap | 3T px (x 2.625) | XS pt (x 1) |
+| --- | --- | --- | --- | --- | --- |
+| 1 | name above countdown | name marginBottom SPACING.xxs+1 = 3dp (Countdown.tsx:117) | 3 dp | 7.88 | 3 |
+| 2 | location above date | location marginBottom SPACING.sm = 8dp under ar (Day.tsx:77) | 8 dp | 21.00 | 8 |
+| 3 | sheet title above subtitle | title marginBottom 0 under ar (Header.tsx:68) plus subtitle marginTop SPACING.py = 6dp under ar (Header.tsx:74) | 6 dp | 15.75 | 6 |
+
+Site 1 also carries transform translateY -2 on the name: the node gap stays 3dp while the name''s box and ink ride up 2dp inside the margin band, so the expected ink gap is 1dp (2.63px 3T, 1pt XS) where the platform adds nothing of its own.
+
+**The sweep.** All 23 grep hits (`TEXT.sizeSmall|TEXT.size)|ty.size(22)|countdownSize` over components/), each read to its rendered face and size under ar via the ARABIC record (Regular/Medium/digits RowTime faces as noted; size(n)=n; countdownSize 24):
+
+| Component:line | Surface | Face | Size | Site |
+| --- | --- | --- | --- | --- |
+| Countdown.tsx:116 | countdown prayer name, home Standard+Extras | Rubik-Regular | 17 | site 1 (name) |
+| Countdown.tsx:126 | countdown waiting word | Rubik-Medium | 24 | site 1 (countdown side) |
+| Countdown.tsx:145 | countdown digit groups, timer row | Rubik-Medium | 24 | site 1 (countdown side) |
+| Countdown.tsx:154 | countdown unit letters, nested in the digit groups | Rubik-Medium | 22.8 | site 1 (inside the digits row; 24 x 0.95, inherits familyDigits) |
+| Day.tsx:75 | schedule location, Standard+Extras | Rubik-Regular | 16 | site 2 (location) |
+| Day.tsx:82 | schedule date, Standard+Extras | Rubik-Regular | 18 | site 2 (date) |
+| Header.tsx:64 | bottom sheet title (Settings sheet) | Rubik-Medium | 22 | site 3 (title) |
+| Error.tsx:67 | error screen subtext | Rubik-Regular | 18 | OTHER |
+| InitialWidthMeasurement.tsx:52 | hidden width-measure text (opacity 0) | Rubik-Regular | 18 | OTHER |
+| LanguageLoader.tsx:43 | language loading line | Rubik-Regular | 18 | OTHER |
+| ColorPicker.tsx:284 | color picker sheet title | Rubik-Medium | 18 | OTHER |
+| SoundItem.tsx:163 | sound item countdown preview | Rubik-Regular | 16 | OTHER |
+| Time.tsx:102 | prayer row time | Rubik-Regular | 18 | OTHER |
+| Time.tsx:108 | prayer row time part | Rubik-Regular | 18 | OTHER |
+| Explanation.tsx:135 | explanation sheet title | Rubik-Medium | 18 | OTHER |
+| Explanation.tsx:140 | explanation body (scriptLineHeight pin 24) | Rubik-Regular | 16 | OTHER |
+| Prayer.tsx:110 | prayer row name/time text | Rubik-Regular | 18 | OTHER |
+| Update.tsx:54 | update modal message | Rubik-Regular | 16 | OTHER |
+| Update.tsx:89 | update modal cancel button | Rubik-Medium | 16 | OTHER |
+| Update.tsx:94 | update modal update button | Rubik-Medium | 16 | OTHER |
+| WhatsNew.tsx:115 | what''s-new item title | Rubik-Medium | 16 | OTHER |
+| WhatsNew.tsx:142 | what''s-new button | Rubik-Medium | 16 | OTHER |
+| Help.tsx:297 | help modal button | Rubik-Medium | 16 | OTHER |
+
+Completeness note for step 5''s record-scoped blast radius: size 14 is a measured size (the sheet subtitle''s pair member) consumed through the sizeDetail token, which the plan''s four grep patterns do not cover. Census under ar: Rubik-Regular 14 has 21 consumers (Settings 272, 289; Sound 237; Alert 288, 325; Language 107, 137; ReminderCard 115; ColorPicker 203, 222; SoundItem 155; Header 71, the site 3 subtitle; VolumeNote 38, pinned 21; Stepper 143; Ago 66; WhatsNew 84, 121; Qibla 196, 228, 234; LabeledToggle 51) and Rubik-Medium 14 has 7 (Settings 227; Alert 277; ReminderCard 104; Stepper 124, 138; Qibla 203, 209). A subtitle pin at 14 touches every Regular-14 row named here. sizeDetail-1 (13) consumers are not measured sizes and stay outside.
+
+**Verification.** The size-14 and size-22 line-height cells reproduce 6ff7364d''s EXPECTATIONS.md byte for byte (machine diff over all eight shared Rubik rows, zero deltas): Regular 14 3T hhea=43.55/44 typo=43.55/44 win=56.30/56 bbox=57.11/57; Regular 14 XS 49.77/50, 49.77/50, 64.34/64, 65.27/65; Medium 22 3T 68.43/68, 68.43/68, 88.47/88, 91.30/91; Medium 22 XS 78.21/78, 78.21/78, 101.11/101, 104.35/104.
+
+**Worktree clean.** `git status --porcelain` on lane/140 (at uat head 91dafe2d): empty. `git diff uat..lane/140` over components/, shared/, app/, assets/: no change. Artifacts live in session scratch only; nothing committed, nothing pushed.', NULL, '2026-10-19 03:42:21.671046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-19 03:44:12.999+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1788, 18, 'activity', 'owner', NULL, 'comment_edited', '2026-10-19 03:44:13.001761+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1789, 209, 'activity', 'owner', NULL, 'status', '2026-10-19 03:44:19.010796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1790, 18, 'comment', 'owner', 'Step 2, the 3T readings (T-210). All four repeatability controls reproduce exactly; the record follows.
+
+Vehicle (3T_SERIAL, verbatim): build ONEPLUS A3003_28_191104; versionName=2.0.1079 (found, not 2.0.908); wm size 1080x1920; wm density 420; font_scale 1.0; app language found en, D140.7 applied.
+
+Vehicle note: the found 2.0.1079 sits on the uat line inside D140.1''s verified-equivalent span (9dd4eb6a 2.0.908 -> uat head 2.0.1108); the only site-file delta is the UNIT_SIZE_SHARE 0.9->0.95 change D140.1 itself adjudicated as moving no margin and no line box. No install was made (read-only discipline); the four controls passing at exact values are the empirical check of that equivalence.
+
+Language note (D140.7): arrived en (home face read Fajr / London, UK). Switched the app''s own language to العربية in Settings, measured, then restored English and verified the face (Fajr / London, UK). No OS setting touched. No What''s New popup appeared.
+
+Standard home (ar):
+- Day location لندن، المملكة المتحدة [597,391][1038,458] h=67px
+- Day date الاثنين، 19 أكتوبر 2026 [597,479][1038,554] h=75px (reads Gregorian today, not hijri جمادى; geometry-irrelevant per the plan''s risk note, recorded under this string)
+- Countdown word node: الفجر [0,123][1080,150] h=27px, full-width band artefact as standing (D140.2)
+- Countdown digits: timer row container [0,163][1080,264] h=101px, digit groups [417,163][496,264] and [527,163][662,264] (Latin groups 1h / 12m; label reticks)
+
+Extras home (ar), reached by one rightward drag (137''s RTL route fact), verified by row labels نصف الليل، آخر ثلث، السحور، الضحى:
+- Day location لندن، المملكة المتحدة [597,391][1038,458] h=67px
+- Day date الاثنين، 19 أكتوبر 2026 [597,479][1038,554] h=75px
+- Countdown word node: السحور [0,123][1080,150] h=27px, full-width band artefact again
+- Countdown digits: timer row container [0,163][1080,264], digit group [472,163][607,264] (51m)
+
+Settings sheet (ar, default snap):
+- Title الإعدادات [743,453][986,546] h=93px
+- Subtitle اضبط تفضيلاتك [743,561][986,619] h=58px
+
+Controls (row 137, within 1px): location 67/67 pass; date 75/75 pass; sheet title 93/93 pass; sheet subtitle 58/58 pass.
+
+Two-capture agreement: two independent maestro hierarchy captures per screen agree byte for byte on every recorded bound and static label; the digits nodes agree on bounds only, their labels reticking between captures (1h 12m -> 1h 11m; 51m -> 50m) as expected.
+
+Left as found: language en restored, app in foreground at the Standard home face, sheet closed with one BACK. Captures in session scratch ($HOME/athan-gitree/sessions/140/: 3t-std/extras/sheet hier-a/b.json + png), never in git. No commits.', NULL, '2026-10-19 03:48:10.640278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1791, 210, 'activity', 'owner', NULL, 'status', '2026-10-19 03:48:16.47737+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1792, 19, 'activity', 'owner', NULL, 'description', '2026-10-19 03:49:12.789042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: an Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No target-language flash, no blank page. A launch that does not switch renders exactly the lines it renders today.\n\nWhere: stores/language.ts, modules/switchcover (new, first-party Android module), device/switchCover.ts (new), shared/i18n/index.ts, components/ui/LanguageLoader.tsx, app/index.tsx, the touched suites. The plan page (T-141) names the full mechanism from source before the fix.\n\nAcceptance:\n- [ ] stores/__tests__/rtlSwitch.test.ts: a fulfilled crossing reload leaves languageCommitBusyAtom true and pendingLanguageAtom set after the commit resolves; a rejected reload clears both and clears the marker; a second commit after a rejected one runs to its own reload\n- [ ] stores/__tests__/languageReloadFace.test.ts: on Android the cover is shown before reloadAsync carrying the loader''s purple, spinner colour, size and the target line string, and hidden on a rejected reload; on iOS reloadAsync is called with no arguments and the cover is never shown; __tests__/app/index.test.tsx: the first-content effect hides the cover once\n- [ ] stores/__tests__/languageConvergence.test.ts and stores/__tests__/rtlSwitch.test.ts reset busy and pending in their beforeEach, and every existing assertion outside the changed contract still passes\n- [ ] node scripts/check-changed-coverage.js covers every touched line, and the mutation pass (latch, platform gate, idempotence guards) is caught by failing tests\n- [ ] on the 3T, or the emulator with the substitution named in the record: both directions on both schedules read as one continuous loader face to the app, with the logcat timeline on lines the release build emits showing no content commit between the reload and the new context''s first render\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1793, 214, 'activity', 'owner', NULL, 'title', '2026-10-19 03:49:12.816992+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 1: The commit path holds the loader through a fulfilled reload (the latch)"}, "from": {"value": "Step 1: The commit path holds the loader through a fulfilled reload and covers Android with the native reload screen"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1795, 19, 'comment', 'owner', 'agent-ruled 2026-10-19, superseding the ruling above after the plan''s first grill round: expo-updates is disabled in every build this repo ships (the prebuilt manifest sets its ENABLED flag false), so its reload screen cannot exist here and the ruling''s size and fade points are void. The cover is a first-party Android module on the modules/tls13 pattern, fed the loader''s own purple, spinner colour, size and line string, so the switch sustains one face with no new visual. The new context stands nothing; the cover hides at the first content commit. The bump set stands: package.json and app.json, because android/app/build.gradle is prebuild-generated and untracked. Every ruling keeps Android on the iPhone contract.', NULL, '2026-10-19 03:49:12.904779+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 1757, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1796, 15, 'activity', 'owner', NULL, 'status', '2026-10-19 03:57:38.152125+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1798, 15, 'activity', 'owner', NULL, 'status', '2026-10-19 03:57:45.531396+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1799, 217, 'activity', 'owner', NULL, 'status', '2026-10-19 04:07:24.467426+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1802, 19, 'activity', 'owner', NULL, 'status', '2026-10-19 04:08:16.367987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1803, 19, 'comment', 'owner', 'Plan T-141 is up, grilled twice, and the ticket is Ready: three steps (the latch, the native cover module, the device read), 7 points. The plan names the mechanism first - the finally clears the loader when reloadAsync fulfills before the restart, the remounted target-language screens paint uncovered, and the restart span shows the bare root purple because updates is disabled and no shipped cover exists here.', NULL, '2026-10-19 04:08:16.402205+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1862, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.748513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 223, "value": "T-223"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1800, 15, 'activity', 'owner', NULL, 'description', '2026-10-19 04:07:24.49591+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.\n\nWhere: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.\n\nAcceptance:\n- [x] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.\n- [ ] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.\n- [ ] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.\n- [ ] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.\n- [ ] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.\n- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1801, 19, 'activity', 'owner', NULL, 'description', '2026-10-19 04:08:08.371001+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: an Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No target-language flash, no blank page. A launch that does not switch renders exactly the lines it renders today.\n\nWhere: stores/language.ts, modules/switchcover (new, first-party Android module), device/switchCover.ts (new), shared/i18n/index.ts, components/ui/LanguageLoader.tsx, app/index.tsx, the touched suites. The plan page (T-141) names the full mechanism from source before the fix.\n\nAcceptance:\n- [ ] stores/__tests__/rtlSwitch.test.ts: a fulfilled crossing reload leaves languageCommitBusyAtom true and pendingLanguageAtom set after the commit resolves; a rejected reload clears both and clears the marker; a second commit after a rejected one runs to its own reload\n- [ ] stores/__tests__/languageReloadFace.test.ts: on Android the cover is shown before reloadAsync carrying the loader''s purple, spinner colour, size, the #fff line colour and the target line string, and hidden on a rejected reload; on iOS reloadAsync is called with no arguments and the cover is never shown; __tests__/app/index.test.tsx: the first-content effect hides the cover once\n- [ ] stores/__tests__/languageConvergence.test.ts and stores/__tests__/rtlSwitch.test.ts reset busy and pending in their beforeEach, and every existing assertion outside the changed contract still passes\n- [ ] node scripts/check-changed-coverage.js covers every touched line, and the mutation pass (latch, platform gate, idempotence guards) is caught by failing tests\n- [ ] on the 3T, or the emulator with the substitution named in the record: both directions on both schedules read as one continuous loader face to the app, with the logcat timeline on the mock build''s Pino lines and the native restart reason showing no content commit between the reload and the new context''s first render (a prod build emits no Pino lines)\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1804, 218, 'activity', 'owner', NULL, 'status', '2026-10-19 04:09:12.406633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1805, 15, 'activity', 'owner', NULL, 'description', '2026-10-19 04:09:20.104552+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.\n\nWhere: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.\n\nAcceptance:\n- [x] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.\n- [x] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.\n- [ ] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.\n- [ ] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.\n- [ ] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.\n- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1809, 219, 'activity', 'owner', NULL, 'status', '2026-10-19 04:23:45.327535+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1807, 18, 'comment', 'owner', 'Step 3, the XS readings (T-211). Vehicle: iPhone XS (IPHONE_UDID), iOS 18.7.10, panel 375x812pt at 3x, com.example.athan **2.0.1081** verbatim - moved from row 137''s 2.0.939; its commit 08253a56, and the diff 08253a56..uat over components/, shared/, app/, assets/fonts/ touches no site file (five files, all comment-text pronoun purges), so the vehicle sits inside the D140.1 equivalence span and the controls decided. Language round-trip per D140.7: found en, switched the app''s own preference to العربية, measured, restored en and verified from the home face.
+
+Standard (ar): day location ''لندن، المملكة المتحدة'' StaticText (193.67, 169.00) 165.33x19.00 [57.00px]; day date ''الاثنين، 19 أكتوبر 2026'' StaticText (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''الفجر'' StaticText (0.00, 58.00) 375.00x20.33 [60.99px]; countdown digits ''47m'' container Other (0.00, 83.33) 375.00x28.67 [86.01px] with outer wrapper Other (0.00, 83.33) 375.00x44.67 [134.01px]. Node gaps: location-to-date 8.00pt (= the 8dp code margin); word-band-to-digits 5.00pt raw.
+
+Extras (ar): location (193.67, 169.00) 165.33x19.00 [57.00px]; date (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''السحور'' band (0.00, 58.00) 375.00x20.33 [60.99px]; digits ''26m'' container (0.00, 83.33) 375.00x28.67 [86.01px] (outer 375.00x44.67 [134.01px]). Node gaps identical to Standard: 8.00pt and 5.00pt raw.
+
+Band artefact: the countdown word node is a full-width 375.00pt band on both pages, unchanged from row 137 - D140.2 stands, ink is the site-1 deliverable. Sheet void: the ar settings sheet tree carries 7 nodes, all chrome - backdrop (x2), handle (x3), ''Bottom Sheet'' container (0.00, 160.80) 375.00x651.20 - zero content nodes; the standing void is re-proven and xs-sheet.png is the site-3 authority.
+
+Controls vs row 137, all within 1px: location 57.00px vs 57 (+0.00) PASS; date 63.99 vs 64 (-0.01) PASS; countdown word 60.99 vs 61 (-0.01) PASS; digits container 86.01 vs 86 (+0.01) PASS. Two-capture agreement: per screen the two independent snapshots agree on every bound and every static label (full node sets equal); digits nodes compared on bounds, identical, their label holding 47m/26m across each pair. The date string held across all four captures, so no day-roll confound.
+
+Instrument notes: the RTL pager flipped on a rightward fling only (a slow rightward pan did not move it); sheets publish no nodes on this phone, so the language switch was navigated by screenshot reads. Captures live in session scratch (xs-std/extras/sheet trees and pngs), never git; no repo commits, no installs, the phone left on Standard in en as found.', NULL, '2026-10-19 04:11:24.319957+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1808, 211, 'activity', 'owner', NULL, 'status', '2026-10-19 04:11:28.070588+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1810, 214, 'activity', 'owner', NULL, 'status', '2026-10-19 04:27:09.832105+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1811, 220, 'activity', 'owner', NULL, 'status', '2026-10-19 04:34:55.795145+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1812, 15, 'comment', 'owner', 'Steps 3 and 4 landed on lane/139 (2.0.1111, then 2.0.1113 after renumbering past a concurrent lane''s 2.0.1112). The store now keeps each reminder''s choice while its athan is Off, and turning the athan back on restores the reminders to their pre-off state, on screen and in preferences, in the same session and across a close and reopen. The off close never prompts for permission. The suites pin the preservation, the restore, the unchanged close and the denied-permission path, red before green, with a mutation pass on the restore transition and the commit''s state substitution. Left for the ticket: step 5, the device pass on the harness emulator.', NULL, '2026-10-19 04:34:55.844199+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1813, 15, 'activity', 'owner', NULL, 'description', '2026-10-19 04:35:10.991786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.\n\nWhere: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.\n\nAcceptance:\n- [x] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.\n- [x] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.\n- [x] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.\n- [x] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.\n- [x] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.\n- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1814, 215, 'activity', 'owner', NULL, 'status', '2026-10-19 04:37:04.022769+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1815, 19, 'comment', 'owner', 'Steps 1 and 2 landed: 2.0.1112 holds the loader through a fulfilled reload (the per-invocation latch), and 2.0.1114 adds the Android switch cover module, its JS wrapper, the show-before-reload and hide-on-refusal wiring, and the lift at the first content commit. Both commits carry their red-first runs, full coverage and the mutation pass. One deviation from the plan''s file list: rtlReloadBound.test.ts also resets busy and pending in its beforeEach, because its fourth test was silently passing by refusal once crossings held the atoms. Step 3, the device read, remains.', NULL, '2026-10-19 04:37:09.561532+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1816, 18, 'comment', 'owner', 'Step 4, the ink reads (T-212). Two rungs per the contract: rowscan-140.py produced the two-threshold bands (strong >80/255, weak 25-80, bridge under 3 failing rows, fragments under 6px flagged), the vision worker named every band from the same crops. Zero false bands; every band is real rendered content. Two corrections it made: the scan''s y values are shot-frame (crop-local = minus the rect origin; gaps unaffected), and the XS sheet band 1''s bottom row is the header''s gear icon, not title ink (the title''s own lowest ink is 11px higher). Both weak-only bands are the sheet subtitle''s dim ink (rgb(65,104,153), luminance 99 under the strong threshold), real text. The std and extras site-2 crops are byte-identical on each phone: the location-date pair renders identical geometry on both schedules, so the site-2 row reads once per phone.
+
+The ink table (shot-frame px; ink gap = lower ink top minus upper ink bottom, the same subtraction on both phones):
+
+| Site | Ink | 3T (x2.625) | XS (x3) |
+| --- | --- | --- | --- |
+| 1 name above countdown, Standard | word ink 94-138, digits ink 187-231; gap 49px = 18.7dp | word ink 184-233, digits ink 267-317; gap 34px = 11.3dp |
+| 1 Extras | gap 49px = 18.7dp (word السحور, digits 50m) | gap 34px = 11.3dp (26m) |
+| 2 location above date, Standard and Extras | location ink 405-442, date ink 489-542; gap 47px = 17.9dp | location ink 515-558, date ink 592-651; gap 34px = 11.3dp |
+| 3 sheet title above subtitle | title ink 473-531 (hamza under إ lowest), subtitle ink 573-607; gap 42px = 16.0dp | title text ink 567-632 (hamza lowest; gear icon excluded), subtitle ink 660-698; gap 28px = 9.3dp |
+
+Site 3 carries a second defensible endpoint (title body without the hamza): 3T 56px, XS 44px; the hamza variant is the record''s number because the hamza is real title ink. Site 1''s word is confirmed centered and unstretched on both phones (ink aspect 0.450 3T against 0.447 XS, every element scaling 0.88-0.90 = the panels'' 0.875 ratio).
+
+Proof: every ink band sits inside its node bound where both exist - 3T location 405-442 in box 391-458, date 489-542 in 479-554, title 473-531 in 453-546, subtitle 573-607 in 561-619, digits 187-231 in 163-264; XS location 515-558 in 507-564, date 592-651 in 588-652, digits 267-317 in 250-336. Ink under box holds on every readable pair. Crops and rowscan output in session scratch, never git.', NULL, '2026-10-19 04:49:41.004614+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1817, 212, 'activity', 'owner', NULL, 'status', '2026-10-19 04:49:41.079706+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1818, 19, 'comment', 'owner', 'Step 3 is blocked at the build: the first Android compile of the switchcover module fails on two Kotlin type errors in SwitchCoverModule.kt (a Double reaching setTextSize''s Float parameter, and the zero-argument hide lambda''s bare return against the Any? that overload expects), so no APK carrying the cover exists to read on glass. No earlier gate compiled the Kotlin, because the JS wrapper no-ops while the module is absent and every Jest suite passes. Nothing else moved: the worktree stands at the step 2 head, the module autolinks cleanly, and the read resumes unchanged once a compiling module lands.', NULL, '2026-10-19 04:59:02.439536+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1819, 18, 'comment', 'owner', 'Step 5 stopped at the re-derivation gate: T-213 stays in Backlog, no record posted.
+
+All attribution reconciliations close by subtraction against the record comments: site 2 exact on both phones (3T node gap 479-458 = 21px = the 8dp margin, comment 1790 against 1787; ink 21+16+10 = 47 against the measured 47; XS 196-169-19 = 8pt, ink 24+6+4 = 34 against 34, comments 1807 and 1816), site 1 within 0.125px (13.125+24+12 = 49.125 against 49; XS 15+17+2 = 34 exact), site 3 exact on the 3T (15+15+12 = 42) and within 0.5px on the XS model (18+0.5+10 = 28.5 against 28), and the worked cross-check predicts 441.5 against the measured 442. Every pin floor also re-derives (17.1 / 14.5 / 20.6 / 22.5 / 13.3dp from comment 1816''s ink bands).
+
+Two option-(B) numbers fail the same gate. First, the digits-variant clearance stated 6.9dp derives as 10.9dp: the pin is 28dp (round(1.185 x 24), the plan''s own hhea-parity rule) over the 17.1dp floor (digits ink 187-231 = 45px at 2.625, comment 1816), so 28 - 17.1 = 10.9, a 4.0dp miss. Second, the ruled-in site-1 prediction of about 32px carries the gloss the-XS-gaps-x-0.875, which yields 29.75px (34 x 0.875); 32 closes only as 13.125 + 17 + 2 (the 3T margin term plus the XS overhangs), 2.25px from its own gloss.
+
+The step re-dispatches with the clearance corrected to 10.9dp and the 32px prediction''s model named; every other drafted number re-derives exactly.', NULL, '2026-10-19 05:07:22.872221+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1820, 18, 'comment', 'owner', 'Step 5, the attribution and options record (T-213). Every reconciliation below was re-derived by subtraction and independently re-verified at comment 1819; its two corrections (the digits clearance 10.9dp, the ruled-in site-1 prediction 29.75px) are folded in here.
+
+**The measured table.** Sources: boxes and margins 1787 + 1790 + 1807, ink 1816.
+
+| Site | Phone | Line boxes (matched set) | Node gap | Ink gap | Code margin |
+| --- | --- | --- | --- | --- | --- |
+| 1 name above countdown | 3T | name VOID (band artefact, 1790); digits box 101px = bbox 100 +1 | VOID (name node) | 49px = 18.7dp | 3dp + translateY 2dp |
+| 1 Extras | 3T | same | VOID | 49px = 18.7dp | same |
+| 1 | XS | name VOID (band, 1807); digits container 86px = hhea 85 +1 | VOID (name node) | 34px = 11.3dp | same |
+| 2 location above date | 3T | location 67px = bbox 65 +2; date 75px = bbox 73 +2 | 21px = 8.00dp | 47px = 17.9dp | 8dp |
+| 2 | XS | location 57px = hhea 57 exact; date 64px = hhea 64 exact | 8.00pt = 8dp | 34px = 11.3dp | 8dp |
+| 3 sheet title above subtitle | 3T | title 93px = bbox 91 +2; subtitle 58px = bbox 57 +1 | 15px = 5.71dp | 42px = 16.0dp | 6dp |
+| 3 | XS | both VOID (sheet AX void, 1807); hhea predicts 66 and 50px | VOID | 28px = 9.3dp | 6dp |
+
+Site 2 read once per phone: the Standard and Extras captures are byte-identical at this pair (1816). Site 1''s Extras reads match its Standard on both phones.
+
+**The attribution, one line per site.** Site 2 (full-node route): the node gap equals the code margin on both phones (8.00dp exactly, 1790 and 1807), and the ink gap decomposes with zero residual - 3T 21 + 16 (location box 458 minus ink 442) + 10 (date ink 489 minus box 479) = 47; XS 24 + 6 (564 - 558) + 4 (592 - 588) = 34. Site 1 (node-void route, the margin-plus-box model): the layout term is 13.125px on the 3T (margin 3dp + translateY 2dp) and 15px on the XS; the digits'' top overhang is 24px on the 3T (ink 187, box 163) and 17px on the XS (ink 267, container 250); the name''s bottom overhang is 12px on the 3T against a modelled box bottom of 149.9 (163 - 7.875 - 5.25; modelled, its node is the artefact) and about 2px on the XS (box bottom about 235, ink 233); the sums close at 49.125 against 49 and 34 against 34. Site 3: the 3T node route closes exactly (15 + 15 (title box 546 minus hamza ink 531) + 12 (subtitle ink 573 minus box 561) = 42); the XS model closes within 0.5px (18 + about 0.5 + about 10 = 28.5 against 28). The metric cross-check holds: carrying the XS-measured ink-to-baseline distance (location: 6.1px below baseline at hhea) across at the 0.875 ratio predicts the 3T ink bottom at 441.5 against the measured 442, and the same construction lands within 2px at every site. VERDICT: the layout contributes identical margins on both phones at all three sites, so every cross-platform gap delta is the platform line box - site 1 +7.4dp, site 2 +6.6dp, site 3 +6.7dp, Android running 1.6 to 1.7x the iPhone gap. No site shows a layout defect.
+
+**Option (a), accept the platform box (row 87''s law unchanged).** Zero files, zero risk. The standing Android-against-iPhone ink gaps: 18.7 against 11.3, 17.9 against 11.3, 16.0 against 9.3dp.
+
+**Option (b), pin an ar lineHeight per surface family, component-scoped.** Pins at hhea parity, round(1.185 x size), each over its measured floor (the 3T ink height from 1816) with its clearance: name 17 to 20 (floor 17.1, clearance 2.9dp); location 16 to 19 (14.5, 4.5); date 18 to 21 (20.6, 0.4dp, the tight one, 1px at scale); title 22 to 26 (22.5, 3.5); subtitle 14 to 17 (13.3, 3.7). Digits variant 24 to 28 (floor 17.1, clearance 10.9dp). Ruled in, every site converges to the XS geometry: predicted 3T ink gaps of 29.75px (site 1), 29.75px (site 2) and 24.5px (site 3), each the XS gap x 0.875; ruled out, the digits'' 24px top overhang stays and site 1 lands near 37px. The XS renders exactly these hhea boxes today and clips nothing (1816''s ink-under-box proof); the ruling ticket still render-tests on glass before landing, because baseline seating under a pin is the platform stack''s call. Blast radius, from 1787''s sweep: component-scoped touches Countdown.tsx (name; digits if ruled in), Day.tsx (location, date), Header.tsx (title, subtitle) and nothing else. Record-scoped (pins keyed by face and size in the ar typography record) would additionally move, at Regular 16: SoundItem''s preview and Update''s message; at Regular 18: the prayer row names and row times on both schedules, Error''s subtext, LanguageLoader, the hidden width-measure text, ColorPicker''s and Explanation''s titles; at Regular 14: the census''s 20 further consumers (Settings rows, Sound, Alert, Language, ReminderCard, ColorPicker, SoundItem, Ago, WhatsNew, Qibla, LabeledToggle; VolumeNote keeps its explicit 21 pin); at Medium 14: Settings, Alert, ReminderCard, Stepper x2, Qibla x2. Medium 22 has no consumer but the sheet title.
+
+**The recommendation cell (the owner rules).** Option (b), component-scoped, digits ruled in: all three deltas are uniform platform line box with no layout defect, four of five word-surface pins clear their floors by 2.9dp or more, and the scope touches only the named surfaces. The date pin sits 1px over its floor and carries the render test.', NULL, '2026-10-19 05:08:10.471117+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1821, 213, 'activity', 'owner', NULL, 'status', '2026-10-19 05:08:10.552545+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1822, 18, 'activity', 'owner', NULL, 'description', '2026-10-19 05:08:27.628458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: measure each of the owner''s three named Arabic gap sites on both phones (the 3T and the iPhone XS), attribute each gap to the platform line box or to the layout, and bring the two options with exact numbers and blast radius. Investigation and recommendation only: no code, no pixel change, no install before the owner''s ruling.\n\nWhere: the Arabic prayer name above the countdown against the countdown itself (components/countdown/Countdown.tsx), the location against the date on both schedules (components/day/Day.tsx), the bottom sheet''s title against its subheading (components/sheets/parts/Header.tsx). Ground: row 137''s parity verdict and numbers, folded here by the owner''s order.\n\nAcceptance:\n- [x] The record''s measured table carries, per named site per phone, every cell the instrument publishes - rendered line box, node gap, ink gap, code margin - and a named void in the row-120 form where the instrument publishes nothing (site 1''s name node on both phones, site 3''s nodes on the XS).\n- [x] Each site carries one attribution line naming the platform line box or the layout, with the numbers that decide it.\n- [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).\n- [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.\n- [ ] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1825, 221, 'activity', 'owner', NULL, 'status', '2026-10-19 05:18:36.163719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1827, 15, 'comment', 'owner', 'Step 5 device pass (mock build of the lane tip on the athan-smoke-28 emulator) read all four: a press on the reminder''s title text toggled its switch once; sliding the athan to Off unchecked and locked both reminder switches with their bodies dimmed while the athan control held; moving the athan back to Sound returned both switches checked with each pill back on its pre-off sound (Sound and Silent); and the preference snapshot logged the preserved reminder values under the off athan and the restored pair after the second commit. Closing the all-off sheet prompted nothing. Nothing left on this step: the owner''s read of the sheet on the phones follows the merge, per the plan. One operational note: the first build attempt failed because a concurrent lane moved the shared mock-build worktree mid-gradle, so the pass built on a private worktree instead.', NULL, '2026-10-19 05:18:53.941626+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1839, 19, 'comment', 'owner', 'The glass read ran on the phone with the compiling module and found a second defect: the cover''s view work runs off the main thread, so Android rejects it. The first switch (English to Arabic) refused the reload outright - the relaunch-failed warning fired and the app settled through the in-process remount with no restart at all - while the second (Arabic to English) let the reload through but threw the same wrong-thread error from the view hierarchy at the new context''s first render. The first switch''s frames show one continuous loader face, purple with the spinner and line, with no blank frame and no flash, but the cover itself never reliably showed, so the face-fidelity, Extras and no-flash-between-reload-and-render claims stay uncertified. A launch without a switch read unchanged, with no cover, loader or switch-path lines. The module needs its show and hide hopped to the main thread; that is outside the plan''s named fallbacks, so nothing was changed here and the step waits on that fix.', NULL, '2026-10-19 05:35:55.930658+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1840, 15, 'comment', 'owner', 'agent-ruled 2026-10-19, one line why each:
+
+- One dim level means per-value halving, not flattened nesting: the order says whatever each value is now, 50 percent less, and flattening would raise content the order says to reduce.
+- The enabled alert''s body content is the reminder body under an enabled athan: the athan control itself carries no opacity today, so no before-value exists there to halve.
+- The restore keeps the reminder choices in the existing preference atoms: the order says preferences-backed, the values the app never deletes, and every scheduling path already gates on the athan, so no new keys are needed.
+- The whole-header tap copies the LabeledToggle pattern with no row haptic: it is the repo''s shipped whole-row switch pattern and keeps the switch the sole haptic source.
+- The dead cardDisabled and optionsDisabled styles in the sheet are deleted: they render nowhere and mislead the dim measurement.
+- Type Bug and patch bumps throughout: all three changes restore intended behaviour, none adds a capability.', NULL, '2026-10-19 05:45:11.329612+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1823, 18, 'activity', 'owner', NULL, 'status', '2026-10-19 05:08:39.750398+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1824, 18, 'comment', 'owner', 'Execution done: all five steps closed, the record sits in comments 1787 through 1820 (tables, both phones'' readings, the ink reads, the re-derivation gate at 1819, and the attribution and options at 1820). The branch carries no commit by design - the record lives here on the board. The ticket moves to Audit.', NULL, '2026-10-19 05:08:39.875044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1826, 18, 'comment', 'owner', '**conformance review findings** (plan doc v2 against the record, comments 1787 through 1824; re-derived in the lane-140 worktree at uat head 91dafe2d).
+
+Verified clean: branch carries no commit and no dirty file; step 1''s three outputs present, and all eight shared Rubik rows at 6ff7364d''s EXPECTATIONS.md match 1787 byte for byte (sizes 14 and 22, both faces, both scales); both vehicle substitutions re-derived from git (9dd4eb6a..uat touches no site file but Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95; 08253a56..uat is five comment-purge lines); the D140.7 language round-trips, the two-capture agreements in the grill-round scope, and all eight repeatability controls recorded within 1px; step 4''s two rungs, the ink-under-box pairs and the honesty items (gear icon, dim subtitle bands) present; step 5''s pins, floors, clearances (including the gate''s corrected 10.9dp and 29.75px), blast radius and re-derivation gate all re-derive from 1816''s ink bands and 1787''s sweep; decisions D140.1 through D140.7 were followed in execution, not just stated.
+
+1. minor (suggestion): comment 1820, measured table, site 3 XS cell reads "hhea predicts 66 and 50px". The title''s hhea box at 3x is 78px by 1787''s own metric table (Medium 22 XS hhea=78.21/78); 66 equals 22x3 and matches no metric set. The site-3 closure itself is only consistent with the 78px box under the code''s header paddingTop (SPACING.xxl 24: 482.4 + 72 + 78 = 632.4 against the measured ink bottom 632, total 28.0 exact), so the verdict stands; correct the cell to 78 and 50, or name the construction behind 66.
+
+2. nitpick (suggestion): comment 1807 carries the panel and version half of step 3''s pre-flight vehicle line but not the layout half (home face matching row 137: location and date on top, settings button bottom-centre). The controls passing at +0.00 to +0.01px prove it after the fact; one clause in the record would close the plan''s letter.
+
+3. nitpick (reminder): step 5''s closing Owner-led move is outstanding by design of the audit stop (criterion 5 honestly unticked, ticket in Audit). After audit: move to Owner-led, set Waiting on the owner''s ruling between the options, and post the closing recommendation in two plain lines from 1820''s recommendation cell.
+
+The four ticked acceptance criteria are met by the record; the fifth is correctly left unticked.', NULL, '2026-10-19 05:18:37.849116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1828, 15, 'activity', 'owner', NULL, 'status', '2026-10-19 05:19:35.949238+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1829, 15, 'comment', 'owner', 'Execution done. Four commits on lane/139: the six dim values halved with the dead styles gone, the whole header row toggling each reminder, the store keeping reminder choices under an off athan, and the sheet restoring them on off-to-on. The device pass read all four behaviours on the harness emulator, logcat included.', NULL, '2026-10-19 05:19:35.977474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1830, 18, 'comment', 'owner', '**blind review findings**
+
+Audit of the measurement method and the record''s coherence, recomputed cold against the repository. Git verified: uat..lane/140 is empty and the uat head is still 91dafe2d. The headline arithmetic reproduces: every metric cell in 1787 (hhea, typo, win, bbox at both scales), every node gap from the 1790 and 1807 bounds, every ink gap and containment pair in 1816, every reconciliation, floor and clearance in 1819 and 1820 (the 441.5 cross-check included), and the three site deltas. The sweep''s site hits verify against source (Countdown.tsx 116-119, Day.tsx 75-82, Header.tsx 64-74). Four findings:
+
+1. suggestion, medium, comment 1787, the site 1 note "the name''s box and ink ride up 2dp inside the margin band, so the expected ink gap is 1dp (2.63px 3T, 1pt XS)". The sign is flipped. The source is translateY -2 (Countdown.tsx:119), which moves the name up, away from the digits below, so the platform-free expectation is 3dp margin plus 2dp = 5dp. Comment 1820''s own model carries the correct 5dp ("the layout term is 13.125px on the 3T (margin 3dp + translateY 2dp)") and the readings agree (XS raw node gap 5.00pt, 3T 13px). Correct the 1787 cell or note the correction in the record. The final record''s numbers do not inherit the error.
+
+2. suggestion, medium, comment 1820, the site 3 XS row "both VOID (sheet AX void, 1807); hhea predicts 66 and 50px". The title half is broken provenance. The title is Rubik-Medium 22 (Header.tsx:64-65) and 1787''s Medium 22 XS hhea cell is 78.21/78, not 66. 66px is the title''s measured ink height (567-632 in 1816) and coincides with Medium 14''s XS bbox (66.40/66): wrong size and wrong metric for the label the cell carries. The subtitle half (50px from Regular 14 XS hhea 49.77/50) is right. Replace 66 with 78, since "The XS renders exactly these hhea boxes today" leans on this cell. Nothing measured depends on it: the row is void-modelled and the reconciliation''s half-pixel term fixes the box bottom only.
+
+3. nitpick, comment 1816, the proof line "every ink band sits inside its node bound where both exist". The site 1 word band is an exception as written: the word ink (94-138) escapes its published band ([0,123][1080,150] in 1790) by 29px above. The proof list correctly omits the pair and D140.2 rules the band an artefact, but the sentence should name that carve-out so a stranger does not read it as falsified.
+
+4. nitpick, comments 1790 and 1807, the transcribed location label (the Arabic string and "Fajr / London, UK"). The hard rule bars writing a place name a geocoder reported. The app is London-only by spec, so the fixed city label identifies no device, but the rule admits no exception; "the location row" would have served as the node identity.
+
+Everything else coheres. The voids stay honest and model-flagged (site 1''s name node on both phones, site 3''s nodes on the XS). Both options carry real numbers and a blast radius that checks out against the source sweep. The recommendation follows from the record''s own arithmetic, keeps the owner''s ruling on the options, and no serial, UDID, owner quote, model name or pixel change appears anywhere in the record.', NULL, '2026-10-19 05:21:51.947415+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1831, 18, 'comment', 'owner', 'Conformance dispositions, all four: (1) CONFIRMED and corrected - 1820''s site-3 XS cell said 66 and 50px; the title half is 78px (Medium 22 XS hhea 78.21/78 in 1787), and with 78 the XS model closes exactly rather than within 0.5px: box top 554.4 (sheet top 482.4 + paddingTop 72), box bottom 632.4 against hamza ink 632 (bottom overhang 0.4px), subtitle box top 650.4 against ink 660 (top overhang 9.6px), 18 + 0.4 + 9.6 = 28.0. The correction is folded into the blind-review reply below, which found the same cell. (2) Accepted - 1807''s pre-flight carries the panel half; the layout half is proven post hoc by the four controls reproducing row 137''s bounds, and the clause is recorded here. (3) Tracked - the Owner-led move with Waiting on and the two-line recommendation is the lane''s next action this phase.', NULL, '2026-10-19 05:23:13.199851+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 1826, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1832, 18, 'comment', 'owner', 'Blind dispositions, all four: (1) CONFIRMED and corrected - 1787''s site-1 note read the translateY -2 as closing the gap (1dp); the name rides up, away from the digits, so the platform-free expectation is 3dp margin + 2dp translate = 5dp, which is what 1820''s model and both phones'' readings carry (XS band gap 5.00pt, 3T 13px). 1787''s 1dp cell is void; 1820 stands. (2) CONFIRMED and corrected - same cell as the conformance review: the site-3 XS predicted title box is 78px (Medium 22 XS hhea), not 66; with 78 the closure is exact (18 + 0.4 + 9.6 = 28.0), a stronger result than the recorded within 0.5px. (3) Accepted and clarified - 1816''s proof sentence enumerates readable pairs only; the countdown word''s node is the standing band artefact excluded by D140.2, and its ink (94-138) escaping the band (123-150) is itself the artefact evidence, not a proof failure. (4) Answered, no fix - the label is the app''s own i18n constant (''day.location'' in shared/i18n/ar.ts line 136, the product''s fixed London-only string), not a value any geocoder reported; the rule bars geocoder-reported places and this is not one.', NULL, '2026-10-19 05:23:13.226115+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 1830, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1835, 18, 'comment', 'owner', 'Investigation closed, the owner rules. All three named gaps are the platform line box, not the layout: the code margins are identical on both phones at every site, and Android runs each ink gap 1.6 to 1.7 times the iPhone''s (site 1 +7.4dp, site 2 +6.6dp, site 3 +6.7dp), reconciling exactly as margin plus each box''s taller metric set.
+Recommendation: option (b), component-scoped, digits ruled in - pins of 20, 19, 21, 26, 17 and 28dp at hhea parity over measured floors, touching only Countdown, Day and Header; the date pin sits 1px over its floor and the ruling ticket render-tests on glass before landing.', NULL, '2026-10-19 05:23:30.085304+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1837, 15, 'comment', 'owner', 'Audit: the change matches the plan end to end. The seven dim rows, the header tap on the LabeledToggle pattern, the store''s kept reminder choices, the off-to-on restore and the store-true commit reporting all check out, yarn validate is green with full coverage on my own run, and the device pass is recorded. One proof gap: the plan''s mutation pass names three targets and the locked row guard is the one with no record; that guard also cannot be killed by the suite as written, because removing it still no-ops through the draft''s own lock in toggledReminder (components/sheets/screens/ReminderCard.tsx:57). Pin it with a card-level case that spies onToggle while locked, or record the survivor and strike the target from the plan.', NULL, '2026-10-19 05:27:49.899798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1841, 15, 'comment', 'owner', 'Audit outcome. Two reviewers ran, one blind and one against the plan. Two findings:
+
+1. Does one uniform level mean one number or per-value halves - ruled per-value halves, matching the plan''s Decision 1 and the order''s own construction. No change.
+2. The locked-row guard was named as a mutation target but no suite case could kill that mutant through the sheet, because the draft rule masks it - confirmed, fixed in 2.0.1126 with a card-level spy case, verified red under the mutant and green with the guard.
+
+Everything else conformed: both reviewers re-ran the suites and the gate green. One note for the merge: the version line raced with lane 141 and the two lanes interleaved onto one chain, so lane/139''s history carries lane 141''s language commits between mine; merge order is lane 141 first or either, the line is shared.', NULL, '2026-10-19 05:45:11.370196+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1843, 15, 'comment', 'owner', 'Done. The alert sheet dims at one halved level, every reminder''s whole header row toggles it, and turning the athan back on brings each reminder back as it was, preferences-backed. Landed through planning, three grill rounds, five steps, two reviews and a device pass; the owner''s read on the phones follows the merge.', NULL, '2026-10-19 05:45:17.645487+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1844, 18, 'activity', 'owner', NULL, 'label_add', '2026-10-19 06:04:47.123723+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 159, "value": "9 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1845, 18, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 06:04:47.123723+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 158, "value": "8 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1833, 18, 'activity', 'owner', NULL, 'status', '2026-10-19 05:23:30.02376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Owner-led", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1834, 18, 'activity', 'owner', NULL, 'description', '2026-10-19 05:23:30.061853+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: measure each of the owner''s three named Arabic gap sites on both phones (the 3T and the iPhone XS), attribute each gap to the platform line box or to the layout, and bring the two options with exact numbers and blast radius. Investigation and recommendation only: no code, no pixel change, no install before the owner''s ruling.\n\nWhere: the Arabic prayer name above the countdown against the countdown itself (components/countdown/Countdown.tsx), the location against the date on both schedules (components/day/Day.tsx), the bottom sheet''s title against its subheading (components/sheets/parts/Header.tsx). Ground: row 137''s parity verdict and numbers, folded here by the owner''s order.\n\nAcceptance:\n- [x] The record''s measured table carries, per named site per phone, every cell the instrument publishes - rendered line box, node gap, ink gap, code margin - and a named void in the row-120 form where the instrument publishes nothing (site 1''s name node on both phones, site 3''s nodes on the XS).\n- [x] Each site carries one attribution line naming the platform line box or the layout, with the numbers that decide it.\n- [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).\n- [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.\n- [x] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1836, 18, 'activity', 'owner', NULL, 'field', '2026-10-19 05:23:48.215966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s ruling between the options: (a) accept the platform box, row 87''s law unchanged; (b) pin an ar lineHeight per surface family, component-scoped, digits ruled in (the record''s recommendation, comments 1820 and 1835)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1838, 15, 'comment', 'owner', 'Audit of 91dafe2d..b614397d, blind. The substance holds: every reader of a saved reminder gates on the athan (applyPrayerAlerts, the reschedule pass, the budget reader), the preserved ref survives every off and on round trip, a reminder off by its own choice stays off, the unchanged off close commits nothing, and the suites fake the clock throughout.
+
+question: components/sheets/parts/Stepper.tsx:121 and components/sheets/screens/ReminderCard.tsx:108 - 2.0.1109 says every dim sits at half its uat value at one uniform level, but each value is half its own uat number and three levels remain (0.2, 0.15, 0.125). If one level was the order, the 0.15 and 0.125 miss it; if per-element halves were, the message overclaims. Rule which, then align code or message.
+
+Sincere praise: re-snapshotting the preserved ref from the live draft at every move into Off is the detail most implementations miss, and it is what keeps a user''s own reminder-off choice from resurrecting with the athan.', NULL, '2026-10-19 05:31:57.829029+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1842, 15, 'activity', 'owner', NULL, 'status', '2026-10-19 05:45:17.607181+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1846, 17, 'activity', 'owner', NULL, 'field', '2026-10-19 06:04:47.149369+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1847, 17, 'activity', 'owner', NULL, 'status', '2026-10-19 06:04:47.17318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1848, 216, 'activity', 'owner', NULL, 'status', '2026-10-19 07:09:09.351419+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1849, 19, 'comment', 'owner', 'The device read passed on the phone with the main-thread cover build, both directions on both schedules, and glass was the 3T throughout. Every switch showed one continuous face: the loader appeared on the tap, held full-screen with its spinner and line through the whole span with the spinner animating across the restart, and no frame showed the target-language schedule early or a blank page. Every switch''s logcat held the same shape: the convergence pass, then the reload on a fresh thread, then the new context''s first render, with only the new context''s own startup lines between the reload and that first render - no content commit in the gap, no rejection or warning on any switch, and no cover left attached after a reveal. A no-switch launch and browse read unchanged: no cover, no loader, no switch-path lines. The cover''s face matched the JS loader''s on full-resolution frames - same purple, the spinner centred on the same midpoint in the same tint, and the line at the same position, extent and colour with identical rendered pixel counts in both directions - so the typeface and drawable divergence the plan tabled did not show on this panel. Two recording quirks are on the record: one switch''s logcat was lost to my own buffer clear and that switch was re-run and captured cleanly, and one recording came out at a low frame rate so that switch''s visual claims ride its logcat beside a clean recording of the same direction.', NULL, '2026-10-19 07:09:20.058547+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1850, 17, 'activity', 'owner', NULL, 'description', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: file the prepared device-locale PR upstream at the matched discipline of the four tracked PRs, and give every open tracked PR its board monitoring row.\n\nWhere: the expo clone `$HOME/athan-gitree/upstream/expo` (branch `feat/widgets-device-locale`), the PR body `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md`, the ledger `ai/UPSTREAM-PRS.md` (edited only in the lane worktree), and the board''s Upstream and Backlog columns. The main tree stays on `uat`, clean, for the whole ticket.\n\nAcceptance:\n- [ ] The branch sits rebased on then-current upstream main as one commit touching the four code files plus the changeset, and a comment records the delta (what moved, what was re-ported)\n- [ ] Every locale hunk line of `patches/expo-widgets+58.0.20.patch` is present in that commit or named in the delta comment, and every changed-signature call site in then-current upstream source is accounted for\n- [ ] The PR body and the changeset pass the anonymity check (no app name, serial, repo link, home path or personal namespace) and the body carries the Android 9 phone and iOS hardware evidence\n- [ ] `yarn validate` exits 0 in the main tree and its `git status --porcelain` prints nothing\n- [ ] PRs 50581, 51290 and 51292 each have a monitoring row in Upstream with `Waiting on` set (51291''s row is 51), and the ledger carries each new row''s number\n- [ ] A dead-code hook row waits in Backlog, marked waiting on a published expo-widgets release that carries `__expoWidgetDeviceLocale`\n- [ ] The gate comment records the filing gate reached and names what holds it, and no PR exists upstream yet\n\nAuthorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane stops at the gate; the lead sends the go."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1851, 17, 'activity', 'owner', NULL, 'type', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 5, "value": "Chore"}, "from": {"id": 11, "value": "Release"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1852, 17, 'activity', 'owner', NULL, 'estimate', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1853, 17, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:11:14.063698+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1854, 17, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:11:14.063698+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 160, "value": "10 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1855, 17, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:11:14.063698+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1856, 17, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 07:11:14.063698+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 150, "value": "Release"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1857, 222, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.690976+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1858, 222, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.694896+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1859, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.694896+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 222, "value": "T-222"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1860, 223, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.745647+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1861, 223, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.748513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1863, 224, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.787546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1864, 224, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.78947+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1865, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.78947+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 224, "value": "T-224"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1866, 225, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.821052+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1867, 225, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.823631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1868, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.823631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 225, "value": "T-225"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1872, 227, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.884494+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1875, 228, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.912534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1876, 228, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.914252+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1877, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.914252+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 228, "value": "T-228"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1885, 228, 'activity', 'owner', NULL, 'title', '2026-10-19 07:27:57.141014+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 7: Filing gate staged, STOP and wait for the lead''s go"}, "from": {"value": "Step 7: Board writes, monitoring rows, ledger numbers, dead-code hook row"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1886, 17, 'activity', 'owner', NULL, 'status', '2026-10-19 07:28:16.428967+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1900, 231, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.538587+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 167, "value": "#231"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1901, 231, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.538587+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1902, 231, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.538587+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1903, 231, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.538587+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1904, 231, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.538587+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1906, 231, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.581765+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51290`; the proportional-layout workaround simplifies only at the owner''s say."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1914, 232, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.680198+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51292`; at the first re-pin past its release the openApp half of the widgets patch dies."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1916, 233, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.743798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 169, "value": "#233"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1917, 233, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.743798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1918, 233, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.743798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1919, 233, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.743798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1920, 233, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.743798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1922, 233, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.78938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "A published `expo-widgets` release carrying `__expoWidgetDeviceLocale`; until then this row waits."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1870, 226, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.857569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1871, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.857569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 226, "value": "T-226"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1879, 229, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.940808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1880, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.940808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 229, "value": "T-229"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1887, 17, 'comment', 'owner', 'Ready: plan doc T-143 grilled one round (12 findings, all answered in the doc), 8 steps, 10 pts.', NULL, '2026-10-19 07:28:16.460998+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1889, 17, 'comment', 'owner', 'Discipline sheet (step 1), measured from the four tracked PRs:
+
+- Titles: bracketed package prefix plus imperative summary. 50581 "[expo-background-task] Make the network connectivity requirement configurable", 51290 "[widgets][android] Respect the `fillMaxWidth` fraction in the Glance converter", 51291 "[location] Add `headingFilter` option and raw `headingAccuracy` to `watchHeadingAsync`", 51292 "[widgets][android] Add `openApp` option to Button so a tap can open the app". Target: "[widgets] Expose the device locale to widget JS runtimes", no platform suffix because both platforms change.
+- Commit subjects: 51290 and 51292 are plain imperative with no conventional prefix; 50581 uses feat(); 51291 plain. Target: "Expose the device locale to widget JS runtimes", the widget siblings'' shape.
+- Changesets: all four carry one file under .changeset/ with ''expo-widgets'': patch (both widget PRs) and one plain-English paragraph. Target: .changeset/widgets-device-locale.md.
+- Bodies: all four use exactly "# Why / # What / # How / # Testing / # Anything else", H1 headings, Why first. Testing names what ran and what was deliberately not tested. Target: the prepared body reordered to that shape, with a not-tested-locally line for the missing unit test.
+- Commits: 50581, 51290 and 51292 are single commits. Target: one commit, five files.', NULL, '2026-10-19 07:29:11.616793+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1905, 231, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.562576+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "231"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1915, 233, 'activity', 'owner', NULL, 'created', '2026-10-19 07:36:59.697297+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1921, 233, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.768121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "233"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1873, 227, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:11:31.886054+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 17, "value": "T-143"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1874, 17, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:11:31.886054+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 227, "value": "T-227"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1878, 229, 'activity', 'owner', NULL, 'created', '2026-10-19 07:11:31.939028+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1890, 17, 'comment', 'owner', 'Delta after the rebase (step 2): upstream main moved cac62846e6 to 9df7ea30fb, 5 commits, none touching the four files, so the rebase ran clean with zero conflicts and nothing needed re-porting by hand. The competing-implementation greps on then-current main returned nothing for the global and only the benign plugin-file hits for the wider locale grep. Call sites all sit in the named list: the JNI chain inside the four files carries the new parameter, and WidgetsUtils.kt''s call of the unchanged public render compiles as written.
+
+The commit was amended to the matched discipline: subject "Expose the device locale to widget JS runtimes" (no feat() prefix), changeset .changeset/widgets-device-locale.md with ''expo-widgets'': patch folded in, now one commit 4fd6bba19b touching five files. The patch''s 12 locale lines check against the commit: 11 present, and the one absent is the EntryView.swift rtl comment, which is local-only by the owner''s 2026-10-16 ruling and deliberately not carried upstream.', NULL, '2026-10-19 07:30:57.17438+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1892, 230, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:49.850726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 166, "value": "#230"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1893, 230, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:49.850726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1894, 230, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:49.850726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1895, 230, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:49.850726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 5, "value": "notifications"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1896, 230, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:49.850726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1897, 230, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:49.922755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "230"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1907, 232, 'activity', 'owner', NULL, 'created', '2026-10-19 07:36:59.600111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1881, 17, 'comment', 'owner', 'Planning done: plan doc T-143 on the issue, 8 steps, 10 pts, typed Chore, flagged upstream.
+
+Agent-ruled 2026-10-19 (each argued twice in the plan''s Decisions taken): three monitoring rows, not four, because row 51 already tracks 51291 and a second row for one PR is a duplicate defect. Changeset added with a patch bump, folded into the single commit, because both widget siblings carry exactly that shape. Commit subject drops the feat() prefix, because the widget siblings'' subjects are plain imperative. No upstream unit test, because no JS surface upstream reads the global and a mock-only test would pass while the native path is broken; the device evidence is the test of record. Monitoring rows typed Chore with the ledger''s surface facts. The dead-code hook row is created now in Backlog and does nothing until a published release carries the feature.', NULL, '2026-10-19 07:11:40.442556+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1883, 19, 'comment', 'owner', 'Audit of the five lane commits (2.0.1127 through 2.0.1131), read against the final tree.
+
+FINDINGS
+
+- major - Three of the five commits ship unresolved merge-conflict markers in modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt: 0bf7b1b1 carries 16 marker blocks, 145b58f0 24, bce97518 29. None of those trees can compile, so 1129''s "the switch cover compiles" and 1130''s claims are false for their own commits, the range is not bisectable, and versions 2.0.1128 to 2.0.1130 are burned on broken trees (the same work also sits twice more below on the branch, 1114 to 1117 and 1121 to 1124, the second copy equally conflicted). Fix: rewrite the range before merge into commits whose trees compile, one squashed Kotlin commit or re-recorded iterations.
+
+- major - app/index.tsx:206 hides the cover on the first content commit, but the remount key (app/_layout.tsx:97) resets that commit flag per switch, so the remounted Index can fire the hide in the OLD context after the cover shows. The store only separates the remount from the show when the convergence pass takes real time; when reconcileLanguageSurfaces bails synchronously (stores/language.ts:92, stamp already matches the target, reachable when a prior pass bailed on an empty armed cache), nothing but microtasks separate setActiveLocale from showSwitchCover (stores/language.ts:210), and the pending React commit plus its effect can land inside the show to reloadAsync round-trip, dispatching hide after show on the same Queues.MAIN. The cover lifts before the restart, which is the exact span it exists to cover. No test covers the remount-while-committing interleaving. Fix: gate the mount-path hide on the busy atom, hide only when languageCommitBusyAtom reads false: the committing context holds busy true from the reveal until its context dies, the refused path hides explicitly in its catch before finally clears busy, and the post-reload context mounts with busy false. Add the interleaving test.
+
+- minor - The cover''s line draws in the platform default typeface (SwitchCoverModule.kt:69-85) while the loader draws it in the target record''s family, Rubik for ar and Noto Devanagari or Thai for hi and th (components/ui/LanguageLoader.tsx:42, shared/typography.ts). Every script-change crossing shows a visibly different face across the restart span, against the "loader''s own face" claim. Fix: pass the family and setTypeface from the bundled resource, or rule the default face with the owner and reword the claim.
+
+- minor - stores/language.ts:210 passes a nested call as a parameter, showSwitchCover(coverOptionsFor(locale)), against the repo''s stored-call pattern. Fix: bind the face to a variable first.
+
+- nitpick - stores/language.ts:214-222 logs "relaunch failed after the RTL flip" for a showSwitchCover rejection too, when the reload never ran. Recovery is right; the log misleads. Fix: name the failing step.
+
+- nitpick - The comment at stores/language.ts:226-227 says a surviving context never refuses the next pick, but the owningPick guard at line 161 refuses a different locale''s pick for as long as the face holds. Reword to say only the same pick re-runs.
+
+Checked and clean: no conflict markers anywhere in the final tree; runOnQueue(Queues.MAIN) exists in the installed expo-modules-core and expo itself uses it, and the body-to-promise ordering makes show resolve only after the view attached, so show-before-reload holds; the Kotlin geometry matches the loader''s values (spinnerSizeDp 20, margin 40 from mid, size 18, cap 260); the companion-held view and flag are touched only from Queues.MAIN and the stale-parent guard covers a destroyed activity; 90 tests across the seven touched suites pass with 100 percent line and branch coverage of stores/language.ts and device/switchCover.ts, and the loader suite pins literal composed strings rather than mirroring the implementation; version bumps present in package.json and app.json on every commit and android/app/build.gradle is generated, not tracked; no console.log, no serials, positions or device identifiers anywhere in the change.', NULL, '2026-10-19 07:27:28.52606+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1884, 227, 'activity', 'owner', NULL, 'title', '2026-10-19 07:27:57.115902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 6: Board writes, monitoring rows, ledger numbers, dead-code hook row"}, "from": {"value": "Step 6: Filing gate staged, STOP and wait for the lead''s go"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1888, 17, 'activity', 'owner', NULL, 'status', '2026-10-19 07:28:29.218393+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1891, 230, 'activity', 'owner', NULL, 'created', '2026-10-19 07:36:49.69775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1908, 232, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.64183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 168, "value": "#232"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1909, 232, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.64183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1910, 232, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.64183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1911, 232, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.64183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1912, 232, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:36:59.64183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1898, 230, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:49.999195+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#50581`; at the first re-pin past its release the background-task patch dies."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1899, 231, 'activity', 'owner', NULL, 'created', '2026-10-19 07:36:59.479282+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1913, 232, 'activity', 'owner', NULL, 'field', '2026-10-19 07:36:59.664095+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "232"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1923, 233, 'activity', 'owner', NULL, 'status', '2026-10-19 07:36:59.812218+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1924, 19, 'comment', 'owner', 'Audit outcome: two reviews landed (plan-conformance and blind). Confirmed and fixed in 58048310 (2.0.1128): the remount a switch triggers could lift the cover between its show and the reload on a fast bail, so the lift now gates on the busy face; a cover that refused to show aborted the reload under a misleading warning, so it now relaunches bare under its own warning; the cover''s face is bound before it is passed; the finally''s comment names the owning-pick guard. The broken commit series both reviews flagged is rewritten: the whole certified change is one compiling commit (bf40b662, 2.0.1127) on lane 139''s tip, the audit fixes a second. Both new guards are mutation-tested (each flip caught) and red-first. Recorded deviations: the Kotlin idempotence guards ride the glass read, not Jest; device/__tests__/switchCover.test.ts is the home of the wrapper no-op acceptance line; rtlSwitch carries no wrapper mock because it observes no cover calls. The glass certification read the pre-audit tree; the audit commit adds only the two guarded paths, unit-verified.', NULL, '2026-10-19 07:38:45.805335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1925, 19, 'activity', 'owner', NULL, 'status', '2026-10-19 07:38:45.839657+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1926, 19, 'comment', 'owner', 'Done: on the 3T both directions and both schedules now read as one continuous loader face from the tap to the settled app, with no target-language flash and no blank page, and a no-switch launch is unchanged. The spinner unmount was the finally clearing the loader when the reload promise fulfils before the restart, the flash was the remounted target-language screens painting uncovered, and the blank page was the restart span with no JS alive to paint, expo-updates being disabled here.', NULL, '2026-10-19 07:38:45.861029+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1927, 16, 'activity', 'owner', NULL, 'field', '2026-10-19 07:44:11.27409+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1928, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 07:44:11.309366+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1929, 222, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.62488+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1930, 223, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.669134+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1931, 224, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.72051+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1932, 225, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.768848+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1933, 226, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.815259+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1934, 227, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.860665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1935, 228, 'activity', 'owner', NULL, 'status', '2026-10-19 07:45:44.911988+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1936, 17, 'comment', 'owner', 'Board writes done (step 6): monitoring rows #230 (background-task), #231 (fillMaxWidth) and #232 (Button openApp) live in Upstream with Waiting on set, #51 keeps the location PR, and the dead-code hook sits in Backlog as #233, waiting on a published expo-widgets release that carries the global. The ledger carries every number and the gate state in commit 22232bcf on lane/143 (2.0.1129, stacked on lane/141''s tip, hooks passed), left in the worktree for the lead to merge.', NULL, '2026-10-19 07:45:56.955853+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1937, 17, 'comment', 'owner', 'THE FILING GATE IS REACHED, everything verified. What holds it: the lead''s go, sequenced behind the phase-1 merges. Nothing is filed; the fork shows no PR for the head branch.
+
+Staged for the go, two commands and no decisions, from the clone at $HOME/athan-gitree/upstream/expo:
+1. git push origin feat/widgets-device-locale (plain push, never force; the fork has never received this branch)
+2. gh pr create --repo expo/expo --head capt-muji:feat/widgets-device-locale --base main --title "[widgets] Expose the device locale to widget JS runtimes" --body-file "$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md"
+
+Verification, five lines:
+1. Branch rebased onto upstream main 9df7ea30fb (moved from cac62846e6, 5 commits, none touching the four files, nothing to re-port), one commit 4fd6bba19b, five files: the four code files plus the changeset; competing-implementation greps clean.
+2. The patch''s 12 locale lines check line by line: 11 in the commit, the one absent is the EntryView rtl comment, local-only by the owner''s 2026-10-16 ruling; every changed-signature call site accounted for.
+3. The PR body matches the four tracked PRs'' discipline (Why/What/How/Testing/Anything else, single commit, ''expo-widgets'': patch changeset, plain commit subject), passes the anonymity grep and read, carries both device-evidence lines, and every claim traces to the commit; the package''s JS suite passes on the rebased branch, 4 suites and 28 tests.
+4. The main repo''s tracked tree is untouched at uat, 0 changes; yarn validate there runs 5782 of 5783 green and fails only the lockstep test, which reads a gitignored local prebuild another session wrote at 08:09 today (2.0.1132 against app.json''s 2.0.1108): an environment artifact this ticket neither caused nor may fix.
+5. Board writes live: #230, #231, #232 monitoring rows in Upstream with Waiting on set, #233 the dead-code hook in Backlog, and the ledger carries every number on lane/143 commit 22232bcf.
+
+Dead-code hook, recorded: when a published expo-widgets release carries __expoWidgetDeviceLocale, row #233 deletes the local patch''s device-locale hunks, moves the ledger entry to shipped, and re-proves the faces on a phone at that re-pin. Do nothing before the release exists.', NULL, '2026-10-19 07:45:56.981013+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1946, 235, 'activity', 'owner', NULL, 'created', '2026-10-19 07:56:01.135836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1949, 236, 'activity', 'owner', NULL, 'created', '2026-10-19 07:56:01.171374+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1938, 16, 'activity', 'owner', NULL, 'description', '2026-10-19 07:55:55.697101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: A Widgets option in the settings sheet''s Other card that takes the user to the OS widget gallery at our widgets where the platform permits, else the closest legal surface the owner rules on - the investigation found no open-gallery API on either platform, so the ruling between the plan''s three options is this ticket''s gate.\n\nWhere: the settings bottom sheet''s Other card (components/sheets/screens/Settings.tsx), the i18n catalogues, and the surface the ruling picks (an in-app how-to card and, under Option 1, an Android pin-request module).\n\nAcceptance:\n- [ ] The ticket carries the investigation record quoting both platforms'' current documentation pages, with the per-platform verdict and the three numbered options.\n- [ ] The ticket sits in Owner-led with Waiting on naming the ruling and the numbered options, the recommendation recorded.\n- [ ] After the ruling: the Other card shows the Widgets row following the card''s own row pattern, and tapping it performs the ruled surface on each platform, read on the 3T and the owner''s iPhone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1939, 16, 'activity', 'owner', NULL, 'estimate', '2026-10-19 07:55:55.697101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1940, 16, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:55:55.709748+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 159, "value": "9 pts"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1941, 16, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:55:55.709748+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1942, 16, 'activity', 'owner', NULL, 'label_add', '2026-10-19 07:55:55.709748+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1943, 234, 'activity', 'owner', NULL, 'created', '2026-10-19 07:56:01.095676+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1944, 234, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:56:01.098176+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1945, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:56:01.098176+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 234, "value": "T-234"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1947, 235, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:56:01.138534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1948, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:56:01.138534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 235, "value": "T-235"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1953, 237, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:56:01.208557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1954, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:56:01.208557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 237, "value": "T-237"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1961, 16, 'activity', 'owner', NULL, 'description', '2026-10-19 08:06:20.220891+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: A Widgets option in the settings sheet''s Other card that takes the user to the OS widget gallery at our widgets where the platform permits, else the closest legal surface the owner rules on - the investigation found no open-gallery API on either platform, so the ruling between the plan''s three options is this ticket''s gate.\n\nWhere: the settings bottom sheet''s Other card (components/sheets/screens/Settings.tsx), the i18n catalogues, and the surface the ruling picks (an in-app how-to card and, under Option 1, an Android pin-request module).\n\nAcceptance:\n- [ ] The ticket carries the investigation record quoting both platforms'' current documentation pages, with the per-platform verdict and the three numbered options.\n- [ ] The ticket sits in Owner-led with Waiting on naming the ruling and the numbered options, the recommendation recorded.\n- [ ] After the ruling: the Other card shows the Widgets row following the card''s own row pattern, tapping it performs the ruled surface with the 3T read transcribing what opened, and the owner''s own read on the iPhone lands as a ticket comment."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1969, 239, 'activity', 'owner', NULL, 'field', '2026-10-19 08:08:30.022843+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "239"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1971, 17, 'activity', 'owner', NULL, 'description', '2026-10-19 08:10:51.01646+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: file the prepared device-locale PR upstream at the matched discipline of the four tracked PRs, and give every open tracked PR its board monitoring row.\n\nWhere: the expo clone `$HOME/athan-gitree/upstream/expo` (branch `feat/widgets-device-locale`), the PR body `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md`, the ledger `ai/UPSTREAM-PRS.md` (edited only in the lane worktree), and the board''s Upstream and Backlog columns. The main tree stays on `uat`, clean, for the whole ticket.\n\nAcceptance:\n- [x] The branch sits rebased on then-current upstream main as one commit touching the four code files plus the changeset, and a comment records the delta (what moved, what was re-ported)\n- [x] Every locale hunk line of `patches/expo-widgets+58.0.20.patch` is present in that commit or named in the delta comment, and every changed-signature call site in then-current upstream source is accounted for\n- [x] The PR body and the changeset pass the anonymity check (no app name, serial, repo link, home path or personal namespace) and the body carries the Android 9 phone and iOS hardware evidence\n- [x] `yarn validate` exits 0 in the main tree and its `git status --porcelain` prints nothing\n- [x] PRs 50581, 51290 and 51292 each have a monitoring row in Upstream with `Waiting on` set (51291''s row is 51), and the ledger carries each new row''s number\n- [x] A dead-code hook row waits in Backlog, marked waiting on a published expo-widgets release that carries `__expoWidgetDeviceLocale`\n- [x] The gate comment records the filing gate reached and names what holds it, and no PR exists upstream yet\n\nAuthorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane stops at the gate; the lead sends the go."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1972, 17, 'activity', 'owner', NULL, 'status', '2026-10-19 08:10:51.01646+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1982, 235, 'activity', 'owner', NULL, 'status', '2026-10-19 08:18:15.523132+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1983, 16, 'activity', 'owner', NULL, 'field', '2026-10-19 08:18:21.905462+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s ruling between the options: (1) Android pins, everywhere else teaches - the recommendation (comment 1979); (2) teach everywhere, the how-to card on both platforms; (3) do nothing this version. Inside (1): which kind the pin names, default Next Prayer (Light, small)."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1950, 236, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:56:01.173435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1951, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:56:01.173435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 236, "value": "T-236"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1952, 237, 'activity', 'owner', NULL, 'created', '2026-10-19 07:56:01.206867+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1960, 17, 'comment', 'owner', 'Audit done, both findings fixed. The shared 2.0.1129 is gone: the lane commit is renumbered 2.0.1130 and rebased onto uat''s tip (a8c4a123, 2.0.1129) as 5fbb1508, hooks passed, so the version line reads 1127, 1128 (lane 141), 1129 (the workflow commit on uat), 1130 (this lane), no number covering two commits. The audit''s step subtask moved to Done with the audit''s completion.
+
+The validate deviation is closed: the other session''s 08:42 landing re-stamped the local prebuild to match uat''s 2.0.1129, and yarn validate in the main tree now exits 0 with 224 suites and 5831 tests green, the tree clean on uat. The gate comment''s verification line 4 is superseded by this: the criterion is met.
+
+The gate holds: nothing filed, everything staged, waiting on the lead''s go.', NULL, '2026-10-19 08:04:03.76878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1978, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 08:16:59.896907+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1984, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 08:18:21.930912+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Owner-led", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1956, 238, 'activity', 'owner', NULL, 'parent', '2026-10-19 07:56:01.233791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1957, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 07:56:01.233791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 238, "value": "T-238"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1958, 17, 'comment', 'owner', 'Audit (step 8), plan-conformance: everything conforms, with two findings below. Measured: the clone''s branch is one commit 4fd6bba19b on upstream main 9df7ea30fb, exactly five files, plain subject; the five commits between the old and new base touch no expo-widgets file; both competing-implementation greps return nothing or only the benign plugin hits; the patch''s 12 locale lines check 11 present in the commit, the one absent is the EntryView rtl comment ruled local-only, and every changed-signature call site sits in the named list with the public render unchanged; the body carries the five sections in order, both device-evidence lines exactly once, and my own anonymity grep and read find no leak; the package''s suite is 4 suites and 28 tests, green under each file''s own project; the fork never received the branch and no PR exists. The lockstep deviation verifies from the main tree: the 08:11 stash names version 2.0.1132 staged while uat sat at 2.0.1108, android/ is untracked and gitignored, and the other session''s 08:42 landing re-stamped the prebuild to 2.0.1129, so the lockstep test is green again (4 of 4). The main tree is on uat with an empty porcelain. Rows 230, 231 and 232 sit in Upstream with Waiting on set, 233 in Backlog with its condition named, row 51 keeps the location PR, and the ledger carries every number and the gate state in lane/143 commit 22232bcf.
+
+suggestion: lane/143''s 22232bcf and uat''s a8c4a123 (08:42, two minutes earlier) both carry 2.0.1129. Both sides changed the same line to the same value, so the merge resolves silently, and the version-uniqueness gate passes in both trees because the uat side is already pushed: nothing will stop one version number covering two commits. Renumber the lane commit to 2.0.1130 before the merge, or record the shared number as deliberate.
+
+nitpick: step 8''s subtask sits in Backlog while its audit runs. Move it beside the parent so nothing active reads parked.', NULL, '2026-10-19 08:01:10.272+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1959, 229, 'activity', 'owner', NULL, 'status', '2026-10-19 08:04:03.738703+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1962, 17, 'comment', 'owner', 'Filing attempt on the lead''s go: refused before anything was written. The push of feat/widgets-device-locale to the fork was denied by the session''s shell permission system ("Permission denied: shell"), and gh pr create then failed cleanly because the fork has no such branch ("Head ref must be a branch... No commits between expo:main and capt-muji:feat/widgets-device-locale"). Nothing is filed, the clone and the main tree are unchanged, and the push is the lead''s to make or to re-authorize. Everything else stays staged exactly as the gate comment records.', NULL, '2026-10-19 08:06:50.792835+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1963, 239, 'activity', 'owner', NULL, 'created', '2026-10-19 08:08:29.925903+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1964, 239, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:08:29.994049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 170, "value": "#239"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1965, 239, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:08:29.994049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1966, 239, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:08:29.994049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1967, 239, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:08:29.994049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1968, 239, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:08:29.994049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 12, "value": "upstream"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1970, 239, 'activity', 'owner', NULL, 'field', '2026-10-19 08:08:30.045768+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-19: waiting on Expo reviewing PR `expo/expo#51793`; when a published release carries the global, row #233 deletes the local patch''s device-locale hunks and the ledger entry moves to shipped."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1975, 16, 'activity', 'owner', NULL, 'description', '2026-10-19 08:16:26.284961+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: A Widgets option in the settings sheet''s Other card that takes the user to the OS widget gallery at our widgets where the platform permits, else the closest legal surface the owner rules on - the investigation found no open-gallery API on either platform, so the ruling between the plan''s three options is this ticket''s gate.\n\nWhere: the settings bottom sheet''s Other card (components/sheets/screens/Settings.tsx), the i18n catalogues, and the surface the ruling picks (an in-app how-to card and, under Option 1, an Android pin-request module).\n\nAcceptance:\n- [ ] The ticket carries the investigation record quoting both platforms'' current documentation pages, with the per-platform verdict and the three numbered options.\n- [ ] The ticket sits in Owner-led with Waiting on naming the ruling and the numbered options, the recommendation recorded.\n- [ ] After the ruling: the Other card shows the Widgets row following the card''s own row pattern, tapping it performs the ruled surface, the 3T transcript and the owner''s iPhone confirmation each land as a ticket comment."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1976, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 08:16:49.490116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1979, 16, 'comment', 'owner', '**Investigation record** (the owner-ordered first phase; every page fetched live on 2026-10-19).
+
+**iOS: no API opens the gallery.** The app-side control surface is WidgetCenter (developer.apple.com/documentation/widgetkit/widgetcenter): reads of the user''s configured widgets and reloads of timelines, plus push and relevance maintenance. The page documents no symbol that presents UI. The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery either; its interactivity section is widget-to-app deep links. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses. expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets) exposes no gallery call: createWidget, the Widget class, Live Activities, custom notifications, push tokens, event subscriptions. Closest legal surface: an in-app how-to card teaching the gallery path - touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.** The picker belongs to the launcher (the widget host). ACTION_APPWIDGET_PICK is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager), and binding a picked widget needs BIND_APPWIDGET, reserved to the default launcher. No documented intent opens an OEM launcher''s picker, and no OEM documents one for third-party apps. The documented app-side surface is the pin request: "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant" (Widget discoverability, developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16). That path is AppWidgetManager.requestPinAppWidget - "Request to pin an app widget on the current launcher" - from API 26, gated on isRequestPinAppWidgetSupported(). The launcher then shows its own confirmation with one named widget of ours preselected and places it on confirm. It is not the gallery: the app names one kind per call. Our Android gallery holds eight kinds (two schedules by two themes by two sizes); iOS holds fourteen, adding the six lock-screen kinds. expo-widgets exposes no pin call, so Option 1 needs a small Kotlin module following modules/widgetrefresh.
+
+**Verdict.** No open-gallery API exists on either platform. The order routes the closest-legal-surface choice to the owner.
+
+**The options.** (1) Recommended - Android pins, everywhere else teaches: with the launcher check true, the Widgets option requests a pin of the ruled kind (default: Next Prayer, Light, small); otherwise, and on iOS, it opens the how-to card. (2) Teach everywhere: the option opens the how-to card on both platforms; no native module, one code path, two taps further from a placed widget on Android. (3) Do nothing this version: the order''s premise stands unaddressed.
+
+Recommendation argued twice, in the plan doc''s Design section: a pin places a widget in two taps where the platform permits it and the same tap teaches where it does not; the counter (two code paths, a native module, a surprised user) does not flip it, because the launcher''s own confirm dialog shows exactly the widget that would be placed, so the user keeps the decision.', NULL, '2026-10-19 08:17:14.459811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1985, 16, 'activity', 'owner', NULL, 'label_add', '2026-10-19 08:18:21.944481+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1986, 16, 'comment', 'owner', 'Conformance findings: branch B conforms to plan v3 steps 1 and 2 and to the workflow''s Owner-led integrity items. Comment 1979 carries both platforms'' evidence, the verdict, and the three numbered options with the recommendation. The parked state carries everything Step 2 names: Owner-led, Waiting on naming the ruling and options (1) to (3) with the pin-kind sub-ruling, needs-owner set in the same breath as the move, steps 1 and 2 ticked, steps 3 to 5 unticked. The Android quotes in 1979 match the plan doc word for word, the weight holds in all three places (estimate 9, the 9 pts label, 1+1+2+2+3), and the labels sit in the fixed order #142, Feature, 9 pts, Both, widgets, needs-owner.
+
+nitpick: the plan''s Proof line for Step 1 says the record "quotes both platforms'' pages"; only the Android half of comment 1979 quotes verbatim, the iOS half cites and summarizes. The plan''s own investigation section reads the same way, so the Proof wording overstates rather than the record drifting.', NULL, '2026-10-19 08:22:16.63944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1973, 17, 'comment', 'owner', 'Done: the device-locale PR is filed as expo/expo#51793, its link sits in the ledger, and row #239 watches its review. Every open upstream PR now has its board row, and #233 waits in Backlog to delete the patch hunks the day a published release carries the feature.', NULL, '2026-10-19 08:10:51.05222+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1974, 236, 'activity', 'owner', NULL, 'title', '2026-10-19 08:16:26.265658+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The Widgets row in the Other card - settings.widgets in six locales, the row after Language, the yarn i18n:lock re-take with the catalog lock test green, red-then-green Settings.test.tsx coverage (contingent on the ruling)"}, "from": {"value": "Step 3: The Widgets row in the Other card - settings.widgets in six locales, the row after Language, red-then-green Settings.test.tsx coverage (contingent on the ruling)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1977, 16, 'comment', 'owner', 'Plan v3 on the Docs page T-142: five steps, 9 pts, two grill rounds applied. The owner-ordered investigation found no open-gallery API on either platform, so this run ends in Owner-led with the ruling between three options; branch A (the row, the how-to card, the pin module, the device read) runs here the moment the ruling lands.', NULL, '2026-10-19 08:16:49.526118+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1980, 16, 'comment', 'owner', 'agent-ruled 2026-10-19, five decisions taken at planning (D142.1 to D142.5, in the plan doc): branch B is this run''s terminal state because the order''s own words reserve the closest-legal-surface choice for the owner and no open-gallery API exists on either platform; branch A stays planned in full on this ticket, never plan-and-stop; the Widgets row follows the Other card''s own row pattern after Language; Option 1 is the recommendation; the Android pin target''s ComponentName is resolved from the built APK manifest, never guessed.', NULL, '2026-10-19 08:17:44.254928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1981, 234, 'activity', 'owner', NULL, 'status', '2026-10-19 08:18:15.484213+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1987, 16, 'comment', 'owner', 'Blind findings: every quoted page re-fetched live today and the repository read at this commit.
+
+What verified: the ACTION_APPWIDGET_PICK words are verbatim (the page''s sentence continues "when you want to pick an AppWidget to display"), requestPinAppWidget is "Request to pin an app widget on the current launcher" at API level 26 behind isRequestPinAppWidgetSupported(), the Widget discoverability sentence is verbatim with its "Last updated 2026-10-16 UTC", expo-widgets is 58.0.20 both in package.json and as the npm latest, the Expo page exposes no pin call and no gallery call, and app.json holds exactly eight Android kinds (two schedules by two themes by two sizes) and fourteen iOS entries including the six accessory kinds. Waiting on matches the record''s three options word for word and cites comment 1979 by its real id. Estimate 9, the 9 pts label and the plan''s 9 pts agree, the labels sit in the fixed order, Lane and Waiting on are set, Steps 1 and 2 are Done and Steps 3 to 5 honestly wait on the ruling. No model names, no device identifiers, no banned prose marks.
+
+suggestion: comment 1979, iOS paragraph, the phrase "plus push and relevance maintenance". The WidgetCenter page documents neither. Its symbols are shared, getCurrentConfigurations(_:), UserInfoKey, reloadTimelines(ofKind:), reloadAllTimelines() and invalidateConfigurationRecommendations(). The word relevance never appears on the page, and push occurs only in a prose example about when to request a reload. Strike the phrase or cite the framework page''s APNs material instead. The paragraph''s conclusion stands: the page documents no symbol that presents UI.
+
+suggestion: comment 1979, the expo-widgets API list includes "custom notifications". The cited page carries no such feature. Every notification mention there is enablePushNotifications or Live Activity push prose. The other five items (createWidget, the Widget class, Live Activities, push tokens, event subscriptions) each verify against the page''s own sections. Drop the sixth item.
+
+suggestion: comment 1979, "its interactivity section is widget-to-app deep links". The framework page''s Interactivity section lists three articles: buttons and toggles in widgets, animating data updates, and linking to specific app scenes. One of the three is deep links. Reword to name the deep-links article or to say the section covers app-directed interactions only.
+
+question: the description''s first criterion says the record quotes both platforms'' current documentation pages. The Android paragraph quotes three times. The iOS paragraph quotes nothing, it only describes. Does paraphrase satisfy "quoting", or does the iOS half need one verbatim line from WidgetCenter or the framework page? The unticked box reads honest today either way.
+
+nitpick: comment 1979 says "The launcher then shows its own confirmation". The reference hedges with "optionally showing a user confirmation" and leaves acceptance to the launcher. The recommendation''s rebuttal leans on that dialog, so the hedge is worth keeping in the record''s own words.
+
+The Android half of the record is verbatim to the letter, and the board state agrees with itself end to end. The three suggestions sit entirely in the iOS half''s summary sentences, and none of them moves the verdict.', NULL, '2026-10-19 08:28:45.949398+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1989, 16, 'activity', 'owner', NULL, 'description', '2026-10-19 08:30:49.452723+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: A Widgets option in the settings sheet''s Other card that takes the user to the OS widget gallery at our widgets where the platform permits, else the closest legal surface the owner rules on - the investigation found no open-gallery API on either platform, so the ruling between the plan''s three options is this ticket''s gate.\n\nWhere: the settings bottom sheet''s Other card (components/sheets/screens/Settings.tsx), the i18n catalogues, and the surface the ruling picks (an in-app how-to card and, under Option 1, an Android pin-request module).\n\nAcceptance:\n- [x] The ticket carries the investigation record quoting both platforms'' current documentation pages, with the per-platform verdict and the three numbered options.\n- [x] The ticket sits in Owner-led with Waiting on naming the ruling and the numbered options, the recommendation recorded.\n- [ ] After the ruling: the Other card shows the Widgets row following the card''s own row pattern, tapping it performs the ruled surface, the 3T transcript and the owner''s iPhone confirmation each land as a ticket comment."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1988, 16, 'comment', 'owner', 'Audit outcome: conformance (comment 1986) and blind (comment 1987) both clean on verdict, quotes, weights and board state; six findings, adjudicated here, with the confirmed corrections folded into plan v4 and this addendum.
+
+1. CONFIRMED, fixed - the record''s iOS half cited but never quoted, while the description says "quoting". Verbatim from the WidgetCenter page: "An object that contains a list of user-configured widgets and is used for reloading widget timelines."
+2. CONFIRMED, fixed - "plus push and relevance maintenance" is not on the WidgetCenter page; its Topics document exactly six symbols, all reads and timeline reloads. Struck from the record and the plan.
+3. REJECTED, on evidence - "custom notifications" stands: the expo-widgets page''s Classes section documents CustomNotification ("Supported platforms: Android"), CustomNotificationFactory and createCustomNotification.
+4. CONFIRMED, fixed - the interactivity gloss now names the section''s own scope: buttons and toggles, animations, deep links to app scenes.
+5. CONFIRMED, fixed - the pin confirmation is the launcher''s to show or skip ("optionally showing a user confirmation", the reference''s word); the record said "shows". The recommendation survives either way: where the dialog shows, the user keeps the decision; where the launcher places directly, the user''s own tap on the option was the consent.
+6. CONFIRMED, fixed - the plan''s Proof now reads "cites both platforms'' pages, quoting the load-bearing lines".', NULL, '2026-10-19 08:30:32.957484+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -7002,6 +7676,11 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 -- Data for Name: issue_field_option; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (15, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (18, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (19, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (17, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (16, 2, 3);
 
 
 --
@@ -7151,6 +7830,18 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (109, 109, 1, NULL, 21, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (124, 124, 1, NULL, 5, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (526, 21, 3, '2026-10-19, phase 2: the owner APPROVED the prototype and asked for the queue''s workflow inside it. The board now carries the queue''s own ten columns with the 128 tickets on them, the seven workflow roles as AI agents, the two workflow skills, five Docs pages, and an `itsaplan` MCP server wired into', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (528, 18, 3, 'The owner''s ruling between the options: (a) accept the platform box, row 87''s law unchanged; (b) pin an ar lineHeight per surface family, component-scoped, digits ruled in (the record''s recommendation, comments 1820 and 1835)', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (529, 230, 1, NULL, 230, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (530, 230, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#50581`; at the first re-pin past its release the background-task patch dies.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (531, 231, 1, NULL, 231, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (532, 231, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51290`; the proportional-layout workaround simplifies only at the owner''s say.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (533, 232, 1, NULL, 232, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (534, 232, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51292`; at the first re-pin past its release the openApp half of the widgets patch dies.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (535, 233, 1, NULL, 233, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (536, 233, 3, 'A published `expo-widgets` release carrying `__expoWidgetDeviceLocale`; until then this row waits.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (537, 239, 1, NULL, 239, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (538, 239, 3, '2026-10-19: waiting on Expo reviewing PR `expo/expo#51793`; when a published release carries the global, row #233 deletes the local patch''s device-locale hunks and the ledger entry moves to shipped.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (539, 16, 3, 'The owner''s ruling between the options: (1) Android pins, everywhere else teaches - the recommendation (comment 1979); (2) teach everywhere, the how-to card on both platforms; (3) do nothing this version. Inside (1): which kind the pin names, default Next Prayer (Light, small).', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -7191,16 +7882,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (13, 129);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (13, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (14, 128);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (14, 142);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 127);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 142);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 126);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 142);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 125);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 150);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 124);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 143);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 123);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (20, 122);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (20, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (22, 121);
@@ -7345,6 +8026,16 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (123, 20);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (123, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (128, 15);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (128, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 123);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 157);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (19, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 126);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 159);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (16, 11);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (84, 59);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (84, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (89, 54);
@@ -7353,8 +8044,29 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (94, 49);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (94, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (99, 44);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (99, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 127);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 161);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (15, 5);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (230, 166);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (230, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (230, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (230, 5);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (230, 12);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (85, 58);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (85, 143);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 124);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 143);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 159);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (18, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (231, 167);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (231, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (231, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (231, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (231, 12);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (86, 57);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (86, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (91, 52);
@@ -7369,6 +8081,15 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (121, 22);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (121, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (126, 17);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (126, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 125);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 160);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (17, 12);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (232, 168);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (232, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (232, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (232, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (232, 12);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (87, 56);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (87, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (92, 51);
@@ -7390,6 +8111,11 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (127, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (21, 14);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (21, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (21, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (233, 169);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (233, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (233, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (233, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (233, 12);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (90, 53);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (90, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (95, 48);
@@ -7409,6 +8135,11 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (125, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (3, 138);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (3, 145);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (3, 12);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (239, 170);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (239, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (239, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (239, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (239, 12);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (101, 42);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (101, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (116, 27);
@@ -7493,11 +8224,6 @@ INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, creat
 -- Data for Name: issue_status; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (15, 15, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.731+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (16, 16, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.745+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (17, 17, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.759+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (18, 18, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.773+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (19, 19, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.787+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (22, 22, 4, 'Done', 'completed', '2026-10-18 23:35:55.83+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (23, 23, 4, 'Done', 'completed', '2026-10-18 23:35:55.848+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (24, 24, 4, 'Done', 'completed', '2026-10-18 23:35:55.866+00', NULL);
@@ -7610,6 +8336,10 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (20, 20, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.799+00', '2026-10-18 23:57:28.873774+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (121, 121, 4, 'Done', 'completed', '2026-10-18 23:35:57.562+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (123, 123, 4, 'Done', 'completed', '2026-10-18 23:35:57.597+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (15, 15, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.731+00', '2026-10-19 03:09:42.175341+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (18, 18, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.773+00', '2026-10-19 03:09:42.214032+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (19, 19, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.787+00', '2026-10-19 03:09:42.250889+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (17, 17, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.759+00', '2026-10-19 06:04:47.169794+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (125, 125, 4, 'Done', 'completed', '2026-10-18 23:35:57.635+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (127, 127, 4, 'Done', 'completed', '2026-10-18 23:35:57.683+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (122, 122, 4, 'Done', 'completed', '2026-10-18 23:35:57.578+00', NULL);
@@ -7639,6 +8369,83 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (295, 6, 4, 'Done', 'completed', '2026-10-19 02:46:27.65566+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (143, 21, 9, 'Owner-led', 'started', '2026-10-18 23:57:28.891996+00', '2026-10-19 02:46:27.752267+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (296, 21, 4, 'Done', 'completed', '2026-10-19 02:46:27.752267+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (298, 18, 6, 'Planning', 'unstarted', '2026-10-19 03:09:42.214032+00', '2026-10-19 03:33:33.966061+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (313, 18, 2, 'Ready', 'unstarted', '2026-10-19 03:33:33.966061+00', '2026-10-19 03:34:40.655506+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (300, 209, 1, 'Backlog', 'backlog', '2026-10-19 03:18:21.915+00', '2026-10-19 03:44:19.00778+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (315, 209, 4, 'Done', 'completed', '2026-10-19 03:44:19.00778+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (301, 210, 1, 'Backlog', 'backlog', '2026-10-19 03:18:21.959+00', '2026-10-19 03:48:16.473914+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (316, 210, 4, 'Done', 'completed', '2026-10-19 03:48:16.473914+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (297, 15, 6, 'Planning', 'unstarted', '2026-10-19 03:09:42.175341+00', '2026-10-19 03:57:38.147544+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (317, 15, 2, 'Ready', 'unstarted', '2026-10-19 03:57:38.147544+00', '2026-10-19 03:57:45.528282+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (308, 217, 1, 'Backlog', 'backlog', '2026-10-19 03:25:16.207+00', '2026-10-19 04:07:24.461124+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (319, 217, 4, 'Done', 'completed', '2026-10-19 04:07:24.461124+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (299, 19, 6, 'Planning', 'unstarted', '2026-10-19 03:09:42.250889+00', '2026-10-19 04:08:16.364689+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (309, 218, 1, 'Backlog', 'backlog', '2026-10-19 03:25:16.232+00', '2026-10-19 04:09:12.40112+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (321, 218, 4, 'Done', 'completed', '2026-10-19 04:09:12.40112+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (302, 211, 1, 'Backlog', 'backlog', '2026-10-19 03:18:21.99+00', '2026-10-19 04:11:28.066889+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (322, 211, 4, 'Done', 'completed', '2026-10-19 04:11:28.066889+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (310, 219, 1, 'Backlog', 'backlog', '2026-10-19 03:25:16.256+00', '2026-10-19 04:23:45.320191+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (323, 219, 4, 'Done', 'completed', '2026-10-19 04:23:45.320191+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (305, 214, 1, 'Backlog', 'backlog', '2026-10-19 03:24:16.483+00', '2026-10-19 04:27:09.825674+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (324, 214, 4, 'Done', 'completed', '2026-10-19 04:27:09.825674+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (311, 220, 1, 'Backlog', 'backlog', '2026-10-19 03:25:16.282+00', '2026-10-19 04:34:55.792448+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (325, 220, 4, 'Done', 'completed', '2026-10-19 04:34:55.792448+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (306, 215, 1, 'Backlog', 'backlog', '2026-10-19 03:24:16.533+00', '2026-10-19 04:37:04.016405+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (326, 215, 4, 'Done', 'completed', '2026-10-19 04:37:04.016405+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (303, 212, 1, 'Backlog', 'backlog', '2026-10-19 03:18:22.013+00', '2026-10-19 04:49:41.077258+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (327, 212, 4, 'Done', 'completed', '2026-10-19 04:49:41.077258+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (304, 213, 1, 'Backlog', 'backlog', '2026-10-19 03:18:22.039+00', '2026-10-19 05:08:10.544643+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (328, 213, 4, 'Done', 'completed', '2026-10-19 05:08:10.544643+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (314, 18, 3, 'In progress', 'started', '2026-10-19 03:34:40.655506+00', '2026-10-19 05:08:39.741498+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (312, 221, 1, 'Backlog', 'backlog', '2026-10-19 03:25:16.306+00', '2026-10-19 05:18:36.156762+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (330, 221, 4, 'Done', 'completed', '2026-10-19 05:18:36.156762+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (318, 15, 3, 'In progress', 'started', '2026-10-19 03:57:45.528282+00', '2026-10-19 05:19:35.946059+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (329, 18, 8, 'Audit', 'started', '2026-10-19 05:08:39.741498+00', '2026-10-19 05:23:30.021054+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (332, 18, 9, 'Owner-led', 'started', '2026-10-19 05:23:30.021054+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (331, 15, 8, 'Audit', 'started', '2026-10-19 05:19:35.946059+00', '2026-10-19 05:45:17.602172+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (333, 15, 4, 'Done', 'completed', '2026-10-19 05:45:17.602172+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (307, 216, 1, 'Backlog', 'backlog', '2026-10-19 03:24:16.572+00', '2026-10-19 07:09:09.347799+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (335, 216, 4, 'Done', 'completed', '2026-10-19 07:09:09.347799+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (334, 17, 6, 'Planning', 'unstarted', '2026-10-19 06:04:47.169794+00', '2026-10-19 07:28:16.425308+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (344, 17, 2, 'Ready', 'unstarted', '2026-10-19 07:28:16.425308+00', '2026-10-19 07:28:29.216434+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (346, 230, 11, 'Upstream', 'started', '2026-10-19 07:36:49.676+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (347, 231, 11, 'Upstream', 'started', '2026-10-19 07:36:59.463+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (348, 232, 11, 'Upstream', 'started', '2026-10-19 07:36:59.597+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (349, 233, 11, 'Upstream', 'started', '2026-10-19 07:36:59.693+00', '2026-10-19 07:36:59.808445+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (350, 233, 1, 'Backlog', 'backlog', '2026-10-19 07:36:59.808445+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (320, 19, 2, 'Ready', 'unstarted', '2026-10-19 04:08:16.364689+00', '2026-10-19 07:38:45.837528+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (351, 19, 4, 'Done', 'completed', '2026-10-19 07:38:45.837528+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (16, 16, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.745+00', '2026-10-19 07:44:11.305783+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (336, 222, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.677+00', '2026-10-19 07:45:44.620489+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (353, 222, 4, 'Done', 'completed', '2026-10-19 07:45:44.620489+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (337, 223, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.738+00', '2026-10-19 07:45:44.666558+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (354, 223, 4, 'Done', 'completed', '2026-10-19 07:45:44.666558+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (338, 224, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.781+00', '2026-10-19 07:45:44.716507+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (355, 224, 4, 'Done', 'completed', '2026-10-19 07:45:44.716507+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (339, 225, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.817+00', '2026-10-19 07:45:44.766243+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (356, 225, 4, 'Done', 'completed', '2026-10-19 07:45:44.766243+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (340, 226, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.849+00', '2026-10-19 07:45:44.812102+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (357, 226, 4, 'Done', 'completed', '2026-10-19 07:45:44.812102+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (341, 227, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.88+00', '2026-10-19 07:45:44.857447+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (358, 227, 4, 'Done', 'completed', '2026-10-19 07:45:44.857447+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (342, 228, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.906+00', '2026-10-19 07:45:44.909156+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (359, 228, 4, 'Done', 'completed', '2026-10-19 07:45:44.909156+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (362, 236, 1, 'Backlog', 'backlog', '2026-10-19 07:56:01.165+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (363, 237, 1, 'Backlog', 'backlog', '2026-10-19 07:56:01.201+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (364, 238, 1, 'Backlog', 'backlog', '2026-10-19 07:56:01.228+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (343, 229, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.934+00', '2026-10-19 08:04:03.734343+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (365, 229, 4, 'Done', 'completed', '2026-10-19 08:04:03.734343+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (366, 239, 11, 'Upstream', 'started', '2026-10-19 08:08:29.906+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (345, 17, 3, 'In progress', 'started', '2026-10-19 07:28:29.216434+00', '2026-10-19 08:10:51.011606+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (367, 17, 4, 'Done', 'completed', '2026-10-19 08:10:51.011606+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (352, 16, 6, 'Planning', 'unstarted', '2026-10-19 07:44:11.305783+00', '2026-10-19 08:16:49.484574+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (368, 16, 2, 'Ready', 'unstarted', '2026-10-19 08:16:49.484574+00', '2026-10-19 08:16:59.890453+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (360, 234, 1, 'Backlog', 'backlog', '2026-10-19 07:56:01.085+00', '2026-10-19 08:18:15.481153+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (370, 234, 4, 'Done', 'completed', '2026-10-19 08:18:15.481153+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (361, 235, 1, 'Backlog', 'backlog', '2026-10-19 07:56:01.129+00', '2026-10-19 08:18:15.520253+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (371, 235, 4, 'Done', 'completed', '2026-10-19 08:18:15.520253+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (369, 16, 3, 'In progress', 'started', '2026-10-19 08:16:59.890453+00', '2026-10-19 08:18:21.929022+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (372, 16, 9, 'Owner-led', 'started', '2026-10-19 08:18:21.929022+00', NULL);
 
 
 --
@@ -7843,12 +8650,15 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (159, 1, 5, '9 pts', '#f97316', '2026-10-19 02:54:26.15369+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (162, 1, 5, '12 pts', '#f97316', '2026-10-19 02:54:26.16627+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (164, 1, 5, '14 pts', '#f97316', '2026-10-19 02:54:26.17431+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (166, 1, 3, '#230', '#ffffff', '2026-10-19 07:36:49.780782+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (169, 1, 3, '#233', '#ffffff', '2026-10-19 07:36:59.718027+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (142, 1, 4, 'Feature', '#8b5cf6', '2026-10-19 02:54:07.527796+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (145, 1, 4, 'Research', '#ec4899', '2026-10-19 02:54:07.546818+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (147, 1, 4, 'Docs', '#6366f1', '2026-10-19 02:54:07.556236+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (150, 1, 4, 'Release', '#0ea5e9', '2026-10-19 02:54:07.570267+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (155, 1, 5, '5 pts', '#f97316', '2026-10-19 02:54:26.136353+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (160, 1, 5, '10 pts', '#f97316', '2026-10-19 02:54:26.157973+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (167, 1, 3, '#231', '#ffffff', '2026-10-19 07:36:59.509991+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (13, 1, 3, '#70', '#ffffff', '2026-10-19 02:20:39.578807+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (14, 1, 3, '#144', '#ffffff', '2026-10-19 02:20:39.612121+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (15, 1, 3, '#1', '#ffffff', '2026-10-19 02:20:39.627211+00');
@@ -7968,6 +8778,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (129, 1, 3, '#136', '#ffffff', '2026-10-19 02:20:41.110256+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (130, 1, 3, '#132', '#ffffff', '2026-10-19 02:20:41.124523+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (131, 1, 3, '#130', '#ffffff', '2026-10-19 02:20:41.139471+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (170, 1, 3, '#239', '#ffffff', '2026-10-19 08:08:29.958676+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (132, 1, 3, '#128', '#ffffff', '2026-10-19 02:20:41.152125+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (133, 1, 3, '#127', '#ffffff', '2026-10-19 02:20:41.16843+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (134, 1, 3, '#126', '#ffffff', '2026-10-19 02:20:41.183807+00');
@@ -7985,6 +8796,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (161, 1, 5, '11 pts', '#f97316', '2026-10-19 02:54:26.161905+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (163, 1, 5, '13 pts', '#f97316', '2026-10-19 02:54:26.170164+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (165, 1, 5, '15 pts', '#f97316', '2026-10-19 02:54:26.179154+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (168, 1, 3, '#232', '#ffffff', '2026-10-19 07:36:59.619618+00');
 
 
 --
@@ -8303,7 +9115,7 @@ INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refre
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, true, false, false, true, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 240, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, true, false, false, true, 1, NULL);
 
 
 --
@@ -9071,6 +9883,557 @@ Owner goal: the app goes global in v2.0 with a language switcher. Research lives
 `ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
 catalog and `t()`, no i18n library, no second language first. RTL is the real work.
 ', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 7168, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.797851+00', '2026-10-19 02:17:21.445666+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
+3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
+4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
+5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
+
+Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
+- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
+- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 8192, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00', '2026-10-19 03:33:05.183901+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (11, 1, NULL, 'T-139', '# T-139
+
+Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
+
+## Goal
+
+The alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from
+its switch, and turning the athan off destroys the reminders'' enabled state in preferences.
+After this ticket: every disabled-content opacity in the sheet sits at half its current value,
+the whole header row of each reminder toggles it, and turning the athan back on restores each
+reminder to its pre-off enabled state, backed by the preference values the app never deletes.
+
+## Decisions taken
+
+All agent-ruled 2026-10-19, one line of why each.
+
+1. **"One dim level, halved" means per-value halving, not flattening the nesting.** Every
+   disabled-content opacity value that renders in this sheet halves. The three groups the order
+   names (rows, bodies under an off alert, bodies under an enabled alert) all carry the 0.25
+   style value today and all land on 0.125, which is the one uniform level. Challenged:
+   "matching the reminders exactly" could demand one effective visibility with no compounding.
+   Answer: flattening would raise the off-alert bodies (0.0625 effective today) and restructure
+   dim conditions, which "reduce to half, whatever each value is now" contradicts and the pixel
+   say does not cover.
+2. **"The enabled alert''s own body content below the header" is the reminder body while the
+   athan is enabled and that reminder is off.** The athan card''s own control carries no opacity
+   in the code, so no before-value exists for it to halve; the reminder-off body is the only
+   body content below an alert header that dims today.
+3. **The restore preserves reminder alert values in the existing preference atoms.** No new MMKV
+   keys, no session-only snapshot. Challenged: a session-only ref needs no store change, but it
+   fails the off, close, reopen, on flow the owner''s recap implies and is not
+   preferences-backed. Challenged again: separate restore keys avoid relaxing the stored
+   contract, but new schema keys are an ask-first item and duplicate what the existing atoms
+   can hold. The scheduler already gates every reminder read on the athan being on, so the
+   store can hold choices the scheduler ignores.
+4. **The whole-header tap copies the LabeledToggle pattern exactly, with no row haptic.**
+   LabeledToggle is the repo''s shipped whole-row switch pattern; the switch stays the only
+   haptic source, exactly as in Settings.
+5. **The dead `cardDisabled` and `optionsDisabled` styles in Alert.tsx are deleted.** They
+   render nowhere, touch no pixel, and mislead the dim-site measurement.
+6. **Type Bug, patch bump on every commit.** All three changes restore intended behaviour; none
+   adds a capability.
+
+## Files
+
+Changed:
+
+- `components/sheets/screens/ReminderCard.tsx` — two dim values halved; header row wrapped in
+  the LabeledToggle press pattern.
+- `components/sheets/screens/Alert.tsx` — dead styles deleted; draft derives the off display,
+  keeps a preserved-alerts ref, restores on the off-to-on transition, reports store-true
+  original and current state to the commit.
+- `components/sheets/parts/SegmentedControl.tsx` — disabled opacity halved.
+- `components/sheets/parts/Stepper.tsx` — two disabled opacities halved.
+- `components/sheets/parts/Toggle.tsx` — disabled opacity halved.
+- `stores/notifications.ts` — the force-off loop inside `setPrayerAlertType` removed;
+  `applyPrayerPreferences` doc comment updated to the new write truth.
+- `hooks/useNotification.ts` — `enablesAnything` reduced to the at-time check.
+- `package.json`, `app.json`, `android/app/build.gradle` — patch bump on every commit,
+  fetched from origin first.
+
+Read, not changed: `components/sheets/parts/LabeledToggle.tsx` (the pattern),
+`components/sheets/screens/alertDraft.ts` and `components/sheets/parts/reminderStep.ts` (the
+pure draft rules the restore reuses).
+
+Tests touched: `components/sheets/screens/__tests__/Alert.test.tsx`,
+`components/sheets/parts/__tests__/Toggle.test.tsx`,
+`components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
+`stores/__tests__/notifications.test.ts`,
+`stores/__tests__/notificationAlertCommit.test.ts`,
+`stores/__tests__/notificationPreferenceSetters.test.ts`,
+`hooks/__tests__/useNotification.test.ts`.
+
+## Design
+
+### Item 1: the dim table, measured at uat 91dafe2d
+
+| # | Site | Style (file) | Renders when | Now | After |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Whole reminder card | `cardDisabled` (ReminderCard.tsx:100) | locked: athan Off, or reminder 1 Off for card 2 | 0.25 | 0.125 |
+| 2 | Reminder body, sound and minutes | `optionsDisabled` (ReminderCard.tsx:126) | that reminder Off | 0.25 | 0.125 |
+| 3 | Sound segmented control | `disabled` (SegmentedControl.tsx:201) | reminder Off; the athan control never passes disabled | 0.4 | 0.2 |
+| 4 | Minutes stepper | `disabled` (Stepper.tsx:110) | reminder Off | 0.4 | 0.2 |
+| 5 | Stepper arrow at a range end | `buttonDisabled` (Stepper.tsx:120) | value 5 (minus dead) or 30 (plus dead), in any stepper state | 0.3 | 0.15 |
+| 6 | Reminder switch | `disabled` (Toggle.tsx:91) | locked card; ReminderCard is the only caller passing disabled | 0.4 | 0.2 |
+| 7 | Dead styles | `cardDisabled` (Alert.tsx:273), `optionsDisabled` (Alert.tsx:299) | never applied | 0.25 | deleted |
+
+Scoping: SegmentedControl renders only in Alert.tsx and ReminderCard; Stepper only in
+ReminderCard; Toggle''s disabled style renders only where ReminderCard passes disabled
+(LabeledToggle and Settings never pass it). Every halved pixel sits inside this sheet.
+
+No other opacity in the sheet changes. The crossfades in SegmentedControl
+(`progress.value`, `1 - progress.value`) are selection animations, not dim levels, and stay.
+
+### Item 2: whole-header tap
+
+ReminderCard''s header row (title, hint, switch) is wrapped in a Pressable whose onPress guards
+on `locked` and calls `onToggle`. This is the LabeledToggle pattern: the switch keeps its
+role, its checked state and its own press; React Native gives the touch to the innermost
+pressable, so a press on the switch fires once through the switch and a press on the title,
+the hint or the gap fires once through the row. The body (sound control and stepper) stays
+outside the target: the order names the top part only. The row adds no haptic and no
+accessibility role; the switch remains the accessible control, as in Settings.
+
+### Item 3: reminder state restored, preferences-backed
+
+Store contract: `preference_reminder_alert_*` holds the user''s chosen value even while the
+athan is Off. The force-off loop in `setPrayerAlertType` goes; its only production caller,
+`applyPrayerPreferences`, writes at-time first and both reminders after, so the commit lands
+the values it is given. Every reader of a stored reminder alert already gates on the athan:
+`applyPrayerAlerts` arms nothing when atTimeAlert is Off, `_addAllScheduleRemindersForSchedule`
+carries the same gate, and `requestCostReader` costs an off prayer zero. The store records
+choices; the scheduler derives firing.
+
+Sheet draft:
+
+- At mount, a reminder displays Off whenever the mounted athan is Off, whatever the stored
+  reminder value, and the shown sound derives to Silent there exactly as today (the preserved
+  sound lives only in the ref), so the slide-off under an off athan keeps today''s pixels:
+  switch off, pill on Silent.
+- A `preservedAlerts` ref holds the stored per-slot alert values at mount and re-snapshots
+  the live draft at every in-session transition into Off. Steppers and switches are locked
+  while off, so intervals cannot move in between.
+- On the transition out of Off (to Silent or Sound), each reminder becomes
+  `{ alert: preservedAlerts[slot], interval: draft interval }`, and the shown sound becomes
+  the preserved value beside it, so the restored pill reads the sound the reminder fires with.
+  A reminder that was off by its own choice restores to Off.
+- `getOriginalState` reports the store''s truth (preserved alerts, mounted intervals, so a
+  failed commit puts the store back exactly); `getCurrentState` substitutes the preserved
+  alerts for the display Off whenever atTimeAlert is Off, so the commit writes the preserved
+  values and the store keeps them.
+- `commitAlertMenuChanges` reduces `enablesAnything` to
+  `currentState.atTimeAlert !== AlertType.Off`. The reminder disjunct is redundant today and
+  would prompt for permissions on closing an all-off sheet whose preserved values sit in the
+  draft.
+- Installs that already hold Off reminder values under an off athan keep them: nothing
+  restores, which matches today''s behaviour, because no pre-off record exists for them.
+
+The permission gate in `handleAlertSelect` is unchanged: the Off-to-on athan move still asks
+before it selects, and a denial still leaves the control where it was.
+
+## Steps
+
+1. **Step 1: halved dim values pinned in the suites** (code, 2). Halve sites 1 through 6,
+   delete the dead styles, extend the four suites that render a dim value to pin it
+   (Alert.test.tsx for the two ReminderCard sites, SegmentedControl.test.tsx, Stepper.test.tsx,
+   Toggle.test.tsx), red before green.
+2. **Step 2: whole-header tap on the reminder rows** (code, 2). Wrap the header row per
+   LabeledToggle, red before green, with suite cases for title-press toggling, locked rows
+   refusing, and the switch still toggling once.
+3. **Step 3: the store keeps reminder choices under an off athan** (code, 2). Remove the
+   force-off, reduce `enablesAnything`, update the pinned store, commit and hook suites to
+   the new contract, red before green.
+4. **Step 4: the sheet restores on off-to-on** (code, 2). The draft derivation, the
+   preserved ref, the restore transition and the store-true commit reporting, red before
+   green, with suite cases for same-session restore, reopen restore, off-by-choice staying
+   off, the no-change close committing nothing, the mounted slide-off pixels (switch off,
+   sound pill on Silent under an off athan holding a preserved Sound), and the restored pill
+   showing the preserved sound.
+5. **Step 5: device pass on the changed sheet** (device, 3). A mock build on the harness
+   emulator: `$HOME/athan-gitree/bin/build-mock.zsh` with `mocks/simple.ts` installed on the
+   `athan-smoke-28` AVD (e2e/README.md''s harness emulator, panel-matched to the OnePlus 3T
+   atlas rows in e2e/device-atlas-oneplus3t.md). Open the alert sheet through the alert bell
+   at (979, 974) on the Dhuhr row (e2e/flows/sheets-x10.yaml), then read: the header tap
+   toggles from the title, off slides the reminders off, on brings them back, and the
+   `NOTIFICATION: Preference snapshot` log shows the preserved values. The dim halving is
+   owned by the suites, which pin the exact values; the device pass reads behaviour, not
+   ratios. Runs alone in a fresh session.
+
+Weight: 11 pts.
+
+### Routing the owner''s read
+
+The owner''s read of the sheet on the phones is the acceptance that follows the merge: this run
+closes the ticket through Audit to Done with the lead''s merge, and the owner reads the phones
+on uat after it. Anything that read catches opens as its own ticket. Parking the ticket in
+Owner-led instead would hold the lane against the run''s dispatch terms.
+
+## Risks
+
+- A nested-pressable double fire would toggle twice per press. LabeledToggle ships the same
+   nesting in production, and Step 5 presses title and switch once each and reads the toggle.
+- A future reader of a stored reminder alert without the athan gate would arm reminders under
+   an off athan. Every reader today gates; Step 3''s suite pins the gate on each reader path.
+- The enablesAnything reduction could regress a prompt path. The hook suite covers the
+   all-off close with preserved values and the on-close that must prompt.
+- Legacy Off values restore nothing and could read as a regression. It is today''s behaviour
+   and Step 4''s suite states it.
+- The dim halving could leak past this sheet through the shared parts. The usage check above
+   shows the disabled styles render only here, and Step 1''s suite changes pin the parts''
+   values where their disabled props are the sheet''s.
+
+## Proof
+
+- `yarn validate` green on the lane branch.
+- `yarn jest components/sheets/screens/__tests__/Alert.test.tsx components/sheets/parts/__tests__/Toggle.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/sheets/parts/__tests__/SegmentedControl.test.tsx stores/__tests__/notifications.test.ts stores/__tests__/notificationAlertCommit.test.ts stores/__tests__/notificationPreferenceSetters.test.ts hooks/__tests__/useNotification.test.ts`
+  green, with the new cases asserting the halved values, the header tap, the preservation and
+  the restore.
+- Coverage on, every line the change touches covered, and a mutation pass on the guarded
+  logic the change adds: the restore transition, the getCurrentState preserved-alert
+  substitution, and the locked row guard.
+- No date logic is touched, so `yarn test:tz` is out of scope.
+- Step 5''s device log and transcribed reads on the simulator, per the device atlas.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 10240, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:24:54.564779+00', '2026-10-19 03:57:24.867704+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (10, 1, NULL, 'T-141', '# T-141
+
+## Goal
+
+An Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No frame shows the target-language schedule mid-switch. No frame shows a blank page. A launch that does not switch renders exactly the lines it renders today.
+
+## Decisions taken
+
+- 2026-10-19. The cover for the native restart is a first-party Android module (modules/switchcover, the modules/tls13 pattern). The app''s builds disable expo-updates (the prebuilt manifest sets `expo.modules.updates.ENABLED` false), so the app runs `DisabledUpdatesController`, whose `reloadScreenManager` is null and whose JS screen functions are `BuildConfig.DEBUG`-gated. No shipped API can paint during the restart.
+- 2026-10-19. The cover reuses the loader''s own values: the same root purple, spinner colour, spinner size, line string and line offsets, passed from JS. It sustains an existing face through the span rather than adding one. Challenged: a native view is still a new surface. Second argument: every value and string is the loader''s own, composed by the same helper, so the switch shows one face throughout, which is the owner''s contract.
+- 2026-10-19. The cover''s native spinner and line use the platform''s indeterminate drawable and the system typeface. The drawable is the same view class the loader''s ActivityIndicator wraps, and the span is the restart alone; the Arabic line''s bundled face may differ for that span. This is the one measurable divergence from the iPhone and it is tabled to the owner with the device read, rather than fixed by loading typefaces into the module.
+- 2026-10-19. The cover''s view reference and showing flag live in the Kotlin module''s companion object, and the module registers no OnDestroy cleanup. expo-modules-core builds a fresh Module instance per React context, so instance state dies with the old context and the new context''s hide() must find the cover through static state; an OnDestroy removal would tear the cover down exactly when the context dies, defeating it.
+- 2026-10-19. No new-context JS stand. The native cover stays up until the first commit where `contentExists` is true, so the handoff is cover to content. iOS changes only by the commit-path latch, which extends the loader through the dead span and paints nothing new.
+- 2026-10-19. The capped crossing (convergence hit the 10-second cap) shows and hides the cover on the same rule as a settled one: neither call is gated on the handoff marker, so the face does not depend on `passSettled`.
+- 2026-10-19. The platform gate is a module-level `IS_ANDROID` (`Platform.OS === ''android''`) in stores/language.ts, the device/notifications.ts precedent, and tests drive it by assigning `Platform.OS` the way device/__tests__/androidChannelUpdate.test.ts does.
+- 2026-10-19. The Jest boundary is a per-file `jest.mock(''@/device/switchCover'')` in the suites that observe the calls, the __tests__/app/index.test.tsx precedent. jest.config.js is untouched.
+- 2026-10-19. The version bump set is package.json and app.json: android/app/build.gradle is generated by prebuild and untracked, matching every prior commit.
+- 2026-10-19. iOS keeps today''s exact call shape (`reloadAsync` with no arguments) and is never asked for a cover.
+
+## Files
+
+- `stores/language.ts` — changed: the latch that holds the loader through a fulfilled reload, the Android-only cover calls before the reload and in the rejection path. `commitInFlight` keeps its unconditional reset in the finally.
+- `modules/switchcover/expo-module.config.json`, `modules/switchcover/android/build.gradle`, `modules/switchcover/android/src/main/AndroidManifest.xml`, `modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt` — new: the first-party cover module (show and hide, idempotent, companion-object state).
+- `device/switchCover.ts` — new: the JS wrapper (`requireOptionalNativeModule`, no-op when the module is absent, so iOS and Jest skip cleanly).
+- `shared/i18n/index.ts` — changed: `languageChangingLine(locale)` extracted, the exact composition LanguageLoader uses.
+- `components/ui/LanguageLoader.tsx` — changed by one line: the loader composes its line through the shared helper. No visual change.
+- `app/index.tsx` — changed: the first-content effect hides the cover.
+- `stores/__tests__/rtlSwitch.test.ts` — extended, with a per-file mock of the wrapper, and its beforeEach resets busy and pending.
+- `stores/__tests__/languageConvergence.test.ts` — its beforeEach resets busy and pending (fulfilled crossings now hold them past the commit''s end).
+- `stores/__tests__/languageReloadFace.test.ts` — new, with a per-file mock of the wrapper.
+- `__tests__/app/index.test.tsx` — extended, with a per-file mock of the wrapper.
+- `package.json`, `app.json` — the bump on every commit.
+- Read only: `app/_layout.tsx`, `shared/constants.ts`, `stores/bootstrap.ts`, `jest.config.js`.
+
+## Design
+
+### The mechanism, named from source
+
+M1. What unmounts the spinner. `commitLanguagePreference` clears `languageCommitBusyAtom` and `pendingLanguageAtom` in its `finally`, and `LanguageLoader` returns null on the next render. The `finally` runs when `Updates.reloadAsync()` fulfills. On Android that happens before the reload lands: `DisabledUpdatesController.relaunchReactApplicationForModule` queues `RecreateReactContextProcedure`, which calls `callback.onSuccess()` (the fulfillment) before `reactHost.restart(...)` is posted to the main thread. The old context keeps committing frames after the unmount.
+
+M2. What renders the schedule mid-switch. The commit already called `setActiveLocale(locale)` and stored the preference, which bumps `localeVersionAtom`; `app/_layout.tsx` remounts `Slot key={localeVersion}` in the target language, and `I18nManager.forceRTL` applied the target direction. Once M1 unmounts the loader, those screens are the visible tree and paint until the native teardown.
+
+M3. What renders the blank purple page. `reactHost.restart` destroys the old React surface, and until the new bundle evaluates and commits its first frame no JS exists to paint, so the screen shows the root background (#2c1c77). The half second matches bundle re-evaluation on the 3T. expo-updates ships a native reload screen for exactly this span, and none of it exists in this app: the manifest disables updates, so `DisabledUpdatesController` runs with a null `reloadScreenManager`, `RecreateReactContextProcedure` never shows a screen, and the JS `showReloadScreen`/`hideReloadScreen` are `BuildConfig.DEBUG`-only in the module.
+
+M4. Why iOS does not. `RelaunchProcedure.swift` triggers the reload inside the same root view: the old tree''s last committed frame (the loader face) stays on screen until the new surface paints over it. iOS never depends on post-fulfillment JS; the frozen loader covers the whole span.
+
+### The fix
+
+F1. Old context, both platforms. `commitLanguagePreference` keeps a per-invocation local latch `reloadAccepted`, false at the top of every commit. The `finally` clears the busy and pending atoms only when the latch is false. `commitInFlight` resets unconditionally in the same finally, so a surviving context never refuses later commits. A fulfilled reload leaves the loader mounted until the context dies. A rejected reload sets nothing, restores today''s cleanup, clears the marker, and logs the existing warning. The per-invocation local means a later commit in a surviving context starts from a clean latch.
+
+F2. Android only, the native cover. A first-party module `modules/switchcover` (the `modules/tls13` pattern: an android library, an `expo-module.config.json` with `platforms: ["android"]`, autolinked without an app.json plugin entry) exposes:
+
+- `show(cover)` where cover carries `backgroundColor`, `spinnerColor`, `spinnerSizeDp`, `lineText`, `lineColor`, `lineSizeDp`, `lineMarginTopDp`, `lineMaxWidthDp`, every field a string or a double. It builds a FrameLayout matching the loader''s geometry exactly: the background colour; an indeterminate ProgressBar, centred horizontally, its top offset so the spinner''s box centres dead on the parent''s midpoint (the loader''s `translateY: -SIZE.activityIndicator / 2` equivalent), tinted with `spinnerColor`, sized `spinnerSizeDp` in dp times the display density; and a TextView anchored at the parent''s midpoint plus `SIZE.activityIndicator / 2 + SPACING.xxxl` (passed as `lineMarginTopDp`), with `lineText`, the loader''s literal `#fff` as `lineColor`, `lineSizeDp` from TEXT.size, centred horizontally, capped at `lineMaxWidthDp` (the loader''s 260). All dp values are multiplied by the display density natively.
+- It adds the view to the activity''s content view (`appContext.currentActivity`, `android.R.id.content`) above everything, and stores the view reference and a showing flag in the module''s companion object, because expo-modules-core builds a fresh Module instance per React context and the hide() that lifts the cover arrives from the new context''s instance. The module registers no OnDestroy or OnInvalidate cleanup: the cover must outlive the registry that showed it. Idempotent: a second show while showing changes nothing.
+- `hide()` removes the companion-held view when the flag is set. Idempotent.
+
+The ProgressBar keeps animating on the UI thread while JS is dead, so the spinner turns through the whole span.
+
+The wiring in `stores/language.ts`: on the relaunch path, before `Updates.reloadAsync()` and only when `IS_ANDROID`, `await showSwitchCover(coverOptionsFor(locale))`, then `await Updates.reloadAsync()` with no arguments. `coverOptionsFor` reads `COLORS.navigation.rootBackground`, `COLORS.navigation.activityIndicator`, `SIZE.activityIndicator`, `SPACING.xxxl`, `TEXT.size`, the loader''s 260 line cap, the loader''s literal `#fff`, and the line from `languageChangingLine(locale)`. On a rejected reload, before the cleanup, `hideSwitchCover()` with the error swallowed.
+
+The wiring in `app/index.tsx`: inside the existing first-content effect (`if (contentExists && !contentCommittedRef.current)`), after `perfMark(''home_content'')`, call `hideSwitchCover()`. It fires once per Index mount in every context: a no-op in a context that never showed the cover, and the removal right after the first content commit in the context that follows a switch. The mid-commit `localeVersion` remount of Index in the old context also fires it, before the cover is shown, where the idempotent hide is a no-op. The `hasError` state counts as content (`isWaitingForData` is false there), so an error screen lifts the cover.
+
+Invariant: between the tap on a language row and the first content commit of the context that follows a crossing switch, every frame shows one face: the JS loader from the tap, the native cover (same values) across the restart, and content at the reveal. A launch that does not switch renders exactly the lines it renders today.
+
+En byte-identical when not switching: F1 touches only the relaunch branch, so the same-script instant switch keeps today''s cleanup. F2''s calls sit behind `IS_ANDROID` and the relaunch branch. The cover module is inert until shown. The hide in app/index.tsx is a no-op in a context that never showed the cover.
+
+Alternatives rejected:
+
+- The shipped expo-updates reload screen: unavailable here, because the app''s builds disable updates and the JS screen functions are debug-only.
+- F1 alone: M3''s half-second blank remains, which is the owner''s central complaint.
+- `Expo.reloadAppAsync` with an activity recreate so the splash re-shows: its Android implementation calls `reactDelegate.reload()`, the same in-place context restart, and the splash is never re-shown inside a living activity.
+- A timeout valve that clears the loader if the context survives a fulfilled reload: it reintroduces the unmount flash on slow devices and treats a terminal state as recoverable.
+- A JS loader stood by the new context before its first render: it paints beneath the native cover or not at all during the dead span, so it adds state without covering anything.
+- Passing the cover duty to the launch splash: the splash is not re-shown after an in-activity reload.
+- Loading the bundled typefaces into the module''s TextView: fidelity for a half-second span against a new font-loading path in native code; the divergence is tabled to the owner with the device read instead.
+
+## Steps
+
+1. Step 1 (weight 2): the latch. `stores/language.ts` F1, the busy and pending resets in the beforeEach of `stores/__tests__/rtlSwitch.test.ts` and `stores/__tests__/languageConvergence.test.ts`, tests red first: a fulfilled crossing leaves busy true and pending set after the commit resolves; a rejected crossing clears both and clears the marker (existing assertions); a second commit after a rejected first one runs to its own reload (the latch is per-invocation, and `commitInFlight` never sticks).
+2. Step 2 (weight 2): the cover. The module under `modules/switchcover` (companion-object state, no lifecycle cleanup), the `device/switchCover.ts` wrapper (`requireOptionalNativeModule`, no-op when absent), `languageChangingLine` in `shared/i18n/index.ts` with LanguageLoader composing through it, the show call before the reload and the hide in the rejection path (`IS_ANDROID`), the hide in `app/index.tsx`''s first-content effect, the per-file Jest mocks. Tests red first in `stores/__tests__/languageReloadFace.test.ts` and `__tests__/app/index.test.tsx`: Android shows the cover before `reloadAsync` with the loader''s purple, spinner colour, size, the `#fff` line colour and the target line string, and hides it on a rejected reload; iOS never calls show and calls `reloadAsync` with no arguments; the first-content effect calls hide once; a plain launch never shows; the wrapper no-ops when the native module is absent.
+3. Step 3 (weight 3, device, alone in its own session): a mock build through `build-mock.zsh` with the aapt2 fleettest badging check before any install, on the 3T; the emulator when the 3T is unreachable, named in the record. Switch en to ar and ar to en on both schedules, transcribe the read, and pull the logcat timeline on the lines the mock build emits: Pino logging is on in the mock build (env local) and off in a prod build (env prod, stated plainly), so the timeline rides the mock build''s Pino lines plus the native restart-reason line, showing no content commit between the reload and the new context''s first render. Control: an En launch with no switch reads unchanged.
+
+Each step lands as one commit with the version bump (package.json and app.json, fetch origin first, patch step).
+
+## Risks
+
+- The cover''s z-order across the restart: the view is added to the activity content before `reactHost.restart`, and the restart recreates the context inside the same surface beneath it. If the restart re-parents the surface above the cover, the failure is visible on glass and the device step catches it; the fallback is adding the cover to the activity''s window instead of the content view.
+- The companion-object view reference can outlive an activity (a cover shown, then the activity destroyed without hide): show() replaces any companion-held view whose parent no longer is the current activity''s content, and a stale reference is dropped, not reused.
+- The ProgressBar''s drawable differs from the loader''s ActivityIndicator by theme, and the TextView uses the system typeface, so the Arabic line''s face may differ for the span. Both are read on glass in the device step and recorded, and the divergence is tabled to the owner with the record.
+- R8 may strip the reflection-built module class on the production build. modules/tls13 ships without a keep; if the cover is missing on glass, add the module package to the expo-build-properties proguard block in app.json, the existing precedent.
+- A context that survives a fulfilled reload (a wedged main thread) leaves the loader and the cover up. That state freezes the app today as well. No valve.
+- The cover''s show must land before the restart: both ride the module''s main queue in call order (`show` completes, then the reload''s restart posts). If the device read shows the restart winning, hold the cover''s show behind its promise resolution before calling reloadAsync, which the wiring already does.
+
+## Proof
+
+- `yarn jest stores/__tests__/rtlSwitch.test.ts stores/__tests__/languageConvergence.test.ts stores/__tests__/languageReloadFace.test.ts __tests__/app/index.test.tsx components/ui/__tests__/LanguageLoader.test.tsx` — green after the change, and each new case fails against the pre-change tree (red first, shown in the step''s record).
+- `node scripts/check-changed-coverage.js` — every line the change touches is covered, measured with coverage on.
+- A mutation pass on the guarded logic: flip the latch, flip `IS_ANDROID`, break each idempotence guard in show and hide, and show each mutation caught by a failing test.
+- `yarn validate` — green.
+- The device record: the transcribed switch read for both directions and both schedules, the logcat timeline on the mock build''s Pino lines and the native restart reason (a prod build emits no Pino lines, stated plainly), and the fleettest badging line, on the 3T or the emulator with the substitution named.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 9216, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:23:55.227566+00', '2026-10-19 04:07:51.417176+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (13, 1, NULL, 'T-142', '# T-142
+
+## Goal
+
+Today a user who never long-presses a home screen has no path from the app to its widgets, and most users do not know the widgets exist. When this ticket closes, the settings sheet''s Other card carries a Widgets option, and tapping it reaches our widgets through the surface each platform permits - the surface the owner rules on from this plan''s investigation. The investigation found no open-gallery API on either platform, so this run''s terminal state is Owner-led: the ruling between the named options is the deliverable that unblocks branch A below.
+
+## Decisions taken
+
+- D142.1 (2026-10-19): branch B is this run''s terminal state - no open-gallery API on either platform, and the fallback choice is the owner''s by the ticket''s own words. Why: the order says the closest legal surface goes to the owner "with the owner''s ruling", and that condition holds on both platforms.
+- D142.2 (2026-10-19): the plan carries branch A in full even though it does not run this session. Why: the order is the whole workflow, never plan-and-stop, and the ruling lands on this same ticket.
+- D142.3 (2026-10-19): the Widgets row follows the Other card''s own row pattern - the whatsNewButton style, the icon disc, the label, the chevron - with Icon.WIDGET and the label string `settings.widgets` in all six locales, placed after Language and before What''s New. Why: visuals are settled; the row is the only new pixel, and it belongs with the card''s feature entries, above the conditional What''s New row and Help.
+- D142.4 (2026-10-19): Option 1 is the recommendation (argued in Design). Why: one row gives each platform its own best legal surface.
+- D142.5 (2026-10-19): the Android pin target''s ComponentName is resolved from the built APK''s manifest (`aapt2 dump xmltree`) before any code is written against it. Why: expo-widgets generates receivers at prebuild; a guessed provider name pins nothing.
+
+## Files
+
+- `components/sheets/screens/Settings.tsx` - the Other card; read for the row pattern, branch A adds the row.
+- `components/sheets/screens/__tests__/Settings.test.tsx` - branch A''s red-then-green row coverage.
+- `shared/i18n/{en,ar,hi,ms,so,th}.ts` - branch A: `settings.widgets` and the how-to strings.
+- `shared/i18n/catalog-lock.json` - the `en` hash moves with every new key; branch A re-takes it with `yarn i18n:lock`.
+- `components/modals/Help.tsx`, `components/modals/Modal.tsx`, `components/modals/__tests__/` - the pattern the WidgetsHowTo card follows; branch A adds `WidgetsHowTo.tsx` and its test.
+- `components/modals/index.ts`, `app/index.tsx` - the barrel and the mount point: the atom only holds state, the modal itself mounts in the app tree beside ModalHelp.
+- `stores/ui.ts` - the modal atom pattern (`popupHelpEnabledAtom`); branch A adds the how-to atom and its present call.
+- `modules/widgetrefresh/` - the shape a Kotlin Expo module takes here; branch A adds `modules/widgetpin` under Option 1.
+- `app.json`, `widgets/PrayerWidget.tsx` - read: the widget kinds, display names and providers.
+- `e2e/device-atlas-<model>.md` - read before the device step.
+
+## Design
+
+### Investigation (the owner-ordered first phase, run 2026-10-19)
+
+Question: is there an API that opens the widget gallery, or our app''s section of it, on each platform? Every claim below was fetched live from current platform documentation on 2026-10-19.
+
+**iOS: no API opens the gallery.**
+
+- The app-side control surface is WidgetCenter (developer.apple.com/documentation/widgetkit/widgetcenter): "An object that contains a list of user-configured widgets and is used for reloading widget timelines" - the page''s own description. Its Topics document six symbols, reads and timeline reloads, and no symbol that presents UI.
+- The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery: essentials, system experiences, presentation, interactivity (buttons and toggles, animations, deep links to app scenes), accessibility, Previews and debugging. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses.
+- expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets, fetched live): its whole API is `createWidget`, the `Widget` class (`getTimeline`, `reload`, `setConfigurationParameterEnum`, `updateSnapshot`, `updateTimeline`), Live Activities, custom notifications, push tokens and event subscriptions. No gallery call.
+- Closest legal surface on iOS: an in-app how-to card teaching the gallery path (touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan). The app can only point; the user walks.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.**
+
+- The picker belongs to the launcher, which is the widget host. `ACTION_APPWIDGET_PICK` is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager): a host-side constant, and binding a picked widget needs `BIND_APPWIDGET`, which the system reserves to the default launcher. No documented intent opens an OEM launcher''s picker, and no OEM documents one for third-party apps.
+- The documented app-side surface is the pin request. The canonical page "Widget discoverability" (developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16): "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant." The from-within-the-app path is `AppWidgetManager.requestPinAppWidget(ComponentName, Bundle, PendingIntent)` - "Request to pin an app widget on the current launcher" - from API 26, gated on `isRequestPinAppWidgetSupported()`.
+- What it does: the launcher may show its own confirmation with one named widget of ours preselected, and places it on the home screen when it accepts; the system leaves acceptance to the launcher. It is not the gallery: the user cannot browse; the app names one kind per call. Our Android gallery holds eight kinds (two schedules by two themes by two sizes); iOS''s holds fourteen, the eight home kinds plus the six lock-screen kinds.
+- Launcher support varies; the runtime check `isRequestPinAppWidgetSupported()` decides, never a launcher list.
+- expo-widgets 58.0.20 exposes no pin call, so the Android path needs a small Kotlin Expo module following `modules/widgetrefresh`, calling `requestPinAppWidget` with the ComponentName resolved per D142.5.
+
+**Verdict.** No open-gallery API exists on either platform. The ticket''s own order routes the closest-legal-surface choice to the owner, so branch B is this run''s terminal state and branch A runs on this ticket the moment the ruling lands.
+
+### The owner''s options (branch B''s deliverable)
+
+- **Option 1 (the recommendation): Android pins, everywhere else teaches.** With `isRequestPinAppWidgetSupported()` true, the Widgets option requests a pin of the ruled kind (default PrayerWidget: Next Prayer, Light, small); the launcher may then confirm with the user before placing. Without pin support, and on iOS, the option opens the how-to card.
+- **Option 2: teach everywhere.** The option opens the how-to card on both platforms. No native module, one code path, and two taps further from a placed widget than Option 1 on Android.
+- **Option 3: do nothing this version.** The widgets stay discoverable only through the launcher pickers. Zero code, and the order''s premise (users do not know widgets exist) stands unaddressed.
+
+Recommendation argued twice. For Option 1: the goal is discovery; a pin request places a widget in two taps on the platform that permits it, and the same tap teaches where it does not. Challenged: two code paths and a native module cost more than one card, and a pin request surprises a user who expected a gallery. The challenge does not flip it: where the launcher shows its confirm dialog the user keeps the decision, where it places directly the user''s own tap on the option was the consent, and the cost is one bounded module and one runtime check. Argued again for Option 2: it is honest about both platforms and ships in one step, but it knowingly gives Android a lesser path than the platform permits, which is what the investigation was ordered to avoid. Option 1 stands.
+
+Sub-ruling inside Option 1: which kind the pin names. Default PrayerWidget (Next Prayer, Light, small), the countdown the app itself leads with. The owner may name another.
+
+### Branch A shape (runs after the ruling, same ticket)
+
+- The row: `handleWidgetsPress` in Settings.tsx - the Medium haptic, `hideSettingsSheet()`, then the ruled surface, following the sheet''s own press handlers.
+- The how-to card: `components/modals/WidgetsHowTo.tsx` on the shared `Modal.tsx` base, presented through a jotai atom like `popupHelpEnabledAtom`, opened after the same 150 ms delay the Help and What''s New rows use.
+- The pin module: `modules/widgetpin` - `isWidgetPinSupported()` and `requestWidgetPin(kind)`, null-resolution no-op off Android exactly as `widgetrefresh` resolves; the Kotlin side calls `isRequestPinAppWidgetSupported()` and `requestPinAppWidget(provider, null, null)`.
+- Full unit coverage of every line the change touches, red before green, on the row, the card and the module resolution.
+
+## Steps
+
+1. Step 1: the investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation (weight 1, docs). Runs this session.
+2. Step 2: the Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set (weight 1, docs). Runs this session.
+3. Step 3: the Widgets row in the Other card - `settings.widgets` in six locales, the row after Language, the `yarn i18n:lock` re-take with the catalog lock test green, red-then-green Settings.test.tsx coverage (weight 2, code). Contingent on the ruling.
+4. Step 4: the ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 `modules/widgetpin` with the provider resolved per D142.5 (weight 2, code). Contingent on the ruling.
+5. Step 5: the device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (weight 3, device). Contingent on the ruling.
+
+Weight arithmetic: 1 + 1 + 2 + 2 + 3 = 9.
+
+## Risks
+
+- A fleet launcher refuses pins (`isRequestPinAppWidgetSupported()` false): the row falls back to the how-to card under Option 1. Shows up as the check reading false on the 3T read.
+- The generated receiver name differs from any guess: D142.5 resolves it from the built APK before code is written.
+- The ruling lands long after this session: the ticket sits in Owner-led with Waiting on; nothing parked reads active, and branch A''s steps stay unticked.
+- OEM confirm dialogs differ: the device step transcribes what each shows; no screenshots are committed.
+
+## Proof
+
+- Step 1: the record comment cites both platforms'' pages, quoting the load-bearing lines, and carries the verdict and the three options.
+- Step 2: `get_issue_by_number(T, 142)` shows column Owner-led, Waiting on naming the ruling and the options, the needs-owner label set, steps 1 and 2 ticked.
+- Branch A: `yarn validate` green including the catalog lock test; Settings.test.tsx covers the row''s render, label, role and press; the modal and module suites cover presentation and resolution; the 3T transcript of the confirmation and the placed widget lands as a ticket comment; the owner''s iPhone confirmation lands as a ticket comment.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 12288, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.144981+00', '2026-10-19 08:30:09.349666+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (12, 1, NULL, 'T-143', '# T-143
+
+## Goal
+
+The device-locale upstream PR sits prepared but unfiled, and three of the four tracked upstream PRs have no board row. When this ticket is done, the branch sits rebased on then-current upstream main carrying the matched discipline, every verification passes, the board writes are live (monitoring rows, ledger numbers, dead-code hook row), and the filing gate is reached and holds for the lead''s go.
+
+Authorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane still stops at the gate, because the lead sequences the filing behind the phase-1 merges.
+
+## Decisions taken
+
+- 2026-10-19: Three monitoring rows (50581, 51290, 51292), not four. Row 51 already monitors 51291, and a second row for one PR is a duplicate defect. The owner''s question names the three PRs without rows.
+- 2026-10-19: Add `.changeset/widgets-device-locale.md` with `''expo-widgets'': patch`, folded into the single commit. Both widget siblings (51290, 51292) carry exactly that changeset shape, and the owner''s bar is to match their discipline.
+- 2026-10-19: The commit subject drops the `feat()` prefix: `Expose the device locale to widget JS runtimes`. The widget siblings'' commit subjects are plain imperative; the PR title carries the package bracket: `[widgets] Expose the device locale to widget JS runtimes`.
+- 2026-10-19: No upstream unit test. The package''s JS harness has no surface that reads `__expoWidgetDeviceLocale` (measured: no bundle source or test references it), so a JS test would mock the exact global the native code sets and pass while the native path is broken. The physical-device evidence in the description is the test of record, and this repo''s own suite covers the faces that read the global.
+- 2026-10-19: Monitoring rows typed Chore, with surface and area labels taken from the ledger''s dependency columns where they exist and from the ledger''s prose for 51290, whose table has no dependency columns. Row 51''s label tuple predates the label-order rule that landed with ticket 144; its role is the shape to copy, not its labels.
+- 2026-10-19: The dead-code hook row is created now in Backlog, typed Chore, flagged upstream, its Waiting on field set at creation (a deliberate deviation from the skill''s timing, which ties the field to Blocked, Upstream and Owner-led: a card in Backlog must still read its condition). The order says record it now, do it later.
+- 2026-10-19: The board writes run BEFORE the filing gate. They are board and ledger writes, not publishing, and both the abort path and a held gate would otherwise leave three acceptance criteria unowned. The gate is the last act before STOP.
+- 2026-10-19: Terminal state of this lane''s run: the ticket sits in In progress with the gate comment naming what holds it (the lead''s go). Upstream is not honest yet, because nothing is filed and the ticket waits on an internal act, not an outside party. The lane/143 ledger commit is left for the lead to merge; the ticket''s move past In progress is the lead''s, after the go.
+- 2026-10-19: The patch''s rtl lines (`EntryView.swift`, the `entry.props?["rtl"]` and `.environment(\\.layoutDirection, ...)` family) are locale-family but local-only by the owner''s 2026-10-16 ruling. They are not carried upstream and are named in the delta comment as deliberately not carried. "Locale hunks" for the acceptance criteria means the locale lines of the four files the commit touches.
+
+## Files
+
+- `$HOME/athan-gitree/upstream/expo`, branch `feat/widgets-device-locale`: `packages/expo-widgets/android/src/main/cpp/WidgetsHermesRuntime.cpp`, `.../java/expo/modules/widgets/WidgetsJSRuntime.kt`, `.../jni/WidgetsHermesRuntime.kt`, `packages/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift`, plus the new `.changeset/widgets-device-locale.md`. Read and changed.
+- `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md`: the PR body. Verified, and changed where the discipline sheet, the body-truth check or the anonymity read demands it: its closing "No changeset is included" sentence dies when the changeset is folded in.
+- `patches/expo-widgets+58.0.20.patch`: read only, its locale hunks are the comparison baseline.
+- `ai/UPSTREAM-PRS.md`: changed once, in the lane worktree `$HOME/athan-gitree/worktrees/lane-143` on branch `lane/143`, left in place for the lead. The main tree stays on `uat`, clean.
+- Board: this ticket, three monitoring rows, one dead-code hook row. No other ticket moves.
+
+## Design
+
+The filing half re-bases the artefact from row 117, it does not rewrite it. Fetch `upstream` in the clone, then check for a competing implementation before touching the branch: `git grep -n "__expoWidgetDeviceLocale" upstream/main -- packages/expo-widgets` must return nothing, and the broader `git grep -in "locale" upstream/main -- packages/expo-widgets` must return only the known-benign hit in `withTargetXcodeProject.ts`. Any hit beyond that is a stop and a report, file nothing. Then rebase `feat/widgets-device-locale` onto the then-current main and re-port by hand any drift in the four files: the C++ `nativeRender` signature and its caller, the Kotlin `render`/`nativeRender` pair, the `LocaleList.getDefault().get(0).language` argument, and the Swift context set. The commit is amended to the matched discipline: one commit, five files, plain imperative subject, changeset folded in.
+
+The verification half is line-by-line. Every locale line of the local patch that belongs to the four files appears in the rebased commit or is named in the delta comment as re-ported; the rtl lines are named as deliberately not carried; and every call site of the changed signatures in then-current upstream source is accounted for. The call-site grep matches the call forms, not definitions: `git grep -n "\\.render(" upstream/main -- packages/expo-widgets/android` and `git grep -n "nativeRender(" upstream/main -- packages/expo-widgets`, with the expected sites named in advance: `WidgetsJSRuntime.kt`''s call into the JNI runtime (changed), `WidgetsUtils.kt`''s call of the object''s public `render` (unchanged signature, must still compile as written), and the C++ internal caller. Any hit outside that list is resolved before the gate.
+
+The body-truth check runs with the anonymity check: every claim the PR body makes about the diff is true of the five-file commit, including the "Anything else" section, which is rewritten to say the changeset is included and offered beside the open `openApp` PR on the same package. The anonymity floor is a grep over the body and the changeset for: `the project''s standing anonymity pattern, the app and identity term list`, case-insensitive, plus any raw value that looks like a serial or UDID. The grep is the floor; the read that follows is the gate, and its charter covers the classes the tokens cannot spell: device model names, an identifying product description, and raw identifiers without their nouns. `yarn validate` runs in the main tree, which stays on `uat`, clean, for the whole ticket.
+
+The gate is the one hard stop. `gh pr create` runs only after the lead''s recorded go. Everything up to that command is this lane''s work. The PR title, body, base (`expo/expo` main) and head (`feat/widgets-device-locale` on the fork origin) are staged and named in the gate comment, so the go side files with two commands and no decisions left: push the branch to the fork origin (a plain push, never force; the fork has never received this branch, measured 2026-10-19), then `gh pr create` with the staged title and body.
+
+The board half gives every open tracked PR its row, before the gate. Three monitoring rows in Upstream, each with `Waiting on` naming its PR and each description linking its ledger entry, full tuples inline:
+
+- 50581: "Upstream `expo-background-task` network requirement", labels number, Chore, Both, notifications, upstream. Waiting on: "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#50581`; at the first re-pin past its release the background-task patch dies."
+- 51290: "Upstream `expo-widgets` fillMaxWidth fraction", labels number, Chore, Android, widgets, upstream (surface from the ledger prose: the Android Glance converter). Waiting on: "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51290`; the proportional-layout workaround simplifies only at the owner''s say."
+- 51292: "Upstream `expo-widgets` Button openApp", labels number, Chore, Android, widgets, upstream. Waiting on: "2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51292`; at the first re-pin past its release the openApp half of the widgets patch dies."
+
+No weight labels on monitoring rows: they carry no steps. Row 51 keeps 51291. The ledger takes each new row''s number. The dead-code hook row waits in Backlog, titled to say what it deletes and what releases it, its Waiting on field set at creation. The closing record on this ticket names the hook.
+
+Alternatives rejected: filing without the changeset (breaks the match-discipline bar); a second `add changeset` commit (51291''s two-commit shape, rejected because the widget siblings are single-commit and this PR is smaller); monitoring rows without surface labels (the ledger carries those facts and the card reads worse without them); board writes after the gate (three criteria would hang on the go or the abort).
+
+## Steps
+
+1. **Discipline sheet** (weight 1): record the exact title, commit-subject, changeset and description shapes of 50581, 51290, 51291 and 51292 from `gh pr view` and `gh pr diff`, the target shape this PR takes from them, posted as a comment on this ticket.
+2. **Rebase and re-port** (weight 2): fetch upstream, run both competing-implementation greps, rebase, re-port drift in the four files, amend to the single five-file commit, record the delta comment (what moved, what was re-ported, the rtl lines not carried).
+3. **Line-by-line diff verification** (weight 2): every locale line of the local patch''s four files accounted for in the rebased commit; every changed-signature call site accounted for by the call-form greps against the named site list.
+4. **Description verification** (weight 1): rewrite the body''s "Anything else" to match the changeset, run the body-truth check, the anonymity grep plus read over body and changeset, and the two separate evidence greps (Android 9 phone, iOS hardware), each returning 1.
+5. **Repo invariant** (weight 1): `yarn validate` exits 0 in the main tree; the main tree is on `uat` with an empty `git status --porcelain`.
+6. **Board writes** (weight 1): create the three monitoring rows in Upstream with their full tuples and `Waiting on` set, update the ledger with the row numbers in the lane worktree, create the dead-code hook row in Backlog with its `Waiting on` set at creation, write the closing record naming the hook.
+7. **Filing gate** (weight 1): stage the PR title, body, base and head; post the gate comment; return STOP with the verification summary and wait for the lead''s go.
+8. **Audit** (weight 1): one plan-conformance reviewer over the record and the board writes; fix what they confirm.
+
+Total weight: 10 pts.
+
+## Risks
+
+- Upstream landed its own locale threading between prep (cac62846e6) and now (main already sits at a27a775ed2, so it moved; the four new commits touch no expo-widgets file, measured 2026-10-19). What shows it: either pre-rebase grep returns a hit beyond the benign one. The answer: stop and report, file nothing.
+- The rebase conflicts or the signatures drifted past the four files (a new parameter, a moved file). What shows it: conflicts outside the four files, or a call-form grep hit outside the named site list. The answer: re-port by hand, name it in the delta comment, re-run step 3.
+- The fork''s branch diverged from the local one. Measured 2026-10-19: the fork has never received this branch, so a plain push stands. What shows a later change: `git fetch origin` and a comparison of `origin/feat/widgets-device-locale` with the local head. The answer: never force-push; report divergence to the lead before the go.
+- The anonymity grep misses a leak because tokens cannot spell a class. What shows it: the manual read with its wider charter. The answer: both run on the final text of the body and the changeset.
+- The body claims something the commit does not deliver. What shows it: the body-truth check. The answer: fix the body, never the diff, unless the diff itself failed step 3.
+- A monitoring row duplicates row 51. Ruled out by decision one; each creation checks the board for an existing row naming the PR first.
+- The ledger commit lands in the main tree. Ruled out by design: the ledger edit happens only in the lane worktree, on `lane/143`, left for the lead.
+
+## Grill round, 2026-10-19
+
+Findings answered: (1) call-site greps now match call forms and name the sites. (2) the body''s changeset sentence is rewritten and a body-truth check added. (3) the gate''s no-PR check is now `gh pr list --repo expo/expo --head "<fork>:feat/widgets-device-locale"` expecting an empty list. (4) board writes moved before the gate. (5) the rtl lines are ruled local-only and named in the delta comment. (6) the terminal column is named in Decisions taken. (7) the hook row''s Waiting on is set at creation, deviation recorded. (8) each monitoring row''s full tuple is inline, 51290''s surface derived from ledger prose. (9) the competing-implementation check names the broader pattern and its benign hit. (10) the anonymity floor gains the bare tokens and the read gains the leak classes. (11) the discipline sheet is posted as a comment. (12) the evidence greps are two calls, each returning 1.
+
+## Proof
+
+- Step 1: the discipline-sheet comment sits on this ticket, naming each PR''s title, commit subjects, changeset bump and description shape.
+- Step 2: `git -C "$HOME/athan-gitree/upstream/expo" fetch upstream main`, then `git log --oneline -1 upstream/main` records the new head; both competing-implementation greps return only the benign hit or nothing; the rebase completes clean or is resolved by hand; `git show --stat HEAD` lists exactly five files.
+- Step 3: each locale line of the patch''s four files appears in `git show HEAD` or in the delta comment, the rtl lines named as not carried; the call-form greps return hits only inside the named site list.
+- Step 4: the anonymity grep prints no match that survives the read; `grep -c "Android 9 phone" <body>` returns 1 and `grep -c "iOS hardware" <body>` returns 1; the body''s claims each trace to a file in the commit.
+- Step 5: `yarn validate` in `$HOME/repos/rn.athan.uk` exits 0; `git -C $HOME/repos/rn.athan.uk status --porcelain` prints nothing.
+- Step 6: `get_issue_by_number` per new row shows the Upstream column and a set `Waiting on`; the hook row shows Backlog with its `Waiting on`; the lane worktree''s diff of `ai/UPSTREAM-PRS.md` shows the row numbers.
+- Step 7: the gate comment names the staged title, body, head, base and the two go-side commands; `gh pr list --repo expo/expo --head "<fork>:feat/widgets-device-locale" --json number` returns an empty list.', NULL, NULL, '{}', false, false, false, NULL, NULL, 11264, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:10:52.480587+00', '2026-10-19 08:36:58.633668+00');
 
 
 --
@@ -9085,6 +10448,11 @@ catalog and `t()`, no i18n library, no second language first. RTL is the real wo
 
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (6, 21, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.770104+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (7, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.790335+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (9, 18, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.893223+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (10, 19, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:24:10.628658+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (11, 15, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:25:02.38744+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (12, 17, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:10:52.522238+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (13, 16, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.173968+00');
 
 
 --
@@ -9154,6 +10522,1477 @@ lets a browser keep a session over plain HTTP on this machine.
 What is configured here and nowhere else: the ten columns above, the Queue order field, the seven
 agent roles, the two skills and these pages.
 ', NULL, 'book', '{}', false, false, false, NULL, 4096, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.175489+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (19, 10, 1, NULL, 'T-141', '# T-141
+
+## Goal
+
+An Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No frame shows the target-language schedule mid-switch. No frame shows a blank purple page. A launch that does not switch renders exactly the lines it renders today.
+
+## Decisions taken
+
+- 2026-10-19. The native reload screen''s spinner size is small (24 px), the nearest step to the loader''s 20, because expo-updates offers only 24, 48 and 72.
+- 2026-10-19. The native cover fades out over 300 ms, so the two-frame tail between the bundle''s end and the first React frame reads as one continuous face instead of a cut.
+- 2026-10-19. The new context stands the loader only while the relaunch handoff marker is fresh, so launches that never switch stay byte-identical.
+- 2026-10-19. The version bump set is package.json and app.json: android/app/build.gradle is generated by prebuild and untracked, matching every prior commit.
+- 2026-10-19. iOS keeps today''s exact call shape (reloadAsync with no arguments), so the iPhone''s accepted behavior changes nothing.
+
+## Files
+
+- `stores/language.ts` — changed: the commit path holds the loader through a fulfilled reload; the rejected path restores today''s cleanup; the Android-only reload screen calls.
+- `stores/bootstrap.ts` — changed: stands the loader before the first render when the handoff marker is fresh.
+- `app/index.tsx` — changed: settles the stood loader inside the existing first-content effect.
+- `shared/__mocks__/expo-updates.ts` — changed: mock showReloadScreen, hideReloadScreen, and reloadAsync''s options argument.
+- `stores/__tests__/rtlSwitch.test.ts` — extended.
+- `stores/__tests__/languageReloadFace.test.ts` — new.
+- `stores/__tests__/bootstrap.test.ts` — extended.
+- `__tests__/app/index.test.tsx` — extended.
+- `package.json`, `app.json` — the bump on every commit.
+- `components/ui/LanguageLoader.tsx`, `shared/constants.ts`, `app/_layout.tsx` — read only.
+
+## Design
+
+### The mechanism, named from source
+
+M1. What unmounts the spinner. `commitLanguagePreference` clears `languageCommitBusyAtom` and `pendingLanguageAtom` in its `finally`, and `LanguageLoader` returns null on the next render. The `finally` runs when `Updates.reloadAsync()` fulfills. On Android that happens before the reload lands: expo-updates 58.0.17 documents the promise as resolving right before the reload instruction is sent, and `RelaunchProcedure.kt` calls `callback.onSuccess()` before `reloadScreenManager.show(...)` and `reactHost.restart(...)` are posted to the main thread. The old context keeps committing frames after the unmount.
+
+M2. What renders the schedule mid-switch. The commit already called `setActiveLocale(locale)` and stored the preference, which bumps `localeVersionAtom`; `app/_layout.tsx` remounts `Slot key={localeVersion}` in the target language, and `I18nManager.forceRTL` applied the target direction. Once M1 unmounts the loader, those screens are the visible tree and paint until the native teardown.
+
+M3. What renders the blank purple page. `reactHost.restart` destroys the old React surface. Until the new bundle evaluates and commits, no JS exists to paint, and the screen shows the root background (#2c1c77). The half second matches bundle re-evaluation on the 3T. expo-updates ships a native reload screen for exactly this span, and it never shows in this app: `RelaunchProcedure` calls `show(weakActivity?.get())` with a reference captured only in `onDidCreateReactInstance` (null here), and `reloadAsync` passes no options, whose default face is white, which the owner''s report excludes.
+
+M4. Why iOS does not. `RelaunchProcedure.swift` triggers the reload inside the same root view: the old tree''s last committed frame (the loader face) stays on screen until the new surface paints over it. iOS never depends on post-fulfillment JS; the frozen loader covers the whole span.
+
+### The fix
+
+F1. Old context, both platforms. `commitLanguagePreference` latches that the reload was accepted. The `finally` clears the busy and pending atoms only when the latch is unset. A fulfilled reload leaves the loader mounted until the context dies. A rejected reload restores today''s cleanup, clears the marker, logs the existing warning, and hides the reload screen.
+
+F2. Android only. Before the reload, `Updates.showReloadScreen` with backgroundColor `COLORS.navigation.rootBackground`, spinner enabled with `COLORS.navigation.activityIndicator`, size small, fade true. The same options ride `reloadAsync` as `reloadScreenOptions`, so `RelaunchProcedure` re-applies the configuration it finds. The JS call carries the live activity, which repairs the null weakActivity. On a rejected reload, `Updates.hideReloadScreen()` with the error swallowed. iOS calls `reloadAsync` with no arguments, exactly as today.
+
+F3. New context, marker-scoped. At `stores/bootstrap` import, a non-consuming freshness read of the relaunch handoff marker: a marker within `RELAUNCH_HANDOFF_FRESH_MS` stands the loader (busy true, pending the active locale) before the first render; an absent or stale marker stands nothing. `app/index.tsx` settles the stood loader inside the existing first-content effect (`contentCommittedRef` block): the first commit where `contentExists` is true clears busy and pending once. The `hasError` state counts as content, because `isWaitingForData` is false there and the error screen replaces the loader. The deferred `consumeRelaunchHandoff` in the launch init is unchanged: the same marker, the same 60-second rule, consumed once.
+
+Invariant: between the tap on a language row and the first content commit of the context that follows a crossing switch, every frame shows the loader face (JS loader, native reload screen, JS loader). A launch with no fresh marker renders exactly the lines it renders today.
+
+En byte-identical when not switching: F1 touches only the relaunch branch, so the same-script instant switch keeps today''s cleanup. F2 is platform-gated. F3 runs only when the marker is fresh, and only a crossing switch writes it.
+
+Alternatives rejected:
+
+- F1 alone, without the native cover: M3''s half-second blank remains, which is the owner''s central complaint.
+- Recreating the activity so the OS splash re-shows: not reachable from JS, and expo-updates owns the reload mechanism.
+- A timeout valve that clears the loader if the context survives a fulfilled reload: it reintroduces the unmount flash on slow devices and treats a terminal state as recoverable.
+- Holding the splash in the new context instead of F3: the splash is not re-shown after an in-activity reload, so there is nothing to hold.
+- Passing reloadScreenOptions on iOS too: it routes the iPhone through the native overlay window and changes behavior the owner has accepted.
+
+## Steps
+
+1. Step 1 (weight 2): the commit path. `stores/language.ts` F1 and F2, the `shared/__mocks__/expo-updates.ts` extensions, tests red first. `stores/__tests__/rtlSwitch.test.ts` gains: a fulfilled crossing leaves busy true and pending set; a rejected crossing clears both, hides the reload screen, and clears the marker. `stores/__tests__/languageReloadFace.test.ts` (new) gains: Android shows the reload screen with the root purple and the loader spinner colour before the reload, passes the same options to `reloadAsync`; iOS calls `reloadAsync` with no arguments and never shows the screen; a same-script switch never calls either screen function.
+2. Step 2 (weight 2): the new context. `stores/bootstrap.ts` stands the loader on a fresh marker (non-consuming read), `app/index.tsx` settles at first content. Tests red first: a fresh marker stands busy before any render; an absent marker and a stale marker stand nothing; the first contentExists commit settles once; the hasError path settles; the waitingForData path keeps the loader until data lands. The existing suites pass unchanged.
+3. Step 3 (weight 3, device, alone in its own session): a mock build through `build-mock.zsh` with the aapt2 fleettest id check before any install, on the 3T; the emulator when the 3T is unreachable, named in the record. Switch en to ar and ar to en on both schedules, transcribe the read, and pull the logcat timeline (the commit log lines, `index_first_render`, `home_content`, the restart) showing no content commit between the reload and the new context''s first render. Control: an En launch with no switch reads unchanged.
+
+Each step lands as one commit with the version bump (package.json and app.json, fetch origin first, patch step).
+
+## Risks
+
+- The reload screen''s z-order across the restart: the cover is added to the content view before `reactHost.restart`. If the restart re-parents the surface above it, the cover fails visibly and the device step catches it; the fix then stops at F1 and F3 and the native gap is reported to the lead.
+- The two to three frames between the bundle''s end and the first React frame show the surface background under the fading cover; the fade covers them perceptually, and the device step times the span.
+- A context that survives a fulfilled reload (a wedged main thread) leaves the loader up. That state freezes the app today as well. No valve.
+- The marker freshness window is 60 seconds and the convergence cap is 10 seconds, so a reload slower than the window leaves the new context''s loader down while the gate logic still consumes the marker. The span is bounded well inside the window.
+
+## Proof
+
+- `yarn jest stores/__tests__/rtlSwitch.test.ts stores/__tests__/languageReloadFace.test.ts stores/__tests__/bootstrap.test.ts __tests__/app/index.test.tsx` — green after the change, and each new case fails against the pre-change tree (red first, shown in the step''s record).
+- `yarn validate` — green.
+- The device record: the transcribed switch read, the logcat timeline, and the fleettest badging line, on the 3T or the emulator with the substitution named.
+', NULL, NULL, '{}', false, false, false, NULL, 9216, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:23:55.227566+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (20, 11, 1, NULL, 'T-139', '# T-139
+
+Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
+
+## Goal
+
+The alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from
+its switch, and turning the athan off destroys the reminders'' enabled state in preferences.
+After this ticket: every disabled-content opacity in the sheet sits at half its current value,
+the whole header row of each reminder toggles it, and turning the athan back on restores each
+reminder to its pre-off enabled state, backed by the preference values the app never deletes.
+
+## Decisions taken
+
+All agent-ruled 2026-10-19, one line of why each.
+
+1. **"One dim level, halved" means per-value halving, not flattening the nesting.** Every
+   disabled-content opacity value that renders in this sheet halves. The three groups the order
+   names (rows, bodies under an off alert, bodies under an enabled alert) all carry the 0.25
+   style value today and all land on 0.125, which is the one uniform level. Challenged:
+   "matching the reminders exactly" could demand one effective visibility with no compounding.
+   Answer: flattening would raise the off-alert bodies (0.0625 effective today) and restructure
+   dim conditions, which "reduce to half, whatever each value is now" contradicts and the pixel
+   say does not cover.
+2. **"The enabled alert''s own body content below the header" is the reminder body while the
+   athan is enabled and that reminder is off.** The athan card''s own control carries no opacity
+   in the code, so no before-value exists for it to halve; the reminder-off body is the only
+   body content below an alert header that dims today.
+3. **The restore preserves reminder alert values in the existing preference atoms.** No new MMKV
+   keys, no session-only snapshot. Challenged: a session-only ref needs no store change, but it
+   fails the off, close, reopen, on flow the owner''s recap implies and is not
+   preferences-backed. Challenged again: separate restore keys avoid relaxing the stored
+   contract, but new schema keys are an ask-first item and duplicate what the existing atoms
+   can hold. The scheduler already gates every reminder read on the athan being on, so the
+   store can hold choices the scheduler ignores.
+4. **The whole-header tap copies the LabeledToggle pattern exactly, with no row haptic.**
+   LabeledToggle is the repo''s shipped whole-row switch pattern; the switch stays the only
+   haptic source, exactly as in Settings.
+5. **The dead `cardDisabled` and `optionsDisabled` styles in Alert.tsx are deleted.** They
+   render nowhere, touch no pixel, and mislead the dim-site measurement.
+6. **Type Bug, patch bump on every commit.** All three changes restore intended behaviour; none
+   adds a capability.
+
+## Files
+
+Changed:
+
+- `components/sheets/screens/ReminderCard.tsx` — two dim values halved; header row wrapped in
+  the LabeledToggle press pattern.
+- `components/sheets/screens/Alert.tsx` — dead styles deleted; draft derives the off display,
+  keeps a preserved-alerts ref, restores on the off-to-on transition, reports store-true
+  original and current state to the commit.
+- `components/sheets/parts/SegmentedControl.tsx` — disabled opacity halved.
+- `components/sheets/parts/Stepper.tsx` — two disabled opacities halved.
+- `components/sheets/parts/Toggle.tsx` — disabled opacity halved.
+- `stores/notifications.ts` — the force-off loop inside `setPrayerAlertType` removed;
+  `applyPrayerPreferences` doc comment updated to the new write truth.
+- `hooks/useNotification.ts` — `enablesAnything` reduced to the at-time check.
+- `package.json`, `app.json`, `android/app/build.gradle` — patch bump on every commit,
+  fetched from origin first.
+
+Read, not changed: `components/sheets/parts/LabeledToggle.tsx` (the pattern),
+`components/sheets/screens/alertDraft.ts` and `components/sheets/parts/reminderStep.ts` (the
+pure draft rules the restore reuses).
+
+Tests touched: `components/sheets/screens/__tests__/Alert.test.tsx`,
+`components/sheets/parts/__tests__/Toggle.test.tsx`,
+`components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
+`stores/__tests__/notifications.test.ts`,
+`stores/__tests__/notificationAlertCommit.test.ts`,
+`stores/__tests__/notificationPreferenceSetters.test.ts`,
+`hooks/__tests__/useNotification.test.ts`.
+
+## Design
+
+### Item 1: the dim table, measured at uat 91dafe2d
+
+| # | Site | Style (file) | Renders when | Now | After |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Whole reminder card | `cardDisabled` (ReminderCard.tsx:100) | locked: athan Off, or reminder 1 Off for card 2 | 0.25 | 0.125 |
+| 2 | Reminder body, sound and minutes | `optionsDisabled` (ReminderCard.tsx:126) | that reminder Off | 0.25 | 0.125 |
+| 3 | Sound segmented control | `disabled` (SegmentedControl.tsx:201) | reminder Off; the athan control never passes disabled | 0.4 | 0.2 |
+| 4 | Minutes stepper | `disabled` (Stepper.tsx:110) | reminder Off | 0.4 | 0.2 |
+| 5 | Stepper arrow at a range end | `buttonDisabled` (Stepper.tsx:120) | value 5 (minus dead) or 30 (plus dead), in any stepper state | 0.3 | 0.15 |
+| 6 | Reminder switch | `disabled` (Toggle.tsx:91) | locked card; ReminderCard is the only caller passing disabled | 0.4 | 0.2 |
+| 7 | Dead styles | `cardDisabled` (Alert.tsx:273), `optionsDisabled` (Alert.tsx:299) | never applied | 0.25 | deleted |
+
+Scoping: SegmentedControl renders only in Alert.tsx and ReminderCard; Stepper only in
+ReminderCard; Toggle''s disabled style renders only where ReminderCard passes disabled
+(LabeledToggle and Settings never pass it). Every halved pixel sits inside this sheet.
+
+No other opacity in the sheet changes. The crossfades in SegmentedControl
+(`progress.value`, `1 - progress.value`) are selection animations, not dim levels, and stay.
+
+### Item 2: whole-header tap
+
+ReminderCard''s header row (title, hint, switch) is wrapped in a Pressable whose onPress guards
+on `locked` and calls `onToggle`. This is the LabeledToggle pattern: the switch keeps its
+role, its checked state and its own press; React Native gives the touch to the innermost
+pressable, so a press on the switch fires once through the switch and a press on the title,
+the hint or the gap fires once through the row. The body (sound control and stepper) stays
+outside the target: the order names the top part only. The row adds no haptic and no
+accessibility role; the switch remains the accessible control, as in Settings.
+
+### Item 3: reminder state restored, preferences-backed
+
+Store contract: `preference_reminder_alert_*` holds the user''s chosen value even while the
+athan is Off. The force-off loop in `setPrayerAlertType` goes; its only production caller,
+`applyPrayerPreferences`, writes at-time first and both reminders after, so the commit lands
+the values it is given. Every reader of a stored reminder alert already gates on the athan:
+`applyPrayerAlerts` arms nothing when atTimeAlert is Off, `_addAllScheduleRemindersForSchedule`
+carries the same gate, and `requestCostReader` costs an off prayer zero. The store records
+choices; the scheduler derives firing.
+
+Sheet draft:
+
+- At mount, a reminder displays Off whenever the mounted athan is Off, whatever the stored
+  reminder value; the slide-off look under an off alert is pixel-identical to today.
+- A `preservedAlerts` ref holds the stored per-slot alert values at mount and re-snapshots
+  the live draft at every in-session transition into Off. Steppers and switches are locked
+  while off, so intervals cannot move in between.
+- On the transition out of Off (to Silent or Sound), each reminder becomes
+  `{ alert: preservedAlerts[slot], interval: draft interval }`. A reminder that was off by
+  its own choice restores to Off.
+- `getOriginalState` reports the store''s truth (preserved alerts, mounted intervals, so a
+  failed commit puts the store back exactly); `getCurrentState` substitutes the preserved
+  alerts for the display Off whenever atTimeAlert is Off, so the commit writes the preserved
+  values and the store keeps them.
+- `commitAlertMenuChanges` reduces `enablesAnything` to
+  `currentState.atTimeAlert !== AlertType.Off`. The reminder disjunct is redundant today and
+  would prompt for permissions on closing an all-off sheet whose preserved values sit in the
+  draft.
+- Installs that already hold Off reminder values under an off athan keep them: nothing
+  restores, which matches today''s behaviour, because no pre-off record exists for them.
+
+The permission gate in `handleAlertSelect` is unchanged: the Off-to-on athan move still asks
+before it selects, and a denial still leaves the control where it was.
+
+## Steps
+
+1. **Step 1: halved dim values pinned in the suites** (code, 2). Halve sites 1 through 6,
+   delete the dead styles, extend the five suites to pin the rendered values, red before green.
+2. **Step 2: whole-header tap on the reminder rows** (code, 2). Wrap the header row per
+   LabeledToggle, with suite cases for title-press toggling, locked rows refusing, and the
+   switch still toggling once.
+3. **Step 3: the store keeps reminder choices under an off athan** (code, 2). Remove the
+   force-off, reduce `enablesAnything`, update the pinned store, commit and hook suites to
+   the new contract.
+4. **Step 4: the sheet restores on off-to-on** (code, 2). The draft derivation, the
+   preserved ref, the restore transition and the store-true commit reporting, with suite cases
+   for same-session restore, reopen restore, off-by-choice staying off, and the no-change
+   close committing nothing.
+5. **Step 5: device pass on the changed sheet** (device, 3). A mock build on the simulator:
+   the dims read halved, the header tap toggles from the title, off slides the reminders off,
+   on brings them back, and the preference snapshot log shows the preserved values. Runs alone
+   in a fresh session.
+
+Weight: 11 pts.
+
+## Risks
+
+- A nested-pressable double fire would toggle twice per press. LabeledToggle ships the same
+   nesting in production, and Step 5 presses title and switch once each and reads the toggle.
+- A future reader of a stored reminder alert without the athan gate would arm reminders under
+   an off athan. Every reader today gates; Step 3''s suite pins the gate on each reader path.
+- The enablesAnything reduction could regress a prompt path. The hook suite covers the
+   all-off close with preserved values and the on-close that must prompt.
+- Legacy Off values restore nothing and could read as a regression. It is today''s behaviour
+   and Step 4''s suite states it.
+- The dim halving could leak past this sheet through the shared parts. The usage check above
+   shows the disabled styles render only here, and Step 1''s suite changes pin the parts''
+   values where their disabled props are the sheet''s.
+
+## Proof
+
+- `yarn validate` green on the lane branch.
+- `yarn jest components/sheets/screens/__tests__/Alert.test.tsx components/sheets/parts/__tests__/Toggle.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/sheets/parts/__tests__/SegmentedControl.test.tsx stores/__tests__/notifications.test.ts stores/__tests__/notificationAlertCommit.test.ts stores/__tests__/notificationPreferenceSetters.test.ts hooks/__tests__/useNotification.test.ts`
+  green, with the new cases asserting the halved values, the header tap, the preservation and
+  the restore.
+- Coverage on, every line the change touches covered.
+- No date logic is touched, so `yarn test:tz` is out of scope.
+- Step 5''s device log and transcribed reads on the simulator, per the device atlas.
+', NULL, NULL, '{}', false, false, false, NULL, 10240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:24:54.564779+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (21, 11, 2, NULL, 'T-139', '# T-139
+
+Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
+
+## Goal
+
+The alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from
+its switch, and turning the athan off destroys the reminders'' enabled state in preferences.
+After this ticket: every disabled-content opacity in the sheet sits at half its current value,
+the whole header row of each reminder toggles it, and turning the athan back on restores each
+reminder to its pre-off enabled state, backed by the preference values the app never deletes.
+
+## Decisions taken
+
+All agent-ruled 2026-10-19, one line of why each.
+
+1. **"One dim level, halved" means per-value halving, not flattening the nesting.** Every
+   disabled-content opacity value that renders in this sheet halves. The three groups the order
+   names (rows, bodies under an off alert, bodies under an enabled alert) all carry the 0.25
+   style value today and all land on 0.125, which is the one uniform level. Challenged:
+   "matching the reminders exactly" could demand one effective visibility with no compounding.
+   Answer: flattening would raise the off-alert bodies (0.0625 effective today) and restructure
+   dim conditions, which "reduce to half, whatever each value is now" contradicts and the pixel
+   say does not cover.
+2. **"The enabled alert''s own body content below the header" is the reminder body while the
+   athan is enabled and that reminder is off.** The athan card''s own control carries no opacity
+   in the code, so no before-value exists for it to halve; the reminder-off body is the only
+   body content below an alert header that dims today.
+3. **The restore preserves reminder alert values in the existing preference atoms.** No new MMKV
+   keys, no session-only snapshot. Challenged: a session-only ref needs no store change, but it
+   fails the off, close, reopen, on flow the owner''s recap implies and is not
+   preferences-backed. Challenged again: separate restore keys avoid relaxing the stored
+   contract, but new schema keys are an ask-first item and duplicate what the existing atoms
+   can hold. The scheduler already gates every reminder read on the athan being on, so the
+   store can hold choices the scheduler ignores.
+4. **The whole-header tap copies the LabeledToggle pattern exactly, with no row haptic.**
+   LabeledToggle is the repo''s shipped whole-row switch pattern; the switch stays the only
+   haptic source, exactly as in Settings.
+5. **The dead `cardDisabled` and `optionsDisabled` styles in Alert.tsx are deleted.** They
+   render nowhere, touch no pixel, and mislead the dim-site measurement.
+6. **Type Bug, patch bump on every commit.** All three changes restore intended behaviour; none
+   adds a capability.
+
+## Files
+
+Changed:
+
+- `components/sheets/screens/ReminderCard.tsx` — two dim values halved; header row wrapped in
+  the LabeledToggle press pattern.
+- `components/sheets/screens/Alert.tsx` — dead styles deleted; draft derives the off display,
+  keeps a preserved-alerts ref, restores on the off-to-on transition, reports store-true
+  original and current state to the commit.
+- `components/sheets/parts/SegmentedControl.tsx` — disabled opacity halved.
+- `components/sheets/parts/Stepper.tsx` — two disabled opacities halved.
+- `components/sheets/parts/Toggle.tsx` — disabled opacity halved.
+- `stores/notifications.ts` — the force-off loop inside `setPrayerAlertType` removed;
+  `applyPrayerPreferences` doc comment updated to the new write truth.
+- `hooks/useNotification.ts` — `enablesAnything` reduced to the at-time check.
+- `package.json`, `app.json`, `android/app/build.gradle` — patch bump on every commit,
+  fetched from origin first.
+
+Read, not changed: `components/sheets/parts/LabeledToggle.tsx` (the pattern),
+`components/sheets/screens/alertDraft.ts` and `components/sheets/parts/reminderStep.ts` (the
+pure draft rules the restore reuses).
+
+Tests touched: `components/sheets/screens/__tests__/Alert.test.tsx`,
+`components/sheets/parts/__tests__/Toggle.test.tsx`,
+`components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
+`stores/__tests__/notifications.test.ts`,
+`stores/__tests__/notificationAlertCommit.test.ts`,
+`stores/__tests__/notificationPreferenceSetters.test.ts`,
+`hooks/__tests__/useNotification.test.ts`.
+
+## Design
+
+### Item 1: the dim table, measured at uat 91dafe2d
+
+| # | Site | Style (file) | Renders when | Now | After |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Whole reminder card | `cardDisabled` (ReminderCard.tsx:100) | locked: athan Off, or reminder 1 Off for card 2 | 0.25 | 0.125 |
+| 2 | Reminder body, sound and minutes | `optionsDisabled` (ReminderCard.tsx:126) | that reminder Off | 0.25 | 0.125 |
+| 3 | Sound segmented control | `disabled` (SegmentedControl.tsx:201) | reminder Off; the athan control never passes disabled | 0.4 | 0.2 |
+| 4 | Minutes stepper | `disabled` (Stepper.tsx:110) | reminder Off | 0.4 | 0.2 |
+| 5 | Stepper arrow at a range end | `buttonDisabled` (Stepper.tsx:120) | value 5 (minus dead) or 30 (plus dead), in any stepper state | 0.3 | 0.15 |
+| 6 | Reminder switch | `disabled` (Toggle.tsx:91) | locked card; ReminderCard is the only caller passing disabled | 0.4 | 0.2 |
+| 7 | Dead styles | `cardDisabled` (Alert.tsx:273), `optionsDisabled` (Alert.tsx:299) | never applied | 0.25 | deleted |
+
+Scoping: SegmentedControl renders only in Alert.tsx and ReminderCard; Stepper only in
+ReminderCard; Toggle''s disabled style renders only where ReminderCard passes disabled
+(LabeledToggle and Settings never pass it). Every halved pixel sits inside this sheet.
+
+No other opacity in the sheet changes. The crossfades in SegmentedControl
+(`progress.value`, `1 - progress.value`) are selection animations, not dim levels, and stay.
+
+### Item 2: whole-header tap
+
+ReminderCard''s header row (title, hint, switch) is wrapped in a Pressable whose onPress guards
+on `locked` and calls `onToggle`. This is the LabeledToggle pattern: the switch keeps its
+role, its checked state and its own press; React Native gives the touch to the innermost
+pressable, so a press on the switch fires once through the switch and a press on the title,
+the hint or the gap fires once through the row. The body (sound control and stepper) stays
+outside the target: the order names the top part only. The row adds no haptic and no
+accessibility role; the switch remains the accessible control, as in Settings.
+
+### Item 3: reminder state restored, preferences-backed
+
+Store contract: `preference_reminder_alert_*` holds the user''s chosen value even while the
+athan is Off. The force-off loop in `setPrayerAlertType` goes; its only production caller,
+`applyPrayerPreferences`, writes at-time first and both reminders after, so the commit lands
+the values it is given. Every reader of a stored reminder alert already gates on the athan:
+`applyPrayerAlerts` arms nothing when atTimeAlert is Off, `_addAllScheduleRemindersForSchedule`
+carries the same gate, and `requestCostReader` costs an off prayer zero. The store records
+choices; the scheduler derives firing.
+
+Sheet draft:
+
+- At mount, a reminder displays Off whenever the mounted athan is Off, whatever the stored
+  reminder value; the slide-off look under an off alert is pixel-identical to today.
+- A `preservedAlerts` ref holds the stored per-slot alert values at mount and re-snapshots
+  the live draft at every in-session transition into Off. Steppers and switches are locked
+  while off, so intervals cannot move in between.
+- On the transition out of Off (to Silent or Sound), each reminder becomes
+  `{ alert: preservedAlerts[slot], interval: draft interval }`. A reminder that was off by
+  its own choice restores to Off.
+- `getOriginalState` reports the store''s truth (preserved alerts, mounted intervals, so a
+  failed commit puts the store back exactly); `getCurrentState` substitutes the preserved
+  alerts for the display Off whenever atTimeAlert is Off, so the commit writes the preserved
+  values and the store keeps them.
+- `commitAlertMenuChanges` reduces `enablesAnything` to
+  `currentState.atTimeAlert !== AlertType.Off`. The reminder disjunct is redundant today and
+  would prompt for permissions on closing an all-off sheet whose preserved values sit in the
+  draft.
+- Installs that already hold Off reminder values under an off athan keep them: nothing
+  restores, which matches today''s behaviour, because no pre-off record exists for them.
+
+The permission gate in `handleAlertSelect` is unchanged: the Off-to-on athan move still asks
+before it selects, and a denial still leaves the control where it was.
+
+## Steps
+
+1. **Step 1: halved dim values pinned in the suites** (code, 2). Halve sites 1 through 6,
+   delete the dead styles, extend the four suites that render a dim value to pin it
+   (Alert.test.tsx for the two ReminderCard sites, SegmentedControl.test.tsx, Stepper.test.tsx,
+   Toggle.test.tsx), red before green.
+2. **Step 2: whole-header tap on the reminder rows** (code, 2). Wrap the header row per
+   LabeledToggle, with suite cases for title-press toggling, locked rows refusing, and the
+   switch still toggling once.
+3. **Step 3: the store keeps reminder choices under an off athan** (code, 2). Remove the
+   force-off, reduce `enablesAnything`, update the pinned store, commit and hook suites to
+   the new contract.
+4. **Step 4: the sheet restores on off-to-on** (code, 2). The draft derivation, the
+   preserved ref, the restore transition and the store-true commit reporting, with suite cases
+   for same-session restore, reopen restore, off-by-choice staying off, and the no-change
+   close committing nothing.
+5. **Step 5: device pass on the changed sheet** (device, 3). A mock build on the simulator:
+   the dims read halved, the header tap toggles from the title, off slides the reminders off,
+   on brings them back, and the preference snapshot log shows the preserved values. Runs alone
+   in a fresh session.
+
+Weight: 11 pts.
+
+## Risks
+
+- A nested-pressable double fire would toggle twice per press. LabeledToggle ships the same
+   nesting in production, and Step 5 presses title and switch once each and reads the toggle.
+- A future reader of a stored reminder alert without the athan gate would arm reminders under
+   an off athan. Every reader today gates; Step 3''s suite pins the gate on each reader path.
+- The enablesAnything reduction could regress a prompt path. The hook suite covers the
+   all-off close with preserved values and the on-close that must prompt.
+- Legacy Off values restore nothing and could read as a regression. It is today''s behaviour
+   and Step 4''s suite states it.
+- The dim halving could leak past this sheet through the shared parts. The usage check above
+   shows the disabled styles render only here, and Step 1''s suite changes pin the parts''
+   values where their disabled props are the sheet''s.
+
+## Proof
+
+- `yarn validate` green on the lane branch.
+- `yarn jest components/sheets/screens/__tests__/Alert.test.tsx components/sheets/parts/__tests__/Toggle.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/sheets/parts/__tests__/SegmentedControl.test.tsx stores/__tests__/notifications.test.ts stores/__tests__/notificationAlertCommit.test.ts stores/__tests__/notificationPreferenceSetters.test.ts hooks/__tests__/useNotification.test.ts`
+  green, with the new cases asserting the halved values, the header tap, the preservation and
+  the restore.
+- Coverage on, every line the change touches covered.
+- No date logic is touched, so `yarn test:tz` is out of scope.
+- Step 5''s device log and transcribed reads on the simulator, per the device atlas.
+', NULL, NULL, '{}', false, false, false, NULL, 10240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:31:52.824282+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (22, 9, 2, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
+3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
+4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
+5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
+
+Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
+- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
+- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:33:05.183901+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (23, 11, 3, NULL, 'T-139', '# T-139
+
+Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
+
+## Goal
+
+The alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from
+its switch, and turning the athan off destroys the reminders'' enabled state in preferences.
+After this ticket: every disabled-content opacity in the sheet sits at half its current value,
+the whole header row of each reminder toggles it, and turning the athan back on restores each
+reminder to its pre-off enabled state, backed by the preference values the app never deletes.
+
+## Decisions taken
+
+All agent-ruled 2026-10-19, one line of why each.
+
+1. **"One dim level, halved" means per-value halving, not flattening the nesting.** Every
+   disabled-content opacity value that renders in this sheet halves. The three groups the order
+   names (rows, bodies under an off alert, bodies under an enabled alert) all carry the 0.25
+   style value today and all land on 0.125, which is the one uniform level. Challenged:
+   "matching the reminders exactly" could demand one effective visibility with no compounding.
+   Answer: flattening would raise the off-alert bodies (0.0625 effective today) and restructure
+   dim conditions, which "reduce to half, whatever each value is now" contradicts and the pixel
+   say does not cover.
+2. **"The enabled alert''s own body content below the header" is the reminder body while the
+   athan is enabled and that reminder is off.** The athan card''s own control carries no opacity
+   in the code, so no before-value exists for it to halve; the reminder-off body is the only
+   body content below an alert header that dims today.
+3. **The restore preserves reminder alert values in the existing preference atoms.** No new MMKV
+   keys, no session-only snapshot. Challenged: a session-only ref needs no store change, but it
+   fails the off, close, reopen, on flow the owner''s recap implies and is not
+   preferences-backed. Challenged again: separate restore keys avoid relaxing the stored
+   contract, but new schema keys are an ask-first item and duplicate what the existing atoms
+   can hold. The scheduler already gates every reminder read on the athan being on, so the
+   store can hold choices the scheduler ignores.
+4. **The whole-header tap copies the LabeledToggle pattern exactly, with no row haptic.**
+   LabeledToggle is the repo''s shipped whole-row switch pattern; the switch stays the only
+   haptic source, exactly as in Settings.
+5. **The dead `cardDisabled` and `optionsDisabled` styles in Alert.tsx are deleted.** They
+   render nowhere, touch no pixel, and mislead the dim-site measurement.
+6. **Type Bug, patch bump on every commit.** All three changes restore intended behaviour; none
+   adds a capability.
+
+## Files
+
+Changed:
+
+- `components/sheets/screens/ReminderCard.tsx` — two dim values halved; header row wrapped in
+  the LabeledToggle press pattern.
+- `components/sheets/screens/Alert.tsx` — dead styles deleted; draft derives the off display,
+  keeps a preserved-alerts ref, restores on the off-to-on transition, reports store-true
+  original and current state to the commit.
+- `components/sheets/parts/SegmentedControl.tsx` — disabled opacity halved.
+- `components/sheets/parts/Stepper.tsx` — two disabled opacities halved.
+- `components/sheets/parts/Toggle.tsx` — disabled opacity halved.
+- `stores/notifications.ts` — the force-off loop inside `setPrayerAlertType` removed;
+  `applyPrayerPreferences` doc comment updated to the new write truth.
+- `hooks/useNotification.ts` — `enablesAnything` reduced to the at-time check.
+- `package.json`, `app.json`, `android/app/build.gradle` — patch bump on every commit,
+  fetched from origin first.
+
+Read, not changed: `components/sheets/parts/LabeledToggle.tsx` (the pattern),
+`components/sheets/screens/alertDraft.ts` and `components/sheets/parts/reminderStep.ts` (the
+pure draft rules the restore reuses).
+
+Tests touched: `components/sheets/screens/__tests__/Alert.test.tsx`,
+`components/sheets/parts/__tests__/Toggle.test.tsx`,
+`components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
+`stores/__tests__/notifications.test.ts`,
+`stores/__tests__/notificationAlertCommit.test.ts`,
+`stores/__tests__/notificationPreferenceSetters.test.ts`,
+`hooks/__tests__/useNotification.test.ts`.
+
+## Design
+
+### Item 1: the dim table, measured at uat 91dafe2d
+
+| # | Site | Style (file) | Renders when | Now | After |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Whole reminder card | `cardDisabled` (ReminderCard.tsx:100) | locked: athan Off, or reminder 1 Off for card 2 | 0.25 | 0.125 |
+| 2 | Reminder body, sound and minutes | `optionsDisabled` (ReminderCard.tsx:126) | that reminder Off | 0.25 | 0.125 |
+| 3 | Sound segmented control | `disabled` (SegmentedControl.tsx:201) | reminder Off; the athan control never passes disabled | 0.4 | 0.2 |
+| 4 | Minutes stepper | `disabled` (Stepper.tsx:110) | reminder Off | 0.4 | 0.2 |
+| 5 | Stepper arrow at a range end | `buttonDisabled` (Stepper.tsx:120) | value 5 (minus dead) or 30 (plus dead), in any stepper state | 0.3 | 0.15 |
+| 6 | Reminder switch | `disabled` (Toggle.tsx:91) | locked card; ReminderCard is the only caller passing disabled | 0.4 | 0.2 |
+| 7 | Dead styles | `cardDisabled` (Alert.tsx:273), `optionsDisabled` (Alert.tsx:299) | never applied | 0.25 | deleted |
+
+Scoping: SegmentedControl renders only in Alert.tsx and ReminderCard; Stepper only in
+ReminderCard; Toggle''s disabled style renders only where ReminderCard passes disabled
+(LabeledToggle and Settings never pass it). Every halved pixel sits inside this sheet.
+
+No other opacity in the sheet changes. The crossfades in SegmentedControl
+(`progress.value`, `1 - progress.value`) are selection animations, not dim levels, and stay.
+
+### Item 2: whole-header tap
+
+ReminderCard''s header row (title, hint, switch) is wrapped in a Pressable whose onPress guards
+on `locked` and calls `onToggle`. This is the LabeledToggle pattern: the switch keeps its
+role, its checked state and its own press; React Native gives the touch to the innermost
+pressable, so a press on the switch fires once through the switch and a press on the title,
+the hint or the gap fires once through the row. The body (sound control and stepper) stays
+outside the target: the order names the top part only. The row adds no haptic and no
+accessibility role; the switch remains the accessible control, as in Settings.
+
+### Item 3: reminder state restored, preferences-backed
+
+Store contract: `preference_reminder_alert_*` holds the user''s chosen value even while the
+athan is Off. The force-off loop in `setPrayerAlertType` goes; its only production caller,
+`applyPrayerPreferences`, writes at-time first and both reminders after, so the commit lands
+the values it is given. Every reader of a stored reminder alert already gates on the athan:
+`applyPrayerAlerts` arms nothing when atTimeAlert is Off, `_addAllScheduleRemindersForSchedule`
+carries the same gate, and `requestCostReader` costs an off prayer zero. The store records
+choices; the scheduler derives firing.
+
+Sheet draft:
+
+- At mount, a reminder displays Off whenever the mounted athan is Off, whatever the stored
+  reminder value, and the shown sound derives to Silent there exactly as today (the preserved
+  sound lives only in the ref), so the slide-off under an off athan keeps today''s pixels:
+  switch off, pill on Silent.
+- A `preservedAlerts` ref holds the stored per-slot alert values at mount and re-snapshots
+  the live draft at every in-session transition into Off. Steppers and switches are locked
+  while off, so intervals cannot move in between.
+- On the transition out of Off (to Silent or Sound), each reminder becomes
+  `{ alert: preservedAlerts[slot], interval: draft interval }`, and the shown sound becomes
+  the preserved value beside it, so the restored pill reads the sound the reminder fires with.
+  A reminder that was off by its own choice restores to Off.
+- `getOriginalState` reports the store''s truth (preserved alerts, mounted intervals, so a
+  failed commit puts the store back exactly); `getCurrentState` substitutes the preserved
+  alerts for the display Off whenever atTimeAlert is Off, so the commit writes the preserved
+  values and the store keeps them.
+- `commitAlertMenuChanges` reduces `enablesAnything` to
+  `currentState.atTimeAlert !== AlertType.Off`. The reminder disjunct is redundant today and
+  would prompt for permissions on closing an all-off sheet whose preserved values sit in the
+  draft.
+- Installs that already hold Off reminder values under an off athan keep them: nothing
+  restores, which matches today''s behaviour, because no pre-off record exists for them.
+
+The permission gate in `handleAlertSelect` is unchanged: the Off-to-on athan move still asks
+before it selects, and a denial still leaves the control where it was.
+
+## Steps
+
+1. **Step 1: halved dim values pinned in the suites** (code, 2). Halve sites 1 through 6,
+   delete the dead styles, extend the four suites that render a dim value to pin it
+   (Alert.test.tsx for the two ReminderCard sites, SegmentedControl.test.tsx, Stepper.test.tsx,
+   Toggle.test.tsx), red before green.
+2. **Step 2: whole-header tap on the reminder rows** (code, 2). Wrap the header row per
+   LabeledToggle, with suite cases for title-press toggling, locked rows refusing, and the
+   switch still toggling once.
+3. **Step 3: the store keeps reminder choices under an off athan** (code, 2). Remove the
+   force-off, reduce `enablesAnything`, update the pinned store, commit and hook suites to
+   the new contract.
+4. **Step 4: the sheet restores on off-to-on** (code, 2). The draft derivation, the
+   preserved ref, the restore transition and the store-true commit reporting, with suite cases
+   for same-session restore, reopen restore, off-by-choice staying off, the no-change close
+   committing nothing, the mounted slide-off pixels (switch off, sound pill on Silent under an
+   off athan holding a preserved Sound), and the restored pill showing the preserved sound.
+5. **Step 5: device pass on the changed sheet** (device, 3). A mock build on the simulator:
+   the dims read halved, the header tap toggles from the title, off slides the reminders off,
+   on brings them back, and the preference snapshot log shows the preserved values. Runs alone
+   in a fresh session.
+
+Weight: 11 pts.
+
+## Risks
+
+- A nested-pressable double fire would toggle twice per press. LabeledToggle ships the same
+   nesting in production, and Step 5 presses title and switch once each and reads the toggle.
+- A future reader of a stored reminder alert without the athan gate would arm reminders under
+   an off athan. Every reader today gates; Step 3''s suite pins the gate on each reader path.
+- The enablesAnything reduction could regress a prompt path. The hook suite covers the
+   all-off close with preserved values and the on-close that must prompt.
+- Legacy Off values restore nothing and could read as a regression. It is today''s behaviour
+   and Step 4''s suite states it.
+- The dim halving could leak past this sheet through the shared parts. The usage check above
+   shows the disabled styles render only here, and Step 1''s suite changes pin the parts''
+   values where their disabled props are the sheet''s.
+
+## Proof
+
+- `yarn validate` green on the lane branch.
+- `yarn jest components/sheets/screens/__tests__/Alert.test.tsx components/sheets/parts/__tests__/Toggle.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/sheets/parts/__tests__/SegmentedControl.test.tsx stores/__tests__/notifications.test.ts stores/__tests__/notificationAlertCommit.test.ts stores/__tests__/notificationPreferenceSetters.test.ts hooks/__tests__/useNotification.test.ts`
+  green, with the new cases asserting the halved values, the header tap, the preservation and
+  the restore.
+- Coverage on, every line the change touches covered.
+- No date logic is touched, so `yarn test:tz` is out of scope.
+- Step 5''s device log and transcribed reads on the simulator, per the device atlas.
+', NULL, NULL, '{}', false, false, false, NULL, 10240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:43:36.194738+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (24, 10, 2, NULL, 'T-141', '# T-141
+
+## Goal
+
+An Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No frame shows the target-language schedule mid-switch. No frame shows a blank page. A launch that does not switch renders exactly the lines it renders today.
+
+## Decisions taken
+
+- 2026-10-19. The cover for the native restart is a first-party Android module (modules/switchcover, the modules/tls13 pattern). The app''s builds disable expo-updates (the prebuilt manifest sets `expo.modules.updates.ENABLED` false), so the app runs `DisabledUpdatesController`, whose `reloadScreenManager` is null and whose JS screen functions are `BuildConfig.DEBUG`-gated. No shipped API can paint during the restart.
+- 2026-10-19. The cover reuses the loader''s own values: the same root purple, spinner colour, spinner size, line string and line offsets, passed from JS. It sustains an existing face through the span rather than adding one. Challenged: a native view is still a new surface. Second argument: every value and string is the loader''s own, composed by the same helper, so the switch shows one face throughout, which is the owner''s contract.
+- 2026-10-19. No new-context JS stand. The native cover stays up until the first commit where `contentExists` is true, so the handoff is cover to content. iOS changes only by the commit-path latch, which extends the loader through the dead span and paints nothing new.
+- 2026-10-19. The capped crossing (convergence hit the 10-second cap) shows and hides the cover on the same rule as a settled one: neither call is gated on the handoff marker, so the face does not depend on `passSettled`.
+- 2026-10-19. The platform gate is a module-level `IS_ANDROID` (`Platform.OS === ''android''`) in stores/language.ts, the device/notifications.ts precedent, and tests drive it by assigning `Platform.OS` the way device/__tests__/androidChannelUpdate.test.ts does.
+- 2026-10-19. The version bump set is package.json and app.json: android/app/build.gradle is generated by prebuild and untracked, matching every prior commit.
+- 2026-10-19. iOS keeps today''s exact call shape (`reloadAsync` with no arguments) and is never asked for a cover.
+
+## Files
+
+- `stores/language.ts` — changed: the latch that holds the loader through a fulfilled reload, the Android-only cover calls before the reload and in the rejection path.
+- `modules/switchcover/expo-module.config.json`, `modules/switchcover/android/build.gradle`, `modules/switchcover/android/src/main/AndroidManifest.xml`, `modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt` — new: the first-party cover module (show and hide, idempotent).
+- `device/switchCover.ts` — new: the JS wrapper (`requireOptionalNativeModule`, no-op when the module is absent, so iOS and Jest skip cleanly).
+- `shared/i18n/index.ts` — changed: `languageChangingLine(locale)` extracted, the exact composition LanguageLoader uses.
+- `components/ui/LanguageLoader.tsx` — changed by one line: the loader composes its line through the shared helper. No visual change.
+- `app/index.tsx` — changed: the first-content effect hides the cover.
+- `shared/__mocks__/` or a per-file mock — changed: the Jest boundary for `device/switchCover.ts`.
+- `stores/__tests__/rtlSwitch.test.ts` — extended, and its beforeEach resets busy and pending.
+- `stores/__tests__/languageConvergence.test.ts` — its beforeEach resets busy and pending (fulfilled crossings now hold them past the commit''s end).
+- `stores/__tests__/languageReloadFace.test.ts` — new.
+- `__tests__/app/index.test.tsx` — extended.
+- `package.json`, `app.json` — the bump on every commit.
+- Read only: `app/_layout.tsx`, `shared/constants.ts`, `stores/bootstrap.ts`.
+
+## Design
+
+### The mechanism, named from source
+
+M1. What unmounts the spinner. `commitLanguagePreference` clears `languageCommitBusyAtom` and `pendingLanguageAtom` in its `finally`, and `LanguageLoader` returns null on the next render. The `finally` runs when `Updates.reloadAsync()` fulfills. On Android that happens before the reload lands: `DisabledUpdatesController.relaunchReactApplicationForModule` queues `RecreateReactContextProcedure`, which calls `callback.onSuccess()` (the fulfillment) before `reactHost.restart(...)` is posted to the main thread. The old context keeps committing frames after the unmount.
+
+M2. What renders the schedule mid-switch. The commit already called `setActiveLocale(locale)` and stored the preference, which bumps `localeVersionAtom`; `app/_layout.tsx` remounts `Slot key={localeVersion}` in the target language, and `I18nManager.forceRTL` applied the target direction. Once M1 unmounts the loader, those screens are the visible tree and paint until the native teardown.
+
+M3. What renders the blank purple page. `reactHost.restart` destroys the old React surface, and until the new bundle evaluates and commits its first frame no JS exists to paint, so the screen shows the root background (#2c1c77). The half second matches bundle re-evaluation on the 3T. expo-updates ships a native reload screen for exactly this span, and none of it exists in this app: the manifest disables updates, so `DisabledUpdatesController` runs with a null `reloadScreenManager`, `RecreateReactContextProcedure` never shows a screen, and the JS `showReloadScreen`/`hideReloadScreen` are `BuildConfig.DEBUG`-only in the module.
+
+M4. Why iOS does not. `RelaunchProcedure.swift` triggers the reload inside the same root view: the old tree''s last committed frame (the loader face) stays on screen until the new surface paints over it. iOS never depends on post-fulfillment JS; the frozen loader covers the whole span.
+
+### The fix
+
+F1. Old context, both platforms. `commitLanguagePreference` keeps a per-invocation local latch `reloadAccepted`, false at the top of every commit. The `finally` clears the busy and pending atoms only when the latch is false. A fulfilled reload leaves the loader mounted until the context dies. A rejected reload sets nothing, restores today''s cleanup, clears the marker, and logs the existing warning. The per-invocation local means a later commit in a surviving context starts from a clean latch.
+
+F2. Android only, the native cover. A first-party module `modules/switchcover` (the `modules/tls13` pattern: an android library, an `expo-module.config.json` with `platforms: ["android"]`, autolinked without an app.json plugin entry) exposes:
+
+- `show(cover)` where cover carries `backgroundColor`, `spinnerColor`, `spinnerSizeDp`, `lineText`, `lineColor`, `lineSizeDp`, `lineMarginTopDp`, `lineMaxWidthDp`. It builds a FrameLayout with the background colour, a centred indeterminate ProgressBar with the given tint and size, and a TextView hung below centre with the given text, colour, size, top margin and max width, all in dp multiplied by the display density. It adds the view to the activity''s content view above everything. Idempotent: a second show while showing changes nothing.
+- `hide()` removes the view when showing. Idempotent.
+
+The ProgressBar keeps animating on the UI thread while JS is dead, so the spinner turns through the whole span.
+
+The wiring in `stores/language.ts`: on the relaunch path, before `Updates.reloadAsync()` and only when `IS_ANDROID`, `await showSwitchCover(coverOptionsFor(locale))`, then `await Updates.reloadAsync()` with no arguments. `coverOptionsFor` reads `COLORS.navigation.rootBackground`, `COLORS.navigation.activityIndicator`, `SIZE.activityIndicator`, `SPACING.xxxl`, `TEXT.size`, the loader''s 260 line cap, and the line from `languageChangingLine(locale)`. On a rejected reload, before the cleanup, `hideSwitchCover()` with the error swallowed.
+
+The wiring in `app/index.tsx`: inside the existing first-content effect (`if (contentExists && !contentCommittedRef.current)`), after `perfMark(''home_content'')`, call `hideSwitchCover()`. It fires once per Index mount in every context: a no-op in a context that never showed the cover, and the removal right after the first content commit in the context that follows a switch. The `hasError` state counts as content (`isWaitingForData` is false there), so an error screen lifts the cover.
+
+Invariant: between the tap on a language row and the first content commit of the context that follows a crossing switch, every frame shows one face: the JS loader from the tap, the native cover (same values) across the restart, and content at the reveal. A launch that does not switch renders exactly the lines it renders today.
+
+En byte-identical when not switching: F1 touches only the relaunch branch, so the same-script instant switch keeps today''s cleanup. F2''s calls sit behind `IS_ANDROID` and the relaunch branch. The cover module is inert until shown. The hide in app/index.tsx is a no-op in a context that never showed the cover.
+
+Alternatives rejected:
+
+- The shipped expo-updates reload screen: unavailable here, because the app''s builds disable updates and the JS screen functions are debug-only.
+- F1 alone: M3''s half-second blank remains, which is the owner''s central complaint.
+- `Expo.reloadAppAsync` with an activity recreate so the splash re-shows: its Android implementation calls `reactDelegate.reload()`, the same in-place context restart, and the splash is never re-shown inside a living activity.
+- A timeout valve that clears the loader if the context survives a fulfilled reload: it reintroduces the unmount flash on slow devices and treats a terminal state as recoverable.
+- A JS loader stood by the new context before its first render: it paints beneath the native cover or not at all during the dead span, so it adds state without covering anything.
+- Passing the cover duty to the launch splash: the splash is not re-shown after an in-activity reload.
+
+## Steps
+
+1. Step 1 (weight 2): the latch. `stores/language.ts` F1, the busy and pending resets in the beforeEach of `stores/__tests__/rtlSwitch.test.ts` and `stores/__tests__/languageConvergence.test.ts`, tests red first: a fulfilled crossing leaves busy true and pending set after the commit resolves; a rejected crossing clears both and clears the marker (existing assertions); a second commit after a rejected first one runs to its own reload (the latch is per-invocation).
+2. Step 2 (weight 2): the cover. The module under `modules/switchcover`, the `device/switchCover.ts` wrapper (`requireOptionalNativeModule`, no-op when absent), `languageChangingLine` in `shared/i18n/index.ts` with LanguageLoader composing through it, the show call before the reload and the hide in the rejection path (`IS_ANDROID`), the hide in `app/index.tsx`''s first-content effect, the Jest boundary mock. Tests red first in `stores/__tests__/languageReloadFace.test.ts` and `__tests__/app/index.test.tsx`: Android shows the cover before `reloadAsync` with the loader''s purple, spinner colour, size and the target line string, and hides it on a rejected reload; iOS never calls show and calls `reloadAsync` with no arguments; the first-content effect calls hide once; a plain launch never shows; the wrapper no-ops when the native module is absent.
+3. Step 3 (weight 3, device, alone in its own session): a mock build through `build-mock.zsh` with the aapt2 fleettest badging check before any install, on the 3T; the emulator when the 3T is unreachable, named in the record. Switch en to ar and ar to en on both schedules, transcribe the read, and pull the logcat timeline on lines the release build actually emits (the Pino lines the logger writes in release, the native restart reason, whichever ReactMarker lines reach logcat; the step establishes the set before relying on it), showing no content commit between the reload and the new context''s first render. Control: an En launch with no switch reads unchanged.
+
+Each step lands as one commit with the version bump (package.json and app.json, fetch origin first, patch step).
+
+## Risks
+
+- The cover''s z-order across the restart: the view is added to the activity content before `reactHost.restart`, and the restart recreates the context inside the same surface beneath it. If the restart re-parents the surface above the cover, the failure is visible on glass and the device step catches it; the fallback is adding the cover to the activity''s window instead of the content view.
+- The ProgressBar''s drawable may differ from the loader''s ActivityIndicator by theme, and the TextView uses the system font, so the Arabic line''s face may differ from the app''s bundled face for the span. Both are read on glass in the device step and recorded.
+- R8 may strip the reflection-built module class on the production build. modules/tls13 ships without a keep; if the cover is missing on glass, add the module package to the expo-build-properties proguard block in app.json, the existing precedent.
+- A context that survives a fulfilled reload (a wedged main thread) leaves the loader and the cover up. That state freezes the app today as well. No valve.
+- The cover''s show must land before the restart: both ride the module''s main queue in call order (`show` completes, then the reload''s restart posts). If the device read shows the restart winning, hold the cover''s show behind its promise resolution before calling reloadAsync, which the wiring already does.
+
+## Proof
+
+- `yarn jest stores/__tests__/rtlSwitch.test.ts stores/__tests__/languageConvergence.test.ts stores/__tests__/languageReloadFace.test.ts __tests__/app/index.test.tsx components/ui/__tests__/LanguageLoader.test.tsx` — green after the change, and each new case fails against the pre-change tree (red first, shown in the step''s record).
+- `node scripts/check-changed-coverage.js` — every line the change touches is covered, measured with coverage on.
+- A mutation pass on the guarded logic: flip the latch, flip `IS_ANDROID`, break each idempotence guard in show and hide, and show each mutation caught by a failing test.
+- `yarn validate` — green.
+- The device record: the transcribed switch read for both directions and both schedules, the logcat timeline on the lines the release build emits, and the fleettest badging line, on the 3T or the emulator with the substitution named.
+', NULL, NULL, '{}', false, false, false, NULL, 9216, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:48:58.157263+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (25, 11, 4, NULL, 'T-139', '# T-139
+
+Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
+
+## Goal
+
+The alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from
+its switch, and turning the athan off destroys the reminders'' enabled state in preferences.
+After this ticket: every disabled-content opacity in the sheet sits at half its current value,
+the whole header row of each reminder toggles it, and turning the athan back on restores each
+reminder to its pre-off enabled state, backed by the preference values the app never deletes.
+
+## Decisions taken
+
+All agent-ruled 2026-10-19, one line of why each.
+
+1. **"One dim level, halved" means per-value halving, not flattening the nesting.** Every
+   disabled-content opacity value that renders in this sheet halves. The three groups the order
+   names (rows, bodies under an off alert, bodies under an enabled alert) all carry the 0.25
+   style value today and all land on 0.125, which is the one uniform level. Challenged:
+   "matching the reminders exactly" could demand one effective visibility with no compounding.
+   Answer: flattening would raise the off-alert bodies (0.0625 effective today) and restructure
+   dim conditions, which "reduce to half, whatever each value is now" contradicts and the pixel
+   say does not cover.
+2. **"The enabled alert''s own body content below the header" is the reminder body while the
+   athan is enabled and that reminder is off.** The athan card''s own control carries no opacity
+   in the code, so no before-value exists for it to halve; the reminder-off body is the only
+   body content below an alert header that dims today.
+3. **The restore preserves reminder alert values in the existing preference atoms.** No new MMKV
+   keys, no session-only snapshot. Challenged: a session-only ref needs no store change, but it
+   fails the off, close, reopen, on flow the owner''s recap implies and is not
+   preferences-backed. Challenged again: separate restore keys avoid relaxing the stored
+   contract, but new schema keys are an ask-first item and duplicate what the existing atoms
+   can hold. The scheduler already gates every reminder read on the athan being on, so the
+   store can hold choices the scheduler ignores.
+4. **The whole-header tap copies the LabeledToggle pattern exactly, with no row haptic.**
+   LabeledToggle is the repo''s shipped whole-row switch pattern; the switch stays the only
+   haptic source, exactly as in Settings.
+5. **The dead `cardDisabled` and `optionsDisabled` styles in Alert.tsx are deleted.** They
+   render nowhere, touch no pixel, and mislead the dim-site measurement.
+6. **Type Bug, patch bump on every commit.** All three changes restore intended behaviour; none
+   adds a capability.
+
+## Files
+
+Changed:
+
+- `components/sheets/screens/ReminderCard.tsx` — two dim values halved; header row wrapped in
+  the LabeledToggle press pattern.
+- `components/sheets/screens/Alert.tsx` — dead styles deleted; draft derives the off display,
+  keeps a preserved-alerts ref, restores on the off-to-on transition, reports store-true
+  original and current state to the commit.
+- `components/sheets/parts/SegmentedControl.tsx` — disabled opacity halved.
+- `components/sheets/parts/Stepper.tsx` — two disabled opacities halved.
+- `components/sheets/parts/Toggle.tsx` — disabled opacity halved.
+- `stores/notifications.ts` — the force-off loop inside `setPrayerAlertType` removed;
+  `applyPrayerPreferences` doc comment updated to the new write truth.
+- `hooks/useNotification.ts` — `enablesAnything` reduced to the at-time check.
+- `package.json`, `app.json`, `android/app/build.gradle` — patch bump on every commit,
+  fetched from origin first.
+
+Read, not changed: `components/sheets/parts/LabeledToggle.tsx` (the pattern),
+`components/sheets/screens/alertDraft.ts` and `components/sheets/parts/reminderStep.ts` (the
+pure draft rules the restore reuses).
+
+Tests touched: `components/sheets/screens/__tests__/Alert.test.tsx`,
+`components/sheets/parts/__tests__/Toggle.test.tsx`,
+`components/sheets/parts/__tests__/Stepper.test.tsx`,
+`components/sheets/parts/__tests__/SegmentedControl.test.tsx`,
+`stores/__tests__/notifications.test.ts`,
+`stores/__tests__/notificationAlertCommit.test.ts`,
+`stores/__tests__/notificationPreferenceSetters.test.ts`,
+`hooks/__tests__/useNotification.test.ts`.
+
+## Design
+
+### Item 1: the dim table, measured at uat 91dafe2d
+
+| # | Site | Style (file) | Renders when | Now | After |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Whole reminder card | `cardDisabled` (ReminderCard.tsx:100) | locked: athan Off, or reminder 1 Off for card 2 | 0.25 | 0.125 |
+| 2 | Reminder body, sound and minutes | `optionsDisabled` (ReminderCard.tsx:126) | that reminder Off | 0.25 | 0.125 |
+| 3 | Sound segmented control | `disabled` (SegmentedControl.tsx:201) | reminder Off; the athan control never passes disabled | 0.4 | 0.2 |
+| 4 | Minutes stepper | `disabled` (Stepper.tsx:110) | reminder Off | 0.4 | 0.2 |
+| 5 | Stepper arrow at a range end | `buttonDisabled` (Stepper.tsx:120) | value 5 (minus dead) or 30 (plus dead), in any stepper state | 0.3 | 0.15 |
+| 6 | Reminder switch | `disabled` (Toggle.tsx:91) | locked card; ReminderCard is the only caller passing disabled | 0.4 | 0.2 |
+| 7 | Dead styles | `cardDisabled` (Alert.tsx:273), `optionsDisabled` (Alert.tsx:299) | never applied | 0.25 | deleted |
+
+Scoping: SegmentedControl renders only in Alert.tsx and ReminderCard; Stepper only in
+ReminderCard; Toggle''s disabled style renders only where ReminderCard passes disabled
+(LabeledToggle and Settings never pass it). Every halved pixel sits inside this sheet.
+
+No other opacity in the sheet changes. The crossfades in SegmentedControl
+(`progress.value`, `1 - progress.value`) are selection animations, not dim levels, and stay.
+
+### Item 2: whole-header tap
+
+ReminderCard''s header row (title, hint, switch) is wrapped in a Pressable whose onPress guards
+on `locked` and calls `onToggle`. This is the LabeledToggle pattern: the switch keeps its
+role, its checked state and its own press; React Native gives the touch to the innermost
+pressable, so a press on the switch fires once through the switch and a press on the title,
+the hint or the gap fires once through the row. The body (sound control and stepper) stays
+outside the target: the order names the top part only. The row adds no haptic and no
+accessibility role; the switch remains the accessible control, as in Settings.
+
+### Item 3: reminder state restored, preferences-backed
+
+Store contract: `preference_reminder_alert_*` holds the user''s chosen value even while the
+athan is Off. The force-off loop in `setPrayerAlertType` goes; its only production caller,
+`applyPrayerPreferences`, writes at-time first and both reminders after, so the commit lands
+the values it is given. Every reader of a stored reminder alert already gates on the athan:
+`applyPrayerAlerts` arms nothing when atTimeAlert is Off, `_addAllScheduleRemindersForSchedule`
+carries the same gate, and `requestCostReader` costs an off prayer zero. The store records
+choices; the scheduler derives firing.
+
+Sheet draft:
+
+- At mount, a reminder displays Off whenever the mounted athan is Off, whatever the stored
+  reminder value, and the shown sound derives to Silent there exactly as today (the preserved
+  sound lives only in the ref), so the slide-off under an off athan keeps today''s pixels:
+  switch off, pill on Silent.
+- A `preservedAlerts` ref holds the stored per-slot alert values at mount and re-snapshots
+  the live draft at every in-session transition into Off. Steppers and switches are locked
+  while off, so intervals cannot move in between.
+- On the transition out of Off (to Silent or Sound), each reminder becomes
+  `{ alert: preservedAlerts[slot], interval: draft interval }`, and the shown sound becomes
+  the preserved value beside it, so the restored pill reads the sound the reminder fires with.
+  A reminder that was off by its own choice restores to Off.
+- `getOriginalState` reports the store''s truth (preserved alerts, mounted intervals, so a
+  failed commit puts the store back exactly); `getCurrentState` substitutes the preserved
+  alerts for the display Off whenever atTimeAlert is Off, so the commit writes the preserved
+  values and the store keeps them.
+- `commitAlertMenuChanges` reduces `enablesAnything` to
+  `currentState.atTimeAlert !== AlertType.Off`. The reminder disjunct is redundant today and
+  would prompt for permissions on closing an all-off sheet whose preserved values sit in the
+  draft.
+- Installs that already hold Off reminder values under an off athan keep them: nothing
+  restores, which matches today''s behaviour, because no pre-off record exists for them.
+
+The permission gate in `handleAlertSelect` is unchanged: the Off-to-on athan move still asks
+before it selects, and a denial still leaves the control where it was.
+
+## Steps
+
+1. **Step 1: halved dim values pinned in the suites** (code, 2). Halve sites 1 through 6,
+   delete the dead styles, extend the four suites that render a dim value to pin it
+   (Alert.test.tsx for the two ReminderCard sites, SegmentedControl.test.tsx, Stepper.test.tsx,
+   Toggle.test.tsx), red before green.
+2. **Step 2: whole-header tap on the reminder rows** (code, 2). Wrap the header row per
+   LabeledToggle, red before green, with suite cases for title-press toggling, locked rows
+   refusing, and the switch still toggling once.
+3. **Step 3: the store keeps reminder choices under an off athan** (code, 2). Remove the
+   force-off, reduce `enablesAnything`, update the pinned store, commit and hook suites to
+   the new contract, red before green.
+4. **Step 4: the sheet restores on off-to-on** (code, 2). The draft derivation, the
+   preserved ref, the restore transition and the store-true commit reporting, red before
+   green, with suite cases for same-session restore, reopen restore, off-by-choice staying
+   off, the no-change close committing nothing, the mounted slide-off pixels (switch off,
+   sound pill on Silent under an off athan holding a preserved Sound), and the restored pill
+   showing the preserved sound.
+5. **Step 5: device pass on the changed sheet** (device, 3). A mock build on the harness
+   emulator: `$HOME/athan-gitree/bin/build-mock.zsh` with `mocks/simple.ts` installed on the
+   `athan-smoke-28` AVD (e2e/README.md''s harness emulator, panel-matched to the OnePlus 3T
+   atlas rows in e2e/device-atlas-oneplus3t.md). Open the alert sheet through the alert bell
+   at (979, 974) on the Dhuhr row (e2e/flows/sheets-x10.yaml), then read: the header tap
+   toggles from the title, off slides the reminders off, on brings them back, and the
+   `NOTIFICATION: Preference snapshot` log shows the preserved values. The dim halving is
+   owned by the suites, which pin the exact values; the device pass reads behaviour, not
+   ratios. Runs alone in a fresh session.
+
+Weight: 11 pts.
+
+### Routing the owner''s read
+
+The owner''s read of the sheet on the phones is the acceptance that follows the merge: this run
+closes the ticket through Audit to Done with the lead''s merge, and the owner reads the phones
+on uat after it. Anything that read catches opens as its own ticket. Parking the ticket in
+Owner-led instead would hold the lane against the run''s dispatch terms.
+
+## Risks
+
+- A nested-pressable double fire would toggle twice per press. LabeledToggle ships the same
+   nesting in production, and Step 5 presses title and switch once each and reads the toggle.
+- A future reader of a stored reminder alert without the athan gate would arm reminders under
+   an off athan. Every reader today gates; Step 3''s suite pins the gate on each reader path.
+- The enablesAnything reduction could regress a prompt path. The hook suite covers the
+   all-off close with preserved values and the on-close that must prompt.
+- Legacy Off values restore nothing and could read as a regression. It is today''s behaviour
+   and Step 4''s suite states it.
+- The dim halving could leak past this sheet through the shared parts. The usage check above
+   shows the disabled styles render only here, and Step 1''s suite changes pin the parts''
+   values where their disabled props are the sheet''s.
+
+## Proof
+
+- `yarn validate` green on the lane branch.
+- `yarn jest components/sheets/screens/__tests__/Alert.test.tsx components/sheets/parts/__tests__/Toggle.test.tsx components/sheets/parts/__tests__/Stepper.test.tsx components/sheets/parts/__tests__/SegmentedControl.test.tsx stores/__tests__/notifications.test.ts stores/__tests__/notificationAlertCommit.test.ts stores/__tests__/notificationPreferenceSetters.test.ts hooks/__tests__/useNotification.test.ts`
+  green, with the new cases asserting the halved values, the header tap, the preservation and
+  the restore.
+- Coverage on, every line the change touches covered, and a mutation pass on the guarded
+  logic the change adds: the restore transition, the getCurrentState preserved-alert
+  substitution, and the locked row guard.
+- No date logic is touched, so `yarn test:tz` is out of scope.
+- Step 5''s device log and transcribed reads on the simulator, per the device atlas.
+', NULL, NULL, '{}', false, false, false, NULL, 10240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:57:24.867704+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (26, 10, 3, NULL, 'T-141', '# T-141
+
+## Goal
+
+An Android language switch (en to ar and ar to en, Standard and Extras) shows the iPhone''s face: the loader appears on the tap and stays mounted, unmoved and enabled, until the new context''s first content commit. No frame shows the target-language schedule mid-switch. No frame shows a blank page. A launch that does not switch renders exactly the lines it renders today.
+
+## Decisions taken
+
+- 2026-10-19. The cover for the native restart is a first-party Android module (modules/switchcover, the modules/tls13 pattern). The app''s builds disable expo-updates (the prebuilt manifest sets `expo.modules.updates.ENABLED` false), so the app runs `DisabledUpdatesController`, whose `reloadScreenManager` is null and whose JS screen functions are `BuildConfig.DEBUG`-gated. No shipped API can paint during the restart.
+- 2026-10-19. The cover reuses the loader''s own values: the same root purple, spinner colour, spinner size, line string and line offsets, passed from JS. It sustains an existing face through the span rather than adding one. Challenged: a native view is still a new surface. Second argument: every value and string is the loader''s own, composed by the same helper, so the switch shows one face throughout, which is the owner''s contract.
+- 2026-10-19. The cover''s native spinner and line use the platform''s indeterminate drawable and the system typeface. The drawable is the same view class the loader''s ActivityIndicator wraps, and the span is the restart alone; the Arabic line''s bundled face may differ for that span. This is the one measurable divergence from the iPhone and it is tabled to the owner with the device read, rather than fixed by loading typefaces into the module.
+- 2026-10-19. The cover''s view reference and showing flag live in the Kotlin module''s companion object, and the module registers no OnDestroy cleanup. expo-modules-core builds a fresh Module instance per React context, so instance state dies with the old context and the new context''s hide() must find the cover through static state; an OnDestroy removal would tear the cover down exactly when the context dies, defeating it.
+- 2026-10-19. No new-context JS stand. The native cover stays up until the first commit where `contentExists` is true, so the handoff is cover to content. iOS changes only by the commit-path latch, which extends the loader through the dead span and paints nothing new.
+- 2026-10-19. The capped crossing (convergence hit the 10-second cap) shows and hides the cover on the same rule as a settled one: neither call is gated on the handoff marker, so the face does not depend on `passSettled`.
+- 2026-10-19. The platform gate is a module-level `IS_ANDROID` (`Platform.OS === ''android''`) in stores/language.ts, the device/notifications.ts precedent, and tests drive it by assigning `Platform.OS` the way device/__tests__/androidChannelUpdate.test.ts does.
+- 2026-10-19. The Jest boundary is a per-file `jest.mock(''@/device/switchCover'')` in the suites that observe the calls, the __tests__/app/index.test.tsx precedent. jest.config.js is untouched.
+- 2026-10-19. The version bump set is package.json and app.json: android/app/build.gradle is generated by prebuild and untracked, matching every prior commit.
+- 2026-10-19. iOS keeps today''s exact call shape (`reloadAsync` with no arguments) and is never asked for a cover.
+
+## Files
+
+- `stores/language.ts` — changed: the latch that holds the loader through a fulfilled reload, the Android-only cover calls before the reload and in the rejection path. `commitInFlight` keeps its unconditional reset in the finally.
+- `modules/switchcover/expo-module.config.json`, `modules/switchcover/android/build.gradle`, `modules/switchcover/android/src/main/AndroidManifest.xml`, `modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt` — new: the first-party cover module (show and hide, idempotent, companion-object state).
+- `device/switchCover.ts` — new: the JS wrapper (`requireOptionalNativeModule`, no-op when the module is absent, so iOS and Jest skip cleanly).
+- `shared/i18n/index.ts` — changed: `languageChangingLine(locale)` extracted, the exact composition LanguageLoader uses.
+- `components/ui/LanguageLoader.tsx` — changed by one line: the loader composes its line through the shared helper. No visual change.
+- `app/index.tsx` — changed: the first-content effect hides the cover.
+- `stores/__tests__/rtlSwitch.test.ts` — extended, with a per-file mock of the wrapper, and its beforeEach resets busy and pending.
+- `stores/__tests__/languageConvergence.test.ts` — its beforeEach resets busy and pending (fulfilled crossings now hold them past the commit''s end).
+- `stores/__tests__/languageReloadFace.test.ts` — new, with a per-file mock of the wrapper.
+- `__tests__/app/index.test.tsx` — extended, with a per-file mock of the wrapper.
+- `package.json`, `app.json` — the bump on every commit.
+- Read only: `app/_layout.tsx`, `shared/constants.ts`, `stores/bootstrap.ts`, `jest.config.js`.
+
+## Design
+
+### The mechanism, named from source
+
+M1. What unmounts the spinner. `commitLanguagePreference` clears `languageCommitBusyAtom` and `pendingLanguageAtom` in its `finally`, and `LanguageLoader` returns null on the next render. The `finally` runs when `Updates.reloadAsync()` fulfills. On Android that happens before the reload lands: `DisabledUpdatesController.relaunchReactApplicationForModule` queues `RecreateReactContextProcedure`, which calls `callback.onSuccess()` (the fulfillment) before `reactHost.restart(...)` is posted to the main thread. The old context keeps committing frames after the unmount.
+
+M2. What renders the schedule mid-switch. The commit already called `setActiveLocale(locale)` and stored the preference, which bumps `localeVersionAtom`; `app/_layout.tsx` remounts `Slot key={localeVersion}` in the target language, and `I18nManager.forceRTL` applied the target direction. Once M1 unmounts the loader, those screens are the visible tree and paint until the native teardown.
+
+M3. What renders the blank purple page. `reactHost.restart` destroys the old React surface, and until the new bundle evaluates and commits its first frame no JS exists to paint, so the screen shows the root background (#2c1c77). The half second matches bundle re-evaluation on the 3T. expo-updates ships a native reload screen for exactly this span, and none of it exists in this app: the manifest disables updates, so `DisabledUpdatesController` runs with a null `reloadScreenManager`, `RecreateReactContextProcedure` never shows a screen, and the JS `showReloadScreen`/`hideReloadScreen` are `BuildConfig.DEBUG`-only in the module.
+
+M4. Why iOS does not. `RelaunchProcedure.swift` triggers the reload inside the same root view: the old tree''s last committed frame (the loader face) stays on screen until the new surface paints over it. iOS never depends on post-fulfillment JS; the frozen loader covers the whole span.
+
+### The fix
+
+F1. Old context, both platforms. `commitLanguagePreference` keeps a per-invocation local latch `reloadAccepted`, false at the top of every commit. The `finally` clears the busy and pending atoms only when the latch is false. `commitInFlight` resets unconditionally in the same finally, so a surviving context never refuses later commits. A fulfilled reload leaves the loader mounted until the context dies. A rejected reload sets nothing, restores today''s cleanup, clears the marker, and logs the existing warning. The per-invocation local means a later commit in a surviving context starts from a clean latch.
+
+F2. Android only, the native cover. A first-party module `modules/switchcover` (the `modules/tls13` pattern: an android library, an `expo-module.config.json` with `platforms: ["android"]`, autolinked without an app.json plugin entry) exposes:
+
+- `show(cover)` where cover carries `backgroundColor`, `spinnerColor`, `spinnerSizeDp`, `lineText`, `lineColor`, `lineSizeDp`, `lineMarginTopDp`, `lineMaxWidthDp`, every field a string or a double. It builds a FrameLayout matching the loader''s geometry exactly: the background colour; an indeterminate ProgressBar, centred horizontally, its top offset so the spinner''s box centres dead on the parent''s midpoint (the loader''s `translateY: -SIZE.activityIndicator / 2` equivalent), tinted with `spinnerColor`, sized `spinnerSizeDp` in dp times the display density; and a TextView anchored at the parent''s midpoint plus `SIZE.activityIndicator / 2 + SPACING.xxxl` (passed as `lineMarginTopDp`), with `lineText`, the loader''s literal `#fff` as `lineColor`, `lineSizeDp` from TEXT.size, centred horizontally, capped at `lineMaxWidthDp` (the loader''s 260). All dp values are multiplied by the display density natively.
+- It adds the view to the activity''s content view (`appContext.currentActivity`, `android.R.id.content`) above everything, and stores the view reference and a showing flag in the module''s companion object, because expo-modules-core builds a fresh Module instance per React context and the hide() that lifts the cover arrives from the new context''s instance. The module registers no OnDestroy or OnInvalidate cleanup: the cover must outlive the registry that showed it. Idempotent: a second show while showing changes nothing.
+- `hide()` removes the companion-held view when the flag is set. Idempotent.
+
+The ProgressBar keeps animating on the UI thread while JS is dead, so the spinner turns through the whole span.
+
+The wiring in `stores/language.ts`: on the relaunch path, before `Updates.reloadAsync()` and only when `IS_ANDROID`, `await showSwitchCover(coverOptionsFor(locale))`, then `await Updates.reloadAsync()` with no arguments. `coverOptionsFor` reads `COLORS.navigation.rootBackground`, `COLORS.navigation.activityIndicator`, `SIZE.activityIndicator`, `SPACING.xxxl`, `TEXT.size`, the loader''s 260 line cap, the loader''s literal `#fff`, and the line from `languageChangingLine(locale)`. On a rejected reload, before the cleanup, `hideSwitchCover()` with the error swallowed.
+
+The wiring in `app/index.tsx`: inside the existing first-content effect (`if (contentExists && !contentCommittedRef.current)`), after `perfMark(''home_content'')`, call `hideSwitchCover()`. It fires once per Index mount in every context: a no-op in a context that never showed the cover, and the removal right after the first content commit in the context that follows a switch. The mid-commit `localeVersion` remount of Index in the old context also fires it, before the cover is shown, where the idempotent hide is a no-op. The `hasError` state counts as content (`isWaitingForData` is false there), so an error screen lifts the cover.
+
+Invariant: between the tap on a language row and the first content commit of the context that follows a crossing switch, every frame shows one face: the JS loader from the tap, the native cover (same values) across the restart, and content at the reveal. A launch that does not switch renders exactly the lines it renders today.
+
+En byte-identical when not switching: F1 touches only the relaunch branch, so the same-script instant switch keeps today''s cleanup. F2''s calls sit behind `IS_ANDROID` and the relaunch branch. The cover module is inert until shown. The hide in app/index.tsx is a no-op in a context that never showed the cover.
+
+Alternatives rejected:
+
+- The shipped expo-updates reload screen: unavailable here, because the app''s builds disable updates and the JS screen functions are debug-only.
+- F1 alone: M3''s half-second blank remains, which is the owner''s central complaint.
+- `Expo.reloadAppAsync` with an activity recreate so the splash re-shows: its Android implementation calls `reactDelegate.reload()`, the same in-place context restart, and the splash is never re-shown inside a living activity.
+- A timeout valve that clears the loader if the context survives a fulfilled reload: it reintroduces the unmount flash on slow devices and treats a terminal state as recoverable.
+- A JS loader stood by the new context before its first render: it paints beneath the native cover or not at all during the dead span, so it adds state without covering anything.
+- Passing the cover duty to the launch splash: the splash is not re-shown after an in-activity reload.
+- Loading the bundled typefaces into the module''s TextView: fidelity for a half-second span against a new font-loading path in native code; the divergence is tabled to the owner with the device read instead.
+
+## Steps
+
+1. Step 1 (weight 2): the latch. `stores/language.ts` F1, the busy and pending resets in the beforeEach of `stores/__tests__/rtlSwitch.test.ts` and `stores/__tests__/languageConvergence.test.ts`, tests red first: a fulfilled crossing leaves busy true and pending set after the commit resolves; a rejected crossing clears both and clears the marker (existing assertions); a second commit after a rejected first one runs to its own reload (the latch is per-invocation, and `commitInFlight` never sticks).
+2. Step 2 (weight 2): the cover. The module under `modules/switchcover` (companion-object state, no lifecycle cleanup), the `device/switchCover.ts` wrapper (`requireOptionalNativeModule`, no-op when absent), `languageChangingLine` in `shared/i18n/index.ts` with LanguageLoader composing through it, the show call before the reload and the hide in the rejection path (`IS_ANDROID`), the hide in `app/index.tsx`''s first-content effect, the per-file Jest mocks. Tests red first in `stores/__tests__/languageReloadFace.test.ts` and `__tests__/app/index.test.tsx`: Android shows the cover before `reloadAsync` with the loader''s purple, spinner colour, size, the `#fff` line colour and the target line string, and hides it on a rejected reload; iOS never calls show and calls `reloadAsync` with no arguments; the first-content effect calls hide once; a plain launch never shows; the wrapper no-ops when the native module is absent.
+3. Step 3 (weight 3, device, alone in its own session): a mock build through `build-mock.zsh` with the aapt2 fleettest badging check before any install, on the 3T; the emulator when the 3T is unreachable, named in the record. Switch en to ar and ar to en on both schedules, transcribe the read, and pull the logcat timeline on the lines the mock build emits: Pino logging is on in the mock build (env local) and off in a prod build (env prod, stated plainly), so the timeline rides the mock build''s Pino lines plus the native restart-reason line, showing no content commit between the reload and the new context''s first render. Control: an En launch with no switch reads unchanged.
+
+Each step lands as one commit with the version bump (package.json and app.json, fetch origin first, patch step).
+
+## Risks
+
+- The cover''s z-order across the restart: the view is added to the activity content before `reactHost.restart`, and the restart recreates the context inside the same surface beneath it. If the restart re-parents the surface above the cover, the failure is visible on glass and the device step catches it; the fallback is adding the cover to the activity''s window instead of the content view.
+- The companion-object view reference can outlive an activity (a cover shown, then the activity destroyed without hide): show() replaces any companion-held view whose parent no longer is the current activity''s content, and a stale reference is dropped, not reused.
+- The ProgressBar''s drawable differs from the loader''s ActivityIndicator by theme, and the TextView uses the system typeface, so the Arabic line''s face may differ for the span. Both are read on glass in the device step and recorded, and the divergence is tabled to the owner with the record.
+- R8 may strip the reflection-built module class on the production build. modules/tls13 ships without a keep; if the cover is missing on glass, add the module package to the expo-build-properties proguard block in app.json, the existing precedent.
+- A context that survives a fulfilled reload (a wedged main thread) leaves the loader and the cover up. That state freezes the app today as well. No valve.
+- The cover''s show must land before the restart: both ride the module''s main queue in call order (`show` completes, then the reload''s restart posts). If the device read shows the restart winning, hold the cover''s show behind its promise resolution before calling reloadAsync, which the wiring already does.
+
+## Proof
+
+- `yarn jest stores/__tests__/rtlSwitch.test.ts stores/__tests__/languageConvergence.test.ts stores/__tests__/languageReloadFace.test.ts __tests__/app/index.test.tsx components/ui/__tests__/LanguageLoader.test.tsx` — green after the change, and each new case fails against the pre-change tree (red first, shown in the step''s record).
+- `node scripts/check-changed-coverage.js` — every line the change touches is covered, measured with coverage on.
+- A mutation pass on the guarded logic: flip the latch, flip `IS_ANDROID`, break each idempotence guard in show and hide, and show each mutation caught by a failing test.
+- `yarn validate` — green.
+- The device record: the transcribed switch read for both directions and both schedules, the logcat timeline on the mock build''s Pino lines and the native restart reason (a prod build emits no Pino lines, stated plainly), and the fleettest badging line, on the 3T or the emulator with the substitution named.
+', NULL, NULL, '{}', false, false, false, NULL, 9216, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 04:07:51.417176+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (29, 13, 1, NULL, 'T-142', '# T-142
+
+## Goal
+
+Today a user who never long-presses a home screen has no path from the app to its widgets, and most users do not know the widgets exist. When this ticket closes, the settings sheet''s Other card carries a Widgets option, and tapping it reaches our widgets through the surface each platform permits - the surface the owner rules on from this plan''s investigation. The investigation found no open-gallery API on either platform, so this run''s terminal state is Owner-led: the ruling between the named options is the deliverable that unblocks branch A below.
+
+## Decisions taken
+
+- D142.1 (2026-10-19): branch B is this run''s terminal state - no open-gallery API on either platform, and the fallback choice is the owner''s by the ticket''s own words. Why: the order says the closest legal surface goes to the owner "with the owner''s ruling", and that condition holds on both platforms.
+- D142.2 (2026-10-19): the plan carries branch A in full even though it does not run this session. Why: the order is the whole workflow, never plan-and-stop, and the ruling lands on this same ticket.
+- D142.3 (2026-10-19): the Widgets row follows the Other card''s own row pattern - the whatsNewButton style, the icon disc, the label, the chevron - with Icon.WIDGET and the label string `settings.widgets` in all six locales, placed after Language and before What''s New. Why: visuals are settled; the row is the only new pixel, and it belongs with the card''s feature entries, above the conditional What''s New row and Help.
+- D142.4 (2026-10-19): Option 1 is the recommendation (argued in Design). Why: one row gives each platform its own best legal surface.
+- D142.5 (2026-10-19): the Android pin target''s ComponentName is resolved from the built APK''s manifest (`aapt2 dump xmltree`) before any code is written against it. Why: expo-widgets generates receivers at prebuild; a guessed provider name pins nothing.
+
+## Files
+
+- `components/sheets/screens/Settings.tsx` - the Other card; read for the row pattern, branch A adds the row.
+- `components/sheets/screens/__tests__/Settings.test.tsx` - branch A''s red-then-green row coverage.
+- `shared/i18n/{en,ar,hi,ms,so,th}.ts` - branch A: `settings.widgets` and the how-to strings.
+- `components/modals/Help.tsx`, `components/modals/Modal.tsx`, `components/modals/__tests__/` - the pattern the WidgetsHowTo card follows; branch A adds `WidgetsHowTo.tsx` and its test.
+- `stores/ui.ts` - the modal atom pattern (`popupHelpEnabledAtom`); branch A adds the how-to atom and its present call.
+- `modules/widgetrefresh/` - the shape a Kotlin Expo module takes here; branch A adds `modules/widgetpin` under Option 1.
+- `app.json`, `widgets/PrayerWidget.tsx` - read: the widget kinds, display names and providers.
+- `e2e/device-atlas-<model>.md` - read before the device step.
+
+## Design
+
+### Investigation (the owner-ordered first phase, run 2026-10-19)
+
+Question: is there an API that opens the widget gallery, or our app''s section of it, on each platform? Every claim below was fetched live from current platform documentation on 2026-10-19.
+
+**iOS: no API opens the gallery.**
+
+- The app-side control surface is WidgetCenter. Its complete documented surface (developer.apple.com/documentation/widgetkit/widgetcenter): `shared`, `getCurrentConfigurations(_:)`, `UserInfoKey`, `reloadTimelines(ofKind:)`, `reloadAllTimelines()`, `invalidateConfigurationRecommendations()`. Reads and timeline reloads; nothing presents UI.
+- The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery: essentials, system experiences, presentation, interactivity (widget-to-app deep links), accessibility, previews. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses.
+- expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets, fetched live): its whole API is `createWidget`, the `Widget` class (`getTimeline`, `reload`, `setConfigurationParameterEnum`, `updateSnapshot`, `updateTimeline`), Live Activities, custom notifications, push tokens and event subscriptions. No gallery call.
+- Closest legal surface on iOS: an in-app how-to card teaching the gallery path (touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan). The app can only point; the user walks.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.**
+
+- The picker belongs to the launcher, which is the widget host. `ACTION_APPWIDGET_PICK` is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager): a host-side constant, and binding a picked widget needs `BIND_APPWIDGET`, which the system reserves to the default launcher. No documented intent opens an OEM launcher''s picker, and launchers export none for third parties.
+- The documented app-side surface is the pin request. The canonical page "Widget discoverability" (developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16): "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant." The from-within-the-app path is `AppWidgetManager.requestPinAppWidget(ComponentName, Bundle, PendingIntent)` - "Request to pin an app widget on the current launcher" - from API 26, gated on `isRequestPinAppWidgetSupported()`.
+- What it does: the launcher shows its own confirmation with ONE named widget of ours preselected, and on confirm places it on the home screen. It is not the gallery: the user cannot browse our eight kinds (two schedules by two themes by two sizes); the app names one kind per call.
+- Launcher support varies; the runtime check `isRequestPinAppWidgetSupported()` decides, never a launcher list.
+- expo-widgets 58.0.20 exposes no pin call, so the Android path needs a small Kotlin Expo module following `modules/widgetrefresh`, calling `requestPinAppWidget` with the ComponentName resolved per D142.5.
+
+**Verdict.** No open-gallery API exists on either platform. The ticket''s own order routes the closest-legal-surface choice to the owner, so branch B is this run''s terminal state and branch A runs on this ticket the moment the ruling lands.
+
+### The owner''s options (branch B''s deliverable)
+
+- **Option 1 (the recommendation): Android pins, everywhere else teaches.** With `isRequestPinAppWidgetSupported()` true, the Widgets option requests a pin of the ruled kind (default PrayerWidget: Next Prayer, Light, small); the launcher''s own confirmation follows. Without pin support, and on iOS, the option opens the how-to card.
+- **Option 2: teach everywhere.** The option opens the how-to card on both platforms. No native module, one code path, and two taps further from a placed widget than Option 1 on Android.
+- **Option 3: do nothing this version.** The widgets stay discoverable only through the launcher pickers. Zero code, and the order''s premise (users do not know widgets exist) stands unaddressed.
+
+Recommendation argued twice. For Option 1: the goal is discovery; a pin request places a widget in two taps on the platform that permits it, and the same tap teaches where it does not. Challenged: two code paths and a native module cost more than one card, and a pin request surprises a user who expected a gallery. The challenge does not flip it: the surprise is the launcher''s own confirm dialog showing exactly the widget that would be placed, so the user keeps the decision, and the cost is one bounded module and one runtime check. Argued again for Option 2: it is honest about both platforms and ships in one step, but it knowingly gives Android a lesser path than the platform permits, which is what the investigation was ordered to avoid. Option 1 stands.
+
+Sub-ruling inside Option 1: which kind the pin names. Default PrayerWidget (Next Prayer, Light, small), the countdown the app itself leads with. The owner may name another.
+
+### Branch A shape (runs after the ruling, same ticket)
+
+- The row: `handleWidgetsPress` in Settings.tsx - the Medium haptic, `hideSettingsSheet()`, then the ruled surface, following the sheet''s own press handlers.
+- The how-to card: `components/modals/WidgetsHowTo.tsx` on the shared `Modal.tsx` base, presented through a jotai atom like `popupHelpEnabledAtom`, opened after the same 150 ms delay the Help and What''s New rows use.
+- The pin module: `modules/widgetpin` - `isWidgetPinSupported()` and `requestWidgetPin(kind)`, null-resolution no-op off Android exactly as `widgetrefresh` resolves; the Kotlin side calls `isRequestPinAppWidgetSupported()` and `requestPinAppWidget(provider, null, null)`.
+- Full unit coverage of every line the change touches, red before green, on the row, the card and the module resolution.
+
+## Steps
+
+1. Step 1: the investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation (weight 1, docs). Runs this session.
+2. Step 2: the Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set (weight 1, docs). Runs this session.
+3. Step 3: the Widgets row in the Other card - `settings.widgets` in six locales, the row after Language, red-then-green Settings.test.tsx coverage (weight 2, code). Contingent on the ruling.
+4. Step 4: the ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 `modules/widgetpin` with the provider resolved per D142.5 (weight 2, code). Contingent on the ruling.
+5. Step 5: the device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (weight 3, device). Contingent on the ruling.
+
+Weight arithmetic: 1 + 1 + 2 + 2 + 3 = 9.
+
+## Risks
+
+- A fleet launcher refuses pins (`isRequestPinAppWidgetSupported()` false): the row falls back to the how-to card under Option 1. Shows up as the check reading false on the 3T read.
+- The generated receiver name differs from any guess: D142.5 resolves it from the built APK before code is written.
+- The ruling lands long after this session: the ticket sits in Owner-led with Waiting on; nothing parked reads active, and branch A''s steps stay unticked.
+- OEM confirm dialogs differ: the device step transcribes what each shows; no screenshots are committed.
+
+## Proof
+
+- Step 1: the record comment quotes both platforms'' pages and carries the verdict and the three options.
+- Step 2: `get_issue_by_number(T, 142)` shows column Owner-led, Waiting on naming the ruling and the options, the needs-owner label set, steps 1 and 2 ticked.
+- Branch A: `yarn validate` green; Settings.test.tsx covers the row''s render, label, role and press; the modal and module suites cover presentation and resolution; the device read transcribes the confirmation and the placed widget.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.144981+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (30, 13, 2, NULL, 'T-142', '# T-142
+
+## Goal
+
+Today a user who never long-presses a home screen has no path from the app to its widgets, and most users do not know the widgets exist. When this ticket closes, the settings sheet''s Other card carries a Widgets option, and tapping it reaches our widgets through the surface each platform permits - the surface the owner rules on from this plan''s investigation. The investigation found no open-gallery API on either platform, so this run''s terminal state is Owner-led: the ruling between the named options is the deliverable that unblocks branch A below.
+
+## Decisions taken
+
+- D142.1 (2026-10-19): branch B is this run''s terminal state - no open-gallery API on either platform, and the fallback choice is the owner''s by the ticket''s own words. Why: the order says the closest legal surface goes to the owner "with the owner''s ruling", and that condition holds on both platforms.
+- D142.2 (2026-10-19): the plan carries branch A in full even though it does not run this session. Why: the order is the whole workflow, never plan-and-stop, and the ruling lands on this same ticket.
+- D142.3 (2026-10-19): the Widgets row follows the Other card''s own row pattern - the whatsNewButton style, the icon disc, the label, the chevron - with Icon.WIDGET and the label string `settings.widgets` in all six locales, placed after Language and before What''s New. Why: visuals are settled; the row is the only new pixel, and it belongs with the card''s feature entries, above the conditional What''s New row and Help.
+- D142.4 (2026-10-19): Option 1 is the recommendation (argued in Design). Why: one row gives each platform its own best legal surface.
+- D142.5 (2026-10-19): the Android pin target''s ComponentName is resolved from the built APK''s manifest (`aapt2 dump xmltree`) before any code is written against it. Why: expo-widgets generates receivers at prebuild; a guessed provider name pins nothing.
+
+## Files
+
+- `components/sheets/screens/Settings.tsx` - the Other card; read for the row pattern, branch A adds the row.
+- `components/sheets/screens/__tests__/Settings.test.tsx` - branch A''s red-then-green row coverage.
+- `shared/i18n/{en,ar,hi,ms,so,th}.ts` - branch A: `settings.widgets` and the how-to strings.
+- `shared/i18n/catalog-lock.json` - the `en` hash moves with every new key; branch A re-takes it with `yarn i18n:lock`.
+- `components/modals/Help.tsx`, `components/modals/Modal.tsx`, `components/modals/__tests__/` - the pattern the WidgetsHowTo card follows; branch A adds `WidgetsHowTo.tsx` and its test.
+- `components/modals/index.ts`, `app/index.tsx` - the barrel and the mount point: the atom only holds state, the modal itself mounts in the app tree beside ModalHelp.
+- `stores/ui.ts` - the modal atom pattern (`popupHelpEnabledAtom`); branch A adds the how-to atom and its present call.
+- `modules/widgetrefresh/` - the shape a Kotlin Expo module takes here; branch A adds `modules/widgetpin` under Option 1.
+- `app.json`, `widgets/PrayerWidget.tsx` - read: the widget kinds, display names and providers.
+- `e2e/device-atlas-<model>.md` - read before the device step.
+
+## Design
+
+### Investigation (the owner-ordered first phase, run 2026-10-19)
+
+Question: is there an API that opens the widget gallery, or our app''s section of it, on each platform? Every claim below was fetched live from current platform documentation on 2026-10-19.
+
+**iOS: no API opens the gallery.**
+
+- The app-side control surface is WidgetCenter. Its complete documented surface (developer.apple.com/documentation/widgetkit/widgetcenter): `shared`, `getCurrentConfigurations(_:)`, `UserInfoKey`, `reloadTimelines(ofKind:)`, `reloadAllTimelines()`, `invalidateConfigurationRecommendations()`. Reads and timeline reloads; nothing presents UI.
+- The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery: essentials, system experiences, presentation, interactivity (widget-to-app deep links), accessibility, previews. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses.
+- expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets, fetched live): its whole API is `createWidget`, the `Widget` class (`getTimeline`, `reload`, `setConfigurationParameterEnum`, `updateSnapshot`, `updateTimeline`), Live Activities, custom notifications, push tokens and event subscriptions. No gallery call.
+- Closest legal surface on iOS: an in-app how-to card teaching the gallery path (touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan). The app can only point; the user walks.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.**
+
+- The picker belongs to the launcher, which is the widget host. `ACTION_APPWIDGET_PICK` is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager): a host-side constant, and binding a picked widget needs `BIND_APPWIDGET`, which the system reserves to the default launcher. No documented intent opens an OEM launcher''s picker, and no OEM documents one for third-party apps.
+- The documented app-side surface is the pin request. The canonical page "Widget discoverability" (developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16): "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant." The from-within-the-app path is `AppWidgetManager.requestPinAppWidget(ComponentName, Bundle, PendingIntent)` - "Request to pin an app widget on the current launcher" - from API 26, gated on `isRequestPinAppWidgetSupported()`.
+- What it does: the launcher shows its own confirmation with ONE named widget of ours preselected, and on confirm places it on the home screen. It is not the gallery: the user cannot browse; the app names one kind per call. Our Android gallery holds eight kinds (two schedules by two themes by two sizes); iOS''s holds fourteen, the eight home kinds plus the six lock-screen kinds.
+- Launcher support varies; the runtime check `isRequestPinAppWidgetSupported()` decides, never a launcher list.
+- expo-widgets 58.0.20 exposes no pin call, so the Android path needs a small Kotlin Expo module following `modules/widgetrefresh`, calling `requestPinAppWidget` with the ComponentName resolved per D142.5.
+
+**Verdict.** No open-gallery API exists on either platform. The ticket''s own order routes the closest-legal-surface choice to the owner, so branch B is this run''s terminal state and branch A runs on this ticket the moment the ruling lands.
+
+### The owner''s options (branch B''s deliverable)
+
+- **Option 1 (the recommendation): Android pins, everywhere else teaches.** With `isRequestPinAppWidgetSupported()` true, the Widgets option requests a pin of the ruled kind (default PrayerWidget: Next Prayer, Light, small); the launcher''s own confirmation follows. Without pin support, and on iOS, the option opens the how-to card.
+- **Option 2: teach everywhere.** The option opens the how-to card on both platforms. No native module, one code path, and two taps further from a placed widget than Option 1 on Android.
+- **Option 3: do nothing this version.** The widgets stay discoverable only through the launcher pickers. Zero code, and the order''s premise (users do not know widgets exist) stands unaddressed.
+
+Recommendation argued twice. For Option 1: the goal is discovery; a pin request places a widget in two taps on the platform that permits it, and the same tap teaches where it does not. Challenged: two code paths and a native module cost more than one card, and a pin request surprises a user who expected a gallery. The challenge does not flip it: the surprise is the launcher''s own confirm dialog showing exactly the widget that would be placed, so the user keeps the decision, and the cost is one bounded module and one runtime check. Argued again for Option 2: it is honest about both platforms and ships in one step, but it knowingly gives Android a lesser path than the platform permits, which is what the investigation was ordered to avoid. Option 1 stands.
+
+Sub-ruling inside Option 1: which kind the pin names. Default PrayerWidget (Next Prayer, Light, small), the countdown the app itself leads with. The owner may name another.
+
+### Branch A shape (runs after the ruling, same ticket)
+
+- The row: `handleWidgetsPress` in Settings.tsx - the Medium haptic, `hideSettingsSheet()`, then the ruled surface, following the sheet''s own press handlers.
+- The how-to card: `components/modals/WidgetsHowTo.tsx` on the shared `Modal.tsx` base, presented through a jotai atom like `popupHelpEnabledAtom`, opened after the same 150 ms delay the Help and What''s New rows use.
+- The pin module: `modules/widgetpin` - `isWidgetPinSupported()` and `requestWidgetPin(kind)`, null-resolution no-op off Android exactly as `widgetrefresh` resolves; the Kotlin side calls `isRequestPinAppWidgetSupported()` and `requestPinAppWidget(provider, null, null)`.
+- Full unit coverage of every line the change touches, red before green, on the row, the card and the module resolution.
+
+## Steps
+
+1. Step 1: the investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation (weight 1, docs). Runs this session.
+2. Step 2: the Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set (weight 1, docs). Runs this session.
+3. Step 3: the Widgets row in the Other card - `settings.widgets` in six locales, the row after Language, red-then-green Settings.test.tsx coverage (weight 2, code). Contingent on the ruling.
+4. Step 4: the ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 `modules/widgetpin` with the provider resolved per D142.5 (weight 2, code). Contingent on the ruling.
+5. Step 5: the device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (weight 3, device). Contingent on the ruling.
+
+Weight arithmetic: 1 + 1 + 2 + 2 + 3 = 9.
+
+## Risks
+
+- A fleet launcher refuses pins (`isRequestPinAppWidgetSupported()` false): the row falls back to the how-to card under Option 1. Shows up as the check reading false on the 3T read.
+- The generated receiver name differs from any guess: D142.5 resolves it from the built APK before code is written.
+- The ruling lands long after this session: the ticket sits in Owner-led with Waiting on; nothing parked reads active, and branch A''s steps stay unticked.
+- OEM confirm dialogs differ: the device step transcribes what each shows; no screenshots are committed.
+
+## Proof
+
+- Step 1: the record comment quotes both platforms'' pages and carries the verdict and the three options.
+- Step 2: `get_issue_by_number(T, 142)` shows column Owner-led, Waiting on naming the ruling and the options, the needs-owner label set, steps 1 and 2 ticked.
+- Branch A: `yarn validate` green including the catalog lock test; Settings.test.tsx covers the row''s render, label, role and press; the modal and module suites cover presentation and resolution; the 3T read transcribes the confirmation and the placed widget; the owner''s iPhone confirmation lands as a ticket comment.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 08:06:12.10039+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (31, 13, 3, NULL, 'T-142', '# T-142
+
+## Goal
+
+Today a user who never long-presses a home screen has no path from the app to its widgets, and most users do not know the widgets exist. When this ticket closes, the settings sheet''s Other card carries a Widgets option, and tapping it reaches our widgets through the surface each platform permits - the surface the owner rules on from this plan''s investigation. The investigation found no open-gallery API on either platform, so this run''s terminal state is Owner-led: the ruling between the named options is the deliverable that unblocks branch A below.
+
+## Decisions taken
+
+- D142.1 (2026-10-19): branch B is this run''s terminal state - no open-gallery API on either platform, and the fallback choice is the owner''s by the ticket''s own words. Why: the order says the closest legal surface goes to the owner "with the owner''s ruling", and that condition holds on both platforms.
+- D142.2 (2026-10-19): the plan carries branch A in full even though it does not run this session. Why: the order is the whole workflow, never plan-and-stop, and the ruling lands on this same ticket.
+- D142.3 (2026-10-19): the Widgets row follows the Other card''s own row pattern - the whatsNewButton style, the icon disc, the label, the chevron - with Icon.WIDGET and the label string `settings.widgets` in all six locales, placed after Language and before What''s New. Why: visuals are settled; the row is the only new pixel, and it belongs with the card''s feature entries, above the conditional What''s New row and Help.
+- D142.4 (2026-10-19): Option 1 is the recommendation (argued in Design). Why: one row gives each platform its own best legal surface.
+- D142.5 (2026-10-19): the Android pin target''s ComponentName is resolved from the built APK''s manifest (`aapt2 dump xmltree`) before any code is written against it. Why: expo-widgets generates receivers at prebuild; a guessed provider name pins nothing.
+
+## Files
+
+- `components/sheets/screens/Settings.tsx` - the Other card; read for the row pattern, branch A adds the row.
+- `components/sheets/screens/__tests__/Settings.test.tsx` - branch A''s red-then-green row coverage.
+- `shared/i18n/{en,ar,hi,ms,so,th}.ts` - branch A: `settings.widgets` and the how-to strings.
+- `shared/i18n/catalog-lock.json` - the `en` hash moves with every new key; branch A re-takes it with `yarn i18n:lock`.
+- `components/modals/Help.tsx`, `components/modals/Modal.tsx`, `components/modals/__tests__/` - the pattern the WidgetsHowTo card follows; branch A adds `WidgetsHowTo.tsx` and its test.
+- `components/modals/index.ts`, `app/index.tsx` - the barrel and the mount point: the atom only holds state, the modal itself mounts in the app tree beside ModalHelp.
+- `stores/ui.ts` - the modal atom pattern (`popupHelpEnabledAtom`); branch A adds the how-to atom and its present call.
+- `modules/widgetrefresh/` - the shape a Kotlin Expo module takes here; branch A adds `modules/widgetpin` under Option 1.
+- `app.json`, `widgets/PrayerWidget.tsx` - read: the widget kinds, display names and providers.
+- `e2e/device-atlas-<model>.md` - read before the device step.
+
+## Design
+
+### Investigation (the owner-ordered first phase, run 2026-10-19)
+
+Question: is there an API that opens the widget gallery, or our app''s section of it, on each platform? Every claim below was fetched live from current platform documentation on 2026-10-19.
+
+**iOS: no API opens the gallery.**
+
+- The app-side control surface is WidgetCenter (developer.apple.com/documentation/widgetkit/widgetcenter): reads of the user''s configured widgets and reloads of timelines (plus push and relevance maintenance). The page documents no symbol that presents UI.
+- The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery: essentials, system experiences, presentation, interactivity (widget-to-app deep links), accessibility, Previews and debugging. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses.
+- expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets, fetched live): its whole API is `createWidget`, the `Widget` class (`getTimeline`, `reload`, `setConfigurationParameterEnum`, `updateSnapshot`, `updateTimeline`), Live Activities, custom notifications, push tokens and event subscriptions. No gallery call.
+- Closest legal surface on iOS: an in-app how-to card teaching the gallery path (touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan). The app can only point; the user walks.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.**
+
+- The picker belongs to the launcher, which is the widget host. `ACTION_APPWIDGET_PICK` is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager): a host-side constant, and binding a picked widget needs `BIND_APPWIDGET`, which the system reserves to the default launcher. No documented intent opens an OEM launcher''s picker, and no OEM documents one for third-party apps.
+- The documented app-side surface is the pin request. The canonical page "Widget discoverability" (developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16): "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant." The from-within-the-app path is `AppWidgetManager.requestPinAppWidget(ComponentName, Bundle, PendingIntent)` - "Request to pin an app widget on the current launcher" - from API 26, gated on `isRequestPinAppWidgetSupported()`.
+- What it does: the launcher shows its own confirmation with ONE named widget of ours preselected, and on confirm places it on the home screen. It is not the gallery: the user cannot browse; the app names one kind per call. Our Android gallery holds eight kinds (two schedules by two themes by two sizes); iOS''s holds fourteen, the eight home kinds plus the six lock-screen kinds.
+- Launcher support varies; the runtime check `isRequestPinAppWidgetSupported()` decides, never a launcher list.
+- expo-widgets 58.0.20 exposes no pin call, so the Android path needs a small Kotlin Expo module following `modules/widgetrefresh`, calling `requestPinAppWidget` with the ComponentName resolved per D142.5.
+
+**Verdict.** No open-gallery API exists on either platform. The ticket''s own order routes the closest-legal-surface choice to the owner, so branch B is this run''s terminal state and branch A runs on this ticket the moment the ruling lands.
+
+### The owner''s options (branch B''s deliverable)
+
+- **Option 1 (the recommendation): Android pins, everywhere else teaches.** With `isRequestPinAppWidgetSupported()` true, the Widgets option requests a pin of the ruled kind (default PrayerWidget: Next Prayer, Light, small); the launcher''s own confirmation follows. Without pin support, and on iOS, the option opens the how-to card.
+- **Option 2: teach everywhere.** The option opens the how-to card on both platforms. No native module, one code path, and two taps further from a placed widget than Option 1 on Android.
+- **Option 3: do nothing this version.** The widgets stay discoverable only through the launcher pickers. Zero code, and the order''s premise (users do not know widgets exist) stands unaddressed.
+
+Recommendation argued twice. For Option 1: the goal is discovery; a pin request places a widget in two taps on the platform that permits it, and the same tap teaches where it does not. Challenged: two code paths and a native module cost more than one card, and a pin request surprises a user who expected a gallery. The challenge does not flip it: the surprise is the launcher''s own confirm dialog showing exactly the widget that would be placed, so the user keeps the decision, and the cost is one bounded module and one runtime check. Argued again for Option 2: it is honest about both platforms and ships in one step, but it knowingly gives Android a lesser path than the platform permits, which is what the investigation was ordered to avoid. Option 1 stands.
+
+Sub-ruling inside Option 1: which kind the pin names. Default PrayerWidget (Next Prayer, Light, small), the countdown the app itself leads with. The owner may name another.
+
+### Branch A shape (runs after the ruling, same ticket)
+
+- The row: `handleWidgetsPress` in Settings.tsx - the Medium haptic, `hideSettingsSheet()`, then the ruled surface, following the sheet''s own press handlers.
+- The how-to card: `components/modals/WidgetsHowTo.tsx` on the shared `Modal.tsx` base, presented through a jotai atom like `popupHelpEnabledAtom`, opened after the same 150 ms delay the Help and What''s New rows use.
+- The pin module: `modules/widgetpin` - `isWidgetPinSupported()` and `requestWidgetPin(kind)`, null-resolution no-op off Android exactly as `widgetrefresh` resolves; the Kotlin side calls `isRequestPinAppWidgetSupported()` and `requestPinAppWidget(provider, null, null)`.
+- Full unit coverage of every line the change touches, red before green, on the row, the card and the module resolution.
+
+## Steps
+
+1. Step 1: the investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation (weight 1, docs). Runs this session.
+2. Step 2: the Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set (weight 1, docs). Runs this session.
+3. Step 3: the Widgets row in the Other card - `settings.widgets` in six locales, the row after Language, the `yarn i18n:lock` re-take with the catalog lock test green, red-then-green Settings.test.tsx coverage (weight 2, code). Contingent on the ruling.
+4. Step 4: the ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 `modules/widgetpin` with the provider resolved per D142.5 (weight 2, code). Contingent on the ruling.
+5. Step 5: the device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (weight 3, device). Contingent on the ruling.
+
+Weight arithmetic: 1 + 1 + 2 + 2 + 3 = 9.
+
+## Risks
+
+- A fleet launcher refuses pins (`isRequestPinAppWidgetSupported()` false): the row falls back to the how-to card under Option 1. Shows up as the check reading false on the 3T read.
+- The generated receiver name differs from any guess: D142.5 resolves it from the built APK before code is written.
+- The ruling lands long after this session: the ticket sits in Owner-led with Waiting on; nothing parked reads active, and branch A''s steps stay unticked.
+- OEM confirm dialogs differ: the device step transcribes what each shows; no screenshots are committed.
+
+## Proof
+
+- Step 1: the record comment quotes both platforms'' pages and carries the verdict and the three options.
+- Step 2: `get_issue_by_number(T, 142)` shows column Owner-led, Waiting on naming the ruling and the options, the needs-owner label set, steps 1 and 2 ticked.
+- Branch A: `yarn validate` green including the catalog lock test; Settings.test.tsx covers the row''s render, label, role and press; the modal and module suites cover presentation and resolution; the 3T transcript of the confirmation and the placed widget lands as a ticket comment; the owner''s iPhone confirmation lands as a ticket comment.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 08:16:26.237612+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (32, 13, 4, NULL, 'T-142', '# T-142
+
+## Goal
+
+Today a user who never long-presses a home screen has no path from the app to its widgets, and most users do not know the widgets exist. When this ticket closes, the settings sheet''s Other card carries a Widgets option, and tapping it reaches our widgets through the surface each platform permits - the surface the owner rules on from this plan''s investigation. The investigation found no open-gallery API on either platform, so this run''s terminal state is Owner-led: the ruling between the named options is the deliverable that unblocks branch A below.
+
+## Decisions taken
+
+- D142.1 (2026-10-19): branch B is this run''s terminal state - no open-gallery API on either platform, and the fallback choice is the owner''s by the ticket''s own words. Why: the order says the closest legal surface goes to the owner "with the owner''s ruling", and that condition holds on both platforms.
+- D142.2 (2026-10-19): the plan carries branch A in full even though it does not run this session. Why: the order is the whole workflow, never plan-and-stop, and the ruling lands on this same ticket.
+- D142.3 (2026-10-19): the Widgets row follows the Other card''s own row pattern - the whatsNewButton style, the icon disc, the label, the chevron - with Icon.WIDGET and the label string `settings.widgets` in all six locales, placed after Language and before What''s New. Why: visuals are settled; the row is the only new pixel, and it belongs with the card''s feature entries, above the conditional What''s New row and Help.
+- D142.4 (2026-10-19): Option 1 is the recommendation (argued in Design). Why: one row gives each platform its own best legal surface.
+- D142.5 (2026-10-19): the Android pin target''s ComponentName is resolved from the built APK''s manifest (`aapt2 dump xmltree`) before any code is written against it. Why: expo-widgets generates receivers at prebuild; a guessed provider name pins nothing.
+
+## Files
+
+- `components/sheets/screens/Settings.tsx` - the Other card; read for the row pattern, branch A adds the row.
+- `components/sheets/screens/__tests__/Settings.test.tsx` - branch A''s red-then-green row coverage.
+- `shared/i18n/{en,ar,hi,ms,so,th}.ts` - branch A: `settings.widgets` and the how-to strings.
+- `shared/i18n/catalog-lock.json` - the `en` hash moves with every new key; branch A re-takes it with `yarn i18n:lock`.
+- `components/modals/Help.tsx`, `components/modals/Modal.tsx`, `components/modals/__tests__/` - the pattern the WidgetsHowTo card follows; branch A adds `WidgetsHowTo.tsx` and its test.
+- `components/modals/index.ts`, `app/index.tsx` - the barrel and the mount point: the atom only holds state, the modal itself mounts in the app tree beside ModalHelp.
+- `stores/ui.ts` - the modal atom pattern (`popupHelpEnabledAtom`); branch A adds the how-to atom and its present call.
+- `modules/widgetrefresh/` - the shape a Kotlin Expo module takes here; branch A adds `modules/widgetpin` under Option 1.
+- `app.json`, `widgets/PrayerWidget.tsx` - read: the widget kinds, display names and providers.
+- `e2e/device-atlas-<model>.md` - read before the device step.
+
+## Design
+
+### Investigation (the owner-ordered first phase, run 2026-10-19)
+
+Question: is there an API that opens the widget gallery, or our app''s section of it, on each platform? Every claim below was fetched live from current platform documentation on 2026-10-19.
+
+**iOS: no API opens the gallery.**
+
+- The app-side control surface is WidgetCenter (developer.apple.com/documentation/widgetkit/widgetcenter): "An object that contains a list of user-configured widgets and is used for reloading widget timelines" - the page''s own description. Its Topics document six symbols, reads and timeline reloads, and no symbol that presents UI.
+- The WidgetKit framework map (developer.apple.com/documentation/widgetkit) carries no symbol that opens the gallery: essentials, system experiences, presentation, interactivity (buttons and toggles, animations, deep links to app scenes), accessibility, Previews and debugging. The gallery belongs to the Home Screen edit mode, which no public API or URL scheme addresses.
+- expo-widgets 58.0.20 (docs.expo.dev/versions/v58.0.0/sdk/widgets, fetched live): its whole API is `createWidget`, the `Widget` class (`getTimeline`, `reload`, `setConfigurationParameterEnum`, `updateSnapshot`, `updateTimeline`), Live Activities, custom notifications, push tokens and event subscriptions. No gallery call.
+- Closest legal surface on iOS: an in-app how-to card teaching the gallery path (touch and hold the Home Screen, tap Edit, tap Add Widget, find Athan). The app can only point; the user walks.
+
+**Android: no API opens the launcher''s picker; one API surfaces our widget directly.**
+
+- The picker belongs to the launcher, which is the widget host. `ACTION_APPWIDGET_PICK` is documented "Activity action to launch from your AppWidgetHost activity" (developer.android.com/reference/android/appwidget/AppWidgetManager): a host-side constant, and binding a picked widget needs `BIND_APPWIDGET`, which the system reserves to the default launcher. No documented intent opens an OEM launcher''s picker, and no OEM documents one for third-party apps.
+- The documented app-side surface is the pin request. The canonical page "Widget discoverability" (developer.android.com/develop/ui/views/appwidgets/discoverability, last updated 2026-10-16): "Users discover and add your widget through the widget picker or from within your app when the widget''s functionality is most relevant." The from-within-the-app path is `AppWidgetManager.requestPinAppWidget(ComponentName, Bundle, PendingIntent)` - "Request to pin an app widget on the current launcher" - from API 26, gated on `isRequestPinAppWidgetSupported()`.
+- What it does: the launcher may show its own confirmation with one named widget of ours preselected, and places it on the home screen when it accepts; the system leaves acceptance to the launcher. It is not the gallery: the user cannot browse; the app names one kind per call. Our Android gallery holds eight kinds (two schedules by two themes by two sizes); iOS''s holds fourteen, the eight home kinds plus the six lock-screen kinds.
+- Launcher support varies; the runtime check `isRequestPinAppWidgetSupported()` decides, never a launcher list.
+- expo-widgets 58.0.20 exposes no pin call, so the Android path needs a small Kotlin Expo module following `modules/widgetrefresh`, calling `requestPinAppWidget` with the ComponentName resolved per D142.5.
+
+**Verdict.** No open-gallery API exists on either platform. The ticket''s own order routes the closest-legal-surface choice to the owner, so branch B is this run''s terminal state and branch A runs on this ticket the moment the ruling lands.
+
+### The owner''s options (branch B''s deliverable)
+
+- **Option 1 (the recommendation): Android pins, everywhere else teaches.** With `isRequestPinAppWidgetSupported()` true, the Widgets option requests a pin of the ruled kind (default PrayerWidget: Next Prayer, Light, small); the launcher may then confirm with the user before placing. Without pin support, and on iOS, the option opens the how-to card.
+- **Option 2: teach everywhere.** The option opens the how-to card on both platforms. No native module, one code path, and two taps further from a placed widget than Option 1 on Android.
+- **Option 3: do nothing this version.** The widgets stay discoverable only through the launcher pickers. Zero code, and the order''s premise (users do not know widgets exist) stands unaddressed.
+
+Recommendation argued twice. For Option 1: the goal is discovery; a pin request places a widget in two taps on the platform that permits it, and the same tap teaches where it does not. Challenged: two code paths and a native module cost more than one card, and a pin request surprises a user who expected a gallery. The challenge does not flip it: where the launcher shows its confirm dialog the user keeps the decision, where it places directly the user''s own tap on the option was the consent, and the cost is one bounded module and one runtime check. Argued again for Option 2: it is honest about both platforms and ships in one step, but it knowingly gives Android a lesser path than the platform permits, which is what the investigation was ordered to avoid. Option 1 stands.
+
+Sub-ruling inside Option 1: which kind the pin names. Default PrayerWidget (Next Prayer, Light, small), the countdown the app itself leads with. The owner may name another.
+
+### Branch A shape (runs after the ruling, same ticket)
+
+- The row: `handleWidgetsPress` in Settings.tsx - the Medium haptic, `hideSettingsSheet()`, then the ruled surface, following the sheet''s own press handlers.
+- The how-to card: `components/modals/WidgetsHowTo.tsx` on the shared `Modal.tsx` base, presented through a jotai atom like `popupHelpEnabledAtom`, opened after the same 150 ms delay the Help and What''s New rows use.
+- The pin module: `modules/widgetpin` - `isWidgetPinSupported()` and `requestWidgetPin(kind)`, null-resolution no-op off Android exactly as `widgetrefresh` resolves; the Kotlin side calls `isRequestPinAppWidgetSupported()` and `requestPinAppWidget(provider, null, null)`.
+- Full unit coverage of every line the change touches, red before green, on the row, the card and the module resolution.
+
+## Steps
+
+1. Step 1: the investigation record on the ticket - both platforms'' evidence, the verdict, the three options with the recommendation (weight 1, docs). Runs this session.
+2. Step 2: the Owner-led move - Waiting on names the ruling and the numbered options, needs-owner set (weight 1, docs). Runs this session.
+3. Step 3: the Widgets row in the Other card - `settings.widgets` in six locales, the row after Language, the `yarn i18n:lock` re-take with the catalog lock test green, red-then-green Settings.test.tsx coverage (weight 2, code). Contingent on the ruling.
+4. Step 4: the ruled surface - WidgetsHowTo modal with atom and tests, and under Option 1 `modules/widgetpin` with the provider resolved per D142.5 (weight 2, code). Contingent on the ruling.
+5. Step 5: the device read - atlas first, tap the row on the 3T, transcribe the launcher confirmation and the placed widget, alone in its own executor session (weight 3, device). Contingent on the ruling.
+
+Weight arithmetic: 1 + 1 + 2 + 2 + 3 = 9.
+
+## Risks
+
+- A fleet launcher refuses pins (`isRequestPinAppWidgetSupported()` false): the row falls back to the how-to card under Option 1. Shows up as the check reading false on the 3T read.
+- The generated receiver name differs from any guess: D142.5 resolves it from the built APK before code is written.
+- The ruling lands long after this session: the ticket sits in Owner-led with Waiting on; nothing parked reads active, and branch A''s steps stay unticked.
+- OEM confirm dialogs differ: the device step transcribes what each shows; no screenshots are committed.
+
+## Proof
+
+- Step 1: the record comment cites both platforms'' pages, quoting the load-bearing lines, and carries the verdict and the three options.
+- Step 2: `get_issue_by_number(T, 142)` shows column Owner-led, Waiting on naming the ruling and the options, the needs-owner label set, steps 1 and 2 ticked.
+- Branch A: `yarn validate` green including the catalog lock test; Settings.test.tsx covers the row''s render, label, role and press; the modal and module suites cover presentation and resolution; the 3T transcript of the confirmation and the placed widget lands as a ticket comment; the owner''s iPhone confirmation lands as a ticket comment.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 08:30:09.349666+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (8, 6, 1, NULL, 'Plan: QUEUE-21', '# The board as a portable product, take three: It''s a Plan
 
 # Ticket 144: The board as a portable product, take three: It''s a Plan
@@ -10466,6 +13305,75 @@ Owner goal: the app goes global in v2.0 with a language switcher. Research lives
 `ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
 catalog and `t()`, no i18n library, no second language first. RTL is the real work.
 ', NULL, 'file-text', '{}', false, false, false, NULL, 7168, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.445666+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (18, 9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: every style that sets the three named gaps is byte-identical from those versions to uat head (git diff of the three components shows only Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95, a unit-letter font size inside the digits row, which moves no margin and no line box in the named pairs). A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface row 137 already read must reproduce its bound within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), and the code''s margin per site in dp, 3T px and XS pt. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree byte for byte.
+3. **Ink bounds.** Screenshots per screen, read by the vision worker: a PIL row-scan locates candidate ink bands in the named regions, the vision worker names them (which band is the name, the digits, the location, the date, the title, the subtitle) and corroborates the counts. Ink never enters the record unnamed.
+4. **The gap table.** Per site per phone: node gap (box to box), ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds.
+5. **Attribution.** A site''s gap difference is the platform line box''s when the Android-minus-iPhone ink-gap delta closes against the overhang deltas the metric sets predict, with the node gap equal to the margin on both phones. It is the layout''s when a node gap itself departs from the code margin. Each site gets one line naming which, with the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family: the hhea-parity pin per family (round(1.185 x size)), the floor each pin must clear (the measured ink height plus the no-negative-pulling rule: a pin may compress the box only down to what renders the ink whole; the repo''s own scriptLineHeight pattern pins at 1.5em for exactly this reason), the residual gap each pin leaves, and the blast radius - component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from the sweep).
+
+Invariant: no code, no pixel change, no install, no settings change; read-only contact; the phones restored as found (language stays ar); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical styles, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation and margin table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24, run it against the shipped TTFs; read the three components'' margins into one table. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908: verify language ar on arrival; `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939: agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, word 61px, digits container 86px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Dispatch the vision worker per screenshot with the PIL row-scan bands: name and bound the ink at every site on both phones. Proof: every ink band sits inside a node bound where both exist (ink under box, row 137''s relation).
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table, the attribution line per site, the two options with exact numbers and blast radius, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the vision worker adjudicates the bands; a disagreement becomes a recorded void, not a guess.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers.
+- Steps 2 and 3: the two independent captures agree byte for byte; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00');
 
 
 --
@@ -10505,20 +13413,50 @@ INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "
 -- Data for Name: revision; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 22);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:217', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:222', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 43);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:219', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:215', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:209', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:227', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 27);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:229', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:234', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 27);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:218', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:216', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:223', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:235', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:211', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:210', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:220', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:225', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 27);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 27);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:45', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 69);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 86);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 35);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 74);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:236', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:224', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:47', 1, 29);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 80);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:48', 1, 29);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:212', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 35);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:49', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 34);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 106);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:10', 1, 34);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
@@ -10526,17 +13464,12 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:12', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:13', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:112', 1, 36);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:114', 1, 38);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 46);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 40);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:22', 1, 29);
@@ -10550,9 +13483,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:38', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:79', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:68', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:117', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:213', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:26', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:39', 1, 29);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:226', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:57', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:80', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:27', 1, 29);
@@ -10560,6 +13495,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:69', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:40', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:98', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:237', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:28', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:58', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:70', 1, 29);
@@ -10622,13 +13558,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:78', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:115', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:67', 1, 36);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3086);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:228', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:214', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:95', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:97', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:238', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:99', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:14', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:101', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 2827);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:102', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:81', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 29);
@@ -10915,7 +13854,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 1715, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 1989, true);
 
 
 --
@@ -10964,14 +13903,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 527, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 539, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 208, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 239, true);
 
 
 --
@@ -10992,7 +13931,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 296, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 372, true);
 
 
 --
@@ -11027,7 +13966,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 165, true);
+SELECT pg_catalog.setval('public.label_id_seq', 170, true);
 
 
 --
@@ -11083,14 +14022,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 8, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 13, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 17, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 33, true);
 
 
 --
@@ -15475,5 +18414,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict qX1ZRIeVpeyaQ4aZsTNH6kW8w0dcdRLCM8r2Ha6tpIdetkN3LrFQrRFF87cp59r
+\unrestrict mWuE64HiWaohL1jxMy1QEsKS5hnt6Xqid7HA3uceyO2hoPxJe8jN55iZnXlLgMT
 
