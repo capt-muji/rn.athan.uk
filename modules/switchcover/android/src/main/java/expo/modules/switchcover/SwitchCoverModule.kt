@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
+import expo.modules.kotlin.records.Record
 
 /**
  * The language switch's cover: the loader's own face, held by the activity's content view across
@@ -40,7 +41,7 @@ class SwitchCoverModule : Module() {
 
             val density = activity.resources.displayMetrics.density
             val spinnerPx = (cover.spinnerSizeDp * density).toInt()
-            val lineSizePx = cover.lineSizeDp * density
+            val lineSizePx = (cover.lineSizeDp * density).toFloat()
             val lineMarginPx = (cover.lineMarginTopDp * density).toInt()
             val lineMaxWidthPx = (cover.lineMaxWidthDp * density).toInt()
             // The content view is laid out behind the loader at show time; a call that beats
@@ -99,10 +100,12 @@ class SwitchCoverModule : Module() {
         }
 
         AsyncFunction("hide") {
-            val held = heldCover ?: return@AsyncFunction
-            (held.parent as? ViewGroup)?.removeView(held)
-            heldCover = null
-            showing = false
+            val held = heldCover
+            if (held != null) {
+                (held.parent as? ViewGroup)?.removeView(held)
+                heldCover = null
+                showing = false
+            }
         }
     }
 
@@ -122,4 +125,4 @@ data class SwitchCoverFace(
     val lineSizeDp: Double = 18.0,
     val lineMarginTopDp: Double = 40.0,
     val lineMaxWidthDp: Double = 260.0,
-)
+) : Record
