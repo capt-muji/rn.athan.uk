@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict I3JaGLIHVBiUgGnGzJTAceWhwhdFM3IBjBFbI9ppiCtWfJ8DZs3mFiwefdYChXX
+\restrict qOSHFHPy1usTUQHLoGUhNrdbnmRhwvcp7MeNHrbmH0vgjxTINhVuzT0TGGfPvza
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -19,664 +19,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE IF EXISTS ONLY public.workspace_manager DROP CONSTRAINT IF EXISTS workspace_manager_workspace_id_workspace_id_fk;
-ALTER TABLE IF EXISTS ONLY public.workspace_manager DROP CONSTRAINT IF EXISTS workspace_manager_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.webhook DROP CONSTRAINT IF EXISTS webhook_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.webhook_delivery DROP CONSTRAINT IF EXISTS webhook_delivery_webhook_id_webhook_id_fk;
-ALTER TABLE IF EXISTS ONLY public.user_telegram_account DROP CONSTRAINT IF EXISTS user_telegram_account_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.user_preference DROP CONSTRAINT IF EXISTS user_preference_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.user_preference DROP CONSTRAINT IF EXISTS user_preference_last_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.user_notification_preference DROP CONSTRAINT IF EXISTS user_notification_preference_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.user_notification_preference DROP CONSTRAINT IF EXISTS user_notification_preference_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team DROP CONSTRAINT IF EXISTS team_workspace_id_workspace_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_role DROP CONSTRAINT IF EXISTS team_role_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_notification_setting DROP CONSTRAINT IF EXISTS team_notification_setting_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_member DROP CONSTRAINT IF EXISTS team_member_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_member DROP CONSTRAINT IF EXISTS team_member_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_role_id_team_role_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_invited_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_accepted_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_user DROP CONSTRAINT IF EXISTS scim_user_workspace_id_workspace_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_user DROP CONSTRAINT IF EXISTS scim_user_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group DROP CONSTRAINT IF EXISTS scim_group_workspace_id_workspace_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_member DROP CONSTRAINT IF EXISTS scim_group_member_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_member DROP CONSTRAINT IF EXISTS scim_group_member_group_id_scim_group_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_mapping DROP CONSTRAINT IF EXISTS scim_group_mapping_role_id_team_role_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_mapping DROP CONSTRAINT IF EXISTS scim_group_mapping_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_mapping DROP CONSTRAINT IF EXISTS scim_group_mapping_group_id_scim_group_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_view DROP CONSTRAINT IF EXISTS project_view_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_view_favorite DROP CONSTRAINT IF EXISTS project_view_favorite_view_id_project_view_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_view_favorite DROP CONSTRAINT IF EXISTS project_view_favorite_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project DROP CONSTRAINT IF EXISTS project_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_setting DROP CONSTRAINT IF EXISTS project_setting_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_notification_setting DROP CONSTRAINT IF EXISTS project_notification_setting_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_member DROP CONSTRAINT IF EXISTS project_member_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_member DROP CONSTRAINT IF EXISTS project_member_role_id_team_role_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_member DROP CONSTRAINT IF EXISTS project_member_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_updated_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_revision DROP CONSTRAINT IF EXISTS project_document_revision_owner_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_revision DROP CONSTRAINT IF EXISTS project_document_revision_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_revision DROP CONSTRAINT IF EXISTS project_document_revision_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_preference DROP CONSTRAINT IF EXISTS project_document_preference_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_preference DROP CONSTRAINT IF EXISTS project_document_preference_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_parent_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_owner_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_issue DROP CONSTRAINT IF EXISTS project_document_issue_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_issue DROP CONSTRAINT IF EXISTS project_document_issue_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_issue DROP CONSTRAINT IF EXISTS project_document_issue_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_initiative DROP CONSTRAINT IF EXISTS project_document_initiative_initiative_id_initiative_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_initiative DROP CONSTRAINT IF EXISTS project_document_initiative_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document_initiative DROP CONSTRAINT IF EXISTS project_document_initiative_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_archived_by_ancestor_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_dashboard DROP CONSTRAINT IF EXISTS project_dashboard_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_column DROP CONSTRAINT IF EXISTS project_column_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_column DROP CONSTRAINT IF EXISTS project_column_auto_assign_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.project_action DROP CONSTRAINT IF EXISTS project_action_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.passkey DROP CONSTRAINT IF EXISTS passkey_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_source_activity_id_issue_activity_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification_delivery DROP CONSTRAINT IF EXISTS notification_delivery_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_actor_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.note_board DROP CONSTRAINT IF EXISTS note_board_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.note_board DROP CONSTRAINT IF EXISTS note_board_owner_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.note_board_member DROP CONSTRAINT IF EXISTS note_board_member_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.note_board_member DROP CONSTRAINT IF EXISTS note_board_member_board_id_note_board_id_fk;
-ALTER TABLE IF EXISTS ONLY public.note_board DROP CONSTRAINT IF EXISTS note_board_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.model_price DROP CONSTRAINT IF EXISTS model_price_workspace_id_workspace_id_fk;
-ALTER TABLE IF EXISTS ONLY public.label DROP CONSTRAINT IF EXISTS label_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.label_group DROP CONSTRAINT IF EXISTS label_group_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.label DROP CONSTRAINT IF EXISTS label_group_id_label_group_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_worklog DROP CONSTRAINT IF EXISTS issue_worklog_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_worklog DROP CONSTRAINT IF EXISTS issue_worklog_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_watcher DROP CONSTRAINT IF EXISTS issue_watcher_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_watcher DROP CONSTRAINT IF EXISTS issue_watcher_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_type DROP CONSTRAINT IF EXISTS issue_type_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_type_id_issue_type_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_type_id_issue_type_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template_label DROP CONSTRAINT IF EXISTS issue_template_label_template_id_issue_template_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template_label DROP CONSTRAINT IF EXISTS issue_template_label_label_id_label_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_column_id_project_column_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_assignee_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_status DROP CONSTRAINT IF EXISTS issue_status_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_status DROP CONSTRAINT IF EXISTS issue_status_column_id_project_column_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_parent_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_link DROP CONSTRAINT IF EXISTS issue_link_target_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_link DROP CONSTRAINT IF EXISTS issue_link_source_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_label DROP CONSTRAINT IF EXISTS issue_label_label_id_label_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_label DROP CONSTRAINT IF EXISTS issue_label_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_key_alias DROP CONSTRAINT IF EXISTS issue_key_alias_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_key_alias DROP CONSTRAINT IF EXISTS issue_key_alias_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_initiative_id_initiative_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_import DROP CONSTRAINT IF EXISTS issue_import_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_import DROP CONSTRAINT IF EXISTS issue_import_attachment_id_chat_attachment_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_value DROP CONSTRAINT IF EXISTS issue_field_value_value_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_value DROP CONSTRAINT IF EXISTS issue_field_value_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_value DROP CONSTRAINT IF EXISTS issue_field_value_field_id_custom_field_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_option DROP CONSTRAINT IF EXISTS issue_field_option_option_id_custom_field_option_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_option DROP CONSTRAINT IF EXISTS issue_field_option_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_field_option DROP CONSTRAINT IF EXISTS issue_field_option_field_id_custom_field_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_development_link DROP CONSTRAINT IF EXISTS issue_development_link_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_development_check DROP CONSTRAINT IF EXISTS issue_development_check_development_link_id_issue_development_l;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_delegate_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_cycle DROP CONSTRAINT IF EXISTS issue_cycle_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_cycle_id_cycle_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_cycle DROP CONSTRAINT IF EXISTS issue_cycle_cycle_id_cycle_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_column_id_project_column_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_checklist_item DROP CONSTRAINT IF EXISTS issue_checklist_item_checklist_id_issue_checklist_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_checklist DROP CONSTRAINT IF EXISTS issue_checklist_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_attachment DROP CONSTRAINT IF EXISTS issue_attachment_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_assignee_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_activity DROP CONSTRAINT IF EXISTS issue_activity_reply_to_id_issue_activity_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_activity DROP CONSTRAINT IF EXISTS issue_activity_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_activity DROP CONSTRAINT IF EXISTS issue_activity_initiative_id_initiative_id_fk;
-ALTER TABLE IF EXISTS ONLY public.issue_activity DROP CONSTRAINT IF EXISTS issue_activity_actor_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.integration_credential DROP CONSTRAINT IF EXISTS integration_credential_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.initiative DROP CONSTRAINT IF EXISTS initiative_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.initiative DROP CONSTRAINT IF EXISTS initiative_owner_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.initiative_label DROP CONSTRAINT IF EXISTS initiative_label_label_id_label_id_fk;
-ALTER TABLE IF EXISTS ONLY public.initiative_label DROP CONSTRAINT IF EXISTS initiative_label_initiative_id_initiative_id_fk;
-ALTER TABLE IF EXISTS ONLY public.initiative_attachment DROP CONSTRAINT IF EXISTS initiative_attachment_initiative_id_initiative_id_fk;
-ALTER TABLE IF EXISTS ONLY public.import_record DROP CONSTRAINT IF EXISTS import_record_import_job_id_import_job_id_fk;
-ALTER TABLE IF EXISTS ONLY public.import_job DROP CONSTRAINT IF EXISTS import_job_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.import_job DROP CONSTRAINT IF EXISTS import_job_created_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.git_provider_connection DROP CONSTRAINT IF EXISTS git_provider_connection_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.git_managed_repository DROP CONSTRAINT IF EXISTS git_managed_repository_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.git_managed_repository DROP CONSTRAINT IF EXISTS git_managed_repository_connection_id_git_provider_connection_id;
-ALTER TABLE IF EXISTS ONLY public.document_step DROP CONSTRAINT IF EXISTS document_step_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_comment DROP CONSTRAINT IF EXISTS document_comment_parent_id_document_comment_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_comment DROP CONSTRAINT IF EXISTS document_comment_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_comment DROP CONSTRAINT IF EXISTS document_comment_author_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_collaboration DROP CONSTRAINT IF EXISTS document_collaboration_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_asset DROP CONSTRAINT IF EXISTS document_asset_uploaded_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.document_asset DROP CONSTRAINT IF EXISTS document_asset_document_id_project_document_id_fk;
-ALTER TABLE IF EXISTS ONLY public.cycle DROP CONSTRAINT IF EXISTS cycle_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.custom_field DROP CONSTRAINT IF EXISTS custom_field_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.custom_field_option DROP CONSTRAINT IF EXISTS custom_field_option_field_id_custom_field_id_fk;
-ALTER TABLE IF EXISTS ONLY public.custom_field DROP CONSTRAINT IF EXISTS custom_field_issue_type_id_issue_type_id_fk;
-ALTER TABLE IF EXISTS ONLY public.chat_attachment DROP CONSTRAINT IF EXISTS chat_attachment_uploaded_by_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.chat_attachment DROP CONSTRAINT IF EXISTS chat_attachment_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_owner_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_model_credential_id_integration_credential_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_tool DROP CONSTRAINT IF EXISTS agent_tool_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_tool_link DROP CONSTRAINT IF EXISTS agent_tool_link_agent_tool_id_agent_tool_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_tool_link DROP CONSTRAINT IF EXISTS agent_tool_link_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_tool DROP CONSTRAINT IF EXISTS agent_tool_credential_id_integration_credential_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_skill DROP CONSTRAINT IF EXISTS agent_skill_team_id_team_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_skill_link DROP CONSTRAINT IF EXISTS agent_skill_link_skill_id_agent_skill_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_skill_link DROP CONSTRAINT IF EXISTS agent_skill_link_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_schedule DROP CONSTRAINT IF EXISTS agent_schedule_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_schedule DROP CONSTRAINT IF EXISTS agent_schedule_column_id_project_column_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_schedule DROP CONSTRAINT IF EXISTS agent_schedule_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_source_activity_id_issue_activity_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_schedule_id_agent_schedule_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_project_id_project_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_issue_id_issue_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_field_trigger DROP CONSTRAINT IF EXISTS agent_field_trigger_field_id_custom_field_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_field_trigger DROP CONSTRAINT IF EXISTS agent_field_trigger_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_usage DROP CONSTRAINT IF EXISTS agent_chat_usage_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_thread DROP CONSTRAINT IF EXISTS agent_chat_thread_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_thread DROP CONSTRAINT IF EXISTS agent_chat_thread_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_message DROP CONSTRAINT IF EXISTS agent_chat_message_thread_id_agent_chat_thread_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_message DROP CONSTRAINT IF EXISTS agent_chat_message_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_favorite DROP CONSTRAINT IF EXISTS agent_chat_favorite_user_id_user_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_favorite DROP CONSTRAINT IF EXISTS agent_chat_favorite_agent_id_ai_agent_id_fk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_event DROP CONSTRAINT IF EXISTS agent_chat_event_message_id_agent_chat_message_id_fk;
-ALTER TABLE IF EXISTS ONLY public.account DROP CONSTRAINT IF EXISTS account_user_id_user_id_fk;
-DROP TRIGGER IF EXISTS project_rev_cleanup ON public.project;
-DROP TRIGGER IF EXISTS project_document_revision_capture ON public.project_document;
-DROP TRIGGER IF EXISTS project_document_rev ON public.project_document;
-DROP TRIGGER IF EXISTS project_document_preference_rev ON public.project_document_preference;
-DROP TRIGGER IF EXISTS project_document_owner_default ON public.project_document;
-DROP TRIGGER IF EXISTS project_document_issue_validate_project ON public.project_document_issue;
-DROP TRIGGER IF EXISTS project_document_issue_rev ON public.project_document_issue;
-DROP TRIGGER IF EXISTS project_document_initiative_validate_project ON public.project_document_initiative;
-DROP TRIGGER IF EXISTS project_document_initiative_rev ON public.project_document_initiative;
-DROP TRIGGER IF EXISTS notification_rev ON public.notification;
-DROP TRIGGER IF EXISTS issue_watcher_rev ON public.issue_watcher;
-DROP TRIGGER IF EXISTS issue_rev ON public.issue;
-DROP TRIGGER IF EXISTS issue_link_rev ON public.issue_link;
-DROP TRIGGER IF EXISTS issue_label_rev ON public.issue_label;
-DROP TRIGGER IF EXISTS issue_field_value_rev ON public.issue_field_value;
-DROP TRIGGER IF EXISTS issue_field_option_rev ON public.issue_field_option;
-DROP TRIGGER IF EXISTS issue_development_link_rev ON public.issue_development_link;
-DROP TRIGGER IF EXISTS issue_development_check_rev ON public.issue_development_check;
-DROP TRIGGER IF EXISTS issue_cycle_rev ON public.issue_cycle;
-DROP TRIGGER IF EXISTS issue_checklist_rev ON public.issue_checklist;
-DROP TRIGGER IF EXISTS issue_checklist_item_rev ON public.issue_checklist_item;
-DROP TRIGGER IF EXISTS issue_attachment_rev ON public.issue_attachment;
-DROP TRIGGER IF EXISTS issue_activity_rev ON public.issue_activity;
-DROP TRIGGER IF EXISTS initiative_rev ON public.initiative;
-DROP TRIGGER IF EXISTS initiative_label_rev ON public.initiative_label;
-DROP TRIGGER IF EXISTS initiative_attachment_rev ON public.initiative_attachment;
-DROP TRIGGER IF EXISTS document_comment_rev ON public.document_comment;
-DROP TRIGGER IF EXISTS document_asset_rev ON public.document_asset;
-DROP TRIGGER IF EXISTS cycle_rev ON public.cycle;
-DROP INDEX IF EXISTS public.workspace_manager_user_idx;
-DROP INDEX IF EXISTS public.workspace_manager_owner_uq;
-DROP INDEX IF EXISTS public.webhook_project_idx;
-DROP INDEX IF EXISTS public.webhook_delivery_webhook_idx;
-DROP INDEX IF EXISTS public.webhook_delivery_due_idx;
-DROP INDEX IF EXISTS public.user_telegram_account_link_code_unique;
-DROP INDEX IF EXISTS public.user_telegram_account_chat_id_unique;
-DROP INDEX IF EXISTS public.team_workspace_idx;
-DROP INDEX IF EXISTS public.team_role_team_idx;
-DROP INDEX IF EXISTS public.team_role_default_uq;
-DROP INDEX IF EXISTS public.team_member_user_idx;
-DROP INDEX IF EXISTS public.team_invite_team_pending_uq;
-DROP INDEX IF EXISTS public.team_invite_team_idx;
-DROP INDEX IF EXISTS public.team_invite_project_pending_uq;
-DROP INDEX IF EXISTS public.team_invite_project_idx;
-DROP INDEX IF EXISTS public.scim_user_user_idx;
-DROP INDEX IF EXISTS public.scim_group_member_user_idx;
-DROP INDEX IF EXISTS public.scim_group_mapping_project_idx;
-DROP INDEX IF EXISTS public.revision_project_idx;
-DROP INDEX IF EXISTS public.project_view_project_idx;
-DROP INDEX IF EXISTS public.project_member_user_idx;
-DROP INDEX IF EXISTS public.project_document_revision_document_idx;
-DROP INDEX IF EXISTS public.project_document_project_tree_idx;
-DROP INDEX IF EXISTS public.project_document_project_archive_idx;
-DROP INDEX IF EXISTS public.project_document_preference_user_idx;
-DROP INDEX IF EXISTS public.project_document_owner_idx;
-DROP INDEX IF EXISTS public.project_document_issue_issue_idx;
-DROP INDEX IF EXISTS public.project_document_initiative_initiative_idx;
-DROP INDEX IF EXISTS public.project_dashboard_project_idx;
-DROP INDEX IF EXISTS public.project_action_project_idx;
-DROP INDEX IF EXISTS public."passkey_userId_idx";
-DROP INDEX IF EXISTS public."passkey_credentialID_idx";
-DROP INDEX IF EXISTS public.notification_user_unread_idx;
-DROP INDEX IF EXISTS public.notification_user_idx;
-DROP INDEX IF EXISTS public.notification_delivery_due_idx;
-DROP INDEX IF EXISTS public.note_board_project_idx;
-DROP INDEX IF EXISTS public.note_board_member_user_idx;
-DROP INDEX IF EXISTS public.issue_worklog_issue_idx;
-DROP INDEX IF EXISTS public.issue_status_open_idx;
-DROP INDEX IF EXISTS public.issue_status_issue_idx;
-DROP INDEX IF EXISTS public.issue_status_column_idx;
-DROP INDEX IF EXISTS public.issue_project_title_idx;
-DROP INDEX IF EXISTS public.issue_project_active_idx;
-DROP INDEX IF EXISTS public.issue_parent_idx;
-DROP INDEX IF EXISTS public.issue_link_target_idx;
-DROP INDEX IF EXISTS public.issue_link_source_idx;
-DROP INDEX IF EXISTS public.issue_link_pair_kind_idx;
-DROP INDEX IF EXISTS public.issue_key_alias_issue_idx;
-DROP INDEX IF EXISTS public.issue_import_project_idx;
-DROP INDEX IF EXISTS public.issue_development_link_sha_idx;
-DROP INDEX IF EXISTS public.issue_development_link_pr_idx;
-DROP INDEX IF EXISTS public.issue_development_link_issue_idx;
-DROP INDEX IF EXISTS public.issue_development_check_link_sha_idx;
-DROP INDEX IF EXISTS public.issue_cycle_open_idx;
-DROP INDEX IF EXISTS public.issue_cycle_issue_idx;
-DROP INDEX IF EXISTS public.issue_cycle_idx;
-DROP INDEX IF EXISTS public.issue_cycle_cycle_idx;
-DROP INDEX IF EXISTS public.issue_checklist_item_checklist_idx;
-DROP INDEX IF EXISTS public.issue_checklist_issue_idx;
-DROP INDEX IF EXISTS public.issue_attachment_issue_idx;
-DROP INDEX IF EXISTS public.issue_activity_reply_idx;
-DROP INDEX IF EXISTS public.issue_activity_issue_idx;
-DROP INDEX IF EXISTS public.issue_activity_initiative_idx;
-DROP INDEX IF EXISTS public.integration_credential_team_idx;
-DROP INDEX IF EXISTS public.initiative_project_idx;
-DROP INDEX IF EXISTS public.initiative_attachment_initiative_idx;
-DROP INDEX IF EXISTS public.import_record_job_source_uq;
-DROP INDEX IF EXISTS public.import_record_job_local_idx;
-DROP INDEX IF EXISTS public.import_record_job_display_idx;
-DROP INDEX IF EXISTS public.import_job_project_idx;
-DROP INDEX IF EXISTS public.import_job_due_idx;
-DROP INDEX IF EXISTS public.git_provider_connection_team_idx;
-DROP INDEX IF EXISTS public.git_managed_repository_project_connection_idx;
-DROP INDEX IF EXISTS public.document_comment_document_idx;
-DROP INDEX IF EXISTS public.document_asset_document_idx;
-DROP INDEX IF EXISTS public.cycle_project_idx;
-DROP INDEX IF EXISTS public.chat_attachment_project_idx;
-DROP INDEX IF EXISTS public."apikey_referenceId_idx";
-DROP INDEX IF EXISTS public.apikey_key_idx;
-DROP INDEX IF EXISTS public."apikey_configId_idx";
-DROP INDEX IF EXISTS public.ai_agent_team_username_uq;
-DROP INDEX IF EXISTS public.ai_agent_team_idx;
-DROP INDEX IF EXISTS public.agent_tool_team_idx;
-DROP INDEX IF EXISTS public.agent_tool_link_tool_idx;
-DROP INDEX IF EXISTS public.agent_tool_credential_idx;
-DROP INDEX IF EXISTS public.agent_skill_team_idx;
-DROP INDEX IF EXISTS public.agent_skill_link_skill_idx;
-DROP INDEX IF EXISTS public.agent_schedule_project_idx;
-DROP INDEX IF EXISTS public.agent_schedule_due_idx;
-DROP INDEX IF EXISTS public.agent_schedule_column_idx;
-DROP INDEX IF EXISTS public.agent_schedule_agent_idx;
-DROP INDEX IF EXISTS public.agent_run_schedule_idx;
-DROP INDEX IF EXISTS public.agent_run_schedule_fire_uq;
-DROP INDEX IF EXISTS public.agent_run_project_idx;
-DROP INDEX IF EXISTS public.agent_run_due_idx;
-DROP INDEX IF EXISTS public.agent_field_trigger_field_idx;
-DROP INDEX IF EXISTS public.agent_chat_usage_agent_idx;
-DROP INDEX IF EXISTS public.agent_chat_thread_agent_user_idx;
-DROP INDEX IF EXISTS public.agent_chat_message_thread_idx;
-DROP INDEX IF EXISTS public.agent_chat_message_due_idx;
-DROP INDEX IF EXISTS public.agent_chat_event_message_idx;
-DROP INDEX IF EXISTS public."account_userId_idx";
-ALTER TABLE IF EXISTS ONLY public.workspace DROP CONSTRAINT IF EXISTS workspace_pkey;
-ALTER TABLE IF EXISTS ONLY public.workspace_manager DROP CONSTRAINT IF EXISTS workspace_manager_workspace_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.webhook DROP CONSTRAINT IF EXISTS webhook_pkey;
-ALTER TABLE IF EXISTS ONLY public.webhook_delivery DROP CONSTRAINT IF EXISTS webhook_delivery_pkey;
-ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT IF EXISTS user_username_unique;
-ALTER TABLE IF EXISTS ONLY public.user_telegram_account DROP CONSTRAINT IF EXISTS user_telegram_account_pkey;
-ALTER TABLE IF EXISTS ONLY public.user_preference DROP CONSTRAINT IF EXISTS user_preference_pkey;
-ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT IF EXISTS user_pkey;
-ALTER TABLE IF EXISTS ONLY public.user_notification_preference DROP CONSTRAINT IF EXISTS user_notification_preference_pkey;
-ALTER TABLE IF EXISTS ONLY public.user_notification_preference DROP CONSTRAINT IF EXISTS user_notification_pref_user_project_unique;
-ALTER TABLE IF EXISTS ONLY public."user" DROP CONSTRAINT IF EXISTS user_email_unique;
-ALTER TABLE IF EXISTS ONLY public.team DROP CONSTRAINT IF EXISTS team_slug_unique;
-ALTER TABLE IF EXISTS ONLY public.team_role DROP CONSTRAINT IF EXISTS team_role_team_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.team DROP CONSTRAINT IF EXISTS team_pkey;
-ALTER TABLE IF EXISTS ONLY public.team_notification_setting DROP CONSTRAINT IF EXISTS team_notification_setting_pkey;
-ALTER TABLE IF EXISTS ONLY public.team_member DROP CONSTRAINT IF EXISTS team_member_team_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_token_unique;
-ALTER TABLE IF EXISTS ONLY public.team_invite DROP CONSTRAINT IF EXISTS team_invite_pkey;
-ALTER TABLE IF EXISTS ONLY public.scim_user DROP CONSTRAINT IF EXISTS scim_user_workspace_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.scim_group DROP CONSTRAINT IF EXISTS scim_group_workspace_id_display_name_unique;
-ALTER TABLE IF EXISTS ONLY public.scim_group DROP CONSTRAINT IF EXISTS scim_group_pkey;
-ALTER TABLE IF EXISTS ONLY public.scim_group_member DROP CONSTRAINT IF EXISTS scim_group_member_group_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.scim_group_mapping DROP CONSTRAINT IF EXISTS scim_group_mapping_pkey;
-ALTER TABLE IF EXISTS ONLY public.scim_group_mapping DROP CONSTRAINT IF EXISTS scim_group_mapping_group_id_project_id_unique;
-ALTER TABLE IF EXISTS ONLY public.revision DROP CONSTRAINT IF EXISTS revision_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_view DROP CONSTRAINT IF EXISTS project_view_share_token_unique;
-ALTER TABLE IF EXISTS ONLY public.project_view DROP CONSTRAINT IF EXISTS project_view_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_view_favorite DROP CONSTRAINT IF EXISTS project_view_favorite_view_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.project DROP CONSTRAINT IF EXISTS project_team_key_uq;
-ALTER TABLE IF EXISTS ONLY public.project_setting DROP CONSTRAINT IF EXISTS project_setting_project_id_key_pk;
-ALTER TABLE IF EXISTS ONLY public.team_role DROP CONSTRAINT IF EXISTS project_role_pkey;
-ALTER TABLE IF EXISTS ONLY public.project DROP CONSTRAINT IF EXISTS project_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_notification_setting DROP CONSTRAINT IF EXISTS project_notification_setting_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_member DROP CONSTRAINT IF EXISTS project_member_project_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.project_document_revision DROP CONSTRAINT IF EXISTS project_document_revision_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_document_revision DROP CONSTRAINT IF EXISTS project_document_revision_document_version_unique;
-ALTER TABLE IF EXISTS ONLY public.project_document_preference DROP CONSTRAINT IF EXISTS project_document_preference_document_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.project_document DROP CONSTRAINT IF EXISTS project_document_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_document_issue DROP CONSTRAINT IF EXISTS project_document_issue_document_id_issue_id_pk;
-ALTER TABLE IF EXISTS ONLY public.project_document_initiative DROP CONSTRAINT IF EXISTS project_document_initiative_document_id_initiative_id_pk;
-ALTER TABLE IF EXISTS ONLY public.project_dashboard DROP CONSTRAINT IF EXISTS project_dashboard_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_column DROP CONSTRAINT IF EXISTS project_column_project_id_position_unique;
-ALTER TABLE IF EXISTS ONLY public.project_column DROP CONSTRAINT IF EXISTS project_column_pkey;
-ALTER TABLE IF EXISTS ONLY public.project_action DROP CONSTRAINT IF EXISTS project_action_pkey;
-ALTER TABLE IF EXISTS ONLY public.passkey DROP CONSTRAINT IF EXISTS passkey_pkey;
-ALTER TABLE IF EXISTS ONLY public.notification DROP CONSTRAINT IF EXISTS notification_pkey;
-ALTER TABLE IF EXISTS ONLY public.notification_delivery DROP CONSTRAINT IF EXISTS notification_delivery_pkey;
-ALTER TABLE IF EXISTS ONLY public.note_board DROP CONSTRAINT IF EXISTS note_board_pkey;
-ALTER TABLE IF EXISTS ONLY public.note_board_member DROP CONSTRAINT IF EXISTS note_board_member_board_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.model_price DROP CONSTRAINT IF EXISTS model_price_workspace_id_provider_model_unique;
-ALTER TABLE IF EXISTS ONLY public.model_price DROP CONSTRAINT IF EXISTS model_price_pkey;
-ALTER TABLE IF EXISTS ONLY public.label DROP CONSTRAINT IF EXISTS label_project_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.label DROP CONSTRAINT IF EXISTS label_pkey;
-ALTER TABLE IF EXISTS ONLY public.label_group DROP CONSTRAINT IF EXISTS label_group_project_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.label_group DROP CONSTRAINT IF EXISTS label_group_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_worklog DROP CONSTRAINT IF EXISTS issue_worklog_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_watcher DROP CONSTRAINT IF EXISTS issue_watcher_issue_id_user_id_pk;
-ALTER TABLE IF EXISTS ONLY public.issue_type DROP CONSTRAINT IF EXISTS issue_type_project_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_type DROP CONSTRAINT IF EXISTS issue_type_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_project_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_template DROP CONSTRAINT IF EXISTS issue_template_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_template_label DROP CONSTRAINT IF EXISTS issue_template_label_template_id_label_id_pk;
-ALTER TABLE IF EXISTS ONLY public.issue_status DROP CONSTRAINT IF EXISTS issue_status_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_share_token_unique;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_project_id_sequence_number_unique;
-ALTER TABLE IF EXISTS ONLY public.issue DROP CONSTRAINT IF EXISTS issue_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_link DROP CONSTRAINT IF EXISTS issue_link_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_label DROP CONSTRAINT IF EXISTS issue_label_issue_id_label_id_pk;
-ALTER TABLE IF EXISTS ONLY public.issue_key_alias DROP CONSTRAINT IF EXISTS issue_key_alias_project_id_sequence_number_pk;
-ALTER TABLE IF EXISTS ONLY public.issue_import DROP CONSTRAINT IF EXISTS issue_import_public_id_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_import DROP CONSTRAINT IF EXISTS issue_import_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_field_value DROP CONSTRAINT IF EXISTS issue_field_value_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_field_value DROP CONSTRAINT IF EXISTS issue_field_value_issue_id_field_id_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_field_option DROP CONSTRAINT IF EXISTS issue_field_option_issue_id_field_id_option_id_pk;
-ALTER TABLE IF EXISTS ONLY public.issue_development_link DROP CONSTRAINT IF EXISTS issue_development_link_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_development_link DROP CONSTRAINT IF EXISTS issue_development_link_issue_id_provider_repository_external_ke;
-ALTER TABLE IF EXISTS ONLY public.issue_development_check DROP CONSTRAINT IF EXISTS issue_development_check_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_development_check DROP CONSTRAINT IF EXISTS issue_development_check_development_link_id_app_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_cycle DROP CONSTRAINT IF EXISTS issue_cycle_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_checklist DROP CONSTRAINT IF EXISTS issue_checklist_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_checklist_item DROP CONSTRAINT IF EXISTS issue_checklist_item_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_attachment DROP CONSTRAINT IF EXISTS issue_attachment_public_id_unique;
-ALTER TABLE IF EXISTS ONLY public.issue_attachment DROP CONSTRAINT IF EXISTS issue_attachment_pkey;
-ALTER TABLE IF EXISTS ONLY public.issue_activity DROP CONSTRAINT IF EXISTS issue_activity_pkey;
-ALTER TABLE IF EXISTS ONLY public.integration_credential DROP CONSTRAINT IF EXISTS integration_credential_pkey;
-ALTER TABLE IF EXISTS ONLY public.initiative DROP CONSTRAINT IF EXISTS initiative_pkey;
-ALTER TABLE IF EXISTS ONLY public.initiative_label DROP CONSTRAINT IF EXISTS initiative_label_initiative_id_label_id_pk;
-ALTER TABLE IF EXISTS ONLY public.initiative_attachment DROP CONSTRAINT IF EXISTS initiative_attachment_public_id_unique;
-ALTER TABLE IF EXISTS ONLY public.initiative_attachment DROP CONSTRAINT IF EXISTS initiative_attachment_pkey;
-ALTER TABLE IF EXISTS ONLY public.import_record DROP CONSTRAINT IF EXISTS import_record_pkey;
-ALTER TABLE IF EXISTS ONLY public.import_job DROP CONSTRAINT IF EXISTS import_job_pkey;
-ALTER TABLE IF EXISTS ONLY public.git_provider_connection DROP CONSTRAINT IF EXISTS git_provider_connection_pkey;
-ALTER TABLE IF EXISTS ONLY public.git_managed_repository DROP CONSTRAINT IF EXISTS git_managed_repository_project_connection_external_unique;
-ALTER TABLE IF EXISTS ONLY public.git_managed_repository DROP CONSTRAINT IF EXISTS git_managed_repository_pkey;
-ALTER TABLE IF EXISTS ONLY public.document_step DROP CONSTRAINT IF EXISTS document_step_document_id_version_pk;
-ALTER TABLE IF EXISTS ONLY public.document_comment DROP CONSTRAINT IF EXISTS document_comment_pkey;
-ALTER TABLE IF EXISTS ONLY public.document_collaboration DROP CONSTRAINT IF EXISTS document_collaboration_pkey;
-ALTER TABLE IF EXISTS ONLY public.document_asset DROP CONSTRAINT IF EXISTS document_asset_public_id_unique;
-ALTER TABLE IF EXISTS ONLY public.document_asset DROP CONSTRAINT IF EXISTS document_asset_pkey;
-ALTER TABLE IF EXISTS ONLY public.cycle DROP CONSTRAINT IF EXISTS cycle_pkey;
-ALTER TABLE IF EXISTS ONLY public.custom_field DROP CONSTRAINT IF EXISTS custom_field_pkey;
-ALTER TABLE IF EXISTS ONLY public.custom_field_option DROP CONSTRAINT IF EXISTS custom_field_option_pkey;
-ALTER TABLE IF EXISTS ONLY public.custom_field_option DROP CONSTRAINT IF EXISTS custom_field_option_field_id_value_unique;
-ALTER TABLE IF EXISTS ONLY public.chat_attachment DROP CONSTRAINT IF EXISTS chat_attachment_public_id_unique;
-ALTER TABLE IF EXISTS ONLY public.chat_attachment DROP CONSTRAINT IF EXISTS chat_attachment_pkey;
-ALTER TABLE IF EXISTS ONLY public.app_setting DROP CONSTRAINT IF EXISTS app_setting_pkey;
-ALTER TABLE IF EXISTS ONLY public.app_secret DROP CONSTRAINT IF EXISTS app_secret_pkey;
-ALTER TABLE IF EXISTS ONLY public.apikey DROP CONSTRAINT IF EXISTS apikey_pkey;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_user_id_unique;
-ALTER TABLE IF EXISTS ONLY public.ai_agent DROP CONSTRAINT IF EXISTS ai_agent_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_tool DROP CONSTRAINT IF EXISTS agent_tool_team_id_tool_key_credential_id_unique;
-ALTER TABLE IF EXISTS ONLY public.agent_tool DROP CONSTRAINT IF EXISTS agent_tool_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_tool_link DROP CONSTRAINT IF EXISTS agent_tool_link_agent_id_agent_tool_id_pk;
-ALTER TABLE IF EXISTS ONLY public.agent_skill DROP CONSTRAINT IF EXISTS agent_skill_team_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.agent_skill DROP CONSTRAINT IF EXISTS agent_skill_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_skill_link DROP CONSTRAINT IF EXISTS agent_skill_link_agent_id_skill_id_pk;
-ALTER TABLE IF EXISTS ONLY public.agent_schedule DROP CONSTRAINT IF EXISTS agent_schedule_project_id_agent_id_name_unique;
-ALTER TABLE IF EXISTS ONLY public.agent_schedule DROP CONSTRAINT IF EXISTS agent_schedule_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_run DROP CONSTRAINT IF EXISTS agent_run_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_field_trigger DROP CONSTRAINT IF EXISTS agent_field_trigger_agent_id_field_id_pk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_usage DROP CONSTRAINT IF EXISTS agent_chat_usage_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_thread DROP CONSTRAINT IF EXISTS agent_chat_thread_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_message DROP CONSTRAINT IF EXISTS agent_chat_message_pkey;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_favorite DROP CONSTRAINT IF EXISTS agent_chat_favorite_user_id_thread_id_pk;
-ALTER TABLE IF EXISTS ONLY public.agent_chat_event DROP CONSTRAINT IF EXISTS agent_chat_event_pkey;
-ALTER TABLE IF EXISTS ONLY public.account DROP CONSTRAINT IF EXISTS account_pkey;
-ALTER TABLE IF EXISTS ONLY drizzle.__drizzle_migrations DROP CONSTRAINT IF EXISTS __drizzle_migrations_pkey;
-ALTER TABLE IF EXISTS public.workspace ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.webhook_delivery ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.webhook ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.user_notification_preference ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.team_role ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.team_invite ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.team ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.scim_group_mapping ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_view ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_document_revision ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_document ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_dashboard ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_column ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project_action ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.project ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.notification_delivery ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.notification ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.note_board ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.model_price ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.label_group ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.label ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_worklog ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_type ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_template ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_status ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_link ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_import ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_field_value ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_development_link ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_development_check ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_cycle ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_checklist_item ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_checklist ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_attachment ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue_activity ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.issue ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.integration_credential ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.initiative_attachment ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.initiative ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.import_record ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.import_job ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.git_provider_connection ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.git_managed_repository ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.document_asset ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.cycle ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.custom_field_option ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.custom_field ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.chat_attachment ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.ai_agent ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_tool ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_skill ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_schedule ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_run ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_chat_message ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS public.agent_chat_event ALTER COLUMN id DROP DEFAULT;
-ALTER TABLE IF EXISTS drizzle.__drizzle_migrations ALTER COLUMN id DROP DEFAULT;
-DROP TABLE IF EXISTS public.workspace_manager;
-DROP SEQUENCE IF EXISTS public.workspace_id_seq;
-DROP TABLE IF EXISTS public.workspace;
-DROP SEQUENCE IF EXISTS public.webhook_id_seq;
-DROP SEQUENCE IF EXISTS public.webhook_delivery_id_seq;
-DROP TABLE IF EXISTS public.webhook_delivery;
-DROP TABLE IF EXISTS public.webhook;
-DROP TABLE IF EXISTS public.user_telegram_account;
-DROP TABLE IF EXISTS public.user_preference;
-DROP SEQUENCE IF EXISTS public.user_notification_preference_id_seq;
-DROP TABLE IF EXISTS public.user_notification_preference;
-DROP TABLE IF EXISTS public."user";
-DROP TABLE IF EXISTS public.team_notification_setting;
-DROP TABLE IF EXISTS public.team_member;
-DROP SEQUENCE IF EXISTS public.team_invite_id_seq;
-DROP TABLE IF EXISTS public.team_invite;
-DROP SEQUENCE IF EXISTS public.team_id_seq;
-DROP TABLE IF EXISTS public.team;
-DROP TABLE IF EXISTS public.scim_user;
-DROP TABLE IF EXISTS public.scim_group_member;
-DROP SEQUENCE IF EXISTS public.scim_group_mapping_id_seq;
-DROP TABLE IF EXISTS public.scim_group_mapping;
-DROP TABLE IF EXISTS public.scim_group;
-DROP TABLE IF EXISTS public.revision;
-DROP SEQUENCE IF EXISTS public.project_view_id_seq;
-DROP TABLE IF EXISTS public.project_view_favorite;
-DROP TABLE IF EXISTS public.project_view;
-DROP TABLE IF EXISTS public.project_setting;
-DROP SEQUENCE IF EXISTS public.project_role_id_seq;
-DROP TABLE IF EXISTS public.team_role;
-DROP TABLE IF EXISTS public.project_notification_setting;
-DROP TABLE IF EXISTS public.project_member;
-DROP SEQUENCE IF EXISTS public.project_id_seq;
-DROP SEQUENCE IF EXISTS public.project_document_revision_id_seq;
-DROP TABLE IF EXISTS public.project_document_revision;
-DROP TABLE IF EXISTS public.project_document_preference;
-DROP TABLE IF EXISTS public.project_document_issue;
-DROP TABLE IF EXISTS public.project_document_initiative;
-DROP SEQUENCE IF EXISTS public.project_document_id_seq;
-DROP TABLE IF EXISTS public.project_document;
-DROP SEQUENCE IF EXISTS public.project_dashboard_id_seq;
-DROP TABLE IF EXISTS public.project_dashboard;
-DROP SEQUENCE IF EXISTS public.project_column_id_seq;
-DROP TABLE IF EXISTS public.project_column;
-DROP SEQUENCE IF EXISTS public.project_action_id_seq;
-DROP TABLE IF EXISTS public.project_action;
-DROP TABLE IF EXISTS public.project;
-DROP TABLE IF EXISTS public.passkey;
-DROP SEQUENCE IF EXISTS public.notification_id_seq;
-DROP SEQUENCE IF EXISTS public.notification_delivery_id_seq;
-DROP TABLE IF EXISTS public.notification_delivery;
-DROP TABLE IF EXISTS public.notification;
-DROP TABLE IF EXISTS public.note_board_member;
-DROP SEQUENCE IF EXISTS public.note_board_id_seq;
-DROP TABLE IF EXISTS public.note_board;
-DROP SEQUENCE IF EXISTS public.model_price_id_seq;
-DROP TABLE IF EXISTS public.model_price;
-DROP SEQUENCE IF EXISTS public.label_id_seq;
-DROP SEQUENCE IF EXISTS public.label_group_id_seq;
-DROP TABLE IF EXISTS public.label_group;
-DROP TABLE IF EXISTS public.label;
-DROP SEQUENCE IF EXISTS public.issue_worklog_id_seq;
-DROP TABLE IF EXISTS public.issue_worklog;
-DROP TABLE IF EXISTS public.issue_watcher;
-DROP SEQUENCE IF EXISTS public.issue_type_id_seq;
-DROP TABLE IF EXISTS public.issue_type;
-DROP TABLE IF EXISTS public.issue_template_label;
-DROP SEQUENCE IF EXISTS public.issue_template_id_seq;
-DROP TABLE IF EXISTS public.issue_template;
-DROP SEQUENCE IF EXISTS public.issue_status_id_seq;
-DROP TABLE IF EXISTS public.issue_status;
-DROP SEQUENCE IF EXISTS public.issue_link_id_seq;
-DROP TABLE IF EXISTS public.issue_link;
-DROP TABLE IF EXISTS public.issue_label;
-DROP TABLE IF EXISTS public.issue_key_alias;
-DROP SEQUENCE IF EXISTS public.issue_import_id_seq;
-DROP TABLE IF EXISTS public.issue_import;
-DROP SEQUENCE IF EXISTS public.issue_id_seq;
-DROP SEQUENCE IF EXISTS public.issue_field_value_id_seq;
-DROP TABLE IF EXISTS public.issue_field_value;
-DROP TABLE IF EXISTS public.issue_field_option;
-DROP SEQUENCE IF EXISTS public.issue_development_link_id_seq;
-DROP TABLE IF EXISTS public.issue_development_link;
-DROP SEQUENCE IF EXISTS public.issue_development_check_id_seq;
-DROP TABLE IF EXISTS public.issue_development_check;
-DROP SEQUENCE IF EXISTS public.issue_cycle_id_seq;
-DROP TABLE IF EXISTS public.issue_cycle;
-DROP SEQUENCE IF EXISTS public.issue_checklist_item_id_seq;
-DROP TABLE IF EXISTS public.issue_checklist_item;
-DROP SEQUENCE IF EXISTS public.issue_checklist_id_seq;
-DROP TABLE IF EXISTS public.issue_checklist;
-DROP SEQUENCE IF EXISTS public.issue_attachment_id_seq;
-DROP TABLE IF EXISTS public.issue_attachment;
-DROP SEQUENCE IF EXISTS public.issue_activity_id_seq;
-DROP TABLE IF EXISTS public.issue_activity;
-DROP TABLE IF EXISTS public.issue;
-DROP SEQUENCE IF EXISTS public.integration_credential_id_seq;
-DROP TABLE IF EXISTS public.integration_credential;
-DROP TABLE IF EXISTS public.initiative_label;
-DROP SEQUENCE IF EXISTS public.initiative_id_seq;
-DROP SEQUENCE IF EXISTS public.initiative_attachment_id_seq;
-DROP TABLE IF EXISTS public.initiative_attachment;
-DROP TABLE IF EXISTS public.initiative;
-DROP SEQUENCE IF EXISTS public.import_record_id_seq;
-DROP TABLE IF EXISTS public.import_record;
-DROP SEQUENCE IF EXISTS public.import_job_id_seq;
-DROP TABLE IF EXISTS public.import_job;
-DROP SEQUENCE IF EXISTS public.git_provider_connection_id_seq;
-DROP TABLE IF EXISTS public.git_provider_connection;
-DROP SEQUENCE IF EXISTS public.git_managed_repository_id_seq;
-DROP TABLE IF EXISTS public.git_managed_repository;
-DROP TABLE IF EXISTS public.document_step;
-DROP TABLE IF EXISTS public.document_comment;
-DROP TABLE IF EXISTS public.document_collaboration;
-DROP SEQUENCE IF EXISTS public.document_asset_id_seq;
-DROP TABLE IF EXISTS public.document_asset;
-DROP SEQUENCE IF EXISTS public.cycle_id_seq;
-DROP TABLE IF EXISTS public.cycle;
-DROP SEQUENCE IF EXISTS public.custom_field_option_id_seq;
-DROP TABLE IF EXISTS public.custom_field_option;
-DROP SEQUENCE IF EXISTS public.custom_field_id_seq;
-DROP TABLE IF EXISTS public.custom_field;
-DROP SEQUENCE IF EXISTS public.chat_attachment_id_seq;
-DROP TABLE IF EXISTS public.chat_attachment;
-DROP TABLE IF EXISTS public.app_setting;
-DROP TABLE IF EXISTS public.app_secret;
-DROP TABLE IF EXISTS public.apikey;
-DROP SEQUENCE IF EXISTS public.ai_agent_id_seq;
-DROP TABLE IF EXISTS public.ai_agent;
-DROP TABLE IF EXISTS public.agent_tool_link;
-DROP SEQUENCE IF EXISTS public.agent_tool_id_seq;
-DROP TABLE IF EXISTS public.agent_tool;
-DROP TABLE IF EXISTS public.agent_skill_link;
-DROP SEQUENCE IF EXISTS public.agent_skill_id_seq;
-DROP TABLE IF EXISTS public.agent_skill;
-DROP SEQUENCE IF EXISTS public.agent_schedule_id_seq;
-DROP TABLE IF EXISTS public.agent_schedule;
-DROP SEQUENCE IF EXISTS public.agent_run_id_seq;
-DROP TABLE IF EXISTS public.agent_run;
-DROP TABLE IF EXISTS public.agent_field_trigger;
-DROP TABLE IF EXISTS public.agent_chat_usage;
-DROP TABLE IF EXISTS public.agent_chat_thread;
-DROP SEQUENCE IF EXISTS public.agent_chat_message_id_seq;
-DROP TABLE IF EXISTS public.agent_chat_message;
-DROP TABLE IF EXISTS public.agent_chat_favorite;
-DROP SEQUENCE IF EXISTS public.agent_chat_event_id_seq;
-DROP TABLE IF EXISTS public.agent_chat_event;
-DROP TABLE IF EXISTS public.account;
-DROP SEQUENCE IF EXISTS drizzle.__drizzle_migrations_id_seq;
-DROP TABLE IF EXISTS drizzle.__drizzle_migrations;
-DROP FUNCTION IF EXISTS public.rev_project_cleanup();
-DROP FUNCTION IF EXISTS public.rev_issue_development_check();
-DROP FUNCTION IF EXISTS public.rev_issue_child();
-DROP FUNCTION IF EXISTS public.rev_issue();
-DROP FUNCTION IF EXISTS public.rev_initiative_child();
-DROP FUNCTION IF EXISTS public.rev_initiative();
-DROP FUNCTION IF EXISTS public.rev_inbox();
-DROP FUNCTION IF EXISTS public.rev_document_child();
-DROP FUNCTION IF EXISTS public.rev_document();
-DROP FUNCTION IF EXISTS public.rev_cycle();
-DROP FUNCTION IF EXISTS public.rev_checklist_item();
-DROP FUNCTION IF EXISTS public.rev_activity();
-DROP FUNCTION IF EXISTS public.project_document_issue_validate_project();
-DROP FUNCTION IF EXISTS public.project_document_issue_rev();
-DROP FUNCTION IF EXISTS public.project_document_initiative_validate_project();
-DROP FUNCTION IF EXISTS public.project_document_initiative_rev();
-DROP FUNCTION IF EXISTS public.default_project_document_owner();
-DROP FUNCTION IF EXISTS public.capture_project_document_revision();
-DROP FUNCTION IF EXISTS public.bump_rev(p_scope text, p_project_id integer);
-DROP SCHEMA IF EXISTS drizzle;
 --
 -- Name: drizzle; Type: SCHEMA; Schema: -; Owner: -
 --
@@ -2905,6 +2247,21 @@ ALTER SEQUENCE public.issue_worklog_id_seq OWNED BY public.issue_worklog.id;
 
 
 --
+-- Name: jwks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.jwks (
+    id text NOT NULL,
+    public_key text NOT NULL,
+    private_key text NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    expires_at timestamp without time zone,
+    alg text,
+    crv text
+);
+
+
+--
 -- Name: label; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3132,6 +2489,162 @@ CREATE SEQUENCE public.notification_id_seq
 --
 
 ALTER SEQUENCE public.notification_id_seq OWNED BY public.notification.id;
+
+
+--
+-- Name: oauth_access_token; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_access_token (
+    id text NOT NULL,
+    token text NOT NULL,
+    client_id text NOT NULL,
+    session_id text,
+    user_id text,
+    reference_id text,
+    authorization_code_id text,
+    resources text[],
+    requested_user_info_claims text[],
+    refresh_id text,
+    expires_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    revoked timestamp without time zone,
+    confirmation jsonb,
+    scopes text[] NOT NULL
+);
+
+
+--
+-- Name: oauth_client; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_client (
+    id text NOT NULL,
+    client_id text NOT NULL,
+    client_secret text,
+    client_discovery_id text,
+    disabled boolean DEFAULT false,
+    skip_consent boolean,
+    enable_end_session boolean,
+    subject_type text,
+    scopes text[],
+    client_credentials_scopes text[] DEFAULT '{}'::text[],
+    user_id text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    name text,
+    uri text,
+    icon text,
+    contacts text[],
+    tos text,
+    policy text,
+    software_id text,
+    software_version text,
+    software_statement text,
+    redirect_uris text[] NOT NULL,
+    post_logout_redirect_uris text[],
+    backchannel_logout_uri text,
+    backchannel_logout_session_required boolean,
+    token_endpoint_auth_method text,
+    application_type text,
+    jwks text,
+    jwks_uri text,
+    grant_types text[],
+    response_types text[],
+    require_pkce boolean,
+    dpop_bound_access_tokens boolean DEFAULT false,
+    reference_id text,
+    metadata jsonb
+);
+
+
+--
+-- Name: oauth_client_assertion; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_client_assertion (
+    id text NOT NULL,
+    expires_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: oauth_client_resource; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_client_resource (
+    id text NOT NULL,
+    client_id text NOT NULL,
+    resource_id text NOT NULL,
+    metadata jsonb,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: oauth_consent; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_consent (
+    id text NOT NULL,
+    client_id text NOT NULL,
+    user_id text,
+    reference_id text,
+    resources text[],
+    requested_user_info_claims text[],
+    scopes text[] NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: oauth_refresh_token; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_refresh_token (
+    id text NOT NULL,
+    token text NOT NULL,
+    client_id text NOT NULL,
+    session_id text,
+    user_id text NOT NULL,
+    reference_id text,
+    authorization_code_id text,
+    resources text[],
+    requested_user_info_claims text[],
+    expires_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    revoked timestamp without time zone,
+    rotated_at timestamp without time zone,
+    rotation_replay_response text,
+    rotation_replay_expires_at timestamp without time zone,
+    auth_time timestamp without time zone,
+    confirmation jsonb,
+    scopes text[] NOT NULL
+);
+
+
+--
+-- Name: oauth_resource; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.oauth_resource (
+    id text NOT NULL,
+    identifier text NOT NULL,
+    name text NOT NULL,
+    access_token_ttl integer,
+    refresh_token_ttl integer,
+    signing_algorithm text,
+    signing_key_id text,
+    allowed_scopes text[],
+    custom_claims jsonb,
+    dpop_bound_access_tokens_required boolean DEFAULT false,
+    disabled boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    policy_version integer DEFAULT 1,
+    metadata jsonb
+);
 
 
 --
@@ -3654,6 +3167,22 @@ CREATE TABLE public.scim_user (
 
 
 --
+-- Name: session; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.session (
+    id text NOT NULL,
+    expires_at timestamp without time zone NOT NULL,
+    token text NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    ip_address text,
+    user_agent text,
+    user_id text NOT NULL
+);
+
+
+--
 -- Name: team; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3857,6 +3386,20 @@ CREATE TABLE public.user_telegram_account (
     link_code_expires_at timestamp with time zone,
     linked_at timestamp with time zone,
     created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: verification; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.verification (
+    id text NOT NULL,
+    identifier text NOT NULL,
+    value text NOT NULL,
+    expires_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone DEFAULT now() NOT NULL,
+    updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -5368,6 +4911,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (238, 2, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.622574+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "Deferred", "stateType": "backlog"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (239, 3, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.638207+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (240, 4, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.654082+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (422, 43, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.507845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "106"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (241, 6, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.682347+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Owner-led", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (242, 7, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.699718+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "Deferred", "stateType": "backlog"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (243, 8, 'activity', 'owner', NULL, 'status', '2026-10-18 23:57:28.715297+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "Deferred", "stateType": "backlog"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -5554,7 +5098,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (394, 15, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.284726+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "139"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (403, 24, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.361756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "131"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (412, 33, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.431205+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "116"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (422, 43, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.507845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "106"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (431, 52, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.571121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "89"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (443, 64, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.668236+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "77"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (453, 74, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.743139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "64"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
@@ -6327,6 +5870,12 @@ INSERT INTO public.issue_watcher (issue_id, user_id, subscribed, created_at) VAL
 
 
 --
+-- Data for Name: jwks; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
 -- Data for Name: label; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -6366,6 +5915,49 @@ INSERT INTO public.issue_watcher (issue_id, user_id, subscribed, created_at) VAL
 -- Data for Name: notification_delivery; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+
+
+--
+-- Data for Name: oauth_access_token; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_client; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_client_assertion; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_client_resource; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_consent; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_refresh_token; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: oauth_resource; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refresh_token_ttl, signing_algorithm, signing_key_id, allowed_scopes, custom_claims, dpop_bound_access_tokens_required, disabled, created_at, updated_at, policy_version, metadata) VALUES ('j2cUOaRNa1oOPSnYWhxlQbW8g94S4tNK', 'http://localhost:3000/mcp', 'http://localhost:3000/mcp', NULL, NULL, NULL, NULL, NULL, NULL, false, false, '2026-10-18 23:34:48.947', '2026-10-18 23:34:48.947', 1, NULL);
 
 
 --
@@ -6837,6 +6429,22 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 14);
 
 
 --
+-- Data for Name: session; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('ZlvmsAMOJnTtKK40BTH3wK4PhQYm3jLB', '2026-10-25 23:35:13.442', 'Ckoz5BEagTjgxQxEudzCHhcQoIr4OJ2W', '2026-10-18 23:35:13.442', '2026-10-18 23:35:13.442', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('FU6daOSF1uwaQjRRDrl7D1tmgswyNdr2', '2026-10-25 23:36:51.543', 'WVu8RseHohXagAKTZy7JI9YXZcEoxIFF', '2026-10-18 23:36:51.543', '2026-10-18 23:36:51.543', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('KpwagJfUsffV07YkRqfazGQa8XMUEis8', '2026-10-25 23:48:01.523', 'HUSxHV9RzVWb3G58C1gmHVuN0QGgeFK4', '2026-10-18 23:48:01.526', '2026-10-18 23:48:01.526', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('JdSeL5ZT9zeYod2YPjAl00b8ENPXwIWw', '2026-10-25 23:48:30.123', 'iklVmnd5hfzFZeuI7ByMwq5hm527A0lX', '2026-10-18 23:48:30.123', '2026-10-18 23:48:30.123', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('aN87uon8vzPdAlv3cuYDrRhSSMOV1jwM', '2026-10-25 23:49:01.048', 'yP4RSYjUmuwgJQsrV73UO2h1vPMQ63oe', '2026-10-18 23:49:01.048', '2026-10-18 23:49:01.048', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('mUOM4qAe7LQmODEbObuh9bW6TUG3r6dy', '2026-10-25 23:49:23.483', 'VeBPe9Ixf0yG2tZXNcJpAjjI4nNFkLps', '2026-10-18 23:49:23.483', '2026-10-18 23:49:23.483', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('rLqwyEv25V37zNZ8eervo9znGTKAaSdq', '2026-10-25 23:49:49.312', 'J4o1HndsEECxHLJxgRx7R3SxlObthV1h', '2026-10-18 23:49:49.312', '2026-10-18 23:49:49.312', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('akB2Dwxh1Xra2F4Lri5veKLf1fP9cdTE', '2026-10-25 23:50:50.505', 'Fl9GVybdgSgupNldFAlGrYQfYRhValTd', '2026-10-18 23:50:50.505', '2026-10-18 23:50:50.505', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('UF3iILadveWAvxn5QrEjHh66SEhhEmtn', '2026-10-25 23:51:45.865', 'xJWmHgmxLvPQhKZAMYhppdDLBNxlcXzj', '2026-10-18 23:51:45.865', '2026-10-18 23:51:45.865', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('0dLI8dLl5vKYTgFCQHENbOGEeebENwsZ', '2026-10-25 23:59:59.077', 'paI3c7K3NisQjH9OtHA7sUam61JA8Yj6', '2026-10-18 23:59:59.077', '2026-10-18 23:59:59.077', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+
+
+--
 -- Data for Name: team; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -6905,6 +6513,12 @@ INSERT INTO public.user_preference (user_id, timezone, theme, issue_open_mode, s
 
 --
 -- Data for Name: user_telegram_account; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: verification; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
@@ -7904,6 +7518,14 @@ ALTER TABLE ONLY public.issue_worklog
 
 
 --
+-- Name: jwks jwks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jwks
+    ADD CONSTRAINT jwks_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: label_group label_group_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -7981,6 +7603,94 @@ ALTER TABLE ONLY public.notification_delivery
 
 ALTER TABLE ONLY public.notification
     ADD CONSTRAINT notification_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_access_token oauth_access_token_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_access_token oauth_access_token_token_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_token_unique UNIQUE (token);
+
+
+--
+-- Name: oauth_client_assertion oauth_client_assertion_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client_assertion
+    ADD CONSTRAINT oauth_client_assertion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_client oauth_client_client_id_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client
+    ADD CONSTRAINT oauth_client_client_id_unique UNIQUE (client_id);
+
+
+--
+-- Name: oauth_client oauth_client_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client
+    ADD CONSTRAINT oauth_client_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_client_resource oauth_client_resource_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client_resource
+    ADD CONSTRAINT oauth_client_resource_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_consent oauth_consent_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_consent
+    ADD CONSTRAINT oauth_consent_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_refresh_token oauth_refresh_token_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_refresh_token
+    ADD CONSTRAINT oauth_refresh_token_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oauth_refresh_token oauth_refresh_token_token_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_refresh_token
+    ADD CONSTRAINT oauth_refresh_token_token_unique UNIQUE (token);
+
+
+--
+-- Name: oauth_resource oauth_resource_identifier_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_resource
+    ADD CONSTRAINT oauth_resource_identifier_unique UNIQUE (identifier);
+
+
+--
+-- Name: oauth_resource oauth_resource_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_resource
+    ADD CONSTRAINT oauth_resource_pkey PRIMARY KEY (id);
 
 
 --
@@ -8200,6 +7910,22 @@ ALTER TABLE ONLY public.scim_user
 
 
 --
+-- Name: session session_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.session
+    ADD CONSTRAINT session_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: session session_token_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.session
+    ADD CONSTRAINT session_token_unique UNIQUE (token);
+
+
+--
 -- Name: team_invite team_invite_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8309,6 +8035,14 @@ ALTER TABLE ONLY public.user_telegram_account
 
 ALTER TABLE ONLY public."user"
     ADD CONSTRAINT user_username_unique UNIQUE (username);
+
+
+--
+-- Name: verification verification_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.verification
+    ADD CONSTRAINT verification_pkey PRIMARY KEY (id);
 
 
 --
@@ -8834,6 +8568,111 @@ CREATE INDEX notification_user_unread_idx ON public.notification USING btree (us
 
 
 --
+-- Name: oauthAccessToken_authorizationCodeId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthAccessToken_authorizationCodeId_idx" ON public.oauth_access_token USING btree (authorization_code_id);
+
+
+--
+-- Name: oauthAccessToken_clientId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthAccessToken_clientId_idx" ON public.oauth_access_token USING btree (client_id);
+
+
+--
+-- Name: oauthAccessToken_refreshId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthAccessToken_refreshId_idx" ON public.oauth_access_token USING btree (refresh_id);
+
+
+--
+-- Name: oauthAccessToken_sessionId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthAccessToken_sessionId_idx" ON public.oauth_access_token USING btree (session_id);
+
+
+--
+-- Name: oauthAccessToken_userId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthAccessToken_userId_idx" ON public.oauth_access_token USING btree (user_id);
+
+
+--
+-- Name: oauthClientResource_clientId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthClientResource_clientId_idx" ON public.oauth_client_resource USING btree (client_id);
+
+
+--
+-- Name: oauthClientResource_clientId_resourceId_uidx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX "oauthClientResource_clientId_resourceId_uidx" ON public.oauth_client_resource USING btree (client_id, resource_id);
+
+
+--
+-- Name: oauthClientResource_resourceId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthClientResource_resourceId_idx" ON public.oauth_client_resource USING btree (resource_id);
+
+
+--
+-- Name: oauthClient_userId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthClient_userId_idx" ON public.oauth_client USING btree (user_id);
+
+
+--
+-- Name: oauthConsent_clientId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthConsent_clientId_idx" ON public.oauth_consent USING btree (client_id);
+
+
+--
+-- Name: oauthConsent_userId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthConsent_userId_idx" ON public.oauth_consent USING btree (user_id);
+
+
+--
+-- Name: oauthRefreshToken_authorizationCodeId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthRefreshToken_authorizationCodeId_idx" ON public.oauth_refresh_token USING btree (authorization_code_id);
+
+
+--
+-- Name: oauthRefreshToken_clientId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthRefreshToken_clientId_idx" ON public.oauth_refresh_token USING btree (client_id);
+
+
+--
+-- Name: oauthRefreshToken_sessionId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthRefreshToken_sessionId_idx" ON public.oauth_refresh_token USING btree (session_id);
+
+
+--
+-- Name: oauthRefreshToken_userId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "oauthRefreshToken_userId_idx" ON public.oauth_refresh_token USING btree (user_id);
+
+
+--
 -- Name: passkey_credentialID_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -8953,6 +8792,13 @@ CREATE INDEX scim_user_user_idx ON public.scim_user USING btree (user_id);
 
 
 --
+-- Name: session_userId_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX "session_userId_idx" ON public.session USING btree (user_id);
+
+
+--
 -- Name: team_invite_project_idx; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -9020,6 +8866,13 @@ CREATE UNIQUE INDEX user_telegram_account_chat_id_unique ON public.user_telegram
 --
 
 CREATE UNIQUE INDEX user_telegram_account_link_code_unique ON public.user_telegram_account USING btree (link_code) WHERE (link_code IS NOT NULL);
+
+
+--
+-- Name: verification_identifier_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX verification_identifier_idx ON public.verification USING btree (identifier);
 
 
 --
@@ -10189,6 +10042,102 @@ ALTER TABLE ONLY public.notification
 
 
 --
+-- Name: oauth_access_token oauth_access_token_client_id_oauth_client_client_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_client_id_oauth_client_client_id_fk FOREIGN KEY (client_id) REFERENCES public.oauth_client(client_id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_access_token oauth_access_token_refresh_id_oauth_refresh_token_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_refresh_id_oauth_refresh_token_id_fk FOREIGN KEY (refresh_id) REFERENCES public.oauth_refresh_token(id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_access_token oauth_access_token_session_id_session_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_session_id_session_id_fk FOREIGN KEY (session_id) REFERENCES public.session(id) ON DELETE SET NULL;
+
+
+--
+-- Name: oauth_access_token oauth_access_token_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_access_token
+    ADD CONSTRAINT oauth_access_token_user_id_user_id_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_client_resource oauth_client_resource_client_id_oauth_client_client_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client_resource
+    ADD CONSTRAINT oauth_client_resource_client_id_oauth_client_client_id_fk FOREIGN KEY (client_id) REFERENCES public.oauth_client(client_id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_client_resource oauth_client_resource_resource_id_oauth_resource_identifier_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client_resource
+    ADD CONSTRAINT oauth_client_resource_resource_id_oauth_resource_identifier_fk FOREIGN KEY (resource_id) REFERENCES public.oauth_resource(identifier) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_client oauth_client_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_client
+    ADD CONSTRAINT oauth_client_user_id_user_id_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_consent oauth_consent_client_id_oauth_client_client_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_consent
+    ADD CONSTRAINT oauth_consent_client_id_oauth_client_client_id_fk FOREIGN KEY (client_id) REFERENCES public.oauth_client(client_id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_consent oauth_consent_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_consent
+    ADD CONSTRAINT oauth_consent_user_id_user_id_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_refresh_token oauth_refresh_token_client_id_oauth_client_client_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_refresh_token
+    ADD CONSTRAINT oauth_refresh_token_client_id_oauth_client_client_id_fk FOREIGN KEY (client_id) REFERENCES public.oauth_client(client_id) ON DELETE CASCADE;
+
+
+--
+-- Name: oauth_refresh_token oauth_refresh_token_session_id_session_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_refresh_token
+    ADD CONSTRAINT oauth_refresh_token_session_id_session_id_fk FOREIGN KEY (session_id) REFERENCES public.session(id) ON DELETE SET NULL;
+
+
+--
+-- Name: oauth_refresh_token oauth_refresh_token_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.oauth_refresh_token
+    ADD CONSTRAINT oauth_refresh_token_user_id_user_id_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
+
+
+--
 -- Name: passkey passkey_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10501,6 +10450,14 @@ ALTER TABLE ONLY public.scim_user
 
 
 --
+-- Name: session session_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.session
+    ADD CONSTRAINT session_user_id_user_id_fk FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
+
+
+--
 -- Name: team_invite team_invite_accepted_by_user_id_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -10656,5 +10613,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict I3JaGLIHVBiUgGnGzJTAceWhwhdFM3IBjBFbI9ppiCtWfJ8DZs3mFiwefdYChXX
+\unrestrict qOSHFHPy1usTUQHLoGUhNrdbnmRhwvcp7MeNHrbmH0vgjxTINhVuzT0TGGfPvza
 
