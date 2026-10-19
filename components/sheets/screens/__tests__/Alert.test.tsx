@@ -23,6 +23,7 @@ import {
 import { showAlertSheet } from '@/stores/ui';
 
 import AlertSheet from '../Alert';
+import ReminderCard from '../ReminderCard';
 
 // A locked Toggle or Stepper refuses the press itself, so the sheet's own guards against a locked press never run
 // today. They stay for the day a control stops refusing, and these stand-ins hand the sheet that press: while a test
@@ -720,6 +721,30 @@ describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14
 
     expect(secondReminderSwitch()).not.toBeChecked();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press at the card itself while locked', async () => {
+    const onToggle = jest.fn();
+
+    await render(
+      <ReminderCard
+        title='Reminder 1'
+        hint='any hint'
+        reminder={{ alert: AlertType.Off, interval: 10 }}
+        sound={AlertType.Silent}
+        taken={null}
+        locked
+        onToggle={onToggle}
+        onSelectSound={() => {}}
+        onSelectInterval={() => {}}
+      />
+    );
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    // The sheet-level refusals read the draft, which the draft rule guards on its own; the spy
+    // is what makes the row's own guard the thing under test
+    expect(onToggle).not.toHaveBeenCalled();
   });
 
   it('toggles a reminder exactly once, with the switch haptic alone, when the switch itself is pressed', async () => {
