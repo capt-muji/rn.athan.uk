@@ -5,7 +5,7 @@
  * binding: the values were correct on every build that showed a black cover anyway. The drop
  * happens in expo-modules-core's record conversion, which silently skips every property without
  * `@Field` and, with nothing `@Required`, constructs the record from its constructor defaults -
- * the black background and white spinner the owner watched for half a second (2026-10-19). This
+ * the black background and white spinner the owner watched for half a second. This
  * suite reads both sides of the bridge and pins the contract: every property bound, every
  * property required, and the names the JS side sends equal the names the record declares.
  */
@@ -102,7 +102,7 @@ describe('the face record binds what the JS side sends', () => {
     expect(optional.map((property) => property.name)).toEqual([]);
   });
 
-  it('declares at least the eight face values the loader paints', () => {
-    expect(recordProperties().length).toBeGreaterThanOrEqual(8);
+  it('declares the eight face values the loader paints', () => {
+    expect(recordProperties().length).toBe(8);
   });
 });

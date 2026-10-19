@@ -20,7 +20,7 @@ const coverOptions = (): Binding.SwitchCoverOptions => ({
   spinnerColor: '#8d73ff',
   spinnerSizeDp: 20,
   lineText: 'جارٍ ضبط اللغة العربية',
-  lineColor: '#fff',
+  lineColor: '#ffffff',
   lineSizeDp: 18,
   lineMarginTopDp: 40,
   lineMaxWidthDp: 260,

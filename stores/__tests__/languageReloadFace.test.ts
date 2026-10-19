@@ -82,7 +82,7 @@ describe('a crossing switch on Android', () => {
       lineMaxWidthDp: 260,
     });
     // A shorthand that React Native parses still aborts the native show at Color.parseColor,
-    // and the cover refuses on every switch (the 3T read, 2026-10-19): every shipped colour
+    // and the cover refuses on every switch (the 3T read): every shipped colour
     // must be one of the two hex forms Android accepts
     const face = show.mock.calls[0][0];
     for (const colour of [face.backgroundColor, face.spinnerColor, face.lineColor]) {

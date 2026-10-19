@@ -123,7 +123,7 @@ const coverOptionsFor = (locale: LocaleId): SwitchCoverOptions => ({
   spinnerColor: COLORS.navigation.activityIndicator,
   spinnerSizeDp: SIZE.activityIndicator,
   lineText: languageChangingLine(locale),
-  // Android's ColorParseException rejects shorthand hex, so the cover's white travels expanded
+  // Android's Color.parseColor takes only #RRGGBB and #AARRGGBB, so the cover's white travels expanded
   lineColor: '#ffffff',
   lineSizeDp: TEXT.size,
   lineMarginTopDp: SIZE.activityIndicator / 2 + SPACING.xxxl,
