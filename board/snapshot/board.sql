@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 2dH88Od0YglHCWMThXBRTd56qoa1xFDcSpvnv3BSekLf7vf1RuuTmtmPfUIm5zB
+\restrict fWJ6avRB1k2gdk5C9zjbZmej7WW9UmbreUejL8jSMDDxZoLyc7QZS47CuOdWvDD
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -7893,6 +7893,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2187, 16, 'comment', 'owner', 'minor: components/modals/Help.tsx the fold reveal never reads the list''s scroll offset, so the rows-that-fit-never-move half of D142.12 holds only while the list sits at the top. The 3T''s 41px closed overflow keeps every positive reveal target above the closed scroll maximum, so no shipped geometry can trip it, but a list that overflows further (larger text, shorter viewport) can scroll a fitting bottom row into view, tap it, and still see the list jump up. Track the offset from onScroll and skip when the open bottom already sits inside the window.', NULL, '2026-10-19 17:52:01.198672+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2188, 16, 'comment', 'owner', 'Audit closed 2026-10-19: both reviews adjudicated. The shared finding (the fold guard read the viewport as the fold, so a scrolled list could jump backward for an answer already on glass) is fixed in 21a6a6b1 with red-first unit and wiring tests and a killed-mutation pass on both guards; the gate-scope nitpick stands as the plan specifies, the byte pins guarding the residue. Merged to uat as 6ca537b1 (2.1.5). Delivered: the widgets question with the owner''s two-line answer naming each platform''s extent (iOS first), the answer opening into view on every phone, glass-proven on the 3T.', NULL, '2026-10-19 18:01:14.980509+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2189, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 18:01:15.044794+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2190, 241, 'comment', 'owner', '2026-10-19 board run: Waiting on set to the deferral ruling it was missing - integrity item 6.', NULL, '2026-10-19 18:18:34.050201+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2191, 241, 'activity', 'owner', NULL, 'field', '2026-10-19 18:18:34.07691+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-16 by the owner''s consolidation order: all widget work parks, this row with it. The owner says go when the widget surface reopens."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 
 
 --
@@ -8105,6 +8107,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (398, 8, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (396, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (546, 240, 1, NULL, 240, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (547, 241, 3, '2026-10-16 by the owner''s consolidation order: all widget work parks, this row with it. The owner says go when the widget surface reopens.', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -14672,7 +14675,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:223', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:211', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:210', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:220', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:225', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 29);
@@ -14712,6 +14714,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 28)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:246', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:25', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 51);
@@ -14821,7 +14824,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 42);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3234);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3235);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
@@ -15087,7 +15090,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2189, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2191, true);
 
 
 --
@@ -15136,7 +15139,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 546, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 547, true);
 
 
 --
@@ -19647,5 +19650,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 2dH88Od0YglHCWMThXBRTd56qoa1xFDcSpvnv3BSekLf7vf1RuuTmtmPfUIm5zB
+\unrestrict fWJ6avRB1k2gdk5C9zjbZmej7WW9UmbreUejL8jSMDDxZoLyc7QZS47CuOdWvDD
 
