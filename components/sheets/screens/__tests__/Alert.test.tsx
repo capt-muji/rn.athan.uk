@@ -3,6 +3,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
 
@@ -561,6 +562,57 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     expect(reminderOptions()).toHaveStyle({ opacity: 0.125 });
     // Reminder 1 off locks the second card, which carries the card dim beside the block's own
     expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+});
+
+describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14:00", () => {
+  it('toggles a reminder from a press on its title, with no haptic of the row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press while the athan is Off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 1'));
+
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('refuses a header press while the reminder before it is off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(screen.getByText('Reminder 2'));
+
+    expect(secondReminderSwitch()).not.toBeChecked();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('toggles a reminder exactly once, with the switch haptic alone, when the switch itself is pressed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(reminderSwitch());
+
+    // A row press reaching through as well would toggle twice and land back off
+    expect(reminderSwitch()).toBeChecked();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 });
 
