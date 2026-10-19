@@ -98,12 +98,20 @@ own skill files.
 **Docs.** Five pages: The queue, The agents, Working the board, The board itself, and Running
 the agents from the board.
 
-**MCP.** `itsaplan` is a remote server in `opencode.json` at the API origin's `/mcp`, with
-`oauth` off and the key read from `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
+**MCP.** `itsaplan` is a remote server in `opencode.json`, written by `opencode mcp add` so the
+shape is the product's own: it sits under `mcp.servers` with the URL of the API origin's `/mcp`
+and an `x-api-key` header reading `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
 owner account and written to the shell environment and to
-`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository. An `initialize` with
-the key answers 200 and `tools/list` returns the board's tools. Without a key the endpoint
-answers 401.
+`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository.
+
+The endpoint was verified three ways. A keyless call answers 401. A call with the key answers
+200 and `tools/list` returns the board's tools. The OpenCode client sends the configured header
+and connects: with the key written literally for one test, the board's MCP instructions arrived
+in the running session. The substitution itself needs the variable in the environment of the
+process that opens the connection, and the background service of the session running this work
+started before the export existed. A shell started after the `~/.zshrc` line connects it.
+
+Without a key the endpoint answers 401.
 
 ### Decisions taken (agent-ruled, phase 2)
 
