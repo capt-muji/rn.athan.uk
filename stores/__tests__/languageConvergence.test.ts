@@ -12,8 +12,10 @@ import logger from '@/shared/logger';
 import * as SharedNotifications from '@/shared/notifications';
 import {
   commitLanguagePreference,
+  languageCommitBusyAtom,
   languagePreferenceAtom,
   lastArmedLanguageAtom,
+  pendingLanguageAtom,
   reconcileLanguageSurfaces,
 } from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
@@ -32,6 +34,9 @@ beforeEach(() => {
   jest.clearAllMocks();
   store.set(lastArmedLanguageAtom, '');
   store.set(languagePreferenceAtom, '');
+  // A fulfilled crossing holds busy and pending past the commit's end, so every case starts from a released face
+  store.set(languageCommitBusyAtom, false);
+  store.set(pendingLanguageAtom, null);
 });
 
 afterEach(() => {

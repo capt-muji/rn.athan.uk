@@ -11,7 +11,13 @@ import { I18nManager } from 'react-native';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
-import { commitLanguagePreference, languagePreferenceAtom, lastArmedLanguageAtom } from '@/stores/language';
+import {
+  commitLanguagePreference,
+  languageCommitBusyAtom,
+  languagePreferenceAtom,
+  lastArmedLanguageAtom,
+  pendingLanguageAtom,
+} from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
 
 jest.mock('@/shared/logger', () => ({
@@ -37,7 +43,8 @@ const allowRTL = jest.mocked(I18nManager.allowRTL);
 const forceRTL = jest.mocked(I18nManager.forceRTL);
 
 // The gate must be a fresh promise per test: one release would free the queue
-// for the rest of the file
+// for the rest of the file. A fulfilled crossing holds busy and pending past the
+// commit's end, so every case also releases the face the last one held
 beforeEach(() => {
   mockQueueGate = new Promise<void>((resolve) => {
     mockReleaseQueue = resolve;
@@ -47,6 +54,8 @@ beforeEach(() => {
   jest.clearAllMocks();
   store.set(lastArmedLanguageAtom, '');
   store.set(languagePreferenceAtom, '');
+  store.set(languageCommitBusyAtom, false);
+  store.set(pendingLanguageAtom, null);
 });
 
 afterEach(() => {

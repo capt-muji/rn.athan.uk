@@ -128,6 +128,10 @@ const raceAgainstCap = (pass: Promise<void>, warn: string): Promise<void> => {
 };
 
 export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
+  // Android's reload fulfils before the restart lands (the success callback runs
+  // ahead of the posted teardown), so a fulfilled reload may not stand the loader
+  // down: the finally asks this latch, and only a reload that never arrived does.
+  let reloadAccepted = false;
   // A second pick while one converges would race it and the first finally would
   // strand the loader mid-pass; the first commit wins. A loader another pick
   // already owns refuses this one; this pick's own reveal lets it through.
@@ -169,7 +173,7 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
     }
     if (relaunches) {
       // Fabric treats direction as launch-time (D59): converge first, then
-      // force the new direction and relaunch. The busy face ends here.
+      // force the new direction and relaunch.
       if (crossesBoundary) {
         I18nManager.allowRTL(true);
         I18nManager.forceRTL(localeDirection(locale) === 'rtl');
@@ -180,6 +184,7 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
         // what buys the full pass whose sweep finds what landed
         if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
         await Updates.reloadAsync();
+        reloadAccepted = true;
       } catch (error) {
         store.set(relaunchHandoffAtom, '');
         // A refused relaunch leaves the forced direction for the next launch
@@ -188,8 +193,12 @@ export const commitLanguagePreference = async (locale: LocaleId): Promise<void> 
       }
     }
   } finally {
+    // The in-flight latch always frees: a context that survives its own reload
+    // must never refuse the next pick. The face outlives a fulfilled reload.
     commitInFlight = false;
-    store.set(languageCommitBusyAtom, false);
-    store.set(pendingLanguageAtom, null);
+    if (!reloadAccepted) {
+      store.set(languageCommitBusyAtom, false);
+      store.set(pendingLanguageAtom, null);
+    }
   }
 };
