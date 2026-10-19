@@ -107,6 +107,31 @@ produced it. Everything else in `check:device` is build-agnostic.
 - Before measuring anything, read `e2e/README.md`: its Gotchas section documents Metro's
   env-blindness and the dev-env confound, and each one cost real time.
 
+## Invariants
+
+Stated as rules because the code shows what is, not what must be, and none of them is
+obvious until broken.
+
+- Stack: Jotai for state, MMKV for storage, Reanimated for animation, Expo Router for
+  navigation. `@expo/ui` never leaves widget layouts. No nested function calls as
+  parameters. `useExhaustiveDependencies` is never disabled globally, only per line with a
+  reason.
+- Prayer times: datetimes are true UTC instants and calendar days follow `PRAYER_TIMEZONE`
+  (`Europe/London`). A prayer's moment is its list row's `datetime`. Extras night times are
+  computed from Maghrib and Fajr, never stored. The countdown rounds up, so 0 seconds never
+  displays, and the countdown path carries no `Platform` check. The Extras display order is
+  canonical.
+- Notifications: candidates arm whole, in time order, against the 64-request budget, never a
+  day count. A reminder never outruns the athan it warns about. Channel sound, audio
+  attributes and importance are frozen at creation, so a new generation means new channel
+  ids and one-time legacy deletion. Standing rulings: no microphone permission for ambient
+  silence, no in-app alarm observability module (`yarn check:device` is the observability),
+  no notification library swap.
+- Widgets: the widget runtime is not React. Widget modules are statically imported, props
+  are JSON-only with a schema version and a `props == null` guard, and the timeline entry
+  count is the iOS budget. `expo-widgets` and `@expo/ui` are pinned exact. Run the widget
+  runtime load suite after any install.
+
 ## Commands
 
 - `yarn validate` before calling anything done. `yarn format` for fixes. `yarn test:tz` for
