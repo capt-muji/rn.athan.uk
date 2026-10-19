@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   cardDisabled: {
-    opacity: 0.25,
+    opacity: 0.125,
   },
   cardTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     gap: SPACING.sm,
   },
   optionsDisabled: {
-    opacity: 0.25,
+    opacity: 0.125,
   },
   optionRow: {
     flexDirection: 'row',

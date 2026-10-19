@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   disabled: {
-    opacity: 0.4,
+    opacity: 0.2,
   },
   button: {
     paddingVertical: SPACING.smd,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md - 2,
   },
   buttonDisabled: {
-    opacity: 0.3,
+    opacity: 0.15,
   },
   buttonText: {
     fontSize: ty.size(TEXT.sizeDetail),

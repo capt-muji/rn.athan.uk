@@ -109,6 +109,12 @@ describe('the reminder switch while the Athan is off', () => {
     expect(onToggle).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
+
+  it('dims to half its uat value', async () => {
+    await render(<Toggle value={false} onToggle={jest.fn()} disabled />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({ opacity: 0.2 });
+  });
 });
 
 // The thumb keys its direction on the active locale, not the bridge snapshot: a starved

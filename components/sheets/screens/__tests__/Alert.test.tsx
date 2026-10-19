@@ -86,6 +86,12 @@ const secondReminderOption = (label: string) => screen.getAllByRole('radio', { n
 const reminderSwitch = () => screen.getAllByRole('switch')[0];
 const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
 
+// A reminder's own card: its title text up through the view that draws and dims the whole card
+const reminderCard = (n: 1 | 2) => screen.getByText(`Reminder ${n}`).parent!.parent!.parent!;
+
+// A reminder's sound and minutes block: its sound radio up through the view that dims the block
+const reminderOptions = () => reminderOption('Silent').parent!.parent!.parent!;
+
 /** Closes the sheet as the bottom sheet library reports it, once the close has finished */
 const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
 
@@ -533,6 +539,28 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
     expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Off);
     expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Off);
+  });
+});
+
+describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
+  it('dims a locked reminder card to half its uat value while the athan is Off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderCard(1)).toHaveStyle({ opacity: 0.125 });
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+  });
+
+  it("dims an off reminder's sound and minutes to half their uat value", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    expect(reminderOptions()).toHaveStyle({ opacity: 0.125 });
+    // Reminder 1 off locks the second card, which carries the card dim beside the block's own
+    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
   });
 });
 

@@ -135,6 +135,14 @@ describe('the reminder sound control while the reminder is off', () => {
     expect(onSelect).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
+
+  it('dims to half its uat value', async () => {
+    await render(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} disabled />
+    );
+
+    expect(control()).toHaveStyle({ opacity: 0.2 });
+  });
 });
 
 // The pill keys its direction on the active locale, not the bridge snapshot: a starved

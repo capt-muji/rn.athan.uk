@@ -270,9 +270,6 @@ const styles = StyleSheet.create({
     padding: SPACING.lg,
     marginBottom: SPACING.md,
   },
-  cardDisabled: {
-    opacity: 0.25,
-  },
   cardTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
@@ -295,9 +292,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: 'rgba(99, 102, 241, 0.07)',
     gap: SPACING.sm,
-  },
-  optionsDisabled: {
-    opacity: 0.25,
   },
   optionRow: {
     flexDirection: 'row',
