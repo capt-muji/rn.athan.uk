@@ -22,7 +22,7 @@ jest.mock('@/device/notifications', () => ({
   openDndAccessSettings: jest.fn(() => Promise.resolve(true)),
 }));
 // The reveal's scroll is observed at its own seam, which the renderer has no native host for
-jest.mock('../helpReveal', () => ({ scrollReveal: jest.fn() }));
+jest.mock('../helpReveal', () => ({ ...jest.requireActual('../helpReveal'), scrollReveal: jest.fn() }));
 // Jest resolves React Native for iOS, whose BackHandler never fires. The back handling exists for Android, so the
 // hardware back press runs through React Native's own Android implementation
 jest.mock('react-native/Libraries/Utilities/BackHandler.ios', () =>
@@ -295,6 +295,19 @@ describe("the Help modal's fold reveal", () => {
 
     await fireEvent.press(first);
     await reportLayout(first, 0, 300);
+
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+  });
+
+  it('holds the list still for an answer that fits wherever the list is scrolled', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const list = scroller();
+    await reportLayout(list, 0, 1190);
+    await fireEvent(list, 'scroll', { nativeEvent: { contentOffset: { y: 300 } } });
+    const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
+
+    await fireEvent.press(widgets);
+    await reportLayout(widgets, 1104, 200);
 
     expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
   });

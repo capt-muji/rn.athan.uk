@@ -9,3 +9,19 @@ export const scrollReveal = (
 ): void => {
   list?.scrollTo({ y, animated: true });
 };
+
+/**
+ * The least scroll offset that shows a grown row's bottom, or null when it already fits the
+ * window it sits in: the window is the live offset plus the viewport, so a list that sits
+ * scrolled stills for any answer already on glass.
+ */
+export const revealTarget = (
+  row: { y: number; height: number },
+  viewportHeight: number,
+  scrollY: number
+): number | null => {
+  const bottom = row.y + row.height;
+  if (viewportHeight <= 0) return null;
+  if (bottom <= scrollY + viewportHeight) return null;
+  return bottom - viewportHeight;
+};

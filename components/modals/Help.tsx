@@ -18,7 +18,7 @@ import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId, directionGlyph } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
 
-import { scrollReveal } from './helpReveal';
+import { revealTarget, scrollReveal } from './helpReveal';
 import Modal from './Modal';
 
 /** Share of the screen the scrolling list may take, so the card and its Close button fit every size */
@@ -125,16 +125,6 @@ const Topic = ({
   );
 };
 
-/**
- * The offset that brings a grown row's bottom back inside the viewport, or null when the row
- * already fits: the list only moves when the opened answer would open below the fold.
- */
-const revealOffset = (row: { y: number; height: number }, viewportHeight: number): number | null => {
-  if (viewportHeight <= 0) return null;
-  const hidden = row.y + row.height - viewportHeight;
-  return hidden > 0 ? hidden : null;
-};
-
 type Props = {
   visible: boolean;
   onClose: () => void;
@@ -146,16 +136,17 @@ export default function ModalHelp({ visible, onClose }: Props) {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
   const listRef = useRef<ComponentRef<typeof ScrollView>>(null);
   const listHeightRef = useRef(0);
+  const listOffsetRef = useRef(0);
 
   /**
-   * A row that grows past the ScrollView's fold opens invisibly (the 3T's list overflows the
-   * viewport even closed), so the list scrolls the minimum distance that brings the open
-   * answer's bottom inside it. Rows that fit never move the list.
+   * A row that grows past the ScrollView's window opens invisibly (the 3T's list overflows the
+   * viewport even closed), so the list scrolls the least distance that brings the open answer's
+   * bottom inside the window it sits in. Answers that already fit never move the list.
    */
   const handleRowLayout = (question: string, layout: { y: number; height: number }) => {
     if (openQuestion !== question) return;
-    const offset = revealOffset(layout, listHeightRef.current);
-    if (offset !== null) scrollReveal(listRef.current, offset);
+    const target = revealTarget(layout, listHeightRef.current, listOffsetRef.current);
+    if (target !== null) scrollReveal(listRef.current, target);
   };
 
   return (
@@ -178,6 +169,10 @@ export default function ModalHelp({ visible, onClose }: Props) {
         onLayout={(event) => {
           listHeightRef.current = event.nativeEvent.layout.height;
         }}
+        onScroll={(event) => {
+          listOffsetRef.current = event.nativeEvent.contentOffset.y;
+        }}
+        scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
         {topics.map((topic) => (
           <Topic
