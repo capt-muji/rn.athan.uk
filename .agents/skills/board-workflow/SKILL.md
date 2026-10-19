@@ -88,6 +88,15 @@ Acceptance:
 If a criterion cannot be seen by a test, a command's output or a log line, it is not a
 criterion. Rewrite it until it can.
 
+### The title
+
+The title is the work, never its state. No column word appears in it: Backlog, Planning, Ready,
+In progress, Blocked, Audit, Owner-led, Deferred, Upstream, Done. A ticket moves between columns
+and the title does not follow it, so a title that names its column goes stale at the next move.
+
+An upstream ticket's description carries its PR URL as a clickable link on the first line, so a
+tap opens the pull request itself.
+
 ### The labels
 
 A card shows labels and nothing else, so the labels carry everything, in a fixed order:
@@ -138,6 +147,7 @@ sight and notes the fix in one comment line. A defect is never reported and left
 7. Every plan step has its subtask, and every subtask is ticked before Done.
 8. A plan doc exists and is linked before Ready, and a closing comment exists at Done.
 9. Nothing parked reads active, and nothing active reads parked.
+10. The title carries no column word, and an upstream ticket's description carries its PR link.
 
 The lead re-runs this list on every ticket the run touches at every phase boundary, and across
 the open board once at the start and once at the close of a run. That loop is the workflow:
