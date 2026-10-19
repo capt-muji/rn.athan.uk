@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict rosHtmHiQZtxUj3C865nDTYAFgRhNJ7dEpmNc4IKdfymydvmmibtNmXq0mPvJh7
+\restrict pD3mRSORkcAX41ugQLmHJTuCNKdMT06W91I8SjqJ76DoK66HI61z2DRn97cymZp
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5722,10 +5722,10 @@ PRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo 
 
 Acceptance:
 - [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded
-- [ ] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each
-- [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)
+- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each
+- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)
 - [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling
-- [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 22:27:40.212219+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+- [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 22:53:31.30812+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (256, 1, 256, NULL, 4, 'Step 2: the twice-argued ruling on detection and recovery, tabled to the owner', '', NULL, NULL, NULL, 14000, '2026-10-19 20:36:24.051077+00', '2026-10-19 20:46:29.674569+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (255, 1, 255, NULL, 4, 'Step 1: the code trace names the two streams and every state that holds the wave', '', NULL, NULL, NULL, 13000, '2026-10-19 20:36:24.011513+00', '2026-10-19 20:46:29.677469+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (257, 1, 257, NULL, 4, 'Step 3: the close - version bump, board snapshot, merge to uat', '', NULL, NULL, NULL, 15000, '2026-10-19 20:36:24.090606+00', '2026-10-19 20:50:14.373879+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
@@ -5760,7 +5760,6 @@ Acceptance:
 - [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions
 - [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate
 - [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 22:08:20.226949+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 3, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:29:09.98373+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 1, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:14:39.65314+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 1, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open-pose landscape renders the app''s background edge to edge and the countdown block at its designed offset, with no black bars and no tall gap above it.
@@ -5779,6 +5778,7 @@ Acceptance:
 - [ ] the countdown block sits at its designed top offset in landscape, the gap gone
 - [ ] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap
 - [ ] portrait poses and every other form factor unchanged', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-19 22:50:22.483239+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
 
 
 --
@@ -8182,6 +8182,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2342, 261, 'activity', 'owner', NULL, 'status', '2026-10-19 22:27:40.151484+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2343, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:27:40.215762+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [ ] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [ ] every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2344, 33, 'comment', 'owner', 'The Requirements section is written into the plan doc (version 3): every Apple Duo requirement and guidance point with its source, the SDK ladder, the statements sanctioning the portrait-locked centred window, and the three pattern reads at zero hits. The one hard requirement beyond running: from April 2027, any app or game submitted needs iPhone Duo screenshots in App Store Connect.', NULL, '2026-10-19 22:27:45.285503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2355, 262, 'activity', 'owner', NULL, 'status', '2026-10-19 22:53:31.34459+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2345, 262, 'activity', 'owner', NULL, 'status', '2026-10-19 22:29:09.990592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2347, 264, 'activity', 'owner', NULL, 'label_add', '2026-10-19 22:48:47.929375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 175, "value": "#264"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2348, 264, 'activity', 'owner', NULL, 'label_add', '2026-10-19 22:48:47.929375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
@@ -8198,6 +8199,7 @@ Open pose: inner display 951x669. The app rides a portrait window 469x669, full 
 Fold liveness: with the focused-prayer overlay on (Magrib), open to closed to open kept one process alive throughout (pid unchanged); the overlay and its close-catchers survived both folds and re-laid per panel. No relaunch.
 
 iOS 27.1 note: the fold command''s hinge-angle verification read returns no sample on this simulator, so each pose was confirmed by the lit panel''s viewport and the screenshot''s dimensions instead. Numbers match the prior close: 466x678 closed, 469x669 centred in 951x669 open. Open-pose screenshot attached (duo-open-pose.png), never committed.', NULL, '2026-10-19 22:52:11.053392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2354, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:53:31.314758+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [ ] every other form factor unchanged"}}', NULL);
 
 
 --
@@ -9124,8 +9126,9 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (464, 261, 1, 'Backlog', 'backlog', '2026-10-19 22:14:39.565+00', '2026-10-19 22:27:40.14642+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (469, 261, 4, 'Done', 'completed', '2026-10-19 22:27:40.14642+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (465, 262, 1, 'Backlog', 'backlog', '2026-10-19 22:14:39.616+00', '2026-10-19 22:29:09.987837+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (470, 262, 3, 'In progress', 'started', '2026-10-19 22:29:09.987837+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (471, 264, 1, 'Backlog', 'backlog', '2026-10-19 22:48:42.762+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (470, 262, 3, 'In progress', 'started', '2026-10-19 22:29:09.987837+00', '2026-10-19 22:53:31.341609+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (472, 262, 4, 'Done', 'completed', '2026-10-19 22:53:31.341609+00', NULL);
 
 
 --
@@ -11668,7 +11671,11 @@ Recorded 2026-10-19 on the iPhone Duo simulator, iOS 27.1 (SIMULATOR_UDID). Loca
 - Open pose: inner display 951x669; the app rides a portrait window 469x669, full height, x 241..709: 241pt empty each side, centred (measured from the capture''s content extent). The system status bar sits on the panel''s right edge (x ~850-923), outside the window. One schedule in the window, rows 445pt at x=12 (12pt in-window margins), countdown and day header present. Both schedules reachable; settings sheet full window width ([0,139.35 469x529.65]); Help row opens the same modal (topics 441pt, 14pt margins).
 - Fold liveness: with the focused-prayer overlay on (Magrib), open to closed to open kept the process alive (pid unchanged); the overlay and its close-catchers survived both folds and re-laid per panel. No relaunch.
 - iOS 27.1 instrument note: the fold command''s hinge-angle verification read returns no sample on this simulator (three attempts), so each pose was confirmed by the lit panel''s viewport and the capture''s dimensions instead. The numbers match the prior close: 466x678 closed, 469x669 centred in 951x669 open. The centred window is the owner''s sanctioned rendering: no split, no clip.
-- Screenshot: duo-open-pose.png attached to row 116 (attachment f48c5d44-b5be-4106-a343-faa1a1c104e9), open pose, the centred-schedule claim; written to scratch outside the worktree and never committed.', NULL, NULL, '{}', false, false, false, NULL, NULL, 19456, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.645252+00', '2026-10-19 22:52:19.788727+00');
+- Screenshot: duo-open-pose.png attached to row 116 (attachment f48c5d44-b5be-4106-a343-faa1a1c104e9), open pose, the centred-schedule claim; written to scratch outside the worktree and never committed.
+
+## Records close (Step 3)
+
+Recorded 2026-10-19 at 2.1.21 (HEAD 0dd682b7), before this step''s commit. `git diff --name-only uat..HEAD`, with uat fetched and confirmed at 2.1.19 (2d6e7631, equal to origin/uat), names exactly three files: package.json, app.json and board/snapshot/board.sql. No layout file appears. The android/ and ios/ trees are gitignored and untracked, so they cannot appear in any diff; the android/app/build.gradle version bump lives on disk only, outside git. The three named files are the version bump and the board''s records: zero code files changed, so nothing any other form factor renders can have moved, and every other form factor is unchanged by construction. Zero Duo-specific layout code ships, and the acceptance line''s escape hatch is unused: no requirement in the Requirements section above forces Duo code. The one hard requirement beyond running is the App Store Duo screenshot from April 2027, a submission obligation, not a layout obligation.', NULL, NULL, '{}', false, false, false, NULL, NULL, 19456, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.645252+00', '2026-10-19 22:54:54.922375+00');
 
 
 --
@@ -16043,7 +16050,7 @@ The local build uses Xcode 27.1 (SDK 58). The portrait lock means the inner disp
 (c) `grep -rniE "userInterfaceIdiom|interfaceOrientation|statusBarOrientation|isPad|isTablet"` over the same dirs: zero layout branches. The only hits are the declaration strings in plugins/portraitOnlyIpad.js (UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown) writing UISupportedInterfaceOrientations~ipad: the supported-orientations lock the Tech Talk says the Duo respects, not a branch reading current orientation or device class.
 
 Zero hits across all three families means the skill''s scan has nothing to find, and zero Duo-specific code follows.', NULL, NULL, '{}', false, false, false, NULL, 19456, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:25:17.880657+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (54, 20, 4, NULL, 'T-116', '# T-116
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (54, 20, 5, NULL, 'T-116', '# T-116
 
 ## Goal
 
@@ -16156,7 +16163,11 @@ Recorded 2026-10-19 on the iPhone Duo simulator, iOS 27.1 (SIMULATOR_UDID). Loca
 - Open pose: inner display 951x669; the app rides a portrait window 469x669, full height, x 241..709: 241pt empty each side, centred (measured from the capture''s content extent). The system status bar sits on the panel''s right edge (x ~850-923), outside the window. One schedule in the window, rows 445pt at x=12 (12pt in-window margins), countdown and day header present. Both schedules reachable; settings sheet full window width ([0,139.35 469x529.65]); Help row opens the same modal (topics 441pt, 14pt margins).
 - Fold liveness: with the focused-prayer overlay on (Magrib), open to closed to open kept the process alive (pid unchanged); the overlay and its close-catchers survived both folds and re-laid per panel. No relaunch.
 - iOS 27.1 instrument note: the fold command''s hinge-angle verification read returns no sample on this simulator (three attempts), so each pose was confirmed by the lit panel''s viewport and the capture''s dimensions instead. The numbers match the prior close: 466x678 closed, 469x669 centred in 951x669 open. The centred window is the owner''s sanctioned rendering: no split, no clip.
-- Screenshot: duo-open-pose.png attached to row 116 (attachment f48c5d44-b5be-4106-a343-faa1a1c104e9), open pose, the centred-schedule claim; written to scratch outside the worktree and never committed.', NULL, NULL, '{}', false, false, false, NULL, 19456, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:52:19.788727+00');
+- Screenshot: duo-open-pose.png attached to row 116 (attachment f48c5d44-b5be-4106-a343-faa1a1c104e9), open pose, the centred-schedule claim; written to scratch outside the worktree and never committed.
+
+## Records close (Step 3)
+
+Recorded 2026-10-19 at 2.1.21 (HEAD 0dd682b7), before this step''s commit. `git diff --name-only uat..HEAD`, with uat fetched and confirmed at 2.1.19 (2d6e7631, equal to origin/uat), names exactly three files: package.json, app.json and board/snapshot/board.sql. No layout file appears. The android/ and ios/ trees are gitignored and untracked, so they cannot appear in any diff; the android/app/build.gradle version bump lives on disk only, outside git. The three named files are the version bump and the board''s records: zero code files changed, so nothing any other form factor renders can have moved, and every other form factor is unchanged by construction. Zero Duo-specific layout code ships, and the acceptance line''s escape hatch is unused: no requirement in the Requirements section above forces Duo code. The one hard requirement beyond running is the App Store Duo screenshot from April 2027, a submission obligation, not a layout obligation.', NULL, NULL, '{}', false, false, false, NULL, 19456, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:54:54.922375+00');
 
 
 --
@@ -16231,6 +16242,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 76);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
@@ -16348,7 +16360,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 3);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
@@ -16361,15 +16372,15 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3364);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 14);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 72);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 74);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3366);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:260', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
@@ -16638,7 +16649,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2353, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2355, true);
 
 
 --
@@ -16715,7 +16726,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 471, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 472, true);
 
 
 --
@@ -21198,5 +21209,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict rosHtmHiQZtxUj3C865nDTYAFgRhNJ7dEpmNc4IKdfymydvmmibtNmXq0mPvJh7
+\unrestrict pD3mRSORkcAX41ugQLmHJTuCNKdMT06W91I8SjqJ76DoK66HI61z2DRn97cymZp
 
