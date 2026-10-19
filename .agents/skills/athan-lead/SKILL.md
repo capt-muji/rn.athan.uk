@@ -128,7 +128,7 @@ You are the judge. The reviewers are your eyes.
 Stop the run when one of these holds:
 
 - every lane is Done and `uat` has no unpushed commits
-- a ticket is Blocked or Owner-led
+- a ticket is Blocked or Awaiting Owner
 - a phase needs the owner's hands
 - nothing can run
 

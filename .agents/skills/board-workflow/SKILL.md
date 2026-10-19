@@ -33,13 +33,13 @@ only the position decides the order inside a group.
 | In progress | started | A lane is executing it |
 | Blocked | started | It cannot move until something outside changes |
 | Audit | started | Execution done, under review |
-| Owner-led | started | The deliverable is something the owner must rule on |
+| Awaiting Owner | started | Parked until the owner rules; the Waiting on field carries the question |
 | Deferred | started | Parked behind a later version |
 | Upstream | started | Waiting on a party outside the repository |
 | Done | completed | Merged to `uat`, with its records |
 
-Deferred and Upstream carry the `started` kind only so they sort after Owner-led. They are parked
-states, they count as started in the project's analytics, and they are never picked.
+Deferred and Upstream carry the `started` kind only so they sort after Awaiting Owner. They
+are parked states, they count as started in the project's analytics, and they are never picked.
 
 ## Picking the next ticket
 
@@ -67,7 +67,7 @@ parent.
 | Ticket number | At creation | Intake |
 | Labels | At planning | The planner |
 | Lane | Before dispatch | The lead |
-| Waiting on | On entering Blocked, Upstream or Owner-led | Whoever moves it there |
+| Waiting on | On entering Blocked, Upstream or Awaiting Owner | Whoever moves it there |
 | Subtasks | At planning, one per step | The planner |
 | Comments | As the work happens | Whoever has something to report |
 
@@ -91,8 +91,9 @@ criterion. Rewrite it until it can.
 ### The title
 
 The title is the work, never its state. No column word appears in it: Backlog, Planning, Ready,
-In progress, Blocked, Audit, Owner-led, Deferred, Upstream, Done. A ticket moves between columns
-and the title does not follow it, so a title that names its column goes stale at the next move.
+In progress, Blocked, Audit, Awaiting Owner, Deferred, Upstream, Done. A ticket moves between
+columns and the title does not follow it, so a title that names its column goes stale at the next
+move.
 
 An upstream ticket's description carries its PR URL as a clickable link on the first line, so a
 tap opens the pull request itself.
@@ -146,7 +147,7 @@ sight and notes the fix in one comment line. A defect is never reported and left
    a number is white in the number group, kinds, surfaces and areas carry their own
    group's colors.
 5. `Lane` is set the moment a lane takes the ticket.
-6. `Waiting on` is set in the same breath as entering Blocked, Upstream or Owner-led.
+6. `Waiting on` is set in the same breath as entering Blocked, Upstream or Awaiting Owner.
 7. Every plan step has its subtask, and every subtask is ticked before Done.
 8. A plan doc exists and is linked before Ready, and a closing comment exists at Done.
 9. Nothing parked reads active, and nothing active reads parked.
@@ -170,8 +171,8 @@ and reuse the ids. A column is chosen by its name here, because the kinds are no
 and Ready share one, and every parked state carries `started`.
 
 - Entering `In progress` is the claim. Do it first, before any other work.
-- Entering `Blocked`, `Upstream` or `Owner-led`: set `Waiting on` in the same breath, naming what
-  it is waiting for. It takes one line.
+- Entering `Blocked`, `Upstream` or `Awaiting Owner`: set `Waiting on` in the same breath,
+  naming what it is waiting for. It takes one line.
 - Entering `Done`: the change is merged, the audit passed, and the closing comment is written.
 
 Never move a ticket that is not yours to move. One ticket per agent per turn.
