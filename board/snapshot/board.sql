@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MCn2ul0J1VtK4oBifHgQg5NbKz5aONH2dFm5yhZBXVkg6BvhELYTWvllLR2h54r
+\restrict 5s6ohfvAezcAFy0RhPHnONfpxEmZDSHnTUCikGS9tKRKAa7SiegmrNTCFaCT6HS
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5080,7 +5080,7 @@ INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, 
 -- Data for Name: apikey; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 3, NULL, '2026-10-19 00:04:49.063', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 00:04:49.068', NULL, 'null');
+INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 50, NULL, '2026-10-19 01:55:05.738', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 01:55:05.739', NULL, 'null');
 
 
 --
@@ -6787,6 +6787,7 @@ INSERT INTO public.issue_watcher (issue_id, user_id, subscribed, created_at) VAL
 -- Data for Name: jwks; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.jwks (id, public_key, private_key, created_at, expires_at, alg, crv) VALUES ('DRzYOV0dkBE4tdrFSCLKrw4s6uhJPTe3', '{"crv":"Ed25519","kty":"OKP","x":"Kr_CWEXwObjNGiHCWcdg79kVsL5kqo1oBwTnEF9978w"}', '"bf9eb7f6c461b68c56df10c1840c646c7aed9eecd51a437b245f13a62fc984fe22565f884d23f2c6c32848ae6472d53c307b51b41ace968897c0d84cc6d6a5a4d7f05f41912396d3fd88e23080ef3e4daeb10b2588b44e01fe40e9f36eab1875437205016dc92869a8de6132799bee0b37d599f942fd516dae3c69bf2472ed76cd94a0ff172e9ae4f712b6dba970f4d5b7d5c4610feff9f2e81811d75bc266c867c76271a30d4130e0"', '2026-10-19 01:51:47.222', NULL, 'EdDSA', 'Ed25519');
 
 
 --
@@ -7120,7 +7121,7 @@ INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refre
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'QUEUE', 'Athan.uk queue', '', 129, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'QUEUE', 'Athan.uk queue', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
 
 
 --
@@ -8870,9 +8871,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 12)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 952);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 20);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 16);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 1382);
 
 
 --
@@ -8913,6 +8914,7 @@ INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_ad
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('akB2Dwxh1Xra2F4Lri5veKLf1fP9cdTE', '2026-10-25 23:50:50.505', 'Fl9GVybdgSgupNldFAlGrYQfYRhValTd', '2026-10-18 23:50:50.505', '2026-10-18 23:50:50.505', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('UF3iILadveWAvxn5QrEjHh66SEhhEmtn', '2026-10-25 23:51:45.865', 'xJWmHgmxLvPQhKZAMYhppdDLBNxlcXzj', '2026-10-18 23:51:45.865', '2026-10-18 23:51:45.865', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('0dLI8dLl5vKYTgFCQHENbOGEeebENwsZ', '2026-10-25 23:59:59.077', 'paI3c7K3NisQjH9OtHA7sUam61JA8Yj6', '2026-10-18 23:59:59.077', '2026-10-18 23:59:59.077', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('t6HTWszqioNuXKTdz5Gu7GasjNanstgj', '2026-10-26 01:55:59.559', 'sRBsBFqMl7gm9dx0OYuxhSq9VVYXfPuy', '2026-10-19 01:55:59.559', '2026-10-19 01:55:59.559', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 
 
 --
@@ -9150,7 +9152,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 636, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 964, true);
 
 
 --
@@ -9206,7 +9208,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 384, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 128, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 208, true);
 
 
 --
@@ -9220,14 +9222,14 @@ SELECT pg_catalog.setval('public.issue_import_id_seq', 1, false);
 -- Name: issue_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_link_id_seq', 116, true);
+SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 
 
 --
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 143, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 293, true);
 
 
 --
@@ -13710,5 +13712,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MCn2ul0J1VtK4oBifHgQg5NbKz5aONH2dFm5yhZBXVkg6BvhELYTWvllLR2h54r
+\unrestrict 5s6ohfvAezcAFy0RhPHnONfpxEmZDSHnTUCikGS9tKRKAa7SiegmrNTCFaCT6HS
 
