@@ -58,8 +58,9 @@ board/restore.sh           # load snapshot/board.sql into a running board
 ```
 
 The dump writes one row per line, so a ticket changing column shows as a one-line diff. The
-session and account tables are left out: they hold nothing worth committing and nothing that
-should be restored onto a different instance.
+credential and session tables (session, account, apikey, jwks, oauth_resource) are left out:
+they hold nothing worth committing, and a restored board issues fresh ones through its own
+setup instead of restoring secrets from git.
 
 A snapshot is taken at the end of a run, in the same commit as the run's work. It is only as
 fresh as the last one, which is why the run close-out refreshes it.

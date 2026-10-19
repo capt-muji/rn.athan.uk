@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict xUBJ8DfA6EePnG8avQlZ6S7SJDZjhwz1WVNJzT4ABg8jFABYD3gdFef0odThk4K
+\restrict 2dH88Od0YglHCWMThXBRTd56qoa1xFDcSpvnv3BSekLf7vf1RuuTmtmPfUIm5zB
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -4992,13 +4992,6 @@ INSERT INTO drizzle.__drizzle_migrations (id, hash, created_at) VALUES (150, 'd8
 
 
 --
--- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, refresh_token, id_token, access_token_expires_at, refresh_token_expires_at, scope, password, created_at, updated_at) VALUES ('RzArAmY0E0giwwS7o4aQT3nvZoO2fK0h', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'credential', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, NULL, NULL, NULL, NULL, '86309c24f855e61ddade86773f9ccf9d:80082e8565c157697ee9f95b92a54f84d2df49a19393663878676d63eb8f22b7906059e966acdf8eb736f6e2169147c2bc52902b8fdfcf37ff0fbdcfbf3fd63e', '2026-10-18 23:35:13.436', '2026-10-18 23:48:57.398');
-
-
---
 -- Data for Name: agent_chat_event; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -5074,13 +5067,6 @@ INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, 
 -- Data for Name: ai_agent; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-
-
---
--- Data for Name: apikey; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 4, NULL, '2026-10-19 13:22:36.816', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 13:22:36.82', NULL, 'null');
 
 
 --
@@ -5234,7 +5220,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-16, landed direct at 2.0.837 by the owner''s order (all gates green, 5692 tests, 100 percent): the atom''s default pin false, the defaults suite re-pinned, and the prayer-page suite seeding the ago line through the shared harness helper beside the bar''s (the off-behaviour test unchanged, setting the atom itself)', NULL, NULL, NULL, 16000, '2026-10-18 23:35:56.108525+00', '2026-10-19 02:54:07.960939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (215, 1, 215, NULL, 4, 'Step 2: The native cover module sustains the loader''s face across the Android restart', '', NULL, NULL, NULL, 24000, '2026-10-19 03:24:16.53337+00', '2026-10-19 04:37:04.005001+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (221, 1, 221, NULL, 4, 'Step 5: device pass on the changed sheet', '', NULL, NULL, NULL, 30000, '2026-10-19 03:25:16.306819+00', '2026-10-19 05:18:36.146529+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (243, 1, 243, NULL, 1, 'Step 2: The device read - atlas first, the help modal on the 3T and the owner''s iPhone, the question transcribed, one comment each (weight 3)', '', NULL, NULL, NULL, 18000, '2026-10-19 13:03:51.459396+00', '2026-10-19 13:03:51.459396+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 2, 4, 'The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:54:08.614918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 136, 2, 4, 'Android chevrons do not mirror under Arabic (settings sheet)', 'OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T
 
@@ -5272,16 +5257,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-18, investigation and preparation closed, audited (two reviewer passes, 7 findings adjudicated): the closeout landed clean - the 3T as-found proof confirms row 135''s delivered face on the installed 2.0.1067 fleettest build (the fleettest Next Prayer Dark widget read as found under app Arabic: every row time LEFT of the Arabic name, the hero block RIGHT with the prayer name and its time, the countdown 12 h 52 m in Latin digits with lowercase Latin h m, nothing system-formatted, nothing Arabic-Indic; the phone left exactly as found: same build, app Arabic, widget placed, device locale unchanged, verified after every contact), the gallery''s en fallback read live on both platforms (the 3T with device French: the picker chrome rendered in French while both Athan sections showed all eight entries in the English base display names, no French or Arabic label anywhere; the iOS 18.5 simulator with system French: all eight gallery pages showed the English base display names and descriptions; the per-locale native-string map exists only for the six supported languages, so every other locale falls back to the English base displayNames - the intended shape, recorded for parked row 130''s item 1), row 69 SUPERSEDED for good, rows 128 and 129 closed with row 135''s DONE, options 1 (status quo) and 3 (wider convergence) closed by the owner''s option-2 go (the lettered alignment). The upstream PR for the patch''s device-locale hunks is PREPARED AND HELD: branch feat/widgets-device-locale off upstream main cac62846e627e6b446ac2ded31adac8c8e9d5dd8 in the local expo clone ($HOME/athan-gitree/upstream/expo), description at $HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md, the held state in ai/UPSTREAM-PRS.md; NOTHING filed - publishing is the hard-rule stop, the owner''s explicit word files it (row 51''s discipline). WAITING ON HER: the word to file the PR (or drop it), and the owner''s glass read of the placed widget under Arabic on each phone (row 135''s named pending acceptance). No app code changed on uat.
 
 Needs first: #2026, #10, #18, #3', NULL, NULL, NULL, 6000, '2026-10-18 23:35:55.593343+00', '2026-10-19 02:54:08.929665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 142, 3, 1, 'Help modal: a widgets support question', 'Goal: one new question in the help modal about widget support, answered in one short sentence, with nothing anywhere teaching how to add a widget.
-
-Where: shared/help.ts (HELP_ENTRIES), the six catalogues shared/i18n/{en,ar,ms,so,hi,th}.ts with the catalog lock, the help coverage shared/__tests__/help.test.ts, and the help modal itself (components/modals/Help.tsx), which needs no change.
-
-Acceptance:
-- [ ] The help modal lists one new question about widget support, appended after the last entry, following HELP_ENTRIES'' own pattern: a question key plus one answer key per platform, no steps, no action.
-- [ ] The English question and answer are each one short sentence, and the answer says only whether widgets are supported: no add-a-widget path or instruction appears in any locale.
-- [ ] All six catalogues carry the new keys and yarn i18n:lock is re-taken with the catalog lock test green.
-- [ ] shared/__tests__/help.test.ts is red before the entry exists and green after it, inside yarn validate.
-- [ ] The help modal on the 3T and on the owner''s iPhone shows the new question, and each read lands as a ticket comment.', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 13:03:51.234626+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (48, 1, 101, 9, 4, 'The prayer row times: brighter, whiter on past and next rows', 'OWNER RULING 2026-10-15 (live, the colour-only follow-up the owner asked to be quick): the prayer TIME text brightens and whitens on both schedules - (a) the PAST rows'' time (both schedules read `COLORS.time.timeColon`, today `rgba(174, 208, 255, 0.375)`) is too faded to see: brighter and a little whiter; (b) the NEXT row''s time on the Standard schedule (`nextTimeColon`, today `rgba(174, 208, 255, 0.5625)`) brighter and whiter; (c) the NEXT row''s time on the EXTRAS schedule (`nextTimeColonExtras`, today `rgba(224, 167, 242, 0.5625)`) needs it MOST - the owner''s words, very purply, very pinkish, it kind of fades into the background - so even brighter and whiter than the Standard one, the pink cast going. Colour values only: no layout, no behaviour, no other surface moves; the pins that hold these three constants move with them (rows 81/84''s grounds). Planning pins the exact values as recorded defaults; the owner''s one glance on the dev build is the acceptance. Small by the owner''s order, but the full gates still run
 
 Status note: 2026-10-15, landed direct at 2.0.771 by the owner''s order, refined live through 2.0.772 (the upcoming rows reverted untouched, the passed colon an opaque white, the next rows brighter with Extras whitest); folded with row 102''s record', NULL, NULL, NULL, 27000, '2026-10-18 23:35:56.294146+00', '2026-10-19 02:54:08.079866+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5296,11 +5271,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-12, audited: the prayer-name reserve is now the widest label in rendered points, measured per name on both lists (the Somali Sunrise wrap healed at the root: character count picked the longest, not the widest); getLongestPrayerNameIndex and its tests deleted; widen-only store unchanged
 
 Needs first: #39', NULL, NULL, NULL, 56000, '2026-10-18 23:35:56.815064+00', '2026-10-19 02:54:08.386296+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 123, 4, 1, 'Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'OWNER ORDER 2026-10-16 (111 planning session, changelog walk): re-evaluate the Android widgets'' update reliability on OEMs now the full SDK 58 release is in; the owner''s recollection of the preview era: it worked, but on some OEMs some widgets fell out of sync and stopped updating. FACTS: the repo carries its own refresh ground - `modules/widgetrefresh` (row 10''s self-refresh), the WorkManager keeps that the app.json R8 rules protect, and expo-widgets 58.0.19 still carries the openApp and device-locale patch row 111 rebuilds; the phone fleet covers the OEM matrix (the 3T on Android 9, the 8T, the S23, the Find X8). THE ROW investigates first: today''s refresh path end to end (the widgetrefresh module''s schedule, the widget runtime reload, the timeline re-push), what the out-of-sync reports on OEMs actually showed (git history and session evidence), and what SDK 58 stable changed in the widget runtime if anything; then it device-proves each OEM phone and fixes what drifts. The owner rules the scope after the inventory
-
-Status note: FOLDED into row 127 2026-10-18 by the owner''s order (the owner read them as the same thing; the delivered version-delta verdict carries in as 127''s technical ground, and 127 owns the single Android-widgets-on-OEMs question: prove-then-fix and the keep-or-withdraw ruling). Was DEFERRED, owner says go
-
-Needs first: #127', NULL, NULL, NULL, 7000, '2026-10-18 23:35:55.606979+00', '2026-10-19 09:15:25.310929+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (214, 1, 214, NULL, 4, 'Step 1: The commit path holds the loader through a fulfilled reload (the latch)', '', NULL, NULL, NULL, 23000, '2026-10-19 03:24:16.483001+00', '2026-10-19 04:27:09.816123+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (213, 1, 213, NULL, 4, 'Step 5: The attribution and options record (weight 1)', '', NULL, NULL, NULL, 22000, '2026-10-19 03:18:22.039783+00', '2026-10-19 05:08:10.524059+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (20, 1, 137, 4, 4, 'Arabic line height parity: Android against iOS, same TTF', 'OWNER QUESTION 2026-10-18: the Arabic line height feels taller on the 3T than the iPhone although both ship the same Rubik TTFs - investigate and answer yes or no: is the effective Arabic line box the same on both platforms, and is it as it should be. NO NEGATIVE PULLING and no spacing fixes of any kind: measurement and verdict only (the owner''s explicit word). Starting ground: row 118 measured the font tables - Rubik carries hhea 935/-250 (1.185em) but usWin 1066/466 (1.532em), two metric sets in one file; Android Paint historically derives its line box from the taller usWin set, iOS TextKit from hhea, which would make the same TTF render a taller line box on Android by design of the platform, not a repo defect; row 87 ruled the font own box serves everywhere (no explicit lineHeight pin) and row 108 sized the volume note to Rubik usWinDescent ink. RECOMMENDATION: measure the rendered line box under Arabic on both phones (the FleetTest mock 2.0.996 on the 3T, the restored XS app), compute both platforms expectations from the tables, and bring the owner''s a yes/no with the numbers plus options if the owner then wants parity. No code before the owner''s ruling
@@ -5332,29 +5302,18 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 2, 4, 'The clipping batch: the line-box pin, the note style, the loader face', 'Owner''s live test of 86 on the XS (2026-10-14): every pinned surface clipped - the metrics are the cause (Noto Sans Arabic''s natural box is 2.112em against the 1.172em Latin pin), so blockLineHeight and its five consumers died and the font''s own box serves everywhere; the ar header gap closes with an explicit -10 subtitle pull-up (the owner''s to dial); the loader''s typography resolves per render (a mid-switch line drew the old locale''s face and box, the English cut the owner saw); the note aligns to the header inset, title edge to icon edge on both sheets, the divider gained its air and the bottom gap dropped; the iOS note copy reworded per the owner''s ruling. Landed at 2.0.727 while the owner tested; the owner''s live read is the acceptance bar
 
 Status note: 2026-10-15, the owner''s XS read: no clipping on the language-switch loader, the settings, alert and sound sheets'' title/subtitle blocks perfectly spaced, the alert sheet clean; the residuals the owner named the same read (the compass sheet''s gap, the sound preview''s spacing, the Help questions'' vertical centre) open as rows 95 to 97', NULL, NULL, NULL, 33000, '2026-10-18 23:35:56.396717+00', '2026-10-19 02:54:08.143707+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (240, 1, 240, 2, 1, 'Language switch on Android: a black span replaces the loader face for half a second', 'Goal: a language switch on Android shows one loader face from the tap to the settled app, with no black span.
-
-Where: the language switch path and the switch cover that landed for #141, Android only, seen on the 3T at 2.0.1131.
-
-OWNER REPORT 2026-10-19, on the 3T at 2.0.1131, Android only, never on the iPhone: during a language switch the loader screen shows perfectly, then after about half a second the loading face disappears - the purple background, the purple spinner animation and the line below it all vanish - and a fully black background with a white spinner holds for about half a second before the app appears. This reads as a regression of #141''s cover, which was built to show the loader''s own purple, spinner, line and offsets across the restart span: a black span with an unstyled spinner says the cover renders before or without the loader''s face values.
-
-Acceptance:
-- [ ] a switch on the 3T shows one continuous loader face, tap to settled app, no black span, both directions
-- [ ] red-first tests pin the cover''s face values and their arrival order
-- [ ] En byte-identical when not switching; iOS unchanged
-- [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 09:37:32.622545+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (27, 1, 124, 2, 4, 'iPhone XS automation channel: RSD allocation failure', 'PROBLEM, measured on this machine 2026-10-16 (including after a replug): `xcrun devicectl device process launch --device IPHONE_UDID com.apple.Preferences` returns `com.apple.dt.CoreDeviceError -1` with `Failed to allocate RSD device (com.apple.mobiledevice 0xE8000003)`, while `idevicepair validate` prints SUCCESS, `devicectl list devices` shows the XS `connected` with transport `wired` and pairing `paired`, and `agent-device doctor` fails at `target-app: iOS device is not ready for automation: command timeout of 15s`. It blocks ticket 111''s step 3 (the XS deep-dive loop) and ticket 120''s XS proof. The owner confirmed the phone is not screen-locked. FIX LADDER, one rung at a time, each verified before the next: (1) on the phone, Settings, Privacy & Security, Developer Mode ON, then reboot and keep it unlocked; (2) if already on, reboot the phone, replug the cable, retest; (3) host side, restart the device services and replug (`sudo pkill -f CoreDevice` and `sudo pkill -f remoted`; a Mac reboot also clears it); (4) another cable or port, then a re-pair. ACCEPTANCE: the launch command above exits 0 and `agent-device doctor` passes `target-app`. The agent records which rung fixed it and re-checks the assumption that the fault is host-side before acting. OWNER-ACTION by nature (the owner''s hands on the phone, the owner''s password for rung 3)
 
 Status note: 2026-10-16, cleared by the owner: the ladder''s rung 3 fixed it (`sudo pkill -9 remoted && sudo pkill -9 usbmuxd`, then replug the cable); verified the same session with `devicectl device process launch --device IPHONE_UDID com.apple.Preferences` printing `Launched application with com.apple.Preferences bundle identifier`, the XS at iOS 18.7.10. Ticket 111 step 3 and the XS-side readings are unblocked', NULL, NULL, NULL, 6000, '2026-10-18 23:35:55.916366+00', '2026-10-19 02:54:07.842991+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (217, 1, 217, NULL, 4, 'Step 1: halved dim values pinned in the suites', '', NULL, NULL, NULL, 26000, '2026-10-19 03:25:16.207445+00', '2026-10-19 04:07:24.451798+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (219, 1, 219, NULL, 4, 'Step 3: the store keeps reminder choices under an off athan', '', NULL, NULL, NULL, 28000, '2026-10-19 03:25:16.256629+00', '2026-10-19 04:23:45.311142+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (242, 1, 242, NULL, 1, 'Step 1: The entry and its copy - help.q.widgets appended last in HELP_ENTRIES, the six catalogues, yarn i18n:lock re-taken, red-then-green help coverage (weight 2)', '', NULL, NULL, NULL, 17000, '2026-10-19 13:03:51.42739+00', '2026-10-19 13:03:51.42739+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (127, 1, 2, 2, 4, 'Alert sheet change is all or nothing', 'Queue status: DONE', NULL, NULL, NULL, 106000, '2026-10-18 23:35:57.683648+00', '2026-10-19 02:54:08.88521+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 4, 10, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'PROBLEM, two small widget-face items from row 117''s inventory, folded into one ticket: (1) the widget gallery shows English fallback content outside the six languages and nothing records whether that is intended; (2) the v1 fallback words predate the lettered law (rows 85/102) and the Latin-digits law (row 88), so a stale blob renders an obsolete face. RECOMMENDATION: for (1), decide the intended fallback for a device whose language is none of the six and pin it with a test, making the D44/D79 static-copy rule explicit rather than incidental; for (2), re-issue the v1 fallback strings under the current laws and pin them. The agent measures what a stale blob actually renders before changing anything
 
 Status note: 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. THE OWNER''S UPDATE 2026-10-18: item (1), the gallery''s en fallback, is ANSWERED and closed - row 117''s live reads proved the English base fallback is the intended shape on both platforms (the app card''s names are app-provided from the committed config for the six languages; the OS chrome around the picker is the phone''s, outside the app''s control). Item (2), the v1 fallback words, stays parked with the widget park; the owner is open to re-issuing the few words under the current laws as part of the widget work', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 02:54:07.681709+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (218, 1, 218, NULL, 4, 'Step 2: whole-header tap on the reminder rows', '', NULL, NULL, NULL, 27000, '2026-10-19 03:25:16.232789+00', '2026-10-19 04:09:12.361191+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (220, 1, 220, NULL, 4, 'Step 4: the sheet restores on off-to-on', '', NULL, NULL, NULL, 29000, '2026-10-19 03:25:16.282186+00', '2026-10-19 04:34:55.78627+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (242, 1, 242, NULL, 4, 'Step 1: The entry and its copy - help.q.widgets appended last in HELP_ENTRIES, the six catalogues, yarn i18n:lock re-taken, red-then-green help coverage (weight 2)', '', NULL, NULL, NULL, 17000, '2026-10-19 13:03:51.42739+00', '2026-10-19 14:02:10.543651+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 115, 9, 4, 'The Thai face becomes Sarabun, the owner''s specimen pick', 'REVERSED 2026-10-16 by the owner''s read: Sarabun rejected on glass the same evening and the Noto pair restored at 2.0.848 (the specimen''s decision undone; the specimen and its files deleted in the deep clean). Original record: OWNER PICK 2026-10-16 (the ten-font specimen at $HOME/athan-gitree/sessions/115/thai-specimen.html, every number measured from the TTFs'' own tables): SARABUN - Thailand''s document standard, a true 500, its own Latin digits, the tightest sane line box (1.300em with win ink at 1.286em ascent and 0.567em descent, taking the script line box like Hindi and Arabic). The owner''s read of the current face: ''not really Thai'' - the Noto pair replaced after one session
 
 Status note: then REVERSED 2026-10-16: Sarabun landed at 2.0.846, the owner''s read rejected it, and the clean revert at 2.0.848 restores Noto Sans Thai exactly (words on the Noto pair, digits and row times on Roboto, no script line box) with the build rebuilt and reinstalled', NULL, NULL, NULL, 13000, '2026-10-18 23:35:56.051874+00', '2026-10-19 02:54:07.928363+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5611,11 +5570,6 @@ Acceptance:
 - [x] The gate comment records the filing gate reached and names what holds it, and no PR exists upstream yet
 
 Authorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane stops at the gate; the lead sends the go.', NULL, NULL, NULL, 17000, '2026-10-18 23:35:55.759468+00', '2026-10-19 08:10:51.004347+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 3, 1, 'Board mirror: an OWNER-LED row must read as awaiting the owner', 'PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism
-
-Status note: PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism
-
-Needs first: #2026, #10, #17, #7', NULL, NULL, NULL, 8000, '2026-10-18 23:35:55.623293+00', '2026-10-19 09:15:25.354844+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (59, 1, 82, 9, 4, 'Latin numerals everywhere; the countdown identical in every language', 'The owner''s discovery ruling from the XS green-build read (2026-10-13, ~17:3x), reversing two earlier rulings of the owner''s: (1) DITCH the non-Latin numerals - Latin digits only (1 2 3 4 5 6 7 8 9) in EVERY language; Arabic switches from Eastern Arabic-Indic to Latin (this supersedes row 57''s D54/D57/D58 native-numeral ruling for ar; Somali/hi/th/ms were already Latin); (2) the COUNTDOWN TIMER IS IDENTICAL ACROSS ALL LANGUAGES - Latin digits, the dim colours, the gapped colons, the fixed-width sections, no letters anywhere: English loses the 1h 1m lettered design it regained in row 72''s revert (the owner''s words: ''no more 1h 1m, the letters''), and the en reminder titles and channel labels keep their row 72 reverted unit word (the owner named only the countdown timer). Rows 79/81''s refinements all stand (dim digits -30%, colons -60%, the seconds-never-dim rule, the no-shift rule - Latin digits still need the equal-width rendering). Ground: row 57''s digit map, row 72''s composer and dispatcher, row 74''s typography consumers; the three rows'' tests and pins re-derive from this ruling
 
 Status note: 2026-10-13, audited: Latin digits render in every language and the countdown timer is one design everywhere - fixed-width colon sections, dim gapped colons, dim 00 groups, no unit letters under any locale, the ago badge''s duration colon-shaped with the `now` word kept, the en reminder titles and channel labels keeping their row 72 unit word; the digit map (app and widget) is deleted with its tests; rows 79/81''s refinements land on this baseline; row 76(a) and row 67''s digit-map half are superseded; three-reviewer audit fixed the stale lettered prose, a cannot-fail negative and the formatTime pass-through, and carried two widget/break-script nices; simulator-proven under en and ar
@@ -5665,6 +5619,80 @@ Status note: 2026-10-12, audited: the perfName investigation answers the owner''
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 64, 8, 4, 'Volume-source copy: alert and sound sheets plus a help question', 'Owner ask, 2026-10-12: text in the alert sheet and the athan sound sheet explaining that Android plays these alarms at the ALARM volume, not the notification volume; plus a Help modal question "Which volume controls the sound level?" (owner wants the wording improved). OWNER RULINGS 2026-10-12 (in session): add the copy to BOTH sheets for absolute clarity even though Help already carries the question (verified in-repo: `help.a.quiet` "It plays at alarm volume, not ring volume" plus `help.step.alarmVolume` exist, and their wording is itself Android-flavoured, so the help answer joins the platform split); the copy is PLATFORM-SPECIFIC by rule - Android states the alarm volume (row 27''s proof), iOS states its own path, each rendered for the platform running (planning verifies the iOS path against Apple''s documentation before the copy is drafted; unverified at planning: standard iOS notification sounds follow the ringer volume and are silenced by the silent switch). Copy drafts in six languages take the owner''s D42 verification during planning. Serialized behind row 63: both edit the six catalog files
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (244, 1, 244, NULL, 4, 'Step 1: the verification record', 'Confirm the pin, the patch, the R8 keeps and the widgetrefresh history; log the reads in one comment on row 123.', NULL, NULL, NULL, 19000, '2026-10-19 13:50:51.212339+00', '2026-10-19 13:54:00.239468+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (245, 1, 245, NULL, 4, 'Step 2: the verdict and the close', 'The agent-ruled comment argued twice, the closing comment, the move to Done.', NULL, NULL, NULL, 20000, '2026-10-19 13:50:51.254232+00', '2026-10-19 13:54:25.601055+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 123, 4, 4, 'Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'Goal: settle what this row still owes now that its earlier lane''s version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or update path) and row 127''s closing ruling (Android widgets kept as they are, OEM drift accepted) are both delivered.
+
+Where: modules/widgetrefresh, stores/widget.ts, patches/expo-widgets+58.0.20.patch, app.json (the R8 keeps), package.json (the pin). The records land on this ticket.
+
+Acceptance:
+- [ ] grep ''"expo-widgets"'' package.json prints the exact pin 58.0.20, patches/expo-widgets+58.0.20.patch is present, and grep -c ''androidx.work'' app.json prints 1.
+- [ ] git log --oneline -- modules/widgetrefresh shows no commit newer than 2026-09-26.
+- [ ] An agent-ruled comment dated 2026-10-19 records, argued twice, that nothing remains open here beyond row 127''s delivered ruling.
+- [ ] The closing comment names the verdict and the ruling it rests on, and yarn validate exits 0.', NULL, NULL, NULL, 7000, '2026-10-18 23:35:55.606979+00', '2026-10-19 13:54:49.023578+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (240, 1, 240, 2, 4, 'Language switch on Android: a black span replaces the loader face for half a second', 'Goal: a language switch on Android shows one loader face from the tap to the settled app, with no black span.
+
+Where: the language switch path and the switch cover that landed for #141, Android only, seen on the 3T at 2.0.1131.
+
+OWNER REPORT 2026-10-19, on the 3T at 2.0.1131, Android only, never on the iPhone: during a language switch the loader screen shows perfectly, then after about half a second the loading face disappears - the purple background, the purple spinner animation and the line below it all vanish - and a fully black background with a white spinner holds for about half a second before the app appears. This reads as a regression of #141''s cover, which was built to show the loader''s own purple, spinner, line and offsets across the restart span: a black span with an unstyled spinner says the cover renders before or without the loader''s face values.
+
+Acceptance:
+- [ ] a switch on the 3T shows one continuous loader face, tap to settled app, no black span, both directions
+- [ ] red-first tests pin the cover''s face values and their arrival order
+- [ ] En byte-identical when not switching; iOS unchanged
+- [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 16:08:14.174025+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (246, 1, 246, NULL, 4, 'Step 1: Verified carriers written into the plan doc''s Proof', '', NULL, NULL, NULL, 19000, '2026-10-19 14:03:55.282904+00', '2026-10-19 14:04:56.292461+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (247, 1, 247, NULL, 4, 'Step 2: Ticket closed with the mapping in the closing comment', '', NULL, NULL, NULL, 20000, '2026-10-19 14:03:55.319546+00', '2026-10-19 14:05:27.765602+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 4, 4, 'A row awaiting the owner''s ruling is never counted finished', 'Goal: a row that awaits the owner''s ruling reads as awaiting it through verified carriers on the live board, the mapping from the deleted read-only mirror is recorded, and nothing is rebuilt or patched.
+
+Where: the board itself: this ticket''s Docs page, its comments, and the rules pinned in .agents/skills/board-workflow/SKILL.md. No repository file changes.
+
+Acceptance:
+- [ ] A dated agent-ruled comment records the close decision, argued twice.
+- [ ] The plan doc titled T-126 maps each part of the old OWNER-LED reading guarantee to its live carrier: the Awaiting Owner column, the Waiting on field, board-workflow integrity items 6 and 9, and the picking rule.
+- [ ] get_project returns the Awaiting Owner column with stateType started, and the project''s custom fields return the Waiting on text field, both read through the MCP surface.
+- [ ] grep on .agents/skills/board-workflow/SKILL.md finds integrity item 6 (Waiting on in the same breath), item 9 (nothing parked reads active) and the picking rule (Backlog or Ready only).
+- [ ] git status on uat prints nothing: the repository carries no change from this ticket.', NULL, NULL, NULL, 8000, '2026-10-18 23:35:55.623293+00', '2026-10-19 14:05:27.807556+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (248, 1, 248, NULL, 4, 'Step 1: the cover''s face record binds the loader''s values', 'Goal: the native record parses the face the JS side sends, pinned red-first by a source-reading guard suite.
+
+Where: modules/switchcover/android/src/main/java/expo/modules/switchcover/SwitchCoverModule.kt, modules/switchcover/__tests__/faceRecord.test.ts (new).
+
+Acceptance:
+- [ ] the guard suite fails on uat before the change (red first)
+- [ ] every SwitchCoverFace property carries @Field and @Required, and the names match the TS SwitchCoverOptions keys
+- [ ] the mutation pass (one annotation stripped, one property renamed) reddens the guard
+- [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 14:07:28.909992+00', '2026-10-19 14:18:51.170391+00', NULL, NULL, NULL, NULL, NULL, 240, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (243, 1, 243, NULL, 4, 'Step 2: The device read - atlas first, the help modal on the 3T and the owner''s iPhone, the question transcribed, one comment each (weight 3)', '', NULL, NULL, NULL, 18000, '2026-10-19 13:03:51.459396+00', '2026-10-19 15:17:42.148841+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (250, 1, 250, NULL, 4, 'Step 3: the cover''s shipped line colour is Android-parseable', 'Goal: the values the cover''s record now binds survive Android''s colour parser, pinned red-first against the shorthand the first device run caught.
+
+Where: stores/language.ts, stores/__tests__/languageReloadFace.test.ts.
+
+Acceptance:
+- [ ] the face suite fails against the shipped ''#fff'' shorthand (red first)
+- [ ] the cover''s white travels as ''#ffffff'' and the suite pins every shipped colour to the two hex forms Color.parseColor accepts
+- [ ] the mutation pass (shorthand revert, palette shorthand) reddens the suite
+- [ ] yarn validate green', NULL, NULL, NULL, 108000, '2026-10-19 15:25:49.792177+00', '2026-10-19 15:25:49.792177+00', NULL, NULL, NULL, NULL, NULL, 240, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (249, 1, 249, NULL, 4, 'Step 2: the 3T shows one loader face across both switch directions', 'Goal: on the 3T, through the mock build path, a language switch reads as one continuous loader face from the tap to the settled app, with no black span, both directions.
+
+Where: the 3T through build-mock.zsh and agent-device, the branch tip carrying Step 1.
+
+Acceptance:
+- [ ] en to ar and ar to en each show no black frame with a white spinner between the loader and the settled app, read from recorded frames
+- [ ] one same-record switch (en to ms) keeps its instant path
+- [ ] logcat holds no cover-refused warning across the switches
+- [ ] the build is the release variant, so the record parse is witnessed under R8', NULL, NULL, NULL, 2000, '2026-10-19 14:07:28.945186+00', '2026-10-19 15:50:15.746788+00', NULL, NULL, NULL, NULL, NULL, 240, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (251, 1, 251, NULL, 4, 'Step 3: the answer carries both platforms as labeled bullets, iOS first (weight 2)', '', NULL, NULL, NULL, 1000, '2026-10-19 16:43:34.13898+00', '2026-10-19 16:55:41.771062+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (252, 1, 252, NULL, 4, 'Step 4: the widgets row expands on Android - root cause, fix, glass proof on the 3T (weight 3)', '', NULL, NULL, NULL, 2000, '2026-10-19 16:43:34.181523+00', '2026-10-19 17:43:00.311878+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (16, 1, 142, 3, 4, 'Help modal: a widgets support question', 'Goal: one new question in the help modal about widget support, answered in one short sentence, with nothing anywhere teaching how to add a widget.
+
+Where: shared/help.ts (HELP_ENTRIES), the six catalogues shared/i18n/{en,ar,ms,so,hi,th}.ts with the catalog lock, the help coverage shared/__tests__/help.test.ts, and the help modal itself (components/modals/Help.tsx), which needs no change.
+
+Acceptance:
+- [ ] The help modal lists one new question about widget support, appended after the last entry, following HELP_ENTRIES'' own pattern: a question key plus one answer key per platform, no steps, no action.
+- [ ] The English question and answer are each one short sentence, and the answer says only whether widgets are supported: no add-a-widget path or instruction appears in any locale.
+- [ ] All six catalogues carry the new keys and yarn i18n:lock is re-taken with the catalog lock test green.
+- [ ] shared/__tests__/help.test.ts is red before the entry exists and green after it, inside yarn validate.
+- [x] The help modal on the 3T and on the owner''s iPhone shows the new question, and each read lands as a ticket comment.', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 18:01:15.0347+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
 
 
 --
@@ -5805,6 +5833,19 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (128, 128, 'activity', 'owner', NULL, 'created', '2026-10-18 23:35:57.711191+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (129, 1, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:35:57.734059+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 96, "value": "QUEUE-96"}, "subject": {"value": "blocked_by"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (130, 96, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:35:57.734059+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "QUEUE-1"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2161, 240, 'comment', 'owner', 'FINDINGS (blind): The fix chain is sound. I verified the diagnosis against the dependency''s own source: expo-modules-core''s RecordTypeConverter silently drops any record property without @Field and throws FieldRequiredException on a missing @Required key, so the bindings are correct. The new source-reading suite really parses both files (I replayed its regexes against the Kotlin record and the JS binding; eight properties, all bound and required, keys exactly matching). Versions move together in both commits, the theme colours the face suite pins are genuinely 6-digit hex, and nothing outside the cover''s behaviour changed: ''#fff'' to ''#ffffff'' is the same colour, and the loader''s own literal is untouched.
+
+The diagnosis chain here is genuinely good work: finding the converter''s silent drop from source, then catching the shorthand refusal only a device read could see.
+
+1. minor (question): Neither commit carries a post-fix device record. 1137''s source-level proof proved insufficient once already, when the 3T found the cover refusing on every switch, and 1138''s proof is static again. The language-switch flow exists and exercises this exact crossing. Was the cover observed painting the loader''s face after 1138? If yes, the record belongs here; if not, one run closes it.
+
+2. nitpick: The binding suite''s fixture still teaches lineColor ''#fff'', the exact literal Android refuses. It is inert in that suite, but it is the repo''s worked example of a cover face, so expand it.
+
+3. nitpick: The comment in stores/language.ts names ColorParseException, which does not exist in android.graphics; parseColor throws IllegalArgumentException. Name the method, not a class that is not there.
+
+4. nitpick: The face suite''s ''declares at least the eight face values'' asserts greater-or-equal 8. toBe(8) says what its own title claims.
+
+5. nitpick: The new comments carry dated provenance (''the 3T read, 2026-10-19''), which the comments rule in ai/AGENTS.md bans; LanguageLoader.tsx set the precedent, so either trim the dates or accept the drift consciously.', NULL, '2026-10-19 15:58:56.815148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (131, 1, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:35:57.746314+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 94, "value": "QUEUE-94"}, "subject": {"value": "blocked_by"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (132, 94, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:35:57.746314+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "QUEUE-1"}, "subject": {"value": "blocks"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (139, 6, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:35:57.800755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 112, "value": "QUEUE-112"}, "subject": {"value": "blocked_by"}}', NULL);
@@ -7709,6 +7750,149 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2048, 14, 'activity', 'owner', NULL, 'status', '2026-10-19 13:04:07.418618+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 10, "value": "Deferred", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2049, 14, 'activity', 'owner', NULL, 'label_add', '2026-10-19 13:04:07.434835+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2050, 14, 'activity', 'owner', NULL, 'field', '2026-10-19 13:04:07.474396+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2052, 7, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.695266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "T-127"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2053, 9, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.695266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "T-123"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2054, 1, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.695315+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 94, "value": "T-39"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2055, 94, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.695315+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "T-25"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2056, 8, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.700132+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 122, "value": "T-7"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2057, 122, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.700132+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "T-126"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2058, 3, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.707513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 86, "value": "T-50"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2059, 86, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.707513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "T-51"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2060, 8, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.701043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 113, "value": "T-17"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2061, 113, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.701043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "T-126"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2062, 8, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.700111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 120, "value": "T-10"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2063, 120, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.700111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "T-126"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2064, 1, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.70507+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 96, "value": "T-37"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2065, 96, 'activity', 'owner', NULL, 'link_remove', '2026-10-19 13:41:28.70507+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "T-25"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2066, 7, 'comment', 'owner', '2026-10-19 board run: removed the stale blocked-by relation to #127 (Done), and moved the Waiting on text off the field - Backlog waits on nothing. The fold record stands: FOLDED into row 127 2026-10-18 by the owner''s order (the delivered version-delta verdict carries in as 127''s technical ground, and 127 owns the single Android-widgets-on-OEMs question: prove-then-fix and the keep-or-withdraw ruling). Was DEFERRED, owner says go.', NULL, '2026-10-19 13:41:28.760996+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2072, 1, 'activity', 'owner', NULL, 'comment_edited', '2026-10-19 13:42:01.11714+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2084, 244, 'activity', 'owner', NULL, 'created', '2026-10-19 13:50:51.219011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2068, 8, 'comment', 'owner', '2026-10-19 board run: removed the stale blocked-by relations to #7, #10 and #17 - all Done, so they block nothing - and cleared the Waiting on field, which duplicated the description. The workflow now drops a relation when its blocker completes.', NULL, '2026-10-19 13:41:28.762924+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2080, 7, 'activity', 'owner', NULL, 'description', '2026-10-19 13:50:51.17101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: settle what this row still owes now that its earlier lane''s version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or update path) and row 127''s closing ruling (Android widgets kept as they are, OEM drift accepted) are both delivered.\n\nWhere: modules/widgetrefresh, stores/widget.ts, patches/expo-widgets+58.0.20.patch, app.json (the R8 keeps), package.json (the pin). The records land on this ticket.\n\nAcceptance:\n- [ ] grep ''\"expo-widgets\"'' package.json prints the exact pin 58.0.20, patches/expo-widgets+58.0.20.patch is present, and grep -c ''androidx.work'' app.json prints 1.\n- [ ] git log --oneline -- modules/widgetrefresh shows no commit newer than 2026-09-26.\n- [ ] An agent-ruled comment dated 2026-10-19 records, argued twice, that nothing remains open here beyond row 127''s delivered ruling.\n- [ ] The closing comment names the verdict and the ruling it rests on, and yarn validate exits 0."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2081, 7, 'activity', 'owner', NULL, 'estimate', '2026-10-19 13:50:51.17101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2069, 3, 'comment', 'owner', '2026-10-19 board run: removed the stale blocked-by relation to #50 - it is Done, so it blocks nothing. The workflow now drops a relation when its blocker completes.', NULL, '2026-10-19 13:41:28.767415+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2070, 8, 'activity', 'owner', NULL, 'field', '2026-10-19 13:41:28.799206+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2074, 16, 'activity', 'owner', NULL, 'field', '2026-10-19 13:43:53.28342+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2088, 245, 'activity', 'owner', NULL, 'parent', '2026-10-19 13:50:51.261577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "T-123"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2089, 7, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 13:50:51.261577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 245, "value": "T-245"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2090, 7, 'activity', 'owner', NULL, 'status', '2026-10-19 13:51:17.764302+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2093, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 13:53:07.907828+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2095, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 13:53:14.700829+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2098, 244, 'activity', 'owner', NULL, 'status', '2026-10-19 13:54:00.250667+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2100, 245, 'activity', 'owner', NULL, 'status', '2026-10-19 13:54:25.611861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2101, 7, 'activity', 'owner', NULL, 'status', '2026-10-19 13:54:49.031476+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2103, 8, 'activity', 'owner', NULL, 'field', '2026-10-19 13:56:24.847025+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2116, 246, 'activity', 'owner', NULL, 'parent', '2026-10-19 14:03:55.292438+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "T-126"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2117, 8, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 14:03:55.292438+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 246, "value": "T-246"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2124, 8, 'comment', 'owner', 'Executing: running the carrier probes against the live board.', NULL, '2026-10-19 14:04:27.102996+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2125, 246, 'activity', 'owner', NULL, 'status', '2026-10-19 14:04:56.299972+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2129, 248, 'activity', 'owner', NULL, 'created', '2026-10-19 14:07:28.917204+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2139, 248, 'activity', 'owner', NULL, 'status', '2026-10-19 14:18:51.187585+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2071, 7, 'activity', 'owner', NULL, 'field', '2026-10-19 13:41:28.801392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2078, 7, 'activity', 'owner', NULL, 'status', '2026-10-19 13:43:53.351502+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2087, 245, 'activity', 'owner', NULL, 'created', '2026-10-19 13:50:51.25979+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2091, 7, 'comment', 'owner', 'Planned 2026-10-19: the plan doc T-123 carries two steps (2 points), a verify-and-close on the delivered version-delta verdict and row 127''s ruling. Ready for execution.', NULL, '2026-10-19 13:51:17.793052+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2096, 16, 'comment', 'owner', 'Lane 1 executing step 1 (the entry and its copy). Step 2, the device read, runs alone in a fresh session after it.', NULL, '2026-10-19 13:53:14.788617+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2115, 246, 'activity', 'owner', NULL, 'created', '2026-10-19 14:03:55.290424+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2123, 8, 'activity', 'owner', NULL, 'status', '2026-10-19 14:04:27.078111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2132, 249, 'activity', 'owner', NULL, 'created', '2026-10-19 14:07:28.949899+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2137, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 14:07:38.776424+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2067, 1, 'comment', 'owner', '2026-10-19 board run: removed the stale blocked-by relations to #37 and #39 - both are Done, so they block nothing - and trimmed the now-false runs-behind-37-to-39 tail off the Waiting on line, keeping the v3.0 deferral ruling. The workflow now drops a relation when its blocker completes.', NULL, '2026-10-19 13:41:28.762888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-19 13:42:01.114+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2076, 240, 'activity', 'owner', NULL, 'field', '2026-10-19 13:43:53.285255+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2077, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 13:43:53.347375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2085, 244, 'activity', 'owner', NULL, 'parent', '2026-10-19 13:50:51.221811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "T-123"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2086, 7, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 13:50:51.221811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 244, "value": "T-244"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2097, 7, 'comment', 'owner', 'Verified 2026-10-19 in the lane worktree: the pin reads expo-widgets 58.0.20 exact, the local patch stands, the app.json R8 keeps are in place, and modules/widgetrefresh carries no commit after 2026-09-26. yarn validate exits 0 with the whole suite green.', NULL, '2026-10-19 13:54:00.207803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2133, 249, 'activity', 'owner', NULL, 'parent', '2026-10-19 14:07:28.951537+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 240, "value": "T-240"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2134, 240, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 14:07:28.951537+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 249, "value": "T-249"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2073, 1, 'activity', 'owner', NULL, 'field', '2026-10-19 13:42:01.121315+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2075, 7, 'activity', 'owner', NULL, 'field', '2026-10-19 13:43:53.284526+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2092, 7, 'activity', 'owner', NULL, 'status', '2026-10-19 13:51:28.285404+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2099, 7, 'comment', 'owner', 'Agent-ruled 2026-10-19: nothing remains open on this row beyond row 127''s delivered work.
+
+Argument one: this row''s earlier lane already delivered the version-delta verdict, no upstream entry changes the alarm, the receiver, the watchdog or the update path, and row 127''s close ruled Android widgets kept as they are with OEM drift accepted. Both halves of the mandate, what SDK 58 stable changed and what to do about OEM drift, are answered and closed.
+
+Argument two: every repo referent of that verdict stands unchanged today, the exact 58.0.20 pin, the local patch, the R8 keeps, a widgetrefresh module untouched since 2026-09-26, so a re-run would re-measure a standing fact on identical code. Challenge weighed: fresh device proof on the OEM fleet would be new evidence rather than a re-run, but it measures refresh-path code the verdict says is unchanged, and it cannot flip a closed ruling that already accepts drift. A measurement that cannot change the decision is not bought.', NULL, '2026-10-19 13:54:25.567234+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2079, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 13:43:53.353523+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2082, 7, 'activity', 'owner', NULL, 'label_add', '2026-10-19 13:50:51.181727+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2083, 7, 'activity', 'owner', NULL, 'label_add', '2026-10-19 13:50:51.181727+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2118, 247, 'activity', 'owner', NULL, 'created', '2026-10-19 14:03:55.32586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2136, 240, 'comment', 'owner', 'Planned. The black span is the cover itself: the face record''s properties carry no @Field, so expo-modules-core''s converter silently drops every value and the cover paints its defaults, black background with a white spinner and no line - the owner''s exact span. Fix is the annotations plus a red-first source guard; plan page T-240, two steps, 5 points.', NULL, '2026-10-19 14:07:38.730701+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2094, 16, 'comment', 'owner', 'Plan verified against the goal and re-grilled: the owner-cut test''s widget ban is rewritten (superseded by the 2026-10-19 order), the answer copy is pinned per platform, Files/Design/Risks added. Two steps, 5 points. Gate passed, ticket Ready.', NULL, '2026-10-19 13:53:07.98119+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2104, 8, 'activity', 'owner', NULL, 'status', '2026-10-19 13:56:24.881444+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2105, 16, 'comment', 'owner', 'Step 1 done: the widgets question sits last in the help list, all six catalogues translated, catalog lock re-taken, the suite red first then green with a five-mutation pass, yarn validate green. Commit e79fcd01 on lane/142, version 2.1.0. Step 2, the device read on the 3T and the iPhone, runs alone in a fresh session.', NULL, '2026-10-19 14:02:10.548149+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2128, 8, 'activity', 'owner', NULL, 'status', '2026-10-19 14:05:27.815235+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2140, 240, 'comment', 'owner', 'Step 1 landed (2.0.1137): the record''s eight properties are bound and required, the red-first guard holds both sides of the bridge, the mutation pass caught every strip and rename, and yarn validate is green. The device read on the 3T remains.', NULL, '2026-10-19 14:18:51.232737+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2102, 7, 'comment', 'owner', 'Closed 2026-10-19: the SDK-58-stable re-evaluation stands as delivered, no upstream entry changes the alarm, receiver, watchdog or update path, and row 127''s ruling carries, Android widgets stay as they are with OEM drift accepted. Verified against the repo, the verdict recorded above, nothing owed to the repository.', NULL, '2026-10-19 13:54:49.06076+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2106, 242, 'activity', 'owner', NULL, 'status', '2026-10-19 14:02:10.578602+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2107, 8, 'comment', 'owner', 'Agent-ruled 2026-10-19: verification-and-close, no code. The generator, template and reader this ticket names were deleted with the queue migration (4c413365, ae0d2081). Argued against: the owner''s badge and need-your-decision affordance must render somewhere, and no repository code renders them now. Argued for: the itsaplan board renders them in its own column UI, the Awaiting Owner column (renamed 3d500a0f) keeps such a row started and never completed, the Waiting on field carries the question (integrity item 6), and the picking rule plus item 9 keep the row unpicked and never reading active. Patching the product or rebuilding the mirror needs an owner order, and the owner approved the migration that removed it. Why: every part of the old guarantee has a live carrier, so the ticket''s remaining debt is the mapping written down.', NULL, '2026-10-19 14:03:29.877935+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2108, 8, 'activity', 'owner', NULL, 'title', '2026-10-19 14:03:29.915765+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "A row awaiting the owner''s ruling is never counted finished"}, "from": {"value": "Board mirror: an OWNER-LED row must read as awaiting the owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2109, 8, 'activity', 'owner', NULL, 'description', '2026-10-19 14:03:29.915765+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a row that awaits the owner''s ruling reads as awaiting it through verified carriers on the live board, the mapping from the deleted read-only mirror is recorded, and nothing is rebuilt or patched.\n\nWhere: the board itself: this ticket''s Docs page, its comments, and the rules pinned in .agents/skills/board-workflow/SKILL.md. No repository file changes.\n\nAcceptance:\n- [ ] A dated agent-ruled comment records the close decision, argued twice.\n- [ ] The plan doc titled T-126 maps each part of the old OWNER-LED reading guarantee to its live carrier: the Awaiting Owner column, the Waiting on field, board-workflow integrity items 6 and 9, and the picking rule.\n- [ ] get_project returns the Awaiting Owner column with stateType started, and the project''s custom fields return the Waiting on text field, both read through the MCP surface.\n- [ ] grep on .agents/skills/board-workflow/SKILL.md finds integrity item 6 (Waiting on in the same breath), item 9 (nothing parked reads active) and the picking rule (Backlog or Ready only).\n- [ ] git status on uat prints nothing: the repository carries no change from this ticket."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2110, 8, 'activity', 'owner', NULL, 'type', '2026-10-19 14:03:29.915765+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Investigation"}, "from": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2111, 8, 'activity', 'owner', NULL, 'estimate', '2026-10-19 14:03:29.915765+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2112, 8, 'activity', 'owner', NULL, 'label_add', '2026-10-19 14:03:29.925802+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 143, "value": "Investigation"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2113, 8, 'activity', 'owner', NULL, 'label_add', '2026-10-19 14:03:29.925802+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "board"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2114, 8, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 14:03:29.925802+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2119, 247, 'activity', 'owner', NULL, 'parent', '2026-10-19 14:03:55.327797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "T-126"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2120, 8, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 14:03:55.327797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 247, "value": "T-247"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2121, 8, 'activity', 'owner', NULL, 'status', '2026-10-19 14:04:18.294549+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2122, 8, 'comment', 'owner', 'Plan is the T-126 doc: two verification steps, 2 points. The ruling closes by verification, no code.', NULL, '2026-10-19 14:04:18.322998+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2126, 8, 'comment', 'owner', 'Closed by verification. The mirror is gone (4c413365, ae0d2081), and what a reader can trust today is the board itself: the Awaiting Owner column keeps a ruling-awaited row started and never completed, Waiting on carries the question, and the picking rule with integrity items 6 and 9 keep the row unpicked and never reading active. The full mapping is in the T-126 doc.', NULL, '2026-10-19 14:05:27.722335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2127, 247, 'activity', 'owner', NULL, 'status', '2026-10-19 14:05:27.775556+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2130, 248, 'activity', 'owner', NULL, 'parent', '2026-10-19 14:07:28.919107+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 240, "value": "T-240"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2131, 240, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 14:07:28.919107+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 248, "value": "T-248"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2135, 240, 'activity', 'owner', NULL, 'estimate', '2026-10-19 14:07:28.976535+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2138, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 14:07:55.856296+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2141, 16, 'comment', 'owner', 'OnePlus 3T read, mock build 2.1.0 from this branch (package id checked before install): the help modal lists the new question last, in the phone''s Arabic locale - هل الأدوات مدعومة؟. A concurrent lane''s language-switch automation holds the 3T this afternoon, so the expanded answer was not captured there; the iPhone read below carries the full pair.', NULL, '2026-10-19 15:17:26.83118+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2142, 16, 'comment', 'owner', 'iPhone XS read, Release build 2.1.0 from this branch: the help modal''s last row reads "Are widgets supported?", expanding to "Yes, on the home screen and the lock screen." with no steps and no action under it.', NULL, '2026-10-19 15:17:26.875078+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2143, 243, 'activity', 'owner', NULL, 'status', '2026-10-19 15:17:42.166749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2148, 250, 'activity', 'owner', NULL, 'created', '2026-10-19 15:25:49.805603+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2156, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 15:31:54.36247+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2144, 16, 'activity', 'owner', NULL, 'description', '2026-10-19 15:17:42.205071+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: one new question in the help modal about widget support, answered in one short sentence, with nothing anywhere teaching how to add a widget.\n\nWhere: shared/help.ts (HELP_ENTRIES), the six catalogues shared/i18n/{en,ar,ms,so,hi,th}.ts with the catalog lock, the help coverage shared/__tests__/help.test.ts, and the help modal itself (components/modals/Help.tsx), which needs no change.\n\nAcceptance:\n- [ ] The help modal lists one new question about widget support, appended after the last entry, following HELP_ENTRIES'' own pattern: a question key plus one answer key per platform, no steps, no action.\n- [ ] The English question and answer are each one short sentence, and the answer says only whether widgets are supported: no add-a-widget path or instruction appears in any locale.\n- [ ] All six catalogues carry the new keys and yarn i18n:lock is re-taken with the catalog lock test green.\n- [ ] shared/__tests__/help.test.ts is red before the entry exists and green after it, inside yarn validate.\n- [x] The help modal on the 3T and on the owner''s iPhone shows the new question, and each read lands as a ticket comment."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2145, 240, 'comment', 'owner', 'Step 2 fails its logcat criterion on the 3T: every crossing switch (five of five across the session) logs the cover-refused warning, because the cover''s line colour is a three-digit shorthand the 3T''s Android 9 colour parser rejects, so the native show call aborts before any view appears. The filmed spans show no black screen and none of the old default face in either direction: the old screen holds frozen through the convergence, then the loader''s purple face with its spinner and line carries to the settled app, and the same-record switch to Malay stays instant with no reload. So the black span is gone, but by the refusal''s bare fallback rather than by the cover, and the step is not ticked.', NULL, '2026-10-19 15:21:06.292006+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2146, 16, 'comment', 'owner', 'minor: shared/i18n/so.ts:73 the new Somali question ''Ma widget-na waa la taageerayaa?'' carries a ''-na'' clitic no other line in the catalogue uses; the file''s questions are plain ''Ma'' plus a clause (''Ma rabtaa inaad shido habbooshka?''), and ''-na'' reads as ''and/also'', so drop it, e.g. ''Ma widgetta la taageerayaa?''', NULL, '2026-10-19 15:24:13.442034+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2147, 16, 'comment', 'owner', 'nitpick: shared/help.ts:2 the file header still claims every entry answers ''why did I not hear the athan?'' and is an OS setting no code can change; the appended widget support question is neither, so widen the header by one clause for support questions that carry no steps', NULL, '2026-10-19 15:24:13.507803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2149, 250, 'activity', 'owner', NULL, 'parent', '2026-10-19 15:25:49.80891+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 240, "value": "T-240"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2150, 240, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 15:25:49.80891+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 250, "value": "T-250"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2151, 240, 'activity', 'owner', NULL, 'estimate', '2026-10-19 15:25:49.847335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "from": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2152, 240, 'comment', 'owner', 'The first device run caught a second defect: with the values now binding, the line''s ''#fff'' shorthand aborts Android''s colour parser and the cover refused on every switch, hidden by the bare fallback. Step 3 landed (2.0.1138): the white ships expanded and the face suite pins every shipped colour to the two parseable hex forms. The device read re-runs on this branch.', NULL, '2026-10-19 15:25:49.871185+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2154, 16, 'comment', 'owner', 'nitpick: plan doc D142.10 cites "LockPrayerWidget accessories"; app.json names the six iOS-only lock kinds PrayerLockWidget and ExtrasLockWidget 1 to 3. The decision''s substance holds exactly (lock screens ship on iOS only, Android is home screen only, android: null on every lock kind); only the cited name is transposed in the record.', NULL, '2026-10-19 15:27:01.130207+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2157, 249, 'activity', 'owner', NULL, 'status', '2026-10-19 15:50:15.755798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2160, 240, 'comment', 'owner', 'Execution complete. Both commits on lane/t240 (2.0.1137, 2.0.1138) carry the fix and its guards, and the re-run on the 3T read both directions as one loader face with no black span and no refusal. The ticket moves to audit.', NULL, '2026-10-19 15:54:39.231576+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2153, 16, 'comment', 'owner', 'clean: the device-read criterion holds as written - the 3T showed the question (2141, Arabic) and the iPhone the question with its answer (2142), and both reads landed. The Android answer was never read on glass; the suite pins that copy byte-for-byte, so the one re-read that would close the residual gap is a single expanded-answer transcription on the 3T, any locale, once the sibling lane frees the device. Not required by the criterion as written.', NULL, '2026-10-19 15:27:01.083088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2155, 16, 'comment', 'owner', 'Audit closed 2026-10-19: both reviews clean on verdict. Two findings fixed in 5c97cad5 (the Somali -na clitic, the help header''s scope) and merged to uat as ed1ad07d; the plan record''s transposed lock-widget name is corrected in doc v8. One closing 3T re-read of the expanded Android answer holds until the sibling lane frees the device, then this row goes Done.', NULL, '2026-10-19 15:31:54.273219+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2158, 240, 'comment', 'owner', 'Step 2 passes on the 3T: both crossing directions read as one loader face from the tap to the settled app, with the purple face carrying the restart span, no black frame and no blank page anywhere in the recordings, and no cover refusal in the whole capture. The Malay round trip kept its instant switch, and the subtask is ticked.', NULL, '2026-10-19 15:50:15.778928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2159, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 15:54:39.183019+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2162, 240, 'comment', 'owner', 'FINDINGS (plan-conformance): none. Step 1 matches 33736c6f (all eight record properties carry @Field and @Required, names equal to the binding''s eight keys, and the guard is red on uat, where the Kotlin file holds zero @Field) and Step 3 matches 0b7e6c67 (uat shipped the ''#fff'' shorthand, so the face suite''s parse assertion is red-first, and all three shipped colours are #RRGGBB). Both commits bump app.json and package.json one patch step each; android/app/build.gradle is prebuild output and not tracked. I re-ran the two touched suites (10/10 green) with tsc and Biome clean. Step 2''s passing 3T read is on the record covering both directions, the instant Malay switch and a refusal-free logcat, which is the discriminator that the cover itself painted. Points are honest at 7 = 2+3+2, all three subtasks sit in Done, and the parent sits in Audit. The blind pass''s open question is answered by the ticket itself: the 15:50 read ran with Step 3 already in the tree, so its zero-refusal capture is the post-fix device record.', NULL, '2026-10-19 16:04:03.893163+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2163, 240, 'activity', 'owner', NULL, 'field', '2026-10-19 16:07:51.50796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "240"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2164, 240, 'comment', 'owner', 'The post-fix record exists: the passing re-run built from the branch tip carrying the expansion (zero refusals across the capture, the face holding both crossings), so the question is closed by the ticket''s own device evidence.', NULL, '2026-10-19 16:07:51.549857+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 2161, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2165, 240, 'comment', 'owner', 'Audit outcome: two reviews (blind and plan-conformance); the blind pass''s question is answered in its thread and its four nitpicks are fixed in 2.0.1139, the plan-conformance pass was clean. Also fixed on sight: the ticket''s number field was empty and now reads 240. Version-line note: this lane stamped 2.0.1137, 2.0.1138 and 2.0.1139 while lane 142 landed 2.0.1136 and the 2.1.x merge beside it.', NULL, '2026-10-19 16:07:59.925322+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2166, 240, 'comment', 'owner', 'Done: an Android language switch shows one loader face from the tap to the settled app. The cover''s record now binds every face value it is sent, the shipped colours survive Android''s parser, and the 3T read both directions with no black span and no refusal. Three commits on lane/t240: 2.0.1137, 2.0.1138, 2.0.1139.', NULL, '2026-10-19 16:08:14.153287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2167, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 16:08:14.18182+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2168, 16, 'comment', 'owner', 'OWNER ORDER 2026-10-19: the widgets answer makes each platform''s extent explicit - two labeled bullets, iOS first, Android second, in the shape ''iOS: Yes, on the home screen and the lock screen.'' then ''Android: Yes, on the home screen.'' The shipped facts were right; the single unnamed line read as a claim for both. The copy change lands in this row before it closes; the plan doc records the decision shift.', NULL, '2026-10-19 16:19:10.648585+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2169, 16, 'comment', 'owner', 'OnePlus 3T re-read, mock build 2.1.2 from uat (package id checked before install): the help modal lists the widgets question last, and the phone''s English locale reads "Are widgets supported?" The copy matches the catalogues; the Somali fix this locale cannot show stays pinned by the suite.
+
+The row did not expand on the 3T: repeated taps left it closed while the row above opens on demand, so the expanded Android answer was never on glass. That answer is the one thing this read could not confirm.', NULL, '2026-10-19 16:42:30.562758+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2170, 16, 'comment', 'owner', 'Adjudicated 2026-10-19: the finding is confirmed and blocks Done - three input channels, control rows expanding, no JS error. The row has never expanded on Android glass; the earlier contention reading masked it. Two steps reopen the row: the owner''s two-bullet answer (order in comment 2168) and the Android expansion root cause. Estimate rises 5 to 10 with steps 3 (2) and 4 (3).', NULL, '2026-10-19 16:43:34.09883+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2171, 251, 'activity', 'owner', NULL, 'created', '2026-10-19 16:43:34.150895+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2172, 251, 'activity', 'owner', NULL, 'parent', '2026-10-19 16:43:34.15276+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2173, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 16:43:34.15276+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 251, "value": "T-251"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2174, 252, 'activity', 'owner', NULL, 'created', '2026-10-19 16:43:34.186169+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2175, 252, 'activity', 'owner', NULL, 'parent', '2026-10-19 16:43:34.187544+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 16, "value": "T-142"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2176, 16, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 16:43:34.187544+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 252, "value": "T-252"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2177, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 16:43:34.220162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2178, 16, 'activity', 'owner', NULL, 'estimate', '2026-10-19 16:43:34.220162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "from": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2179, 16, 'comment', 'owner', 'Step 3 done: the widgets answer reads as two labeled lines, iOS first, in all six catalogues, one shared answer key per the entries'' own pattern (D142.11); the lock is re-taken, the pins ran red first, five mutations each turned the suite red, validate green. Commit 9e311b02, version 2.1.3.', NULL, '2026-10-19 16:55:41.762927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2180, 251, 'activity', 'owner', NULL, 'status', '2026-10-19 16:55:41.785894+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2181, 16, 'comment', 'owner', 'Step 4 done: the row was never dead - the 3T''s list already overflows its viewport closed, so the answer opened wholly below the fold and read as closed (the answer''s visible extent measured 1px at the clip edge). The open row now scrolls the list the minimum distance that reveals it. Glass proof on the 2.1.4 mock: one tap on the row at the fold and the labeled two-line answer sits fully inside the viewport, no manual scroll; tap again and it closes. Commit 63f8688b, version 2.1.4, with the diagnosis recorded as D142.12.', NULL, '2026-10-19 17:43:00.30293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2182, 252, 'activity', 'owner', NULL, 'status', '2026-10-19 17:43:00.345497+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2183, 16, 'comment', 'owner', 'major: components/modals/Help.tsx revealOffset is blind to the list''s live scroll offset: it measures the fold as viewportHeight in content coordinates (the scrollY 0 case) and scrollReveal passes scrollReveal''s y as an absolute scrollTo target, so a user who has already scrolled down and opens a row whose bottom sits above the real fold (scrollY + viewportHeight) has the list yanked backward to row.y + row.height - viewportHeight, breaking both the minimum-distance and rows-that-fit-never-move contracts the comment above handleRowLayout states; track the offset in an onScroll ref and return null (or clamp) when it is at or past the target. The fold-reveal suite cannot see it because its mocked ScrollView carries no offset. Reproduction arithmetic: viewport 1190, user scrolled to 195, a grown row whose bottom is 1250 fits the fold at 1385, yet scrollTo fires at y 60.', NULL, '2026-10-19 17:51:52.227082+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2184, 16, 'comment', 'owner', 'clean: the rest of the range verifies. Labels are Latin and the six answers byte-for-byte pinned in shared/__tests__/help.test.ts, so no line can swap or drop silently and the shape test pins iOS first; the sentences are each locale''s already-landed wording and Thai keeps its no-period convention. The shared help.a.widgets key mirrors the cutoff entry''s both-platforms pattern, the closed key union plus grep leave no dangling help.a.widgets.ios/.android references anywhere, and the catalog-lock re-take matches its sha256(JSON.stringify(en)) mechanism with catalogLock.test.ts green. The catalogGates skip is scoped to the one key inside the RTL-only Latin gate with the owner ruling dated. Versions agree (package.json and app.json 2.1.2 to 2.1.3 to 2.1.4 per commit; android/app/build.gradle is gitignored prebuild output, so commits cannot carry it). In a throwaway worktree at 63f8688b: 113 tests green across the five touched suites, tsc exit 0, biome clean on all thirteen touched files, and a mutation probe that lets null-openQuestion layouts through was killed by the pre-press layout assertion, so the closing-row guard is real coverage.', NULL, '2026-10-19 17:51:52.263928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2185, 16, 'comment', 'owner', 'clean: the two labeled lines match comment 2168''s shape byte for byte in all six catalogues, iOS first, labels Latin, each platform''s extent kept; the shared key mirrors the cutoff entry and the two per-platform keys are gone from the tree; the lock re-takes with no diff; all five named mutations turn the suite red and red-first reconstructs red at each parent commit; yarn validate green at 100 percent coverage; both commits are fix-typed patches, 2.1.3 then 2.1.4.', NULL, '2026-10-19 17:52:01.185882+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2186, 16, 'comment', 'owner', 'nitpick: shared/__tests__/catalogGates.test.ts:165 the RTL exemption skips the whole help.a.widgets key, wider than the Latin labels the owner''s order forces. The plan''s own wording says the key alone, and the byte-for-byte pins turn red on any Latin beyond iOS and Android, so the residue stays guarded.', NULL, '2026-10-19 17:52:01.196741+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2187, 16, 'comment', 'owner', 'minor: components/modals/Help.tsx the fold reveal never reads the list''s scroll offset, so the rows-that-fit-never-move half of D142.12 holds only while the list sits at the top. The 3T''s 41px closed overflow keeps every positive reveal target above the closed scroll maximum, so no shipped geometry can trip it, but a list that overflows further (larger text, shorter viewport) can scroll a fitting bottom row into view, tap it, and still see the list jump up. Track the offset from onScroll and skip when the open bottom already sits inside the window.', NULL, '2026-10-19 17:52:01.198672+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2188, 16, 'comment', 'owner', 'Audit closed 2026-10-19: both reviews adjudicated. The shared finding (the fold guard read the viewport as the fold, so a scrolled list could jump backward for an answer already on glass) is fixed in 21a6a6b1 with red-first unit and wiring tests and a killed-mutation pass on both guards; the gate-scope nitpick stands as the plan specifies, the byte pins guarding the residue. Merged to uat as 6ca537b1 (2.1.5). Delivered: the widgets question with the owner''s two-line answer naming each platform''s extent (iOS first), the answer opening into view on every phone, glass-proven on the 3T.', NULL, '2026-10-19 18:01:14.980509+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2189, 16, 'activity', 'owner', NULL, 'status', '2026-10-19 18:01:15.044794+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 
 
 --
@@ -7755,6 +7939,10 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (15
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (18, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (19, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (17, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (240, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (16, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (7, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (8, 2, 3);
 
 
 --
@@ -7762,7 +7950,6 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (17
 --
 
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (1, 1, 1, NULL, 25, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (386, 1, 3, '2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban). Runs behind rows 37 to 39', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (2, 2, 1, NULL, 42, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (3, 3, 1, NULL, 51, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (4, 4, 1, NULL, 54, NULL, NULL, NULL, NULL, NULL);
@@ -7884,11 +8071,10 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (21, 21, 1, NULL, 144, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (5, 5, 1, NULL, 70, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (388, 2, 3, '2026-10-14 to v3.0 by the owner''s priority call (pairs with row 25; the owner will say go). Research is complete, no code is written. **Two rulings taken 2026-10-09: the app asks for a location permission, and completely offline permits a yearly fetch, cached.** The other five questions are deferred', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (386, 1, 3, '2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban)', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (390, 3, 3, '2026-10-12: waiting on Expo reviewing and releasing PR `expo/expo#51291` (https://github.com/expo/expo/pull/51291); the corrections land with the first re-pin past that release, which is also when the local patch dies. Three corrections to `expo-location`''s own code, so Expo maintains them and this ', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (392, 4, 3, '2026-10-14 by the owner: the owner has no access to the OnePlus 3T, which the one leftover needs. The owner paused app work part way through, and the rest waits on the owner''s word. Hygiene check DONE. Patch questions answered: all three patches are still needed (detail: `ai/UPSTREAM-PRS.md`). The q', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (394, 6, 3, '2026-10-18, investigation and preparation closed, audited (two reviewer passes, 7 findings adjudicated): the closeout landed clean - the 3T as-found proof confirms row 135''s delivered face on the installed 2.0.1067 fleettest build (the fleettest Next Prayer Dark widget read as found under app Arabic', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (396, 7, 3, 'FOLDED into row 127 2026-10-18 by the owner''s order (the owner read them as the same thing; the delivered version-delta verdict carries in as 127''s technical ground, and 127 owns the single Android-widgets-on-OEMs question: prove-then-fix and the keep-or-withdraw ruling). Was DEFERRED, owner says go', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (398, 8, 3, 'PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The bo', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (400, 9, 3, '2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. Row 123 FOLDED HERE 2026-10-18 by the owner''s order: its delivered version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or upd', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (402, 10, 3, 'DISCARDED BY THE OWNER''S ORDER 2026-10-18: the iOS widget countdown keeps the system timer interval and its current Latin face in every language, no letters, no formatting change, no investigation lane - the owner recalled the earlier attempts'' timeline havoc (hundreds of timeline updates) and chose', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (404, 11, 3, '2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. THE OWNER''S UPDATE 2026-10-18: item (1), the gallery''s en fallback, is ANSWERED and closed - row 117''s live reads proved the English base fallback is th', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -7916,6 +8102,9 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (528, 18, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (539, 16, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (410, 14, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (398, 8, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (396, 7, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (546, 240, 1, NULL, 240, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -7944,10 +8133,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (1, 140);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (1, 145);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 137);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 144);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 135);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 143);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (8, 134);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (8, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 133);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (10, 132);
@@ -8234,22 +8419,22 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 172);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 2);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 135);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 143);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (8, 134);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (8, 143);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (8, 8);
 
 
 --
 -- Data for Name: issue_link; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (1, 96, 1, 'blocks', '2026-10-18 23:35:57.734059+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (2, 94, 1, 'blocks', '2026-10-18 23:35:57.746314+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (3, 86, 3, 'blocks', '2026-10-18 23:35:57.759062+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (4, 126, 6, 'blocks', '2026-10-18 23:35:57.77362+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (5, 120, 6, 'blocks', '2026-10-18 23:35:57.785219+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (6, 112, 6, 'blocks', '2026-10-18 23:35:57.800755+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (7, 9, 7, 'blocks', '2026-10-18 23:35:57.810192+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (8, 122, 8, 'blocks', '2026-10-18 23:35:57.818717+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (9, 120, 8, 'blocks', '2026-10-18 23:35:57.828259+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (10, 113, 8, 'blocks', '2026-10-18 23:35:57.83738+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (11, 120, 10, 'blocks', '2026-10-18 23:35:57.847167+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (12, 112, 10, 'blocks', '2026-10-18 23:35:57.854372+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (13, 127, 14, 'blocks', '2026-10-18 23:35:57.86245+00');
@@ -8519,18 +8704,56 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (141, 14, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.802847+00', '2026-10-19 13:04:07.414329+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (377, 20, 4, 'Done', 'completed', '2026-10-19 09:15:25.215306+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (134, 7, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.696495+00', '2026-10-19 09:15:25.314665+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (379, 7, 1, 'Backlog', 'backlog', '2026-10-19 09:15:25.314665+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (380, 8, 1, 'Backlog', 'backlog', '2026-10-19 09:15:25.35815+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (381, 233, 4, 'Done', 'completed', '2026-10-19 09:16:01.339966+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (383, 241, 10, 'Deferred', 'started', '2026-10-19 09:16:24.717+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (382, 240, 6, 'Planning', 'unstarted', '2026-10-19 09:16:24.693+00', '2026-10-19 09:37:32.632965+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (384, 240, 1, 'Backlog', 'backlog', '2026-10-19 09:37:32.632965+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (385, 16, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.215052+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (386, 242, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.427+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (387, 243, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.459+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (378, 18, 10, 'Deferred', 'started', '2026-10-19 09:15:25.255368+00', '2026-10-19 13:04:07.335488+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (388, 18, 4, 'Done', 'completed', '2026-10-19 13:04:07.335488+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (379, 7, 1, 'Backlog', 'backlog', '2026-10-19 09:15:25.314665+00', '2026-10-19 13:43:53.344576+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (380, 8, 1, 'Backlog', 'backlog', '2026-10-19 09:15:25.35815+00', '2026-10-19 13:56:24.877864+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (386, 242, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.427+00', '2026-10-19 14:02:10.573741+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (387, 243, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.459+00', '2026-10-19 15:17:42.161844+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (389, 14, 4, 'Done', 'completed', '2026-10-19 13:04:07.414329+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (384, 240, 1, 'Backlog', 'backlog', '2026-10-19 09:37:32.632965+00', '2026-10-19 13:43:53.342612+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (385, 16, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.215052+00', '2026-10-19 13:43:53.349457+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (391, 7, 6, 'Planning', 'unstarted', '2026-10-19 13:43:53.344576+00', '2026-10-19 13:51:17.761252+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (395, 7, 2, 'Ready', 'unstarted', '2026-10-19 13:51:17.761252+00', '2026-10-19 13:51:28.282362+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (392, 16, 6, 'Planning', 'unstarted', '2026-10-19 13:43:53.349457+00', '2026-10-19 13:53:07.897685+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (397, 16, 2, 'Ready', 'unstarted', '2026-10-19 13:53:07.897685+00', '2026-10-19 13:53:14.690938+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (393, 244, 1, 'Backlog', 'backlog', '2026-10-19 13:50:51.212+00', '2026-10-19 13:54:00.246942+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (399, 244, 4, 'Done', 'completed', '2026-10-19 13:54:00.246942+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (394, 245, 1, 'Backlog', 'backlog', '2026-10-19 13:50:51.254+00', '2026-10-19 13:54:25.607009+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (400, 245, 4, 'Done', 'completed', '2026-10-19 13:54:25.607009+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (396, 7, 3, 'In progress', 'started', '2026-10-19 13:51:28.282362+00', '2026-10-19 13:54:49.02873+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (401, 7, 4, 'Done', 'completed', '2026-10-19 13:54:49.02873+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (403, 242, 4, 'Done', 'completed', '2026-10-19 14:02:10.573741+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (402, 8, 6, 'Planning', 'unstarted', '2026-10-19 13:56:24.877864+00', '2026-10-19 14:04:18.291494+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (406, 8, 2, 'Ready', 'unstarted', '2026-10-19 14:04:18.291494+00', '2026-10-19 14:04:27.075743+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (404, 246, 1, 'Backlog', 'backlog', '2026-10-19 14:03:55.282+00', '2026-10-19 14:04:56.296982+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (408, 246, 4, 'Done', 'completed', '2026-10-19 14:04:56.296982+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (405, 247, 1, 'Backlog', 'backlog', '2026-10-19 14:03:55.319+00', '2026-10-19 14:05:27.772167+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (409, 247, 4, 'Done', 'completed', '2026-10-19 14:05:27.772167+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (407, 8, 3, 'In progress', 'started', '2026-10-19 14:04:27.075743+00', '2026-10-19 14:05:27.812225+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (410, 8, 4, 'Done', 'completed', '2026-10-19 14:05:27.812225+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (390, 240, 6, 'Planning', 'unstarted', '2026-10-19 13:43:53.342612+00', '2026-10-19 14:07:38.773553+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (413, 240, 2, 'Ready', 'unstarted', '2026-10-19 14:07:38.773553+00', '2026-10-19 14:07:55.851178+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (411, 248, 2, 'Ready', 'unstarted', '2026-10-19 14:07:28.909+00', '2026-10-19 14:18:51.181318+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (415, 248, 4, 'Done', 'completed', '2026-10-19 14:18:51.181318+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (416, 243, 4, 'Done', 'completed', '2026-10-19 15:17:42.161844+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (417, 250, 4, 'Done', 'completed', '2026-10-19 15:25:49.792+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (398, 16, 3, 'In progress', 'started', '2026-10-19 13:53:14.690938+00', '2026-10-19 15:31:54.356411+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (412, 249, 2, 'Ready', 'unstarted', '2026-10-19 14:07:28.945+00', '2026-10-19 15:50:15.752879+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (419, 249, 4, 'Done', 'completed', '2026-10-19 15:50:15.752879+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (414, 240, 3, 'In progress', 'started', '2026-10-19 14:07:55.851178+00', '2026-10-19 15:54:39.17928+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (420, 240, 8, 'Audit', 'started', '2026-10-19 15:54:39.17928+00', '2026-10-19 16:08:14.179702+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (421, 240, 4, 'Done', 'completed', '2026-10-19 16:08:14.179702+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (418, 16, 8, 'Audit', 'started', '2026-10-19 15:31:54.356411+00', '2026-10-19 16:43:34.217443+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (422, 251, 1, 'Backlog', 'backlog', '2026-10-19 16:43:34.138+00', '2026-10-19 16:55:41.780823+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (425, 251, 4, 'Done', 'completed', '2026-10-19 16:55:41.780823+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (423, 252, 1, 'Backlog', 'backlog', '2026-10-19 16:43:34.181+00', '2026-10-19 17:43:00.340976+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (426, 252, 4, 'Done', 'completed', '2026-10-19 17:43:00.340976+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (424, 16, 3, 'In progress', 'started', '2026-10-19 16:43:34.217443+00', '2026-10-19 18:01:15.041134+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (427, 16, 4, 'Done', 'completed', '2026-10-19 18:01:15.041134+00', NULL);
 
 
 --
@@ -8699,13 +8922,6 @@ INSERT INTO public.issue_watcher (issue_id, user_id, subscribed, created_at) VAL
 -- Data for Name: issue_worklog; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-
-
---
--- Data for Name: jwks; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.jwks (id, public_key, private_key, created_at, expires_at, alg, crv) VALUES ('DRzYOV0dkBE4tdrFSCLKrw4s6uhJPTe3', '{"crv":"Ed25519","kty":"OKP","x":"Kr_CWEXwObjNGiHCWcdg79kVsL5kqo1oBwTnEF9978w"}', '"bf9eb7f6c461b68c56df10c1840c646c7aed9eecd51a437b245f13a62fc984fe22565f884d23f2c6c32848ae6472d53c307b51b41ace968897c0d84cc6d6a5a4d7f05f41912396d3fd88e23080ef3e4daeb10b2588b44e01fe40e9f36eab1875437205016dc92869a8de6132799bee0b37d599f942fd516dae3c69bf2472ed76cd94a0ff172e9ae4f712b6dba970f4d5b7d5c4610feff9f2e81811d75bc266c867c76271a30d4130e0"', '2026-10-19 01:51:47.222', NULL, 'EdDSA', 'Ed25519');
 
 
 --
@@ -9170,13 +9386,6 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 
 
 --
--- Data for Name: oauth_resource; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refresh_token_ttl, signing_algorithm, signing_key_id, allowed_scopes, custom_claims, dpop_bound_access_tokens_required, disabled, created_at, updated_at, policy_version, metadata) VALUES ('j2cUOaRNa1oOPSnYWhxlQbW8g94S4tNK', 'http://localhost:3000/mcp', 'http://localhost:3000/mcp', NULL, NULL, NULL, NULL, NULL, NULL, false, false, '2026-10-18 23:34:48.947', '2026-10-18 23:34:48.947', 1, NULL);
-
-
---
 -- Data for Name: passkey; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -9186,7 +9395,7 @@ INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refre
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 244, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 253, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -9440,35 +9649,6 @@ wait for me. Research only. Follow the rules in moonsighting-research.md. Never 
 time. Never store or commit the API key. Merge and push nothing without my go-ahead.
 ```
 ', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 6144, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.780332+00', '2026-10-19 01:45:39.780332+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (13, 1, NULL, 'T-142', '# T-142
-
-## Goal
-
-One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
-
-## Scope ruling (owner, 2026-10-19)
-
-The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible, and the ticket waits in Backlog for the next multi-ticket run.
-
-## Decisions
-
-- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
-- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
-- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
-
-## Steps
-
-1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
-2. (device, weight 3) The device read: atlas first, the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
-
-## Story points
-
-5 = 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
-
-## Proof
-
-The help test red before the entry and green after it, the catalog lock test green, and both device reads as comments.
-', NULL, NULL, '{}', false, false, false, NULL, NULL, 12288, 6, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.144981+00', '2026-10-19 13:09:19.973446+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (6, 1, NULL, 'Plan: #144', '# The board as a portable product, take three: It''s a Plan
 
 # Ticket 144: The board as a portable product, take three: It''s a Plan
@@ -10444,6 +10624,324 @@ Findings answered: (1) call-site greps now match call forms and name the sites. 
 - Step 5: `yarn validate` in `$HOME/repos/rn.athan.uk` exits 0; `git -C $HOME/repos/rn.athan.uk status --porcelain` prints nothing.
 - Step 6: `get_issue_by_number` per new row shows the Upstream column and a set `Waiting on`; the hook row shows Backlog with its `Waiting on`; the lane worktree''s diff of `ai/UPSTREAM-PRS.md` shows the row numbers.
 - Step 7: the gate comment names the staged title, body, head, base and the two go-side commands; `gh pr list --repo expo/expo --head "<fork>:feat/widgets-device-locale" --json number` returns an empty list.', NULL, NULL, '{}', false, false, false, NULL, NULL, 11264, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:10:52.480587+00', '2026-10-19 08:36:58.633668+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (14, 1, NULL, 'T-123', '# T-123
+
+## Goal
+
+The owner ordered 2026-10-16 a re-evaluation of Android widget refresh on OEM phones against SDK 58 stable. This row''s earlier lane delivered the version-delta verdict before the fold into row 127: no upstream entry changes the alarm, the receiver, the watchdog or the update path. Row 127 closed 2026-10-19 on the owner''s ruling: Android widgets are kept as they are, OEM drift accepted. This lane verifies the verdict''s repo referents still stand, records what remains open (nothing beyond the delivered ruling), and closes the row.
+
+## Decisions taken
+
+- 2026-10-19, no device step. Row 127''s ruling settles prove-then-fix, and the delivered verdict means the preview-era drift evidence transfers to the pinned 58.0.20 without re-measurement. Challenged: fresh post-stable proof on the four phones is new evidence, not a re-run. It measures refresh-path code the verdict says is unchanged, so it cannot change a ruling already closed. A measurement that cannot change the decision is not bought. The ruling stands.
+- 2026-10-19, the re-evaluation itself is not re-run. The fold made row 127''s records this row''s technical ground, and re-running delivered work is forbidden. This row verifies referents and records the verdict.
+- 2026-10-19, no repo change and no commit. Verification writes its records on the board; the repo needs nothing, and a commit would bump the version line for no change.
+
+## Files
+
+All reads, no edits:
+
+- `package.json`: the expo-widgets pin, exact.
+- `patches/expo-widgets+58.0.20.patch`: the local patch the pin carries.
+- `app.json`: the R8 keeps on androidx.work and androidx.glance.
+- `modules/widgetrefresh/index.ts` and `modules/widgetrefresh/android/`: the repo''s own refresh chain.
+- `stores/widget.ts`: the JS push and flip chain.
+- git history of `modules/widgetrefresh` and the patch: unchanged since the verdict era.
+
+## Design
+
+Approach: confirm each referent the verdict rests on, then record. The invariant: the delivered verdict names four upstream surfaces (alarm, receiver, watchdog, update path), and the repo pins their carrier at 58.0.20 exact with a local patch, so the verdict transfers while the pin, the patch, the R8 keeps and the repo''s own module stand unchanged.
+
+Alternatives rejected:
+
+- Re-run the version delta against upstream sources: re-runs delivered work.
+- Device-proof the OEM fleet (the 3T, the 8T, the S23, the Find X8): cannot change the closed ruling, see Decisions taken.
+- A hardening pass (row 127''s two reserve fixes): the owner ruled ship as-is, so hardening is withdrawn by the ruling.
+
+## Steps
+
+1. Step 1: the verification record. Confirm the pin, the patch, the R8 keeps and the widgetrefresh history, and log the reads in one comment on this row. 1 point.
+2. Step 2: the verdict and the close. The agent-ruled comment (argued twice, dated 2026-10-19), the closing comment, the move to Done. 1 point.
+
+## Risks
+
+- A referent has moved: the pin bumped, the patch dropped, the R8 keeps stripped, or widgetrefresh touched after 2026-09-26. Then the transfer breaks and this row stops being a close; it reopens as a delta check on what moved. Any read disagreeing shows it.
+- A later expo-widgets release fixes OEM drift. The repo pins exact, so it does not reach the app without a re-pin ticket. That is the owner''s call, outside this row.
+- The raw drift measurements died with their sessions; the surviving record is the fold record''s summary (comment 2066 here, row 127''s status note). Acceptable: that summary is the board''s record, and this row''s verdict comment cites it.
+
+## Proof
+
+- `grep ''"expo-widgets"'' package.json` prints `"expo-widgets": "58.0.20"`.
+- `ls patches/` lists `expo-widgets+58.0.20.patch`.
+- `grep -c ''androidx.work'' app.json` prints 1.
+- `git log --oneline --date=short --pretty=format:''%h %ad %s'' -- modules/widgetrefresh` shows its newest commit dated 2026-09-26.
+- `yarn validate` exits 0.
+- The agent-ruled comment dated 2026-10-19 on this row carries the twice-argued ruling; the closing comment names the verdict and the ruling it rests on.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 13312, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:50:38.735204+00', '2026-10-19 13:50:38.735204+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (15, 1, NULL, 'T-126', '# T-126
+
+## Goal
+
+An OWNER-LED row once had to read as awaiting the owner in a read-only mirror this repository no
+longer carries (deleted with the queue migration, commits 4c413365 and ae0d2081). The live board is
+the itsaplan stack in board/, which renders the columns itself. This ticket verifies that every
+part of the old reading guarantee has a live carrier, records the mapping, and closes without
+rebuilding removed code or patching the product.
+
+## Decisions taken
+
+- 2026-10-19: Close by verification, extend nothing. The generator, template, reader and tests this
+  ticket names were deleted with the queue migration; the guarantee now lives on the itsaplan board
+  and in the workflow skill''s pinned discipline. Why: every part of the old contract has a carrier.
+- 2026-10-19: Do not patch the itsaplan product. Its column UI is upstream''s; a product change is a
+  VERSION bump in board/env, an owner-visible deployment change. Why: the owner approved the product
+  as it renders (T-144) and approved the migration that removed the mirror.
+- 2026-10-19: Record the mapping on the board, not in the repository. Why: a ticket''s documentation
+  lives on the board and dies with the ticket; the discipline''s pinned home is
+  .agents/skills/board-workflow/SKILL.md, which already carries items 6 and 9 and the picking rule.
+
+## Files
+
+- .agents/skills/board-workflow/SKILL.md: read, for integrity items 6 and 9 and the picking rule.
+- board/README.md: read, for what board/ carries after the migration.
+- No file changes. git status on uat stays clean.
+
+## Design
+
+The old mirror''s OWNER-LED contract, and where each part lives now:
+
+| The old guarantee (reader.mjs, deleted in 4c413365) | Carrier today | Read by |
+| --- | --- | --- |
+| OWNER-LED mapped to a visible Owner-led column | the Awaiting Owner column, id 9, stateType started, renamed in 3d500a0f | get_project columns |
+| an awaitingOwner row rendered its waiting-on line | the Waiting on custom field, id 3, set in the same breath as the move (integrity item 6) | get_issue fields, SKILL.md item 6 |
+| an OWNER-LED row never counted as done | the picking rule: only Backlog and Ready are runnable, Done alone is completed | SKILL.md picking rule |
+| parked never reads active, active never parked | integrity item 9 | SKILL.md item 9 |
+| the badge and need-your-decision affordance | the itsaplan product''s own column and card UI, owner-approved in T-144 | the board at localhost:3001 |
+
+The invariant: a row awaiting the owner sits in a started, never-completed column, carries its
+question in Waiting on, and is never picked.
+
+Alternatives rejected: patching the product (upstream UI, owner-visible change, needs an owner
+order); rebuilding the mirror (undoes the owner-approved migration); duplicating the discipline into
+board/README.md (a second home for one rule goes stale; the skill is the pinned home).
+
+## Steps
+
+1. Verify the carriers on the live board and write the measured evidence into this doc''s Proof
+   section. 1 point.
+2. Close: the closing comment names what replaced the mirror and what a reader can trust, both
+   subtasks ticked, the ticket in Done. 1 point.
+
+Total: 2 points.
+
+## Risks
+
+- A future reader wants the old mirror back. This doc names the commits that removed it and the
+  owner order a rebuild would need.
+- The product changes its column semantics upstream. The board is pinned by VERSION in board/env;
+  an upgrade re-runs this verification.
+
+## Proof
+
+Each probe, with its measured result from 2026-10-19:
+
+- get_project on T returns the column { id: 9, name: "Awaiting Owner", stateType: "started", position: 6 }. Measured: exact match.
+- list_custom_fields on T returns { id: 3, name: "Waiting on", fieldType: "text" }. Measured: exact match.
+- grep -n on .agents/skills/board-workflow/SKILL.md: line 150 carries integrity item 6, line 153 carries item 9, line 48 carries the picking rule (Backlog or Ready, and nothing else). Measured: all three found.
+- git status --porcelain in the main tree: zero lines, branch uat. Measured: clean, the repository carries no change from this ticket.
+- git show --stat 4c413365 lists board/reader.mjs, board/server.mjs, board/index.html and board/tests/reader.test.mjs as deletions. Measured: confirmed. The deleted reader mapped OWNER-LED to the Owner-led column at its lines 23 to 24 and flagged awaitingOwner rows with their waiting-on line at lines 287 to 305, which is the contract the table above maps.
+', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 14336, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:03:55.219198+00', '2026-10-19 18:10:40.983293+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (16, 1, NULL, 'T-240', '# T-240 - Language switch on Android: a black span replaces the loader face for half a second
+
+## Goal
+
+A language switch on Android shows one loader face from the tap to the settled app. The half-second
+black span with the white spinner that today follows the loader''s disappearance is gone.
+
+## Root cause, named from source
+
+The cover''s face record never binds the values the JS side sends.
+
+`SwitchCoverFace` (modules/switchcover/android/.../SwitchCoverModule.kt) declares its eight
+properties without `@Field`. expo-modules-core''s record conversion drops every property that lacks
+that annotation - `RecordTypeConverter.kt`, both the reflection and the introspectable strategy:
+`property.findAnnotation<Field>() ?: return@mapNotNull null` - and because no property is
+`@Required`, nothing throws. The converter constructs the record through its all-defaults
+constructor and resolves the call successfully. The cover therefore paints its defaults on every
+show, on every build since the module landed: `backgroundColor #000000`, `spinnerColor #ffffff`,
+`lineText ""`. That is precisely the owner''s span: a fully black background, a white spinner, and
+no line.
+
+The phone''s timeline: the tap reveals the JS loader (purple, spinner, line); the commit converges
+behind it; `showSwitchCover` adds the cover over the activity''s content - in default black;
+`Updates.reloadAsync()` tears the React context down, so the purple JS loader vanishes ("after
+about half a second the loading face disappears"); the black-defaults cover alone holds the
+restart span, about half a second on the 3T; the new context''s first content commit lifts the
+cover and the app appears.
+
+Why the earlier pass missed it: the #141 device read that certified the cover ran before the
+audit''s history rewrite (bf40b662), and its continuous face is the JS loader plus the purple
+window background - the span a non-showing cover leaves. The rewritten module, the one that
+ships, never met a device again. 2.0.1131 is the first production build the owner exercised
+since, and its cover shows - wrongly.
+
+## The second defect, found by the first device read (2026-10-19)
+
+With `@Field` binding the values, they finally reach `Color.parseColor` - and the line colour
+`''#fff''` is a shorthand that parser rejects outright (it accepts only `#RRGGBB` and `#AARRGGBB`).
+The show aborted on every switch, five refusals in the read''s logcat, and the bare-relaunch
+fallback hid it: the frames showed no black span, but through the loader holding the span itself,
+not through the cover. The fix ships the white expanded (`''#ffffff''`), and the face suite pins
+every shipped colour to the two parseable hex forms. The loader''s own `''#fff''` is untouched:
+React Native parses shorthand, so its pixels never move.
+
+## The fix
+
+Annotate every property of `SwitchCoverFace` with `@Field` and `@Required`.
+
+- `@Field` binds each JS key to its property, so the cover paints the loader''s own purple,
+  spinner colour and size, line text, colour, size and offsets.
+- `@Required` turns any future contract drift into a loud refusal: the call rejects,
+  `commitLanguagePreference`''s existing catch logs the cover-refused warning and relaunches
+  bare onto the purple window background, instead of silently painting a black face. Silent
+  defaults are exactly what hid this for two versions.
+- The constructor defaults stay: `ObjectConstructorFactory` builds the instance through the
+  all-optional constructor before setting fields, and the defaults are unreachable once every
+  field is required.
+
+No JS changes beside the line colour''s expansion: `coverOptionsFor`''s shape, the binding and the
+commit path are untouched, so the not-switching path is byte-identical and iOS is untouched by
+construction.
+
+## The guard, red first
+
+`modules/switchcover/__tests__/faceRecord.test.ts`, the source-reading pattern of
+`shared/__tests__/versionLockstep.test.ts`: it reads the Kotlin record and the TS
+`SwitchCoverOptions` and pins the parse contract - the record implements `Record`, every
+property carries `@Field` and `@Required`, and the property names equal the TS type''s keys.
+It fails on today''s tree and passes after the fix. The mutation pass strips one annotation and
+renames one property and watches the guard redden. Jest cannot compile Kotlin, so the unit
+guard pins the contract structurally and the device step witnesses the pixels. The face suite
+(`stores/__tests__/languageReloadFace.test.ts`) pins the expanded white and the two parseable
+hex forms on every shipped colour, red against the shorthand.
+
+## Steps
+
+1. **Step 1: the cover''s face record binds the loader''s values** (2 points) - the guard suite
+   red on uat, the `@Field`/`@Required` annotations, the guard green, the mutation pass,
+   `yarn validate`. Landed in 2.0.1137.
+2. **Step 2: the 3T shows one loader face across both switch directions** (3 points, device,
+   fresh session) - build the branch through build-mock.zsh, drive en to ar and ar to en (and
+   one same-record switch for the instant path), record the span, read the frames: no black
+   frame with a white spinner between the loader and the settled app, both directions, and no
+   cover-refused warning in logcat. The release-variant build also proves the annotation lookup
+   survives R8. The first run found the shorthand defect and failed on the warning; it re-runs
+   on the branch carrying Step 3.
+3. **Step 3: the cover''s shipped line colour is Android-parseable** (2 points) - the face suite
+   red against the shorthand, the white expanded at the call site, the parse-safety assertion on
+   every shipped colour, the mutation pass, `yarn validate`. Landed in 2.0.1138.
+
+## Alternatives rejected
+
+- Passing a bare Map instead of a Record: the JSI path still has to name the keys, and a
+  missing key then renders as null into a colour parse that throws. The Record with required
+  fields keeps the contract typed and the refusal loud.
+- Defaults set to the loader''s palette instead of `@Required`: a second copy of the palette
+  that drifts silently, and a partial parse would still paint a half-right face. The refusal is
+  the honest failure.
+- Re-showing the cover from the new context: the cover already spans the restart; the bug was
+  only ever the values it painted.
+- Normalising shorthand hex in the Kotlin module: native code to forgive one lazy literal at one
+  call site; the palette''s owner is the JS side, so the expansion lives there.
+
+## Risks
+
+- Kotlin reflection under R8: stock expo modules parse `@Field` records in release builds
+  (expo-updates'' own `ReloadScreenOptions` among them), and the device step runs the
+  release-variant mock build, so the witness covers it.
+- The record''s constructor defaults remain black: unreachable behind `@Required`, and the
+  guard pins the annotations, so removing one reddens the suite.
+- A future colour added to the face in shorthand: the face suite''s parse-safety assertion
+  reddens on the first run.
+
+## Points
+
+Step 1 is 2 (code), Step 2 is 3 (device), Step 3 is 2 (code): 7 on the ticket.', NULL, NULL, '{}', false, false, false, NULL, NULL, 15360, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:07:10.63516+00', '2026-10-19 15:25:49.744677+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (13, 1, NULL, 'T-142', '# T-142
+
+## Goal
+
+One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
+
+## Scope ruling (owner, 2026-10-19)
+
+The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible.
+
+## Decisions
+
+- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
+- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
+- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
+- D142.9 (2026-10-19): the help suite''s owner-cut test is rewritten, not deleted: its /widget/i ban dates from the earlier cut and the owner''s 2026-10-19 order supersedes it, while the "How far ahead" ban stays. Why: the suite can never go green with the ban standing, and deleting the test would drop the surviving cut''s guard.
+- D142.10 (2026-10-19): the answer is one key per platform, grounded in what ships - iOS "Yes, on the home screen and the lock screen." (PrayerWidget home sizes plus the PrayerLockWidget and ExtrasLockWidget kinds), Android "Yes, on the home screen." (plugins/androidWidgetGrid.js; Android has no lock-screen widgets). Why: D142.8 names where the widgets appear, and the two platforms do not appear in the same places.
+- D142.11 (2026-10-19, owner order, comment 2168): the answer names each platform''s extent as two labeled lines, "iOS: Yes, on the home screen and the lock screen." then "Android: Yes, on the home screen.", in every locale, the platform labels Latin and the sentences in each language''s own voice; the entry carries one shared answer key, `help.a.widgets`, replacing the two per-platform keys. Why: the owner''s two lines are identical on both platforms, and the entries'' own shared-answer pattern (`help.a.stopAfterRestart`, `help.a.cutoff`) fits identical copy, so one key cannot drift between platforms.
+- D142.12 (2026-10-19, defect comment 2169): the widgets row never "failed to expand" on Android - the press worked, but the 3T''s list already overflows the ScrollView''s viewport closed (content 1231px against the 0.62 cap''s 1190px), so the last row''s panel grew wholly below the fold and read as closed (the answer text''s visible extent measured 1px at the clip edge). The fix scrolls the list, from the opened row''s own layout report, the minimum distance that brings the answer''s bottom inside the viewport; rows that fit never move. Why: the fold is where the answer is hidden, so the reveal belongs to the open, and the minimum scroll keeps every screen that never had the defect pixel-identical.
+
+## Files
+
+Changed:
+- `shared/help.ts` - one entry appended last, both platforms pointing at the shared answer key, with its own one-line comment (a support question, not a cause).
+- `shared/i18n/en.ts` - two keys after `help.a.cutoff`: `help.q.widgets`, `help.a.widgets` (the two labeled lines, D142.11).
+- `shared/i18n/ar.ts`, `ms.ts`, `so.ts`, `hi.ts`, `th.ts` - the same two keys each, translated (copy in Design).
+- `shared/i18n/catalog-lock.json` - re-taken with `yarn i18n:lock` in the same commit.
+- `shared/__tests__/help.test.ts` - the new assertions land red first; the owner-cut test rewritten per D142.9.
+- `package.json`, `app.json` - the version bump (the worktree carries no `android/`; it is gitignored).
+
+Changed by D142.12: `components/modals/Help.tsx` (rows report their layout; the open row scrolls the list the minimum distance that reveals its answer) and `components/modals/helpReveal.ts` (the scroll seam).
+Read, no change: `scripts/catalog-lock.mjs`, `shared/__tests__/catalogGates.test.ts`, `shared/__tests__/catalogLock.test.ts`, `components/modals/__tests__/Help.test.tsx` (iterates getHelpTopics, so it adapts itself).
+
+## Design
+
+The entry mirrors the cut-off question''s shape (D142.11): one shared question key, one shared answer key on both platforms, no steps, no action. The answer is two labeled lines, the platforms'' labels Latin in every locale.
+
+English copy, pinned:
+- `help.q.widgets`: "Are widgets supported?"
+- `help.a.widgets`: "iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen."
+
+Translated copy (question, the shared answer):
+- ar: هل الأدوات مدعومة؟ / iOS: نعم، على الشاشة الرئيسية وشاشة القفل.\nAndroid: نعم، على الشاشة الرئيسية.
+- ms: Adakah widget disokong? / iOS: Ya, pada skrin utama dan skrin kunci.\nAndroid: Ya, pada skrin utama.
+- so: Ma widget waa la taageerayaa? / iOS: Haa, shaashadda bilowga iyo shaashadda xiritaanka.\nAndroid: Haa, shaashadda bilowga.
+- hi: क्या विजेट समर्थित हैं? / iOS: हाँ, होम स्क्रीन और लॉक स्क्रीन पर।\nAndroid: हाँ, होम स्क्रीन पर।
+- th: รองรับวิดเจ็ตหรือไม่? / iOS: ใช่ บนหน้าจอหลักและหน้าจอล็อก\nAndroid: ใช่ บนหน้าจอหลัก
+
+The catalog gates bound every translation: the exact en key set, no Athan brand bytes, no English echo, no English echo, and the length budget. The ar Latin-script gate skips `help.a.widgets` alone, because the owner''s order keeps the platform labels Latin there. The lock goes stale the moment en gains keys, so `yarn i18n:lock` runs in the same commit, before `yarn validate`.
+
+The new tests: the widget topic lands last with no steps and no action on both platforms; the answer is pinned byte for byte in all six catalogues, labels and line order included; both platforms read the same shared text; every locale''s two keys carry no instruction vocabulary (per-locale word lists, so the ban is observable in non-Latin scripts too); the English question stays one sentence and each labeled line one sentence. The mutation pass swaps the line order, drops one locale''s labels, translates the ar labels, points one platform at another answer, and plants an instruction word in one translation: each mutation must turn the suite red.
+
+Alternatives rejected: keeping the two per-platform keys for the two-line answer (both keys would carry identical bytes, so the pair invites drift for nothing; superseded by D142.11); reusing the What''s New widget vocabulary (it echoes English untranslated in every locale under an echo exemption, so it names no screens in translation); any position but last (D142.7).
+
+## Steps
+
+1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
+2. (device, weight 3) The device read: atlas first (`e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md`), the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
+3. (code, weight 2) The owner''s two-bullet answer (comment 2168): both platforms'' extents as two labeled lines in all six catalogues, the shared answer key, the lock re-taken, red-then-green pins with a mutation pass.
+4. (device, weight 3) The Android expansion defect (comment 2169): root cause from source plus a rendering test, the fix, glass proof on the 3T.
+
+## Story points
+
+10 = 2 + 3 + 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
+
+## Risks
+
+- The rewritten cut-ban could read as reversing an owner cut. D142.6 and D142.9 record the 2026-10-19 order that supersedes it, and the "How far ahead" ban stays guarded.
+- A translation that echoes its English fails the echo gate. The pinned translations differ in every locale, and the non-Latin scripts carry no Latin bytes for the ar gate.
+- The catalog lock goes stale the moment en changes. `yarn i18n:lock` is re-taken in the same commit, before validate.
+- The answer could drift into instruction in a later edit. The new tests pin the exact copy, assert no steps and no action, and sweep instruction vocabulary in all six locales.
+
+## Proof
+
+The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 12288, 10, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.144981+00', '2026-10-19 17:28:08.71215+00');
 
 
 --
@@ -10463,6 +10961,9 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (11, 15, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:25:02.38744+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (12, 17, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:10:52.522238+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (13, 16, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.173968+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (14, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:50:38.784628+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (15, 8, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:03:55.255679+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (16, 240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:07:17.14174+00');
 
 
 --
@@ -12684,6 +13185,362 @@ A ticket that cannot start before another is finished carries a `blocked_by` rel
 relation is a warning, never a lock: the lane rule is that a ticket is runnable when every issue
 that blocks it is Done.
 ', NULL, 'book', '{}', false, false, false, NULL, 1024, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:47:05.998109+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (38, 15, 2, NULL, 'T-126', '# T-126
+
+## Goal
+
+An OWNER-LED row once had to read as awaiting the owner in a read-only mirror this repository no
+longer carries (deleted with the queue migration, commits 4c413365 and ae0d2081). The live board is
+the itsaplan stack in board/, which renders the columns itself. This ticket verifies that every
+part of the old reading guarantee has a live carrier, records the mapping, and closes without
+rebuilding removed code or patching the product.
+
+## Decisions taken
+
+- 2026-10-19: Close by verification, extend nothing. The generator, template, reader and tests this
+  ticket names were deleted with the queue migration; the guarantee now lives on the itsaplan board
+  and in the workflow skill''s pinned discipline. Why: every part of the old contract has a carrier.
+- 2026-10-19: Do not patch the itsaplan product. Its column UI is upstream''s; a product change is a
+  VERSION bump in board/env, an owner-visible deployment change. Why: the owner approved the product
+  as it renders (T-144) and approved the migration that removed the mirror.
+- 2026-10-19: Record the mapping on the board, not in the repository. Why: a ticket''s documentation
+  lives on the board and dies with the ticket; the discipline''s pinned home is
+  .agents/skills/board-workflow/SKILL.md, which already carries items 6 and 9 and the picking rule.
+
+## Files
+
+- .agents/skills/board-workflow/SKILL.md: read, for integrity items 6 and 9 and the picking rule.
+- board/README.md: read, for what board/ carries after the migration.
+- No file changes. git status on uat stays clean.
+
+## Design
+
+The old mirror''s OWNER-LED contract, and where each part lives now:
+
+| The old guarantee (reader.mjs, deleted in 4c413365) | Carrier today | Read by |
+| --- | --- | --- |
+| OWNER-LED mapped to a visible Owner-led column | the Awaiting Owner column, id 9, stateType started, renamed in 3d500a0f | get_project columns |
+| an awaitingOwner row rendered its waiting-on line | the Waiting on custom field, id 3, set in the same breath as the move (integrity item 6) | get_issue fields, SKILL.md item 6 |
+| an OWNER-LED row never counted as done | the picking rule: only Backlog and Ready are runnable, Done alone is completed | SKILL.md picking rule |
+| parked never reads active, active never parked | integrity item 9 | SKILL.md item 9 |
+| the badge and need-your-decision affordance | the itsaplan product''s own column and card UI, owner-approved in T-144 | the board at localhost:3001 |
+
+The invariant: a row awaiting the owner sits in a started, never-completed column, carries its
+question in Waiting on, and is never picked.
+
+Alternatives rejected: patching the product (upstream UI, owner-visible change, needs an owner
+order); rebuilding the mirror (undoes the owner-approved migration); duplicating the discipline into
+board/README.md (a second home for one rule goes stale; the skill is the pinned home).
+
+## Steps
+
+1. Verify the carriers on the live board and write the measured evidence into this doc''s Proof
+   section. 1 point.
+2. Close: the closing comment names what replaced the mirror and what a reader can trust, both
+   subtasks ticked, the ticket in Done. 1 point.
+
+Total: 2 points.
+
+## Risks
+
+- A future reader wants the old mirror back. This doc names the commits that removed it and the
+  owner order a rebuild would need.
+- The product changes its column semantics upstream. The board is pinned by VERSION in board/env;
+  an upgrade re-runs this verification.
+
+## Proof
+
+Each probe, with its measured result from 2026-10-19:
+
+- get_project on T returns the column { id: 9, name: "Awaiting Owner", stateType: "started", position: 6 }. Measured: exact match.
+- list_custom_fields on T returns { id: 3, name: "Waiting on", fieldType: "text" }. Measured: exact match.
+- grep -n on .agents/skills/board-workflow/SKILL.md: line 150 carries integrity item 6, line 153 carries item 9, line 48 carries the picking rule (Backlog or Ready, and nothing else). Measured: all three found.
+- git status --porcelain in the main tree: zero lines, branch uat. Measured: clean, the repository carries no change from this ticket.
+- git show --stat 4c413365 lists board/reader.mjs, board/server.mjs, board/index.html and board/tests/reader.test.mjs as deletions. Measured: confirmed. The deleted reader mapped OWNER-LED to the Owner-led column at its lines 23 to 24 and flagged awaitingOwner rows with their waiting-on line at lines 287 to 305, which is the contract the table above maps.
+', NULL, 'file-text', '{}', false, false, false, NULL, 14336, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:04:56.254977+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (39, 16, 1, NULL, 'T-240', '# T-240 - Language switch on Android: a black span replaces the loader face for half a second
+
+## Goal
+
+A language switch on Android shows one loader face from the tap to the settled app. The half-second
+black span with the white spinner that today follows the loader''s disappearance is gone.
+
+## Root cause, named from source
+
+The cover''s face record never binds the values the JS side sends.
+
+`SwitchCoverFace` (modules/switchcover/android/.../SwitchCoverModule.kt) declares its eight
+properties without `@Field`. expo-modules-core''s record conversion drops every property that lacks
+that annotation - `RecordTypeConverter.kt`, both the reflection and the introspectable strategy:
+`property.findAnnotation<Field>() ?: return@mapNotNull null` - and because no property is
+`@Required`, nothing throws. The converter constructs the record through its all-defaults
+constructor and resolves the call successfully. The cover therefore paints its defaults on every
+show, on every build since the module landed: `backgroundColor #000000`, `spinnerColor #ffffff`,
+`lineText ""`. That is precisely the owner''s span: a fully black background, a white spinner, and
+no line.
+
+The phone''s timeline: the tap reveals the JS loader (purple, spinner, line); the commit converges
+behind it; `showSwitchCover` adds the cover over the activity''s content - in default black;
+`Updates.reloadAsync()` tears the React context down, so the purple JS loader vanishes ("after
+about half a second the loading face disappears"); the black-defaults cover alone holds the
+restart span, about half a second on the 3T; the new context''s first content commit lifts the
+cover and the app appears.
+
+Why the earlier pass missed it: the #141 device read that certified the cover ran before the
+audit''s history rewrite (bf40b662), and its continuous face is the JS loader plus the purple
+window background - the span a non-showing cover leaves. The rewritten module, the one that
+ships, never met a device again. 2.0.1131 is the first production build the owner exercised
+since, and its cover shows - wrongly.
+
+## The fix
+
+Annotate every property of `SwitchCoverFace` with `@Field` and `@Required`.
+
+- `@Field` binds each JS key to its property, so the cover paints the loader''s own purple,
+  spinner colour and size, line text, colour, size and offsets.
+- `@Required` turns any future contract drift into a loud refusal: the call rejects,
+  `commitLanguagePreference`''s existing catch logs the cover-refused warning and relaunches
+  bare onto the purple window background, instead of silently painting a black face. Silent
+  defaults are exactly what hid this for two versions.
+- The constructor defaults stay: `ObjectConstructorFactory` builds the instance through the
+  all-optional constructor before setting fields, and the defaults are unreachable once every
+  field is required.
+
+No JS changes: `coverOptionsFor`, the binding and the commit path are untouched, so the
+not-switching path is byte-identical and iOS is untouched by construction.
+
+## The guard, red first
+
+`modules/switchcover/__tests__/faceRecord.test.ts`, the source-reading pattern of
+`shared/__tests__/versionLockstep.test.ts`: it reads the Kotlin record and the TS
+`SwitchCoverOptions` and pins the parse contract - the record implements `Record`, every
+property carries `@Field` and `@Required`, and the property names equal the TS type''s keys.
+It fails on today''s tree and passes after the fix. The mutation pass strips one annotation and
+renames one property and watches the guard redden. Jest cannot compile Kotlin, so the unit
+guard pins the contract structurally and the device step witnesses the pixels.
+
+## Steps
+
+1. **Step 1: the cover''s face record binds the loader''s values** (2 points) - the guard suite
+   red on uat, the `@Field`/`@Required` annotations, the guard green, the mutation pass,
+   `yarn validate`.
+2. **Step 2: the 3T shows one loader face across both switch directions** (3 points, device,
+   fresh session) - build the branch through build-mock.zsh, drive en to ar and ar to en (and
+   one same-record switch for the instant path), record the span, read the frames: no black
+   frame with a white spinner between the loader and the settled app, both directions. The
+   release-variant build also proves the annotation lookup survives R8. Logcat holds no
+   cover-refused warning.
+
+## Alternatives rejected
+
+- Passing a bare Map instead of a Record: the JSI path still has to name the keys, and a
+  missing key then renders as null into a colour parse that throws. The Record with required
+  fields keeps the contract typed and the refusal loud.
+- Defaults set to the loader''s palette instead of `@Required`: a second copy of the palette
+  that drifts silently, and a partial parse would still paint a half-right face. The refusal is
+  the honest failure.
+- Re-showing the cover from the new context: the cover already spans the restart; the bug was
+  only ever the values it painted.
+
+## Risks
+
+- Kotlin reflection under R8: stock expo modules parse `@Field` records in release builds
+  (expo-updates'' own `ReloadScreenOptions` among them), and the device step runs the
+  release-variant mock build, so the witness covers it.
+- The record''s constructor defaults remain black: unreachable behind `@Required`, and the
+  guard pins the annotations, so removing one reddens the suite.
+
+## Points
+
+Step 1 is 2 (code), Step 2 is 3 (device): 5 on the ticket.', NULL, NULL, '{}', false, false, false, NULL, 15360, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:07:10.63516+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (40, 16, 2, NULL, 'T-240', '# T-240 - Language switch on Android: a black span replaces the loader face for half a second
+
+## Goal
+
+A language switch on Android shows one loader face from the tap to the settled app. The half-second
+black span with the white spinner that today follows the loader''s disappearance is gone.
+
+## Root cause, named from source
+
+The cover''s face record never binds the values the JS side sends.
+
+`SwitchCoverFace` (modules/switchcover/android/.../SwitchCoverModule.kt) declares its eight
+properties without `@Field`. expo-modules-core''s record conversion drops every property that lacks
+that annotation - `RecordTypeConverter.kt`, both the reflection and the introspectable strategy:
+`property.findAnnotation<Field>() ?: return@mapNotNull null` - and because no property is
+`@Required`, nothing throws. The converter constructs the record through its all-defaults
+constructor and resolves the call successfully. The cover therefore paints its defaults on every
+show, on every build since the module landed: `backgroundColor #000000`, `spinnerColor #ffffff`,
+`lineText ""`. That is precisely the owner''s span: a fully black background, a white spinner, and
+no line.
+
+The phone''s timeline: the tap reveals the JS loader (purple, spinner, line); the commit converges
+behind it; `showSwitchCover` adds the cover over the activity''s content - in default black;
+`Updates.reloadAsync()` tears the React context down, so the purple JS loader vanishes ("after
+about half a second the loading face disappears"); the black-defaults cover alone holds the
+restart span, about half a second on the 3T; the new context''s first content commit lifts the
+cover and the app appears.
+
+Why the earlier pass missed it: the #141 device read that certified the cover ran before the
+audit''s history rewrite (bf40b662), and its continuous face is the JS loader plus the purple
+window background - the span a non-showing cover leaves. The rewritten module, the one that
+ships, never met a device again. 2.0.1131 is the first production build the owner exercised
+since, and its cover shows - wrongly.
+
+## The second defect, found by the first device read (2026-10-19)
+
+With `@Field` binding the values, they finally reach `Color.parseColor` - and the line colour
+`''#fff''` is a shorthand that parser rejects outright (it accepts only `#RRGGBB` and `#AARRGGBB`).
+The show aborted on every switch, five refusals in the read''s logcat, and the bare-relaunch
+fallback hid it: the frames showed no black span, but through the loader holding the span itself,
+not through the cover. The fix ships the white expanded (`''#ffffff''`), and the face suite pins
+every shipped colour to the two parseable hex forms. The loader''s own `''#fff''` is untouched:
+React Native parses shorthand, so its pixels never move.
+
+## The fix
+
+Annotate every property of `SwitchCoverFace` with `@Field` and `@Required`.
+
+- `@Field` binds each JS key to its property, so the cover paints the loader''s own purple,
+  spinner colour and size, line text, colour, size and offsets.
+- `@Required` turns any future contract drift into a loud refusal: the call rejects,
+  `commitLanguagePreference`''s existing catch logs the cover-refused warning and relaunches
+  bare onto the purple window background, instead of silently painting a black face. Silent
+  defaults are exactly what hid this for two versions.
+- The constructor defaults stay: `ObjectConstructorFactory` builds the instance through the
+  all-optional constructor before setting fields, and the defaults are unreachable once every
+  field is required.
+
+No JS changes beside the line colour''s expansion: `coverOptionsFor`''s shape, the binding and the
+commit path are untouched, so the not-switching path is byte-identical and iOS is untouched by
+construction.
+
+## The guard, red first
+
+`modules/switchcover/__tests__/faceRecord.test.ts`, the source-reading pattern of
+`shared/__tests__/versionLockstep.test.ts`: it reads the Kotlin record and the TS
+`SwitchCoverOptions` and pins the parse contract - the record implements `Record`, every
+property carries `@Field` and `@Required`, and the property names equal the TS type''s keys.
+It fails on today''s tree and passes after the fix. The mutation pass strips one annotation and
+renames one property and watches the guard redden. Jest cannot compile Kotlin, so the unit
+guard pins the contract structurally and the device step witnesses the pixels. The face suite
+(`stores/__tests__/languageReloadFace.test.ts`) pins the expanded white and the two parseable
+hex forms on every shipped colour, red against the shorthand.
+
+## Steps
+
+1. **Step 1: the cover''s face record binds the loader''s values** (2 points) - the guard suite
+   red on uat, the `@Field`/`@Required` annotations, the guard green, the mutation pass,
+   `yarn validate`. Landed in 2.0.1137.
+2. **Step 2: the 3T shows one loader face across both switch directions** (3 points, device,
+   fresh session) - build the branch through build-mock.zsh, drive en to ar and ar to en (and
+   one same-record switch for the instant path), record the span, read the frames: no black
+   frame with a white spinner between the loader and the settled app, both directions, and no
+   cover-refused warning in logcat. The release-variant build also proves the annotation lookup
+   survives R8. The first run found the shorthand defect and failed on the warning; it re-runs
+   on the branch carrying Step 3.
+3. **Step 3: the cover''s shipped line colour is Android-parseable** (2 points) - the face suite
+   red against the shorthand, the white expanded at the call site, the parse-safety assertion on
+   every shipped colour, the mutation pass, `yarn validate`. Landed in 2.0.1138.
+
+## Alternatives rejected
+
+- Passing a bare Map instead of a Record: the JSI path still has to name the keys, and a
+  missing key then renders as null into a colour parse that throws. The Record with required
+  fields keeps the contract typed and the refusal loud.
+- Defaults set to the loader''s palette instead of `@Required`: a second copy of the palette
+  that drifts silently, and a partial parse would still paint a half-right face. The refusal is
+  the honest failure.
+- Re-showing the cover from the new context: the cover already spans the restart; the bug was
+  only ever the values it painted.
+- Normalising shorthand hex in the Kotlin module: native code to forgive one lazy literal at one
+  call site; the palette''s owner is the JS side, so the expansion lives there.
+
+## Risks
+
+- Kotlin reflection under R8: stock expo modules parse `@Field` records in release builds
+  (expo-updates'' own `ReloadScreenOptions` among them), and the device step runs the
+  release-variant mock build, so the witness covers it.
+- The record''s constructor defaults remain black: unreachable behind `@Required`, and the
+  guard pins the annotations, so removing one reddens the suite.
+- A future colour added to the face in shorthand: the face suite''s parse-safety assertion
+  reddens on the first run.
+
+## Points
+
+Step 1 is 2 (code), Step 2 is 3 (device), Step 3 is 2 (code): 7 on the ticket.', NULL, NULL, '{}', false, false, false, NULL, 15360, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 15:25:49.744677+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (41, 13, 8, NULL, 'T-142', '# T-142
+
+## Goal
+
+One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
+
+## Scope ruling (owner, 2026-10-19)
+
+The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible.
+
+## Decisions
+
+- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
+- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
+- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
+- D142.9 (2026-10-19): the help suite''s owner-cut test is rewritten, not deleted: its /widget/i ban dates from the earlier cut and the owner''s 2026-10-19 order supersedes it, while the "How far ahead" ban stays. Why: the suite can never go green with the ban standing, and deleting the test would drop the surviving cut''s guard.
+- D142.10 (2026-10-19): the answer is one key per platform, grounded in what ships - iOS "Yes, on the home screen and the lock screen." (PrayerWidget home sizes plus the PrayerLockWidget and ExtrasLockWidget kinds), Android "Yes, on the home screen." (plugins/androidWidgetGrid.js; Android has no lock-screen widgets). Why: D142.8 names where the widgets appear, and the two platforms do not appear in the same places.
+
+## Files
+
+Changed:
+- `shared/help.ts` - one entry appended last, with its own one-line comment (a support question, not a cause).
+- `shared/i18n/en.ts` - three keys after `help.a.cutoff`: `help.q.widgets`, `help.a.widgets.ios`, `help.a.widgets.android`.
+- `shared/i18n/ar.ts`, `ms.ts`, `so.ts`, `hi.ts`, `th.ts` - the same three keys each, translated (copy in Design).
+- `shared/i18n/catalog-lock.json` - re-taken with `yarn i18n:lock` in the same commit.
+- `shared/__tests__/help.test.ts` - the new assertions land red first; the owner-cut test rewritten per D142.9.
+- `package.json`, `app.json` - the version bump (the worktree carries no `android/`; it is gitignored).
+
+Read, no change: `components/modals/Help.tsx` (the Topic row renders steps and action only when present), `scripts/catalog-lock.mjs`, `shared/__tests__/catalogGates.test.ts`, `shared/__tests__/catalogLock.test.ts`, `components/modals/__tests__/Help.test.tsx` (iterates getHelpTopics, so it adapts itself).
+
+## Design
+
+The entry mirrors the volume question''s shape: one shared question key, two platform answer keys, no steps, no action.
+
+English copy, pinned:
+- `help.q.widgets`: "Are widgets supported?"
+- `help.a.widgets.ios`: "Yes, on the home screen and the lock screen."
+- `help.a.widgets.android`: "Yes, on the home screen."
+
+Translated copy (question, ios answer, android answer):
+- ar: هل الأدوات مدعومة؟ / نعم، على الشاشة الرئيسية وشاشة القفل. / نعم، على الشاشة الرئيسية.
+- ms: Adakah widget disokong? / Ya, pada skrin utama dan skrin kunci. / Ya, pada skrin utama.
+- so: Ma widget-na waa la taageerayaa? / Haa, shaashadda bilowga iyo shaashadda xiritaanka. / Haa, shaashadda bilowga.
+- hi: क्या विजेट समर्थित हैं? / हाँ, होम स्क्रीन और लॉक स्क्रीन पर। / हाँ, होम स्क्रीन पर।
+- th: รองรับวิดเจ็ตหรือไม่? / ใช่ บนหน้าจอหลักและหน้าจอล็อก / ใช่ บนหน้าจอหลัก
+
+The catalog gates bound every translation: the exact en key set, no Athan brand bytes, no English echo, no Latin script in ar, and the length budget. The lock goes stale the moment en gains keys, so `yarn i18n:lock` runs in the same commit, before `yarn validate`.
+
+The new tests: the widget topic lands last with no steps and no action on both platforms; the English copy is pinned byte for byte; every locale''s three keys carry no instruction vocabulary (per-locale word lists, so the ban is observable in non-Latin scripts too); each English string is one sentence. The mutation pass removes the entry, moves it off last, adds steps to it, edits the pinned copy, and plants an instruction word in one translation: each mutation must turn the suite red.
+
+Alternatives rejected: one shared answer key (the platforms do not appear in the same places, and the volume entry sets the two-key precedent); reusing the What''s New widget vocabulary (it echoes English untranslated in every locale under an echo exemption, so it names no screens in translation); any position but last (D142.7).
+
+## Steps
+
+1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
+2. (device, weight 3) The device read: atlas first (`e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md`), the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
+
+## Story points
+
+5 = 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
+
+## Risks
+
+- The rewritten cut-ban could read as reversing an owner cut. D142.6 and D142.9 record the 2026-10-19 order that supersedes it, and the "How far ahead" ban stays guarded.
+- A translation that echoes its English fails the echo gate. The pinned translations differ in every locale, and the non-Latin scripts carry no Latin bytes for the ar gate.
+- The catalog lock goes stale the moment en changes. `yarn i18n:lock` is re-taken in the same commit, before validate.
+- The answer could drift into instruction in a later edit. The new tests pin the exact copy, assert no steps and no action, and sweep instruction vocabulary in all six locales.
+
+## Proof
+
+The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 15:31:54.194976+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (12, 3, 2, NULL, 'Working the board', '# Working the board
 
 Nothing here is edited by hand. Agents read and write the board through MCP, and the repository''s
@@ -13413,6 +14270,354 @@ The owner scrapped the original scope whole: no Widgets row in Settings, no OS g
 
 The help test red before the entry and green after it, the catalog lock test green, and both device reads as comments.
 ', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:09:19.973446+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (35, 14, 1, NULL, 'T-123', '# T-123
+
+## Goal
+
+The owner ordered 2026-10-16 a re-evaluation of Android widget refresh on OEM phones against SDK 58 stable. This row''s earlier lane delivered the version-delta verdict before the fold into row 127: no upstream entry changes the alarm, the receiver, the watchdog or the update path. Row 127 closed 2026-10-19 on the owner''s ruling: Android widgets are kept as they are, OEM drift accepted. This lane verifies the verdict''s repo referents still stand, records what remains open (nothing beyond the delivered ruling), and closes the row.
+
+## Decisions taken
+
+- 2026-10-19, no device step. Row 127''s ruling settles prove-then-fix, and the delivered verdict means the preview-era drift evidence transfers to the pinned 58.0.20 without re-measurement. Challenged: fresh post-stable proof on the four phones is new evidence, not a re-run. It measures refresh-path code the verdict says is unchanged, so it cannot change a ruling already closed. A measurement that cannot change the decision is not bought. The ruling stands.
+- 2026-10-19, the re-evaluation itself is not re-run. The fold made row 127''s records this row''s technical ground, and re-running delivered work is forbidden. This row verifies referents and records the verdict.
+- 2026-10-19, no repo change and no commit. Verification writes its records on the board; the repo needs nothing, and a commit would bump the version line for no change.
+
+## Files
+
+All reads, no edits:
+
+- `package.json`: the expo-widgets pin, exact.
+- `patches/expo-widgets+58.0.20.patch`: the local patch the pin carries.
+- `app.json`: the R8 keeps on androidx.work and androidx.glance.
+- `modules/widgetrefresh/index.ts` and `modules/widgetrefresh/android/`: the repo''s own refresh chain.
+- `stores/widget.ts`: the JS push and flip chain.
+- git history of `modules/widgetrefresh` and the patch: unchanged since the verdict era.
+
+## Design
+
+Approach: confirm each referent the verdict rests on, then record. The invariant: the delivered verdict names four upstream surfaces (alarm, receiver, watchdog, update path), and the repo pins their carrier at 58.0.20 exact with a local patch, so the verdict transfers while the pin, the patch, the R8 keeps and the repo''s own module stand unchanged.
+
+Alternatives rejected:
+
+- Re-run the version delta against upstream sources: re-runs delivered work.
+- Device-proof the OEM fleet (the 3T, the 8T, the S23, the Find X8): cannot change the closed ruling, see Decisions taken.
+- A hardening pass (row 127''s two reserve fixes): the owner ruled ship as-is, so hardening is withdrawn by the ruling.
+
+## Steps
+
+1. Step 1: the verification record. Confirm the pin, the patch, the R8 keeps and the widgetrefresh history, and log the reads in one comment on this row. 1 point.
+2. Step 2: the verdict and the close. The agent-ruled comment (argued twice, dated 2026-10-19), the closing comment, the move to Done. 1 point.
+
+## Risks
+
+- A referent has moved: the pin bumped, the patch dropped, the R8 keeps stripped, or widgetrefresh touched after 2026-09-26. Then the transfer breaks and this row stops being a close; it reopens as a delta check on what moved. Any read disagreeing shows it.
+- A later expo-widgets release fixes OEM drift. The repo pins exact, so it does not reach the app without a re-pin ticket. That is the owner''s call, outside this row.
+- The raw drift measurements died with their sessions; the surviving record is the fold record''s summary (comment 2066 here, row 127''s status note). Acceptable: that summary is the board''s record, and this row''s verdict comment cites it.
+
+## Proof
+
+- `grep ''"expo-widgets"'' package.json` prints `"expo-widgets": "58.0.20"`.
+- `ls patches/` lists `expo-widgets+58.0.20.patch`.
+- `grep -c ''androidx.work'' app.json` prints 1.
+- `git log --oneline --date=short --pretty=format:''%h %ad %s'' -- modules/widgetrefresh` shows its newest commit dated 2026-09-26.
+- `yarn validate` exits 0.
+- The agent-ruled comment dated 2026-10-19 on this row carries the twice-argued ruling; the closing comment names the verdict and the ruling it rests on.
+', NULL, NULL, '{}', false, false, false, NULL, 13312, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:50:38.735204+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (36, 13, 7, NULL, 'T-142', '# T-142
+
+## Goal
+
+One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
+
+## Scope ruling (owner, 2026-10-19)
+
+The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible.
+
+## Decisions
+
+- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
+- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
+- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
+- D142.9 (2026-10-19): the help suite''s owner-cut test is rewritten, not deleted: its /widget/i ban dates from the earlier cut and the owner''s 2026-10-19 order supersedes it, while the "How far ahead" ban stays. Why: the suite can never go green with the ban standing, and deleting the test would drop the surviving cut''s guard.
+- D142.10 (2026-10-19): the answer is one key per platform, grounded in what ships - iOS "Yes, on the home screen and the lock screen." (PrayerWidget home sizes plus LockPrayerWidget accessories), Android "Yes, on the home screen." (plugins/androidWidgetGrid.js; Android has no lock-screen widgets). Why: D142.8 names where the widgets appear, and the two platforms do not appear in the same places.
+
+## Files
+
+Changed:
+- `shared/help.ts` - one entry appended last, with its own one-line comment (a support question, not a cause).
+- `shared/i18n/en.ts` - three keys after `help.a.cutoff`: `help.q.widgets`, `help.a.widgets.ios`, `help.a.widgets.android`.
+- `shared/i18n/ar.ts`, `ms.ts`, `so.ts`, `hi.ts`, `th.ts` - the same three keys each, translated (copy in Design).
+- `shared/i18n/catalog-lock.json` - re-taken with `yarn i18n:lock` in the same commit.
+- `shared/__tests__/help.test.ts` - the new assertions land red first; the owner-cut test rewritten per D142.9.
+- `package.json`, `app.json` - the version bump (the worktree carries no `android/`; it is gitignored).
+
+Read, no change: `components/modals/Help.tsx` (the Topic row renders steps and action only when present), `scripts/catalog-lock.mjs`, `shared/__tests__/catalogGates.test.ts`, `shared/__tests__/catalogLock.test.ts`, `components/modals/__tests__/Help.test.tsx` (iterates getHelpTopics, so it adapts itself).
+
+## Design
+
+The entry mirrors the volume question''s shape: one shared question key, two platform answer keys, no steps, no action.
+
+English copy, pinned:
+- `help.q.widgets`: "Are widgets supported?"
+- `help.a.widgets.ios`: "Yes, on the home screen and the lock screen."
+- `help.a.widgets.android`: "Yes, on the home screen."
+
+Translated copy (question, ios answer, android answer):
+- ar: هل الأدوات مدعومة؟ / نعم، على الشاشة الرئيسية وشاشة القفل. / نعم، على الشاشة الرئيسية.
+- ms: Adakah widget disokong? / Ya, pada skrin utama dan skrin kunci. / Ya, pada skrin utama.
+- so: Ma widget-na waa la taageerayaa? / Haa, shaashadda bilowga iyo shaashadda xiritaanka. / Haa, shaashadda bilowga.
+- hi: क्या विजेट समर्थित हैं? / हाँ, होम स्क्रीन और लॉक स्क्रीन पर। / हाँ, होम स्क्रीन पर।
+- th: รองรับวิดเจ็ตหรือไม่? / ใช่ บนหน้าจอหลักและหน้าจอล็อก / ใช่ บนหน้าจอหลัก
+
+The catalog gates bound every translation: the exact en key set, no Athan brand bytes, no English echo, no Latin script in ar, and the length budget. The lock goes stale the moment en gains keys, so `yarn i18n:lock` runs in the same commit, before `yarn validate`.
+
+The new tests: the widget topic lands last with no steps and no action on both platforms; the English copy is pinned byte for byte; every locale''s three keys carry no instruction vocabulary (per-locale word lists, so the ban is observable in non-Latin scripts too); each English string is one sentence. The mutation pass removes the entry, moves it off last, adds steps to it, edits the pinned copy, and plants an instruction word in one translation: each mutation must turn the suite red.
+
+Alternatives rejected: one shared answer key (the platforms do not appear in the same places, and the volume entry sets the two-key precedent); reusing the What''s New widget vocabulary (it echoes English untranslated in every locale under an echo exemption, so it names no screens in translation); any position but last (D142.7).
+
+## Steps
+
+1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
+2. (device, weight 3) The device read: atlas first (`e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md`), the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
+
+## Story points
+
+5 = 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
+
+## Risks
+
+- The rewritten cut-ban could read as reversing an owner cut. D142.6 and D142.9 record the 2026-10-19 order that supersedes it, and the "How far ahead" ban stays guarded.
+- A translation that echoes its English fails the echo gate. The pinned translations differ in every locale, and the non-Latin scripts carry no Latin bytes for the ar gate.
+- The catalog lock goes stale the moment en changes. `yarn i18n:lock` is re-taken in the same commit, before validate.
+- The answer could drift into instruction in a later edit. The new tests pin the exact copy, assert no steps and no action, and sweep instruction vocabulary in all six locales.
+
+## Proof
+
+The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:53:01.765889+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (42, 13, 9, NULL, 'T-142', '# T-142
+
+## Goal
+
+One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
+
+## Scope ruling (owner, 2026-10-19)
+
+The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible.
+
+## Decisions
+
+- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
+- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
+- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
+- D142.9 (2026-10-19): the help suite''s owner-cut test is rewritten, not deleted: its /widget/i ban dates from the earlier cut and the owner''s 2026-10-19 order supersedes it, while the "How far ahead" ban stays. Why: the suite can never go green with the ban standing, and deleting the test would drop the surviving cut''s guard.
+- D142.10 (2026-10-19): the answer is one key per platform, grounded in what ships - iOS "Yes, on the home screen and the lock screen." (PrayerWidget home sizes plus the PrayerLockWidget and ExtrasLockWidget kinds), Android "Yes, on the home screen." (plugins/androidWidgetGrid.js; Android has no lock-screen widgets). Why: D142.8 names where the widgets appear, and the two platforms do not appear in the same places.
+- D142.11 (2026-10-19, owner order, comment 2168): the answer names each platform''s extent as two labeled lines, "iOS: Yes, on the home screen and the lock screen." then "Android: Yes, on the home screen.", in every locale, the platform labels Latin and the sentences in each language''s own voice; the entry carries one shared answer key, `help.a.widgets`, replacing the two per-platform keys. Why: the owner''s two lines are identical on both platforms, and the entries'' own shared-answer pattern (`help.a.stopAfterRestart`, `help.a.cutoff`) fits identical copy, so one key cannot drift between platforms.
+
+## Files
+
+Changed:
+- `shared/help.ts` - one entry appended last, both platforms pointing at the shared answer key, with its own one-line comment (a support question, not a cause).
+- `shared/i18n/en.ts` - two keys after `help.a.cutoff`: `help.q.widgets`, `help.a.widgets` (the two labeled lines, D142.11).
+- `shared/i18n/ar.ts`, `ms.ts`, `so.ts`, `hi.ts`, `th.ts` - the same two keys each, translated (copy in Design).
+- `shared/i18n/catalog-lock.json` - re-taken with `yarn i18n:lock` in the same commit.
+- `shared/__tests__/help.test.ts` - the new assertions land red first; the owner-cut test rewritten per D142.9.
+- `package.json`, `app.json` - the version bump (the worktree carries no `android/`; it is gitignored).
+
+Read, no change: `components/modals/Help.tsx` (the Topic row renders steps and action only when present), `scripts/catalog-lock.mjs`, `shared/__tests__/catalogGates.test.ts`, `shared/__tests__/catalogLock.test.ts`, `components/modals/__tests__/Help.test.tsx` (iterates getHelpTopics, so it adapts itself).
+
+## Design
+
+The entry mirrors the cut-off question''s shape (D142.11): one shared question key, one shared answer key on both platforms, no steps, no action. The answer is two labeled lines, the platforms'' labels Latin in every locale.
+
+English copy, pinned:
+- `help.q.widgets`: "Are widgets supported?"
+- `help.a.widgets`: "iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen."
+
+Translated copy (question, the shared answer):
+- ar: هل الأدوات مدعومة؟ / iOS: نعم، على الشاشة الرئيسية وشاشة القفل.\nAndroid: نعم، على الشاشة الرئيسية.
+- ms: Adakah widget disokong? / iOS: Ya, pada skrin utama dan skrin kunci.\nAndroid: Ya, pada skrin utama.
+- so: Ma widget waa la taageerayaa? / iOS: Haa, shaashadda bilowga iyo shaashadda xiritaanka.\nAndroid: Haa, shaashadda bilowga.
+- hi: क्या विजेट समर्थित हैं? / iOS: हाँ, होम स्क्रीन और लॉक स्क्रीन पर।\nAndroid: हाँ, होम स्क्रीन पर।
+- th: รองรับวิดเจ็ตหรือไม่? / iOS: ใช่ บนหน้าจอหลักและหน้าจอล็อก\nAndroid: ใช่ บนหน้าจอหลัก
+
+The catalog gates bound every translation: the exact en key set, no Athan brand bytes, no English echo, no English echo, and the length budget. The ar Latin-script gate skips `help.a.widgets` alone, because the owner''s order keeps the platform labels Latin there. The lock goes stale the moment en gains keys, so `yarn i18n:lock` runs in the same commit, before `yarn validate`.
+
+The new tests: the widget topic lands last with no steps and no action on both platforms; the answer is pinned byte for byte in all six catalogues, labels and line order included; both platforms read the same shared text; every locale''s two keys carry no instruction vocabulary (per-locale word lists, so the ban is observable in non-Latin scripts too); the English question stays one sentence and each labeled line one sentence. The mutation pass swaps the line order, drops one locale''s labels, translates the ar labels, points one platform at another answer, and plants an instruction word in one translation: each mutation must turn the suite red.
+
+Alternatives rejected: keeping the two per-platform keys for the two-line answer (both keys would carry identical bytes, so the pair invites drift for nothing; superseded by D142.11); reusing the What''s New widget vocabulary (it echoes English untranslated in every locale under an echo exemption, so it names no screens in translation); any position but last (D142.7).
+
+## Steps
+
+1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
+2. (device, weight 3) The device read: atlas first (`e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md`), the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
+3. (code, weight 2) The owner''s two-bullet answer (comment 2168): both platforms'' extents as two labeled lines in all six catalogues, the shared answer key, the lock re-taken, red-then-green pins with a mutation pass.
+4. (device, weight 3) The Android expansion defect (comment 2169): root cause from source plus a rendering test, the fix, glass proof on the 3T.
+
+## Story points
+
+10 = 2 + 3 + 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
+
+## Risks
+
+- The rewritten cut-ban could read as reversing an owner cut. D142.6 and D142.9 record the 2026-10-19 order that supersedes it, and the "How far ahead" ban stays guarded.
+- A translation that echoes its English fails the echo gate. The pinned translations differ in every locale, and the non-Latin scripts carry no Latin bytes for the ar gate.
+- The catalog lock goes stale the moment en changes. `yarn i18n:lock` is re-taken in the same commit, before validate.
+- The answer could drift into instruction in a later edit. The new tests pin the exact copy, assert no steps and no action, and sweep instruction vocabulary in all six locales.
+
+## Proof
+
+The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 16:54:40.735156+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (43, 13, 10, NULL, 'T-142', '# T-142
+
+## Goal
+
+One new question in the help modal about widget support, answered in one short sentence. Nothing anywhere teaches how to add a widget.
+
+## Scope ruling (owner, 2026-10-19)
+
+The owner scrapped the original scope whole: no Widgets row in Settings, no OS gallery surface, no Android pin module, no how-to card. The investigation record (comment 1979) stands as history; none of its three options is built. What remains is the question-only feature below, ordered as basic as possible.
+
+## Decisions
+
+- D142.6 (2026-10-19, owner): scrap the Widgets row and every surface the investigation offered. Why: the owner does not want to teach users how to add widgets, and neither platform exposes an open-gallery API.
+- D142.7 (2026-10-19): the question is one HELP_ENTRIES entry appended after `help.q.cutoff`, with no steps array and no action. Why: the entries are ordered by how often each is the cause, a support question is not a cause, so it goes last, and `ModalHelp` then needs no code change.
+- D142.8 (2026-10-19): draft copy pinned by the test - question "Are widgets supported?", answer one sentence naming where the widgets appear and nothing else. Why: the owner''s order is a compact question and a compact answer only.
+- D142.9 (2026-10-19): the help suite''s owner-cut test is rewritten, not deleted: its /widget/i ban dates from the earlier cut and the owner''s 2026-10-19 order supersedes it, while the "How far ahead" ban stays. Why: the suite can never go green with the ban standing, and deleting the test would drop the surviving cut''s guard.
+- D142.10 (2026-10-19): the answer is one key per platform, grounded in what ships - iOS "Yes, on the home screen and the lock screen." (PrayerWidget home sizes plus the PrayerLockWidget and ExtrasLockWidget kinds), Android "Yes, on the home screen." (plugins/androidWidgetGrid.js; Android has no lock-screen widgets). Why: D142.8 names where the widgets appear, and the two platforms do not appear in the same places.
+- D142.11 (2026-10-19, owner order, comment 2168): the answer names each platform''s extent as two labeled lines, "iOS: Yes, on the home screen and the lock screen." then "Android: Yes, on the home screen.", in every locale, the platform labels Latin and the sentences in each language''s own voice; the entry carries one shared answer key, `help.a.widgets`, replacing the two per-platform keys. Why: the owner''s two lines are identical on both platforms, and the entries'' own shared-answer pattern (`help.a.stopAfterRestart`, `help.a.cutoff`) fits identical copy, so one key cannot drift between platforms.
+- D142.12 (2026-10-19, defect comment 2169): the widgets row never "failed to expand" on Android - the press worked, but the 3T''s list already overflows the ScrollView''s viewport closed (content 1231px against the 0.62 cap''s 1190px), so the last row''s panel grew wholly below the fold and read as closed (the answer text''s visible extent measured 1px at the clip edge). The fix scrolls the list, from the opened row''s own layout report, the minimum distance that brings the answer''s bottom inside the viewport; rows that fit never move. Why: the fold is where the answer is hidden, so the reveal belongs to the open, and the minimum scroll keeps every screen that never had the defect pixel-identical.
+
+## Files
+
+Changed:
+- `shared/help.ts` - one entry appended last, both platforms pointing at the shared answer key, with its own one-line comment (a support question, not a cause).
+- `shared/i18n/en.ts` - two keys after `help.a.cutoff`: `help.q.widgets`, `help.a.widgets` (the two labeled lines, D142.11).
+- `shared/i18n/ar.ts`, `ms.ts`, `so.ts`, `hi.ts`, `th.ts` - the same two keys each, translated (copy in Design).
+- `shared/i18n/catalog-lock.json` - re-taken with `yarn i18n:lock` in the same commit.
+- `shared/__tests__/help.test.ts` - the new assertions land red first; the owner-cut test rewritten per D142.9.
+- `package.json`, `app.json` - the version bump (the worktree carries no `android/`; it is gitignored).
+
+Changed by D142.12: `components/modals/Help.tsx` (rows report their layout; the open row scrolls the list the minimum distance that reveals its answer) and `components/modals/helpReveal.ts` (the scroll seam).
+Read, no change: `scripts/catalog-lock.mjs`, `shared/__tests__/catalogGates.test.ts`, `shared/__tests__/catalogLock.test.ts`, `components/modals/__tests__/Help.test.tsx` (iterates getHelpTopics, so it adapts itself).
+
+## Design
+
+The entry mirrors the cut-off question''s shape (D142.11): one shared question key, one shared answer key on both platforms, no steps, no action. The answer is two labeled lines, the platforms'' labels Latin in every locale.
+
+English copy, pinned:
+- `help.q.widgets`: "Are widgets supported?"
+- `help.a.widgets`: "iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen."
+
+Translated copy (question, the shared answer):
+- ar: هل الأدوات مدعومة؟ / iOS: نعم، على الشاشة الرئيسية وشاشة القفل.\nAndroid: نعم، على الشاشة الرئيسية.
+- ms: Adakah widget disokong? / iOS: Ya, pada skrin utama dan skrin kunci.\nAndroid: Ya, pada skrin utama.
+- so: Ma widget waa la taageerayaa? / iOS: Haa, shaashadda bilowga iyo shaashadda xiritaanka.\nAndroid: Haa, shaashadda bilowga.
+- hi: क्या विजेट समर्थित हैं? / iOS: हाँ, होम स्क्रीन और लॉक स्क्रीन पर।\nAndroid: हाँ, होम स्क्रीन पर।
+- th: รองรับวิดเจ็ตหรือไม่? / iOS: ใช่ บนหน้าจอหลักและหน้าจอล็อก\nAndroid: ใช่ บนหน้าจอหลัก
+
+The catalog gates bound every translation: the exact en key set, no Athan brand bytes, no English echo, no English echo, and the length budget. The ar Latin-script gate skips `help.a.widgets` alone, because the owner''s order keeps the platform labels Latin there. The lock goes stale the moment en gains keys, so `yarn i18n:lock` runs in the same commit, before `yarn validate`.
+
+The new tests: the widget topic lands last with no steps and no action on both platforms; the answer is pinned byte for byte in all six catalogues, labels and line order included; both platforms read the same shared text; every locale''s two keys carry no instruction vocabulary (per-locale word lists, so the ban is observable in non-Latin scripts too); the English question stays one sentence and each labeled line one sentence. The mutation pass swaps the line order, drops one locale''s labels, translates the ar labels, points one platform at another answer, and plants an instruction word in one translation: each mutation must turn the suite red.
+
+Alternatives rejected: keeping the two per-platform keys for the two-line answer (both keys would carry identical bytes, so the pair invites drift for nothing; superseded by D142.11); reusing the What''s New widget vocabulary (it echoes English untranslated in every locale under an echo exemption, so it names no screens in translation); any position but last (D142.7).
+
+## Steps
+
+1. (code, weight 2) The entry and its copy: `help.q.widgets` with one answer key per platform in `shared/help.ts`, the six catalogues, `yarn i18n:lock` re-taken, red-then-green help coverage.
+2. (device, weight 3) The device read: atlas first (`e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md`), the help modal opened on the 3T and the owner''s iPhone, the new question transcribed, one comment each.
+3. (code, weight 2) The owner''s two-bullet answer (comment 2168): both platforms'' extents as two labeled lines in all six catalogues, the shared answer key, the lock re-taken, red-then-green pins with a mutation pass.
+4. (device, weight 3) The Android expansion defect (comment 2169): root cause from source plus a rendering test, the fix, glass proof on the 3T.
+
+## Story points
+
+10 = 2 + 3 + 2 + 3, one number in two places: the ticket''s estimate and the steps'' estimates.
+
+## Risks
+
+- The rewritten cut-ban could read as reversing an owner cut. D142.6 and D142.9 record the 2026-10-19 order that supersedes it, and the "How far ahead" ban stays guarded.
+- A translation that echoes its English fails the echo gate. The pinned translations differ in every locale, and the non-Latin scripts carry no Latin bytes for the ar gate.
+- The catalog lock goes stale the moment en changes. `yarn i18n:lock` is re-taken in the same commit, before validate.
+- The answer could drift into instruction in a later edit. The new tests pin the exact copy, assert no steps and no action, and sweep instruction vocabulary in all six locales.
+
+## Proof
+
+The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 17:28:08.71215+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (44, 15, 3, NULL, 'T-126', '# T-126
+
+## Goal
+
+An OWNER-LED row once had to read as awaiting the owner in a read-only mirror this repository no
+longer carries (deleted with the queue migration, commits 4c413365 and ae0d2081). The live board is
+the itsaplan stack in board/, which renders the columns itself. This ticket verifies that every
+part of the old reading guarantee has a live carrier, records the mapping, and closes without
+rebuilding removed code or patching the product.
+
+## Decisions taken
+
+- 2026-10-19: Close by verification, extend nothing. The generator, template, reader and tests this
+  ticket names were deleted with the queue migration; the guarantee now lives on the itsaplan board
+  and in the workflow skill''s pinned discipline. Why: every part of the old contract has a carrier.
+- 2026-10-19: Do not patch the itsaplan product. Its column UI is upstream''s; a product change is a
+  VERSION bump in board/env, an owner-visible deployment change. Why: the owner approved the product
+  as it renders (T-144) and approved the migration that removed the mirror.
+- 2026-10-19: Record the mapping on the board, not in the repository. Why: a ticket''s documentation
+  lives on the board and dies with the ticket; the discipline''s pinned home is
+  .agents/skills/board-workflow/SKILL.md, which already carries items 6 and 9 and the picking rule.
+
+## Files
+
+- .agents/skills/board-workflow/SKILL.md: read, for integrity items 6 and 9 and the picking rule.
+- board/README.md: read, for what board/ carries after the migration.
+- No file changes. git status on uat stays clean.
+
+## Design
+
+The old mirror''s OWNER-LED contract, and where each part lives now:
+
+| The old guarantee (reader.mjs, deleted in 4c413365) | Carrier today | Read by |
+| --- | --- | --- |
+| OWNER-LED mapped to a visible Owner-led column | the Awaiting Owner column, id 9, stateType started, renamed in 3d500a0f | get_project columns |
+| an awaitingOwner row rendered its waiting-on line | the Waiting on custom field, id 3, set in the same breath as the move (integrity item 6) | get_issue fields, SKILL.md item 6 |
+| an OWNER-LED row never counted as done | the picking rule: only Backlog and Ready are runnable, Done alone is completed | SKILL.md picking rule |
+| parked never reads active, active never parked | integrity item 9 | SKILL.md item 9 |
+| the badge and need-your-decision affordance | the itsaplan product''s own column and card UI, owner-approved in T-144 | the board at localhost:3001 |
+
+The invariant: a row awaiting the owner sits in a started, never-completed column, carries its
+question in Waiting on, and is never picked.
+
+Alternatives rejected: patching the product (upstream UI, owner-visible change, needs an owner
+order); rebuilding the mirror (undoes the owner-approved migration); duplicating the discipline into
+board/README.md (a second home for one rule goes stale; the skill is the pinned home).
+
+## Steps
+
+1. Verify the carriers on the live board and write the measured evidence into this doc''s Proof
+   section. 1 point.
+2. Close: the closing comment names what replaced the mirror and what a reader can trust, both
+   subtasks ticked, the ticket in Done. 1 point.
+
+Total: 2 points.
+
+## Risks
+
+- A future reader wants the old mirror back. This doc names the commits that removed it and the
+  owner order a rebuild would need.
+- The product changes its column semantics upstream. The board is pinned by VERSION in board/env;
+  an upgrade re-runs this verification.
+
+## Proof
+
+Each probe, with its measured result from 2026-10-19:
+
+- get_project on T returns the column { id: 9, name: "Awaiting Owner", stateType: "started", position: 6 }. Measured: exact match.
+- list_custom_fields on T returns { id: 3, name: "Waiting on", fieldType: "text" }. Measured: exact match.
+- grep -n on .agents/skills/board-workflow/SKILL.md: line 150 carries integrity item 6, line 153 carries item 9, line 48 carries the picking rule (Backlog or Ready, and nothing else). Measured: all three found.
+- git status --porcelain in the main tree: zero lines, branch uat. Measured: clean, the repository carries no change from this ticket.
+- git show --stat 4c413365 lists board/reader.mjs, board/server.mjs, board/index.html and board/tests/reader.test.mjs as deletions. Measured: confirmed. The deleted reader mapped OWNER-LED to the Owner-led column at its lines 23 to 24 and flagged awaitingOwner rows with their waiting-on line at lines 287 to 305, which is the contract the table above maps.
+', NULL, 'file-text', '{}', false, false, false, NULL, 14336, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 18:10:40.983293+00');
 
 
 --
@@ -13452,18 +14657,15 @@ INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "
 -- Data for Name: revision; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:217', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:222', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:219', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:215', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:209', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:227', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:240', 1, 11);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:229', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:218', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:216', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:223', 1, 5);
@@ -13474,20 +14676,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 13)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:225', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:243', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 81);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:45', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 114);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 70);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 128);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 36);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 154);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:224', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:47', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 37);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:240', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:10', 1, 37);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:48', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:12', 1, 35);
@@ -13499,8 +14699,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 32);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 36);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 38);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:22', 1, 32);
@@ -13510,10 +14710,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:114', 1, 38);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 46);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 30);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:246', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 40);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:25', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 51);
@@ -13525,7 +14723,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:68', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:117', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:213', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:26', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:39', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:226', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:57', 1, 29);
@@ -13564,7 +14761,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:44', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:62', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:106', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:34', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:74', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:63', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:126', 1, 32);
@@ -13588,7 +14784,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:128', 1, 28)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:66', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:91', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:55', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 30);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:248', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:77', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:5', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:37', 1, 29);
@@ -13597,8 +14793,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:78', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:115', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:67', 1, 36);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3163);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:243', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:228', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:214', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:95', 1, 34);
@@ -13609,9 +14804,28 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:14', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:102', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:81', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 29);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:250', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 34);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:251', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 29);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 42);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3234);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 
 
 --
@@ -13636,25 +14850,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 29);
 -- Data for Name: scim_user; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-
-
---
--- Data for Name: session; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('ZlvmsAMOJnTtKK40BTH3wK4PhQYm3jLB', '2026-10-25 23:35:13.442', 'Ckoz5BEagTjgxQxEudzCHhcQoIr4OJ2W', '2026-10-18 23:35:13.442', '2026-10-18 23:35:13.442', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('FU6daOSF1uwaQjRRDrl7D1tmgswyNdr2', '2026-10-25 23:36:51.543', 'WVu8RseHohXagAKTZy7JI9YXZcEoxIFF', '2026-10-18 23:36:51.543', '2026-10-18 23:36:51.543', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('KpwagJfUsffV07YkRqfazGQa8XMUEis8', '2026-10-25 23:48:01.523', 'HUSxHV9RzVWb3G58C1gmHVuN0QGgeFK4', '2026-10-18 23:48:01.526', '2026-10-18 23:48:01.526', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('JdSeL5ZT9zeYod2YPjAl00b8ENPXwIWw', '2026-10-25 23:48:30.123', 'iklVmnd5hfzFZeuI7ByMwq5hm527A0lX', '2026-10-18 23:48:30.123', '2026-10-18 23:48:30.123', '', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('aN87uon8vzPdAlv3cuYDrRhSSMOV1jwM', '2026-10-25 23:49:01.048', 'yP4RSYjUmuwgJQsrV73UO2h1vPMQ63oe', '2026-10-18 23:49:01.048', '2026-10-18 23:49:01.048', '', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('mUOM4qAe7LQmODEbObuh9bW6TUG3r6dy', '2026-10-25 23:49:23.483', 'VeBPe9Ixf0yG2tZXNcJpAjjI4nNFkLps', '2026-10-18 23:49:23.483', '2026-10-18 23:49:23.483', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('rLqwyEv25V37zNZ8eervo9znGTKAaSdq', '2026-10-25 23:49:49.312', 'J4o1HndsEECxHLJxgRx7R3SxlObthV1h', '2026-10-18 23:49:49.312', '2026-10-18 23:49:49.312', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('akB2Dwxh1Xra2F4Lri5veKLf1fP9cdTE', '2026-10-25 23:50:50.505', 'Fl9GVybdgSgupNldFAlGrYQfYRhValTd', '2026-10-18 23:50:50.505', '2026-10-18 23:50:50.505', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('UF3iILadveWAvxn5QrEjHh66SEhhEmtn', '2026-10-25 23:51:45.865', 'xJWmHgmxLvPQhKZAMYhppdDLBNxlcXzj', '2026-10-18 23:51:45.865', '2026-10-18 23:51:45.865', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('0dLI8dLl5vKYTgFCQHENbOGEeebENwsZ', '2026-10-25 23:59:59.077', 'paI3c7K3NisQjH9OtHA7sUam61JA8Yj6', '2026-10-18 23:59:59.077', '2026-10-18 23:59:59.077', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('t6HTWszqioNuXKTdz5Gu7GasjNanstgj', '2026-10-26 01:55:59.559', 'sRBsBFqMl7gm9dx0OYuxhSq9VVYXfPuy', '2026-10-19 01:55:59.559', '2026-10-19 01:55:59.559', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('mVzLp3DlqnnMn03ZllwTH2yRETwAJndK', '2026-10-26 02:05:28.855', '8YxEtq4cMUB1vz07t1BgUCGB7ZXg3hL4', '2026-10-19 02:05:28.856', '2026-10-19 02:05:28.856', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
-INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('NwDRkSkqDl4pUFHJzgf2sg3HghogT9fs', '2026-10-26 02:06:06.424', 'fiFjDWTX3Y3rqErRhGvCZNo2VnAQnioz', '2026-10-19 02:06:06.424', '2026-10-19 02:06:06.424', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 
 
 --
@@ -13892,7 +15087,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2051, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2189, true);
 
 
 --
@@ -13941,14 +15136,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 542, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 546, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 243, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 252, true);
 
 
 --
@@ -13969,7 +15164,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 389, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 427, true);
 
 
 --
@@ -14060,14 +15255,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 13, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 16, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 34, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 44, true);
 
 
 --
@@ -18452,5 +19647,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict xUBJ8DfA6EePnG8avQlZ6S7SJDZjhwz1WVNJzT4ABg8jFABYD3gdFef0odThk4K
+\unrestrict 2dH88Od0YglHCWMThXBRTd56qoa1xFDcSpvnv3BSekLf7vf1RuuTmtmPfUIm5zB
 

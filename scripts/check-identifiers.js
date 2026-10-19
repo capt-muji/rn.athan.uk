@@ -65,7 +65,11 @@ const MOST_DECIMALS_IN_A_POSITION = 8;
 const REGION = /\bbbox\b|bounding box/i;
 
 const isLondonPosition = (line) => {
-  const numbers = (line.match(PRECISE_DECIMAL) || []).map((text) => ({ text, value: Number(text) }));
+  // Clock seconds carry decimals that read as coordinates ('14:18:51.232737'), and dotted
+  // version numbers donate coordinate-shaped fragments ('2.0.1137' yields '0.1137'), so both
+  // shapes leave the line before a real decimal is looked for
+  const bare = line.replace(/:\d{2}\.\d{3,}/g, '').replace(/\b\d+\.\d+\.\d+\b/g, '');
+  const numbers = (bare.match(PRECISE_DECIMAL) || []).map((text) => ({ text, value: Number(text) }));
   if (numbers.length > MOST_DECIMALS_IN_A_POSITION || REGION.test(line)) return null;
   const latitudes = numbers.filter(({ value }) => value >= 51.2 && value <= 51.8);
   const longitudes = numbers.filter(({ value }) => Math.abs(value) <= 0.6);
