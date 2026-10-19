@@ -240,6 +240,18 @@ const androidProps = (over: Partial<PrayerWidgetAndroidProps>): PrayerWidgetAndr
   return { ...base, theme: 'light', size: 'small', ...over } as PrayerWidgetAndroidProps;
 };
 
+// A faithful v1 snapshot: v1 apps stamped v 1 and baked no strings, no day
+// footers, no rtl and no row ids, so every render runs through the layout's
+// own fallback words
+const v1Props = (over: Partial<PrayerWidgetAndroidProps>) => {
+  const { strings: _strings, rtl: _rtl, ...rest } = androidProps(over);
+  const days = rest.days.map(({ footer: _footer, ...day }) => ({
+    ...day,
+    rows: day.rows.map(({ id: _id, ...row }) => row),
+  }));
+  return { ...rest, v: 1, days };
+};
+
 const at = (date: string, time: string): number => createPrayerDatetime(date, time).getTime();
 
 describe('home widget renderer', () => {
@@ -550,37 +562,84 @@ describe('home widget renderer', () => {
     it('tolerates a v1 snapshot: no strings, no row ids, the English fallback renders', () => {
       // A snapshot written by a v1 app still sits in the store until the next
       // push overwrites it; the layout bakes its own English copy in that case
-      const { strings: _strings, ...legacy } = androidProps({});
-      const legacyRows = legacy.days.map((day) => ({
-        ...day,
-        rows: day.rows.map(({ id: _id, ...row }) => row),
-      }));
-      const legacySnapshot = { ...legacy, days: legacyRows };
-
       freezeNow(at(DAY_ONE, '14:08') + 30_000);
-      const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
+      const tree = renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' }));
 
       expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
       expect(textsOf(tree)).toContain('15:20');
+      // v1 days carry no footer: the builder's "Sat, 17 Oct 2026" label parses
+      expect(textsOf(tree)).toContain('Sat');
     });
 
     it('renders the v1 English fallback words with Latin digits under an ar device locale', () => {
       // v1 snapshots are English-only by shape: the unit words stay the baked
       // English literals, and the digits stay Latin
-      const { strings: _strings, ...legacy } = androidProps({});
-      const legacyRows = legacy.days.map((day) => ({
-        ...day,
-        rows: day.rows.map(({ id: _id, ...row }) => row),
-      }));
-      const legacySnapshot = { ...legacy, days: legacyRows };
-
       (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
       try {
         freezeNow(at(DAY_ONE, '14:08') + 30_000);
-        const tree = renderTree(layouts.PrayerWidget(legacySnapshot, { colorScheme: 'light' }));
+        const tree = renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' }));
 
         expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the v1 whole-hour face as one h group, no minutes run', () => {
+      // 14:20 to Asr's 15:20 is exactly one hour, so the minutes group drops
+      freezeNow(at(DAY_ONE, '14:20'));
+      const { outer, runs } = labelPartsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+
+      expect(runs).toHaveLength(1);
+      expect(textsOf(runs[0])).toEqual(['1', 'h']);
+      expect(markerChildrenOf(outer)).toHaveLength(1);
+    });
+
+    it('renders the v1 sub-hour face as one m group', () => {
+      // Frozen half a minute into a minute: 18.5 minutes to Asr, ceil makes 19
+      freezeNow(at(DAY_ONE, '15:01') + 30_000);
+      const { runs } = labelPartsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+
+      expect(runs).toHaveLength(1);
+      expect(textsOf(runs[0])).toEqual(['19', 'm']);
+    });
+
+    it('renders the en stale words on a v1 snapshot past its horizon', () => {
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'en';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+        expect(all).toContain('Out of date');
+        expect(all).toContain('Open Athan');
+        expect(all).toContain('to refresh');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the ar stale words on a v1 snapshot past its horizon, small size', () => {
+      // The fallback's stale words read staticRow, which follows the device
+      // locale (D44/D79), never the v1 snapshot's baked English
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+        expect(all).toContain('غير محدّث');
+        expect(all).toContain('افتح Athan');
+        expect(all).toContain('للتحديث');
+        expect(all).not.toContain('Out of date');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the one-line ar stale copy at medium size on a v1 snapshot past its horizon', () => {
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({ size: 'medium' }), { colorScheme: 'light' })));
+        expect(all).toContain('افتح Athan للتحديث');
       } finally {
         delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
       }
