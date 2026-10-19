@@ -12,6 +12,7 @@ import {
   AlertType,
   Icon,
   type PerReminderSlot,
+  REMINDER_SLOTS,
   type ReminderSetting,
   type ReminderSlot,
 } from '@/shared/types';
@@ -128,31 +129,58 @@ export default function BottomSheetAlert() {
  * corrected them after, which surfaced as the first-frame flash. The parent
  * reads the draft via the imperative handle at dismiss for the deferred
  * commit (the AlertMenu pattern).
+ *
+ * While the mounted athan is Off, each reminder DRAFTS Off and a Silent pill
+ * whatever the store holds, so the slide-off keeps today's pixels; the stored
+ * choices live in the preserved ref alone until the athan turns back on.
  */
 const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ sheetState, ensurePermissions }, ref) => {
-  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(() =>
-    getPrayerAlertType(sheetState.type, sheetState.index)
-  );
-  const [reminders, setReminders] = useState<PerReminderSlot<ReminderSetting>>(() => {
+  // The store's own settings for this prayer, snapshotted once at mount: the baseline the commit
+  // rolls back to, and the preserved choices the off-to-on move restores from
+  const [mountedState] = useState<AlertMenuState>(() => {
     const saved = (slot: ReminderSlot): ReminderSetting => ({
       alert: getReminderAlertType(sheetState.type, sheetState.index, slot),
       interval: initialReminderInterval(getReminderInterval(sheetState.type, sheetState.index, slot)),
     });
 
-    return [saved(0), saved(1)];
+    return { atTimeAlert: getPrayerAlertType(sheetState.type, sheetState.index), reminders: [saved(0), saved(1)] };
   });
 
-  // Kept while a reminder is Off, so a toggle never loses the sound last chosen
+  const [atTimeAlert, setAtTimeAlert] = useState<AlertType>(mountedState.atTimeAlert);
+
+  const [reminders, setReminders] = useState<PerReminderSlot<ReminderSetting>>(() =>
+    mapSlots(mountedState.reminders, (reminder) => ({
+      ...reminder,
+      alert: atTimeAlert === AlertType.Off ? AlertType.Off : reminder.alert,
+    }))
+  );
+
+  // Kept while a reminder is Off, so a toggle never loses the sound last chosen. Derived from the
+  // draft, so a mounted Off athan opens on the Silent pill the slide-off shows
   const [sounds, setSounds] = useState<Record<ReminderSlot, AlertType.Silent | AlertType.Sound>>(() => ({
-    0: initialReminderType(getReminderAlertType(sheetState.type, sheetState.index, 0)),
-    1: initialReminderType(getReminderAlertType(sheetState.type, sheetState.index, 1)),
+    0: initialReminderType(reminders[0].alert),
+    1: initialReminderType(reminders[1].alert),
   }));
 
-  const originalStateRef = useRef<AlertMenuState>({ atTimeAlert, reminders });
+  // The reminder choices held while the athan is Off: the stored values at mount, re-snapshotted
+  // from the live draft at every in-session move into Off. Intervals cannot move while the
+  // reminders are locked off, so the alerts alone are what a restore needs
+  const preservedAlertsRef = useRef<PerReminderSlot<AlertType>>([
+    mountedState.reminders[0].alert,
+    mountedState.reminders[1].alert,
+  ]);
 
   useImperativeHandle(ref, () => ({
-    getOriginalState: () => originalStateRef.current,
-    getCurrentState: () => ({ atTimeAlert, reminders }),
+    getOriginalState: () => mountedState,
+    getCurrentState: () => ({
+      atTimeAlert,
+      // Store truth at close: the draft displays Off beside an Off athan, so the preserved
+      // choices stand in and the commit writes them
+      reminders:
+        atTimeAlert === AlertType.Off
+          ? mapSlots(reminders, (reminder, slot) => ({ ...reminder, alert: preservedAlertsRef.current[slot] }))
+          : reminders,
+    }),
   }));
 
   const canEnableReminder = atTimeAlert !== AlertType.Off;
@@ -165,6 +193,8 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
 
   const handleAlertSelect = useCallback(
     async (type: AlertType) => {
+      // Read before the permission await: the selection that lands is the one this press started
+      const leavingOff = atTimeAlert === AlertType.Off && type !== AlertType.Off;
       if (selectionNeedsPermission({ selected: type, atTimeAlert })) {
         // A denied prompt must leave the control where it was. commitAlertMenuChanges
         // re-checks permissions at dismiss and saves nothing without them, so moving
@@ -174,11 +204,30 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         if (!(await ensurePermissions())) return;
       }
       setAtTimeAlert(type);
-      if (type === AlertType.Off) {
+
+      // The athan is back on: each reminder returns to the choice it held before the athan went
+      // off, and the pill reads the sound that reminder fires with
+      if (leavingOff) {
+        const preserved = preservedAlertsRef.current;
+        setReminders((current) => mapSlots(current, (reminder, slot) => ({ ...reminder, alert: preserved[slot] })));
+        setSounds((current) => {
+          const restored = { ...current };
+          for (const slot of REMINDER_SLOTS) {
+            const alert = preserved[slot];
+            if (alert !== AlertType.Off) restored[slot] = alert;
+          }
+          return restored;
+        });
+        return;
+      }
+
+      // Into Off: the choices on screen are preserved, then the draft slides off exactly as today
+      if (type === AlertType.Off && atTimeAlert !== AlertType.Off) {
+        preservedAlertsRef.current = [reminders[0].alert, reminders[1].alert];
         setReminders((current) => mapSlots(current, (reminder) => ({ ...reminder, alert: AlertType.Off })));
       }
     },
-    [atTimeAlert, ensurePermissions]
+    [atTimeAlert, ensurePermissions, reminders]
   );
 
   const handleReminderToggle = useCallback(

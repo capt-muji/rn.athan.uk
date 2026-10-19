@@ -525,7 +525,7 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     expect(getReminderInterval(ScheduleType.Standard, FAJR, 0)).toBe(25);
   });
 
-  it('turns both reminders off when the athan goes off', async () => {
+  it('slides both reminders off when the athan goes off, and keeps their choices saved', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
@@ -534,12 +534,133 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
     await render(<AlertSheet />);
 
     await fireEvent.press(athanOption('Off'));
+
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(secondReminderSwitch()).not.toBeChecked();
+
     await closeSheet();
     await settle();
 
     expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Off);
-    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 1)).toBe(AlertType.Silent);
+  });
+});
+
+describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:00", () => {
+  it('restores each reminder to its pre-off choice when the athan comes back on in the same session', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    // The restored pill reads the sound the reminder fires with
+    expect(reminderOption('Sound')).toBeSelected();
+
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Silent);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('restores the pre-off choice on a fresh open, from the values the off close kept saved', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await closeSheet();
+    await settle();
+
+    // A fresh open: the body remounts from the store, exactly as the modal's own unmount and
+    // present do, through the key change the suite's prayer move already uses
+    await act(() => openSheetFor(DHUHR));
+    await act(() => openSheetFor(FAJR));
+
+    // The mounted slide-off keeps today's pixels: switch off, pill on Silent, whatever the store holds
+    expect(reminderSwitch()).not.toBeChecked();
+    expect(reminderOption('Silent')).toBeSelected();
+
+    await fireEvent.press(athanOption('Sound'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(reminderOption('Sound')).toBeSelected();
+
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Sound);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('keeps a reminder off that was off by its own choice before the athan went off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await fireEvent.press(athanOption('Off'));
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(reminderSwitch()).toBeChecked();
+    expect(secondReminderSwitch()).not.toBeChecked();
+  });
+
+  it('commits nothing when a sheet holding preserved values under an off athan closes unchanged', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    await closeSheet();
+    await settle();
+
+    expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
+    expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Off);
+    expect(getReminderAlertType(ScheduleType.Standard, FAJR, 0)).toBe(AlertType.Sound);
+  });
+
+  it('restores nothing while the athan selection that needed permission was refused', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Sound);
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValueOnce({ status: 'denied' });
+    (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValueOnce({ status: 'denied' });
+    jest.spyOn(Alert, 'alert').mockImplementationOnce((_title, _message, buttons) => {
+      const cancel = buttons?.find((button) => button.text === 'Cancel');
+      if (!cancel?.onPress) throw new Error('The settings dialog offers no Cancel');
+      cancel.onPress();
+    });
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    // The refusal leaves the whole draft where it was: the restore sits on the selection that lands
+    expect(athanOption('Off')).toBeSelected();
+    expect(reminderSwitch()).not.toBeChecked();
+
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    expect(athanOption('Silent')).toBeSelected();
+    expect(reminderSwitch()).toBeChecked();
+    expect(reminderOption('Sound')).toBeSelected();
   });
 });
 

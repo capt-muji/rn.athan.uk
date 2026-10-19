@@ -276,9 +276,9 @@ describe('a change the phone takes', () => {
 
       await expect(commitPrayerAlertChange(ScheduleType.Standard, ISHA, 'isha', next, OFF)).resolves.toBe(true);
 
-      // All three are saved as the sheet closed on them. A reminder saved beside an Off athan arms nothing and comes
-      // back with the athan; the sheet itself never offers that pair, because turning the athan off there clears the
-      // reminder switch too
+      // All three are saved as the sheet closed on them. A reminder saved beside an Off athan arms
+      // nothing and stays saved for the athan's return; the sheet's close lands exactly this pair
+      // whenever it preserves reminder choices under an off athan
       expect(saved(ISHA)).toEqual(next);
       expect(armedFor('isha')).toEqual(armed().sort());
     }
