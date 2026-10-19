@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 1NUYgZB3c7O1wctncFR8q0P5LtAbyx1v0bksQF2itCmp6OMNZi0fNOV8dc4UaWJ
+\restrict 3nGOZ59saVcwxE2VJdquvxkxo3JzMHXPTSgFdHgw760BVOqLhjDTc2uPhEzEM1W
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5298,19 +5298,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (218, 1, 218, NULL, 4, 'Step 2: whole-header tap on the reminder rows', '', NULL, NULL, NULL, 27000, '2026-10-19 03:25:16.232789+00', '2026-10-19 04:09:12.361191+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (220, 1, 220, NULL, 4, 'Step 4: the sheet restores on off-to-on', '', NULL, NULL, NULL, 29000, '2026-10-19 03:25:16.282186+00', '2026-10-19 04:34:55.78627+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (242, 1, 242, NULL, 4, 'Step 1: The entry and its copy - help.q.widgets appended last in HELP_ENTRIES, the six catalogues, yarn i18n:lock re-taken, red-then-green help coverage (weight 2)', '', NULL, NULL, NULL, 17000, '2026-10-19 13:03:51.42739+00', '2026-10-19 14:02:10.543651+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 1, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android home-screen widget''s countdown centers in its own space under Arabic.
-
-Where: the Android widget countdown face under RTL placement, 3T.
-
-OWNER REPORT 2026-10-19, on the 3T, DEFERRED by the owner''s order as a nice-to-have: with the app in Arabic, a newly added home-screen widget mirrors correctly (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face is almost perfectly aligned. The mirror itself is correct and the iPhone widgets are settled - touch nothing there. Two comparison screenshots exist on the 3T.
-
-OWNER REPORT 2, 2026-10-19, on the 3T mock 2.1.7, four screenshots (two per language), MEDIUM widget only, never the small, never the iPhone: with a short countdown (''1 minute left'') the two halves hug the outer edges of the card - in English the countdown squeezes hard left and the prayer list hard right, a wide empty band left in the middle; in Arabic the same in mirrored directions - while a long countdown (''7h 50m'') centers both halves perfectly. The owner''s read: the countdown string''s length drives it.
-
-Acceptance (when picked up):
-- [ ] the countdown centers in its own space in both directions on the 3T
-- [ ] the medium halves hold their centring at a one-minute countdown in both languages
-- [ ] the English face unchanged
-- [ ] no iOS widget change', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 19:33:48.338895+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 115, 9, 4, 'The Thai face becomes Sarabun, the owner''s specimen pick', 'REVERSED 2026-10-16 by the owner''s read: Sarabun rejected on glass the same evening and the Noto pair restored at 2.0.848 (the specimen''s decision undone; the specimen and its files deleted in the deep clean). Original record: OWNER PICK 2026-10-16 (the ten-font specimen at $HOME/athan-gitree/sessions/115/thai-specimen.html, every number measured from the TTFs'' own tables): SARABUN - Thailand''s document standard, a true 500, its own Latin digits, the tightest sane line box (1.300em with win ink at 1.286em ascent and 0.567em descent, taking the script line box like Hindi and Arabic). The owner''s read of the current face: ''not really Thai'' - the Noto pair replaced after one session
 
 Status note: then REVERSED 2026-10-16: Sarabun landed at 2.0.846, the owner''s read rejected it, and the clean revert at 2.0.848 restores Noto Sans Thai exactly (words on the Noto pair, digits and row times on Roboto, no script line box) with the build rebuilt and reinstalled', NULL, NULL, NULL, 13000, '2026-10-18 23:35:56.051874+00', '2026-10-19 02:54:07.928363+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5630,9 +5617,6 @@ Acceptance:
 - [ ] red-first tests pin the cover''s face values and their arrival order
 - [ ] En byte-identical when not switching; iOS unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 16:08:14.174025+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 4, 1, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'PROBLEM, two small widget-face items from row 117''s inventory, folded into one ticket: (1) the widget gallery shows English fallback content outside the six languages and nothing records whether that is intended; (2) the v1 fallback words predate the lettered law (rows 85/102) and the Latin-digits law (row 88), so a stale blob renders an obsolete face. RECOMMENDATION: for (1), decide the intended fallback for a device whose language is none of the six and pin it with a test, making the D44/D79 static-copy rule explicit rather than incidental; for (2), re-issue the v1 fallback strings under the current laws and pin them. The agent measures what a stale blob actually renders before changing anything
-
-Status note: 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. THE OWNER''S UPDATE 2026-10-18: item (1), the gallery''s en fallback, is ANSWERED and closed - row 117''s live reads proved the English base fallback is the intended shape on both platforms (the app card''s names are app-provided from the committed config for the six languages; the OS chrome around the picker is the phone''s, outside the app''s control). Item (2), the v1 fallback words, stays parked with the widget park; the owner is open to re-issuing the few words under the current laws as part of the widget work', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 19:18:16.539584+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (246, 1, 246, NULL, 4, 'Step 1: Verified carriers written into the plan doc''s Proof', '', NULL, NULL, NULL, 19000, '2026-10-19 14:03:55.282904+00', '2026-10-19 14:04:56.292461+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (247, 1, 247, NULL, 4, 'Step 2: Ticket closed with the mapping in the closing comment', '', NULL, NULL, NULL, 20000, '2026-10-19 14:03:55.319546+00', '2026-10-19 14:05:27.765602+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 4, 4, 'A row awaiting the owner''s ruling is never counted finished', 'Goal: a row that awaits the owner''s ruling reads as awaiting it through verified carriers on the live board, the mapping from the deleted read-only mirror is recorded, and nothing is rebuilt or patched.
@@ -5688,7 +5672,7 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, 'Upstream `expo-widgets` device locale', 'PR: https://github.com/expo/expo/pull/51793
 
 Monitoring row for PR `expo/expo#51793`, filed 2026-10-19 from this repo: it exposes the device locale to widget JS runtimes through a `__expoWidgetDeviceLocale` global. The local patch''s device-locale half feeds the neutral, stale and catch faces (the D44/D79 device-keyed statics); without it those faces lose their locale. When a published release carries the global, board row #233 deletes the local patch''s device-locale hunks and this row closes.', NULL, NULL, NULL, 7000, '2026-10-19 08:08:29.90607+00', '2026-10-19 19:49:05.89039+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 1, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 3, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
 
 Where: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.
 
@@ -5699,7 +5683,7 @@ Brief look 2026-10-19: the build is sound - the patched heading streamer (kCLHea
 Acceptance:
 - [ ] the mechanism named: which stream was dead and what the toggle reset
 - [ ] a ruling, argued twice and tabled to the owner, on whether the app can detect and recover the state itself
-- [ ] no compass logic change without the owner''s order', NULL, NULL, NULL, 21000, '2026-10-19 19:48:47.530801+00', '2026-10-19 19:48:47.585511+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] no compass logic change without the owner''s order', NULL, NULL, NULL, 21000, '2026-10-19 19:48:47.530801+00', '2026-10-19 20:41:49.817894+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (253, 1, 253, 10, 4, 'OEM alarm timing close-out: store release, dumpsys reading, Play update path', 'Goal: close the two chained OEM alarm-timing items (issue ledger 10 and 17, migrated 2026-10-19 from the retired ai/ISSUES.md) once a store release ships the exact-alarm fix that sits on uat.
 
 Where: the ColorOS-family phones, the store releases, the Play update flow.
@@ -5742,6 +5726,35 @@ Acceptance:
 - [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)
 - [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling
 - [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 20:21:07.936952+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 6, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android home-screen widget''s countdown centers in its own space under Arabic.
+
+Where: the Android widget countdown face under RTL placement, 3T.
+
+OWNER REPORT 2026-10-19, on the 3T, DEFERRED by the owner''s order as a nice-to-have: with the app in Arabic, a newly added home-screen widget mirrors correctly (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face is almost perfectly aligned. The mirror itself is correct and the iPhone widgets are settled - touch nothing there. Two comparison screenshots exist on the 3T.
+
+OWNER REPORT 2, 2026-10-19, on the 3T mock 2.1.7, four screenshots (two per language), MEDIUM widget only, never the small, never the iPhone: with a short countdown (''1 minute left'') the two halves hug the outer edges of the card - in English the countdown squeezes hard left and the prayer list hard right, a wide empty band left in the middle; in Arabic the same in mirrored directions - while a long countdown (''7h 50m'') centers both halves perfectly. The owner''s read: the countdown string''s length drives it.
+
+Acceptance (when picked up):
+- [ ] the countdown centers in its own space in both directions on the 3T
+- [ ] the medium halves hold their centring at a one-minute countdown in both languages
+- [ ] the English face unchanged
+- [ ] no iOS widget change', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 20:26:32.132721+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (257, 1, 257, NULL, 1, 'Step 3: the close - version bump, board snapshot, merge to uat', '', NULL, NULL, NULL, 15000, '2026-10-19 20:36:24.090606+00', '2026-10-19 20:36:24.090606+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 10, 3, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 is already lawful (row 135 re-issued the countdown face for every blob); the work is the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.
+
+Where: widgets/PrayerWidget.tsx (the input.strings fallback block inside androidRender) and shared/__tests__/widgetRenderer.test.ts.
+
+Acceptance:
+- [ ] The renderer suite pins a faithful v1 blob''s live face (v 1, no strings, no day footers, no rtl, no row ids): lowercase Latin h m letters, unpadded Latin digits, zero-group drop, parsed English footer - yarn jest shared/__tests__/widgetRenderer.test.ts green
+- [ ] The renderer suite pins a faithful v1 blob''s stale words on both sizes under en and ar device locales (device-keyed statics)
+- [ ] The fallback block''s comment names rows 83/85/102, row 88 and D44/D79, its literal byte-identical to the measured face, both schema versions unchanged (8 and 4) - read in the diff
+- [ ] A mutation pass flips every rendered fallback byte in the source and the pins catch each flip
+- [ ] yarn validate green
+
+Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carries item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 20:43:34.745844+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (258, 1, 258, NULL, 1, 'Step 1: the v1 fallback words re-issued under the current laws and pinned', 'The comment re-issue in widgets/PrayerWidget.tsx (byte-identical literal, laws named) and the renderer pins over a faithful v1 fixture: live lettered face, parsed footer, stale words both sizes under en and ar device locales, mutation pass over every rendered fallback byte, yarn validate green.', NULL, NULL, NULL, 16000, '2026-10-19 20:37:31.974832+00', '2026-10-19 20:37:31.974832+00', NULL, NULL, NULL, NULL, NULL, 11, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (256, 1, 256, NULL, 4, 'Step 2: the twice-argued ruling on detection and recovery, tabled to the owner', '', NULL, NULL, NULL, 14000, '2026-10-19 20:36:24.051077+00', '2026-10-19 20:46:29.674569+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (255, 1, 255, NULL, 4, 'Step 1: the code trace names the two streams and every state that holds the wave', '', NULL, NULL, NULL, 13000, '2026-10-19 20:36:24.011513+00', '2026-10-19 20:46:29.677469+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 
 
 --
@@ -5970,6 +5983,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (206, 69, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.6804+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 67, "value": "QUEUE-67"}, "subject": {"value": "blocks"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (207, 71, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.688085+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 80, "value": "QUEUE-80"}, "subject": {"value": "blocked_by"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (208, 80, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.688085+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 71, "value": "QUEUE-71"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2249, 256, 'activity', 'owner', NULL, 'created', '2026-10-19 20:36:24.059044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (209, 75, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.69595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 81, "value": "QUEUE-81"}, "subject": {"value": "blocked_by"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (210, 81, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.69595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 75, "value": "QUEUE-75"}, "subject": {"value": "blocks"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (211, 75, 'activity', 'owner', NULL, 'link_add', '2026-10-18 23:36:15.703451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 71, "value": "QUEUE-71"}, "subject": {"value": "blocked_by"}}', NULL);
@@ -6037,6 +6051,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (337, 86, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:30.679152+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "50"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (346, 95, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:30.752424+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "38"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (355, 104, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:30.825295+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "28"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2263, 258, 'activity', 'owner', NULL, 'created', '2026-10-19 20:37:31.981292+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (365, 114, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:30.909148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "16"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (378, 127, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:31.018981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (387, 8, 'activity', 'owner', NULL, 'field', '2026-10-18 23:57:46.229474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "126"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
@@ -7992,6 +8007,40 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2237, 33, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:21:07.938865+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "iOS"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2238, 33, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:21:07.938865+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "research"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2239, 33, 'comment', 'owner', 'Reopened 2026-10-19 by the owner''s order: Apple requires Duo support by April 2027, iOS 27 and SDK 58 shipped Apple''s Duo skills, and the row returns second-to-last (after 130, 241 and 254, before 54) to research those skills and re-verify on the Duo simulator. The 2026-10-18 close record stands in the description as prior evidence: the adaptive layout already answers the Duo with no Duo code.', NULL, '2026-10-19 20:21:07.962216+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2240, 11, 'activity', 'owner', NULL, 'field', '2026-10-19 20:26:32.092204+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2241, 254, 'activity', 'owner', NULL, 'field', '2026-10-19 20:26:32.093894+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2242, 241, 'activity', 'owner', NULL, 'field', '2026-10-19 20:26:32.097304+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2243, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:26:32.139107+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2244, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:26:32.141013+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2245, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 20:26:32.142091+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2246, 255, 'activity', 'owner', NULL, 'created', '2026-10-19 20:36:24.022129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2247, 255, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:36:24.025018+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 254, "value": "T-254"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2248, 254, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:36:24.025018+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 255, "value": "T-255"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2250, 256, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:36:24.06179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 254, "value": "T-254"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2251, 254, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:36:24.06179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 256, "value": "T-256"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2252, 257, 'activity', 'owner', NULL, 'created', '2026-10-19 20:36:24.095513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2253, 257, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:36:24.097066+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 254, "value": "T-254"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2254, 254, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:36:24.097066+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 257, "value": "T-257"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2255, 254, 'activity', 'owner', NULL, 'estimate', '2026-10-19 20:36:24.120368+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "3"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2259, 11, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:37:31.94925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 149, "value": "Testing"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2260, 11, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:37:31.94925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2261, 11, 'activity', 'owner', NULL, 'label_add', '2026-10-19 20:37:31.94925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2256, 11, 'activity', 'owner', NULL, 'description', '2026-10-19 20:37:31.933525+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 is already lawful (row 135 re-issued the countdown face for every blob); the work is the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.\n\nWhere: widgets/PrayerWidget.tsx (the input.strings fallback block inside androidRender) and shared/__tests__/widgetRenderer.test.ts.\n\nAcceptance:\n- [ ] The renderer suite pins a faithful v1 blob''s live face (v 1, no strings, no day footers, no rtl, no row ids): lowercase Latin h m letters, unpadded Latin digits, zero-group drop, parsed English footer - yarn jest shared/__tests__/widgetRenderer.test.ts green\n- [ ] The renderer suite pins a faithful v1 blob''s stale words on both sizes under en and ar device locales (device-keyed statics)\n- [ ] The fallback block''s comment names rows 83/85/102, row 88 and D44/D79, its literal byte-identical to the measured face, both schema versions unchanged (8 and 4) - read in the diff\n- [ ] A mutation pass flips every rendered fallback byte in the source and the pins catch each flip\n- [ ] yarn validate green\n\nProvenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carries item (2) only."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2257, 11, 'activity', 'owner', NULL, 'type', '2026-10-19 20:37:31.933525+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "Testing"}, "from": {"id": 4, "value": "Investigation"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2258, 11, 'activity', 'owner', NULL, 'estimate', '2026-10-19 20:37:31.933525+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2270, 11, 'comment', 'owner', 'Planned: the plan doc T-130 carries the measured v1-blob face (already lawful at uat, so the re-issue is law-named and byte-identical) and one code step. Grilled, one major fixed (the zero-drop pins now name their freeze instants).', NULL, '2026-10-19 20:43:04.918806+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2262, 11, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 20:37:31.94925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 143, "value": "Investigation"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2264, 258, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:37:31.984121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "T-130"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2265, 11, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:37:31.984121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 258, "value": "T-258"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2271, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:43:34.751945+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2266, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:41:44.90179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2267, 254, 'comment', 'owner', 'Planned: the plan doc on this ticket carries the three steps (trace, ruling, close) at 3 points, and the griller''s two findings are answered in it.', NULL, '2026-10-19 20:41:44.935704+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2268, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:41:49.827986+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2269, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:43:04.897936+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2272, 254, 'comment', 'owner', 'Mechanism, from the code and Apple''s docs: both CoreLocation streams were dead together. The install-over kept the grant, so every open read granted, armed the heading watch and the accuracy watch, and got nothing from either: Apple documents that a heading start which cannot deliver raises no event at all. With no accuracy event the gate never opened (isCertain stays false), so the wave held and the lost hint read beneath it. The permission cycle rewrote the app''s authorization record in the system''s location service; the next open registered against a live record and drew. The kCLHeadingFilterNone patch is acquitted: the same build works after the toggle.', NULL, '2026-10-19 20:46:24.560884+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2273, 254, 'comment', 'owner', 'Ruling, agent-ruled, argued in the plan doc''s Findings: the app CAN detect the state (grant reads granted, heading available, zero events from both streams across an open, while interference still delivers invalid events and reports itself through the error channel the app does not currently wire), and the app CANNOT recover it itself (fresh managers per open never cleared it; no API resets the system''s record; only the user''s permission cycle, a privacy reset or a restart does). Two orders wait on the owner, both because qibla is locked: build the detection, and for that state offer the Settings route naming the permission cycle. Until an order, nothing changes.', NULL, '2026-10-19 20:46:24.566514+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2274, 256, 'activity', 'owner', NULL, 'status', '2026-10-19 20:46:29.683323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2275, 255, 'activity', 'owner', NULL, 'status', '2026-10-19 20:46:29.684301+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 
 
 --
@@ -8042,6 +8091,9 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (24
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (16, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (7, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (8, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (254, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (11, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (241, 2, 2);
 
 
 --
@@ -8237,8 +8289,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 133);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (10, 132);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (10, 143);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 131);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (12, 130);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (12, 150);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (13, 129);
@@ -8528,14 +8578,18 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 173);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 2);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 5);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 174);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 143);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 1);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 7);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 110);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 10);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 174);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 143);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 7);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 131);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 149);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 4);
 
 
 --
@@ -8862,15 +8916,28 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (426, 252, 4, 'Done', 'completed', '2026-10-19 17:43:00.340976+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (424, 16, 3, 'In progress', 'started', '2026-10-19 16:43:34.217443+00', '2026-10-19 18:01:15.041134+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (427, 16, 4, 'Done', 'completed', '2026-10-19 18:01:15.041134+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (428, 241, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.36049+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (429, 11, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.549692+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (132, 4, 7, 'Blocked', 'started', '2026-10-18 23:57:28.650791+00', '2026-10-19 19:36:00.028733+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (430, 4, 1, 'Backlog', 'backlog', '2026-10-19 19:36:00.028733+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (432, 254, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.53+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (431, 253, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.41+00', '2026-10-19 19:59:04.839344+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (433, 253, 4, 'Done', 'completed', '2026-10-19 19:59:04.839344+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (33, 33, 4, 'Done', 'completed', '2026-10-18 23:35:56.034+00', '2026-10-19 20:21:07.916266+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (434, 33, 1, 'Backlog', 'backlog', '2026-10-19 20:21:07.916266+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (429, 11, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.549692+00', '2026-10-19 20:26:32.134592+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (432, 254, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.53+00', '2026-10-19 20:26:32.137433+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (428, 241, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.36049+00', '2026-10-19 20:26:32.13996+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (437, 241, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.13996+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (440, 257, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.09+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (441, 258, 1, 'Backlog', 'backlog', '2026-10-19 20:37:31.974+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (436, 254, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.137433+00', '2026-10-19 20:41:44.898793+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (442, 254, 2, 'Ready', 'unstarted', '2026-10-19 20:41:44.898793+00', '2026-10-19 20:41:49.824459+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (443, 254, 3, 'In progress', 'started', '2026-10-19 20:41:49.824459+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (435, 11, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.134592+00', '2026-10-19 20:43:04.895547+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (444, 11, 2, 'Ready', 'unstarted', '2026-10-19 20:43:04.895547+00', '2026-10-19 20:43:34.749974+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (445, 11, 3, 'In progress', 'started', '2026-10-19 20:43:34.749974+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (439, 256, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.051+00', '2026-10-19 20:46:29.679613+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (446, 256, 4, 'Done', 'completed', '2026-10-19 20:46:29.679613+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (438, 255, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.011+00', '2026-10-19 20:46:29.681562+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (447, 255, 4, 'Done', 'completed', '2026-10-19 20:46:29.681562+00', NULL);
 
 
 --
@@ -9514,7 +9581,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 255, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 259, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -10869,6 +10936,77 @@ Each probe, with its measured result from 2026-10-19:
 - git status --porcelain in the main tree: zero lines, branch uat. Measured: clean, the repository carries no change from this ticket.
 - git show --stat 4c413365 lists board/reader.mjs, board/server.mjs, board/index.html and board/tests/reader.test.mjs as deletions. Measured: confirmed. The deleted reader mapped OWNER-LED to the Owner-led column at its lines 23 to 24 and flagged awaitingOwner rows with their waiting-on line at lines 287 to 305, which is the contract the table above maps.
 ', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 14336, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:03:55.219198+00', '2026-10-19 18:10:40.983293+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (18, 1, NULL, 'T-130', '# T-130: the v1 fallback words, re-issued under the current laws
+
+## Goal
+
+A stale v1 Android snapshot blob (stored by a pre-v2 app, carrying no `strings` field) renders through the layout''s English fallback block inside `androidRender`. Row 117''s inventory (seam 6) found those words lawful only "by accident of their era" and named their re-test. The scope line it quoted from row 69: "decides whether the unit fields retire from WidgetStrings (shape and fallback work), and re-tests the v1 fallback words". Row 69''s own card is gone from the board; the line survives here. The owner lifted the widget park on 2026-10-18 and is open to re-issuing the few words under the current laws.
+
+When this ticket is done: the fallback block''s words are re-issued deliberately under the laws they serve (the lettered law rows 83/85/102, the Latin-digits law row 88, the device-keyed stale copy D44/D79), the re-test''s measurement is recorded, and the v1 renders are pinned by the renderer suite over a faithful v1 fixture.
+
+## The measurement (2026-10-19, uat 2.1.12)
+
+The binding ordered the measure before any change. A faithful v1 blob (v 1, English names, times and date labels, no `strings`, no day footers, no `rtl`, no row ids) was rendered through the same harness `shared/__tests__/widgetRenderer.test.ts` uses to reproduce the widget runtime. Every Text node read:
+
+| Face | Read |
+| --- | --- |
+| Live, whole hour | ASR, `2` `h` (one group, letter lowercase Latin), 15:20, footer Sat (parsed from the English label) |
+| Live, ar device locale, sub-hour | `19` `m` (Latin digits, lowercase Latin letter), ASR, 15:20, Sat |
+| Stale, small, en device | Out of date, Open Athan, to refresh |
+| Stale, small, ar device | the Arabic statics (device-keyed) |
+| Stale, medium, ar device | the Arabic one-line refresh copy |
+
+Verdict: every rendered word already carries the current-law bytes. The countdown face a v1 blob feeds was re-issued for all blobs by row 135 (the lettered `ALabelParts`, 2.0.1031): unpadded Latin digits, zero-group drop, lowercase Latin letters. The 2026-10-18 consolidation''s "obsolete face" premise no longer holds at uat; what stands is seam 6''s actual finding, that the words'' lawfulness predates the laws and was never re-tested or pinned. That is this ticket''s work.
+
+## Decisions taken
+
+1. 2026-10-19: Item (1), the gallery''s en fallback, stays closed on the row; this plan is item (2) only. The owner''s 2026-10-18 answer settled item (1) live on both platforms.
+2. 2026-10-19: No rendered byte changes. The measured face is lawful; re-wording lawful bytes would be a pixel change with no law behind it. The re-issue restates the block byte-identical with the laws named in the source and adds the missing pins. Challenged once: "re-issue" could read as "rewrite the words" - rejected, because the settled-visuals rule and the lane binding both fence the change to the fallback words as they are.
+3. 2026-10-19: The measurement is code-side, through the renderer harness, not a device read. The harness expands the same tree the widget runtime renders and reads every Text node; Lane 2 owns the Android phones and every build.
+4. 2026-10-19: The `WidgetStrings` shape stays (h, m, s, now, staleTitle, refreshLine, refreshLead, refreshTail). `s` and `now` stay unread riders; retiring fields would change the snapshot contract, which the lane binding makes a STOP question first, and nothing demands it. ANDROID_SNAPSHOT_VERSION stays 4, WIDGET_PROPS_VERSION stays 8.
+5. 2026-10-19: The two existing "v1" renderer tests move to a faithful v1 fixture. Their fixtures keep v4-only fields (day footers, rtl, v 4), so they pin a shape no stored blob ever had; the faithful fixture also exercises the parsed-label footer path instead of the verbatim footer field. The carried-over assertions alone cover only the two-group face (frozen 14:08:30, `1 h 12 m`), so the faithful fixture gains the zero-drop cases the acceptance names: frozen 14:20:00 (a whole hour to Asr) pinning the single group `1` `h` with no minutes run, and frozen 15:01:30 pinning the single group `19` `m`.
+6. 2026-10-19: Type Testing, surface Android, area widgets, 2 story points (one code step).
+
+## Files
+
+- `widgets/PrayerWidget.tsx`: the v1 fallback block in `androidRender` (the `input.strings ?? {...}` literal). Comment re-issued under the laws; words byte-identical.
+- `shared/__tests__/widgetRenderer.test.ts`: the v1 fixture made faithful; live-face assertions kept on it; new stale-card pins (en and ar device locales, both sizes) and the parsed-footer pin.
+
+## Design
+
+Invariant: a v1 blob renders the same face the current en bake renders - lettered lowercase Latin h m at the owner''s amended sizing, unpadded Latin digits, zero-group drop, device-keyed stale words. No pixel changes, no schema bump.
+
+Approach:
+
+1. The fallback block''s comment names the laws it serves: rows 83/85/102 (fixed lowercase Latin unit bytes, never localised), row 88 (Latin digits), D44/D79 (device-keyed stale copy), beside the closure-law note that keeps the words baked in the body. The literal stays byte-identical: h `h`, m `m`, s `s`, now `now`, and the four stale words from staticRow.
+2. The two v1 tests'' fixture becomes faithful: built from the builder snapshot with v stamped 1 and strings, day footers, rtl and row ids stripped. Their existing assertions (the two-group lettered face frozen 14:08:30, Latin under an ar device locale) carry over; the parsed-footer pin joins, and two zero-drop pins land on the same fixture: frozen 14:20:00 pins the whole-hour face `1` `h` (one group, no minutes run), frozen 15:01:30 pins the sub-hour face `19` `m`.
+3. New pins: a faithful v1 blob past its horizon renders the device-locale stale words, small (two lines) and medium (one line), under en and ar device locales.
+4. Mutation pass over every rendered fallback byte: flip h to H, m to M, and each stale word to a wrong literal in the source, one at a time, and the pins fail each flip. `s` and `now` never render and stay unguarded by renders; that limit is recorded here, not hidden.
+
+Alternatives rejected:
+
+- Re-wording the stale copy or unit bytes: no law demands it, the visuals are settled, and the owner''s permission was to re-issue under the laws, not to redesign.
+- Retiring `s`/`now` from `WidgetStrings`: a snapshot-shape decision behind a STOP fence; row 135 already ruled them riders until the shape changes.
+- A live device read of a stored v1 blob: the harness reads the same tree; the phones and builds are Lane 2''s this run.
+- Importing the fallback literal into a test to pin its bytes: the block lives inside the serialized layout body (the closure law); only renders can pin it.
+
+## Steps
+
+1. Step 1 (code, 2 points): the v1 fallback words re-issued under the current laws and pinned. The comment re-issue and the faithful-fixture pins land together: the block byte-identical with its laws named, the live face, parsed footer and both-size stale words pinned under en and ar device locales, the mutation pass run over every rendered byte, yarn validate green.
+
+## Risks
+
+- The faithful fixture could expose a parse surprise in the builder''s date label: the measurement already ran the faithful shape; the en label parses to its first token exactly as the v1-era shape did.
+- A reviewer may read "re-issue" as "the words must change": the measurement section and decision 2 answer it; the audit reads this plan.
+- The comment grows the serialized body: comments change no rendered value.
+
+## Proof
+
+- `yarn jest shared/__tests__/widgetRenderer.test.ts` green with the faithful-fixture pins present.
+- Mutation: with `h: ''h''` flipped to `h: ''H''` in the source the live pins fail; with `staleTitle: staticRow.staleTitle` flipped to a hardcoded literal the ar-device stale pins fail; each flip restored, the suite green again.
+- `yarn validate` green.
+- The diff shows the fallback block''s comment naming rows 83/85/102, row 88 and D44/D79, with the literal''s bytes unchanged and both schema versions still 8 and 4.
+', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 17408, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:37:22.174969+00', '2026-10-19 20:42:55.260652+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (16, 1, NULL, 'T-240', '# T-240 - Language switch on Android: a black span replaces the loader face for half a second
 
 ## Goal
@@ -11061,6 +11199,86 @@ Alternatives rejected: keeping the two per-platform keys for the two-line answer
 
 The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 12288, 10, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 07:55:46.144981+00', '2026-10-19 17:28:08.71215+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (17, 1, NULL, 'T-254 iPhone qibla stuck on the wave until the location permission is toggled', '# T-254: the iPhone''s dead heading streams after an install-over, and the permission cycle that revived them
+
+## Goal
+
+After a mock build replaced the production app on the iPhone XS, the qibla sheet stayed on the wave animation across many opens, indoors and out, and drew the moment the owner had cycled the iOS location permission (While Using to Always and back) and reopened the app. What is wrong today is that the cause is unnamed. When this row closes, the starved stream or streams and the state the toggle reset are named in the ticket''s records, a twice-argued ruling on whether the app can detect and recover the state itself is tabled to the owner, and no compass code has changed.
+
+## Decisions taken
+
+- 2026-10-19: Rule from the code, Apple''s documentation and the owner''s reproduction; no live phone read. The phone is not attached, and the reproduction already isolates the variable: one build, dead before the toggle, alive after. A device session could only confirm.
+- 2026-10-19: Both CoreLocation streams were dead together, not one. The heading stream (expo-location''s DeviceHeadingStreamer) and the accuracy stream (the ExpoQiblaHeading module''s own CLLocationManager) are two managers under one app authorization record, so no mechanism starves exactly one. Challenged: the gate could in principle have been held by a silent accuracy stream beside live headings, but a permission cycle repairs the one record both hang from, and it repaired the sheet in one move, which an accuracy-only fault would not. Holds.
+- 2026-10-19: Detection ruled possible and recovery ruled impossible in-app. Both rulings are argued in the Findings section and tabled to the owner as comments; neither is built, because qibla is locked.
+- 2026-10-19: The repo carries no code change for this row. Its one commit is the version bump with the refreshed board snapshot, because the ticket''s records live on the board.
+- 2026-10-19: Griller finding 1 answered: the error channels are stated per side. The heading stream''s failure IS CoreLocation-observable: expo-location''s DeviceHeadingStreamer implements didFailWithError and forwards it to JS as an error event, but the app''s watchHeading call passes no errorHandler, so it lands nowhere. The accuracy streamer implements no didFailWithError at all and reports nothing to anyone. The stuck sheet therefore could not have heard either outcome, and the ruling argues detection against these corrected facts.
+- 2026-10-19: Griller finding 2 answered: the no-change proof''s diff covers patches/ as well, because the plan itself names the expo-location patch as compass behavior it acquits.
+
+## Files
+
+Read, none changed:
+- hooks/useQibla.ts: the open path, the two stream starts, the gate, the wave''s own conditions.
+- device/qibla.ts: requestQiblaPermission''s granted short-circuit, watchHeading''s missing errorHandler.
+- modules/qiblaheading/ios/QiblaHeadingModule.swift: the accuracy streamer, its own manager, the delegates it does not implement.
+- modules/qiblaheading/index.ts: the JS binding and the availability probes.
+- shared/qiblaSettle.ts: isCertain and the warm-stream rule, the gate''s two keys.
+- components/sheets/screens/Qibla.tsx: what the wave, the lost hint and the denied screen each require.
+- patches/expo-location+58.0.17.patch: the kCLHeadingFilterNone hunk, to acquit it.
+- node_modules/expo-location (ios LocationModule.swift, ios Providers/DeviceHeadingStreamer.swift, build/Location.js): how the heading watch reports failure and where the report stops. Read-only.
+
+Changed:
+- package.json, app.json, android/app/build.gradle: the version bump, together, one patch.
+- board/snapshot/board.sql: the snapshot at close.
+
+## Design
+
+The investigation walks the sheet''s open path once, in order, and maps each of the owner''s four observations onto it. The permission read answers granted (an install-over preserves the grant, and a lost grant would have shown the denied screen or a prompt, not the wave). Both streams arm, because the iPhone carries no fused sensor. Nothing is delivered, and Apple documents the silence: a heading start that cannot deliver has no effect and raises no event. The gate stays shut, and Apple''s other two documented facts close the recovery question: a denial is reported only through the delegate''s error channel, which on the heading side reaches JS as an error event the app never listens for (watchHeading passes no errorHandler) and on the accuracy side is not implemented at all, and a stop-and-start cycle re-issues an initial event only where delivery already works.
+
+Alternatives rejected:
+- An app bug in the gate: the toggle alone repaired the same build, so the code is acquitted, and no gate change may be made on locked ground regardless.
+- The kCLHeadingFilterNone patch starving the XS: the patch is in the tree the build used and the compass works after the toggle.
+- Global Location Services off (headingAvailable false): a per-app permission toggle cannot repair a global switch, and the grant read stayed granted throughout.
+
+## Steps
+
+1. Step 1: the code trace names the two streams and every state that holds the wave. The trace is written into this doc''s Findings section and named in a ticket comment. 1 point, docs.
+2. Step 2: the twice-argued ruling on detection and recovery, grounded in Apple''s documented behavior and the per-side error channels, tabled to the owner as a comment, every ruling marked agent-ruled. 1 point, docs.
+3. Step 3: the close. Version bump to the next free patch across the three files, board snapshot refreshed, yarn validate green, one commit on lane/254, merged to uat. 1 point, docs.
+
+## Risks
+
+- The install-over staleness is only partly Apple-documented: the silence on a heading start that cannot deliver and the denial callback are documented; the stale record itself is developer-reported on Apple''s forums, not an Apple statement. The findings say so plainly.
+- Another lane may move uat past this branch''s base before the merge. The three version files are resolved to the next free number after uat''s HEAD at merge time, and the interleaving is recorded in the ticket''s audit comment.
+- A live phone read could overturn the ruling. The phone is not attached, the ruling is marked agent-ruled, and the reproduction that grounds it is recorded with it.
+
+## Proof
+
+- The mechanism named: the ticket''s records carry the starved streams and the state the toggle reset, each claim tied to the file and line that shows it.
+- The ruling tabled: a comment carries the detection ruling and the recovery ruling, each with its challenge answered, marked agent-ruled.
+- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the three version files and board/snapshot/board.sql.
+
+## Findings
+
+### The mechanism
+
+The open path, in order. requestQiblaPermission reads the existing grant first and returns true on granted (device/qibla.ts rows 19-27). The install-over preserved the grant: a lost grant shows the denied screen or a fresh prompt (Qibla.tsx rows 119-130), and the owner saw the wave, so granted read true on every open. The iPhone carries no fused sensor (modules/qiblaheading/index.ts row 75), so the open arms BOTH CoreLocation streams (useQibla.ts rows 261-266): the heading stream on expo-location''s own CLLocationManager, and the accuracy stream on the ExpoQiblaHeading module''s own manager (QiblaHeadingModule.swift rows 63-81).
+
+The gate: a cold start holds no remembered heading (warmHeadingRef only takes a value once the gate has opened, useQibla.ts row 222; its one other write is the null in blank(), row 141), and this install never drew, so the warm key was dead. The only live key was isCertain(accuracyRef.current) (useQibla.ts row 209), which needs one accuracy event between 0 and 15 degrees inclusive (shared/qiblaSettle.ts rows 38-39). The wave shows whenever hasHeading is false with permission granted (Qibla.tsx rows 140-141), and the lost hint overlays at 5 seconds (LOST_AFTER_MS, useQibla.ts rows 47 and 125-132).
+
+The starved streams: BOTH. The heading stream delivered no trueHeading and the accuracy stream delivered no accuracy value. Two CLLocationManagers in one process share one authorization record, so no mechanism starves exactly one. No single live stream could have opened the gate anyway: readings without a vouched accuracy never draw, and accuracy without readings has nothing to draw; even a stream delivering only CoreLocation''s invalid trueHeading (-1) rides the blank path (useQibla.ts rows 173-181) and never draws. Every partial-death configuration converges on the same wave, which is what the owner saw.
+
+What the toggle reset: the app''s authorization record in the system''s location service. Cycling While Using to Always and back writes that record twice and re-delivers authorization; the next cold launch''s managers then registered against a live record, both streams delivered, the accuracy stream vouched, the gate latched, the compass drew. Apple documents the silence (a heading start that cannot deliver "has no effect and does not result in the delivery of events", startUpdatingHeading()); the stale record after an install-over is developer-reported on Apple''s forums, not an Apple statement.
+
+Acquittals: the kCLHeadingFilterNone patch is in the tree the build used and the compass works after the toggle on the same build, so the patch is not the cause. Global Location Services off would answer headingAvailable false, leaving the accuracy module unarmed and the heading watch rejecting outright, and a per-app permission cycle could not repair a global switch.
+
+### The ruling, argued twice, agent-ruled
+
+Detection: YES, the app can tell this state apart. The signature it already holds: permission reads granted, headingAvailable answers true, and across a whole open BOTH streams delivered zero events (not one, invalid included), while the 5-second lost report fired. Ordinary interference is different: it still delivers events, invalid ones included, and interference so strong the system cannot emit reports itself through the delegate error channel (Apple: CLError.headingFailure). Challenge answered: the error channels are not wired today. expo-location''s streamer implements didFailWithError and forwards an error event to JS, but the app''s watchHeading call passes no errorHandler (device/qibla.ts row 89), so it lands nowhere; the accuracy streamer implements no didFailWithError at all. The app as built sees only "lost", never why. Detection is possible, and on the heading side one argument away, but it is not built.
+
+Recovery: NO, the app cannot clear the state itself. Every open already builds fresh managers (a new streamer per watch; startHeadingAccuracy stops the old streamer and builds a new one), and many opens never recovered it, so the dead state sits above the manager, in the system. Apple documents a stop-and-start cycle as re-issuing an initial event only where delivery already works. Re-requesting authorization is a no-op once granted. No public API resets the system''s record; the resets are the user''s acts: the permission cycle in Settings (what worked), Reset Location and Privacy, or a restart. Challenge answered: listening for the authorization-change callback while the sheet is open would catch a mid-visit toggle, but that changes the moment of recovery, not the state, and the sheet already re-arms on every open, which is the owner''s actual path. The app''s whole move is to detect the signature and offer its existing Settings route with words naming the cycle; that is a qibla-sheet behaviour and copy change on locked ground.
+
+Tabled to the owner, both agent-ruled as buildable and both waiting on the owner''s order because qibla is locked: (a) build the detection, an errorHandler on the heading watch and a didFailWithError on the accuracy streamer, reporting the zero-events-with-grant signature as its own state; (b) for that state, offer the Settings route with words naming the permission cycle.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 16384, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.941784+00', '2026-10-19 20:46:19.162932+00');
 
 
 --
@@ -11083,6 +11301,8 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (14, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 13:50:38.784628+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (15, 8, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:03:55.255679+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (16, 240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:07:17.14174+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (17, 254, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.971871+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (18, 11, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:37:22.203273+00');
 
 
 --
@@ -14737,6 +14957,284 @@ Each probe, with its measured result from 2026-10-19:
 - git status --porcelain in the main tree: zero lines, branch uat. Measured: clean, the repository carries no change from this ticket.
 - git show --stat 4c413365 lists board/reader.mjs, board/server.mjs, board/index.html and board/tests/reader.test.mjs as deletions. Measured: confirmed. The deleted reader mapped OWNER-LED to the Owner-led column at its lines 23 to 24 and flagged awaitingOwner rows with their waiting-on line at lines 287 to 305, which is the contract the table above maps.
 ', NULL, 'file-text', '{}', false, false, false, NULL, 14336, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 18:10:40.983293+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (45, 17, 1, NULL, 'T-254 iPhone qibla stuck on the wave until the location permission is toggled', '# T-254: the iPhone''s dead heading streams after an install-over, and the permission cycle that revived them
+
+## Goal
+
+After a mock build replaced the production app on the iPhone XS, the qibla sheet stayed on the wave animation across many opens, indoors and out, and drew the moment the owner had cycled the iOS location permission (While Using to Always and back) and reopened the app. What is wrong today is that the cause is unnamed. When this row closes, the starved stream or streams and the state the toggle reset are named in the ticket''s records, a twice-argued ruling on whether the app can detect and recover the state itself is tabled to the owner, and no compass code has changed.
+
+## Decisions taken
+
+- 2026-10-19: Rule from the code, Apple''s documentation and the owner''s reproduction; no live phone read. The phone is not attached, and the reproduction already isolates the variable: one build, dead before the toggle, alive after. A device session could only confirm.
+- 2026-10-19: Both CoreLocation streams were dead together, not one. The heading stream (expo-location''s DeviceHeadingStreamer) and the accuracy stream (the ExpoQiblaHeading module''s own CLLocationManager) are two managers under one app authorization record, so no mechanism starves exactly one. Challenged: the gate could in principle have been held by a silent accuracy stream beside live headings, but a permission cycle repairs the one record both hang from, and it repaired the sheet in one move, which an accuracy-only fault would not. Holds.
+- 2026-10-19: Detection ruled possible and recovery ruled impossible in-app. Both rulings are argued in the Findings section and tabled to the owner as comments; neither is built, because qibla is locked.
+- 2026-10-19: The repo carries no code change for this row. Its one commit is the version bump with the refreshed board snapshot, because the ticket''s records live on the board.
+
+## Files
+
+Read, none changed:
+- hooks/useQibla.ts: the open path, the two stream starts, the gate, the wave''s own conditions.
+- device/qibla.ts: requestQiblaPermission''s granted short-circuit, watchHeading.
+- modules/qiblaheading/ios/QiblaHeadingModule.swift: the accuracy streamer, its own manager, the delegates it does not implement.
+- modules/qiblaheading/index.ts: the JS binding and the availability probes.
+- shared/qiblaSettle.ts: isCertain and the warm-stream rule, the gate''s two keys.
+- components/sheets/screens/Qibla.tsx: what the wave, the lost hint and the denied screen each require.
+- patches/expo-location+58.0.17.patch: the kCLHeadingFilterNone hunk, to acquit it.
+- node_modules/expo-location (ios LocationModule.swift, DeviceHeadingStreamer.swift, build/Location.js): how the heading watch fails silently. Read-only.
+
+Changed:
+- package.json, app.json, android/app/build.gradle: the version bump, together, one patch.
+- board/snapshot/board.sql: the snapshot at close.
+
+## Design
+
+The investigation walks the sheet''s open path once, in order, and maps each of the owner''s four observations onto it. The permission read answers granted (an install-over preserves the grant, and a lost grant would have shown the denied screen or a prompt, not the wave). Both streams arm, because the iPhone carries no fused sensor. Nothing is delivered, and Apple documents the silence: a heading start that cannot deliver has no effect and raises no event. The gate stays shut, and Apple''s other two documented facts close the recovery question: a denial is reported only through a delegate callback that neither side of this app implements, and a stop-and-start cycle re-issues an initial event only where delivery already works.
+
+Alternatives rejected:
+- An app bug in the gate: the toggle alone repaired the same build, so the code is acquitted, and no gate change may be made on locked ground regardless.
+- The kCLHeadingFilterNone patch starving the XS: the patch is in the tree the build used and the compass works after the toggle.
+- Global Location Services off (headingAvailable false): a per-app permission toggle cannot repair a global switch, and the grant read stayed granted throughout.
+
+## Steps
+
+1. Step 1: the code trace names the two streams and every state that holds the wave. The trace is written into this doc''s Findings section and named in a ticket comment. 1 point, docs.
+2. Step 2: the twice-argued ruling on detection and recovery, grounded in Apple''s documented behavior, tabled to the owner as a comment, every ruling marked agent-ruled. 1 point, docs.
+3. Step 3: the close. Version bump to the next free patch across the three files, board snapshot refreshed, yarn validate green, one commit on lane/254, merged to uat. 1 point, docs.
+
+## Risks
+
+- The install-over staleness is only partly Apple-documented: the silence on a heading start that cannot deliver and the denial callback are documented; the stale record itself is developer-reported on Apple''s forums, not an Apple statement. The findings say so plainly.
+- Another lane may move uat past this branch''s base before the merge. The three version files are resolved to the next free number after uat''s HEAD at merge time, and the interleaving is recorded in the ticket''s audit comment.
+- A live phone read could overturn the ruling. The phone is not attached, the ruling is marked agent-ruled, and the reproduction that grounds it is recorded with it.
+
+## Proof
+
+- The mechanism named: the ticket''s records carry the starved streams and the state the toggle reset, each claim tied to the file and line that shows it.
+- The ruling tabled: a comment carries the detection ruling and the recovery ruling, each with its challenge answered, marked agent-ruled.
+- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/` is empty; the diff touches only the three version files and board/snapshot/board.sql.
+', NULL, NULL, '{}', false, false, false, NULL, 16384, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.941784+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (46, 18, 1, NULL, 'T-130', '# T-130: the v1 fallback words, re-issued under the current laws
+
+## Goal
+
+A stale v1 Android snapshot blob (stored by a pre-v2 app, carrying no `strings` field) renders through the layout''s English fallback block inside `androidRender`. Row 117''s inventory (seam 6) found those words lawful only "by accident of their era" and named their re-test (row 69''s surviving scope). The owner lifted the widget park on 2026-10-18 and is open to re-issuing the few words under the current laws.
+
+When this ticket is done: the fallback block''s words are re-issued deliberately under the laws they serve (the lettered law rows 83/85/102, the Latin-digits law row 88, the device-keyed stale copy D44/D79), the re-test''s measurement is recorded, and the v1 renders are pinned by the renderer suite over a faithful v1 fixture.
+
+## The measurement (2026-10-19, uat 2.1.12)
+
+The binding ordered the measure before any change. A faithful v1 blob (v 1, English names, times and date labels, no `strings`, no day footers, no `rtl`, no row ids) was rendered through the same harness `shared/__tests__/widgetRenderer.test.ts` uses to reproduce the widget runtime. Every Text node read:
+
+| Face | Read |
+| --- | --- |
+| Live, whole hour | ASR, `2` `h` (one group, letter lowercase Latin), 15:20, footer Sat (parsed from the English label) |
+| Live, ar device locale, sub-hour | `19` `m` (Latin digits, lowercase Latin letter), ASR, 15:20, Sat |
+| Stale, small, en device | Out of date, Open Athan, to refresh |
+| Stale, small, ar device | the Arabic statics (device-keyed) |
+| Stale, medium, ar device | the Arabic one-line refresh copy |
+
+Verdict: every rendered word already carries the current-law bytes. The countdown face a v1 blob feeds was re-issued for all blobs by row 135 (the lettered `ALabelParts`, 2.0.1031): unpadded Latin digits, zero-group drop, lowercase Latin letters. The 2026-10-18 consolidation''s "obsolete face" premise no longer holds at uat; what stands is seam 6''s actual finding, that the words'' lawfulness predates the laws and was never re-tested or pinned. That is this ticket''s work.
+
+## Decisions taken
+
+1. 2026-10-19: Item (1), the gallery''s en fallback, stays closed on the row; this plan is item (2) only. The owner''s 2026-10-18 answer settled item (1) live on both platforms.
+2. 2026-10-19: No rendered byte changes. The measured face is lawful; re-wording lawful bytes would be a pixel change with no law behind it. The re-issue restates the block byte-identical with the laws named in the source and adds the missing pins. Challenged once: "re-issue" could read as "rewrite the words" - rejected, because the settled-visuals rule and the lane binding both fence the change to the fallback words as they are.
+3. 2026-10-19: The measurement is code-side, through the renderer harness, not a device read. The harness expands the same tree the widget runtime renders and reads every Text node; Lane 2 owns the Android phones and every build.
+4. 2026-10-19: The `WidgetStrings` shape stays (h, m, s, now, staleTitle, refreshLine, refreshLead, refreshTail). `s` and `now` stay unread riders; retiring fields would change the snapshot contract, which the lane binding makes a STOP question first, and nothing demands it. ANDROID_SNAPSHOT_VERSION stays 4, WIDGET_PROPS_VERSION stays 8.
+5. 2026-10-19: The two existing "v1" renderer tests move to a faithful v1 fixture. Their fixtures keep v4-only fields (day footers, rtl, v 4), so they pin a shape no stored blob ever had; the faithful fixture also exercises the parsed-label footer path instead of the verbatim footer field.
+6. 2026-10-19: Type Testing, surface Android, area widgets, 2 story points (one code step).
+
+## Files
+
+- `widgets/PrayerWidget.tsx`: the v1 fallback block in `androidRender` (the `input.strings ?? {...}` literal). Comment re-issued under the laws; words byte-identical.
+- `shared/__tests__/widgetRenderer.test.ts`: the v1 fixture made faithful; live-face assertions kept on it; new stale-card pins (en and ar device locales, both sizes) and the parsed-footer pin.
+
+## Design
+
+Invariant: a v1 blob renders the same face the current en bake renders - lettered lowercase Latin h m at the owner''s amended sizing, unpadded Latin digits, zero-group drop, device-keyed stale words. No pixel changes, no schema bump.
+
+Approach:
+
+1. The fallback block''s comment names the laws it serves: rows 83/85/102 (fixed lowercase Latin unit bytes, never localised), row 88 (Latin digits), D44/D79 (device-keyed stale copy), beside the closure-law note that keeps the words baked in the body. The literal stays byte-identical: h `h`, m `m`, s `s`, now `now`, and the four stale words from staticRow.
+2. The two v1 tests'' fixture becomes faithful: built from the builder snapshot with v stamped 1 and strings, day footers, rtl and row ids stripped. Their existing assertions (the lettered live face, Latin under an ar device locale) carry over; the parsed-footer pin joins.
+3. New pins: a faithful v1 blob past its horizon renders the device-locale stale words, small (two lines) and medium (one line), under en and ar device locales.
+4. Mutation pass over every rendered fallback byte: flip h to H, m to M, and each stale word to a wrong literal in the source, one at a time, and the pins fail each flip. `s` and `now` never render and stay unguarded by renders; that limit is recorded here, not hidden.
+
+Alternatives rejected:
+
+- Re-wording the stale copy or unit bytes: no law demands it, the visuals are settled, and the owner''s permission was to re-issue under the laws, not to redesign.
+- Retiring `s`/`now` from `WidgetStrings`: a snapshot-shape decision behind a STOP fence; row 135 already ruled them riders until the shape changes.
+- A live device read of a stored v1 blob: the harness reads the same tree; the phones and builds are Lane 2''s this run.
+- Importing the fallback literal into a test to pin its bytes: the block lives inside the serialized layout body (the closure law); only renders can pin it.
+
+## Steps
+
+1. Step 1 (code, 2 points): the v1 fallback words re-issued under the current laws and pinned. The comment re-issue and the faithful-fixture pins land together: the block byte-identical with its laws named, the live face, parsed footer and both-size stale words pinned under en and ar device locales, the mutation pass run over every rendered byte, yarn validate green.
+
+## Risks
+
+- The faithful fixture could expose a parse surprise in the builder''s date label: the measurement already ran the faithful shape; the en label parses to its first token exactly as the v1-era shape did.
+- A reviewer may read "re-issue" as "the words must change": the measurement section and decision 2 answer it; the audit reads this plan.
+- The comment grows the serialized body: comments change no rendered value.
+
+## Proof
+
+- `yarn jest shared/__tests__/widgetRenderer.test.ts` green with the faithful-fixture pins present.
+- Mutation: with `h: ''h''` flipped to `h: ''H''` in the source the live pins fail; with `staleTitle: staticRow.staleTitle` flipped to a hardcoded literal the ar-device stale pins fail; each flip restored, the suite green again.
+- `yarn validate` green.
+- The diff shows the fallback block''s comment naming rows 83/85/102, row 88 and D44/D79, with the literal''s bytes unchanged and both schema versions still 8 and 4.
+', NULL, 'file-text', '{}', false, false, false, NULL, 17408, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:37:22.174969+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (48, 18, 2, NULL, 'T-130', '# T-130: the v1 fallback words, re-issued under the current laws
+
+## Goal
+
+A stale v1 Android snapshot blob (stored by a pre-v2 app, carrying no `strings` field) renders through the layout''s English fallback block inside `androidRender`. Row 117''s inventory (seam 6) found those words lawful only "by accident of their era" and named their re-test. The scope line it quoted from row 69: "decides whether the unit fields retire from WidgetStrings (shape and fallback work), and re-tests the v1 fallback words". Row 69''s own card is gone from the board; the line survives here. The owner lifted the widget park on 2026-10-18 and is open to re-issuing the few words under the current laws.
+
+When this ticket is done: the fallback block''s words are re-issued deliberately under the laws they serve (the lettered law rows 83/85/102, the Latin-digits law row 88, the device-keyed stale copy D44/D79), the re-test''s measurement is recorded, and the v1 renders are pinned by the renderer suite over a faithful v1 fixture.
+
+## The measurement (2026-10-19, uat 2.1.12)
+
+The binding ordered the measure before any change. A faithful v1 blob (v 1, English names, times and date labels, no `strings`, no day footers, no `rtl`, no row ids) was rendered through the same harness `shared/__tests__/widgetRenderer.test.ts` uses to reproduce the widget runtime. Every Text node read:
+
+| Face | Read |
+| --- | --- |
+| Live, whole hour | ASR, `2` `h` (one group, letter lowercase Latin), 15:20, footer Sat (parsed from the English label) |
+| Live, ar device locale, sub-hour | `19` `m` (Latin digits, lowercase Latin letter), ASR, 15:20, Sat |
+| Stale, small, en device | Out of date, Open Athan, to refresh |
+| Stale, small, ar device | the Arabic statics (device-keyed) |
+| Stale, medium, ar device | the Arabic one-line refresh copy |
+
+Verdict: every rendered word already carries the current-law bytes. The countdown face a v1 blob feeds was re-issued for all blobs by row 135 (the lettered `ALabelParts`, 2.0.1031): unpadded Latin digits, zero-group drop, lowercase Latin letters. The 2026-10-18 consolidation''s "obsolete face" premise no longer holds at uat; what stands is seam 6''s actual finding, that the words'' lawfulness predates the laws and was never re-tested or pinned. That is this ticket''s work.
+
+## Decisions taken
+
+1. 2026-10-19: Item (1), the gallery''s en fallback, stays closed on the row; this plan is item (2) only. The owner''s 2026-10-18 answer settled item (1) live on both platforms.
+2. 2026-10-19: No rendered byte changes. The measured face is lawful; re-wording lawful bytes would be a pixel change with no law behind it. The re-issue restates the block byte-identical with the laws named in the source and adds the missing pins. Challenged once: "re-issue" could read as "rewrite the words" - rejected, because the settled-visuals rule and the lane binding both fence the change to the fallback words as they are.
+3. 2026-10-19: The measurement is code-side, through the renderer harness, not a device read. The harness expands the same tree the widget runtime renders and reads every Text node; Lane 2 owns the Android phones and every build.
+4. 2026-10-19: The `WidgetStrings` shape stays (h, m, s, now, staleTitle, refreshLine, refreshLead, refreshTail). `s` and `now` stay unread riders; retiring fields would change the snapshot contract, which the lane binding makes a STOP question first, and nothing demands it. ANDROID_SNAPSHOT_VERSION stays 4, WIDGET_PROPS_VERSION stays 8.
+5. 2026-10-19: The two existing "v1" renderer tests move to a faithful v1 fixture. Their fixtures keep v4-only fields (day footers, rtl, v 4), so they pin a shape no stored blob ever had; the faithful fixture also exercises the parsed-label footer path instead of the verbatim footer field. The carried-over assertions alone cover only the two-group face (frozen 14:08:30, `1 h 12 m`), so the faithful fixture gains the zero-drop cases the acceptance names: frozen 14:20:00 (a whole hour to Asr) pinning the single group `1` `h` with no minutes run, and frozen 15:01:30 pinning the single group `19` `m`.
+6. 2026-10-19: Type Testing, surface Android, area widgets, 2 story points (one code step).
+
+## Files
+
+- `widgets/PrayerWidget.tsx`: the v1 fallback block in `androidRender` (the `input.strings ?? {...}` literal). Comment re-issued under the laws; words byte-identical.
+- `shared/__tests__/widgetRenderer.test.ts`: the v1 fixture made faithful; live-face assertions kept on it; new stale-card pins (en and ar device locales, both sizes) and the parsed-footer pin.
+
+## Design
+
+Invariant: a v1 blob renders the same face the current en bake renders - lettered lowercase Latin h m at the owner''s amended sizing, unpadded Latin digits, zero-group drop, device-keyed stale words. No pixel changes, no schema bump.
+
+Approach:
+
+1. The fallback block''s comment names the laws it serves: rows 83/85/102 (fixed lowercase Latin unit bytes, never localised), row 88 (Latin digits), D44/D79 (device-keyed stale copy), beside the closure-law note that keeps the words baked in the body. The literal stays byte-identical: h `h`, m `m`, s `s`, now `now`, and the four stale words from staticRow.
+2. The two v1 tests'' fixture becomes faithful: built from the builder snapshot with v stamped 1 and strings, day footers, rtl and row ids stripped. Their existing assertions (the two-group lettered face frozen 14:08:30, Latin under an ar device locale) carry over; the parsed-footer pin joins, and two zero-drop pins land on the same fixture: frozen 14:20:00 pins the whole-hour face `1` `h` (one group, no minutes run), frozen 15:01:30 pins the sub-hour face `19` `m`.
+3. New pins: a faithful v1 blob past its horizon renders the device-locale stale words, small (two lines) and medium (one line), under en and ar device locales.
+4. Mutation pass over every rendered fallback byte: flip h to H, m to M, and each stale word to a wrong literal in the source, one at a time, and the pins fail each flip. `s` and `now` never render and stay unguarded by renders; that limit is recorded here, not hidden.
+
+Alternatives rejected:
+
+- Re-wording the stale copy or unit bytes: no law demands it, the visuals are settled, and the owner''s permission was to re-issue under the laws, not to redesign.
+- Retiring `s`/`now` from `WidgetStrings`: a snapshot-shape decision behind a STOP fence; row 135 already ruled them riders until the shape changes.
+- A live device read of a stored v1 blob: the harness reads the same tree; the phones and builds are Lane 2''s this run.
+- Importing the fallback literal into a test to pin its bytes: the block lives inside the serialized layout body (the closure law); only renders can pin it.
+
+## Steps
+
+1. Step 1 (code, 2 points): the v1 fallback words re-issued under the current laws and pinned. The comment re-issue and the faithful-fixture pins land together: the block byte-identical with its laws named, the live face, parsed footer and both-size stale words pinned under en and ar device locales, the mutation pass run over every rendered byte, yarn validate green.
+
+## Risks
+
+- The faithful fixture could expose a parse surprise in the builder''s date label: the measurement already ran the faithful shape; the en label parses to its first token exactly as the v1-era shape did.
+- A reviewer may read "re-issue" as "the words must change": the measurement section and decision 2 answer it; the audit reads this plan.
+- The comment grows the serialized body: comments change no rendered value.
+
+## Proof
+
+- `yarn jest shared/__tests__/widgetRenderer.test.ts` green with the faithful-fixture pins present.
+- Mutation: with `h: ''h''` flipped to `h: ''H''` in the source the live pins fail; with `staleTitle: staticRow.staleTitle` flipped to a hardcoded literal the ar-device stale pins fail; each flip restored, the suite green again.
+- `yarn validate` green.
+- The diff shows the fallback block''s comment naming rows 83/85/102, row 88 and D44/D79, with the literal''s bytes unchanged and both schema versions still 8 and 4.
+', NULL, 'file-text', '{}', false, false, false, NULL, 17408, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:42:55.260652+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (47, 17, 3, NULL, 'T-254 iPhone qibla stuck on the wave until the location permission is toggled', '# T-254: the iPhone''s dead heading streams after an install-over, and the permission cycle that revived them
+
+## Goal
+
+After a mock build replaced the production app on the iPhone XS, the qibla sheet stayed on the wave animation across many opens, indoors and out, and drew the moment the owner had cycled the iOS location permission (While Using to Always and back) and reopened the app. What is wrong today is that the cause is unnamed. When this row closes, the starved stream or streams and the state the toggle reset are named in the ticket''s records, a twice-argued ruling on whether the app can detect and recover the state itself is tabled to the owner, and no compass code has changed.
+
+## Decisions taken
+
+- 2026-10-19: Rule from the code, Apple''s documentation and the owner''s reproduction; no live phone read. The phone is not attached, and the reproduction already isolates the variable: one build, dead before the toggle, alive after. A device session could only confirm.
+- 2026-10-19: Both CoreLocation streams were dead together, not one. The heading stream (expo-location''s DeviceHeadingStreamer) and the accuracy stream (the ExpoQiblaHeading module''s own CLLocationManager) are two managers under one app authorization record, so no mechanism starves exactly one. Challenged: the gate could in principle have been held by a silent accuracy stream beside live headings, but a permission cycle repairs the one record both hang from, and it repaired the sheet in one move, which an accuracy-only fault would not. Holds.
+- 2026-10-19: Detection ruled possible and recovery ruled impossible in-app. Both rulings are argued in the Findings section and tabled to the owner as comments; neither is built, because qibla is locked.
+- 2026-10-19: The repo carries no code change for this row. Its one commit is the version bump with the refreshed board snapshot, because the ticket''s records live on the board.
+- 2026-10-19: Griller finding 1 answered: the error channels are stated per side. The heading stream''s failure IS CoreLocation-observable: expo-location''s DeviceHeadingStreamer implements didFailWithError and forwards it to JS as an error event, but the app''s watchHeading call passes no errorHandler, so it lands nowhere. The accuracy streamer implements no didFailWithError at all and reports nothing to anyone. The stuck sheet therefore could not have heard either outcome, and the ruling argues detection against these corrected facts.
+- 2026-10-19: Griller finding 2 answered: the no-change proof''s diff covers patches/ as well, because the plan itself names the expo-location patch as compass behavior it acquits.
+
+## Files
+
+Read, none changed:
+- hooks/useQibla.ts: the open path, the two stream starts, the gate, the wave''s own conditions.
+- device/qibla.ts: requestQiblaPermission''s granted short-circuit, watchHeading''s missing errorHandler.
+- modules/qiblaheading/ios/QiblaHeadingModule.swift: the accuracy streamer, its own manager, the delegates it does not implement.
+- modules/qiblaheading/index.ts: the JS binding and the availability probes.
+- shared/qiblaSettle.ts: isCertain and the warm-stream rule, the gate''s two keys.
+- components/sheets/screens/Qibla.tsx: what the wave, the lost hint and the denied screen each require.
+- patches/expo-location+58.0.17.patch: the kCLHeadingFilterNone hunk, to acquit it.
+- node_modules/expo-location (ios LocationModule.swift, ios Providers/DeviceHeadingStreamer.swift, build/Location.js): how the heading watch reports failure and where the report stops. Read-only.
+
+Changed:
+- package.json, app.json, android/app/build.gradle: the version bump, together, one patch.
+- board/snapshot/board.sql: the snapshot at close.
+
+## Design
+
+The investigation walks the sheet''s open path once, in order, and maps each of the owner''s four observations onto it. The permission read answers granted (an install-over preserves the grant, and a lost grant would have shown the denied screen or a prompt, not the wave). Both streams arm, because the iPhone carries no fused sensor. Nothing is delivered, and Apple documents the silence: a heading start that cannot deliver has no effect and raises no event. The gate stays shut, and Apple''s other two documented facts close the recovery question: a denial is reported only through the delegate''s error channel, which on the heading side reaches JS as an error event the app never listens for (watchHeading passes no errorHandler) and on the accuracy side is not implemented at all, and a stop-and-start cycle re-issues an initial event only where delivery already works.
+
+Alternatives rejected:
+- An app bug in the gate: the toggle alone repaired the same build, so the code is acquitted, and no gate change may be made on locked ground regardless.
+- The kCLHeadingFilterNone patch starving the XS: the patch is in the tree the build used and the compass works after the toggle.
+- Global Location Services off (headingAvailable false): a per-app permission toggle cannot repair a global switch, and the grant read stayed granted throughout.
+
+## Steps
+
+1. Step 1: the code trace names the two streams and every state that holds the wave. The trace is written into this doc''s Findings section and named in a ticket comment. 1 point, docs.
+2. Step 2: the twice-argued ruling on detection and recovery, grounded in Apple''s documented behavior and the per-side error channels, tabled to the owner as a comment, every ruling marked agent-ruled. 1 point, docs.
+3. Step 3: the close. Version bump to the next free patch across the three files, board snapshot refreshed, yarn validate green, one commit on lane/254, merged to uat. 1 point, docs.
+
+## Risks
+
+- The install-over staleness is only partly Apple-documented: the silence on a heading start that cannot deliver and the denial callback are documented; the stale record itself is developer-reported on Apple''s forums, not an Apple statement. The findings say so plainly.
+- Another lane may move uat past this branch''s base before the merge. The three version files are resolved to the next free number after uat''s HEAD at merge time, and the interleaving is recorded in the ticket''s audit comment.
+- A live phone read could overturn the ruling. The phone is not attached, the ruling is marked agent-ruled, and the reproduction that grounds it is recorded with it.
+
+## Proof
+
+- The mechanism named: the ticket''s records carry the starved streams and the state the toggle reset, each claim tied to the file and line that shows it.
+- The ruling tabled: a comment carries the detection ruling and the recovery ruling, each with its challenge answered, marked agent-ruled.
+- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the three version files and board/snapshot/board.sql.
+
+## Findings
+
+### The mechanism
+
+The open path, in order. requestQiblaPermission reads the existing grant first and returns true on granted (device/qibla.ts rows 19-27). The install-over preserved the grant: a lost grant shows the denied screen or a fresh prompt (Qibla.tsx rows 119-130), and the owner saw the wave, so granted read true on every open. The iPhone carries no fused sensor (modules/qiblaheading/index.ts row 75), so the open arms BOTH CoreLocation streams (useQibla.ts rows 261-266): the heading stream on expo-location''s own CLLocationManager, and the accuracy stream on the ExpoQiblaHeading module''s own manager (QiblaHeadingModule.swift rows 63-81).
+
+The gate: a cold start holds no remembered heading (warmHeadingRef only takes a value once the gate has opened, useQibla.ts row 222; its one other write is the null in blank(), row 141), and this install never drew, so the warm key was dead. The only live key was isCertain(accuracyRef.current) (useQibla.ts row 209), which needs one accuracy event between 0 and 15 degrees inclusive (shared/qiblaSettle.ts rows 38-39). The wave shows whenever hasHeading is false with permission granted (Qibla.tsx rows 140-141), and the lost hint overlays at 5 seconds (LOST_AFTER_MS, useQibla.ts rows 47 and 125-132).
+
+The starved streams: BOTH. The heading stream delivered no trueHeading and the accuracy stream delivered no accuracy value. Two CLLocationManagers in one process share one authorization record, so no mechanism starves exactly one. No single live stream could have opened the gate anyway: readings without a vouched accuracy never draw, and accuracy without readings has nothing to draw; even a stream delivering only CoreLocation''s invalid trueHeading (-1) rides the blank path (useQibla.ts rows 173-181) and never draws. Every partial-death configuration converges on the same wave, which is what the owner saw.
+
+What the toggle reset: the app''s authorization record in the system''s location service. Cycling While Using to Always and back writes that record twice and re-delivers authorization; the next cold launch''s managers then registered against a live record, both streams delivered, the accuracy stream vouched, the gate latched, the compass drew. Apple documents the silence (a heading start that cannot deliver "has no effect and does not result in the delivery of events", startUpdatingHeading()); the stale record after an install-over is developer-reported on Apple''s forums, not an Apple statement.
+
+Acquittals: the kCLHeadingFilterNone patch is in the tree the build used and the compass works after the toggle on the same build, so the patch is not the cause. Global Location Services off would answer headingAvailable false, leaving the accuracy module unarmed and the heading watch rejecting outright, and a per-app permission cycle could not repair a global switch.
+
+### The ruling, argued twice, agent-ruled
+
+Detection: YES, the app can tell this state apart. The signature it already holds: permission reads granted, headingAvailable answers true, and across a whole open BOTH streams delivered zero events (not one, invalid included), while the 5-second lost report fired. Ordinary interference is different: it still delivers events, invalid ones included, and interference so strong the system cannot emit reports itself through the delegate error channel (Apple: CLError.headingFailure). Challenge answered: the error channels are not wired today. expo-location''s streamer implements didFailWithError and forwards an error event to JS, but the app''s watchHeading call passes no errorHandler (device/qibla.ts row 89), so it lands nowhere; the accuracy streamer implements no didFailWithError at all. The app as built sees only "lost", never why. Detection is possible, and on the heading side one argument away, but it is not built.
+
+Recovery: NO, the app cannot clear the state itself. Every open already builds fresh managers (a new streamer per watch; startHeadingAccuracy stops the old streamer and builds a new one), and many opens never recovered it, so the dead state sits above the manager, in the system. Apple documents a stop-and-start cycle as re-issuing an initial event only where delivery already works. Re-requesting authorization is a no-op once granted. No public API resets the system''s record; the resets are the user''s acts: the permission cycle in Settings (what worked), Reset Location and Privacy, or a restart. Challenge answered: listening for the authorization-change callback while the sheet is open would catch a mid-visit toggle, but that changes the moment of recovery, not the state, and the sheet already re-arms on every open, which is the owner''s actual path. The app''s whole move is to detect the signature and offer its existing Settings route with words naming the cycle; that is a qibla-sheet behaviour and copy change on locked ground.
+
+Tabled to the owner, both agent-ruled as buildable and both waiting on the owner''s order because qibla is locked: (a) build the detection, an errorHandler on the heading watch and a didFailWithError on the accuracy streamer, reporting the zero-events-with-grant signature as its own state; (b) for that state, offer the Settings route with words naming the permission cycle.
+', NULL, NULL, '{}', false, false, false, NULL, 16384, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:46:19.162932+00');
 
 
 --
@@ -14812,7 +15310,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:22', 1, 32);
@@ -14919,14 +15416,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:250', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:251', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 48);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 24);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 40);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 65);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:253', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 31);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:255', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
@@ -14940,11 +15439,14 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 13);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 66);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 38);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3307);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3274);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 
@@ -15208,7 +15710,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2239, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2275, true);
 
 
 --
@@ -15264,7 +15766,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 550, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 254, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 258, true);
 
 
 --
@@ -15285,7 +15787,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 434, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 447, true);
 
 
 --
@@ -15376,14 +15878,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 16, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 18, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 44, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 48, true);
 
 
 --
@@ -19768,5 +20270,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 1NUYgZB3c7O1wctncFR8q0P5LtAbyx1v0bksQF2itCmp6OMNZi0fNOV8dc4UaWJ
+\unrestrict 3nGOZ59saVcwxE2VJdquvxkxo3JzMHXPTSgFdHgw760BVOqLhjDTc2uPhEzEM1W
 
