@@ -12,7 +12,7 @@ trap 'rm -f "$tmp"' EXIT
 # database from this one file. The one row per line format keeps a ticket moving
 # between columns as a one line diff.
 docker compose --env-file env exec -T postgres \
-  pg_dump -U itsaplan -d itsaplan \
+  pg_dump -U athan -d athan \
   --no-owner --no-privileges \
   --inserts --column-inserts \
   > "$tmp"

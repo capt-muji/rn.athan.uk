@@ -9,7 +9,7 @@ The board is the tickets. There is no file. Everything a ticket is, and every st
 through, lives on the board.
 
 Instance: `itsaplan`, the MCP server wired in `opencode.json`. There is one project, so
-`list_projects` gives its ref and `get_project` gives every id. The team is `Athan.uk`.
+`list_projects` gives its ref and `get_project` gives every id. The team is `Athan`.
 
 ## The ticket's number
 

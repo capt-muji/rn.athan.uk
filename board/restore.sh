@@ -11,7 +11,7 @@ file="${1:-snapshot/board.sql}"
 test -f "$file" || { echo "no $file to restore" >&2; exit 1; }
 
 psql() {
-  docker compose --env-file env exec -T postgres psql -U itsaplan -d itsaplan -v ON_ERROR_STOP=1 "$@"
+  docker compose --env-file env exec -T postgres psql -U athan -d athan -v ON_ERROR_STOP=1 "$@"
 }
 
 # The api holds pooled connections and prepared statements against the schema
