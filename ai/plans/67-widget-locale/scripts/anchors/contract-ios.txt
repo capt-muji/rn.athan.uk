@@ -1,3 +1,0 @@
-  it('stamps v7 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
-    expect(WIDGET_PROPS_VERSION).toBe(7);
-

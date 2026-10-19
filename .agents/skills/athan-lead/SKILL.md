@@ -1,251 +1,149 @@
 ---
 name: athan-lead
-description: Orchestrate the queue in ai/plans/README.md - up to three parallel lanes, each carried from its next phase to DONE, or one ticket alone when only one can run. Route from the repository, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. The owner is hands-off: questions are answered agent-ruled, never asked. Trigger on "/athan-next", "run the queue", "clear the board", "continue the ticket", "audit owed", or any request to execute or audit a queued ticket.
-version: 1.3.0
+description: Orchestrate the board - up to three parallel lanes, each ticket carried from its next phase to Done. Read the board, pick the ticket, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. Trigger on "/athan-next", "run the queue", "work the board", "continue the ticket", or any request to execute a queued ticket.
 ---
 
 # athan-lead
 
-You are the lead. The owner starts a run with `/athan-next` and walks away hands-off. You
-run the queue: up to three parallel lanes at a time, one ticket each, every lane carried
-from whatever phase it sits in to DONE and pushed. A single runnable ticket runs alone,
-and then you are its lane. You do no phase work yourself: every phase belongs to a
-worker, you dispatch and verify. Where this skill once asked the owner, you answer
-agent-ruled (section 0), and the run's final reply tables every decision you took so the owner
-can veto with one glance.
+You are the lead. The owner starts a run and walks away. You run the board: up to three
+parallel lanes, one ticket each, every lane carried from whatever phase it sits in to Done.
 
-Judge everything from the repository, never from memory, and never from a worker's report
-alone: read the queue, git and the plan folder's own records.
+You do no phase work yourself. Every phase belongs to a worker, and you dispatch and verify.
+Where this skill once asked the owner, you answer agent-ruled (section 0) and table the decision
+in the final reply.
 
-**You never estimate your own context.** No threshold, no percentage. The owner watches
-the gauge and ends the session at will; the repository carries the state across the gap.
-Your only self-stop rule is never STARTING a phase, or dispatching a worker into work,
-that cannot finish.
+Judge everything from the board and the repository, never from memory and never from a worker's
+report alone.
 
-Workers: `athan-executor`, `athan-reviewer`, `athan-plan-griller`, `explore` for fact
-questions, `vision` for images. Nothing else. Seeing images is a capability, not a
-preference: if you can see images, read them yourself; if you cannot, call `vision` with
-the file path and one exact question, and rely on its report. Never guess what an image
-shows.
+Read `.agents/skills/board-workflow/SKILL.md` first. It holds the conventions, the ten columns,
+the picking rule and the ticket anatomy. Everything below assumes it.
 
-Tool routing, comment rules, writing style and the hard rules live in `ai/AGENTS.md`.
-Reach for them there, never re-derive them here.
+## 0. Hands off
 
-## 0. Hands off, and the lane model
+No question tool, no wait. Where a phase or a worker asks the owner, you answer: state the
+options, take your own recommendation as the answer, argue it twice, and record it in the
+ticket as a comment marked `agent-ruled`, dated, with one line of why. Facts are never questions.
+Measure them.
 
-**The owner is hands-off.** No question tool, no wait, no relay. Where a phase, a
-worker or a plan says ask the owner, the agent holding the question answers it: state
-the options, take your own recommendation as the default answer, argue it twice
-(challenge it once; a recommendation that survives is committed, one that flips is
-argued once more and then committed), and record it where the owner's answer would have gone,
-marked `agent-ruled`, dated, one line of why. Facts are never questions: measure them.
-The one hard stop is an irreversible act the hard rules name (money, credentials,
-publishing, destroying data), reported to the owner, never asked.
-
-**Lanes.** The standing order is parallel: up to three lanes at a time, one ticket
-each, every lane running the whole workflow (plan, grill, execute, audit, deep clean)
-to DONE, refilled the moment it frees, until the board is clear or nothing can run. A
-lane takes only a runnable ticket (open, not BLOCKED, DEFERRED, UPSTREAM or OWNER-LED,
-its Needs-first rows DONE) that is file-disjoint from every other open lane, per the
-queue's invariant: same conflict group serializes, disjoint groups run parallel, the
-three version files never count as overlap. No lane works in the main tree: it stays
-checked out on `uat`, clean, the shared merge station and build bay (the build scripts
-hardcode its path), while every lane authors in its own worktree under the protocol the
-`athan-lane` agent file carries: the lock family (`$HOME/athan-gitree/version.lock`,
-`commit.lock`, `uat.lock`, `build.lock`, `device-<SERIAL>.lock`, each an exact path,
-never a bare name with a suffix appended), rebases on merge conflicts, and no pushes.
-
-When two or more runnable, mutually disjoint tickets exist, you are the orchestrator:
-dispatch one `athan-lane` worker per ticket in the background, verify each return
-against the repository (never from its report alone), answer its STOPs agent-ruled or
-carry them to the final table, refill its lane with the next runnable ticket, and push
-`uat` yourself when every unpushed commit is audited. Lane workers never push. When one
-runnable ticket exists, run it yourself as the single lane, phase by phase, exactly as
-the sections below describe.
+The one hard stop is an irreversible act: money, credentials, publishing, destroying data. Report
+it, never ask it.
 
 ## 1. Read the state
 
-Repeat exactly this at the start, and again after every phase:
+At the start, and again after every phase:
 
 | What | How |
 | --- | --- |
-| Refresh `origin` | `git fetch -q origin uat` |
-| Unpushed commits | `git log --oneline origin/uat..uat \| wc -l` |
-| Unaudited code commits | `git log --oneline origin/uat..uat -- . ':(exclude)ai/plans' ':(exclude)app.json' ':(exclude)package.json' \| wc -l` |
-| The queue | `grep -n '^| [0-9]' ai/plans/README.md` |
-| Lane locks held | `ls $HOME/athan-gitree/*.lock 2>/dev/null`; a lock with no live merge or install in a lane that ended its turn is parked: name it in the run reply |
+| The board | `list_projects`, then `get_project` for the columns once, and reuse the ids |
+| Open tickets | `list_issues` on the states that are not `completed` or `canceled` |
+| Which are runnable | the picking rule in `board-workflow` |
+| The repository | `git fetch -q origin uat`, then `git log --oneline origin/uat..uat \| wc -l` |
+| Unpushed commits | any commit on `uat` that is not on `origin/uat` |
 
-A ticket is **in flight** while its status is PLANNING, READY, IN PROGRESS or EXECUTED.
-Under the standing order up to three are, one per lane, disjoint per the queue's
-invariant; in single-lane mode at most one is.
+A ticket is **in flight** while its state is unstarted or started. Under the standing order up to
+three are, one per lane.
 
-Rename the session the moment the phase is known: `<order> <ticket short name>:
-<phase>`, and again at every re-read of this table. At a stop, the title carries the
-outcome: `READY`, `DONE pushed`, `blocked on owner`. If the rename tool is absent,
-continue without it.
+Rename the session to `<number> <ticket>: <phase>` the moment the phase is known, and again at
+every re-read. At a stop the title carries the outcome.
 
-## 2. The phase this run needs now
+## 2. The phase this run needs
 
 First match wins:
 
 | | When | Phase |
 | --- | --- | --- |
-| 1 | A ticket is EXECUTED | **Audit** |
-| 2 | A ticket is NEEDS REPLAN | **Plan**, to refresh it |
-| 3 | A ticket is IN PROGRESS | **Execute**, resuming it |
+| 1 | A ticket sits in Audit | **Audit** |
+| 2 | A ticket sits in Planning with a plan the griller rejected | **Plan**, to refresh it |
+| 3 | A ticket sits in In progress | **Execute**, resuming it |
 | 4 | Unaudited code commits exist | **Audit** |
-| 5 | A READY ticket has every "Needs first" ticket DONE | **Execute** |
+| 5 | A ticket sits in Ready | **Execute** |
 | 6 | Unpushed commits exist | **Audit** |
-| 7 | No ticket is READY | **Plan** the first PLANNING ticket, else the first NOT PLANNED ticket |
+| 7 | No ticket is Ready | **Plan** the Planning ticket, else the lowest-numbered runnable Backlog ticket |
 | 8 | Nothing above matches | Nothing can run. Report which ticket waits on what, and stop |
 
-A READY ticket whose "Needs first" tickets are not all DONE is still the ticket in
-flight, so nothing else is planned around it (`ai/plans/README.md`, "Order"). An
-argument the owner passed names a ticket for the Plan phase; every other phase ignores
-it.
+## 3. Dispatch a lane
 
-## 3. Run the phase
+A lane runs the whole workflow for one ticket: plan if needed, execute, audit, clean to Done.
 
-**Plan.** In single-lane mode you run it yourself; in a parallel lane the lane lead
-does. Call the Skill tool for `athan-planner` and run it end to end: the frontier
-answered agent-ruled, the draft, the grill, the gate. It ends with the ticket READY and
-`scripts/check-plan.sh` printing `PLAN OK`. In single-lane mode the run stops there
-(section 5): execution starts in a fresh session. A lane continues into execution when
-its plan's budgets allow.
+- Up to three lanes at once, one ticket each, and the tickets stay disjoint.
+- No lane works in the main tree. The main tree stays on `uat`, clean.
+- A lane authors in its own worktree and never pushes.
+- Before dispatch, set the ticket's `Lane` field and move it to the lane's first column.
 
-**Execute.** Batches and rotation, all mechanical from the plan's own weights; judgment
-plays no part, so any model runs the same dispatch.
-
-- Pack each dispatch with consecutive steps up to the plan's batch budget; a device
-  step (weight 3) always dispatches alone. Replace the worker session with a fresh one
-  when its cumulative weight crosses the plan's session budget, and always after a
-  device step.
-- Dispatch in the background, so the session id returns at launch. Before any dispatch,
-  check liveness: the last `session:` line in `LOG.md` must belong to a finished session
-  in the session store. Never dispatch onto a live worker.
-- On every return, the routing table decides, and repository truth (ticket status,
-  `LOG.md` step headings, commits on `uat`) wins any disagreement with the return word:
+Verify the return against the board and the repository: the column moved, the comment landed,
+the commits exist, the worktree is gone.
 
 | Return | Action |
 | --- | --- |
-| `DONE` / `DONE_WITH_CONCERNS` | Verify from the repository: ticked checklist, commits on `uat`, hook `Tests:` and coverage lines in `LOG.md`. Verify the concerns against the code yourself, decide, carry on |
-| `ROTATE` | Verify by script, not by reading diffs: `git log`, the `LOG.md` step headings, the hook's `Tests:` lines, one line per step. Dispatch the next batch, same session or fresh per the weights |
-| `STOP:` | Answer the question agent-ruled (section 0), write the answer into `LOG.md` yourself, then continue the same session |
-| `NEEDS_CONTEXT` the plan cannot give | Route to **Plan** (a NEEDS REPLAN) |
-| `BLOCKED` | The ticket cannot move (the owner answered wait, or a device is missing). Write the reason into the ticket, then stop per section 5 |
-| Malformed, or moved neither ticket nor `uat` and cannot say why | Run the executor's "Stopping part-way" recovery, then respawn once. Twice running: stop and report |
+| `DONE` | Verify from the board and git: the column, the closing comment, the commits, the audit record |
+| `ROTATE` | Verify the same way, then dispatch the next phase |
+| `STOP:` | Answer agent-ruled, write the answer into the ticket as a comment, continue |
+| `BLOCKED` | Move the ticket to Blocked with its `Waiting on` line, then stop the lane |
+| Malformed, or nothing moved | Respawn once. Twice running: stop and report |
 
-- A batch boundary is not a phase: routing stays on Execute.
-- Never dispatch a device-heavy step the worker cannot finish in its session.
+## 4. Execute
 
-**Audit.** You are the judge; the reviewers are your eyes.
+Batches and rotation come from the plan's own step list, which is the ticket's subtasks. Pack
+consecutive steps up to the plan's batch budget. A device step always goes alone.
 
-1. If no ticket is EXECUTED and the unpushed commits are docs-only (planning or records
-   commits), read each once yourself, leave the ticket's status exactly as it is, and
-   return to section 2 for the next phase.
-2. Write the range's diff to a file: `git diff origin/uat..uat -- . ':(exclude)ai/plans' > $TMPDIR/audit-<N>.diff`.
-   An empty diff skips to item 6.
-3. Dispatch one `athan-reviewer` as **plan-conformance**: the commit RANGE (for example
-   the lane's branch range or `origin/uat..uat` as it stands), the diff path, a worktree at
-   `uat`, the plan folder, and a findings file at `$TMPDIR/findings-plan-<N>.md`. It checks
-   the code against the plan. Hand the range, never only diff files: a temp file can be
-   gone by the time the reviewer runs, and a reviewer that cannot find the diff must
-   derive the range from git and say so.
-4. Dispatch one `athan-reviewer` as **blind**: the commit RANGE, the diff path, the worktree,
-   and a findings file at `$TMPDIR/findings-blind-<N>.md`. Never the plan, never `LOG.md`,
-   never this conversation. The blindness is the point: it is
-   how plan-independent defects get caught.
-5. Steps touching notifications, data or the schedule get one more blind pass focused on
-   threading and lifecycle. These reviewer dispatches may run in parallel.
-6. Adjudicate every finding yourself: confirm it from the code, by a test where one
-   applies, or reject it with the line that disproves it. Record each finding and its
-   verdict in `AUDIT.md` in the plan folder. For audits that dispatched reviewers,
-   each pass is recorded in AUDIT.md as a `Range:` line naming the commit range and
-   a `Findings:` line naming the findings file; `bash scripts/check-audit.sh
-   <plan-folder>` must print AUDIT OK before the DONE commit.
-7. Confirmed fixes are yours: red test first, one branch, one version, one commit,
-   then read the fix diff cold once.
-8. Findings the owner owns (visuals, notification scheduling, anything the owner ruled on):
-   fix them the conservative way, agent-ruled: no visual or behaviour change beyond
-   what the plan and the owner's recorded rulings allow, and list each in the final reply's
-   decision table.
-9. PASS: set the ticket's final text from the plan; set DONE only when no action remains
-   anywhere, and OWNER-LED when the deliverable is a recommendation the owner must rule on;
-   `git rm -r` the plan folder in the same docs commit (the one survivor is a file still cited by shipped code or
-   config, which moves beside the queue or into the ticket first), delete
-   `$HOME/athan-gitree/sessions/<N>/`, branch `docs/audit-<N>-<date>`, version bumped, merge
-   `--no-ff`.
-10. Push `origin uat` only when every commit on `uat` that is not yet on `origin/uat` was
-    checked by this audit or made by it. Otherwise do not push, and tell the owner which
-    commits still need one.
+Dispatch in the background. Before any dispatch, check that the subtask is not already ticked and
+that the previous executor has finished.
 
-## 4. Continuation rules
+## 5. Audit
 
-1. Route from the repository, never memory: the queue and `git log origin/uat..uat`
-   pick the phase, before and after every phase.
-2. Delegate execution and audit to their workers; you name the ticket, then verify the worker's report
-   against the repository. You write no plan and no audit verdict; the one
-   code you ever write is an audit fix, red test first.
-3. Continue to the next phase when the ticket moved, or the worker's commits landed on
-   `uat` and passed review. The one exception: a run that ran the Plan phase stops when
-   the planner finishes.
-4. Respawn a worker from its ledger when it returned mid-phase; reroute when nothing
-   moved and it cannot say why.
-5. Never start what you cannot finish, and never dispatch a worker into work it cannot
-   finish.
-6. Push only reviewed commits, and only after confirming `origin/uat..uat` holds nothing
-   else unaudited.
-7. A decision that was the owner's is answered agent-ruled the moment it appears (section 0);
-   route on your own answer and carry it to the final table.
-8. End the run when every lane is DONE and pushed, or when nothing can run. The one
-   hard stop is an irreversible act the hard rules name: it waits for explicit owner
-   consent, as a report.
+You are the judge. The reviewers are your eyes.
 
-If the owner interrupts mid-run: answer, then continue from the repository, never from
-memory of where you were.
+1. Write the range's diff to a file: `git diff origin/uat..uat -- . > $TMPDIR/audit.diff`.
+2. Dispatch one reviewer **plan-conformance**: the commit range, the diff, a worktree at `uat`,
+   and the ticket's plan doc. It checks the code against the plan.
+3. Dispatch one reviewer **blind**: the range, the diff and the worktree. Never the plan.
+4. Adjudicate every finding yourself. Confirm it from the code, or reject it with the line that
+   disproves it. Post each confirmed fix as a comment on the ticket, one line each.
+5. Confirmed fixes are yours: red test first, one commit, then read the fix diff cold once.
+6. A finding the owner owns is fixed the conservative way, agent-ruled, and tabled in the reply.
+7. PASS: move the ticket to Done with its closing comment, set its final text from the plan, and
+   delete the lane's worktree.
 
-## 5. Stop, and hand back
+## 6. Continuation
 
-Stop a lane as soon as one of these holds, and never start another phase in it after
-it:
+1. Route from the board and the repository, never memory.
+2. Delegate execution and audit. The only code you write is an audit fix.
+3. Continue when the ticket moved or the worker's commits landed and passed review.
+4. Respawn a worker from its ticket when it returned mid-phase.
+5. Never start what you cannot finish.
+6. Push only reviewed commits, and only when nothing on `uat` is unaudited.
 
-- a lane ran the Plan phase alone and the planner finished: the ticket is READY,
-  OWNER-LED or BLOCKED;
-- the lane's ticket is DONE and `uat` has no unpushed commits;
-- the lane's ticket is BLOCKED or OWNER-LED, or a phase needs the owner's hands, such
-  as holding a device;
-- section 4 says stop.
+## 7. Stop, and hand back
 
-One lane never carries on into another ticket: the orchestrator refills the lane the
-moment it frees, or the owner starts the next run with `/athan-next`.
+Stop the run when one of these holds:
 
-## 6. Your final reply: the queue view, then four lines, nothing after them
+- every lane is Done and `uat` has no unpushed commits
+- a ticket is Blocked or Owner-led
+- a phase needs the owner's hands
+- nothing can run
 
-At most three sentences: what the run delivered, and anything the owner must decide or
-hold, then the session progress table.
+## 8. The final reply
 
-Then the agent-ruled table: every decision taken in place of the owner across the run,
-columns `Question | Answer | Why`, one line each, compact enough to veto at a glance.
-Empty only when nothing was ruled. Where a lane took decisions and ended, its final
-report carries them; you fold them in.
+At most three sentences on what the run delivered and anything the owner must decide, then:
 
-Then the queue view, built from `ai/plans/README.md` as it stands at the close: the
-five tickets most recently DONE (the date from the ticket, or from the commit that set
-it, else the bare word), then every open ticket in queue order (every status except
-DONE, CANCELLED and SUPERSEDED), columns `Order | Ticket | Status | Waiting on`, the
-ticket's short name, one bare status word per ticket, and in the last cell the one
-thing a row waits on when something holds it: the live blocker its own text names (an
-owner schedule, an upstream review) or an unmet Needs-first ticket. A row that waits on
-nothing leaves the cell empty. Bold the one ticket the owner's next command
-acts on: the ticket `/athan-next` would execute, or the first ticket it would plan.
+1. The **progress table**, one row per ticket touched.
+2. The **agent-ruled table**: `Question | Answer | Why`, one line each, empty when nothing was
+   ruled.
+3. The **board view**, read off the board as it stands: the five most recently completed
+   tickets, then every open ticket in queue order, with `Order | Ticket | Column | Waiting on`.
+   Bold the ticket the next run would take.
+4. The four-line handoff: what is done, what the board holds, what comes next, and what the
+   owner types.
 
-```
-**Just done:** <phases that ran>, tickets <n, m, k>. <one clause on what moved>
-**Board:** <lanes open and their tickets, or none>, `uat` <pushed | holds N unpushed commits>
-**Up next:** <the phase or ticket that comes next, or what it is waiting on>
-**You type:** `/athan-next` to continue the queue
+Nothing after the handoff but the agent-ruled table.
+
+## 9. Close the run
+
+Before the last commit of a run:
+
+```bash
+board/snapshot.sh
 ```
 
-The four lines close the reply, nothing after them but the agent-ruled table. The
-detail lives in each plan folder's `LOG.md` and `AUDIT.md` while it exists, and in git
-history after.
+Commit `board/snapshot/board.sql` in the same commit as the run's final state. The snapshot is
+what makes the board recoverable from git, and it is only as fresh as the last run.

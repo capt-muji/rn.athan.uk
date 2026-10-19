@@ -1,7 +1,7 @@
 # AGENTS.md - Athan.uk Agent Guide
 
 The root `AGENTS.md` redirects here. This file carries only what is still true. Past tickets live
-in git history and in `ai/plans/`. Look there before assuming a rule exists.
+in git history and on the board at `board/`. Look there before assuming a rule exists.
 
 ## Load at the start of every session
 
@@ -37,27 +37,28 @@ in git history and in `ai/plans/`. Look there before assuming a rule exists.
 `opencode.json` enables codegraph, agent-device, xcodebuildmcp, mobile-mcp and the maestro
 server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to change one.
 
-`itsaplan` (ticket 144, 2026-10-19) is the queue's own board, a local It's a Plan instance. The
-repo queue at `ai/plans/README.md` stays the source of truth and the board mirrors it. Its key
-comes from `ITSAPLAN_API_KEY` in the shell environment, never from this repository.
+`itsaplan` (ticket 144, 2026-10-19) is the queue's board, a local It's a Plan instance. It holds
+the tickets, their columns, their relations, their history and their plans. Its key comes from
+`ITSAPLAN_API_KEY` in the shell environment, never from this repository. The deployment lives in
+`board/`, and `board/README.md` documents it.
 
 ## Workflow
 
-- The queue is `ai/plans/README.md`; up to three lanes run at a time under the standing
-  parallel order, one ticket each, file-disjoint, refilled as they free. Entry is
-  `/athan-next`: the lead orchestrates the lanes and routes each to the phase it needs,
-  and a run that planned ends with the ticket READY. The owner is hands-off mid-run:
-  questions are answered agent-ruled (own recommendation, argued twice, recorded with a
-  date and one line why) and tabled in the run's final reply.
-- A session is one context window. Tickets are the queued units of work. No workflow file names
-  a context threshold for a session: the owner ends sessions at will, and every step writes its
-  state to the repository as it lands. Worker dispatches are different: the plan's step
-  weights and budgets bound every executor batch, and the lead rotates worker sessions
-  mechanically from those numbers.
-- When a ticket is DONE, its plan folder, its evidence under `~/athan-gitree/sessions/<N>/`
-  and its uncited brief die in the merge commit.
-- The board's words: a ticket is a queued unit of work, a step is a plan step. The board
-  and these files share the words.
+- **The board is the queue.** `ai/plans/README.md` is gone. A ticket is an issue on the board, and
+  its column is its state. Read `.agents/skills/board-workflow/SKILL.md` before touching it: it
+  holds the ten columns, the label vocabulary, the ticket anatomy and the picking rule.
+- Up to three lanes run at a time, one ticket each, file-disjoint, refilled as they free. Entry is
+  `/athan-next`: the lead picks the ticket from the board and routes it to the phase it needs. The
+  owner is hands-off mid-run: questions are answered agent-ruled (own recommendation, argued
+  twice, recorded in the ticket with a date and one line why) and tabled in the run's final reply.
+- A ticket carries its plan as a Docs page on the issue, its steps as subtasks, and its log as
+  comments. Nothing about a ticket lives in the repository any more.
+- Worker dispatches are different: the plan's step weights bound every executor batch, and the
+  lead rotates worker sessions mechanically from those numbers.
+- The run closes with `board/snapshot.sh`, committed with the run's last commit. The snapshot is
+  what makes the board recoverable from git.
+- The board's words: a ticket is a queued unit of work, a step is a plan step. The board and
+  these files share the words.
 
 ## The repository is public to the whole world
 
@@ -88,10 +89,10 @@ works fully offline after first sync, and notifications fire on time while backg
   on the OnePlus 3T and nowhere else.
 - `releases.json` is deleted. Never recreate it and never add any hand-edited release file. Store
   versions come from iTunes Lookup (iOS) and the in-app updates API (Android).
-- A ticket's documentation dies with its merge. The session that merges a branch into `uat` deletes
-  the plan folder, the evidence under `~/athan-gitree/sessions/<N>/` and the uncited brief in
-  the same commit. Code is the documentation: MD files go stale, history lives in git, and only
-  an artefact still cited by shipped code or config survives, named in its ticket.
+- A ticket's documentation lives on the board and dies with the ticket. There is no plan folder:
+  the plan is a Docs page on the issue and the log is its comments. Code is the documentation:
+  MD files go stale, history lives in git, and only an artefact still cited by shipped code or
+  config survives, named in its ticket.
 - Never name a model in any file (briefs, plans, logs, audits, records). Write the work:
   planning, execution, audit.
 - Never run `npx expo install --fix`. It would roll back `jest`, `@types/jest` and `typescript`,

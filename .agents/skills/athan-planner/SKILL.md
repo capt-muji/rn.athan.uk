@@ -1,225 +1,88 @@
 ---
 name: athan-planner
-description: Plan one queued ticket in ai/plans/README.md. Answer the frontier agent-ruled (the owner is hands-off), decide everything, write the plan, grill it, pass the gate, leave the ticket READY. Use when a planning phase runs, a ticket is NOT PLANNED, PLANNING or NEEDS REPLAN, or the owner asks to plan a ticket.
-version: 2.2.0
+description: Plan one ticket on the board. Read it from the board, answer the frontier agent-ruled, write the plan as a Docs page on the issue, set the labels and the dependencies, lay the steps out as subtasks, pass the gate, and leave the ticket Ready. Use when a ticket sits in Planning, or when the owner asks to plan one.
 ---
 
 # athan-planner
 
-You plan ONE queued ticket. You decide everything; the executor worker decides nothing. You
-change no app code, no tests and no device state you do not restore. You write under
-`ai/plans/`, and you commit, merge and push. The plan folder is scaffolding: created at
-PLANNING, worked from, deleted at DONE by the audit that lands the work, because code is
-the documentation.
+You plan one ticket. You read it from the board, decide everything it leaves open, write the
+plan, and leave the ticket Ready.
 
-**Specify, do not dictate.** Give the design, the contracts, the names, the behaviour,
-the acceptance criteria and the commands with their expected output. The executor chooses
-HOW, never WHAT. A question the executor must ask is a defect in your plan. Success is
-measurable by the executor itself: named tests red before green, full coverage of what
-changed, tsc, Biome and the invariant.
+Read `.agents/skills/board-workflow/SKILL.md` first. It holds the conventions.
 
-**Write-through state.** Every owner answer is written into the plan the moment it is
-taken, every research finding when it lands, every section as it is drafted. Anything not
-written to disk does not exist. That is what makes any session boundary safe: the owner
-ends a session at will, and the next planning session resumes from the files alone.
+## 1. Read the ticket
 
-**You never estimate your own context.** No threshold, no percentage. When the owner ends
-the session, whatever is written is the state. Stopping mid-draft: write `Resume from:
-<the next section, and anything learned that the plan does not yet hold>` at the top of
-`PLAN.md`, commit and merge what is finished.
+`get_issue_by_number` with the key and the number. If the owner's ask names no ticket, search the
+board first with `search_issues`. A second ticket for the same work is a defect, not diligence.
 
-Workers you may dispatch: `explore` for bounded fact questions, `athan-plan-griller` for
-the grill, `vision` for an image you cannot see. Seeing images is a capability, not a
-preference: if you can see images, read them yourself. Nothing else: `athan-executor` and
-`athan-reviewer` belong to delivery, never to planning.
+## 2. Answer the frontier, agent-ruled
 
-**One review, then stop.** Documents get one review: apply the findings that change what
-someone would do, note the rest in the commit. A finding that changes no instruction
-anyone acts on earns no round.
+A question the ticket leaves open is never asked of the owner. State the options, take your own
+recommendation, argue it twice (challenge it once, and if it flips, argue it once more and
+commit), and record it:
 
-## 1. Read first, in full, in this order
+- as one line in the plan doc under **Decisions taken**
+- with the date and one line of why
 
-1. `ai/plans/README.md` (the queue), `ai/plans/TEMPLATE.md` (the plan shape), the
-   `athan-executor` and `athan-reviewer` agent files in `.opencode/agents/`.
-2. The ticket's own brief, wherever the queue names it.
-3. `__tests__/README.md`, the `ai/AGENTS.md` sections on the code the ticket touches, and
-   the global instructions under `~/.config/opencode/`. Change nothing of the harness's.
-4. Every source file the ticket reads or changes, and every test covering those files.
+Facts are never questions. Measure them: read the code, run the command, check the docs.
 
-## 2. Pick the ticket
+The one hard stop is an irreversible act: money, credentials, publishing, destroying data.
+Report it in the ticket as a comment and leave the ticket in Planning.
 
-One ticket at a time. In a parallel lane, the ticket the lane names is taken as named;
-other lanes' in-flight tickets do not block it while file-disjoint (the queue's
-invariant governs). Otherwise, if any ticket is PLANNING, READY, IN PROGRESS or
-EXECUTED, that ticket is in flight and you plan no other. A PLANNING ticket is resumed
-(section 9), a NEEDS REPLAN ticket is repaired, a ticket the lead names (an argument the
-lead passed) is taken as named. Take the first ticket whose status can be planned.
+## 3. Write the plan
 
-As soon as the skeleton exists: set the ticket to PLANNING, commit and merge (section 8).
-Rename the session to `<order> <ticket short name>: planning` now, and carry the
-milestone forward in the title as you pass each section: frontier, draft, grill, gate.
-If the rename tool is absent, continue without it.
+Create a Docs page on the issue, titled with the ticket's identifier, and link it to the issue.
+It carries, in this order:
 
-## 3. Work the frontier, agent-ruled
+1. **Goal**: what is wrong today, and what is true when this is done.
+2. **Decisions taken**: one line each, dated, with the why.
+3. **Files**: every file this will read or change, one line each.
+4. **Design**: the approach, the invariant, and the alternatives rejected with the reason.
+5. **Steps**: a numbered list. Each step names what it produces and its weight, 1 for docs, 2
+   for code, 3 for a device.
+6. **Risks**: what could go wrong and what would show it.
+7. **Proof**: the exact commands or reads that will show each acceptance criterion met.
 
-The grilling comes before any drafting: all the decisions, taken now, recorded now.
-The owner is hands-off: you put every question to yourself and answer it, and the two
-roles owe each other rigour.
+The plan is concrete enough that two competent implementers do the same thing. Hedge words are
+banned: say the exact condition and the exact action. The list is: as appropriate, as
+needed, as necessary, if needed, if applicable, if relevant, where appropriate, where needed,
+where applicable, as per, accordingly, etc., and so on, and/or, TBD, for example, e.g., i.e.,
+various, several, some, appropriate, reasonable, properly, correctly.
 
-- **The frontier.** The frontier is every decision whose prerequisites are already
-  settled: the questions you can answer now without guessing at answers you have not
-  measured. Work a whole frontier per round, one decision at a time, before the next
-  round. A question whose answer depends on another question
-  still open belongs to a later round.
-- **Facts are never questions.** A frontier question that needs a fact (what the code
-  does, what a library does at the pinned version, what the phone reports):
-  dispatch an `explore` worker and measure it, never rule on a guess. Only questions
-  downstream of that
-  fact wait for it.
-- **Every question carries options.** Two to four concrete options,
-  never lazy Yes/No unless truly binary, with your recommendation first and one line why.
-- **Argue twice, then commit.** Take your recommendation as the answer only after
-  challenging it once yourself: a recommendation that survives is committed; one that
-  flips is argued once more and the flipped answer is committed. A recommendation you
-  would abandon when pressed is not your recommendation. Record one line for and one
-  line against with the answer.
-- **Push back on yourself.** A round where you agreed with everything you proposed is
-  a round nobody needed. Where
-  you see a better answer than your first instinct, say so
-  plainly and take that instead.
-- **Ungrillable questions route to measurement.** A question needing a reaction, not an
-  answer ("how should this feel?"), stops that thread: measure instead (scratch-worktree
-  proof, smoke loop, one device reading), then come back and answer it in one line.
-- **Record as taken, agent-ruled.** Each answer goes into `PLAN.md` section 2
-  immediately: what, who (`agent-ruled`),
-  when, where recorded. An answer not written down is not taken.
-- **Bounded.** More than about forty open questions means the ticket is too big: split it
-  and record which half runs first.
-- **Done** when the frontier is empty: nothing silently assumed. Do not start drafting
-  before then.
+## 4. Write the ticket itself
 
-## 4. Map and prove
+- **Description**: rewrite it to the three parts. Goal, where, and the acceptance criteria as a
+  `- [ ]` list. Every criterion observable by a test, a command's output or a log line.
+- **Labels**: the surface and the area, from the vocabulary in `board-workflow`. Only what is
+  honestly true.
+- **Subtasks**: one per step, titled `Step N: <what it produces>`. Create each with the parent
+  set to this ticket, in the Backlog column so they do not count as ready.
+- **Relations**: for each thing this waits on, a `blocked_by` relation to that ticket.
+- **Queue order**: already set at intake. Leave it.
 
-1. Map the code. Read every file touched, in full. Trace every caller and every path that
-   reaches the behaviour. Write the code map and the concurrency table into the plan
-   (template sections 4 and 5), with anchors under `scripts/anchors/`.
-2. Verify library behaviour at the pinned version from `node_modules` source first, then
-   the docs MCP. Mark any claim you could not verify "unverified", with the step that
-   verifies it before anything depends on it. `explore` workers may gather facts; you
-   verify every anchor yourself.
-3. Prove the risky parts in a scratch worktree
-   (`git worktree add --detach $HOME/athan-gitree/worktrees/plan-<N> uat`, `node_modules`
-   symlinked): run a throwaway version of each new test against today's code, record its
-   first failing line, build the change, confirm tsc, Biome and the named tests, run the
-   breaks you are least sure of, record observed output as the expected output, delete
-   the code, remove the worktree and its branch before the session ends. Never commit from it.
+## 5. The gate
 
-## 5. Draft
+The ticket is Ready only when all of these hold. Check each one, do not assume:
 
-Write through the template, section by section, committing as sections land:
+| Check | How |
+| --- | --- |
+| The description has Goal, Where and Acceptance | read it back |
+| Every criterion is observable | each one names a test, a command or a log line |
+| The plan doc exists and is linked | `list_documents`, then the issue's linked docs |
+| Every plan step has a subtask | compare the doc's step list to the issue's subtasks |
+| Every dependency is a relation | `get_issue` and read its links |
+| Nothing is left as a question | the plan's Decisions taken has no open item |
 
-- Acceptance criteria as EARS lines tagged `[Rk.n]`: `WHEN <event> THE SYSTEM SHALL
-  <observable response>` (IF/WHILE variants allowed).
-- Every step subsection opening `Requirements: Rk.n, ...`, then anchor check, goal,
-  branch, files, red tests, change contracts, green run, break script, version and
-  commit, review checklist, merge, done when.
-- Full contracts: name, signature, what it answers, what it must never do, errors it may
-  throw, exact log-line text, stored keys with type and meaning, each test with what it
-  proves and the failure it must show red, the break script in full, the commit message
-  starting `<VERSION> - `, anticipated review fixes word for word, restore lists.
-- Every step file carries `Weight: <n>` (device 3, code 2, docs 1), and the header
-  table carries `Batch budget` and `Session budget`, both in weight units. The lead
-  packs batches and replaces worker sessions mechanically from these numbers.
-- Short sentences. One instruction per numbered item. No pronoun whose referent is more
-  than one sentence back. Expected output as literal text. A long plan splits: `PLAN.md`
-  holds sections 1 to 5 and 7 to 12, each step in `steps/<k>-<name>.md`, scripts in
-  `scripts/`, anchors in `scripts/anchors/`.
+A failed check is fixed, not reported. The one exception is an irreversible act, which stops the
+work and stays in Planning.
 
-## 6. Grill the draft
+## 6. Leave it Ready
 
-Dispatch ONE `athan-plan-griller` worker on the plan folder. It never saw your interview;
-its reading is the test. You are the judge of every finding: fix the plan, or reject the
-finding with the reason the plan already carries it. Apply every must and should unless
-it is wrong on the code; note the nices in the commit. A second round only if the first
-found more than five problems. Then reread the plan yourself, cold, as the executor
-would read it: the question test, one final time.
+Move the ticket to Ready with `update_issue`, comment one line naming the plan doc and the step
+count, and stop. Do not start executing.
 
-## 7. Gate
+## 7. When the plan is rejected
 
-Run `bash scripts/check-plan.sh <plan-folder>` from the repository root. It must print
-`PLAN OK`. Fix everything it names, rerun it. Then the quality bar, line by line:
-
-- Every anchor counts exactly 1 at "Planned at"; the pre-flight checks it.
-- Every command is complete, runs under `bash`, and states its expected output plus what
-  to do when it differs. Every wait is a background loop of `sleep 15` or shorter.
-- No step changes visuals, substitutes a prayer time, adds a hand-edited release file,
-  touches EAS, commits the API key, installs a dependency outside an exact command,
-  skips a hook, pushes or guesses what an image shows.
-
-## 8. Finish
-
-1. Set the ticket in `ai/plans/README.md`: status READY (or OWNER-LED, or BLOCKED with
-   the reason), "Planned at" (the `uat` sha your anchors were verified against), "Needs
-   first" (order numbers, or `nothing`), "Parent" (the order number this ticket rolls up
-   into, when it has one) and "Group" (the shared code surface, named when this plan's
-   files overlap another open ticket's: same-group tickets serialize, disjoint groups
-   may run in parallel). Rename the session to `<order> <short name>: READY`.
-2. Branch `docs/plan-<N>-$(date +%Y%m%d-%H%M)` off `uat`. Add the plan folder and the
-   queue change, bump the patch version in the three places, commit with a message
-   saying which ticket was planned and what the plan covers.
-3. Reread the whole range since the skeleton commit yourself, checking accuracy against
-   the code at "Planned at". One review, never a third round.
-4. Merge `--no-ff` into `uat`. In a parallel lane, never push: the orchestrator pushes.
-   Otherwise push `origin uat` only if `git log --oneline origin/uat..uat` held nothing
-   unaudited when you started. In a lane, report instead that the orchestrator audits
-   and pushes.
-5. Remove your worktrees and their branches.
-6. Report in a few plain sentences: which ticket is planned, how many steps, what the
-   executor will prove, the decisions the owner took, then the progress table. Then the
-   queue view from the `athan-lead` skill, and its four-line block last, nothing after
-   it.
-
-## 9. Resuming a PLANNING ticket
-
-Read the plan folder in full and its `Resume from:` note. Never re-ask a decision
-section 2 already records; never redo a proof the folder carries. Continue exactly where
-the note says, then finish as section 8 says.
-
-## 10. Facts every plan can rely on
-
-- `uat` is the integration branch. The executor worker commits and merges into it and
-  never pushes; the lead pushes after review.
-- Each commit bumps the patch version in `app.json`, `package.json` and the gitignored
-  `android/app/build.gradle` `versionName` together, or
-  `shared/__tests__/versionLockstep.test.ts` fails. Every commit message starts
-  `<VERSION> - `. Bump `app.json` FIRST, then prebuild, then build.
-- The pre-commit hook runs lint-staged (including `jest --bail --findRelatedTests`),
-  `yarn validate` and `scripts/check-changed-coverage.js --staged`, and takes 3 to 4
-  minutes. Coverage is 100% on statements, branches, functions and lines. Run one Jest
-  project with `npx jest <path> --watchman=false --selectProjects=<project>`.
-- The device is a OnePlus 3T (`3T_SERIAL`), Android 9, package `com.example.athan`.
-  Build scripts run with `zsh`, end `BUILD-PROD OK` or `BUILD-MOCK OK`, write `.apk`
-  outside `/tmp` and the repo. `$HOME/athan-gitree/BUILD.md` is the mock recipe. Device
-  checks: `python3 $HOME/athan-gitree/bin/devcheck.py <step>`. Clock changes:
-  `settings put global auto_time 0`, then `service call alarm 2 i64 <epoch ms>`,
-  restore with `auto_time 1`. A forward jump fires every armed alarm it passes, so read
-  `dumpsys alarm` first. Every expected-alarm list also names the unexplained app alarm
-  at `when 2104803640505`.
-- The Ramadan mock is `$HOME/athan-gitree/bin/build-mock-ramadan.zsh <ref> <mocks-file> <out.apk>`,
-  `build-mock.zsh` with `EXPO_PUBLIC_FORCE_RAMADAN=1`.
-- `devcheck.py` writes under `sessions/mockcheck/` whatever the ticket, so a plan copies each
-  cited file to `sessions/<N>/`.
-- `uiautomator dump` fails silently while the countdown animates. Prove the screen with
-  logcat lines, alarm dumps and screenshots read by the reader itself or `vision`.
-  Device coordinates live in `e2e/device-atlas-<model>.md`, never in a plan.
-- Never wait more than 2 minutes for a notification fire: drive the clock or use the
-  mock, which puts Asr 60 to 119 seconds after each download. The owner's absolute
-  rules: an alert does exactly what its bell shows with no healing on the next refresh,
-  never copy or average or synthesise a prayer time, no pixel changes without approval,
-  comments explain why, no hand-edited release file, EAS is read-only, the API key is
-  never committed.
-- Ticket 25 (`moonsighting-research-2.md`): agent-ruled default OWNER-LED with a
-  short reading guide as the plan, unless the queue already records the owner's reading of
-  `ai/features/moonsighting/RESEARCH-FINDINGS.md`. If it does, plan the remaining
-  research as executable steps, agent-ruled on which of that brief's conflicting
-  rules apply, recorded in the plan.
+The griller returns findings. Answer each one: fix the plan and the ticket, or record why not, in
+one line, in the plan doc. Then re-run the gate and move it back to Ready. A plan that fails the
+gate twice on the same finding is a stop, reported to the lead.
