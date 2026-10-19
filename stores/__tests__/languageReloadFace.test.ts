@@ -68,18 +68,26 @@ describe('a crossing switch on Android', () => {
 
     const show = jest.mocked(world.cover.showSwitchCover);
     // The cover must carry the loader's own face, so the restart span shows what the tap did;
-    // '#fff' and 260 mirror the loader's own line colour and cap literals
+    // '#ffffff' and 260 mirror the loader's own line colour and cap literals, the line's white
+    // expanded because Android's Color.parseColor takes only #RRGGBB and #AARRGGBB
     expect(show).toHaveBeenCalledTimes(1);
     expect(show).toHaveBeenCalledWith({
       backgroundColor: COLORS.navigation.rootBackground,
       spinnerColor: COLORS.navigation.activityIndicator,
       spinnerSizeDp: SIZE.activityIndicator,
       lineText: languageChangingLine('ar'),
-      lineColor: '#fff',
+      lineColor: '#ffffff',
       lineSizeDp: TEXT.size,
       lineMarginTopDp: SIZE.activityIndicator / 2 + SPACING.xxxl,
       lineMaxWidthDp: 260,
     });
+    // A shorthand that React Native parses still aborts the native show at Color.parseColor,
+    // and the cover refuses on every switch (the 3T read, 2026-10-19): every shipped colour
+    // must be one of the two hex forms Android accepts
+    const face = show.mock.calls[0][0];
+    for (const colour of [face.backgroundColor, face.spinnerColor, face.lineColor]) {
+      expect(colour).toMatch(/^#[0-9a-f]{6}(?:[0-9a-f]{2})?$/i);
+    }
     expect(show.mock.invocationCallOrder[0]).toBeLessThan(
       jest.mocked(world.updates.reloadAsync).mock.invocationCallOrder[0]
     );
