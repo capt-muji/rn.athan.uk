@@ -66,6 +66,11 @@ First match wins:
 A lane runs the whole workflow for one ticket: plan if needed, execute, audit, clean to Done.
 
 - Up to three lanes at once, one ticket each, and the tickets stay disjoint.
+- A lane carries tickets in sequence. It stops and a fresh lane session takes over when the
+  weights it has carried cross the session budget, 6 by default, or when its own context passes
+  about 40 percent. A device step, weight 3, always runs alone in a fresh session.
+- Read the weight off the ticket's estimate before dispatching, and add it to the lane's running
+  total.
 - No lane works in the main tree. The main tree stays on `uat`, clean.
 - A lane authors in its own worktree and never pushes.
 - Before dispatch, set the ticket's `Lane` field and move it to the lane's first column.

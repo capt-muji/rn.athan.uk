@@ -61,6 +61,7 @@ parent.
 | --- | --- | --- |
 | Title | At creation | Intake |
 | Type | At planning, one of Bug, Feature, Investigation, Research, Chore, Refactor, Docs, Design, Testing, Release | The planner |
+| Weight | At planning, the sum of its step weights | The planner |
 | Description | At creation, sharpened at planning | Intake, then the planner |
 | Column | At every stage | Whoever moves it |
 | Ticket number | At creation | Intake |
@@ -89,12 +90,33 @@ criterion. Rewrite it until it can.
 
 ### The labels
 
-Surface, one of: `iOS`, `Android`, `Both`.
-Area, one or more of: `widgets`, `notifications`, `prayer-times`, `qibla`, `board`, `docs`,
-`research`.
-Flags, only when true: `needs-owner`, `upstream`.
+A card shows labels and nothing else, so the labels carry everything, in a fixed order:
 
-A ticket with no honest surface label gets none. Do not guess.
+1. The number, `#42`. Set at intake and never moved.
+2. The kind, one of `Bug`, `Feature`, `Investigation`, `Research`, `Chore`, `Refactor`, `Docs`, `Design`, `Testing`, `Release`. It matches the ticket's type field.
+3. The weight, `5 pts`. It matches the ticket's estimate.
+4. The surface, one of `iOS`, `Android`, `Both`.
+5. The area, one or more of `widgets`, `notifications`, `prayer-times`, `qibla`, `board`, `docs`, `research`.
+6. The flags, `needs-owner` or `upstream`, only when true.
+
+`labelIds` replaces the whole set, so send every label the ticket keeps, in that order.
+
+The order is the point. A person reads a card the same way every time, so the number is always
+first and the kind always second. Never append a label out of this order.
+
+A ticket with no honest surface or area label gets none. Do not guess.
+
+### The weight
+
+A step weighs 1 for docs, 2 for code, and 3 for a device. A ticket's weight is the sum of its
+steps, and it is the one number that says how much session a ticket will eat.
+
+Set both: the estimate field, which the project's analytics sum, and the `N pts` label, which the
+card shows.
+
+The lead uses it. A lane carries tickets in sequence and stops when the weights it has carried
+cross the session budget, which is 6 by default, or when its own context passes about 40 percent.
+A device step, weight 3, always runs alone in a fresh session.
 
 ### The plan
 
