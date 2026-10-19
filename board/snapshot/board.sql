@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 3nGOZ59saVcwxE2VJdquvxkxo3JzMHXPTSgFdHgw760BVOqLhjDTc2uPhEzEM1W
+\restrict JW6xXYKfn5n4OgcnlGQIBHcA4aC79VB5bqcIsqrqE4IOm4oCtg1jt5dnC3nPs6u
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5672,18 +5672,6 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, 'Upstream `expo-widgets` device locale', 'PR: https://github.com/expo/expo/pull/51793
 
 Monitoring row for PR `expo/expo#51793`, filed 2026-10-19 from this repo: it exposes the device locale to widget JS runtimes through a `__expoWidgetDeviceLocale` global. The local patch''s device-locale half feeds the neutral, stale and catch faces (the D44/D79 device-keyed statics); without it those faces lose their locale. When a published release carries the global, board row #233 deletes the local patch''s device-locale hunks and this row closes.', NULL, NULL, NULL, 7000, '2026-10-19 08:08:29.90607+00', '2026-10-19 19:49:05.89039+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 3, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
-
-Where: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.
-
-OWNER REPORT 2026-10-19, iPhone XS, mock 2.1.7 installed over the production app: the qibla never left the wave animation across many opens, indoors and out; Android on the same data draws after a wave. The compass then started working after the owner toggled iOS location from While Using to Always and back to While Using, closed Settings and the app, and reopened: the qibla loaded.
-
-Brief look 2026-10-19: the build is sound - the patched heading streamer (kCLHeadingFilterNone) is in the tree the build used, and the compass works on this build after the toggle - so the stuck state is the phone''s location state, not the code. The gate needs two streams (headings from expo-location, accuracy from the ExpoQiblaHeading module), and a heading nothing vouches for is never drawn.
-
-Acceptance:
-- [ ] the mechanism named: which stream was dead and what the toggle reset
-- [ ] a ruling, argued twice and tabled to the owner, on whether the app can detect and recover the state itself
-- [ ] no compass logic change without the owner''s order', NULL, NULL, NULL, 21000, '2026-10-19 19:48:47.530801+00', '2026-10-19 20:41:49.817894+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (253, 1, 253, 10, 4, 'OEM alarm timing close-out: store release, dumpsys reading, Play update path', 'Goal: close the two chained OEM alarm-timing items (issue ledger 10 and 17, migrated 2026-10-19 from the retired ai/ISSUES.md) once a store release ships the exact-alarm fix that sits on uat.
 
 Where: the ColorOS-family phones, the store releases, the Play update flow.
@@ -5710,7 +5698,7 @@ Acceptance:
 - [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision
 - [ ] the board swept: no defect the integrity checklist can catch
 - [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-19 20:02:24.83425+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 10, 1, 'iPhone Duo: the adaptive layout answers Apple''s requirement', 'Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (33, 1, 116, 10, 3, 'iPhone Duo: the adaptive layout answers Apple''s requirement', 'Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.
 
 Where: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.
 
@@ -5725,36 +5713,56 @@ Acceptance:
 - [ ] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each
 - [ ] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)
 - [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling
-- [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 20:21:07.936952+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 6, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android home-screen widget''s countdown centers in its own space under Arabic.
+- [ ] every other form factor unchanged', NULL, NULL, NULL, 12000, '2026-10-18 23:35:56.034116+00', '2026-10-19 22:20:08.483937+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 4, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
 
-Where: the Android widget countdown face under RTL placement, 3T.
+Where: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.
 
-OWNER REPORT 2026-10-19, on the 3T, DEFERRED by the owner''s order as a nice-to-have: with the app in Arabic, a newly added home-screen widget mirrors correctly (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face is almost perfectly aligned. The mirror itself is correct and the iPhone widgets are settled - touch nothing there. Two comparison screenshots exist on the 3T.
+OWNER REPORT 2026-10-19, iPhone XS, mock 2.1.7 installed over the production app: the qibla never left the wave animation across many opens, indoors and out; Android on the same data draws after a wave. The compass then started working after the owner toggled iOS location from While Using to Always and back to While Using, closed Settings and the app, and reopened: the qibla loaded.
 
-OWNER REPORT 2, 2026-10-19, on the 3T mock 2.1.7, four screenshots (two per language), MEDIUM widget only, never the small, never the iPhone: with a short countdown (''1 minute left'') the two halves hug the outer edges of the card - in English the countdown squeezes hard left and the prayer list hard right, a wide empty band left in the middle; in Arabic the same in mirrored directions - while a long countdown (''7h 50m'') centers both halves perfectly. The owner''s read: the countdown string''s length drives it.
+Brief look 2026-10-19: the build is sound - the patched heading streamer (kCLHeadingFilterNone) is in the tree the build used, and the compass works on this build after the toggle - so the stuck state is the phone''s location state, not the code. The gate needs two streams (headings from expo-location, accuracy from the ExpoQiblaHeading module), and a heading nothing vouches for is never drawn.
 
-Acceptance (when picked up):
-- [ ] the countdown centers in its own space in both directions on the 3T
-- [ ] the medium halves hold their centring at a one-minute countdown in both languages
-- [ ] the English face unchanged
-- [ ] no iOS widget change', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 20:26:32.132721+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (257, 1, 257, NULL, 1, 'Step 3: the close - version bump, board snapshot, merge to uat', '', NULL, NULL, NULL, 15000, '2026-10-19 20:36:24.090606+00', '2026-10-19 20:36:24.090606+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 10, 3, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 is already lawful (row 135 re-issued the countdown face for every blob); the work is the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.
+Acceptance:
+- [x] the mechanism named: which stream was dead and what the toggle reset
+- [x] a ruling, argued twice and tabled to the owner, on whether the app can detect and recover the state itself
+- [x] no compass logic change without the owner''s order', NULL, NULL, NULL, 21000, '2026-10-19 19:48:47.530801+00', '2026-10-19 20:54:58.895574+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (256, 1, 256, NULL, 4, 'Step 2: the twice-argued ruling on detection and recovery, tabled to the owner', '', NULL, NULL, NULL, 14000, '2026-10-19 20:36:24.051077+00', '2026-10-19 20:46:29.674569+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (255, 1, 255, NULL, 4, 'Step 1: the code trace names the two streams and every state that holds the wave', '', NULL, NULL, NULL, 13000, '2026-10-19 20:36:24.011513+00', '2026-10-19 20:46:29.677469+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (257, 1, 257, NULL, 4, 'Step 3: the close - version bump, board snapshot, merge to uat', '', NULL, NULL, NULL, 15000, '2026-10-19 20:36:24.090606+00', '2026-10-19 20:50:14.373879+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (258, 1, 258, NULL, 4, 'Step 1: the v1 fallback words re-issued under the current laws and pinned', 'The comment re-issue in widgets/PrayerWidget.tsx (byte-identical literal, laws named) and the renderer pins over a faithful v1 fixture: live lettered face, parsed footer, stale words both sizes under en and ar device locales, mutation pass over every rendered fallback byte, yarn validate green.', NULL, NULL, NULL, 16000, '2026-10-19 20:37:31.974832+00', '2026-10-19 20:55:00.653465+00', NULL, NULL, NULL, NULL, NULL, 11, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 10, 4, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 was already lawful (row 135 re-issued the countdown face for every blob); the work was the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.
 
 Where: widgets/PrayerWidget.tsx (the input.strings fallback block inside androidRender) and shared/__tests__/widgetRenderer.test.ts.
 
 Acceptance:
-- [ ] The renderer suite pins a faithful v1 blob''s live face (v 1, no strings, no day footers, no rtl, no row ids): lowercase Latin h m letters, unpadded Latin digits, zero-group drop, parsed English footer - yarn jest shared/__tests__/widgetRenderer.test.ts green
-- [ ] The renderer suite pins a faithful v1 blob''s stale words on both sizes under en and ar device locales (device-keyed statics)
-- [ ] The fallback block''s comment names rows 83/85/102, row 88 and D44/D79, its literal byte-identical to the measured face, both schema versions unchanged (8 and 4) - read in the diff
-- [ ] A mutation pass flips every rendered fallback byte in the source and the pins catch each flip
-- [ ] yarn validate green
+- [x] The renderer suite pins a faithful v1 blob''s live face (v 1, no strings, no day footers, no rtl, no row ids): lowercase Latin h m letters, unpadded Latin digits, zero-group drop, parsed English footer - yarn jest shared/__tests__/widgetRenderer.test.ts green
+- [x] The renderer suite pins a faithful v1 blob''s stale words on both sizes under en and ar device locales (device-keyed statics)
+- [x] The fallback block''s comment names rows 83/85/102, row 88 and D44/D79, its literal byte-identical to the measured face, both schema versions unchanged (8 and 4) - read in the diff
+- [x] A mutation pass flips every rendered fallback byte in the source and the pins catch each flip
+- [x] yarn validate green
 
-Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carries item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 20:43:34.745844+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (258, 1, 258, NULL, 1, 'Step 1: the v1 fallback words re-issued under the current laws and pinned', 'The comment re-issue in widgets/PrayerWidget.tsx (byte-identical literal, laws named) and the renderer pins over a faithful v1 fixture: live lettered face, parsed footer, stale words both sizes under en and ar device locales, mutation pass over every rendered fallback byte, yarn validate green.', NULL, NULL, NULL, 16000, '2026-10-19 20:37:31.974832+00', '2026-10-19 20:37:31.974832+00', NULL, NULL, NULL, NULL, NULL, 11, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (256, 1, 256, NULL, 4, 'Step 2: the twice-argued ruling on detection and recovery, tabled to the owner', '', NULL, NULL, NULL, 14000, '2026-10-19 20:36:24.051077+00', '2026-10-19 20:46:29.674569+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (255, 1, 255, NULL, 4, 'Step 1: the code trace names the two streams and every state that holds the wave', '', NULL, NULL, NULL, 13000, '2026-10-19 20:36:24.011513+00', '2026-10-19 20:46:29.677469+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
+Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carried item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 21:03:20.520722+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (260, 1, 260, 5, 4, 'Step 2: Proof on the 3T at one minute, both languages', 'Apply the patch to the main checkout''s node_modules, build the mock from the branch, install with the badging gate, stage the one-minute state in English and Arabic, measure the centring by screencap with the vision reader, transcribe the numbers, write new coordinates back to the 3T atlas. One commit, patch bump.', NULL, NULL, NULL, 18000, '2026-10-19 20:52:52.944356+00', '2026-10-19 21:48:18.567955+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (259, 1, 259, 5, 4, 'Step 1: The granted width rides the widget environment', 'Red renderer tests, the expo-widgets patch hunk (provideRoot stamps the exact granted width into the environment), the layout reads it with the 310dp fallback, the dead snapshot field is deleted, and WidgetRefreshScheduler drops its width stamp (composition-size stamp and gate stay). yarn validate green. One commit, patch bump.', NULL, NULL, NULL, 17000, '2026-10-19 20:52:52.908116+00', '2026-10-19 21:22:29.90393+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 4, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.
+
+Where: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.
+
+Owner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.
+
+Owner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown ("1 minute left") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown ("7h 50m") reads centered. The owner''s read: the countdown string''s length drives it.
+
+Diagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.
+
+Acceptance:
+- [x] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket
+- [x] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language
+- [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions
+- [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate
+- [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 22:08:20.226949+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 1, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:14:39.565172+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 1, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:14:39.616735+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 1, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:14:39.65314+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 
 
 --
@@ -6615,6 +6623,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1166, 20, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.554137+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "FOLDED into row 140 2026-10-18 by the owner''s order (the gaps the owner sees on glass are this row''s verdict made visible; the parity verdict, the numbers and both options carry into 140, and the owner''s ruling lands there). Was OWNER-LED awaiting the owner''s ruling"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1167, 22, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.562377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Semver discipline: a thousand patches, never a minor"}, "from": {"value": "#138 Semver discipline: a thousand patches, never a minor"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1168, 22, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.562377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER ORDER 2026-10-18, the owner''s word after seeing 2.0.1035: the version line is disingenuous - every commit takes a patch and the minor half of the standing rule (\"patch per commit and minor per completed feature\") has never fired in the whole 2.0 line, verified from git: no version other than 2.0.x exists anywhere in the history, so a thousand patches carry features whole. The owner has raised this before and the practice ignored the owner''s. THE OVERHAUL the owner orders looked at heavily: when a patch is right, when a minor is owed (a completed feature, a merged ticket, a user-visible change), and who decides - the owner''s division stands recorded here: SHE DICTATES MAJORS ONLY, the agent owns patch versus minor; how the guards enforce the split (check-version-uniqueness.js, the versionLockstep test, the queue''s own bump rules and the lane protocol); whether the 2.0.10xx history takes a reset, a grandfathered boundary or a jump at the overhaul; and how a minor bump interacts with the store builds and the OTA line. SUPERSEDED the same day by the owner''s live order, the owner''s words: \"move it to the backlog, NOT PLANNED into your lane, deep-dive research online, progress it to production\". The division of authority stands as the owner set it: SHE DICTATES MAJORS ONLY and any store-facing version jump (both tabled in the row and the lane''s return, never shipped); the agent owns patch versus minor and lands the discipline, the guards and the workflow text. Until this row lands, every commit keeps the patch-per-commit rule, this row''s own commits included\n\nStatus note: 2026-10-18, audited (two reviewer passes, nine findings all confirmed and fixed at 2.0.1065, the conflicted-merge and unstaged-blob holes among them): the semver discipline landed - every commit''s bump class is machine-checked at commit time (a `feat`-typed subject requires the minor, every other subject the patch, majors only through the owner''s recorded order in `scripts/version-major-allowlist.json`), a merge into uat can no longer regress the version (the pre-merge gate refuses a non-increasing incoming line, and a conflicted merge''s concluding commit is checked too), the lockstep suite pins the semver normal form, and `ai/AGENTS.md` plus the lane protocol state the split in one place each. BOUNDARY RECOMMENDATION FOR THE OWNER''S VETO: grandfather - history untouched, the first completed user-visible feature after this landing takes the first free minor (2.1.0) and the 10xx tail dies by the spec''s own patch-reset rule; the owner''s one word upgrades it to a jump at the next store release. MEASURED, no code change needed: the GB storefront publishes 1.5.1 (the repo line is not store-facing on iOS today; moving it is the owner''s act), Play''s in-app updates arbitrate on the untouched versionCode 1000000, no OTA channel exists (no `updates` block, EAS read-only, releases.json dead) - a minor interacts with nothing until the owner publishes. The gates enforced themselves during the landing: the discipline refused the skipped patch the old weather habit would have taken when sibling 135 took 2.0.1064 mid-audit. This row''s own commits stayed patches per its own rule; the first `feat` after this merge takes 2.1.0"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2284, 260, 'activity', 'owner', NULL, 'created', '2026-10-19 20:52:52.948387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1120, 8, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.305408+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Board mirror: an OWNER-LED row must read as awaiting the owner"}, "from": {"value": "#126 Board mirror: an OWNER-LED row must read as awaiting the owner"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1121, 8, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.305408+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism\n\nStatus note: PROBLEM: row 56 shipped the read-only board mirror. The owner''s 2026-10-16 ruling changed the status model: an audited investigation whose deliverable is a recommendation the owner must rule on is OWNER-LED, never DONE, so it stays visible in the owner''s column with the recommendation inside. The board already renders an Owner-led column, but nothing asserts how a ruling-awaited row reads (badge, waiting-on line, the need-your-decision affordance the owner asked for), and nothing pins the new rule, so a future reader could count such a row as finished. RECOMMENDATION: extend the board generator and its template so an OWNER-LED row renders its recommendation and its waiting-on line distinctly, add a fixture row to the generator''s tests, and pin in the reader that an OWNER-LED row is never counted as done. The agent re-reads row 56''s generator and schema before choosing the mechanism\n\nNeeds first: #2026, #10, #17, #7"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1134, 11, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.383278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "130"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -6722,6 +6731,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1431, 121, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.948519+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1433, 122, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.962035+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1435, 123, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:05.97611+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2331, 262, 'activity', 'owner', NULL, 'created', '2026-10-19 22:14:39.623816+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1187, 28, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.658156+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "122"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1200, 33, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.725409+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}, "from": {"value": "#116 iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1201, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.725409+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "No plan folder; the record sits in the status cell and in git history.\n\nStatus note: 2026-10-18, audited (plan-conformance and blind passes): the iPhone Duo runs the app through the existing layout with no Duo code path. Closed, one schedule fills the 466x678 display; open, iOS grants a 469x669 portrait window centred in the 951x669 inner display, one schedule inside it because the app is portrait-locked and the 500pt content cap never binds at 469. Both schedules, the overlay, the settings sheet and its Help row work in both poses; a fold keeps the same process (41562) and an open overlay alive; a cold launch lands on the Standard schedule. No production code changed (the range touches no layout file), so every other form factor renders what it rendered before. Filling the open panel needs landscape support, which turns rotation on for every iPhone and iPad and the owner''s order excludes. The plan folder and evidence died in this merge per the records rule."}}', NULL);
@@ -6810,6 +6820,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1269, 56, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.056683+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Countdown time display: lowercase h m s letters in every language"}, "from": {"value": "#85 Countdown time display: lowercase h m s letters in every language"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1323, 74, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.317793+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Volume-source copy: alert and sound sheets plus a help question"}, "from": {"value": "#64 Volume-source copy: alert and sound sheets plus a help question"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1422, 117, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.884799+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Android widgets open the app on tap"}, "from": {"value": "#13 Android widgets open the app on tap"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2334, 263, 'activity', 'owner', NULL, 'created', '2026-10-19 22:14:39.658966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1270, 56, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.056683+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER RULING 2026-10-15 (final; supersedes this row''s English-only framing and rows 82/84''s colon design for the countdown TIME display only): the lettered design returns for EVERY language, behaviour-identical to the old lettered formatter (git-verified at the `fb42c372` era and `194ed701`): every zero-valued group drops (a whole hour with seconds hidden reads `1h`; with seconds shown `1h 5s`; under a minute `45s`), digits unpadded, the seconds render `0s` only when alone; the letters are lowercase h m s at 55 percent size in ink settled live at rgba(160,200,255,0.4), riding the digits'' baseline inside one text run with a 2 point gap span (a space at fontSize 8, Roboto''s 510/2048 em advance); Latin digits in every language; the show-seconds preference still drops the whole seconds group; the bar and the mosque SVG untouched; the owner''s live XS read approved the face across the session and stands as the visual acceptance (no device step). READY plan `ai/plans/85-countdown-letters/` (planned at `f70eaf8e` 2.0.730; step 1 the handed component plus its 16-test suite, 13 lettered assertions proven red and 100 percent coverage on all four measures, step 2 the colon machinery sweep: splitColonSections, CountdownSection, ALL_DIGITS, ALL_ZEROS, the dimDigit and colon inks)\n\nStatus note: 2026-10-15, audited: the countdown TIME display is the lettered design in every language - unpadded Latin digit groups with small faint lowercase h m s on the digits'' baseline (inline spans, 2 pt gap, ink rgba(160, 200, 255, 0.4)), the 2024-11 composer''s exact zero-drop behaviour ported and git-verified (1h at a whole hour, seconds never 0s but alone), the colon machinery (splitColonSections, dim inks, per-digit fades) swept dead, bar and mosque untouched; owner-approved live on the XS across the session\n\nNeeds first: #83"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1284, 61, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:05.127022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Layout direction follows the app language, not the system language"}, "from": {"value": "#80 Layout direction follows the app language, not the system language"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1285, 61, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:05.127022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s ruling from the XS test (2026-10-13, ~16:45, system Arabic + app English): the layout stayed RTL with English content - the owner ruled the layout must follow the SELECTED app language (English means left-to-right, Arabic means right-to-left, any language), with the system language only setting the INITIAL default on first launch. En-route evidence on the same pass: the en countdown rendered colon digits instead of the lettered design (the red build; re-verify on the current one - it may already be healed by row 72''s dispatcher), and row 68''s D59 direction bootstrap is the mechanism ground (73''s D92 diagnosis + 78''s starvation share it). Row 79''s items were recorded separately the same hour CONFIRMED ON 74''s GREEN BUILD the same hour (app English, system Arabic: everything RTL with English text), and one more en-route observation: a Maghrib notification fired in ENGLISH (with row 72''s ruled en unit word) while the app language was Arabic - the convergence either had not completed after the switch or the row 80 relaunch semantics interfere; scope the notification-language path here\n\nStatus note: 2026-10-14, audited: the layout direction reads the app locale at the React tree''s root and the picker modal''s host (the direction style keying row 73 established, one level up), so every launch state renders the selected language''s direction - the owner''s XS ruling lands: system Arabic + app English lays out left-to-right, the system locale deciding only the initial default; forceRTL keeps the native half it can reach and the D59 crossing relaunch stays. The crossing''s relaunch context stops paying the cold-launch refresh-gate reopen through a one-shot relaunch handoff marker (an in-process reload cancels no alarm), closing row 78''s recorded aggravator; the notification-language path scoped and diagnosed - the English Maghrib was convergence not yet landed (copy is baked at arm time), now bounded by 78''s cap, the relaunch, and the relaunch context''s own reconcile, with what converges unchanged. QiblaWave''s mirror re-keys on the locale''s own direction (73''s reported sibling read folded in), the picker keeps its snapshot keying with its premise restated, and the en-countdown colon observation is superseded by row 82''s one-design ruling (row 85 would restore the en letters only when the owner says go). Device work waived by the owner''s run order; the owner''s device test is the acceptance bar"}}', NULL);
@@ -8041,6 +8052,116 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2273, 254, 'comment', 'owner', 'Ruling, agent-ruled, argued in the plan doc''s Findings: the app CAN detect the state (grant reads granted, heading available, zero events from both streams across an open, while interference still delivers invalid events and reports itself through the error channel the app does not currently wire), and the app CANNOT recover it itself (fresh managers per open never cleared it; no API resets the system''s record; only the user''s permission cycle, a privacy reset or a restart does). Two orders wait on the owner, both because qibla is locked: build the detection, and for that state offer the Settings route naming the permission cycle. Until an order, nothing changes.', NULL, '2026-10-19 20:46:24.566514+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2274, 256, 'activity', 'owner', NULL, 'status', '2026-10-19 20:46:29.683323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2275, 255, 'activity', 'owner', NULL, 'status', '2026-10-19 20:46:29.684301+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2276, 257, 'activity', 'owner', NULL, 'status', '2026-10-19 20:50:14.38398+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2277, 254, 'comment', 'owner', 'Executed: the trace and the twice-argued ruling are on the plan doc and tabled in the two comments above; the close commit (2.1.13, snapshot) is on lane/254 with validate green. Moving to audit.', NULL, '2026-10-19 20:50:35.732981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2278, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:50:35.81721+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2279, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 20:52:52.851277+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx and the expo-widgets render path (patches/expo-widgets+58.0.20.patch); the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first, DEFERRED then picked up): with the app in Arabic, a newly added widget mirrors correctly (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves are computed from grantedWidthDp, which no code path ever writes, so the content renders at the 310dp declared minimum inside the launcher''s real grant (about 370dp on the 3T); the misplaced halves carry the ink off center at short labels. The fix carries the render-time granted width from Glance''s provideRoot through the widget environment into the layout.\n\nAcceptance:\n- [ ] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, measured by screencap and transcribed in this ticket\n- [ ] no dead band wider than 30px remains at either end of the medium content at the 3T''s grant, in either language\n- [ ] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [ ] the renderer suite derives the medium halves from environment.grantedWidthDp and falls back to the declared minimum when absent, green in yarn validate\n- [ ] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2280, 241, 'activity', 'owner', NULL, 'estimate', '2026-10-19 20:52:52.851277+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2281, 259, 'activity', 'owner', NULL, 'created', '2026-10-19 20:52:52.914977+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2282, 259, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:52:52.916739+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 241, "value": "T-241"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2283, 241, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:52:52.916739+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 259, "value": "T-259"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2285, 260, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:52:52.951065+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 241, "value": "T-241"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2286, 241, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:52:52.951065+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 260, "value": "T-260"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2287, 241, 'comment', 'owner', 'Planned. The diagnosis is measured, not guessed: the medium''s halves read a granted width nothing ever stamps, so the content renders at the 310dp fallback inside the 3T''s real grant, and short labels expose the misplaced halves. The plan doc carries the fix (the grant rides the widget environment from Glance''s provideRoot), five story points across two steps.', NULL, '2026-10-19 20:53:02.991361+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2288, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 20:53:03.029451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2289, 254, 'comment', 'owner', 'Plan-conformance audit: the diff is exactly the agreed change - both version files at 2.1.13 against uat''s 2.1.12 and the refreshed snapshot - the hooks/device/modules/shared/components/patches diff is empty, and the trace, the twice-argued ruling and the tabled orders are on the plan doc and in the comments as the steps required. Everything conforms; nothing to fix.', NULL, '2026-10-19 20:53:34.829608+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2294, 11, 'comment', 'owner', 'Step 1 landed: the v1 fallback words re-issued under their laws and pinned over a faithful v1 fixture, validate green, both flips of the mutation pass caught. The commit numbers 2.1.14, not 2.1.13: lane 254''s snapshot commit had already taken 2.1.13, so lane/130 sits rebased on that commit and renumbered, per the version gates'' own rule.', NULL, '2026-10-19 20:55:19.233021+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2295, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:56:58.153866+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2297, 241, 'comment', 'owner', 'FINDINGS
+
+1. Goal + Decision D1 (root cause) are contradicted by the repository. The plan claims grantedWidthDp is "written by no code path in the app" and that "a grep of the app and expo-widgets 58.0.20 finds no writer". modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh/WidgetRefreshScheduler.kt:95-116 writes it: patchCompositionSize reads OPTION_APPWIDGET_MIN_WIDTH for every placed id and stamps it into the stored props (__expo_widgets_<kind>_props, prefs "expo.modules.widgets") that WidgetsLayoutRegistry.props reads at every provideRoot. The field''s own doc comment in shared/widgetTypes.ts says "stamped by the native tick". The fallback-matching measurements prove the render read 310, not that no writer exists: the stamp was absent at that render (the app push rewrites props without the key between ticks) or the 3T''s option reports exactly 310. Fix: rewrite D1 naming the scheduler and the real reason the stamp reads as fallback; the environment design itself can stand.
+
+2. Files + D4 omit a file the change needs. D4 deletes grantedWidthDp from PrayerWidgetAndroidProps on the grounds "Nothing writes it, so no stored snapshot carries it". The scheduler writes it on every minute tick, and WidgetRefreshScheduler.kt:66-67 pins its GRANTED_WIDTH_KEY to that field by comment. Applied as written, the scheduler keeps stamping a deleted field and the comment goes false. Fix: add WidgetRefreshScheduler.kt to Files with its disposition: drop the GRANTED_WIDTH_KEY stamp and its half of the line 112 guard, keep the size stamp, update the comment.
+
+3. Design section, press-path sentence: "evaluates no render" is false. bundle/index.ts __expoWidgetHandlePress calls globalThis.__expoWidgetRender, a full layout evaluation, and walks its output for the handler; WidgetInteractionAction.kt:59 builds that sizeless environment. The conclusion holds (the tree is discarded, the medium card has no JS press handler) but each press internally renders at the 310 fallback after this change. Fix: reword to "its render output is discarded; only the handler walk reads it".
+
+4. Acceptance criterion 2 names an ambiguous band. "No dead band wider than 30px at either end of the medium content" reads as the two outer edges, but the reported defect was the middle band between the halves, which already hug the outer edges (owner report 2). Step 2''s "at either content edge" repeats it, so two measurers can measure different bands. Fix: anchor the bands, e.g. between the list half''s trailing ink and the hero half''s leading ink, and each half''s ink against its own edge.
+
+5. Hedge word on the ticket: the owner report says "mirrors correctly (list left, countdown right)". The parenthetical already carries the observable; delete "correctly".
+
+Checks the plan survived: the provideRoot hunk matches ExpoWidgetsPeekWidget.kt:28 verbatim and SizeMode.Exact plus the DpSize parameter are real; the consumer snippet drop-replaces PrayerWidget.tsx:547-548 with ANDROID_MEDIUM_MIN_WIDTH=310 and CARD_PAD_START/END=13 in place, so 370dp gives 344 inner and 172/172 halves; the fixtures passing grantedWidthDp in props exist (widgetRenderer.test.ts:916-1388) with the environment already the second argument, so the move is unambiguous; bundle/index.ts:68 strips only timestamp and materialColors so the new key reaches the layout; the D135.13 pinned wrapper is PrayerWidget.tsx:609-612; the mock evening branch really seeds Maghrib on the next minute boundary (mocks/simple.ts), the 3T atlas exists, and build-mock.zsh shares the main checkout''s node_modules; criteria 1, 3, 4, 5 are each observable (D5 pins criterion 3''s reading); story points 5 = 2 + 3 with matching subtask estimates; every other named risk carries its answer.', NULL, '2026-10-19 20:58:38.401717+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2290, 254, 'comment', 'owner', 'Closed at 2.1.13 on uat, both reviews clean. The mechanism: BOTH CoreLocation streams were dead together - the heading watch and the accuracy watch are two managers under one authorization record, Apple documents that a heading start which cannot deliver raises no event, and with no accuracy event the gate never opened, so the wave held. The permission cycle rewrote the app''s authorization record in the system''s location service; the next open drew. The patch and the build stand acquitted.
+
+Tabled to the owner, both agent-ruled: the app CAN detect the state itself (granted plus heading-available plus zero events from both streams across an open; today it sees only "lost", and on the heading side an errorHandler is the one missing wire), and the app CANNOT recover it itself (fresh managers per open never cleared it; only the user''s permission cycle, a privacy reset or a restart does). Two orders wait: build the detection; and for that state, offer the Settings route naming the cycle. Until an order, nothing changes. Full argument in the plan doc''s Findings.', NULL, '2026-10-19 20:54:58.818339+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2291, 254, 'activity', 'owner', NULL, 'description', '2026-10-19 20:54:58.863354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.\n\nWhere: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.\n\nOWNER REPORT 2026-10-19, iPhone XS, mock 2.1.7 installed over the production app: the qibla never left the wave animation across many opens, indoors and out; Android on the same data draws after a wave. The compass then started working after the owner toggled iOS location from While Using to Always and back to While Using, closed Settings and the app, and reopened: the qibla loaded.\n\nBrief look 2026-10-19: the build is sound - the patched heading streamer (kCLHeadingFilterNone) is in the tree the build used, and the compass works on this build after the toggle - so the stuck state is the phone''s location state, not the code. The gate needs two streams (headings from expo-location, accuracy from the ExpoQiblaHeading module), and a heading nothing vouches for is never drawn.\n\nAcceptance:\n- [x] the mechanism named: which stream was dead and what the toggle reset\n- [x] a ruling, argued twice and tabled to the owner, on whether the app can detect and recover the state itself\n- [x] no compass logic change without the owner''s order"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2292, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:54:58.904302+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2293, 258, 'activity', 'owner', NULL, 'status', '2026-10-19 20:55:00.672631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2296, 11, 'comment', 'owner', 'Step 1 landed: the fallback words are re-issued under the laws with their bytes unchanged, and the v1 renders (live, footer, stale, both locales) are pinned; validate green on my own run. The branch numbered 2.1.14 after lane 254 took 2.1.13 on uat. Into audit.', NULL, '2026-10-19 20:56:58.192049+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2303, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 21:04:54.74598+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.\n\nAcceptance:\n- [ ] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket\n- [ ] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language\n- [ ] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [ ] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate\n- [ ] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2304, 259, 'activity', 'owner', NULL, 'description', '2026-10-19 21:04:54.765834+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Red renderer tests, the expo-widgets patch hunk (provideRoot stamps the exact granted width into the environment), the layout reads it with the 310dp fallback, the dead snapshot field is deleted, and WidgetRefreshScheduler drops its width stamp (composition-size stamp and gate stay). yarn validate green. One commit, patch bump."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2307, 241, 'comment', 'owner', 'Integrity: the Ticket number field was empty at intake and the label carried the number; the field now reads 241.', NULL, '2026-10-19 21:05:54.670553+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2308, 11, 'comment', 'owner', 'Lead''s audit fix at 2.1.15: the owner''s 2026-10-19 ruling on this row (the ''now'' field leaves the widget strings contract and the English literal leaves the v1 fallback) was left unexecuted by the close; the rider is now gone from the contract, the bake and the fallback, pinned red-first, and the app''s translated ''now'' is untouched.', NULL, '2026-10-19 21:08:46.435124+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2309, 259, 'activity', 'owner', NULL, 'status', '2026-10-19 21:22:29.923038+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2310, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 21:22:39.240558+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.\n\nAcceptance:\n- [ ] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket\n- [ ] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language\n- [ ] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate\n- [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2340, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:20:08.493083+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2298, 11, 'comment', 'owner', 'Plan-conformance audit of cdc60d99: all six checks pass. The fallback literal is byte-identical with only its comment re-issued naming rows 83/85/102, row 88 and D44/D79; the v1 fixture is faithful (v 1, no strings, no footers, no rtl, no row ids); every pin the Proof names is present; WIDGET_PROPS_VERSION 8 and ANDROID_SNAPSHOT_VERSION 4 stand; nothing outside the plan moved except the version bump, 2.1.13 to 2.1.14, consecutive. I ran the suite myself: the renderer file green at 76/76 and yarn validate green (226 suites, 5856 passed).
+
+One MINOR: the recorded mutation pass covers the two flips the plan''s Proof names (h to H, staleTitle hardcode); the Design also names m to M and each stale word one at a time, and those flips left no record. The committed pins do guard them (the sub-hour 19 m pin, the en/ar small stale pins, the ar medium one-line pin), so this is a record gap, not a code defect.', NULL, '2026-10-19 21:00:50.790987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2299, 11, 'comment', 'owner', 'Blind review of 2.1.14 passed with no findings: the layout change is comment-only with the code literal byte-identical, the v1 fixture matches the historical v1 snapshot shape exactly, the new pins kill both mutation flips, and the renderer suite is green (76/76).', NULL, '2026-10-19 21:01:07.029067+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2300, 11, 'activity', 'owner', NULL, 'description', '2026-10-19 21:03:20.527902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 was already lawful (row 135 re-issued the countdown face for every blob); the work was the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.\n\nWhere: widgets/PrayerWidget.tsx (the input.strings fallback block inside androidRender) and shared/__tests__/widgetRenderer.test.ts.\n\nAcceptance:\n- [x] The renderer suite pins a faithful v1 blob''s live face (v 1, no strings, no day footers, no rtl, no row ids): lowercase Latin h m letters, unpadded Latin digits, zero-group drop, parsed English footer - yarn jest shared/__tests__/widgetRenderer.test.ts green\n- [x] The renderer suite pins a faithful v1 blob''s stale words on both sizes under en and ar device locales (device-keyed statics)\n- [x] The fallback block''s comment names rows 83/85/102, row 88 and D44/D79, its literal byte-identical to the measured face, both schema versions unchanged (8 and 4) - read in the diff\n- [x] A mutation pass flips every rendered fallback byte in the source and the pins catch each flip\n- [x] yarn validate green\n\nProvenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carried item (2) only."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2301, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 21:03:20.527902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2302, 11, 'comment', 'owner', 'DONE 2026-10-19, merged to uat at 2.1.14 (merge 68cd6be7, commit cdc60d99). The measurement ran first: a faithful v1 blob already rendered the lawful face at uat, so the re-issue changed no byte - the fallback words stand law-named in the source and every rendered word is pinned (live lettered face with zero-drop and parsed footer, stale words at both sizes under en and ar device locales), validate green, 100 percent coverage. Audit: blind review CLEAN; the plan-conformance minor (a partial mutation record) was adjudicated confirmed and completed on the branch - six flips (h, m, staleTitle, refreshLine, refreshLead, refreshTail), each red, each restored; the unread s and now riders carry the plan''s recorded limit. Version interleaving: lane 254 took 2.1.13 on uat mid-run; this branch rebased onto it and took the next free number 2.1.14.', NULL, '2026-10-19 21:03:20.54714+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2305, 241, 'comment', 'owner', 'All five fixed. 1: D1 rewritten around the scheduler and the push-wipe; a fresh measurement twenty minutes after the push (ticked, stamped) renders centered at 370dp, so the options tell the truth and the fallback renders are the wipe window. 2: WidgetRefreshScheduler.kt added to Files with the disposition you named. 3: reworded per D8. 4: the criteria now anchor the bands to the halves'' ink. 5: hedge deleted.', NULL, '2026-10-19 21:04:54.783154+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 2297, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2306, 241, 'activity', 'owner', NULL, 'field', '2026-10-19 21:05:24.502914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "241"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2312, 241, 'comment', 'owner', 'Lead''s fix: the claim move to In progress was missed while execution ran under Ready; the column now matches the work. The claim step is being made explicit in the lane and executor agent files.', NULL, '2026-10-19 21:23:10.202716+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2314, 241, 'comment', 'owner', 'Step 1 landed on the branch (2.1.16, one commit, validate green, mutation pass on the width guard). uat moved twice mid-run (2.1.13, 2.1.14, 2.1.15); the branch rebased onto the published line and took the next free number. The device proof runs next.', NULL, '2026-10-19 21:24:08.644777+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2315, 260, 'activity', 'owner', NULL, 'status', '2026-10-19 21:25:40.176027+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2311, 241, 'comment', 'owner', 'Step 1 landed on lane/241 (2.1.16, commit fabeeb5e): the medium''s granted width now rides the widget environment through a new patch hunk, the stored-props field and the scheduler''s width stamp are gone, and the renderer suite derives the halves from the environment with the 310dp fallback, green in yarn validate. The branch took 2.1.16 because uat published 2.1.15 (the row-130 follow-on) after this lane was cut, so the lane advanced onto that tip per the version-discipline rule. Step 2, the 3T proof, remains.', NULL, '2026-10-19 21:22:44.231803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2313, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 21:23:10.22454+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2316, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 21:48:18.540249+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.\n\nAcceptance:\n- [x] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket\n- [x] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language\n- [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate\n- [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2317, 260, 'activity', 'owner', NULL, 'status', '2026-10-19 21:48:18.593413+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2318, 241, 'comment', 'owner', '3T proof, mock 2.1.16, both languages, both label lengths: at the one-minute label the countdown''s ink centre sat 2px off its half''s centre in Arabic and 1px in English, and the slack inside the halves was symmetric to within 4px and 2px; at the hours-long label the offsets were 1.5px and 0.5px with slack symmetric to 3px and 1px; the empty middle read exactly the halves'' own slack in every face with no extra band at either edge, and English kept its hero-left, list-right shape.', NULL, '2026-10-19 21:48:25.34559+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2319, 241, 'comment', 'owner', 'Step 2 closed on the 3T: post-push renders (the window that used to fall back) now carry the grant-true geometry in both languages, the one-minute and hours labels center identically, and an independent image read confirms the balanced mirror with no unexplained band. Both steps committed on the branch; the audit runs next.', NULL, '2026-10-19 21:57:36.452881+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2320, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 21:57:36.493791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2321, 241, 'comment', 'owner', 'FINDINGS
+
+1. minor - Plan decision D5 (echoed in Risks as "stated to the owner"): the plan requires the execution comment to state in plain words that the English long-countdown face shifts about 15dp, because the halves grow from the 142dp fallback to the 172dp grant-true widths. Comments 2318 and 2319 report the post-fix offsets but no comment states the shift, so criterion 3''s "same proportions" reaches the owner without the accepted change it rests on.
+
+2. minor - Plan Proof: three named proofs have no line behind them. No comment quotes the adb logcat snapshot push line at staging time, the jest -t "granted" pass count, or the stores and shared suite run; only the blanket "validate green" covers the suite half, and the push-line proof is unevidenced outright. The Arabic one-minute proof''s clause "the list on the left holding its rows inside the list half" is also never stated, only implied by 2318''s middle-band read.
+
+3. observation - Plan Files: shared/__tests__/widgetOpenAppPatch.test.ts is changed but not listed. The change is necessary (that suite pinned the patch at six diff headers) and it hardens D6 by pinning the applied Kotlin line in node_modules, with the patch-package postinstall keeping fresh installs honest. The Files list simply missed it.
+
+4. observation - Plan Files, third version file: android/app/build.gradle cannot appear in any commit, because /android is gitignored and the file is prebuild-generated (the on-disk copy still reads 2.1.15 and the build worktree carries no android tree). Its bump lives only in the build''s prebuilt tree and is unverifiable from git, so the audit record should not read the three-file bump as evidenced.
+
+Everything else the plan names is confirmed: the provideRoot hunk matches the Design snippet verbatim, the six older patch hunks are intact, the applied line sits in the main checkout''s node_modules, the layout read carries the floor, the >0 guard and the 310 fallback exactly as planned, the type deletion, the scheduler''s width-stamp removal with the size gate kept, the complete fixture move and the red-first suite all match, versions ran 2.1.15 to 2.1.16 to 2.1.17 one bump per commit in the two tracked files, the atlas carries the two measured language rows, no iOS or small-widget file changed, and comment 2318''s numbers sit inside every device bound the acceptance names in both languages and both label lengths.', NULL, '2026-10-19 22:01:23.737293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2322, 241, 'comment', 'owner', 'FINDINGS (blind review, uat..lane/241)
+
+1. observation — modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh/WidgetRefreshScheduler.kt:104-112 — the scheduler''s reworked stamp (gate on size alone, width stamp deleted) has no automated coverage: the module carries only JS binding tests and the repo has no Kotlin test infra, so a regression in the stamp would surface only on glass. The lack is honest for this repo''s practice and the JS side of the contract is pinned (see 3), but the Kotlin change itself rides on the device proof recorded in the 2.1.17 commit.
+
+2. observation — shared/__tests__/widgetOpenAppPatch.test.ts:40-43 — the header-count comment says "four files" then names three of the four device-locale files (the WidgetsJSRuntime.kt LocaleList caller goes unnamed). Pre-existing sentence, edited here; the count itself (7) is verified right against the patch.
+
+Everything else is clean:
+- Correctness: the traced path holds. ExpoWidgetsAppWidgetProvider -> ExpoWidgetsPeekWidget.provideRoot is the only home-widget render path (notification renderer and press paths use the plain environment and need no grant); the patch adds grantedWidthDp to that one environment, the JS layout reads it via cast, floors it, and falls back to 310 when absent or 0. The patch targets the pinned expo-widgets 58.0.20, is applied in the worktree''s node_modules, and older hunks are untouched (13 insertions, 0 deletions).
+- Invariants: props stay JSON with the v4 app-written shape unchanged and the props==null/undefined guard still pinned; the closure law holds (no new imports, the environment is a parameter); no pixel changes (integer grants render the same bytes, pinned by the unchanged 177/142/172 expectations); versions bumped in both tracked files on every commit (2.1.15 -> 2.1.16 -> 2.1.17, origin/uat still at 2.1.15); comments are WHY-only at matching density; no console.log; no node_modules files tracked.
+- Tests: the two suites pass (89 tests) and tsc is clean. The new pins are real: a props-to-environment revert fails the 370dp halves test, the legacy-key tolerance, the fractional floor, and the no-grant-equals-310 equivalence are each separately pinned; the patch suite pins the applied peek-widget line itself.
+- Hygiene: GRANTED_WIDTH_KEY and the dead snapshot field are fully gone (no stale references anywhere), the atlas rows match the table format with measured dates, and nothing unrelated rides along.', NULL, '2026-10-19 22:05:03.216973+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2324, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 22:08:20.240367+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2325, 241, 'comment', 'owner', 'Done and merged to uat at 2.1.18. The medium widget''s countdown now centers in its own space in both directions at every label length: the granted width rides the render environment, so the push that used to wipe it can no longer break the face. Both languages measured on the 3T, both reviews adjudicated, the plan doc and this ticket carry the full record.', NULL, '2026-10-19 22:08:20.272747+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2326, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:10:08.609877+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2328, 261, 'activity', 'owner', NULL, 'created', '2026-10-19 22:14:39.576577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2337, 33, 'activity', 'owner', NULL, 'estimate', '2026-10-19 22:14:42.238695+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2339, 33, 'comment', 'owner', 'Plan written on the T-116 doc (linked to this row): three steps - name Apple''s requirements from the official skills and docs, verify both poses on the iOS 27.1 Duo simulator, close the records - 5 points. Griller returned two minors, both fixed in the doc (the untracked android/ tree can never appear in a diff; the device step''s build route now named).', NULL, '2026-10-19 22:20:01.169579+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2323, 241, 'comment', 'owner', 'Audit closed: both reviews clean of blockers, every finding adjudicated.
+
+Plan-conformance: finding 1 (the D5 statement never reached the ticket) confirmed - here is the statement: at the 3T''s 370dp grant the medium''s halves grow from the fallback 142dp to the grant-true 172dp, so the English long-countdown trio sits about 15dp further into the card than the broken face did; the composition and proportions are unchanged, which is what "the English face stays unchanged in its long-countdown shape" was read to mean (plan D5). Finding 2 (unquoted proof lines) confirmed - quoted below. Findings 3 and 4 confirmed as plan-listing gaps; the plan doc''s Files list now names the patch-shape suite and records that android/app/build.gradle is prebuild-generated and follows app.json.
+
+Blind: finding 1 (no automated coverage over the scheduler''s Kotlin stamp) accepted as an honest lack - the repository carries no Kotlin test infra and the change is proven by the device record; adding that infra is outside this ticket. Finding 2 (the patch suite''s header comment named three of four device-locale files) confirmed and fixed on the branch at 2.1.18, validate green.
+
+The proof lines the plan''s Proof section names, now quoted from the run and a live re-run:
+- Renderer and patch suites: 2 suites, 89 passed, 89 total; the named filter -t "granted": 8 passed, 0 of the matched set skipped. Full validate: 226 suites, 5862 passed, 2 skipped (both predate the branch), coverage 100 percent on all four counts.
+- The logcat witness at staging: "10-19 22:34:17.686 I/ReactNativeJS: { next: ''المغرب'', nextAt: ''22:35'' }, ''WIDGET: Standard snapshot pushed''" (Arabic, screencap about 9s later) and "10-19 22:44:45.491 I/ReactNativeJS: { next: ''Magrib'', nextAt: ''22:45'' }, ''WIDGET: Standard snapshot pushed''" (English, about 15s before the capture).
+- The Arabic one-minute list containment, stated plainly: the list half''s rows and pill (x 88..504) sit inside the list half (x 88..540) with the same 13dp pill lead the English face mirrors (x 576..992 inside 540..992).
+
+Version interleaving: lanes 254 and 130 took 2.1.13 through 2.1.15 on uat while this lane planned and measured; this branch rebased onto the published 2.1.15 and took the next free numbers 2.1.16, 2.1.17 (device proof) and 2.1.18 (the audit''s comment repair), one bump per commit.', NULL, '2026-10-19 22:07:56.441799+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2327, 33, 'activity', 'owner', NULL, 'field', '2026-10-19 22:10:08.610749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2329, 261, 'activity', 'owner', NULL, 'parent', '2026-10-19 22:14:39.57969+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 33, "value": "T-116"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2330, 33, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 22:14:39.57969+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 261, "value": "T-261"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2332, 262, 'activity', 'owner', NULL, 'parent', '2026-10-19 22:14:39.627828+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 33, "value": "T-116"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2333, 33, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 22:14:39.627828+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 262, "value": "T-262"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2335, 263, 'activity', 'owner', NULL, 'parent', '2026-10-19 22:14:39.66103+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 33, "value": "T-116"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2336, 33, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 22:14:39.66103+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 263, "value": "T-263"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2338, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:20:01.137338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2341, 33, 'comment', 'owner', 'Claimed by Lane 1. Executing the three steps in the worktree on lane/116 off uat 2.1.19.', NULL, '2026-10-19 22:20:08.512426+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -8094,6 +8215,7 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (8,
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (254, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (11, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (241, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (33, 2, 1);
 
 
 --
@@ -8257,6 +8379,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (547, 241, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (404, 11, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (392, 4, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (551, 241, 1, NULL, 241, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -8563,10 +8686,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (124, 19);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (124, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (5, 13);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (5, 142);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 172);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 141);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 2);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 135);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (7, 2);
@@ -8578,10 +8697,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 173);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 2);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (253, 5);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 110);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 149);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 1);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 10);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 174);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (254, 1);
@@ -8590,6 +8705,14 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 131);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 2);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (11, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 172);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (241, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 110);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 149);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 10);
 
 
 --
@@ -8921,23 +9044,44 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (431, 253, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.41+00', '2026-10-19 19:59:04.839344+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (433, 253, 4, 'Done', 'completed', '2026-10-19 19:59:04.839344+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (33, 33, 4, 'Done', 'completed', '2026-10-18 23:35:56.034+00', '2026-10-19 20:21:07.916266+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (434, 33, 1, 'Backlog', 'backlog', '2026-10-19 20:21:07.916266+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (429, 11, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.549692+00', '2026-10-19 20:26:32.134592+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (432, 254, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.53+00', '2026-10-19 20:26:32.137433+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (428, 241, 1, 'Backlog', 'backlog', '2026-10-19 19:18:16.36049+00', '2026-10-19 20:26:32.13996+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (437, 241, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.13996+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (440, 257, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.09+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (441, 258, 1, 'Backlog', 'backlog', '2026-10-19 20:37:31.974+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (436, 254, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.137433+00', '2026-10-19 20:41:44.898793+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (442, 254, 2, 'Ready', 'unstarted', '2026-10-19 20:41:44.898793+00', '2026-10-19 20:41:49.824459+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (443, 254, 3, 'In progress', 'started', '2026-10-19 20:41:49.824459+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (435, 11, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.134592+00', '2026-10-19 20:43:04.895547+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (444, 11, 2, 'Ready', 'unstarted', '2026-10-19 20:43:04.895547+00', '2026-10-19 20:43:34.749974+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (445, 11, 3, 'In progress', 'started', '2026-10-19 20:43:34.749974+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (439, 256, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.051+00', '2026-10-19 20:46:29.679613+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (446, 256, 4, 'Done', 'completed', '2026-10-19 20:46:29.679613+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (438, 255, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.011+00', '2026-10-19 20:46:29.681562+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (447, 255, 4, 'Done', 'completed', '2026-10-19 20:46:29.681562+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (440, 257, 1, 'Backlog', 'backlog', '2026-10-19 20:36:24.09+00', '2026-10-19 20:50:14.380785+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (448, 257, 4, 'Done', 'completed', '2026-10-19 20:50:14.380785+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (443, 254, 3, 'In progress', 'started', '2026-10-19 20:41:49.824459+00', '2026-10-19 20:50:35.80921+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (437, 241, 6, 'Planning', 'unstarted', '2026-10-19 20:26:32.13996+00', '2026-10-19 20:53:03.026856+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (449, 254, 8, 'Audit', 'started', '2026-10-19 20:50:35.80921+00', '2026-10-19 20:54:58.900767+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (453, 254, 4, 'Done', 'completed', '2026-10-19 20:54:58.900767+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (441, 258, 1, 'Backlog', 'backlog', '2026-10-19 20:37:31.974+00', '2026-10-19 20:55:00.668242+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (454, 258, 4, 'Done', 'completed', '2026-10-19 20:55:00.668242+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (445, 11, 3, 'In progress', 'started', '2026-10-19 20:43:34.749974+00', '2026-10-19 20:56:58.149224+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (455, 11, 8, 'Audit', 'started', '2026-10-19 20:56:58.149224+00', '2026-10-19 21:03:20.525436+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (456, 11, 4, 'Done', 'completed', '2026-10-19 21:03:20.525436+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (450, 259, 1, 'Backlog', 'backlog', '2026-10-19 20:52:52.908+00', '2026-10-19 21:22:29.915025+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (457, 259, 4, 'Done', 'completed', '2026-10-19 21:22:29.915025+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (452, 241, 2, 'Ready', 'unstarted', '2026-10-19 20:53:03.026856+00', '2026-10-19 21:23:10.218657+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (451, 260, 1, 'Backlog', 'backlog', '2026-10-19 20:52:52.944+00', '2026-10-19 21:25:40.171236+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (459, 260, 3, 'In progress', 'started', '2026-10-19 21:25:40.171236+00', '2026-10-19 21:48:18.590448+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (460, 260, 4, 'Done', 'completed', '2026-10-19 21:48:18.590448+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (458, 241, 3, 'In progress', 'started', '2026-10-19 21:23:10.218657+00', '2026-10-19 21:57:36.491721+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (461, 241, 8, 'Audit', 'started', '2026-10-19 21:57:36.491721+00', '2026-10-19 22:08:20.235416+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (462, 241, 4, 'Done', 'completed', '2026-10-19 22:08:20.235416+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (434, 33, 1, 'Backlog', 'backlog', '2026-10-19 20:21:07.916266+00', '2026-10-19 22:10:08.604899+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (464, 261, 1, 'Backlog', 'backlog', '2026-10-19 22:14:39.565+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (465, 262, 1, 'Backlog', 'backlog', '2026-10-19 22:14:39.616+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (466, 263, 1, 'Backlog', 'backlog', '2026-10-19 22:14:39.653+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (463, 33, 6, 'Planning', 'unstarted', '2026-10-19 22:10:08.604899+00', '2026-10-19 22:20:01.132391+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (467, 33, 2, 'Ready', 'unstarted', '2026-10-19 22:20:01.132391+00', '2026-10-19 22:20:08.490475+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (468, 33, 3, 'In progress', 'started', '2026-10-19 22:20:08.490475+00', NULL);
 
 
 --
@@ -9581,7 +9725,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 259, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 264, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -11227,7 +11371,7 @@ Read, none changed:
 - node_modules/expo-location (ios LocationModule.swift, ios Providers/DeviceHeadingStreamer.swift, build/Location.js): how the heading watch reports failure and where the report stops. Read-only.
 
 Changed:
-- package.json, app.json, android/app/build.gradle: the version bump, together, one patch.
+- package.json, app.json, android/app/build.gradle: the version bump, together, one patch. Git tracks the first two; the android gradle file is prebuild-generated from app.json and follows at the next build, and no build ran in this row.
 - board/snapshot/board.sql: the snapshot at close.
 
 ## Design
@@ -11255,7 +11399,7 @@ Alternatives rejected:
 
 - The mechanism named: the ticket''s records carry the starved streams and the state the toggle reset, each claim tied to the file and line that shows it.
 - The ruling tabled: a comment carries the detection ruling and the recovery ruling, each with its challenge answered, marked agent-ruled.
-- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the three version files and board/snapshot/board.sql.
+- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the two tracked version files and board/snapshot/board.sql.
 
 ## Findings
 
@@ -11278,7 +11422,198 @@ Detection: YES, the app can tell this state apart. The signature it already hold
 Recovery: NO, the app cannot clear the state itself. Every open already builds fresh managers (a new streamer per watch; startHeadingAccuracy stops the old streamer and builds a new one), and many opens never recovered it, so the dead state sits above the manager, in the system. Apple documents a stop-and-start cycle as re-issuing an initial event only where delivery already works. Re-requesting authorization is a no-op once granted. No public API resets the system''s record; the resets are the user''s acts: the permission cycle in Settings (what worked), Reset Location and Privacy, or a restart. Challenge answered: listening for the authorization-change callback while the sheet is open would catch a mid-visit toggle, but that changes the moment of recovery, not the state, and the sheet already re-arms on every open, which is the owner''s actual path. The app''s whole move is to detect the signature and offer its existing Settings route with words naming the cycle; that is a qibla-sheet behaviour and copy change on locked ground.
 
 Tabled to the owner, both agent-ruled as buildable and both waiting on the owner''s order because qibla is locked: (a) build the detection, an errorHandler on the heading watch and a didFailWithError on the accuracy streamer, reporting the zero-events-with-grant signature as its own state; (b) for that state, offer the Settings route with words naming the permission cycle.
-', NULL, NULL, '{}', false, false, false, NULL, NULL, 16384, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.941784+00', '2026-10-19 20:46:19.162932+00');
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 16384, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.941784+00', '2026-10-19 20:54:25.440499+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (19, 1, NULL, 'T-241 Android widget countdown: centers in its own space under Arabic', '# T-241 Android widget countdown: centers in its own space under Arabic
+
+## Goal
+
+What is wrong today: the medium Android widget''s halves are computed from `grantedWidthDp`, a stamp that lives in the stored widget props. The native minute tick (`modules/widgetrefresh/.../WidgetRefreshScheduler.patchCompositionSize`) writes it from OPTION_APPWIDGET_MIN_WIDTH, but every JS push (`updateSnapshot` from `stores/widget.ts`) rewrites the stored props WITHOUT the key, wiping the stamp. From that moment until the next tick re-stamps it, every render falls back to the declared 310dp minimum while the launcher grants about 370dp on the 3T. The card art stretches to the real grant; the content arithmetic does not. Under the LTR face the list half is a fill that resolves to the true remainder, so the hero hugs the card''s start at 142dp while the list hugs the end: a dead band in the middle. Under the RTL face both halves are pinned at fallback widths (the D135.13 fix), so the pair hugs the card''s start edge and the countdown centers inside a 142dp half that sits left of the visible right half. The window opens after every app launch, settings change, widget placement, and every prayer boundary (the flip chain re-pushes when a target passes), so the face breaks for up to a minute after each of those. A one-group label ("1m") is 87px of ink centered in a misplaced half, which reads as "not centered in its own space"; a two-group label ("7h 50m") spans most of the half and hides the offset. The label length reveals the defect; it does not cause it.
+
+What is true when this is done: the render-time granted width reaches the layout through the widget environment, which no push can wipe; the medium halves split the real inner width at every render; the countdown centers in its own half at every label length in both directions; and the English face keeps its composition with extents trued to the grant.
+
+Measured on the 3T 2026-10-19 21:37-21:59 BST (mock 2.1.7, Arabic face, vision-measured from screencap, 1080x1920 at 420dpi):
+- Push state (21:37:27 push, captured 21:37:47, one-minute label): card art x 54..1026 (370dp), content starts x 88. The active pill spans x 88..441 (134.5dp), which equals the fallback arithmetic exactly (LIST_WIDTH 142dp minus PILL_LEAD 7dp). The trio''s ink (name, "1m", time) spans x 602..690, center 647.0, which equals the fallback hero half''s center ([461..834] -> 647.5); the card''s visible right half centers at 783. 336px of pure card-colour sit between the trio''s ink and the card''s right edge.
+- Ticked state (same widget, 20 minutes after that push, day rolled to the real schedule, "6h 4m" label): the pill spans x 88..504, which equals the stamped 370dp arithmetic exactly (LIST_WIDTH 172dp minus PILL_LEAD 14dp = 159dp = 417px). The trio''s ink spans x 667..861, center 764.0, against its rendered half''s center 765.25: centered within 2px. The halves'' slack is symmetric (leading 127px, trailing 130px). The 3T''s OPTION_APPWIDGET_MIN_WIDTH therefore reports the true 370dp grant, and the fallback renders are the push-wipe window, not lying options.
+
+## Decisions taken
+
+- 2026-10-19 D1 Root cause (revised after the griller found the writer and the ticked-state measurement separated the candidates): the JS push wipes the tick''s grantedWidthDp stamp from the stored props, and renders between the wipe and the next tick compute at the 310dp fallback. The ticked state measured on the 3T renders centered at 370dp, which proves the stamp mechanism works and the options tell the truth; the defect is the wipe window, which opens after every push.
+- 2026-10-19 D2 The grant rides the widget environment, not the stored props. Glance calls `ExpoWidgetsPeekWidget.provideRoot(context, id, options, size)` per render (`SizeMode.Exact`) with the exact `DpSize`; the environment map built beside it flows verbatim to the JS layout (`bundle/index.ts` strips only `timestamp` and `materialColors`). One Kotlin hunk in the existing `patches/expo-widgets+58.0.20.patch` adds the exact size width to that map. No push can wipe an environment value, so the post-push and post-boundary windows close with the same change. No C++ change, no JSI change.
+- 2026-10-19 D3 If the 3T''s `size.width` disagrees with the measured art extent (370dp) at verification, the same hunk switches to `OPTION_APPWIDGET_MIN_WIDTH` from the `options` bundle in the same function (the value the tick already proves correct on this launcher). One line, same patch. De-risked by the ticked-state measurement.
+- 2026-10-19 D4 The dead snapshot field is deleted from `PrayerWidgetAndroidProps`, and the scheduler''s width stamp goes with it: `WidgetRefreshScheduler.patchCompositionSize` keeps its composition-size stamp and its size gate, drops the `grantedWidthDp` write and the width half of its write-gate, and its GRANTED_WIDTH_KEY constant and comment are removed. Nothing else reads the key after this change; no stored snapshot from a released build carries it written by the JS side, and the native stamp becomes unread bytes that the next push overwrites anyway.
+- 2026-10-19 D5 "The English face stays unchanged in its long-countdown shape" is read as composition and proportions, not absolute dp: at a 370dp grant the fallback 142dp halves grow to the grant-true 172dp, which moves the trio''s center about 15dp. The owner''s report itself requires the halves to center, which no fallback-width layout can do. The execution comment states this shift in plain words.
+- 2026-10-19 D6 The device proof uses the mock build (build-mock.zsh). The build links the main checkout''s node_modules whenever yarn.lock matches, so the patched library reaches the APK only after the updated patch is applied to the main checkout''s node_modules; the step applies it with patch-package and verifies the applied file by grep before building.
+- 2026-10-19 D7 The one-minute state is staged by the evening mock window (Maghrib on the next minute boundary after a cold launch) and the Arabic face by the app''s language setting. The countdown target never reads the real clock in tests.
+- 2026-10-19 D8 The press path re-renders internally at the fallback width (`__expoWidgetHandlePress` calls `__expoWidgetRender` with a sizeless environment) but its render output is discarded; only the handler walk reads it. Left as is and documented here, because the medium card carries no JS press handler and threading a size into the press environment buys nothing visible.
+
+## Files
+
+- `patches/expo-widgets+58.0.20.patch` - one new hunk: `ExpoWidgetsPeekWidget.provideRoot` adds the exact granted width to the widget environment map.
+- `node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt` - the patch regeneration source; regenerated via patch-package; applied to the main checkout''s node_modules for the device build; never committed.
+- `modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh/WidgetRefreshScheduler.kt` - drop the grantedWidthDp stamp, its constant and the width half of the write-gate; keep the composition-size stamp and its gate; comments updated.
+- `widgets/PrayerWidget.tsx` - `androidRender` reads the granted width from the environment (closure over the layout''s second parameter) with the 310dp declared minimum as the absent-field fallback; the snapshot read goes away.
+- `shared/widgetTypes.ts` - `grantedWidthDp` deleted from `PrayerWidgetAndroidProps` with its doc comment.
+- `shared/__tests__/widgetRenderer.test.ts` - red-first tests for the environment source and the fallback; the medium fixtures that pass `grantedWidthDp` in props move it into the environment.
+- `shared/__tests__/widgetOpenAppPatch.test.ts` - the patch-shape suite''s header count moves from six to seven with an applied-line pin for the new hunk (added during execution; the audit confirmed it necessary and unlisted here).
+- `android/app/build.gradle` - not a file this change can carry: `/android` is gitignored and prebuild-generated, so its versionName follows app.json at the next prebuild. The bump rule''s third leg is satisfied that way, not by a commit.
+- `e2e/device-atlas-oneplus3t.md` - write-back of any new measured coordinate (language setting taps), per the atlas rule.
+- `package.json`, `app.json`, `android/app/build.gradle` - patch version bumps, once per commit.
+
+## Design
+
+The emitter: `provideRoot` already receives `size: DpSize`. The hunk changes the environment build line to `val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())`. The press path (`WidgetInteractionAction`) builds its own environment without size; its internal render''s output is discarded and only the handler walk reads it (D8), so it is untouched.
+
+The consumer: `AthanHomeWidget` closes over `environment`. `androidRender` replaces the snapshot read with:
+
+```
+const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+const grantedWidth = typeof environmentWidth === ''number'' && environmentWidth > 0 ? Math.floor(environmentWidth) : ANDROID_MEDIUM_MIN_WIDTH;
+```
+
+Everything downstream (HERO_WIDTH, LIST_WIDTH, row scaling) is unchanged arithmetic on a trued input. The closure law holds: the environment is a parameter, not an import. The small composition, the stale and neutral cards, the lock widgets and the whole iOS path read no width and change not at all.
+
+The scheduler: `patchCompositionSize` keeps stamping the composition size (medium above MEDIUM_COMPOSITION_MIN_DP, small below) with its size-equality gate, and stops stamping the width. A re-grant that keeps the composition no longer needs a props rewrite to reach the layout, because the layout reads the width from the environment at every render.
+
+The invariant: one width source per render, delivered by the platform that measured it, unwipeable by data pushes. The snapshot stays pure data (JSON-only props with the schema version and the null-props guard); the grant is environmental truth like colorScheme.
+
+Alternatives rejected:
+- Fill- or weight-based halves: the converter drops fillMaxWidth''s fraction and ignores weight (repo-measured on the X8 and 3T); a 50/50 split of an unknown width is unreachable.
+- Centering the fixed pair with the outer Row''s alignment: the pair spans only 284dp of a 344dp inner width at the 3T grant; each half would sit half the dead band off center, which fails the acceptance at one-minute labels.
+- Keeping the stamp and teaching the JS push to preserve it: the JS push cannot know the grant, and preserving unknown keys means an expo-widgets store-merge patch wider than the environment hunk, while the tick would still lag every push by up to a minute.
+- An onAppWidgetOptionsChanged re-push patch: the widget process holds no prayer data and no app JS runtime; it can only re-render the same stored props.
+
+## Steps
+
+1. Step 1: The granted width rides the widget environment (code, 2 points). Red renderer tests first: the medium halves derive from the environment''s granted width (a 370dp environment yields 172dp hero and list boxes), the absent field renders byte-identical to today''s no-grant tree, and a legacy snapshot key named grantedWidthDp is ignored. Then the patch hunk, the layout read, the type deletion, the scheduler stamp removal, the fixture move. `yarn validate` green. One commit, patch version bump.
+2. Step 2: Proof on the 3T at one minute, both languages (device, 3 points). Apply the updated patch to the main checkout''s node_modules and verify the applied Kotlin by grep. Build the mock from the branch (build mutex, aapt2 badging gate), install, stage the one-minute state in English and Arabic by the evening mock window and the app''s language setting, and measure by screencap with the vision reader: in each language the trio''s ink center within 20px of its rendered half''s center, the slack inside each half symmetric within 20px, and the gap between the list half''s trailing ink and the hero half''s leading ink no wider than the halves'' own slack. The English long-countdown face holds its hero-left, list-right shape. Transcribe the numbers into the ticket; never commit a screenshot. Write new coordinates back to the 3T atlas. One commit (atlas and any test-fixture residue), patch version bump.
+
+Story points: 2 + 3 = 5.
+
+## Risks
+
+- The fork''s `size` for SizeMode.Exact misreports the 3T grant: de-risked by the ticked-state measurement (the options report 370dp and the ticked render centers); if the verification still measures a mismatch, D3 switches the source inside the same hunk.
+- The patched library misses the APK because the build linked an unpatched node_modules: the step greps the applied file in the main checkout before building.
+- Glance re-renders per size on resize: intended. The environment delivers the new width per render; the D135.13 pinned-wrapper structure is width-agnostic.
+- The English long-countdown face shifts about 15dp: accepted at D5 and stated to the owner; the alternative (keeping fallback extents) fails the ticket''s own acceptance.
+- The Arabic face changes most (the dead band disappears and the list''s row scaling grows with the grant): that is the ticket''s goal, not a side effect.
+- The scheduler''s composition-size gate weakens when the width half goes: a composition flip still forces a rewrite (the size equality stays in the gate), and width changes no longer need the props at all.
+
+## Proof
+
+- `yarn validate` exits 0 (tsc, biome, jest with coverage).
+- `yarn jest shared/__tests__/widgetRenderer.test.ts -t "granted"` prints the new tests'' pass count with zero skipped.
+- `yarn jest stores/__tests__ shared/__tests__` green (the scheduler change is Kotlin-only; no JS suite reads it).
+- Device, English one-minute: the trio ink center sits within 20px of the rendered hero half''s center, with the half''s slack symmetric within 20px.
+- Device, Arabic one-minute: the same bounds on the mirrored half, with the list on the left holding its rows inside the list half.
+- Device, the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than either half''s own slack; no dead band past 30px sits at either content edge.
+- Device, English long label: hero left, list right, the same shape the ticked state shows today.
+- `adb logcat -s ReactNativeJS` shows the snapshot push line at staging time; the vision numbers are transcribed into the ticket comment.
+- The 3T atlas carries any new tap coordinates the language flip needed.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 18432, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:52:39.376043+00', '2026-10-19 22:07:45.040208+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (20, 1, NULL, 'T-116', '# T-116
+
+## Goal
+
+Apple requires iPhone Duo readiness from April 2027. This row''s earlier life proved the existing adaptive layout renders the Duo with zero Duo code on iOS 27.0. What is wrong today: the requirement is named only in the memory of that close, and current uat (2.1.19) is unverified on the iOS 27.1 Duo simulator. True when done: Apple''s iOS 27 / SDK 58 Duo requirements are named from Apple''s own skills and docs with every hard requirement beyond running recorded; the app at current uat shows one centred schedule in each pose on the iPhone Duo simulator (iOS 27.1); one Duo screenshot is attached to this row; the branch carries zero Duo-specific layout code; every other form factor is unchanged.
+
+## Decisions taken
+
+- 2026-10-19 The research base is four official artifacts: Apple''s news post of 2026-10-05 (developer.apple.com/news/?id=kkphp5qo), the prepare page (developer.apple.com/iphone-duo/prepare/), Tech Talks 111461 and 111463, and the App Resizability skill exported from this machine''s Xcode 27.1 with `xcrun agent skills export`. Why: the ticket names official skills and docs; these are Apple''s own words, and the export works here (Xcode 27.1, Build 27A9275, verified 2026-10-19).
+- 2026-10-19 The one hard requirement beyond running: from April 2027 any app or game submitted needs iPhone Duo screenshots in App Store Connect (news post, closing paragraph). Everything else in the material is optimization guidance phrased can, consider, should. Why: that sentence is the only imperative with a deadline in Apple''s Duo material.
+- 2026-10-19 Zero Duo code stands. No official source mandates a Duo-specific layout; Apple''s own description of a non-adapting app on the open Duo is a window centred in the display with empty space around it, which is the owner''s sanctioned rendering. The portrait lock holds: "iPhone Duo respects your supported interface orientations, but your app will scale on the inner display" and "iPhone Duo will continue to honor the UIRequiresFullScreen key" (Tech Talk 111461).
+- 2026-10-19 The attached screenshot is the open pose. Why: it is the one image that shows the claim under verification, the centred schedule in the portrait window on the inner display; the closed pose renders like any iPhone.
+- 2026-10-19 The device step builds locally from the branch with \`npx expo run:ios -d <SIMULATOR_UDID> --configuration Release\` and targets the Duo by udid (committed text uses the SIMULATOR_UDID placeholder). Why: two simulators are booted (an iPhone 18 Pro on 27.0 beside the Duo on 27.1), so a bare destination hits the wrong one; the branch differs from uat only in version files and board records, so the built app is uat''s code. A local build serves the mock API; the verification reads layout, not times, so the mock is not a confound.
+- 2026-10-19 Apple''s three pattern families are answered by reads recorded on this row, not by code: `UIScreen` has zero hits in ios/ outside Pods; every JS geometry consumer reads the live window through hooks/useWindowDimensions.ts (RN''s live hook; the launch-memoized version was the exact anti-pattern Apple names and its own history note records the fix); no userInterfaceIdiom, interfaceOrientation, statusBarOrientation, isPad or isTablet layout branch exists in the app''s source (greps run 2026-10-19, zero hits). Why: the patterns are absent, so the skill''s scan has nothing to force and no change follows.
+
+## Files
+
+Read:
+- app/Screen.tsx and shared/constants.ts (SIZE.contentMaxWidth = 500): the centred adaptive layout under verification.
+- hooks/useWindowDimensions.ts: the live window-size hook every geometry consumer uses.
+- app.json (orientation portrait) and plugins/portraitOnlyIpad.js: the orientation lock Apple honors.
+- e2e/README.md: the Gotchas, read before any measurement.
+- The App Resizability skill exported to a scratch directory outside the repository.
+- Apple''s artifacts named in Decisions, fetched and cited by URL.
+
+Changed:
+- package.json and app.json: the version bump, patch, on every step commit.
+- board/snapshot/board.sql: the row''s records regenerated per step commit.
+- android/app/build.gradle is bumped on disk to the same version (the three-file rule) but never appears in a diff: the android/ and ios/ trees are gitignored and untracked, so prebuild''s outputs live outside git. The branch diff therefore names exactly package.json, app.json and board/snapshot/board.sql.
+- No code file changes. A step that seems to need one is a stop, not an edit.
+
+## Design
+
+The deliverable is an evidence record, not a change. The app''s answer to the Duo is built: one schedule, centred, capped at 500pt through Screen.tsx''s maxWidth and alignSelf center, riding the live window size. Apple''s material carries the three things this row names: apps run on Duo whatever their SDK; a portrait-locked app scales into a window on the inner display rather than rotating; the only dated obligation is App Store screenshots from April 2027. The verification re-runs the prior close''s protocol on iOS 27.1 at current uat: both poses, both schedules, the fold transition.
+
+Alternatives rejected:
+- Any Duo-branched layout, a second schedule, a centre settings button, a centre-anchored sheet: the owner rejected these twice (2026-10-18, 2026-10-19) and no Apple requirement forces them; Apple''s default for non-adapting apps is the centred window this app already renders.
+- Landscape support to fill the open panel: it turns rotation on for every iPhone and iPad; the owner excluded it at the prior close and nothing in Apple''s material makes it an obligation.
+- Findings recorded in a repository MD file: the records rule keeps the row''s records on the board (this doc, the ticket''s comments, the snapshot), and code is the documentation.
+
+## Steps
+
+1. Step 1: Apple''s requirements named and recorded (docs, 1 point). Export the App Resizability skill to a scratch directory outside the repository, read it, fetch the four official artifacts, re-run the three pattern reads, then write the Requirements section into this doc: each requirement, its source URL or export path, and the one hard requirement beyond running quoted verbatim. One commit: version bump plus the snapshot carrying this doc''s new section.
+2. Step 2: both poses verified on the iPhone Duo simulator (device, 3 points). Build from the branch with \`npx expo run:ios -d <SIMULATOR_UDID> --configuration Release\` (Release makes the installed app self-contained, so pose driving never depends on a live Metro), then: closed pose, one schedule filling the outer display; open pose, one schedule in the centred portrait window; both schedules reachable; the fold transition keeps the app alive and the overlay reachable; one open-pose screenshot attached to this row from scratch outside the worktree; every reading transcribed into the ticket comment. One commit: version bump plus the snapshot. This step runs alone in a fresh executor session.
+3. Step 3: the row''s records closed (docs, 1 point). Read the branch diff and record that it names no layout file, so every other form factor is unchanged by construction; tick the subtasks; regenerate the snapshot. One commit: version bump plus the snapshot.
+
+## Risks
+
+- iOS 27.1 grants a window materially different from the prior close''s 469x669, or the 27.1 SDK''s full-display behavior pulls the rendering away from the owner''s sanctioned centred schedule. What shows it: the open-pose reading. If the schedule is not centred, is clipped, or splits: stop and table it for the owner; no code is written to chase it.
+- The skill export scans Xcode-agent conventions and names nothing applicable to a React Native tree. Acceptable: the prepare page''s own pattern list is the authority, the reads answer it, and the export attempt and its output are recorded.
+- The Duo simulator reboots or another session takes it. The step re-reads the simctl device list first and drives poses through the agent-device fold command.
+- A screenshot or recording lands in the worktree. The screenshot is written to scratch outside the worktree and attached from there; git status before every commit shows no image file.
+
+## Proof
+
+- Requirements named: this doc''s Requirements section carries each requirement with its source URL or the skill export path, and the one hard requirement beyond running quoted verbatim.
+- Both poses verified: the Step 2 ticket comment transcribes the closed-pose and open-pose readings (window grant, schedule centring, both schedules, fold liveness) taken on the iPhone Duo simulator at iOS 27.1.
+- Screenshot attached, never committed: view_issue_images on this row shows it; `git diff --stat uat..lane/116` lists no image path.
+- Zero Duo code: `git diff --name-only uat..lane/116` lists only package.json, app.json, android/app/build.gradle and board/snapshot/board.sql.
+- Every other form factor unchanged: the same diff read names no layout file, and `yarn validate` is green at every step commit.
+
+
+## Requirements
+
+Sources read 2026-10-19: the news post (developer.apple.com/news/?id=kkphp5qo), the prepare page (developer.apple.com/iphone-duo/prepare/), Tech Talks 111461 and 111463 (developer.apple.com/videos/play/tech-talks/111461/ and .../111463/), and the App Resizability skill exported from this machine''s Xcode 27.1 (Build 27A9275) into a scratch directory outside the repository with `xcrun agent skills export --output-dir <scratch>/duo-skills`: app-resizability/SKILL.md and references/uiscreen-task.md, orientation-task.md, idiom-task.md, safe-area-task.md, scene-lifecycle-task.md.
+
+### The one hard requirement beyond running
+
+News post, closing paragraph, verbatim: "Starting April 2027, any apps or games submitted will need to include screenshots for iPhone Duo." It is the only dated imperative in Apple''s Duo material. Everything else below is guidance phrased can, consider, or should.
+
+### The statements that sanction this app''s shape
+
+Verbatim, Tech Talks 111461:
+
+- "iPhone Duo respects your supported interface orientations, but your app will scale on the inner display, including in Split View multitasking."
+- "iPhone Duo will continue to honor the UIRequiresFullScreen key, but your app will still resize when someone opens or closes their iPhone Duo."
+
+Prepare page, the iOS 26 SDK paragraph, on a non-adapting app on the open Duo: "your app will appear in the center of the display, with empty space surrounding the window". A centred window is Apple''s own rendering for an app that does not adapt, which is the owner''s sanctioned shape.
+
+### The SDK ladder (prepare page, Before you begin)
+
+- iOS 26 SDK or earlier: runs on the Duo, does not adapt; open pose shows the centred window with empty space around it.
+- iOS 27 SDK: resizes to fill most of the inner display, still avoiding the status bar on the right edge.
+- iOS 27.1 SDK or later: optimized; extends to the full display with toolbars and tab bars laying out vertically below the status bar, and content must adapt to the bars becoming vertical before shipping.
+
+The local build uses Xcode 27.1 (SDK 58). The portrait lock means the inner display renders the scaled window the Tech Talk names, not the full-display layout, so the vertical-bars caveat describes a shape this app does not take.
+
+### Requirements and guidance that bear on this app
+
+- Every app runs on iPhone Duo whatever its SDK (prepare page; Tech Talks 111461: "Your app will work on iPhone Duo even if you haven''t built it with the iOS 27 SDK"). Recompiling with Xcode 27.1 adds development support (news post); the local build already runs Xcode 27.1.
+- The skill''s Prerequisites (app-resizability/SKILL.md), read against the generated Info.plist at the same commit: launch screen satisfied (UILaunchStoryboardName present; absent means the ITMS-90870 upload rejection, TN3208); scene lifecycle satisfied (UIApplicationSceneManifest plus SceneDelegate.swift in the Expo-generated shell; scene-lifecycle-task.md records scene lifecycle as required of iOS 27 SDK builds); the portrait-only declarations for iPhone and iPad and UIRequiresFullScreen=true are exactly the lock the Tech Talk says the Duo honors. SKILL.md, writing about iOS 27 generally, says the platform ignores UIRequiresFullScreen and resizes the scene anyway (TN3192), and its rule is to change no key unilaterally; the Duo-specific statement governs the Duo. No key changes.
+- The skill''s five scan tasks (UIScreen.main, orientation-based layout, idiom checks, symmetric safe-area assumptions, application lifecycle) cover the three pattern families the prepare page''s Step 2 names for manual review. The reads below answer each family against this tree.
+- Tech Talks 111463 is optimization guidance throughout: displacement patterns, reserved regions (division for the fold, occlusion for the camera), ArrangementView. Its close is phrased "Audit your app''s centered layouts and consider whether a two-column layout or a displacement pattern fits". Nothing there obliges the two-schedule or per-panel layouts the owner rejected.
+- Store surface, not code (news post): updated screenshot and app preview specifications, the App Store Connect preview tool for Duo assets, and a product-page badge when Duo screenshots are submitted. The April 2027 screenshot requirement lands here.
+
+### The three pattern reads, 2026-10-19 at 2.1.19 (commit 2d6e7631)
+
+(a) `grep -rn "UIScreen" ios --include="*.swift" --include="*.m"` excluding Pods: zero hits. This worktree carries no ios/ tree (gitignored, not prebuilt here), so the read ran against the generated tree at the same commit in the main checkout: 18 Swift files outside Pods (the Athan shell, SceneDelegate, the widget targets), zero hits for UIScreen case-insensitive with headers included.
+
+(b) Direct `Dimensions.get(` across app/ components/ hooks/ shared/ stores/ device/ modules/ plugins/ widgets/: zero in production code. The three hits are test files asserting against the mocked window (components/sheets/screens/__tests__/Qibla.test.tsx, components/overlay/__tests__/VeilBackdrop.test.tsx, components/overlay/__tests__/Overlay.test.tsx). Every production geometry consumer imports hooks/useWindowDimensions.ts, one line re-exporting RN''s live hook, whose in-file history note records that the launch-memoized version was removed because it froze absolute-geometry consumers on resizable windows. That memoized version was the prepare page''s named anti-pattern ("Reading the size once at launch or in `viewIsAppearing` isn''t enough, because a fold can resize your app in the middle of a session"), already fixed.
+
+(c) `grep -rniE "userInterfaceIdiom|interfaceOrientation|statusBarOrientation|isPad|isTablet"` over the same dirs: zero layout branches. The only hits are the declaration strings in plugins/portraitOnlyIpad.js (UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown) writing UISupportedInterfaceOrientations~ipad: the supported-orientations lock the Tech Talk says the Duo respects, not a branch reading current orientation or device class.
+
+Zero hits across all three families means the skill''s scan has nothing to find, and zero Duo-specific code follows.', NULL, NULL, '{}', false, false, false, NULL, NULL, 19456, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.645252+00', '2026-10-19 22:25:17.880657+00');
 
 
 --
@@ -11303,6 +11638,8 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (16, 240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 14:07:17.14174+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (17, 254, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:36:15.971871+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (18, 11, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:37:22.203273+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (19, 241, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:52:39.417206+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (20, 33, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.677838+00');
 
 
 --
@@ -15155,7 +15492,87 @@ Alternatives rejected:
 - `yarn validate` green.
 - The diff shows the fallback block''s comment naming rows 83/85/102, row 88 and D44/D79, with the literal''s bytes unchanged and both schema versions still 8 and 4.
 ', NULL, 'file-text', '{}', false, false, false, NULL, 17408, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:42:55.260652+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (47, 17, 3, NULL, 'T-254 iPhone qibla stuck on the wave until the location permission is toggled', '# T-254: the iPhone''s dead heading streams after an install-over, and the permission cycle that revived them
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (49, 19, 1, NULL, 'T-241 Android widget countdown: centers in its own space under Arabic', '# T-241 Android widget countdown: centers in its own space under Arabic
+
+## Goal
+
+What is wrong today: the medium Android widget computes its two halves from a granted width that nothing ever stamps. `PrayerWidgetAndroidProps.grantedWidthDp` is read by the layout (`widgets/PrayerWidget.tsx`) and written by no code path in the app or in expo-widgets 58.0.20, so every render falls back to the declared 310dp minimum while the launcher grants about 370dp on the 3T. The card art stretches to the real grant; the content arithmetic does not. Under the LTR face the list half is a fill that resolves to the true remainder, so the hero hugs the card''s start at 142dp while the list hugs the end: a dead band in the middle. Under the RTL face both halves are pinned at fallback widths (the D135.13 fix), so the pair hugs the card''s start edge and the countdown centers inside a 142dp half that sits left of the visible right half. A one-group label ("1m") is 87px of ink centered in a misplaced half, which reads as "not centered in its own space"; a two-group label ("7h 50m") spans most of the half and hides the offset. The label length reveals the defect; it does not cause it.
+
+What is true when this is done: the render-time granted width reaches the layout through the widget environment, the medium halves split the real inner width, the countdown centers in its own half at every label length in both directions, and the English face keeps its composition with extents trued to the grant.
+
+Measured on the 3T 2026-10-19 21:37-21:40 BST (mock 2.1.7, Arabic face, one-minute state, vision-measured from screencap, 1080x1920 at 420dpi):
+- Card art spans x 54..1026 (370dp); content starts at x 88 (the 13dp pad).
+- The active pill spans x 88..441 (134.5dp) which equals the fallback arithmetic exactly (LIST_WIDTH 142dp minus PILL_LEAD 7dp); at the real grant it would span to x 539.
+- The trio''s ink (name, "1m", time) spans x 602..690, center 647.0, which equals the fallback hero half''s center ([461..834] -> 647.5); the card''s visible right half centers at 783.
+- 336px of pure white sit between the trio''s ink and the card''s right edge.
+
+## Decisions taken
+
+- 2026-10-19 D1 Root cause: the medium''s width arithmetic reads a snapshot field that no code writes; the fallback 310dp renders inside a 370dp grant. Evidence: the pill and trio measurements above match fallback arithmetic to the pixel, and a grep of the app and expo-widgets 58.0.20 finds no writer of `grantedWidthDp`.
+- 2026-10-19 D2 The grant rides the widget environment, not the snapshot. Glance calls `ExpoWidgetsPeekWidget.provideRoot(context, id, options, size)` per render (`SizeMode.Exact`) with the exact `DpSize`; the environment map built beside it flows verbatim to the JS layout (`bundle/index.ts` strips only `timestamp` and `materialColors`). One Kotlin hunk in the existing `patches/expo-widgets+58.0.20.patch` adds `"grantedWidthDp" to <the exact size width>` to that map. No C++ change, no JSI change.
+- 2026-10-19 D3 If the 3T''s `size.width` disagrees with the measured art extent (370dp) at verification, the same hunk switches to `OPTION_APPWIDGET_MAX_WIDTH` from the `options` bundle in the same function. One line, same patch.
+- 2026-10-19 D4 The dead snapshot field is deleted from `PrayerWidgetAndroidProps` rather than kept as a second source. Nothing writes it, so no stored snapshot carries it and the snapshot schema version does not move.
+- 2026-10-19 D5 "The English face stays unchanged in its long-countdown shape" is read as composition and proportions, not absolute dp: the halves grow from the fallback 142dp to the grant-true 172dp at a 370dp grant, which moves the trio''s center about 15dp start-ward of today. The owner''s report itself requires the halves to center, which no fallback-width layout can do. The execution comment states this shift in plain words.
+- 2026-10-19 D6 The device proof uses the mock build (build-mock.zsh). The build links the main checkout''s node_modules whenever yarn.lock matches, so the patched library reaches the APK only after the updated patch is applied to the main checkout''s node_modules; the step applies it with patch-package and verifies the applied file by grep before building.
+- 2026-10-19 D7 The one-minute state is staged by the evening mock window (Maghrib on the next minute boundary after a cold launch) and the Arabic face by the app''s language setting. The countdown target never reads the real clock in tests.
+
+## Files
+
+- `patches/expo-widgets+58.0.20.patch` - one new hunk: `ExpoWidgetsPeekWidget.provideRoot` adds the exact granted width to the widget environment map.
+- `node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt` - the patch regeneration source; regenerated via patch-package; applied to the main checkout''s node_modules for the device build; never committed.
+- `widgets/PrayerWidget.tsx` - `androidRender` reads the granted width from the environment (closure over the layout''s second parameter) with the 310dp declared minimum as the absent-field fallback; the snapshot read goes away.
+- `shared/widgetTypes.ts` - `grantedWidthDp` deleted from `PrayerWidgetAndroidProps` with its doc comment.
+- `shared/__tests__/widgetRenderer.test.ts` - red-first tests for the environment source and the fallback; the medium fixtures that pass `grantedWidthDp` in props move it into the environment.
+- `e2e/device-atlas-oneplus3t.md` - write-back of any new measured coordinate (language setting taps), per the atlas rule.
+- `package.json`, `app.json`, `android/app/build.gradle` - patch version bumps, once per commit.
+
+## Design
+
+The emitter: `provideRoot` already receives `size: DpSize`. The hunk changes the environment build line to `val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())`. The press path (`WidgetInteractionAction`) builds its own environment without size and evaluates no render, so it is untouched.
+
+The consumer: `AthanHomeWidget` closes over `environment`. `androidRender` replaces the snapshot read with:
+
+```
+const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+const grantedWidth = typeof environmentWidth === ''number'' && environmentWidth > 0 ? Math.floor(environmentWidth) : ANDROID_MEDIUM_MIN_WIDTH;
+```
+
+Everything downstream (HERO_WIDTH, LIST_WIDTH, row scaling) is unchanged arithmetic on a trued input. The closure law holds: the environment is a parameter, not an import. The small composition, the stale and neutral cards, the lock widgets and the whole iOS path read no width and change not at all.
+
+The invariant: one width source per render, delivered by the platform that measured it. The snapshot stays pure data (JSON-only props with the schema version and the null-props guard); the grant is environmental truth like colorScheme.
+
+Alternatives rejected:
+- Fill- or weight-based halves: the converter drops fillMaxWidth''s fraction and ignores weight (repo-measured on the X8 and 3T); a 50/50 split of an unknown width is unreachable.
+- Centering the fixed pair with the outer Row''s alignment: the pair spans only 284dp of a 344dp inner width at the 3T grant; each half would sit half the dead band off center, which fails the acceptance at one-minute labels.
+- Stamping the grant into the snapshot at push time: the app process has no API to read another component''s widget options, and a pushed grant would go stale on resize.
+- An onAppWidgetOptionsChanged re-push patch: the widget process holds no prayer data and no app JS runtime; it can only re-render the same fallback-sized snapshot.
+
+## Steps
+
+1. Step 1: The granted width rides the widget environment (code, 2 points). Red renderer tests first: the medium halves derive from `environment.grantedWidthDp` (a 370dp environment yields 172dp hero and list boxes), the absent field renders byte-identical to today''s no-grant tree, and a legacy snapshot key named grantedWidthDp is ignored. Then the patch hunk, the layout read, the type deletion, the fixture move. `yarn validate` green. One commit, patch version bump.
+2. Step 2: Proof on the 3T at one minute, both languages (device, 3 points). Apply the updated patch to the main checkout''s node_modules and verify the applied Kotlin by grep. Build the mock from the branch (build mutex, aapt2 badging gate), install, stage the one-minute state in English and Arabic by the evening mock window and the app''s language setting, and measure by screencap with the vision reader: the trio''s ink center within 20px of its rendered half''s center in both languages, no dead band past 30px at either content edge, the English long-countdown face holding its hero-left/list-right shape. Transcribe the numbers into the ticket; never commit a screenshot. Write new coordinates back to the 3T atlas. One commit (atlas and any test-fixture residue), patch version bump.
+
+Story points: 2 + 3 = 5.
+
+## Risks
+
+- The fork''s `size` for SizeMode.Exact misreports the 3T grant: the verification measures the rendered halves against the art extent; a mismatch triggers D3 (options-bundle source) inside the same hunk and a re-run of the device step.
+- The patched library misses the APK because the build linked an unpatched node_modules: the step greps the applied file in the main checkout before building and greps the patch-file hash into the build log.
+- Glance re-renders per size on resize: intended. The environment delivers the new width per render; the D135.13 pinned-wrapper structure is width-agnostic.
+- The English long-countdown face shifts about 15dp: accepted at D5 and stated to the owner; the alternative (keeping fallback extents) fails the ticket''s own acceptance.
+- The Arabic face changes most (the dead band disappears and the list''s row scaling grows with the grant): that is the ticket''s goal, not a side effect.
+
+## Proof
+
+- `yarn validate` exits 0 (tsc, biome, jest with coverage).
+- `yarn jest shared/__tests__/widgetRenderer.test.ts -t "granted"` prints the new tests'' pass count with zero skipped.
+- Device, English one-minute: the trio ink center sits within 20px of the rendered hero half''s center; the half itself spans from the content start to the content midpoint.
+- Device, Arabic one-minute: the same bound on the mirrored half, with the list on the left holding its rows within the list half.
+- Device, English long label: hero left, list right, the mid-card gap no wider than the row gutters.
+- `adb logcat -s ReactNativeJS` shows the snapshot push line at staging time; the vision numbers are transcribed into the ticket comment.
+- The 3T atlas carries any new tap coordinates the language flip needed.
+', NULL, NULL, '{}', false, false, false, NULL, 18432, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:52:39.376043+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (47, 17, 4, NULL, 'T-254 iPhone qibla stuck on the wave until the location permission is toggled', '# T-254: the iPhone''s dead heading streams after an install-over, and the permission cycle that revived them
 
 ## Goal
 
@@ -15183,7 +15600,7 @@ Read, none changed:
 - node_modules/expo-location (ios LocationModule.swift, ios Providers/DeviceHeadingStreamer.swift, build/Location.js): how the heading watch reports failure and where the report stops. Read-only.
 
 Changed:
-- package.json, app.json, android/app/build.gradle: the version bump, together, one patch.
+- package.json, app.json, android/app/build.gradle: the version bump, together, one patch. Git tracks the first two; the android gradle file is prebuild-generated from app.json and follows at the next build, and no build ran in this row.
 - board/snapshot/board.sql: the snapshot at close.
 
 ## Design
@@ -15211,7 +15628,7 @@ Alternatives rejected:
 
 - The mechanism named: the ticket''s records carry the starved streams and the state the toggle reset, each claim tied to the file and line that shows it.
 - The ruling tabled: a comment carries the detection ruling and the recovery ruling, each with its challenge answered, marked agent-ruled.
-- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the three version files and board/snapshot/board.sql.
+- No compass logic change: `git diff uat..lane/254 -- hooks/ device/ modules/ shared/ components/ patches/` is empty; the diff touches only the two tracked version files and board/snapshot/board.sql.
 
 ## Findings
 
@@ -15234,7 +15651,343 @@ Detection: YES, the app can tell this state apart. The signature it already hold
 Recovery: NO, the app cannot clear the state itself. Every open already builds fresh managers (a new streamer per watch; startHeadingAccuracy stops the old streamer and builds a new one), and many opens never recovered it, so the dead state sits above the manager, in the system. Apple documents a stop-and-start cycle as re-issuing an initial event only where delivery already works. Re-requesting authorization is a no-op once granted. No public API resets the system''s record; the resets are the user''s acts: the permission cycle in Settings (what worked), Reset Location and Privacy, or a restart. Challenge answered: listening for the authorization-change callback while the sheet is open would catch a mid-visit toggle, but that changes the moment of recovery, not the state, and the sheet already re-arms on every open, which is the owner''s actual path. The app''s whole move is to detect the signature and offer its existing Settings route with words naming the cycle; that is a qibla-sheet behaviour and copy change on locked ground.
 
 Tabled to the owner, both agent-ruled as buildable and both waiting on the owner''s order because qibla is locked: (a) build the detection, an errorHandler on the heading watch and a didFailWithError on the accuracy streamer, reporting the zero-events-with-grant signature as its own state; (b) for that state, offer the Settings route with words naming the permission cycle.
-', NULL, NULL, '{}', false, false, false, NULL, 16384, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:46:19.162932+00');
+', NULL, NULL, '{}', false, false, false, NULL, 16384, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:54:25.440499+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (50, 19, 2, NULL, 'T-241 Android widget countdown: centers in its own space under Arabic', '# T-241 Android widget countdown: centers in its own space under Arabic
+
+## Goal
+
+What is wrong today: the medium Android widget''s halves are computed from `grantedWidthDp`, a stamp that lives in the stored widget props. The native minute tick (`modules/widgetrefresh/.../WidgetRefreshScheduler.patchCompositionSize`) writes it from OPTION_APPWIDGET_MIN_WIDTH, but every JS push (`updateSnapshot` from `stores/widget.ts`) rewrites the stored props WITHOUT the key, wiping the stamp. From that moment until the next tick re-stamps it, every render falls back to the declared 310dp minimum while the launcher grants about 370dp on the 3T. The card art stretches to the real grant; the content arithmetic does not. Under the LTR face the list half is a fill that resolves to the true remainder, so the hero hugs the card''s start at 142dp while the list hugs the end: a dead band in the middle. Under the RTL face both halves are pinned at fallback widths (the D135.13 fix), so the pair hugs the card''s start edge and the countdown centers inside a 142dp half that sits left of the visible right half. The window opens after every app launch, settings change, widget placement, and every prayer boundary (the flip chain re-pushes when a target passes), so the face breaks for up to a minute after each of those. A one-group label ("1m") is 87px of ink centered in a misplaced half, which reads as "not centered in its own space"; a two-group label ("7h 50m") spans most of the half and hides the offset. The label length reveals the defect; it does not cause it.
+
+What is true when this is done: the render-time granted width reaches the layout through the widget environment, which no push can wipe; the medium halves split the real inner width at every render; the countdown centers in its own half at every label length in both directions; and the English face keeps its composition with extents trued to the grant.
+
+Measured on the 3T 2026-10-19 21:37-21:59 BST (mock 2.1.7, Arabic face, vision-measured from screencap, 1080x1920 at 420dpi):
+- Push state (21:37:27 push, captured 21:37:47, one-minute label): card art x 54..1026 (370dp), content starts x 88. The active pill spans x 88..441 (134.5dp), which equals the fallback arithmetic exactly (LIST_WIDTH 142dp minus PILL_LEAD 7dp). The trio''s ink (name, "1m", time) spans x 602..690, center 647.0, which equals the fallback hero half''s center ([461..834] -> 647.5); the card''s visible right half centers at 783. 336px of pure card-colour sit between the trio''s ink and the card''s right edge.
+- Ticked state (same widget, 20 minutes after that push, day rolled to the real schedule, "6h 4m" label): the pill spans x 88..504, which equals the stamped 370dp arithmetic exactly (LIST_WIDTH 172dp minus PILL_LEAD 14dp = 159dp = 417px). The trio''s ink spans x 667..861, center 764.0, against its rendered half''s center 765.25: centered within 2px. The halves'' slack is symmetric (leading 127px, trailing 130px). The 3T''s OPTION_APPWIDGET_MIN_WIDTH therefore reports the true 370dp grant, and the fallback renders are the push-wipe window, not lying options.
+
+## Decisions taken
+
+- 2026-10-19 D1 Root cause (revised after the griller found the writer and the ticked-state measurement separated the candidates): the JS push wipes the tick''s grantedWidthDp stamp from the stored props, and renders between the wipe and the next tick compute at the 310dp fallback. The ticked state measured on the 3T renders centered at 370dp, which proves the stamp mechanism works and the options tell the truth; the defect is the wipe window, which opens after every push.
+- 2026-10-19 D2 The grant rides the widget environment, not the stored props. Glance calls `ExpoWidgetsPeekWidget.provideRoot(context, id, options, size)` per render (`SizeMode.Exact`) with the exact `DpSize`; the environment map built beside it flows verbatim to the JS layout (`bundle/index.ts` strips only `timestamp` and `materialColors`). One Kotlin hunk in the existing `patches/expo-widgets+58.0.20.patch` adds the exact size width to that map. No push can wipe an environment value, so the post-push and post-boundary windows close with the same change. No C++ change, no JSI change.
+- 2026-10-19 D3 If the 3T''s `size.width` disagrees with the measured art extent (370dp) at verification, the same hunk switches to `OPTION_APPWIDGET_MIN_WIDTH` from the `options` bundle in the same function (the value the tick already proves correct on this launcher). One line, same patch. De-risked by the ticked-state measurement.
+- 2026-10-19 D4 The dead snapshot field is deleted from `PrayerWidgetAndroidProps`, and the scheduler''s width stamp goes with it: `WidgetRefreshScheduler.patchCompositionSize` keeps its composition-size stamp and its size gate, drops the `grantedWidthDp` write and the width half of its write-gate, and its GRANTED_WIDTH_KEY constant and comment are removed. Nothing else reads the key after this change; no stored snapshot from a released build carries it written by the JS side, and the native stamp becomes unread bytes that the next push overwrites anyway.
+- 2026-10-19 D5 "The English face stays unchanged in its long-countdown shape" is read as composition and proportions, not absolute dp: at a 370dp grant the fallback 142dp halves grow to the grant-true 172dp, which moves the trio''s center about 15dp. The owner''s report itself requires the halves to center, which no fallback-width layout can do. The execution comment states this shift in plain words.
+- 2026-10-19 D6 The device proof uses the mock build (build-mock.zsh). The build links the main checkout''s node_modules whenever yarn.lock matches, so the patched library reaches the APK only after the updated patch is applied to the main checkout''s node_modules; the step applies it with patch-package and verifies the applied file by grep before building.
+- 2026-10-19 D7 The one-minute state is staged by the evening mock window (Maghrib on the next minute boundary after a cold launch) and the Arabic face by the app''s language setting. The countdown target never reads the real clock in tests.
+- 2026-10-19 D8 The press path re-renders internally at the fallback width (`__expoWidgetHandlePress` calls `__expoWidgetRender` with a sizeless environment) but its render output is discarded; only the handler walk reads it. Left as is and documented here, because the medium card carries no JS press handler and threading a size into the press environment buys nothing visible.
+
+## Files
+
+- `patches/expo-widgets+58.0.20.patch` - one new hunk: `ExpoWidgetsPeekWidget.provideRoot` adds the exact granted width to the widget environment map.
+- `node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt` - the patch regeneration source; regenerated via patch-package; applied to the main checkout''s node_modules for the device build; never committed.
+- `modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh/WidgetRefreshScheduler.kt` - drop the grantedWidthDp stamp, its constant and the width half of the write-gate; keep the composition-size stamp and its gate; comments updated.
+- `widgets/PrayerWidget.tsx` - `androidRender` reads the granted width from the environment (closure over the layout''s second parameter) with the 310dp declared minimum as the absent-field fallback; the snapshot read goes away.
+- `shared/widgetTypes.ts` - `grantedWidthDp` deleted from `PrayerWidgetAndroidProps` with its doc comment.
+- `shared/__tests__/widgetRenderer.test.ts` - red-first tests for the environment source and the fallback; the medium fixtures that pass `grantedWidthDp` in props move it into the environment.
+- `e2e/device-atlas-oneplus3t.md` - write-back of any new measured coordinate (language setting taps), per the atlas rule.
+- `package.json`, `app.json`, `android/app/build.gradle` - patch version bumps, once per commit.
+
+## Design
+
+The emitter: `provideRoot` already receives `size: DpSize`. The hunk changes the environment build line to `val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())`. The press path (`WidgetInteractionAction`) builds its own environment without size; its internal render''s output is discarded and only the handler walk reads it (D8), so it is untouched.
+
+The consumer: `AthanHomeWidget` closes over `environment`. `androidRender` replaces the snapshot read with:
+
+```
+const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+const grantedWidth = typeof environmentWidth === ''number'' && environmentWidth > 0 ? Math.floor(environmentWidth) : ANDROID_MEDIUM_MIN_WIDTH;
+```
+
+Everything downstream (HERO_WIDTH, LIST_WIDTH, row scaling) is unchanged arithmetic on a trued input. The closure law holds: the environment is a parameter, not an import. The small composition, the stale and neutral cards, the lock widgets and the whole iOS path read no width and change not at all.
+
+The scheduler: `patchCompositionSize` keeps stamping the composition size (medium above MEDIUM_COMPOSITION_MIN_DP, small below) with its size-equality gate, and stops stamping the width. A re-grant that keeps the composition no longer needs a props rewrite to reach the layout, because the layout reads the width from the environment at every render.
+
+The invariant: one width source per render, delivered by the platform that measured it, unwipeable by data pushes. The snapshot stays pure data (JSON-only props with the schema version and the null-props guard); the grant is environmental truth like colorScheme.
+
+Alternatives rejected:
+- Fill- or weight-based halves: the converter drops fillMaxWidth''s fraction and ignores weight (repo-measured on the X8 and 3T); a 50/50 split of an unknown width is unreachable.
+- Centering the fixed pair with the outer Row''s alignment: the pair spans only 284dp of a 344dp inner width at the 3T grant; each half would sit half the dead band off center, which fails the acceptance at one-minute labels.
+- Keeping the stamp and teaching the JS push to preserve it: the JS push cannot know the grant, and preserving unknown keys means an expo-widgets store-merge patch wider than the environment hunk, while the tick would still lag every push by up to a minute.
+- An onAppWidgetOptionsChanged re-push patch: the widget process holds no prayer data and no app JS runtime; it can only re-render the same stored props.
+
+## Steps
+
+1. Step 1: The granted width rides the widget environment (code, 2 points). Red renderer tests first: the medium halves derive from the environment''s granted width (a 370dp environment yields 172dp hero and list boxes), the absent field renders byte-identical to today''s no-grant tree, and a legacy snapshot key named grantedWidthDp is ignored. Then the patch hunk, the layout read, the type deletion, the scheduler stamp removal, the fixture move. `yarn validate` green. One commit, patch version bump.
+2. Step 2: Proof on the 3T at one minute, both languages (device, 3 points). Apply the updated patch to the main checkout''s node_modules and verify the applied Kotlin by grep. Build the mock from the branch (build mutex, aapt2 badging gate), install, stage the one-minute state in English and Arabic by the evening mock window and the app''s language setting, and measure by screencap with the vision reader: in each language the trio''s ink center within 20px of its rendered half''s center, the slack inside each half symmetric within 20px, and the gap between the list half''s trailing ink and the hero half''s leading ink no wider than the halves'' own slack. The English long-countdown face holds its hero-left, list-right shape. Transcribe the numbers into the ticket; never commit a screenshot. Write new coordinates back to the 3T atlas. One commit (atlas and any test-fixture residue), patch version bump.
+
+Story points: 2 + 3 = 5.
+
+## Risks
+
+- The fork''s `size` for SizeMode.Exact misreports the 3T grant: de-risked by the ticked-state measurement (the options report 370dp and the ticked render centers); if the verification still measures a mismatch, D3 switches the source inside the same hunk.
+- The patched library misses the APK because the build linked an unpatched node_modules: the step greps the applied file in the main checkout before building.
+- Glance re-renders per size on resize: intended. The environment delivers the new width per render; the D135.13 pinned-wrapper structure is width-agnostic.
+- The English long-countdown face shifts about 15dp: accepted at D5 and stated to the owner; the alternative (keeping fallback extents) fails the ticket''s own acceptance.
+- The Arabic face changes most (the dead band disappears and the list''s row scaling grows with the grant): that is the ticket''s goal, not a side effect.
+- The scheduler''s composition-size gate weakens when the width half goes: a composition flip still forces a rewrite (the size equality stays in the gate), and width changes no longer need the props at all.
+
+## Proof
+
+- `yarn validate` exits 0 (tsc, biome, jest with coverage).
+- `yarn jest shared/__tests__/widgetRenderer.test.ts -t "granted"` prints the new tests'' pass count with zero skipped.
+- `yarn jest stores/__tests__ shared/__tests__` green (the scheduler change is Kotlin-only; no JS suite reads it).
+- Device, English one-minute: the trio ink center sits within 20px of the rendered hero half''s center, with the half''s slack symmetric within 20px.
+- Device, Arabic one-minute: the same bounds on the mirrored half, with the list on the left holding its rows inside the list half.
+- Device, the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than either half''s own slack; no dead band past 30px sits at either content edge.
+- Device, English long label: hero left, list right, the same shape the ticked state shows today.
+- `adb logcat -s ReactNativeJS` shows the snapshot push line at staging time; the vision numbers are transcribed into the ticket comment.
+- The 3T atlas carries any new tap coordinates the language flip needed.
+', NULL, NULL, '{}', false, false, false, NULL, 18432, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 21:04:42.45535+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (51, 19, 3, NULL, 'T-241 Android widget countdown: centers in its own space under Arabic', '# T-241 Android widget countdown: centers in its own space under Arabic
+
+## Goal
+
+What is wrong today: the medium Android widget''s halves are computed from `grantedWidthDp`, a stamp that lives in the stored widget props. The native minute tick (`modules/widgetrefresh/.../WidgetRefreshScheduler.patchCompositionSize`) writes it from OPTION_APPWIDGET_MIN_WIDTH, but every JS push (`updateSnapshot` from `stores/widget.ts`) rewrites the stored props WITHOUT the key, wiping the stamp. From that moment until the next tick re-stamps it, every render falls back to the declared 310dp minimum while the launcher grants about 370dp on the 3T. The card art stretches to the real grant; the content arithmetic does not. Under the LTR face the list half is a fill that resolves to the true remainder, so the hero hugs the card''s start at 142dp while the list hugs the end: a dead band in the middle. Under the RTL face both halves are pinned at fallback widths (the D135.13 fix), so the pair hugs the card''s start edge and the countdown centers inside a 142dp half that sits left of the visible right half. The window opens after every app launch, settings change, widget placement, and every prayer boundary (the flip chain re-pushes when a target passes), so the face breaks for up to a minute after each of those. A one-group label ("1m") is 87px of ink centered in a misplaced half, which reads as "not centered in its own space"; a two-group label ("7h 50m") spans most of the half and hides the offset. The label length reveals the defect; it does not cause it.
+
+What is true when this is done: the render-time granted width reaches the layout through the widget environment, which no push can wipe; the medium halves split the real inner width at every render; the countdown centers in its own half at every label length in both directions; and the English face keeps its composition with extents trued to the grant.
+
+Measured on the 3T 2026-10-19 21:37-21:59 BST (mock 2.1.7, Arabic face, vision-measured from screencap, 1080x1920 at 420dpi):
+- Push state (21:37:27 push, captured 21:37:47, one-minute label): card art x 54..1026 (370dp), content starts x 88. The active pill spans x 88..441 (134.5dp), which equals the fallback arithmetic exactly (LIST_WIDTH 142dp minus PILL_LEAD 7dp). The trio''s ink (name, "1m", time) spans x 602..690, center 647.0, which equals the fallback hero half''s center ([461..834] -> 647.5); the card''s visible right half centers at 783. 336px of pure card-colour sit between the trio''s ink and the card''s right edge.
+- Ticked state (same widget, 20 minutes after that push, day rolled to the real schedule, "6h 4m" label): the pill spans x 88..504, which equals the stamped 370dp arithmetic exactly (LIST_WIDTH 172dp minus PILL_LEAD 14dp = 159dp = 417px). The trio''s ink spans x 667..861, center 764.0, against its rendered half''s center 765.25: centered within 2px. The halves'' slack is symmetric (leading 127px, trailing 130px). The 3T''s OPTION_APPWIDGET_MIN_WIDTH therefore reports the true 370dp grant, and the fallback renders are the push-wipe window, not lying options.
+
+## Decisions taken
+
+- 2026-10-19 D1 Root cause (revised after the griller found the writer and the ticked-state measurement separated the candidates): the JS push wipes the tick''s grantedWidthDp stamp from the stored props, and renders between the wipe and the next tick compute at the 310dp fallback. The ticked state measured on the 3T renders centered at 370dp, which proves the stamp mechanism works and the options tell the truth; the defect is the wipe window, which opens after every push.
+- 2026-10-19 D2 The grant rides the widget environment, not the stored props. Glance calls `ExpoWidgetsPeekWidget.provideRoot(context, id, options, size)` per render (`SizeMode.Exact`) with the exact `DpSize`; the environment map built beside it flows verbatim to the JS layout (`bundle/index.ts` strips only `timestamp` and `materialColors`). One Kotlin hunk in the existing `patches/expo-widgets+58.0.20.patch` adds the exact size width to that map. No push can wipe an environment value, so the post-push and post-boundary windows close with the same change. No C++ change, no JSI change.
+- 2026-10-19 D3 If the 3T''s `size.width` disagrees with the measured art extent (370dp) at verification, the same hunk switches to `OPTION_APPWIDGET_MIN_WIDTH` from the `options` bundle in the same function (the value the tick already proves correct on this launcher). One line, same patch. De-risked by the ticked-state measurement.
+- 2026-10-19 D4 The dead snapshot field is deleted from `PrayerWidgetAndroidProps`, and the scheduler''s width stamp goes with it: `WidgetRefreshScheduler.patchCompositionSize` keeps its composition-size stamp and its size gate, drops the `grantedWidthDp` write and the width half of its write-gate, and its GRANTED_WIDTH_KEY constant and comment are removed. Nothing else reads the key after this change; no stored snapshot from a released build carries it written by the JS side, and the native stamp becomes unread bytes that the next push overwrites anyway.
+- 2026-10-19 D5 "The English face stays unchanged in its long-countdown shape" is read as composition and proportions, not absolute dp: at a 370dp grant the fallback 142dp halves grow to the grant-true 172dp, which moves the trio''s center about 15dp. The owner''s report itself requires the halves to center, which no fallback-width layout can do. The execution comment states this shift in plain words.
+- 2026-10-19 D6 The device proof uses the mock build (build-mock.zsh). The build links the main checkout''s node_modules whenever yarn.lock matches, so the patched library reaches the APK only after the updated patch is applied to the main checkout''s node_modules; the step applies it with patch-package and verifies the applied file by grep before building.
+- 2026-10-19 D7 The one-minute state is staged by the evening mock window (Maghrib on the next minute boundary after a cold launch) and the Arabic face by the app''s language setting. The countdown target never reads the real clock in tests.
+- 2026-10-19 D8 The press path re-renders internally at the fallback width (`__expoWidgetHandlePress` calls `__expoWidgetRender` with a sizeless environment) but its render output is discarded; only the handler walk reads it. Left as is and documented here, because the medium card carries no JS press handler and threading a size into the press environment buys nothing visible.
+
+## Files
+
+- `patches/expo-widgets+58.0.20.patch` - one new hunk: `ExpoWidgetsPeekWidget.provideRoot` adds the exact granted width to the widget environment map.
+- `node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt` - the patch regeneration source; regenerated via patch-package; applied to the main checkout''s node_modules for the device build; never committed.
+- `modules/widgetrefresh/android/src/main/java/expo/modules/widgetrefresh/WidgetRefreshScheduler.kt` - drop the grantedWidthDp stamp, its constant and the width half of the write-gate; keep the composition-size stamp and its gate; comments updated.
+- `widgets/PrayerWidget.tsx` - `androidRender` reads the granted width from the environment (closure over the layout''s second parameter) with the 310dp declared minimum as the absent-field fallback; the snapshot read goes away.
+- `shared/widgetTypes.ts` - `grantedWidthDp` deleted from `PrayerWidgetAndroidProps` with its doc comment.
+- `shared/__tests__/widgetRenderer.test.ts` - red-first tests for the environment source and the fallback; the medium fixtures that pass `grantedWidthDp` in props move it into the environment.
+- `shared/__tests__/widgetOpenAppPatch.test.ts` - the patch-shape suite''s header count moves from six to seven with an applied-line pin for the new hunk (added during execution; the audit confirmed it necessary and unlisted here).
+- `android/app/build.gradle` - not a file this change can carry: `/android` is gitignored and prebuild-generated, so its versionName follows app.json at the next prebuild. The bump rule''s third leg is satisfied that way, not by a commit.
+- `e2e/device-atlas-oneplus3t.md` - write-back of any new measured coordinate (language setting taps), per the atlas rule.
+- `package.json`, `app.json`, `android/app/build.gradle` - patch version bumps, once per commit.
+
+## Design
+
+The emitter: `provideRoot` already receives `size: DpSize`. The hunk changes the environment build line to `val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())`. The press path (`WidgetInteractionAction`) builds its own environment without size; its internal render''s output is discarded and only the handler walk reads it (D8), so it is untouched.
+
+The consumer: `AthanHomeWidget` closes over `environment`. `androidRender` replaces the snapshot read with:
+
+```
+const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+const grantedWidth = typeof environmentWidth === ''number'' && environmentWidth > 0 ? Math.floor(environmentWidth) : ANDROID_MEDIUM_MIN_WIDTH;
+```
+
+Everything downstream (HERO_WIDTH, LIST_WIDTH, row scaling) is unchanged arithmetic on a trued input. The closure law holds: the environment is a parameter, not an import. The small composition, the stale and neutral cards, the lock widgets and the whole iOS path read no width and change not at all.
+
+The scheduler: `patchCompositionSize` keeps stamping the composition size (medium above MEDIUM_COMPOSITION_MIN_DP, small below) with its size-equality gate, and stops stamping the width. A re-grant that keeps the composition no longer needs a props rewrite to reach the layout, because the layout reads the width from the environment at every render.
+
+The invariant: one width source per render, delivered by the platform that measured it, unwipeable by data pushes. The snapshot stays pure data (JSON-only props with the schema version and the null-props guard); the grant is environmental truth like colorScheme.
+
+Alternatives rejected:
+- Fill- or weight-based halves: the converter drops fillMaxWidth''s fraction and ignores weight (repo-measured on the X8 and 3T); a 50/50 split of an unknown width is unreachable.
+- Centering the fixed pair with the outer Row''s alignment: the pair spans only 284dp of a 344dp inner width at the 3T grant; each half would sit half the dead band off center, which fails the acceptance at one-minute labels.
+- Keeping the stamp and teaching the JS push to preserve it: the JS push cannot know the grant, and preserving unknown keys means an expo-widgets store-merge patch wider than the environment hunk, while the tick would still lag every push by up to a minute.
+- An onAppWidgetOptionsChanged re-push patch: the widget process holds no prayer data and no app JS runtime; it can only re-render the same stored props.
+
+## Steps
+
+1. Step 1: The granted width rides the widget environment (code, 2 points). Red renderer tests first: the medium halves derive from the environment''s granted width (a 370dp environment yields 172dp hero and list boxes), the absent field renders byte-identical to today''s no-grant tree, and a legacy snapshot key named grantedWidthDp is ignored. Then the patch hunk, the layout read, the type deletion, the scheduler stamp removal, the fixture move. `yarn validate` green. One commit, patch version bump.
+2. Step 2: Proof on the 3T at one minute, both languages (device, 3 points). Apply the updated patch to the main checkout''s node_modules and verify the applied Kotlin by grep. Build the mock from the branch (build mutex, aapt2 badging gate), install, stage the one-minute state in English and Arabic by the evening mock window and the app''s language setting, and measure by screencap with the vision reader: in each language the trio''s ink center within 20px of its rendered half''s center, the slack inside each half symmetric within 20px, and the gap between the list half''s trailing ink and the hero half''s leading ink no wider than the halves'' own slack. The English long-countdown face holds its hero-left, list-right shape. Transcribe the numbers into the ticket; never commit a screenshot. Write new coordinates back to the 3T atlas. One commit (atlas and any test-fixture residue), patch version bump.
+
+Story points: 2 + 3 = 5.
+
+## Risks
+
+- The fork''s `size` for SizeMode.Exact misreports the 3T grant: de-risked by the ticked-state measurement (the options report 370dp and the ticked render centers); if the verification still measures a mismatch, D3 switches the source inside the same hunk.
+- The patched library misses the APK because the build linked an unpatched node_modules: the step greps the applied file in the main checkout before building.
+- Glance re-renders per size on resize: intended. The environment delivers the new width per render; the D135.13 pinned-wrapper structure is width-agnostic.
+- The English long-countdown face shifts about 15dp: accepted at D5 and stated to the owner; the alternative (keeping fallback extents) fails the ticket''s own acceptance.
+- The Arabic face changes most (the dead band disappears and the list''s row scaling grows with the grant): that is the ticket''s goal, not a side effect.
+- The scheduler''s composition-size gate weakens when the width half goes: a composition flip still forces a rewrite (the size equality stays in the gate), and width changes no longer need the props at all.
+
+## Proof
+
+- `yarn validate` exits 0 (tsc, biome, jest with coverage).
+- `yarn jest shared/__tests__/widgetRenderer.test.ts -t "granted"` prints the new tests'' pass count with zero skipped.
+- `yarn jest stores/__tests__ shared/__tests__` green (the scheduler change is Kotlin-only; no JS suite reads it).
+- Device, English one-minute: the trio ink center sits within 20px of the rendered hero half''s center, with the half''s slack symmetric within 20px.
+- Device, Arabic one-minute: the same bounds on the mirrored half, with the list on the left holding its rows inside the list half.
+- Device, the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than either half''s own slack; no dead band past 30px sits at either content edge.
+- Device, English long label: hero left, list right, the same shape the ticked state shows today.
+- `adb logcat -s ReactNativeJS` shows the snapshot push line at staging time; the vision numbers are transcribed into the ticket comment.
+- The 3T atlas carries any new tap coordinates the language flip needed.
+', NULL, NULL, '{}', false, false, false, NULL, 18432, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:07:45.040208+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (52, 20, 1, NULL, 'T-116', '# T-116
+
+## Goal
+
+Apple requires iPhone Duo readiness from April 2027. This row''s earlier life proved the existing adaptive layout renders the Duo with zero Duo code on iOS 27.0. What is wrong today: the requirement is named only in the memory of that close, and current uat (2.1.19) is unverified on the iOS 27.1 Duo simulator. True when done: Apple''s iOS 27 / SDK 58 Duo requirements are named from Apple''s own skills and docs with every hard requirement beyond running recorded; the app at current uat shows one centred schedule in each pose on the iPhone Duo simulator (iOS 27.1); one Duo screenshot is attached to this row; the branch carries zero Duo-specific layout code; every other form factor is unchanged.
+
+## Decisions taken
+
+- 2026-10-19 The research base is four official artifacts: Apple''s news post of 2026-10-05 (developer.apple.com/news/?id=kkphp5qo), the prepare page (developer.apple.com/iphone-duo/prepare/), Tech Talks 111461 and 111463, and the App Resizability skill exported from this machine''s Xcode 27.1 with `xcrun agent skills export`. Why: the ticket names official skills and docs; these are Apple''s own words, and the export works here (Xcode 27.1, Build 27A9275, verified 2026-10-19).
+- 2026-10-19 The one hard requirement beyond running: from April 2027 any app or game submitted needs iPhone Duo screenshots in App Store Connect (news post, closing paragraph). Everything else in the material is optimization guidance phrased can, consider, should. Why: that sentence is the only imperative with a deadline in Apple''s Duo material.
+- 2026-10-19 Zero Duo code stands. No official source mandates a Duo-specific layout; Apple''s own description of a non-adapting app on the open Duo is a window centred in the display with empty space around it, which is the owner''s sanctioned rendering. The portrait lock holds: "iPhone Duo respects your supported interface orientations, but your app will scale on the inner display" and "iPhone Duo will continue to honor the UIRequiresFullScreen key" (Tech Talk 111461).
+- 2026-10-19 The attached screenshot is the open pose. Why: it is the one image that shows the claim under verification, the centred schedule in the portrait window on the inner display; the closed pose renders like any iPhone.
+- 2026-10-19 The device step builds locally from the branch and targets the Duo by udid (committed text uses the SIMULATOR_UDID placeholder). Why: two simulators are booted (an iPhone 18 Pro on 27.0 beside the Duo on 27.1), so a bare destination hits the wrong one; the branch differs from uat only in version files and board records, so the built app is uat''s code. A local build serves the mock API; the verification reads layout, not times, so the mock is not a confound.
+- 2026-10-19 Apple''s three pattern families are answered by reads recorded on this row, not by code: `UIScreen` has zero hits in ios/ outside Pods; every JS geometry consumer reads the live window through hooks/useWindowDimensions.ts (RN''s live hook; the launch-memoized version was the exact anti-pattern Apple names and its own history note records the fix); no userInterfaceIdiom, interfaceOrientation, statusBarOrientation, isPad or isTablet layout branch exists in the app''s source (greps run 2026-10-19, zero hits). Why: the patterns are absent, so the skill''s scan has nothing to force and no change follows.
+
+## Files
+
+Read:
+- app/Screen.tsx and shared/constants.ts (SIZE.contentMaxWidth = 500): the centred adaptive layout under verification.
+- hooks/useWindowDimensions.ts: the live window-size hook every geometry consumer uses.
+- app.json (orientation portrait) and plugins/portraitOnlyIpad.js: the orientation lock Apple honors.
+- e2e/README.md: the Gotchas, read before any measurement.
+- The App Resizability skill exported to a scratch directory outside the repository.
+- Apple''s artifacts named in Decisions, fetched and cited by URL.
+
+Changed:
+- package.json, app.json, android/app/build.gradle: the version bump, patch, on every step commit.
+- board/snapshot/board.sql: the row''s records regenerated per step commit.
+- No code file changes. A step that seems to need one is a stop, not an edit.
+
+## Design
+
+The deliverable is an evidence record, not a change. The app''s answer to the Duo is built: one schedule, centred, capped at 500pt through Screen.tsx''s maxWidth and alignSelf center, riding the live window size. Apple''s material carries the three things this row names: apps run on Duo whatever their SDK; a portrait-locked app scales into a window on the inner display rather than rotating; the only dated obligation is App Store screenshots from April 2027. The verification re-runs the prior close''s protocol on iOS 27.1 at current uat: both poses, both schedules, the fold transition.
+
+Alternatives rejected:
+- Any Duo-branched layout, a second schedule, a centre settings button, a centre-anchored sheet: the owner rejected these twice (2026-10-18, 2026-10-19) and no Apple requirement forces them; Apple''s default for non-adapting apps is the centred window this app already renders.
+- Landscape support to fill the open panel: it turns rotation on for every iPhone and iPad; the owner excluded it at the prior close and nothing in Apple''s material makes it an obligation.
+- Findings recorded in a repository MD file: the records rule keeps the row''s records on the board (this doc, the ticket''s comments, the snapshot), and code is the documentation.
+
+## Steps
+
+1. Step 1: Apple''s requirements named and recorded (docs, 1 point). Export the App Resizability skill to a scratch directory outside the repository, read it, fetch the four official artifacts, re-run the three pattern reads, then write the Requirements section into this doc: each requirement, its source URL or export path, and the one hard requirement beyond running quoted verbatim. One commit: version bump plus the snapshot carrying this doc''s new section.
+2. Step 2: both poses verified on the iPhone Duo simulator (device, 3 points). Build from the branch for the Duo udid, then: closed pose, one schedule filling the outer display; open pose, one schedule in the centred portrait window; both schedules reachable; the fold transition keeps the app alive and the overlay reachable; one open-pose screenshot attached to this row from scratch outside the worktree; every reading transcribed into the ticket comment. One commit: version bump plus the snapshot. This step runs alone in a fresh executor session.
+3. Step 3: the row''s records closed (docs, 1 point). Read the branch diff and record that it names no layout file, so every other form factor is unchanged by construction; tick the subtasks; regenerate the snapshot. One commit: version bump plus the snapshot.
+
+## Risks
+
+- iOS 27.1 grants a window materially different from the prior close''s 469x669, or the 27.1 SDK''s full-display behavior pulls the rendering away from the owner''s sanctioned centred schedule. What shows it: the open-pose reading. If the schedule is not centred, is clipped, or splits: stop and table it for the owner; no code is written to chase it.
+- The skill export scans Xcode-agent conventions and names nothing applicable to a React Native tree. Acceptable: the prepare page''s own pattern list is the authority, the reads answer it, and the export attempt and its output are recorded.
+- The Duo simulator reboots or another session takes it. The step re-reads the simctl device list first and drives poses through the agent-device fold command.
+- A screenshot or recording lands in the worktree. The screenshot is written to scratch outside the worktree and attached from there; git status before every commit shows no image file.
+
+## Proof
+
+- Requirements named: this doc''s Requirements section carries each requirement with its source URL or the skill export path, and the one hard requirement beyond running quoted verbatim.
+- Both poses verified: the Step 2 ticket comment transcribes the closed-pose and open-pose readings (window grant, schedule centring, both schedules, fold liveness) taken on the iPhone Duo simulator at iOS 27.1.
+- Screenshot attached, never committed: view_issue_images on this row shows it; `git diff --stat uat..lane/116` lists no image path.
+- Zero Duo code: `git diff --name-only uat..lane/116` lists only package.json, app.json, android/app/build.gradle and board/snapshot/board.sql.
+- Every other form factor unchanged: the same diff read names no layout file, and `yarn validate` is green at every step commit.
+', NULL, NULL, '{}', false, false, false, NULL, 19456, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.645252+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (53, 20, 3, NULL, 'T-116', '# T-116
+
+## Goal
+
+Apple requires iPhone Duo readiness from April 2027. This row''s earlier life proved the existing adaptive layout renders the Duo with zero Duo code on iOS 27.0. What is wrong today: the requirement is named only in the memory of that close, and current uat (2.1.19) is unverified on the iOS 27.1 Duo simulator. True when done: Apple''s iOS 27 / SDK 58 Duo requirements are named from Apple''s own skills and docs with every hard requirement beyond running recorded; the app at current uat shows one centred schedule in each pose on the iPhone Duo simulator (iOS 27.1); one Duo screenshot is attached to this row; the branch carries zero Duo-specific layout code; every other form factor is unchanged.
+
+## Decisions taken
+
+- 2026-10-19 The research base is four official artifacts: Apple''s news post of 2026-10-05 (developer.apple.com/news/?id=kkphp5qo), the prepare page (developer.apple.com/iphone-duo/prepare/), Tech Talks 111461 and 111463, and the App Resizability skill exported from this machine''s Xcode 27.1 with `xcrun agent skills export`. Why: the ticket names official skills and docs; these are Apple''s own words, and the export works here (Xcode 27.1, Build 27A9275, verified 2026-10-19).
+- 2026-10-19 The one hard requirement beyond running: from April 2027 any app or game submitted needs iPhone Duo screenshots in App Store Connect (news post, closing paragraph). Everything else in the material is optimization guidance phrased can, consider, should. Why: that sentence is the only imperative with a deadline in Apple''s Duo material.
+- 2026-10-19 Zero Duo code stands. No official source mandates a Duo-specific layout; Apple''s own description of a non-adapting app on the open Duo is a window centred in the display with empty space around it, which is the owner''s sanctioned rendering. The portrait lock holds: "iPhone Duo respects your supported interface orientations, but your app will scale on the inner display" and "iPhone Duo will continue to honor the UIRequiresFullScreen key" (Tech Talk 111461).
+- 2026-10-19 The attached screenshot is the open pose. Why: it is the one image that shows the claim under verification, the centred schedule in the portrait window on the inner display; the closed pose renders like any iPhone.
+- 2026-10-19 The device step builds locally from the branch with \`npx expo run:ios -d <SIMULATOR_UDID> --configuration Release\` and targets the Duo by udid (committed text uses the SIMULATOR_UDID placeholder). Why: two simulators are booted (an iPhone 18 Pro on 27.0 beside the Duo on 27.1), so a bare destination hits the wrong one; the branch differs from uat only in version files and board records, so the built app is uat''s code. A local build serves the mock API; the verification reads layout, not times, so the mock is not a confound.
+- 2026-10-19 Apple''s three pattern families are answered by reads recorded on this row, not by code: `UIScreen` has zero hits in ios/ outside Pods; every JS geometry consumer reads the live window through hooks/useWindowDimensions.ts (RN''s live hook; the launch-memoized version was the exact anti-pattern Apple names and its own history note records the fix); no userInterfaceIdiom, interfaceOrientation, statusBarOrientation, isPad or isTablet layout branch exists in the app''s source (greps run 2026-10-19, zero hits). Why: the patterns are absent, so the skill''s scan has nothing to force and no change follows.
+
+## Files
+
+Read:
+- app/Screen.tsx and shared/constants.ts (SIZE.contentMaxWidth = 500): the centred adaptive layout under verification.
+- hooks/useWindowDimensions.ts: the live window-size hook every geometry consumer uses.
+- app.json (orientation portrait) and plugins/portraitOnlyIpad.js: the orientation lock Apple honors.
+- e2e/README.md: the Gotchas, read before any measurement.
+- The App Resizability skill exported to a scratch directory outside the repository.
+- Apple''s artifacts named in Decisions, fetched and cited by URL.
+
+Changed:
+- package.json and app.json: the version bump, patch, on every step commit.
+- board/snapshot/board.sql: the row''s records regenerated per step commit.
+- android/app/build.gradle is bumped on disk to the same version (the three-file rule) but never appears in a diff: the android/ and ios/ trees are gitignored and untracked, so prebuild''s outputs live outside git. The branch diff therefore names exactly package.json, app.json and board/snapshot/board.sql.
+- No code file changes. A step that seems to need one is a stop, not an edit.
+
+## Design
+
+The deliverable is an evidence record, not a change. The app''s answer to the Duo is built: one schedule, centred, capped at 500pt through Screen.tsx''s maxWidth and alignSelf center, riding the live window size. Apple''s material carries the three things this row names: apps run on Duo whatever their SDK; a portrait-locked app scales into a window on the inner display rather than rotating; the only dated obligation is App Store screenshots from April 2027. The verification re-runs the prior close''s protocol on iOS 27.1 at current uat: both poses, both schedules, the fold transition.
+
+Alternatives rejected:
+- Any Duo-branched layout, a second schedule, a centre settings button, a centre-anchored sheet: the owner rejected these twice (2026-10-18, 2026-10-19) and no Apple requirement forces them; Apple''s default for non-adapting apps is the centred window this app already renders.
+- Landscape support to fill the open panel: it turns rotation on for every iPhone and iPad; the owner excluded it at the prior close and nothing in Apple''s material makes it an obligation.
+- Findings recorded in a repository MD file: the records rule keeps the row''s records on the board (this doc, the ticket''s comments, the snapshot), and code is the documentation.
+
+## Steps
+
+1. Step 1: Apple''s requirements named and recorded (docs, 1 point). Export the App Resizability skill to a scratch directory outside the repository, read it, fetch the four official artifacts, re-run the three pattern reads, then write the Requirements section into this doc: each requirement, its source URL or export path, and the one hard requirement beyond running quoted verbatim. One commit: version bump plus the snapshot carrying this doc''s new section.
+2. Step 2: both poses verified on the iPhone Duo simulator (device, 3 points). Build from the branch with \`npx expo run:ios -d <SIMULATOR_UDID> --configuration Release\` (Release makes the installed app self-contained, so pose driving never depends on a live Metro), then: closed pose, one schedule filling the outer display; open pose, one schedule in the centred portrait window; both schedules reachable; the fold transition keeps the app alive and the overlay reachable; one open-pose screenshot attached to this row from scratch outside the worktree; every reading transcribed into the ticket comment. One commit: version bump plus the snapshot. This step runs alone in a fresh executor session.
+3. Step 3: the row''s records closed (docs, 1 point). Read the branch diff and record that it names no layout file, so every other form factor is unchanged by construction; tick the subtasks; regenerate the snapshot. One commit: version bump plus the snapshot.
+
+## Risks
+
+- iOS 27.1 grants a window materially different from the prior close''s 469x669, or the 27.1 SDK''s full-display behavior pulls the rendering away from the owner''s sanctioned centred schedule. What shows it: the open-pose reading. If the schedule is not centred, is clipped, or splits: stop and table it for the owner; no code is written to chase it.
+- The skill export scans Xcode-agent conventions and names nothing applicable to a React Native tree. Acceptable: the prepare page''s own pattern list is the authority, the reads answer it, and the export attempt and its output are recorded.
+- The Duo simulator reboots or another session takes it. The step re-reads the simctl device list first and drives poses through the agent-device fold command.
+- A screenshot or recording lands in the worktree. The screenshot is written to scratch outside the worktree and attached from there; git status before every commit shows no image file.
+
+## Proof
+
+- Requirements named: this doc''s Requirements section carries each requirement with its source URL or the skill export path, and the one hard requirement beyond running quoted verbatim.
+- Both poses verified: the Step 2 ticket comment transcribes the closed-pose and open-pose readings (window grant, schedule centring, both schedules, fold liveness) taken on the iPhone Duo simulator at iOS 27.1.
+- Screenshot attached, never committed: view_issue_images on this row shows it; `git diff --stat uat..lane/116` lists no image path.
+- Zero Duo code: `git diff --name-only uat..lane/116` lists only package.json, app.json, android/app/build.gradle and board/snapshot/board.sql.
+- Every other form factor unchanged: the same diff read names no layout file, and `yarn validate` is green at every step commit.
+
+
+## Requirements
+
+Sources read 2026-10-19: the news post (developer.apple.com/news/?id=kkphp5qo), the prepare page (developer.apple.com/iphone-duo/prepare/), Tech Talks 111461 and 111463 (developer.apple.com/videos/play/tech-talks/111461/ and .../111463/), and the App Resizability skill exported from this machine''s Xcode 27.1 (Build 27A9275) into a scratch directory outside the repository with `xcrun agent skills export --output-dir <scratch>/duo-skills`: app-resizability/SKILL.md and references/uiscreen-task.md, orientation-task.md, idiom-task.md, safe-area-task.md, scene-lifecycle-task.md.
+
+### The one hard requirement beyond running
+
+News post, closing paragraph, verbatim: "Starting April 2027, any apps or games submitted will need to include screenshots for iPhone Duo." It is the only dated imperative in Apple''s Duo material. Everything else below is guidance phrased can, consider, or should.
+
+### The statements that sanction this app''s shape
+
+Verbatim, Tech Talks 111461:
+
+- "iPhone Duo respects your supported interface orientations, but your app will scale on the inner display, including in Split View multitasking."
+- "iPhone Duo will continue to honor the UIRequiresFullScreen key, but your app will still resize when someone opens or closes their iPhone Duo."
+
+Prepare page, the iOS 26 SDK paragraph, on a non-adapting app on the open Duo: "your app will appear in the center of the display, with empty space surrounding the window". A centred window is Apple''s own rendering for an app that does not adapt, which is the owner''s sanctioned shape.
+
+### The SDK ladder (prepare page, Before you begin)
+
+- iOS 26 SDK or earlier: runs on the Duo, does not adapt; open pose shows the centred window with empty space around it.
+- iOS 27 SDK: resizes to fill most of the inner display, still avoiding the status bar on the right edge.
+- iOS 27.1 SDK or later: optimized; extends to the full display with toolbars and tab bars laying out vertically below the status bar, and content must adapt to the bars becoming vertical before shipping.
+
+The local build uses Xcode 27.1 (SDK 58). The portrait lock means the inner display renders the scaled window the Tech Talk names, not the full-display layout, so the vertical-bars caveat describes a shape this app does not take.
+
+### Requirements and guidance that bear on this app
+
+- Every app runs on iPhone Duo whatever its SDK (prepare page; Tech Talks 111461: "Your app will work on iPhone Duo even if you haven''t built it with the iOS 27 SDK"). Recompiling with Xcode 27.1 adds development support (news post); the local build already runs Xcode 27.1.
+- The skill''s Prerequisites (app-resizability/SKILL.md), read against the generated Info.plist at the same commit: launch screen satisfied (UILaunchStoryboardName present; absent means the ITMS-90870 upload rejection, TN3208); scene lifecycle satisfied (UIApplicationSceneManifest plus SceneDelegate.swift in the Expo-generated shell; scene-lifecycle-task.md records scene lifecycle as required of iOS 27 SDK builds); the portrait-only declarations for iPhone and iPad and UIRequiresFullScreen=true are exactly the lock the Tech Talk says the Duo honors. SKILL.md, writing about iOS 27 generally, says the platform ignores UIRequiresFullScreen and resizes the scene anyway (TN3192), and its rule is to change no key unilaterally; the Duo-specific statement governs the Duo. No key changes.
+- The skill''s five scan tasks (UIScreen.main, orientation-based layout, idiom checks, symmetric safe-area assumptions, application lifecycle) cover the three pattern families the prepare page''s Step 2 names for manual review. The reads below answer each family against this tree.
+- Tech Talks 111463 is optimization guidance throughout: displacement patterns, reserved regions (division for the fold, occlusion for the camera), ArrangementView. Its close is phrased "Audit your app''s centered layouts and consider whether a two-column layout or a displacement pattern fits". Nothing there obliges the two-schedule or per-panel layouts the owner rejected.
+- Store surface, not code (news post): updated screenshot and app preview specifications, the App Store Connect preview tool for Duo assets, and a product-page badge when Duo screenshots are submitted. The April 2027 screenshot requirement lands here.
+
+### The three pattern reads, 2026-10-19 at 2.1.19 (commit 2d6e7631)
+
+(a) `grep -rn "UIScreen" ios --include="*.swift" --include="*.m"` excluding Pods: zero hits. This worktree carries no ios/ tree (gitignored, not prebuilt here), so the read ran against the generated tree at the same commit in the main checkout: 18 Swift files outside Pods (the Athan shell, SceneDelegate, the widget targets), zero hits for UIScreen case-insensitive with headers included.
+
+(b) Direct `Dimensions.get(` across app/ components/ hooks/ shared/ stores/ device/ modules/ plugins/ widgets/: zero in production code. The three hits are test files asserting against the mocked window (components/sheets/screens/__tests__/Qibla.test.tsx, components/overlay/__tests__/VeilBackdrop.test.tsx, components/overlay/__tests__/Overlay.test.tsx). Every production geometry consumer imports hooks/useWindowDimensions.ts, one line re-exporting RN''s live hook, whose in-file history note records that the launch-memoized version was removed because it froze absolute-geometry consumers on resizable windows. That memoized version was the prepare page''s named anti-pattern ("Reading the size once at launch or in `viewIsAppearing` isn''t enough, because a fold can resize your app in the middle of a session"), already fixed.
+
+(c) `grep -rniE "userInterfaceIdiom|interfaceOrientation|statusBarOrientation|isPad|isTablet"` over the same dirs: zero layout branches. The only hits are the declaration strings in plugins/portraitOnlyIpad.js (UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown) writing UISupportedInterfaceOrientations~ipad: the supported-orientations lock the Tech Talk says the Duo respects, not a branch reading current orientation or device class.
+
+Zero hits across all three families means the skill''s scan has nothing to find, and zero Duo-specific code follows.', NULL, NULL, '{}', false, false, false, NULL, 19456, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:25:17.880657+00');
 
 
 --
@@ -15309,6 +16062,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 74);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
@@ -15416,16 +16170,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:250', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:251', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 48);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 65);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:261', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:253', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:255', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
@@ -15435,20 +16189,24 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3354);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 67);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 3);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 66);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 38);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3307);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:260', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 
 
 --
@@ -15710,7 +16468,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2275, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2341, true);
 
 
 --
@@ -15759,14 +16517,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 550, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 551, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 258, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 263, true);
 
 
 --
@@ -15787,7 +16545,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 447, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 468, true);
 
 
 --
@@ -15878,14 +16636,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 18, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 20, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 48, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 53, true);
 
 
 --
@@ -20270,5 +21028,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 3nGOZ59saVcwxE2VJdquvxkxo3JzMHXPTSgFdHgw760BVOqLhjDTc2uPhEzEM1W
+\unrestrict JW6xXYKfn5n4OgcnlGQIBHcA4aC79VB5bqcIsqrqE4IOm4oCtg1jt5dnC3nPs6u
 
