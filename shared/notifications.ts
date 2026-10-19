@@ -83,7 +83,7 @@ export const withNativeTimeout = async <T>(work: Promise<T>, description: string
 /**
  * The 5 daily prayers whose at-time notifications play the user's selected
  * athan. Every other at-time prayer (Sunrise + all extras) plays the fixed
- * built-in reminder sound instead (ISSUES.md #23 — note this boundary is
+ * built-in reminder sound instead (ledger #23 (git history) — note this boundary is
  * prayer-aware, not schedule-aware: Sunrise sits on the standard page but
  * uses the extras audio).
  */

@@ -308,7 +308,7 @@ describe('push cadence', () => {
 
     // A per-minute chain used to fire here, costing a WidgetKit reload on all
     // twelve kinds; each reload re-renders that kind's whole timeline, which
-    // exhausted the extension's CPU budget (ISSUES.md §G.1)
+    // exhausted the extension's CPU budget (ledger G.1 (git history))
     await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
 
     expect(widgetPush()).toHaveLength(1);

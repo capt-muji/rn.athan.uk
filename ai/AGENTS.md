@@ -145,7 +145,9 @@ are Gradle caches, detached and branchless. They stay.
 - Notifications: candidate rows are armed whole in time order against the request budget (64),
   never a day count. A reminder never outruns the athan it warns about. Android channel sound,
   audio attributes and importance are frozen at creation, so a new generation means new channel
-  ids and one-time legacy deletion.
+  ids and one-time legacy deletion. No microphone permission for ambient silence detection, no
+  in-app alarm observability module (`yarn check:device` is the observability), no notification
+  library swap: standing rulings from the retired issue ledger (2026-10-19).
 - Widgets: the widget runtime is not React. Widget modules are statically imported, props are
   JSON-only with a schema version and a `props == null` guard, and timeline entry count is the
   iOS budget. `expo-widgets` and `@expo/ui` are pinned exact. Run the widget runtime load suite

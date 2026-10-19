@@ -135,7 +135,7 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
     },
     {
       // PARKED: ships with the release that enables the widgets flag
-      // (expo-widgets@57.0.16, ISSUES.md G.1) - stamp its version then
+      // (expo-widgets@57.0.16, ledger G.1 (git history)) - stamp its version then
       titleKey: 'whatsNew.title.widgets',
       bodyKey: 'whatsNew.body.widgets',
       platform: 'ios',

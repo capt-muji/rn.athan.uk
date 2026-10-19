@@ -1900,7 +1900,7 @@ export const registerBackgroundTask = async () => {
     // Always unregister first so registration carries CURRENT options —
     // expo-task-manager persists options and the native restore path
     // resubmits the BGTask request with the PERSISTED minimumInterval
-    // (ISSUES.md #8: stale 10800 kept re-arming the task +7.5 days)
+    // (ledger #8 (git history): stale 10800 kept re-arming the task +7.5 days)
     const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_TASK_NAME);
     if (isRegistered) {
       await BackgroundTask.unregisterTaskAsync(BACKGROUND_TASK_NAME);

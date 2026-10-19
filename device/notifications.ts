@@ -94,7 +94,7 @@ export const addOneScheduledNotificationForPrayer = async (
   const identifier = prayerNotificationIdentifier(scheduleType, prayerId, date);
   // Only include channelId for Sound alerts; the channel is prayer-aware
   // (selected athan for the 5 daily prayers, fixed extras channel for
-  // Sunrise + extras — ISSUES.md #23)
+  // Sunrise + extras — ledger #23 (git history))
   const atTimeChannelId =
     alertType === AlertType.Sound ? NotificationUtils.atTimeAndroidChannelId(prayerId, soundPreference) : undefined;
 

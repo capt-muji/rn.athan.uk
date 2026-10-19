@@ -1,5 +1,5 @@
 /**
- * Unit tests for device/backgroundTaskDebug.ts (ISSUES.md #8 instrumentation)
+ * Unit tests for device/backgroundTaskDebug.ts (ledger #8 (git history) instrumentation)
  *
  * The debug module must never affect production behavior: the snapshot
  * sequence no-ops unless enabled, and the simulate call arms on Android

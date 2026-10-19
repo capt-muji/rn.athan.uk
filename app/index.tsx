@@ -142,7 +142,7 @@ export default function Index() {
         .then(() => reconcileLanguageSurfaces())
         .catch((error) => logger.error('Failed to initialize notifications:', error));
 
-      // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
+      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history))
       runBackgroundTaskDebugSequence();
 
       // Check for updates in background
@@ -182,7 +182,7 @@ export default function Index() {
   // state. The perf mark keeps its content-only semantics; only the reveal
   // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
   //
-  // Two paths (ISSUES.md #24): cold launches (no cache at mount — fresh
+  // Two paths (ledger #24 (git history)): cold launches (no cache at mount — fresh
   // install, upgrade wipe, year gap) hide the splash as soon as the spinner
   // frame commits instead of holding through the entire network fetch;
   // warm launches keep the reveal-ready gate so the first revealed frame is

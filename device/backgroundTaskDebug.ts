@@ -2,7 +2,7 @@
  * Background task debug instrumentation
  *
  * Dev/experiment-only diagnostics for the notification-refresh background
- * task (ISSUES.md #8). Runs once per cold launch: snapshots the task state
+ * task (ledger #8 (git history)). Runs once per cold launch: snapshots the task state
  * (registration, persisted options, system status, pending notifications),
  * then, in DEBUG Android builds only, simulates a system trigger so the full
  * execution chain (BGTaskScheduler handler → TaskService → JS task →

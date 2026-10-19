@@ -184,7 +184,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
  * expo-background-task's `minimumInterval` option is documented in MINUTES
  * (Android WorkManager TimeUnit.MINUTES; iOS multiplies by 60 for
  * earliestBeginDate). Passing seconds here scheduled the task 60x too far
- * out (10800 = 7.5 days) — see ISSUES.md #8.
+ * out (10800 = 7.5 days) — see ledger #8 (git history).
  *
  * Resolution order:
  * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
@@ -200,7 +200,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
  */
 const MIN_BG_INTERVAL_MINUTES = 15;
 
-/** A day. Beyond this the override is the seconds-for-minutes mistake of ISSUES.md #8, not a choice */
+/** A day. Beyond this the override is the seconds-for-minutes mistake of ledger #8 (git history), not a choice */
 const MAX_BG_INTERVAL_MINUTES = 1440;
 
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
@@ -212,7 +212,7 @@ const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
 // Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
 // fails the cast, falls back to its own default and disagrees with Android, which
 // truncates. 20.5 would mean 20 minutes on one platform and hours on the other, silently —
-// the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
+// the same units-mismatch class as ledger #8 (git history) that the range check was added to close.
 const isEnvIntervalValid =
   process.env.EXPO_PUBLIC_ENV !== 'prod' &&
   Number.isInteger(envIntervalMinutes) &&

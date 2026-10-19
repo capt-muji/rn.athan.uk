@@ -3,7 +3,7 @@
  *
  * Verifies the notification identifier format that gives scheduling idempotent
  * replace semantics (same identifier = replace on Android PendingIntent and iOS
- * UNUserNotificationCenter). See ai/ISSUES.md #12. Also verifies that every
+ * UNUserNotificationCenter). See ledger #12 (git history). Also verifies that every
  * notification fires at its list row's own instant (ISSUES #29).
  */
 

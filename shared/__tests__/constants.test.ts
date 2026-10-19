@@ -173,7 +173,7 @@ describe('validateReminderInterval', () => {
 });
 
 // =============================================================================
-// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
+// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ledger #8 (git history))
 // minimumInterval is MINUTES — resolution: env override > dev 15 > prod BACKGROUND_TASK_INTERVAL_HOURS * 60
 // =============================================================================
 
@@ -227,7 +227,7 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
-  // ISSUES.md #8 was seconds passed where minutes were expected: 10800 scheduled the
+  // ledger #8 (git history) was seconds passed where minutes were expected: 10800 scheduled the
   // task 7.5 days out. The floor check caught nothing, because 10800 is positive.
   it('ignores the seconds-for-minutes mistake that was ISSUES #8', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '10800';
