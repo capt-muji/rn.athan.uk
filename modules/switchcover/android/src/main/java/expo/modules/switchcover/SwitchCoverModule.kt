@@ -12,6 +12,8 @@ import android.widget.TextView
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import expo.modules.kotlin.records.Record
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * The language switch's cover: the loader's own face, held by the activity's content view across
@@ -24,84 +26,87 @@ class SwitchCoverModule : Module() {
     override fun definition() = ModuleDefinition {
         Name("SwitchCover")
 
-        AsyncFunction("show") { cover: SwitchCoverFace ->
-            val activity = appContext.currentActivity ?: return@AsyncFunction
-            val content = activity.findViewById<ViewGroup>(android.R.id.content) ?: return@AsyncFunction
+        // View work runs on the main thread: AsyncFunction bodies otherwise execute off it
+        AsyncFunction("show") Coroutine { cover: SwitchCoverFace ->
+            withContext(Dispatchers.Main) {
+                val activity = appContext.currentActivity ?: return@withContext
+                val content = activity.findViewById<ViewGroup>(android.R.id.content) ?: return@withContext
 
-            // A companion-held view can outlive its activity: one whose parent is no longer this
-            // content view is a stale reference from a destroyed activity, dropped rather than reused
-            heldCover?.let { held ->
-                if (held.parent !== content) {
-                    (held.parent as? ViewGroup)?.removeView(held)
-                    heldCover = null
-                    showing = false
+                // A companion-held view can outlive its activity: one whose parent is no longer this
+                // content view is a stale reference from a destroyed activity, dropped rather than reused
+                heldCover?.let { held ->
+                    if (held.parent !== content) {
+                        (held.parent as? ViewGroup)?.removeView(held)
+                        heldCover = null
+                        showing = false
+                    }
                 }
+                if (showing) return@withContext
+
+                val density = activity.resources.displayMetrics.density
+                val spinnerPx = (cover.spinnerSizeDp * density).toInt()
+                val lineSizePx = (cover.lineSizeDp * density).toFloat()
+                val lineMarginPx = (cover.lineMarginTopDp * density).toInt()
+                val lineMaxWidthPx = (cover.lineMaxWidthDp * density).toInt()
+                // The content view is laid out behind the loader at show time; a call that beats
+                // layout centres on the display instead
+                val midY =
+                    if (content.height > 0) {
+                        content.height / 2
+                    } else {
+                        activity.resources.displayMetrics.heightPixels / 2
+                    }
+
+                val spinner =
+                    ProgressBar(activity).apply {
+                        isIndeterminate = true
+                        indeterminateTintList = ColorStateList.valueOf(Color.parseColor(cover.spinnerColor))
+                        layoutParams =
+                            FrameLayout.LayoutParams(spinnerPx, spinnerPx, Gravity.CENTER_HORIZONTAL).apply {
+                                // The loader's translateY(-size / 2): the spinner box centres dead on the parent's midpoint
+                                topMargin = midY - spinnerPx / 2
+                            }
+                    }
+
+                val line =
+                    TextView(activity).apply {
+                        text = cover.lineText
+                        setTextColor(Color.parseColor(cover.lineColor))
+                        setTextSize(TypedValue.COMPLEX_UNIT_PX, lineSizePx)
+                        gravity = Gravity.CENTER
+                        setTextAlignment(View.TEXT_ALIGNMENT_CENTER)
+                        layoutParams =
+                            FrameLayout.LayoutParams(
+                                lineMaxWidthPx,
+                                ViewGroup.LayoutParams.WRAP_CONTENT,
+                                Gravity.CENTER_HORIZONTAL,
+                            ).apply {
+                                // Hung from the spinner's foot, as the loader's line box is
+                                topMargin = midY + lineMarginPx
+                            }
+                    }
+
+                val coverView =
+                    FrameLayout(activity).apply {
+                        setBackgroundColor(Color.parseColor(cover.backgroundColor))
+                        layoutParams =
+                            ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                            )
+                        addView(spinner)
+                        addView(line)
+                    }
+
+                content.addView(coverView)
+                heldCover = coverView
+                showing = true
             }
-            if (showing) return@AsyncFunction
-
-            val density = activity.resources.displayMetrics.density
-            val spinnerPx = (cover.spinnerSizeDp * density).toInt()
-            val lineSizePx = (cover.lineSizeDp * density).toFloat()
-            val lineMarginPx = (cover.lineMarginTopDp * density).toInt()
-            val lineMaxWidthPx = (cover.lineMaxWidthDp * density).toInt()
-            // The content view is laid out behind the loader at show time; a call that beats
-            // layout centres on the display instead
-            val midY =
-                if (content.height > 0) {
-                    content.height / 2
-                } else {
-                    activity.resources.displayMetrics.heightPixels / 2
-                }
-
-            val spinner =
-                ProgressBar(activity).apply {
-                    isIndeterminate = true
-                    indeterminateTintList = ColorStateList.valueOf(Color.parseColor(cover.spinnerColor))
-                    layoutParams =
-                        FrameLayout.LayoutParams(spinnerPx, spinnerPx, Gravity.CENTER_HORIZONTAL).apply {
-                            // The loader's translateY(-size / 2): the spinner box centres dead on the parent's midpoint
-                            topMargin = midY - spinnerPx / 2
-                        }
-                }
-
-            val line =
-                TextView(activity).apply {
-                    text = cover.lineText
-                    setTextColor(Color.parseColor(cover.lineColor))
-                    setTextSize(TypedValue.COMPLEX_UNIT_PX, lineSizePx)
-                    gravity = Gravity.CENTER
-                    setTextAlignment(View.TEXT_ALIGNMENT_CENTER)
-                    layoutParams =
-                        FrameLayout.LayoutParams(
-                            lineMaxWidthPx,
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            Gravity.CENTER_HORIZONTAL,
-                        ).apply {
-                            // Hung from the spinner's foot, as the loader's line box is
-                            topMargin = midY + lineMarginPx
-                        }
-                }
-
-            val coverView =
-                FrameLayout(activity).apply {
-                    setBackgroundColor(Color.parseColor(cover.backgroundColor))
-                    layoutParams =
-                        ViewGroup.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                        )
-                    addView(spinner)
-                    addView(line)
-                }
-
-            content.addView(coverView)
-            heldCover = coverView
-            showing = true
         }
 
-        AsyncFunction("hide") {
-            val held = heldCover
-            if (held != null) {
+        AsyncFunction("hide") Coroutine {
+            withContext(Dispatchers.Main) {
+                val held = heldCover ?: return@withContext
                 (held.parent as? ViewGroup)?.removeView(held)
                 heldCover = null
                 showing = false
