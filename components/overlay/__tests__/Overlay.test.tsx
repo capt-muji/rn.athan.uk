@@ -89,7 +89,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // The display value is the rule itself (ai/AGENTS.md, Performance Design Rule 4): the layer stays displayed
+  // The display value is the rule itself (the retired ai/AGENTS.md (git history), Performance Design Rule 4): the layer stays displayed
   // through the close fade and is hidden only once it has run, whatever a screen reader is told meanwhile
   // [milliseconds into the close fade, the layer's display]
   it.each<[number, 'flex' | 'none']>([

@@ -70,7 +70,7 @@ describe('the Athan control with Silent saved', () => {
     expect(drawn()).toHaveLength(ATHAN_OPTIONS.length);
   });
 
-  // ai/AGENTS.md: geometry an animation will own is right in the first frame, so the pill never squashes or slides in
+  // AGENTS.md: geometry an animation will own is right in the first frame, so the pill never squashes or slides in
   it('draws the pill one segment wide and already under Silent the moment its width is known', async () => {
     await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
 
@@ -81,7 +81,7 @@ describe('the Athan control with Silent saved', () => {
     expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '100%' }] });
   });
 
-  // ai/AGENTS.md: mount settles, and only a change of selection animates
+  // AGENTS.md: mount settles, and only a change of selection animates
   it('animates neither the pill nor the options into place when mounted', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
 
@@ -90,7 +90,7 @@ describe('the Athan control with Silent saved', () => {
     expect(withTiming).not.toHaveBeenCalled();
   });
 
-  // ai/AGENTS.md: mount settles, and only a change of selection animates. The spy starts after the measure: the mock's
+  // AGENTS.md: mount settles, and only a change of selection animates. The spy starts after the measure: the mock's
   // derived value runs again on every render, where the real one runs again only when the selection changes
   it('slides the pill to the new option, over the standard duration, when the saved option changes', async () => {
     await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);

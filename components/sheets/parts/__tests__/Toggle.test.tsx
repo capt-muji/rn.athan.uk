@@ -28,7 +28,7 @@ describe('the reminder switch', () => {
     expect(screen.getByRole('switch')).toBeEnabled();
   });
 
-  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates.
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates.
   // Columns: the value it mounts with, where its thumb sits on the first frame
   it.each([
     [true, SIZE.toggle.translateX],
@@ -39,7 +39,7 @@ describe('the reminder switch', () => {
     expect(thumb()).toHaveStyle({ transform: [{ translateX: position }] });
   });
 
-  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
   it('does not animate its thumb into place when mounted on', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
 
@@ -48,7 +48,7 @@ describe('the reminder switch', () => {
     expect(withTiming).not.toHaveBeenCalled();
   });
 
-  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
   it('animates its thumb to the on position, over the standard duration, when the value changes after mount', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
     await render(<Toggle value={false} onToggle={jest.fn()} />);
@@ -133,14 +133,14 @@ describe('the reminder switch under the Arabic locale while the bridge still rep
     setActiveLocale('en');
   });
 
-  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame
   it('draws its thumb settled at the mirrored on position when mounted on', async () => {
     await render(<Toggle value onToggle={jest.fn()} />);
 
     expect(thumb()).toHaveStyle({ transform: [{ translateX: -SIZE.toggle.translateX }] });
   });
 
-  // ai/AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
   it('animates its thumb to the mirrored on position when the value changes after mount', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
     await render(<Toggle value={false} onToggle={jest.fn()} />);

@@ -25,7 +25,7 @@ is the Docs page linked to the issue.
 2. Work the steps in order. A step is done when its acceptance criterion is observably met.
 3. Tick the step's subtask by moving it to a `completed` column, and tick its line in the
    description's acceptance list if it covers one.
-4. Commit as you go. One step, one commit, one version. The version rule is in `ai/AGENTS.md`.
+4. Commit as you go. One step, one commit, one version. The version rule is in `AGENTS.md`.
 5. Run the gate before you call a batch done: `yarn validate`. Red before green on any guarded
    logic, and coverage on.
 6. Comment on the ticket once at the end of the batch: what landed, and anything left.

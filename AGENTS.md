@@ -1,71 +1,144 @@
-# OpenCode Instructions
+# AGENTS.md - Athan.uk
 
-This project uses a centralized instruction file.
-Please read and follow: **ai/AGENTS.md**
+Rules for this repository. The global AGENTS.md owns writing, comments, evidence, delegation
+and session hygiene. This file carries only what is specific to Athan.uk.
 
-## Critical Rules
+## Load at the start of every session
 
-- All safety constraints in AGENTS.md apply here
-- Never execute blocked commands or create shell script workarounds
-- Always match existing code patterns (Consistency > Cleverness)
-- Update README when adding user-facing features
-- Clean up empty files/folders before ending session
-- Act as a consultant: Guide the user proactively, don't just execute commands
+1. This file.
+2. `opencode.json` (repo root): which MCP servers are wired and enabled.
+3. `.agents/skills/`: the Expo and EAS skills, this repo's workflow skills
+   (`board-workflow`, `athan-planner`, `athan-lead`), and for React Native code work
+   `react-native-best-practices` with the performance rules in `react-native-skills`. The
+   delivery workers (`athan-lane`, `athan-executor`, `athan-reviewer`, `athan-plan-griller`)
+   are agent files under `.opencode/agents/`, dispatched by the lead or a lane, never loaded
+   into the main session. Load the matching skill instead of working from memory.
 
-## Quick Start
+## Tool routing
 
-```
-Read ai/AGENTS.md and begin as Orchestrator.
-```
-
-## Tool Routing
-
-Reach for these without being asked. Every command below already exists in this
-repo: run them, don't reinvent them.
+Reach for these without being asked.
 
 | Work | Route to |
 |---|---|
 | Drive the simulator: tap, type, scroll, snapshot | `agent-device` |
-| Author or run a flow | `maestro` CLI, flows in `e2e/flows/*.yaml` |
+| Author or run a flow | `maestro` CLI, flows in `e2e/flows/*.yaml` (the scripts and flows drive, the maestro server is the interactive fallback) |
 | iOS build / simulator | `xcodebuildmcp` |
-| Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` (rules in ai/AGENTS.md, Commands and Device testing) |
+| Expo project brief, dev-server smoke loop | `npx @expo/agent-cli status` / `smoke --ios` |
+| Expo dev-server session tables | `npx expo command:ps` / `command:events` |
 | Expo/EAS API question | the matching `expo-*` / `eas-*` skill |
+| Code structure query | `codegraph` (see the block at the end) |
 | "Are alarms armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
-| Before calling anything done | `yarn validate` (tsc + biome + jest) |
-| Read or move a queued ticket on the board | `itsaplan` MCP, the local instance |
+| Read or move a ticket on the board | `itsaplan` MCP (see Workflow) |
 
-Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
+Scripts measure. The `vision` subagent interprets.
 
-**MCP servers** (`opencode.json`, updated 2026-10-15 by the owner's order): `agent-device`
-drives, `xcodebuildmcp` builds, `mobile-mcp` covers the Android and plugged-phone path, and the
-`maestro` server sits on (the scripts and `e2e/flows/*.yaml` remain the flow drivers; the
-server is the interactive fallback). `expo` stays off: nothing ships through EAS. Flipping one
-is an `enabled` flip.
+## Workflow
 
-`itsaplan` (added 2026-10-19, ticket 144) is the queue's board, a local It's a Plan instance at
-`http://localhost:3000/mcp`. It takes the personal key from `ITSAPLAN_API_KEY` in the shell
-environment, so the key stays out of git. The board mirrors `ai/plans/README.md` and is never
-its source of truth. `ai/plans/README.md` decides a ticket's column.
+The board is the tickets: a local It's a Plan instance reached through the `itsaplan` MCP,
+whose personal key comes from `ITSAPLAN_API_KEY` in the shell and whose deployment lives in
+`board/`. Read `.agents/skills/board-workflow/SKILL.md` before touching it: it holds the
+columns, the picking rule and the ticket anatomy. Entry to a run is `/athan-next`. The run
+closes with `board/snapshot.sh` in the run's last commit.
 
-Scripts measure; the `vision` subagent interprets (global AGENTS.md covers when to
-delegate to it).
+## Product
 
-**Alarm times only mean anything on a production build.** Local builds run the mock
-API, whose prayers sit either side of launch. Everything else in `check:device` is
-build-agnostic.
+Athan.uk: Muslim prayer times for London with a real-time countdown, offline support,
+customisable athan notifications, home-screen and lock-screen widgets, and a qibla finder.
+London-only, no accounts, no cloud sync. Invariants: the API is the source of truth for
+prayer times, the app works fully offline after first sync, and notifications fire on time
+while backgrounded.
 
-Before measuring anything, read `e2e/README.md`: its Gotchas section documents
-Metro's env-blindness and the dev-env confound, and each one cost real time.
+**Alarm times read what the build carries.** A production build (local or store) serves the
+real API's times. A mock build serves the mock data, whose prayers sit either side of launch.
+The owner installs both kinds on the phones, so read an alarm reading against the build that
+produced it. Everything else in `check:device` is build-agnostic.
+
+## The repository is public to the whole world
+
+- Placeholders for every person- or device-specific value: `3T_SERIAL`, `X8_SERIAL`,
+  `S23_SERIAL`, `8T_SERIAL`, `IPHONE_UDID`, `SIMULATOR_UDID`, `TEAM_ID`, `CERT_TEAM_ID`,
+  `PHONE_ADDRESS`, `WIFI_NAME`, and `$HOME/...` for home paths. A shortened identifier is
+  still an identifier.
+- Never write a position, an address or a place name a phone or geocoder reported. Use the
+  fixture positions the tests carry. Describe a measurement as indoors, outdoors, one room,
+  another room.
+- Never commit a device screenshot or recording. Transcribe what was read.
+- Write what the owner decided, not how the owner said it. Quote the owner only where the
+  exact words are the specification.
+- The owner is the owner: never a gendered pronoun for the owner in any record, prose,
+  comment, ticket, plan or log.
+- A session that finds a file breaking these rules fixes it and tells the owner.
+
+## Hard rules
+
+- Posture is aggressive: fix and report. Update the README when a change adds a user-facing
+  feature.
+- EAS is read-only: never build on it, never push to it. Reading `EXPO_PUBLIC_ENV` and
+  `EXPO_PUBLIC_API_KEY` is the whole permitted use. Builds happen locally.
+- Never recreate `releases.json` or any hand-edited release file. Store versions come from
+  iTunes Lookup (iOS) and the in-app updates API (Android).
+- Code is the documentation: MD files go stale and history lives in git. Only an artefact
+  still cited by shipped code or config survives, named in its ticket.
+- Version bump on every commit: `package.json`, `app.json` and `android/app/build.gradle`
+  together, patch by default, minor when the commit subject is typed `feat`, patch resets at
+  a minor. Majors are the owner's alone, behind a recorded order and an entry in
+  `scripts/version-major-allowlist.json`. Fetch `origin` first: concurrent sessions have
+  taken the same number twice. Bump `app.json` first, then prebuild, then build.
+- Qibla is locked: never draw a heading the phone has not vouched for. Android draws only
+  Google's fused sensor behind a forced wave, iPhone inside its reported accuracy cone. No
+  invented constant, no tuned offset, no per-location calibration, ever.
+- Never substitute prayer times: no copying yesterday or tomorrow, no averaging, no
+  synthesised value.
+- Visuals are settled: fixes change behaviour only. Touch no pixel without the owner's say.
+- Animated components first-frame in their settled state. Only value changes animate.
+- Tests never read the real clock: mock time before building any seed.
+- Full unit coverage of every line a change touches, red before green, mutation pass on
+  guarded logic.
+- No `npx expo install --fix`: it would roll back the packages this repo runs ahead of
+  Expo's pins on purpose. Name every package when upgrading.
+- No `console.log` (use the Pino logger), no secrets in git, no edits to `node_modules`, no
+  removing failing tests, no CI changes, no shell-script workarounds for blocked commands.
+- Upstream posts carry strict anonymity and the PR shape What, Why, How, Testing, with
+  intent labels (`suggestion:`, `question:`, `nitpick:`) in review.
+- Ask first: installing dependencies, deleting non-empty files, MMKV schema keys,
+  notification scheduling logic, `app.json` and `eas.json`.
+- Before measuring anything, read `e2e/README.md`: its Gotchas section documents Metro's
+  env-blindness and the dev-env confound, and each one cost real time.
+
+## Commands
+
+- `yarn validate` before calling anything done. `yarn format` for fixes. `yarn test:tz` for
+  date work.
+- Device builds go through `$HOME/athan-gitree/bin/build-prod.zsh` and
+  `$HOME/athan-gitree/bin/build-mock.zsh`, never two at once. Before any install to a phone
+  the owner uses, run `aapt2 dump badging <apk> | grep "^package"` and stop if it is not the
+  fleettest id (aapt2, never aapt, and check the tool exists first). A genuine `.fleettest`
+  install needs the suffix exported inside its own prebuild and build, never passed to it.
+- Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
+
+## Device testing
+
+- Read the device atlas (`e2e/device-atlas-<model>.md`) before driving a phone: measure a
+  screen once, write it back, replay after.
+- A screenshot reaches a screen. It never proves what is on one: a records claim needs a
+  logcat line or a dump.
+- `@expo/agent-cli`: the routed reads only: `status`, `smoke --ios`, `doctor`, `typecheck`,
+  `docs:sync`, `docs:search`. Never `--eas` (it starts a paid simulator session), `deploy`,
+  `agents:setup`, `skills:sync`, `skills:clean`, `install`, `new`, `feedback`,
+  `login`/`logout`/`register`/`whoami`, `status --explain` (an EAS service query),
+  `--device` (it launches or binds a phone), and never `smoke --android` while a phone is
+  connected.
+
+## Worktrees
+
+Verify a leftover branch is merged before deleting it. The build worktrees under
+`$HOME/athan-gitree/worktrees/` are Gradle caches, detached and branchless. They stay.
 
 <!-- CODEGRAPH_START -->
 ## CodeGraph
 
-In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the repo root), reach for it BEFORE grep/find or reading files when you need to understand or locate code:
-
-- **MCP tool** (when available): `codegraph_explore` answers most code questions in one call — the relevant symbols' verbatim source plus the call paths between them, including dynamic-dispatch hops grep can't follow. Name a file or symbol in the query to read its current line-numbered source. If it's listed but deferred, load it by name via tool search.
-- **Shell** (always works): `codegraph explore "<symbol names or question>"` prints the same output.
-
-If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
+Reach for `codegraph_explore` (or `codegraph explore "<query>"` in the shell) before grep,
+find or file reads when locating or understanding code in this indexed repository.
 <!-- CODEGRAPH_END -->

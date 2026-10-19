@@ -18,7 +18,7 @@ import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 // =============================================================================
 
 // Babel hoists jest.mock above imports: factories may only close over
-// `mock`-prefixed bindings (repo test rule, see ai/AGENTS.md testing notes)
+// `mock`-prefixed bindings (repo test rule, see AGENTS.md testing notes)
 const mockFormatTimeAgo = jest.fn();
 const mockCreateInstant = jest.fn();
 const mockGetPrevPrayer = jest.fn();

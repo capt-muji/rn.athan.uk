@@ -121,7 +121,7 @@ const createFakePerformance = () => {
 };
 
 // Babel hoists jest.mock above imports: factories may only close over
-// `mock`-prefixed bindings (repo test rule, see ai/AGENTS.md testing notes)
+// `mock`-prefixed bindings (repo test rule, see AGENTS.md testing notes)
 const mockFakeLib = createFakePerformance();
 jest.mock('react-native-performance', () => ({
   default: mockFakeLib.performance,

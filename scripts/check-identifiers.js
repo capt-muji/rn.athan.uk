@@ -403,7 +403,7 @@ const main = ([mode, argument]) => {
   const lines = hits.map((hit) => `  ${hit.file}${hit.line ? `:${hit.line}` : ''}  [${hit.rule}] ${hit.detail}`);
   process.stderr.write(
     `Identifier gate: this repository is public, and these would publish something identifying.\n${lines.join('\n')}\n` +
-      'Replace each with its placeholder (ai/AGENTS.md, "Keep the repository free of personal and device identifiers").\n'
+      'Replace each with its placeholder (AGENTS.md, "Keep the repository free of personal and device identifiers").\n'
   );
   process.exit(1);
 };

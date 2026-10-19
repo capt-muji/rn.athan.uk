@@ -27,7 +27,7 @@ refuse() {
 [ -d "$PKG" ] || refuse "expo-location not found under $ROOT"
 
 for file in "$KT" "$SWIFT" "$CONFIG"; do
-  # A missing file must fail rather than count zero: ai/AGENTS.md records a grep -c on a missing
+  # A missing file must fail rather than count zero: AGENTS.md records a grep -c on a missing
   # target reading identically to a real zero, which is dangerous exactly when it is trusted
   [ -f "$file" ] || refuse "${file##*/} not found"
 done

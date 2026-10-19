@@ -36,7 +36,7 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * inline faces carry the name and absolute time only, and every ticking
  * element is its own Text. The circular face stays unregistered since 1.14.1
  * (store builds carried it for ~a day; the orphan freeze risk was accepted
- * — see ai/AGENTS.md). All helpers must live inside each function: the
+ * — see the retired ai/AGENTS.md, git history). All helpers must live inside each function: the
  * 'widget' directive serializes the body alone, and @expo/ui identifiers
  * resolve as globals in the extension's JS runtime.
  */

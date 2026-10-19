@@ -170,5 +170,5 @@ A contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape. `EXPO_PU
 
 ## Further reading
 
-- [ai/AGENTS.md](ai/AGENTS.md): the full development protocol.
+- [AGENTS.md](AGENTS.md): the full development protocol.
 - [board/README.md](board/README.md): the board, its containers, and how to restore it.
