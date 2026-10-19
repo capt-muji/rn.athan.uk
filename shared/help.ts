@@ -1,10 +1,11 @@
 /**
- * Help content - the answers to "why did I not hear the athan?"
+ * Help content - the answers to "why did I not hear the athan?" and to support questions
  *
- * Every cause here is an OS setting no code can change, so the app names WHAT to turn on and never
- * how to get there: a navigation path is version-specific and goes stale (owner, 2026-09-27, after
- * following the old iOS steps and finding they led to the wrong screen). Nothing explains how the
- * app works internally either; a user only needs the fix.
+ * Every cause here is an OS setting no code can change, and a support question carries no steps,
+ * so the app names WHAT to turn on and never how to get there: a navigation path is
+ * version-specific and goes stale (owner, 2026-09-27, after following the old iOS steps and
+ * finding they led to the wrong screen). Nothing explains how the app works internally
+ * either; a user only needs the fix.
  *
  * Every claim was measured: session 27 for the mute switch and the 30 second cap, session 25 for the
  * alarm volume.
@@ -129,6 +130,17 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
     },
     android: {
       text: 'help.a.cutoff',
+    },
+  },
+
+  // A support question, not a cause, so it goes last and names nothing to change (owner, 2026-10-19)
+  {
+    question: 'help.q.widgets',
+    ios: {
+      text: 'help.a.widgets.ios',
+    },
+    android: {
+      text: 'help.a.widgets.android',
     },
   },
 ];
