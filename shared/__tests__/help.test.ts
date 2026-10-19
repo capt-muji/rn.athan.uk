@@ -136,14 +136,59 @@ describe('getHelpTopics', () => {
     }
   });
 
-  it('drops the two questions the owner cut', () => {
+  /** The scheduling-horizon cut still stands; the widget cut was superseded by the owner's 2026-10-19 order */
+  it('keeps the scheduling-horizon question the owner cut out', () => {
     for (const os of ['ios', 'android'] as const) {
       const questions = getHelpTopics(os)
         .map((topic) => topic.question)
         .join(' ');
 
       expect(questions).not.toMatch(/How far ahead/);
-      expect(questions).not.toMatch(/widget/i);
+    }
+  });
+
+  /** A support question, not a cause, so it sits after the last cause and offers nothing to do */
+  it('answers the widget support question last, with no steps and no action', () => {
+    for (const os of ['ios', 'android'] as const) {
+      const last = getHelpTopics(os).at(-1);
+
+      expect(last?.question).toBe('Are widgets supported?');
+      expect(last?.steps).toBeUndefined();
+      expect(last?.action).toBeUndefined();
+    }
+  });
+
+  /** The owner's order: a compact question and a compact answer only, one sentence each (D142.8) */
+  it('pins the widget copy, one sentence naming where the widgets appear', () => {
+    expect(en['help.q.widgets']).toBe('Are widgets supported?');
+    expect(en['help.a.widgets.ios']).toBe('Yes, on the home screen and the lock screen.');
+    expect(en['help.a.widgets.android']).toBe('Yes, on the home screen.');
+
+    for (const key of ['help.q.widgets', 'help.a.widgets.ios', 'help.a.widgets.android'] as const) {
+      expect(en[key]).toMatch(/[.?]$/);
+      expect(en[key].slice(0, -1)).not.toMatch(/[.?]/);
+    }
+  });
+
+  /** No locale teaches how to add a widget, whatever script it writes in (D142.6) */
+  it('teaches no one how to add a widget, in any locale', () => {
+    const instructionWords: Record<string, RegExp> = {
+      en: /\b(add|hold|press|touch|pin|drag)\b/i,
+      ar: /أضف|اضغط|المس|ثبّت|اسحب/,
+      ms: /\b(tambah|tekan|sentuh|pasang|tarik)\b/i,
+      so: /\b(dar|taabo|taab|qid|jiid)\b/i,
+      hi: /जोड़ें|दबाएं|छुएं|पिन करें|खींचें/,
+      th: /เพิ่ม|กดค้าง|แตะ|ปักหมุด|ลาก/,
+    };
+    const catalogs: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+    for (const [loc, banned] of Object.entries(instructionWords)) {
+      for (const key of ['help.q.widgets', 'help.a.widgets.ios', 'help.a.widgets.android'] as const) {
+        const value = catalogs[loc][key];
+
+        expect(value?.length ?? 0).toBeGreaterThan(0);
+        expect(`${loc} ${key}: ${value}`).not.toMatch(banned);
+      }
     }
   });
 

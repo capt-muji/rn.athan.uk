@@ -131,6 +131,17 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
       text: 'help.a.cutoff',
     },
   },
+
+  // A support question, not a cause, so it goes last and names nothing to change (owner, 2026-10-19)
+  {
+    question: 'help.q.widgets',
+    ios: {
+      text: 'help.a.widgets.ios',
+    },
+    android: {
+      text: 'help.a.widgets.android',
+    },
+  },
 ];
 
 /**

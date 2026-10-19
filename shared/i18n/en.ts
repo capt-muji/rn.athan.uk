@@ -70,6 +70,9 @@ export const en = {
   'help.a.volume.ios': 'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.',
   'help.q.cutoff': 'Why does the athan cut off early?',
   'help.a.cutoff': 'Notification sounds are limited to 30 seconds. Every athan is trimmed to fit.',
+  'help.q.widgets': 'Are widgets supported?',
+  'help.a.widgets.ios': 'Yes, on the home screen and the lock screen.',
+  'help.a.widgets.android': 'Yes, on the home screen.',
   'help.action.dndAccess': 'Grant Do Not Disturb access',
 
   'whatsNew.title.tabletSupport': 'Tablet support',
