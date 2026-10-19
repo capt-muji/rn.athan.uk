@@ -55,6 +55,8 @@ long-press sheet (learned the hard way).
 | --- | --- | --- |
 | Settings (hex-nut) button | bottom-centre, ~ (540, 1830) | dev-client builds also show a blue circle FAB (dev menu) nearby; the FAB never renders on iOS 26.5 scene builds |
 | Settings sheet: Athan row | (540, 851) | first row of the Prayer card, sheet open at its default snap |
+| Settings sheet scrolled to Other: Language row | (516, 1509) | Arabic face; row اللغة at [143,1480][890,1538], sheet scrolled until the أخرى section (measured 2026-10-19). Below the fold at the default snap, and Maestro cannot text-find it there: scroll first, then tap |
+| Language sheet: English row | (888, 1450) | second list row, right-aligned [825,1421][952,1479] under the RTL sheet; list at its top, Arabic face (measured 2026-10-19) |
 
 ## Known dialogs
 
