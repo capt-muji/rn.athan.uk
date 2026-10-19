@@ -1,6 +1,6 @@
 # The board
 
-The queue's board: a self-hosted It's a Plan instance. It holds the tickets, their columns,
+The board: a self-hosted It's a Plan instance. It holds the tickets, their columns,
 their relations, their history and the plan documents. This folder is the whole deployment.
 
 ## What is here

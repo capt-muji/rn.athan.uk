@@ -12,7 +12,7 @@ const read = (relative: string): string => readFileSync(join(ROOT, relative), 'u
 describe('board protocol lines', () => {
   it('the shared skill fixes the board as the queue and the column by state type', () => {
     const skill = read('.agents/skills/board-workflow/SKILL.md');
-    expect(skill).toContain('Pick and move a column by its `stateType`, never by its name.');
+    expect(skill).toContain('A ticket is its number, written `#42`.');
     expect(skill).toContain('A subtask is a plan step. It never gets a lane of its own.');
   });
 

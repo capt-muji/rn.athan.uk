@@ -58,7 +58,7 @@ various, several, some, appropriate, reasonable, properly, correctly.
 - **Subtasks**: one per step, titled `Step N: <what it produces>`. Create each with the parent
   set to this ticket, in the Backlog column so they do not count as ready.
 - **Relations**: for each thing this waits on, a `blocked_by` relation to that ticket.
-- **Queue order**: already set at intake. Leave it.
+- **Ticket number**: already set at intake. Leave it.
 
 ## 5. The gate
 

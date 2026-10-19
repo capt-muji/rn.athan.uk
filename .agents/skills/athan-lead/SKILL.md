@@ -1,6 +1,6 @@
 ---
 name: athan-lead
-description: Orchestrate the board - up to three parallel lanes, each ticket carried from its next phase to Done. Read the board, pick the ticket, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. Trigger on "/athan-next", "run the queue", "work the board", "continue the ticket", or any request to execute a queued ticket.
+description: Orchestrate the board - up to three parallel lanes, each ticket carried from its next phase to Done. Read the board, pick the ticket, dispatch the lane, executor and reviewer workers, verify their work yourself, push when every commit is reviewed. Trigger on "/athan-next", "run the board", "work the tickets", "continue the ticket", or any request to execute a ticket.
 ---
 
 # athan-lead
@@ -130,7 +130,7 @@ At most three sentences on what the run delivered and anything the owner must de
 2. The **agent-ruled table**: `Question | Answer | Why`, one line each, empty when nothing was
    ruled.
 3. The **board view**, read off the board as it stands: the five most recently completed
-   tickets, then every open ticket in queue order, with `Order | Ticket | Column | Waiting on`.
+   tickets, then every open ticket by number, with `Order | Ticket | Column | Waiting on`.
    Bold the ticket the next run would take.
 4. The four-line handoff: what is done, what the board holds, what comes next, and what the
    owner types.

@@ -37,14 +37,14 @@ in git history and on the board at `board/`. Look there before assuming a rule e
 `opencode.json` enables codegraph, agent-device, xcodebuildmcp, mobile-mcp and the maestro
 server. The expo MCP sits disabled: nothing ships through EAS. Flip `enabled` to change one.
 
-`itsaplan` (ticket 144, 2026-10-19) is the queue's board, a local It's a Plan instance. It holds
+`itsaplan` (ticket 144, 2026-10-19) is the board, a local It's a Plan instance. It holds
 the tickets, their columns, their relations, their history and their plans. Its key comes from
 `ITSAPLAN_API_KEY` in the shell environment, never from this repository. The deployment lives in
 `board/`, and `board/README.md` documents it.
 
 ## Workflow
 
-- **The board is the queue.** `ai/plans/README.md` is gone. A ticket is an issue on the board, and
+- **The board holds the tickets.** `ai/plans/README.md` is gone. A ticket is an issue on the board, and
   its column is its state. Read `.agents/skills/board-workflow/SKILL.md` before touching it: it
   holds the ten columns, the label vocabulary, the ticket anatomy and the picking rule.
 - Up to three lanes run at a time, one ticket each, file-disjoint, refilled as they free. Entry is
@@ -57,7 +57,7 @@ the tickets, their columns, their relations, their history and their plans. Its 
   lead rotates worker sessions mechanically from those numbers.
 - The run closes with `board/snapshot.sh`, committed with the run's last commit. The snapshot is
   what makes the board recoverable from git.
-- The board's words: a ticket is a queued unit of work, a step is a plan step. The board and
+- The board's words: a ticket is a unit of work, a step is a plan step. The board and
   these files share the words.
 
 ## The repository is public to the whole world

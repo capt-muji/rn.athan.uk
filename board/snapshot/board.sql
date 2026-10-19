@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 5s6ohfvAezcAFy0RhPHnONfpxEmZDSHnTUCikGS9tKRKAa7SiegmrNTCFaCT6HS
+\restrict WewSSvNjJIPkYCQtzbBMpq1PEk8opn2Ps4v781G5LSTuOxABRTmeJ0PQVHZTSJd
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5080,7 +5080,7 @@ INSERT INTO public.account (id, account_id, provider_id, user_id, access_token, 
 -- Data for Name: apikey; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 50, NULL, '2026-10-19 01:55:05.738', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 01:55:05.739', NULL, 'null');
+INSERT INTO public.apikey (id, config_id, name, start, reference_id, prefix, key, refill_interval, refill_amount, last_refill_at, enabled, rate_limit_enabled, rate_limit_time_window, rate_limit_max, request_count, remaining, last_request, expires_at, created_at, updated_at, permissions, metadata) VALUES ('YeMN1PXRxo76c9QaLbLmPG6rGdSaMIzq', 'default', 'board-mcp', 'itp_Sn', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'itp_', 'GMouqGOW1S7JPviPVI-ChdJ-e1ap3RrtwDjbTTK33Uc', NULL, NULL, NULL, true, true, 1000, 100, 2, NULL, '2026-10-19 02:08:29.831', '2027-01-16 23:58:45.238', '2026-10-18 23:58:45.238', '2026-10-19 02:08:29.835', NULL, 'null');
 
 
 --
@@ -5107,9 +5107,9 @@ INSERT INTO public.app_setting (key, value, updated_at) VALUES ('migration.teams
 -- Data for Name: custom_field; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (1, NULL, 'Queue order', 'number', 0, '2026-10-18 23:57:29.884072+00', 1, true, NULL);
 INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (2, NULL, 'Lane', 'select', 1, '2026-10-19 01:39:09.5539+00', 1, false, NULL);
 INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (3, NULL, 'Waiting on', 'text', 2, '2026-10-19 01:39:09.560333+00', 1, false, NULL);
+INSERT INTO public.custom_field (id, issue_type_id, name, field_type, "position", created_at, project_id, show_in_body, member_scope) VALUES (1, NULL, 'Ticket number', 'number', 0, '2026-10-18 23:57:29.884072+00', 1, true, NULL);
 
 
 --
@@ -5247,9 +5247,6 @@ Needs first: #50', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '202
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (4, 1, 4, 1, 7, '#54 Patches, one line of qibla copy, repository hygiene', 'Queue status: BLOCKED
 
 2026-10-14 by the owner: the owner has no access to the OnePlus 3T, which the one leftover needs. The owner paused app work part way through', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-18 23:58:02.71794+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 5, 1, 1, '#70 The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Queue status: NOT PLANNED
-
-2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-18 23:58:02.727023+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (7, 1, 7, 1, 10, '#123 Android widget refresh on OEMs: re-evaluate against SDK 58 stable', 'Queue status: FOLDED
 
 into row 127 2026-10-18 by the owner''s order (the owner read them as the same thing; the delivered version-delta verdict carries in as 127''s
@@ -5566,6 +5563,9 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (121, 1, 121, 1, 4, '#9 Android home-screen widgets', 'Queue status: DONE', NULL, NULL, NULL, 100000, '2026-10-18 23:35:57.562992+00', '2026-10-18 23:58:03.731478+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (122, 1, 122, 1, 4, '#7 Agent tooling', 'Queue status: DONE', NULL, NULL, NULL, 101000, '2026-10-18 23:35:57.578621+00', '2026-10-18 23:58:03.73909+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (123, 1, 123, 1, 4, '#6 SDK 58 beta upgrade + alarmClock', 'Queue status: DONE', NULL, NULL, NULL, 102000, '2026-10-18 23:35:57.597339+00', '2026-10-18 23:58:03.747911+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 5, 1, 4, '#70 The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Queue status: NOT PLANNED
+
+2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-19 02:11:46.643383+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (21, 1, 21, 1, 9, '#144 The board as a portable product, take three: It''s a Plan (itsaplan.dev)', 'Goal: the queue''s work runs on this board instead of a markdown file.
 
 Where: the board, its schema, and the repository''s workflow skills and agents.
@@ -5577,7 +5577,7 @@ Acceptance:
 - [x] the workflow skills and agents read and write the board, not a file
 - [x] the queue file and the old reader are gone, with no reference left
 
-The plan and the log are the Docs page "Plan: QUEUE-21".', NULL, NULL, NULL, 21000, '2026-10-18 23:35:55.814603+00', '2026-10-19 01:47:06.084607+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+The plan and the log are the Docs page "Plan: #144".', NULL, NULL, NULL, 21000, '2026-10-18 23:35:55.814603+00', '2026-10-19 02:11:46.577329+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 
 
 --
@@ -6220,6 +6220,9 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (629, 122, 'activity', 'owner', NULL, 'field', '2026-10-18 23:58:04.866802+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (632, 125, 'activity', 'owner', NULL, 'field', '2026-10-18 23:58:04.891482+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "4"}, "subject": {"id": 1, "value": "Queue order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (636, 21, 'activity', 'owner', NULL, 'description', '2026-10-19 01:47:06.092508+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the queue''s work runs on this board instead of a markdown file.\n\nWhere: the board, its schema, and the repository''s workflow skills and agents.\n\nAcceptance:\n- [x] the stack runs from board/ with the database and attachments bound to the repository\n- [x] the destroy and restore drill brings the board back from snapshot/board.sql alone\n- [x] the board holds the queue''s ten columns and every ticket on its own column\n- [x] the workflow skills and agents read and write the board, not a file\n- [x] the queue file and the old reader are gone, with no reference left\n\nThe plan and the log are the Docs page \"Plan: QUEUE-21\"."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (965, 21, 'activity', 'owner', NULL, 'description', '2026-10-19 02:11:46.606007+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the queue''s work runs on this board instead of a markdown file.\n\nWhere: the board, its schema, and the repository''s workflow skills and agents.\n\nAcceptance:\n- [x] the stack runs from board/ with the database and attachments bound to the repository\n- [x] the destroy and restore drill brings the board back from snapshot/board.sql alone\n- [x] the board holds the queue''s ten columns and every ticket on its own column\n- [x] the workflow skills and agents read and write the board, not a file\n- [x] the queue file and the old reader are gone, with no reference left\n\nThe plan and the log are the Docs page \"Plan: #144\"."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (966, 5, 'activity', 'owner', NULL, 'status', '2026-10-19 02:11:46.656097+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (967, 5, 'comment', 'owner', 'Done. This ticket described the queue as a portable workflow on a board, and ticket #144 delivered it: the queue file is gone, the board is the queue, and the skills and agents read and write it.', NULL, '2026-10-19 02:11:46.680115+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -6479,7 +6482,6 @@ INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, creat
 -- Data for Name: issue_status; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (5, 5, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.576+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (15, 15, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.731+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (16, 16, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.745+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (17, 17, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.759+00', NULL);
@@ -6622,6 +6624,8 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (142, 20, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.873774+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (21, 21, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.814+00', '2026-10-18 23:57:28.891996+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (143, 21, 9, 'Owner-led', 'started', '2026-10-18 23:57:28.891996+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (5, 5, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.576+00', '2026-10-19 02:11:46.649902+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (294, 5, 4, 'Done', 'completed', '2026-10-19 02:11:46.649902+00', NULL);
 
 
 --
@@ -7121,7 +7125,7 @@ INSERT INTO public.oauth_resource (id, identifier, name, access_token_ttl, refre
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'QUEUE', 'Athan.uk queue', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'QUEUE', 'Tickets', '', 209, '2026-10-18 23:35:27.31234+00', true, true, true, true, true, true, true, true, false, false, false, true, 1, NULL);
 
 
 --
@@ -7135,13 +7139,13 @@ INSERT INTO public.project (id, key, name, description, next_sequence, created_a
 --
 
 INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (1, 1, 'Backlog', 'backlog', '#71717a', 0, '2026-10-18 23:35:27.31234+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (10, 1, 'Deferred', 'backlog', '#64748b', 1, '2026-10-18 23:57:28.498011+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (6, 1, 'Planning', 'unstarted', '#8b5cf6', 2, '2026-10-18 23:57:28.465603+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (2, 1, 'Ready', 'unstarted', '#0ea5e9', 3, '2026-10-18 23:35:27.31234+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (3, 1, 'In progress', 'started', '#eab308', 4, '2026-10-18 23:35:27.31234+00', 3, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (7, 1, 'Blocked', 'started', '#ef4444', 5, '2026-10-18 23:57:28.473336+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (8, 1, 'Audit', 'started', '#f97316', 6, '2026-10-18 23:57:28.482766+00', NULL, 'soft', NULL);
-INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (9, 1, 'Owner-led', 'started', '#ec4899', 7, '2026-10-18 23:57:28.490094+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (6, 1, 'Planning', 'unstarted', '#8b5cf6', 1, '2026-10-18 23:57:28.465603+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (2, 1, 'Ready', 'unstarted', '#0ea5e9', 2, '2026-10-18 23:35:27.31234+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (3, 1, 'In progress', 'started', '#eab308', 3, '2026-10-18 23:35:27.31234+00', 3, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (7, 1, 'Blocked', 'started', '#ef4444', 4, '2026-10-18 23:57:28.473336+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (8, 1, 'Audit', 'started', '#f97316', 5, '2026-10-18 23:57:28.482766+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (9, 1, 'Owner-led', 'started', '#ec4899', 6, '2026-10-18 23:57:28.490094+00', NULL, 'soft', NULL);
+INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (10, 1, 'Deferred', 'started', '#64748b', 7, '2026-10-18 23:57:28.498011+00', NULL, 'soft', NULL);
 INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (11, 1, 'Upstream', 'started', '#14b8a6', 8, '2026-10-18 23:57:28.505154+00', NULL, 'soft', NULL);
 INSERT INTO public.project_column (id, project_id, name, state_type, color, "position", created_at, wip_limit, wip_mode, auto_assign_user_id) VALUES (4, 1, 'Done', 'completed', '#22c55e', 9, '2026-10-18 23:35:27.31234+00', NULL, 'soft', NULL);
 
@@ -7156,12 +7160,27 @@ INSERT INTO public.project_column (id, project_id, name, state_type, color, "pos
 -- Data for Name: project_document; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (1, 1, NULL, 'The queue', '# The queue
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (4, 1, NULL, 'The board itself', '# The board itself
+
+This instance runs the released images from the product''s own compose file. The theme is the
+product''s own and nothing is styled. The deployment lives in `board/` in the repository, and
+`board/README.md` documents the containers, the data folders and the restore.
+
+What is configured here and nowhere else: the ten columns, the label vocabulary, the lane, queue
+order and waiting-on fields, the `Queue` view, and these pages.
+
+The database and the attachments live in `board/data/`, which git ignores. `board/snapshot/board.sql`
+is the committed copy, refreshed at the end of a run. That file is what brings the board back.
+
+Nothing on this board runs by itself. There are no agents, no webhooks and no schedules. A
+session reads it and writes it, and that is all.
+', NULL, 'book', '{}', false, false, false, NULL, NULL, 4096, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.175489+00', '2026-10-19 01:47:06.034128+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (1, 1, NULL, 'The tickets', '# The tickets
 
 A ticket is a queued unit of work. A step is a plan step. The board and the repository use the
 same two words.
 
-The board is the source of truth. There is no queue file in the repository.
+The board is the source of truth. There is no ticket file in the repository.
 
 ## The columns
 
@@ -7183,14 +7202,14 @@ The board is the source of truth. There is no queue file in the repository.
 A ticket that cannot start before another is finished carries a `blocked_by` relation to it. The
 relation is a warning, never a lock: the lane rule is that a ticket is runnable when every issue
 that blocks it is Done.
-', NULL, 'book', '{}', false, false, false, NULL, NULL, 1024, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.139721+00', '2026-10-19 01:47:05.998109+00');
+', NULL, 'book', '{}', false, false, false, NULL, NULL, 1024, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.139721+00', '2026-10-19 02:17:21.382109+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (3, 1, NULL, 'Working the board', '# Working the board
 
 Nothing here is edited by hand. Agents read and write the board through MCP, and the repository''s
 workflow skills carry the conventions.
 
 1. A ticket is created on the board when the owner asks for something, or when a session finds
-   work that needs one. It lands in Backlog with a number in `Queue order`.
+   work that needs one. It lands in Backlog with a number in `Ticket number`.
 2. A planner takes it to Planning and writes the plan as a Docs page on the issue, the acceptance
    criteria in the description, and the steps as subtasks. Then it moves it to Ready.
 3. A lane takes it to In progress and does the work. It comments as it goes.
@@ -7201,7 +7220,7 @@ workflow skills carry the conventions.
 
 | Field | What it holds |
 | --- | --- |
-| Queue order | the ticket''s number. The lower it is, the sooner it runs |
+| Ticket number | the ticket''s number. The lower it is, the sooner it runs |
 | Lane | which lane holds it, set by the lead before dispatch |
 | Waiting on | why it is Blocked, Upstream or Owner-led. One line |
 
@@ -7212,7 +7231,7 @@ research. Flags: needs-owner, upstream.
 
 ## Reading it
 
-The `Queue` view shows the number, the priority, the type, the labels, the queue order, the lane
+The `Queue` view shows the number, the priority, the type, the labels, the tickets order, the lane
 and how long the ticket has sat where it is. A card also shows what it is waiting on, and the
 progress of its steps.
 
@@ -7220,407 +7239,7 @@ progress of its steps.
 
 The `itsaplan` MCP server in `opencode.json` points at the API origin. Its key comes from
 `ITSAPLAN_API_KEY` in the shell environment.
-', NULL, 'book', '{}', false, false, false, NULL, NULL, 3072, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.164561+00', '2026-10-19 01:47:06.015192+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (4, 1, NULL, 'The board itself', '# The board itself
-
-This instance runs the released images from the product''s own compose file. The theme is the
-product''s own and nothing is styled. The deployment lives in `board/` in the repository, and
-`board/README.md` documents the containers, the data folders and the restore.
-
-What is configured here and nowhere else: the ten columns, the label vocabulary, the lane, queue
-order and waiting-on fields, the `Queue` view, and these pages.
-
-The database and the attachments live in `board/data/`, which git ignores. `board/snapshot/board.sql`
-is the committed copy, refreshed at the end of a run. That file is what brings the board back.
-
-Nothing on this board runs by itself. There are no agents, no webhooks and no schedules. A
-session reads it and writes it, and that is all.
-', NULL, 'book', '{}', false, false, false, NULL, NULL, 4096, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.175489+00', '2026-10-19 01:47:06.034128+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (6, 1, NULL, 'Plan: QUEUE-21', '# The board as a portable product, take three: It''s a Plan
-
-# Ticket 144: The board as a portable product, take three: It''s a Plan
-
-| Brief | The board as a portable product, take three: It''s a Plan (itsaplan.dev) |
-| --- | --- |
-| Planned at | `5b1c965d`, version 2.0.1092, 2026-10-19 |
-| Planned by | Lead session 2026-10-19, from the owner''s brief in `ai/prompts/itsaplan-board.md` |
-| Needs first | nothing (the two rejected prototypes are discarded and their branches are gone) |
-| Parent | none |
-| Group | the board prototype (`ai/plans/README.md` row 144 only, disjoint from every other open row) |
-| Batch budget | 2 (two docs-and-operations steps, no code step) |
-| Session budget | 2 |
-| Steps count | 2 (bring the stack up, put the queue''s tickets on it) |
-| Device | none. The proof is the running stack and the browser read of the board |
-| Owner decisions still needed | none. The research gate and the mapping are ruled here |
-
-## 1. Goal
-
-Two board products were built far too far and rejected the day each was handed over: Kanboard
-v1.2.54 (2026-10-18) was called ugly in every way with a custom MCP layer creeping back in, and
-Paperclip 2026.1012.0 (2026-10-18 to 2026-10-19) was discarded whole. The owner''s lessons: an
-ugly board is a rejected board, and a custom layer on top of the product counts against it.
-
-Today the repository has no board the owner can look at. When this ticket is done, a third
-product, It''s a Plan v1.5.0, runs from its own `docker-compose.yml` with generated secrets in an
-env file outside the repository tree, and the queue''s own tickets sit on one project inside it.
-The owner notices by opening `http://localhost:3001`, signing in, and reading the Kanban board.
-
-The owner''s rules that bind this work, quoted from `ai/prompts/itsaplan-board.md`:
-
-- "Spin it up. As default as possible, bare minimum. Nothing else."
-- "Put our current tickets on it."
-- "I don''t want anything to do with migration, nothing. I don''t want to sync."
-- "No AI agents, no MCP connection, no webhooks, no sync, no import engineering, no theming, no
-  custom glue of any kind."
-- "Nothing merges to `uat` until that ruling; the work lives on a branch."
-- "No secret, address or key is ever committed."
-
-## 2. Decisions
-
-### 2.1 Taken
-
-| Decision | Answer | By | Recorded |
-| --- | --- | --- | --- |
-| Product | It''s a Plan v1.5.0 | owner, in the brief | `ai/prompts/itsaplan-board.md` |
-| Release pin | `VERSION=1.5.0` in the env file, the release the brief names | agent-ruled | LOG.md, 2026-10-19 |
-| Checkout and env location | `$HOME/athan-gitree/sessions/144/itsaplan` (clone) and `$HOME/athan-gitree/sessions/144/.env`, both outside the repository tree | agent-ruled | LOG.md, 2026-10-19 |
-| Telemetry | `TELEMETRY_DISABLED=1` and `DO_NOT_TRACK=1` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
-| Postgres password alphabet | `openssl rand -hex 32` rather than base64, so the value cannot break the `DATABASE_URL` interpolation | agent-ruled | LOG.md, 2026-10-19 |
-| Ticket import route | the product''s own REST API (`/teams`, `/projects`, `/projects/:ref/issues`, `/issues/:id/links`) driven from a throwaway script in `$TMPDIR` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
-| Status mapping | Done to the product''s Done column, In progress to In Progress, Ready and Planning and Audit to Todo, and Backlog and Deferred and Blocked and Upstream and Owner-led to Backlog | agent-ruled | LOG.md, 2026-10-19 |
-| Needs mapping | each resolvable `needs` pair becomes one `blocked_by` relation between the two issues | agent-ruled | LOG.md, 2026-10-19 |
-| Local cookie flag | `NODE_ENV=development` on the api service only, through a compose override outside the repository tree, so the session cookie is not `Secure` over plain HTTP | agent-ruled | LOG.md, 2026-10-19 |
-
-### 2.2 The executor must not decide
-
-None. The scope is two steps with no code path, the research gate is answered in section 4, and
-the owner is hands-off until the verdict. No irreversible act the hard rules name is in scope:
-no money, no credential leaves this machine, nothing is published, nothing is destroyed.
-
-## 3. Pre-flight
-
-`scripts/preflight-144.sh` verifies the stack checkout, the compose file, the free ports, the
-absent committed secret, the queue row, the version, and every anchor count equal to 1. It ends
-`PREFLIGHT OK`.
-
-## 4. Background
-
-### 4.1 Code map (repository)
-
-| File | Why it is read |
-| --- | --- |
-| `board/reader.mjs` | emits `board/state/board.json`: the `tickets` array is the import''s source, `doneColumnCount` 9999 in `board/config.json` puts all 107 done rows in that array |
-| `board/config.json` | sets `doneColumnCount` to 9999, so the emitted count is 128 |
-| `board/state/board.json` | the emitted tickets, regenerated at step 2 |
-| `ai/plans/README.md` | row 144, the ticket this work tracks |
-| `package.json`, `app.json` | the version files every commit bumps together |
-
-### 4.2 Code map (the product, read in the checkout at `$HOME/athan-gitree/sessions/144/itsaplan`)
-
-| Path | What it proves |
-| --- | --- |
-| `docker-compose.yml` | the seven services, the required env keys, the published ports 3000 and 3001, the `VERSION` image pin |
-| `.env.example` | every optional variable, including the telemetry switches |
-| `docs/self-hosting.md` | the `http://localhost` plain-HTTP cookie exception in Chrome and Firefox, and "the first account you register becomes the instance admin" |
-| `apps/api/src/modules/projects/service.ts` | `DEFAULT_COLUMNS`: Backlog, Todo, In Progress, Done, Canceled |
-| `apps/api/src/modules/issues/index.ts` | `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links` |
-| `apps/api/src/modules/teams/index.ts` | `POST /teams` then `POST /teams/:teamId/projects` |
-
-### 4.3 Existing tests and what each proves
-
-None apply. The deliverable is a running stack, and the repository has no test for a third-party
-container stack. The proof is physical: the browser read of the board at step 2 and the API
-counts recorded in `LOG.md`.
-
-### 4.4 Why the obvious fix is wrong
-
-Writing an importer inside the repository is the failure the two rejected runs repeated. The
-brief forbids committed tooling, so the copy is throwaway session work in `$TMPDIR`. Theming the
-product to look less plain is the second failure: the brief forbids a theme, and the default
-interface is what the owner is being asked to judge.
-
-## 5. Design
-
-**Invariant.** The stack runs from the product''s own compose file with only the seven required
-env values plus the telemetry switches and the release pin, and the project holds one issue per
-emitted ticket.
-
-**Alternatives rejected.** A `.env` inside the checkout: the repository is public and the
-identifier gate forbids a committed secret. A personal API key created through the browser: the
-session cookie already round-trips over `http://localhost` with curl, so no second credential is
-needed. Custom project columns named after the queue''s own statuses: the brief says map onto the
-product''s fields, and the default five columns are the most default surface.
-
-### Acceptance criteria
-
-- [R1.1] WHEN the compose stack starts from the repository''s `docker-compose.yml` with the generated env file THE SYSTEM SHALL report api healthy on port 3000 and web healthy on port 3001.
-- [R1.2] WHEN `http://localhost:3000/auth-config` is read on the fresh database THE SYSTEM SHALL answer `{"hasUsers":false,"registration":"open","emailPassword":true}`.
-- [R2.1] WHEN `node board/reader.mjs` runs on this tree THE SYSTEM SHALL write 128 tickets into `board/state/board.json`.
-- [R2.2] WHEN the emitted tickets are posted to `POST /projects/athan-uk.QUEUE/issues` THE SYSTEM SHALL hold 128 issues, 107 in the Done column and 21 in the Backlog column.
-- [R2.3] WHEN a ticket''s `needs` entry names an emitted ticket THE SYSTEM SHALL hold one `blocked_by` relation for that pair, 53 pairs in total across the project.
-- [R2.4] WHILE no agent, webhook or Telegram token is configured THE SYSTEM SHALL log the worker and bot start lines and nothing after them, and answer an empty webhook list.
-- [R3.1] WHEN the first account registers at `http://localhost:3001/register` THE SYSTEM SHALL give it the `god` role and open a session that reaches the board.
-- [R4.1] IF any research-gate answer is no THE SYSTEM SHALL stop and report before starting the stack.
-- [R5.1] WHEN the work is handed over THE SYSTEM SHALL leave the stack running, the board reachable at `http://localhost:3001/athan-uk.QUEUE`, and no generated file inside the repository tree.
-- [R6.1] WHEN the board is read THE SYSTEM SHALL render the queue''s ten columns by their queue names, left to right Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream and Done.
-- [R6.2] WHEN the emitted tickets are placed THE SYSTEM SHALL put each on the column its queue row names, 107 on Done and 21 across the open columns.
-- [R7.1] WHEN the AI Agents page is read THE SYSTEM SHALL list the seven workflow roles, and the Skills library SHALL hold `athan-lead` and `athan-planner`.
-- [R7.2] WHEN an agent connects to the local board over MCP THE SYSTEM SHALL take a personal key from the shell environment and list the board''s tools.
-- [R8.1] WHEN the runner is considered THE SYSTEM SHALL leave it uninstalled and record that starting it spends model tokens.
-
-## 6. Steps
-
-- [ ] Step 01: bring the stack up on the pinned release, defaults only (`steps/01-bring-up.md`)
-- [ ] Step 02: put the queue''s tickets on one project through the REST API (`steps/02-import.md`)
-- [ ] Step 03: inject the workflow into the board (`steps/03-inject.md`)
-
-Both steps are operations, not code. The evidence for each is a command''s output recorded in
-`LOG.md`.
-
-## 7. Device proof
-
-None. No phone, no simulator and no build is in scope. The physical proof is the browser read of
-`http://localhost:3001/athan-uk.QUEUE` and the issue page, with the column counts in the
-screenshots kept outside the repository tree.
-
-## 8. Records
-
-`LOG.md` carries the planning section and one `### Step <NN> — <state>` section per step, each
-ending with a `session:` line. The queue cell text the lead applies on DONE is settled by the
-owner''s verdict, which is a later ticket. This run leaves row 144 OWNER-LED with the handover
-record. The docs commit subject is `docs(plans): ticket 144 ...`.
-
-## 9. Push
-
-None. The executor never pushes. The lead pushes after the reviews pass and the owner''s verdict.
-
-## 10. When something goes wrong
-
-| Symptom | Action |
-| --- | --- |
-| A required env key is missing | the compose file names the key in its refusal. Add it to the env file outside the tree and re-run `up -d` |
-| Agent containers exit on start | read `docker compose logs <service>`. The api healthcheck line and the migrate exit code come first |
-| The browser stays signed out after sign-in | the session cookie is `Secure` and the browser is WebKit. The api runs with `NODE_ENV=development` from the compose override, so the cookie is not `Secure` and every browser keeps it |
-| The import script fails midway | re-run with `--links-only`, which resolves existing issues by their `#<order>` title prefix |
-| A port is taken | 3000 and 3001 carry `API_PORT` and `WEB_PORT`. Change one in the env file only, never in the compose file |
-
-## 11. Subagents
-
-Planning: none. The brief is complete and the research gate is answered from the product''s own
-source. Delivery: none. The two steps are operations driven by the lead, and the audit is the
-lead''s read of the running board. `vision` reads any screenshot the lead cannot see.
-
-## 12. Report to the owner
-
-What changed: It''s a Plan v1.5.0 runs locally from its own compose file, and one project holds
-the queue''s 128 emitted tickets. What was proven: the criteria in section 5, each against a
-command''s output in `LOG.md` or a browser read. Decisions waiting on the owner: the verdict on
-look, feel and functionality. The four-line handoff closes the run, with the URL and the ports.
-
-
----
-
-# Log
-
-# Ticket 144 log: the It''s a Plan board
-
-## Planning (2026-10-19)
-
-Brief: `ai/prompts/itsaplan-board.md`. Planned at `5b1c965d`, version 2.0.1092. The owner''s
-brief carries the whole scope: two steps, spin the product up on its own compose path and copy
-the queue''s emitted tickets onto one project through the REST API, then stop for the verdict.
-
-### Research gate, answered from the product''s own source
-
-Read against the v1.5.0 checkout (`6e0dc0b`, 2026-10-13). Every answer is yes.
-
-1. **Runs locally through its own Docker path, viewable at `http://localhost:3001`.** The
-   compose file publishes `api` on 3000 and `web` on 3001 and keeps RustFS internal.
-   `docs/self-hosting.md` states that `http://localhost` is the one plain-HTTP exception for the
-   `Secure` session cookie, in Chrome and Firefox, and that WebKit refuses it. Verified live:
-   both containers report healthy and the board renders in Chromium.
-2. **Genuinely free and self-hostable with no cloud dependency.** `LICENSE` is the full AGPL v3
-   text. No license key, licence server or paid tier appears anywhere in the tree. Every service
-   in the compose file runs locally, and the images are public GHCR tags.
-3. **The default stack shows the board with agents, MCP, webhooks and the Telegram bot inert.**
-   The bot starts and re-reads its config from the database. With no token it logs its start line
-   and idles. The worker logs its start line and finds no webhook delivery and no agent run to
-   claim. The project starts with no webhook (`GET /projects/athan-uk.QUEUE/webhooks` answers
-   `[]`) and no agent attached. MCP is a team switch, off until an operator turns it on.
-4. **Tickets arrive through the product''s own API with no committed tooling.** `POST /teams`,
-   `POST /projects`, `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links`. The
-   brief forbids committed tooling, so the copy is a throwaway script in `$TMPDIR` authenticated
-   with the session cookie from first registration.
-5. **First open.** `http://localhost:3001/register` shows the first-run sign-up form. The first
-   account registered becomes the instance admin (`role: "god"`), owns the instance workspace,
-   and the session lands on the project board at `/athan-uk/QUEUE`.
-
-### Decisions taken (agent-ruled)
-
-- **Release pin `VERSION=1.5.0`**: the brief names v1.5.0 as the verified release, and pinning
-  keeps the run on a version whose docs were read.
-- **Checkout and env outside the repository tree**: `$HOME/athan-gitree/sessions/144/itsaplan`
-  and `$HOME/athan-gitree/sessions/144/.env`. The repository is public and the identifier gate
-  forbids a committed secret.
-- **Postgres password from `openssl rand -hex 32`**: a base64 value can contain `/`, which
-  breaks the `postgres://user:pass@host` interpolation the compose file builds. Hex is the same
-  strength and URL-safe. The other secrets stay on the documented `openssl rand -base64 32`.
-- **Status mapping onto the product''s default columns**: the project''s own five columns are
-  Backlog, Todo, In Progress, Done and Canceled. Done maps to Done, In progress to In Progress,
-  and Ready, Planning and Audit to Todo. Backlog, Deferred, Blocked, Upstream and Owner-led map
-  to Backlog. Canceled stays unused. The emitted run holds 107 Done and 21 open, so the board
-  reads Backlog 21, Todo 0, In Progress 0, Done 107, Canceled 0.
-- **Local cookie flag, added after the first sign-in attempt failed in the owner''s browser**:
-  a `docker-compose.override.yml` in the checkout, outside the repository tree, sets
-  `NODE_ENV=development` on the api service only. The product''s auth reads
-  `secure: hostPrefixedCookies || NODE_ENV === "production"`, so this is the one lever that
-  stops the session cookie carrying `Secure` over plain HTTP. Every browser then keeps the
-  session on localhost, not only Chrome and Firefox. The web and worker containers are
-  untouched.
-- **Needs as `blocked_by` relations**: each `needs` entry that names an emitted ticket becomes
-  one relation between the two issues. Of 69 needs entries, 53 resolve: 14 name a row that is
-  cancelled or superseded and is not emitted, one is a self-reference (row 59 names itself), and
-  one pair appears twice.
-
-### Pre-flight
-
-`scripts/preflight-144.sh` copied to `$TMPDIR` and run from the repository root printed
-`PREFLIGHT OK`.
-
-## Phase 2, after the owner''s approval (2026-10-19)
-
-The owner read the board, approved the prototype, and asked for the queue''s workflow to be
-injected into it: the queue''s own columns, its agents, its skills and its docs, with the styling
-untouched and the repository queue still the source of truth. The branch was pushed and not
-merged to `uat`.
-
-### Step 03 — done
-
-**Columns.** The product''s five defaults became the queue''s own ten, in the reader''s own words:
-Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream, Done.
-`In progress` carries a soft WIP limit of three, which is the standing parallel order turned
-into the board''s own control. The product orders columns by state category and then by position,
-so the rendered order is Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit,
-Owner-led, Upstream, Done. The reader''s order could not be reproduced exactly because the
-product groups by state category, and Deferred is a backlog state while Upstream is a started
-one.
-
-**Tickets.** All 128 moved to the column their queue row names: Done 107, Deferred 11,
-Backlog 6, Owner-led 2, Blocked 1, Upstream 1, and Planning, Ready, In progress and Audit empty.
-That is the reader''s own distribution.
-
-**Workflow data.** `Queue order` is a number field carrying each ticket''s number in the queue,
-so any view can sort the way the queue does.
-
-**Agents.** The seven workflow roles are on the project as external agents: lane-lead, planner,
-executor, plan-griller, reviewer, explorer and vision. Each carries its one-line mandate. The
-AI Agents page lists them with "No runner yet".
-
-**Skills.** `athan-lead` and `athan-planner` are in the team library, read from the repository''s
-own skill files.
-
-**Docs.** Five pages: The queue, The agents, Working the board, The board itself, and Running
-the agents from the board.
-
-**MCP.** `itsaplan` is a remote server in `opencode.json`, written by `opencode mcp add` so the
-shape is the product''s own: it sits under `mcp.servers` with the URL of the API origin''s `/mcp`
-and an `x-api-key` header reading `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
-owner account and written to the shell environment and to
-`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository.
-
-The endpoint was verified three ways. A keyless call answers 401. A call with the key answers
-200 and `tools/list` returns the board''s tools. The OpenCode client sends the configured header
-and connects: with the key written literally for one test, the board''s MCP instructions arrived
-in the running session. The substitution itself needs the variable in the environment of the
-process that opens the connection, and the background service of the session running this work
-started before the export existed. A shell started after the `~/.zshrc` line connects it.
-
-Without a key the endpoint answers 401.
-
-### Decisions taken (agent-ruled, phase 2)
-
-- **The runner is not installed.** `@itsaplan/runner` would claim runs for the agents on this
-  board and start a coding agent CLI on every one. That spends model tokens on each run, so it
-  is written up as a Docs page and left for the owner''s order. The agents exist and are inert.
-- **Column state categories keep their real meanings.** Deferred stays a backlog state and
-  Upstream a started state, so the board''s analytics stay honest. The cost is that the rendered
-  order is the product''s grouping rather than the reader''s exact order.
-- **No styling touched.** No theme, no stylesheet, no colour scheme. The only colours set are
-  the new columns'' state colours, which the product requires.
-- **The repository queue stays the source of truth.** The board mirrors it. No sync service and
-  no importer is committed, so nothing writes back to the repository from the board.
-
-### Verified after phase 2
-
-The board renders the ten columns with the reader''s distribution. `In progress` shows `0 / 3`.
-The AI Agents page lists seven roles. The Skills library lists two. Docs lists five pages. The
-MCP endpoint takes the personal key and refuses a keyless call.
-
-The three throwaway scripts live in `$TMPDIR` and die with the session.
-
-## Ticket 144
-
-### Step 01 — done
-
-Stack brought up. `docker compose pull` then `docker compose up -d` from the v1.5.0 checkout
-with `--env-file $HOME/athan-gitree/sessions/144/.env`. `docker compose ps` reads:
-
-```
-itsaplan-api-1       Up (healthy)   0.0.0.0:3000->3000/tcp
-itsaplan-bot-1       Up
-itsaplan-minio-1     Up (healthy)   9000-9001/tcp (internal)
-itsaplan-postgres-1  Up (healthy)   5432/tcp (internal)
-itsaplan-web-1       Up (healthy)   0.0.0.0:3001->3001/tcp
-itsaplan-worker-1    Up
-```
-
-`curl http://localhost:3000/` answers 200 and `curl http://localhost:3001/login` answers 200.
-`curl http://localhost:3000/auth-config` answers
-`{"registration":"open","magicLink":false,"requireEmailVerification":false,"emailEnabled":false,"emailPassword":true,"google":false,"oidc":false,"oidcLabel":"","hasUsers":false}`.
-R1.1 and R1.2 hold. R4.1 holds: every gate answer is yes.
-
-### Step 02 — done
-
-`node board/reader.mjs` wrote 128 tickets into `board/state/board.json` (107 done rows, all of
-them emitted because `board/config.json` sets `doneColumnCount` to 9999).
-
-The admin account was registered through the product''s own sign-up endpoint at
-`http://localhost:3001/register` and the API reported `role: "god"`. `POST /teams` made
-`Athan.uk` (slug `athan-uk`), `POST /projects` made `QUEUE`, and the throwaway script posted 128
-issues. The API then read 128 issues, 107 on `columnId` 4 (Done) and 21 on `columnId` 1
-(Backlog). The second pass created the `blocked_by` relations. `psql -tAc "select count(*) from
-issue_link"` answers 53, matching the resolvable needs.
-
-The board renders at `http://localhost:3001/athan-uk.QUEUE` with the five columns and the ticket
-cards, each title carrying its `#<order>` prefix. An issue page shows the description carrying
-the queue status and the relations panel carrying the `blocked_by` pairs. R2.1, R2.2, R2.3,
-R3.1 and R5.1 hold.
-
-R2.4 holds: `docker compose logs worker` reads one line, `[worker] worker starting`, and
-`docker compose logs bot` reads one line, `[bot] bot service starting`. `GET
-/projects/athan-uk.QUEUE/webhooks` answers `[]`.
-
-session: ses_eaea5deecffeZq7TThCzVL0d8R
-
-### Handover (2026-10-19)
-
-Stack left running, and the board is open in the owner''s browser. Board at the documented web
-port on path `/athan-uk.QUEUE`, sign-up at `/register`. The first sign-in attempt failed in the
-owner''s browser, so the api was restarted with the cookie override above and the password was
-changed through `/api/auth/change-password` to a typeable value. Both were verified by a fresh
-browser sign-in that landed on the board. Credentials are in
-`$HOME/athan-gitree/sessions/144/credentials.txt`, outside the repository tree. Nothing merges
-to `uat` until the owner rules. The throwaway import script lived in `$TMPDIR` and is deleted.
-
-Row 144 was set OWNER-LED after the copy, so the reader was re-run and the single issue this
-ticket tracks (`QUEUE-21`) had its description refreshed to the new row. The other 127 issues
-stay the snapshot they were posted as. The needs cell for row 144 carries no digits, so the
-reader''s number scan finds no dependency there.
-
-`yarn validate` passes on the branch: tsc clean, Biome clean, Jest 5785 tests in 223 suites,
-coverage 100 percent. Only `package.json` and `app.json` are version files in git. `android/`
-is ignored, and its `versionName` was moved with the pair.
-', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 5120, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.728814+00', '2026-10-19 01:45:39.728814+00');
+', NULL, 'book', '{}', false, false, false, NULL, NULL, 3072, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-18 23:58:05.164561+00', '2026-10-19 02:17:21.398284+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (7, 1, NULL, 'Research: moonsighting, parts 1 and 2', '# Moonsighting research, sob 1: sources, deliverable, shared rules
 
 Status: finished 2026-09-14. Findings: `ai/features/moonsighting/RESEARCH-FINDINGS.md`. Sob 2
@@ -7760,9 +7379,394 @@ wait for me. Research only. Follow the rules in moonsighting-research.md. Never 
 time. Never store or commit the API key. Merge and push nothing without my go-ahead.
 ```
 ', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 6144, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.780332+00', '2026-10-19 01:45:39.780332+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (6, 1, NULL, 'Plan: #144', '# The board as a portable product, take three: It''s a Plan
+
+# Ticket 144: The board as a portable product, take three: It''s a Plan
+
+| Brief | The board as a portable product, take three: It''s a Plan (itsaplan.dev) |
+| --- | --- |
+| Planned at | `5b1c965d`, version 2.0.1092, 2026-10-19 |
+| Planned by | Lead session 2026-10-19, from the owner''s brief in `ai/prompts/itsaplan-board.md` |
+| Needs first | nothing (the two rejected prototypes are discarded and their branches are gone) |
+| Parent | none |
+| Group | the board prototype (`ai/plans/README.md` row 144 only, disjoint from every other open row) |
+| Batch budget | 2 (two docs-and-operations steps, no code step) |
+| Session budget | 2 |
+| Steps count | 2 (bring the stack up, put the tickets''s tickets on it) |
+| Device | none. The proof is the running stack and the browser read of the board |
+| Owner decisions still needed | none. The research gate and the mapping are ruled here |
+
+## 1. Goal
+
+Two board products were built far too far and rejected the day each was handed over: Kanboard
+v1.2.54 (2026-10-18) was called ugly in every way with a custom MCP layer creeping back in, and
+Paperclip 2026.1012.0 (2026-10-18 to 2026-10-19) was discarded whole. The owner''s lessons: an
+ugly board is a rejected board, and a custom layer on top of the product counts against it.
+
+Today the repository has no board the owner can look at. When this ticket is done, a third
+product, It''s a Plan v1.5.0, runs from its own `docker-compose.yml` with generated secrets in an
+env file outside the repository tree, and the tickets''s own tickets sit on one project inside it.
+The owner notices by opening `http://localhost:3001`, signing in, and reading the Kanban board.
+
+The owner''s rules that bind this work, quoted from `ai/prompts/itsaplan-board.md`:
+
+- "Spin it up. As default as possible, bare minimum. Nothing else."
+- "Put our current tickets on it."
+- "I don''t want anything to do with migration, nothing. I don''t want to sync."
+- "No AI agents, no MCP connection, no webhooks, no sync, no import engineering, no theming, no
+  custom glue of any kind."
+- "Nothing merges to `uat` until that ruling; the work lives on a branch."
+- "No secret, address or key is ever committed."
+
+## 2. Decisions
+
+### 2.1 Taken
+
+| Decision | Answer | By | Recorded |
+| --- | --- | --- | --- |
+| Product | It''s a Plan v1.5.0 | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Release pin | `VERSION=1.5.0` in the env file, the release the brief names | agent-ruled | LOG.md, 2026-10-19 |
+| Checkout and env location | `$HOME/athan-gitree/sessions/144/itsaplan` (clone) and `$HOME/athan-gitree/sessions/144/.env`, both outside the repository tree | agent-ruled | LOG.md, 2026-10-19 |
+| Telemetry | `TELEMETRY_DISABLED=1` and `DO_NOT_TRACK=1` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Postgres password alphabet | `openssl rand -hex 32` rather than base64, so the value cannot break the `DATABASE_URL` interpolation | agent-ruled | LOG.md, 2026-10-19 |
+| Ticket import route | the product''s own REST API (`/teams`, `/projects`, `/projects/:ref/issues`, `/issues/:id/links`) driven from a throwaway script in `$TMPDIR` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Status mapping | Done to the product''s Done column, In progress to In Progress, Ready and Planning and Audit to Todo, and Backlog and Deferred and Blocked and Upstream and Owner-led to Backlog | agent-ruled | LOG.md, 2026-10-19 |
+| Needs mapping | each resolvable `needs` pair becomes one `blocked_by` relation between the two issues | agent-ruled | LOG.md, 2026-10-19 |
+| Local cookie flag | `NODE_ENV=development` on the api service only, through a compose override outside the repository tree, so the session cookie is not `Secure` over plain HTTP | agent-ruled | LOG.md, 2026-10-19 |
+
+### 2.2 The executor must not decide
+
+None. The scope is two steps with no code path, the research gate is answered in section 4, and
+the owner is hands-off until the verdict. No irreversible act the hard rules name is in scope:
+no money, no credential leaves this machine, nothing is published, nothing is destroyed.
+
+## 3. Pre-flight
+
+`scripts/preflight-144.sh` verifies the stack checkout, the compose file, the free ports, the
+absent committed secret, the tickets row, the version, and every anchor count equal to 1. It ends
+`PREFLIGHT OK`.
+
+## 4. Background
+
+### 4.1 Code map (repository)
+
+| File | Why it is read |
+| --- | --- |
+| `board/reader.mjs` | emits `board/state/board.json`: the `tickets` array is the import''s source, `doneColumnCount` 9999 in `board/config.json` puts all 107 done rows in that array |
+| `board/config.json` | sets `doneColumnCount` to 9999, so the emitted count is 128 |
+| `board/state/board.json` | the emitted tickets, regenerated at step 2 |
+| `ai/plans/README.md` | row 144, the ticket this work tracks |
+| `package.json`, `app.json` | the version files every commit bumps together |
+
+### 4.2 Code map (the product, read in the checkout at `$HOME/athan-gitree/sessions/144/itsaplan`)
+
+| Path | What it proves |
+| --- | --- |
+| `docker-compose.yml` | the seven services, the required env keys, the published ports 3000 and 3001, the `VERSION` image pin |
+| `.env.example` | every optional variable, including the telemetry switches |
+| `docs/self-hosting.md` | the `http://localhost` plain-HTTP cookie exception in Chrome and Firefox, and "the first account you register becomes the instance admin" |
+| `apps/api/src/modules/projects/service.ts` | `DEFAULT_COLUMNS`: Backlog, Todo, In Progress, Done, Canceled |
+| `apps/api/src/modules/issues/index.ts` | `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links` |
+| `apps/api/src/modules/teams/index.ts` | `POST /teams` then `POST /teams/:teamId/projects` |
+
+### 4.3 Existing tests and what each proves
+
+None apply. The deliverable is a running stack, and the repository has no test for a third-party
+container stack. The proof is physical: the browser read of the board at step 2 and the API
+counts recorded in `LOG.md`.
+
+### 4.4 Why the obvious fix is wrong
+
+Writing an importer inside the repository is the failure the two rejected runs repeated. The
+brief forbids committed tooling, so the copy is throwaway session work in `$TMPDIR`. Theming the
+product to look less plain is the second failure: the brief forbids a theme, and the default
+interface is what the owner is being asked to judge.
+
+## 5. Design
+
+**Invariant.** The stack runs from the product''s own compose file with only the seven required
+env values plus the telemetry switches and the release pin, and the project holds one issue per
+emitted ticket.
+
+**Alternatives rejected.** A `.env` inside the checkout: the repository is public and the
+identifier gate forbids a committed secret. A personal API key created through the browser: the
+session cookie already round-trips over `http://localhost` with curl, so no second credential is
+needed. Custom project columns named after the tickets''s own statuses: the brief says map onto the
+product''s fields, and the default five columns are the most default surface.
+
+### Acceptance criteria
+
+- [R1.1] WHEN the compose stack starts from the repository''s `docker-compose.yml` with the generated env file THE SYSTEM SHALL report api healthy on port 3000 and web healthy on port 3001.
+- [R1.2] WHEN `http://localhost:3000/auth-config` is read on the fresh database THE SYSTEM SHALL answer `{"hasUsers":false,"registration":"open","emailPassword":true}`.
+- [R2.1] WHEN `node board/reader.mjs` runs on this tree THE SYSTEM SHALL write 128 tickets into `board/state/board.json`.
+- [R2.2] WHEN the emitted tickets are posted to `POST /projects/athan-uk.QUEUE/issues` THE SYSTEM SHALL hold 128 issues, 107 in the Done column and 21 in the Backlog column.
+- [R2.3] WHEN a ticket''s `needs` entry names an emitted ticket THE SYSTEM SHALL hold one `blocked_by` relation for that pair, 53 pairs in total across the project.
+- [R2.4] WHILE no agent, webhook or Telegram token is configured THE SYSTEM SHALL log the worker and bot start lines and nothing after them, and answer an empty webhook list.
+- [R3.1] WHEN the first account registers at `http://localhost:3001/register` THE SYSTEM SHALL give it the `god` role and open a session that reaches the board.
+- [R4.1] IF any research-gate answer is no THE SYSTEM SHALL stop and report before starting the stack.
+- [R5.1] WHEN the work is handed over THE SYSTEM SHALL leave the stack running, the board reachable at `http://localhost:3001/athan-uk.QUEUE`, and no generated file inside the repository tree.
+- [R6.1] WHEN the board is read THE SYSTEM SHALL render the tickets''s ten columns by their queue names, left to right Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream and Done.
+- [R6.2] WHEN the emitted tickets are placed THE SYSTEM SHALL put each on the column its queue row names, 107 on Done and 21 across the open columns.
+- [R7.1] WHEN the AI Agents page is read THE SYSTEM SHALL list the seven workflow roles, and the Skills library SHALL hold `athan-lead` and `athan-planner`.
+- [R7.2] WHEN an agent connects to the local board over MCP THE SYSTEM SHALL take a personal key from the shell environment and list the board''s tools.
+- [R8.1] WHEN the runner is considered THE SYSTEM SHALL leave it uninstalled and record that starting it spends model tokens.
+
+## 6. Steps
+
+- [ ] Step 01: bring the stack up on the pinned release, defaults only (`steps/01-bring-up.md`)
+- [ ] Step 02: put the tickets''s tickets on one project through the REST API (`steps/02-import.md`)
+- [ ] Step 03: inject the workflow into the board (`steps/03-inject.md`)
+
+Both steps are operations, not code. The evidence for each is a command''s output recorded in
+`LOG.md`.
+
+## 7. Device proof
+
+None. No phone, no simulator and no build is in scope. The physical proof is the browser read of
+`http://localhost:3001/athan-uk.QUEUE` and the issue page, with the column counts in the
+screenshots kept outside the repository tree.
+
+## 8. Records
+
+`LOG.md` carries the planning section and one `### Step <NN> — <state>` section per step, each
+ending with a `session:` line. The tickets cell text the lead applies on DONE is settled by the
+owner''s verdict, which is a later ticket. This run leaves row 144 OWNER-LED with the handover
+record. The docs commit subject is `docs(plans): ticket 144 ...`.
+
+## 9. Push
+
+None. The executor never pushes. The lead pushes after the reviews pass and the owner''s verdict.
+
+## 10. When something goes wrong
+
+| Symptom | Action |
+| --- | --- |
+| A required env key is missing | the compose file names the key in its refusal. Add it to the env file outside the tree and re-run `up -d` |
+| Agent containers exit on start | read `docker compose logs <service>`. The api healthcheck line and the migrate exit code come first |
+| The browser stays signed out after sign-in | the session cookie is `Secure` and the browser is WebKit. The api runs with `NODE_ENV=development` from the compose override, so the cookie is not `Secure` and every browser keeps it |
+| The import script fails midway | re-run with `--links-only`, which resolves existing issues by their `#<order>` title prefix |
+| A port is taken | 3000 and 3001 carry `API_PORT` and `WEB_PORT`. Change one in the env file only, never in the compose file |
+
+## 11. Subagents
+
+Planning: none. The brief is complete and the research gate is answered from the product''s own
+source. Delivery: none. The two steps are operations driven by the lead, and the audit is the
+lead''s read of the running board. `vision` reads any screenshot the lead cannot see.
+
+## 12. Report to the owner
+
+What changed: It''s a Plan v1.5.0 runs locally from its own compose file, and one project holds
+the tickets''s 128 emitted tickets. What was proven: the criteria in section 5, each against a
+command''s output in `LOG.md` or a browser read. Decisions waiting on the owner: the verdict on
+look, feel and functionality. The four-line handoff closes the run, with the URL and the ports.
+
+
+---
+
+# Log
+
+# Ticket 144 log: the It''s a Plan board
+
+## Planning (2026-10-19)
+
+Brief: `ai/prompts/itsaplan-board.md`. Planned at `5b1c965d`, version 2.0.1092. The owner''s
+brief carries the whole scope: two steps, spin the product up on its own compose path and copy
+the tickets''s emitted tickets onto one project through the REST API, then stop for the verdict.
+
+### Research gate, answered from the product''s own source
+
+Read against the v1.5.0 checkout (`6e0dc0b`, 2026-10-13). Every answer is yes.
+
+1. **Runs locally through its own Docker path, viewable at `http://localhost:3001`.** The
+   compose file publishes `api` on 3000 and `web` on 3001 and keeps RustFS internal.
+   `docs/self-hosting.md` states that `http://localhost` is the one plain-HTTP exception for the
+   `Secure` session cookie, in Chrome and Firefox, and that WebKit refuses it. Verified live:
+   both containers report healthy and the board renders in Chromium.
+2. **Genuinely free and self-hostable with no cloud dependency.** `LICENSE` is the full AGPL v3
+   text. No license key, licence server or paid tier appears anywhere in the tree. Every service
+   in the compose file runs locally, and the images are public GHCR tags.
+3. **The default stack shows the board with agents, MCP, webhooks and the Telegram bot inert.**
+   The bot starts and re-reads its config from the database. With no token it logs its start line
+   and idles. The worker logs its start line and finds no webhook delivery and no agent run to
+   claim. The project starts with no webhook (`GET /projects/athan-uk.QUEUE/webhooks` answers
+   `[]`) and no agent attached. MCP is a team switch, off until an operator turns it on.
+4. **Tickets arrive through the product''s own API with no committed tooling.** `POST /teams`,
+   `POST /projects`, `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links`. The
+   brief forbids committed tooling, so the copy is a throwaway script in `$TMPDIR` authenticated
+   with the session cookie from first registration.
+5. **First open.** `http://localhost:3001/register` shows the first-run sign-up form. The first
+   account registered becomes the instance admin (`role: "god"`), owns the instance workspace,
+   and the session lands on the project board at `/athan-uk/QUEUE`.
+
+### Decisions taken (agent-ruled)
+
+- **Release pin `VERSION=1.5.0`**: the brief names v1.5.0 as the verified release, and pinning
+  keeps the run on a version whose docs were read.
+- **Checkout and env outside the repository tree**: `$HOME/athan-gitree/sessions/144/itsaplan`
+  and `$HOME/athan-gitree/sessions/144/.env`. The repository is public and the identifier gate
+  forbids a committed secret.
+- **Postgres password from `openssl rand -hex 32`**: a base64 value can contain `/`, which
+  breaks the `postgres://user:pass@host` interpolation the compose file builds. Hex is the same
+  strength and URL-safe. The other secrets stay on the documented `openssl rand -base64 32`.
+- **Status mapping onto the product''s default columns**: the project''s own five columns are
+  Backlog, Todo, In Progress, Done and Canceled. Done maps to Done, In progress to In Progress,
+  and Ready, Planning and Audit to Todo. Backlog, Deferred, Blocked, Upstream and Owner-led map
+  to Backlog. Canceled stays unused. The emitted run holds 107 Done and 21 open, so the board
+  reads Backlog 21, Todo 0, In Progress 0, Done 107, Canceled 0.
+- **Local cookie flag, added after the first sign-in attempt failed in the owner''s browser**:
+  a `docker-compose.override.yml` in the checkout, outside the repository tree, sets
+  `NODE_ENV=development` on the api service only. The product''s auth reads
+  `secure: hostPrefixedCookies || NODE_ENV === "production"`, so this is the one lever that
+  stops the session cookie carrying `Secure` over plain HTTP. Every browser then keeps the
+  session on localhost, not only Chrome and Firefox. The web and worker containers are
+  untouched.
+- **Needs as `blocked_by` relations**: each `needs` entry that names an emitted ticket becomes
+  one relation between the two issues. Of 69 needs entries, 53 resolve: 14 name a row that is
+  cancelled or superseded and is not emitted, one is a self-reference (row 59 names itself), and
+  one pair appears twice.
+
+### Pre-flight
+
+`scripts/preflight-144.sh` copied to `$TMPDIR` and run from the repository root printed
+`PREFLIGHT OK`.
+
+## Phase 2, after the owner''s approval (2026-10-19)
+
+The owner read the board, approved the prototype, and asked for the tickets''s workflow to be
+injected into it: the tickets''s own columns, its agents, its skills and its docs, with the styling
+untouched and the repository queue still the source of truth. The branch was pushed and not
+merged to `uat`.
+
+### Step 03 — done
+
+**Columns.** The product''s five defaults became the tickets''s own ten, in the reader''s own words:
+Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream, Done.
+`In progress` carries a soft WIP limit of three, which is the standing parallel order turned
+into the board''s own control. The product orders columns by state category and then by position,
+so the rendered order is Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit,
+Owner-led, Upstream, Done. The reader''s order could not be reproduced exactly because the
+product groups by state category, and Deferred is a backlog state while Upstream is a started
+one.
+
+**Tickets.** All 128 moved to the column their queue row names: Done 107, Deferred 11,
+Backlog 6, Owner-led 2, Blocked 1, Upstream 1, and Planning, Ready, In progress and Audit empty.
+That is the reader''s own distribution.
+
+**Workflow data.** `Ticket number` is a number field carrying each ticket''s number in the tickets,
+so any view can sort the way the tickets does.
+
+**Agents.** The seven workflow roles are on the project as external agents: lane-lead, planner,
+executor, plan-griller, reviewer, explorer and vision. Each carries its one-line mandate. The
+AI Agents page lists them with "No runner yet".
+
+**Skills.** `athan-lead` and `athan-planner` are in the team library, read from the repository''s
+own skill files.
+
+**Docs.** Five pages: The tickets, The agents, Working the board, The board itself, and Running
+the agents from the board.
+
+**MCP.** `itsaplan` is a remote server in `opencode.json`, written by `opencode mcp add` so the
+shape is the product''s own: it sits under `mcp.servers` with the URL of the API origin''s `/mcp`
+and an `x-api-key` header reading `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
+owner account and written to the shell environment and to
+`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository.
+
+The endpoint was verified three ways. A keyless call answers 401. A call with the key answers
+200 and `tools/list` returns the board''s tools. The OpenCode client sends the configured header
+and connects: with the key written literally for one test, the board''s MCP instructions arrived
+in the running session. The substitution itself needs the variable in the environment of the
+process that opens the connection, and the background service of the session running this work
+started before the export existed. A shell started after the `~/.zshrc` line connects it.
+
+Without a key the endpoint answers 401.
+
+### Decisions taken (agent-ruled, phase 2)
+
+- **The runner is not installed.** `@itsaplan/runner` would claim runs for the agents on this
+  board and start a coding agent CLI on every one. That spends model tokens on each run, so it
+  is written up as a Docs page and left for the owner''s order. The agents exist and are inert.
+- **Column state categories keep their real meanings.** Deferred stays a backlog state and
+  Upstream a started state, so the board''s analytics stay honest. The cost is that the rendered
+  order is the product''s grouping rather than the reader''s exact order.
+- **No styling touched.** No theme, no stylesheet, no colour scheme. The only colours set are
+  the new columns'' state colours, which the product requires.
+- **The repository queue stays the source of truth.** The board mirrors it. No sync service and
+  no importer is committed, so nothing writes back to the repository from the board.
+
+### Verified after phase 2
+
+The board renders the ten columns with the reader''s distribution. `In progress` shows `0 / 3`.
+The AI Agents page lists seven roles. The Skills library lists two. Docs lists five pages. The
+MCP endpoint takes the personal key and refuses a keyless call.
+
+The three throwaway scripts live in `$TMPDIR` and die with the session.
+
+## Ticket 144
+
+### Step 01 — done
+
+Stack brought up. `docker compose pull` then `docker compose up -d` from the v1.5.0 checkout
+with `--env-file $HOME/athan-gitree/sessions/144/.env`. `docker compose ps` reads:
+
+```
+itsaplan-api-1       Up (healthy)   0.0.0.0:3000->3000/tcp
+itsaplan-bot-1       Up
+itsaplan-minio-1     Up (healthy)   9000-9001/tcp (internal)
+itsaplan-postgres-1  Up (healthy)   5432/tcp (internal)
+itsaplan-web-1       Up (healthy)   0.0.0.0:3001->3001/tcp
+itsaplan-worker-1    Up
+```
+
+`curl http://localhost:3000/` answers 200 and `curl http://localhost:3001/login` answers 200.
+`curl http://localhost:3000/auth-config` answers
+`{"registration":"open","magicLink":false,"requireEmailVerification":false,"emailEnabled":false,"emailPassword":true,"google":false,"oidc":false,"oidcLabel":"","hasUsers":false}`.
+R1.1 and R1.2 hold. R4.1 holds: every gate answer is yes.
+
+### Step 02 — done
+
+`node board/reader.mjs` wrote 128 tickets into `board/state/board.json` (107 done rows, all of
+them emitted because `board/config.json` sets `doneColumnCount` to 9999).
+
+The admin account was registered through the product''s own sign-up endpoint at
+`http://localhost:3001/register` and the API reported `role: "god"`. `POST /teams` made
+`Athan.uk` (slug `athan-uk`), `POST /projects` made `QUEUE`, and the throwaway script posted 128
+issues. The API then read 128 issues, 107 on `columnId` 4 (Done) and 21 on `columnId` 1
+(Backlog). The second pass created the `blocked_by` relations. `psql -tAc "select count(*) from
+issue_link"` answers 53, matching the resolvable needs.
+
+The board renders at `http://localhost:3001/athan-uk.QUEUE` with the five columns and the ticket
+cards, each title carrying its `#<order>` prefix. An issue page shows the description carrying
+the tickets status and the relations panel carrying the `blocked_by` pairs. R2.1, R2.2, R2.3,
+R3.1 and R5.1 hold.
+
+R2.4 holds: `docker compose logs worker` reads one line, `[worker] worker starting`, and
+`docker compose logs bot` reads one line, `[bot] bot service starting`. `GET
+/projects/athan-uk.QUEUE/webhooks` answers `[]`.
+
+session: ses_eaea5deecffeZq7TThCzVL0d8R
+
+### Handover (2026-10-19)
+
+Stack left running, and the board is open in the owner''s browser. Board at the documented web
+port on path `/athan-uk.QUEUE`, sign-up at `/register`. The first sign-in attempt failed in the
+owner''s browser, so the api was restarted with the cookie override above and the password was
+changed through `/api/auth/change-password` to a typeable value. Both were verified by a fresh
+browser sign-in that landed on the board. Credentials are in
+`$HOME/athan-gitree/sessions/144/credentials.txt`, outside the repository tree. Nothing merges
+to `uat` until the owner rules. The throwaway import script lived in `$TMPDIR` and is deleted.
+
+Row 144 was set OWNER-LED after the copy, so the reader was re-run and the single issue this
+ticket tracks (`QUEUE-21`) had its description refreshed to the new row. The other 127 issues
+stay the snapshot they were posted as. The needs cell for row 144 carries no digits, so the
+reader''s number scan finds no dependency there.
+
+`yarn validate` passes on the branch: tsc clean, Biome clean, Jest 5785 tests in 223 suites,
+coverage 100 percent. Only `package.json` and `app.json` are version files in git. `android/`
+is ignored, and its `versionName` was moved with the pair.
+', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 5120, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.728814+00', '2026-10-19 02:17:21.424197+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (8, 1, NULL, 'Programme: SDK 58', '# SDK 58 programme briefs
 
-The queue table in `ai/plans/README.md` is the authority for order and status. This file keeps
+The tickets table in `ai/plans/README.md` is the authority for order and status. This file keeps
 only the briefs open rows still cite: section 16 (queue row 18) and D4 (queue rows 38 and 39).
 DONE records live in git history.
 
@@ -7888,7 +7892,7 @@ stay at `^7.29.x` and the rider is re-attempted at every re-pin.
 Owner goal: the app goes global in v2.0 with a language switcher. Research lives in
 `ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
 catalog and `t()`, no i18n library, no second language first. RTL is the real work.
-', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 7168, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.797851+00', '2026-10-19 01:45:39.797851+00');
+', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 7168, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.797851+00', '2026-10-19 02:17:21.445666+00');
 
 
 --
@@ -8705,6 +8709,585 @@ is the committed copy, refreshed at the end of a run. That file is what brings t
 Nothing on this board runs by itself. There are no agents, no webhooks and no schedules. A
 session reads it and writes it, and that is all.
 ', NULL, 'book', '{}', false, false, false, NULL, 4096, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:47:06.034128+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (15, 1, 3, NULL, 'The tickets', '# The tickets
+
+A ticket is a queued unit of work. A step is a plan step. The board and the repository use the
+same two words.
+
+The board is the source of truth. There is no ticket file in the repository.
+
+## The columns
+
+| Column | What it means |
+| --- | --- |
+| Backlog | Queued and not yet planned. |
+| Deferred | Deliberately parked behind a later version. |
+| Planning | A planner is answering the ticket''s frontier and writing the plan. |
+| Ready | The plan passed its gate and the ticket waits for execution. |
+| In progress | A lane is executing it. The column warns at three, the standing parallel limit. |
+| Blocked | It cannot move until something outside the run changes. |
+| Audit | Execution finished and the change is under review. |
+| Owner-led | The deliverable is a recommendation the owner must rule on. |
+| Upstream | Waiting on a party outside the repository. |
+| Done | Merged to `uat` with its records. |
+
+## Needs
+
+A ticket that cannot start before another is finished carries a `blocked_by` relation to it. The
+relation is a warning, never a lock: the lane rule is that a ticket is runnable when every issue
+that blocks it is Done.
+', NULL, 'book', '{}', false, false, false, NULL, 1024, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.382109+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (16, 3, 3, NULL, 'Working the board', '# Working the board
+
+Nothing here is edited by hand. Agents read and write the board through MCP, and the repository''s
+workflow skills carry the conventions.
+
+1. A ticket is created on the board when the owner asks for something, or when a session finds
+   work that needs one. It lands in Backlog with a number in `Ticket number`.
+2. A planner takes it to Planning and writes the plan as a Docs page on the issue, the acceptance
+   criteria in the description, and the steps as subtasks. Then it moves it to Ready.
+3. A lane takes it to In progress and does the work. It comments as it goes.
+4. A reviewer reads the change and posts findings as a comment. The lead adjudicates.
+5. Done, with one closing comment.
+
+## The fields
+
+| Field | What it holds |
+| --- | --- |
+| Ticket number | the ticket''s number. The lower it is, the sooner it runs |
+| Lane | which lane holds it, set by the lead before dispatch |
+| Waiting on | why it is Blocked, Upstream or Owner-led. One line |
+
+## The labels
+
+Surface: iOS, Android, Both. Area: widgets, notifications, prayer-times, qibla, board, docs,
+research. Flags: needs-owner, upstream.
+
+## Reading it
+
+The `Queue` view shows the number, the priority, the type, the labels, the tickets order, the lane
+and how long the ticket has sat where it is. A card also shows what it is waiting on, and the
+progress of its steps.
+
+## Connecting a session
+
+The `itsaplan` MCP server in `opencode.json` points at the API origin. Its key comes from
+`ITSAPLAN_API_KEY` in the shell environment.
+', NULL, 'book', '{}', false, false, false, NULL, 3072, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.398284+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (14, 6, 3, NULL, 'Plan: #144', '# The board as a portable product, take three: It''s a Plan
+
+# Ticket 144: The board as a portable product, take three: It''s a Plan
+
+| Brief | The board as a portable product, take three: It''s a Plan (itsaplan.dev) |
+| --- | --- |
+| Planned at | `5b1c965d`, version 2.0.1092, 2026-10-19 |
+| Planned by | Lead session 2026-10-19, from the owner''s brief in `ai/prompts/itsaplan-board.md` |
+| Needs first | nothing (the two rejected prototypes are discarded and their branches are gone) |
+| Parent | none |
+| Group | the board prototype (`ai/plans/README.md` row 144 only, disjoint from every other open row) |
+| Batch budget | 2 (two docs-and-operations steps, no code step) |
+| Session budget | 2 |
+| Steps count | 2 (bring the stack up, put the tickets''s tickets on it) |
+| Device | none. The proof is the running stack and the browser read of the board |
+| Owner decisions still needed | none. The research gate and the mapping are ruled here |
+
+## 1. Goal
+
+Two board products were built far too far and rejected the day each was handed over: Kanboard
+v1.2.54 (2026-10-18) was called ugly in every way with a custom MCP layer creeping back in, and
+Paperclip 2026.1012.0 (2026-10-18 to 2026-10-19) was discarded whole. The owner''s lessons: an
+ugly board is a rejected board, and a custom layer on top of the product counts against it.
+
+Today the repository has no board the owner can look at. When this ticket is done, a third
+product, It''s a Plan v1.5.0, runs from its own `docker-compose.yml` with generated secrets in an
+env file outside the repository tree, and the tickets''s own tickets sit on one project inside it.
+The owner notices by opening `http://localhost:3001`, signing in, and reading the Kanban board.
+
+The owner''s rules that bind this work, quoted from `ai/prompts/itsaplan-board.md`:
+
+- "Spin it up. As default as possible, bare minimum. Nothing else."
+- "Put our current tickets on it."
+- "I don''t want anything to do with migration, nothing. I don''t want to sync."
+- "No AI agents, no MCP connection, no webhooks, no sync, no import engineering, no theming, no
+  custom glue of any kind."
+- "Nothing merges to `uat` until that ruling; the work lives on a branch."
+- "No secret, address or key is ever committed."
+
+## 2. Decisions
+
+### 2.1 Taken
+
+| Decision | Answer | By | Recorded |
+| --- | --- | --- | --- |
+| Product | It''s a Plan v1.5.0 | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Release pin | `VERSION=1.5.0` in the env file, the release the brief names | agent-ruled | LOG.md, 2026-10-19 |
+| Checkout and env location | `$HOME/athan-gitree/sessions/144/itsaplan` (clone) and `$HOME/athan-gitree/sessions/144/.env`, both outside the repository tree | agent-ruled | LOG.md, 2026-10-19 |
+| Telemetry | `TELEMETRY_DISABLED=1` and `DO_NOT_TRACK=1` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Postgres password alphabet | `openssl rand -hex 32` rather than base64, so the value cannot break the `DATABASE_URL` interpolation | agent-ruled | LOG.md, 2026-10-19 |
+| Ticket import route | the product''s own REST API (`/teams`, `/projects`, `/projects/:ref/issues`, `/issues/:id/links`) driven from a throwaway script in `$TMPDIR` | owner, in the brief | `ai/prompts/itsaplan-board.md` |
+| Status mapping | Done to the product''s Done column, In progress to In Progress, Ready and Planning and Audit to Todo, and Backlog and Deferred and Blocked and Upstream and Owner-led to Backlog | agent-ruled | LOG.md, 2026-10-19 |
+| Needs mapping | each resolvable `needs` pair becomes one `blocked_by` relation between the two issues | agent-ruled | LOG.md, 2026-10-19 |
+| Local cookie flag | `NODE_ENV=development` on the api service only, through a compose override outside the repository tree, so the session cookie is not `Secure` over plain HTTP | agent-ruled | LOG.md, 2026-10-19 |
+
+### 2.2 The executor must not decide
+
+None. The scope is two steps with no code path, the research gate is answered in section 4, and
+the owner is hands-off until the verdict. No irreversible act the hard rules name is in scope:
+no money, no credential leaves this machine, nothing is published, nothing is destroyed.
+
+## 3. Pre-flight
+
+`scripts/preflight-144.sh` verifies the stack checkout, the compose file, the free ports, the
+absent committed secret, the tickets row, the version, and every anchor count equal to 1. It ends
+`PREFLIGHT OK`.
+
+## 4. Background
+
+### 4.1 Code map (repository)
+
+| File | Why it is read |
+| --- | --- |
+| `board/reader.mjs` | emits `board/state/board.json`: the `tickets` array is the import''s source, `doneColumnCount` 9999 in `board/config.json` puts all 107 done rows in that array |
+| `board/config.json` | sets `doneColumnCount` to 9999, so the emitted count is 128 |
+| `board/state/board.json` | the emitted tickets, regenerated at step 2 |
+| `ai/plans/README.md` | row 144, the ticket this work tracks |
+| `package.json`, `app.json` | the version files every commit bumps together |
+
+### 4.2 Code map (the product, read in the checkout at `$HOME/athan-gitree/sessions/144/itsaplan`)
+
+| Path | What it proves |
+| --- | --- |
+| `docker-compose.yml` | the seven services, the required env keys, the published ports 3000 and 3001, the `VERSION` image pin |
+| `.env.example` | every optional variable, including the telemetry switches |
+| `docs/self-hosting.md` | the `http://localhost` plain-HTTP cookie exception in Chrome and Firefox, and "the first account you register becomes the instance admin" |
+| `apps/api/src/modules/projects/service.ts` | `DEFAULT_COLUMNS`: Backlog, Todo, In Progress, Done, Canceled |
+| `apps/api/src/modules/issues/index.ts` | `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links` |
+| `apps/api/src/modules/teams/index.ts` | `POST /teams` then `POST /teams/:teamId/projects` |
+
+### 4.3 Existing tests and what each proves
+
+None apply. The deliverable is a running stack, and the repository has no test for a third-party
+container stack. The proof is physical: the browser read of the board at step 2 and the API
+counts recorded in `LOG.md`.
+
+### 4.4 Why the obvious fix is wrong
+
+Writing an importer inside the repository is the failure the two rejected runs repeated. The
+brief forbids committed tooling, so the copy is throwaway session work in `$TMPDIR`. Theming the
+product to look less plain is the second failure: the brief forbids a theme, and the default
+interface is what the owner is being asked to judge.
+
+## 5. Design
+
+**Invariant.** The stack runs from the product''s own compose file with only the seven required
+env values plus the telemetry switches and the release pin, and the project holds one issue per
+emitted ticket.
+
+**Alternatives rejected.** A `.env` inside the checkout: the repository is public and the
+identifier gate forbids a committed secret. A personal API key created through the browser: the
+session cookie already round-trips over `http://localhost` with curl, so no second credential is
+needed. Custom project columns named after the tickets''s own statuses: the brief says map onto the
+product''s fields, and the default five columns are the most default surface.
+
+### Acceptance criteria
+
+- [R1.1] WHEN the compose stack starts from the repository''s `docker-compose.yml` with the generated env file THE SYSTEM SHALL report api healthy on port 3000 and web healthy on port 3001.
+- [R1.2] WHEN `http://localhost:3000/auth-config` is read on the fresh database THE SYSTEM SHALL answer `{"hasUsers":false,"registration":"open","emailPassword":true}`.
+- [R2.1] WHEN `node board/reader.mjs` runs on this tree THE SYSTEM SHALL write 128 tickets into `board/state/board.json`.
+- [R2.2] WHEN the emitted tickets are posted to `POST /projects/athan-uk.QUEUE/issues` THE SYSTEM SHALL hold 128 issues, 107 in the Done column and 21 in the Backlog column.
+- [R2.3] WHEN a ticket''s `needs` entry names an emitted ticket THE SYSTEM SHALL hold one `blocked_by` relation for that pair, 53 pairs in total across the project.
+- [R2.4] WHILE no agent, webhook or Telegram token is configured THE SYSTEM SHALL log the worker and bot start lines and nothing after them, and answer an empty webhook list.
+- [R3.1] WHEN the first account registers at `http://localhost:3001/register` THE SYSTEM SHALL give it the `god` role and open a session that reaches the board.
+- [R4.1] IF any research-gate answer is no THE SYSTEM SHALL stop and report before starting the stack.
+- [R5.1] WHEN the work is handed over THE SYSTEM SHALL leave the stack running, the board reachable at `http://localhost:3001/athan-uk.QUEUE`, and no generated file inside the repository tree.
+- [R6.1] WHEN the board is read THE SYSTEM SHALL render the tickets''s ten columns by their queue names, left to right Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream and Done.
+- [R6.2] WHEN the emitted tickets are placed THE SYSTEM SHALL put each on the column its queue row names, 107 on Done and 21 across the open columns.
+- [R7.1] WHEN the AI Agents page is read THE SYSTEM SHALL list the seven workflow roles, and the Skills library SHALL hold `athan-lead` and `athan-planner`.
+- [R7.2] WHEN an agent connects to the local board over MCP THE SYSTEM SHALL take a personal key from the shell environment and list the board''s tools.
+- [R8.1] WHEN the runner is considered THE SYSTEM SHALL leave it uninstalled and record that starting it spends model tokens.
+
+## 6. Steps
+
+- [ ] Step 01: bring the stack up on the pinned release, defaults only (`steps/01-bring-up.md`)
+- [ ] Step 02: put the tickets''s tickets on one project through the REST API (`steps/02-import.md`)
+- [ ] Step 03: inject the workflow into the board (`steps/03-inject.md`)
+
+Both steps are operations, not code. The evidence for each is a command''s output recorded in
+`LOG.md`.
+
+## 7. Device proof
+
+None. No phone, no simulator and no build is in scope. The physical proof is the browser read of
+`http://localhost:3001/athan-uk.QUEUE` and the issue page, with the column counts in the
+screenshots kept outside the repository tree.
+
+## 8. Records
+
+`LOG.md` carries the planning section and one `### Step <NN> — <state>` section per step, each
+ending with a `session:` line. The tickets cell text the lead applies on DONE is settled by the
+owner''s verdict, which is a later ticket. This run leaves row 144 OWNER-LED with the handover
+record. The docs commit subject is `docs(plans): ticket 144 ...`.
+
+## 9. Push
+
+None. The executor never pushes. The lead pushes after the reviews pass and the owner''s verdict.
+
+## 10. When something goes wrong
+
+| Symptom | Action |
+| --- | --- |
+| A required env key is missing | the compose file names the key in its refusal. Add it to the env file outside the tree and re-run `up -d` |
+| Agent containers exit on start | read `docker compose logs <service>`. The api healthcheck line and the migrate exit code come first |
+| The browser stays signed out after sign-in | the session cookie is `Secure` and the browser is WebKit. The api runs with `NODE_ENV=development` from the compose override, so the cookie is not `Secure` and every browser keeps it |
+| The import script fails midway | re-run with `--links-only`, which resolves existing issues by their `#<order>` title prefix |
+| A port is taken | 3000 and 3001 carry `API_PORT` and `WEB_PORT`. Change one in the env file only, never in the compose file |
+
+## 11. Subagents
+
+Planning: none. The brief is complete and the research gate is answered from the product''s own
+source. Delivery: none. The two steps are operations driven by the lead, and the audit is the
+lead''s read of the running board. `vision` reads any screenshot the lead cannot see.
+
+## 12. Report to the owner
+
+What changed: It''s a Plan v1.5.0 runs locally from its own compose file, and one project holds
+the tickets''s 128 emitted tickets. What was proven: the criteria in section 5, each against a
+command''s output in `LOG.md` or a browser read. Decisions waiting on the owner: the verdict on
+look, feel and functionality. The four-line handoff closes the run, with the URL and the ports.
+
+
+---
+
+# Log
+
+# Ticket 144 log: the It''s a Plan board
+
+## Planning (2026-10-19)
+
+Brief: `ai/prompts/itsaplan-board.md`. Planned at `5b1c965d`, version 2.0.1092. The owner''s
+brief carries the whole scope: two steps, spin the product up on its own compose path and copy
+the tickets''s emitted tickets onto one project through the REST API, then stop for the verdict.
+
+### Research gate, answered from the product''s own source
+
+Read against the v1.5.0 checkout (`6e0dc0b`, 2026-10-13). Every answer is yes.
+
+1. **Runs locally through its own Docker path, viewable at `http://localhost:3001`.** The
+   compose file publishes `api` on 3000 and `web` on 3001 and keeps RustFS internal.
+   `docs/self-hosting.md` states that `http://localhost` is the one plain-HTTP exception for the
+   `Secure` session cookie, in Chrome and Firefox, and that WebKit refuses it. Verified live:
+   both containers report healthy and the board renders in Chromium.
+2. **Genuinely free and self-hostable with no cloud dependency.** `LICENSE` is the full AGPL v3
+   text. No license key, licence server or paid tier appears anywhere in the tree. Every service
+   in the compose file runs locally, and the images are public GHCR tags.
+3. **The default stack shows the board with agents, MCP, webhooks and the Telegram bot inert.**
+   The bot starts and re-reads its config from the database. With no token it logs its start line
+   and idles. The worker logs its start line and finds no webhook delivery and no agent run to
+   claim. The project starts with no webhook (`GET /projects/athan-uk.QUEUE/webhooks` answers
+   `[]`) and no agent attached. MCP is a team switch, off until an operator turns it on.
+4. **Tickets arrive through the product''s own API with no committed tooling.** `POST /teams`,
+   `POST /projects`, `POST /projects/:projectKey/issues` and `POST /issues/:issueId/links`. The
+   brief forbids committed tooling, so the copy is a throwaway script in `$TMPDIR` authenticated
+   with the session cookie from first registration.
+5. **First open.** `http://localhost:3001/register` shows the first-run sign-up form. The first
+   account registered becomes the instance admin (`role: "god"`), owns the instance workspace,
+   and the session lands on the project board at `/athan-uk/QUEUE`.
+
+### Decisions taken (agent-ruled)
+
+- **Release pin `VERSION=1.5.0`**: the brief names v1.5.0 as the verified release, and pinning
+  keeps the run on a version whose docs were read.
+- **Checkout and env outside the repository tree**: `$HOME/athan-gitree/sessions/144/itsaplan`
+  and `$HOME/athan-gitree/sessions/144/.env`. The repository is public and the identifier gate
+  forbids a committed secret.
+- **Postgres password from `openssl rand -hex 32`**: a base64 value can contain `/`, which
+  breaks the `postgres://user:pass@host` interpolation the compose file builds. Hex is the same
+  strength and URL-safe. The other secrets stay on the documented `openssl rand -base64 32`.
+- **Status mapping onto the product''s default columns**: the project''s own five columns are
+  Backlog, Todo, In Progress, Done and Canceled. Done maps to Done, In progress to In Progress,
+  and Ready, Planning and Audit to Todo. Backlog, Deferred, Blocked, Upstream and Owner-led map
+  to Backlog. Canceled stays unused. The emitted run holds 107 Done and 21 open, so the board
+  reads Backlog 21, Todo 0, In Progress 0, Done 107, Canceled 0.
+- **Local cookie flag, added after the first sign-in attempt failed in the owner''s browser**:
+  a `docker-compose.override.yml` in the checkout, outside the repository tree, sets
+  `NODE_ENV=development` on the api service only. The product''s auth reads
+  `secure: hostPrefixedCookies || NODE_ENV === "production"`, so this is the one lever that
+  stops the session cookie carrying `Secure` over plain HTTP. Every browser then keeps the
+  session on localhost, not only Chrome and Firefox. The web and worker containers are
+  untouched.
+- **Needs as `blocked_by` relations**: each `needs` entry that names an emitted ticket becomes
+  one relation between the two issues. Of 69 needs entries, 53 resolve: 14 name a row that is
+  cancelled or superseded and is not emitted, one is a self-reference (row 59 names itself), and
+  one pair appears twice.
+
+### Pre-flight
+
+`scripts/preflight-144.sh` copied to `$TMPDIR` and run from the repository root printed
+`PREFLIGHT OK`.
+
+## Phase 2, after the owner''s approval (2026-10-19)
+
+The owner read the board, approved the prototype, and asked for the tickets''s workflow to be
+injected into it: the tickets''s own columns, its agents, its skills and its docs, with the styling
+untouched and the repository queue still the source of truth. The branch was pushed and not
+merged to `uat`.
+
+### Step 03 — done
+
+**Columns.** The product''s five defaults became the tickets''s own ten, in the reader''s own words:
+Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream, Done.
+`In progress` carries a soft WIP limit of three, which is the standing parallel order turned
+into the board''s own control. The product orders columns by state category and then by position,
+so the rendered order is Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit,
+Owner-led, Upstream, Done. The reader''s order could not be reproduced exactly because the
+product groups by state category, and Deferred is a backlog state while Upstream is a started
+one.
+
+**Tickets.** All 128 moved to the column their queue row names: Done 107, Deferred 11,
+Backlog 6, Owner-led 2, Blocked 1, Upstream 1, and Planning, Ready, In progress and Audit empty.
+That is the reader''s own distribution.
+
+**Workflow data.** `Ticket number` is a number field carrying each ticket''s number in the tickets,
+so any view can sort the way the tickets does.
+
+**Agents.** The seven workflow roles are on the project as external agents: lane-lead, planner,
+executor, plan-griller, reviewer, explorer and vision. Each carries its one-line mandate. The
+AI Agents page lists them with "No runner yet".
+
+**Skills.** `athan-lead` and `athan-planner` are in the team library, read from the repository''s
+own skill files.
+
+**Docs.** Five pages: The tickets, The agents, Working the board, The board itself, and Running
+the agents from the board.
+
+**MCP.** `itsaplan` is a remote server in `opencode.json`, written by `opencode mcp add` so the
+shape is the product''s own: it sits under `mcp.servers` with the URL of the API origin''s `/mcp`
+and an `x-api-key` header reading `{env:ITSAPLAN_API_KEY}`. The personal key was created on the
+owner account and written to the shell environment and to
+`$HOME/athan-gitree/sessions/144/mcp-key.txt`, never into the repository.
+
+The endpoint was verified three ways. A keyless call answers 401. A call with the key answers
+200 and `tools/list` returns the board''s tools. The OpenCode client sends the configured header
+and connects: with the key written literally for one test, the board''s MCP instructions arrived
+in the running session. The substitution itself needs the variable in the environment of the
+process that opens the connection, and the background service of the session running this work
+started before the export existed. A shell started after the `~/.zshrc` line connects it.
+
+Without a key the endpoint answers 401.
+
+### Decisions taken (agent-ruled, phase 2)
+
+- **The runner is not installed.** `@itsaplan/runner` would claim runs for the agents on this
+  board and start a coding agent CLI on every one. That spends model tokens on each run, so it
+  is written up as a Docs page and left for the owner''s order. The agents exist and are inert.
+- **Column state categories keep their real meanings.** Deferred stays a backlog state and
+  Upstream a started state, so the board''s analytics stay honest. The cost is that the rendered
+  order is the product''s grouping rather than the reader''s exact order.
+- **No styling touched.** No theme, no stylesheet, no colour scheme. The only colours set are
+  the new columns'' state colours, which the product requires.
+- **The repository queue stays the source of truth.** The board mirrors it. No sync service and
+  no importer is committed, so nothing writes back to the repository from the board.
+
+### Verified after phase 2
+
+The board renders the ten columns with the reader''s distribution. `In progress` shows `0 / 3`.
+The AI Agents page lists seven roles. The Skills library lists two. Docs lists five pages. The
+MCP endpoint takes the personal key and refuses a keyless call.
+
+The three throwaway scripts live in `$TMPDIR` and die with the session.
+
+## Ticket 144
+
+### Step 01 — done
+
+Stack brought up. `docker compose pull` then `docker compose up -d` from the v1.5.0 checkout
+with `--env-file $HOME/athan-gitree/sessions/144/.env`. `docker compose ps` reads:
+
+```
+itsaplan-api-1       Up (healthy)   0.0.0.0:3000->3000/tcp
+itsaplan-bot-1       Up
+itsaplan-minio-1     Up (healthy)   9000-9001/tcp (internal)
+itsaplan-postgres-1  Up (healthy)   5432/tcp (internal)
+itsaplan-web-1       Up (healthy)   0.0.0.0:3001->3001/tcp
+itsaplan-worker-1    Up
+```
+
+`curl http://localhost:3000/` answers 200 and `curl http://localhost:3001/login` answers 200.
+`curl http://localhost:3000/auth-config` answers
+`{"registration":"open","magicLink":false,"requireEmailVerification":false,"emailEnabled":false,"emailPassword":true,"google":false,"oidc":false,"oidcLabel":"","hasUsers":false}`.
+R1.1 and R1.2 hold. R4.1 holds: every gate answer is yes.
+
+### Step 02 — done
+
+`node board/reader.mjs` wrote 128 tickets into `board/state/board.json` (107 done rows, all of
+them emitted because `board/config.json` sets `doneColumnCount` to 9999).
+
+The admin account was registered through the product''s own sign-up endpoint at
+`http://localhost:3001/register` and the API reported `role: "god"`. `POST /teams` made
+`Athan.uk` (slug `athan-uk`), `POST /projects` made `QUEUE`, and the throwaway script posted 128
+issues. The API then read 128 issues, 107 on `columnId` 4 (Done) and 21 on `columnId` 1
+(Backlog). The second pass created the `blocked_by` relations. `psql -tAc "select count(*) from
+issue_link"` answers 53, matching the resolvable needs.
+
+The board renders at `http://localhost:3001/athan-uk.QUEUE` with the five columns and the ticket
+cards, each title carrying its `#<order>` prefix. An issue page shows the description carrying
+the tickets status and the relations panel carrying the `blocked_by` pairs. R2.1, R2.2, R2.3,
+R3.1 and R5.1 hold.
+
+R2.4 holds: `docker compose logs worker` reads one line, `[worker] worker starting`, and
+`docker compose logs bot` reads one line, `[bot] bot service starting`. `GET
+/projects/athan-uk.QUEUE/webhooks` answers `[]`.
+
+session: ses_eaea5deecffeZq7TThCzVL0d8R
+
+### Handover (2026-10-19)
+
+Stack left running, and the board is open in the owner''s browser. Board at the documented web
+port on path `/athan-uk.QUEUE`, sign-up at `/register`. The first sign-in attempt failed in the
+owner''s browser, so the api was restarted with the cookie override above and the password was
+changed through `/api/auth/change-password` to a typeable value. Both were verified by a fresh
+browser sign-in that landed on the board. Credentials are in
+`$HOME/athan-gitree/sessions/144/credentials.txt`, outside the repository tree. Nothing merges
+to `uat` until the owner rules. The throwaway import script lived in `$TMPDIR` and is deleted.
+
+Row 144 was set OWNER-LED after the copy, so the reader was re-run and the single issue this
+ticket tracks (`QUEUE-21`) had its description refreshed to the new row. The other 127 issues
+stay the snapshot they were posted as. The needs cell for row 144 carries no digits, so the
+reader''s number scan finds no dependency there.
+
+`yarn validate` passes on the branch: tsc clean, Biome clean, Jest 5785 tests in 223 suites,
+coverage 100 percent. Only `package.json` and `app.json` are version files in git. `android/`
+is ignored, and its `versionName` was moved with the pair.
+', NULL, 'file-text', '{}', false, false, false, NULL, 5120, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.424197+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (17, 8, 2, NULL, 'Programme: SDK 58', '# SDK 58 programme briefs
+
+The tickets table in `ai/plans/README.md` is the authority for order and status. This file keeps
+only the briefs open rows still cite: section 16 (queue row 18) and D4 (queue rows 38 and 39).
+DONE records live in git history.
+
+## 16. SDK 58 stable re-pin + full release-notes review (DONE 2026-10-17, row 111; the ride-`next` policy carries on)
+
+**Trigger.** The owner ruled 2026-10-09: ride the `next` tag and repin to the newest version every
+time, release candidates included. SDK 58 hit `latest` 2026-10-16 and row 111 ran the re-pin.
+The next attempt takes the newest `expo` at ITS start: `58.0.14` was already on npm at this
+ticket''s close (published after this attempt''s step 1 pinned `58.0.13`, the newest at that
+moment), so the next re-pin starts from 58.0.14 or newer.
+
+**Landed set (2.0.908, merge `9dd4eb6a`).** `expo ~58.0.13` with its `bundledNativeModules`
+delta (eight direct pins moved, three transitive followed: `babel-preset-expo`,
+`expo-application` 58.1.1 to 58.1.2, `expo-modules-core`), `react-native` 0.88.0. All three
+patches regenerated whole at `expo-background-task+58.0.11`, `expo-location+58.0.17` and
+`expo-widgets+58.0.20`, no hunk hand-merged; `didRegisterTaskForTesting` and `mLastAzimuth`
+left the patches; the vacuous `local-maven-repo` check died; the guard suite
+`shared/__tests__/backgroundTaskPatch.test.ts` pins the offline option on all three sides.
+`expo-widgets@58.0.19` was broken upstream for Android (its source imports
+`io.github.jakex7.peek.*` while its dependency packages `io.github.expo.peek.*`, 16 unresolved
+references at `:expo-widgets:compileReleaseKotlin`); 58.0.20 fixes it, and that defect is why
+the first attempt became a NEEDS REPLAN. Proven: `yarn validate` and `yarn test:tz` green at
+100 percent, the 3T release build in 517 s with every channel, permission and armed-alert check
+passing and the alarm-clock sub-block intact (41 future alerts), the armed production fire at
+01:53:00.002 on the second (flags 0x3), and the XS loop green per the row 111 record (cold
+start, compass at ~105 delegate calls a second, both language directions, BGTask re-submission,
+two mock-build notification fires at their armed seconds with the TIME SENSITIVE level, the
+live day-roll cascade). The store-release path is open again.
+
+**Babel 8 rider, re-measured 2026-10-16, still blocked upstream.** `@babel/core` 8.0.7 is
+latest; `babel-preset-expo@58.0.17` (the preset `expo@58.0.13` pairs with) depends on 36
+`@babel/*` 7.x plugins (among them `@babel/preset-typescript ^7.23.0`,
+`@babel/plugin-transform-modules-commonjs ^7.24.8`, `@babel/plugin-transform-react-jsx
+^7.28.6`) and `@react-native/babel-preset@0.88.0` depends on `@babel/core ^7.25.2`. A Babel 7
+plugin under Babel 8 throws `BABEL_VERSION_UNSUPPORTED`. The four `@babel/*` devDependencies
+stay at `^7.29.x` and the rider is re-attempted at every re-pin.
+
+**Scope.**
+
+1. `npx expo install --check` against `latest`: name and bump everything it reports, never `--fix`.
+2. Read the full release notes and act on anything new that touches us. Already ruled at past
+   re-pins, do not re-litigate: no SwiftPM (CocoaPods stays), no Live Activities. The "no
+   threadIdentifier" ruling is superseded by row 120''s order.
+3. Full regression: `yarn validate`, `yarn test:tz`, e2e, 3T release build, the dumpsys and
+   punctuality gates.
+4. Reopen the store-release path: nothing ships to a store or to production before the re-pin
+   row is DONE.
+5. Bookkeeping: the stack line in `README.md`, the patch rows in `ai/UPSTREAM-PRS.md`, this
+   section. (The `ai/AGENTS.md` stack tables were deleted by the owner''s compaction order at
+   `b2096c4a` and stay gone.)
+
+**Pin-set and build facts.**
+
+- `react-dom` equals `react`, and `@react-native/metro-config` and `@react-native/jest-preset`
+  equal `react-native`, at every re-pin.
+- Three local Android modules hardcode `compileSdk 37`, and only a release build notices:
+  `checkReleaseAarMetadata` fails the release build only.
+- `expo-in-app-updates` is pinned exactly `0.12.0` and is not an SDK package (its peer range on
+  expo is `*`); it compiles Kotlin against `expo-modules-core` symbols. Do not patch it.
+- On the 3T the alarm-clock proof is a sub-block, never `flags=0x9`. An alarm-clock arm reads
+  `window=0 flags=0x3` with an `Alarm clock:` sub-block. `flags=0x9` is the windowed form shown
+  by the 8T and the Find X8.
+- The SDK-57 known-good backup branch''s last tips are reflog-only (`ef33661b`, `c9614692`).
+  Restoring it is the owner''s call.
+
+**Facts the re-pin needs (A1 to A11).** Each cites proof that still stands in the working tree.
+
+- **A1. Upgrade policy, two parts (owner ruling).** Take the absolute latest and fix breaks in
+  the code, never pinning back or editing a test to pass. A package broken upstream at its
+  latest rolls back alone, one version at a time, to an exact pin with no local workaround,
+  until a newer one ships.
+- **A2. The Babel 8 blocker** is the rider above. It is this row''s second job.
+- **A3. Deliberate divergences from Expo''s pin set** (at the 2026-10-16 stable re-pin,
+  `expo@58.0.13`): `react-native` 0.88.0 stable now matches the SDK''s own pin, so no
+  divergence survives there. `@expo/ui` and `expo-widgets` are back to exact pins (`58.0.20`
+  each, `package.json`): the preview-era 58.0.5 pin that once protected the Android widget
+  stub (row 26) broke iOS at dyld launch because the 58.0.5 ExpoUI binary references a
+  `_uiRuntime` symbol the newer ExpoModulesCore no longer exports. Upstream closed the trap:
+  the stub now exports `memo` as a passthrough, and the loaded-bundle suite is green. Durable
+  lesson: `@expo/ui`''s iOS framework tracks ExpoModulesCore''s Swift ABI, so the pair moves
+  with the SDK, never against it.
+- **A4. `@expo/log-box` is invisible to Expo checks**: it is not in `bundledNativeModules.json`,
+  so no Expo check reports it. It sits at `~58.0.12` (`package.json`) on the `^58.0.12` peer
+  range that `expo-router` and `@expo/metro-runtime` declare. Move it by that peer range.
+- **A5. The commit order that kept the tree green.** One commit: the SDK packages, the rebuilt
+  patches and the type fixes the bump forces (the pre-commit hook runs `tsc`). Then React,
+  `react-dom` and React Native with the two `@react-native/*` dev tools. Then Reanimated with
+  worklets.
+- **A6. Rebuilding a patch.** `git apply --check` the old patch on the fresh package. Apply it,
+  or make a rejected hunk''s change by hand. Run `npx patch-package <name>` and delete the old
+  file. Then delete the package folder and run `yarn install --force` to prove a clean install.
+  All three patches are rebuilt at this row (`ai/plans/54-patches-and-copy/FINDINGS.md`,
+  section 1), and each rebuild is proven on a phone, never by a green build alone. Removing the
+  `publication` block from `expo-module.config.json` is what forces autolinking to compile the
+  patched Kotlin from source: with the block present, autolinking resolves the prebuilt AAR and
+  Gradle never compiles the patched code.
+- **A7. patch-package log semantics.** After a version bump the install succeeds whatever the
+  patches did. A `warning` means the old patch still applied. An `error` means that package
+  runs UNPATCHED (`shared/__tests__/widgetOpenAppPatch.test.ts:24`).
+- **A8. An ESM-only dependency is transformed to CommonJS in BOTH Jest projects, and
+  `--experimental-vm-modules` is rejected.** Jest 30''s `require(esm)` is gated on
+  `canResolveSync()`, which the components project fails for its custom resolver
+  (`jest.config.js:62`). The CommonJS transform both projects share is `jest.config.js:20`.
+- **A9. Reanimated 4.7.0 ships the new layout-animation engine as the default.** The legacy
+  proxy flag `USE_LEGACY_LAYOUT_ANIMATIONS_PROXY` is `false` in the installed tree
+  (`node_modules/react-native-reanimated/src/featureFlags/staticFlags.json`) and no override
+  is set anywhere in the repo. Draw sites that ride it: `components/modals/Modal.tsx:81` and
+  `:90`, `components/modals/Help.tsx:75`, `components/sheets/screens/Qibla.tsx:61`.
+- **A10. After the install, diff the pin set and read every peer warning.** Job 23 measured
+  26 packages and installed 25. `react-native-screens` surfaced only as an `expo-router` peer
+  warning (`package.json:73`). One warning is expected: `jest-expo > jest-watch-typeahead@2.2.1`
+  wants Jest 29.
+- **A11. In `widgets/PrayerWidget.tsx` a fixed `frame()` comes before a flexible one, and no test
+  can see the order.** `@expo/ui` types `frame()` as two overloads that cannot be mixed, so
+  each mixed call became two chained modifiers. Reversed, the greedy frame takes the space
+  first and the row changes size (`:657-658`, `:729`).
+
+- expo-notifications 58.1.0 grew `enableRemoteNotifications: false` for local-only
+  apps: a candidate for the next app.json pass, still unclaimed at 1.29.321.
+
+## D4. Localization for v2.0 (NOT PLANNED, carried by queue rows 38 and 39)
+
+Owner goal: the app goes global in v2.0 with a language switcher. Research lives in
+`ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
+catalog and `t()`, no i18n library, no second language first. RTL is the real work.
+', NULL, 'file-text', '{}', false, false, false, NULL, 7168, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.445666+00');
 
 
 --
@@ -8731,7 +9314,7 @@ INSERT INTO public.project_setting (project_id, key, value, updated_at) VALUES (
 -- Data for Name: project_view; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "position", created_at, share_token, share_extended) VALUES (1, 1, 'Queue', 'list', '{}', '{"sort": {"dir": "asc", "field": "manual"}, "group": "status", "subgroup": "none", "showLinks": true, "weekStart": 0, "properties": ["id", "priority", "type", "labels", "cf:1", "cf:2", "statusAge", "updated"], "pinnedGroup": null, "hiddenGroups": [], "showSubtasks": true, "timelineScale": "week", "collapsedGroups": [], "showEmptyGroups": true, "collapseSubtasks": true, "separateSubtasks": false, "calendarDateField": "dueDate", "timelineCollapseAll": false}', 0, '2026-10-19 01:39:09.578104+00', NULL, false);
+INSERT INTO public.project_view (id, project_id, name, icon, filters, display, "position", created_at, share_token, share_extended) VALUES (1, 1, 'Tickets', 'list', '{}', '{"sort": {"dir": "asc", "field": "manual"}, "group": "status", "subgroup": "none", "showLinks": true, "weekStart": 0, "properties": ["priority", "type", "labels", "cf:1", "cf:2", "statusAge", "updated"], "pinnedGroup": null, "hiddenGroups": [], "showSubtasks": true, "timelineScale": "week", "collapsedGroups": [], "showEmptyGroups": true, "collapseSubtasks": true, "separateSubtasks": false, "calendarDateField": "dueDate", "timelineCollapseAll": false}', 0, '2026-10-19 01:39:09.578104+00', NULL, false);
 
 
 --
@@ -8817,7 +9400,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:12', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:89', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:91', 1, 12);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:5', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:111', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:78', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:63', 1, 12);
@@ -8870,10 +9452,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:6', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:119', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 14);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 17);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 20);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 22);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 22);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 1384);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 1382);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:5', 1, 15);
 
 
 --
@@ -8915,6 +9498,8 @@ INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_ad
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('UF3iILadveWAvxn5QrEjHh66SEhhEmtn', '2026-10-25 23:51:45.865', 'xJWmHgmxLvPQhKZAMYhppdDLBNxlcXzj', '2026-10-18 23:51:45.865', '2026-10-18 23:51:45.865', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('0dLI8dLl5vKYTgFCQHENbOGEeebENwsZ', '2026-10-25 23:59:59.077', 'paI3c7K3NisQjH9OtHA7sUam61JA8Yj6', '2026-10-18 23:59:59.077', '2026-10-18 23:59:59.077', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('t6HTWszqioNuXKTdz5Gu7GasjNanstgj', '2026-10-26 01:55:59.559', 'sRBsBFqMl7gm9dx0OYuxhSq9VVYXfPuy', '2026-10-19 01:55:59.559', '2026-10-19 01:55:59.559', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('mVzLp3DlqnnMn03ZllwTH2yRETwAJndK', '2026-10-26 02:05:28.855', '8YxEtq4cMUB1vz07t1BgUCGB7ZXg3hL4', '2026-10-19 02:05:28.856', '2026-10-19 02:05:28.856', '127.0.0.1', 'curl/8.7.1', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
+INSERT INTO public.session (id, expires_at, token, created_at, updated_at, ip_address, user_agent, user_id) VALUES ('NwDRkSkqDl4pUFHJzgf2sg3HghogT9fs', '2026-10-26 02:06:06.424', 'fiFjDWTX3Y3rqErRhGvCZNo2VnAQnioz', '2026-10-19 02:06:06.424', '2026-10-19 02:06:06.424', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:156.0) Gecko/20100101 Firefox/156.0', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp');
 
 
 --
@@ -8967,7 +9552,7 @@ INSERT INTO public."user" (id, name, email, email_verified, image, created_at, u
 -- Data for Name: user_preference; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.user_preference (user_id, timezone, theme, issue_open_mode, start_page, created_at, updated_at, last_project_id, show_chat_by_default, hotkeys, issue_stats_open, issue_stats_view, issue_activity_view, auto_watch, locale, seen_version) VALUES ('DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'Europe/London', 'system', 'panel', 'work-items', '2026-10-18 23:36:51.653396+00', '2026-10-18 23:37:17.730528+00', 1, false, '{}', true, 'compact', 'flat', true, 'en', '1.5.0');
+INSERT INTO public.user_preference (user_id, timezone, theme, issue_open_mode, start_page, created_at, updated_at, last_project_id, show_chat_by_default, hotkeys, issue_stats_open, issue_stats_view, issue_activity_view, auto_watch, locale, seen_version) VALUES ('DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'Europe/London', 'dark', 'panel', 'work-items', '2026-10-18 23:36:51.653396+00', '2026-10-19 02:11:46.57197+00', 1, false, '{}', true, 'compact', 'flat', true, 'en', '1.5.0');
 
 
 --
@@ -9152,7 +9737,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 964, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 967, true);
 
 
 --
@@ -9229,7 +9814,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 293, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 294, true);
 
 
 --
@@ -9327,7 +9912,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 8, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 13, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 17, true);
 
 
 --
@@ -13712,5 +14297,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 5s6ohfvAezcAFy0RhPHnONfpxEmZDSHnTUCikGS9tKRKAa7SiegmrNTCFaCT6HS
+\unrestrict WewSSvNjJIPkYCQtzbBMpq1PEk8opn2Ps4v781G5LSTuOxABRTmeJ0PQVHZTSJd
 

@@ -127,9 +127,9 @@ board/snapshot.sh     # write snapshot/board.sql at the end of a run
 board/restore.sh      # rebuild the board from it, on any machine
 ```
 
-Reading the board: a ticket is one queued unit of work, a step is a plan step. The columns are
+Reading the board: a ticket is one unit of work, a step is a plan step. The columns are
 Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Owner-led, Upstream and Done.
-The `Queue` view shows the ticket number, its priority, its labels, its lane and how long it has
+The `Tickets` view shows the ticket number, its priority, its labels, its lane and how long it has
 sat where it is. Nothing is edited through the board by hand: agents write it through MCP.
 
 ## Development
