@@ -53,7 +53,7 @@ the tickets, their columns, their relations, their history and their plans. Its 
   twice, recorded in the ticket with a date and one line why) and tabled in the run's final reply.
 - A ticket carries its plan as a Docs page on the issue, its steps as subtasks, and its log as
   comments. Nothing about a ticket lives in the repository any more.
-- Worker dispatches are different: the plan's step weights bound every executor batch, and the
+- Worker dispatches are different: the plan's step points bound every executor batch, and the
   lead rotates worker sessions mechanically from those numbers.
 - The run closes with `board/snapshot.sh`, committed with the run's last commit. The snapshot is
   what makes the board recoverable from git.

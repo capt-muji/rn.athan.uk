@@ -61,7 +61,7 @@ parent.
 | --- | --- | --- |
 | Title | At creation | Intake |
 | Type | At planning, one of Bug, Feature, Investigation, Research, Chore, Refactor, Docs, Design, Testing, Release | The planner |
-| Weight | At planning, the sum of its step weights | The planner |
+| Story points | At planning, the sum of its step points, on the ticket's estimate field | The planner |
 | Description | At creation, sharpened at planning | Intake, then the planner |
 | Column | At every stage | Whoever moves it |
 | Ticket number | At creation | Intake |
@@ -103,10 +103,12 @@ A card shows labels and nothing else, so the labels carry everything, in a fixed
 
 1. The number, `#42`. Set at intake and never moved.
 2. The kind, one of `Bug`, `Feature`, `Investigation`, `Research`, `Chore`, `Refactor`, `Docs`, `Design`, `Testing`, `Release`. It matches the ticket's type field.
-3. The weight, `5 pts`. It matches the ticket's estimate.
-4. The surface, one of `iOS`, `Android`, `Both`.
-5. The area, one or more of `widgets`, `notifications`, `prayer-times`, `qibla`, `board`, `docs`, `research`.
-6. The flags, `needs-owner` or `upstream`, only when true.
+3. The surface, one of `iOS`, `Android`, `Both`.
+4. The area, one or more of `widgets`, `notifications`, `prayer-times`, `qibla`, `board`, `docs`, `research`.
+5. The flags, `needs-owner` or `upstream`, only when true.
+
+A number never rides a label. The story points live on the ticket's estimate, which the card
+shows on its own.
 
 `labelIds` replaces the whole set, so send every label the ticket keeps, in that order.
 
@@ -115,17 +117,18 @@ first and the kind always second. Never append a label out of this order.
 
 A ticket with no honest surface or area label gets none. Do not guess.
 
-### The weight
+### Story points
 
-A step weighs 1 for docs, 2 for code, and 3 for a device. A ticket's weight is the sum of its
-steps, and it is the one number that says how much session a ticket will eat.
+A step is 1 point for docs, 2 for code, and 3 for a device. A ticket's story points are the sum of
+its steps, and they are the one number that says how much session a ticket will eat.
 
-Set both: the estimate field, which the project's analytics sum, and the `N pts` label, which the
-card shows.
+The board's story-point estimate is the only place the number lives: the ticket's estimate holds
+the ticket's points, and each step's own estimate holds that step's points. No label carries a
+number.
 
-The lead uses it. A lane carries tickets in sequence and stops when the weights it has carried
-cross the session budget, which is 6 by default, or when its own context passes about 40 percent.
-A device step, weight 3, always runs alone in a fresh session.
+The lead uses it. A lane carries tickets in sequence and stops when the story points it has
+carried cross the session budget, which is 6 by default, or when its own context passes about 40
+percent. A device step, 3 points, always runs alone in a fresh session.
 
 ### Integrity
 
@@ -134,13 +137,13 @@ sight and notes the fix in one comment line. A defect is never reported and left
 
 1. The description carries Goal, Where and Acceptance, every criterion observable.
 2. The type is set and matches the kind label.
-3. One weight in three places, all equal: the estimate field, the `N pts` label, and the sum of
-   the step weights. Verify the arithmetic before saving. A number that disagrees is a defect.
+3. Story points in two places, all equal: the ticket's estimate and the sum of its steps'
+   estimates. Verify the arithmetic before saving. A number that disagrees is a defect.
 4. Labels in the fixed order, number first, and no surface or area label that is not honestly
    true. Creation sorts labels by id, so after `create_issue` read the card back and re-send
    the order through `update_issue`, which keeps it. The stored order is what the card shows.
    A new label is created only when the vocabulary lacks the name, and it must match its set:
-   a number is white in the number group, kinds, weights, surfaces and areas carry their own
+   a number is white in the number group, kinds, surfaces and areas carry their own
    group's colors.
 5. `Lane` is set the moment a lane takes the ticket.
 6. `Waiting on` is set in the same breath as entering Blocked, Upstream or Owner-led.

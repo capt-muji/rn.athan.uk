@@ -38,7 +38,7 @@ It carries, in this order:
 2. **Decisions taken**: one line each, dated, with the why.
 3. **Files**: every file this will read or change, one line each.
 4. **Design**: the approach, the invariant, and the alternatives rejected with the reason.
-5. **Steps**: a numbered list. Each step names what it produces and its weight, 1 for docs, 2
+5. **Steps**: a numbered list. Each step names what it produces and its points, 1 for docs, 2
    for code, 3 for a device.
 6. **Risks**: what could go wrong and what would show it.
 7. **Proof**: the exact commands or reads that will show each acceptance criterion met.
@@ -60,9 +60,9 @@ various, several, some, appropriate, reasonable, properly, correctly.
   outside the code. Chore is upkeep. Refactor restructures without changing behaviour. Docs
   writes prose. Design decides a look. Testing is a test, a suite, or a run on a real device.
   Release is a build, a version or a ship.
-- **Weight**: the sum of the step weights, set in both places and equal by arithmetic: the
-  estimate field and the `N pts` label. Re-add the steps before saving; a number that
-  disagrees with the steps is a defect.
+- **Story points**: the sum of the step points, on the ticket's estimate field, equal by
+  arithmetic. Each step's own estimate carries its points. Re-add the steps before saving; a
+  number that disagrees with the steps is a defect.
 - **Subtasks**: one per step, titled `Step N: <what it produces>`. Create each with the parent
   set to this ticket, in the Backlog column so they do not count as ready.
 - **Relations**: for each thing this waits on, a `blocked_by` relation to that ticket.
@@ -78,7 +78,7 @@ The ticket is Ready only when all of these hold. Check each one, do not assume:
 | Every criterion is observable | each one names a test, a command or a log line |
 | The plan doc exists and is linked | `list_documents`, then the issue's linked docs |
 | Every plan step has a subtask | compare the doc's step list to the issue's subtasks |
-| The weight is one number in three equal places | estimate field, `N pts` label, sum of step weights |
+| The story points are one number in two equal places | the ticket's estimate field, and the sum of the steps' estimates |
 | Every dependency is a relation | `get_issue` and read its links |
 | Nothing is left as a question | the plan's Decisions taken has no open item |
 
