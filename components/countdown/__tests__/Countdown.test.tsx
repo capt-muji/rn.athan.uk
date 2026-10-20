@@ -35,6 +35,24 @@ const setCountdown = (timeLeft: number | null) =>
 const setSecondsPreference = (shown: boolean) => getDefaultStore().set(showSecondsAtom, shown);
 
 describe('the lettered countdown on the Standard schedule', () => {
+  it('keeps a quarter more room below the block than the old fixed gap, owner order 2026-10-20', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setCountdown(8940);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // styles.container is the only node pairing the block's top margin with a bottom one
+    const container = screen.root
+      ?.queryAll(
+        (node) => {
+          const style = flattenStyle(node.props.style);
+          return style !== undefined && style.marginTop === 6 && style.marginBottom !== undefined;
+        },
+        { includeSelf: true }
+      )
+      .at(0);
+    expect(flattenStyle(container?.props.style).marginBottom).toBe(60);
+  });
   it('names Asr and renders the unpadded groups with their lowercase letters, at 2h29m', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSecondsPreference(false);

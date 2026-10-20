@@ -106,7 +106,7 @@ const ty = typographyFor(currentLocaleId());
 const styles = StyleSheet.create({
   container: {
     height: STYLES.countdown.height,
-    marginBottom: 48,
+    marginBottom: 60,
     marginTop: 6,
     justifyContent: 'center',
   },
