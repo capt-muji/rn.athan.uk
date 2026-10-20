@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.2.3",
+    "version": "2.2.5",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -682,11 +682,6 @@
     },
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "feadd49a-8467-4860-95c5-8ae0c8bc119b"
-      }
     }
   }
 }

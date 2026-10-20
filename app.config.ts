@@ -4,6 +4,44 @@ import appJson from './app.json';
 
 const config = appJson.expo as ExpoConfig;
 
+function pluginName(plugin: unknown): string | null {
+  if (typeof plugin === 'string') return plugin;
+  if (Array.isArray(plugin) && typeof plugin[0] === 'string') return plugin[0];
+  return null;
+}
+
+// The store ids arrive from the build environment, never from the committed config: a clone with
+// no environment builds under the neutral defaults in app.json, which is what a stranger deploys,
+// and the owner's build scripts export the published ids from outside the repository. The widget
+// app group rides with them, because a provisioning profile cannot carry someone else's group.
+const withInjectedIds = (expoConfig: ExpoConfig): ExpoConfig => {
+  const appId = process.env.EXPO_APP_ID;
+  if (appId && expoConfig.android) expoConfig.android.package = appId;
+
+  const bundleId = process.env.EXPO_BUNDLE_ID;
+  if (bundleId && expoConfig.ios) expoConfig.ios.bundleIdentifier = bundleId;
+
+  const appGroup = process.env.EXPO_APP_GROUP;
+  if (appGroup) {
+    expoConfig.plugins = (expoConfig.plugins ?? []).map((plugin) => {
+      if (pluginName(plugin) !== 'expo-widgets') return plugin;
+      const [, props] = plugin as [string, Record<string, unknown>];
+      return ['expo-widgets', { ...props, groupIdentifier: appGroup }];
+    });
+  }
+
+  // The Expo project id is an account linkage: a clone that does not belong to that account has no
+  // business carrying it, and no local build reads it (EAS stays read-only).
+  const easProjectId = process.env.EXPO_EAS_PROJECT_ID;
+  if (easProjectId) {
+    expoConfig.extra = { ...expoConfig.extra, eas: { ...expoConfig.extra?.eas, projectId: easProjectId } };
+  }
+
+  return expoConfig;
+};
+
+withInjectedIds(config);
+
 // EXPO_ANDROID_SUFFIX suffixes the Android package so a test artifact installs beside the Play
 // Store app (signatures differ; install -r is impossible). It arrives from the build environment
 // and nothing committed sets it: local device builds pass it inline on the prebuild and run
@@ -32,11 +70,6 @@ if (iosSuffix && config.ios?.bundleIdentifier) {
 // the plugin removes the widget extension from the native build entirely.
 const iosWidgetsEnabled = process.env.EXPO_PUBLIC_IOS_WIDGETS === '1';
 const androidWidgetsEnabled = process.env.EXPO_PUBLIC_ANDROID_WIDGETS === '1';
-const pluginName = (plugin: unknown): string | null => {
-  if (typeof plugin === 'string') return plugin;
-  if (Array.isArray(plugin) && typeof plugin[0] === 'string') return plugin[0];
-  return null;
-};
 
 // Android widgets ride their own flag. An android-only config resolution
 // (this CLI never passes ctx.platform, so the platform comes from the

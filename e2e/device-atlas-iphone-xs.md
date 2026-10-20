@@ -4,7 +4,7 @@
 | --- | --- |
 | Model | iPhone XS (iPhone11,2), iOS 18.7.10, physical, resolved via `xcrun devicectl list devices` |
 | Screen | 375 x 812 pt (1125 x 2436 px @3x), notch |
-| Signing | paid team profile pair cached locally (`com.example.athan`, `com.example.athan.ExpoWidgetsTarget`, valid to 2027); Xcode holds no live account session, so builds pass the team inline (`DEVELOPMENT_TEAM`), never committed |
+| Signing | paid team profile pair cached locally (`$APP_ID`, `$APP_ID.ExpoWidgetsTarget`, valid to 2027); Xcode holds no live account session, so builds pass the team inline (`DEVELOPMENT_TEAM`), never committed |
 | Driver | `agent-device` CLI with the iOS runner prepared (`AGENT_DEVICE_IOS_TEAM_ID=<paid team> agent-device prepare ios-runner --udid $IPHONE_UDID`; the MCP server lacks the team env; the runner installs two apps on the phone, uninstall both afterwards); screenshots via `pymobiledevice3 developer dvt screenshot --udid $IPHONE_UDID`; install/launch via `xcrun devicectl device ... --device $IPHONE_UDID`; screen reads go through the `vision` subagent |
 
 ## Coordinates and routes (measured once, replayed)

@@ -150,6 +150,35 @@ Prerequisites: Node.js 24+, Yarn, Xcode with an iOS simulator, Android Studio. T
 
 Add a dependency with `npx expo install <package>`, never with `--fix`. This project intentionally runs newer jest and typescript than Expo pins.
 
+### Build values
+
+The committed config carries placeholders only: `app.json` names `com.example.athan` and a matching
+widget app group, and `.env.example` repeats them. The published store ids are injected at build
+time and never committed, because a clone has to be able to deploy this as its own app:
+
+| Variable | What it replaces | Default |
+| --- | --- | --- |
+| `EXPO_APP_ID` | the Android package | `com.example.athan` |
+| `EXPO_BUNDLE_ID` | the iOS bundle id | `com.example.athan` |
+| `EXPO_APP_GROUP` | the widget app group | `group.com.example.athan` |
+| `EXPO_EAS_PROJECT_ID` | `extra.eas.projectId` | none |
+| `EXPO_PUBLIC_ANDROID_PACKAGE` / `EXPO_PUBLIC_IOS_BUNDLE_ID` | the ids the app reads at runtime | the same placeholders |
+
+`$HOME/athan-gitree/bin/build-prod.zsh` and `build-mock.zsh` export the live values before
+`npx expo prebuild`, so a device build writes the published ids into the git-ignored native trees
+and badges the package it always has. A local iOS build does the same by exporting them in the
+shell that runs `npx expo prebuild -p ios`. Maestro flows take `APP_ID` (`-e APP_ID=<package>`),
+and the e2e scripts fall back to the placeholder.
+
+### The privacy gate
+
+`scripts/privacy-manifest.json` holds, base64-encoded, the terms this repository may never carry:
+the owner's names, the home-path username and tool-session scratchpad paths. Three gates read it,
+all deterministic: `.husky/pre-commit` refuses a staged line or a commit identity that carries a
+term; `yarn validate` includes a suite test that scans every tracked file, and the pre-push hook
+runs `yarn validate`; `board/snapshot.sh` refuses to write a dump that carries one. `AGENTS.md`
+holds the placeholder vocabulary the shapes use for device and location identifiers.
+
 ## Testing
 
 - Jest runs two projects: logic suites (`.ts`) and component suites (`.tsx`) with React Native Testing Library.

@@ -3,7 +3,6 @@ const { mkdirSync, writeFileSync } = require('node:fs');
 const { join } = require('node:path');
 
 const SHARED_NOTIFICATION_TAG = 'athan-notification';
-const RECEIVER_NAME = 'com.example.athan.notifications.AthanNotificationsService';
 // Fully qualified: the library declares a relative name that resolves against its own package.
 const EXPO_RECEIVER_NAME = 'expo.modules.notifications.service.NotificationsService';
 const RECEIVER_ACTIONS = [
@@ -15,9 +14,9 @@ const RECEIVER_ACTIONS = [
   'android.intent.action.MY_PACKAGE_REPLACED',
 ];
 
-// The package is fixed, not derived from config.android.package: EXPO_ANDROID_SUFFIX=fleettest builds
-// change the package id while this class must not move.
-const DELEGATE_SOURCE = `package com.example.athan.notifications
+// The class lives under the app's own package, which the config supplies: a suffixed build
+// changes the package id, and the manifest entry must point where the class actually sits.
+const delegateSource = (pkg) => `package ${pkg}.notifications
 
 import android.content.Context
 
@@ -45,7 +44,7 @@ class AthanPresentationDelegate(context: Context) : ExpoPresentationDelegate(con
 }
 `;
 
-const SERVICE_SOURCE = `package com.example.athan.notifications
+const serviceSource = (pkg) => `package ${pkg}.notifications
 
 import android.content.Context
 
@@ -58,20 +57,22 @@ class AthanNotificationsService : NotificationsService() {
 }
 `;
 
+const receiverName = (pkg) => `${pkg}.notifications.AthanNotificationsService`;
+
 // expo's receiver must go: its companion picks the first receiver matching the action, so two would
 // make routing nondeterministic between the stacking and the replacing delegate.
-const editManifest = (manifest) => {
+const editManifest = (manifest, pkg) => {
   const application = manifest.manifest.application[0];
   if (!Array.isArray(application.receiver)) {
     application.receiver = [];
   }
   // Prebuild re-runs over an existing android/ at every version bump, so each addition is guarded
   // and the edit stays idempotent.
-  const hasOurs = application.receiver.some((node) => node.$ && node.$['android:name'] === RECEIVER_NAME);
+  const hasOurs = application.receiver.some((node) => node.$ && node.$['android:name'] === receiverName(pkg));
   const hasRemoval = application.receiver.some((node) => node.$ && node.$['android:name'] === EXPO_RECEIVER_NAME);
   if (!hasOurs) {
     application.receiver.push({
-      $: { 'android:name': RECEIVER_NAME, 'android:enabled': 'true', 'android:exported': 'false' },
+      $: { 'android:name': receiverName(pkg), 'android:enabled': 'true', 'android:exported': 'false' },
       'intent-filter': [
         { $: { 'android:priority': '-1' }, action: RECEIVER_ACTIONS.map((name) => ({ $: { 'android:name': name } })) },
       ],
@@ -86,22 +87,25 @@ const editManifest = (manifest) => {
   return manifest;
 };
 
-const writeKotlin = (projectRoot) => {
-  const dir = join(projectRoot, 'android/app/src/main/java/com/the owner/athan/notifications');
+const writeKotlin = (projectRoot, pkg) => {
+  const dir = join(projectRoot, 'android/app/src/main/java', ...pkg.split('.'), 'notifications');
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, 'AthanPresentationDelegate.kt'), DELEGATE_SOURCE);
-  writeFileSync(join(dir, 'AthanNotificationsService.kt'), SERVICE_SOURCE);
+  writeFileSync(join(dir, 'AthanPresentationDelegate.kt'), delegateSource(pkg));
+  writeFileSync(join(dir, 'AthanNotificationsService.kt'), serviceSource(pkg));
 };
 
 const withReplacePreviousNotification = (config) => {
+  const pkg = config.android?.package;
+  if (!pkg) return config;
+
   const withManifest = withAndroidManifest(config, (cfg) => {
-    editManifest(cfg.modResults);
+    editManifest(cfg.modResults, pkg);
     return cfg;
   });
   return withDangerousMod(withManifest, [
     'android',
     (modConfig) => {
-      writeKotlin(modConfig.modRequest.projectRoot);
+      writeKotlin(modConfig.modRequest.projectRoot, pkg);
       return modConfig;
     },
   ]);
@@ -113,8 +117,8 @@ module.exports = withReplacePreviousNotification;
 module.exports.editManifest = editManifest;
 module.exports.writeKotlin = writeKotlin;
 module.exports.EXPO_RECEIVER_NAME = EXPO_RECEIVER_NAME;
-module.exports.RECEIVER_NAME = RECEIVER_NAME;
+module.exports.receiverName = receiverName;
 module.exports.RECEIVER_ACTIONS = RECEIVER_ACTIONS;
 module.exports.SHARED_NOTIFICATION_TAG = SHARED_NOTIFICATION_TAG;
-module.exports.DELEGATE_SOURCE = DELEGATE_SOURCE;
-module.exports.SERVICE_SOURCE = SERVICE_SOURCE;
+module.exports.delegateSource = delegateSource;
+module.exports.serviceSource = serviceSource;

@@ -10,8 +10,8 @@ Every coordinate is keyed on model + panel + density + screen state, and is void
 | What | How |
 | --- | --- |
 | Install dialog ("cancel installation" / "continue installation") | PREVENTED for adb installs by `adb -s X8_SERIAL shell settings put global verifier_verify_adb_installs 0` and `package_verifier_enable 0` (set 2026-09-29; original values were both 1). With these at 0 an `adb install -r` completes unattended. |
-| Install duration | A 142 MB release APK takes 60 to 90 seconds to appear in `dumpsys package`. `adb install` returns nothing useful in that window, so poll `dumpsys package com.example.athan \| grep lastUpdateTime` in loops of 14 seconds and compare the timestamp rather than waiting on the command. |
-| Launch after install | `adb shell monkey -p com.example.athan -c android.intent.category.LAUNCHER 1`, twice: the first start after an install can land on the launcher. |
+| Install duration | A 142 MB release APK takes 60 to 90 seconds to appear in `dumpsys package`. `adb install` returns nothing useful in that window, so poll `dumpsys package $APP_ID \| grep lastUpdateTime` in loops of 14 seconds and compare the timestamp rather than waiting on the command. |
+| Launch after install | `adb shell monkey -p $APP_ID -c android.intent.category.LAUNCHER 1`, twice: the first start after an install can land on the launcher. |
 
 ## Sensors, measured 2026-09-29
 

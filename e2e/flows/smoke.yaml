@@ -1,4 +1,4 @@
-appId: com.example.athan
+appId: ${APP_ID}
 name: smoke
 tags:
   - baseline

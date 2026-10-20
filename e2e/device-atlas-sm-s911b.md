@@ -39,7 +39,7 @@ Investing watchlists on pages 1-2).
 | What | How |
 | --- | --- |
 | Install | `adb -s S23_SERIAL install -r <apk>` completes unattended; no One UI verifier prompt appeared (2026-10-11, 66 MB release APK). |
-| Launch | `adb -s S23_SERIAL shell monkey -p com.example.athan -c android.intent.category.LAUNCHER 1` |
+| Launch | `adb -s S23_SERIAL shell monkey -p $APP_ID -c android.intent.category.LAUNCHER 1` |
 | In-app navigation | The Settings button sits bottom-centre at (540, 2122); the in-app sheets open from it. Maestro LABEL taps on RN nodes are UNRELIABLE here: a `tapOn {label: 'الإعدادات'}` opened the prayer-details overlay instead of the sheet (the driver tapped a row). Drive the app with measured coordinates plus screencap verification; read live text with Maestro `hierarchy` while it still exposes the tree (see the driver note below). |
 | Screen sleep | A window-manager override (`mUserActivityTimeoutOverrideFromWindowManager=10000`) sleeps the display ~10 s after the last input even on USB. `svc power stayon usb` holds it for the session (not persistent; resets on reboot). |
 | Keyguard | Swipe-only. `input keyevent KEYCODE_WAKEUP` + `input keyevent 82` + swipe up (540 2000 -> 540 500) unlocks. A plain `wm dismiss-keyguard` alone did not. |

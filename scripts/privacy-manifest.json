@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "note": "The terms this repository may never carry, base64-encoded so the manifest is not itself a hit. kind \"term\" is a case-insensitive substring; kind \"pattern\" is a case-insensitive regular expression. Add a term by appending its encoded source; scripts/__tests__/privacyGate.test.ts proves each one refuses a fixture.",
+  "terms": [
+    {
+      "rule": "owner-first-name",
+      "kind": "term",
+      "source": "bXVndGFiYQ=="
+    },
+    {
+      "rule": "owner-last-name",
+      "kind": "term",
+      "source": "c3ViYWhp"
+    },
+    {
+      "rule": "home-username",
+      "kind": "pattern",
+      "source": "KD88IWNhcHQtKW11amk="
+    },
+    {
+      "rule": "scratchpad-path",
+      "kind": "pattern",
+      "source": "L3ByaXZhdGUvdG1wLw=="
+    }
+  ]
+}

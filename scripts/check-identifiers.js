@@ -14,8 +14,14 @@
  *   node scripts/check-identifiers.js --message <file>  the commit message
  *   node scripts/check-identifiers.js --push <sha>      every commit up to <sha> that no remote has
  *   node scripts/check-identifiers.js --all             every tracked file as it stands
+ *   node scripts/check-identifiers.js --file <path>     one file, wherever it sits
+ *   node scripts/check-identifiers.js --identity        the author and committer this commit would record
  *   node scripts/check-identifiers.js --history         every version of every file reachable from HEAD
  *   node scripts/check-identifiers.js --learn           add the attached devices and this machine to the private list
+ *
+ * The manifest's terms apply everywhere, in every mode: it is the tracked list this repository may never
+ * carry, and it is stored encoded so that the list itself never trips the gate. The private list stays
+ * machine-local and extra to it.
  *
  * A false positive is fixed by editing a shape here, in the same commit, where the change is reviewed. There is no
  * flag that skips the check.
@@ -29,6 +35,24 @@ const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
 const PRIVATE_LIST =
   process.env.ATHAN_IDENTIFIER_DENYLIST || path.join(os.homedir(), '.config', 'athan', 'identifier-denylist.txt');
+const MANIFEST = path.join(__dirname, 'privacy-manifest.json');
+
+/**
+ * The tracked terms this repository may never carry, decoded from their base64 sources.
+ *
+ * The sources are encoded because a manifest holding them in plain text would be the first hit it
+ * reports. A term is a case-insensitive substring; a pattern is a case-insensitive expression.
+ */
+const readManifest = () => {
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
+
+  return manifest.terms.map(({ rule, kind, source }) => ({
+    rule,
+    kind,
+    expression: kind === 'term' ? null : new RegExp(Buffer.from(source, 'base64').toString('utf8'), 'i'),
+    text: kind === 'term' ? Buffer.from(source, 'base64').toString('utf8').toLowerCase() : null,
+  }));
+};
 
 /**
  * The position the tests use: Charing Cross, the public point London is measured from, and the only London position a
@@ -167,6 +191,11 @@ const SHAPES = [
 /** The first characters and the length, enough to find the text without repeating it */
 const mask = (text) => `${text.slice(0, 3)}… (${text.length} characters)`;
 
+let manifestCache = null;
+
+/** Decoded once per process: every mode reads the same list */
+const manifestTerms = () => (manifestCache ??= readManifest());
+
 const readPrivateList = () => {
   if (!fs.existsSync(PRIVATE_LIST)) return null;
 
@@ -182,9 +211,10 @@ const readPrivateList = () => {
  *
  * @param text What is being published: added lines, a whole file, or a commit message
  * @param file The path it belongs to, which decides whether the shapes apply
- * @param privateList The exact strings that must appear nowhere
+ * @param privateList The exact strings that must appear nowhere on this machine
+ * @param terms The manifest's terms, decoded; the tracked list that applies on every machine
  */
-const scanText = (text, file, privateList) => {
+const scanText = (text, file, privateList, terms = manifestTerms()) => {
   const hits = [];
   const shapesApply = !SHAPES_NOT_APPLIED.some((pattern) => pattern.test(file));
   const lines = text.split('\n');
@@ -197,6 +227,13 @@ const scanText = (text, file, privateList) => {
         hits.push({ file, line: index + 1, rule: 'private-list', detail: `entry ${position + 1} of the private list` });
       }
     });
+
+    for (const term of terms) {
+      const carried = term.kind === 'term' ? lowered.includes(term.text) : term.expression.test(line);
+      if (carried) {
+        hits.push({ file, line: index + 1, rule: term.rule, detail: 'a term this repository may never carry' });
+      }
+    }
 
     if (!shapesApply) return;
 
@@ -295,6 +332,18 @@ const scanAll = (privateList) => {
   });
 };
 
+/** One file wherever it sits, which is how the board snapshot is checked before it is written */
+const scanOneFile = (file, privateList) => {
+  if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) return [];
+
+  const buffer = fs.readFileSync(file);
+  if (!isText(buffer)) return [];
+
+  const relative = path.relative(ROOT, path.resolve(file));
+
+  return scanText(buffer.toString('utf8'), relative.startsWith('..') ? file : relative, privateList);
+};
+
 /** Blobs are read in batches, since the whole history at once would not fit in memory */
 const BATCH = 400;
 
@@ -337,6 +386,33 @@ const scanHistory = (privateList) => {
   for (const message of log.split('\x01')) hits.push(...scanText(message, 'a commit message', privateList));
 
   return hits;
+};
+
+/**
+ * The author and committer this commit would record. The gate refuses a blank one and any one carrying
+ * a manifest term: a stranger's own name is none of this repository's business, the owner's is.
+ */
+const scanIdentity = (privateList) => {
+  const ident = (kind) => {
+    try {
+      return git(['var', `GIT_${kind}_IDENT`]).trim();
+    } catch {
+      return '';
+    }
+  };
+
+  return ['AUTHOR', 'COMMITTER'].flatMap((kind) => {
+    const value = ident(kind);
+    const parsed = value.match(/^(.*) <(.*)> \d+ [+-]\d{4}$/m);
+
+    if (!parsed?.[1].trim() || !parsed[2].trim()) {
+      return [
+        { file: `the ${kind.toLowerCase()} identity`, line: 0, rule: 'identity', detail: 'no name or email set' },
+      ];
+    }
+
+    return scanText(`${kind} ${value}`, `the ${kind.toLowerCase()} identity`, privateList);
+  });
 };
 
 /** What this machine and the phones attached to it would write into a log */
@@ -390,10 +466,13 @@ const main = ([mode, argument]) => {
   else if (mode === '--message' && argument) hits = scanMessage(argument, list);
   else if (mode === '--push' && argument) hits = scanPush(argument, list);
   else if (mode === '--all') hits = scanAll(list);
+  else if (mode === '--file' && argument) hits = scanOneFile(argument, list);
+  else if (mode === '--identity') hits = scanIdentity(list);
   else if (mode === '--history') hits = scanHistory(list);
   else {
     process.stderr.write(
-      'usage: check-identifiers.js --staged | --message <file> | --push <sha> | --all | --history | --learn\n'
+      'usage: check-identifiers.js --staged | --message <file> | --push <sha> | --all | --file <path> | ' +
+        '--identity | --history | --learn\n'
     );
     process.exit(2);
   }

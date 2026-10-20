@@ -24,18 +24,19 @@ TAPX=${2:?tap-x}
 TAPY=${3:?tap-y}
 SECONDS_LIMIT=${4:-3}
 SERIAL=${5:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
+PKG=${APP_ID:-com.example.athan}
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
 
-adb -s "$SERIAL" shell am force-stop com.example.athan
-adb -s "$SERIAL" shell am start -W -n com.example.athan/.MainActivity >/dev/null
+adb -s "$SERIAL" shell am force-stop $PKG
+adb -s "$SERIAL" shell am start -W -n $PKG/.MainActivity >/dev/null
 echo "settling 12s (JS warmup + widget pushes land ~2.5s in)"; sleep 12
 
 if [[ ${FRAME_AUDIT:-video} == sf ]]; then
   adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
   sleep 1
-  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency 'com.example.athan/com.example.athan.MainActivity#0'" \
+  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$PKG/$PKG.MainActivity#0'" \
     > "$OUT/latency.txt" 2>&1
   # `|| verdict=$?` so `set -e` does not abort on a FAIL before it can be reported; the
   # status is re-raised deliberately below. Never name this `status`: zsh reserves it as a
