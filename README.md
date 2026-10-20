@@ -24,7 +24,7 @@ Prayer times come from [London Prayer Times](https://www.londonprayertimes.com/)
 ## Known limitations
 
 - On some Android phones (ColorOS / OxygenOS), at-time alerts can arrive about a minute late. The fix is built and proven on test devices; it ships with the next store release.
-- On a folding iPhone, a process launched while the device is folded keeps its centered portrait frame after unfolding until its next relaunch.
+- On a folding iPhone held wide, a process launched while the device is folded keeps the system's centered portrait frame after unfolding until its next relaunch. Held tall, the same process unfolds straight onto the full tall canvas.
 
 ## Upcoming
 
