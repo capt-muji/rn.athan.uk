@@ -786,8 +786,8 @@ describe('volume and payload invariants', () => {
   });
 
   it('carries a 3-day horizon', () => {
-    // Three days is the survival time the owner judged enough for a widget
-    // whose app is never opened (owner 2026-09-25). Every bound below is an
+    // Three days is the survival time judged enough for a widget
+    // whose app is never opened. Every bound below is an
     // upper bound and the fixtures scale with the constant, so a shrunk horizon
     // would satisfy them all. This is what notices.
     expect(TIMELINE_DAYS).toBe(3);

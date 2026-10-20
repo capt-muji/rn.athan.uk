@@ -99,8 +99,8 @@ const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 // CONTENT - grow per release; prune past MAX_WHATS_NEW_ARCHIVE
 //
-// WHETHER A RELEASE GETS A MODAL IS AN EDITORIAL DECISION, and it is the owner's
-// (ruling 2026-09-13). A real feature is worth interrupting someone for; a
+// WHETHER A RELEASE GETS A MODAL IS AN EDITORIAL DECISION, and it is the owner's.
+// A real feature is worth interrupting someone for; a
 // performance pass is not, and popping a modal for one just annoys people.
 //
 // So: move `version` (and the item stamps) to the shipping release when you want

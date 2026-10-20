@@ -231,7 +231,7 @@ describe('ticker integrity (wall-second chain)', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    // Baseline: 2026-08-29 baseline logs showed sync re-entrancy leaving up to SIX
+    // Baseline: sync re-entrancy once left up to SIX
     // concurrent std intervals; each start must fully replace the previous ticker
     startCountdowns();
     const baselineTimers = jest.getTimerCount();

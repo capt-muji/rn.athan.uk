@@ -243,8 +243,8 @@ export const useNotification = () => {
 
     // The store writes the preferences, does the work and, when the phone refuses any part of it, puts BOTH back
     // inside the same lock acquisition. Doing that here made the undo a second acquisition, which anything queued
-    // meanwhile ran in front of (measured while planning session 6b). Deliberately no error haptic: an on-device
-    // feel-test (owner, 2026-09-08) found expo-haptics' Heavy single-shot indistinguishable from the normal Light
+    // meanwhile ran in front of. Deliberately no error haptic: an on-device
+    // feel-test found expo-haptics' Heavy single-shot indistinguishable from the normal Light
     // feedback, so the revert plays visually only — the icon snapping back is the signal.
     const committed = await NotificationStore.commitPrayerAlertChange(
       scheduleType,

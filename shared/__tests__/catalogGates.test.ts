@@ -161,7 +161,7 @@ describe('the landed catalogs against the R2 gates', () => {
         /^whatsNew\.(title|body)\.(tabletSupport|athanSounds|reminderSounds|widgets|secondReminder|helpPage|qiblaCompass)$/.test(
           key
         ) ||
-        // The widget answer's platform labels stay Latin in every locale (owner, 2026-10-19)
+        // The widget answer's platform labels stay Latin in every locale
         key === 'help.a.widgets'
       ) {
         continue;

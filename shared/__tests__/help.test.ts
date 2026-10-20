@@ -86,7 +86,7 @@ describe('getHelpTopics', () => {
     expect(getHelpTopics('ios').map((topic) => topic.action)).toEqual(getHelpTopics('ios').map(() => undefined));
   });
 
-  /** Both platforms suppress notifications by mode, so both must answer for it (owner, 2026-09-27) */
+  /** Both platforms suppress notifications by mode, so both must answer for it */
   it('answers the Do Not Disturb question on both platforms', () => {
     for (const os of ['ios', 'android'] as const) {
       expect(getHelpTopics(os).map((topic) => topic.question)).toContain(
@@ -136,7 +136,7 @@ describe('getHelpTopics', () => {
     }
   });
 
-  /** The scheduling-horizon cut still stands; the widget cut was superseded by the owner's 2026-10-19 order */
+  /** The scheduling-horizon cut still stands; the widget cut was later superseded */
   it('keeps the scheduling-horizon question the owner cut out', () => {
     for (const os of ['ios', 'android'] as const) {
       const questions = getHelpTopics(os)
@@ -159,8 +159,8 @@ describe('getHelpTopics', () => {
   });
 
   /**
-   * The owner's order (2026-10-19): each platform's extent as two labeled lines, iOS first, in
-   * every locale, the labels Latin and the sentences in each language's own voice (D142.11)
+   * Each platform's extent as two labeled lines, iOS first, in
+   * every locale, the labels Latin and the sentences in each language's own voice
    */
   it('pins the widget copy, both extents as two labeled lines, byte for byte', () => {
     const catalogs: Record<string, Catalog> = { ar, ms, so, hi, th };
@@ -254,8 +254,8 @@ describe('getHelpTopics', () => {
   });
 
   /**
-   * The owner followed the old iOS steps and they led to the wrong screen: a route is version
-   * specific and goes stale, while the name of a setting does not (owner, 2026-09-27).
+   * The old iOS steps led to the wrong screen: a route is version
+   * specific and goes stale, while the name of a setting does not.
    */
   it('names what to change and never how to navigate there', () => {
     for (const os of ['ios', 'android'] as const) {
@@ -267,7 +267,7 @@ describe('getHelpTopics', () => {
     }
   });
 
-  /** A user needs the fix, never the mechanism (owner, 2026-09-27) */
+  /** A user needs the fix, never the mechanism */
   it('explains no internals in any answer', () => {
     for (const os of ['ios', 'android'] as const) {
       for (const { text } of getHelpTopics(os)) {
@@ -297,7 +297,7 @@ describe('getHelpTopics', () => {
 describe('hard line breaks', () => {
   const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
 
-  // Owner, 2026-10-12: no answer is broken into lines for the English layout; the text wraps at the view width
+  // No answer is broken into lines for the English layout; the text wraps at the view width
   it.each(['help.a.stopAfterRestart', 'help.a.cutoff'] as const)(
     '%s flows as one paragraph in every catalog',
     (key) => {

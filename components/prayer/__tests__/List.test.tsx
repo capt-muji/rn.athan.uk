@@ -182,7 +182,7 @@ describe('the gap below the list', () => {
 
     await render(<List type={ScheduleType.Standard} />);
 
-    // The owner's ruling, 2026-10-14: 25 percent more room between the Standard list and its ago badge
+    // 25 percent more room between the Standard list and its ago badge
     expect(listContainerStyle().marginBottom).toBe(28);
   });
 
@@ -191,7 +191,7 @@ describe('the gap below the list', () => {
 
     await render(<List type={ScheduleType.Extra} />);
 
-    // The owner's ruling, 2026-10-14: the Extras badge drops away from its list
+    // The Extras badge drops away from its list
     expect(listContainerStyle().marginBottom).toBe(34);
   });
 });

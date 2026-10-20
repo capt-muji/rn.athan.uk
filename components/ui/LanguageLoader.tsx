@@ -22,8 +22,8 @@ export default function LanguageLoader() {
   const busy = useAtomValue(languageCommitBusyAtom);
   const pending = useAtomValue(pendingLanguageAtom);
   // The line speaks the TARGET's words from its first frame: a switch's loader composing through
-  // the active catalog drew one frame in the old language around the target's name, then flipped
-  // (owner report, 2026-10-16). The face keys off the target for the same reason: frame one is
+  // the active catalog drew one frame in the old language around the target's name, then flipped.
+  // The face keys off the target for the same reason: frame one is
   // already the target's family and box, never the old locale's.
   const line = pending === null ? '' : languageChangingLine(pending);
   const ty = typographyFor(pending ?? currentLocaleId());

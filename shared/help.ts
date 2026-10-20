@@ -3,14 +3,13 @@
  *
  * Every cause here is an OS setting no code can change, and a support question carries no steps,
  * so the app names WHAT to turn on and never how to get there: a navigation path is
- * version-specific and goes stale (owner, 2026-09-27, after following the old iOS steps and
- * finding they led to the wrong screen). Nothing explains how the app works internally
+ * version-specific and goes stale. Nothing explains how the app works internally
  * either; a user only needs the fix.
  *
- * Every claim was measured: session 27 for the mute switch and the 30 second cap, session 25 for the
+ * Every claim was measured on device: the mute switch, the 30 second cap, the
  * alarm volume.
  *
- * The app is never named, because it may be renamed (owner, 2026-09-27).
+ * The app is never named, because it may be renamed.
  *
  * @see ai/plans/27-silent-mode-bypass/FINDINGS.md
  */
@@ -21,7 +20,7 @@ import { type TranslationKey, t } from '@/shared/i18n';
  * A settings screen an answer can offer to open
  *
  * Only Do Not Disturb access, because it is the one screen a deep link reaches reliably. Every other
- * fix names the setting to change instead (owner, 2026-09-27), so there is no generic settings link.
+ * fix names the setting to change instead, so there is no generic settings link.
  */
 export type HelpAction = 'dndAccess';
 
@@ -133,7 +132,7 @@ const HELP_ENTRIES: readonly HelpEntryKeys[] = [
     },
   },
 
-  // A support question, not a cause, so it goes last and names nothing to change (owner, 2026-10-19)
+  // A support question, not a cause, so it goes last and names nothing to change
   {
     question: 'help.q.widgets',
     ios: {

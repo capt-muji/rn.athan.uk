@@ -227,7 +227,7 @@ export const getBarAvailableAtom = (type: ScheduleType): Atom<boolean> =>
 const clearCountdown = (countdownKey: CountdownKey) => {
   if (!countdowns[countdownKey]) return;
 
-  clearTimeout(countdowns[countdownKey]!);
+  clearTimeout(countdowns[countdownKey]);
   countdowns[countdownKey] = undefined;
 };
 
@@ -424,8 +424,8 @@ const writeDisplayCountdown = (type: ScheduleType) => {
   }
 
   // A list waiting for its day to end has no prayer of its own left: its next prayer belongs to a later day, so
-  // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11, owner rulings
-  // 2026-09-14). The held atom is also true once no readable prayer is left at all
+  // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11).
+  // The held atom is also true once no readable prayer is left at all
   if (store.get(getDisplayHeldAtom(type))) {
     store.set(countdownAtom, { timeLeft: null, name: COUNTDOWN_WAITING_NAME });
     return;

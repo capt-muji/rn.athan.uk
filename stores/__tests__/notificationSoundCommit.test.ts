@@ -1,7 +1,7 @@
 /**
  * The athan commit (stores/notifications.ts)
  *
- * Choosing an athan is all or nothing, the selection included (owner, 2026-09-27): either the phone plays the chosen
+ * Choosing an athan is all or nothing, the selection included: either the phone plays the chosen
  * athan everywhere, or it is left on the one it already had, and the stored athan always names what the alarms
  * carry. So the write, the channel, the re-arm and the undo all happen inside ONE scheduling lock acquisition. Done
  * outside it, the undo let anything queued behind the commit arm with the athan being thrown away.

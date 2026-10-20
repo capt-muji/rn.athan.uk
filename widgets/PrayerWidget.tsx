@@ -147,14 +147,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    // A hint of slate lifts the near-black toward graphite (owner 2026-09-24).
+    // A hint of slate lifts the near-black toward graphite.
     card: 'rgba(9, 21, 47, 0.95)',
     // Softened off pure #ff69b4 and #ffffff: both were bright enough to sting
     // against a near-black card, so the pink takes a little white and the
-    // whites take a little of the slate tint (owner 2026-09-24).
+    // whites take a little of the slate tint.
     eyebrow: '#f774b6',
     hero: '#f6f8fc',
-    // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
+    // One slate-blue whisper per slot: the app's
     // muted-text tint over a deepened screen-gradient start. The absolute
     // time is the base, upcoming rows sit a quarter fainter, the footer
     // half — same tint, three strengths, both sizes
@@ -177,8 +177,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const palette = isDark ? DARK : LIGHT;
 
   // Fixed row height keeps the floating pill's offset exact and the
-  // spacing static. The pill is exactly the row's height (owner ruling
-  // 2026-09-20): uniform slots like Android. Six 23pt rows overrun the
+  // spacing static. The pill is exactly the row's height: uniform slots
+  // like Android. Six 23pt rows overrun the
   // systemMedium inner height by a few points and center between equal
   // Spacers, spilling evenly into the card padding; the shorter extras
   // lists center between equal Spacers (see the list column below). The
@@ -192,21 +192,20 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const A_ROW_HEIGHT = 24;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
-  // The iOS medium's list block, squeezed ~10% (owner ruling 2026-09-20):
+  // The iOS medium's list block, squeezed ~10%:
   // narrower rows pull the list's left edge in, and the freed width lets
   // the hero trio center between the card's edge and the list.
   const MEDIUM_LIST_WIDTH = 146;
   // Fallback for renders whose environment carries no grant (the press path).
   const ANDROID_MEDIUM_MIN_WIDTH = 310;
   // Equal, or the two halves are not equal and the trio's centre drifts left of
-  // the card's quarter however the columns are split (owner 2026-09-24).
+  // the card's quarter however the columns are split.
   const CARD_PAD_START = 13;
   const CARD_PAD_END = 13;
-  // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
+  // Uniform footer lift on every Android kind:
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
-  // The pill matches its row exactly (owner ruling 2026-09-20, replacing
-  // the 2026-09-19 overhang): same height as the row, no overhang —
+  // The pill matches its row exactly: same height as the row, no overhang —
   // uniform list slots, both schedules.
   const PILL_VPAD = 0;
   // Shares, not dp: minWidth is a floor the launcher may grant exactly, and
@@ -220,7 +219,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const REFERENCE_TIME_WIDTH = 54;
   const ROW_TEXT_MIN_SIZE = 10;
   // The pill used to span the column, dumping all the slack right of the times;
-  // 12 is the left inset the owner approved, now mirrored (owner 2026-09-24).
+  // 12 is the left inset, now mirrored.
   const ROW_GUTTER = 12;
 
   // The neutral, stale and catch cards follow the device locale the widget
@@ -330,7 +329,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // The runtime has read the weight from either the top level or the style
   // object across versions, so both carry it: a silently-dropped weight is
-  // invisible in the tree but obvious on glass (owner finding 2026-09-19)
+  // invisible in the tree but obvious on glass
   const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
     <ATextEl color={color} fontWeight={weight} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
@@ -395,7 +394,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     ];
   };
 
-  // The app countdown component's face (the owner's 2026-10-18 amendment): each
+  // The app countdown component's face: each
   // group a digit run with its letter tight against it at 0.95 x the digit
   // size, same colour and weight, groups 12 points apart. The converter
   // maps arrangements to alignments only, so the gap rides a fixed-width
@@ -512,15 +511,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const footer = nextDayFooter ?? AFooter(nextDayLabel);
     // fillMaxWidth is what makes horizontalAlignment mean anything: a Column
     // that shrink-wraps its text centres nothing and parks at its parent's
-    // start, which read as the trio sitting left of its half (owner 2026-09-24).
+    // start, which read as the trio sitting left of its half.
     const trio = (
       <Column horizontalAlignment='center' modifiers={[fillMaxWidth()]}>
         {/* No tracking: iOS sets kerning(0.5), and the converter drops
             letterSpacing at the Kotlin boundary, so the only lever here is a
             space character between glyphs. The narrowest one is a hair space
             at ~1.4sp, nearly 3x iOS's half point, which reads as gaps wide
-            enough to hold another letter (owner 2026-09-25). Plain text is far
-            closer to iOS than the workaround was. */}
+            enough to hold another letter. Plain text is far closer to iOS
+            than the workaround was. */}
         {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
         {ALabelParts(strings, next.epochMs, nowMs, 26, 'bold', palette.hero)}
@@ -554,7 +553,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
     const scale = innerWidth / REFERENCE_INNER_WIDTH;
     // Half each, so the trio's centre and the card's quarter coincide at every
-    // grant (owner 2026-09-24). The old 170/347 share sat 3dp off that.
+    // grant. The old 170/347 share sat 3dp off that.
     const HERO_WIDTH = Math.floor(innerWidth / 2);
     // Remainder, not its own rounded share: two rounded shares can sum a dp
     // past the inner width, and a dp of overflow clips.
@@ -748,8 +747,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // minimum, which inflated the HStack's height and pushed the shared
     // hero column's footer past the card's 13pt inset. The standard 6-row
     // list at 23pt rows overruns the inner height by ~6pt, dragging the
-    // footer that far below the extras medium's flush inset (owner ruling
-    // 2026-09-20: the standard footer must sit exactly where the extras
+    // footer that far below the extras medium's flush inset (the standard
+    // footer must sit exactly where the extras
     // footer sits), so the offset pulls it back up (the runtime applies
     // the offset at double strength).
     const footerLift = isMedium && rows.length >= 6 ? -3 : 0;
@@ -900,7 +899,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             ]}>
             {/* The hero column takes everything the list leaves, so the
                 trio centers exactly between the card's left edge and the
-                list — equal air both sides (owner ruling 2026-09-20). */}
+                list — equal air both sides. */}
             <HeroColumn />
             {/* The list column: a fixed-width block flush against the
                 card's right inset. The row block (pill + rows) centers

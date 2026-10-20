@@ -2257,7 +2257,7 @@ describe('the readings a warm reopen is judged on', () => {
 describe('the compass ring’s cardinal numbers on the drawn dial', () => {
   // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a
   // numeric child arrives as its own TSpan, so a label's own Text carries its x and ink and its TSpan the content
-  // and size. This is the render half of the owner's 2026-10-14 rulings; the unit suite proves the data is locale-free
+  // and size. This is the render half of the rulings; the unit suite proves the data is locale-free
   type DialLabel = { content: string; x?: number; fontSize?: number; ink?: number };
 
   const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
@@ -2311,7 +2311,7 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
         expect(degree.fontSize as number).toBeLessThan(numberSize);
         expect(degree.ink).toBeLessThan(1);
       }
-      // The owner's 2026-10-14 ruling: the circle sits the same distance past the number whatever its length, so the
+      // The circle sits the same distance past the number whatever its length, so the
       // per-bearing offset grows by one constant step per extra digit and 180 and 270 land on the same offset
       for (const half of [0, 1]) {
         const numberRow = numbers.slice(half * 4, half * 4 + 4);

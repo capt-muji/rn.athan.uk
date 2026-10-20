@@ -1669,10 +1669,10 @@ export const rescheduleAllForLanguageChange = (): Promise<boolean> =>
 /**
  * Makes the phone play one athan everywhere, or leaves it playing the one it already had
  *
- * The selection is part of the commit rather than a setting beside it (owner, 2026-09-27), so a stored athan the
- * alarms do not play is finding 79's defect wearing a different hat. Hence one lock acquisition around the write,
+ * The selection is part of the commit rather than a setting beside it, so a stored athan the
+ * alarms do not play is the same defect wearing a different hat. Hence one lock acquisition around the write,
  * the channel, the re-arm and the undo: releasing it between them let anything queued behind arm with the athan
- * being thrown away, which is the same trap session 6b removed from the alert sheet.
+ * being thrown away, which is the trap the alert sheet already closed.
  *
  * @param selection The athan the user picked
  * @param previousSelection The athan in force before the sheet opened
@@ -1771,8 +1771,8 @@ export const refreshNotifications = async () => {
     }
 
     // The same reschedule, narrowed to the prayers whose bell and alarms may disagree: its empty-cache bail, its
-    // day-change check and its sweep all still run, and one prayer costs about a tenth of the whole pass (owner,
-    // 2026-09-16). The refresh gate keeps its own meaning and is not stamped here
+    // day-change check and its sweep all still run, and one prayer costs about a tenth of the whole pass.
+    // The refresh gate keeps its own meaning and is not stamped here
     logger.info('NOTIFICATION: Putting right the prayers the phone refused, instead of a full reschedule', { marked });
 
     return withSchedulingLock(async () => {

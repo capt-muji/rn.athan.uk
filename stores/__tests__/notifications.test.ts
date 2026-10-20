@@ -254,7 +254,7 @@ describe('migrateIndexKeyedAlertPreferences', () => {
     expect(Database.database.getString('preference_alert_standard_fajr')).toBe('not-a-number');
   });
 
-  // Audit finding 3 and the owner's ruling of 2026-09-12. Midnight was inserted at
+  // Midnight was inserted at
   // EXTRAS_ENGLISH[0] in 1.0.27, so an install that last ran before then wrote its
   // extras index keys against ['Last Third', 'Suhoor', 'Duha', 'Istijaba'].
   // Migrating those with today's array shifts every extra by one: the user gets an

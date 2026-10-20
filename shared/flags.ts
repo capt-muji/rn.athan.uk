@@ -26,8 +26,8 @@
 export const FEATURE_FLAGS = {
   /**
    * iOS Home/Lock screen widgets (expo-widgets): the widget extension and
-   * every push path in stores/widget.ts. ON, and it stays on: the owner ruled
-   * on 2026-09-25 that neither widget flag ships disabled again, so
+   * every push path in stores/widget.ts. ON, and it stays on: neither
+   * widget flag ships disabled again, so
    * `.env.example` carries 1 for both and flagDefaults.test.ts pins them.
    *
    * It existed to keep the G.1 render chain out of a build: expo-widgets
@@ -35,8 +35,8 @@ export const FEATURE_FLAGS = {
    * evaluation tore down the whole tree and starved the extension's CPU
    * budget. expo-widgets 58.0.1 shipped expo/expo#49810, and the installed
    * 58.0.3 renders `AnyView(view).id(child.childIdentity)` with no `UUID()`
-   * anywhere. The G.1 acceptance protocol ran on the iPhone XS on 2026-09-25
-   * and passed: all eight home kinds rendered and stayed rendered past ten
+   * anywhere. The G.1 acceptance protocol passed on the iPhone XS:
+   * all eight home kinds rendered and stayed rendered past ten
    * minutes, no watchdog line, no new cpu_resource report.
    *
    * Now scaffolding awaiting deletion, per the lifecycle rule above.
@@ -44,7 +44,7 @@ export const FEATURE_FLAGS = {
   iosWidgets: process.env.EXPO_PUBLIC_IOS_WIDGETS === '1',
   /**
    * Android home-screen widgets (expo-widgets' Android implementation,
-   * SDK 58). ON, and it stays on: the owner ruled on 2026-09-25 that neither
+   * SDK 58). ON, and it stays on: neither
    * widget flag is ever shipped off again, so `.env.example` carries 1 for
    * both and a build that turns this off is a mistake, not a choice.
    *

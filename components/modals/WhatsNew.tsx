@@ -19,7 +19,7 @@ const BADGE_GLYPH: Record<string, Icon> = {
 /** De-emphasized faint blue - version number and platform notes */
 const FAINT_BLUE = 'rgba(42, 68, 130, 0.32)';
 
-/** The Help modal's list share (owner, 2026-10-12): bounds the release list so the card's heading, version and Close always fit beside it */
+/** Bounds the release list so the card's heading, version and Close always fit beside it */
 const LIST_HEIGHT_SHARE = 0.62;
 
 type Props = {

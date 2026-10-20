@@ -12,7 +12,7 @@ import Masjid from './Masjid';
 
 export default function ErrorScreen() {
   /**
-   * Clears the cache and reloads. Owner ruling, 2026-09-12: reaching this screen
+   * Clears the cache and reloads. Reaching this screen
    * means something has gone wrong, so refetching from scratch is the recovery,
    * and the destruction is acceptable because preferences survive it.
    *

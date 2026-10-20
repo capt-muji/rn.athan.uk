@@ -224,13 +224,13 @@ describe('palette literals', () => {
     expect(literals).not.toContain(null);
 
     // Anchors track the ACTIVE design's declared core palette (every
-    // literal must appear in the layout). Light: the 2026-08-31 "Cotton
+    // literal must appear in the layout). Light: the "Cotton
     // Candy" pane — rose name, dark ink hero, blue-tinted secondary,
-    // indigo/rose pills with pale pink text. Dark (2026-09-01 "Violet
-    // Dusk", owner-approved): navy-violet card on every size, pink name,
+    // indigo/rose pills with pale pink text. Dark ("Violet
+    // Dusk"): navy-violet card on every size, pink name,
     // white hero, periwinkle-tinted small texts with blue-grey medium
     // texts, app indigo + muted magenta pills, neutral violet depth
-    // shadow. The orb glows are gone (owner ruling 2026-09-20).
+    // shadow. The orb glows are gone.
     const anchors = [
       // Light palette
       'rgba(252, 252, 254, 0.92)',
@@ -246,14 +246,14 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
-      // Dark palette — Gradient Deep (owner pick 2026-09-20)
+      // Dark palette — Gradient Deep
       'rgba(9, 21, 47, 0.95)', // card — every dark size
       '#f6f8fc', // hero / passed rows
       '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
       '#f774b6', // eyebrow + stale mark
       'rgba(138, 169, 214, 0.54)', // secondary — the base whisper, both sizes
-      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
+      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base
       'rgba(138, 169, 214, 0.27)', // footer — half the base
       '#a123aa', // extras pill
       '#2743e0', // standard pill — the app gradient's blue, deepened
@@ -294,7 +294,7 @@ describe('palette literals', () => {
       'rgba(219, 39, 119, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
+      // Home widget — dark Gradient Deep (the app
       // screen gradient's start, deepened; whispers from the app's muted text)
       'rgba(9, 21, 47, 0.95)',
       '#f6f8fc',
@@ -496,7 +496,7 @@ describe('widget props v8 footers', () => {
     }
   });
 
-  it('bakes no `now` into the Android strings contract (owner 2026-10-19)', () => {
+  it('bakes no `now` into the Android strings contract', () => {
     const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;

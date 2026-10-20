@@ -340,7 +340,7 @@ describe('home widget renderer', () => {
       expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#db2777')).toBe(true);
     });
 
-    // Owner ruling 2026-09-20 (replacing 2026-09-19): the pill is exactly
+    // The pill is exactly
     // its row's height — uniform slots, like Android (its shadow stays on iOS)
     it('matches the medium pill to its 23dp row exactly, keeping its shadow', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
@@ -364,7 +364,7 @@ describe('home widget renderer', () => {
     });
 
     it('draws no runtime orbs on any theme', () => {
-      // Owner ruling 2026-09-20: the dark kinds go flat. The runtime blur
+      // The dark kinds go flat. The runtime blur
       // orbs cost the cold first render (the patch A/B's control isolated
       // them as the cause of the placement mask flash).
       for (const family of ['systemSmall', 'systemMedium'] as const) {
@@ -915,7 +915,7 @@ describe('home widget renderer', () => {
       expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1');
     });
 
-    // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
+    // One uniform lifted footer on all 8 kinds
     it('lifts the footer row 16dp above the card bottom on the small kinds', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       for (const theme of ['light', 'dark'] as const) {
@@ -931,7 +931,7 @@ describe('home widget renderer', () => {
         // The footer is the day alone now — no separator, no city
         expect(textsOf(footerRow).join('')).not.toContain('·');
         // The row must be taller than its bottom padding, or the footer
-        // text clips to nothing on device (owner finding 2026-09-19)
+        // text clips to nothing on device
         expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 34 }]));
       }
     });
@@ -981,7 +981,7 @@ describe('home widget renderer', () => {
       expect(pill).toBeDefined();
       // The pill's ancestor column is the list's share of the granted width:
       // at full widget width the pill must not stretch across the dead space
-      // right of the rows (owner finding 2026-09-19)
+      // right of the rows
       const listColumn = nodes.find(
         (node) =>
           node.marker === 'Box' &&
@@ -991,7 +991,7 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(listColumn).toBeDefined();
-      // The pill wraps the text now, not the column (owner 2026-09-24): at this
+      // The pill wraps the text now, not the column: at this
       // 380dp grant the list is 177 and the text 136, so the pill starts 17 in.
       const pillColumn = collect(tree).find(
         (node) =>
@@ -1447,8 +1447,8 @@ describe('home widget renderer', () => {
 
     it("rolls the medium day list to the next prayer's day after the last row passes", () => {
       // 20:00 on DAY_ONE: Isha (19:40) has passed, next is DAY_TWO's Fajr —
-      // the list must show DAY_TWO with Fajr active (owner finding
-      // 2026-09-19), not fall back to the hero alone
+      // the list must show DAY_TWO with Fajr active,
+      // not fall back to the hero alone
       freezeNow(at(DAY_ONE, '20:00'));
       const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
       const nodes = collect(tree);

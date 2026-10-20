@@ -315,8 +315,8 @@ describe('the settings sheet in the Ramadan season, Monday 15 February 2027 at 1
 describe('the icons beside the Settings rows, Friday 11 September 2026 at 14:00', () => {
   /**
    * Text glyphs drew differently on each platform, so the music note needed a per-platform size and lift
-   * (commit 9c853868) and the info mark sat off-centre in its circle. These are vector icons now, which
-   * render identically everywhere, so the platform tweaks are gone with them (owner, 2026-09-27).
+   * and the info mark sat off-centre in its circle. These are vector icons now, which
+   * render identically everywhere, so the platform tweaks are gone with them.
    */
   it('draws a real icon for the athan, the notes and the help rows', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
