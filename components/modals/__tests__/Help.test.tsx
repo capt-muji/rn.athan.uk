@@ -10,7 +10,7 @@ import type { TestInstance } from 'test-renderer';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
-import { SIZE } from '@/shared/constants';
+import { COLORS, SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
@@ -344,13 +344,47 @@ describe("the Help modal's Close row entrance", () => {
     while (current && !current.props?.entering) current = current.parent;
     return current;
   };
+  const closeRow = () => enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
 
   it('fades in with the card on the modal container entrance fade', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
-    const row = enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
+    const row = closeRow();
 
     expect(row?.props.entering).toBe(FadeIn);
+  });
+
+  // Android paints the settled row before the entering fade's zero lands, and does not multiply
+  // the row by the container's fade, so the row's own static style must hold its first frame
+  it('enters on Android from a zero opacity its own style holds', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const row = closeRow();
+
+    expect(row?.props.entering).toBe(FadeIn);
+    expect(row?.props.layout).toBeDefined();
+    expect(StyleSheet.flatten(row?.props.style).opacity).toBe(0);
+  });
+
+  it('enters on iOS with the style it carries today, no opacity of its own', async () => {
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const row = closeRow();
+
+    expect(row?.props.entering).toBe(FadeIn);
+    expect(row?.props.layout).toBeDefined();
+    expect(StyleSheet.flatten(row?.props.style).opacity).toBeUndefined();
+  });
+
+  // Columns: the platform the row renders under. The hold is a first frame, not a new fill
+  it.each(['ios', 'android'])('stays opaque at settle on %s', async (os) => {
+    if (os === 'android') onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    const row = closeRow();
+
+    expect(StyleSheet.flatten(row?.props.style).backgroundColor).toBe(COLORS.light.background);
   });
 });
 

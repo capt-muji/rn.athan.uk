@@ -185,7 +185,10 @@ export default function ModalHelp({ visible, onClose }: Props) {
         ))}
       </ScrollView>
       {/* Animated with the list, or it teleports to its new position while the rows above it slide */}
-      <Animated.View layout={GROW} entering={FadeIn} style={styles.buttonRow}>
+      <Animated.View
+        layout={GROW}
+        entering={FadeIn}
+        style={[styles.buttonRow, Platform.OS === 'android' && styles.buttonRowEntering]}>
         <Pressable
           style={styles.button}
           onPress={onClose}
@@ -318,6 +321,13 @@ const styles = StyleSheet.create({
     // instead of flashing through the transparent gap above the button
     backgroundColor: COLORS.light.background,
     paddingTop: SPACING.section - SPACING.mid,
+  },
+  // Android paints the settled row before the entering fade's zero lands (the fade's initial
+  // values ride the animation config, applied on the UI thread at animation start, after first
+  // paint) and does not multiply the row by the container's fade, so the static style alone pins
+  // the row's first frame
+  buttonRowEntering: {
+    opacity: 0,
   },
   button: {
     width: SIZE.modal.buttonWidth,
