@@ -518,8 +518,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             letterSpacing at the Kotlin boundary, so the only lever here is a
             space character between glyphs. The narrowest one is a hair space
             at ~1.4sp, nearly 3x iOS's half point, which reads as gaps wide
-            enough to hold another letter (owner 2026-09-25). Plain text is far
-            closer to iOS than the workaround was. */}
+            enough to hold another letter. Plain text is far closer to iOS
+            than the workaround was. */}
         {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
         {ALabelParts(strings, next.epochMs, nowMs, 26, 'bold', palette.hero)}
@@ -899,7 +899,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             ]}>
             {/* The hero column takes everything the list leaves, so the
                 trio centers exactly between the card's left edge and the
-                list — equal air both sides (owner ruling 2026-09-20). */}
+                list — equal air both sides. */}
             <HeroColumn />
             {/* The list column: a fixed-width block flush against the
                 card's right inset. The row block (pill + rows) centers

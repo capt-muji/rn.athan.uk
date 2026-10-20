@@ -496,7 +496,7 @@ describe('widget props v8 footers', () => {
     }
   });
 
-  it('bakes no `now` into the Android strings contract (owner 2026-10-19)', () => {
+  it('bakes no `now` into the Android strings contract', () => {
     const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;

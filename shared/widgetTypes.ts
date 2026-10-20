@@ -177,8 +177,7 @@ export interface AndroidWidgetDayRow {
  * unit fields bake fixed lowercase Latin bytes in every locale (the widget
  * countdown is exactly the app countdown component's face, so its letters
  * never localise); the countdown is minutes-only today, so `s` rides for that
- * countdown is minutes-only today, so `s` rides for that shape and stays
- * unread until it changes.
+ * shape and stays unread until it changes.
  */
 export interface WidgetStrings {
   h: string;
