@@ -23,7 +23,6 @@ import {
   getVisibleWhatsNew,
   MAX_WHATS_NEW_ARCHIVE,
   MAX_WHATS_NEW_BODY_LENGTH,
-  MAX_WHATS_NEW_ITEMS,
   MAX_WHATS_NEW_TITLE_LENGTH,
   shouldShowWhatsNew,
   WHATS_NEW,
@@ -257,12 +256,26 @@ describe('filterWhatsNewItems', () => {
   });
 });
 
-describe('the language release entry', () => {
-  it('announces the language feature at the version this build ships', () => {
-    expect(WHATS_NEW?.version).toBe('2.0.54');
-    const items = currentVisibleWhatsNew()?.items ?? [];
-    const entry = items.find((item) => item.version === '2.0.54');
-    expect(entry?.title).toBe(t('whatsNew.title.language'));
+describe('the debut release entry', () => {
+  // OWNER ORDER 2026-10-20: the What's New modal itself is new and has never
+  // reached the store, so it debuts with every feature the app has ever
+  // shipped - no item stays parked and none ships behind an old stamp
+  it('stamps every archived item at the release stamp', () => {
+    const release = WHATS_NEW;
+    expect(release).not.toBeNull();
+    for (const entry of release?.items ?? []) {
+      expect(entry.version).toBe(release?.version);
+    }
+  });
+
+  it('presents every archived feature at once', () => {
+    expect((currentVisibleWhatsNew()?.items ?? []).map((item) => item.title)).toEqual(
+      (WHATS_NEW?.items ?? []).map((entry) => t(entry.titleKey))
+    );
+  });
+
+  it('announces the language feature with its catalog copy', () => {
+    const entry = (currentVisibleWhatsNew()?.items ?? []).find((item) => item.title === t('whatsNew.title.language'));
     expect(entry?.body).toBe(t('whatsNew.body.language'));
   });
 
@@ -270,7 +283,7 @@ describe('the language release entry', () => {
     setActiveLocale('ms');
     try {
       const items = currentVisibleWhatsNew()?.items ?? [];
-      expect(items.find((item) => item.version === '2.0.54')?.title).toBe('Bahasa');
+      expect(items.some((item) => item.title === 'Bahasa')).toBe(true);
     } finally {
       setActiveLocale('en');
     }
@@ -279,21 +292,17 @@ describe('the language release entry', () => {
 
 describe('currentVisibleWhatsNew', () => {
   it('shows only current-release items, or nothing on a silent release', () => {
-    const visible = currentVisibleWhatsNew()?.items ?? [];
-    expect(visible.length).toBeLessThanOrEqual(MAX_WHATS_NEW_ITEMS);
     const anyCurrentReleaseItems = (WHATS_NEW?.items ?? []).some((entry) => entry.version === WHATS_NEW?.version);
     if (!anyCurrentReleaseItems) {
       expect(currentVisibleWhatsNew()).toBeNull();
     }
   });
 
-  it('ships its banner at the confidence build the owner installs', () => {
+  it('ships its banner at the version this tree builds (the debut stamp)', () => {
     // The gate is a release-moment mechanism: exact equality, one build. The
-    // language entry is stamped at 2.0.54, the audit-fix build the owner
-    // installs as the confidence build; the public-release row re-stamps at
-    // final sizing (D41, D48).
-    expect(WHATS_NEW?.version).toBe('2.0.54');
-    expect(WHATS_NEW?.items[0]?.version).toBe('2.0.54');
+    // modal debuts on the first store release carrying every feature; the
+    // stamp moves to the store build when that version is taken
+    expect(WHATS_NEW?.version).toBe('2.3.0');
   });
 
   // `expect(entry.version).toBe(WHATS_NEW?.version)` used to stand here, and it was
@@ -313,12 +322,13 @@ describe('currentVisibleWhatsNew', () => {
     }
   });
 
-  it('keeps the parked widgets item in the archive (wording preserved, never shown)', () => {
-    const parked = WHATS_NEW?.items.find((entry) => entry.version === null);
-    expect(parked?.titleKey).toBe('whatsNew.title.widgets');
-    expect(parked ? t(parked.titleKey) : '').toBe('Home & Lock widgets');
-    expect(parked?.flags).toEqual(['iosWidgets']);
-    expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).not.toContain('Home & Lock widgets');
+  it('presents the widgets feature on both platforms (no badge, no flag gate)', () => {
+    // Both platforms ship widgets and neither flag ever ships off again, so
+    // the debut presents the feature unbadged everywhere
+    const widgets = WHATS_NEW?.items.find((entry) => entry.titleKey === 'whatsNew.title.widgets');
+    expect(widgets?.platform).toBeUndefined();
+    expect(widgets?.flags).toBeUndefined();
+    expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).toContain('Home & Lock widgets');
   });
 
   it('resolves the active locale catalog at call time, not at module load', () => {

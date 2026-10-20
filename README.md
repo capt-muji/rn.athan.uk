@@ -193,9 +193,11 @@ holds the placeholder vocabulary the shapes use for device and location identifi
 
 Every store release, edit `WHATS_NEW` in `shared/whatsNew.ts`:
 
-1. Stamp the items shipping in this release with the release version. One to four user-facing items only: new abilities, removals, behavior changes users notice. No technical work.
+1. Stamp the items shipping in this release with the release version: new abilities, removals, behavior changes users notice. No technical work, and no count cap - the stamps alone decide what shows, and the archive prunes oldest-first only past 100 entries (owner order 2026-10-20).
 2. Bump `WHATS_NEW.version` to the store version being submitted. The modal shows nothing unless it equals the installed version.
 3. Ship silent when nothing is stamped: leave the version stamps behind, or set `WHATS_NEW` to null.
+
+The debut modal (2.3.0) opens with every feature the app has ever shipped, because the modal itself is new to the store.
 
 A contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape. `EXPO_PUBLIC_WHATS_NEW_PREVIEW=1` in `.env` forces the modal on cold launch in dev builds.
 

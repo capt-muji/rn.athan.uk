@@ -108,60 +108,54 @@ const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
 // the installed version is how a release silent-ships, and that is a choice, not
 // a bug. Deliberately NOT covered by a test — a test here would fail every time
 // that choice is made, which is the fastest way to get the guard deleted.
+//
+// The debut (owner order 2026-10-20): the modal itself is new and has never
+// reached the store, so it opens with every feature the app has ever shipped.
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.0.54',
+  version: '2.3.0',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
-      version: '2.0.54',
+      version: '2.3.0',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',
       bodyKey: 'whatsNew.body.tabletSupport',
-      version: '1.26.32',
+      version: '2.3.0',
     },
     {
       titleKey: 'whatsNew.title.athanSounds',
       bodyKey: 'whatsNew.body.athanSounds',
-      version: '1.26.32',
+      version: '2.3.0',
     },
     {
       titleKey: 'whatsNew.title.reminderSounds',
       bodyKey: 'whatsNew.body.reminderSounds',
-      version: '1.26.32',
+      version: '2.3.0',
     },
     {
-      // PARKED: ships with the release that enables the widgets flag
-      // (expo-widgets@57.0.16, ledger G.1 (git history)) - stamp its version then
+      // Unbadged: both platforms ship widgets and neither flag ever ships off again
       titleKey: 'whatsNew.title.widgets',
       bodyKey: 'whatsNew.body.widgets',
-      platform: 'ios',
-      flags: ['iosWidgets'],
-      version: null,
+      version: '2.3.0',
     },
     {
-      // PARKED: whether this release gets a modal is the owner's editorial call, so it is
-      // stamped at the store release rather than here. No flag: it ships on both platforms
       titleKey: 'whatsNew.title.secondReminder',
       bodyKey: 'whatsNew.body.secondReminder',
-      version: null,
+      version: '2.3.0',
     },
     {
-      // PARKED: stamped at the store release, like every item, because whether a release
-      // gets a modal is the owner's editorial call
       titleKey: 'whatsNew.title.helpPage',
       bodyKey: 'whatsNew.body.helpPage',
-      version: null,
+      version: '2.3.0',
     },
     {
-      // PARKED: stamped at the store release. No platform badge, because the compass ships on both:
-      // Android is simply tested after iOS
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
-      version: null,
+      version: '2.3.0',
     },
   ],
 };
@@ -170,10 +164,8 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
 // CONTENT LIMITS - enforced by shared/__tests__/whatsNew.test.ts
 // =============================================================================
 
-/** Maximum items shown per release (keeps the modal scannable) */
-export const MAX_WHATS_NEW_ITEMS = 4;
 /** Maximum archived items before pruning (oldest first) */
-export const MAX_WHATS_NEW_ARCHIVE = 20;
+export const MAX_WHATS_NEW_ARCHIVE = 100;
 /** Maximum title length in characters */
 export const MAX_WHATS_NEW_TITLE_LENGTH = 32;
 /** Maximum body length in characters */
