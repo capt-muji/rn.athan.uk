@@ -70,5 +70,9 @@
   {
     "version": "2.0.969",
     "reason": "2026-10-17 cross-lane collision predating this gate (rows 111 and 125 DONE docs commits; the 2.0.970 row-dedup commit left its tree at 2.0.969); allowlisted by lane 126 to clear the repo-wide commit block"
+  },
+  {
+    "version": "2.2.9",
+    "reason": "2026-10-20 lane/280c's deep-clean close took 2.2.9 while the lead's direct dot-spacing order (owner, no ticket) landed on uat in the same window; the merge renumbers above both"
   }
 ]

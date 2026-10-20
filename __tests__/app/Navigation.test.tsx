@@ -180,7 +180,7 @@ describe('the bottom bar, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByTestId('bottom-bar')).toHaveStyle({
       flexDirection: 'row',
       alignItems: 'center',
-      gap: SPACING.sm,
+      gap: SPACING.sm * 1.65,
     });
   });
 

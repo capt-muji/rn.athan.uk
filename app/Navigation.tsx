@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   bar: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: SPACING.sm,
+    gap: SPACING.sm * 1.65,
     position: 'absolute',
     alignSelf: 'center',
   },
