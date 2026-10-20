@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict hgjUplyLa9Vk7CLNfnoPbbNbbolQGAWegu8ICFTwfbjgaEWWhcY98HbuZPaJ1FL
+\restrict lFda3LA1vgVLXU23Ll9PbpK4UenybUgpVKspr2fs01RMYaGsDUWOelT38tfuhut
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5763,9 +5763,9 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 1, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:23:42.573038+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 4, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:56:33.939754+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 4, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:59:02.841973+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 3, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.
 
 Where: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.
@@ -8264,6 +8264,8 @@ Bars, open-pose panel screenshot 951x669, mid row: x 0, 60, 200 and 750, 900 pur
 Fold liveness: process id 68137 unchanged across closed, open, closed, open, every pose confirmed by its window class. The prayer overlay opened from a row tap in the open pose and dismissed cleanly.
 
 One open-pose screenshot is attached to this row, taken to scratch outside the worktree and never committed.', NULL, '2026-10-19 23:56:21.536121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2393, 264, 'comment', 'owner', 'Records closed: the branch diff names exactly shared/insets.ts, shared/__tests__/insets.test.ts, app/Screen.tsx, __tests__/app/Screen.test.tsx, package.json, app.json and board/snapshot/board.sql, whose only production change is the new inset clamp and Screen''s one-line paddingTop consumption, so no phone-tuned layout value moved.', NULL, '2026-10-19 23:59:02.833681+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2394, 267, 'activity', 'owner', NULL, 'status', '2026-10-19 23:59:02.850879+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 
 
 --
@@ -9202,7 +9204,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (471, 264, 1, 'Backlog', 'backlog', '2026-10-19 22:48:42.762+00', '2026-10-19 23:04:47.435884+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (476, 264, 6, 'Planning', 'unstarted', '2026-10-19 23:04:47.435884+00', '2026-10-19 23:17:15.772343+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (477, 264, 9, 'Awaiting Owner', 'started', '2026-10-19 23:17:15.772343+00', '2026-10-19 23:19:19.421596+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (481, 267, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.573+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (478, 264, 6, 'Planning', 'unstarted', '2026-10-19 23:19:19.421596+00', '2026-10-19 23:28:51.414622+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (482, 264, 2, 'Ready', 'unstarted', '2026-10-19 23:28:51.414622+00', '2026-10-19 23:28:51.487769+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (483, 264, 3, 'In progress', 'started', '2026-10-19 23:28:51.487769+00', NULL);
@@ -9210,6 +9211,8 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (484, 265, 4, 'Done', 'completed', '2026-10-19 23:38:06.135062+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (480, 266, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.539+00', '2026-10-19 23:56:33.945098+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (485, 266, 4, 'Done', 'completed', '2026-10-19 23:56:33.945098+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (481, 267, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.573+00', '2026-10-19 23:59:02.847936+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (486, 267, 4, 'Done', 'completed', '2026-10-19 23:59:02.847936+00', NULL);
 
 
 --
@@ -16627,10 +16630,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 46);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3385);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 47);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3386);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
@@ -16644,7 +16648,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 86);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 3);
 
 
 --
@@ -16906,7 +16909,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2392, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2394, true);
 
 
 --
@@ -16983,7 +16986,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 485, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 486, true);
 
 
 --
@@ -21466,5 +21469,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict hgjUplyLa9Vk7CLNfnoPbbNbbolQGAWegu8ICFTwfbjgaEWWhcY98HbuZPaJ1FL
+\unrestrict lFda3LA1vgVLXU23Ll9PbpK4UenybUgpVKspr2fs01RMYaGsDUWOelT38tfuhut
 
