@@ -181,6 +181,10 @@ and Ready share one, and every parked state carries `started`.
 - Entering `Done`: the change is merged, the audit passed, and the closing comment is written.
   The same move removes every relation that has this ticket blocking another: a completed
   ticket blocks nothing.
+- An Upstream row enters Done only when its PR is merged AND this repo has removed the
+  patch the merge replaces. A follow-up - reply, rebase, fix, branch push - never closes
+  the row: it parks back in Upstream with `Waiting on` rewritten to the PR's live state,
+  and every action lands on the row as a comment, so the history reads from the board.
 
 Never move a ticket that is not yours to move. One ticket per agent per turn.
 

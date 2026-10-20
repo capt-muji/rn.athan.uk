@@ -35,7 +35,9 @@ You work in your own worktree, never in the main tree. The main tree stays on `u
 
 ## What you never do
 
-- Never push. The lead pushes.
+- Never push, and never update a remote branch or force any git write through an API
+  either. Branch pushes are the lead's: ask with the exact command and the lease tip.
+  Posting comments and editing a PR body are yours.
 - Never touch a second ticket.
 - Never move a subtask. Subtasks are steps, and their parent carries them.
 - Never leave a ticket in a started column at the end of your turn. It is Done, or it is Blocked
