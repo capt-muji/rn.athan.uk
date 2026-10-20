@@ -43,18 +43,18 @@ describe('the volume footnote', () => {
     expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
-  it('draws the iOS copy beside a smaller information glyph on the unchanged round chip', async () => {
+  it('draws the iOS copy beside the information glyph at 65 percent of the footer mark', async () => {
     await render(<SheetVolumeNote />);
 
     expect(screen.getByText(IOS_COPY)).toBeOnTheScreen();
     const badge = screen.getByTestId('svg:info-bare', { includeHiddenElements: true });
-    // The owner's footer-only ruling: the letter shrinks, the circle it sits on does not
-    expect(badge.props.width).toBe(10);
-    expect(badge.props.height).toBe(10);
+    // The owner's 2026-10-20 ruling: the whole mark shrinks 35 percent, chip and letter together
+    expect(badge.props.width).toBe(6.5);
+    expect(badge.props.height).toBe(6.5);
     const chip = badge.parent;
     const chipStyle = StyleSheet.flatten(chip?.props.style) as { width?: number; height?: number };
-    expect(chipStyle.width).toBe(20);
-    expect(chipStyle.height).toBe(20);
+    expect(chipStyle.width).toBe(13);
+    expect(chipStyle.height).toBe(13);
   });
 
   it('centres every line in the sheet-subtitle ink at the detail size', async () => {
