@@ -11,8 +11,9 @@ import { getInstalledVersion } from '@/stores/version';
 const IS_IOS = Platform.OS === 'ios';
 
 // country=gb is load-bearing, not tidiable: the app is published in the GB storefront alone and a
-// bundleId lookup is storefront-scoped, so every other country answers resultCount 0
-const ITUNES_LOOKUP_URL = 'https://itunes.apple.com/lookup?bundleId=com.example.athan&country=gb';
+// bundleId lookup is storefront-scoped, so every other country answers resultCount 0. The bundle
+// id comes from the build, never from the source: a clone's build looks up its own app.
+const ITUNES_LOOKUP_URL = `https://itunes.apple.com/lookup?bundleId=${APP_CONFIG.iosBundleId}&country=gb`;
 
 const APP_STORE_URL = `https://apps.apple.com/gb/app/athan-london/id${APP_CONFIG.iosAppId}`;
 

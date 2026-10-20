@@ -258,7 +258,7 @@ Three, all measured:
 | `components/day/Day.tsx:48` | `London, UK` | The natural home for the authority name. Section 5.2 |
 | `widgets/PrayerWidget.tsx:318` | `Prayer times for London` | Widget subtitle |
 | `widgets/PrayerWidget.tsx:524` | `Prayer times for London` | The `NeutralCard` placeholder |
-| `device/updates.ts:15` | `itunes.apple.com/lookup?bundleId=com.example.athan&country=gb` | The comment says `country=gb` is load-bearing because the app is published in the GB storefront alone |
+| `device/updates.ts:15` | `itunes.apple.com/lookup?bundleId=<the build's bundle id>&country=gb` | The comment says `country=gb` is load-bearing because the app is published in the GB storefront alone |
 | `device/updates.ts:17` | `apps.apple.com/gb/app/athan-london/id...` | The slug |
 
 The widget strings are the awkward pair, because `ai/AGENTS.md` records that a widget layout can never call a

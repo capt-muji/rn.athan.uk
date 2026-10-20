@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict XoP8e6wlm4yHrbIBiaQBkurWAsx9V8m7UeyYVUxJOLEhCeIdym8H4zquaXl2mzK
+\restrict aODP06jUwlxTkzvmOvtapfV4cxmDZ4PaDOLILYro9b2OBWX5bRhXIbXQafdGvbn
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5288,6 +5288,17 @@ Acceptance:
 - [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).
 - [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.
 - [x] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines.', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 13:04:07.352476+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (280, 1, 280, 3, 7, 'iPhone Duo open pose: portrait-tall rendering on the rotated inner display', 'Goal: the Duo''s open pose held rotated renders the app portrait top-down on the full tall inner-display canvas - both panels as top and bottom halves, horizontal fold seam, background edge to edge, no letterbox - or the row is Blocked carrying Apple''s documented refusal with no hacks.
+
+Where: the iPhone Duo simulator (iOS 27.1, row 271''s until its lane returns it), Apple''s iOS 27 Duo documentation, the prebuild plugin layer (app.json plugins, ios prebuild), and rows 264 and 271''s measured records.
+
+Acceptance:
+- [ ] Option A documented in one line: cancelled by the owner''s final ruling, never merged
+- [ ] Option B implemented: the Duo open pose held rotated renders the app portrait top-down on the full tall canvas - both panels as top and bottom halves, horizontal fold seam, background edge to edge, no letterbox (transcribed window class and panel-edge readings on this row, screenshot attached)
+- [ ] the Duo''s closed pose stays portrait, no other device rotates, phones unchanged (transcribed refusal and window-class readings, and the branch diff naming no layout value)
+- [ ] screenshots of Option B on the row in both poses, never committed
+- [ ] if iOS refuses the presentation, the row is BLOCKED with the documented refusal and no hacks', NULL, NULL, NULL, 8000, '2026-10-20 04:11:50.533551+00', '2026-10-20 06:59:57.037884+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (289, 1, 289, NULL, 1, 'Step 3: the board''s own texts neutralised', '', NULL, NULL, NULL, 12000, '2026-10-20 07:09:05.721386+00', '2026-10-20 07:09:05.721386+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (216, 1, 216, NULL, 4, 'Step 3: Device read on the 3T - both directions, both schedules, logcat timeline', '', NULL, NULL, NULL, 25000, '2026-10-19 03:24:16.572696+00', '2026-10-19 07:09:09.31532+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 2, 4, 'The clipping batch: the line-box pin, the note style, the loader face', 'Owner''s live test of 86 on the XS (2026-10-14): every pinned surface clipped - the metrics are the cause (Noto Sans Arabic''s natural box is 2.112em against the 1.172em Latin pin), so blockLineHeight and its five consumers died and the font''s own box serves everywhere; the ar header gap closes with an explicit -10 subtitle pull-up (the owner''s to dial); the loader''s typography resolves per render (a mid-switch line drew the old locale''s face and box, the English cut the owner saw); the note aligns to the header inset, title edge to icon edge on both sheets, the divider gained its air and the bottom gap dropped; the iOS note copy reworded per the owner''s ruling. Landed at 2.0.727 while the owner tested; the owner''s live read is the acceptance bar
 
@@ -5301,13 +5312,16 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (218, 1, 218, NULL, 4, 'Step 2: whole-header tap on the reminder rows', '', NULL, NULL, NULL, 27000, '2026-10-19 03:25:16.232789+00', '2026-10-19 04:09:12.361191+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (220, 1, 220, NULL, 4, 'Step 4: the sheet restores on off-to-on', '', NULL, NULL, NULL, 29000, '2026-10-19 03:25:16.282186+00', '2026-10-19 04:34:55.78627+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (242, 1, 242, NULL, 4, 'Step 1: The entry and its copy - help.q.widgets appended last in HELP_ENTRIES, the six catalogues, yarn i18n:lock re-taken, red-then-green help coverage (weight 2)', '', NULL, NULL, NULL, 17000, '2026-10-19 13:03:51.42739+00', '2026-10-19 14:02:10.543651+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (272, 1, 272, 5, 1, 'Zero personal data: pseudonymous identity, injected build values, and the history scrub', 'Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (283, 1, 283, NULL, 1, 'Step 3: the tall canvas verified on the gated build', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 8000, '2026-10-20 05:29:29.991552+00', '2026-10-20 05:29:29.991552+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (281, 1, 281, NULL, 1, 'Step 1: the tall hold produced and today''s build read in it', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 6000, '2026-10-20 05:29:29.905173+00', '2026-10-20 06:28:23.127613+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (287, 1, 287, NULL, 1, 'Step 1: the encoded manifest and the three gates, red first', '', NULL, NULL, NULL, 10000, '2026-10-20 07:09:05.637854+00', '2026-10-20 07:09:05.637854+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (272, 1, 272, 5, 3, 'Zero personal data: pseudonymous identity, injected build values, and the history scrub', 'Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.
 
 Where: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.
 
 OWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.
 
-FENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.
+FENCED (breaks the app): the live store package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.
 
 OUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.
 
@@ -5316,16 +5330,14 @@ OWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and 
 Acceptance:
 - [ ] git author config set to a pseudonym for all future commits, verified on the next commit
 - [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults
-- [ ] deterministic enforcement, not model discipline (owner order 2026-10-20): a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - .githooks/pre-commit scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.
+- [ ] deterministic enforcement, not model discipline: a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - the tracked pre-commit hook scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.
 - [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner
 - [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)
 - [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named
 - [ ] the EAS/build injection points documented (what injects, where from, when wired)
 - [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed
 - [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects
-- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history', NULL, NULL, NULL, 5000, '2026-10-20 02:16:43.578725+00', '2026-10-20 02:21:19.453082+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (283, 1, 283, NULL, 1, 'Step 3: the tall canvas verified on the gated build', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 8000, '2026-10-20 05:29:29.991552+00', '2026-10-20 05:29:29.991552+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (281, 1, 281, NULL, 1, 'Step 1: the tall hold produced and today''s build read in it', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 6000, '2026-10-20 05:29:29.905173+00', '2026-10-20 06:28:23.127613+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 3, NULL);
+- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history', NULL, NULL, NULL, 5000, '2026-10-20 02:16:43.578725+00', '2026-10-20 07:21:27.152011+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (34, 1, 115, 9, 4, 'The Thai face becomes Sarabun, the owner''s specimen pick', 'REVERSED 2026-10-16 by the owner''s read: Sarabun rejected on glass the same evening and the Noto pair restored at 2.0.848 (the specimen''s decision undone; the specimen and its files deleted in the deep clean). Original record: OWNER PICK 2026-10-16 (the ten-font specimen at $HOME/athan-gitree/sessions/115/thai-specimen.html, every number measured from the TTFs'' own tables): SARABUN - Thailand''s document standard, a true 500, its own Latin digits, the tightest sane line box (1.300em with win ink at 1.286em ascent and 0.567em descent, taking the script line box like Hindi and Arabic). The owner''s read of the current face: ''not really Thai'' - the Noto pair replaced after one session
 
 Status note: then REVERSED 2026-10-16: Sarabun landed at 2.0.846, the owner''s read rejected it, and the clean revert at 2.0.848 restores Noto Sans Thai exactly (words on the Noto pair, digits and row times on Roboto, no script line box) with the build rebuilt and reinstalled', NULL, NULL, NULL, 13000, '2026-10-18 23:35:56.051874+00', '2026-10-19 02:54:07.928363+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5358,10 +5370,11 @@ Status note: 2026-10-16 by the owner''s consolidation order: the expo-widgets pa
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (22, 1, 138, 5, 4, 'Semver discipline: a thousand patches, never a minor', 'OWNER ORDER 2026-10-18, the owner''s word after seeing 2.0.1035: the version line is disingenuous - every commit takes a patch and the minor half of the standing rule ("patch per commit and minor per completed feature") has never fired in the whole 2.0 line, verified from git: no version other than 2.0.x exists anywhere in the history, so a thousand patches carry features whole. The owner has raised this before and the practice ignored the owner''s. THE OVERHAUL the owner orders looked at heavily: when a patch is right, when a minor is owed (a completed feature, a merged ticket, a user-visible change), and who decides - the owner''s division stands recorded here: SHE DICTATES MAJORS ONLY, the agent owns patch versus minor; how the guards enforce the split (check-version-uniqueness.js, the versionLockstep test, the queue''s own bump rules and the lane protocol); whether the 2.0.10xx history takes a reset, a grandfathered boundary or a jump at the overhaul; and how a minor bump interacts with the store builds and the OTA line. SUPERSEDED the same day by the owner''s live order, the owner''s words: "move it to the backlog, NOT PLANNED into your lane, deep-dive research online, progress it to production". The division of authority stands as the owner set it: SHE DICTATES MAJORS ONLY and any store-facing version jump (both tabled in the row and the lane''s return, never shipped); the agent owns patch versus minor and lands the discipline, the guards and the workflow text. Until this row lands, every commit keeps the patch-per-commit rule, this row''s own commits included
 
 Status note: 2026-10-18, audited (two reviewer passes, nine findings all confirmed and fixed at 2.0.1065, the conflicted-merge and unstaged-blob holes among them): the semver discipline landed - every commit''s bump class is machine-checked at commit time (a `feat`-typed subject requires the minor, every other subject the patch, majors only through the owner''s recorded order in `scripts/version-major-allowlist.json`), a merge into uat can no longer regress the version (the pre-merge gate refuses a non-increasing incoming line, and a conflicted merge''s concluding commit is checked too), the lockstep suite pins the semver normal form, and `ai/AGENTS.md` plus the lane protocol state the split in one place each. BOUNDARY RECOMMENDATION FOR THE OWNER''S VETO: grandfather - history untouched, the first completed user-visible feature after this landing takes the first free minor (2.1.0) and the 10xx tail dies by the spec''s own patch-reset rule; the owner''s one word upgrades it to a jump at the next store release. MEASURED, no code change needed: the GB storefront publishes 1.5.1 (the repo line is not store-facing on iOS today; moving it is the owner''s act), Play''s in-app updates arbitrate on the untouched versionCode 1000000, no OTA channel exists (no `updates` block, EAS read-only, releases.json dead) - a minor interacts with nothing until the owner publishes. The gates enforced themselves during the landing: the discipline refused the skipped patch the old weather habit would have taken when sibling 135 took 2.0.1064 mid-audit. This row''s own commits stayed patches per its own rule; the first `feat` after this merge takes 2.1.0', NULL, NULL, NULL, 1000, '2026-10-18 23:35:55.830083+00', '2026-10-19 02:54:07.790511+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (273, 1, 273, NULL, 4, 'Step 2: the ruled outcome measured on the simulators', '', NULL, NULL, NULL, 6000, '2026-10-20 02:39:47.752807+00', '2026-10-20 03:56:26.818403+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (288, 1, 288, NULL, 1, 'Step 2: the store ids injected, neutral in the tree', '', NULL, NULL, NULL, 11000, '2026-10-20 07:09:05.68295+00', '2026-10-20 07:09:05.68295+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (23, 1, 134, 2, 4, 'Widgets-off Android release builds fail their own lint gate', 'PROBLEM, measured 2026-10-17 by the owner fleettest build: a widgets-off Android release prebuild at HEAD drops `./plugins/androidLocaleConfig`, so `values/locales_defaults.xml` is never written and `:app:lintVitalRelease` fails with 150 fatal `ExtraTranslation` errors (30 keys across ar ms so hi th). Root cause, re-derived and proven: `app.config.ts` reached its android branch only when the CLI passed `platform === ''android''` (it never does at expo 58.0.13; every CLI evaluation leaves platform undefined) or `EXPO_PUBLIC_ANDROID_WIDGETS=1`; behind it sat a second defect - the locale plugin''s default-string derivation read the widget kinds from the RESOLVED plugins, which the widgets-off path had already stripped, so even reaching the branch would have written 2 of 30 defaults. The 131-era pass at `ca73f5a9` re-derived from lane 131''s own LOG: that build''s first gradle run failed lintVital identically and the passing second run followed re-adding `EXPO_PUBLIC_ANDROID_WIDGETS=1` - no build had ever passed this gate widgets-off, and `build-mock.zsh`''s `.env` keeps the flag at 1, which is why every earlier build passed. Fixed at 2.0.1007: the android branch keys on platform or the android-only resolution (argv/env) with the widgets flag choosing enable-vs-strip inside it, and the plugin derives kinds from the committed `app.json`, skipping android kinds only when the resolution still holds expo-widgets. Red-first (config, flags and native suites; 7-mutant break pass), and the proof pair: planning red at `80f707d5` (150 ExtraTranslation, task FAILED, 3m 56s), green at the merged fix `087d30ff` (task executed, zero ExtraTranslation, BUILD SUCCESSFUL in 8m 14s, 30 defaults, `aapt2` badging `com.example.athan.fleettest`), no lint exclusion anywhere. Two-reviewer audit (plan-conformance clean, blind): the should (ambient `EXPO_WIDGETS_ANDROID` breaking test isolation, 3 of 52 red proven) and two nices fixed at 2.0.1009, one nice rejected on the plan''s recorded D134.1 (the bare combined prebuild, pre-existing, no build path runs it)
 
-Status note: 2026-10-17, audited through 2.0.1009', NULL, NULL, NULL, 2000, '2026-10-18 23:35:55.848381+00', '2026-10-19 02:54:07.801212+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (273, 1, 273, NULL, 4, 'Step 2: the ruled outcome measured on the simulators', '', NULL, NULL, NULL, 6000, '2026-10-20 02:39:47.752807+00', '2026-10-20 03:56:26.818403+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 3, NULL);
+Status note: 2026-10-17, audited through 2.0.1009', NULL, NULL, NULL, 2000, '2026-10-18 23:35:55.848381+00', '2026-10-20 07:20:03.251877+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (47, 1, 102, 9, 4, 'The owner''s live evening batch: countdown ink, glyphs, the language sheet, the seconds default', 'The owner''s direct order 2026-10-15 evening, landed outside the workflow by the owner''s word ("do it yourself, no plan") across 2.0.771 to 2.0.773, all gates green (5674 tests, 100 percent on all four measures): (1) the countdown letters are lowercase h m s at 80 percent of digit size in the digits'' own weight and shadow (the owner''s capital pick reversed, the skinny face tried and reverted same evening); the prayer name above takes the letters'' exact ink rgba(160, 200, 255, 0.4) and their shadow; (2) the prayer row colons: upcoming rows untouched (the owner''s correction), passed rows an opaque white rgb(170, 182, 212) (the purple cast out), the next row brighter and the Extras next whitest (rgba(210, 226, 255, 0.75) / rgba(238, 243, 255, 0.88)) - recorded defaults under the owner''s read; (3) the information glyph is the ORIGINAL i resurrected verbatim from history (902b85d8) on a round 20pt chip in both sheet footers (grown for breathing room, the glyph untouched) and the square chip in the info box, the what''s-new badge''s purple circle and size untouched by the owner''s word while its glyph necessarily rode the asset switch to the bare i, the circled asset and its enum wiring deleted; (4) the note copy carries one sentence per line in all six locales, the glyph keeps its distance via the text''s start margin; (5) the info box spaces evenly and sits 5pt off its row (TIP_OVERLAP 4); (6) the qibla sheet''s spacings stay locale-uniform (the owner''s scalability law: no per-language values); (7) the language sheet is rebuilt on the athan sheet''s pattern - the card, its choose hint, the sliding purple highlight, rows at the athan rows'' touch height (minHeight 48) - and the Language row moved to the top of the Other card; (8) the minimal globe (the owner''s option 1 of the ten offered) carries both language slots; (9) show-seconds defaults OFF again (the letters name the units); (10) the sheet subtitle''s wording awaits the owner''s pick of ten short options offered 2026-10-15
 
 Status note: 2026-10-15, landed direct by the owner''s order through 2.0.777, SUPERSEDED-IN-PART same evening by the owner''s live rulings: the sheet subheading removed entirely (2.0.775), the unit letters settled white at the digits'' full strength and own size, lowercase (2.0.776 to 2.0.777), the prayer name fully reverted to its original ink, the seconds-off default standing. Reviews: the first cold and blind pair read the range, their eight confirmed findings fixed at 2.0.776 (the language highlight seats on its reveal tick, the dead CHECK and iconWrapper wiring deleted, the seat and the name''s ink pinned, TIP_OVERLAP imported from its component, provenance comments trimmed); a second cold and blind pair re-read the whole range at the clean state: their nine findings all confirmed and fixed at 2.0.779 (the stale 7pt prose, the superseded test title, the depth comment, the badge renamed InfoBadge, the language row''s check-era leftovers, the sliding promise, the note margin pinned, this glyph record amended)', NULL, NULL, NULL, 26000, '2026-10-18 23:35:56.276867+00', '2026-10-19 02:54:08.068881+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5435,6 +5448,8 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (125, 1, 4, 2, 4, 'iOS: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 104000, '2026-10-18 23:35:57.635715+00', '2026-10-19 02:54:08.864926+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (126, 1, 3, 2, 4, 'Android: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 105000, '2026-10-18 23:35:57.662782+00', '2026-10-19 02:54:08.87441+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (274, 1, 274, NULL, 4, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-20 02:39:47.789672+00', '2026-10-20 05:14:44.389714+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (290, 1, 290, NULL, 1, 'Step 4: the history rewrite and the local purge', '', NULL, NULL, NULL, 13000, '2026-10-20 07:09:05.757784+00', '2026-10-20 07:09:05.757784+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (292, 1, 292, NULL, 1, 'Step 6: the regenerated snapshot and the close', '', NULL, NULL, NULL, 15000, '2026-10-20 07:09:05.816491+00', '2026-10-20 07:09:05.816491+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (76, 1, 62, 8, 4, 'Help page: remove the English-era hardcoded line breaks', 'Owner ask, 2026-10-12: some help questions were deliberately broken into multiple lines for English-only layout; with six languages that makes no sense. Remove the specific breaks and let the width wrap naturally. Copy job over the help catalog keys
 
 Status note: 2026-10-12, audited: the two multi-sentence help answers flow as one paragraph in all six languages (the owner''s 2026-10-12 ruling), catalog lock re-taken, dist regenerated; no other value changed
@@ -5489,6 +5504,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (87, 1, 49, 3, 4, 'Native heading module: the Fused Orientation Provider', 'Queue status: DONE', NULL, NULL, NULL, 66000, '2026-10-18 23:35:56.977075+00', '2026-10-19 02:54:08.487164+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (91, 1, 44, 3, 4, 'Delete the qibla', 'Queue status: DONE', NULL, NULL, NULL, 70000, '2026-10-18 23:35:57.042518+00', '2026-10-19 02:54:08.529922+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (275, 1, 275, NULL, 4, 'Step 1: the orientation gate lands', '', NULL, NULL, NULL, 8000, '2026-10-20 02:39:47.792452+00', '2026-10-20 03:12:01.603662+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (291, 1, 291, NULL, 1, 'Step 5: the recurrence proof', '', NULL, NULL, NULL, 14000, '2026-10-20 07:09:05.790432+00', '2026-10-20 07:09:05.790432+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (95, 1, 38, 3, 4, 'D4a. i18n scaffolding', '`ai/plans/39-localisation/` (read `PLAN.md`, `RECONCILIATION.md` first, then `SINGLE-LANGUAGE-PIVOT.md`, `OWNER-DECISIONS.md` D17 to D38)
 
 Status note: 2026-10-11, audited, landed as 2.0.0-stage-1 on uat: stage one of the single-language overhaul; Arabic surfaces removed, identifier union frozen by the widened contract test, t() pipeline with flat-JSON bridge and guards, per-locale width keys with seed, the R18 targeted upgrade with the version-guarded stamp, widget props v6 with tolerance. The audit (three reviewers) fixed seven findings in `a36b9a92` (vanished-row naming, the disarmed import gate, hoisted catalog calls, dead styles, stale docs, a duplicate test, missing verdicts) and carried five to row 39; the identifier bytes held across the 3T upgrade, the require stays under 1 ms (D36), the stamp and dead-key proof sits in the step-12 suites plus one monitor-launch read (D37), bells armed by the owner (D38). The four external branches are adjudicated in RECONCILIATION.md (kept until row 39 merges). Stage two is row 39; the plan folder survives until its merge per its own records rule
@@ -5745,9 +5761,9 @@ Acceptance:
 - [ ] every other board row Done or parked
 - [ ] a deep typed code review run across the repo, findings fixed or ticketed
 - [ ] dead code, stale comments and pattern drift cleaned
-- [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision
+- [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19, tightened 2026-10-20 on T-272: both names go), with any history hit tabled to the owner for the rewrite decision
 - [ ] the board swept: no defect the integrity checklist can catch
-- [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-20 02:12:19.728433+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
+- [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-20 07:20:03.187412+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 4, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
 
 Where: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.
@@ -5812,16 +5828,6 @@ Acceptance:
 
 Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carried item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 21:03:20.520722+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (260, 1, 260, 5, 4, 'Step 2: Proof on the 3T at one minute, both languages', 'Apply the patch to the main checkout''s node_modules, build the mock from the branch, install with the badging gate, stage the one-minute state in English and Arabic, measure the centring by screencap with the vision reader, transcribe the numbers, write new coordinates back to the 3T atlas. One commit, patch bump.', NULL, NULL, NULL, 18000, '2026-10-19 20:52:52.944356+00', '2026-10-19 21:48:18.567955+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (280, 1, 280, 3, 3, 'iPhone Duo open pose: portrait-tall rendering on the rotated inner display', 'Goal: the Duo''s open pose held rotated renders the app portrait top-down on the full tall inner-display canvas - both panels as top and bottom halves, horizontal fold seam, background edge to edge, no letterbox - or the row is Blocked carrying Apple''s documented refusal with no hacks.
-
-Where: the iPhone Duo simulator (iOS 27.1, row 271''s until its lane returns it), Apple''s iOS 27 Duo documentation, the prebuild plugin layer (app.json plugins, ios prebuild), and rows 264 and 271''s measured records.
-
-Acceptance:
-- [ ] Option A documented in one line: cancelled by the owner''s final ruling, never merged
-- [ ] Option B implemented: the Duo open pose held rotated renders the app portrait top-down on the full tall canvas - both panels as top and bottom halves, horizontal fold seam, background edge to edge, no letterbox (transcribed window class and panel-edge readings on this row, screenshot attached)
-- [ ] the Duo''s closed pose stays portrait, no other device rotates, phones unchanged (transcribed refusal and window-class readings, and the branch diff naming no layout value)
-- [ ] screenshots of Option B on the row in both poses, never committed
-- [ ] if iOS refuses the presentation, the row is BLOCKED with the documented refusal and no hacks', NULL, NULL, NULL, 8000, '2026-10-20 04:11:50.533551+00', '2026-10-20 05:44:17.462465+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (259, 1, 259, 5, 4, 'Step 1: The granted width rides the widget environment', 'Red renderer tests, the expo-widgets patch hunk (provideRoot stamps the exact granted width into the environment), the layout reads it with the 310dp fallback, the dead snapshot field is deleted, and WidgetRefreshScheduler drops its width stamp (composition-size stamp and gate stay). yarn validate green. One commit, patch bump.', NULL, NULL, NULL, 17000, '2026-10-19 20:52:52.908116+00', '2026-10-19 21:22:29.90393+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 4, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.
 
@@ -6745,7 +6751,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1154, 17, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.493679+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Upstream: file the device-locale PR properly, and give every open PR its tracking row"}, "from": {"value": "#143 Upstream: file the device-locale PR properly, and give every open PR its tracking row"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1155, 17, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.493679+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER ORDER 2026-10-18 (evening): file the prepared device-locale upstream PR - but NOT YET: this row sits in the backlog, a NEW session executes it, and the filing happens only after the full pass the owner orders here. THE OWNER HAS AUTHORIZED THE FILING ITSELF (the explicit word is this row); the execution re-verifies everything before it presses the button, because publishing is a hard-rule stop that only this recorded authorization unlocks. THE PREPARED ARTEFACT (from row 117, all verifiable on disk): branch `feat/widgets-device-locale` in the local expo clone `$HOME/athan-gitree/upstream/expo`, prepared off upstream main `cac62846e627e6b446ac2ded31adac8c8e9d5dd8` (upstream MOVES: at execution re-fetch, rebase the branch onto the then-current main, and re-port any signature drift by hand, recording the delta), one commit `b2fd020afa` touching exactly four files (the C++ runtime locale parameter and guarded `__expoWidgetDeviceLocale` global, the Kotlin LocaleList argument, the JNI signatures, the iOS context set), and the description at `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md` in the repo''s What/Why/How/Testing/Anything-else shape. THE OWNER''S QUALITY BAR, in the owner''s words: heavily tested, best practice, certain of how to do this properly, unit-test it, 100 percent perfection, as much detail as possible. Concretely: (1) study all FOUR open upstream PRs the repo tracks - 50581, 51290, 51291, 51292 - and match their commit-message, description and discipline exactly; (2) re-verify the four-file diff against the local patch''s locale hunks line by line and against the then-current upstream source; (3) verify the description passes the anonymity grep (no app name, no serial, no repo link, row 51''s discipline) and carries the physical-device evidence (a production widget surface on an Android 9 phone and an iOS device, no identifiers); (4) confirm the local suite green (`yarn validate`) and that nothing in THIS repo changes at filing time; (5) file from the clone''s fork remote, never force, never bypass hooks; (6) THE UPSTREAM COLUMN: the owner asks why only one PR shows there - the board renders only queue rows, and 50581, 51290 and 51292 have no rows (they live in `ai/UPSTREAM-PRS.md` only): at execution, open a monitoring row per open PR in the UPSTREAM status (row 51''s shape), link each to its ledger entry, and close this row''s filing half; (7) the DEAD CODE the owner names arrives LATER: when a published expo-widgets release carries the feature, a follow-up row deletes the local patch''s device-locale hunks and the ledger entry moves to shipped - record that hook in this row, do not do it now. Acceptance: the PR filed, its link in the ledger and its monitoring row live, the owner told\n\nStatus note: 2026-10-18, OWNER ORDER, backlog for a new session"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1170, 23, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.579264+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Widgets-off Android release builds fail their own lint gate"}, "from": {"value": "#134 Widgets-off Android release builds fail their own lint gate"}}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1171, 23, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.579264+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "PROBLEM, measured 2026-10-17 by the owner fleettest build: a widgets-off Android release prebuild at HEAD drops `./plugins/androidLocaleConfig`, so `values/locales_defaults.xml` is never written and `:app:lintVitalRelease` fails with 150 fatal `ExtraTranslation` errors (30 keys across ar ms so hi th). Root cause, re-derived and proven: `app.config.ts` reached its android branch only when the CLI passed `platform === ''android''` (it never does at expo 58.0.13; every CLI evaluation leaves platform undefined) or `EXPO_PUBLIC_ANDROID_WIDGETS=1`; behind it sat a second defect - the locale plugin''s default-string derivation read the widget kinds from the RESOLVED plugins, which the widgets-off path had already stripped, so even reaching the branch would have written 2 of 30 defaults. The 131-era pass at `ca73f5a9` re-derived from lane 131''s own LOG: that build''s first gradle run failed lintVital identically and the passing second run followed re-adding `EXPO_PUBLIC_ANDROID_WIDGETS=1` - no build had ever passed this gate widgets-off, and `build-mock.zsh`''s `.env` keeps the flag at 1, which is why every earlier build passed. Fixed at 2.0.1007: the android branch keys on platform or the android-only resolution (argv/env) with the widgets flag choosing enable-vs-strip inside it, and the plugin derives kinds from the committed `app.json`, skipping android kinds only when the resolution still holds expo-widgets. Red-first (config, flags and native suites; 7-mutant break pass), and the proof pair: planning red at `80f707d5` (150 ExtraTranslation, task FAILED, 3m 56s), green at the merged fix `087d30ff` (task executed, zero ExtraTranslation, BUILD SUCCESSFUL in 8m 14s, 30 defaults, `aapt2` badging `com.example.athan.fleettest`), no lint exclusion anywhere. Two-reviewer audit (plan-conformance clean, blind): the should (ambient `EXPO_WIDGETS_ANDROID` breaking test isolation, 3 of 52 red proven) and two nices fixed at 2.0.1009, one nice rejected on the plan''s recorded D134.1 (the bare combined prebuild, pre-existing, no build path runs it)\n\nStatus note: 2026-10-17, audited through 2.0.1009"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1185, 28, 'activity', 'owner', NULL, 'title', '2026-10-19 02:31:04.651468+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The rewritten AVD and adb management in Expo CLI 58: evaluate for the Android harness"}, "from": {"value": "#122 The rewritten AVD and adb management in Expo CLI 58: evaluate for the Android harness"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1186, 28, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.651468+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "OWNER ORDER 2026-10-16 (111 planning session, changelog walk): @expo/cli in SDK 58 rewrote Android Virtual Device (AVD) and adb management to be more resilient to failures; the owner called it very useful for this repo''s Android testing and ordered a ticket, the owner''s words: not sure how it will be implemented or what, definitely worth it. FACTS: the CLI ships inside expo and arrives with row 111''s re-pin; the device harness today drives a PHYSICAL fleet (the 3T, the 8T, the S23 and the Find X8 serials) through adb scripts, Maestro, the agent-device MCP and the two build zsh scripts, with no emulator anywhere in the harness. THE ROW investigates: what the rewritten AVD/adb management changes in practice (device discovery, boot, install, logcat stability), whether the e2e harness and the build scripts should route through it, and whether an AVD lane belongs in the device matrix beside the phones; it ends with the owner''s ruling before any harness change\n\nStatus note: 2026-10-17, audited: the two stale --device lines are corrected to the measured truth at the installed @expo/cli 58.1.10 and the install-and-launch path is documented. e2e/README.md and e2e/AGENTS.md now state that `expo run:android --device` matches an adb serial first and a device name only as a fallback (the CLI''s own help text still says \"Device name\"; the code at AndroidDeviceManager.resolveFromNameAsync matches `device.pid === query` before `device.name === query`), and both name `npx expo run:android --binary <apk> --device <serial> --no-bundler` as the install-and-launch path (--binary installs the APK without gradle, --no-bundler leaves no Metro up, runAndroidAsync.js:143-150 at 58.1.10). The gradle-plus-adb build route and the dumpsys versionName check stay (the owner''s keep-raw-adb ruling). No AVD rule was written: row 133 owns the adopted lane''s rules, and the AVD half of this row''s own ruling is superseded by row 133''s adoption ruling. One docs step at 2.0.980 (b275374f) plus the records commit (3becb933), landed through merge b412e9e8 at 2.0.981 after two rebases over sibling lanes'' 2.0.975 and 2.0.979, each keeping the higher version; the hand-verified replays (VERSIONS OK plus yarn validate exit 0, Tests: 5737 passed) are this lane''s LOG record. The two-reviewer audit (plan-conformance and blind, both over 39812f50..lane/122, both re-deriving the diff from the range) reproduced every CLI claim at 58.1.10 and the byte-identity of both passages: five findings, all records-level (a status-token lesson recorded; the lane-records content preserved here because the folder dies in this merge; two rejections reasoned in the audit), none touching the delivered text; no code, no device, no build. Lane-weather attribution from git reflogs: the repo-wide 2.0.969 commit block this lane hit at its skeleton was cleared by lane 126''s allowlist fix 5dc4b93d, not an orchestrator commit. The plan folder and evidence died in this merge:: the AVD/adb evaluation answers at the installed `@expo/cli` 58.1.10 (four docs steps, weight 1 each; no code, no device contact, no builds; the plan folder died in this merge). THE MEASUREMENT at the installed `@expo/cli` 58.1.10 (`expo` 58.0.12; the rewrite landed in 58.0.0, 2026-09-10, expo/expo#49258, 28 files: added `adbProcess`, `adbDeviceList`, `adbEndpoint`, `adbDiagnostics`; rewritten `ADBServer`, `AndroidDeviceManager`, `adb`, `adbReverse`, `emulator`, `getDevices`), every claim re-read from the build tree: discovery retries the transient adb-server messages inside a 10 s deadline (2 s window, 200 ms delay) and tolerates a failed AVD listing while a device is attached; a device is matched by serial first and by name only as a fallback, so the harness''s own \"--device takes a NAME, not an adb serial\" gotcha (`e2e/README.md:128`) is cured; a `transport_id` change between discovery and use is refused, an unauthorized device refused with the authorization link, and each failure state carries its own advice line; boot spawns the emulator detached and polls once a second against `init.svc.bootanim` under a 180 s ceiling; queries are bounded at 10 s and the host probe at 4 s while installs stay unbounded (`adb install -r -d --user 0`) and a cancelled mutation says the device may have completed it; `kill-server` is gone from the whole build (`start-server`/`stop-server` appears once, the removal comment at `ADBServer.js:35`), which protects the harness''s long-lived logcat streams from a CLI shutdown; and logcat itself gains no handling - the CLI ships zero logcat code (`grep -rni logcat` over the build prints 0). THE HARNESS: 36 `adb` hits across 10 files under `e2e/` (four shell scripts, three atlases, `README.md`, `AGENTS.md`, `idle_cpu.py`), the seven Maestro flows call adb nowhere, and the four build scripts in `$HOME/athan-gitree/bin` print one hit each (the `adb install -r` comment) with no adb invocation - their only Expo CLI surface is `prebuild`, which the rewrite does not touch - so nothing there can route through it. The CLI exposes no device-inventory and no emulator command; `expo run:android` is the only surface that reaches the rewrite. LOCALLY: adb 37.0.1, emulator 37.1.11.0 present, `emulator -list-avds` empty, `system-images/` empty, platforms android-35/36/37.0, host arm64, app floor API 24 against `targetSdkVersion 36`, build scripts arm64-v8a. OPTIONS FOR THE OWNER''S RULING - question 1: A status quo; B (recommended) keep every script on raw adb, correct the two stale `--device` lines (`e2e/README.md:128-131`, `e2e/AGENTS.md:17`) and document `npx expo run:android --binary <apk> --device <serial> --no-bundler` as the install-and-launch path; C route the scripts through the CLI, rejected (no logcat, dumpsys, screenrecord or SurfaceFlinger surface, a Metro start and stop per call, and the atlas-recorded per-device handling lost); D copy the resilience into an in-repo adb helper, rejected (no recorded incident asks for it). Question 2: A no emulator; B (recommended) one bounded AVD lane at the 3T''s panel for flow smoke and disposable destructive checks, excluded from every measurement claim, opening with an ask-first system-image install; C a multi-API AVD matrix, rejected (two phones already run API 36, no measured coverage gap); D document the boot path only, rejected (the lane needs the image either way). FIVE NAMED EXPERIMENTS wait on hardware: E1 the serial install path (a phone, an APK, `build.lock`), E2 the AVD boot end to end (the system-image install, an AVD, an APK), E3 the device-free failure text (no phone attached), E4 the logcat stream against a CLI shutdown (an `@expo/cli` below 58.0.0), E5 the AVD flow replay (E2). UNVERIFIED: U1 the old CLI''s exact `--device <serial>` failure, U2 the system image''s size, U3 the binary path''s Metro shutdown, U4 the bounded query limit on the fleet, U5 emulator support in the automation beyond its documentation, U6 the 8T''s Android version. No repo change before the owner''s word.\n\nNeeds first: #2026, #10, #16"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1208, 35, 'activity', 'owner', NULL, 'field', '2026-10-19 02:31:04.770478+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "114"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -7489,19 +7494,6 @@ Completeness note for step 5''s record-scoped blast radius: size 14 is a measure
 
 **Worktree clean.** `git status --porcelain` on lane/140 (at uat head 91dafe2d): empty. `git diff uat..lane/140` over components/, shared/, app/, assets/: no change. Artifacts live in session scratch only; nothing committed, nothing pushed.', NULL, '2026-10-19 03:42:21.671046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-19 03:44:12.999+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1788, 18, 'activity', 'owner', NULL, 'comment_edited', '2026-10-19 03:44:13.001761+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2468, 4, 'comment', 'owner', 'FINDINGS (plan-conformance)
-
-Reviewed uat..lane/54 (01696725 at 2.1.29, 465697e1 at 2.1.30) against plan v6, decisions D54.1-D54.8. Every check I could run reproduces the plan''s claims.
-
-- clean - Fence (D54.1/D54.5): the diff''s entire non-comment surface is two line pairs - countdown.ts L230''s assertion removal (guard intact, tsc exit 0, re-entrancy suite 28/28 green) and one rgba line whose code portion is byte-identical (only the trailing comment lost its date anchor). Every other changed line is a pure comment; no file added or deleted; no style, layout, behaviour or visual line moved.
-- clean - Comment sweep: the plan''s exact regex prints 0 over the production dirs and TODO/FIXME prints 0. The uat baseline measures 62 production / 48 test lines, matching the Step 2 record''s honest correction of the plan''s 60 (the two Kotlin sites in modules/, both seen in the diff). Frozen-clock dates, mock seeds (mocks/full.ts 732 dated lines), prayer.ts and schedule.ts docstring examples, the sourced-names notes and the 2024 London corpus line all kept.
-- clean - Sensitive sweep: the tracked tree carries zero of every token in the set (home paths only as the three .agents vendor examples, no Apple id, no device id, no the home-path username outside capt-muji), zero in any added diff line, and git log --all -S over all four heavy-class ids prints zero commits: they are unreachable, as comment 2452 tables. The last-name token stays uncheckable here by D54.8''s own design.
-- clean - Version law: 01696725 is package.json plus app.json only, 2.1.28 to 2.1.29; 465697e1 bumps both to 2.1.30; each number rides exactly one commit across all refs; both subjects lead with the version and close with the row number; android/ is absent from the branch per D54.7.
-- clean - Board: comment 2452 greps empty for every token (only the $TMPDIR class name and the public com.example.* store ids). In the executors'' window (In progress 00:54:31 to Audit 01:55:38) the only foreign changes are the four title fixes on T-239, T-232, T-231, T-51 with one-line comments 2461-2464; every other foreign activity is timestamped 00:30:30 to 00:35:49, before this row left Backlog at 00:36:09, and belongs to Lane 3''s own follow-ups. No ticket moved in the window; the only moves are this row''s own and its step subtasks'' ticks (T-268, T-269; T-270 open for the close half).
-- clean - Step records v4-v6 tell the truth against the diff: commit contents, the 65 files, the 62/48 baseline, the final greps, tsc, biome and the countdown suite all re-verified green, and the sweep comments are ids 2461-2464 as recorded.
-- nice - The gitignored coverage/ artifact (regenerated by the validate run) carries this worktree''s home path in about 150 files on disk. Untracked, never pushed, ignored at .gitignore line 18, so every commit stays clean, but a literal re-run of the working-tree grep set today prints these hits outside .agents/ and .git. Deleting the artifact at the close keeps Step 1''s clean-tree claim literally reproducible.
-
-No must or should findings. The branch conforms to the plan.', NULL, '2026-10-20 02:05:25.281217+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1789, 209, 'activity', 'owner', NULL, 'status', '2026-10-19 03:44:19.010796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1790, 18, 'comment', 'owner', 'Step 2, the 3T readings (T-210). All four repeatability controls reproduce exactly; the record follows.
 
@@ -7548,17 +7540,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1804, 218, 'activity', 'owner', NULL, 'status', '2026-10-19 04:09:12.406633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1805, 15, 'activity', 'owner', NULL, 'description', '2026-10-19 04:09:20.104552+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the alert sheet''s disabled content dims at six unmatching values, a reminder only toggles from its switch, and turning the athan off destroys the reminders'' enabled state in preferences. Make every disabled-content opacity half its current value at one uniform level, make the whole header row of each reminder toggle it, and make turning the athan back on restore each reminder to its pre-off enabled state, preferences-backed.\n\nWhere: the alert bottom sheet (components/sheets/screens/Alert.tsx, ReminderCard.tsx), its parts (SegmentedControl, Stepper, Toggle), the preference store (stores/notifications.ts) and the commit hook (hooks/useNotification.ts). Full design and the measured dim table: the T-139 Docs page on this issue.\n\nAcceptance:\n- [x] Every disabled-content opacity in the sheet is half its uat value: ReminderCard cardDisabled and optionsDisabled 0.25 to 0.125, SegmentedControl and Stepper disabled 0.4 to 0.2, Stepper buttonDisabled 0.3 to 0.15, pinned by assertions in the unit suites; the dead cardDisabled and optionsDisabled styles in Alert.tsx are gone.\n- [x] A press anywhere on a reminder''s header row (title, hint or switch) toggles that reminder once; a locked header press does nothing; shown by suite cases.\n- [ ] With the athan off, the reminders still slide off and their sound and minutes selections stay saved: closing then reopening the sheet and turning the athan on (silent or sound) restores each reminder to its pre-off enabled state, shown by suite cases for the same session and for a fresh open.\n- [ ] A reminder off by its own choice before the athan went off stays off after the restore, shown by a suite case.\n- [ ] Closing the sheet with everything off triggers no permission prompt even though the store holds the preserved reminder values, shown by a hook suite case.\n- [ ] yarn validate green on the lane branch; the owner''s read of the sheet on the phones confirms the three changes."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1809, 219, 'activity', 'owner', NULL, 'status', '2026-10-19 04:23:45.327535+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1807, 18, 'comment', 'owner', 'Step 3, the XS readings (T-211). Vehicle: iPhone XS (IPHONE_UDID), iOS 18.7.10, panel 375x812pt at 3x, com.example.athan **2.0.1081** verbatim - moved from row 137''s 2.0.939; its commit 08253a56, and the diff 08253a56..uat over components/, shared/, app/, assets/fonts/ touches no site file (five files, all comment-text pronoun purges), so the vehicle sits inside the D140.1 equivalence span and the controls decided. Language round-trip per D140.7: found en, switched the app''s own preference to العربية, measured, restored en and verified from the home face.
-
-Standard (ar): day location ''لندن، المملكة المتحدة'' StaticText (193.67, 169.00) 165.33x19.00 [57.00px]; day date ''الاثنين، 19 أكتوبر 2026'' StaticText (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''الفجر'' StaticText (0.00, 58.00) 375.00x20.33 [60.99px]; countdown digits ''47m'' container Other (0.00, 83.33) 375.00x28.67 [86.01px] with outer wrapper Other (0.00, 83.33) 375.00x44.67 [134.01px]. Node gaps: location-to-date 8.00pt (= the 8dp code margin); word-band-to-digits 5.00pt raw.
-
-Extras (ar): location (193.67, 169.00) 165.33x19.00 [57.00px]; date (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''السحور'' band (0.00, 58.00) 375.00x20.33 [60.99px]; digits ''26m'' container (0.00, 83.33) 375.00x28.67 [86.01px] (outer 375.00x44.67 [134.01px]). Node gaps identical to Standard: 8.00pt and 5.00pt raw.
-
-Band artefact: the countdown word node is a full-width 375.00pt band on both pages, unchanged from row 137 - D140.2 stands, ink is the site-1 deliverable. Sheet void: the ar settings sheet tree carries 7 nodes, all chrome - backdrop (x2), handle (x3), ''Bottom Sheet'' container (0.00, 160.80) 375.00x651.20 - zero content nodes; the standing void is re-proven and xs-sheet.png is the site-3 authority.
-
-Controls vs row 137, all within 1px: location 57.00px vs 57 (+0.00) PASS; date 63.99 vs 64 (-0.01) PASS; countdown word 60.99 vs 61 (-0.01) PASS; digits container 86.01 vs 86 (+0.01) PASS. Two-capture agreement: per screen the two independent snapshots agree on every bound and every static label (full node sets equal); digits nodes compared on bounds, identical, their label holding 47m/26m across each pair. The date string held across all four captures, so no day-roll confound.
-
-Instrument notes: the RTL pager flipped on a rightward fling only (a slow rightward pan did not move it); sheets publish no nodes on this phone, so the language switch was navigated by screenshot reads. Captures live in session scratch (xs-std/extras/sheet trees and pngs), never git; no repo commits, no installs, the phone left on Standard in en as found.', NULL, '2026-10-19 04:11:24.319957+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1808, 211, 'activity', 'owner', NULL, 'status', '2026-10-19 04:11:28.070588+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1810, 214, 'activity', 'owner', NULL, 'status', '2026-10-19 04:27:09.832105+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1811, 220, 'activity', 'owner', NULL, 'status', '2026-10-19 04:34:55.795145+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -7683,7 +7664,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1847, 17, 'activity', 'owner', NULL, 'status', '2026-10-19 06:04:47.17318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1848, 216, 'activity', 'owner', NULL, 'status', '2026-10-19 07:09:09.351419+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1849, 19, 'comment', 'owner', 'The device read passed on the phone with the main-thread cover build, both directions on both schedules, and glass was the 3T throughout. Every switch showed one continuous face: the loader appeared on the tap, held full-screen with its spinner and line through the whole span with the spinner animating across the restart, and no frame showed the target-language schedule early or a blank page. Every switch''s logcat held the same shape: the convergence pass, then the reload on a fresh thread, then the new context''s first render, with only the new context''s own startup lines between the reload and that first render - no content commit in the gap, no rejection or warning on any switch, and no cover left attached after a reveal. A no-switch launch and browse read unchanged: no cover, no loader, no switch-path lines. The cover''s face matched the JS loader''s on full-resolution frames - same purple, the spinner centred on the same midpoint in the same tint, and the line at the same position, extent and colour with identical rendered pixel counts in both directions - so the typeface and drawable divergence the plan tabled did not show on this panel. Two recording quirks are on the record: one switch''s logcat was lost to my own buffer clear and that switch was re-run and captured cleanly, and one recording came out at a low frame rate so that switch''s visual claims ride its logcat beside a clean recording of the same direction.', NULL, '2026-10-19 07:09:20.058547+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2487, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:21:19.457616+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] deterministic enforcement, not model discipline (owner order 2026-10-20): a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - .githooks/pre-commit scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1850, 17, 'activity', 'owner', NULL, 'description', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: file the prepared device-locale PR upstream at the matched discipline of the four tracked PRs, and give every open tracked PR its board monitoring row.\n\nWhere: the expo clone `$HOME/athan-gitree/upstream/expo` (branch `feat/widgets-device-locale`), the PR body `$HOME/athan-gitree/upstream/pr-descriptions/widgets-device-locale.md`, the ledger `ai/UPSTREAM-PRS.md` (edited only in the lane worktree), and the board''s Upstream and Backlog columns. The main tree stays on `uat`, clean, for the whole ticket.\n\nAcceptance:\n- [ ] The branch sits rebased on then-current upstream main as one commit touching the four code files plus the changeset, and a comment records the delta (what moved, what was re-ported)\n- [ ] Every locale hunk line of `patches/expo-widgets+58.0.20.patch` is present in that commit or named in the delta comment, and every changed-signature call site in then-current upstream source is accounted for\n- [ ] The PR body and the changeset pass the anonymity check (no app name, serial, repo link, home path or personal namespace) and the body carries the Android 9 phone and iOS hardware evidence\n- [ ] `yarn validate` exits 0 in the main tree and its `git status --porcelain` prints nothing\n- [ ] PRs 50581, 51290 and 51292 each have a monitoring row in Upstream with `Waiting on` set (51291''s row is 51), and the ledger carries each new row''s number\n- [ ] A dead-code hook row waits in Backlog, marked waiting on a published expo-widgets release that carries `__expoWidgetDeviceLocale`\n- [ ] The gate comment records the filing gate reached and names what holds it, and no PR exists upstream yet\n\nAuthorization: the owner''s order of 2026-10-18, recorded on this ticket at intake, authorizes the filing itself. The lane stops at the gate; the lead sends the go."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1851, 17, 'activity', 'owner', NULL, 'type', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 5, "value": "Chore"}, "from": {"id": 11, "value": "Release"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1852, 17, 'activity', 'owner', NULL, 'estimate', '2026-10-19 07:11:14.048902+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "subject": {"value": "points"}}', NULL);
@@ -8302,15 +8282,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2350, 264, 'activity', 'owner', NULL, 'field', '2026-10-19 22:48:47.96081+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "264"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2351, 264, 'activity', 'owner', NULL, 'description', '2026-10-19 22:50:22.487328+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Duo''s open-pose landscape renders the app''s background edge to edge and the countdown block at its designed offset, with no black bars and no tall gap above it.\n\nWhere: the app''s root background and top spacing as the iPhone Duo simulator renders the open pose in landscape. One schedule, centred, inside the existing max content width, per the standing design ruling. No other form factor may change.\n\nOWNER REPORT 2026-10-19, iPhone Duo simulator, open pose, landscape: black bars sit left and right of the app where the purple gradient should run, and a tall gap sits above the countdown component, above the prayer name. The owner''s read: the black background should never show, and the gap should not be there.\n\nOWNER REPORT 2, 2026-10-19, same view: the push-down displaces the whole schedule - on the Standard page the Isha row overlaps the Settings button at the bottom. The owner''s read: the overlap must not exist.\n\nNOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that landscape support was excluded on this row''s prior life; the current order is that landscape renders correctly on the Duo open pose.\n\nAcceptance:\n- [ ] the mechanism named: what paints the bars beside the content in landscape, and what plants the tall gap above the countdown\n- [ ] on the iPhone Duo simulator, open pose, landscape: the app''s background runs edge to edge, no black bars, reading transcribed onto this row\n- [ ] the countdown block sits at its designed top offset in landscape, the gap gone\n- [ ] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap\n- [ ] portrait poses and every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2352, 264, 'comment', 'owner', 'Owner report 2 folded in: the landscape push-down overlaps the Standard page''s Isha row onto the Settings button. Same view, same row, added to the acceptance.', NULL, '2026-10-19 22:50:22.516546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2353, 33, 'comment', 'owner', 'Step 2 verified on the iPhone Duo simulator, iOS 27.1 (SIMULATOR_UDID). Local Release build of the branch tip: com.example.athan 2.1.20 read off the installed bundle, mock API, layout only.
-
-Closed pose: outer display 466x678, app window fills it edge to edge. One schedule (one pager cell), countdown and day header present, rows 442pt wide with 12pt margins each side. Both schedules reachable by pager swipe (Standard six rows, Extras four). The settings sheet opens at full panel width (466x537) and its Help row opens the Help modal: eight topics plus Close, centred with 14pt margins.
-
-Open pose: inner display 951x669. The app rides a portrait window 469x669, full height, spanning x 241 to 709: 241pt empty on each side, centred. The system status bar sits on the panel''s right edge, outside the window. One schedule in the window, rows 445pt wide with 12pt in-window margins, countdown and day header present. Both schedules reachable, the settings sheet opens at full window width (469x530), the Help row opens the same modal.
-
-Fold liveness: with the focused-prayer overlay on (Magrib), open to closed to open kept one process alive throughout (pid unchanged); the overlay and its close-catchers survived both folds and re-laid per panel. No relaunch.
-
-iOS 27.1 note: the fold command''s hinge-angle verification read returns no sample on this simulator, so each pose was confirmed by the lit panel''s viewport and the screenshot''s dimensions instead. Numbers match the prior close: 466x678 closed, 469x669 centred in 951x669 open. Open-pose screenshot attached (duo-open-pose.png), never committed.', NULL, '2026-10-19 22:52:11.053392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2354, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:53:31.314758+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [ ] every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2358, 33, 'comment', 'owner', 'Step 3 done: the records close is written, the diff names only the version bump and the board''s records, so zero Duo code ships and every other form factor is unchanged. Nothing left on this row.', NULL, '2026-10-19 22:56:20.681347+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2359, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:56:39.29775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
@@ -8435,7 +8406,7 @@ The working tree is clean. Every pattern in the sweep set printed zero true hits
 Scan scope: every object in the local database - 22,133 blobs under the 5MB method cap, 8.1M lines; the one over-cap object is an audio asset with zero hits.
 
 Reachable history (every branch on origin, fetched today) holds only two content classes plus the identities:
-- Bare-rig package ids, handle-rooted, never shipped (the store ids are com.example.*): 217 lines across 59 blobs, 24 of them reachable - old versions of the performance progress record and the background-tasks runbook, first affected commits 2026-09-03 through 2026-10-07.
+- Bare-rig package ids, handle-rooted, never shipped (the store ids are the app''s own package class): 217 lines across 59 blobs, 24 of them reachable - old versions of the performance progress record and the background-tasks runbook, first affected commits 2026-09-03 through 2026-10-07.
 - Tool-session scratchpad paths under $TMPDIR: 6 lines across 6 blobs, 3 reachable - one prompt record dated 2026-09-16. They carry no name; the house rule is $HOME-relative placeholders.
 - Commit identities: two author identities, the public username and the public first name, both at a public code-host noreply domain - no last name, no personal email, nothing to rewrite.
 
@@ -8445,7 +8416,7 @@ The four heavier classes live only in objects no ref reaches - superseded histor
 - Apple team and certificate identifiers: 408 lines across 256 blobs, the same record families under ai/ (247 of them mapped via the reflog). Boundary: house placeholders TEAM_ID and CERT_TEAM_ID.
 - Device identifiers, phone UDID and simulator UUID: 735 lines across 373 blobs, again the same families (360 mapped). Boundary: house placeholders IPHONE_UDID and SIMULATOR_UDID, with the serial placeholders beside them.
 
-What this tables: a history rewrite would concern only the two light reachable classes above; the heavy classes need no rewrite at all - they answer to local object-database maintenance, which is equally the owner''s call.', NULL, '2026-10-20 01:17:57.546837+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+What this tables: a history rewrite would concern only the two light reachable classes above; the heavy classes need no rewrite at all - they answer to local object-database maintenance, which is equally the owner''s call.', NULL, '2026-10-20 01:17:57.546837+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-20 07:20:13.727+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2444, 269, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.445312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2445, 4, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 00:44:43.445312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 269, "value": "T-269"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2447, 270, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.489634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
@@ -8467,14 +8438,6 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2464, 3, 'comment', 'owner', 'Board sweep: removed the column word from the title, which now reads `expo-location` compass corrections.', NULL, '2026-10-20 01:54:24.49757+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2465, 4, 'comment', 'owner', 'Board swept: the integrity checklist ran across all eight open rows; four Upstream titles carried their column word and lost it, everything else passed. No moves. Execution is complete - the branch goes to audit.', NULL, '2026-10-20 01:55:31.867309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2466, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 01:55:38.202245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2467, 4, 'comment', 'owner', 'FINDINGS (blind)
-
-- should (suggestion): shared/widgetTypes.ts:179-180 — the rewrite duplicated the clause: "the countdown is minutes-only today, so `s` rides for that" now appears twice in a row ("...rides for that / countdown is minutes-only today, so `s` rides for that shape and stays / unread until it changes"). Delete the tail of line 179; the sweep garbled a comment it was only meant to de-date.
-- should (suggestion): widgets/PrayerWidget.tsx:521 and :902 — two dated owner citations survive in JSX comments ("(owner 2026-09-25)", "(owner ruling 2026-09-20)") in the very file this sweep edited most (33 lines). The commit''s "the exact dated-narration grep now prints zero across the production dirs" does not hold for widgets/.
-- nice (nitpick): shared/__tests__/widgetContract.test.ts:499 — the test title still carries "(owner 2026-10-19)"; the commit subject claims the strip covered tests too. A title string, so out of the comment sweep''s mechanism, but the stated claim overreaches.
-- nice (nitpick): shared/i18n/sourced-names.json:1029 and :2043 — "Owner-ruled (D81, 2026-10-12)" notes survive. Defensible as data rather than narration, but they print on any dated-citation grep over production dirs, so the zero-claim needs its scope named.
-
-Verified clean: tsc --noEmit exits 0 (the dropped non-null assertion in stores/countdown.ts:230 holds — the truthiness guard on line 228 precedes it, so the runtime argument is unchanged and the re-entrancy suite still pins the guard); biome check . --error-on-warnings exits 0; the only non-comment code changes in the whole 65-file diff are the two version strings and that one clearTimeout line, with the widgetContract literal byte-identical under its trimmed trailing comment; each commit bumps package.json and app.json together (2.1.29, 2.1.30), build.gradle being gitignored by design; no home path, Apple team/cert id or device UDID anywhere in the tracked tree beyond the named benign classes (the guard test''s own /Users/ pattern, vendored .agents skill docs, the board''s baseline record), and no bare the home-path username outside capt-muji — coverage/coverage-summary.json carries the home path only as gitignored local output. Sampled rewrites in countdown.ts, notifications.ts, PrayerWidget.tsx, help.ts, mocks/simple.ts and five test files read coherently and dropped no rule the code still needs.', NULL, '2026-10-20 02:01:44.967106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2469, 271, 'activity', 'owner', NULL, 'created', '2026-10-20 02:11:41.432207+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2470, 271, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:11:41.618387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 176, "value": "#271"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2471, 271, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:11:41.618387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
@@ -8485,16 +8448,16 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2478, 272, 'activity', 'owner', NULL, 'created', '2026-10-20 02:16:43.586807+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2517, 277, 'activity', 'owner', NULL, 'created', '2026-10-20 03:54:15.26331+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2476, 4, 'comment', 'owner', 'Closed at 2.1.32 (merge 94d9b440 on uat; lane commits 01696725, 465697e1, 65094cd5; audit fix round included). Every criterion reads from output: the board holds only the seven parked rows besides this one, all verified untouched except four upstream titles that lost their column word; the typed review swept the whole repo with both greps at zero and the one non-null assertion retired on mutation evidence, nothing ticketed because nothing failed the small-and-lawful fence; the sensitive sweep found the working tree clean and tabled the history classes to the owner (comment 2452), the heavy four unreachable in local objects no push transfers; the board''s integrity checklist passed every open row after the four title fixes; yarn validate green on the worktree at each commit and on uat at the merge. Nothing user-facing changed a pixel. The refreshed snapshot lands with this close.', NULL, '2026-10-20 02:12:19.758133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2483, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:19:33.509051+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] the personal-data patterns guarded in yarn validate: a deliberately sensitive fixture goes red\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2484, 272, 'comment', 'owner', 'The owner''s go is on the record (2026-10-20): wipe both classes, all lines, and never repeat the mistake. Ruling 2 added: nothing breaks, the mock and prod local builds build clean, and a stranger clone deploys the repo as their own with zero connection to the owner. The pseudonym is Athan <athan@athan.uk>; the account noreply address was rejected as linkage. Config set in the main tree this minute.', NULL, '2026-10-20 02:19:33.531288+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2483, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:19:33.509051+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] the personal-data patterns guarded in yarn validate: a deliberately sensitive fixture goes red\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2477, 4, 'comment', 'owner', 'One fix the snapshot gate forced: the plan doc''s first draft had spelt a home-path pattern literally, and the doc''s own revision history row carried it into the committed snapshot, where the identifier gate refused it. The revision row now reads the placeholder form; nothing else on the board carried it.', NULL, '2026-10-20 02:14:14.607434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2490, 271, 'activity', 'owner', NULL, 'field', '2026-10-20 02:23:35.950291+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2479, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:16:43.642474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 177, "value": "#272"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2480, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:16:43.642474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2481, 272, 'activity', 'owner', NULL, 'field', '2026-10-20 02:16:43.670411+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "272"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
-INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2485, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:20:20.077065+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] the personal-data patterns guarded in yarn validate: a deliberately sensitive fixture goes red\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2486, 272, 'comment', 'owner', 'Found and fenced: the committed board snapshot itself leaks - 17 case-insensitive hits (14 store-id quotes, 2 fleettest-id quotes, 2 prose uses of the first name). The board''s texts get neutralised before the final snapshot regeneration, and the history rewrite scrubs every past snapshot that carried them.', NULL, '2026-10-20 02:20:20.101404+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2488, 272, 'comment', 'owner', 'Owner ruling 3: enforcement must be deterministic - never a model''s discipline. The guard becomes machinery: encoded manifest, staged-diff pre-commit gate, suite test inside the push hook, and the snapshot script filtering its own output. Prose stays as documentation only.', NULL, '2026-10-20 02:21:19.480431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2485, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:20:20.077065+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] the personal-data patterns guarded in yarn validate: a deliberately sensitive fixture goes red\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2482, 272, 'comment', 'owner', 'The rewrite and the local purge run only on the owner''s explicit go; every other step runs autonomously. The owner''s words are the specification: no personal data at all, without breaking the app.', NULL, '2026-10-20 02:16:43.689859+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2495, 275, 'activity', 'owner', NULL, 'created', '2026-10-20 02:39:47.798856+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2489, 271, 'activity', 'owner', NULL, 'status', '2026-10-20 02:23:35.895736+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -8762,9 +8725,109 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2651, 276, 'activity', 'owner', NULL, 'title', '2026-10-20 06:37:11.19046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Bottom bar: ten prototype arrangements screenshotted for the owner''s pick, then the picked Design 1 shipped as the real bar"}, "from": {"value": "Bottom bar: ten prototype arrangements of the Settings button and the schedule dots, screenshotted on the iPhone XS for the owner''s pick"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2652, 276, 'activity', 'owner', NULL, 'description', '2026-10-20 06:37:11.19046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: ten quick prototype arrangements of the Settings button and the two schedule dots compressing the bottom bar''s vertical space, screenshotted on the owner''s iPhone XS and attached here for the owner to choose from.\n\nWhere: the app screen''s bottom bar area, prototyped on a throwaway branch that never merges to uat. The shipped face does not change.\n\nOWNER ORDER 2026-10-20, woken for this row before the privacy row runs, in parallel with the Duo landscape row: today the button sits above the dots and wastes vertical space. Design 1 is fixed by the owner''s words; designs 2 to 10 are free creative ground - sides, corners, mirrored pairs, integrated forms - honouring the owner''s taste: symmetry, and asymmetry when it mirrors.\n\nDESIGN 1 (the owner''s spec): the Settings button moves down so its bottom edge sits exactly on the line the dots'' bottoms sit on today, clear of the home indicator; the two dots split and flank it on that one line, vertically centred - small dot, big Settings button, small dot.\n\nProtocol: quick and dirty. A debug-only switcher cycles the ten arrangements in the real screen; no test coverage is required for the prototype; NOTHING merges - the branch dies after the screenshots. The physical iPhone XS is connected; the Duo simulator is another lane''s this run, untouched. Every screenshot attaches to this row (design-01.png through design-10.png) and never commits to the repository. Anonymity: IPHONE_UDID placeholder in any committed text; the device''s display name never appears.\n\nOWNER RULING 2026-10-20 (comment on this row): Design 1 is the pick; the row''s fence flips and Design 1 ships as the real bottom bar through the full audit, merged to uat. The Where clause above is the prototype-era text kept as history; the ruling governs.\n\nAcceptance:\n- [x] Designs 2-10 cancelled by the owner''s immediate ruling: their variants and the debug switcher are deleted, and none of their screenshots stays on the row\n- [x] Design 1 implemented as the REAL bottom bar, shipped: the Settings button''s bottom edge sits on the line the dots'' bottoms sit on today, clear of the home indicator, the two dots flanking it left and right on one vertically centred line - small dot, big button, small dot\n- [x] full unit coverage of the changed layout, red before green; yarn validate green; the change lands in the shared UI so both platforms carry the arrangement\n- [x] one screenshot of the shipped Design 1 on the iPhone XS attached to this row (never committed), the Android device read tabled as a follow-up comment if not taken this row\n- [x] merged to uat through the full two-reviewer audit with the version discipline; the board snapshot refreshed at the close"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2653, 276, 'activity', 'owner', NULL, 'status', '2026-10-20 06:37:11.19046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2656, 280, 'comment', 'owner', 'Step 2 research and measurement. Apple sanctions the presentation; this host cannot produce the pose it is measured in, so the tall canvas stays unmeasured and no code lands.
+
+What Apple documents. The Duo prepare page: "Apps built with the iOS 27 SDK and later resize dynamically on iPhone Duo"; "Apps built with the iOS 27.1 SDK or later are optimized for iPhone Duo. Apps will extend to use the full display". WWDC26 session 278 on resizable apps: "UIRequiresFullscreen is honored on iPhone in resizable environments, enabling discrete resizing that respects your supported interface orientations". TN3192 states the rule: "Starting in iOS 27 and iPadOS 27, UIRequiresFullScreen no longer opts your app out of resizing. Instead, the system resizes your app''s scene discretely. This behavior applies when you build your app with the iOS 27 SDK or later and set UIRequiresFullScreen to YES"; its resizable-scene list requires "Supports all interface orientations" and no full-screen key. Tech Talk 111461: "The inner display doesn''t honor your supported interface orientations", and "Use the control buttons at the bottom of the screen to open, close, rotate, or fold iPhone Duo".
+
+Today''s build already links the iOS 27.1 SDK, so the compat window is not an SDK gap. It carries the full-screen key true with the portrait pair in both arrays, which is exactly the documented discrete-resize shape: the pose the OS grants honours the portrait mask. The opt-in the docs name is therefore the four-orientation maximum with the portrait delegate mask, unchanged from the plan''s D3.
+
+The instrument. Rotation is inert on this host through every supported route, and the slab control locates the fault in the host rather than in the Duo. On the iPhone 18 Pro simulator the same asks left the interface at 402x874 portrait.
+
+- The orientation command accepted all four values, replied "Rotated to X" with no confirmation, and each time the app window stayed 469x669 on the 951x669 panel. Consecutive captures differ in 1589 to 1643 pixels of 636219, all inside the countdown text at x 353 to 598, y 42 to 661: content, never layout.
+- The second automation server reports landscape and then portrait, and reads back what it set, while the window stays 469x669 and its capture is the same letterbox.
+- A Maestro flow carrying the orientation command completes, and the window is unchanged after it.
+- Apple''s rotate control is the Device Hub bar. Device Hub launches on this host with no window and no menu bar, this session holds no screen capture and no accessibility access to it, and simctl offers no orientation verb (its UI options are appearance, contrast and content size).
+
+Readings this host can produce, on the same pid: the open pose is the wide 951x669 panel with the app in a 469x669 window, black from x 0 to 240 and x 710 to 950, content between. The closed pose is 466x678 with no black pixels, the gradient edge to edge. The fold command reaches the pose but cannot confirm the hinge, because its angle read returns no sample; the panel size in the capture is the evidence.
+
+Verdict: no tall pose landed, so the acceptance cannot be met and nothing merges. This is not an OS refusal; it is a missing rotation instrument. The screenshots on the row record the open pose, the closed pose, and the open pose after a landscape ask. The branch still carries step 1''s commit only.', NULL, '2026-10-20 06:59:24.921907+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2649, 285, 'activity', 'owner', NULL, 'status', '2026-10-20 06:33:14.949031+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2650, 276, 'comment', 'owner', 'Follow-up tabled off this row: the Android device read of the shipped bar (one screenshot on an atlas phone), and with it the re-measurement of every stale Settings-button coordinate the audit named - the S911B atlas row (540, 2122), the 3T atlas row (540, 1830) and the 1730/1830 taps in sheets-x10, sounds-x5, toggles-x10 and language-switch-x1, all recorded against the button 25dp higher. Every recorded tap still lands today (slop or skin), so nothing is broken; the records are void until measured.', NULL, '2026-10-20 06:33:22.609408+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2654, 276, 'comment', 'owner', 'Closed: the owner''s Design 1 is the shipped bottom bar - one centred line, small dot, big Settings button, small dot, the button''s bottom edge on today''s dots-bottom line and clear of the home indicator - merged to uat at 2.2.2 after both reviews passed and the one confirmed finding was fixed at 2.2.1. The phone is cured: the XS now runs the shipped 2.2.1 mock build in place of the ten-design prototype, with the verification readings and the shipped screenshot on the row. The Android read and the stale atlas coordinates are tabled as the follow-up below. The title was sharpened to name the whole arc now the prototype phase is history.', NULL, '2026-10-20 06:37:18.145728+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2670, 290, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.762988+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2693, 4, 'activity', 'owner', NULL, 'comment_edited', '2026-10-20 07:20:13.729225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2468, 4, 'comment', 'owner', 'FINDINGS (plan-conformance)
+
+Reviewed uat..lane/54 (01696725 at 2.1.29, 465697e1 at 2.1.30) against plan v6, decisions D54.1-D54.8. Every check I could run reproduces the plan''s claims.
+
+- clean - Fence (D54.1/D54.5): the diff''s entire non-comment surface is two line pairs - countdown.ts L230''s assertion removal (guard intact, tsc exit 0, re-entrancy suite 28/28 green) and one rgba line whose code portion is byte-identical (only the trailing comment lost its date anchor). Every other changed line is a pure comment; no file added or deleted; no style, layout, behaviour or visual line moved.
+- clean - Comment sweep: the plan''s exact regex prints 0 over the production dirs and TODO/FIXME prints 0. The uat baseline measures 62 production / 48 test lines, matching the Step 2 record''s honest correction of the plan''s 60 (the two Kotlin sites in modules/, both seen in the diff). Frozen-clock dates, mock seeds (mocks/full.ts 732 dated lines), prayer.ts and schedule.ts docstring examples, the sourced-names notes and the 2024 London corpus line all kept.
+- clean - Sensitive sweep: the tracked tree carries zero of every token in the set (home paths only as the three .agents vendor examples, no Apple id, no device id, no home-path username outside the public handle), zero in any added diff line, and git log --all -S over all four heavy-class ids prints zero commits: they are unreachable, as comment 2452 tables. The last-name token stays uncheckable here by D54.8''s own design.
+- clean - Version law: 01696725 is package.json plus app.json only, 2.1.28 to 2.1.29; 465697e1 bumps both to 2.1.30; each number rides exactly one commit across all refs; both subjects lead with the version and close with the row number; android/ is absent from the branch per D54.7.
+- clean - Board: comment 2452 greps empty for every token (only the scratchpad class name and the public store ids). In the executors'' window (In progress 00:54:31 to Audit 01:55:38) the only foreign changes are the four title fixes on T-239, T-232, T-231, T-51 with one-line comments 2461-2464; every other foreign activity is timestamped 00:30:30 to 00:35:49, before this row left Backlog at 00:36:09, and belongs to Lane 3''s own follow-ups. No ticket moved in the window; the only moves are this row''s own and its step subtasks'' ticks (T-268, T-269; T-270 open for the close half).
+- clean - Step records v4-v6 tell the truth against the diff: commit contents, the 65 files, the 62/48 baseline, the final greps, tsc, biome and the countdown suite all re-verified green, and the sweep comments are ids 2461-2464 as recorded.
+- nice - The gitignored coverage/ artifact (regenerated by the validate run) carries this worktree''s home path in about 150 files on disk. Untracked, never pushed, ignored at .gitignore line 18, so every commit stays clean, but a literal re-run of the working-tree grep set today prints these hits outside .agents/ and .git. Deleting the artifact at the close keeps Step 1''s clean-tree claim literally reproducible.
+
+No must or should findings. The branch conforms to the plan.', NULL, '2026-10-20 02:05:25.281217+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-20 07:20:13.802+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2655, 280, 'comment', 'owner', 'Lane respawned 2026-10-20 after the owner''s cancellation of the prior session: the worktree lane-280 at 7a7a614d is adopted, step 2 (the orientation opt-in measurement) runs to its verdict - implemented under the full audit if Apple sanctions the tall presentation, BLOCKED with the documented refusal if not.', NULL, '2026-10-20 06:43:22.244992+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2657, 280, 'activity', 'owner', NULL, 'field', '2026-10-20 06:59:57.015384+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "a rotation instrument for the iPhone Duo simulator: Device Hub''s pose control bar (it launches on this host with no window, and this session holds no screen capture or accessibility access to it), or a host whose simulators accept rotation from the automation tools"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2658, 280, 'activity', 'owner', NULL, 'status', '2026-10-20 06:59:57.045251+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2659, 272, 'activity', 'owner', NULL, 'field', '2026-10-20 07:02:08.678231+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2660, 272, 'activity', 'owner', NULL, 'status', '2026-10-20 07:02:08.69578+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2661, 287, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.646697+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2662, 287, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.64927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2663, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.64927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 287, "value": "T-287"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2664, 288, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.689143+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2665, 288, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.691093+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2666, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.691093+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 288, "value": "T-288"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2667, 289, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.726558+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2668, 289, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.728218+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2669, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.728218+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 289, "value": "T-289"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2671, 290, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.764887+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2672, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.764887+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 290, "value": "T-290"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2673, 291, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.794555+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2674, 291, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.795794+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2675, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.795794+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 291, "value": "T-291"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2676, 292, 'activity', 'owner', NULL, 'created', '2026-10-20 07:09:05.819566+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2681, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 07:09:18.465293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2682, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 07:09:18.465293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "board"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2683, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 07:09:18.465293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2684, 272, 'activity', 'owner', NULL, 'field', '2026-10-20 07:09:18.50075+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2685, 272, 'activity', 'owner', NULL, 'status', '2026-10-20 07:09:18.528072+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2687, 272, 'activity', 'owner', NULL, 'status', '2026-10-20 07:09:41.245091+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2688, 272, 'comment', 'owner', 'Claimed. The gates land first: the manifest, the staged scan with the identity check, the tree test inside the push path, and the snapshot filter.', NULL, '2026-10-20 07:09:41.273492+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1807, 18, 'comment', 'owner', 'Step 3, the XS readings (T-211). Vehicle: iPhone XS (IPHONE_UDID), iOS 18.7.10, panel 375x812pt at 3x, the store app **2.0.1081** verbatim - moved from row 137''s 2.0.939; its commit 08253a56, and the diff 08253a56..uat over components/, shared/, app/, assets/fonts/ touches no site file (five files, all comment-text pronoun purges), so the vehicle sits inside the D140.1 equivalence span and the controls decided. Language round-trip per D140.7: found en, switched the app''s own preference to العربية, measured, restored en and verified from the home face.
+
+Standard (ar): day location ''لندن، المملكة المتحدة'' StaticText (193.67, 169.00) 165.33x19.00 [57.00px]; day date ''الاثنين، 19 أكتوبر 2026'' StaticText (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''الفجر'' StaticText (0.00, 58.00) 375.00x20.33 [60.99px]; countdown digits ''47m'' container Other (0.00, 83.33) 375.00x28.67 [86.01px] with outer wrapper Other (0.00, 83.33) 375.00x44.67 [134.01px]. Node gaps: location-to-date 8.00pt (= the 8dp code margin); word-band-to-digits 5.00pt raw.
+
+Extras (ar): location (193.67, 169.00) 165.33x19.00 [57.00px]; date (193.67, 196.00) 165.33x21.33 [63.99px]; countdown word ''السحور'' band (0.00, 58.00) 375.00x20.33 [60.99px]; digits ''26m'' container (0.00, 83.33) 375.00x28.67 [86.01px] (outer 375.00x44.67 [134.01px]). Node gaps identical to Standard: 8.00pt and 5.00pt raw.
+
+Band artefact: the countdown word node is a full-width 375.00pt band on both pages, unchanged from row 137 - D140.2 stands, ink is the site-1 deliverable. Sheet void: the ar settings sheet tree carries 7 nodes, all chrome - backdrop (x2), handle (x3), ''Bottom Sheet'' container (0.00, 160.80) 375.00x651.20 - zero content nodes; the standing void is re-proven and xs-sheet.png is the site-3 authority.
+
+Controls vs row 137, all within 1px: location 57.00px vs 57 (+0.00) PASS; date 63.99 vs 64 (-0.01) PASS; countdown word 60.99 vs 61 (-0.01) PASS; digits container 86.01 vs 86 (+0.01) PASS. Two-capture agreement: per screen the two independent snapshots agree on every bound and every static label (full node sets equal); digits nodes compared on bounds, identical, their label holding 47m/26m across each pair. The date string held across all four captures, so no day-roll confound.
+
+Instrument notes: the RTL pager flipped on a rightward fling only (a slow rightward pan did not move it); sheets publish no nodes on this phone, so the language switch was navigated by screenshot reads. Captures live in session scratch (xs-std/extras/sheet trees and pngs), never git; no repo commits, no installs, the phone left on Standard in en as found.', NULL, '2026-10-19 04:11:24.319957+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-20 07:20:13.629+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2694, 4, 'activity', 'owner', NULL, 'comment_edited', '2026-10-20 07:20:13.768225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2677, 292, 'activity', 'owner', NULL, 'parent', '2026-10-20 07:09:05.82063+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 272, "value": "T-272"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2678, 272, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 07:09:05.82063+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 292, "value": "T-292"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2680, 272, 'activity', 'owner', NULL, 'estimate', '2026-10-20 07:09:18.448371+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2686, 272, 'comment', 'owner', 'Plan written as doc T-272, six steps at 9 points; the gates, the injection, the board texts and the wipe each own a step. Moving to execution.', NULL, '2026-10-20 07:09:18.552972+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2689, 4, 'activity', 'owner', NULL, 'description', '2026-10-20 07:20:03.192769+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the last row on the board - a deep review and cleanup of the codebase (typing, dead code, pattern drift) and the board, so both end clean.\n\nWhere: the whole repository and the open board.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked LAST, after every other row is Done or parked. The number-order picking rule yields to this order.\n\nCLOSED 2026-10-19 by the owner''s rulings: the one line of qibla copy verified on glass (the sheet''s subheading reads right); the one leftover build covered by the owner''s full-app test on the 3T, which works perfectly; the patch questions owned by the upstream rows; the 2026-10-14 hygiene check (already done) folds into this broader pass.\n\nAcceptance:\n- [ ] every other board row Done or parked\n- [ ] a deep typed code review run across the repo, findings fixed or ticketed\n- [ ] dead code, stale comments and pattern drift cleaned\n- [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19, tightened 2026-10-20 on T-272: both names go), with any history hit tabled to the owner for the rewrite decision\n- [ ] the board swept: no defect the integrity checklist can catch\n- [ ] yarn validate green at the close"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2690, 23, 'activity', 'owner', NULL, 'description', '2026-10-20 07:20:03.256172+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "PROBLEM, measured 2026-10-17 by the owner fleettest build: a widgets-off Android release prebuild at HEAD drops `./plugins/androidLocaleConfig`, so `values/locales_defaults.xml` is never written and `:app:lintVitalRelease` fails with 150 fatal `ExtraTranslation` errors (30 keys across ar ms so hi th). Root cause, re-derived and proven: `app.config.ts` reached its android branch only when the CLI passed `platform === ''android''` (it never does at expo 58.0.13; every CLI evaluation leaves platform undefined) or `EXPO_PUBLIC_ANDROID_WIDGETS=1`; behind it sat a second defect - the locale plugin''s default-string derivation read the widget kinds from the RESOLVED plugins, which the widgets-off path had already stripped, so even reaching the branch would have written 2 of 30 defaults. The 131-era pass at `ca73f5a9` re-derived from lane 131''s own LOG: that build''s first gradle run failed lintVital identically and the passing second run followed re-adding `EXPO_PUBLIC_ANDROID_WIDGETS=1` - no build had ever passed this gate widgets-off, and `build-mock.zsh`''s `.env` keeps the flag at 1, which is why every earlier build passed. Fixed at 2.0.1007: the android branch keys on platform or the android-only resolution (argv/env) with the widgets flag choosing enable-vs-strip inside it, and the plugin derives kinds from the committed `app.json`, skipping android kinds only when the resolution still holds expo-widgets. Red-first (config, flags and native suites; 7-mutant break pass), and the proof pair: planning red at `80f707d5` (150 ExtraTranslation, task FAILED, 3m 56s), green at the merged fix `087d30ff` (task executed, zero ExtraTranslation, BUILD SUCCESSFUL in 8m 14s, 30 defaults, `aapt2` badging `com.example.athan.fleettest`), no lint exclusion anywhere. Two-reviewer audit (plan-conformance clean, blind): the should (ambient `EXPO_WIDGETS_ANDROID` breaking test isolation, 3 of 52 red proven) and two nices fixed at 2.0.1009, one nice rejected on the plan''s recorded D134.1 (the bare combined prebuild, pre-existing, no build path runs it)\n\nStatus note: 2026-10-17, audited through 2.0.1009"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2691, 18, 'activity', 'owner', NULL, 'comment_edited', '2026-10-20 07:20:13.632632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2695, 4, 'activity', 'owner', NULL, 'comment_edited', '2026-10-20 07:20:13.804106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2696, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 07:21:27.156999+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live store package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] deterministic enforcement, not model discipline: a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - the tracked pre-commit hook scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2679, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 07:09:18.448371+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] deterministic enforcement, not model discipline: a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - the tracked pre-commit hook scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2353, 33, 'comment', 'owner', 'Step 2 verified on the iPhone Duo simulator, iOS 27.1 (SIMULATOR_UDID). Local Release build of the branch tip: the app package 2.1.20 read off the installed bundle, mock API, layout only.
+
+Closed pose: outer display 466x678, app window fills it edge to edge. One schedule (one pager cell), countdown and day header present, rows 442pt wide with 12pt margins each side. Both schedules reachable by pager swipe (Standard six rows, Extras four). The settings sheet opens at full panel width (466x537) and its Help row opens the Help modal: eight topics plus Close, centred with 14pt margins.
+
+Open pose: inner display 951x669. The app rides a portrait window 469x669, full height, spanning x 241 to 709: 241pt empty on each side, centred. The system status bar sits on the panel''s right edge, outside the window. One schedule in the window, rows 445pt wide with 12pt in-window margins, countdown and day header present. Both schedules reachable, the settings sheet opens at full window width (469x530), the Help row opens the same modal.
+
+Fold liveness: with the focused-prayer overlay on (Magrib), open to closed to open kept one process alive throughout (pid unchanged); the overlay and its close-catchers survived both folds and re-laid per panel. No relaunch.
+
+iOS 27.1 note: the fold command''s hinge-angle verification read returns no sample on this simulator, so each pose was confirmed by the lit panel''s viewport and the screenshot''s dimensions instead. Numbers match the prior close: 466x678 closed, 469x669 centred in 951x669 open. Open-pose screenshot attached (duo-open-pose.png), never committed.', NULL, '2026-10-19 22:52:11.053392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-20 07:20:13.685+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2692, 33, 'activity', 'owner', NULL, 'comment_edited', '2026-10-20 07:20:13.687174+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2467, 4, 'comment', 'owner', 'FINDINGS (blind)
+
+- should (suggestion): shared/widgetTypes.ts:179-180 — the rewrite duplicated the clause: "the countdown is minutes-only today, so `s` rides for that" now appears twice in a row ("...rides for that / countdown is minutes-only today, so `s` rides for that shape and stays / unread until it changes"). Delete the tail of line 179; the sweep garbled a comment it was only meant to de-date.
+- should (suggestion): widgets/PrayerWidget.tsx:521 and :902 — two dated owner citations survive in JSX comments ("(owner 2026-09-25)", "(owner ruling 2026-09-20)") in the very file this sweep edited most (33 lines). The commit''s "the exact dated-narration grep now prints zero across the production dirs" does not hold for widgets/.
+- nice (nitpick): shared/__tests__/widgetContract.test.ts:499 — the test title still carries "(owner 2026-10-19)"; the commit subject claims the strip covered tests too. A title string, so out of the comment sweep''s mechanism, but the stated claim overreaches.
+- nice (nitpick): shared/i18n/sourced-names.json:1029 and :2043 — "Owner-ruled (D81, 2026-10-12)" notes survive. Defensible as data rather than narration, but they print on any dated-citation grep over production dirs, so the zero-claim needs its scope named.
+
+Verified clean: tsc --noEmit exits 0 (the dropped non-null assertion in stores/countdown.ts:230 holds — the truthiness guard on line 228 precedes it, so the runtime argument is unchanged and the re-entrancy suite still pins the guard); biome check . --error-on-warnings exits 0; the only non-comment code changes in the whole 65-file diff are the two version strings and that one clearTimeout line, with the widgetContract literal byte-identical under its trimmed trailing comment; each commit bumps package.json and app.json together (2.1.29, 2.1.30), build.gradle being gitignored by design; no home path, Apple team/cert id or device UDID anywhere in the tracked tree beyond the named benign classes (the guard test''s own /Users/ pattern, vendored .agents skill docs, the board''s baseline record), and no bare home-path username outside the public handle — coverage/coverage-summary.json carries the home path only as gitignored local output. Sampled rewrites in countdown.ts, notifications.ts, PrayerWidget.tsx, help.ts, mocks/simple.ts and five test files read coherently and dropped no rule the code still needs.', NULL, '2026-10-20 02:01:44.967106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-20 07:20:13.766+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1171, 23, 'activity', 'owner', NULL, 'description', '2026-10-19 02:31:04.579264+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "PROBLEM, measured 2026-10-17 by the owner fleettest build: a widgets-off Android release prebuild at HEAD drops `./plugins/androidLocaleConfig`, so `values/locales_defaults.xml` is never written and `:app:lintVitalRelease` fails with 150 fatal `ExtraTranslation` errors (30 keys across ar ms so hi th). Root cause, re-derived and proven: `app.config.ts` reached its android branch only when the CLI passed `platform === ''android''` (it never does at expo 58.0.13; every CLI evaluation leaves platform undefined) or `EXPO_PUBLIC_ANDROID_WIDGETS=1`; behind it sat a second defect - the locale plugin''s default-string derivation read the widget kinds from the RESOLVED plugins, which the widgets-off path had already stripped, so even reaching the branch would have written 2 of 30 defaults. The 131-era pass at `ca73f5a9` re-derived from lane 131''s own LOG: that build''s first gradle run failed lintVital identically and the passing second run followed re-adding `EXPO_PUBLIC_ANDROID_WIDGETS=1` - no build had ever passed this gate widgets-off, and `build-mock.zsh`''s `.env` keeps the flag at 1, which is why every earlier build passed. Fixed at 2.0.1007: the android branch keys on platform or the android-only resolution (argv/env) with the widgets flag choosing enable-vs-strip inside it, and the plugin derives kinds from the committed `app.json`, skipping android kinds only when the resolution still holds expo-widgets. Red-first (config, flags and native suites; 7-mutant break pass), and the proof pair: planning red at `80f707d5` (150 ExtraTranslation, task FAILED, 3m 56s), green at the merged fix `087d30ff` (task executed, zero ExtraTranslation, BUILD SUCCESSFUL in 8m 14s, 30 defaults, `aapt2` badging `com.example.athan.fleettest`), no lint exclusion anywhere. Two-reviewer audit (plan-conformance clean, blind): the should (ambient `EXPO_WIDGETS_ANDROID` breaking test isolation, 3 of 52 red proven) and two nices fixed at 2.0.1009, one nice rejected on the plan''s recorded D134.1 (the bare combined prebuild, pre-existing, no build path runs it)\n\nStatus note: 2026-10-17, audited through 2.0.1009"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2487, 272, 'activity', 'owner', NULL, 'description', '2026-10-20 02:21:19.457616+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.\n\nWhere: git author configuration, the working tree''s personal-value inventory, the build scripts'' injection points (documented now, wired when EAS builds come later - EAS stays read-only), and, behind the owner''s explicit go, the full history rewrite.\n\nOWNER RULING 2026-10-20: no personal data at all, however harmless - people will know how to use it in harmful ways. Both the first name and the last name go. The last name exists only in this machine''s unreachable git objects (zero published hits); the first name exists in commit identities, 217 lines of old handle-rooted records in published history, and the live store app ids.\n\nFENCED (breaks the app): the live com.example.* package and bundle identifiers never change - both stores treat a changed id as a new app, cutting off updates to installed users. The owner''s order is to remove personal data WITHOUT breaking the app.\n\nOUT OF REPO, separate owner decisions: the GitHub account handle and the store developer name are name-derived; only an account rename or store profile change touches those.\n\nOWNER RULING 2, 2026-10-20: nothing may break - everything passes, the mock and the prod local builds build without issues. Nothing even remotely sensitive is ever committed again. The acid test: a stranger can clone this repo and deploy it as their very own with absolutely no connection to the owner - no name, no account linkage, no personal ids in content or history. The commit pseudonym is Athan <athan@athan.uk> (the account noreply address is itself a linkage and is not used). The live store app ids leave the committed config: the owner''s builds inject them at build time from outside the repo, a stranger''s build injects their own, and the repo carries only neutral defaults. The personal-data patterns join yarn validate so a sensitive commit goes red before it lands.\n\nAcceptance:\n- [ ] git author config set to a pseudonym for all future commits, verified on the next commit\n- [ ] the store app ids injected at build time: the owner''s mock and prod local builds produce the SAME ids as before (badging-checked), and the committed config carries only neutral defaults\n- [ ] deterministic enforcement, not model discipline (owner order 2026-10-20): a tracked scanner over an ENCODED pattern manifest (the manifest must not itself be a tree hit), wired at three gates - .githooks/pre-commit scanning the staged diff and verifying the pseudonym identity via core.hooksPath, the suite''s privacy test scanning the tree inside the existing pre-push hook, and board/snapshot.sh filtering its own output through the manifest. A sensitive string cannot be committed, pushed, or snapshotted: git and the scripts refuse it.\n- [ ] the stranger test: a fresh clone under neutral env runs the suite, prebuilds, and builds without owner input, and a full sweep of tree and rewritten history finds zero connection to the owner\n- [ ] the board''s own texts scrubbed: descriptions and comments quoting the store ids or the first name are neutralised on the board itself, so the regenerated snapshot carries zero hits (the committed board.sql today carries 17: the store ids and two prose uses of the first name)\n- [ ] the working tree''s personal-value inventory complete: every value either a placeholder, injected, or fenced with the reason named\n- [ ] the EAS/build injection points documented (what injects, where from, when wired)\n- [ ] BEHIND THE OWNER''S GO: history rewritten - both author identities pseudonymised, the handle-rooted record lines scrubbed, force-pushed\n- [ ] BEHIND THE OWNER''S GO: this machine''s reflog expired and the object database garbage-collected, destroying the local-only last-name and home-path objects\n- [ ] verification from a fresh clone: zero hits for both names across the full rewritten history"}}', NULL);
 
 
 --
@@ -8779,6 +8842,9 @@ INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, 
 INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (16, '36697d28-1d27-4eb6-8700-bffe99331eff', 280, 'projects/1/attachments/280/5ab57701-51cc-4bf0-8091-057767ce27b5-landscape-hold-control.png', 'landscape-hold-control.png', 'image/png', 150682, '2026-10-20 06:15:33.552443+00');
 INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (17, '3dca6ca9-477d-4bee-8ee1-96da761f4d4c', 280, 'projects/1/attachments/280/6834a38c-4087-4952-affd-c4eebb8e760c-closed-pose.png', 'closed-pose.png', 'image/png', 143437, '2026-10-20 06:15:33.760165+00');
 INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (18, '026969b8-49c8-4943-8d3d-65329568fc1f', 276, 'projects/1/attachments/276/c6e2b774-fb8b-49d9-8767-e743f41fbd82-shipped-design.png', 'shipped-design.png', 'image/png', 1708085, '2026-10-20 06:24:06.809971+00');
+INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (19, 'ac6aebe5-9b5f-4618-b4bf-1eb0b05a50ef', 280, 'projects/1/attachments/280/4474b441-1c41-4413-bf85-b96d71dac5a0-t280-open-pose-2.1.34.png', 't280-open-pose-2.1.34.png', 'image/png', 152243, '2026-10-20 06:58:57.548655+00');
+INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (20, 'e71d2fe6-bf67-4831-8cef-7a47b4352e5f', 280, 'projects/1/attachments/280/03823a0a-d8f4-46aa-a9da-4beb219eb04b-t280-closed-pose-2.1.34.png', 't280-closed-pose-2.1.34.png', 'image/png', 146586, '2026-10-20 06:59:08.927001+00');
+INSERT INTO public.issue_attachment (id, public_id, issue_id, s3_key, filename, content_type, size_bytes, created_at) VALUES (21, 'f2ff22e4-7314-4820-8e9e-85411bebd3ff', 280, 'projects/1/attachments/280/1b5a2c49-1355-4153-9065-c186cdb7b6aa-t280-open-pose-after-landscape-ask.png', 't280-open-pose-after-landscape-ask.png', 'image/png', 153493, '2026-10-20 06:59:08.975267+00');
 
 
 --
@@ -8837,6 +8903,7 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (4,
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (271, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (276, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (280, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (272, 2, 1);
 
 
 --
@@ -9007,6 +9074,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (566, 272, 1, NULL, 272, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (567, 276, 1, NULL, 276, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (568, 280, 1, NULL, 280, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (569, 280, 3, 'a rotation instrument for the iPhone Duo simulator: Device Hub''s pose control bar (it launches on this host with no window, and this session holds no screen capture or accessibility access to it), or a host whose simulators accept rotation from the automation tools', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -9348,14 +9416,17 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 8);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 176);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 1);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 177);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (280, 179);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (280, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (280, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (276, 178);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (276, 148);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (276, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 177);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 8);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 4);
 
 
 --
@@ -9766,7 +9837,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (509, 270, 4, 'Done', 'completed', '2026-10-20 02:12:19.695559+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (507, 4, 8, 'Audit', 'started', '2026-10-20 01:55:38.199668+00', '2026-10-20 02:12:19.731917+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (510, 4, 4, 'Done', 'completed', '2026-10-20 02:12:19.731917+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (511, 272, 1, 'Backlog', 'backlog', '2026-10-20 02:16:43.578+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (508, 271, 1, 'Backlog', 'backlog', '2026-10-20 02:11:41.411+00', '2026-10-20 02:23:35.891955+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (512, 271, 6, 'Planning', 'unstarted', '2026-10-20 02:23:35.891955+00', '2026-10-20 02:56:36.882585+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (516, 271, 2, 'Ready', 'unstarted', '2026-10-20 02:56:36.882585+00', '2026-10-20 02:56:41.721902+00');
@@ -9798,7 +9868,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (542, 284, 1, 'Backlog', 'backlog', '2026-10-20 05:29:30.021+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (535, 280, 6, 'Planning', 'unstarted', '2026-10-20 05:17:38.453617+00', '2026-10-20 05:42:45.845028+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (545, 280, 2, 'Ready', 'unstarted', '2026-10-20 05:42:45.845028+00', '2026-10-20 05:44:17.46817+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (546, 280, 3, 'In progress', 'started', '2026-10-20 05:44:17.46817+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (544, 286, 3, 'In progress', 'started', '2026-10-20 05:33:19.118+00', '2026-10-20 05:49:43.966189+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (547, 286, 4, 'Done', 'completed', '2026-10-20 05:49:43.966189+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (539, 281, 1, 'Backlog', 'backlog', '2026-10-20 05:29:29.905+00', '2026-10-20 06:25:33.422865+00');
@@ -9808,6 +9877,18 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (550, 285, 4, 'Done', 'completed', '2026-10-20 06:33:14.946259+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (537, 276, 3, 'In progress', 'started', '2026-10-20 05:23:35.186582+00', '2026-10-20 06:37:11.186255+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (551, 276, 4, 'Done', 'completed', '2026-10-20 06:37:11.186255+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (546, 280, 3, 'In progress', 'started', '2026-10-20 05:44:17.46817+00', '2026-10-20 06:59:57.042829+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (552, 280, 7, 'Blocked', 'started', '2026-10-20 06:59:57.042829+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (511, 272, 1, 'Backlog', 'backlog', '2026-10-20 02:16:43.578+00', '2026-10-20 07:02:08.69237+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (554, 287, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.637+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (555, 288, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.682+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (556, 289, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.721+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (557, 290, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.757+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (558, 291, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.79+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (559, 292, 1, 'Backlog', 'backlog', '2026-10-20 07:09:05.816+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (553, 272, 6, 'Planning', 'unstarted', '2026-10-20 07:02:08.69237+00', '2026-10-20 07:09:18.525837+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (560, 272, 2, 'Ready', 'unstarted', '2026-10-20 07:09:18.525837+00', '2026-10-20 07:09:41.241842+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (561, 272, 3, 'In progress', 'started', '2026-10-20 07:09:41.241842+00', NULL);
 
 
 --
@@ -10456,7 +10537,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 287, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 293, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -11224,77 +11305,6 @@ Owner goal: the app goes global in v2.0 with a language switcher. Research lives
 `ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
 catalog and `t()`, no i18n library, no second language first. RTL is the real work.
 ', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 7168, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 01:45:39.797851+00', '2026-10-19 02:17:21.445666+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
-
-## Goal
-
-The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
-
-## Decisions taken (agent-ruled 2026-10-19)
-
-- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
-- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
-- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
-- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
-- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
-- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
-- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
-
-## Files (read only)
-
-- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
-- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
-- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
-- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
-- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
-- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
-- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
-- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
-
-## Design
-
-Row 137''s ladder, extended one rung to the gaps between elements:
-
-1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
-2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
-3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
-4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
-5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
-6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
-
-Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
-
-Alternatives rejected:
-
-- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
-- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
-- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
-
-## Steps
-
-1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
-2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
-3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
-4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
-5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
-
-## Risks
-
-- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
-- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
-- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
-- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
-- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
-- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
-
-## Proof
-
-- The plan and record: `list_issue_documents` on T-140.
-- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
-- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
-- Step 4: every named ink band sits inside its node bound where both exist.
-- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
-', NULL, NULL, '{}', false, false, false, NULL, NULL, 8192, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00', '2026-10-19 03:33:05.183901+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (11, 1, NULL, 'T-139', '# T-139
 
 Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
@@ -12431,6 +12441,77 @@ Both reviews on uat..lane/264 came back with the change judged sound and narrowl
 - Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
 - Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
 - Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, NULL, 20480, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:17:03.483801+00', '2026-10-20 00:05:55.004578+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T the store app 2.0.908, XS the store app 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
+3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
+4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
+5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
+
+Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on the store app 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on the store app 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
+- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
+- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 8192, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00', '2026-10-20 07:20:34.380502+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (22, 1, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
 
 ## Goal
@@ -12516,7 +12597,7 @@ pattern drift beyond small-and-lawful (ticketed instead, D54.5).
 Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
 `/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
 `<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
-identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+identifiers recovered the same way; the home-path username outside `capt-muji`; real device UDIDs and
 serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
 SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
 mobileprovision and service-account files (`git log --all --name-only` on those patterns).
@@ -12640,7 +12721,7 @@ this record''s own note: JSX blocks needed the looser pass, and the residual sca
 zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
 
 Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
-2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, NULL, 21504, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00', '2026-10-20 02:09:09.792374+00');
+2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, NULL, 21504, 8, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00', '2026-10-20 07:20:34.449446+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (24, 1, NULL, 'T-276', '# T-276 — Ten bottom-bar arrangements, screenshotted for the owner''s pick
 
 Owner order 2026-10-20. The deliverable is ten screenshots on this row, not merged code: the branch dies after the shots, uat never moves.
@@ -12865,6 +12946,160 @@ Points: 3 + 2 + 3 + 1 = 9.
 
 Nine findings answered: Files now reads the cancelled gate by hash without restoring lane/271 (gc-fragile, read once in Step 2); Step 1 drives all four orientation values and sequences the Device Hub fallback ahead of any Blocked call; D5 reworded to the defensible claim about row 271''s instruments; the Blocked branch now fires only on a landed tall pose with a wide or letterboxed canvas; the spanning-landscape landscape hold parks the row in Awaiting Owner per D4 instead of proceeding to Done; Steps 1 and 3 attach the closed-pose screenshot and the acceptance''s "both poses" reads as the open tall hold and the closed pose; D6 parks on a >62 inset per row 271''s Decision 5 precedent; the README rule rides the code branch with the zero-code exemption recorded (D8); D3 carries the consent line for the app.json plugins entry, Step 4 names the post-merge gitignored build.gradle hand-set, and Step 3 restores the half-open reading. Row 271''s audit handoff notes (selector-keyed sentinel, subscriber-manager bypass) fold into D3. Points unchanged: 3+2+3+1 = 9.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 24576, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 05:29:15.157536+00', '2026-10-20 05:41:54.076097+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (26, 1, NULL, 'T-272', '# T-272 - Zero personal data: pseudonymous identity, injected build values, and the history scrub
+
+## Goal
+
+The repository is public, and today it names its owner in four ways: two commit identities in
+history, handle-rooted package ids in old records, the live store package id in committed
+configuration, and scratchpad paths from tool sessions. When this is done: every future commit
+carries the pseudonym **Athan <athan@athan.uk>**, the store ids arrive from outside the
+repository at prebuild time while a stranger''s clone builds unmodified from neutral defaults,
+a tracked scanner over an encoded manifest refuses a sensitive string at commit, at push and at
+snapshot, the board''s own texts carry no store id and no owner name, and the published history
+reads as a stranger''s repository from a fresh clone.
+
+## Decisions taken
+
+- **D272.1 The manifest is tracked and encoded (2026-10-20).** The gate must work in a
+  stranger''s clone, where this machine''s private denylist does not exist; the terms are stored
+  base64-encoded in `scripts/privacy-manifest.json` so the manifest is not itself a tree hit.
+  Rejected: a machine-local list alone, which leaves every other clone unguarded.
+- **D272.2 The hooks stay in `.husky/` (2026-10-20).** `scripts/pin-hooks.js` already pins
+  `core.hooksPath` to the tracked `.husky/`, and git honours one hooks path. The staged scan
+  and the identity check land in `.husky/pre-commit`; a second `.githooks/` would be dead
+  code. The ticket''s `.githooks/pre-commit` is satisfied by the tracked hooks directory this
+  repository already has.
+- **D272.3 Injection is environment-first, neutral in the tree (2026-10-20).** `app.config.ts`
+  overrides the Android package, the iOS bundle id, the widget app group and the EAS project id
+  from `EXPO_APP_ID`, `EXPO_BUNDLE_ID`, `EXPO_APP_GROUP` and `EXPO_EAS_PROJECT_ID`;
+  `app.json` carries `com.example.*` defaults, so a clone with no environment builds as
+  itself. The owner''s build scripts export the live values from outside the repository.
+- **D272.4 The notification plugin derives its Kotlin package (2026-10-20).** A hardcoded
+  package cannot survive the neutral default, and the receiver name was already the thing that
+  had to match; the plugin takes `config.android.package` and writes both the directory and the
+  `package` line from it.
+- **D272.5 The e2e surface takes the package from the environment (2026-10-20).** Maestro flows
+  use `${APP_ID}` and the shell scripts default to the neutral id, so a stranger can drive
+  their own build and the owner passes `-e APP_ID=<live id>`.
+- **D272.6 The identity gate refuses an owner identity, not every identity (2026-10-20).** A
+  gate requiring the pseudonym would refuse a stranger''s own commits in their own clone. The
+  gate refuses an author or committer name or email that carries a manifest term, and refuses an
+  empty identity.
+- **D272.7 The rewrite runs in the main checkout with `git filter-repo --force` (2026-10-20).**
+  `git-filter-repo` is installed at `/opt/homebrew/bin/git-filter-repo`; it rewrites every ref
+  in one pass, which is what keeps `lane/280` and the build worktrees reachable. The safety
+  bundle in `$TMPDIR` is the undo until the fresh-clone verification passes.
+- **D272.8 The EAS project id leaves the committed config (2026-10-20).** The stranger test
+  forbids account linkage; no local build reads the id and EAS is read-only, so it becomes
+  `EXPO_EAS_PROJECT_ID` with no committed value.
+- **D272.9 The board rows are edited in place (2026-10-20).** A comment quoting a store id is
+  rewritten to name the id by role, not deleted, so the board''s history keeps its meaning and
+  the regenerated snapshot carries no hit.
+
+## Files
+
+Read: the whole tracked tree; every blob reachable from any ref; the reflog world of unreachable
+objects; the two build scripts under `$HOME/athan-gitree/bin`.
+
+Changed:
+
+- `scripts/privacy-manifest.json` (new) - the encoded terms and patterns.
+- `scripts/check-identifiers.js` - loads the manifest, adds `--identity` and `--file`.
+- `scripts/__tests__/privacyGate.test.ts` (new) - the tree scan and the red fixture.
+- `.husky/pre-commit` - the identity check joins the staged scan.
+- `board/snapshot.sh` - filters its own output through the scanner.
+- `app.json`, `app.config.ts`, `.env.example` - neutral defaults, environment overrides.
+- `shared/config.ts`, `device/updates.ts` - the bundle id from configuration.
+- `plugins/replacePreviousNotification.js` and its test - the derived package.
+- `shared/__tests__/flags.test.ts`, `device/__tests__/updates.test.ts` - neutral fixtures.
+- `e2e/flows/*.yaml`, `e2e/scripts/*`, `e2e/README.md`, the three device atlases.
+- `ai/features/global-prayer-times/agent-reports/R8-product-and-app-impact.md`.
+- `README.md` - the build contract and the placeholder vocabulary.
+- `$HOME/athan-gitree/bin/build-prod.zsh`, `build-mock.zsh` (outside the repository) - export
+  the live ids before prebuild and refuse a build whose badging disagrees.
+- The board rows whose text quotes a store id or an owner name.
+- `package.json`, `app.json`, `android/app/build.gradle` - version bumps.
+
+## Design
+
+The invariant: no committed byte names a person, and no future commit, push or snapshot can add
+one. Three deterministic gates hold it, all reading one manifest: `.husky/pre-commit` scans the
+staged diff and refuses an owner identity; the suite''s privacy test scans every tracked file,
+and the pre-push hook already runs the suite, so a clone with hooks disabled is caught at the
+push; `board/snapshot.sh` filters the dump before it replaces the committed snapshot.
+
+Injection replaces the store ids. `app.json` states neutral defaults; `app.config.ts` reads the
+four environment values; the owner''s build scripts export them, so prebuild writes the live ids
+into the gitignored native trees exactly as it does today. Runtime reads the bundle id from
+`APP_CONFIG`, which carries the same value through `EXPO_PUBLIC_IOS_BUNDLE_ID`.
+
+The history rewrite replaces both identities with the pseudonym, removes the manifest terms and
+the scratchpad paths from every blob and message, then expires the reflog and garbage-collects
+so the local-only classes die with the old objects. A fresh clone of origin is the proof.
+
+Alternatives rejected: keeping the ids in a committed file behind a flag (the file is the leak);
+a second hooks directory (dead code beside the pinned one); requiring the pseudonym in the
+identity gate (it would refuse a stranger''s own commits); rewriting only the reachable classes
+and leaving the local objects (the local classes are the heavier set).
+
+## Steps
+
+1. **Step 1: the encoded manifest and the three gates, red first** (2 pts, code) - the manifest;
+   the scanner loading it; the identity check; the tree-scan suite test with a deliberately
+   sensitive fixture that goes red before the gate lands; `.husky/pre-commit` and
+   `board/snapshot.sh` wired.
+2. **Step 2: the store ids injected, neutral in the tree** (2 pts, code) - `app.json`,
+   `app.config.ts`, the plugin, `shared/config.ts`, `device/updates.ts`, the e2e surface, the
+   docs, the two build scripts; the owner''s prod and mock builds badging the same ids as before.
+3. **Step 3: the board''s own texts neutralised** (1 pt, docs) - every description and comment
+   that quotes a store id or an owner name, edited in place.
+4. **Step 4: the history rewrite and the local purge** (2 pts, code) - identities and content
+   rewritten, force-push handed to the lead, `lane/280` and the build worktrees re-pointed, the
+   reflog expired and the object database collected.
+5. **Step 5: the recurrence proof** (1 pt, docs) - a staged fixture refused by the hook, and a
+   commit made with hooks off caught by the suite in the pre-push path.
+6. **Step 6: the regenerated snapshot and the close** (1 pt, docs) - `board/snapshot.sh` in the
+   main tree, the snapshot commit, the Integrity checklist, the closing comment.
+
+## Risks
+
+- The build scripts copy `.env.example` to `.env`; a neutral value there could win over the
+  exported live one. `@expo/env` never overwrites an existing `process.env` key, and each
+  script greps `applicationId` after prebuild and fails loudly. The badging check is the
+  proof.
+- `git filter-repo` leaves `lane/280`''s worktree on a stale index. The rewrite keeps its tree
+  identical, so `git status` there must read clean; a dirty read stops the run.
+- The suite''s tree scan reads every tracked file; measured before it lands, and the scan is
+  skipped for binary blobs.
+- A board comment is edited to the wrong meaning. Each rewrite names the id by role, and the
+  row is re-read after the edit.
+- The rewritten uat is pushed while a concurrent session pushes the old one. The push is
+  `--force-with-lease` against the tip fetched immediately before, and the lead runs it.
+
+## Proof
+
+- Criterion 1: `git log -3 --format=''%an <%ae>''` reads `Athan <athan@athan.uk>` for every
+  commit on the lane; `git config user.name` and `user.email` match.
+- Criterion 2: `aapt2 dump badging` on the prod and the mock APK prints package
+  the live package id (transcribed on the row) and versionCode 1000000; the same reading as the
+  pre-change build; the tree scan prints nothing.
+- Criterion 3: `node scripts/check-identifiers.js --all` exits 0 on the tree; the privacy suite
+  test proves the scanner refuses a fixture; `git commit` with the fixture staged exits
+  non-zero; `node -e` against the snapshot script''s filter refuses a fixture dump.
+- Criterion 4: a fresh clone under a neutral environment runs `yarn validate`, `npx expo
+  config` and `npx expo prebuild`; a full-history grep for every manifest term prints zero
+  hits.
+- Criterion 5: the regenerated `board/snapshot/board.sql` passes the scanner with zero hits.
+- Criterion 6: the inventory table in the closing comment names every personal value and its
+  disposition (placeholder, injected, or fenced with the reason).
+
+## Grill record
+
+v2 (the lane''s own audit before Ready): the step points re-added to 9 and matched to six
+subtasks; D272.2 answers the `.githooks` naming; D272.6 answers the stranger-clone identity
+question; the proof for criterion 3 names the three commands that show each gate refusing.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 25600, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:01.615428+00', '2026-10-20 07:20:34.492815+00');
 
 
 --
@@ -12896,6 +13131,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (23, 271, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 02:39:47.70256+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (24, 276, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 03:54:08.562627+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (25, 280, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 05:29:15.182838+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (26, 272, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:05.59544+00');
 
 
 --
@@ -13415,77 +13651,6 @@ Weight: 11 pts.
 - No date logic is touched, so `yarn test:tz` is out of scope.
 - Step 5''s device log and transcribed reads on the simulator, per the device atlas.
 ', NULL, NULL, '{}', false, false, false, NULL, 10240, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:31:52.824282+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (22, 9, 2, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
-
-## Goal
-
-The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
-
-## Decisions taken (agent-ruled 2026-10-19)
-
-- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
-- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
-- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
-- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
-- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
-- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
-- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
-
-## Files (read only)
-
-- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
-- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
-- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
-- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
-- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
-- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
-- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
-- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
-
-## Design
-
-Row 137''s ladder, extended one rung to the gaps between elements:
-
-1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
-2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
-3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
-4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
-5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
-6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
-
-Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
-
-Alternatives rejected:
-
-- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
-- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
-- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
-
-## Steps
-
-1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
-2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
-3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
-4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
-5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
-
-## Risks
-
-- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
-- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
-- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
-- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
-- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
-- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
-
-## Proof
-
-- The plan and record: `list_issue_documents` on T-140.
-- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
-- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
-- Step 4: every named ink band sits inside its node bound where both exist.
-- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
-', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:33:05.183901+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (23, 11, 3, NULL, 'T-139', '# T-139
 
 Alert bottom sheet: one dim level, whole-header taps, reminder state restored.
@@ -15473,6 +15638,78 @@ Alternatives rejected: one shared answer key (the platforms do not appear in the
 
 The help test red before the entry exists and green after it (`yarn jest shared/__tests__/help.test.ts`), `yarn validate` green with the catalog lock test included, and both device reads as comments on the ticket.
 ', NULL, NULL, '{}', false, false, false, NULL, 12288, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 15:31:54.194976+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (22, 9, 2, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
+3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
+4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
+5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
+
+Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
+- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
+- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+
+', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:33:05.183901+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (12, 3, 2, NULL, 'Working the board', '# Working the board
 
 Nothing here is edited by hand. Agents read and write the board through MCP, and the repository''s
@@ -16104,75 +16341,6 @@ Owner goal: the app goes global in v2.0 with a language switcher. Research lives
 `ai/plans/39-localisation/`. Rows 38 and 39 carry the owner''s decisions: a typed English
 catalog and `t()`, no i18n library, no second language first. RTL is the real work.
 ', NULL, 'file-text', '{}', false, false, false, NULL, 7168, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 02:17:21.445666+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (18, 9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
-
-## Goal
-
-The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
-
-## Decisions taken (agent-ruled 2026-10-19)
-
-- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: every style that sets the three named gaps is byte-identical from those versions to uat head (git diff of the three components shows only Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95, a unit-letter font size inside the digits row, which moves no margin and no line box in the named pairs). A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
-- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
-- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
-- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface row 137 already read must reproduce its bound within 1px, or the step stops and records the drift.
-- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
-- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
-
-## Files (read only)
-
-- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
-- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
-- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
-- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
-- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
-- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
-- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
-- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
-
-## Design
-
-Row 137''s ladder, extended one rung to the gaps between elements:
-
-1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), and the code''s margin per site in dp, 3T px and XS pt. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
-2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree byte for byte.
-3. **Ink bounds.** Screenshots per screen, read by the vision worker: a PIL row-scan locates candidate ink bands in the named regions, the vision worker names them (which band is the name, the digits, the location, the date, the title, the subtitle) and corroborates the counts. Ink never enters the record unnamed.
-4. **The gap table.** Per site per phone: node gap (box to box), ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds.
-5. **Attribution.** A site''s gap difference is the platform line box''s when the Android-minus-iPhone ink-gap delta closes against the overhang deltas the metric sets predict, with the node gap equal to the margin on both phones. It is the layout''s when a node gap itself departs from the code margin. Each site gets one line naming which, with the deciding numbers.
-6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family: the hhea-parity pin per family (round(1.185 x size)), the floor each pin must clear (the measured ink height plus the no-negative-pulling rule: a pin may compress the box only down to what renders the ink whole; the repo''s own scriptLineHeight pattern pins at 1.5em for exactly this reason), the residual gap each pin leaves, and the blast radius - component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from the sweep).
-
-Invariant: no code, no pixel change, no install, no settings change; read-only contact; the phones restored as found (language stays ar); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
-
-Alternatives rejected:
-
-- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical styles, a device mutation for no measurement delta.
-- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
-- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
-
-## Steps
-
-1. **Step 1: The expectation and margin table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24, run it against the shipped TTFs; read the three components'' margins into one table. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md numbers byte for byte.
-2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908: verify language ar on arrival; `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
-3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939: agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, word 61px, digits container 86px); restore as found.
-4. **Step 4: The vision ink reads (weight 1, docs).** Dispatch the vision worker per screenshot with the PIL row-scan bands: name and bound the ink at every site on both phones. Proof: every ink band sits inside a node bound where both exist (ink under box, row 137''s relation).
-5. **Step 5: The attribution and options record (weight 1, docs).** The measured table, the attribution line per site, the two options with exact numbers and blast radius, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
-
-## Risks
-
-- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
-- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
-- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
-- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
-- Text shadows and the gradient background blur the row scan: the vision worker adjudicates the bands; a disagreement becomes a recorded void, not a guess.
-
-## Proof
-
-- The plan and record: `list_issue_documents` on T-140.
-- Step 1: shared-size rows reproduce row 137''s expectation numbers.
-- Steps 2 and 3: the two independent captures agree byte for byte; the control lines pass within 1px.
-- Step 4: every named ink band sits inside its node bound where both exist.
-- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
-', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (34, 13, 6, NULL, 'T-142', '# T-142
 
 ## Goal
@@ -17544,826 +17712,6 @@ Both reviews on uat..lane/264 came back with the change judged sound and narrowl
 - Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
 - Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
 - Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, 20480, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:05:55.004578+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (59, 22, 3, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
-
-## Goal
-
-Today the board holds this one open row beside seven parked rows, and the repository carries
-comment-level debt (dated ruling citations, one production non-null assertion) against a
-standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
-the row reads true from command output, the typed review''s findings are fixed or ticketed, the
-history findings are tabled to the owner in a comment that never repeats a sensitive string,
-`yarn validate` is green on uat, and the committed board snapshot carries the board fully
-closed.
-
-## Decisions taken
-
-- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
-  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
-  history with no surviving WHY is deleted. In test files, a date that states the frozen
-  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
-  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
-  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
-  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
-  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
-  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
-  output, and changing them risks behaviour.
-- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
-  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
-  and deleting them would gut the parked rows'' records.
-- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
-  owner''s alone. The tabling comment names classes, counts and file families, and never
-  repeats a sensitive string, because the board snapshot is committed to the public repo.
-- **D54.4 Media ruling (2026-10-20).** The two images in
-  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
-  read confirming they are third-party website captures or printed material serving parked
-  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
-  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
-  renders and public store assets, outside the personal-media class by construction.
-- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
-  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
-  named in the closing comment, and the Proof below scopes its empty-column claim to rows
-  existing at the run''s start.
-- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
-  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
-- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
-  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
-  commit on uat takes the next free number above every existing commit; the snapshot commit
-  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
-  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
-  snapshot commit''s number, never committed.
-- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
-  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
-  (the token appears inside quotation of a past record), used for the working-tree grep, and
-  written nowhere - not the board, not a commit, not a log.
-
-## Files
-
-Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
-Changed by step 2, measured with the exact regex in Proof criterion 3:
-- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
-  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
-- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
-- `package.json`, `app.json` - version bumps, every commit.
-- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
-- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
-Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
-on this row.
-
-## Design
-
-The invariant: every diff line is a comment, a type, dead code, or a record - nothing
-user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
-`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
-single non-null assertion, double casts, unused exports, pattern drift between modules read in
-full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
-below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
-are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
-and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
-parked rows and this one, fixing defects on sight with one comment line each, no moves.
-
-Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
-scan because the working tree is clean (the criterion names history); broad refactors of
-pattern drift beyond small-and-lawful (ticketed instead, D54.5).
-
-Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
-`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
-`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
-identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
-serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
-SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
-mobileprovision and service-account files (`git log --all --name-only` on those patterns).
-
-## Steps
-
-1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
-   working-tree grep set proven empty or fixed; history classes counted (home paths, last
-   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
-   the two research images and the PDF; the tabling comment posted on this row.
-2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
-   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
-   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
-   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
-   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
-   validate` green.
-3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
-   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
-   regenerated in the main tree and committed; `yarn validate` green at the close; the row
-   closed with its records.
-
-## Risks
-
-- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
-  `yarn format` before commit.
-- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
-  closing comment names it.
-- The tabling comment repeats a sensitive string: the executor greps the draft against the
-  class list before posting; the audit reviewers re-check.
-- Version collision with a concurrent session: fetch origin before every bump (house rule).
-- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
-  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
-
-## Proof
-
-- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
-  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
-  D54.5 is named in the closing comment with its column.
-- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
-  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
-  inside `yarn validate`.
-- Criterion 3: this exact grep over the production dirs
-  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
-  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
-  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
-  diff shows no style or behaviour edits.
-- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
-  comment carries the history classes with counts.
-- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
-  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
-- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
-
-## Grill record
-
-v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
-D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
-in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
-replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
-6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
-PDF (finding 8).', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:54:00.412539+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (60, 22, 4, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
-
-## Goal
-
-Today the board holds this one open row beside seven parked rows, and the repository carries
-comment-level debt (dated ruling citations, one production non-null assertion) against a
-standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
-the row reads true from command output, the typed review''s findings are fixed or ticketed, the
-history findings are tabled to the owner in a comment that never repeats a sensitive string,
-`yarn validate` is green on uat, and the committed board snapshot carries the board fully
-closed.
-
-## Decisions taken
-
-- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
-  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
-  history with no surviving WHY is deleted. In test files, a date that states the frozen
-  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
-  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
-  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
-  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
-  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
-  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
-  output, and changing them risks behaviour.
-- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
-  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
-  and deleting them would gut the parked rows'' records.
-- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
-  owner''s alone. The tabling comment names classes, counts and file families, and never
-  repeats a sensitive string, because the board snapshot is committed to the public repo.
-- **D54.4 Media ruling (2026-10-20).** The two images in
-  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
-  read confirming they are third-party website captures or printed material serving parked
-  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
-  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
-  renders and public store assets, outside the personal-media class by construction.
-- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
-  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
-  named in the closing comment, and the Proof below scopes its empty-column claim to rows
-  existing at the run''s start.
-- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
-  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
-- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
-  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
-  commit on uat takes the next free number above every existing commit; the snapshot commit
-  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
-  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
-  snapshot commit''s number, never committed.
-- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
-  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
-  (the token appears inside quotation of a past record), used for the working-tree grep, and
-  written nowhere - not the board, not a commit, not a log.
-
-## Files
-
-Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
-Changed by step 2, measured with the exact regex in Proof criterion 3:
-- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
-  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
-- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
-- `package.json`, `app.json` - version bumps, every commit.
-- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
-- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
-Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
-on this row.
-
-## Design
-
-The invariant: every diff line is a comment, a type, dead code, or a record - nothing
-user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
-`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
-single non-null assertion, double casts, unused exports, pattern drift between modules read in
-full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
-below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
-are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
-and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
-parked rows and this one, fixing defects on sight with one comment line each, no moves.
-
-Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
-scan because the working tree is clean (the criterion names history); broad refactors of
-pattern drift beyond small-and-lawful (ticketed instead, D54.5).
-
-Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
-`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
-`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
-identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
-serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
-SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
-mobileprovision and service-account files (`git log --all --name-only` on those patterns).
-
-## Steps
-
-1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
-   working-tree grep set proven empty or fixed; history classes counted (home paths, last
-   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
-   the two research images and the PDF; the tabling comment posted on this row.
-2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
-   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
-   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
-   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
-   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
-   validate` green.
-3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
-   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
-   regenerated in the main tree and committed; `yarn validate` green at the close; the row
-   closed with its records.
-
-## Risks
-
-- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
-  `yarn format` before commit.
-- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
-  closing comment names it.
-- The tabling comment repeats a sensitive string: the executor greps the draft against the
-  class list before posting; the audit reviewers re-check.
-- Version collision with a concurrent session: fetch origin before every bump (house rule).
-- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
-  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
-
-## Proof
-
-- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
-  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
-  D54.5 is named in the closing comment with its column.
-- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
-  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
-  inside `yarn validate`.
-- Criterion 3: this exact grep over the production dirs
-  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
-  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
-  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
-  diff shows no style or behaviour edits.
-- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
-  comment carries the history classes with counts.
-- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
-  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
-- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
-
-## Grill record
-
-v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
-D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
-in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
-replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
-6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
-PDF (finding 8).
-
-## Step 1 record (2026-10-20)
-
-Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
-against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
-the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
-device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
-only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
-reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
-Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
-zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
-executor''s depth limit): both research images are third-party computer-set prayer-time tables
-(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
-third-party printed timetable evidence. D54.4 holds, all three stay.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:29:03.037685+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (61, 22, 6, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
-
-## Goal
-
-Today the board holds this one open row beside seven parked rows, and the repository carries
-comment-level debt (dated ruling citations, one production non-null assertion) against a
-standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
-the row reads true from command output, the typed review''s findings are fixed or ticketed, the
-history findings are tabled to the owner in a comment that never repeats a sensitive string,
-`yarn validate` is green on uat, and the committed board snapshot carries the board fully
-closed.
-
-## Decisions taken
-
-- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
-  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
-  history with no surviving WHY is deleted. In test files, a date that states the frozen
-  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
-  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
-  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
-  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
-  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
-  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
-  output, and changing them risks behaviour.
-- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
-  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
-  and deleting them would gut the parked rows'' records.
-- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
-  owner''s alone. The tabling comment names classes, counts and file families, and never
-  repeats a sensitive string, because the board snapshot is committed to the public repo.
-- **D54.4 Media ruling (2026-10-20).** The two images in
-  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
-  read confirming they are third-party website captures or printed material serving parked
-  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
-  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
-  renders and public store assets, outside the personal-media class by construction.
-- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
-  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
-  named in the closing comment, and the Proof below scopes its empty-column claim to rows
-  existing at the run''s start.
-- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
-  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
-- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
-  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
-  commit on uat takes the next free number above every existing commit; the snapshot commit
-  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
-  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
-  snapshot commit''s number, never committed.
-- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
-  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
-  (the token appears inside quotation of a past record), used for the working-tree grep, and
-  written nowhere - not the board, not a commit, not a log.
-
-## Files
-
-Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
-Changed by step 2, measured with the exact regex in Proof criterion 3:
-- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
-  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
-- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
-- `package.json`, `app.json` - version bumps, every commit.
-- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
-- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
-Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
-on this row.
-
-## Design
-
-The invariant: every diff line is a comment, a type, dead code, or a record - nothing
-user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
-`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
-single non-null assertion, double casts, unused exports, pattern drift between modules read in
-full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
-below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
-are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
-and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
-parked rows and this one, fixing defects on sight with one comment line each, no moves.
-
-Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
-scan because the working tree is clean (the criterion names history); broad refactors of
-pattern drift beyond small-and-lawful (ticketed instead, D54.5).
-
-Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
-`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
-`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
-identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
-serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
-SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
-mobileprovision and service-account files (`git log --all --name-only` on those patterns).
-
-## Steps
-
-1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
-   working-tree grep set proven empty or fixed; history classes counted (home paths, last
-   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
-   the two research images and the PDF; the tabling comment posted on this row.
-2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
-   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
-   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
-   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
-   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
-   validate` green.
-3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
-   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
-   regenerated in the main tree and committed; `yarn validate` green at the close; the row
-   closed with its records.
-
-## Risks
-
-- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
-  `yarn format` before commit.
-- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
-  closing comment names it.
-- The tabling comment repeats a sensitive string: the executor greps the draft against the
-  class list before posting; the audit reviewers re-check.
-- Version collision with a concurrent session: fetch origin before every bump (house rule).
-- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
-  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
-
-## Proof
-
-- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
-  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
-  D54.5 is named in the closing comment with its column.
-- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
-  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
-  inside `yarn validate`.
-- Criterion 3: this exact grep over the production dirs
-  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
-  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
-  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
-  diff shows no style or behaviour edits.
-- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
-  comment carries the history classes with counts.
-- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
-  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
-- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
-
-## Grill record
-
-v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
-D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
-in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
-replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
-6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
-PDF (finding 8).
-
-## Step 1 record (2026-10-20)
-
-Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
-against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
-the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
-device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
-only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
-reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
-Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
-zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
-executor''s depth limit): both research images are third-party computer-set prayer-time tables
-(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
-third-party printed timetable evidence. D54.4 holds, all three stay.
-
-## Step 2 record (2026-10-20)
-
-Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
-hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
-and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
-surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
-per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
-sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
-clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
-mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
-coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
-candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
-true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
-access; the 22 undated row/finding/session citations are a consistent repo convention outside
-the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
-nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
-production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
-re-ran the gate.
-
-## Step 3 record, sweep half (2026-10-20)
-
-The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
-on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
-word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
-passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
-its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
-any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
-(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
-steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
-close half (merge, snapshot, validate, Done) is the lane''s.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:55:31.827051+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (62, 22, 7, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
-
-## Goal
-
-Today the board holds this one open row beside seven parked rows, and the repository carries
-comment-level debt (dated ruling citations, one production non-null assertion) against a
-standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
-the row reads true from command output, the typed review''s findings are fixed or ticketed, the
-history findings are tabled to the owner in a comment that never repeats a sensitive string,
-`yarn validate` is green on uat, and the committed board snapshot carries the board fully
-closed.
-
-## Decisions taken
-
-- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
-  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
-  history with no surviving WHY is deleted. In test files, a date that states the frozen
-  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
-  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
-  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
-  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
-  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
-  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
-  output, and changing them risks behaviour.
-- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
-  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
-  and deleting them would gut the parked rows'' records.
-- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
-  owner''s alone. The tabling comment names classes, counts and file families, and never
-  repeats a sensitive string, because the board snapshot is committed to the public repo.
-- **D54.4 Media ruling (2026-10-20).** The two images in
-  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
-  read confirming they are third-party website captures or printed material serving parked
-  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
-  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
-  renders and public store assets, outside the personal-media class by construction.
-- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
-  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
-  named in the closing comment, and the Proof below scopes its empty-column claim to rows
-  existing at the run''s start.
-- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
-  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
-- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
-  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
-  commit on uat takes the next free number above every existing commit; the snapshot commit
-  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
-  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
-  snapshot commit''s number, never committed.
-- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
-  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
-  (the token appears inside quotation of a past record), used for the working-tree grep, and
-  written nowhere - not the board, not a commit, not a log.
-
-## Files
-
-Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
-Changed by step 2, measured with the exact regex in Proof criterion 3:
-- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
-  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
-- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
-- `package.json`, `app.json` - version bumps, every commit.
-- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
-- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
-Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
-on this row.
-
-## Design
-
-The invariant: every diff line is a comment, a type, dead code, or a record - nothing
-user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
-`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
-single non-null assertion, double casts, unused exports, pattern drift between modules read in
-full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
-below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
-are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
-and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
-parked rows and this one, fixing defects on sight with one comment line each, no moves.
-
-Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
-scan because the working tree is clean (the criterion names history); broad refactors of
-pattern drift beyond small-and-lawful (ticketed instead, D54.5).
-
-Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
-`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
-`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
-identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
-serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
-SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
-mobileprovision and service-account files (`git log --all --name-only` on those patterns).
-
-## Steps
-
-1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
-   working-tree grep set proven empty or fixed; history classes counted (home paths, last
-   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
-   the two research images and the PDF; the tabling comment posted on this row.
-2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
-   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
-   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
-   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
-   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
-   validate` green.
-3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
-   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
-   regenerated in the main tree and committed; `yarn validate` green at the close; the row
-   closed with its records.
-
-## Risks
-
-- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
-  `yarn format` before commit.
-- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
-  closing comment names it.
-- The tabling comment repeats a sensitive string: the executor greps the draft against the
-  class list before posting; the audit reviewers re-check.
-- Version collision with a concurrent session: fetch origin before every bump (house rule).
-- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
-  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
-
-## Proof
-
-- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
-  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
-  D54.5 is named in the closing comment with its column.
-- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
-  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
-  inside `yarn validate`.
-- Criterion 3: this exact grep over the production dirs
-  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
-  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
-  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
-  diff shows no style or behaviour edits.
-- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
-  comment carries the history classes with counts.
-- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
-  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
-- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
-
-## Grill record
-
-v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
-D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
-in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
-replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
-6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
-PDF (finding 8).
-
-## Step 1 record (2026-10-20)
-
-Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
-against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
-the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
-device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
-only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
-reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
-Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
-zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
-executor''s depth limit): both research images are third-party computer-set prayer-time tables
-(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
-third-party printed timetable evidence. D54.4 holds, all three stay.
-
-## Step 2 record (2026-10-20)
-
-Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
-hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
-and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
-surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
-per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
-sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
-clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
-mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
-coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
-candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
-true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
-access; the 22 undated row/finding/session citations are a consistent repo convention outside
-the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
-nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
-production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
-re-ran the gate.
-
-## Step 3 record, sweep half (2026-10-20)
-
-The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
-on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
-word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
-passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
-its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
-any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
-(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
-steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
-close half (merge, snapshot, validate, Done) is the lane''s.
-
-## Audit record (2026-10-20)
-
-Plan-conformance (comment 2468): clean on every check - the fence, the comment sweep, the
-sensitive sweep, version law, the board window, the step records. One nice: the gitignored
-coverage/ artifact carried the worktree home path on disk; deleted in the fix commit so the
-clean-tree claim re-verifies literally.
-
-Blind (comment 2467): two shoulds confirmed and fixed at 65094cd5 (2.1.31) - the duplicated
-doc clause in shared/widgetTypes.ts the sweep garbled, and the two dated citations inside JSX
-comment blocks (PrayerWidget 521, 902) that the plan''s line-anchored regex could never reach;
-their companion test-title citation (widgetContract 499) fixed with them. Two nices: the
-sourced-names notes dismissed on D54.1 (data keeps its dates - the reviewer itself read them
-defensible), the coverage artifact dismissed into the fix. The proof criterion''s regex gap is
-this record''s own note: JSX blocks needed the looser pass, and the residual scan now prints
-zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
-
-Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
-2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 02:09:09.792374+00');
-INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (58, 22, 1, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
-
-## Goal
-
-Today the board holds this one open row beside seven parked rows, and the repository carries
-comment-level debt (dated ruling citations, one production non-null assertion) against a
-standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
-the row reads true from command output, the typed review''s findings are fixed or ticketed, the
-history findings are tabled to the owner in a comment that never repeats a sensitive string,
-`yarn validate` is green on uat, and the committed board snapshot carries the board fully
-closed.
-
-## Decisions taken
-
-- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
-  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
-  history with no surviving WHY is deleted. In test files, a date that states the frozen
-  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
-  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
-- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
-  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
-  and deleting them would gut the parked rows'' records.
-- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
-  owner''s alone. The tabling comment names classes, counts and file families, and never
-  repeats a sensitive string, because the board snapshot is committed to the public repo.
-- **D54.4 The two research images get a vision read (2026-10-20).**
-  `ai/features/global-prayer-times/data/countries/` holds two images serving parked rows''
-  evidence; the read confirms they are website captures, not personal or family media. They
-  stay while the parked rows stand.
-- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
-  user-facing changes in place: no pixel, no behaviour, no visual.
-- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
-  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
-- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
-  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
-  commit on uat takes the next free number above every existing commit; the snapshot commit
-  takes the one after that; the gitignored main-tree android/app/build.gradle versionName is
-  set to the snapshot commit''s number, never committed.
-
-## Files
-
-Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
-Likely changed:
-- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
-- Comment-only edits across `stores/`, `shared/`, `app/`, `components/`, `mocks/` where
-  dated narration survives (measured starting set: ~20 sites; the sweep may find more).
-- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
-- `package.json`, `app.json`, `android/app/build.gradle` - version bumps, every commit.
-Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
-on this row.
-
-## Design
-
-The invariant: every diff line is a comment, a type, dead code, or a record - nothing
-user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
-`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
-single non-null assertion, double casts, unused exports, pattern drift between modules read in
-full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
-below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
-are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
-and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
-parked rows and this one, fixing defects on sight with one comment line each, no moves.
-
-Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
-scan because the working tree is clean (the criterion names history); broad refactors of
-pattern drift beyond small-and-lawful (ticketed instead, D54.5).
-
-Working-tree grep set (all must print nothing outside .agents/ and .git):
-home paths `/Users/<name>` beyond the vendor examples, the owner''s last name, the Apple team
-and cert identifiers, `the home-path username` outside `capt-muji` and `/Users/<name>` replacements, real
-device UDIDs and serials, keystore/p8/p12/service-account files.
-
-## Steps
-
-1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
-   working-tree grep set proven empty or fixed; history classes counted (home paths, last
-   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
-   the two research images; the tabling comment posted on this row.
-2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
-   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
-   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; comment debt per
-   D54.1; dead code deleted; the non-null assertion typed; findings not small-and-lawful
-   ticketed; `yarn validate` green.
-3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
-   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
-   regenerated in the main tree and committed; `yarn validate` green at the close; the row
-   closed with its records.
-
-## Risks
-
-- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
-  `yarn format` before commit.
-- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
-  closing comment names it.
-- The tabling comment repeats a sensitive string: the executor greps the draft against the
-  class list before posting; the audit reviewers re-check.
-- Version collision with a concurrent session: fetch origin before every bump (house rule).
-
-## Proof
-
-- Criterion 1: `list_issues` shows 42 Done, 5 Upstream, 2 Deferred, and nothing in
-  Backlog/Ready/In progress/Blocked/Awaiting Owner - captured in the closing comment.
-- Criterion 2: the review record (plan doc v2 or later, or the closing comment) names what was
-  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
-  inside `yarn validate`.
-- Criterion 3: the grep set for TODO|FIXME and date narration over production dirs prints
-  nothing outside `ai/` and `.agents/`; test files keep only frozen-seed definitions; the
-  commit diff shows no style or behaviour edits.
-- Criterion 4: the working-tree grep set prints nothing; the tabling comment carries the
-  history classes with counts.
-- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
-  comment, no moves except this row''s own Done move.
-- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (63, 23, 1, NULL, 'T-271', '# T-271
 
 ## Goal
@@ -19019,6 +18367,1491 @@ Points: 3 + 2 + 3 + 1 = 9.
 
 Nine findings answered: Files now reads the cancelled gate by hash without restoring lane/271 (gc-fragile, read once in Step 2); Step 1 drives all four orientation values and sequences the Device Hub fallback ahead of any Blocked call; D5 reworded to the defensible claim about row 271''s instruments; the Blocked branch now fires only on a landed tall pose with a wide or letterboxed canvas; the spanning-landscape landscape hold parks the row in Awaiting Owner per D4 instead of proceeding to Done; Steps 1 and 3 attach the closed-pose screenshot and the acceptance''s "both poses" reads as the open tall hold and the closed pose; D6 parks on a >62 inset per row 271''s Decision 5 precedent; the README rule rides the code branch with the zero-code exemption recorded (D8); D3 carries the consent line for the app.json plugins entry, Step 4 names the post-merge gitignored build.gradle hand-set, and Step 3 restores the half-open reading. Row 271''s audit handoff notes (selector-keyed sentinel, subscriber-manager bypass) fold into D3. Points unchanged: 3+2+3+1 = 9.
 ', NULL, NULL, '{}', false, false, false, NULL, 24576, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 05:41:54.076097+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (73, 9, 3, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T the store app 2.0.908, XS the store app 2.0.939. Why: the full geometry-bearing diff from both vehicle commits (9dd4eb6a, 6446955f) to uat head over `components/`, `shared/`, `app/` and `assets/fonts/` touches none of the three sites'' geometry - the only component change is Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95 (a unit-letter font size inside the digits row that moves no margin and no line box; the row''s line box is set by the 24pt digits), and the Help, ColorPicker and Settings changes are row 136''s chevron direction pins. The fonts are unchanged. A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface in each step''s control list (step 2: 3T location 67px, date 75px, sheet title 93px, subtitle 58px; step 3: XS location 57px, date 64px, countdown word 61px, digits container 86px) must reproduce within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+- **D140.7 Not-ar arrival (grill finding 9).** If either phone arrives with the app language not ar, the executor records the found state, sets the app''s own language to العربية (an in-app preference, not an OS setting), measures, and restores the found language afterward. The invariant "no OS settings change" stands; the app language is app state, and the record carries the restore.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), each set''s ascent and descent (baseline position inside each candidate box), and the code''s margin per site in dp, 3T px and XS pt, with the expected node gap per site: site 1 name marginBottom 3dp (the translateY -2 shifts the name''s own box and ink up inside its margin, expected node gap 3dp, ink gap 3dp minus 2 shifted), site 2 location marginBottom 8dp, site 3 title 0 plus subtitle marginTop 6dp. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree on every named site''s bounds and every static label, byte for byte; the countdown digits node is compared on bounds only, because its accessibility label reticks every second.
+3. **Ink bounds, the row-scan contract (per site, per phone).** The executor''s script (PIL, in session scratch) processes one screenshot per screen. Region: the rectangle spanning the site''s two elements, sourced from the published node bounds where they exist; for a void surface the region is anchored on the adjacent published bound extended by the code margin plus the candidate box height (site 1: the digits node extended upward by 3dp margin plus the 17pt name''s candidate box; site 3 on the XS: the sheet chrome bounds from the snapshot tree plus the header''s paddingTop, spanning title and subtitle). Predicate: convert to grayscale; per row, background = the row''s median luminance inside the region; a row is ink-candidate when row median minus row minimum exceeds 80/255 (strong) and is flagged weak between 25/255 and 80/255 (the text shadow is a 0.3-alpha black halo offset 3 down with radius 6, which reads weak). Band rule: consecutive ink-candidate rows merge into one band across gaps under 3 failing rows; bands under 6px tall are flagged as fragments, never dropped. Output: the two-threshold band table per region. The vision worker then names each band (which is the name, the digits, the location, the date, the title, the subtitle, which is shadow or gradient artefact) from the same crop, and the record carries the script bands and the vision names side by side. A band the two rungs disagree on becomes a recorded void, not a guess. Spent digit groups do not render in either installed build (Countdown filters them), so no dimming confound exists.
+4. **The gap table.** Per site per phone: node gap (box to box) where published, ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds where both exist. Predicted overhang cross-check: box top to baseline per metric set is the set''s ascent times size times scale; predicted ink top = baseline minus the measured ink height above baseline, so each platform''s matched set (3T the bbox set with the +2 residual, XS hhea) must predict the measured overhang within 2px.
+5. **Attribution.** Two branches, both stated per site. Where the node gap is readable on both phones: the gap difference is the platform line box''s when the node gap equals the code margin on both phones and the Android-minus-iPhone ink-gap delta closes against the overhang deltas within 2px; it is the layout''s when a node gap itself departs from the code margin. Where a node gap is void (site 1 both phones, site 3 on the XS): the margin-plus-box model stands in - the expected ink gap is computed from code margin plus each platform''s predicted overhangs under its matched set, and the measured ink gap attributes to the platform line box when it matches the 3T-set prediction and not the XS-set prediction at the same margin. Each site gets one line naming the branch and the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family, the pin set enumerated per node: name 17 to 20, location 16 to 19, date 18 to 21, title 22 to 26, subtitle 14 to 17 (each round(1.185 x size), the hhea parity the XS already renders), with the digits row (24 Rubik-Medium, Latin digits) carried as a ruled-in-or-out variant: a 24 to 28 pin on the digits side only if the owner wants that side compressed too, both variants priced with numbers. The floor per pin: the measured ink height of that surface''s rendered strings on the 3T, plus 1px; a pin below its floor risks clipping (the ar clamped-blocks precedent in typography.ts) and is not offered - this is the no-negative-pulling rule made numeric. The residual gap each pin leaves (the ink gap after the pin, predicted and stated), and the blast radius: component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from step 1''s sweep).
+
+Invariant: no code, no pixel change, no install, no OS settings change; read-only contact; the phones restored as found (language restored per D140.7 if it was touched); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical geometry, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation, margin and sweep table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24 and extend its columns to print each set''s ascent and descent (hhea, typo, win ascent and descent; head yMax and yMin) so the baseline position inside every candidate box exists; run it against the shipped TTFs. Read the three components'' margins into the expected-gap table (dp, 3T px, XS pt). Sweep every consumer of the measured faces and sizes under ar: `grep -rn "TEXT.sizeSmall\|TEXT.size)\|ty.size(22)\|countdownSize" components/` read down to the rendered face and size per hit, producing the blast-radius table step 5 cites. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md line-height numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on the store app 2.0.908. Pre-flight vehicle line: `wm size` (1080x1920), `wm density` (420), `settings get system font_scale` (1.0 expected; a different value stops the step as drift). Verify app language ar on arrival (D140.7 otherwise). `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on the store app 2.0.939. Pre-flight vehicle line: the home face matches row 137''s layout (location and date present at the top of the list, settings button bottom-centre); the panel is 375 x 812 pt at 3x. Verify app language ar on arrival (D140.7 otherwise). agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, countdown word 61px, digits container 86px, each within 1px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Run the row-scan contract''s script per screenshot, then dispatch the vision worker per screenshot with the band table and the crop: name and bound the ink at every site on both phones. Proof: every named ink band sits inside a node bound where both exist (ink under box, row 137''s relation), and every disagreement becomes a recorded void.
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table (each cell the instrument publishes, a named void in the row-120 form where it does not; a site whose ink read voids on one phone stands on the other phone''s read plus the matched-set prediction, and the record names the void), the attribution line per site, the two options with exact numbers and blast radius citing step 1''s sweep, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the two-threshold band table plus the vision worker''s naming adjudicates; a disagreement becomes a recorded void, not a guess.
+- The day rolls mid-capture (mock evening window): both pages of one phone are captured back to back; a date-string change between captures shows as a repeatability control failure and stops the step.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers; the sweep table names every ar consumer of each measured face and size.
+- Steps 2 and 3: the two independent captures agree on every named bound and static label; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:20:34.380502+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (74, 22, 8, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; the home-path username outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.
+
+## Audit record (2026-10-20)
+
+Plan-conformance (comment 2468): clean on every check - the fence, the comment sweep, the
+sensitive sweep, version law, the board window, the step records. One nice: the gitignored
+coverage/ artifact carried the worktree home path on disk; deleted in the fix commit so the
+clean-tree claim re-verifies literally.
+
+Blind (comment 2467): two shoulds confirmed and fixed at 65094cd5 (2.1.31) - the duplicated
+doc clause in shared/widgetTypes.ts the sweep garbled, and the two dated citations inside JSX
+comment blocks (PrayerWidget 521, 902) that the plan''s line-anchored regex could never reach;
+their companion test-title citation (widgetContract 499) fixed with them. Two nices: the
+sourced-names notes dismissed on D54.1 (data keeps its dates - the reviewer itself read them
+defensible), the coverage artifact dismissed into the fix. The proof criterion''s regex gap is
+this record''s own note: JSX blocks needed the looser pass, and the residual scan now prints
+zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
+
+Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
+2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:20:34.449446+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (75, 26, 2, NULL, 'T-272', '# T-272 - Zero personal data: pseudonymous identity, injected build values, and the history scrub
+
+## Goal
+
+The repository is public, and today it names its owner in four ways: two commit identities in
+history, handle-rooted package ids in old records, the live store package id in committed
+configuration, and scratchpad paths from tool sessions. When this is done: every future commit
+carries the pseudonym **Athan <athan@athan.uk>**, the store ids arrive from outside the
+repository at prebuild time while a stranger''s clone builds unmodified from neutral defaults,
+a tracked scanner over an encoded manifest refuses a sensitive string at commit, at push and at
+snapshot, the board''s own texts carry no store id and no owner name, and the published history
+reads as a stranger''s repository from a fresh clone.
+
+## Decisions taken
+
+- **D272.1 The manifest is tracked and encoded (2026-10-20).** The gate must work in a
+  stranger''s clone, where this machine''s private denylist does not exist; the terms are stored
+  base64-encoded in `scripts/privacy-manifest.json` so the manifest is not itself a tree hit.
+  Rejected: a machine-local list alone, which leaves every other clone unguarded.
+- **D272.2 The hooks stay in `.husky/` (2026-10-20).** `scripts/pin-hooks.js` already pins
+  `core.hooksPath` to the tracked `.husky/`, and git honours one hooks path. The staged scan
+  and the identity check land in `.husky/pre-commit`; a second `.githooks/` would be dead
+  code. The ticket''s `.githooks/pre-commit` is satisfied by the tracked hooks directory this
+  repository already has.
+- **D272.3 Injection is environment-first, neutral in the tree (2026-10-20).** `app.config.ts`
+  overrides the Android package, the iOS bundle id, the widget app group and the EAS project id
+  from `EXPO_APP_ID`, `EXPO_BUNDLE_ID`, `EXPO_APP_GROUP` and `EXPO_EAS_PROJECT_ID`;
+  `app.json` carries `com.example.*` defaults, so a clone with no environment builds as
+  itself. The owner''s build scripts export the live values from outside the repository.
+- **D272.4 The notification plugin derives its Kotlin package (2026-10-20).** A hardcoded
+  package cannot survive the neutral default, and the receiver name was already the thing that
+  had to match; the plugin takes `config.android.package` and writes both the directory and the
+  `package` line from it.
+- **D272.5 The e2e surface takes the package from the environment (2026-10-20).** Maestro flows
+  use `${APP_ID}` and the shell scripts default to the neutral id, so a stranger can drive
+  their own build and the owner passes `-e APP_ID=<live id>`.
+- **D272.6 The identity gate refuses an owner identity, not every identity (2026-10-20).** A
+  gate requiring the pseudonym would refuse a stranger''s own commits in their own clone. The
+  gate refuses an author or committer name or email that carries a manifest term, and refuses an
+  empty identity.
+- **D272.7 The rewrite runs in the main checkout with `git filter-repo --force` (2026-10-20).**
+  `git-filter-repo` is installed at `/opt/homebrew/bin/git-filter-repo`; it rewrites every ref
+  in one pass, which is what keeps `lane/280` and the build worktrees reachable. The safety
+  bundle in `$TMPDIR` is the undo until the fresh-clone verification passes.
+- **D272.8 The EAS project id leaves the committed config (2026-10-20).** The stranger test
+  forbids account linkage; no local build reads the id and EAS is read-only, so it becomes
+  `EXPO_EAS_PROJECT_ID` with no committed value.
+- **D272.9 The board rows are edited in place (2026-10-20).** A comment quoting a store id is
+  rewritten to name the id by role, not deleted, so the board''s history keeps its meaning and
+  the regenerated snapshot carries no hit.
+
+## Files
+
+Read: the whole tracked tree; every blob reachable from any ref; the reflog world of unreachable
+objects; the two build scripts under `$HOME/athan-gitree/bin`.
+
+Changed:
+
+- `scripts/privacy-manifest.json` (new) - the encoded terms and patterns.
+- `scripts/check-identifiers.js` - loads the manifest, adds `--identity` and `--file`.
+- `scripts/__tests__/privacyGate.test.ts` (new) - the tree scan and the red fixture.
+- `.husky/pre-commit` - the identity check joins the staged scan.
+- `board/snapshot.sh` - filters its own output through the scanner.
+- `app.json`, `app.config.ts`, `.env.example` - neutral defaults, environment overrides.
+- `shared/config.ts`, `device/updates.ts` - the bundle id from configuration.
+- `plugins/replacePreviousNotification.js` and its test - the derived package.
+- `shared/__tests__/flags.test.ts`, `device/__tests__/updates.test.ts` - neutral fixtures.
+- `e2e/flows/*.yaml`, `e2e/scripts/*`, `e2e/README.md`, the three device atlases.
+- `ai/features/global-prayer-times/agent-reports/R8-product-and-app-impact.md`.
+- `README.md` - the build contract and the placeholder vocabulary.
+- `$HOME/athan-gitree/bin/build-prod.zsh`, `build-mock.zsh` (outside the repository) - export
+  the live ids before prebuild and refuse a build whose badging disagrees.
+- The board rows whose text quotes a store id or an owner name.
+- `package.json`, `app.json`, `android/app/build.gradle` - version bumps.
+
+## Design
+
+The invariant: no committed byte names a person, and no future commit, push or snapshot can add
+one. Three deterministic gates hold it, all reading one manifest: `.husky/pre-commit` scans the
+staged diff and refuses an owner identity; the suite''s privacy test scans every tracked file,
+and the pre-push hook already runs the suite, so a clone with hooks disabled is caught at the
+push; `board/snapshot.sh` filters the dump before it replaces the committed snapshot.
+
+Injection replaces the store ids. `app.json` states neutral defaults; `app.config.ts` reads the
+four environment values; the owner''s build scripts export them, so prebuild writes the live ids
+into the gitignored native trees exactly as it does today. Runtime reads the bundle id from
+`APP_CONFIG`, which carries the same value through `EXPO_PUBLIC_IOS_BUNDLE_ID`.
+
+The history rewrite replaces both identities with the pseudonym, removes the manifest terms and
+the scratchpad paths from every blob and message, then expires the reflog and garbage-collects
+so the local-only classes die with the old objects. A fresh clone of origin is the proof.
+
+Alternatives rejected: keeping the ids in a committed file behind a flag (the file is the leak);
+a second hooks directory (dead code beside the pinned one); requiring the pseudonym in the
+identity gate (it would refuse a stranger''s own commits); rewriting only the reachable classes
+and leaving the local objects (the local classes are the heavier set).
+
+## Steps
+
+1. **Step 1: the encoded manifest and the three gates, red first** (2 pts, code) - the manifest;
+   the scanner loading it; the identity check; the tree-scan suite test with a deliberately
+   sensitive fixture that goes red before the gate lands; `.husky/pre-commit` and
+   `board/snapshot.sh` wired.
+2. **Step 2: the store ids injected, neutral in the tree** (2 pts, code) - `app.json`,
+   `app.config.ts`, the plugin, `shared/config.ts`, `device/updates.ts`, the e2e surface, the
+   docs, the two build scripts; the owner''s prod and mock builds badging the same ids as before.
+3. **Step 3: the board''s own texts neutralised** (1 pt, docs) - every description and comment
+   that quotes a store id or an owner name, edited in place.
+4. **Step 4: the history rewrite and the local purge** (2 pts, code) - identities and content
+   rewritten, force-push handed to the lead, `lane/280` and the build worktrees re-pointed, the
+   reflog expired and the object database collected.
+5. **Step 5: the recurrence proof** (1 pt, docs) - a staged fixture refused by the hook, and a
+   commit made with hooks off caught by the suite in the pre-push path.
+6. **Step 6: the regenerated snapshot and the close** (1 pt, docs) - `board/snapshot.sh` in the
+   main tree, the snapshot commit, the Integrity checklist, the closing comment.
+
+## Risks
+
+- The build scripts copy `.env.example` to `.env`; a neutral value there could win over the
+  exported live one. `@expo/env` never overwrites an existing `process.env` key, and each
+  script greps `applicationId` after prebuild and fails loudly. The badging check is the
+  proof.
+- `git filter-repo` leaves `lane/280`''s worktree on a stale index. The rewrite keeps its tree
+  identical, so `git status` there must read clean; a dirty read stops the run.
+- The suite''s tree scan reads every tracked file; measured before it lands, and the scan is
+  skipped for binary blobs.
+- A board comment is edited to the wrong meaning. Each rewrite names the id by role, and the
+  row is re-read after the edit.
+- The rewritten uat is pushed while a concurrent session pushes the old one. The push is
+  `--force-with-lease` against the tip fetched immediately before, and the lead runs it.
+
+## Proof
+
+- Criterion 1: `git log -3 --format=''%an <%ae>''` reads `Athan <athan@athan.uk>` for every
+  commit on the lane; `git config user.name` and `user.email` match.
+- Criterion 2: `aapt2 dump badging` on the prod and the mock APK prints package
+  the live package id (transcribed on the row) and versionCode 1000000; the same reading as the
+  pre-change build; the tree scan prints nothing.
+- Criterion 3: `node scripts/check-identifiers.js --all` exits 0 on the tree; the privacy suite
+  test proves the scanner refuses a fixture; `git commit` with the fixture staged exits
+  non-zero; `node -e` against the snapshot script''s filter refuses a fixture dump.
+- Criterion 4: a fresh clone under a neutral environment runs `yarn validate`, `npx expo
+  config` and `npx expo prebuild`; a full-history grep for every manifest term prints zero
+  hits.
+- Criterion 5: the regenerated `board/snapshot/board.sql` passes the scanner with zero hits.
+- Criterion 6: the inventory table in the closing comment names every personal value and its
+  disposition (placeholder, injected, or fenced with the reason).
+
+## Grill record
+
+v2 (the lane''s own audit before Ready): the step points re-added to 9 and matched to six
+subtasks; D272.2 answers the `.githooks` naming; D272.6 answers the stranger-clone identity
+question; the proof for criterion 3 names the three commands that show each gate refusing.
+', NULL, NULL, '{}', false, false, false, NULL, 25600, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:20:34.492815+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (18, 9, 1, NULL, 'T-140', '# T-140: Arabic line height on Android, the gaps the owner sees on glass
+
+## Goal
+
+The owner compared the phones under Arabic and named three gap sites where the 3T sits taller than the iPhone: the Arabic prayer name above the countdown against the countdown, the location against the date on both schedules, and the bottom sheet''s title against its subheading. Wording, lettering and clipping are correct everywhere; only spacing differs. Row 137 established the standing explanation: the same Rubik TTF renders a taller effective line box on Android (nearest the head bbox set, measured 1.578 to 1.633em with a +2 view-bound residual) while the iPhone sits on hhea/typo (1.185em exact). This ticket measures each named site''s rendered line box and inter-element gap on both phones, attributes each gap to the platform line box or to the layout, and brings the two options with exact numbers and blast radius. The ticket ends Owner-led: the owner rules between accepting the platform box (row 87''s law) and pinning an ar lineHeight per surface family (no negative pulling). No code, no pixel change, no install.
+
+## Decisions taken (agent-ruled 2026-10-19)
+
+- **D140.1 Vehicles, read-only.** Drive the installed builds: 3T `com.example.athan` 2.0.908, XS `com.example.athan` 2.0.939. Why: every style that sets the three named gaps is byte-identical from those versions to uat head (git diff of the three components shows only Countdown''s UNIT_SIZE_SHARE 0.9 to 0.95, a unit-letter font size inside the digits row, which moves no margin and no line box in the named pairs). A fresh 2.0.1108 build would read the same numbers at the cost of installing on the owner''s phones.
+- **D140.2 Site 1 authority.** The prayer-name node above the countdown is a standing full-width band artefact on both phones (row 137, void on both). The site-1 gap is delivered from ink: the digits'' nodes corroborate, the pixels measure. Ink gaps are the deliverable at every site; node bounds corroborate.
+- **D140.3 Site 3 on the XS.** The settings sheet publishes zero accessibility content nodes on the XS (row 137''s void). Pixels are the XS authority for the sheet pair; the 3T''s node bounds corroborate the margin.
+- **D140.4 Controls are repeatability.** Row 137''s pin controls proved both instruments (3T Help pair, overlay body on both). This ticket''s control is the re-read: every surface row 137 already read must reproduce its bound within 1px, or the step stops and records the drift.
+- **D140.5 Scope of both schedules.** The location-date pair is read on the Standard and the Extras page on both phones; the countdown pair on both pages; the sheet pair on the Settings sheet, the app''s bottom sheet.
+- **D140.6 No repo commits.** The record lives on the board. The font-tables script runs from git history (6ff7364d) restored into session scratch, never committed; screenshots never enter git.
+
+## Files (read only)
+
+- `components/countdown/Countdown.tsx` - site 1: name 17 Rubik-Regular, marginBottom 3dp, translateY -2; digits 24 Rubik-Medium in the timer row.
+- `components/day/Day.tsx` - site 2: location 16 Rubik-Regular with marginBottom 8dp under ar; date 18 Rubik-Regular.
+- `components/sheets/parts/Header.tsx` - site 3: title 22 Rubik-Medium with marginBottom 0 under ar; subtitle 14 Rubik-Regular with marginTop 6dp under ar.
+- `shared/typography.ts` - the ar record: sizes, faces, the scriptLineHeight pin pattern (round(n x 1.5)).
+- `shared/constants.ts` - SPACING (xxs 2, quart 5, py 6, sm 8), TEXT sizes (14, 16, 18, 26).
+- `assets/fonts/Rubik-Regular.ttf`, `assets/fonts/Rubik-Medium.ttf` - the metric table, via the row-137 script from history.
+- `e2e/device-atlas-oneplus3t.md`, `e2e/device-atlas-iphone-xs.md` - driving routes and instrument notes.
+- Row 137''s record in git history: 6ff7364d (expectations), da1b0b7b and f1b7428e (3T), 896fd998 and 4431aaa1 (XS), 9de7215d (adjudication), 4b6dfb72 (verdict and options).
+
+## Design
+
+Row 137''s ladder, extended one rung to the gaps between elements:
+
+1. **Expectation and margin table.** Candidate line boxes per face and size from the shipped TTFs at both scales (3T 2.625, XS 3.0), and the code''s margin per site in dp, 3T px and XS pt. The margins are platform-independent (dp), so any cross-platform node-gap delta above the margin is already suspect.
+2. **Node bounds.** The live accessibility tree per phone: 3T through `maestro hierarchy` (`uiautomator dump` stays refused on Android 9), XS through agent-device snapshot frames. Two independent captures per screen must agree byte for byte.
+3. **Ink bounds.** Screenshots per screen, read by the vision worker: a PIL row-scan locates candidate ink bands in the named regions, the vision worker names them (which band is the name, the digits, the location, the date, the title, the subtitle) and corroborates the counts. Ink never enters the record unnamed.
+4. **The gap table.** Per site per phone: node gap (box to box), ink gap (what the owner sees), code margin, and the overhang split - the space above and below the ink inside each adjacent box, measured from ink position inside node bounds.
+5. **Attribution.** A site''s gap difference is the platform line box''s when the Android-minus-iPhone ink-gap delta closes against the overhang deltas the metric sets predict, with the node gap equal to the margin on both phones. It is the layout''s when a node gap itself departs from the code margin. Each site gets one line naming which, with the deciding numbers.
+6. **The options.** (a) Accept the platform box: each site''s measured cross-platform ink-gap delta, row 87''s law unchanged. (b) Pin an ar lineHeight per surface family: the hhea-parity pin per family (round(1.185 x size)), the floor each pin must clear (the measured ink height plus the no-negative-pulling rule: a pin may compress the box only down to what renders the ink whole; the repo''s own scriptLineHeight pattern pins at 1.5em for exactly this reason), the residual gap each pin leaves, and the blast radius - component-scoped (three files, the named surfaces only) against record-scoped (every ar consumer of that face and size, named from the sweep).
+
+Invariant: no code, no pixel change, no install, no settings change; read-only contact; the phones restored as found (language stays ar); screenshots stay in `$HOME/athan-gitree/sessions/140/` and never enter git.
+
+Alternatives rejected:
+
+- Building and installing 2.0.1108 on both phones: rejected under D140.1, identical styles, a device mutation for no measurement delta.
+- Deriving the ink gaps arithmetically from the metric sets without pixels: rejected. The deliverable is what the owner sees on glass; ink is measured, then reconciled against the metric arithmetic as a cross-check.
+- Reading only the Standard schedule: rejected, the owner named both schedules (D140.5).
+
+## Steps
+
+1. **Step 1: The expectation and margin table (weight 1, docs).** Restore the row-137 tables script from 6ff7364d into session scratch, extend SIZES to 14, 16, 17, 18, 22, 24, run it against the shipped TTFs; read the three components'' margins into one table. Proof: the shared sizes (14, 22) reproduce row 137''s EXPECTATIONS.md numbers byte for byte.
+2. **Step 2: The 3T readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.908: verify language ar on arrival; `maestro hierarchy` twice per screen on Standard home, Extras home and the settings sheet (day labels, countdown name and digits nodes, sheet title and subtitle); screencap each screen; repeatability controls against row 137 (location 67px, date 75px, sheet title 93px, subtitle 58px, each within 1px); record bounds verbatim with the vehicle line; restore as found.
+3. **Step 3: The XS readings (weight 3, device, runs alone).** Read-only on `com.example.athan` 2.0.939: agent-device snapshot frames on Standard and Extras (day labels, countdown digits container), pymobiledevice3 screenshots of both home pages and the settings sheet (the standing AX void makes pixels the sheet authority); repeatability controls (location 57px, date 64px, word 61px, digits container 86px); restore as found.
+4. **Step 4: The vision ink reads (weight 1, docs).** Dispatch the vision worker per screenshot with the PIL row-scan bands: name and bound the ink at every site on both phones. Proof: every ink band sits inside a node bound where both exist (ink under box, row 137''s relation).
+5. **Step 5: The attribution and options record (weight 1, docs).** The measured table, the attribution line per site, the two options with exact numbers and blast radius, the closing OWNER-LED move with Waiting on set and the two-line recommendation.
+
+## Risks
+
+- The countdown name''s node stays a band artefact: covered by D140.2, ink is the deliverable and row 137 corroborates the rendered word is normal on both phones.
+- The XS sheet publishes no nodes again: covered by D140.3, pixels are the standing authority.
+- A repeatability control fails: the step stops and records both readings as instrument drift; the ticket reports the confound rather than guessing.
+- The mock API names a different prayer or date than row 137''s session: irrelevant to geometry, the record names the word each bound was read under.
+- Text shadows and the gradient background blur the row scan: the vision worker adjudicates the bands; a disagreement becomes a recorded void, not a guess.
+
+## Proof
+
+- The plan and record: `list_issue_documents` on T-140.
+- Step 1: shared-size rows reproduce row 137''s expectation numbers.
+- Steps 2 and 3: the two independent captures agree byte for byte; the control lines pass within 1px.
+- Step 4: every named ink band sits inside its node bound where both exist.
+- Step 5: every option number traces to a table row in this record; the ticket stands Owner-led with Waiting on naming the owner''s ruling; `git diff uat..lane/140` shows no source change.
+
+', NULL, NULL, '{}', false, false, false, NULL, 8192, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 03:18:08.866686+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (58, 22, 1, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 The two research images get a vision read (2026-10-20).**
+  `ai/features/global-prayer-times/data/countries/` holds two images serving parked rows''
+  evidence; the read confirms they are website captures, not personal or family media. They
+  stay while the parked rows stand.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that; the gitignored main-tree android/app/build.gradle versionName is
+  set to the snapshot commit''s number, never committed.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Likely changed:
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- Comment-only edits across `stores/`, `shared/`, `app/`, `components/`, `mocks/` where
+  dated narration survives (measured starting set: ~20 sites; the sweep may find more).
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+- `package.json`, `app.json`, `android/app/build.gradle` - version bumps, every commit.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git):
+home paths `/Users/<name>` beyond the vendor examples, the owner''s last name, the Apple team
+and cert identifiers, `the home-path username` outside `capt-muji` and `/Users/<name>` replacements, real
+device UDIDs and serials, keystore/p8/p12/service-account files.
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; comment debt per
+   D54.1; dead code deleted; the non-null assertion typed; findings not small-and-lawful
+   ticketed; `yarn validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+
+## Proof
+
+- Criterion 1: `list_issues` shows 42 Done, 5 Upstream, 2 Deferred, and nothing in
+  Backlog/Ready/In progress/Blocked/Awaiting Owner - captured in the closing comment.
+- Criterion 2: the review record (plan doc v2 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: the grep set for TODO|FIXME and date narration over production dirs prints
+  nothing outside `ai/` and `.agents/`; test files keep only frozen-seed definitions; the
+  commit diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing; the tabling comment carries the
+  history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, no moves except this row''s own Done move.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (59, 22, 3, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:54:00.412539+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (60, 22, 4, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:29:03.037685+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (61, 22, 6, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.
+', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:55:31.827051+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (62, 22, 7, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.
+
+## Audit record (2026-10-20)
+
+Plan-conformance (comment 2468): clean on every check - the fence, the comment sweep, the
+sensitive sweep, version law, the board window, the step records. One nice: the gitignored
+coverage/ artifact carried the worktree home path on disk; deleted in the fix commit so the
+clean-tree claim re-verifies literally.
+
+Blind (comment 2467): two shoulds confirmed and fixed at 65094cd5 (2.1.31) - the duplicated
+doc clause in shared/widgetTypes.ts the sweep garbled, and the two dated citations inside JSX
+comment blocks (PrayerWidget 521, 902) that the plan''s line-anchored regex could never reach;
+their companion test-title citation (widgetContract 499) fixed with them. Two nices: the
+sourced-names notes dismissed on D54.1 (data keeps its dates - the reviewer itself read them
+defensible), the coverage artifact dismissed into the fix. The proof criterion''s regex gap is
+this record''s own note: JSX blocks needed the looser pass, and the residual scan now prints
+zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
+
+Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
+2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.
+', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 02:09:09.792374+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (72, 26, 1, NULL, 'T-272', '# T-272 - Zero personal data: pseudonymous identity, injected build values, and the history scrub
+
+## Goal
+
+The repository is public, and today it names its owner in four ways: two commit identities in
+history, handle-rooted package ids in old records, the live store package id in committed
+configuration, and scratchpad paths from tool sessions. When this is done: every future commit
+carries the pseudonym **Athan <athan@athan.uk>**, the store ids arrive from outside the
+repository at prebuild time while a stranger''s clone builds unmodified from neutral defaults,
+a tracked scanner over an encoded manifest refuses a sensitive string at commit, at push and at
+snapshot, the board''s own texts carry no store id and no owner name, and the published history
+reads as a stranger''s repository from a fresh clone.
+
+## Decisions taken
+
+- **D272.1 The manifest is tracked and encoded (2026-10-20).** The gate must work in a
+  stranger''s clone, where this machine''s private denylist does not exist; the terms are stored
+  base64-encoded in `scripts/privacy-manifest.json` so the manifest is not itself a tree hit.
+  Rejected: a machine-local list alone, which leaves every other clone unguarded.
+- **D272.2 The hooks stay in `.husky/` (2026-10-20).** `scripts/pin-hooks.js` already pins
+  `core.hooksPath` to the tracked `.husky/`, and git honours one hooks path. The staged scan
+  and the identity check land in `.husky/pre-commit`; a second `.githooks/` would be dead
+  code. The ticket''s `.githooks/pre-commit` is satisfied by the tracked hooks directory this
+  repository already has.
+- **D272.3 Injection is environment-first, neutral in the tree (2026-10-20).** `app.config.ts`
+  overrides the Android package, the iOS bundle id, the widget app group and the EAS project id
+  from `EXPO_APP_ID`, `EXPO_BUNDLE_ID`, `EXPO_APP_GROUP` and `EXPO_EAS_PROJECT_ID`;
+  `app.json` carries `com.example.*` defaults, so a clone with no environment builds as
+  itself. The owner''s build scripts export the live values from outside the repository.
+- **D272.4 The notification plugin derives its Kotlin package (2026-10-20).** A hardcoded
+  package cannot survive the neutral default, and the receiver name was already the thing that
+  had to match; the plugin takes `config.android.package` and writes both the directory and the
+  `package` line from it.
+- **D272.5 The e2e surface takes the package from the environment (2026-10-20).** Maestro flows
+  use `${APP_ID}` and the shell scripts default to the neutral id, so a stranger can drive
+  their own build and the owner passes `-e APP_ID=<live id>`.
+- **D272.6 The identity gate refuses an owner identity, not every identity (2026-10-20).** A
+  gate requiring the pseudonym would refuse a stranger''s own commits in their own clone. The
+  gate refuses an author or committer name or email that carries a manifest term, and refuses an
+  empty identity.
+- **D272.7 The rewrite runs in the main checkout with `git filter-repo --force` (2026-10-20).**
+  `git-filter-repo` is installed at `/opt/homebrew/bin/git-filter-repo`; it rewrites every ref
+  in one pass, which is what keeps `lane/280` and the build worktrees reachable. The safety
+  bundle in `$TMPDIR` is the undo until the fresh-clone verification passes.
+- **D272.8 The EAS project id leaves the committed config (2026-10-20).** The stranger test
+  forbids account linkage; no local build reads the id and EAS is read-only, so it becomes
+  `EXPO_EAS_PROJECT_ID` with no committed value.
+- **D272.9 The board rows are edited in place (2026-10-20).** A comment quoting a store id is
+  rewritten to name the id by role, not deleted, so the board''s history keeps its meaning and
+  the regenerated snapshot carries no hit.
+
+## Files
+
+Read: the whole tracked tree; every blob reachable from any ref; the reflog world of unreachable
+objects; the two build scripts under `$HOME/athan-gitree/bin`.
+
+Changed:
+
+- `scripts/privacy-manifest.json` (new) - the encoded terms and patterns.
+- `scripts/check-identifiers.js` - loads the manifest, adds `--identity` and `--file`.
+- `scripts/__tests__/privacyGate.test.ts` (new) - the tree scan and the red fixture.
+- `.husky/pre-commit` - the identity check joins the staged scan.
+- `board/snapshot.sh` - filters its own output through the scanner.
+- `app.json`, `app.config.ts`, `.env.example` - neutral defaults, environment overrides.
+- `shared/config.ts`, `device/updates.ts` - the bundle id from configuration.
+- `plugins/replacePreviousNotification.js` and its test - the derived package.
+- `shared/__tests__/flags.test.ts`, `device/__tests__/updates.test.ts` - neutral fixtures.
+- `e2e/flows/*.yaml`, `e2e/scripts/*`, `e2e/README.md`, the three device atlases.
+- `ai/features/global-prayer-times/agent-reports/R8-product-and-app-impact.md`.
+- `README.md` - the build contract and the placeholder vocabulary.
+- `$HOME/athan-gitree/bin/build-prod.zsh`, `build-mock.zsh` (outside the repository) - export
+  the live ids before prebuild and refuse a build whose badging disagrees.
+- The board rows whose text quotes a store id or an owner name.
+- `package.json`, `app.json`, `android/app/build.gradle` - version bumps.
+
+## Design
+
+The invariant: no committed byte names a person, and no future commit, push or snapshot can add
+one. Three deterministic gates hold it, all reading one manifest: `.husky/pre-commit` scans the
+staged diff and refuses an owner identity; the suite''s privacy test scans every tracked file,
+and the pre-push hook already runs the suite, so a clone with hooks disabled is caught at the
+push; `board/snapshot.sh` filters the dump before it replaces the committed snapshot.
+
+Injection replaces the store ids. `app.json` states neutral defaults; `app.config.ts` reads the
+four environment values; the owner''s build scripts export them, so prebuild writes the live ids
+into the gitignored native trees exactly as it does today. Runtime reads the bundle id from
+`APP_CONFIG`, which carries the same value through `EXPO_PUBLIC_IOS_BUNDLE_ID`.
+
+The history rewrite replaces both identities with the pseudonym, removes the manifest terms and
+the scratchpad paths from every blob and message, then expires the reflog and garbage-collects
+so the local-only classes die with the old objects. A fresh clone of origin is the proof.
+
+Alternatives rejected: keeping the ids in a committed file behind a flag (the file is the leak);
+a second hooks directory (dead code beside the pinned one); requiring the pseudonym in the
+identity gate (it would refuse a stranger''s own commits); rewriting only the reachable classes
+and leaving the local objects (the local classes are the heavier set).
+
+## Steps
+
+1. **Step 1: the encoded manifest and the three gates, red first** (2 pts, code) - the manifest;
+   the scanner loading it; the identity check; the tree-scan suite test with a deliberately
+   sensitive fixture that goes red before the gate lands; `.husky/pre-commit` and
+   `board/snapshot.sh` wired.
+2. **Step 2: the store ids injected, neutral in the tree** (2 pts, code) - `app.json`,
+   `app.config.ts`, the plugin, `shared/config.ts`, `device/updates.ts`, the e2e surface, the
+   docs, the two build scripts; the owner''s prod and mock builds badging the same ids as before.
+3. **Step 3: the board''s own texts neutralised** (1 pt, docs) - every description and comment
+   that quotes a store id or an owner name, edited in place.
+4. **Step 4: the history rewrite and the local purge** (2 pts, code) - identities and content
+   rewritten, force-push handed to the lead, `lane/280` and the build worktrees re-pointed, the
+   reflog expired and the object database collected.
+5. **Step 5: the recurrence proof** (1 pt, docs) - a staged fixture refused by the hook, and a
+   commit made with hooks off caught by the suite in the pre-push path.
+6. **Step 6: the regenerated snapshot and the close** (1 pt, docs) - `board/snapshot.sh` in the
+   main tree, the snapshot commit, the Integrity checklist, the closing comment.
+
+## Risks
+
+- The build scripts copy `.env.example` to `.env`; a neutral value there could win over the
+  exported live one. `@expo/env` never overwrites an existing `process.env` key, and each
+  script greps `applicationId` after prebuild and fails loudly. The badging check is the
+  proof.
+- `git filter-repo` leaves `lane/280`''s worktree on a stale index. The rewrite keeps its tree
+  identical, so `git status` there must read clean; a dirty read stops the run.
+- The suite''s tree scan reads every tracked file; measured before it lands, and the scan is
+  skipped for binary blobs.
+- A board comment is edited to the wrong meaning. Each rewrite names the id by role, and the
+  row is re-read after the edit.
+- The rewritten uat is pushed while a concurrent session pushes the old one. The push is
+  `--force-with-lease` against the tip fetched immediately before, and the lead runs it.
+
+## Proof
+
+- Criterion 1: `git log -3 --format=''%an <%ae>''` reads `Athan <athan@athan.uk>` for every
+  commit on the lane; `git config user.name` and `user.email` match.
+- Criterion 2: `aapt2 dump badging` on the prod and the mock APK prints package
+  `com.example.athan` (the live id, transcribed on the row) and versionCode 1000000; the same
+  reading as the pre-change build; `git grep -i the owner` prints nothing.
+- Criterion 3: `node scripts/check-identifiers.js --all` exits 0 on the tree; the privacy suite
+  test proves the scanner refuses a fixture; `git commit` with the fixture staged exits
+  non-zero; `node -e` against the snapshot script''s filter refuses a fixture dump.
+- Criterion 4: a fresh clone under a neutral environment runs `yarn validate`, `npx expo
+  config` and `npx expo prebuild`; a full-history grep for every manifest term prints zero
+  hits.
+- Criterion 5: the regenerated `board/snapshot/board.sql` passes the scanner with zero hits.
+- Criterion 6: the inventory table in the closing comment names every personal value and its
+  disposition (placeholder, injected, or fenced with the reason).
+
+## Grill record
+
+v2 (the lane''s own audit before Ready): the step points re-added to 9 and matched to six
+subtasks; D272.2 answers the `.githooks` naming; D272.6 answers the stranger-clone identity
+question; the proof for criterion 3 names the three commands that show each gate refusing.
+
+', NULL, NULL, '{}', false, false, false, NULL, 25600, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:01.615428+00');
 
 
 --
@@ -19077,7 +19910,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 81);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:45', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:19', 1, 70);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 128);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 154);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 33);
@@ -19095,6 +19927,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 106);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
@@ -19106,7 +19939,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:116', 1, 28)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:118', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:246', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:124', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:25', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:21', 1, 51);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:56', 1, 32);
@@ -19201,16 +20033,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:250', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:251', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 101);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:23', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:261', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:253', 1, 16);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:285', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:255', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:287', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:265', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 130);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
@@ -19220,11 +20054,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:288', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:268', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:289', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:269', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:275', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
@@ -19232,10 +20068,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:274', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:290', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 58);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:291', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 57);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:292', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:260', 1, 7);
@@ -19244,23 +20083,23 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:270', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 84);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 86);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:282', 1, 3);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 19);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:283', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:284', 1, 3);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3535);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 88);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:276', 1, 124);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3561);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 93);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 69);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 59);
 
 
 --
@@ -19522,14 +20361,14 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2654, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2696, true);
 
 
 --
 -- Name: issue_attachment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_attachment_id_seq', 18, true);
+SELECT pg_catalog.setval('public.issue_attachment_id_seq', 21, true);
 
 
 --
@@ -19571,14 +20410,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 568, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 569, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 286, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 292, true);
 
 
 --
@@ -19599,7 +20438,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 122, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 551, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 561, true);
 
 
 --
@@ -19690,14 +20529,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 25, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 26, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 71, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 75, true);
 
 
 --
@@ -24082,5 +24921,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict XoP8e6wlm4yHrbIBiaQBkurWAsx9V8m7UeyYVUxJOLEhCeIdym8H4zquaXl2mzK
+\unrestrict aODP06jUwlxTkzvmOvtapfV4cxmDZ4PaDOLILYro9b2OBWX5bRhXIbXQafdGvbn
 

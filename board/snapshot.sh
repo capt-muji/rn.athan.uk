@@ -25,6 +25,11 @@ docker compose --env-file env exec -T postgres \
   --exclude-table-data=oauth_resource \
   > "$tmp"
 
+# The board's own texts are published with the snapshot, so the dump answers to the same gate the
+# commits do: a row quoting a term the repository may never carry is refused before it lands.
+node ../scripts/check-identifiers.js --file "$tmp" \
+  || { echo "snapshot refused: the dump carries a term the repository may never carry" >&2; exit 1; }
+
 mv "$tmp" "$out"
 printf 'snapshot written: %s rows, %s bytes\n' \
   "$(grep -c '^INSERT INTO' "$out")" "$(wc -c < "$out" | tr -d ' ')"

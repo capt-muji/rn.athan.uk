@@ -132,6 +132,35 @@ describe('app.config widget plugin parity', () => {
     expect(config.android?.package).toBe('com.example.athan');
     expect(config.name).toBe('Athan');
   });
+
+  it('takes the store ids from the build environment', () => {
+    setEnv('1');
+    process.env.EXPO_APP_ID = 'com.example.injected';
+    process.env.EXPO_BUNDLE_ID = 'com.example.injected';
+    process.env.EXPO_APP_GROUP = 'group.com.example.injected';
+    process.env.EXPO_EAS_PROJECT_ID = '00000000-0000-4000-8000-000000000000';
+
+    try {
+      const config = loadAppConfigFresh('ios');
+      expect(config.android?.package).toBe('com.example.injected');
+      expect(config.ios?.bundleIdentifier).toBe('com.example.injected');
+      expect(widgetsPluginEntry(config)?.[1].groupIdentifier).toBe('group.com.example.injected');
+      expect((config.extra?.eas as { projectId?: string } | undefined)?.projectId).toBe(
+        '00000000-0000-4000-8000-000000000000'
+      );
+    } finally {
+      delete process.env.EXPO_APP_ID;
+      delete process.env.EXPO_BUNDLE_ID;
+      delete process.env.EXPO_APP_GROUP;
+      delete process.env.EXPO_EAS_PROJECT_ID;
+    }
+  });
+
+  it('carries no project id when the environment injects none', () => {
+    setEnv('1');
+    const config = loadAppConfigFresh('ios');
+    expect((config.extra?.eas as { projectId?: string } | undefined)?.projectId).toBeUndefined();
+  });
 });
 
 // =============================================================================

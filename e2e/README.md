@@ -55,7 +55,7 @@ adb -s 3T_SERIAL logcat -s ReactNativeJS -v threadtime   # PERF_MEASURE lines mu
 ```sh
 export PATH="$HOME/.maestro/bin:$PATH"
 yarn check:device                                        # what the phone has armed
-yarn check:device 3T_SERIAL com.example.athan expected-times.json   # check the times too
+yarn check:device 3T_SERIAL "$APP_ID" expected-times.json   # check the times too
 e2e/scripts/baseline-compare.sh e2e/flows/overlay-x10.yaml
 e2e/scripts/frame-audit.sh overlay-open 540 974 3        # settle 12s, tap, audit
 FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
@@ -155,7 +155,7 @@ verification, never infer visuals from pixels alone.
   Maestro's `hierarchy`, which reads the live tree, or with screencap pixel
   diffs, never AX dumps. Button coordinates from a fresh dump are fine. On
   the 3T a dump once returned the tree of a package that had since been
-  uninstalled (`com.example.athan.fleettest`).
+  uninstalled (`${APP_ID}.fleettest`).
 - **`am start -W` after install is dexopt-inflated** (~4.9s): discard.
 - **`dumpsys cpuinfo` is lifetime-cumulative, and `top -n 5 -d 5 -b` printed
   five identical snapshots on the 3T**: measure idle with
@@ -172,7 +172,7 @@ verification, never infer visuals from pixels alone.
   launch a built APK with
   `npx expo run:android --binary <apk> --device <serial> --no-bundler`.
   Building stays on `./gradlew assembleRelease` + `adb install -r`, and check
-  `dumpsys package com.example.athan | grep versionName` before measuring.
+  `dumpsys package "$APP_ID" | grep versionName` before measuring.
 - **What's New appears on the first launch after any upgrade** (including
   reinstalling a newer build after bisecting an older one) and marks itself
   shown the moment it appears: do one throwaway launch after each install.
@@ -196,7 +196,7 @@ verification, never infer visuals from pixels alone.
   com.android.tools.screensharing`) burn 100% CPU, heat the device and skew
   measurements. Check `top` for them before measuring.
 - **SF `--latency` layer names rotate** per process relaunch: dump both
-  `com.example.athan/com.example.athan.MainActivity#0` and the
+  `$APP_ID/$APP_ID.MainActivity#0` and the
   hash-prefixed variant from `dumpsys SurfaceFlinger --list`.
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
   `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
