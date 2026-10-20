@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict lFda3LA1vgVLXU23Ll9PbpK4UenybUgpVKspr2fs01RMYaGsDUWOelT38tfuhut
+\restrict 2ootMJTpPYFxewK2DnMMB9OuWNUiy6qkXvr4iRy2DaS0d0ugQjnQOc9dF5PxZ2s
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5766,7 +5766,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 4, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:56:33.939754+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 4, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:59:02.841973+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 3, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 4, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.
 
 Where: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.
 
@@ -5779,11 +5779,11 @@ NOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that lan
 MECHANISM (measured 2026-10-20, plan doc): the bars are the system letterbox outside the app''s 469x669 window (pure black 0,0,0 at x 0-240 and 709-951 on the 951x669 panel; the app gradient spans exactly between); the gap and push-down are a ~80pt top safe-area inset the scaled window delivers (name text y=95 against y=13 closed), pushing Isha''s bottom (614.33) onto the Settings button (top 568) by 46.33pt.
 
 Acceptance:
-- [ ] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc
+- [x] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc
 - [x] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row
-- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (clearance about 33.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row
+- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (measured clearance 35.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row
 - [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
-- [ ] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-19 23:56:33.909709+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+- [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-20 00:06:01.090843+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 
 
 --
@@ -8251,6 +8251,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2389, 264, 'comment', 'owner', 'The oversized-inset clamp landed red-first: the phantom-inset case failed against the unchanged Screen, then went green once the clamp shipped, and both boundary arms were mutation-checked. yarn validate is green at 100% coverage, at 2.1.24.', NULL, '2026-10-19 23:38:57.47613+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2391, 264, 'activity', 'owner', NULL, 'description', '2026-10-19 23:56:33.916371+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.\n\nWhere: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.\n\nOWNER REPORT 2026-10-19, iPhone Duo simulator, open pose, landscape: black bars sit left and right of the app where the purple gradient should run, and a tall gap sits above the countdown component, above the prayer name. The owner''s read: the black background should never show, and the gap should not be there.\n\nOWNER REPORT 2, 2026-10-19, same view: the push-down displaces the whole schedule - on the Standard page the Isha row overlaps the Settings button at the bottom. The owner''s read: the overlap must not exist.\n\nNOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that landscape support was excluded on this row''s prior life; the lead''s Vehicle C ruling (2026-10-20) delivers the lawful part inside the scaled window and tables the landscape vehicles on the row.\n\nMECHANISM (measured 2026-10-20, plan doc): the bars are the system letterbox outside the app''s 469x669 window (pure black 0,0,0 at x 0-240 and 709-951 on the 951x669 panel; the app gradient spans exactly between); the gap and push-down are a ~80pt top safe-area inset the scaled window delivers (name text y=95 against y=13 closed), pushing Isha''s bottom (614.33) onto the Settings button (top 568) by 46.33pt.\n\nAcceptance:\n- [ ] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc\n- [x] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row\n- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (clearance about 33.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row\n- [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment\n- [ ] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2392, 266, 'activity', 'owner', NULL, 'status', '2026-10-19 23:56:33.948044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2399, 264, 'activity', 'owner', NULL, 'description', '2026-10-20 00:05:54.961546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.\n\nWhere: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.\n\nOWNER REPORT 2026-10-19, iPhone Duo simulator, open pose, landscape: black bars sit left and right of the app where the purple gradient should run, and a tall gap sits above the countdown component, above the prayer name. The owner''s read: the black background should never show, and the gap should not be there.\n\nOWNER REPORT 2, 2026-10-19, same view: the push-down displaces the whole schedule - on the Standard page the Isha row overlaps the Settings button at the bottom. The owner''s read: the overlap must not exist.\n\nNOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that landscape support was excluded on this row''s prior life; the lead''s Vehicle C ruling (2026-10-20) delivers the lawful part inside the scaled window and tables the landscape vehicles on the row.\n\nMECHANISM (measured 2026-10-20, plan doc): the bars are the system letterbox outside the app''s 469x669 window (pure black 0,0,0 at x 0-240 and 709-951 on the 951x669 panel; the app gradient spans exactly between); the gap and push-down are a ~80pt top safe-area inset the scaled window delivers (name text y=95 against y=13 closed), pushing Isha''s bottom (614.33) onto the Settings button (top 568) by 46.33pt.\n\nAcceptance:\n- [x] the mechanism named: what paints the bars beside the content (the system letterbox outside the window) and what plants the tall gap (the ~80pt phantom top inset the scaled window delivers), recorded with the measured numbers in the plan doc\n- [x] on the iPhone Duo simulator, open pose: the countdown block sits at its designed offset, the phantom gap gone (name text in the closed-pose class, about 13-17, against 95 pre-fix), reading transcribed onto this row\n- [x] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap (measured clearance 35.67 against the 46.33pt overlap pre-fix), reading transcribed onto this row\n- [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment\n- [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2390, 264, 'comment', 'owner', 'Step 2 verified on the iPhone Duo simulator (iOS 27.1, SIMULATOR_UDID), Release build 2.1.24 from lane/264, driven with agent-device 0.21.28. Every pose was confirmed by the lit window''s dimensions because the hinge-angle read returns no sample (the known instrument failure); the pose request was sent each time.
 
 Closed pose, the fence read: window 466x678, prayer-name text y 13, Isha row bottom 532.33 (row y 475.33 + height 57), Settings button top 577. All three equal the pre-fix closed-pose reading: portrait poses render unchanged.
@@ -8265,7 +8266,27 @@ Fold liveness: process id 68137 unchanged across closed, open, closed, open, eve
 
 One open-pose screenshot is attached to this row, taken to scratch outside the worktree and never committed.', NULL, '2026-10-19 23:56:21.536121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2393, 264, 'comment', 'owner', 'Records closed: the branch diff names exactly shared/insets.ts, shared/__tests__/insets.test.ts, app/Screen.tsx, __tests__/app/Screen.test.tsx, package.json, app.json and board/snapshot/board.sql, whose only production change is the new inset clamp and Screen''s one-line paddingTop consumption, so no phone-tuned layout value moved.', NULL, '2026-10-19 23:59:02.833681+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2395, 264, 'activity', 'owner', NULL, 'status', '2026-10-20 00:00:54.42515+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2394, 267, 'activity', 'owner', NULL, 'status', '2026-10-19 23:59:02.850879+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2396, 264, 'comment', 'owner', 'Execution done at 2.1.26: the clamp landed red-first, the simulator verified the ruled outcome on all three poses (open name y 13 against 95, Isha clearing by 35.67 against the 46.33 overlap, closed pose equal throughout, bars unchanged), and the records are closed with the diff read. In audit with two reviewers.', NULL, '2026-10-20 00:00:54.457811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2397, 264, 'comment', 'owner', 'Audit, plan-conformance (doc 21 v2 against uat..lane/264): the change conforms. The diff is exactly the seven planned files; the clamp honors 62 and below, zeroes above, and is consumed only at Screen''s paddingTop; the boundary suites rerun green at full coverage in the worktree, both mutation arms die on the recorded cases, and the three commits carry the three steps with a patch bump and snapshot each. The transcribed poses match the plan''s classes, the closed pose equals the pre-fix reading, and the row''s screenshot is attached, never committed.
+
+nitpick: the plan and the acceptance line quote the open-pose clearance as about 33.67 (Isha bottom 534.33), while the verified row reads 532.33 and 35.67; the measured number is the self-consistent one (13 plus the 519.33 span), so quote it where the row closes.
+
+minor: acceptance boxes 1 and 5 are still unticked though both are proven (plan doc Decisions; the diff read, the fence read and the suites); tick them before the Done move.
+
+minor: the fence rationale is written twice in long headers, shared/insets.ts and its test file; the source header alone would carry it.', NULL, '2026-10-20 00:04:10.775162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2398, 264, 'comment', 'owner', 'Blind review of uat..lane/264: one gap, one question, one minor. The clamp itself is sound and phones in portrait render bit-identically by construction.
+
+suggestion: components/ui/RamadanDecorations.tsx:230 - the records claim Screen is the one top-inset consumption site, but the Ramadan moon and stars also ride insets.top (moonCy = insetTop + 62, maxStarY = insetTop + 65). Phones at or below 62 are unaffected, yet on the Duo''s scaled window the phantom inset still moves them, and the October verification could not have caught it because the decorations are Ramadan-gated. The clamp belongs there too, or a line in the records says why it is deliberately out.
+
+question: shared/insets.ts:11 - the fence is silent the day a real iPhone delivers more than 62pt: its true inset would be zeroed and the content would tuck under the hardware. Intended failure mode for that day, or is the fence revisited when a phone crosses it?
+
+nitpick: shared/insets.ts:11 - PHONE_MAX_TOP_INSET is exported but nothing imports it; only honoredTopInset has consumers, so the const can stay unexported.
+
+The rest checks out: boundary pinned from both sides (62 identity, 63 clamps to zero), Screen arithmetic pinned at 79 and 17, both new suites re-run green in the lane worktree, versions stepped in lockstep 2.1.23 to 2.1.26 with no collision against origin, and the tests read seeded time only.', NULL, '2026-10-20 00:04:19.150453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2400, 264, 'comment', 'owner', 'Closed: the phantom ~80pt top inset is no longer honored above the phone-max 62, so the Duo''s open and half-open poses render the countdown at the designed offset with Isha clearing the Settings button by 35.67pt, the closed pose and every phone geometry unchanged, and the black bars standing as Apple''s letterbox with the landscape vehicles tabled on the ruling. Both reviews clean after adjudication (plan doc v3).', NULL, '2026-10-20 00:06:01.055577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2401, 264, 'activity', 'owner', NULL, 'status', '2026-10-20 00:06:01.102944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 
 
 --
@@ -9206,13 +9227,15 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (477, 264, 9, 'Awaiting Owner', 'started', '2026-10-19 23:17:15.772343+00', '2026-10-19 23:19:19.421596+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (478, 264, 6, 'Planning', 'unstarted', '2026-10-19 23:19:19.421596+00', '2026-10-19 23:28:51.414622+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (482, 264, 2, 'Ready', 'unstarted', '2026-10-19 23:28:51.414622+00', '2026-10-19 23:28:51.487769+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (483, 264, 3, 'In progress', 'started', '2026-10-19 23:28:51.487769+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (479, 265, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.493+00', '2026-10-19 23:38:06.135062+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (484, 265, 4, 'Done', 'completed', '2026-10-19 23:38:06.135062+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (480, 266, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.539+00', '2026-10-19 23:56:33.945098+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (485, 266, 4, 'Done', 'completed', '2026-10-19 23:56:33.945098+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (481, 267, 1, 'Backlog', 'backlog', '2026-10-19 23:23:42.573+00', '2026-10-19 23:59:02.847936+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (486, 267, 4, 'Done', 'completed', '2026-10-19 23:59:02.847936+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (483, 264, 3, 'In progress', 'started', '2026-10-19 23:28:51.487769+00', '2026-10-20 00:00:54.421371+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (487, 264, 8, 'Audit', 'started', '2026-10-20 00:00:54.421371+00', '2026-10-20 00:06:01.100147+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (488, 264, 4, 'Done', 'completed', '2026-10-20 00:06:01.100147+00', NULL);
 
 
 --
@@ -11821,7 +11844,17 @@ Alternatives rejected:
 - Gap gone, Isha clears: Step 2''s transcribed open-pose frames (name y in the closed-pose class against 95 pre-fix; Isha bottom below button top with the clearance quoted) on the row.
 - Bars remain, recorded: Step 2''s re-read pixel columns beside the ruling comment 2371, which carries the record and the tabled price.
 - Phones bit-identical: the branch diff names no phone-tuned value; shared/__tests__/insets.test.ts pins 0, 20, 47 and 62 as the identity; the Screen test pins 62 rendering 79 and 80 rendering the closed-pose class; the closed-pose on-device read equals the pre-fix reading; yarn validate green at every step commit.
-', NULL, NULL, '{}', false, false, false, NULL, NULL, 20480, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:17:03.483801+00', '2026-10-19 23:23:32.576341+00');
+
+
+## Audit (2026-10-20)
+
+Both reviews on uat..lane/264 came back with the change judged sound and narrowly scoped (comments 2397 plan-conformance, 2398 blind); each suite re-ran green in the worktree by both reviewers. Findings adjudicated:
+
+- Confirmed and fixed in records: the acceptance''s predicted clearance "about 33.67" is replaced by the measured 35.67 (Isha bottom 532.33, the closed-pose span exactly reproduced); acceptance boxes 1 and 5 ticked with the proof they already had.
+- Confirmed as a records precision, no code change: the phrase "the one consumption site" (plan Decisions, the Step 1 commit subject) names the one site this row changes. RamadanDecorations reads the same top inset for its seasonal moon and stars and stays untouched by this row''s scope: it is Ramadan-gated, out of season, fades with the overlay, and unverifiable in October; if a future in-Ramadan open-pose reading shows the same displacement there, it is its own row. The clamp applies to it the day one is filed.
+- Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
+- Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
+- Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, NULL, 20480, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:17:03.483801+00', '2026-10-20 00:05:55.004578+00');
 
 
 --
@@ -16425,6 +16458,78 @@ Alternatives rejected:
 - Bars remain, recorded: Step 2''s re-read pixel columns beside the ruling comment 2371, which carries the record and the tabled price.
 - Phones bit-identical: the branch diff names no phone-tuned value; shared/__tests__/insets.test.ts pins 0, 20, 47 and 62 as the identity; the Screen test pins 62 rendering 79 and 80 rendering the closed-pose class; the closed-pose on-device read equals the pre-fix reading; yarn validate green at every step commit.
 ', NULL, NULL, '{}', false, false, false, NULL, 20480, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:23:32.576341+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (57, 21, 3, NULL, 'T-264', '# T-264
+
+## Goal
+
+What is wrong today: on the iPhone Duo simulator (iOS 27.1), open and half-open poses, the app renders inside a system-scaled centred 469x669 portrait window on the 951x669 inner display. The window delivers a phantom top safe-area inset of about 80pt, which app/Screen.tsx honors, so the countdown block sits about 82pt lower than the closed pose and the Standard page''s Isha row overlaps the Settings button by about 46pt. True when done: the phantom is not honored, the countdown sits at its designed offset (the closed-pose class), Isha clears the Settings button, the black bars remain untouched and are recorded on this row as Apple''s own letterbox around a portrait-locked app, and portrait poses and every phone geometry render bit-identically to today.
+
+THE RULING (lead, agent-ruled 2026-10-20, row comment 2371): Vehicle C. Keep Apple''s sanctioned scaled window; fix the phantom gap and the overlap inside it; the bars stay. Vehicles A (landscape in the iPhone orientation array, every iPhone may rotate) and B (a Duo-scoped orientation gate) stay tabled on that comment and run the day the owner orders one. The earlier edge-to-edge acceptance is revised accordingly.
+
+## Decisions taken
+
+- 2026-10-20 The mechanisms, measured on the booted iPhone Duo simulator (iOS 27.1, SIMULATOR_UDID) driving the installed 2.1.20 Release build (code equal to uat modulo version files) before any change was designed. Bars: a panel-level screenshot (951x669) reads pure black (0,0,0) from x=0 to about x=241 and from about x=709 to x=951, and the app gradient (#031a4c to #5b1eaa) spans exactly between; the app tree spans 469x669. The bars are the system letterbox outside the app''s window; no app view or color reaches them (the darkest app color is #031a4c = (3,26,76)). Gap and push-down: the countdown''s prayer-name text starts at y=95 in the open-pose window against y=13 in the closed pose, an 82pt difference on a window 9pt shorter; with the countdown container constants (marginTop 6, height 54, centered content about 70pt) the delivered top inset works out to about 80pt open against about 0 closed, and app/Screen.tsx paddingTop (insets.top + 17) honors it. The name-to-Isha-bottom span is 519.33pt in both poses, so the phantom lands Isha''s bottom at 614.33 against the Settings button top at 568: a 46.33pt overlap (the closed pose clears by 44.67). One mechanism explains both the gap and the overlap. Why: the row''s first criterion names the mechanisms from measurement, and the fix choice depends on the painting layer of each defect.
+- 2026-10-20 The Settings button''s anchor is measured real, not phantom: its bottom offset is max(insets.bottom, 20) + 25 in both poses, working out to 59pt, so insets.bottom is 34 (home-indicator class) in both and button top = window height - 101 in both. Why: the fix clamps only the top; the bottom is genuine and stays.
+- 2026-10-20 The half-open pose measured: it presents the same 469x669 window with the same phantom (name y=95, Isha bottom 614.33 against button top 568). Why: one fix heals every non-closed pose; Step 2 verifies half-open beside open.
+- 2026-10-20 The fix: clamp the honored top inset to zero when it exceeds the largest top inset any iPhone delivers (62, the 16 Pro-class Dynamic Island). A top inset above 62 cannot come from a phone; it names a compat-scaled window, which the system letterboxes precisely so the panel''s bars sit outside the window, so the delivered inset references hazards the window does not contain (the panel''s status bar sits at the panel''s right edge, x about 850-923, outside the window''s x 241-709). Honoring none restores the phone-class rendering the window''s own edges warrant: paddingTop 17, name text in the closed-pose class, Isha clearing the button by about 33.67pt. Why: it is the only consumption site of the phantom (app/Screen.tsx paddingTop; RamadanDecorations reads insets.top but renders only in Ramadan and is out of season; Sheet and ColorPicker read the bottom, which is not phantom), and the signature (an inset no phone delivers) is settings-independent, so no font scale, locale or preference can route a phone into the clamp.
+- 2026-10-20 The clamp is a hard zero, not a fit-computed cap. Why, argued twice: a fit cap must predict the column''s height from layout constants that font scale and locale shift, so under accessibility sizes it could bind on a real phone and move phone pixels, which the fence forbids; and the letterboxed window''s own top edge carries no hazard (measured), so zero is the true inset for that geometry, not a compromise.
+- 2026-10-20 The clamp lives in shared/insets.ts as one pure function with the 62 constant, consumed by app/Screen.tsx. Why: the repo''s pattern puts pure logic in shared/ with its own test file, and the boundary (62 honored, 63 clamped) gets direct unit tests that kill mutants on both arms.
+
+## Files
+
+Read (evidence for the design, no change):
+- app/Screen.tsx (the one phantom consumer: paddingTop = insets.top + SCREEN.paddingTop), app/Navigation.tsx (BackgroundGradients absolute fill; the bottom-anchored Settings button: max(insets.bottom, 20) + 25), components/countdown/Countdown.tsx (container marginTop 6, height 54, centered content), components/prayer/List.tsx, components/day/Day.tsx.
+- shared/constants.ts (SCREEN.paddingTop 17, SPACING.xl 20, SIZE.nav.bottomOffset 25, STYLES.countdown.height 54, SIZE.contentMaxWidth 500, COLORS).
+- app.json (orientation portrait, requireFullScreen true), plugins/portraitOnlyIpad.js, ios/Athan/Info.plist in the main tree (both arrays Portrait and PortraitUpsideDown, UIRequiresFullScreen true).
+- Row 116''s plan doc (doc 20) for the sanctioned geometry and Apple quotes; e2e/README.md Gotchas before measuring; __tests__/app/Screen.test.tsx for the harness the new Screen tests extend.
+
+Changed:
+- shared/insets.ts (new): PHONE_MAX_TOP_INSET = 62 and honoredTopInset(top) returning 0 above it, top unchanged at or below it.
+- app/Screen.tsx: paddingTop consumes honoredTopInset(insets.top) + SCREEN.paddingTop.
+- shared/__tests__/insets.test.ts (new): boundary and arm coverage (0, 20, 47, 62 honored; 63, 80, 100 clamped to 0).
+- __tests__/app/Screen.test.tsx: the rendered page pins the clamp at the consumption site (insets.top 80 renders the closed-pose-class padding; 62 renders 79).
+- package.json and app.json: the version bump, patch, on every step commit. board/snapshot/board.sql regenerated per step commit. The worktree prebuilds ios only and holds no android tree, so no build.gradle exists in it; the third leg rides app.json into the next prebuild, and the main tree''s gitignored android/app/build.gradle is hand-set to the final version after merge, never committed (row 116''s audited precedent).
+
+## Design
+
+The standing design ruling holds verbatim: one schedule, centred, inside the existing 500pt max content width; no two schedules, no centre settings button, no Duo-branched layout. The Duo''s non-closed poses keep Apple''s sanctioned scaled window with its letterbox. The only behaviour change: a top safe-area inset larger than any phone delivers is not honored, because the compat-scaled window that delivers it is letterboxed by the system exactly so the panel''s hazards stay outside it. The invariant: at or below 62 the function is the identity, so every phone geometry, portrait pose and setting renders exactly today''s bytes; above it the window is scaled and honors none.
+
+Alternatives rejected:
+- Vehicles A and B (fill the panel): tabled on the ruling comment; A unfreezes rotation on every physical iPhone where the about-640pt column clips in a about-400pt window, B is Duo-branched code banned by the standing ruling.
+- A fit-computed cap (honored = min(top, window height minus column need)): font scale and locale shift the column''s need, so the cap could bind on a real phone and move phone pixels; rejected on the fence.
+- Clamping the bottom inset too: the bottom is measured real (34 in both poses, home-indicator class); clamping it would move the Settings button on every phone-class window that shares it.
+- Honoring 62 instead of 0 in the scaled window: paddingTop 79 still lands Isha at 596.33 against button top 568, a 28.33pt overlap; the ruling''s overlap criterion fails.
+
+## Steps
+
+1. Step 1: the oversized-inset clamp lands (code, 2 points). Write shared/__tests__/insets.test.ts and the new Screen.test.tsx cases first and watch them fail against the unchanged Screen (red), then land shared/insets.ts and the one-line Screen consumption (green), mutation-check both boundary arms (62 to 63 and the zero return), run yarn validate, bump package.json and app.json one patch, regenerate board/snapshot/board.sql, one commit.
+2. Step 2: the ruled outcome verified on the iPhone Duo simulator (device, 3 points). Build from the branch with npx expo run:ios -d SIMULATOR_UDID --configuration Release (SIMULATOR_UDID placeholder in every committed record), then drive and transcribe onto this row: closed pose first as the fence read (window 466x678, name y about 13, Isha bottom about 532.33, button top about 577, equal to the pre-fix reading); open pose (window 469x669, name y in the 13-17 class against 95 pre-fix, Isha bottom about 534.33 against button top 568, clearance about 33.67 against the 46.33pt overlap pre-fix); half-open pose (same class as open); the bars'' pixel columns re-read and recorded as Apple''s letterbox, unchanged; fold liveness (process id unchanged across a closed-open-closed round trip with the overlay reachable); one open-pose screenshot attached to this row from scratch outside the worktree, never committed. Version bump, snapshot, one commit. This step runs alone in a fresh executor session.
+3. Step 3: the row''s records closed (docs, 1 point). Read the branch diff and record that it names exactly shared/insets.ts, shared/__tests__/insets.test.ts, app/Screen.tsx, __tests__/app/Screen.test.tsx, package.json, app.json and board/snapshot/board.sql, so no phone-tuned layout value moved; tick the subtasks; regenerate the snapshot. Version bump, snapshot, one commit.
+
+## Risks
+
+- A future iPhone delivers a top inset above 62: it would render the countdown at the plain 17pt offset (cosmetic, the content sits below a taller island). Recorded here, not chased; the constant is named for exactly this read.
+- RamadanDecorations reads insets.top directly: it renders only in Ramadan (out of season now) and fades with the overlay; out of this row''s scope. If a future in-Ramadan open-pose reading shows the same phantom there, it is its own row.
+- The simulator''s hinge-angle read returns no sample (three attempts this session, matching row 116''s instrument note): every pose claim is confirmed by the lit panel''s viewport and frame dimensions instead.
+- The jest Screen harness must mock react-native-safe-area-context''s inset for the clamp test: the executor reads the existing setup and extends it; if the setup mocks at module level, the test overrides per-case with jest.mocked.
+
+## Proof
+
+- Mechanism named: the Decisions section carries the two measured mechanisms with their numbers (pixel columns for the bars; name y 95 against 13, Isha bottom 614.33 against button top 568 for the phantom).
+- Gap gone, Isha clears: Step 2''s transcribed open-pose frames (name y in the closed-pose class against 95 pre-fix; Isha bottom below button top with the clearance quoted) on the row.
+- Bars remain, recorded: Step 2''s re-read pixel columns beside the ruling comment 2371, which carries the record and the tabled price.
+- Phones bit-identical: the branch diff names no phone-tuned value; shared/__tests__/insets.test.ts pins 0, 20, 47 and 62 as the identity; the Screen test pins 62 rendering 79 and 80 rendering the closed-pose class; the closed-pose on-device read equals the pre-fix reading; yarn validate green at every step commit.
+
+
+## Audit (2026-10-20)
+
+Both reviews on uat..lane/264 came back with the change judged sound and narrowly scoped (comments 2397 plan-conformance, 2398 blind); each suite re-ran green in the worktree by both reviewers. Findings adjudicated:
+
+- Confirmed and fixed in records: the acceptance''s predicted clearance "about 33.67" is replaced by the measured 35.67 (Isha bottom 532.33, the closed-pose span exactly reproduced); acceptance boxes 1 and 5 ticked with the proof they already had.
+- Confirmed as a records precision, no code change: the phrase "the one consumption site" (plan Decisions, the Step 1 commit subject) names the one site this row changes. RamadanDecorations reads the same top inset for its seasonal moon and stars and stays untouched by this row''s scope: it is Ramadan-gated, out of season, fades with the overlay, and unverifiable in October; if a future in-Ramadan open-pose reading shows the same displacement there, it is its own row. The clamp applies to it the day one is filed.
+- Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
+- Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
+- Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, 20480, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:05:55.004578+00');
 
 
 --
@@ -16477,6 +16582,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:223', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:211', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:210', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:220', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 81);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:225', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 81);
@@ -16499,7 +16605,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 80);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
@@ -16632,11 +16737,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 47);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3386);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3389);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
@@ -16909,7 +17014,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2394, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2401, true);
 
 
 --
@@ -16986,7 +17091,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 486, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 488, true);
 
 
 --
@@ -17084,7 +17189,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 21, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 56, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 57, true);
 
 
 --
@@ -21469,5 +21574,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict lFda3LA1vgVLXU23Ll9PbpK4UenybUgpVKspr2fs01RMYaGsDUWOelT38tfuhut
+\unrestrict 2ootMJTpPYFxewK2DnMMB9OuWNUiy6qkXvr4iRy2DaS0d0ugQjnQOc9dF5PxZ2s
 
