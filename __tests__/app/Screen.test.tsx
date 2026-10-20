@@ -4,7 +4,7 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { seedCountdownBarOn, seedTimePassedOn, showLondonDay } from '@/__tests__/harness';
@@ -12,6 +12,11 @@ import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';
 
 import Screen from '../../app/Screen';
+
+jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({ width: 393, height: 852, scale: 3, fontScale: 1 })),
+}));
 
 // The bar's and time passed's defaults are off; this suite reads both as part of the page, so it seeds them on
 beforeEach(() => {
@@ -71,6 +76,7 @@ describe("a prayer page's top safe-area consumption", () => {
   afterEach(() => {
     // clearMocks clears call counts, never a set return value, so the suite's zero-inset default is put back by hand
     jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 0, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 393, height: 852, scale: 3, fontScale: 1 });
   });
 
   const pageTopPadding = async (): Promise<number> => {
@@ -82,13 +88,23 @@ describe("a prayer page's top safe-area consumption", () => {
   it('renders the phone-class top inset into the page padding', async () => {
     showLondonDay('2026-09-11', '14:00');
     jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 62, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 440, height: 956, scale: 3, fontScale: 1 });
 
     expect(await pageTopPadding()).toBe(79);
   });
 
-  it("renders the closed-pose padding when the window's inset is a phantom", async () => {
+  it("renders the tall canvas's real inset into the page padding at the phone spacing", async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 80, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 669, height: 951, scale: 3, fontScale: 1 });
+
+    expect(await pageTopPadding()).toBe(99);
+  });
+
+  it("renders the letterboxed window's designed offset when its inset is a phantom", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 469, height: 669, scale: 3, fontScale: 1 });
 
     expect(await pageTopPadding()).toBe(17);
   });
