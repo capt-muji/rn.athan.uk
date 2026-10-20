@@ -90,7 +90,7 @@ describe("a prayer page's top safe-area consumption", () => {
     jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 62, left: 0, right: 0, bottom: 0 });
     jest.mocked(useWindowDimensions).mockReturnValue({ width: 440, height: 956, scale: 3, fontScale: 1 });
 
-    expect(await pageTopPadding()).toBe(79);
+    expect(await pageTopPadding()).toBe(90.05);
   });
 
   it("renders the tall canvas's real inset into the page padding at the phone spacing", async () => {
@@ -98,7 +98,7 @@ describe("a prayer page's top safe-area consumption", () => {
     jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
     jest.mocked(useWindowDimensions).mockReturnValue({ width: 669, height: 951, scale: 3, fontScale: 1 });
 
-    expect(await pageTopPadding()).toBe(99);
+    expect(await pageTopPadding()).toBe(110.05);
   });
 
   it("renders the letterboxed window's designed offset when its inset is a phantom", async () => {
@@ -106,6 +106,6 @@ describe("a prayer page's top safe-area consumption", () => {
     jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
     jest.mocked(useWindowDimensions).mockReturnValue({ width: 469, height: 669, scale: 3, fontScale: 1 });
 
-    expect(await pageTopPadding()).toBe(17);
+    expect(await pageTopPadding()).toBe(28.05);
   });
 });

@@ -74,5 +74,9 @@
   {
     "version": "2.2.9",
     "reason": "2026-10-20 lane/280c's deep-clean close took 2.2.9 while the lead's direct dot-spacing order (owner, no ticket) landed on uat in the same window; the merge renumbers above both"
+  },
+  {
+    "version": "2.3.4",
+    "reason": "2026-10-20 lanes T-293 and T-295 both bumped from 2.3.3; lead ruling in the 293/295/297 run: the merge that lands second renumbers above the first"
   }
 ]
