@@ -18,7 +18,8 @@ const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const GATE_SELECTOR = 'supportedInterfaceOrientationsFor window: UIWindow?';
 const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
 
-/** The AppDelegate prebuild product's shape, read from the Expo template this repo prebuilds */
+/** The Expo AppDelegate template abridged to the markers the surgery keys on; the real product
+ * also carries the factory vars and a launch body, which the markers alone never touch */
 const appDelegateFixture = (extra = '') =>
   [
     'internal import Expo',
