@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 2ootMJTpPYFxewK2DnMMB9OuWNUiy6qkXvr4iRy2DaS0d0ugQjnQOc9dF5PxZ2s
+\restrict eGHgmXUZjfFGxuyliIaaCx5LkGCSzxXfp7ueq3iipkdAjY14slFmzIV3qzP86bE
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5217,6 +5217,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-16, landed direct at 2.0.837 by the owner''s order (all gates green, 5692 tests, 100 percent): the atom''s default pin false, the defaults suite re-pinned, and the prayer-page suite seeding the ago line through the shared harness helper beside the bar''s (the off-behaviour test unchanged, setting the atom itself)', NULL, NULL, NULL, 16000, '2026-10-18 23:35:56.108525+00', '2026-10-19 02:54:07.960939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (215, 1, 215, NULL, 4, 'Step 2: The native cover module sustains the loader''s face across the Android restart', '', NULL, NULL, NULL, 24000, '2026-10-19 03:24:16.53337+00', '2026-10-19 04:37:04.005001+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (221, 1, 221, NULL, 4, 'Step 5: device pass on the changed sheet', '', NULL, NULL, NULL, 30000, '2026-10-19 03:25:16.306819+00', '2026-10-19 05:18:36.146529+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (268, 1, 268, NULL, 4, 'Step 1: the sensitive-content sweep across both trees, history tabled', '', NULL, NULL, NULL, 1000, '2026-10-20 00:44:43.373257+00', '2026-10-20 01:29:03.096663+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 2, 4, 'The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:54:08.614918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 136, 2, 4, 'Android chevrons do not mirror under Arabic (settings sheet)', 'OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T
 
@@ -5239,6 +5240,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-13, audited: the row''s question answers NO (D88) - the soft exception is raised inside React''s own reload sequence (the six-hop trace through the pinned expo-updates and RN 0.88.0-rc.3 sources), log-only by contract, no consumer needs the dropped event, the three JS listeners sit downstream of the emitting module and cannot suppress it; the one repo-side route to silencing it is an upstream report (row 51''s discipline). The 3T capture pinned the line verbatim (one textbook cycle: 29-line block with the AppStateModule.onHostPause frame, span 1.397 s, pid unchanged, 0 FATAL); the same session recorded the reload starving on 3 of 6 crossings with a silent signature (FINDINGS section 8; the raw evidence died with the merge per the records rule) - the investigation is queue row 78. Two-reviewer audit fixed eight findings (the ledger''s subject/sha/session-line defects, two stale cross-references, the unqualified cost sentence, two row attributions, the teardown-timing figure); no code changed', NULL, NULL, NULL, 49000, '2026-10-18 23:35:56.692546+00', '2026-10-19 02:54:08.315413+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (210, 1, 210, NULL, 4, 'Step 2: The 3T readings (weight 3)', '', NULL, NULL, NULL, 19000, '2026-10-19 03:18:21.959321+00', '2026-10-19 03:48:16.466766+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (108, 1, 22, 9, 4, 'Lock-screen countdown layout (iOS)', 'Queue status: DONE', NULL, NULL, NULL, 87000, '2026-10-18 23:35:57.338812+00', '2026-10-19 02:54:08.702113+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (269, 1, 269, NULL, 4, 'Step 2: the typed code review and cleanup', '', NULL, NULL, NULL, 2000, '2026-10-20 00:44:43.433702+00', '2026-10-20 01:50:22.336795+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (45, 1, 104, 2, 4, 'The post-close haptic on the change-athan sheet', 'THE OWNER''S REPORT 2026-10-15 late: closing the change-athan sheet delivers a haptic about two seconds AFTER the close when a different athan was picked, and immediately on close when nothing was changed. The app''s own code carries NO haptic on the commit path (verified: the ticket''s close-path miss was the shared Sheet close haptic, Sheet.tsx:180, the owner''s own 2026-09-08 rule - the immediate unchanged-close buzz the owner keeps); the late buzz is that close haptic arriving late, inside the commit''s recorded thread saturation. RULINGS 2026-10-15 (planning interview): D104.1 defect; D104.2 one on-time Light close buzz on every path, no completion haptic; D104.3 no banner shows (if a capture shows one anyway, the lane STOPs); D104.4 on-demand reproduction, phone connectable; D104.5 owner moments batched; D104.6 for verdicts T/T2 the sheet-side deferral past the next paint, store untouched. READY plan: `ai/plans/104-post-close-haptic/` (planned at `f8884324` 2.0.784; two grill rounds, 22 findings applied; 4 steps: the dispatch marks and simulator diagnosis, the XS reproduction with the owner, the fix gated on verdict T/T2, the owner''s read)
 
 Status note: 2026-10-16, audited: the close haptic lands when the sheet finishes closing on every path - the changed-pick commit defers past the next paint so the re-arm''s thread saturation cannot eat the buzz (verdict T pinned twice: gated PERF marks on the simulator and on the owner''s XS capture, settle +204-226ms inside 1.7-1.9s windows on all four changed closes, no delivery lines); owner-read twice on glass, final at 2.0.811: at the close, both times, never twice, never late; three-reviewer audit (plan-conformance clean, blind''s two test-honesty shoulds fixed at 2.0.810, threading''s park-window should rejected-as-fix and carried to row 108 with the second-dismiss race and the shared-deferral refactor); the plan folder and the sessions/104 evidence died in this merge', NULL, NULL, NULL, 24000, '2026-10-18 23:35:56.244426+00', '2026-10-19 02:54:08.046399+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5260,6 +5262,7 @@ Status note: 2026-10-15, landed direct at 2.0.771 by the owner''s order, refined
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (52, 1, 89, 9, 4, 'The volume note returns to both sheets at the foot', 'OWNER RULING 2026-10-15: an identical note lands on the alert sheet AND the athan sound sheet, at the very bottom - below the second reminder, below all content - text centred horizontally (every line of a wrapped note sits centred, never left or right), a good amount of padding lifting it off the body, an information icon beside it, the copy platform-keyed (Android: the alarm volume controls it; iOS: its own documented path, row 64''s wording the base), styling otherwise free at planning. Supersedes the 2.0.729 removal (the note left the sheets for the Help modal alone; the Help question stays). Lineage: row 64 shipped the copy, row 86 moved it, 2.0.729 removed it, this row brings it home to both sheets. READY plan `ai/plans/89-volume-note-return/` (planned at `5a3fba84` 2.0.733; 1 code step: the 2.0.728 copy bytes return to all six catalogs with the lock re-taken, a zero-prop `VolumeNote` part centred beside `Icon.INFO` at both sheets'' foot; no device step)
 
 Status note: 2026-10-15, audited (both passes clean bar one records nit that died with the plan folder): the note returned at 2.0.737, hook Tests: 2 skipped, 5650 passed, 5652 total, coverage 100% on all four measures, break script ALL AS EXPECTED; the Help question untouched', NULL, NULL, NULL, 31000, '2026-10-18 23:35:56.36085+00', '2026-10-19 02:54:08.123899+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (270, 1, 270, NULL, 4, 'Step 3: the board sweep and the close', '', NULL, NULL, NULL, 3000, '2026-10-20 00:44:43.480507+00', '2026-10-20 02:12:19.689915+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (72, 1, 66, 4, 4, 'Language switch: always restart with cleared caches - investigation', 'Owner ask, 2026-10-12: a deep discussion and investigation into ALWAYS restarting the app on any language change (not only RTL, per D59): clear caches (the per-locale width cache the owner''s Somali wrap report also touches), keep preferences, converge notifications and widgets, restart last as a force-clean. Weigh pros (the launch path already reconciles every surface by job 39''s design, so a restart lands on the one moment the system cleans up after itself; kills every stale-cache class at once, including the width defect row 61), cons and side effects (the D51 in-sheet progress face dies at restart, so the restart point moves after convergence; widget re-push racing process death; splash cost on every switch; the current in-place remount already delivers R3.1). May revise D59 (absorbing RTL-only restart) and D51''s timing. INVESTIGATION ONLY: the row ends with options and a recommendation, the owner rules. AUDIT 57 CARRIED: the countdown display selectors'' one-second old-locale transient after a switch (job 57 audit finding 5) joins this row''s evidence
 
 Status note: 2026-10-13, audited: the always-restart investigation answers in FINDINGS.md (folded here per D85, its folder closed): four options (1 status quo, 2 always-restart via the in-process reload, 3 full process restart, 4 a bite-triggered hybrid); recommendation = option 1: the awaited convergence pass already clears every cache class but the countdown selectors'' one-second self-healing transient, while a restart per switch costs the recorded ~1.5 s dead window (row 71''s span; the splash gates'' share unquantified per D87), the D51 face, one teardown soft exception and a splash re-hold. Ten cache classes inventoried: per-locale width atoms, the legacy width-key sweep, the Android channel dedup caches, the countdown name/display selectors, the catalog loader, the baked widget strings, the last-armed stamp, the language preference, the commit busy atom, the module locale state. Rulings left to the owner: the final pick, D59 revise-or-absorb, D51''s timing, the four unquantified costs'' settling checks. Two-reviewer audit fixed nine citation and ledger findings (the swapped countdown write sites, the stale hop numbers, the android/ search gap, the row-count split, the missing step-01 session line, four nices); no code changed', NULL, NULL, NULL, 51000, '2026-10-18 23:35:56.727959+00', '2026-10-19 02:54:08.337514+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5285,6 +5288,20 @@ Acceptance:
 - [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).
 - [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.
 - [x] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines.', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 13:04:07.352476+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (271, 1, 271, 3, 1, 'iPhone Duo: landscape spans the open inner display only, every other device stays portrait', 'Goal: the app''s background runs edge to edge on the iPhone Duo''s open inner display with the one centred schedule, and no other device, pose or form factor ever rotates.
+
+Where: the iOS orientation capability and gate (Info.plist declaration plus the runtime supported-orientations narrowing), the root background, and the existing adaptive layout on the wide canvas. No layout redesign: the app keeps the one centred schedule inside the existing max content width.
+
+OWNER RULING 2026-10-20: no landscape in general - it would break the app''s flow and is difficult to maintain, so every other device stays portrait-locked. The one exception is the iPhone Duo''s open inner display, to remove the black letterbox bars. This ruling supersedes the blanket no-landscape note on row 264''s prior life and narrowly lifts the no-Duo-branch ban for the orientation gate alone: the gate may key on the Duo''s inner display, the layout may not branch.
+
+Background from row 264''s records: iOS grants a spanning window only to an app that declares landscape; the plist carries the maximum, the per-screen gate narrows it. The Duo''s open inner display is 951x669pt; the closed outer display is 466x678 and must stay portrait. The top-inset clamp from 2.1.24 must be re-verified in the spanning window. Plan doc T-264 holds the measured geometry.
+
+Acceptance:
+- [ ] the gate named and implemented: landscape allowed only on a screen with the Duo inner display''s class, portrait everywhere else
+- [ ] on the iPhone Duo simulator, open pose, landscape: the app''s background runs edge to edge, no black bars, the schedule centred, reading transcribed onto this row
+- [ ] the Duo''s closed pose stays portrait-locked, verified on the simulator
+- [ ] no physical iPhone rotates: the portrait lock verified on a phone-class simulator geometry, and the orientation gate covered by unit tests
+- [ ] portrait poses and every other form factor otherwise unchanged; yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 02:11:41.411923+00', '2026-10-20 02:11:41.611505+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (216, 1, 216, NULL, 4, 'Step 3: Device read on the 3T - both directions, both schedules, logcat timeline', '', NULL, NULL, NULL, 25000, '2026-10-19 03:24:16.572696+00', '2026-10-19 07:09:09.31532+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 2, 4, 'The clipping batch: the line-box pin, the note style, the loader face', 'Owner''s live test of 86 on the XS (2026-10-14): every pinned surface clipped - the metrics are the cause (Noto Sans Arabic''s natural box is 2.112em against the 1.172em Latin pin), so blockLineHeight and its five consumers died and the font''s own box serves everywhere; the ar header gap closes with an explicit -10 subtitle pull-up (the owner''s to dial); the loader''s typography resolves per render (a mid-switch line drew the old locale''s face and box, the English cut the owner saw); the note aligns to the header inset, title edge to icon edge on both sheets, the divider gained its air and the bottom gap dropped; the iOS note copy reworded per the owner''s ruling. Landed at 2.0.727 while the owner tested; the owner''s live read is the acceptance bar
 
@@ -5500,9 +5517,9 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (9, 1, 127, 4, 4, 'Android widgets on OEMs: is the feature worth keeping, and what hardening is left', 'PROBLEM, the owner''s own words 2026-10-16: on some OEM phones (the owner''s named case the Oppo Find X8) Android widgets drift out of sync after roughly three hours, deep sleep suspected; iPhone widgets never drift; in the owner''s words, if the Find X8 is not reliably showing widgets in sync, there is no point enabling Android widgets. The drift class is PROVEN and recorded in row 123 (the Find X8 three-widget disagreement, the ColorOS alarm window of 25 to 34 seconds, 58 of 61 deferred updates, the 3T freeze). Row 123''s reopened lane answers only what the new SDK versions changed; THIS row owns the product and hardening question. RECOMMENDATION: after row 123''s verdict, a deep options pass ending in one recommendation, each option carrying its blast radius and its battery cost: (a) harden what is left (the two reserve fixes: re-measure the double broadcast, isolate the app.json R8 keeps from the library''s consumer rules, ask-first); (b) add a self-heal path the app controls (a re-arm on foreground, or a bounded periodic nudge); (c) ship as-is with honest expectations; (d) withdraw Android widgets. The row ends with the owner''s ruling. The agent re-researches before recommending and may find a mechanism this list does not name
 
 Status note: 2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. Row 123 FOLDED HERE 2026-10-18 by the owner''s order: its delivered version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or update path) is this row''s technical ground, and this row owns the single question: prove-then-fix on the OEM phones and the keep-or-withdraw ruling. Resumes when the owner says go', NULL, NULL, NULL, 9000, '2026-10-18 23:35:55.638498+00', '2026-10-19 09:15:25.015517+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (3, 1, 51, 6, 11, 'Upstream `expo-location` compass corrections', 'PR: https://github.com/expo/expo/pull/51291
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (3, 1, 51, 6, 11, '`expo-location` compass corrections', 'PR: https://github.com/expo/expo/pull/51291
 
-Monitoring row for the `expo-location` compass corrections. Three corrections to `expo-location`''s own code, so Expo maintains them and this repo carries nothing once merged and released: iOS `headingFilter` is never set (on the XS, 731 of 731 readings were discarded); the Android 2-degree emission gate starves a slow turn (0.83 Hz at 2 degrees per second), so it becomes configurable; `headingAccuracy` is bucketed 0 to 3 and the negative invalid-heading sentinel collapses into bucket 0, so it goes numeric. The local patch `patches/expo-location+58.0.17.patch` (Android 50Hz sensors, no emission gate, module from source; iOS `kCLHeadingFilterNone`) dies at the first re-pin past the release, proven on a phone per the standing re-pin rule. Waiting on Expo reviewing and releasing.', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-19 19:49:05.914426+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+Monitoring row for the `expo-location` compass corrections. Three corrections to `expo-location`''s own code, so Expo maintains them and this repo carries nothing once merged and released: iOS `headingFilter` is never set (on the XS, 731 of 731 readings were discarded); the Android 2-degree emission gate starves a slow turn (0.83 Hz at 2 degrees per second), so it becomes configurable; `headingAccuracy` is bucketed 0 to 3 and the negative invalid-heading sentinel collapses into bucket 0, so it goes numeric. The local patch `patches/expo-location+58.0.17.patch` (Android 50Hz sensors, no emission gate, module from source; iOS `kCLHeadingFilterNone`) dies at the first re-pin past the release, proven on a phone per the standing re-pin rule. Waiting on Expo reviewing and releasing.', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-20 01:54:24.422226+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 3, 4, 'RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch
 
 Status note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief
@@ -5559,15 +5576,15 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence
 
 Needs first: #85, #88', NULL, NULL, NULL, 37000, '2026-10-18 23:35:56.472517+00', '2026-10-19 02:54:08.188234+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (230, 1, 230, 5, 11, 'Upstream `expo-background-task` network requirement', 'PR: https://github.com/expo/expo/pull/50581
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (230, 1, 230, 5, 11, '`expo-background-task` configurable network requirement (expo/expo#50581)', 'PR: https://github.com/expo/expo/pull/50581
 
-Monitoring row for PR `expo/expo#50581`, which makes the background network requirement configurable. The local patch `patches/expo-background-task+58.0.11.patch` adds `requiresNetworkConnectivity` to `BackgroundTaskOptions` (default true); the app registers with `false` (`stores/notifications.ts`) so the notification refresh runs offline, and published builds to 58.0.11 hardcode both constraints. The patch dies at the first re-pin past the release. Competing draft `expo/expo#48469` stalled since 2026-08-04; issue #48122 carries a needs review label. Carries the retired issue ledger''s item 37. Opened 2026-10-09, open and unmerged at the 2026-10-17 re-check.', NULL, NULL, NULL, 4000, '2026-10-19 07:36:49.676207+00', '2026-10-19 19:49:05.823181+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (231, 1, 231, 5, 11, 'Upstream `expo-widgets` fillMaxWidth fraction', 'PR: https://github.com/expo/expo/pull/51290
+Monitoring row for PR `expo/expo#50581`, which makes the background network requirement configurable. The local patch `patches/expo-background-task+58.0.11.patch` adds `requiresNetworkConnectivity` to `BackgroundTaskOptions` (default true); the app registers with `false` (`stores/notifications.ts`) so the notification refresh runs offline, and published builds to 58.0.11 hardcode both constraints. The patch dies at the first re-pin past the release. Competing draft `expo/expo#48469` stalled since 2026-08-04; issue #48122 carries a needs review label. Carries the retired issue ledger''s item 37. Opened 2026-10-09, open and unmerged at the 2026-10-17 re-check.', NULL, NULL, NULL, 4000, '2026-10-19 07:36:49.676207+00', '2026-10-20 00:31:39.883775+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (232, 1, 232, 5, 11, '`expo-widgets` Button openApp', 'PR: https://github.com/expo/expo/pull/51292
 
-Monitoring row for PR `expo/expo#51290`: the Android Glance converter drops the `fillMaxWidth` fraction (a 0.5 renders at 1.0) and has no `weight` case. This is the true cause behind row 15d''s proportional-layout workaround; nothing in this repo changes until it merges, and the workaround simplifies only at the owner''s say. Removes no patch.', NULL, NULL, NULL, 5000, '2026-10-19 07:36:59.463754+00', '2026-10-19 19:49:05.846903+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (232, 1, 232, 5, 11, 'Upstream `expo-widgets` Button openApp', 'PR: https://github.com/expo/expo/pull/51292
+Monitoring row for PR `expo/expo#51292`, which adds the `openApp` option to the Android widget `Button`. Every Android card state wraps itself in it (`widgets/PrayerWidget.tsx`); without it a tap does nothing. WidgetKit opens on tap by platform default, so iOS never depends on this half. At the first re-pin past its release the openApp half of `patches/expo-widgets+58.0.20.patch` dies.', NULL, NULL, NULL, 6000, '2026-10-19 07:36:59.597075+00', '2026-10-20 01:54:24.420474+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (231, 1, 231, 5, 11, '`expo-widgets` fillMaxWidth fraction', 'PR: https://github.com/expo/expo/pull/51290
 
-Monitoring row for PR `expo/expo#51292`, which adds the `openApp` option to the Android widget `Button`. Every Android card state wraps itself in it (`widgets/PrayerWidget.tsx`); without it a tap does nothing. WidgetKit opens on tap by platform default, so iOS never depends on this half. At the first re-pin past its release the openApp half of `patches/expo-widgets+58.0.20.patch` dies.', NULL, NULL, NULL, 6000, '2026-10-19 07:36:59.597075+00', '2026-10-19 19:49:05.869339+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+Monitoring row for PR `expo/expo#51290`: the Android Glance converter drops the `fillMaxWidth` fraction (a 0.5 renders at 1.0) and has no `weight` case. This is the true cause behind row 15d''s proportional-layout workaround; nothing in this repo changes until it merges, and the workaround simplifies only at the owner''s say. Removes no patch.', NULL, NULL, NULL, 5000, '2026-10-19 07:36:59.463754+00', '2026-10-20 01:54:24.42644+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5618,6 +5635,9 @@ Acceptance:
 - [ ] En byte-identical when not switching; iOS unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 16:08:14.174025+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (246, 1, 246, NULL, 4, 'Step 1: Verified carriers written into the plan doc''s Proof', '', NULL, NULL, NULL, 19000, '2026-10-19 14:03:55.282904+00', '2026-10-19 14:04:56.292461+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, '`expo-widgets` device locale', 'PR: https://github.com/expo/expo/pull/51793
+
+Monitoring row for PR `expo/expo#51793`, filed 2026-10-19 from this repo: it exposes the device locale to widget JS runtimes through a `__expoWidgetDeviceLocale` global. The local patch''s device-locale half feeds the neutral, stale and catch faces (the D44/D79 device-keyed statics); without it those faces lose their locale. When a published release carries the global, board row #233 deletes the local patch''s device-locale hunks and this row closes.', NULL, NULL, NULL, 7000, '2026-10-19 08:08:29.90607+00', '2026-10-20 01:54:24.424727+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (247, 1, 247, NULL, 4, 'Step 2: Ticket closed with the mapping in the closing comment', '', NULL, NULL, NULL, 20000, '2026-10-19 14:03:55.319546+00', '2026-10-19 14:05:27.765602+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (8, 1, 126, 4, 4, 'A row awaiting the owner''s ruling is never counted finished', 'Goal: a row that awaits the owner''s ruling reads as awaiting it through verified carriers on the live board, the mapping from the deleted read-only mirror is recorded, and nothing is rebuilt or patched.
 
@@ -5669,9 +5689,6 @@ Acceptance:
 - [ ] All six catalogues carry the new keys and yarn i18n:lock is re-taken with the catalog lock test green.
 - [ ] shared/__tests__/help.test.ts is red before the entry exists and green after it, inside yarn validate.
 - [x] The help modal on the 3T and on the owner''s iPhone shows the new question, and each read lands as a ticket comment.', NULL, NULL, NULL, 16000, '2026-10-18 23:35:55.745504+00', '2026-10-19 18:01:15.0347+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, 'Upstream `expo-widgets` device locale', 'PR: https://github.com/expo/expo/pull/51793
-
-Monitoring row for PR `expo/expo#51793`, filed 2026-10-19 from this repo: it exposes the device locale to widget JS runtimes through a `__expoWidgetDeviceLocale` global. The local patch''s device-locale half feeds the neutral, stale and catch faces (the D44/D79 device-keyed statics); without it those faces lose their locale. When a published release carries the global, board row #233 deletes the local patch''s device-locale hunks and this row closes.', NULL, NULL, NULL, 7000, '2026-10-19 08:08:29.90607+00', '2026-10-19 19:49:05.89039+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (253, 1, 253, 10, 4, 'OEM alarm timing close-out: store release, dumpsys reading, Play update path', 'Goal: close the two chained OEM alarm-timing items (issue ledger 10 and 17, migrated 2026-10-19 from the retired ai/ISSUES.md) once a store release ships the exact-alarm fix that sits on uat.
 
 Where: the ColorOS-family phones, the store releases, the Play update flow.
@@ -5683,7 +5700,7 @@ Acceptance:
 - [ ] one dumpsys alarm reading on an affected phone after that release shows the alarms armed exact
 - [ ] alerts verified on time on the ColorOS family after that release
 - [ ] the Play in-app update happy path run once on a build installed from Play (side-loaded builds answer ERROR_APP_NOT_OWNED, so it has never run)', NULL, NULL, NULL, 20000, '2026-10-19 19:48:47.410748+00', '2026-10-19 19:59:04.831279+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (4, 1, 54, 5, 1, 'Final hygiene pass: a deep review and cleanup of code and board', 'Goal: the last row on the board - a deep review and cleanup of the codebase (typing, dead code, pattern drift) and the board, so both end clean.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (4, 1, 54, 5, 4, 'Final hygiene pass: a deep review and cleanup of code and board', 'Goal: the last row on the board - a deep review and cleanup of the codebase (typing, dead code, pattern drift) and the board, so both end clean.
 
 Where: the whole repository and the open board.
 
@@ -5697,7 +5714,7 @@ Acceptance:
 - [ ] dead code, stale comments and pattern drift cleaned
 - [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision
 - [ ] the board swept: no defect the integrity checklist can catch
-- [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-19 20:02:24.83425+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] yarn validate green at the close', NULL, NULL, NULL, 4000, '2026-10-18 23:35:55.558039+00', '2026-10-20 02:12:19.728433+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (254, 1, 254, 4, 4, 'iPhone qibla stuck on the wave animation until the location permission is toggled', 'Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.
 
 Where: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.
@@ -7409,6 +7426,19 @@ Completeness note for step 5''s record-scoped blast radius: size 14 is a measure
 
 **Worktree clean.** `git status --porcelain` on lane/140 (at uat head 91dafe2d): empty. `git diff uat..lane/140` over components/, shared/, app/, assets/: no change. Artifacts live in session scratch only; nothing committed, nothing pushed.', NULL, '2026-10-19 03:42:21.671046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-19 03:44:12.999+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1788, 18, 'activity', 'owner', NULL, 'comment_edited', '2026-10-19 03:44:13.001761+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2468, 4, 'comment', 'owner', 'FINDINGS (plan-conformance)
+
+Reviewed uat..lane/54 (01696725 at 2.1.29, 465697e1 at 2.1.30) against plan v6, decisions D54.1-D54.8. Every check I could run reproduces the plan''s claims.
+
+- clean - Fence (D54.1/D54.5): the diff''s entire non-comment surface is two line pairs - countdown.ts L230''s assertion removal (guard intact, tsc exit 0, re-entrancy suite 28/28 green) and one rgba line whose code portion is byte-identical (only the trailing comment lost its date anchor). Every other changed line is a pure comment; no file added or deleted; no style, layout, behaviour or visual line moved.
+- clean - Comment sweep: the plan''s exact regex prints 0 over the production dirs and TODO/FIXME prints 0. The uat baseline measures 62 production / 48 test lines, matching the Step 2 record''s honest correction of the plan''s 60 (the two Kotlin sites in modules/, both seen in the diff). Frozen-clock dates, mock seeds (mocks/full.ts 732 dated lines), prayer.ts and schedule.ts docstring examples, the sourced-names notes and the 2024 London corpus line all kept.
+- clean - Sensitive sweep: the tracked tree carries zero of every token in the set (home paths only as the three .agents vendor examples, no Apple id, no device id, no the home-path username outside capt-muji), zero in any added diff line, and git log --all -S over all four heavy-class ids prints zero commits: they are unreachable, as comment 2452 tables. The last-name token stays uncheckable here by D54.8''s own design.
+- clean - Version law: 01696725 is package.json plus app.json only, 2.1.28 to 2.1.29; 465697e1 bumps both to 2.1.30; each number rides exactly one commit across all refs; both subjects lead with the version and close with the row number; android/ is absent from the branch per D54.7.
+- clean - Board: comment 2452 greps empty for every token (only the $TMPDIR class name and the public com.example.* store ids). In the executors'' window (In progress 00:54:31 to Audit 01:55:38) the only foreign changes are the four title fixes on T-239, T-232, T-231, T-51 with one-line comments 2461-2464; every other foreign activity is timestamped 00:30:30 to 00:35:49, before this row left Backlog at 00:36:09, and belongs to Lane 3''s own follow-ups. No ticket moved in the window; the only moves are this row''s own and its step subtasks'' ticks (T-268, T-269; T-270 open for the close half).
+- clean - Step records v4-v6 tell the truth against the diff: commit contents, the 65 files, the 62/48 baseline, the final greps, tsc, biome and the countdown suite all re-verified green, and the sweep comments are ids 2461-2464 as recorded.
+- nice - The gitignored coverage/ artifact (regenerated by the validate run) carries this worktree''s home path in about 150 files on disk. Untracked, never pushed, ignored at .gitignore line 18, so every commit stays clean, but a literal re-run of the working-tree grep set today prints these hits outside .agents/ and .git. Deleting the artifact at the close keeps Step 1''s clean-tree claim literally reproducible.
+
+No must or should findings. The branch conforms to the plan.', NULL, '2026-10-20 02:05:25.281217+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1789, 209, 'activity', 'owner', NULL, 'status', '2026-10-19 03:44:19.010796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (1790, 18, 'comment', 'owner', 'Step 2, the 3T readings (T-210). All four repeatability controls reproduce exactly; the record follows.
 
@@ -8119,6 +8149,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2309, 259, 'activity', 'owner', NULL, 'status', '2026-10-19 21:22:29.923038+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2310, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 21:22:39.240558+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.\n\nAcceptance:\n- [ ] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket\n- [ ] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language\n- [ ] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate\n- [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2340, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:20:08.493083+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2439, 4, 'activity', 'owner', NULL, 'label_add', '2026-10-20 00:44:38.194586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "board"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2298, 11, 'comment', 'owner', 'Plan-conformance audit of cdc60d99: all six checks pass. The fallback literal is byte-identical with only its comment re-issued naming rows 83/85/102, row 88 and D44/D79; the v1 fixture is faithful (v 1, no strings, no footers, no rtl, no row ids); every pin the Proof names is present; WIDGET_PROPS_VERSION 8 and ANDROID_SNAPSHOT_VERSION 4 stand; nothing outside the plan moved except the version bump, 2.1.13 to 2.1.14, consecutive. I ran the suite myself: the renderer file green at 76/76 and yarn validate green (226 suites, 5856 passed).
 
 One MINOR: the recorded mutation pass covers the two flips the plan''s Proof names (h to H, staleTitle hardcode); the Design also names m to M and each stale word one at a time, and those flips left no record. The committed pins do guard them (the sub-hour 19 m pin, the en/ar small stale pins, the ar medium one-line pin), so this is a record gap, not a code defect.', NULL, '2026-10-19 21:00:50.790987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -8217,6 +8248,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2359, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:56:39.29775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2360, 33, 'comment', 'owner', 'Execution done: three commits on lane/116 (2.1.20 to 2.1.22), all records on the board, no code changed. Moving to audit with one plan-conformance and one blind review.', NULL, '2026-10-19 22:56:39.333155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2370, 264, 'activity', 'owner', NULL, 'status', '2026-10-19 23:17:15.779507+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2438, 4, 'activity', 'owner', NULL, 'label_add', '2026-10-20 00:44:38.194586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2357, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:56:03.856816+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [x] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [x] every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2365, 33, 'comment', 'owner', 'Closed and merged to uat at 2.1.23: the existing adaptive layout answers Apple''s Duo requirement with zero Duo code. The one obligation beyond running is App Store screenshots for submissions from April 2027; both poses verified centred on iOS 27.1 with the screenshot on this row, and every other form factor untouched. One item leaves this row for the owner''s hygiene pass: ticket 22''s record carries a gendered owner pronoun, present before this row.', NULL, '2026-10-19 23:03:47.865415+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2373, 264, 'activity', 'owner', NULL, 'status', '2026-10-19 23:19:19.425584+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
@@ -8285,8 +8317,105 @@ question: shared/insets.ts:11 - the fence is silent the day a real iPhone delive
 nitpick: shared/insets.ts:11 - PHONE_MAX_TOP_INSET is exported but nothing imports it; only honoredTopInset has consumers, so the const can stay unexported.
 
 The rest checks out: boundary pinned from both sides (62 identity, 63 clamps to zero), Screen arithmetic pinned at 79 and 17, both new suites re-run green in the lane worktree, versions stepped in lockstep 2.1.23 to 2.1.26 with no collision against origin, and the tests read seeded time only.', NULL, '2026-10-20 00:04:19.150453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2404, 3, 'activity', 'owner', NULL, 'status', '2026-10-20 00:10:35.220213+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2409, 231, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.350543+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2411, 3, 'activity', 'owner', NULL, 'status', '2026-10-20 00:19:30.940129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2421, 230, 'activity', 'owner', NULL, 'status', '2026-10-20 00:29:57.569621+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2426, 239, 'activity', 'owner', NULL, 'field', '2026-10-20 00:31:43.431141+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2429, 232, 'activity', 'owner', NULL, 'status', '2026-10-20 00:32:46.003186+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2431, 232, 'comment', 'owner', 'Follow-up complete: PR rebased onto expo main (was 311 commits behind), converter change rides #51461''s InteractionSource refactor unadjusted, changeset widened to cover @expo/ui, and all runnable checks re-verified green. PR body updated and a timeline comment posted; head df37854be6, OPEN and MERGEABLE, still awaiting its first review. Parked to Upstream. Done comes only when the PR is merged and the openApp half of patches/expo-widgets+58.0.20.patch is removed in this repo.', NULL, '2026-10-20 00:32:50.076766+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2400, 264, 'comment', 'owner', 'Closed: the phantom ~80pt top inset is no longer honored above the phone-max 62, so the Duo''s open and half-open poses render the countdown at the designed offset with Isha clearing the Settings button by 35.67pt, the closed pose and every phone geometry unchanged, and the black bars standing as Apple''s letterbox with the landscape vehicles tabled on the ruling. Both reviews clean after adjudication (plan doc v3).', NULL, '2026-10-20 00:06:01.055577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2401, 264, 'activity', 'owner', NULL, 'status', '2026-10-20 00:06:01.102944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2402, 3, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.141428+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2403, 3, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.18453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2405, 230, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.25683+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2406, 230, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.282861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2407, 230, 'activity', 'owner', NULL, 'status', '2026-10-20 00:10:35.310922+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2408, 231, 'activity', 'owner', NULL, 'field', '2026-10-20 00:10:35.332603+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2410, 231, 'activity', 'owner', NULL, 'status', '2026-10-20 00:10:35.373425+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2412, 3, 'activity', 'owner', NULL, 'field', '2026-10-20 00:19:30.984081+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Expo re-review of PR 51291: changes-requested review answered and applied 2026-10-20, branch rebased onto expo main at ee1579d9"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2413, 3, 'comment', 'owner', '2026-10-20: answered and applied the changes-requested review on PR 51291, rebased the branch onto current expo main (ee1579d9), and updated the PR body to match. headingAccuracy becomes iOS-only with null for invalid readings; the reviewer declined the Android half, which carried nothing new since accuracy already reports the raw status, so the corrections'' substance survives in full. Waiting on Expo re-review.', NULL, '2026-10-20 00:19:31.00954+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2414, 232, 'activity', 'owner', NULL, 'field', '2026-10-20 00:19:56.145285+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2415, 232, 'activity', 'owner', NULL, 'field', '2026-10-20 00:19:56.154703+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2416, 232, 'activity', 'owner', NULL, 'status', '2026-10-20 00:19:56.192187+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2417, 231, 'activity', 'owner', NULL, 'field', '2026-10-20 00:29:05.722776+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "expo/expo#51290: rebased onto main 2026-10-20 (head d57fe9b), CI workflows await maintainer approval after the force-push, no human review yet"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2418, 231, 'activity', 'owner', NULL, 'status', '2026-10-20 00:29:05.793185+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2419, 231, 'comment', 'owner', 'Followed up the PR: answered the AI review''s nested-width finding inline, rebased the branch from 311 commits behind expo main onto the current tip and force-pushed. GitHub now holds the fork workflows as awaiting maintainer approval, and no human review has landed yet, so the row waits on that. Nothing merged, no release carries it, the repo patch is untouched.', NULL, '2026-10-20 00:29:12.041114+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2420, 232, 'comment', 'owner', 'Follow-up done: PR rebased clean onto expo main (311 commits, converter change intact over #51461''s InteractionSource refactor), changeset widened to cover @expo/ui, suites re-run green (expo-ui 88/502, expo-widgets 4/28, lint and tsc clean). Holding for the lead''s push of the force-with-lease.', NULL, '2026-10-20 00:29:30.05988+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2422, 230, 'activity', 'owner', NULL, 'field', '2026-10-20 00:30:30.305574+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "expo/expo#50581: rebased onto main and pushed 2026-10-20, open, mergeable, review required, no reviews yet; awaiting Expo maintainer review"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2423, 230, 'comment', 'owner', 'Followed up PR 50581: rebased onto current expo main (311 commits behind; one build.gradle conflict resolved onto upstream''s junit test dependency), Android tests, typecheck and lint green on the rebased tree, pushed. No reviews on the PR yet, so back to waiting on an Expo maintainer.', NULL, '2026-10-20 00:30:39.97638+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2424, 230, 'activity', 'owner', NULL, 'title', '2026-10-20 00:31:39.899505+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`expo-background-task` configurable network requirement (expo/expo#50581)"}, "from": {"value": "Upstream `expo-background-task` network requirement"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2425, 230, 'comment', 'owner', 'Retitled: the old title named its column, which goes stale on the next move.', NULL, '2026-10-20 00:31:39.933097+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2427, 239, 'activity', 'owner', NULL, 'field', '2026-10-20 00:31:43.439589+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2428, 239, 'activity', 'owner', NULL, 'status', '2026-10-20 00:31:43.447874+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 11, "value": "Upstream", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2430, 232, 'activity', 'owner', NULL, 'field', '2026-10-20 00:32:46.038882+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "First review on expo/expo#51292 (head df37854be6, rebased 2026-10-20, changeset widened to @expo/ui; OPEN, MERGEABLE, no reviews yet)."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2432, 239, 'activity', 'owner', NULL, 'status', '2026-10-20 00:35:44.95838+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "Upstream", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2435, 4, 'activity', 'owner', NULL, 'field', '2026-10-20 00:36:09.144791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2433, 239, 'activity', 'owner', NULL, 'field', '2026-10-20 00:35:45.004361+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "PR expo/expo#51793 rebased onto main and pushed 2026-10-20 (head 0dc3b03b), MERGEABLE, awaiting first review."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2440, 268, 'activity', 'owner', NULL, 'created', '2026-10-20 00:44:43.388106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2434, 239, 'comment', 'owner', 'Follow-up 2026-10-20: PR 51793 rebased cleanly onto current expo main and pushed at 0dc3b03b (31 commits taken, patch byte-identical); no review threads or comments existed to answer and the PR body needed no edit; package jest (28 tests) and lint pass locally, the typecheck failure is pre-existing clone drift identical on bare main. Awaiting first review.', NULL, '2026-10-20 00:35:49.471936+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2436, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 00:36:09.156056+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2437, 4, 'activity', 'owner', NULL, 'estimate', '2026-10-20 00:44:38.184202+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "4"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2441, 268, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.391673+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2442, 4, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 00:44:43.391673+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 268, "value": "T-268"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2443, 269, 'activity', 'owner', NULL, 'created', '2026-10-20 00:44:43.442944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2446, 270, 'activity', 'owner', NULL, 'created', '2026-10-20 00:44:43.487628+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2452, 4, 'comment', 'owner', 'Step 1''s history findings, tabled for the rewrite ruling (plan D54.3: history is the owner''s alone; nothing was rewritten here).
+
+The working tree is clean. Every pattern in the sweep set printed zero true hits: home paths beyond the vendor examples, the last name in both spellings, the Apple team and certificate identifiers, both device identifiers, bare handle use outside the public username, and scratchpad paths. No keystore, p8, p12, mobileprovision or service-account file exists on disk or under any ref. The lane commit carries only the version bump.
+
+Scan scope: every object in the local database - 22,133 blobs under the 5MB method cap, 8.1M lines; the one over-cap object is an audio asset with zero hits.
+
+Reachable history (every branch on origin, fetched today) holds only two content classes plus the identities:
+- Bare-rig package ids, handle-rooted, never shipped (the store ids are com.example.*): 217 lines across 59 blobs, 24 of them reachable - old versions of the performance progress record and the background-tasks runbook, first affected commits 2026-09-03 through 2026-10-07.
+- Tool-session scratchpad paths under $TMPDIR: 6 lines across 6 blobs, 3 reachable - one prompt record dated 2026-09-16. They carry no name; the house rule is $HOME-relative placeholders.
+- Commit identities: two author identities, the public username and the public first name, both at a public code-host noreply domain - no last name, no personal email, nothing to rewrite.
+
+The four heavier classes live only in objects no ref reaches - superseded history that push never transfers, held in this machine''s object database (reflog span 2026-09-02 to 2026-10-20). None of it is on origin:
+- Home paths: 2,112 lines across 647 blobs, every one the same single home username. Families via the reflog: the plans records dominate (333 blobs), then ai/features records (169), records directly under ai/ - runbooks, notes, handoffs (36), old opencode.json and eas.json versions (11), prompt records (8), one errors record and one planning scratch file (4); 86 blobs are not even reflog-reachable. Boundary: the house vocabulary writes $HOME/... for every home path.
+- The last name: 9 lines across 9 blobs - old index.html versions (2) and device-folder records (7). Zero in any reachable commit, agreeing with the 2026-10-19 baseline check on this row. Boundary: the first name is public by the owner''s ruling; the last name is not.
+- Apple team and certificate identifiers: 408 lines across 256 blobs, the same record families under ai/ (247 of them mapped via the reflog). Boundary: house placeholders TEAM_ID and CERT_TEAM_ID.
+- Device identifiers, phone UDID and simulator UUID: 735 lines across 373 blobs, again the same families (360 mapped). Boundary: house placeholders IPHONE_UDID and SIMULATOR_UDID, with the serial placeholders beside them.
+
+What this tables: a history rewrite would concern only the two light reachable classes above; the heavy classes need no rewrite at all - they answer to local object-database maintenance, which is equally the owner''s call.', NULL, '2026-10-20 01:17:57.546837+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2444, 269, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.445312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2445, 4, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 00:44:43.445312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 269, "value": "T-269"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2447, 270, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.489634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2448, 4, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 00:44:43.489634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 270, "value": "T-270"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2449, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 00:54:05.048486+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2450, 4, 'comment', 'owner', 'Planned: the T-54 plan doc (linked) carries three steps, 4 points, and eight grilled decisions; grilled once, findings answered in v2-v3. Ready for execution.', NULL, '2026-10-20 00:54:05.080031+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2451, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 00:54:31.015337+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2453, 268, 'activity', 'owner', NULL, 'status', '2026-10-20 01:29:03.10839+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2454, 4, 'comment', 'owner', 'Step 1 done: the working tree sweeps clean, the history classes are counted and tabled (comment 2452), and both research images read as third-party timetables, not personal media. Commit 01696725, validate green. Step 2 (the typed review) starts.', NULL, '2026-10-20 01:29:03.138503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2455, 269, 'activity', 'owner', NULL, 'status', '2026-10-20 01:50:22.36865+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2456, 4, 'comment', 'owner', 'Step 2 done: the comment sweep strips every dated citation while keeping each rule, the last non-null assertion dies with mutation evidence, and the dead-code and drift sweeps read clean - no backlog row was needed. Commit 465697e1, validate green. On to the board sweep.', NULL, '2026-10-20 01:50:22.397786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2457, 3, 'activity', 'owner', NULL, 'title', '2026-10-20 01:54:24.429716+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`expo-location` compass corrections"}, "from": {"value": "Upstream `expo-location` compass corrections"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2458, 232, 'activity', 'owner', NULL, 'title', '2026-10-20 01:54:24.430646+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`expo-widgets` Button openApp"}, "from": {"value": "Upstream `expo-widgets` Button openApp"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2459, 239, 'activity', 'owner', NULL, 'title', '2026-10-20 01:54:24.431298+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`expo-widgets` device locale"}, "from": {"value": "Upstream `expo-widgets` device locale"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2460, 231, 'activity', 'owner', NULL, 'title', '2026-10-20 01:54:24.432392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "`expo-widgets` fillMaxWidth fraction"}, "from": {"value": "Upstream `expo-widgets` fillMaxWidth fraction"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2461, 231, 'comment', 'owner', 'Board sweep: removed the column word from the title, which now reads `expo-widgets` fillMaxWidth fraction.', NULL, '2026-10-20 01:54:24.494999+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2462, 239, 'comment', 'owner', 'Board sweep: removed the column word from the title, which now reads `expo-widgets` device locale.', NULL, '2026-10-20 01:54:24.497507+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2463, 232, 'comment', 'owner', 'Board sweep: removed the column word from the title, which now reads `expo-widgets` Button openApp.', NULL, '2026-10-20 01:54:24.498343+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2464, 3, 'comment', 'owner', 'Board sweep: removed the column word from the title, which now reads `expo-location` compass corrections.', NULL, '2026-10-20 01:54:24.49757+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2465, 4, 'comment', 'owner', 'Board swept: the integrity checklist ran across all eight open rows; four Upstream titles carried their column word and lost it, everything else passed. No moves. Execution is complete - the branch goes to audit.', NULL, '2026-10-20 01:55:31.867309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2466, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 01:55:38.202245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2467, 4, 'comment', 'owner', 'FINDINGS (blind)
+
+- should (suggestion): shared/widgetTypes.ts:179-180 — the rewrite duplicated the clause: "the countdown is minutes-only today, so `s` rides for that" now appears twice in a row ("...rides for that / countdown is minutes-only today, so `s` rides for that shape and stays / unread until it changes"). Delete the tail of line 179; the sweep garbled a comment it was only meant to de-date.
+- should (suggestion): widgets/PrayerWidget.tsx:521 and :902 — two dated owner citations survive in JSX comments ("(owner 2026-09-25)", "(owner ruling 2026-09-20)") in the very file this sweep edited most (33 lines). The commit''s "the exact dated-narration grep now prints zero across the production dirs" does not hold for widgets/.
+- nice (nitpick): shared/__tests__/widgetContract.test.ts:499 — the test title still carries "(owner 2026-10-19)"; the commit subject claims the strip covered tests too. A title string, so out of the comment sweep''s mechanism, but the stated claim overreaches.
+- nice (nitpick): shared/i18n/sourced-names.json:1029 and :2043 — "Owner-ruled (D81, 2026-10-12)" notes survive. Defensible as data rather than narration, but they print on any dated-citation grep over production dirs, so the zero-claim needs its scope named.
+
+Verified clean: tsc --noEmit exits 0 (the dropped non-null assertion in stores/countdown.ts:230 holds — the truthiness guard on line 228 precedes it, so the runtime argument is unchanged and the re-entrancy suite still pins the guard); biome check . --error-on-warnings exits 0; the only non-comment code changes in the whole 65-file diff are the two version strings and that one clearTimeout line, with the widgetContract literal byte-identical under its trimmed trailing comment; each commit bumps package.json and app.json together (2.1.29, 2.1.30), build.gradle being gitignored by design; no home path, Apple team/cert id or device UDID anywhere in the tracked tree beyond the named benign classes (the guard test''s own /Users/ pattern, vendored .agents skill docs, the board''s baseline record), and no bare the home-path username outside capt-muji — coverage/coverage-summary.json carries the home path only as gitignored local output. Sampled rewrites in countdown.ts, notifications.ts, PrayerWidget.tsx, help.ts, mocks/simple.ts and five test files read coherently and dropped no rule the code still needs.', NULL, '2026-10-20 02:01:44.967106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2469, 271, 'activity', 'owner', NULL, 'created', '2026-10-20 02:11:41.432207+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2470, 271, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:11:41.618387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 176, "value": "#271"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2471, 271, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:11:41.618387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2472, 271, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:11:41.618387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "iOS"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2473, 271, 'activity', 'owner', NULL, 'field', '2026-10-20 02:11:41.683136+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "271"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2474, 270, 'activity', 'owner', NULL, 'status', '2026-10-20 02:12:19.703395+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2475, 4, 'activity', 'owner', NULL, 'status', '2026-10-20 02:12:19.735358+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2476, 4, 'comment', 'owner', 'Closed at 2.1.32 (merge 94d9b440 on uat; lane commits 01696725, 465697e1, 65094cd5; audit fix round included). Every criterion reads from output: the board holds only the seven parked rows besides this one, all verified untouched except four upstream titles that lost their column word; the typed review swept the whole repo with both greps at zero and the one non-null assertion retired on mutation evidence, nothing ticketed because nothing failed the small-and-lawful fence; the sensitive sweep found the working tree clean and tabled the history classes to the owner (comment 2452), the heavy four unreachable in local objects no push transfers; the board''s integrity checklist passed every open row after the four title fixes; yarn validate green on the worktree at each commit and on uat at the merge. Nothing user-facing changed a pixel. The refreshed snapshot lands with this close.', NULL, '2026-10-20 02:12:19.758133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2477, 4, 'comment', 'owner', 'One fix the snapshot gate forced: the plan doc''s first draft had spelt a home-path pattern literally, and the doc''s own revision history row carried it into the committed snapshot, where the identifier gate refused it. The revision row now reads the placeholder form; nothing else on the board carried it.', NULL, '2026-10-20 02:14:14.607434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -8345,6 +8474,12 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (11
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (241, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (33, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (264, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (3, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (230, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (231, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (232, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (239, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (4, 2, 1);
 
 
 --
@@ -8474,7 +8609,6 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (5, 5, 1, NULL, 70, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (388, 2, 3, '2026-10-14 to v3.0 by the owner''s priority call (pairs with row 25; the owner will say go). Research is complete, no code is written. **Two rulings taken 2026-10-09: the app asks for a location permission, and completely offline permits a yearly fetch, cached.** The other five questions are deferred', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (386, 1, 3, '2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban)', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (390, 3, 3, '2026-10-12: waiting on Expo reviewing and releasing PR `expo/expo#51291` (https://github.com/expo/expo/pull/51291); the corrections land with the first re-pin past that release, which is also when the local patch dies. Three corrections to `expo-location`''s own code, so Expo maintains them and this ', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (394, 6, 3, '2026-10-18, investigation and preparation closed, audited (two reviewer passes, 7 findings adjudicated): the closeout landed clean - the 3T as-found proof confirms row 135''s delivered face on the installed 2.0.1067 fleettest build (the fleettest Next Prayer Dark widget read as found under app Arabic', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (400, 9, 3, '2026-10-16 by the owner''s consolidation order: all widget work parks DEFERRED 2026-10-16 by the owner''s consolidation order: all widget work parks. Row 123 FOLDED HERE 2026-10-18 by the owner''s order: its delivered version-delta verdict (no upstream entry changes the alarm, receiver, watchdog or upd', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (402, 10, 3, 'DISCARDED BY THE OWNER''S ORDER 2026-10-18: the iOS widget countdown keeps the system timer interval and its current Latin face in every language, no letters, no formatting change, no investigation lane - the owner recalled the earlier attempts'' timeline havoc (hundreds of timeline updates) and chose', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -8490,15 +8624,11 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (124, 124, 1, NULL, 5, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (526, 21, 3, '2026-10-19, phase 2: the owner APPROVED the prototype and asked for the queue''s workflow inside it. The board now carries the queue''s own ten columns with the 128 tickets on them, the seven workflow roles as AI agents, the two workflow skills, five Docs pages, and an `itsaplan` MCP server wired into', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (529, 230, 1, NULL, 230, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (530, 230, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#50581`; at the first re-pin past its release the background-task patch dies.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (531, 231, 1, NULL, 231, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (532, 231, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51290`; the proportional-layout workaround simplifies only at the owner''s say.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (533, 232, 1, NULL, 232, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (534, 232, 3, '2026-10-19: waiting on Expo reviewing and merging PR `expo/expo#51292`; at the first re-pin past its release the openApp half of the widgets patch dies.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (535, 233, 1, NULL, 233, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (536, 233, 3, 'A published `expo-widgets` release carrying `__expoWidgetDeviceLocale`; until then this row waits.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (537, 239, 1, NULL, 239, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (538, 239, 3, '2026-10-19: waiting on Expo reviewing PR `expo/expo#51793`; when a published release carries the global, row #233 deletes the local patch''s device-locale hunks and the ledger entry moves to shipped.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (528, 18, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (539, 16, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (410, 14, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -8511,6 +8641,12 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (551, 241, 1, NULL, 241, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (552, 264, 1, NULL, 264, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (553, 264, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (530, 230, 3, 'expo/expo#50581: rebased onto main and pushed 2026-10-20, open, mergeable, review required, no reviews yet; awaiting Expo maintainer review', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (390, 3, 3, 'Expo re-review of PR 51291: changes-requested review answered and applied 2026-10-20, branch rebased onto expo main at ee1579d9', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (532, 231, 3, 'expo/expo#51290: rebased onto main 2026-10-20 (head d57fe9b), CI workflows await maintainer approval after the force-push, no human review yet', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (534, 232, 3, 'First review on expo/expo#51292 (head df37854be6, rebased 2026-10-20, changeset widened to @expo/ui; OPEN, MERGEABLE, no reviews yet).', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (538, 239, 3, 'PR expo/expo#51793 rebased onto main and pushed 2026-10-20 (head 0dc3b03b), MERGEABLE, awaiting first review.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (565, 271, 1, NULL, 271, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -8537,8 +8673,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (2, 139);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (2, 145);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (1, 140);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (1, 145);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 137);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 133);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (9, 143);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (10, 132);
@@ -8847,6 +8981,13 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (33, 10);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (264, 175);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (264, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (264, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 137);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (4, 8);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 176);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (271, 1);
 
 
 --
@@ -9030,7 +9171,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (129, 1, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.59778+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (2, 2, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.506+00', '2026-10-18 23:57:28.619561+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (130, 2, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.619561+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (131, 3, 11, 'Upstream', 'started', '2026-10-18 23:57:28.6352+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (10, 10, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.654+00', '2026-10-18 23:57:28.743841+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (21, 21, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.814+00', '2026-10-18 23:57:28.891996+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (5, 5, 1, 'Backlog', 'backlog', '2026-10-18 23:35:55.576+00', '2026-10-19 02:11:46.649902+00');
@@ -9077,9 +9217,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (335, 216, 4, 'Done', 'completed', '2026-10-19 07:09:09.347799+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (334, 17, 6, 'Planning', 'unstarted', '2026-10-19 06:04:47.169794+00', '2026-10-19 07:28:16.425308+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (344, 17, 2, 'Ready', 'unstarted', '2026-10-19 07:28:16.425308+00', '2026-10-19 07:28:29.216434+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (346, 230, 11, 'Upstream', 'started', '2026-10-19 07:36:49.676+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (347, 231, 11, 'Upstream', 'started', '2026-10-19 07:36:59.463+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (348, 232, 11, 'Upstream', 'started', '2026-10-19 07:36:59.597+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (349, 233, 11, 'Upstream', 'started', '2026-10-19 07:36:59.693+00', '2026-10-19 07:36:59.808445+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (320, 19, 2, 'Ready', 'unstarted', '2026-10-19 04:08:16.364689+00', '2026-10-19 07:38:45.837528+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (351, 19, 4, 'Done', 'completed', '2026-10-19 07:38:45.837528+00', NULL);
@@ -9100,7 +9237,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (359, 228, 4, 'Done', 'completed', '2026-10-19 07:45:44.909156+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (343, 229, 1, 'Backlog', 'backlog', '2026-10-19 07:11:31.934+00', '2026-10-19 08:04:03.734343+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (365, 229, 4, 'Done', 'completed', '2026-10-19 08:04:03.734343+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (366, 239, 11, 'Upstream', 'started', '2026-10-19 08:08:29.906+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (345, 17, 3, 'In progress', 'started', '2026-10-19 07:28:29.216434+00', '2026-10-19 08:10:51.011606+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (367, 17, 4, 'Done', 'completed', '2026-10-19 08:10:51.011606+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (352, 16, 6, 'Planning', 'unstarted', '2026-10-19 07:44:11.305783+00', '2026-10-19 08:16:49.484574+00');
@@ -9132,6 +9268,11 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (387, 243, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.459+00', '2026-10-19 15:17:42.161844+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (383, 241, 10, 'Deferred', 'started', '2026-10-19 09:16:24.717+00', '2026-10-19 19:18:16.36049+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (138, 11, 10, 'Deferred', 'backlog', '2026-10-18 23:57:28.758861+00', '2026-10-19 19:18:16.549692+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (131, 3, 11, 'Upstream', 'started', '2026-10-18 23:57:28.6352+00', '2026-10-20 00:10:35.215963+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (346, 230, 11, 'Upstream', 'started', '2026-10-19 07:36:49.676+00', '2026-10-20 00:10:35.308681+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (347, 231, 11, 'Upstream', 'started', '2026-10-19 07:36:59.463+00', '2026-10-20 00:10:35.371311+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (348, 232, 11, 'Upstream', 'started', '2026-10-19 07:36:59.597+00', '2026-10-20 00:19:56.188665+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (366, 239, 11, 'Upstream', 'started', '2026-10-19 08:08:29.906+00', '2026-10-20 00:31:43.442105+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (389, 14, 4, 'Done', 'completed', '2026-10-19 13:04:07.414329+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (384, 240, 1, 'Backlog', 'backlog', '2026-10-19 09:37:32.632965+00', '2026-10-19 13:43:53.342612+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (385, 16, 1, 'Backlog', 'backlog', '2026-10-19 13:03:51.215052+00', '2026-10-19 13:43:53.349457+00');
@@ -9174,7 +9315,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (424, 16, 3, 'In progress', 'started', '2026-10-19 16:43:34.217443+00', '2026-10-19 18:01:15.041134+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (427, 16, 4, 'Done', 'completed', '2026-10-19 18:01:15.041134+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (132, 4, 7, 'Blocked', 'started', '2026-10-18 23:57:28.650791+00', '2026-10-19 19:36:00.028733+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (430, 4, 1, 'Backlog', 'backlog', '2026-10-19 19:36:00.028733+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (431, 253, 1, 'Backlog', 'backlog', '2026-10-19 19:48:47.41+00', '2026-10-19 19:59:04.839344+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (433, 253, 4, 'Done', 'completed', '2026-10-19 19:59:04.839344+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (33, 33, 4, 'Done', 'completed', '2026-10-18 23:35:56.034+00', '2026-10-19 20:21:07.916266+00');
@@ -9236,6 +9376,29 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (483, 264, 3, 'In progress', 'started', '2026-10-19 23:28:51.487769+00', '2026-10-20 00:00:54.421371+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (487, 264, 8, 'Audit', 'started', '2026-10-20 00:00:54.421371+00', '2026-10-20 00:06:01.100147+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (488, 264, 4, 'Done', 'completed', '2026-10-20 00:06:01.100147+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (491, 231, 3, 'In progress', 'started', '2026-10-20 00:10:35.371311+00', '2026-10-20 00:29:05.788327+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (490, 230, 3, 'In progress', 'started', '2026-10-20 00:10:35.308681+00', '2026-10-20 00:29:57.564653+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (430, 4, 1, 'Backlog', 'backlog', '2026-10-19 19:36:00.028733+00', '2026-10-20 00:36:09.15318+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (489, 3, 3, 'In progress', 'started', '2026-10-20 00:10:35.215963+00', '2026-10-20 00:19:30.934298+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (492, 3, 11, 'Upstream', 'started', '2026-10-20 00:19:30.934298+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (493, 232, 3, 'In progress', 'started', '2026-10-20 00:19:56.188665+00', '2026-10-20 00:32:45.999587+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (496, 239, 3, 'In progress', 'started', '2026-10-20 00:31:43.442105+00', '2026-10-20 00:35:44.953874+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (498, 239, 11, 'Upstream', 'started', '2026-10-20 00:35:44.953874+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (503, 4, 2, 'Ready', 'unstarted', '2026-10-20 00:54:05.043887+00', '2026-10-20 00:54:31.010525+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (500, 268, 1, 'Backlog', 'backlog', '2026-10-20 00:44:43.373+00', '2026-10-20 01:29:03.105307+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (499, 4, 6, 'Planning', 'unstarted', '2026-10-20 00:36:09.15318+00', '2026-10-20 00:54:05.043887+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (505, 268, 4, 'Done', 'completed', '2026-10-20 01:29:03.105307+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (501, 269, 1, 'Backlog', 'backlog', '2026-10-20 00:44:43.433+00', '2026-10-20 01:50:22.365072+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (506, 269, 4, 'Done', 'completed', '2026-10-20 01:50:22.365072+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (504, 4, 3, 'In progress', 'started', '2026-10-20 00:54:31.010525+00', '2026-10-20 01:55:38.199668+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (508, 271, 1, 'Backlog', 'backlog', '2026-10-20 02:11:41.411+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (502, 270, 1, 'Backlog', 'backlog', '2026-10-20 00:44:43.48+00', '2026-10-20 02:12:19.695559+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (509, 270, 4, 'Done', 'completed', '2026-10-20 02:12:19.695559+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (507, 4, 8, 'Audit', 'started', '2026-10-20 01:55:38.199668+00', '2026-10-20 02:12:19.731917+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (510, 4, 4, 'Done', 'completed', '2026-10-20 02:12:19.731917+00', NULL);
 
 
 --
@@ -9570,6 +9733,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (173, 1, 3, '#253', '#ffffff', '2026-10-19 19:48:47.463205+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (174, 1, 3, '#254', '#ffffff', '2026-10-19 19:48:47.555443+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (175, 1, 3, '#264', '#ffffff', '2026-10-19 22:48:47.894137+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (176, 1, 3, '#271', '#ffffff', '2026-10-20 02:11:41.519319+00');
 
 
 --
@@ -9880,7 +10044,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 268, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 272, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -11855,6 +12019,216 @@ Both reviews on uat..lane/264 came back with the change judged sound and narrowl
 - Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
 - Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
 - Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, NULL, 20480, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:17:03.483801+00', '2026-10-20 00:05:55.004578+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (22, 1, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.
+
+## Audit record (2026-10-20)
+
+Plan-conformance (comment 2468): clean on every check - the fence, the comment sweep, the
+sensitive sweep, version law, the board window, the step records. One nice: the gitignored
+coverage/ artifact carried the worktree home path on disk; deleted in the fix commit so the
+clean-tree claim re-verifies literally.
+
+Blind (comment 2467): two shoulds confirmed and fixed at 65094cd5 (2.1.31) - the duplicated
+doc clause in shared/widgetTypes.ts the sweep garbled, and the two dated citations inside JSX
+comment blocks (PrayerWidget 521, 902) that the plan''s line-anchored regex could never reach;
+their companion test-title citation (widgetContract 499) fixed with them. Two nices: the
+sourced-names notes dismissed on D54.1 (data keeps its dates - the reviewer itself read them
+defensible), the coverage artifact dismissed into the fix. The proof criterion''s regex gap is
+this record''s own note: JSX blocks needed the looser pass, and the residual scan now prints
+zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
+
+Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
+2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, NULL, 21504, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00', '2026-10-20 02:09:09.792374+00');
 
 
 --
@@ -11882,6 +12256,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (19, 241, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 20:52:39.417206+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (20, 33, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 22:14:30.677838+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (21, 264, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-19 23:17:03.549836+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (22, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.964347+00');
 
 
 --
@@ -16530,6 +16905,826 @@ Both reviews on uat..lane/264 came back with the change judged sound and narrowl
 - Answered from the plan''s Risks: a future iPhone delivering a top inset above 62 renders the countdown at the plain 17pt offset (cosmetic, content below a taller island). Intended, recorded, not chased; the constant''s name carries the read.
 - Rejected, recorded why: un-exporting PHONE_MAX_TOP_INSET (the tests deliberately pin the literals 62 and 63 so a constant edit cannot silently pass; the export documents the boundary''s provenance and the function references it), and trimming the test file''s header (it follows the suite-header convention: module under test named first, the fence restated for the test reader).
 - Device readings that closed the row: comment 2390 (open name y 13 against 95 pre-fix, Isha clearing by 35.67 against the 46.33pt overlap, closed pose equal on all three readings, bars pure black and unchanged, fold liveness held, half-open same class as open), screenshot attachment bfe2c279 on the row and never committed.', NULL, NULL, '{}', false, false, false, NULL, 20480, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:05:55.004578+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (59, 22, 3, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:54:00.412539+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (60, 22, 4, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:29:03.037685+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (61, 22, 6, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 01:55:31.827051+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (62, 22, 7, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+  Data, not comments, is out of scope: mock seed dates (`mocks/full.ts` and friends),
+  production docstring example dates (the `// Returns: ...` blocks in `shared/prayer.ts`
+  and `stores/schedule.ts`), and the two "Owner-ruled" note fields in
+  `shared/i18n/sourced-names.json` all keep their dates - they are payload or examples of
+  output, and changing them risks behaviour.
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 Media ruling (2026-10-20).** The two images in
+  `ai/features/global-prayer-times/data/countries/` (and the PDF beside them) get a vision
+  read confirming they are third-party website captures or printed material serving parked
+  rows'' evidence, not personal or family media; they stay while the parked rows stand. The 51
+  other tracked images (widget renders, marketing screenshots, icons, decorations) are app
+  renders and public store assets, outside the personal-media class by construction.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual. Any row this creates is
+  named in the closing comment, and the Proof below scopes its empty-column claim to rows
+  existing at the run''s start.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that. `android/` is gitignored (`.gitignore` line 14), so the
+  main-tree `android/app/build.gradle` versionName is edited on disk only, set to the
+  snapshot commit''s number, never committed.
+- **D54.8 Last-name bootstrap (2026-10-20).** The working-tree grep needs the owner''s last
+  name as a token. It is recovered in memory from the history blob scan Step 1 already runs
+  (the token appears inside quotation of a past record), used for the working-tree grep, and
+  written nowhere - not the board, not a commit, not a log.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Changed by step 2, measured with the exact regex in Proof criterion 3:
+- 60 dated-narration comment lines in production files (shared 24, widgets 15, components 14,
+  hooks 2, mocks 2, stores 2, app 1) and 48 in test files, rewritten or deleted per D54.1.
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- `package.json`, `app.json` - version bumps, every commit.
+- `android/app/build.gradle` - disk only, in the main tree, per D54.7.
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git): home paths
+`/Users/[a-z]` beyond the vendor examples (dev, expo, gabe, you, shared, local, literal
+`<name>`); the owner''s last name per the D54.8 bootstrap; the Apple team and cert
+identifiers recovered the same way; `the home-path username` outside `capt-muji`; real device UDIDs and
+serials (the placeholder names 3T_SERIAL, X8_SERIAL, S23_SERIAL, 8T_SERIAL, IPHONE_UDID,
+SIMULATOR_UDID, PHONE_ADDRESS, WIFI_NAME stand in for the real values); keystore, p8, p12,
+mobileprovision and service-account files (`git log --all --name-only` on those patterns).
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images and the PDF; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; the 60 production
+   and 48 test dated-narration comment lines rewritten or deleted per D54.1; dead code
+   deleted; the non-null assertion typed; findings not small-and-lawful ticketed; `yarn
+   validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+- The dated-narration rewrite touches a test''s frozen-seed definition by mistake: the D54.1
+  test-file rule is the fence, and the jest suite inside `yarn validate` must stay green.
+
+## Proof
+
+- Criterion 1: `list_issues` read at the close shows every non-subtask row that existed at
+  the run''s start in Done, Upstream or Deferred, except this row in Done; any row created by
+  D54.5 is named in the closing comment with its column.
+- Criterion 2: the review record (plan doc v3 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: this exact grep over the production dirs
+  `grep -rnE ''^\\s*(//|\\*|/\\*).*([Rr]uling|[Oo]wner|[Cc]haos|[Ff]inding|[Aa]udit|[Rr]eport).{0,40}20[0-9]{2}-[0-9]{2}'' app components shared stores hooks modules widgets device plugins api mocks scripts types`
+  prints 0 lines outside `__tests__` and `.test.` files, and the test-file survivors are
+  frozen-seed definitions per D54.1; TODO|FIXME over the same dirs prints nothing; the commit
+  diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing outside .agents/ and .git; the tabling
+  comment carries the history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, and the only moves are this row''s own Done move and its step subtasks'' ticks.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.
+
+## Grill record
+
+v2 answers the griller''s eight findings: proofs 1-2 rewritten as the start-of-run scoping with
+D54.5 rows named (findings 1-2); criterion 3 carries the exact regex and the survivor rulings
+in D54.1 (finding 3); subtask ticks allowed in proof 5 (finding 4); the measured 60/48 split
+replaces the ~20 estimate and the hedges died (finding 5); D54.8 names the bootstrap (finding
+6); D54.7 marks build.gradle disk-only (finding 7); D54.4 rules the remaining media and the
+PDF (finding 8).
+
+## Step 1 record (2026-10-20)
+
+Commit 01696725 (2.1.29) on lane/54: the version-bump-only commit, working tree proven clean
+against the full grep set (zero true hits for every pattern). History scan across 22,133 blobs:
+the four heavy classes (home paths 2,112 lines/647 blobs; last name 9/9; Apple ids 408/256;
+device ids 735/373) live solely in objects no ref reaches - never pushed, local object database
+only. Reachable history carries two light classes: handle-rooted bare-rig package ids (24
+reachable lines in old research records) and $TMPDIR scratchpad paths (3 reachable lines).
+Tabling comment 2452 on this row carries the classes, counts, families and boundaries, with
+zero sensitive strings (self-grepped before posting). Vision read (depth-1 dispatch after the
+executor''s depth limit): both research images are third-party computer-set prayer-time tables
+(Baku September 2026; ACJU Colombo September), no person or personal scene visible; the PDF is
+third-party printed timetable evidence. D54.4 holds, all three stay.
+
+## Step 2 record (2026-10-20)
+
+Commit 465697e1 (2.1.30) on lane/54, 65 files. The dated-narration baseline was 62 production
+hits (the plan''s 60 missed two Kotlin sites in modules/) plus 10 wider year-grep stragglers,
+and 48 test hits plus 8 stragglers: all stripped of date and provenance, each keeping its
+surviving WHY, none deleted whole; frozen-clock definitions in tests kept. Data kept its dates
+per D54.1 (mock seeds, docstring examples, the 2024 London verification-corpus line, the two
+sourced-names notes). stores/countdown.ts L230: the non-null assertion deleted outright -
+clearTimeout accepts undefined (tsc green), the re-entrancy test kills the clearTimeout-deleted
+mutant, the guard-deleted mutant is equivalent so the diff stayed at one character, branch
+coverage 100 percent. Dead code: none found (the repo''s own unused-export scan agrees, its 13
+candidates are deliberate test seams). All five useExhaustiveDependencies disable reasons read
+true. Drift dismissed on evidence for store subscription, void fire-and-forget, logger and i18n
+access; the 22 undated row/finding/session citations are a consistent repo convention outside
+the plan''s named family and stayed for an owner ruling if ever wanted. No Backlog rows needed -
+nothing failed the small-and-lawful fence. Final greps: dated family 0, TODO/FIXME 0 across all
+production dirs (lane-verified). yarn validate exit 0 at commit time and the pre-commit hook
+re-ran the gate.
+
+## Step 3 record, sweep half (2026-10-20)
+
+The eleven-check Integrity sweep ran across all eight open rows. Four defects found and fixed
+on sight, one comment line each (2461-2464): the four Upstream titles that carried the column
+word (T-239, T-232, T-231, T-51) lost it - the fifth Upstream row T-230 and every other check
+passed. The five Upstream rows park by standing law with every PR open and Waiting on naming
+its live state; T-42 and T-25 stay parked by the owner''s priority call. Zero relations touch
+any open row, so check 11 had nothing to remove. The parked rows'' substance-shape descriptions
+(PR link displacing the Goal-first skeleton, a prior-sweep-passed form), null estimates without
+steps, and the unset Lane on never-laned Deferred rows all read lawful. No ticket moved. The
+close half (merge, snapshot, validate, Done) is the lane''s.
+
+## Audit record (2026-10-20)
+
+Plan-conformance (comment 2468): clean on every check - the fence, the comment sweep, the
+sensitive sweep, version law, the board window, the step records. One nice: the gitignored
+coverage/ artifact carried the worktree home path on disk; deleted in the fix commit so the
+clean-tree claim re-verifies literally.
+
+Blind (comment 2467): two shoulds confirmed and fixed at 65094cd5 (2.1.31) - the duplicated
+doc clause in shared/widgetTypes.ts the sweep garbled, and the two dated citations inside JSX
+comment blocks (PrayerWidget 521, 902) that the plan''s line-anchored regex could never reach;
+their companion test-title citation (widgetContract 499) fixed with them. Two nices: the
+sourced-names notes dismissed on D54.1 (data keeps its dates - the reviewer itself read them
+defensible), the coverage artifact dismissed into the fix. The proof criterion''s regex gap is
+this record''s own note: JSX blocks needed the looser pass, and the residual scan now prints
+zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus line).
+
+Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
+2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 02:09:09.792374+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (58, 22, 1, NULL, 'T-54', '# T-54 - Final hygiene pass: a deep review and cleanup of code and board
+
+## Goal
+
+Today the board holds this one open row beside seven parked rows, and the repository carries
+comment-level debt (dated ruling citations, one production non-null assertion) against a
+standard the repo already enforces elsewhere. When this is done: every acceptance criterion of
+the row reads true from command output, the typed review''s findings are fixed or ticketed, the
+history findings are tabled to the owner in a comment that never repeats a sensitive string,
+`yarn validate` is green on uat, and the committed board snapshot carries the board fully
+closed.
+
+## Decisions taken
+
+- **D54.1 Comment standard, repo-wide (2026-10-20).** Comments explain WHY only. A ruling
+  citation keeps the ruling''s substance and loses the date anchor; a comment that narrates
+  history with no surviving WHY is deleted. In test files, a date that states the frozen
+  clock''s meaning (which day, which UTC offset) is the scenario''s definition and survives.
+  Precedent: commit 189220dc killed a comment for "styling value plus provenance, both banned".
+- **D54.2 The ai/ research tree stays (2026-10-20).** Its TODO mentions quote upstream library
+  code under study for parked rows T-42 and T-25; they describe third-party code, not our work,
+  and deleting them would gut the parked rows'' records.
+- **D54.3 History hits are tabled, never rewritten (2026-10-20).** Rewriting history is the
+  owner''s alone. The tabling comment names classes, counts and file families, and never
+  repeats a sensitive string, because the board snapshot is committed to the public repo.
+- **D54.4 The two research images get a vision read (2026-10-20).**
+  `ai/features/global-prayer-times/data/countries/` holds two images serving parked rows''
+  evidence; the read confirms they are website captures, not personal or family media. They
+  stay while the parked rows stand.
+- **D54.5 A finding not small and lawful becomes a new Backlog row (2026-10-20).** Nothing
+  user-facing changes in place: no pixel, no behaviour, no visual.
+- **D54.6 Vendor material under .agents/skills/ is third-party (2026-10-20).** Its example
+  paths (/Users/dev, /Users/expo, /Users/gabe) stay.
+- **D54.7 Version arithmetic (2026-10-20).** Every commit takes the next free patch number,
+  fetch origin first. Expected: lane commits 2.1.29 (step 1) and 2.1.30 (step 2); the merge
+  commit on uat takes the next free number above every existing commit; the snapshot commit
+  takes the one after that; the gitignored main-tree android/app/build.gradle versionName is
+  set to the snapshot commit''s number, never committed.
+
+## Files
+
+Read: the whole tree (both sweeps), every git blob (history scan), every open board row.
+Likely changed:
+- `stores/countdown.ts` - the one production non-null assertion (L230), typed or guarded.
+- Comment-only edits across `stores/`, `shared/`, `app/`, `components/`, `mocks/` where
+  dated narration survives (measured starting set: ~20 sites; the sweep may find more).
+- `board/snapshot/board.sql` - regenerated at the close, in the main tree.
+- `package.json`, `app.json`, `android/app/build.gradle` - version bumps, every commit.
+Created: new Backlog rows for findings not fixed in place (D54.5); the history tabling comment
+on this row.
+
+## Design
+
+The invariant: every diff line is a comment, a type, dead code, or a record - nothing
+user-facing. The typed review starts from `tsc --noEmit` (strict, green at baseline) and
+`biome check . --error-on-warnings`: what they leave open is the sweep''s frontier - the
+single non-null assertion, double casts, unused exports, pattern drift between modules read in
+full, comment debt per D54.1. The sensitive sweep runs two scans: the working tree (grep set
+below) and every blob in history (`git cat-file --batch` over all objects). Working-tree hits
+are fixed directly with the repo''s placeholder vocabulary; history hits are counted by class
+and tabled (D54.3). The board sweep runs the eleven-point Integrity checklist over the seven
+parked rows and this one, fixing defects on sight with one comment line each, no moves.
+
+Alternatives rejected: rewriting history ourselves (the owner''s alone); skipping the history
+scan because the working tree is clean (the criterion names history); broad refactors of
+pattern drift beyond small-and-lawful (ticketed instead, D54.5).
+
+Working-tree grep set (all must print nothing outside .agents/ and .git):
+home paths `/Users/<name>` beyond the vendor examples, the owner''s last name, the Apple team
+and cert identifiers, `the home-path username` outside `capt-muji` and `/Users/<name>` replacements, real
+device UDIDs and serials, keystore/p8/p12/service-account files.
+
+## Steps
+
+1. **Step 1: the sensitive-content sweep, both trees, history tabled** (1 pt, docs) - the
+   working-tree grep set proven empty or fixed; history classes counted (home paths, last
+   name, Apple IDs, device UDID, bare-rig package ids, scratchpad paths); the vision read of
+   the two research images; the tabling comment posted on this row.
+2. **Step 2: the typed code review and cleanup** (2 pts, code) - tsc/biome/jest-guided sweep of
+   `app/`, `components/`, `shared/`, `stores/`, `hooks/`, `modules/`, `widgets/`,
+   `device/`, `plugins/`, `api/`, `mocks/`, `scripts/`, `types/`; comment debt per
+   D54.1; dead code deleted; the non-null assertion typed; findings not small-and-lawful
+   ticketed; `yarn validate` green.
+3. **Step 3: the board sweep and the close** (1 pt, docs) - Integrity checklist across every
+   open row with on-sight fixes and one comment line each; merge to uat; the snapshot
+   regenerated in the main tree and committed; `yarn validate` green at the close; the row
+   closed with its records.
+
+## Risks
+
+- A comment edit lands where biome reformats differently: `yarn validate` shows it; fix with
+  `yarn format` before commit.
+- A working-tree hit needs a behaviour change to fix: it becomes a Backlog row (D54.5) and the
+  closing comment names it.
+- The tabling comment repeats a sensitive string: the executor greps the draft against the
+  class list before posting; the audit reviewers re-check.
+- Version collision with a concurrent session: fetch origin before every bump (house rule).
+
+## Proof
+
+- Criterion 1: `list_issues` shows 42 Done, 5 Upstream, 2 Deferred, and nothing in
+  Backlog/Ready/In progress/Blocked/Awaiting Owner - captured in the closing comment.
+- Criterion 2: the review record (plan doc v2 or later, or the closing comment) names what was
+  read, what was fixed (commit hash), what was ticketed (row number); `tsc --noEmit` exit 0
+  inside `yarn validate`.
+- Criterion 3: the grep set for TODO|FIXME and date narration over production dirs prints
+  nothing outside `ai/` and `.agents/`; test files keep only frozen-seed definitions; the
+  commit diff shows no style or behaviour edits.
+- Criterion 4: the working-tree grep set prints nothing; the tabling comment carries the
+  history classes with counts.
+- Criterion 5: each open row re-read after the sweep, fixed defects carry their one-line
+  comment, no moves except this row''s own Done move.
+- Criterion 6: `yarn validate` exits 0 on the main tree at the final uat commit.', NULL, NULL, '{}', false, false, false, NULL, 21504, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00');
 
 
 --
@@ -16575,6 +17770,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:219', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:215', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:209', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:227', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:229', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:218', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:216', 1, 5);
@@ -16582,7 +17778,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:223', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:211', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:210', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:220', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 81);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 89);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:225', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:17', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:15', 1, 81);
@@ -16593,6 +17789,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:16', 1, 154)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:46', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 33);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:224', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:47', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:240', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:10', 1, 37);
@@ -16711,15 +17908,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:51', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:250', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:96', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:251', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:261', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:253', 1, 16);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:231', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:232', 1, 31);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:230', 1, 45);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:255', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:257', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:233', 1, 34);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:265', 1, 5);
@@ -16735,20 +17928,26 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:268', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:269', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:1', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:267', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3389);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 46);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:260', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:271', 1, 11);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:270', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3445);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 84);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 86);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
@@ -17014,7 +18213,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2401, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2477, true);
 
 
 --
@@ -17063,14 +18262,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 554, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 565, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 267, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 271, true);
 
 
 --
@@ -17091,7 +18290,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 121, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 488, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 510, true);
 
 
 --
@@ -17126,7 +18325,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 175, true);
+SELECT pg_catalog.setval('public.label_id_seq', 176, true);
 
 
 --
@@ -17182,14 +18381,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 21, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 22, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 57, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 62, true);
 
 
 --
@@ -21574,5 +22773,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 2ootMJTpPYFxewK2DnMMB9OuWNUiy6qkXvr4iRy2DaS0d0ugQjnQOc9dF5PxZ2s
+\unrestrict eGHgmXUZjfFGxuyliIaaCx5LkGCSzxXfp7ueq3iipkdAjY14slFmzIV3qzP86bE
 
