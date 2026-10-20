@@ -229,7 +229,7 @@ describe('lock widget renderer', () => {
     const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
     const all = textsOf(tree);
 
-    // Owner ruling 2026-09-20: no countdown and no dot in Layout 2 — the
+    // No countdown and no dot in Layout 2 — the
     // rectangular face carries the name and absolute time, centred.
     expect(all).toContain('Asr');
     expect(all).toContain('15:20');
@@ -274,7 +274,7 @@ describe('lock widget renderer', () => {
     expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
-  // Owner 2026-09-25: one size across every live face, so weight and opacity
+  // One size across every live face, so weight and opacity
   // carry the tiers. What recedes is the SECOND reading on a line, which is
   // the countdown beside the name in layout 1, the time beside it in layout 2,
   // and the countdown beneath layout 3's name-and-time row. Layout 3 alone
@@ -396,7 +396,7 @@ describe('lock widget renderer', () => {
     // Text(timerInterval:) reserves a worst-case width and parks its glyphs
     // against the leading edge of it (the home hero's §13d lesson); without
     // this modifier the countdown ink reads left-aligned on the glass.
-    // Layout 2 carries no countdown since the owner's 2026-09-20 ruling.
+    // Layout 2 carries no countdown.
     const found = collectTickingModifiers(renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'));
     expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
     expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });

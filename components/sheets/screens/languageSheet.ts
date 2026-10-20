@@ -4,7 +4,7 @@
  *
  * The loader is revealed on the tap itself, before the sheet even begins to close:
  * the commit's first synchronous stretch saturates JS, and a loader that waits for
- * it paints a sheet frozen half-closed instead (owner report, 2026-10-16).
+ * it paints a sheet frozen half-closed instead.
  */
 
 import type { LocaleId } from '@/shared/i18n/locale';

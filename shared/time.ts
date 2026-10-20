@@ -580,7 +580,7 @@ export const getWallSecondDelay = (): number => {
 
 /**
  * Converts seconds into the countdown display string: the fixed-width colon
- * shapes in every locale (owner ruling 2026-10-13, row 82). Every group is
+ * shapes in every locale. Every group is
  * always double digits, so a digit change never shifts the screen.
  *
  * 1. Seconds hidden: HH:MM ("01:32", "00:42", "25:00") — the hours are never hidden
@@ -618,12 +618,12 @@ export const formatTime = (seconds: number, hideSeconds = false): string => {
 
 /**
  * Formats seconds elapsed into the "ago" duration: the catalog `now` word inside
- * the final 60 seconds, the lettered shape otherwise, fixed in every locale
- * (owner ruling 2026-10-15, row 83): unpadded Latin digits with lowercase h m
+ * the final 60 seconds, the lettered shape otherwise, fixed in every locale:
+ * unpadded Latin digits with lowercase h m
  * letters that never localise, hours and minutes only, a zero-minute group
  * dropping beside live hours. The lettered duration composes inside Unicode
  * left-to-right isolates so the run reads left to right inside an RTL sentence
- * (row 92: under the RTL base direction the space between the groups resolves
+ * (under the RTL base direction the space between the groups resolves
  * RTL and swaps them), the letters lowercase at the sentence's own face, fixed
  * in every locale.
  *

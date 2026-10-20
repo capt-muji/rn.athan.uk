@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     elevation: ELEVATION.maximum,
   },
   modalWide: {
-    // 94%, owner-ruled (2026-09-28): 3% in from each edge, generous without touching the screen sides
+    // 94%: 3% in from each edge, generous without touching the screen sides
     width: '94%',
     maxWidth: SIZE.contentMaxWidth,
     maxHeight: '96%',

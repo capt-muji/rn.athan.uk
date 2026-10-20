@@ -1453,9 +1453,9 @@ describe('on the real builder', () => {
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21300, name: 'fajr' });
     });
 
-    // The high-latitude shapes finding 74 was proven on: a list's last rows fall after 00:00, and the
-    // owner ruled a day stays current until its last readable row has passed, not until 00:00
-    // (2026-09-13, confirmed with the dashed-times rule 2026-09-17). A launch after 00:00 therefore
+    // The high-latitude shapes a list's last rows falling after 00:00 were proven on: a
+    // day stays current until its last readable row has passed, not until 00:00.
+    // A launch after 00:00 therefore
     // builds from yesterday while yesterday still has a row to come
     const postMidnightIsha = [
       {
@@ -2338,7 +2338,7 @@ describe('on the real builder', () => {
    * ISSUES #27. An Isha at 03:30 is in the small hours, so its instant moves to the next calendar day while its list
    * day stays the day before: that day is still on screen once the NEXT day's 01:00 Fajr has passed, which is the
    * only readable shape putting a later day's rows behind an earlier day on screen. London never produces it; above
-   * about 60N the provider does. Green on its first run, because the fix shipped 2026-09-13; the breaks are its red.
+   * about 60N the provider does. Green on its first run and red on every regression; the breaks are its red.
    */
   describe('a day roll with every row readable (ISSUES #27)', () => {
     it('keeps every row of the day on screen while the day before it is still counting down', () => {

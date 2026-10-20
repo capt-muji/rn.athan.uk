@@ -81,7 +81,7 @@ describe('the Help modal', () => {
     expect(screen.queryByText(first.text)).not.toBeOnTheScreen();
   });
 
-  // One answer at a time, so the list never grows into the wall of text it replaced (owner, 2026-09-27)
+  // One answer at a time, so the list never grows into the wall of text it replaced
   it('closes the open question when another is opened', async () => {
     const [first, second] = getHelpTopics('ios');
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
@@ -126,7 +126,7 @@ describe('the Help modal', () => {
 
   /**
    * A number would read as a route to follow, and a tick as something already done. Neither is true, so the
-   * marker carries no meaning of its own (owner, 2026-09-27).
+   * marker carries no meaning of its own.
    */
   /**
    * The cut-off answer names a limit rather than a fix, so it carries no list. The panel must render
@@ -150,7 +150,7 @@ describe('the Help modal', () => {
     expect(screen.queryByText('\u2713')).not.toBeOnTheScreen();
   });
 
-  // The three modals share one compact Close button, so Help's must not drift wide again (owner, 2026-09-27)
+  // The three modals share one compact Close button, so Help's must not drift wide again
   it('closes with the same compact button the other modals use', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 

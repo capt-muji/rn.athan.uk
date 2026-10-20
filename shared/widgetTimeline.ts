@@ -60,7 +60,7 @@ import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetT
  * strings cross the bridge as data.
  */
 const widgetStrings = (): WidgetStrings => ({
-  // Fixed lowercase Latin unit bytes in every locale, rows 85/102/83 and the owner's 2026-10-18 amendment: never localise.
+  // Fixed lowercase Latin unit bytes in every locale: never localise.
   h: 'h',
   m: 'm',
   s: 's',
@@ -82,7 +82,7 @@ export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
  * Days of prayer boundaries each push carries, on both platforms. The widget
  * re-reads its stored timeline when it runs out, so this is how long a widget
  * stays correct with no app launch and no background refresh. Three days is
- * what the owner judged enough (owner 2026-09-25): the background task runs
+ * enough: the background task runs
  * every 3 hours and the foreground refresh every 2, so a phone in ordinary use
  * re-pushes dozens of times inside the window. 3 costs 23 iOS entries and
  * ~9.8KB, where 7 cost 47 and ~20KB; WidgetKit answers an over-budget timeline

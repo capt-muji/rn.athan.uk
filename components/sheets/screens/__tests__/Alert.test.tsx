@@ -150,7 +150,7 @@ describe('the alert sheet for a Standard prayer, Friday 11 September 2026 at 14:
     try {
       await render(<AlertSheet />);
 
-      // Row 88, 2026-10-15: Latin digits on every value, the stepper's word kept
+      // Latin digits on every value, the stepper's word kept
       expect(screen.getByText('15')).toBeOnTheScreen();
     } finally {
       setActiveLocale('en');

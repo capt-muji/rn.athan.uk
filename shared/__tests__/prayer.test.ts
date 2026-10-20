@@ -1325,8 +1325,8 @@ describe('never copies, averages or synthesises a prayer time', () => {
 });
 
 // =============================================================================
-// firstStillDueListDay: the earliest list day that is still current (finding 74; owner 2026-09-13:
-// a day stays current until its last readable row has passed)
+// firstStillDueListDay: the earliest list day that is still current (a day stays
+// current until its last readable row has passed)
 // =============================================================================
 
 /** Stores the given days (FIELDS order) as a download is stored, replacing whatever was stored */

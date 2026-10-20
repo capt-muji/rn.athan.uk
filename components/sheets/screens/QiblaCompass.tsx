@@ -138,7 +138,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
         const size = radius * FACE.cardinalSize;
         const labelWidth = String(angle).length * size * FACE.digitAdvance;
         // The circle's x is computed from the number's advance rather than flowed after the digits: flowing put it
-        // further out the longer the number was (the owner's 2026-10-14 read, 0 tight and 270 adrift)
+        // further out the longer the number was
         const degreeX = at.x + labelWidth / 2 + size * FACE.degreeGap;
 
         return (

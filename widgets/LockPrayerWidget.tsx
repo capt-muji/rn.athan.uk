@@ -20,10 +20,10 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so the system tints whatever
  * these set. One size throughout; weight and opacity carry the hierarchy,
- * and the SECOND reading on a line is the muted one (owner 2026-09-25).
+ * and the SECOND reading on a line is the muted one.
  * Three compositions per schedule, in gallery order: Layout 1 (name +
  * ticking countdown), Layout 2 (name + absolute time; no countdown and no
- * dot, owner ruling 2026-09-20) and Layout 3 (name + absolute time with the
+ * dot) and Layout 3 (name + absolute time with the
  * countdown beneath). Layouts 1 and 2 split the slot into halves meeting at
  * its midline: a timer Text reports a worst-case width as its intrinsic
  * size, so a shrink-wrapped row measures a reservation rather than the
@@ -469,7 +469,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
     // Centred because the rectangular face can span half the lock screen —
     // a left-anchored line would float off-balance in the wide slot. Just
-    // the name and the absolute time (owner ruling 2026-09-20): the dot and
+    // the name and the absolute time: the dot and
     // the countdown are gone from this layout.
     return (
       <VStack

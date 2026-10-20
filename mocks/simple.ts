@@ -26,8 +26,8 @@ import type { IApiResponse } from '@/shared/types';
 // in v2.0) and is handled by the rules above. The seeding below therefore never
 // writes a small-hours Standard row: the evening branch's latest Isha is exactly
 // 23:55:00.000, the pre-dawn branch composes a realistic day with Fajr next, and
-// the spent late-evening branch serves the day's real static shape (owner
-// ruling, 2026-10-16: any hour, any day, no dashes).
+// the spent late-evening branch serves the day's real static shape: any
+// hour, any day, no dashes.
 
 const MINUTE = 60_000;
 
@@ -72,7 +72,7 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     dhuhr: addMinutes(minuteFloor, -2),
     asr: addMinutes(minuteFloor, -1),
     // Boundary-based, not ceil-based: the gaps stay inside the minutes the countdown's round-up
-    // displays, so Maghrib always reads 1m away and Isha 2m (owner report, 2026-10-16)
+    // displays, so Maghrib always reads 1m away and Isha 2m
     magrib: addMinutes(minuteFloor, 1),
     isha: addMinutes(minuteFloor, 2),
   };

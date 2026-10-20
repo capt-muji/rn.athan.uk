@@ -242,7 +242,7 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     await pushScheduleAndroid(ScheduleType.Standard);
     await pushScheduleAndroid(ScheduleType.Extra);
     // The native minute-refresh chain keeps the widgets ticking after the
-    // host pauses this process's JS timers (owner ruling 2026-09-19)
+    // host pauses this process's JS timers
     try {
       armWidgetRefreshChain();
     } catch (error) {

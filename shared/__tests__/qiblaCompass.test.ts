@@ -63,7 +63,7 @@ describe('the dial ticks', () => {
 });
 
 describe('the cardinal numbers', () => {
-  // The owner's 2026-10-14 ruling replaced the per-language letters with the four Latin bearings, identical in every
+  // The per-language letters were replaced with the four Latin bearings, identical in every
   // language; the ring reads no locale at all (the stringGuard suite proves the module names no catalog, and
   // Qibla.test.tsx draws the same four under all six)
   it('prints the four bearings as Latin numbers, never letters', () => {

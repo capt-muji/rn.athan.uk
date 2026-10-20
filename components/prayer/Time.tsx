@@ -62,7 +62,7 @@ export default function PrayerTime({ type, index }: Props) {
   const isStandard = type === ScheduleType.Standard;
   // The animated style owns the colon in every state, its endpoint pair keyed to the row:
   // a static ink swapped in after an animated one leaves the array never lands on Fabric,
-  // which keeps the dim colour the UI thread last applied (owner report, 2026-10-16)
+  // which keeps the dim colour the UI thread last applied
   const colonPair = colonInkPair({
     isNext: Prayer.isNext,
     isPassed: Prayer.isPassed,

@@ -67,7 +67,7 @@ export const findNextReadable = (prayers: Prayer[], now: Date): ReadablePrayer |
  * Whether a list day with readable rows stays on screen after the last of them until 00:00 London at its end
  *
  * It does when the list day after it has no readable row, since that day comes on screen only at its own
- * start (R8, owner ruling 2026-09-14). A readable row after the day's own 00:00 hands the list over at
+ * start (R8). A readable row after the day's own 00:00 hands the list over at
  * itself instead, and a following day the sequence does not hold is not waited for.
  *
  * @param readable The day's readable rows
@@ -159,7 +159,7 @@ export const isRowPassed = (prayers: Prayer[], row: Prayer, now: Date): boolean 
  *
  * Only that row, never one further up: a bar measured from an earlier prayer would span a prayer it passes
  * over and read as the wrong gap, so an unreadable Magrib leaves no bar before Isha rather than a longer one
- * from Asr, and the badge hides with it (owner ruling 2026-09-14, R14).
+ * from Asr, and the badge hides with it.
  *
  * @param prayers Rows to search. The caller adds the list before from storage when the sequence lacks it
  * @param next The next readable row

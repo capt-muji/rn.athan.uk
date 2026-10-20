@@ -21,7 +21,7 @@ import org.json.JSONObject
  * alarm just past each wall-minute edge re-renders every placed widget via
  * the public ACTION_APPWIDGET_UPDATE path, and re-arms itself. The JS flip
  * chain in stores/widget.ts dies with the host process, which froze the
- * countdown until the app next opened (owner ruling 2026-09-19).
+ * countdown until the app next opened.
  *
  * expo-widgets' own WidgetsUpdater is module-private, so the refresh rides
  * each generated GlanceAppWidgetReceiver's standard update broadcast; the
@@ -31,8 +31,8 @@ import org.json.JSONObject
  * layout, so only the composition ("size") is patched HERE: each tick reads
  * every placed id's actual width from the system and writes that
  * composition into the kind's stored props before the re-render. The
- * composition flips within a minute of a resize (owner ruling
- * 2026-09-19), which a grid or display-size change alters without any
+ * composition flips within a minute of a resize, which a grid or
+ * display-size change alters without any
  * resize at all.
  */
 internal object WidgetRefreshScheduler {
@@ -184,7 +184,7 @@ internal object WidgetRefreshScheduler {
         val appContext = context.applicationContext
         val alarmManager = appContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         // 500ms past the edge: the countdown label is minute-ceil and the
-        // chain is wall-clock synced (owner ruling 2026-09-19), so the flip
+        // chain is wall-clock synced, so the flip
         // lands within half a second of the system minute change
         var atMillis = (System.currentTimeMillis() / MINUTE_MS + 1) * MINUTE_MS + 500
         if (atMillis < System.currentTimeMillis() + 250) atMillis += MINUTE_MS

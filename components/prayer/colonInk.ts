@@ -4,7 +4,7 @@
  *
  * The animated style owns the colon permanently: a static ink swapped into the style array
  * after an animated one leaves it does not land on Fabric, which keeps the last value the
- * UI thread applied - the dim colour an upcoming row faded from (owner report, 2026-10-16).
+ * UI thread applied - the dim colour an upcoming row faded from.
  */
 
 import { COLORS } from '@/shared/constants';

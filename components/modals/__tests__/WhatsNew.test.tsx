@@ -90,7 +90,7 @@ describe("the What's New modal after an update to 1.27.140", () => {
   });
 
   // A style is read because it is a rule the app keeps: the release list grows with every stamped
-  // release, and an unbounded list grows the compact card past the screen (owner, 2026-10-12)
+  // release, and an unbounded list grows the compact card past the screen
   it('scrolls its items rather than growing past the screen', async () => {
     await render(<ModalWhatsNew visible={true} version='1.27.140' items={[TABLETS, SOUNDS]} onClose={jest.fn()} />);
 

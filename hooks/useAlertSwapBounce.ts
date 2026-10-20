@@ -14,8 +14,8 @@ import { ANIMATION } from '@/shared/constants';
 import type { AlertType } from '@/shared/types';
 
 /**
- * Alert icon change-bounce: the owner-picked Pop effect (2026-09-08, of five
- * on-device candidates).
+ * Alert icon change-bounce: the Pop effect, the pick of five
+ * on-device candidates.
  *
  * A GPU-composited transform bounce on the icon's inner wrapper — the press
  * AnimScale stays on the outer wrapper, so the two never fight. The glyph

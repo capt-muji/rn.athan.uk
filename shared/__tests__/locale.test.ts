@@ -125,7 +125,7 @@ describe('the stored-preference round trip', () => {
 
 describe('chevronFor', () => {
   it('points the sheet chevron with the reading direction, whatever the locale', () => {
-    // The owner's ruling, 2026-10-14: LTR locales point right, every RTL locale mirrors
+    // LTR locales point right, every RTL locale mirrors
     expect(chevronFor()).toBe('\u203A');
     setActiveLocale('ar');
     try {

@@ -206,9 +206,9 @@ describe('app config android widget resolution', () => {
     );
     for (const widget of home) {
       const android = widget.android as Record<string, unknown>;
-      // Grid-agnostic sizing (owner ruling 2026-09-19): minWidth arithmetic is
+      // Grid-agnostic sizing: minWidth arithmetic is
       // the only lever, so no targetCell keys exist. Sizes are locked like
-      // iOS (owner ruling 2026-09-19): small = 50%, medium = 100%, the eight
+      // iOS: small = 50%, medium = 100%, the eight
       // kinds ARE the size choices.
       expect(android.resizeMode).toBe('none');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');

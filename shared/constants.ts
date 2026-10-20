@@ -280,7 +280,7 @@ export const UNAVAILABLE_TIME = '--:--';
 
 /**
  * The countdown's name while it shows UNAVAILABLE_TIME with no overlay open: the list on screen has no prayer
- * left to count to, so none is named (owner ruling 2026-09-14). Three plain periods with no spaces; the overlay
+ * left to count to, so none is named. Three plain periods with no spaces; the overlay
  * still names the prayer it shows
  */
 export const COUNTDOWN_WAITING_NAME = '...';
@@ -695,7 +695,7 @@ export const COLORS = {
     secondary: 'rgba(160, 200, 255, 0.54)',
     /** Muted text: inactive prayers, timestamps */
     muted: 'rgba(138, 169, 214, 0.38)',
-    /** The prayer row's time at rest, a quarter above the muted ink: the owner found it too dim on 2026-10-14. The row's own name and bell keep `muted` */
+    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted` */
     rowTime: 'rgba(138, 169, 214, 0.475)',
     /** Disabled/hint text */
     disabled: 'rgba(146, 211, 255, 0.65)',
@@ -838,7 +838,7 @@ export const COLORS = {
   },
 
   /**
-   * The qibla compass, in the two states the owner locked in on 2026-09-30.
+   * The qibla compass, in its two locked states.
    *
    * `away` is the app's violet-tinted dark with one gold accent; `facing` warms EVERY role to gold at once, which is
    * what tells the user they are on the line without anything to read.

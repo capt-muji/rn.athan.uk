@@ -43,7 +43,7 @@ describe('the location and date lines', () => {
       const lines = location.parent?.children ?? [];
       const dateStyle = flattenStyle((lines[1] as unknown as { props: { style: unknown } }).props.style);
       // The pin that measured ar against the Latin box clipped the taller face; the font's
-      // own box serves everywhere now (owner ruling, 2026-10-14)
+      // own box serves everywhere now
       expect(flattenStyle(location.props.style).lineHeight).toBeUndefined();
       expect(dateStyle.lineHeight).toBeUndefined();
     } finally {

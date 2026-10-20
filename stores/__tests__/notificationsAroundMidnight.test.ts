@@ -147,7 +147,7 @@ describe('a Fajr just after 00:00', () => {
 });
 
 describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74, gap map item 6)", () => {
-  // The alarm window starts from the earliest list day that still has a row due (owner, 2026-09-13),
+  // The alarm window starts from the earliest list day that still has a row due,
   // so a reschedule after midnight re-attempts yesterday's post-midnight alarm instead of cancelling
   // it as stale. The window keeps its length: while yesterday is still due it is [yesterday, today]
   const ISHA_AT_0001: Times = ['02:40', '04:43', '13:02', '17:20', '21:25', '00:01'];

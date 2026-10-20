@@ -33,7 +33,7 @@ describe('the update prompt', () => {
   });
 
   // A style is read because it is a rule the app keeps: the message is bounded so the card can
-  // never grow past the screen in a longer language (owner, 2026-10-12)
+  // never grow past the screen in a longer language
   it('bounds its message rather than growing past the screen', async () => {
     await render(<ModalUpdate visible={true} onClose={jest.fn()} onUpdate={jest.fn()} />);
 

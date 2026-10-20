@@ -48,7 +48,7 @@ const CHEVRON_SIZE = 20;
 /**
  * One question, closed until it is asked for
  *
- * Every question starts closed and only one is open at a time (owner, 2026-09-27): the page opens as
+ * Every question starts closed and only one is open at a time: the page opens as
  * a list of causes to scan, and only the one a user recognises costs them any reading. The whole row
  * is the trigger, because a chevron alone is a small target on a phone.
  */
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   question: {
     flex: 1,
     fontSize: ty.size(15),
-    // The Arabic script line box, because the pinned 20 point box clipped the question's dots and descenders (owner read, 2026-10-15)
+    // The Arabic script line box, because the pinned 20 point box clipped the question's dots and descenders
     lineHeight: ty.scriptLineHeight?.(15) ?? ty.lineHeight(20),
     fontFamily: ty.familyMedium,
     color: INK,

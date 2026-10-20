@@ -50,7 +50,7 @@ export default function Navigation() {
   const handlePageSelected = (e: { nativeEvent: { position: number } }) => {
     const position = e.nativeEvent.position;
 
-    // Self-heal (chaos 2026-09-08, finding 2): a native drag begun in a
+    // Self-heal: a native drag begun in a
     // momentary overlay-closed instant settles even after scrollEnabled flips
     // back to false. If the pager lands on the other schedule under an open
     // overlay, close the overlay instead of rendering it over the wrong page

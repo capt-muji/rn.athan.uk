@@ -121,7 +121,7 @@ describe('the string census guard', () => {
 
   it('holds the compass ring’s bearings as module data, not catalog copy', () => {
     const source = fs.readFileSync(path.join(ROOT, 'shared/qiblaCompass.ts'), 'utf8');
-    // The owner's 2026-10-14 ruling made the ring the four Latin degree numbers,
+    // The ring is the four Latin degree numbers,
     // identical in every language, so the module holds no qibla.cardinal key and
     // reads no catalog at all
     expect(source).toContain('CARDINAL_ANGLES');

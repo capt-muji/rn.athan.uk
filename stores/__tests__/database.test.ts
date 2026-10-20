@@ -489,8 +489,8 @@ describe('reminder scheduling records', () => {
  * and the sync path's full refresh. Anything else that needs to clear the cache
  * goes through `clearUpgradeCache`, which owns the keep-list.
  *
- * The error screen's Refresh button does clear the cache — owner ruling,
- * 2026-09-12: reaching that screen means something has gone wrong, and the
+ * The error screen's Refresh button does clear the cache —
+ * reaching that screen means something has gone wrong, and the
  * destruction is acceptable because preferences survive. It routes through
  * `clearUpgradeCache` so it inherits the full keep-list rather than an inline
  * one, which is what the second test below pins.

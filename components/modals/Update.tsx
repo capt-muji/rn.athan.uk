@@ -8,7 +8,7 @@ import { typographyFor } from '@/shared/typography';
 
 import Modal from './Modal';
 
-/** The Help modal's list share (owner, 2026-10-12): bounds the message so the card can never grow past the screen, never reached by today's copy */
+/** Bounds the message so the card can never grow past the screen, never reached by today's copy */
 const MESSAGE_HEIGHT_SHARE = 0.62;
 
 type Props = {

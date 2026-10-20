@@ -692,7 +692,7 @@ describe('a Magrib that falls after midnight', () => {
     }
   );
 
-  // The owner's own two cases, in their own numbers (2026-09-13). The gap assertion above
+  // The two real cases that drove the rule, in their own numbers. The gap assertion above
   // proves the rule without ever showing it, and "one hour before Magrib" is the part of this
   // finding that got misread — so state the answer rather than imply it. Crossing back over
   // midnight is not a special case in the code: subtracting from an instant carries the date,
