@@ -135,6 +135,10 @@ produced it. Everything else in `check:device` is build-agnostic.
   the owner uses, run `aapt2 dump badging <apk> | grep "^package"` and stop if it is not the
   fleettest id (aapt2, never aapt, and check the tool exists first). A genuine `.fleettest`
   install needs the suffix exported inside its own prebuild and build, never passed to it.
+  After any install, assert the app is installed for User 0 alone:
+  `adb -s <serial> shell dumpsys package <pkg> | grep '^    User '` - Samsung's Dual Messenger
+  user (95 on the S23) takes a parallel copy that reads as a second app; strip it with
+  `adb -s <serial> shell pm uninstall --user <n> <pkg>` until exactly one user carries the app.
 - Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
 
 ## Device testing
