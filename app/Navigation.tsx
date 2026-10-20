@@ -102,20 +102,27 @@ export default function Navigation() {
       </PagerView>
 
       <Animated.View
+        testID={'bottom-bar'}
         style={[
-          styles.dotsContainer,
+          styles.bar,
           { bottom: Platform.OS === 'android' ? bottom + SPACING.md : Math.max(bottom, SPACING.xl) },
           chromeOpacityStyle,
         ]}>
-        <View style={styles.buttonWrapper}>
-          <MemoSettingsButton />
-        </View>
         {/* Decorative: the pager already announces which page it is on, so naming the dots
             would have a screen reader read the position twice */}
-        <View style={styles.dotsRow} accessibilityElementsHidden importantForAccessibility={'no-hide-descendants'}>
-          <Animated.View style={[styles.dot, dot0OpacityStyle]} />
-          <Animated.View style={[styles.dot, dot1OpacityStyle]} />
-        </View>
+        <Animated.View
+          testID={'schedule-dot-0'}
+          style={[styles.dot, dot0OpacityStyle]}
+          accessibilityElementsHidden
+          importantForAccessibility={'no-hide-descendants'}
+        />
+        <MemoSettingsButton />
+        <Animated.View
+          testID={'schedule-dot-1'}
+          style={[styles.dot, dot1OpacityStyle]}
+          accessibilityElementsHidden
+          importantForAccessibility={'no-hide-descendants'}
+        />
       </Animated.View>
     </View>
   );
@@ -129,21 +136,12 @@ const styles = StyleSheet.create({
     end: 0,
     bottom: 0,
   },
-  dotsContainer: {
-    flexDirection: 'column',
+  bar: {
+    flexDirection: 'row',
     alignItems: 'center',
+    gap: SPACING.sm,
     position: 'absolute',
     alignSelf: 'center',
-    gap: SPACING.sm,
-  },
-  buttonWrapper: {
-    position: 'absolute',
-    bottom: SIZE.nav.bottomOffset, // Position above dots
-    zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
-  },
-  dotsRow: {
-    flexDirection: 'row',
-    gap: SPACING.sm,
   },
   dot: {
     width: SIZE.navigationDot,

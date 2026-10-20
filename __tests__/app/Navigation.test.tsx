@@ -1,11 +1,14 @@
 /**
- * The two prayer pages: both lists in one pager, and what a swipe that settles does to an open overlay
+ * The two prayer pages and the bottom bar: both lists in one pager, what a swipe that settles does to an open
+ * overlay, and the one line of dot, Settings button, dot
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
+import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
@@ -125,5 +128,84 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await render(<Navigation />);
 
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
+  });
+});
+
+describe('the bottom bar, Friday 11 September 2026 at 14:00', () => {
+  // The safe-area mock answers 0 on every inset, so a bottom inset is driven through the provider
+  const withBottomInset = (inset: number) => (
+    <SafeAreaProvider
+      initialMetrics={{
+        frame: { x: 0, y: 0, width: 390, height: 844 },
+        insets: { top: 0, right: 0, bottom: inset, left: 0 },
+      }}>
+      <Navigation />
+    </SafeAreaProvider>
+  );
+
+  // The anchor rule: the line's bottom edge is today's dots-bottom line, clear of the home indicator. iOS clamps the
+  // inset up to SPACING.xl, Android adds SPACING.md to it. Columns: the platform, the bottom inset, the anchor
+  it.each<[string, number, number]>([
+    ['ios', 0, SPACING.xl],
+    ['ios', 34, 34],
+    ['android', 0, SPACING.md],
+    ['android', 10, 10 + SPACING.md],
+  ])('anchors the line under %s with inset %s at bottom %s', async (os, inset, anchor) => {
+    showLondonDay('2026-09-11', '14:00');
+    if (os === 'android') onPlatform('android');
+
+    await render(withBottomInset(inset));
+
+    expect(screen.getByTestId('bottom-bar')).toHaveStyle({ bottom: anchor });
+  });
+
+  // The owner's ruled arrangement: small dot, big Settings button, small dot, and nothing else on the line. The
+  // dots are decorative, so they are reached as drawn elements, not through a screen reader
+  it('flanks the Settings button with the two dots in order', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('bottom-bar').children).toEqual([
+      screen.getByTestId('schedule-dot-0', { includeHiddenElements: true }),
+      screen.getByRole('button', { name: 'Settings' }),
+      screen.getByTestId('schedule-dot-1', { includeHiddenElements: true }),
+    ]);
+  });
+
+  // One centred line: the dots vertically centre against the button, a small gap between neighbours
+  it('lays the bar out as one centred row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('bottom-bar')).toHaveStyle({
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: SPACING.sm,
+    });
+  });
+
+  // Decorative dots: the pager already announces the page, so a screen reader must not hear the dots again. The
+  // dots are queried as drawn elements because being hidden is exactly what they assert
+  it('hides the dots from a screen reader while the Settings button stays labelled', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('schedule-dot-0', { includeHiddenElements: true })).toHaveProp(
+      'accessibilityElementsHidden',
+      true
+    );
+    expect(screen.getByTestId('schedule-dot-1', { includeHiddenElements: true })).toHaveProp(
+      'accessibilityElementsHidden',
+      true
+    );
+    expect(screen.getByRole('button', { name: 'Settings' })).toBeOnTheScreen();
+  });
+
+  // The stacking is gone: the button answers to the bar row directly, with no wrapper left above it
+  it('sits the Settings button directly in the bar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByRole('button', { name: 'Settings' }).parent).toBe(screen.getByTestId('bottom-bar'));
   });
 });

@@ -594,11 +594,6 @@ export const SIZE = {
     /** Shared width of all modal action buttons */
     buttonWidth: 160,
   },
-  /** Navigation dimensions */
-  nav: {
-    /** Bottom offset for navigation elements (25px) */
-    bottomOffset: 25,
-  },
   /** Loading spinner size (matches the iOS 'small' 20pt spinner; Android renders this as dp) */
   activityIndicator: 20,
   /** Navigation dot diameter */
