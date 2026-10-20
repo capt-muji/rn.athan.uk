@@ -107,7 +107,8 @@ export default function Navigation() {
           styles.bar,
           { bottom: Platform.OS === 'android' ? bottom + SPACING.md : Math.max(bottom, SPACING.xl) },
           chromeOpacityStyle,
-        ]}>
+        ]}
+        pointerEvents={'box-none'}>
         {/* Decorative: the pager already announces which page it is on, so naming the dots
             would have a screen reader read the position twice */}
         <Animated.View
@@ -115,6 +116,7 @@ export default function Navigation() {
           style={[styles.dot, dot0OpacityStyle]}
           accessibilityElementsHidden
           importantForAccessibility={'no-hide-descendants'}
+          pointerEvents={'none'}
         />
         <MemoSettingsButton />
         <Animated.View
@@ -122,6 +124,7 @@ export default function Navigation() {
           style={[styles.dot, dot1OpacityStyle]}
           accessibilityElementsHidden
           importantForAccessibility={'no-hide-descendants'}
+          pointerEvents={'none'}
         />
       </Animated.View>
     </View>

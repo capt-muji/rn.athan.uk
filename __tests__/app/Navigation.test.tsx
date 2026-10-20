@@ -184,6 +184,16 @@ describe('the bottom bar, Friday 11 September 2026 at 14:00', () => {
     });
   });
 
+  // The fall-through rule: the bar's contiguous band spans dot, gap, button, gap, dot at full button height, and
+  // a swipe begun on a gap or the dots must reach the pager below, so the band itself never takes a touch — only
+  // the button, a child, does, exactly as the chrome layer above it models
+  it('never takes a touch itself so pager swipes over the gaps and dots fall through', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('bottom-bar')).toHaveProp('pointerEvents', 'box-none');
+  });
+
   // Decorative dots: the pager already announces the page, so a screen reader must not hear the dots again. The
   // dots are queried as drawn elements because being hidden is exactly what they assert
   it('hides the dots from a screen reader while the Settings button stays labelled', async () => {
@@ -199,6 +209,16 @@ describe('the bottom bar, Friday 11 September 2026 at 14:00', () => {
       true
     );
     expect(screen.getByRole('button', { name: 'Settings' })).toBeOnTheScreen();
+  });
+
+  // Decorative dots are never touch targets: a dot that ate a gesture would kill a pager swipe begun on it, so
+  // both refuse touches outright, queried as drawn elements as above
+  it('makes each dot refuse touches so gestures over the dots reach the pager', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    expect(screen.getByTestId('schedule-dot-0', { includeHiddenElements: true })).toHaveProp('pointerEvents', 'none');
+    expect(screen.getByTestId('schedule-dot-1', { includeHiddenElements: true })).toHaveProp('pointerEvents', 'none');
   });
 
   // The stacking is gone: the button answers to the bar row directly, with no wrapper left above it
