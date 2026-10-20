@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.2.6",
+    "version": "2.2.7",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -212,6 +212,7 @@
       ],
       "./plugins/gradleJvmMemory",
       "./plugins/portraitOnlyIpad",
+      "./plugins/duoTallCanvas",
       "./plugins/replacePreviousNotification",
       "expo-asset",
       "expo-background-task",

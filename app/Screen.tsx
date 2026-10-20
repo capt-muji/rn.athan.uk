@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { View, type ViewProps } from 'react-native';
+import { useWindowDimensions, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Countdown } from '@/components/countdown';
@@ -17,6 +17,7 @@ interface Props {
 
 export default function Screen({ type }: Props) {
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
   const showTimePassed = useAtomValue(showTimePassedAtom);
   // The extras page renders off-screen at launch — its content defers past
   // the first content frame (launch chrome defer). The flip batches into the
@@ -26,7 +27,7 @@ export default function Screen({ type }: Props) {
   const deferContent = type === ScheduleType.Extra && !chromeDeferred;
 
   const computedStyles: ViewProps['style'] = {
-    paddingTop: honoredTopInset(insets.top) + SCREEN.paddingTop,
+    paddingTop: honoredTopInset(insets.top, width) + SCREEN.paddingTop,
     paddingBottom: insets.bottom,
     maxWidth: SIZE.contentMaxWidth,
     width: '100%',
