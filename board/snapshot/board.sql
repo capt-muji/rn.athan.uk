@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict HXC4DlVafbpnoF4SsrFf0yhPbsgU6CWVbIpucvILxxduN0dlD8wTp4iOZZ8kcBR
+\restrict 8rwST0qp2H1boKSyk9peynID0RC3gorgZrxcUaVdJOwS74WtyOEiLcaufFkb7PV
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5904,6 +5904,18 @@ Acceptance:
 - [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
 - [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-20 00:06:01.090843+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (286, 1, 286, NULL, 4, 'Step 3: Design 1 becomes the shipped bottom bar with its layout suite', 'The owner''s picked arrangement replaces the column: one row, dot, Settings button, dot, vertically centred, its bottom on today''s dots-bottom anchor. Full unit coverage red before green, one commit, one version, yarn validate green.', NULL, NULL, NULL, 10000, '2026-10-20 05:33:19.118379+00', '2026-10-20 05:49:43.951771+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, NULL, 1, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: every What''s New item renders in the reader''s language - the seven historical items that still carry English stand-ins in the five non-English catalogs are translated, and a lock makes any future untranslated item fail the suite before it ships.
+
+Where: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass. The language item already carries real translations; en stays the source. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract extended to resolve the archive under every locale and fail when a title or body equals its en value.
+
+Owner report 2026-10-20: on the Arabic setting the modal shows the language item in Arabic and the seven items after it in English.
+
+Acceptance:
+- [ ] the seven items read translated under ar, ms, so, hi, th - each draft verified per the owner''s copy process (the owner does not read these languages, so the drafts take an explicit verification pass the owner rules)
+- [ ] the lock test fails on an English stand-in (red-first proof) and runs inside yarn validate
+- [ ] every locale''s strings sit inside the title and body length limits
+- [ ] the en catalog byte-identical
+- [ ] yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-20 20:39:18.314801+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 
 
 --
@@ -8959,6 +8971,9 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2747, 295, 'activity', 'owner', NULL, 'field', '2026-10-20 16:10:08.46715+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "295"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2748, 295, 'activity', 'owner', NULL, 'label_add', '2026-10-20 16:10:08.490513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 182, "value": "#295"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2749, 64, 'comment', 'owner', 'Regression of this row''s fix, reported 2026-10-20, Android only: the bottom Close row paints opaque white from its first frame again while the card fades in. Tracked in row 295.', NULL, '2026-10-20 16:10:08.51182+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2750, 296, 'activity', 'owner', NULL, 'created', '2026-10-20 20:39:17.986562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2751, 296, 'activity', 'owner', NULL, 'field', '2026-10-20 20:39:18.22055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "296"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2752, 296, 'activity', 'owner', NULL, 'label_add', '2026-10-20 20:39:18.322248+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 183, "value": "#296"}}', NULL);
 
 
 --
@@ -9214,6 +9229,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (574, 293, 1, NULL, 293, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (575, 294, 1, NULL, 294, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (576, 295, 1, NULL, 295, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (577, 296, 1, NULL, 296, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -9569,6 +9585,7 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 180);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 181);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 182);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 183);
 
 
 --
@@ -9978,6 +9995,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (574, 284, 4, 'Done', 'completed', '2026-10-20 11:38:47.517942+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (578, 293, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.807+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (579, 294, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.879+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (581, 296, 1, 'Backlog', 'backlog', '2026-10-20 20:39:17.916+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -10391,6 +10409,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (180, 1, 3, '#293', '#ffffff', '2026-10-20 16:10:08.274237+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (181, 1, 3, '#294', '#ffffff', '2026-10-20 16:10:08.299161+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (182, 1, 3, '#295', '#ffffff', '2026-10-20 16:10:08.324021+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (183, 1, 3, '#296', '#ffffff', '2026-10-20 20:39:18.116685+00');
 
 
 --
@@ -10701,7 +10720,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 296, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 297, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -20252,12 +20271,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3597);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3601);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 9);
@@ -20528,7 +20548,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2749, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2752, true);
 
 
 --
@@ -20577,14 +20597,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 576, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 577, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 295, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 296, true);
 
 
 --
@@ -20605,7 +20625,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 122, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 580, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 581, true);
 
 
 --
@@ -20640,7 +20660,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 182, true);
+SELECT pg_catalog.setval('public.label_id_seq', 183, true);
 
 
 --
@@ -25088,5 +25108,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict HXC4DlVafbpnoF4SsrFf0yhPbsgU6CWVbIpucvILxxduN0dlD8wTp4iOZZ8kcBR
+\unrestrict 8rwST0qp2H1boKSyk9peynID0RC3gorgZrxcUaVdJOwS74WtyOEiLcaufFkb7PV
 

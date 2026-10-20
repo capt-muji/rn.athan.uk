@@ -100,7 +100,7 @@ tap opens the pull request itself.
 
 ### The labels
 
-A card shows labels and nothing else, so the labels carry everything, in a fixed order:
+A card shows labels and nothing else, so the labels carry everything, in a fixed order. Two phases, fixed: intake sets the number label alone; planning adds every other label (kind, surface, area, flags) together with the type. A Backlog card carrying only its number is complete, not waiting on a missed tag:
 
 1. The number, `#42`. Set at intake and never moved.
 2. The kind, one of `Bug`, `Feature`, `Investigation`, `Research`, `Chore`, `Refactor`, `Docs`, `Design`, `Testing`, `Release`. It matches the ticket's type field.
