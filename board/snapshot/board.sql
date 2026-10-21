@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict EdaIcnTb9niCeDXwgoOcgWQ6Aoax7QpGFXpE30kFYjbWYcKiEGcTfqUWIY1CsqG
+\restrict 31NCS8aFx118WieU10lzb5kGqYagEypaJ3UdDHIcJN9tRb5EouQpPGpiyrEDbjX
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5547,16 +5547,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 
 Monitoring row for the `expo-location` compass corrections. Three corrections to `expo-location`''s own code, so Expo maintains them and this repo carries nothing once merged and released: iOS `headingFilter` is never set (on the XS, 731 of 731 readings were discarded); the Android 2-degree emission gate starves a slow turn (0.83 Hz at 2 degrees per second), so it becomes configurable; `headingAccuracy` is bucketed 0 to 3 and the negative invalid-heading sentinel collapses into bucket 0, so it goes numeric. The local patch `patches/expo-location+58.0.17.patch` (Android 50Hz sensors, no emission gate, module from source; iOS `kCLHeadingFilterNone`) dies at the first re-pin past the release, proven on a phone per the standing re-pin rule. Waiting on Expo reviewing and releasing.', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-20 01:54:24.422226+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (277, 1, 277, NULL, 4, 'Step 1: the debug switcher and the ten arrangements land on lane/276', '', NULL, NULL, NULL, 1000, '2026-10-20 03:54:15.258751+00', '2026-10-20 04:11:22.101692+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (294, 1, 294, NULL, 1, 'Text never renders through opacity: colours carry the dim, so overlapping Arabic glyphs stop compounding', 'Goal: no text in the app renders through an opacity value - dimmed or fading text is carried entirely by its colour, on both platforms with no platform split, so the slight overlaps between Arabic glyphs read one even ink instead of a brighter, denser band (the Android reading; iOS composites a text run as one layer so it never showed the seam).
-
-Where: every Text/Animated.Text whose style or animated style sets opacity - the sweep names them all. Views and icons stay out of scope: their opacity is compositing, not text. The gradient background is the planning problem the owner named: one solid colour reads different against different parts of the gradient, so the colour basis is the plan''s core decision (the owner''s direction: full-opacity text, the colours do the work).
-
-Acceptance:
-- [ ] a sweep test proves no Text or Animated.Text carries opacity (style or animated style), running inside yarn validate
-- [ ] on the 3T under Arabic, the overlapping glyph regions read one even ink - the owner''s read is the bar
-- [ ] animations that faded text animate colour instead
-- [ ] iOS reads unchanged apart from the colour basis - the owner''s read
-- [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-20 16:09:59.879409+00', '2026-10-20 16:10:08.438845+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 3, 4, 'RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch
 
 Status note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief
@@ -5907,6 +5897,7 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (311, 1, 311, NULL, 4, 'Step 4: The mock APK built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted', '', NULL, NULL, NULL, 15000, '2026-10-21 06:41:53.547869+00', '2026-10-21 08:57:19.723465+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (317, 1, 317, NULL, 4, 'Step 1: The colour-carried dim prototype on lane/294', 'Produces: every static dim role a solid colour constant (tables in the T-294 plan doc); text-opacity sites A1-A7 and B1-B7 removed; tsc --noEmit and biome check green; committed on lane/294 for the owner''s mock build. No tests written, no jest run, no device work - owner order 2026-10-21.', NULL, NULL, NULL, 1000, '2026-10-21 11:40:11.361948+00', '2026-10-21 12:33:23.671914+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 4, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:56:33.939754+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
@@ -5941,6 +5932,7 @@ Acceptance:
 - [ ] yarn jest __tests__/app/index.test.tsx: a silent-patch launch renders no What''s New modal
 - [ ] yarn validate green
 - [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it', NULL, NULL, NULL, 10000, '2026-10-21 06:06:24.688756+00', '2026-10-21 10:57:06.893803+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (318, 1, 318, NULL, 1, 'Step 2: The sweep test and suite realigned inside yarn validate', 'Produces: a sweep test that fails on any Text or Animated.Text carrying opacity (style or animated style) and on any text colour alpha in (0,1) outside the alpha-0 hide roles; the existing opacity assertions (Alert, Stepper, SegmentedControl, Qibla, Sound sheets) rewritten to the colour-carried dim; yarn validate green. Waits on the owner''s verdict from the prototype read.', NULL, NULL, NULL, 2000, '2026-10-21 11:40:11.415618+00', '2026-10-21 11:40:11.415618+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (297, 1, 297, 3, 4, 'The What''s New modal groups its items under version headings, the newest twenty shown in version sections parted by separator lines', 'Goal: the What''s New modal reads as a versioned changelog - the newest 20 archived items grouped under version headings (major.minor, the patch hidden), newest group first, rendered per the owner-approved refine-04 design (2026-10-21).
 
 Where: components/modals/WhatsNew.tsx (the grouped list, its tag-pill headers and dot separators), shared/whatsNew.ts (the archive carries true per-item versions; grouping is display-level; the release stamp still gates appearance), and the content contract tests. The modal''s appear gate is untouched.
@@ -5952,6 +5944,17 @@ Acceptance:
 - [ ] the built modal read by the owner on the OnePlus 3T (transcribed on the row, screenshots never committed)
 - [ ] yarn validate green', NULL, NULL, NULL, 5000, '2026-10-20 22:18:32.651223+00', '2026-10-21 04:24:25.70735+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (308, 1, 308, NULL, 4, 'Step 1: The gate''s contract suite rewritten red-first and the oracle relaxed, in shared/__tests__/whatsNew.test.ts', '', NULL, NULL, NULL, 12000, '2026-10-21 06:41:53.422946+00', '2026-10-21 07:13:19.75231+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (319, 1, 319, NULL, 1, 'Step 3: The resting-hidden fades converted to colour', 'Produces: the prayer-row veil fade (Prayer.tsx:63), the ago-badge fade (Ago.tsx:52) and the info-box fade (OverlayInfoBox.tsx:39) carrying their open/close transition through colour instead of opacity, on the veil-merge colour the owner ruled from the prototype read. Waits on the owner''s verdict.', NULL, NULL, NULL, 3000, '2026-10-21 11:40:11.458829+00', '2026-10-21 12:18:30.552659+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (294, 1, 294, 2, 9, 'Text never renders through opacity: colours carry the dim, so overlapping Arabic glyphs stop compounding', 'Goal: no text in the app renders through an opacity value - dimmed or fading text is carried entirely by its colour, on both platforms with no platform split, so the slight overlaps between Arabic glyphs read one even ink instead of a brighter, denser band (visible on Android, and by the owner''s freshest word on iPhone too; the owner''s read is the bar either way).
+
+Where: every Text/Animated.Text whose style or animated style sets opacity, every ancestor opacity dimming a text subtree, and every rgba() text colour with alpha under 1 - the sweep names them all. Views and icons stay out of scope: their opacity is compositing, not text. The gradient background is the planning problem the owner named: one solid colour reads different against different parts of the gradient, so the colour basis is the plan''s core decision (the owner''s direction: full-opacity text, the colours do the work).
+
+Acceptance:
+- [ ] a sweep test proves no Text or Animated.Text carries opacity (style or animated style), running inside yarn validate
+- [ ] on the 3T under Arabic, the overlapping glyph regions read one even ink - the owner''s read is the bar
+- [ ] fades whose resting state is dimmed or hidden carry text through colour instead of opacity; transitions that pass between settled states (modal entrances) ride view compositing alone
+- [ ] iOS reads unchanged apart from the colour basis - the owner''s read
+- [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-20 16:09:59.879409+00', '2026-10-21 12:38:47.062484+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (295, 1, 295, 2, 4, 'Android help modal: the bottom Close row flashes opaque white while the card enters (row 77''s fix regressed)', 'Goal: opening Help on Android enters as one card - the bottom Close-button row never paints opaque white ahead of the card''s entrance.
 
 Where: components/modals/Help.tsx (the Close row''s entering={FadeIn} - row 77''s fix), components/modals/Modal.tsx (the container''s FadeIn, Android''s SlideInDown card entrance).
@@ -5965,6 +5968,7 @@ Acceptance:
 - [ ] the root cause named on the row: what makes Android differ from iOS here
 - [ ] yarn validate green', NULL, NULL, NULL, 3000, '2026-10-20 16:09:59.909596+00', '2026-10-21 04:24:25.702308+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (310, 1, 310, NULL, 4, 'Step 3: The launch suites and the stale truths - silent-patch integration test, fresh-install mock fix, version.ts and index.tsx comments, e2e/README.md gotcha', '', NULL, NULL, NULL, 14000, '2026-10-21 06:41:53.515644+00', '2026-10-21 07:13:19.847823+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (320, 1, 320, NULL, 1, 'Step 4: The device reads on the 3T and the iPhone', 'Produces: the owner''s mock-build read recorded here - on the 3T under Arabic the overlapping glyph regions read one even ink, and the iPhone reads unchanged apart from the colour basis. The owner is the eyes; the lane is the code. Waits on the prototype read and Step 3.', NULL, NULL, NULL, 4000, '2026-10-21 11:40:11.491042+00', '2026-10-21 11:40:11.491042+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (293, 1, 293, 9, 4, 'The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved', 'Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.
 
 Where: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN). The Ramadan decorations layer (components/ui/RamadanDecorations.tsx in Navigation''s chrome layer) sits where it sits today and reads no page padding.
@@ -5990,6 +5994,7 @@ Acceptance:
 - [ ] every locale''s titles and bodies sit within MAX_WHATS_NEW_TITLE_LENGTH and MAX_WHATS_NEW_BODY_LENGTH, asserted by the lock
 - [ ] the en catalog and its locks stay byte-identical (git diff shows no change to shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts)
 - [ ] yarn validate green on the merged tree', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 10:57:06.903596+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (321, 1, 321, NULL, 1, 'Step 5: The merge and close', 'Produces: lane/294 merged to uat, every step subtask ticked, relations cleared, the closing comment, and board/snapshot.sh in the run''s close commit. Waits on Steps 2-4.', NULL, NULL, NULL, 5000, '2026-10-21 11:40:11.516612+00', '2026-10-21 11:40:11.516612+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 1, NULL);
 
 
 --
@@ -9377,6 +9382,41 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3062, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.036967+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3063, 307, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.037803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3064, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.03947+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3065, 294, 'activity', 'owner', NULL, 'status', '2026-10-21 11:22:15.98951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3066, 317, 'activity', 'owner', NULL, 'created', '2026-10-21 11:40:11.37568+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3067, 317, 'activity', 'owner', NULL, 'parent', '2026-10-21 11:40:11.379194+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3068, 294, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 11:40:11.379194+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 317, "value": "T-317"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3069, 318, 'activity', 'owner', NULL, 'created', '2026-10-21 11:40:11.42246+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3070, 318, 'activity', 'owner', NULL, 'parent', '2026-10-21 11:40:11.425141+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3071, 294, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 11:40:11.425141+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 318, "value": "T-318"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3072, 319, 'activity', 'owner', NULL, 'created', '2026-10-21 11:40:11.465265+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3073, 319, 'activity', 'owner', NULL, 'parent', '2026-10-21 11:40:11.468101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3074, 294, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 11:40:11.468101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 319, "value": "T-319"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3075, 320, 'activity', 'owner', NULL, 'created', '2026-10-21 11:40:11.495505+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3076, 320, 'activity', 'owner', NULL, 'parent', '2026-10-21 11:40:11.497036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3077, 294, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 11:40:11.497036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 320, "value": "T-320"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3078, 321, 'activity', 'owner', NULL, 'created', '2026-10-21 11:40:11.520413+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3079, 321, 'activity', 'owner', NULL, 'parent', '2026-10-21 11:40:11.52155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3080, 294, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 11:40:11.52155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 321, "value": "T-321"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3083, 294, 'activity', 'owner', NULL, 'label_add', '2026-10-21 11:40:17.57076+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3084, 294, 'activity', 'owner', NULL, 'label_add', '2026-10-21 11:40:17.57076+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3081, 294, 'activity', 'owner', NULL, 'type', '2026-10-21 11:40:17.558369+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3082, 294, 'activity', 'owner', NULL, 'estimate', '2026-10-21 11:40:17.558369+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3085, 294, 'activity', 'owner', NULL, 'field', '2026-10-21 11:40:32.193186+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3086, 294, 'comment', 'owner', 'Planning: the evidence is in - 15 text-opacity sites and 13 dimmed text roles swept, the gradient arithmetic done. The plan doc T-294 carries the design and five steps (10 pts); the vision transcript is pending on a rate-limited dispatch. Sending the draft to the griller now.', NULL, '2026-10-21 11:40:42.720671+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3087, 294, 'activity', 'owner', NULL, 'description', '2026-10-21 11:59:55.885533+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no text in the app renders through an opacity value - dimmed or fading text is carried entirely by its colour, on both platforms with no platform split, so the slight overlaps between Arabic glyphs read one even ink instead of a brighter, denser band (visible on Android, and by the owner''s freshest word on iPhone too; the owner''s read is the bar either way).\n\nWhere: every Text/Animated.Text whose style or animated style sets opacity, every ancestor opacity dimming a text subtree, and every rgba() text colour with alpha under 1 - the sweep names them all. Views and icons stay out of scope: their opacity is compositing, not text. The gradient background is the planning problem the owner named: one solid colour reads different against different parts of the gradient, so the colour basis is the plan''s core decision (the owner''s direction: full-opacity text, the colours do the work).\n\nAcceptance:\n- [ ] a sweep test proves no Text or Animated.Text carries opacity (style or animated style), running inside yarn validate\n- [ ] on the 3T under Arabic, the overlapping glyph regions read one even ink - the owner''s read is the bar\n- [ ] fades whose resting state is dimmed or hidden carry text through colour instead of opacity; transitions that pass between settled states (modal entrances) ride view compositing alone\n- [ ] iOS reads unchanged apart from the colour basis - the owner''s read\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3088, 294, 'comment', 'owner', 'Owner order, dictated to the lead 2026-10-21, recorded for phase 1: this phase is deep planning plus a quick code-only prototype on the lane branch - no new tests, no jest runs (tsc --noEmit and biome check must be green to commit), no device driving, no builds, no pushes. The owner builds a mock from the branch and reads it on the phones; the owner is the eyes, the lane is the code. The suite''s existing opacity assertions stay red through the prototype and are rewritten in Step 2.', NULL, '2026-10-21 12:15:00.860139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3089, 319, 'activity', 'owner', NULL, 'title', '2026-10-21 12:18:30.562495+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The resting-hidden fades converted to colour"}, "from": {"value": "Step 3: The gradient overlay fades converted to colour"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3090, 294, 'activity', 'owner', NULL, 'status', '2026-10-21 12:18:30.608792+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3091, 294, 'comment', 'owner', 'Plan passed the griller on its third pass and the gate checks clean: plan doc T-294 carries the evidence, the colour arithmetic and five steps worth 10 points as subtasks. Moving to Ready; starting the Step 1 prototype now.', NULL, '2026-10-21 12:18:30.642278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3092, 294, 'activity', 'owner', NULL, 'status', '2026-10-21 12:18:41.844332+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3093, 317, 'activity', 'owner', NULL, 'status', '2026-10-21 12:33:23.682314+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3094, 294, 'comment', 'owner', 'Step 1 done: the colour-carried dim prototype is committed on lane/294 (4249bade, 2.4.12) - every static dim role paints one solid, the reminder cards'' dim rides per-state colour tables, and tsc and biome are green. The old opacity assertions in the Alert suite stay red by the owner''s recorded order until the Step 2 rewrite; the three gradient overlay fades wait on the owner''s read. The tree now waits on the owner''s mock build read from the branch.', NULL, '2026-10-21 12:33:23.72176+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3095, 294, 'activity', 'owner', NULL, 'field', '2026-10-21 12:33:39.258972+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3096, 294, 'activity', 'owner', NULL, 'field', '2026-10-21 12:33:52.134341+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3097, 294, 'comment', 'owner', 'Lead audit of the prototype: the diff matches the plan''s tables, every opacity left in the tree is a view, an icon or one of the three deferred veil fades, and tsc and biome verify green on lane/294. The vision zoom stays abandoned after six rate-limited dispatches this session; the owner''s read on glass replaces it. Parked for the owner''s verdict on the mock build of lane/294.', NULL, '2026-10-21 12:38:43.092725+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3098, 294, 'activity', 'owner', NULL, 'status', '2026-10-21 12:38:47.072719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3099, 294, 'activity', 'owner', NULL, 'field', '2026-10-21 12:39:11.547336+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s mock-build read of lane/294 (build-mock.zsh on the branch): the even-ink verdict on the 3T under Arabic and the iPhone, the corner-deviation read on the gradient solids, and the veil-merge colour that rules Step 3"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 
 
 --
@@ -9463,6 +9503,7 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (29
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (296, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (302, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (306, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (294, 2, 1);
 
 
 --
@@ -9648,6 +9689,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (593, 306, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (595, 307, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (594, 302, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (604, 294, 3, 'the owner''s mock-build read of lane/294 (build-mock.zsh on the branch): the even-ink verdict on the 3T under Arabic and the iPhone, the corner-deviation read on the gradient solids, and the veil-merge colour that rules Step 3', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -10000,7 +10042,6 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 8);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 4);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 181);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 180);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 148);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 3);
@@ -10025,6 +10066,9 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 185);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 2);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 181);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 3);
 
 
 --
@@ -10432,7 +10476,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (570, 272, 4, 'Done', 'completed', '2026-10-20 09:00:34.110197+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (572, 281, 4, 'Done', 'completed', '2026-10-20 11:19:36.288465+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (574, 284, 4, 'Done', 'completed', '2026-10-20 11:38:47.517942+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (579, 294, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.879+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (578, 293, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.807+00', '2026-10-20 22:24:58.925797+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (583, 295, 6, 'Planning', 'unstarted', '2026-10-20 22:24:58.923851+00', '2026-10-20 22:42:54.53532+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (590, 295, 2, 'Ready', 'unstarted', '2026-10-20 22:42:54.53532+00', '2026-10-20 22:43:01.229976+00');
@@ -10479,6 +10522,17 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (659, 296, 4, 'Done', 'completed', '2026-10-21 10:57:06.916808+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (657, 302, 4, 'Done', 'completed', '2026-10-21 10:57:06.917869+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (660, 307, 4, 'Done', 'completed', '2026-10-21 10:57:06.925128+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (579, 294, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.879+00', '2026-10-21 11:22:15.986885+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (663, 318, 1, 'Backlog', 'backlog', '2026-10-21 11:40:11.415+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (664, 319, 1, 'Backlog', 'backlog', '2026-10-21 11:40:11.458+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (665, 320, 1, 'Backlog', 'backlog', '2026-10-21 11:40:11.491+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (666, 321, 1, 'Backlog', 'backlog', '2026-10-21 11:40:11.516+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (661, 294, 6, 'Planning', 'unstarted', '2026-10-21 11:22:15.986885+00', '2026-10-21 12:18:30.605261+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (667, 294, 2, 'Ready', 'unstarted', '2026-10-21 12:18:30.605261+00', '2026-10-21 12:18:41.841173+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (662, 317, 1, 'Backlog', 'backlog', '2026-10-21 11:40:11.361+00', '2026-10-21 12:33:23.677968+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (669, 317, 4, 'Done', 'completed', '2026-10-21 12:33:23.677968+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (668, 294, 3, 'In progress', 'started', '2026-10-21 12:18:41.841173+00', '2026-10-21 12:38:47.068901+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (670, 294, 9, 'Awaiting Owner', 'started', '2026-10-21 12:38:47.068901+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -11242,7 +11296,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 317, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 322, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -14337,6 +14391,191 @@ Five notes, none blocking: the Waiting on value now names itself in Step 3; the 
 - Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
 - Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
 - Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, NULL, 31744, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.940174+00', '2026-10-21 06:53:51.60451+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (33, 1, NULL, 'T-294', '# T-294 — Text never renders through opacity: colours carry the dim
+
+## Goal
+
+Wrong today: dim text is painted translucent. Six sites set `opacity` on a `Text` or an `Animated.Text` directly, nine ancestor views dim text subtrees through their own `opacity`, and thirteen text roles paint `rgba()` ink with alpha under 1. On Android every glyph stroke composites, so where Arabic glyphs overlap (diacritics, stacked marks, ligatures) the overlap paints twice and reads as a brighter, denser band than single-ink strokes. The owner''s freshest word (dictated 2026-10-21) says the seam also shows on iPhone; the ticket description''s older note that iOS composites a text run as one layer yields to that word. The owner''s read is the bar on both platforms.
+
+True when done: every text element paints fully opaque ink; dimness lives in the colour constant alone, one constant per dimmed role, identical wherever the role appears; a sweep test inside `yarn validate` pins it.
+
+## Evidence
+
+### Vision transcript — pending, rate-limited
+
+The owner pulled two 3T screenshots (Arabic enabled) to `$TMPDIR/opencode/t294/android-3t.png` and `android-3t-long.png`; they are not in the repo and never enter it. The vision dispatch returned `Rate limit exceeded` on three retries spread over six minutes (two failures in the lead session near 11:25, three in this lane after), and this lane''s own model cannot read images. The transcript stays pending; the plan stands on the code sweep, the arithmetic below, and the owner''s standing verbal read: overlapping glyph regions read brighter and denser than single-ink regions. Step 4 (the device reads) and the owner''s prototype read carry the visual verdict.
+
+### The code sweep (2026-10-21, on uat @ 5b496afe)
+
+**A. Text carrying opacity in its own style or animated style — 6 sites**
+
+| # | Site | Value | What the text is | Dim level today |
+|---|---|---|---|---|
+| A1 | `components/sheets/parts/SoundItem.tsx:120` | opacity 0/1 snap | the playing row''s countdown `m:ss` | invisible or full |
+| A2 | `components/ui/InitialWidthMeasurement.tsx:50` | opacity 0 | 11 hidden prayer-name measuring texts (6 standard + 5 extra) | invisible, mounted forever |
+| A3 | `components/sheets/screens/Qibla.tsx:249` | opacity 0 | the subtitle donor line (width donor, height 0) | invisible |
+| A4 | `components/sheets/screens/Qibla.tsx:84,90` | animated 1−p | the waiting subtitle line | crossfades to invisible |
+| A5 | `components/sheets/screens/Qibla.tsx:85,102` | animated p | the ready subtitle line | crossfades from invisible |
+| A6 | `components/prayer/Ago.tsx:52,55` | useDerivedOpacity 0/1 | the prayer-ago badge text | overlay open/close fade |
+
+**B. Ancestor opacity whose subtree contains Text — 9 sites**
+
+| # | Site | Value | Text inside | Dim level today |
+|---|---|---|---|---|
+| B1 | `components/sheets/screens/ReminderCard.tsx:107` | 0.125 (card locked) | card title + hint | 12.5% over the sheet |
+| B2 | `components/sheets/screens/ReminderCard.tsx:133` | 0.125 (reminder off) | option labels, segment labels, stepper text | 12.5% over the card, compounding with B3-B5 |
+| B3 | `components/sheets/parts/Stepper.tsx:110` | 0.2 (disabled) | +/− glyphs, value, unit | 20% (2.5% inside B2) |
+| B4 | `components/sheets/parts/Stepper.tsx:120` | 0.15 (boundary) | boundary +/− glyphs | 15% (0.375% inside B2-B3) |
+| B5 | `components/sheets/parts/SegmentedControl.tsx:201` | 0.2 (disabled) | segment labels | 20% (2.5% inside B2) |
+| B6 | `components/sheets/screens/ColorPicker.tsx:54,112` | 0.25 (bar hidden) | label, reset, chevron | 25% ink |
+| B7 | `components/sheets/screens/ColorPicker.tsx:123` | 0/1 (not custom) | the Reset label | invisible or full, holds layout |
+| B8 | `components/prayer/Prayer.tsx:63,89` | useDerivedOpacity 0/1 | the row''s name, time, bell | overlay open/close fade (150 ms) |
+| B9 | `components/overlay/OverlayInfoBox.tsx:39,78` | useDerivedOpacity 0/1 | the extras explanation card''s title and body | overlay open/close fade (150 ms) |
+
+**C. rgba() text colours with alpha under 1 — the dim roles**
+
+| Role | Value | Habitat | Sites |
+|---|---|---|---|
+| `COLORS.text.secondary` | rgba(160,200,255,.54) | gradient | Day location label, Countdown caption; sheet: ColorPicker reset label |
+| `COLORS.text.muted` | rgba(138,169,214,.38) | gradient | prayer names (Prayer.tsx:58, Alert.tsx:117 bell tween rides it) |
+| `COLORS.text.rowTime` | rgba(138,169,214,.475) | gradient | row times (Time.tsx:54) |
+| `COLORS.text.disabled` | rgba(146,211,255,.65) | sheet | ColorPicker labelDisabled |
+| `COLORS.text.sheetSubtitle` | rgba(86,134,189,.725) | sheet | Header, VolumeNote, Qibla, Language; literals in Settings.tsx:229, Sound.tsx:239, Alert.tsx:336,370, ReminderCard.tsx:124 |
+| `COLORS.prayerAgo.text` | rgba(128,162,212,.45) | gradient, over its pill wash | Ago.tsx:41 |
+| `COLORS.countdown.timeColon` | rgba(174,208,255,.375) | gradient | dim colon (colonInk.ts, Time.tsx:118) |
+| `COLORS.countdown.nextTimeColon` | rgba(210,226,255,.75) | gradient | next-row colon (standard) |
+| `COLORS.countdown.nextTimeColonExtras` | rgba(238,243,255,.88) | gradient | next-row colon (extras) |
+| `COLORS.qibla.away.ink` / `facing.ink` | rgba(146,184,228,.45) / rgba(228,192,134,.5) | solid dial faces | compass cardinal numbers |
+| SoundItem countdown pair | rgba(165,180,252,.8) / rgba(86,134,189,.725) | sheet | SoundItem.tsx:17,18,104 |
+| Help literals | rgba(48,66,84,.66), rgba(48,66,84,.4), rgba(71,85,105,.7) | white modal | Help.tsx:28,30,236 |
+| WhatsNew FAINT_BLUE | rgba(42,68,130,.32) | white modal | WhatsNew.tsx:20 (text + badge) |
+
+**Ruled out (no text in the subtree, or not ink):** Toggle track disabled 0.2 (no text), SegmentedControl icon layers, Modal divider 0.2, Explanation separator 0.5, sheet backdrop 0.9, Sound/Language indicator measurement gates, QiblaCompass needle, countdown Bar wrapper, Day masjid fade, Navigation dots and chrome, RamadanDecorations sprites, QiblaWave paths, VeilBackdrop, Overlay press-catchers, and `textShadowColor` rgba values (shadow is not ink).
+
+**Entrance and exit transitions** (Modal.tsx:83-93 `FadeIn`/`FadeOut` on the modal card, Help.tsx:49 `BUTTON_ROW_COAT`, QiblaLost `FadeIn`): text passes through translucency while a surface presents, and both settled ends are fully opaque or unmounted. The separating rule, applied everywhere: **a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states rides view compositing.** The three overlay fades (A6, B8, B9) rest at hidden, so they convert (Step 3). The entrances rest at opaque, so they stay view compositing; the owner''s Step 4 read is the verdict on that ruling.
+
+### The colour basis (arithmetic)
+
+`BackgroundGradients` paints a diagonal LinearGradient, start (0, 0.25) to end (1, 1), `COLORS.gradient.screen` `#031a4c` to `#5b1eaa`.
+
+- Relative luminance: start 0.0128, midpoint `#2f1c7b` 0.0286, end 0.0605. The gradient stays dark everywhere; its own start-to-end contrast is 1.76:1. That spread is what makes one solid read different against different parts of it — the planning problem the owner named.
+- Flattening: composite = a·ink + (1−a)·background, nested per group — a group''s opacity composites over whatever sits behind the group, so the state matrix below flattens each element against its actual rendered base.
+- Over a solid surface the flatten is exact and one constant serves the role everywhere it appears. Over the gradient no solid equals the translucent ink everywhere; the chosen solid is the composite at the gradient midpoint, where the prayer list sits. The deviation at the corners is the composite range, tabled.
+
+**Gradient roles** (composite at start / mid / end; chosen solid = mid; contrast vs start / mid / end):
+
+| Role | Today | Composites | Chosen solid | Contrast |
+|---|---|---|---|---|
+| prayer names (muted) | .38 | #365080 / #52529e / #6d53bb | **#52529e** | 2.42 / 1.93 / 1.38 |
+| row times (rowTime) | .475 | #435e8e / #5a5fa6 / #7160bf | **#5a5fa6** | 2.89 / 2.30 / 1.64 |
+| location, countdown caption (secondary) | .54 | #5878ad / #6c79c2 / #807ad8 | **#6c79c2** | 4.10 / 3.27 / 2.33 |
+| dim colon (timeColon) | .375 | #435e8f / #5f60ad / #7a61ca | **#5f60ad** | 2.98 / 2.38 / 1.69 |
+| next colon (standard) | .75 | #9eb0d2 / #a9b1de / #b4b1ea | **#a9b1de** | 7.96 / 6.36 / 4.52 |
+| next colon (extras) | .88 | #d2d9ea / #d7d9ef / #dcd9f5 | **#d7d9ef** | 12.01 / 9.59 / 6.82 |
+| prayer-ago badge text | .45 over pill wash | #415b90 / #5660a7 / #6963bc | **#5660a7** | 2.63 / 2.01 / 1.53 |
+
+Primary ink `#ffffff` holds 9.5:1 or better everywhere on the gradient. The dim ratios above equal what the translucent ink locally produces today; the solid moves each role''s ink by at most the composite range between screen corners (names: #365080 to #6d53bb, a band the mid solid splits).
+
+**Solid-surface roles** (exact flattens):
+
+| Role | Over | Solid | Contrast |
+|---|---|---|---|
+| sheetSubtitle (constant + 5 literals) | sheet #0b183a | **#416899** | 3.03 |
+| SoundItem countdown selected / unselected-inactive | sheet #0b183a | **#8695d5** / **#416899** | 3.52 / 3.03 |
+| text.disabled (ColorPicker label) | sheet #0b183a | **#6392ba** | 5.24 |
+| Help BODY / CHEVRON / badge glyph | white | **#76828e** / **#acb3bb** / **#727e8f** | 3.91 / 2.11 / 3.02 |
+| WhatsNew FAINT_BLUE | white | **#bbc3d7** | 1.76 |
+| Qibla away / facing ink | faces #171f48 / #362c3e | **#4e648e** / **#8d7662** | 2.67 / 3.09 |
+| sheet grabber indicator (view, pixel-held) | sheet #0b183a | **#5b77a4** | — |
+
+**The Alert sheet''s disabled state matrix.** Bases: sheet `#0b183a`; card wash over sheet `#101d45`; stepper wash over card `#192456`. States: rest (`locked` false, reminder on), off (reminder off, `locked` false), locked-on (`locked` true, reminder on), locked-off (both). Each cell is the exact flatten of today''s nested group opacities; the implementation encodes each row as one module-level map, no runtime arithmetic:
+
+| Element | rest | off | locked-on | locked-off |
+|---|---|---|---|---|
+| card title | #d8eaf8 (unchanged) | #d8eaf8 | **#253252** | **#253252** |
+| card hint | #416899 (the constant) | #416899 | **#122246** | **#122246** |
+| option label | #92b8e4 (unchanged) | **#203059** | **#1c2c4f** | **#0e1b3e** |
+| segment label, selected | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| segment label, unselected | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper value | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| stepper unit | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper glyph, mid-range (enabled ink) | #eaf2fa (unchanged) | **#16224a** | **#273352** | **#0c193c** |
+| stepper glyph, at boundary (disabled ink rgb(50,98,150) under its 0.15) | **#1c2d60** | **#111d46** | **#0d1b3f** | **#0c193b** |
+
+Title and hint sit outside the options group, so `off` does not touch them; `locked` dims the whole card and both states share one solid.
+
+**ColorPicker states over the sheet:** label disabled chain **#21365a**, reset label **#5b77a4** (bar shown) / **#1f3055** (bar hidden, the 0.25 chain) / `transparent` (not custom), chevron **#323f6b**, preview border **#48526b**. The preview dot and border are views: they keep an equivalent 0.25 on a text-free subtree so their pixels hold.
+
+### Why the compounding disappears
+
+A translucent glyph paints a·ink on each stroke; two overlapping strokes leave 1−(1−a)² ≈ 2a−a² of the ink, so the overlap reads brighter than a single stroke. At muted''s 0.38 the overlap carries 0.62 against 0.38 — 1.6× the single-stroke ink, the band the owner reads. A solid glyph paints alpha 1 on every stroke: overlap equals single stroke, one even ink. This holds mid-animation: a colour tween interpolates opaque colours, so no intermediate frame is translucent.
+
+## Decisions taken
+
+- 2026-10-21 — Gradient dim roles take the gradient-midpoint composite as their one solid (table above). Why: the owner banned adaptive shades; the list sits at the midpoint, the corner deviation is tabled, and the owner''s phone read rules the final word.
+- 2026-10-21 — Roles on solid surfaces flatten exactly over their surface; `sheetSubtitle` becomes `#416899` and its five local literals collapse into the constant. The 6% card wash under the Settings and Alert card subtitles shifts the composite by at most 5/255 per channel, under the just-noticeable difference; the bare-sheet flatten serves them all.
+- 2026-10-21 — The disabled matrix is carried by state-conditional solid colour maps (the table above), one entry per element per state, encoded as module constants in the components that render them. The wrapper opacities B1-B6 are deleted. Text-free views inside those groups (stepper wash, segment pill, colour-preview dot and border) keep an equivalent opacity on a text-free subtree so their pixels hold exactly.
+- 2026-10-21 — A hide that must hold layout paints the surface''s own colour (QiblaSubtitle lines over the sheet) or `transparent` (ColorPicker reset label, Qibla donor). Alpha 0 renders no ink, so nothing compounds; alpha strictly between 0 and 1 stays banned on text colours. The SoundItem countdown becomes a conditional render: the play icon is end-anchored and the countdown sits on its lead side, so its absence moves nothing, and the colour tween lives at row level and survives the remount.
+- 2026-10-21 — The separating rule for fades: a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states (modal and Help entrances) rides view compositing. The three resting-hidden fades — A6 (ago badge), B8 (prayer rows), B9 (info box) — move to Step 3: no solid colour equals invisible over a gradient, so the conversion needs a veil-merge colour the owner reads first.
+- 2026-10-21 — `text.secondary` keeps one constant (`#6c79c2`, its gradient habitat: Day location, Countdown caption). The ColorPicker reset label takes its own sheet-flattened solids (`#5b77a4` shown, `#1f3055` bar-hidden) as a named local role, and the sheet grabber indicator (Shared.tsx:55, a view) moves to a dedicated `#5b77a4` view constant so re-valuing the text constant re-inks no view. Fixed per-surface constants do not follow the background; this is not the owner-rejected adaptive shade.
+
+## Files
+
+- `shared/constants.ts` — eleven ink constants become solids: the nine text-role constants, `qibla.away.ink` (#4e648e) and `qibla.facing.ink` (#8d7662); a grabber view constant; comments state each flatten.
+- `components/sheets/parts/Shared.tsx` — the grabber indicator moves off `COLORS.text.secondary` onto the view constant (pixels identical).
+- `components/sheets/parts/SoundItem.tsx` — countdown conditional render; three literal colours to constants.
+- `components/sheets/screens/Settings.tsx`, `Sound.tsx`, `Alert.tsx`, `ReminderCard.tsx` — subtitle literals to the constant.
+- `components/sheets/screens/ReminderCard.tsx`, `components/sheets/parts/Stepper.tsx`, `SegmentedControl.tsx` — the disabled matrix maps; wrapper opacities deleted; text-free views hold their own opacity.
+- `components/sheets/screens/ColorPicker.tsx` — the 0.25 chain and the reset hide to solids; preview dot/border keep a text-free 0.25.
+- `components/sheets/screens/Qibla.tsx` — subtitle crossfade to a colour tween; donor transparent.
+- `components/ui/InitialWidthMeasurement.tsx` — hidden texts off-screen instead of opacity 0.
+- `components/modals/Help.tsx`, `WhatsNew.tsx` — white-surface literals flattened.
+- `components/prayer/Time.tsx`, `colonInk.ts`, `Ago.tsx`, `Prayer.tsx`, `components/day/Day.tsx`, `components/countdown/Countdown.tsx` — ride the new constants (no edit beyond imports unless a literal appears).
+- Step 3 files: `components/prayer/Prayer.tsx`, `Ago.tsx`, `components/overlay/OverlayInfoBox.tsx`, `hooks/useAnimation.ts`.
+
+## Design
+
+Dim is a colour constant. Every dimmed text role paints one solid colour, alpha 1, the same wherever the role appears. The invariant the sweep test pins: no `Text` or `Animated.Text` carries `opacity` in its own style or animated style; every text colour''s alpha is exactly 1 (hide-roles: exactly 0, or the surface''s own colour); animations that move text ink interpolate colours through `useDerivedColor` / `interpolateColor`, never opacity. Ancestor conversions are pinned by the rewritten component tests, which assert the state-matrix solids.
+
+On solid surfaces the conversion is pixel-exact: interpolating ink toward the surface colour equals an opacity fade over that surface, formula for formula (a·ink + (1−a)·bg both ways). Over the gradient it cannot be exact; the gradient roles accept the tabled deviation, and the three resting-hidden fades wait for a ruled veil-merge colour.
+
+**Alternatives weighed and rejected**
+
+1. *Solid colour at opacity 1* — chosen, above.
+2. *Adaptive per-position or per-component shades following the background* — owner-rejected by dictation (2026-10-21), and engineering-rejected: it multiplies constants per surface, drifts as surfaces change, and re-introduces exactly the tuning the one-constant rule exists to end.
+3. *A more subtle gradient background* — weighed honestly: the gradient''s 1.76:1 self-contrast is what makes one solid read different top against bottom; a flatter gradient would narrow every gradient role''s deviation band. Not this change: visuals are settled, the owner alone rules pixels, and the prototype does not touch the background. If the owner''s read flags the corner deviation, a subtler gradient is a separate, owner-ruled ticket.
+4. *Doing nothing* — rejected: the owner ordered no faded text.
+5. *Platform split (iOS keeps translucent ink)* — rejected: dictated "no platform split", and the freshest word says iPhone shows the seam too.
+
+## Steps
+
+1. **Step 1: The colour-carried dim prototype on lane/294** (code, 2 pts) — every static dim role a solid constant per the tables; sites A1-A5 and B1-B7 converted (A6, B8, B9 rest-hidden fades excepted to Step 3); `npx tsc --noEmit` and `yarn biome check` green; the triple version bump (package.json, app.json, android/app/build.gradle, patch, `git fetch origin` first) in the commit; no tests written or run; committed for the owner''s mock build.
+2. **Step 2: The sweep test and the suite realigned inside yarn validate** (code, 2 pts) — a sweep test that fails on any `Text`/`Animated.Text` carrying `opacity` in its own style or animated style, and on any text colour whose alpha is neither exactly 0 (hide roles) nor exactly 1; the existing opacity assertions rewritten to the state-matrix solids (Alert, Stepper, SegmentedControl, Qibla subtitle); Sound''s indicator gate is a view and stays, with a presence assertion added for the conditional-rendered countdown; `yarn validate` green.
+3. **Step 3: The resting-hidden fades converted** (code, 2 pts) — A6, B8 and B9 (prayer rows, ago badge, info box) carry their open/close transition through colour, on the veil-merge colour the owner ruled from the prototype read.
+4. **Step 4: The device reads** (device, 3 pts) — the owner''s mock build read on the 3T under Arabic and on the iPhone: overlapping glyph regions one even ink; iOS unchanged apart from the colour basis; the entrance-fade ruling read and accepted.
+5. **Step 5: The merge and close** (docs, 1 pt) — lane/294 merged to uat, relations cleared, closing comment, snapshot in the close commit.
+
+Steps 2-5 wait on the owner''s verdict from the prototype read.
+
+Story points: 2 + 2 + 2 + 3 + 1 = 10.
+
+## Risks
+
+- A gradient solid reads brighter toward the top-start and dimmer toward the bottom-end than today''s local ink (tabled band). What shows it: the owner''s read of the list; the ruled remedies are a re-picked solid per role or the separately-ruled subtler gradient.
+- Dim solids hold under 4.5:1 at the gradient''s bright end (names 1.38:1) — that equals today''s local contrast; dims are de-emphasis and the primary ink holds 9.5:1 or better everywhere.
+- A missed cell in the disabled matrix leaves one element''s off-state read wrong. What shows it: the Alert sheet with the athan off and with each reminder off; the matrix table names every cell.
+- The jest suite keeps opacity assertions Step 1 knowingly leaves red until Step 2; the prototype commits on tsc and biome alone, per the owner''s order.
+- The QiblaSubtitle colour crossfade covers the waiting line with opaque ready ink mid-fade instead of blending two translucent lines: no compounding (the point), a slightly different 150 ms.
+- The entrance-fade ruling (transitions that pass between settled states stay view compositing) is the plan''s own line, not the owner''s; the owner''s Step 4 read is its verdict.
+
+## Proof
+
+- Step 1: `npx tsc --noEmit` and `yarn biome check` green on lane/294; `git grep -n "opacity" -- components app | grep -v __tests__` returns only the ruled-out list; the commit carries the triple version bump.
+- Step 2: `yarn validate` green; planting `<Text style={{ opacity: 0.5 }}>` turns the sweep test red.
+- Step 3: the same grep clean for `Prayer.tsx`, `Ago.tsx`, `OverlayInfoBox.tsx`; `useDerivedOpacity` has no consumer whose style lands on text.
+- Step 4: the owner''s read, recorded in this ticket.
+- Step 5: the merge commit on uat and `board/snapshot.sh` in the close commit.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 32768, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 11:39:47.817036+00', '2026-10-21 12:15:08.540342+00');
 
 
 --
@@ -14375,6 +14614,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (30, 306, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:40:34.667597+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (31, 296, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:42:42.988691+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (32, 302, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.972554+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (33, 294, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 11:39:47.858699+00');
 
 
 --
@@ -22396,6 +22636,550 @@ Alternatives rejected:
 - Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
 - Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
 - Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, 31744, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.940174+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (91, 33, 1, NULL, 'T-294', '# T-294 — Text never renders through opacity: colours carry the dim
+
+## Goal
+
+Wrong today: dim text is painted translucent. Some sites set `opacity` on a `Text` or an ancestor view, others paint an `rgba()` text colour with alpha under 1. On Android every glyph stroke composites, so where Arabic glyphs overlap (diacritics, stacked marks, ligatures) the overlap paints twice and reads as a brighter, denser band than single-ink strokes. The owner''s freshest word (dictated 2026-10-21) says the seam also shows on iPhone; the ticket description''s older note that iOS composites a text run as one layer yields to that word. The owner''s read is the bar on both platforms.
+
+True when done: every text element paints fully opaque ink; dimness lives in the colour constant alone, one constant per dimmed role, identical wherever the role appears; a sweep test inside `yarn validate` pins it.
+
+## Evidence
+
+### Vision transcript — pending, rate-limited
+
+The owner pulled two 3T screenshots (Arabic enabled) to `$TMPDIR/opencode/t294/android-3t.png` and `android-3t-long.png`; they are not in the repo and never enter it. The vision dispatch returned `Rate limit exceeded` on three retries spread over six minutes (two failures in the lead session near 11:25, three in this lane after), and this lane''s own model cannot read images. The transcript stays pending; the plan stands on the code sweep, the arithmetic below, and the owner''s standing verbal read: overlapping glyph regions read brighter and denser than single-ink regions. Step 4 (the device reads) and the owner''s prototype read carry the visual verdict.
+
+### The code sweep (2026-10-21, on uat @ 5b496afe)
+
+**A. Text carrying opacity in its own style or animated style — 6 sites**
+
+| # | Site | Value | What the text is | Dim level today |
+|---|---|---|---|---|
+| A1 | `components/sheets/parts/SoundItem.tsx:120` | opacity 0/1 snap | the playing row''s countdown `m:ss` | invisible or full |
+| A2 | `components/ui/InitialWidthMeasurement.tsx:50` | opacity 0 | 13 hidden prayer-name measuring texts | invisible, mounted forever |
+| A3 | `components/sheets/screens/Qibla.tsx:249` | opacity 0 | the subtitle donor line (width donor, height 0) | invisible |
+| A4 | `components/sheets/screens/Qibla.tsx:84,90` | animated 1−p | the waiting subtitle line | crossfades to invisible |
+| A5 | `components/sheets/screens/Qibla.tsx:85,102` | animated p | the ready subtitle line | crossfades from invisible |
+| A6 | `components/prayer/Ago.tsx:52,55` | useDerivedOpacity 0/1 | the prayer-ago badge text | overlay open/close fade |
+
+**B. Ancestor opacity whose subtree contains Text — 9 sites**
+
+| # | Site | Value | Text inside | Dim level today |
+|---|---|---|---|---|
+| B1 | `components/sheets/screens/ReminderCard.tsx:107` | 0.125 (card locked) | card title + hint | 12.5% ink |
+| B2 | `components/sheets/screens/ReminderCard.tsx:133` | 0.125 (reminder off) | option labels, segment labels, stepper text | 12.5%, compounding with B3-B5 to 2.5% and 1.9% |
+| B3 | `components/sheets/parts/Stepper.tsx:110` | 0.2 (disabled) | +/− glyphs, value, unit | 20% (2.5% inside B2) |
+| B4 | `components/sheets/parts/Stepper.tsx:120` | 0.15 (boundary) | boundary +/− glyphs | 15% (1.9% inside B2) |
+| B5 | `components/sheets/parts/SegmentedControl.tsx:201` | 0.2 (disabled) | segment labels | 20% (2.5% inside B2) |
+| B6 | `components/sheets/screens/ColorPicker.tsx:54,112` | 0.25 (bar hidden) | label, reset, chevron | 25% ink |
+| B7 | `components/sheets/screens/ColorPicker.tsx:123` | 0/1 (not custom) | the Reset label | invisible or full, holds layout |
+| B8 | `components/prayer/Prayer.tsx:63,89` | useDerivedOpacity 0/1 | the row''s name, time, bell | overlay open/close fade (150 ms) |
+| B9 | `components/overlay/OverlayInfoBox.tsx:39,78` | useDerivedOpacity 0/1 | the extras explanation card''s title and body | overlay open/close fade (150 ms) |
+
+**C. rgba() text colours with alpha under 1 — the dim roles**
+
+| Role | Value | Habitat | Sites |
+|---|---|---|---|
+| `COLORS.text.secondary` | rgba(160,200,255,.54) | gradient | Day location label, Countdown caption; sheet: ColorPicker reset label |
+| `COLORS.text.muted` | rgba(138,169,214,.38) | gradient | prayer names (Prayer.tsx:58, Alert.tsx:117 bell tween rides it) |
+| `COLORS.text.rowTime` | rgba(138,169,214,.475) | gradient | row times (Time.tsx:54) |
+| `COLORS.text.disabled` | rgba(146,211,255,.65) | sheet | ColorPicker labelDisabled |
+| `COLORS.text.sheetSubtitle` | rgba(86,134,189,.725) | sheet | Header, VolumeNote, Qibla, Language; literals in Settings.tsx:229, Sound.tsx:239, Alert.tsx:336,370, ReminderCard.tsx:124 |
+| `COLORS.prayerAgo.text` | rgba(128,162,212,.45) | gradient, over its pill wash | Ago.tsx:41 |
+| `COLORS.countdown.timeColon` | rgba(174,208,255,.375) | gradient | dim colon (colonInk.ts, Time.tsx:118) |
+| `COLORS.countdown.nextTimeColon` | rgba(210,226,255,.75) | gradient | next-row colon (standard) |
+| `COLORS.countdown.nextTimeColonExtras` | rgba(238,243,255,.88) | gradient | next-row colon (extras) |
+| `COLORS.qibla.away.ink` / `facing.ink` | rgba(146,184,228,.45) / rgba(228,192,134,.5) | solid dial faces | compass cardinal numbers |
+| SoundItem countdown pair | rgba(165,180,252,.8) / rgba(86,134,189,.725) | sheet | SoundItem.tsx:17,18,104 |
+| Help literals | rgba(48,66,84,.66), rgba(48,66,84,.4), rgba(71,85,105,.7) | white modal | Help.tsx:28,30,236 |
+| WhatsNew FAINT_BLUE | rgba(42,68,130,.32) | white modal | WhatsNew.tsx:20 (text + badge) |
+
+**Ruled out (no text in the subtree, or not ink):** Toggle track disabled 0.2 (no text), SegmentedControl icon layers, Modal divider 0.2, Explanation separator 0.5, sheet backdrop 0.9, Sound/Language indicator measurement gates, QiblaCompass needle, countdown Bar wrapper, Day masjid fade, Navigation dots and chrome, RamadanDecorations sprites, QiblaWave paths, VeilBackdrop, Overlay press-catchers, and `textShadowColor` rgba values (shadow is not ink). Modal and Help surface entrance/exit fades (Modal.tsx:83-93, Help.tsx:49) present a surface rather than dim text; ruled view compositing, untouched.
+
+### The colour basis (arithmetic)
+
+`BackgroundGradients` paints a diagonal LinearGradient, start (0, 0.25) to end (1, 1), `COLORS.gradient.screen` `#031a4c` to `#5b1eaa`.
+
+- Relative luminance: start 0.0128, midpoint `#2f1c7b` 0.0286, end 0.0605. The gradient stays dark everywhere; its own start-to-end contrast is 1.76:1. That spread is what makes one solid read different against different parts of it — the planning problem the owner named.
+- Flattening: composite = a·ink + (1−a)·background. Over a solid surface the flatten is exact and one constant serves the role everywhere it appears. Over the gradient no solid equals the translucent ink everywhere; the chosen solid is the composite at the gradient midpoint, where the prayer list sits. The deviation at the corners is the composite range, tabled.
+
+**Gradient roles** (composite at start / mid / end; chosen solid = mid; contrast vs start / mid / end):
+
+| Role | Today | Composites | Chosen solid | Contrast |
+|---|---|---|---|---|
+| prayer names (muted) | .38 | #365080 / #52529e / #6d53bb | **#52529e** | 2.42 / 1.93 / 1.38 |
+| row times (rowTime) | .475 | #435e8e / #5a5fa6 / #7160bf | **#5a5fa6** | 2.89 / 2.30 / 1.64 |
+| location, countdown caption (secondary) | .54 | #5878ad / #6c79c2 / #807ad8 | **#6c79c2** | 4.10 / 3.27 / 2.33 |
+| dim colon (timeColon) | .375 | #435e8f / #5f60ad / #7a61ca | **#5f60ad** | 2.98 / 2.38 / 1.69 |
+| next colon (standard) | .75 | #9eb0d2 / #a9b1de / #b4b1ea | **#a9b1de** | 7.96 / 6.36 / 4.52 |
+| next colon (extras) | .88 | #d2d9ea / #d7d9ef / #dcd9f5 | **#d7d9ef** | 12.01 / 9.59 / 6.82 |
+| prayer-ago badge text | .45 over pill wash | #415b90 / #5660a7 / #6963bc | **#5660a7** | 2.63 / 2.01 / 1.53 |
+
+Primary ink `#ffffff` holds 9.5:1 or better everywhere on the gradient. The dim ratios above equal what the translucent ink locally produces today; the solid moves each role''s ink by at most the composite range between screen corners (names: #365080 to #6d53bb, a band the mid solid splits).
+
+**Solid-surface roles** (exact flattens):
+
+| Role | Over | Solid | Contrast |
+|---|---|---|---|
+| sheetSubtitle (constant + 5 literals) | sheet #0b183a | **#416899** | 3.03 |
+| SoundItem countdown selected / unselected-inactive | sheet #0b183a | **#8695d5** / **#416899** | 3.52 / 3.03 |
+| text.disabled (ColorPicker label) | sheet #0b183a | **#6392ba** | 5.24 |
+| Help BODY / CHEVRON / badge glyph / close | white | **#76828e** / **#acb3bb** / **#727e8f** / **#7e8896** | 3.91 / 2.11 / 3.02 / 3.59 |
+| WhatsNew FAINT_BLUE | white | **#bbc3d7** | 1.76 |
+| Qibla away / facing ink | faces #171f48 / #362c3e | **#4e648e** / **#8d7662** | 2.67 / 3.09 |
+
+**Disabled chains** (base: Alert card wash rgba(99,102,241,.06) over sheet = #101d45):
+
+| Element | Effective alpha today | Solid |
+|---|---|---|
+| locked card title / hint | 0.125 | **#29365b** / **#172650** |
+| option label (reminder off) | 0.125 | **#203059** |
+| segment label selected / unselected | 0.125 × 0.2 | **#16224a** / **#121f48** |
+| stepper value / unit | 0.125 × 0.2 | **#16224a** / **#121f48** |
+| stepper boundary glyph | 0.125 × 0.15 | **#142148** |
+| ColorPicker label / reset / chevron / preview border (bar hidden) | 0.25 chains | **#21365a** / **#1f3055** / **#323f6b** / **#48526b** |
+
+### Why the compounding disappears
+
+A translucent glyph paints a·ink on each stroke; two overlapping strokes leave 1−(1−a)² ≈ 2a−a² of the ink, so the overlap reads brighter than a single stroke. At muted''s 0.38 the overlap carries 0.62 against 0.38 — 1.6× the single-stroke ink, the band the owner reads. A solid glyph paints alpha 1 on every stroke: overlap equals single stroke, one even ink. This holds mid-animation: a colour tween interpolates opaque colours, so no intermediate frame is translucent.
+
+## Decisions taken
+
+- 2026-10-21 — Gradient dim roles take the gradient-midpoint composite as their one solid (table above). Why: the owner banned adaptive shades; the list sits at the midpoint, the corner deviation is tabled, and the owner''s phone read rules the final word.
+- 2026-10-21 — Roles on solid surfaces flatten exactly over their surface; `sheetSubtitle` becomes `#416899` and its five local literals collapse into the constant. The 6% card wash under some subtitle sites shifts the composite by at most 5/255 per channel, under the just-noticeable difference; the bare-sheet flatten serves all of them.
+- 2026-10-21 — Disabled chains flatten through their whole opacity stack into one solid per element; the wrapper opacities are deleted. Text-free views inside those groups (stepper wash, segment pill, colour-preview dot and border) keep an equivalent opacity on a text-free subtree so their pixels hold exactly.
+- 2026-10-21 — A hide that must hold layout paints the surface''s own colour (QiblaSubtitle lines over the sheet) or `transparent` (ColorPicker reset label, Qibla donor). Alpha 0 renders no ink, so nothing compounds; alpha strictly between 0 and 1 stays banned on text colours.
+- 2026-10-21 — The SoundItem countdown becomes a conditional render: the play icon is end-anchored and the countdown sits to its lead side, so its absence moves nothing; the colour tween lives in the row and survives the remount.
+- 2026-10-21 — Surface entrance/exit fades stay view compositing. The three gradient overlay fades (B6-A6-B8-B9 class: prayer rows, ago badge, info box) move to Step 3: no solid colour equals invisible over a gradient, so the conversion needs a veil-merge colour the owner reads first.
+- 2026-10-21 — `text.secondary` keeps one constant (`#6c79c2`, its gradient habitat); the ColorPicker reset label takes its own sheet-flattened solid (`#1f3055` when hidden-state chains apply), a named local role, not an adaptive shade.
+
+## Files
+
+- `shared/constants.ts` — the nine text-role constants become solids; comments state each flatten.
+- `components/sheets/parts/SoundItem.tsx` — countdown conditional render; three literal colours to constants.
+- `components/sheets/screens/Settings.tsx`, `Sound.tsx`, `Alert.tsx`, `ReminderCard.tsx` — subtitle literals to the constant.
+- `components/sheets/screens/ReminderCard.tsx` — locked/off chains to solids; wrapper opacities deleted.
+- `components/sheets/parts/Stepper.tsx`, `SegmentedControl.tsx` — disabled chains to solids; text-free views hold their own opacity.
+- `components/sheets/screens/ColorPicker.tsx` — 0.25 chain to solids; reset label transparent hide.
+- `components/sheets/screens/Qibla.tsx` — subtitle crossfade to colour tween; donor transparent.
+- `components/ui/InitialWidthMeasurement.tsx` — hidden texts off-screen instead of opacity 0.
+- `components/modals/Help.tsx`, `WhatsNew.tsx` — white-surface literals flattened.
+- `components/prayer/Time.tsx`, `colonInk.ts`, `Ago.tsx`, `Prayer.tsx`, `components/day/Day.tsx`, `components/countdown/Countdown.tsx` — ride the new constants (no edit beyond imports unless a literal appears).
+- Step 3 files: `components/prayer/Prayer.tsx`, `Ago.tsx`, `components/overlay/OverlayInfoBox.tsx`, `hooks/useAnimation.ts`.
+
+## Design
+
+Dim is a colour constant. Every dimmed text role paints one solid colour, alpha 1, the same wherever the role appears. The invariant the sweep test pins: no `Text` or `Animated.Text` carries `opacity` in style or animated style; every text colour''s alpha is 1 (hide-roles: 0, or the surface''s own colour); animations that move text ink interpolate colours through `useDerivedColor` / `interpolateColor`, never opacity.
+
+On solid surfaces the conversion is pixel-exact: interpolating ink toward the surface colour equals an opacity fade over that surface, formula for formula (a·ink + (1−a)·bg both ways). Over the gradient it cannot be exact; the gradient roles accept the tabled deviation, and the three overlay fades wait for a ruled veil-merge colour.
+
+**Alternatives weighed and rejected**
+
+1. *Solid colour at opacity 1* — chosen, above.
+2. *Adaptive per-position or per-component shades following the background* — owner-rejected by dictation (2026-10-21), and engineering-rejected: it multiplies constants per surface, drifts as surfaces change, and re-introduces exactly the tuning the one-constant rule exists to end.
+3. *A more subtle gradient background* — weighed honestly: the gradient''s 1.76:1 self-contrast is what makes one solid read different top against bottom; a flatter gradient would narrow every gradient role''s deviation band. Not this change: visuals are settled, the owner alone rules pixels, and the prototype does not touch the background. If the owner''s read flags the corner deviation, a subtler gradient is a separate, owner-ruled ticket.
+4. *Doing nothing* — rejected: the owner ordered no faded text.
+5. *Platform split (iOS keeps translucent ink)* — rejected: dictated "no platform split", and the freshest word says iPhone shows the seam too.
+
+## Steps
+
+1. **Step 1: The colour-carried dim prototype on lane/294** (code, 2 pts) — every static dim role a solid constant per the tables; sites A1-A7 and B1-B7 converted; tsc and biome green; no tests written or run; committed for the owner''s mock build.
+2. **Step 2: The sweep test and the suite realigned inside yarn validate** (code, 2 pts) — a test that fails on any `Text`/`Animated.Text` carrying opacity and on any text colour alpha in (0,1) outside the alpha-0 hide roles; the existing opacity assertions (Alert, Stepper, SegmentedControl, Qibla, Sound) rewritten to the colour-carried dim; `yarn validate` green.
+3. **Step 3: The gradient overlay fades converted** (code, 2 pts) — prayer rows, ago badge, info box carry their open/close transition through colour, ruled by the owner''s verdict on the veil-merge colour from the prototype read.
+4. **Step 4: The device reads** (device, 3 pts) — the owner''s mock build read on the 3T under Arabic and on the iPhone: overlapping glyph regions one even ink, iOS unchanged apart from the colour basis.
+5. **Step 5: The merge and close** (docs, 1 pt) — lane/294 merged to uat, relations cleared, closing comment, snapshot in the close commit.
+
+Steps 2-5 wait on the owner''s verdict from the prototype read.
+
+Story points: 2 + 2 + 2 + 3 + 1 = 10.
+
+## Risks
+
+- A gradient solid reads brighter toward the top-start and dimmer toward the bottom-end than today''s local ink (tabled band). What shows it: the owner''s read of the list; the ruled remedies are a re-picked solid per role or the separately-ruled subtler gradient.
+- Dim solids hold under 4.5:1 at the gradient''s bright end (names 1.38:1) — that equals today''s local contrast; dims are de-emphasis and the primary ink holds 9.5:1 or better everywhere.
+- A missed link in a disabled chain leaves one element''s off-state read wrong. What shows it: the Alert sheet with the athan off and with each reminder off; the chain table names every link.
+- The jest suite keeps opacity assertions Step 1 knowingly leaves red until Step 2; the prototype commits on tsc and biome alone, per the owner''s order.
+- The QiblaSubtitle colour crossfade covers the waiting line with opaque ready ink mid-fade instead of blending two translucent lines: no compounding (the point), a slightly different 150 ms.
+
+## Proof
+
+- Step 1: `npx tsc --noEmit` and `yarn biome check` green on lane/294; `git grep -n "opacity" -- components app | grep -v __tests__` returns only the ruled-out list.
+- Step 2: `yarn validate` green; planting `<Text style={{ opacity: 0.5 }}>` turns the sweep test red.
+- Step 3: the same grep clean for `Prayer.tsx`, `Ago.tsx`, `OverlayInfoBox.tsx`; `useDerivedOpacity` has no consumer whose style lands on text.
+- Step 4: the owner''s read, recorded in this ticket.
+- Step 5: the merge commit on uat and `board/snapshot.sh` in the close commit.
+', NULL, NULL, '{}', false, false, false, NULL, 32768, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 11:39:47.817036+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (92, 33, 2, NULL, 'T-294', '# T-294 — Text never renders through opacity: colours carry the dim
+
+## Goal
+
+Wrong today: dim text is painted translucent. Six sites set `opacity` on a `Text` or an `Animated.Text` directly, nine ancestor views dim text subtrees through their own `opacity`, and thirteen text roles paint `rgba()` ink with alpha under 1. On Android every glyph stroke composites, so where Arabic glyphs overlap (diacritics, stacked marks, ligatures) the overlap paints twice and reads as a brighter, denser band than single-ink strokes. The owner''s freshest word (dictated 2026-10-21) says the seam also shows on iPhone; the ticket description''s older note that iOS composites a text run as one layer yields to that word. The owner''s read is the bar on both platforms.
+
+True when done: every text element paints fully opaque ink; dimness lives in the colour constant alone, one constant per dimmed role, identical wherever the role appears; a sweep test inside `yarn validate` pins it.
+
+## Evidence
+
+### Vision transcript — pending, rate-limited
+
+The owner pulled two 3T screenshots (Arabic enabled) to `$TMPDIR/opencode/t294/android-3t.png` and `android-3t-long.png`; they are not in the repo and never enter it. The vision dispatch returned `Rate limit exceeded` on three retries spread over six minutes (two failures in the lead session near 11:25, three in this lane after), and this lane''s own model cannot read images. The transcript stays pending; the plan stands on the code sweep, the arithmetic below, and the owner''s standing verbal read: overlapping glyph regions read brighter and denser than single-ink regions. Step 4 (the device reads) and the owner''s prototype read carry the visual verdict.
+
+### The code sweep (2026-10-21, on uat @ 5b496afe)
+
+**A. Text carrying opacity in its own style or animated style — 6 sites**
+
+| # | Site | Value | What the text is | Dim level today |
+|---|---|---|---|---|
+| A1 | `components/sheets/parts/SoundItem.tsx:120` | opacity 0/1 snap | the playing row''s countdown `m:ss` | invisible or full |
+| A2 | `components/ui/InitialWidthMeasurement.tsx:50` | opacity 0 | 11 hidden prayer-name measuring texts (6 standard + 5 extra) | invisible, mounted forever |
+| A3 | `components/sheets/screens/Qibla.tsx:249` | opacity 0 | the subtitle donor line (width donor, height 0) | invisible |
+| A4 | `components/sheets/screens/Qibla.tsx:84,90` | animated 1−p | the waiting subtitle line | crossfades to invisible |
+| A5 | `components/sheets/screens/Qibla.tsx:85,102` | animated p | the ready subtitle line | crossfades from invisible |
+| A6 | `components/prayer/Ago.tsx:52,55` | useDerivedOpacity 0/1 | the prayer-ago badge text | overlay open/close fade |
+
+**B. Ancestor opacity whose subtree contains Text — 9 sites**
+
+| # | Site | Value | Text inside | Dim level today |
+|---|---|---|---|---|
+| B1 | `components/sheets/screens/ReminderCard.tsx:107` | 0.125 (card locked) | card title + hint | 12.5% over the sheet |
+| B2 | `components/sheets/screens/ReminderCard.tsx:133` | 0.125 (reminder off) | option labels, segment labels, stepper text | 12.5% over the card, compounding with B3-B5 |
+| B3 | `components/sheets/parts/Stepper.tsx:110` | 0.2 (disabled) | +/− glyphs, value, unit | 20% (2.5% inside B2) |
+| B4 | `components/sheets/parts/Stepper.tsx:120` | 0.15 (boundary) | boundary +/− glyphs | 15% (0.375% inside B2-B3) |
+| B5 | `components/sheets/parts/SegmentedControl.tsx:201` | 0.2 (disabled) | segment labels | 20% (2.5% inside B2) |
+| B6 | `components/sheets/screens/ColorPicker.tsx:54,112` | 0.25 (bar hidden) | label, reset, chevron | 25% ink |
+| B7 | `components/sheets/screens/ColorPicker.tsx:123` | 0/1 (not custom) | the Reset label | invisible or full, holds layout |
+| B8 | `components/prayer/Prayer.tsx:63,89` | useDerivedOpacity 0/1 | the row''s name, time, bell | overlay open/close fade (150 ms) |
+| B9 | `components/overlay/OverlayInfoBox.tsx:39,78` | useDerivedOpacity 0/1 | the extras explanation card''s title and body | overlay open/close fade (150 ms) |
+
+**C. rgba() text colours with alpha under 1 — the dim roles**
+
+| Role | Value | Habitat | Sites |
+|---|---|---|---|
+| `COLORS.text.secondary` | rgba(160,200,255,.54) | gradient | Day location label, Countdown caption; sheet: ColorPicker reset label |
+| `COLORS.text.muted` | rgba(138,169,214,.38) | gradient | prayer names (Prayer.tsx:58, Alert.tsx:117 bell tween rides it) |
+| `COLORS.text.rowTime` | rgba(138,169,214,.475) | gradient | row times (Time.tsx:54) |
+| `COLORS.text.disabled` | rgba(146,211,255,.65) | sheet | ColorPicker labelDisabled |
+| `COLORS.text.sheetSubtitle` | rgba(86,134,189,.725) | sheet | Header, VolumeNote, Qibla, Language; literals in Settings.tsx:229, Sound.tsx:239, Alert.tsx:336,370, ReminderCard.tsx:124 |
+| `COLORS.prayerAgo.text` | rgba(128,162,212,.45) | gradient, over its pill wash | Ago.tsx:41 |
+| `COLORS.countdown.timeColon` | rgba(174,208,255,.375) | gradient | dim colon (colonInk.ts, Time.tsx:118) |
+| `COLORS.countdown.nextTimeColon` | rgba(210,226,255,.75) | gradient | next-row colon (standard) |
+| `COLORS.countdown.nextTimeColonExtras` | rgba(238,243,255,.88) | gradient | next-row colon (extras) |
+| `COLORS.qibla.away.ink` / `facing.ink` | rgba(146,184,228,.45) / rgba(228,192,134,.5) | solid dial faces | compass cardinal numbers |
+| SoundItem countdown pair | rgba(165,180,252,.8) / rgba(86,134,189,.725) | sheet | SoundItem.tsx:17,18,104 |
+| Help literals | rgba(48,66,84,.66), rgba(48,66,84,.4), rgba(71,85,105,.7) | white modal | Help.tsx:28,30,236 |
+| WhatsNew FAINT_BLUE | rgba(42,68,130,.32) | white modal | WhatsNew.tsx:20 (text + badge) |
+
+**Ruled out (no text in the subtree, or not ink):** Toggle track disabled 0.2 (no text), SegmentedControl icon layers, Modal divider 0.2, Explanation separator 0.5, sheet backdrop 0.9, Sound/Language indicator measurement gates, QiblaCompass needle, countdown Bar wrapper, Day masjid fade, Navigation dots and chrome, RamadanDecorations sprites, QiblaWave paths, VeilBackdrop, Overlay press-catchers, and `textShadowColor` rgba values (shadow is not ink).
+
+**Entrance and exit transitions** (Modal.tsx:83-93 `FadeIn`/`FadeOut` on the modal card, Help.tsx:49 `BUTTON_ROW_COAT`, QiblaLost `FadeIn`): text passes through translucency while a surface presents, and both settled ends are fully opaque or unmounted. The separating rule, applied everywhere: **a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states rides view compositing.** The three overlay fades (A6, B8, B9) rest at hidden, so they convert (Step 3). The entrances rest at opaque, so they stay view compositing; the owner''s Step 4 read is the verdict on that ruling.
+
+### The colour basis (arithmetic)
+
+`BackgroundGradients` paints a diagonal LinearGradient, start (0, 0.25) to end (1, 1), `COLORS.gradient.screen` `#031a4c` to `#5b1eaa`.
+
+- Relative luminance: start 0.0128, midpoint `#2f1c7b` 0.0286, end 0.0605. The gradient stays dark everywhere; its own start-to-end contrast is 1.76:1. That spread is what makes one solid read different against different parts of it — the planning problem the owner named.
+- Flattening: composite = a·ink + (1−a)·background, nested per group — a group''s opacity composites over whatever sits behind the group, so the state matrix below flattens each element against its actual rendered base.
+- Over a solid surface the flatten is exact and one constant serves the role everywhere it appears. Over the gradient no solid equals the translucent ink everywhere; the chosen solid is the composite at the gradient midpoint, where the prayer list sits. The deviation at the corners is the composite range, tabled.
+
+**Gradient roles** (composite at start / mid / end; chosen solid = mid; contrast vs start / mid / end):
+
+| Role | Today | Composites | Chosen solid | Contrast |
+|---|---|---|---|---|
+| prayer names (muted) | .38 | #365080 / #52529e / #6d53bb | **#52529e** | 2.42 / 1.93 / 1.38 |
+| row times (rowTime) | .475 | #435e8e / #5a5fa6 / #7160bf | **#5a5fa6** | 2.89 / 2.30 / 1.64 |
+| location, countdown caption (secondary) | .54 | #5878ad / #6c79c2 / #807ad8 | **#6c79c2** | 4.10 / 3.27 / 2.33 |
+| dim colon (timeColon) | .375 | #435e8f / #5f60ad / #7a61ca | **#5f60ad** | 2.98 / 2.38 / 1.69 |
+| next colon (standard) | .75 | #9eb0d2 / #a9b1de / #b4b1ea | **#a9b1de** | 7.96 / 6.36 / 4.52 |
+| next colon (extras) | .88 | #d2d9ea / #d7d9ef / #dcd9f5 | **#d7d9ef** | 12.01 / 9.59 / 6.82 |
+| prayer-ago badge text | .45 over pill wash | #415b90 / #5660a7 / #6963bc | **#5660a7** | 2.63 / 2.01 / 1.53 |
+
+Primary ink `#ffffff` holds 9.5:1 or better everywhere on the gradient. The dim ratios above equal what the translucent ink locally produces today; the solid moves each role''s ink by at most the composite range between screen corners (names: #365080 to #6d53bb, a band the mid solid splits).
+
+**Solid-surface roles** (exact flattens):
+
+| Role | Over | Solid | Contrast |
+|---|---|---|---|
+| sheetSubtitle (constant + 5 literals) | sheet #0b183a | **#416899** | 3.03 |
+| SoundItem countdown selected / unselected-inactive | sheet #0b183a | **#8695d5** / **#416899** | 3.52 / 3.03 |
+| text.disabled (ColorPicker label) | sheet #0b183a | **#6392ba** | 5.24 |
+| Help BODY / CHEVRON / badge glyph / close | white | **#76828e** / **#acb3bb** / **#727e8f** / **#7e8896** | 3.91 / 2.11 / 3.02 / 3.59 |
+| WhatsNew FAINT_BLUE | white | **#bbc3d7** | 1.76 |
+| Qibla away / facing ink | faces #171f48 / #362c3e | **#4e648e** / **#8d7662** | 2.67 / 3.09 |
+| sheet grabber indicator (view, pixel-held) | sheet #0b183a | **#5b77a4** | — |
+
+**The Alert sheet''s disabled state matrix.** Bases: sheet `#0b183a`; card wash over sheet `#101d45`; stepper wash over card `#192456`. States: rest (`locked` false, reminder on), off (reminder off, `locked` false), locked-on (`locked` true, reminder on), locked-off (both). Each cell is the exact flatten of today''s nested group opacities; the implementation encodes each row as one module-level map, no runtime arithmetic:
+
+| Element | rest | off | locked-on | locked-off |
+|---|---|---|---|---|
+| card title | #d8eaf8 (unchanged) | #d8eaf8 | **#253252** | **#253252** |
+| card hint | #416899 (the constant) | #416899 | **#122246** | **#122246** |
+| option label | #92b8e4 (unchanged) | **#203059** | **#1c2c4f** | **#0e1b3e** |
+| segment label, selected | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| segment label, unselected | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper value | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| stepper unit | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper glyph, mid-range (enabled ink) | #eaf2fa (unchanged) | **#16224a** | **#273352** | **#0c193c** |
+| stepper glyph, at boundary (disabled ink rgb(50,98,150) under its 0.15) | **#1c2d60** | **#111d46** | **#0d1b3f** | **#0c193b** |
+
+Title and hint sit outside the options group, so `off` does not touch them; `locked` dims the whole card and both states share one solid.
+
+**ColorPicker states over the sheet:** label disabled chain **#21365a**, reset label **#5b77a4** (bar shown) / **#1f3055** (bar hidden, the 0.25 chain) / `transparent` (not custom), chevron **#323f6b**, preview border **#48526b**. The preview dot and border are views: they keep an equivalent 0.25 on a text-free subtree so their pixels hold.
+
+### Why the compounding disappears
+
+A translucent glyph paints a·ink on each stroke; two overlapping strokes leave 1−(1−a)² ≈ 2a−a² of the ink, so the overlap reads brighter than a single stroke. At muted''s 0.38 the overlap carries 0.62 against 0.38 — 1.6× the single-stroke ink, the band the owner reads. A solid glyph paints alpha 1 on every stroke: overlap equals single stroke, one even ink. This holds mid-animation: a colour tween interpolates opaque colours, so no intermediate frame is translucent.
+
+## Decisions taken
+
+- 2026-10-21 — Gradient dim roles take the gradient-midpoint composite as their one solid (table above). Why: the owner banned adaptive shades; the list sits at the midpoint, the corner deviation is tabled, and the owner''s phone read rules the final word.
+- 2026-10-21 — Roles on solid surfaces flatten exactly over their surface; `sheetSubtitle` becomes `#416899` and its five local literals collapse into the constant. The 6% card wash under the Settings and Alert card subtitles shifts the composite by at most 5/255 per channel, under the just-noticeable difference; the bare-sheet flatten serves them all.
+- 2026-10-21 — The disabled matrix is carried by state-conditional solid colour maps (the table above), one entry per element per state, encoded as module constants in the components that render them. The wrapper opacities B1-B6 are deleted. Text-free views inside those groups (stepper wash, segment pill, colour-preview dot and border) keep an equivalent opacity on a text-free subtree so their pixels hold exactly.
+- 2026-10-21 — A hide that must hold layout paints the surface''s own colour (QiblaSubtitle lines over the sheet) or `transparent` (ColorPicker reset label, Qibla donor). Alpha 0 renders no ink, so nothing compounds; alpha strictly between 0 and 1 stays banned on text colours. The SoundItem countdown becomes a conditional render: the play icon is end-anchored and the countdown sits on its lead side, so its absence moves nothing, and the colour tween lives at row level and survives the remount.
+- 2026-10-21 — The separating rule for fades: a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states (modal and Help entrances) rides view compositing. The three resting-hidden fades — A6 (ago badge), B8 (prayer rows), B9 (info box) — move to Step 3: no solid colour equals invisible over a gradient, so the conversion needs a veil-merge colour the owner reads first.
+- 2026-10-21 — `text.secondary` keeps one constant (`#6c79c2`, its gradient habitat: Day location, Countdown caption). The ColorPicker reset label takes its own sheet-flattened solids (`#5b77a4` shown, `#1f3055` bar-hidden) as a named local role, and the sheet grabber indicator (Shared.tsx:55, a view) moves to a dedicated `#5b77a4` view constant so re-valuing the text constant re-inks no view. Fixed per-surface constants do not follow the background; this is not the owner-rejected adaptive shade.
+
+## Files
+
+- `shared/constants.ts` — the nine text-role constants become solids; a grabber view constant; comments state each flatten.
+- `components/sheets/parts/Shared.tsx` — the grabber indicator moves off `COLORS.text.secondary` onto the view constant (pixels identical).
+- `components/sheets/parts/SoundItem.tsx` — countdown conditional render; three literal colours to constants.
+- `components/sheets/screens/Settings.tsx`, `Sound.tsx`, `Alert.tsx`, `ReminderCard.tsx` — subtitle literals to the constant.
+- `components/sheets/screens/ReminderCard.tsx`, `components/sheets/parts/Stepper.tsx`, `SegmentedControl.tsx` — the disabled matrix maps; wrapper opacities deleted; text-free views hold their own opacity.
+- `components/sheets/screens/ColorPicker.tsx` — the 0.25 chain and the reset hide to solids; preview dot/border keep a text-free 0.25.
+- `components/sheets/screens/Qibla.tsx` — subtitle crossfade to a colour tween; donor transparent.
+- `components/ui/InitialWidthMeasurement.tsx` — hidden texts off-screen instead of opacity 0.
+- `components/modals/Help.tsx`, `WhatsNew.tsx` — white-surface literals flattened.
+- `components/prayer/Time.tsx`, `colonInk.ts`, `Ago.tsx`, `Prayer.tsx`, `components/day/Day.tsx`, `components/countdown/Countdown.tsx` — ride the new constants (no edit beyond imports unless a literal appears).
+- Step 3 files: `components/prayer/Prayer.tsx`, `Ago.tsx`, `components/overlay/OverlayInfoBox.tsx`, `hooks/useAnimation.ts`.
+
+## Design
+
+Dim is a colour constant. Every dimmed text role paints one solid colour, alpha 1, the same wherever the role appears. The invariant the sweep test pins: no `Text` or `Animated.Text` carries `opacity` in its own style or animated style; every text colour''s alpha is exactly 1 (hide-roles: exactly 0, or the surface''s own colour); animations that move text ink interpolate colours through `useDerivedColor` / `interpolateColor`, never opacity. Ancestor conversions are pinned by the rewritten component tests, which assert the state-matrix solids.
+
+On solid surfaces the conversion is pixel-exact: interpolating ink toward the surface colour equals an opacity fade over that surface, formula for formula (a·ink + (1−a)·bg both ways). Over the gradient it cannot be exact; the gradient roles accept the tabled deviation, and the three resting-hidden fades wait for a ruled veil-merge colour.
+
+**Alternatives weighed and rejected**
+
+1. *Solid colour at opacity 1* — chosen, above.
+2. *Adaptive per-position or per-component shades following the background* — owner-rejected by dictation (2026-10-21), and engineering-rejected: it multiplies constants per surface, drifts as surfaces change, and re-introduces exactly the tuning the one-constant rule exists to end.
+3. *A more subtle gradient background* — weighed honestly: the gradient''s 1.76:1 self-contrast is what makes one solid read different top against bottom; a flatter gradient would narrow every gradient role''s deviation band. Not this change: visuals are settled, the owner alone rules pixels, and the prototype does not touch the background. If the owner''s read flags the corner deviation, a subtler gradient is a separate, owner-ruled ticket.
+4. *Doing nothing* — rejected: the owner ordered no faded text.
+5. *Platform split (iOS keeps translucent ink)* — rejected: dictated "no platform split", and the freshest word says iPhone shows the seam too.
+
+## Steps
+
+1. **Step 1: The colour-carried dim prototype on lane/294** (code, 2 pts) — every static dim role a solid constant per the tables; sites A1-A5 and B1-B7 converted (A6, B8, B9 rest-hidden fades excepted to Step 3); `npx tsc --noEmit` and `yarn biome check` green; the triple version bump (package.json, app.json, android/app/build.gradle, patch, `git fetch origin` first) in the commit; no tests written or run; committed for the owner''s mock build.
+2. **Step 2: The sweep test and the suite realigned inside yarn validate** (code, 2 pts) — a sweep test that fails on any `Text`/`Animated.Text` carrying `opacity` in its own style or animated style, and on any text colour whose alpha is neither exactly 0 (hide roles) nor exactly 1; the existing opacity assertions rewritten to the state-matrix solids (Alert, Stepper, SegmentedControl, Qibla subtitle); Sound''s indicator gate is a view and stays, with a presence assertion added for the conditional-rendered countdown; `yarn validate` green.
+3. **Step 3: The resting-hidden fades converted** (code, 2 pts) — A6, B8 and B9 (prayer rows, ago badge, info box) carry their open/close transition through colour, on the veil-merge colour the owner ruled from the prototype read.
+4. **Step 4: The device reads** (device, 3 pts) — the owner''s mock build read on the 3T under Arabic and on the iPhone: overlapping glyph regions one even ink; iOS unchanged apart from the colour basis; the entrance-fade ruling read and accepted.
+5. **Step 5: The merge and close** (docs, 1 pt) — lane/294 merged to uat, relations cleared, closing comment, snapshot in the close commit.
+
+Steps 2-5 wait on the owner''s verdict from the prototype read.
+
+Story points: 2 + 2 + 2 + 3 + 1 = 10.
+
+## Risks
+
+- A gradient solid reads brighter toward the top-start and dimmer toward the bottom-end than today''s local ink (tabled band). What shows it: the owner''s read of the list; the ruled remedies are a re-picked solid per role or the separately-ruled subtler gradient.
+- Dim solids hold under 4.5:1 at the gradient''s bright end (names 1.38:1) — that equals today''s local contrast; dims are de-emphasis and the primary ink holds 9.5:1 or better everywhere.
+- A missed cell in the disabled matrix leaves one element''s off-state read wrong. What shows it: the Alert sheet with the athan off and with each reminder off; the matrix table names every cell.
+- The jest suite keeps opacity assertions Step 1 knowingly leaves red until Step 2; the prototype commits on tsc and biome alone, per the owner''s order.
+- The QiblaSubtitle colour crossfade covers the waiting line with opaque ready ink mid-fade instead of blending two translucent lines: no compounding (the point), a slightly different 150 ms.
+- The entrance-fade ruling (transitions that pass between settled states stay view compositing) is the plan''s own line, not the owner''s; the owner''s Step 4 read is its verdict.
+
+## Proof
+
+- Step 1: `npx tsc --noEmit` and `yarn biome check` green on lane/294; `git grep -n "opacity" -- components app | grep -v __tests__` returns only the ruled-out list; the commit carries the triple version bump.
+- Step 2: `yarn validate` green; planting `<Text style={{ opacity: 0.5 }}>` turns the sweep test red.
+- Step 3: the same grep clean for `Prayer.tsx`, `Ago.tsx`, `OverlayInfoBox.tsx`; `useDerivedOpacity` has no consumer whose style lands on text.
+- Step 4: the owner''s read, recorded in this ticket.
+- Step 5: the merge commit on uat and `board/snapshot.sh` in the close commit.
+', NULL, NULL, '{}', false, false, false, NULL, 32768, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 11:59:45.056836+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (93, 33, 3, NULL, 'T-294', '# T-294 — Text never renders through opacity: colours carry the dim
+
+## Goal
+
+Wrong today: dim text is painted translucent. Six sites set `opacity` on a `Text` or an `Animated.Text` directly, nine ancestor views dim text subtrees through their own `opacity`, and thirteen text roles paint `rgba()` ink with alpha under 1. On Android every glyph stroke composites, so where Arabic glyphs overlap (diacritics, stacked marks, ligatures) the overlap paints twice and reads as a brighter, denser band than single-ink strokes. The owner''s freshest word (dictated 2026-10-21) says the seam also shows on iPhone; the ticket description''s older note that iOS composites a text run as one layer yields to that word. The owner''s read is the bar on both platforms.
+
+True when done: every text element paints fully opaque ink; dimness lives in the colour constant alone, one constant per dimmed role, identical wherever the role appears; a sweep test inside `yarn validate` pins it.
+
+## Evidence
+
+### Vision transcript — pending, rate-limited
+
+The owner pulled two 3T screenshots (Arabic enabled) to `$TMPDIR/opencode/t294/android-3t.png` and `android-3t-long.png`; they are not in the repo and never enter it. The vision dispatch returned `Rate limit exceeded` on three retries spread over six minutes (two failures in the lead session near 11:25, three in this lane after), and this lane''s own model cannot read images. The transcript stays pending; the plan stands on the code sweep, the arithmetic below, and the owner''s standing verbal read: overlapping glyph regions read brighter and denser than single-ink regions. Step 4 (the device reads) and the owner''s prototype read carry the visual verdict.
+
+### The code sweep (2026-10-21, on uat @ 5b496afe)
+
+**A. Text carrying opacity in its own style or animated style — 6 sites**
+
+| # | Site | Value | What the text is | Dim level today |
+|---|---|---|---|---|
+| A1 | `components/sheets/parts/SoundItem.tsx:120` | opacity 0/1 snap | the playing row''s countdown `m:ss` | invisible or full |
+| A2 | `components/ui/InitialWidthMeasurement.tsx:50` | opacity 0 | 11 hidden prayer-name measuring texts (6 standard + 5 extra) | invisible, mounted forever |
+| A3 | `components/sheets/screens/Qibla.tsx:249` | opacity 0 | the subtitle donor line (width donor, height 0) | invisible |
+| A4 | `components/sheets/screens/Qibla.tsx:84,90` | animated 1−p | the waiting subtitle line | crossfades to invisible |
+| A5 | `components/sheets/screens/Qibla.tsx:85,102` | animated p | the ready subtitle line | crossfades from invisible |
+| A6 | `components/prayer/Ago.tsx:52,55` | useDerivedOpacity 0/1 | the prayer-ago badge text | overlay open/close fade |
+
+**B. Ancestor opacity whose subtree contains Text — 9 sites**
+
+| # | Site | Value | Text inside | Dim level today |
+|---|---|---|---|---|
+| B1 | `components/sheets/screens/ReminderCard.tsx:107` | 0.125 (card locked) | card title + hint | 12.5% over the sheet |
+| B2 | `components/sheets/screens/ReminderCard.tsx:133` | 0.125 (reminder off) | option labels, segment labels, stepper text | 12.5% over the card, compounding with B3-B5 |
+| B3 | `components/sheets/parts/Stepper.tsx:110` | 0.2 (disabled) | +/− glyphs, value, unit | 20% (2.5% inside B2) |
+| B4 | `components/sheets/parts/Stepper.tsx:120` | 0.15 (boundary) | boundary +/− glyphs | 15% (0.375% inside B2-B3) |
+| B5 | `components/sheets/parts/SegmentedControl.tsx:201` | 0.2 (disabled) | segment labels | 20% (2.5% inside B2) |
+| B6 | `components/sheets/screens/ColorPicker.tsx:54,112` | 0.25 (bar hidden) | label, reset, chevron | 25% ink |
+| B7 | `components/sheets/screens/ColorPicker.tsx:123` | 0/1 (not custom) | the Reset label | invisible or full, holds layout |
+| B8 | `components/prayer/Prayer.tsx:63,89` | useDerivedOpacity 0/1 | the row''s name, time, bell | overlay open/close fade (150 ms) |
+| B9 | `components/overlay/OverlayInfoBox.tsx:39,78` | useDerivedOpacity 0/1 | the extras explanation card''s title and body | overlay open/close fade (150 ms) |
+
+**C. rgba() text colours with alpha under 1 — the dim roles**
+
+| Role | Value | Habitat | Sites |
+|---|---|---|---|
+| `COLORS.text.secondary` | rgba(160,200,255,.54) | gradient | Day location label, Countdown caption; sheet: ColorPicker reset label |
+| `COLORS.text.muted` | rgba(138,169,214,.38) | gradient | prayer names (Prayer.tsx:58, Alert.tsx:117 bell tween rides it) |
+| `COLORS.text.rowTime` | rgba(138,169,214,.475) | gradient | row times (Time.tsx:54) |
+| `COLORS.text.disabled` | rgba(146,211,255,.65) | sheet | ColorPicker labelDisabled |
+| `COLORS.text.sheetSubtitle` | rgba(86,134,189,.725) | sheet | Header, VolumeNote, Qibla, Language; literals in Settings.tsx:229, Sound.tsx:239, Alert.tsx:336,370, ReminderCard.tsx:124 |
+| `COLORS.prayerAgo.text` | rgba(128,162,212,.45) | gradient, over its pill wash | Ago.tsx:41 |
+| `COLORS.countdown.timeColon` | rgba(174,208,255,.375) | gradient | dim colon (colonInk.ts, Time.tsx:118) |
+| `COLORS.countdown.nextTimeColon` | rgba(210,226,255,.75) | gradient | next-row colon (standard) |
+| `COLORS.countdown.nextTimeColonExtras` | rgba(238,243,255,.88) | gradient | next-row colon (extras) |
+| `COLORS.qibla.away.ink` / `facing.ink` | rgba(146,184,228,.45) / rgba(228,192,134,.5) | solid dial faces | compass cardinal numbers |
+| SoundItem countdown pair | rgba(165,180,252,.8) / rgba(86,134,189,.725) | sheet | SoundItem.tsx:17,18,104 |
+| Help literals | rgba(48,66,84,.66), rgba(48,66,84,.4), rgba(71,85,105,.7) | white modal | Help.tsx:28,30,236 |
+| WhatsNew FAINT_BLUE | rgba(42,68,130,.32) | white modal | WhatsNew.tsx:20 (text + badge) |
+
+**Ruled out (no text in the subtree, or not ink):** Toggle track disabled 0.2 (no text), SegmentedControl icon layers, Modal divider 0.2, Explanation separator 0.5, sheet backdrop 0.9, Sound/Language indicator measurement gates, QiblaCompass needle, countdown Bar wrapper, Day masjid fade, Navigation dots and chrome, RamadanDecorations sprites, QiblaWave paths, VeilBackdrop, Overlay press-catchers, and `textShadowColor` rgba values (shadow is not ink).
+
+**Entrance and exit transitions** (Modal.tsx:83-93 `FadeIn`/`FadeOut` on the modal card, Help.tsx:49 `BUTTON_ROW_COAT`, QiblaLost `FadeIn`): text passes through translucency while a surface presents, and both settled ends are fully opaque or unmounted. The separating rule, applied everywhere: **a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states rides view compositing.** The three overlay fades (A6, B8, B9) rest at hidden, so they convert (Step 3). The entrances rest at opaque, so they stay view compositing; the owner''s Step 4 read is the verdict on that ruling.
+
+### The colour basis (arithmetic)
+
+`BackgroundGradients` paints a diagonal LinearGradient, start (0, 0.25) to end (1, 1), `COLORS.gradient.screen` `#031a4c` to `#5b1eaa`.
+
+- Relative luminance: start 0.0128, midpoint `#2f1c7b` 0.0286, end 0.0605. The gradient stays dark everywhere; its own start-to-end contrast is 1.76:1. That spread is what makes one solid read different against different parts of it — the planning problem the owner named.
+- Flattening: composite = a·ink + (1−a)·background, nested per group — a group''s opacity composites over whatever sits behind the group, so the state matrix below flattens each element against its actual rendered base.
+- Over a solid surface the flatten is exact and one constant serves the role everywhere it appears. Over the gradient no solid equals the translucent ink everywhere; the chosen solid is the composite at the gradient midpoint, where the prayer list sits. The deviation at the corners is the composite range, tabled.
+
+**Gradient roles** (composite at start / mid / end; chosen solid = mid; contrast vs start / mid / end):
+
+| Role | Today | Composites | Chosen solid | Contrast |
+|---|---|---|---|---|
+| prayer names (muted) | .38 | #365080 / #52529e / #6d53bb | **#52529e** | 2.42 / 1.93 / 1.38 |
+| row times (rowTime) | .475 | #435e8e / #5a5fa6 / #7160bf | **#5a5fa6** | 2.89 / 2.30 / 1.64 |
+| location, countdown caption (secondary) | .54 | #5878ad / #6c79c2 / #807ad8 | **#6c79c2** | 4.10 / 3.27 / 2.33 |
+| dim colon (timeColon) | .375 | #435e8f / #5f60ad / #7a61ca | **#5f60ad** | 2.98 / 2.38 / 1.69 |
+| next colon (standard) | .75 | #9eb0d2 / #a9b1de / #b4b1ea | **#a9b1de** | 7.96 / 6.36 / 4.52 |
+| next colon (extras) | .88 | #d2d9ea / #d7d9ef / #dcd9f5 | **#d7d9ef** | 12.01 / 9.59 / 6.82 |
+| prayer-ago badge text | .45 over pill wash | #415b90 / #5660a7 / #6963bc | **#5660a7** | 2.63 / 2.01 / 1.53 |
+
+Primary ink `#ffffff` holds 9.5:1 or better everywhere on the gradient. The dim ratios above equal what the translucent ink locally produces today; the solid moves each role''s ink by at most the composite range between screen corners (names: #365080 to #6d53bb, a band the mid solid splits).
+
+**Solid-surface roles** (exact flattens):
+
+| Role | Over | Solid | Contrast |
+|---|---|---|---|
+| sheetSubtitle (constant + 5 literals) | sheet #0b183a | **#416899** | 3.03 |
+| SoundItem countdown selected / unselected-inactive | sheet #0b183a | **#8695d5** / **#416899** | 3.52 / 3.03 |
+| text.disabled (ColorPicker label) | sheet #0b183a | **#6392ba** | 5.24 |
+| Help BODY / CHEVRON / badge glyph | white | **#76828e** / **#acb3bb** / **#727e8f** | 3.91 / 2.11 / 3.02 |
+| WhatsNew FAINT_BLUE | white | **#bbc3d7** | 1.76 |
+| Qibla away / facing ink | faces #171f48 / #362c3e | **#4e648e** / **#8d7662** | 2.67 / 3.09 |
+| sheet grabber indicator (view, pixel-held) | sheet #0b183a | **#5b77a4** | — |
+
+**The Alert sheet''s disabled state matrix.** Bases: sheet `#0b183a`; card wash over sheet `#101d45`; stepper wash over card `#192456`. States: rest (`locked` false, reminder on), off (reminder off, `locked` false), locked-on (`locked` true, reminder on), locked-off (both). Each cell is the exact flatten of today''s nested group opacities; the implementation encodes each row as one module-level map, no runtime arithmetic:
+
+| Element | rest | off | locked-on | locked-off |
+|---|---|---|---|---|
+| card title | #d8eaf8 (unchanged) | #d8eaf8 | **#253252** | **#253252** |
+| card hint | #416899 (the constant) | #416899 | **#122246** | **#122246** |
+| option label | #92b8e4 (unchanged) | **#203059** | **#1c2c4f** | **#0e1b3e** |
+| segment label, selected | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| segment label, unselected | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper value | #ffffff (unchanged) | **#16224a** | **#2a3553** | **#0c193c** |
+| stepper unit | #5f85b1 (unchanged) | **#121f48** | **#162649** | **#0c193c** |
+| stepper glyph, mid-range (enabled ink) | #eaf2fa (unchanged) | **#16224a** | **#273352** | **#0c193c** |
+| stepper glyph, at boundary (disabled ink rgb(50,98,150) under its 0.15) | **#1c2d60** | **#111d46** | **#0d1b3f** | **#0c193b** |
+
+Title and hint sit outside the options group, so `off` does not touch them; `locked` dims the whole card and both states share one solid.
+
+**ColorPicker states over the sheet:** label disabled chain **#21365a**, reset label **#5b77a4** (bar shown) / **#1f3055** (bar hidden, the 0.25 chain) / `transparent` (not custom), chevron **#323f6b**, preview border **#48526b**. The preview dot and border are views: they keep an equivalent 0.25 on a text-free subtree so their pixels hold.
+
+### Why the compounding disappears
+
+A translucent glyph paints a·ink on each stroke; two overlapping strokes leave 1−(1−a)² ≈ 2a−a² of the ink, so the overlap reads brighter than a single stroke. At muted''s 0.38 the overlap carries 0.62 against 0.38 — 1.6× the single-stroke ink, the band the owner reads. A solid glyph paints alpha 1 on every stroke: overlap equals single stroke, one even ink. This holds mid-animation: a colour tween interpolates opaque colours, so no intermediate frame is translucent.
+
+## Decisions taken
+
+- 2026-10-21 — Gradient dim roles take the gradient-midpoint composite as their one solid (table above). Why: the owner banned adaptive shades; the list sits at the midpoint, the corner deviation is tabled, and the owner''s phone read rules the final word.
+- 2026-10-21 — Roles on solid surfaces flatten exactly over their surface; `sheetSubtitle` becomes `#416899` and its five local literals collapse into the constant. The 6% card wash under the Settings and Alert card subtitles shifts the composite by at most 5/255 per channel, under the just-noticeable difference; the bare-sheet flatten serves them all.
+- 2026-10-21 — The disabled matrix is carried by state-conditional solid colour maps (the table above), one entry per element per state, encoded as module constants in the components that render them. The wrapper opacities B1-B6 are deleted. Text-free views inside those groups (stepper wash, segment pill, colour-preview dot and border) keep an equivalent opacity on a text-free subtree so their pixels hold exactly.
+- 2026-10-21 — A hide that must hold layout paints the surface''s own colour (QiblaSubtitle lines over the sheet) or `transparent` (ColorPicker reset label, Qibla donor). Alpha 0 renders no ink, so nothing compounds; alpha strictly between 0 and 1 stays banned on text colours. The SoundItem countdown becomes a conditional render: the play icon is end-anchored and the countdown sits on its lead side, so its absence moves nothing, and the colour tween lives at row level and survives the remount.
+- 2026-10-21 — The separating rule for fades: a fade whose resting state is hidden or dimmed converts to colour; a transition that passes between two settled states (modal and Help entrances) rides view compositing. The three resting-hidden fades — A6 (ago badge), B8 (prayer rows), B9 (info box) — move to Step 3: no solid colour equals invisible over a gradient, so the conversion needs a veil-merge colour the owner reads first.
+- 2026-10-21 — `text.secondary` keeps one constant (`#6c79c2`, its gradient habitat: Day location, Countdown caption). The ColorPicker reset label takes its own sheet-flattened solids (`#5b77a4` shown, `#1f3055` bar-hidden) as a named local role, and the sheet grabber indicator (Shared.tsx:55, a view) moves to a dedicated `#5b77a4` view constant so re-valuing the text constant re-inks no view. Fixed per-surface constants do not follow the background; this is not the owner-rejected adaptive shade.
+
+## Files
+
+- `shared/constants.ts` — eleven ink constants become solids: the nine text-role constants, `qibla.away.ink` (#4e648e) and `qibla.facing.ink` (#8d7662); a grabber view constant; comments state each flatten.
+- `components/sheets/parts/Shared.tsx` — the grabber indicator moves off `COLORS.text.secondary` onto the view constant (pixels identical).
+- `components/sheets/parts/SoundItem.tsx` — countdown conditional render; three literal colours to constants.
+- `components/sheets/screens/Settings.tsx`, `Sound.tsx`, `Alert.tsx`, `ReminderCard.tsx` — subtitle literals to the constant.
+- `components/sheets/screens/ReminderCard.tsx`, `components/sheets/parts/Stepper.tsx`, `SegmentedControl.tsx` — the disabled matrix maps; wrapper opacities deleted; text-free views hold their own opacity.
+- `components/sheets/screens/ColorPicker.tsx` — the 0.25 chain and the reset hide to solids; preview dot/border keep a text-free 0.25.
+- `components/sheets/screens/Qibla.tsx` — subtitle crossfade to a colour tween; donor transparent.
+- `components/ui/InitialWidthMeasurement.tsx` — hidden texts off-screen instead of opacity 0.
+- `components/modals/Help.tsx`, `WhatsNew.tsx` — white-surface literals flattened.
+- `components/prayer/Time.tsx`, `colonInk.ts`, `Ago.tsx`, `Prayer.tsx`, `components/day/Day.tsx`, `components/countdown/Countdown.tsx` — ride the new constants (no edit beyond imports unless a literal appears).
+- Step 3 files: `components/prayer/Prayer.tsx`, `Ago.tsx`, `components/overlay/OverlayInfoBox.tsx`, `hooks/useAnimation.ts`.
+
+## Design
+
+Dim is a colour constant. Every dimmed text role paints one solid colour, alpha 1, the same wherever the role appears. The invariant the sweep test pins: no `Text` or `Animated.Text` carries `opacity` in its own style or animated style; every text colour''s alpha is exactly 1 (hide-roles: exactly 0, or the surface''s own colour); animations that move text ink interpolate colours through `useDerivedColor` / `interpolateColor`, never opacity. Ancestor conversions are pinned by the rewritten component tests, which assert the state-matrix solids.
+
+On solid surfaces the conversion is pixel-exact: interpolating ink toward the surface colour equals an opacity fade over that surface, formula for formula (a·ink + (1−a)·bg both ways). Over the gradient it cannot be exact; the gradient roles accept the tabled deviation, and the three resting-hidden fades wait for a ruled veil-merge colour.
+
+**Alternatives weighed and rejected**
+
+1. *Solid colour at opacity 1* — chosen, above.
+2. *Adaptive per-position or per-component shades following the background* — owner-rejected by dictation (2026-10-21), and engineering-rejected: it multiplies constants per surface, drifts as surfaces change, and re-introduces exactly the tuning the one-constant rule exists to end.
+3. *A more subtle gradient background* — weighed honestly: the gradient''s 1.76:1 self-contrast is what makes one solid read different top against bottom; a flatter gradient would narrow every gradient role''s deviation band. Not this change: visuals are settled, the owner alone rules pixels, and the prototype does not touch the background. If the owner''s read flags the corner deviation, a subtler gradient is a separate, owner-ruled ticket.
+4. *Doing nothing* — rejected: the owner ordered no faded text.
+5. *Platform split (iOS keeps translucent ink)* — rejected: dictated "no platform split", and the freshest word says iPhone shows the seam too.
+
+## Steps
+
+1. **Step 1: The colour-carried dim prototype on lane/294** (code, 2 pts) — every static dim role a solid constant per the tables; sites A1-A5 and B1-B7 converted (A6, B8, B9 rest-hidden fades excepted to Step 3); `npx tsc --noEmit` and `yarn biome check` green; the triple version bump (package.json, app.json, android/app/build.gradle, patch, `git fetch origin` first) in the commit; no tests written or run; committed for the owner''s mock build.
+2. **Step 2: The sweep test and the suite realigned inside yarn validate** (code, 2 pts) — a sweep test that fails on any `Text`/`Animated.Text` carrying `opacity` in its own style or animated style, and on any text colour whose alpha is neither exactly 0 (hide roles) nor exactly 1; the existing opacity assertions rewritten to the state-matrix solids (Alert, Stepper, SegmentedControl, Qibla subtitle); Sound''s indicator gate is a view and stays, with a presence assertion added for the conditional-rendered countdown; `yarn validate` green.
+3. **Step 3: The resting-hidden fades converted** (code, 2 pts) — A6, B8 and B9 (prayer rows, ago badge, info box) carry their open/close transition through colour, on the veil-merge colour the owner ruled from the prototype read.
+4. **Step 4: The device reads** (device, 3 pts) — the owner''s mock build read on the 3T under Arabic and on the iPhone: overlapping glyph regions one even ink; iOS unchanged apart from the colour basis; the entrance-fade ruling read and accepted.
+5. **Step 5: The merge and close** (docs, 1 pt) — lane/294 merged to uat, relations cleared, closing comment, snapshot in the close commit.
+
+Steps 2-5 wait on the owner''s verdict from the prototype read.
+
+Story points: 2 + 2 + 2 + 3 + 1 = 10.
+
+## Risks
+
+- A gradient solid reads brighter toward the top-start and dimmer toward the bottom-end than today''s local ink (tabled band). What shows it: the owner''s read of the list; the ruled remedies are a re-picked solid per role or the separately-ruled subtler gradient.
+- Dim solids hold under 4.5:1 at the gradient''s bright end (names 1.38:1) — that equals today''s local contrast; dims are de-emphasis and the primary ink holds 9.5:1 or better everywhere.
+- A missed cell in the disabled matrix leaves one element''s off-state read wrong. What shows it: the Alert sheet with the athan off and with each reminder off; the matrix table names every cell.
+- The jest suite keeps opacity assertions Step 1 knowingly leaves red until Step 2; the prototype commits on tsc and biome alone, per the owner''s order.
+- The QiblaSubtitle colour crossfade covers the waiting line with opaque ready ink mid-fade instead of blending two translucent lines: no compounding (the point), a slightly different 150 ms.
+- The entrance-fade ruling (transitions that pass between settled states stay view compositing) is the plan''s own line, not the owner''s; the owner''s Step 4 read is its verdict.
+
+## Proof
+
+- Step 1: `npx tsc --noEmit` and `yarn biome check` green on lane/294; `git grep -n "opacity" -- components app | grep -v __tests__` returns only the ruled-out list; the commit carries the triple version bump.
+- Step 2: `yarn validate` green; planting `<Text style={{ opacity: 0.5 }}>` turns the sweep test red.
+- Step 3: the same grep clean for `Prayer.tsx`, `Ago.tsx`, `OverlayInfoBox.tsx`; `useDerivedOpacity` has no consumer whose style lands on text.
+- Step 4: the owner''s read, recorded in this ticket.
+- Step 5: the merge commit on uat and `board/snapshot.sh` in the close commit.
+', NULL, NULL, '{}', false, false, false, NULL, 32768, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 12:15:08.540342+00');
 
 
 --
@@ -22601,6 +23385,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:316', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:319', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
@@ -22633,7 +23418,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:292', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:318', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:317', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:303', 1, 5);
@@ -22643,31 +23430,33 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:308', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:309', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:320', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:310', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 132);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:321', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 88);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:282', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:283', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:276', 1, 124);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:284', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3824);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 93);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:300', 1, 19);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:311', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:297', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:301', 1, 21);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:298', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 64);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3804);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 49);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:314', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 17);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:315', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 136);
 
 
 --
@@ -22929,7 +23718,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3064, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3099, true);
 
 
 --
@@ -22978,14 +23767,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 603, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 604, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 316, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 321, true);
 
 
 --
@@ -23006,7 +23795,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 660, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 670, true);
 
 
 --
@@ -23097,14 +23886,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 32, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 33, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 90, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 93, true);
 
 
 --
@@ -27489,5 +28278,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict EdaIcnTb9niCeDXwgoOcgWQ6Aoax7QpGFXpE30kFYjbWYcKiEGcTfqUWIY1CsqG
+\unrestrict 31NCS8aFx118WieU10lzb5kGqYagEypaJ3UdDHIcJN9tRb5EouQpPGpiyrEDbjX
 

@@ -90,5 +90,9 @@
   {
     "version": "2.4.5",
     "reason": "2026-10-21 lanes T-296 and T-306 both bumped from 2.4.4; lead ruling in this run: T-296 lands first at 2.4.5 and T-306 renumbers above it at 2.4.6"
+  },
+  {
+    "version": "2.4.12",
+    "reason": "2026-10-21 lane T-294's prototype commit and the lead's board-close commit both step from 2.4.11; the standing ruling: the merge that lands second renumbers above the first"
   }
 ]
