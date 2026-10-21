@@ -2,27 +2,29 @@
  * What's New - post-update announcement content and display rules
  *
  * A growing archive of release-note items, each stamped with the version it
- * shipped in. The modal shows only the CURRENT release's items, once, on the
- * first launch after a store update (never on fresh installs).
+ * shipped in. The modal is a versioned changelog: the archive's newest
+ * WHATS_NEW_DISPLAY_WINDOW items, grouped under major.minor version headings,
+ * shown once on the first launch after a store update (never on fresh installs).
  *
  * Maintenance ritual (every store release):
- * 1. Stamp items shipping in this release with the release's version, and move
- *    WHATS_NEW.version to match - the modal shows nothing unless it equals the
- *    installed version, which is what makes step 5 true
+ * 1. Move WHATS_NEW.version to the shipping release - the modal shows nothing
+ *    unless it equals the installed version, which is what makes step 5 true
  * 2. Leave drafted future items at version: null (parked, never shown)
  * 3. When a parked item ships, stamp it with that release's version
  * 4. Prune the archive past MAX_WHATS_NEW_ARCHIVE entries (oldest first)
- * 5. A release with no newly stamped items silent-ships automatically
+ * 5. A release with no items inside the display window silent-ships
+ *    automatically
  *
  * Display rules:
- * - Shows ONLY the current release's items, never accumulated history -
- *   skipped intermediate versions are dominated by the final feature state
+ * - The changelog is cross-release: items keep the true version they shipped
+ *   in, and the newest window decides which are seen - skipped intermediate
+ *   versions are dominated by the final feature state
  * - `platform` declares an item's availability: Apple/Android glyphs render
- *   in the item's leading column (both stacked for cross-platform items) -
- *   informational on every device, never a filter
- * - `version` and `flags` ARE filters: items stamped with another release,
- *   parked (null), or gated behind a disabled feature flag are removed
- *   (currentVisibleWhatsNew()), so a dark or future feature is never advertised
+ *   at the item row's trailing edge (both side by side for cross-platform
+ *   items) - informational on every device, never a filter
+ * - `version` and `flags` ARE filters: parked (null) items, or items gated
+ *   behind a disabled feature flag, are removed (currentVisibleWhatsNew()),
+ *   so a dark or future feature is never advertised
  *
  * The archive holds catalog keys, not copy: every title and body renders
  * through t(), resolved once at the release boundary (getVisibleWhatsNew).
@@ -57,7 +59,7 @@ export interface WhatsNewArchiveRelease {
    * modal - shouldShowWhatsNew shows nothing unless this is the installed
    * version, so an un-moved stamp silent-ships the release */
   version: string;
-  /** Archived items across releases; only the current version's show */
+  /** Archived items across releases; the newest display window shows */
   items: WhatsNewArchiveItem[];
 }
 
@@ -83,12 +85,24 @@ export interface WhatsNewRelease {
    * modal - shouldShowWhatsNew shows nothing unless this is the installed
    * version, so an un-moved stamp silent-ships the release */
   version: string;
-  /** The release's items, resolved to the copy the modal renders */
+  /** The changelog's items, newest release first, windowed to the newest
+   * WHATS_NEW_DISPLAY_WINDOW entries, resolved to the copy the modal renders */
   items: WhatsNewItem[];
 }
 
+/** One version group of the changelog: its header label and its items */
+export interface WhatsNewGroup {
+  /** The major.minor of the group's items' versions, patch hidden (v1.29) */
+  key: string;
+  /** The group's items, newest first */
+  items: WhatsNewItem[];
+}
+
+/** An archived item whose release stamp is set: the shape filterWhatsNewItems yields */
+export type StampedWhatsNewArchiveItem = WhatsNewArchiveItem & { version: string };
+
 /** Resolves one archived entry to the copy the modal renders */
-const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
+const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
   title: t(item.titleKey),
   body: t(item.bodyKey),
   platform: item.platform,
@@ -103,59 +117,61 @@ const resolveItem = (item: WhatsNewArchiveItem): WhatsNewItem => ({
 // A real feature is worth interrupting someone for; a
 // performance pass is not, and popping a modal for one just annoys people.
 //
-// So: move `version` (and the item stamps) to the shipping release when you want
-// the modal to appear, and LEAVE THEM BEHIND when you do not. A stamp older than
-// the installed version is how a release silent-ships, and that is a choice, not
-// a bug. Deliberately NOT covered by a test — a test here would fail every time
-// that choice is made, which is the fastest way to get the guard deleted.
+// So: move `version` to the shipping release when you want the modal to appear,
+// and LEAVE IT BEHIND when you do not. A stamp older than the installed version
+// is how a release silent-ships, and that is a choice, not a bug. Deliberately
+// NOT covered by a test — a test here would fail every time that choice is
+// made, which is the fastest way to get the guard deleted.
 //
-// The debut (owner order 2026-10-20): the modal itself is new and has never
-// reached the store, so it opens with every feature the app has ever shipped.
+// The debut (owner order 2026-10-20): the modal opened with every feature the
+// app has ever shipped. T-297 (owner order 2026-10-21) restamped each item with
+// the version it truly shipped in, named from git history, so the groups name
+// real releases.
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.3.0',
+  version: '2.4.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
-      version: '2.3.0',
+      version: '2.0.37',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',
       bodyKey: 'whatsNew.body.tabletSupport',
-      version: '2.3.0',
+      version: '1.24.10',
     },
     {
       titleKey: 'whatsNew.title.athanSounds',
       bodyKey: 'whatsNew.body.athanSounds',
-      version: '2.3.0',
+      version: '1.24.10',
     },
     {
       titleKey: 'whatsNew.title.reminderSounds',
       bodyKey: 'whatsNew.body.reminderSounds',
-      version: '2.3.0',
+      version: '1.24.10',
     },
     {
       // Unbadged: both platforms ship widgets and neither flag ever ships off again
       titleKey: 'whatsNew.title.widgets',
       bodyKey: 'whatsNew.body.widgets',
-      version: '2.3.0',
+      version: '1.7.0',
     },
     {
       titleKey: 'whatsNew.title.secondReminder',
       bodyKey: 'whatsNew.body.secondReminder',
-      version: '2.3.0',
+      version: '1.29.0',
     },
     {
       titleKey: 'whatsNew.title.helpPage',
       bodyKey: 'whatsNew.body.helpPage',
-      version: '2.3.0',
+      version: '1.29.10',
     },
     {
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
-      version: '2.3.0',
+      version: '1.29.258',
     },
   ],
 };
@@ -170,6 +186,10 @@ export const MAX_WHATS_NEW_ARCHIVE = 100;
 export const MAX_WHATS_NEW_TITLE_LENGTH = 32;
 /** Maximum body length in characters */
 export const MAX_WHATS_NEW_BODY_LENGTH = 96;
+/** The changelog shows at most this many of the archive's newest items - the
+ * owner's T-297 display window, a viewing limit distinct from the 100-entry
+ * archive prune */
+export const WHATS_NEW_DISPLAY_WINDOW = 20;
 
 // =============================================================================
 // DISPLAY RULES (pure functions - fully unit tested)
@@ -183,16 +203,14 @@ export const MAX_WHATS_NEW_BODY_LENGTH = 96;
  * - Fresh installs seed the shown-version to the installed version at first
  *   boot (see stores/version.ts handleAppUpgrade), so they never differ
  * - Existing users upgrading have an older (or absent) shown-version
- * - Users skipping versions still see only the installed version's notes -
- *   there is no history to accumulate by construction
+ * - Users skipping versions still see the same newest window - there is no
+ *   history to accumulate by construction
  *
  * The stamp check is what makes step 5 of the maintenance ritual above true.
- * `app/index.tsx` heads the modal with the INSTALLED version, while the items
- * are filtered against the hand-maintained `WHATS_NEW.version`. Nothing
- * compared the two, so once releases shipped past the last stamp every upgrade
- * presented that old release's items under today's version number - notes the
- * user had already read, dated as if they were new. A release whose stamp has
- * not been moved forward now silent-ships, as the file has always documented.
+ * `app/index.tsx` gates the modal on the INSTALLED version, and only this
+ * hand-maintained stamp says which build the notes belong to: nothing else
+ * compares the two, so a release whose stamp has not been moved forward
+ * silent-ships, as the file has always documented.
  *
  * @param installedVersion - Version of the running binary (e.g. '1.13.0')
  * @param shownVersion - Version the modal was last shown for (or seeded with)
@@ -216,38 +234,71 @@ export const shouldShowWhatsNew = (
 /**
  * Filters the archive down to what this build may present
  *
- * An item shows only when BOTH hold: it is stamped with the presenting
- * release's version (parked null items and other releases' items stay
- * archived), and every feature flag it declares is enabled. Pure: the
- * parameters keep tests deterministic.
+ * An item shows only when BOTH hold: it is stamped with a real release
+ * version (parked null items stay archived), and every feature flag it
+ * declares is enabled. Which release an item shipped in no longer matters -
+ * the changelog presents history. Pure: the parameters keep tests
+ * deterministic.
  *
  * @param items - Archived items across releases
- * @param releaseVersion - The release presenting the list
  * @param flags - Enabled-flag record (defaults to this build's flags)
- * @returns Items safe to show for this release in this build
+ * @returns Items safe to show in this build, each stamped with its release
  */
 export const filterWhatsNewItems = (
   items: WhatsNewArchiveItem[],
-  releaseVersion: string,
   flags: Record<FeatureFlagId, boolean> = FEATURE_FLAGS
-): WhatsNewArchiveItem[] =>
-  items.filter((item) => item.version === releaseVersion && !(item.flags ?? []).some((flag) => !flags[flag]));
+): StampedWhatsNewArchiveItem[] =>
+  items.filter(
+    (item): item is StampedWhatsNewArchiveItem =>
+      item.version !== null && !(item.flags ?? []).some((flag) => !flags[flag])
+  );
 
 /**
- * A release as a build may present it: reduced to its own version's visible
- * items, or null when nothing remains (silent-ship semantics apply everywhere
- * downstream). Pure: the parameters keep tests deterministic.
+ * Groups the changelog's items under their release headings
+ *
+ * The key is the major.minor of each item's version with the patch hidden
+ * (v1.29), because the patch number splits one release's feature set across
+ * stray headings. Groups order newest-first - the first appearance in a
+ * newest-first sort - and items keep the sort order inside their group.
+ * Parked (null version) items have no release to sit under and never group.
+ * Pure: the input array is never mutated.
+ *
+ * @param items - The changelog's items, in any order
+ * @returns Groups keyed by release heading, newest group first
+ */
+export const groupWhatsNewItems = (items: WhatsNewItem[]): WhatsNewGroup[] => {
+  const newestFirst = items
+    .filter((item): item is WhatsNewItem & { version: string } => item.version !== null)
+    .sort((a, b) => compareVersions(b.version, a.version));
+
+  const groups: WhatsNewGroup[] = [];
+  for (const item of newestFirst) {
+    const [major, minor] = item.version.split('.');
+    const key = `v${major}.${minor}`;
+    const open = groups.find((group) => group.key === key);
+    if (open) open.items.push(item);
+    else groups.push({ key, items: [item] });
+  }
+  return groups;
+};
+
+/**
+ * A release as a build may present it: its visible items as the newest-first
+ * display window, or null when nothing remains (silent-ship semantics apply
+ * everywhere downstream). Pure: the parameters keep tests deterministic.
  *
  * @param release - Archived release content (null = silent release)
  * @param flags - Enabled-flag record of the build presenting it
- * @returns The release with only its visible items, resolved to display copy, or null
+ * @returns The release with its windowed items, resolved to display copy, or null
  */
 export const getVisibleWhatsNew = (
   release: WhatsNewArchiveRelease | null,
   flags: Record<FeatureFlagId, boolean>
 ): WhatsNewRelease | null => {
   if (!release) return null;
-  const items = filterWhatsNewItems(release.items, release.version, flags);
+  const items = filterWhatsNewItems(release.items, flags)
+    .sort((a, b) => compareVersions(b.version, a.version))
+    .slice(0, WHATS_NEW_DISPLAY_WINDOW);
   return items.length > 0 ? { version: release.version, items: items.map(resolveItem) } : null;
 };
 
@@ -262,7 +313,7 @@ export const currentVisibleWhatsNew = (): WhatsNewRelease | null => getVisibleWh
  *
  * Every item declares where it is available, independent of the viewing
  * device: an iOS-exclusive item shows the Apple glyph, an Android-exclusive
- * item the Android glyph, and a cross-platform item shows both stacked.
+ * item the Android glyph, and a cross-platform item shows both side by side.
  * Badges are informational - items are never filtered by platform.
  *
  * @param item - The list item

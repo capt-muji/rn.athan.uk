@@ -256,12 +256,7 @@ export default function Index() {
   return (
     <>
       {chromeDeferred && visibleWhatsNew ? (
-        <ModalWhatsNew
-          visible={whatsNewVisible}
-          version={installedVersion}
-          items={visibleWhatsNew.items}
-          onClose={handleCloseWhatsNew}
-        />
+        <ModalWhatsNew visible={whatsNewVisible} items={visibleWhatsNew.items} onClose={handleCloseWhatsNew} />
       ) : null}
       {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
       {/* iOS only in effect: Android never resolves an update here, because Play's own overlay owns that flow */}
