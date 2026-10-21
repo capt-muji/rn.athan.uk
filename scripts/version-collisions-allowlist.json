@@ -94,5 +94,9 @@
   {
     "version": "2.4.12",
     "reason": "2026-10-21 lane T-294's prototype commit and the lead's board-close commit both step from 2.4.11; the standing ruling: the merge that lands second renumbers above the first"
+  },
+  {
+    "version": "2.4.13",
+    "reason": "2026-10-21 the board-close commit at the owner's-read stop steps from uat's 2.4.12 while lane T-294's Step 2 commit holds 2.4.13; the standing ruling: the Step 5 merge renumbers above whatever uat then carries"
   }
 ]
