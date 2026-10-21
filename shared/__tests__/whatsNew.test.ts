@@ -14,9 +14,9 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { FEATURE_FLAGS } from '@/shared/flags';
-import { t } from '@/shared/i18n';
+import { t, tIn } from '@/shared/i18n';
 import * as loader from '@/shared/i18n/loader';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ms } from '@/shared/i18n/ms';
 import { compareVersions } from '@/shared/versionUtils';
 
@@ -214,6 +214,50 @@ describe('WHATS_NEW content contract', () => {
     if (entry.platform !== undefined) {
       expect(['ios', 'android']).toContain(entry.platform);
     }
+  });
+});
+
+// =============================================================================
+// THE ARCHIVE UNDER EVERY TRANSLATED LOCALE (the translation lock)
+// =============================================================================
+
+describe('WHATS_NEW under every translated locale', () => {
+  // en is the source, never a locale's fallback: a value that still equals its
+  // en string is an untranslated stand-in and fails here. tIn reads the named
+  // catalog without touching the active locale. Derived from LOCALE_IDS so a
+  // future locale joins the lock the day its catalog lands.
+  const content = WHATS_NEW;
+  if (content === null) return;
+  const TRANSLATED_LOCALES = LOCALE_IDS.filter((id) => id !== 'en');
+
+  it.each(TRANSLATED_LOCALES)('%s carries no archive copy equal to its en source', (loc) => {
+    const failures: string[] = [];
+    for (const entry of content.items) {
+      if (tIn(loc, entry.titleKey) === tIn('en', entry.titleKey)) {
+        failures.push(`${loc}: ${entry.titleKey} still reads its en title`);
+      }
+      if (tIn(loc, entry.bodyKey) === tIn('en', entry.bodyKey)) {
+        failures.push(`${loc}: ${entry.bodyKey} still reads its en body`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it.each(TRANSLATED_LOCALES)('%s keeps every archived title and body inside the limits', (loc) => {
+    const failures: string[] = [];
+    for (const entry of content.items) {
+      const title = tIn(loc, entry.titleKey);
+      const body = tIn(loc, entry.bodyKey);
+      if (title.trim().length === 0) failures.push(`${loc}: ${entry.titleKey} has an empty title`);
+      if (body.trim().length === 0) failures.push(`${loc}: ${entry.bodyKey} has an empty body`);
+      if (title.length > MAX_WHATS_NEW_TITLE_LENGTH) {
+        failures.push(`${loc}: ${entry.titleKey} title over ${MAX_WHATS_NEW_TITLE_LENGTH}`);
+      }
+      if (body.length > MAX_WHATS_NEW_BODY_LENGTH) {
+        failures.push(`${loc}: ${entry.bodyKey} body over ${MAX_WHATS_NEW_BODY_LENGTH}`);
+      }
+    }
+    expect(failures).toEqual([]);
   });
 });
 
@@ -433,8 +477,8 @@ describe('currentVisibleWhatsNew', () => {
 
   it('resolves the active locale catalog at call time, not at module load', () => {
     setActiveLocale('ms');
-    // The historical archive is English stand-ins in every locale, so the catalog the
-    // loader hands back is the only witness that can tell ms from en here
+    // The witness is the loader, not the copy: whatever the catalogs read, the
+    // resolver must hand back the active locale's catalog at call time
     const catalog = jest.spyOn(loader, 'currentCatalog');
     currentVisibleWhatsNew();
     expect(catalog.mock.results[0]?.value).toBe(ms);
