@@ -345,6 +345,16 @@ describe("the Help modal's Close row entrance", () => {
     return current;
   };
   const closeRow = () => enteringAncestorOf(screen.getByRole('button', { name: 'Close' }));
+  // The coat is the row's only child with an entering of its own; text children arrive as strings
+  const coatOf = (row: TestInstance | null): TestInstance | undefined =>
+    (row?.children ?? []).find((child): child is TestInstance => typeof child !== 'string' && !!child.props?.entering);
+  // Bareness is not identity alone: a modifier-cloned builder would still be a FadeIn, so the recorded
+  // delay and duration are read as absent too
+  const expectBareFadeIn = (entering: unknown) => {
+    expect(entering).toBe(FadeIn);
+    expect((entering as { delayV?: number }).delayV).toBeUndefined();
+    expect((entering as { durationV?: number }).durationV).toBeUndefined();
+  };
 
   it('fades in with the card on the modal container entrance fade', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
@@ -354,37 +364,48 @@ describe("the Help modal's Close row entrance", () => {
     expect(row?.props.entering).toBe(FadeIn);
   });
 
-  // Android paints the settled row before the entering fade's zero lands, and does not multiply
-  // the row by the container's fade, so the row's own static style must hold its first frame
-  it('enters on Android from a zero opacity its own style holds', async () => {
+  /**
+   * Over the card's still-fading white a second white composites ahead of the card (the strip reads
+   * 1-(1-c)(1-rc) against the card's c), so Android paints the strip's white as a coat child that
+   * waits out the container's fade instead of as the row's own background. The row itself carries
+   * neither the white nor an opacity pin, which a later layout frame would clone back.
+   */
+  it('paints the strip white through a coat that waits out the entrance on Android', async () => {
     onPlatform('android');
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
     const row = closeRow();
+    const coat = coatOf(row);
 
-    expect(row?.props.entering).toBe(FadeIn);
-    expect(row?.props.layout).toBeDefined();
-    expect(StyleSheet.flatten(row?.props.style).opacity).toBe(0);
-  });
-
-  it('enters on iOS with the style it carries today, no opacity of its own', async () => {
-    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
-
-    const row = closeRow();
-
-    expect(row?.props.entering).toBe(FadeIn);
+    expectBareFadeIn(row?.props.entering);
     expect(row?.props.layout).toBeDefined();
     expect(StyleSheet.flatten(row?.props.style).opacity).toBeUndefined();
+    expect(StyleSheet.flatten(row?.props.style).backgroundColor).toBeUndefined();
+    expect(coat).toBeDefined();
+    expect(StyleSheet.flatten(coat?.props.style)).toEqual(
+      expect.objectContaining({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: COLORS.light.background,
+      })
+    );
+    // 300ms is the modal container's bare FadeIn duration, the fade the coat waits out (Modal's suite pins it)
+    expect(coat?.props.entering?.delayV).toBe(300);
   });
 
-  // Columns: the platform the row renders under. The hold is a first frame, not a new fill
-  it.each(['ios', 'android'])('stays opaque at settle on %s', async (os) => {
-    if (os === 'android') onPlatform('android');
+  it('enters on iOS with the style it carries today, its own white and no coat', async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
 
     const row = closeRow();
 
+    expectBareFadeIn(row?.props.entering);
+    expect(row?.props.layout).toBeDefined();
+    expect(StyleSheet.flatten(row?.props.style).opacity).toBeUndefined();
     expect(StyleSheet.flatten(row?.props.style).backgroundColor).toBe(COLORS.light.background);
+    expect(coatOf(row)).toBeUndefined();
   });
 });
 

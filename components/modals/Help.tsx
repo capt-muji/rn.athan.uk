@@ -39,6 +39,15 @@ const GROW = LinearTransition.duration(ANIMATION.duration).easing(Easing.out(Eas
 /** Slower than the panel: a spin that keeps up with the height reads as a flick rather than a turn */
 const CHEVRON_TURN = { duration: 320, easing: Easing.inOut(Easing.cubic) } as const;
 
+/**
+ * The strip's white over the card's own still-fading white composites ahead of the card (the
+ * owner's round-2 frame read the strip at 0.979 against the card's 0.905), so on Android it rides
+ * a coat that waits out the modal container's fade: the bare FadeIn runs 300ms, and white arriving
+ * on already-opaque white shows nothing. No opacity pin sits in the row's own style, which a later
+ * layout frame would clone back; the row's own FadeIn keeps the button riding the card as on iOS.
+ */
+const BUTTON_ROW_COAT = FadeIn.delay(300);
+
 /** Flattens the glyph, which is tall for its width. In the animated array, since a transform replaces rather than merges */
 const CHEVRON_SQUASH = 0.6;
 
@@ -188,7 +197,10 @@ export default function ModalHelp({ visible, onClose }: Props) {
       <Animated.View
         layout={GROW}
         entering={FadeIn}
-        style={[styles.buttonRow, Platform.OS === 'android' && styles.buttonRowEntering]}>
+        style={[styles.buttonRow, Platform.OS !== 'android' && styles.buttonRowOpaque]}>
+        {/* Android's strip white rides a coat below, not this row's own background, so the entrance
+            never paints it ahead of the card; iOS keeps the row's own white, its accepted entrance */}
+        {Platform.OS === 'android' ? <Animated.View entering={BUTTON_ROW_COAT} style={styles.buttonRowCoat} /> : null}
         <Pressable
           style={styles.button}
           onPress={onClose}
@@ -317,17 +329,18 @@ const styles = StyleSheet.create({
   buttonRow: {
     alignSelf: 'stretch',
     alignItems: 'center',
+    paddingTop: SPACING.section - SPACING.mid,
+  },
+  /** iOS carries the settled white on the row itself, the entrance it has always had */
+  buttonRowOpaque: {
     // Opaque through the button's air, matching the card: a closing row slides beneath it
     // instead of flashing through the transparent gap above the button
     backgroundColor: COLORS.light.background,
-    paddingTop: SPACING.section - SPACING.mid,
   },
-  // Android paints the settled row before the entering fade's zero lands (the fade's initial
-  // values ride the animation config, applied on the UI thread at animation start, after first
-  // paint) and does not multiply the row by the container's fade, so the static style alone pins
-  // the row's first frame
-  buttonRowEntering: {
-    opacity: 0,
+  /** Android's settled white, on a coat that fills the strip behind the button */
+  buttonRowCoat: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor: COLORS.light.background,
   },
   button: {
     width: SIZE.modal.buttonWidth,
