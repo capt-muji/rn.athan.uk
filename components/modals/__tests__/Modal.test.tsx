@@ -5,6 +5,8 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { BackHandler, DeviceEventEmitter, StyleSheet, Text } from 'react-native';
+import { FadeIn } from 'react-native-reanimated';
+import type { TestInstance } from 'test-renderer';
 
 import Modal from '../Modal';
 
@@ -54,6 +56,33 @@ describe('the modal card', () => {
 
     expect(screen.getByText("What's New")).toBeOnTheScreen();
     expect(screen.getByText('Tablet support')).toBeOnTheScreen();
+  });
+
+  // The card is the nearest entering ancestor of the content; the container is the card's parent
+  const cardOf = (content: TestInstance): TestInstance | null => {
+    let current: TestInstance | null = content.parent;
+    while (current && !current.props?.entering) current = current.parent;
+    return current;
+  };
+
+  // The container's fade is the bare FadeIn, 300ms: Help's Close-row coat waits out exactly this fade before
+  // it paints the strip's white, so a duration or delay added here breaks that pairing silently unless this
+  // pin holds
+  it('fades its container in on the bare FadeIn, with the card on its own entrance', async () => {
+    await render(
+      <Modal visible={true} title="What's New">
+        <Text>Tablet support</Text>
+      </Modal>
+    );
+
+    const card = cardOf(screen.getByText('Tablet support'));
+    const containerEntering = card?.parent?.props.entering as { delayV?: number; durationV?: number };
+
+    expect(card?.props.entering).toBeDefined();
+    expect(card?.props.entering).not.toBe(containerEntering);
+    expect(containerEntering).toBe(FadeIn);
+    expect(containerEntering.delayV).toBeUndefined();
+    expect(containerEntering.durationV).toBeUndefined();
   });
 });
 
