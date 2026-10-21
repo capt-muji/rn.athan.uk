@@ -130,7 +130,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.0',
+  version: '2.4.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -186,8 +186,9 @@ export const MAX_WHATS_NEW_ARCHIVE = 100;
 export const MAX_WHATS_NEW_TITLE_LENGTH = 32;
 /** Maximum body length in characters */
 export const MAX_WHATS_NEW_BODY_LENGTH = 96;
-// The owner's T-297 display window: a viewing limit, distinct from the 100-entry archive prune
-/** The changelog shows at most this many of the archive's newest items */
+/** The changelog shows at most this many of the archive's newest items - the
+ * owner's T-297 display window, a viewing limit distinct from the 100-entry
+ * archive prune */
 export const WHATS_NEW_DISPLAY_WINDOW = 20;
 
 // =============================================================================
@@ -206,12 +207,10 @@ export const WHATS_NEW_DISPLAY_WINDOW = 20;
  *   history to accumulate by construction
  *
  * The stamp check is what makes step 5 of the maintenance ritual above true.
- * `app/index.tsx` gates the modal on the INSTALLED version, while the items
- * are filtered against the hand-maintained `WHATS_NEW.version`. Nothing
- * compared the two, so once releases shipped past the last stamp every upgrade
- * presented that old release's items under today's version number - notes the
- * user had already read, dated as if they were new. A release whose stamp has
- * not been moved forward now silent-ships, as the file has always documented.
+ * `app/index.tsx` gates the modal on the INSTALLED version, and only this
+ * hand-maintained stamp says which build the notes belong to: nothing else
+ * compares the two, so a release whose stamp has not been moved forward
+ * silent-ships, as the file has always documented.
  *
  * @param installedVersion - Version of the running binary (e.g. '1.13.0')
  * @param shownVersion - Version the modal was last shown for (or seeded with)

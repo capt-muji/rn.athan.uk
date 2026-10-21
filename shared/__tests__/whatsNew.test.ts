@@ -187,7 +187,7 @@ describe('WHATS_NEW content contract', () => {
     expect(new Set(titles).size).toBe(titles.length);
   });
 
-  it('stamps every archived item with a real release version (no item stays parked)', () => {
+  it('ships no parked drafts - every archived item carries a real release version', () => {
     for (const entry of content.items) {
       expect(entry.version).not.toBeNull();
       expect(entry.version).toMatch(/^\d+\.\d+\.\d+$/);
