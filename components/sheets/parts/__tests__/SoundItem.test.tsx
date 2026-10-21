@@ -111,16 +111,16 @@ describe('the Athan 3 row, not playing', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('keeps its countdown hidden', async () => {
+  it('renders no countdown while its preview is stopped', async () => {
     await render(athan3());
 
-    expect(screen.getByText(COUNTDOWN)).not.toBeVisible();
+    expect(screen.queryByText(COUNTDOWN)).not.toBeOnTheScreen();
   });
 
-  it('keeps its countdown hidden while selected, whatever seconds it is handed', async () => {
+  it('renders no countdown while selected but stopped, whatever seconds it is handed', async () => {
     await render(athan3({ isSelected: true, remainingSeconds: 30 }));
 
-    expect(screen.getByText(COUNTDOWN)).not.toBeVisible();
+    expect(screen.queryByText(COUNTDOWN)).not.toBeOnTheScreen();
   });
 
   // fireEvent would find the handler on the row's own props even if the view never received it, so the view the
@@ -146,10 +146,10 @@ describe('the Athan 3 row while its preview plays', () => {
     expect(screen.getByText(shown)).toBeVisible();
   });
 
-  it('keeps its countdown hidden until the seconds left are known', async () => {
+  it('renders no countdown until the seconds left are known', async () => {
     await render(athan3({ isPlaying: true, remainingSeconds: 0 }));
 
-    expect(screen.getByText(COUNTDOWN)).not.toBeVisible();
+    expect(screen.queryByText(COUNTDOWN)).not.toBeOnTheScreen();
   });
 
   it('holds the last second rather than showing 0:00 as the clip ends', async () => {
@@ -172,11 +172,11 @@ describe('the Athan 3 row while its preview plays', () => {
     }
   });
 
-  it('hides its countdown the moment the preview stops', async () => {
+  it('renders no countdown the moment the preview stops', async () => {
     await render(athan3({ isPlaying: true, remainingSeconds: 3 }));
 
     await screen.rerender(athan3({ isPlaying: false, remainingSeconds: 0 }));
 
-    expect(screen.getByText(COUNTDOWN)).not.toBeVisible();
+    expect(screen.queryByText(COUNTDOWN)).not.toBeOnTheScreen();
   });
 });

@@ -4,7 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
-import { I18nManager } from 'react-native';
+import { I18nManager, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
@@ -33,6 +33,13 @@ const measure = (width: number) =>
 
 /** Everything the control draws; the pill has no role or text of its own, and is drawn before the options */
 const drawn = () => control().children.filter((child) => typeof child !== 'string');
+
+/** The ink pair an option's two icon layers are drawn in: [unselected, selected] */
+const iconInks = (name: string) =>
+  screen
+    .getByRole('radio', { name })
+    .queryAll((node) => node.type === 'RNSVGSvgView')
+    .map((node) => (StyleSheet.flatten(node.props.style) as { color?: string }).color);
 
 describe('the Athan control with Silent saved', () => {
   it('tells a screen reader that Silent is the selected option', async () => {
@@ -136,12 +143,17 @@ describe('the reminder sound control while the reminder is off', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('dims to half its uat value', async () => {
+  // The labels tween their colour, which the renderer mock cannot resolve: the option icons
+  // carry the same per-state pair (SEGMENT_LABEL.off) the labels interpolate, so the pair is
+  // pinned where it is statically drawn
+  it('paints its options in the off ink pair over the off wash', async () => {
     await render(
       <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} dim='off' />
     );
 
-    expect(control()).toHaveStyle({ opacity: 0.2 });
+    expect(control()).toHaveStyle({ backgroundColor: '#121e48' });
+    expect(iconInks('Silent')).toEqual(['#121f48', '#16224a']);
+    expect(iconInks('Sound')).toEqual(['#121f48', '#16224a']);
   });
 });
 

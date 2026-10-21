@@ -22,10 +22,10 @@ const SUHOOR = 2;
 const DUHA = 3;
 const ISTIJABA = 4;
 
-const COLON_COLOUR = 'rgba(174, 208, 255, 0.375)';
+const COLON_COLOUR = '#5f60ad';
 const PAST_COLON_COLOUR = 'rgb(170, 182, 212)';
-const NEXT_COLON_COLOUR = 'rgba(210, 226, 255, 0.75)';
-const NEXT_COLON_COLOUR_EXTRAS = 'rgba(238, 243, 255, 0.88)';
+const NEXT_COLON_COLOUR = '#a9b1de';
+const NEXT_COLON_COLOUR_EXTRAS = '#d7d9ef';
 const PRIMARY_COLOUR = '#ffffff';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>

@@ -9,6 +9,7 @@ import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
+import { COLORS } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
@@ -206,9 +207,19 @@ const heldStill = (headingDegrees: number, count = 1): FusedHeading[] =>
 const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
-/** How much of a subtitle line shows: the two are stacked, and only this tells them apart on screen */
-const subtitleOpacity = (testID: string) =>
-  (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { opacity?: number }).opacity;
+/**
+ * How far each subtitle line's ink interpolation has travelled toward full ink: [waiting, ready].
+ * The crossfade is carried by colour, so the position handed to interpolateColor is the line's
+ * whole visibility, and the endpoint pair names which two calls are the subtitle's own
+ */
+const subtitleInkPositions = (interpolateColor: jest.SpyInstance) =>
+  interpolateColor.mock.calls
+    .filter(
+      ([, , outputRange]: [number, number[], string[]]) =>
+        outputRange.join() === [COLORS.surface.sheet, COLORS.text.sheetSubtitle].join()
+    )
+    .slice(-2)
+    .map(([position]: [number]) => position);
 
 beforeEach(() => {
   mockWatchers.length = 0;
@@ -270,11 +281,11 @@ describe('the qibla sheet before it is opened', () => {
     expect(position('qibla-subtitle-ready')).toBe('absolute');
   });
 
-  it('shows the line that asks the user to act while the hint is up', async () => {
+  it('shows the line that asks the user to act while the hint is up, the ready line at the sheet', async () => {
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
     await render(<QiblaSheet />);
 
-    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(1);
-    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(0);
+    expect(subtitleInkPositions(interpolateColor)).toEqual([1, 0]);
   });
 
   // The donor is the mechanism that lets the box fit the wider sentence: it sits in flow at zero height carrying the
@@ -359,12 +370,12 @@ describe('the qibla sheet, opened in London', () => {
   });
 
   it('swaps the subtitle to the compass’s own line once the compass is drawn', async () => {
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
     await openSheet();
 
     await reportHeadings(95);
 
-    expect(subtitleOpacity('qibla-subtitle-ready')).toBe(1);
-    expect(subtitleOpacity('qibla-subtitle-waiting')).toBe(0);
+    expect(subtitleInkPositions(interpolateColor)).toEqual([0, 1]);
   });
 
   it('asks for the position once, however many headings arrive', async () => {

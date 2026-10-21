@@ -5,9 +5,9 @@
 
 import { colonInkPair } from '../colonInk';
 
-const DIM = 'rgba(174, 208, 255, 0.375)';
-const NEXT = 'rgba(210, 226, 255, 0.75)';
-const NEXT_EXTRAS = 'rgba(238, 243, 255, 0.88)';
+const DIM = '#5f60ad';
+const NEXT = '#a9b1de';
+const NEXT_EXTRAS = '#d7d9ef';
 const PAST = 'rgb(170, 182, 212)';
 const PRIMARY = '#ffffff';
 

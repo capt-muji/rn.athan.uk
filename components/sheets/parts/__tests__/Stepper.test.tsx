@@ -88,10 +88,11 @@ describe('the reminder stepper at either end of the intervals', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('dims a dead arrow to half its uat value', async () => {
+  it('paints a dead arrow in the boundary solid and a live one in the enabled ink', async () => {
     await render(<Stepper value={5} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
 
-    expect(screen.getByRole('button', { name: 'Decrease to 5 min' })).toHaveStyle({ opacity: 0.15 });
+    expect(screen.getByText('−')).toHaveStyle({ color: '#1c2d60' });
+    expect(screen.getByText('+')).toHaveStyle({ color: '#eaf2fa' });
   });
 });
 
@@ -146,10 +147,14 @@ describe('the reminder stepper at 15 min while the reminder is off', () => {
     expect(screen.getByRole('button', { name: 'Increase to 20 min' })).toBeDisabled();
   });
 
-  it('dims to half its uat value', async () => {
+  it('paints its value, unit and glyphs in the off solids over the off wash', async () => {
     await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} dim='off' />);
 
-    expect(screen.getByRole('button', { name: 'Decrease to 10 min' }).parent!).toHaveStyle({ opacity: 0.2 });
+    expect(screen.getByText('15')).toHaveStyle({ color: '#16224a' });
+    expect(screen.getByText('min')).toHaveStyle({ color: '#121f48' });
+    expect(screen.getByText('−')).toHaveStyle({ color: '#111d46' });
+    expect(screen.getByText('+')).toHaveStyle({ color: '#111d46' });
+    expect(screen.getByText('15').parent!.parent!).toHaveStyle({ backgroundColor: '#121e48' });
   });
 
   it('ignores presses on both arrows, with no haptic', async () => {
