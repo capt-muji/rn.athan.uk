@@ -1,13 +1,3 @@
-export {
-  CONTROL_WASH,
-  type DimState,
-  dimDisables,
-  dimState,
-  REMINDER_CARD,
-  SEGMENT_LABEL,
-  SEGMENT_PILL,
-  STEPPER_INK,
-} from './dim';
 export { default as Header } from './Header';
 // Backward compatibility
 export { default as LabeledToggle, default as SettingsToggle } from './LabeledToggle';

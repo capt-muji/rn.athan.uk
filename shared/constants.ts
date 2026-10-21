@@ -856,8 +856,8 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal numbers' ink: the structure's own blue, faint enough to sit behind the instrument it labels. The old rgba(146,184,228,.45) flattened over the face */
-      ink: '#4e648e',
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      ink: '#4b4c63',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',
       /** The Kaaba's cube: under the dial, so its outline is what carries it */
@@ -869,7 +869,8 @@ export const COLORS = {
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
       /** The old rgba(228,192,134,.5) flattened over the facing face */
-      ink: '#8d7662',
+      /** The old rgba(228,192,134,.5) at its 0.5 fillOpacity flattened over this face (the previous value sat over the away face by mistake) */
+      ink: '#6a5858',
       accent: 'rgba(247, 191, 74, 1)',
       kaaba: 'rgba(32, 25, 48, 1)',
     },

@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type { ComponentProps } from 'react';
+import * as Reanimated from 'react-native-reanimated';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
@@ -170,6 +171,14 @@ describe('the Athan 3 row while its preview plays', () => {
     } finally {
       setActiveLocale('en');
     }
+  });
+
+  it("evaluates the countdown's ink at the selected position from its first frame", async () => {
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await render(athan3({ isSelected: true, isPlaying: true, remainingSeconds: 3 }));
+
+    expect(interpolateColor.mock.calls[0]?.[0]).toBe(1);
   });
 
   it('renders no countdown the moment the preview stops', async () => {

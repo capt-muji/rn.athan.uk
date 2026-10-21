@@ -1,10 +1,10 @@
 import * as Haptics from 'expo-haptics';
 import { memo, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { useAnimationScale } from '@/hooks/useAnimation';
+import { useAnimationScale, useDerivedProgress } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -76,10 +76,10 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
 
   // Countdown color tweens; visibility snaps with the icon flip (a tween here
-  // ran ~75ms behind the instant play/pause swap and read as desync).
-  const countdownColorProgress = useDerivedValue(() =>
-    withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
-  );
+  // ran ~75ms behind the instant play/pause swap and read as desync). The progress
+  // snaps on first evaluation, so a row that mounts already playing paints its
+  // settled ink instead of tweening up from unselected
+  const countdownColorProgress = useDerivedProgress(isSelected ? 1 : 0, { duration: ANIMATION.durationFast });
 
   const countdownStyle = useAnimatedStyle(() => ({
     color: interpolateColor(

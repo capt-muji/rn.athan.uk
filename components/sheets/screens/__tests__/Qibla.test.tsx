@@ -2268,12 +2268,19 @@ describe('the readings a warm reopen is judged on', () => {
 describe('the compass ring’s cardinal numbers on the drawn dial', () => {
   // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a
   // numeric child arrives as its own TSpan, so a label's own Text carries its x and ink and its TSpan the content
-  // and size. This is the render half of the rulings; the unit suite proves the data is locale-free
-  type DialLabel = { content: string; x?: number; fontSize?: number; ink?: number };
+  // and size. This is the render half of the rulings; the unit suite proves the data is locale-free.
+  // react-native-svg packs a rendered fill into { type, payload } with payload 0xAARRGGBB, so the ink decodes
+  type DialLabel = { content: string; x?: number; fontSize?: number; ink?: string };
 
   const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
     const labels: DialLabel[] = [];
     let numberSize = 0;
+    const inkOf = (fill: unknown): string | undefined => {
+      const packed = fill as { payload?: number } | undefined;
+      return typeof packed?.payload === 'number'
+        ? `#${(packed.payload & 0xffffff).toString(16).padStart(6, '0')}`
+        : undefined;
+    };
     const walk = (node: unknown, text?: DialLabel): void => {
       if (node == null || typeof node !== 'object') return;
       const n = node as { type?: unknown; props?: Record<string, unknown>; children?: unknown[] };
@@ -2284,7 +2291,7 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
               content: '',
               x: n.props?.x as number | undefined,
               fontSize: font.fontSize,
-              ink: n.props?.fillOpacity as number | undefined,
+              ink: inkOf(n.props?.fill),
             }
           : text;
       if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number')
@@ -2316,11 +2323,23 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
       // The two palettes stack the same dial, so each of the four bearings appears twice, in bearing order
       expect(numbers.map((number) => number.content)).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
       expect(degrees).toHaveLength(8);
-      // Each degree circle is smaller than its number, raised at its top right and drawn in the number's own ink
+      // Each degree circle is smaller than its number, raised at its top right and drawn in the
+      // number's own ink: the palette's solid at full fill opacity (the old 0.5 fillOpacity folded
+      // into the ink), away then facing as the two palettes stack
+      const paletteInks = degrees.map((degree) => degree.ink).filter((ink): ink is string => typeof ink === 'string');
+      expect(paletteInks).toEqual([
+        '#4b4c63',
+        '#4b4c63',
+        '#4b4c63',
+        '#4b4c63',
+        '#6a5858',
+        '#6a5858',
+        '#6a5858',
+        '#6a5858',
+      ]);
       for (const degree of degrees) {
         expect(degree.fontSize).toBeGreaterThan(0);
         expect(degree.fontSize as number).toBeLessThan(numberSize);
-        expect(degree.ink).toBeLessThan(1);
       }
       // The circle sits the same distance past the number whatever its length, so the
       // per-bearing offset grows by one constant step per extra digit and 180 and 270 land on the same offset

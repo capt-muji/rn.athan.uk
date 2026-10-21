@@ -182,7 +182,7 @@ const factsOf = (source: string): FileFacts => ({
 
 /** The style entries a Text tag's style expression names, resolved from the file's StyleSheet */
 const referencedEntries = (style: string, facts: FileFacts): string[] =>
-  [...style.matchAll(/styles\.(\w+)/g)].flatMap((ref) => {
+  [...style.matchAll(/[sS]tyles\.(\w+)/g)].flatMap((ref) => {
     const entry = facts.sheets.get(ref[1]);
     return entry === undefined ? [] : [entry];
   });
@@ -202,8 +202,17 @@ const sweep = (root: string): Offence[] => {
       if (style === null) continue;
       const where = `${file}: ${tag.slice(0, 60).replace(/\s+/g, ' ')}`;
 
-      const carriesOpacity = /[{,]\s*opacity\s*:/.test(style);
-      if (carriesOpacity) offences.push({ file, detail: `${where} declares opacity in its own style` });
+      const styleSources = [style, ...referencedEntries(style, facts)];
+      for (const text of styleSources) {
+        if (/[{,]\s*opacity\s*:/.test(text)) {
+          offences.push({ file, detail: `${where} declares opacity in a style it names` });
+        }
+      }
+
+      const fillOpacity = tag.match(/fillOpacity=\{([^}]+)\}/);
+      if (fillOpacity && fillOpacity[1].trim() !== '1') {
+        offences.push({ file, detail: `${where} carries fillOpacity ${fillOpacity[1].trim()}` });
+      }
 
       for (const [name] of facts.opacityHooks) {
         if (new RegExp(`\\b${name}\\b`).test(style)) {
