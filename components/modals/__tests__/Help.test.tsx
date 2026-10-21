@@ -10,7 +10,7 @@ import type { TestInstance } from 'test-renderer';
 
 import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
-import { COLORS, SIZE } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
@@ -217,6 +217,101 @@ describe('the Help modal on Android', () => {
     await fireEvent.press(screen.getByRole('button', { name: widgets?.question }));
 
     expect(screen.getByText(widgets?.text ?? '')).toBeOnTheScreen();
+  });
+});
+
+describe("the Help modal's question dividers", () => {
+  // The 3T defect (T-302): Android snaps Yoga layout to the physical pixel grid, so a hairline
+  // that is the last pixel of a wrap-content row is eaten by the snap, every second row at a
+  // fractional density. A divider therefore belongs to the list, never to a row's snapped frame
+  const HAIRLINE = 'rgba(38, 64, 94, 0.1)';
+
+  // The divider carries no role, label or text, so it is reached by its style: the modal header's
+  // own rule shares the hairline height but not this colour
+  const dividers = () =>
+    screen.root?.queryAll((node) => {
+      const flat = StyleSheet.flatten(node.props?.style);
+      return flat?.height === StyleSheet.hairlineWidth && flat?.backgroundColor === HAIRLINE;
+    }) ?? [];
+
+  const rows = () => getHelpTopics('android').map(({ question }) => screen.getByRole('button', { name: question }));
+
+  const ancestorsOf = (node: TestInstance): TestInstance[] => {
+    const chain: TestInstance[] = [];
+    for (let current = node.parent; current; current = current.parent) chain.push(current);
+    return chain;
+  };
+
+  // The first and last rows' deepest common ancestor is the list's own content, the level a
+  // divider must sit at
+  const listContent = (): TestInstance => {
+    const [first, ...rest] = rows();
+    const firstAncestors = new Set(ancestorsOf(first));
+    return ancestorsOf(rest.at(-1) ?? first).find((node) => firstAncestors.has(node)) as TestInstance;
+  };
+
+  const expectOneDividerAfterEveryTopic = () => {
+    const list = rows();
+    const lines = dividers();
+    expect(lines).toHaveLength(list.length);
+
+    const content = listContent().children.filter((child) => typeof child !== 'string');
+    expect(content).toHaveLength(list.length * 2);
+    for (const [index, row] of list.entries()) {
+      // Topic, then its divider: each row is followed by one at the list's own level, the last included
+      expect(content[2 * index]).toBe(row);
+      expect(content[2 * index + 1]).toBe(lines[index]);
+    }
+  };
+
+  it('draws one divider after every question, between each pair and after the last', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    expectOneDividerAfterEveryTopic();
+
+    for (const { text } of getHelpTopics('android')) {
+      expect(screen.queryByText(text)).toBeNull();
+    }
+  });
+
+  it('holds the same divider rhythm while a question is open', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+    const [first] = getHelpTopics('android');
+
+    await fireEvent.press(screen.getByRole('button', { name: first.question }));
+
+    expectOneDividerAfterEveryTopic();
+    expect(screen.getByText(first.text)).toBeOnTheScreen();
+  });
+
+  it('keeps every divider a child of the list, never a pixel of a question row', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    for (const divider of dividers()) {
+      const chain = ancestorsOf(divider);
+
+      expect(chain.map((node) => node.type)).toContain('RCTScrollView');
+      for (const row of rows()) expect(chain).not.toContain(row);
+    }
+  });
+
+  it('draws each divider as the settled hairline, animated with the rows it follows', async () => {
+    onPlatform('android');
+    await render(<ModalHelp visible={true} onClose={jest.fn()} />);
+
+    for (const divider of dividers()) {
+      expect(StyleSheet.flatten(divider.props.style)).toEqual({
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: HAIRLINE,
+      });
+      // GROW is module-private, so the observable shape is pinned: a layout prop carrying the
+      // panel's own duration, the Close row's law (animated with the list, or it teleports)
+      expect(divider.props.layout).toBeDefined();
+      expect((divider.props.layout as { durationV?: number }).durationV).toBe(ANIMATION.duration);
+    }
   });
 });
 
