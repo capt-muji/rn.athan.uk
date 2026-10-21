@@ -127,7 +127,7 @@ describe('the reminder sound control while the reminder is off', () => {
   it('ignores a press, with no haptic', async () => {
     const onSelect = jest.fn();
     await render(
-      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} disabled />
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} dim='off' />
     );
 
     await fireEvent.press(screen.getByRole('radio', { name: 'Sound' }));
@@ -138,7 +138,7 @@ describe('the reminder sound control while the reminder is off', () => {
 
   it('dims to half its uat value', async () => {
     await render(
-      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} disabled />
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} dim='off' />
     );
 
     expect(control()).toHaveStyle({ opacity: 0.2 });

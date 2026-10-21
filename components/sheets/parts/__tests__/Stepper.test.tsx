@@ -140,21 +140,21 @@ describe('the reminder stepper beside the other reminder', () => {
 
 describe('the reminder stepper at 15 min while the reminder is off', () => {
   it('tells a screen reader both arrows are disabled', async () => {
-    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} disabled />);
+    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} dim='off' />);
 
     expect(screen.getByRole('button', { name: 'Decrease to 10 min' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Increase to 20 min' })).toBeDisabled();
   });
 
   it('dims to half its uat value', async () => {
-    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} disabled />);
+    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} dim='off' />);
 
     expect(screen.getByRole('button', { name: 'Decrease to 10 min' }).parent!).toHaveStyle({ opacity: 0.2 });
   });
 
   it('ignores presses on both arrows, with no haptic', async () => {
     const handlers = { onDecrement: jest.fn(), onIncrement: jest.fn() };
-    await render(<Stepper value={15} {...handlers} disabled />);
+    await render(<Stepper value={15} {...handlers} dim='off' />);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Decrease to 10 min' }));
     await fireEvent.press(screen.getByRole('button', { name: 'Increase to 20 min' }));

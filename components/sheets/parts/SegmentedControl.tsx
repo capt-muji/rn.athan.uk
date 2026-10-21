@@ -9,8 +9,9 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { CONTROL_WASH, type DimState, dimDisables, SEGMENT_LABEL, SEGMENT_PILL } from '@/components/sheets/parts/dim';
 import { IconView } from '@/components/ui';
-import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import type { AlertType, Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -29,17 +30,13 @@ export interface SegmentedControlProps {
   options: SegmentOption[];
   selected: AlertType;
   onSelect: (value: AlertType) => void;
-  disabled?: boolean;
+  /** Which wrapper dim the control renders under; labels, pill and wash come from its tables */
+  dim?: DimState;
 }
 
 // =============================================================================
 // CONSTANTS
 // =============================================================================
-
-const SEGMENT_COLORS = {
-  selected: '#fff',
-  unselected: 'rgb(95, 133, 177)',
-};
 
 // =============================================================================
 // ANIMATED SEGMENT OPTION
@@ -49,9 +46,10 @@ interface AnimatedSegmentOptionProps {
   option: SegmentOption;
   isSelected: boolean;
   onPress: () => void;
+  inks: { selected: string; unselected: string };
 }
 
-function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentOptionProps) {
+function AnimatedSegmentOption({ option, isSelected, onPress, inks }: AnimatedSegmentOptionProps) {
   const hasInitialized = useRef(false);
   const progress = useSharedValue(isSelected ? 1 : 0);
 
@@ -65,8 +63,9 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
     }
   }, [isSelected, progress]);
 
+  // Both endpoints are solid, so the tween never renders translucent ink
   const labelStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(progress.value, [0, 1], [SEGMENT_COLORS.unselected, SEGMENT_COLORS.selected]),
+    color: interpolateColor(progress.value, [0, 1], [inks.unselected, inks.selected]),
   }));
 
   const selectedIconOpacity = useAnimatedStyle(() => ({
@@ -89,10 +88,10 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
       onPress={onPress}>
       <View style={styles.iconContainer}>
         <Animated.View style={[styles.iconLayer, unselectedIconOpacity]}>
-          <IconView type={option.icon} size={13} color={SEGMENT_COLORS.unselected} />
+          <IconView type={option.icon} size={13} color={inks.unselected} />
         </Animated.View>
         <Animated.View style={[styles.iconLayer, selectedIconOpacity]}>
-          <IconView type={option.icon} size={13} color={SEGMENT_COLORS.selected} />
+          <IconView type={option.icon} size={13} color={inks.selected} />
         </Animated.View>
       </View>
       <Animated.Text style={[styles.label, labelStyle]}>{option.label}</Animated.Text>
@@ -115,7 +114,10 @@ function AnimatedSegmentOption({ option, isSelected, onPress }: AnimatedSegmentO
  *   onSelect={setAlert}
  * />
  */
-export default function SegmentedControl({ options, selected, onSelect, disabled }: SegmentedControlProps) {
+export default function SegmentedControl({ options, selected, onSelect, dim = 'rest' }: SegmentedControlProps) {
+  const disabled = dimDisables(dim);
+  const inks = SEGMENT_LABEL[dim];
+  const pill = SEGMENT_PILL[dim];
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
   const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
@@ -154,13 +156,15 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
   }, []);
 
   return (
-    <View style={[styles.container, disabled && styles.disabled]} onLayout={handleLayout}>
+    <View style={[styles.container, { backgroundColor: CONTROL_WASH[dim] }]} onLayout={handleLayout}>
       {containerWidth > 0 && (
         <Animated.View
           style={[
             styles.indicator,
             {
               width: optionWidth,
+              backgroundColor: pill.background,
+              borderColor: pill.border,
               transform: [{ translateX: `${(isRTL ? -selectedIndex : selectedIndex) * 100}%` }],
             },
             indicatorStyle,
@@ -172,6 +176,7 @@ export default function SegmentedControl({ options, selected, onSelect, disabled
           key={option.value}
           option={option}
           isSelected={selected === option.value}
+          inks={inks}
           onPress={() => {
             if (!disabled) {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -194,22 +199,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: 3,
-  },
-  disabled: {
-    opacity: 0.2,
   },
   indicator: {
     position: 'absolute',
     top: 3,
     start: 3,
     bottom: 3,
-    backgroundColor: COLORS.interactive.active,
     borderRadius: RADIUS.md - 2,
     borderWidth: 1,
-    borderColor: COLORS.interactive.activeBorder,
   },
   option: {
     // Equal thirds to match the indicator; an auto basis sized each option to its own label, so

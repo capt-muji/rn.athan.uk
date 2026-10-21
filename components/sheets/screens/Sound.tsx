@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
   },
 
   // List

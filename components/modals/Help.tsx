@@ -25,9 +25,10 @@ import Modal from './Modal';
 const ANSWERS_HEIGHT_SHARE = 0.62;
 
 const INK = COLORS.light.text;
-const BODY = 'rgba(48, 66, 84, 0.66)';
+// Solid flattens of the old rgba inks over the white card, so body text never compounds
+const BODY = '#76828e';
 const HAIRLINE = 'rgba(38, 64, 94, 0.1)';
-const CHEVRON = 'rgba(48, 66, 84, 0.4)';
+const CHEVRON = '#acb3bb';
 
 /** The one accent: it marks the row you opened, and the thing to go and change */
 const ACCENT = 'rgba(13, 115, 119, 1)';
@@ -232,8 +233,9 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   titleBadgeGlyph: {
-    // Near-black on the muted grey circle, owner-ruled: reads as engraving rather than a light bulb
-    color: 'rgba(71, 85, 105, 0.7)',
+    // Near-black on the muted grey circle, owner-ruled: reads as engraving rather than a
+    // light bulb. Solid: the old 0.7 ink flattened over the badge's own colour
+    color: '#727e8f',
     fontSize: 10,
     lineHeight: 16,
     fontFamily: TEXT.family.medium,

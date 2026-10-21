@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
   hidden: {
     position: 'absolute',
     pointerEvents: 'none',
-    opacity: 0,
+    // Off-screen rather than opacity 0: the texts stay laid out for their onLayout
+    // measure and never render through an opacity value
+    top: -10000,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.size),
   },
