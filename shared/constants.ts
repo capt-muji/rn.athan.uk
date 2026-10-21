@@ -334,7 +334,7 @@ export const SCREEN = {
   /** Horizontal padding for screen edges */
   paddingHorizontal: 12,
   /** Top padding for screen content */
-  paddingTop: 17,
+  paddingTop: 28.05,
 };
 
 // =============================================================================

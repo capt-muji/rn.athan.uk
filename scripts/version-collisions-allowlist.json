@@ -82,5 +82,9 @@
   {
     "version": "2.3.5",
     "reason": "2026-10-21 lane T-295's atlas tip holds 2.3.5 (the single patch step above the allowlisted 2.3.4) beside lane T-293's throwaway after-reading measure ref measure/T293-after, never merged, deleted after their reading; the merge that lands second renumbers above"
+  },
+  {
+    "version": "2.3.6",
+    "reason": "2026-10-21 lanes T-293 and T-295 both hold 2.3.6 locally (T-293 renumbering above uat's 2.3.5, T-295's second help fix one commit past its landed merge); the standing lead ruling: the merge that lands second renumbers above the first"
   }
 ]
