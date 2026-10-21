@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict HPlm0JLYL7vAyj3KCBkHrvvxkZv3WSIqxadXe02PcdtzDEFtzIvlBcESGtP15Fz
+\restrict EdaIcnTb9niCeDXwgoOcgWQ6Aoax7QpGFXpE30kFYjbWYcKiEGcTfqUWIY1CsqG
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5676,16 +5676,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (278, 1, 278, NULL, 4, 'Step 2: ten screenshots from the iPhone XS attached in order', '', NULL, NULL, NULL, 2000, '2026-10-20 03:54:15.288006+00', '2026-10-20 05:15:59.27803+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, 2, 9, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.
-
-Where: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.
-
-Owner report 2026-10-21, 3T build 2.3.5: dividers alternate in pairs - question 1 divided above not below, question 2 below not above, and so on; an opened question gains a divider below that disappears when it closes. The iPhone XS reads correct: Android-side rendering only. Evidence screenshot (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg
-
-Acceptance:
-- [ ] a test pins one divider between every adjacent question pair, closed and opened (red before the fix)
-- [ ] the owner''s read on the next 3T build confirms the even rhythm
-- [ ] yarn validate green', NULL, NULL, NULL, 9000, '2026-10-21 02:07:45.517501+00', '2026-10-21 08:57:19.826024+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (285, 1, 285, NULL, 4, 'Step 4: the shipped Design 1 verified on the iPhone XS', 'Mock Release build with the paid-team signing installed on the iPhone XS (replacing the ten-design prototype build), one screenshot attached as shipped-design.png, verification readings transcribed to the row.', NULL, NULL, NULL, 9000, '2026-10-20 05:33:19.114557+00', '2026-10-20 06:33:14.938208+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (244, 1, 244, NULL, 4, 'Step 1: the verification record', 'Confirm the pin, the patch, the R8 keeps and the widgetrefresh history; log the reads in one comment on row 123.', NULL, NULL, NULL, 19000, '2026-10-19 13:50:51.212339+00', '2026-10-19 13:54:00.239468+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (245, 1, 245, NULL, 4, 'Step 2: the verdict and the close', 'The agent-ruled comment argued twice, the closing comment, the move to Done.', NULL, NULL, NULL, 20000, '2026-10-19 13:50:51.254232+00', '2026-10-19 13:54:25.601055+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
@@ -5709,6 +5699,16 @@ Acceptance:
 - [ ] red-first tests pin the cover''s face values and their arrival order
 - [ ] En byte-identical when not switching; iOS unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 16:08:14.174025+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, 2, 4, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.
+
+Where: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.
+
+Owner report 2026-10-21, 3T build 2.3.5: dividers alternate in pairs - question 1 divided above not below, question 2 below not above, and so on; an opened question gains a divider below that disappears when it closes. The iPhone XS reads correct: Android-side rendering only. Evidence screenshot (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg
+
+Acceptance:
+- [ ] a test pins one divider between every adjacent question pair, closed and opened (red before the fix)
+- [ ] the owner''s read on the next 3T build confirms the even rhythm
+- [ ] yarn validate green', NULL, NULL, NULL, 9000, '2026-10-21 02:07:45.517501+00', '2026-10-21 10:57:06.899833+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (246, 1, 246, NULL, 4, 'Step 1: Verified carriers written into the plan doc''s Proof', '', NULL, NULL, NULL, 19000, '2026-10-19 14:03:55.282904+00', '2026-10-19 14:04:56.292461+00', NULL, NULL, NULL, NULL, NULL, 8, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (239, 1, 239, 5, 11, '`expo-widgets` device locale', 'PR: https://github.com/expo/expo/pull/51793
 
@@ -5877,6 +5877,16 @@ Acceptance:
 - [ ] the root cause comment names what makes Android differ from iOS, citing the walk''s numbers
 - [ ] after the entrance a topic toggle leaves the Close button visible (the settle read)
 - [ ] build slot guarded by the pgrep check, aapt2 badging read before install, User 0 alone carries the app after', NULL, NULL, NULL, 8000, '2026-10-20 22:42:35.463683+00', '2026-10-21 04:24:25.714143+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (307, 1, 307, NULL, 4, 'No scroll bars anywhere: every scrollable surface in the app hides its indicators', 'Goal: no visible scroll indicator on any surface of the app, on either platform - modals, sheets, lists, settings, Help, What''s New, everywhere.
+
+Where: every ScrollView, FlatList and section list in the app - a sweep names them all (components/, app/, sheets). The default shows indicators; each surface sets showsVerticalScrollIndicator={false} and showsHorizontalScrollIndicator={false} where it scrolls.
+
+Owner order 2026-10-21: apps should never show scroll bars; the What''s New modal included, and the order extends to every modal and every surface in the app.
+
+Acceptance:
+- [ ] a sweep test names every scrollable surface and proves its indicators are hidden, running inside yarn validate
+- [ ] the owner''s read on the next build confirms no scroll bar anywhere on either platform
+- [ ] yarn validate green', NULL, NULL, NULL, 11000, '2026-10-21 06:28:10.613199+00', '2026-10-21 10:57:06.907888+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (259, 1, 259, 5, 4, 'Step 1: The granted width rides the widget environment', 'Red renderer tests, the expo-widgets patch hunk (provideRoot stamps the exact granted width into the environment), the layout reads it with the 310dp fallback, the dead snapshot field is deleted, and WidgetRefreshScheduler drops its width stamp (composition-size stamp and gate stay). yarn validate green. One commit, patch bump.', NULL, NULL, NULL, 17000, '2026-10-19 20:52:52.908116+00', '2026-10-19 21:22:29.90393+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 4, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.
 
@@ -5895,16 +5905,6 @@ Acceptance:
 - [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate
 - [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 22:08:20.226949+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (311, 1, 311, NULL, 4, 'Step 4: The mock APK built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted', '', NULL, NULL, NULL, 15000, '2026-10-21 06:41:53.547869+00', '2026-10-21 08:57:19.723465+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (307, 1, 307, NULL, 9, 'No scroll bars anywhere: every scrollable surface in the app hides its indicators', 'Goal: no visible scroll indicator on any surface of the app, on either platform - modals, sheets, lists, settings, Help, What''s New, everywhere.
-
-Where: every ScrollView, FlatList and section list in the app - a sweep names them all (components/, app/, sheets). The default shows indicators; each surface sets showsVerticalScrollIndicator={false} and showsHorizontalScrollIndicator={false} where it scrolls.
-
-Owner order 2026-10-21: apps should never show scroll bars; the What''s New modal included, and the order extends to every modal and every surface in the app.
-
-Acceptance:
-- [ ] a sweep test names every scrollable surface and proves its indicators are hidden, running inside yarn validate
-- [ ] the owner''s read on the next build confirms no scroll bar anywhere on either platform
-- [ ] yarn validate green', NULL, NULL, NULL, 11000, '2026-10-21 06:28:10.613199+00', '2026-10-21 09:02:43.256441+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
@@ -5931,7 +5931,7 @@ Acceptance:
 - [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
 - [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-20 00:06:01.090843+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (286, 1, 286, NULL, 4, 'Step 3: Design 1 becomes the shipped bottom bar with its layout suite', 'The owner''s picked arrangement replaces the column: one row, dot, Settings button, dot, vertically centred, its bottom on today''s dots-bottom anchor. Full unit coverage red before green, one commit, one version, yarn validate green.', NULL, NULL, NULL, 10000, '2026-10-20 05:33:19.118379+00', '2026-10-20 05:49:43.951771+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (306, 1, 306, 2, 9, 'The What''s New modal stays silent on patches: it pops only when a release carries something user-facing', 'Goal: a silent patch release never pops the What''s New modal; only a release that stamps a new archived item does (owner ruling 2026-10-21: design B, content-driven - the stored whats_new_shown_version becomes the bar, "save the last version the user saw, compare the archive''s newest against it").
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (306, 1, 306, 2, 4, 'The What''s New modal stays silent on patches: it pops only when a release carries something user-facing', 'Goal: a silent patch release never pops the What''s New modal; only a release that stamps a new archived item does (owner ruling 2026-10-21: design B, content-driven - the stored whats_new_shown_version becomes the bar, "save the last version the user saw, compare the archive''s newest against it").
 
 Where: shared/whatsNew.ts (shouldShowWhatsNew, the maintenance ritual, the banner-stamp docs), shared/__tests__/whatsNew.test.ts (the gate''s contract suite and the stamp-vs-build oracle), __tests__/app/index.test.tsx and __tests__/app/indexFreshInstall.test.tsx (launch suites), stores/version.ts and app/index.tsx (comments), e2e/README.md (the What''s New gotcha).
 
@@ -5940,7 +5940,7 @@ Acceptance:
 - [ ] the oracle pins every stamped item at or below the build version (nothing announces an unshipped release) and keeps the banner stamp equal to the build version
 - [ ] yarn jest __tests__/app/index.test.tsx: a silent-patch launch renders no What''s New modal
 - [ ] yarn validate green
-- [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it', NULL, NULL, NULL, 10000, '2026-10-21 06:06:24.688756+00', '2026-10-21 08:57:19.827366+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+- [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it', NULL, NULL, NULL, 10000, '2026-10-21 06:06:24.688756+00', '2026-10-21 10:57:06.893803+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (297, 1, 297, 3, 4, 'The What''s New modal groups its items under version headings, the newest twenty shown in version sections parted by separator lines', 'Goal: the What''s New modal reads as a versioned changelog - the newest 20 archived items grouped under version headings (major.minor, the patch hidden), newest group first, rendered per the owner-approved refine-04 design (2026-10-21).
 
 Where: components/modals/WhatsNew.tsx (the grouped list, its tag-pill headers and dot separators), shared/whatsNew.ts (the archive carries true per-item versions; grouping is display-level; the release stamp still gates appearance), and the content contract tests. The modal''s appear gate is untouched.
@@ -5977,7 +5977,8 @@ Acceptance:
 - [ ] the Ramadan decorations measured in place before and after on the same forced-season builds, their anchors byte-identical, readings transcribed, and the layer verified to read no page padding
 - [ ] the three honored-inset arms (phone-class, tall canvas, letterbox) green in __tests__/app/Screen.test.tsx at the new sums, so phones and the Duo''s tall and closed poses keep their honored insets and only the added gap moves the column
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-20 16:09:59.807057+00', '2026-10-21 03:45:45.570747+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, 2, 9, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: the What''s New archive reads in the reader''s language - the seven English stand-ins and the language item''s stale body are retranslated into the five non-English catalogs from the new English source (owner copy order 2026-10-21), and a lock makes any future untranslated archive string fail the suite.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (313, 1, 313, NULL, 4, 'Step 2: The eight items retranslated into ar, ms, so, hi, th, version bumped with the stamp moved, suite green, en byte-identical', '', NULL, NULL, NULL, 17000, '2026-10-21 06:42:43.061298+00', '2026-10-21 07:07:55.146737+00', NULL, NULL, NULL, NULL, NULL, 296, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, 2, 4, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: the What''s New archive reads in the reader''s language - the seven English stand-ins and the language item''s stale body are retranslated into the five non-English catalogs from the new English source (owner copy order 2026-10-21), and a lock makes any future untranslated archive string fail the suite.
 
 Where: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass (the stand-ins) and the language item''s body (stale against the new source; its five titles stay). en stays the source, byte-identical. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract resolves the archive under every locale and fails when a title or body equals its en value; shared/__tests__/catalogGates.test.ts drops the stand-in exemptions that made the English stand-ins passable.
 
@@ -5988,8 +5989,7 @@ Acceptance:
 - [ ] the per-locale lock fails on an English stand-in (red-first proof on the pre-change tree, transcript on the row) and runs inside yarn validate
 - [ ] every locale''s titles and bodies sit within MAX_WHATS_NEW_TITLE_LENGTH and MAX_WHATS_NEW_BODY_LENGTH, asserted by the lock
 - [ ] the en catalog and its locks stay byte-identical (git diff shows no change to shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts)
-- [ ] yarn validate green on the merged tree', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 08:47:32.919051+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (313, 1, 313, NULL, 4, 'Step 2: The eight items retranslated into ar, ms, so, hi, th, version bumped with the stamp moved, suite green, en byte-identical', '', NULL, NULL, NULL, 17000, '2026-10-21 06:42:43.061298+00', '2026-10-21 07:07:55.146737+00', NULL, NULL, NULL, NULL, NULL, 296, false, NULL, 2, NULL);
+- [ ] yarn validate green on the merged tree', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 10:57:06.903596+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 
 
 --
@@ -9363,6 +9363,20 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3049, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.669575+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s verification pass on the eight translated items, per the copy process"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3050, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.672313+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s silent-path read on the 3T build (2.4.7 installed, User 0 alone): an upgrade with no new archived item must not pop"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2964, 306, 'activity', 'owner', NULL, 'description', '2026-10-21 06:41:43.091729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a silent patch release never pops the What''s New modal; only a release that stamps a new archived item does (owner ruling 2026-10-21: design B, content-driven - the stored whats_new_shown_version becomes the bar, \"save the last version the user saw, compare the archive''s newest against it\").\n\nWhere: shared/whatsNew.ts (shouldShowWhatsNew, the maintenance ritual, the banner-stamp docs), shared/__tests__/whatsNew.test.ts (the gate''s contract suite and the stamp-vs-build oracle), __tests__/app/index.test.tsx and __tests__/app/indexFreshInstall.test.tsx (launch suites), stores/version.ts and app/index.tsx (comments), e2e/README.md (the What''s New gotcha).\n\nAcceptance:\n- [ ] yarn jest shared/__tests__/whatsNew.test.ts: an upgrade with no archived item newer than the stored shown-version shows no modal; an upgrade whose release stamps a new item shows it - the silent-path cases written red-first against the current gate\n- [ ] the oracle pins every stamped item at or below the build version (nothing announces an unshipped release) and keeps the banner stamp equal to the build version\n- [ ] yarn jest __tests__/app/index.test.tsx: a silent-patch launch renders no What''s New modal\n- [ ] yarn validate green\n- [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3051, 306, 'comment', 'owner', 'Owner verdict 2026-10-21: good - the silent path holds on device. Closed at 2.4.6.', NULL, '2026-10-21 10:57:06.896094+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3052, 307, 'comment', 'owner', 'Owner verdict 2026-10-21: no scroll bar anywhere on the phone. Closed at 2.4.8 with the sweep pinned.', NULL, '2026-10-21 10:57:06.896942+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3053, 296, 'comment', 'owner', 'Owner verdict 2026-10-21: approved, the four tickets read good on the phone. Closed with the translations at 2.4.5.', NULL, '2026-10-21 10:57:06.899454+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3054, 302, 'comment', 'owner', 'Owner verdict 2026-10-21: fixed - the divider rhythm reads even on the 3T. Closed with the fix at 2.4.7.', NULL, '2026-10-21 10:57:06.897983+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3055, 306, 'activity', 'owner', NULL, 'status', '2026-10-21 10:57:06.92286+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3056, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 10:57:06.923446+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3057, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 10:57:06.923951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3058, 307, 'activity', 'owner', NULL, 'status', '2026-10-21 10:57:06.929097+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3059, 296, 'activity', 'owner', NULL, 'link_remove', '2026-10-21 10:57:06.996917+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3060, 294, 'activity', 'owner', NULL, 'link_remove', '2026-10-21 10:57:06.996917+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3061, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.035004+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3062, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.036967+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3063, 307, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.037803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3064, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 10:57:07.03947+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 
 
 --
@@ -9630,10 +9644,10 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (578, 297, 1, NULL, 297, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (579, 293, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (591, 306, 1, NULL, 306, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (595, 307, 3, 'the owner''s read on the 3T build (2.4.7 installed): no scroll bar on any surface', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (594, 302, 3, 'the owner''s divider-rhythm read on the 3T build (2.4.7 installed, User 0 alone)', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (592, 296, 3, 'the owner''s verification pass on the eight translated items, per the copy process', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (593, 306, 3, 'the owner''s silent-path read on the 3T build (2.4.7 installed, User 0 alone): an upgrade with no new archived item must not pop', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (592, 296, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (593, 306, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (595, 307, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (594, 302, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -10063,7 +10077,6 @@ INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, creat
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (114, 95, 94, 'blocks', '2026-10-18 23:36:15.76907+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (115, 96, 95, 'blocks', '2026-10-18 23:36:15.776009+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (116, 123, 112, 'blocks', '2026-10-18 23:36:15.785791+00');
-INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (124, 296, 294, 'blocks', '2026-10-20 22:25:01.749101+00');
 
 
 --
@@ -10452,16 +10465,20 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (628, 308, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.422+00', '2026-10-21 07:12:46.288402+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (647, 308, 4, 'Done', 'completed', '2026-10-21 07:12:46.288402+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (630, 310, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.515+00', '2026-10-21 07:12:46.294748+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (649, 296, 9, 'Awaiting Owner', 'started', '2026-10-21 08:47:32.941934+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (631, 311, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.547+00', '2026-10-21 08:57:19.745295+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (640, 302, 3, 'In progress', 'started', '2026-10-21 06:54:18.761697+00', '2026-10-21 08:57:19.836466+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (651, 302, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.836466+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (638, 306, 3, 'In progress', 'started', '2026-10-21 06:51:20.793494+00', '2026-10-21 08:57:19.841694+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (635, 314, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.846+00', '2026-10-21 08:57:33.550564+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (653, 314, 4, 'Done', 'completed', '2026-10-21 08:57:33.550564+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (636, 315, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.89+00', '2026-10-21 08:57:33.557301+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (654, 315, 4, 'Done', 'completed', '2026-10-21 08:57:33.557301+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (624, 307, 1, 'Backlog', 'backlog', '2026-10-21 06:28:10.613+00', '2026-10-21 09:02:43.299089+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (651, 302, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.836466+00', '2026-10-21 10:57:06.917869+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (649, 296, 9, 'Awaiting Owner', 'started', '2026-10-21 08:47:32.941934+00', '2026-10-21 10:57:06.916808+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (658, 306, 4, 'Done', 'completed', '2026-10-21 10:57:06.913963+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (659, 296, 4, 'Done', 'completed', '2026-10-21 10:57:06.916808+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (657, 302, 4, 'Done', 'completed', '2026-10-21 10:57:06.917869+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (660, 307, 4, 'Done', 'completed', '2026-10-21 10:57:06.925128+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -10565,10 +10582,10 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (648, 310, 4, 'Done', 'completed', '2026-10-21 07:12:46.294748+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (645, 296, 8, 'Audit', 'started', '2026-10-21 07:07:55.3278+00', '2026-10-21 08:47:32.941934+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (650, 311, 4, 'Done', 'completed', '2026-10-21 08:57:19.745295+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (652, 306, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.841694+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (637, 316, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.926+00', '2026-10-21 08:57:33.603951+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (655, 316, 4, 'Done', 'completed', '2026-10-21 08:57:33.603951+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (656, 307, 9, 'Awaiting Owner', 'started', '2026-10-21 09:02:43.299089+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (652, 306, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.841694+00', '2026-10-21 10:57:06.913963+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (656, 307, 9, 'Awaiting Owner', 'started', '2026-10-21 09:02:43.299089+00', '2026-10-21 10:57:06.925128+00');
 
 
 --
@@ -22583,7 +22600,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:316', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
@@ -22617,21 +22633,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:292', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:303', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:304', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:308', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3795);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:309', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 44);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:310', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 132);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
@@ -22648,8 +22659,14 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:311', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:297', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:301', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:298', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 64);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3804);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 49);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:314', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 17);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:315', 1, 5);
 
 
@@ -22912,7 +22929,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3050, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3064, true);
 
 
 --
@@ -22961,7 +22978,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 599, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 603, true);
 
 
 --
@@ -22989,7 +23006,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 656, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 660, true);
 
 
 --
@@ -27472,5 +27489,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict HPlm0JLYL7vAyj3KCBkHrvvxkZv3WSIqxadXe02PcdtzDEFtzIvlBcESGtP15Fz
+\unrestrict EdaIcnTb9niCeDXwgoOcgWQ6Aoax7QpGFXpE30kFYjbWYcKiEGcTfqUWIY1CsqG
 
