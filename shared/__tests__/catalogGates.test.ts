@@ -37,14 +37,9 @@ const PRAYER_NAME_KEYS = [
 // Brand bytes: only app-open copy names the application; "athan" elsewhere is the
 // feature word, which translates
 const BRAND_REQUIRED = new Set(['widget.refresh', 'widget.refreshLead']);
-// Place names stay as printed; calendar loanwords are legitimately identical across
-// languages; historical What's New entries never render for a fresh installer
-const echoExempt = (key: string) =>
-  key === 'day.location' ||
-  key.startsWith('calendar.') ||
-  /^whatsNew\.(title|body)\.(tabletSupport|athanSounds|reminderSounds|widgets|secondReminder|helpPage|qiblaCompass)$/.test(
-    key
-  );
+// Place names stay as printed; calendar loanwords are legitimately identical
+// across languages
+const echoExempt = (key: string) => key === 'day.location' || key.startsWith('calendar.');
 
 const tokensOf = (value: string) =>
   [...value.matchAll(TOKEN)]
@@ -158,9 +153,6 @@ describe('the landed catalogs against the R2 gates', () => {
     const failures: string[] = [];
     for (const [key, value] of Object.entries(CATALOGS[loc])) {
       if (
-        /^whatsNew\.(title|body)\.(tabletSupport|athanSounds|reminderSounds|widgets|secondReminder|helpPage|qiblaCompass)$/.test(
-          key
-        ) ||
         // The widget answer's platform labels stay Latin in every locale
         key === 'help.a.widgets'
       ) {
