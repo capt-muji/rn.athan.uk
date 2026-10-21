@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict jMIfRoaTiKIYBiXPq6ZEYzPjt0BpGnytFL8PggWA6zSdxSZi8BDWgQ0xCw3efdR
+\restrict HPlm0JLYL7vAyj3KCBkHrvvxkZv3WSIqxadXe02PcdtzDEFtzIvlBcESGtP15Fz
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5220,6 +5220,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (221, 1, 221, NULL, 4, 'Step 5: device pass on the changed sheet', '', NULL, NULL, NULL, 30000, '2026-10-19 03:25:16.306819+00', '2026-10-19 05:18:36.146529+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (268, 1, 268, NULL, 4, 'Step 1: the sensitive-content sweep across both trees, history tabled', '', NULL, NULL, NULL, 1000, '2026-10-20 00:44:43.373257+00', '2026-10-20 01:29:03.096663+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 2, 4, 'The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:54:08.614918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (314, 1, 314, NULL, 4, 'Step 1: the pinning suite, red on HEAD', '', NULL, NULL, NULL, 18000, '2026-10-21 06:46:10.846494+00', '2026-10-21 08:57:33.537249+00', NULL, NULL, NULL, NULL, NULL, 302, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 136, 2, 4, 'Android chevrons do not mirror under Arabic (settings sheet)', 'OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T
 
 Status note: OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T DONE 2026-10-18, audited: the chevron paragraph is pinned ltr at every chevronFor() render site (the settings sheet''s rows, the colour-picker row inside it, the Help action row), so Android draws the authored glyph under ar: the signal was never stale (chevronFor reads the app locale, the root follows it since row 80) - Android resolves a lone neutral glyph against the RTL layout direction and bidi-mirrors U+2039 (Bidi_Mirrored=1) while iOS''s natural resolution does not, the whole platform split; en and every LTR locale byte-identical (the pin is inert under ltr), proven on the 3T both directions (left under ar, right under en, layout unchanged); the sweep suite kills a stripped pin at each of the three sites and the audit''s enumeration guard reds on any new caller outside them; Help''s step-mark guillemets stay untouched (same mirrored class, unreported, the plan''s D136.3 exclusion); the owner''s read on the 3T is the acceptance - the fleettest build at 2.0.1032 is installed and left in Arabic for it', NULL, NULL, NULL, 13000, '2026-10-18 23:35:55.699625+00', '2026-10-19 09:15:25.161086+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5264,6 +5265,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 
 Status note: 2026-10-15, audited (both passes clean bar one records nit that died with the plan folder): the note returned at 2.0.737, hook Tests: 2 skipped, 5650 passed, 5652 total, coverage 100% on all four measures, break script ALL AS EXPECTED; the Help question untouched', NULL, NULL, NULL, 31000, '2026-10-18 23:35:56.36085+00', '2026-10-19 02:54:08.123899+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (270, 1, 270, NULL, 4, 'Step 3: the board sweep and the close', '', NULL, NULL, NULL, 3000, '2026-10-20 00:44:43.480507+00', '2026-10-20 02:12:19.689915+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (315, 1, 315, NULL, 4, 'Step 2: the separator moves to the list, green plus mutants', '', NULL, NULL, NULL, 19000, '2026-10-21 06:46:10.890822+00', '2026-10-21 08:57:33.54184+00', NULL, NULL, NULL, NULL, NULL, 302, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (72, 1, 66, 4, 4, 'Language switch: always restart with cleared caches - investigation', 'Owner ask, 2026-10-12: a deep discussion and investigation into ALWAYS restarting the app on any language change (not only RTL, per D59): clear caches (the per-locale width cache the owner''s Somali wrap report also touches), keep preferences, converge notifications and widgets, restart last as a force-clean. Weigh pros (the launch path already reconciles every surface by job 39''s design, so a restart lands on the one moment the system cleans up after itself; kills every stale-cache class at once, including the width defect row 61), cons and side effects (the D51 in-sheet progress face dies at restart, so the restart point moves after convergence; widget re-push racing process death; splash cost on every switch; the current in-place remount already delivers R3.1). May revise D59 (absorbing RTL-only restart) and D51''s timing. INVESTIGATION ONLY: the row ends with options and a recommendation, the owner rules. AUDIT 57 CARRIED: the countdown display selectors'' one-second old-locale transient after a switch (job 57 audit finding 5) joins this row''s evidence
 
 Status note: 2026-10-13, audited: the always-restart investigation answers in FINDINGS.md (folded here per D85, its folder closed): four options (1 status quo, 2 always-restart via the in-process reload, 3 full process restart, 4 a bite-triggered hybrid); recommendation = option 1: the awaited convergence pass already clears every cache class but the countdown selectors'' one-second self-healing transient, while a restart per switch costs the recorded ~1.5 s dead window (row 71''s span; the splash gates'' share unquantified per D87), the D51 face, one teardown soft exception and a splash re-hold. Ten cache classes inventoried: per-locale width atoms, the legacy width-key sweep, the Android channel dedup caches, the countdown name/display selectors, the catalog loader, the baked widget strings, the last-armed stamp, the language preference, the commit busy atom, the module locale state. Rulings left to the owner: the final pick, D59 revise-or-absorb, D51''s timing, the four unquantified costs'' settling checks. Two-reviewer audit fixed nine citation and ledger findings (the swapped countdown write sites, the stale hop numbers, the android/ search gap, the row-count split, the missing step-01 session line, four nices); no code changed', NULL, NULL, NULL, 51000, '2026-10-18 23:35:56.727959+00', '2026-10-19 02:54:08.337514+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5289,6 +5291,7 @@ Acceptance:
 - [x] Option (a) accept the platform box and option (b) pin an ar lineHeight per surface family each carry exact numbers and a blast radius, and (b) names the pin per family with the floor it must clear (no negative pulling, the floor numeric from measured ink).
 - [x] No source change on the branch: git diff uat..lane/140 shows no code or asset change.
 - [x] The ticket stands in Owner-led with Waiting on naming the owner''s ruling between the options, and the closing comment carries the recommendation in two plain lines.', NULL, NULL, NULL, 18000, '2026-10-18 23:35:55.773377+00', '2026-10-19 13:04:07.352476+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (316, 1, 316, NULL, 4, 'Step 3: merge, mock build, 3T install', '', NULL, NULL, NULL, 20000, '2026-10-21 06:46:10.92627+00', '2026-10-21 08:57:33.599854+00', NULL, NULL, NULL, NULL, NULL, 302, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (289, 1, 289, NULL, 4, 'Step 3: the board''s own texts neutralised', '', NULL, NULL, NULL, 12000, '2026-10-20 07:09:05.721386+00', '2026-10-20 08:59:26.449301+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (216, 1, 216, NULL, 4, 'Step 3: Device read on the 3T - both directions, both schedules, logcat timeline', '', NULL, NULL, NULL, 25000, '2026-10-19 03:24:16.572696+00', '2026-10-19 07:09:09.31532+00', NULL, NULL, NULL, NULL, NULL, 19, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (54, 1, 87, 2, 4, 'The clipping batch: the line-box pin, the note style, the loader face', 'Owner''s live test of 86 on the XS (2026-10-14): every pinned surface clipped - the metrics are the cause (Noto Sans Arabic''s natural box is 2.112em against the 1.172em Latin pin), so blockLineHeight and its five consumers died and the font''s own box serves everywhere; the ar header gap closes with an explicit -10 subtitle pull-up (the owner''s to dial); the loader''s typography resolves per render (a mid-switch line drew the old locale''s face and box, the English cut the owner saw); the note aligns to the header inset, title edge to icon edge on both sheets, the divider gained its air and the bottom gap dropped; the iOS note copy reworded per the owner''s ruling. Landed at 2.0.727 while the owner tested; the owner''s live read is the acceptance bar
@@ -5673,6 +5676,16 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (278, 1, 278, NULL, 4, 'Step 2: ten screenshots from the iPhone XS attached in order', '', NULL, NULL, NULL, 2000, '2026-10-20 03:54:15.288006+00', '2026-10-20 05:15:59.27803+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, 2, 9, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.
+
+Where: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.
+
+Owner report 2026-10-21, 3T build 2.3.5: dividers alternate in pairs - question 1 divided above not below, question 2 below not above, and so on; an opened question gains a divider below that disappears when it closes. The iPhone XS reads correct: Android-side rendering only. Evidence screenshot (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg
+
+Acceptance:
+- [ ] a test pins one divider between every adjacent question pair, closed and opened (red before the fix)
+- [ ] the owner''s read on the next 3T build confirms the even rhythm
+- [ ] yarn validate green', NULL, NULL, NULL, 9000, '2026-10-21 02:07:45.517501+00', '2026-10-21 08:57:19.826024+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (285, 1, 285, NULL, 4, 'Step 4: the shipped Design 1 verified on the iPhone XS', 'Mock Release build with the paid-team signing installed on the iPhone XS (replacing the ten-design prototype build), one screenshot attached as shipped-design.png, verification readings transcribed to the row.', NULL, NULL, NULL, 9000, '2026-10-20 05:33:19.114557+00', '2026-10-20 06:33:14.938208+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (244, 1, 244, NULL, 4, 'Step 1: the verification record', 'Confirm the pin, the patch, the R8 keeps and the widgetrefresh history; log the reads in one comment on row 123.', NULL, NULL, NULL, 19000, '2026-10-19 13:50:51.212339+00', '2026-10-19 13:54:00.239468+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (245, 1, 245, NULL, 4, 'Step 2: the verdict and the close', 'The agent-ruled comment argued twice, the closing comment, the move to Done.', NULL, NULL, NULL, 20000, '2026-10-19 13:50:51.254232+00', '2026-10-19 13:54:25.601055+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
@@ -5834,10 +5847,12 @@ Acceptance:
 - [x] full unit coverage of the changed layout, red before green; yarn validate green; the change lands in the shared UI so both platforms carry the arrangement
 - [x] one screenshot of the shipped Design 1 on the iPhone XS attached to this row (never committed), the Android device read tabled as a follow-up comment if not taken this row
 - [x] merged to uat through the full two-reviewer audit with the version discipline; the board snapshot refreshed at the close', NULL, NULL, NULL, 8000, '2026-10-20 03:49:33.15113+00', '2026-10-20 06:37:11.179842+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (312, 1, 312, NULL, 4, 'Step 1: The translation lock - the per-locale content-contract arm and the catalogGates stand-in exemptions deleted, red observed', '', NULL, NULL, NULL, 16000, '2026-10-21 06:42:43.019972+00', '2026-10-21 07:07:54.913858+00', NULL, NULL, NULL, NULL, NULL, 296, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (256, 1, 256, NULL, 4, 'Step 2: the twice-argued ruling on detection and recovery, tabled to the owner', '', NULL, NULL, NULL, 14000, '2026-10-19 20:36:24.051077+00', '2026-10-19 20:46:29.674569+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (255, 1, 255, NULL, 4, 'Step 1: the code trace names the two streams and every state that holds the wave', '', NULL, NULL, NULL, 13000, '2026-10-19 20:36:24.011513+00', '2026-10-19 20:46:29.677469+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (257, 1, 257, NULL, 4, 'Step 3: the close - version bump, board snapshot, merge to uat', '', NULL, NULL, NULL, 15000, '2026-10-19 20:36:24.090606+00', '2026-10-19 20:50:14.373879+00', NULL, NULL, NULL, NULL, NULL, 254, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (258, 1, 258, NULL, 4, 'Step 1: the v1 fallback words re-issued under the current laws and pinned', 'The comment re-issue in widgets/PrayerWidget.tsx (byte-identical literal, laws named) and the renderer pins over a faithful v1 fixture: live lettered face, parsed footer, stale words both sizes under en and ar device locales, mutation pass over every rendered fallback byte, yarn validate green.', NULL, NULL, NULL, 16000, '2026-10-19 20:37:31.974832+00', '2026-10-19 20:55:00.653465+00', NULL, NULL, NULL, NULL, NULL, 11, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (309, 1, 309, NULL, 4, 'Step 2: The content-driven gate in shared/whatsNew.ts with the ritual and interface docs restated', '', NULL, NULL, NULL, 13000, '2026-10-21 06:41:53.469803+00', '2026-10-21 07:13:19.802853+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (11, 1, 130, 10, 4, 'Widget surfaces: the gallery''s English fallback and the v1 fallback words', 'Goal: a stale v1 Android snapshot blob (no strings field) renders through the layout''s English fallback words; re-issue those few words deliberately under the current laws (lettered countdown rows 83/85/102, Latin digits row 88, device-keyed stale copy D44/D79) and pin the v1 renders with tests. The measured face at uat 2.1.12 was already lawful (row 135 re-issued the countdown face for every blob); the work was the re-test itself: law-named source, faithful v1 fixtures, pins on every rendered word.
 
 Where: widgets/PrayerWidget.tsx (the input.strings fallback block inside androidRender) and shared/__tests__/widgetRenderer.test.ts.
@@ -5879,6 +5894,17 @@ Acceptance:
 - [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions
 - [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate
 - [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 22:08:20.226949+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (311, 1, 311, NULL, 4, 'Step 4: The mock APK built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted', '', NULL, NULL, NULL, 15000, '2026-10-21 06:41:53.547869+00', '2026-10-21 08:57:19.723465+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (307, 1, 307, NULL, 9, 'No scroll bars anywhere: every scrollable surface in the app hides its indicators', 'Goal: no visible scroll indicator on any surface of the app, on either platform - modals, sheets, lists, settings, Help, What''s New, everywhere.
+
+Where: every ScrollView, FlatList and section list in the app - a sweep names them all (components/, app/, sheets). The default shows indicators; each surface sets showsVerticalScrollIndicator={false} and showsHorizontalScrollIndicator={false} where it scrolls.
+
+Owner order 2026-10-21: apps should never show scroll bars; the What''s New modal included, and the order extends to every modal and every surface in the app.
+
+Acceptance:
+- [ ] a sweep test names every scrollable surface and proves its indicators are hidden, running inside yarn validate
+- [ ] the owner''s read on the next build confirms no scroll bar anywhere on either platform
+- [ ] yarn validate green', NULL, NULL, NULL, 11000, '2026-10-21 06:28:10.613199+00', '2026-10-21 09:02:43.256441+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
@@ -5905,6 +5931,16 @@ Acceptance:
 - [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
 - [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-20 00:06:01.090843+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (286, 1, 286, NULL, 4, 'Step 3: Design 1 becomes the shipped bottom bar with its layout suite', 'The owner''s picked arrangement replaces the column: one row, dot, Settings button, dot, vertically centred, its bottom on today''s dots-bottom anchor. Full unit coverage red before green, one commit, one version, yarn validate green.', NULL, NULL, NULL, 10000, '2026-10-20 05:33:19.118379+00', '2026-10-20 05:49:43.951771+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (306, 1, 306, 2, 9, 'The What''s New modal stays silent on patches: it pops only when a release carries something user-facing', 'Goal: a silent patch release never pops the What''s New modal; only a release that stamps a new archived item does (owner ruling 2026-10-21: design B, content-driven - the stored whats_new_shown_version becomes the bar, "save the last version the user saw, compare the archive''s newest against it").
+
+Where: shared/whatsNew.ts (shouldShowWhatsNew, the maintenance ritual, the banner-stamp docs), shared/__tests__/whatsNew.test.ts (the gate''s contract suite and the stamp-vs-build oracle), __tests__/app/index.test.tsx and __tests__/app/indexFreshInstall.test.tsx (launch suites), stores/version.ts and app/index.tsx (comments), e2e/README.md (the What''s New gotcha).
+
+Acceptance:
+- [ ] yarn jest shared/__tests__/whatsNew.test.ts: an upgrade with no archived item newer than the stored shown-version shows no modal; an upgrade whose release stamps a new item shows it - the silent-path cases written red-first against the current gate
+- [ ] the oracle pins every stamped item at or below the build version (nothing announces an unshipped release) and keeps the banner stamp equal to the build version
+- [ ] yarn jest __tests__/app/index.test.tsx: a silent-patch launch renders no What''s New modal
+- [ ] yarn validate green
+- [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it', NULL, NULL, NULL, 10000, '2026-10-21 06:06:24.688756+00', '2026-10-21 08:57:19.827366+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 9, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (297, 1, 297, 3, 4, 'The What''s New modal groups its items under version headings, the newest twenty shown in version sections parted by separator lines', 'Goal: the What''s New modal reads as a versioned changelog - the newest 20 archived items grouped under version headings (major.minor, the patch hidden), newest group first, rendered per the owner-approved refine-04 design (2026-10-21).
 
 Where: components/modals/WhatsNew.tsx (the grouped list, its tag-pill headers and dot separators), shared/whatsNew.ts (the archive carries true per-item versions; grouping is display-level; the release stamp still gates appearance), and the content contract tests. The modal''s appear gate is untouched.
@@ -5915,6 +5951,7 @@ Acceptance:
 - [ ] the card keeps its What''s New heading with no version line under it; the modal still appears only when an update ships, and the release stamp equals the build version (pinned by test)
 - [ ] the built modal read by the owner on the OnePlus 3T (transcribed on the row, screenshots never committed)
 - [ ] yarn validate green', NULL, NULL, NULL, 5000, '2026-10-20 22:18:32.651223+00', '2026-10-21 04:24:25.70735+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (308, 1, 308, NULL, 4, 'Step 1: The gate''s contract suite rewritten red-first and the oracle relaxed, in shared/__tests__/whatsNew.test.ts', '', NULL, NULL, NULL, 12000, '2026-10-21 06:41:53.422946+00', '2026-10-21 07:13:19.75231+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (295, 1, 295, 2, 4, 'Android help modal: the bottom Close row flashes opaque white while the card enters (row 77''s fix regressed)', 'Goal: opening Help on Android enters as one card - the bottom Close-button row never paints opaque white ahead of the card''s entrance.
 
 Where: components/modals/Help.tsx (the Close row''s entering={FadeIn} - row 77''s fix), components/modals/Modal.tsx (the container''s FadeIn, Android''s SlideInDown card entrance).
@@ -5927,16 +5964,7 @@ Acceptance:
 - [ ] the row keeps its layout animation with the list above it (row 60''s capped-height work)
 - [ ] the root cause named on the row: what makes Android differ from iOS here
 - [ ] yarn validate green', NULL, NULL, NULL, 3000, '2026-10-20 16:09:59.909596+00', '2026-10-21 04:24:25.702308+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, NULL, 1, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, as it did before the regression.
-
-Where: components/modals/Help.tsx - the question list''s separator rendering and its interaction with the capped-height layout animation.
-
-Owner report 2026-10-21, on the 3T build 2.3.5: dividers alternate - question 1 divided above not below, question 2 below not above, question 3 above not below, question 4 below not above, and so on in pairs; an opened question gains a divider below it that disappears when it closes. The owner reads the list as grouped in twos. Screenshots (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg
-
-Acceptance:
-- [ ] a test pins one divider between every adjacent question pair, closed and opened
-- [ ] the owner''s read on the next build confirms the even rhythm
-- [ ] yarn validate green', NULL, NULL, NULL, 9000, '2026-10-21 02:07:45.517501+00', '2026-10-21 04:25:32.517161+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (310, 1, 310, NULL, 4, 'Step 3: The launch suites and the stale truths - silent-patch integration test, fresh-install mock fix, version.ts and index.tsx comments, e2e/README.md gotcha', '', NULL, NULL, NULL, 14000, '2026-10-21 06:41:53.515644+00', '2026-10-21 07:13:19.847823+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (293, 1, 293, 9, 4, 'The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved', 'Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.
 
 Where: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN). The Ramadan decorations layer (components/ui/RamadanDecorations.tsx in Navigation''s chrome layer) sits where it sits today and reads no page padding.
@@ -5949,18 +5977,19 @@ Acceptance:
 - [ ] the Ramadan decorations measured in place before and after on the same forced-season builds, their anchors byte-identical, readings transcribed, and the layer verified to read no page padding
 - [ ] the three honored-inset arms (phone-class, tall canvas, letterbox) green in __tests__/app/Screen.test.tsx at the new sums, so phones and the Duo''s tall and closed poses keep their honored insets and only the added gap moves the column
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-20 16:09:59.807057+00', '2026-10-21 03:45:45.570747+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, NULL, 1, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: every What''s New item renders in the reader''s language - the seven historical items that still carry English stand-ins in the five non-English catalogs are translated, and a lock makes any future untranslated item fail the suite before it ships.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, 2, 9, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: the What''s New archive reads in the reader''s language - the seven English stand-ins and the language item''s stale body are retranslated into the five non-English catalogs from the new English source (owner copy order 2026-10-21), and a lock makes any future untranslated archive string fail the suite.
 
-Where: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass. The language item already carries real translations; en stays the source. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract extended to resolve the archive under every locale and fail when a title or body equals its en value.
+Where: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass (the stand-ins) and the language item''s body (stale against the new source; its five titles stay). en stays the source, byte-identical. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract resolves the archive under every locale and fails when a title or body equals its en value; shared/__tests__/catalogGates.test.ts drops the stand-in exemptions that made the English stand-ins passable.
 
 Owner report 2026-10-20: on the Arabic setting the modal shows the language item in Arabic and the seven items after it in English.
 
 Acceptance:
-- [ ] the seven items read translated under ar, ms, so, hi, th - each draft verified per the owner''s copy process (the owner does not read these languages, so the drafts take an explicit verification pass the owner rules)
-- [ ] the lock test fails on an English stand-in (red-first proof) and runs inside yarn validate
-- [ ] every locale''s strings sit inside the title and body length limits
-- [ ] the en catalog byte-identical
-- [ ] yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 04:25:32.515286+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] the eight items read translated under ar, ms, so, hi, th - each draft verified per the owner''s copy process (the owner rules the drafts; this row parks in Awaiting Owner for that pass)
+- [ ] the per-locale lock fails on an English stand-in (red-first proof on the pre-change tree, transcript on the row) and runs inside yarn validate
+- [ ] every locale''s titles and bodies sit within MAX_WHATS_NEW_TITLE_LENGTH and MAX_WHATS_NEW_BODY_LENGTH, asserted by the lock
+- [ ] the en catalog and its locks stay byte-identical (git diff shows no change to shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts)
+- [ ] yarn validate green on the merged tree', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 08:47:32.919051+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (313, 1, 313, NULL, 4, 'Step 2: The eight items retranslated into ar, ms, so, hi, th, version bumped with the stamp moved, suite green, en byte-identical', '', NULL, NULL, NULL, 17000, '2026-10-21 06:42:43.061298+00', '2026-10-21 07:07:55.146737+00', NULL, NULL, NULL, NULL, NULL, 296, false, NULL, 2, NULL);
 
 
 --
@@ -8647,6 +8676,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2617, 280, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 05:29:30.030448+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 284, "value": "T-284"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2622, 286, 'activity', 'owner', NULL, 'parent', '2026-10-20 05:33:19.133112+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 276, "value": "T-276"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2623, 276, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 05:33:19.133112+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 286, "value": "T-286"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2973, 309, 'activity', 'owner', NULL, 'created', '2026-10-21 06:41:53.477406+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2564, 276, 'activity', 'owner', NULL, 'comment_deleted', '2026-10-20 05:15:31.613286+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2565, 276, 'activity', 'owner', NULL, 'comment_deleted', '2026-10-20 05:15:31.636197+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2566, 276, 'activity', 'owner', NULL, 'comment_deleted', '2026-10-20 05:15:31.657366+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -8934,6 +8964,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2705, 288, 'activity', 'owner', NULL, 'status', '2026-10-20 08:59:26.423017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2706, 289, 'activity', 'owner', NULL, 'status', '2026-10-20 08:59:26.456375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2707, 290, 'activity', 'owner', NULL, 'status', '2026-10-20 08:59:26.490323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2976, 310, 'activity', 'owner', NULL, 'created', '2026-10-21 06:41:53.522568+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2709, 292, 'activity', 'owner', NULL, 'status', '2026-10-20 08:59:26.540301+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2710, 272, 'comment', 'owner', 'Closed. Wiped from the published history: both owner names, in every commit identity and in every line of every blob and commit message; every store-id spelling, which now arrives from outside the repository at build time; the home-path username, written as $HOME from here on; the Apple team and certificate identifiers; both device identifiers and the phone serial the machine-local list holds; the tool-session scratchpad paths; and the five historical design renders the media rule refuses. Every commit on every ref reads Athan <athan@athan.uk>.
 
@@ -9104,6 +9135,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2828, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 00:44:31.919568+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner picks one of the 40 designs in designs-297 (list-01..20, drop-01..20); implementation follows the pick"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2829, 297, 'comment', 'owner', 'All 40 grouped What''s New renders await the owner''s pick: twenty flat and twenty drop-down, the second twenty carrying the pill riffs and nine variants with the platform icons moved to the right of each row. The plan page lists every variant one line each, and the renders sit with their manifest in designs-297, off git. Implementation starts on the pick.', NULL, '2026-10-21 00:44:31.940376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2835, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 01:00:49.614226+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2979, 311, 'activity', 'owner', NULL, 'created', '2026-10-21 06:41:53.551971+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2830, 297, 'comment', 'owner', 'Owner direction 2026-10-21: the pick converges on list-12, refined. The pill stays but takes the Close button''s soft rounded corners at a smaller size (it de-emphasises); the iOS and Android icons move to each item row''s right edge, right-aligned with the title line and sitting side by side horizontally, never stacked; groups now form by major.minor with the patch hidden (no triple-digit patches, several items beneath each minor). Two renders ordered - the version pill left-aligned and right-aligned - and the pick happens over those two.', NULL, '2026-10-21 00:54:07.29668+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2831, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 00:54:07.310481+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2832, 297, 'activity', 'owner', NULL, 'status', '2026-10-21 00:54:07.321033+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
@@ -9121,6 +9153,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2875, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 01:54:25.421927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2876, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 01:54:25.483714+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s flash verdict on the 3T build: fixed closes the row, still-flashing reopens it with the owner''s recording as evidence"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2907, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 03:14:06.31043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2984, 312, 'activity', 'owner', NULL, 'created', '2026-10-21 06:42:43.025047+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2877, 297, 'comment', 'owner', 'Owner order 2026-10-21, third refinement: the version pill is right-aligned (settled), its background fills with the colour the iOS and Android icons carry, the version number renders slightly darker than that fill - a tonal tag look - and the pill shrinks about 25 percent below the refined size. One render of this design is ordered; the pick follows over it and the clean right-aligned outline shot.', NULL, '2026-10-21 01:58:31.456596+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2879, 295, 'comment', 'owner', 'Owner verdict 2026-10-21, 03:02: STILL FLASHING on the 3T build 2.3.5. At the entrance''s 50 percent mark the owner sees an opaque white box around the Close button while the card itself reads translucent. Two owner screenshots pulled to /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/ (030117 = settled, 030244 = mid-entrance): never commit them. The static-style zero start did not hold on device; round 2 diagnoses from these frames.', NULL, '2026-10-21 02:07:45.52759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2878, 295, 'comment', 'owner', 'Verified on the 3T: the merged 2.3.5 mock build from 9b6301bf is installed as its only copy for User 0 alone (installed 02:52, matching the built APK exactly, fleettest id confirmed) and it opens - launched once, process up, no crash. The owner''s test instructions above stand as written; the phone was in the owner''s hands mid-use at the check, so it was left untouched.', NULL, '2026-10-21 02:04:32.038731+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -9235,6 +9268,101 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2950, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 04:25:32.526502+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2917, 293, 'comment', 'owner', 'The phone-left-whole read: the 3T now carries a plain mock of the merged tip, badging <pkg> at 2.3.6 from f4ea7c5b, User 0 alone, one throwaway launch taken so What''s New marks itself, then HOME and am kill - the phone rests backgrounded and whole.', NULL, '2026-10-21 03:45:34.287659+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-21 04:27:03.130593+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2926, 305, 'activity', 'owner', NULL, 'title', '2026-10-21 03:59:32.669043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on the 3T, single-user assert, park for the owner''s read"}, "from": {"value": "Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on 3T_SERIAL, single-user assert, park for the owner''s read"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2952, 296, 'comment', 'owner', 'Owner copy order 2026-10-21, before this row starts: the English What''s New copy was rewritten - every description now follows the owner''s one-line verb-first pattern with the shortest words (Added support for tablets, Added new Athan sounds, Added a sound to every reminder, Added prayer times to Home and Lock Screen, Each prayer now has 2 reminders, Added support page, Added new qibla compass, Added support for more languages; the second reminder title dropped its leading A). The five catalogs'' stand-ins carry the new English; the language item''s existing translations are now stale against the new source and join the seven for retranslation, and the catalog lock was refreshed for the new source bytes.', NULL, '2026-10-21 05:08:58.976655+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2953, 306, 'activity', 'owner', NULL, 'created', '2026-10-21 06:06:24.730688+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2954, 306, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:06:24.794626+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 186, "value": "#306"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2955, 306, 'comment', 'owner', 'Owner ruling 2026-10-21: design B, content-driven. The stored whats_new_shown_version (already written on modal display) becomes the bar: the modal pops only when the archive carries a stamped item newer than that stored version - silent patches add no items and stay silent by construction, feature releases stamp a new item and pop. The stamp-vs-build-version oracle relaxes accordingly. The owner''s own words: save the last version the user saw, compare the archive''s newest against it.', NULL, '2026-10-21 06:09:03.607696+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2956, 307, 'activity', 'owner', NULL, 'created', '2026-10-21 06:28:10.631215+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2957, 307, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:28:10.706046+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 187, "value": "#307"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2958, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 06:28:30.072655+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2959, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 06:28:30.07361+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2960, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 06:28:30.074502+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2961, 306, 'activity', 'owner', NULL, 'status', '2026-10-21 06:28:30.084225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2962, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 06:28:30.085756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2963, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 06:28:30.089196+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2965, 306, 'activity', 'owner', NULL, 'type', '2026-10-21 06:41:43.091729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2966, 306, 'activity', 'owner', NULL, 'estimate', '2026-10-21 06:41:43.091729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "9"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2967, 306, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:41:43.113593+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2968, 306, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:41:43.113593+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2969, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 06:41:43.156163+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "306"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2970, 308, 'activity', 'owner', NULL, 'created', '2026-10-21 06:41:53.430933+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2971, 308, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:41:53.433718+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 306, "value": "T-306"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2972, 306, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:41:53.433718+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 308, "value": "T-308"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2974, 309, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:41:53.479838+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 306, "value": "T-306"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2975, 306, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:41:53.479838+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 309, "value": "T-309"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3020, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 06:57:52.214447+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2977, 310, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:41:53.52416+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 306, "value": "T-306"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2978, 306, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:41:53.52416+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 310, "value": "T-310"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3011, 316, 'activity', 'owner', NULL, 'created', '2026-10-21 06:46:10.931822+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2980, 311, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:41:53.553719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 306, "value": "T-306"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2981, 306, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:41:53.553719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 311, "value": "T-311"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2982, 306, 'activity', 'owner', NULL, 'status', '2026-10-21 06:42:04.514904+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2983, 306, 'comment', 'owner', 'Plan doc T-306 written and linked: design B content-driven gate, 6 decisions taken, 4 steps (2+2+2 code, 3 device), 9 points. Moving to Ready for the grill.', NULL, '2026-10-21 06:42:04.546533+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2985, 312, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:42:43.027734+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2986, 296, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:42:43.027734+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 312, "value": "T-312"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2989, 313, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:42:43.069139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2990, 296, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:42:43.069139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 313, "value": "T-313"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2991, 313, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:42:43.074057+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 183, "value": "#296"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2992, 296, 'activity', 'owner', NULL, 'description', '2026-10-21 06:42:58.738325+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the What''s New archive reads in the reader''s language - the seven English stand-ins and the language item''s stale body are retranslated into the five non-English catalogs from the new English source (owner copy order 2026-10-21), and a lock makes any future untranslated archive string fail the suite.\n\nWhere: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass (the stand-ins) and the language item''s body (stale against the new source; its five titles stay). en stays the source, byte-identical. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract resolves the archive under every locale and fails when a title or body equals its en value; shared/__tests__/catalogGates.test.ts drops the stand-in exemptions that made the English stand-ins passable.\n\nOwner report 2026-10-20: on the Arabic setting the modal shows the language item in Arabic and the seven items after it in English.\n\nAcceptance:\n- [ ] the eight items read translated under ar, ms, so, hi, th - each draft verified per the owner''s copy process (the owner rules the drafts; this row parks in Awaiting Owner for that pass)\n- [ ] the per-locale lock fails on an English stand-in (red-first proof on the pre-change tree, transcript on the row) and runs inside yarn validate\n- [ ] every locale''s titles and bodies sit within MAX_WHATS_NEW_TITLE_LENGTH and MAX_WHATS_NEW_BODY_LENGTH, asserted by the lock\n- [ ] the en catalog and its locks stay byte-identical (git diff shows no change to shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts)\n- [ ] yarn validate green on the merged tree"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2993, 296, 'activity', 'owner', NULL, 'type', '2026-10-21 06:42:58.738325+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2994, 296, 'activity', 'owner', NULL, 'estimate', '2026-10-21 06:42:58.738325+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "4"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3017, 302, 'comment', 'owner', 'Plan doc T-302 is linked: the mechanism is named (the 3T''s 2.625 density puts two-line rows on half-pixel boundaries and Android''s pixel-grid snap drops every second one-pixel rule), the fix moves the divider out of the row to a list-level sibling, and three steps carry 7 points. Grilled: five notes folded, none blocking.', NULL, '2026-10-21 06:53:59.86405+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3019, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 06:57:52.178164+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2987, 312, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:42:43.034073+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 183, "value": "#296"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2988, 313, 'activity', 'owner', NULL, 'created', '2026-10-21 06:42:43.067194+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2998, 296, 'comment', 'owner', 'Planned: the plan page T-296 carries the design, six ruled decisions, the full draft table and two steps (code 2, code 2, four points); the grill runs next.', NULL, '2026-10-21 06:42:58.777224+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3016, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 06:53:59.830649+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3018, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 06:54:18.764768+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2995, 296, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:42:58.753407+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2996, 296, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:42:58.753407+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2997, 296, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:42:58.753407+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2999, 302, 'activity', 'owner', NULL, 'description', '2026-10-21 06:46:10.797219+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.\n\nWhere: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.\n\nOwner report 2026-10-21, 3T build 2.3.5: dividers alternate in pairs - question 1 divided above not below, question 2 below not above, and so on; an opened question gains a divider below that disappears when it closes. The iPhone XS reads correct: Android-side rendering only. Evidence screenshot (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg\n\nAcceptance:\n- [ ] a test pins one divider between every adjacent question pair, closed and opened (red before the fix)\n- [ ] the owner''s read on the next 3T build confirms the even rhythm\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3000, 302, 'activity', 'owner', NULL, 'type', '2026-10-21 06:46:10.797219+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3001, 302, 'activity', 'owner', NULL, 'estimate', '2026-10-21 06:46:10.797219+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3009, 315, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:46:10.899778+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 302, "value": "T-302"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3010, 302, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:46:10.899778+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 315, "value": "T-315"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3002, 302, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:46:10.81096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3003, 302, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:46:10.81096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3004, 302, 'activity', 'owner', NULL, 'label_add', '2026-10-21 06:46:10.81096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3006, 314, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:46:10.859705+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 302, "value": "T-302"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3007, 302, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:46:10.859705+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 314, "value": "T-314"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3012, 316, 'activity', 'owner', NULL, 'parent', '2026-10-21 06:46:10.933397+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 302, "value": "T-302"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3013, 302, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 06:46:10.933397+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 316, "value": "T-316"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3015, 306, 'activity', 'owner', NULL, 'status', '2026-10-21 06:51:20.79543+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3005, 314, 'activity', 'owner', NULL, 'created', '2026-10-21 06:46:10.857268+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3008, 315, 'activity', 'owner', NULL, 'created', '2026-10-21 06:46:10.897926+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3014, 306, 'comment', 'owner', 'The grill returned five findings; all five are folded into the plan doc (v2): steps 1-3 land as one commit with the banner stamp riding the bump, the silent-path fixture shape is named, the fresh-install risk is restated silent-via-the-ahead-guard with the mock fix as faithfulness, and the two mutation-killing fixture shapes are pinned. Ready.', NULL, '2026-10-21 06:51:20.770552+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3021, 296, 'comment', 'owner', 'The plan passed the grill and sits Ready (page T-296, v2, two steps, four points); claiming the row for execution now.', NULL, '2026-10-21 06:57:52.245472+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3022, 312, 'activity', 'owner', NULL, 'status', '2026-10-21 07:07:54.971249+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3023, 313, 'activity', 'owner', NULL, 'status', '2026-10-21 07:07:55.160675+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3024, 296, 'comment', 'owner', 'Both steps landed as one commit on lane-T296 at 2.4.5 (0208c766): the lock went red-first against the stand-ins (eleven failures naming the fourteen stand-in keys across the five locales, plus the gates'' echo and RTL arms), the translations turned it green, the one-value revert mutation bites, yarn validate is green whole (229 suites, 5931 tests, coverage 100 percent), en and its locks are byte-identical. The drafts now wait on the owner''s verification pass; audit next.', NULL, '2026-10-21 07:07:55.242543+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3025, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 07:07:55.33271+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3026, 309, 'activity', 'owner', NULL, 'status', '2026-10-21 07:12:46.283877+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3027, 308, 'activity', 'owner', NULL, 'status', '2026-10-21 07:12:46.294586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3028, 310, 'activity', 'owner', NULL, 'status', '2026-10-21 07:12:46.306047+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3029, 296, 'comment', 'owner', 'Blind review of commit 0208c766: clean, no findings. Both guard suites pass (121 tests) and the whole shared tree passes (2530 tests). Independently re-measured the 75 translated values against the 32/96 budgets (max 31 and 80), the en-echo rule (zero echoes), and each catalog''s own vocabulary; the gates'' two dropped exemptions are covered again, the red-first count of eleven failures reconstructs exactly against the parent''s stand-ins, and the 2.4.5 bump lands in package.json and app.json together, matching every recent commit (android/ is prebuild-generated and not tracked).', NULL, '2026-10-21 07:13:19.336189+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3030, 306, 'comment', 'owner', 'Steps 1-3 are committed on lane-T306 (one commit, 2.4.5): the gate is content-driven, the contract suite was red-first against the old gate (verified independently), all seven mutants die, and yarn validate is green at full coverage. Version note: 296 took 2.4.5 first, so both lanes ride the collisions allowlist under the standing 293/295 ruling - the merge that lands second renumbers.', NULL, '2026-10-21 07:13:19.870034+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3031, 296, 'comment', 'owner', 'Lane work merged at 2.4.5 and pushed by the lead: all eight items translated across ar, ms, so, hi and th from the new English, the lock resolving the archive under every shipped locale, en byte-identical, 5933 tests green. The owner''s draft verification per the copy process is the remaining gate.', NULL, '2026-10-21 08:47:32.912905+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3032, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 08:47:32.948185+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3033, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 08:47:32.980941+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s verification pass on the eight translated items per the copy process"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3034, 302, 'comment', 'owner', 'Lead merge at 2.4.7, pushed: the divider moved out of the clipped animated row to a list-level sibling animated with the rows - Android''s pixel-grid snap can no longer eat a row''s last pixel - with the pinning suite red on HEAD and green with the move (four failures to thirty-seven passes). One mock build of the merged tip installs on the 3T for the owner''s rhythm read.', NULL, '2026-10-21 08:57:19.713901+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3035, 306, 'comment', 'owner', 'Lead merge at 2.4.6, pushed: the gate is content-driven - the modal pops only when the archive''s newest stamped item is newer than the stored shown-version, a silent patch never pops, an ahead-of-binary stamp stays silent, and a pre-tracker upgrader keeps its one catch-up display. Contract suite red-first with seven gate mutants killed; 5939 tests green on the merged tree.', NULL, '2026-10-21 08:57:19.714272+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3036, 311, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:19.749132+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3037, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 08:57:19.823956+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s silent-path read on the 3T build of 2.4.7 (installing): an upgrade with no new archived item must not pop"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3038, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 08:57:19.829345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s divider-rhythm read on the 3T build of 2.4.7 (installing)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3039, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:19.841495+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3040, 306, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:19.846993+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3041, 314, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:33.555554+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3042, 315, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:33.559914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3043, 316, 'activity', 'owner', NULL, 'status', '2026-10-21 08:57:33.606139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3044, 307, 'comment', 'owner', 'Lead sweep at 2.4.8: the app''s only scrollables are the three modals and the settings sheet - every one already hid its indicator in code, so nothing visible was missing; the invariant is now pinned by a source-level sweep test over every ScrollView, FlatList, SectionList and VirtualizedList in app/ and components/ that fails naming any offender. The one scroll bar seen live was the dev-only design gallery, now hidden too. The 3T build of the merged tip carries the proof for the owner''s read.', NULL, '2026-10-21 09:02:43.27092+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3045, 307, 'activity', 'owner', NULL, 'field', '2026-10-21 09:02:43.282354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s read on the 2.4.7+ 3T build: no scroll bar on any surface (the sweep test already proves every surface hides it)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3047, 307, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.660263+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s read on the 3T build (2.4.7 installed): no scroll bar on any surface"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3048, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.663452+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s divider-rhythm read on the 3T build (2.4.7 installed, User 0 alone)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3046, 307, 'activity', 'owner', NULL, 'status', '2026-10-21 09:02:43.307109+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3049, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.669575+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s verification pass on the eight translated items, per the copy process"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3050, 306, 'activity', 'owner', NULL, 'field', '2026-10-21 09:08:23.672313+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s silent-path read on the 3T build (2.4.7 installed, User 0 alone): an upgrade with no new archived item must not pop"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2964, 306, 'activity', 'owner', NULL, 'description', '2026-10-21 06:41:43.091729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a silent patch release never pops the What''s New modal; only a release that stamps a new archived item does (owner ruling 2026-10-21: design B, content-driven - the stored whats_new_shown_version becomes the bar, \"save the last version the user saw, compare the archive''s newest against it\").\n\nWhere: shared/whatsNew.ts (shouldShowWhatsNew, the maintenance ritual, the banner-stamp docs), shared/__tests__/whatsNew.test.ts (the gate''s contract suite and the stamp-vs-build oracle), __tests__/app/index.test.tsx and __tests__/app/indexFreshInstall.test.tsx (launch suites), stores/version.ts and app/index.tsx (comments), e2e/README.md (the What''s New gotcha).\n\nAcceptance:\n- [ ] yarn jest shared/__tests__/whatsNew.test.ts: an upgrade with no archived item newer than the stored shown-version shows no modal; an upgrade whose release stamps a new item shows it - the silent-path cases written red-first against the current gate\n- [ ] the oracle pins every stamped item at or below the build version (nothing announces an unshipped release) and keeps the banner stamp equal to the build version\n- [ ] yarn jest __tests__/app/index.test.tsx: a silent-patch launch renders no What''s New modal\n- [ ] yarn validate green\n- [ ] the mock APK of the merged commit passes the aapt2 fleettest gate (<pkg>, versionCode 1000000), installs on the OnePlus 3T, and carries the app for User 0 alone; the pop-or-silence read on upgrade belongs to the owner, and the row parks in Awaiting Owner for it"}}', NULL);
 
 
 --
@@ -9318,6 +9446,9 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (27
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (295, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (297, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (293, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (296, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (302, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (306, 2, 3);
 
 
 --
@@ -9498,6 +9629,11 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (577, 296, 1, NULL, 296, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (578, 297, 1, NULL, 297, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (579, 293, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (591, 306, 1, NULL, 306, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (595, 307, 3, 'the owner''s read on the 3T build (2.4.7 installed): no scroll bar on any surface', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (594, 302, 3, 'the owner''s divider-rhythm read on the 3T build (2.4.7 installed, User 0 alone)', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (592, 296, 3, 'the owner''s verification pass on the eight translated items, per the copy process', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (593, 306, 3, 'the owner''s silent-path read on the 3T build (2.4.7 installed, User 0 alone): an upgrade with no new archived item must not pop', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -9851,18 +9987,30 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 8);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 181);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 183);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 180);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 148);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 182);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 2);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 185);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 184);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (307, 187);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (306, 186);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (306, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (306, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (312, 183);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (313, 183);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 183);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 185);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 11);
 
 
 --
@@ -10292,9 +10440,28 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (618, 301, 4, 'Done', 'completed', '2026-10-21 04:24:25.722452+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (581, 296, 1, 'Backlog', 'backlog', '2026-10-20 20:39:17.916+00', '2026-10-21 04:24:40.796417+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (603, 302, 1, 'Backlog', 'backlog', '2026-10-21 02:07:45.517+00', '2026-10-21 04:24:40.797893+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (621, 296, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.523436+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (620, 302, 6, 'Planning', 'unstarted', '2026-10-21 04:24:40.797893+00', '2026-10-21 04:25:32.52558+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (622, 302, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.52558+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (621, 296, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.523436+00', '2026-10-21 06:28:30.082599+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (622, 302, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.52558+00', '2026-10-21 06:28:30.08605+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (626, 296, 6, 'Planning', 'unstarted', '2026-10-21 06:28:30.082599+00', '2026-10-21 06:57:52.175938+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (633, 312, 1, 'Backlog', 'backlog', '2026-10-21 06:42:43.019+00', '2026-10-21 07:07:54.958763+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (643, 312, 4, 'Done', 'completed', '2026-10-21 07:07:54.958763+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (634, 313, 1, 'Backlog', 'backlog', '2026-10-21 06:42:43.061+00', '2026-10-21 07:07:55.156685+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (642, 296, 3, 'In progress', 'started', '2026-10-21 06:57:52.211558+00', '2026-10-21 07:07:55.3278+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (646, 309, 4, 'Done', 'completed', '2026-10-21 07:12:46.280152+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (628, 308, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.422+00', '2026-10-21 07:12:46.288402+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (647, 308, 4, 'Done', 'completed', '2026-10-21 07:12:46.288402+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (630, 310, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.515+00', '2026-10-21 07:12:46.294748+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (649, 296, 9, 'Awaiting Owner', 'started', '2026-10-21 08:47:32.941934+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (631, 311, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.547+00', '2026-10-21 08:57:19.745295+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (640, 302, 3, 'In progress', 'started', '2026-10-21 06:54:18.761697+00', '2026-10-21 08:57:19.836466+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (651, 302, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.836466+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (638, 306, 3, 'In progress', 'started', '2026-10-21 06:51:20.793494+00', '2026-10-21 08:57:19.841694+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (635, 314, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.846+00', '2026-10-21 08:57:33.550564+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (653, 314, 4, 'Done', 'completed', '2026-10-21 08:57:33.550564+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (636, 315, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.89+00', '2026-10-21 08:57:33.557301+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (654, 315, 4, 'Done', 'completed', '2026-10-21 08:57:33.557301+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (624, 307, 1, 'Backlog', 'backlog', '2026-10-21 06:28:10.613+00', '2026-10-21 09:02:43.299089+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -10387,6 +10554,21 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (617, 297, 4, 'Done', 'completed', '2026-10-21 04:24:25.720474+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (589, 301, 1, 'Backlog', 'backlog', '2026-10-20 22:42:35.463+00', '2026-10-21 04:24:25.722452+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (619, 296, 6, 'Planning', 'unstarted', '2026-10-21 04:24:40.796417+00', '2026-10-21 04:25:32.523436+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (623, 306, 1, 'Backlog', 'backlog', '2026-10-21 06:06:24.688+00', '2026-10-21 06:28:30.080314+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (625, 306, 6, 'Planning', 'unstarted', '2026-10-21 06:28:30.080314+00', '2026-10-21 06:42:04.51224+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (632, 306, 2, 'Ready', 'unstarted', '2026-10-21 06:42:04.51224+00', '2026-10-21 06:51:20.793494+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (627, 302, 6, 'Planning', 'unstarted', '2026-10-21 06:28:30.08605+00', '2026-10-21 06:53:59.826503+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (639, 302, 2, 'Ready', 'unstarted', '2026-10-21 06:53:59.826503+00', '2026-10-21 06:54:18.761697+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (641, 296, 2, 'Ready', 'unstarted', '2026-10-21 06:57:52.175938+00', '2026-10-21 06:57:52.211558+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (644, 313, 4, 'Done', 'completed', '2026-10-21 07:07:55.156685+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (629, 309, 1, 'Backlog', 'backlog', '2026-10-21 06:41:53.469+00', '2026-10-21 07:12:46.280152+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (648, 310, 4, 'Done', 'completed', '2026-10-21 07:12:46.294748+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (645, 296, 8, 'Audit', 'started', '2026-10-21 07:07:55.3278+00', '2026-10-21 08:47:32.941934+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (650, 311, 4, 'Done', 'completed', '2026-10-21 08:57:19.745295+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (652, 306, 9, 'Awaiting Owner', 'started', '2026-10-21 08:57:19.841694+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (637, 316, 1, 'Backlog', 'backlog', '2026-10-21 06:46:10.926+00', '2026-10-21 08:57:33.603951+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (655, 316, 4, 'Done', 'completed', '2026-10-21 08:57:33.603951+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (656, 307, 9, 'Awaiting Owner', 'started', '2026-10-21 09:02:43.299089+00', NULL);
 
 
 --
@@ -10731,6 +10913,8 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (183, 1, 3, '#296', '#ffffff', '2026-10-20 20:39:18.116685+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (184, 1, 3, '#297', '#ffffff', '2026-10-20 22:18:32.726887+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (185, 1, 3, '#302', '#ffffff', '2026-10-21 02:08:30.57197+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (186, 1, 3, '#306', '#ffffff', '2026-10-21 06:06:24.765441+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (187, 1, 3, '#307', '#ffffff', '2026-10-21 06:28:10.669005+00');
 
 
 --
@@ -11041,7 +11225,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 306, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 317, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -13917,6 +14101,225 @@ Alternatives rejected:
 - Poses keep their honored insets: the three suite arms green at 62 to 90.05, tall 82 to 110.05, letterbox 0 to 28.05.
 - yarn validate green on the lane commit, and re-run in the main tree after the merge.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 26624, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:38:22.837216+00', '2026-10-20 22:47:24.963884+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (31, 1, NULL, 'T-296', '# T-296 - The What''s New archive speaks every locale
+
+## Goal
+
+Today the What''s New modal renders its seven historical items in English under every non-English locale (owner report 2026-10-20: on Arabic, the language item reads Arabic and the seven after it English), and the language item''s body translates an English source that no longer exists - the owner''s 2026-10-21 copy order rewrote all eight bodies to the one-line verb-first pattern. When this is done, all eight items read translated under ar, ms, so, hi, th from the new English, the en catalog is byte-identical, and any future untranslated archive string fails the suite.
+
+## Decisions taken
+
+- 2026-10-21 - The language item''s five titles stay; only its body joins the retranslation. Each title (اللغة, Bahasa, Luqadda, भाषा, ภाषา) already translates the unchanged en title "Language"; re-translating a faithful string is churn against the shortest-words order.
+- 2026-10-21 - The lock is a per-locale arm of the WHATS_NEW content contract in shared/__tests__/whatsNew.test.ts (equality with the en value fails), and shared/__tests__/catalogGates.test.ts drops its two stand-in exemptions (the echo exemption and the ar RTL skip for the seven keys) in the same change. The exemptions were the stand-ins'' only pass; leaving them would hide the exact regression the gates exist to catch.
+- 2026-10-21 - Register: every body opens with the locale''s own shortest "added" participle over the harvested terminology (ar أضيف/أضيفت passive, ms Ditambah, so Waxaa lagu daray, hi जोड़ा गया, th เพิ่ม); the second-reminder body keeps the "each prayer now has" shape; ar carries the dual تنبيهان instead of a digit. Thai and Hindi word order keeps the participle where their grammar puts it - the register matches, not the English word order.
+- 2026-10-21 - Length: every title sits within the 32-char hard limit (the verbose scripts land at 30-31) and every body within 96 and within roughly 2x its en length (longest: so widgets body 80 against en 42); the lock asserts the limits per locale so an over-budget edit fails before merge.
+- 2026-10-21 - One commit typed fix(i18n) (the archive rendering English is the owner-reported defect), patch bump: 2.4.5 if free at commit time, decided after git fetch and a local-branch scan; a collision takes the standing second-merge-renumbers ruling recorded on rows 293/295, with the entry riding the commit in scripts/version-collisions-allowlist.json (never version-major-allowlist.json, which is the owner''s majors-only record). The red-first proof runs on the lane before the translations land - the pre-commit hook demands a green tree, so the lock and the translations share the commit.
+- 2026-10-21 - Acceptance criterion 1 (the owner''s verification pass on the drafts, which the owner rules per the copy process) is the owner''s alone. The lane lands, validates, audits and merges everything else, then parks the row in Awaiting Owner naming that pass.
+
+## Files
+
+- shared/i18n/ar.ts - 15 values change (seven stand-in items plus the language body)
+- shared/i18n/ms.ts - 15 values change
+- shared/i18n/so.ts - 15 values change
+- shared/i18n/hi.ts - 15 values change
+- shared/i18n/th.ts - 15 values change
+- shared/__tests__/whatsNew.test.ts - the per-locale content-contract arm
+- shared/__tests__/catalogGates.test.ts - the two stand-in exemptions deleted
+- shared/whatsNew.ts - WHATS_NEW.version moves with the bump (the disk-read oracle pins it to app.json)
+- package.json, app.json, android/app/build.gradle (untracked on disk) - the version bump
+- scripts/version-collisions-allowlist.json - an entry only if a sister lane holds the number when this one commits
+- shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts - read only, byte-identical
+
+## Design
+
+The invariant: an archive string ships translated or the suite fails. Three locks hold it after this lands:
+
+1. The existing key-set gate (each catalog holds exactly the en key set) - untouched.
+2. The new contract arm: for each of ar, ms, so, hi, th, resolve the archive through tIn(locale, key) (shared/i18n/index.ts:57, the named-locale read that mutates no global state) and fail on any title or body equal to its en value, on any empty string, and on any title over MAX_WHATS_NEW_TITLE_LENGTH (32) or body over MAX_WHATS_NEW_BODY_LENGTH (96).
+3. catalogGates re-tightened: the echo rule (a value containing its en source fails) and the ar Latin rule now cover the whatsNew keys like every other key.
+
+The drafts, from the new English source, over the harvested terminology (the full table the executors copy verbatim):
+
+| item | en title / body | ar | ms | so | hi | th |
+| --- | --- | --- | --- | --- | --- | --- |
+| tabletSupport | Tablet support / Added support for tablets | دعم الأجهزة اللوحية / أضيف دعم الأجهزة اللوحية | Sokongan tablet / Ditambah sokongan tablet | Taageerada tabletka / Waxaa lagu daray taageerada tabletka | टैबलेट समर्थन / टैबलेट समर्थन जोड़ा गया | รองรับแท็บเล็ต / เพิ่มการรองรับแท็บเล็ต |
+| athanSounds | Athan sounds / Added new Athan sounds | أصوات الأذان / أضيفت أصوات أذان جديدة | Bunyi azan / Ditambah bunyi azan baharu | Dhawaaqyada aqaanka / Waxaa lagu daray dhawaaqyo aqaan ah oo cusub | अज़ान की आवाज़ें / अज़ान की नई आवाज़ें जोड़ी गईं | เสียงอะซาน / เพิ่มเสียงอะซานใหม่ |
+| reminderSounds | Reminder sounds / Added a sound to every reminder | أصوات التنبيه / أضيف صوت لكل تنبيه | Bunyi peringatan / Ditambah bunyi pada setiap peringatan | Dhawaaqyada xasuusiye / Waxaa lagu daray dhawaaq xasuusiye kasta | रिमाइंडर की आवाज़ें / हर रिमाइंडर के लिए आवाज़ जोड़ी गई | เสียงแจ้งเตือนล่วงหน้า / เพิ่มเสียงให้ทุกการแจ้งเตือนล่วงหน้า |
+| widgets | Home & Lock widgets / Added prayer times to Home and Lock Screen | أدوات الشاشة الرئيسية والقفل / أضيفت أوقات الصلاة إلى الشاشة الرئيسية وشاشة القفل | Widget skrin utama dan kunci / Ditambah waktu solat pada Skrin Utama dan Skrin Kunci | Widgetka bilowga iyo xiritaanka / Waxaa lagu daray waqtiyada salaadda shaashadda bilowga iyo shaashadda xiritaanka | होम और लॉक विजेट / होम और लॉक स्क्रीन पर नमाज़ के समय जोड़े गए | วิดเจ็ตหน้าจอหลักและหน้าจอล็อก / เพิ่มเวลาละหมาดบนหน้าจอหลักและหน้าจอล็อก |
+| secondReminder | Second reminder / Each prayer now has 2 reminders | التنبيه الثاني / لكل صلاة الآن تنبيهان | Peringatan kedua / Setiap solat kini mempunyai 2 peringatan | Xasuusiye labaad / Salaad kasta hadda waxay leedahay 2 xasuusiye | दूसरा रिमाइंडर / हर नमाज़ के लिए अब 2 रिमाइंडर | การแจ้งเตือนล่วงหน้าครั้งที่สอง / ทุกละหมาดมีการแจ้งเตือนล่วงหน้า 2 ครั้ง |
+| helpPage | Help page / Added support page | صفحة المساعدة / أضيفت صفحة المساعدة | Halaman bantuan / Ditambah halaman bantuan | Bogga caawimo / Waxaa lagu daray bogga caawimo | सहायता पेज / सहायता पेज जोड़ा गया | หน้าช่วยเหลือ / เพิ่มหน้าช่วยเหลือ |
+| qiblaCompass | Qibla compass / Added new qibla compass | بوصلة القبلة / أضيفت بوصلة قبلة جديدة | Kompas kiblat / Ditambah kompas kiblat baharu | Kompaaska qiblada / Waxaa lagu daray kompaas qiblo cusub | क़िबला कंपास / नया क़िबला कंपास जोड़ा गया | เข็มทิศกิบลัต / เพิ่มเข็มทิศกิบลัตใหม่ |
+| language | Language / Added support for more languages | اللغة (title kept) / أضيف دعم المزيد من اللغات | Bahasa (title kept) / Ditambah sokongan untuk lebih banyak bahasa | Luqadda (title kept) / Waxaa lagu daray taageero luqado dheeraad ah | भाषा (title kept) / और भाषाओं का समर्थन जोड़ा गया | ภาษา (title kept) / เพิ่มการรองรับภาษาเพิ่มเติม |
+
+Terminology the drafts owe the harvest and the catalogs'' own entries: ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า - and the prayer, sound, qibla, compass, help, widget and home/lock words each catalog already uses.
+
+### Alternatives rejected
+
+- A byte-for-byte snapshot of every translated string: rejected - the owner''s verification pass may rule edits, and a snapshot churns on every ruling. The equality-with-en lock catches the defect class (an untranslated stand-in) without pinning prose.
+- A runtime fallback that renders en when a value equals its source: rejected - it hides the defect; the ticket asks for a lock that fails the suite.
+- Riding the i18n bridge (export, translate outside, import): rejected - that is the external translator''s path; the lane edits the catalogs directly, exactly as the stand-ins were placed.
+- Extending catalogGates alone, with no contract arm: rejected - the gates read catalogs, not the archive; the ticket names the content contract as the lock.
+
+## Steps
+
+1. Step 1: The translation lock - the per-locale content-contract arm in shared/__tests__/whatsNew.test.ts and the two stand-in exemptions deleted from shared/__tests__/catalogGates.test.ts, both observed red against the stand-ins on the pre-change tree; the stale comment at shared/__tests__/whatsNew.test.ts:436-437 ("The historical archive is English stand-ins in every locale") is rewritten in the same step because Step 2 makes its premise false. (2 points)
+2. Step 2: The eight items retranslated into ar, ms, so, hi, th from the new English per the draft table, the version bumped with the banner stamp moved, the whole suite green, en byte-identical. (2 points)
+
+## Risks
+
+- A draft is ruled wrong by the owner''s pass: the drafts sit in 15 values per catalog and nothing pins the prose, so a ruling edit rides a new patch bump with the suite staying green.
+- Title-length collisions in the verbose scripts (so and th titles at 30-31 of 32): the lock asserts the limit per locale, so an over-budget draft fails before merge.
+- The ar Latin rule now covers the whatsNew keys: any Latin leaked into an Arabic draft fails the suite; the drafts carry none, and the digit in ms/so/hi/th bodies is not a Latin letter.
+- Sisters 302 and 306 take 2.4.5 in the same window: the standing ruling resolves it - fetch before the bump, and if the number is held, renumber above whatever landed with the allowlist entry riding the commit.
+- Sister 306 rewrites the same whatsNew.test.ts contract suite and edits shared/whatsNew.ts: whichever lane merges second rebases and re-applies its change onto the other''s suite. This lane''s arm is one additive describe block keyed to the exported archive and constants, so it re-applies over a rewritten contract, and the banner-stamp rule survives either ordering because 306''s own acceptance keeps the stamp equal to the build version.
+- The catalog lock hashes en only, and the en pins in i18n.test.ts: both stay untouched because en.ts is byte-identical - any accidental en edit fails catalogLock.test.ts and i18n.test.ts before review.
+
+## Grill answered (v2, 2026-10-21)
+
+All four findings taken: the collisions allowlist is named (Decision 5, Files), the T-306 same-file conflict is ruled in Risks, the stale stand-in comment at whatsNew.test.ts:436-437 joins Step 1, and the lock arm reads through tIn(locale, key) - no global locale mutation, no try/finally restore to get wrong.
+
+## Proof
+
+- Red-first: on the pre-change tree, `yarn jest shared/__tests__/whatsNew.test.ts` fails the new arm for each of the five locales naming the stand-in keys, and `yarn jest shared/__tests__/catalogGates.test.ts` fails the echo arm for the five locales and the ar Latin arm - transcript recorded on the row before the translations land.
+- Green: `yarn validate` exits 0 on the lane tip and again on the merged tree.
+- Budgets: the lock''s per-locale length arm passes (title at most 32, body at most 96, both non-empty).
+- The lock bites (mutation): with the suite green, one translated value reverted to its en source makes `yarn jest shared/__tests__/whatsNew.test.ts` fail - recorded on the row.
+- en byte-identical: `git diff --stat uat..lane-T296 -- shared/i18n/en.ts shared/i18n/catalog-lock.json shared/__tests__/i18n.test.ts` prints nothing.
+- Merge: `git fetch origin`, then the --no-ff merge of lane-T296 into uat with the discipline hook''s merge check passing; the lane''s version strictly exceeds uat''s HEAD.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 30720, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:42:36.118277+00', '2026-10-21 06:57:30.333433+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (30, 1, NULL, 'T-306', '# T-306
+
+## Goal
+
+Today every version bump pops the What''s New modal: the stamp oracle forces `WHATS_NEW.version` to equal the build version, so any upgrade differs from the stored shown-version and the never-empty archive always has items. A silent patch (bug fixes, no user-facing change) annoys the owner''s phones the same as a feature release. When this is done, the modal pops only when the archive carries a stamped item whose version is newer than the stored `whats_new_shown_version`; a silent patch adds no items, so nothing is newer and nothing pops, by construction. Owner ruling 2026-10-21: design B, content-driven - "save the last version the user saw, compare the archive''s newest against it."
+
+## Decisions taken
+
+- 2026-10-21 - Display stores the INSTALLED version, not the newest item stamp (call site `app/index.tsx` unchanged): after a display the tracker sits at the build that just showed the whole windowed archive, so every item stamped at or below that build counts as seen and every later silent patch compares its unchanged archive against it and stays silent. Storing the newest item stamp instead would mix units with the installed-version seeding on fresh installs and let a backfilled old stamp pop.
+- 2026-10-21 - `shownVersion === null` still shows once: users upgrading from a build that predates the tracker key have seen none of the archive, so they get the one catch-up display the debut gave everyone else, then the mark makes it silent forever.
+- 2026-10-21 - The gate refuses a stamp newer than the installed binary at runtime: an item pre-stamped for an unshipped release fails silent instead of advertising a feature the build cannot contain. The oracle pins the same statically, the runtime guard makes the failure safe.
+- 2026-10-21 - The banner stamp `WHATS_NEW.version` stays pinned to the build version and stays in the ritual: it names the release the notes ship with and no longer gates anything. Moving it on a silent patch is the one-line proof the ritual ran.
+- 2026-10-21 - The Settings sheet''s What''s-new row keeps its condition (visible while `currentVisibleWhatsNew()` is non-null): under design B the archive stays non-null on a silent patch, so the row stays available as the on-demand changelog. No pixel changes.
+- 2026-10-21 - The mock build is the 3T alone: the iPhone XS read is the owner''s eyeball gate (campaign directive), and the row parks in Awaiting Owner for exactly that read.
+
+## Files
+
+- `shared/whatsNew.ts` - the gate `shouldShowWhatsNew`, the header maintenance ritual, the interface docs for the banner stamp.
+- `shared/__tests__/whatsNew.test.ts` - the gate''s contract suite rewritten red-first; the stamp-vs-build oracle relaxed to the new semantics.
+- `__tests__/app/index.test.tsx` - a silent-patch launch integration test (red-first).
+- `__tests__/app/indexFreshInstall.test.tsx` - the fresh-install suite''s stale `VISIBLE_WHATS_NEW` mock replaced with a `currentVisibleWhatsNew` mock.
+- `stores/version.ts` - the tracker-key and seeding comments state the new truth (code unchanged).
+- `app/index.tsx` - the comment above the gate call states the new truth (code unchanged).
+- `e2e/README.md` - the What''s New gotcha line states the new upgrade behaviour.
+
+Steps 1 to 3 land as ONE commit: the red state is observed in the working tree (a jest run between Step 1 and Step 2), never committed, so `yarn validate` is only ever called green. The commit carries one version bump, and the banner stamp `WHATS_NEW.version` moves with that bump in the same commit (the oracle pins it to app.json read from disk).
+
+## Design
+
+The gate becomes content-driven. `shouldShowWhatsNew(installedVersion, shownVersion, whatsNew)` keeps its signature and purity, and decides:
+
+1. no release, no items, or an unreadable installed version (`null`/empty) - never show;
+2. the newest stamped item across `whatsNew.items` is the bar - if every item is parked (null version) there is nothing to announce;
+3. a bar newer than the installed binary means the archive advertises an unshipped release - never show (fails silent);
+4. no stored shown-version (pre-tracker upgrader) - show once, the catch-up display;
+5. otherwise show exactly when the bar is newer than the stored shown-version.
+
+Fixture shapes the contract suite must carry (each is a mutation killer): a multi-stamp release whose stored shown-version sits strictly between two stamps (kills a max-to-min mutant in the bar), and a bar that equals the stored shown-version (kills a `>`-to-`>=` flip).
+
+Silent patches never add items, so the bar never moves and the modal never pops. A feature release stamps its new item with the shipping version, the bar moves above the stored value, and the modal pops and marks the installed version as shown. The release after a silent patch stays silent until a newer item ships: the stored value still names the build that last displayed, and the archive''s newest stamp is still at or below it. Fresh installs keep their seeding (`handleAppUpgrade` seeds the tracker with the installed version), so the bar starts at or below the seeded value and nothing ever pops.
+
+The oracle in `shared/__tests__/whatsNew.test.ts` pins, against `app.json` read from disk: the banner stamp equals the build version (the ritual ran), and every stamped item sits at or below the build version (nothing announces a release newer than the binary carrying it - the pin that keeps fresh-install seeding and mark-on-display silent forever after). The banner-equals pin no longer forces a pop; the pop is decided by item stamps versus the stored shown-version.
+
+Alternative rejected - release-process rule (design A, `WHATS_NEW = null` on silent patches): relies on discipline rather than content; one missed null pops the modal anyway, and a null archive also hides the Settings row, which is a pixel change.
+
+Alternative rejected - keep the installed-vs-shown comparison but special-case silent patches by a release note: same process-discipline weakness, and it re-derives "was this release user-facing" from a place the code cannot see.
+
+## Steps
+
+1. Step 1: The gate''s contract suite rewritten red-first and the oracle relaxed, in `shared/__tests__/whatsNew.test.ts` (2 points). Every silent-path fixture pins the release banner to the installed version with item stamps at or below the stored shown-version and the stored shown-version below the installed version - anything less stays green under the current gate''s banner check and proves nothing.
+2. Step 2: The content-driven gate in `shared/whatsNew.ts` with the ritual and interface docs restated (2 points).
+3. Step 3: The launch suites and the stale truths - silent-patch integration test (same fixture shape as Step 1), fresh-install mock fix, `stores/version.ts` and `app/index.tsx` comments, `e2e/README.md` gotcha (2 points).
+4. Step 4: The mock APK of the merged commit built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted, transcribed on the row (3 points).
+
+## Risks
+
+- The fresh-install suite runs the real archive against its installed 2.0.0 fiction: the new gate''s ahead-of-binary clause fails it silent, so the suite stays green either way and the mock fix is fixture faithfulness, not a rescue - the dead `VISIBLE_WHATS_NEW` mock key names an export that does not exist, and a suite that quietly depends on the real archive''s stamps is a defect fixed on sight.
+- The e2e throwaway-launch ritual assumed every install pops; after this change only installs that add items can pop, so the ritual line must not over-promise (Step 3 rewrites it).
+- Sisters 296 and 302 may land 2.4.5 first; the merge re-checks uat and renumbers above whatever landed, with the collision gate refusing a double-taken number.
+- The owner''s read of the silent path on the 3T build is the acceptance gate; the row parks in Awaiting Owner with that read named.
+
+## Proof
+
+- `yarn jest shared/__tests__/whatsNew.test.ts` - Step 1''s silent-path cases red against the current gate, green after Step 2 (confirm each ran with `-t` filters per the e2e gotcha).
+- `yarn jest __tests__/app/index.test.tsx -t "silent"` - the silent-patch launch renders no What''s New modal.
+- `yarn validate` - green before the merge.
+- A mutation pass on the gate''s guards (drop the empty-items guard, the installed guard, the ahead-of-binary guard, the shown-null branch; flip the final comparison to `>=`, to `!==`, and the max to a min) - every mutant killed by the suite.
+- `aapt2 dump badging <apk> | grep "^package"` - `<pkg>`, versionCode 1000000, before any install.
+- `adb -s 3T_SERIAL shell dumpsys package <pkg> | grep "^    User "` - User 0 alone after the install.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 29696, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:40:34.612958+00', '2026-10-21 06:51:10.457281+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (32, 1, NULL, 'T-302', '# T-302 - Help modal dividers: Android''s pixel-grid snap eats every second hairline
+
+## Goal
+
+On the OnePlus 3T only every second question in the Help modal shows its divider, and an opened question alone gains one below. Done means: every adjacent question pair shows exactly one divider between it, closed and opened, on both phones.
+
+## Mechanism (named from source, measured on the owner''s screenshot)
+
+1. Each divider is a one-physical-pixel View: `StyleSheet.hairlineWidth` is `1 / density` dp, and it renders as the LAST child of its row in `Topic` (`<View style={styles.rule} />` inside the `Animated.View` that carries `overflow: ''hidden''` and `layout={GROW}`).
+2. The 3T sits in Android''s 420dpi bucket, density 2.625. A closed row is the head (paddingVertical 14 x 2 + 20dp per text line) plus the 1px rule: 48.381dp one-line = 127.0 physical pixels, 68.381dp two-line = 179.5 physical pixels. Two-line rows land on half pixels, so boundaries alternate whole and half pixels down the list. The owner''s screenshot measures the pitches at 127-128 and 180-181 physical pixels.
+3. React Native snaps Yoga layout to the physical pixel grid on Android (pointScaleFactor = density). A hairline whose single pixel is the last pixel of a wrap-content row is included or dropped by that snap: every boundary landing on a half pixel loses its divider. The row''s own `overflow: ''hidden''` and the ScrollView''s snapped frame take the first and last rows'' rules as edge cases.
+4. The screenshot measures exactly this. Of eight rules, three survive - below questions 2, 4 and 6, at whole-pixel boundaries (measured 628, 989, 1297) - and every boundary the arithmetic puts on a half pixel (below 1, 3, 5, 7, 8) measures absent, verified pure white. The three survivors'' colour (234, 235, 237) matches HAIRLINE rgba(38, 64, 94, 0.1) over white; the fourth visible line is the modal header''s own divider (darker: textSecondary at 0.2 opacity). The JPEG''s plus/minus 2px floor leaves the sixth boundary''s parity to Android''s font-padding drip; the alternation itself is beyond that floor.
+5. iOS keeps float positions (Core Animation does not snap; a sub-point hairline anti-aliases), so the iPhone XS shows all eight - the owner''s observation, and why the defect is Android-side rendering.
+6. Opening a row inserts the panel, whose height carries its own fraction and flips that boundary''s parity: the divider below an open question appears and disappears again on close - the owner''s second symptom.
+
+## Decisions taken (2026-10-21)
+
+1. The divider moves from `Topic`''s last child to a sibling rendered after each `<Topic/>` in the ScrollView, so its pixel never depends on a row''s snapped frame. Sibling hairlines are the pattern Android renders reliably (a FlatList separator is a sibling view). Challenged: fixing the row''s height instead is impossible statically (heights depend on per-locale line counts and font metrics); removing the row''s overflow clip does not stop Yoga collapsing the hairline. The move stands.
+2. The sibling carries `layout={GROW}`: the buttonRow''s own law - animated with the list, or it teleports to its new position while the rows above it slide.
+3. A rule renders after every topic including the last, matching today''s intended structure (the standing comment mourns the last row''s divider; it renders on iOS today).
+4. iOS pixels unchanged: same hairline height, same HAIRLINE colour, same y (today''s row height = head + rule; after the move the row is the head and the rule follows at the same offset, so the ScrollView stacks the same bytes).
+5. Recorded nuance: while a row is open, its accent tint today covers the rule pixel beneath it; as a sibling that pixel sits on card white. One pixel at 0.1 alpha over a 0.05 tint - below perception; the owner''s rhythm read is the gate.
+6. needs-owner label set at planning: the ticket''s final acceptance is the owner''s on-device read, so the flag is honest now.
+
+## Files
+
+- components/modals/Help.tsx - the separator moves from Topic to the list; styles.rule unchanged.
+- components/modals/__tests__/Help.test.tsx - the pinning suite, red first.
+
+## Design
+
+The fix: in ModalHelp''s map, each `<Topic/>` is followed by `<Animated.View layout={GROW} style={styles.rule} />`; Topic drops its trailing rule child, and the rule comment moves to the list as the new law (the 3T''s pixel-grid snap eats a hairline that is the last pixel of a wrap-content row, every second row).
+
+The invariant: a divider between rows is a list-level element, never a row''s last pixel.
+
+Alternatives rejected:
+- Pinning row heights to whole pixels: heights depend on line counts per locale and font metrics; no static value covers every locale at every density.
+- Removing `overflow: ''hidden''` from the row: the collapse happens in Yoga''s layout snap, not the clip; and the clip guards the open tint during the layout animation.
+- A `borderBottomWidth` on the row: the standing comment''s own history - the layout animation redraws borders in the animating frame and drops the last row''s on close.
+- Thickening the rule to a full dp: changes the settled visual on both platforms without the owner''s say.
+
+## Steps
+
+1. **Step 1: the pinning suite** (2 points) - in Help.test.tsx, red on HEAD (a run, never a commit; the suite lands green inside Step 2''s commit): mounts ModalHelp on the android platform and asserts (a) exactly one rule per topic, interleaved topic-then-rule through the whole list, closed; (b) the same interleaving and count with a question opened; (c) every rule is a direct child of the ScrollView''s content, never a descendant of a question row; (d) each rule''s style is hairline height plus HAIRLINE colour, and its animated node carries a defined layout prop configured with ANIMATION.duration (GROW is module-private; the Close-row suite''s props.layout read is the assertion shape).
+2. **Step 2: the separator move** (2 points) - Help.tsx changes, suite green, mutation pass on the guards (count, placement, open state, layout prop, style tokens), yarn validate green, version bump per discipline (fetch origin first; 2.4.5 if free, else renumber above whatever landed, the collision ruling recorded on this ticket).
+3. **Step 3: merge, mock build, 3T install** (3 points) - yarn validate green before the merge into uat, mock APK through the single build slot (pgrep-gate on build-prod.zsh, build-mock.zsh, gradle and xcodebuild first): `$HOME/athan-gitree/bin/build-mock.zsh uat mocks/simple.ts $HOME/athan-gitree/out/<version>-mock.apk` - the script itself rejects a mocks file without MOCK_DATA_SIMPLE and gates versionCode 1000000 and <pkg>; the lane re-verifies with `aapt2 dump badging <apk> | grep ''^package''` and stops on anything else; install on the 3T (serial from adb devices, the only Android connected), `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` asserts User 0 alone, park in Awaiting Owner with Waiting on: the owner reads the divider rhythm on the new 3T build.
+
+## Griller rulings folded (2026-10-21)
+
+Five notes, none blocking: the Waiting on value now names itself in Step 3; the red suite is a run whose green lands in Step 2''s commit (yarn validate never sees red); Step 3 names mocks/simple.ts and the out path under $HOME/athan-gitree/out; assertion 1(d) reads the layout prop''s shape because GROW is module-private; decision 5''s one-pixel tint backdrop stands disclosed with the owner''s read as the gate.
+
+## Risks
+
+- The open tint''s 1px backdrop change (decision 5) shows only while a row is open; the owner''s read catches it if it reads at all.
+- A sibling rule that jumps while rows slide if it lost GROW: the test pins the layout prop.
+- Sisters 296 and 306 land 2.4.5 first: renumber per discipline and record the interleaving on this ticket (the 293/295 ruling pattern).
+- The ScrollView''s capped height (maxHeight = 0.62 of the window) snaps its own frame and could clip the last sibling rule in the capped state: the content scrolls, so the rule stays reachable; the owner''s read on the 3T build settles it.
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
+- Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
+- Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, NULL, 31744, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.940174+00', '2026-10-21 06:53:51.60451+00');
 
 
 --
@@ -13952,6 +14355,9 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (27, 293, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:38:45.655386+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (28, 295, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:42:26.395245+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (29, 297, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 00:44:06.75062+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (30, 306, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:40:34.667597+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (31, 296, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:42:42.988691+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (32, 302, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.972554+00');
 
 
 --
@@ -21549,6 +21955,430 @@ Alternatives rejected:
 - Poses keep their honored insets: the three suite arms green at 62 to 90.05, tall 82 to 110.05, letterbox 0 to 28.05.
 - yarn validate green on the lane commit, and re-run in the main tree after the merge.
 ', NULL, NULL, '{}', false, false, false, NULL, 26624, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:47:24.963884+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (86, 31, 1, NULL, 'T-296', '# T-296 - The What''s New archive speaks every locale
+
+## Goal
+
+Today the What''s New modal renders its seven historical items in English under every non-English locale (owner report 2026-10-20: on Arabic, the language item reads Arabic and the seven after it English), and the language item''s body translates an English source that no longer exists - the owner''s 2026-10-21 copy order rewrote all eight bodies to the one-line verb-first pattern. When this is done, all eight items read translated under ar, ms, so, hi, th from the new English, the en catalog is byte-identical, and any future untranslated archive string fails the suite.
+
+## Decisions taken
+
+- 2026-10-21 - The language item''s five titles stay; only its body joins the retranslation. Each title (اللغة, Bahasa, Luqadda, भाषा, ภाषา) already translates the unchanged en title "Language"; re-translating a faithful string is churn against the shortest-words order.
+- 2026-10-21 - The lock is a per-locale arm of the WHATS_NEW content contract in shared/__tests__/whatsNew.test.ts (equality with the en value fails), and shared/__tests__/catalogGates.test.ts drops its two stand-in exemptions (the echo exemption and the ar RTL skip for the seven keys) in the same change. The exemptions were the stand-ins'' only pass; leaving them would hide the exact regression the gates exist to catch.
+- 2026-10-21 - Register: every body opens with the locale''s own shortest "added" participle over the harvested terminology (ar أضيف/أضيفت passive, ms Ditambah, so Waxaa lagu daray, hi जोड़ा गया, th เพิ่ม); the second-reminder body keeps the "each prayer now has" shape; ar carries the dual تنبيهان instead of a digit. Thai and Hindi word order keeps the participle where their grammar puts it - the register matches, not the English word order.
+- 2026-10-21 - Length: every title sits within the 32-char hard limit (the verbose scripts land at 30-31) and every body within 96 and within roughly 2x its en length (longest: so widgets body 80 against en 42); the lock asserts the limits per locale so an over-budget edit fails before merge.
+- 2026-10-21 - One commit typed fix(i18n) (the archive rendering English is the owner-reported defect), patch bump: 2.4.5 if free at commit time, decided after git fetch and a local-branch scan; a collision takes the standing second-merge-renumbers ruling recorded on rows 293/295, with the allowlist entry riding the commit. The red-first proof runs on the lane before the translations land - the pre-commit hook demands a green tree, so the lock and the translations share the commit.
+- 2026-10-21 - Acceptance criterion 1 (the owner''s verification pass on the drafts, which the owner rules per the copy process) is the owner''s alone. The lane lands, validates, audits and merges everything else, then parks the row in Awaiting Owner naming that pass.
+
+## Files
+
+- shared/i18n/ar.ts - 15 values change (seven stand-in items plus the language body)
+- shared/i18n/ms.ts - 15 values change
+- shared/i18n/so.ts - 15 values change
+- shared/i18n/hi.ts - 15 values change
+- shared/i18n/th.ts - 15 values change
+- shared/__tests__/whatsNew.test.ts - the per-locale content-contract arm
+- shared/__tests__/catalogGates.test.ts - the two stand-in exemptions deleted
+- shared/whatsNew.ts - WHATS_NEW.version moves with the bump (the disk-read oracle pins it to app.json)
+- package.json, app.json, android/app/build.gradle (untracked on disk) - the version bump
+- shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts - read only, byte-identical
+
+## Design
+
+The invariant: an archive string ships translated or the suite fails. Three locks hold it after this lands:
+
+1. The existing key-set gate (each catalog holds exactly the en key set) - untouched.
+2. The new contract arm: for each of ar, ms, so, hi, th, resolve the archive through t() under that locale and fail on any title or body equal to its en value, on any empty string, and on any title over MAX_WHATS_NEW_TITLE_LENGTH (32) or body over MAX_WHATS_NEW_BODY_LENGTH (96).
+3. catalogGates re-tightened: the echo rule (a value containing its en source fails) and the ar Latin rule now cover the whatsNew keys like every other key.
+
+The drafts, from the new English source, over the harvested terminology (the full table the executors copy verbatim):
+
+| item | en title / body | ar | ms | so | hi | th |
+| --- | --- | --- | --- | --- | --- | --- |
+| tabletSupport | Tablet support / Added support for tablets | دعم الأجهزة اللوحية / أضيف دعم الأجهزة اللوحية | Sokongan tablet / Ditambah sokongan tablet | Taageerada tabletka / Waxaa lagu daray taageerada tabletka | टैबलेट समर्थन / टैबलेट समर्थन जोड़ा गया | รองรับแท็บเล็ต / เพิ่มการรองรับแท็บเล็ต |
+| athanSounds | Athan sounds / Added new Athan sounds | أصوات الأذان / أضيفت أصوات أذان جديدة | Bunyi azan / Ditambah bunyi azan baharu | Dhawaaqyada aqaanka / Waxaa lagu daray dhawaaqyo aqaan ah oo cusub | अज़ान की आवाज़ें / अज़ान की नई आवाज़ें जोड़ी गईं | เสียงอะซาน / เพิ่มเสียงอะซานใหม่ |
+| reminderSounds | Reminder sounds / Added a sound to every reminder | أصوات التنبيه / أضيف صوت لكل تنبيه | Bunyi peringatan / Ditambah bunyi pada setiap peringatan | Dhawaaqyada xasuusiye / Waxaa lagu daray dhawaaq xasuusiye kasta | रिमाइंडर की आवाज़ें / हर रिमाइंडर के लिए आवाज़ जोड़ी गई | เสียงแจ้งเตือนล่วงหน้า / เพิ่มเสียงให้ทุกการแจ้งเตือนล่วงหน้า |
+| widgets | Home & Lock widgets / Added prayer times to Home and Lock Screen | أدوات الشاشة الرئيسية والقفل / أضيفت أوقات الصلاة إلى الشاشة الرئيسية وشاشة القفل | Widget skrin utama dan kunci / Ditambah waktu solat pada Skrin Utama dan Skrin Kunci | Widgetka bilowga iyo xiritaanka / Waxaa lagu daray waqtiyada salaadda shaashadda bilowga iyo shaashadda xiritaanka | होम और लॉक विजेट / होम और लॉक स्क्रीन पर नमाज़ के समय जोड़े गए | วิดเจ็ตหน้าจอหลักและหน้าจอล็อก / เพิ่มเวลาละหมาดบนหน้าจอหลักและหน้าจอล็อก |
+| secondReminder | Second reminder / Each prayer now has 2 reminders | التنبيه الثاني / لكل صلاة الآن تنبيهان | Peringatan kedua / Setiap solat kini mempunyai 2 peringatan | Xasuusiye labaad / Salaad kasta hadda waxay leedahay 2 xasuusiye | दूसरा रिमाइंडर / हर नमाज़ के लिए अब 2 रिमाइंडर | การแจ้งเตือนล่วงหน้าครั้งที่สอง / ทุกละหมาดมีการแจ้งเตือนล่วงหน้า 2 ครั้ง |
+| helpPage | Help page / Added support page | صفحة المساعدة / أضيفت صفحة المساعدة | Halaman bantuan / Ditambah halaman bantuan | Bogga caawimo / Waxaa lagu daray bogga caawimo | सहायता पेज / सहायता पेज जोड़ा गया | หน้าช่วยเหลือ / เพิ่มหน้าช่วยเหลือ |
+| qiblaCompass | Qibla compass / Added new qibla compass | بوصلة القبلة / أضيفت بوصلة قبلة جديدة | Kompas kiblat / Ditambah kompas kiblat baharu | Kompaaska qiblada / Waxaa lagu daray kompaas qiblo cusub | क़िबला कंपास / नया क़िबला कंपास जोड़ा गया | เข็มทิศกิบลัต / เพิ่มเข็มทิศกิบลัตใหม่ |
+| language | Language / Added support for more languages | اللغة (title kept) / أضيف دعم المزيد من اللغات | Bahasa (title kept) / Ditambah sokongan untuk lebih banyak bahasa | Luqadda (title kept) / Waxaa lagu daray taageero luqado dheeraad ah | भाषा (title kept) / और भाषाओं का समर्थन जोड़ा गया | ภาษา (title kept) / เพิ่มการรองรับภาษาเพิ่มเติม |
+
+Terminology the drafts owe the harvest and the catalogs'' own entries: ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า - and the prayer, sound, qibla, compass, help, widget and home/lock words each catalog already uses.
+
+### Alternatives rejected
+
+- A byte-for-byte snapshot of every translated string: rejected - the owner''s verification pass may rule edits, and a snapshot churns on every ruling. The equality-with-en lock catches the defect class (an untranslated stand-in) without pinning prose.
+- A runtime fallback that renders en when a value equals its source: rejected - it hides the defect; the ticket asks for a lock that fails the suite.
+- Riding the i18n bridge (export, translate outside, import): rejected - that is the external translator''s path; the lane edits the catalogs directly, exactly as the stand-ins were placed.
+- Extending catalogGates alone, with no contract arm: rejected - the gates read catalogs, not the archive; the ticket names the content contract as the lock.
+
+## Steps
+
+1. Step 1: The translation lock - the per-locale content-contract arm in shared/__tests__/whatsNew.test.ts and the two stand-in exemptions deleted from shared/__tests__/catalogGates.test.ts, both observed red against the stand-ins on the pre-change tree. (2 points)
+2. Step 2: The eight items retranslated into ar, ms, so, hi, th from the new English per the draft table, the version bumped with the banner stamp moved, the whole suite green, en byte-identical. (2 points)
+
+## Risks
+
+- A draft is ruled wrong by the owner''s pass: the drafts sit in 15 values per catalog and nothing pins the prose, so a ruling edit rides a new patch bump with the suite staying green.
+- Title-length collisions in the verbose scripts (so and th titles at 30-31 of 32): the lock asserts the limit per locale, so an over-budget draft fails before merge.
+- The ar Latin rule now covers the whatsNew keys: any Latin leaked into an Arabic draft fails the suite; the drafts carry none, and the digit in ms/so/hi/th bodies is not a Latin letter.
+- Sisters 302 and 306 take 2.4.5 in the same window: the standing ruling resolves it - fetch before the bump, and if the number is held, renumber above whatever landed with the allowlist entry riding the commit.
+- The catalog lock hashes en only, and the en pins in i18n.test.ts: both stay untouched because en.ts is byte-identical - any accidental en edit fails catalogLock.test.ts and i18n.test.ts before review.
+
+## Proof
+
+- Red-first: on the pre-change tree, `yarn jest shared/__tests__/whatsNew.test.ts` fails the new arm for each of the five locales naming the stand-in keys, and `yarn jest shared/__tests__/catalogGates.test.ts` fails the echo arm for the five locales and the ar Latin arm - transcript recorded on the row before the translations land.
+- Green: `yarn validate` exits 0 on the lane tip and again on the merged tree.
+- Budgets: the lock''s per-locale length arm passes (title at most 32, body at most 96, both non-empty).
+- The lock bites (mutation): with the suite green, one translated value reverted to its en source makes `yarn jest shared/__tests__/whatsNew.test.ts` fail - recorded on the row.
+- en byte-identical: `git diff --stat uat..lane-T296 -- shared/i18n/en.ts shared/i18n/catalog-lock.json shared/__tests__/i18n.test.ts` prints nothing.
+- Merge: `git fetch origin`, then the --no-ff merge of lane-T296 into uat with the discipline hook''s merge check passing; the lane''s version strictly exceeds uat''s HEAD.
+', NULL, NULL, '{}', false, false, false, NULL, 30720, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:42:36.118277+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (90, 31, 2, NULL, 'T-296', '# T-296 - The What''s New archive speaks every locale
+
+## Goal
+
+Today the What''s New modal renders its seven historical items in English under every non-English locale (owner report 2026-10-20: on Arabic, the language item reads Arabic and the seven after it English), and the language item''s body translates an English source that no longer exists - the owner''s 2026-10-21 copy order rewrote all eight bodies to the one-line verb-first pattern. When this is done, all eight items read translated under ar, ms, so, hi, th from the new English, the en catalog is byte-identical, and any future untranslated archive string fails the suite.
+
+## Decisions taken
+
+- 2026-10-21 - The language item''s five titles stay; only its body joins the retranslation. Each title (اللغة, Bahasa, Luqadda, भाषा, ภाषา) already translates the unchanged en title "Language"; re-translating a faithful string is churn against the shortest-words order.
+- 2026-10-21 - The lock is a per-locale arm of the WHATS_NEW content contract in shared/__tests__/whatsNew.test.ts (equality with the en value fails), and shared/__tests__/catalogGates.test.ts drops its two stand-in exemptions (the echo exemption and the ar RTL skip for the seven keys) in the same change. The exemptions were the stand-ins'' only pass; leaving them would hide the exact regression the gates exist to catch.
+- 2026-10-21 - Register: every body opens with the locale''s own shortest "added" participle over the harvested terminology (ar أضيف/أضيفت passive, ms Ditambah, so Waxaa lagu daray, hi जोड़ा गया, th เพิ่ม); the second-reminder body keeps the "each prayer now has" shape; ar carries the dual تنبيهان instead of a digit. Thai and Hindi word order keeps the participle where their grammar puts it - the register matches, not the English word order.
+- 2026-10-21 - Length: every title sits within the 32-char hard limit (the verbose scripts land at 30-31) and every body within 96 and within roughly 2x its en length (longest: so widgets body 80 against en 42); the lock asserts the limits per locale so an over-budget edit fails before merge.
+- 2026-10-21 - One commit typed fix(i18n) (the archive rendering English is the owner-reported defect), patch bump: 2.4.5 if free at commit time, decided after git fetch and a local-branch scan; a collision takes the standing second-merge-renumbers ruling recorded on rows 293/295, with the entry riding the commit in scripts/version-collisions-allowlist.json (never version-major-allowlist.json, which is the owner''s majors-only record). The red-first proof runs on the lane before the translations land - the pre-commit hook demands a green tree, so the lock and the translations share the commit.
+- 2026-10-21 - Acceptance criterion 1 (the owner''s verification pass on the drafts, which the owner rules per the copy process) is the owner''s alone. The lane lands, validates, audits and merges everything else, then parks the row in Awaiting Owner naming that pass.
+
+## Files
+
+- shared/i18n/ar.ts - 15 values change (seven stand-in items plus the language body)
+- shared/i18n/ms.ts - 15 values change
+- shared/i18n/so.ts - 15 values change
+- shared/i18n/hi.ts - 15 values change
+- shared/i18n/th.ts - 15 values change
+- shared/__tests__/whatsNew.test.ts - the per-locale content-contract arm
+- shared/__tests__/catalogGates.test.ts - the two stand-in exemptions deleted
+- shared/whatsNew.ts - WHATS_NEW.version moves with the bump (the disk-read oracle pins it to app.json)
+- package.json, app.json, android/app/build.gradle (untracked on disk) - the version bump
+- scripts/version-collisions-allowlist.json - an entry only if a sister lane holds the number when this one commits
+- shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts - read only, byte-identical
+
+## Design
+
+The invariant: an archive string ships translated or the suite fails. Three locks hold it after this lands:
+
+1. The existing key-set gate (each catalog holds exactly the en key set) - untouched.
+2. The new contract arm: for each of ar, ms, so, hi, th, resolve the archive through tIn(locale, key) (shared/i18n/index.ts:57, the named-locale read that mutates no global state) and fail on any title or body equal to its en value, on any empty string, and on any title over MAX_WHATS_NEW_TITLE_LENGTH (32) or body over MAX_WHATS_NEW_BODY_LENGTH (96).
+3. catalogGates re-tightened: the echo rule (a value containing its en source fails) and the ar Latin rule now cover the whatsNew keys like every other key.
+
+The drafts, from the new English source, over the harvested terminology (the full table the executors copy verbatim):
+
+| item | en title / body | ar | ms | so | hi | th |
+| --- | --- | --- | --- | --- | --- | --- |
+| tabletSupport | Tablet support / Added support for tablets | دعم الأجهزة اللوحية / أضيف دعم الأجهزة اللوحية | Sokongan tablet / Ditambah sokongan tablet | Taageerada tabletka / Waxaa lagu daray taageerada tabletka | टैबलेट समर्थन / टैबलेट समर्थन जोड़ा गया | รองรับแท็บเล็ต / เพิ่มการรองรับแท็บเล็ต |
+| athanSounds | Athan sounds / Added new Athan sounds | أصوات الأذان / أضيفت أصوات أذان جديدة | Bunyi azan / Ditambah bunyi azan baharu | Dhawaaqyada aqaanka / Waxaa lagu daray dhawaaqyo aqaan ah oo cusub | अज़ान की आवाज़ें / अज़ान की नई आवाज़ें जोड़ी गईं | เสียงอะซาน / เพิ่มเสียงอะซานใหม่ |
+| reminderSounds | Reminder sounds / Added a sound to every reminder | أصوات التنبيه / أضيف صوت لكل تنبيه | Bunyi peringatan / Ditambah bunyi pada setiap peringatan | Dhawaaqyada xasuusiye / Waxaa lagu daray dhawaaq xasuusiye kasta | रिमाइंडर की आवाज़ें / हर रिमाइंडर के लिए आवाज़ जोड़ी गई | เสียงแจ้งเตือนล่วงหน้า / เพิ่มเสียงให้ทุกการแจ้งเตือนล่วงหน้า |
+| widgets | Home & Lock widgets / Added prayer times to Home and Lock Screen | أدوات الشاشة الرئيسية والقفل / أضيفت أوقات الصلاة إلى الشاشة الرئيسية وشاشة القفل | Widget skrin utama dan kunci / Ditambah waktu solat pada Skrin Utama dan Skrin Kunci | Widgetka bilowga iyo xiritaanka / Waxaa lagu daray waqtiyada salaadda shaashadda bilowga iyo shaashadda xiritaanka | होम और लॉक विजेट / होम और लॉक स्क्रीन पर नमाज़ के समय जोड़े गए | วิดเจ็ตหน้าจอหลักและหน้าจอล็อก / เพิ่มเวลาละหมาดบนหน้าจอหลักและหน้าจอล็อก |
+| secondReminder | Second reminder / Each prayer now has 2 reminders | التنبيه الثاني / لكل صلاة الآن تنبيهان | Peringatan kedua / Setiap solat kini mempunyai 2 peringatan | Xasuusiye labaad / Salaad kasta hadda waxay leedahay 2 xasuusiye | दूसरा रिमाइंडर / हर नमाज़ के लिए अब 2 रिमाइंडर | การแจ้งเตือนล่วงหน้าครั้งที่สอง / ทุกละหมาดมีการแจ้งเตือนล่วงหน้า 2 ครั้ง |
+| helpPage | Help page / Added support page | صفحة المساعدة / أضيفت صفحة المساعدة | Halaman bantuan / Ditambah halaman bantuan | Bogga caawimo / Waxaa lagu daray bogga caawimo | सहायता पेज / सहायता पेज जोड़ा गया | หน้าช่วยเหลือ / เพิ่มหน้าช่วยเหลือ |
+| qiblaCompass | Qibla compass / Added new qibla compass | بوصلة القبلة / أضيفت بوصلة قبلة جديدة | Kompas kiblat / Ditambah kompas kiblat baharu | Kompaaska qiblada / Waxaa lagu daray kompaas qiblo cusub | क़िबला कंपास / नया क़िबला कंपास जोड़ा गया | เข็มทิศกิบลัต / เพิ่มเข็มทิศกิบลัตใหม่ |
+| language | Language / Added support for more languages | اللغة (title kept) / أضيف دعم المزيد من اللغات | Bahasa (title kept) / Ditambah sokongan untuk lebih banyak bahasa | Luqadda (title kept) / Waxaa lagu daray taageero luqado dheeraad ah | भाषा (title kept) / और भाषाओं का समर्थन जोड़ा गया | ภาษา (title kept) / เพิ่มการรองรับภาษาเพิ่มเติม |
+
+Terminology the drafts owe the harvest and the catalogs'' own entries: ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า - and the prayer, sound, qibla, compass, help, widget and home/lock words each catalog already uses.
+
+### Alternatives rejected
+
+- A byte-for-byte snapshot of every translated string: rejected - the owner''s verification pass may rule edits, and a snapshot churns on every ruling. The equality-with-en lock catches the defect class (an untranslated stand-in) without pinning prose.
+- A runtime fallback that renders en when a value equals its source: rejected - it hides the defect; the ticket asks for a lock that fails the suite.
+- Riding the i18n bridge (export, translate outside, import): rejected - that is the external translator''s path; the lane edits the catalogs directly, exactly as the stand-ins were placed.
+- Extending catalogGates alone, with no contract arm: rejected - the gates read catalogs, not the archive; the ticket names the content contract as the lock.
+
+## Steps
+
+1. Step 1: The translation lock - the per-locale content-contract arm in shared/__tests__/whatsNew.test.ts and the two stand-in exemptions deleted from shared/__tests__/catalogGates.test.ts, both observed red against the stand-ins on the pre-change tree; the stale comment at shared/__tests__/whatsNew.test.ts:436-437 ("The historical archive is English stand-ins in every locale") is rewritten in the same step because Step 2 makes its premise false. (2 points)
+2. Step 2: The eight items retranslated into ar, ms, so, hi, th from the new English per the draft table, the version bumped with the banner stamp moved, the whole suite green, en byte-identical. (2 points)
+
+## Risks
+
+- A draft is ruled wrong by the owner''s pass: the drafts sit in 15 values per catalog and nothing pins the prose, so a ruling edit rides a new patch bump with the suite staying green.
+- Title-length collisions in the verbose scripts (so and th titles at 30-31 of 32): the lock asserts the limit per locale, so an over-budget draft fails before merge.
+- The ar Latin rule now covers the whatsNew keys: any Latin leaked into an Arabic draft fails the suite; the drafts carry none, and the digit in ms/so/hi/th bodies is not a Latin letter.
+- Sisters 302 and 306 take 2.4.5 in the same window: the standing ruling resolves it - fetch before the bump, and if the number is held, renumber above whatever landed with the allowlist entry riding the commit.
+- Sister 306 rewrites the same whatsNew.test.ts contract suite and edits shared/whatsNew.ts: whichever lane merges second rebases and re-applies its change onto the other''s suite. This lane''s arm is one additive describe block keyed to the exported archive and constants, so it re-applies over a rewritten contract, and the banner-stamp rule survives either ordering because 306''s own acceptance keeps the stamp equal to the build version.
+- The catalog lock hashes en only, and the en pins in i18n.test.ts: both stay untouched because en.ts is byte-identical - any accidental en edit fails catalogLock.test.ts and i18n.test.ts before review.
+
+## Grill answered (v2, 2026-10-21)
+
+All four findings taken: the collisions allowlist is named (Decision 5, Files), the T-306 same-file conflict is ruled in Risks, the stale stand-in comment at whatsNew.test.ts:436-437 joins Step 1, and the lock arm reads through tIn(locale, key) - no global locale mutation, no try/finally restore to get wrong.
+
+## Proof
+
+- Red-first: on the pre-change tree, `yarn jest shared/__tests__/whatsNew.test.ts` fails the new arm for each of the five locales naming the stand-in keys, and `yarn jest shared/__tests__/catalogGates.test.ts` fails the echo arm for the five locales and the ar Latin arm - transcript recorded on the row before the translations land.
+- Green: `yarn validate` exits 0 on the lane tip and again on the merged tree.
+- Budgets: the lock''s per-locale length arm passes (title at most 32, body at most 96, both non-empty).
+- The lock bites (mutation): with the suite green, one translated value reverted to its en source makes `yarn jest shared/__tests__/whatsNew.test.ts` fail - recorded on the row.
+- en byte-identical: `git diff --stat uat..lane-T296 -- shared/i18n/en.ts shared/i18n/catalog-lock.json shared/__tests__/i18n.test.ts` prints nothing.
+- Merge: `git fetch origin`, then the --no-ff merge of lane-T296 into uat with the discipline hook''s merge check passing; the lane''s version strictly exceeds uat''s HEAD.
+', NULL, NULL, '{}', false, false, false, NULL, 30720, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:57:30.333433+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (88, 30, 2, NULL, 'T-306', '# T-306
+
+## Goal
+
+Today every version bump pops the What''s New modal: the stamp oracle forces `WHATS_NEW.version` to equal the build version, so any upgrade differs from the stored shown-version and the never-empty archive always has items. A silent patch (bug fixes, no user-facing change) annoys the owner''s phones the same as a feature release. When this is done, the modal pops only when the archive carries a stamped item whose version is newer than the stored `whats_new_shown_version`; a silent patch adds no items, so nothing is newer and nothing pops, by construction. Owner ruling 2026-10-21: design B, content-driven - "save the last version the user saw, compare the archive''s newest against it."
+
+## Decisions taken
+
+- 2026-10-21 - Display stores the INSTALLED version, not the newest item stamp (call site `app/index.tsx` unchanged): after a display the tracker sits at the build that just showed the whole windowed archive, so every item stamped at or below that build counts as seen and every later silent patch compares its unchanged archive against it and stays silent. Storing the newest item stamp instead would mix units with the installed-version seeding on fresh installs and let a backfilled old stamp pop.
+- 2026-10-21 - `shownVersion === null` still shows once: users upgrading from a build that predates the tracker key have seen none of the archive, so they get the one catch-up display the debut gave everyone else, then the mark makes it silent forever.
+- 2026-10-21 - The gate refuses a stamp newer than the installed binary at runtime: an item pre-stamped for an unshipped release fails silent instead of advertising a feature the build cannot contain. The oracle pins the same statically, the runtime guard makes the failure safe.
+- 2026-10-21 - The banner stamp `WHATS_NEW.version` stays pinned to the build version and stays in the ritual: it names the release the notes ship with and no longer gates anything. Moving it on a silent patch is the one-line proof the ritual ran.
+- 2026-10-21 - The Settings sheet''s What''s-new row keeps its condition (visible while `currentVisibleWhatsNew()` is non-null): under design B the archive stays non-null on a silent patch, so the row stays available as the on-demand changelog. No pixel changes.
+- 2026-10-21 - The mock build is the 3T alone: the iPhone XS read is the owner''s eyeball gate (campaign directive), and the row parks in Awaiting Owner for exactly that read.
+
+## Files
+
+- `shared/whatsNew.ts` - the gate `shouldShowWhatsNew`, the header maintenance ritual, the interface docs for the banner stamp.
+- `shared/__tests__/whatsNew.test.ts` - the gate''s contract suite rewritten red-first; the stamp-vs-build oracle relaxed to the new semantics.
+- `__tests__/app/index.test.tsx` - a silent-patch launch integration test (red-first).
+- `__tests__/app/indexFreshInstall.test.tsx` - the fresh-install suite''s stale `VISIBLE_WHATS_NEW` mock replaced with a `currentVisibleWhatsNew` mock.
+- `stores/version.ts` - the tracker-key and seeding comments state the new truth (code unchanged).
+- `app/index.tsx` - the comment above the gate call states the new truth (code unchanged).
+- `e2e/README.md` - the What''s New gotcha line states the new upgrade behaviour.
+
+Steps 1 to 3 land as ONE commit: the red state is observed in the working tree (a jest run between Step 1 and Step 2), never committed, so `yarn validate` is only ever called green. The commit carries one version bump, and the banner stamp `WHATS_NEW.version` moves with that bump in the same commit (the oracle pins it to app.json read from disk).
+
+## Design
+
+The gate becomes content-driven. `shouldShowWhatsNew(installedVersion, shownVersion, whatsNew)` keeps its signature and purity, and decides:
+
+1. no release, no items, or an unreadable installed version (`null`/empty) - never show;
+2. the newest stamped item across `whatsNew.items` is the bar - if every item is parked (null version) there is nothing to announce;
+3. a bar newer than the installed binary means the archive advertises an unshipped release - never show (fails silent);
+4. no stored shown-version (pre-tracker upgrader) - show once, the catch-up display;
+5. otherwise show exactly when the bar is newer than the stored shown-version.
+
+Fixture shapes the contract suite must carry (each is a mutation killer): a multi-stamp release whose stored shown-version sits strictly between two stamps (kills a max-to-min mutant in the bar), and a bar that equals the stored shown-version (kills a `>`-to-`>=` flip).
+
+Silent patches never add items, so the bar never moves and the modal never pops. A feature release stamps its new item with the shipping version, the bar moves above the stored value, and the modal pops and marks the installed version as shown. The release after a silent patch stays silent until a newer item ships: the stored value still names the build that last displayed, and the archive''s newest stamp is still at or below it. Fresh installs keep their seeding (`handleAppUpgrade` seeds the tracker with the installed version), so the bar starts at or below the seeded value and nothing ever pops.
+
+The oracle in `shared/__tests__/whatsNew.test.ts` pins, against `app.json` read from disk: the banner stamp equals the build version (the ritual ran), and every stamped item sits at or below the build version (nothing announces a release newer than the binary carrying it - the pin that keeps fresh-install seeding and mark-on-display silent forever after). The banner-equals pin no longer forces a pop; the pop is decided by item stamps versus the stored shown-version.
+
+Alternative rejected - release-process rule (design A, `WHATS_NEW = null` on silent patches): relies on discipline rather than content; one missed null pops the modal anyway, and a null archive also hides the Settings row, which is a pixel change.
+
+Alternative rejected - keep the installed-vs-shown comparison but special-case silent patches by a release note: same process-discipline weakness, and it re-derives "was this release user-facing" from a place the code cannot see.
+
+## Steps
+
+1. Step 1: The gate''s contract suite rewritten red-first and the oracle relaxed, in `shared/__tests__/whatsNew.test.ts` (2 points). Every silent-path fixture pins the release banner to the installed version with item stamps at or below the stored shown-version and the stored shown-version below the installed version - anything less stays green under the current gate''s banner check and proves nothing.
+2. Step 2: The content-driven gate in `shared/whatsNew.ts` with the ritual and interface docs restated (2 points).
+3. Step 3: The launch suites and the stale truths - silent-patch integration test (same fixture shape as Step 1), fresh-install mock fix, `stores/version.ts` and `app/index.tsx` comments, `e2e/README.md` gotcha (2 points).
+4. Step 4: The mock APK of the merged commit built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted, transcribed on the row (3 points).
+
+## Risks
+
+- The fresh-install suite runs the real archive against its installed 2.0.0 fiction: the new gate''s ahead-of-binary clause fails it silent, so the suite stays green either way and the mock fix is fixture faithfulness, not a rescue - the dead `VISIBLE_WHATS_NEW` mock key names an export that does not exist, and a suite that quietly depends on the real archive''s stamps is a defect fixed on sight.
+- The e2e throwaway-launch ritual assumed every install pops; after this change only installs that add items can pop, so the ritual line must not over-promise (Step 3 rewrites it).
+- Sisters 296 and 302 may land 2.4.5 first; the merge re-checks uat and renumbers above whatever landed, with the collision gate refusing a double-taken number.
+- The owner''s read of the silent path on the 3T build is the acceptance gate; the row parks in Awaiting Owner with that read named.
+
+## Proof
+
+- `yarn jest shared/__tests__/whatsNew.test.ts` - Step 1''s silent-path cases red against the current gate, green after Step 2 (confirm each ran with `-t` filters per the e2e gotcha).
+- `yarn jest __tests__/app/index.test.tsx -t "silent"` - the silent-patch launch renders no What''s New modal.
+- `yarn validate` - green before the merge.
+- A mutation pass on the gate''s guards (drop the empty-items guard, the installed guard, the ahead-of-binary guard, the shown-null branch; flip the final comparison to `>=`, to `!==`, and the max to a min) - every mutant killed by the suite.
+- `aapt2 dump badging <apk> | grep "^package"` - `<pkg>`, versionCode 1000000, before any install.
+- `adb -s 3T_SERIAL shell dumpsys package <pkg> | grep "^    User "` - User 0 alone after the install.
+', NULL, NULL, '{}', false, false, false, NULL, 29696, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:51:10.457281+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (89, 32, 2, NULL, 'T-302', '# T-302 - Help modal dividers: Android''s pixel-grid snap eats every second hairline
+
+## Goal
+
+On the OnePlus 3T only every second question in the Help modal shows its divider, and an opened question alone gains one below. Done means: every adjacent question pair shows exactly one divider between it, closed and opened, on both phones.
+
+## Mechanism (named from source, measured on the owner''s screenshot)
+
+1. Each divider is a one-physical-pixel View: `StyleSheet.hairlineWidth` is `1 / density` dp, and it renders as the LAST child of its row in `Topic` (`<View style={styles.rule} />` inside the `Animated.View` that carries `overflow: ''hidden''` and `layout={GROW}`).
+2. The 3T sits in Android''s 420dpi bucket, density 2.625. A closed row is the head (paddingVertical 14 x 2 + 20dp per text line) plus the 1px rule: 48.381dp one-line = 127.0 physical pixels, 68.381dp two-line = 179.5 physical pixels. Two-line rows land on half pixels, so boundaries alternate whole and half pixels down the list. The owner''s screenshot measures the pitches at 127-128 and 180-181 physical pixels.
+3. React Native snaps Yoga layout to the physical pixel grid on Android (pointScaleFactor = density). A hairline whose single pixel is the last pixel of a wrap-content row is included or dropped by that snap: every boundary landing on a half pixel loses its divider. The row''s own `overflow: ''hidden''` and the ScrollView''s snapped frame take the first and last rows'' rules as edge cases.
+4. The screenshot measures exactly this. Of eight rules, three survive - below questions 2, 4 and 6, at whole-pixel boundaries (measured 628, 989, 1297) - and every boundary the arithmetic puts on a half pixel (below 1, 3, 5, 7, 8) measures absent, verified pure white. The three survivors'' colour (234, 235, 237) matches HAIRLINE rgba(38, 64, 94, 0.1) over white; the fourth visible line is the modal header''s own divider (darker: textSecondary at 0.2 opacity). The JPEG''s plus/minus 2px floor leaves the sixth boundary''s parity to Android''s font-padding drip; the alternation itself is beyond that floor.
+5. iOS keeps float positions (Core Animation does not snap; a sub-point hairline anti-aliases), so the iPhone XS shows all eight - the owner''s observation, and why the defect is Android-side rendering.
+6. Opening a row inserts the panel, whose height carries its own fraction and flips that boundary''s parity: the divider below an open question appears and disappears again on close - the owner''s second symptom.
+
+## Decisions taken (2026-10-21)
+
+1. The divider moves from `Topic`''s last child to a sibling rendered after each `<Topic/>` in the ScrollView, so its pixel never depends on a row''s snapped frame. Sibling hairlines are the pattern Android renders reliably (a FlatList separator is a sibling view). Challenged: fixing the row''s height instead is impossible statically (heights depend on per-locale line counts and font metrics); removing the row''s overflow clip does not stop Yoga collapsing the hairline. The move stands.
+2. The sibling carries `layout={GROW}`: the buttonRow''s own law - animated with the list, or it teleports to its new position while the rows above it slide.
+3. A rule renders after every topic including the last, matching today''s intended structure (the standing comment mourns the last row''s divider; it renders on iOS today).
+4. iOS pixels unchanged: same hairline height, same HAIRLINE colour, same y (today''s row height = head + rule; after the move the row is the head and the rule follows at the same offset, so the ScrollView stacks the same bytes).
+5. Recorded nuance: while a row is open, its accent tint today covers the rule pixel beneath it; as a sibling that pixel sits on card white. One pixel at 0.1 alpha over a 0.05 tint - below perception; the owner''s rhythm read is the gate.
+6. needs-owner label set at planning: the ticket''s final acceptance is the owner''s on-device read, so the flag is honest now.
+
+## Files
+
+- components/modals/Help.tsx - the separator moves from Topic to the list; styles.rule unchanged.
+- components/modals/__tests__/Help.test.tsx - the pinning suite, red first.
+
+## Design
+
+The fix: in ModalHelp''s map, each `<Topic/>` is followed by `<Animated.View layout={GROW} style={styles.rule} />`; Topic drops its trailing rule child, and the rule comment moves to the list as the new law (the 3T''s pixel-grid snap eats a hairline that is the last pixel of a wrap-content row, every second row).
+
+The invariant: a divider between rows is a list-level element, never a row''s last pixel.
+
+Alternatives rejected:
+- Pinning row heights to whole pixels: heights depend on line counts per locale and font metrics; no static value covers every locale at every density.
+- Removing `overflow: ''hidden''` from the row: the collapse happens in Yoga''s layout snap, not the clip; and the clip guards the open tint during the layout animation.
+- A `borderBottomWidth` on the row: the standing comment''s own history - the layout animation redraws borders in the animating frame and drops the last row''s on close.
+- Thickening the rule to a full dp: changes the settled visual on both platforms without the owner''s say.
+
+## Steps
+
+1. **Step 1: the pinning suite** (2 points) - in Help.test.tsx, red on HEAD (a run, never a commit; the suite lands green inside Step 2''s commit): mounts ModalHelp on the android platform and asserts (a) exactly one rule per topic, interleaved topic-then-rule through the whole list, closed; (b) the same interleaving and count with a question opened; (c) every rule is a direct child of the ScrollView''s content, never a descendant of a question row; (d) each rule''s style is hairline height plus HAIRLINE colour, and its animated node carries a defined layout prop configured with ANIMATION.duration (GROW is module-private; the Close-row suite''s props.layout read is the assertion shape).
+2. **Step 2: the separator move** (2 points) - Help.tsx changes, suite green, mutation pass on the guards (count, placement, open state, layout prop, style tokens), yarn validate green, version bump per discipline (fetch origin first; 2.4.5 if free, else renumber above whatever landed, the collision ruling recorded on this ticket).
+3. **Step 3: merge, mock build, 3T install** (3 points) - yarn validate green before the merge into uat, mock APK through the single build slot (pgrep-gate on build-prod.zsh, build-mock.zsh, gradle and xcodebuild first): `$HOME/athan-gitree/bin/build-mock.zsh uat mocks/simple.ts $HOME/athan-gitree/out/<version>-mock.apk` - the script itself rejects a mocks file without MOCK_DATA_SIMPLE and gates versionCode 1000000 and <pkg>; the lane re-verifies with `aapt2 dump badging <apk> | grep ''^package''` and stops on anything else; install on the 3T (serial from adb devices, the only Android connected), `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` asserts User 0 alone, park in Awaiting Owner with Waiting on: the owner reads the divider rhythm on the new 3T build.
+
+## Griller rulings folded (2026-10-21)
+
+Five notes, none blocking: the Waiting on value now names itself in Step 3; the red suite is a run whose green lands in Step 2''s commit (yarn validate never sees red); Step 3 names mocks/simple.ts and the out path under $HOME/athan-gitree/out; assertion 1(d) reads the layout prop''s shape because GROW is module-private; decision 5''s one-pixel tint backdrop stands disclosed with the owner''s read as the gate.
+
+## Risks
+
+- The open tint''s 1px backdrop change (decision 5) shows only while a row is open; the owner''s read catches it if it reads at all.
+- A sibling rule that jumps while rows slide if it lost GROW: the test pins the layout prop.
+- Sisters 296 and 306 land 2.4.5 first: renumber per discipline and record the interleaving on this ticket (the 293/295 ruling pattern).
+- The ScrollView''s capped height (maxHeight = 0.62 of the window) snaps its own frame and could clip the last sibling rule in the capped state: the content scrolls, so the rule stays reachable; the owner''s read on the 3T build settles it.
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
+- Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
+- Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, 31744, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:53:51.60451+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (85, 30, 1, NULL, 'T-306', '# T-306
+
+## Goal
+
+Today every version bump pops the What''s New modal: the stamp oracle forces `WHATS_NEW.version` to equal the build version, so any upgrade differs from the stored shown-version and the never-empty archive always has items. A silent patch (bug fixes, no user-facing change) annoys the owner''s phones the same as a feature release. When this is done, the modal pops only when the archive carries a stamped item whose version is newer than the stored `whats_new_shown_version`; a silent patch adds no items, so nothing is newer and nothing pops, by construction. Owner ruling 2026-10-21: design B, content-driven - "save the last version the user saw, compare the archive''s newest against it."
+
+## Decisions taken
+
+- 2026-10-21 - Display stores the INSTALLED version, not the newest item stamp (call site `app/index.tsx` unchanged): after a display the tracker sits at the build that just showed the whole windowed archive, so every item stamped at or below that build counts as seen and every later silent patch compares its unchanged archive against it and stays silent. Storing the newest item stamp instead would mix units with the installed-version seeding on fresh installs and let a backfilled old stamp pop.
+- 2026-10-21 - `shownVersion === null` still shows once: users upgrading from a build that predates the tracker key have seen none of the archive, so they get the one catch-up display the debut gave everyone else, then the mark makes it silent forever.
+- 2026-10-21 - The gate refuses a stamp newer than the installed binary at runtime: an item pre-stamped for an unshipped release fails silent instead of advertising a feature the build cannot contain. The oracle pins the same statically, the runtime guard makes the failure safe.
+- 2026-10-21 - The banner stamp `WHATS_NEW.version` stays pinned to the build version and stays in the ritual: it names the release the notes ship with and no longer gates anything. Moving it on a silent patch is the one-line proof the ritual ran.
+- 2026-10-21 - The Settings sheet''s What''s-new row keeps its condition (visible while `currentVisibleWhatsNew()` is non-null): under design B the archive stays non-null on a silent patch, so the row stays available as the on-demand changelog. No pixel changes.
+- 2026-10-21 - The mock build is the 3T alone: the iPhone XS read is the owner''s eyeball gate (campaign directive), and the row parks in Awaiting Owner for exactly that read.
+
+## Files
+
+- `shared/whatsNew.ts` - the gate `shouldShowWhatsNew`, the header maintenance ritual, the interface docs for the banner stamp.
+- `shared/__tests__/whatsNew.test.ts` - the gate''s contract suite rewritten red-first; the stamp-vs-build oracle relaxed to the new semantics.
+- `__tests__/app/index.test.tsx` - a silent-patch launch integration test (red-first).
+- `__tests__/app/indexFreshInstall.test.tsx` - the fresh-install suite''s stale `VISIBLE_WHATS_NEW` mock replaced with a `currentVisibleWhatsNew` mock.
+- `stores/version.ts` - the tracker-key and seeding comments state the new truth (code unchanged).
+- `app/index.tsx` - the comment above the gate call states the new truth (code unchanged).
+- `e2e/README.md` - the What''s New gotcha line states the new upgrade behaviour.
+
+## Design
+
+The gate becomes content-driven. `shouldShowWhatsNew(installedVersion, shownVersion, whatsNew)` keeps its signature and purity, and decides:
+
+1. no release, no items, or an unreadable installed version (`null`/empty) - never show;
+2. the newest stamped item across `whatsNew.items` is the bar - if every item is parked (null version) there is nothing to announce;
+3. a bar newer than the installed binary means the archive advertises an unshipped release - never show (fails silent);
+4. no stored shown-version (pre-tracker upgrader) - show once, the catch-up display;
+5. otherwise show exactly when the bar is newer than the stored shown-version.
+
+Silent patches never add items, so the bar never moves and the modal never pops. A feature release stamps its new item with the shipping version, the bar moves above the stored value, and the modal pops and marks the installed version as shown. The release after a silent patch stays silent until a newer item ships: the stored value still names the build that last displayed, and the archive''s newest stamp is still at or below it. Fresh installs keep their seeding (`handleAppUpgrade` seeds the tracker with the installed version), so the bar starts at or below the seeded value and nothing ever pops.
+
+The oracle in `shared/__tests__/whatsNew.test.ts` pins, against `app.json` read from disk: the banner stamp equals the build version (the ritual ran), and every stamped item sits at or below the build version (nothing announces a release newer than the binary carrying it - the pin that keeps fresh-install seeding and mark-on-display silent forever after). The banner-equals pin no longer forces a pop; the pop is decided by item stamps versus the stored shown-version.
+
+Alternative rejected - release-process rule (design A, `WHATS_NEW = null` on silent patches): relies on discipline rather than content; one missed null pops the modal anyway, and a null archive also hides the Settings row, which is a pixel change.
+
+Alternative rejected - keep the installed-vs-shown comparison but special-case silent patches by a release note: same process-discipline weakness, and it re-derives "was this release user-facing" from a place the code cannot see.
+
+## Steps
+
+1. Step 1: The gate''s contract suite rewritten red-first and the oracle relaxed, in `shared/__tests__/whatsNew.test.ts` (2 points).
+2. Step 2: The content-driven gate in `shared/whatsNew.ts` with the ritual and interface docs restated (2 points).
+3. Step 3: The launch suites and the stale truths - silent-patch integration test, fresh-install mock fix, `stores/version.ts` and `app/index.tsx` comments, `e2e/README.md` gotcha (2 points).
+4. Step 4: The mock APK of the merged commit built through the single slot, aapt2 fleettest gate, installed on the OnePlus 3T, User 0 asserted, transcribed on the row (3 points).
+
+## Risks
+
+- The fresh-install suite''s fiction (installed 2.0.0 against the real archive stamped to 2.0.37) pops under the new gate; the mock fix in Step 3 removes it, and the ahead-of-binary guard fails it silent even unmocked.
+- The e2e throwaway-launch ritual assumed every install pops; after this change only installs that add items can pop, so the ritual line must not over-promise (Step 3 rewrites it).
+- Sisters 296 and 302 may land 2.4.5 first; the merge re-checks uat and renumbers above whatever landed, with the collision gate refusing a double-taken number.
+- The owner''s read of the silent path on the 3T build is the acceptance gate; the row parks in Awaiting Owner with that read named.
+
+## Proof
+
+- `yarn jest shared/__tests__/whatsNew.test.ts` - Step 1''s silent-path cases red against the current gate, green after Step 2 (confirm each ran with `-t` filters per the e2e gotcha).
+- `yarn jest __tests__/app/index.test.tsx -t "silent"` - the silent-patch launch renders no What''s New modal.
+- `yarn validate` - green before the merge.
+- A mutation pass on the gate''s guards (drop the empty-items guard, the installed guard, the ahead-of-binary guard, the shown-null branch; flip the final comparison to `>=`, to `!==`, and the max to a min) - every mutant killed by the suite.
+- `aapt2 dump badging <apk> | grep "^package"` - `<pkg>`, versionCode 1000000, before any install.
+- `adb -s 3T_SERIAL shell dumpsys package <pkg> | grep "^    User "` - User 0 alone after the install.
+', NULL, NULL, '{}', false, false, false, NULL, 29696, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:40:34.612958+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (87, 32, 1, NULL, 'T-302', '# T-302 - Help modal dividers: Android''s pixel-grid snap eats every second hairline
+
+## Goal
+
+On the OnePlus 3T only every second question in the Help modal shows its divider, and an opened question alone gains one below. Done means: every adjacent question pair shows exactly one divider between it, closed and opened, on both phones.
+
+## Mechanism (named from source, measured on the owner''s screenshot)
+
+1. Each divider is a one-physical-pixel View: `StyleSheet.hairlineWidth` is `1 / density` dp, and it renders as the LAST child of its row in `Topic` (`<View style={styles.rule} />` inside the `Animated.View` that carries `overflow: ''hidden''` and `layout={GROW}`).
+2. The 3T sits in Android''s 420dpi bucket, density 2.625. A closed row is the head (paddingVertical 14 x 2 + 20dp per text line) plus the 1px rule: 48.381dp one-line = 127.0 physical pixels, 68.381dp two-line = 179.5 physical pixels. Two-line rows land on half pixels, so boundaries alternate whole and half pixels down the list. The owner''s screenshot measures the pitches at 127-128 and 180-181 physical pixels.
+3. React Native snaps Yoga layout to the physical pixel grid on Android (pointScaleFactor = density). A hairline whose single pixel is the last pixel of a wrap-content row is included or dropped by that snap: every boundary landing on a half pixel loses its divider. The row''s own `overflow: ''hidden''` and the ScrollView''s snapped frame take the first and last rows'' rules as edge cases.
+4. The screenshot measures exactly this. Of eight rules, three survive - below questions 2, 4 and 6, at whole-pixel boundaries (measured 628, 989, 1297) - and every boundary the arithmetic puts on a half pixel (below 1, 3, 5, 7, 8) measures absent, verified pure white. The three survivors'' colour (234, 235, 237) matches HAIRLINE rgba(38, 64, 94, 0.1) over white; the fourth visible line is the modal header''s own divider (darker: textSecondary at 0.2 opacity). The JPEG''s plus/minus 2px floor leaves the sixth boundary''s parity to Android''s font-padding drip; the alternation itself is beyond that floor.
+5. iOS keeps float positions (Core Animation does not snap; a sub-point hairline anti-aliases), so the iPhone XS shows all eight - the owner''s observation, and why the defect is Android-side rendering.
+6. Opening a row inserts the panel, whose height carries its own fraction and flips that boundary''s parity: the divider below an open question appears and disappears again on close - the owner''s second symptom.
+
+## Decisions taken (2026-10-21)
+
+1. The divider moves from `Topic`''s last child to a sibling rendered after each `<Topic/>` in the ScrollView, so its pixel never depends on a row''s snapped frame. Sibling hairlines are the pattern Android renders reliably (a FlatList separator is a sibling view). Challenged: fixing the row''s height instead is impossible statically (heights depend on per-locale line counts and font metrics); removing the row''s overflow clip does not stop Yoga collapsing the hairline. The move stands.
+2. The sibling carries `layout={GROW}`: the buttonRow''s own law - animated with the list, or it teleports to its new position while the rows above it slide.
+3. A rule renders after every topic including the last, matching today''s intended structure (the standing comment mourns the last row''s divider; it renders on iOS today).
+4. iOS pixels unchanged: same hairline height, same HAIRLINE colour, same y (today''s row height = head + rule; after the move the row is the head and the rule follows at the same offset, so the ScrollView stacks the same bytes).
+5. Recorded nuance: while a row is open, its accent tint today covers the rule pixel beneath it; as a sibling that pixel sits on card white. One pixel at 0.1 alpha over a 0.05 tint - below perception; the owner''s rhythm read is the gate.
+6. needs-owner label set at planning: the ticket''s final acceptance is the owner''s on-device read, so the flag is honest now.
+
+## Files
+
+- components/modals/Help.tsx - the separator moves from Topic to the list; styles.rule unchanged.
+- components/modals/__tests__/Help.test.tsx - the pinning suite, red first.
+
+## Design
+
+The fix: in ModalHelp''s map, each `<Topic/>` is followed by `<Animated.View layout={GROW} style={styles.rule} />`; Topic drops its trailing rule child, and the rule comment moves to the list as the new law (the 3T''s pixel-grid snap eats a hairline that is the last pixel of a wrap-content row, every second row).
+
+The invariant: a divider between rows is a list-level element, never a row''s last pixel.
+
+Alternatives rejected:
+- Pinning row heights to whole pixels: heights depend on line counts per locale and font metrics; no static value covers every locale at every density.
+- Removing `overflow: ''hidden''` from the row: the collapse happens in Yoga''s layout snap, not the clip; and the clip guards the open tint during the layout animation.
+- A `borderBottomWidth` on the row: the standing comment''s own history - the layout animation redraws borders in the animating frame and drops the last row''s on close.
+- Thickening the rule to a full dp: changes the settled visual on both platforms without the owner''s say.
+
+## Steps
+
+1. **Step 1: the pinning suite** (2 points) - in Help.test.tsx, red on HEAD: mounts ModalHelp on the android platform and asserts (a) exactly one rule per topic, interleaved topic-then-rule through the whole list, closed; (b) the same interleaving and count with a question opened; (c) every rule is a direct child of the ScrollView''s content, never a descendant of a question row; (d) each rule''s style is hairline height plus HAIRLINE colour and carries the GROW layout animation.
+2. **Step 2: the separator move** (2 points) - Help.tsx changes, suite green, mutation pass on the guards (count, placement, open state, layout prop, style tokens), yarn validate green, version bump per discipline (fetch origin first; 2.4.5 if free, else renumber above whatever landed, the collision ruling recorded on this ticket).
+3. **Step 3: merge, mock build, 3T install** (3 points) - yarn validate green before the merge into uat, mock APK through the single build slot (pgrep-gate on the build scripts and gradle/xcodebuild), aapt2 fleettest gate (<pkg>, versionCode 1000000), install on the 3T (serial from adb devices, the only Android connected), User 0 assert, park in Awaiting Owner.
+
+## Risks
+
+- The open tint''s 1px backdrop change (decision 5) shows only while a row is open; the owner''s read catches it if it reads at all.
+- A sibling rule that jumps while rows slide if it lost GROW: the test pins the layout prop.
+- Sisters 296 and 306 land 2.4.5 first: renumber per discipline and record the interleaving on this ticket (the 293/295 ruling pattern).
+- The ScrollView''s capped height (maxHeight = 0.62 of the window) snaps its own frame and could clip the last sibling rule in the capped state: the content scrolls, so the rule stays reachable; the owner''s read on the 3T build settles it.
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
+- Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
+- Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, 31744, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.940174+00');
 
 
 --
@@ -21741,10 +22571,10 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:265', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 130);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 121);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:312', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:299', 1, 5);
@@ -21752,6 +22582,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:316', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
@@ -21759,6 +22590,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:7', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:252', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:268', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:313', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:269', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:275', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:266', 1, 5);
@@ -21769,11 +22601,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 58);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3717);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:288', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 19);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:289', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
@@ -21788,14 +22617,23 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:292', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:303', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:304', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:308', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3795);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:309', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:310', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 132);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 9);
@@ -21806,10 +22644,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:276', 1, 124
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:284', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 93);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:300', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:311', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:297', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:301', 1, 21);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:298', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:314', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:315', 1, 5);
 
 
 --
@@ -22071,7 +22912,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2951, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3050, true);
 
 
 --
@@ -22120,14 +22961,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 590, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 599, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 305, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 316, true);
 
 
 --
@@ -22148,7 +22989,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 622, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 656, true);
 
 
 --
@@ -22183,7 +23024,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 185, true);
+SELECT pg_catalog.setval('public.label_id_seq', 187, true);
 
 
 --
@@ -22239,14 +23080,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 29, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 32, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 84, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 90, true);
 
 
 --
@@ -26631,5 +27472,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict jMIfRoaTiKIYBiXPq6ZEYzPjt0BpGnytFL8PggWA6zSdxSZi8BDWgQ0xCw3efdR
+\unrestrict HPlm0JLYL7vAyj3KCBkHrvvxkZv3WSIqxadXe02PcdtzDEFtzIvlBcESGtP15Fz
 
