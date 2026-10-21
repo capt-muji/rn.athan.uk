@@ -4,16 +4,19 @@
  * A growing archive of release-note items, each stamped with the version it
  * shipped in. The modal is a versioned changelog: the archive's newest
  * WHATS_NEW_DISPLAY_WINDOW items, grouped under major.minor version headings,
- * shown once on the first launch after a store update (never on fresh installs).
+ * shown on the first launch after a release that stamps an item newer than the
+ * user's stored shown-version - never on fresh installs, never on a release
+ * that adds no item (owner order 2026-10-21, design B, content-driven).
  *
  * Maintenance ritual (every store release):
- * 1. Move WHATS_NEW.version to the shipping release - the modal shows nothing
- *    unless it equals the installed version, which is what makes step 5 true
+ * 1. Move WHATS_NEW.version to the shipping release - it names the release
+ *    these notes ship with; the banner never gates the modal
  * 2. Leave drafted future items at version: null (parked, never shown)
- * 3. When a parked item ships, stamp it with that release's version
+ * 3. When a parked item ships, stamp it with that release's version - a
+ *    stamped item newer than the user's stored shown-version is what opens
+ *    the modal
  * 4. Prune the archive past MAX_WHATS_NEW_ARCHIVE entries (oldest first)
- * 5. A release with no items inside the display window silent-ships
- *    automatically
+ * 5. A release that adds no items silent-ships by construction
  *
  * Display rules:
  * - The changelog is cross-release: items keep the true version they shipped
@@ -55,9 +58,10 @@ export interface WhatsNewArchiveItem {
 
 /** The archive a release's notes are maintained as: keys, not display copy */
 export interface WhatsNewArchiveRelease {
-  /** Store version these notes ship with: never rendered, but it gates the
-   * modal - shouldShowWhatsNew shows nothing unless this is the installed
-   * version, so an un-moved stamp silent-ships the release */
+  /** Store version these notes ship with: never rendered, and never a gate -
+   * shouldShowWhatsNew reads only the item stamps, so the banner names the
+   * release these notes ship with and the test oracle pins it to the build
+   * version as proof the ritual ran */
   version: string;
   /** Archived items across releases; the newest display window shows */
   items: WhatsNewArchiveItem[];
@@ -81,9 +85,10 @@ export interface WhatsNewItem {
 
 /** The release notes for the current version, as the modal renders them */
 export interface WhatsNewRelease {
-  /** Store version these notes ship with: never rendered, but it gates the
-   * modal - shouldShowWhatsNew shows nothing unless this is the installed
-   * version, so an un-moved stamp silent-ships the release */
+  /** Store version these notes ship with: never rendered, and never a gate -
+   * shouldShowWhatsNew reads only the item stamps, so the banner names the
+   * release these notes ship with and the test oracle pins it to the build
+   * version as proof the ritual ran */
   version: string;
   /** The changelog's items, newest release first, windowed to the newest
    * WHATS_NEW_DISPLAY_WINDOW entries, resolved to the copy the modal renders */
@@ -117,11 +122,10 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // A real feature is worth interrupting someone for; a
 // performance pass is not, and popping a modal for one just annoys people.
 //
-// So: move `version` to the shipping release when you want the modal to appear,
-// and LEAVE IT BEHIND when you do not. A stamp older than the installed version
-// is how a release silent-ships, and that is a choice, not a bug. Deliberately
-// NOT covered by a test — a test here would fail every time that choice is
-// made, which is the fastest way to get the guard deleted.
+// So: stamp the shipped item with its release's version when the modal should
+// appear, and ADD NOTHING when it should not. An archive with no item newer
+// than the user's stored shown-version silent-ships by construction (owner
+// order 2026-10-21, design B), and that is a choice, not a bug.
 //
 // The debut (owner order 2026-10-20): the modal opened with every feature the
 // app has ever shipped. T-297 (owner order 2026-10-21) restamped each item with
@@ -130,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.5',
+  version: '2.4.6',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -198,19 +202,21 @@ export const WHATS_NEW_DISPLAY_WINDOW = 20;
 /**
  * Decides whether the What's New modal should be displayed
  *
- * The modal shows when the bundled notes were stamped for the running binary
- * AND the shown-version differs from the installed version:
+ * Content-driven (owner order 2026-10-21, design B): the archive's newest
+ * stamped item is the bar, and the modal shows only when that bar clears the
+ * stored shown-version:
+ * - A release that adds no stamped item never moves the bar, so a silent
+ *   patch pops nothing by construction
  * - Fresh installs seed the shown-version to the installed version at first
- *   boot (see stores/version.ts handleAppUpgrade), so they never differ
- * - Existing users upgrading have an older (or absent) shown-version
- * - Users skipping versions still see the same newest window - there is no
- *   history to accumulate by construction
+ *   boot (see stores/version.ts handleAppUpgrade), and a stamp at or below
+ *   the build never clears that seed, so fresh installs never see the modal
+ * - A pre-tracker upgrader (no stored shown-version) gets the one catch-up
+ *   display the debut gave everyone else, then the mark silences it
+ * - The bar never outranks the running binary: a stamp ahead of it advertises
+ *   an unshipped release and fails silent
  *
- * The stamp check is what makes step 5 of the maintenance ritual above true.
- * `app/index.tsx` gates the modal on the INSTALLED version, and only this
- * hand-maintained stamp says which build the notes belong to: nothing else
- * compares the two, so a release whose stamp has not been moved forward
- * silent-ships, as the file has always documented.
+ * The release banner is never read here: it names the release these notes
+ * ship with and nothing more (see the maintenance ritual above).
  *
  * @param installedVersion - Version of the running binary (e.g. '1.13.0')
  * @param shownVersion - Version the modal was last shown for (or seeded with)
@@ -224,11 +230,19 @@ export const shouldShowWhatsNew = (
 ): boolean => {
   if (!whatsNew || whatsNew.items.length === 0) return false;
   if (!installedVersion) return false;
-  if (whatsNew.version !== installedVersion) return false;
-  if (shownVersion === installedVersion) return false;
+
+  const stamps = whatsNew.items
+    .map((item) => item.version)
+    .filter((version): version is string => version !== null)
+    .sort(compareVersions);
+  const newestStamp = stamps.length > 0 ? stamps[stamps.length - 1] : null;
+
+  if (newestStamp === null) return false;
+  // A stamp ahead of this build advertises an unshipped release; fail silent
+  if (compareVersions(newestStamp, installedVersion) > 0) return false;
   if (!shownVersion) return true;
 
-  return compareVersions(installedVersion, shownVersion) > 0;
+  return compareVersions(newestStamp, shownVersion) > 0;
 };
 
 /**

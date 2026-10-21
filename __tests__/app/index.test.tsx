@@ -266,6 +266,23 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
     expect(screen.queryByText("What's New")).not.toBeOnTheScreen();
   });
 
+  it('stays silent on an upgrade whose archive adds nothing new', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    installUpdate();
+    // Every stamp sits at or below the stored shown-version: the archive this upgrade
+    // carries is the one the previous release already displayed
+    mockVisibleWhatsNew = {
+      version: '2.0.0',
+      items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '1.24.10' }],
+    };
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+
+    expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
+    expect(screen.queryByText("What's New")).not.toBeOnTheScreen();
+  });
+
   it('announces the release on every launch of a development build with the preview switch on', async () => {
     showLondonDay('2026-09-11', '14:00');
     relaunchRelease();

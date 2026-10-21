@@ -19,15 +19,15 @@ jest.mock('@/api/client', () => ({
   fetchYear: jest.fn(() => new Promise(() => {})),
 }));
 
-// What a release announces is the owner's editorial choice, made again every release, so the suite announces a
-// release of its own
+// What a release announces is the owner's editorial choice, made again every release, so the
+// suite announces a release of its own
 jest.mock('@/shared/whatsNew', () => ({
   ...jest.requireActual('@/shared/whatsNew'),
   __esModule: true,
-  VISIBLE_WHATS_NEW: {
+  currentVisibleWhatsNew: () => ({
     version: '2.0.0',
     items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '2.0.0' }],
-  },
+  }),
 }));
 
 const RELEASE = '2.0.0';

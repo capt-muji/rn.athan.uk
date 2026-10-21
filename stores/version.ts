@@ -110,8 +110,9 @@ export const wasAppUpgraded = (): boolean => {
 
 /**
  * Storage key holding the version the What's New modal was last shown for.
- * Seeded to the installed version on fresh install (modal never shows for
- * them), left untouched on upgrade (differs from installed → modal shows).
+ * Seeded to the installed version on fresh install so the modal never shows
+ * for them; on upgrade the modal opens only when the archive stamps an item
+ * newer than the stored value.
  */
 const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
 
@@ -305,8 +306,8 @@ export const handleAppUpgrade = (): void => {
   Database.setItem(CACHE_SCHEMA_VERSION_KEY, CACHE_SCHEMA_VERSION);
 
   // Fresh install: seed the What's New tracker so the modal never shows for
-  // new users. Upgrades leave it untouched - its difference from the
-  // installed version is what triggers the modal (see shared/whatsNew.ts)
+  // new users. Upgrades leave it untouched - the modal opens only when the
+  // archive stamps an item newer than the stored value (see shared/whatsNew.ts)
   if (!storedVersion) setWhatsNewShownVersion(installedVersion);
 
   // Migrate legacy index-keyed alert preference keys to name-keyed keys.
