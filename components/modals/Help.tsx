@@ -1,4 +1,4 @@
-import { type ComponentRef, useRef, useState } from 'react';
+import { type ComponentRef, Fragment, useRef, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
@@ -124,11 +124,6 @@ const Topic = ({
             </View>
           </Animated.View>
         ) : null}
-
-        {/* A child rule, not a border on this view: the layout animation redraws borders as part of
-            the animating frame and can drop the last row's on close, while a child renders at
-            whatever the animated height is */}
-        <View style={styles.rule} />
       </Animated.View>
     </Pressable>
   );
@@ -184,13 +179,18 @@ export default function ModalHelp({ visible, onClose }: Props) {
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}>
         {topics.map((topic) => (
-          <Topic
-            key={topic.question}
-            topic={topic}
-            open={openQuestion === topic.question}
-            onToggle={() => setOpenQuestion(openQuestion === topic.question ? null : topic.question)}
-            onRowLayout={handleRowLayout}
-          />
+          <Fragment key={topic.question}>
+            <Topic
+              topic={topic}
+              open={openQuestion === topic.question}
+              onToggle={() => setOpenQuestion(openQuestion === topic.question ? null : topic.question)}
+              onRowLayout={handleRowLayout}
+            />
+            {/* A child of the list, never a row's last pixel: Android's pixel-grid snap eats a
+                hairline that closes a wrap-content row, every second row at a fractional density;
+                outside the row it always renders */}
+            <Animated.View layout={GROW} style={styles.rule} />
+          </Fragment>
         ))}
       </ScrollView>
       {/* Animated with the list, or it teleports to its new position while the rows above it slide */}
