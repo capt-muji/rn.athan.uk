@@ -43,7 +43,7 @@ jest.mock('react', () => ({
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles } }));
 jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}) }));
+jest.mock('@/hooks/useAnimation', () => ({ useDerivedProgress: () => ({ value: 1 }), useDerivedOpacity: () => ({}) }));
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: jest.fn(),
   getItem: () => null,

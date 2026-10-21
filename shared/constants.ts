@@ -727,7 +727,12 @@ export const COLORS = {
     /** Main screen background gradient */
     screen: { start: '#031a4c', end: '#5b1eaa' },
     /** Overlay background gradient */
-    overlay: { start: '#110022', end: '#000000' },
+    overlay: {
+      start: '#110022',
+      end: '#000000',
+      /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
+      veil: '#0b0016',
+    },
   },
 
   // ───────────────────────────────────────────────────────────────────────────

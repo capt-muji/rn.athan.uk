@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useDerivedColor } from '@/hooks/useAnimation';
+import { useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { getShownTime, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
@@ -13,7 +13,7 @@ import { getCascadeDelay } from '@/shared/prayer';
 import { splitSingleColon } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 
 import { colonInkPair } from './colonInk';
 
@@ -36,6 +36,7 @@ export default function PrayerTime({ type, index }: Props) {
   const Prayer = usePrayer(type, index);
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+  const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
 
   const displayTime = getShownTime(isSelectedForOverlay, Prayer, NextOccurrencePrayer) ?? UNAVAILABLE_TIME;
 
@@ -48,11 +49,16 @@ export default function PrayerTime({ type, index }: Props) {
   const previousIsSelected = usePrevious(isSelectedForOverlay);
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
-  // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms
+  // Timings mirror Prayer.tsx: selection 150ms, next-prayer advance and cascade 1000ms. The
+  // overlay's veil wraps both tweens, so a hidden row's digits and colon sink toward the veil
+  // solid instead of rendering through an opacity
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-  const colorStyle = useDerivedColor(colorPos, {
+  const veilTarget = isHiddenByOverlay ? 1 : 0;
+  const colorStyle = useDerivedVeiledColor(veilTarget, colorPos, {
     fromColor: COLORS.text.rowTime,
     toColor: COLORS.text.primary,
+    veilColor: COLORS.gradient.overlay.veil,
+    veilDuration: ANIMATION.duration,
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
@@ -68,9 +74,11 @@ export default function PrayerTime({ type, index }: Props) {
     isPassed: Prayer.isPassed,
     isStandard,
   });
-  const colonColorStyle = useDerivedColor(colorPos, {
+  const colonColorStyle = useDerivedVeiledColor(veilTarget, colorPos, {
     fromColor: colonPair.from,
     toColor: colonPair.to,
+    veilColor: COLORS.gradient.overlay.veil,
+    veilDuration: ANIMATION.duration,
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });

@@ -152,4 +152,27 @@ describe("the passed Sunrise bell on Friday 11 September 2026 at 14:00, with Sat
 
     expect(iconOf(screen.getByRole('button', { name: 'Sunrise notification: sound' }))).toBe(ALERT_ICONS[Icon.SPEAKER]);
   });
+
+  it('fades its own bell out through the icon wrapper, never through text ink', async () => {
+    showLondonDay('2026-09-11', '14:00', { '2026-09-12': ['sunrise'] });
+    setPrayerAlertType(ScheduleType.Standard, SUNRISE, AlertType.Off);
+    await render(
+      <>
+        <Alert type={ScheduleType.Standard} index={FAJR} />
+        <Alert type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
+
+    // The overlay selects Sunrise, so Fajr's bell is veiled while Sunrise's stays drawn
+    await act(() => openOverlay(ScheduleType.Standard, SUNRISE));
+
+    const veiled = screen
+      .getByRole('button', { name: 'Fajr notification: off' })
+      .queryAll((node) => node.type === 'RNSVGSvgView')[0];
+    const shown = screen
+      .getByRole('button', { name: 'Sunrise notification: unavailable' })
+      .queryAll((node) => node.type === 'RNSVGSvgView')[0];
+    expect(veiled?.parent).toHaveStyle({ opacity: 0 });
+    expect(shown?.parent).toHaveStyle({ opacity: 1 });
+  });
 });

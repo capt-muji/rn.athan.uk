@@ -23,9 +23,6 @@ const ROOTS = ['app', 'components'];
 /** The hooks whose result is text ink; their colour endpoints are checked where they land on text */
 const TEXT_INK_HOOKS = ['useDerivedColor', 'useDerivedVeiledColor'];
 
-// T-319 (Step 3) converts these remaining fades; an entry dies with its conversion
-const PENDING_CONVERSIONS = ['components/prayer/Ago.tsx'];
-
 const files = (dir: string): string[] =>
   readdirSync(dir).flatMap((entry) => {
     const path = join(dir, entry);
@@ -268,17 +265,8 @@ const stringsOf = (node: unknown): string[] =>
 
 describe('text ink', () => {
   it('is carried by no Text or Animated.Text through opacity, and by no colour through alpha', () => {
-    const offences = sweep('components')
-      .concat(sweep('app'))
-      .filter((offence) => !PENDING_CONVERSIONS.includes(offence.file));
+    const offences = sweep('components').concat(sweep('app'));
     expect(offences.map((offence) => offence.detail)).toEqual([]);
-  });
-
-  it('names exactly the files whose conversion is still pending', () => {
-    const pending = sweep('components')
-      .concat(sweep('app'))
-      .map((offence) => offence.file);
-    expect([...new Set(pending)].sort()).toEqual([...PENDING_CONVERSIONS].sort());
   });
 
   it('finds the text elements it claims to guard', () => {
@@ -315,5 +303,11 @@ describe('text ink', () => {
     for (const role of roles) {
       expect([0, 1]).toContain(alphaOf(role));
     }
+  });
+
+  it('keeps the veil ink at the overlay backdrop the prayer list sits on', () => {
+    // The overlay gradient's midpoint #080011 plus the veil glow's band-average wash, the ink
+    // hidden rows and the ago badge sink toward while the overlay is open (plan doc T-294)
+    expect(COLORS.gradient.overlay.veil).toBe('#0b0016');
   });
 });

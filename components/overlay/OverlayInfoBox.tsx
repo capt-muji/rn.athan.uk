@@ -6,7 +6,7 @@ import Reanimated from 'react-native-reanimated';
 import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
 // Direct path, not the barrel: going through components/prayer would cycle back here via List
 import PrayerExplanation from '@/components/prayer/Explanation';
-import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedProgress } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, STYLES } from '@/shared/constants';
@@ -36,7 +36,10 @@ export default function OverlayInfoBox({ type }: Props) {
 
   const [visible, setVisible] = useState(isOnThisList);
 
-  const layerOpacityStyle = useDerivedOpacity(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
+  // The reveal drives the card face's fade and the inks' rise from the card's own surface
+  // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
+  // subtree while the box appears
+  const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
 
   // Hold the card displayable through the close fade-out, then hide it
   useEffect(() => {
@@ -75,13 +78,14 @@ export default function OverlayInfoBox({ type }: Props) {
   return (
     <Reanimated.View
       testID={'overlay-infobox'}
-      style={[styles.placer, { display: visible ? 'flex' : 'none' }, layerOpacityStyle]}
+      style={[styles.placer, { display: visible ? 'flex' : 'none' }]}
       pointerEvents={'none'}>
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}
         arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
         style={computedStyleInfoBox}
+        reveal={reveal}
       />
     </Reanimated.View>
   );

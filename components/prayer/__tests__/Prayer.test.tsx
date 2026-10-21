@@ -5,11 +5,14 @@
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
-import { openOverlay } from '@/stores/overlay';
+import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Prayer from '../Prayer';
 
@@ -76,7 +79,7 @@ describe('the Fajr row on Friday 11 September 2026 at 14:00', () => {
 });
 
 describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once the overlay is opened on Fajr', () => {
-  it('hides Sunrise from sight and from a screen reader, and leaves Fajr on show', async () => {
+  it('keeps Sunrise drawn through its fade and drops it once the fade has run, leaving Fajr on show', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(
       <>
@@ -87,9 +90,56 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
 
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
 
+    // The fade carries the ink, so the words stay drawn while it runs
+    const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
+    const drawn = () => (StyleSheet.flatten(sunrise().parent!.props.style) as { display?: string }).display;
+    expect(drawn()).toBe('flex');
     expect(screen.getByText('Fajr')).toBeVisible();
-    expect(screen.queryByText('Sunrise')).not.toBeOnTheScreen();
-    expect(screen.getByText('Sunrise', { includeHiddenElements: true })).not.toBeVisible();
+
+    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+
+    expect(drawn()).toBe('none');
+    expect(screen.getByText('Fajr')).toBeVisible();
+  });
+
+  it('draws Sunrise again the moment the overlay closes, from the veil ink it rested on', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(
+      <>
+        <Prayer type={ScheduleType.Standard} index={FAJR} />
+        <Prayer type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+
+    await act(() => closeOverlay());
+
+    const sunrise = screen.getByText('Sunrise');
+    expect((StyleSheet.flatten(sunrise.parent!.props.style) as { display?: string }).display).toBe('flex');
+  });
+
+  it('sinks its hidden ink toward the veil constant, through colour and never opacity', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(
+      <>
+        <Prayer type={ScheduleType.Standard} index={FAJR} />
+        <Prayer type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+
+    // The hidden row's name, time and colon each wrap their own tween inside the veil
+    // interpolation; the selected row's three stay at the undrawn end
+    const veilPositions = interpolateColor.mock.calls
+      .filter((call) => (call[2] as unknown as readonly string[])[1] === COLORS.gradient.overlay.veil)
+      .map((call) => call[0]);
+    expect(veilPositions).toEqual([0, 0, 0, 1, 1, 1]);
+    expect(
+      StyleSheet.flatten(screen.getByText('Sunrise', { includeHiddenElements: true }).props.style).opacity
+    ).toBeUndefined();
   });
 
   // Each platform's screen reader reads only its own prop, so a row must carry both to be skipped on both
@@ -108,7 +158,7 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
 
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
 
-    expect(screen.getByText('Sunrise', { includeHiddenElements: true }).parent).toHaveProp(prop, hidden);
+    expect(screen.getByText('Sunrise', { includeHiddenElements: true }).parent!.parent!).toHaveProp(prop, hidden);
   });
 });
 
