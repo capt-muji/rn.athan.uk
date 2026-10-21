@@ -20,7 +20,9 @@ Read `.agents/skills/board-workflow/SKILL.md` first. It holds the conventions.
 You work in your own worktree, never in the main tree. The main tree stays on `uat`, clean.
 
 1. Read the ticket with `get_issue_by_number`. Take its identifier, its column, its subtasks and
-   its linked plan doc.
+   its linked plan doc - then its whole activity feed with `list_issue_activity`: the comments
+   carry the owner's orders and the lead's rulings, and skipping them is working a different
+   ticket than the one on the board.
 2. Move it to the lane's first column with `update_issue`, and set `Lane` to your lane number.
 3. Work the phase it sits in. Planning means the `athan-planner` skill. Ready means
    execution, and execution begins with the claim: move the ticket to In progress

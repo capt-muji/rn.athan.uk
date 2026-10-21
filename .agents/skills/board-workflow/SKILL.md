@@ -201,7 +201,9 @@ A comment is for a person reading the board. Keep it to a line or two, in plain 
 ## Working an issue
 
 1. Read it with `get_issue_by_number`, passing `T` and the ticket's number. The number in the
-   title is the number the tool takes.
+   title is the number the tool takes. Then read the ticket's whole activity feed with
+   `list_issue_activity`: the comments are part of the ticket - owner orders and agent rulings
+   land there and nowhere else, and an agent that has not read them has not read the ticket.
 2. Move it to `In progress`.
 3. Do the work in the repository.
 4. Move it to `Done`, or to `Deferred` if it is parked.
