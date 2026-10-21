@@ -173,9 +173,11 @@ verification, never infer visuals from pixels alone.
   `npx expo run:android --binary <apk> --device <serial> --no-bundler`.
   Building stays on `./gradlew assembleRelease` + `adb install -r`, and check
   `dumpsys package "$APP_ID" | grep versionName` before measuring.
-- **What's New appears on the first launch after any upgrade** (including
-  reinstalling a newer build after bisecting an older one) and marks itself
-  shown the moment it appears: do one throwaway launch after each install.
+- **What's New appears on the first launch after an upgrade that ships a new
+  archived item** (including reinstalling a newer build after bisecting an
+  older one, when that build stamped a new item) and marks itself shown the
+  moment it appears: a silent patch adds no item and pops nothing, so the
+  throwaway launch after an install matters only when that install adds items.
 - **`overlay_open` mark semantics changed in s9** (useLayoutEffect instrument):
   JS works ~44-78ms then waits on a synchronous UI-thread mount, so the band
   is ~180-240ms. The 80ms baseline predates it. Compare builds with frame

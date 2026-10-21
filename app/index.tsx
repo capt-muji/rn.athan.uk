@@ -149,9 +149,11 @@ export default function Index() {
       checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
     }, 1500);
 
-    // Show the What's New modal once after an update (never on fresh installs -
-    // stores/version.ts seeds the shown-version for new users). Marking shown
-    // on display (not dismiss) makes a mid-display crash unable to re-loop it
+    // Show the What's New modal only when the archive stamps an item newer
+    // than the stored shown-version - a release that adds nothing stays
+    // silent, and fresh installs never qualify (stores/version.ts seeds the
+    // shown-version for new users). Marking shown on display (not dismiss)
+    // makes a mid-display crash unable to re-loop it
     if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), currentVisibleWhatsNew())) {
       setWhatsNewShownVersion(installedVersion);
       setPopupWhatsNewEnabled(true);

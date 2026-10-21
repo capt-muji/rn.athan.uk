@@ -47,9 +47,9 @@ const appJson = JSON.parse(readFileSync(join(__dirname, '..', '..', 'app.json'),
 const INSTALLED_VERSION: string = appJson.expo.version;
 
 /**
- * A bundled release. The stamp is parameterised because the modal only shows when it equals
- * the installed version — an upgrade-boundary case has to stamp the notes for the binary
- * they ship in, exactly as the maintenance ritual requires.
+ * A bundled release. The banner is parameterised because it names the release these notes
+ * ship with - it never gates the modal (the item stamps do), and every fixture pins it to
+ * the installed version exactly as the maintenance ritual requires.
  */
 const release = (items: WhatsNewItem[], version = '1.13.0'): WhatsNewRelease => ({ version, items });
 const item = (overrides: Partial<WhatsNewItem> = {}): WhatsNewItem => ({
@@ -73,6 +73,66 @@ const archiveItem = (overrides: Partial<WhatsNewArchiveItem> = {}): WhatsNewArch
 // =============================================================================
 
 describe('shouldShowWhatsNew', () => {
+  // The gate is content-driven (owner order 2026-10-21, design B): the archive's newest
+  // stamped item is the bar, and the modal opens only when that bar clears the stored
+  // shown-version. Every silent-path fixture pins the banner to the installed version with
+  // stamps at or below the stored shown-version and the stored value below the installed
+  // version - anything weaker stays green under a banner-equals gate and proves nothing.
+  it('stays silent on a patch upgrade whose archive adds nothing new', () => {
+    const silentPatch = release([item({ version: '2.0.37' }), item({ version: '1.24.10' })], '2.4.5');
+
+    expect(shouldShowWhatsNew('2.4.5', '2.4.4', silentPatch)).toBe(false);
+  });
+
+  it('stays silent on the release after a silent patch, until a newer item ships', () => {
+    const stillUnmoved = release([item({ version: '2.0.37' })], '2.5.0');
+
+    expect(shouldShowWhatsNew('2.5.0', '2.4.4', stillUnmoved)).toBe(false);
+  });
+
+  it('shows on a feature release: the newest stamp clears the stored shown-version', () => {
+    // The stored value sits strictly between the two stamps, so only the maximum counts
+    const multiStamp = release([item({ version: '2.0.37' }), item({ version: '2.5.0' })], '2.5.0');
+
+    expect(shouldShowWhatsNew('2.5.0', '2.4.4', multiStamp)).toBe(true);
+  });
+
+  it('stays silent when the newest stamp equals the stored shown-version (the fresh-install shadow)', () => {
+    const alreadyShown = release([item({ version: '2.5.0' })], '2.5.0');
+
+    expect(shouldShowWhatsNew('2.5.0', '2.5.0', alreadyShown)).toBe(false);
+  });
+
+  it('shows once to a pre-tracker upgrader, then the mark silences it', () => {
+    const catchUp = release([item({ version: '2.0.37' })], '2.4.5');
+
+    expect(shouldShowWhatsNew('2.4.5', null, catchUp)).toBe(true);
+  });
+
+  it('stays silent on a downgrade', () => {
+    const rolledBack = release([item({ version: '2.0.37' })], '2.4.4');
+
+    expect(shouldShowWhatsNew('2.4.4', '2.5.0', rolledBack)).toBe(false);
+  });
+
+  it('fails silent when the newest stamp is ahead of the installed binary', () => {
+    const unshipped = release([item({ version: '2.5.0' })], '2.4.4');
+
+    expect(shouldShowWhatsNew('2.4.4', '2.4.3', unshipped)).toBe(false);
+  });
+
+  it('ignores the release banner: the item stamps alone decide', () => {
+    const misStampedBanner = release([item({ version: '2.0.37' }), item({ version: '2.5.0' })], '9.9.9');
+
+    expect(shouldShowWhatsNew('2.5.0', '2.4.4', misStampedBanner)).toBe(true);
+  });
+
+  it('stays silent when every item is parked (version null)', () => {
+    const allParked = release([item({ version: null }), item({ version: null })], '2.4.5');
+
+    expect(shouldShowWhatsNew('2.4.5', '2.4.4', allParked)).toBe(false);
+  });
+
   it('returns false when whatsNew is null (silent release)', () => {
     expect(shouldShowWhatsNew('1.13.0', null, null)).toBe(false);
   });
@@ -82,63 +142,14 @@ describe('shouldShowWhatsNew', () => {
   });
 
   it('returns false when installed version is empty (unreadable config)', () => {
-    expect(shouldShowWhatsNew('', null, release([item()]))).toBe(false);
+    // A zero stamp ranks level with an unreadable version, so only the guard fails this silent
+    expect(shouldShowWhatsNew('', null, release([item({ version: '0.0.0' })]))).toBe(false);
     expect(shouldShowWhatsNew(null, null, release([item()]))).toBe(false);
-  });
-
-  it('returns true when shown version is null (upgrade to the release that introduced the feature)', () => {
-    expect(shouldShowWhatsNew('1.13.0', null, release([item()]))).toBe(true);
-  });
-
-  it('returns false when shown version equals installed (already shown or fresh install)', () => {
-    expect(shouldShowWhatsNew('1.13.0', '1.13.0', release([item()]))).toBe(false);
-  });
-
-  it('returns true when installed is newer than shown (upgrade)', () => {
-    expect(shouldShowWhatsNew('1.13.0', '1.12.2', release([item()]))).toBe(true);
-  });
-
-  it('returns true when a version is skipped (only newest notes exist by construction)', () => {
-    expect(shouldShowWhatsNew('1.13.0', '1.10.0', release([item()]))).toBe(true);
-    expect(shouldShowWhatsNew('1.13.0', '1.0.0', release([item()]))).toBe(true);
-  });
-
-  it('returns false when installed is older than shown (downgrade)', () => {
-    // Stamped for the running binary, so it is the downgrade that stops it, not the stamp
-    expect(shouldShowWhatsNew('1.12.2', '1.13.0', release([item()], '1.12.2'))).toBe(false);
-  });
-
-  it('handles minor and patch upgrade boundaries', () => {
-    // Each release carries the notes stamped for the binary it ships in
-    expect(shouldShowWhatsNew('1.13.0', '1.12.9', release([item()], '1.13.0'))).toBe(true);
-    expect(shouldShowWhatsNew('1.13.1', '1.13.0', release([item()], '1.13.1'))).toBe(true);
-    expect(shouldShowWhatsNew('2.0.0', '1.99.99', release([item()], '2.0.0'))).toBe(true);
   });
 
   it('returns false across every state when whatsNew is null (silent ship wins)', () => {
     expect(shouldShowWhatsNew('1.13.0', '1.10.0', null)).toBe(false);
     expect(shouldShowWhatsNew('1.13.0', '1.13.0', null)).toBe(false);
-  });
-
-  // The gate is the release stamp, never an item's own version: the changelog presents
-  // history, and shouldShowWhatsNew decides only whether it appears at all
-  it('returns false when the notes were stamped for an earlier release', () => {
-    expect(shouldShowWhatsNew('1.25.3', '1.24.30', release([item()], '1.24.30'))).toBe(false);
-    expect(shouldShowWhatsNew('1.25.3', null, release([item()], '1.24.30'))).toBe(false);
-  });
-
-  it('returns false when the notes were stamped for a release not yet shipped', () => {
-    expect(shouldShowWhatsNew('1.13.0', '1.12.0', release([item()], '1.14.0'))).toBe(false);
-  });
-
-  it('silent-ships every intermediate release until the stamp is moved forward', () => {
-    const stamped1_24_30 = release([item({ version: '1.24.30' })], '1.24.30');
-
-    expect(shouldShowWhatsNew('1.25.0', '1.24.30', stamped1_24_30)).toBe(false);
-    expect(shouldShowWhatsNew('1.25.1', '1.24.30', stamped1_24_30)).toBe(false);
-    expect(shouldShowWhatsNew('1.25.2', '1.24.30', stamped1_24_30)).toBe(false);
-    // ...and it speaks again the moment the ritual stamps the shipping release
-    expect(shouldShowWhatsNew('1.25.3', '1.24.30', release([item({ version: '1.25.3' })], '1.25.3'))).toBe(true);
   });
 });
 
@@ -454,9 +465,22 @@ describe('currentVisibleWhatsNew', () => {
   // `expect(WHATS_NEW?.version).toBe('2.3.0')` used to stand here, and any stamp satisfied
   // the archive's own tests while the build moved on. The version a user actually sees is
   // app.json's, read here from disk rather than from the module under test, so this is an
-  // independent oracle: a stamp left behind the shipping binary silent-ships the release.
+  // independent oracle. The banner names the release these notes ship with; it no longer
+  // forces a pop (the item stamps decide that), so this pin is the one-line proof the
+  // ritual ran.
   it('ships its banner stamp at the version this tree builds', () => {
     expect(WHATS_NEW?.version).toBe(INSTALLED_VERSION);
+  });
+
+  // Nothing announces a release newer than the binary carrying it: the gate fails such a
+  // stamp silent at runtime, and this pin holds the archive itself to it. It is what keeps
+  // fresh-install seeding and mark-on-display silent forever after - both write the
+  // installed version as shown, and a stamp at or below the build can never clear it.
+  it('stamps every shipped item at or below the version this tree builds', () => {
+    for (const entry of WHATS_NEW?.items ?? []) {
+      if (entry.version === null) continue;
+      expect(compareVersions(entry.version, INSTALLED_VERSION)).toBeLessThanOrEqual(0);
+    }
   });
 
   // The grouped changelog exists to show history: the window is cross-release by design,
