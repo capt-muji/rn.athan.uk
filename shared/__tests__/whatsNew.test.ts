@@ -276,7 +276,7 @@ describe('groupWhatsNewItems', () => {
     const items = [
       item({ version: '1.29.0' }),
       item({ title: 'Help page', version: '1.29.258' }),
-      item({ title: 'A second reminder', version: '1.29.10' }),
+      item({ title: 'Second reminder', version: '1.29.10' }),
     ];
 
     const groups = groupWhatsNewItems(items);
@@ -340,19 +340,19 @@ describe('getVisibleWhatsNew', () => {
 
     expect(getVisibleWhatsNew(mixed, flagsOn)).toEqual(
       release([
-        item({ title: 'Tablet support', body: 'Athan now supported on tablets' }),
+        item({ title: 'Tablet support', body: 'Added support for tablets' }),
         item({
           title: 'Home & Lock widgets',
-          body: 'Add prayer times to your Home and Lock Screen',
+          body: 'Added prayer times to Home and Lock Screen',
           flags: ['iosWidgets'],
         }),
-        item({ title: 'Athan sounds', body: 'New Athan sounds added', version: '1.12.0' }),
+        item({ title: 'Athan sounds', body: 'Added new Athan sounds', version: '1.12.0' }),
       ])
     );
     expect(getVisibleWhatsNew(mixed, flagsOff)).toEqual(
       release([
-        item({ title: 'Tablet support', body: 'Athan now supported on tablets' }),
-        item({ title: 'Athan sounds', body: 'New Athan sounds added', version: '1.12.0' }),
+        item({ title: 'Tablet support', body: 'Added support for tablets' }),
+        item({ title: 'Athan sounds', body: 'Added new Athan sounds', version: '1.12.0' }),
       ])
     );
   });
