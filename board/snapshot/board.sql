@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 8rwST0qp2H1boKSyk9peynID0RC3gorgZrxcUaVdJOwS74WtyOEiLcaufFkb7PV
+\restrict jMIfRoaTiKIYBiXPq6ZEYzPjt0BpGnytFL8PggWA6zSdxSZi8BDWgQ0xCw3efdR
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5211,6 +5211,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-12 to v3.0 by the owner''s priority call (the owner''s 2026-10-13 ruling: the deferral is literal, not a ban). Runs behind rows 37 to 39
 
 Needs first: #37, #39', NULL, NULL, NULL, 1500, '2026-10-18 23:35:55.447181+00', '2026-10-19 08:58:44.287446+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (298, 1, 298, NULL, 4, 'Step 1: the value change and its red-first suite', 'SCREEN.paddingTop 17 to 28.05 with the owner-order comment; the three Screen.test.tsx expectations updated red-first; mutation bite shown; version bump; yarn validate; the lane commit.', NULL, NULL, NULL, 5000, '2026-10-20 22:38:45.870084+00', '2026-10-20 23:02:09.723194+00', NULL, NULL, NULL, NULL, NULL, 293, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (209, 1, 209, NULL, 4, 'Step 1: The expectation and margin table (weight 1)', '', NULL, NULL, NULL, 18000, '2026-10-19 03:18:21.915162+00', '2026-10-19 03:44:19.001112+00', NULL, NULL, NULL, NULL, NULL, 18, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (37, 1, 112, 2, 4, 'The naked-app defaults: all four display toggles off', 'OWNER RULING 2026-10-16: a new (or never-toggled) user starts with a clean app - Show Hijri date, Show seconds, Show time passed and Show countdown bar all OFF by default; a user who manually toggled any switch keeps their stored choice untouched, no migration (the row-105 law, the owner''s explicit confirmation). Three of the four were already off; Show time passed defaulted ON and flipped
 
@@ -5299,22 +5300,11 @@ Status note: 2026-10-16, cleared by the owner: the ladder''s rung 3 fixed it (`s
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (217, 1, 217, NULL, 4, 'Step 1: halved dim values pinned in the suites', '', NULL, NULL, NULL, 26000, '2026-10-19 03:25:16.207445+00', '2026-10-19 04:07:24.451798+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (219, 1, 219, NULL, 4, 'Step 3: the store keeps reminder choices under an off athan', '', NULL, NULL, NULL, 28000, '2026-10-19 03:25:16.256629+00', '2026-10-19 04:23:45.311142+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (127, 1, 2, 2, 4, 'Alert sheet change is all or nothing', 'Queue status: DONE', NULL, NULL, NULL, 106000, '2026-10-18 23:35:57.683648+00', '2026-10-19 02:54:08.88521+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (303, 1, 303, 3, 4, 'Step 1: The shared module carries the grouped display - true per-item versions, the newest-20 window, major.minor grouping as a pure tested function', '', NULL, NULL, NULL, 6000, '2026-10-21 02:49:38.059997+00', '2026-10-21 04:03:48.608836+00', NULL, NULL, NULL, NULL, NULL, 297, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (218, 1, 218, NULL, 4, 'Step 2: whole-header tap on the reminder rows', '', NULL, NULL, NULL, 27000, '2026-10-19 03:25:16.232789+00', '2026-10-19 04:09:12.361191+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (220, 1, 220, NULL, 4, 'Step 4: the sheet restores on off-to-on', '', NULL, NULL, NULL, 29000, '2026-10-19 03:25:16.282186+00', '2026-10-19 04:34:55.78627+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (242, 1, 242, NULL, 4, 'Step 1: The entry and its copy - help.q.widgets appended last in HELP_ENTRIES, the six catalogues, yarn i18n:lock re-taken, red-then-green help coverage (weight 2)', '', NULL, NULL, NULL, 17000, '2026-10-19 13:03:51.42739+00', '2026-10-19 14:02:10.543651+00', NULL, NULL, NULL, NULL, NULL, 16, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (283, 1, 283, NULL, 4, 'Step 3: the tall canvas verified on the gated build', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 8000, '2026-10-20 05:29:29.991552+00', '2026-10-20 11:19:36.279197+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (295, 1, 295, NULL, 1, 'Android help modal: the bottom Close row flashes opaque white while the card enters (row 77''s fix regressed)', 'Goal: opening Help on Android enters as one card - the bottom Close-button row never paints opaque white ahead of the card''s entrance.
-
-Where: components/modals/Help.tsx (the Close row''s entering={FadeIn} - row 77''s fix), components/modals/Modal.tsx (the container''s FadeIn, Android''s SlideInDown card entrance).
-
-Lineage: row 77 (2026-10-13) ended the same flash with the bare FadeIn on the Close row and proved it on iOS. The Android entrance now shows the same flash the owner recorded then: while the card fades in, the bottom row''s solid white container paints at full opacity from its first frame, reading as a flash of white box below the entering card.
-
-Acceptance:
-- [ ] a frame walk of the Android open (a recording, never committed, frames transcribed on the row) shows no frame where the Close row paints at full opacity before the card''s entrance completes
-- [ ] the iOS entrance unchanged
-- [ ] the row keeps its layout animation with the list above it (row 60''s capped-height work)
-- [ ] the root cause named on the row: what makes Android differ from iOS here
-- [ ] yarn validate green', NULL, NULL, NULL, 3000, '2026-10-20 16:09:59.909596+00', '2026-10-20 16:10:08.488656+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (287, 1, 287, NULL, 4, 'Step 1: the encoded manifest and the three gates, red first', '', NULL, NULL, NULL, 10000, '2026-10-20 07:09:05.637854+00', '2026-10-20 08:59:26.348719+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (272, 1, 272, 5, 4, 'Zero personal data: pseudonymous identity, injected build values, and the history scrub', 'Goal: no personal data in the repository - a pseudonymous commit identity going forward, personal build values carried by placeholders and injected at build time, and the published history scrubbed of both owner names.
 
@@ -5536,6 +5526,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-12, audited and pushed: the six-language confidence build landed end to end (en ar ms so hi th) - runtime locale resolution with the device-locale default, the Settings language row and sheet with the in-sheet progress face, forward-only convergence over notifications, channels and widgets with the last-armed stamp, catalog-composed dates, widget props v7 with precomposed localized footers, the widget-runtime locale patch, per-locale native strings from committed config, the catalog gates and lock file. English bytes and every frozen identifier held. Device-proven on the 3T (identifiers byte-stable across a switch, channels renamed in place under frozen ids, the Arabic Asr fire with `العصر الآن` on `athan_1_v4`, require timing 3-4 ms) and the S23 (tall fonts unclipped in ar/hi/th; widgets owner-verified in Thai). Seventeen steps plus eight assumption-ruled plan repairs; a shipped cold-start defect (bare-vs-JSON preference read) was caught and healed on-device same-day. Three-reviewer audit fixed five findings at 2.0.54 (locale config on every Android build, the What''s New stamp live, the launch init latched, plan-folder JSONs in-repo, stale comments) and carried three to rows 61 and 66 and the D41 verification. Two owner-deferred tails ride the confidence build: the XS widget and six-script checks (the orphaned-alert automation wedge) and the Arabic widget half of the S23 check
 
 Needs first: #38', NULL, NULL, NULL, 73000, '2026-10-18 23:35:57.097557+00', '2026-10-19 02:54:08.558262+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (305, 1, 305, 3, 4, 'Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on the 3T, single-user assert, park for the owner''s read', '', NULL, NULL, NULL, 8000, '2026-10-21 02:49:38.267938+00', '2026-10-21 04:10:09.867051+00', NULL, NULL, NULL, NULL, NULL, 297, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 70, 3, 4, 'The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Owner ask 2026-10-12, amended twice 2026-10-18. The Kanboard prototype was built, physically proven (twelve end-to-end checks, 127 tickets, dependency links, dark theme, adopted MCP server, passwordless) and rejected by the owner the same day: ugly in every way, and custom glue kept creeping in against the no-custom law. Decommissioned 2026-10-18 in one commit: containers and volumes deleted, the branch discarded, every kanboard file removed from the tree, board/reader.mjs restored to its pre-70 bytes. THE NEW BRIEF: Paperclip (paperclip.ing, paperclip.inc, github.com/paperclipai/paperclip - verified 2026-10-18 as MIT-licensed, self-hosted, no account, a Node.js server and React UI built for orchestrating AI agents). The owner wants a WATCH board for running agents and subagents: which tickets each picks up, which lanes are free, tickets progressing - self-hosted and free through Docker on the home server, single or multiple projects, everything built-in and nothing custom (no self-built MCP servers, no sync code, no import tooling; agents use the product''s own interfaces; styling only through the product''s native mechanisms, and the real UI must be evaluated before anything is built - an ugly board is a rejected board). The full brief with every requirement and the session''s lessons lives in `ai/prompts/paperclip-board.md`; that file is the entry point for the next session
 
 Status note: 2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-19 02:54:08.908428+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5628,6 +5619,16 @@ Monitoring row for PR `expo/expo#51292`, which adds the `openApp` option to the 
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (231, 1, 231, 5, 11, '`expo-widgets` fillMaxWidth fraction', 'PR: https://github.com/expo/expo/pull/51290
 
 Monitoring row for PR `expo/expo#51290`: the Android Glance converter drops the `fillMaxWidth` fraction (a 0.5 renders at 1.0) and has no `weight` case. This is the true cause behind row 15d''s proportional-layout workaround; nothing in this repo changes until it merges, and the workaround simplifies only at the owner''s say. Removes no patch.', NULL, NULL, NULL, 5000, '2026-10-19 07:36:59.463754+00', '2026-10-20 01:54:24.42644+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (300, 1, 300, NULL, 4, 'Step 1: the Close row''s Android entrance starts at zero opacity in its own style', 'Goal: the Close row''s static style carries opacity 0 on Android alone, with the jest contract red before green and a mutation pass on the Platform gate, the entering and the layout.
+
+Where: components/modals/Help.tsx, components/modals/__tests__/Help.test.tsx.
+
+Acceptance:
+- [ ] an Android-rendered Close row''s flattened style reads opacity 0, red against the unfixed tree
+- [ ] the iOS-rendered Close row''s style carries no opacity key and the entering stays the bare FadeIn
+- [ ] the row keeps layout={GROW} and entering={FadeIn} on both platforms
+- [ ] mutation pass: deleting the style, un-gating it, deleting the entering and deleting the layout each turn a test red
+- [ ] yarn validate exits 0', NULL, NULL, NULL, 7000, '2026-10-20 22:42:35.40308+00', '2026-10-20 22:50:48.03425+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5850,6 +5851,17 @@ Acceptance:
 
 Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carried item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 21:03:20.520722+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (260, 1, 260, 5, 4, 'Step 2: Proof on the 3T at one minute, both languages', 'Apply the patch to the main checkout''s node_modules, build the mock from the branch, install with the badging gate, stage the one-minute state in English and Arabic, measure the centring by screencap with the vision reader, transcribe the numbers, write new coordinates back to the 3T atlas. One commit, patch bump.', NULL, NULL, NULL, 18000, '2026-10-19 20:52:52.944356+00', '2026-10-19 21:48:18.567955+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (299, 1, 299, NULL, 4, 'Step 2: the measured readings on the 3T transcribed and the phone left whole', 'Two Ramadan-forced mock builds from measurement-only refs, badging and User-0 gates, fresh dumps for the gap and the decoration anchors, readings transcribed, leave-behind build installed, measurement refs deleted.', NULL, NULL, NULL, 6000, '2026-10-20 22:38:45.960676+00', '2026-10-21 03:45:34.393307+00', NULL, NULL, NULL, NULL, NULL, 293, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (301, 1, 301, NULL, 4, 'Step 2: the owner''s flash verdict on the 3T build - fixed closes the row, still-flashing reopens it', 'Goal: a frame walk of the Android Help open on the OnePlus 3T shows no frame where the Close row paints at full opacity before the card''s entrance completes, and the root cause is named on the row.
+
+Where: the 3T over adb; the recording and frames never committed, transcribed on row T-295 as comments.
+
+Acceptance:
+- [ ] a red capture at the uat base pins the flash: frames with the row near full alpha while the card is dimmer
+- [ ] a green capture at the fix shows no frame with the row at full opacity before the entrance completes
+- [ ] the root cause comment names what makes Android differ from iOS, citing the walk''s numbers
+- [ ] after the entrance a topic toggle leaves the Close button visible (the settle read)
+- [ ] build slot guarded by the pgrep check, aapt2 badging read before install, User 0 alone carries the app after', NULL, NULL, NULL, 8000, '2026-10-20 22:42:35.463683+00', '2026-10-21 04:24:25.714143+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (259, 1, 259, 5, 4, 'Step 1: The granted width rides the widget environment', 'Red renderer tests, the expo-widgets patch hunk (provideRoot stamps the exact granted width into the environment), the layout reads it with the 310dp fallback, the dead snapshot field is deleted, and WidgetRefreshScheduler drops its width stamp (composition-size stamp and gate stay). yarn validate green. One commit, patch bump.', NULL, NULL, NULL, 17000, '2026-10-19 20:52:52.908116+00', '2026-10-19 21:22:29.90393+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (241, 1, 241, 2, 4, 'Android widget countdown: centers in its own space under Arabic', 'Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.
 
@@ -5867,24 +5879,13 @@ Acceptance:
 - [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions
 - [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate
 - [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)', NULL, NULL, NULL, 19000, '2026-10-19 09:16:24.717831+00', '2026-10-19 22:08:20.226949+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (293, 1, 293, NULL, 1, 'The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved', 'Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.
-
-Where: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN), every geometry through that one path; the Ramadan decorations layer sits where it sits today (verify it reads no page padding).
-
-Owner order 2026-10-20: whatever the top spacing is now, add 65 percent (new gap = 1.65 x today''s).
-
-Acceptance:
-- [ ] a measured reading on a phone: the first component''s top edge sits 1.65x today''s gap below the screen''s top edge, transcribed on the row
-- [ ] one code path and one value change - no per-device or per-pose constant (the tall-pose ruling of row 280)
-- [ ] the Ramadan decorations measured in place, before and after, readings transcribed
-- [ ] phones and the Duo''s tall and closed poses keep their honored insets - only the added gap moves the column
-- [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-20 16:09:59.807057+00', '2026-10-20 16:10:08.383911+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (261, 1, 261, NULL, 4, 'Step 1: Apple''s requirements named and recorded', 'Export the App Resizability skill from Xcode 27.1, read the four official artifacts, re-run the three pattern reads, write the Requirements section into the T-116 plan doc with citations and the one hard requirement beyond running quoted verbatim. One commit: version bump plus snapshot.', NULL, NULL, NULL, 5000, '2026-10-19 22:14:39.565172+00', '2026-10-19 22:27:40.136375+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (263, 1, 263, NULL, 4, 'Step 3: the row''s records closed', 'Read the branch diff and record it names no layout file (every other form factor unchanged by construction), tick the subtasks, regenerate the snapshot. One commit: version bump plus snapshot.', NULL, NULL, NULL, 7000, '2026-10-19 22:14:39.65314+00', '2026-10-19 22:56:03.749371+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (262, 1, 262, NULL, 4, 'Step 2: both poses verified on the iPhone Duo simulator', 'Build from the branch for the Duo udid, verify closed pose (one schedule filling the outer display) and open pose (one schedule in the centred portrait window), both schedules reachable, the fold keeping the app alive, attach one open-pose screenshot to this row from scratch outside the worktree, transcribe every reading into the ticket comment. Runs alone in a fresh executor session. One commit: version bump plus snapshot.', NULL, NULL, NULL, 6000, '2026-10-19 22:14:39.616735+00', '2026-10-19 22:53:31.337558+00', NULL, NULL, NULL, NULL, NULL, 33, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (265, 1, 265, NULL, 4, 'Step 1: the oversized-inset clamp lands', '', NULL, NULL, NULL, 5000, '2026-10-19 23:23:42.493079+00', '2026-10-19 23:38:06.126601+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (266, 1, 266, NULL, 4, 'Step 2: the ruled outcome verified on the iPhone Duo simulator', '', NULL, NULL, NULL, 6000, '2026-10-19 23:23:42.539115+00', '2026-10-19 23:56:33.939754+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (267, 1, 267, NULL, 4, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-19 23:23:42.573038+00', '2026-10-19 23:59:02.841973+00', NULL, NULL, NULL, NULL, NULL, 264, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (304, 1, 304, 3, 4, 'Step 2: The modal renders the approved grouped card - tag pill headers, right-edge glyphs, breathing gap, dot separators, version line gone, index caller updated', '', NULL, NULL, NULL, 7000, '2026-10-21 02:49:38.180472+00', '2026-10-21 04:03:48.652902+00', NULL, NULL, NULL, NULL, NULL, 297, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (264, 1, 264, 2, 4, 'iPhone Duo open-pose landscape: black bars flank the purple background and a tall gap sits above the countdown', 'Goal: the Duo''s open and half-open poses render the schedule at its designed offset inside Apple''s sanctioned centred portrait window, with no phantom gap above the countdown and no overlap between the Standard page''s Isha row and the Settings button. The black bars beside the window are Apple''s own letterbox around a portrait-locked app and stay (LEAD RULING agent-ruled 2026-10-20, row comment 2371: Vehicle C); the price of removing them (landscape support, Vehicles A and B) is tabled on that comment.
 
 Where: the top safe-area consumption in app/Screen.tsx, clamped only where the delivered top inset exceeds the largest any iPhone delivers (62), the compat-scaled window the Duo''s non-closed poses grant. Portrait poses and every phone geometry bit-identical.
@@ -5904,6 +5905,50 @@ Acceptance:
 - [x] the black bars remain and are recorded on this row as Apple''s letterbox around the portrait-locked window, with the tabled price of removing them (Vehicles A and B) on the ruling comment
 - [x] portrait poses and every phone geometry bit-identical: the branch diff names no phone-tuned layout value, the unit tests pin the phone-inset path unchanged (62 honored, 63 clamped), and the closed-pose frames equal the pre-fix reading', NULL, NULL, NULL, 8000, '2026-10-19 22:48:42.762556+00', '2026-10-20 00:06:01.090843+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (286, 1, 286, NULL, 4, 'Step 3: Design 1 becomes the shipped bottom bar with its layout suite', 'The owner''s picked arrangement replaces the column: one row, dot, Settings button, dot, vertically centred, its bottom on today''s dots-bottom anchor. Full unit coverage red before green, one commit, one version, yarn validate green.', NULL, NULL, NULL, 10000, '2026-10-20 05:33:19.118379+00', '2026-10-20 05:49:43.951771+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (297, 1, 297, 3, 4, 'The What''s New modal groups its items under version headings, the newest twenty shown in version sections parted by separator lines', 'Goal: the What''s New modal reads as a versioned changelog - the newest 20 archived items grouped under version headings (major.minor, the patch hidden), newest group first, rendered per the owner-approved refine-04 design (2026-10-21).
+
+Where: components/modals/WhatsNew.tsx (the grouped list, its tag-pill headers and dot separators), shared/whatsNew.ts (the archive carries true per-item versions; grouping is display-level; the release stamp still gates appearance), and the content contract tests. The modal''s appear gate is untouched.
+
+Acceptance:
+- [ ] the modal renders version-headed sections newest first (major.minor, patch hidden), each item under its shipping version, a centred dot separator between sections and none after the last
+- [ ] the list shows the most recent 20 items; older items stay in the archive (its 100-entry prune unchanged) but out of the modal
+- [ ] the card keeps its What''s New heading with no version line under it; the modal still appears only when an update ships, and the release stamp equals the build version (pinned by test)
+- [ ] the built modal read by the owner on the OnePlus 3T (transcribed on the row, screenshots never committed)
+- [ ] yarn validate green', NULL, NULL, NULL, 5000, '2026-10-20 22:18:32.651223+00', '2026-10-21 04:24:25.70735+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (295, 1, 295, 2, 4, 'Android help modal: the bottom Close row flashes opaque white while the card enters (row 77''s fix regressed)', 'Goal: opening Help on Android enters as one card - the bottom Close-button row never paints opaque white ahead of the card''s entrance.
+
+Where: components/modals/Help.tsx (the Close row''s entering={FadeIn} - row 77''s fix), components/modals/Modal.tsx (the container''s FadeIn, Android''s SlideInDown card entrance).
+
+Lineage: row 77 (2026-10-13) ended the same flash with the bare FadeIn on the Close row and proved it on iOS. The Android entrance now shows the same flash the owner recorded then: while the card fades in, the bottom row''s solid white container paints at full opacity from its first frame, reading as a flash of white box below the entering card.
+
+Acceptance:
+- [ ] a frame walk of the Android open (a recording, never committed, frames transcribed on the row) shows no frame where the Close row paints at full opacity before the card''s entrance completes
+- [ ] the iOS entrance unchanged
+- [ ] the row keeps its layout animation with the list above it (row 60''s capped-height work)
+- [ ] the root cause named on the row: what makes Android differ from iOS here
+- [ ] yarn validate green', NULL, NULL, NULL, 3000, '2026-10-20 16:09:59.909596+00', '2026-10-21 04:24:25.702308+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, NULL, 1, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, as it did before the regression.
+
+Where: components/modals/Help.tsx - the question list''s separator rendering and its interaction with the capped-height layout animation.
+
+Owner report 2026-10-21, on the 3T build 2.3.5: dividers alternate - question 1 divided above not below, question 2 below not above, question 3 above not below, question 4 below not above, and so on in pairs; an opened question gains a divider below it that disappears when it closes. The owner reads the list as grouped in twos. Screenshots (never committed): /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/Screenshot_20261021-030117.jpg
+
+Acceptance:
+- [ ] a test pins one divider between every adjacent question pair, closed and opened
+- [ ] the owner''s read on the next build confirms the even rhythm
+- [ ] yarn validate green', NULL, NULL, NULL, 9000, '2026-10-21 02:07:45.517501+00', '2026-10-21 04:25:32.517161+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (293, 1, 293, 9, 4, 'The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved', 'Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.
+
+Where: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN). The Ramadan decorations layer (components/ui/RamadanDecorations.tsx in Navigation''s chrome layer) sits where it sits today and reads no page padding.
+
+Owner order 2026-10-20: whatever the top spacing is now, add 65 percent (new gap = 1.65 x today''s).
+
+Acceptance:
+- [ ] a measured reading on the 3T, transcribed on the row: the pinned countdown node''s top moves down exactly 11.05dp (29px at the 3T''s scale) between the before build and the after build, the dates row''s node by the same delta, so the app-added gap reads 17 + 11.05 = 28.05 = 1.65 x today''s within pixel rounding, and the honored inset is identical in both readings
+- [ ] one code path and one value: the lane commit changes SCREEN.paddingTop alone (beside its test expectations and the version pair), no per-device or per-pose constant (the tall-pose ruling of row 280)
+- [ ] the Ramadan decorations measured in place before and after on the same forced-season builds, their anchors byte-identical, readings transcribed, and the layer verified to read no page padding
+- [ ] the three honored-inset arms (phone-class, tall canvas, letterbox) green in __tests__/app/Screen.test.tsx at the new sums, so phones and the Duo''s tall and closed poses keep their honored insets and only the added gap moves the column
+- [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-20 16:09:59.807057+00', '2026-10-21 03:45:45.570747+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (296, 1, 296, NULL, 1, 'The What''s New archive speaks every locale: the seven English stand-ins translated, and a lock that keeps every future item translated', 'Goal: every What''s New item renders in the reader''s language - the seven historical items that still carry English stand-ins in the five non-English catalogs are translated, and a lock makes any future untranslated item fail the suite before it ships.
 
 Where: shared/i18n/{ar,ms,so,hi,th}.ts - the whatsNew.title/body keys for tabletSupport, athanSounds, reminderSounds, widgets, secondReminder, helpPage, qiblaCompass. The language item already carries real translations; en stays the source. Terminology harvest (each catalog''s own established words): ar الأذان / تنبيه / الإعدادات, ms azan / Peringatan / Tetapan, so aqaanka / Xasuusiye / Habbooshka, hi अज़ान / रिमाइंडर / सेटिंग्स, th อะซาน / การแจ้งเตือนล่วงหน้า / การตั้งค่า. The lock: shared/__tests__/whatsNew.test.ts''s content contract extended to resolve the archive under every locale and fail when a title or body equals its en value.
@@ -5915,7 +5960,7 @@ Acceptance:
 - [ ] the lock test fails on an English stand-in (red-first proof) and runs inside yarn validate
 - [ ] every locale''s strings sit inside the title and body length limits
 - [ ] the en catalog byte-identical
-- [ ] yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-20 20:39:18.314801+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 04:25:32.515286+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 
 
 --
@@ -8944,6 +8989,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2728, 280, 'activity', 'owner', NULL, 'status', '2026-10-20 11:39:05.692247+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2732, 280, 'comment', 'owner', 'OWNER ORDER 2026-10-20, final close: the top padding works perfectly, the tall version works completely fine as expected, and the wide hold''s black bars are accepted as is - stop trying. Deep clean: remove any dead code added about the black bars (it does not work - the bars are still there). Then one complete audit, and this ticket closes for good. Reopened In progress for exactly this scope.', NULL, '2026-10-20 11:43:12.929042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2738, 280, 'activity', 'owner', NULL, 'status', '2026-10-20 12:13:50.857759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2760, 293, 'activity', 'owner', NULL, 'status', '2026-10-20 22:24:58.929327+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2729, 280, 'comment', 'owner', 'Closed at uat 2.2.7/2.2.8: Option B is the shipped Duo presentation. Held tall on the open inner display the app renders top-down on the full 669x951 canvas, both panels, background edge to edge, no letterbox - and the standard top spacing is back: the tall canvas''s real 82pt inset is honored through the one existing path, the prayer name sitting exactly at the phones'' formula (page padding 99 = 82 + the standard 17; the name''s text ink at 95, the same measured 13-offset relationship every honored-inset geometry shows). The closed pose stays bit-identical (466x678, name at 13, row 264''s fence read), phones are untouched, and no wide layout exists under any hold: the portrait pair is declared on both plist arrays with the full-screen key, the AppDelegate gate answers portrait for every window, and the plan''s four-orientation maximum was ruled out because row 271 measured it spanning the wide hold.
 
 The wide-hold trade-off, tabled: a portrait-locked app''s wide-hold frame is the system''s centered letterbox (step 1''s live read: 469x669 on the 951x669 panel, pure-black bars x 0-240 and x 710-950), and filling the wide canvas would mean declaring landscape - the wide mode the owner cancelled. The letterbox stands as the price of the lock, never filled. One reading this host cannot produce: the wide hold on the gated build itself (rotation is the owner''s instrument), so the letterbox''s internals rest on step 1''s live record of the same plist shape plus the clamp''s letterbox arm, which the gated build preserves by construction and by test.
@@ -8974,6 +9020,221 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2750, 296, 'activity', 'owner', NULL, 'created', '2026-10-20 20:39:17.986562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2751, 296, 'activity', 'owner', NULL, 'field', '2026-10-20 20:39:18.22055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "296"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2752, 296, 'activity', 'owner', NULL, 'label_add', '2026-10-20 20:39:18.322248+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 183, "value": "#296"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2753, 297, 'activity', 'owner', NULL, 'created', '2026-10-20 22:18:32.687174+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2754, 297, 'activity', 'owner', NULL, 'field', '2026-10-20 22:18:32.754081+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "297"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2755, 297, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:18:32.787047+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 184, "value": "#297"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2757, 295, 'activity', 'owner', NULL, 'field', '2026-10-20 22:24:58.917227+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2756, 297, 'activity', 'owner', NULL, 'field', '2026-10-20 22:24:58.918154+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2758, 293, 'activity', 'owner', NULL, 'field', '2026-10-20 22:24:58.919694+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2759, 295, 'activity', 'owner', NULL, 'status', '2026-10-20 22:24:58.927945+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2761, 297, 'activity', 'owner', NULL, 'link_add', '2026-10-20 22:25:01.746534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2762, 296, 'activity', 'owner', NULL, 'link_add', '2026-10-20 22:25:01.746534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 297, "value": "T-297"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2763, 296, 'activity', 'owner', NULL, 'link_add', '2026-10-20 22:25:01.749101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 294, "value": "T-294"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2764, 294, 'activity', 'owner', NULL, 'link_add', '2026-10-20 22:25:01.749101+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2765, 297, 'activity', 'owner', NULL, 'status', '2026-10-20 22:25:01.761649+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2766, 293, 'activity', 'owner', NULL, 'description', '2026-10-20 22:38:45.759763+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.\n\nWhere: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN). The Ramadan decorations layer (components/ui/RamadanDecorations.tsx in Navigation''s chrome layer) sits where it sits today and reads no page padding.\n\nOwner order 2026-10-20: whatever the top spacing is now, add 65 percent (new gap = 1.65 x today''s).\n\nAcceptance:\n- [ ] a measured reading on the 3T, transcribed on the row: the app-added top gap (the countdown block''s top edge minus the phone''s honored status-bar inset) reads 1.65 x today''s (28.05dp against 17) within pixel rounding, the honored inset itself identical, and the dates row''s top moves by the same delta\n- [ ] one code path and one value: the lane commit changes SCREEN.paddingTop alone (beside its test expectations and the version pair), no per-device or per-pose constant (the tall-pose ruling of row 280)\n- [ ] the Ramadan decorations measured in place before and after on the same forced-season builds, their anchors byte-identical, readings transcribed, and the layer verified to read no page padding\n- [ ] the three honored-inset arms (phone-class, tall canvas, letterbox) green in __tests__/app/Screen.test.tsx at the new sums, so phones and the Duo''s tall and closed poses keep their honored insets and only the added gap moves the column\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2767, 293, 'activity', 'owner', NULL, 'type', '2026-10-20 22:38:45.759763+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2768, 293, 'activity', 'owner', NULL, 'estimate', '2026-10-20 22:38:45.759763+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2769, 293, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:38:45.797735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 148, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2770, 293, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:38:45.797735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2771, 298, 'activity', 'owner', NULL, 'created', '2026-10-20 22:38:45.889084+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2772, 298, 'activity', 'owner', NULL, 'parent', '2026-10-20 22:38:45.894938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 293, "value": "T-293"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2773, 293, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 22:38:45.894938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 298, "value": "T-298"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2774, 299, 'activity', 'owner', NULL, 'created', '2026-10-20 22:38:45.973715+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2775, 299, 'activity', 'owner', NULL, 'parent', '2026-10-20 22:38:45.980038+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 293, "value": "T-293"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2776, 293, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 22:38:45.980038+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 299, "value": "T-299"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2777, 295, 'activity', 'owner', NULL, 'type', '2026-10-20 22:42:35.33583+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2778, 295, 'activity', 'owner', NULL, 'estimate', '2026-10-20 22:42:35.33583+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2779, 295, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.350099+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2780, 295, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.350099+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2781, 300, 'activity', 'owner', NULL, 'created', '2026-10-20 22:42:35.413104+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2782, 300, 'activity', 'owner', NULL, 'parent', '2026-10-20 22:42:35.418344+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 295, "value": "T-295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2783, 295, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 22:42:35.418344+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 300, "value": "T-300"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2784, 300, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.43011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 182, "value": "#295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2785, 300, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.43011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2786, 300, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.43011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2787, 301, 'activity', 'owner', NULL, 'created', '2026-10-20 22:42:35.472893+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2788, 301, 'activity', 'owner', NULL, 'parent', '2026-10-20 22:42:35.474686+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 295, "value": "T-295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2789, 295, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 22:42:35.474686+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 301, "value": "T-301"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2790, 301, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.485555+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 182, "value": "#295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2791, 301, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.485555+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2792, 301, 'activity', 'owner', NULL, 'label_add', '2026-10-20 22:42:35.485555+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2793, 300, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.346857+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 182, "value": "#295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2794, 300, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.346857+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2795, 300, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.346857+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2796, 301, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.402688+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 182, "value": "#295"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2797, 301, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.402688+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 141, "value": "Bug"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2798, 301, 'activity', 'owner', NULL, 'label_remove', '2026-10-20 22:42:46.402688+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2799, 295, 'activity', 'owner', NULL, 'status', '2026-10-20 22:42:54.538622+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2815, 293, 'comment', 'owner', 'Step 1 landed on lane-T293 at 2.3.4 (30c698f6): the constant, its three red-first suite arms and the lead-ruled collision entry, validate green. Step 2, the device readings, runs next.', NULL, '2026-10-20 23:02:09.797223+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2800, 295, 'comment', 'owner', 'Planned: the Android flash is the row''s own first frame - Android neither multiplies the row by the container''s fade nor applies the entering FadeIn''s zero before the first paint, so the fix pins the row''s start in its own static style. Plan doc T-295, two steps (code, device).', NULL, '2026-10-20 22:42:54.568724+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2802, 293, 'activity', 'owner', NULL, 'description', '2026-10-20 22:47:36.380805+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the gap between the top of the screen and the first component grows by 65 percent over today''s, and every component below - the prayer name, the countdown timer and bar, the location, the dates, the mosque icon, the prayer list, the time-ago rows - moves down with it. The Ramadan decorations stay exactly where they are.\n\nWhere: app/Screen.tsx (the page''s single paddingTop = honoredTopInset() + SCREEN.paddingTop), shared/constants.ts (SCREEN). The Ramadan decorations layer (components/ui/RamadanDecorations.tsx in Navigation''s chrome layer) sits where it sits today and reads no page padding.\n\nOwner order 2026-10-20: whatever the top spacing is now, add 65 percent (new gap = 1.65 x today''s).\n\nAcceptance:\n- [ ] a measured reading on the 3T, transcribed on the row: the pinned countdown node''s top moves down exactly 11.05dp (29px at the 3T''s scale) between the before build and the after build, the dates row''s node by the same delta, so the app-added gap reads 17 + 11.05 = 28.05 = 1.65 x today''s within pixel rounding, and the honored inset is identical in both readings\n- [ ] one code path and one value: the lane commit changes SCREEN.paddingTop alone (beside its test expectations and the version pair), no per-device or per-pose constant (the tall-pose ruling of row 280)\n- [ ] the Ramadan decorations measured in place before and after on the same forced-season builds, their anchors byte-identical, readings transcribed, and the layer verified to read no page padding\n- [ ] the three honored-inset arms (phone-class, tall canvas, letterbox) green in __tests__/app/Screen.test.tsx at the new sums, so phones and the Duo''s tall and closed poses keep their honored insets and only the added gap moves the column\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2803, 293, 'activity', 'owner', NULL, 'status', '2026-10-20 22:47:46.296973+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2808, 293, 'activity', 'owner', NULL, 'field', '2026-10-20 22:55:31.175092+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "lane-T295''s 2.3.4 reaching origin/uat (the lead''s push); then rebase lane-T293 --autostash onto uat and commit Step 1 at 2.3.5"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2812, 293, 'activity', 'owner', NULL, 'status', '2026-10-20 23:02:09.559755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2801, 295, 'activity', 'owner', NULL, 'status', '2026-10-20 22:43:01.232249+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2804, 293, 'comment', 'owner', 'Planned: the plan page T-293 carries the design, seven ruled decisions and two steps (code 2, device 3, five points); the grill''s eight findings are answered in the page''s v3.', NULL, '2026-10-20 22:47:46.32869+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2805, 293, 'activity', 'owner', NULL, 'status', '2026-10-20 22:47:58.619789+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2806, 295, 'comment', 'owner', 'Step 1 landed: the Close row''s Android entrance now starts from a zero opacity held in the row''s own style, gated to Android alone. The iOS entrance, the bare FadeIn and the row''s layout animation stand pinned unchanged by tests, and the gate survived a four-mutant pass. Step 2, the 3T frame walk, remains.', NULL, '2026-10-20 22:50:48.032704+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2807, 300, 'activity', 'owner', NULL, 'status', '2026-10-20 22:50:48.050111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2813, 293, 'activity', 'owner', NULL, 'field', '2026-10-20 23:02:09.680438+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2814, 298, 'activity', 'owner', NULL, 'status', '2026-10-20 23:02:09.742462+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2809, 293, 'activity', 'owner', NULL, 'status', '2026-10-20 22:55:31.237135+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2810, 293, 'comment', 'owner', 'Step 1 is finished and staged on lane-T293 (constant, three red-first suite arms, mutation bite, validate green at 5910 passed) but cannot commit: lane-T295 holds 2.3.4 in an unpushed local commit, and from uat 2.3.3 the discipline gate allows only 2.3.4. Waiting on that number reaching origin/uat; the resume is a rebase --autostash onto uat and the Step 1 commit at 2.3.5 with the subject already written in the plan''s Step 1.', NULL, '2026-10-20 22:55:31.309055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2811, 293, 'comment', 'owner', 'agent-ruled 2026-10-20: the version deadlock resolves through the collision allowlist, not a push. Lane-T293 commits Step 1 at 2.3.4 with a lead entry in scripts/version-collisions-allowlist.json riding that commit, and whichever lane merges second renumbers above the first (the 2.2.9 remedy from earlier today). Pushing lane-T295''s unaudited 2.3.4 to free the number would break the reviewed-commits-only push rule.', NULL, '2026-10-20 22:58:24.185888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2816, 297, 'comment', 'owner', 'Owner order 2026-10-21: a second set of 20 designs - ten more collapsible and ten more flat-list - with more variety than the first set, and the pill-shaped version header explicitly liked: develop the pill family further in the new set. The pick now happens over 40 designs.', NULL, '2026-10-20 23:18:26.684737+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2817, 295, 'comment', 'owner', 'Step 2 device walk done on the physical 3T (mock builds of 8579a399 red and 222ad10d green, one recording of the Help open each, same protocol both sides). The walk reads the Close row''s white on the Close-button scanline at 10 percent of card width and the card''s white at 3 percent at the card''s midpoint, each zeroed on its frame''s local backdrop, settled references from the last frame. The vision subagent could not be dispatched from this session (harness nesting limit), so the numbers are a scripted pixel walk under row 77''s rule; frames kept under the session directory for a vision pass.
+
+Red entrance (row / card): h_030 0.51/0.38, h_031 0.63/0.49, h_032 0.75/0.59, h_033 0.84/0.68, h_034 0.91/0.76, h_035 0.96/0.83, h_036 0.97/0.90, h_037 0.99/0.94, h_038 1.00/0.97, h_039 1.00/0.99, h_040 1.00/1.00 settled.
+Green entrance (row / card): h_030 0.47/0.37, h_031 0.60/0.48, h_032 0.73/0.58, h_033 0.82/0.68, h_034 0.90/0.76, h_035 0.95/0.83, h_036 0.97/0.89, h_037 0.99/0.94, h_038 1.00/0.97, h_039 1.00/0.99, h_040 1.00/1.00 settled.
+
+The two walks agree within a few hundredths at every frame: the row still reaches full opacity two frames before the card''s entrance completes (h_038 and h_039, settle at h_040), and the row still leads the card by 0.12 to 0.15 through mid-entrance, the lead shape of the owner''s 0.96-against-0.78 recording. The design failed on device, so subtask 301 stays unticked. At this capture rate the row''s very first paint lands off-screen or between recorded frames: the first frame the walk sees was already fading in both builds (0.14 red, 0.08 green), so the walk cannot tell the builds apart even though the acceptance is not met.
+
+The settle tail does clear the plan''s risk: from h_040 to the recording''s end the row reads its settled white and the Close button sits in place, so the static zero does not outlive the entrance.', NULL, '2026-10-20 23:27:47.905183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2818, 297, 'comment', 'owner', 'Owner order 2026-10-21, second: in some of the designs the iOS and Android icons move to the right side of the card, aligned with the title row, so the title itself shifts left into the space the icons leave. Applies across the set wherever it reads well.', NULL, '2026-10-20 23:39:01.863062+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2819, 295, 'comment', 'owner', 'The 3T frames went through the vision worker: neither build ever paints the row at literal full opacity on the 3T (peak 0.80 effective against the card''s 0.64), so that device cannot tell the fixed build from the base - it shows a soft block riding about 0.16 ahead of the card in both, recorded as a residual, not chased. The owner''s recording is 1080x2340, the S23''s panel, so the walk now also runs there on the two APKs already built; that reading decides the ticket.', NULL, '2026-10-20 23:45:30.642531+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2820, 295, 'comment', 'owner', 'The deciding walk is parked: the S23 is not connected (adb sees the 3T alone, no Samsung on the USB bus, no wireless candidate), and no other modern-Android fleet phone is reachable. The 3T evidence stands as recorded - the fix is behaviorally neutral there and the owner''s flash does not reproduce on it - so the ticket waits on a modern-Android phone to run the two APKs already built. Step 1 stays on the lane branch, unmerged.', NULL, '2026-10-20 23:50:14.487082+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2821, 295, 'activity', 'owner', NULL, 'status', '2026-10-20 23:50:14.541221+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2822, 295, 'activity', 'owner', NULL, 'field', '2026-10-20 23:50:35.168004+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner connects the S23 (or another modern-Android fleet phone) so the discriminating frame walk can run; both APKs are already built under the session directory"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2823, 297, 'activity', 'owner', NULL, 'status', '2026-10-21 00:44:31.853091+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2824, 297, 'activity', 'owner', NULL, 'type', '2026-10-21 00:44:31.853091+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2825, 297, 'activity', 'owner', NULL, 'label_add', '2026-10-21 00:44:31.880861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 148, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2826, 297, 'activity', 'owner', NULL, 'label_add', '2026-10-21 00:44:31.880861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2827, 297, 'activity', 'owner', NULL, 'label_add', '2026-10-21 00:44:31.880861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2828, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 00:44:31.919568+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner picks one of the 40 designs in designs-297 (list-01..20, drop-01..20); implementation follows the pick"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2829, 297, 'comment', 'owner', 'All 40 grouped What''s New renders await the owner''s pick: twenty flat and twenty drop-down, the second twenty carrying the pill riffs and nine variants with the platform icons moved to the right of each row. The plan page lists every variant one line each, and the renders sit with their manifest in designs-297, off git. Implementation starts on the pick.', NULL, '2026-10-21 00:44:31.940376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2835, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 01:00:49.614226+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2830, 297, 'comment', 'owner', 'Owner direction 2026-10-21: the pick converges on list-12, refined. The pill stays but takes the Close button''s soft rounded corners at a smaller size (it de-emphasises); the iOS and Android icons move to each item row''s right edge, right-aligned with the title line and sitting side by side horizontally, never stacked; groups now form by major.minor with the patch hidden (no triple-digit patches, several items beneath each minor). Two renders ordered - the version pill left-aligned and right-aligned - and the pick happens over those two.', NULL, '2026-10-21 00:54:07.29668+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2831, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 00:54:07.310481+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2832, 297, 'activity', 'owner', NULL, 'status', '2026-10-21 00:54:07.321033+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2833, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 01:00:49.593377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2834, 295, 'comment', 'owner', 'Owner order 2026-10-21: the owner takes over the phone testing personally - the agent''s device navigation is stood down for this ticket. The fix is audited and landed, a build the owner can drive is made ready, and the row then waits on the owner''s verdict: fixed closes it, still-flashing reopens it with the owner''s recording as the evidence. The agent-driven frame walk is dropped as the gate.', NULL, '2026-10-21 01:00:49.597721+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2836, 295, 'comment', 'owner', 'Owner order 2026-10-21, fleet rule: only the iPhone XS and the OnePlus 3T are test devices now. The owner tests this fix on the 3T personally; other phones wait for the owner''s word. The 3T''s known non-discrimination (Android 9 shows no flash on either build) stays on record - the owner''s verdict is the gate, and the S23 re-check happens only when the owner widens the fleet.', NULL, '2026-10-21 01:01:20.47972+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2837, 293, 'comment', 'owner', 'Owner order 2026-10-21: the test fleet is exactly two phones - the iPhone XS and the OnePlus 3T. Nothing else is connected, measured or installed on until the owner widens the fleet after the board clears. Any device step still pending takes its reading on one of these two or waits.', NULL, '2026-10-21 01:01:20.487719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2838, 295, 'comment', 'owner', 'Audit: FINDINGS: none. The code matches the plan - the Android-gated zero-opacity first frame on the Close row with the bare FadeIn and the layout animation kept, the shared modal untouched, and the jest contract (Android first frame, iOS unchanged, entering, layout, settled fill) green in the worktree; the base style carried no opacity key, so the new Android test is genuinely red against it. The second commit''s extra patch bump is the cross-lane 2.3.4 collision renumbering, allowlisted per the lead''s ruling, and the atlas row is the write-back the device-atlas rule requires for the owner''s own walk.', NULL, '2026-10-21 01:10:51.109379+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2839, 295, 'comment', 'owner', 'suggestion: components/modals/Help.tsx:191 - opacity 0 is now the row''s committed style, not just its first frame. In reanimated 4.7.1 the entering FadeIn still animates to 1 (the entering worklet only receives layout values), and that final frame survives only while nothing re-feeds the committed props - but the row''s own layout={GROW} does: LinearTransition frames clone props from the committed style (progressLayoutAnimation clones from finalView.props), so the first topic open or close on Android re-applies opacity 0 and the Close row vanishes for the rest of the modal. Hold the entrance without committing opacity 0 in the static style.
+question: components/modals/__tests__/Help.test.tsx:359 - the Android tests assert the style object, and the change carries no device record that the Close row is still visible at settle or after a topic toggle (the only 3T artefact is the Settings-sheet atlas row); which logcat or dump line backs that claim?
+nitpick: components/modals/__tests__/Help.test.tsx:381 - ''stays opaque at settle'' asserts backgroundColor, which opacity never touches; the name reads as a visibility check the test does not make.', NULL, '2026-10-21 01:18:27.943002+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2840, 295, 'comment', 'owner', 'Audit adjudication. The plan-conformance review passed clean. Of the blind review''s three findings: the settle-after-a-topic-toggle question is taken - no record exists, and per the owner''s order that read joins the owner''s own 3T test (open Help, open a topic, the Close button must stay visible). The invisible-row suggestion is rejected: traced through the installed animation library''s source, the entrance''s final opacity is committed back into the view tree at entrance completion, so later layout moves on the row carry the settled 1, and the 3T recording''s settle tail shows exactly that; the claim''s trigger cannot fire after the entrance, and no row change can land inside the 300ms entrance in this layout. The test-name nitpick is noted, no consequence. Version: uat still sits at 2.3.3, so this lane merges first at 2.3.4 with the allowlist entry riding; lane T-293 renumbers above this lane''s 2.3.5 when it lands.', NULL, '2026-10-21 01:25:29.772192+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 2839, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2841, 301, 'activity', 'owner', NULL, 'title', '2026-10-21 01:41:28.158567+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 2: the owner''s flash verdict on the 3T build - fixed closes the row, still-flashing reopens it"}, "from": {"value": "Step 2: the 3T frame walk proves the Android entrance flashless"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2874, 295, 'comment', 'owner', 'The owner''s test is ready on the 3T: the merged fix build (2.3.5, mock-served, the owner''s own install certificate) is on the phone as its only copy for the one user, and the first-launch news modal is already dismissed, so the owner''s first open is a clean one. To test: open Settings, tap Help, and watch the card enter - the bottom Close row should ride in with the card, no white bar ahead of it. Then open any topic and check the Close button is still visible once the list settles, the one settle read no device record carried. No flash closes the row on the owner''s word; a flash reopens it with the owner''s recording as the evidence. One reading note stands on the row: this phone could not separate the two builds by pixel walk (Android 9 paints a soft block riding slightly ahead of the card in both), so the owner''s eye is the deciding instrument and a borderline call goes to the recording.', NULL, '2026-10-21 01:54:20.391685+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2875, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 01:54:25.421927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2876, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 01:54:25.483714+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s flash verdict on the 3T build: fixed closes the row, still-flashing reopens it with the owner''s recording as evidence"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2907, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 03:14:06.31043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2877, 297, 'comment', 'owner', 'Owner order 2026-10-21, third refinement: the version pill is right-aligned (settled), its background fills with the colour the iOS and Android icons carry, the version number renders slightly darker than that fill - a tonal tag look - and the pill shrinks about 25 percent below the refined size. One render of this design is ordered; the pick follows over it and the clean right-aligned outline shot.', NULL, '2026-10-21 01:58:31.456596+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2879, 295, 'comment', 'owner', 'Owner verdict 2026-10-21, 03:02: STILL FLASHING on the 3T build 2.3.5. At the entrance''s 50 percent mark the owner sees an opaque white box around the Close button while the card itself reads translucent. Two owner screenshots pulled to /private/var/folders/cs/j4wg7fqj1qd_xx4dcnmbb5fm0000gp/T/opencode/295-evidence/ (030117 = settled, 030244 = mid-entrance): never commit them. The static-style zero start did not hold on device; round 2 diagnoses from these frames.', NULL, '2026-10-21 02:07:45.52759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2878, 295, 'comment', 'owner', 'Verified on the 3T: the merged 2.3.5 mock build from 9b6301bf is installed as its only copy for User 0 alone (installed 02:52, matching the built APK exactly, fleettest id confirmed) and it opens - launched once, process up, no crash. The owner''s test instructions above stand as written; the phone was in the owner''s hands mid-use at the check, so it was left untouched.', NULL, '2026-10-21 02:04:32.038731+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2880, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 02:07:45.544467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2881, 302, 'activity', 'owner', NULL, 'created', '2026-10-21 02:07:45.576837+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2882, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 02:07:45.588181+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2883, 302, 'activity', 'owner', NULL, 'label_add', '2026-10-21 02:08:30.661204+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 185, "value": "#302"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2884, 297, 'comment', 'owner', 'The two refined renders are in designs-297: refine-01-left and refine-02-right, both on the manifest - the list-12 vocabulary with the softened smaller outlined pill, major.minor grouping (v2.0, v1.29, v1.24, v1.7) and the platform icons side by side at each row''s right edge, differing only in the pill''s alignment. The right-aligned alignment is settled per the third-refinement order, so the pick now waits on the filled-pill render beside the clean right-aligned outline shot. Audit: a parallel worker is producing that filled render (refine-03) inside the same lane worktree and simulator, so the worktree, branch lane-T297 and the Metro/simulator stack stay up until it finishes - the lead directs the teardown and the park.', NULL, '2026-10-21 02:19:16.403518+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2885, 297, 'comment', 'owner', 'Lead ruling 2026-10-21 on the interleaving of comment 2884: the active lane-3 worker owns the park once refine-04-tag-left lands (the fourth owner order supersedes the right-aligned pair) and owns the full teardown - worktree, branch, simulator, Metro. The earlier worker stands down complete; its two renders stay in the archive as record. One worker per ticket from here.', NULL, '2026-10-21 02:20:54.960063+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2886, 297, 'comment', 'owner', 'Owner approval 2026-10-21, 03:24: the design is picked - refine-04-tag-left (left-aligned muted grey tag pill, soft corners, reduced size, breathing gap between features, icons at each row''s right edge, Apple icon reduced). Implementation begins. One adjustment rides the implementation, owner-ordered: the Android icon reads a little wide - narrow it without breaking its aspect ratio, or use an alternate Android glyph, judged in the implemented build.', NULL, '2026-10-21 02:24:41.6316+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2888, 293, 'comment', 'owner', 'Step 2, the decorations reading on the same two builds: moon box left 61, width 218, height 224 in both builds; lantern box left 729, 227x227 in both; the four wires sit at x 158, 280, 841 and 939 hanging from y=0 in both; moon sampled minimum tops 122 against 120 and the lantern 64 against 55, bracketing the code-read rest geometry (moon rest 119.4px = inset 24dp + 21.5dp, lantern rest 55.1px) from above in both. The wires root at the screen top rather than under any page padding, and the layer reads no page padding in code: Navigation renders it in an absolute chrome layer over everything, and RamadanDecorations derives every anchor from the safe-area inset and window width alone, importing nothing from SCREEN.', NULL, '2026-10-21 02:30:55.90735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2889, 293, 'comment', 'owner', 'The overlay-x10 replay against the after build is green: ten open-close cycles and the closing London, UK assertion, with the fixed taps still inside their rows - 540,974 in the Dhuhr row (top 938, bottom 1088) and 540,1100 beyond it on the overlay''s close catcher. A first attempt failed because the app had been left backgrounded before the flow and the point taps landed on the launcher - harness discipline, not the build; foregrounded, the same flow passes unchanged.', NULL, '2026-10-21 02:44:22.590417+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2890, 303, 'activity', 'owner', NULL, 'created', '2026-10-21 02:49:38.081494+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2891, 303, 'activity', 'owner', NULL, 'parent', '2026-10-21 02:49:38.090133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 297, "value": "T-297"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2892, 297, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 02:49:38.090133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 303, "value": "T-303"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2893, 304, 'activity', 'owner', NULL, 'created', '2026-10-21 02:49:38.192966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2894, 304, 'activity', 'owner', NULL, 'parent', '2026-10-21 02:49:38.201028+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 297, "value": "T-297"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2895, 297, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 02:49:38.201028+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 304, "value": "T-304"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2896, 305, 'activity', 'owner', NULL, 'created', '2026-10-21 02:49:38.281126+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2897, 305, 'activity', 'owner', NULL, 'parent', '2026-10-21 02:49:38.290829+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 297, "value": "T-297"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2898, 297, 'activity', 'owner', NULL, 'subtask_add', '2026-10-21 02:49:38.290829+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 305, "value": "T-305"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2899, 297, 'activity', 'owner', NULL, 'type', '2026-10-21 02:49:38.399916+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}, "from": {"id": 9, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2900, 297, 'activity', 'owner', NULL, 'estimate', '2026-10-21 02:49:38.399916+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2901, 297, 'activity', 'owner', NULL, 'label_add', '2026-10-21 02:49:38.427618+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2902, 297, 'activity', 'owner', NULL, 'label_remove', '2026-10-21 02:49:38.427618+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 148, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2903, 297, 'comment', 'owner', 'refine-04-tag-left is the owner''s approved design, and the plan page is now the implementation plan: the grouped modal in three steps (shared grouping logic, the grouped card, the 3T build read). The design renders stay in designs-297 with the earlier refinements kept as the record.', NULL, '2026-10-21 02:49:47.858278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2904, 297, 'comment', 'owner', 'Plan grilled as a hostile stranger; seven findings, all fixable in the plan or the ticket before execution.
+
+1. The ticket''s acceptance still demands the current-version line kept and separator lines between sections (criteria 1 and 3, the 2026-10-20 order), while the plan removes the version line and parts groups with dot separators under the 2026-10-21 orders - the acceptance needs rewriting to the later orders or Done can never be ticked honestly.
+2. Acceptance criterion 4 asks for the grouped card read on one phone per platform, but the plan''s Step 3 reaches only the Android 3T; no iPhone build and read step exists anywhere in the plan.
+3. Three standing contracts are reversed by this change, not extended, and the plan''s generic "updated red-first" hides it: whatsNew.test.ts pins every archived item at the release stamp (line 263), pins the stamp to the literal 2.3.0 (line 305), and never lets an item stamped for another release reach a user (line 313); WhatsNew.test.tsx asserts the removed version line (line 38). A builder who keeps any of them green re-stamps every item at 2.4.0 and the four-group design collapses to one group.
+4. The Risks section claims a contract test pins the stamp to app.json''s version; no test does - the stamp sits at 2.3.0 while the tree builds 2.3.5 and the suite is green, and the items guard passes vacuously whenever the gate refuses. The plan should order a red-first pin that the stamp equals app.json''s version.
+5. The version discipline grants the minor only to a feat-typed subject and exactly one patch to every other commit, so a lane landing more than one commit finishes above 2.4.0 while the plan pins the archive stamp at 2.4.0; and a patch-class first commit would take 2.3.6 and collide with the sister lane''s in-flight number, which the uniqueness gate refuses. The plan should state the first commit carries the feat type and the stamp moves with every later bump to whatever the merge lands at.
+6. The lane worktree holds an uncommitted restamp in shared/whatsNew.ts - the exact file Step 1 edits - and the plan''s never-merge list omits it, so Step 1''s first commit can sweep dev canvas bytes in with it.
+7. The string census runs on every validate with its allowlist pinned empty, so the v2.0 group labels must render through expression containers exactly as today''s version line does; written as JSX text, or as a label or title field in the shared data module, they fail yarn validate. The plan never mentions the census.', NULL, '2026-10-21 02:58:34.107651+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2905, 297, 'activity', 'owner', NULL, 'description', '2026-10-21 02:59:57.4345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the What''s New modal reads as a versioned changelog - the newest 20 archived items grouped under version headings (major.minor, the patch hidden), newest group first, rendered per the owner-approved refine-04 design (2026-10-21).\n\nWhere: components/modals/WhatsNew.tsx (the grouped list, its tag-pill headers and dot separators), shared/whatsNew.ts (the archive carries true per-item versions; grouping is display-level; the release stamp still gates appearance), and the content contract tests. The modal''s appear gate is untouched.\n\nAcceptance:\n- [ ] the modal renders version-headed sections newest first (major.minor, patch hidden), each item under its shipping version, a centred dot separator between sections and none after the last\n- [ ] the list shows the most recent 20 items; older items stay in the archive (its 100-entry prune unchanged) but out of the modal\n- [ ] the card keeps its What''s New heading with no version line under it; the modal still appears only when an update ships, and the release stamp equals the build version (pinned by test)\n- [ ] the built modal read by the owner on the OnePlus 3T (transcribed on the row, screenshots never committed)\n- [ ] yarn validate green"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2906, 295, 'comment', 'owner', 'Round 2 root cause, from the owner''s two frames and the round-1 walk: the strip''s own white sits on top of the card''s own white, and while the card fades the two stack - the strip reads ahead of the card by the same arithmetic in every recording (the owner''s new frame 0.979 against the card''s 0.905, the walk''s eleven frames, row 77''s 0.96-vs-0.78). Round 1''s static zero was inert because the entering fade''s ramp overrides the committed opacity from the first frame, which is why nothing changed at 2.3.5. On Android the strip''s white now rides a coat that waits out the container''s 300ms fade and completes on already-opaque white where it shows nothing; iOS keeps its measured-parity entrance untouched. Fix landed on the lane branch at 2.3.6, jest contract red before green, eight-mutant pass; audit next.', NULL, '2026-10-21 03:13:31.108699+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2916, 297, 'comment', 'owner', 'Plan-conformance review of commit 27f9d7e1 (steps 1 and 2). It conforms on every point I could measure: the approved-design values all match (pill wash rgba(52,78,92,0.14), textSecondary, RADIUS.sm, 10/12 type, 7/2 padding, SPACING.md row gap, centred 2px three-dot separators with none after the last group, glyphs right-edge at 10/13 in FAINT_BLUE), the eight restamps carry exactly the planned versions, the newest-20 window and major.minor grouping behave as specified, the appear gate is byte-identical, every named dying test is dead with a real replacement (the stamp pin reads app.json from disk), the never-merge list is clean, and yarn validate is green (5923 tests, 100 percent coverage). Three findings:
+
+suggestion: README.md:196-198 - the Release ritual now misstates the mechanics: "no count cap - the stamps alone decide what shows" is false since the newest-20 window caps what shows, and "leave the version stamps behind" no longer silent-ships now that item stamps no longer gate visibility (only the WHATS_NEW.version stamp does). The plan''s Files list left the README out; the code should bend and carry a corrective edit to that section.
+
+nitpick: the plan''s Files section names android/app/build.gradle in the version bump, but /android is gitignored here (prebuild-generated) and the version gates read app.json alone, so nothing was there to bump - the plan text should bend, not the code.
+
+nitpick: the plan cites WhatsNew.test.tsx:272 for the order-sensitive item-list toEqual, but that file had 123 lines; the toEqual lived in whatsNew.test.ts''s archive test and was rewritten to the newest-first sort as claimed - a plan reference typo, no code defect.
+
+Step 3 (the owner''s read of the built modal on the 3T) remains open on T-305 by design: the plan lands steps 1 and 2 as this one commit.', NULL, '2026-10-21 03:42:20.175702+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2908, 293, 'comment', 'owner', 'Owner order 2026-10-21, 04:04: the iPhone Duo is banned from all further work on this row - no Duo poses measured, no Duo simulator driven, nothing Duo-specific touched or changed. The Duo-pose acceptance criterion is waived by this order; the 3T readings close the device step. Duo work happens only if the owner files a ticket for it.', NULL, '2026-10-21 03:15:26.035546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2909, 295, 'comment', 'owner', 'Round-2 plan-conformance audit of 9b6301bf..4d4251b2. D8, D9 and D10 all conform: the strip''s white rides an absolute-fill coat child entering on FadeIn.delay(300) with the row''s bare FadeIn, layout=GROW and a committed style free of white and opacity pin, and iOS renders key-for-key today''s flattened style; the real builder''s static delay() builds a fresh instance (checked in the installed source), so the shared FadeIn the modal container uses keeps no delay in production. The mock patch records delayV/durationV as BaseAnimationBuilder does, Modal''s suite pins the container''s bare FadeIn, and the version is 2.3.6 on both tracked files (android/ is untracked, per the plan). The Android test is structurally red at the base (the base row carried its own background and no coat child existed), the guard sites for every claimed mutant exist, and yarn validate is green under my own run (229 suites, full coverage). One finding and one open criterion:
+
+nitpick: components/modals/__tests__/Modal.test.tsx:82 - the container pin reads durationV alone; in the mock every modifier returns the same object, so a FadeIn.delay(...) on the container would keep toBe(FadeIn) true and slip the pin, silently breaking the coat''s 300ms wait-out pairing. Adding delayV toBeUndefined closes the one gap in the pin D9 asked for.
+
+The owner-verdict criterion is not yet observable: the 2.3.5 verdict reopened the row and the 2.3.6 fix has had no owner walk - the ticket correctly waits on an owner build and verdict (subtask T-301).', NULL, '2026-10-21 03:23:49.206606+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2920, 293, 'comment', 'owner', 'Done: the top gap grew 65 percent and the whole column moved with it, measured on the 3T, the Ramadan decorations unmoved, both audits passed, merged to uat at 2.3.6 as f4ea7c5b with validate green.', NULL, '2026-10-21 03:45:45.481672+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2910, 293, 'comment', 'owner', 'Blind review of commit 30c698f6: clean. The one-constant change reaches the page through its single consumer, the Ramadan layer genuinely reads no page padding, the three suite arms pin the exact sums the constants produce, and the version pair, allowlist entry and scope all match the repo''s rules. No findings.', NULL, '2026-10-21 03:24:19.188323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2911, 295, 'comment', 'owner', 'Blind review of 9b6301bf..4d4251b2 (one commit). Both focused suites pass (41/41). Four findings:
+
+- suggestion: components/modals/__tests__/Modal.test.tsx:78-82 - the new pin asserts the container''s entering is the bare FadeIn via `toBe(FadeIn)` plus `durationV` undefined, but not `delayV`. Under the patched mock `FadeIn.delay(100)` is the same mutated instance, so a delayed container fade passes every assertion here while its fade ends at 400ms and the coat ramps from 300ms over still-fading card - the exact ahead-of-card composite this commit kills, back silently. Add `expect(containerEntering.delayV).toBeUndefined()`, and the same wherever `toBe(FadeIn)` claims bareness (Help''s row assertions, components/modals/__tests__/Help.test.tsx:357,373,397).
+
+- question: jest.components.setup.js:105-113 - the patched `delay`/`duration` record on the shared mock builder in place, but the real static modifiers clone a fresh instance (BaseAnimationBuilder: `static delay(delayMs) { const instance = this.createInstance(); return instance.delay(delayMs); }`), so the real FadeIn is never mutated. The comment "so the mock answers what the library''s own surface does" holds for the recorded fields and not for the clone, which is what makes `toBe(FadeIn)` blind to modifiers (previous finding). Should the patched methods clone (`Object.assign(Object.create(Object.getPrototypeOf(this)), this, { delayV })`) so identity assertions mean what they read?
+
+- nitpick: components/modals/__tests__/Modal.test.tsx:70,80 - the test name says "slides the card on its own entrance" but the card assertion is `expect(card?.props.entering).toBeDefined()`, so any entering (FadeIn, ZoomIn) passes and only its absence fails. Assert the builder (SlideInDown per MODAL_ENTERING) or drop "slides" from the name.
+
+- question: components/modals/Help.tsx:49,203 - the coat''s safety on Android frame 1 rests on the entering FadeIn''s initial zero holding from attach, which is the opposite of the mechanism the same file''s comment asserted one commit ago (settled row painted before the fade''s zero landed, after first paint) and this diff deletes. The pre-fix strip readings (0.96, 0.979 - below 1.0) support the composite-only model, and jest cannot see first paint, but the diff leaves no in-repo artifact excluding a first-frame flash. Is there a frame-walk line that shows the coat''s frame 1 not white, given the owner''s 3T verdict is still pending?', NULL, '2026-10-21 03:26:11.638735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2913, 295, 'comment', 'owner', 'Both audits adjudicated: taken - the container pin now reads absent delay as well as duration (both reviewers found the mock''s shared builder let a delayed container pass identity), the jest mock''s delay and duration now clone and record as the real builder''s statics do so bareness assertions mean what they read (the blind review''s question, accepted as required: the coat''s own module-level delay was polluting the shared mock), and the Modal test''s name no longer claims a slide it did not assert. Three new mutants cover the container''s bareness, the row''s bareness and the mock''s cloning (eleven in all), yarn validate green. The first-frame question is answered by the round-2 model rather than a new artefact: entering initial values apply at attach, and under the recordings'' composite model even a committed-opacity first frame rides a container alpha near zero - the owner''s 3T verdict on the 2.3.6 build is the deciding gate. The fix is one commit, b88ee908 at 2.3.6, reshaped whole after the hook refused a same-version amend; merging to uat next.', NULL, '2026-10-21 03:32:05.839554+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2912, 293, 'comment', 'owner', 'Audit of commit 30c698f6 against the plan: the change conforms on every point. Only the five planned files are touched, the three suite arms read exactly 90.05 / 110.05 / 28.05 (the letterbox arm''s honored zero intact against contentMaxWidth 500), 28.05 stays fractional in shared/constants.ts with its comment untouched, the Screen expression and honoredTopInset are unmoved, SCREEN.paddingTop has no other reader, and the suite plus yarn validate run green on the lane tip here (229 suites, 5910 passing, coverage whole). The findings are all in the merge still to come, none in the commit itself:
+
+suggestion: record 4''s version arithmetic is stale against the board. Lane-T295''s second fix 4d4251b2 (unmerged, one commit past origin/uat) already carries 2.3.6, and check-version-uniqueness.js fails any version held twice across local branches, lane-T295 and the measure refs included. So the planned lane step to 2.3.6 collides with 4d4251b2 and the lane''s allowlist stops at 2.3.4: "no new allowlist entry needed once the measure refs are deleted" is wrong in that ordering. In the other ordering, where T-295''s 2.3.6 merges first, uat sits at 2.3.6 and the merge gate (strictly above HEAD) forces the lane to 2.3.7: three patch steps, not two, and the merge repeats 2.3.7, not 2.3.6. Re-read the board at merge time and renumber or allowlist accordingly.
+
+nitpick: the --no-ff merge will conflict in scripts/version-collisions-allowlist.json - uat''s 2.3.5 entry and the lane''s 2.3.4 entry were both appended after the 2.2.9 object. Resolve by union, not by either side.
+
+question: the plan''s step-2 closer "the phone left carrying a plain mock build of the lane tip" is deferred to the merge and unproven today - the measure refs still stand and the build worktrees sit at the forced-Ramadan after build. Record the plain-mock install on this row before Done.', NULL, '2026-10-21 03:27:50.830817+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2914, 293, 'comment', 'owner', 'Both audits passed and the change is merged. The blind review found nothing. The plan-conformance review''s three findings were adjudicated: the stale version arithmetic was corrected (lane-T295''s unmerged 2.3.6 take was found standing, so 2.3.6 is shared under a new cross-lane allowlist entry and lane-T295 renumbers above when it lands second), the allowlist merge conflict was resolved by union, and the phone-left-whole read follows below. The renumber, recorded: the measure refs were deleted after the readings, the lane stepped 2.3.4 to 2.3.5 to 2.3.6 (two single patch steps the discipline gate demands), and the merge repeats 2.3.6 above uat''s 2.3.5. yarn validate green on the merged tree: 229 suites, 5916 tests, coverage whole.', NULL, '2026-10-21 03:35:41.775908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2915, 297, 'comment', 'owner', 'Blind review of 27f9d7e1 (whatsnew changelog). Read cold: logic verified (filter/sort/window/group purity, stable-sort reliance, compareVersions numeric segments, SPACING/RADIUS/COLORS/typography symbols all exist), both touched suites run green locally (80/80), version law holds (app.json + package.json 2.3.5 -> 2.4.0 feat-minor with patch reset; android/app/build.gradle is gitignored CNG output), no console.log, no dead exports, no leftover callers of the removed version prop, shouldShowWhatsNew body unchanged.
+
+- question: shared/__tests__/whatsNew.test.ts:190 - the new permanent content-contract test ''stamps every archived item with a real release version (no item stays parked)'' fails the moment anyone follows maintenance-ritual step 2 in shared/whatsNew.ts:12 (''Leave drafted future items at version: null (parked, never shown)''), which this same commit kept and which filterWhatsNewItems/groupWhatsNewItems both still implement and test for. The retired debut test carried the same shape but under a transient banner; this one makes the landmine permanent. Either allow parked items here or move drafting out of the archive in the ritual.
+- suggestion: shared/whatsNew.ts:209 - shouldShowWhatsNew''s JSDoc still says ''the items are filtered against the hand-maintained WHATS_NEW.version''; after this change filterWhatsNewItems drops the release-version gate, so items are filtered only for parked nulls and disabled flags. The old-bug narrative is now describing a filter that no longer exists; reword or trim to the gate.
+- nitpick: shared/whatsNew.ts:189 - the line comment above WHATS_NEW_DISPLAY_WINDOW restates the JSDoc directly beneath it minus the ticket number; one of the two should go.
+
+Nothing else: tests pin real behaviour (order, window boundary at 21, patch hiding, last-group separator absence, glyph sizes 10/13, row order), not trivia.', NULL, '2026-10-21 03:38:30.513948+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2918, 299, 'activity', 'owner', NULL, 'status', '2026-10-21 03:45:34.420297+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2919, 293, 'comment', 'owner', 'Step 2 is done: the 3T gap reading, the decorations reading and the overlay replay are transcribed above, and the phone left whole. The Duo-pose criterion was waived by the owner''s order of 2026-10-21 banning the Duo from this ticket, so the 3T is the device step; the tall-canvas and letterbox sums stay pinned by the three suite arms at 110.05 and 28.05.', NULL, '2026-10-21 03:45:34.470559+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2921, 293, 'activity', 'owner', NULL, 'status', '2026-10-21 03:45:45.585864+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2922, 297, 'comment', 'owner', 'Both audits stand resolved. The parked-drafts contract stays - it is the ship gate, the same nature as the stamp pin - and the README''s release ritual now says so; the false docblock clause and the duplicate comment are gone, all riding as 2.4.1 with the stamp moved to match. The plan page''s build.gradle and test-reference nits are corrected.', NULL, '2026-10-21 03:50:35.202273+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2923, 295, 'comment', 'owner', 'The owner''s round-2 test is ready on the 3T: the merged fix build (2.3.7, mock-served, the owner''s own install certificate, byte-identical on the phone to the built APK, installed for User 0 alone) is on the phone and opens clean - launched once, process up, no crash. To test: open Settings, tap Help, and watch the card enter - on this build the strip''s white waits out the entrance, so the bottom should ride with the card as one card, no white box around the Close button. Then open any topic and close it, and check the Close button is still visible once the list settles. No flash closes the row on the owner''s word; a flash reopens it with the owner''s recording as the evidence.', NULL, '2026-10-21 03:53:18.087278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2924, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 03:53:18.145605+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2925, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 03:53:54.531163+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s round-2 flash verdict on the new 3T build: fixed closes the row, still-flashing reopens it with the owner''s recording as evidence"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2927, 297, 'comment', 'owner', 'Identifier hygiene: the 3T''s serial appeared in the step titles and the plan page; both now carry the placeholder instead, and the snapshot gate passed on the rewrite.', NULL, '2026-10-21 03:59:32.731736+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2928, 303, 'activity', 'owner', NULL, 'status', '2026-10-21 04:03:48.61774+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2929, 304, 'activity', 'owner', NULL, 'status', '2026-10-21 04:03:48.662143+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2930, 305, 'activity', 'owner', NULL, 'status', '2026-10-21 04:10:09.880022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2931, 297, 'activity', 'owner', NULL, 'status', '2026-10-21 04:10:09.919802+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2887, 293, 'comment', 'owner', 'Step 2, the 3T gap reading (3T_SERIAL, Ramadan-forced mock builds from measure/T293-before e74e788a at 2.3.4 and measure/T293-after f19ead7b at 2.3.5; uiautomator never reaches idle under the animated decorations, so every bound is Maestro''s live hierarchy, several samples per build): the countdown column moved down exactly 29px = 11.05dp at the 3T''s 2.625 scale - prayer-name top 123 to 152, timer row 161 to 190, London UK 423 to 452, dates row 493 to 522, mosque icon 432 to 461, and all six prayer rows +29. The app-added gap reads 17 + 11.05 = 28.05 = 1.65 x today''s 17 within pixel rounding. The honored inset is identical in both builds: the system status-bar container reads [0,0][1080,63] in every sample of both, and the status-bar ink extent ends at pixel row 48 in both screencaps.', NULL, '2026-10-21 02:30:55.871619+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-21 04:06:30.918186+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2932, 297, 'comment', 'owner', 'The grouped changelog is merged to uat as 2.4.0 and 2.4.1 (merge b5704fae, both audits passed, validate green at full coverage), and the 2.4.1 mock build sits installed on the 3T for the owner''s read: single user, version 2.4.1, the modal fires on the owner''s own first launch. The version interleaving: this lane took the feat minor 2.4.0 above the landed 2.3.5 to 2.3.7, with the audit fixes as 2.4.1. One open item for the lead: the board snapshot could not regenerate - rows outside this lane''s authority still carry identifiers the gate refuses (T-293''s owner comments and its plan doc''s rows, plus immutable history rows from the title fix and the plan page''s own revisions), so b5704fae carries no snapshot; the gate needs one cleanup pass before the run closes.', NULL, '2026-10-21 04:10:09.941487+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2933, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 04:10:38.679341+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner reads the implemented modal on the 3T build"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2934, 297, 'comment', 'owner', 'Owner verdict 2026-10-21: approved. The implemented grouped modal read right on the 3T build - tags, groups, spacing and icons all as the approved refine-04 design. Closed with the merge at 2.4.1.', NULL, '2026-10-21 04:24:25.697898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2935, 295, 'comment', 'owner', 'Owner verdict 2026-10-21: fixed. The round-2 coat-split held on the 3T - no flash at the entrance, the Close row settled through the topic toggle. Closed with the merge at 2.3.7.', NULL, '2026-10-21 04:24:25.7009+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2948, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 04:25:32.514699+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2949, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 04:25:32.519656+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2936, 297, 'activity', 'owner', NULL, 'field', '2026-10-21 04:24:25.702357+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2937, 295, 'activity', 'owner', NULL, 'field', '2026-10-21 04:24:25.702225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2938, 297, 'activity', 'owner', NULL, 'link_remove', '2026-10-21 04:24:25.701841+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 296, "value": "T-296"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2939, 296, 'activity', 'owner', NULL, 'link_remove', '2026-10-21 04:24:25.701841+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 297, "value": "T-297"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2944, 302, 'activity', 'owner', NULL, 'field', '2026-10-21 04:24:40.789278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2946, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 04:24:40.801789+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2951, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 04:25:32.527919+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2940, 295, 'activity', 'owner', NULL, 'status', '2026-10-21 04:24:25.719745+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2941, 297, 'activity', 'owner', NULL, 'status', '2026-10-21 04:24:25.726521+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2942, 301, 'activity', 'owner', NULL, 'status', '2026-10-21 04:24:25.728144+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2947, 302, 'comment', 'owner', 'Owner observation 2026-10-21: on the iPhone XS the dividers read correct; on the OnePlus 3T the inconsistency shows - every other question, alternating. The defect is Android-side rendering, not the separator logic itself.', NULL, '2026-10-21 04:25:00.624044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2943, 296, 'activity', 'owner', NULL, 'field', '2026-10-21 04:24:40.787964+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2945, 302, 'activity', 'owner', NULL, 'status', '2026-10-21 04:24:40.801412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2950, 296, 'activity', 'owner', NULL, 'status', '2026-10-21 04:25:32.526502+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2917, 293, 'comment', 'owner', 'The phone-left-whole read: the 3T now carries a plain mock of the merged tip, badging <pkg> at 2.3.6 from f4ea7c5b, User 0 alone, one throwaway launch taken so What''s New marks itself, then HOME and am kill - the phone rests backgrounded and whole.', NULL, '2026-10-21 03:45:34.287659+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-21 04:27:03.130593+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2926, 305, 'activity', 'owner', NULL, 'title', '2026-10-21 03:59:32.669043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on the 3T, single-user assert, park for the owner''s read"}, "from": {"value": "Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on 3T_SERIAL, single-user assert, park for the owner''s read"}}', NULL);
 
 
 --
@@ -9054,6 +9315,9 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (27
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (276, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (280, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (272, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (295, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (297, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (293, 2, 1);
 
 
 --
@@ -9217,6 +9481,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (553, 264, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (530, 230, 3, 'expo/expo#50581: rebased onto main and pushed 2026-10-20, open, mergeable, review required, no reviews yet; awaiting Expo maintainer review', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (390, 3, 3, 'Expo re-review of PR 51291: changes-requested review answered and applied 2026-10-20, branch rebased onto expo main at ee1579d9', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (581, 295, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (532, 231, 3, 'expo/expo#51290: rebased onto main 2026-10-20 (head d57fe9b), CI workflows await maintainer approval after the force-push, no human review yet', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (534, 232, 3, 'First review on expo/expo#51292 (head df37854be6, rebased 2026-10-20, changeset widened to @expo/ui; OPEN, MERGEABLE, no reviews yet).', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (538, 239, 3, 'PR expo/expo#51793 rebased onto main and pushed 2026-10-20 (head 0dc3b03b), MERGEABLE, awaiting first review.', NULL, NULL, NULL, NULL, NULL, NULL);
@@ -9224,12 +9489,15 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (566, 272, 1, NULL, 272, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (567, 276, 1, NULL, 276, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (568, 280, 1, NULL, 280, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (582, 297, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (569, 280, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (570, 272, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (574, 293, 1, NULL, 293, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (575, 294, 1, NULL, 294, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (576, 295, 1, NULL, 295, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (577, 296, 1, NULL, 296, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (578, 297, 1, NULL, 297, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (579, 293, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -9582,10 +9850,19 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 144);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 8);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (272, 4);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 180);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (294, 181);
-INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 182);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (296, 183);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 180);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 148);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (293, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 182);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 141);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (295, 2);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (302, 185);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 184);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (297, 11);
 
 
 --
@@ -9638,6 +9915,7 @@ INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, creat
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (114, 95, 94, 'blocks', '2026-10-18 23:36:15.76907+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (115, 96, 95, 'blocks', '2026-10-18 23:36:15.776009+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (116, 123, 112, 'blocks', '2026-10-18 23:36:15.785791+00');
+INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (124, 296, 294, 'blocks', '2026-10-20 22:25:01.749101+00');
 
 
 --
@@ -9993,9 +10271,30 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (570, 272, 4, 'Done', 'completed', '2026-10-20 09:00:34.110197+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (572, 281, 4, 'Done', 'completed', '2026-10-20 11:19:36.288465+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (574, 284, 4, 'Done', 'completed', '2026-10-20 11:38:47.517942+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (578, 293, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.807+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (579, 294, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.879+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (581, 296, 1, 'Backlog', 'backlog', '2026-10-20 20:39:17.916+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (578, 293, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.807+00', '2026-10-20 22:24:58.925797+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (583, 295, 6, 'Planning', 'unstarted', '2026-10-20 22:24:58.923851+00', '2026-10-20 22:42:54.53532+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (590, 295, 2, 'Ready', 'unstarted', '2026-10-20 22:42:54.53532+00', '2026-10-20 22:43:01.229976+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (592, 293, 2, 'Ready', 'unstarted', '2026-10-20 22:47:46.292725+00', '2026-10-20 22:47:58.617374+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (588, 300, 1, 'Backlog', 'backlog', '2026-10-20 22:42:35.403+00', '2026-10-20 22:50:48.044309+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (593, 293, 3, 'In progress', 'started', '2026-10-20 22:47:58.617374+00', '2026-10-20 22:55:31.229862+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (585, 297, 6, 'Planning', 'unstarted', '2026-10-20 22:25:01.758526+00', '2026-10-21 00:44:31.846786+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (598, 295, 7, 'Blocked', 'started', '2026-10-20 23:50:14.534919+00', '2026-10-21 01:00:49.608675+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (596, 293, 3, 'In progress', 'started', '2026-10-20 23:02:09.537224+00', '2026-10-21 03:45:45.578369+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (610, 293, 4, 'Done', 'completed', '2026-10-21 03:45:45.578369+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (608, 295, 8, 'Audit', 'started', '2026-10-21 03:14:06.306594+00', '2026-10-21 03:53:18.14171+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (605, 303, 3, 'In progress', 'started', '2026-10-21 02:49:38.059+00', '2026-10-21 04:03:48.613905+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (612, 303, 4, 'Done', 'completed', '2026-10-21 04:03:48.613905+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (613, 304, 4, 'Done', 'completed', '2026-10-21 04:03:48.659495+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (600, 297, 3, 'In progress', 'started', '2026-10-21 00:54:07.317542+00', '2026-10-21 04:10:09.918106+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (616, 295, 4, 'Done', 'completed', '2026-10-21 04:24:25.71664+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (615, 297, 9, 'Awaiting Owner', 'started', '2026-10-21 04:10:09.918106+00', '2026-10-21 04:24:25.720474+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (618, 301, 4, 'Done', 'completed', '2026-10-21 04:24:25.722452+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (581, 296, 1, 'Backlog', 'backlog', '2026-10-20 20:39:17.916+00', '2026-10-21 04:24:40.796417+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (603, 302, 1, 'Backlog', 'backlog', '2026-10-21 02:07:45.517+00', '2026-10-21 04:24:40.797893+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (621, 296, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.523436+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (620, 302, 6, 'Planning', 'unstarted', '2026-10-21 04:24:40.797893+00', '2026-10-21 04:25:32.52558+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (622, 302, 1, 'Backlog', 'backlog', '2026-10-21 04:25:32.52558+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -10041,7 +10340,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (577, 280, 4, 'Done', 'completed', '2026-10-20 12:13:50.851754+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (522, 277, 2, 'Ready', 'unstarted', '2026-10-20 03:54:15.258+00', '2026-10-20 04:11:22.119657+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (529, 277, 4, 'Done', 'completed', '2026-10-20 04:11:22.119657+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (580, 295, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.909+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (528, 279, 3, 'In progress', 'started', '2026-10-20 04:01:09.74618+00', '2026-10-20 05:10:43.970164+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (531, 279, 4, 'Done', 'completed', '2026-10-20 05:10:43.970164+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (514, 274, 1, 'Backlog', 'backlog', '2026-10-20 02:39:47.789+00', '2026-10-20 05:14:44.407848+00');
@@ -10050,15 +10348,19 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (523, 278, 2, 'Ready', 'unstarted', '2026-10-20 03:54:15.288+00', '2026-10-20 05:15:59.283351+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (534, 278, 4, 'Done', 'completed', '2026-10-20 05:15:59.283351+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (530, 280, 1, 'Backlog', 'backlog', '2026-10-20 04:11:50.533+00', '2026-10-20 05:17:38.453617+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (580, 295, 1, 'Backlog', 'backlog', '2026-10-20 16:09:59.909+00', '2026-10-20 22:24:58.923851+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (525, 276, 3, 'In progress', 'started', '2026-10-20 03:54:26.181794+00', '2026-10-20 05:22:13.283572+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (536, 276, 4, 'Done', 'completed', '2026-10-20 05:22:13.283572+00', '2026-10-20 05:23:35.186582+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (582, 297, 1, 'Backlog', 'backlog', '2026-10-20 22:18:32.651+00', '2026-10-20 22:25:01.758526+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (533, 271, 8, 'Audit', 'started', '2026-10-20 05:15:03.256549+00', '2026-10-20 05:27:58.955101+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (538, 271, 4, 'Done', 'completed', '2026-10-20 05:27:58.955101+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (535, 280, 6, 'Planning', 'unstarted', '2026-10-20 05:17:38.453617+00', '2026-10-20 05:42:45.845028+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (545, 280, 2, 'Ready', 'unstarted', '2026-10-20 05:42:45.845028+00', '2026-10-20 05:44:17.46817+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (584, 293, 6, 'Planning', 'unstarted', '2026-10-20 22:24:58.925797+00', '2026-10-20 22:47:46.292725+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (544, 286, 3, 'In progress', 'started', '2026-10-20 05:33:19.118+00', '2026-10-20 05:49:43.966189+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (547, 286, 4, 'Done', 'completed', '2026-10-20 05:49:43.966189+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (539, 281, 1, 'Backlog', 'backlog', '2026-10-20 05:29:29.905+00', '2026-10-20 06:25:33.422865+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (594, 300, 4, 'Done', 'completed', '2026-10-20 22:50:48.044309+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (548, 281, 4, 'Done', 'completed', '2026-10-20 06:25:33.422865+00', '2026-10-20 06:28:23.133982+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (543, 285, 3, 'In progress', 'started', '2026-10-20 05:33:19.114+00', '2026-10-20 06:33:14.946259+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (550, 285, 4, 'Done', 'completed', '2026-10-20 06:33:14.946259+00', NULL);
@@ -10067,7 +10369,24 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (546, 280, 3, 'In progress', 'started', '2026-10-20 05:44:17.46817+00', '2026-10-20 06:59:57.042829+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (511, 272, 1, 'Backlog', 'backlog', '2026-10-20 02:16:43.578+00', '2026-10-20 07:02:08.69237+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (553, 272, 6, 'Planning', 'unstarted', '2026-10-20 07:02:08.69237+00', '2026-10-20 07:09:18.525837+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (595, 293, 7, 'Blocked', 'started', '2026-10-20 22:55:31.229862+00', '2026-10-20 23:02:09.537224+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (560, 272, 2, 'Ready', 'unstarted', '2026-10-20 07:09:18.525837+00', '2026-10-20 07:09:41.241842+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (586, 298, 1, 'Backlog', 'backlog', '2026-10-20 22:38:45.87+00', '2026-10-20 23:02:09.732728+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (597, 298, 4, 'Done', 'completed', '2026-10-20 23:02:09.732728+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (591, 295, 3, 'In progress', 'started', '2026-10-20 22:43:01.229976+00', '2026-10-20 23:50:14.534919+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (599, 297, 9, 'Awaiting Owner', 'started', '2026-10-21 00:44:31.846786+00', '2026-10-21 00:54:07.317542+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (601, 295, 3, 'In progress', 'started', '2026-10-21 01:00:49.608675+00', '2026-10-21 01:54:25.411485+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (602, 295, 9, 'Awaiting Owner', 'started', '2026-10-21 01:54:25.411485+00', '2026-10-21 02:07:45.574196+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (604, 295, 3, 'In progress', 'started', '2026-10-21 02:07:45.574196+00', '2026-10-21 03:14:06.306594+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (587, 299, 1, 'Backlog', 'backlog', '2026-10-20 22:38:45.96+00', '2026-10-21 03:45:34.411243+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (609, 299, 4, 'Done', 'completed', '2026-10-21 03:45:34.411243+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (606, 304, 3, 'In progress', 'started', '2026-10-21 02:49:38.18+00', '2026-10-21 04:03:48.659495+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (607, 305, 3, 'In progress', 'started', '2026-10-21 02:49:38.267+00', '2026-10-21 04:10:09.876905+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (614, 305, 4, 'Done', 'completed', '2026-10-21 04:10:09.876905+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (611, 295, 9, 'Awaiting Owner', 'started', '2026-10-21 03:53:18.14171+00', '2026-10-21 04:24:25.71664+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (617, 297, 4, 'Done', 'completed', '2026-10-21 04:24:25.720474+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (589, 301, 1, 'Backlog', 'backlog', '2026-10-20 22:42:35.463+00', '2026-10-21 04:24:25.722452+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (619, 296, 6, 'Planning', 'unstarted', '2026-10-21 04:24:40.796417+00', '2026-10-21 04:25:32.523436+00');
 
 
 --
@@ -10410,6 +10729,8 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (181, 1, 3, '#294', '#ffffff', '2026-10-20 16:10:08.299161+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (182, 1, 3, '#295', '#ffffff', '2026-10-20 16:10:08.324021+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (183, 1, 3, '#296', '#ffffff', '2026-10-20 20:39:18.116685+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (184, 1, 3, '#297', '#ffffff', '2026-10-20 22:18:32.726887+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (185, 1, 3, '#302', '#ffffff', '2026-10-21 02:08:30.57197+00');
 
 
 --
@@ -10720,7 +11041,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 297, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 306, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -13283,6 +13604,319 @@ v2 (the lane''s own audit before Ready): the step points re-added to 9 and match
 subtasks; D272.2 answers the `.githooks` naming; D272.6 answers the stranger-clone identity
 question; the proof for criterion 3 names the three commands that show each gate refusing.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 25600, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:01.615428+00', '2026-10-20 07:20:34.492815+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (28, 1, NULL, 'T-295', '# T-295: the Android help modal''s Close row flashes opaque white while the card enters
+
+## Goal
+
+Today, opening Help on Android paints the Close row''s opaque white container at full opacity
+from its first frame while the card still enters, reading as a white box below the entering
+card. When this is done, the Android open enters as one card: the Close row rides the entrance
+fade like it does on iOS, no frame paints the row at full opacity before the entrance
+completes, the iOS entrance is untouched, and the row''s layout animation with the capped list
+(row 60) still works.
+
+## Root cause (the two facts that make Android differ from iOS)
+
+1. On iOS the row is composited by the container''s animated alpha: row 77''s red capture
+   measured the row tracking the card within 0.007 at every entrance frame, even before the
+   row carried any entering of its own. On Android the row''s paint is NOT multiplied by the
+   container''s fade: the owner''s recording measured the row at 0.96 alpha against the card''s
+   0.78 mid-entrance (row 77''s ledger). The row must therefore carry its own opacity fade to
+   dim with the card - which row 77 added.
+2. That own fade cannot control the row''s first frame on Android. Reanimated carries an
+   entering animation''s zero-opacity in the animation config (FadeIn''s `initialValues`), not
+   in the view''s static style, and applies it on the UI thread only when the animation starts,
+   after the view has mounted and painted. The row''s static style carries no opacity, so
+   Android paints the settled opaque row from its first frame until the fade attaches: the
+   flash row 77''s fix was never walked on Android to catch.
+
+The fix pins the row''s first frame with the one channel that renders before any paint on both
+platforms: the view''s own static style.
+
+## Decisions taken
+
+- 2026-10-20, D1 - The fix is an Android-gated constant `opacity: 0` in the Close row''s own
+  style; the existing bare `FadeIn` (300 ms, the container fade''s own duration) carries it to
+  1. Why: the static style is applied at view creation before any draw, so it holds the first
+  frame even while the entering fade attaches late, and the row''s own opacity gates its whole
+  subtree even where the container''s animated alpha does not multiply it.
+- 2026-10-20, D2 - No completion callback, no state, no remount sequencing. Why: RN''s style
+  diffing sends only changed style keys, so a constant `opacity: 0` is never re-sent after
+  mount and cannot reset the fade''s final 1; a settle callback would itself be the only code
+  that could re-send opacity. The jest mock''s `withCallback` also discards its argument, so a
+  callback design could not be unit-pinned.
+- 2026-10-20, D3 - Modal.tsx does not change. Why: the container FadeIn and the Android
+  SlideInDown are correct and shared by Update and What''s New; the defect is the row''s first
+  frame alone.
+- 2026-10-20, D4 (amended 2026-10-21, D6) - The proof walks a physical phone with a mock
+  build: a red capture at the uat base, a green capture at the fix. The recording and frames
+  are never committed; transcriptions land on the row as comments.
+- 2026-10-21, D6 - The walk extends to the SM-S911B (the owner''s panel class, 1080x2340, the
+  resolution of the owner''s own recording). Why: the 3T walk''s vision pass found no literal
+  full-opacity row frame in EITHER build (peak effective opacity 0.80 against the card''s
+  0.64), so the 3T cannot discriminate the fix; the defect the owner recorded (row 0.96
+  against card 0.78) is a device-class rendering behavior. The two APKs already built (red at
+  8579a399, green at 222ad10d) are arm64 and install on the S23, so the extension costs no
+  build slot.
+- 2026-10-21, D7 - The 3T''s residual (a hard-edged block riding about 0.16 of an opacity step
+  ahead of the card, identical in both builds, borderline by eye) is recorded, not chased.
+  Why: the pre-row-77 owner recording measured the plain row at 0.96, so removing the row''s
+  own fade reproduces the original flash rather than curing the lead, and delay-tuning the
+  row''s curve to the container''s is a device constant this repo bans. If the S23 walk shows
+  the fix fails on the owner''s device too, the lane stops with the evidence rather than
+  redesigning inside the ruled space.
+- 2026-10-20, D5 - Version: one patch bump on the single commit, `git fetch origin` first
+  (sister lanes share the version files; their tickets touch app/Screen.tsx, shared/constants
+  and WhatsNew, disjoint from this change).
+
+## Files
+
+- components/modals/Help.tsx - the change: the Android-gated `buttonRowEntering` style on the
+  Close row.
+- components/modals/__tests__/Help.test.tsx - the jest contract: the Android first-frame
+  style, the iOS untouched style, the entering and layout pins.
+- package.json, app.json - the version bump (android/app/build.gradle takes the version from
+  prebuild; the tree is untracked).
+- components/modals/Modal.tsx - read only, the root-cause context (container FadeIn, Android
+  SlideInDown, shared card).
+- e2e/README.md, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-sm-s911b.md - read before
+  the device step.
+
+## Design
+
+The invariant: the Close row''s entrance never depends on Android parent-alpha compositing or
+on the entering animation''s UI-thread initial value. Its first frame is pinned by its own
+static style (`opacity: 0`, Android only), and its fade is its own entering `FadeIn`, which
+starts at that same zero and ends at 1 - the value the view keeps, because RN re-sends only
+changed style keys and the constant zero never changes again.
+
+The construction in Help.tsx:
+
+- `buttonRowEntering: { opacity: 0 }` added to the stylesheet, with a comment naming why it
+  exists (Android paints the settled row before the entering fade attaches, and does not
+  multiply the row by the container''s fade).
+- The Close row''s style array becomes
+  `[styles.buttonRow, Platform.OS === ''android'' && styles.buttonRowEntering]`. The entering
+  stays the bare `FadeIn` and `layout={GROW}` stays, on both platforms. The iOS rendered
+  style is key-for-key what it is today.
+
+First-frame rule: this row''s first frame is intentionally its entrance start, not its settled
+state - the lead''s ruling on this ticket; the deviation lives inside the entrance''s own 300 ms
+timeline and the settled style is unchanged.
+
+Alternatives rejected:
+
+- FadeInDown as the Android card entrance (a fade on the card itself): the row escapes
+  animated ancestor alpha (root-cause fact 1), so it would still flash; and the card''s own
+  fade-in first frame would suffer the same late-attach flash, worse.
+- Mounting the row only after the entrance completes: satisfies the letter of the acceptance
+  but reads as a sequenced pop, not one card, and abandons the ride-the-fade model iOS has.
+- Transparent background during the entrance only: under fact 1 the button subtree still
+  paints at full opacity early, and the flip needs a completion channel that jest cannot pin.
+- Removing the card''s elevation to repair compositing: touches owner-settled visuals on an
+  unproven mechanism.
+
+## Steps
+
+1. Step 1: the Close row''s Android entrance starts at zero opacity in its own style - the
+   Help.tsx change and the jest contract, red before green, mutation pass on the gate, the
+   entering and the layout. Points: 2.
+2. Step 2: the frame walk proves the Android entrance flashless - red capture at the uat
+   base, green capture at the fix, frames transcribed on the row, root cause named in the
+   same comment, settle persistence read after a topic toggle. The 3T walks first (the
+   harness floor device); the S23 (the owner''s panel class) decides when the 3T cannot
+   discriminate. Runs alone in a fresh executor session. Points: 3.
+
+## Risks
+
+- The static zero could outlive the fade if the entering animation never attaches on the 3T:
+  the Close button would stay invisible. The green walk reads the row at settle; a missing
+  row is a BLOCKED report, not a pass.
+- The emulator is never a witness; every walk names its physical device.
+- Two device builds (base and fix) share the build slot with sister Lane 1: every build is
+  preceded by the pgrep check and wait-retry, never two at once.
+- The mock build writes mock times into the dev MMKV cache: no alarm or prayer-time read is
+  part of this proof, so the confound does not reach it.
+- The 3T cannot discriminate the fix (D6): the S23 walk decides, and if it shows the fix
+  fails there too, the lane stops with the evidence (D7).
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx -t "Close row"` prints the
+  Android and iOS entrance suites passed; the Android first-frame test fails against the
+  unfixed tree (red captured before the change); `yarn validate` exits 0.
+- Step 2: on each walked phone, `adb -s <serial> shell screenrecord` of the Help open at the
+  uat base and at the fix, read through the vision worker from extracted frames
+  (`ffmpeg ... -fps_mode passthrough`), transcribed on the row. The fix passes when the
+  owner''s device class (the S23) shows no frame with the row at full opacity before the
+  entrance completes, with the 3T residual recorded. The settle read: open a topic after the
+  entrance and the Close button stays visible.
+- Merge gate: `yarn validate` exits 0 on the merged uat; the diff shows Modal.tsx and every
+  iOS path untouched.
+
+
+## Round 2 (2026-10-21): the owner''s verdict reopens the row, the root cause replaced
+
+The owner still saw the flash on the 3T at 2.3.5 (two owner frames on the row, never committed): at the
+entrance''s late fade the strip reads 0.979 alpha against the card''s 0.905 - an opaque white box around the
+black Close pill, square corners, inset by the card''s padding. Round 1''s two root-cause facts are dead,
+killed by round 1''s own walk: the red and green builds walked identical because the static pin was inert
+(FadeIn.build ships static initialValues 0 and ramps to targetValues 1, overriding the committed opacity
+from attach), and the row leads the card by a near-constant 0.12-0.15, which fits one formula:
+
+    strip = 1 - (1-c)(1-r*c)   (c: the container fade, r: the row''s own fade)
+
+- The owner''s round-2 frame: c=0.905, r=0.86 -> strip 0.979 (measured 0.979, pill 0.81 = r*c).
+- The round-1 walk''s eleven frames: within ~0.02 at every frame.
+- Row 77''s pre-fix Android recording (r=1): 1-(1-0.78)^2 = 0.9516, measured 0.96-vs-0.78.
+
+The row''s white background is a SECOND white over the card''s own white: the strip composites ahead of the
+card for every 0<c<1 while r>0, and no opacity timing on the row cures it (r=0 through the entrance hides
+the pill behind the card - the sequenced pop the plan rejected). Android stacks the two whites; iOS rides
+at parity (row 77''s 0.007 ledger) and keeps its measured-accepted path.
+
+- 2026-10-21, D8 - Android paints the strip''s white on an absolute-fill coat child whose entrance is
+  FadeIn.delay(300): the delay holds the coat at zero through the container''s bare-FadeIn 300ms, and white
+  arriving on already-opaque white shows nothing. The row keeps the bare FadeIn (the pill rides the card as
+  on iOS), layout=GROW stays, and the row''s committed style carries neither white nor an opacity pin - the
+  standing review note about LinearTransition cloning a committed zero dies by construction. iOS renders
+  today''s exact tree.
+- 2026-10-21, D9 - The reanimated jest mock records delay and duration as the real builder does
+  (BaseAnimationBuilder sets delayV/durationV; the published mock discards them), so the wait-out is
+  pinnable. Modal''s suite pins the container''s bare FadeIn because the 300ms pairing is otherwise silent.
+- 2026-10-21, D10 - Version 2.3.6: nothing above 2.3.5 had landed at fetch time, so this lane lands first
+  under the standing collision rulings and the sisters renumber above.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 27648, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:42:26.304232+00', '2026-10-21 03:13:15.534399+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (29, 1, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
+
+## Goal
+
+The modal becomes a versioned changelog: the archive''s newest 20 items, grouped under version headings (major.minor, patch hidden), newest group first, rendered exactly as the approved design refine-04-tag-left. The appear gate (release stamp equals installed version) is untouched.
+
+## The approved design
+
+refine-04-tag-left.png in the session''s designs-297 directory (owner-approved 2026-10-21 03:24). Supersedes the right-aligned pair (refine-02-right, refine-03-filled-right) and the outlined left pill (refine-01-left).
+
+- Heading "What''s New" kept; NO version line under it.
+- Group headers: muted grey filled tag, left-aligned. Fill rgba(52, 78, 92, 0.14) (the version text''s own colour as a wash), text COLORS.light.textSecondary, radius RADIUS.sm (the Close button''s softness scaled), the reduced size from the renders: fontSize 10, lineHeight 12, paddingHorizontal 7, paddingVertical 2.
+- Between groups: centred three-dot separator (2px dots); none after the last group.
+- Within a group: a breathing gap under each item row (SPACING.md).
+- Item rows: title and body left; the iOS and Android glyphs at the row''s right edge, side by side horizontally, level with the title line, colour FAINT_BLUE. iOS glyph size 10 (the render''s 20 percent reduction); Android 13 exactly as today''s glyph renders - owner order 2026-10-21: the Android icon ships EXACTLY as refine-04 renders it, no narrowing, no substitute glyph.
+- Groups key on the major.minor of each item''s version (v2.0, v1.29, v1.24, v1.7), patch hidden; newest group first; the window is the newest 20 items.
+- The group label renders through an expression container ({group.key}), never as JSX text or a label/title copy field: the string census (stringGuard.test.ts, scan-strings.mjs) fails validate on bare JSX strings, and today''s version line passes only because it renders {''v''}{version} as expressions.
+
+## Owner orders
+
+- 2026-10-20: versioned changelog, newest 20, sections parted by separators.
+- 2026-10-21 00:54: list-12 refined - pill family, icons to the right edge, major.minor groups, no version line under the heading.
+- 2026-10-21 (third): right alignment, filled tonal pill (refine-03).
+- 2026-10-21 (fourth): left alignment returns - quiet grey tag, more within-group breathing, iOS glyph 20 percent smaller.
+- 2026-10-21 03:24: refine-04-tag-left approved outright; implementation ordered; the Android glyph work CANCELLED - both glyphs ship exactly as the render shows.
+
+## Steps
+
+1. **Step 1: The shared module carries the grouped display** (2 pts) - true per-item versions in the archive, the newest-20 window, major.minor grouping as a pure tested function, and a red-first pin that WHATS_NEW.version equals the app.json build version (nothing pins it today; the gate test at whatsNew.test.ts:316 passes vacuously).
+2. **Step 2: The modal renders the approved grouped card** (2 pts) - tag pill headers, right-edge glyphs, breathing gap, dot separators, the version line gone, the index caller updated.
+3. **Step 3: The built modal reaches the 3T** (3 pts) - mock build through the single slot, aapt2 fleettest gate, install on the OnePlus 3T (3T_SERIAL (the OnePlus 3T)), single-user assert, park for the owner''s read. iOS stays owner-eyeball per the campaign directive.
+
+Steps 1 and 2 land together as ONE feat-typed commit: check-version-discipline.js grants the minor only to the feat subject and exactly one patch to every further commit, and check-version-uniqueness.js refuses numbers held by live branches (a sister holds 2.3.6). The stamp moves with every later bump: whatever version the merge lands at, WHATS_NEW.version reads the same.
+
+### Contracts that die (named, so none survives by accident)
+
+- whatsNew.test.ts:263 - every item stamped at the release stamp (reversed: items carry true per-item versions).
+- whatsNew.test.ts:305 - the stamp pinned to the literal ''2.3.0'' (replaced by the INSTALLED_VERSION pin).
+- whatsNew.test.ts:313 - no cross-release item reaches a user (reversed: the newest-20 window is cross-release by design).
+- WhatsNew.test.tsx:38 - the ''v1.27.140'' version line under the heading (the line is gone).
+- whatsNew.test.ts:272 - the order-sensitive toEqual on the archive''s presentation list (now newest-first; the modal suite gained its own grouped-order assertions).
+
+### Start state
+
+The lane worktree carries the design canvas: app/gallery.tsx (untracked), a gutted app/index.tsx, and an uncommitted restamp in shared/whatsNew.ts. NONE of it merges. First act: git restore app/index.tsx shared/whatsNew.ts and delete app/gallery.tsx, leaving the worktree pristine on lane-T297, then implement from uat''s file state.
+
+## Files
+
+- shared/whatsNew.ts - true per-item versions (planning''s git-history-named values: language 2.0.37, qibla compass 1.29.258, help page 1.29.10, second reminder 1.29.0, tablet support + athan sounds + reminder sounds 1.24.10, widgets 1.7.0); filterWhatsNewItems drops its release-version gate (flags and non-null versions only); a new display-window constant (20, distinct from the 100-entry archive prune); a new pure groupWhatsNewItems; getVisibleWhatsNew sorts newest first and windows to 20; shouldShowWhatsNew untouched; the release stamp moves to the landing version (an un-moved stamp silent-ships the release).
+- components/modals/WhatsNew.tsx - the grouped render per the approved design; the version prop and its line removed (callers: app/index.tsx:261, WhatsNew.tsx:33, both test files; Settings.tsx:183 uses currentVisibleWhatsNew for truthiness only and is unaffected).
+- app/index.tsx - the ModalWhatsNew call loses the version prop (installedVersion stays in the gate).
+- shared/__tests__/whatsNew.test.ts, components/modals/__tests__/WhatsNew.test.tsx - updated red-first.
+- package.json, app.json - feat bump to 2.4.0 (above the landed 2.3.5 and the in-flight 2.3.6); the archive stamp reads 2.4.0. android/app/build.gradle is gitignored prebuild output and regenerates from app.json; both version gates read app.json alone.
+
+Red-first unit coverage on every touched line; mutation pass on the guarded logic (window boundary, parked/null exclusion, flag exclusion, patch hiding, last-group separator); yarn validate green; tests never read the real clock.
+
+Never merges: app/gallery.tsx, the canvas swap in app/index.tsx, the worktree''s uncommitted restamp of shared/whatsNew.ts, the dev-client render setup. Screenshots never touch git.
+
+## Risks
+
+- A sister holds 2.3.6 in flight: the feat bump to 2.4.0 clears the collision; fetch again before merge and renumber if uat moved.
+- T-296 (translations) touches the same modal and lands later: it rebases on this.
+- Eight real items form four groups (v2.0, v1.29, v1.24, v1.7): the 20 window shows all eight; v1.7 sits below the scroll fold.
+
+## Alternatives rejected
+
+- Right-aligned outlined pill (refine-02) and filled tonal right pill (refine-03): superseded by the fourth order.
+- Outlined left pill (refine-01): superseded.
+- Android glyph narrowing or an alternate glyph: cancelled by owner order.
+- Keeping the version line under the heading: removed by the owner''s refine orders.
+
+## Audit outcome
+
+Both audits passed. Folded as 2.4.1: the README release ritual now states the window mechanics (drafts park at version null with the suite red until stamped or removed - the ship gate; item stamps no longer gate or cap; only the WHATS_NEW.version stamp decides silence), shouldShowWhatsNew''s docblock dropped its false present-tense clause, the display-window constant kept one comment, and the no-parked-drafts contract kept as the ship gate under a truer name. The discipline hook refused a same-version amend, so the fixes ride as a patch commit and the stamp moved with the build to 2.4.1.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 28672, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 00:44:02.93637+00', '2026-10-21 03:59:32.707813+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (27, 1, NULL, 'T-293', '# T-293 - The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved
+
+## Goal
+
+Today the page''s one paddingTop is `honoredTopInset(insets.top, width) + SCREEN.paddingTop` with `SCREEN.paddingTop = 17`, so the first component (the countdown block) sits the honored inset plus 17dp below the screen''s top edge and everything below stacks under it. When this is done the app-added gap is 1.65 x today''s: `SCREEN.paddingTop = 28.05` through the same single expression, the whole column moving down 11.05dp, and the Ramadan decorations'' layer pixel-identical where it sits.
+
+## Decisions taken
+
+- 2026-10-20 D1 - The scaled value is SCREEN.paddingTop alone (17 to 28.05), never the honored inset. The acceptance keeps every pose''s honored inset and bans per-device constants, and scaling the whole sum (inset + 17) x 1.65 would need the inset itself scaled or a per-device multiplier, which is row 280''s tall-pose ruling refused. The measured reading verifies the app-added gap through its before/after delta: the pinned countdown node''s top moves down exactly 11.05dp, which on the code-read base of 17 reads as 28.05 = 1.65 x 17.
+- 2026-10-20 D2 - Device evidence is two Ramadan-forced mock builds on the OnePlus 3T (the measurement device), built by build-mock.zsh from measurement-only refs whose sole delta beyond their base is one committed .env.example line `EXPO_PUBLIC_FORCE_RAMADAN=1` plus the version-pair bump the pre-commit hooks demand. That is the flag''s designed entry into a sanctioned build, because the script writes the build worktree''s .env from the built ref''s .env.example and strips every EXPO_PUBLIC_* from the shell. The 9 Oct build-mock-ramadan.zsh predates the neutral-ids law and fails its own applicationId gate on today''s tree, so it is not used. The measurement refs never merge; their versions sit above the lane''s and both refs are deleted after the readings, so the uniqueness gate (which reads every local unpushed commit) never sees their numbers again.
+- 2026-10-20 D3 - The exact new value is 28.05, kept fractional: the order names 1.65 x today''s and rounding to 28 would read 1.647x on glass, while 0.05dp is an eighth of a physical pixel at the 3T''s 2.625 scale.
+- 2026-10-20 D4 - The Duo''s tall and closed poses need no device step: the honored-inset arms are pinned by the existing three-test suite (phone-class, tall canvas, letterbox) updated red-first, row 280''s ruling keeps every pose on this one path, and the 3T readings show a phone''s honored inset identical between the two builds.
+- 2026-10-20 D5 - The 3T ends the session carrying a plain build-mock of the lane tip (a version the uat line actually takes), never a measurement ref''s throwaway number.
+- 2026-10-20 D6 - Decoration comparison anchors: the moon and lantern nodes are static in X (translateY bobs only, downward from rest 0 to a positive maximum), the wire strips are static in X, and stars scale with glow so their bodies are excluded. Static X edges compared exactly; bobbing nodes compared at the minimum top across three samples, which is the rest geometry because every bob moves only downward from zero. The moon''s rest-top identity doubles as the honored-inset proof: moonCy = insetTop + 62 with 62 and the sprite box constants fixed in code, so identical moon rest-tops between the two builds prove identical honored insets.
+- 2026-10-20 D7 - The gap reading is a delta, not an absolute: the countdown block''s first dumped node sits at an unrecorded offset below the page''s content top (the Bar is the block''s last child), so the pinned node is read in both builds and the difference must be exactly 11.05dp = 29px at the 3T''s 2.625 scale. The absolute 28.05 follows from the code-read base of 17. A repo read pins the node''s offset from the block top once (components/countdown/Countdown.tsx) so the transcribed row names which node moved.
+
+## Files
+
+- shared/constants.ts - SCREEN.paddingTop 17 to 28.05; the constant''s descriptive comment stands unchanged (no provenance comments).
+- __tests__/app/Screen.test.tsx - the three exact expectations 79, 99, 17 to 90.05, 110.05, 28.05, red before green.
+- .env.example - the measurement-only commits add EXPO_PUBLIC_FORCE_RAMADAN=1 in the feature-flags section; never merged, refs deleted after the readings.
+- package.json, app.json - the lane commit''s version bump (fetch origin first). android/app/build.gradle is prebuild output, untracked, and carries the same version inside every build worktree prebuild runs.
+
+## Design
+
+One path, one value: app/Screen.tsx:30 stays `paddingTop: honoredTopInset(insets.top, width) + SCREEN.paddingTop`; the only code change is the constant. No per-device or per-pose constant, no multiplier expression.
+
+The decorations are structurally outside the change: RamadanDecorations renders in Navigation''s chromeLayer (position absolute, top 0, start 0, end 0, bottom 0, outside the PagerView), reads only useSafeAreaInsets().top and useWindowDimensions().width (moonCy = insetTop + 62, maxStarY = insetTop + 65, every anchor x = width x a percentage), and components/ui/RamadanDecorations.tsx imports nothing from SCREEN. app/Screen.tsx is the file''s only SCREEN.paddingTop reader (verified by grep; Day and List read SCREEN.paddingHorizontal).
+
+Alternatives rejected:
+- Scaling the whole paddingTop sum per device: needs the inset scaled or per-device constants, against the one-value acceptance and row 280''s ruling.
+- A TOP_GAP_MULTIPLIER = 1.65 applied in Screen.tsx: leaves two numbers where one suffices and hides the value the owner ordered behind arithmetic.
+- Rounding to 28: reads 1.647x on glass (D3).
+
+## Steps
+
+1. Step 1: the value change and its red-first suite (code, 2 points). Update the three expectations in __tests__/app/Screen.test.tsx first (79 to 90.05, 99 to 110.05, 17 to 28.05) and run the file red, confirming each of the three by name with `yarn jest __tests__/app/Screen.test.tsx -t "<phrase>"` and the N passed, M skipped line. Then set SCREEN.paddingTop to 28.05 and run the file green. Mutation bite: flip the constant back to 17 once in the working tree, show the three tests red, restore. Fetch origin, take the next free patch number, bump app.json then package.json in lockstep, run yarn validate, commit on lane-T293.
+2. Step 2: the measured readings on the 3T from the two Ramadan-forced builds, transcribed, and the phone left whole (device, 3 points). In one lane worktree create measure/T293-before on origin/uat plus the flag commit and measure/T293-after on the lane tip plus the flag commit, each bumping to a free number above the lane''s. Before each build run `pgrep -f ''build-(prod|mock).zsh|gradle|xcodebuild''` and wait until it is empty (sister lanes share the toolchain). Build A = `zsh $HOME/athan-gitree/bin/build-mock.zsh measure/T293-before $REPO/mocks/simple.ts $HOME/athan-gitree/builds/T293-a-before.apk`; Build B = the same on measure/T293-after writing T293-b-after.apk; Build C = plain build-mock.zsh on the lane tip writing T293-c-leave.apk. Gate each APK with aapt2 dump badging ($HOME/Library/Android/sdk/build-tools/37.0.0/aapt2, checked to exist) and stop unless the package line is <pkg> at versionCode 1000000; install with adb install -r, then assert `adb -s 3T_SERIAL shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone. After each install do one throwaway launch (What''s New marks itself and dexopt inflates the first am start -W), then HOME and am kill, launch, and let the screen settle. Read per build: a fresh uiautomator dump (bounds only, never text - Android 9 AX trees serve stale text) for the countdown progressbar node''s bounds and the first text-cluster node below the countdown block (the dates row, identified by position, confirmed once via Maestro hierarchy which serves live text); the moon and lantern nodes'' left edges and three-sample minimum tops; the wire strips'' x extents. The gap reading is the progressbar top''s delta between Build A and Build B: exactly 29px (11.05dp at 2.625), with the dates node moving the same delta. The inset reading per build: `adb -s 3T_SERIAL shell dumpsys window policy | grep -i height`, transcribed; if the OEM names no height, read the status bar''s ink extent by pixel row on a screencap''s top 100px and compare the two builds'' rows; either way the moon rest-top identity (D6) is the decisive inset proof. If the decorations are absent from the dump, fall back to Maestro hierarchy for the same nodes, then to screencap with PIL bounding boxes. Transcribe both builds'' readings as comments on the row. Replay e2e/flows/overlay-x10.yaml once against Build B or C (`export PATH="$HOME/.maestro/bin:$PATH"`, force-stop replaced by HOME then am kill per the executor rule) and confirm its fixed taps still land inside their rows; if one straddles, fix that flow coordinate as its own follow-up commit in this lane and record it on the row. Install Build C last so the phone carries the lane''s real version, delete the measurement worktree, branches and APKs, and confirm the local version pool holds only numbers the lane takes.
+
+## Risks
+
+- A sister lane lands on uat mid-run and takes the next patch number: fetch before the lane commit and before each measurement commit, re-run the arithmetic, and delete the measurement refs before any re-bump or merge so the uniqueness gate never sees their numbers.
+- A sister lane holds the Android build: the pgrep gate before each build; two builds never run at once.
+- The dump serves stale or missing decoration nodes: the fallback ladder in Step 2; the gap reading itself always comes from the progressbar node a fresh dump serves.
+- The mock''s compressed evening window rolls the list mid-reading: take both builds'' dumps within the same minute-of-day window or re-launch, so the compared screens hold the same day''s list.
+- The column moves down 29px on the 3T and the e2e flows replay fixed tap points on home content (overlay-x10 taps 540, 974 and 540, 1100): the Step 2 replay verifies the taps still land inside their rows, and a straddle is fixed as its own commit, never left as a broken flow.
+
+## Proof
+
+- Measured 1.65x on a phone: the transcribed before/after bounds - the pinned countdown node''s top moves exactly 29px (11.05dp), the dates node the same delta, so the app-added gap reads 17 + 11.05 = 28.05 = 1.65 x 17 within pixel rounding, the honored inset identical (moon rest-tops equal, dumpsys lines equal).
+- One code path, one value: `git show` of the lane commit touches SCREEN.paddingTop, the three test expectations and the version pair alone; the paddingTop expression in app/Screen.tsx is unchanged.
+- Decorations unmoved: the transcribed anchors byte-identical between the two forced-season builds, plus the code-read line (chrome layer absolute outside the pager, no SCREEN import, every anchor a function of inset and width).
+- Poses keep their honored insets: the three suite arms green at 62 to 90.05, tall 82 to 110.05, letterbox 0 to 28.05.
+- yarn validate green on the lane commit, and re-run in the main tree after the merge.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 26624, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:38:22.837216+00', '2026-10-20 22:47:24.963884+00');
 
 
 --
@@ -13315,6 +13949,9 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (24, 276, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 03:54:08.562627+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (25, 280, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 05:29:15.182838+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (26, 272, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:05.59544+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (27, 293, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:38:45.655386+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (28, 295, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:42:26.395245+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (29, 297, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 00:44:06.75062+00');
 
 
 --
@@ -20035,6 +20672,883 @@ subtasks; D272.2 answers the `.githooks` naming; D272.6 answers the stranger-clo
 question; the proof for criterion 3 names the three commands that show each gate refusing.
 
 ', NULL, NULL, '{}', false, false, false, NULL, 25600, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 07:09:01.615428+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (77, 28, 1, NULL, 'T-295', '# T-295: the Android help modal''s Close row flashes opaque white while the card enters
+
+## Goal
+
+Today, opening Help on Android paints the Close row''s opaque white container at full opacity
+from its first frame while the card still enters, reading as a white box below the entering
+card. When this is done, the Android open enters as one card: the Close row rides the entrance
+fade like it does on iOS, no frame paints the row at full opacity before the entrance
+completes, the iOS entrance is untouched, and the row''s layout animation with the capped list
+(row 60) still works.
+
+## Root cause (the two facts that make Android differ from iOS)
+
+1. On iOS the row is composited by the container''s animated alpha: row 77''s red capture
+   measured the row tracking the card within 0.007 at every entrance frame, even before the
+   row carried any entering of its own. On Android the row''s paint is NOT multiplied by the
+   container''s fade: the owner''s recording measured the row at 0.96 alpha against the card''s
+   0.78 mid-entrance (row 77''s ledger). The row must therefore carry its own opacity fade to
+   dim with the card - which row 77 added.
+2. That own fade cannot control the row''s first frame on Android. Reanimated carries an
+   entering animation''s zero-opacity in the animation config (FadeIn''s `initialValues`), not
+   in the view''s static style, and applies it on the UI thread only when the animation starts,
+   after the view has mounted and painted. The row''s static style carries no opacity, so
+   Android paints the settled opaque row from its first frame until the fade attaches: the
+   flash row 77''s fix was never walked on Android to catch.
+
+The fix pins the row''s first frame with the one channel that renders before any paint on both
+platforms: the view''s own static style.
+
+## Decisions taken
+
+- 2026-10-20, D1 - The fix is an Android-gated constant `opacity: 0` in the Close row''s own
+  style; the existing bare `FadeIn` (300 ms, the container fade''s own duration) carries it to
+  1. Why: the static style is applied at view creation before any draw, so it holds the first
+  frame even while the entering fade attaches late, and the row''s own opacity gates its whole
+  subtree even where the container''s animated alpha does not multiply it.
+- 2026-10-20, D2 - No completion callback, no state, no remount sequencing. Why: RN''s style
+  diffing sends only changed style keys, so a constant `opacity: 0` is never re-sent after
+  mount and cannot reset the fade''s final 1; a settle callback would itself be the only code
+  that could re-send opacity. The jest mock''s `withCallback` also discards its argument, so a
+  callback design could not be unit-pinned.
+- 2026-10-20, D3 - Modal.tsx does not change. Why: the container FadeIn and the Android
+  SlideInDown are correct and shared by Update and What''s New; the defect is the row''s first
+  frame alone.
+- 2026-10-20, D4 - The proof walks the OnePlus 3T (the harness floor device) with a mock
+  build: a red capture at the uat base pins the flash, a green capture at the fix proves no
+  full-opacity frame. The recording and frames are never committed; transcriptions land on the
+  row as comments.
+- 2026-10-20, D5 - Version: one patch bump on the single commit, `git fetch origin` first
+  (sister lanes share the version files; their tickets touch app/Screen.tsx, shared/constants
+  and WhatsNew, disjoint from this change).
+
+## Files
+
+- components/modals/Help.tsx - the change: the Android-gated `buttonRowEntering` style on the
+  Close row.
+- components/modals/__tests__/Help.test.tsx - the jest contract: the Android first-frame
+  style, the iOS untouched style, the entering and layout pins.
+- package.json, app.json - the version bump (android/app/build.gradle takes the version from
+  prebuild; the tree is untracked).
+- components/modals/Modal.tsx - read only, the root-cause context (container FadeIn, Android
+  SlideInDown, shared card).
+- e2e/README.md, e2e/device-atlas-oneplus3t.md - read before the device step.
+
+## Design
+
+The invariant: the Close row''s entrance never depends on Android parent-alpha compositing or
+on the entering animation''s UI-thread initial value. Its first frame is pinned by its own
+static style (`opacity: 0`, Android only), and its fade is its own entering `FadeIn`, which
+starts at that same zero and ends at 1 - the value the view keeps, because RN re-sends only
+changed style keys and the constant zero never changes again.
+
+The construction in Help.tsx:
+
+- `buttonRowEntering: { opacity: 0 }` added to the stylesheet, with a comment naming why it
+  exists (Android paints the settled row before the entering fade attaches, and does not
+  multiply the row by the container''s fade).
+- The Close row''s style array becomes
+  `[styles.buttonRow, Platform.OS === ''android'' && styles.buttonRowEntering]`. The entering
+  stays the bare `FadeIn` and `layout={GROW}` stays, on both platforms. The iOS rendered
+  style is key-for-key what it is today.
+
+First-frame rule: this row''s first frame is intentionally its entrance start, not its settled
+state - the lead''s ruling on this ticket; the deviation lives inside the entrance''s own 300 ms
+timeline and the settled style is unchanged.
+
+Alternatives rejected:
+
+- FadeInDown as the Android card entrance (a fade on the card itself): the row escapes
+  animated ancestor alpha (root-cause fact 1), so it would still flash; and the card''s own
+  fade-in first frame would suffer the same late-attach flash, worse.
+- Mounting the row only after the entrance completes: satisfies the letter of the acceptance
+  but reads as a sequenced pop, not one card, and abandons the ride-the-fade model iOS has.
+- Transparent background during the entrance only: under fact 1 the button subtree still
+  paints at full opacity early, and the flip needs a completion channel that jest cannot pin.
+- Removing the card''s elevation to repair compositing: touches owner-settled visuals on an
+  unproven mechanism.
+
+## Steps
+
+1. Step 1: the Close row''s Android entrance starts at zero opacity in its own style - the
+   Help.tsx change and the jest contract, red before green, mutation pass on the gate, the
+   entering and the layout. Points: 2.
+2. Step 2: the 3T frame walk proves the Android entrance flashless - red capture at the uat
+   base, green capture at the fix, frames transcribed on the row, root cause named in the
+   same comment, settle persistence read after a topic toggle. Runs alone in a fresh executor
+   session. Points: 3.
+
+## Risks
+
+- The static zero could outlive the fade if the entering animation never attaches on the 3T:
+  the Close button would stay invisible. The green walk reads the row at settle; a missing
+  row is a BLOCKED report, not a pass.
+- The emulator is never a witness; the 3T is Android 9 and the oldest panel in the fleet, so
+  a flashless walk there is the strong claim, not the weak one.
+- Two device builds (base and fix) share the build slot with sister Lane 1: every build is
+  preceded by the pgrep check and wait-retry, never two at once.
+- The mock build writes mock times into the dev MMKV cache: no alarm or prayer-time read is
+  part of this proof, so the confound does not reach it.
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx -t "Close row"` prints the
+  Android and iOS entrance suites passed; the Android first-frame test fails against the
+  unfixed tree (red captured before the change); `yarn validate` exits 0.
+- Step 2: on the 3T, `adb -s 3T_SERIAL shell screenrecord` of the Help open at the uat base
+  shows frames with the row near 1.0 alpha while the card is dimmer (the red pin); the same
+  recording at the fix shows no frame with the row at full opacity before the entrance
+  completes, read through the vision worker from extracted frames
+  (`ffmpeg ... -fps_mode passthrough`), transcribed on the row. The settle read: open a
+  topic after the entrance and the Close button stays visible.
+- Merge gate: `yarn validate` exits 0 on the merged uat; the diff shows Modal.tsx and every
+  iOS path untouched.
+', NULL, NULL, '{}', false, false, false, NULL, 27648, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:42:26.304232+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (79, 28, 2, NULL, 'T-295', '# T-295: the Android help modal''s Close row flashes opaque white while the card enters
+
+## Goal
+
+Today, opening Help on Android paints the Close row''s opaque white container at full opacity
+from its first frame while the card still enters, reading as a white box below the entering
+card. When this is done, the Android open enters as one card: the Close row rides the entrance
+fade like it does on iOS, no frame paints the row at full opacity before the entrance
+completes, the iOS entrance is untouched, and the row''s layout animation with the capped list
+(row 60) still works.
+
+## Root cause (the two facts that make Android differ from iOS)
+
+1. On iOS the row is composited by the container''s animated alpha: row 77''s red capture
+   measured the row tracking the card within 0.007 at every entrance frame, even before the
+   row carried any entering of its own. On Android the row''s paint is NOT multiplied by the
+   container''s fade: the owner''s recording measured the row at 0.96 alpha against the card''s
+   0.78 mid-entrance (row 77''s ledger). The row must therefore carry its own opacity fade to
+   dim with the card - which row 77 added.
+2. That own fade cannot control the row''s first frame on Android. Reanimated carries an
+   entering animation''s zero-opacity in the animation config (FadeIn''s `initialValues`), not
+   in the view''s static style, and applies it on the UI thread only when the animation starts,
+   after the view has mounted and painted. The row''s static style carries no opacity, so
+   Android paints the settled opaque row from its first frame until the fade attaches: the
+   flash row 77''s fix was never walked on Android to catch.
+
+The fix pins the row''s first frame with the one channel that renders before any paint on both
+platforms: the view''s own static style.
+
+## Decisions taken
+
+- 2026-10-20, D1 - The fix is an Android-gated constant `opacity: 0` in the Close row''s own
+  style; the existing bare `FadeIn` (300 ms, the container fade''s own duration) carries it to
+  1. Why: the static style is applied at view creation before any draw, so it holds the first
+  frame even while the entering fade attaches late, and the row''s own opacity gates its whole
+  subtree even where the container''s animated alpha does not multiply it.
+- 2026-10-20, D2 - No completion callback, no state, no remount sequencing. Why: RN''s style
+  diffing sends only changed style keys, so a constant `opacity: 0` is never re-sent after
+  mount and cannot reset the fade''s final 1; a settle callback would itself be the only code
+  that could re-send opacity. The jest mock''s `withCallback` also discards its argument, so a
+  callback design could not be unit-pinned.
+- 2026-10-20, D3 - Modal.tsx does not change. Why: the container FadeIn and the Android
+  SlideInDown are correct and shared by Update and What''s New; the defect is the row''s first
+  frame alone.
+- 2026-10-20, D4 (amended 2026-10-21, D6) - The proof walks a physical phone with a mock
+  build: a red capture at the uat base, a green capture at the fix. The recording and frames
+  are never committed; transcriptions land on the row as comments.
+- 2026-10-21, D6 - The walk extends to the SM-S911B (the owner''s panel class, 1080x2340, the
+  resolution of the owner''s own recording). Why: the 3T walk''s vision pass found no literal
+  full-opacity row frame in EITHER build (peak effective opacity 0.80 against the card''s
+  0.64), so the 3T cannot discriminate the fix; the defect the owner recorded (row 0.96
+  against card 0.78) is a device-class rendering behavior. The two APKs already built (red at
+  8579a399, green at 222ad10d) are arm64 and install on the S23, so the extension costs no
+  build slot.
+- 2026-10-21, D7 - The 3T''s residual (a hard-edged block riding about 0.16 of an opacity step
+  ahead of the card, identical in both builds, borderline by eye) is recorded, not chased.
+  Why: the pre-row-77 owner recording measured the plain row at 0.96, so removing the row''s
+  own fade reproduces the original flash rather than curing the lead, and delay-tuning the
+  row''s curve to the container''s is a device constant this repo bans. If the S23 walk shows
+  the fix fails on the owner''s device too, the lane stops with the evidence rather than
+  redesigning inside the ruled space.
+- 2026-10-20, D5 - Version: one patch bump on the single commit, `git fetch origin` first
+  (sister lanes share the version files; their tickets touch app/Screen.tsx, shared/constants
+  and WhatsNew, disjoint from this change).
+
+## Files
+
+- components/modals/Help.tsx - the change: the Android-gated `buttonRowEntering` style on the
+  Close row.
+- components/modals/__tests__/Help.test.tsx - the jest contract: the Android first-frame
+  style, the iOS untouched style, the entering and layout pins.
+- package.json, app.json - the version bump (android/app/build.gradle takes the version from
+  prebuild; the tree is untracked).
+- components/modals/Modal.tsx - read only, the root-cause context (container FadeIn, Android
+  SlideInDown, shared card).
+- e2e/README.md, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-sm-s911b.md - read before
+  the device step.
+
+## Design
+
+The invariant: the Close row''s entrance never depends on Android parent-alpha compositing or
+on the entering animation''s UI-thread initial value. Its first frame is pinned by its own
+static style (`opacity: 0`, Android only), and its fade is its own entering `FadeIn`, which
+starts at that same zero and ends at 1 - the value the view keeps, because RN re-sends only
+changed style keys and the constant zero never changes again.
+
+The construction in Help.tsx:
+
+- `buttonRowEntering: { opacity: 0 }` added to the stylesheet, with a comment naming why it
+  exists (Android paints the settled row before the entering fade attaches, and does not
+  multiply the row by the container''s fade).
+- The Close row''s style array becomes
+  `[styles.buttonRow, Platform.OS === ''android'' && styles.buttonRowEntering]`. The entering
+  stays the bare `FadeIn` and `layout={GROW}` stays, on both platforms. The iOS rendered
+  style is key-for-key what it is today.
+
+First-frame rule: this row''s first frame is intentionally its entrance start, not its settled
+state - the lead''s ruling on this ticket; the deviation lives inside the entrance''s own 300 ms
+timeline and the settled style is unchanged.
+
+Alternatives rejected:
+
+- FadeInDown as the Android card entrance (a fade on the card itself): the row escapes
+  animated ancestor alpha (root-cause fact 1), so it would still flash; and the card''s own
+  fade-in first frame would suffer the same late-attach flash, worse.
+- Mounting the row only after the entrance completes: satisfies the letter of the acceptance
+  but reads as a sequenced pop, not one card, and abandons the ride-the-fade model iOS has.
+- Transparent background during the entrance only: under fact 1 the button subtree still
+  paints at full opacity early, and the flip needs a completion channel that jest cannot pin.
+- Removing the card''s elevation to repair compositing: touches owner-settled visuals on an
+  unproven mechanism.
+
+## Steps
+
+1. Step 1: the Close row''s Android entrance starts at zero opacity in its own style - the
+   Help.tsx change and the jest contract, red before green, mutation pass on the gate, the
+   entering and the layout. Points: 2.
+2. Step 2: the frame walk proves the Android entrance flashless - red capture at the uat
+   base, green capture at the fix, frames transcribed on the row, root cause named in the
+   same comment, settle persistence read after a topic toggle. The 3T walks first (the
+   harness floor device); the S23 (the owner''s panel class) decides when the 3T cannot
+   discriminate. Runs alone in a fresh executor session. Points: 3.
+
+## Risks
+
+- The static zero could outlive the fade if the entering animation never attaches on the 3T:
+  the Close button would stay invisible. The green walk reads the row at settle; a missing
+  row is a BLOCKED report, not a pass.
+- The emulator is never a witness; every walk names its physical device.
+- Two device builds (base and fix) share the build slot with sister Lane 1: every build is
+  preceded by the pgrep check and wait-retry, never two at once.
+- The mock build writes mock times into the dev MMKV cache: no alarm or prayer-time read is
+  part of this proof, so the confound does not reach it.
+- The 3T cannot discriminate the fix (D6): the S23 walk decides, and if it shows the fix
+  fails there too, the lane stops with the evidence (D7).
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx -t "Close row"` prints the
+  Android and iOS entrance suites passed; the Android first-frame test fails against the
+  unfixed tree (red captured before the change); `yarn validate` exits 0.
+- Step 2: on each walked phone, `adb -s <serial> shell screenrecord` of the Help open at the
+  uat base and at the fix, read through the vision worker from extracted frames
+  (`ffmpeg ... -fps_mode passthrough`), transcribed on the row. The fix passes when the
+  owner''s device class (the S23) shows no frame with the row at full opacity before the
+  entrance completes, with the 3T residual recorded. The settle read: open a topic after the
+  entrance and the Close button stays visible.
+- Merge gate: `yarn validate` exits 0 on the merged uat; the diff shows Modal.tsx and every
+  iOS path untouched.
+', NULL, NULL, '{}', false, false, false, NULL, 27648, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 23:45:30.61078+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (80, 29, 1, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
+
+## Goal
+
+Today the What''s New modal lists one release''s items under a single version line beneath the heading. The owner''s order of 2026-10-20 makes it a versioned changelog: the newest 20 archive items, grouped under version headings, newest version first, the version number living on each group''s header (the line under the "What''s New" heading is gone, the heading stays). The modal''s appear gate (the release stamp matching the installed version) is out of scope and unchanged.
+
+This phase is design exploration: 40 variants of the grouped card, rendered in the real app, awaiting the owner''s pick. Nothing from this phase merges.
+
+## Decisions taken
+
+- 2026-10-20: The archive''s items carry their true shipped versions, named from git history rather than the debut''s flat 2.3.0 stamp - the ticket''s Where line requires it for grouping. Language 2.0.37 (997349b1, the whats-new entry commit), qibla compass 1.29.258 (69e8b749, session 53''s acceptance, both platforms locked), help page 1.29.10 (f1d523c8), second reminder 1.29.0 (9eccb74f), tablet support + athan sounds + reminder sounds 1.24.10 (32684249, the re-stamp naming all three as shipping with that release), home and lock widgets 1.7.0 (cbc0cf51, iOS home + lock landing).
+- 2026-10-20: Six groups, eight real items, is what the archive holds; no items are invented for the gallery. The "newest 20" window therefore shows all eight.
+- 2026-10-20: The restamp, the gallery route and every variant live in the lane worktree only (branch lane-T297, never merged); screenshots never touch git and sit in the session''s designs directory.
+- 2026-10-21 (owner order): the set doubles to 40 variants, with the pill header family the owner singled out given a strong presence through riffs (filled, outlined, tinted with count, date-carrying, seated on the rule), never one repetition.
+- 2026-10-21 (owner order): nine variants move the iOS and Android icons to the right of each item row, aligned with the title line, so both placements compare side by side: list-07, list-11, list-14, list-17, list-19, drop-04, drop-13, drop-15, drop-17. The remaining thirty-one keep today''s leading or inline arrangement.
+- 2026-10-21: Release dates shown in date-carrying variants come from the same naming commits (11 Oct, 7 Oct, 27 Sep, 27 Sep, 11 Sep, 2 Sep); implementation will need catalog keys for them.
+
+## Files
+
+- shared/whatsNew.ts - per-item versions (restamped in the lane worktree; the implementation lands the same names).
+- components/modals/WhatsNew.tsx - the list, its group headers and separators (or collapsible headers), rebuilt to the picked variant.
+- shared/i18n catalogs - new keys for any header furniture the pick adds (counts, dates, summaries).
+- The content contract tests in shared/__tests__/whatsNew.test.ts - the one-release filter becomes a newest-20 window; the display rules'' tests follow.
+- app/index.tsx - untouched: the appear gate keeps ruling when the modal shows.
+
+## Design - the 40 variants
+
+All render in the real modal card, real fonts, real colours, real archive items, newest version first, the newest 20 items, the version on each group header. Files and one-line descriptions live in the session''s designs directory with its manifest.md; every line below matches the manifest.
+
+Flat (separator-parted sections):
+
+1. list-01 - plain version header, hairline rules, badge-led rows; the smallest step from today''s modal.
+2. list-02 - tinted pill chip header, short centered rule, icons inline after the title.
+3. list-03 - accent dot before the version, rule inset as the header''s underline.
+4. list-04 - version centred inside the rule (line - v1.29.0 - line).
+5. list-05 - large version numeral with "N changes", thick separator, airy rhythm.
+6. list-06 - accent bar before the version, items hanging on its indent.
+7. list-07 - each group its own tinted card, count on the card header; icons right-aligned.
+8. list-08 - timeline rail with a ringed dot level with each version label.
+9. list-09 - minimal: faint version, ultra-light tight rules, dot-bulleted dense rows.
+10. list-10 - uppercase tracked header (V 1.24.10), dashed rules.
+11. list-11 - filled black pill header; icons right-aligned.
+12. list-12 - outlined pill, ellipsis-dot separator.
+13. list-13 - tinted pill carrying version and count together (v1.24.10 - 3), right-inset rule.
+14. list-14 - outlined pill carrying version and release date; icons right-aligned.
+15. list-15 - outlined pill seated on the separator line, the rule passing behind it.
+16. list-16 - date faint left, version bold right, fine rule, one flowing "Title - description" line per item.
+17. list-17 - filled rounded-square version tag, diamond glyph between groups; icons right-aligned.
+18. list-18 - outlined count pill trailing the version, bold tick rule.
+19. list-19 - count in a group footer ("3 changes in v1.24.10") above a capped rule; icons right-aligned.
+20. list-20 - bracketed header [ v2.0.37 ], double hairline rules, icons inline before the title.
+
+Collapsible (the newest group expanded, older groups collapsed, the Help modal''s pattern):
+
+21. drop-01 - the Help modal''s own pattern: chevron rows, rule under each group.
+22. drop-02 - plus in a ringed circle rotating to a cross.
+23. drop-03 - count pill badge trailing, small chevron.
+24. drop-04 - closed groups carry a one-line summary (first title + "N more"); icons right-aligned.
+25. drop-05 - collapsing tinted cards.
+26. drop-06 - tall 48-point headers, count under the version.
+27. drop-07 - chevron in a grey circle, no rules, count under the header.
+28. drop-08 - divider-label header with a bare plus becoming a cross.
+29. drop-09 - chip that fills with accent tint when open, count inside, triangle affordance.
+30. drop-10 - open items in a left-ruled indented panel.
+31. drop-11 - version pill filling black when open, outlined when closed.
+32. drop-12 - triangle in a small filled rounded square, flipping right to down.
+33. drop-13 - no chevron: the version header underlines itself in accent when open; icons right-aligned.
+34. drop-14 - chevron leading at the far left, then version, date, count pill at the right.
+35. drop-15 - the whole list one bordered container, the open group''s band tinted; icons right-aligned.
+36. drop-16 - outlined date pill with a bare plus/minus swap.
+37. drop-17 - dot leaders to a circular count badge that fills black when open; icons right-aligned.
+38. drop-18 - count tab hanging off the right edge of each header, filling with accent when open.
+39. drop-19 - pill-on-the-rule, collapsing: the pill gains its count when open.
+40. drop-20 - split header: version left, divider, count over date stacked right, dash-marked items.
+
+Rejected: inventing extra archive items to fill twenty rows (the archive is the truth); keeping any version line under the heading (the order kills it); a search or jump-to-version control (eight items need none).
+
+## Steps - pending the owner''s pick
+
+The implementation starts when the owner names one variant (or one flat and one drop to A/B). The steps below then apply, re-estimated and broken into subtasks at that point:
+
+1. Land the per-item versions in shared/whatsNew.ts with the naming evidence in this doc (2 points).
+2. Replace the one-release filter with the newest-20 window over the whole archive, newest version first, with tests red first (2 points).
+3. Rebuild the modal''s list to the picked variant: group headers, separators or collapsible state, item rows with the picked icon arrangement, animated per the Help modal''s recipe where collapsible; the version line under the heading is deleted; catalog keys for any new furniture (2 points).
+4. Contract tests for the grouping window and the rendered structure; yarn validate green (2 points).
+5. The grouped card read on one phone per platform, transcribed on the row (3 points).
+
+## Risks
+
+- The pick lands on a variant whose furniture (dates, "N more") needs catalog keys in six locales - row 296''s translation lock coordinates the copy.
+- The one-release gate''s tests fail the moment the restamp lands; step 2 must land with step 1 or the build reads a modal that can never appear.
+- Collapsible variants inherit the Help modal''s reveal-scroll behaviour only if asked; the default pick may need that row''s scroll-reveal helper.
+
+## Proof
+
+- The 40 PNGs and manifest.md in the session''s designs directory, each read back by an image-capable worker: every file shows the white card, the "What''s New" heading, no version line under it, versions on group headers, the newest 20 items, and - for the drop set - the newest group open with older groups collapsed.
+- The nine right-icon files verified to carry their icons on the right of each item row.
+- For the implementation: yarn validate green, the content contract tests green over the restamped archive, and the grouped card transcribed from one phone per platform.
+', NULL, NULL, '{}', false, false, false, NULL, 28672, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 00:44:02.93637+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (83, 28, 3, NULL, 'T-295', '# T-295: the Android help modal''s Close row flashes opaque white while the card enters
+
+## Goal
+
+Today, opening Help on Android paints the Close row''s opaque white container at full opacity
+from its first frame while the card still enters, reading as a white box below the entering
+card. When this is done, the Android open enters as one card: the Close row rides the entrance
+fade like it does on iOS, no frame paints the row at full opacity before the entrance
+completes, the iOS entrance is untouched, and the row''s layout animation with the capped list
+(row 60) still works.
+
+## Root cause (the two facts that make Android differ from iOS)
+
+1. On iOS the row is composited by the container''s animated alpha: row 77''s red capture
+   measured the row tracking the card within 0.007 at every entrance frame, even before the
+   row carried any entering of its own. On Android the row''s paint is NOT multiplied by the
+   container''s fade: the owner''s recording measured the row at 0.96 alpha against the card''s
+   0.78 mid-entrance (row 77''s ledger). The row must therefore carry its own opacity fade to
+   dim with the card - which row 77 added.
+2. That own fade cannot control the row''s first frame on Android. Reanimated carries an
+   entering animation''s zero-opacity in the animation config (FadeIn''s `initialValues`), not
+   in the view''s static style, and applies it on the UI thread only when the animation starts,
+   after the view has mounted and painted. The row''s static style carries no opacity, so
+   Android paints the settled opaque row from its first frame until the fade attaches: the
+   flash row 77''s fix was never walked on Android to catch.
+
+The fix pins the row''s first frame with the one channel that renders before any paint on both
+platforms: the view''s own static style.
+
+## Decisions taken
+
+- 2026-10-20, D1 - The fix is an Android-gated constant `opacity: 0` in the Close row''s own
+  style; the existing bare `FadeIn` (300 ms, the container fade''s own duration) carries it to
+  1. Why: the static style is applied at view creation before any draw, so it holds the first
+  frame even while the entering fade attaches late, and the row''s own opacity gates its whole
+  subtree even where the container''s animated alpha does not multiply it.
+- 2026-10-20, D2 - No completion callback, no state, no remount sequencing. Why: RN''s style
+  diffing sends only changed style keys, so a constant `opacity: 0` is never re-sent after
+  mount and cannot reset the fade''s final 1; a settle callback would itself be the only code
+  that could re-send opacity. The jest mock''s `withCallback` also discards its argument, so a
+  callback design could not be unit-pinned.
+- 2026-10-20, D3 - Modal.tsx does not change. Why: the container FadeIn and the Android
+  SlideInDown are correct and shared by Update and What''s New; the defect is the row''s first
+  frame alone.
+- 2026-10-20, D4 (amended 2026-10-21, D6) - The proof walks a physical phone with a mock
+  build: a red capture at the uat base, a green capture at the fix. The recording and frames
+  are never committed; transcriptions land on the row as comments.
+- 2026-10-21, D6 - The walk extends to the SM-S911B (the owner''s panel class, 1080x2340, the
+  resolution of the owner''s own recording). Why: the 3T walk''s vision pass found no literal
+  full-opacity row frame in EITHER build (peak effective opacity 0.80 against the card''s
+  0.64), so the 3T cannot discriminate the fix; the defect the owner recorded (row 0.96
+  against card 0.78) is a device-class rendering behavior. The two APKs already built (red at
+  8579a399, green at 222ad10d) are arm64 and install on the S23, so the extension costs no
+  build slot.
+- 2026-10-21, D7 - The 3T''s residual (a hard-edged block riding about 0.16 of an opacity step
+  ahead of the card, identical in both builds, borderline by eye) is recorded, not chased.
+  Why: the pre-row-77 owner recording measured the plain row at 0.96, so removing the row''s
+  own fade reproduces the original flash rather than curing the lead, and delay-tuning the
+  row''s curve to the container''s is a device constant this repo bans. If the S23 walk shows
+  the fix fails on the owner''s device too, the lane stops with the evidence rather than
+  redesigning inside the ruled space.
+- 2026-10-20, D5 - Version: one patch bump on the single commit, `git fetch origin` first
+  (sister lanes share the version files; their tickets touch app/Screen.tsx, shared/constants
+  and WhatsNew, disjoint from this change).
+
+## Files
+
+- components/modals/Help.tsx - the change: the Android-gated `buttonRowEntering` style on the
+  Close row.
+- components/modals/__tests__/Help.test.tsx - the jest contract: the Android first-frame
+  style, the iOS untouched style, the entering and layout pins.
+- package.json, app.json - the version bump (android/app/build.gradle takes the version from
+  prebuild; the tree is untracked).
+- components/modals/Modal.tsx - read only, the root-cause context (container FadeIn, Android
+  SlideInDown, shared card).
+- e2e/README.md, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-sm-s911b.md - read before
+  the device step.
+
+## Design
+
+The invariant: the Close row''s entrance never depends on Android parent-alpha compositing or
+on the entering animation''s UI-thread initial value. Its first frame is pinned by its own
+static style (`opacity: 0`, Android only), and its fade is its own entering `FadeIn`, which
+starts at that same zero and ends at 1 - the value the view keeps, because RN re-sends only
+changed style keys and the constant zero never changes again.
+
+The construction in Help.tsx:
+
+- `buttonRowEntering: { opacity: 0 }` added to the stylesheet, with a comment naming why it
+  exists (Android paints the settled row before the entering fade attaches, and does not
+  multiply the row by the container''s fade).
+- The Close row''s style array becomes
+  `[styles.buttonRow, Platform.OS === ''android'' && styles.buttonRowEntering]`. The entering
+  stays the bare `FadeIn` and `layout={GROW}` stays, on both platforms. The iOS rendered
+  style is key-for-key what it is today.
+
+First-frame rule: this row''s first frame is intentionally its entrance start, not its settled
+state - the lead''s ruling on this ticket; the deviation lives inside the entrance''s own 300 ms
+timeline and the settled style is unchanged.
+
+Alternatives rejected:
+
+- FadeInDown as the Android card entrance (a fade on the card itself): the row escapes
+  animated ancestor alpha (root-cause fact 1), so it would still flash; and the card''s own
+  fade-in first frame would suffer the same late-attach flash, worse.
+- Mounting the row only after the entrance completes: satisfies the letter of the acceptance
+  but reads as a sequenced pop, not one card, and abandons the ride-the-fade model iOS has.
+- Transparent background during the entrance only: under fact 1 the button subtree still
+  paints at full opacity early, and the flip needs a completion channel that jest cannot pin.
+- Removing the card''s elevation to repair compositing: touches owner-settled visuals on an
+  unproven mechanism.
+
+## Steps
+
+1. Step 1: the Close row''s Android entrance starts at zero opacity in its own style - the
+   Help.tsx change and the jest contract, red before green, mutation pass on the gate, the
+   entering and the layout. Points: 2.
+2. Step 2: the frame walk proves the Android entrance flashless - red capture at the uat
+   base, green capture at the fix, frames transcribed on the row, root cause named in the
+   same comment, settle persistence read after a topic toggle. The 3T walks first (the
+   harness floor device); the S23 (the owner''s panel class) decides when the 3T cannot
+   discriminate. Runs alone in a fresh executor session. Points: 3.
+
+## Risks
+
+- The static zero could outlive the fade if the entering animation never attaches on the 3T:
+  the Close button would stay invisible. The green walk reads the row at settle; a missing
+  row is a BLOCKED report, not a pass.
+- The emulator is never a witness; every walk names its physical device.
+- Two device builds (base and fix) share the build slot with sister Lane 1: every build is
+  preceded by the pgrep check and wait-retry, never two at once.
+- The mock build writes mock times into the dev MMKV cache: no alarm or prayer-time read is
+  part of this proof, so the confound does not reach it.
+- The 3T cannot discriminate the fix (D6): the S23 walk decides, and if it shows the fix
+  fails there too, the lane stops with the evidence (D7).
+
+## Proof
+
+- Step 1: `yarn jest components/modals/__tests__/Help.test.tsx -t "Close row"` prints the
+  Android and iOS entrance suites passed; the Android first-frame test fails against the
+  unfixed tree (red captured before the change); `yarn validate` exits 0.
+- Step 2: on each walked phone, `adb -s <serial> shell screenrecord` of the Help open at the
+  uat base and at the fix, read through the vision worker from extracted frames
+  (`ffmpeg ... -fps_mode passthrough`), transcribed on the row. The fix passes when the
+  owner''s device class (the S23) shows no frame with the row at full opacity before the
+  entrance completes, with the 3T residual recorded. The settle read: open a topic after the
+  entrance and the Close button stays visible.
+- Merge gate: `yarn validate` exits 0 on the merged uat; the diff shows Modal.tsx and every
+  iOS path untouched.
+
+
+## Round 2 (2026-10-21): the owner''s verdict reopens the row, the root cause replaced
+
+The owner still saw the flash on the 3T at 2.3.5 (two owner frames on the row, never committed): at the
+entrance''s late fade the strip reads 0.979 alpha against the card''s 0.905 - an opaque white box around the
+black Close pill, square corners, inset by the card''s padding. Round 1''s two root-cause facts are dead,
+killed by round 1''s own walk: the red and green builds walked identical because the static pin was inert
+(FadeIn.build ships static initialValues 0 and ramps to targetValues 1, overriding the committed opacity
+from attach), and the row leads the card by a near-constant 0.12-0.15, which fits one formula:
+
+    strip = 1 - (1-c)(1-r*c)   (c: the container fade, r: the row''s own fade)
+
+- The owner''s round-2 frame: c=0.905, r=0.86 -> strip 0.979 (measured 0.979, pill 0.81 = r*c).
+- The round-1 walk''s eleven frames: within ~0.02 at every frame.
+- Row 77''s pre-fix Android recording (r=1): 1-(1-0.78)^2 = 0.9516, measured 0.96-vs-0.78.
+
+The row''s white background is a SECOND white over the card''s own white: the strip composites ahead of the
+card for every 0<c<1 while r>0, and no opacity timing on the row cures it (r=0 through the entrance hides
+the pill behind the card - the sequenced pop the plan rejected). Android stacks the two whites; iOS rides
+at parity (row 77''s 0.007 ledger) and keeps its measured-accepted path.
+
+- 2026-10-21, D8 - Android paints the strip''s white on an absolute-fill coat child whose entrance is
+  FadeIn.delay(300): the delay holds the coat at zero through the container''s bare-FadeIn 300ms, and white
+  arriving on already-opaque white shows nothing. The row keeps the bare FadeIn (the pill rides the card as
+  on iOS), layout=GROW stays, and the row''s committed style carries neither white nor an opacity pin - the
+  standing review note about LinearTransition cloning a committed zero dies by construction. iOS renders
+  today''s exact tree.
+- 2026-10-21, D9 - The reanimated jest mock records delay and duration as the real builder does
+  (BaseAnimationBuilder sets delayV/durationV; the published mock discards them), so the wait-out is
+  pinnable. Modal''s suite pins the container''s bare FadeIn because the 300ms pairing is otherwise silent.
+- 2026-10-21, D10 - Version 2.3.6: nothing above 2.3.5 had landed at fetch time, so this lane lands first
+  under the standing collision rulings and the sisters renumber above.
+', NULL, NULL, '{}', false, false, false, NULL, 27648, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 03:13:15.534399+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (81, 29, 2, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
+
+## Goal
+
+The modal becomes a versioned changelog: the archive''s newest 20 items, grouped under version headings (major.minor, patch hidden), newest group first, rendered exactly as the approved design refine-04-tag-left. The appear gate (release stamp equals installed version) is untouched.
+
+## The approved design
+
+refine-04-tag-left.png in the session''s designs-297 directory (owner-approved 2026-10-21 03:24). Supersedes the right-aligned pair (refine-02-right, refine-03-filled-right) and the outlined left pill (refine-01-left).
+
+- Heading "What''s New" kept; NO version line under it.
+- Group headers: muted grey filled tag, left-aligned. Fill rgba(52, 78, 92, 0.14) (the version text''s own colour as a wash), text COLORS.light.textSecondary, radius RADIUS.sm (the Close button''s softness scaled), the reduced size from the renders: fontSize 10, lineHeight 12, paddingHorizontal 7, paddingVertical 2.
+- Between groups: centred three-dot separator (2px dots); none after the last group.
+- Within a group: a breathing gap under each item row (SPACING.md).
+- Item rows: title and body left; the iOS and Android glyphs at the row''s right edge, side by side horizontally, level with the title line, colour FAINT_BLUE. iOS glyph size 10 (the render''s 20 percent reduction); Android 13 exactly as today''s glyph renders - owner order 2026-10-21: the Android icon ships EXACTLY as refine-04 renders it, no narrowing, no substitute glyph.
+- Groups key on the major.minor of each item''s version (v2.0, v1.29, v1.24, v1.7), patch hidden; newest group first; the window is the newest 20 items.
+
+## Owner orders
+
+- 2026-10-20: versioned changelog, newest 20, sections parted by separators.
+- 2026-10-21 00:54: list-12 refined - pill family, icons to the right edge, major.minor groups, no version line under the heading.
+- 2026-10-21 (third): right alignment, filled tonal pill (refine-03).
+- 2026-10-21 (fourth): left alignment returns - quiet grey tag, more within-group breathing, iOS glyph 20 percent smaller.
+- 2026-10-21 03:24: refine-04-tag-left approved outright; implementation ordered; the Android glyph work CANCELLED - both glyphs ship exactly as the render shows.
+
+## Steps
+
+1. **Step 1: The shared module carries the grouped display** (2 pts) - true per-item versions in the archive, the newest-20 window, major.minor grouping as a pure tested function.
+2. **Step 2: The modal renders the approved grouped card** (2 pts) - tag pill headers, right-edge glyphs, breathing gap, dot separators, the version line gone, the index caller updated.
+3. **Step 3: The built modal reaches the 3T** (3 pts) - mock build through the single slot, aapt2 fleettest gate, install on the OnePlus 3T (3T_SERIAL), single-user assert, park for the owner''s read.
+
+Red-first unit coverage on every touched line; content contract updated; mutation pass on the guarded logic (window boundary, parked/null exclusion, flag exclusion, patch hiding, last-group separator); yarn validate green; tests never read the real clock.
+
+## Files
+
+- shared/whatsNew.ts - true per-item versions (planning''s git-history-named values: language 2.0.37, qibla compass 1.29.258, help page 1.29.10, second reminder 1.29.0, tablet support + athan sounds + reminder sounds 1.24.10, widgets 1.7.0); filterWhatsNewItems drops its release-version gate (flags and non-null versions only); a new display-window constant (20, distinct from the 100-entry archive prune); a new pure groupWhatsNewItems; getVisibleWhatsNew sorts newest first and windows to 20; shouldShowWhatsNew untouched; the release stamp moves to the new version (an un-moved stamp silent-ships the release).
+- components/modals/WhatsNew.tsx - the grouped render per the approved design; the version prop and its line removed.
+- app/index.tsx - the ModalWhatsNew call loses the version prop (installedVersion stays in the gate).
+- shared/__tests__/whatsNew.test.ts, components/modals/__tests__/WhatsNew.test.tsx - updated red-first.
+- package.json, app.json, android/app/build.gradle - feat bump to 2.4.0 (above the landed 2.3.5 and the in-flight 2.3.6); the archive stamp reads 2.4.0.
+
+Never merges: app/gallery.tsx, the canvas swap in app/index.tsx (restored from uat), the dev-client render setup. Screenshots never touch git.
+
+## Risks
+
+- A sister holds 2.3.6 in flight: the feat bump to 2.4.0 clears the collision; fetch again before merge and renumber if uat moved.
+- T-296 (translations) touches the same modal and lands later: it rebases on this.
+- The stamp must equal the build''s version or the modal never appears; the contract test pins stamp == app.json''s version.
+- Eight real items form four groups (v2.0, v1.29, v1.24, v1.7): the 20 window shows all eight; v1.7 sits below the scroll fold.
+
+## Alternatives rejected
+
+- Right-aligned outlined pill (refine-02) and filled tonal right pill (refine-03): superseded by the fourth order.
+- Outlined left pill (refine-01): superseded.
+- Android glyph narrowing or an alternate glyph: cancelled by owner order.
+- Keeping the version line under the heading: removed by the owner''s refine orders.
+', NULL, NULL, '{}', false, false, false, NULL, 28672, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 02:49:31.040147+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (76, 27, 1, NULL, 'T-293', '# T-293 - The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved
+
+## Goal
+
+Today the page''s one paddingTop is `honoredTopInset(insets.top, width) + SCREEN.paddingTop` with `SCREEN.paddingTop = 17`, so the first component (the countdown block) sits the honored inset plus 17dp below the screen''s top edge and everything below stacks under it. When this is done the app-added gap is 1.65 x today''s: `SCREEN.paddingTop = 28.05` through the same single expression, the whole column moving down 11.05dp, and the Ramadan decorations'' layer pixel-identical where it sits.
+
+## Decisions taken
+
+- 2026-10-20 D1 - The scaled value is SCREEN.paddingTop alone (17 to 28.05), never the honored inset. The acceptance keeps every pose''s honored inset and bans per-device constants, and scaling the whole sum (inset + 17) x 1.65 would need the inset itself scaled or a per-device multiplier, which is row 280''s tall-pose ruling refused. The measured reading verifies the app-added gap: first component top minus honored inset reads 28.05dp where it read 17dp.
+- 2026-10-20 D2 - Device evidence is two Ramadan-forced mock builds on the OnePlus 3T (the measurement device), built by build-mock.zsh from measurement-only refs whose sole delta beyond their base is one committed .env.example line `EXPO_PUBLIC_FORCE_RAMADAN=1` - the flag''s designed entry into a sanctioned build, because the script writes the build worktree''s .env from the built ref''s .env.example and strips every EXPO_PUBLIC_* from the shell. The 9 Oct build-mock-ramadan.zsh predates the neutral-ids law and fails its own applicationId gate on today''s tree, so it is not used. The measurement refs never merge; each commit bumps the version as the hooks demand, into numbers the landed line never takes, and both refs are deleted after the readings so their numbers return to the pool before any re-bump or merge.
+- 2026-10-20 D3 - The exact new value is 28.05, kept fractional: the order names 1.65 x today''s and rounding to 28 would read 1.647x on glass, while 0.05dp is a fifth of a physical pixel at the 3T''s 2.625 scale.
+- 2026-10-20 D4 - The Duo''s tall and closed poses need no device step: the honored-inset arms are pinned by the existing three-test suite (phone-class, tall canvas, letterbox) updated red-first, row 280''s ruling keeps every pose on this one path, and the 3T reading shows a phone''s honored status-bar inset identical between the two builds.
+- 2026-10-20 D5 - The 3T ends the session carrying a plain build-mock of the lane tip (a version the uat line actually takes), never a measurement ref''s throwaway number.
+- 2026-10-20 D6 - Decoration comparison anchors: the moon and lantern nodes are static in X (translateY bobs only, downward from rest 0 to a positive maximum), the wire strips are static in X, and stars scale with glow so their bodies are excluded. Static X edges compared exactly; bobbing nodes compared at the minimum top across three samples, which is the rest geometry because every bob moves only downward from zero.
+
+## Files
+
+- shared/constants.ts - SCREEN.paddingTop 17 to 28.05, the doc comment carrying the owner order.
+- __tests__/app/Screen.test.tsx - the three exact expectations 79, 99, 17 to 90.05, 110.05, 28.05, red before green.
+- .env.example - the measurement-only commits add EXPO_PUBLIC_FORCE_RAMADAN=1 in the feature-flags section; never merged, refs deleted after the readings.
+- package.json, app.json - the lane commit''s version bump (fetch origin first). android/app/build.gradle is prebuild output, untracked, and carries the same version inside every build worktree prebuild runs.
+
+## Design
+
+One path, one value: app/Screen.tsx:30 stays `paddingTop: honoredTopInset(insets.top, width) + SCREEN.paddingTop`; the only code change is the constant. No per-device or per-pose constant, no multiplier expression.
+
+The decorations are structurally outside the change: RamadanDecorations renders in Navigation''s chromeLayer (position absolute, top 0, start 0, end 0, bottom 0, outside the PagerView), reads only useSafeAreaInsets().top and useWindowDimensions().width (moonCy = insetTop + 62, maxStarY = insetTop + 65, every anchor x = width x a percentage), and components/ui/RamadanDecorations.tsx imports nothing from SCREEN. app/Screen.tsx is the file''s only SCREEN.paddingTop reader (verified by grep; Day and List read SCREEN.paddingHorizontal).
+
+Alternatives rejected:
+- Scaling the whole paddingTop sum per device: needs the inset scaled or per-device constants, against the one-value acceptance and row 280''s ruling.
+- A TOP_GAP_MULTIPLIER = 1.65 applied in Screen.tsx: leaves two numbers where one suffices and hides the value the owner ordered behind arithmetic.
+- Rounding to 28: reads 1.647x on glass (D3).
+
+## Steps
+
+1. Step 1: the value change and its red-first suite (code, 2 points). Update the three expectations in __tests__/app/Screen.test.tsx first (79 to 90.05, 99 to 110.05, 17 to 28.05) and run the file red, confirming each of the three by name with `yarn jest __tests__/app/Screen.test.tsx -t "<phrase>"` and the N passed, M skipped line. Then set SCREEN.paddingTop to 28.05 with the owner-order comment and run the file green. Mutation bite: flip the constant back to 17 once in the working tree, show the three tests red, restore. Fetch origin, take the next free patch number, bump app.json then package.json in lockstep, run yarn validate, commit on lane-T293.
+2. Step 2: the measured readings on the 3T from the two Ramadan-forced builds, transcribed, and the phone left whole (device, 3 points). In one lane worktree create measure/T293-before on origin/uat plus the flag commit and measure/T293-after on the lane tip plus the flag commit, each bumping to a free number above the lane''s. Before each build run `pgrep -f ''build-(prod|mock).zsh|gradle|xcodebuild''` and wait until it is empty (sister lanes share the toolchain). Build A = build-mock.zsh measure/T293-before mocks/simple.ts; Build B = same on measure/T293-after; Build C = plain build-mock.zsh on the lane tip (the leave-behind). Gate each APK with aapt2 dump badging (build-tools/37.0.0/aapt2, checked to exist) and stop unless the package line is <pkg> at versionCode 1000000; install with adb install -r, then assert `dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone. After each install do one throwaway launch (What''s New marks itself and dexopt inflates the first am start -W), then HOME and am kill, launch, and let the screen settle. Read per build: a fresh uiautomator dump for the countdown progressbar node''s and the dates row''s bounds (bounds only, never text - Android 9 AX trees serve stale text), the moon and lantern nodes'' left edges and three-sample minimum tops, and the wire strips'' x extents; if the decorations are absent from the dump, fall back to Maestro hierarchy for the same nodes, then to screencap with PIL bounding boxes. Read the status-bar inset once from dumpsys. Transcribe both builds'' readings as comments on the row: the app-added gap (countdown top minus inset, in dp at the 3T''s 2.625 scale) reads 28.05 where it read 17, the dates row''s top moves by the same delta, the honored inset is identical, and every decoration anchor is byte-identical (static X exact, minimum tops within one physical pixel). Install Build C last so the phone carries the lane''s real version, delete the measurement worktree, branches and APKs, and confirm the local version pool holds only the lane''s number.
+
+## Risks
+
+- A sister lane lands on uat mid-run and takes the next patch number: fetch before the lane commit and before each measurement commit, re-run the arithmetic, and delete the measurement refs before any re-bump or merge so the uniqueness gate never sees their numbers.
+- A sister lane holds the Android build: the pgrep gate before each build; two builds never run at once.
+- The dump serves stale or missing decoration nodes: the fallback ladder in Step 2; the gap reading itself always comes from the progressbar node a fresh dump serves.
+- The mock''s compressed evening window rolls the list mid-reading: take both builds'' dumps within the same minute-of-day window or re-launch, so the compared screens hold the same day''s list.
+
+## Proof
+
+- Measured 1.65x on a phone: the transcribed before/after bounds - app-added gap 28.05dp against 17dp = 1.65 within pixel rounding, honored inset identical.
+- One code path, one value: `git show` of the lane commit touches SCREEN.paddingTop, the three test expectations and the version pair alone; the paddingTop expression in app/Screen.tsx is unchanged.
+- Decorations unmoved: the transcribed anchors byte-identical between the two forced-season builds, plus the code-read line (chrome layer absolute outside the pager, no SCREEN import, every anchor a function of inset and width).
+- Poses keep their honored insets: the three suite arms green at 62 to 90.05, tall 82 to 110.05, letterbox 0 to 28.05.
+- yarn validate green on the lane commit, and re-run in the main tree after the merge.
+', NULL, NULL, '{}', false, false, false, NULL, 26624, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:38:22.837216+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (84, 29, 5, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
+
+## Goal
+
+The modal becomes a versioned changelog: the archive''s newest 20 items, grouped under version headings (major.minor, patch hidden), newest group first, rendered exactly as the approved design refine-04-tag-left. The appear gate (release stamp equals installed version) is untouched.
+
+## The approved design
+
+refine-04-tag-left.png in the session''s designs-297 directory (owner-approved 2026-10-21 03:24). Supersedes the right-aligned pair (refine-02-right, refine-03-filled-right) and the outlined left pill (refine-01-left).
+
+- Heading "What''s New" kept; NO version line under it.
+- Group headers: muted grey filled tag, left-aligned. Fill rgba(52, 78, 92, 0.14) (the version text''s own colour as a wash), text COLORS.light.textSecondary, radius RADIUS.sm (the Close button''s softness scaled), the reduced size from the renders: fontSize 10, lineHeight 12, paddingHorizontal 7, paddingVertical 2.
+- Between groups: centred three-dot separator (2px dots); none after the last group.
+- Within a group: a breathing gap under each item row (SPACING.md).
+- Item rows: title and body left; the iOS and Android glyphs at the row''s right edge, side by side horizontally, level with the title line, colour FAINT_BLUE. iOS glyph size 10 (the render''s 20 percent reduction); Android 13 exactly as today''s glyph renders - owner order 2026-10-21: the Android icon ships EXACTLY as refine-04 renders it, no narrowing, no substitute glyph.
+- Groups key on the major.minor of each item''s version (v2.0, v1.29, v1.24, v1.7), patch hidden; newest group first; the window is the newest 20 items.
+- The group label renders through an expression container ({group.key}), never as JSX text or a label/title copy field: the string census (stringGuard.test.ts, scan-strings.mjs) fails validate on bare JSX strings, and today''s version line passes only because it renders {''v''}{version} as expressions.
+
+## Owner orders
+
+- 2026-10-20: versioned changelog, newest 20, sections parted by separators.
+- 2026-10-21 00:54: list-12 refined - pill family, icons to the right edge, major.minor groups, no version line under the heading.
+- 2026-10-21 (third): right alignment, filled tonal pill (refine-03).
+- 2026-10-21 (fourth): left alignment returns - quiet grey tag, more within-group breathing, iOS glyph 20 percent smaller.
+- 2026-10-21 03:24: refine-04-tag-left approved outright; implementation ordered; the Android glyph work CANCELLED - both glyphs ship exactly as the render shows.
+
+## Steps
+
+1. **Step 1: The shared module carries the grouped display** (2 pts) - true per-item versions in the archive, the newest-20 window, major.minor grouping as a pure tested function, and a red-first pin that WHATS_NEW.version equals the app.json build version (nothing pins it today; the gate test at whatsNew.test.ts:316 passes vacuously).
+2. **Step 2: The modal renders the approved grouped card** (2 pts) - tag pill headers, right-edge glyphs, breathing gap, dot separators, the version line gone, the index caller updated.
+3. **Step 3: The built modal reaches the 3T** (3 pts) - mock build through the single slot, aapt2 fleettest gate, install on the OnePlus 3T (3T_SERIAL (the OnePlus 3T)), single-user assert, park for the owner''s read. iOS stays owner-eyeball per the campaign directive.
+
+Steps 1 and 2 land together as ONE feat-typed commit: check-version-discipline.js grants the minor only to the feat subject and exactly one patch to every further commit, and check-version-uniqueness.js refuses numbers held by live branches (a sister holds 2.3.6). The stamp moves with every later bump: whatever version the merge lands at, WHATS_NEW.version reads the same.
+
+### Contracts that die (named, so none survives by accident)
+
+- whatsNew.test.ts:263 - every item stamped at the release stamp (reversed: items carry true per-item versions).
+- whatsNew.test.ts:305 - the stamp pinned to the literal ''2.3.0'' (replaced by the INSTALLED_VERSION pin).
+- whatsNew.test.ts:313 - no cross-release item reaches a user (reversed: the newest-20 window is cross-release by design).
+- WhatsNew.test.tsx:38 - the ''v1.27.140'' version line under the heading (the line is gone).
+- whatsNew.test.ts:272 - the order-sensitive toEqual on the archive''s presentation list (now newest-first; the modal suite gained its own grouped-order assertions).
+
+### Start state
+
+The lane worktree carries the design canvas: app/gallery.tsx (untracked), a gutted app/index.tsx, and an uncommitted restamp in shared/whatsNew.ts. NONE of it merges. First act: git restore app/index.tsx shared/whatsNew.ts and delete app/gallery.tsx, leaving the worktree pristine on lane-T297, then implement from uat''s file state.
+
+## Files
+
+- shared/whatsNew.ts - true per-item versions (planning''s git-history-named values: language 2.0.37, qibla compass 1.29.258, help page 1.29.10, second reminder 1.29.0, tablet support + athan sounds + reminder sounds 1.24.10, widgets 1.7.0); filterWhatsNewItems drops its release-version gate (flags and non-null versions only); a new display-window constant (20, distinct from the 100-entry archive prune); a new pure groupWhatsNewItems; getVisibleWhatsNew sorts newest first and windows to 20; shouldShowWhatsNew untouched; the release stamp moves to the landing version (an un-moved stamp silent-ships the release).
+- components/modals/WhatsNew.tsx - the grouped render per the approved design; the version prop and its line removed (callers: app/index.tsx:261, WhatsNew.tsx:33, both test files; Settings.tsx:183 uses currentVisibleWhatsNew for truthiness only and is unaffected).
+- app/index.tsx - the ModalWhatsNew call loses the version prop (installedVersion stays in the gate).
+- shared/__tests__/whatsNew.test.ts, components/modals/__tests__/WhatsNew.test.tsx - updated red-first.
+- package.json, app.json - feat bump to 2.4.0 (above the landed 2.3.5 and the in-flight 2.3.6); the archive stamp reads 2.4.0. android/app/build.gradle is gitignored prebuild output and regenerates from app.json; both version gates read app.json alone.
+
+Red-first unit coverage on every touched line; mutation pass on the guarded logic (window boundary, parked/null exclusion, flag exclusion, patch hiding, last-group separator); yarn validate green; tests never read the real clock.
+
+Never merges: app/gallery.tsx, the canvas swap in app/index.tsx, the worktree''s uncommitted restamp of shared/whatsNew.ts, the dev-client render setup. Screenshots never touch git.
+
+## Risks
+
+- A sister holds 2.3.6 in flight: the feat bump to 2.4.0 clears the collision; fetch again before merge and renumber if uat moved.
+- T-296 (translations) touches the same modal and lands later: it rebases on this.
+- Eight real items form four groups (v2.0, v1.29, v1.24, v1.7): the 20 window shows all eight; v1.7 sits below the scroll fold.
+
+## Alternatives rejected
+
+- Right-aligned outlined pill (refine-02) and filled tonal right pill (refine-03): superseded by the fourth order.
+- Outlined left pill (refine-01): superseded.
+- Android glyph narrowing or an alternate glyph: cancelled by owner order.
+- Keeping the version line under the heading: removed by the owner''s refine orders.
+
+## Audit outcome
+
+Both audits passed. Folded as 2.4.1: the README release ritual now states the window mechanics (drafts park at version null with the suite red until stamped or removed - the ship gate; item stamps no longer gate or cap; only the WHATS_NEW.version stamp decides silence), shouldShowWhatsNew''s docblock dropped its false present-tense clause, the display-window constant kept one comment, and the no-parked-drafts contract kept as the ship gate under a truer name. The discipline hook refused a same-version amend, so the fixes ride as a patch commit and the stamp moved with the build to 2.4.1.
+', NULL, NULL, '{}', false, false, false, NULL, 28672, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 03:59:32.707813+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (82, 29, 3, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
+
+## Goal
+
+The modal becomes a versioned changelog: the archive''s newest 20 items, grouped under version headings (major.minor, patch hidden), newest group first, rendered exactly as the approved design refine-04-tag-left. The appear gate (release stamp equals installed version) is untouched.
+
+## The approved design
+
+refine-04-tag-left.png in the session''s designs-297 directory (owner-approved 2026-10-21 03:24). Supersedes the right-aligned pair (refine-02-right, refine-03-filled-right) and the outlined left pill (refine-01-left).
+
+- Heading "What''s New" kept; NO version line under it.
+- Group headers: muted grey filled tag, left-aligned. Fill rgba(52, 78, 92, 0.14) (the version text''s own colour as a wash), text COLORS.light.textSecondary, radius RADIUS.sm (the Close button''s softness scaled), the reduced size from the renders: fontSize 10, lineHeight 12, paddingHorizontal 7, paddingVertical 2.
+- Between groups: centred three-dot separator (2px dots); none after the last group.
+- Within a group: a breathing gap under each item row (SPACING.md).
+- Item rows: title and body left; the iOS and Android glyphs at the row''s right edge, side by side horizontally, level with the title line, colour FAINT_BLUE. iOS glyph size 10 (the render''s 20 percent reduction); Android 13 exactly as today''s glyph renders - owner order 2026-10-21: the Android icon ships EXACTLY as refine-04 renders it, no narrowing, no substitute glyph.
+- Groups key on the major.minor of each item''s version (v2.0, v1.29, v1.24, v1.7), patch hidden; newest group first; the window is the newest 20 items.
+- The group label renders through an expression container ({group.key}), never as JSX text or a label/title copy field: the string census (stringGuard.test.ts, scan-strings.mjs) fails validate on bare JSX strings, and today''s version line passes only because it renders {''v''}{version} as expressions.
+
+## Owner orders
+
+- 2026-10-20: versioned changelog, newest 20, sections parted by separators.
+- 2026-10-21 00:54: list-12 refined - pill family, icons to the right edge, major.minor groups, no version line under the heading.
+- 2026-10-21 (third): right alignment, filled tonal pill (refine-03).
+- 2026-10-21 (fourth): left alignment returns - quiet grey tag, more within-group breathing, iOS glyph 20 percent smaller.
+- 2026-10-21 03:24: refine-04-tag-left approved outright; implementation ordered; the Android glyph work CANCELLED - both glyphs ship exactly as the render shows.
+
+## Steps
+
+1. **Step 1: The shared module carries the grouped display** (2 pts) - true per-item versions in the archive, the newest-20 window, major.minor grouping as a pure tested function, and a red-first pin that WHATS_NEW.version equals the app.json build version (nothing pins it today; the gate test at whatsNew.test.ts:316 passes vacuously).
+2. **Step 2: The modal renders the approved grouped card** (2 pts) - tag pill headers, right-edge glyphs, breathing gap, dot separators, the version line gone, the index caller updated.
+3. **Step 3: The built modal reaches the 3T** (3 pts) - mock build through the single slot, aapt2 fleettest gate, install on the OnePlus 3T (3T_SERIAL), single-user assert, park for the owner''s read. iOS stays owner-eyeball per the campaign directive.
+
+Steps 1 and 2 land together as ONE feat-typed commit: check-version-discipline.js grants the minor only to the feat subject and exactly one patch to every further commit, and check-version-uniqueness.js refuses numbers held by live branches (a sister holds 2.3.6). The stamp moves with every later bump: whatever version the merge lands at, WHATS_NEW.version reads the same.
+
+### Contracts that die (named, so none survives by accident)
+
+- whatsNew.test.ts:263 - every item stamped at the release stamp (reversed: items carry true per-item versions).
+- whatsNew.test.ts:305 - the stamp pinned to the literal ''2.3.0'' (replaced by the INSTALLED_VERSION pin).
+- whatsNew.test.ts:313 - no cross-release item reaches a user (reversed: the newest-20 window is cross-release by design).
+- WhatsNew.test.tsx:38 - the ''v1.27.140'' version line under the heading (the line is gone).
+- WhatsNew.test.tsx:272 - the order-sensitive toEqual on the item list (the list is now grouped).
+
+### Start state
+
+The lane worktree carries the design canvas: app/gallery.tsx (untracked), a gutted app/index.tsx, and an uncommitted restamp in shared/whatsNew.ts. NONE of it merges. First act: git restore app/index.tsx shared/whatsNew.ts and delete app/gallery.tsx, leaving the worktree pristine on lane-T297, then implement from uat''s file state.
+
+## Files
+
+- shared/whatsNew.ts - true per-item versions (planning''s git-history-named values: language 2.0.37, qibla compass 1.29.258, help page 1.29.10, second reminder 1.29.0, tablet support + athan sounds + reminder sounds 1.24.10, widgets 1.7.0); filterWhatsNewItems drops its release-version gate (flags and non-null versions only); a new display-window constant (20, distinct from the 100-entry archive prune); a new pure groupWhatsNewItems; getVisibleWhatsNew sorts newest first and windows to 20; shouldShowWhatsNew untouched; the release stamp moves to the landing version (an un-moved stamp silent-ships the release).
+- components/modals/WhatsNew.tsx - the grouped render per the approved design; the version prop and its line removed (callers: app/index.tsx:261, WhatsNew.tsx:33, both test files; Settings.tsx:183 uses currentVisibleWhatsNew for truthiness only and is unaffected).
+- app/index.tsx - the ModalWhatsNew call loses the version prop (installedVersion stays in the gate).
+- shared/__tests__/whatsNew.test.ts, components/modals/__tests__/WhatsNew.test.tsx - updated red-first.
+- package.json, app.json, android/app/build.gradle - feat bump to 2.4.0 (above the landed 2.3.5 and the in-flight 2.3.6); the archive stamp reads 2.4.0.
+
+Red-first unit coverage on every touched line; mutation pass on the guarded logic (window boundary, parked/null exclusion, flag exclusion, patch hiding, last-group separator); yarn validate green; tests never read the real clock.
+
+Never merges: app/gallery.tsx, the canvas swap in app/index.tsx, the worktree''s uncommitted restamp of shared/whatsNew.ts, the dev-client render setup. Screenshots never touch git.
+
+## Risks
+
+- A sister holds 2.3.6 in flight: the feat bump to 2.4.0 clears the collision; fetch again before merge and renumber if uat moved.
+- T-296 (translations) touches the same modal and lands later: it rebases on this.
+- Eight real items form four groups (v2.0, v1.29, v1.24, v1.7): the 20 window shows all eight; v1.7 sits below the scroll fold.
+
+## Alternatives rejected
+
+- Right-aligned outlined pill (refine-02) and filled tonal right pill (refine-03): superseded by the fourth order.
+- Outlined left pill (refine-01): superseded.
+- Android glyph narrowing or an alternate glyph: cancelled by owner order.
+- Keeping the version line under the heading: removed by the owner''s refine orders.
+', NULL, NULL, '{}', false, false, false, NULL, 28672, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 02:59:57.338157+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (78, 27, 3, NULL, 'T-293', '# T-293 - The home screen''s top gap grows 65 percent, the whole column moving with it, the Ramadan decorations unmoved
+
+## Goal
+
+Today the page''s one paddingTop is `honoredTopInset(insets.top, width) + SCREEN.paddingTop` with `SCREEN.paddingTop = 17`, so the first component (the countdown block) sits the honored inset plus 17dp below the screen''s top edge and everything below stacks under it. When this is done the app-added gap is 1.65 x today''s: `SCREEN.paddingTop = 28.05` through the same single expression, the whole column moving down 11.05dp, and the Ramadan decorations'' layer pixel-identical where it sits.
+
+## Decisions taken
+
+- 2026-10-20 D1 - The scaled value is SCREEN.paddingTop alone (17 to 28.05), never the honored inset. The acceptance keeps every pose''s honored inset and bans per-device constants, and scaling the whole sum (inset + 17) x 1.65 would need the inset itself scaled or a per-device multiplier, which is row 280''s tall-pose ruling refused. The measured reading verifies the app-added gap through its before/after delta: the pinned countdown node''s top moves down exactly 11.05dp, which on the code-read base of 17 reads as 28.05 = 1.65 x 17.
+- 2026-10-20 D2 - Device evidence is two Ramadan-forced mock builds on the OnePlus 3T (the measurement device), built by build-mock.zsh from measurement-only refs whose sole delta beyond their base is one committed .env.example line `EXPO_PUBLIC_FORCE_RAMADAN=1` plus the version-pair bump the pre-commit hooks demand. That is the flag''s designed entry into a sanctioned build, because the script writes the build worktree''s .env from the built ref''s .env.example and strips every EXPO_PUBLIC_* from the shell. The 9 Oct build-mock-ramadan.zsh predates the neutral-ids law and fails its own applicationId gate on today''s tree, so it is not used. The measurement refs never merge; their versions sit above the lane''s and both refs are deleted after the readings, so the uniqueness gate (which reads every local unpushed commit) never sees their numbers again.
+- 2026-10-20 D3 - The exact new value is 28.05, kept fractional: the order names 1.65 x today''s and rounding to 28 would read 1.647x on glass, while 0.05dp is an eighth of a physical pixel at the 3T''s 2.625 scale.
+- 2026-10-20 D4 - The Duo''s tall and closed poses need no device step: the honored-inset arms are pinned by the existing three-test suite (phone-class, tall canvas, letterbox) updated red-first, row 280''s ruling keeps every pose on this one path, and the 3T readings show a phone''s honored inset identical between the two builds.
+- 2026-10-20 D5 - The 3T ends the session carrying a plain build-mock of the lane tip (a version the uat line actually takes), never a measurement ref''s throwaway number.
+- 2026-10-20 D6 - Decoration comparison anchors: the moon and lantern nodes are static in X (translateY bobs only, downward from rest 0 to a positive maximum), the wire strips are static in X, and stars scale with glow so their bodies are excluded. Static X edges compared exactly; bobbing nodes compared at the minimum top across three samples, which is the rest geometry because every bob moves only downward from zero. The moon''s rest-top identity doubles as the honored-inset proof: moonCy = insetTop + 62 with 62 and the sprite box constants fixed in code, so identical moon rest-tops between the two builds prove identical honored insets.
+- 2026-10-20 D7 - The gap reading is a delta, not an absolute: the countdown block''s first dumped node sits at an unrecorded offset below the page''s content top (the Bar is the block''s last child), so the pinned node is read in both builds and the difference must be exactly 11.05dp = 29px at the 3T''s 2.625 scale. The absolute 28.05 follows from the code-read base of 17. A repo read pins the node''s offset from the block top once (components/countdown/Countdown.tsx) so the transcribed row names which node moved.
+
+## Files
+
+- shared/constants.ts - SCREEN.paddingTop 17 to 28.05; the constant''s descriptive comment stands unchanged (no provenance comments).
+- __tests__/app/Screen.test.tsx - the three exact expectations 79, 99, 17 to 90.05, 110.05, 28.05, red before green.
+- .env.example - the measurement-only commits add EXPO_PUBLIC_FORCE_RAMADAN=1 in the feature-flags section; never merged, refs deleted after the readings.
+- package.json, app.json - the lane commit''s version bump (fetch origin first). android/app/build.gradle is prebuild output, untracked, and carries the same version inside every build worktree prebuild runs.
+
+## Design
+
+One path, one value: app/Screen.tsx:30 stays `paddingTop: honoredTopInset(insets.top, width) + SCREEN.paddingTop`; the only code change is the constant. No per-device or per-pose constant, no multiplier expression.
+
+The decorations are structurally outside the change: RamadanDecorations renders in Navigation''s chromeLayer (position absolute, top 0, start 0, end 0, bottom 0, outside the PagerView), reads only useSafeAreaInsets().top and useWindowDimensions().width (moonCy = insetTop + 62, maxStarY = insetTop + 65, every anchor x = width x a percentage), and components/ui/RamadanDecorations.tsx imports nothing from SCREEN. app/Screen.tsx is the file''s only SCREEN.paddingTop reader (verified by grep; Day and List read SCREEN.paddingHorizontal).
+
+Alternatives rejected:
+- Scaling the whole paddingTop sum per device: needs the inset scaled or per-device constants, against the one-value acceptance and row 280''s ruling.
+- A TOP_GAP_MULTIPLIER = 1.65 applied in Screen.tsx: leaves two numbers where one suffices and hides the value the owner ordered behind arithmetic.
+- Rounding to 28: reads 1.647x on glass (D3).
+
+## Steps
+
+1. Step 1: the value change and its red-first suite (code, 2 points). Update the three expectations in __tests__/app/Screen.test.tsx first (79 to 90.05, 99 to 110.05, 17 to 28.05) and run the file red, confirming each of the three by name with `yarn jest __tests__/app/Screen.test.tsx -t "<phrase>"` and the N passed, M skipped line. Then set SCREEN.paddingTop to 28.05 and run the file green. Mutation bite: flip the constant back to 17 once in the working tree, show the three tests red, restore. Fetch origin, take the next free patch number, bump app.json then package.json in lockstep, run yarn validate, commit on lane-T293.
+2. Step 2: the measured readings on the 3T from the two Ramadan-forced builds, transcribed, and the phone left whole (device, 3 points). In one lane worktree create measure/T293-before on origin/uat plus the flag commit and measure/T293-after on the lane tip plus the flag commit, each bumping to a free number above the lane''s. Before each build run `pgrep -f ''build-(prod|mock).zsh|gradle|xcodebuild''` and wait until it is empty (sister lanes share the toolchain). Build A = `zsh $HOME/athan-gitree/bin/build-mock.zsh measure/T293-before $REPO/mocks/simple.ts $HOME/athan-gitree/builds/T293-a-before.apk`; Build B = the same on measure/T293-after writing T293-b-after.apk; Build C = plain build-mock.zsh on the lane tip writing T293-c-leave.apk. Gate each APK with aapt2 dump badging ($HOME/Library/Android/sdk/build-tools/37.0.0/aapt2, checked to exist) and stop unless the package line is <pkg> at versionCode 1000000; install with adb install -r, then assert `adb -s 3T_SERIAL shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone. After each install do one throwaway launch (What''s New marks itself and dexopt inflates the first am start -W), then HOME and am kill, launch, and let the screen settle. Read per build: a fresh uiautomator dump (bounds only, never text - Android 9 AX trees serve stale text) for the countdown progressbar node''s bounds and the first text-cluster node below the countdown block (the dates row, identified by position, confirmed once via Maestro hierarchy which serves live text); the moon and lantern nodes'' left edges and three-sample minimum tops; the wire strips'' x extents. The gap reading is the progressbar top''s delta between Build A and Build B: exactly 29px (11.05dp at 2.625), with the dates node moving the same delta. The inset reading per build: `adb -s 3T_SERIAL shell dumpsys window policy | grep -i height`, transcribed; if the OEM names no height, read the status bar''s ink extent by pixel row on a screencap''s top 100px and compare the two builds'' rows; either way the moon rest-top identity (D6) is the decisive inset proof. If the decorations are absent from the dump, fall back to Maestro hierarchy for the same nodes, then to screencap with PIL bounding boxes. Transcribe both builds'' readings as comments on the row. Replay e2e/flows/overlay-x10.yaml once against Build B or C (`export PATH="$HOME/.maestro/bin:$PATH"`, force-stop replaced by HOME then am kill per the executor rule) and confirm its fixed taps still land inside their rows; if one straddles, fix that flow coordinate as its own follow-up commit in this lane and record it on the row. Install Build C last so the phone carries the lane''s real version, delete the measurement worktree, branches and APKs, and confirm the local version pool holds only numbers the lane takes.
+
+## Risks
+
+- A sister lane lands on uat mid-run and takes the next patch number: fetch before the lane commit and before each measurement commit, re-run the arithmetic, and delete the measurement refs before any re-bump or merge so the uniqueness gate never sees their numbers.
+- A sister lane holds the Android build: the pgrep gate before each build; two builds never run at once.
+- The dump serves stale or missing decoration nodes: the fallback ladder in Step 2; the gap reading itself always comes from the progressbar node a fresh dump serves.
+- The mock''s compressed evening window rolls the list mid-reading: take both builds'' dumps within the same minute-of-day window or re-launch, so the compared screens hold the same day''s list.
+- The column moves down 29px on the 3T and the e2e flows replay fixed tap points on home content (overlay-x10 taps 540, 974 and 540, 1100): the Step 2 replay verifies the taps still land inside their rows, and a straddle is fixed as its own commit, never left as a broken flow.
+
+## Proof
+
+- Measured 1.65x on a phone: the transcribed before/after bounds - the pinned countdown node''s top moves exactly 29px (11.05dp), the dates node the same delta, so the app-added gap reads 17 + 11.05 = 28.05 = 1.65 x 17 within pixel rounding, the honored inset identical (moon rest-tops equal, dumpsys lines equal).
+- One code path, one value: `git show` of the lane commit touches SCREEN.paddingTop, the three test expectations and the version pair alone; the paddingTop expression in app/Screen.tsx is unchanged.
+- Decorations unmoved: the transcribed anchors byte-identical between the two forced-season builds, plus the code-read line (chrome layer absolute outside the pager, no SCREEN import, every anchor a function of inset and width).
+- Poses keep their honored insets: the three suite arms green at 62 to 90.05, tall 82 to 110.05, letterbox 0 to 28.05.
+- yarn validate green on the lane commit, and re-run in the main tree after the merge.
+', NULL, NULL, '{}', false, false, false, NULL, 26624, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:47:24.963884+00');
 
 
 --
@@ -20110,7 +21624,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:20', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:50', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:221', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:100', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 106);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:242', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:108', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:110', 1, 28);
@@ -20228,15 +21741,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:263', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:265', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 130);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 121);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:122', 1, 32);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:299', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:86', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
@@ -20253,12 +21769,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:11', 1, 77);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:259', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:239', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:3', 1, 58);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3717);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:264', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:288', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:256', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:289', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:262', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:293', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:293', 1, 58);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:305', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:260', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:271', 1, 54);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:290', 1, 5);
@@ -20268,16 +21788,14 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:292', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:247', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:241', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:8', 1, 75);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:286', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:303', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:304', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:258', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:273', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3601);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 9);
@@ -20287,6 +21805,11 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:283', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:276', 1, 124);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:284', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 93);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:300', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 73);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:297', 1, 77);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:301', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:298', 1, 5);
 
 
 --
@@ -20548,7 +22071,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 2752, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 2951, true);
 
 
 --
@@ -20597,14 +22120,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 577, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 590, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 296, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 305, true);
 
 
 --
@@ -20618,14 +22141,14 @@ SELECT pg_catalog.setval('public.issue_import_id_seq', 1, false);
 -- Name: issue_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_link_id_seq', 122, true);
+SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 
 
 --
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 581, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 622, true);
 
 
 --
@@ -20660,7 +22183,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 183, true);
+SELECT pg_catalog.setval('public.label_id_seq', 185, true);
 
 
 --
@@ -20716,14 +22239,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 26, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 29, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 75, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 84, true);
 
 
 --
@@ -25108,5 +26631,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 8rwST0qp2H1boKSyk9peynID0RC3gorgZrxcUaVdJOwS74WtyOEiLcaufFkb7PV
+\unrestrict jMIfRoaTiKIYBiXPq6ZEYzPjt0BpGnytFL8PggWA6zSdxSZi8BDWgQ0xCw3efdR
 
