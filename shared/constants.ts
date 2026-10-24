@@ -714,6 +714,9 @@ export const COLORS = {
     sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
+    /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
+     * for overlays that must not dim their own children */
+    backdropDim: 'rgba(0, 1, 22, 0.9)',
     /** Elevated surface (info boxes, modals) */
     elevated: 'rgba(18, 6, 42, 1)',
     /** Elevated surface border */

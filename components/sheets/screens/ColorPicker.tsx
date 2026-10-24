@@ -260,7 +260,8 @@ const styles = StyleSheet.create({
   // --- Modal Container ---
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'transparent',
+    // The sheets' own dim, alpha on the colour so the content above stays opaque
+    backgroundColor: COLORS.surface.backdropDim,
     justifyContent: 'flex-end',
   },
   modalContent: {
