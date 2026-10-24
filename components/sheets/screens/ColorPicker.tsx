@@ -95,8 +95,8 @@ export default function ColorPickerSettings() {
   const isCustomColor = countdownBarColor !== COLOR_PICKER_DEFAULT;
 
   // The reset label's ink: shown over the sheet, the old 0.25-chain flatten when the bar
-  // is hidden, invisible ink while it cannot be used
-  const resetInk = !isCustomColor ? 'transparent' : countdownBarShown ? '#5b77a4' : '#1f3055';
+  // is hidden, the card's own face while it cannot be used
+  const resetInk = !isCustomColor ? RESET_HIDDEN_INK : countdownBarShown ? '#5b77a4' : '#1f3055';
 
   // =============================================================================
   // RENDER
@@ -131,7 +131,7 @@ export default function ColorPickerSettings() {
             // a Reset that is invisible and does nothing. Both, because one is iOS and one Android
             accessibilityElementsHidden={!isCustomColor}
             importantForAccessibility={isCustomColor ? 'yes' : 'no-hide-descendants'}>
-            {/* Kept mounted so the row holds its width; invisible ink (alpha 0) paints nothing, so no glyph compounds */}
+            {/* Kept mounted so the row holds its width; hidden in the card's own face, so no glyph compounds */}
             <Text style={[styles.resetText, { color: resetInk }]}>{t('colorPicker.reset')}</Text>
           </Pressable>
           <View style={[styles.colorPreviewContainer, isDisabled && styles.previewDim]}>
@@ -186,6 +186,10 @@ export default function ColorPickerSettings() {
 }
 
 const ty = typographyFor(currentLocaleId());
+
+// The card face the reset row sits on: the settings card wash rgba(99, 102, 241, 0.06) flattened over
+// the sheet, rgb(16, 29, 69). The hidden reset paints this face, because Android paints alpha-0 ink black
+const RESET_HIDDEN_INK = '#101d45';
 
 // =============================================================================
 // STYLES

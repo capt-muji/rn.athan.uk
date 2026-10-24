@@ -6,10 +6,11 @@ import { COLORS } from '@/shared/constants';
 
 /**
  * Text ink is solid: no Text or Animated.Text carries opacity in its own style or
- * animated style, and every colour it paints has alpha exactly 0 (a hide that must
- * hold layout) or exactly 1. Translucent glyph ink compounds where strokes overlap,
- * so dim and fade ride colour, never alpha - the owner's standing order, pinned here
- * so no new text can ship translucency by omission.
+ * animated style, and every colour it paints is solid, alpha exactly 1 - alpha-0 ink
+ * is banned too, because Android paints it black rather than nothing. Translucent
+ * glyph ink compounds where strokes overlap and invisible ink shows, so dim, fade
+ * and hide ride an opaque face colour, never alpha - the owner's standing order,
+ * pinned here so no new text can ship translucency or a transparent hide by omission.
  *
  * Source-level by design: the invariant lives in what each element declares (its own
  * style, the styles it names, the hooks its style consumes), which a render test would
@@ -78,10 +79,11 @@ const hookBindings = (source: string, hook: string): Map<string, string> => {
   return bindings;
 };
 
-/** Identifiers the file binds to a quoted string or a COLORS path, so ternary leaves resolve */
+/** Identifiers the file binds to any same-line const initializer, so a computed ink (a ternary, a
+ * flatten) resolves to the leaves its expression carries */
 const colourConsts = (source: string): Map<string, string> => {
   const consts = new Map<string, string>();
-  for (const match of source.matchAll(/const (\w+) = ('[^']*'|"[^"]*"|COLORS(?:\.\w+)+)/g)) {
+  for (const match of source.matchAll(/const (\w+) = ([^\n]+)/g)) {
     consts.set(match[1], match[2]);
   }
   return consts;
@@ -146,12 +148,16 @@ const colourAtPath = (path: string): unknown =>
       return null;
     }, COLORS);
 
-/** The colour literals a value expression holds: strings, COLORS paths, and the consts they name */
-const colourLeaves = (value: string, consts: Map<string, string>): string[] => {
+/** The colour literals a value expression holds: strings, COLORS paths, and the expressions its
+ * consts name, expanded once each so a computed ink resolves to the literals inside it */
+const colourLeaves = (value: string, consts: Map<string, string>, seen: Set<string> = new Set()): string[] => {
   const leaves: string[] = [];
   for (const token of value.match(/'[^']*'|"[^"]*"|COLORS(?:\.\w+)+|\b[A-Za-z_$][\w$]*\b/g) ?? []) {
     if (token.startsWith("'") || token.startsWith('"') || token.startsWith('COLORS')) leaves.push(token);
-    else if (consts.has(token)) leaves.push(consts.get(token) as string);
+    else if (consts.has(token) && !seen.has(token)) {
+      seen.add(token);
+      leaves.push(...colourLeaves(consts.get(token) as string, consts, seen));
+    }
   }
   return leaves;
 };
@@ -192,74 +198,72 @@ interface Offence {
   detail: string;
 }
 
-const sweep = (root: string): Offence[] => {
+/** The offences one source text carries; the file path only names them, so a plant can carry any name */
+const sweepSource = (file: string, source: string): Offence[] => {
   const offences: Offence[] = [];
-  for (const file of files(root)) {
-    const source = readFileSync(file, 'utf8');
-    const facts = factsOf(source);
-    for (const tag of textTags(source)) {
-      const style = styleExpressionOf(tag);
-      if (style === null) continue;
-      const where = `${file}: ${tag.slice(0, 60).replace(/\s+/g, ' ')}`;
+  const facts = factsOf(source);
+  for (const tag of textTags(source)) {
+    const style = styleExpressionOf(tag);
+    if (style === null) continue;
+    const where = `${file}: ${tag.slice(0, 60).replace(/\s+/g, ' ')}`;
 
-      const styleSources = [style, ...referencedEntries(style, facts)];
-      for (const text of styleSources) {
-        if (/[{,]\s*opacity\s*:/.test(text)) {
-          offences.push({ file, detail: `${where} declares opacity in a style it names` });
+    const styleSources = [style, ...referencedEntries(style, facts)];
+    for (const text of styleSources) {
+      if (/[{,]\s*opacity\s*:/.test(text)) {
+        offences.push({ file, detail: `${where} declares opacity in a style it names` });
+      }
+    }
+
+    const fillOpacity = tag.match(/fillOpacity=\{([^}]+)\}/);
+    if (fillOpacity && fillOpacity[1].trim() !== '1') {
+      offences.push({ file, detail: `${where} carries fillOpacity ${fillOpacity[1].trim()}` });
+    }
+
+    for (const [name] of facts.opacityHooks) {
+      if (new RegExp(`\\b${name}\\b`).test(style)) {
+        offences.push({ file, detail: `${where} carries the opacity style ${name}` });
+      }
+    }
+    for (const [name, body] of facts.animatedStyles) {
+      if (new RegExp(`\\b${name}\\b`).test(style) && /[{,]\s*opacity\s*:/.test(body)) {
+        offences.push({ file, detail: `${where} carries ${name}, whose animated style sets opacity` });
+      }
+    }
+
+    const colourSources = [style, ...referencedEntries(style, facts)];
+    for (const text of colourSources) {
+      const value = propertyValue('color', text);
+      if (value === null) continue;
+      for (const leaf of colourLeaves(value, facts.consts)) {
+        const alpha = alphaOfLeaf(leaf);
+        if (alpha !== null && alpha !== 1) {
+          offences.push({ file, detail: `${where} paints ${leaf.trim()} at alpha ${alpha}` });
         }
       }
+    }
 
-      const fillOpacity = tag.match(/fillOpacity=\{([^}]+)\}/);
-      if (fillOpacity && fillOpacity[1].trim() !== '1') {
-        offences.push({ file, detail: `${where} carries fillOpacity ${fillOpacity[1].trim()}` });
-      }
-
-      for (const [name] of facts.opacityHooks) {
-        if (new RegExp(`\\b${name}\\b`).test(style)) {
-          offences.push({ file, detail: `${where} carries the opacity style ${name}` });
-        }
-      }
-      for (const [name, body] of facts.animatedStyles) {
-        if (new RegExp(`\\b${name}\\b`).test(style) && /[{,]\s*opacity\s*:/.test(body)) {
-          offences.push({ file, detail: `${where} carries ${name}, whose animated style sets opacity` });
-        }
-      }
-
-      const colourSources = [style, ...referencedEntries(style, facts)];
-      for (const text of colourSources) {
-        const value = propertyValue('color', text);
+    for (const [name, call] of facts.inkHooks) {
+      if (!new RegExp(`\\b${name}\\b`).test(style)) continue;
+      for (const key of ['fromColor', 'toColor', 'veilColor']) {
+        const value = propertyValue(key, call);
         if (value === null) continue;
         for (const leaf of colourLeaves(value, facts.consts)) {
           const alpha = alphaOfLeaf(leaf);
-          if (alpha !== null && alpha !== 0 && alpha !== 1) {
-            offences.push({ file, detail: `${where} paints ${leaf.trim()} at alpha ${alpha}` });
+          if (alpha !== null && alpha !== 1) {
+            offences.push({ file, detail: `${where} tweens text ink through ${leaf.trim()} at alpha ${alpha}` });
           }
         }
       }
+    }
 
-      for (const [name, call] of facts.inkHooks) {
-        if (!new RegExp(`\\b${name}\\b`).test(style)) continue;
-        for (const key of ['fromColor', 'toColor', 'veilColor']) {
-          const value = propertyValue(key, call);
-          if (value === null) continue;
-          for (const leaf of colourLeaves(value, facts.consts)) {
-            const alpha = alphaOfLeaf(leaf);
-            if (alpha !== null && alpha !== 0 && alpha !== 1) {
-              offences.push({ file, detail: `${where} tweens text ink through ${leaf.trim()} at alpha ${alpha}` });
-            }
-          }
-        }
-      }
-
-      for (const [name, body] of facts.animatedStyles) {
-        if (!new RegExp(`\\b${name}\\b`).test(style)) continue;
-        if (!/(?:^|[{,(])\s*color\s*:/.test(body) || /[{,]\s*backgroundColor\s*:/.test(body)) continue;
-        for (const interpolation of body.matchAll(/interpolateColor\([^,]+,\s*\[[^\]]*\],\s*\[([^\]]+)\]\)/g)) {
-          for (const leaf of colourLeaves(interpolation[1], facts.consts)) {
-            const alpha = alphaOfLeaf(leaf);
-            if (alpha !== null && alpha !== 0 && alpha !== 1) {
-              offences.push({ file, detail: `${where} tweens text ink through ${leaf.trim()} at alpha ${alpha}` });
-            }
+    for (const [name, body] of facts.animatedStyles) {
+      if (!new RegExp(`\\b${name}\\b`).test(style)) continue;
+      if (!/(?:^|[{,(])\s*color\s*:/.test(body) || /[{,]\s*backgroundColor\s*:/.test(body)) continue;
+      for (const interpolation of body.matchAll(/interpolateColor\([^,]+,\s*\[[^\]]*\],\s*\[([^\]]+)\]\)/g)) {
+        for (const leaf of colourLeaves(interpolation[1], facts.consts)) {
+          const alpha = alphaOfLeaf(leaf);
+          if (alpha !== null && alpha !== 1) {
+            offences.push({ file, detail: `${where} tweens text ink through ${leaf.trim()} at alpha ${alpha}` });
           }
         }
       }
@@ -267,6 +271,8 @@ const sweep = (root: string): Offence[] => {
   }
   return offences;
 };
+
+const sweep = (root: string): Offence[] => files(root).flatMap((file) => sweepSource(file, readFileSync(file, 'utf8')));
 
 /** Every string a role table holds, so a whole state matrix is alpha-checked in one call */
 const stringsOf = (node: unknown): string[] =>
@@ -276,6 +282,21 @@ describe('text ink', () => {
   it('is carried by no Text or Animated.Text through opacity, and by no colour through alpha', () => {
     const offences = sweep('components').concat(sweep('app'));
     expect(offences.map((offence) => offence.detail)).toEqual([]);
+  });
+
+  // The defect shape ticket 322 found in the tree: a same-line const ternary hides a Text in alpha-0
+  // ink. The resolver must reach inside the initializer, or the ban is vacuous for every computed ink
+  it('reddens a same-line const ternary that hides a Text in alpha-0 ink', () => {
+    const plant = [
+      "const hiddenInk = !isCustom ? 'transparent' : isShown ? '#5b77a4' : '#1f3055';",
+      'export const Row = () => <Text style={[styles.text, { color: hiddenInk }]}>Reset</Text>;',
+    ].join('\n');
+
+    const offences = sweepSource('plant.tsx', plant);
+
+    expect(offences).toHaveLength(1);
+    expect(offences[0].detail).toContain("'transparent'");
+    expect(offences[0].detail).toContain('alpha 0');
   });
 
   it('finds the text elements it claims to guard', () => {
@@ -293,7 +314,7 @@ describe('text ink', () => {
     expect(alphaOf('white')).toBeNull();
   });
 
-  it('keeps every ruled text role solid or exactly invisible', () => {
+  it('keeps every ruled text role solid, alpha exactly 1', () => {
     const roles = [
       ...Object.values(COLORS.text),
       COLORS.countdown.timeColon,
@@ -310,7 +331,7 @@ describe('text ink', () => {
       ...stringsOf(STEPPER_INK),
     ];
     for (const role of roles) {
-      expect([0, 1]).toContain(alphaOf(role));
+      expect(alphaOf(role)).toBe(1);
     }
   });
 

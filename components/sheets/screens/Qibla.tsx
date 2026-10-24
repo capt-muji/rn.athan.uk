@@ -256,11 +256,12 @@ const styles = StyleSheet.create({
     ...subtitleText,
     marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
+  // The donor stays laid out to donate its width, so it hides in the sheet's own face rather than
+  // opacity; the ink sweep reaches its declaration only with no comment between the comma and the key
   subtitleDonor: {
     ...subtitleText,
     height: 0,
-    // Invisible ink, not opacity: the donor must stay laid out to donate its width
-    color: 'transparent',
+    color: COLORS.surface.sheet,
   },
   // Stacked rather than swapped, so the header keeps one height through the fade
   subtitleOver: {

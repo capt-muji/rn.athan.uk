@@ -312,6 +312,16 @@ describe('the qibla sheet before it is opened', () => {
       setActiveLocale('en');
     }
   });
+
+  // The donor hides in the sheet's own face, never alpha-0 ink: Android paints transparent text
+  // black, which doubled the instruction line while the calibration ran
+  it('hides the donor in the sheet face, never alpha-0 ink', async () => {
+    await render(<QiblaSheet />);
+
+    const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
+
+    expect(StyleSheet.flatten(donor.props.style).color).toBe(COLORS.surface.sheet);
+  });
 });
 
 describe('the accuracy watch the gate decides on', () => {
