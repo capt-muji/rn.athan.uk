@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict xaXCLywzn66yf5rsziWxH7z48lU4WuQVG1OAtpARSCjy0uZSrQm0li45rYkbeFe
+\restrict 08lpe9sZyFMiw1FImQDhhV0N6c02ycmS9M3XfDucp4PKQpEywJacPBc1XNurWuW
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5999,7 +5999,7 @@ Acceptance:
 - [ ] the en catalog and its locks stay byte-identical (git diff shows no change to shared/i18n/en.ts, shared/i18n/catalog-lock.json, shared/__tests__/i18n.test.ts)
 - [ ] yarn validate green on the merged tree', NULL, NULL, NULL, 4000, '2026-10-20 20:39:17.916251+00', '2026-10-21 10:57:06.903596+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (321, 1, 321, NULL, 4, 'Step 5: The merge and close', 'Produces: lane/294 merged to uat, every step subtask ticked, relations cleared, the closing comment, and board/snapshot.sh in the run''s close commit. Waits on Steps 2-4.', NULL, NULL, NULL, 5000, '2026-10-21 11:40:11.516612+00', '2026-10-24 12:17:10.608043+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 1, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (322, 1, 322, 2, 9, 'A visual polish pass: the colour modal''s backdrop, the 3T''s reset ink, the header labels'' ink, the qibla sheet''s doubled instruction text, and bold platform words in Help', 'Goal: one polish pass over five visual defects and touches: the colour modal gets the sheet backdrop, the reset control hides at default colour on Android as on iPhone, the two header labels take their tuned inks, the qibla sheet shows exactly one instruction line at a time, and Help''s platform words read bold.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (322, 1, 322, 2, 4, 'A visual polish pass: the colour modal''s backdrop, the 3T''s reset ink, the header labels'' ink, the qibla sheet''s doubled instruction text, and bold platform words in Help', 'Goal: one polish pass over five visual defects and touches: the colour modal gets the sheet backdrop, the reset control hides at default colour on Android as on iPhone, the two header labels take their tuned inks, the qibla sheet shows exactly one instruction line at a time, and Help''s platform words read bold.
 
 Where: components/sheets/screens/ColorPicker.tsx (the modal overlay and the reset row), components/sheets/screens/Qibla.tsx (the subtitle''s width donor), components/countdown/Countdown.tsx and components/day/Day.tsx (the two header labels), components/modals/Help.tsx with shared/help.ts (the widget answer), and the colour tables in shared/constants.ts. Planning note resolved: ticket 294''s conversion is confirmed as the cause of both the reset ink and the doubled qibla line - both hide text with alpha-0 ink (''transparent''), which Android paints black, and they are the only two alpha-0 text colours left in the tree (verified on uat f97cd7d4).
 
@@ -6013,7 +6013,7 @@ Acceptance:
 - [ ] with the overlay open, both labels sit closer to the overlay''s purple glow - a little greyer, a hint more purple, slightly less blue than today''s lavender; not a drastic change, the owner''s read is the bar (the same suites pin the overlay ink #7173bc and the interpolation endpoints)
 - [ ] the qibla sheet shows exactly one instruction line at a time: the wave line alone while the calibration runs, the settled line alone after it - the doubled darker text above it is gone, the owner''s read is the bar (Qibla.test.tsx pins the donor''s ink at the sheet solid)
 - [ ] Help''s widget question carries iOS and Android in bold in every shipped language - the owner''s read is the bar (help.test.ts and Help.test.tsx pin the split and the emphasis face across all six locales)
-- [x] yarn validate green', NULL, NULL, NULL, 6000, '2026-10-24 11:53:02.009515+00', '2026-10-24 14:12:58.391009+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+- [x] yarn validate green', NULL, NULL, NULL, 6000, '2026-10-24 11:53:02.009515+00', '2026-10-24 19:51:00.661335+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 
 
 --
@@ -9542,6 +9542,8 @@ nitpick: components/countdown/Countdown.tsx:62 - the comment says the name rides
 question: the two label-tween tests spy interpolateColor and match by endpoints, so they stay green if the animated style is dropped from the Text itself. That matches the suite''s existing pattern and the endpoints are pinned as the ticket asks - noting it in case the wiring wants a pin of its own.', NULL, '2026-10-24 13:46:33.712988+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3171, 322, 'comment', 'owner', 'Audit closed: the blind reviewer''s three findings are confirmed and fixed in one commit at 2.4.22 - the text-ink sweep now reads a colour through comments left in the comma-to-key gap (red-first plant behind a remark, and the start anchor rides the match end so a colon inside a comment cannot pose as the value), the countdown''s ink comment states the truth (a second tween at the same target and timing, not one shared value), and both label suites pin the wiring itself, red under a dropped style entry where the endpoint spies alone stayed green. The conformance reviewer''s one nit - the plan naming the untracked build.gradle among the bump files - needs no code: prebuild derives it from app.json. yarn validate green at 100 percent coverage (5974 tests).', NULL, '2026-10-24 13:53:41.709756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3173, 322, 'activity', 'owner', NULL, 'status', '2026-10-24 14:12:58.422981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3174, 322, 'comment', 'owner', 'The owner approved every item on the production mock build on both phones (dictated 2026-10-24: everything fixed, very nice). Merged to uat at 2.4.23, validate green whole; done.', NULL, '2026-10-24 19:51:00.656353+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3175, 322, 'activity', 'owner', NULL, 'status', '2026-10-24 19:51:00.682421+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 
 
 --
@@ -10684,7 +10686,8 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (684, 326, 1, 'Backlog', 'backlog', '2026-10-24 12:26:26.821+00', '2026-10-24 13:36:21.716533+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (690, 326, 4, 'Done', 'completed', '2026-10-24 13:36:21.716533+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (686, 322, 3, 'In progress', 'started', '2026-10-24 12:49:43.473439+00', '2026-10-24 14:12:58.418916+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (691, 322, 9, 'Awaiting Owner', 'started', '2026-10-24 14:12:58.418916+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (691, 322, 9, 'Awaiting Owner', 'started', '2026-10-24 14:12:58.418916+00', '2026-10-24 19:51:00.676195+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (692, 322, 4, 'Done', 'completed', '2026-10-24 19:51:00.676195+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (494, 231, 11, 'Upstream', 'started', '2026-10-20 00:29:05.788327+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (495, 230, 11, 'Upstream', 'started', '2026-10-20 00:29:57.564653+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (497, 232, 11, 'Upstream', 'started', '2026-10-20 00:32:45.999587+00', NULL);
@@ -24457,12 +24460,12 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 49)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:314', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 17);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 52);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3865);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:315', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:322', 1, 56);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:319', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:294', 1, 76);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:321', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3866);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:322', 1, 59);
 
 
 --
@@ -24724,7 +24727,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3173, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3175, true);
 
 
 --
@@ -24801,7 +24804,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 691, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 692, true);
 
 
 --
@@ -29284,5 +29287,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict xaXCLywzn66yf5rsziWxH7z48lU4WuQVG1OAtpARSCjy0uZSrQm0li45rYkbeFe
+\unrestrict 08lpe9sZyFMiw1FImQDhhV0N6c02ycmS9M3XfDucp4PKQpEywJacPBc1XNurWuW
 
