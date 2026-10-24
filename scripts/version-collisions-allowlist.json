@@ -110,5 +110,9 @@
   {
     "version": "2.4.25",
     "reason": "2026-10-24 lane T-337's Step 1 commit takes the single patch step from uat's 2.4.24 while lane/322b's own commit holds 2.4.25 beside its 2.4.26 tip; the standing ruling: the merge that lands second renumbers above the first"
+  },
+  {
+    "version": "2.4.26",
+    "reason": "2026-10-24 lane T-337's Step 2 atlas commit takes the single class patch step from its 2.4.25 tip while lane/322b already holds 2.4.26; the standing ruling: the merge that lands second renumbers above the first"
   }
 ]
