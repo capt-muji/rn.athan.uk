@@ -6,7 +6,7 @@ import { typographyFor } from '@/shared/typography';
 
 interface BottomSheetHeaderProps {
   title: string;
-  /** A node rather than only a string, so a sheet whose subtitle CHANGES can cross-fade it in place */
+  /** A node rather than only a string, so a sheet can swap its subtitle in place without remounting the header */
   subtitle: React.ReactNode;
   icon: React.ReactNode;
 }
