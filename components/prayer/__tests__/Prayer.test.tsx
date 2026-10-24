@@ -40,6 +40,18 @@ describe('the Sunrise row before Fajr on Friday 11 September 2026 at 03:00', () 
   });
 });
 
+// The wrapper the hold-then-hide needs must not shrink-wrap: a fit-content row collapses
+// the time column to nothing (the 2.4.15 regression, read on the owner's phones)
+describe("the row's own content box", () => {
+  it('fills the row, so the time column holds its width between the name and the bell', async () => {
+    showLondonDay('2026-09-11', '03:00');
+
+    await render(<Prayer type={ScheduleType.Standard} index={SUNRISE} />);
+
+    expect(StyleSheet.flatten(screen.getByText('Sunrise').parent!.props.style).flex).toBe(1);
+  });
+});
+
 // An Extras row that is not index 0: the overlay starts out holding the Standard list and index 0, so a row that
 // opened or read the selection there would still pass on Fajr
 describe('the Duha row on Friday 11 September 2026 at 12:00', () => {

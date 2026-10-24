@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     height: STYLES.prayer.height,
   },
   content: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'stretch',
