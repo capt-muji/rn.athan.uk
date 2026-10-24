@@ -256,8 +256,7 @@ const styles = StyleSheet.create({
     ...subtitleText,
     marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
-  // The donor stays laid out to donate its width, so it hides in the sheet's own face rather than
-  // opacity; the ink sweep reaches its declaration only with no comment between the comma and the key
+  // The donor stays laid out to donate its width, so it hides in the sheet's own face rather than opacity
   subtitleDonor: {
     ...subtitleText,
     height: 0,

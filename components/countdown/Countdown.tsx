@@ -59,7 +59,7 @@ export default function Countdown({ type }: Props) {
 
   const overlayProgress = useDerivedProgress(overlayIsOn ? 1 : 0, { defaultTiming: true });
 
-  // The name rides the same overlayProgress the digits ride, so its ink flips in lockstep with their transform
+  // The name rides the same target and timing the digits' progress rides, so its ink flips in lockstep with their transform
   const labelColorStyle = useDerivedColor(overlayIsOn ? 1 : 0, {
     fromColor: COLORS.text.labelHome,
     toColor: COLORS.text.labelOverlay,

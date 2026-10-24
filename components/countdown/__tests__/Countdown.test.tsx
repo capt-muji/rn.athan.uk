@@ -192,6 +192,8 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(nameStyle.color).toBe('#7485b9');
     expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
     expect(nameStyle.textShadowRadius).toBe(6);
+    // The second entry is the ink tween itself: dropped from the array, the home ink never flips
+    expect(name.props.style).toHaveLength(2);
   });
 
   it('tweens the prayer name from its home ink to its overlay ink on the overlay flag', async () => {
@@ -201,7 +203,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    // The label rides the same overlayProgress the digits ride, so its tween's endpoints are
+    // The label rides the same target and timing the digits' progress rides, so its tween's endpoints are
     // the tuned pair and nothing else: the ink flips with the overlay and back
     const labelTween = () =>
       interpolateColor.mock.calls

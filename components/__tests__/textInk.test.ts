@@ -103,9 +103,9 @@ const sheetEntries = (source: string): Map<string, string> => {
 
 /** A property's value inside an object literal: runs to the next comma or closer at the value's own depth */
 const propertyValue = (key: string, objectText: string): string | null => {
-  const at = objectText.search(new RegExp(`(?:^|[,{])\\s*${key}\\s*:`));
-  if (at < 0) return null;
-  const start = objectText.indexOf(':', at + key.length) + 1;
+  const match = new RegExp(`(?:^|[,{])(?:\\s|\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/)*${key}\\s*:`).exec(objectText);
+  if (match === null) return null;
+  const start = match.index + match[0].length;
   let depth = 0;
   for (let i = start; i < objectText.length; i += 1) {
     const char = objectText[i];
@@ -297,6 +297,26 @@ describe('text ink', () => {
     expect(offences).toHaveLength(1);
     expect(offences[0].detail).toContain("'transparent'");
     expect(offences[0].detail).toContain('alpha 0');
+  });
+
+  // A comment parked in the comma-to-key gap must not hide the property: the ban holds for
+  // every shape of entry, not only the ones written without remarks
+  it('reddens a translucent ink whose declaration carries a line comment in the gap', () => {
+    const plant = [
+      'const styles = StyleSheet.create({',
+      '  row: {',
+      '    fontSize: 12,',
+      '    // the remark a rewrite leaves behind',
+      "    color: 'rgba(255, 255, 255, 0.5)',",
+      '  },',
+      '});',
+      'export const Row = () => <Text style={styles.row}>Hidden</Text>;',
+    ].join('\n');
+
+    const offences = sweepSource('plant.tsx', plant);
+
+    expect(offences).toHaveLength(1);
+    expect(offences[0].detail).toContain('rgba(255, 255, 255, 0.5)');
   });
 
   it('finds the text elements it claims to guard', () => {

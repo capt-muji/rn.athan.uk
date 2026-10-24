@@ -101,6 +101,8 @@ describe("the location label's ink", () => {
     // The static entry carries the home ink; the tween's entry commits after this frame
     const [locationStatic] = screen.getByText('London, UK').props.style as unknown[];
     expect(flattenStyle(locationStatic).color).toBe('#7485b9');
+    // The second entry is the ink tween itself: dropped from the array, the home ink never flips
+    expect(screen.getByText('London, UK').props.style).toHaveLength(2);
   });
 
   it('tweens to the overlay ink on the flag its masjid fade rides', async () => {
