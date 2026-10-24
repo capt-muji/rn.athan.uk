@@ -45,6 +45,19 @@ export interface HelpTopic {
   action?: HelpAction;
 }
 
+/** The pinned Latin platform labels a widget answer line opens with, in every shipped locale (D142.11) */
+const PLATFORM_LABEL = /^(iOS|Android): /;
+
+/**
+ * One answer line split into its platform label run and its sentence, or null when the line
+ * carries no label. The labels are Latin in every catalog, so the split happens here at render
+ * time and the byte-pinned copy and its hash lock stay as they are.
+ */
+export const splitPlatformLine = (line: string): { label: string; rest: string } | null => {
+  const match = line.match(PLATFORM_LABEL);
+  return match ? { label: match[0], rest: line.slice(match[0].length) } : null;
+};
+
 /** The label of each action a settings screen can offer, resolved at call time (R1.3) */
 export const getHelpActionLabels = (): Record<HelpAction, string> => ({
   dndAccess: t('help.action.dndAccess'),

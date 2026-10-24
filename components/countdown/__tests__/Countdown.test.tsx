@@ -5,6 +5,7 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import * as Reanimated from 'react-native-reanimated';
 
 import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
 import { COLORS, TEXT } from '@/shared/constants';
@@ -185,10 +186,37 @@ describe('the lettered countdown on the Standard schedule', () => {
     expect(letterStyle.fontSize).toBe(TEXT.sizeLarge * LETTER_SIZE_SHARE);
 
     const name = screen.getByText('Asr');
-    const nameStyle = flattenStyle(name.props.style);
-    expect(nameStyle.color).toBe(COLORS.text.secondary);
+    // The label's static entry carries the home ink: the tween's entry commits after this
+    // frame, so the rest face reads from the style array's static element
+    const nameStyle = flattenStyle((name.props.style as unknown[])[0]);
+    expect(nameStyle.color).toBe('#7485b9');
     expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
     expect(nameStyle.textShadowRadius).toBe(6);
+    // The second entry is the ink tween itself: dropped from the array, the home ink never flips
+    expect(name.props.style).toHaveLength(2);
+  });
+
+  it('tweens the prayer name from its home ink to its overlay ink on the overlay flag', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8940);
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // The label rides the same target and timing the digits' progress rides, so its tween's endpoints are
+    // the tuned pair and nothing else: the ink flips with the overlay and back
+    const labelTween = () =>
+      interpolateColor.mock.calls
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#7485b9', '#7173bc'].join())
+        .map((call) => call[0]);
+
+    expect(labelTween().at(-1)).toBe(0);
+
+    await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
+    expect(labelTween().at(-1)).toBe(1);
+
+    await act(() => closeOverlay());
+    expect(labelTween().at(-1)).toBe(0);
   });
 
   it('renders no gap node between digits and letters', async () => {

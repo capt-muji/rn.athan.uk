@@ -690,6 +690,10 @@ export const COLORS = {
     primary: '#ffffff',
     /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
     secondary: '#6c79c2',
+    /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
+    labelHome: '#7485b9',
+    /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
+    labelOverlay: '#7173bc',
     /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
     muted: '#52529e',
     /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */
@@ -714,6 +718,9 @@ export const COLORS = {
     sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
+    /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
+     * for overlays that must not dim their own children */
+    backdropDim: 'rgba(0, 1, 22, 0.9)',
     /** Elevated surface (info boxes, modals) */
     elevated: 'rgba(18, 6, 42, 1)',
     /** Elevated surface border */

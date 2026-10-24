@@ -125,6 +125,15 @@ export const useDerivedOpacity = (target: number, options?: DerivedTimingOptions
   return useAnimatedStyle(() => ({ opacity: progress.value }));
 };
 
+/** One ink tweened between two opaque solids on the derived progress; the sweep's TEXT_INK_HOOKS guards its endpoints */
+export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
+  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
+  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
+  return useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+  }));
+};
+
 interface VeiledColorInput extends ColorAnimationInput {
   /** The solid the ink sinks into while veiled: the surface colour the element hides against */
   veilColor: string;
