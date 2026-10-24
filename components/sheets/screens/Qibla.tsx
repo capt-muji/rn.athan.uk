@@ -1,13 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, {
-  FadeIn,
-  interpolateColor,
-  useAnimatedStyle,
-  useDerivedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
@@ -78,49 +72,19 @@ const QiblaLost = () => (
 );
 
 /**
- * The sheet's own subtitle, which changes when the compass arrives and cross-fades rather than snapping.
+ * The sheet's own subtitle: the waiting sentence until the compass may be drawn, the ready one once
+ * it is, swapped in place on the same flag the compass changes on.
  *
- * Two lines stacked and faded against each other, because a swap in place would resize the header mid-fade:
- * the absolute one is taken out of the layout, so the height is whichever line is on top.
- *
- * It fades on the SAME flag the compass does, so the words and the instrument change together.
+ * ONE text, deliberately. The crossfade this replaces stacked both sentences at one spot and rested
+ * its ready arm at the sheet solid, so dark glyphs painted over the waiting line's bright ones and
+ * the words read doubled on both platforms. A swap that cannot resize the header: both sentences
+ * share one style, so the line box holds its height either way.
  */
-export const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
-  const progress = useDerivedValue(() => withTiming(showsCompass ? 1 : 0, { duration: ANIMATION.durationFade }));
-  // A colour crossfade over the solid sheet: interpolating the ink toward the surface
-  // equals an opacity fade over that surface, formula for formula, and never paints
-  // translucent ink (the glyph strokes cannot compound mid-fade)
-  const waiting = useAnimatedStyle(() => ({
-    color: interpolateColor(1 - progress.value, [0, 1], [COLORS.surface.sheet, COLORS.text.sheetSubtitle]),
-  }));
-  const ready = useAnimatedStyle(() => ({
-    color: interpolateColor(progress.value, [0, 1], [COLORS.surface.sheet, COLORS.text.sheetSubtitle]),
-  }));
-
-  return (
-    <View>
-      {/* The waiting line stays in flow; the ready line is absolute and the donor below pays the width */}
-      <Animated.Text testID={'qibla-subtitle-waiting'} style={[styles.subtitle, waiting]} numberOfLines={1}>
-        {t('qibla.subtitleWaiting')}
-      </Animated.Text>
-      {/* The absolute line cannot widen the box and which sentence is wider depends on the language, so a zero-height donor carries the ready sentence in flow */}
-      <Text
-        testID={'qibla-subtitle-donor'}
-        accessibilityElementsHidden
-        importantForAccessibility={'no-hide-descendants'}
-        numberOfLines={1}
-        style={styles.subtitleDonor}>
-        {t('qibla.subtitleReady')}
-      </Text>
-      <Animated.Text
-        testID={'qibla-subtitle-ready'}
-        style={[styles.subtitle, styles.subtitleOver, ready]}
-        numberOfLines={1}>
-        {t('qibla.subtitleReady')}
-      </Animated.Text>
-    </View>
-  );
-};
+export const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => (
+  <Text testID={'qibla-subtitle'} style={styles.subtitle} numberOfLines={1}>
+    {showsCompass ? t('qibla.subtitleReady') : t('qibla.subtitleWaiting')}
+  </Text>
+);
 
 /**
  * What the user is told when the qibla cannot be computed, with the one action that fixes it.
@@ -202,13 +166,6 @@ const ty = typographyFor(currentLocaleId());
 // The node subtitle bypasses the shared header's style, so it takes the ar gap itself to match it (row 108)
 const compactArabic = currentLocaleId() === 'ar';
 
-// The subtitle's text metrics, shared so the box's width donor measures exactly what the lines it stands for measure
-const subtitleText = {
-  color: COLORS.text.sheetSubtitle,
-  fontFamily: ty.familyRegular,
-  fontSize: ty.size(TEXT.sizeDetail),
-};
-
 const styles = StyleSheet.create({
   action: {
     color: COLORS.qibla.away.accent,
@@ -253,19 +210,10 @@ const styles = StyleSheet.create({
   },
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
-    ...subtitleText,
+    color: COLORS.text.sheetSubtitle,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
     marginTop: compactArabic ? SPACING.py : SPACING.xs,
-  },
-  // The donor stays laid out to donate its width, so it hides in the sheet's own face rather than opacity
-  subtitleDonor: {
-    ...subtitleText,
-    height: 0,
-    color: COLORS.surface.sheet,
-  },
-  // Stacked rather than swapped, so the header keeps one height through the fade
-  subtitleOver: {
-    position: 'absolute',
-    top: 0,
   },
   waiting: {
     alignItems: 'center',

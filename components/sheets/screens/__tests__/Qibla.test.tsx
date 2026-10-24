@@ -208,18 +208,11 @@ const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
 /**
- * How far each subtitle line's ink interpolation has travelled toward full ink: [waiting, ready].
- * The crossfade is carried by colour, so the position handed to interpolateColor is the line's
- * whole visibility, and the endpoint pair names which two calls are the subtitle's own
+ * The one instruction text the header may carry, and its copy: the subtitle swaps its sentence on
+ * the compass's own flag, so what is mounted is the whole contract - a second mounted line, hidden
+ * or absolute, is the doubled-text defect this suite makes unrepresentable
  */
-const subtitleInkPositions = (interpolateColor: jest.SpyInstance) =>
-  interpolateColor.mock.calls
-    .filter(
-      ([, , outputRange]: [number, number[], string[]]) =>
-        outputRange.join() === [COLORS.surface.sheet, COLORS.text.sheetSubtitle].join()
-    )
-    .slice(-2)
-    .map(([position]: [number]) => position);
+const subtitleLine = () => screen.getByTestId('qibla-subtitle');
 
 beforeEach(() => {
   mockWatchers.length = 0;
@@ -246,81 +239,23 @@ describe('the qibla sheet before it is opened', () => {
     expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
   });
 
-  it('tells the user what to do without naming a number to read', async () => {
+  // The header may mount ONE instruction text: the crossfade this replaces kept the ready sentence
+  // painted over the waiting one, and its donor held the ready copy in the tree beside them both
+  it('mounts exactly one instruction line, the waiting copy, while the compass is not drawn', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+    expect(screen.queryByTestId('qibla-subtitle-donor', { includeHiddenElements: true })).toBeNull();
+    expect(screen.queryByTestId('qibla-subtitle-ready')).toBeNull();
+    // Hidden included: the doubled line was invisible to a plain query twice over
+    expect(screen.queryAllByText(t('qibla.subtitleReady'), { includeHiddenElements: true })).toHaveLength(0);
   });
 
-  // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
-  // would resize it mid-fade, and the words must change on the same flag the compass does
-  it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
+  it('paints the one line in the sheet subtitle ink, capped at one line', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByTestId('qibla-subtitle-waiting')).toBeOnTheScreen();
-    expect(screen.getByTestId('qibla-subtitle-ready')).toBeOnTheScreen();
-  });
-
-  it('caps both subtitles at one line, so the header keeps its height', async () => {
-    await render(<QiblaSheet />);
-
-    expect(screen.getByTestId('qibla-subtitle-waiting').props.numberOfLines).toBe(1);
-    expect(screen.getByTestId('qibla-subtitle-ready').props.numberOfLines).toBe(1);
-  });
-
-  // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
-  // Measured in the bundled font at the subtitle's size: en 158.6dp waiting in flow against 150.4dp ready absolute.
-  // The wider sentence depends on the language (ar, ms and so carry the wider ready line), which is the donor's job
-  it('keeps the waiting line in flow and the ready line absolute', async () => {
-    await render(<QiblaSheet />);
-
-    const position = (testID: string) =>
-      (StyleSheet.flatten(screen.getByTestId(testID).props.style) as { position?: string }).position;
-
-    expect(position('qibla-subtitle-waiting')).toBeUndefined();
-    expect(position('qibla-subtitle-ready')).toBe('absolute');
-  });
-
-  it('shows the line that asks the user to act while the hint is up, the ready line at the sheet', async () => {
-    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
-    await render(<QiblaSheet />);
-
-    expect(subtitleInkPositions(interpolateColor)).toEqual([1, 0]);
-  });
-
-  // The donor is the mechanism that lets the box fit the wider sentence: it sits in flow at zero height carrying the
-  // ready sentence, so the box measures whichever of the two is wider. Only the mechanism is observable in the test
-  // tree; the rendered box width on glass falls to the owner's QA
-  it.each(LOCALE_IDS)('carries a zero-height in-flow donor holding the ready sentence under %s', async (locale) => {
-    setActiveLocale(locale);
-    try {
-      await render(<QiblaSheet />);
-
-      const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
-      const style = StyleSheet.flatten(donor.props.style) as {
-        height?: number;
-        marginTop?: number;
-        position?: string;
-      };
-
-      expect(style.height).toBe(0);
-      expect(style.marginTop).toBeUndefined();
-      expect(style.position).toBeUndefined();
-      expect(donor.props.numberOfLines).toBe(1);
-      expect(donor.props.children).toBe(t('qibla.subtitleReady'));
-    } finally {
-      setActiveLocale('en');
-    }
-  });
-
-  // The donor hides in the sheet's own face, never alpha-0 ink: Android paints transparent text
-  // black, which doubled the instruction line while the calibration ran
-  it('hides the donor in the sheet face, never alpha-0 ink', async () => {
-    await render(<QiblaSheet />);
-
-    const donor = screen.getByTestId('qibla-subtitle-donor', { includeHiddenElements: true });
-
-    expect(StyleSheet.flatten(donor.props.style).color).toBe(COLORS.surface.sheet);
+    expect(StyleSheet.flatten(subtitleLine().props.style).color).toBe(COLORS.text.sheetSubtitle);
+    expect(subtitleLine().props.numberOfLines).toBe(1);
   });
 });
 
@@ -379,13 +314,27 @@ describe('the qibla sheet, opened in London', () => {
     expect(screen.getByTestId('qibla-dial-gold')).toBeOnTheScreen();
   });
 
-  it('swaps the subtitle to the compass’s own line once the compass is drawn', async () => {
-    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+  // The copy swaps on the SAME flag the compass does, on the one mounted text: the words and the
+  // instrument change together, and no second sentence is ever mounted beside the visible one
+  it('swaps the one line\u2019s copy when the compass is drawn', async () => {
+    await openSheet();
+
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+
+    await reportHeadings(95);
+
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+  });
+
+  it('mounts exactly one instruction line, the ready copy, once the compass is drawn', async () => {
     await openSheet();
 
     await reportHeadings(95);
 
-    expect(subtitleInkPositions(interpolateColor)).toEqual([0, 1]);
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+    expect(screen.queryByTestId('qibla-subtitle-donor', { includeHiddenElements: true })).toBeNull();
+    expect(screen.queryByTestId('qibla-subtitle-ready')).toBeNull();
+    expect(screen.queryAllByText(t('qibla.subtitleWaiting'), { includeHiddenElements: true })).toHaveLength(0);
   });
 
   it('asks for the position once, however many headings arrive', async () => {
@@ -456,6 +405,48 @@ describe('the qibla sheet, opened in London', () => {
     await rerender(<QiblaSheet />);
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+});
+
+/**
+ * The one instruction line's copy pair in every shipped language, before and after the draw.
+ *
+ * Per locale because which sentence is the wider one depends on the language, and the swap must
+ * hold where the two differ most, not only under en.
+ */
+describe('the subtitle\u2019s one instruction line in every language', () => {
+  // The shared openSheet looks the sheet up by its English title, which no other locale renders
+  const openSheetAsRendered = async () => {
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText(t('qibla.title')), 'change', 0);
+    await act(async () => {});
+  };
+
+  it.each(LOCALE_IDS)('carries the waiting copy alone under %s, before the draw', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await openSheetAsRendered();
+
+      expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+      expect(screen.queryAllByText(t('qibla.subtitleReady'), { includeHiddenElements: true })).toHaveLength(0);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it.each(LOCALE_IDS)('carries the ready copy alone under %s, after the draw', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await openSheetAsRendered();
+
+      await reportHeadings(95);
+
+      expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+      expect(screen.queryAllByText(t('qibla.subtitleWaiting'), { includeHiddenElements: true })).toHaveLength(0);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 
