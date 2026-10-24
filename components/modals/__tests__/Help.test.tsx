@@ -12,7 +12,8 @@ import { onPlatform } from '@/__tests__/harness';
 import { openDndAccessSettings } from '@/device/notifications';
 import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { getHelpTopics } from '@/shared/help';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 import ModalHelp from '../Help';
 import { scrollReveal } from '../helpReveal';
@@ -504,6 +505,53 @@ describe("the Help modal's Close row entrance", () => {
   });
 });
 
+describe("the widget answer's bold platform words", () => {
+  // The emphasis face is the question rows' own, resolved per locale at module scope, so each
+  // locale's Help is loaded inside its own locale on this suite's React (the DayLines pattern)
+  const sharedReact = {
+    react: require('react'),
+    jsx: require('react/jsx-runtime'),
+    jsxDev: require('react/jsx-dev-runtime'),
+  };
+
+  const helpUnderLocale = (loc: (typeof LOCALE_IDS)[number]) => {
+    let loaded!: { Help: typeof ModalHelp; question: string; text: string };
+    jest.isolateModules(() => {
+      jest.doMock('react', () => sharedReact.react);
+      jest.doMock('react/jsx-runtime', () => sharedReact.jsx);
+      jest.doMock('react/jsx-dev-runtime', () => sharedReact.jsxDev);
+      const locale = require('@/shared/i18n/locale');
+      locale.setActiveLocale(loc);
+      const widgets = require('@/shared/help').getHelpTopics('ios').at(-1);
+      loaded = {
+        Help: require('../Help').default,
+        question: widgets?.question ?? '',
+        text: widgets?.text ?? '',
+      };
+    });
+    return loaded;
+  };
+
+  it.each([...LOCALE_IDS])('bolds the Latin labels while the sentences stay regular under %s', async (loc) => {
+    const { Help, question, text } = helpUnderLocale(loc);
+    try {
+      await render(<Help visible={true} onClose={jest.fn()} />);
+
+      await fireEvent.press(screen.getByRole('button', { name: question }));
+
+      for (const label of ['iOS: ', 'Android: ']) {
+        expect(StyleSheet.flatten(screen.getByText(label).props.style).fontFamily).toBe(
+          typographyFor(loc).familyMedium
+        );
+      }
+      // The answer's own face carries the sentences: the bold run is the label's alone
+      expect(StyleSheet.flatten(screen.getByText(text).props.style).fontFamily).toBe(typographyFor(loc).familyRegular);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
+
 describe('the Help modal under ar', () => {
   it('renders every answer with the catalog bytes and Latin digits', async () => {
     setActiveLocale('ar');
@@ -514,8 +562,10 @@ describe('the Help modal under ar', () => {
       for (const topic of topics) {
         await fireEvent.press(screen.getByRole('button', { name: topic.question }));
         const shown = screen.getByText(topic.text);
-        expect(shown.props.children).toBe(topic.text);
-        expect(shown.props.children).not.toMatch(/[\u0660-\u0669]/);
+        // The answer renders as runs (a platform label line splits), so the catalog bytes are
+        // read as the rendered content, which is what a locale digit check must cover
+        expect(shown).toHaveTextContent(topic.text);
+        expect(shown).not.toHaveTextContent(/[\u0660-\u0669]/);
       }
     } finally {
       setActiveLocale('en');

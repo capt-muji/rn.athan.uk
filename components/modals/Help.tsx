@@ -13,7 +13,7 @@ import Animated, {
 import { openDndAccessSettings } from '@/device/notifications';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { getHelpActionLabels, getHelpTopics, type HelpTopic } from '@/shared/help';
+import { getHelpActionLabels, getHelpTopics, type HelpTopic, splitPlatformLine } from '@/shared/help';
 import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId, directionGlyph } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
@@ -54,6 +54,29 @@ const CHEVRON_SQUASH = 0.6;
 
 /** The chevron's own width. The panel reserves it too, so no answer ever runs beneath the arrow */
 const CHEVRON_SIZE = 20;
+
+/**
+ * One answer as runs: a line that opens with a pinned platform label splits, so the label
+ * renders in the emphasis face while the sentence keeps the answer's own face. The lines
+ * join back through the same hard breaks the catalog carries.
+ */
+const answerRuns = (text: string) =>
+  text.split('\n').map((line, index) => {
+    const split = splitPlatformLine(line);
+    return (
+      <Fragment key={line}>
+        {index > 0 ? '\n' : null}
+        {split === null ? (
+          line
+        ) : (
+          <>
+            <Text style={styles.platformLabel}>{split.label}</Text>
+            {split.rest}
+          </>
+        )}
+      </Fragment>
+    );
+  });
 
 /**
  * One question, closed until it is asked for
@@ -99,7 +122,7 @@ const Topic = ({
         {open ? (
           <Animated.View entering={FadeIn.duration(ANIMATION.duration)} exiting={FadeOut.duration(80)}>
             <View style={styles.panel}>
-              <Text style={styles.cause}>{text}</Text>
+              <Text style={styles.cause}>{answerRuns(text)}</Text>
 
               {steps ? (
                 <View style={styles.fix}>
@@ -289,6 +312,10 @@ const styles = StyleSheet.create({
     fontFamily: ty.familyRegular,
     color: BODY,
     lineHeight: ty.lineHeight(20),
+  },
+  /** The platform label run inside an answer: the emphasis face the question rows carry, per locale */
+  platformLabel: {
+    fontFamily: ty.familyMedium,
   },
   fix: {
     marginTop: SPACING.smd,

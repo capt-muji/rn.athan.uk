@@ -9,7 +9,7 @@ import { ms } from '@/shared/i18n/ms';
 import { so } from '@/shared/i18n/so';
 import { th } from '@/shared/i18n/th';
 
-import { getHelpActionLabels, getHelpTopics } from '../help';
+import { getHelpActionLabels, getHelpTopics, splitPlatformLine } from '../help';
 
 /**
  * A fresh help module whose catalog reads are marked, so every field the getter returns
@@ -291,6 +291,43 @@ describe('getHelpTopics', () => {
         if (action) expect(getHelpActionLabels()[action].length).toBeGreaterThan(0);
       }
     }
+  });
+});
+
+describe('splitPlatformLine', () => {
+  const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+  /** The widget answer's two label lines, split into the bold label run and the sentence, in every locale */
+  it("splits the widget answer's label lines in every shipped locale", () => {
+    for (const catalog of Object.values(CATALOGS)) {
+      const lines = (catalog['help.a.widgets'] as string).split('\n');
+
+      expect(lines).toHaveLength(2);
+      expect(splitPlatformLine(lines[0])).toEqual({ label: 'iOS: ', rest: lines[0].slice('iOS: '.length) });
+      expect(splitPlatformLine(lines[1])).toEqual({ label: 'Android: ', rest: lines[1].slice('Android: '.length) });
+      for (const line of lines) {
+        expect(splitPlatformLine(line)?.rest.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  /** The labels are the widget answer's alone: no other answer and no step opens with one */
+  it('returns null on every other answer and step line', () => {
+    for (const catalog of Object.values(CATALOGS)) {
+      for (const [key, value] of Object.entries(catalog)) {
+        if (!key.startsWith('help.a.') || key === 'help.a.widgets') continue;
+        expect(`${key}: ${splitPlatformLine(value as string)}`).toBe(`${key}: null`);
+      }
+      for (const step of getHelpTopics('ios').flatMap(({ steps }) => steps ?? [])) {
+        expect(splitPlatformLine(step)).toBeNull();
+      }
+    }
+  });
+
+  it('anchors the label at the line start, so a label named mid-sentence stays plain', () => {
+    expect(splitPlatformLine('Choose iOS: home screen')).toBeNull();
+    expect(splitPlatformLine('ios: not the pinned label')).toBeNull();
+    expect(splitPlatformLine('')).toBeNull();
   });
 });
 
