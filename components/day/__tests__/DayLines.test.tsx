@@ -3,12 +3,14 @@
  * no Arabic glyph clips and English reads exactly as it always has
  */
 
-import { render, screen } from '@testing-library/react-native';
+import { act, render, screen } from '@testing-library/react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { openOverlay } from '@/stores/overlay';
 
 import Day from '../Day';
 
@@ -87,5 +89,34 @@ describe('the location and date lines', () => {
     await render(<Day type={ScheduleType.Standard} />);
 
     expect(flattenStyle(screen.getByText('London, UK').props.style).marginBottom).toBe(SPACING.quart);
+  });
+});
+
+describe("the location label's ink", () => {
+  it('rests at the tuned home ink', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<Day type={ScheduleType.Standard} />);
+
+    // The static entry carries the home ink; the tween's entry commits after this frame
+    const [locationStatic] = screen.getByText('London, UK').props.style as unknown[];
+    expect(flattenStyle(locationStatic).color).toBe('#7485b9');
+  });
+
+  it('tweens to the overlay ink on the flag its masjid fade rides', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    await render(<Day type={ScheduleType.Standard} />);
+
+    const locationTween = () =>
+      interpolateColor.mock.calls
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#7485b9', '#7173bc'].join())
+        .map((call) => call[0]);
+
+    expect(locationTween().at(-1)).toBe(0);
+
+    await act(() => openOverlay(ScheduleType.Standard, 4));
+
+    expect(locationTween().at(-1)).toBe(1);
   });
 });

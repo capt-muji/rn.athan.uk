@@ -5,7 +5,7 @@ import Animated from 'react-native-reanimated';
 
 import { formatShownDate, getShownDateSource } from '@/components/day/shownDate';
 import { Masjid } from '@/components/ui';
-import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
@@ -40,6 +40,12 @@ export default function Day({ type }: Props) {
   const dateSource = getShownDateSource(showOverlayDate, OverlayPrayer.date, date);
 
   const masjidOpacityStyle = useDerivedOpacity(showOverlayDate ? 0 : 1, { duration: ANIMATION.duration });
+  // The location rides the same flag and duration its masjid fade rides, so the label settles with the icon
+  const locationColorStyle = useDerivedColor(showOverlayDate ? 1 : 0, {
+    fromColor: COLORS.text.labelHome,
+    toColor: COLORS.text.labelOverlay,
+    duration: ANIMATION.duration,
+  });
 
   // Hijri formatting is expensive on the floor device (umalqura Intl) — memo
   // so overlay toggles never re-format an unchanged date string
@@ -48,7 +54,7 @@ export default function Day({ type }: Props) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.location}>{t('day.location')}</Text>
+        <Animated.Text style={[styles.location, locationColorStyle]}>{t('day.location')}</Animated.Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
       <Animated.View style={masjidOpacityStyle}>
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
     paddingStart: SCREEN.paddingHorizontal + 4,
   },
   location: {
-    color: COLORS.text.secondary,
+    color: COLORS.text.labelHome,
     fontSize: ty.size(TEXT.sizeSmall),
     fontFamily: ty.familyRegular,
     marginBottom: compactArabic ? SPACING.sm : SPACING.quart,

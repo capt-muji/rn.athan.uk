@@ -2,7 +2,7 @@ import { useAtomValue } from 'jotai';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
-import { useDerivedProgress } from '@/hooks/useAnimation';
+import { useDerivedColor, useDerivedProgress } from '@/hooks/useAnimation';
 import { useCountdown } from '@/hooks/useCountdown';
 import { COLORS, COUNTDOWN_WAITING_NAME, SPACING, STYLES, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
@@ -59,6 +59,13 @@ export default function Countdown({ type }: Props) {
 
   const overlayProgress = useDerivedProgress(overlayIsOn ? 1 : 0, { defaultTiming: true });
 
+  // The name rides the same overlayProgress the digits ride, so its ink flips in lockstep with their transform
+  const labelColorStyle = useDerivedColor(overlayIsOn ? 1 : 0, {
+    fromColor: COLORS.text.labelHome,
+    toColor: COLORS.text.labelOverlay,
+    defaultTiming: true,
+  });
+
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: 1 + overlayProgress.value * 0.5 }, { translateY: overlayProgress.value * 5 }],
   }));
@@ -75,12 +82,12 @@ export default function Countdown({ type }: Props) {
   return (
     <Animated.View style={[styles.container]}>
       <View>
-        <Text
-          style={[styles.text]}
+        <Animated.Text
+          style={[styles.text, labelColorStyle]}
           // Read aloud, "..." says nothing, so a screen reader hears what the dots stand for; nothing on screen changes
           accessibilityLabel={prayerName === COUNTDOWN_WAITING_NAME ? t('countdown.waitingLabel') : undefined}>
           {prayerName}
-        </Text>
+        </Animated.Text>
         {groups === null ? (
           <Animated.Text style={[styles.countdown, animatedStyle]}>{displayTime}</Animated.Text>
         ) : (
@@ -115,7 +122,7 @@ const styles = StyleSheet.create({
     fontFamily: ty.wordFace ? ty.familyRegular : undefined,
     fontSize: ty.size(TEXT.sizeSmall) + 1,
     marginBottom: SPACING.xxs + 1,
-    color: COLORS.text.secondary,
+    color: COLORS.text.labelHome,
     transform: [{ translateY: -2 }],
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 0, height: 3 },

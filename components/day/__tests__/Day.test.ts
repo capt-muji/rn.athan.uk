@@ -35,9 +35,9 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles }, Text: 'Text', View: 'View' }));
-jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
+jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View', Text: 'Text' } }));
 jest.mock('@/components/ui', () => ({ Masjid: () => null }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}) }));
+jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}), useDerivedColor: () => ({}) }));
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: jest.fn(),
   getItem: () => null,
