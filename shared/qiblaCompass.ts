@@ -60,8 +60,6 @@ export const FACE = {
   degreeLift: 0.36,
   /** The gap between a number and its degree circle, as a share of the number's size. Constant at every bearing: it must not grow with the number's length */
   degreeGap: 0.06,
-  /** The cardinals' ink, shared by the numbers and their circles: half strength, because at full strength they read as loud as the needle */
-  cardinalInk: 0.5,
   /** One digit's advance, as a share of the number's size, so the circle sits as close to 270 as to 0 */
   digitAdvance: 0.58,
   /** The inner circle, a quarter smaller than the arrowhead's own reach so the face reads open rather than crowded */

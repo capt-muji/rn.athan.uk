@@ -52,7 +52,7 @@ export const bottomSheetStyles = StyleSheet.create({
     maxWidth: SIZE.contentMaxWidth,
   },
   container: { flex: 1 },
-  indicator: { backgroundColor: COLORS.text.secondary },
+  indicator: { backgroundColor: COLORS.surface.sheetGrabber },
   backdrop: { backgroundColor: COLORS.surface.backdrop },
   sheetBackground: { borderTopLeftRadius: RADIUS.sheet, borderTopRightRadius: RADIUS.sheet },
 });

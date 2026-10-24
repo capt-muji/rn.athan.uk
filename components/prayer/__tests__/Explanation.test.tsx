@@ -3,10 +3,12 @@
  */
 
 import { render, screen, within } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 import type { TestInstance } from 'test-renderer';
 
 import { TIP_OVERLAP } from '@/components/overlay/OverlayInfoBox';
-import { EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
+import { COLORS, EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 
@@ -101,6 +103,34 @@ describe('the explanation box of an Extras prayer', () => {
 
   it('overlap-into-the-row constant is 6', () => {
     expect(TIP_OVERLAP).toBe(7);
+  });
+
+  it('carries its face as a text-free sibling behind the words, so the reveal fades a view', async () => {
+    await render(
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
+    );
+
+    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
+    const face = box?.children.find((child) => typeof child !== 'string');
+    const style = face ? (StyleSheet.flatten(face.props.style) as { position?: string }) : null;
+
+    // The face holds the card's own background and border, absolutely placed behind the words
+    expect(style?.position).toBe('absolute');
+    expect(face?.queryAll((node) => node.type === 'Text')).toHaveLength(0);
+  });
+
+  it('raises its inks from the card surface as it reveals, through colour and never opacity', async () => {
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    await render(
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
+    );
+
+    const surface = COLORS.surface.elevated;
+    const ends = interpolateColor.mock.calls
+      .filter((call) => (call[2] as unknown as readonly string[])[0] === surface)
+      .map((call) => (call[2] as unknown as readonly string[])[1]);
+    expect(ends).toEqual([COLORS.text.emphasis, COLORS.icon.primary]);
+    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBeUndefined();
   });
 });
 

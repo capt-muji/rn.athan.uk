@@ -16,8 +16,8 @@ const BADGE_GLYPH: Record<string, Icon> = {
   Android: Icon.ANDROID,
 };
 
-/** De-emphasized faint blue - platform notes, badges and separator dots */
-const FAINT_BLUE = 'rgba(42, 68, 130, 0.32)';
+/** De-emphasized faint blue - platform notes, badges and separator dots. Solid: the old rgba(42,68,130,.32) flattened over the white card */
+const FAINT_BLUE = '#bbc3d7';
 
 /** The pill's tonal wash - the group key's own colour as a fill */
 const GROUP_KEY_WASH = 'rgba(52, 78, 92, 0.14)';

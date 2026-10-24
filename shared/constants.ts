@@ -684,20 +684,22 @@ export const COLORS = {
   // TEXT HIERARCHY
   // ───────────────────────────────────────────────────────────────────────────
   text: {
+    // Text inks are solid: translucent ink compounds where glyph strokes overlap (the
+    // Arabic overlap band), so each dim role is its old rgba flattened to one constant
     /** Primary text: active prayers, main content */
     primary: '#ffffff',
-    /** Secondary text: labels, descriptions */
-    secondary: 'rgba(160, 200, 255, 0.54)',
-    /** Muted text: inactive prayers, timestamps */
-    muted: 'rgba(138, 169, 214, 0.38)',
-    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted` */
-    rowTime: 'rgba(138, 169, 214, 0.475)',
-    /** Disabled/hint text */
-    disabled: 'rgba(146, 211, 255, 0.65)',
+    /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
+    secondary: '#6c79c2',
+    /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
+    muted: '#52529e',
+    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */
+    rowTime: '#5a5fa6',
+    /** Disabled/hint text on the sheet: the old rgba(146,211,255,.65) flattened over #0b183a */
+    disabled: '#6392ba',
     /** Emphasis text: info box titles */
     emphasis: 'rgba(224, 231, 255, 1)',
-    /** Every supporting line under a sheet's own title, so they all read as one voice */
-    sheetSubtitle: 'rgba(86, 134, 189, 0.725)',
+    /** Every supporting line under a sheet's own title, so they all read as one voice. Old rgba(86,134,189,.725) flattened over the sheet #0b183a */
+    sheetSubtitle: '#416899',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -708,6 +710,8 @@ export const COLORS = {
     sheet: '#0b183a',
     /** Bottom sheet border */
     sheetBorder: '#0f1d46',
+    /** The sheet grabber indicator: text.secondary's old rgba over the sheet, held pixel-exact now that the text constant is a gradient flatten */
+    sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
     /** Elevated surface (info boxes, modals) */
@@ -723,7 +727,12 @@ export const COLORS = {
     /** Main screen background gradient */
     screen: { start: '#031a4c', end: '#5b1eaa' },
     /** Overlay background gradient */
-    overlay: { start: '#110022', end: '#000000' },
+    overlay: {
+      start: '#110022',
+      end: '#000000',
+      /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
+      veil: '#0b0016',
+    },
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -805,8 +814,8 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text */
-    text: 'rgba(128, 162, 212, 0.45)',
+    /** Prayer ago badge text: the old rgba(128,162,212,.45) flattened over its pill wash on the gradient midpoint */
+    text: '#5660a7',
     /** Background gradient for prayer ago badge */
     gradient: {
       start: 'rgba(73, 75, 160, 0.15)',
@@ -826,10 +835,11 @@ export const COLORS = {
   },
 
   countdown: {
-    timeColon: 'rgba(174, 208, 255, 0.375)',
+    /** Colon inks are solid, the old rgba flattened over the gradient midpoint #2f1c7b */
+    timeColon: '#5f60ad',
     pastTimeColon: 'rgb(170, 182, 212)',
-    nextTimeColon: 'rgba(210, 226, 255, 0.75)',
-    nextTimeColonExtras: 'rgba(238, 243, 255, 0.88)',
+    nextTimeColon: '#a9b1de',
+    nextTimeColonExtras: '#d7d9ef',
   },
 
   /**
@@ -846,8 +856,8 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal numbers' ink: the structure's own blue, faint enough to sit behind the instrument it labels */
-      ink: 'rgba(146, 184, 228, 0.45)',
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      ink: '#4b4c63',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',
       /** The Kaaba's cube: under the dial, so its outline is what carries it */
@@ -858,7 +868,9 @@ export const COLORS = {
       face: 'rgba(54, 44, 62, 1)',
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
-      ink: 'rgba(228, 192, 134, 0.5)',
+      /** The old rgba(228,192,134,.5) flattened over the facing face */
+      /** The old rgba(228,192,134,.5) at its 0.5 fillOpacity flattened over this face (the previous value sat over the away face by mistake) */
+      ink: '#6a5858',
       accent: 'rgba(247, 191, 74, 1)',
       kaaba: 'rgba(32, 25, 48, 1)',
     },

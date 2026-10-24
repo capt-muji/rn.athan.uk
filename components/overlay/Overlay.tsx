@@ -20,7 +20,7 @@ import { measurementsListAtom } from '@/stores/ui';
  *
  * No content is duplicated and NOTHING visual sits over the page. This layer
  * owns only input (the press-catcher with the selected row exempt) and the
- * extras explanation box, faded by a derived opacity.
+ * extras explanation box, whose face and inks fade inside itself.
  */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);

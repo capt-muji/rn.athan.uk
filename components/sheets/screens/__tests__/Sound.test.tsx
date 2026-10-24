@@ -74,7 +74,8 @@ const playButtonOf = (athan: number) => {
   const row = screen.getByText(`Athan ${athan}`).parent;
   const controls = row?.children[1];
   if (!controls || typeof controls === 'string') throw new Error(`Athan ${athan} has no controls`);
-  const button = controls.children[1];
+  // The countdown renders only while it counts, so the play button is the last child
+  const button = controls.children[controls.children.length - 1];
   if (!button || typeof button === 'string') throw new Error(`Athan ${athan} has no play button`);
   return button;
 };

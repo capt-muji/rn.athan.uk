@@ -51,7 +51,6 @@ export default function ColorPickerSettings() {
   const [selectedColor, setSelectedColor] = useState(countdownBarColor);
 
   const isDisabled = !countdownBarShown;
-  const opacity = countdownBarShown ? 1 : 0.25;
 
   // =============================================================================
   // HANDLERS
@@ -95,6 +94,10 @@ export default function ColorPickerSettings() {
 
   const isCustomColor = countdownBarColor !== COLOR_PICKER_DEFAULT;
 
+  // The reset label's ink: shown over the sheet, the old 0.25-chain flatten when the bar
+  // is hidden, invisible ink while it cannot be used
+  const resetInk = !isCustomColor ? 'transparent' : countdownBarShown ? '#5b77a4' : '#1f3055';
+
   // =============================================================================
   // RENDER
   // =============================================================================
@@ -109,7 +112,7 @@ export default function ColorPickerSettings() {
   return (
     <>
       <Pressable
-        style={[styles.container, { opacity }]}
+        style={styles.container}
         onPress={handlePress}
         hitSlop={HIT_SLOP.md}
         accessibilityRole={'button'}
@@ -120,20 +123,21 @@ export default function ColorPickerSettings() {
           <Pressable
             onPress={handleReset}
             hitSlop={HIT_SLOP.sm}
-            style={[styles.resetButton, { opacity: isCustomColor ? 1 : 0 }]}
+            style={styles.resetButton}
             disabled={!isCustomColor}
             accessibilityRole={'button'}
             accessibilityLabel={t('colorPicker.resetLabel')}
-            // Drawn at zero opacity on the default colour, so without these a screen reader offers
+            // Hidden in ink on the default colour, so without these a screen reader offers
             // a Reset that is invisible and does nothing. Both, because one is iOS and one Android
             accessibilityElementsHidden={!isCustomColor}
             importantForAccessibility={isCustomColor ? 'yes' : 'no-hide-descendants'}>
-            <Text style={styles.resetText}>{t('colorPicker.reset')}</Text>
+            {/* Kept mounted so the row holds its width; invisible ink (alpha 0) paints nothing, so no glyph compounds */}
+            <Text style={[styles.resetText, { color: resetInk }]}>{t('colorPicker.reset')}</Text>
           </Pressable>
-          <View style={styles.colorPreviewContainer}>
+          <View style={[styles.colorPreviewContainer, isDisabled && styles.previewDim]}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
-          <Text style={styles.chevron}>{chevronFor()}</Text>
+          <Text style={[styles.chevron, isDisabled && styles.chevronDisabled]}>{chevronFor()}</Text>
         </View>
       </Pressable>
 
@@ -203,7 +207,8 @@ const styles = StyleSheet.create({
     fontSize: ty.size(TEXT.sizeDetail),
   },
   labelDisabled: {
-    color: COLORS.text.disabled,
+    // The old label colour under the removed 0.25 container, flattened over the sheet
+    color: '#21365a',
   },
 
   // --- Right Side (Reset + Preview) ---
@@ -217,7 +222,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.sm,
   },
   resetText: {
-    color: COLORS.text.secondary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
   },
@@ -229,6 +233,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.text.primary,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  // The swatch is text-free, so it keeps the old 0.25 dim here and its pixels hold
+  previewDim: {
+    opacity: 0.25,
   },
   colorPreview: {
     width: SIZE.dot.lg,
@@ -243,6 +251,10 @@ const styles = StyleSheet.create({
     // The codepoint carries the direction (chevronFor); Android mirrors a lone neutral
     // glyph inside an RTL paragraph, so the paragraph itself stays LTR
     direction: 'ltr',
+  },
+  chevronDisabled: {
+    // The old icon ink under the removed 0.25 container, flattened over the sheet
+    color: '#323f6b',
   },
 
   // --- Modal Container ---

@@ -7,10 +7,11 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
 import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
-import { ANIMATION } from '@/shared/constants';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
@@ -140,6 +141,30 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByText(name)).toBeVisible();
     expect(screen.getByText(english)).toBeVisible();
+  });
+
+  it('raises the explanation inks from the card surface as the box reveals', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    await render(
+      <>
+        <Overlay />
+        <OverlayInfoBox type={ScheduleType.Extra} />
+      </>
+    );
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await act(() => openOverlay(ScheduleType.Extra, 0));
+
+    // The reveal drives the face's fade and the inks' rise from the card's own surface; the
+    // placer itself no longer fades, so nothing that holds text carries an opacity
+    expect(
+      interpolateColor.mock.calls.filter(
+        (call) => (call[2] as unknown as readonly string[])[0] === COLORS.surface.elevated
+      ).length
+    ).toBeGreaterThanOrEqual(2);
+    const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
+    expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
   });
 
   // [action, open before the action, the action, the measure, the mark it measures from]

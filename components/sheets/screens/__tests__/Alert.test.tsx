@@ -2,7 +2,7 @@
  * The alert sheet: the draft it opens on, what each control does to that draft, and what closing the sheet saves
  */
 
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { Alert } from 'react-native';
@@ -90,9 +90,6 @@ const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
 
 // A reminder's own card: its title text up through the view that draws and dims the whole card
 const reminderCard = (n: 1 | 2) => screen.getByText(`Reminder ${n}`).parent!.parent!.parent!;
-
-// A reminder's sound and minutes block: its sound radio up through the view that dims the block
-const reminderOptions = () => reminderOption('Silent').parent!.parent!.parent!;
 
 /** Closes the sheet as the bottom sheet library reports it, once the close has finished */
 const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
@@ -666,24 +663,41 @@ describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:
 });
 
 describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
-  it('dims a locked reminder card to half its uat value while the athan is Off', async () => {
+  it("paints a locked reminder card's title and hint in the locked solids while the athan is Off", async () => {
     showLondonDay('2026-09-11', '14:00');
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
-    expect(reminderCard(1)).toHaveStyle({ opacity: 0.125 });
-    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+    for (const n of [1, 2] as const) {
+      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#253252' });
+      expect(within(reminderCard(n)).getByText(t('alert.reminderHint'))).toHaveStyle({ color: '#122246' });
+    }
   });
 
-  it("dims an off reminder's sound and minutes to half their uat value", async () => {
+  it("paints an off reminder's labels in the off solid, and the locked card beside them in its own", async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
-    expect(reminderOptions()).toHaveStyle({ opacity: 0.125 });
-    // Reminder 1 off locks the second card, which carries the card dim beside the block's own
-    expect(reminderCard(2)).toHaveStyle({ opacity: 0.125 });
+    expect(within(reminderCard(1)).getByText(t('reminder.before'))).toHaveStyle({ color: '#203059' });
+    // Reminder 1 off locks the second card, whose own reminder is also off: the locked-off
+    // solid, deeper than the off solid the first card's block carries
+    expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#0e1b3e' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
+  });
+
+  it('paints a locked card whose own reminder is on in the locked-on solids', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
+    setReminderAlertType(ScheduleType.Standard, FAJR, 1, AlertType.Sound);
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    // Reminder 1 off locks the second card; reminder 2 itself stays on, so its options sit
+    // between the two dims: the locked-on solid, brighter than the locked-off one
+    expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#1c2c4f' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
   });
 });
 

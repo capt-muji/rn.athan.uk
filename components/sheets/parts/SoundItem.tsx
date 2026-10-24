@@ -1,10 +1,10 @@
 import * as Haptics from 'expo-haptics';
 import { memo, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { useAnimationScale } from '@/hooks/useAnimation';
+import { useAnimationScale, useDerivedProgress } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -14,8 +14,9 @@ import { typographyFor } from '@/shared/typography';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const COUNTDOWN_COLOR_SELECTED = 'rgba(165, 180, 252, 0.8)';
-const COUNTDOWN_COLOR_UNSELECTED = 'rgba(86, 134, 189, 0.725)';
+// Solid: the old rgba pair flattened over the sheet, so the countdown never renders through alpha
+const COUNTDOWN_COLOR_SELECTED = '#8695d5';
+const COUNTDOWN_COLOR_UNSELECTED = '#416899';
 
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
@@ -74,11 +75,11 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   if (remainingSeconds > 0) lastPositiveRemainingRef.current = remainingSeconds;
   const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
 
-  // Countdown color tweens; opacity snaps with the icon flip (a tween here
-  // ran ~75ms behind the instant play/pause swap and read as desync).
-  const countdownColorProgress = useDerivedValue(() =>
-    withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
-  );
+  // Countdown color tweens; visibility snaps with the icon flip (a tween here
+  // ran ~75ms behind the instant play/pause swap and read as desync). The progress
+  // snaps on first evaluation, so a row that mounts already playing paints its
+  // settled ink instead of tweening up from unselected
+  const countdownColorProgress = useDerivedProgress(isSelected ? 1 : 0, { duration: ANIMATION.durationFast });
 
   const countdownStyle = useAnimatedStyle(() => ({
     color: interpolateColor(
@@ -101,7 +102,7 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   };
 
   const activeColor = '#fff';
-  const inactiveColor = 'rgba(86, 134, 189, 0.725)';
+  const inactiveColor = '#416899';
 
   const name = t('soundItem.athan', { n: index + 1 });
 
@@ -117,9 +118,11 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
       accessibilityLabel={name}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>{name}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, { opacity: countdownVisible ? 1 : 0 }, countdownStyle]}>
-          {formatTime(displaySeconds)}
-        </Animated.Text>
+        {/* Rendered only while visible: the row is end-anchored, so the countdown's
+            absence moves nothing, and the colour tween lives here at row level */}
+        {countdownVisible && (
+          <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(displaySeconds)}</Animated.Text>
+        )}
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={handlePlayPress}

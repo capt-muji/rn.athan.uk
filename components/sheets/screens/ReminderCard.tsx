@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { type DimState, dimState, REMINDER_CARD } from '@/components/sheets/parts/dim';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -48,6 +49,10 @@ export default function ReminderCard({
   onSelectInterval,
 }: Props) {
   const isOn = reminder.alert !== AlertType.Off;
+  // The dim is carried by colour: every element picks its solid from the state tables
+  // (dim.ts), flattened from the old nested wrapper opacities
+  const dim: DimState = dimState(locked, isOn);
+  const optionInk = REMINDER_CARD.optionLabel[dim];
 
   const step = (direction: -1 | 1) => {
     const next = stepReminderInterval(reminder.interval, direction, taken);
@@ -59,32 +64,40 @@ export default function ReminderCard({
   };
 
   return (
-    <View style={[styles.card, locked && styles.cardDisabled]}>
+    <View
+      style={[
+        styles.card,
+        locked && { backgroundColor: REMINDER_CARD.background.locked, borderColor: REMINDER_CARD.border.locked },
+      ]}>
       {/* The title and hint name the row's own switch, which carries the role and the checked
           state. The row stays roleless on purpose: naming it too would have a screen reader
           offer two controls for one setting, and the switch is the one that reports its state */}
       <Pressable style={styles.cardRow} onPress={handleHeaderPress}>
         <View>
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Text style={styles.cardHint}>{hint}</Text>
+          <Text style={[styles.cardTitle, { color: locked ? REMINDER_CARD.title.locked : REMINDER_CARD.title.rest }]}>
+            {title}
+          </Text>
+          <Text style={[styles.cardHint, { color: locked ? REMINDER_CARD.hint.locked : REMINDER_CARD.hint.rest }]}>
+            {hint}
+          </Text>
         </View>
         <Toggle value={isOn} onToggle={onToggle} disabled={locked} />
       </Pressable>
 
-      <View style={[styles.reminderOptions, !isOn && styles.optionsDisabled]}>
+      <View style={[styles.reminderOptions, { borderTopColor: REMINDER_CARD.rule[dim] }]}>
         <View style={styles.optionRow}>
-          <Text style={styles.optionLabel}>{t('reminder.sound')}</Text>
-          <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} disabled={!isOn} />
+          <Text style={[styles.optionLabel, { color: optionInk }]}>{t('reminder.sound')}</Text>
+          <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} dim={dim} />
         </View>
 
         <View style={styles.optionRow}>
-          <Text style={styles.optionLabel}>{t('reminder.before')}</Text>
+          <Text style={[styles.optionLabel, { color: optionInk }]}>{t('reminder.before')}</Text>
           <Stepper
             value={reminder.interval}
             onDecrement={() => step(-1)}
             onIncrement={() => step(1)}
             unit={t('reminder.unitMinutes')}
-            disabled={!isOn}
+            dim={dim}
             taken={taken}
           />
         </View>
@@ -97,20 +110,16 @@ const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'rgba(99, 102, 241, 0.06)',
+    backgroundColor: REMINDER_CARD.background.rest,
     borderRadius: RADIUS.xl,
     borderWidth: 0.5,
-    borderColor: 'rgba(99, 102, 241, 0.15)',
+    borderColor: REMINDER_CARD.border.rest,
     padding: SPACING.lg,
     marginBottom: SPACING.md,
-  },
-  cardDisabled: {
-    opacity: 0.125,
   },
   cardTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
-    color: '#d8eaf8',
     marginBottom: SPACING.sm - 1,
   },
   cardRow: {
@@ -121,17 +130,12 @@ const styles = StyleSheet.create({
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgba(86, 134, 189, 0.725)',
   },
   reminderOptions: {
     marginTop: SPACING.lg,
     paddingTop: SPACING.lg2,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(99, 102, 241, 0.07)',
     gap: SPACING.sm,
-  },
-  optionsDisabled: {
-    opacity: 0.125,
   },
   optionRow: {
     flexDirection: 'row',
@@ -141,7 +145,6 @@ const styles = StyleSheet.create({
   optionLabel: {
     fontSize: ty.size(13),
     fontFamily: ty.familyRegular,
-    color: 'rgb(146, 184, 228)',
     width: 100,
   },
 });

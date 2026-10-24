@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { CONTROL_WASH, type DimState, dimDisables, STEPPER_INK } from '@/components/sheets/parts/dim';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -18,7 +19,8 @@ export interface StepperProps {
   onDecrement: () => void;
   onIncrement: () => void;
   unit?: string;
-  disabled?: boolean;
+  /** Which wrapper dim the stepper renders under; the ink and wash come from its tables */
+  dim?: DimState;
   /** The other reminder's interval while it is on, so this stepper can neither reach nor offer it */
   taken?: number | null;
 }
@@ -44,9 +46,11 @@ export default function Stepper({
   onDecrement,
   onIncrement,
   unit = t('reminder.unitMinutes'),
-  disabled,
+  dim = 'rest',
   taken = null,
 }: StepperProps) {
+  const disabled = dimDisables(dim);
+  const ink = STEPPER_INK[dim];
   const nextDown = stepReminderInterval(value, -1, taken);
   const nextUp = stepReminderInterval(value, 1, taken);
   const canDecrement = !disabled && nextDown !== null;
@@ -54,38 +58,38 @@ export default function Stepper({
   const visible = String(value);
 
   return (
-    <View style={[styles.container, disabled && styles.disabled]}>
+    <View style={[styles.container, { backgroundColor: CONTROL_WASH[dim] }]}>
       <Pressable
         accessibilityRole={'button'}
         // The glyph is a minus sign, which reads as nothing useful; name the action and
         // the unit so the control is usable without seeing the value beside it
         accessibilityLabel={t('stepper.decrease', { value: nextDown ?? value, unit })}
         accessibilityState={{ disabled: !canDecrement }}
-        style={[styles.button, !canDecrement && styles.buttonDisabled]}
+        style={styles.button}
         onPress={() => {
           if (canDecrement) {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
             onDecrement();
           }
         }}>
-        <Text style={[styles.buttonText, !canDecrement && styles.buttonTextDisabled]}>{'−'}</Text>
+        <Text style={[styles.buttonText, { color: canDecrement ? ink.glyph : ink.glyphBoundary }]}>{'−'}</Text>
       </Pressable>
       <View accessible={true} accessibilityLabel={t('stepper.value', { value, unit })} style={styles.valueContainer}>
-        <Text style={styles.value}>{visible}</Text>
-        <Text style={styles.unit}>{unit}</Text>
+        <Text style={[styles.value, { color: ink.value }]}>{visible}</Text>
+        <Text style={[styles.unit, { color: ink.unit }]}>{unit}</Text>
       </View>
       <Pressable
         accessibilityRole={'button'}
         accessibilityLabel={t('stepper.increase', { value: nextUp ?? value, unit })}
         accessibilityState={{ disabled: !canIncrement }}
-        style={[styles.button, !canIncrement && styles.buttonDisabled]}
+        style={styles.button}
         onPress={() => {
           if (canIncrement) {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
             onIncrement();
           }
         }}>
-        <Text style={[styles.buttonText, !canIncrement && styles.buttonTextDisabled]}>+</Text>
+        <Text style={[styles.buttonText, { color: canIncrement ? ink.glyph : ink.glyphBoundary }]}>+</Text>
       </Pressable>
     </View>
   );
@@ -103,12 +107,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: 3,
-  },
-  disabled: {
-    opacity: 0.2,
   },
   button: {
     paddingVertical: SPACING.smd,
@@ -117,16 +117,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: RADIUS.md - 2,
   },
-  buttonDisabled: {
-    opacity: 0.15,
-  },
   buttonText: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
-    color: 'rgb(234, 242, 250)',
-  },
-  buttonTextDisabled: {
-    color: 'rgb(50, 98, 150)',
   },
   valueContainer: {
     flexDirection: 'row',
@@ -137,12 +130,10 @@ const styles = StyleSheet.create({
   value: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
-    color: '#fff',
   },
   unit: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgb(95, 133, 177)',
     marginStart: 3,
   },
 });

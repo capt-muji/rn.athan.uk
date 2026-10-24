@@ -3,8 +3,10 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { london, showLondonDay } from '@/__tests__/harness';
+import { COLORS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
@@ -22,10 +24,10 @@ const SUHOOR = 2;
 const DUHA = 3;
 const ISTIJABA = 4;
 
-const COLON_COLOUR = 'rgba(174, 208, 255, 0.375)';
+const COLON_COLOUR = '#5f60ad';
 const PAST_COLON_COLOUR = 'rgb(170, 182, 212)';
-const NEXT_COLON_COLOUR = 'rgba(210, 226, 255, 0.75)';
-const NEXT_COLON_COLOUR_EXTRAS = 'rgba(238, 243, 255, 0.88)';
+const NEXT_COLON_COLOUR = '#a9b1de';
+const NEXT_COLON_COLOUR_EXTRAS = '#d7d9ef';
 const PRIMARY_COLOUR = '#ffffff';
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
@@ -125,6 +127,33 @@ describe('the passed Sunrise row on Friday 11 September 2026 at 14:00, once the 
     await act(() => openOverlay(ScheduleType.Standard, SUNRISE));
 
     expect(screen.getByText('--:--')).toBeOnTheScreen();
+  });
+
+  it('sinks both its digits and its colon toward the veil ink while another row is shown', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerTime type={ScheduleType.Standard} index={SUNRISE} />);
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
+
+    // The row's own tween rides inside the veil interpolation: the digits from the row-time
+    // rest, the colon from its own pair (the spy answers for interpolateColor, so the inner
+    // tween is read from its own recorded call)
+    const calls = interpolateColor.mock.calls;
+    const veiled = calls.filter(
+      (call) => (call[2] as unknown as readonly string[])[1] === COLORS.gradient.overlay.veil
+    );
+    expect(veiled.map((call) => call[0])).toEqual([1, 1]);
+    expect(
+      calls.some(
+        (call) => (call[2] as unknown as readonly string[]).join() === [COLORS.text.rowTime, COLORS.text.primary].join()
+      )
+    ).toBe(true);
+    expect(
+      calls.some(
+        (call) => (call[2] as unknown as readonly string[]).join() === [COLON_COLOUR, PAST_COLON_COLOUR].join()
+      )
+    ).toBe(true);
   });
 });
 

@@ -6,6 +6,7 @@
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { ANIMATION } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
@@ -64,13 +65,18 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     }
   });
 
-  it('fades out while the overlay is open', async () => {
+  it('fades toward the veil ink while the overlay is open, then drops from the tree', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
 
-    expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).not.toBeVisible();
+    // The fade carries the ink, so the words stay drawn while it runs
+    expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).toBeOnTheScreen();
+
+    await act(() => jest.advanceTimersByTime(ANIMATION.durationFade));
+
+    expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
   });
 });
 

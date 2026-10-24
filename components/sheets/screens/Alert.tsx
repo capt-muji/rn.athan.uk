@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
-import { RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import {
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
   },
   reminderOptions: {
     marginTop: SPACING.lg,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
   unavailableText: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
     textAlign: 'center',
     lineHeight: ty.lineHeight(22),
   },

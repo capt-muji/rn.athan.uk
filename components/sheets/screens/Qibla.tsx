@@ -1,7 +1,13 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { FadeIn, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  FadeIn,
+  interpolateColor,
+  useAnimatedStyle,
+  useDerivedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
@@ -81,8 +87,15 @@ const QiblaLost = () => (
  */
 export const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
   const progress = useDerivedValue(() => withTiming(showsCompass ? 1 : 0, { duration: ANIMATION.durationFade }));
-  const waiting = useAnimatedStyle(() => ({ opacity: 1 - progress.value }));
-  const ready = useAnimatedStyle(() => ({ opacity: progress.value }));
+  // A colour crossfade over the solid sheet: interpolating the ink toward the surface
+  // equals an opacity fade over that surface, formula for formula, and never paints
+  // translucent ink (the glyph strokes cannot compound mid-fade)
+  const waiting = useAnimatedStyle(() => ({
+    color: interpolateColor(1 - progress.value, [0, 1], [COLORS.surface.sheet, COLORS.text.sheetSubtitle]),
+  }));
+  const ready = useAnimatedStyle(() => ({
+    color: interpolateColor(progress.value, [0, 1], [COLORS.surface.sheet, COLORS.text.sheetSubtitle]),
+  }));
 
   return (
     <View>
@@ -246,7 +259,8 @@ const styles = StyleSheet.create({
   subtitleDonor: {
     ...subtitleText,
     height: 0,
-    opacity: 0,
+    // Invisible ink, not opacity: the donor must stay laid out to donate its width
+    color: 'transparent',
   },
   // Stacked rather than swapped, so the header keeps one height through the fade
   subtitleOver: {

@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
-    color: 'rgba(86, 134, 189, 0.725)',
+    color: COLORS.text.sheetSubtitle,
   },
 
   // Toggle list
