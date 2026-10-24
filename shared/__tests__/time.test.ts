@@ -904,6 +904,23 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
   });
+
+  describe('getTodayDateString inside the duplicated hour (2026 fall-back)', () => {
+    // The wall clock reads 01:30 twice: 00:30Z still BST, 01:30Z already GMT. One calendar
+    // day covers both passes, and the app's day never splits or repeats across them.
+    it.each([
+      ['2026-10-25T00:30:00.000Z', 'first pass, still BST'],
+      ['2026-10-25T01:30:00.000Z', 'second pass, GMT'],
+    ])('reads 2026-10-25 at %s (%s)', (iso) => {
+      jest.useFakeTimers().setSystemTime(new Date(iso));
+
+      expect(getTodayDateString()).toBe('2026-10-25');
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+  });
 });
 
 describe('getSecondsRemaining (ceil display contract)', () => {
@@ -949,6 +966,48 @@ describe('getSecondsRemaining (ceil display contract)', () => {
   it('large horizons keep exact ceil semantics', () => {
     expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
     expect(getSecondsRemaining(targetFromNow(365 * 86400 * 1000 + 1))).toBe(365 * 86400 + 1);
+  });
+});
+
+describe('getSecondsRemaining across the 2026 fall-back instant', () => {
+  // The real Fajr row the 25 October 2026 list carries: 05:04 London, GMT after the crossing
+  const fajrAfterTheFallBack = createPrayerDatetime('2026-10-25', '05:04');
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    expect(fajrAfterTheFallBack.toISOString()).toBe('2026-10-25T05:04:00.000Z');
+    nowSpy = jest.spyOn(Date, 'now');
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('counts the real hour the wall clock repeats: 00:30Z and 01:30Z share the wall label 01:30', () => {
+    nowSpy.mockReturnValue(Date.parse('2026-10-25T00:30:00Z'));
+    const firstPass = getSecondsRemaining(fajrAfterTheFallBack);
+    nowSpy.mockReturnValue(Date.parse('2026-10-25T01:30:00Z'));
+    const secondPass = getSecondsRemaining(fajrAfterTheFallBack);
+
+    expect(firstPass).toBe(4 * 3600 + 34 * 60);
+    expect(secondPass).toBe(3 * 3600 + 34 * 60);
+    expect(firstPass - secondPass).toBe(3600);
+  });
+
+  it('drops exactly one second per real second across the 01:00:00Z transition', () => {
+    const readings = [0, 1, 2].map((secondsPastTheFallBack) => {
+      nowSpy.mockReturnValue(Date.parse('2026-10-25T00:59:59.500Z') + secondsPastTheFallBack * 1000);
+      return getSecondsRemaining(fajrAfterTheFallBack);
+    });
+
+    expect(readings).toEqual([14641, 14640, 14639]);
+  });
+
+  it('never returns 0 before the target, through either pass of the duplicated hour', () => {
+    for (const iso of ['2026-10-25T00:30:00Z', '2026-10-25T01:30:00Z', '2026-10-25T05:03:59.500Z']) {
+      nowSpy.mockReturnValue(Date.parse(iso));
+      expect(getSecondsRemaining(fajrAfterTheFallBack)).toBeGreaterThanOrEqual(1);
+    }
   });
 });
 
