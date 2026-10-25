@@ -118,5 +118,13 @@
   {
     "version": "2.4.33",
     "reason": "2026-10-25 lane T-344's label-restore commit steps from its 2.4.32 tip while uat's T-337 merge holds 2.4.33; the standing ruling: the T-344 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.41",
+    "reason": "2026-10-25 lane T-327's instrument commit steps from uat's 2.4.40 while lanes T-345 and T-347 already hold 2.4.41; the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.42",
+    "reason": "2026-10-25 lanes T-345 and T-347 both hold a local 2.4.42 (the reminder-row wiring and the audit corrections), each allowlisted in its own tree under the standing collision ruling; recorded here too because the uniqueness gate reads every local branch from this worktree"
   }
 ]

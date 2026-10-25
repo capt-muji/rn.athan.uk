@@ -1,18 +1,34 @@
 #!/bin/zsh
-# frame-audit: FPS + visual-quality audit for one animation on the OnePlus 3T.
+# frame-audit: dual FPS audit for one animation on the OnePlus 3T.
 #
 # Scripts MEASURE, vision INTERPRETS: this harness records the animation,
-# extracts per-frame timestamps (compositor truth — screenrecord writes a
-# frame only on real display changes), builds a labeled contact sheet, and
-# emits a ready-to-use vision prompt. Delegate the prompt to an image-capable
+# extracts per-frame timestamps, builds a labeled contact sheet, and emits a
+# ready-to-use vision prompt. Delegate the prompt to an image-capable
 # subagent (the campaign used a GLM 5.3 Flash vision subagent, read-only).
 #
-# Usage: frame-audit.sh <label> <tap-x> <tap-y> [seconds] [device-serial]
-#   frame-audit.sh overlay-open 540 974 3
+# The default run is DUAL: one tap, two reads in one evidence dir. The
+# screenrecord video is the ENCODER's word about the compositor (a frame is
+# written only on real display changes, through the SD820's encoder), so a
+# video dead zone alone proves nothing. The second read is SurfaceFlinger's
+# own present timestamps for the app's layer: a dead zone in BOTH reads is
+# compositor truth, one in video alone is encoder loss.
 #
-# Fallbacks (video capture is thermally fragile on the SD820):
-#   FRAME_AUDIT=sf    -> SurfaceFlinger --latency compositor cadence instead
-#                        of video (no pixels; gaps <=33ms = 30fps floor pass)
+# Usage: frame-audit.sh <label> <tap-x> <tap-y> [seconds] [device-serial]
+#   frame-audit.sh overlay-open 540 1012 3
+#   PRE_TAP="540 1012" frame-audit.sh overlay-close 540 1100 3
+#     PRE_TAP drives one transition first and waits out its entrance, so the
+#     recorded tap is a real second interaction (overlay-close: open, settle,
+#     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
+#     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
+#     boundary is near, so the default is mock-safe (README Gotchas).
+#
+# Modes (FRAME_AUDIT):
+#   dual (default)  -> video + SF read of the same tap, gap lists side by
+#                      side and the separation verdict
+#   video           -> video only (the pre-dual behaviour)
+#   sf              -> SurfaceFlinger --latency cadence instead of video
+#                      (no pixels; gaps <=33ms = 30fps floor pass) — the
+#                      fallback while video capture is wedged
 # Known wedge: if screenrecord emits ~1 frame despite display changes, the
 # virtual-display pipeline is wedged — a device REBOOT restores it (s6). The
 # SF fallback still works in that state.
@@ -23,8 +39,14 @@ LABEL=${1:?label}
 TAPX=${2:?tap-x}
 TAPY=${3:?tap-y}
 SECONDS_LIMIT=${4:-3}
+PRE_TAP_WAIT=${PRE_TAP_WAIT:-1}
 SERIAL=${5:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 PKG=${APP_ID:-com.example.athan}
+MODE=${FRAME_AUDIT:-dual}
+if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
+  echo "FRAME_AUDIT must be dual, video or sf (got '$MODE')"
+  exit 1
+fi
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
@@ -33,7 +55,13 @@ adb -s "$SERIAL" shell am force-stop $PKG
 adb -s "$SERIAL" shell am start -W -n $PKG/.MainActivity >/dev/null
 echo "settling 12s (JS warmup + widget pushes land ~2.5s in)"; sleep 12
 
-if [[ ${FRAME_AUDIT:-video} == sf ]]; then
+if [[ -n ${PRE_TAP:-} ]]; then
+  adb -s "$SERIAL" shell input tap ${=PRE_TAP}
+  echo "pre-tap at $PRE_TAP, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+
+if [[ $MODE == sf ]]; then
   adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
   sleep 1
   adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$PKG/$PKG.MainActivity#0'" \
@@ -78,8 +106,33 @@ adb -s "$SERIAL" shell screenrecord --time-limit "$SECONDS_LIMIT" --bit-rate 160
 REC=$!
 sleep 0.5
 adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
+if [[ $MODE == dual ]]; then
+  # Device-clock anchor for the SF read: /proc/uptime rides the same monotonic
+  # clock the present timestamps use (a measuring phone never suspends), read
+  # immediately after the tap so the SF window can open at the tap itself.
+  adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+fi
 wait $REC 2>/dev/null || true
 adb -s "$SERIAL" pull /sdcard/frame_audit.mp4 "$OUT/rec.mp4" >/dev/null
+if [[ $MODE == dual ]]; then
+  # The dump lands AFTER the recorded animation (tap, animation, then dump):
+  # an idle layer presents nothing, so the ring's last ~127 presents still
+  # cover the entrance the video recorded, while a dump before the tap reads
+  # an idle layer and prints NO DATA. Layer names rotate per process relaunch,
+  # so the layer is resolved from --list, never from a fixed name: the plain
+  # PKG/PKG.MainActivity#0 and the hash-prefixed variant are both live shapes,
+  # and sibling packages must not match.
+  PKG_RE=${PKG//./\\.}
+  LAYER=$(adb -s "$SERIAL" shell dumpsys SurfaceFlinger --list | tr -d '\r' \
+    | grep -E "(^|/)$PKG_RE/$PKG_RE\.MainActivity#0$" | tail -1)
+  if [[ -z "$LAYER" ]]; then
+    echo "no SF layer for $PKG in SurfaceFlinger --list (names rotate per relaunch)"
+    echo "evidence: $OUT (video evidence kept; separation FAILED — no compositor read)"
+    exit 1
+  fi
+  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
+    > "$OUT/latency.txt" 2>&1
+fi
 
 ffprobe -select_streams v -show_entries frame=pts_time -of csv=p=0 "$OUT/rec.mp4" 2>/dev/null > "$OUT/pts.txt"
 ffmpeg -y -loglevel error -i "$OUT/rec.mp4" -fps_mode passthrough "$OUT/f_%03d.png" 2>/dev/null || true
@@ -112,7 +165,8 @@ cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
 It is a labeled contact sheet of sequential frames from a prayer-times app
-recording (dark navy UI). The interaction was a tap at ($TAPX,$TAPY).
+recording (dark navy UI). The interaction was a tap at ($TAPX,$TAPY)${PRE_TAP:+,
+which followed a prior tap at ($PRE_TAP) whose transition is already settled}.
 For each frame report its state and mid-animation progress; then answer:
 (1) Which frames form the animation? (2) Does the animated element progress
 monotonically through intermediate sizes/opacities/positions, or snap between
@@ -120,4 +174,108 @@ settled states? (3) Any ghosting, squash, or misplaced elements?
 Report only what is actually visible; structure as Answer / Details /
 Uncertainties.
 EOF
+
+if [[ $MODE == video ]]; then
+  echo "evidence: $OUT (delegate $OUT/vision-prompt.md to a vision subagent)"
+  exit 0
+fi
+
+# Separation: pair the encoder's and the compositor's word about one tap.
+# Same `verdict` capture as the SF branch — never name it `status`: zsh
+# reserves that as a read-only alias for `$?`, and assigning it kills the
+# script before it reports.
+verdict=0
+python3 - "$OUT" << 'EOF' || verdict=$?
+import sys
+
+out = sys.argv[1]
+
+# Video read (the encoder's word): pts are seconds from recording start, and
+# the tap sits at 0.5s by construction (sleep 0.5 before input tap).
+pts = [float(l.strip().rstrip(',')) for l in open(f"{out}/pts.txt") if l.strip()]
+tap = [p for p in pts if p >= 0.45]
+
+# SF read (the compositor's word): present timestamps are nanoseconds since
+# boot on the same monotonic clock /proc/uptime reads.
+try:
+    uptime = float(open(f"{out}/tap_uptime.txt").read().split()[0])
+except (IndexError, ValueError):
+    print("SEPARATION: NO DATA — no tap clock anchor, this is not a pass")
+    sys.exit(1)
+rows = [l.split() for l in open(f"{out}/latency.txt")]
+sf = sorted(int(r[1]) for r in rows if len(r) == 3 and int(r[1]) != 0)
+
+# Every quantity below is MILLISECONDS, video tap-relative (0 = the tap).
+vms = [(p - 0.5) * 1000 for p in tap]
+sms = [(t / 1e9 - uptime) * 1000 for t in sf if t / 1e9 >= uptime]
+
+def dead_zones(times):
+    # A dead zone is a gap past the 34ms floor that dense frames still follow
+    # (next gap <=68ms, two frames at the 30fps floor): a stall inside a
+    # running animation. Idle gaps — a settled screen — are followed by more
+    # idle and never count, so the ring's idle tail cannot fake a verdict.
+    zones = []
+    for i in range(1, len(times)):
+        gap = times[i] - times[i - 1]
+        if gap > 34 and i + 1 < len(times) and times[i + 1] - times[i] <= 68:
+            zones.append((gap, times[i - 1]))
+    return zones
+
+gaps = [sms[i] - sms[i - 1] for i in range(1, len(sms))]
+anim = [g for g in gaps if 0 < g <= 100]
+long = [g for g in gaps if g > 100]
+vdead = dead_zones(vms)
+sdead = dead_zones(sms)
+
+fmt = lambda zones: [f"{g:.0f}ms@+{a:.0f}" for g, a in zones] or "NONE"
+print("video dead zones (encoder):", fmt(vdead))
+print("SF dead zones (compositor):", fmt(sdead))
+if vms and sms:
+    print(f"first draw: video {vms[0]:.0f}ms after tap, SF {sms[0]:.0f}ms after tap")
+
+if len(tap) < 2:
+    print("SEPARATION: NO DATA — the video read is empty (capture wedge? REBOOT;"
+          " FRAME_AUDIT=sf still works); this is not a pass")
+    sys.exit(1)
+if not anim:
+    print("SF 30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
+    sys.exit(1)
+passed = all(g <= 34 for g in anim)
+print("SF 30fps FLOOR (cadence):", "PASS" if passed else "FAIL")
+print("SF gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
+
+# Pairing: both instruments measure the same presents, so a compositor dead
+# zone matches its video twin closely; tolerance absorbs encoder timing.
+used = [False] * len(sdead)
+corroborated = 0
+for g, _ in vdead:
+    best = None
+    for j, (sg, _) in enumerate(sdead):
+        if used[j]:
+            continue
+        d = abs(sg - g)
+        if d <= max(40, 0.25 * max(g, sg)) and (best is None or d < best[0]):
+            best = (d, j)
+    if best is not None:
+        used[best[1]] = True
+        corroborated += 1
+enc_only = len(vdead) - corroborated
+
+if not vdead and not sdead:
+    verdict = "CLEAN — no dead zone on either read"
+elif corroborated and enc_only == 0:
+    verdict = f"COMPOSITOR TRUTH — all {len(vdead)} video dead zones have SF twins"
+elif corroborated:
+    verdict = f"MIXED — {corroborated} corroborated (compositor), {enc_only} encoder-only"
+elif vdead:
+    verdict = f"ENCODER LOSS — all {len(vdead)} video dead zones absent from SF"
+else:
+    verdict = "SF-ONLY dead zones — present stalls the video never showed; read with the contact sheet"
+print("SEPARATION:", verdict)
+
+# Exit status, not just text: corroborated dead zones and a failed cadence
+# floor are real jank; encoder loss and clean reads are the floor holding.
+sys.exit(1 if (not passed or corroborated) else 0)
+EOF
 echo "evidence: $OUT (delegate $OUT/vision-prompt.md to a vision subagent)"
+exit $verdict
