@@ -48,6 +48,22 @@ const tokensOf = (value: string) =>
     .join(',');
 const plain = (value: string) => value.replace(TOKEN, '');
 
+// en is CATALOGS' reference, not a member; the spacing rule below is absolute rather
+// than measured against en, so en walks beside the five as an equal
+const SHIPPED: Record<string, Catalog> = { en, ...CATALOGS };
+
+// The owner's spacing rule (T-346): the interpolated time never touches a neighbouring
+// glyph in any language, so each side of the token is a space or the string's edge
+const gluedSides = (template: string): string[] => {
+  const token = '{duration}';
+  const start = template.indexOf(token);
+  const end = start + token.length;
+  const glued: string[] = [];
+  if (start > 0 && template[start - 1] !== ' ') glued.push('leading');
+  if (end < template.length && template[end] !== ' ') glued.push('trailing');
+  return glued;
+};
+
 const sourcedNames = (loc: string): Array<[key: string, text: string]> => {
   const glossary = sourced as unknown as Record<string, { names: Record<string, { text: string | null }> }>;
   const entries = glossary[loc].names;
@@ -72,6 +88,17 @@ describe('the landed catalogs against the R2 gates', () => {
       }
     }
     expect(failures).toEqual([]);
+  });
+
+  it.each(Object.keys(SHIPPED))('%s gives the interpolated time a space or the string edge on each side', (loc) => {
+    expect(gluedSides(SHIPPED[loc]['time.ago'])).toEqual([]);
+  });
+
+  it('names the glued sides from the template bytes, with the string edge standing in for a space', () => {
+    expect(gluedSides('{duration}')).toEqual([]);
+    expect(gluedSides('{name}{duration} ago')).toEqual(['leading']);
+    expect(gluedSides('{name} {duration}ago')).toEqual(['trailing']);
+    expect(gluedSides('{name}{duration}ago')).toEqual(['leading', 'trailing']);
   });
 
   it.each(LOCALES)('%s keeps the padded error keys padded', (loc) => {

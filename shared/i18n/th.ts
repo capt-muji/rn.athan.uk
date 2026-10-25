@@ -155,7 +155,7 @@ export const th = {
   'extras.explanation.istijaba': 'ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์)',
   'duration.now': 'ตอนนี้',
   'time.now': '{name} ตอนนี้',
-  'time.ago': '{name} {duration}ที่แล้ว',
+  'time.ago': '{name} {duration} ที่แล้ว',
   'channel.athan': 'อะซาน {n}',
   'channel.extras': 'เวลาเพิ่มเติม',
   'app.loadingLabel': 'กำลังโหลดเวลาละหมาด',
