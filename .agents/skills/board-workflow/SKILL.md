@@ -157,6 +157,12 @@ sight and notes the fix in one comment line. A defect is never reported and left
     blocking issue sits in a completed column removes it on sight, noting the fix in one
     comment line. A card renders red off the relation, so one left standing shows a block
     that no longer exists.
+12. The close is one act, read back. The merge commit, the closing comment and the parent's
+    column move land together, and the moving agent reads the ticket back (`get_issue`) and
+    sees the `columnId` it intended before calling the close done. A lane merged under a
+    parent still sitting in a started column, or subtasks ticked under an unmoved parent,
+    is a defect any agent fixes on sight and names in one comment line (owner order
+    2026-10-25).
 
 The lead re-runs this list on every ticket the run touches at every phase boundary, and across
 the open board once at the start and once at the close of a run. That loop is the workflow:

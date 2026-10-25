@@ -133,14 +133,20 @@ produced it. Everything else in `check:device` is build-agnostic.
 - `yarn validate` before calling anything done. `yarn format` for fixes. `yarn test:tz` for
   date work.
 - Device builds go through `$HOME/athan-gitree/bin/build-prod.zsh` and
-  `$HOME/athan-gitree/bin/build-mock.zsh`, never two at once. Before any install to a phone
-  the owner uses, run `aapt2 dump badging <apk> | grep "^package"` and stop if it is not the
-  fleettest id (aapt2, never aapt, and check the tool exists first). A genuine `.fleettest`
-  install needs the suffix exported inside its own prebuild and build, never passed to it.
-  After any install, assert the app is installed for User 0 alone:
-  `adb -s <serial> shell dumpsys package <pkg> | grep '^    User '` - Samsung's Dual Messenger
-  user (95 on the S23) takes a parallel copy that reads as a second app; strip it with
-  `adb -s <serial> shell pm uninstall --user <n> <pkg>` until exactly one user carries the app.
+  `$HOME/athan-gitree/bin/build-mock.zsh`, never two of the SAME toolchain at once (two
+  Gradle runs collide on the shared node_modules build dirs; Gradle and Xcode do not).
+  Every build compiles BOTH platforms - iOS and Android - and launches both compilers in
+  PARALLEL, never queued one after the other: the codebase is shared, so every build must
+  prove the other platform unbroken, and the owner's standing order (2026-10-25) is that a
+  one-platform build never happens, even when the change seems platform-specific. Before
+  any install to a phone the owner uses, run `aapt2 dump badging <apk> | grep "^package"`
+  and stop if it is not the fleettest id (aapt2, never aapt, and check the tool exists
+  first). A genuine `.fleettest` install needs the suffix exported inside its own prebuild
+  and build, never passed to it. After any install, assert the app is installed for User 0
+  alone: `adb -s <serial> shell dumpsys package <pkg> | grep '^    User '` - Samsung's Dual
+  Messenger user (95 on the S23) takes a parallel copy that reads as a second app; strip it
+  with `adb -s <serial> shell pm uninstall --user <n> <pkg>` until exactly one user carries
+  the app.
 - Maestro needs `export PATH="$HOME/.maestro/bin:$PATH"`.
 
 ## Device testing

@@ -85,7 +85,7 @@ a defect the checklist can catch.
 
 | Return | Action |
 | --- | --- |
-| `DONE` | Verify from the board and git: the column, the closing comment, the commits, the audit record |
+| `DONE` | Verify from the board and git: read the ticket back and confirm the `columnId`, the closing comment, the commits, the audit record - a merged lane under an unmoved parent is a defect, fix it on sight |
 | `ROTATE` | Verify the same way, then dispatch the next phase |
 | `STOP:` | Answer agent-ruled, write the answer into the ticket as a comment, continue |
 | `BLOCKED` | Move the ticket to Blocked with its `Waiting on` line, then stop the lane |
