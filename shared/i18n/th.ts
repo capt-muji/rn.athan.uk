@@ -174,6 +174,8 @@ export const th = {
   'channel.reminder': 'แจ้งเตือนล่วงหน้า {name} อีก {n}',
   'whatsNew.title.language': 'ภาษา',
   'whatsNew.body.language': 'เพิ่มการรองรับภาษาเพิ่มเติม',
+  'whatsNew.title.whatsNew': 'มีอะไรใหม่',
+  'whatsNew.body.whatsNew': 'เพิ่มบันทึกว่าการอัปเดตแต่ละครั้งเปลี่ยนอะไร',
   'calendar.monthShort.1': 'ม.ค.',
   'calendar.monthShort.2': 'ก.พ.',
   'calendar.monthShort.3': 'มี.ค.',

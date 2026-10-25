@@ -195,6 +195,8 @@ export const en = {
   'channel.reminder': '{name} in {n}m Reminder',
   'whatsNew.title.language': 'Language',
   'whatsNew.body.language': 'Added support for more languages',
+  'whatsNew.title.whatsNew': "What's New",
+  'whatsNew.body.whatsNew': 'Added a note about what each update changes',
   'calendar.monthShort.1': 'Jan',
   'calendar.monthShort.2': 'Feb',
   'calendar.monthShort.3': 'Mar',
