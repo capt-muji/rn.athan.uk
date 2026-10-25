@@ -691,7 +691,7 @@ export const COLORS = {
     /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
     secondary: '#6c79c2',
     /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
-    labelHome: '#6c7aae',
+    labelHome: '#5b648b',
     /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
     labelOverlay: '#7173bc',
     /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
@@ -864,7 +864,7 @@ export const COLORS = {
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
       /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
-      ink: '#4b4c63',
+      ink: '#33416b',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',
       /** The Kaaba's cube: under the dial, so its outline is what carries it */
@@ -876,7 +876,7 @@ export const COLORS = {
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
       /** The old rgba(146,184,228,.45) flattened over the facing face, so the numbers keep their dim blue in both states (owner order 2026-10-25) */
-      ink: '#5f6b89',
+      ink: '#4b5480',
       accent: 'rgba(247, 191, 74, 1)',
       kaaba: 'rgba(32, 25, 48, 1)',
     },

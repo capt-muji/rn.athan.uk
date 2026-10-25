@@ -2329,14 +2329,14 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
       // into the ink), away then facing as the two palettes stack
       const paletteInks = degrees.map((degree) => degree.ink).filter((ink): ink is string => typeof ink === 'string');
       expect(paletteInks).toEqual([
-        '#4b4c63',
-        '#4b4c63',
-        '#4b4c63',
-        '#4b4c63',
-        '#5f6b89',
-        '#5f6b89',
-        '#5f6b89',
-        '#5f6b89',
+        '#33416b',
+        '#33416b',
+        '#33416b',
+        '#33416b',
+        '#4b5480',
+        '#4b5480',
+        '#4b5480',
+        '#4b5480',
       ]);
       for (const degree of degrees) {
         expect(degree.fontSize).toBeGreaterThan(0);
