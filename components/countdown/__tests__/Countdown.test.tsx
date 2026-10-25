@@ -207,7 +207,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     // the tuned pair and nothing else: the ink flips with the overlay and back
     const labelTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#5b648b', '#7173bc'].join())
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#5b648b', '#585c8c'].join())
         .map((call) => call[0]);
 
     expect(labelTween().at(-1)).toBe(0);

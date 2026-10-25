@@ -693,7 +693,7 @@ export const COLORS = {
     /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
     labelHome: '#5b648b',
     /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
-    labelOverlay: '#7173bc',
+    labelOverlay: '#585c8c',
     /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
     muted: '#52529e',
     /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */

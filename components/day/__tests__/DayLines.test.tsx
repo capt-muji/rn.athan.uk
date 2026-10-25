@@ -112,7 +112,7 @@ describe("the location label's ink", () => {
 
     const locationTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#5b648b', '#7173bc'].join())
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#5b648b', '#585c8c'].join())
         .map((call) => call[0]);
 
     expect(locationTween().at(-1)).toBe(0);
