@@ -1,13 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useCallback, useState } from 'react';
+import { type LayoutChangeEvent, Pressable, StyleSheet, Text, type TextLayoutEvent, View } from 'react-native';
 
 import { type DimState, dimState, REMINDER_CARD } from '@/components/sheets/parts/dim';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
+import { en } from '@/shared/i18n/en';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { AlertType, Icon, type ReminderInterval, type ReminderSetting } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
 import { SegmentedControl, type SegmentOption, Stepper, Toggle } from '../parts';
+import { requiredControlWidth, segmentContentWidth } from '../parts/reminderRowLayout';
 import { stepReminderInterval } from '../parts/reminderStep';
 
 // Resolved at call time so a locale switch reaches the labels on the next render
@@ -54,6 +57,31 @@ export default function ReminderCard({
   const dim: DimState = dimState(locked, isOn);
   const optionInk = REMINDER_CARD.optionLabel[dim];
 
+  // The rows' shared minimum control width. The floor is the per-side slack today's English layout
+  // shows, so the control grows leftward by exactly the content's excess and English never moves;
+  // 0 while any measurement is missing keeps the first frame at today's layout
+  const [rowWidth, setRowWidth] = useState(0);
+  const [baselineTextWidth, setBaselineTextWidth] = useState(0);
+  const [activeTextWidth, setActiveTextWidth] = useState(0);
+  const requiredControl = requiredControlWidth({
+    rowWidth,
+    baselineContentWidth: segmentContentWidth(baselineTextWidth),
+    contentWidth: segmentContentWidth(activeTextWidth),
+  });
+
+  const handleRowLayout = useCallback((e: LayoutChangeEvent) => setRowWidth(e.nativeEvent.layout.width), []);
+
+  // A relayout can report a narrower line than the widest the pair ever showed, and a text with no
+  // lines reports none, so the running maximum is what the floor reads
+  const measureBaselineText = useCallback(
+    (e: TextLayoutEvent) => setBaselineTextWidth((current) => Math.max(current, e.nativeEvent.lines[0]?.width ?? 0)),
+    []
+  );
+  const measureActiveText = useCallback(
+    (e: TextLayoutEvent) => setActiveTextWidth((current) => Math.max(current, e.nativeEvent.lines[0]?.width ?? 0)),
+    []
+  );
+
   const step = (direction: -1 | 1) => {
     const next = stepReminderInterval(reminder.interval, direction, taken);
     if (next !== null) onSelectInterval(next);
@@ -85,28 +113,58 @@ export default function ReminderCard({
       </Pressable>
 
       <View style={[styles.reminderOptions, { borderTopColor: REMINDER_CARD.rule[dim] }]}>
-        <View style={styles.optionRow}>
+        <View style={styles.optionRow} onLayout={handleRowLayout} testID={'reminder-sound-row'}>
           <Text style={[styles.optionLabel, { color: optionInk }]}>{t('reminder.sound')}</Text>
-          <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} dim={dim} />
+          <View style={[styles.controlHost, { minWidth: requiredControl }]} testID={'reminder-sound-host'}>
+            <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} dim={dim} />
+          </View>
         </View>
 
         <View style={styles.optionRow}>
           <Text style={[styles.optionLabel, { color: optionInk }]}>{t('reminder.before')}</Text>
-          <Stepper
-            value={reminder.interval}
-            onDecrement={() => step(-1)}
-            onIncrement={() => step(1)}
-            unit={t('reminder.unitMinutes')}
-            dim={dim}
-            taken={taken}
-          />
+          <View style={[styles.controlHost, { minWidth: requiredControl }]} testID={'reminder-before-host'}>
+            <Stepper
+              value={reminder.interval}
+              onDecrement={() => step(-1)}
+              onIncrement={() => step(1)}
+              unit={t('reminder.unitMinutes')}
+              dim={dim}
+              taken={taken}
+            />
+          </View>
         </View>
+      </View>
+
+      {/* The floor's measurer: the English pair under the English typography and the active pair under the
+          card's own, each drawn exactly as the segment labels draw so the widths reported are the widths
+          the options will render */}
+      <View
+        testID={'reminder-measurer'}
+        style={styles.measurer}
+        pointerEvents={'none'}
+        // TalkBack focuses alpha-0 text, so hiding by sight alone would read four phantom labels per card
+        accessibilityElementsHidden={true}
+        importantForAccessibility={'no-hide-descendants'}>
+        <Text testID={'reminder-baseline-silent'} style={styles.measuredBaseline} onTextLayout={measureBaselineText}>
+          {en['alert.option.silent']}
+        </Text>
+        <Text testID={'reminder-baseline-sound'} style={styles.measuredBaseline} onTextLayout={measureBaselineText}>
+          {en['alert.option.sound']}
+        </Text>
+        <Text testID={'reminder-active-silent'} style={styles.measuredActive} onTextLayout={measureActiveText}>
+          {t('alert.option.silent')}
+        </Text>
+        <Text testID={'reminder-active-sound'} style={styles.measuredActive} onTextLayout={measureActiveText}>
+          {t('alert.option.sound')}
+        </Text>
       </View>
     </View>
   );
 }
 
 const ty = typographyFor(currentLocaleId());
+// The floor's baseline pair always measures under the English typography, whatever the active locale is
+const baselineTy = typographyFor('en');
 
 const styles = StyleSheet.create({
   card: {
@@ -146,5 +204,23 @@ const styles = StyleSheet.create({
     fontSize: ty.size(13),
     fontFamily: ty.familyRegular,
     width: 100,
+    // The control's minimum eats into the label column by exactly the excess, never the control's
+    // own share: flexbox negotiates, so only a locale wider than English ever moves this text
+    flexShrink: 1,
+  },
+  controlHost: {
+    flexGrow: 1,
+  },
+  measurer: {
+    position: 'absolute',
+    opacity: 0,
+  },
+  measuredBaseline: {
+    fontSize: baselineTy.size(TEXT.sizeDetail - 1),
+    fontFamily: baselineTy.familyRegular,
+  },
+  measuredActive: {
+    fontSize: ty.size(TEXT.sizeDetail - 1),
+    fontFamily: ty.familyRegular,
   },
 });
