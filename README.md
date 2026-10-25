@@ -13,9 +13,9 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 - **Prayer times and schedules.** Six daily times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) plus five extras (Midnight, Last Third, Suhoor, Duha, Friday Istijaba) with a live countdown that rounds up, never showing 0 seconds, and holds true across the clock changes. The schedule rolls over after Isha instead of midnight, tomorrow sits one swipe away, and the Extras page keeps its canonical order. An unreadable time shows `--:--`, never a guess; a passed prayer shows how long ago it was.
 - **The prayer overlay.** Tapping a row opens the overlay for that prayer: the date, what the prayer is, and tomorrow's time. A lock in the final seconds before a prayer keeps the overlay from fighting the transition.
 - **Notifications.** Selectable athan audio: 32 public recordings, each credited in the picker with an in-app preview. Two reminder slots per prayer, 5 to 30 minutes ahead, never outrunning their athan. Alarms arm whole, in time order, against the 64-request budget with deterministic IDs so they never double-fire. Android triggers ask for alarm-clock delivery and play on the alarm stream, and re-arm on cold launch and reboot.
-- **Widgets.** Home screen and Lock Screen widgets on iOS and Android, in standard and Extra Times variants: Light and Dark fixed at placement, self-refreshing, minute-ceil countdown labels, mirroring the in-app settings, and a stale card that says so when times run out. Widgets need a development or production build (iOS 16.4+), not Expo Go.
+- **Widgets.** Home screen widgets on iOS and Android, Lock Screen widgets on iOS, in standard and Extra Times variants: Light and Dark fixed at placement, self-refreshing, minute-ceil countdown labels, mirroring the in-app settings, and a stale card that says so when times run out. Widgets need a development or production build (iOS 16.4+), not Expo Go.
 - **Qibla.** A compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for. Android reads Google's fused orientation behind a forced wave; iPhone draws inside its reported accuracy cone.
-- **Languages.** English, Arabic, Malay, Somali, Hindi and Thai, picked in Settings under each language's own name. Arabic and Thai carry their own typefaces and native digits end to end, dates compose per locale, and RTL layouts mirror, down to the schedule pager and the widgets.
+- **Languages.** English, Arabic, Malay, Somali, Hindi and Thai, picked in Settings under each language's own name. Arabic, Hindi and Thai render in their own scripts and typefaces, dates compose per locale with Latin digits everywhere, and RTL layouts mirror, down to the schedule pager and the widgets.
 - **What's New.** A store update opens a versioned changelog, grouped by release with the newest first. A release that adds nothing ships silent by construction. The changelog re-opens from Settings any time.
 - **Settings.** Hijri date, countdown seconds, the passed-time display, seasonal decorations while in season, the countdown bar's colour, and per-schedule athan and reminder sounds. Every setting mirrors to the widgets.
 - **Offline first.** Fully offline after the first sync: the whole year caches in MMKV, December prefetches next year, and the stored day renders in airplane mode.
@@ -34,7 +34,7 @@ Three invariants hold across the whole codebase: the API is the source of truth 
 
 ## Platforms and requirements
 
-- iOS 16.4 or later; Android 9 and later (a bundled TLS 1.3 module covers Android 9 and below).
+- iOS 16.4 or later; Android 7 and later (a bundled TLS 1.3 module covers Android 9 and below).
 - iPhone, iPad and Android phones and tablets; the widgets need a development or production build, not Expo Go.
 - Both stores carry the app; the 2.4.39 release line is live on iOS and Android.
 

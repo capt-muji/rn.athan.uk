@@ -118,5 +118,9 @@
   {
     "version": "2.4.33",
     "reason": "2026-10-25 lane T-344's label-restore commit steps from its 2.4.32 tip while uat's T-337 merge holds 2.4.33; the standing ruling: the T-344 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.41",
+    "reason": "2026-10-25 lane3/T-347's README commit and lane2/T-345's step-1 reminder-row commit both step to 2.4.41 from uat's 2.4.40; the standing ruling: whichever merge lands second renumbers above whatever uat then carries (T-347's audit fix already rides 2.4.42)"
   }
 ]
