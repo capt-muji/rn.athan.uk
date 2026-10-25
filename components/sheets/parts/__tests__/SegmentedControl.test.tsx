@@ -4,9 +4,11 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { I18nManager, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, Icon } from '@/shared/types';
 
 import SegmentedControl, { type SegmentOption } from '../SegmentedControl';
@@ -31,6 +33,13 @@ const measure = (width: number) =>
 
 /** Everything the control draws; the pill has no role or text of its own, and is drawn before the options */
 const drawn = () => control().children.filter((child) => typeof child !== 'string');
+
+/** The ink pair an option's two icon layers are drawn in: [unselected, selected] */
+const iconInks = (name: string) =>
+  screen
+    .getByRole('radio', { name })
+    .queryAll((node) => node.type === 'RNSVGSvgView')
+    .map((node) => (StyleSheet.flatten(node.props.style) as { color?: string }).color);
 
 describe('the Athan control with Silent saved', () => {
   it('tells a screen reader that Silent is the selected option', async () => {
@@ -68,7 +77,7 @@ describe('the Athan control with Silent saved', () => {
     expect(drawn()).toHaveLength(ATHAN_OPTIONS.length);
   });
 
-  // ai/AGENTS.md: geometry an animation will own is right in the first frame, so the pill never squashes or slides in
+  // AGENTS.md: geometry an animation will own is right in the first frame, so the pill never squashes or slides in
   it('draws the pill one segment wide and already under Silent the moment its width is known', async () => {
     await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
 
@@ -79,7 +88,7 @@ describe('the Athan control with Silent saved', () => {
     expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '100%' }] });
   });
 
-  // ai/AGENTS.md: mount settles, and only a change of selection animates
+  // AGENTS.md: mount settles, and only a change of selection animates
   it('animates neither the pill nor the options into place when mounted', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
 
@@ -88,7 +97,7 @@ describe('the Athan control with Silent saved', () => {
     expect(withTiming).not.toHaveBeenCalled();
   });
 
-  // ai/AGENTS.md: mount settles, and only a change of selection animates. The spy starts after the measure: the mock's
+  // AGENTS.md: mount settles, and only a change of selection animates. The spy starts after the measure: the mock's
   // derived value runs again on every render, where the real one runs again only when the selection changes
   it('slides the pill to the new option, over the standard duration, when the saved option changes', async () => {
     await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
@@ -125,12 +134,67 @@ describe('the reminder sound control while the reminder is off', () => {
   it('ignores a press, with no haptic', async () => {
     const onSelect = jest.fn();
     await render(
-      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} disabled />
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} dim='off' />
     );
 
     await fireEvent.press(screen.getByRole('radio', { name: 'Sound' }));
 
     expect(onSelect).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  // The labels tween their colour, which the renderer mock cannot resolve: the option icons
+  // carry the same per-state pair (SEGMENT_LABEL.off) the labels interpolate, so the pair is
+  // pinned where it is statically drawn
+  it('paints its options in the off ink pair over the off wash', async () => {
+    await render(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} dim='off' />
+    );
+
+    expect(control()).toHaveStyle({ backgroundColor: '#121e48' });
+    expect(iconInks('Silent')).toEqual(['#121f48', '#16224a']);
+    expect(iconInks('Sound')).toEqual(['#121f48', '#16224a']);
+  });
+});
+
+// The pill keys its direction on the active locale, not the bridge snapshot: a starved
+// crossing (row 78) renders the Arabic locale while I18nManager still reports the launch
+// direction, and the pill travelled off-screen exactly there (row 73)
+describe('the Athan control under the Arabic locale while the bridge still reports LTR', () => {
+  beforeEach(() => {
+    // The starved state needs the bridge still reporting the launch direction: the real jest
+    // bridge reports LTR, and a preset change that flips it would silently turn these into
+    // completed-crossing tests
+    expect(I18nManager.getConstants().isRTL).toBe(false);
+    setActiveLocale('ar');
+  });
+
+  afterEach(() => {
+    setActiveLocale('en');
+  });
+
+  it('draws the pill under the mirrored slot the moment its width is known', async () => {
+    await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
+
+    await measure(306);
+
+    // Sound is the last of three options; the locale's own direction mirrors the slot math
+    // two segments toward the row's end: -200%. Jest lays out against the LTR bridge, so
+    // this proves the mirrored target, not the device's RTL frame
+    expect(drawn()[0]).toHaveStyle({ width: 100, transform: [{ translateX: '-200%' }] });
+  });
+
+  it('slides the pill to the mirrored slot when the saved option changes', async () => {
+    await render(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
+    await measure(306);
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+
+    await screen.rerender(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
+
+    // Sound's slot mirrors two segments from the anchor: -200. The LTR target 200 is never
+    // asked for (the option fade asks 0, so the signed negative is what isolates the pill's
+    // target)
+    expect(withTiming).toHaveBeenCalledWith(-200, { duration: ANIMATION.duration });
+    expect(withTiming).not.toHaveBeenCalledWith(200, { duration: ANIMATION.duration });
   });
 });

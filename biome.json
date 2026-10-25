@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -12,7 +12,8 @@
       "!**/metro.config.js",
       "!**/jest.config.js",
       "!**/ai/features/moonsighting",
-      "!**/ai/features/global-prayer-times/data"
+      "!**/ai/features/global-prayer-times/data",
+      "!**/board"
     ]
   },
   "formatter": {

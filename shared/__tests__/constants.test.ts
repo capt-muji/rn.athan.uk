@@ -5,20 +5,20 @@
  * they stay in sync and maintain expected structure.
  */
 
+import { COUNTDOWN_BAR, COUNTDOWN_TIP, STYLES } from '@/shared/constants';
+
 import {
   BACKGROUND_TASK_INTERVAL_HOURS,
   DEFAULT_REMINDER_INTERVAL,
-  EXTRAS_ARABIC,
-  EXTRAS_ENGLISH,
+  EXTRA_PRAYER_IDS,
+  EXTRA_PRAYER_TITLES,
   EXTRAS_EXPLANATIONS,
-  EXTRAS_EXPLANATIONS_ARABIC,
   NIGHT_PRAYER_NAMES,
   NOTIFICATION_REQUEST_BUDGET,
-  PRAYERS_ARABIC,
-  PRAYERS_ENGLISH,
   REMINDER_BUFFER_SECONDS,
   REMINDER_INTERVALS,
   SCHEDULE_CANDIDATE_DAYS,
+  STANDARD_PRAYER_TITLES,
   TIME_CONSTANTS,
   validateReminderInterval,
 } from '../constants';
@@ -34,11 +34,11 @@ describe('NIGHT_PRAYER_NAMES', () => {
   });
 
   it('contains Midnight, Last Third, and Suhoor in order', () => {
-    expect(NIGHT_PRAYER_NAMES).toEqual(['Midnight', 'Last Third', 'Suhoor']);
+    expect(NIGHT_PRAYER_NAMES).toEqual(['midnight', 'last third', 'suhoor']);
   });
 
-  it('matches the first 3 entries of EXTRAS_ENGLISH', () => {
-    const firstThreeExtras = EXTRAS_ENGLISH.slice(0, 3);
+  it('matches the first 3 entries of EXTRA_PRAYER_IDS', () => {
+    const firstThreeExtras = EXTRA_PRAYER_IDS.slice(0, 3);
     expect(NIGHT_PRAYER_NAMES).toEqual(firstThreeExtras);
   });
 
@@ -50,8 +50,8 @@ describe('NIGHT_PRAYER_NAMES', () => {
   });
 
   it('does not include daytime extras (Duha, Istijaba)', () => {
-    expect(NIGHT_PRAYER_NAMES).not.toContain('Duha');
-    expect(NIGHT_PRAYER_NAMES).not.toContain('Istijaba');
+    expect(NIGHT_PRAYER_NAMES).not.toContain('duha');
+    expect(NIGHT_PRAYER_NAMES).not.toContain('istijaba');
   });
 });
 
@@ -60,28 +60,20 @@ describe('NIGHT_PRAYER_NAMES', () => {
 // =============================================================================
 
 describe('prayer arrays alignment', () => {
-  it('PRAYERS_ENGLISH and PRAYERS_ARABIC have same length', () => {
-    expect(PRAYERS_ENGLISH.length).toBe(PRAYERS_ARABIC.length);
+  it('STANDARD_PRAYER_TITLES and EXTRA_PRAYER_TITLES have no shared member', () => {
+    expect(STANDARD_PRAYER_TITLES.filter((title) => EXTRA_PRAYER_TITLES.includes(title))).toEqual([]);
   });
 
-  it('EXTRAS_ENGLISH and EXTRAS_ARABIC have same length', () => {
-    expect(EXTRAS_ENGLISH.length).toBe(EXTRAS_ARABIC.length);
+  it('EXTRAS_EXPLANATIONS matches EXTRA_PRAYER_TITLES length', () => {
+    expect(EXTRAS_EXPLANATIONS.length).toBe(EXTRA_PRAYER_TITLES.length);
   });
 
-  it('EXTRAS_EXPLANATIONS matches EXTRAS_ENGLISH length', () => {
-    expect(EXTRAS_EXPLANATIONS.length).toBe(EXTRAS_ENGLISH.length);
+  it('STANDARD_PRAYER_TITLES contains 6 standard prayers', () => {
+    expect(STANDARD_PRAYER_TITLES).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
   });
 
-  it('EXTRAS_EXPLANATIONS_ARABIC matches EXTRAS_ENGLISH length', () => {
-    expect(EXTRAS_EXPLANATIONS_ARABIC.length).toBe(EXTRAS_ENGLISH.length);
-  });
-
-  it('PRAYERS_ENGLISH contains 6 standard prayers', () => {
-    expect(PRAYERS_ENGLISH).toEqual(['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha']);
-  });
-
-  it('EXTRAS_ENGLISH contains 5 extra prayers', () => {
-    expect(EXTRAS_ENGLISH).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
+  it('EXTRA_PRAYER_TITLES contains 5 extra prayers', () => {
+    expect(EXTRA_PRAYER_TITLES).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
   });
 });
 
@@ -181,7 +173,7 @@ describe('validateReminderInterval', () => {
 });
 
 // =============================================================================
-// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ISSUES.md #8)
+// BACKGROUND TASK INTERVAL RESOLUTION TESTS (ledger #8 (git history))
 // minimumInterval is MINUTES — resolution: env override > dev 15 > prod BACKGROUND_TASK_INTERVAL_HOURS * 60
 // =============================================================================
 
@@ -235,7 +227,7 @@ describe('BACKGROUND_TASK_INTERVAL_MINUTES resolution', () => {
     expect(mod.BACKGROUND_TASK_INTERVAL_MINUTES).toBe(PRODUCTION_INTERVAL_MINUTES);
   });
 
-  // ISSUES.md #8 was seconds passed where minutes were expected: 10800 scheduled the
+  // ledger #8 (git history) was seconds passed where minutes were expected: 10800 scheduled the
   // task 7.5 days out. The floor check caught nothing, because 10800 is positive.
   it('ignores the seconds-for-minutes mistake that was ISSUES #8', () => {
     process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES = '10800';
@@ -309,7 +301,7 @@ const IOS_PENDING_REQUEST_CEILING = 64;
 const ALERTS_PER_PRAYER = 1 + REMINDER_SLOTS.length;
 
 describe('the request budget fits inside the iOS pending-request ceiling', () => {
-  const prayersPerDay = PRAYERS_ENGLISH.length + EXTRAS_ENGLISH.length;
+  const prayersPerDay = STANDARD_PRAYER_TITLES.length + EXTRA_PRAYER_TITLES.length;
 
   it('never asks the phone for more requests than it keeps', () => {
     expect(NOTIFICATION_REQUEST_BUDGET).toBeLessThanOrEqual(IOS_PENDING_REQUEST_CEILING);
@@ -381,5 +373,14 @@ describe('the update check window', () => {
   it('the update retry is shorter than the update check window', () => {
     expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeGreaterThan(0);
     expect(TIME_CONSTANTS.UPDATE_RETRY_MS).toBeLessThan(TIME_CONSTANTS.ONE_DAY_MS);
+  });
+});
+
+describe('the countdown bar and timer furniture', () => {
+  it('keeps the empty track on its own faint ink, the tip slim, and the block short', () => {
+    // The track ink, the tip at 1.5, the block at 54
+    expect(COUNTDOWN_BAR.TRACK_COLOR).toBe('rgba(160, 200, 255, 0.08)');
+    expect(COUNTDOWN_TIP.WIDTH).toBe(1.5);
+    expect(STYLES.countdown.height).toBe(54);
   });
 });

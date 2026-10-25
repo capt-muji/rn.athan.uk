@@ -4,10 +4,11 @@
  *
  * `selectedPrayerIndex` is the row's place on its day's list as the sequence holds it, while List draws the
  * rows in canonical order. The two agree only because the sequence is built that way, so the row is looked up
- * in the order List draws, and the explanation by the prayer's name.
+ * in the order List draws, and the explanation by the prayer's id.
  */
 
-import { EXTRAS_ENGLISH, EXTRAS_EXPLANATIONS, EXTRAS_EXPLANATIONS_ARABIC } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, EXTRAS_EXPLANATIONS, type PrayerId } from '@/shared/constants';
+import { prayerLabel, type TranslationKey, t } from '@/shared/i18n';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { type Prayer, ScheduleType } from '@/shared/types';
 
@@ -16,7 +17,6 @@ export interface OverlayExplanation {
   prayerName: string | null;
   /** Null on Standard, undefined for a name with no explanation (a row still loading) */
   explanation: string | null | undefined;
-  explanationArabic: string | null | undefined;
 }
 
 /**
@@ -42,19 +42,23 @@ export const getOverlayRow = (
 };
 
 /**
- * The explanation box's text for the selected prayer: Extras only, looked up by name because the explanations
- * follow EXTRAS_ENGLISH order
+ * The explanation box's text for the selected prayer: Extras only, looked up by id because
+ * the explanations follow EXTRA_PRAYER_IDS order
  *
  * @param type The overlay's schedule
- * @param english The selected prayer's English name
+ * @param id The selected prayer's id
  */
-export const getOverlayExplanation = (type: ScheduleType, english: string): OverlayExplanation => {
-  const isExtra = type === ScheduleType.Extra;
-  const explanationIndex = EXTRAS_ENGLISH.indexOf(english);
+export const getOverlayExplanation = (type: ScheduleType, id: PrayerId): OverlayExplanation => {
+  if (type !== ScheduleType.Extra) return { prayerName: null, explanation: null };
+
+  const extraIds: readonly PrayerId[] = EXTRA_PRAYER_IDS;
+  const explanationIndex = extraIds.indexOf(id);
+  // A still-loading Extras row reports an id with no explanation key; t() has no
+  // fallback, so the undefined passes through instead of being read
+  const explanationKey: TranslationKey | undefined = EXTRAS_EXPLANATIONS[explanationIndex];
 
   return {
-    prayerName: isExtra ? english : null,
-    explanation: isExtra ? EXTRAS_EXPLANATIONS[explanationIndex] : null,
-    explanationArabic: isExtra ? EXTRAS_EXPLANATIONS_ARABIC[explanationIndex] : null,
+    prayerName: prayerLabel(id),
+    explanation: explanationKey !== undefined ? t(explanationKey) : undefined,
   };
 };

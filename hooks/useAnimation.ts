@@ -125,6 +125,7 @@ export const useDerivedOpacity = (target: number, options?: DerivedTimingOptions
   return useAnimatedStyle(() => ({ opacity: progress.value }));
 };
 
+/** One ink tweened between two opaque solids on the derived progress; the sweep's TEXT_INK_HOOKS guards its endpoints */
 export const useDerivedColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
   const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
@@ -133,11 +134,51 @@ export const useDerivedColor = (target: number, input: ColorAnimationInput & Der
   }));
 };
 
-export const useDerivedBackgroundColor = (target: number, input: ColorAnimationInput & DerivedTimingOptions) => {
-  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
-  const progress = useDerivedProgress(target, { duration, delay, easing, defaultTiming });
+interface VeiledColorInput extends ColorAnimationInput {
+  /** The solid the ink sinks into while veiled: the surface colour the element hides against */
+  veilColor: string;
+  /** The veil's own duration, which need not match the colour tween's */
+  veilDuration?: number;
+}
+
+/**
+ * An ink that rides its own tween inside a veil interpolation: at veil 0 the colour tween stands
+ * exactly as it would alone, and the veil draws the CURRENT ink toward one solid colour - so a
+ * hiding fade moves text through opaque colours end to end and never through an opacity. The
+ * glyphs cannot compound mid-fade, the reason solid ink exists (T-294).
+ */
+export const useDerivedVeiledColor = (
+  veilTarget: number,
+  colorTarget: number,
+  input: VeiledColorInput & DerivedTimingOptions
+) => {
+  const { fromColor, toColor, veilColor, veilDuration, duration, delay, easing, defaultTiming } = input;
+  const colorProgress = useDerivedProgress(colorTarget, { duration, delay, easing, defaultTiming });
+  const veilProgress = useDerivedProgress(veilTarget, { duration: veilDuration ?? ANIMATION.duration });
   return useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(progress.value, [0, 1], [fromColor, toColor]),
+    color: interpolateColor(
+      veilProgress.value,
+      [0, 1],
+      [interpolateColor(colorProgress.value, [0, 1], [fromColor, toColor]), veilColor]
+    ),
+  }));
+};
+
+/** The veil composition on a background, for a pill that hides with its own ink (the ago badge) */
+export const useDerivedVeiledBackgroundColor = (
+  veilTarget: number,
+  backgroundTarget: number,
+  input: VeiledColorInput & DerivedTimingOptions
+) => {
+  const { fromColor, toColor, veilColor, veilDuration, duration, delay, easing, defaultTiming } = input;
+  const backgroundProgress = useDerivedProgress(backgroundTarget, { duration, delay, easing, defaultTiming });
+  const veilProgress = useDerivedProgress(veilTarget, { duration: veilDuration ?? ANIMATION.duration });
+  return useAnimatedStyle(() => ({
+    backgroundColor: interpolateColor(
+      veilProgress.value,
+      [0, 1],
+      [interpolateColor(backgroundProgress.value, [0, 1], [fromColor, toColor]), veilColor]
+    ),
   }));
 };
 

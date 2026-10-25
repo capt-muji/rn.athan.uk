@@ -15,10 +15,15 @@ import { join } from 'node:path';
  */
 const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   ErrorBoundary: 'Expo Router renders it by file convention, so no file imports it',
-  MAX_WHATS_NEW_ITEMS: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_ARCHIVE: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_TITLE_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_BODY_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
+  StoredPrayerId:
+    'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
+  PRAYER_LABELS:
+    'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
+  __resetLaunchInitForTests:
+    'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
 };
 
 const ROOT = join(__dirname, '..', '..');
@@ -47,7 +52,9 @@ describe('exported symbols reachable from production code', () => {
   });
 
   it('keeps every allow-list entry earning its place, so a stale reason cannot hide a live symbol', () => {
-    const reported = sweepUnreachable().map((entry) => entry.slice(entry.lastIndexOf(': ') + 2));
+    // Deduped: every locale module exports its own PRAYER_LABELS, so one symbol legitimately
+    // reports once per file. The guarded property is per symbol, not per report.
+    const reported = [...new Set(sweepUnreachable().map((entry) => entry.slice(entry.lastIndexOf(': ') + 2)))];
 
     expect(reported.sort()).toEqual(Object.keys(REACHED_WITHOUT_AN_IMPORT).sort());
   });

@@ -1,14 +1,16 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
 import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
+import { setActiveLocale } from '../i18n/locale';
 import {
   addDaysToDateString,
   adjustTime,
   createInstant,
   createPrayerDatetime,
-  formatDateLong,
+  footerFor,
+  formatDateLocalized,
   formatDateShort,
-  formatHijriDateLong,
+  formatHijriDateLocalized,
   formatPrayerTime,
   formatTime,
   formatTimeAgo,
@@ -25,6 +27,7 @@ import {
   isFriday,
   isJanuaryFirst,
   isRamadan,
+  splitSingleColon,
 } from '../time';
 
 /**
@@ -39,67 +42,81 @@ const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs,
 // =============================================================================
 
 describe('formatTime', () => {
-  it('returns "0s" for negative seconds', () => {
-    expect(formatTime(-100)).toBe('0s');
-    expect(formatTime(-1)).toBe('0s');
+  it('clamps negative seconds to the zero shape', () => {
+    expect(formatTime(-100)).toBe('00:00:00');
+    expect(formatTime(-1)).toBe('00:00:00');
   });
 
-  it('formats seconds correctly', () => {
-    expect(formatTime(0)).toBe('0s');
-    expect(formatTime(45)).toBe('45s');
-    expect(formatTime(59)).toBe('59s');
+  it('formats seconds', () => {
+    expect(formatTime(0)).toBe('00:00:00');
+    expect(formatTime(45)).toBe('00:00:45');
+    expect(formatTime(59)).toBe('00:00:59');
+    expect(formatTime(5, true)).toBe('00:00:05');
   });
 
-  it('formats minutes correctly', () => {
-    expect(formatTime(60)).toBe('1m'); // whole minute: never "1m 0s"
-    expect(formatTime(61)).toBe('1m 1s');
-    expect(formatTime(90)).toBe('1m 30s');
-    expect(formatTime(599)).toBe('9m 59s');
+  it('formats minutes', () => {
+    expect(formatTime(60)).toBe('00:01:00'); // whole minute
+    expect(formatTime(61)).toBe('00:01:01');
+    expect(formatTime(90)).toBe('00:01:30');
+    expect(formatTime(599)).toBe('00:09:59');
   });
 
-  it('formats hours correctly', () => {
-    expect(formatTime(3600)).toBe('1h'); // whole hour: never "1h 0s"
-    expect(formatTime(3665)).toBe('1h 1m 5s');
-    expect(formatTime(7200)).toBe('2h'); // whole 2h: never "2h 0s"
+  it('formats hours', () => {
+    expect(formatTime(3600)).toBe('01:00:00');
+    expect(formatTime(3665)).toBe('01:01:05');
+    expect(formatTime(7200)).toBe('02:00:00');
   });
 
   it('converts days to hours', () => {
-    expect(formatTime(90000)).toBe('25h'); // whole hours: no trailing "0s"
+    expect(formatTime(90000)).toBe('25:00:00'); // days fold into hours, never a day unit
   });
 
   it('handles the 24h and multi-day boundaries', () => {
-    expect(formatTime(86399)).toBe('23h 59m 59s');
-    expect(formatTime(86400)).toBe('24h'); // exactly one day -> 24h, no "0s"
-    expect(formatTime(90061)).toBe('25h 1m 1s'); // day + hour + minute + second
+    expect(formatTime(86399)).toBe('23:59:59');
+    expect(formatTime(86400)).toBe('24:00:00'); // exactly one day folds to 24 hours
+    expect(formatTime(90061)).toBe('25:01:01'); // day + hour + minute + second
   });
 
   describe('hideSeconds option', () => {
     it('shows seconds when hideSeconds=false (default)', () => {
-      expect(formatTime(3665)).toBe('1h 1m 5s');
-      expect(formatTime(3665, false)).toBe('1h 1m 5s');
+      expect(formatTime(3665, false)).toBe('01:01:05');
+      expect(formatTime(3665)).toBe('01:01:05');
     });
 
     it('hides seconds when hideSeconds=true and time > 599s', () => {
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(600, true)).toBe('10m');
+      expect(formatTime(3665, true)).toBe('01:01');
+      expect(formatTime(600, true)).toBe('00:10');
     });
 
     it('shows seconds in last 10 minutes even with hideSeconds=true', () => {
-      expect(formatTime(599, true)).toBe('9m 59s');
-      expect(formatTime(45, true)).toBe('45s');
+      expect(formatTime(599, true)).toBe('00:09:59');
+      expect(formatTime(45, true)).toBe('00:00:45');
     });
 
     /**
-     * The threshold the JSDoc used to state as 60s. `shared/time.ts:546` uses
+     * The threshold the JSDoc used to state as 60s. `shared/time.ts` uses
      * `seconds <= 599`, so a minute and a second still shows seconds; only past
      * 599s do they drop. Pinned so the two cannot disagree again.
      */
     it('draws the hideSeconds threshold at 599s, not at 60s', () => {
-      expect(formatTime(61, true)).toBe('1m 1s');
-      expect(formatTime(120, true)).toBe('2m'); // a whole minute drops "0s" regardless
-      expect(formatTime(599, true)).toBe('9m 59s'); // last second that still shows seconds
-      expect(formatTime(600, true)).toBe('10m');
-      expect(formatTime(601, true)).toBe('10m');
+      expect(formatTime(61, true)).toBe('00:01:01');
+      expect(formatTime(120, true)).toBe('00:02:00');
+      expect(formatTime(599, true)).toBe('00:09:59'); // last second that still shows seconds
+      expect(formatTime(600, true)).toBe('00:10');
+      expect(formatTime(601, true)).toBe('00:10');
+    });
+
+    it('draws the fixed-width shapes under ar', () => {
+      setActiveLocale('ar');
+      try {
+        expect(formatTime(3665, true)).toBe('01:01');
+        expect(formatTime(120, true)).toBe('00:02:00');
+        expect(formatTime(599, true)).toBe('00:09:59'); // last second that still shows seconds
+        expect(formatTime(600, true)).toBe('00:10');
+        expect(formatTime(601, true)).toBe('00:10');
+      } finally {
+        setActiveLocale('en');
+      }
     });
   });
 
@@ -107,31 +124,41 @@ describe('formatTime', () => {
    * Pins every @example in formatTime's JSDoc, verbatim and in order, so the
    * block cannot drift from the implementation again. Three of these were wrong
    * before Tier 6 item a: the 599s threshold was documented as 60s,
-   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true,
-   * true)` was documented as "1m". If you change an expectation here, change the
+   * `formatTime(90000)` was documented as "25h 0s", and `formatTime(45, true)`
+   * was documented as "1m". If you change an expectation here, change the
    * matching line in shared/time.ts.
    */
   describe('JSDoc contract', () => {
     it('pins every example in the JSDoc', () => {
-      expect(formatTime(3665)).toBe('1h 1m 5s');
-      expect(formatTime(3665, true)).toBe('1h 1m');
-      expect(formatTime(45, true)).toBe('45s');
-      expect(formatTime(45, true, true)).toBe('45s');
-      expect(formatTime(0)).toBe('0s');
-      expect(formatTime(-100)).toBe('0s');
-      expect(formatTime(90000)).toBe('25h');
+      expect(formatTime(3665)).toBe('01:01:05');
+      expect(formatTime(3665, true)).toBe('01:01');
+      expect(formatTime(45, true)).toBe('00:00:45');
+      expect(formatTime(0)).toBe('00:00:00');
+      expect(formatTime(-100)).toBe('00:00:00');
+      expect(formatTime(90000)).toBe('25:00:00');
+    });
+  });
+
+  describe('one design in every locale', () => {
+    afterEach(() => {
+      setActiveLocale('en');
     });
 
-    /**
-     * forceHideSeconds suppresses seconds only BESIDE another unit. Under a
-     * minute the parts list is empty and `shared/time.ts:552` falls back to
-     * "Ns", so seconds still render. No caller passes it today.
-     */
-    it('lets forceHideSeconds suppress seconds only beside another unit', () => {
-      expect(formatTime(3665, true, true)).toBe('1h 1m');
-      expect(formatTime(599, true, true)).toBe('9m');
-      expect(formatTime(45, false, true)).toBe('45s');
-      expect(formatTime(0, true, true)).toBe('0s');
+    it('draws the same Latin digits under ar', () => {
+      setActiveLocale('ar');
+      expect(formatTime(10740)).toBe('02:59:00');
+    });
+
+    it('draws the negative, seconds-only, whole-minute and whole-hour branches under ar', () => {
+      setActiveLocale('ar');
+      expect(formatTime(-100)).toBe('00:00:00');
+      expect(formatTime(45)).toBe('00:00:45');
+      expect(formatTime(60)).toBe('00:01:00');
+      expect(formatTime(7200)).toBe('02:00:00');
+    });
+
+    it('keeps Latin digits under en', () => {
+      expect(formatTime(10740)).toBe('02:59:00');
     });
   });
 });
@@ -147,17 +174,51 @@ describe('formatTimeAgo', () => {
     expect(formatTimeAgo(-100)).toBe('now');
   });
 
-  it('formats minutes correctly', () => {
-    expect(formatTimeAgo(60)).toBe('1m');
-    expect(formatTimeAgo(120)).toBe('2m');
-    expect(formatTimeAgo(3599)).toBe('59m');
+  it('formats minutes under an hour', () => {
+    expect(formatTimeAgo(60)).toBe('\u20661m\u2069');
+    expect(formatTimeAgo(120)).toBe('\u20662m\u2069');
+    expect(formatTimeAgo(3599)).toBe('\u206659m\u2069');
   });
 
-  it('formats hours and minutes correctly', () => {
-    expect(formatTimeAgo(3600)).toBe('1h');
-    expect(formatTimeAgo(5400)).toBe('1h 30m');
-    expect(formatTimeAgo(7200)).toBe('2h');
-    expect(formatTimeAgo(7260)).toBe('2h 1m');
+  it('formats hours and minutes, dropping a zero-minute group', () => {
+    expect(formatTimeAgo(3600)).toBe('\u20661h\u2069');
+    expect(formatTimeAgo(5400)).toBe('\u20661h 30m\u2069');
+    expect(formatTimeAgo(7200)).toBe('\u20662h\u2069');
+    expect(formatTimeAgo(7260)).toBe('\u20662h 1m\u2069');
+  });
+
+  describe('one design in every locale', () => {
+    afterEach(() => {
+      setActiveLocale('en');
+    });
+
+    it('draws the minute, whole-hour and mixed branches under ar with the same Latin letters', () => {
+      setActiveLocale('ar');
+      expect(formatTimeAgo(120)).toBe('\u20662m\u2069');
+      expect(formatTimeAgo(3600)).toBe('\u20661h\u2069');
+      expect(formatTimeAgo(7260)).toBe('\u20662h 1m\u2069');
+    });
+  });
+
+  it('labels durations from the catalog', () => {
+    expect(formatTimeAgo(30)).toBe('now');
+    setActiveLocale('ar');
+    try {
+      expect(formatTimeAgo(30)).toBe('الآن');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
+
+describe('splitSingleColon', () => {
+  it('splits on the one colon and returns null otherwise', () => {
+    expect(splitSingleColon('Dhuhr 0:58 ago')).toEqual(['Dhuhr 0', '58 ago']);
+    expect(splitSingleColon('الظهر قبل 0:58')).toEqual(['الظهر قبل 0', '58']);
+    expect(splitSingleColon('Asr now')).toBeNull();
+    expect(splitSingleColon('a:b:c')).toBeNull();
+    expect(splitSingleColon('no colon')).toBeNull();
+    expect(splitSingleColon('')).toBeNull();
   });
 });
 
@@ -487,30 +548,30 @@ describe('createInstant', () => {
   });
 });
 
-describe('formatDateLong', () => {
+describe('formatDateLocalized', () => {
   it('formats date correctly', () => {
-    const result = formatDateLong('2026-01-18');
+    const result = formatDateLocalized('2026-01-18');
     expect(result).toMatch(/Sun, 18 Jan 2026/);
   });
 
   it('includes day of week', () => {
-    const result = formatDateLong('2026-01-23'); // Friday
+    const result = formatDateLocalized('2026-01-23'); // Friday
     expect(result).toMatch(/Fri/);
   });
 
   it('formats different months correctly', () => {
-    expect(formatDateLong('2026-06-15')).toMatch(/Jun/);
-    expect(formatDateLong('2026-12-25')).toMatch(/Dec/);
+    expect(formatDateLocalized('2026-06-15')).toMatch(/Jun/);
+    expect(formatDateLocalized('2026-12-25')).toMatch(/Dec/);
   });
 
   // Audit finding 51: these two throwing is WHY components/day/Day.tsx guards its
   // date instead of coercing null to ''. Pinned so that a future change making
   // them return a placeholder is noticed, rather than leaving a guard whose
   // reason has quietly evaporated. Note the Hijri branch is no safer: it calls
-  // formatDateLong from inside its own catch and throws again, uncaught.
+  // formatDateLocalized from inside its own catch and throws again, uncaught.
   it('throws on an empty date rather than returning a placeholder', () => {
-    expect(() => formatDateLong('')).toThrow();
-    expect(() => formatHijriDateLong('')).toThrow();
+    expect(() => formatDateLocalized('')).toThrow();
+    expect(() => formatHijriDateLocalized('')).toThrow();
   });
 });
 
@@ -582,6 +643,21 @@ describe('formatPrayerTime', () => {
   it('round-trips createPrayerDatetime', () => {
     expect(formatPrayerTime(createPrayerDatetime('2026-10-23', '23:58'))).toBe('23:58');
     expect(formatPrayerTime(createPrayerDatetime('2026-03-30', '01:54'))).toBe('01:54');
+  });
+
+  describe('one design in every locale', () => {
+    afterEach(() => {
+      setActiveLocale('en');
+    });
+
+    it('draws the same Latin digits under ar', () => {
+      setActiveLocale('ar');
+      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('05:44');
+    });
+
+    it('keeps Latin digits under en', () => {
+      expect(formatPrayerTime(createPrayerDatetime('2026-10-11', '05:44'))).toBe('05:44');
+    });
   });
 });
 
@@ -705,9 +781,9 @@ describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
 // ADDITIONAL COVERAGE TESTS
 // =============================================================================
 
-describe('formatHijriDateLong', () => {
+describe('formatHijriDateLocalized', () => {
   it('formats valid date to Hijri format', () => {
-    const result = formatHijriDateLong('2026-01-18');
+    const result = formatHijriDateLocalized('2026-01-18');
     // Should return something like "Rajab 28, 1447" (without AH)
     expect(result).toMatch(/\w+\s+\d+,\s+\d{4}$/);
     expect(result).not.toContain('AH');
@@ -715,10 +791,29 @@ describe('formatHijriDateLong', () => {
 
   it('returns string for any valid date', () => {
     // Test various valid dates return strings
-    const result1 = formatHijriDateLong('2026-01-01');
-    const result2 = formatHijriDateLong('2025-12-31');
+    const result1 = formatHijriDateLocalized('2026-01-01');
+    const result2 = formatHijriDateLocalized('2025-12-31');
     expect(typeof result1).toBe('string');
     expect(typeof result2).toBe('string');
+  });
+});
+
+describe('footerFor', () => {
+  it('draws the short weekday alone under the Gregorian preference', () => {
+    // 2026-10-18 is a Sunday; the footer is the weekday key's own bytes
+    expect(footerFor('2026-10-18', false)).toBe('Sun');
+    expect(footerFor('2026-10-17', false)).toBe('Sat');
+  });
+
+  it('shortens the Hijri month to its first three graphemes plus the day', () => {
+    // 2026-10-11 is Rabiʻ II 30, 1448 under the en catalog
+    expect(footerFor('2026-10-11', true)).toBe('Rab 30');
+  });
+
+  it('throws on an empty date under the Hijri preference rather than guessing', () => {
+    // The Hijri branch fails and the Gregorian fallback rejects the date too,
+    // matching how the label formatters behave on unparseable input
+    expect(() => footerFor('', true)).toThrow();
   });
 });
 
@@ -809,6 +904,23 @@ describe('DST transitions', () => {
       expect(createPrayerDatetime('2026-10-25', '02:30').toISOString()).toBe('2026-10-25T02:30:00.000Z');
     });
   });
+
+  describe('getTodayDateString inside the duplicated hour (2026 fall-back)', () => {
+    // The wall clock reads 01:30 twice: 00:30Z still BST, 01:30Z already GMT. One calendar
+    // day covers both passes, and the app's day never splits or repeats across them.
+    it.each([
+      ['2026-10-25T00:30:00.000Z', 'first pass, still BST'],
+      ['2026-10-25T01:30:00.000Z', 'second pass, GMT'],
+    ])('reads 2026-10-25 at %s (%s)', (iso) => {
+      jest.useFakeTimers().setSystemTime(new Date(iso));
+
+      expect(getTodayDateString()).toBe('2026-10-25');
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+  });
 });
 
 describe('getSecondsRemaining (ceil display contract)', () => {
@@ -823,15 +935,15 @@ describe('getSecondsRemaining (ceil display contract)', () => {
     nowSpy.mockRestore();
   });
 
-  it('rounds up: 2.5s remaining displays as 3s', () => {
+  it('rounds up: 2.5s remaining displays as 0:03', () => {
     expect(getSecondsRemaining(targetFromNow(2500))).toBe(3);
   });
 
-  it('exact second boundaries are exact: 2.0s remaining displays as 2s', () => {
+  it('exact second boundaries are exact: 2.0s remaining displays as 0:02', () => {
     expect(getSecondsRemaining(targetFromNow(2000))).toBe(2);
   });
 
-  it('whole minutes flip on the boundary: 59.9995s remaining displays as 60s', () => {
+  it('whole minutes flip on the boundary: 59.9995s remaining displays as 1:00', () => {
     expect(getSecondsRemaining(targetFromNow(59_999.5))).toBe(60);
   });
 
@@ -839,11 +951,11 @@ describe('getSecondsRemaining (ceil display contract)', () => {
     expect(getSecondsRemaining(targetFromNow(500))).toBe(1);
   });
 
-  it('never displays 0s: 0ms remaining holds at 1s', () => {
+  it('never displays 0:00: 0ms remaining holds at 0:01', () => {
     expect(getSecondsRemaining(targetFromNow(0))).toBe(1);
   });
 
-  it('holds at 1s once the target has passed (latch until caller advances target)', () => {
+  it('holds at 0:01 once the target has passed (latch until caller advances target)', () => {
     expect(getSecondsRemaining(targetFromNow(-5000))).toBe(1);
   });
 
@@ -854,6 +966,48 @@ describe('getSecondsRemaining (ceil display contract)', () => {
   it('large horizons keep exact ceil semantics', () => {
     expect(getSecondsRemaining(targetFromNow(1001))).toBe(2);
     expect(getSecondsRemaining(targetFromNow(365 * 86400 * 1000 + 1))).toBe(365 * 86400 + 1);
+  });
+});
+
+describe('getSecondsRemaining across the 2026 fall-back instant', () => {
+  // The real Fajr row the 25 October 2026 list carries: 05:04 London, GMT after the crossing
+  const fajrAfterTheFallBack = createPrayerDatetime('2026-10-25', '05:04');
+  let nowSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    expect(fajrAfterTheFallBack.toISOString()).toBe('2026-10-25T05:04:00.000Z');
+    nowSpy = jest.spyOn(Date, 'now');
+  });
+
+  afterEach(() => {
+    nowSpy.mockRestore();
+  });
+
+  it('counts the real hour the wall clock repeats: 00:30Z and 01:30Z share the wall label 01:30', () => {
+    nowSpy.mockReturnValue(Date.parse('2026-10-25T00:30:00Z'));
+    const firstPass = getSecondsRemaining(fajrAfterTheFallBack);
+    nowSpy.mockReturnValue(Date.parse('2026-10-25T01:30:00Z'));
+    const secondPass = getSecondsRemaining(fajrAfterTheFallBack);
+
+    expect(firstPass).toBe(4 * 3600 + 34 * 60);
+    expect(secondPass).toBe(3 * 3600 + 34 * 60);
+    expect(firstPass - secondPass).toBe(3600);
+  });
+
+  it('drops exactly one second per real second across the 01:00:00Z transition', () => {
+    const readings = [0, 1, 2].map((secondsPastTheFallBack) => {
+      nowSpy.mockReturnValue(Date.parse('2026-10-25T00:59:59.500Z') + secondsPastTheFallBack * 1000);
+      return getSecondsRemaining(fajrAfterTheFallBack);
+    });
+
+    expect(readings).toEqual([14641, 14640, 14639]);
+  });
+
+  it('never returns 0 before the target, through either pass of the duplicated hour', () => {
+    for (const iso of ['2026-10-25T00:30:00Z', '2026-10-25T01:30:00Z', '2026-10-25T05:03:59.500Z']) {
+      nowSpy.mockReturnValue(Date.parse(iso));
+      expect(getSecondsRemaining(fajrAfterTheFallBack)).toBeGreaterThanOrEqual(1);
+    }
   });
 });
 

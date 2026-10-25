@@ -1,5 +1,5 @@
 /**
- * Unit tests for device/tasks.ts — the background task body (ISSUES.md #8)
+ * Unit tests for device/tasks.ts — the background task body (ledger #8 (git history))
  *
  * The task is the entire background execution path: OS → TaskService → this
  * executor → rescheduleAllNotificationsFromBackground. These tests pin the
@@ -79,5 +79,15 @@ describe('background task definition (device/tasks.ts)', () => {
 
     expect(second).toBe(BackgroundTask.BackgroundTaskResult.Success);
     expect(mockReschedule).toHaveBeenCalledTimes(2);
+  });
+
+  it('never dismisses delivered notifications: the clear is an open-time act', async () => {
+    mockReschedule.mockResolvedValue(undefined);
+    const executor = getRegisteredExecutor();
+
+    await executor();
+
+    const { dismissAllNotificationsAsync } = require('expo-notifications');
+    expect(dismissAllNotificationsAsync).not.toHaveBeenCalled();
   });
 });

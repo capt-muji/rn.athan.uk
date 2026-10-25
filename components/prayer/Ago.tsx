@@ -1,11 +1,14 @@
 import { useAtomValue } from 'jotai';
+import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
-import { useDerivedBackgroundColor, useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 
 interface Props {
@@ -15,9 +18,9 @@ interface Props {
 /**
  * Displays time elapsed since the previous prayer
  *
- * Shows "now" for the first 60 seconds, then "Xm" or "Xh Ym" format.
- * Animates between normal and "recent" color states (≤5 mins).
- * Fades out when the overlay is open.
+ * Shows "now" for the first 60 seconds, then the lettered duration (Xh Ym) inside
+ * the catalog sentence. Animates between normal and "recent" color states (≤5 mins).
+ * Fades toward the veil ink when the overlay is open.
  *
  * @param type - Schedule type (Standard or Extra)
  */
@@ -35,36 +38,64 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
 
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
-  const prayerAgoColorStyle = useDerivedColor(isRecent, {
+
+  // The overlay's veil wraps both tweens: the badge's ink and its pill wash sink toward the
+  // veil solid together, so no glyph renders through an opacity while it fades (derived, so
+  // the tween cannot strand on resume)
+  const veilTarget = overlayIsOn ? 1 : 0;
+  const prayerAgoColorStyle = useDerivedVeiledColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.text,
     toColor: COLORS.feedback.success,
+    veilColor: COLORS.gradient.overlay.veil,
+    veilDuration: ANIMATION.durationFade,
     ...recentColorOptions,
   });
-  const prayerAgoBackgroundStyle = useDerivedBackgroundColor(isRecent, {
+  const prayerAgoBackgroundStyle = useDerivedVeiledBackgroundColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.gradient.start,
     toColor: COLORS.prayerAgo.gradient.end,
+    veilColor: COLORS.gradient.overlay.veil,
+    veilDuration: ANIMATION.durationFade,
     ...recentColorOptions,
   });
 
-  // Fade out when overlay opens (derived, so it cannot strand on resume)
-  const prayerAgoOpacityStyle = useDerivedOpacity(overlayIsOn ? 0 : 1, { duration: ANIMATION.durationFade });
+  // Hold the badge drawn through its fade, then drop it: the resting frame under an open
+  // overlay shows the backdrop exactly, as the old opacity 0 did
+  const [hiddenSettled, setHiddenSettled] = useState(false);
+  useEffect(() => {
+    if (!overlayIsOn) {
+      setHiddenSettled(false);
+      return;
+    }
+
+    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.durationFade);
+    return () => clearTimeout(hideTimer);
+  }, [overlayIsOn]);
 
   return (
-    <Animated.Text style={[styles.prayerAgo, prayerAgoOpacityStyle, prayerAgoColorStyle, prayerAgoBackgroundStyle]}>
+    <Animated.Text
+      style={[
+        styles.prayerAgo,
+        { display: hiddenSettled ? 'none' : 'flex' },
+        prayerAgoColorStyle,
+        prayerAgoBackgroundStyle,
+      ]}>
       {prayerAgo}
     </Animated.Text>
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   prayerAgo: {
     textAlign: 'center',
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     paddingHorizontal: SPACING.md,
     paddingVertical: SPACING.py,
     borderRadius: RADIUS.pill,
     overflow: 'hidden',
     alignSelf: 'center',
+    marginTop: -SPACING.xs,
   },
 });

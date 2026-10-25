@@ -2,9 +2,49 @@
  * Unit tests for shared/help.ts: which questions each platform answers, and which offer a deep link
  */
 
-import { getHelpTopics, HELP_ACTION_LABELS } from '../help';
+import { ar } from '@/shared/i18n/ar';
+import { type Catalog, en } from '@/shared/i18n/en';
+import { hi } from '@/shared/i18n/hi';
+import { ms } from '@/shared/i18n/ms';
+import { so } from '@/shared/i18n/so';
+import { th } from '@/shared/i18n/th';
+
+import { getHelpActionLabels, getHelpTopics, splitPlatformLine } from '../help';
+
+/**
+ * A fresh help module whose catalog reads are marked, so every field the getter returns
+ * must carry the mark: a field that skips t() keeps its own bytes and fails the match
+ */
+const helpUnderMarkedCatalog = () => {
+  let help!: typeof import('../help');
+  jest.isolateModules(() => {
+    // t() alone, without spreading requireActual: the isolated graph reaches this
+    // module mid-cycle through stores/database and shared/time, and forcing the
+    // real module's getters there reads a half-built registry
+    jest.doMock('@/shared/i18n', () => ({
+      t: (key: string) => `catalog:${key}`,
+    }));
+    help = require('../help');
+  });
+  return help;
+};
 
 describe('getHelpTopics', () => {
+  it('sources every entry from the catalog', () => {
+    const help = helpUnderMarkedCatalog();
+
+    for (const os of ['ios', 'android'] as const) {
+      const topics = help.getHelpTopics(os);
+      expect(topics.length).toBeGreaterThan(0);
+      for (const { question, text, steps } of topics) {
+        expect(question).toMatch(/^catalog:help\.q\./);
+        expect(text).toMatch(/^catalog:help\.a\./);
+        for (const step of steps ?? []) expect(step).toMatch(/^catalog:help\.step\./);
+      }
+    }
+    expect(help.getHelpActionLabels().dndAccess).toBe('catalog:help.action.dndAccess');
+  });
+
   it.each(['ios', 'android'] as const)('answers at least four questions on %s', (os) => {
     expect(getHelpTopics(os).length).toBeGreaterThanOrEqual(4);
   });
@@ -20,12 +60,18 @@ describe('getHelpTopics', () => {
     }
   });
 
-  it('keeps the alarm volume question for Android alone, which is the platform that plays on that stream', () => {
-    const iosQuestions = getHelpTopics('ios').map((topic) => topic.question);
-    const androidQuestions = getHelpTopics('android').map((topic) => topic.question);
+  it('answers the volume question on both platforms, each with its platform answer', () => {
+    const iosTopics = getHelpTopics('ios');
+    const androidTopics = getHelpTopics('android');
 
-    expect(androidQuestions).toContain('Why is the athan so quiet?');
-    expect(iosQuestions).not.toContain('Why is the athan so quiet?');
+    expect(iosTopics.map((topic) => topic.question)).toContain('Which volume controls the sound level?');
+    expect(androidTopics.map((topic) => topic.question)).toContain('Which volume controls the sound level?');
+    expect(androidTopics.find((topic) => topic.question === 'Which volume controls the sound level?')?.text).toBe(
+      'The athan plays at alarm volume, not ring volume. Raise Alarm in your sound settings.'
+    );
+    expect(iosTopics.find((topic) => topic.question === 'Which volume controls the sound level?')?.text).toBe(
+      'The athan plays at your ringer volume, and the Ring/Silent switch and Focus silence it.'
+    );
   });
 
   it('offers the Do Not Disturb grant on Android only, which is the one platform that has it', () => {
@@ -40,7 +86,7 @@ describe('getHelpTopics', () => {
     expect(getHelpTopics('ios').map((topic) => topic.action)).toEqual(getHelpTopics('ios').map(() => undefined));
   });
 
-  /** Both platforms suppress notifications by mode, so both must answer for it (owner, 2026-09-27) */
+  /** Both platforms suppress notifications by mode, so both must answer for it */
   it('answers the Do Not Disturb question on both platforms', () => {
     for (const os of ['ios', 'android'] as const) {
       expect(getHelpTopics(os).map((topic) => topic.question)).toContain(
@@ -90,14 +136,93 @@ describe('getHelpTopics', () => {
     }
   });
 
-  it('drops the two questions the owner cut', () => {
+  /** The scheduling-horizon cut still stands; the widget cut was later superseded */
+  it('keeps the scheduling-horizon question the owner cut out', () => {
     for (const os of ['ios', 'android'] as const) {
       const questions = getHelpTopics(os)
         .map((topic) => topic.question)
         .join(' ');
 
       expect(questions).not.toMatch(/How far ahead/);
-      expect(questions).not.toMatch(/widget/i);
+    }
+  });
+
+  /** A support question, not a cause, so it sits after the last cause and offers nothing to do */
+  it('answers the widget support question last, with no steps and no action', () => {
+    for (const os of ['ios', 'android'] as const) {
+      const last = getHelpTopics(os).at(-1);
+
+      expect(last?.question).toBe('Are widgets supported?');
+      expect(last?.steps).toBeUndefined();
+      expect(last?.action).toBeUndefined();
+    }
+  });
+
+  /**
+   * Each platform's extent as two labeled lines, iOS first, in
+   * every locale, the labels Latin and the sentences in each language's own voice
+   */
+  it('pins the widget copy, both extents as two labeled lines, byte for byte', () => {
+    const catalogs: Record<string, Catalog> = { ar, ms, so, hi, th };
+    const answers: Record<string, string> = {
+      en: 'iOS: Yes, on the home screen and the lock screen.\nAndroid: Yes, on the home screen.',
+      ar: 'iOS: نعم، على الشاشة الرئيسية وشاشة القفل.\nAndroid: نعم، على الشاشة الرئيسية.',
+      ms: 'iOS: Ya, pada skrin utama dan skrin kunci.\nAndroid: Ya, pada skrin utama.',
+      so: 'iOS: Haa, shaashadda bilowga iyo shaashadda xiritaanka.\nAndroid: Haa, shaashadda bilowga.',
+      hi: 'iOS: हाँ, होम स्क्रीन और लॉक स्क्रीन पर।\nAndroid: हाँ, होम स्क्रीन पर।',
+      th: 'iOS: ใช่ บนหน้าจอหลักและหน้าจอล็อก\nAndroid: ใช่ บนหน้าจอหลัก',
+    };
+
+    expect(en['help.q.widgets']).toBe('Are widgets supported?');
+    for (const [loc, text] of Object.entries(answers)) {
+      const value = loc === 'en' ? (en['help.a.widgets'] as string) : catalogs[loc]['help.a.widgets'];
+      expect(`${loc}: ${value}`).toBe(`${loc}: ${text}`);
+    }
+  });
+
+  /** The question stays one sentence; the answer is one labeled line per platform, iOS first (D142.11) */
+  it('shapes the widget answer as two labeled lines, one sentence each', () => {
+    expect(en['help.q.widgets']).toMatch(/[.?]$/);
+    expect(en['help.q.widgets'].slice(0, -1)).not.toMatch(/[.?]/);
+
+    const lines = en['help.a.widgets'].split('\n');
+    expect(lines).toHaveLength(2);
+    expect(lines[0].startsWith('iOS: ')).toBe(true);
+    expect(lines[1].startsWith('Android: ')).toBe(true);
+    for (const line of lines) {
+      expect(line).toMatch(/[.]$/);
+      expect(line.slice(0, -1)).not.toMatch(/[.?!]/);
+    }
+  });
+
+  /** One shared answer key, the entries' own pattern when both platforms read the same words (D142.11) */
+  it('answers the widget question with the same two lines on both platforms', () => {
+    const ios = getHelpTopics('ios').at(-1);
+    const android = getHelpTopics('android').at(-1);
+
+    expect(ios?.text).toBe(en['help.a.widgets']);
+    expect(android?.text).toBe(en['help.a.widgets']);
+  });
+
+  /** No locale teaches how to add a widget, whatever script it writes in (D142.6) */
+  it('teaches no one how to add a widget, in any locale', () => {
+    const instructionWords: Record<string, RegExp> = {
+      en: /\b(add|hold|press|touch|pin|drag)\b/i,
+      ar: /أضف|اضغط|المس|ثبّت|اسحب/,
+      ms: /\b(tambah|tekan|sentuh|pasang|tarik)\b/i,
+      so: /\b(dar|taabo|taab|qid|jiid)\b/i,
+      hi: /जोड़ें|दबाएं|छुएं|पिन करें|खींचें/,
+      th: /เพิ่ม|กดค้าง|แตะ|ปักหมุด|ลาก/,
+    };
+    const catalogs: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+    for (const [loc, banned] of Object.entries(instructionWords)) {
+      for (const key of ['help.q.widgets', 'help.a.widgets'] as const) {
+        const value = catalogs[loc][key];
+
+        expect(value?.length ?? 0).toBeGreaterThan(0);
+        expect(`${loc} ${key}: ${value}`).not.toMatch(banned);
+      }
     }
   });
 
@@ -129,8 +254,8 @@ describe('getHelpTopics', () => {
   });
 
   /**
-   * The owner followed the old iOS steps and they led to the wrong screen: a route is version
-   * specific and goes stale, while the name of a setting does not (owner, 2026-09-27).
+   * The old iOS steps led to the wrong screen: a route is version
+   * specific and goes stale, while the name of a setting does not.
    */
   it('names what to change and never how to navigate there', () => {
     for (const os of ['ios', 'android'] as const) {
@@ -142,7 +267,7 @@ describe('getHelpTopics', () => {
     }
   });
 
-  /** A user needs the fix, never the mechanism (owner, 2026-09-27) */
+  /** A user needs the fix, never the mechanism */
   it('explains no internals in any answer', () => {
     for (const os of ['ios', 'android'] as const) {
       for (const { text } of getHelpTopics(os)) {
@@ -163,8 +288,59 @@ describe('getHelpTopics', () => {
   it('names a button for every action an answer offers', () => {
     for (const os of ['ios', 'android'] as const) {
       for (const { action } of getHelpTopics(os)) {
-        if (action) expect(HELP_ACTION_LABELS[action].length).toBeGreaterThan(0);
+        if (action) expect(getHelpActionLabels()[action].length).toBeGreaterThan(0);
       }
     }
   });
+});
+
+describe('splitPlatformLine', () => {
+  const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+  /** The widget answer's two label lines, split into the bold label run and the sentence, in every locale */
+  it("splits the widget answer's label lines in every shipped locale", () => {
+    for (const catalog of Object.values(CATALOGS)) {
+      const lines = (catalog['help.a.widgets'] as string).split('\n');
+
+      expect(lines).toHaveLength(2);
+      expect(splitPlatformLine(lines[0])).toEqual({ label: 'iOS: ', rest: lines[0].slice('iOS: '.length) });
+      expect(splitPlatformLine(lines[1])).toEqual({ label: 'Android: ', rest: lines[1].slice('Android: '.length) });
+      for (const line of lines) {
+        expect(splitPlatformLine(line)?.rest.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  /** The labels are the widget answer's alone: no other answer and no step opens with one */
+  it('returns null on every other answer and step line', () => {
+    for (const catalog of Object.values(CATALOGS)) {
+      for (const [key, value] of Object.entries(catalog)) {
+        if (!key.startsWith('help.a.') || key === 'help.a.widgets') continue;
+        expect(`${key}: ${splitPlatformLine(value as string)}`).toBe(`${key}: null`);
+      }
+      for (const step of getHelpTopics('ios').flatMap(({ steps }) => steps ?? [])) {
+        expect(splitPlatformLine(step)).toBeNull();
+      }
+    }
+  });
+
+  it('anchors the label at the line start, so a label named mid-sentence stays plain', () => {
+    expect(splitPlatformLine('Choose iOS: home screen')).toBeNull();
+    expect(splitPlatformLine('ios: not the pinned label')).toBeNull();
+    expect(splitPlatformLine('')).toBeNull();
+  });
+});
+
+describe('hard line breaks', () => {
+  const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+
+  // No answer is broken into lines for the English layout; the text wraps at the view width
+  it.each(['help.a.stopAfterRestart', 'help.a.cutoff'] as const)(
+    '%s flows as one paragraph in every catalog',
+    (key) => {
+      for (const catalog of Object.values(CATALOGS)) {
+        expect(catalog[key]).not.toMatch(/\n/);
+      }
+    }
+  );
 });

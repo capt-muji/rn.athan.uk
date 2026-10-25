@@ -36,6 +36,8 @@ const mockGetNotifications = jest.fn();
 const mockGetReminders = jest.fn();
 
 jest.mock('@/stores/database', () => ({
+  getItem: () => null,
+  getRawItem: () => undefined,
   getAllScheduledNotificationsForPrayer: (...args: unknown[]) => mockGetNotifications(...args),
   getAllScheduledRemindersForPrayer: (...args: unknown[]) => mockGetReminders(...args),
   addOneScheduledNotificationForPrayer: jest.fn(),
@@ -49,8 +51,7 @@ const INTERVAL = 15 as ReminderInterval;
 /** A readable list row as PrayerUtils.getPrayerForDate returns it */
 const isha: ReadablePrayer = {
   type: ScheduleType.Standard,
-  english: 'Isha',
-  arabic: 'العشاء',
+  id: 'isha',
   datetime: createPrayerDatetime('2026-09-17', '20:31'),
   time: '20:31',
   belongsToDate: '2026-09-17',
@@ -61,7 +62,6 @@ const record = (id: string) => ({
   date: '2026-09-17',
   time: '20:31',
   englishName: 'Isha',
-  arabicName: 'العشاء',
   alertType: AlertType.Silent,
 });
 

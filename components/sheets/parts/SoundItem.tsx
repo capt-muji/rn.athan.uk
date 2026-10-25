@@ -1,23 +1,28 @@
 import * as Haptics from 'expo-haptics';
 import { memo, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { useAnimationScale } from '@/hooks/useAnimation';
+import { useAnimationScale, useDerivedProgress } from '@/hooks/useAnimation';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const COUNTDOWN_COLOR_SELECTED = 'rgba(165, 180, 252, 0.8)';
-const COUNTDOWN_COLOR_UNSELECTED = 'rgba(86, 134, 189, 0.725)';
+// Solid: the old rgba pair flattened over the sheet, so the countdown never renders through alpha
+const COUNTDOWN_COLOR_SELECTED = '#8695d5';
+const COUNTDOWN_COLOR_UNSELECTED = '#416899';
 
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
+  const composed = `${mins}:${secs.toString().padStart(2, '0')}`;
+  return composed;
 }
 
 interface Props {
@@ -70,11 +75,11 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   if (remainingSeconds > 0) lastPositiveRemainingRef.current = remainingSeconds;
   const displaySeconds = remainingSeconds > 0 ? remainingSeconds : lastPositiveRemainingRef.current;
 
-  // Countdown color tweens; opacity snaps with the icon flip (a tween here
-  // ran ~75ms behind the instant play/pause swap and read as desync).
-  const countdownColorProgress = useDerivedValue(() =>
-    withTiming(isSelected ? 1 : 0, { duration: ANIMATION.durationFast })
-  );
+  // Countdown color tweens; visibility snaps with the icon flip (a tween here
+  // ran ~75ms behind the instant play/pause swap and read as desync). The progress
+  // snaps on first evaluation, so a row that mounts already playing paints its
+  // settled ink instead of tweening up from unselected
+  const countdownColorProgress = useDerivedProgress(isSelected ? 1 : 0, { duration: ANIMATION.durationFast });
 
   const countdownStyle = useAnimatedStyle(() => ({
     color: interpolateColor(
@@ -97,34 +102,36 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   };
 
   const activeColor = '#fff';
-  const inactiveColor = 'rgba(86, 134, 189, 0.725)';
+  const inactiveColor = '#416899';
 
-  const name = `Athan ${index + 1}`;
+  const name = t('soundItem.athan', { n: index + 1 });
 
   return (
     <Pressable
       style={styles.option}
       onPress={handlePress}
       onLayout={onLayout}
-      accessibilityRole='radio'
+      accessibilityRole={'radio'}
       // Which athan is chosen is carried only by the row's text colour, so `selected` is the
       // one thing a screen reader has to tell the rows apart
       accessibilityState={{ selected: isSelected }}
       accessibilityLabel={name}>
       <Text style={[styles.text, { color: isActive ? activeColor : inactiveColor }]}>{name}</Text>
       <View style={styles.rightContainer}>
-        <Animated.Text style={[styles.countdown, { opacity: countdownVisible ? 1 : 0 }, countdownStyle]}>
-          {formatTime(displaySeconds)}
-        </Animated.Text>
+        {/* Rendered only while visible: the row is end-anchored, so the countdown's
+            absence moves nothing, and the colour tween lives here at row level */}
+        {countdownVisible && (
+          <Animated.Text style={[styles.countdown, countdownStyle]}>{formatTime(displaySeconds)}</Animated.Text>
+        )}
         <AnimatedPressable
           style={[styles.icon, AnimScale.style]}
           onPress={handlePlayPress}
           onPressIn={() => AnimScale.animate(0.9)}
           onPressOut={() => AnimScale.animate(1)}
-          accessibilityRole='button'
+          accessibilityRole={'button'}
           // The glyph is the only thing that says play or pause, and on iOS the row would
           // otherwise absorb this button so VoiceOver could never reach it
-          accessibilityLabel={isPlaying ? `Stop previewing ${name}` : `Preview ${name}`}>
+          accessibilityLabel={isPlaying ? t('soundItem.stopPreview', { name }) : t('soundItem.preview', { name })}>
           <IconView
             type={isPlaying ? Icon.PAUSE : Icon.PLAY}
             size={18}
@@ -136,6 +143,8 @@ function SoundItemImpl({ index, isSelected, isPlaying, remainingSeconds, onSelec
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   option: {
     flexDirection: 'row',
@@ -143,20 +152,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: RADIUS.md,
     paddingVertical: SPACING.sm,
-    paddingLeft: SPACING.md,
+    paddingStart: SPACING.md,
   },
   text: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
   },
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   countdown: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
-    marginRight: SPACING.xs,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
+    marginEnd: SPACING.xs,
   },
   icon: {
     padding: SPACING.md,

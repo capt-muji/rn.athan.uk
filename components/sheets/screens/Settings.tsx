@@ -3,13 +3,17 @@ import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import InfoBare from '@/assets/icons/svg/info-bare.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
-import { VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
+import { typographyFor } from '@/shared/typography';
+import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
@@ -19,7 +23,7 @@ import {
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
-  showArabicNamesAtom,
+  showLanguageSheet,
   showQiblaSheet,
   showSecondsAtom,
   showSheet,
@@ -29,12 +33,15 @@ import {
 import { SettingsToggle, Sheet } from '../parts';
 import ColorPicker from './ColorPicker';
 
+// The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
+const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
+const SETTINGS_PERF_NAME = 'sheet_settings';
+
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
-  const [showArabicNames, setShowArabicNames] = useAtom(showArabicNamesAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
@@ -42,6 +49,12 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     showSheet();
+  };
+
+  const handleLanguagePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    hideSettingsSheet();
+    showLanguageSheet();
   };
 
   // The permission is settled BEFORE the sheet opens, which is the owner's order: a compass that opens and then
@@ -72,67 +85,66 @@ export default function BottomSheetSettings() {
   return (
     <Sheet
       setRef={setSettingsSheetModal}
-      title='Settings'
-      subtitle='Set your preferences'
-      icon={<SettingsIcon width={16} height={16} color='rgba(165, 180, 252, 0.8)' />}
+      title={t('settings.title')}
+      subtitle={t('settings.subtitle')}
+      icon={<SettingsIcon width={16} height={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['85%']}
-      perfName='sheet_settings'
+      perfName={SETTINGS_PERF_NAME}
       // The sound sheet is only reachable through this sheet: warming its
       // 32-row list on our first full open builds it invisibly, one tap
       // before it is needed (and off the launch path)
       onFirstPresent={setSoundListReady}>
       {/* Prayer Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Prayer</Text>
+        <Text style={styles.cardTitle}>{t('settings.prayer')}</Text>
         <Pressable
           style={styles.athanButton}
           onPress={handleAthanPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel='Change athan'
-          accessibilityRole='button'>
+          accessibilityLabel={t('settings.changeAthan')}
+          accessibilityRole={'button'}>
           <View style={styles.musicButton}>
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.athanLabel}>Change athan</Text>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={styles.athanLabel}>{t('settings.changeAthan')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         <Pressable
           style={styles.athanButton}
           onPress={handleQiblaPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel='Qibla'
-          accessibilityRole='button'>
+          accessibilityLabel={t('settings.qibla')}
+          accessibilityRole={'button'}>
           <View style={styles.musicButton}>
             <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.athanLabel}>Qibla</Text>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={styles.athanLabel}>{t('settings.qibla')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
       </View>
 
-      {/* Display Card */}
+      {/* Display Card - Language leads the Other card: the pick is app-level, not a display setting */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Display</Text>
+        <Text style={styles.cardTitle}>{t('settings.display')}</Text>
         <View style={styles.toggleList}>
           <SettingsToggle
-            label='Show hijri date'
+            label={t('settings.showHijriDate')}
             value={hijriEnabled}
             onToggle={() => setHijriEnabled(!hijriEnabled)}
           />
-          <SettingsToggle label='Show seconds' value={showSeconds} onToggle={() => setShowSeconds(!showSeconds)} />
           <SettingsToggle
-            label='Show time passed'
+            label={t('settings.showSeconds')}
+            value={showSeconds}
+            onToggle={() => setShowSeconds(!showSeconds)}
+          />
+          <SettingsToggle
+            label={t('settings.showTimePassed')}
             value={showTimePassed}
             onToggle={() => setShowTimePassed(!showTimePassed)}
           />
-          <SettingsToggle
-            label='Show arabic names'
-            value={showArabicNames}
-            onToggle={() => setShowArabicNames(!showArabicNames)}
-          />
           {showDecorationToggle && (
             <SettingsToggle
-              label='Show decorations'
+              label={t('settings.showDecorations')}
               value={decorationsEnabled}
               onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
             />
@@ -142,10 +154,10 @@ export default function BottomSheetSettings() {
 
       {/* Countdown Bar Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Countdown Bar</Text>
+        <Text style={styles.cardTitle}>{t('settings.countdownBar')}</Text>
         <View style={styles.toggleList}>
           <SettingsToggle
-            label='Show countdown bar'
+            label={t('settings.showCountdownBar')}
             value={countdownBarShown}
             onToggle={() => setCountdownBarShown(!countdownBarShown)}
           />
@@ -155,37 +167,51 @@ export default function BottomSheetSettings() {
 
       {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Other</Text>
-        {VISIBLE_WHATS_NEW ? (
+        <Text style={styles.cardTitle}>{t('settings.other')}</Text>
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleLanguagePress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel={t('settings.language')}
+          accessibilityRole={'button'}>
+          <View style={styles.infoButton}>
+            <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.whatsNewLabel}>{t('settings.language')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
+        </Pressable>
+        {currentVisibleWhatsNew() ? (
           <Pressable
             style={styles.whatsNewButton}
             onPress={handleWhatsNewPress}
             hitSlop={HIT_SLOP.md}
-            accessibilityLabel="What's new"
-            accessibilityRole='button'>
+            accessibilityLabel={t('settings.whatsNew')}
+            accessibilityRole={'button'}>
             <View style={styles.infoButton}>
-              <IconView type={Icon.INFO} size={9} color={COLORS.text.primary} />
+              <InfoBare width={9} height={9} style={{ color: COLORS.text.primary }} />
             </View>
-            <Text style={styles.whatsNewLabel}>What&#8217;s new</Text>
-            <Text style={styles.chevron}>›</Text>
+            <Text style={styles.whatsNewLabel}>{t('settings.whatsNewLabel')}</Text>
+            <Text style={styles.chevron}>{chevronFor()}</Text>
           </Pressable>
         ) : null}
         <Pressable
           style={styles.whatsNewButton}
           onPress={handleHelpPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel='Help'
-          accessibilityRole='button'>
+          accessibilityLabel={t('settings.help')}
+          accessibilityRole={'button'}>
           <View style={styles.infoButton}>
             <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.whatsNewLabel}>Help</Text>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
       </View>
     </Sheet>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   // Cards
@@ -198,9 +224,9 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.md,
   },
   cardTitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.medium,
-    color: 'rgba(86, 134, 189, 0.725)',
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyMedium,
+    color: COLORS.text.sheetSubtitle,
   },
 
   // Toggle list
@@ -217,7 +243,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    paddingRight: SPACING.md,
+    paddingEnd: SPACING.md,
   },
   whatsNewButton: {
     flexDirection: 'row',
@@ -226,7 +252,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(99, 102, 241, 0.1)',
     borderRadius: RADIUS.md,
     padding: SPACING.sm,
-    paddingRight: SPACING.md,
+    paddingEnd: SPACING.md,
   },
   infoButton: {
     width: 20,
@@ -240,10 +266,10 @@ const styles = StyleSheet.create({
   },
   whatsNewLabel: {
     flex: 1,
-    marginLeft: SPACING.sm,
+    marginStart: SPACING.sm,
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   musicButton: {
     width: 20,
@@ -257,15 +283,18 @@ const styles = StyleSheet.create({
   },
   athanLabel: {
     flex: 1,
-    marginLeft: SPACING.sm,
+    marginStart: SPACING.sm,
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   chevron: {
     color: COLORS.icon.primary,
     fontSize: SIZE.icon.md,
     fontWeight: '300',
     lineHeight: SIZE.icon.md,
+    // The codepoint carries the direction (chevronFor); Android mirrors a lone neutral
+    // glyph inside an RTL paragraph, so the paragraph itself stays LTR
+    direction: 'ltr',
   },
 });

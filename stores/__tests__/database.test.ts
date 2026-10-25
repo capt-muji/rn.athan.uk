@@ -317,7 +317,6 @@ describe('notification scheduling records', () => {
     date: '2026-01-24',
     time: '06:15',
     englishName,
-    arabicName: 'الفجر',
     alertType: AlertType.Sound,
   });
 
@@ -401,7 +400,6 @@ describe('reminder scheduling records', () => {
     date: '2026-01-24',
     time: '05:55',
     englishName,
-    arabicName: 'الفجر',
     alertType: AlertType.Sound,
   });
 
@@ -491,8 +489,8 @@ describe('reminder scheduling records', () => {
  * and the sync path's full refresh. Anything else that needs to clear the cache
  * goes through `clearUpgradeCache`, which owns the keep-list.
  *
- * The error screen's Refresh button does clear the cache — owner ruling,
- * 2026-09-12: reaching that screen means something has gone wrong, and the
+ * The error screen's Refresh button does clear the cache —
+ * reaching that screen means something has gone wrong, and the
  * destruction is acceptable because preferences survive. It routes through
  * `clearUpgradeCache` so it inherits the full keep-list rather than an inline
  * one, which is what the second test below pins.
@@ -539,10 +537,10 @@ describe('clearAllExcept call sites', () => {
 
     expect(keepList).toContain("'preference_'");
     expect(keepList).toContain("'app_installed_version'");
-    expect(keepList).toContain("'prayer_max_english_width_'");
+    expect(keepList).toContain("'prayer_max_name_width_'");
 
     // Routing through clearUpgradeCache is what earns the keep-list above. An
-    // inline list on the call site would drop prayer_max_english_width_, and
+    // inline list on the call site would drop prayer_max_name_width_, and
     // losing that reflows the prayer list on the next launch (ISSUES #22, #16)
     const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
     expect(errorScreen).toContain('clearUpgradeCache()');

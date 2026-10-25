@@ -22,6 +22,13 @@ import type { NodePath } from '@babel/traverse';
 import traverse from '@babel/traverse';
 import type { ArrowFunctionExpression, File, ImportDeclaration } from '@babel/types';
 
+import type { PrayerId } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { createPrayerDatetime } from '@/shared/time';
+import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
+import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline } from '@/shared/widgetTimeline';
+import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
+
 const WIDGET_FILES = [
   { name: 'PrayerWidget', path: join(__dirname, '../../widgets/PrayerWidget.tsx') },
   { name: 'PrayerLockWidget', path: join(__dirname, '../../widgets/LockPrayerWidget.tsx') },
@@ -46,6 +53,8 @@ const JS_GLOBALS = new Set([
   'Boolean',
   'Array',
   'Object',
+  // The statics resolver reads the runtime patch's locale global off it
+  'globalThis',
 ]);
 
 /**
@@ -69,29 +78,73 @@ const collectExpoUiRuntimeGlobals = (ast: File): Set<string> => {
   return names;
 };
 
-/** Locates the arrow function carrying the 'widget' directive in a parsed file */
-const findWidgetFunction = (ast: File): NodePath<ArrowFunctionExpression> | null => {
-  let found: NodePath<ArrowFunctionExpression> | null = null;
+/** Locates every arrow function carrying the 'widget' directive in a parsed file */
+const findWidgetFunctions = (ast: File): NodePath<ArrowFunctionExpression>[] => {
+  const found: NodePath<ArrowFunctionExpression>[] = [];
 
   traverse(ast, {
     ArrowFunctionExpression(path: NodePath<ArrowFunctionExpression>) {
       const body = path.node.body;
       if (body.type !== 'BlockStatement') return;
       const hasDirective = body.directives.some((directive) => directive.value.value === 'widget');
-      if (hasDirective && !found) {
-        found = path;
-      }
+      if (hasDirective) found.push(path);
     },
   });
 
   return found;
 };
 
+/** Locates the first arrow function carrying the 'widget' directive in a parsed file */
+const findWidgetFunction = (ast: File): NodePath<ArrowFunctionExpression> | null => findWidgetFunctions(ast)[0] ?? null;
+
 // =============================================================================
 // 1. NO MODULE-SCOPE REFERENCES INSIDE THE WIDGET FUNCTION
 // =============================================================================
 
 describe('widget function closure', () => {
+  /** The module-scope or unresolvable identifiers a widget body references */
+  const closureViolations = (widgetPath: NodePath<ArrowFunctionExpression>, runtimeGlobals: Set<string>): string[] => {
+    const violations = new Set<string>();
+
+    widgetPath.traverse({
+      ReferencedIdentifier(identifierPath) {
+        // Type annotations are erased before serialization — only value
+        // references can reach the widget runtime
+        const parentType = identifierPath.parent.type;
+        if (
+          parentType === 'TSTypeReference' ||
+          parentType === 'TSQualifiedName' ||
+          parentType === 'TSTypeParameterInstantiation' ||
+          parentType === 'TSTypeAliasDeclaration' ||
+          parentType === 'TSFunctionType'
+        ) {
+          return;
+        }
+
+        const identifierName = identifierPath.node.name;
+        const binding = identifierPath.scope.getBinding(identifierName);
+
+        if (!binding) {
+          // True global (Date, Infinity, ...) — allowed
+          if (!JS_GLOBALS.has(identifierName)) {
+            violations.add(`unresolvable identifier: ${identifierName}`);
+          }
+          return;
+        }
+
+        // Binding must live inside the widget function (params or body).
+        // The one exception: @expo/ui imports, which the widget extension
+        // provides as globals — that reference is legal by design.
+        const declaredInside = binding.scope.path === widgetPath || widgetPath.isAncestor(binding.scope.path);
+        if (!declaredInside && !runtimeGlobals.has(identifierName)) {
+          violations.add(`module-scope reference: ${identifierName}`);
+        }
+      },
+    });
+
+    return [...violations];
+  };
+
   for (const { name, path } of WIDGET_FILES) {
     it(`${name}: references only its own params, locals, and @expo/ui globals`, () => {
       const ast = parseFile(path);
@@ -99,48 +152,25 @@ describe('widget function closure', () => {
       expect(widgetPath).not.toBeNull();
       if (!widgetPath) return;
 
-      const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
-      const violations = new Set<string>();
-
-      widgetPath.traverse({
-        ReferencedIdentifier(identifierPath) {
-          // Type annotations are erased before serialization — only value
-          // references can reach the widget runtime
-          const parentType = identifierPath.parent.type;
-          if (
-            parentType === 'TSTypeReference' ||
-            parentType === 'TSQualifiedName' ||
-            parentType === 'TSTypeParameterInstantiation' ||
-            parentType === 'TSTypeAliasDeclaration' ||
-            parentType === 'TSFunctionType'
-          ) {
-            return;
-          }
-
-          const identifierName = identifierPath.node.name;
-          const binding = identifierPath.scope.getBinding(identifierName);
-
-          if (!binding) {
-            // True global (Date, Infinity, ...) — allowed
-            if (!JS_GLOBALS.has(identifierName)) {
-              violations.add(`unresolvable identifier: ${identifierName}`);
-            }
-            return;
-          }
-
-          // Binding must live inside the widget function (params or body).
-          // The one exception: @expo/ui imports, which the widget extension
-          // provides as globals — that reference is legal by design.
-          const declaredInside = binding.scope.path === widgetPath || widgetPath.isAncestor(binding.scope.path);
-          if (!declaredInside && !runtimeGlobals.has(identifierName)) {
-            violations.add(`module-scope reference: ${identifierName}`);
-          }
-        },
-      });
-
-      expect([...violations]).toEqual([]);
+      expect(closureViolations(widgetPath, collectExpoUiRuntimeGlobals(ast))).toEqual([]);
     });
   }
+
+  it('walks the closure of all three lock layouts', () => {
+    // The lock module holds three layouts; a walk that only reaches the first
+    // leaves the other two unguarded (they drift free silently). Layouts gain
+    // no import here: `strings` and `id` arrive as props, and a body importing
+    // from @/shared/i18n still fails the walk as a module-scope reference.
+    const ast = parseFile(WIDGET_FILES[1].path);
+    const layouts = findWidgetFunctions(ast);
+    expect(layouts).toHaveLength(3);
+
+    const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
+    layouts.forEach((layout, index) => {
+      const violations = closureViolations(layout, runtimeGlobals);
+      expect(`lock layout ${index + 1}: ${violations.join(', ')}`).toBe(`lock layout ${index + 1}: `);
+    });
+  });
 });
 
 // =============================================================================
@@ -194,13 +224,13 @@ describe('palette literals', () => {
     expect(literals).not.toContain(null);
 
     // Anchors track the ACTIVE design's declared core palette (every
-    // literal must appear in the layout). Light: the 2026-08-31 "Cotton
+    // literal must appear in the layout). Light: the "Cotton
     // Candy" pane — rose name, dark ink hero, blue-tinted secondary,
-    // indigo/rose pills with pale pink text. Dark (2026-09-01 "Violet
-    // Dusk", owner-approved): navy-violet card on every size, pink name,
+    // indigo/rose pills with pale pink text. Dark ("Violet
+    // Dusk"): navy-violet card on every size, pink name,
     // white hero, periwinkle-tinted small texts with blue-grey medium
     // texts, app indigo + muted magenta pills, neutral violet depth
-    // shadow. The orb glows are gone (owner ruling 2026-09-20).
+    // shadow. The orb glows are gone.
     const anchors = [
       // Light palette
       'rgba(252, 252, 254, 0.92)',
@@ -216,14 +246,14 @@ describe('palette literals', () => {
       'rgba(42, 68, 130, 0.32)',
       'rgba(79, 70, 229, 0.35)',
       'rgba(219, 39, 119, 0.35)',
-      // Dark palette — Gradient Deep (owner pick 2026-09-20)
+      // Dark palette — Gradient Deep
       'rgba(9, 21, 47, 0.95)', // card — every dark size
       '#f6f8fc', // hero / passed rows
       '#cad8ed', // active row text — standard, white + hint of slate blue
       '#ffeaf4', // active row text — extras, white + hint of pink
       '#f774b6', // eyebrow + stale mark
       'rgba(138, 169, 214, 0.54)', // secondary — the base whisper, both sizes
-      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base (owner ruling 2026-09-20)
+      'rgba(138, 169, 214, 0.405)', // upcoming rows — a quarter fainter than the base
       'rgba(138, 169, 214, 0.27)', // footer — half the base
       '#a123aa', // extras pill
       '#2743e0', // standard pill — the app gradient's blue, deepened
@@ -264,7 +294,7 @@ describe('palette literals', () => {
       'rgba(219, 39, 119, 0.35)',
       '#2f3d5c',
       'rgba(42, 68, 130, 0.32)',
-      // Home widget — dark Gradient Deep (owner pick 2026-09-20: the app
+      // Home widget — dark Gradient Deep (the app
       // screen gradient's start, deepened; whispers from the app's muted text)
       'rgba(9, 21, 47, 0.95)',
       '#f6f8fc',
@@ -396,4 +426,325 @@ describe('widget directive', () => {
       expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
     });
   }
+});
+
+// =============================================================================
+// 5. PROPS v7: EVERY PUSH CARRIES A PRECOMPOSED LOCALIZED FOOTER (R7.1)
+// =============================================================================
+
+/** The footer bytes the v6-era layouts derived by parsing the label, kept as the en parity oracle */
+const legacyFooterParse = (label: string): string => {
+  const datePrefix = label.split(',')[0] ?? '';
+  const dateTokens = datePrefix.split(' ');
+  if (dateTokens.length === 1) return dateTokens[0] ?? '';
+  return `${dateTokens[0].slice(0, 3)} ${dateTokens[dateTokens.length - 1]}`;
+};
+
+describe('widget props v8 footers', () => {
+  const DAY_ONE = '2026-10-17'; // Saturday
+  const DAY_TWO = '2026-10-18'; // Sunday
+  const PUSH_AT = createPrayerDatetime(DAY_ONE, '14:00');
+  const TIMES: [PrayerId, string][] = [
+    ['fajr', '05:30'],
+    ['sunrise', '07:10'],
+    ['dhuhr', '12:45'],
+    ['asr', '15:20'],
+    ['magrib', '18:05'],
+    ['isha', '19:40'],
+  ];
+
+  const makePrayer = (date: string, time: string, id: PrayerId): ReadablePrayer => ({
+    type: ScheduleType.Standard,
+    id,
+    datetime: createPrayerDatetime(date, time),
+    time,
+    belongsToDate: date,
+  });
+
+  const sequence: PrayerSequence = {
+    type: ScheduleType.Standard,
+    prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
+  };
+
+  it('stamps v8 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
+    expect(WIDGET_PROPS_VERSION).toBe(8);
+
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false }, 'light');
+    for (const entry of entries) {
+      expect(typeof entry.props.footer).toBe('string');
+      expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
+    }
+    // The footer is catalog-sourced: DAY_TWO entries carry the short weekday key
+    const sunday = entries.find(
+      (entry) => entry.props.dateLabel === `${t('calendar.weekdayShort.7')}, 18 ${t('calendar.monthShort.10')} 2026`
+    );
+    expect(sunday?.props.footer).toBe(t('calendar.weekdayShort.7'));
+  });
+
+  it('stamps v4 and a footer on every Android snapshot day, same composition', () => {
+    expect(ANDROID_SNAPSHOT_VERSION).toBe(4);
+
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    expect(snapshot.days.map((day) => day.footer)).toEqual([
+      t('calendar.weekdayShort.6'),
+      t('calendar.weekdayShort.7'),
+    ]);
+    for (const day of snapshot.days) {
+      expect(day.footer).toBe(legacyFooterParse(day.dateLabel));
+    }
+  });
+
+  it('bakes no `now` into the Android strings contract', () => {
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    // The word never renders on any widget (owner, on glass), so the rider
+    // left the contract. `s` stays: only `now` was ordered out.
+    expect(snapshot.strings).not.toHaveProperty('now');
+    expect(snapshot.strings).toHaveProperty('s', 's');
+  });
+
+  it('composes the Hijri footer from the month prefix and day under the preference', () => {
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true }, 'light');
+    for (const entry of entries) {
+      expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
+    }
+
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    for (const day of snapshot.days) {
+      expect(day.footer).toBe(legacyFooterParse(day.dateLabel));
+    }
+  });
+});
+
+describe('the rtl field is documented as consumed', () => {
+  it('documents rtl as consumed, not stamped-and-unread', () => {
+    const source = readFileSync(join(__dirname, '../../shared/widgetTypes.ts'), 'utf8');
+
+    // Each rtl field's docblock is the comment block immediately above it;
+    // the interface-level version-history comments are not field docblocks
+    const docblocks = [...source.matchAll(/\/\*\*(?:(?!\*\/)[\s\S])*\*\/\n {2}rtl\?: boolean;/g)].map(
+      (match) => match[0]
+    );
+    expect(docblocks).toHaveLength(2);
+
+    const [ios, android] = docblocks;
+    expect(ios).toContain('the patched entry view');
+    expect(android).toContain('composition mirror');
+    for (const docblock of docblocks) {
+      expect(docblock).not.toContain('blocked');
+      expect(docblock).not.toContain('P16');
+    }
+
+    // The v8/v4 version-history comments keep their provenance words
+    expect(source.split('(blocked, P16)').length - 1).toBe(2);
+  });
+});
+
+// =============================================================================
+// 6. THE NEUTRAL AND STALE LITERAL SITES RESOLVE THROUGH THEIR LOCAL TABLE
+// =============================================================================
+
+type MarkerNode = { marker: string; props: Record<string, unknown> };
+type Element = { type: unknown; props: Record<string, unknown> };
+
+const isElement = (node: unknown): node is Element =>
+  node !== null && typeof node === 'object' && 'type' in node && 'props' in node;
+
+const renderTree = (node: unknown): unknown => {
+  if (Array.isArray(node)) return node.flatMap((child) => renderTree(child));
+  if (!isElement(node)) return node;
+
+  if (typeof node.type === 'function') {
+    const rendered = (node.type as (props: Record<string, unknown>) => unknown)(node.props);
+    return renderTree(rendered);
+  }
+
+  const props = { ...node.props };
+  if ('children' in props) props.children = renderTree(props.children);
+  return { marker: (node.type as { marker?: string }).marker ?? String(node.type), props };
+};
+
+const marker = (name: string) => {
+  const component = (props: Record<string, unknown>): MarkerNode => ({
+    marker: name,
+    props: { ...props, children: renderTree(props.children) },
+  });
+  return Object.assign(component, { marker: name });
+};
+
+const textsOf = (tree: unknown): string[] => {
+  const found: string[] = [];
+  const walk = (node: unknown): void => {
+    if (Array.isArray(node)) {
+      for (const child of node) walk(child);
+      return;
+    }
+    if (node !== null && typeof node === 'object' && 'marker' in node) {
+      const markerNode = node as MarkerNode;
+      if (markerNode.marker === 'Text') {
+        const children = markerNode.props.children;
+        const parts = Array.isArray(children) ? children : [children];
+        found.push(parts.map((part) => (part === null || typeof part !== 'object' ? String(part ?? '') : '')).join(''));
+      }
+      walk(markerNode.props.children);
+    }
+  };
+  walk(tree);
+  return found.map((text) => text.replace(/\s+/g, ' ').trim()).filter((text) => text.length > 0);
+};
+
+describe('the statics table resolves every neutral and stale site', () => {
+  const AR = {
+    subtitle: 'أوقات الصلاة في لندن',
+    inline: 'Athan - أوقات الصلاة',
+    rectTitle: 'ATHAN',
+    rectSubtitle: 'افتح لتحميل الأوقات',
+    staleTitle: 'غير محدّث',
+    staleBody: 'افتح التطبيق للتحديث',
+    staleInline: 'Athan - افتح لتحديث الأوقات',
+    refreshLine: 'افتح Athan للتحديث',
+    refreshLead: 'افتح Athan',
+    refreshTail: 'للتحديث',
+    catchBody: 'افتح التطبيق للتحديث',
+  };
+
+  type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
+
+  const loadWith = (requirePath: string, platform: 'ios' | 'android'): WidgetModule => {
+    const captured: WidgetModule = {};
+    jest.resetModules();
+    jest.isolateModules(() => {
+      jest.doMock('expo-widgets', () => ({
+        createWidget: (name: string, layout: (props: unknown, environment: unknown) => unknown) => {
+          captured[name] = layout;
+          return {};
+        },
+      }));
+      jest.doMock('@expo/ui/swift-ui', () => ({
+        HStack: marker('HStack'),
+        Image: marker('Image'),
+        RoundedRectangle: marker('RoundedRectangle'),
+        Spacer: marker('Spacer'),
+        Text: marker('Text'),
+        VStack: marker('VStack'),
+        ZStack: marker('ZStack'),
+      }));
+      jest.doMock('@expo/ui/swift-ui/modifiers', () => {
+        const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
+        for (const name of [
+          'containerBackground',
+          'containerRelativeFrame',
+          'font',
+          'foregroundStyle',
+          'frame',
+          'kerning',
+          'lineLimit',
+          'minimumScaleFactor',
+          'monospacedDigit',
+          'multilineTextAlignment',
+          'offset',
+          'padding',
+          'shadow',
+          'strokeBorder',
+          'textCase',
+          'fixedSize',
+        ]) {
+          modifiers[name] = (...args: unknown[]) => ({
+            modifier: name,
+            value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+          });
+        }
+        return modifiers;
+      });
+      jest.doMock('@expo/ui/jetpack-compose', () => ({
+        Box: platform === 'android' ? marker('Box') : undefined,
+        Button: platform === 'android' ? marker('Button') : undefined,
+        Column: platform === 'android' ? marker('Column') : undefined,
+        Image: platform === 'android' ? marker('Image') : undefined,
+        Row: platform === 'android' ? marker('Row') : undefined,
+        Spacer: platform === 'android' ? marker('Spacer') : undefined,
+        Text: platform === 'android' ? marker('Text') : undefined,
+      }));
+      jest.doMock('@expo/ui/jetpack-compose/modifiers', () => {
+        const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
+        for (const name of ['fillMaxHeight', 'fillMaxSize', 'fillMaxWidth', 'height', 'padding', 'width']) {
+          modifiers[name] = (...args: unknown[]) => ({
+            modifier: name,
+            value: args.length === 0 ? undefined : args.length === 1 ? args[0] : args,
+          });
+        }
+        return modifiers;
+      });
+      require(requirePath);
+    });
+    return captured;
+  };
+
+  beforeAll(() => {
+    (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+  });
+
+  afterAll(() => {
+    delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+  });
+
+  it('renders the home neutral card under ar on both runtimes', () => {
+    const homeIos = loadWith('../../widgets/PrayerWidget', 'ios');
+    const homeAndroid = loadWith('../../widgets/PrayerWidget', 'android');
+
+    const ios = textsOf(renderTree(homeIos.PrayerWidget(null, { colorScheme: 'light', widgetFamily: 'systemSmall' })));
+    expect(ios).toEqual(['Athan', AR.subtitle]);
+    expect(ios).not.toContain('Prayer times for London');
+
+    const android = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(android).toEqual(['Athan', AR.subtitle]);
+  });
+
+  it('renders the home stale card under ar in both families', () => {
+    const homeIos = loadWith('../../widgets/PrayerWidget', 'ios');
+    const stale = {
+      v: 7,
+      schedule: 'standard' as const,
+      theme: 'light' as const,
+      nextName: 'Asr',
+      nextTime: '15:20',
+      nextEpochMs: 1,
+      prevEpochMs: 1,
+      dateLabel: 'Sat, 17 Oct 2026',
+      stale: true,
+    };
+
+    const small = textsOf(
+      renderTree(homeIos.PrayerWidget(stale, { colorScheme: 'light', widgetFamily: 'systemSmall' }))
+    );
+    expect(small).toEqual([AR.staleTitle, AR.refreshLead, AR.refreshTail]);
+    expect(small).not.toContain('Out of date');
+
+    const medium = textsOf(
+      renderTree(homeIos.PrayerWidget(stale, { colorScheme: 'light', widgetFamily: 'systemMedium' }))
+    );
+    expect(medium).toEqual([AR.staleTitle, AR.refreshLine]);
+  });
+
+  it('renders every lock layout neutral under ar, inline and rectangular', () => {
+    const lock = loadWith('../../widgets/LockPrayerWidget', 'ios');
+
+    for (const [name, layout] of [
+      ['countdown pair', lock.PrayerLockWidget],
+      ['centred', lock.PrayerLockWidget2],
+      ['stacked', lock.PrayerLockWidget3],
+    ] as const) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${AR.inline}`);
+      expect(inline).not.toContain('Athan — prayer times');
+
+      const rect = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryRectangular' })));
+      expect(`${name} rect: ${rect.join('/')}`).toBe(`${name} rect: ${AR.rectTitle}/${AR.rectSubtitle}`);
+    }
+  });
 });

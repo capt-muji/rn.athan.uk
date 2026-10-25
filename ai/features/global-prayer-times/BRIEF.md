@@ -34,7 +34,7 @@ So the shape of the answer has three parts, and the research must serve all thre
 3. **What it costs.** Offline-first is the constraint, not a preference. An API is a last resort, and a yearly fetch
    is the only acceptable API shape if one is used at all.
 
-## The standing rules, inherited from wave 1 and from `ai/AGENTS.md`
+## The standing rules, inherited from wave 1 and from the root `AGENTS.md`
 
 - **Never copy, average or invent a prayer time.** Report deltas in minutes against a named source.
 - **Read sources in full.** No slices in place of reading, no summary standing in for a source.
@@ -43,7 +43,7 @@ So the shape of the answer has three parts, and the research must serve all thre
 - **Honest nulls.** Where a fact could not be sourced, the report says so rather than guessing.
 - **No secrets.** No API key is printed, stored or committed. The London Prayer Times key is not used in this wave.
 - **No app work.** No app code, no test runs, no builds, no EAS, no dependency installed into the repository.
-- **House style** (`ai/AGENTS.md` section 8): no em dashes, no arrows in prose, no exclamation marks, no emoji, no
+- **House style** (the writing rules, global and root): no em dashes, no arrows in prose, no exclamation marks, no emoji, no
   filler. Tables for comparisons, backticks for identifiers, a one-page findings list at the top of every report.
 
 ## Scope: what this wave covers

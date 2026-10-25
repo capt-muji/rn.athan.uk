@@ -45,6 +45,16 @@ const UNMEASURED = [
     reason: 'executed research artefacts, run once under Node against published timetables, never by the app',
   },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
+  {
+    path: 'ai/plans/',
+    reason:
+      'session plan scaffolding: census and anchor scripts run by planning sessions against the tree, never by the app; deleted at the plan folder\u2019s merge',
+  },
+  {
+    path: 'board/',
+    reason:
+      'local-only ticket board generator and server, never imported by the app; proven by running it against this repository, per the ruling that yarn validate gates nothing',
+  },
   { path: '.agents/', reason: 'Expo and EAS agent skills, documentation for coding agents' },
   { path: 'jest.config.js', reason: 'test runner configuration' },
   { path: 'jest.setup.js', reason: 'test runner configuration' },

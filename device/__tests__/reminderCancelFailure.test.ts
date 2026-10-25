@@ -16,6 +16,8 @@ import { AlertType, ScheduleType } from '@/shared/types';
 const mockGetReminders = jest.fn();
 
 jest.mock('@/stores/database', () => ({
+  getItem: () => null,
+  getRawItem: () => undefined,
   getAllScheduledRemindersForPrayer: (...args: unknown[]) => mockGetReminders(...args),
 }));
 
@@ -30,7 +32,6 @@ const record = (id: string) => ({
   date: id.slice(22, 32),
   time: '05:04',
   englishName: 'Suhoor',
-  arabicName: 'السحور',
   alertType: AlertType.Silent,
 });
 

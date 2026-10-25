@@ -5,11 +5,16 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
+import { I18nManager, StyleSheet } from 'react-native';
 
-import { COLOR_PICKER_DEFAULT } from '@/shared/constants';
+import { seedCountdownBarOn } from '@/__tests__/harness';
+import { COLOR_PICKER_DEFAULT, COLORS } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 import ColorPickerSettings from '../ColorPicker';
+
+beforeEach(() => seedCountdownBarOn());
 
 const CUSTOM_COLOUR = '#ff3366';
 
@@ -31,6 +36,82 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     expect(screen.getByText('Select Color')).toBeOnTheScreen();
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  // The library snapshots I18nManager.isRTL at module load and writes its geometry for that
+  // value, so the picker's resolved direction keys on the same snapshot: the geometry and
+  // its layout stay in step in every launch state (row 73)
+  it('renders the panel and the hue bar locked to the snapshotted direction, LTR here', async () => {
+    await render(<ColorPickerSettings />);
+    await openPicker();
+
+    const panel = screen.getByLabelText('Saturation and brightness 2D slider');
+    const slider = screen.getByLabelText('Hue Slider');
+
+    expect(StyleSheet.flatten(panel.props.style).direction).toBe('ltr');
+    expect(StyleSheet.flatten(slider.props.style).direction).toBe('ltr');
+
+    const overlay = screen.getByTestId('picker-modal-root');
+
+    expect(StyleSheet.flatten(overlay.props.style).direction).toBe('ltr');
+  });
+
+  // The modal hosts on the native side, outside the tree root the layout keys: its content
+  // carries the app's own direction so the sheet reads the same way the app does
+  it('hosts the picker modal content in the app locale direction, right-to-left under ar', async () => {
+    setActiveLocale('ar');
+
+    try {
+      await render(<ColorPickerSettings />);
+      await fireEvent.press(screen.getByText('لون شريط العد التنازلي'));
+
+      const overlay = screen.getByTestId('picker-modal-root');
+
+      expect(I18nManager.getConstants().isRTL).toBe(false);
+      expect(StyleSheet.flatten(overlay.props.style).direction).toBe('rtl');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  // The components project renders against the real I18nManager, so the snapshot the picker
+  // keys on is forced here rather than through the shared react-native mock
+  it('renders the panel and the hue bar locked to the snapshotted direction, RTL when the snapshot says so', async () => {
+    jest
+      .spyOn(I18nManager, 'getConstants')
+      .mockReturnValue({ isRTL: true, doLeftAndRightSwapInRTL: true, localeIdentifier: 'ar' });
+
+    try {
+      await render(<ColorPickerSettings />);
+      await openPicker();
+
+      const panel = screen.getByLabelText('Saturation and brightness 2D slider');
+      const slider = screen.getByLabelText('Hue Slider');
+
+      expect(StyleSheet.flatten(panel.props.style).direction).toBe('rtl');
+      expect(StyleSheet.flatten(slider.props.style).direction).toBe('rtl');
+    } finally {
+      jest.restoreAllMocks();
+    }
+  });
+
+  // The modal pops over the settings sheet, so what sits behind it must dim exactly as every other
+  // bottom sheet dims: one shared constant, not a private rgba
+  it('dims everything behind the open picker with the shared sheet backdrop', async () => {
+    await render(<ColorPickerSettings />);
+    await openPicker();
+
+    const overlay = screen.getByTestId('picker-modal-root');
+
+    expect(StyleSheet.flatten(overlay.props.style).backgroundColor).toBe(COLORS.surface.backdropDim);
+  });
+
+  // The dim is the shared backdrop's channels at the 0.9 the sheets' renderBackdrop composites, so the
+  // modal and the sheets cannot drift apart
+  it('derives the picker dim from the shared backdrop at the 0.9 the sheets composite', () => {
+    const channels = [1, 3, 5].map((at) => Number.parseInt(COLORS.surface.backdrop.slice(at, at + 2), 16));
+
+    expect(COLORS.surface.backdropDim).toBe(`rgba(${channels.join(', ')}, 0.9)`);
   });
 
   it('opens nothing, and stays still, when pressed while the bar is hidden', async () => {
@@ -107,6 +188,22 @@ describe('the countdown bar colour row in the settings sheet', () => {
     await render(<ColorPickerSettings />);
 
     expect(screen.queryAllByRole('button', { name: 'Reset to the default colour' })).toHaveLength(reachable);
+  });
+
+  // The reset never renders black on any platform: every state paints an opaque ink, and the hidden
+  // state paints the card face the row sits on, because Android paints alpha-0 ink black (the 3T's defect)
+  it.each([
+    ['hides in the card face at the default colour', COLOR_PICKER_DEFAULT, true, '#101d45'],
+    ['shows its grey ink at a custom colour', CUSTOM_COLOUR, true, '#5b77a4'],
+    ['takes the old flatten at a custom colour while the bar is hidden', CUSTOM_COLOUR, false, '#1f3055'],
+  ])('%s', async (_what, colour, shown, ink) => {
+    store.set(countdownBarColorAtom, colour);
+    store.set(countdownBarShownAtom, shown);
+    await render(<ColorPickerSettings />);
+
+    const reset = screen.getByText('Reset', { includeHiddenElements: true });
+
+    expect(StyleSheet.flatten(reset.props.style).color).toBe(ink);
   });
 
   it('puts the default colour back with a haptic when Reset is pressed', async () => {

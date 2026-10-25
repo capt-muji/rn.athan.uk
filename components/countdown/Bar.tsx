@@ -10,10 +10,12 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
+import { fillAnchorFor, TIP_OVAL_WIDTH, tipLeftForProgress } from '@/components/countdown/tipGeometry';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { getBarOpacity, useCountdownBar } from '@/hooks/useCountdownBar';
 import { ANIMATION, COLORS, COUNTDOWN_BAR, COUNTDOWN_TIP } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { countdownBarColorAtom, resyncAtom } from '@/stores/ui';
@@ -73,6 +75,9 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
   const atomColor = useAtomValue(countdownBarColorAtom);
   const resync = useAtomValue(resyncAtom);
+  // Read at render, the directionGlyph pattern: a crossing pick relaunches the context,
+  // so no stale direction can outlive a switch
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
 
   const countdownBarColor = previewColor ?? atomColor;
   const progress = previewProgress ?? (isReady ? 100 - elapsedProgress : 0);
@@ -145,8 +150,10 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
 
   // Clamped so the oval cannot overhang the track at either end (tipGeometry)
   const tipPositionStyle = useAnimatedStyle(() => ({
-    left: tipLeftForProgress(widthValue.value),
+    left: tipLeftForProgress(widthValue.value, isRTL),
   }));
+
+  const fillAnchorStyle = fillAnchorFor(isRTL);
 
   const tipAppearanceStyle = useAnimatedStyle(() => {
     const baseColor = interpolateColor(colorValue.value, [0, 1], [countdownBarColor, COLORS.feedback.warning]);
@@ -162,8 +169,8 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
     <Animated.View
       style={[styles.wrapper, wrapperOpacityStyle, scaleStyle]}
       accessible
-      accessibilityRole='progressbar'
-      accessibilityLabel={`Prayer countdown: ${Math.round(progress)} percent remaining`}
+      accessibilityRole={'progressbar'}
+      accessibilityLabel={t('countdown.progressA11y', { percent: Math.round(progress) })}
       accessibilityValue={{ min: 0, max: 100, now: progress }}
       accessibilityLiveRegion={isWarning ? 'assertive' : 'none'}
       // Hidden because it cannot be worked out, so no percentage may be announced for it
@@ -172,13 +179,13 @@ export default function CountdownBar({ type, previewColor, previewProgress, scal
       {/* Track (background trough) */}
       <Animated.View style={styles.track}>
         {/* Progress bar */}
-        <Animated.View style={[styles.bar, barWidthStyle, barColorStyle]}>
+        <Animated.View style={[styles.bar, fillAnchorStyle, barWidthStyle, barColorStyle]}>
           <Animated.View style={styles.barHighlight} />
         </Animated.View>
       </Animated.View>
 
       {/* Pulsing tip indicator */}
-      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents='none'>
+      <Animated.View style={[styles.tipContainer, tipPositionStyle]} pointerEvents={'none'}>
         <Animated.View style={[styles.tipOval, tipAppearanceStyle]} />
       </Animated.View>
     </Animated.View>
@@ -210,8 +217,8 @@ const styles = StyleSheet.create({
   barHighlight: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     height: COUNTDOWN_BAR.GLOSS_HEIGHT,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },

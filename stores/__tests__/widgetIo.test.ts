@@ -175,7 +175,7 @@ describe('label-flip re-push scheduler', () => {
   // Every push costs a WidgetKit reload per kind, and a reload re-renders the
   // whole timeline. A timer that re-pushed twelve kinds a minute exhausted the
   // extension's CPU budget and iOS killed it mid-render, which WidgetKit shows
-  // as "Please adopt containerBackground API" (ISSUES.md §G.1). These pin the
+  // as "Please adopt containerBackground API" (ledger G.1 (git history)). These pin the
   // absence of that chain: pushes are driven by data, never by a clock.
 
   it('pushes once per refresh and never re-pushes on a timer', async () => {

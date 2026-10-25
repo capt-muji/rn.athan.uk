@@ -162,7 +162,7 @@ Restricted to the 5094 cities in Muslim-majority countries (population 792,043,0
 | `Asia/Bahrain`         | 8      | Al Muharraq         | Manama          | 1         | 24                    | 100.0%      | 100.0%      |
 | `Indian/Maldives`      | 1      | Male                |                 | 0         | 0                     | 100.0%      | 100.0%      |
 
-## 2D. The five cities session 37 measured for qibla, measured here for prayer times
+## 2D. The five cities sob 37 measured for qibla, measured here for prayer times
 
 | city       | cc | zone               | zone principal city | km from it | worst displayed-min error |
 | ---------- | -- | ------------------ | ------------------- | ---------- | ------------------------- |

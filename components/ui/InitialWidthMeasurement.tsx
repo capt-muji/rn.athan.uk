@@ -1,38 +1,56 @@
 import { StyleSheet, Text } from 'react-native';
 
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH, TEXT } from '@/shared/constants';
-import { getLongestPrayerNameIndex } from '@/shared/prayer';
+import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS, TEXT } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
-import { setEnglishWidth } from '@/stores/ui';
+import { typographyFor } from '@/shared/typography';
+import { setNameWidth } from '@/stores/ui';
 
 /**
- * Continuously measures the width of the longest prayer name for both
- * schedules. The hidden texts stay mounted for the app's lifetime and the
- * store accepts only measurements that WIDEN the cached value, so a bad
- * first-launch measure (pre-custom-font fallback metrics are narrower -
- * ISSUES #22) self-heals on the next launch instead of persisting until
- * the user clears data. Two transparent absolutely-positioned Texts cost
- * nothing while mounted.
+ * Continuously measures the width of every prayer name for both schedules:
+ * the widest label in rendered points is the reserve, and character count
+ * only approximates it (the Somali report had a shorter wide-glyph name
+ * wrapping inside the character-longest's reserve). The hidden texts stay
+ * mounted for the app's lifetime and the store accepts only measurements
+ * that WIDEN the cached value, so a bad first-launch measure (pre-custom-
+ * font fallback metrics are narrower - ISSUES #22) self-heals on the next
+ * launch. Transparent absolutely-positioned Texts cost nothing while
+ * mounted.
  */
 export default function InitialWidthMeasurement() {
   return (
     <>
-      <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
-        {PRAYERS_ENGLISH[getLongestPrayerNameIndex(ScheduleType.Standard)]}
-      </Text>
-      <Text style={styles.hidden} onLayout={(e) => setEnglishWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
-        {EXTRAS_ENGLISH[getLongestPrayerNameIndex(ScheduleType.Extra)]}
-      </Text>
+      {STANDARD_PRAYER_IDS.map((id) => (
+        <Text
+          key={id}
+          style={styles.hidden}
+          onLayout={(e) => setNameWidth(ScheduleType.Standard, e.nativeEvent.layout.width)}>
+          {prayerLabel(id)}
+        </Text>
+      ))}
+      {EXTRA_PRAYER_IDS.map((id) => (
+        <Text
+          key={id}
+          style={styles.hidden}
+          onLayout={(e) => setNameWidth(ScheduleType.Extra, e.nativeEvent.layout.width)}>
+          {prayerLabel(id)}
+        </Text>
+      ))}
     </>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   hidden: {
     position: 'absolute',
     pointerEvents: 'none',
-    opacity: 0,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
+    // Off-screen rather than opacity 0: the texts stay laid out for their onLayout
+    // measure and never render through an opacity value
+    top: -10000,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
   },
 });

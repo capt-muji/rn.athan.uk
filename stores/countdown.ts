@@ -8,6 +8,7 @@ import { type Atom, atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { COUNTDOWN_BAR, COUNTDOWN_WAITING_NAME, OVERLAY, UNAVAILABLE_TIME } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import { perfMark } from '@/shared/perf';
 import { findNextOccurrence, isReadable, isRowPassed } from '@/shared/sequence';
@@ -42,7 +43,7 @@ const countdowns: Record<CountdownKey, ReturnType<typeof setTimeout> | undefined
 
 // --- Initial values ---
 
-const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'Fajr' });
+const createInitialCountdown = (): CountdownStore => ({ timeLeft: 10, name: 'fajr' });
 
 // --- Atoms ---
 
@@ -65,10 +66,16 @@ export const getCountdownAtom = (type: ScheduleType) => {
 // --- Render-granular derived selectors (#10) ---
 
 /**
- * Builds a name selector over a countdown source: emits only when the NAME
- * string actually changes (per-prayer, not per-second).
+ * Builds a name selector over a countdown source: emits only when the LABEL
+ * string actually changes (per-prayer, not per-second). The slot carries an id,
+ * so the label resolves here — the one display read between the store and the
+ * component that draws it.
  */
-const makeCountdownNameAtom = (source: Atom<CountdownStore>) => atom((get) => get(source).name);
+const makeCountdownNameAtom = (source: Atom<CountdownStore>) =>
+  atom((get) => {
+    const name = get(source).name;
+    return name === COUNTDOWN_WAITING_NAME ? name : prayerLabel(name);
+  });
 
 /**
  * Builds a display-string selector over a countdown source: emits only when
@@ -220,7 +227,7 @@ export const getBarAvailableAtom = (type: ScheduleType): Atom<boolean> =>
 const clearCountdown = (countdownKey: CountdownKey) => {
   if (!countdowns[countdownKey]) return;
 
-  clearTimeout(countdowns[countdownKey]!);
+  clearTimeout(countdowns[countdownKey]);
   countdowns[countdownKey] = undefined;
 };
 
@@ -410,15 +417,15 @@ const writeDisplayCountdown = (type: ScheduleType) => {
     store.set(
       countdownAtom,
       isReadable(selected)
-        ? { timeLeft: TimeUtils.getSecondsRemaining(selected.datetime), name: selected.english }
-        : { timeLeft: null, name: selected.english }
+        ? { timeLeft: TimeUtils.getSecondsRemaining(selected.datetime), name: selected.id }
+        : { timeLeft: null, name: selected.id }
     );
     return;
   }
 
   // A list waiting for its day to end has no prayer of its own left: its next prayer belongs to a later day, so
-  // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11, owner rulings
-  // 2026-09-14). The held atom is also true once no readable prayer is left at all
+  // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11).
+  // The held atom is also true once no readable prayer is left at all
   if (store.get(getDisplayHeldAtom(type))) {
     store.set(countdownAtom, { timeLeft: null, name: COUNTDOWN_WAITING_NAME });
     return;
@@ -427,7 +434,7 @@ const writeDisplayCountdown = (type: ScheduleType) => {
   const next = getNextPrayer(type);
   if (!next) return;
 
-  store.set(countdownAtom, { timeLeft: TimeUtils.getSecondsRemaining(next.datetime), name: next.english });
+  store.set(countdownAtom, { timeLeft: TimeUtils.getSecondsRemaining(next.datetime), name: next.id });
 };
 
 /**

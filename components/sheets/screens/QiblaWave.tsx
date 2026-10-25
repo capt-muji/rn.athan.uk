@@ -12,6 +12,7 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 
 import { COLORS } from '@/shared/constants';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import {
   phoneBody,
   phoneNotch,
@@ -50,6 +51,11 @@ const WAVE_DURATION = 3200;
 export default function QiblaWave({ size }: { size: number }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
+  // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in.
+  // The locale's own direction, not the bridge snapshot: a starved crossing (row 78) renders
+  // Arabic while I18nManager still reports the launch direction, and row 80's layout keys the
+  // same locale — the wave and the layout must not disagree
+  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   const body = phoneBody(size);
   const screen = phoneScreen(size);
   const notch = phoneNotch(size);
@@ -67,19 +73,19 @@ export default function QiblaWave({ size }: { size: number }) {
   }, [progress]);
 
   const trailProps = useAnimatedProps(() => ({
-    d: waveTrail(progress.value, figureWidth, figureHeight),
+    d: waveTrail(progress.value, figureWidth, figureHeight, isRTL),
   }));
 
   // Travels and TURNS, never scales: the phone keeps its dimensions the whole way round, and facing along the
   // curve is what keeps the trail leaving its bottom edge
   const phoneStyle = useAnimatedStyle(() => {
-    const at = wavePoint(progress.value, figureWidth, figureHeight);
+    const at = wavePoint(progress.value, figureWidth, figureHeight, isRTL);
 
     return {
       transform: [
         { translateX: at.x },
         { translateY: at.y },
-        { rotate: `${waveHeading(progress.value, figureWidth, figureHeight)}deg` },
+        { rotate: `${waveHeading(progress.value, figureWidth, figureHeight, isRTL)}deg` },
       ],
     };
   });
@@ -89,47 +95,48 @@ export default function QiblaWave({ size }: { size: number }) {
     <View
       style={[styles.stage, { width: canvasWidth, height: canvasHeight }]}
       accessibilityElementsHidden
-      importantForAccessibility='no-hide-descendants'>
+      importantForAccessibility={'no-hide-descendants'}>
       <Svg
         width={canvasWidth}
         height={canvasHeight}
         viewBox={`${-canvasWidth / 2} ${-canvasHeight / 2} ${canvasWidth} ${canvasHeight}`}>
         <Path
-          d={wavePath(figureWidth, figureHeight)}
-          fill='none'
+          testID={'qibla-wave-guide'}
+          d={wavePath(figureWidth, figureHeight, isRTL)}
+          fill={'none'}
           stroke={`rgba(${PALETTE.structure}, 0.16)`}
           strokeWidth={size * WAVE.stroke}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.halo}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.12}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.halo * 0.5}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.3}
         />
         <AnimatedPath
           animatedProps={trailProps}
-          fill='none'
+          fill={'none'}
           stroke={PALETTE.accent}
           strokeWidth={size * WAVE.trail.core}
-          strokeLinecap='round'
+          strokeLinecap={'round'}
           opacity={0.85}
         />
       </Svg>
       {/* Views rather than animated SVG nodes: react-native-svg re-walks its whole drawing pipeline on any
           attribute change, where a transform on a layer is composited */}
       <Animated.View
-        testID='qibla-wave-phone'
+        testID={'qibla-wave-phone'}
         style={[
           styles.phone,
           { width: body.width, height: body.height, borderRadius: body.radius, borderWidth: size * WAVE.stroke },

@@ -2,6 +2,8 @@ import * as Notifications from 'expo-notifications';
 import { Alert, AppState, Linking } from 'react-native';
 
 import * as Device from '@/device/notifications';
+import type { PrayerId } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { type AlertMenuState, AlertType, type ScheduleType } from '@/shared/types';
@@ -53,18 +55,22 @@ const listenForReturnToApp = () => {
  *   caller never waits forever
  */
 const showSettingsDialog = (): Promise<boolean> => {
+  const title = t('notifications.enableTitle');
+  const message = t('notifications.enableMessage');
+  const cancel = t('dialog.cancel');
+  const openSettings = t('dialog.openSettings');
   return new Promise((resolve) => {
     Alert.alert(
-      'Enable Notifications',
-      'Prayer time notifications are disabled. Would you like to enable them in settings?',
+      title,
+      message,
       [
         {
-          text: 'Cancel',
+          text: cancel,
           style: 'cancel',
           onPress: () => resolve(false),
         },
         {
-          text: 'Open Settings',
+          text: openSettings,
           onPress: async () => {
             const returnToApp = listenForReturnToApp();
 
@@ -201,8 +207,7 @@ export const useNotification = () => {
    *
    * @param scheduleType Schedule type (Standard or Extra)
    * @param prayerIndex Index of the prayer in its schedule (0-based)
-   * @param englishName English prayer name
-   * @param arabicName Arabic prayer name
+   * @param id Prayer id
    * @param originalState The original state when the menu was opened
    * @param currentState The current state when the menu is being closed
    * @returns Promise resolving to boolean indicating success
@@ -210,8 +215,7 @@ export const useNotification = () => {
   const commitAlertMenuChanges = async (
     scheduleType: ScheduleType,
     prayerIndex: number,
-    englishName: string,
-    arabicName: string,
+    id: PrayerId,
     originalState: AlertMenuState,
     currentState: AlertMenuState
   ): Promise<boolean> => {
@@ -228,10 +232,9 @@ export const useNotification = () => {
       return true;
     }
 
-    // Check permissions if enabling any notification
-    const enablesAnything =
-      currentState.atTimeAlert !== AlertType.Off ||
-      currentState.reminders.some((reminder) => reminder.alert !== AlertType.Off);
+    // A reminder fires only beside an on athan, so the athan alone says whether anything fires:
+    // preserved reminder values under an off athan prompt for nothing
+    const enablesAnything = currentState.atTimeAlert !== AlertType.Off;
 
     if (enablesAnything && !(await ensurePermissions())) {
       logger.warn('NOTIFICATION: Permissions not granted');
@@ -240,14 +243,13 @@ export const useNotification = () => {
 
     // The store writes the preferences, does the work and, when the phone refuses any part of it, puts BOTH back
     // inside the same lock acquisition. Doing that here made the undo a second acquisition, which anything queued
-    // meanwhile ran in front of (measured while planning session 6b). Deliberately no error haptic: an on-device
-    // feel-test (owner, 2026-09-08) found expo-haptics' Heavy single-shot indistinguishable from the normal Light
+    // meanwhile ran in front of. Deliberately no error haptic: an on-device
+    // feel-test found expo-haptics' Heavy single-shot indistinguishable from the normal Light
     // feedback, so the revert plays visually only — the icon snapping back is the signal.
     const committed = await NotificationStore.commitPrayerAlertChange(
       scheduleType,
       prayerIndex,
-      englishName,
-      arabicName,
+      id,
       currentState,
       originalState
     );
@@ -255,7 +257,7 @@ export const useNotification = () => {
     logger.info('NOTIFICATION: Alert menu changes settled:', {
       scheduleType,
       prayerIndex,
-      englishName,
+      id,
       atTimeChanged,
       reminderChanged,
       currentState,

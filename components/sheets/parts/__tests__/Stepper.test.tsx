@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 
+import { setActiveLocale } from '@/shared/i18n/locale';
 import type { ReminderInterval } from '@/shared/types';
 
 import Stepper from '../Stepper';
@@ -45,6 +46,21 @@ describe('the reminder stepper at 15 min', () => {
   });
 });
 
+describe('the reminder stepper under ar', () => {
+  it('shows the Latin number beside the ar word for minutes', async () => {
+    setActiveLocale('ar');
+    try {
+      await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+      expect(screen.getByText('15')).toBeOnTheScreen();
+      expect(screen.getByText('دقيقة')).toBeOnTheScreen();
+      expect(screen.getByLabelText('15 دقيقة')).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+});
+
 describe('the reminder stepper at either end of the intervals', () => {
   // A dead arrow names the value it is already on, because there is nothing beyond it to name.
   // Columns: the value shown, its dead arrow, its live arrow
@@ -70,6 +86,13 @@ describe('the reminder stepper at either end of the intervals', () => {
 
     expect(handlers[handler]).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('paints a dead arrow in the boundary solid and a live one in the enabled ink', async () => {
+    await render(<Stepper value={5} onDecrement={jest.fn()} onIncrement={jest.fn()} />);
+
+    expect(screen.getByText('−')).toHaveStyle({ color: '#1c2d60' });
+    expect(screen.getByText('+')).toHaveStyle({ color: '#eaf2fa' });
   });
 });
 
@@ -118,15 +141,25 @@ describe('the reminder stepper beside the other reminder', () => {
 
 describe('the reminder stepper at 15 min while the reminder is off', () => {
   it('tells a screen reader both arrows are disabled', async () => {
-    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} disabled />);
+    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} dim='off' />);
 
     expect(screen.getByRole('button', { name: 'Decrease to 10 min' })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Increase to 20 min' })).toBeDisabled();
   });
 
+  it('paints its value, unit and glyphs in the off solids over the off wash', async () => {
+    await render(<Stepper value={15} onDecrement={jest.fn()} onIncrement={jest.fn()} dim='off' />);
+
+    expect(screen.getByText('15')).toHaveStyle({ color: '#16224a' });
+    expect(screen.getByText('min')).toHaveStyle({ color: '#121f48' });
+    expect(screen.getByText('−')).toHaveStyle({ color: '#111d46' });
+    expect(screen.getByText('+')).toHaveStyle({ color: '#111d46' });
+    expect(screen.getByText('15').parent!.parent!).toHaveStyle({ backgroundColor: '#121e48' });
+  });
+
   it('ignores presses on both arrows, with no haptic', async () => {
     const handlers = { onDecrement: jest.fn(), onIncrement: jest.fn() };
-    await render(<Stepper value={15} {...handlers} disabled />);
+    await render(<Stepper value={15} {...handlers} dim='off' />);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Decrease to 10 min' }));
     await fireEvent.press(screen.getByRole('button', { name: 'Increase to 20 min' }));

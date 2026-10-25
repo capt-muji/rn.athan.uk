@@ -1,5 +1,5 @@
 /**
- * The compass face's geometry: the ticks, the letters, the Rub el Hizb jewel and the line to Makkah.
+ * The compass face's geometry: the ticks, the bearings, the Rub el Hizb jewel and the line to Makkah.
  *
  * Pure arithmetic on a circle of a given radius, so the face is built once at the size it is drawn and never
  * recomputed. Every ratio the drawing needs is in `FACE`, because a number invented at a call site is how four
@@ -23,16 +23,11 @@ export interface DialTick {
   weight: TickWeight;
 }
 
-export interface DialCardinal {
-  angle: number;
-  letter: string;
-}
-
 /**
  * Every radius, length and angle the face is built from, as a share of its radius.
  *
- * Taken from the design the owner locked on 2026-09-30. The drawing code is the specification:
- * where an old render and this file differ, this file is right.
+ * The drawing code is the specification: where an old render and this file
+ * differ, this file is right.
  */
 export const FACE = {
   /** The stroke unit every line width is a multiple of */
@@ -53,12 +48,20 @@ export const FACE = {
   /** How far each weight of tick reaches in, as a share of the radius */
   tickLength: { minor: 0.026, mid: 0.038, major: 0.055 },
   /**
-   * The cardinal letters' orbit: as far out toward their ticks as the Kaaba allows at EVERY bearing.
-   * Past this the cube overlaps a letter for about one user in five, since the clash depends on their qibla.
+   * The cardinal numbers' orbit: as far out toward their ticks as the Kaaba allows at EVERY bearing.
+   * Past this the cube overlaps a number for about one user in five, since the clash depends on their qibla.
    */
   cardinal: 0.7,
-  /** The cardinal letters' size */
-  cardinalSize: 0.096,
+  /** The cardinal numbers' size: half of the first size was too tiny, so it stands at a tenth over that */
+  cardinalSize: 0.0624,
+  /** The degree circle's size, as a share of the number it sits at the top right of: a quarter up, because the first size read as a speck */
+  degree: 0.775,
+  /** How far the degree circle is raised above the number's own line, as a share of the number's size */
+  degreeLift: 0.36,
+  /** The gap between a number and its degree circle, as a share of the number's size. Constant at every bearing: it must not grow with the number's length */
+  degreeGap: 0.06,
+  /** One digit's advance, as a share of the number's size, so the circle sits as close to 270 as to 0 */
+  digitAdvance: 0.58,
   /** The inner circle, a quarter smaller than the arrowhead's own reach so the face reads open rather than crowded */
   medallion: 0.462,
   /**
@@ -89,12 +92,13 @@ export const TICKS: DialTick[] = Array.from({ length: 24 }, (_, step) => {
   return { angle, weight };
 });
 
-export const CARDINALS: DialCardinal[] = [
-  { angle: 0, letter: 'N' },
-  { angle: 90, letter: 'E' },
-  { angle: 180, letter: 'S' },
-  { angle: 270, letter: 'W' },
-];
+/**
+ * The four cardinals, printed as the LATIN degree numbers 0, 90, 180 and 270.
+ *
+ * The ring's bearings are numbers, identical in every
+ * language, so the compass depends on no language at all and reads no catalog.
+ */
+export const CARDINAL_ANGLES = [0, 90, 180, 270] as const;
 
 /**
  * The Rub el Hizb, the eight-pointed star that marks the Qur'an's divisions.

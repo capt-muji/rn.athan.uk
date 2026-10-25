@@ -10,7 +10,6 @@ import type { TestInstance } from 'test-renderer';
 
 import { showLondonDay } from '@/__tests__/harness';
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
-import { PRAYERS_ARABIC } from '@/shared/constants';
 import { AlertType, Icon, ScheduleType } from '@/shared/types';
 import { setPrayerAlertType } from '@/stores/notifications';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
@@ -35,6 +34,14 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     expect(screen.getByRole('button', { name: 'Fajr notification: sound' })).toBeOnTheScreen();
   });
 
+  it('names no prayer for a screen reader on the frame a vanished row reports', async () => {
+    showLondonDay('2026-09-10', '12:00');
+
+    await render(<Alert type={ScheduleType.Standard} index={6} />);
+
+    expect(screen.queryByRole('button', { name: 'Fajr notification: off' })).not.toBeOnTheScreen();
+  });
+
   it('checks notification permission before opening the sheet of a prayer saved Off', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Off);
@@ -46,8 +53,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     expect(getDefaultStore().get(alertSheetStateAtom)).toEqual({
       type: ScheduleType.Standard,
       index: FAJR,
-      prayerEnglish: 'Fajr',
-      prayerArabic: PRAYERS_ARABIC[FAJR],
+      prayerId: 'fajr',
       isUnavailable: false,
     });
   });
@@ -60,7 +66,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: sound' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: false });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerId: 'fajr', isUnavailable: false });
   });
 
   it('opens the explanation, without checking permission, when the time on screen is unreadable', async () => {
@@ -71,7 +77,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
     await fireEvent.press(screen.getByRole('button', { name: 'Fajr notification: unavailable' }));
 
     expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerEnglish: 'Fajr', isUnavailable: true });
+    expect(getDefaultStore().get(alertSheetStateAtom)).toMatchObject({ prayerId: 'fajr', isUnavailable: true });
   });
 
   // [saved alert in words, saved alert, the icon it draws]
@@ -145,5 +151,28 @@ describe("the passed Sunrise bell on Friday 11 September 2026 at 14:00, with Sat
     await act(() => closeOverlay());
 
     expect(iconOf(screen.getByRole('button', { name: 'Sunrise notification: sound' }))).toBe(ALERT_ICONS[Icon.SPEAKER]);
+  });
+
+  it('fades its own bell out through the icon wrapper, never through text ink', async () => {
+    showLondonDay('2026-09-11', '14:00', { '2026-09-12': ['sunrise'] });
+    setPrayerAlertType(ScheduleType.Standard, SUNRISE, AlertType.Off);
+    await render(
+      <>
+        <Alert type={ScheduleType.Standard} index={FAJR} />
+        <Alert type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
+
+    // The overlay selects Sunrise, so Fajr's bell is veiled while Sunrise's stays drawn
+    await act(() => openOverlay(ScheduleType.Standard, SUNRISE));
+
+    const veiled = screen
+      .getByRole('button', { name: 'Fajr notification: off' })
+      .queryAll((node) => node.type === 'RNSVGSvgView')[0];
+    const shown = screen
+      .getByRole('button', { name: 'Sunrise notification: unavailable' })
+      .queryAll((node) => node.type === 'RNSVGSvgView')[0];
+    expect(veiled?.parent).toHaveStyle({ opacity: 0 });
+    expect(shown?.parent).toHaveStyle({ opacity: 1 });
   });
 });

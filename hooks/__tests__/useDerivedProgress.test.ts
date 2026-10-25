@@ -9,14 +9,7 @@
 
 import { ANIMATION } from '@/shared/constants';
 
-import {
-  useDerivedBackgroundColor,
-  useDerivedColor,
-  useDerivedFill,
-  useDerivedOpacity,
-  useDerivedProgress,
-  useDerivedTranslateY,
-} from '../useAnimation';
+import { useDerivedFill, useDerivedOpacity, useDerivedProgress, useDerivedTranslateY } from '../useAnimation';
 import { mountHook } from './hookHarness';
 import type { Animation } from './reanimatedFake';
 
@@ -168,11 +161,7 @@ describe('the derived style wrappers', () => {
   const FROM = '#6b6b80';
   const TO = '#ffffff';
 
-  const colourWrappers = [
-    ['useDerivedColor', 'color', useDerivedColor],
-    ['useDerivedBackgroundColor', 'backgroundColor', useDerivedBackgroundColor],
-    ['useDerivedFill', 'fill', useDerivedFill],
-  ] as const;
+  const colourWrappers = [['useDerivedFill', 'fill', useDerivedFill]] as const;
 
   it.each(colourWrappers)('%s maps progress 0 to the first colour and 1 to the second, as %s', (_, property, hook) => {
     const view = mountHook((props: { target: number }) => hook(props.target, { fromColor: FROM, toColor: TO }), {

@@ -1,99 +1,256 @@
 /**
- * The countdown above a list: the prayer it names, the time it shows, and the bar under it
+ * The lettered countdown: the old zero-drop behaviour in every language, the
+ * lowercase unit letters, the held display, and the bar under it
  */
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
+import { COLORS, TEXT } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
-import { startCountdowns } from '@/stores/countdown';
-import { openOverlay } from '@/stores/overlay';
-import { countdownBarShownAtom } from '@/stores/ui';
+import { standardCountdownAtom, startCountdowns } from '@/stores/countdown';
+import { closeOverlay, openOverlay } from '@/stores/overlay';
+import { countdownBarShownAtom, showSecondsAtom } from '@/stores/ui';
 
 import Countdown from '../Countdown';
 
+// The bar's default is off; this suite reads the bar as part of the page, so it seeds it on
+beforeEach(() => seedCountdownBarOn());
+
 const MAGRIB = 4;
+const LETTER_INK = COLORS.text.primary;
+const LETTER_SIZE_SHARE = 0.95;
 
-/**
- * Turns the bar preference on or off. The settings sheet writes it through the atom's own setter, and stores/ui.ts
- * has no setter function for it, so this is the app's own write path
- */
-const setCountdownBarShown = (shown: boolean) => getDefaultStore().set(countdownBarShownAtom, shown);
+const flattenStyle = (style: unknown): Record<string, unknown> =>
+  Array.isArray(style)
+    ? Object.assign({}, ...style.map((entry) => flattenStyle(entry)))
+    : (style as Record<string, unknown>);
 
-describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and Magrib at 19:28', () => {
-  it('names Asr for a screen reader and counts down to it in hours and minutes, at 14:00', async () => {
+/** Writes the countdown the display selectors format, so no ticker is needed */
+const setCountdown = (timeLeft: number | null) =>
+  getDefaultStore().set(standardCountdownAtom, { timeLeft, name: 'asr' });
+
+const setSecondsPreference = (shown: boolean) => getDefaultStore().set(showSecondsAtom, shown);
+
+describe('the lettered countdown on the Standard schedule', () => {
+  it('keeps a quarter more room below the block than the old fixed gap, owner order 2026-10-20', async () => {
     showLondonDay('2026-09-11', '14:00');
-    startCountdowns();
+    setCountdown(8940);
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByRole('text', { name: 'Asr' })).toBeOnTheScreen();
-    expect(screen.getByText('2h 29m')).toBeOnTheScreen();
+    // styles.container is the only node pairing the block's top margin with a bottom one
+    const container = screen.root
+      ?.queryAll(
+        (node) => {
+          const style = flattenStyle(node.props.style);
+          return style !== undefined && style.marginTop === 6 && style.marginBottom !== undefined;
+        },
+        { includeSelf: true }
+      )
+      .at(0);
+    expect(flattenStyle(container?.props.style).marginBottom).toBe(48);
   });
+  it('names Asr and renders the unpadded groups with their lowercase letters, at 2h29m', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8940);
 
-  it('rounds the time left up, so a countdown started 600 ms into 16:28, with 59.4 s left, reads 1m and not 59s', async () => {
-    showLondonDay('2026-09-11', '16:28');
-    await act(() => jest.advanceTimersByTime(600));
-
-    startCountdowns();
-    await render(<Countdown type={ScheduleType.Standard} />);
-
-    expect(screen.getByText('1m')).toBeOnTheScreen();
-  });
-
-  it('holds 1s, never 0s, when the countdown starts half a second after Asr, before the list has moved on', async () => {
-    showLondonDay('2026-09-11', '16:28');
-    await act(() => jest.advanceTimersByTime(60_500));
-
-    startCountdowns();
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.getByText('Asr')).toBeOnTheScreen();
-    expect(screen.getByText('1s')).toBeOnTheScreen();
+    expect(screen.getByText('2h')).toBeOnTheScreen();
+    expect(screen.getByText('29m')).toBeOnTheScreen();
+    expect(screen.getByLabelText('2h 29m')).toBeOnTheScreen();
+    expect(screen.queryByText('02:29')).toBeNull();
   });
 
-  it('swaps to Magrib the instant Asr comes, for a countdown started 400 ms into 16:28', async () => {
-    showLondonDay('2026-09-11', '16:28');
-    await act(() => jest.advanceTimersByTime(400));
-    startCountdowns();
-    await render(<Countdown type={ScheduleType.Standard} />);
-
-    await act(() => jest.advanceTimersByTime(59_600));
-
-    expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('2h 59m')).toBeOnTheScreen();
-  });
-
-  it('counts down to the prayer the overlay opens on', async () => {
+  it('renders the same groups under ar, Latin digits left to right', async () => {
     showLondonDay('2026-09-11', '14:00');
-    startCountdowns();
+    setSecondsPreference(false);
+    setCountdown(8940);
+    setActiveLocale('ar');
+    try {
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('2h')).toBeOnTheScreen();
+      expect(screen.getByText('29m')).toBeOnTheScreen();
+      const row = screen.getByLabelText('2h 29m');
+      expect(flattenStyle(row.props.style).direction).toBe('ltr');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('drops the hours at zero, so 42 minutes reads one group', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(2525);
+
     await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('42m')).toBeOnTheScreen();
+    expect(screen.queryByText('h')).toBeNull();
+  });
+
+  it('drops zero minutes beside live hours, so a whole hour with seconds hidden reads 1h alone', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(3600);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('1h')).toBeOnTheScreen();
+    expect(screen.queryByText('m')).toBeNull();
+    expect(screen.queryByText('s')).toBeNull();
+  });
+
+  it('drops zero minutes beside live hours with seconds shown, so the top of an hour reads 1h 5s', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(true);
+    setCountdown(3605);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('1h')).toBeOnTheScreen();
+    expect(screen.getByText('5s')).toBeOnTheScreen();
+    expect(screen.queryByText('m')).toBeNull();
+  });
+
+  it('renders seconds alone under a minute whatever the preference forces', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(45);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('45s')).toBeOnTheScreen();
+    expect(screen.queryByText('h')).toBeNull();
+    expect(screen.queryByText('m')).toBeNull();
+  });
+
+  it('drops zero seconds beside live minutes, so 9m00s reads one group', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(540);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('9m')).toBeOnTheScreen();
+    expect(screen.queryByText('s')).toBeNull();
+  });
+
+  it('renders 0s alone at the clamp, never an empty row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(true);
+    setCountdown(0);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByText('0s')).toBeOnTheScreen();
+  });
+
+  it('drops the whole seconds group when the preference is off over ten minutes', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8945);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.queryByText('s')).toBeNull();
+
+    await act(() => setSecondsPreference(true));
+
+    expect(screen.getByText('5s')).toBeOnTheScreen();
+  });
+
+  it('draws the letters 5% under the digit size and full-strength ink, inside the digit run', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8940);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    const group = screen.getByText('2h');
+    const groupStyle = flattenStyle(group.props.style);
+    expect(groupStyle.color).toBe(COLORS.text.primary);
+    expect(groupStyle.fontVariant).toEqual(['tabular-nums']);
+    expect(groupStyle.fontSize).toBe(TEXT.sizeLarge);
+
+    const letter = screen.getByText('h');
+    const letterStyle = flattenStyle(letter.props.style);
+    expect(letterStyle.color).toBe(LETTER_INK);
+    expect(letterStyle.fontSize).toBe(TEXT.sizeLarge * LETTER_SIZE_SHARE);
+
+    const name = screen.getByText('Asr');
+    // The label's static entry carries the home ink: the tween's entry commits after this
+    // frame, so the rest face reads from the style array's static element
+    const nameStyle = flattenStyle((name.props.style as unknown[])[0]);
+    expect(nameStyle.color).toBe('#6c79c2');
+    expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
+    expect(nameStyle.textShadowRadius).toBe(6);
+    // The second entry is the ink tween itself: dropped from the array, the home ink never flips
+    expect(name.props.style).toHaveLength(2);
+  });
+
+  it('tweens the prayer name from its home ink to its overlay ink on the overlay flag', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8940);
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    // The label rides the same target and timing the digits' progress rides, so its tween's endpoints are
+    // the tuned pair and nothing else: the ink flips with the overlay and back
+    const labelTween = () =>
+      interpolateColor.mock.calls
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c79c2', '#585c8c'].join())
+        .map((call) => call[0]);
+
+    expect(labelTween().at(-1)).toBe(0);
 
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
+    expect(labelTween().at(-1)).toBe(1);
 
-    expect(screen.getByText('Magrib')).toBeOnTheScreen();
-    expect(screen.getByText('5h 28m')).toBeOnTheScreen();
+    await act(() => closeOverlay());
+    expect(labelTween().at(-1)).toBe(0);
   });
 
-  it('shows the bar under the countdown on a fresh install', async () => {
+  it('renders no gap node between digits and letters', async () => {
     showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    setCountdown(8940);
 
     await render(<Countdown type={ScheduleType.Standard} />);
 
-    expect(screen.getByRole('progressbar')).toBeOnTheScreen();
+    const gaps = screen.root?.queryAll(
+      (node) => node.props.children === ' ' && flattenStyle(node.props.style).fontSize === 8,
+      { includeSelf: true }
+    );
+    expect(gaps).toHaveLength(0);
+
+    // styles.group's own margin is the selector, so each group's children read
+    // digits then letter with nothing between
+    const groupNodes = screen.root?.queryAll(
+      (node) => {
+        const style = flattenStyle(node.props.style);
+        return style !== undefined && style.marginHorizontal === 6;
+      },
+      { includeSelf: true }
+    );
+    const childText = (child: unknown): string =>
+      typeof child === 'string' ? child : (child as { props: { children: string } }).props.children;
+    const groups = groupNodes?.map((group) => (group.props.children as unknown[]).map(childText));
+    expect(groups).toEqual([
+      ['2', 'h'],
+      ['29', 'm'],
+    ]);
   });
 
-  it('removes the bar the moment the preference is turned off', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<Countdown type={ScheduleType.Standard} />);
-
-    await act(() => setCountdownBarShown(false));
-
-    expect(screen.queryByRole('progressbar', { includeHiddenElements: true })).not.toBeOnTheScreen();
-  });
-
-  it('names no prayer after Isha while the next day is not stored, and tells a screen reader why', async () => {
+  it('holds the unavailable display as one node, and names no prayer a screen reader cannot use', async () => {
     showLondonDay('2026-09-11', '21:00', { '2026-09-12': 'not stored' });
     startCountdowns();
 
@@ -101,10 +258,48 @@ describe('the Standard countdown on Friday 11 September 2026, Asr at 16:29 and M
 
     expect(screen.getByLabelText('No prayer time to count down to')).toHaveTextContent('...');
     expect(screen.getByText('--:--')).toBeOnTheScreen();
+    expect(screen.queryByText('s')).toBeNull();
+  });
+
+  it('counts down to the prayer the overlay opens on', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSecondsPreference(false);
+    startCountdowns();
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    await act(() => openOverlay(ScheduleType.Standard, MAGRIB));
+
+    expect(screen.getByText('Magrib')).toBeOnTheScreen();
+    expect(screen.getByText('5h')).toBeOnTheScreen();
+    expect(screen.getByText('28m')).toBeOnTheScreen();
+  });
+
+  it('renders the current countdown while the overlay holds the page even before a list is on screen', async () => {
+    await act(() => openOverlay(ScheduleType.Standard, 0));
+    try {
+      await render(<Countdown type={ScheduleType.Standard} />);
+
+      expect(screen.getByText('10s')).toBeOnTheScreen();
+    } finally {
+      await act(() => closeOverlay());
+    }
+  });
+
+  it('shows the bar under the countdown and removes it the moment the preference is off', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setCountdown(8940);
+
+    await render(<Countdown type={ScheduleType.Standard} />);
+
+    expect(screen.getByRole('progressbar')).toBeOnTheScreen();
+
+    await act(() => getDefaultStore().set(countdownBarShownAtom, false));
+
+    expect(screen.queryByRole('progressbar', { includeHiddenElements: true })).not.toBeOnTheScreen();
   });
 });
 
-describe('the Standard countdown before any list is on screen', () => {
+describe('the countdown before any list is on screen', () => {
   it('renders nothing, so the page does not show a countdown with nothing behind it', async () => {
     await render(<Countdown type={ScheduleType.Standard} />);
 

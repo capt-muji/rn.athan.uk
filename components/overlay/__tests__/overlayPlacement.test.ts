@@ -20,7 +20,7 @@ import { STYLES } from '@/shared/constants';
 import { resolveDisplayDate } from '@/shared/sequence';
 import { ScheduleType } from '@/shared/types';
 
-import OverlayInfoBox from '../OverlayInfoBox';
+import OverlayInfoBox, { TIP_OVERLAP } from '../OverlayInfoBox';
 
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockClock = { now: new Date(0) };
@@ -43,8 +43,12 @@ jest.mock('react', () => ({
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles } }));
 jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}) }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/hooks/useAnimation', () => ({ useDerivedProgress: () => ({ value: 1 }), useDerivedOpacity: () => ({}) }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -67,8 +71,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 // The real card needs react-native-svg, which the unit mock tree cannot stand in for
@@ -89,9 +92,6 @@ const findAll = (node: ReactNode): Element[] => {
 /** Where a drawn row's top edge sits, in the list's own row space */
 const rowTop = (row: number) => row * STYLES.prayer.height;
 
-/** How far the arrow tip overlaps into the row band */
-const TIP_OVERLAP = 9;
-
 /** Friday 11 September's Extras list gathered in reverse, on screen at noon, with the overlay open on it */
 const openOnReversedFriday = (selectedPrayerIndex: number) => {
   storeLondonDays();
@@ -109,15 +109,15 @@ const openOnReversedFriday = (selectedPrayerIndex: number) => {
   mockStore.current.set(realOverlayAtom, { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
   mockAtomValues.set('overlayAtom', { isOn: true, selectedPrayerIndex, scheduleType: ScheduleType.Extra });
 
-  return reversed.map((prayer) => prayer.english);
+  return reversed.map((prayer) => prayer.id);
 };
 
 describe('the Extras card on a list whose selected index is not its drawn row (real London 2026 days)', () => {
   // The card hangs from a row EDGE and is never given a height, so it is as tall as its own content.
   // Friday lists 5 Extras rows, so only the last one flips above: that is what keeps the card off the
   // rows it would otherwise cover.
-  // [selected index, its prayer, the row drawn for it, arrow, the top it anchors from, explanation, Arabic]
-  it.each<[number, string, number, string, ViewStyle, string, string]>([
+  // [selected index, its prayer, the row drawn for it, arrow, the top it anchors from, explanation]
+  it.each<[number, string, number, string, ViewStyle, string]>([
     [
       0,
       'Istijaba',
@@ -125,7 +125,6 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       'bottom',
       { top: rowTop(4) + TIP_OVERLAP, transform: [{ translateY: '-100%' }] },
       '1 hour before Magrib (Fridays only)',
-      'ساعة قبل المغرب (الجمعة فقط)',
     ],
     [
       4,
@@ -134,11 +133,10 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       'top',
       { top: rowTop(0) + STYLES.prayer.height - TIP_OVERLAP },
       'Halfway between Magrib and Fajr',
-      'نصف الليل بين المغرب والفجر',
     ],
   ])(
     'index %i is %s, drawn on row %i: the card explains it against that row',
-    (index, english, _row, arrowPosition, anchor, explanation, explanationArabic) => {
+    (index, english, _row, arrowPosition, anchor, explanation) => {
       const names = openOnReversedFriday(index);
 
       const tree = OverlayInfoBox({ type: ScheduleType.Extra });
@@ -148,13 +146,13 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       expect(cards[0].props).toMatchObject({
         prayerName: english,
         explanation,
-        explanationArabic,
         arrowPosition,
-        style: { ...anchor, left: 0, width: '100%' },
+        style: { ...anchor, start: 0, width: '100%' },
       });
       // Never a fixed height: the card sizes itself, or an empty 300pt box pushes its content off the row
       expect((cards[0].props.style as ViewStyle).height).toBeUndefined();
-      expect(names[index]).toBe(english);
+      // The card names the prayer by its label; the walk that picked the row carries ids
+      expect(names[index]).toBe(english.toLowerCase());
     }
   );
 });
@@ -201,7 +199,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
     const style = card.props.style as ViewStyle;
 
     expect(style.top).toBe(STYLES.prayer.height - TIP_OVERLAP);
-    expect(style.left).toBe(0);
+    expect(style.start).toBe(0);
     expect(style.height).toBeUndefined();
   });
 });

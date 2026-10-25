@@ -1,0 +1,52 @@
+[
+  {
+    "file": "components/countdown/Bar.tsx",
+    "snippet": "left: tipLeftForProgress",
+    "reason": "the tip's left is the physical value the direction-keyed geometry returns; a worklet offset has no logical key"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "left: number;",
+    "reason": "interface field, not a style"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "id: 'full'",
+    "reason": "window-space geometry, physical by construction"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "id: 'top'",
+    "reason": "window-space geometry, physical by construction"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "id: 'left'",
+    "reason": "window-space geometry, physical by construction"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "id: 'right'",
+    "reason": "window-space geometry, physical by construction"
+  },
+  {
+    "file": "components/overlay/catcherGeometry.ts",
+    "snippet": "id: 'bottom'",
+    "reason": "window-space geometry, physical by construction"
+  },
+  {
+    "file": "stores/countdown.ts",
+    "snippet": "no prayer of its own left:",
+    "reason": "prose, not a style"
+  },
+  {
+    "file": "stores/notifications.ts",
+    "snippet": "to be put right:",
+    "reason": "log string, not a style"
+  },
+  {
+    "file": "components/countdown/tipGeometry.ts",
+    "snippet": "isRTL ? { right: 0 } : { left: 0 }",
+    "reason": "the fill's anchor is the physical key the direction argument selects; no logical key can express a per-direction layout"
+  }
+]

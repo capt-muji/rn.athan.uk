@@ -4,22 +4,17 @@
     "subagent_depth": 2
   },
   "mcp": {
-    "codegraph": {
-      "type": "local",
-      "command": ["{env:HOME}/.local/bin/codegraph", "serve", "--mcp"],
-      "enabled": true
-    },
     "mobile-mcp": {
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
       "environment": { "MOBILEMCP_DISABLE_TELEMETRY": "1" },
-      "enabled": false
+      "enabled": true
     },
     "maestro": {
       "type": "local",
       "command": ["{env:HOME}/.maestro/bin/maestro", "mcp"],
       "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
-      "enabled": false
+      "enabled": true
     },
     "agent-device": {
       "type": "local",
@@ -35,6 +30,21 @@
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
       "enabled": false
+    },
+    "servers": {
+      "codegraph": {
+        "type": "local",
+        "command": ["codegraph", "serve", "--mcp"],
+        "disabled": false,
+        "codemode": false
+      },
+      "itsaplan": {
+        "type": "remote",
+        "url": "http://localhost:3000/mcp",
+        "headers": {
+          "x-api-key": "{env:ITSAPLAN_API_KEY}"
+        }
+      }
     }
   }
 }

@@ -13,15 +13,17 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { setAudioModeAsync } from 'expo-audio';
 import { type ErrorBoundaryProps, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useAtomValue } from 'jotai';
 import { LogBox } from 'react-native';
 import { SystemBars } from 'react-native-edge-to-edge';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
-import { BottomSheetAlert, BottomSheetQibla, BottomSheetSettings, BottomSheetSound } from '@/components/sheets';
-import { ErrorScreen, InitialWidthMeasurement } from '@/components/ui';
+import { SheetHost } from '@/components/sheets';
+import { ErrorScreen, InitialWidthMeasurement, LanguageLoader } from '@/components/ui';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { COLORS } from '@/shared/constants';
+import { currentLocaleId, localeDirection, localeVersionAtom } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import { initPerfMonitor } from '@/shared/perf';
 import { triggerSyncLoadable } from '@/stores/sync';
@@ -76,22 +78,26 @@ export default function Layout() {
   // Sheets mount past the first content frame (launch chrome defer — see
   // hooks/useChromeDeferred.ts); their content mounts on present regardless
   const chromeDeferred = useChromeDeferred();
+  // One bump per language switch: the screens and the width measurement remount
+  // cold (R3.1, R5.2), while the sheet layer stays mounted through the switch —
+  // unmounting a root that hosts a presented sheet would tear it down mid-apply,
+  // and SheetHost's subscription re-renders the sheets in place
+  const localeVersion = useAtomValue(localeVersionAtom);
+
+  // The layout follows the app's selected language (the owner's ruling): forceRTL cannot force
+  // LTR on a system-RTL device (the bridge answers forced-or-system), so the root sets
+  // the direction itself and the system locale resolves only the initial default
+  const direction = localeDirection(currentLocaleId());
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground }}>
-      <SystemBars style='light' hidden={{ navigationBar: false }} />
-      <InitialWidthMeasurement />
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: COLORS.navigation.rootBackground, direction }}>
+      <SystemBars style={'light'} hidden={{ navigationBar: false }} />
+      <InitialWidthMeasurement key={localeVersion} />
       <BottomSheetModalProvider>
-        <Slot />
-        {chromeDeferred && (
-          <>
-            <BottomSheetSound />
-            <BottomSheetSettings />
-            <BottomSheetAlert />
-            <BottomSheetQibla />
-          </>
-        )}
+        <Slot key={localeVersion} />
+        <SheetHost deferred={chromeDeferred} />
       </BottomSheetModalProvider>
+      <LanguageLoader />
     </GestureHandlerRootView>
   );
 }

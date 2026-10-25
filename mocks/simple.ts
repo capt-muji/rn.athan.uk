@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort, formatPrayerTime } from '@/shared/time';
+import { formatDateShort, readPrayerClock } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
@@ -23,26 +23,37 @@ import type { IApiResponse } from '@/shared/types';
 // night-time mock triggers both: at the Magrib->Isha handoff the countdown
 // skips to the following day's Fajr and the rollover cascade fires early.
 // An Isha can fall after 00:00 (high latitudes in summer; the app goes global
-// in v2.0) and is handled by the rules above. To test the Magrib->Isha handoff
-// and day rollover cleanly, simulate during 06:00-23:55: from 23:56 a download
-// puts Isha past 00:00, from 23:57 Magrib, and from 23:58 Asr, which reads as
-// the day before.
+// in v2.0) and is handled by the rules above. The seeding below therefore never
+// writes a small-hours Standard row: the evening branch's latest Isha is exactly
+// 23:55:00.000, the pre-dawn branch composes a realistic day with Fajr next, and
+// the spent late-evening branch serves the day's real static shape: any
+// hour, any day, no dashes.
 
 const MINUTE = 60_000;
 
+/** Two digits, the API's own clock format: data paths never localise digits */
+const pad2 = (value: number): string => String(value).padStart(2, '0');
+
 /** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
-export const addMinutes = (from: Date, minutesToAdd: number) =>
-  formatPrayerTime(new Date(from.getTime() + minutesToAdd * MINUTE));
+export const addMinutes = (from: Date, minutesToAdd: number) => {
+  const clock = readPrayerClock(new Date(from.getTime() + minutesToAdd * MINUTE));
+  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+};
 
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * Asr is the first whole minute at least 1 minute after the download. Fajr, Sunrise and Dhuhr sit 3, 2
- * and 1 minutes before the download's own minute; Asr, Magrib and Isha ride 1, 2 and 3 minutes past the
- * anchor — a tight runway that rolls a boundary roughly every minute.
+ * The evening (06:00-23:52:59.999): Asr just passed, Maghrib on the next minute boundary (a gap
+ * that always reads 1m on the round-up countdown) and Isha the minute after (always 2m), so the
+ * day rolls to tomorrow's real schedule inside a couple of minutes (the owner's device-test
+ * reseed). The pre-dawn small hours: a realistic day with Fajr on the next minute boundary,
+ * because a relative seed there would write impossible times (an Isha at 04:32) that trip the
+ * midnight-crossing rules and dash the countdown. The spent evening (23:53-23:59): the day's
+ * real static shape, all six passed.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
-  const asrAt = new Date(Math.ceil((downloadedAt.getTime() + MINUTE) / MINUTE) * MINUTE);
+  const clock = readPrayerClock(downloadedAt);
+  const minuteOfDay = clock.hour * 60 + clock.minute;
   const minuteFloor = new Date(Math.floor(downloadedAt.getTime() / MINUTE) * MINUTE);
 
   const dayBeforeYesterday = formatDateShort(subDays(downloadedAt, 2));
@@ -53,9 +64,30 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     formatDateShort(addDays(downloadedAt, d))
   );
 
-  // Realistic London times copied verbatim from mocks/full.ts, EXCEPT TODAY.
-  // The days around it carry the API's real spring solar drift; Jamat fields
-  // are unused placeholders.
+  // [today]'s six rows by the download's London clock: the owner's evening reseed, a realistic
+  // pre-dawn day, or the spent late evening's real static shape
+  const eveningRow = {
+    fajr: addMinutes(minuteFloor, -4),
+    sunrise: addMinutes(minuteFloor, -3),
+    dhuhr: addMinutes(minuteFloor, -2),
+    asr: addMinutes(minuteFloor, -1),
+    // Boundary-based, not ceil-based: the gaps stay inside the minutes the countdown's round-up
+    // displays, so Maghrib always reads 1m away and Isha 2m
+    magrib: addMinutes(minuteFloor, 1),
+    isha: addMinutes(minuteFloor, 2),
+  };
+  const preDawnRow = {
+    fajr: addMinutes(minuteFloor, 1),
+    sunrise: addMinutes(minuteFloor, 11),
+    dhuhr: '13:04',
+    asr: '16:56',
+    magrib: '20:14',
+    isha: '21:27',
+  };
+  const spentRow = { fajr: '04:07', sunrise: '05:42', dhuhr: '13:04', asr: '16:56', magrib: '20:16', isha: '21:29' };
+  const todayRow = minuteOfDay >= 23 * 60 + 53 ? spentRow : minuteOfDay >= 6 * 60 ? eveningRow : preDawnRow;
+  // The days around today carry realistic London times copied verbatim from mocks/full.ts, with
+  // the API's real spring solar drift; Jamat fields are unused placeholders.
   return {
     [dayBeforeYesterday]: {
       date: dayBeforeYesterday,
@@ -89,12 +121,7 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     },
     [today]: {
       date: today,
-      fajr: addMinutes(minuteFloor, -3),
-      sunrise: addMinutes(minuteFloor, -2),
-      dhuhr: addMinutes(minuteFloor, -1),
-      asr: addMinutes(asrAt, 1),
-      magrib: addMinutes(asrAt, 2),
-      isha: addMinutes(asrAt, 3),
+      ...todayRow,
       fajr_jamat: '00:00',
       dhuhr_jamat: '00:00',
       asr_2: '00:00',

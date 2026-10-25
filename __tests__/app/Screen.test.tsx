@@ -4,12 +4,25 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedCountdownBarOn, seedTimePassedOn, showLondonDay } from '@/__tests__/harness';
 import { ScheduleType } from '@/shared/types';
 import { showTimePassedAtom } from '@/stores/ui';
 
 import Screen from '../../app/Screen';
+
+jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({ width: 393, height: 852, scale: 3, fontScale: 1 })),
+}));
+
+// The bar's and time passed's defaults are off; this suite reads both as part of the page, so it seeds them on
+beforeEach(() => {
+  seedCountdownBarOn();
+  seedTimePassedOn();
+});
 
 /** A frame and the macrotask after it, which is when launch chrome and the Extras content mount */
 const FIRST_FRAME_MS = 50;
@@ -23,7 +36,7 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('progressbar', { name: /^Prayer countdown/ })).toBeOnTheScreen();
     expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Dhuhr 58m ago')).toBeOnTheScreen();
+    expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).toBeOnTheScreen();
   });
 
   it('shows nothing on the Extras page on the first frame', async () => {
@@ -44,7 +57,7 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('progressbar', { name: /^Prayer countdown/ })).toBeOnTheScreen();
     expect(screen.getByText('Fri, 11 Sep 2026')).toBeOnTheScreen();
     expect(screen.getByRole('button', { name: 'Midnight notification: off' })).toBeOnTheScreen();
-    expect(screen.getByText('Duha 7h 14m ago')).toBeOnTheScreen();
+    expect(screen.getByText('Duha \u20667h 14m\u2069 ago')).toBeOnTheScreen();
   });
 
   it('leaves out the time since the last prayer when Show time passed is off', async () => {
@@ -55,6 +68,44 @@ describe('a prayer page, Friday 11 September 2026 at 14:00', () => {
     await render(<Screen type={ScheduleType.Standard} />);
 
     expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
-    expect(screen.queryByText('Dhuhr 58m ago')).not.toBeOnTheScreen();
+    expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
+  });
+});
+
+describe("a prayer page's top safe-area consumption", () => {
+  afterEach(() => {
+    // clearMocks clears call counts, never a set return value, so the suite's zero-inset default is put back by hand
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 0, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 393, height: 852, scale: 3, fontScale: 1 });
+  });
+
+  const pageTopPadding = async (): Promise<number> => {
+    const { container } = await render(<Screen type={ScheduleType.Standard} />);
+    const page = container.queryAll((node) => node.type === 'View')[0];
+    return StyleSheet.flatten(page.props.style).paddingTop;
+  };
+
+  it('renders the phone-class top inset into the page padding', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 62, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 440, height: 956, scale: 3, fontScale: 1 });
+
+    expect(await pageTopPadding()).toBe(90.05);
+  });
+
+  it("renders the tall canvas's real inset into the page padding at the phone spacing", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 669, height: 951, scale: 3, fontScale: 1 });
+
+    expect(await pageTopPadding()).toBe(110.05);
+  });
+
+  it("renders the letterboxed window's designed offset when its inset is a phantom", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.mocked(useSafeAreaInsets).mockReturnValue({ top: 82, left: 0, right: 0, bottom: 0 });
+    jest.mocked(useWindowDimensions).mockReturnValue({ width: 469, height: 669, scale: 3, fontScale: 1 });
+
+    expect(await pageTopPadding()).toBe(28.05);
   });
 });

@@ -29,8 +29,8 @@ jest.mock('@/stores/schedule', () => {
   // require time (makeBarAtoms runs during module init), before outer const
   // declarations initialize — eager outer references would be TDZ errors
   const { atom } = require('jotai');
-  const getNextPrayer = jest.fn((_type: string): { english: string; datetime: Date } | null => ({
-    english: 'Fajr',
+  const getNextPrayer = jest.fn((_type: string): { id: PrayerId; datetime: Date } | null => ({
+    id: 'fajr',
     datetime: new Date('2026-01-20T06:15:00Z'),
   }));
   return {
@@ -62,6 +62,8 @@ jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: mockOverlayAtom,
 }));
 
+import type { PrayerId } from '@/shared/constants';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
@@ -94,13 +96,13 @@ describe('countdown atoms defaults', () => {
   it('standardCountdownAtom has default timeLeft of 10 and name Fajr', () => {
     const store = createStore();
     const value = store.get(standardCountdownAtom);
-    expect(value).toEqual({ timeLeft: 10, name: 'Fajr' });
+    expect(value).toEqual({ timeLeft: 10, name: 'fajr' });
   });
 
   it('extraCountdownAtom has default timeLeft of 10 and name Fajr', () => {
     const store = createStore();
     const value = store.get(extraCountdownAtom);
-    expect(value).toEqual({ timeLeft: 10, name: 'Fajr' });
+    expect(value).toEqual({ timeLeft: 10, name: 'fajr' });
   });
 });
 
@@ -133,25 +135,25 @@ describe('getCountdownAtom', () => {
 describe('countdown atom behavior', () => {
   it('atoms can be updated', () => {
     const store = createStore();
-    store.set(standardCountdownAtom, { timeLeft: 100, name: 'Dhuhr' });
-    expect(store.get(standardCountdownAtom)).toEqual({ timeLeft: 100, name: 'Dhuhr' });
+    store.set(standardCountdownAtom, { timeLeft: 100, name: 'dhuhr' });
+    expect(store.get(standardCountdownAtom)).toEqual({ timeLeft: 100, name: 'dhuhr' });
   });
 
   it('countdown atoms are independent', () => {
     const store = createStore();
-    store.set(standardCountdownAtom, { timeLeft: 50, name: 'Asr' });
-    store.set(extraCountdownAtom, { timeLeft: 75, name: 'Midnight' });
+    store.set(standardCountdownAtom, { timeLeft: 50, name: 'asr' });
+    store.set(extraCountdownAtom, { timeLeft: 75, name: 'midnight' });
 
-    expect(store.get(standardCountdownAtom).name).toBe('Asr');
-    expect(store.get(extraCountdownAtom).name).toBe('Midnight');
+    expect(store.get(standardCountdownAtom).name).toBe('asr');
+    expect(store.get(extraCountdownAtom).name).toBe('midnight');
   });
 
   it('different stores have independent state', () => {
     const store1 = createStore();
     const store2 = createStore();
 
-    store1.set(standardCountdownAtom, { timeLeft: 100, name: 'Dhuhr' });
-    store2.set(standardCountdownAtom, { timeLeft: 200, name: 'Asr' });
+    store1.set(standardCountdownAtom, { timeLeft: 100, name: 'dhuhr' });
+    store2.set(standardCountdownAtom, { timeLeft: 200, name: 'asr' });
 
     expect(store1.get(standardCountdownAtom).timeLeft).toBe(100);
     expect(store2.get(standardCountdownAtom).timeLeft).toBe(200);
@@ -163,7 +165,7 @@ describe('countdown atom behavior', () => {
 // =============================================================================
 
 describe('sequence countdown transition (clock-based)', () => {
-  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 0s', () => {
+  it('refreshes the sequence when the wall clock reaches the prayer time, never displaying 00:00:00', () => {
     jest.useFakeTimers();
 
     // Prayer at 06:15:00Z; system clock starts exactly on 06:14:58Z (2s away).
@@ -195,7 +197,7 @@ describe('sequence countdown transition (clock-based)', () => {
     jest.useRealTimers();
   });
 
-  it('holds the final digit at 1s across the boundary tick instead of 0s', () => {
+  it('holds the final digit at 00:00:01 across the boundary tick instead of 00:00:00', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:59.500Z'));
 
@@ -229,7 +231,7 @@ describe('ticker integrity (wall-second chain)', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    // Baseline: 2026-08-29 baseline logs showed sync re-entrancy leaving up to SIX
+    // Baseline: sync re-entrancy once left up to SIX
     // concurrent std intervals; each start must fully replace the previous ticker
     startCountdowns();
     const baselineTimers = jest.getTimerCount();
@@ -302,7 +304,7 @@ describe('ticker integrity (wall-second chain)', () => {
     unsub();
   });
 
-  it('never displays 0s across a full countdown and swaps at the boundary', () => {
+  it('never displays 00:00:00 across a full countdown and swaps at the boundary', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T06:14:55.000Z'));
 
@@ -316,9 +318,7 @@ describe('ticker integrity (wall-second chain)', () => {
       sequenceRefreshed = true;
     });
     (getNextPrayer as jest.Mock).mockImplementation(() =>
-      sequenceRefreshed
-        ? { english: 'Magrib', datetime: new Date(magribTime) }
-        : { english: 'Asr', datetime: new Date(asrTime) }
+      sequenceRefreshed ? { id: 'magrib', datetime: new Date(magribTime) } : { id: 'asr', datetime: new Date(asrTime) }
     );
 
     const defaultStore = getDefaultStore();
@@ -352,9 +352,7 @@ describe('ticker integrity (wall-second chain)', () => {
       sequenceRefreshed = true;
     });
     (getNextPrayer as jest.Mock).mockImplementation(() =>
-      sequenceRefreshed
-        ? { english: 'Magrib', datetime: new Date(magribTime) }
-        : { english: 'Asr', datetime: new Date(asrTime) }
+      sequenceRefreshed ? { id: 'magrib', datetime: new Date(magribTime) } : { id: 'asr', datetime: new Date(asrTime) }
     );
 
     startCountdowns();
@@ -384,7 +382,7 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
   const mockTrueNextDhuhr = () => {
     const { getNextPrayer } = require('@/stores/schedule');
     (getNextPrayer as jest.Mock).mockImplementation(() => ({
-      english: 'Dhuhr',
+      id: 'dhuhr',
       datetime: new Date('2026-01-20T12:00:00.000Z'),
       belongsToDate: '2026-01-20',
     }));
@@ -398,8 +396,8 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     defaultStore.set(mockStandardSequenceAtom, {
       type: 'standard',
       prayers: [
-        { english: 'Fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
-        { english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
+        { id: 'fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
+        { id: 'dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
       ],
     });
     defaultStore.set(mockOverlayAtom, {
@@ -413,7 +411,7 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     writeDisplayCountdown(ScheduleType.Standard);
 
     // Selected Fajr (30m away) wins over the true next Dhuhr (2h away)
-    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 1800, name: 'Fajr' });
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 1800, name: 'fajr' });
   });
 
   it('writes the true next prayer into the page atom when the overlay is closed', () => {
@@ -424,8 +422,8 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     defaultStore.set(mockStandardSequenceAtom, {
       type: 'standard',
       prayers: [
-        { english: 'Fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
-        { english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
+        { id: 'fajr', datetime: new Date('2026-01-20T10:30:00.000Z'), belongsToDate: '2026-01-20' },
+        { id: 'dhuhr', datetime: new Date('2026-01-20T12:00:00.000Z'), belongsToDate: '2026-01-20' },
       ],
     });
     defaultStore.set(mockOverlayAtom, {
@@ -438,17 +436,17 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     const { writeDisplayCountdown } = require('../countdown');
     writeDisplayCountdown(ScheduleType.Standard);
 
-    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 7200, name: 'Dhuhr' });
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 7200, name: 'dhuhr' });
   });
 
-  it('holds the page atom at 1s when the open overlay target passes — never displays 0s', () => {
+  it('holds the page atom at 00:00:01 when the open overlay target passes — never displays 00:00:00', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
     const defaultStore = getDefaultStore();
     defaultStore.set(mockStandardSequenceAtom, {
       type: 'standard',
-      prayers: [{ english: 'Fajr', datetime: new Date('2026-01-20T10:00:02.000Z'), belongsToDate: '2026-01-20' }],
+      prayers: [{ id: 'fajr', datetime: new Date('2026-01-20T10:00:02.000Z'), belongsToDate: '2026-01-20' }],
     });
     defaultStore.set(mockOverlayAtom, {
       isOn: true,
@@ -458,13 +456,13 @@ describe('merged overlay display target (ADR-014 countdown merge)', () => {
     mockTrueNextDhuhr();
 
     startCountdowns();
-    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2, name: 'Fajr' });
+    expect(defaultStore.get(standardCountdownAtom)).toEqual({ timeLeft: 2, name: 'fajr' });
 
     jest.advanceTimersByTime(2500); // selected target passes at +2s; true next (Dhuhr) still 2h out
 
     // getSecondsRemaining's clamp holds the digit at 1 — the display contract
     const finalValue = defaultStore.get(standardCountdownAtom);
-    expect(finalValue).toEqual({ timeLeft: 1, name: 'Fajr' });
+    expect(finalValue).toEqual({ timeLeft: 1, name: 'fajr' });
     // Both sequence chains stay armed: boundary detection is untouched
     expect(jest.getTimerCount()).toBe(2);
   });
@@ -484,8 +482,8 @@ describe('overlay pre-boundary auto-close', () => {
   });
 
   const armBoundaryMocks = () => {
-    const near = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
-    const far = { english: 'Fajr', datetime: new Date('2026-01-21T04:00:00.000Z'), belongsToDate: '2026-01-20' };
+    const near = { id: 'asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
+    const far = { id: 'fajr', datetime: new Date('2026-01-21T04:00:00.000Z'), belongsToDate: '2026-01-20' };
 
     const defaultStore = getDefaultStore();
     defaultStore.set(mockStandardSequenceAtom, { type: 'standard', prayers: [near, far] });
@@ -578,7 +576,7 @@ describe('overlay close deadline', () => {
 
     const { getNextPrayer } = require('@/stores/schedule');
     (getNextPrayer as jest.Mock).mockReturnValue({
-      english: 'Asr',
+      id: 'asr',
       datetime: new Date('2026-01-20T06:15:00.000Z'),
       belongsToDate: '2026-01-20',
     });
@@ -588,7 +586,7 @@ describe('overlay close deadline', () => {
 
     // A resume data-refresh advances the live next prayer past the followed one
     (getNextPrayer as jest.Mock).mockReturnValue({
-      english: 'Magrib',
+      id: 'magrib',
       datetime: new Date('2026-01-20T07:00:00.000Z'),
       belongsToDate: '2026-01-20',
     });
@@ -605,7 +603,7 @@ describe('overlay close deadline', () => {
 // =============================================================================
 
 describe('resyncCountdowns', () => {
-  const stalePrayer = { english: 'Asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
+  const stalePrayer = { id: 'asr', datetime: new Date('2026-01-20T06:15:00.000Z'), belongsToDate: '2026-01-20' };
   let previousNextPrayerImpl: ((...args: unknown[]) => unknown) | undefined;
 
   beforeEach(() => {
@@ -668,26 +666,39 @@ describe('render-granular selectors', () => {
     const store = createStore();
     store.set(showSecondsAtom, false);
 
-    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'Fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('01:01');
 
-    // 35s closer — same displayed minute band (1h 1m spans 3660-3719s), string unchanged
-    store.set(standardCountdownAtom, { timeLeft: 3700, name: 'Fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h 1m');
+    // 35s closer — same displayed minute band (01:01 spans 3660-3719s), string unchanged
+    store.set(standardCountdownAtom, { timeLeft: 3700, name: 'fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('01:01');
 
     // Drops out of the 1-minute band — string flips
-    store.set(standardCountdownAtom, { timeLeft: 3600, name: 'Fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('1h');
+    store.set(standardCountdownAtom, { timeLeft: 3600, name: 'fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('01:00');
 
     expect(getCountdownDisplayAtom(ScheduleType.Standard)).toBe(standardCountdownDisplayAtom);
+  });
+
+  it('display selector emits Latin digits under ar', () => {
+    const store = createStore();
+    store.set(showSecondsAtom, false);
+
+    store.set(standardCountdownAtom, { timeLeft: 3665, name: 'fajr' });
+    setActiveLocale('ar');
+    try {
+      expect(store.get(standardCountdownDisplayAtom)).toBe('01:01');
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('display selector follows the seconds preference (last-10-minutes rule)', () => {
     const store = createStore();
     store.set(showSecondsAtom, false);
 
-    store.set(standardCountdownAtom, { timeLeft: 45, name: 'Fajr' });
-    expect(store.get(standardCountdownDisplayAtom)).toBe('45s');
+    store.set(standardCountdownAtom, { timeLeft: 45, name: 'fajr' });
+    expect(store.get(standardCountdownDisplayAtom)).toBe('00:00:45');
   });
 
   it('bar progress is raw per-second resolution and warning flips at the exact threshold', () => {
@@ -700,7 +711,7 @@ describe('render-granular selectors', () => {
     Date.now = () => prev.getTime() + 500_400; // exact 50.04%
     store.set(scheduleMock.standardPrevPrayerAtom, { datetime: prev });
     store.set(scheduleMock.standardNextPrayerAtom, { datetime: next });
-    store.set(standardCountdownAtom, { timeLeft: 500, name: 'Fajr' }); // 1/s cadence dependency
+    store.set(standardCountdownAtom, { timeLeft: 500, name: 'fajr' }); // 1/s cadence dependency
 
     // Raw resolution: the bar re-issues its width animation every second, so
     // a write dropped while the host was suspended heals on the next tick
@@ -708,7 +719,7 @@ describe('render-granular selectors', () => {
     expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(false); // 49.96% remaining > 10%
 
     Date.now = () => prev.getTime() + 902_000; // 90.2% elapsed → 9.8% remaining
-    store.set(standardCountdownAtom, { timeLeft: 98, name: 'Fajr' }); // recompute trigger
+    store.set(standardCountdownAtom, { timeLeft: 98, name: 'fajr' }); // recompute trigger
     expect(store.get(getBarProgressAtom(ScheduleType.Standard))).toBeCloseTo(90.2, 2);
     expect(store.get(getBarWarningAtom(ScheduleType.Standard))).toBe(true);
   });

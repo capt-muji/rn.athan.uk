@@ -1,0 +1,122 @@
+[
+  {
+    "version": "2.0.858",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.863",
+    "reason": "2026-10-17 cross-lane collision predating this gate (the dep re-pin commit against ticket 118; classified by entry merge per the sessions/125 evidence)"
+  },
+  {
+    "version": "2.0.872",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.886",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.890",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.896",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.901",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.908",
+    "reason": "2026-10-17 cross-lane collision predating this gate (rows 121 and 111)"
+  },
+  {
+    "version": "2.0.909",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.913",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.928",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.930",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.931",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.934",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.935",
+    "reason": "2026-10-17 cross-lane collision predating this gate"
+  },
+  {
+    "version": "2.0.936",
+    "reason": "2026-10-17 same-lane missed bump predating this gate"
+  },
+  {
+    "version": "2.0.940",
+    "reason": "2026-10-17 cross-lane collision predating the gate merge (the stopped executor docs commit beside lane 120 dropped-staging commits)"
+  },
+  {
+    "version": "2.0.969",
+    "reason": "2026-10-17 cross-lane collision predating this gate (rows 111 and 125 DONE docs commits; the 2.0.970 row-dedup commit left its tree at 2.0.969); allowlisted by lane 126 to clear the repo-wide commit block"
+  },
+  {
+    "version": "2.2.9",
+    "reason": "2026-10-20 lane/280c's deep-clean close took 2.2.9 while the lead's direct dot-spacing order (owner, no ticket) landed on uat in the same window; the merge renumbers above both"
+  },
+  {
+    "version": "2.3.4",
+    "reason": "2026-10-20 lanes T-293 and T-295 both bumped from 2.3.3; lead ruling in the 293/295/297 run: the merge that lands second renumbers above the first"
+  },
+  {
+    "version": "2.3.5",
+    "reason": "2026-10-21 lane T-295's atlas tip holds 2.3.5 (the single patch step above the allowlisted 2.3.4) beside lane T-293's throwaway after-reading measure ref measure/T293-after, never merged, deleted after their reading; the merge that lands second renumbers above"
+  },
+  {
+    "version": "2.3.6",
+    "reason": "2026-10-21 lanes T-293 and T-295 both hold 2.3.6 locally (T-293 renumbering above uat's 2.3.5, T-295's second help fix one commit past its landed merge); the standing lead ruling: the merge that lands second renumbers above the first"
+  },
+  {
+    "version": "2.4.5",
+    "reason": "2026-10-21 lanes T-296 and T-306 both bumped from 2.4.4; lead ruling in this run: T-296 lands first at 2.4.5 and T-306 renumbers above it at 2.4.6"
+  },
+  {
+    "version": "2.4.12",
+    "reason": "2026-10-21 lane T-294's prototype commit and the lead's board-close commit both step from 2.4.11; the standing ruling: the merge that lands second renumbers above the first"
+  },
+  {
+    "version": "2.4.13",
+    "reason": "2026-10-21 the board-close commit at the owner's-read stop steps from uat's 2.4.12 while lane T-294's Step 2 commit holds 2.4.13; the standing ruling: the Step 5 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.14",
+    "reason": "2026-10-24 the owner-ordered WMM-stub cleanup steps from uat's 2.4.13 while lane T-294's veil-fade commit holds 2.4.14; the standing ruling: the Step 5 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.18",
+    "reason": "2026-10-24 the board-close commit of the 294/322 run steps from uat's 2.4.17 while lane T-322's backdrop commit holds 2.4.18; the standing ruling: the T-322 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.25",
+    "reason": "2026-10-25 three lanes step from uat's 2.4.24 in the same night (lane T-327's harness step, lane T-337's gap tests, lane T-322's reopened qibla fix); the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.26",
+    "reason": "2026-10-25 lane T-337's atlas write-back and lane T-322's audit correction both step to 2.4.26; the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.33",
+    "reason": "2026-10-25 lane T-344's label-restore commit steps from its 2.4.32 tip while uat's T-337 merge holds 2.4.33; the standing ruling: the T-344 merge renumbers above whatever uat then carries"
+  }
+]

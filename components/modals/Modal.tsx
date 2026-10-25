@@ -10,6 +10,8 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { ANIMATION, COLORS, ELEVATION, LAYOUT, OVERLAY, RADIUS, SHADOW, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 /**
  * Modal motion mirrors the sheets' recipe (SHEET_ANIMATION_CONFIGS in
@@ -84,7 +86,7 @@ export default function Modal({
           screen-reader user can operate controls they cannot see are covered */}
       <Animated.View
         accessibilityViewIsModal={true}
-        accessibilityRole='alert'
+        accessibilityRole={'alert'}
         style={[styles.modal, wide && styles.modalWide]}
         layout={MODAL_RESIZE}
         entering={MODAL_ENTERING}
@@ -109,12 +111,14 @@ export default function Modal({
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
@@ -123,8 +127,8 @@ const styles = StyleSheet.create({
   backdrop: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     backgroundColor: COLORS.light.backdrop,
   },
@@ -139,7 +143,7 @@ const styles = StyleSheet.create({
     elevation: ELEVATION.maximum,
   },
   modalWide: {
-    // 94%, owner-ruled (2026-09-28): 3% in from each edge, generous without touching the screen sides
+    // 94%: 3% in from each edge, generous without touching the screen sides
     width: '94%',
     maxWidth: SIZE.contentMaxWidth,
     maxHeight: '96%',
@@ -165,11 +169,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.md,
   },
   title: {
-    fontSize: TEXT.sizeTitle,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeTitle),
+    fontFamily: ty.familyMedium,
     marginBottom: SPACING.md,
     color: COLORS.light.text,
-    letterSpacing: TEXT.letterSpacing.wide,
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.wide),
   },
   titleWithDivider: {
     // Matches the space above the title, so the separator sits centered in its breathing room

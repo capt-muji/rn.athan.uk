@@ -161,6 +161,31 @@ const textsOf = (tree: unknown): string[] =>
       return String(Array.isArray(children) ? children.join('') : (children ?? ''));
     });
 
+/** A node's direct marker children: conditions flattened, non-elements dropped */
+const markerChildrenOf = (node: unknown): MarkerNode[] => {
+  const children = (node as MarkerNode | undefined)?.props?.children;
+  return (Array.isArray(children) ? children : [children]).filter(
+    (child): child is MarkerNode => child !== null && typeof child === 'object' && 'marker' in child
+  );
+};
+
+/** The composed countdown label: the outer Row plus the tight inner Rows holding the 26sp digit runs */
+const labelPartsOf = (tree: unknown): { outer?: MarkerNode; runs: MarkerNode[] } => {
+  const isRun = (node: MarkerNode): boolean =>
+    node.marker === 'Row' &&
+    markerChildrenOf(node).some(
+      (child) => child.marker === 'Text' && (child.props.style as { fontSize?: number } | undefined)?.fontSize === 26
+    );
+  const runs = collect(tree).filter(isRun);
+  const outer = collect(tree).find(
+    (node) => node.marker === 'Row' && markerChildrenOf(node).some((child) => runs.includes(child))
+  );
+  return { outer, runs };
+};
+
+const textChildOf = (run: MarkerNode | undefined, text: string): MarkerNode | undefined =>
+  markerChildrenOf(run).find((child) => child.marker === 'Text' && child.props.children === text);
+
 /**
  * The self-ticking countdown: a Text carrying a timerInterval instead of a
  * string. iOS renders it in its own process, so it holds no text to read and
@@ -175,27 +200,28 @@ const tickingIntervalOf = (tree: unknown): { lower: Date; upper: Date } | undefi
 // FIXTURE: a two-day standard window with mid-window boundaries
 // =============================================================================
 
+import type { PrayerId } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
 import { createPrayerDatetime } from '@/shared/time';
 import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
-import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
+import type { PrayerWidgetAndroidProps, PrayerWidgetSettings, WidgetStrings } from '@/shared/widgetTypes';
 
 const DAY_ONE = '2026-10-17';
 const DAY_TWO = '2026-10-18';
 
-const TIMES: [string, string][] = [
-  ['Fajr', '05:30'],
-  ['Sunrise', '07:10'],
-  ['Dhuhr', '12:45'],
-  ['Asr', '15:20'],
-  ['Magrib', '18:05'],
-  ['Isha', '19:40'],
+const TIMES: [PrayerId, string][] = [
+  ['fajr', '05:30'],
+  ['sunrise', '07:10'],
+  ['dhuhr', '12:45'],
+  ['asr', '15:20'],
+  ['magrib', '18:05'],
+  ['isha', '19:40'],
 ];
 
-const makePrayer = (date: string, time: string, english: string): ReadablePrayer => ({
+const makePrayer = (date: string, time: string, id: PrayerId): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english,
-  arabic: '',
+  id,
   datetime: createPrayerDatetime(date, time),
   time,
   belongsToDate: date,
@@ -203,7 +229,7 @@ const makePrayer = (date: string, time: string, english: string): ReadablePrayer
 
 const fixtureSequence = (): PrayerSequence => ({
   type: ScheduleType.Standard,
-  prayers: TIMES.flatMap(([english, time]) => [makePrayer(DAY_ONE, time, english), makePrayer(DAY_TWO, time, english)]),
+  prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
 });
 
 const SETTINGS: PrayerWidgetSettings = { hijriDate: false };
@@ -212,6 +238,18 @@ const androidProps = (over: Partial<PrayerWidgetAndroidProps>): PrayerWidgetAndr
   const base = buildPrayerWidgetSnapshot(fixtureSequence(), SETTINGS);
   if (!base) throw new Error('fixture snapshot missing');
   return { ...base, theme: 'light', size: 'small', ...over } as PrayerWidgetAndroidProps;
+};
+
+// A faithful v1 snapshot: v1 apps stamped v 1 and baked no strings, no day
+// footers, no rtl and no row ids, so every render runs through the layout's
+// own fallback words
+const v1Props = (over: Partial<PrayerWidgetAndroidProps>) => {
+  const { strings: _strings, rtl: _rtl, ...rest } = androidProps(over);
+  const days = rest.days.map(({ footer: _footer, ...day }) => ({
+    ...day,
+    rows: day.rows.map(({ id: _id, ...row }) => row),
+  }));
+  return { ...rest, v: 1, days };
 };
 
 const at = (date: string, time: string): number => createPrayerDatetime(date, time).getTime();
@@ -238,7 +276,7 @@ describe('home widget renderer', () => {
       nextEpochMs: at(DAY_ONE, '15:20'),
       prevEpochMs: at(DAY_ONE, '12:45'),
       dateLabel: 'Saturday, 17 October',
-      prayers: TIMES.map(([name, time]) => ({ name, time })),
+      prayers: TIMES.map(([id, time]) => ({ name: prayerLabel(id), time })),
       activeIndex: 3,
     });
 
@@ -285,8 +323,8 @@ describe('home widget renderer', () => {
     it('renders the medium day list with the active pill in the standard palette', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
       const all = textsOf(tree);
-      for (const [name, time] of TIMES) {
-        expect(all).toContain(name);
+      for (const [id, time] of TIMES) {
+        expect(all).toContain(prayerLabel(id));
         expect(all).toContain(time);
       }
       const pill = collect(tree).find((node) => node.marker === 'RoundedRectangle');
@@ -302,7 +340,7 @@ describe('home widget renderer', () => {
       expect(styles.some((style) => style.modifier === 'foregroundStyle' && style.value === '#db2777')).toBe(true);
     });
 
-    // Owner ruling 2026-09-20 (replacing 2026-09-19): the pill is exactly
+    // The pill is exactly
     // its row's height — uniform slots, like Android (its shadow stays on iOS)
     it('matches the medium pill to its 23dp row exactly, keeping its shadow', () => {
       const tree = renderHome(liveProps(), 'systemMedium');
@@ -326,7 +364,7 @@ describe('home widget renderer', () => {
     });
 
     it('draws no runtime orbs on any theme', () => {
-      // Owner ruling 2026-09-20: the dark kinds go flat. The runtime blur
+      // The dark kinds go flat. The runtime blur
       // orbs cost the cold first render (the patch A/B's control isolated
       // them as the cause of the placement mask flash).
       for (const family of ['systemSmall', 'systemMedium'] as const) {
@@ -335,6 +373,39 @@ describe('home widget renderer', () => {
         expect(collect(dark).filter((node) => node.marker === 'Circle')).toHaveLength(0);
         expect(collect(light).filter((node) => node.marker === 'Circle')).toHaveLength(0);
       }
+    });
+
+    it('distinguishes two same-named rows by their id keys, the future-locale collision shape', () => {
+      // Rendering output cannot show a key: this walks the RAW element tree,
+      // where React keeps keys on the row elements themselves. A locale whose
+      // labels collide would key two rows identically under name-keying and
+      // React would treat them as one slot across renders.
+      const collision = {
+        ...liveProps(),
+        prayers: [
+          { id: 'fajr', name: 'Fajr', time: '05:30' },
+          { id: 'isha', name: 'Fajr', time: '19:40' },
+        ],
+        activeIndex: 0,
+      };
+
+      const keysOf = (node: unknown, keys: string[] = []): string[] => {
+        if (Array.isArray(node)) {
+          for (const child of node) keysOf(child, keys);
+          return keys;
+        }
+        if (node !== null && typeof node === 'object' && 'key' in (node as Record<string, unknown>)) {
+          const key = (node as { key: unknown }).key;
+          if (key !== null && key !== undefined) keys.push(String(key));
+          keysOf((node as { props?: { children?: unknown } }).props?.children, keys);
+        }
+        return keys;
+      };
+
+      const raw = layouts.PrayerWidget(collision, { colorScheme: 'light', widgetFamily: 'systemMedium' });
+      const rowKeys = keysOf(raw);
+
+      expect(rowKeys).toEqual(['fajr', 'isha']);
     });
 
     it('renders a legacy entry with no list fields as the hero alone and the bare city footer', () => {
@@ -358,6 +429,40 @@ describe('home widget renderer', () => {
     it('shortens a Hijri footer to the month prefix', () => {
       const tree = renderHome({ ...liveProps(), dateLabel: 'Rajab 1, 1448' }, 'systemSmall');
       expect(textsOf(tree)).toContain('Raj 1');
+    });
+
+    it('renders the footer prop verbatim, preferring it over the parsed label', () => {
+      // v7 entries carry the precomposed localized footer; the label it would
+      // shorten from is deliberately different to prove the preference
+      const tree = renderHome({ ...liveProps(), dateLabel: 'Sunday, 18 October 2026', footer: 'Sun' }, 'systemSmall');
+      const all = textsOf(tree);
+      expect(all).toContain('Sun');
+      expect(all).not.toContain('Sunday');
+    });
+
+    it('renders the footer prop verbatim in the Hijri shape too', () => {
+      const tree = renderHome({ ...liveProps(), dateLabel: 'Rabīʻ II 30, 1448', footer: 'Rab 30' }, 'systemSmall');
+      expect(textsOf(tree)).toContain('Rab 30');
+    });
+
+    it('derives the footer from the date label on a v6 entry (absent footer field)', () => {
+      const legacy = { ...liveProps(), dateLabel: 'Sun, 18 Oct 2026' } as Record<string, unknown>;
+      delete legacy.footer;
+      const tree = renderHome(legacy, 'systemSmall');
+      expect(textsOf(tree)).toContain('Sun');
+    });
+
+    it('renders the derived v6 footer digits with Latin digits under an ar device locale', () => {
+      // A v6 Hijri label parses Latin unchanged; the rendered digits stay Latin too
+      const legacy = { ...liveProps(), dateLabel: 'Rabīʻ II 30, 1448' } as Record<string, unknown>;
+      delete legacy.footer;
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        const tree = renderHome(legacy, 'systemSmall');
+        expect(textsOf(tree)).toContain('Rab 30');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
     });
 
     it('renders the stale card per family', () => {
@@ -392,6 +497,201 @@ describe('home widget renderer', () => {
   describe('Android path (jetpack globals)', () => {
     const layouts = loadLayouts('android');
 
+    // The launcher's granted width rides the widget environment (the
+    // platform's own render input), never the stored props: a JS push
+    // rewrites the props wholesale and cannot wipe what it never carried
+    const mediumEnvironment = (grantedWidthDp?: number): { colorScheme: 'light'; grantedWidthDp?: number } =>
+      grantedWidthDp === undefined ? { colorScheme: 'light' } : { colorScheme: 'light', grantedWidthDp };
+
+    it('renders the null-props card when props are undefined, not only null', () => {
+      // The widget bridge may hand the layout undefined props; the null-props
+      // guard must tolerate both without throwing on the `in` check
+      const tree = renderTree(layouts.PrayerWidget(undefined, { colorScheme: 'light' }));
+
+      expect(textsOf(tree)).toContain('Prayer times for London');
+    });
+
+    it('renders unit suffixes from props, never from the layout', () => {
+      const sentinel: WidgetStrings = {
+        h: 'H',
+        m: 'M',
+        s: 'S',
+        staleTitle: 'PAST IT',
+        refreshLine: 'REFRESH NOW',
+        refreshLead: 'REFRESH',
+        refreshTail: 'NOW',
+      };
+
+      // Frozen half a minute into a minute: 15:20 minus 14:08:30 is 71.5
+      // minutes, so the label reads "1x 12y" under the sentinels
+      freezeNow(at(DAY_ONE, '14:08') + 30_000);
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ strings: sentinel }), { colorScheme: 'light' }));
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'H', '12', 'M']));
+      expect(textsOf(tree)).not.toContain('h');
+      expect(textsOf(tree)).not.toContain('m');
+      expect(textsOf(tree)).not.toContain('1h 12m');
+
+      // The stale card's copy comes from the same props, both sizes
+      freezeNow(at(DAY_TWO, '23:30'));
+      const medium = renderTree(
+        layouts.PrayerWidget(androidProps({ strings: sentinel, size: 'medium' }), { colorScheme: 'light' })
+      );
+      expect(textsOf(medium)).toContain('PAST IT');
+      expect(textsOf(medium)).toContain('REFRESH NOW');
+      expect(textsOf(medium)).not.toContain('Out of date');
+    });
+
+    it('renders Latin digits in the countdown label under an ar device locale', () => {
+      // 18.5 minutes to Asr: ceil makes 19, drawn beside the push layer's ar unit words
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '15:01') + 30_000);
+        const strings: WidgetStrings = {
+          h: 'س',
+          m: 'د',
+          s: 'ث',
+          staleTitle: 'غير محدّث',
+          refreshLine: 'افتح Athan للتحديث',
+          refreshLead: 'افتح Athan',
+          refreshTail: 'للتحديث',
+        };
+        const tree = renderTree(layouts.PrayerWidget(androidProps({ strings }), { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toEqual(expect.arrayContaining(['19', 'د']));
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('tolerates a v1 snapshot: no strings, no row ids, the English fallback renders', () => {
+      // A snapshot written by a v1 app still sits in the store until the next
+      // push overwrites it; the layout bakes its own English copy in that case
+      freezeNow(at(DAY_ONE, '14:08') + 30_000);
+      const tree = renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' }));
+
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
+      expect(textsOf(tree)).toContain('ASR');
+      expect(textsOf(tree)).toContain('15:20');
+      // v1 days carry no footer: the builder's "Sat, 17 Oct 2026" label parses
+      expect(textsOf(tree)).toContain('Sat');
+    });
+
+    it('renders the v1 English fallback words with Latin digits under an ar device locale', () => {
+      // v1 snapshots are English-only by shape: the unit words stay the baked
+      // English literals, and the digits stay Latin
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '14:08') + 30_000);
+        const tree = renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the v1 whole-hour face as one h group, no minutes run', () => {
+      // 14:20 to Asr's 15:20 is exactly one hour, so the minutes group drops
+      freezeNow(at(DAY_ONE, '14:20'));
+      const { outer, runs } = labelPartsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+
+      expect(runs).toHaveLength(1);
+      expect(textsOf(runs[0])).toEqual(['1', 'h']);
+      expect(markerChildrenOf(outer)).toHaveLength(1);
+    });
+
+    it('renders the v1 sub-hour face as one m group', () => {
+      // Frozen half a minute into a minute: 18.5 minutes to Asr, ceil makes 19
+      freezeNow(at(DAY_ONE, '15:01') + 30_000);
+      const { runs } = labelPartsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+
+      expect(runs).toHaveLength(1);
+      expect(textsOf(runs[0])).toEqual(['19', 'm']);
+    });
+
+    it('renders the en stale words on a v1 snapshot past its horizon', () => {
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'en';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+        expect(all).toContain('Out of date');
+        expect(all).toContain('Open Athan');
+        expect(all).toContain('to refresh');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the ar stale words on a v1 snapshot past its horizon, small size', () => {
+      // The fallback's stale words read staticRow, which follows the device
+      // locale (D44/D79), never the v1 snapshot's baked English
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({}), { colorScheme: 'light' })));
+        expect(all).toContain('غير محدّث');
+        expect(all).toContain('افتح Athan');
+        expect(all).toContain('للتحديث');
+        expect(all).not.toContain('Out of date');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the one-line ar stale copy at medium size on a v1 snapshot past its horizon', () => {
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(v1Props({}).horizonEpochMs + 60_000);
+        const all = textsOf(renderTree(layouts.PrayerWidget(v1Props({ size: 'medium' }), { colorScheme: 'light' })));
+        expect(all).toContain('افتح Athan للتحديث');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the parsed legacy Android day footer with Latin digits under an ar device locale', () => {
+      // Pre-v3 snapshots carry no footer field, so the day label parses at
+      // render time; its digits stay Latin like the iOS twin
+      const props = androidProps({});
+      const stripped = props.days.map((day, index) => {
+        const withoutFooter = { ...day } as Partial<typeof day>;
+        delete withoutFooter.footer;
+        return index === 0 ? { ...withoutFooter, dateLabel: 'Rabīʻ II 30, 1448' } : withoutFooter;
+      });
+
+      (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale = 'ar';
+      try {
+        freezeNow(at(DAY_ONE, '14:08') + 30_000);
+        const tree = renderTree(layouts.PrayerWidget({ ...props, days: stripped }, { colorScheme: 'light' }));
+
+        expect(textsOf(tree)).toContain('Rab 30');
+      } finally {
+        delete (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale;
+      }
+    });
+
+    it('renders the day footer prop verbatim, preferring it over the parsed label', () => {
+      const props = androidProps({});
+      const days = props.days.map((day, index) =>
+        index === 0 ? { ...day, dateLabel: 'Saturday, 18 October 2026', footer: 'Sun' } : day
+      );
+
+      freezeNow(at(DAY_ONE, '14:08'));
+      const all = textsOf(renderTree(layouts.PrayerWidget({ ...props, days }, { colorScheme: 'light' })));
+      expect(all).toContain('Sun');
+      expect(all).not.toContain('Saturday');
+    });
+
+    it('derives the footer from the day label on a v6 snapshot (absent footer field)', () => {
+      const props = androidProps({});
+      const legacyDays = props.days.map(({ footer: _footer, ...day }) => day);
+
+      freezeNow(at(DAY_ONE, '14:08'));
+      const all = textsOf(renderTree(layouts.PrayerWidget({ ...props, days: legacyDays }, { colorScheme: 'light' })));
+      // The builder's label for DAY_ONE is "Sat, 17 Oct 2026"; the v6 parse keeps its first token
+      expect(all).toContain('Sat');
+    });
+
     it('computes the label at render from the snapshot epochs', () => {
       // Frozen half a minute into a minute: the ceil rounding is observable
       freezeNow(at(DAY_ONE, '14:08') + 30_000);
@@ -402,7 +702,7 @@ describe('home widget renderer', () => {
       expect(markers.has('VStack')).toBe(false);
 
       // 15:20 minus 14:08:30 is 71.5 minutes: ceil makes it "1h 12m"
-      expect(textsOf(tree)).toContain('1h 12m');
+      expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
       expect(textsOf(tree)).toContain('15:20');
     });
@@ -457,6 +757,8 @@ describe('home widget renderer', () => {
       const blank = androidProps({});
       for (const day of blank.days) {
         day.dateLabel = '';
+        // v6 days carry no footer, so the parse owns the empty label
+        delete day.footer;
       }
       expect(textsOf(renderTree(layouts.PrayerWidget(blank, { colorScheme: 'light' })))).toContain('');
     });
@@ -480,8 +782,8 @@ describe('home widget renderer', () => {
       // The medium day list carries every row of the on-screen day and the
       // active pill image behind the Asr row
       const mediumTexts = textsOf(mediumTree);
-      for (const [name, time] of TIMES) {
-        expect(mediumTexts).toContain(name);
+      for (const [id, time] of TIMES) {
+        expect(mediumTexts).toContain(prayerLabel(id));
         expect(mediumTexts).toContain(time);
       }
       const pill = medium.find(
@@ -530,12 +832,69 @@ describe('home widget renderer', () => {
 
     it('labels a sub-hour countdown without an hours segment', () => {
       freezeNow(at(DAY_ONE, '15:01'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('19m');
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toEqual(
+        expect.arrayContaining(['19', 'm'])
+      );
     });
 
     it('labels an exact-hour countdown without a minutes segment', () => {
       freezeNow(at(DAY_ONE, '14:20'));
-      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toContain('1h');
+      expect(textsOf(renderTree(layouts.PrayerWidget(androidProps({}), { colorScheme: 'light' })))).toEqual(
+        expect.arrayContaining(['1', 'h'])
+      );
+    });
+
+    it('composes the countdown label as digit runs with tight 0.95 letters', () => {
+      // 08:25 to Dhuhr's 12:45 is exactly 4h20m: two groups
+      freezeNow(at(DAY_ONE, '08:25'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
+      const { outer, runs } = labelPartsOf(tree);
+
+      expect(runs).toHaveLength(2);
+      expect(textsOf(runs[0])).toEqual(['4', 'h']);
+      expect(textsOf(runs[1])).toEqual(['20', 'm']);
+      // Tight: neither inner row carries a modifier, so no gap sits inside a group
+      expect(runs[0]?.props.modifiers).toBeUndefined();
+      expect(runs[1]?.props.modifiers).toBeUndefined();
+      // The converter defaults a Row's children to Alignment.Top, which
+      // lifts the smaller letter off the digit's baseline: the group
+      // centres instead (the runtime has no baseline alignment)
+      expect(runs[0]?.props.verticalAlignment).toBe('center');
+      expect(runs[1]?.props.verticalAlignment).toBe('center');
+
+      // The app component's face at HEAD sizing: the letter rides the same
+      // colour and weight at 0.95 x the digit size, no rounding
+      const digit = textChildOf(runs[0], '4');
+      const letter = textChildOf(runs[0], 'h');
+      expect((digit?.props.style as { fontSize?: number } | undefined)?.fontSize).toBe(26);
+      expect((letter?.props.style as { fontSize?: number } | undefined)?.fontSize).toBe(26 * 0.95);
+      expect(letter?.props.color).toBe(digit?.props.color);
+      expect(letter?.props.fontWeight).toBe(digit?.props.fontWeight);
+
+      // The 12 point group gap is one fixed-width Spacer between the runs
+      const outerChildren = markerChildrenOf(outer);
+      expect(outerChildren).toHaveLength(3);
+      expect(outerChildren[1]?.marker).toBe('Spacer');
+      expect(outerChildren[1]?.props.modifiers).toEqual([{ modifier: 'width', value: 12 }]);
+    });
+
+    it('drops zero groups and clamps the final minute in the composed label', () => {
+      // Whole hour: 08:45 to Dhuhr's 12:45 is exactly 4h, one group, no minutes run
+      freezeNow(at(DAY_ONE, '08:45'));
+      const whole = labelPartsOf(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }))
+      );
+      expect(whole.runs).toHaveLength(1);
+      expect(textsOf(whole.runs[0])).toEqual(['4', 'h']);
+      expect(markerChildrenOf(whole.outer)).toHaveLength(1);
+
+      // 40 seconds out: the clamp holds one minute, never zero
+      freezeNow(at(DAY_ONE, '15:20') - 40_000);
+      const clamped = labelPartsOf(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }))
+      );
+      expect(clamped.runs).toHaveLength(1);
+      expect(textsOf(clamped.runs[0])).toEqual(['1', 'm']);
     });
 
     it('shortens a two-token Hijri-style footer to the month prefix', () => {
@@ -544,14 +903,19 @@ describe('home widget renderer', () => {
       const firstDay = hijri.days[0];
       if (!firstDay) throw new Error('fixture day missing');
       firstDay.dateLabel = 'Rajab 1, 1448';
+      delete firstDay.footer;
       const nextDay = hijri.days.find((day) =>
         day.rows.some((row) => row === day.rows.find((r) => r.epochMs > at(DAY_ONE, '14:08')))
       );
-      if (nextDay) nextDay.dateLabel = 'Rajab 1, 1448';
+      if (nextDay) {
+        nextDay.dateLabel = 'Rajab 1, 1448';
+        // v6 days carry no footer, so the Hijri-style label parses
+        delete nextDay.footer;
+      }
       expect(textsOf(renderTree(layouts.PrayerWidget(hijri, { colorScheme: 'light' })))).toContain('Raj 1');
     });
 
-    // Owner ruling 2026-09-19: one uniform lifted footer on all 8 kinds
+    // One uniform lifted footer on all 8 kinds
     it('lifts the footer row 16dp above the card bottom on the small kinds', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       for (const theme of ['light', 'dark'] as const) {
@@ -567,7 +931,7 @@ describe('home widget renderer', () => {
         // The footer is the day alone now — no separator, no city
         expect(textsOf(footerRow).join('')).not.toContain('·');
         // The row must be taller than its bottom padding, or the footer
-        // text clips to nothing on device (owner finding 2026-09-19)
+        // text clips to nothing on device
         expect(footerRow?.props.modifiers).toEqual(expect.arrayContaining([{ modifier: 'height', value: 34 }]));
       }
     });
@@ -611,15 +975,13 @@ describe('home widget renderer', () => {
 
     it('bounds the active pill to the list column, not the card remainder', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
-      );
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(380)));
       const nodes = collect(tree);
       const pill = nodes.find((node) => (node.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'));
       expect(pill).toBeDefined();
       // The pill's ancestor column is the list's share of the granted width:
       // at full widget width the pill must not stretch across the dead space
-      // right of the rows (owner finding 2026-09-19)
+      // right of the rows
       const listColumn = nodes.find(
         (node) =>
           node.marker === 'Box' &&
@@ -629,7 +991,7 @@ describe('home widget renderer', () => {
           collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
       );
       expect(listColumn).toBeDefined();
-      // The pill wraps the text now, not the column (owner 2026-09-24): at this
+      // The pill wraps the text now, not the column: at this
       // 380dp grant the list is 177 and the text 136, so the pill starts 17 in.
       const pillColumn = collect(tree).find(
         (node) =>
@@ -663,10 +1025,172 @@ describe('home widget renderer', () => {
       expect(rowsRow).toBeDefined();
     });
 
+    // The mirror suite reads the medium's directional inputs back from the
+    // marker tree. Box widths identify the name/time boxes by size (84 and
+    // 55 at the 380 grant), so the assertions stay keyed to the swap, not
+    // to child indexes.
+    const mirrorBoxWidth = (node: MarkerNode | undefined): number | undefined =>
+      ((node?.props.modifiers as { modifier: string; value: unknown }[] | undefined) ?? []).find(
+        (mod) => mod.modifier === 'width'
+      )?.value as number | undefined;
+
+    it('mirrors the medium row order under rtl: time before name', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
+      );
+      const fajrRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'height' && mod.value === 24
+          ) &&
+          textsOf(node).includes('Fajr')
+      );
+      expect(fajrRow).toBeDefined();
+
+      const boxes = markerChildrenOf(fajrRow).filter((child) => child.marker === 'Box');
+      expect(boxes).toHaveLength(2);
+      const [timeBox, nameBox] = boxes;
+      // The 55dp time box draws first under rtl, the 84dp name box second
+      expect(mirrorBoxWidth(timeBox)).toBe(55);
+      expect(timeBox?.props.contentAlignment).toBe('centerStart');
+      expect(mirrorBoxWidth(nameBox)).toBe(84);
+      expect(nameBox?.props.contentAlignment).toBe('centerEnd');
+      // The time's Text carries textAlign start, mirroring its box's flip
+      const timeText = markerChildrenOf(timeBox).find((child) => child.marker === 'Text');
+      expect(timeText?.props.textAlign).toBe('start');
+    });
+
+    it('mirrors the medium halves under rtl: list before hero', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
+      );
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+      // The list wrapper draws first and aligns centerStart; the hero keeps
+      // its fixed width, its position coming from order alone
+      expect(halves[0]?.props.contentAlignment).toBe('centerStart');
+      expect(halves[1]?.props.contentAlignment).toBe('bottomCenter');
+      expect(mirrorBoxWidth(halves[1])).toBe(177);
+      const innerList = markerChildrenOf(halves[0]).find((child) => child.marker === 'Box');
+      expect(innerList?.props.contentAlignment).toBe('topEnd');
+      expect(mirrorBoxWidth(innerList)).toBe(177);
+    });
+
+    it('mirrors the pill and rows insets to the END edge under rtl', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
+      );
+      const nodes = collect(tree);
+      const pillColumn = nodes.find(
+        (node) =>
+          node.marker === 'Column' &&
+          collect(node).some((inner) => (inner.props.source as { uri?: string })?.uri?.startsWith('athan_widget_pill_'))
+      );
+      expect(pillColumn?.props.modifiers).toEqual(
+        expect.arrayContaining([{ modifier: 'padding', value: [0, 1, 14, 0] }])
+      );
+
+      const rowsColumn = nodes.find((node) => node.marker === 'Column' && textsOf(node).includes('Fajr'));
+      expect(rowsColumn?.props.modifiers).toEqual(
+        expect.arrayContaining([{ modifier: 'padding', value: [0, 0, 26, 0] }])
+      );
+    });
+
+    it('renders the LTR medium byte-identical under rtl falsy', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const snapshot = androidProps({ size: 'medium' });
+      const falsy = { ...snapshot, rtl: false };
+      const absent = { ...snapshot } as Partial<PrayerWidgetAndroidProps>;
+      delete absent.rtl;
+
+      const falsyTree = renderTree(layouts.PrayerWidget(falsy, mediumEnvironment(380)));
+      const absentTree = renderTree(layouts.PrayerWidget(absent, mediumEnvironment(380)));
+      expect(falsyTree).toEqual(absentTree);
+
+      // The falsy time Text gains no textAlign prop: the LTR bytes match the
+      // pre-mirror composition exactly
+      for (const node of collect(falsyTree)) {
+        if (node.marker !== 'Text') continue;
+        expect(node.props).not.toHaveProperty('textAlign');
+      }
+    });
+
+    it('pins the mirrored wrapper to a fixed width under rtl: a fill-first child starves the hero', () => {
+      // D135.13: the Android mapping measures a fill-width child against the
+      // whole row when it draws first, so the mirrored wrapper collapsed the
+      // fixed-width hero after it on the 3T. Under rtl the wrapper carries the
+      // list's own width (exactly the leftover the fill resolved to under
+      // LTR); under rtl falsy the trailing fill stays, byte-identical.
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: true }), mediumEnvironment(380))
+      );
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+
+      const wrapperModifiers = (halves[0]?.props.modifiers as { modifier: string; value?: unknown }[]) ?? [];
+      expect(wrapperModifiers).toContainEqual({ modifier: 'width', value: 177 });
+      expect(wrapperModifiers).not.toContainEqual({ modifier: 'fillMaxWidth', value: undefined });
+      expect(mirrorBoxWidth(halves[1])).toBe(177);
+
+      const falsyTree = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'medium', rtl: false }), mediumEnvironment(380))
+      );
+      const falsyRow = collect(falsyTree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      const falsyHalves = markerChildrenOf(falsyRow);
+      expect((falsyHalves[1]?.props.modifiers as { modifier: string; value?: unknown }[]) ?? []).toContainEqual({
+        modifier: 'fillMaxWidth',
+        value: undefined,
+      });
+    });
+
+    it('leaves the small composition and the stale card direction-neutral under rtl', () => {
+      freezeNow(at(DAY_ONE, '14:08'));
+      const smallRtl = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'small', rtl: true }), { colorScheme: 'light' })
+      );
+      const smallLtr = renderTree(
+        layouts.PrayerWidget(androidProps({ size: 'small', rtl: false }), { colorScheme: 'light' })
+      );
+      expect(smallRtl).toEqual(smallLtr);
+
+      freezeNow(androidProps({}).horizonEpochMs + 60_000);
+      const staleRtl = renderTree(layouts.PrayerWidget(androidProps({ rtl: true }), { colorScheme: 'light' }));
+      const staleLtr = renderTree(layouts.PrayerWidget(androidProps({ rtl: false }), { colorScheme: 'light' }));
+      expect(staleRtl).toEqual(staleLtr);
+    });
+
     const pillAndRowsLead = (grantedWidthDp: number): { pill: number; rows: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       const leadOf = (node: unknown): number => {
         const mods = ((node as MarkerNode)?.props?.modifiers as { modifier: string; value: unknown }[]) ?? [];
@@ -690,9 +1214,7 @@ describe('home widget renderer', () => {
       // only centres what it is wide enough to centre.
       for (const theme of ['light', 'dark'] as const) {
         freezeNow(at(DAY_ONE, '14:08'));
-        const tree = renderTree(
-          layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380, theme }), { colorScheme: 'light' })
-        );
+        const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium', theme }), mediumEnvironment(380)));
         const trio = collect(tree).find(
           (node) => node.marker === 'Column' && node.props.horizontalAlignment === 'center'
         );
@@ -731,9 +1253,8 @@ describe('home widget renderer', () => {
     // the same helpers read them back at any grant
     const mediumBoxWidths = (grantedWidthDp?: number): number[] => {
       freezeNow(at(DAY_ONE, '14:08'));
-      const props = grantedWidthDp === undefined ? { size: 'medium' } : { size: 'medium', grantedWidthDp };
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps(props as Partial<PrayerWidgetAndroidProps>), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       return collect(tree).flatMap((node) =>
         node.marker !== 'Box'
@@ -754,12 +1275,12 @@ describe('home widget renderer', () => {
     const rowNameFontSizes = (grantedWidthDp: number): number[] => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       return collect(tree).flatMap((node) => {
         if (node.marker !== 'Text') return [];
         const text = node.props.children;
-        if (typeof text !== 'string' || !['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'].includes(text)) {
+        if (typeof text !== 'string' || !['fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'].includes(text)) {
           return [];
         }
         const size = (node.props.style as { fontSize?: number } | undefined)?.fontSize;
@@ -772,7 +1293,7 @@ describe('home widget renderer', () => {
     const rowBoxWidths = (grantedWidthDp: number): { name: number; time: number } => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(grantedWidthDp))
       );
       const fajrRow = collect(tree).find(
         (node) =>
@@ -818,9 +1339,75 @@ describe('home widget renderer', () => {
       }
     });
 
-    it('falls back to the declared minimum when the width is not stamped', () => {
-      // A fresh JS push cannot know the grant, so the layout uses the
-      // provider's declared 310dp until the next native tick stamps it
+    it('splits the medium halves from the granted width the environment carries', () => {
+      // The 3T's 370dp grant, delivered the way Glance measured it: the
+      // grant rides the environment, which a JS props push cannot wipe
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370)));
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      expect(outerRow).toBeDefined();
+      const halves = markerChildrenOf(outerRow);
+      expect(halves).toHaveLength(2);
+      // Inner 344 halves into 172dp each: the hero's own box and the list's
+      // pinned inner box (the outer wrapper fills under LTR)
+      expect(mirrorBoxWidth(halves[0])).toBe(172);
+      const innerList = markerChildrenOf(halves[1]).find((child) => child.marker === 'Box');
+      expect(mirrorBoxWidth(innerList)).toBe(172);
+    });
+
+    it('renders the medium byte-identical to the minimum tree when the environment carries no granted width', () => {
+      // The absent field is the declared 310dp minimum, so a render without
+      // a grant and a 310dp grant produce the same bytes
+      freezeNow(at(DAY_ONE, '14:08'));
+      const props = androidProps({ size: 'medium' });
+      const noGrant = renderTree(layouts.PrayerWidget(props, mediumEnvironment()));
+      expect(noGrant).toEqual(renderTree(layouts.PrayerWidget(props, mediumEnvironment(310))));
+      const { hero, list } = heroAndList(undefined);
+      expect(hero).toBe(142);
+      expect(list).toBe(142);
+    });
+
+    it('ignores a grantedWidthDp key still riding a legacy snapshot', () => {
+      // Released builds stamped the grant into the stored props; the render
+      // follows the environment alone, so the dead key changes no byte
+      freezeNow(at(DAY_ONE, '14:08'));
+      const legacy = { ...androidProps({ size: 'medium' }), grantedWidthDp: 380 } as Record<string, unknown>;
+      expect(renderTree(layouts.PrayerWidget(legacy, mediumEnvironment()))).toEqual(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment()))
+      );
+      expect(renderTree(layouts.PrayerWidget(legacy, mediumEnvironment(370)))).toEqual(
+        renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370)))
+      );
+    });
+
+    it('floors a fractional granted width before splitting the halves', () => {
+      // Glance reports Dp as a Float and the bridge delivers a Double: a
+      // fractional grant must still yield whole-dp boxes (172.9dp is not a
+      // width the converter promises to place)
+      freezeNow(at(DAY_ONE, '14:08'));
+      const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(370.9)));
+      const outerRow = collect(tree).find(
+        (node) =>
+          node.marker === 'Row' &&
+          (node.props.modifiers as { modifier: string; value: unknown }[] | undefined)?.some(
+            (mod) => mod.modifier === 'padding' && JSON.stringify(mod.value) === '[13,13,13,16]'
+          )
+      );
+      const halves = markerChildrenOf(outerRow);
+      expect(mirrorBoxWidth(halves[0])).toBe(172);
+      const innerList = markerChildrenOf(halves[1]).find((child) => child.marker === 'Box');
+      expect(mirrorBoxWidth(innerList)).toBe(172);
+    });
+
+    it('falls back to the declared minimum when the environment carries no width', () => {
+      // The press path renders without a size (D8); a grant-less environment
+      // reads the provider's declared 310dp
       const { hero, list } = heroAndList(undefined);
       expect(hero).toBe(142);
       expect(list).toBe(142);
@@ -841,10 +1428,9 @@ describe('home widget renderer', () => {
       expect(new Set(rowNameFontSizes(258))).toEqual(new Set([10]));
     });
 
-    it('falls back to the declared minimum when the stamped width is not usable', () => {
-      // The native tick stamps 0 for a kind it cannot measure; treating that
-      // as a real grant would subtract the padding from nothing and drive
-      // every column negative
+    it('falls back to the declared minimum when the granted width is unusable', () => {
+      // A zero width is no grant at all: treating it as real would subtract
+      // the padding from nothing and drive every column negative
       const { hero, list } = heroAndList(0);
       expect(hero).toBe(142);
       expect(list).toBe(142);
@@ -861,8 +1447,8 @@ describe('home widget renderer', () => {
 
     it("rolls the medium day list to the next prayer's day after the last row passes", () => {
       // 20:00 on DAY_ONE: Isha (19:40) has passed, next is DAY_TWO's Fajr —
-      // the list must show DAY_TWO with Fajr active (owner finding
-      // 2026-09-19), not fall back to the hero alone
+      // the list must show DAY_TWO with Fajr active,
+      // not fall back to the hero alone
       freezeNow(at(DAY_ONE, '20:00'));
       const tree = renderTree(layouts.PrayerWidget(androidProps({ size: 'medium' }), { colorScheme: 'light' }));
       const nodes = collect(tree);
@@ -891,7 +1477,7 @@ describe('home widget renderer', () => {
     it('opens the app from a tap anywhere on the medium card', () => {
       freezeNow(at(DAY_ONE, '14:08'));
       const tree = renderTree(
-        layouts.PrayerWidget(androidProps({ size: 'medium', grantedWidthDp: 380 }), { colorScheme: 'light' })
+        layouts.PrayerWidget(androidProps({ size: 'medium' }), mediumEnvironment(380))
       ) as MarkerNode;
       expect(tree.marker).toBe('Button');
       expect(tree.props.openApp).toBe(true);
@@ -920,8 +1506,8 @@ describe('home widget renderer', () => {
 
     it('wraps each Android card in exactly one tap target', () => {
       freezeNow(at(DAY_ONE, '14:08'));
-      for (const props of [androidProps({}), androidProps({ size: 'medium', grantedWidthDp: 380 }), null]) {
-        const tree = renderTree(layouts.PrayerWidget(props, { colorScheme: 'light' }));
+      for (const props of [androidProps({}), androidProps({ size: 'medium' }), null]) {
+        const tree = renderTree(layouts.PrayerWidget(props, mediumEnvironment(380)));
         expect(collect(tree).filter((node) => node.marker === 'Button')).toHaveLength(1);
       }
     });

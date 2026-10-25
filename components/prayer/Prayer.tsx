@@ -1,20 +1,22 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useMemo } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { getRowPressAction } from '@/components/prayer/rowPress';
-import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
+import { prayerLabel } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
-import { showArabicNamesAtom } from '@/stores/ui';
 
 import Alert from './Alert';
 import Time from './Time';
@@ -33,8 +35,6 @@ interface Props {
  * @param index - Prayer index within the schedule
  */
 export default function Prayer({ type, index }: Props) {
-  const showArabicNames = useAtomValue(showArabicNamesAtom);
-
   const Schedule = useSchedule(type);
   const Prayer = usePrayer(type, index);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
@@ -52,18 +52,39 @@ export default function Prayer({ type, index }: Props) {
   const isSelectionChange = previousIsSelected !== undefined && previousIsSelected !== isSelectedForOverlay;
 
   // Selected is always fully bright; otherwise the natural passed/next/upcoming position.
-  // Pre-ADR-015 timings: overlay selection 150ms; next-prayer advance and date-roll cascade 1000ms
+  // Pre-ADR-015 timings: overlay selection 150ms; next-prayer advance and date-roll cascade 1000ms.
+  // The overlay's veil wraps this tween: a hidden row's ink sinks toward the veil solid, so the
+  // row fades without any of its text ever rendering through an opacity
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-  const colorStyle = useDerivedColor(colorPos, {
+  const colorStyle = useDerivedVeiledColor(isHiddenByOverlay ? 1 : 0, colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
+    veilColor: COLORS.gradient.overlay.veil,
+    veilDuration: ANIMATION.duration,
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
-  const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
 
-  const computedStyleEnglish = {
-    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.left,
+  // Hold the row drawn through its fade, then drop it: the resting frame under an open overlay
+  // shows the backdrop exactly, as the old veil opacity 0 did, while the ink tween runs first
+  const [hiddenSettled, setHiddenSettled] = useState(false);
+  useEffect(() => {
+    if (!isHiddenByOverlay) {
+      setHiddenSettled(false);
+      return;
+    }
+
+    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.duration);
+    return () => clearTimeout(hideTimer);
+  }, [isHiddenByOverlay]);
+
+  // A row whose occurrence left the sequence (refresh mid-selection) reports the
+  // loading frame: empty time, the sentinel id. It draws no name, exactly as the
+  // empty pre-union name did, so no frame ever borrows another prayer's label
+  const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
+
+  const computedNameStyle = {
+    width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.start,
   };
 
   const handlePress = () => {
@@ -71,7 +92,7 @@ export default function Prayer({ type, index }: Props) {
 
     const action = getRowPressAction({
       isStandard: Schedule.isStandard,
-      english: Prayer.english,
+      id: Prayer.id,
       isPassed: Prayer.isPassed,
       isSelectedForOverlay,
     });
@@ -81,21 +102,20 @@ export default function Prayer({ type, index }: Props) {
 
   return (
     <AnimatedPressable
-      style={[styles.container, veilStyle]}
+      style={styles.container}
       onPress={handlePress}
       accessibilityElementsHidden={isHiddenByOverlay}
       importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
-      <Animated.Text style={[styles.text, styles.english, computedStyleEnglish, colorStyle]}>
-        {Prayer.english}
-      </Animated.Text>
-      {showArabicNames && (
-        <Animated.Text style={[styles.text, styles.arabic, colorStyle]}>{Prayer.arabic}</Animated.Text>
-      )}
-      <Time index={index} type={type} />
-      <Alert index={index} type={type} />
+      <View style={[styles.content, { display: hiddenSettled ? 'none' : 'flex' }]}>
+        <Animated.Text style={[styles.text, styles.name, computedNameStyle, colorStyle]}>{shownName}</Animated.Text>
+        <Time index={index} type={type} />
+        <Alert index={index} type={type} />
+      </View>
     </AnimatedPressable>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   container: {
@@ -103,15 +123,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: STYLES.prayer.height,
   },
-  text: {
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.size,
-  },
-  english: {
-    paddingLeft: STYLES.prayer.padding.left,
-  },
-  arabic: {
+  content: {
     flex: 1,
-    textAlign: 'right',
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+  },
+  text: {
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.size),
+  },
+  name: {
+    paddingStart: STYLES.prayer.padding.start,
   },
 });

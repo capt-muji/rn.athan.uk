@@ -9,18 +9,21 @@ import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
+import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { useNotification } from '@/hooks/useNotification';
 import { APP_CONFIG } from '@/shared/config';
 import { COLORS, SIZE } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
+import { t } from '@/shared/i18n';
 import { isRevealReady, isWaitingForData } from '@/shared/launchGate';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { isRamadan } from '@/shared/time';
-import { shouldShowWhatsNew, VISIBLE_WHATS_NEW } from '@/shared/whatsNew';
+import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
+import { consumeRelaunchHandoff, languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
@@ -49,6 +52,16 @@ perfMark('index_module');
 // EXPO_PUBLIC_PERF_MONITOR=1, so this costs a boolean check in production.
 let firstRenderMarked = false;
 
+// The remount key on the root re-mounts Index per language switch; the launch
+// init is once per process or every switch re-runs a full reschedule ~1.5s
+// after the convergence pass already armed everything.
+let launchInitRan = false;
+
+// The index suite renders a fresh launch per test from one module instance.
+export const __resetLaunchInitForTests = (): void => {
+  launchInitRan = false;
+};
+
 export default function Index() {
   if (!firstRenderMarked) {
     firstRenderMarked = true;
@@ -60,6 +73,10 @@ export default function Index() {
   // Warm-cache launches hydrate sequences synchronously (stores/bootstrap) —
   // content paints on the first commit and sync() completes in the background
   const sequenceReady = useAtomValue(standardSequenceAtom) !== null;
+  // The switch cover lifts only outside a commit: the remount this very commit triggers
+  // lands with busy still held, and its content commit would otherwise lift the cover
+  // between its show and the reload
+  const languageBusy = useAtomValue(languageCommitBusyAtom);
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
   const helpVisible = useAtomValue(popupHelpEnabledAtom);
@@ -77,6 +94,7 @@ export default function Index() {
   const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
+  const visibleWhatsNew = currentVisibleWhatsNew();
   // Overlay + modals mount past the first content frame (launch chrome defer)
   const chromeDeferred = useChromeDeferred();
   const contentCommittedRef = useRef(false);
@@ -100,27 +118,43 @@ export default function Index() {
     // past that window keeps the first swipes on an idle JS thread. The
     // 2-hour refresh gate makes a ~1.5s delay immaterial.
     const initHandle = setTimeout(() => {
+      // The remount key re-mounts Index per language switch, and each remount
+      // re-arms this timeout: the latch keeps one process to one init pass.
+      if (launchInitRan) return;
+      launchInitRan = true;
+
       // This effect runs once per cold launch, and on Android a cold launch may
       // follow a force-stop that cancelled every armed alarm without touching
       // the refresh timestamp. Reopen the gate before the refresh reads it.
-      reopenRefreshGateOnColdLaunch();
+      // A language relaunch is not that launch: the process lived through it and
+      // the alarms with it, so the handoff marker skips the reopen and the gate
+      // answers within its window.
+      if (consumeRelaunchHandoff()) {
+        logger.info('APP: context began as a language relaunch, skipping the cold-launch gate reopen');
+      } else {
+        reopenRefreshGateOnColdLaunch();
+      }
 
-      // Initialize notifications, register background task, and create channel on first load
-      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask).catch((error) =>
-        logger.error('Failed to initialize notifications:', error)
-      );
+      // Initialize notifications, register background task, and create channel on first load.
+      // The convergence pass runs after init resolves: the scheduling lock serialises it
+      // behind the init reschedule, and it catches its own failures.
+      initializeNotifications(checkInitialPermissions, refreshNotifications, registerBackgroundTask)
+        .then(() => reconcileLanguageSurfaces())
+        .catch((error) => logger.error('Failed to initialize notifications:', error));
 
-      // Debug instrumentation for the notification-refresh background task (ISSUES.md #8)
+      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history))
       runBackgroundTaskDebugSequence();
 
       // Check for updates in background
       checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
     }, 1500);
 
-    // Show the What's New modal once after an update (never on fresh installs -
-    // stores/version.ts seeds the shown-version for new users). Marking shown
-    // on display (not dismiss) makes a mid-display crash unable to re-loop it
-    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), VISIBLE_WHATS_NEW)) {
+    // Show the What's New modal only when the archive stamps an item newer
+    // than the stored shown-version - a release that adds nothing stays
+    // silent, and fresh installs never qualify (stores/version.ts seeds the
+    // shown-version for new users). Marking shown on display (not dismiss)
+    // makes a mid-display crash unable to re-loop it
+    if (shouldShowWhatsNew(installedVersion, getWhatsNewShownVersion(), currentVisibleWhatsNew())) {
       setWhatsNewShownVersion(installedVersion);
       setPopupWhatsNewEnabled(true);
     } else if (__DEV__ && APP_CONFIG.whatsNewPreview) {
@@ -150,7 +184,7 @@ export default function Index() {
   // state. The perf mark keeps its content-only semantics; only the reveal
   // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
   //
-  // Two paths (ISSUES.md #24): cold launches (no cache at mount — fresh
+  // Two paths (ledger #24 (git history)): cold launches (no cache at mount — fresh
   // install, upgrade wipe, year gap) hide the splash as soon as the spinner
   // frame commits instead of holding through the entire network fetch;
   // warm launches keep the reveal-ready gate so the first revealed frame is
@@ -173,6 +207,9 @@ export default function Index() {
       // JS-clock only: native marks live on a skewed timeline (see perf.ts),
       // so cross-clock launch spans are reconstructed offline from ring ts
       perfMark('home_content');
+      // A switch's native cover hands to content here; in a context that never
+      // showed one this lifts nothing
+      if (!languageBusy) hideSwitchCover();
       perfMeasure('js_to_content', 'perf_monitor_init');
     }
     const revealReady = isRevealReady({
@@ -185,7 +222,7 @@ export default function Index() {
     if (revealReady) {
       SplashScreen.hideAsync();
     }
-  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded]);
+  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded, languageBusy]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
@@ -208,7 +245,10 @@ export default function Index() {
   // upgrade wipe, year gap) — warm-cache launches render content immediately
   if (waitingForData) {
     return (
-      <View style={styles.loadingContainer} accessibilityRole='progressbar' accessibilityLabel='Loading prayer times'>
+      <View
+        style={styles.loadingContainer}
+        accessibilityRole={'progressbar'}
+        accessibilityLabel={t('app.loadingLabel')}>
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
     );
@@ -217,13 +257,8 @@ export default function Index() {
 
   return (
     <>
-      {chromeDeferred && VISIBLE_WHATS_NEW ? (
-        <ModalWhatsNew
-          visible={whatsNewVisible}
-          version={installedVersion}
-          items={VISIBLE_WHATS_NEW.items}
-          onClose={handleCloseWhatsNew}
-        />
+      {chromeDeferred && visibleWhatsNew ? (
+        <ModalWhatsNew visible={whatsNewVisible} items={visibleWhatsNew.items} onClose={handleCloseWhatsNew} />
       ) : null}
       {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
       {/* iOS only in effect: Android never resolves an update here, because Play's own overlay owns that flow */}

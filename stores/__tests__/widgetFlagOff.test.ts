@@ -6,7 +6,7 @@
  * any of the twelve kinds). The enabled case in the same suite proves the
  * difference is the flag, not the fixture.
  *
- * Uses the repo's mock-prefix + require-after-reset pattern (ai/AGENTS.md
+ * Uses the repo's mock-prefix + require-after-reset pattern (see the retired ai/AGENTS.md, git history)
  * Testing): flags.ts reads the env at module evaluation, so each case sets
  * the variable, resets modules, and requires a consistent fresh stack in
  * the test body.

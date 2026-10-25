@@ -1,13 +1,16 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { FadeIn, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { useQibla } from '@/hooks/useQibla';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { setQiblaSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
@@ -16,6 +19,10 @@ import QiblaWave from './QiblaWave';
 
 const SPACE_ABOVE_DIAL = SPACING.xxl;
 const SPACE_BELOW_DIAL = SPACING.xxxl;
+
+// The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
+const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
+const SHEET_PERF_NAME = 'sheet_qibla';
 
 /**
  * The most of the screen's height the dial may take.
@@ -43,8 +50,8 @@ const QiblaCalibration = ({ size }: { size: number }) => (
     <View style={styles.instruction}>
       {/* No "calibrate" and no "figure eight": both are engineering words, and the drawing below already
           shows the motion better than a sentence naming it could */}
-      <Text style={styles.headline}>Wake up the compass</Text>
-      <Text style={styles.message}>Move your phone like this</Text>
+      <Text style={styles.headline}>{t('qibla.calibrationHeadline')}</Text>
+      <Text style={styles.message}>{t('qibla.calibrationMessage')}</Text>
     </View>
     <QiblaWave size={size} />
   </View>
@@ -58,38 +65,26 @@ const QiblaCalibration = ({ size }: { size: number }) => (
  * happened.
  */
 const QiblaLost = () => (
-  <Animated.View testID='qibla-lost' style={styles.lost} entering={FadeIn.duration(ANIMATION.durationMedium)}>
-    <Text style={styles.message}>Could not find north</Text>
-    <Text style={styles.message}>Please try standing in a different location</Text>
+  <Animated.View testID={'qibla-lost'} style={styles.lost} entering={FadeIn.duration(ANIMATION.durationMedium)}>
+    <Text style={styles.message}>{t('qibla.lostTitle')}</Text>
+    <Text style={styles.message}>{t('qibla.lostMessage')}</Text>
   </Animated.View>
 );
 
 /**
- * The sheet's own subtitle, which changes when the compass arrives and cross-fades rather than snapping.
+ * The sheet's own subtitle: the waiting sentence until the compass may be drawn, the ready one once
+ * it is, swapped in place on the same flag the compass changes on.
  *
- * Two lines stacked and faded against each other, because a swap in place would resize the header mid-fade:
- * the absolute one is taken out of the layout, so the height is whichever line is on top.
- *
- * It fades on the SAME flag the compass does, so the words and the instrument change together.
+ * ONE text, deliberately. The crossfade this replaces stacked both sentences at one spot and rested
+ * its ready arm at the sheet solid, so dark glyphs painted over the waiting line's bright ones and
+ * the words read doubled on both platforms. A swap that cannot resize the header: both sentences
+ * share one style, so the line box holds its height either way.
  */
-const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
-  const progress = useDerivedValue(() => withTiming(showsCompass ? 1 : 0, { duration: ANIMATION.durationFade }));
-  const waiting = useAnimatedStyle(() => ({ opacity: 1 - progress.value }));
-  const ready = useAnimatedStyle(() => ({ opacity: progress.value }));
-
-  return (
-    <View>
-      {/* The WIDER line is the one left in flow, because an absolutely positioned child contributes no width:
-          the container would otherwise shrink-wrap the narrower line and clip this one inside it */}
-      <Animated.Text style={[styles.subtitle, waiting]} numberOfLines={1}>
-        Follow below instructions
-      </Animated.Text>
-      <Animated.Text style={[styles.subtitle, styles.subtitleOver, ready]} numberOfLines={1}>
-        Hold flat and turn slowly
-      </Animated.Text>
-    </View>
-  );
-};
+export const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => (
+  <Text testID={'qibla-subtitle'} style={styles.subtitle} numberOfLines={1}>
+    {showsCompass ? t('qibla.subtitleReady') : t('qibla.subtitleWaiting')}
+  </Text>
+);
 
 /**
  * What the user is told when the qibla cannot be computed, with the one action that fixes it.
@@ -100,16 +95,13 @@ const QiblaSubtitle = ({ showsCompass }: { showsCompass: boolean }) => {
  */
 const QiblaPermissionDenied = () => (
   <View style={styles.waiting}>
-    <Text style={styles.message}>
-      The qibla is worked out from where you are, so it needs location access. Turn it on in Settings, then open this
-      sheet again.
-    </Text>
+    <Text style={styles.message}>{t('qibla.permissionDenied')}</Text>
     <Pressable
-      accessibilityRole='button'
-      accessibilityLabel='Open settings'
-      testID='qibla-open-settings'
+      accessibilityRole={'button'}
+      accessibilityLabel={t('qibla.openSettingsLabel')}
+      testID={'qibla-open-settings'}
       onPress={() => Linking.openSettings()}>
-      <Text style={styles.action}>Open Settings</Text>
+      <Text style={styles.action}>{t('qibla.openSettings')}</Text>
     </Pressable>
   </View>
 );
@@ -137,19 +129,19 @@ export default function BottomSheetQibla() {
   return (
     <Sheet
       setRef={setQiblaSheetModal}
-      title='Qibla'
+      title={t('qibla.title')}
       subtitle={<QiblaSubtitle showsCompass={showsCompass} />}
-      icon={<IconView type={Icon.COMPASS} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      icon={<IconView type={Icon.COMPASS} size={16} color={SHEET_ICON_COLOR} />}
       onPresent={start}
       onDismiss={stop}
-      perfName='sheet_qibla'
+      perfName={SHEET_PERF_NAME}
       scrollable={false}
       enableDynamicSizing
       contentCap={0.85}>
       {/* The stage holds the dial's square from the first frame: a dynamically-sized sheet measures its content, so
           reserving nothing would open it at a sliver and then resize under the user once the fix arrives */}
       <View
-        testID='qibla-stage'
+        testID={'qibla-stage'}
         style={[styles.stage, { height: size, marginTop: SPACE_ABOVE_DIAL, marginBottom: SPACE_BELOW_DIAL }]}>
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
@@ -163,24 +155,28 @@ export default function BottomSheetQibla() {
       {/* The place belongs to the compass and arrives with it: shown while the hint is up, it answers a question
           the user has not been asked yet. Its height is held either way, because the sheet sizes itself from its
           content and a line that comes and goes would resize it under them */}
-      <Text testID='qibla-place' style={styles.place} numberOfLines={1}>
+      <Text testID={'qibla-place'} style={styles.place} numberOfLines={1}>
         {showsCompass ? (place ?? ' ') : ' '}
       </Text>
     </Sheet>
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+// The node subtitle bypasses the shared header's style, so it takes the ar gap itself to match it (row 108)
+const compactArabic = currentLocaleId() === 'ar';
+
 const styles = StyleSheet.create({
   action: {
     color: COLORS.qibla.away.accent,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   headline: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   instruction: {
@@ -192,21 +188,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 0,
     gap: SPACING.xs,
-    left: 0,
+    start: 0,
     position: 'absolute',
-    right: 0,
+    end: 0,
   },
   message: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
     textAlign: 'center',
   },
   place: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
-    lineHeight: TEXT.lineHeight.default,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
     textAlign: 'center',
   },
   stage: {
@@ -215,14 +211,9 @@ const styles = StyleSheet.create({
   // Matches the shared header's own subtitle, because this one replaces it for this sheet alone
   subtitle: {
     color: COLORS.text.sheetSubtitle,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
-    marginTop: SPACING.xs,
-  },
-  // Stacked rather than swapped, so the header keeps one height through the fade
-  subtitleOver: {
-    position: 'absolute',
-    top: 0,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
   waiting: {
     alignItems: 'center',

@@ -3,40 +3,52 @@
 // =============================================================================
 
 /**
- * English names for the 6 standard daily prayers
+ * Title-case renderings of the standard prayer ids, kept for the migration-era paths that
+ * still walk spellings: the index-to-name migration's source arrays and the width
+ * measurement. Display resolves ids through the catalog, never through these.
  * Order matches UI display sequence (Fajr → Sunrise → Dhuhr → Asr → Magrib → Isha)
  */
-export const PRAYERS_ENGLISH = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
+export const STANDARD_PRAYER_TITLES = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Magrib', 'Isha'];
 
 /**
- * Arabic names for the 6 standard daily prayers
- * Must align 1:1 with PRAYERS_ENGLISH for correct bilingual display
+ * The id vocabulary for the standard prayers: the space-form slugs that build every stored
+ * preference key and OS identifier. Order mirrors PRAYERS_ENGLISH.
  */
-export const PRAYERS_ARABIC = ['الفجر', 'الشروق', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
+export const STANDARD_PRAYER_IDS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;
 
 // =============================================================================
 // SPECIAL PRAYERS (EXTRAS)
 // =============================================================================
 
 /**
- * English names for 5 special/blessed prayer times
+ * Title-case renderings of the extra prayer ids; see STANDARD_PRAYER_TITLES for why they stay.
  * Order: Midnight, Last Third, Suhoor, Duha, Istijaba
  * Note: Istijaba only displays on Fridays
  */
-export const EXTRAS_ENGLISH = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
+export const EXTRA_PRAYER_TITLES = ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'];
 
 /**
- * Arabic names for 5 special prayer times
- * Must align 1:1 with EXTRAS_ENGLISH for correct bilingual display
+ * The id vocabulary for the extras. 'last third' keeps its space deliberately: these bytes
+ * are the stored preference-key and OS-identifier form, and the underscore variant is only
+ * a filename slug for res/raw.
  */
-export const EXTRAS_ARABIC = ['نصف الليل', 'آخر ثلث', 'السحور', 'الضحى', 'استجابة'];
+export const EXTRA_PRAYER_IDS = ['midnight', 'last third', 'suhoor', 'duha', 'istijaba'] as const;
+
+/** The closed prayer-id union: display resolves it through the catalog, identifiers consume it raw */
+export type PrayerId = (typeof STANDARD_PRAYER_IDS)[number] | (typeof EXTRA_PRAYER_IDS)[number];
+
+/** The nine ids with a stored time field on the API day record (Midnight and Last Third are computed) */
+export type StoredPrayerId = Exclude<PrayerId, 'midnight' | 'last third'>;
+
+/** The whole vocabulary in canonical display order */
+export const PRAYER_IDS = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS] as const;
 
 /**
- * Night prayer names that cross midnight boundary
+ * Night prayer ids that cross midnight boundary
  * Used for determining which prayers belong to the previous/next Islamic day
  * These prayers occur after Isha but before Fajr (the nighttime portion)
  */
-export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
+export const NIGHT_PRAYER_NAMES: readonly PrayerId[] = ['midnight', 'last third', 'suhoor'];
 
 /**
  * Standard prayers whose time can land after midnight, so the row's instant belongs to the
@@ -44,19 +56,18 @@ export const NIGHT_PRAYER_NAMES = ['Midnight', 'Last Third', 'Suhoor'] as const;
  * latitude; Magrib only above roughly 60N, where sunset itself falls after midnight.
  * Both halves of that mapping read this list, so they cannot drift apart.
  */
-export const MIDNIGHT_CROSSING_PRAYERS: string[] = ['Isha', 'Magrib'];
+export const MIDNIGHT_CROSSING_PRAYERS: readonly PrayerId[] = ['isha', 'magrib'];
 
 /**
- * Human-readable explanations for each extra prayer
- * Used in PrayerExplanation overlay to provide context to users
- * Order aligns with EXTRAS arrays
+ * The catalog key for each extra prayer's explanation, resolved through t() by the
+ * overlay's one consumer. Order aligns with EXTRA_PRAYER_IDS.
  */
 export const EXTRAS_EXPLANATIONS = [
-  'Halfway between Magrib and Fajr',
-  'Start of the last third of the night',
-  '20 mins before Fajr',
-  '20 mins after Sunrise',
-  '1 hour before Magrib (Fridays only)',
+  'extras.explanation.midnight',
+  'extras.explanation.last third',
+  'extras.explanation.suhoor',
+  'extras.explanation.duha',
+  'extras.explanation.istijaba',
 ] as const;
 
 // =============================================================================
@@ -173,7 +184,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
  * expo-background-task's `minimumInterval` option is documented in MINUTES
  * (Android WorkManager TimeUnit.MINUTES; iOS multiplies by 60 for
  * earliestBeginDate). Passing seconds here scheduled the task 60x too far
- * out (10800 = 7.5 days) — see ISSUES.md #8.
+ * out (10800 = 7.5 days) — see ledger #8 (git history).
  *
  * Resolution order:
  * - EXPO_PUBLIC_BG_INTERVAL_MINUTES env var (interval-ladder experiments)
@@ -189,7 +200,7 @@ export const BACKGROUND_TASK_INTERVAL_HOURS = 3;
  */
 const MIN_BG_INTERVAL_MINUTES = 15;
 
-/** A day. Beyond this the override is the seconds-for-minutes mistake of ISSUES.md #8, not a choice */
+/** A day. Beyond this the override is the seconds-for-minutes mistake of ledger #8 (git history), not a choice */
 const MAX_BG_INTERVAL_MINUTES = 1440;
 
 const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
@@ -201,7 +212,7 @@ const envIntervalMinutes = Number(process.env.EXPO_PUBLIC_BG_INTERVAL_MINUTES);
 // Integer, not merely finite: iOS reads this option with `as? Int`, so a fractional value
 // fails the cast, falls back to its own default and disagrees with Android, which
 // truncates. 20.5 would mean 20 minutes on one platform and hours on the other, silently —
-// the same units-mismatch class as ISSUES.md #8 that the range check was added to close.
+// the same units-mismatch class as ledger #8 (git history) that the range check was added to close.
 const isEnvIntervalValid =
   process.env.EXPO_PUBLIC_ENV !== 'prod' &&
   Number.isInteger(envIntervalMinutes) &&
@@ -269,7 +280,7 @@ export const UNAVAILABLE_TIME = '--:--';
 
 /**
  * The countdown's name while it shows UNAVAILABLE_TIME with no overlay open: the list on screen has no prayer
- * left to count to, so none is named (owner ruling 2026-09-14). Three plain periods with no spaces; the overlay
+ * left to count to, so none is named. Three plain periods with no spaces; the overlay
  * still names the prayer it shows
  */
 export const COUNTDOWN_WAITING_NAME = '...';
@@ -297,14 +308,10 @@ export const TEXT = {
   sizeHeading: 28,
   /** Detail font size for small text (sizeSmall - 2) */
   sizeDetail: 14,
-  /** Arabic explanation font size */
-  sizeArabic: 15,
   /** Line height presets */
   lineHeight: {
     /** Default line height for body text */
     default: 22,
-    /** Line height for Arabic text */
-    arabic: 24,
   },
   /** Letter spacing presets */
   letterSpacing: {
@@ -327,7 +334,7 @@ export const SCREEN = {
   /** Horizontal padding for screen edges */
   paddingHorizontal: 12,
   /** Top padding for screen content */
-  paddingTop: 17,
+  paddingTop: 28.05,
 };
 
 // =============================================================================
@@ -471,7 +478,7 @@ export const COUNTDOWN_BAR = {
   WIDTH: 100,
   HEIGHT: 2.5,
   GLOSS_HEIGHT: 0.5,
-  TRACK_COLOR: '#153569',
+  TRACK_COLOR: 'rgba(160, 200, 255, 0.08)',
   WARNING_THRESHOLD: 10,
 } as const;
 
@@ -479,7 +486,7 @@ export const COUNTDOWN_BAR = {
  * Pulsing tip indicator at the leading edge of countdown bar
  */
 export const COUNTDOWN_TIP = {
-  WIDTH: 2,
+  WIDTH: 1.5,
   OFFSET: 0.9,
   TINT_AMOUNT: 0.15,
   PULSE_DURATION: 2500,
@@ -540,8 +547,6 @@ export const SIZE = {
   iconWrapper: {
     /** Small icon wrapper (24px) */
     sm: 24,
-    /** Medium icon wrapper (26px) */
-    md: 26,
   },
   /** Toggle switch dimensions */
   toggle: {
@@ -588,11 +593,6 @@ export const SIZE = {
     maxWidth: 400,
     /** Shared width of all modal action buttons */
     buttonWidth: 160,
-  },
-  /** Navigation dimensions */
-  nav: {
-    /** Bottom offset for navigation elements (25px) */
-    bottomOffset: 25,
   },
   /** Loading spinner size (matches the iOS 'small' 20pt spinner; Android renders this as dp) */
   activityIndicator: 20,
@@ -684,18 +684,26 @@ export const COLORS = {
   // TEXT HIERARCHY
   // ───────────────────────────────────────────────────────────────────────────
   text: {
+    // Text inks are solid: translucent ink compounds where glyph strokes overlap (the
+    // Arabic overlap band), so each dim role is its old rgba flattened to one constant
     /** Primary text: active prayers, main content */
     primary: '#ffffff',
-    /** Secondary text: labels, descriptions */
-    secondary: 'rgba(160, 200, 255, 0.54)',
-    /** Muted text: inactive prayers, timestamps */
-    muted: 'rgba(138, 169, 214, 0.38)',
-    /** Disabled/hint text */
-    disabled: 'rgba(146, 211, 255, 0.65)',
+    /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
+    secondary: '#6c79c2',
+    /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
+    labelHome: '#6c79c2',
+    /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
+    labelOverlay: '#585c8c',
+    /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
+    muted: '#52529e',
+    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */
+    rowTime: '#5a5fa6',
+    /** Disabled/hint text on the sheet: the old rgba(146,211,255,.65) flattened over #0b183a */
+    disabled: '#6392ba',
     /** Emphasis text: info box titles */
     emphasis: 'rgba(224, 231, 255, 1)',
-    /** Every supporting line under a sheet's own title, so they all read as one voice */
-    sheetSubtitle: 'rgba(86, 134, 189, 0.725)',
+    /** Every supporting line under a sheet's own title, so they all read as one voice. Old rgba(86,134,189,.725) flattened over the sheet #0b183a */
+    sheetSubtitle: '#416899',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -706,8 +714,13 @@ export const COLORS = {
     sheet: '#0b183a',
     /** Bottom sheet border */
     sheetBorder: '#0f1d46',
+    /** The sheet grabber indicator: text.secondary's old rgba over the sheet, held pixel-exact now that the text constant is a gradient flatten */
+    sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
+    /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
+     * for overlays that must not dim their own children */
+    backdropDim: 'rgba(0, 1, 22, 0.9)',
     /** Elevated surface (info boxes, modals) */
     elevated: 'rgba(18, 6, 42, 1)',
     /** Elevated surface border */
@@ -721,7 +734,12 @@ export const COLORS = {
     /** Main screen background gradient */
     screen: { start: '#031a4c', end: '#5b1eaa' },
     /** Overlay background gradient */
-    overlay: { start: '#110022', end: '#000000' },
+    overlay: {
+      start: '#110022',
+      end: '#000000',
+      /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
+      veil: '#0b0016',
+    },
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -735,7 +753,7 @@ export const COLORS = {
     /** Inactive toggle background */
     inactive: '#303f6c',
     /** Inactive toggle border */
-    inactiveBorder: '#3b3977',
+    inactiveBorder: 'rgba(99, 102, 241, 0.15)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -803,8 +821,8 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text */
-    text: 'rgba(128, 162, 212, 0.45)',
+    /** Prayer ago badge text: the old rgba(128,162,212,.45) flattened over its pill wash on the gradient midpoint */
+    text: '#5660a7',
     /** Background gradient for prayer ago badge */
     gradient: {
       start: 'rgba(73, 75, 160, 0.15)',
@@ -823,13 +841,16 @@ export const COLORS = {
     border: 'rgba(116, 80, 207, 0.68)',
   },
 
-  /** Countdown bar */
   countdown: {
-    background: 'rgba(126, 189, 241, 0.19)',
+    /** Colon inks are solid, the old rgba flattened over the gradient midpoint #2f1c7b */
+    timeColon: '#5f60ad',
+    pastTimeColon: 'rgb(170, 182, 212)',
+    nextTimeColon: '#a9b1de',
+    nextTimeColonExtras: '#d7d9ef',
   },
 
   /**
-   * The qibla compass, in the two states the owner locked in on 2026-09-30.
+   * The qibla compass, in its two locked states.
    *
    * `away` is the app's violet-tinted dark with one gold accent; `facing` warms EVERY role to gold at once, which is
    * what tells the user they are on the line without anything to read.
@@ -842,8 +863,8 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal letters: the structure's own blue, faint enough to sit behind the instrument it labels */
-      ink: 'rgba(146, 184, 228, 0.45)',
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      ink: '#33416b',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',
       /** The Kaaba's cube: under the dial, so its outline is what carries it */
@@ -854,7 +875,8 @@ export const COLORS = {
       face: 'rgba(54, 44, 62, 1)',
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
-      ink: 'rgba(228, 192, 134, 0.5)',
+      /** The old rgba(146,184,228,.45) flattened over the facing face, so the numbers keep their dim blue in both states (owner order 2026-10-25) */
+      ink: '#4b5480',
       accent: 'rgba(247, 191, 74, 1)',
       kaaba: 'rgba(32, 25, 48, 1)',
     },
@@ -977,16 +999,16 @@ export const OVERLAY = {
 export const STYLES = {
   countdown: {
     /** Fixed height of countdown component in pixels */
-    height: 60,
+    height: 54,
   },
   prayer: {
     /** Fixed height of each prayer row component */
     height: 57,
     padding: {
-      /** Left padding for prayer row text */
-      left: 20,
-      /** Right padding for prayer row text */
-      right: 20,
+      /** Start padding for prayer row text */
+      start: 20,
+      /** End padding for prayer row text */
+      end: 20,
     },
     border: {
       /** Border radius for prayer row containers */
@@ -994,19 +1016,3 @@ export const STYLES = {
     },
   },
 };
-
-// =============================================================================
-// ARABIC EXPLANATIONS
-// =============================================================================
-
-/**
- * Arabic translations of extra prayer explanations
- * Used in bilingual UI displays
- */
-export const EXTRAS_EXPLANATIONS_ARABIC = [
-  'نصف الليل بين المغرب والفجر',
-  'عند بداية الثلث الأخير من الليل',
-  '20 دقيقة قبل الفجر',
-  '20 دقيقة بعد الشروق',
-  'ساعة قبل المغرب (الجمعة فقط)',
-] as const;

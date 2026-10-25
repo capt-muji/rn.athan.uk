@@ -19,7 +19,11 @@ import { getRowPressAction } from '../rowPress';
 const mockClock = { now: new Date(0) };
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -36,8 +40,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 beforeEach(() => mockAtomValues.clear());
@@ -63,11 +66,11 @@ const tapsOnList = (type: ScheduleType, rowCount: number, isSelectedForOverlay: 
     const row = usePrayer(type, index);
     const action = getRowPressAction({
       isStandard: type === ScheduleType.Standard,
-      english: row.english,
+      id: row.id,
       isPassed: row.isPassed,
       isSelectedForOverlay,
     });
-    return `${row.english}: ${action}`;
+    return `${row.id}: ${action}`;
   });
 
 describe('a tap on each row (real London 2026 days)', () => {
@@ -79,7 +82,7 @@ describe('a tap on each row (real London 2026 days)', () => {
       {},
       ['2026-09-11', '14:00'],
       '2026-09-11',
-      ['Fajr: open', 'Sunrise: open', 'Dhuhr: open', 'Asr: open', 'Magrib: open', 'Isha: open'],
+      ['fajr: open', 'sunrise: open', 'dhuhr: open', 'asr: open', 'magrib: open', 'isha: open'],
     ],
     [
       'Standard with an unreadable Fajr that has passed',
@@ -87,7 +90,7 @@ describe('a tap on each row (real London 2026 days)', () => {
       { '2026-09-11': ['fajr'] },
       ['2026-09-11', '10:00'],
       '2026-09-11',
-      ['Fajr: open', 'Sunrise: open', 'Dhuhr: open', 'Asr: open', 'Magrib: open', 'Isha: open'],
+      ['fajr: open', 'sunrise: open', 'dhuhr: open', 'asr: open', 'magrib: open', 'isha: open'],
     ],
     [
       'Extras on a Friday before its Istijaba',
@@ -95,7 +98,7 @@ describe('a tap on each row (real London 2026 days)', () => {
       {},
       ['2026-09-11', '12:00'],
       '2026-09-11',
-      ['Midnight: open', 'Last Third: open', 'Suhoor: open', 'Duha: open', 'Istijaba: open'],
+      ['midnight: open', 'last third: open', 'suhoor: open', 'duha: open', 'istijaba: open'],
     ],
     [
       'Extras on a Friday after its Istijaba, held on screen because Saturday is missing from the store',
@@ -103,7 +106,7 @@ describe('a tap on each row (real London 2026 days)', () => {
       { '2026-09-12': 'not stored' },
       ['2026-09-11', '20:00'],
       '2026-09-11',
-      ['Midnight: open', 'Last Third: open', 'Suhoor: open', 'Duha: open', 'Istijaba: none'],
+      ['midnight: open', 'last third: open', 'suhoor: open', 'duha: open', 'istijaba: none'],
     ],
   ])('%s', (_scenario, type, breakage, now, listDay, taps) => {
     expect(show(type, breakage, now)).toBe(listDay);
@@ -114,21 +117,21 @@ describe('a tap on each row (real London 2026 days)', () => {
   it('closes the overlay on the row it highlights, passed or not, on both pages', () => {
     show(ScheduleType.Standard, {}, ['2026-09-11', '14:00']);
     expect(tapsOnList(ScheduleType.Standard, 6, true)).toEqual([
-      'Fajr: close',
-      'Sunrise: close',
-      'Dhuhr: close',
-      'Asr: close',
-      'Magrib: close',
-      'Isha: close',
+      'fajr: close',
+      'sunrise: close',
+      'dhuhr: close',
+      'asr: close',
+      'magrib: close',
+      'isha: close',
     ]);
 
     show(ScheduleType.Extra, {}, ['2026-09-11', '12:00']);
     expect(tapsOnList(ScheduleType.Extra, 5, true)).toEqual([
-      'Midnight: close',
-      'Last Third: close',
-      'Suhoor: close',
-      'Duha: close',
-      'Istijaba: close',
+      'midnight: close',
+      'last third: close',
+      'suhoor: close',
+      'duha: close',
+      'istijaba: close',
     ]);
   });
 
@@ -139,7 +142,7 @@ describe('a tap on each row (real London 2026 days)', () => {
     expect(
       getRowPressAction({
         isStandard: false,
-        english: istijaba.english,
+        id: istijaba.id,
         isPassed: istijaba.isPassed,
         isSelectedForOverlay: true,
       })

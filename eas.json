@@ -29,8 +29,7 @@
         "ascAppId": "6740474033"
       },
       "android": {
-        "track": "alpha",
-        "serviceAccountKeyPath": "$HOME/.config/athan/athan-486118-66c0837dd5c5.json"
+        "track": "alpha"
       }
     }
   }

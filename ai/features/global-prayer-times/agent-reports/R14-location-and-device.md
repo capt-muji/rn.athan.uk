@@ -23,7 +23,7 @@ script is named. **Cited** means a named source asserts it, with its URL and fet
    places: placing a user at their zone's most populous city gives a **median error of 16
    displayed minutes**, a 90th percentile of 51 and a worst case of 120. Only **28.1%** of the
    sampled world population lands within 2 minutes. In Muslim-majority countries the median is 11
-   minutes and 35.3% are within 2. **Diyarbakir, the city session 37 measured at 29.7 degrees of
+   minutes and 35.3% are within 2. **Diyarbakir, the city sob 37 measured at 29.7 degrees of
    qibla error, is 55 displayed minutes wrong on prayer times.** The app cannot go worldwide
    without a location signal, and this report could not rescue the permission-free option.
 
@@ -424,7 +424,7 @@ prayer times are a geographic quantity.
 
 ### 3.3 The asymmetry against qibla, which is not the one the brief anticipated
 
-Session 37's five measured cities, with both errors computed by the same script from the same
+Sob 37's five measured cities, with both errors computed by the same script from the same
 representative (`part2-tz2.txt` 2F):
 
 | City | Zone | Representative | km from it | **Prayer, displayed min** | **Qibla, degrees** |
@@ -481,7 +481,7 @@ Read from the package's own type documentation (`expo-localization-58.0.1.tgz`,
 > The region code for your device that comes from the Region setting under Language & Region on
 > iOS, Region settings on Android and is parsed from locale on Web (can be `null` on Web).
 
-Session 39 already recorded the crucial caveat (`ai/plans/39-localisation/LOCALIZATION-API.md:56-60`):
+Sob 39 already recorded the crucial caveat (`ai/plans/39-localisation/LOCALIZATION-API.md:56-60`):
 **`regionCode` is read from a settings menu, not from position.** So it is not a location signal.
 What it is, precisely, is **a statement of which country's conventions the user expects**, which for
 source selection is a better signal than position anyway: a Malaysian working in Dubai who
@@ -558,7 +558,7 @@ coarse position and the UTC offset; the region gives the country. Read both.
 
 ### 3.5 Coarse location, which is the right ask
 
-Session 37's `R2-04-location-strategy.md` (plan folder deleted 2026-10-07, recoverable from git history) established the permission landscape in depth and this
+Sob 37's `R2-04-location-strategy.md` (plan folder deleted 2026-10-07, recoverable from git history) established the permission landscape in depth and this
 report has no reason to revisit it. What it adds is the prayer-time figure for each level, from 3.1:
 **coarse location at any of its documented accuracies produces an identical answer to fine GPS.**
 
@@ -580,7 +580,7 @@ exactly the accuracy class section 2.5 requires**, and "within 1-20 kilometers" 
 design figure, producing at most 2 minutes of error at London and 3 at Oslo.
 
 **What the app ships today is FINE and COARSE, and this report reopens a question the owner
-already closed once.** Session 37's `ANDROID-PERMISSIONS.md` (same deleted plan, recoverable from git history) measured, from the installed
+already closed once.** Sob 37's `ANDROID-PERMISSIONS.md` (same deleted plan, recoverable from git history) measured, from the installed
 `expo-location@58.0.8` source, that the module adds **both** `ACCESS_COARSE_LOCATION` and
 `ACCESS_FINE_LOCATION` in its own `AndroidManifest.xml`, hardcodes the pair in
 `LocationModule.kt:176-186`, and that its config plugin takes no option to drop either. **Coarse-only
@@ -593,7 +593,7 @@ is not reachable by configuration; it needs a fourth local config plugin with a
 
 **So the coarse-only plugin was CANCELLED and the app ships the default pair.** This report does not
 reopen that, and the reason it does not is that the ruling rested on a measurement rather than a
-preference: session 37 established that fine location costs the user **no extra steps**, because the
+preference: sob 37 established that fine location costs the user **no extra steps**, because the
 Precise and Approximate choice on API 31+ is a toggle inside the same single dialog.
 
 **What this report adds is one fact the ruling did not have, and it is a cost that arrives later.**
@@ -670,7 +670,7 @@ reaches 71.8%** (`part2-citylist.txt` 2M). For the remainder, the nearest listed
 km for 3,211 entries at 30 KB.
 
 **So a picker is cheap at any fidelity anyone would want, and it is not the fallback it looks
-like.** Session 37 reached the same conclusion for qibla with the same dataset and recommended
+like.** Sob 37 reached the same conclusion for qibla with the same dataset and recommended
 `cities15000` trimmed to about 1 MB. This report's binary encoding is three times smaller for the
 same content, so the two sessions can share one asset.
 
@@ -936,7 +936,7 @@ cosmetic and above 50 km is urgent.**
 
 ### 5.2 A timezone change as a travel signal: reliable when it fires, and it often does not
 
-A timezone change costs nothing and needs no permission. Session 37's own table listed it as a
+A timezone change costs nothing and needs no permission. Sob 37's own table listed it as a
 "free invalidation signal" (`R2-04-location-strategy.md:114`, deleted 2026-10-07, recoverable from git history). This report measures how good it
 is, and the answer is: good as a positive signal, useless as a complete one.
 
@@ -1013,7 +1013,7 @@ that is a separate and larger error than the solar one.
 
 ### 5.3 The travel design, stated
 
-Session 37 reached the design that dissolves the staleness problem and it transfers with one
+Sob 37 reached the design that dissolves the staleness problem and it transfers with one
 change. Its rule was: never cache authoritatively, re-fix on every sheet open, and the cache is a
 paint-over that can never mislead because it is never shown without a refresh in flight.
 
@@ -1030,7 +1030,7 @@ So the design has to be different in kind:
 | **User opens the source setting** | re-fix with `Accuracy.Balanced`, exactly as `device/qibla.ts:64` already does | the deliberate moment, and the only place a permission prompt belongs |
 | **User accepts a change** | wipe the cache for the old source, refetch, re-arm every alarm | section 5.4 |
 | **No permission, ever** | the region code plus the picker, which is a complete path | sections 3.4 and 3.7 |
-| **Never** | background location, significant-location-change, or a periodic fix | session 37 rejected all three and this report finds no prayer-time argument for any of them |
+| **Never** | background location, significant-location-change, or a periodic fix | sob 37 rejected all three and this report finds no prayer-time argument for any of them |
 
 **Why a prompt and not an automatic follow, argued rather than asserted.** The case for automatic is
 strong: a traveller who lands in Makkah and gets London's Fajr alarm has been failed badly, and 256
@@ -1377,7 +1377,7 @@ re-derive them.
     demographic groupings, used only to split results. It is not a prayer-time fact and no
     conclusion rests on its exact membership.
 12. **No device was driven for this report.** Every permission behaviour is cited from the platform
-    vendor's own documentation or from session 37's reading of the installed `expo-location` source.
+    vendor's own documentation or from sob 37's reading of the installed `expo-location` source.
     Nothing here was confirmed against a running iPhone or the 3T.
 
 ---
@@ -1398,9 +1398,9 @@ re-derive them.
 | The comment that becomes wrong | `stores/sync.ts:365-368`, on keeping alarm records through a wipe |
 | The gate reopen | `stores/sync.ts:126-133`, `saveDownloadedDays` |
 | `adhan` at 4.4.6, `expo-location` at 58.0.8, no `expo-localization` | `package.json:52` and the dependency block |
-| Session 37's qibla figures | `ai/plans/README.md:127` |
-| Session 37's location strategy | `ai/plans/37-qibla-compass/agent-reports/R2-04-location-strategy.md` (plan deleted 2026-10-07, recoverable from git history) |
-| Session 39 on `regionCode` not being a location signal | `ai/plans/39-localisation/LOCALIZATION-API.md:56-60` |
+| Sob 37's qibla figures | `ai/plans/README.md:127` |
+| Sob 37's location strategy | `ai/plans/37-qibla-compass/agent-reports/R2-04-location-strategy.md` (plan deleted 2026-10-07, recoverable from git history) |
+| Sob 39 on `regionCode` not being a location signal | `ai/plans/39-localisation/LOCALIZATION-API.md:56-60` |
 | The no-network, no-key, no-tile rule | `ai/plans/41-qibla-map/BRIEF.md:35` (plan deleted 2026-10-07, recoverable from git history), `ASSUMPTIONS.md:23` |
 | Prior reports relied on | `R1` sections on Gulf angles and JAKIM high-ground zones, `R4` section 6, `R5` on the 29.9% and on Iraq and Lebanon, `R6` on JAKIM's per-field offsets, `R7` on the Tromso Asr runaway, `R8` sections 1 and 3, `R9` on France |
 
@@ -1427,7 +1427,7 @@ re-derive them.
 | --- | --- |
 | `developer.android.com/develop/sensors-and-location/location/permissions` | approximate is "accurate to within about 3 square kilometers", precise "usually within about 50 meters", and that an approximate grant caps the app "regardless of which location permissions your app declares" |
 | `developer.apple.com/documentation/corelocation/kcllocationaccuracyreduced` | "preserves the user's country or region, typically preserves the city, and is usually within 1-20 kilometers" |
-| `support.google.com/googleplay/android-developer/answer/17033915` | the Minimum Scope location policy, via session 37's reading |
+| `support.google.com/googleplay/android-developer/answer/17033915` | the Minimum Scope location policy, via sob 37's reading |
 | `www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=year&zone=<ZONE>` | JAKIM's own published year per zone, the oracle for the elevation finding. Fetched by `curl` and `fetch` |
 | `www.e-solat.gov.my/` `Tukar Zon` selector | the 60 zone codes and their district lists, transcribed verbatim into `part3-zones.mjs` |
 | `api.waktusolat.app/docs` | "zone detection based on coordinates" |

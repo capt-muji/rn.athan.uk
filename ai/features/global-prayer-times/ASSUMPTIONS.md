@@ -90,7 +90,7 @@ much cheaper architecture, at 6 bytes per city instead of 282.
 
 **A15. It was assumed Malaysia is the right second source to build against**, because it exercises zones, Imsak,
 Duha, a documented Fajr policy and a keyless whole-year feed simultaneously. Singapore would be easier and would
-prove less. This is a sequencing judgement and the owner may prefer to start where his users are.
+prove less. This is a sequencing judgement and the owner may prefer to start where the owner's users are.
 
 **A16. It was assumed the computed library source should come LAST, not first.** This is the least intuitive
 recommendation in the research. The reasoning is that library presets are the least authoritative option
@@ -135,7 +135,7 @@ record of how each number was reached, which is why several now carry a losing r
 
 **A25. LIKELIEST TO BE WRONG. It was assumed the app will ask for a location permission.** R14 measured that the
 permission-free route fails (median 16 displayed minutes wrong), so worldwide needs a location signal. **The owner
-has never agreed to add a permission to this app and has been explicit that he dislikes prompts.** If he refuses,
+has never agreed to add a permission to this app and has been explicit that the owner dislikes prompts.** If the owner refuses,
 the honest fallback is a manual city or zone picker, which R14 costs and which needs no permission at all. That is
 a worse first-run experience and an entirely viable product.
 
@@ -159,7 +159,7 @@ adopted in part. Norway's remains unexplained and should not be implemented on t
 Ordered by value. None of these blocks a decision; they sharpen one.
 
 1. **Licensing: CLOSED by the owner, 2026-09-30.** R4 and R6 both stopped at the same wall, with one authority of
-   eleven permitting commercial use and eight silent. The owner has since confirmed he corresponded with the
+   eleven permitting commercial use and eight silent. The owner has since confirmed corresponding with the
    authorities himself and has permission to use their data. **No session contacts anyone, drafts any letter, or
    gathers contact details, ever, without the owner asking for it first** (owner, 2026-09-30). The item is
    recorded as settled and is not re-opened.

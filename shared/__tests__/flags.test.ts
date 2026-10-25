@@ -46,6 +46,12 @@ const setEnv = (value: string | undefined) => {
 
 afterEach(() => {
   setEnv(undefined);
+  delete process.env.EXPO_WIDGETS_ANDROID;
+});
+
+beforeEach(() => {
+  // the ambient shell must never override a suite's own resolution route
+  delete process.env.EXPO_WIDGETS_ANDROID;
 });
 
 // =============================================================================
@@ -108,6 +114,7 @@ describe('app.config widget plugin parity', () => {
     const config = loadAppConfigFresh();
     expect(pluginNames(config)).not.toContain('expo-widgets');
     expect(pluginNames(config)).toContain('expo-notifications');
+    expect(pluginNames(config)).not.toContain('./plugins/androidLocaleConfig');
     expect(loadFlagsFresh().FEATURE_FLAGS.iosWidgets).toBe(false);
   });
 
@@ -124,6 +131,35 @@ describe('app.config widget plugin parity', () => {
     const config = loadAppConfigFresh();
     expect(config.android?.package).toBe('com.example.athan');
     expect(config.name).toBe('Athan');
+  });
+
+  it('takes the store ids from the build environment', () => {
+    setEnv('1');
+    process.env.EXPO_APP_ID = 'com.example.injected';
+    process.env.EXPO_BUNDLE_ID = 'com.example.injected';
+    process.env.EXPO_APP_GROUP = 'group.com.example.injected';
+    process.env.EXPO_EAS_PROJECT_ID = '00000000-0000-4000-8000-000000000000';
+
+    try {
+      const config = loadAppConfigFresh('ios');
+      expect(config.android?.package).toBe('com.example.injected');
+      expect(config.ios?.bundleIdentifier).toBe('com.example.injected');
+      expect(widgetsPluginEntry(config)?.[1].groupIdentifier).toBe('group.com.example.injected');
+      expect((config.extra?.eas as { projectId?: string } | undefined)?.projectId).toBe(
+        '00000000-0000-4000-8000-000000000000'
+      );
+    } finally {
+      delete process.env.EXPO_APP_ID;
+      delete process.env.EXPO_BUNDLE_ID;
+      delete process.env.EXPO_APP_GROUP;
+      delete process.env.EXPO_EAS_PROJECT_ID;
+    }
+  });
+
+  it('carries no project id when the environment injects none', () => {
+    setEnv('1');
+    const config = loadAppConfigFresh('ios');
+    expect((config.extra?.eas as { projectId?: string } | undefined)?.projectId).toBeUndefined();
   });
 });
 
@@ -199,9 +235,9 @@ describe('app config android widget resolution', () => {
     );
     for (const widget of home) {
       const android = widget.android as Record<string, unknown>;
-      // Grid-agnostic sizing (owner ruling 2026-09-19): minWidth arithmetic is
+      // Grid-agnostic sizing: minWidth arithmetic is
       // the only lever, so no targetCell keys exist. Sizes are locked like
-      // iOS (owner ruling 2026-09-19): small = 50%, medium = 100%, the eight
+      // iOS: small = 50%, medium = 100%, the eight
       // kinds ARE the size choices.
       expect(android.resizeMode).toBe('none');
       expect(android.initialLayout).toBe('./widgets/PrayerWidget');
@@ -222,9 +258,23 @@ describe('app config android widget resolution', () => {
       config = loadAppConfigFresh('android');
     });
     expect(pluginNames(config)).not.toContain('expo-widgets');
+    expect(pluginNames(config)).toContain('./plugins/androidLocaleConfig');
   });
 
-  it('treats EXPO_WIDGETS_ANDROID as a platform signal, gated by the flag', () => {
+  it('registers the locale config on the android argv route with the flag off', () => {
+    setAndroidEnv(undefined);
+    let config!: import('expo/config').ExpoConfig;
+    withCliArgv(['android'], () => {
+      config = loadAppConfigFresh(undefined);
+    });
+    expect(pluginNames(config)).not.toContain('expo-widgets');
+    expect(pluginNames(config)).toContain('./plugins/androidLocaleConfig');
+    expect(pluginNames(config)).not.toContain('./plugins/androidWidgetGrid');
+    expect(pluginNames(config)).not.toContain('./plugins/androidWidgetAssets');
+    expect(config.ios?.bundleIdentifier).toBe('com.example.athan');
+  });
+
+  it('treats EXPO_WIDGETS_ANDROID as a platform signal, locale config without the flag', () => {
     setAndroidEnv('1');
     process.env.EXPO_WIDGETS_ANDROID = '1';
     let forcedAndroid!: import('expo/config').ExpoConfig;
@@ -240,6 +290,7 @@ describe('app config android widget resolution', () => {
       flagStillGates = loadAppConfigFresh(undefined);
     });
     expect(pluginNames(flagStillGates)).not.toContain('expo-widgets');
+    expect(pluginNames(flagStillGates)).toContain('./plugins/androidLocaleConfig');
   });
 
   it('keeps the ios resolution ruled by the ios flag only', () => {

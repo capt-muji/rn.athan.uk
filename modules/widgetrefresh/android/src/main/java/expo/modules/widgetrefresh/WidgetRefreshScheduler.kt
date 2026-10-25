@@ -21,20 +21,19 @@ import org.json.JSONObject
  * alarm just past each wall-minute edge re-renders every placed widget via
  * the public ACTION_APPWIDGET_UPDATE path, and re-arms itself. The JS flip
  * chain in stores/widget.ts dies with the host process, which froze the
- * countdown until the app next opened (owner ruling 2026-09-19).
+ * countdown until the app next opened.
  *
  * expo-widgets' own WidgetsUpdater is module-private, so the refresh rides
  * each generated GlanceAppWidgetReceiver's standard update broadcast; the
  * layout recomputes its content from the carried epochs at every render.
  *
- * The runtime never hands the JS layout its rendered size, so both size
- * stamps are patched HERE: each tick reads every placed id's actual width
- * from the system and writes the composition ("size") and that width
- * ("grantedWidthDp") into the kind's stored props before the re-render.
- * The composition flips within a minute of a resize (owner ruling
- * 2026-09-19); the width lets the medium lay its columns out against what
- * the launcher really gave, which a grid or display-size change alters
- * without any resize at all.
+ * The render environment carries each render's granted width to the JS
+ * layout, so only the composition ("size") is patched HERE: each tick reads
+ * every placed id's actual width from the system and writes that
+ * composition into the kind's stored props before the re-render. The
+ * composition flips within a minute of a resize, which a grid or
+ * display-size change alters without any
+ * resize at all.
  */
 internal object WidgetRefreshScheduler {
     private const val MINUTE_MS = 60_000L
@@ -63,9 +62,6 @@ internal object WidgetRefreshScheduler {
      */
     private const val COMPOSE_PASS_DELAY_MS = 2500L
 
-    /** Must match PrayerWidgetAndroidProps.grantedWidthDp in shared/widgetTypes.ts. */
-    private const val GRANTED_WIDTH_KEY = "grantedWidthDp"
-
     private val HOME_KINDS = listOf(
         "PrayerWidget",
         "ExtrasWidget",
@@ -86,11 +82,11 @@ internal object WidgetRefreshScheduler {
     }
 
     /**
-     * Stamps the composition AND the granted width the placed ids measure over
-     * the kind's stored props. MIN_WIDTH is the portrait grant (MAX_WIDTH is
-     * landscape), so it is the width the user sees on a phone. Props are stored
-     * per kind, so a kind placed at two widths renders the widest id's
-     * composition on every instance.
+     * Stamps the composition the placed ids measure over the kind's stored
+     * props. MIN_WIDTH is the portrait grant (MAX_WIDTH is landscape), so it
+     * is the width the user sees on a phone. Props are stored per kind, so a
+     * kind placed at two widths renders the widest id's composition on every
+     * instance.
      */
     private fun patchCompositionSize(context: Context, manager: AppWidgetManager, kind: String, ids: IntArray) {
         var widestDp = 0
@@ -107,10 +103,11 @@ internal object WidgetRefreshScheduler {
         val stored = preferences.getString(key, null) ?: return
         val patched = runCatching {
             val props = JSONObject(stored)
-            // Both stamps gate the write: a re-grant that keeps the composition
-            // (a grid change, a display-size change) still has to reach the layout
-            if (props.optString("size") == desired && props.optInt(GRANTED_WIDTH_KEY, 0) == widestDp) return
-            props.put("size", desired).put(GRANTED_WIDTH_KEY, widestDp).toString()
+            // The composition stamp alone gates the write: a re-grant that
+            // keeps it reaches the layout through the render environment,
+            // never the stored props
+            if (props.optString("size") == desired) return
+            props.put("size", desired).toString()
         }.getOrNull() ?: return
         preferences.edit().putString(key, patched).commit()
     }
@@ -187,7 +184,7 @@ internal object WidgetRefreshScheduler {
         val appContext = context.applicationContext
         val alarmManager = appContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         // 500ms past the edge: the countdown label is minute-ceil and the
-        // chain is wall-clock synced (owner ruling 2026-09-19), so the flip
+        // chain is wall-clock synced, so the flip
         // lands within half a second of the system minute change
         var atMillis = (System.currentTimeMillis() / MINUTE_MS + 1) * MINUTE_MS + 500
         if (atMillis < System.currentTimeMillis() + 250) atMillis += MINUTE_MS

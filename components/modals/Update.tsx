@@ -1,8 +1,15 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 import Modal from './Modal';
+
+/** Bounds the message so the card can never grow past the screen, never reached by today's copy */
+const MESSAGE_HEIGHT_SHARE = 0.62;
 
 type Props = {
   visible: boolean;
@@ -11,42 +18,51 @@ type Props = {
 };
 
 export default function ModalUpdate({ visible, onClose, onUpdate }: Props) {
+  const { height } = useWindowDimensions();
+
   return (
-    <Modal visible={visible} title='Update Available!' onRequestClose={onClose}>
-      <Text style={styles.message}>
-        A new version is available.
-        {'\n'}Would you like to update now?
-      </Text>
+    <Modal visible={visible} title={t('update.title')} onRequestClose={onClose}>
+      <ScrollView
+        style={[styles.messageScroll, { maxHeight: height * MESSAGE_HEIGHT_SHARE }]}
+        showsVerticalScrollIndicator={false}>
+        <Text style={styles.message}>{t('update.message')}</Text>
+      </ScrollView>
       <View style={styles.buttonContainer}>
         <Pressable
           style={[styles.button, styles.cancelButton]}
           onPress={onClose}
-          accessibilityRole='button'
-          accessibilityLabel='Later'>
-          <Text style={styles.cancelText}>Later</Text>
+          accessibilityRole={'button'}
+          accessibilityLabel={t('update.later')}>
+          <Text style={styles.cancelText}>{t('update.later')}</Text>
         </Pressable>
         <Pressable
           style={[styles.button, styles.updateButton]}
           onPress={onUpdate}
-          accessibilityRole='button'
-          accessibilityLabel='Update'>
-          <Text style={styles.updateText}>Update</Text>
+          accessibilityRole={'button'}
+          accessibilityLabel={t('update.update')}>
+          <Text style={styles.updateText}>{t('update.update')}</Text>
         </Pressable>
       </View>
     </Modal>
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   message: {
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
     textAlign: 'center',
     color: COLORS.light.textSecondary,
-    lineHeight: TEXT.lineHeight.default,
-    letterSpacing: TEXT.letterSpacing.default,
-    marginBottom: 36,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
     marginTop: SPACING.xs,
+  },
+  // Stretched so the centred text keeps the card's full width: unstretched, the scroller hugs the text
+  messageScroll: {
+    alignSelf: 'stretch',
+    marginBottom: 36,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -70,12 +86,12 @@ const styles = StyleSheet.create({
   },
   cancelText: {
     color: COLORS.light.textSecondary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
   updateText: {
     color: COLORS.light.background,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyMedium,
   },
 });
