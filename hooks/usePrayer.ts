@@ -7,9 +7,10 @@
 import { useAtomValue } from 'jotai';
 
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
+import type { PrayerId } from '@/shared/constants';
 import { findNextOccurrence } from '@/shared/sequence';
 import { AlertType, type Prayer, ScheduleType } from '@/shared/types';
-import { englishWidthExtraAtom, englishWidthStandardAtom } from '@/stores/ui';
+import { nameWidthAtomFor } from '@/stores/ui';
 
 /** What a row needs to decide which occurrence it shows */
 interface ShownRow {
@@ -37,8 +38,10 @@ export const resolveOccurrence = (prayers: Prayer[], row: Prayer, isPassed: bool
  * @param row The row as usePrayer returns it
  * @param nextOccurrence The same row from usePrayer with isOverlay
  */
-export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null =>
-  isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+export const getShownTime = (isSelectedForOverlay: boolean, row: ShownRow, nextOccurrence: ShownRow): string | null => {
+  const shown = isSelectedForOverlay && row.isPassed ? nextOccurrence.time : row.time;
+  return shown;
+};
 
 /**
  * Whether the bell is unavailable: the occurrence on screen has no readable time, so nothing could ever
@@ -59,6 +62,9 @@ export const isShownOccurrenceUnavailable = (
 export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertType =>
   isUnavailable ? AlertType.Off : saved;
 
+/** The id the loading frame reports: no row's name slot is drawn while it is on screen */
+const LOADING_PRAYER_ID: PrayerId = 'fajr';
+
 /**
  * Hook for accessing individual prayer data with derived status
  *
@@ -72,13 +78,14 @@ export const getShownAlert = (isUnavailable: boolean, saved: AlertType): AlertTy
  *
  * @example
  * const prayer = usePrayer(ScheduleType.Standard, 2); // Get Dhuhr
- * const { english, arabic, time, isPassed, isNext } = prayer;
+ * const { id, time, isPassed, isNext } = prayer;
  */
 export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // NEW: Use sequence-based prayer data with derived isPassed and isNext
   const { prayers, displayDate, isReady } = usePrayerSequence(type);
   const isStandard = type === ScheduleType.Standard;
-  const maxEnglishWidth = useAtomValue(isStandard ? englishWidthStandardAtom : englishWidthExtraAtom);
+  // Read inside the hook so the remount after a switch re-subscribes under the new locale's key
+  const maxNameWidth = useAtomValue(nameWidthAtomFor(type));
 
   // Filter prayers to current displayDate
   const todayPrayers = prayers.filter((p) => p.belongsToDate === displayDate);
@@ -87,8 +94,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
   // Loading state or index out of range (schedule refreshed mid-selection)
   if (!isReady || !prayer) {
     return {
-      english: '',
-      arabic: '',
+      id: LOADING_PRAYER_ID,
       time: '',
       date: '',
       index: 0,
@@ -97,7 +103,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
       isPassed: false,
       isNext: false,
       isOverlay,
-      ui: { initialColorPos: 0, maxEnglishWidth },
+      ui: { initialColorPos: 0, maxEnglishWidth: maxNameWidth },
     };
   }
 
@@ -114,7 +120,7 @@ export const usePrayer = (type: ScheduleType, index = 0, isOverlay = false) => {
     isOverlay,
     ui: {
       initialColorPos: isPassed || isNext ? 1 : 0,
-      maxEnglishWidth,
+      maxEnglishWidth: maxNameWidth,
     },
   };
 };

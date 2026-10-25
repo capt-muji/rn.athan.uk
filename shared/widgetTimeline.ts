@@ -31,6 +31,8 @@
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
 import { UNAVAILABLE_TIME } from '@/shared/constants';
+import { prayerLabel, t } from '@/shared/i18n';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import {
   compareListOrder,
   findNextReadable,
@@ -47,9 +49,26 @@ import type {
   PrayerWidgetProps,
   PrayerWidgetSettings,
   WidgetPrayerRow,
+  WidgetStrings,
   WidgetTheme,
 } from '@/shared/widgetTypes';
 import { ANDROID_SNAPSHOT_VERSION, WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
+
+/**
+ * The Android layout's copy, baked once per push. Byte-identical English in
+ * stage one; the layout imports nothing (the closure law forbids it), so its
+ * strings cross the bridge as data.
+ */
+const widgetStrings = (): WidgetStrings => ({
+  // Fixed lowercase Latin unit bytes in every locale: never localise.
+  h: 'h',
+  m: 'm',
+  s: 's',
+  staleTitle: t('widget.stale'),
+  refreshLine: t('widget.refresh'),
+  refreshLead: t('widget.refreshLead'),
+  refreshTail: t('widget.refreshTail'),
+});
 
 /**
  * Minimum spacing between adjacent timeline entries. WidgetKit guidance asks
@@ -63,7 +82,7 @@ export const MIN_ENTRY_SPACING_MS = 5 * 60 * 1000;
  * Days of prayer boundaries each push carries, on both platforms. The widget
  * re-reads its stored timeline when it runs out, so this is how long a widget
  * stays correct with no app launch and no background refresh. Three days is
- * what the owner judged enough (owner 2026-09-25): the background task runs
+ * enough: the background task runs
  * every 3 hours and the foreground refresh every 2, so a phone in ordinary use
  * re-pushes dozens of times inside the window. 3 costs 23 iOS entries and
  * ~9.8KB, where 7 cost 47 and ~20KB; WidgetKit answers an over-budget timeline
@@ -112,7 +131,7 @@ const segmentFrom = (prayers: Prayer[], at: Date): Segment | null => {
  * @param hijriDate Whether the app's Hijri date preference is on
  */
 const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
-  return hijriDate ? TimeUtils.formatHijriDateLong(belongsToDate) : TimeUtils.formatDateLong(belongsToDate);
+  return hijriDate ? TimeUtils.formatHijriDateLocalized(belongsToDate) : TimeUtils.formatDateLocalized(belongsToDate);
 };
 
 /**
@@ -132,7 +151,11 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
  */
 const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
   const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
-  const rows = dayPrayers.map((prayer) => ({ name: prayer.english, time: prayer.time ?? UNAVAILABLE_TIME }));
+  const rows = dayPrayers.map((prayer) => ({
+    id: prayer.id,
+    name: prayerLabel(prayer.id),
+    time: prayer.time ?? UNAVAILABLE_TIME,
+  }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
 };
@@ -184,12 +207,14 @@ export const buildPrayerWidgetTimeline = (
       props: {
         v: WIDGET_PROPS_VERSION,
         schedule: sequence.type,
+        rtl: localeDirection(currentLocaleId()) === 'rtl',
         theme,
-        nextName: next.english,
+        nextName: prayerLabel(next.id),
         nextTime: next.time,
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         dateLabel,
+        footer: TimeUtils.footerFor(next.belongsToDate, settings.hijriDate),
         prayers: dayList.rows,
         activeIndex: dayList.activeIndex,
       },
@@ -243,12 +268,14 @@ export const buildPrayerWidgetTimeline = (
     props: {
       v: WIDGET_PROPS_VERSION,
       schedule: sequence.type,
+      rtl: localeDirection(currentLocaleId()) === 'rtl',
       theme,
-      nextName: finalPrayer.english,
+      nextName: prayerLabel(finalPrayer.id),
       nextTime: finalPrayer.time,
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
       dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
+      footer: TimeUtils.footerFor(finalPrayer.belongsToDate, settings.hijriDate),
       stale: true,
     },
   });
@@ -288,6 +315,7 @@ export const buildPrayerWidgetSnapshot = (
     if (day === undefined) {
       day = {
         dateLabel: formatDateLabel(prayer.belongsToDate, settings.hijriDate),
+        footer: TimeUtils.footerFor(prayer.belongsToDate, settings.hijriDate),
         // London midnight STARTING the date (createPrayerDatetime resolves
         // the offset at the instant, DST-safe) — the render-time day picker
         // compares wall-clock days, and getDayAnchor's noon anchor would
@@ -300,10 +328,15 @@ export const buildPrayerWidgetSnapshot = (
     }
 
     if (isReadable(prayer)) {
-      day.rows.push({ name: prayer.english, time: prayer.time, epochMs: prayer.datetime.getTime() });
+      day.rows.push({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: prayer.time,
+        epochMs: prayer.datetime.getTime(),
+      });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
     } else {
-      day.rows.push({ name: prayer.english, time: UNAVAILABLE_TIME, epochMs: 0 });
+      day.rows.push({ id: prayer.id, name: prayerLabel(prayer.id), time: UNAVAILABLE_TIME, epochMs: 0 });
     }
   }
 
@@ -314,7 +347,9 @@ export const buildPrayerWidgetSnapshot = (
   return {
     v: ANDROID_SNAPSHOT_VERSION,
     schedule: sequence.type,
+    rtl: localeDirection(currentLocaleId()) === 'rtl',
     days,
     horizonEpochMs,
+    strings: widgetStrings(),
   };
 };

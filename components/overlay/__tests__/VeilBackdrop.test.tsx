@@ -3,8 +3,10 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { SIZE } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
@@ -31,4 +33,19 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
       expect(screen.root).toBeVisible();
     }
   );
+
+  // R4.1: the glow is centred in window space, so its offset rides a transform under the veil's
+  // left-to-right containing view rather than a swappable inset
+  it('holds the glow at its measured offset through a transform, with no left key', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<VeilBackdrop />);
+
+    const glow = screen.container.queryAll((node) => node.type === 'RNSVGSvgView')[0];
+    const style = StyleSheet.flatten(glow.props.style) as { left?: unknown; transform?: { translateX?: number }[] };
+    const { width } = Dimensions.get('window');
+    const columnWidth = Math.min(width, SIZE.contentMaxWidth);
+
+    expect(style.transform?.[0]).toEqual({ translateX: width / 2 - columnWidth });
+    expect(style.left).toBeUndefined();
+  });
 });

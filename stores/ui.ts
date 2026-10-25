@@ -1,8 +1,11 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
-import { atom, getDefaultStore } from 'jotai';
+import { atom, getDefaultStore, type PrimitiveAtom } from 'jotai';
 
+import type { PrayerId } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
 import { type PageCoordinates, ScheduleType } from '@/shared/types';
+import { clearPrefix } from '@/stores/database';
 import { atomWithStorageBoolean, atomWithStorageNumber, atomWithStorageString } from '@/stores/storage';
 
 const store = getDefaultStore();
@@ -16,8 +19,7 @@ const emptyCoordinates: PageCoordinates = { pageX: 0, pageY: 0, width: 0, height
 export interface AlertSheetState {
   type: ScheduleType;
   index: number;
-  prayerEnglish: string;
-  prayerArabic: string;
+  prayerId: PrayerId;
   /** The occurrence on screen has no readable time, so the sheet explains that instead of offering options */
   isUnavailable: boolean;
 }
@@ -96,15 +98,37 @@ export const settingsSheetModalAtom = atom<BottomSheetModal | null>(null);
 /** Reference to the qibla bottom sheet modal */
 export const qiblaSheetModalAtom = atom<BottomSheetModal | null>(null);
 
+/** Reference to the language bottom sheet modal */
+export const languageSheetModalAtom = atom<BottomSheetModal | null>(null);
+
 // =============================================================================
 // ATOMS - Layout Measurements
 // =============================================================================
 
-/** Measured width of longest English prayer name for Standard schedule */
-export const englishWidthStandardAtom = atomWithStorageNumber('prayer_max_english_width_standard', 0);
+// The 59 re-key: every `prayer_max_english_width_` key is removed
+// unconditionally at module evaluation, before the atoms below first read
+// storage, so the reserve re-measures against the shortened names (P8).
+clearPrefix('prayer_max_english_width_');
 
-/** Measured width of longest English prayer name for Extra schedule */
-export const englishWidthExtraAtom = atomWithStorageNumber('prayer_max_english_width_extra', 0);
+/** One width atom per locale and list, created on first access and cached */
+const widthAtoms = new Map<string, PrimitiveAtom<number>>();
+
+/**
+ * The width atom of the active locale's list: per-locale keys default 0 and widen on
+ * the first measure, so a switch reflows once against the new locale's key (R5.1, R5.2)
+ *
+ * @param type Schedule type (Standard or Extra)
+ */
+export const nameWidthAtomFor = (type: ScheduleType): PrimitiveAtom<number> => {
+  const side = type === ScheduleType.Standard ? 'standard' : 'extra';
+  const key = `prayer_max_name_width_${currentLocaleId()}_${side}`;
+  const cached = widthAtoms.get(key);
+  if (cached) return cached;
+
+  const widthAtom = atomWithStorageNumber(key, 0);
+  widthAtoms.set(key, widthAtom);
+  return widthAtom;
+};
 
 /** Page coordinates of the prayer list component (for animations) */
 export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
@@ -114,7 +138,7 @@ export const measurementsListAtom = atom<PageCoordinates>(emptyCoordinates);
 // =============================================================================
 
 /** Whether the countdown bar is visible */
-export const countdownBarShownAtom = atomWithStorageBoolean('preference_countdownbar_shown', true);
+export const countdownBarShownAtom = atomWithStorageBoolean('preference_countdownbar_shown', false);
 
 /** Color of the countdown bar (hex string) */
 export const countdownBarColorAtom = atomWithStorageString('preference_countdownbar_color', '#00ff88');
@@ -126,10 +150,7 @@ export const hijriDateEnabledAtom = atomWithStorageBoolean('preference_hijri_dat
 export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds', false);
 
 /** Whether to show "time passed" info below countdown */
-export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', true);
-
-/** Whether to show Arabic prayer names alongside English */
-export const showArabicNamesAtom = atomWithStorageBoolean('preference_show_arabic_names', true);
+export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', false);
 
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
@@ -159,6 +180,15 @@ export const showQiblaSheet = () => {
   store.get(qiblaSheetModalAtom)?.present();
 };
 
+/** Presents the language bottom sheet */
+export const showLanguageSheet = () => {
+  perfMark('sheet_language_present');
+  store.get(languageSheetModalAtom)?.present();
+};
+
+/** Dismisses the language bottom sheet */
+export const hideLanguageSheet = () => store.get(languageSheetModalAtom)?.dismiss();
+
 /** Dismisses the settings bottom sheet */
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 
@@ -170,6 +200,9 @@ export const setSettingsSheetModal = (modal: BottomSheetModal | null) => store.s
 
 /** Sets the qibla bottom sheet modal reference */
 export const setQiblaSheetModal = (modal: BottomSheetModal | null) => store.set(qiblaSheetModalAtom, modal);
+
+/** Sets the language bottom sheet modal reference */
+export const setLanguageSheetModal = (modal: BottomSheetModal | null) => store.set(languageSheetModalAtom, modal);
 
 /** Sets the alert bottom sheet modal reference */
 export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
@@ -209,11 +242,11 @@ export const setPopupHelpEnabled = (enabled: boolean) => store.set(popupHelpEnab
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
 
 /**
- * Sets the measured width of the longest English prayer name
+ * Sets the measured width of the widest active-locale prayer name
  * @param type Schedule type (Standard or Extra)
  * @param width Measured width in pixels
  */
-export const setEnglishWidth = (type: ScheduleType, width: number) => {
+export const setNameWidth = (type: ScheduleType, width: number) => {
   // Grow-toward-truth: a first-launch measurement can land before the custom
   // font registers (fallback-font metrics are narrower) and write-once
   // caching would pin that wrong width forever (ISSUES #22 - "Sunrise"
@@ -222,8 +255,7 @@ export const setEnglishWidth = (type: ScheduleType, width: number) => {
   // while correct values never change (no reflow churn after settle).
   if (width <= 0) return;
 
-  const isStandard = type === ScheduleType.Standard;
-  const atom = isStandard ? englishWidthStandardAtom : englishWidthExtraAtom;
+  const atom = nameWidthAtomFor(type);
   const cached = store.get(atom);
   if (width <= cached) return;
 

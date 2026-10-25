@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
 import { useCallback, useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { I18nManager, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ColorPicker, { type ColorFormatsObject, HueSlider, Panel1, Swatches } from 'reanimated-color-picker';
 
@@ -21,7 +21,10 @@ import {
   SPACING,
   TEXT,
 } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { chevronFor, currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
+import { typographyFor } from '@/shared/typography';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
 /**
@@ -48,7 +51,6 @@ export default function ColorPickerSettings() {
   const [selectedColor, setSelectedColor] = useState(countdownBarColor);
 
   const isDisabled = !countdownBarShown;
-  const opacity = countdownBarShown ? 1 : 0.25;
 
   // =============================================================================
   // HANDLERS
@@ -92,43 +94,55 @@ export default function ColorPickerSettings() {
 
   const isCustomColor = countdownBarColor !== COLOR_PICKER_DEFAULT;
 
+  // The reset label's ink: shown over the sheet, the old 0.25-chain flatten when the bar
+  // is hidden, the card's own face while it cannot be used
+  const resetInk = !isCustomColor ? RESET_HIDDEN_INK : countdownBarShown ? '#5b77a4' : '#1f3055';
+
   // =============================================================================
   // RENDER
   // =============================================================================
 
+  // The picker library snapshots I18nManager.isRTL at module load and writes its geometry
+  // for that snapshot, so the panel resolves the direction the same snapshot took: the
+  // library's geometry and the layout it draws stay in step in every launch state (a
+  // starved crossing snapshots false, a completed one true)
+  const pickerDirection = I18nManager.getConstants().isRTL ? 'rtl' : 'ltr';
+  const modalDirection = localeDirection(currentLocaleId());
+
   return (
     <>
       <Pressable
-        style={[styles.container, { opacity }]}
+        style={styles.container}
         onPress={handlePress}
         hitSlop={HIT_SLOP.md}
-        accessibilityRole='button'
+        accessibilityRole={'button'}
         accessibilityState={{ disabled: isDisabled }}
-        accessibilityLabel='Countdown bar color'>
-        <Text style={[styles.label, isDisabled && styles.labelDisabled]}>Countdown bar color</Text>
+        accessibilityLabel={t('colorPicker.label')}>
+        <Text style={[styles.label, isDisabled && styles.labelDisabled]}>{t('colorPicker.label')}</Text>
         <View style={styles.rightContainer}>
           <Pressable
             onPress={handleReset}
             hitSlop={HIT_SLOP.sm}
-            style={[styles.resetButton, { opacity: isCustomColor ? 1 : 0 }]}
+            style={styles.resetButton}
             disabled={!isCustomColor}
-            accessibilityRole='button'
-            accessibilityLabel='Reset to the default colour'
-            // Drawn at zero opacity on the default colour, so without these a screen reader offers
+            accessibilityRole={'button'}
+            accessibilityLabel={t('colorPicker.resetLabel')}
+            // Hidden in ink on the default colour, so without these a screen reader offers
             // a Reset that is invisible and does nothing. Both, because one is iOS and one Android
             accessibilityElementsHidden={!isCustomColor}
             importantForAccessibility={isCustomColor ? 'yes' : 'no-hide-descendants'}>
-            <Text style={styles.resetText}>Reset</Text>
+            {/* Kept mounted so the row holds its width; hidden in the card's own face, so no glyph compounds */}
+            <Text style={[styles.resetText, { color: resetInk }]}>{t('colorPicker.reset')}</Text>
           </Pressable>
-          <View style={styles.colorPreviewContainer}>
+          <View style={[styles.colorPreviewContainer, isDisabled && styles.previewDim]}>
             <View style={[styles.colorPreview, { backgroundColor: countdownBarColor }]} />
           </View>
-          <Text style={styles.chevron}>›</Text>
+          <Text style={[styles.chevron, isDisabled && styles.chevronDisabled]}>{chevronFor()}</Text>
         </View>
       </Pressable>
 
-      <Modal visible={showPicker} transparent animationType='slide' onRequestClose={handleDismiss}>
-        <View style={styles.modalOverlay}>
+      <Modal visible={showPicker} transparent animationType={'slide'} onRequestClose={handleDismiss}>
+        <View testID={'picker-modal-root'} style={[styles.modalOverlay, { direction: modalDirection }]}>
           <View style={[styles.modalContent, { paddingBottom: bottom + 50 }]}>
             <View style={styles.modalHeader}>
               <View style={styles.headerSide}>
@@ -136,19 +150,19 @@ export default function ColorPickerSettings() {
                   onPress={handleDismiss}
                   hitSlop={HIT_SLOP.md}
                   style={styles.cancelButton}
-                  accessibilityRole='button'
-                  accessibilityLabel='Cancel'>
+                  accessibilityRole={'button'}
+                  accessibilityLabel={t('colorPicker.cancel')}>
                   <CloseIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.icon.primary} />
                 </Pressable>
               </View>
-              <Text style={styles.modalTitle}>Select Color</Text>
+              <Text style={styles.modalTitle}>{t('colorPicker.title')}</Text>
               <View style={[styles.headerSide, styles.headerSideRight]}>
                 <Pressable
                   onPress={handleDone}
                   hitSlop={HIT_SLOP.md}
                   style={styles.saveButton}
-                  accessibilityRole='button'
-                  accessibilityLabel='Done'>
+                  accessibilityRole={'button'}
+                  accessibilityLabel={t('colorPicker.done')}>
                   <CheckIcon width={SIZE.icon.md} height={SIZE.icon.md} color={COLORS.modal.saveText} />
                 </Pressable>
               </View>
@@ -159,8 +173,8 @@ export default function ColorPickerSettings() {
             </View>
 
             <ColorPicker value={selectedColor} onChangeJS={handleColorPreview} style={styles.colorPicker}>
-              <Panel1 style={styles.panel} />
-              <HueSlider style={styles.hueSlider} />
+              <Panel1 style={[styles.panel, { direction: pickerDirection }]} />
+              <HueSlider style={[styles.hueSlider, { direction: pickerDirection }]} />
               <Swatches colors={[...COLOR_PICKER_SWATCHES]} style={styles.swatches} />
               <Swatches colors={[...COLOR_PICKER_SWATCHES_2]} style={styles.swatches} />
             </ColorPicker>
@@ -170,6 +184,12 @@ export default function ColorPickerSettings() {
     </>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
+
+// The card face the reset row sits on: the settings card wash rgba(99, 102, 241, 0.06) flattened over
+// the sheet, rgb(16, 29, 69). The hidden reset paints this face, because Android paints alpha-0 ink black
+const RESET_HIDDEN_INK = '#101d45';
 
 // =============================================================================
 // STYLES
@@ -187,11 +207,12 @@ const styles = StyleSheet.create({
   // --- Label Styles ---
   label: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   labelDisabled: {
-    color: COLORS.text.disabled,
+    // The old label colour under the removed 0.25 container, flattened over the sheet
+    color: '#21365a',
   },
 
   // --- Right Side (Reset + Preview) ---
@@ -205,9 +226,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.sm,
   },
   resetText: {
-    color: COLORS.text.secondary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
   colorPreviewContainer: {
     width: SIZE.iconWrapper.sm,
@@ -217,6 +237,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.text.primary,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  // The swatch is text-free, so it keeps the old 0.25 dim here and its pixels hold
+  previewDim: {
+    opacity: 0.25,
   },
   colorPreview: {
     width: SIZE.dot.lg,
@@ -228,12 +252,20 @@ const styles = StyleSheet.create({
     fontSize: SIZE.icon.md,
     fontWeight: '300',
     lineHeight: SIZE.icon.md,
+    // The codepoint carries the direction (chevronFor); Android mirrors a lone neutral
+    // glyph inside an RTL paragraph, so the paragraph itself stays LTR
+    direction: 'ltr',
+  },
+  chevronDisabled: {
+    // The old icon ink under the removed 0.25 container, flattened over the sheet
+    color: '#323f6b',
   },
 
   // --- Modal Container ---
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'transparent',
+    // The sheets' own dim, alpha on the colour so the content above stays opaque
+    backgroundColor: COLORS.surface.backdropDim,
     justifyContent: 'flex-end',
   },
   modalContent: {
@@ -265,8 +297,8 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.medium,
-    fontSize: TEXT.size,
+    fontFamily: ty.familyMedium,
+    fontSize: ty.size(TEXT.size),
   },
   cancelButton: {
     backgroundColor: COLORS.icon.background,

@@ -39,7 +39,7 @@ import {
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { ReactElement, ReactNode } from 'react';
 
-import type { PrayerWidgetAndroidProps, PrayerWidgetProps } from '@/shared/widgetTypes';
+import type { PrayerWidgetAndroidProps, PrayerWidgetProps, WidgetStrings } from '@/shared/widgetTypes';
 
 /**
  * Home screen widget layout (systemSmall + systemMedium), one shared
@@ -87,7 +87,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   // on exactly one side, and the two compositions below stay native to their
   // runtime instead of sharing an abstraction that can drift both ways.
   const isAndroidRuntime = typeof Column !== 'undefined';
-  const androidProps = props !== null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
+  const androidProps = props != null && 'days' in props ? (props as PrayerWidgetAndroidProps) : null;
 
   // The Android composition spells Text/Image like iOS does (each runtime's
   // globals answer their own platform), but the app-side types come from
@@ -106,14 +106,11 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     modifiers?: unknown[];
   }) => ReactNode;
   const APad = padding as unknown as (start: number, top: number, end: number, bottom: number) => ModifierConfig;
-  // The time column's Text spans the full list width and right-justifies via
-  // textAlign (converter-supported); the cast carries the jetpack-only
-  // textAlign prop past the swift-ui typing, like ATextEl/AImageEl
   const ATimeEl = Text as unknown as (elementProps: {
     color?: string;
     style?: { fontSize?: number; fontWeight?: 'normal' | 'bold' | '600' };
     maxLines?: number;
-    textAlign?: 'end';
+    textAlign?: 'start' | 'end';
     modifiers?: ModifierConfig[];
     children?: string;
   }) => ReactNode;
@@ -150,14 +147,14 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   };
 
   const DARK = {
-    // A hint of slate lifts the near-black toward graphite (owner 2026-09-24).
+    // A hint of slate lifts the near-black toward graphite.
     card: 'rgba(9, 21, 47, 0.95)',
     // Softened off pure #ff69b4 and #ffffff: both were bright enough to sting
     // against a near-black card, so the pink takes a little white and the
-    // whites take a little of the slate tint (owner 2026-09-24).
+    // whites take a little of the slate tint.
     eyebrow: '#f774b6',
     hero: '#f6f8fc',
-    // One slate-blue whisper per slot (owner ruling 2026-09-20): the app's
+    // One slate-blue whisper per slot: the app's
     // muted-text tint over a deepened screen-gradient start. The absolute
     // time is the base, upcoming rows sit a quarter fainter, the footer
     // half — same tint, three strengths, both sizes
@@ -180,8 +177,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const palette = isDark ? DARK : LIGHT;
 
   // Fixed row height keeps the floating pill's offset exact and the
-  // spacing static. The pill is exactly the row's height (owner ruling
-  // 2026-09-20): uniform slots like Android. Six 23pt rows overrun the
+  // spacing static. The pill is exactly the row's height: uniform slots
+  // like Android. Six 23pt rows overrun the
   // systemMedium inner height by a few points and center between equal
   // Spacers, spilling evenly into the card padding; the shorter extras
   // lists center between equal Spacers (see the list column below). The
@@ -195,36 +192,124 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   const A_ROW_HEIGHT = 24;
   const ROW_TEXT_SIZE = 13;
   const ROW_CORNER_RADIUS = 6;
-  // The iOS medium's list block, squeezed ~10% (owner ruling 2026-09-20):
+  // The iOS medium's list block, squeezed ~10%:
   // narrower rows pull the list's left edge in, and the freed width lets
   // the hero trio center between the card's edge and the list.
   const MEDIUM_LIST_WIDTH = 146;
-  // Fallback until a native tick stamps the real grant.
+  // Fallback for renders whose environment carries no grant (the press path).
   const ANDROID_MEDIUM_MIN_WIDTH = 310;
   // Equal, or the two halves are not equal and the trio's centre drifts left of
-  // the card's quarter however the columns are split (owner 2026-09-24).
+  // the card's quarter however the columns are split.
   const CARD_PAD_START = 13;
   const CARD_PAD_END = 13;
-  // Uniform footer lift on every Android kind (owner ruling 2026-09-19):
+  // Uniform footer lift on every Android kind:
   // one bottom offset, both sizes, both themes, both schedules.
   const FOOTER_BOTTOM_PAD = 16;
-  // The pill matches its row exactly (owner ruling 2026-09-20, replacing
-  // the 2026-09-19 overhang): same height as the row, no overhang —
+  // The pill matches its row exactly: same height as the row, no overhang —
   // uniform list slots, both schedules.
   const PILL_VPAD = 0;
   // Shares, not dp: minWidth is a floor the launcher may grant exactly, and
   // fixed columns summing past it overflow the Row, which Glance clips (the
   // X8's sliced names). Glance's own fractions are unreachable — expo-widgets'
   // converter drops fillMaxWidth's fraction and ignores weight, which is what
-  // starved the list on the 3T — so the grant rides the snapshot instead.
+  // starved the list on the 3T — so the grant rides the render environment.
   // REFERENCE_* are the owner-approved 3T proportions the row boxes scale from.
   const REFERENCE_INNER_WIDTH = 347;
   const REFERENCE_NAME_WIDTH = 82;
   const REFERENCE_TIME_WIDTH = 54;
   const ROW_TEXT_MIN_SIZE = 10;
   // The pill used to span the column, dumping all the slack right of the times;
-  // 12 is the left inset the owner approved, now mirrored (owner 2026-09-24).
+  // 12 is the left inset, now mirrored.
   const ROW_GUTTER = 12;
+
+  // The neutral, stale and catch cards follow the device locale the widget
+  // process itself reads (D44): absent props carry no app language. The
+  // prefix match accepts region tags; anything unknown renders the en row.
+  const STATIC = {
+    en: {
+      subtitle: 'Prayer times for London',
+      inline: 'Athan — prayer times',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Open to load times',
+      staleTitle: 'Out of date',
+      staleBody: 'Open app to refresh',
+      staleInline: 'Athan — open to refresh times',
+      refreshLine: 'Open Athan to refresh',
+      refreshLead: 'Open Athan',
+      refreshTail: 'to refresh',
+      catchBody: 'Open the app to refresh',
+    },
+    ar: {
+      subtitle: 'أوقات الصلاة في لندن',
+      inline: 'Athan - أوقات الصلاة',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'افتح لتحميل الأوقات',
+      staleTitle: 'غير محدّث',
+      staleBody: 'افتح التطبيق للتحديث',
+      staleInline: 'Athan - افتح لتحديث الأوقات',
+      refreshLine: 'افتح Athan للتحديث',
+      refreshLead: 'افتح Athan',
+      refreshTail: 'للتحديث',
+      catchBody: 'افتح التطبيق للتحديث',
+    },
+    ms: {
+      subtitle: 'Waktu solat untuk London',
+      inline: 'Athan - waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka untuk muat waktu',
+      staleTitle: 'Tidak dikemas kini',
+      staleBody: 'Buka apl untuk muat semula',
+      staleInline: 'Athan - buka untuk muat semula waktu',
+      refreshLine: 'Buka Athan untuk muat semula',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'untuk muat semula',
+      catchBody: 'Buka aplikasi untuk muat semula',
+    },
+    so: {
+      subtitle: 'Waqtiyada salaadda London',
+      inline: 'Athan - waqtiyada salaadda',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Fur si aad u soo dejinto waqtiyada',
+      staleTitle: "Cusboonaysi la'aan",
+      staleBody: 'Fur aplka si aad u cusboonaysiiso',
+      staleInline: 'Athan - fur si aad u cusboonaysiiso waqtiyada',
+      refreshLine: 'Fur Athan si aad u cusboonaysiiso',
+      refreshLead: 'Fur Athan',
+      refreshTail: 'si aad u cusboonaysiiso',
+      catchBody: 'Fur app-ka si aad u cusboonaysiiso',
+    },
+    hi: {
+      subtitle: 'लंदन के नमाज़ के समय',
+      inline: 'Athan - नमाज़ के समय',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'समय लोड करने के लिए खोलें',
+      staleTitle: 'पुराना',
+      staleBody: 'रिफ्रेश के लिए ऐप खोलें',
+      staleInline: 'Athan - समय रिफ्रेश करने के लिए खोलें',
+      refreshLine: 'रिफ्रेश के लिए Athan खोलें',
+      refreshLead: 'Athan खोलें',
+      refreshTail: 'रिफ्रेश के लिए',
+      catchBody: 'रिफ्रेश के लिए ऐप खोलें',
+    },
+    th: {
+      subtitle: 'เวลาละหมาดสำหรับลอนดอน',
+      inline: 'Athan - เวลาละหมาด',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'เปิดเพื่อโหลดเวลา',
+      staleTitle: 'ข้อมูลเก่า',
+      staleBody: 'เปิดแอปเพื่อรีเฟรช',
+      staleInline: 'Athan - เปิดเพื่อรีเฟรชเวลา',
+      refreshLine: 'เปิด Athan เพื่อรีเฟรช',
+      refreshLead: 'เปิด Athan',
+      refreshTail: 'เพื่อรีเฟรช',
+      catchBody: 'เปิดแอปเพื่อรีเฟรช',
+    },
+  } as const;
+  const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
+  const localeKey = (['en', 'ar', 'ms', 'so', 'hi', 'th'] as const).find(
+    (code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)
+  );
+  const staticRow = STATIC[localeKey ?? 'en'];
 
   // ===== Android composition =====
   // The Android widget runtime (jetpack globals) computes everything at
@@ -244,15 +329,19 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   // The runtime has read the weight from either the top level or the style
   // object across versions, so both carry it: a silently-dropped weight is
-  // invisible in the tree but obvious on glass (owner finding 2026-09-19)
+  // invisible in the tree but obvious on glass
   const AText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
     <ATextEl color={color} fontWeight={weight} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
       {text}
     </ATextEl>
   );
 
-  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string) => (
-    <ATimeEl color={color} style={{ fontSize: size, fontWeight: weight }} maxLines={1}>
+  const ATimeText = (text: string, size: number, weight: 'normal' | 'bold' | '600', color: string, rtl: boolean) => (
+    <ATimeEl
+      color={color}
+      style={{ fontSize: size, fontWeight: weight }}
+      maxLines={1}
+      {...(rtl ? { textAlign: 'start' as const } : {})}>
       {text}
     </ATimeEl>
   );
@@ -286,20 +375,55 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       </Box>
     );
 
+  type ALabelGroup = { digits: string; letter: string };
+
   // Android's countdown is computed at render time, so it carries the format
   // itself: hours and minutes only, rounded up, never reading below a minute.
   // iOS needs no equivalent — SwiftUI ticks its own timer from the segment.
-  const ALabel = (targetEpochMs: number, nowMs: number): string => {
+  // The unit words arrive as props: the widget runtime imports nothing, so
+  // the app bakes them into the snapshot.
+  const ALabel = (units: { h: string; m: string }, targetEpochMs: number, nowMs: number): ALabelGroup[] => {
     const totalMinutes = Math.max(1, Math.ceil((targetEpochMs - nowMs) / 60000));
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    if (hours === 0) return `${minutes}m`;
-    if (minutes === 0) return `${hours}h`;
-    return `${hours}h ${minutes}m`;
+    if (hours === 0) return [{ digits: `${minutes}`, letter: units.m }];
+    if (minutes === 0) return [{ digits: `${hours}`, letter: units.h }];
+    return [
+      { digits: `${hours}`, letter: units.h },
+      { digits: `${minutes}`, letter: units.m },
+    ];
+  };
+
+  // The app countdown component's face: each
+  // group a digit run with its letter tight against it at 0.95 x the digit
+  // size, same colour and weight, groups 12 points apart. The converter
+  // maps arrangements to alignments only, so the gap rides a fixed-width
+  // Spacer, never Row spacing. The label is a Latin run and never mirrors
+  // (D135.9: it shares no text node with Arabic content).
+  const ALabelParts = (
+    units: { h: string; m: string },
+    targetEpochMs: number,
+    nowMs: number,
+    size: number,
+    weight: 'normal' | 'bold' | '600',
+    color: string
+  ): ReactElement => {
+    const runs: ReactNode[] = [];
+    for (const group of ALabel(units, targetEpochMs, nowMs)) {
+      if (runs.length > 0) runs.push(<Spacer modifiers={[width(12)]} />);
+      runs.push(
+        <Row verticalAlignment='center'>
+          {AText(group.digits, size, weight, color)}
+          {AText(group.letter, size * 0.95, weight, color)}
+        </Row>
+      );
+    }
+    return <Row verticalAlignment='center'>{runs}</Row>;
   };
 
   // "Mon · Lon" from a Gregorian label, "Raj 1 · Lon" from a Hijri one —
   // the same token shortening the iOS footer performs.
+  // Stays for v6 tolerance: snapshots from before v3 carry no footer, so their label still parses.
   const AFooter = (label: string): string => {
     const datePrefix = typeof label === 'string' && label.length > 0 ? (label.split(',')[0] as string) : '';
     const dateTokens = datePrefix.split(' ');
@@ -315,25 +439,25 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       <Column horizontalAlignment='center'>
         {AText('Athan', 15, '600', palette.hero)}
         <Spacer modifiers={[height(5)]} />
-        {AText('Prayer times for London', 12, 'normal', palette.secondary)}
+        {AText(staticRow.subtitle, 12, 'normal', palette.secondary)}
       </Column>
     );
 
-  const AStale = () =>
+  const AStale = (strings: WidgetStrings) =>
     ACard(
       null,
       <Column horizontalAlignment='center'>
         <AImageEl source={{ uri: A_MOON_NAME }} contentScale='fit' modifiers={[width(26), height(26)]} />
         <Spacer modifiers={[height(7)]} />
-        {AText('Out of date', 14, 'bold', palette.hero)}
+        {AText(strings.staleTitle, 14, 'bold', palette.hero)}
         <Spacer modifiers={[height(7)]} />
         {isMedium ? (
-          AText('Open Athan to refresh', 12, 'normal', palette.secondary)
+          AText(strings.refreshLine, 12, 'normal', palette.secondary)
         ) : (
           <Column horizontalAlignment='center'>
-            {AText('Open Athan', 12, 'normal', palette.secondary)}
+            {AText(strings.refreshLead, 12, 'normal', palette.secondary)}
             <Spacer modifiers={[height(1)]} />
-            {AText('to refresh', 12, 'normal', palette.secondary)}
+            {AText(strings.refreshTail, 12, 'normal', palette.secondary)}
           </Column>
         )}
       </Column>
@@ -341,11 +465,31 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
 
   const androidRender = (input: PrayerWidgetAndroidProps) => {
     const nowMs = Date.now();
+    // A v1 snapshot sits in the store until the next push overwrites it; its
+    // words bake in the body, never imported, because the widget runtime
+    // resolves no module-scope value (the closure law). The unit bytes are
+    // the fixed lowercase Latin letters that never localise (rows 83/85/102)
+    // and sit beside Latin digits (row 88); the stale words stay keyed to
+    // the device locale through staticRow (D44/D79).
+    const strings: WidgetStrings = input.strings ?? {
+      h: 'h',
+      m: 'm',
+      s: 's',
+      staleTitle: staticRow.staleTitle,
+      refreshLine: staticRow.refreshLine,
+      refreshLead: staticRow.refreshLead,
+      refreshTail: staticRow.refreshTail,
+    };
+    // The app locale's direction rides the snapshot (v4); absent on v1 to
+    // v3 snapshots, which read falsy and render LTR — their composing app
+    // never mirrored.
+    const rtl = input.rtl === true;
 
     type ARow = PrayerWidgetAndroidProps['days'][number]['rows'][number];
     let next: ARow | null = null;
     let nextEpoch: number | null = null;
     let nextDayLabel = '';
+    let nextDayFooter: string | undefined;
     for (const day of input.days) {
       for (const row of day.rows) {
         const epoch = row.epochMs;
@@ -355,29 +499,30 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           next = row;
           nextEpoch = epoch;
           nextDayLabel = day.dateLabel;
+          nextDayFooter = day.footer;
         }
       }
     }
 
     if (nowMs > input.horizonEpochMs || next === null || !(next.epochMs > 0)) {
-      return <AStale />;
+      return AStale(strings);
     }
 
-    const footer = AFooter(nextDayLabel);
+    const footer = nextDayFooter ?? AFooter(nextDayLabel);
     // fillMaxWidth is what makes horizontalAlignment mean anything: a Column
     // that shrink-wraps its text centres nothing and parks at its parent's
-    // start, which read as the trio sitting left of its half (owner 2026-09-24).
+    // start, which read as the trio sitting left of its half.
     const trio = (
       <Column horizontalAlignment='center' modifiers={[fillMaxWidth()]}>
         {/* No tracking: iOS sets kerning(0.5), and the converter drops
             letterSpacing at the Kotlin boundary, so the only lever here is a
             space character between glyphs. The narrowest one is a hair space
             at ~1.4sp, nearly 3x iOS's half point, which reads as gaps wide
-            enough to hold another letter (owner 2026-09-25). Plain text is far
-            closer to iOS than the workaround was. */}
+            enough to hold another letter. Plain text is far closer to iOS
+            than the workaround was. */}
         {AText(next.name.toUpperCase(), 14, 'bold', palette.eyebrow)}
         <Spacer modifiers={[height(2)]} />
-        {AText(ALabel(next.epochMs, nowMs), 26, 'bold', palette.hero)}
+        {ALabelParts(strings, next.epochMs, nowMs, 26, 'bold', palette.hero)}
         <Spacer modifiers={[height(6)]} />
         {AText(next.time, 13, 'normal', palette.secondary)}
       </Column>
@@ -400,12 +545,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       return ACard(footer, trio);
     }
 
-    const stampedWidth = input.grantedWidthDp;
-    const grantedWidth = typeof stampedWidth === 'number' && stampedWidth > 0 ? stampedWidth : ANDROID_MEDIUM_MIN_WIDTH;
+    const environmentWidth = (environment as { grantedWidthDp?: number }).grantedWidthDp;
+    const grantedWidth =
+      typeof environmentWidth === 'number' && environmentWidth > 0
+        ? Math.floor(environmentWidth)
+        : ANDROID_MEDIUM_MIN_WIDTH;
     const innerWidth = grantedWidth - CARD_PAD_START - CARD_PAD_END;
     const scale = innerWidth / REFERENCE_INNER_WIDTH;
     // Half each, so the trio's centre and the card's quarter coincide at every
-    // grant (owner 2026-09-24). The old 170/347 share sat 3dp off that.
+    // grant. The old 170/347 share sat 3dp off that.
     const HERO_WIDTH = Math.floor(innerWidth / 2);
     // Remainder, not its own rounded share: two rounded shares can sum a dp
     // past the inner width, and a dp of overflow clips.
@@ -422,54 +570,81 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // clips at 13sp in a narrowed name column.
     const rowTextSize = Math.max(ROW_TEXT_MIN_SIZE, Math.min(ROW_TEXT_SIZE, Math.round(ROW_TEXT_SIZE * scale)));
 
-    // Names and times render as overlayed layers, not one Row: a
-    // fillMaxWidth Spacer between them starves the trailing time to zero
-    // width in Glance (same starvation class as the hero column). Times
-    // right-justify via textAlign on a full-width Text.
     // One self-contained row: fixed-width name and time boxes with pure
-    // alignment (topStart / topEnd). Every fill-based or overlay-based
-    // two-column attempt mislaid the times in the Glance stack (three
-    // device-caught failures); fixed boxes with small slack render exactly.
+    // alignment. Every fill-based or overlay-based two-column attempt
+    // mislaid the times in the Glance stack (three device-caught failures);
+    // fixed boxes with small slack render exactly.
     const ARowLine = (row: ARow, index: number) => {
       const rowColor =
         index === activeIndex ? palette.activeRowText : index < activeIndex ? palette.rowPassed : palette.rowUpcoming;
+      // The mirror swaps every directional input at once or none: order and
+      // both alignments flip together, so the RTL row is the English row
+      // flipped, never a half-mixed face.
+      const nameBox = (
+        <Box
+          contentAlignment={rtl ? 'centerEnd' : 'centerStart'}
+          modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
+          {AText(row.name, rowTextSize, 'normal', rowColor)}
+        </Box>
+      );
+      const timeBox = (
+        <Box
+          contentAlignment={rtl ? 'centerStart' : 'centerEnd'}
+          modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
+          {ATimeText(row.time, rowTextSize, 'bold', rowColor, rtl)}
+        </Box>
+      );
+      const rowFirst = rtl ? timeBox : nameBox;
+      const rowSecond = rtl ? nameBox : timeBox;
       return (
         <Row verticalAlignment='center' modifiers={[height(A_ROW_HEIGHT)]}>
-          <Box contentAlignment='centerStart' modifiers={[height(A_ROW_HEIGHT), width(ROW_NAME_WIDTH)]}>
-            {AText(row.name, rowTextSize, 'normal', rowColor)}
-          </Box>
-          <Box contentAlignment='centerEnd' modifiers={[height(A_ROW_HEIGHT), width(ROW_TIME_WIDTH)]}>
-            {ATimeText(row.time, rowTextSize, 'bold', rowColor)}
-          </Box>
+          {rowFirst}
+          {rowSecond}
         </Row>
       );
     };
 
+    // The medium halves mirror under rtl by order, not by realignment: the
+    // hero keeps its fixed width and takes the visual right when the list
+    // wrapper draws first. Every start/end alignment and lead padding swaps
+    // with it, or the face would half-mirror. Under rtl the wrapper also pins
+    // its width: a fill-first child is measured against the whole row and
+    // starves the hero after it (the 3T collapse, D135.13).
+    const listWrapper = (
+      <Box
+        contentAlignment={rtl ? 'centerStart' : 'centerEnd'}
+        modifiers={[fillMaxHeight(), rtl ? width(LIST_WIDTH) : fillMaxWidth()]}>
+        <Box contentAlignment={rtl ? 'topEnd' : 'topStart'} modifiers={[width(LIST_WIDTH)]}>
+          <Column modifiers={[rtl ? APad(0, 1, PILL_LEAD, 0) : APad(PILL_LEAD, 1, 0, 0)]}>
+            <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
+            <AImageEl
+              source={{ uri: A_PILL_NAME }}
+              contentScale='fillBounds'
+              modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
+            />
+          </Column>
+          <Column modifiers={[rtl ? APad(0, 0, ROWS_LEAD, 0) : APad(ROWS_LEAD, 0, 0, 0)]}>
+            {dayRows.map((row, index) => ARowLine(row, index))}
+          </Column>
+        </Box>
+      </Box>
+    );
+    const heroHalf = (
+      <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
+        <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
+          {trio}
+        </Box>
+        {AText(footer, 12, 'normal', palette.footer)}
+      </Box>
+    );
+    const firstHalf = rtl ? listWrapper : heroHalf;
+    const secondHalf = rtl ? heroHalf : listWrapper;
     return AOpenApp(
       <Box contentAlignment='topStart' modifiers={[fillMaxSize()]}>
         <AImageEl source={{ uri: A_CARD_NAME }} contentScale='fillBounds' modifiers={[fillMaxSize()]} />
         <Row modifiers={[fillMaxSize(), APad(CARD_PAD_START, 13, CARD_PAD_END, FOOTER_BOTTOM_PAD)]}>
-          <Box contentAlignment='bottomCenter' modifiers={[fillMaxHeight(), width(HERO_WIDTH)]}>
-            <Box contentAlignment='center' modifiers={[fillMaxSize(), APad(0, 0, 0, 24)]}>
-              {trio}
-            </Box>
-            {AText(footer, 12, 'normal', palette.footer)}
-          </Box>
-          <Box contentAlignment='centerEnd' modifiers={[fillMaxHeight(), fillMaxWidth()]}>
-            <Box contentAlignment='topStart' modifiers={[width(LIST_WIDTH)]}>
-              <Column modifiers={[APad(PILL_LEAD, 1, 0, 0)]}>
-                <Spacer modifiers={[height(activeIndex * A_ROW_HEIGHT)]} />
-                <AImageEl
-                  source={{ uri: A_PILL_NAME }}
-                  contentScale='fillBounds'
-                  modifiers={[fillMaxWidth(), height(A_ROW_HEIGHT)]}
-                />
-              </Column>
-              <Column modifiers={[APad(ROWS_LEAD, 0, 0, 0)]}>
-                {dayRows.map((row, index) => ARowLine(row, index))}
-              </Column>
-            </Box>
-          </Box>
+          {firstHalf}
+          {secondHalf}
         </Row>
       </Box>
     );
@@ -490,13 +665,15 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         <VStack spacing={7} modifiers={[padding({ all: 13 }), frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Spacer />
           <Image systemName='moon.stars.fill' size={26} color={palette.staleIcon} />
-          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>Out of date</Text>
+          <Text modifiers={[font({ size: 14, weight: 'bold' }), foregroundStyle(palette.hero)]}>
+            {staticRow.staleTitle}
+          </Text>
           {environment.widgetFamily === 'systemMedium' ? (
-            refreshLine('Open Athan to refresh')
+            refreshLine(staticRow.refreshLine)
           ) : (
             <VStack spacing={1}>
-              {refreshLine('Open Athan')}
-              {refreshLine('to refresh')}
+              {refreshLine(staticRow.refreshLead)}
+              {refreshLine(staticRow.refreshTail)}
             </VStack>
           )}
           <Spacer />
@@ -521,7 +698,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     if (isAndroidRuntime) {
       return <ANeutral />;
     }
-    return <NeutralCard title='Athan' subtitle='Prayer times for London' />;
+    return <NeutralCard title='Athan' subtitle={staticRow.subtitle} />;
   }
 
   if (isAndroidRuntime) {
@@ -542,16 +719,21 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // Footer: the next prayer's day marker alone. NOTE: plain string
     // separator only — the extension's JS runtime does not split on regex
     // separators (/\s+/ silently returns the whole string).
-    const datePrefix =
-      typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
-    const dateTokens = datePrefix.split(' ');
     let footer = '';
-    if (dateTokens.length === 1) {
-      footer = dateTokens[0];
+    if (typeof entry.footer === 'string') {
+      footer = entry.footer;
     } else {
-      const monthPrefix = dateTokens[0].slice(0, 3);
-      const dayNumber = dateTokens[dateTokens.length - 1];
-      footer = `${monthPrefix} ${dayNumber}`;
+      // Stays for v6 tolerance: entries from before v7 carry no footer, so their label still parses.
+      const datePrefix =
+        typeof entry.dateLabel === 'string' && entry.dateLabel.length > 0 ? entry.dateLabel.split(',')[0] : '';
+      const dateTokens = datePrefix.split(' ');
+      if (dateTokens.length === 1) {
+        footer = dateTokens[0];
+      } else {
+        const monthPrefix = dateTokens[0].slice(0, 3);
+        const dayNumber = dateTokens[dateTokens.length - 1];
+        footer = `${monthPrefix} ${dayNumber}`;
+      }
     }
 
     // The medium list is only renderable with a complete day snapshot:
@@ -565,8 +747,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
     // minimum, which inflated the HStack's height and pushed the shared
     // hero column's footer past the card's 13pt inset. The standard 6-row
     // list at 23pt rows overruns the inner height by ~6pt, dragging the
-    // footer that far below the extras medium's flush inset (owner ruling
-    // 2026-09-20: the standard footer must sit exactly where the extras
+    // footer that far below the extras medium's flush inset (the standard
+    // footer must sit exactly where the extras
     // footer sits), so the offset pulls it back up (the runtime applies
     // the offset at double strength).
     const footerLift = isMedium && rows.length >= 6 ? -3 : 0;
@@ -695,7 +877,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
           modifiers={[
             foregroundStyle(palette.pillFill),
             strokeBorder({
-              color: palette.pillStroke,
+              content: palette.pillStroke,
               style: { lineWidth: 1 },
               shape: 'roundedRectangle',
               cornerRadius: ROW_CORNER_RADIUS,
@@ -717,7 +899,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
             ]}>
             {/* The hero column takes everything the list leaves, so the
                 trio centers exactly between the card's left edge and the
-                list — equal air both sides (owner ruling 2026-09-20). */}
+                list — equal air both sides. */}
             <HeroColumn />
             {/* The list column: a fixed-width block flush against the
                 card's right inset. The row block (pill + rows) centers
@@ -734,7 +916,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
                 <ActivePill />
                 <VStack spacing={0} alignment='leading' modifiers={[frame({ maxWidth: Infinity })]}>
                   {rows.map((row, index) => (
-                    <Row key={row.name} name={row.name} time={row.time} index={index} />
+                    <Row key={row.id ?? row.name} name={row.name} time={row.time} index={index} />
                   ))}
                 </VStack>
               </ZStack>
@@ -756,7 +938,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
   } catch {
     // Never let a rendering error blank the widget: a minimal card beats a
     // dead surface the user cannot distinguish from a broken widget.
-    return <NeutralCard title='Athan' subtitle='Open the app to refresh' />;
+    return <NeutralCard title='Athan' subtitle={staticRow.catchBody} />;
   }
 };
 

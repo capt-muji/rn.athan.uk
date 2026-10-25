@@ -5,13 +5,16 @@
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { onPlatform, showLondonDay } from '@/__tests__/harness';
 import { ATHAN_AUDIOS } from '@/assets/audio';
-import { getSoundPreference, setSoundPreference } from '@/stores/notifications';
+import { t } from '@/shared/i18n';
+import { setActiveLocale } from '@/shared/i18n/locale';
+import * as NotificationStore from '@/stores/notifications';
 import { setPlayingSoundIndex, setSoundListReady } from '@/stores/ui';
 
 import SoundSheet from '../Sound';
@@ -71,7 +74,8 @@ const playButtonOf = (athan: number) => {
   const row = screen.getByText(`Athan ${athan}`).parent;
   const controls = row?.children[1];
   if (!controls || typeof controls === 'string') throw new Error(`Athan ${athan} has no controls`);
-  const button = controls.children[1];
+  // The countdown renders only while it counts, so the play button is the last child
+  const button = controls.children[controls.children.length - 1];
   if (!button || typeof button === 'string') throw new Error(`Athan ${athan} has no play button`);
   return button;
 };
@@ -110,6 +114,28 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
   });
 
+  it('carries the volume note below every athan row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+
+    await render(<SoundSheet />);
+
+    const drawn = JSON.stringify(screen.toJSON());
+    const lastRow = `Athan ${ATHAN_AUDIOS.length}`;
+    expect(drawn.indexOf(t('volume.note.ios').split('\n')[0])).toBeGreaterThan(drawn.indexOf(lastRow));
+    expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
+  });
+
+  it('carries the alarm-volume wording on Android', async () => {
+    onPlatform('android');
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+
+    await render(<SoundSheet />);
+
+    expect(screen.getAllByText(t('volume.note.android'))).toHaveLength(1);
+  });
+
   it('builds its rows on its own first full open when the settings sheet did not', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<SoundSheet />);
@@ -117,6 +143,20 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(screen.getByText('Select Athan'), 'change', 0);
 
     expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+  });
+
+  it('builds its rows with Latin digits under ar', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setActiveLocale('ar');
+    try {
+      await render(<SoundSheet />);
+
+      await act(() => setSoundListReady());
+
+      expect(screen.getAllByText(/^أذان \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('plays the clip of a row from its start when its play button is pressed', async () => {
@@ -222,7 +262,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     ['Athan 12', 11],
   ])('saves %s when it is chosen and the sheet closes', async (row, athan) => {
     showLondonDay('2026-09-11', '14:00');
-    setSoundPreference(5);
+    NotificationStore.setSoundPreference(5);
     setSoundListReady();
     await render(<SoundSheet />);
     await fireEvent.press(screen.getByText(row));
@@ -230,24 +270,24 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await closeSheet();
     await settle();
 
-    expect(getSoundPreference()).toBe(athan);
+    expect(NotificationStore.getSoundPreference()).toBe(athan);
   });
 
   it('keeps the saved athan when the sheet closes with no row chosen', async () => {
     showLondonDay('2026-09-11', '14:00');
-    setSoundPreference(5);
+    NotificationStore.setSoundPreference(5);
     setSoundListReady();
     await render(<SoundSheet />);
 
     await closeSheet();
     await settle();
 
-    expect(getSoundPreference()).toBe(5);
+    expect(NotificationStore.getSoundPreference()).toBe(5);
   });
 
   it('forgets a choice that failed to save, so the next close does not save it', async () => {
     showLondonDay('2026-09-11', '14:00');
-    setSoundPreference(5);
+    NotificationStore.setSoundPreference(5);
     setSoundListReady();
     await render(<SoundSheet />);
     await fireEvent.press(screen.getByText('Athan 7'));
@@ -260,7 +300,36 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await closeSheet();
     await settle();
 
-    expect(getSoundPreference()).toBe(5);
+    expect(NotificationStore.getSoundPreference()).toBe(5);
+  });
+
+  it('defers the commit start past the next paint when a draft exists', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    NotificationStore.setSoundPreference(5);
+    setSoundListReady();
+    const commit = jest.spyOn(NotificationStore, 'commitSoundSelection').mockResolvedValueOnce(true);
+    await render(<SoundSheet />);
+    await fireEvent.press(screen.getByText('Athan 7'));
+
+    await closeSheet();
+
+    // The dismiss tick belongs to the close haptic: the fake timers have not moved, so the commit has not started
+    expect(commit).not.toHaveBeenCalled();
+
+    // The 0ms timer alone does not start the commit: it waits on the 16ms frame callback first
+    await act(() => jest.advanceTimersByTimeAsync(0));
+    expect(commit).not.toHaveBeenCalled();
+
+    // The frame callback and the timer it schedules carry the commit start past the next paint
+    await act(() => jest.advanceTimersByTimeAsync(20));
+    expect(commit).toHaveBeenCalledTimes(1);
+
+    // One Light for the close (the row press's Medium beside it), and none after the commit resolves
+    await settle();
+    const impacts = jest.mocked(Haptics.impactAsync).mock.calls;
+    expect(impacts.filter(([style]) => style === Haptics.ImpactFeedbackStyle.Light)).toHaveLength(1);
+    expect(impacts).toHaveLength(2);
+    commit.mockRestore();
   });
 
   it('starts no clip for a row marked playing before any play button in the sheet was pressed', async () => {
@@ -302,7 +371,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
   it('places the highlight on the saved athan, then on the row chosen', async () => {
     showLondonDay('2026-09-11', '14:00');
-    setSoundPreference(2);
+    NotificationStore.setSoundPreference(2);
     setSoundListReady();
     const { rerender } = await render(<SoundSheet />);
     await layOutFirstRow(40);
@@ -320,7 +389,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
   it('sets the highlight on the saved athan without sliding, and slides it to a row chosen', async () => {
     showLondonDay('2026-09-11', '14:00');
-    setSoundPreference(2);
+    NotificationStore.setSoundPreference(2);
     setSoundListReady();
     const timing = jest.spyOn(Reanimated, 'withTiming');
     const { rerender } = await render(<SoundSheet />);

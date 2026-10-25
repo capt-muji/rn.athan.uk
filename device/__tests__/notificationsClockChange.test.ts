@@ -14,8 +14,7 @@ type Request = { identifier: string; trigger: { date: Date } };
 
 const lastThird = (datetime: string, time: string, listDay: string): ReadablePrayer => ({
   type: ScheduleType.Extra,
-  english: 'Last Third',
-  arabic: 'آخر ثلث',
+  id: 'last third',
   datetime: new Date(datetime),
   time,
   belongsToDate: listDay,

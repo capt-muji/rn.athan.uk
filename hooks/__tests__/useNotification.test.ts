@@ -11,6 +11,7 @@
 import * as Notifications from 'expo-notifications';
 import { Alert, AppState, Linking } from 'react-native';
 
+import type { PrayerId } from '@/shared/constants';
 import { type AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
 
 // =============================================================================
@@ -355,17 +356,9 @@ describe('commitAlertMenuChanges', () => {
     original: AlertMenuState,
     scheduleType: ScheduleType,
     prayerIndex: number,
-    englishName: string,
-    arabicName: string
+    id: PrayerId
   ) => {
-    expect(mockCommitPrayerAlertChange).toHaveBeenCalledWith(
-      scheduleType,
-      prayerIndex,
-      englishName,
-      arabicName,
-      current,
-      original
-    );
+    expect(mockCommitPrayerAlertChange).toHaveBeenCalledWith(scheduleType, prayerIndex, id, current, original);
   };
 
   describe('nothing changed', () => {
@@ -373,7 +366,7 @@ describe('commitAlertMenuChanges', () => {
       const { commitAlertMenuChanges } = getUseNotification()();
       const state = createState(AlertType.Sound, AlertType.Silent, 15);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', state, { ...state });
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'fajr', state, { ...state });
 
       expect(result).toBe(true);
       expect(mockCommitPrayerAlertChange).not.toHaveBeenCalled();
@@ -397,10 +390,10 @@ describe('commitAlertMenuChanges', () => {
     ])('hands $changed to the store, both states unchanged', async ({ original, current }) => {
       const { commitAlertMenuChanges } = getUseNotification()();
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 4, 'Magrib', 'المغرب', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 4, 'magrib', original, current);
 
       expect(result).toBe(true);
-      expectHandedToTheStore(current, original, ScheduleType.Standard, 4, 'Magrib', 'المغرب');
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 4, 'magrib');
     });
 
     it('answers no, unchanged, when the store could not make the change stick', async () => {
@@ -409,30 +402,26 @@ describe('commitAlertMenuChanges', () => {
       const original = createState(AlertType.Off);
       const current = createState(AlertType.Sound);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'fajr', original, current);
 
       expect(result).toBe(false);
     });
   });
 
   describe('permission', () => {
-    // what the sheet was closed on, and whether the app has to ask for permission before it can be saved
-    it.each([
-      { closedOn: 'an athan and no reminder', current: createState(AlertType.Sound, AlertType.Off) },
-      { closedOn: 'a reminder and no athan', current: createState(AlertType.Off, AlertType.Silent) },
-    ])('saves nothing when the user closes the dialog on $closedOn', async ({ current }) => {
+    it('saves nothing when permission is refused for a sheet closed on an athan', async () => {
       (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
       (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
       alertMock.alert.mockImplementation((_t: string, _m: string, buttons: AlertButton[]) => {
         buttons[0].onPress?.();
       });
       const { commitAlertMenuChanges } = getUseNotification()();
+      const current = createState(AlertType.Sound, AlertType.Off);
 
       const result = await commitAlertMenuChanges(
         ScheduleType.Standard,
         0,
         'Fajr',
-        'الفجر',
         createState(AlertType.Silent, AlertType.Silent),
         current
       );
@@ -441,16 +430,32 @@ describe('commitAlertMenuChanges', () => {
       expect(mockCommitPrayerAlertChange).not.toHaveBeenCalled();
     });
 
+    // A reminder fires only beside an on athan, so preserved reminder values under an off athan
+    // never prompt: the sheet hands the store exactly this draft when it keeps their choices
+    it('never asks when the sheet closes on an off athan holding preserved reminder values', async () => {
+      (Notifications.getPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
+      (Notifications.requestPermissionsAsync as jest.Mock).mockResolvedValue({ status: 'denied' });
+      const { commitAlertMenuChanges } = getUseNotification()();
+      const original = createState(AlertType.Off, AlertType.Sound, 15);
+      const current = createState(AlertType.Off, AlertType.Sound, 30);
+
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'fajr', original, current);
+
+      expect(result).toBe(true);
+      expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'fajr');
+    });
+
     it('never asks when the sheet is closed with everything off', async () => {
       const { commitAlertMenuChanges } = getUseNotification()();
       const original = createState(AlertType.Sound, AlertType.Sound);
       const current = createState(AlertType.Off, AlertType.Off);
 
-      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'Fajr', 'الفجر', original, current);
+      const result = await commitAlertMenuChanges(ScheduleType.Standard, 0, 'fajr', original, current);
 
       expect(result).toBe(true);
       expect(Notifications.getPermissionsAsync).not.toHaveBeenCalled();
-      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'Fajr', 'الفجر');
+      expectHandedToTheStore(current, original, ScheduleType.Standard, 0, 'fajr');
     });
   });
 
@@ -460,18 +465,19 @@ describe('commitAlertMenuChanges', () => {
       ALERT_TYPES.forEach((reminderAlert) => {
         const combination = `at-time ${ALERT_TYPE_NAMES[atTimeAlert]}, reminder ${ALERT_TYPE_NAMES[reminderAlert]}`;
 
-        it.each([
-          { list: 'Standard', scheduleType: ScheduleType.Standard, index: 5, english: 'Isha', arabic: 'العشاء' },
-          { list: 'Extra', scheduleType: ScheduleType.Extra, index: 3, english: 'Last Third', arabic: 'الثلث الأخير' },
-        ])(`$list, ${combination}`, async ({ scheduleType, index, english, arabic }) => {
+        const cases: { list: string; scheduleType: ScheduleType; index: number; id: PrayerId }[] = [
+          { list: 'Standard', scheduleType: ScheduleType.Standard, index: 5, id: 'isha' },
+          { list: 'Extra', scheduleType: ScheduleType.Extra, index: 3, id: 'last third' },
+        ];
+        it.each(cases)(`$list, ${combination}`, async ({ scheduleType, index, id }) => {
           const { commitAlertMenuChanges } = getUseNotification()();
           // Sound, Sound and 30 as the opening state, so every combination below is a real change
           const original = createState(AlertType.Sound, AlertType.Sound, 30);
           const current = createState(atTimeAlert, reminderAlert, 20);
 
-          await commitAlertMenuChanges(scheduleType, index, english, arabic, original, current);
+          await commitAlertMenuChanges(scheduleType, index, id, original, current);
 
-          expectHandedToTheStore(current, original, scheduleType, index, english, arabic);
+          expectHandedToTheStore(current, original, scheduleType, index, id);
         });
       });
     });

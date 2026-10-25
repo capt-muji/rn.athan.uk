@@ -35,10 +35,14 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles }, Text: 'Text', View: 'View' }));
-jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
+jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View', Text: 'Text' } }));
 jest.mock('@/components/ui', () => ({ Masjid: () => null }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}) }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}), useDerivedColor: () => ({}) }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -53,8 +57,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
   hijriDateEnabledAtom: 'hijriDateEnabledAtom',
 }));
 

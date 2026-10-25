@@ -6,7 +6,7 @@ import Reanimated from 'react-native-reanimated';
 import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
 // Direct path, not the barrel: going through components/prayer would cycle back here via List
 import PrayerExplanation from '@/components/prayer/Explanation';
-import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedProgress } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, STYLES } from '@/shared/constants';
@@ -17,8 +17,8 @@ interface Props {
   type: ScheduleType;
 }
 
-/** How far the arrow tip overlaps into the row band, so the card reads as part of its row */
-const TIP_OVERLAP = 9;
+/** How far the arrow tip overlaps into the row band; the card body keeps its gap below the row */
+export const TIP_OVERLAP = 7;
 
 /**
  * The Extras explanation card, anchored to the rows it explains.
@@ -36,7 +36,10 @@ export default function OverlayInfoBox({ type }: Props) {
 
   const [visible, setVisible] = useState(isOnThisList);
 
-  const layerOpacityStyle = useDerivedOpacity(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
+  // The reveal drives the card face's fade and the inks' rise from the card's own surface
+  // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
+  // subtree while the box appears
+  const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
 
   // Hold the card displayable through the close fade-out, then hide it
   useEffect(() => {
@@ -61,28 +64,28 @@ export default function OverlayInfoBox({ type }: Props) {
   // Row space: the row's own offset within this list, never a window measurement
   const rowTop = visualRowIndex * STYLES.prayer.height;
 
-  // Hangs overlapping the row edge by 7pt, owner-ruled: the tip sits inside the row band so the
-  // card visibly belongs to its row. Never given a height, so it is as tall as its own content;
+  // The tip sits inside the row band so the card visibly belongs to its row, the card body
+  // keeping its gap below the edge. Never given a height, so it is as tall as its own content;
   // the above-branch anchors at the row top and lifts itself clear by its own height
   const computedStyleInfoBox: ViewProps['style'] = showInfoBoxAbove
-    ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], left: 0, width: '100%' }
-    : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, left: 0, width: '100%' };
+    ? { top: rowTop + TIP_OVERLAP, transform: [{ translateY: '-100%' }], start: 0, width: '100%' }
+    : { top: rowTop + STYLES.prayer.height - TIP_OVERLAP, start: 0, width: '100%' };
 
-  const { prayerName, explanation, explanationArabic } = getOverlayExplanation(type, selectedPrayer.english);
+  const { prayerName, explanation } = getOverlayExplanation(type, selectedPrayer.id);
 
-  if (!prayerName || !explanation || !explanationArabic) return null;
+  if (!prayerName || !explanation) return null;
 
   return (
     <Reanimated.View
-      testID='overlay-infobox'
-      style={[styles.placer, { display: visible ? 'flex' : 'none' }, layerOpacityStyle]}
-      pointerEvents='none'>
+      testID={'overlay-infobox'}
+      style={[styles.placer, { display: visible ? 'flex' : 'none' }]}
+      pointerEvents={'none'}>
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}
-        explanationArabic={explanationArabic}
         arrowPosition={showInfoBoxAbove ? 'bottom' : 'top'}
         style={computedStyleInfoBox}
+        reveal={reveal}
       />
     </Reanimated.View>
   );
@@ -92,8 +95,8 @@ const styles = StyleSheet.create({
   placer: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     zIndex: 1,
   },

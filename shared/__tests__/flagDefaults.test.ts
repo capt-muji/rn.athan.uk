@@ -60,7 +60,7 @@ describe('the ambient test environment', () => {
 // =============================================================================
 
 describe('.env.example, the catalog every device build is derived from', () => {
-  // Owner ruling 2026-09-25: neither widget flag ships off again. A build made
+  // Neither widget flag ships off again. A build made
   // with androidWidgets off strips the expo-widgets plugin at prebuild, so the
   // APK declares no providers and the app disappears from the launcher's
   // widget picker, which is how a build once lost the widgets entirely.

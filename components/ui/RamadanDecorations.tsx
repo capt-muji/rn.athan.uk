@@ -412,7 +412,7 @@ export default function RamadanDecorations() {
   if (!visible) return null;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents='none'>
+    <View style={[StyleSheet.absoluteFill, styles.physical]} pointerEvents={'none'}>
       {/* Wires: thin strips whose scaleY (origin at the top) follows the same
           bob shared values that move the hangings — GPU transform, no SVG */}
       <WireStrip x={moonTipX} baseLen={moonTipY} bobOffset={moonBob} width={0.4} opacity={0.06} />
@@ -514,7 +514,7 @@ function WireStrip({
   opacity: number;
 }) {
   const style = useAnimatedStyle(() => ({
-    transform: [{ scaleY: (baseLen + bobOffset.value) / baseLen }],
+    transform: [{ translateX: x - width / 2 }, { scaleY: (baseLen + bobOffset.value) / baseLen }],
   }));
 
   return (
@@ -522,7 +522,6 @@ function WireStrip({
       style={[
         {
           position: 'absolute',
-          left: x - width / 2,
           top: 0,
           width,
           height: baseLen,
@@ -567,17 +566,13 @@ function FloatingMoon({
   const localCy = glowR;
 
   const moveStyle = useAnimatedStyle(() => ({
-    transform: [{ translateY: bobOffset.value }],
+    transform: [{ translateX: cx - glowR - padLeft }, { translateY: bobOffset.value }],
   }));
 
   const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
 
   return (
-    <Animated.View
-      style={[
-        { position: 'absolute', left: cx - glowR - padLeft, top: cy - glowR, width: boxW, height: boxH, zIndex },
-        moveStyle,
-      ]}>
+    <Animated.View style={[{ position: 'absolute', top: cy - glowR, width: boxW, height: boxH, zIndex }, moveStyle]}>
       <AnimatedImage
         source={SPRITES.moonGlow}
         onLoadEnd={onSpriteLoad}
@@ -585,7 +580,7 @@ function FloatingMoon({
           styles.sprite,
           {
             position: 'absolute',
-            left: localCx - 2 - glowR,
+            transform: [{ translateX: localCx - 2 - glowR }],
             top: localCy + 4 - glowR,
             width: spriteSize,
             height: spriteSize,
@@ -598,7 +593,13 @@ function FloatingMoon({
         onLoadEnd={onSpriteLoad}
         style={[
           styles.sprite,
-          { position: 'absolute', left: localCx - r, top: localCy - r, width: r * 2, height: r * 2 },
+          {
+            position: 'absolute',
+            transform: [{ translateX: localCx - r }],
+            top: localCy - r,
+            width: r * 2,
+            height: r * 2,
+          },
         ]}
       />
       <MoonSparks cx={localCx - 2} cy={localCy + 4} glowR={glowR * 0.6} />
@@ -640,8 +641,8 @@ function FloatingStar({
 
   const moveStyle = useAnimatedStyle(() => ({
     transform: isStarType
-      ? [{ translateY: bobOffset.value }, { scale: 0.7 + glowOpacity.value * 0.5 }]
-      : [{ translateY: bobOffset.value }],
+      ? [{ translateX: x - glowR }, { translateY: bobOffset.value }, { scale: 0.7 + glowOpacity.value * 0.5 }]
+      : [{ translateX: x - glowR }, { translateY: bobOffset.value }],
   }));
 
   const glowStyle = useAnimatedStyle(() => ({ opacity: glowOpacity.value }));
@@ -654,7 +655,6 @@ function FloatingStar({
       style={[
         {
           position: 'absolute',
-          left: x - glowR,
           top: baseStarY - glowR,
           width: spriteSize,
           height: spriteSize,
@@ -675,7 +675,7 @@ function FloatingStar({
             styles.sprite,
             {
               position: 'absolute',
-              left: cx - glowR * 0.45,
+              transform: [{ translateX: cx - glowR * 0.45 }],
               top: cy + visualSize * 0.3 - glowR * 0.45,
               width: glowR * 0.9,
               height: glowR * 0.9,
@@ -692,7 +692,7 @@ function FloatingStar({
             styles.sprite,
             {
               position: 'absolute',
-              left: cx - (visualSize * 3.6) / 2,
+              transform: [{ translateX: cx - (visualSize * 3.6) / 2 }],
               top: cy - (visualSize * 3.6) / 2,
               width: visualSize * 3.6,
               height: visualSize * 3.6,
@@ -708,7 +708,7 @@ function FloatingStar({
             styles.sprite,
             {
               position: 'absolute',
-              left: cx - visualSize,
+              transform: [{ translateX: cx - visualSize }],
               top: cy - visualSize,
               width: visualSize * 2,
               height: visualSize * 2,
@@ -754,8 +754,7 @@ function MistyCloud({
   }));
 
   return (
-    <Animated.View
-      style={[{ position: 'absolute', left: 0, top: cloudTop, width: boxW, height: boxH, zIndex }, moveStyle]}>
+    <Animated.View style={[{ position: 'absolute', top: cloudTop, width: boxW, height: boxH, zIndex }, moveStyle]}>
       {/* Sprite canvas is precomposed: cloud path × 4 mist layers + the
           vertical fade mask, in the exact 240:180 canvas proportions */}
       <Image source={sprite} onLoadEnd={onSpriteLoad} style={[styles.sprite, styles.fill, { opacity }]} />
@@ -886,7 +885,7 @@ function SparkDot({
     const opacity = 0.85 * Math.min(p / 0.3, (1 - p) / 0.7);
     return {
       opacity,
-      transform: [{ translateY: -p * drift }],
+      transform: [{ translateX: cx - r }, { translateY: -p * drift }],
     };
   });
 
@@ -895,7 +894,6 @@ function SparkDot({
       style={[
         {
           position: 'absolute',
-          left: cx - r,
           top: baseCy - r,
           width: diameter,
           height: diameter,
@@ -921,4 +919,9 @@ const styles = StyleSheet.create({
   wireOrigin: {
     transformOrigin: ['50%', '0%', 0],
   } as const,
+  // The pinned Yoga resolves an inset-less absolute against its containing node's
+  // direction, so a view carrying this holds its children at physical window coordinates
+  physical: {
+    direction: 'ltr',
+  },
 });

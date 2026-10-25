@@ -1,0 +1,240 @@
+/**
+ * The language switch's surface state (D34, D45): the stored preference, the
+ * last-armed stamp that marks the surfaces dirty, and the forward-only pass
+ * that reconciles notifications, channels and widgets to the active locale.
+ * No rollback exists anywhere here: a pass that dies or fails leaves the stamp
+ * unwritten, and the next launch or foreground completes it (R3.4).
+ */
+
+import * as Updates from 'expo-updates';
+import { atom, getDefaultStore } from 'jotai/vanilla';
+import { I18nManager, Platform } from 'react-native';
+
+import { hideSwitchCover, type SwitchCoverOptions, showSwitchCover } from '@/device/switchCover';
+import { COLORS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { languageChangingLine } from '@/shared/i18n';
+import { currentLocaleId, type LocaleId, localeDirection, setActiveLocale } from '@/shared/i18n/locale';
+import logger from '@/shared/logger';
+import { resetAndroidChannelCaches } from '@/shared/notifications';
+import { typographyFor } from '@/shared/typography';
+import { rescheduleAllForLanguageChange, withSchedulingLock } from '@/stores/notifications';
+import { atomWithStorageString } from '@/stores/storage';
+
+const store = getDefaultStore();
+
+// The native cover is Android's alone: iOS keeps its last committed frame through the reload
+const IS_ANDROID = Platform.OS === 'android';
+
+/** The D45 dirty flag: '' means never armed, so the first launch converges */
+export const lastArmedLanguageAtom = atomWithStorageString('preference_language_last_armed', '');
+
+/** The D33 preference: '' means no choice yet, so the device locale decides (R1.2) */
+export const languagePreferenceAtom = atomWithStorageString('preference_language', '');
+
+/** The D51 progress face: true from the moment a pick starts converging until it settles */
+export const languageCommitBusyAtom = atom(false);
+
+/** The locale a pick is converging to, while the busy face covers the wait; null when no pick runs */
+export const pendingLanguageAtom = atom<LocaleId | null>(null);
+
+// The commit's in-flight latch, beside the atoms the loader reads: a reveal stands the loader
+// before its commit exists, so the commit must tell its own reveal from another pick's. The
+// atoms stay the single source; first pick wins, exactly as the in-flight guard rules.
+let commitInFlight = false;
+
+/**
+ * Stands the loader up on the tap itself, before the sheet closes or any commit work runs:
+ * the commit's first synchronous stretch saturates JS, and a loader waiting for it paints a
+ * sheet frozen half-closed instead. A no-op while another pick already owns the loader.
+ */
+export const revealLanguageLoader = (locale: LocaleId): void => {
+  if (store.get(languageCommitBusyAtom)) return;
+  store.set(languageCommitBusyAtom, true);
+  store.set(pendingLanguageAtom, locale);
+};
+
+/**
+ * The D-relaunch handoff (row 80): written before a crossing's reloadAsync and consumed by
+ * the next context's launch init, so an in-process relaunch — where no force-stop cancelled
+ * any alarm — does not pay the cold-launch refresh-gate reopen (row 78's aggravator).
+ * The value is the write's epoch ms: '' means no handoff is held, and a marker too old to
+ * be the one this context followed is dead, never consumed.
+ */
+export const relaunchHandoffAtom = atomWithStorageString('preference_language_relaunch_handoff', '');
+
+/** How long a handoff stays believable: the reload-to-consume span is seconds, not minutes */
+const RELAUNCH_HANDOFF_FRESH_MS = 60_000;
+
+/**
+ * Reads and clears the marker in one step: the answer is whether this context began as a
+ * language relaunch a moment ago. A process death can strand a written marker past the
+ * reload it announced, and the cold launch that finds it still needs its gate reopen.
+ */
+export const consumeRelaunchHandoff = (): boolean => {
+  const held = store.get(relaunchHandoffAtom);
+  if (held === '') return false;
+
+  store.set(relaunchHandoffAtom, '');
+  const writtenAt = Number.parseInt(held, 10);
+  if (Number.isNaN(writtenAt)) return false;
+
+  return Date.now() - writtenAt <= RELAUNCH_HANDOFF_FRESH_MS;
+};
+
+/**
+ * Brings every notification surface to the active locale: reset the channel
+ * dedup caches so the frozen ids re-create under the new names, then one locked
+ * full pass re-arms copy at schedule time and re-pushes the widgets. The stamp
+ * writes only after a real pass — a bail (nothing armed) or a failure keeps it
+ * dirty, so the next launch or foreground retries (R4.1, R4.2).
+ */
+export const reconcileLanguageSurfaces = async (): Promise<void> => {
+  if (currentLocaleId() === store.get(lastArmedLanguageAtom)) return;
+
+  try {
+    resetAndroidChannelCaches();
+
+    const armed = await withSchedulingLock(() => rescheduleAllForLanguageChange(), 'reconcileLanguageSurfaces');
+
+    if (armed) store.set(lastArmedLanguageAtom, currentLocaleId());
+  } catch (error) {
+    logger.warn('LANGUAGE: surface convergence failed, retrying at next launch', { error });
+  }
+};
+
+/**
+ * The Settings pick: persist the choice, switch the UI through the remount key
+ * before any surface re-arms, then converge. Convergence never rejects to the
+ * caller — forward-only means the sheet's dismiss is unconditional (D34, D47).
+ * The busy atom brackets the whole run: the loader reads it and a second
+ * commit is refused while it holds.
+ */
+// The direction in force at process start, read before any forceRTL: the
+// fallback when no preference is stored (the device decides, then).
+const DIRECTIONS = ['ltr', 'rtl'] as const;
+const launchDirection = DIRECTIONS[Number(I18nManager.getConstants().isRTL)];
+
+// The loader's line cap, mirrored for the cover: a longer sentence breaks onto two centred lines
+const LINE_MAX_WIDTH_DP = 260;
+
+/** The cover's face in the loader's own values, so the restart span shows what the tap did */
+const coverOptionsFor = (locale: LocaleId): SwitchCoverOptions => ({
+  backgroundColor: COLORS.navigation.rootBackground,
+  spinnerColor: COLORS.navigation.activityIndicator,
+  spinnerSizeDp: SIZE.activityIndicator,
+  lineText: languageChangingLine(locale),
+  // Android's Color.parseColor takes only #RRGGBB and #AARRGGBB, so the cover's white travels expanded
+  lineColor: '#ffffff',
+  lineSizeDp: TEXT.size,
+  lineMarginTopDp: SIZE.activityIndicator / 2 + SPACING.xxxl,
+  lineMaxWidthDp: LINE_MAX_WIDTH_DP,
+});
+
+/** The bound on a boundary crossing's convergence wait: the healthy cycle answers in ~1.4 s,
+ *  while one silent native call can legally burn 15 s and a starved queue holds the pass for
+ *  minutes. Past this the flip applies and forward-only convergence heals next launch. */
+const RELOAD_CONVERGENCE_CAP_MS = 10_000;
+
+// The losing timer never fires into a settled pass: the race clears it on both
+// outcomes, and past the cap forward-only convergence heals in the next launch.
+const raceAgainstCap = (pass: Promise<void>, warn: string): Promise<void> => {
+  let fireCap!: () => void;
+  const capped = new Promise<void>((resolve) => {
+    fireCap = resolve;
+  });
+  const timer = setTimeout(() => {
+    logger.warn(warn);
+    fireCap();
+  }, RELOAD_CONVERGENCE_CAP_MS);
+  return Promise.race([pass, capped]).finally(() => clearTimeout(timer));
+};
+
+export const commitLanguagePreference = async (locale: LocaleId): Promise<void> => {
+  // Android's reload fulfils before the restart lands (the success callback runs
+  // ahead of the posted teardown), so a fulfilled reload may not stand the loader
+  // down: the finally asks this latch, and only a reload that never arrived does.
+  let reloadAccepted = false;
+  // A second pick while one converges would race it and the first finally would
+  // strand the loader mid-pass; the first commit wins. A loader another pick
+  // already owns refuses this one; this pick's own reveal lets it through.
+  if (commitInFlight) return;
+  const owningPick = store.get(pendingLanguageAtom);
+  if (owningPick !== null && owningPick !== locale) return;
+  commitInFlight = true;
+  store.set(languageCommitBusyAtom, true);
+  store.set(pendingLanguageAtom, locale);
+  // The direction in force comes from the app's own record: the stored
+  // preference drives the launch force ('' means the device's launch
+  // direction). I18nManager.getConstants() is deliberately not read here: the
+  // device proved it stale within a process after a crossing.
+  const storedPreference = store.get(languagePreferenceAtom);
+  const directionBefore = storedPreference === '' ? launchDirection : localeDirection(storedPreference as LocaleId);
+  const crossesBoundary = localeDirection(locale) !== directionBefore;
+  // Module-scope styles freeze the faces a context loaded with, so a switch that changes the
+  // typography record (ar, hi, th against the Latin set) must re-evaluate them - which only
+  // the crossing relaunch does. Same-record locales keep the instant switch.
+  const changesScriptFace = typographyFor(locale).familyRegular !== typographyFor(currentLocaleId()).familyRegular;
+  const relaunches = crossesBoundary || changesScriptFace;
+  try {
+    store.set(languagePreferenceAtom, locale);
+    setActiveLocale(locale);
+    let passSettled = false;
+    if (relaunches) {
+      const settled = reconcileLanguageSurfaces().then(() => {
+        passSettled = true;
+      });
+      await raceAgainstCap(
+        settled,
+        'LANGUAGE: surface convergence still unsettled after 10000 ms, relaunching for the direction flip'
+      );
+    } else {
+      await raceAgainstCap(
+        reconcileLanguageSurfaces(),
+        'LANGUAGE: surface convergence still unsettled after 10000 ms, revealing the app for forward-only healing'
+      );
+    }
+    if (relaunches) {
+      // Fabric treats direction as launch-time (D59): converge first, then
+      // force the new direction and relaunch.
+      if (crossesBoundary) {
+        I18nManager.allowRTL(true);
+        I18nManager.forceRTL(localeDirection(locale) === 'rtl');
+      }
+      // Only a settled pass earns the handoff: a capped crossing's in-flight work can
+      // land beside the relaunch context, and the cold-launch reopen it then keeps is
+      // what buys the full pass whose sweep finds what landed
+      if (passSettled) store.set(relaunchHandoffAtom, String(Date.now()));
+      if (IS_ANDROID) {
+        // The cover must be up before the restart is posted, and its show resolved
+        // first, or the blank span it exists for still shows. A cover that refuses
+        // never blocks the switch: the reload runs bare.
+        const coverFace = coverOptionsFor(locale);
+        await showSwitchCover(coverFace).catch((error) => {
+          logger.warn('LANGUAGE: the switch cover refused to show, relaunching bare', { error });
+        });
+      }
+      try {
+        await Updates.reloadAsync();
+        reloadAccepted = true;
+      } catch (error) {
+        if (IS_ANDROID) {
+          // The cover's fate never blocks the switch's own recovery
+          await hideSwitchCover().catch(() => {});
+        }
+        store.set(relaunchHandoffAtom, '');
+        // A refused relaunch leaves the forced direction for the next launch
+        // to apply; the switch itself completed (Error.tsx's guard shape).
+        logger.warn('LANGUAGE: relaunch failed after the RTL flip', { error });
+      }
+    }
+  } finally {
+    // The in-flight latch always frees. A context that survives its own reload keeps
+    // the face held, so the owning-pick guard refuses a different pick while a retry
+    // of the same one still runs.
+    commitInFlight = false;
+    if (!reloadAccepted) {
+      store.set(languageCommitBusyAtom, false);
+      store.set(pendingLanguageAtom, null);
+    }
+  }
+};

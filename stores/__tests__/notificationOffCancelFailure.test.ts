@@ -40,8 +40,8 @@ const NOW = Date.parse('2026-08-29T08:00:00.000Z');
 const WINDOW = ['2026-08-29', '2026-08-30'];
 const MINUTE = 60_000;
 
-const FAJR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Fajr', date));
-const DHUHR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'Dhuhr', date));
+const FAJR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'fajr', date));
+const DHUHR = WINDOW.map((date) => prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', date));
 
 const scheduleMock = jest.mocked(Notifications.scheduleNotificationAsync);
 const cancelMock = jest.mocked(Notifications.cancelScheduledNotificationAsync);
@@ -55,6 +55,9 @@ const fajrRecords = () =>
   Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0)
     .map((record) => record.id)
     .sort();
+
+/** The whole record a refusal leaves behind: the sweep reaches the alarm through it, and it carries no display field but the name */
+const fajrRecordBodies = () => Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
 
 beforeEach(() => {
   jest.useFakeTimers();
@@ -89,7 +92,6 @@ beforeEach(() => {
       date,
       time: '12:00',
       englishName: 'Fajr',
-      arabicName: 'الفجر',
       alertType: AlertType.Sound,
     });
     osState.add(FAJR[position]);
@@ -147,6 +149,10 @@ describe.each([
     // Only the alarm the phone still holds keeps its record; the one it cancelled loses its own
     expect(fajrRecords()).toEqual([FAJR[0]]);
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
+    for (const record of fajrRecordBodies()) {
+      expect('arabicName' in record).toBe(false);
+      expect(record.englishName).toBe('Fajr');
+    }
 
     // One minute on, the refresh gate is shut, so only a prayer marked to be put right makes this do anything
     jest.setSystemTime(NOW + MINUTE);

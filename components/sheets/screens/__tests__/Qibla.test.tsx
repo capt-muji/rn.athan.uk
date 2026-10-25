@@ -9,6 +9,9 @@ import { Dimensions, Linking, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import type { FusedHeading } from '@/modules/qiblaheading';
+import { COLORS } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
 import * as qiblaSettle from '@/shared/qiblaSettle';
 import { WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
@@ -204,9 +207,12 @@ const heldStill = (headingDegrees: number, count = 1): FusedHeading[] =>
 const waved = (turns: number, headingDegrees = 95): FusedHeading[] =>
   Array.from({ length: turns + 1 }, (_, turn) => ({ headingDegrees, attitude: tipped(turn * 31) }));
 
-/** How much of a subtitle line shows: the two are stacked, and only this tells them apart on screen */
-const subtitleOpacity = (text: string) =>
-  (StyleSheet.flatten(screen.getByText(text).props.style) as { opacity?: number }).opacity;
+/**
+ * The one instruction text the header may carry, and its copy: the subtitle swaps its sentence on
+ * the compass's own flag, so what is mounted is the whole contract - a second mounted line, hidden
+ * or absolute, is the doubled-text defect this suite makes unrepresentable
+ */
+const subtitleLine = () => screen.getByTestId('qibla-subtitle');
 
 beforeEach(() => {
   mockWatchers.length = 0;
@@ -233,46 +239,23 @@ describe('the qibla sheet before it is opened', () => {
     expect(qiblaDevice.watchHeading).not.toHaveBeenCalled();
   });
 
-  it('tells the user what to do without naming a number to read', async () => {
+  // The header may mount ONE instruction text: the crossfade this replaces kept the ready sentence
+  // painted over the waiting one, and its donor held the ready copy in the tree beside them both
+  it('mounts exactly one instruction line, the waiting copy, while the compass is not drawn', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+    expect(screen.queryByTestId('qibla-subtitle-donor', { includeHiddenElements: true })).toBeNull();
+    expect(screen.queryByTestId('qibla-subtitle-ready')).toBeNull();
+    // Hidden included: the doubled line was invisible to a plain query twice over
+    expect(screen.queryAllByText(t('qibla.subtitleReady'), { includeHiddenElements: true })).toHaveLength(0);
   });
 
-  // Both lines are mounted the whole time and cross-faded, so the header keeps one height: a swap in place
-  // would resize it mid-fade, and the words must change on the same flag the compass does
-  it('carries both subtitles, so the change costs a fade rather than a resize', async () => {
+  it('paints the one line in the sheet subtitle ink, capped at one line', async () => {
     await render(<QiblaSheet />);
 
-    expect(screen.getByText('Follow below instructions')).toBeOnTheScreen();
-    expect(screen.getByText('Hold flat and turn slowly')).toBeOnTheScreen();
-  });
-
-  it('caps both subtitles at one line, so the header keeps its height', async () => {
-    await render(<QiblaSheet />);
-
-    expect(screen.getByText('Follow below instructions').props.numberOfLines).toBe(1);
-    expect(screen.getByText('Hold flat and turn slowly').props.numberOfLines).toBe(1);
-  });
-
-  // An absolutely positioned child contributes NO width, so the line taken out of flow cannot widen the container.
-  // Leaving the NARROWER line in flow shrink-wraps the column to it and cuts the wider one to an ellipsis. Measured
-  // in the bundled font at the subtitle's size: 158.6dp for the line in flow against 150.4dp for the other
-  it('leaves the wider subtitle in flow, so neither line is truncated', async () => {
-    await render(<QiblaSheet />);
-
-    const position = (text: string) =>
-      (StyleSheet.flatten(screen.getByText(text).props.style) as { position?: string }).position;
-
-    expect(position('Follow below instructions')).toBeUndefined();
-    expect(position('Hold flat and turn slowly')).toBe('absolute');
-  });
-
-  it('shows the line that asks the user to act while the hint is up', async () => {
-    await render(<QiblaSheet />);
-
-    expect(subtitleOpacity('Follow below instructions')).toBe(1);
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(0);
+    expect(StyleSheet.flatten(subtitleLine().props.style).color).toBe(COLORS.text.sheetSubtitle);
+    expect(subtitleLine().props.numberOfLines).toBe(1);
   });
 });
 
@@ -331,13 +314,27 @@ describe('the qibla sheet, opened in London', () => {
     expect(screen.getByTestId('qibla-dial-gold')).toBeOnTheScreen();
   });
 
-  it('swaps the subtitle to the compass’s own line once the compass is drawn', async () => {
+  // The copy swaps on the SAME flag the compass does, on the one mounted text: the words and the
+  // instrument change together, and no second sentence is ever mounted beside the visible one
+  it('swaps the one line\u2019s copy when the compass is drawn', async () => {
+    await openSheet();
+
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+
+    await reportHeadings(95);
+
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+  });
+
+  it('mounts exactly one instruction line, the ready copy, once the compass is drawn', async () => {
     await openSheet();
 
     await reportHeadings(95);
 
-    expect(subtitleOpacity('Hold flat and turn slowly')).toBe(1);
-    expect(subtitleOpacity('Follow below instructions')).toBe(0);
+    expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+    expect(screen.queryByTestId('qibla-subtitle-donor', { includeHiddenElements: true })).toBeNull();
+    expect(screen.queryByTestId('qibla-subtitle-ready')).toBeNull();
+    expect(screen.queryAllByText(t('qibla.subtitleWaiting'), { includeHiddenElements: true })).toHaveLength(0);
   });
 
   it('asks for the position once, however many headings arrive', async () => {
@@ -408,6 +405,48 @@ describe('the qibla sheet, opened in London', () => {
     await rerender(<QiblaSheet />);
 
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
+  });
+});
+
+/**
+ * The one instruction line's copy pair in every shipped language, before and after the draw.
+ *
+ * Per locale because which sentence is the wider one depends on the language, and the swap must
+ * hold where the two differ most, not only under en.
+ */
+describe('the subtitle\u2019s one instruction line in every language', () => {
+  // The shared openSheet looks the sheet up by its English title, which no other locale renders
+  const openSheetAsRendered = async () => {
+    jest.useFakeTimers();
+    await render(<QiblaSheet />);
+    await fireEvent(screen.getByText(t('qibla.title')), 'change', 0);
+    await act(async () => {});
+  };
+
+  it.each(LOCALE_IDS)('carries the waiting copy alone under %s, before the draw', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await openSheetAsRendered();
+
+      expect(subtitleLine().props.children).toBe(t('qibla.subtitleWaiting'));
+      expect(screen.queryAllByText(t('qibla.subtitleReady'), { includeHiddenElements: true })).toHaveLength(0);
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it.each(LOCALE_IDS)('carries the ready copy alone under %s, after the draw', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      await openSheetAsRendered();
+
+      await reportHeadings(95);
+
+      expect(subtitleLine().props.children).toBe(t('qibla.subtitleReady'));
+      expect(screen.queryAllByText(t('qibla.subtitleWaiting'), { includeHiddenElements: true })).toHaveLength(0);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 
@@ -2224,5 +2263,114 @@ describe('the readings a warm reopen is judged on', () => {
     expect(judged).toHaveBeenCalledTimes(200);
     expect(judged.mock.calls.at(-1)?.[0]).toHaveLength(8);
     judged.mockRestore();
+  });
+});
+
+describe('the compass ring’s cardinal numbers on the drawn dial', () => {
+  // The ring is SVG, so its labels are read from the rendered tree: RNSVGText holds one child per label and a
+  // numeric child arrives as its own TSpan, so a label's own Text carries its x and ink and its TSpan the content
+  // and size. This is the render half of the rulings; the unit suite proves the data is locale-free.
+  // react-native-svg packs a rendered fill into { type, payload } with payload 0xAARRGGBB, so the ink decodes
+  type DialLabel = { content: string; x?: number; fontSize?: number; ink?: string };
+
+  const dialLabels = (): { labels: DialLabel[]; numberSize: number } => {
+    const labels: DialLabel[] = [];
+    let numberSize = 0;
+    const inkOf = (fill: unknown): string | undefined => {
+      const packed = fill as { payload?: number } | undefined;
+      return typeof packed?.payload === 'number'
+        ? `#${(packed.payload & 0xffffff).toString(16).padStart(6, '0')}`
+        : undefined;
+    };
+    const walk = (node: unknown, text?: DialLabel): void => {
+      if (node == null || typeof node !== 'object') return;
+      const n = node as { type?: unknown; props?: Record<string, unknown>; children?: unknown[] };
+      const font = n.props?.font as { fontSize?: number } | undefined;
+      const next =
+        n.type === 'RNSVGText' && typeof font?.fontSize === 'number'
+          ? {
+              content: '',
+              x: n.props?.x as number | undefined,
+              fontSize: font.fontSize,
+              ink: inkOf(n.props?.fill),
+            }
+          : text;
+      if (n.type === 'RNSVGText' && typeof font?.fontSize === 'number')
+        numberSize = Math.max(numberSize, font.fontSize);
+      if (n.type === 'RNSVGTSpan' && typeof n.props?.content === 'string') {
+        labels.push({ ...(next ?? {}), content: n.props.content as string });
+      }
+      for (const child of n.children ?? []) walk(child, next);
+    };
+    walk(screen.getByTestId('qibla-dial').toJSON());
+    return { labels, numberSize };
+  };
+
+  it.each(LOCALE_IDS)('draws the four bearing numbers with their degree circles under %s', async (locale) => {
+    setActiveLocale(locale);
+    try {
+      // The sheet's opener finds its title through the active catalog, since the title is localized
+      jest.useFakeTimers();
+      await render(<QiblaSheet />);
+      await fireEvent(screen.getByText(t('qibla.title')), 'change', 0);
+      await act(async () => {});
+      await reportHeadings(95);
+
+      const { labels, numberSize } = dialLabels();
+      const contents = labels.map((label) => label.content);
+      const numbers = labels.filter((label) => /^\d+$/.test(label.content));
+      const degrees = labels.filter((label) => label.content === '\u00B0');
+
+      // The two palettes stack the same dial, so each of the four bearings appears twice, in bearing order
+      expect(numbers.map((number) => number.content)).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
+      expect(degrees).toHaveLength(8);
+      // Each degree circle is smaller than its number, raised at its top right and drawn in the
+      // number's own ink: the palette's solid at full fill opacity (the old 0.5 fillOpacity folded
+      // into the ink), away then facing as the two palettes stack
+      const paletteInks = degrees.map((degree) => degree.ink).filter((ink): ink is string => typeof ink === 'string');
+      expect(paletteInks).toEqual([
+        '#33416b',
+        '#33416b',
+        '#33416b',
+        '#33416b',
+        '#4b5480',
+        '#4b5480',
+        '#4b5480',
+        '#4b5480',
+      ]);
+      for (const degree of degrees) {
+        expect(degree.fontSize).toBeGreaterThan(0);
+        expect(degree.fontSize as number).toBeLessThan(numberSize);
+      }
+      // The circle sits the same distance past the number whatever its length, so the
+      // per-bearing offset grows by one constant step per extra digit and 180 and 270 land on the same offset
+      for (const half of [0, 1]) {
+        const numberRow = numbers.slice(half * 4, half * 4 + 4);
+        const degreeRow = degrees.slice(half * 4, half * 4 + 4);
+        const offsets = numberRow.map((number, index) => {
+          const offset = (degreeRow[index].x as number) - (number.x as number);
+          return { digits: number.content.length, offset };
+        });
+        const byDigits = new Map(offsets.map(({ digits, offset }) => [digits, offset]));
+        expect(byDigits.get(3)).toBeDefined();
+        expect(byDigits.get(3)).toBeCloseTo(byDigits.get(3) as number, 9);
+        const step = (byDigits.get(2) as number) - (byDigits.get(1) as number);
+        expect(step).toBeGreaterThan(0);
+        expect(byDigits.get(3)).toBeCloseTo((byDigits.get(2) as number) + step, 9);
+        for (const { digits, offset } of offsets) {
+          expect(offset).toBeCloseTo((byDigits.get(1) as number) + (digits - 1) * step, 9);
+        }
+        // And never further than one digit's advance plus the ruled gap past the number
+        for (const { digits, offset } of offsets) {
+          expect(offset).toBeLessThan((numberSize * digits * 0.58) / 2 + numberSize * 0.1);
+        }
+      }
+      // No letter of the old ring survives in any language
+      for (const letter of ['N', 'E', 'S', 'W', 'ش', 'ق', 'ج', 'غ']) {
+        expect(contents).not.toContain(letter);
+      }
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });

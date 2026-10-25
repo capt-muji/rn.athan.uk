@@ -54,6 +54,7 @@ jest.mock('@/stores/database', () => ({
   markYearAsFetched: (year: number) => mockMarkYearAsFetched(year),
   clearAllExcept: (keys: string[]) => mockClearAllExcept(keys),
   getItem: (key: string) => mockGetItem(key),
+  getRawItem: () => undefined,
   getAllWithPrefix: () => [],
   clearPrefix: (prefix: string) => mockClearPrefix(prefix),
 }));
@@ -369,7 +370,7 @@ describe('needsDataUpdate behavior', () => {
       {
         cache: 'marks this year without any of its days',
         marked: { 2025: true, 2026: true },
-        keys: ['prayer_2025-12-31', 'prayer_max_english_width_standard'],
+        keys: ['prayer_2025-12-31', 'prayer_max_name_width_en_standard'],
       },
       {
         cache: 'holds days of this year it never marked',
@@ -445,7 +446,7 @@ describe('updatePrayerData behavior', () => {
       'whats_new_shown_version',
       'cache_schema_version',
       'preference_',
-      'prayer_max_english_width_',
+      'prayer_max_name_width_',
       'scheduled_notifications_',
       'scheduled_reminders_',
     ]);

@@ -11,21 +11,22 @@ set -u
 LABEL=${1:?usage: idle-cpu.sh <label> [device-serial]}
 SERIAL=${2:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 ROOT=${0:A:h:h}
+PKG=${APP_ID:-com.example.athan}
 OUT=$(mktemp -d)/idle-$LABEL; mkdir -p "$OUT"
 a() { adb -s "$SERIAL" "$@"; }
 
-echo "== $LABEL: $(a shell dumpsys package com.example.athan | grep versionName | tr -d ' \r')"
+echo "== $LABEL: $(a shell dumpsys package $PKG | grep versionName | tr -d ' \r')"
 
 # What's New marks itself shown the moment it appears: one throwaway launch consumes it
-a shell am force-stop com.example.athan
-a shell am start -n com.example.athan/.MainActivity >/dev/null
+a shell am force-stop $PKG
+a shell am start -n $PKG/.MainActivity >/dev/null
 sleep 12
-a shell am force-stop com.example.athan
+a shell am force-stop $PKG
 sleep 2
 
 # Launch early in a minute so the prayers the mock seeds from this launch's download land on known minutes
 while :; do s=$(date +%S); s=${s#0}; (( s >= 5 && s <= 30 )) && break; sleep 1; done
-a shell am start -n com.example.athan/.MainActivity >/dev/null
+a shell am start -n $PKG/.MainActivity >/dev/null
 M=$(( $(date +%s) / 60 * 60 ))
 echo "== untouched until $(date -r $((M + 330)) +%H:%M:%S) (today's mock prayers end ~$(date -r $((M + 240)) +%H:%M:%S))"
 while (( $(date +%s) < M + 330 )); do sleep 2; done
@@ -34,7 +35,7 @@ while (( $(date +%s) < M + 330 )); do sleep 2; done
 # split on whitespace. Deleting the spaces too welds two pids into one number
 # that names no process, /proc yields nothing, and the tool reports a confident
 # 0.0% — a clean idle reading from an empty measurement.
-PIDS=(${=$(a shell pidof com.example.athan | tr -d '\r')})
+PIDS=(${=$(a shell pidof $PKG | tr -d '\r')})
 (( ${#PIDS} )) || { echo "app not running"; exit 1; }
 echo "== sampling ${#PIDS} process(es): $PIDS"
 

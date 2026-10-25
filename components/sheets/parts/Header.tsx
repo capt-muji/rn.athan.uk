@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 interface BottomSheetHeaderProps {
   title: string;
-  /** A node rather than only a string, so a sheet whose subtitle CHANGES can cross-fade it in place */
+  /** A node rather than only a string, so a sheet can swap its subtitle in place without remounting the header */
   subtitle: React.ReactNode;
   icon: React.ReactNode;
 }
@@ -36,6 +38,11 @@ export default function BottomSheetHeader({ title, subtitle, icon }: BottomSheet
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+// Rubik's own line box seats both lines; the subtitle rides a 6 point gap under the title,
+// the same shape as the location-date dial (row 108)
+const compactArabic = currentLocaleId() === 'ar';
+
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
@@ -54,16 +61,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 22,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(22),
+    fontFamily: ty.familyMedium,
     color: '#fff',
-    letterSpacing: -0.3,
-    marginBottom: SPACING.xxs,
+    letterSpacing: ty.letterSpacing(-0.3),
+    marginBottom: compactArabic ? 0 : SPACING.xxs,
   },
   subtitle: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
     color: COLORS.text.sheetSubtitle,
-    marginTop: SPACING.xs,
+    marginTop: compactArabic ? SPACING.py : SPACING.xs,
   },
 });

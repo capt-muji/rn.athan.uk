@@ -38,7 +38,7 @@ describe('the Standard widgets on Friday 11 September 2026, pushed 400 ms before
 
     // Overrunning the target used to arm a retry a minute out. Nothing is armed
     // now: the next push rides data (sync, reschedule, background task), never a
-    // clock, because each one costs a WidgetKit reload per kind (ISSUES.md §G.1)
+    // clock, because each one costs a WidgetKit reload per kind (ledger G.1 (git history))
     expect(pushedAt).toEqual([dhuhr - PUSH_STARTS_BEFORE_DHUHR_MS]);
   });
 });

@@ -12,18 +12,18 @@
  *
  */
 
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
 import { type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 
 /** Whether the provider gave this row a readable time */
 export const isReadable = (prayer: Prayer): prayer is ReadablePrayer => prayer.datetime !== null;
 
-/** Position on its own list, in PRAYERS_ENGLISH or EXTRAS_ENGLISH order; unknown names last */
+/** Position on its own list, in STANDARD_PRAYER_IDS or EXTRA_PRAYER_IDS order; unknown ids last */
 const listPosition = (prayer: Prayer): number => {
-  const names = prayer.type === ScheduleType.Standard ? PRAYERS_ENGLISH : EXTRAS_ENGLISH;
-  const position = names.indexOf(prayer.english);
-  return position === -1 ? names.length : position;
+  const ids: readonly PrayerId[] = prayer.type === ScheduleType.Standard ? STANDARD_PRAYER_IDS : EXTRA_PRAYER_IDS;
+  const position = ids.indexOf(prayer.id);
+  return position === -1 ? ids.length : position;
 };
 
 const rowsOfListDay = (prayers: Prayer[], date: string): Prayer[] =>
@@ -67,7 +67,7 @@ export const findNextReadable = (prayers: Prayer[], now: Date): ReadablePrayer |
  * Whether a list day with readable rows stays on screen after the last of them until 00:00 London at its end
  *
  * It does when the list day after it has no readable row, since that day comes on screen only at its own
- * start (R8, owner ruling 2026-09-14). A readable row after the day's own 00:00 hands the list over at
+ * start (R8). A readable row after the day's own 00:00 hands the list over at
  * itself instead, and a following day the sequence does not hold is not waited for.
  *
  * @param readable The day's readable rows
@@ -159,7 +159,7 @@ export const isRowPassed = (prayers: Prayer[], row: Prayer, now: Date): boolean 
  *
  * Only that row, never one further up: a bar measured from an earlier prayer would span a prayer it passes
  * over and read as the wrong gap, so an unreadable Magrib leaves no bar before Isha rather than a longer one
- * from Asr, and the badge hides with it (owner ruling 2026-09-14, R14).
+ * from Asr, and the badge hides with it.
  *
  * @param prayers Rows to search. The caller adds the list before from storage when the sequence lacks it
  * @param next The next readable row
@@ -191,7 +191,7 @@ export const findNextOccurrence = (prayers: Prayer[], row: Prayer): Prayer | nul
   let occurrence: Prayer | null = null;
 
   for (const prayer of prayers) {
-    if (prayer.english !== row.english || prayer.belongsToDate <= row.belongsToDate) continue;
+    if (prayer.id !== row.id || prayer.belongsToDate <= row.belongsToDate) continue;
     if (!occurrence || prayer.belongsToDate < occurrence.belongsToDate) occurrence = prayer;
   }
 

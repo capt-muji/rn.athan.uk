@@ -25,6 +25,7 @@ jest.mock('@/shared/config', () => ({
   APP_CONFIG: {
     iosAppId: '123456789',
     androidPackage: 'com.example.athan',
+    iosBundleId: 'com.example.athan',
   },
   isProd: () => mockIsProd(),
   isPreview: () => false,
@@ -403,6 +404,7 @@ describe('checkForUpdates (Android)', () => {
       APP_CONFIG: {
         iosAppId: '123456789',
         androidPackage: 'com.example.athan',
+        iosBundleId: 'com.example.athan',
       },
       isProd: () => mockIsProd(),
       isPreview: () => false,

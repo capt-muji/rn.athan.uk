@@ -1,7 +1,9 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { COLORS, HIT_SLOP, SPACING, TEXT } from '@/shared/constants';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
+import { typographyFor } from '@/shared/typography';
 
 import Toggle from './Toggle';
 
@@ -34,6 +36,8 @@ export default function LabeledToggle({ label, value, onToggle }: LabeledToggleP
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: COLORS.text.primary,
-    fontFamily: TEXT.family.regular,
-    fontSize: TEXT.sizeDetail,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
   },
 });

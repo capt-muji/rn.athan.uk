@@ -22,7 +22,7 @@
 
 set -u
 SERIAL=${1:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
-PKG=${2:-com.example.athan}
+PKG=${2:-${APP_ID:-com.example.athan}}
 EXPECTED=${3:-}
 ROOT=${0:A:h:h}
 OUT=$(mktemp -d)

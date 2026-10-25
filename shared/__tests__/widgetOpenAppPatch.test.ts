@@ -1,6 +1,6 @@
 /**
  * The patch that lets an Android widget tap open the app
- * (patches/expo-widgets+58.0.3.patch)
+ * (patches/expo-widgets+<installed version>.patch)
  *
  * The widget layout wraps every Android card in a Button carrying `openApp`,
  * a prop the patch adds to expo-widgets. Nothing else in the repository
@@ -33,13 +33,54 @@ describe('the open-the-app patch', () => {
     expect(converter).toContain('actionStartActivity(intent)');
   });
 
-  it('patches one file, under android/src', () => {
+  it('patches exactly the known files, all inside the package', () => {
     const patch = read(`patches/expo-widgets+${installedVersion()}.patch`);
     const headers = patch.split('\n').filter((line) => line.startsWith('diff --git'));
 
-    expect(headers).toHaveLength(1);
-    expect(headers[0]).toContain('node_modules/expo-widgets/android/src/');
+    // The openApp converter, the device-locale runtime patch's four files
+    // (the iOS JSContext, the C++ Hermes runtime, its JNI plumb, the Kotlin
+    // locale caller), the iOS entry view's layout-direction hunk, and the
+    // peek widget's granted-width environment hunk
+    expect(headers).toHaveLength(7);
+    for (const header of headers) {
+      expect(header).toContain('node_modules/expo-widgets/');
+    }
     expect(patch).not.toContain('/Users/');
+  });
+
+  it('applies the granted-width environment to the peek widget', () => {
+    const peek = read('node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/ExpoWidgetsPeekWidget.kt');
+
+    // The device build links whatever node_modules holds: a patch updated
+    // but never applied leaves the medium computing at the fallback, so
+    // the applied line itself is pinned
+    expect(peek).toContain(
+      'val environment = getWidgetEnvironment(appContext) + mapOf("grantedWidthDp" to size.width.value.toDouble())'
+    );
+  });
+
+  it("applies the entry's rtl as the native layout direction", () => {
+    const entryView = read('node_modules/expo-widgets/ios/Widgets/EntryView.swift');
+
+    // The whole rtl read pins the LTR default byte-for-byte: a falsy rtl
+    // stays left-to-right even on an RTL device (the app-locale law), so
+    // a flipped default cannot pass as the same patch
+    expect(entryView).toContain('let rtl = (entry.props?["rtl"] as? Bool) ?? false');
+    expect(entryView).toContain('.environment(\\.layoutDirection,');
+    expect(entryView).toContain('rtl ? .rightToLeft : .leftToRight');
+  });
+
+  it('installs the device-locale global through JSContext\u2019s Swift selector', () => {
+    const runtime = read('node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift');
+
+    // `forKey:` is not a selector JSContext exposes to Swift, and
+    // `Locale.LanguageCode` is a struct that will not bridge to NSString;
+    // `.identifier` is the language-code string. The whole line, because the
+    // layout line above it would satisfy a bare substring check
+    expect(runtime).toContain(
+      'context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)'
+    );
+    expect(runtime).not.toContain('forKey: "__expoWidgetDeviceLocale"');
   });
 
   it('keeps the library\u2019s own interaction path for a button that does not open the app', () => {

@@ -1,0 +1,177 @@
+#!/usr/bin/env node
+// Sob 38's string census and guard. Parses the tree with @babel/parser and
+// classifies every JSX text node, string literal and template literal it can
+// see. Deterministic rules, in priority order:
+//   1. JSXText holding a letter -> display
+//   2. StringLiteral as a JSX attribute value -> display
+//   3. String/Template argument to a display-sink callee -> display
+//   4. Template literal starting with a capital letter and holding a space -> review
+//   5. Anything inside a logger.* / perf* call -> code
+// Everything else -> code. Output: JSON on stdout, or --guard to exit 1 when
+// any display hit sits outside the allowlisted modules (widget layout bodies
+// excepted: their strings arrive as props) or a data module holds copy that is
+// not a catalog key.
+import fs from 'node:fs';
+import path from 'node:path';
+import { parse } from '@babel/parser';
+
+const ROOTS = process.argv[2]
+  ? [process.argv[2]]
+  : ['components', 'app', 'hooks', 'shared', 'stores', 'device', 'widgets'];
+const DISPLAY_SINKS =
+  /(label|title|text|body|message|placeholder|alert|confirm|question|answer|explanation|content|caption|subtitle|description)$/i;
+const NON_DISPLAY_CALLEES = /^(logger|perfMark|perfMeasure|require|import|jest|test|it|describe|expect)$/;
+// The data modules export catalog keys only: their copy fields must hold
+// help./whatsNew. keys, and no copy-shaped sentence may sit anywhere in them
+// (code ids like 'ios' or 'dndAccess' are single lowercase/digit tokens)
+const DATA_MODULES = new Set(['shared/help.ts', 'shared/whatsNew.ts', 'shared/languageNames.ts']);
+const DATA_COPY_FIELDS = new Set([
+  'question',
+  'answer',
+  'text',
+  'steps',
+  'title',
+  'body',
+  'titleKey',
+  'bodyKey',
+  'label',
+  'message',
+]);
+
+const rows = [];
+
+const walk = (node, file, ctx) => {
+  if (!node || typeof node.type !== 'string') return;
+  const line = node.loc ? node.loc.start.line : 0;
+  let kind = null;
+  let value = null;
+
+  // A widget layout's serialized body receives its strings as props (the
+  // closure law forbids imports), so its display hits are prop-driven; a
+  // literal outside any widget function in these files is still an offender
+  const widgetBody =
+    ctx.widgetBody ||
+    (node.type === 'ArrowFunctionExpression' &&
+      node.body.type === 'BlockStatement' &&
+      node.body.directives.some((directive) => directive.value.value === 'widget'));
+
+  if (node.type === 'JSXText' && /[a-zA-Z\u00C0-\uFFFF]/.test(node.value)) {
+    kind = 'display-jsx';
+    value = node.value.trim();
+  } else if (node.type === 'StringLiteral') {
+    const parent = ctx.parent;
+    if (parent && parent.type === 'JSXAttribute') {
+      kind = 'display-jsx-attr';
+      value = node.value;
+    } else if (parent && (parent.type === 'CallExpression' || parent.type === 'NewExpression')) {
+      const callee = parent.callee;
+      const calleeName = callee.property ? callee.property.name : callee.name;
+      if (typeof calleeName === 'string' && DISPLAY_SINKS.test(calleeName) && !NON_DISPLAY_CALLEES.test(calleeName)) {
+        kind = 'display-sink';
+        value = node.value;
+      }
+    }
+    if (DATA_MODULES.has(file) && kind === null) {
+      const inType = parent && parent.type === 'TSLiteralType';
+      const isImport = parent && parent.type === 'ImportDeclaration';
+      const keyOk = node.value.startsWith('help.') || node.value.startsWith('whatsNew.');
+      const fieldOf = (owner) => owner && owner.type === 'ObjectProperty' && !owner.computed && owner.key.name;
+      const copyField = fieldOf(parent) || fieldOf(ctx.grandparent);
+      // The language-names module's `name` field holds native names ('Bahasa
+      // Melayu' carries a space), which are names data, not copy
+      const isNameData = copyField === 'name' && file === 'shared/languageNames.ts';
+      if (
+        !inType &&
+        !isImport &&
+        !keyOk &&
+        !isNameData &&
+        (DATA_COPY_FIELDS.has(copyField) || node.value.includes(' '))
+      ) {
+        kind = 'data-module';
+        value = node.value;
+      }
+    }
+  } else if (node.type === 'TemplateLiteral') {
+    const cooked = node.quasis.map((q) => q.value.cooked).join('#');
+    if (/^[A-Z]/.test(cooked) && / /.test(cooked)) {
+      kind = 'review-template';
+      value = cooked;
+    }
+  }
+
+  if (kind) rows.push({ file, line, kind, value, widgetBody: widgetBody === true });
+
+  for (const key of Object.keys(node)) {
+    if (key === 'loc' || key === 'start' || key === 'end' || key === 'leadingComments' || key === 'trailingComments')
+      continue;
+    const child = node[key];
+    if (Array.isArray(child)) {
+      for (const item of child) {
+        if (item && typeof item.type === 'string')
+          walk(item, file, { parent: node, grandparent: ctx.parent, widgetBody });
+      }
+    } else if (child && typeof child.type === 'string') {
+      walk(child, file, { parent: node, grandparent: ctx.parent, widgetBody });
+    }
+  }
+};
+
+const files = [];
+const collect = (dir) => {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === '__tests__' || entry.name.startsWith('.')) continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) collect(full);
+    else if (/\.tsx?$/.test(entry.name)) files.push(full);
+  }
+};
+for (const root of ROOTS) {
+  if (fs.existsSync(root)) collect(root);
+}
+
+for (const file of files) {
+  const source = fs.readFileSync(file, 'utf8');
+  let ast;
+  try {
+    ast = parse(source, {
+      sourceType: 'module',
+      plugins: ['typescript', 'jsx', 'decoratorAutoAccessors'],
+      attachComment: false,
+      errorRecovery: true,
+    });
+  } catch {
+    rows.push({ file, line: 0, kind: 'parse-error', value: '' });
+    continue;
+  }
+  walk(ast.program, file, { parent: null });
+}
+
+if (process.argv.includes('--guard')) {
+  // Stage one ends with the allowlist pinned empty. The display kinds fail outside
+  // the widget bodies (whose strings arrive as props), and the data-module
+  // rule fails on copy that is not a catalog key.
+  const allowlist = JSON.parse(fs.readFileSync(process.argv[process.argv.indexOf('--guard') + 1], 'utf8'));
+  const offenders = rows.filter(
+    (row) =>
+      (row.kind.startsWith('display') || row.kind === 'data-module') &&
+      !allowlist.includes(row.file) &&
+      !(row.widgetBody && row.file.startsWith('widgets/'))
+  );
+  if (offenders.length > 0) {
+    for (const row of offenders) {
+      process.stderr.write(`${row.file}:${row.line} ${row.kind} ${JSON.stringify(row.value)}\n`);
+    }
+    process.exit(1);
+  }
+  process.exit(0);
+}
+
+const byKind = {};
+for (const row of rows) byKind[row.kind] = (byKind[row.kind] ?? 0) + 1;
+const byFile = {};
+for (const row of rows) {
+  if (row.kind.startsWith('display') || row.kind === 'review-template') {
+    byFile[row.file] = (byFile[row.file] ?? 0) + 1;
+  }
+}
+process.stdout.write(JSON.stringify({ byKind, byFile, rows }, null, 1));

@@ -5,10 +5,13 @@ import Animated from 'react-native-reanimated';
 
 import { formatShownDate, getShownDateSource } from '@/components/day/shownDate';
 import { Masjid } from '@/components/ui';
-import { useDerivedOpacity } from '@/hooks/useAnimation';
+import { useDerivedColor, useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { ANIMATION, COLORS, SCREEN, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { getOverlayActiveForTypeAtom, getOverlaySelectedIndexForTypeAtom } from '@/stores/atoms/overlay';
 import { extraDisplayDateAtom, standardDisplayDateAtom } from '@/stores/schedule';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -37,6 +40,12 @@ export default function Day({ type }: Props) {
   const dateSource = getShownDateSource(showOverlayDate, OverlayPrayer.date, date);
 
   const masjidOpacityStyle = useDerivedOpacity(showOverlayDate ? 0 : 1, { duration: ANIMATION.duration });
+  // The location rides the same flag and duration its masjid fade rides, so the label settles with the icon
+  const locationColorStyle = useDerivedColor(showOverlayDate ? 1 : 0, {
+    fromColor: COLORS.text.labelHome,
+    toColor: COLORS.text.labelOverlay,
+    duration: ANIMATION.duration,
+  });
 
   // Hijri formatting is expensive on the floor device (umalqura Intl) — memo
   // so overlay toggles never re-format an unchanged date string
@@ -45,7 +54,7 @@ export default function Day({ type }: Props) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.location}>London, UK</Text>
+        <Animated.Text style={[styles.location, locationColorStyle]}>{t('day.location')}</Animated.Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
       <Animated.View style={masjidOpacityStyle}>
@@ -55,24 +64,27 @@ export default function Day({ type }: Props) {
   );
 }
 
+const ty = typographyFor(currentLocaleId());
+const compactArabic = currentLocaleId() === 'ar';
+
 const styles = StyleSheet.create({
   container: {
     marginBottom: SPACING.xl,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingRight: SCREEN.paddingHorizontal + 2,
-    paddingLeft: SCREEN.paddingHorizontal + 4,
+    paddingEnd: SCREEN.paddingHorizontal + 2,
+    paddingStart: SCREEN.paddingHorizontal + 4,
   },
   location: {
-    color: COLORS.text.secondary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
-    marginBottom: SPACING.quart,
+    color: COLORS.text.labelHome,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
+    marginBottom: compactArabic ? SPACING.sm : SPACING.quart,
   },
   date: {
-    fontFamily: TEXT.family.regular,
+    fontFamily: ty.familyRegular,
     color: COLORS.text.primary,
-    fontSize: TEXT.size,
+    fontSize: ty.size(TEXT.size),
   },
 });

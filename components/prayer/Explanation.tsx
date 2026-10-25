@@ -1,39 +1,60 @@
-import { StyleSheet, Text, View, type ViewProps } from 'react-native';
+import { StyleSheet, View, type ViewProps } from 'react-native';
+import Animated, {
+  interpolateColor,
+  type SharedValue,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
-import InfoIcon from '@/assets/icons/svg/info.svg';
+import { InfoBadge } from '@/components/ui';
 import { COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
-import { toArabicNumbers } from '@/shared/text';
+import { currentLocaleId } from '@/shared/i18n/locale';
+import { typographyFor } from '@/shared/typography';
 
 interface PrayerExplanationProps {
   prayerName: string;
   explanation: string;
-  explanationArabic: string;
   arrowPosition?: 'top' | 'bottom';
   style?: ViewProps['style'];
+  /** How far the card has revealed: drives the face's fade and the inks' rise from the surface. Unveiled by default, so the card stands alone fully drawn */
+  reveal?: SharedValue<number>;
 }
 
 /**
  * Tooltip component explaining extra prayer times
  *
- * Displays a floating info box with prayer name, English explanation,
- * and Arabic explanation. Includes a triangular arrow pointing to
- * the associated prayer row.
+ * Displays a floating info box with the prayer name and its explanation.
+ * Includes a triangular arrow pointing to the associated prayer row.
+ *
+ * The reveal is carried so no text ever renders through an opacity (T-294): the card's own
+ * face - background, border, radius - fades as a text-free view behind the words, and each
+ * ink rises from the face's colour on the same progress, which over the card's opaque surface
+ * equals the old layer fade formula for formula.
  *
  * @param prayerName - Name of the extra prayer (e.g., "Midnight")
- * @param explanation - English explanation text
- * @param explanationArabic - Arabic explanation text (numbers auto-converted to Arabic numerals)
+ * @param explanation - the explanation text
  * @param arrowPosition - Position of the arrow: 'top' (box below row) or 'bottom' (box above row)
  * @param style - Additional style for positioning
  */
 export default function PrayerExplanation({
   prayerName,
   explanation,
-  explanationArabic,
   arrowPosition = 'top',
   style,
+  reveal,
 }: PrayerExplanationProps) {
   const isArrowOnTop = arrowPosition === 'top';
+  const unveiled = useSharedValue(1);
+  const shown = reveal ?? unveiled;
+
+  const faceStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
+  const titleStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.text.emphasis]),
+  }));
+  const explanationStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.icon.primary]),
+  }));
 
   return (
     // Live region: this box is mounted, not navigated to — the overlay reveals
@@ -41,65 +62,69 @@ export default function PrayerExplanation({
     // user gets no indication that anything appeared. Matches the countdown
     // Bar's treatment (components/countdown/Bar.tsx). Android-only in React
     // Native; VoiceOver has no equivalent declarative prop.
-    <View style={[styles.container, style]} accessibilityLiveRegion='polite'>
+    <View style={[styles.container, style]} accessibilityLiveRegion={'polite'}>
       {/* Triangle arrow pointing up */}
       {isArrowOnTop && (
-        <View style={styles.arrowContainerTop}>
-          <Svg width={30} height={12} viewBox='0 0 30 12'>
+        <Animated.View style={[styles.arrowContainerTop, faceStyle]}>
+          <Svg width={36} height={15} viewBox={'0 0 36 15'}>
             {/* Fill first */}
-            <Path d='M0 12 L12 3.5 Q15 1 18 3.5 L30 12 Z' fill={COLORS.surface.elevated} />
+            <Path d={'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not bottom */}
             <Path
-              d='M0 12 L12 3.5 Q15 1 18 3.5 L30 12'
-              fill='none'
+              d={'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15'}
+              fill={'none'}
               stroke={COLORS.surface.elevatedBorder}
               strokeWidth={1}
-              strokeLinecap='round'
+              strokeLinecap={'round'}
             />
           </Svg>
-        </View>
+        </Animated.View>
       )}
 
       {/* Info box */}
       <View style={styles.infoBox}>
+        {/* The card's own face: absolute so it sits behind the words it carries, and text-free
+            so its fade is view compositing alone */}
+        <Animated.View style={[styles.face, faceStyle]} />
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
-          <Text style={styles.infoTitle}>{prayerName}</Text>
-          <View style={styles.iconWrapper}>
-            <InfoIcon width={13} height={13} style={{ color: COLORS.icon.primary }} />
-          </View>
+          <Animated.Text style={[styles.infoTitle, titleStyle]}>{prayerName}</Animated.Text>
+          <Animated.View style={faceStyle}>
+            <InfoBadge size={20} glyph={10} color={COLORS.icon.primary} />
+          </Animated.View>
         </View>
 
         {/* Separator */}
-        <View style={styles.separator} />
+        <Animated.View style={faceStyle}>
+          <View style={styles.separator} />
+        </Animated.View>
 
         {/* English explanation */}
-        <Text style={styles.infoExplanation}>{explanation}</Text>
-
-        {/* Arabic explanation */}
-        <Text style={styles.infoExplanationArabic}>{toArabicNumbers(explanationArabic)}</Text>
+        <Animated.Text style={[styles.infoExplanation, explanationStyle]}>{explanation}</Animated.Text>
       </View>
 
       {/* Triangle arrow pointing down */}
       {!isArrowOnTop && (
-        <View style={styles.arrowContainerBottom}>
-          <Svg width={30} height={12} viewBox='0 0 30 12'>
+        <Animated.View style={[styles.arrowContainerBottom, faceStyle]}>
+          <Svg width={36} height={15} viewBox={'0 0 36 15'}>
             {/* Fill first */}
-            <Path d='M0 0 L12 8.5 Q15 11 18 8.5 L30 0 Z' fill={COLORS.surface.elevated} />
+            <Path d={'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not top */}
             <Path
-              d='M0 0 L12 8.5 Q15 11 18 8.5 L30 0'
-              fill='none'
+              d={'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0'}
+              fill={'none'}
               stroke={COLORS.surface.elevatedBorder}
               strokeWidth={1}
-              strokeLinecap='round'
+              strokeLinecap={'round'}
             />
           </Svg>
-        </View>
+        </Animated.View>
       )}
     </View>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   container: {
@@ -117,12 +142,20 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   infoBox: {
+    borderRadius: RADIUS.md,
+    minWidth: SIZE.tooltip.minWidth,
+    padding: SPACING.lg2,
+  },
+  face: {
+    position: 'absolute',
+    top: 0,
+    start: 0,
+    end: 0,
+    bottom: 0,
     backgroundColor: COLORS.surface.elevated,
     borderRadius: RADIUS.md,
     borderWidth: 1,
     borderColor: COLORS.surface.elevatedBorder,
-    minWidth: SIZE.tooltip.minWidth,
-    padding: SPACING.lg2,
   },
   infoHeader: {
     flexDirection: 'row',
@@ -136,31 +169,15 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     marginBottom: SPACING.lg,
   },
-  iconWrapper: {
-    width: SIZE.iconWrapper.md,
-    height: SIZE.iconWrapper.md,
-    borderRadius: RADIUS.md,
-    backgroundColor: COLORS.icon.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   infoTitle: {
     color: COLORS.text.emphasis,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.medium,
+    fontSize: ty.size(TEXT.size),
+    fontFamily: ty.familyMedium,
   },
   infoExplanation: {
     color: COLORS.icon.primary,
-    fontSize: TEXT.sizeSmall,
-    fontFamily: TEXT.family.regular,
-    lineHeight: TEXT.lineHeight.default,
-    marginBottom: SPACING.mid,
-  },
-  infoExplanationArabic: {
-    color: COLORS.icon.primary,
-    fontSize: TEXT.sizeArabic,
-    fontFamily: TEXT.family.regular,
-    textAlign: 'right',
-    lineHeight: TEXT.lineHeight.arabic,
+    fontSize: ty.size(TEXT.sizeSmall),
+    fontFamily: ty.familyRegular,
+    lineHeight: ty.scriptLineHeight?.(TEXT.sizeSmall) ?? ty.lineHeight(TEXT.lineHeight.default),
   },
 });

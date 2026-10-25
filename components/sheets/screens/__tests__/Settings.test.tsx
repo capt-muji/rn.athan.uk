@@ -14,15 +14,16 @@ import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
   hijriDateEnabledAtom,
+  languageSheetModalAtom,
   popupHelpEnabledAtom,
   popupWhatsNewEnabledAtom,
   qiblaSheetModalAtom,
   settingsSheetModalAtom,
-  showArabicNamesAtom,
   showSecondsAtom,
   showTimePassedAtom,
 } from '@/stores/ui';
 
+import LanguageSheet from '../Language';
 import QiblaSheet from '../Qibla';
 import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
@@ -42,9 +43,7 @@ const qiblaDevice = jest.requireMock('@/device/qibla');
 // than depending on the stamp the current release happens to carry
 let mockVisibleWhatsNew: WhatsNewRelease | null = null;
 jest.mock('@/shared/whatsNew', () => ({
-  get VISIBLE_WHATS_NEW() {
-    return mockVisibleWhatsNew;
-  },
+  currentVisibleWhatsNew: () => mockVisibleWhatsNew,
 }));
 
 const RELEASE_WITH_NOTES: WhatsNewRelease = {
@@ -60,7 +59,6 @@ const DISPLAY_TOGGLES = [
   ['Show hijri date', hijriDateEnabledAtom],
   ['Show seconds', showSecondsAtom],
   ['Show time passed', showTimePassedAtom],
-  ['Show arabic names', showArabicNamesAtom],
   ['Show countdown bar', countdownBarShownAtom],
 ] as const;
 
@@ -126,6 +124,32 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     expect(settingsDismiss).toHaveBeenCalledTimes(1);
     expect(qiblaPresent).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('shows the Language row first in the Display card and opens the language sheet', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(
+      <>
+        <SettingsSheet />
+        <LanguageSheet />
+      </>
+    );
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const languagePresent = jest.spyOn(renderedSheet(languageSheetModalAtom), 'present');
+
+    const languageRow = screen.getByRole('button', { name: 'Language' });
+    // Language leads the Other card, straight after its title
+    const otherCard = screen.getByText('Other').parent;
+    expect(otherCard?.children.indexOf(languageRow)).toBe(1);
+    // The sheet's header globe renders in the same tree, so the row's own globe is found inside it
+    expect(within(languageRow).getByTestId('svg:globe', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(within(languageRow).getByText('›')).toBeOnTheScreen();
+
+    await fireEvent.press(languageRow);
+
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(languagePresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
@@ -215,7 +239,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     await render(<SettingsSheet />);
 
-    expect(screen.getByTestId('svg:info', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(screen.getByTestId('svg:info-bare', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(screen.getByTestId('svg:question', { includeHiddenElements: true })).toBeOnTheScreen();
   });
 
@@ -253,6 +277,13 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(screen.queryByText('Show decorations')).not.toBeOnTheScreen();
   });
 
+  it('shows no arabic-names toggle', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    expect(screen.queryByText('Show arabic names')).not.toBeOnTheScreen();
+  });
+
   // row label, the preference it shows and writes
   it.each(DISPLAY_TOGGLES)('shows and flips its own preference when %s is pressed', async (label, preference) => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
@@ -284,15 +315,15 @@ describe('the settings sheet in the Ramadan season, Monday 15 February 2027 at 1
 describe('the icons beside the Settings rows, Friday 11 September 2026 at 14:00', () => {
   /**
    * Text glyphs drew differently on each platform, so the music note needed a per-platform size and lift
-   * (commit 9c853868) and the info mark sat off-centre in its circle. These are vector icons now, which
-   * render identically everywhere, so the platform tweaks are gone with them (owner, 2026-09-27).
+   * and the info mark sat off-centre in its circle. These are vector icons now, which
+   * render identically everywhere, so the platform tweaks are gone with them.
    */
   it('draws a real icon for the athan, the notes and the help rows', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
 
     await render(<SettingsSheet />);
 
-    for (const name of ['svg:music-note', 'svg:info']) {
+    for (const name of ['svg:music-note', 'svg:info-bare']) {
       expect(screen.getByTestId(name, { includeHiddenElements: true })).toBeOnTheScreen();
     }
     expect(screen.queryByText('\u266a')).not.toBeOnTheScreen();

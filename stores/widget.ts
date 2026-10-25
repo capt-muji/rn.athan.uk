@@ -23,7 +23,7 @@
  * entry in that kind's timeline — measured at 5 to 13 CPU-seconds per kind
  * on an A12. Ten kinds a minute exceeded the extension's CPU budget (50%
  * over 180s), so iOS killed it mid-render and WidgetKit masked the missing
- * render as "Please adopt containerBackground API" (ISSUES.md §G.1).
+ * render as "Please adopt containerBackground API" (ledger G.1 (git history)).
  * Nothing user-visible is lost: iOS suspends JS timers the moment the app
  * leaves the foreground, so those pushes only ever ran while the widget was
  * impossible to look at. Between pushes the stepped timeline entries carry
@@ -242,7 +242,7 @@ export const refreshPrayerWidgets = async (): Promise<void> => {
     await pushScheduleAndroid(ScheduleType.Standard);
     await pushScheduleAndroid(ScheduleType.Extra);
     // The native minute-refresh chain keeps the widgets ticking after the
-    // host pauses this process's JS timers (owner ruling 2026-09-19)
+    // host pauses this process's JS timers
     try {
       armWidgetRefreshChain();
     } catch (error) {

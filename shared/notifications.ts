@@ -2,12 +2,15 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import {
-  EXTRAS_ENGLISH,
+  EXTRA_PRAYER_IDS,
   NOTIFICATION_REQUEST_BUDGET,
-  PRAYERS_ENGLISH,
+  PRAYER_IDS,
+  type PrayerId,
   REMINDER_INTERVALS,
   SCHEDULE_CANDIDATE_DAYS,
+  STANDARD_PRAYER_IDS,
 } from '@/shared/constants';
+import { prayerLabel, t } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { isReadable } from '@/shared/sequence';
@@ -19,14 +22,13 @@ export interface ScheduledNotification {
   date: string;
   time: string;
   englishName: string;
-  arabicName: string;
   alertType: AlertType;
 }
 
 /**
  * How long one call into the notification system may take before it is treated as refused.
  *
- * Owner, 2026-09-16. A healthy phone answers in milliseconds, so this can only be reached by a call that is never
+ * A healthy phone answers in milliseconds, so this can only be reached by a call that is never
  * coming back.
  */
 const NATIVE_CALL_TIMEOUT_MS = 15_000;
@@ -81,11 +83,11 @@ export const withNativeTimeout = async <T>(work: Promise<T>, description: string
 /**
  * The 5 daily prayers whose at-time notifications play the user's selected
  * athan. Every other at-time prayer (Sunrise + all extras) plays the fixed
- * built-in reminder sound instead (ISSUES.md #23 — note this boundary is
+ * built-in reminder sound instead (ledger #23 (git history) — note this boundary is
  * prayer-aware, not schedule-aware: Sunrise sits on the standard page but
  * uses the extras audio).
  */
-const DAILY_PRAYERS = new Set(['fajr', 'dhuhr', 'asr', 'magrib', 'isha']);
+const DAILY_PRAYERS: ReadonlySet<PrayerId> = new Set<PrayerId>(['fajr', 'dhuhr', 'asr', 'magrib', 'isha']);
 
 /**
  * Fixed built-in audio for at-time Sunrise + extras notifications
@@ -103,15 +105,15 @@ export const ALARM_CLOCK_DELIVERY: Notifications.NotificationDelivery = 'alarmCl
 /**
  * Whether an at-time notification for this prayer plays the selected athan
  */
-export const isDailyPrayer = (englishName: string): boolean => DAILY_PRAYERS.has(englishName.toLowerCase());
+export const isDailyPrayer = (id: PrayerId): boolean => DAILY_PRAYERS.has(id);
 
 /**
  * Gets notification sound based on alert type
  * Returns false for silent notifications (SDK 54 requirement)
  */
-export const getNotificationSound = (alertType: AlertType, englishName: string, soundIndex: number): string | false => {
+export const getNotificationSound = (alertType: AlertType, id: PrayerId, soundIndex: number): string | false => {
   if (alertType !== AlertType.Sound) return false;
-  if (!isDailyPrayer(englishName)) return EXTRAS_NOTIFICATION_SOUND;
+  if (!isDailyPrayer(id)) return EXTRAS_NOTIFICATION_SOUND;
 
   return `athan${soundIndex + 1}.mp3`;
 };
@@ -121,14 +123,14 @@ export const getNotificationSound = (alertType: AlertType, englishName: string, 
  * English-only, title only (no body)
  */
 export const genNotificationContent = (
-  englishName: string,
-  _arabicName: string,
+  id: PrayerId,
   alertType: AlertType,
   soundIndex: number
 ): Notifications.NotificationContentInput => {
+  const name = prayerLabel(id);
   return {
-    title: `${englishName} now`,
-    sound: getNotificationSound(alertType, englishName, soundIndex),
+    title: t('notification.now', { name }),
+    sound: getNotificationSound(alertType, id, soundIndex),
     color: '#5a3af7',
     autoDismiss: false,
     sticky: false,
@@ -138,13 +140,13 @@ export const genNotificationContent = (
 };
 
 /**
- * Converts an English prayer name to a filename-safe slug
+ * Derives a prayer id's filename-safe slug
  * Android res/raw resource names allow [a-z0-9_] only
  *
  * @example
- * prayerNameSlug('Last Third') // 'last_third'
+ * prayerNameSlug('last third') // 'last_third'
  */
-export const prayerNameSlug = (englishName: string): string => englishName.toLowerCase().replace(/\s+/g, '_');
+export const prayerNameSlug = (id: PrayerId): string => id.replace(/\s+/g, '_');
 
 /**
  * Gets notification sound for a pre-prayer reminder based on alert type
@@ -153,33 +155,32 @@ export const prayerNameSlug = (englishName: string): string => englishName.toLow
  */
 export const getReminderNotificationSound = (
   alertType: AlertType,
-  englishName: string,
+  id: PrayerId,
   intervalMinutes: ReminderInterval
 ): string | false => {
   if (alertType !== AlertType.Sound) return false;
 
-  const slug = prayerNameSlug(englishName);
+  const slug = prayerNameSlug(id);
   return `reminder_${slug}_${intervalMinutes}.mp3`;
 };
 
 /**
  * Creates notification content for pre-prayer reminder
  * English-only, title only (no body)
- * @param englishName English prayer name
- * @param _arabicName Arabic prayer name (unused, kept for API compatibility)
+ * @param id Prayer id
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)
  * @returns Notification content input
  */
 export const genReminderNotificationContent = (
-  englishName: string,
-  _arabicName: string,
+  id: PrayerId,
   intervalMinutes: ReminderInterval,
   alertType: AlertType
 ): Notifications.NotificationContentInput => {
+  const name = prayerLabel(id);
   return {
-    title: `${englishName} in ${intervalMinutes}m`,
-    sound: getReminderNotificationSound(alertType, englishName, intervalMinutes),
+    title: t('notification.reminder', { name, n: intervalMinutes }),
+    sound: getReminderNotificationSound(alertType, id, intervalMinutes),
     color: '#5a3af7',
     autoDismiss: true,
     sticky: false,
@@ -233,7 +234,7 @@ export const genNextXDays = (numberOfDays: number, startDate?: string): string[]
 /** One prayer's row on one list day, and what arming it costs against the budget */
 export interface CandidateRow {
   scheduleType: ScheduleType;
-  englishName: string;
+  id: PrayerId;
   date: string;
   instant: Date;
   /** The at-time alert plus one per reminder slot that is on for this prayer */
@@ -246,11 +247,10 @@ export interface CandidateRow {
  * Passed in rather than read here: the preferences live in the store, which imports this
  * module, so reading them here would close an import cycle.
  */
-export type RequestCostReader = (scheduleType: ScheduleType, englishName: string) => number;
+export type RequestCostReader = (scheduleType: ScheduleType, id: PrayerId) => number;
 
-/** How a prayer is keyed in a schedule plan, so the two lists cannot merge on a shared name */
-export const schedulePlanKey = (scheduleType: ScheduleType, englishName: string): string =>
-  `${scheduleType}_${englishName}`;
+/** How a prayer is keyed in a schedule plan, so the two lists cannot merge on a shared id */
+export const schedulePlanKey = (scheduleType: ScheduleType, id: PrayerId): string => `${scheduleType}_${id}`;
 
 /**
  * The list days each prayer arms, chosen by request budget rather than by day count.
@@ -274,7 +274,7 @@ export const buildSchedulePlan = (rows: CandidateRow[], budget: number): Map<str
     if (spent + row.requestCost > budget) break;
     spent += row.requestCost;
 
-    const key = schedulePlanKey(row.scheduleType, row.englishName);
+    const key = schedulePlanKey(row.scheduleType, row.id);
     const days = plan.get(key) ?? [];
     days.push(row.date);
     plan.set(key, days);
@@ -295,34 +295,34 @@ export const collectCandidateRows = (requestCostFor: RequestCostReader): Candida
   const now = TimeUtils.createInstant();
   const rows: CandidateRow[] = [];
 
-  const collectSchedule = (scheduleType: ScheduleType, names: readonly string[]) => {
-    for (const englishName of names) {
-      const requestCost = requestCostFor(scheduleType, englishName);
+  const collectSchedule = (scheduleType: ScheduleType, ids: readonly PrayerId[]) => {
+    for (const id of ids) {
+      const requestCost = requestCostFor(scheduleType, id);
       if (requestCost === 0) continue;
 
-      const firstDay = PrayerUtils.firstStillDueListDayForPrayer(scheduleType, englishName, now);
+      const firstDay = PrayerUtils.firstStillDueListDayForPrayer(scheduleType, id, now);
 
       for (const date of genNextXDays(SCHEDULE_CANDIDATE_DAYS, firstDay)) {
-        const prayer = PrayerUtils.getPrayerForDate(scheduleType, englishName, date);
+        const prayer = PrayerUtils.getPrayerForDate(scheduleType, id, date);
         if (!prayer) continue;
 
         // No alert may fire for a time the provider did not give (R5). Tested explicitly rather
         // than left to the past-row check below, which drops it only because `null <= now`
         // coerces to `0 <= now`, and logged because the arming paths never see such a day now.
         if (!isReadable(prayer)) {
-          logger.info('Skipping prayer with no readable time:', { date, englishName });
+          logger.info('Skipping prayer with no readable time:', { date, id });
           continue;
         }
 
         if (prayer.datetime <= now) continue;
 
-        rows.push({ scheduleType, englishName, date, instant: prayer.datetime, requestCost });
+        rows.push({ scheduleType, id, date, instant: prayer.datetime, requestCost });
       }
     }
   };
 
-  collectSchedule(ScheduleType.Standard, PRAYERS_ENGLISH);
-  collectSchedule(ScheduleType.Extra, EXTRAS_ENGLISH);
+  collectSchedule(ScheduleType.Standard, STANDARD_PRAYER_IDS);
+  collectSchedule(ScheduleType.Extra, EXTRA_PRAYER_IDS);
 
   return rows;
 };
@@ -352,12 +352,12 @@ export const candidateListDays = (): string[] => {
  */
 export const genScheduleDatesForPrayer = (
   scheduleType: ScheduleType,
-  englishName: string,
+  id: PrayerId,
   requestCostFor: RequestCostReader
 ): string[] => {
   const plan = buildSchedulePlan(collectCandidateRows(requestCostFor), NOTIFICATION_REQUEST_BUDGET);
 
-  return plan.get(schedulePlanKey(scheduleType, englishName)) ?? [];
+  return plan.get(schedulePlanKey(scheduleType, id)) ?? [];
 };
 
 /**
@@ -384,8 +384,8 @@ export const athanAndroidChannelId = (soundIndex: number): string => `athan_${so
  * `_v3` tracks the athan generations for the same reason: neither the audio attributes nor the
  * importance of an existing channel can be changed in place
  */
-export const reminderAndroidChannelId = (englishName: string, intervalMinutes: ReminderInterval): string => {
-  const slug = prayerNameSlug(englishName);
+export const reminderAndroidChannelId = (id: PrayerId, intervalMinutes: ReminderInterval): string => {
+  const slug = prayerNameSlug(id);
   return `reminder_${slug}_${intervalMinutes}_v3`;
 };
 
@@ -399,15 +399,15 @@ export const extrasAndroidChannelId = 'extras_at_time_v3';
  * Android channel for an at-time notification: the selected athan's channel
  * for the 5 daily prayers, the fixed extras channel for everything else
  */
-export const atTimeAndroidChannelId = (englishName: string, soundIndex: number): string =>
-  isDailyPrayer(englishName) ? athanAndroidChannelId(soundIndex) : extrasAndroidChannelId;
+export const atTimeAndroidChannelId = (id: PrayerId, soundIndex: number): string =>
+  isDailyPrayer(id) ? athanAndroidChannelId(soundIndex) : extrasAndroidChannelId;
 
 /**
  * The one definition of an athan channel, shared by every path that may create it first:
  * whichever call wins decides the channel for good, so they must ask for the same thing.
  */
 export const athanAndroidChannelConfig = (soundIndex: number) => ({
-  name: `Athan ${soundIndex + 1}`,
+  name: t('channel.athan', { n: soundIndex + 1 }),
   sound: `athan${soundIndex + 1}.mp3`,
   importance: Notifications.AndroidImportance.HIGH,
   enableVibrate: true,
@@ -437,6 +437,17 @@ const createdAthanChannels = new Set<string>();
 let extrasChannelCreated = false;
 
 /**
+ * Empties the session channel-dedup caches. A locale switch renames channels by
+ * re-creating them under their frozen ids, which the guards above would skip for
+ * the rest of the process, so the language convergence pass clears them first.
+ */
+export const resetAndroidChannelCaches = (): void => {
+  createdReminderChannels.clear();
+  createdAthanChannels.clear();
+  extrasChannelCreated = false;
+};
+
+/**
  * Creates the Android notification channel for the fixed at-time Sunrise +
  * extras sound. Called from initializeNotifications and again at schedule time
  * so headless background-task reschedules (which never run UI init) still find
@@ -448,7 +459,7 @@ export const createExtrasAndroidChannel = async () => {
 
   await withNativeTimeout(
     Notifications.setNotificationChannelAsync(extrasAndroidChannelId, {
-      name: 'Extra Times',
+      name: t('channel.extras'),
       sound: EXTRAS_NOTIFICATION_SOUND,
       importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
@@ -489,17 +500,17 @@ export const createAthanAndroidChannel = async (soundIndex: number) => {
  * Creates the Android notification channel for a prayer × interval reminder sound
  * Called at schedule time so only combinations actually scheduled materialize as channels
  */
-export const createReminderAndroidChannel = async (englishName: string, intervalMinutes: ReminderInterval) => {
+export const createReminderAndroidChannel = async (id: PrayerId, intervalMinutes: ReminderInterval) => {
   if (Platform.OS !== 'android') return;
 
-  const channelId = reminderAndroidChannelId(englishName, intervalMinutes);
+  const channelId = reminderAndroidChannelId(id, intervalMinutes);
   if (createdReminderChannels.has(channelId)) return;
 
-  const slug = prayerNameSlug(englishName);
+  const slug = prayerNameSlug(id);
 
   await withNativeTimeout(
     Notifications.setNotificationChannelAsync(channelId, {
-      name: `${englishName} in ${intervalMinutes}m Reminder`,
+      name: t('channel.reminder', { name: prayerLabel(id), n: intervalMinutes }),
       sound: `reminder_${slug}_${intervalMinutes}.mp3`,
       importance: Notifications.AndroidImportance.HIGH,
       enableVibrate: true,
@@ -523,10 +534,9 @@ export const createReminderAndroidChannel = async (englishName: string, interval
 export const deleteLegacyAndroidAudioChannels = async () => {
   if (Platform.OS !== 'android') return;
 
-  const everyPrayerName = [...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH];
-  const supersededReminderIds = everyPrayerName.flatMap((englishName) =>
+  const supersededReminderIds = PRAYER_IDS.flatMap((id) =>
     REMINDER_INTERVALS.flatMap((interval) => {
-      const base = `reminder_${prayerNameSlug(englishName)}_${interval}`;
+      const base = `reminder_${prayerNameSlug(id)}_${interval}`;
       return [base, `${base}_v2`];
     })
   );
@@ -549,6 +559,29 @@ export const deleteLegacyAndroidAudioChannels = async () => {
     ).catch(() => undefined)
   );
   await Promise.all(promises);
+};
+
+/**
+ * Clears every notification the app has delivered into the iOS Notification Center.
+ *
+ * Android's presentation delegate replaces in place at post time, so at most one entry is ever
+ * visible; iOS has no post-time hook, so every app open empties the center instead (deliveries
+ * that land while nobody opens the app still stack on the lock screen until the first open).
+ * Delivered notifications only: pending requests, identifiers and channels are untouched, and
+ * the background task never runs it.
+ */
+export const clearDeliveredNotifications = async () => {
+  if (Platform.OS !== 'ios') return;
+
+  try {
+    await withNativeTimeout(Notifications.dismissAllNotificationsAsync(), 'clearing the delivered notifications');
+    logger.info('NOTIFICATION: Cleared the delivered notifications');
+  } catch (error) {
+    // A refused clear can never leave an orphan alarm behind, so its timeout must not reopen
+    // the refresh gate hours later on an unrelated scheduling pass
+    takeNativeCallTimedOut();
+    logger.error('NOTIFICATION: Failed to clear the delivered notifications, carrying on:', error);
+  }
 };
 
 /**
@@ -578,6 +611,8 @@ export const initializeNotifications = async (
 
     const hasPermission = await checkPermissions();
     if (hasPermission) {
+      await clearDeliveredNotifications();
+
       await refreshFn();
 
       // Register background task for notification refresh when app is closed

@@ -6,7 +6,7 @@ import { OverlayInfoBox } from '@/components/overlay';
 import { Prayer } from '@/components/prayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { SCREEN, SPACING } from '@/shared/constants';
+import { SCREEN } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
@@ -77,7 +77,7 @@ export default function List({ type }: Props) {
   if (!isReady) return null;
 
   return (
-    <View ref={listRef} onLayout={handleLayout} style={[styles.container]}>
+    <View ref={listRef} onLayout={handleLayout} style={[styles.container, !isStandard && styles.containerExtrasGap]}>
       <ActiveBackground type={type} />
       {displayOrder.map((prayerIndex) => (
         <Prayer key={prayerIndex} index={prayerIndex} type={type} />
@@ -90,6 +90,9 @@ export default function List({ type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: SCREEN.paddingHorizontal,
-    marginBottom: SPACING.xxxl,
+    marginBottom: 28,
+  },
+  containerExtrasGap: {
+    marginBottom: 34,
   },
 });

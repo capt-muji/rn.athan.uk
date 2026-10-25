@@ -37,13 +37,13 @@ export default function VeilBackdrop() {
   const glowStyle = useMemo(
     () => ({
       top: -columnWidth / 1.25,
-      left: window.width / 2 - columnWidth,
+      transform: [{ translateX: window.width / 2 - columnWidth }],
     }),
     [window.width, columnWidth]
   );
 
   return (
-    <Reanimated.View style={[styles.container, opacityStyle]} pointerEvents='none'>
+    <Reanimated.View style={[styles.container, opacityStyle]} pointerEvents={'none'}>
       <LinearGradient
         colors={[COLORS.gradient.overlay.start, COLORS.gradient.overlay.end]}
         start={{ x: 0, y: 0 }}
@@ -59,15 +59,18 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
+    // The glow is centred in window space; the pinned Yoga resolves an inset-less
+    // absolute against its containing node's direction, so this one holds it physical
+    direction: 'ltr',
   },
   gradient: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
     // Same layer as the glow's own zIndex (-1): tie breaks by document
     // order, so the glow (rendered after) sits ABOVE the gradient — the

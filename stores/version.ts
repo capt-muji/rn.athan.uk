@@ -110,8 +110,9 @@ export const wasAppUpgraded = (): boolean => {
 
 /**
  * Storage key holding the version the What's New modal was last shown for.
- * Seeded to the installed version on fresh install (modal never shows for
- * them), left untouched on upgrade (differs from installed → modal shows).
+ * Seeded to the installed version on fresh install so the modal never shows
+ * for them; on upgrade the modal opens only when the archive stamps an item
+ * newer than the stored value.
  */
 const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
 
@@ -150,9 +151,10 @@ const UPGRADE_KEEP_PREFIXES: string[] = [
   // User Preferences - must persist across upgrades
   'preference_', // All user preferences (alerts, sound, countdownbar, hijri, show_*, reminder_*)
 
-  // Cached layout measurements - prayer names and fonts are constants, so the
-  // measured column widths are valid forever (recomputing them reflows the list)
-  'prayer_max_english_width_',
+  // Cached layout measurements - widths stay valid until names or fonts
+  // change, and a name change ships with a re-key of this family so the
+  // reserve re-measures (recomputing reflows the list)
+  'prayer_max_name_width_',
 ];
 
 /**
@@ -223,6 +225,36 @@ export const clearUpgradeCache = (): void => {
 };
 
 /**
+ * The 2.0.0 migration: the version-guarded language stamp and the dead
+ * arabic-names toggle's removal.
+ *
+ * The stamp runs ONLY for an install that actually upgraded from below 2.0.0.
+ * Key absence cannot guard it: a fresh install holds the same absence and
+ * would be pinned to English, closing row 39's device-locale following before
+ * it exists (RECONCILIATION, UPG-2). A raw write is correct in stage one - no
+ * atom fronts this key, so the atom-snapshot argument does not apply.
+ *
+ * The toggle delete is unconditional and idempotent: the key has no reader in
+ * 2.0.0, so removal on every launch costs one no-op remove and keeps the
+ * database clean (D35).
+ */
+const migrateToLocaleDefaults = (storedVersion: string | null): void => {
+  if (
+    storedVersion !== null &&
+    compareVersions(storedVersion, '2.0.0') < 0 &&
+    Database.getItem('preference_language') === null
+  ) {
+    Database.setItem('preference_language', 'en');
+    logger.info('VERSION: Stamped upgrade language to en');
+  }
+
+  if (Database.getItem('preference_show_arabic_names') !== null) {
+    logger.info('VERSION: Removed the dead arabic-names toggle key');
+  }
+  Database.removeItem('preference_show_arabic_names');
+};
+
+/**
  * Entry point for handling app upgrades
  * Checks for upgrade, clears cache if needed, and updates stored version
  * Includes race condition guard to prevent multiple executions
@@ -274,8 +306,8 @@ export const handleAppUpgrade = (): void => {
   Database.setItem(CACHE_SCHEMA_VERSION_KEY, CACHE_SCHEMA_VERSION);
 
   // Fresh install: seed the What's New tracker so the modal never shows for
-  // new users. Upgrades leave it untouched - its difference from the
-  // installed version is what triggers the modal (see shared/whatsNew.ts)
+  // new users. Upgrades leave it untouched - the modal opens only when the
+  // archive stamps an item newer than the stored value (see shared/whatsNew.ts)
   if (!storedVersion) setWhatsNewShownVersion(installedVersion);
 
   // Migrate legacy index-keyed alert preference keys to name-keyed keys.
@@ -287,6 +319,10 @@ export const handleAppUpgrade = (): void => {
   // EXTRAS_ENGLISH the index keys were written against, and by this line the key
   // itself already holds the new version.
   migrateIndexKeyedAlertPreferences(storedVersion);
+
+  // 2.0.0's locale defaults run after the index-keyed migration, both reading
+  // the same captured version (the R18 synthesis order ruling)
+  migrateToLocaleDefaults(storedVersion);
 
   logger.info('VERSION: Upgrade check completed');
 };

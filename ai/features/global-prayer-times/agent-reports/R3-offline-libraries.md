@@ -637,7 +637,7 @@ architecture costs a fraction of a second of CPU, and computing six times on dem
 
 ## Part 3: the correctness oracle question
 
-The owner's constraint: he cannot verify hand-written mathematics. So the question is what this project can
+The owner's constraint: the owner cannot verify hand-written mathematics. So the question is what this project can
 prove about a library it did not write.
 
 ### Every oracle, what it proves and what it does not

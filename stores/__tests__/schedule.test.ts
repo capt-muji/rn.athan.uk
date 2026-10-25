@@ -51,6 +51,7 @@ const mockGetPrayerByDateString = jest.fn();
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
   getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
+  getItem: () => null,
 }));
 
 import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';
@@ -110,8 +111,7 @@ const displayDateOf = (type: ScheduleType): string | null =>
  */
 const createMockPrayer = (overrides: Partial<ReadablePrayer> = {}): ReadablePrayer => ({
   type: ScheduleType.Standard,
-  english: 'Fajr',
-  arabic: 'الفجر',
+  id: 'fajr',
   datetime: new Date('2026-01-20T06:15:00'),
   time: '06:15',
   belongsToDate: '2026-01-20',
@@ -180,13 +180,13 @@ describe('sequence atoms initial state', () => {
   it('sequence atoms are independent', () => {
     const store = createStore();
     const standardSeq = createMockSequence([createMockPrayer()]);
-    const extraSeq = createMockSequence([createMockPrayer({ type: ScheduleType.Extra, english: 'Midnight' })]);
+    const extraSeq = createMockSequence([createMockPrayer({ type: ScheduleType.Extra, id: 'midnight' })]);
 
     store.set(standardSequenceAtom, standardSeq);
     store.set(extraSequenceAtom, extraSeq);
 
-    expect(store.get(standardSequenceAtom)?.prayers[0].english).toBe('Fajr');
-    expect(store.get(extraSequenceAtom)?.prayers[0].english).toBe('Midnight');
+    expect(store.get(standardSequenceAtom)?.prayers[0].id).toBe('fajr');
+    expect(store.get(extraSequenceAtom)?.prayers[0].id).toBe('midnight');
   });
 });
 
@@ -215,10 +215,10 @@ describe('createNextPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Sunrise', datetime: new Date('2026-01-20T07:50:00') }),
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
-      createMockPrayer({ english: 'Asr', datetime: new Date('2026-01-20T14:40:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'sunrise', datetime: new Date('2026-01-20T07:50:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
+      createMockPrayer({ id: 'asr', datetime: new Date('2026-01-20T14:40:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -226,7 +226,7 @@ describe('createNextPrayerAtom', () => {
     const nextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
     const result = store.get(nextPrayerAtom);
 
-    expect(result?.english).toBe('Dhuhr');
+    expect(result?.id).toBe('dhuhr');
   });
 
   it('returns first prayer when all are in future', () => {
@@ -235,8 +235,8 @@ describe('createNextPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Sunrise', datetime: new Date('2026-01-20T07:50:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'sunrise', datetime: new Date('2026-01-20T07:50:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -244,7 +244,7 @@ describe('createNextPrayerAtom', () => {
     const nextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
     const result = store.get(nextPrayerAtom);
 
-    expect(result?.english).toBe('Fajr');
+    expect(result?.id).toBe('fajr');
   });
 
   it('returns null when all prayers have passed', () => {
@@ -253,8 +253,8 @@ describe('createNextPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-20T18:45:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'isha', datetime: new Date('2026-01-20T18:45:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -271,8 +271,8 @@ describe('createNextPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(exactTime);
 
     const prayers = [
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
-      createMockPrayer({ english: 'Asr', datetime: new Date('2026-01-20T14:40:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
+      createMockPrayer({ id: 'asr', datetime: new Date('2026-01-20T14:40:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -281,7 +281,7 @@ describe('createNextPrayerAtom', () => {
     const result = store.get(nextPrayerAtom);
 
     // Dhuhr is at exact time, so Asr should be next
-    expect(result?.english).toBe('Asr');
+    expect(result?.id).toBe('asr');
   });
 
   it('works for Extra schedule type', () => {
@@ -290,8 +290,8 @@ describe('createNextPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ type: ScheduleType.Extra, english: 'Duha', datetime: new Date('2026-01-20T08:10:00') }),
-      createMockPrayer({ type: ScheduleType.Extra, english: 'Istijaba', datetime: new Date('2026-01-20T16:00:00') }),
+      createMockPrayer({ type: ScheduleType.Extra, id: 'duha', datetime: new Date('2026-01-20T08:10:00') }),
+      createMockPrayer({ type: ScheduleType.Extra, id: 'istijaba', datetime: new Date('2026-01-20T16:00:00') }),
     ];
 
     store.set(extraSequenceAtom, createMockSequence(prayers));
@@ -299,7 +299,7 @@ describe('createNextPrayerAtom', () => {
     const nextPrayerAtom = createNextPrayerAtom(ScheduleType.Extra);
     const result = store.get(nextPrayerAtom);
 
-    expect(result?.english).toBe('Istijaba');
+    expect(result?.id).toBe('istijaba');
   });
 });
 
@@ -328,9 +328,9 @@ describe('createPrevPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Sunrise', datetime: new Date('2026-01-20T07:50:00') }),
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'sunrise', datetime: new Date('2026-01-20T07:50:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:25:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -339,7 +339,7 @@ describe('createPrevPrayerAtom', () => {
     const result = store.get(prevPrayerAtom);
 
     // Next is Dhuhr (index 2), so prev should be Sunrise (index 1)
-    expect(result?.english).toBe('Sunrise');
+    expect(result?.id).toBe('sunrise');
   });
 
   it('builds the list before next from storage when the sequence holds no earlier readable row', () => {
@@ -349,12 +349,12 @@ describe('createPrevPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Sunrise', datetime: new Date('2026-01-20T07:50:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'sunrise', datetime: new Date('2026-01-20T07:50:00') }),
     ];
 
     mockCreatePrayersForDate.mockReturnValueOnce([
-      createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-19T18:45:00'), belongsToDate: '2026-01-19' }),
+      createMockPrayer({ id: 'isha', datetime: new Date('2026-01-19T18:45:00'), belongsToDate: '2026-01-19' }),
     ]);
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -363,7 +363,7 @@ describe('createPrevPrayerAtom', () => {
     const result = store.get(prevPrayerAtom);
 
     expect(mockCreatePrayersForDate).toHaveBeenCalledWith(ScheduleType.Standard, '2026-01-19');
-    expect(result?.english).toBe('Isha');
+    expect(result?.id).toBe('isha');
   });
 
   // Audit finding 7, the second non-null assertion: the previous day's record was
@@ -376,11 +376,10 @@ describe('createPrevPrayerAtom', () => {
     const now = new Date('2026-01-20T01:00:00');
     mockCreateLondonDate.mockReturnValue(now);
 
-    const prayers = [createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') })];
+    const prayers = [createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') })];
     const notStored: UnreadablePrayer = {
       type: ScheduleType.Standard,
-      english: 'Isha',
-      arabic: 'العشاء',
+      id: 'isha',
       datetime: null,
       time: null,
       belongsToDate: '2026-01-19',
@@ -402,8 +401,8 @@ describe('createPrevPrayerAtom', () => {
     mockCreateLondonDate.mockReturnValue(now);
 
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-20T18:45:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'isha', datetime: new Date('2026-01-20T18:45:00') }),
     ];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
@@ -445,7 +444,7 @@ describe('createDisplayDateAtom', () => {
 
     const prayers = [
       createMockPrayer({
-        english: 'Isha',
+        id: 'isha',
         datetime: new Date('2026-12-31T17:40:00'),
         belongsToDate: '2026-12-31',
       }),
@@ -466,12 +465,12 @@ describe('createDisplayDateAtom', () => {
 
     const prayers = [
       createMockPrayer({
-        english: 'Fajr',
+        id: 'fajr',
         datetime: new Date('2026-01-20T06:15:00'),
         belongsToDate: '2026-01-20',
       }),
       createMockPrayer({
-        english: 'Dhuhr',
+        id: 'dhuhr',
         datetime: new Date('2026-01-20T12:25:00'),
         belongsToDate: '2026-01-20',
       }),
@@ -493,7 +492,7 @@ describe('createDisplayDateAtom', () => {
 
     const prayers = [
       createMockPrayer({
-        english: 'Fajr',
+        id: 'fajr',
         datetime: new Date('2026-01-19T06:15:00'),
         // Fajr belongs to Jan 18 (Islamic day started at Isha on Jan 18)
         belongsToDate: '2026-01-18',
@@ -517,7 +516,7 @@ describe('createDisplayDateAtom', () => {
     const prayers = [
       createMockPrayer({
         type: ScheduleType.Extra,
-        english: 'Istijaba',
+        id: 'istijaba',
         datetime: new Date('2026-01-20T16:00:00'),
         belongsToDate: '2026-01-20',
       }),
@@ -546,13 +545,13 @@ describe('setSequence', () => {
   it('writes a sequence whose only change is a middle prayer', () => {
     const store = getDefaultStore();
     const ends = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-01-20T06:15:00') }),
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:00:00') }),
-      createMockPrayer({ english: 'Isha', datetime: new Date('2026-01-20T20:00:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-01-20T06:15:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:00:00') }),
+      createMockPrayer({ id: 'isha', datetime: new Date('2026-01-20T20:00:00') }),
     ];
     const corrected = [
       ends[0] as Prayer,
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:02:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:02:00') }),
       ends[2] as Prayer,
     ];
 
@@ -571,8 +570,8 @@ describe('setSequence', () => {
   it('still skips a write when nothing changed at all', () => {
     const store = getDefaultStore();
     const prayers = [
-      createMockPrayer({ english: 'Fajr', datetime: new Date('2026-02-01T06:15:00') }),
-      createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-02-01T12:00:00') }),
+      createMockPrayer({ id: 'fajr', datetime: new Date('2026-02-01T06:15:00') }),
+      createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-02-01T12:00:00') }),
     ];
 
     mockCreatePrayerSequence.mockReturnValue(createMockSequence(prayers));
@@ -657,7 +656,7 @@ describe('refreshSequence', () => {
         standardSequenceAtom,
         createMockSequence([
           createMockPrayer({
-            english: 'Isha',
+            id: 'isha',
             datetime: new Date('2026-01-17T18:45:00Z'),
             belongsToDate: '2026-01-17',
           }),
@@ -675,12 +674,12 @@ describe('refreshSequence', () => {
         standardSequenceAtom,
         createMockSequence([
           createMockPrayer({
-            english: 'Isha',
+            id: 'isha',
             datetime: new Date('2026-01-20T18:45:00Z'),
             belongsToDate: '2026-01-20',
           }),
           createMockPrayer({
-            english: 'Fajr',
+            id: 'fajr',
             datetime: new Date('2026-01-21T06:15:00Z'),
             belongsToDate: '2026-01-21',
           }),
@@ -706,12 +705,12 @@ describe('refreshSequence', () => {
         standardSequenceAtom,
         createMockSequence([
           createMockPrayer({
-            english: 'Isha',
+            id: 'isha',
             datetime: new Date('2026-01-20T18:45:00Z'),
             belongsToDate: '2026-01-20',
           }),
           createMockPrayer({
-            english: 'Fajr',
+            id: 'fajr',
             datetime: new Date('2026-01-21T06:15:00Z'),
             belongsToDate: '2026-01-21',
           }),
@@ -730,7 +729,7 @@ describe('refreshSequence', () => {
 
       // Same prayer of the same Islamic day, corrected by 25 minutes
       const corrected = createMockPrayer({
-        english: 'Fajr',
+        id: 'fajr',
         datetime: new Date('2026-01-21T06:40:00Z'),
         time: '06:40',
         belongsToDate: '2026-01-21',
@@ -739,7 +738,7 @@ describe('refreshSequence', () => {
 
       refreshSequence(ScheduleType.Standard);
 
-      const fajrs = storedPrayers().filter((p) => p.english === 'Fajr' && p.belongsToDate === '2026-01-21');
+      const fajrs = storedPrayers().filter((p) => p.id === 'fajr' && p.belongsToDate === '2026-01-21');
       expect(fajrs).toHaveLength(1);
       expect(fajrs[0].datetime).toEqual(new Date('2026-01-21T06:40:00Z'));
       expect(fajrs[0].time).toBe('06:40');
@@ -751,12 +750,12 @@ describe('refreshSequence', () => {
       mockCreatePrayerSequence.mockReturnValue(
         createMockSequence([
           createMockPrayer({
-            english: 'Fajr',
+            id: 'fajr',
             datetime: new Date('2026-01-21T06:40:00Z'),
             belongsToDate: '2026-01-21',
           }),
           createMockPrayer({
-            english: 'Fajr',
+            id: 'fajr',
             datetime: new Date('2026-01-22T06:14:00Z'),
             belongsToDate: '2026-01-22',
           }),
@@ -765,7 +764,7 @@ describe('refreshSequence', () => {
 
       refreshSequence(ScheduleType.Standard);
 
-      const fajrs = storedPrayers().filter((p) => p.english === 'Fajr');
+      const fajrs = storedPrayers().filter((p) => p.id === 'fajr');
       expect(fajrs.map((p) => p.belongsToDate)).toEqual(['2026-01-21', '2026-01-22']);
     });
 
@@ -775,12 +774,12 @@ describe('refreshSequence', () => {
       mockCreatePrayerSequence.mockReturnValue(
         createMockSequence([
           createMockPrayer({
-            english: 'Fajr',
+            id: 'fajr',
             datetime: new Date('2026-01-21T06:40:00Z'),
             belongsToDate: '2026-01-21',
           }),
           createMockPrayer({
-            english: 'Dhuhr',
+            id: 'dhuhr',
             datetime: new Date('2026-01-21T12:25:00Z'),
             belongsToDate: '2026-01-21',
           }),
@@ -791,7 +790,7 @@ describe('refreshSequence', () => {
 
       const rows = storedPrayers();
       // The passed Isha is kept as the previous prayer for the progress bar
-      expect(rows.map((p) => p.english)).toEqual(['Isha', 'Fajr', 'Dhuhr']);
+      expect(rows.map((p) => p.id)).toEqual(['isha', 'fajr', 'dhuhr']);
 
       const instants = rows.map((p) => p.datetime?.getTime() ?? Number.NaN);
       expect([...instants].sort((a, b) => a - b)).toEqual(instants);
@@ -825,14 +824,14 @@ describe('edge cases', () => {
     const store = createStore();
     mockCreateLondonDate.mockReturnValue(new Date('2026-01-20T10:00:00'));
 
-    const prayers = [createMockPrayer({ english: 'Dhuhr', datetime: new Date('2026-01-20T12:25:00') })];
+    const prayers = [createMockPrayer({ id: 'dhuhr', datetime: new Date('2026-01-20T12:25:00') })];
 
     store.set(standardSequenceAtom, createMockSequence(prayers));
 
     const nextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
     const result = store.get(nextPrayerAtom);
 
-    expect(result?.english).toBe('Dhuhr');
+    expect(result?.id).toBe('dhuhr');
   });
 
   it('handles prayer at midnight boundary', () => {
@@ -843,7 +842,7 @@ describe('edge cases', () => {
     const prayers = [
       createMockPrayer({
         type: ScheduleType.Extra,
-        english: 'Midnight',
+        id: 'midnight',
         datetime: new Date('2026-01-20T23:52:00'),
         belongsToDate: '2026-01-21', // Belongs to next Islamic day
       }),
@@ -863,17 +862,17 @@ describe('edge cases', () => {
 
     const prayers = [
       createMockPrayer({
-        english: 'Dhuhr',
+        id: 'dhuhr',
         datetime: new Date('2026-01-20T12:25:00'),
         belongsToDate: '2026-01-20',
       }),
       createMockPrayer({
-        english: 'Fajr',
+        id: 'fajr',
         datetime: new Date('2026-01-21T06:15:00'),
         belongsToDate: '2026-01-21',
       }),
       createMockPrayer({
-        english: 'Fajr',
+        id: 'fajr',
         datetime: new Date('2026-01-22T06:15:00'),
         belongsToDate: '2026-01-22',
       }),
@@ -884,7 +883,7 @@ describe('edge cases', () => {
     const nextPrayerAtom = createNextPrayerAtom(ScheduleType.Standard);
     const result = store.get(nextPrayerAtom);
 
-    expect(result?.english).toBe('Dhuhr');
+    expect(result?.id).toBe('dhuhr');
     expect(result?.belongsToDate).toBe('2026-01-20');
   });
 });
@@ -896,7 +895,7 @@ describe('edge cases', () => {
 const STANDARD = ScheduleType.Standard;
 const EXTRA = ScheduleType.Extra;
 
-/** Real London times from londonprayertimes.com for 2026: Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha */
+/** Real London times from londonprayertimes.com for 2026: Fajr, sunrise, dhuhr, asr, magrib, isha */
 const LONDON_2026: Record<string, string[]> = {
   '2026-01-01': ['06:26', '08:03', '12:09', '13:46', '16:05', '17:42'],
   '2026-01-02': ['06:26', '08:03', '12:10', '13:47', '16:06', '17:43'],
@@ -924,10 +923,10 @@ const FIELDS: RequiredTimeName[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib',
 const OCT_16_TO_20 = ['2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-10-20'];
 const OVERLAPPING_JUNE = ['2026-06-18', '2026-06-19', '2026-06-20', '2026-06-21', '2026-06-22'];
 
-const STANDARD_ROWS = 'Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha';
-const STANDARD_DASHED = '[Fajr], [Sunrise], [Dhuhr], [Asr], [Magrib], [Isha]';
-const EXTRAS_ROWS = 'Midnight, Last Third, Suhoor, Duha';
-const EXTRAS_DASHED = '[Midnight], [Last Third], [Suhoor], [Duha]';
+const STANDARD_ROWS = 'fajr, sunrise, dhuhr, asr, magrib, isha';
+const STANDARD_DASHED = '[fajr], [sunrise], [dhuhr], [asr], [magrib], [isha]';
+const EXTRAS_ROWS = 'midnight, last third, suhoor, duha';
+const EXTRAS_DASHED = '[midnight], [last third], [suhoor], [duha]';
 
 const storedDays = new Map<string, ISingleApiResponseTransformed>();
 
@@ -957,7 +956,7 @@ const storeDays = (dates: string[], unreadable: Record<string, RequiredTimeName[
 const row = (english: string, listDay: string, instant: string) => `${english} of ${listDay} at ${instant}`;
 
 const label = (prayer: Prayer | null): string | null =>
-  prayer && row(prayer.english, prayer.belongsToDate, prayer.datetime?.toISOString() ?? '--:--');
+  prayer && row(prayer.id, prayer.belongsToDate, prayer.datetime?.toISOString() ?? '--:--');
 
 /** The rows the stored sequence holds, by list day, each row with no readable time in brackets */
 const rowsHeld = (type: ScheduleType): Record<string, string> => {
@@ -965,7 +964,7 @@ const rowsHeld = (type: ScheduleType): Record<string, string> => {
 
   for (const prayer of getDefaultStore().get(getSequenceAtom(type))?.prayers ?? []) {
     byListDay[prayer.belongsToDate] ??= [];
-    byListDay[prayer.belongsToDate].push(prayer.datetime ? prayer.english : `[${prayer.english}]`);
+    byListDay[prayer.belongsToDate].push(prayer.datetime ? prayer.id : `[${prayer.id}]`);
   }
 
   return Object.fromEntries(Object.entries(byListDay).map(([listDay, names]) => [listDay, names.join(', ')]));
@@ -1033,7 +1032,7 @@ const recordCountdown = (type: ScheduleType) => {
 
 const rowOf = (type: ScheduleType, english: string, listDay: string): Prayer => {
   const prayers = getDefaultStore().get(getSequenceAtom(type))?.prayers ?? [];
-  const found = prayers.find((prayer) => prayer.english === english && prayer.belongsToDate === listDay);
+  const found = prayers.find((prayer) => prayer.id === english && prayer.belongsToDate === listDay);
   if (!found) throw new Error(`${english} of ${listDay} is not in the sequence`);
   return found;
 };
@@ -1091,26 +1090,26 @@ describe('on the real builder', () => {
         type: STANDARD,
         launch: '2026-10-17T14:29:58.000Z',
         before: {
-          next: row('Asr', '2026-10-17', '2026-10-17T14:30:00.000Z'),
+          next: row('asr', '2026-10-17', '2026-10-17T14:30:00.000Z'),
           displayDate: '2026-10-17',
-          previous: row('Dhuhr', '2026-10-17', '2026-10-17T11:51:00.000Z'),
-          countdown: { timeLeft: 2, name: 'Asr' },
+          previous: row('dhuhr', '2026-10-17', '2026-10-17T11:51:00.000Z'),
+          countdown: { timeLeft: 2, name: 'asr' },
           barAvailable: true,
           held: {
-            '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, [Magrib], Isha',
+            '2026-10-17': 'fajr, sunrise, dhuhr, asr, [magrib], isha',
             '2026-10-18': STANDARD_ROWS,
             '2026-10-19': STANDARD_ROWS,
           },
         },
         after: {
-          next: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
+          next: row('isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
           displayDate: '2026-10-17',
           // The row above Isha is the unreadable Magrib, so there is nothing to measure the bar from
           previous: null,
-          countdown: { timeLeft: 14340, name: 'Isha' },
+          countdown: { timeLeft: 14340, name: 'isha' },
           barAvailable: false,
           held: {
-            '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, [Magrib], Isha',
+            '2026-10-17': 'fajr, sunrise, dhuhr, asr, [magrib], isha',
             '2026-10-18': STANDARD_ROWS,
             '2026-10-19': STANDARD_ROWS,
           },
@@ -1123,26 +1122,26 @@ describe('on the real builder', () => {
         type: EXTRA,
         launch: '2026-10-17T06:44:58.000Z',
         before: {
-          next: row('Duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
+          next: row('duha', '2026-10-17', '2026-10-17T06:45:00.000Z'),
           displayDate: '2026-10-17',
-          previous: row('Suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
-          countdown: { timeLeft: 2, name: 'Duha' },
+          previous: row('suhoor', '2026-10-17', '2026-10-17T04:32:00.000Z'),
+          countdown: { timeLeft: 2, name: 'duha' },
           barAvailable: true,
           held: {
             '2026-10-17': EXTRAS_ROWS,
-            '2026-10-18': '[Midnight], [Last Third], Suhoor, Duha',
+            '2026-10-18': '[midnight], [last third], suhoor, duha',
             '2026-10-19': EXTRAS_ROWS,
           },
         },
         after: {
-          next: row('Suhoor', '2026-10-18', '2026-10-18T04:34:00.000Z'),
+          next: row('suhoor', '2026-10-18', '2026-10-18T04:34:00.000Z'),
           displayDate: '2026-10-18',
           // The row above Suhoor is the unreadable Last Third, so no bar, and nothing keeps the 17th
           previous: null,
-          countdown: { timeLeft: 78540, name: 'Suhoor' },
+          countdown: { timeLeft: 78540, name: 'suhoor' },
           barAvailable: false,
           held: {
-            '2026-10-18': '[Midnight], [Last Third], Suhoor, Duha',
+            '2026-10-18': '[midnight], [last third], suhoor, duha',
             '2026-10-19': EXTRAS_ROWS,
           },
         },
@@ -1154,26 +1153,26 @@ describe('on the real builder', () => {
         type: STANDARD,
         launch: '2026-10-17T18:28:58.000Z',
         before: {
-          next: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
+          next: row('isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
           displayDate: '2026-10-17',
-          previous: row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'),
-          countdown: { timeLeft: 2, name: 'Isha' },
+          previous: row('magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'),
+          countdown: { timeLeft: 2, name: 'isha' },
           barAvailable: true,
           held: {
             '2026-10-17': STANDARD_ROWS,
-            '2026-10-18': '[Fajr], Sunrise, Dhuhr, Asr, Magrib, Isha',
+            '2026-10-18': '[fajr], sunrise, dhuhr, asr, magrib, isha',
             '2026-10-19': STANDARD_ROWS,
           },
         },
         after: {
-          next: row('Sunrise', '2026-10-18', '2026-10-18T06:27:00.000Z'),
+          next: row('sunrise', '2026-10-18', '2026-10-18T06:27:00.000Z'),
           displayDate: '2026-10-18',
           // The row above Sunrise is the unreadable Fajr, so no bar, and nothing keeps the 17th
           previous: null,
-          countdown: { timeLeft: 43080, name: 'Sunrise' },
+          countdown: { timeLeft: 43080, name: 'sunrise' },
           barAvailable: false,
           held: {
-            '2026-10-18': '[Fajr], Sunrise, Dhuhr, Asr, Magrib, Isha',
+            '2026-10-18': '[fajr], sunrise, dhuhr, asr, magrib, isha',
             '2026-10-19': STANDARD_ROWS,
           },
         },
@@ -1185,23 +1184,23 @@ describe('on the real builder', () => {
         type: STANDARD,
         launch: '2026-10-17T17:05:58.000Z',
         before: {
-          next: row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'),
+          next: row('magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'),
           displayDate: '2026-10-17',
-          previous: row('Asr', '2026-10-17', '2026-10-17T14:30:00.000Z'),
-          countdown: { timeLeft: 2, name: 'Magrib' },
+          previous: row('asr', '2026-10-17', '2026-10-17T14:30:00.000Z'),
+          countdown: { timeLeft: 2, name: 'magrib' },
           barAvailable: true,
           held: {
-            '2026-10-17': 'Fajr, Sunrise, Dhuhr, Asr, Magrib, [Isha]',
+            '2026-10-17': 'fajr, sunrise, dhuhr, asr, magrib, [isha]',
             '2026-10-18': STANDARD_ROWS,
             '2026-10-19': STANDARD_ROWS,
           },
         },
         after: {
-          next: row('Fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
+          next: row('fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
           displayDate: '2026-10-18',
           // The row before Fajr is the list before's unreadable Isha, so no bar, and nothing keeps the 17th
           previous: null,
-          countdown: { timeLeft: 42480, name: 'Fajr' },
+          countdown: { timeLeft: 42480, name: 'fajr' },
           barAvailable: false,
           held: {
             '2026-10-18': STANDARD_ROWS,
@@ -1216,18 +1215,18 @@ describe('on the real builder', () => {
         type: STANDARD,
         launch: '2026-01-01T06:25:58.000Z',
         before: {
-          next: row('Fajr', '2026-01-01', '2026-01-01T06:26:00.000Z'),
+          next: row('fajr', '2026-01-01', '2026-01-01T06:26:00.000Z'),
           displayDate: '2026-01-01',
           previous: null,
-          countdown: { timeLeft: 2, name: 'Fajr' },
+          countdown: { timeLeft: 2, name: 'fajr' },
           barAvailable: false,
           held: { '2026-01-01': STANDARD_ROWS, '2026-01-02': STANDARD_ROWS, '2026-01-03': STANDARD_DASHED },
         },
         after: {
-          next: row('Sunrise', '2026-01-01', '2026-01-01T08:03:00.000Z'),
+          next: row('sunrise', '2026-01-01', '2026-01-01T08:03:00.000Z'),
           displayDate: '2026-01-01',
-          previous: row('Fajr', '2026-01-01', '2026-01-01T06:26:00.000Z'),
-          countdown: { timeLeft: 5820, name: 'Sunrise' },
+          previous: row('fajr', '2026-01-01', '2026-01-01T06:26:00.000Z'),
+          countdown: { timeLeft: 5820, name: 'sunrise' },
           barAvailable: true,
           held: { '2026-01-01': STANDARD_ROWS, '2026-01-02': STANDARD_ROWS, '2026-01-03': STANDARD_DASHED },
         },
@@ -1239,26 +1238,26 @@ describe('on the real builder', () => {
         type: EXTRA,
         launch: '2026-01-01T06:05:58.000Z',
         before: {
-          next: row('Suhoor', '2026-01-01', '2026-01-01T06:06:00.000Z'),
+          next: row('suhoor', '2026-01-01', '2026-01-01T06:06:00.000Z'),
           displayDate: '2026-01-01',
           previous: null,
-          countdown: { timeLeft: 2, name: 'Suhoor' },
+          countdown: { timeLeft: 2, name: 'suhoor' },
           barAvailable: false,
           held: {
-            '2026-01-01': '[Midnight], [Last Third], Suhoor, Duha',
-            '2026-01-02': `${EXTRAS_ROWS}, Istijaba`,
+            '2026-01-01': '[midnight], [last third], suhoor, duha',
+            '2026-01-02': `${EXTRAS_ROWS}, istijaba`,
             '2026-01-03': EXTRAS_DASHED,
           },
         },
         after: {
-          next: row('Duha', '2026-01-01', '2026-01-01T08:23:00.000Z'),
+          next: row('duha', '2026-01-01', '2026-01-01T08:23:00.000Z'),
           displayDate: '2026-01-01',
-          previous: row('Suhoor', '2026-01-01', '2026-01-01T06:06:00.000Z'),
-          countdown: { timeLeft: 8220, name: 'Duha' },
+          previous: row('suhoor', '2026-01-01', '2026-01-01T06:06:00.000Z'),
+          countdown: { timeLeft: 8220, name: 'duha' },
           barAvailable: true,
           held: {
-            '2026-01-01': '[Midnight], [Last Third], Suhoor, Duha',
-            '2026-01-02': `${EXTRAS_ROWS}, Istijaba`,
+            '2026-01-01': '[midnight], [last third], suhoor, duha',
+            '2026-01-02': `${EXTRAS_ROWS}, istijaba`,
             '2026-01-03': EXTRAS_DASHED,
           },
         },
@@ -1284,11 +1283,11 @@ describe('on the real builder', () => {
       launchAt('2026-10-17T14:29:58.000Z');
 
       jest.advanceTimersByTime(1999);
-      expect(isPassedNow(STANDARD, 'Magrib', '2026-10-17')).toBe(false);
+      expect(isPassedNow(STANDARD, 'magrib', '2026-10-17')).toBe(false);
 
       // A readable row passes once the clock is beyond its instant, so a millisecond after Asr's
       jest.advanceTimersByTime(2);
-      expect(isPassedNow(STANDARD, 'Magrib', '2026-10-17')).toBe(true);
+      expect(isPassedNow(STANDARD, 'magrib', '2026-10-17')).toBe(true);
     });
 
     it('R14: the bar reads 0 and no warning while it cannot be worked out', () => {
@@ -1307,9 +1306,9 @@ describe('on the real builder', () => {
       launchAt('2026-06-21T01:00:00.000Z');
 
       expect(observe(STANDARD)).toMatchObject({
-        next: row('Fajr', '2026-06-21', '2026-06-21T01:40:00.000Z'),
+        next: row('fajr', '2026-06-21', '2026-06-21T01:40:00.000Z'),
         displayDate: '2026-06-21',
-        previous: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        previous: row('isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
         barAvailable: true,
       });
     });
@@ -1320,18 +1319,18 @@ describe('on the real builder', () => {
     // 1s on a passed Asr until 17:06, and left a day with no readable time on screen until the next day's Fajr.
     const races = [
       {
-        boundary: 'Asr',
+        boundary: 'asr',
         type: STANDARD,
         launched: { '2026-10-19': ['magrib'] } as Record<string, RequiredTimeName[] | 'all'>,
         synced: {} as Record<string, RequiredTimeName[] | 'all'>,
         launch: '2026-10-17T14:00:00.000Z',
         at: '2026-10-17T14:30:00.000Z',
         displayDate: '2026-10-17',
-        countdown: { timeLeft: 9350, name: 'Magrib' },
+        countdown: { timeLeft: 9350, name: 'magrib' },
       },
       ...[
-        { type: STANDARD, countdown: { timeLeft: 21290, name: 'Fajr' } },
-        { type: EXTRA, countdown: { timeLeft: 20090, name: 'Suhoor' } },
+        { type: STANDARD, countdown: { timeLeft: 21290, name: 'fajr' } },
+        { type: EXTRA, countdown: { timeLeft: 20090, name: 'suhoor' } },
       ].map(({ type, countdown }) => ({
         boundary: '00:00 ending the 18th, which has no readable time',
         type,
@@ -1393,7 +1392,7 @@ describe('on the real builder', () => {
       jest.advanceTimersByTime(1000);
 
       expect(displayDateOf(STANDARD)).toBe('2026-10-18');
-      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'fajr' });
     });
 
     // A sync rebuild runs setSequence then refreshSequence without restarting the countdown, and when the rebuild
@@ -1423,13 +1422,13 @@ describe('on the real builder', () => {
       launchAt('2026-10-17T14:29:59.500Z');
       const { writes, unsubscribe } = recordSequenceWrites(STANDARD);
 
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 1, name: 'Asr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 1, name: 'asr' });
 
       jest.advanceTimersByTime(500);
       unsubscribe();
 
       expect(writes).toEqual(['2026-10-17T14:30:00.000Z']);
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9360, name: 'Magrib' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 9360, name: 'magrib' });
     });
 
     // Nothing but the countdown's own start read touches the display date before 00:00, as when bootstrap starts
@@ -1451,12 +1450,12 @@ describe('on the real builder', () => {
       expect(Object.keys(rowsHeld(EXTRA))[0]).toBe('2026-10-19');
       expect(displayDateOf(STANDARD)).toBe('2026-10-19');
       expect(displayDateOf(EXTRA)).toBe('2026-10-19');
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21300, name: 'Fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 21300, name: 'fajr' });
     });
 
-    // The high-latitude shapes finding 74 was proven on: a list's last rows fall after 00:00, and the
-    // owner ruled a day stays current until its last readable row has passed, not until 00:00
-    // (2026-09-13, confirmed with the dashed-times rule 2026-09-17). A launch after 00:00 therefore
+    // The high-latitude shapes a list's last rows falling after 00:00 were proven on: a
+    // day stays current until its last readable row has passed, not until 00:00.
+    // A launch after 00:00 therefore
     // builds from yesterday while yesterday still has a row to come
     const postMidnightIsha = [
       {
@@ -1469,9 +1468,9 @@ describe('on the real builder', () => {
         ),
         launch: '2026-06-20T23:00:30.000Z',
         yesterday: '2026-06-20',
-        next: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
-        previous: row('Magrib', '2026-06-20', '2026-06-20T20:25:00.000Z'),
-        isha: row('Isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        next: row('isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
+        previous: row('magrib', '2026-06-20', '2026-06-20T20:25:00.000Z'),
+        isha: row('isha', '2026-06-20', '2026-06-20T23:01:00.000Z'),
         ishaAt: '2026-06-20T23:01:00.000Z',
         listDay: '2026-06-21',
         fajrAt: '2026-06-21T01:40:00.000Z',
@@ -1488,9 +1487,9 @@ describe('on the real builder', () => {
         },
         launch: '2026-09-25T23:00:30.000Z',
         yesterday: '2026-09-25',
-        next: row('Magrib', '2026-09-25', '2026-09-25T23:40:00.000Z'),
-        previous: row('Asr', '2026-09-25', '2026-09-25T16:30:00.000Z'),
-        isha: row('Isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
+        next: row('magrib', '2026-09-25', '2026-09-25T23:40:00.000Z'),
+        previous: row('asr', '2026-09-25', '2026-09-25T16:30:00.000Z'),
+        isha: row('isha', '2026-09-25', '2026-09-26T00:30:00.000Z'),
         ishaAt: '2026-09-26T00:30:00.000Z',
         listDay: '2026-09-26',
         fajrAt: '2026-09-26T01:00:00.000Z',
@@ -1519,7 +1518,7 @@ describe('on the real builder', () => {
 
         expect(observe(STANDARD)).toMatchObject({
           displayDate: listDay,
-          next: row('Fajr', listDay, fajrAt),
+          next: row('fajr', listDay, fajrAt),
           previous: isha,
           barAvailable: true,
         });
@@ -1541,7 +1540,7 @@ describe('on the real builder', () => {
           prayers: actualPrayer().createPrayerSequence(STANDARD, new Date(`${listDay}T12:00:00Z`), 3).prayers,
         });
 
-        const next = row('Fajr', listDay, fajrAt);
+        const next = row('fajr', listDay, fajrAt);
         // Whenever the previous row is looked up, the sequence has just been written
         moveClockTo(new Date(Date.parse(ishaAt) - 1).toISOString());
         refreshSequence(STANDARD);
@@ -1554,13 +1553,13 @@ describe('on the real builder', () => {
     );
 
     it.each([
-      ['Friday: its Istijaba', '2026-10-16T22:59:58.000Z', row('Istijaba', '2026-10-16', '2026-10-16T16:08:00.000Z')],
-      ['Saturday: its Duha', '2026-10-17T22:59:58.000Z', row('Duha', '2026-10-17', '2026-10-17T06:45:00.000Z')],
+      ['Friday: its Istijaba', '2026-10-16T22:59:58.000Z', row('istijaba', '2026-10-16', '2026-10-16T16:08:00.000Z')],
+      ['Saturday: its Duha', '2026-10-17T22:59:58.000Z', row('duha', '2026-10-17', '2026-10-17T06:45:00.000Z')],
     ])('measures the Extras bar into the next night from the list before, on a %s', (_, launch, previous) => {
       storeDays(OCT_16_TO_20);
       launchAt(launch);
 
-      expect(getNextPrayer(EXTRA)?.english).toBe('Midnight');
+      expect(getNextPrayer(EXTRA)?.id).toBe('midnight');
       expect(label(getPrevPrayer(EXTRA))).toBe(previous);
     });
   });
@@ -1587,7 +1586,7 @@ describe('on the real builder', () => {
 
     it('keeps the 17th on screen after its Isha with --:-- and no bar, then brings the 18th on at 00:00', () => {
       expect(observe(STANDARD)).toEqual({
-        next: row('Fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
+        next: row('fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
         countdown: { timeLeft: null, name: '...' },
@@ -1596,7 +1595,7 @@ describe('on the real builder', () => {
       });
       expect(getDefaultStore().get(getCountdownDisplayAtom(STANDARD))).toBe('--:--');
       expect(observe(EXTRA)).toEqual({
-        next: row('Suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
+        next: row('suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
         countdown: { timeLeft: null, name: '...' },
@@ -1604,7 +1603,7 @@ describe('on the real builder', () => {
         held: {
           '2026-10-17': EXTRAS_ROWS,
           '2026-10-18': EXTRAS_DASHED,
-          '2026-10-19': '[Midnight], [Last Third], Suhoor, Duha',
+          '2026-10-19': '[midnight], [last third], suhoor, duha',
         },
       });
 
@@ -1649,10 +1648,10 @@ describe('on the real builder', () => {
       expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 20100, 20099, 20098]);
 
       expect(observe(STANDARD)).toEqual({
-        next: row('Fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
+        next: row('fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
         displayDate: '2026-10-19',
         previous: null,
-        countdown: { timeLeft: 21298, name: 'Fajr' },
+        countdown: { timeLeft: 21298, name: 'fajr' },
         barAvailable: false,
         held: {
           '2026-10-19': STANDARD_ROWS,
@@ -1662,13 +1661,13 @@ describe('on the real builder', () => {
         },
       });
       expect(observe(EXTRA)).toEqual({
-        next: row('Suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
+        next: row('suhoor', '2026-10-19', '2026-10-19T04:35:00.000Z'),
         displayDate: '2026-10-19',
         previous: null,
-        countdown: { timeLeft: 20098, name: 'Suhoor' },
+        countdown: { timeLeft: 20098, name: 'suhoor' },
         barAvailable: false,
         held: {
-          '2026-10-19': '[Midnight], [Last Third], Suhoor, Duha',
+          '2026-10-19': '[midnight], [last third], suhoor, duha',
           '2026-10-20': EXTRAS_ROWS,
           '2026-10-21': EXTRAS_DASHED,
           '2026-10-22': EXTRAS_DASHED,
@@ -1684,20 +1683,20 @@ describe('on the real builder', () => {
 
       expect(displayDateOf(STANDARD)).toBe('2026-10-19');
       expect(displayDateOf(EXTRA)).toBe('2026-10-19');
-      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 15900, name: 'Fajr' });
-      expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: 14700, name: 'Suhoor' });
+      expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 15900, name: 'fajr' });
+      expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: 14700, name: 'suhoor' });
     });
 
     it('opens a passed row of the waiting 17th on the unreadable 18th, and a row of the 18th on the 19th', () => {
       const store = getDefaultStore();
 
       openOverlay(STANDARD, 0);
-      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'Fajr' });
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: 'fajr' });
       closeOverlay();
 
       bringOnThe18th();
       openOverlay(STANDARD, 0);
-      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 107700, name: 'Fajr' });
+      expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: 107700, name: 'fajr' });
       closeOverlay();
       expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
 
@@ -1740,7 +1739,7 @@ describe('on the real builder', () => {
     jest.advanceTimersByTime(2000);
 
     expect(observe(STANDARD)).toMatchObject({
-      next: row('Fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
+      next: row('fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
       displayDate: '2026-10-17',
       countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
@@ -1767,7 +1766,7 @@ describe('on the real builder', () => {
       expect(displayDateOf(EXTRA)).toBe(nextListDay);
       expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({
         timeLeft,
-        name: timeLeft === null ? '...' : 'Fajr',
+        name: timeLeft === null ? '...' : 'fajr',
       });
       expect(getDefaultStore().get(getBarAvailableAtom(STANDARD))).toBe(false);
     }
@@ -1834,8 +1833,8 @@ describe('on the real builder', () => {
     jest.advanceTimersByTime(2000);
 
     expect(displayDateOf(STANDARD)).toBe('2026-10-18');
-    expect(getNextPrayer(STANDARD)?.english).toBe('Dhuhr');
-    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Dhuhr' });
+    expect(getNextPrayer(STANDARD)?.id).toBe('dhuhr');
+    expect(getDefaultStore().get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'dhuhr' });
     expect(observe(EXTRA)).toMatchObject({
       displayDate: '2026-10-17',
       countdown: { timeLeft: null, name: '...' },
@@ -1910,8 +1909,8 @@ describe('on the real builder', () => {
     expect(getNextBoundary(EXTRA)?.toISOString()).toBe('2026-09-26T23:00:00.000Z');
     // Sunday's passed Suhoor could measure a bar to its Duha, but Saturday is still on screen with nothing to count
     expect(observe(EXTRA)).toMatchObject({
-      next: row('Duha', '2026-09-27', '2026-09-27T02:20:00.000Z'),
-      previous: row('Suhoor', '2026-09-27', '2026-09-26T22:50:00.000Z'),
+      next: row('duha', '2026-09-27', '2026-09-27T02:20:00.000Z'),
+      previous: row('suhoor', '2026-09-27', '2026-09-26T22:50:00.000Z'),
       countdown: { timeLeft: null, name: '...' },
       barAvailable: false,
     });
@@ -1921,7 +1920,7 @@ describe('on the real builder', () => {
     unsubscribe();
     expect(writes).toEqual(['2026-09-26T22:50:00.000Z', '2026-09-26T23:00:00.000Z']);
     expect(displayDateOf(EXTRA)).toBe('2026-09-27');
-    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: 12000, name: 'Duha' }, barAvailable: true });
+    expect(observe(EXTRA)).toMatchObject({ countdown: { timeLeft: 12000, name: 'duha' }, barAvailable: true });
     expect(calculatePrayerAgo(EXTRA).isReady).toBe(true);
   });
 
@@ -1970,11 +1969,11 @@ describe('on the real builder', () => {
 
     // The overlay has a prayer to show, so it is named: here the 18th's Fajr opens the 19th's, which has a time
     openOverlay(STANDARD, 0);
-    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'fajr' });
     // The overlay belongs to the Standard page, so once a tick has rewritten both pages the Extras page still
     // shows its own waiting countdown
     jest.advanceTimersByTime(1000);
-    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'Fajr' });
+    expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: expect.any(Number), name: 'fajr' });
     expect(store.get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: '...' });
     closeOverlay();
     expect(store.get(getCountdownAtom(STANDARD))).toEqual({ timeLeft: null, name: '...' });
@@ -2002,14 +2001,14 @@ describe('on the real builder', () => {
     it("keeps the far side of the week as next once tomorrow's Isha passes, with --:-- while a lost day shows", () => {
       storeDays(dates);
       launchAt('2026-10-16T12:00:00.000Z');
-      expect(getNextPrayer(STANDARD)?.english).toBe('Asr');
+      expect(getNextPrayer(STANDARD)?.id).toBe('asr');
 
       moveClockTo('2026-10-17T18:28:58.000Z');
       resyncCountdowns();
       jest.advanceTimersByTime(2000);
 
       expect(observe(STANDARD)).toEqual({
-        next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
+        next: row('fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
         displayDate: '2026-10-17',
         previous: null,
         countdown: { timeLeft: null, name: '...' },
@@ -2017,7 +2016,7 @@ describe('on the real builder', () => {
         held: { '2026-10-17': STANDARD_ROWS, ...LOST_WEEK, '2026-10-25': STANDARD_ROWS },
       });
       expect(observe(EXTRA)).toMatchObject({
-        next: row('Suhoor', '2026-10-25', '2026-10-25T04:44:00.000Z'),
+        next: row('suhoor', '2026-10-25', '2026-10-25T04:44:00.000Z'),
         displayDate: '2026-10-17',
         countdown: { timeLeft: null, name: '...' },
         barAvailable: false,
@@ -2029,7 +2028,7 @@ describe('on the real builder', () => {
       launchAt('2026-10-20T12:00:00.000Z');
 
       expect(observe(STANDARD)).toEqual({
-        next: row('Fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
+        next: row('fajr', '2026-10-25', '2026-10-25T05:04:00.000Z'),
         displayDate: '2026-10-20',
         previous: null,
         countdown: { timeLeft: null, name: '...' },
@@ -2064,7 +2063,7 @@ describe('on the real builder', () => {
       storeDays(OCT_16_TO_20);
       launchAt('2026-10-20T18:00:00.000Z');
       const isha = getNextPrayer(STANDARD);
-      expect(isha?.english).toBe('Isha');
+      expect(isha?.id).toBe('isha');
 
       moveClockTo(new Date((isha?.datetime.getTime() ?? 0) - 2000).toISOString());
       jest.advanceTimersByTime(3000);
@@ -2096,15 +2095,15 @@ describe('on the real builder', () => {
       unreadable: { '2026-10-17': ['fajr', 'magrib'] },
       launch: '2026-10-17T05:00:00.000Z',
       index: 0,
-      countdown: { timeLeft: 86040, name: 'Fajr' },
-      display: '23h 54m',
+      countdown: { timeLeft: 86040, name: 'fajr' },
+      display: '23:54',
     },
     {
       title: 'a passed unreadable Fajr whose next occurrence is unreadable too shows --:--',
       unreadable: { '2026-10-17': ['fajr', 'magrib'], '2026-10-18': ['fajr'] },
       launch: '2026-10-17T05:00:00.000Z',
       index: 0,
-      countdown: { timeLeft: null, name: 'Fajr' },
+      countdown: { timeLeft: null, name: 'fajr' },
       display: '--:--',
     },
     {
@@ -2112,7 +2111,7 @@ describe('on the real builder', () => {
       unreadable: { '2026-10-17': ['fajr', 'magrib'] },
       launch: '2026-10-17T05:00:00.000Z',
       index: 4,
-      countdown: { timeLeft: null, name: 'Magrib' },
+      countdown: { timeLeft: null, name: 'magrib' },
       display: '--:--',
     },
     {
@@ -2120,15 +2119,15 @@ describe('on the real builder', () => {
       unreadable: { '2026-10-18': 'all' },
       launch: '2026-10-18T12:00:00.000Z',
       index: 0,
-      countdown: { timeLeft: 60900, name: 'Fajr' },
-      display: '16h 55m',
+      countdown: { timeLeft: 60900, name: 'fajr' },
+      display: '16:55',
     },
     {
       title: 'R11: a row of a day with no readable time whose next occurrence has none either shows --:--',
       unreadable: { '2026-10-18': 'all', '2026-10-19': 'all' },
       launch: '2026-10-18T12:00:00.000Z',
       index: 0,
-      countdown: { timeLeft: null, name: 'Fajr' },
+      countdown: { timeLeft: null, name: 'fajr' },
       display: '--:--',
     },
   ])('R12: $title', ({ unreadable, launch, index, countdown, display }) => {
@@ -2162,7 +2161,7 @@ describe('on the real builder', () => {
 
     openOverlay(EXTRA, 4);
 
-    expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: 'Istijaba' });
+    expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: null, name: 'istijaba' });
     expect(getDefaultStore().get(getCountdownDisplayAtom(EXTRA))).toBe('--:--');
   });
 
@@ -2172,7 +2171,7 @@ describe('on the real builder', () => {
 
     openOverlay(EXTRA, 5);
 
-    expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: 39600, name: 'Midnight' });
+    expect(getDefaultStore().get(getCountdownAtom(EXTRA))).toEqual({ timeLeft: 39600, name: 'midnight' });
   });
 
   it('opens an overlay before any sequence exists, with no deadline to close it', () => {
@@ -2197,9 +2196,9 @@ describe('on the real builder', () => {
       refreshSequence(EXTRA);
 
       expect(observe(EXTRA)).toMatchObject({
-        next: row('Last Third', '2026-10-18', '2026-10-18T00:58:00.000Z'),
+        next: row('last third', '2026-10-18', '2026-10-18T00:58:00.000Z'),
         displayDate: '2026-10-18',
-        previous: row('Midnight', '2026-10-18', '2026-10-17T23:00:00.000Z'),
+        previous: row('midnight', '2026-10-18', '2026-10-17T23:00:00.000Z'),
         held: { '2026-10-18': EXTRAS_ROWS, '2026-10-19': EXTRAS_ROWS },
       });
     });
@@ -2213,9 +2212,9 @@ describe('on the real builder', () => {
       refreshSequence(STANDARD);
 
       expect(observe(STANDARD)).toMatchObject({
-        next: row('Fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
+        next: row('fajr', '2026-10-18', '2026-10-18T04:54:00.000Z'),
         displayDate: '2026-10-18',
-        previous: row('Isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
+        previous: row('isha', '2026-10-17', '2026-10-17T18:29:00.000Z'),
         held: { '2026-10-17': STANDARD_ROWS, '2026-10-18': STANDARD_ROWS, '2026-10-19': STANDARD_ROWS },
       });
     });
@@ -2245,7 +2244,7 @@ describe('on the real builder', () => {
 
       // The 18th's Isha has just passed and the 19th has no readable time, so the 18th waits for its 00:00
       expect(observe(STANDARD)).toMatchObject({
-        next: row('Fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
+        next: row('fajr', '2026-10-20', '2026-10-20T04:57:00.000Z'),
         displayDate: '2026-10-18',
         held: {
           '2026-10-18': STANDARD_ROWS,
@@ -2271,7 +2270,7 @@ describe('on the real builder', () => {
 
     it('writes when a row loses its time, and again when it gets it back', () => {
       moveClockTo('2026-10-17T12:00:00.000Z');
-      const magrib17 = () => label(rowOf(STANDARD, 'Magrib', '2026-10-17'));
+      const magrib17 = () => label(rowOf(STANDARD, 'magrib', '2026-10-17'));
 
       storeDays(OCT_16_TO_20);
       setSequence(STANDARD, new Date());
@@ -2282,13 +2281,13 @@ describe('on the real builder', () => {
       const unreadable = getDefaultStore().get(standardSequenceAtom);
 
       expect(unreadable).not.toBe(readable);
-      expect(magrib17()).toBe(row('Magrib', '2026-10-17', '--:--'));
+      expect(magrib17()).toBe(row('magrib', '2026-10-17', '--:--'));
 
       storeDays(OCT_16_TO_20);
       setSequence(STANDARD, new Date());
 
       expect(getDefaultStore().get(standardSequenceAtom)).not.toBe(unreadable);
-      expect(magrib17()).toBe(row('Magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'));
+      expect(magrib17()).toBe(row('magrib', '2026-10-17', '2026-10-17T17:06:00.000Z'));
     });
 
     // With nothing stored every row reads '-', so only each row's identity tells a fortnight from the one
@@ -2339,7 +2338,7 @@ describe('on the real builder', () => {
    * ISSUES #27. An Isha at 03:30 is in the small hours, so its instant moves to the next calendar day while its list
    * day stays the day before: that day is still on screen once the NEXT day's 01:00 Fajr has passed, which is the
    * only readable shape putting a later day's rows behind an earlier day on screen. London never produces it; above
-   * about 60N the provider does. Green on its first run, because the fix shipped 2026-09-13; the breaks are its red.
+   * about 60N the provider does. Green on its first run and red on every regression; the breaks are its red.
    */
   describe('a day roll with every row readable (ISSUES #27)', () => {
     it('keeps every row of the day on screen while the day before it is still counting down', () => {
@@ -2359,7 +2358,7 @@ describe('on the real builder', () => {
         const held = rowsHeld(STANDARD)[onScreen] ?? '';
         const wholeList = actualPrayer()
           .createPrayerSequence(STANDARD, new Date(`${onScreen}T12:00:00.000Z`), 1)
-          .prayers.map((prayer) => prayer.english)
+          .prayers.map((prayer) => prayer.id)
           .join(', ');
         if (held !== wholeList) shortLists.push(`${new Date().toISOString()} ${onScreen}: ${held}`);
       }
@@ -2393,7 +2392,7 @@ describe('on the real builder', () => {
         const held = rowsHeld(STANDARD)[previous.belongsToDate] ?? '';
         const wholeList = actualPrayer()
           .createPrayerSequence(STANDARD, new Date(`${previous.belongsToDate}T12:00:00.000Z`), 1)
-          .prayers.map((prayer) => prayer.english)
+          .prayers.map((prayer) => prayer.id)
           .join(', ');
         if (held !== wholeList) incomplete.push(`${new Date().toISOString()} ${previous.belongsToDate}: ${held}`);
       }

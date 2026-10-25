@@ -2,21 +2,24 @@ import * as Updates from 'expo-updates';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
+import { typographyFor } from '@/shared/typography';
 import { clearUpgradeCache } from '@/stores/version';
 
 import Masjid from './Masjid';
 
 export default function ErrorScreen() {
   /**
-   * Clears the cache and reloads. Owner ruling, 2026-09-12: reaching this screen
+   * Clears the cache and reloads. Reaching this screen
    * means something has gone wrong, so refetching from scratch is the recovery,
    * and the destruction is acceptable because preferences survive it.
    *
    * Goes through `clearUpgradeCache` rather than a bare `clearAllExcept`, which
    * keeps strictly more of what the app cannot refetch. The previous inline list
    * kept only `app_installed_version` and `preference_`, so it also dropped
-   * `cache_schema_version` and the `prayer_max_english_width_` measurements that
+   * `cache_schema_version` and the `prayer_max_name_width_` measurements that
    * ISSUES #22 and #16 deliberately preserve — losing those reflows the prayer
    * list on the next launch, which is a visible regression this screen has no
    * reason to cause. Alert settings, the sound choice and every other
@@ -34,16 +37,18 @@ export default function ErrorScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.heading]}> Oh no! </Text>
-      <Text style={[styles.subtext, styles.first]}> Something went wrong. </Text>
-      <Text style={[styles.subtext, styles.last]}> Try refreshing! </Text>
+      <Text style={[styles.heading]}>{t('error.heading')}</Text>
+      <Text style={[styles.subtext, styles.first]}>{t('error.body')}</Text>
+      <Text style={[styles.subtext, styles.last]}>{t('error.hint')}</Text>
       <Masjid height={65} width={60} />
       <Pressable style={styles.button} onPress={handleRefresh}>
-        <Text style={[styles.subtext]}> Refresh </Text>
+        <Text style={[styles.subtext]}>{t('error.refresh')}</Text>
       </Pressable>
     </View>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   container: {
@@ -53,14 +58,14 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: COLORS.text.primary,
-    fontSize: TEXT.sizeHeading,
+    fontSize: ty.size(TEXT.sizeHeading),
     marginBottom: SPACING.lg2,
-    fontFamily: TEXT.family.medium,
+    fontFamily: ty.familyMedium,
   },
   subtext: {
     color: COLORS.text.primary,
-    fontSize: TEXT.size,
-    fontFamily: TEXT.family.regular,
+    fontSize: ty.size(TEXT.size),
+    fontFamily: ty.familyRegular,
   },
   first: {
     marginBottom: SPACING.xs,

@@ -19,7 +19,11 @@ import { type Breakage, listStatuses, london, sequenceFrom, storeLondonDays } fr
 const mockClock = { now: new Date(0) };
 const mockAtomValues = new Map<string, unknown>();
 
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -228,7 +232,7 @@ describe('computePrayerStatuses: nextPrayerIndex', () => {
     const { prayers: rows, nextPrayerIndex } = computePrayerStatuses(prayers, london('2026-09-10', '21:00'));
 
     expect(nextPrayerIndex).toBe(12);
-    expect([rows[12].english, rows[12].belongsToDate]).toEqual(['Fajr', '2026-09-12']);
+    expect([rows[12].id, rows[12].belongsToDate]).toEqual(['fajr', '2026-09-12']);
   });
 
   it('is -1 when no readable row is still to come', () => {

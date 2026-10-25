@@ -20,22 +20,28 @@ type ManifestDoc = {
 };
 
 const {
-  DELEGATE_SOURCE,
+  delegateSource,
   EXPO_RECEIVER_NAME,
-  RECEIVER_NAME,
-  SERVICE_SOURCE,
+  receiverName,
+  serviceSource,
   SHARED_NOTIFICATION_TAG,
   editManifest,
   writeKotlin,
 } = require('../replacePreviousNotification') as {
-  DELEGATE_SOURCE: string;
+  delegateSource: (pkg: string) => string;
   EXPO_RECEIVER_NAME: string;
-  RECEIVER_NAME: string;
-  SERVICE_SOURCE: string;
+  receiverName: (pkg: string) => string;
+  serviceSource: (pkg: string) => string;
   SHARED_NOTIFICATION_TAG: string;
-  editManifest: (manifest: ManifestDoc) => ManifestDoc;
-  writeKotlin: (projectRoot: string) => void;
+  editManifest: (manifest: ManifestDoc, pkg: string) => ManifestDoc;
+  writeKotlin: (projectRoot: string, pkg: string) => void;
 };
+
+/** The neutral package a clone builds under; the plugin must follow whatever the config resolves */
+const PKG = 'com.example.athan';
+const DELEGATE_SOURCE = delegateSource(PKG);
+const SERVICE_SOURCE = serviceSource(PKG);
+const RECEIVER_NAME = receiverName(PKG);
 
 const manifestWithoutReceivers = (): ManifestDoc => ({
   manifest: {
@@ -72,7 +78,7 @@ const pluginNames = (config: import('expo/config').ExpoConfig): string[] =>
 
 describe('the shared-tag prebuild plugin', () => {
   it('removes expo notifications receiver and declares the app own one with the same six actions', () => {
-    const edited = editManifest(manifestWithoutReceivers());
+    const edited = editManifest(manifestWithoutReceivers(), PKG);
 
     const receivers = edited.manifest.application[0].receiver ?? [];
     expect(receivers).toHaveLength(2);
@@ -91,8 +97,8 @@ describe('the shared-tag prebuild plugin', () => {
   });
 
   it('changes nothing the second time it runs', () => {
-    const once = editManifest(manifestWithoutReceivers());
-    const twice = editManifest(editManifest(manifestWithoutReceivers()));
+    const once = editManifest(manifestWithoutReceivers(), PKG);
+    const twice = editManifest(editManifest(manifestWithoutReceivers(), PKG), PKG);
 
     expect(twice).toEqual(once);
   });
@@ -101,7 +107,7 @@ describe('the shared-tag prebuild plugin', () => {
     const manifest = manifestWithoutReceivers();
     manifest.manifest.$['xmlns:tools'] = 'http://schemas.android.com/apk/res/tools';
 
-    const edited = editManifest(manifest);
+    const edited = editManifest(manifest, PKG);
 
     expect(edited.manifest.$['xmlns:tools']).toBe('http://schemas.android.com/apk/res/tools');
   });
@@ -121,15 +127,25 @@ describe('the shared-tag prebuild plugin', () => {
     );
   });
 
+  it('follows a suffixed package, keeping the class where the manifest points', () => {
+    const suffixed = `${PKG}.fleettest`;
+    const edited = editManifest(manifestWithoutReceivers(), suffixed);
+    const receivers = edited.manifest.application[0].receiver ?? [];
+
+    expect(receivers.some((node) => node.$['android:name'] === receiverName(suffixed))).toBe(true);
+    expect(receivers.some((node) => node.$['android:name'] === RECEIVER_NAME)).toBe(false);
+    expect(delegateSource(suffixed)).toContain(`package ${suffixed}.notifications`);
+  });
+
   it('are written under the app package when prebuild runs', () => {
     const projectRoot = join(tmpdir(), `plan7-plugin-${process.pid}`);
     rmSync(projectRoot, { recursive: true, force: true });
     mkdirSync(projectRoot, { recursive: true });
 
     try {
-      writeKotlin(projectRoot);
+      writeKotlin(projectRoot, PKG);
 
-      const dir = join(projectRoot, 'android/app/src/main/java/com/the owner/athan/notifications');
+      const dir = join(projectRoot, 'android/app/src/main/java', ...PKG.split('.'), 'notifications');
       const delegatePath = join(dir, 'AthanPresentationDelegate.kt');
       const servicePath = join(dir, 'AthanNotificationsService.kt');
       expect(existsSync(delegatePath)).toBe(true);

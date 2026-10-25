@@ -31,15 +31,22 @@ jest.mock('jotai', () => ({
   useAtomValue: (...args: Parameters<typeof mockReadAtom>) => mockReadAtom(...args),
 }));
 
-// Effects do not run: they only remember the previous render for the colour animations
+// Effects do not run: they only remember the previous render for the colour animations and hold
+// the hidden row's hide timer; the settle flag stays at its initial value, which this structural
+// suite never reads (the renderer suite carries the display flip)
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
   useMemo: <T>(create: () => T) => create(),
   useRef: <T>(initial: T) => ({ current: initial }),
+  useState: <T>(initial: T) => [initial, () => undefined],
   useEffect: () => undefined,
 }));
 
-jest.mock('react-native', () => ({ Pressable: 'Pressable', StyleSheet: { create: <T>(styles: T) => styles } }));
+jest.mock('react-native', () => ({
+  Pressable: 'Pressable',
+  StyleSheet: { create: <T>(styles: T) => styles },
+  View: 'View',
+}));
 jest.mock('react-native-reanimated', () => ({
   __esModule: true,
   default: { Text: 'Animated.Text', createAnimatedComponent: () => 'AnimatedPressable' },
@@ -47,8 +54,12 @@ jest.mock('react-native-reanimated', () => ({
 jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: { Medium: 'medium' } }));
 jest.mock('@/components/prayer/Alert', () => ({ __esModule: true, default: 'Alert' }));
 jest.mock('@/components/prayer/Time', () => ({ __esModule: true, default: 'Time' }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedColor: () => ({}), useDerivedOpacity: () => ({}) }));
-jest.mock('@/stores/database', () => ({ getPrayerByDateString: jest.fn() }));
+jest.mock('@/hooks/useAnimation', () => ({ useDerivedVeiledColor: () => ({}) }));
+jest.mock('@/stores/database', () => ({
+  getPrayerByDateString: jest.fn(),
+  getItem: () => null,
+  getRawItem: () => undefined,
+}));
 jest.mock('@/stores/overlay', () => ({ closeOverlay: jest.fn(), openOverlay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({
@@ -64,9 +75,7 @@ jest.mock('@/stores/schedule', () => ({
 }));
 
 jest.mock('@/stores/ui', () => ({
-  englishWidthStandardAtom: 'englishWidthStandardAtom',
-  englishWidthExtraAtom: 'englishWidthExtraAtom',
-  showArabicNamesAtom: 'showArabicNamesAtom',
+  nameWidthAtomFor: (type: string) => (type === 'standard' ? 'nameWidthStandardAtom' : 'nameWidthExtraAtom'),
 }));
 
 type Element = ReactElement<{ children?: ReactNode }>;

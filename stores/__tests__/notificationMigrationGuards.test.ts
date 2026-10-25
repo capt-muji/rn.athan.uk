@@ -25,7 +25,7 @@ const loadWithExtras = (extrasEnglish: string[]): LoadedStore => {
     // The guard defends against a prayer list the app does not ship, so the list is replaced before the store loads
     jest.doMock('@/shared/constants', () => ({
       ...jest.requireActual<Constants>('@/shared/constants'),
-      EXTRAS_ENGLISH: extrasEnglish,
+      EXTRA_PRAYER_TITLES: extrasEnglish,
     }));
     loaded = {
       database: (require('@/stores/database') as typeof import('@/stores/database')).database,
@@ -73,7 +73,10 @@ afterEach(() => {
 
 describe('the migration of index keys against a changed Extras list', () => {
   it('keeps every other pre-1.0.27 setting and drops only Duha when the Extras list no longer has it', () => {
-    const store = loadWithExtras(['Midnight', 'Last Third', 'Suhoor', 'Istijaba']);
+    // Duha's slot holds a title the stored keys never knew: the guard must drop only Duha and
+    // land every other setting on its own prayer (the atoms are keyed by the fixed ids, so the
+    // mocked spellings must keep the survivors at their real indices)
+    const store = loadWithExtras(['Midnight', 'Last Third', 'Suhoor', 'Renamed slot', 'Istijaba']);
     saveIndexKeys(store.database, ['Last Third', 'Suhoor', 'Duha', 'Istijaba']);
 
     expect(() => store.migrate('1.0.26')).not.toThrow();

@@ -12,6 +12,7 @@ import { BackgroundGradients, RamadanDecorations, SettingsButton } from '@/compo
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useChromeDeferred } from '@/hooks/useChromeDeferred';
 import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
+import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
@@ -37,6 +38,8 @@ export default function Navigation() {
   // defer); the veil pairs with the overlay, which defers on the same cadence
   const chromeDeferred = useChromeDeferred();
 
+  const direction = localeDirection(currentLocaleId());
+
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
     if (state === 'dragging' || state === 'settling') {
@@ -47,7 +50,7 @@ export default function Navigation() {
   const handlePageSelected = (e: { nativeEvent: { position: number } }) => {
     const position = e.nativeEvent.position;
 
-    // Self-heal (chaos 2026-09-08, finding 2): a native drag begun in a
+    // Self-heal: a native drag begun in a
     // momentary overlay-closed instant settles even after scrollEnabled flips
     // back to false. If the pager lands on the other schedule under an open
     // overlay, close the overlay instead of rendering it over the wrong page
@@ -66,7 +69,7 @@ export default function Navigation() {
       <BackgroundGradients />
       {chromeDeferred && (
         <>
-          <Animated.View style={[styles.chromeLayer, chromeOpacityStyle]} pointerEvents='box-none'>
+          <Animated.View style={[styles.chromeLayer, chromeOpacityStyle]} pointerEvents={'box-none'}>
             <RamadanDecorations />
           </Animated.View>
           {/* Veil backdrop (ADR-014): the overlay gradient + glow BEHIND content,
@@ -81,6 +84,7 @@ export default function Navigation() {
       <PagerView
         style={{ flex: 1 }}
         initialPage={0}
+        layoutDirection={direction}
         // Pre-materialize the adjacent page's native view at layout time.
         // ViewPager2's default (OFFSCREEN_PAGE_LIMIT_DEFAULT) creates pages
         // lazily on first swipe, which showed a ~300ms empty page + frame
@@ -98,20 +102,30 @@ export default function Navigation() {
       </PagerView>
 
       <Animated.View
+        testID={'bottom-bar'}
         style={[
-          styles.dotsContainer,
+          styles.bar,
           { bottom: Platform.OS === 'android' ? bottom + SPACING.md : Math.max(bottom, SPACING.xl) },
           chromeOpacityStyle,
-        ]}>
-        <View style={styles.buttonWrapper}>
-          <MemoSettingsButton />
-        </View>
+        ]}
+        pointerEvents={'box-none'}>
         {/* Decorative: the pager already announces which page it is on, so naming the dots
             would have a screen reader read the position twice */}
-        <View style={styles.dotsRow} accessibilityElementsHidden importantForAccessibility='no-hide-descendants'>
-          <Animated.View style={[styles.dot, dot0OpacityStyle]} />
-          <Animated.View style={[styles.dot, dot1OpacityStyle]} />
-        </View>
+        <Animated.View
+          testID={'schedule-dot-0'}
+          style={[styles.dot, dot0OpacityStyle]}
+          accessibilityElementsHidden
+          importantForAccessibility={'no-hide-descendants'}
+          pointerEvents={'none'}
+        />
+        <MemoSettingsButton />
+        <Animated.View
+          testID={'schedule-dot-1'}
+          style={[styles.dot, dot1OpacityStyle]}
+          accessibilityElementsHidden
+          importantForAccessibility={'no-hide-descendants'}
+          pointerEvents={'none'}
+        />
       </Animated.View>
     </View>
   );
@@ -121,25 +135,16 @@ const styles = StyleSheet.create({
   chromeLayer: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
   },
-  dotsContainer: {
-    flexDirection: 'column',
+  bar: {
+    flexDirection: 'row',
     alignItems: 'center',
+    gap: SPACING.sm * 1.65,
     position: 'absolute',
     alignSelf: 'center',
-    gap: SPACING.sm,
-  },
-  buttonWrapper: {
-    position: 'absolute',
-    bottom: SIZE.nav.bottomOffset, // Position above dots
-    zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
-  },
-  dotsRow: {
-    flexDirection: 'row',
-    gap: SPACING.sm,
   },
   dot: {
     width: SIZE.navigationDot,

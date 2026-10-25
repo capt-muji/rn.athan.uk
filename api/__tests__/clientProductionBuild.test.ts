@@ -13,6 +13,7 @@ jest.mock('@/stores/database', () => ({
   markYearAsFetched: jest.fn(),
   clearAllExcept: jest.fn(),
   getItem: jest.fn(),
+  getRawItem: jest.fn(),
 }));
 
 const mockIsProd = jest.fn();

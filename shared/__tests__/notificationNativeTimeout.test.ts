@@ -3,7 +3,7 @@
  *
  * The scheduling queue waits for every piece of work it started, so one native call that never answers would stop the
  * app arming or cancelling anything for the rest of the process, with the bell already showing what the user picked.
- * After 15 seconds the call is treated as refused (owner, 2026-09-16).
+ * After 15 seconds the call is treated as refused.
  */
 
 import { setNotificationChannelAsync } from 'expo-notifications';
@@ -37,7 +37,7 @@ afterEach(() => {
 });
 
 // The fifteen-second limit is written out here rather than read from the module: these two tests are what
-// pins it (owner, 2026-09-16)
+// pins it
 describe('a call into the notification system', () => {
   it('gives back what the call answered', async () => {
     await expect(withNativeTimeout(Promise.resolve(FAJR_ID), `arming ${FAJR_ID}`)).resolves.toBe(FAJR_ID);

@@ -1,6 +1,6 @@
 // R14 part 2 (second pass): the timezone-only error under THREE different choices of
 // zone representative point, plus the qibla error under the same three, so this report's
-// prayer-time numbers are directly comparable with session 37's qibla numbers.
+// prayer-time numbers are directly comparable with sob 37's qibla numbers.
 //
 // The three representatives:
 //   pop      most populous city in the zone (cities15000)
@@ -125,7 +125,7 @@ say('difference over 24 dates in 2026 and 6 times, discontinuities over 120 min 
 say('Qibla error is the great-circle bearing difference in degrees, from `adhan.Qibla`.');
 say('');
 
-// ---- the session 37 comparison table
+// ---- the sob 37 comparison table
 say('## 2F. The five session-37 cities, prayer error and qibla error side by side');
 say('');
 {

@@ -7,15 +7,16 @@ import Svg, { Path } from 'react-native-svg';
 
 import ALERT_ICONS from '@/assets/icons/svg/alerts';
 import { useAlertAnimations } from '@/hooks/useAlertAnimations';
-import { useDerivedFill } from '@/hooks/useAnimation';
+import { useDerivedFill, useDerivedOpacity } from '@/hooks/useAnimation';
 import { useNotification } from '@/hooks/useNotification';
 import { getShownAlert, isShownOccurrenceUnavailable, usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SIZE, SPACING, STYLES } from '@/shared/constants';
+import { prayerLabel, type TranslationKey, t } from '@/shared/i18n';
 import { getCascadeDelay } from '@/shared/prayer';
 import { AlertType, Icon, type ScheduleType } from '@/shared/types';
-import { getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { canonicalPrayerIndex, getPrayerAlertAtom } from '@/stores/notifications';
 import { showAlertSheet } from '@/stores/ui';
 
@@ -27,10 +28,10 @@ type AlertIconType = Icon.BELL_RING | Icon.BELL_SLASH | Icon.SPEAKER;
 // only by the glyph shape and its fill colour, and this is the control that
 // decides whether a prayer alerts at all. Kept on ALERT_CONFIGS so the icon and
 // the wording for a state cannot drift apart — the array index IS the AlertType.
-const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: string }[] = [
-  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'off' },
-  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'silent' },
-  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'sound' },
+const ALERT_CONFIGS: { icon: AlertIconType; type: AlertType; spoken: TranslationKey }[] = [
+  { icon: Icon.BELL_SLASH, type: AlertType.Off, spoken: 'prayerAlert.state.off' },
+  { icon: Icon.BELL_RING, type: AlertType.Silent, spoken: 'prayerAlert.state.silent' },
+  { icon: Icon.SPEAKER, type: AlertType.Sound, spoken: 'prayerAlert.state.sound' },
 ];
 
 interface Props {
@@ -58,12 +59,12 @@ export default function Alert({ type, index }: Props) {
 
   // `index` is the row's position in the day as the sequence holds it, while
   // the alert atoms and the scheduler are both
-  // CANONICAL, keyed off EXTRAS_ENGLISH/PRAYERS_ENGLISH order. Resolve by name
+  // CANONICAL, keyed off the id arrays' order. Resolve by id
   // so the bell, the sheet it opens and the scheduler cannot drift apart if the
   // two orders ever stop coinciding. usePrayer has to run before the atom read
   // for that; the hook order stays unconditional, which is all React requires.
   const Prayer = usePrayer(type, index);
-  const alertIndex = canonicalPrayerIndex(type, Prayer.english, index);
+  const alertIndex = canonicalPrayerIndex(type, Prayer.id, index);
 
   // Atoms
   const alertAtom = useAtomValue(getPrayerAlertAtom(type, alertIndex));
@@ -90,10 +91,14 @@ export default function Alert({ type, index }: Props) {
 
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
+  const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
 
   // The same occurrence Time.tsx draws: the bell is unavailable exactly when the time on screen is --:--, since
   // nothing can ever fire for it (R5), and its press explains that. The saved preference is only read, never changed
   const isUnavailable = isShownOccurrenceUnavailable(isSelectedForOverlay, Prayer, NextOccurrencePrayer);
+
+  const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
+  const shownState = isUnavailable ? t('prayerAlert.state.unavailable') : t(ALERT_CONFIGS[alertAtom].spoken);
 
   const iconIndex = getShownAlert(isUnavailable, displayedAlert);
 
@@ -115,6 +120,10 @@ export default function Alert({ type, index }: Props) {
     duration: isSelectionChange ? ANIMATION.durationFade : ANIMATION.durationSlow,
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
+
+  // The bell is an icon, so its hiding fade rides this text-free wrapper's own opacity: the
+  // row's words sink through their ink (Prayer, Time), and the glyph composites as a view
+  const veilStyle = useDerivedOpacity(isHiddenByOverlay ? 0 : 1, { duration: ANIMATION.duration });
 
   // =============================================================================
   // ANIMATION EFFECTS
@@ -154,11 +163,10 @@ export default function Alert({ type, index }: Props) {
     showAlertSheet({
       type,
       index: alertIndex,
-      prayerEnglish: Prayer.english,
-      prayerArabic: Prayer.arabic,
+      prayerId: Prayer.id,
       isUnavailable,
     });
-  }, [type, alertIndex, Prayer.english, Prayer.arabic, alertAtom, ensurePermissions, isUnavailable]);
+  }, [type, alertIndex, Prayer.id, alertAtom, ensurePermissions, isUnavailable]);
 
   // =============================================================================
   // RENDER
@@ -176,24 +184,21 @@ export default function Alert({ type, index }: Props) {
           setIsPressed(false);
           AnimScale.animate(1);
         }}
-        accessibilityRole='button'
+        accessibilityRole={'button'}
         // Named from the atom, not from `displayedAlert`: the glyph lags the
         // committed value through the change-bounce, and a screen reader must
-        // hear the setting that is actually stored
-        accessibilityLabel={
-          isUnavailable
-            ? `${Prayer.english} notification: unavailable`
-            : `${Prayer.english} notification: ${ALERT_CONFIGS[alertAtom].spoken}`
-        }
-        accessibilityHint={
-          isUnavailable ? 'Explains why no alert can be set for this prayer' : 'Opens the alert options for this prayer'
-        }
+        // hear the setting that is actually stored. The loading frame names
+        // nothing (the vanished-row guard, as in Prayer)
+        accessibilityLabel={t('prayerAlert.notification', { name: shownName, state: shownState })}
+        accessibilityHint={isUnavailable ? t('prayerAlert.hintUnavailable') : t('prayerAlert.hintOpen')}
         style={styles.iconContainer}>
         <Animated.View style={AnimScale.style}>
           <Animated.View style={AnimSwap.style}>
-            <Svg viewBox='0 0 256 256' width={SIZE.icon.md} height={SIZE.icon.md}>
-              <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={fillProps} />
-            </Svg>
+            <Animated.View style={veilStyle}>
+              <Svg viewBox={'0 0 256 256'} width={SIZE.icon.md} height={SIZE.icon.md}>
+                <AnimatedPath d={ALERT_ICONS[ALERT_CONFIGS[iconIndex].icon]} animatedProps={fillProps} />
+              </Svg>
+            </Animated.View>
           </Animated.View>
         </Animated.View>
       </Pressable>
@@ -207,8 +212,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   iconContainer: {
-    paddingRight: STYLES.prayer.padding.right,
-    paddingLeft: SPACING.mid - 1,
+    paddingEnd: STYLES.prayer.padding.end,
+    paddingStart: SPACING.mid - 1,
     justifyContent: 'center',
   },
 });

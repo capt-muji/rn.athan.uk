@@ -6,12 +6,15 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 import { View } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
-import { EXTRAS_ENGLISH, PRAYERS_ENGLISH } from '@/shared/constants';
+import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
+import { EXTRA_PRAYER_TITLES, STANDARD_PRAYER_TITLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { countdownBarShownAtom, getMeasurementsList } from '@/stores/ui';
 
 import List from '../List';
+
+// The bar's default is off; this suite reads the bar as part of the page, so it seeds it on
+beforeEach(() => seedCountdownBarOn());
 
 type Measured = (pageX: number, pageY: number, width: number, height: number) => void;
 
@@ -34,7 +37,7 @@ const layOutList = async () => {
   await fireEvent(list, 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 366, height: 342 } } });
 };
 
-const PRAYER_NAME = new RegExp(`^(${[...PRAYERS_ENGLISH, ...EXTRAS_ENGLISH].join('|')})$`);
+const PRAYER_NAME = new RegExp(`^(${[...STANDARD_PRAYER_TITLES, ...EXTRA_PRAYER_TITLES].join('|')})$`);
 
 /** The English prayer names on screen, top to bottom */
 const namesOnScreen = () => screen.getAllByText(PRAYER_NAME).map((name) => name.children.join(''));
@@ -159,5 +162,36 @@ describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
     expect(idle).toHaveBeenCalledTimes(1);
     await screen.unmount();
     expect(cancelIdle).toHaveBeenCalledWith(idle.mock.results[0].value);
+  });
+});
+
+/** The list container: the one styled node carrying both margins */
+const listContainerStyle = (): Record<string, unknown> => {
+  const rows = screen.root?.queryAll((node) => node.props.style !== undefined, { includeSelf: true }) ?? [];
+  const container = rows.find((node) => {
+    const style = Array.isArray(node.props.style) ? Object.assign({}, ...node.props.style) : node.props.style;
+    return style.marginHorizontal !== undefined && style.marginBottom !== undefined;
+  });
+  if (container === undefined) return {};
+  return Array.isArray(container.props.style) ? Object.assign({}, ...container.props.style) : container.props.style;
+};
+
+describe('the gap below the list', () => {
+  it('renders a quarter more than the pre-change 22.5', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<List type={ScheduleType.Standard} />);
+
+    // 25 percent more room between the Standard list and its ago badge
+    expect(listContainerStyle().marginBottom).toBe(28);
+  });
+
+  it('renders a quarter further down on Extras, where the page has room', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<List type={ScheduleType.Extra} />);
+
+    // The Extras badge drops away from its list
+    expect(listContainerStyle().marginBottom).toBe(34);
   });
 });

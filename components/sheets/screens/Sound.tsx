@@ -8,7 +8,10 @@ import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { t } from '@/shared/i18n';
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
+import { typographyFor } from '@/shared/typography';
 import { soundPreferenceAtom } from '@/stores/notifications';
 import {
   playingSoundIndexAtom,
@@ -18,10 +21,24 @@ import {
   soundListReadyAtom,
 } from '@/stores/ui';
 
-import { Sheet, SoundItem } from '../parts';
+import { Sheet, SoundItem, VolumeNote } from '../parts';
 import { displayedSoundSelection, hasSoundDraft, isPreviewFinished, previewRemainingSeconds } from './soundSheet';
 
 const ITEM_GAP = SPACING.xs;
+
+// The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
+const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
+const SHEET_PERF_NAME = 'sheet_sound';
+
+// The dismiss-time commit's scheduling saturates the JS thread for the close haptic's window, so
+// the sound sheet alone starts its commit past the next paint: the haptic's dispatch has left the
+// thread before any scheduling call begins
+const deferPastNextPaint = () =>
+  new Promise<void>((resolve) => {
+    requestAnimationFrame(() => {
+      setTimeout(resolve, 0);
+    });
+  });
 
 export default function BottomSheetSound() {
   const { commitSoundSelection } = useNotification();
@@ -147,6 +164,8 @@ export default function BottomSheetSound() {
 
     if (!hasSoundDraft(tempSoundSelection)) return;
 
+    await deferPastNextPaint();
+
     // The commit persists before it schedules (the scheduler reads the
     // preference mid-flight) and rolls the preference back itself if either
     // scheduling call rejects, so the displayed Athan can no longer disagree
@@ -162,22 +181,22 @@ export default function BottomSheetSound() {
   return (
     <Sheet
       setRef={setBottomSheetModal}
-      title='Select Athan'
-      subtitle='Close to save'
-      icon={<IconView type={Icon.SPEAKER} size={16} color='rgba(165, 180, 252, 0.8)' />}
+      title={t('sound.title')}
+      subtitle={t('sheet.closeToSave')}
+      icon={<IconView type={Icon.SPEAKER} size={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['85%']}
       onDismiss={handleDismiss}
       onAnimate={clearAudio}
-      perfName='sheet_sound'
+      perfName={SHEET_PERF_NAME}
       onFirstPresent={setSoundListReady}
-      stackBehavior='push'>
+      stackBehavior={'push'}>
       {/* Card + 32 rows mount once the settings sheet (the only path here)
           has fully opened — invisible warming, complete before first present */}
       {soundListReady && (
         <View style={styles.card}>
-          <Text style={styles.cardHint}>Notification sound</Text>
+          <Text style={styles.cardHint}>{t('sound.notificationSound')}</Text>
 
-          <View style={styles.listContainer}>
+          <View testID={'sound-list'} style={styles.listContainer}>
             {/* Sliding indicator */}
             <Animated.View style={[styles.indicator, indicatorStyle]} />
 
@@ -198,9 +217,12 @@ export default function BottomSheetSound() {
           </View>
         </View>
       )}
+      <VolumeNote />
     </Sheet>
   );
 }
+
+const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
   // Card
@@ -212,9 +234,9 @@ const styles = StyleSheet.create({
     padding: SPACING.lg,
   },
   cardHint: {
-    fontSize: TEXT.sizeDetail,
-    fontFamily: TEXT.family.regular,
-    color: 'rgba(86, 134, 189, 0.725)',
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    color: COLORS.text.sheetSubtitle,
   },
 
   // List
@@ -225,8 +247,8 @@ const styles = StyleSheet.create({
   indicator: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     backgroundColor: COLORS.interactive.active,
     borderRadius: RADIUS.md,
     borderWidth: 1,

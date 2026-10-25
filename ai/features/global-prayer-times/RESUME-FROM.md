@@ -10,7 +10,7 @@ run, because this was a research programme.
 | --- | --- |
 | Phase finished | **Research.** Four waves, 12 reports plus a consolidated catalog, about 13,000 lines |
 | Phase NOT started | **Planning.** No `PLAN.md` exists and none should be written until the owner answers the decisions below |
-| Queue row | **42** in `ai/plans/README.md`, status RESEARCH COMPLETE |
+| Ticket | `#42` on the board, in Backlog |
 | Branch | `research/global-prayer-times`, merged into `uat-2` and pushed; the branch is kept, not deleted |
 | Worktree | `$HOME/athan-global-wt`, safe to remove once the branch is no longer needed |
 | Scratch, outside git | `$HOME/athan-gitree/scratch/` holds `adhan@4.4.6`, `praytime`, `astronomy-engine` for the measurement harnesses |

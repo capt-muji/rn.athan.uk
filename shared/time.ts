@@ -1,6 +1,6 @@
-import { format, intervalToDuration } from 'date-fns';
-
 import { ISLAMIC_DAY, PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '@/shared/constants';
+import { type TranslationKey, t } from '@/shared/i18n';
+import { sentenceComma } from '@/shared/i18n/locale';
 
 // =============================================================================
 // PRAYER-TIMEZONE CLOCK
@@ -94,11 +94,13 @@ const prayerTimezoneOffset = (instant: number): number => {
 };
 
 /**
- * Reads the prayer timezone's calendar and clock at an instant
+ * Reads the prayer timezone's calendar and clock at an instant. Exported for
+ * data paths (the mock API and the day-grouping rules) that need the clock's
+ * own numbers, never the localised display formatters
  * @param instant An exact instant
  * @returns Year, month (1-12), day, hour (0-23), minute and second there
  */
-const readPrayerClock = (instant: Date): PrayerClock => {
+export const readPrayerClock = (instant: Date): PrayerClock => {
   const ms = instant.getTime();
   const clock = new Date(ms + prayerTimezoneOffset(ms));
 
@@ -174,7 +176,8 @@ export const createPrayerDatetime = (date: string, time: string): Date => {
  */
 export const formatPrayerTime = (date: Date): string => {
   const clock = readPrayerClock(date);
-  return `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+  const composed = `${pad2(clock.hour)}:${pad2(clock.minute)}`;
+  return composed;
 };
 
 /**
@@ -221,36 +224,128 @@ export const getDayAnchor = (date: string): Date => createPrayerDatetime(date, '
 // DATE FORMATTING
 // =============================================================================
 
+// Calendar names compose from the active catalog's calendar keys (A2): the key
+// tuples are typed against TranslationKey so a computed lookup stays compile-checked
+const GREGORIAN_WEEKDAY_KEYS = [
+  'calendar.weekdayShort.1',
+  'calendar.weekdayShort.2',
+  'calendar.weekdayShort.3',
+  'calendar.weekdayShort.4',
+  'calendar.weekdayShort.5',
+  'calendar.weekdayShort.6',
+  'calendar.weekdayShort.7',
+] as const satisfies readonly TranslationKey[];
+
+const GREGORIAN_MONTH_KEYS = [
+  'calendar.monthShort.1',
+  'calendar.monthShort.2',
+  'calendar.monthShort.3',
+  'calendar.monthShort.4',
+  'calendar.monthShort.5',
+  'calendar.monthShort.6',
+  'calendar.monthShort.7',
+  'calendar.monthShort.8',
+  'calendar.monthShort.9',
+  'calendar.monthShort.10',
+  'calendar.monthShort.11',
+  'calendar.monthShort.12',
+] as const satisfies readonly TranslationKey[];
+
+const HIJRI_MONTH_KEYS = [
+  'calendar.hijri.1',
+  'calendar.hijri.2',
+  'calendar.hijri.3',
+  'calendar.hijri.4',
+  'calendar.hijri.5',
+  'calendar.hijri.6',
+  'calendar.hijri.7',
+  'calendar.hijri.8',
+  'calendar.hijri.9',
+  'calendar.hijri.10',
+  'calendar.hijri.11',
+  'calendar.hijri.12',
+] as const satisfies readonly TranslationKey[];
+
 /**
- * Formats a date string into a readable format
+ * Formats a date string into the active locale's readable format, in the English
+ * shape and order (weekday, day, month, year)
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted date string (e.g., "Fri, 20 Nov 2024")
  */
-export const formatDateLong = (date: string): string => {
+export const formatDateLocalized = (date: string): string => {
   const [year, month, day] = date.split('-').map(Number);
   // A calendar date needs no timezone: noon on the phone's own clock always exists
-  return format(new Date(year, month - 1, day, 12), 'EEE, d MMM yyyy');
+  const weekday = new Date(year, month - 1, day, 12).getDay();
+  // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
+  const isoWeekday = weekday === 0 ? 7 : weekday;
+  const composed = `${t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1])}${sentenceComma()} ${String(day)} ${t(GREGORIAN_MONTH_KEYS[month - 1])} ${String(year)}`;
+  return composed;
 };
 
 /**
- * Formats a date string into Hijri format using Intl.DateTimeFormat
- * Falls back to Gregorian if conversion fails
+ * Formats a date string into the active locale's Hijri format, composed from the
+ * catalog's Hijri month names. The Intl call stays en-US with numeric fields so
+ * the shape and order stay frozen, with Latin digits in every locale (row 88);
+ * no era affix appears in any locale (R3.1), and a failed conversion
+ * falls back to the localized Gregorian label.
  * @param date Date string in YYYY-MM-DD format
  * @returns Formatted Hijri date string (e.g., "Rajab 1, 1447")
  */
-export const formatHijriDateLong = (date: string): string => {
+export const formatHijriDateLocalized = (date: string): string => {
   try {
     const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
       day: 'numeric',
-      month: 'long',
+      month: 'numeric',
       year: 'numeric',
       timeZone: PRAYER_TIMEZONE,
     });
-    // Remove "AH" suffix from formatted date
-    return hijriFormatter.format(getDayAnchor(date)).replace(/ AH$/, '');
+    const parts = hijriFormatter.formatToParts(getDayAnchor(date));
+    const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
+    const hijriDay = parts.find((part) => part.type === 'day')?.value;
+    const hijriYear = parts.find((part) => part.type === 'year')?.value;
+    const composed = `${t(HIJRI_MONTH_KEYS[hijriMonth - 1])} ${String(hijriDay)}${sentenceComma()} ${String(hijriYear)}`;
+    return composed;
   } catch {
-    return formatDateLong(date);
+    return formatDateLocalized(date);
   }
+};
+
+/**
+ * The footer a widget draws under its date label: the short weekday alone
+ * under the Gregorian preference, the Hijri month's first three graphemes and
+ * the day under Hijri — the exact bytes the v6-era layouts produced by parsing
+ * the English labels, composed per catalog so the footer follows the active
+ * locale instead (R7.1). Lives here so the app and every widget compose it
+ * from one source.
+ * @param date Date string in YYYY-MM-DD format
+ * @param hijriDate Whether the app's Hijri date preference is on
+ * @returns The footer text (e.g., "Sun", "Raj 1")
+ */
+export const footerFor = (date: string, hijriDate: boolean): string => {
+  if (hijriDate) {
+    try {
+      const hijriFormatter = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        timeZone: PRAYER_TIMEZONE,
+      });
+      const parts = hijriFormatter.formatToParts(getDayAnchor(date));
+      const hijriMonth = Number(parts.find((part) => part.type === 'month')?.value);
+      const hijriDay = parts.find((part) => part.type === 'day')?.value;
+      const month = t(HIJRI_MONTH_KEYS[hijriMonth - 1]);
+      const composed = `${[...month].slice(0, 3).join('')} ${hijriDay}`;
+      return composed;
+    } catch {
+      // Falls through to the Gregorian footer, like formatHijriDateLocalized
+    }
+  }
+  const [year, month, day] = date.split('-').map(Number);
+  // A calendar date needs no timezone: noon on the phone's own clock always exists
+  const weekday = new Date(year, month - 1, day, 12).getDay();
+  // The catalog keys are ISO-numbered, Monday 1 to Sunday 7
+  const isoWeekday = weekday === 0 ? 7 : weekday;
+  return t(GREGORIAN_WEEKDAY_KEYS[isoWeekday - 1]);
 };
 
 /**
@@ -445,10 +540,11 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
  * Rounding model (countdown display contract):
  * - Rounds UP (ceil): each digit owns exactly the wall second being lived
  *   through, so digits flip on the :000 boundary like the system clock.
- * - The final second displays "1s" — never "0s" — because a countdown reads
- *   "N seconds remaining" and the swap to the next prayer happens at zero.
+ * - The final second displays "00:00:01" — never "00:00:00" — because a
+ *   countdown reads "N seconds remaining" and the swap to the next prayer
+ *   happens at zero.
  * - Once the target has passed, holds at 1 until the caller advances the
- *   target (prevents a frozen "0s" while the sequence refresh runs).
+ *   target (prevents a frozen "00:00:00" while the sequence refresh runs).
  *
  * Uses Date.now() directly: countdown targets are true UTC instants (built
  * via createPrayerDatetime), so no timezone conversion is needed for a
@@ -458,7 +554,7 @@ export const adjustTime = (time: string, minutesDiff: number): string => {
  * @returns Seconds remaining, always >= 1
  *
  * @example
- * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "42s"
+ * getSecondsRemaining(prayer.datetime) // 42 during the second the display reads "00:00:42"
  */
 export const getSecondsRemaining = (target: Date): number => {
   const msLeft = target.getTime() - Date.now();
@@ -483,92 +579,91 @@ export const getWallSecondDelay = (): number => {
 };
 
 /**
- * Converts seconds into human-readable time format with flexible precision
+ * Converts seconds into the countdown display string: the fixed-width colon
+ * shapes in every locale. Every group is
+ * always double digits, so a digit change never shifts the screen.
  *
- * Formatting Rules:
- * 1. Negative seconds: Always returns "0s"
- * 2. Days are converted to hours (48 hours, not 2 days)
- * 3. Seconds visibility:
- *    - If hideSeconds=false: Always show seconds (e.g., "1h 30m 45s")
- *    - If hideSeconds=true: Show seconds only at 599s or less — the final
- *      ~10 minutes, NOT the final minute (e.g., "9m 59s", "45s")
- *    - Above 599s with hideSeconds=true: Hide seconds ("10m", "1h 30m")
- * 4. Zero handling:
- *    - Only units with non-zero values are shown
- *    - A zero seconds value never renders beside another unit: a whole
- *      minute reads "1m", a whole 25 hours reads "25h"
- *    - If all units are zero: Returns "0s"
- * 5. Spacing: Units separated by single space
- *
- * Use Cases:
- * - Countdown: Use hideSeconds=true to avoid flicker in UI
- * - Precise display: Use hideSeconds=false for exact timing
- * - Final-stretch urgency: hideSeconds=true shows seconds in the final 599s
- *
- * @param seconds Time in seconds (can be negative, but returns "0s")
- * @param hideSeconds If true, hides seconds when time > 599s (default: false)
- * @param forceHideSeconds If true, seconds are suppressed beside hours and
- *   minutes at any distance — but they still render when they are the only
- *   unit, because an empty parts list always falls back to "Ns" (default:
- *   false).
- * @returns Formatted time string
+ * 1. Seconds hidden: HH:MM ("01:32", "00:42", "25:00") — the hours are never hidden
+ * 2. Seconds shown: HH:MM:SS ("01:32:05", "00:42:05")
+ * 3. hideSeconds still shows seconds inside the final 599 s: "00:09:59" at 599 s,
+ *    "00:10" at 600 s
+ * 4. Zero and negative clamp to "00:00:00"
+ * 5. Days fold into hours ("25:00:00", never a day unit)
  *
  * Every example below is pinned by "pins every example in the JSDoc" in
  * shared/__tests__/time.test.ts. Change one and change both.
  *
  * @example
- * formatTime(3665) // "1h 1m 5s" (default shows seconds)
- * formatTime(3665, true) // "1h 1m" (hideSeconds in effect)
- * formatTime(45, true) // "45s" (shows seconds inside the final 599s)
- * formatTime(45, true, true) // "45s" (forceHideSeconds: seconds still render alone)
- * formatTime(0) // "0s"
- * formatTime(-100) // "0s"
- * formatTime(90000) // "25h" (days converted to hours; no trailing "0s")
+ * formatTime(3665) // "01:01:05" (default shows seconds)
+ * formatTime(3665, true) // "01:01" (hideSeconds in effect)
+ * formatTime(45, true) // "00:00:45" (seconds inside the final 599 s)
+ * formatTime(0) // "00:00:00"
+ * formatTime(-100) // "00:00:00"
+ * formatTime(90000) // "25:00:00" (days converted to hours)
  */
-export const formatTime = (seconds: number, hideSeconds = false, forceHideSeconds = false): string => {
-  if (seconds < 0) return '0s';
+export const formatTime = (seconds: number, hideSeconds = false): string => {
+  const total = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+  const shouldShowSeconds = !hideSeconds || seconds <= 599;
 
-  const ms = seconds * 1000;
-  const duration = intervalToDuration({ start: 0, end: ms });
-  const { days, hours, minutes, seconds: secs } = duration;
-
-  const totalHours = (days || 0) * 24 + (hours || 0);
-
-  // Hide seconds if requested and time is over ~10 minutes (show seconds only in last 10m)
-  const shouldShowSeconds = !forceHideSeconds && (!hideSeconds || seconds <= 599);
-
-  const parts = [totalHours && `${totalHours}h`, minutes && `${minutes}m`].filter(Boolean);
-
-  // "0s" never appears beside another unit — a whole minute reads "1m", not "1m 0s".
-  // Seconds render only when non-zero (and permitted), or when alone (e.g., "45s", "0s")
-  if ((shouldShowSeconds && secs) || parts.length === 0) {
-    parts.push(`${secs ?? 0}s`);
-  }
-
-  return parts.join(' ');
+  // Row 72 rule 2: fixed-width sections, every group always double digits, so a digit
+  // change never shifts the screen; rule 3 keeps the hours visible as a dim 00
+  const composed = shouldShowSeconds
+    ? `${pad2(hours)}:${pad2(minutes)}:${pad2(secs)}`
+    : `${pad2(hours)}:${pad2(minutes)}`;
+  return composed;
 };
 
 /**
- * Formats seconds elapsed into "ago" text without seconds display
+ * Formats seconds elapsed into the "ago" duration: the catalog `now` word inside
+ * the final 60 seconds, the lettered shape otherwise, fixed in every locale:
+ * unpadded Latin digits with lowercase h m
+ * letters that never localise, hours and minutes only, a zero-minute group
+ * dropping beside live hours. The lettered duration composes inside Unicode
+ * left-to-right isolates so the run reads left to right inside an RTL sentence
+ * (under the RTL base direction the space between the groups resolves
+ * RTL and swaps them), the letters lowercase at the sentence's own face, fixed
+ * in every locale.
  *
- * @param seconds - Seconds since prayer occurred (can be 0 or positive)
- * @returns "now" (<60s), "Xm" (1-59m), "Xh Ym" (1h+)
+ * @param seconds - Seconds since prayer occurred (0 or positive)
+ * @returns "now" (<60 s, the catalog word); "\u20662m\u2069", "\u20661h\u2069",
+ * "\u20662h 1m\u2069" otherwise
  *
  * @example
  * formatTimeAgo(45)      // Returns: "now"
- * formatTimeAgo(120)     // Returns: "2m"
- * formatTimeAgo(5400)    // Returns: "1h 30m"
- * formatTimeAgo(7200)    // Returns: "2h"
+ * formatTimeAgo(120)     // Returns: "\u20662m\u2069"
+ * formatTimeAgo(3600)    // Returns: "\u20661h\u2069"
+ * formatTimeAgo(5400)    // Returns: "\u20661h 30m\u2069"
+ * formatTimeAgo(7200)    // Returns: "\u20662h\u2069"
  * formatTimeAgo(0)       // Returns: "now"
  */
 export const formatTimeAgo = (seconds: number): string => {
-  if (seconds < 60) return 'now';
+  if (seconds < 60) {
+    return t('duration.now');
+  }
 
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes}m`;
+  if (minutes < 60) {
+    return `\u2066${minutes}m\u2069`;
+  }
 
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-  if (remainingMinutes === 0) return `${hours}h`;
-  return `${hours}h ${remainingMinutes}m`;
+  if (remainingMinutes === 0) {
+    return `\u2066${hours}h\u2069`;
+  }
+  return `\u2066${hours}h ${remainingMinutes}m\u2069`;
+};
+
+/**
+ * Splits a display string on its single colon for the prayer row time's gap
+ * node, or returns null when the string carries no colon, more than one. The
+ * row's digits sit either side, so the halves are not digit-checked.
+ */
+export const splitSingleColon = (value: string): [string, string] | null => {
+  const index = value.indexOf(':');
+  if (index === -1 || value.indexOf(':', index + 1) !== -1) return null;
+  return [value.slice(0, index), value.slice(index + 1)];
 };

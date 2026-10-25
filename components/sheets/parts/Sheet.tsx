@@ -23,8 +23,8 @@ const SHEET_BOTTOM_PADDING = 50;
  * Snappier sheet motion than the library defaults: the default Android timing
  * uses Easing.out(Easing.exp), whose exponential tail makes the close settle
  * drag; cubic-out finishes crisp. iOS uses the duration-form spring, which
- * completes at its duration instead of crossing rest thresholds — the
- * 2026-09-08 owner report had dismiss committing ~400ms after the sheet
+ * completes at its duration instead of crossing rest thresholds —
+ * dismiss used to commit ~400ms after the sheet
  * looked closed, because onDismiss waits for spring completion.
  */
 const SHEET_ANIMATION_CONFIGS = Platform.select({
@@ -55,7 +55,7 @@ interface SheetProps {
   perfName?: string;
   /** Snap points for the sheet. Ignored if enableDynamicSizing is true */
   snapPoints?: (string | number)[];
-  /** Owner cap (2026-09-28): a dynamically-sized sheet may never pass this share of the screen
+  /** A dynamically-sized sheet may never pass this share of the screen
    *  height, or it slides under the status bar and the notch. A fraction of the window, handed
    *  to the library's own maxDynamicContentSize in points */
   contentCap?: number;
@@ -170,14 +170,16 @@ export default function Sheet({
     [perfName, onAnimate]
   );
 
-  // One unified close haptic for every sheet (owner rule 2026-09-08: native
-  // consistency): a single Light impact when the sheet finishes closing, on
+  // One unified close haptic for every sheet, native
+  // consistency: a single Light impact when the sheet finishes closing, on
   // every close path — swipe, backdrop, back, programmatic — landing on the
   // same tick as any dismiss-time commit (the alert sheet's save and icon
   // bounce). Firing at close start instead buzzed the moment a drag began,
   // detached from the outcome.
   const handleDismiss = useCallback(() => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    perfMark('sheet_close_haptic');
+    const impact = Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    void impact.then(() => perfMark('sheet_close_haptic_settled'));
     onDismiss?.();
   }, [onDismiss]);
 
@@ -203,8 +205,9 @@ export default function Sheet({
   );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
+  // No scrollable in the app draws an indicator; the library default is true at the pinned 5.2.14
   const contentStyle = scrollable
-    ? { contentContainerStyle: { paddingBottom: contentPadding } }
+    ? { contentContainerStyle: { paddingBottom: contentPadding }, showsVerticalScrollIndicator: false }
     : { style: { paddingBottom: contentPadding } };
 
   return (
@@ -222,7 +225,7 @@ export default function Sheet({
       style={bottomSheetStyles.modal}
       containerStyle={[
         { zIndex: OVERLAY.zindexes.popup, elevation: ELEVATION.standard },
-        { width: containerWidth, marginLeft: sideInset, marginRight: sideInset },
+        { width: containerWidth, marginStart: sideInset, marginEnd: sideInset },
       ]}
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}

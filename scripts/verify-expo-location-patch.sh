@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Is node_modules/expo-location in the state patches/expo-location+58.0.12.patch produces?
+# Is node_modules/expo-location in the state patches/expo-location+58.0.17.patch produces?
 #
 # Session 50 isolates four heading changes by editing node_modules and rebuilding, three of which
 # live in that patch. A tree left edited silently changes every later build in this repository and
@@ -27,7 +27,7 @@ refuse() {
 [ -d "$PKG" ] || refuse "expo-location not found under $ROOT"
 
 for file in "$KT" "$SWIFT" "$CONFIG"; do
-  # A missing file must fail rather than count zero: ai/AGENTS.md records a grep -c on a missing
+  # A missing file must fail rather than count zero: AGENTS.md records a grep -c on a missing
   # target reading identically to a real zero, which is dangerous exactly when it is trusted
   [ -f "$file" ] || refuse "${file##*/} not found"
 done
@@ -55,20 +55,15 @@ filter=$(count 'kCLHeadingFilterNone' "$SWIFT")
 echo "kCLHeadingFilterNone: $filter, expected 1"
 [ "$filter" = "1" ] || ok=1
 
-# Either of the next two makes autolinking resolve a prebuilt AAR, so Gradle never compiles the
-# patched Kotlin and a build measures unpatched code while reporting BUILD SUCCESSFUL (session 49)
+# The publication block is what makes autolinking resolve a prebuilt AAR, so Gradle never compiles the
+# patched Kotlin and a build measures unpatched code while reporting BUILD SUCCESSFUL (session 49).
+# Its absence is the guard; expo-location ships its local-maven-repo at the package root (not under
+# android/), which is why the old directory check looked in the wrong place and could never fire.
 if grep -q -F '"publication"' "$CONFIG"; then
   echo "publication block: present, expected absent"
   ok=1
 else
   echo "publication block: absent, expected absent"
-fi
-
-if [ -d "$PKG/android/local-maven-repo" ]; then
-  echo "local-maven-repo: present, expected absent"
-  ok=1
-else
-  echo "local-maven-repo: absent, expected absent"
 fi
 
 [ "$ok" = "0" ] || refuse "one or more checks failed"

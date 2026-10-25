@@ -13,6 +13,7 @@ import { london, onPlatform, saveLondonDays, showLondonDay } from '@/__tests__/h
 import { fetchYear } from '@/api/client';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
+import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
 import { mockExpoConfig, resetMockExpoConfig } from '@/shared/__mocks__/expo-constants';
 import { APP_CONFIG } from '@/shared/config';
@@ -21,8 +22,9 @@ import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
-import * as WhatsNew from '@/shared/whatsNew';
+import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
+import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
@@ -35,7 +37,7 @@ import {
   setWhatsNewShownVersion,
 } from '@/stores/version';
 
-import Index from '../../app/index';
+import Index, { __resetLaunchInitForTests } from '../../app/index';
 
 // Sync downloads the year over the network, so each test decides what the download answers. Unless told, it is still
 // on its way
@@ -57,6 +59,26 @@ jest.mock('@/device/listeners', () => ({ initializeListeners: jest.fn() }));
 // The development diagnostics simulate a background-task launch eight seconds later, so their start is observed
 jest.mock('@/device/backgroundTaskDebug', () => ({ runBackgroundTaskDebugSequence: jest.fn() }));
 
+// The language convergence pass owns its own suite; here it would re-arm alerts behind the
+// launch under test, so the launch is observed calling it instead of running it. The handoff
+// consumption is driven the same way: the store's own suite owns its semantics. The busy
+// atom is a real atom so the cover gate reads the same flag the component does
+let mockRelaunchHandoff = false;
+jest.mock('@/stores/language', () => {
+  const { atom } = jest.requireActual('jotai');
+  return {
+    reconcileLanguageSurfaces: jest.fn(),
+    consumeRelaunchHandoff: jest.fn(() => mockRelaunchHandoff),
+    languageCommitBusyAtom: atom(false),
+  };
+});
+
+// The native switch cover is Android-only and absent from Jest, so its lifting is observed
+jest.mock('@/device/switchCover', () => ({
+  showSwitchCover: jest.fn(() => Promise.resolve()),
+  hideSwitchCover: jest.fn(() => Promise.resolve()),
+}));
+
 // Notification start-up catches its own failures, so a failure that escapes it is made here, once, to show the launch
 // logs it instead of leaving it unhandled. Every other launch runs the real start-up
 jest.mock('@/shared/notifications', () => {
@@ -71,15 +93,25 @@ jest.mock('expo-splash-screen', () => ({
 }));
 
 // What a release announces is the owner's editorial choice, made again every release, so the suite announces a
-// release of its own
+// release of its own (read through the mock so a test can also announce nothing)
+let mockVisibleWhatsNew: WhatsNew.WhatsNewRelease | null = {
+  version: '2.0.0',
+  items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '2.0.0' }],
+};
 jest.mock('@/shared/whatsNew', () => ({
   ...jest.requireActual('@/shared/whatsNew'),
   __esModule: true,
-  VISIBLE_WHATS_NEW: {
+  currentVisibleWhatsNew: () => mockVisibleWhatsNew,
+}));
+
+// A test that announces nothing overwrites the variable for the rest of its run,
+// and nothing else restores it the way replaceProperty used to
+beforeEach(() => {
+  mockVisibleWhatsNew = {
     version: '2.0.0',
     items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '2.0.0' }],
-  },
-}));
+  };
+});
 
 const RELEASE = '2.0.0';
 const PREVIOUS_RELEASE = '1.27.0';
@@ -148,6 +180,7 @@ const relaunchRelease = () => {
 beforeEach(() => {
   setStoredVersion(getInstalledVersion());
   Database.setItem('cache_schema_version', CACHE_SCHEMA_VERSION);
+  __resetLaunchInitForTests();
 });
 
 afterEach(() => {
@@ -224,7 +257,24 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
   it('announces nothing on a release that has nothing to announce', async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.replaceProperty(WhatsNew, 'VISIBLE_WHATS_NEW', null);
+    mockVisibleWhatsNew = null;
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+
+    expect(screen.getByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
+    expect(screen.queryByText("What's New")).not.toBeOnTheScreen();
+  });
+
+  it('stays silent on an upgrade whose archive adds nothing new', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    installUpdate();
+    // Every stamp sits at or below the stored shown-version: the archive this upgrade
+    // carries is the one the previous release already displayed
+    mockVisibleWhatsNew = {
+      version: '2.0.0',
+      items: [{ title: 'Tablet support', body: 'Athan now supported on tablets', version: '1.24.10' }],
+    };
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
@@ -260,6 +310,30 @@ describe("What's New, Friday 11 September 2026 at 14:00, with release 2.0.0 inst
 });
 
 describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
+  it('lifts the switch cover once the first content commits', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<Index />);
+
+    // A context that never showed the cover lifts nothing; the context after a switch lifts it here
+    await waitFor(() => expect(hideSwitchCover).toHaveBeenCalledTimes(1));
+  });
+
+  it('holds the switch cover while a commit runs: the remount a switch triggers commits with busy held', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(languageCommitBusyAtom, true);
+
+    try {
+      await render(<Index />);
+      await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
+
+      // The cover belongs to the reload the commit will post, not to this commit's own content
+      expect(hideSwitchCover).not.toHaveBeenCalled();
+    } finally {
+      getDefaultStore().set(languageCommitBusyAtom, false);
+    }
+  });
+
   it('lifts the splash on the first frame of a launch with no stored days', async () => {
     showEmptyLaunch();
 
@@ -504,6 +578,48 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
   });
 });
 
+describe('the launch init and the relaunch handoff, Friday 11 September 2026 at 14:00', () => {
+  beforeEach(() => {
+    mockRelaunchHandoff = false;
+  });
+
+  afterEach(() => {
+    onPlatform('ios');
+  });
+
+  it('reopens the refresh gate on a context that began as a cold launch', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    onPlatform('android');
+
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(logger.info).toHaveBeenCalledWith(
+      'NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed'
+    );
+    expect(jest.mocked(reconcileLanguageSurfaces)).toHaveBeenCalledTimes(1);
+  });
+
+  it('skips the reopen on a context that consumed a language relaunch handoff', async () => {
+    mockRelaunchHandoff = true;
+    showLondonDay('2026-09-11', '14:00');
+    onPlatform('android');
+
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(logger.info).not.toHaveBeenCalledWith(
+      'NOTIFICATION: Android cold launch, reopening the refresh gate so alarms are re-armed'
+    );
+    expect(logger.info).toHaveBeenCalledWith(
+      'APP: context began as a language relaunch, skipping the cold-launch gate reopen'
+    );
+    expect(jest.mocked(reconcileLanguageSurfaces)).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('the overlay layer, Friday 11 September 2026 at 14:00', () => {
   it('leaves an open overlay without its close control on the first frame', async () => {
     showLondonDay('2026-09-11', '14:00');
@@ -615,5 +731,24 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Close' }));
 
     expect(await screen.findByText(UPDATE_PROMPT_TITLE)).toBeOnTheScreen();
+  });
+});
+
+describe('the launch init latch', () => {
+  it('runs one init pass per process across a language-switch remount', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const mockInit = initializeNotifications as jest.Mock;
+    mockInit.mockClear();
+
+    const first = await render(<Index />);
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+    expect(mockInit).toHaveBeenCalledTimes(1);
+    first.unmount();
+
+    const second = await render(<Index />);
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+    expect(mockInit).toHaveBeenCalledTimes(1);
+
+    second.unmount();
   });
 });

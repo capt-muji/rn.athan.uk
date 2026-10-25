@@ -99,6 +99,22 @@ jest.mock('react-native-reanimated', () => {
   // The mock's own version calls no React hook: it builds a plain value, which this keeps for the component's life
   const createSharedValue = Reanimated.useSharedValue;
   const reanimated = { ...Reanimated };
+  // The real animation builder records its modifiers on a fresh instance (the static delay and duration clone
+  // via createInstance, so the exported FadeIn is never mutated); the published mock returns the same object
+  // with the argument discarded, so neither the recorded values nor a builder's bareness could be pinned.
+  // Cloned and recorded here so the mock answers what the library's own surface does
+  const animationProto = Object.getPrototypeOf(Reanimated.FadeIn);
+  const clone = (animation) => Object.assign(Object.create(Object.getPrototypeOf(animation)), animation);
+  animationProto.delay = function delay(delayMs) {
+    const delayed = clone(this);
+    delayed.delayV = delayMs;
+    return delayed;
+  };
+  animationProto.duration = function duration(durationMs) {
+    const timed = clone(this);
+    timed.durationV = durationMs;
+    return timed;
+  };
   // As in react-native-reanimated/src/hook/useSharedValue.ts: a function initial value is called once on mount, and
   // the value's animation is cancelled on unmount
   reanimated.useSharedValue = (initialValue) => {

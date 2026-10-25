@@ -54,7 +54,7 @@ ANCHOR = re.compile(r"Alarm\{[^}]*\}")
 ENTRY = re.compile(r"#\d+: Alarm\{")
 # The package is the last field of the anchor: Alarm{<hash> type <n> when <epoch> <package>}.
 # Reading it out and comparing it whole is what keeps a side-by-side install
-# (com.example.athan.fleettest) from counting as the store app's alarms.
+# (`${APP_ID}.fleettest`) from counting as the store app's alarms.
 OWNER = re.compile(r"Alarm\{\S+ type \d+ when -?\d+ (\S+)\}")
 WHEN = re.compile(r"when=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")
 TRIGGER = re.compile(r"triggerTime=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})")

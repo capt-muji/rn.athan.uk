@@ -10,6 +10,7 @@ import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, OVERLAY } from '@/shared/constants';
+import { t } from '@/shared/i18n';
 import { perfMeasure } from '@/shared/perf';
 import { closeOverlay, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
@@ -19,7 +20,7 @@ import { measurementsListAtom } from '@/stores/ui';
  *
  * No content is duplicated and NOTHING visual sits over the page. This layer
  * owns only input (the press-catcher with the selected row exempt) and the
- * extras explanation box, faded by a derived opacity.
+ * extras explanation box, whose face and inks fade inside itself.
  */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
@@ -94,7 +95,7 @@ export default function Overlay() {
   });
 
   return (
-    <Reanimated.View testID='overlay-layer' style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
+    <Reanimated.View testID={'overlay-layer'} style={[styles.container, computedStyleContainer, layerOpacityStyle]}>
       {/* Press-catcher: everything except the selected row closes the overlay.
           All four regions share one name deliberately — they are one dismiss
           target split only for hit-testing around the exempt row, so wherever
@@ -105,9 +106,12 @@ export default function Overlay() {
         <Pressable
           key={region.id}
           onPress={handleClose}
-          accessibilityRole='button'
-          accessibilityLabel='Close prayer details'
-          style={[styles.catcher, { top: region.top, left: region.left, width: region.width, height: region.height }]}
+          accessibilityRole={'button'}
+          accessibilityLabel={t('overlay.closeDetails')}
+          style={[
+            styles.catcher,
+            { top: region.top, transform: [{ translateX: region.left }], width: region.width, height: region.height },
+          ]}
         />
       ))}
     </Reanimated.View>
@@ -118,9 +122,12 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     bottom: 0,
+    // The catchers carry window-space pageX offsets; the pinned Yoga resolves an
+    // inset-less absolute against its containing node's direction, so this one holds them physical
+    direction: 'ltr',
     zIndex: OVERLAY.zindexes.overlay,
   },
   catcher: {

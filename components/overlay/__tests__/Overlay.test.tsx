@@ -6,10 +6,12 @@
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
-import { BackHandler, DeviceEventEmitter } from 'react-native';
+import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { ANIMATION } from '@/shared/constants';
+import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
@@ -88,7 +90,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // The display value is the rule itself (ai/AGENTS.md, Performance Design Rule 4): the layer stays displayed
+  // The display value is the rule itself (the retired ai/AGENTS.md (git history), Performance Design Rule 4): the layer stays displayed
   // through the close fade and is hidden only once it has run, whatever a screen reader is told meanwhile
   // [milliseconds into the close fade, the layer's display]
   it.each<[number, 'flex' | 'none']>([
@@ -121,11 +123,11 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(closeTargets()).toHaveLength(4);
   });
 
-  // [selected index, prayer, explanation, Arabic explanation]
+  // [selected index, prayer, explanation]
   it.each([
-    [0, 'Midnight', 'Halfway between Magrib and Fajr', 'نصف الليل بين المغرب والفجر'],
-    [4, 'Istijaba', '1 hour before Magrib (Fridays only)', 'ساعة قبل المغرب (الجمعة فقط)'],
-  ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english, arabic) => {
+    [0, 'Midnight', 'Halfway between Magrib and Fajr'],
+    [4, 'Istijaba', '1 hour before Magrib (Fridays only)'],
+  ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english) => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(
@@ -139,7 +141,30 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByText(name)).toBeVisible();
     expect(screen.getByText(english)).toBeVisible();
-    expect(screen.getByText(arabic)).toBeVisible();
+  });
+
+  it('raises the explanation inks from the card surface as the box reveals', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    await render(
+      <>
+        <Overlay />
+        <OverlayInfoBox type={ScheduleType.Extra} />
+      </>
+    );
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await act(() => openOverlay(ScheduleType.Extra, 0));
+
+    // The reveal drives the face's fade and the inks' rise from the card's own surface; the
+    // placer itself no longer fades, so nothing that holds text carries an opacity
+    expect(
+      interpolateColor.mock.calls.filter(
+        (call) => (call[2] as unknown as readonly string[])[0] === COLORS.surface.elevated
+      ).length
+    ).toBeGreaterThanOrEqual(2);
+    const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
+    expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
   });
 
   // [action, open before the action, the action, the measure, the mark it measures from]
@@ -155,6 +180,29 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     await act(() => change());
 
     expect(perfMeasure).toHaveBeenLastCalledWith(measure, startMark);
+  });
+
+  // R4.1: pageX and pageY never mirror, so each catcher keeps its measured left as a transform
+  // under the layer's left-to-right containing view rather than as a swappable inset
+  it('pins every Close catcher at its measured left edge through a transform, with no left key', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    await render(<Overlay />);
+    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
+
+    const { width, height } = Dimensions.get('window');
+    const regions = buildCatcherRegions({ windowWidth: width, windowHeight: height, list: LIST, rowIndex: DHUHR });
+    const catchers = closeTargets();
+
+    expect(catchers).toHaveLength(regions.length);
+    catchers.forEach((catcher, index) => {
+      const style = StyleSheet.flatten(catcher.props.style) as {
+        left?: unknown;
+        transform?: { translateX?: number }[];
+      };
+      expect(style.transform?.[0]).toEqual({ translateX: regions[index].left });
+      expect(style.left).toBeUndefined();
+    });
   });
 });
 
