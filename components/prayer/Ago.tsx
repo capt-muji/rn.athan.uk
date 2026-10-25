@@ -33,7 +33,8 @@ export default function PrayerAgo({ type }: Props) {
   return <PrayerAgoBadge prayerAgo={prayerAgo} minutesElapsed={minutesElapsed} />;
 }
 
-function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
+// Exported so tests render the real badge, the calculatePrayerAgo precedent (hooks/usePrayerAgo.ts:19)
+export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
 
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
@@ -78,7 +79,8 @@ function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minu
         { display: hiddenSettled ? 'none' : 'flex' },
         prayerAgoColorStyle,
         prayerAgoBackgroundStyle,
-      ]}>
+      ]}
+      numberOfLines={1}>
       {prayerAgo}
     </Animated.Text>
   );

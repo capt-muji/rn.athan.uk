@@ -1,17 +1,18 @@
 /**
  * The badge saying how long ago the prayer above next was: its lettered words, when it shows
- * nothing, and its fade under the overlay
+ * nothing, its fade under the overlay, and its one-line pin in every shipped locale
  */
 
 import { act, render, screen } from '@testing-library/react-native';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { ANIMATION } from '@/shared/constants';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { tIn } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
-import PrayerAgo from '../Ago';
+import PrayerAgo, { PrayerAgoBadge } from '../Ago';
 
 const ASR = 3;
 
@@ -93,5 +94,22 @@ describe('the Standard badge with no prayer above next to measure from', () => {
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
+  });
+});
+
+describe('the badge pinned to one line in every shipped locale', () => {
+  // Hindi wraps the badge into a cropped second line on Android when the text element goes
+  // unconstrained, so the badge caps itself and every locale's sentence must survive the cap
+  it.each(LOCALE_IDS)('renders the %s sentence whole on one line', async (locale) => {
+    const composed = tIn(locale, 'time.ago', {
+      name: tIn(locale, 'prayer.fajr'),
+      duration: '\u206658m\u2069',
+    });
+
+    await render(<PrayerAgoBadge prayerAgo={composed} minutesElapsed={10} />);
+
+    const badge = screen.getByText(composed);
+    expect(badge).toBeOnTheScreen();
+    expect(badge.props.numberOfLines).toBe(1);
   });
 });
