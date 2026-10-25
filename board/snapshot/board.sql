@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict QvFuSyHdxJbZuZC004Lv3OloQXpgMOon1lXwUeCjBOG2ncebHJwOT2Cv4i4HJXk
+\restrict HP8k648hC2ngGVg1bd4U3LrHx7vEGUamjsrKhcocViQ9gfSsTuiAyrbZKPuCZad
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5612,6 +5612,15 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-13, audited: Latin digits render in every language and the countdown timer is one design everywhere - fixed-width colon sections, dim gapped colons, dim 00 groups, no unit letters under any locale, the ago badge''s duration colon-shaped with the `now` word kept, the en reminder titles and channel labels keeping their row 72 unit word; the digit map (app and widget) is deleted with its tests; rows 79/81''s refinements land on this baseline; row 76(a) and row 67''s digit-map half are superseded; three-reviewer audit fixed the stale lettered prose, a cannot-fail negative and the formatTime pass-through, and carried two widget/break-script nices; simulator-proven under en and ar
 
 Needs first: #81, #82, #4, #79', NULL, NULL, NULL, 38000, '2026-10-18 23:35:56.490061+00', '2026-10-19 02:54:08.198021+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (347, 1, 347, 8, 10, 'The README catches up with the app: every user-facing change since 1.0.0 walks the git history into the page', 'Goal: the README reflects the app as it ships today - its content dates to the earliest line, and the walk from 1.0.0 through the 1.2.x store era, the 1.24-1.29 rebuild, the 2.x restructure and this week''s 2.4.37 release changed a great deal of what a reader would want to know.
+
+Where: README.md, written from the git history - the survey walks the log from the first commit (2024-10-26) to the 2.4.37 release cut, naming every user-facing change: features (schedules, overlay, qibla, widgets, notifications, locales, What''s New, offline behaviour), platforms and requirements, and the London-only scope with its invariants.
+
+Acceptance:
+- [ ] every user-facing feature the history records is named in the README, grouped as a reader wants them
+- [ ] nothing the README claims is stale - each claim checked against the current build
+- [ ] the survey''s source list (the commits or ranges each section came from) is recorded on this ticket
+- [ ] yarn validate green', NULL, NULL, NULL, 4500, '2026-10-25 05:56:30.556803+00', '2026-10-25 05:56:30.611884+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (58, 1, 83, 9, 4, 'The time-ago badge: the countdown''s lettered format', 'OWNER RULING 2026-10-15 (the owner decided; the row leaves DEFERRED into the backlog): the badge takes the countdown timer''s lettered format EXACTLY as the old design held it - hours and minutes only, no seconds: `5h 20m` at five hours twenty, `33m` under an hour, the unpadded Latin digits and lowercase h m letters FIXED in every language (they never localise), only the surrounding words localising (the ago word, the `now` word under 60 seconds, from the catalogs). Lineage: the badge''s colon shape was row 82''s; this reverses it on the same grounds as row 85. Shares `shared/time.ts` with row 85: plans and runs after 85 lands. READY plan: `ai/plans/83-ago-letters/` (planned at `d9a4408a` 2.0.734 on the lane''s uat anchor; one code step: the lettered duration fixed Latin with the old composer''s zero-minute drop, the badge''s letters riding row 85''s ruled typography at the badge''s own ruled weak-glyph ink 0.4, `splitSingleColon` kept for the row time, the catalogs untouched)
 
 Status note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence
@@ -9876,6 +9885,10 @@ The verdict. The mock-churn hypothesis for the FRAME failures is refuted by expe
 What the re-planned step must do: separate the compositor from the encoder (a same-tap SurfaceFlinger latency capture beside the video recording - a harness change with its own commit - or an equivalent present-timestamp read inside a recorded run); rebuild a pre-2.4.11 baseline-era anchor and measure it tonight to date the dead zone''s entry against the September floor passes; and hold the baselines honest until then - mock-window discipline stays binding for any mock-env audit (evening seeds minutes from boundaries, the stock 3s pre-tap close unusable on mock), floor verdicts only from prod-env or boundary-far runs. The committed flows'' APP_ID breakage and stale tap points remain open harness debt as Step 4 recorded. Evidence dirs, worktree-local and untracked: prod-p1-overlay-open-032014, prod-p1-overlay-close-032035, prod-p1-sheet-alert-open-032057, prod-p1-sheet-settings-open-032119, prod-p2-overlay-open-032155, prod-p2-overlay-close-032216, prod-p2-sheet-alert-open-032238, prod-p2-sheet-settings-open-032300. The lane branch stands at 2.4.25 (4ffd1f34); no commit was needed - no harness file was touched, the 1s variant lived in session temp.', NULL, '2026-10-25 03:38:25.648143+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-25 05:37:10.057+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3337, 327, 'activity', 'owner', NULL, 'comment_edited', '2026-10-25 05:37:10.058164+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3338, 327, 'activity', 'owner', NULL, 'comment_edited', '2026-10-25 05:37:10.060697+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3339, 347, 'activity', 'owner', NULL, 'created', '2026-10-25 05:56:30.571308+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3340, 347, 'activity', 'owner', NULL, 'label_add', '2026-10-25 05:56:30.614529+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 194, "value": "#347"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3341, 347, 'activity', 'owner', NULL, 'label_add', '2026-10-25 05:56:30.614529+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 147, "value": "Docs"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3342, 347, 'activity', 'owner', NULL, 'label_add', '2026-10-25 05:56:30.614529+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "docs"}}', NULL);
 
 
 --
@@ -10564,6 +10577,9 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (346, 193);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (346, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (346, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (346, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (347, 194);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (347, 147);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (347, 9);
 
 
 --
@@ -11207,6 +11223,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (741, 346, 10, 'Deferred', 'started', '2026-10-25 05:27:14.749+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (731, 344, 3, 'In progress', 'started', '2026-10-25 04:08:16.427+00', '2026-10-25 05:36:11.538925+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (742, 344, 4, 'Done', 'completed', '2026-10-25 05:36:11.538925+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (743, 347, 10, 'Deferred', 'started', '2026-10-25 05:56:30.556+00', NULL);
 
 
 --
@@ -11559,6 +11576,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (191, 1, 3, '#344', '#ffffff', '2026-10-25 04:08:16.431923+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (192, 1, 3, '#345', '#ffffff', '2026-10-25 05:15:26.942442+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (193, 1, 3, '#346', '#ffffff', '2026-10-25 05:27:14.741524+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (194, 1, 3, '#347', '#ffffff', '2026-10-25 05:56:30.55117+00');
 
 
 --
@@ -11869,7 +11887,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 347, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 348, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -25752,6 +25770,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:309', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:310', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:278', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:277', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3996);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:340', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:281', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:33', 1, 88);
@@ -25766,7 +25785,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:4', 1, 93);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:300', 1, 19);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:335', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:346', 1, 11);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 3991);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:326', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:311', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:295', 1, 73);
@@ -25781,6 +25799,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:296', 1, 64)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:318', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:344', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:306', 1, 49);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:347', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:314', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:307', 1, 17);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:302', 1, 52);
@@ -26061,7 +26080,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3338, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3342, true);
 
 
 --
@@ -26117,7 +26136,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 612, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 346, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 347, true);
 
 
 --
@@ -26138,7 +26157,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 124, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 742, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 743, true);
 
 
 --
@@ -26173,7 +26192,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 193, true);
+SELECT pg_catalog.setval('public.label_id_seq', 194, true);
 
 
 --
@@ -30621,5 +30640,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict QvFuSyHdxJbZuZC004Lv3OloQXpgMOon1lXwUeCjBOG2ncebHJwOT2Cv4i4HJXk
+\unrestrict HP8k648hC2ngGVg1bd4U3LrHx7vEGUamjsrKhcocViQ9gfSsTuiAyrbZKPuCZad
 
