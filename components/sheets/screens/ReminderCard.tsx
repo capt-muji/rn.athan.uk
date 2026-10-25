@@ -138,7 +138,13 @@ export default function ReminderCard({
       {/* The floor's measurer: the English pair under the English typography and the active pair under the
           card's own, each drawn exactly as the segment labels draw so the widths reported are the widths
           the options will render */}
-      <View testID={'reminder-measurer'} style={styles.measurer} pointerEvents={'none'}>
+      <View
+        testID={'reminder-measurer'}
+        style={styles.measurer}
+        pointerEvents={'none'}
+        // TalkBack focuses alpha-0 text, so hiding by sight alone would read four phantom labels per card
+        accessibilityElementsHidden={true}
+        importantForAccessibility={'no-hide-descendants'}>
         <Text testID={'reminder-baseline-silent'} style={styles.measuredBaseline} onTextLayout={measureBaselineText}>
           {en['alert.option.silent']}
         </Text>

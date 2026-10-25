@@ -18,9 +18,10 @@ const layOutRow = async (width: number) =>
     nativeEvent: { layout: { x: 0, y: 0, width, height: 34 } },
   });
 
-/** One measurer text reporting its first line's width */
+/** One measurer text reporting its first line's width. The measurer hides from screen readers, so the
+ * harness reads it back with hidden elements included - the phone measures text accessibility cannot see */
 const measure = async (id: string, lines: Array<{ width: number }>) =>
-  await fireEvent(screen.getByTestId(id), 'textLayout', { nativeEvent: { lines } });
+  await fireEvent(screen.getByTestId(id, { hidden: true }), 'textLayout', { nativeEvent: { lines } });
 
 /** Every measurement the card needs, with the English pair always at its own widths */
 const driveMeasurements = async (active: readonly [number, number]) => {
@@ -161,12 +162,15 @@ describe("the reminder rows' minimum under the locales the ticket names", () => 
 });
 
 describe('the measurer the floor is computed from', () => {
-  it('is invisible and cannot be touched', async () => {
+  it('is invisible, cannot be touched and stays out of the screen reader\u2019s order', async () => {
     await renderCard();
 
-    const measurer = screen.getByTestId('reminder-measurer');
+    const measurer = screen.getByTestId('reminder-measurer', { hidden: true });
     expect(measurer).toHaveStyle({ position: 'absolute', opacity: 0 });
     expect(measurer.props.pointerEvents).toBe('none');
+    // TalkBack focuses alpha-0 text; the measurer would read four phantom labels per card
+    expect(measurer.props.accessibilityElementsHidden).toBe(true);
+    expect(measurer.props.importantForAccessibility).toBe('no-hide-descendants');
   });
 
   it('carries the active locale\u2019s own pair beside the English baseline', async () => {
@@ -174,10 +178,10 @@ describe('the measurer the floor is computed from', () => {
     try {
       await renderCard();
 
-      expect(screen.getByTestId('reminder-active-silent').props.children).toBe('Aamusan');
-      expect(screen.getByTestId('reminder-active-sound').props.children).toBe('Dhawaaq');
-      expect(screen.getByTestId('reminder-baseline-silent').props.children).toBe('Silent');
-      expect(screen.getByTestId('reminder-baseline-sound').props.children).toBe('Sound');
+      expect(screen.getByTestId('reminder-active-silent', { hidden: true }).props.children).toBe('Aamusan');
+      expect(screen.getByTestId('reminder-active-sound', { hidden: true }).props.children).toBe('Dhawaaq');
+      expect(screen.getByTestId('reminder-baseline-silent', { hidden: true }).props.children).toBe('Silent');
+      expect(screen.getByTestId('reminder-baseline-sound', { hidden: true }).props.children).toBe('Sound');
     } finally {
       setActiveLocale('en');
     }
@@ -188,7 +192,7 @@ describe('the measurer the floor is computed from', () => {
 
     // Under en the card draws 'Sound' four ways: the row label, the segment's own label, and the
     // measurer's baseline and active copies. The measurer must match the segment, not the row label
-    const sounds = screen.getAllByText('Sound');
+    const sounds = screen.getAllByText('Sound', { hidden: true });
     const segment = StyleSheet.flatten(sounds[1].props.style);
     const baseline = StyleSheet.flatten(sounds[2].props.style);
     const active = StyleSheet.flatten(sounds[3].props.style);
