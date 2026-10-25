@@ -691,7 +691,7 @@ export const COLORS = {
     /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
     secondary: '#6c79c2',
     /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
-    labelHome: '#5b648b',
+    labelHome: '#6c79c2',
     /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
     labelOverlay: '#585c8c',
     /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
