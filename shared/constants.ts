@@ -875,9 +875,8 @@ export const COLORS = {
       face: 'rgba(54, 44, 62, 1)',
       medallion: 'rgba(66, 53, 72, 1)',
       structure: '228, 192, 134',
-      /** The old rgba(228,192,134,.5) flattened over the facing face */
-      /** The old rgba(228,192,134,.5) at its 0.5 fillOpacity flattened over this face (the previous value sat over the away face by mistake) */
-      ink: '#6a5858',
+      /** The old rgba(146,184,228,.45) flattened over the facing face, so the numbers keep their dim blue in both states (owner order 2026-10-25) */
+      ink: '#5f6b89',
       accent: 'rgba(247, 191, 74, 1)',
       kaaba: 'rgba(32, 25, 48, 1)',
     },

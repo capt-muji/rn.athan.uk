@@ -2333,10 +2333,10 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
         '#4b4c63',
         '#4b4c63',
         '#4b4c63',
-        '#6a5858',
-        '#6a5858',
-        '#6a5858',
-        '#6a5858',
+        '#5f6b89',
+        '#5f6b89',
+        '#5f6b89',
+        '#5f6b89',
       ]);
       for (const degree of degrees) {
         expect(degree.fontSize).toBeGreaterThan(0);
