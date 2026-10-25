@@ -29,7 +29,7 @@
     "expo": {
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
-      "enabled": false
+      "enabled": true
     },
     "servers": {
       "codegraph": {
