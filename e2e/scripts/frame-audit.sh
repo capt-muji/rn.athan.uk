@@ -21,6 +21,10 @@
 #     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
 #     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
 #     boundary is near, so the default is mock-safe (README Gotchas).
+#   SF_OFFSET=<seconds>
+#     Overrides the per-capture clock anchor when it read LOW (an anchor tap
+#     that closes a sheet presents late). Offsets cannot decrease, so the
+#     highest coherent reading across a session is the true one.
 #
 # Modes (FRAME_AUDIT):
 #   dual (default)  -> video + SF read of the same tap, gap lists side by
@@ -73,7 +77,9 @@ if [[ $MODE == sf ]]; then
   python3 - "$OUT/latency.txt" << 'EOF' || verdict=$?
 import sys
 lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
-pts = sorted(int(f[1]) for f in lines if int(f[1]) != 0)
+# Third column = actual present timestamp; the trailing sentinel row
+# (INT64_MAX) and never-presented rows (0) fall to the bounds.
+pts = sorted(int(f[2]) for f in lines if 0 < int(f[2]) < 2**62)
 # Every quantity below is MILLISECONDS. The thresholds were once written in
 # seconds, which discarded every real frame gap before the verdict and left
 # all() over an empty list, so this branch could only ever print PASS.
@@ -107,9 +113,10 @@ REC=$!
 sleep 0.5
 adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
 if [[ $MODE == dual ]]; then
-  # Device-clock anchor for the SF read: /proc/uptime rides the same monotonic
-  # clock the present timestamps use (a measuring phone never suspends), read
-  # immediately after the tap so the SF window can open at the tap itself.
+  # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
+  # immediately after the tap. SF presents ride CLOCK_MONOTONIC, so this read
+  # alone cannot open the SF window: the per-capture anchor measured below
+  # supplies the suspend offset, and the pairing subtracts it.
   adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
 fi
 wait $REC 2>/dev/null || true
@@ -132,6 +139,35 @@ if [[ $MODE == dual ]]; then
   fi
   adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
     > "$OUT/latency.txt" 2>&1
+  # Per-capture suspend offset (boottime - monotonic): every phone that has
+  # ever suspended carries one (this 3T: ~8047s) and every doze between
+  # captures grows it. Clear the ring, tap the prayer row (any transition presents),
+  # read uptime in the SAME shell, then dump: offset = uptime - first present
+  # after the clear (+-50ms vsync and read lag). An anchor tap that CLOSES a
+  # sheet presents late and reads the offset LOW (275-296ms on glass);
+  # offsets cannot decrease, so across captures the highest coherent reading
+  # is the true one — SF_OFFSET (seconds) overrides a polluted read without
+  # a re-capture, recorded in anchor_note.txt.
+  if [[ -n ${SF_OFFSET:-} ]]; then
+    echo "SF_OFFSET override: ${SF_OFFSET} (per-capture anchor not measured)" > "$OUT/anchor_note.txt"
+    echo "$SF_OFFSET" > "$OUT/anchor_offset.txt"
+    echo "anchor offset: ${SF_OFFSET}s (SF_OFFSET override)"
+  else
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency-clear '$LAYER'"
+    adb -s "$SERIAL" shell "input tap 540 1012; cat /proc/uptime" > "$OUT/anchor_uptime.txt"
+    sleep 1.2
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
+      > "$OUT/anchor_latency.txt" 2>&1
+    AUP=$(head -1 "$OUT/anchor_uptime.txt" | awk '{print $1}')
+    AFP=$(awk 'NF==3 && $3+0>0 && $3+0<4611686018427387904 {print $3; exit}' \
+      "$OUT/anchor_latency.txt")
+    if [[ -n "$AFP" && "$AFP" != "0" ]]; then
+      python3 -c "print(f'{$AUP - $AFP/1e9:.3f}')" > "$OUT/anchor_offset.txt"
+      echo "anchor offset: $(cat "$OUT/anchor_offset.txt")s (highest coherent reading wins across captures)"
+    else
+      echo "anchor FAILED: no present after the ring clear (anchor tap hit nothing that transitions?) — set SF_OFFSET from the session's highest coherent reading, or re-run"
+    fi
+  fi
 fi
 
 ffprobe -select_streams v -show_entries frame=pts_time -of csv=p=0 "$OUT/rec.mp4" 2>/dev/null > "$OUT/pts.txt"
@@ -195,19 +231,28 @@ out = sys.argv[1]
 pts = [float(l.strip().rstrip(',')) for l in open(f"{out}/pts.txt") if l.strip()]
 tap = [p for p in pts if p >= 0.45]
 
-# SF read (the compositor's word): present timestamps are nanoseconds since
-# boot on the same monotonic clock /proc/uptime reads.
+# SF read (the compositor's word): the third latency column is the actual
+# present timestamp, nanoseconds on CLOCK_MONOTONIC. /proc/uptime rides
+# CLOCK_BOOTTIME (suspend included), so the tap's monotonic time is the
+# boottime read minus the per-capture suspend offset. The trailing sentinel
+# row (INT64_MAX) and never-presented rows (0) fall to the bounds.
 try:
-    uptime = float(open(f"{out}/tap_uptime.txt").read().split()[0])
-except (IndexError, ValueError):
-    print("SEPARATION: NO DATA — no tap clock anchor, this is not a pass")
+    tap_boot = float(open(f"{out}/tap_uptime.txt").read().split()[0])
+    offset = float(open(f"{out}/anchor_offset.txt").read().split()[0])
+except (OSError, IndexError, ValueError):
+    print("SEPARATION: NO DATA — no clock anchor (tap_uptime.txt or"
+          " anchor_offset.txt; a failed per-capture anchor needs SF_OFFSET"
+          " or a re-run); this is not a pass")
     sys.exit(1)
 rows = [l.split() for l in open(f"{out}/latency.txt")]
-sf = sorted(int(r[1]) for r in rows if len(r) == 3 and int(r[1]) != 0)
+presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) < 2**62))
+tap_mono = tap_boot - offset
 
-# Every quantity below is MILLISECONDS, video tap-relative (0 = the tap).
+# Every quantity below is MILLISECONDS, video tap-relative (0 = the tap). The
+# SF window opens 50ms BEFORE the tap: the anchor carries +-50ms of vsync and
+# read lag, so the entrance's first presents may sit slightly before it.
 vms = [(p - 0.5) * 1000 for p in tap]
-sms = [(t / 1e9 - uptime) * 1000 for t in sf if t / 1e9 >= uptime]
+sms = [(t / 1e9 - tap_mono) * 1000 for t in presents if t / 1e9 >= tap_mono - 0.05]
 
 def dead_zones(times):
     # A dead zone is a gap past the 34ms floor that dense frames still follow
@@ -228,10 +273,11 @@ vdead = dead_zones(vms)
 sdead = dead_zones(sms)
 
 fmt = lambda zones: [f"{g:.0f}ms@+{a:.0f}" for g, a in zones] or "NONE"
+print("SF window:", len(sms), "presents of", len(presents), "in ring")
 print("video dead zones (encoder):", fmt(vdead))
 print("SF dead zones (compositor):", fmt(sdead))
 if vms and sms:
-    print(f"first draw: video {vms[0]:.0f}ms after tap, SF {sms[0]:.0f}ms after tap")
+    print(f"first draw: video {vms[0]:.0f}ms after tap, SF {sms[0]:.0f}ms after tap (+-50ms anchor)")
 
 if len(tap) < 2:
     print("SEPARATION: NO DATA — the video read is empty (capture wedge? REBOOT;"
