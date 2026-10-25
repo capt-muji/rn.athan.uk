@@ -122,5 +122,9 @@
   {
     "version": "2.4.41",
     "reason": "2026-10-25 lane T-345's layout-math commit steps from uat's 2.4.40 while lane T-347's README stamp holds 2.4.41; the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.42",
+    "reason": "2026-10-25 lane T-345's wiring commit steps from its 2.4.41 tip while lane T-347's audit correction holds 2.4.42; the standing ruling: each merge renumbers above whatever uat then carries"
   }
 ]
