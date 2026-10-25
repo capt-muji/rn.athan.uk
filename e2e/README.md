@@ -209,15 +209,22 @@ verification, never infer visuals from pixels alone.
   `$APP_ID/$APP_ID.MainActivity#0` and the
   hash-prefixed variant from `dumpsys SurfaceFlinger --list`. The dual
   frame-audit resolves the layer from `--list` itself for this reason.
-- **The dual read pairs two clocks, both anchored at the tap**: the video's
-  tap sits at 0.5s of recording by construction, and the script reads
-  `/proc/uptime` on the device right after the tap to open the SF window at
-  the same instant (the phone never suspends while measuring, so uptime and
-  the present timestamps ride one monotonic clock). The SF dump must land
-  AFTER the recorded animation — tap, animation, then dump: the ring holds
-  only ~127 presents and an idle layer presents nothing, so the ring still
-  covers the entrance, while a dump before the tap reads an idle layer and
-  prints NO DATA.
+- **The dual read pairs two clocks through a measured offset**: the video's
+  tap sits at 0.5s of recording by construction, but SF present timestamps
+  ride CLOCK_MONOTONIC while `/proc/uptime` rides CLOCK_BOOTTIME (suspend
+  included) — a phone that has ever suspended carries the difference as a
+  growing offset (this 3T: ~8047s), so the script measures it per capture
+  (ring clear, anchor tap on the prayer row, uptime read in the same shell,
+  then dump; offset = uptime - first present, +-50ms vsync and read lag) and
+  subtracts it from the tap's boottime read. Dozes between captures grow the
+  offset, and an anchor tap that CLOSES a sheet presents 275-296ms late and
+  reads it LOW: offsets cannot decrease, so across a session the highest
+  coherent reading is the true one, and `SF_OFFSET=<seconds>` overrides a
+  polluted read without a re-capture. The SF dump must land AFTER the
+  recorded animation — tap, animation, then dump: the ring holds only ~127
+  presents and an idle layer presents nothing, so the ring still covers the
+  entrance, while a dump before the tap reads an idle layer and prints
+  NO DATA.
 - **The pre-tap settle wait is mock-tuned**: `PRE_TAP` opens the overlay
   before a close audit records the closing tap, and `PRE_TAP_WAIT` (default
   1s) is the entrance's settle time. The stock 3s wait is unusable on mock:
