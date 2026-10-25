@@ -52,7 +52,7 @@ describe('the lettered countdown on the Standard schedule', () => {
         { includeSelf: true }
       )
       .at(0);
-    expect(flattenStyle(container?.props.style).marginBottom).toBe(60);
+    expect(flattenStyle(container?.props.style).marginBottom).toBe(48);
   });
   it('names Asr and renders the unpadded groups with their lowercase letters, at 2h29m', async () => {
     showLondonDay('2026-09-11', '14:00');
@@ -189,7 +189,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     // The label's static entry carries the home ink: the tween's entry commits after this
     // frame, so the rest face reads from the style array's static element
     const nameStyle = flattenStyle((name.props.style as unknown[])[0]);
-    expect(nameStyle.color).toBe('#7485b9');
+    expect(nameStyle.color).toBe('#6c7aae');
     expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
     expect(nameStyle.textShadowRadius).toBe(6);
     // The second entry is the ink tween itself: dropped from the array, the home ink never flips
@@ -207,7 +207,7 @@ describe('the lettered countdown on the Standard schedule', () => {
     // the tuned pair and nothing else: the ink flips with the overlay and back
     const labelTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#7485b9', '#7173bc'].join())
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c7aae', '#7173bc'].join())
         .map((call) => call[0]);
 
     expect(labelTween().at(-1)).toBe(0);

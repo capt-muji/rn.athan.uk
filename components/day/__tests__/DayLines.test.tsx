@@ -100,7 +100,7 @@ describe("the location label's ink", () => {
 
     // The static entry carries the home ink; the tween's entry commits after this frame
     const [locationStatic] = screen.getByText('London, UK').props.style as unknown[];
-    expect(flattenStyle(locationStatic).color).toBe('#7485b9');
+    expect(flattenStyle(locationStatic).color).toBe('#6c7aae');
     // The second entry is the ink tween itself: dropped from the array, the home ink never flips
     expect(screen.getByText('London, UK').props.style).toHaveLength(2);
   });
@@ -112,7 +112,7 @@ describe("the location label's ink", () => {
 
     const locationTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#7485b9', '#7173bc'].join())
+        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c7aae', '#7173bc'].join())
         .map((call) => call[0]);
 
     expect(locationTween().at(-1)).toBe(0);
