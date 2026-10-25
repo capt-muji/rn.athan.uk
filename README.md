@@ -10,25 +10,38 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 
 ## Features
 
-- Six daily prayers plus five extra times (Midnight, Last Third, Suhoor, Duha, Friday Istijaba) with a live countdown to the next prayer.
-- The schedule rolls over after the last prayer of the day instead of midnight. Tomorrow sits one swipe away.
-- Fully offline after the first sync. The whole year is cached in MMKV, and an unreadable time shows `--:--`, never a guess.
-- Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
-- Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
-- Qibla compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for.
-- Settings: large overlay font, Hijri date, Arabic prayer names, seconds, seasonal decorations, countdown bar, color picker.
-- Folding iPhone (Duo) support: held tall on the open inner display the app renders top-down across both panels with no letterbox, and there is no wide mode - the wide hold keeps the system's centered portrait frame.
+- **Prayer times and schedules.** Six daily times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) plus five extras (Midnight, Last Third, Suhoor, Duha, Friday Istijaba) with a live countdown that rounds up, never showing 0 seconds, and holds true across the clock changes. The schedule rolls over after Isha instead of midnight, tomorrow sits one swipe away, and the Extras page keeps its canonical order. An unreadable time shows `--:--`, never a guess; a passed prayer shows how long ago it was.
+- **The prayer overlay.** Tapping a row opens the overlay for that prayer: the date, what the prayer is, and tomorrow's time. A lock in the final seconds before a prayer keeps the overlay from fighting the transition.
+- **Notifications.** Selectable athan audio: 32 public recordings, each credited in the picker with an in-app preview. Two reminder slots per prayer, 5 to 30 minutes ahead, never outrunning their athan. Alarms arm whole, in time order, against the 64-request budget with deterministic IDs so they never double-fire. Android triggers ask for alarm-clock delivery and play on the alarm stream, and re-arm on cold launch and reboot.
+- **Widgets.** Home screen widgets on iOS and Android, Lock Screen widgets on iOS, in standard and Extra Times variants: Light and Dark fixed at placement, self-refreshing, minute-ceil countdown labels, mirroring the in-app settings, and a stale card that says so when times run out. Widgets need a development or production build (iOS 16.4+), not Expo Go.
+- **Qibla.** A compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for. Android reads Google's fused orientation behind a forced wave; iPhone draws inside its reported accuracy cone.
+- **Languages.** English, Arabic, Malay, Somali, Hindi and Thai, picked in Settings under each language's own name. Arabic, Hindi and Thai render in their own scripts and typefaces, dates compose per locale with Latin digits everywhere, and RTL layouts mirror, down to the schedule pager and the widgets.
+- **What's New.** A store update opens a versioned changelog, grouped by release with the newest first. A release that adds nothing ships silent by construction. The changelog re-opens from Settings any time.
+- **Settings.** Hijri date, countdown seconds, the passed-time display, seasonal decorations while in season, the countdown bar's colour, and per-schedule athan and reminder sounds. Every setting mirrors to the widgets.
+- **Offline first.** Fully offline after the first sync: the whole year caches in MMKV, December prefetches next year, and the stored day renders in airplane mode.
+- **Help.** An in-app help page answers the common questions, including why widgets need a real build, in every shipped language.
+- **Tablets.** A centred content column on iPad and Android tablets, portrait-locked on iPad, with compact centred modals.
+- **Update prompt.** An old install is pointed at the stores when a new release lands.
+- **Folding iPhone (Duo) support:** held tall on the open inner display the app renders top-down across both panels with no letterbox, and there is no wide mode - the wide hold keeps the system's centered portrait frame.
 
 Prayer times come from [London Prayer Times](https://www.londonprayertimes.com/). Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
 
+## London-only, by design
+
+The app serves London and nothing else. No accounts, no cloud sync, no location access for prayer times.
+
+Three invariants hold across the whole codebase: the API is the source of truth for prayer times, the app works fully offline after the first sync, and notifications fire on time while backgrounded. Times are true UTC instants on the `Europe/London` calendar; the extras' night times are computed from Maghrib and Fajr, never stored; and a prayer time is never substituted, averaged or copied from another day.
+
+## Platforms and requirements
+
+- iOS 16.4 or later; Android 7 and later (a bundled TLS 1.3 module covers Android 9 and below).
+- iPhone, iPad and Android phones and tablets; the widgets need a development or production build, not Expo Go.
+- Both stores carry the app; the 2.4.39 release line is live on iOS and Android.
+
 ## Known limitations
 
-- On some Android phones (ColorOS / OxygenOS), at-time alerts can arrive about a minute late. The fix is built and proven on test devices; it ships with the next store release.
+- On some Android phones (ColorOS / OxygenOS), at-time alerts used to arrive about a minute late. The fix - alarm-clock delivery plus the alarm audio stream - is built, proven on test devices, and shipped with the 2.4.39 store release.
 - On a folding iPhone held wide, a process launched while the device is folded keeps the system's centered portrait frame after unfolding until its next relaunch. Held tall, the same process unfolds straight onto the full tall canvas.
-
-## Upcoming
-
-- [ ] Store release carrying the exact-alarm fix for ColorOS / OxygenOS phones (waits on the SDK 58 stable re-pin)
 
 ## Athan audio sources
 
@@ -79,7 +92,7 @@ Every selectable athan sound comes from a public recording:
 - Expo Router, Jotai, MMKV, Reanimated 4
 - date-fns and date-fns-tz, with every date in the London timezone
 - Biome for lint and format, Jest at 100% coverage, Pino for logging
-- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), TLS 1.3 for Android 9 and below, Android widget self-refresh
+- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), TLS 1.3 for Android 9 and below, Android widget self-refresh, and the Android language-switch cover
 
 ## Repository layout
 
@@ -88,9 +101,9 @@ app/         Expo Router entry points and navigation
 components/  UI components (prayer, countdown, overlay, sheets, modals)
 hooks/       useQibla, useCountdown, useSchedule
 stores/      Jotai atoms (schedule, notifications, countdown, sync, widgets)
-shared/      utilities: constants, prayer, time, notifications, qibla, whatsNew
-widgets/     iOS widget layouts and the Android Glance layout
-modules/     native Expo modules: qiblaheading, tls13, widgetrefresh
+shared/      utilities: constants, prayer, time, notifications, qibla, i18n, whatsNew
+widgets/     the widget layouts (iOS WidgetKit and Android Glance runtimes)
+modules/     native Expo modules: qiblaheading, switchcover, tls13, widgetrefresh
 device/      platform code: notifications, listeners, updates, tasks
 api/         prayer times client; mocks/ holds dev and test data
 e2e/         Maestro flows, device atlas, frame audit, baseline compare
@@ -187,6 +200,7 @@ holds the placeholder vocabulary the shapes use for device and location identifi
 - Coverage holds at 100%, enforced by global thresholds on statements, branches, functions and lines. A change covers every line it touches, red before green.
 - Tests never read the real clock. Time is mocked with `jest.useFakeTimers({ now })`.
 - Date work runs `yarn test:tz` across the timezone matrix.
+- Source-level sweeps pin invariants inside `yarn validate`: no scroll indicators, no text rendered through opacity, no audio duration drift.
 - `e2e/README.md` documents the Maestro flows, the measurement scripts and their gotchas.
 
 ## Release ritual (What's New)
@@ -194,10 +208,10 @@ holds the placeholder vocabulary the shapes use for device and location identifi
 Every store release, edit `WHATS_NEW` in `shared/whatsNew.ts`:
 
 1. Stamp the items shipping in this release with the release version: new abilities, removals, behavior changes users notice. Park a draft at `version: null` while writing it - the contract suite stays red until it is stamped or removed, which is the ship gate. Item stamps no longer cap or gate what shows: the modal carries the newest 20 archived items (owner orders 2026-10-20 and 2026-10-21), and the archive prunes oldest-first only past 100 entries.
-2. Bump `WHATS_NEW.version` to the store version being submitted. The modal shows nothing unless it equals the installed version.
-3. Ship silent by leaving `WHATS_NEW.version` unmoved, or setting `WHATS_NEW` to null.
+2. Bump `WHATS_NEW.version` to the store version being submitted. It names the release the notes ship with and never gates the modal: the newest stamped item does, so a silent patch that adds no item never pops.
+3. Ship silent by stamping no new item, or setting `WHATS_NEW` to null.
 
-The debut modal (2.3.0) opens with every feature the app has ever shipped, because the modal itself is new to the store.
+The store debut modal (2.3.0) opened with every feature the app had ever shipped, because the modal itself was new to the store.
 
 A contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape. `EXPO_PUBLIC_WHATS_NEW_PREVIEW=1` in `.env` forces the modal on cold launch in dev builds.
 
