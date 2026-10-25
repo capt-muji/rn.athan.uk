@@ -13,6 +13,9 @@ import type { PrayerId } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
+import { firstStillDueListDayForPrayer, transformApiData } from '@/shared/prayer';
+import type { RequiredTimeName } from '@/shared/types';
+import * as Database from '@/stores/database';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -254,6 +257,84 @@ describe('genScheduleDatesForPrayer, on the stored London days from 10 to 12 Sep
 
     expect(rows.every((row) => row.instant instanceof Date)).toBe(true);
     expect(rows.map((row) => row.date)).not.toContain('2026-09-11');
+  });
+});
+
+describe('collectCandidateRows inside the duplicated hour (2026 fall-back, the real 24-26 October rows)', () => {
+  // The crossing weekend as the API really served it, fetched 24 Oct 2026 (the T-337 oracle).
+  // Night rows file under the day the night leads into: the 24-25 night's Last Third is the
+  // fall-back instant itself (2026-10-25T01:00:00Z), sitting on the 25 Oct Extras list.
+  const FALL_BACK_DAYS: Record<string, Record<RequiredTimeName, string>> = {
+    '2026-10-24': { fajr: '06:02', sunrise: '07:37', dhuhr: '12:50', asr: '15:18', magrib: '17:52', isha: '19:17' },
+    '2026-10-25': { fajr: '05:04', sunrise: '06:39', dhuhr: '11:50', asr: '14:17', magrib: '16:50', isha: '18:17' },
+    '2026-10-26': { fajr: '05:05', sunrise: '06:41', dhuhr: '11:50', asr: '14:15', magrib: '16:48', isha: '18:15' },
+  };
+  const atTimeOnly = () => 1;
+  /** 01:30 GMT, the second 01:30 pass: thirty real minutes past the fall-back instant */
+  const NOW = new Date('2026-10-25T01:30:00Z');
+
+  beforeEach(() => {
+    jest.useFakeTimers({ now: NOW });
+    Database.saveAllPrayers(transformApiData({ city: 'london', times: FALL_BACK_DAYS }));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it('arms every row after now and none before it, each at its true UTC instant', () => {
+    const rows = collectCandidateRows(atTimeOnly);
+
+    // ISO instants sort chronologically, so the map's sort is the time order the rows must arm in
+    expect(rows.map((row) => `${row.instant.toISOString()} ${row.scheduleType}_${row.id}_${row.date}`).sort()).toEqual([
+      '2026-10-25T04:44:00.000Z extra_suhoor_2026-10-25',
+      '2026-10-25T05:04:00.000Z standard_fajr_2026-10-25',
+      '2026-10-25T06:39:00.000Z standard_sunrise_2026-10-25',
+      '2026-10-25T06:59:00.000Z extra_duha_2026-10-25',
+      '2026-10-25T11:50:00.000Z standard_dhuhr_2026-10-25',
+      '2026-10-25T14:17:00.000Z standard_asr_2026-10-25',
+      '2026-10-25T16:50:00.000Z standard_magrib_2026-10-25',
+      '2026-10-25T18:17:00.000Z standard_isha_2026-10-25',
+      '2026-10-25T22:57:00.000Z extra_midnight_2026-10-26',
+      '2026-10-26T01:00:00.000Z extra_last third_2026-10-26',
+      '2026-10-26T04:45:00.000Z extra_suhoor_2026-10-26',
+      '2026-10-26T05:05:00.000Z standard_fajr_2026-10-26',
+      '2026-10-26T06:41:00.000Z standard_sunrise_2026-10-26',
+      '2026-10-26T07:01:00.000Z extra_duha_2026-10-26',
+      '2026-10-26T11:50:00.000Z standard_dhuhr_2026-10-26',
+      '2026-10-26T14:15:00.000Z standard_asr_2026-10-26',
+      '2026-10-26T16:48:00.000Z standard_magrib_2026-10-26',
+      '2026-10-26T18:15:00.000Z standard_isha_2026-10-26',
+    ]);
+  });
+
+  it('never arms the passed night of the crossing: the 25 Oct list keeps neither of its night rows', () => {
+    const rows = collectCandidateRows(atTimeOnly);
+
+    expect(rows.filter((row) => row.instant.getTime() <= NOW.getTime())).toEqual([]);
+    // The 24-25 night's rows sit on the 25 Oct list: Midnight 23:58 BST, Last Third the
+    // fall-back instant 01:00 GMT. Both have passed at 01:30 GMT, so neither may arm.
+    const oct25Extras = rows.filter((row) => row.scheduleType === ScheduleType.Extra && row.date === '2026-10-25');
+    expect(oct25Extras.map((row) => row.id).sort()).toEqual(['duha', 'suhoor']);
+  });
+
+  it('spends the budget in UTC-instant order on the real collected rows', () => {
+    const rows = collectCandidateRows(atTimeOnly);
+
+    const plan = buildSchedulePlan(rows, 5);
+
+    expect(plan.size).toBe(5);
+    expect(plan.get('extra_suhoor')).toEqual(['2026-10-25']);
+    expect(plan.get('standard_fajr')).toEqual(['2026-10-25']);
+    expect(plan.get('standard_sunrise')).toEqual(['2026-10-25']);
+    expect(plan.get('extra_duha')).toEqual(['2026-10-25']);
+    expect(plan.get('standard_dhuhr')).toEqual(['2026-10-25']);
+  });
+
+  it('starts every window on the 25th: the 24th list has no readable night row and its day has passed', () => {
+    expect(firstStillDueListDayForPrayer(ScheduleType.Standard, 'fajr', NOW)).toBe('2026-10-25');
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'midnight', NOW)).toBe('2026-10-25');
+    expect(firstStillDueListDayForPrayer(ScheduleType.Extra, 'last third', NOW)).toBe('2026-10-25');
   });
 });
 
