@@ -178,6 +178,8 @@ export const ms = {
   'channel.reminder': 'Peringatan {name} dalam {n}',
   'whatsNew.title.language': 'Bahasa',
   'whatsNew.body.language': 'Ditambah sokongan untuk lebih banyak bahasa',
+  'whatsNew.title.whatsNew': 'Apa yang baharu',
+  'whatsNew.body.whatsNew': 'Ditambah nota tentang setiap perubahan kemas kini',
   'calendar.monthShort.1': 'Jan',
   'calendar.monthShort.2': 'Feb',
   'calendar.monthShort.3': 'Mac',

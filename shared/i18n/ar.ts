@@ -175,6 +175,8 @@ export const ar = {
   'channel.reminder': 'تنبيه {name} بعد {n}',
   'whatsNew.title.language': 'اللغة',
   'whatsNew.body.language': 'أضيف دعم المزيد من اللغات',
+  'whatsNew.title.whatsNew': 'ما الجديد',
+  'whatsNew.body.whatsNew': 'أضيف تنبيه بما يتغير في كل تحديث',
   'calendar.monthShort.1': 'يناير',
   'calendar.monthShort.2': 'فبراير',
   'calendar.monthShort.3': 'مارس',

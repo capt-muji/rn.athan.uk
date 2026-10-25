@@ -445,6 +445,31 @@ describe('the archive', () => {
     );
   });
 
+  // The changelog advertises the screen that presents it: the archive's own debut.
+  // The modal first shipped at 1.13.0 (git df08bfb1, 2026-08-30, "1.13.0 -
+  // feat(whats-new)"), and the T-297 restamp ruling names each stamp from git history.
+  it("archives the What's New screen itself, stamped at its 1.13.0 debut", () => {
+    const debut = WHATS_NEW?.items.find((entry) => entry.titleKey === 'whatsNew.title.whatsNew');
+
+    expect(debut?.bodyKey).toBe('whatsNew.body.whatsNew');
+    expect(debut?.version).toBe('1.13.0');
+    expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).toContain(t('whatsNew.title.whatsNew'));
+  });
+
+  // The debut stamps below every later feature stamp, so the archive learning about
+  // itself never raises the gate's newest-stamp bar: a reader who has seen the newest
+  // feature gets no pop from this item
+  it('stays silent for a reader who has seen the newest feature, debut included', () => {
+    const stamps = (WHATS_NEW?.items ?? [])
+      .filter((entry) => entry.titleKey !== 'whatsNew.title.whatsNew')
+      .map((entry) => entry.version)
+      .filter((version): version is string => version !== null)
+      .sort(compareVersions);
+    const newestWithoutDebut = stamps[stamps.length - 1];
+
+    expect(shouldShowWhatsNew(INSTALLED_VERSION, newestWithoutDebut, currentVisibleWhatsNew())).toBe(false);
+  });
+
   it('announces the language feature with its catalog copy', () => {
     const entry = (currentVisibleWhatsNew()?.items ?? []).find((item) => item.title === t('whatsNew.title.language'));
     expect(entry?.body).toBe(t('whatsNew.body.language'));

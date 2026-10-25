@@ -179,6 +179,8 @@ export const so = {
   'channel.reminder': 'Xasuusiye {name} {n} gudahood',
   'whatsNew.title.language': 'Luqadda',
   'whatsNew.body.language': 'Waxaa lagu daray taageero luqado dheeraad ah',
+  'whatsNew.title.whatsNew': 'Maxay tahay cusub',
+  'whatsNew.body.whatsNew': 'Waxaa lagu daray warbixin waxa ay beddesho cusboonaysiin kasta',
   'calendar.monthShort.1': 'Jan',
   'calendar.monthShort.2': 'Feb',
   'calendar.monthShort.3': 'Mar',

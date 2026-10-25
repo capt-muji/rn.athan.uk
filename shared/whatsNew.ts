@@ -134,12 +134,19 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.44',
+  version: '2.5.0',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
       version: '2.0.37',
+    },
+    {
+      // The screen's own debut: the modal first shipped at 1.13.0 (git df08bfb1,
+      // 2026-08-30), named from history per the T-297 restamp ruling
+      titleKey: 'whatsNew.title.whatsNew',
+      bodyKey: 'whatsNew.body.whatsNew',
+      version: '1.13.0',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',
