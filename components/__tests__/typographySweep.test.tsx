@@ -107,10 +107,7 @@ const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string,
     const rntl = require('@testing-library/react-native');
     const QiblaSubtitle = require('../sheets/screens/Qibla').QiblaSubtitle;
     await rntl.render(<QiblaSubtitle showsCompass={false} />);
-    subtitle = StyleSheet.flatten(rntl.screen.getByTestId('qibla-subtitle-waiting').props.style) as Record<
-      string,
-      unknown
-    >;
+    subtitle = StyleSheet.flatten(rntl.screen.getByTestId('qibla-subtitle').props.style) as Record<string, unknown>;
   });
   return subtitle;
 };

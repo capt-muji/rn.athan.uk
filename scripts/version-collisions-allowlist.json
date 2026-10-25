@@ -106,5 +106,13 @@
   {
     "version": "2.4.18",
     "reason": "2026-10-24 the board-close commit of the 294/322 run steps from uat's 2.4.17 while lane T-322's backdrop commit holds 2.4.18; the standing ruling: the T-322 merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.25",
+    "reason": "2026-10-25 three lanes step from uat's 2.4.24 in the same night (lane T-327's harness step, lane T-337's gap tests, lane T-322's reopened qibla fix); the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.4.26",
+    "reason": "2026-10-25 lane T-337's atlas write-back and lane T-322's audit correction both step to 2.4.26; the standing ruling: each merge renumbers above whatever uat then carries"
   }
 ]
