@@ -2,6 +2,8 @@
  * The screen's background gradient, which has no behaviour of its own beyond filling the screen
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
@@ -52,6 +54,15 @@ describe('the background gradient behind the pager', () => {
       argb(DESIGN.bgTail),
     ]);
     expect(gradient.props.locations).toEqual([0, 0.7, 0.87, 1]);
+  });
+
+  // The mock does not surface the gradient's geometry, so the axis is pinned at
+  // the source: the bright end aims at the bottom's 75% mark, not the corner
+  it('aims the gradient axis at the bottom mid-right', () => {
+    const source = readFileSync(join(__dirname, '../BackgroundGradients.tsx'), 'utf8');
+
+    expect(source).toContain('start={{ x: 0, y: 0.25 }}');
+    expect(source).toContain('end={{ x: 0.75, y: 1 }}');
   });
 
   // The token is hand-frozen: this pins the stops the ramp consumes, so a typo

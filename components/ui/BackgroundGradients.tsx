@@ -16,7 +16,7 @@ export default function BackgroundGradients() {
       locations={[0, 0.7, 0.87, 1]}
       style={StyleSheet.absoluteFill}
       start={{ x: 0, y: 0.25 }}
-      end={{ x: 1, y: 1 }}
+      end={{ x: 0.75, y: 1 }}
     />
   );
 }
