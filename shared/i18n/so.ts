@@ -63,10 +63,10 @@ export const so = {
   'help.a.dndTimes.android': 'Habka Ha-I-Delin ayaa ogeesiisyada aamusiya ilayn barnaamijkan loo ogolyahay inuu gudbo.',
   'help.step.dndAccess': 'U ogol helitaanka Ha-I-Delin',
   'volume.note.android': 'Waxaa lagu ciyaaraa codka digniinta, ma aha codka garaaca.',
-  'volume.note.ios': 'Waxaa lagu ciyaaraa codka «Garaaca & Digniinaha».\nBadhanka aamusan iyo Focus ayaa aamusa.',
+  'volume.note.ios': 'Waxaa lagu ciyaaraa codka Garaaca & Digniinaha.\nBadhanka aamusan iyo Focus ayaa aamusa.',
   'help.q.volume': 'Codkee ayaa xakameeya heerka codka?',
   'help.a.volume.android':
-    'Athaanku wuxuu ku dhacaa codka digniinta, ma aha codka garaaca. Kordhi «Alarm» ee dejinta codka.',
+    'Athaanku wuxuu ku dhacaa codka digniinta, ma aha codka garaaca. Kordhi Alarm ee dejinta codka.',
   'help.a.volume.ios': 'Athaanku wuxuu ku dhacaa codka garaaca, badhanka aamusan iyo Focus ayaa aamusa.',
   'help.q.cutoff': 'Maxay aqaanku gooyo goor hore?',
   'help.a.cutoff': 'Dhawaaqyada ogeysiisu waa xadidan yihiin 30 ilbiriqsi. Aqan kasta waa la gaabiyay si uu u dhismo.',
