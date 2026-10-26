@@ -39,7 +39,7 @@ const SPRITES = {
   cloudTop2: require('@/assets/icons/png/decorations/cloud-top-2.png'),
 } as const;
 
-// --- Colors (tuned for #031a4c → #5b1eaa background) — wires render as Views ---
+// --- Colors (tuned on the pre-redesign gradient; the wires read on the new navy ground unchanged) — wires render as Views ---
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
 

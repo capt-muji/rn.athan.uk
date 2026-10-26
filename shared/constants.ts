@@ -694,12 +694,10 @@ export const COLORS = {
     // T-374: one dim ink below serves every dimmed name, time and bell.
     /** Primary text: active prayers, main content */
     primary: DESIGN.bright,
-    /** Secondary text over the screen gradient */
-    secondary: DESIGN.label,
     /** The header labels at home: the prayer name above the countdown and the location share this ink */
     labelHome: DESIGN.label,
-    /** The header labels while the overlay is open: untouched by the prototype */
-    labelOverlay: DESIGN.labelOverlay,
+    /** The header labels while the overlay is open: the overlay's own ink, outside the redesign */
+    labelOverlay: '#585c8c',
     /** Muted text over the screen gradient: every dimmed name, time and bell */
     muted: DESIGN.dim,
     /** The prayer row's time at rest: the same single dim ink (the quarter-step shade is gone) */
@@ -720,7 +718,7 @@ export const COLORS = {
     sheet: '#0b183a',
     /** Bottom sheet border */
     sheetBorder: '#0f1d46',
-    /** The sheet grabber indicator: text.secondary's old rgba over the sheet, held pixel-exact now that the text constant is a gradient flatten */
+    /** The sheet grabber indicator: flattened over the sheet from the pre-redesign palette */
     sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
@@ -827,8 +825,8 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text: the old rgba(128,162,212,.45) flattened over its pill wash on the gradient midpoint */
-    text: '#5660a7',
+    /** Prayer ago badge text: the one dim ink, the same as every dimmed surface */
+    text: DESIGN.dim,
     /** Background gradient for prayer ago badge */
     gradient: {
       start: 'rgba(73, 75, 160, 0.15)',
@@ -847,7 +845,7 @@ export const COLORS = {
 
   countdown: {
     /** Colon inks are solid; the at-rest colon rides the single dim ink */
-    timeColon: DESIGN.timeColon,
+    timeColon: DESIGN.dim,
     pastTimeColon: 'rgb(170, 182, 212)',
     nextTimeColon: '#a9b1de',
     nextTimeColonExtras: '#d7d9ef',
