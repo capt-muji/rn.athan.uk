@@ -25,7 +25,7 @@ import type { IApiResponse } from '@/shared/types';
 // An Isha can fall after 00:00 (high latitudes in summer; the app goes global
 // in v2.0) and is handled by the rules above. The seeding below therefore never
 // writes a small-hours Standard row: the evening branch's latest Isha is exactly
-// 23:55:00.000, the pre-dawn branch composes a realistic day with Fajr next, and
+// 23:59:00.000, the pre-dawn branch composes a realistic day with Fajr next, and
 // the spent late-evening branch serves the day's real static shape: any
 // hour, any day, no dashes.
 
@@ -43,13 +43,14 @@ export const addMinutes = (from: Date, minutesToAdd: number) => {
 /**
  * Every day around the download, with TODAY's six rows seeded from it
  *
- * The evening (06:00-23:52:59.999): Asr just passed, Maghrib on the next minute boundary (a gap
- * that always reads 1m on the round-up countdown) and Isha the minute after (always 2m), so the
- * day rolls to tomorrow's real schedule inside a couple of minutes (the owner's device-test
- * reseed). The pre-dawn small hours: a realistic day with Fajr on the next minute boundary,
- * because a relative seed there would write impossible times (an Isha at 04:32) that trip the
- * midnight-crossing rules and dash the countdown. The spent evening (23:53-23:59): the day's
- * real static shape, all six passed.
+ * The evening (06:00-22:57:59.999): Asr one hour out and Dhuhr one hour spent, the owner's
+ * device-test seed (2026-10-26: a steady hour on the countdown and an hour-ago prayer above
+ * it), with Maghrib and Isha a minute each behind Asr so the day still rolls while you watch.
+ * The window closes early enough that the branch's latest Isha is 23:59, never a small-hours
+ * Standard row. The pre-dawn small hours: a realistic day with Fajr on the next minute
+ * boundary, because a relative seed there would write impossible times (an Isha at 04:32)
+ * that trip the midnight-crossing rules and dash the countdown. The spent evening
+ * (22:58-23:59): the day's real static shape, all six passed.
  */
 const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   const clock = readPrayerClock(downloadedAt);
@@ -67,14 +68,14 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
   // [today]'s six rows by the download's London clock: the owner's evening reseed, a realistic
   // pre-dawn day, or the spent late evening's real static shape
   const eveningRow = {
-    fajr: addMinutes(minuteFloor, -4),
-    sunrise: addMinutes(minuteFloor, -3),
-    dhuhr: addMinutes(minuteFloor, -2),
-    asr: addMinutes(minuteFloor, -1),
-    // Boundary-based, not ceil-based: the gaps stay inside the minutes the countdown's round-up
-    // displays, so Maghrib always reads 1m away and Isha 2m
-    magrib: addMinutes(minuteFloor, 1),
-    isha: addMinutes(minuteFloor, 2),
+    fajr: addMinutes(minuteFloor, -62),
+    sunrise: addMinutes(minuteFloor, -61),
+    dhuhr: addMinutes(minuteFloor, -60),
+    // Whole-minute anchors: the round-up countdown reads Asr as 1h away and Dhuhr as 1h ago
+    // at any second of the hour between them
+    asr: addMinutes(minuteFloor, 60),
+    magrib: addMinutes(minuteFloor, 61),
+    isha: addMinutes(minuteFloor, 62),
   };
   const preDawnRow = {
     fajr: addMinutes(minuteFloor, 1),
@@ -85,7 +86,7 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     isha: '21:27',
   };
   const spentRow = { fajr: '04:07', sunrise: '05:42', dhuhr: '13:04', asr: '16:56', magrib: '20:16', isha: '21:29' };
-  const todayRow = minuteOfDay >= 23 * 60 + 53 ? spentRow : minuteOfDay >= 6 * 60 ? eveningRow : preDawnRow;
+  const todayRow = minuteOfDay >= 22 * 60 + 58 ? spentRow : minuteOfDay >= 6 * 60 ? eveningRow : preDawnRow;
   // The days around today carry realistic London times copied verbatim from mocks/full.ts, with
   // the API's real spring solar drift; Jamat fields are unused placeholders.
   return {

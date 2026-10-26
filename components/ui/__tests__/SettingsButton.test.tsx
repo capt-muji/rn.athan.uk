@@ -5,6 +5,7 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { Platform } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
 import { setSettingsSheetModal } from '@/stores/ui';
@@ -71,5 +72,22 @@ describe('the settings button, with the settings sheet mounted', () => {
 
     expect(sheet.present).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  // The elevation rides the computed style, so this suite reaches the Android
+  // face by flipping the platform alone: the translucent fill reads too bright
+  // there unless the elevation's shade reads beneath it
+  it('carries the stronger elevation on Android', async () => {
+    Platform.OS = 'android';
+    try {
+      setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
+      const tree = await render(<SettingsButton />);
+      const root = tree.root as NonNullable<typeof tree.root>;
+      const style = root.props.style.find((s: { elevation?: number }) => s?.elevation !== undefined);
+
+      expect(style.elevation).toBe(10);
+    } finally {
+      Platform.OS = 'ios';
+    }
   });
 });

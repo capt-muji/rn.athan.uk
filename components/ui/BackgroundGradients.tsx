@@ -1,19 +1,25 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
 import { DESIGN } from '@/shared/design';
 
 /** The screen's background gradient, which has no behaviour of its own beyond
- * filling the screen. The design's purple hint eases in over the journey's
- * lower reaches through a two-stage ramp: a single stop at the end reads as a
- * sharp corner blob. */
+ * filling the screen. iOS eases the tail in through a two-stage ramp (a single
+ * stop at the end reads as a sharp corner blob); Android, where that eased
+ * body band read as its own colour on the panel, runs navy straight to the
+ * tail instead (owner order 2026-10-26). */
 export default function BackgroundGradients() {
   const mid = blend(COLORS.gradient.screen.end, DESIGN.bgTail);
+  const android = Platform.OS === 'android';
   return (
     <LinearGradient
-      colors={[COLORS.gradient.screen.start, COLORS.gradient.screen.end, mid, DESIGN.bgTail]}
-      locations={[0, 0.7, 0.87, 1]}
+      colors={
+        android
+          ? [COLORS.gradient.screen.start, DESIGN.bgTail]
+          : [COLORS.gradient.screen.start, COLORS.gradient.screen.end, mid, DESIGN.bgTail]
+      }
+      locations={android ? [0, 1] : [0, 0.7, 0.87, 1]}
       style={StyleSheet.absoluteFill}
       start={{ x: 0, y: 0.25 }}
       end={{ x: 0.75, y: 1 }}

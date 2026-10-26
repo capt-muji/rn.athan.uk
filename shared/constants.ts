@@ -667,6 +667,10 @@ export const ELEVATION = {
   none: 0,
   /** Subtle elevation (5) - settings button */
   subtle: 5,
+  /** The settings button on Android, where the translucent fill reads too
+   * bright unless the elevation's shade reads beneath it (owner order
+   * 2026-10-26) */
+  settingsStrong: 10,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
   /** Maximum elevation (25) - modals */
@@ -768,7 +772,7 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** The settings glyph, bright enough to read against its own circle in direct sunlight */
+    /** The settings glyph: the original's lavender, readable against its circle in direct sunlight */
     settings: DESIGN.iconSettings,
   },
 

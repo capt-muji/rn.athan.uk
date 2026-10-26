@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { render, screen } from '@testing-library/react-native';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
 import { DESIGN } from '@/shared/design';
@@ -14,6 +14,8 @@ import BackgroundGradients from '../BackgroundGradients';
 
 // the native gradient receives packed ARGB numbers, so the assertions do too
 const argb = (hex: string) => 0xff000000 + Number.parseInt(hex.slice(1), 16);
+// Android's processColor hands the same packing to Java as a signed int
+const argbSigned = (hex: string) => argb(hex) | 0;
 
 // the two-stage ramp's middle stop: the journey end and the tail meet halfway
 const blend = (a: string, b: string) => {
@@ -43,7 +45,7 @@ describe('the background gradient behind the pager', () => {
 
   // The landed design's own ramp, on its real token: dark stop, journey end,
   // the halfway blend, then the purple hint strongest at the bottom corner
-  it('eases the tail colour in over the lower journey on the real design token', async () => {
+  it('eases the tail colour in over the lower journey on iOS', async () => {
     const tree = await render(<BackgroundGradients />);
     const gradient = tree.root as NonNullable<typeof tree.root>;
 
@@ -54,6 +56,22 @@ describe('the background gradient behind the pager', () => {
       argb(DESIGN.bgTail),
     ]);
     expect(gradient.props.locations).toEqual([0, 0.7, 0.87, 1]);
+  });
+
+  // The owner's Android ruling (2026-10-26): the eased body band read as its
+  // own colour on the panel, so Android drops it and runs navy straight to
+  // the tail across the whole axis
+  it('runs navy straight to the tail on Android, with no body stop', async () => {
+    Platform.OS = 'android';
+    try {
+      const tree = await render(<BackgroundGradients />);
+      const gradient = tree.root as NonNullable<typeof tree.root>;
+
+      expect(gradient.props.colors).toEqual([argbSigned(COLORS.gradient.screen.start), argbSigned(DESIGN.bgTail)]);
+      expect(gradient.props.locations).toEqual([0, 1]);
+    } finally {
+      Platform.OS = 'ios';
+    }
   });
 
   // The mock does not surface the gradient's geometry, so the axis is pinned at

@@ -5,8 +5,10 @@
  * here instead of shipping (the ticket's own acceptance wording).
  */
 
+import { Platform } from 'react-native';
+
 import { COLORS } from '@/shared/constants';
-import { DESIGN } from '@/shared/design';
+import { ANDROID_TAIL, DESIGN, IOS_TAIL } from '@/shared/design';
 
 /** Every role that paints a dimmed surface of the standard schedule */
 const DIM_ROLES = {
@@ -43,8 +45,8 @@ describe('the one dim ink', () => {
     expect(DESIGN).toEqual({
       bgStart: '#05134a',
       bgEnd: '#36208a',
-      bgTail: '#7117c9',
-      dim: '#485396',
+      bgTail: Platform.OS === 'android' ? ANDROID_TAIL : IOS_TAIL,
+      dim: '#46469b',
       label: '#4060ae',
       bright: '#f2f5f9',
       pill: '#2439f5',
@@ -53,10 +55,17 @@ describe('the one dim ink', () => {
       pillShadowExtras: '#570962',
       settingsShadow: '#27035c',
       dot: '#db98dc',
-      iconSettings: 'rgba(188, 176, 221, 0.62)',
-      settingsBg: 'rgba(103, 65, 190, 0.58)',
-      settingsBorder: 'rgba(115, 79, 186, 0.66)',
+      iconSettings: 'rgba(200, 176, 255, 0.71)',
+      settingsBg: 'rgba(105, 65, 198, 0.51)',
+      settingsBorder: 'rgba(116, 80, 207, 0.68)',
       rootBg: '#05134a',
     });
+  });
+
+  // The tails are pinned per platform: the same hex reads pinker on Android's
+  // panel, so Android's sits toward the top colour
+  it('pins both platform tails', () => {
+    expect(IOS_TAIL).toBe('#7117c9');
+    expect(ANDROID_TAIL).toBe('#4c16ca');
   });
 });

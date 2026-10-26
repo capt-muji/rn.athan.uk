@@ -1,7 +1,7 @@
 /**
  * The mock feed a local build serves: each download seeds today from its own moment, so opening the
- * app finds Asr just passed, Maghrib next about a minute out and Isha a minute behind it - the day
- * rolls to tomorrow's real schedule while you watch.
+ * app finds Asr next about an hour out and Dhuhr the prayer an hour spent - the day rolls to
+ * tomorrow's real schedule while you watch.
  */
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -24,32 +24,31 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
     '2026-09-15T14:30:00.000Z',
     '2026-09-15T14:30:00.001Z',
     '2026-09-15T14:30:59.999Z',
-    // The window's two edges: its first minute and its tightest seed
+    // The window's two edges: its first minute and its latest seed (today's Isha 23:59)
     '2026-09-15T05:00:00.000Z',
-    '2026-09-15T22:52:59.999Z',
-  ])(
-    'puts Maghrib next about one minute out and Isha two, after a download at %s, with Asr the prayer just passed',
-    (iso) => {
-      const readAt = new Date(iso);
-      jest.useFakeTimers({ now: readAt });
+    '2026-09-15T21:57:59.999Z',
+  ])('puts Asr next about one hour out and Dhuhr one hour spent, after a download at %s', (iso) => {
+    const readAt = new Date(iso);
+    jest.useFakeTimers({ now: readAt });
 
-      const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
+    const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
 
-      const isha = instantOf(readAt, today.isha);
-      const magrib = instantOf(readAt, today.magrib);
-      const asr = instantOf(readAt, today.asr);
-      // Boundary gaps: Maghrib inside the minute the countdown rounds up to 1m, Isha inside 2m
-      expect(magrib - readAt.getTime()).toBeGreaterThan(0);
-      expect(magrib - readAt.getTime()).toBeLessThanOrEqual(MINUTE);
-      expect(isha - readAt.getTime()).toBeGreaterThan(MINUTE);
-      expect(isha - readAt.getTime()).toBeLessThanOrEqual(2 * MINUTE);
-      expect(isha - magrib).toBe(MINUTE);
-      for (const before of [today.fajr, today.sunrise, today.dhuhr, today.asr]) {
-        expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
-      }
-      expect(readAt.getTime() - asr).toBeLessThanOrEqual(2 * MINUTE);
+    const isha = instantOf(readAt, today.isha);
+    const magrib = instantOf(readAt, today.magrib);
+    const asr = instantOf(readAt, today.asr);
+    const dhuhr = instantOf(readAt, today.dhuhr);
+    // Whole-hour anchors: Asr inside the hour the round-up countdown reads as 1h away,
+    // Dhuhr inside the hour it reads as 1h ago
+    expect(asr - readAt.getTime()).toBeGreaterThan(59 * MINUTE);
+    expect(asr - readAt.getTime()).toBeLessThanOrEqual(60 * MINUTE);
+    expect(readAt.getTime() - dhuhr).toBeGreaterThanOrEqual(60 * MINUTE);
+    expect(readAt.getTime() - dhuhr).toBeLessThan(61 * MINUTE);
+    expect(magrib - asr).toBe(MINUTE);
+    expect(isha - magrib).toBe(MINUTE);
+    for (const before of [today.fajr, today.sunrise, today.dhuhr]) {
+      expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
     }
-  );
+  });
 
   it.each(['2026-09-16T03:30:00.000Z', '2026-09-16T03:30:59.999Z', '2026-09-15T04:59:59.999Z'])(
     'seeds a realistic pre-dawn day at %s London 04:30, Fajr next about one minute out, no small-hours Standard rows',
@@ -69,7 +68,7 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
     }
   );
 
-  it.each(['2026-09-15T22:53:00.000Z', '2026-09-15T22:55:00.000Z'])(
+  it.each(['2026-09-15T21:58:00.000Z', '2026-09-15T22:55:00.000Z'])(
     'serves the spent day unchanged from a late-evening download at %s London, with tomorrow\u2019s Fajr next',
     (iso) => {
       const readAt = new Date(iso);

@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
@@ -22,6 +22,9 @@ export default function SettingsButton() {
     backgroundColor: COLORS.settingsButton.background,
     borderColor: COLORS.settingsButton.border,
     shadowColor: COLORS.shadow.button,
+    // Android's translucent fill reads too bright unless the elevation's
+    // shade reads beneath it
+    elevation: Platform.OS === 'android' ? ELEVATION.settingsStrong : ELEVATION.subtle,
   };
 
   return (
@@ -45,7 +48,6 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.rounded,
     borderWidth: 1,
     ...SHADOW.button,
-    elevation: ELEVATION.subtle, // Android shadow
     zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
     width: SIZE.button.icon,
     alignItems: 'center',

@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: COLORS.navigation.rootBackground,
   },
   heading: {
     color: COLORS.text.primary,
