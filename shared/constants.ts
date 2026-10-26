@@ -667,8 +667,6 @@ export const ELEVATION = {
   none: 0,
   /** Subtle elevation (5) */
   subtle: 5,
-  /** The settings button on Android, where the shade must read beneath the translucent fill */
-  settingsStrong: 25,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
   /** Maximum elevation (25) - modals */

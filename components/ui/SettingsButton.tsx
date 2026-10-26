@@ -21,15 +21,23 @@ export default function SettingsButton() {
     showSettingsSheet();
   };
 
-  const computedStylesContainer: ViewStyle = {
-    backgroundColor: COLORS.settingsButton.background,
-    borderColor: COLORS.settingsButton.border,
-    ...SHADOW.button,
-    // Android's spot shadow reads nothing in the owner's purple on AMOLED,
-    // so it goes near-black there while iOS keeps the purple
-    shadowColor: Platform.OS === 'android' ? '#0a0426' : COLORS.shadow.button,
-    elevation: Platform.OS === 'android' ? ELEVATION.settingsStrong : ELEVATION.subtle,
-  };
+  // Android's legacy shadow props are inert and elevation derives its outline
+  // from the translucent fill, which the S23's renderer discards - boxShadow
+  // paints around the border box and needs neither
+  const computedStylesContainer: ViewStyle =
+    Platform.OS === 'android'
+      ? {
+          backgroundColor: COLORS.settingsButton.background,
+          borderColor: COLORS.settingsButton.border,
+          boxShadow: '0px 10px 10px rgba(10, 4, 38, 0.75)',
+        }
+      : {
+          backgroundColor: COLORS.settingsButton.background,
+          borderColor: COLORS.settingsButton.border,
+          ...SHADOW.button,
+          shadowColor: COLORS.shadow.button,
+          elevation: ELEVATION.subtle,
+        };
 
   return (
     <AnimatedPressable

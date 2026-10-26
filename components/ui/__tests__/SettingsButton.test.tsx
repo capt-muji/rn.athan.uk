@@ -86,16 +86,17 @@ describe('the settings button, with the settings sheet mounted', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // The elevation rides the computed style: Android's doubled shade
-  it('carries the stronger elevation on Android', async () => {
+  // boxShadow paints the Android shadow around the border box: the legacy
+  // props are iOS-only and elevation's outline dies in the translucent fill
+  it('carries a boxShadow on Android', async () => {
     Platform.OS = 'android';
     try {
       setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
       const tree = await render(<SettingsButton />);
       const root = tree.root as NonNullable<typeof tree.root>;
-      const style = root.props.style.find((s: { elevation?: number }) => s?.elevation !== undefined);
+      const style = root.props.style.find((s: { boxShadow?: string }) => s?.boxShadow !== undefined);
 
-      expect(style.elevation).toBe(25);
+      expect(style.boxShadow).toBe('0px 10px 10px rgba(10, 4, 38, 0.75)');
     } finally {
       Platform.OS = 'ios';
     }
