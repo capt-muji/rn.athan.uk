@@ -52,11 +52,13 @@ describe('the settings button, with the settings sheet mounted', () => {
     expect(alpha(COLORS.settingsButton.border)).toBeGreaterThanOrEqual(0.6);
   });
 
-  // A glyph left muted on a stronger circle is the same problem one layer in
-  it('draws the glyph bright enough to read against its own circle', () => {
+  // A glyph left muted on a stronger circle is the same problem one layer in.
+  // The landed design (T-374) dims the glyph toward the background on purpose:
+  // it must still read, at the picked design's own weight
+  it('draws the glyph at the landed designs readable weight', () => {
     const alpha = Number(COLORS.icon.settings.split(',')[3].replace(')', ''));
 
-    expect(alpha).toBeGreaterThanOrEqual(0.65);
+    expect(alpha).toBeGreaterThanOrEqual(0.6);
   });
 
   it('neither taps nor opens the sheet for a touch that goes down and up without completing a press', async () => {

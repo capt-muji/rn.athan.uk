@@ -189,9 +189,10 @@ describe('the lettered countdown on the Standard schedule', () => {
     // The label's static entry carries the home ink: the tween's entry commits after this
     // frame, so the rest face reads from the style array's static element
     const nameStyle = flattenStyle((name.props.style as unknown[])[0]);
-    expect(nameStyle.color).toBe('#6c79c2');
-    expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
-    expect(nameStyle.textShadowRadius).toBe(6);
+    expect(nameStyle.color).toBe(COLORS.text.labelHome);
+    // The owner struck the label's text shadow at landing (T-374 round 10): the flat
+    // ink reads cleaner on the design's own ground
+    expect(nameStyle.textShadowColor).toBeUndefined();
     // The second entry is the ink tween itself: dropped from the array, the home ink never flips
     expect(name.props.style).toHaveLength(2);
   });
@@ -207,7 +208,11 @@ describe('the lettered countdown on the Standard schedule', () => {
     // the tuned pair and nothing else: the ink flips with the overlay and back
     const labelTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c79c2', '#585c8c'].join())
+        .filter(
+          (call) =>
+            (call[2] as unknown as readonly string[]).join() ===
+            [COLORS.text.labelHome, COLORS.text.labelOverlay].join()
+        )
         .map((call) => call[0]);
 
     expect(labelTween().at(-1)).toBe(0);

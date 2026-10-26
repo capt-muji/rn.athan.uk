@@ -1,3 +1,5 @@
+import { DESIGN } from './design';
+
 // =============================================================================
 // PRAYER NAMES
 // =============================================================================
@@ -678,6 +680,9 @@ export const ELEVATION = {
 /**
  * Application color palette
  * Organized by semantic role: text, surface, interactive, icons, etc.
+ *
+ * T-374: the standard schedule's visual roles read the design token in
+ * shared/design.ts - the owner's picked palette. Everything else stays literal.
  */
 export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
@@ -685,19 +690,20 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   text: {
     // Text inks are solid: translucent ink compounds where glyph strokes overlap (the
-    // Arabic overlap band), so each dim role is its old rgba flattened to one constant
+    // Arabic overlap band), so each dim role is its old rgba flattened to one constant.
+    // T-374: one dim ink below serves every dimmed name, time and bell.
     /** Primary text: active prayers, main content */
-    primary: '#ffffff',
-    /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
-    secondary: '#6c79c2',
-    /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
-    labelHome: '#6c79c2',
-    /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
-    labelOverlay: '#585c8c',
-    /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
-    muted: '#52529e',
-    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */
-    rowTime: '#5a5fa6',
+    primary: DESIGN.bright,
+    /** Secondary text over the screen gradient */
+    secondary: DESIGN.label,
+    /** The header labels at home: the prayer name above the countdown and the location share this ink */
+    labelHome: DESIGN.label,
+    /** The header labels while the overlay is open: untouched by the prototype */
+    labelOverlay: DESIGN.labelOverlay,
+    /** Muted text over the screen gradient: every dimmed name, time and bell */
+    muted: DESIGN.dim,
+    /** The prayer row's time at rest: the same single dim ink (the quarter-step shade is gone) */
+    rowTime: DESIGN.dim,
     /** Disabled/hint text on the sheet: the old rgba(146,211,255,.65) flattened over #0b183a */
     disabled: '#6392ba',
     /** Emphasis text: info box titles */
@@ -732,7 +738,7 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   gradient: {
     /** Main screen background gradient */
-    screen: { start: '#031a4c', end: '#5b1eaa' },
+    screen: { start: DESIGN.bgStart, end: DESIGN.bgEnd },
     /** Overlay background gradient */
     overlay: {
       start: '#110022',
@@ -765,7 +771,7 @@ export const COLORS = {
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
     /** The settings glyph, bright enough to read against its own circle in direct sunlight */
-    settings: 'rgba(200, 176, 255, 0.71)',
+    settings: DESIGN.iconSettings,
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -780,12 +786,12 @@ export const COLORS = {
   // SHADOWS
   // ───────────────────────────────────────────────────────────────────────────
   shadow: {
-    /** Active prayer shadow */
-    prayer: '#081a76',
+    /** Active prayer shadow: the pill's own hue sunk dark, per design */
+    prayer: DESIGN.pillShadow,
     /** Active prayer shadow (extras page) */
-    prayerExtras: '#6e006b',
+    prayerExtras: DESIGN.pillShadowExtras,
     /** Settings button shadow */
-    button: '#27035c',
+    button: DESIGN.settingsShadow,
     /** Alert popup shadow */
     alert: '#010931',
   },
@@ -815,9 +821,9 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   prayer: {
     /** Active prayer highlight background */
-    activeBackground: '#0847e5',
+    activeBackground: DESIGN.pill,
     /** Active prayer highlight background (extras page) */
-    activeBackgroundExtras: '#9200a2',
+    activeBackgroundExtras: DESIGN.pillExtras,
   },
 
   prayerAgo: {
@@ -835,15 +841,13 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   /** Settings button (transparent style) */
   settingsButton: {
-    // Halfway between the original, which vanished against the gradient in sunlight, and the first fix, which
-    // the owner judged too strong: findable with poor eyesight without taking the eye off the prayer list
-    background: 'rgba(105, 65, 198, 0.51)',
-    border: 'rgba(116, 80, 207, 0.68)',
+    background: DESIGN.settingsBg,
+    border: DESIGN.settingsBorder,
   },
 
   countdown: {
-    /** Colon inks are solid, the old rgba flattened over the gradient midpoint #2f1c7b */
-    timeColon: '#5f60ad',
+    /** Colon inks are solid; the at-rest colon rides the single dim ink */
+    timeColon: DESIGN.timeColon,
     pastTimeColon: 'rgb(170, 182, 212)',
     nextTimeColon: '#a9b1de',
     nextTimeColonExtras: '#d7d9ef',
@@ -908,13 +912,13 @@ export const COLORS = {
   /** Navigation colors */
   navigation: {
     /** Navigation background (matches gradient.screen.start) */
-    background: '#031a4c',
+    background: DESIGN.bgStart,
     /** Root layout background */
-    rootBackground: '#2c1c77',
+    rootBackground: DESIGN.rootBg,
     /** Loading spinner color */
     activityIndicator: '#8d73ff',
     /** Navigation dot color */
-    dot: '#cf98f4',
+    dot: DESIGN.dot,
   },
 
   /** Light mode colors (system modals, update dialogs) */

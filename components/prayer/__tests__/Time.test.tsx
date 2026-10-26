@@ -24,11 +24,11 @@ const SUHOOR = 2;
 const DUHA = 3;
 const ISTIJABA = 4;
 
-const COLON_COLOUR = '#5f60ad';
+const COLON_COLOUR = COLORS.text.muted;
 const PAST_COLON_COLOUR = 'rgb(170, 182, 212)';
 const NEXT_COLON_COLOUR = '#a9b1de';
 const NEXT_COLON_COLOUR_EXTRAS = '#d7d9ef';
-const PRIMARY_COLOUR = '#ffffff';
+const PRIMARY_COLOUR = COLORS.text.primary;
 
 const flattenStyle = (style: unknown): Record<string, unknown> =>
   Array.isArray(style)

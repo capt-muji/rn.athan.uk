@@ -58,7 +58,8 @@ export default function Day({ type }: Props) {
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
       <Animated.View style={masjidOpacityStyle}>
-        <MemoizedMasjid />
+        {/* 25% smaller than the original 45 (owner order 2026-10-25) */}
+        <MemoizedMasjid height={34} width={34} />
       </Animated.View>
     </View>
   );
