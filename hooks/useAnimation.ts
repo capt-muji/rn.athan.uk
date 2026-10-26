@@ -164,21 +164,15 @@ export const useDerivedVeiledColor = (
   }));
 };
 
-/** The veil composition on a background, for a pill that hides with its own ink (the ago badge) */
-export const useDerivedVeiledBackgroundColor = (
-  veilTarget: number,
+/** A background colour tween between two inks, the ago pill's own state machine */
+export const useDerivedBackgroundColor = (
   backgroundTarget: number,
-  input: VeiledColorInput & DerivedTimingOptions
+  input: ColorAnimationInput & DerivedTimingOptions
 ) => {
-  const { fromColor, toColor, veilColor, veilDuration, duration, delay, easing, defaultTiming } = input;
+  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
   const backgroundProgress = useDerivedProgress(backgroundTarget, { duration, delay, easing, defaultTiming });
-  const veilProgress = useDerivedProgress(veilTarget, { duration: veilDuration ?? ANIMATION.duration });
   return useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(
-      veilProgress.value,
-      [0, 1],
-      [interpolateColor(backgroundProgress.value, [0, 1], [fromColor, toColor]), veilColor]
-    ),
+    backgroundColor: interpolateColor(backgroundProgress.value, [0, 1], [fromColor, toColor]),
   }));
 };
 

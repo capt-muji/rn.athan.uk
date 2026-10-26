@@ -6,7 +6,7 @@
 
 import { ANIMATION } from '@/shared/constants';
 
-import { useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '../useAnimation';
+import { useDerivedBackgroundColor, useDerivedVeiledColor } from '../useAnimation';
 import { mountHook } from './hookHarness';
 import type { Animation } from './reanimatedFake';
 
@@ -97,19 +97,18 @@ describe('useDerivedVeiledColor', () => {
     expect((veil.outputRange[0] as { value: unknown }).value).toEqual(timing(1, { duration: ANIMATION.durationSlow }));
   });
 
-  it('carries the same composition on the background property', () => {
+  it('tweens the background property between its two inks, with no veil layer', () => {
     const view = mountHook(
       (props: VeiledProps) =>
-        useDerivedVeiledBackgroundColor(props.veilTarget, props.colorTarget, {
+        useDerivedBackgroundColor(props.colorTarget, {
           fromColor: FROM,
           toColor: TO,
-          veilColor: VEIL,
         }),
       { veilTarget: 0, colorTarget: 0 }
     );
 
-    const veil = descriptorOf(view.result, 'backgroundColor');
-    expect(veil.outputRange[1]).toBe(VEIL);
-    expect((veil.outputRange[0] as { outputRange: string[] }).outputRange).toEqual([FROM, TO]);
+    const background = descriptorOf(view.result, 'backgroundColor');
+    expect(background.inputRange).toEqual([0, 1]);
+    expect(background.outputRange).toEqual([FROM, TO]);
   });
 });
