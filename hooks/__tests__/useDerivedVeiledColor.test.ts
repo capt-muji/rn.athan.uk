@@ -18,7 +18,7 @@ jest.mock('react-native-reanimated', () => require('./reanimatedFake').reanimate
 jest.mock('jotai', () => ({ useAtomValue: (atom: string) => mockAtomValues.get(atom) }));
 jest.mock('@/stores/ui', () => ({ resyncAtom: 'resyncAtom' }));
 
-const FROM = '#46469b';
+const FROM = '#4a47ae';
 const TO = '#ffffff';
 const VEIL = '#0b0016';
 

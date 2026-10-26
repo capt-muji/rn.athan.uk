@@ -2,12 +2,12 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.9.0",
+    "version": "2.10.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
     "icon": "./assets/icons/config/icon-ios.png",
-    "backgroundColor": "#05134a",
+    "backgroundColor": "#1e1a6a",
     "ios": {
       "icon": "./assets/icons/config/icon-ios.png",
       "supportsTablet": true,
@@ -25,7 +25,7 @@
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
       },
-      "backgroundColor": "#05134a"
+      "backgroundColor": "#1e1a6a"
     },
     "android": {
       "adaptiveIcon": {
@@ -67,9 +67,16 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#05134a",
-          "image": "./assets/icons/config/icon-splash.png",
-          "resizeMode": "contain"
+          "ios": {
+            "backgroundColor": "#1e1a6a",
+            "image": "./assets/icons/config/icon-splash.png",
+            "resizeMode": "contain"
+          },
+          "android": {
+            "backgroundColor": "#17146a",
+            "image": "./assets/icons/config/icon-splash.png",
+            "resizeMode": "contain"
+          }
         }
       ],
       [

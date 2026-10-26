@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom, markMasjidIconLoaded } from '@/stores/ui';
+import { DECORATIONS_PREVIEW, decorationsEnabledAtom, markMasjidIconLoaded } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -23,7 +23,7 @@ const ICON_SOURCES = {
 
 export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
-  const useRamadanIcon = isRamadan() && decorationsEnabled;
+  const useRamadanIcon = (isRamadan() || DECORATIONS_PREVIEW) && decorationsEnabled;
   const variant = useRamadanIcon ? 'ramadan' : 'standard';
   // The locale's own direction, the row 73 precedent: a starved crossing (row 78) renders Arabic while the bridge still reports the launch direction
   const isRTL = localeDirection(currentLocaleId()) === 'rtl';

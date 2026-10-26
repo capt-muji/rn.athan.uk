@@ -41,24 +41,31 @@ describe('the one dim ink', () => {
     expect(ownShades(planted, DESIGN.dim)).toEqual([['prayerAgo.text', '#5660a7']]);
   });
 
+  // The pill's wash, pinned so drift reddens - the owner's hand-tuned values
+  it('pins the prayer-ago pill wash', () => {
+    expect(COLORS.prayerAgo.gradient.start).toBe('rgba(77, 59, 175, 0.15)');
+    expect(COLORS.prayerAgo.gradient.end).toBe('rgba(59, 88, 146, 0.25)');
+  });
+
   it('carries the owner-picked palette, hand-frozen', () => {
     expect(DESIGN).toEqual({
       bgStart: '#05134a',
       bgEnd: '#36208a',
       bgTail: Platform.OS === 'android' ? ANDROID_TAIL : IOS_TAIL,
-      dim: '#46469b',
+      dim: '#4a47ae',
       label: '#4060ae',
       bright: '#f2f5f9',
       pill: '#2439f5',
       pillExtras: '#8d0ca0',
       pillShadow: '#111d89',
       pillShadowExtras: '#570962',
-      settingsShadow: '#27035c',
       dot: '#db98dc',
       iconSettings: 'rgba(200, 176, 255, 0.71)',
       settingsBg: 'rgba(105, 65, 198, 0.51)',
       settingsBorder: 'rgba(116, 80, 207, 0.68)',
-      rootBg: '#05134a',
+      settingsShadow: '#27035c',
+      // The full-screen solids sit between the navy top and the middle
+      rootBg: Platform.OS === 'android' ? '#17146a' : '#1e1a6a',
     });
   });
 

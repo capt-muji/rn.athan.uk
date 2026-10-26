@@ -155,6 +155,15 @@ export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_p
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
 
+/**
+ * TEMPORARY, this branch only (T-375, owner order 2026-10-26): forces the
+ * decorations' render gates on out of season, so the settings toggle previews
+ * the sprites. Jest sees false, so the suites keep proving the real season
+ * logic. This and the always-visible settings toggle revert before merge -
+ * the owner asked to be reminded at merge time.
+ */
+export const DECORATIONS_PREVIEW = !process.env.JEST_WORKER_ID;
+
 // =============================================================================
 // ACTIONS
 // =============================================================================

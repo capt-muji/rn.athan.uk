@@ -74,13 +74,13 @@ describe('the background gradient behind the pager', () => {
     }
   });
 
-  // The mock does not surface the gradient's geometry, so the axis is pinned at
-  // the source: the bright end aims at the bottom's 75% mark, not the corner
-  it('aims the gradient axis at the bottom mid-right', () => {
+  // The axis is pinned at the source: corner to corner, the true diagonal
+  // (owner order 2026-10-26, T-375 - reverting the 75% bend)
+  it('aims the gradient axis corner to corner', () => {
     const source = readFileSync(join(__dirname, '../BackgroundGradients.tsx'), 'utf8');
 
-    expect(source).toContain('start={{ x: 0, y: 0.25 }}');
-    expect(source).toContain('end={{ x: 0.75, y: 1 }}');
+    expect(source).toContain('start={{ x: 0, y: 0 }}');
+    expect(source).toContain('end={{ x: 1, y: 1 }}');
   });
 
   // The token is hand-frozen: this pins the stops the ramp consumes, so a typo

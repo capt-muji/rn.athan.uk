@@ -665,12 +665,10 @@ export const HIT_SLOP = {
 export const ELEVATION = {
   /** No elevation - element sits flat */
   none: 0,
-  /** Subtle elevation (5) - settings button */
+  /** Subtle elevation (5) */
   subtle: 5,
-  /** The settings button on Android, where the translucent fill reads too
-   * bright unless the elevation's shade reads beneath it (owner order
-   * 2026-10-26) */
-  settingsStrong: 10,
+  /** The settings button on Android: the doubled elevation, the uat recipe */
+  settingsStrong: 15,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
   /** Maximum elevation (25) - modals */
@@ -829,12 +827,12 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text: the one dim ink, the same as every dimmed surface */
+    /** Prayer ago badge text */
     text: DESIGN.dim,
-    /** Background gradient for prayer ago badge */
+    /** The pill's tween pair, at rest and when recent */
     gradient: {
-      start: 'rgba(73, 75, 160, 0.15)',
-      end: 'rgba(70, 100, 160, 0.25)',
+      start: 'rgba(77, 59, 175, 0.15)',
+      end: 'rgba(59, 88, 146, 0.25)',
     },
   },
 
