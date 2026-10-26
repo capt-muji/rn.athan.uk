@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { COLORS, HIT_SLOP, SPACING, TEXT } from '@/shared/constants';
@@ -20,8 +21,10 @@ interface LabeledToggleProps {
  * <LabeledToggle label="Enable feature" value={enabled} onToggle={() => setEnabled(!enabled)} />
  */
 export default function LabeledToggle({ label, value, onToggle }: LabeledToggleProps) {
+  // The one place both presses meet: the row's label and the switch itself
   const handleToggle = () => {
     perfMark('toggle_tap', { label });
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onToggle();
   };
 
