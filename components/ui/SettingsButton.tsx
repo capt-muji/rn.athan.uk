@@ -24,7 +24,10 @@ export default function SettingsButton() {
   const computedStylesContainer: ViewStyle = {
     backgroundColor: COLORS.settingsButton.background,
     borderColor: COLORS.settingsButton.border,
-    shadowColor: COLORS.shadow.button,
+    ...SHADOW.button,
+    // Android's spot shadow reads nothing in the owner's purple on AMOLED,
+    // so it goes near-black there while iOS keeps the purple
+    shadowColor: Platform.OS === 'android' ? '#0a0426' : COLORS.shadow.button,
     elevation: Platform.OS === 'android' ? ELEVATION.settingsStrong : ELEVATION.subtle,
   };
 
@@ -47,7 +50,6 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: RADIUS.rounded,
     borderWidth: 1,
-    ...SHADOW.button,
     zIndex: 0,
     // The margins hold the 43px slot so the flanking dots never move
     width: BUTTON_WIDTH,
