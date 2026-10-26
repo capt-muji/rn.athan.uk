@@ -8,7 +8,7 @@ import { render, screen } from '@testing-library/react-native';
 import { Platform, StyleSheet } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
-import { DESIGN } from '@/shared/design';
+import { ANDROID_TAIL, DESIGN, IOS_TAIL } from '@/shared/design';
 
 import BackgroundGradients from '../BackgroundGradients';
 
@@ -52,22 +52,20 @@ describe('the background gradient behind the pager', () => {
     expect(gradient.props.colors).toEqual([
       argb(DESIGN.bgStart),
       argb(DESIGN.bgEnd),
-      argb(blend(DESIGN.bgEnd, DESIGN.bgTail)),
-      argb(DESIGN.bgTail),
+      argb(blend(DESIGN.bgEnd, IOS_TAIL)),
+      argb(IOS_TAIL),
     ]);
     expect(gradient.props.locations).toEqual([0, 0.7, 0.87, 1]);
   });
 
-  // The owner's Android ruling (2026-10-26): the eased body band read as its
-  // own colour on the panel, so Android drops it and runs navy straight to
-  // the tail across the whole axis
+  // Android drops the eased body band and runs navy straight to the tail
   it('runs navy straight to the tail on Android, with no body stop', async () => {
     Platform.OS = 'android';
     try {
       const tree = await render(<BackgroundGradients />);
       const gradient = tree.root as NonNullable<typeof tree.root>;
 
-      expect(gradient.props.colors).toEqual([argbSigned(COLORS.gradient.screen.start), argbSigned(DESIGN.bgTail)]);
+      expect(gradient.props.colors).toEqual([argbSigned(COLORS.gradient.screen.start), argbSigned(ANDROID_TAIL)]);
       expect(gradient.props.locations).toEqual([0, 1]);
     } finally {
       Platform.OS = 'ios';

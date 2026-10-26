@@ -5,10 +5,11 @@
  * here instead of shipping (the ticket's own acceptance wording).
  */
 
-import { Platform } from 'react-native';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { COLORS } from '@/shared/constants';
-import { ANDROID_TAIL, DESIGN, IOS_TAIL } from '@/shared/design';
+import { ANDROID_TAIL, DESIGN, IOS_TAIL, rootBgFor, tailFor } from '@/shared/design';
 
 /** Every role that paints a dimmed surface of the standard schedule */
 const DIM_ROLES = {
@@ -47,11 +48,22 @@ describe('the one dim ink', () => {
     expect(COLORS.prayerAgo.gradient.end).toBe('rgba(59, 88, 146, 0.25)');
   });
 
+  // The native-baked solids and the glyph stroke, pinned at the source: no
+  // jest render reaches them, so only this stops a tune drifting silently
+  it('pins the app.json solids and the settings glyph stroke', () => {
+    const appJson = readFileSync(join(__dirname, '../../app.json'), 'utf8');
+    const svg = readFileSync(join(__dirname, '../../assets/icons/svg/settings.svg'), 'utf8');
+
+    expect(appJson.match(/"backgroundColor": "#17146a"/g)).toHaveLength(1);
+    expect(appJson.match(/"backgroundColor": "#1e1a6a"/g)).toHaveLength(3);
+    expect(svg.match(/stroke-width="1.5"/g)).toHaveLength(2);
+  });
+
   it('carries the owner-picked palette, hand-frozen', () => {
     expect(DESIGN).toEqual({
       bgStart: '#05134a',
       bgEnd: '#36208a',
-      bgTail: Platform.OS === 'android' ? ANDROID_TAIL : IOS_TAIL,
+      bgTail: '#7117c9',
       dim: '#4a47ae',
       label: '#4060ae',
       bright: '#f2f5f9',
@@ -65,8 +77,16 @@ describe('the one dim ink', () => {
       settingsBorder: 'rgba(116, 80, 207, 0.68)',
       settingsShadow: '#27035c',
       // The full-screen solids sit between the navy top and the middle
-      rootBg: Platform.OS === 'android' ? '#17146a' : '#1e1a6a',
+      rootBg: '#1e1a6a',
     });
+  });
+
+  // Both platform arms of the per-platform values, proven directly
+  it('serves each platform its own tail and root solid', () => {
+    expect(tailFor('android')).toBe('#4c16ca');
+    expect(tailFor('ios')).toBe('#7117c9');
+    expect(rootBgFor('android')).toBe('#17146a');
+    expect(rootBgFor('ios')).toBe('#1e1a6a');
   });
 
   // The tails are pinned per platform: the same hex reads pinker on Android's

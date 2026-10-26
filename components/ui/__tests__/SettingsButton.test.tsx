@@ -41,8 +41,7 @@ describe('the settings button, with the settings sheet mounted', () => {
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
-  // The circle is back at the shrunken square size (T-375): 39x39 with 2px
-  // margins holding the 43px slot, so the flanking dots never move
+  // 39x39 with 2px margins holding the 43px slot, so the flanking dots never move
   it('draws the circle at 39 inside the unchanged 43px slot', async () => {
     setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
     const tree = await render(<SettingsButton />);
@@ -96,7 +95,7 @@ describe('the settings button, with the settings sheet mounted', () => {
       const root = tree.root as NonNullable<typeof tree.root>;
       const style = root.props.style.find((s: { elevation?: number }) => s?.elevation !== undefined);
 
-      expect(style.elevation).toBe(15);
+      expect(style.elevation).toBe(25);
     } finally {
       Platform.OS = 'ios';
     }

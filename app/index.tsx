@@ -28,7 +28,6 @@ import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLa
 import { standardSequenceAtom } from '@/stores/schedule';
 import { syncLoadable } from '@/stores/sync';
 import {
-  DECORATIONS_PREVIEW,
   decorationsEnabledAtom,
   decorationsLoadedAtom,
   masjidIconLoadedAtom,
@@ -92,7 +91,7 @@ export default function Index() {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
   // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
   // one screen whose Refresh can recover the app
-  const decorationsExpected = (isRamadan() || DECORATIONS_PREVIEW) && decorationsEnabled && state !== 'hasError';
+  const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
   const visibleWhatsNew = currentVisibleWhatsNew();

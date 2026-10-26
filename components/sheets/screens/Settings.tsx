@@ -16,7 +16,6 @@ import { typographyFor } from '@/shared/typography';
 import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
-  DECORATIONS_PREVIEW,
   decorationsEnabledAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
@@ -44,11 +43,7 @@ export default function BottomSheetSettings() {
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
-  // TEMPORARY, this branch only (T-375, owner order 2026-10-26): the
-  // decorations toggle shows out of season so the owner can preview the
-  // sprites while tuning. Jest keeps the real season logic; it reverts to
-  // isDecorationSeason() alone before merge - the ticket carries the reminder
-  const showDecorationToggle = useMemo(() => isDecorationSeason() || DECORATIONS_PREVIEW, []);
+  const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);

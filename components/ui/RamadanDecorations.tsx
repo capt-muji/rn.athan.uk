@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { isRamadan } from '@/shared/time';
-import { DECORATIONS_PREVIEW, decorationsEnabledAtom, markDecorationsLoaded } from '@/stores/ui';
+import { decorationsEnabledAtom, markDecorationsLoaded } from '@/stores/ui';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
@@ -258,7 +258,7 @@ export default function RamadanDecorations() {
   // a year while this component renders nothing (measured 93% main-thread CPU
   // idle on the 3T). Visibility re-evaluates on every render; the effect
   // re-arms when it flips true.
-  const visible = (isRamadan() || DECORATIONS_PREVIEW) && decorationsEnabled;
+  const visible = isRamadan() && decorationsEnabled;
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;

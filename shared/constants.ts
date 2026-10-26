@@ -538,7 +538,7 @@ export const COLOR_PICKER_DEFAULT = COLOR_PICKER_SWATCHES[0];
 export const SIZE = {
   /** Icon dimensions */
   icon: {
-    /** Small icon (14px) - settings icon, music icon */
+    /** Small icon (14px) - music icon */
     sm: 14,
     /** Medium icon (20px) - alert icons, chevrons */
     md: 20,
@@ -667,8 +667,8 @@ export const ELEVATION = {
   none: 0,
   /** Subtle elevation (5) */
   subtle: 5,
-  /** The settings button on Android: the doubled elevation, the uat recipe */
-  settingsStrong: 15,
+  /** The settings button on Android, where the shade must read beneath the translucent fill */
+  settingsStrong: 25,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
   /** Maximum elevation (25) - modals */
@@ -770,7 +770,7 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** The settings glyph: the original's lavender, readable against its circle in direct sunlight */
+    /** The settings glyph, readable against its circle in direct sunlight */
     settings: DESIGN.iconSettings,
   },
 
