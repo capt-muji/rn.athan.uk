@@ -488,11 +488,22 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
   it('settles into the failure state when the check cannot reach the store, and stays retryable', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false, failed: true }));
+    const pending: Array<(value: unknown) => void> = [];
+    const answer = () =>
+      new Promise<{ modal: boolean; upToDate: boolean; failed: boolean }>((resolve) => {
+        pending.push(resolve as unknown as (value: unknown) => void);
+      });
+    mockCheckForUpdates.mockReturnValueOnce(answer()).mockReturnValueOnce(answer());
+    const armed = jest.spyOn(Reanimated, 'withRepeat');
     await render(<SettingsSheet />);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
     await settle();
+
+    await act(async () => {
+      pending[0]({ modal: false, upToDate: false, failed: true });
+      await Promise.resolve();
+    });
 
     const row = screen.getByRole('button', { name: 'Failed to check. Try again' });
     expect(screen.queryByRole('button', { name: 'Check for updates' })).not.toBeOnTheScreen();
@@ -508,8 +519,18 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     await fireEvent.press(row);
     await settle();
 
+    // The retry re-arms the spin: the failure settle ran the effect's rest branch, and the next
+    // press starts the turn again from it
+    expect(armed).toHaveBeenCalledTimes(2);
+
+    await act(async () => {
+      pending[1]({ modal: false, upToDate: false, failed: true });
+      await Promise.resolve();
+    });
+
     expect(mockCheckForUpdates).toHaveBeenCalledTimes(2);
     expect(screen.getByRole('button', { name: 'Failed to check. Try again' })).toBeOnTheScreen();
+    armed.mockRestore();
   });
 
   it('spends the budget again once a retry reaches a verdict', async () => {
