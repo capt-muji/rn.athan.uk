@@ -10,6 +10,7 @@ import * as Reanimated from 'react-native-reanimated';
 import type { ReactTestInstance } from 'react-test-renderer';
 
 import { london } from '@/__tests__/harness';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import type { WhatsNewRelease } from '@/shared/whatsNew';
 import {
   bottomSheetModalAtom,
@@ -395,6 +396,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
       })
     );
     const armed = jest.spyOn(Reanimated, 'withRepeat');
+    const turned = jest.spyOn(Reanimated, 'withTiming');
     const stopped = jest.spyOn(Reanimated, 'cancelAnimation');
     await render(<SettingsSheet />);
 
@@ -405,6 +407,8 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(armed).toHaveBeenCalledTimes(1);
     // The repeat runs forever; only the check's answer stops it
     expect(armed.mock.calls[0][1]).toBe(-1);
+    // The owner's "clockwise, round and round": a full positive turn per second in the LTR face
+    expect(turned).toHaveBeenCalledWith(360, { duration: 1000, easing: Reanimated.Easing.linear });
 
     await act(async () => {
       answerCheck({ modal: false, upToDate: true });
@@ -413,7 +417,36 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
     expect(stopped).toHaveBeenCalledTimes(1);
     armed.mockRestore();
+    turned.mockRestore();
     stopped.mockRestore();
+  });
+
+  it('mirrors the arrows and their turn in the Arabic face', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    setActiveLocale('ar');
+    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean }) => void;
+    mockCheckForUpdates.mockReturnValue(
+      new Promise<{ modal: boolean; upToDate: boolean }>((resolve) => {
+        answerCheck = resolve;
+      })
+    );
+    const turned = jest.spyOn(Reanimated, 'withTiming');
+    try {
+      await render(<SettingsSheet />);
+
+      await fireEvent.press(screen.getByRole('button', { name: 'التحقق من التحديثات' }));
+
+      expect(screen.getByRole('button', { name: 'جارٍ التحقق من التحديثات...' })).toBeOnTheScreen();
+      // The mirrored face turns the mirrored way: anti-clockwise, the owner's ruling
+      expect(turned).toHaveBeenCalledWith(-360, { duration: 1000, easing: Reanimated.Easing.linear });
+    } finally {
+      setActiveLocale('en');
+      await act(async () => {
+        answerCheck({ modal: false, upToDate: false });
+        await Promise.resolve();
+      });
+      turned.mockRestore();
+    }
   });
 
   it('answers inline in the row when the store says the install is current', async () => {

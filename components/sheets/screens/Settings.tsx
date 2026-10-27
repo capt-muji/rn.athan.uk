@@ -19,7 +19,7 @@ import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla'
 import { checkForUpdates } from '@/device/updates';
 import { ANIMATION, COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
+import { chevronFor, currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { isDecorationSeason } from '@/shared/time';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -70,14 +70,21 @@ export default function BottomSheetSettings() {
       ? t('settings.upToDate')
       : t('settings.checkUpdates');
 
-  // The two arrows turn clockwise, round and round, for exactly as long as the check runs
+  // The two arrows turn clockwise, round and round, for exactly as long as the check runs. The
+  // RTL face mirrors the row whole: the glyph flips and the turn runs the mirrored way
+  const isRtlLayout = localeDirection(currentLocaleId()) === 'rtl';
   const spin = useSharedValue(0);
   useEffect(() => {
     if (!isChecking) return;
-    spin.value = withRepeat(withTiming(360, { duration: ANIMATION.durationSlow, easing: Easing.linear }), -1);
+    spin.value = withRepeat(
+      withTiming(isRtlLayout ? -360 : 360, { duration: ANIMATION.durationSlow, easing: Easing.linear }),
+      -1
+    );
     return () => cancelAnimation(spin);
-  }, [isChecking, spin]);
-  const spinStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${spin.value}deg` }] }));
+  }, [isChecking, isRtlLayout, spin]);
+  const refreshStyle = useAnimatedStyle(() => ({
+    transform: [{ scaleX: isRtlLayout ? -1 : 1 }, { rotate: `${spin.value}deg` }],
+  }));
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -281,10 +288,13 @@ export default function BottomSheetSettings() {
             )}
           </View>
           <Text style={styles.whatsNewLabel}>{updateRowLabel}</Text>
-          {isChecking ? (
-            <IconView type={Icon.REFRESH} size={SIZE.icon.sm} color={COLORS.icon.primary} animatedStyle={spinStyle} />
-          ) : isUpToDate ? null : (
-            <IconView type={Icon.REFRESH} size={SIZE.icon.sm} color={COLORS.icon.primary} />
+          {isUpToDate ? null : (
+            <IconView
+              type={Icon.REFRESH}
+              size={SIZE.icon.sm}
+              color={COLORS.icon.primary}
+              animatedStyle={refreshStyle}
+            />
           )}
         </Pressable>
       </View>
