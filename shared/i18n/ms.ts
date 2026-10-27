@@ -37,6 +37,7 @@ export const ms = {
   'settings.showHijriDate': 'Tunjukkan tarikh Hijrah',
   'settings.whatsNewLabel': 'Apa yang baharu',
   'settings.checkUpdates': 'Semak kemas kini',
+  'settings.checkingUpdates': 'Menyemak kemas kini...',
   'settings.upToDate': 'Anda sudah terkini',
   'help.q.none': 'Mengapa saya tidak menerima sebarang notifikasi?',
   'help.a.none': 'Tanpa kebenaran, notifikasi tidak dapat ditunjukkan.',

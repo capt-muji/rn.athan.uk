@@ -37,6 +37,7 @@ export const hi = {
   'settings.showHijriDate': 'हिजरी तारीख़ दिखाएँ',
   'settings.whatsNewLabel': 'नया क्या है',
   'settings.checkUpdates': 'अपडेट के लिए जाँच करें',
+  'settings.checkingUpdates': 'अपडेट की जाँच हो रही है...',
   'settings.upToDate': 'आप नवीनतम संस्करण पर हैं',
   'help.q.none': 'मुझे कोई सूचनाएँ क्यों नहीं मिलतीं?',
   'help.a.none': 'अनुमति के बिना सूचनाएँ नहीं दिखाई जा सकतीं।',
