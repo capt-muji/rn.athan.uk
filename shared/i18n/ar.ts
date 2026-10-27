@@ -36,6 +36,8 @@ export const ar = {
   'settings.display': 'العرض',
   'settings.showHijriDate': 'إظهار التاريخ الهجري',
   'settings.whatsNewLabel': 'ما الجديد',
+  'settings.checkUpdates': 'التحقق من التحديثات',
+  'settings.upToDate': 'أنت على أحدث إصدار',
   'help.q.none': 'لماذا لا تصلني أي إشعارات؟',
   'help.a.none': 'بدون إذن، لا يمكن إظهار الإشعارات.',
   'help.step.allowNotificationsIos': 'شغّل السماح بالإشعارات في إعدادات التطبيق',

@@ -36,6 +36,8 @@ export const ms = {
   'settings.display': 'Paparan',
   'settings.showHijriDate': 'Tunjukkan tarikh Hijrah',
   'settings.whatsNewLabel': 'Apa yang baharu',
+  'settings.checkUpdates': 'Semak kemas kini',
+  'settings.upToDate': 'Anda sudah terkini',
   'help.q.none': 'Mengapa saya tidak menerima sebarang notifikasi?',
   'help.a.none': 'Tanpa kebenaran, notifikasi tidak dapat ditunjukkan.',
   'help.step.allowNotificationsIos': 'Hidupkan Benarkan Notifikasi dalam tetapan apl',

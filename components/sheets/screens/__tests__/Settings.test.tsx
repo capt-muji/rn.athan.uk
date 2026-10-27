@@ -16,6 +16,7 @@ import {
   hijriDateEnabledAtom,
   languageSheetModalAtom,
   popupHelpEnabledAtom,
+  popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
   qiblaSheetModalAtom,
   settingsSheetModalAtom,
@@ -27,6 +28,15 @@ import LanguageSheet from '../Language';
 import QiblaSheet from '../Qibla';
 import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
+
+// The update check asks the store over the network, so the row's suite observes the one flow
+// instead of running it
+const mockCheckForUpdates = jest.fn((_options?: { manual?: boolean }) =>
+  Promise.resolve({ modal: false, upToDate: false })
+);
+jest.mock('@/device/updates', () => ({
+  checkForUpdates: (options?: { manual?: boolean }) => mockCheckForUpdates(options),
+}));
 
 // The qibla sheet reaches the platform the moment it presents; the settings suite only needs it to exist
 const mockQiblaGranted = { value: true };
@@ -86,6 +96,8 @@ const renderedSheet = (modal: typeof settingsSheetModalAtom) => {
 beforeEach(() => {
   mockVisibleWhatsNew = RELEASE_WITH_NOTES;
   mockQiblaGranted.value = true;
+  mockCheckForUpdates.mockReset();
+  mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
 });
 
 describe('the settings sheet outside the Ramadan season, Friday 11 September 2026 at 14:00', () => {
@@ -309,6 +321,94 @@ describe('the settings sheet in the Ramadan season, Monday 15 February 2027 at 1
 
     expect(switchOf('Show decorations')).toBeChecked();
     expect(store.get(decorationsEnabledAtom)).toBe(true);
+  });
+});
+
+describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
+  /** One microtask hop: the check's promise resolves and the row's answer lands inside act */
+  const settle = () =>
+    act(async () => {
+      await Promise.resolve();
+    });
+
+  it('shows the row at the end of the Other card, without a chevron to promise navigation', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    const row = screen.getByRole('button', { name: 'Check for updates' });
+    const otherCard = screen.getByText('Other').parent;
+    expect(otherCard?.children.indexOf(row)).toBe((otherCard?.children.length ?? 0) - 1);
+    expect(within(row).queryByText('›')).not.toBeOnTheScreen();
+  });
+
+  it('runs the one update flow in manual mode when pressed', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(mockCheckForUpdates).toHaveBeenCalledTimes(1);
+    expect(mockCheckForUpdates).toHaveBeenCalledWith({ manual: true });
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  it('answers inline in the row when the store says the install is current', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true }));
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
+    expect(screen.queryByRole('button', { name: 'Check for updates' })).not.toBeOnTheScreen();
+  });
+
+  it('closes the sheet and presents the shared update modal once the store has an update', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    store.set(popupUpdateEnabledAtom, false);
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: true, upToDate: false }));
+    await render(<SettingsSheet />);
+    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    await act(() => jest.advanceTimersByTime(149));
+    expect(store.get(popupUpdateEnabledAtom)).toBe(false);
+    await act(() => jest.advanceTimersByTime(1));
+    expect(store.get(popupUpdateEnabledAtom)).toBe(true);
+  });
+
+  it('keeps the row resting when the check cannot reach the store', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
+    expect(screen.queryByText('You’re up to date')).not.toBeOnTheScreen();
+    expect(store.get(popupUpdateEnabledAtom)).toBe(false);
+  });
+
+  it('returns an earlier up-to-date answer to rest when a later check falls silent', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true }));
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+    expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
+
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
+    await fireEvent.press(screen.getByRole('button', { name: 'You’re up to date' }));
+    await settle();
+
+    expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
   });
 });
 

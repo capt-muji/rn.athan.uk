@@ -37,6 +37,8 @@ export const en = {
   'settings.display': 'Display',
   'settings.showHijriDate': 'Show hijri date',
   'settings.whatsNewLabel': 'What’s new',
+  'settings.checkUpdates': 'Check for updates',
+  'settings.upToDate': 'You’re up to date',
 
   'help.q.none': "Why don't I get any notifications?",
   'help.a.none': 'Without permission, notifications cannot be shown.',

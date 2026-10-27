@@ -36,6 +36,8 @@ export const so = {
   'settings.display': 'Muuqaalka',
   'settings.showHijriDate': 'Muuji taariikhda Hijriga',
   'settings.whatsNewLabel': 'Maxay tahay cusub',
+  'settings.checkUpdates': 'Hubi cusboonaysiinta',
+  'settings.upToDate': 'Cusboonaysiin cusub ma jirto',
   'help.q.none': 'Maxaan u helinayo ogeysiis kasta?',
   'help.a.none': "Astan la'aan, ogeysiisyada lama muujin karo.",
   'help.step.allowNotificationsIos': 'Shid Ogol Ogeysiis habbooshka aaladda',

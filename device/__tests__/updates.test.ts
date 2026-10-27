@@ -2,7 +2,7 @@
  * Unit tests for device/updates.ts
  *
  * Tests app update checking and store opening including:
- * - checkForUpdates() - 24h throttle, version fetching, comparison
+ * - checkForUpdates() - 24h throttle, manual mode, version fetching, comparison
  * - openStore() - opening App Store / Play Store URLs
  */
 
@@ -110,12 +110,12 @@ describe('checkForUpdates', () => {
   // 24-hour throttle
   // ---------------------------------------------------------------------------
 
-  it('returns false if checked within 24 hours', async () => {
+  it('refuses the modal and claims nothing inside 24 hours of the last check', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(Date.now() - ONE_DAY_MS + 60000);
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockFetch).not.toHaveBeenCalled();
     expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
   });
@@ -128,7 +128,8 @@ describe('checkForUpdates', () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.33');
-    expect(result).toBe(false);
+    expect(result.modal).toBe(false);
+    expect(result.upToDate).toBe(true);
   });
 
   // ---------------------------------------------------------------------------
@@ -148,17 +149,17 @@ describe('checkForUpdates', () => {
       expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toBe(true);
+    expect(result).toEqual({ modal: true, upToDate: false });
   });
 
-  it('returns false when iTunes API returns empty results', async () => {
+  it('claims nothing when iTunes API returns empty results', async () => {
     mockIsProd.mockReturnValue(true);
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockResolvedValue(storeResponse({ json: { results: [] } }));
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
@@ -179,14 +180,14 @@ describe('checkForUpdates', () => {
       expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toBe(true);
+    expect(result).toEqual({ modal: true, upToDate: false });
   });
 
   // ---------------------------------------------------------------------------
   // Version comparison results
   // ---------------------------------------------------------------------------
 
-  it('returns true when store version is newer than installed', async () => {
+  it('offers the modal when store version is newer than installed', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
     mockIsNewerVersion.mockReturnValue(true);
@@ -194,10 +195,10 @@ describe('checkForUpdates', () => {
     const result = await checkForUpdates();
 
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toBe(true);
+    expect(result).toEqual({ modal: true, upToDate: false });
   });
 
-  it('returns false when installed version is current', async () => {
+  it('answers up to date when the comparison ran and the store is not newer', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
     mockIsNewerVersion.mockReturnValue(false);
@@ -205,31 +206,31 @@ describe('checkForUpdates', () => {
     const result = await checkForUpdates();
 
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.33');
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: true });
   });
 
   // ---------------------------------------------------------------------------
   // Error handling
   // ---------------------------------------------------------------------------
 
-  it('returns false on network failure (fetch throws)', async () => {
+  it('claims nothing on network failure (fetch throws)', async () => {
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockRejectedValue(new Error('Network error'));
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
-  it('returns false when installedVersion is empty', async () => {
+  it('claims nothing when installedVersion is empty', async () => {
     mockGetInstalledVersion.mockReturnValue('');
     mockGetPopupUpdateLastCheck.mockReturnValue(0);
     mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
@@ -300,7 +301,7 @@ describe('checkForUpdates', () => {
     const pending = checkForUpdates();
     jest.advanceTimersByTime(FETCH_TIMEOUT_MS);
 
-    await expect(pending).resolves.toBe(false);
+    await expect(pending).resolves.toEqual({ modal: false, upToDate: false });
     expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
     jest.useRealTimers();
   });
@@ -317,7 +318,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(true);
+    expect(result.modal).toBe(true);
     expect(capturedSignal?.aborted).toBe(false);
     jest.useRealTimers();
   });
@@ -357,7 +358,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to check for updates:', expect.any(Error));
     expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
     jest.useRealTimers();
@@ -381,6 +382,67 @@ describe('checkForUpdates', () => {
     await checkForUpdates();
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
+  });
+});
+
+// =============================================================================
+// checkForUpdates - manual mode (the settings sheet's button)
+// =============================================================================
+
+describe('checkForUpdates manual mode', () => {
+  it('asks the store even inside the 24-hour window', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
+
+    const result = await checkForUpdates({ manual: true });
+
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.33');
+    expect(result).toEqual({ modal: false, upToDate: true });
+  });
+
+  it('leaves the automatic check refusing inside the same window', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
+
+    await checkForUpdates();
+
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it('still writes the success stamp, so the automatic check never double-fires the window', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.33' }] } }));
+
+    await checkForUpdates({ manual: true });
+
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW);
+    jest.useRealTimers();
+  });
+
+  it('writes nothing when a manual check cannot reach the store, so a fresher automatic stamp is never dragged back', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockFetch.mockRejectedValue(new Error('Network error'));
+
+    await checkForUpdates({ manual: true });
+
+    expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
+    jest.useRealTimers();
+  });
+
+  it('offers the modal and stamps now when the manual check finds an update', async () => {
+    jest.useFakeTimers({ now: PINNED_NOW });
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockFetch.mockResolvedValue(storeResponse({ json: { results: [{ version: '1.0.34' }] } }));
+    mockIsNewerVersion.mockReturnValue(true);
+
+    const result = await checkForUpdates({ manual: true });
+
+    expect(result).toEqual({ modal: true, upToDate: false });
+    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW);
+    jest.useRealTimers();
   });
 });
 
@@ -464,7 +526,7 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
   });
 
   it('does nothing when Play reports no update', async () => {
@@ -472,7 +534,7 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: true });
     expect(mockStartUpdate).not.toHaveBeenCalled();
   });
 
@@ -482,8 +544,27 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toBe(false);
+    expect(result).toEqual({ modal: false, upToDate: false });
     expect(mockLoggerWarn).toHaveBeenCalledWith('Failed to start native update:', error);
+  });
+
+  it('asks Play inside the 24-hour window when the call is manual', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockCheckForUpdate.mockResolvedValue({ updateAvailable: false });
+
+    const result = await checkForUpdatesAndroid({ manual: true });
+
+    expect(mockCheckForUpdate).toHaveBeenCalledTimes(1);
+    expect(result).toEqual({ modal: false, upToDate: true });
+  });
+
+  it('stamps nothing when a manual Play check is rejected', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockCheckForUpdate.mockRejectedValue(new Error('Binder has died'));
+
+    await checkForUpdatesAndroid({ manual: true });
+
+    expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
   });
 
   it('stamps a Play failure an hour back so the day is not lost', async () => {

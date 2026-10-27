@@ -48,7 +48,7 @@ jest.mock('@/api/client', () => ({
 
 // The update check asks the store over the network and Update opens the store, so both are observed instead of run
 jest.mock('@/device/updates', () => ({
-  checkForUpdates: jest.fn(() => Promise.resolve(false)),
+  checkForUpdates: jest.fn(() => Promise.resolve({ modal: false, upToDate: false })),
   openStore: jest.fn(() => Promise.resolve()),
 }));
 
@@ -644,7 +644,7 @@ describe('the overlay layer, Friday 11 September 2026 at 14:00', () => {
 describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it('offers the update once 1.5 seconds have passed and the store has a newer version', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
@@ -664,7 +664,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
 
   it('closes the update prompt when Later is pressed', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
@@ -676,7 +676,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
 
   it('opens the store and closes the prompt when Update is pressed', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
@@ -689,7 +689,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it('holds the update prompt back while Help is showing', async () => {
     showLondonDay('2026-09-11', '14:00');
     relaunchRelease();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
     await act(() => setPopupHelpEnabled(true));
@@ -701,7 +701,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it("holds the update prompt back while What's New is showing", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
@@ -724,7 +724,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it("offers the update once What's New is closed", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 

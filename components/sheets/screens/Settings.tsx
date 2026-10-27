@@ -1,12 +1,14 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import CheckIcon from '@/assets/icons/svg/check.svg';
 import InfoBare from '@/assets/icons/svg/info-bare.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
+import { checkForUpdates } from '@/device/updates';
 import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
@@ -20,6 +22,7 @@ import {
   hideSettingsSheet,
   hijriDateEnabledAtom,
   setPopupHelpEnabled,
+  setPopupUpdateEnabled,
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
@@ -44,6 +47,7 @@ export default function BottomSheetSettings() {
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
+  const [upToDate, setUpToDate] = useState(false);
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -80,6 +84,24 @@ export default function BottomSheetSettings() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     hideSettingsSheet();
     setTimeout(() => setPopupHelpEnabled(true), 150);
+  };
+
+  // The one update flow's second entry point: manual skips only that call's throttle read, so
+  // a tap re-asks the store while the launch check keeps its 24-hour window
+  const handleCheckUpdatesPress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    checkForUpdates({ manual: true }).then((result) => {
+      if (result.modal) {
+        // The modal renders under this sheet, so the sheet closes first - the What's New and
+        // Help rows trust the same 150ms
+        hideSettingsSheet();
+        setTimeout(() => setPopupUpdateEnabled(true), 150);
+        return;
+      }
+      // A store that answered current is the one answer the modal cannot show; anything else
+      // stays silent, and the resting label returns
+      setUpToDate(result.upToDate);
+    });
   };
 
   return (
@@ -205,6 +227,19 @@ export default function BottomSheetSettings() {
           </View>
           <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
+        </Pressable>
+        {/* The row acts in place, so it carries the up-to-date answer where its chevron would
+            sit: no chevron, because nothing opens */}
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleCheckUpdatesPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel={upToDate ? t('settings.upToDate') : t('settings.checkUpdates')}
+          accessibilityRole={'button'}>
+          <View style={styles.infoButton}>
+            <CheckIcon width={9} height={9} style={{ color: COLORS.text.primary }} />
+          </View>
+          <Text style={styles.whatsNewLabel}>{upToDate ? t('settings.upToDate') : t('settings.checkUpdates')}</Text>
         </Pressable>
       </View>
     </Sheet>

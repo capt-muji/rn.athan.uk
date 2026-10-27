@@ -36,6 +36,8 @@ export const th = {
   'settings.display': 'การแสดงผล',
   'settings.showHijriDate': 'แสดงวันที่ฮิจเราะห์',
   'settings.whatsNewLabel': 'มีอะไรใหม่',
+  'settings.checkUpdates': 'ตรวจสอบการอัปเดต',
+  'settings.upToDate': 'เป็นเวอร์ชันล่าสุดแล้ว',
   'help.q.none': 'ทำไมฉันจึงไม่ได้รับการแจ้งเตือนเลย?',
   'help.a.none': 'หากไม่อนุญาต การแจ้งเตือนจะแสดงไม่ได้',
   'help.step.allowNotificationsIos': 'เปิด Allow Notifications ในการตั้งค่าแอป',
