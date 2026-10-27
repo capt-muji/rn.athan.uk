@@ -1,19 +1,25 @@
 /**
- * The prebuild pin that locks the Duo's tall presentation: the portrait pair declared on every
- * surface and answered for every window, so the inner display's per-pose presentation never
- * includes a wide layout (plugins/duoTallCanvas.js)
+ * The prebuild pin that locks the Duo's tall presentation: every window answers the portrait
+ * pair through the AppDelegate gate, while the plist scopes the full-screen key to iPhone and
+ * declares all four iPad orientations for the keyless build's validation (plugins/duoTallCanvas.js)
  */
 
 const { readFileSync } = require('node:fs');
 
-const { editAppDelegate, editInfoPlist } = require('../duoTallCanvas') as {
+const { editAppDelegate, editFullScreenKeys } = require('../duoTallCanvas') as {
   editAppDelegate: (contents: string) => string;
-  editInfoPlist: (plist: Record<string, unknown>) => Record<string, unknown>;
+  editFullScreenKeys: (plist: Record<string, unknown>) => Record<string, unknown>;
 };
 
 // Literals of the repo's own template shape, not the plugin's exports: comparing the surgery
 // against its own words would prove nothing
 const PORTRAIT_PAIR = ['UIInterfaceOrientationPortrait', 'UIInterfaceOrientationPortraitUpsideDown'];
+const IPAD_ALL_FOUR = [
+  'UIInterfaceOrientationPortrait',
+  'UIInterfaceOrientationPortraitUpsideDown',
+  'UIInterfaceOrientationLandscapeLeft',
+  'UIInterfaceOrientationLandscapeRight',
+];
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const GATE_SELECTOR = 'supportedInterfaceOrientationsFor window: UIWindow?';
 const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
@@ -72,6 +78,35 @@ describe('the AppDelegate portrait gate', () => {
     expect(editAppDelegate(once)).toBe(once);
   });
 
+  it('pins the Mac window at the content cap with no resize and no full screen', () => {
+    const edited = editAppDelegate(appDelegateFixture());
+
+    expect(edited).toContain('applicationDidBecomeActive');
+    expect(edited).toContain('ProcessInfo.processInfo.isiOSAppOnMac');
+    expect(edited).toContain('CGSize(width: 500, height: 932)');
+    expect(edited).toContain('minimumSize = phone');
+    expect(edited).toContain('maximumSize = phone');
+    expect(edited).toContain('allowsFullScreen = false');
+    expect(edited.indexOf('macWindowPinned')).toBeGreaterThan(edited.indexOf('class AppDelegate:'));
+  });
+
+  it('throws on a warm AppDelegate that carries the old gate without the pin', () => {
+    const warm = appDelegateFixture().replace(
+      NEXT_CLASS,
+      `  public override func application(
+    _ application: UIApplication,
+    supportedInterfaceOrientationsFor window: UIWindow?
+  ) -> UIInterfaceOrientationMask {
+    ${GATE_MASK}
+  }
+}
+
+${NEXT_CLASS}`
+    );
+
+    expect(() => editAppDelegate(warm)).toThrow();
+  });
+
   it('throws when the template no longer carries the class-close marker', () => {
     const drifted = appDelegateFixture().replace(`}\n\n${NEXT_CLASS}`, '}\n\nstruct SomethingElse {');
 
@@ -99,43 +134,37 @@ describe('the AppDelegate portrait gate', () => {
   });
 });
 
-describe('the Info.plist portrait pin', () => {
-  it('pins both orientation arrays to the portrait pair and scopes the full-screen key to iPhone', () => {
-    const edited = editInfoPlist({
-      UISupportedInterfaceOrientations: [
-        'UIInterfaceOrientationPortrait',
-        'UIInterfaceOrientationLandscapeLeft',
-        'UIInterfaceOrientationLandscapeRight',
-      ],
-      'UISupportedInterfaceOrientations~ipad': ['UIInterfaceOrientationLandscapeLeft'],
-      UIRequiresFullScreen: false,
-    });
-
-    expect(edited.UISupportedInterfaceOrientations).toEqual(PORTRAIT_PAIR);
-    expect(edited['UISupportedInterfaceOrientations~ipad']).toEqual(PORTRAIT_PAIR);
-    expect(edited['UIRequiresFullScreen~iphone']).toBe(true);
-  });
-
-  it('drops an unscoped full-screen key, which is what froze the Mac and iPad window', () => {
-    const edited = editInfoPlist({ UIRequiresFullScreen: true });
+describe('the full-screen keys', () => {
+  it('scopes the discrete-resize request to iPhone and drops the unscoped key', () => {
+    const edited = editFullScreenKeys({ UIRequiresFullScreen: true });
 
     expect(edited.UIRequiresFullScreen).toBeUndefined();
     expect(edited['UIRequiresFullScreen~iphone']).toBe(true);
   });
 
-  it('never declares a landscape value', () => {
-    const edited = editInfoPlist({});
+  it('declares all four iPad orientations, which a keyless build needs to validate', () => {
+    const edited = editFullScreenKeys({
+      'UISupportedInterfaceOrientations~ipad': ['UIInterfaceOrientationLandscapeLeft'],
+    });
 
-    expect(JSON.stringify(edited)).not.toContain('Landscape');
+    expect(edited['UISupportedInterfaceOrientations~ipad']).toEqual(IPAD_ALL_FOUR);
+  });
+
+  it('leaves the phone array alone so the tall presentation keeps its portrait opt-in', () => {
+    const edited = editFullScreenKeys({ UISupportedInterfaceOrientations: PORTRAIT_PAIR });
+
+    expect(edited.UISupportedInterfaceOrientations).toEqual(PORTRAIT_PAIR);
+    expect(JSON.stringify(edited.UISupportedInterfaceOrientations)).not.toContain('Landscape');
   });
 });
 
 describe('the app.json wiring', () => {
-  it('seats the plugin directly after portraitOnlyIpad', () => {
+  it('carries the plugin with no portraitOnlyIpad beside it', () => {
     const plugins = JSON.parse(readFileSync('app.json', 'utf8')).expo.plugins as unknown[];
 
     const names = plugins.map((plugin) => (Array.isArray(plugin) ? plugin[0] : plugin));
-    expect(names.indexOf('./plugins/duoTallCanvas')).toBe(names.indexOf('./plugins/portraitOnlyIpad') + 1);
+    expect(names).toContain('./plugins/duoTallCanvas');
+    expect(names).not.toContain('./plugins/portraitOnlyIpad');
   });
 
   it('declares no requireFullScreen, which would re-freeze the Mac and iPad window', () => {

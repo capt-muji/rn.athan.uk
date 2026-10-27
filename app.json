@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.8.1",
+    "version": "2.8.2",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -22,7 +22,8 @@
         "CFBundleDisplayName": "Athan",
         "CFBundleLocalizations": ["en", "ar", "ms", "so", "hi", "th"],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
-        "NSUserNotificationsUsageDescription": "Receive prayer time notifications"
+        "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
+        "UIRequiresFullScreen~iphone": true
       },
       "backgroundColor": "#2c1c77"
     },
@@ -210,7 +211,6 @@
         }
       ],
       "./plugins/gradleJvmMemory",
-      "./plugins/portraitOnlyIpad",
       "./plugins/duoTallCanvas",
       "./plugins/replacePreviousNotification",
       "expo-asset",
