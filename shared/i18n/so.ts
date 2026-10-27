@@ -39,6 +39,7 @@ export const so = {
   'settings.checkUpdates': 'Hubi cusboonaysiinta',
   'settings.checkingUpdates': 'Waxaa la hubinayaa cusboonaysiinta...',
   'settings.upToDate': 'Cusboonaysiin cusub ma jirto',
+  'settings.updateCheckFailed': 'Hubintu way fashilantay. Isku day mar kale',
   'help.q.none': 'Maxaan u helinayo ogeysiis kasta?',
   'help.a.none': "Astan la'aan, ogeysiisyada lama muujin karo.",
   'help.step.allowNotificationsIos': 'Shid Ogol Ogeysiis habbooshka aaladda',

@@ -39,6 +39,7 @@ export const th = {
   'settings.checkUpdates': 'ตรวจสอบการอัปเดต',
   'settings.checkingUpdates': 'กำลังตรวจสอบการอัปเดต...',
   'settings.upToDate': 'เป็นเวอร์ชันล่าสุดแล้ว',
+  'settings.updateCheckFailed': 'ตรวจสอบไม่สำเร็จ ลองอีกครั้ง',
   'help.q.none': 'ทำไมฉันจึงไม่ได้รับการแจ้งเตือนเลย?',
   'help.a.none': 'หากไม่อนุญาต การแจ้งเตือนจะแสดงไม่ได้',
   'help.step.allowNotificationsIos': 'เปิด Allow Notifications ในการตั้งค่าแอป',

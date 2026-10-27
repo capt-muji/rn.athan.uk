@@ -1,6 +1,7 @@
 /**
  * The settings sheet: the athan and What's New buttons, the display toggles, the decorations toggle's season, and the
- * music glyph's size on each platform
+ * music glyph's size on each platform. The Check for updates row's own four looks, its once-per-opening budget and
+ * its retry live in this suite too
  */
 
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
@@ -33,9 +34,11 @@ import SettingsSheet from '../Settings';
 import SoundSheet from '../Sound';
 
 // The update check asks the store over the network, so the row's suite observes the one flow
-// instead of running it
+// instead of running it. The default answer is a verdict: the bare pair the old default
+// carried is a shape the data layer no longer returns, and a verdict is what the row's
+// spent-budget tests mean to spend
 const mockCheckForUpdates = jest.fn((_options?: { manual?: boolean }) =>
-  Promise.resolve({ modal: false, upToDate: false })
+  Promise.resolve({ modal: false, upToDate: true, failed: false })
 );
 jest.mock('@/device/updates', () => ({
   checkForUpdates: (options?: { manual?: boolean }) => mockCheckForUpdates(options),
@@ -100,7 +103,7 @@ beforeEach(() => {
   mockVisibleWhatsNew = RELEASE_WITH_NOTES;
   mockQiblaGranted.value = true;
   mockCheckForUpdates.mockReset();
-  mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
+  mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true, failed: false }));
 });
 
 describe('the settings sheet outside the Ramadan season, Friday 11 September 2026 at 14:00', () => {
@@ -384,9 +387,9 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
   it('shows the checking label and spins the two arrows while the check runs', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean }) => void;
+    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean; failed: boolean }) => void;
     mockCheckForUpdates.mockReturnValue(
-      new Promise<{ modal: boolean; upToDate: boolean }>((resolve) => {
+      new Promise<{ modal: boolean; upToDate: boolean; failed: boolean }>((resolve) => {
         answerCheck = resolve;
       })
     );
@@ -406,7 +409,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(turned).toHaveBeenCalledWith(360, { duration: 1000, easing: Reanimated.Easing.linear });
 
     await act(async () => {
-      answerCheck({ modal: false, upToDate: true });
+      answerCheck({ modal: false, upToDate: true, failed: false });
       await Promise.resolve();
     });
 
@@ -419,9 +422,9 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
   it('mirrors the arrows and their turn in the Arabic face', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     setActiveLocale('ar');
-    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean }) => void;
+    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean; failed: boolean }) => void;
     mockCheckForUpdates.mockReturnValue(
-      new Promise<{ modal: boolean; upToDate: boolean }>((resolve) => {
+      new Promise<{ modal: boolean; upToDate: boolean; failed: boolean }>((resolve) => {
         answerCheck = resolve;
       })
     );
@@ -442,7 +445,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     } finally {
       setActiveLocale('en');
       await act(async () => {
-        answerCheck({ modal: false, upToDate: false });
+        answerCheck({ modal: false, upToDate: false, failed: true });
         await Promise.resolve();
       });
       turned.mockRestore();
@@ -451,7 +454,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
   it('answers inline in the row when the store says the install is current', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true }));
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true, failed: false }));
     await render(<SettingsSheet />);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
@@ -469,7 +472,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
   it('closes the sheet and presents the shared update modal once the store has an update', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     store.set(popupUpdateEnabledAtom, false);
-    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: true, upToDate: false }));
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: true, upToDate: false, failed: false }));
     await render(<SettingsSheet />);
     const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
 
@@ -483,9 +486,57 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(store.get(popupUpdateEnabledAtom)).toBe(true);
   });
 
-  it('keeps the row resting when the check cannot reach the store', async () => {
+  it('settles into the failure state when the check cannot reach the store, and stays retryable', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false, failed: true }));
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    const row = screen.getByRole('button', { name: 'Failed to check. Try again' });
+    expect(screen.queryByRole('button', { name: 'Check for updates' })).not.toBeOnTheScreen();
+    expect(screen.queryByText('You’re up to date')).not.toBeOnTheScreen();
+    // The owner's spec: the circle red with a white X, mirroring the green tick's construction
+    const badge = row.children[0] as unknown as ReactTestInstance;
+    expect(badge).toHaveStyle({ backgroundColor: '#dc2626', borderColor: '#ef4444' });
+    expect(within(row).getByTestId('svg:close', { includeHiddenElements: true })).toBeOnTheScreen();
+    // The ring stays so the row reads retryable, and no modal is claimed
+    expect(within(row).getByTestId('svg:refresh', { includeHiddenElements: true })).toBeOnTheScreen();
+    expect(store.get(popupUpdateEnabledAtom)).toBe(false);
+
+    await fireEvent.press(row);
+    await settle();
+
+    expect(mockCheckForUpdates).toHaveBeenCalledTimes(2);
+    expect(screen.getByRole('button', { name: 'Failed to check. Try again' })).toBeOnTheScreen();
+  });
+
+  it('spends the budget again once a retry reaches a verdict', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    mockCheckForUpdates
+      .mockReturnValueOnce(Promise.resolve({ modal: false, upToDate: false, failed: true }))
+      .mockReturnValueOnce(Promise.resolve({ modal: false, upToDate: true, failed: false }));
+    await render(<SettingsSheet />);
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+    await fireEvent.press(screen.getByRole('button', { name: 'Failed to check. Try again' }));
+    await settle();
+
+    expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
+    mockCheckForUpdates.mockClear();
+
+    await fireEvent.press(screen.getByRole('button', { name: 'You’re up to date' }));
+    await settle();
+
+    expect(mockCheckForUpdates).not.toHaveBeenCalled();
+  });
+
+  it('rests the row when Play starts its own update flow, and that verdict spends the budget', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    // Android's update-found: Play's overlay owns the message, so the row claims nothing inline
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false, failed: false }));
     await render(<SettingsSheet />);
 
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
@@ -493,7 +544,32 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
     expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
     expect(screen.queryByText('You’re up to date')).not.toBeOnTheScreen();
-    expect(store.get(popupUpdateEnabledAtom)).toBe(false);
+    mockCheckForUpdates.mockClear();
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(mockCheckForUpdates).not.toHaveBeenCalled();
+  });
+
+  it('reads the failure state mirrored in the Arabic face', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    setActiveLocale('ar');
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false, failed: true }));
+    try {
+      await render(<SettingsSheet />);
+
+      await fireEvent.press(screen.getByRole('button', { name: 'التحقق من التحديثات' }));
+      await settle();
+
+      const row = screen.getByRole('button', { name: 'فشل التحقق. حاول مجددًا' });
+      expect(within(row).getByTestId('svg:close', { includeHiddenElements: true })).toBeOnTheScreen();
+      // The ring keeps its RTL wrapper in the failure state: the row stays retryable in both faces
+      const trailing = row.children[2] as unknown as ReactTestInstance;
+      expect(trailing).toHaveStyle({ transform: [{ scaleX: -1 }] });
+    } finally {
+      setActiveLocale('en');
+    }
   });
 
   it('starts no second check while its sheet stays open: the press after the answer does nothing', async () => {
@@ -504,7 +580,8 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     await settle();
     mockCheckForUpdates.mockClear();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    // The verdict keeps the budget spent, so the row's own settled name now refuses the press
+    await fireEvent.press(screen.getByRole('button', { name: 'You’re up to date' }));
     await settle();
 
     expect(mockCheckForUpdates).not.toHaveBeenCalled();
@@ -512,7 +589,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
   it('re-arms its one check when the sheet closes and opens again', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true }));
+    mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true, failed: false }));
     await render(<SettingsSheet />);
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
     await settle();
@@ -534,9 +611,9 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
   it('drops the answer of a check whose sheet closed mid-flight', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean }) => void;
+    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean; failed: boolean }) => void;
     mockCheckForUpdates.mockReturnValue(
-      new Promise<{ modal: boolean; upToDate: boolean }>((resolve) => {
+      new Promise<{ modal: boolean; upToDate: boolean; failed: boolean }>((resolve) => {
         answerCheck = resolve;
       })
     );
@@ -547,7 +624,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(screen.getByText('Settings'), 'dismiss');
 
     await act(async () => {
-      answerCheck({ modal: false, upToDate: true });
+      answerCheck({ modal: false, upToDate: true, failed: false });
       await Promise.resolve();
     });
 
@@ -564,7 +641,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     await settle();
     (Haptics.impactAsync as jest.Mock).mockClear();
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await fireEvent.press(screen.getByRole('button', { name: 'You’re up to date' }));
 
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });

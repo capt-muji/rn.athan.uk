@@ -40,6 +40,7 @@ export const en = {
   'settings.checkUpdates': 'Check for updates',
   'settings.checkingUpdates': 'Checking for updates...',
   'settings.upToDate': 'You’re up to date',
+  'settings.updateCheckFailed': 'Failed to check. Try again',
 
   'help.q.none': "Why don't I get any notifications?",
   'help.a.none': 'Without permission, notifications cannot be shown.',

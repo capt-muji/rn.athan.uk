@@ -115,7 +115,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: false });
     expect(mockFetch).not.toHaveBeenCalled();
     expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
   });
@@ -149,7 +149,7 @@ describe('checkForUpdates', () => {
       expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toEqual({ modal: true, upToDate: false });
+    expect(result).toEqual({ modal: true, upToDate: false, failed: false });
   });
 
   it('claims nothing when iTunes API returns empty results', async () => {
@@ -159,7 +159,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
@@ -180,7 +180,7 @@ describe('checkForUpdates', () => {
       expect.objectContaining({ headers: { 'Cache-Control': 'no-cache' } })
     );
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toEqual({ modal: true, upToDate: false });
+    expect(result).toEqual({ modal: true, upToDate: false, failed: false });
   });
 
   // ---------------------------------------------------------------------------
@@ -195,7 +195,7 @@ describe('checkForUpdates', () => {
     const result = await checkForUpdates();
 
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.34');
-    expect(result).toEqual({ modal: true, upToDate: false });
+    expect(result).toEqual({ modal: true, upToDate: false, failed: false });
   });
 
   it('answers up to date when the comparison ran and the store is not newer', async () => {
@@ -206,7 +206,7 @@ describe('checkForUpdates', () => {
     const result = await checkForUpdates();
 
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.33');
-    expect(result).toEqual({ modal: false, upToDate: true });
+    expect(result).toEqual({ modal: false, upToDate: true, failed: false });
   });
 
   // ---------------------------------------------------------------------------
@@ -219,7 +219,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
@@ -230,7 +230,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockIsNewerVersion).not.toHaveBeenCalled();
   });
 
@@ -301,7 +301,7 @@ describe('checkForUpdates', () => {
     const pending = checkForUpdates();
     jest.advanceTimersByTime(FETCH_TIMEOUT_MS);
 
-    await expect(pending).resolves.toEqual({ modal: false, upToDate: false });
+    await expect(pending).resolves.toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
     jest.useRealTimers();
   });
@@ -358,7 +358,7 @@ describe('checkForUpdates', () => {
 
     const result = await checkForUpdates();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockLoggerError).toHaveBeenCalledWith('Failed to check for updates:', expect.any(Error));
     expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
     jest.useRealTimers();
@@ -398,7 +398,7 @@ describe('checkForUpdates manual mode', () => {
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
     expect(mockIsNewerVersion).toHaveBeenCalledWith('1.0.33', '1.0.33');
-    expect(result).toEqual({ modal: false, upToDate: true });
+    expect(result).toEqual({ modal: false, upToDate: true, failed: false });
   });
 
   it('leaves the automatic check refusing inside the same window', async () => {
@@ -440,7 +440,7 @@ describe('checkForUpdates manual mode', () => {
 
     const result = await checkForUpdates({ manual: true });
 
-    expect(result).toEqual({ modal: true, upToDate: false });
+    expect(result).toEqual({ modal: true, upToDate: false, failed: false });
     expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW);
     jest.useRealTimers();
   });
@@ -526,7 +526,7 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: false });
   });
 
   it('does nothing when Play reports no update', async () => {
@@ -534,7 +534,7 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toEqual({ modal: false, upToDate: true });
+    expect(result).toEqual({ modal: false, upToDate: true, failed: false });
     expect(mockStartUpdate).not.toHaveBeenCalled();
   });
 
@@ -544,7 +544,7 @@ describe('checkForUpdates (Android)', () => {
 
     const result = await checkForUpdatesAndroid();
 
-    expect(result).toEqual({ modal: false, upToDate: false });
+    expect(result).toEqual({ modal: false, upToDate: false, failed: true });
     expect(mockLoggerWarn).toHaveBeenCalledWith('Failed to start native update:', error);
   });
 
@@ -555,7 +555,7 @@ describe('checkForUpdates (Android)', () => {
     const result = await checkForUpdatesAndroid({ manual: true });
 
     expect(mockCheckForUpdate).toHaveBeenCalledTimes(1);
-    expect(result).toEqual({ modal: false, upToDate: true });
+    expect(result).toEqual({ modal: false, upToDate: true, failed: false });
   });
 
   it('stamps nothing when a manual Play check is rejected', async () => {
