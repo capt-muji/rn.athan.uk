@@ -240,14 +240,25 @@ describe('the launch chain with one step rejected over stored days', () => {
     mockIsDev = true;
     const error = failure();
     const { store, syncLoadable, triggerSyncLoadable, Database } = launch({ stored: [TODAY, TOMORROW] });
-    jest.spyOn(Database, 'getPrayerByDateString').mockImplementation(() => {
-      throw error;
+    // Only the read after the download's own save may throw, so the armed-days prelude and the gates'
+    // usable-days checks keep answering from the real store and the write-back read is the rejection
+    let saved = false;
+    const realSave = Database.saveAllPrayers.bind(Database);
+    jest.spyOn(Database, 'saveAllPrayers').mockImplementation((prayers: ISingleApiResponseTransformed[]) => {
+      saved = true;
+      return realSave(prayers);
+    });
+    const realRead = Database.getPrayerByDateString.bind(Database);
+    jest.spyOn(Database, 'getPrayerByDateString').mockImplementation((date: string) => {
+      if (saved) throw error;
+      return realRead(date);
     });
 
     triggerSyncLoadable();
     await settle();
 
     expect(store.get(syncLoadable)).toEqual(hasData);
+    expect(logger().warn).toHaveBeenCalledWith('SYNC: Refresh failed, showing the days already stored', { error });
   });
 
   it('completes when marking the year fetched rejects after its days are saved', async () => {
@@ -382,6 +393,22 @@ describe('the launch chain with one step rejected over stored days', () => {
 // =============================================================================
 
 describe('the same steps over a store with nothing usable stored', () => {
+  it('completes over an empty store when the stored-days read itself rejects, the failed read answering usable', async () => {
+    const error = failure();
+    const { store, syncLoadable, triggerSyncLoadable, Database } = launch({ stored: [] });
+    jest.spyOn(Database, 'getPrayerByDateString').mockImplementation(() => {
+      throw error;
+    });
+
+    triggerSyncLoadable();
+    await settle();
+
+    expect(store.get(syncLoadable)).toEqual(hasData);
+    expect(logger().warn).toHaveBeenCalledWith('SYNC: Could not read which days are stored, treating them as usable', {
+      error,
+    });
+  });
+
   it('still throws when the update-needed read rejects with nothing stored', async () => {
     const error = failure();
     const { store, syncLoadable, triggerSyncLoadable, Database } = launch({ stored: [] });
