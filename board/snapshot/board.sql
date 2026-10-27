@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict QyutoG7scuBRmQoxUoDNYwftb7dqmESiOJ8dtlPmSI0U9UOcdqpuLRpGZ5WIc7p
+\restrict O2Xyb7hGS0IdZw2LTMefvpaJoQqcFRxOw96rpMX2JbdxriheI8xifJaMOctkYBt
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6149,16 +6149,6 @@ Acceptance:
 
 Owner quotes that are the spec: the spin is "clockwise, round and round"; the up-to-date change is "purple to a green colour and then a tick instead, just to show the user, hey, you''re up to date, nothing to do"; the guard is "they can click that button one time only... when they close the app, that''s when it resets back to zero... they can''t just background it either". The owner ruled this ticket is planned and grilled heavily before execution, and executed by a dispatched lane.', NULL, NULL, NULL, 16500, '2026-10-27 04:41:57.167332+00', '2026-10-27 10:13:54.832431+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (371, 1, 371, NULL, 4, 'Step 3: The phones measured, nothing displaced - the 3T and XS lines and install refusals transcribed', '', NULL, NULL, NULL, 18500, '2026-10-25 14:17:44.161772+00', '2026-10-25 14:24:39.045513+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (388, 1, 388, 2, 1, 'A foreground-sync widget-push failure blanks the home screen over stored days', 'Goal: a widget push that fails on a foreground return must not turn the home screen into the error screen while good cached prayer days sit in storage.
-
-Where: stores/sync.ts (initializeAppState''s bare `await PrayerWidgets.refreshPrayerWidgets()` on the non-deferred path, against the deferred path''s explicit catch), stores/widget.ts, the sync suites.
-
-Acceptance:
-- [ ] A foreground sync whose widget push throws completes and leaves the home screen on its data: a test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject and reads syncLoadable as hasData
-- [ ] The rejected push is observable (a warn log line) exactly as the deferred path''s is
-- [ ] The deferred path''s behavior is unchanged, pinned by its existing test
-
-How it was found: the owner''s below-store mimic (1.0.0 over carried 2.11.14 data) showed the app fine, then after pressing Update on the real modal and returning from the App Store the home screen read the error page, and Refresh and relaunch kept it - while the same API and key answer healthy from outside, and the mimic''s bundle carries both. The sync''s fetch path is exonerated (today was cached, so no refetch ran): the throw can only come from initializeAppState, whose foreground path awaits the widget push with no catch - a path the code''s own comment calls failure-tolerant. Any production iOS user whose foreground widget push throws hits the same blank home screen (owner order 2026-10-27: found during T-381''s glass session).', NULL, NULL, NULL, 16500, '2026-10-27 10:09:00.804374+00', '2026-10-27 10:09:48.152296+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (375, 1, 375, NULL, 4, 'A visual polish pass: the ago pill grays instead of fading behind the opening overlay, and the Somali alert-sheet footer on iOS shows paired double-angle marks', 'Goal: two visual defects read by the owner on the 2.5.6 production build (2026-10-25).
 
 First: on BOTH platforms, as the prayer overlay opens, the prayer-ago pill below the list - its rounded rectangular background - turns gray instead of fading out with every other component; the black of the overlay fades in behind it while the pill''s own background grays. It was never like this before the shade work.
@@ -6173,6 +6163,15 @@ Acceptance:
 - [ ] no other locale''s footer gains or loses marks
 - [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-27 02:53:12.254632+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
+
+Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
+
+Acceptance:
+- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
+- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
+- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
+- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (389, 1, 389, 4, 7, 'Prove the Android store update flow on glass through a Play internal-test release', 'Goal: the Check for updates row''s Android verdict - Play''s own flexible-update overlay presenting on the 3T - is read on glass once, proving expo-in-app-updates'' flow end to end.
 
 Where: the owner''s Play Console (an internal-test track release ahead of an installed build), the 3T, device/updates.ts (the already-wired startNativeUpdate path).
@@ -6183,16 +6182,7 @@ Acceptance:
 - [ ] A press on the Check for updates row presents Play''s flexible-update flow, transcribed on this ticket
 - [ ] Any flaw the flow exposes (the overlay''s behaviour, the row''s verdict bookkeeping alongside Play''s download) is filed or ruled
 
-Measured background (2026-10-27, during T-381): a versionCode-1, versionName-1.0.0 prod APK installed on the 3T still answered You''re up to date - Play''s in-app update API is provenance-gated, so a sideloaded install receives no update offer at any version. The internal-test track is the standard route: Play owns the install and offers the update. Everything app-side is wired and waiting (startNativeUpdate starts Play''s flexible flow the moment Play offers).', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 10:19:48.880099+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
-
-Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
-
-Acceptance:
-- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
-- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
-- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
-- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
+Measured background (2026-10-27, during T-381): a versionCode-1, versionName-1.0.0 prod APK installed on the 3T still answered You''re up to date - Play''s in-app update API is provenance-gated, so a sideloaded install receives no update offer at any version. The internal-test track is the standard route: Play owns the install and offers the update. Everything app-side is wired and waiting (startNativeUpdate starts Play''s flexible flow the moment Play offers).', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 12:05:55.93874+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (368, 1, 368, 11, 4, 'The store builds awaiting review prove themselves on glass: the EAS production artifacts download, install and smoke on the phones before the public release', 'Goal: the owner approves the public release having verified the exact binaries users will get: the 2.4.39 production store builds awaiting Google''s and Apple''s review, downloaded from EAS and never compiled locally, identities recorded, and what each phone install displaces measured and tabled before any act.
 
 Where: the EAS builds through the expo MCP (read-only: list and download; never build, never push, never submit, the owner''s order of 2026-10-25); the attached OnePlus 3T and iPhone XS; the athan-smoke-28 emulator for the functional smoke of the exact Android binary; the app''s first sync, prayer list, countdown, notification arming and the qibla surface.
@@ -6203,6 +6193,18 @@ Acceptance:
 - [ ] the exact Android binary is smoked where it may lawfully sit: the athan-smoke-28 emulator this run, or the 3T once the owner rules its install - first sync against the real API, today''s times, the countdown, notifications armed (yarn check:device), qibla opened, all transcribed, no screenshots committed
 - [ ] the go/no-go verdict sits on the ticket with every owner decision named: the two phone installs, the TestFlight path for iOS glass
 - [ ] no repo file changes land; git status clean at the close, yarn validate green if any change somehow lands', NULL, NULL, NULL, 16500, '2026-10-25 14:03:02.407343+00', '2026-10-25 18:51:15.851717+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 11, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (392, 1, 392, NULL, 4, 'Step 3: proof and merge', 'Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), yarn validate green, version 2.11.20 riding the commit (package.json, app.json, shared/whatsNew.ts), merge the lane branch into local uat unpushed.', NULL, NULL, NULL, 18500, '2026-10-27 10:43:57.388819+00', '2026-10-27 11:02:51.668089+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (390, 1, 390, NULL, 4, 'Step 1: the foreground-rejection tests', 'In stores/__tests__/syncLoadable.test.ts: one test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject; the sync resolves, logger().warn fires ''WIDGET: Foreground refresh failed'' with the error, and the home screen''s read (triggerSyncLoadable then store.get(syncLoadable)) lands hasData. Red before the fix.', NULL, NULL, NULL, 16500, '2026-10-27 10:43:57.307831+00', '2026-10-27 11:02:51.672036+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (388, 1, 388, 2, 9, 'A foreground-sync widget-push failure blanks the home screen over stored days', 'Goal: a widget push that fails on a foreground return must not turn the home screen into the error screen while good cached prayer days sit in storage.
+
+Where: stores/sync.ts (initializeAppState''s bare `await PrayerWidgets.refreshPrayerWidgets()` on the non-deferred path, against the deferred path''s explicit catch), stores/widget.ts, the sync suites.
+
+Acceptance:
+- [x] A foreground sync whose widget push throws completes and leaves the home screen on its data: a test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject and reads syncLoadable as hasData
+- [x] The rejected push is observable (a warn log line) exactly as the deferred path''s is
+- [x] The deferred path''s behavior is unchanged, pinned by its existing test
+
+How it was found: the owner''s below-store mimic (1.0.0 over carried 2.11.14 data) showed the app fine, then after pressing Update on the real modal and returning from the App Store the home screen read the error page, and Refresh and relaunch kept it - while the same API and key answer healthy from outside, and the mimic''s bundle carries both. The sync''s fetch path is exonerated (today was cached, so no refetch ran): the throw can only come from initializeAppState, whose foreground path awaits the widget push with no catch - a path the code''s own comment calls failure-tolerant. Any production iOS user whose foreground widget push throws hits the same blank home screen (owner order 2026-10-27: found during T-381''s glass session).', NULL, NULL, NULL, 16500, '2026-10-27 10:09:00.804374+00', '2026-10-27 11:53:29.65105+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (374, 1, 374, NULL, 4, 'The dim system redesign: one shared dim colour for all dimmed text and a lighter background gradient replace the per-component shades', 'Goal: the per-component shade system born in the colour-carried dim conversion gives way to a single dim colour serving every dimmed-text surface, with a lighter, more subtle background gradient - removing the shade machinery the owner suspects costs the 3T its animation floor, and simplifying the visual system.
 
 Where: the ink and shade constants and every surface that consumes them (the colour-carried dim system and the per-row shades across the prayer list, overlay and sheets), and the app''s background gradient.
@@ -6229,6 +6231,7 @@ Acceptance:
 - [ ] the iPhone XS is measurably unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-26 07:23:36.201493+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (385, 1, 385, NULL, 4, 'Step 1: the six catalogs'' checking string and the re-hashed lock', 'settings.checkingUpdates in en, ar, so, hi, ms and th, then yarn i18n:lock re-hashes the lock for the changed English source. Plan: T-381 doc.', NULL, NULL, NULL, 16500, '2026-10-27 05:02:45.958118+00', '2026-10-27 05:21:45.013896+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (391, 1, 391, NULL, 4, 'Step 2: the guarded foreground push', 'In stores/sync.ts initializeAppState: the non-deferred branch catches the push rejection and warns ''WIDGET: Foreground refresh failed'' through the Pino logger; the comment names the reason. The deferred branch is untouched.', NULL, NULL, NULL, 17500, '2026-10-27 10:43:57.360847+00', '2026-10-27 11:02:51.673557+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
@@ -10632,10 +10635,94 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3769, 381, 'comment', 'owner', 'Done: the Check for updates row shipped whole - the Other card''s new order, the gapped two-arrow glyph with its clockwise spin (mirrored anti-clockwise in the Arabic face), the green up-to-date tick, one check per opening of the settings sheet with the close re-arming it, and T-376''s modal path kept and now glass-proven. The owner verified every step on both phones across two sessions and saw the update modal; the update-found path''s Android half is measured as Play-gated and lives in #389, and the mimic-exposed foreground-sync flaw lives in #388. Merged at 2.11.15, both phones on 2.11.14.', NULL, '2026-10-27 10:13:54.867106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3770, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 10:18:20.269772+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3773, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 10:19:48.890064+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3775, 388, 'activity', 'owner', NULL, 'status', '2026-10-27 10:32:02.975453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3778, 390, 'activity', 'owner', NULL, 'parent', '2026-10-27 10:43:57.32528+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 388, "value": "T-388"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3779, 388, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 10:43:57.32528+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 390, "value": "T-390"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3784, 392, 'activity', 'owner', NULL, 'parent', '2026-10-27 10:43:57.394496+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 388, "value": "T-388"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3785, 388, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 10:43:57.394496+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 392, "value": "T-392"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3768, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 10:13:54.838808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3771, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 10:18:20.302418+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release, ahead of a build the 3T installs from Play"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3772, 389, 'comment', 'owner', 'Parked at Awaiting Owner: nothing in the repository can advance this - the ticket needs the owner''s Play Console internal-test release and a Play-installed build on the 3T first. It moves the moment that release exists.', NULL, '2026-10-27 10:18:20.323168+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3774, 389, 'comment', 'owner', 'Column corrected to Blocked (owner''s read): Awaiting Owner parks a question for the owner to rule on, and this ticket asks nothing - it waits for an outside act, the Play Console internal-test release, which is Blocked by definition.', NULL, '2026-10-27 10:19:48.915887+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3776, 388, 'activity', 'owner', NULL, 'field', '2026-10-27 10:42:14.244207+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3777, 390, 'activity', 'owner', NULL, 'created', '2026-10-27 10:43:57.321662+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3780, 391, 'activity', 'owner', NULL, 'created', '2026-10-27 10:43:57.366927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3781, 391, 'activity', 'owner', NULL, 'parent', '2026-10-27 10:43:57.36883+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 388, "value": "T-388"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3782, 388, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 10:43:57.36883+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 391, "value": "T-391"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3783, 392, 'activity', 'owner', NULL, 'created', '2026-10-27 10:43:57.3927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3786, 388, 'activity', 'owner', NULL, 'estimate', '2026-10-27 10:43:57.414948+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3787, 388, 'activity', 'owner', NULL, 'status', '2026-10-27 10:55:22.782385+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3788, 388, 'comment', 'owner', 'Plan written as Docs page 44 (T-388 plan: the foreground widget push must not fail the sync): three steps, 6 points, grilled and refreshed. Ready for execution.', NULL, '2026-10-27 10:55:22.821202+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3789, 388, 'activity', 'owner', NULL, 'status', '2026-10-27 10:55:37.021878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3790, 392, 'activity', 'owner', NULL, 'status', '2026-10-27 11:02:51.68143+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3791, 391, 'activity', 'owner', NULL, 'status', '2026-10-27 11:02:51.686012+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3792, 390, 'activity', 'owner', NULL, 'status', '2026-10-27 11:02:51.693446+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3793, 388, 'comment', 'owner', 'Lane 1 merged: the foreground push is caught and warned like the deferred one, tests red-first then green, validate at full coverage; merge 45465849 on local uat riding 2.11.20, unpushed, worktree lane1-t388 left for the lead''s audit.', NULL, '2026-10-27 11:02:51.721768+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3794, 388, 'comment', 'owner', 'Plan-conformance audit passed. The landed guard is the plan''s design verbatim, the new test drives the real non-deferred sync with only the widget push mocked to reject and pins both the completed sync and the warn line, the deferred path''s tests are untouched and the suite runs 9/9 green, and the 2.11.20 bump rode the repo''s usual three files. No findings.', NULL, '2026-10-27 11:09:42.642978+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3795, 388, 'comment', 'owner', 'Blind audit: the change is correct and complete - the catch wraps only the widget push, the success path is unchanged, and the new test is red without the fix by construction (the bare await rejected straight through sync''s rethrow). The touched suites and the What''s New oracle run green here (188 tests), and the 2.11.20 bump is complete for tracked files (android/app/build.gradle is gitignored prebuild output, regenerated from app.json). Two nits: stores/sync.ts:263 - the non-deferred branch also serves the background task (stores/notifications.ts:1839), so a widget failure there logs ''WIDGET: Foreground refresh failed'' and mislabels its path; a neutral name like ''Awaited refresh failed'' would attribute it honestly. stores/__tests__/syncLoadable.test.ts:233 - the title''s ''warns one line'' is not pinned: toHaveBeenCalledWith accepts any count, and that logger().error stayed silent is unasserted.', NULL, '2026-10-27 11:12:06.929002+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3796, 388, 'comment', 'owner', 'Audit PASS (lead, 2026-10-27): plan-conformance clean (comment 3794), blind review raised two nits (comment 3795), both confirmed from the code and fixed in cd393565 riding 2.11.21. One: the awaited push''s warn line now reads WIDGET: Awaited refresh failed - the non-deferred branch serves the background task''s bare sync() as much as the foreground return, so the old Foreground label misattributed. Two: the new test now enforces its title - the warn fires exactly once and no error escalation logs. Both new assertions killed under mutation; validate green at 100 percent coverage.', NULL, '2026-10-27 11:18:01.362826+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3810, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 12:05:55.947458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3811, 389, 'comment', 'owner', 'Parked at the publishing edge: the 3T is read and judged ready for a Play install, the house artifact is ruled not uploadable with the two build routes named, the flaw watch came back clean, and the recipe above is the whole act from the owner''s seat. The ticket waits on that single release and moves the moment the transcript lands.', NULL, '2026-10-27 12:05:55.975011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3812, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 12:06:16.179516+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3818, 388, 'comment', 'owner', 'Privacy scrub (lead, 2026-10-27): comments 3797 and the device proof carried the production bundle id, which names a person - replaced with the repository''s placeholder com.example.athan throughout.', NULL, '2026-10-27 12:09:57.071428+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3798, 388, 'comment', 'owner', 'Parked at Awaiting Owner for the owner''s test (2026-10-27): the fix is merged and pushed at cd393565 (2.11.21), the audit passed with both review findings fixed, and the iPhone XS carries the mimic - Athan 1.0.0 built from that exact code, installed over the phone''s carried 2.11.14 data, sitting on its home screen now. The owner''s test, the same steps that found the bug: (1) open Athan on the XS - the home screen reads its data, London countdown and the six rows, no error page; (2) open Settings, scroll to Other, press Check for updates - the row spins, then the sheet closes and the update modal presents, Update available with Update and Later; (3) press Update - the App Store opens on the Athan page; (4) come back to the app - THE FIX UNDER TEST: the home screen shows its data again, not the error page (before the fix this exact return blanked it, and Refresh and relaunch kept it blanked); (5) relaunch the app once - still its data. A stale widget until its next push is the accepted cost, never a failed home screen. When the read passes, the ticket moves to Done.', NULL, '2026-10-27 11:52:30.498039+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3799, 388, 'activity', 'owner', NULL, 'status', '2026-10-27 11:52:30.513764+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3800, 388, 'activity', 'owner', NULL, 'field', '2026-10-27 11:53:03.808758+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass test of the update modal on the iPhone XS, which carries the mimic 1.0.0 (built from cd393565) over its carried data"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3801, 388, 'activity', 'owner', NULL, 'description', '2026-10-27 11:53:29.657907+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a widget push that fails on a foreground return must not turn the home screen into the error screen while good cached prayer days sit in storage.\n\nWhere: stores/sync.ts (initializeAppState''s bare `await PrayerWidgets.refreshPrayerWidgets()` on the non-deferred path, against the deferred path''s explicit catch), stores/widget.ts, the sync suites.\n\nAcceptance:\n- [x] A foreground sync whose widget push throws completes and leaves the home screen on its data: a test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject and reads syncLoadable as hasData\n- [x] The rejected push is observable (a warn log line) exactly as the deferred path''s is\n- [x] The deferred path''s behavior is unchanged, pinned by its existing test\n\nHow it was found: the owner''s below-store mimic (1.0.0 over carried 2.11.14 data) showed the app fine, then after pressing Update on the real modal and returning from the App Store the home screen read the error page, and Refresh and relaunch kept it - while the same API and key answer healthy from outside, and the mimic''s bundle carries both. The sync''s fetch path is exonerated (today was cached, so no refetch ran): the throw can only come from initializeAppState, whose foreground path awaits the widget push with no catch - a path the code''s own comment calls failure-tolerant. Any production iOS user whose foreground widget push throws hits the same blank home screen (owner order 2026-10-27: found during T-381''s glass session)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3802, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 11:54:56.12225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3803, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 11:54:56.158517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3804, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 11:54:56.181693+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3805, 389, 'comment', 'owner', 'Claimed by Lane 2, on the owner''s order of 2026-10-27 (picked up immediately after T-388''s fix, whose dependency uat already serves). The lane reads the 3T, judges what the first Play-installed build must be, settles the uploadable-artifact question and writes the owner''s exact recipe, carrying the ticket to the edge of the owner''s single publishing act.', NULL, '2026-10-27 11:54:56.199844+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3806, 389, 'comment', 'owner', 'The 3T read and the judgment (2026-10-27, lane 2). The phone carries exactly one Athan install: com.example.athan 2.11.14, versionCode 1000000, User 0 alone (the only user), installed 08:57 and last updated 09:01 today - the T-381-era production build, and its dumpsys reads installer=null, the mark of a sideloaded install. No fleettest variant is present. Play is fully alive on the phone: the store app at 53.7.23, Play services at 26.40.32 (the carrier of the in-app update API), and a Google account signed in. The store''s own listing is live (Athan: London) and still dates its last production update to 11 March 2026 with the 1.5-era changelog, so the 2.4.39 AAB submitted on 2026-10-25 has not gone out: Play serves the 1.5-era line, whose versionCode sits at or below 11 (the code-11 submission was accepted, so nothing higher is on Play).
+
+Judgment: the 3T can install the app from Play as things stand - account, store and listing all present - with one caveat the owner settles at a glance: the signed-in account''s Play country must be GB, which shows as the listing opening on the phone rather than a not-available notice. The first Play-installed build should be the store''s own production line, installed from the public listing BEFORE the phone opts into internal testing, because a fresh install by an opted-in tester serves the track''s newest code and would sit level with the internal release reading up to date. Installed from production first, the phone sits behind the release and the row''s press is the proof.
+
+Code read (criterion 4): device/updates.ts read whole and ruled clean. The Android path asks Play only for updateAvailable and starts the flexible flow the moment Play answers yes - no version comparison runs app-side, Play gates on versionCode alone, so any internal release above the installed code arms the proof. The row resting without a verdict while Play''s overlay speaks is the landed T-376 design, and the launch check starting Play''s download on its own is that same landed behaviour. No app-side flaw filed.', NULL, '2026-10-27 12:05:46.95111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 12:09:46.47+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3809, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 12:05:55.918467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release from the recipe (an upload-key-signed artifact of uat, versionCode above 11, rolled to the internal track) - then the 3T installs production from the store, opts in, and the row''s press is the proof"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3797, 388, 'comment', 'owner', 'Device proof (step 3, 2026-10-27, executor continuation): the mimic is on the XS over carried data and waits for the owner''s test.
+
+The build: both platforms compiled from cd393565 (uat, 2.11.21) in a scratch worktree whose app.json/package.json were stamped 1.0.0 inside the worktree only. iOS BUILD SUCCEEDED; the built Info.plist read CFBundleShortVersionString 1.0.0 before install. Android BUILD SUCCESSFUL in 9m 24s.
+
+The store: iTunes Lookup (GB) still publishes 2.4.39 live, so the 1.0.0 stamp sits below it.
+
+The install: Athan.app installed over the XS''s existing 2.11.14 (no uninstall, no wipe; same bundle id com.example.athan), then launched.
+
+The launch read: the app opens on its home screen on carried data, not an error page - London, UK; Tue, 27 Oct 2026; the live countdown to Dhuhr 11:50 (read 8m 41s at 11:41 and 19s at 11:49:41, both consistent with the wall clock); the six rows Fajr 05:06, Sunrise 06:42, Dhuhr 11:50, Asr 14:14, Maghrib 16:46, Isha 18:13. The live accessibility tree and an independent pixel read of the screenshot agree: no error text, no retry button, no spinner, no empty state.
+
+The version read: the phone''s launch-services dump (what the Settings app''s own page renders from) reads Athan com.example.athan version 1.0.0 build 1. The Settings page itself would not scroll under the driver (iOS Settings ignores its synthesized gestures), and the app''s settings sheet carries no in-app version surface at rest, so this dump is the on-device version evidence.
+
+The update row: the settings sheet opens at rest and, one slow scroll down, shows the Check for updates row present under "Other" beside Language, Help and What''s new - static refresh glyph, nothing loading, nothing disabled about it. The row was not pressed, no check ran, no update was driven: the owner''s own test drives the modal.
+
+The Android artifact stays uninstalled (it only proves the platform compiles): aapt2 9.2.1 dump badging reads package: name=''com.example.athan'' versionCode=''1000000'' versionName=''1.0.0'', application-label ''Athan''.
+
+Cleanup: scratch worktrees and derived data deleted, the driver''s two runner helpers uninstalled from the XS, the main tree clean at cd393565. The XS keeps the mimic installed over its carried data.', NULL, '2026-10-27 11:50:35.386989+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 12:09:46.401+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3813, 388, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 12:09:46.403586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3808, 389, 'comment', 'owner', 'The owner''s recipe - one release, one install ordering, one press.
+
+Console (the single publishing act):
+1. Build the artifact per the ruling above (route a is the two-minute one: EAS production build of uat, download the AAB).
+2. Play Console, Athan: London, Testing, Internal testing. Under Testers, create an email list holding the account signed in on the 3T, and tick it for the track.
+3. New release on the internal track, upload the AAB (versionCode 12 or 1000000 - both sit ahead of everything Play carries), roll out.
+4. Copy the track''s opt-in link from the same Testers section.
+
+On the 3T:
+5. Uninstall the current Athan (Settings, Apps, Athan, Uninstall, or adb uninstall com.example.athan): Play cannot adopt a differently-signed sideloaded install, so the slot must be empty for the store install. This wipes that phone''s Athan data - the test phone''s own line; no other phone is touched.
+6. Open the Play Store, search Athan: London, Install. The phone takes the production line (the 1.5-era build; if a later production release has gone out by then, that one - either sits behind the internal release). If the listing refuses, the account''s Play country is not GB: use an account that is.
+7. On the app''s store page, open the three-dot menu and turn auto-update OFF, so Play cannot silently take the update before the row reads it.
+8. Open the opt-in link on the phone and Become a tester. Give Play a few minutes to fold the tester status in.
+
+The proof:
+9. Open Athan, press the settings hex-nut, scroll to Other, press Check for updates once.
+10. Expected: the ring spins with Checking for updates, then Play''s own update flow presents over the app - Play''s banner with its own Update wording, not the app''s purple modal, which is iOS-only. The row itself rests without a verdict; Play''s overlay owns the message.
+11. If the row answers You''re up to date instead, Play''s metadata has not caught up: close the settings sheet, reopen it (each opening re-arms one press) and press again, repeating over the next hour. Still up to date after that is itself a finding: transcribe it.
+12. Transcribe back here: what the row showed, exactly what Play presented (its words, its buttons), and whether accepting Play''s flow installed the update and restarted the app. Words suffice, no screenshots.', NULL, '2026-10-27 12:05:46.994412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 12:09:46.429+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3814, 389, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 12:09:46.431641+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3807, 389, 'comment', 'owner', 'Artifact ruling: the house build-prod artifact is not Play-uploadable, so no build was run. The script stamps the right package (com.example.athan arrives from outside the repo at prebuild) and a versionCode safely ahead of Play (1000000 against Play''s ceiling of 11), but it signs with the owner''s local debug certificate - the script asserts that certificate itself - while the Play app carries the EAS-managed key that signed every store artifact from the 1.5 line through the 2.4.39 AAB. T-368 measured the two certificates as distinct: the store AAB had to be re-signed with the debug key just to smoke it locally. Play refuses any new artifact whose signer differs from the enrolled key, so a debug-signed upload bounces at the door; forcing the signing over is a credential matter and was not touched.
+
+What the owner must build instead - either route alone suffices. (a) An EAS production build of uat at 2.11.21, the owner''s own EAS account and the same route that built the 2.4.39 store line: the dashboard environment already carries the store ids and the prod env, EAS signs with the enrolled key and auto-increments the versionCode to 12; download the AAB and upload that. (b) Fully local: export the app''s Android upload keystore from the EAS credentials page and sign a build-prod-shaped artifact with it. The requirement either way: com.example.athan, versionCode above 11, signed with the enrolled upload key.', NULL, '2026-10-27 12:05:46.974468+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 12:09:46.451+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3815, 389, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 12:09:46.453242+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3816, 389, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 12:09:46.472145+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3817, 389, 'comment', 'owner', 'Privacy scrub (lead, 2026-10-27): comments 3806, 3807 and 3808 carried the production bundle id, which names a person - replaced with the repository''s placeholder com.example.athan throughout.', NULL, '2026-10-27 12:09:57.069225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -10734,6 +10821,8 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (32
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (377, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (376, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (381, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (388, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (389, 2, 2);
 
 
 --
@@ -10944,7 +11033,8 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (647, 381, 3, 'the owner''s final eye on 2.11.14 (both phones): the gapped arrows, the anti-clockwise Arabic spin, the sheet-close re-arm, and the modal read on the ticket', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (649, 388, 1, NULL, 388, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (650, 389, 1, NULL, 389, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (651, 389, 3, 'the owner''s Play Console internal-test release, ahead of a build the 3T installs from Play', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (652, 388, 3, 'the owner''s on-glass test of the update modal on the iPhone XS, which carries the mimic 1.0.0 (built from cd393565) over its carried data', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (651, 389, 3, 'the owner''s Play Console internal-test release from the recipe (an upload-key-signed artifact of uat, versionCode above 11, rolled to the internal track) - then the 3T installs production from the store, opts in, and the row''s press is the proof', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -12133,7 +12223,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (875, 387, 4, 'Done', 'completed', '2026-10-27 06:13:12.823738+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (877, 381, 9, 'Awaiting Owner', 'started', '2026-10-27 09:13:34.284158+00', '2026-10-27 10:13:54.836169+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (879, 389, 1, 'Backlog', 'backlog', '2026-10-27 10:13:27.92+00', '2026-10-27 10:18:20.266703+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (882, 389, 7, 'Blocked', 'started', '2026-10-27 10:19:48.884952+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (883, 388, 6, 'Planning', 'unstarted', '2026-10-27 10:32:02.972245+00', '2026-10-27 10:55:22.777022+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (886, 392, 1, 'Backlog', 'backlog', '2026-10-27 10:43:57.388+00', '2026-10-27 11:02:51.67658+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (889, 392, 4, 'Done', 'completed', '2026-10-27 11:02:51.67658+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (890, 391, 4, 'Done', 'completed', '2026-10-27 11:02:51.681704+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (888, 388, 3, 'In progress', 'started', '2026-10-27 10:55:37.019489+00', '2026-10-27 11:52:30.508806+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (892, 388, 9, 'Awaiting Owner', 'started', '2026-10-27 11:52:30.508806+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (882, 389, 7, 'Blocked', 'started', '2026-10-27 10:19:48.884952+00', '2026-10-27 11:54:56.117733+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (894, 389, 7, 'Blocked', 'started', '2026-10-27 12:05:55.943987+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12161,9 +12258,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (872, 386, 4, 'Done', 'completed', '2026-10-27 05:21:45.023105+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (874, 381, 9, 'Awaiting Owner', 'started', '2026-10-27 06:13:12.824918+00', '2026-10-27 06:29:27.124825+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (876, 381, 3, 'In progress', 'started', '2026-10-27 06:29:27.124825+00', '2026-10-27 09:13:34.284158+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (878, 388, 1, 'Backlog', 'backlog', '2026-10-27 10:09:00.804+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (880, 381, 4, 'Done', 'completed', '2026-10-27 10:13:54.836169+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (881, 389, 9, 'Awaiting Owner', 'started', '2026-10-27 10:18:20.266703+00', '2026-10-27 10:19:48.884952+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (878, 388, 1, 'Backlog', 'backlog', '2026-10-27 10:09:00.804+00', '2026-10-27 10:32:02.972245+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (887, 388, 2, 'Ready', 'unstarted', '2026-10-27 10:55:22.777022+00', '2026-10-27 10:55:37.019489+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (885, 391, 1, 'Backlog', 'backlog', '2026-10-27 10:43:57.36+00', '2026-10-27 11:02:51.681704+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (884, 390, 1, 'Backlog', 'backlog', '2026-10-27 10:43:57.307+00', '2026-10-27 11:02:51.685985+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (891, 390, 4, 'Done', 'completed', '2026-10-27 11:02:51.685985+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (893, 389, 3, 'In progress', 'started', '2026-10-27 11:54:56.117733+00', '2026-10-27 12:05:55.943987+00');
 
 
 --
@@ -12837,7 +12939,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 390, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 393, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -16771,6 +16873,78 @@ Alternatives rejected:
 - yarn jest shared/__tests__/whatsNew.test.ts: the debut pin test passes, and was observed red before the item landed.
 - yarn validate green.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 38912, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-25 08:39:57.889932+00', '2026-10-25 08:39:57.889932+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (44, 1, NULL, 'T-388 plan: the foreground widget push must not fail the sync', '# T-388 plan: the foreground widget push must not fail the sync
+
+## Goal
+
+Today `initializeAppState`''s non-deferred (foreground) branch awaits `PrayerWidgets.refreshPrayerWidgets()` bare (stores/sync.ts:259). A push that rejects walks into `sync()`''s catch, which rethrows: a foreground return or background-task body whose widget push throws fails the whole sync while good cached days sit in storage. When this is done, a sync whose widget push rejects completes on every path, warns one line through the Pino logger exactly as the deferred path does, and no push rejection can fail a sync that holds usable days.
+
+Scope, stated plainly (grill finding 1 answered): this fix removes the one unguarded widget-push await in the sync, so no sync path can fail on a push rejection. The ticket''s intake record pins the mimic''s blanked home screen to this bare await (owner order 2026-10-27). The home screen''s error page reads `syncLoadable`, which never runs the foreground path, and the foreground caller catches its own rejection (`device/listeners.ts:69`), so this lane claims the guard''s contract above, not a proven device causal chain; the loadable cannot flip to `hasError` from a foreground rejection on current code. The relaunch persistence on that build implicates its launch path, which the existing deferred catch guards on current code. If the symptom returns on a device, the log lines this fix pins (`SYNC: Failed`, `WIDGET: ...`, `LISTENERS: ...`) name the rejecting path, and that read belongs to the lead''s audit, not this plan.
+
+## Decisions taken
+
+- 2026-10-27: The foreground catch warns with its own message, `WIDGET: Foreground refresh failed`, at warn level with the `{ error }` payload, mirroring the deferred line''s shape. A distinct string names the path that fired; a shared string would leave an incident log unable to say which path lost the push.
+- 2026-10-27: The catch swallows the rejection (no rethrow). The sync completes; the widget stays stale until the next push (sync, notification refresh, settings change), the same tolerance the deferred path applies. This honors the code''s own rule that only a launch with nothing usable stored may reach the error screen.
+- 2026-10-27: The new tests live in `stores/__tests__/syncLoadable.test.ts`, the suite that mocks the logger and already pins both push paths. `stores/__tests__/sync.test.ts` keeps its awaiting test untouched.
+- 2026-10-27: `stores/widget.ts` is read, not changed. Its internal catches make a rejection rare, but the bare await''s contract is what fails the app; the deferred path already established the outer guard as the pattern.
+- 2026-10-27: The version bump set is `package.json`, `app.json` and `shared/whatsNew.ts` (`WHATS_NEW.version`). `android/app/build.gradle` is prebuild-generated and untracked in git; the repo''s bump commits touch exactly those three files.
+- 2026-10-27: One green commit carries tests, fix and bump. Red-first is proven in the worktree (tests fail with the fix absent) before the commit; a red test commit would land a failing suite on uat.
+- 2026-10-27, grill finding 2: the regression guard is the pair of direct assertions (the foreground sync resolves; the warn fires). The acceptance''s `syncLoadable` `hasData` read stays in the test because the ticket''s acceptance names it (verbatim, the owner''s words), recorded here as documentation of the home screen''s read, not the guard: the loadable never runs the foreground path, so that clause cannot fail. Deleting it is the owner''s call, not this lane''s.
+- 2026-10-27, grill finding 1: no device-log capture step is added. This lane runs no device (the lead owns device work); the honest scope is the guard''s contract, stated in Goal.
+
+## Files
+
+- `stores/sync.ts` — the fix: `initializeAppState`''s non-deferred branch catches the push rejection and warns.
+- `stores/__tests__/syncLoadable.test.ts` — the new foreground-rejection test.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version 2.11.20 riding the commit.
+- `stores/widget.ts` — read only (the push''s own guards).
+- `device/listeners.ts` — read only (the foreground caller, whose own catch keeps a rejected sync off the render tree; its `LISTENERS: Foreground sync failed` error line stops firing for a push rejection once the guard lands).
+
+## Design
+
+The non-deferred branch of `initializeAppState` becomes:
+
+```ts
+} else {
+  try {
+    await PrayerWidgets.refreshPrayerWidgets();
+  } catch (error) {
+    logger.warn(''WIDGET: Foreground refresh failed'', { error });
+  }
+}
+```
+
+Landed as try/catch rather than `.catch` on the call''s return: the awaited guard states its intent directly and does not depend on the callee''s return being a promise (the sync suite''s widget mock returns undefined, which `.catch` on the call would throw on before the guard could act).
+
+The invariant: the widget push is best-effort on every path. The deferred path already catches; the background task and the foreground return share this non-deferred branch, and both keep the await (iOS holds the process alive until the push settles). The branch''s comment gains one clause naming the foreground catch''s reason: a push failure must not fail a sync that holds usable days.
+
+Alternatives rejected:
+
+- Guarding inside `refreshPrayerWidgets` (widget.ts) instead: it already guards each platform push internally; adding an outer swallow there would also silence the deferred path''s own catch point and move the failure policy out of the sync, whose rule ("only nothing-stored reaches the error screen") is what the bug breaks.
+- Making `sync()` catch around `initializeAppState`: that would also swallow sequence and countdown failures, which are the app state itself and belong on the error screen.
+- A shared `pushWidgetsTolerantly()` helper for both branches: the branches differ by await and defer mechanics, and a helper called from inside a `requestAnimationFrame`/`setTimeout` hop obscures the timing the comment documents.
+
+## Steps
+
+1. **Step 1: the foreground-rejection test** in `stores/__tests__/syncLoadable.test.ts` (2 points, code). One test drives `sync({ deferWidgetRefresh: false })` with `mockRefreshPrayerWidgets` rejecting. The regression guard, both direct: the promise resolves, and `logger().warn` is called with `WIDGET: Foreground refresh failed` and the error. The acceptance''s home-screen read follows: `triggerSyncLoadable` then `store.get(syncLoadable)` lands `hasData` (documentation, per the decision above). Red before the fix: the resolves assertion fails on current code.
+2. **Step 2: the guarded foreground push** in `stores/sync.ts` (2 points, code). The non-deferred branch catches and warns per the design; the comment names the reason.
+3. **Step 3: proof and merge** (2 points, code). Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), `yarn validate` green, version 2.11.20 riding the commit, merge the lane branch into local uat unpushed. Mutation pass run on the guard: catch removed (the red run), warn demoted to info, message changed, payload dropped, swallow changed to rethrow — each fails the new test.
+
+Sum: 6 points.
+
+## Risks
+
+- Swallowing hides a push that keeps failing: the warn line is the observable, and the widget self-corrects on the next push.
+- The background task body runs this same branch; after the fix a failed push no longer fails the task. The await remains, so iOS still holds the process until the push settles.
+- The fix cannot be claimed to cure the mimic''s observed blanking end to end: the loadable never runs the foreground path (Goal, scope). The log lines it pins are what a recurrence will be read against.
+- The loadable read in the test cannot go red on its own, so the direct resolves assertion carries the regression guard; the mutation pass proves the test set fails with the fix absent.
+
+## Proof
+
+- Criterion 1''s guard: `yarn jest stores/__tests__/syncLoadable.test.ts` green, and the new test fails with the fix reverted (the sync rejects). The acceptance''s `hasData` read is asserted in the same test.
+- Criterion 2: the same test asserts `logger().warn` called with `WIDGET: Foreground refresh failed`, `{ error: failure }`.
+- Criterion 3: the deferred describe''s two tests (`settles the sync before the push`, `logs a failed push`) pass unmodified.
+- `yarn validate` green; the coverage report covers the new catch.', NULL, NULL, '{}', false, false, false, NULL, NULL, 44032, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 10:43:45.623622+00', '2026-10-27 10:59:47.649231+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (40, 1, NULL, 'T-346 - the prayer-ago badge keeps its space around the time in every language, and Hindi stays on one line on Android', '# T-346 - The prayer-ago badge keeps its space around the time in every language, and Hindi stays on one line on Android
 
 ## Goal
@@ -16938,6 +17112,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (41, 368, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-25 14:17:10.458995+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (42, 376, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-26 23:59:31.064507+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (43, 381, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:01:45.567742+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (44, 388, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 10:43:57.276514+00');
 
 
 --
@@ -27784,6 +27959,141 @@ Mirroring: the row''s layout mirrors through flex and marginStart/paddingEnd as 
 - "The dots: an ellipsis character or three dots?" Three ASCII dots, as the owner''s spec writes them, in every locale.
 - "A spent press still haptics?" No: the handler returns before the haptic; a dead button gives no feedback.
 ', NULL, NULL, '{}', false, false, false, NULL, 43008, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:03:45.976952+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (122, 44, 1, NULL, 'T-388 plan: the foreground widget push must not fail the sync', '# T-388 plan: the foreground widget push must not fail the sync
+
+## Goal
+
+Today `initializeAppState`''s non-deferred (foreground) branch awaits `PrayerWidgets.refreshPrayerWidgets()` bare (stores/sync.ts:259). A push that rejects walks into `sync()`''s catch, which rethrows, so a foreground return whose widget push throws fails the whole sync while good cached days sit in storage. When this is done, a foreground sync whose widget push rejects completes, warns one log line through the Pino logger exactly as the deferred path does, and the home screen keeps its data (`syncLoadable` reads `hasData`).
+
+## Decisions taken
+
+- 2026-10-27: The foreground catch warns with its own message, `WIDGET: Foreground refresh failed`, at warn level with the `{ error }` payload, mirroring the deferred line''s shape. A distinct string names the path that fired; a shared string would leave an incident log unable to say which path lost the push.
+- 2026-10-27: The catch swallows the rejection (no rethrow). The sync completes and `syncLoadable` stays `hasData`; the widget stays stale until the next push (sync, notification refresh, settings change), the same tolerance the deferred path applies. This honors the code''s own rule that only a launch with nothing usable stored may reach the error screen.
+- 2026-10-27: The new tests live in `stores/__tests__/syncLoadable.test.ts`, the suite that mocks the logger and already pins both push paths. `stores/__tests__/sync.test.ts` keeps its awaiting test untouched.
+- 2026-10-27: `stores/widget.ts` is read, not changed. Its internal catches make a rejection rare, but the bare await''s contract is what fails the app; the deferred path already established the outer guard as the pattern.
+- 2026-10-27: The version bump set is `package.json`, `app.json` and `shared/whatsNew.ts` (`WHATS_NEW.version`). `android/app/build.gradle` is prebuild-generated and untracked in git; the repo''s bump commits touch exactly those three files.
+- 2026-10-27: One green commit carries tests, fix and bump. Red-first is proven in the worktree (tests fail with the fix absent) before the commit; a red test commit would land a failing suite on uat.
+
+## Files
+
+- `stores/sync.ts` — the fix: `initializeAppState`''s non-deferred branch catches the push rejection and warns.
+- `stores/__tests__/syncLoadable.test.ts` — the new foreground-rejection tests.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version 2.11.20 riding the commit.
+- `stores/widget.ts` — read only (the push''s own guards).
+- `device/listeners.ts` — read only (the foreground caller, whose own catch keeps a rejected sync off the render tree).
+
+## Design
+
+The non-deferred branch of `initializeAppState` becomes:
+
+```ts
+} else {
+  await PrayerWidgets.refreshPrayerWidgets().catch((error) => {
+    logger.warn(''WIDGET: Foreground refresh failed'', { error });
+  });
+}
+```
+
+The invariant: the widget push is best-effort on every path. The deferred path already catches; the background task and the foreground return share this non-deferred branch, and both keep the await (iOS holds the process alive until the push settles). The branch''s comment gains one clause naming the foreground catch''s reason: a push failure must not fail a sync that holds usable days.
+
+Alternatives rejected:
+
+- Guarding inside `refreshPrayerWidgets` (widget.ts) instead: it already guards each platform push internally; adding an outer swallow there would also silence the deferred path''s own catch point and move the failure policy out of the sync, whose rule ("only nothing-stored reaches the error screen") is what the bug breaks.
+- Making `sync()` catch around `initializeAppState`: that would also swallow sequence and countdown failures, which are the app state itself and belong on the error screen.
+- A shared `pushWidgetsTolerantly()` helper for both branches: the branches differ by await and defer mechanics, and a helper called from inside a `requestAnimationFrame`/`setTimeout` hop obscures the timing the comment documents.
+
+## Steps
+
+1. **Step 1: the foreground-rejection tests** in `stores/__tests__/syncLoadable.test.ts` (2 points, code). One test drives `sync({ deferWidgetRefresh: false })` with `mockRefreshPrayerWidgets` rejecting: the promise resolves, `logger().warn` is called with `WIDGET: Foreground refresh failed` and the error, and the home screen''s read (`triggerSyncLoadable` then `store.get(syncLoadable)`) lands `hasData`. Red before the fix.
+2. **Step 2: the guarded foreground push** in `stores/sync.ts` (2 points, code). The non-deferred branch catches and warns per the design; the comment names the reason.
+3. **Step 3: proof and merge** (2 points, code). Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), `yarn validate` green, version 2.11.20 riding the commit, merge the lane branch into local uat unpushed.
+
+Sum: 6 points.
+
+## Risks
+
+- Swallowing hides a push that keeps failing: the warn line is the observable, and the widget self-corrects on the next push.
+- The background task body runs this same branch; after the fix a failed push no longer fails the task. The await remains, so iOS still holds the process until the push settles.
+- The loadable read in the test cannot go red on its own (the loadable never runs the foreground path), so the direct resolves assertion carries the regression guard; the mutation pass proves the test set fails with the fix absent.
+
+## Proof
+
+- Criterion 1: `yarn jest stores/__tests__/syncLoadable.test.ts` green, and the new test fails with the fix reverted (the sync rejects).
+- Criterion 2: the same test asserts `logger().warn` called with `WIDGET: Foreground refresh failed`, `{ error: failure }`.
+- Criterion 3: the deferred describe''s two tests (`settles the sync before the push`, `logs a failed push`) pass unmodified.
+- `yarn validate` green; the coverage report covers the new catch.', NULL, NULL, '{}', false, false, false, NULL, 44032, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 10:43:45.623622+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (123, 44, 3, NULL, 'T-388 plan: the foreground widget push must not fail the sync', '# T-388 plan: the foreground widget push must not fail the sync
+
+## Goal
+
+Today `initializeAppState`''s non-deferred (foreground) branch awaits `PrayerWidgets.refreshPrayerWidgets()` bare (stores/sync.ts:259). A push that rejects walks into `sync()`''s catch, which rethrows: a foreground return or background-task body whose widget push throws fails the whole sync while good cached days sit in storage. When this is done, a sync whose widget push rejects completes on every path, warns one line through the Pino logger exactly as the deferred path does, and no push rejection can fail a sync that holds usable days.
+
+Scope, stated plainly (grill finding 1 answered): this fix removes the one unguarded widget-push await in the sync, so no sync path can fail on a push rejection. The ticket''s intake record pins the mimic''s blanked home screen to this bare await (owner order 2026-10-27). The home screen''s error page reads `syncLoadable`, which never runs the foreground path, and the foreground caller catches its own rejection (`device/listeners.ts:69`), so this lane claims the guard''s contract above, not a proven device causal chain; the loadable cannot flip to `hasError` from a foreground rejection on current code. The relaunch persistence on that build implicates its launch path, which the existing deferred catch guards on current code. If the symptom returns on a device, the log lines this fix pins (`SYNC: Failed`, `WIDGET: ...`, `LISTENERS: ...`) name the rejecting path, and that read belongs to the lead''s audit, not this plan.
+
+## Decisions taken
+
+- 2026-10-27: The foreground catch warns with its own message, `WIDGET: Foreground refresh failed`, at warn level with the `{ error }` payload, mirroring the deferred line''s shape. A distinct string names the path that fired; a shared string would leave an incident log unable to say which path lost the push.
+- 2026-10-27: The catch swallows the rejection (no rethrow). The sync completes; the widget stays stale until the next push (sync, notification refresh, settings change), the same tolerance the deferred path applies. This honors the code''s own rule that only a launch with nothing usable stored may reach the error screen.
+- 2026-10-27: The new tests live in `stores/__tests__/syncLoadable.test.ts`, the suite that mocks the logger and already pins both push paths. `stores/__tests__/sync.test.ts` keeps its awaiting test untouched.
+- 2026-10-27: `stores/widget.ts` is read, not changed. Its internal catches make a rejection rare, but the bare await''s contract is what fails the app; the deferred path already established the outer guard as the pattern.
+- 2026-10-27: The version bump set is `package.json`, `app.json` and `shared/whatsNew.ts` (`WHATS_NEW.version`). `android/app/build.gradle` is prebuild-generated and untracked in git; the repo''s bump commits touch exactly those three files.
+- 2026-10-27: One green commit carries tests, fix and bump. Red-first is proven in the worktree (tests fail with the fix absent) before the commit; a red test commit would land a failing suite on uat.
+- 2026-10-27, grill finding 2: the regression guard is the pair of direct assertions (the foreground sync resolves; the warn fires). The acceptance''s `syncLoadable` `hasData` read stays in the test because the ticket''s acceptance names it (verbatim, the owner''s words), recorded here as documentation of the home screen''s read, not the guard: the loadable never runs the foreground path, so that clause cannot fail. Deleting it is the owner''s call, not this lane''s.
+- 2026-10-27, grill finding 1: no device-log capture step is added. This lane runs no device (the lead owns device work); the honest scope is the guard''s contract, stated in Goal.
+
+## Files
+
+- `stores/sync.ts` — the fix: `initializeAppState`''s non-deferred branch catches the push rejection and warns.
+- `stores/__tests__/syncLoadable.test.ts` — the new foreground-rejection test.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version 2.11.20 riding the commit.
+- `stores/widget.ts` — read only (the push''s own guards).
+- `device/listeners.ts` — read only (the foreground caller, whose own catch keeps a rejected sync off the render tree; its `LISTENERS: Foreground sync failed` error line stops firing for a push rejection once the guard lands).
+
+## Design
+
+The non-deferred branch of `initializeAppState` becomes:
+
+```ts
+} else {
+  try {
+    await PrayerWidgets.refreshPrayerWidgets();
+  } catch (error) {
+    logger.warn(''WIDGET: Foreground refresh failed'', { error });
+  }
+}
+```
+
+Landed as try/catch rather than `.catch` on the call''s return: the awaited guard states its intent directly and does not depend on the callee''s return being a promise (the sync suite''s widget mock returns undefined, which `.catch` on the call would throw on before the guard could act).
+
+The invariant: the widget push is best-effort on every path. The deferred path already catches; the background task and the foreground return share this non-deferred branch, and both keep the await (iOS holds the process alive until the push settles). The branch''s comment gains one clause naming the foreground catch''s reason: a push failure must not fail a sync that holds usable days.
+
+Alternatives rejected:
+
+- Guarding inside `refreshPrayerWidgets` (widget.ts) instead: it already guards each platform push internally; adding an outer swallow there would also silence the deferred path''s own catch point and move the failure policy out of the sync, whose rule ("only nothing-stored reaches the error screen") is what the bug breaks.
+- Making `sync()` catch around `initializeAppState`: that would also swallow sequence and countdown failures, which are the app state itself and belong on the error screen.
+- A shared `pushWidgetsTolerantly()` helper for both branches: the branches differ by await and defer mechanics, and a helper called from inside a `requestAnimationFrame`/`setTimeout` hop obscures the timing the comment documents.
+
+## Steps
+
+1. **Step 1: the foreground-rejection test** in `stores/__tests__/syncLoadable.test.ts` (2 points, code). One test drives `sync({ deferWidgetRefresh: false })` with `mockRefreshPrayerWidgets` rejecting. The regression guard, both direct: the promise resolves, and `logger().warn` is called with `WIDGET: Foreground refresh failed` and the error. The acceptance''s home-screen read follows: `triggerSyncLoadable` then `store.get(syncLoadable)` lands `hasData` (documentation, per the decision above). Red before the fix: the resolves assertion fails on current code.
+2. **Step 2: the guarded foreground push** in `stores/sync.ts` (2 points, code). The non-deferred branch catches and warns per the design; the comment names the reason.
+3. **Step 3: proof and merge** (2 points, code). Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), `yarn validate` green, version 2.11.20 riding the commit, merge the lane branch into local uat unpushed. Mutation pass run on the guard: catch removed (the red run), warn demoted to info, message changed, payload dropped, swallow changed to rethrow — each fails the new test.
+
+Sum: 6 points.
+
+## Risks
+
+- Swallowing hides a push that keeps failing: the warn line is the observable, and the widget self-corrects on the next push.
+- The background task body runs this same branch; after the fix a failed push no longer fails the task. The await remains, so iOS still holds the process until the push settles.
+- The fix cannot be claimed to cure the mimic''s observed blanking end to end: the loadable never runs the foreground path (Goal, scope). The log lines it pins are what a recurrence will be read against.
+- The loadable read in the test cannot go red on its own, so the direct resolves assertion carries the regression guard; the mutation pass proves the test set fails with the fix absent.
+
+## Proof
+
+- Criterion 1''s guard: `yarn jest stores/__tests__/syncLoadable.test.ts` green, and the new test fails with the fix reverted (the sync rejects). The acceptance''s `hasData` read is asserted in the same test.
+- Criterion 2: the same test asserts `logger().warn` called with `WIDGET: Foreground refresh failed`, `{ error: failure }`.
+- Criterion 3: the deferred describe''s two tests (`settles the sync before the push`, `logs a failed push`) pass unmodified.
+- `yarn validate` green; the coverage report covers the new catch.', NULL, NULL, '{}', false, false, false, NULL, 44032, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 10:59:47.649231+00');
 
 
 --
@@ -27978,7 +28288,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 130);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 177);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:312', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
@@ -28105,12 +28414,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:360', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:380', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:371', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:362', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:390', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:346', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:372', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:370', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:373', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:347', 1, 55);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 13);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:392', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:378', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:368', 1, 74);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:348', 1, 62);
@@ -28118,13 +28428,16 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 109);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 181);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 43);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4310);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 46);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 55);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4289);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 21);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
 
 
 --
@@ -28386,7 +28699,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3774, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3818, true);
 
 
 --
@@ -28435,14 +28748,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 651, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 654, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 389, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 392, true);
 
 
 --
@@ -28463,7 +28776,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 882, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 894, true);
 
 
 --
@@ -28554,14 +28867,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 43, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 44, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 121, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 123, true);
 
 
 --
@@ -32946,5 +33259,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict QyutoG7scuBRmQoxUoDNYwftb7dqmESiOJ8dtlPmSI0U9UOcdqpuLRpGZ5WIc7p
+\unrestrict O2Xyb7hGS0IdZw2LTMefvpaJoQqcFRxOw96rpMX2JbdxriheI8xifJaMOctkYBt
 
