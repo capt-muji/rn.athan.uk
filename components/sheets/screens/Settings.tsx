@@ -1,7 +1,15 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  cancelAnimation,
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+} from 'react-native-reanimated';
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
 import InfoBare from '@/assets/icons/svg/info-bare.svg';
@@ -9,7 +17,7 @@ import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
 import { requestQiblaPermission, showQiblaLocationDialog } from '@/device/qibla';
 import { checkForUpdates } from '@/device/updates';
-import { COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
+import { ANIMATION, COLORS, HIT_SLOP, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId } from '@/shared/i18n/locale';
 import { isDecorationSeason } from '@/shared/time';
@@ -19,6 +27,7 @@ import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
+  getManualUpdateCheckSpent,
   hideSettingsSheet,
   hijriDateEnabledAtom,
   setPopupHelpEnabled,
@@ -31,6 +40,8 @@ import {
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
+  spendManualUpdateCheck,
+  updateCheckRowStateAtom,
 } from '@/stores/ui';
 
 import { SettingsToggle, Sheet } from '../parts';
@@ -39,6 +50,9 @@ import ColorPicker from './ColorPicker';
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SETTINGS_PERF_NAME = 'sheet_settings';
+// The settled row's green, the owner's "purple to a green colour": one row's settled state, not a palette role
+const UPTODATE_BADGE = '#16a34a';
+const UPTODATE_BADGE_BORDER = '#22c55e';
 
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
@@ -47,7 +61,23 @@ export default function BottomSheetSettings() {
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
-  const [upToDate, setUpToDate] = useState(false);
+  const [updateRowState, setUpdateRowState] = useAtom(updateCheckRowStateAtom);
+  const isChecking = updateRowState === 'checking';
+  const isUpToDate = updateRowState === 'upToDate';
+  const updateRowLabel = isChecking
+    ? t('settings.checkingUpdates')
+    : isUpToDate
+      ? t('settings.upToDate')
+      : t('settings.checkUpdates');
+
+  // The two arrows turn clockwise, round and round, for exactly as long as the check runs
+  const spin = useSharedValue(0);
+  useEffect(() => {
+    if (!isChecking) return;
+    spin.value = withRepeat(withTiming(360, { duration: ANIMATION.durationSlow, easing: Easing.linear }), -1);
+    return () => cancelAnimation(spin);
+  }, [isChecking, spin]);
+  const spinStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${spin.value}deg` }] }));
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -86,21 +116,27 @@ export default function BottomSheetSettings() {
     setTimeout(() => setPopupHelpEnabled(true), 150);
   };
 
-  // The one update flow's second entry point: manual skips only that call's throttle read, so
-  // a tap re-asks the store while the launch check keeps its 24-hour window
+  // The row's own entry into the one update flow. The launch budget is spent on the press itself -
+  // a check that never answers still spends it - and manual skips only that call's throttle read,
+  // so the launch check keeps its 24-hour window. checkForUpdates never rejects, so no answer
+  // path is leftUnhandled
   const handleCheckUpdatesPress = () => {
+    if (getManualUpdateCheckSpent()) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    spendManualUpdateCheck();
+    setUpdateRowState('checking');
     checkForUpdates({ manual: true }).then((result) => {
       if (result.modal) {
         // The modal renders under this sheet, so the sheet closes first - the What's New and
-        // Help rows trust the same 150ms
+        // Help rows trust the same 150ms - and the row rests: the modal owns the message
         hideSettingsSheet();
         setTimeout(() => setPopupUpdateEnabled(true), 150);
+        setUpdateRowState('idle');
         return;
       }
       // A store that answered current is the one answer the modal cannot show; anything else
       // stays silent, and the resting label returns
-      setUpToDate(result.upToDate);
+      setUpdateRowState(result.upToDate ? 'upToDate' : 'idle');
     });
   };
 
@@ -187,7 +223,8 @@ export default function BottomSheetSettings() {
         </View>
       </View>
 
-      {/* Other Card - the What's new row alone is hidden on a silent release, so Help always stays reachable */}
+      {/* Other Card - the What's new row alone is hidden on a silent release, so Help sits above it
+          and always stays reachable */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.other')}</Text>
         <Pressable
@@ -200,6 +237,18 @@ export default function BottomSheetSettings() {
             <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
           </View>
           <Text style={styles.whatsNewLabel}>{t('settings.language')}</Text>
+          <Text style={styles.chevron}>{chevronFor()}</Text>
+        </Pressable>
+        <Pressable
+          style={styles.whatsNewButton}
+          onPress={handleHelpPress}
+          hitSlop={HIT_SLOP.md}
+          accessibilityLabel={t('settings.help')}
+          accessibilityRole={'button'}>
+          <View style={styles.infoButton}>
+            <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
+          </View>
+          <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         {currentVisibleWhatsNew() ? (
@@ -216,30 +265,27 @@ export default function BottomSheetSettings() {
             <Text style={styles.chevron}>{chevronFor()}</Text>
           </Pressable>
         ) : null}
-        <Pressable
-          style={styles.whatsNewButton}
-          onPress={handleHelpPress}
-          hitSlop={HIT_SLOP.md}
-          accessibilityLabel={t('settings.help')}
-          accessibilityRole={'button'}>
-          <View style={styles.infoButton}>
-            <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
-          </View>
-          <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
-          <Text style={styles.chevron}>{chevronFor()}</Text>
-        </Pressable>
-        {/* The row acts in place, so it carries the up-to-date answer where its chevron would
-            sit: no chevron, because nothing opens */}
+        {/* The row acts in place: the download glyph asks, the two-arrow circle where other rows
+            carry a chevron, and the up-to-date verdict settles the badge green with a tick */}
         <Pressable
           style={styles.whatsNewButton}
           onPress={handleCheckUpdatesPress}
           hitSlop={HIT_SLOP.md}
-          accessibilityLabel={upToDate ? t('settings.upToDate') : t('settings.checkUpdates')}
+          accessibilityLabel={updateRowLabel}
           accessibilityRole={'button'}>
-          <View style={styles.infoButton}>
-            <CheckIcon width={9} height={9} style={{ color: COLORS.text.primary }} />
+          <View style={[styles.infoButton, isUpToDate && styles.infoButtonSettled]}>
+            {isUpToDate ? (
+              <CheckIcon width={9} height={9} style={{ color: COLORS.text.primary }} />
+            ) : (
+              <IconView type={Icon.DOWNLOAD} size={9} color={COLORS.text.primary} />
+            )}
           </View>
-          <Text style={styles.whatsNewLabel}>{upToDate ? t('settings.upToDate') : t('settings.checkUpdates')}</Text>
+          <Text style={styles.whatsNewLabel}>{updateRowLabel}</Text>
+          {isChecking ? (
+            <IconView type={Icon.REFRESH} size={SIZE.icon.sm} color={COLORS.icon.primary} animatedStyle={spinStyle} />
+          ) : isUpToDate ? null : (
+            <IconView type={Icon.REFRESH} size={SIZE.icon.sm} color={COLORS.icon.primary} />
+          )}
         </Pressable>
       </View>
     </Sheet>
@@ -298,6 +344,10 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  infoButtonSettled: {
+    backgroundColor: UPTODATE_BADGE,
+    borderColor: UPTODATE_BADGE_BORDER,
   },
   whatsNewLabel: {
     flex: 1,

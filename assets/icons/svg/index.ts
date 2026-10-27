@@ -6,11 +6,13 @@ import BellRingIcon from './bell-ring.svg';
 import BellSlashIcon from './bell-slash.svg';
 import CloseIcon from './close.svg';
 import CompassIcon from './compass.svg';
+import DownloadIcon from './download.svg';
 import GlobeIcon from './globe.svg';
 import MusicNoteIcon from './music-note.svg';
 import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
 import QuestionIcon from './question.svg';
+import RefreshIcon from './refresh.svg';
 import SpeakerIcon from './speaker.svg';
 import WidgetIcon from './widget.svg';
 
@@ -28,6 +30,8 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.APPLE]: AppleIcon,
   [Icon.ANDROID]: AndroidIcon,
   [Icon.GLOBE]: GlobeIcon,
+  [Icon.DOWNLOAD]: DownloadIcon,
+  [Icon.REFRESH]: RefreshIcon,
 };
 
 export default ICONS;

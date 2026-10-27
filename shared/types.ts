@@ -255,6 +255,8 @@ export enum Icon {
   APPLE = 'APPLE',
   ANDROID = 'ANDROID',
   GLOBE = 'GLOBE',
+  DOWNLOAD = 'DOWNLOAD',
+  REFRESH = 'REFRESH',
 }
 
 // =============================================================================

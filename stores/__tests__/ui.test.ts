@@ -101,6 +101,8 @@ const {
   getPopupUpdateLastCheck,
   hideSettingsSheet,
   hijriDateEnabledAtom,
+  getManualUpdateCheckSpent,
+  manualUpdateCheckSpentAtom,
   measurementsListAtom,
   playingSoundIndexAtom,
   popupHelpEnabledAtom,
@@ -116,6 +118,7 @@ const {
   setPopupUpdateEnabled,
   setPopupUpdateLastCheck,
   setSettingsSheetModal,
+  spendManualUpdateCheck,
   bumpResync,
   settingsSheetModalAtom,
   showAlertSheet,
@@ -123,6 +126,7 @@ const {
   showSettingsSheet,
   showSheet,
   showTimePassedAtom,
+  updateCheckRowStateAtom,
 } = require('../ui');
 
 // =============================================================================
@@ -152,6 +156,13 @@ describe('settings atoms default values', () => {
   it('countdownBarColorAtom has default hex color', () => {
     const store = createStore();
     expect(store.get(countdownBarColorAtom)).toBe('#00ff88');
+  });
+
+  it('a launch starts with its one manual update check unspent and the row at rest', () => {
+    const store = createStore();
+
+    expect(store.get(manualUpdateCheckSpentAtom)).toBe(false);
+    expect(store.get(updateCheckRowStateAtom)).toBe('idle');
   });
 });
 
@@ -306,6 +317,13 @@ describe('preference setter functions', () => {
     const timestamp = 1706382000000;
     mockDefaultStoreGet.mockReturnValue(timestamp);
     expect(getPopupUpdateLastCheck()).toBe(timestamp);
+  });
+
+  it('spendManualUpdateCheck spends the launch budget once and the read says so', () => {
+    mockDefaultStoreGet.mockReturnValue(true);
+    expect(getManualUpdateCheckSpent()).toBe(true);
+    spendManualUpdateCheck();
+    expect(mockDefaultStoreSet).toHaveBeenCalledWith(manualUpdateCheckSpentAtom, true);
   });
 });
 
