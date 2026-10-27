@@ -74,7 +74,7 @@ export type UpdateCheckResult = {
 
 /**
  * Checks whether an update is available, throttled to once per 24 hours
- * @param manual Skips the 24-hour stamp read for this call alone; the stamp is still written, so the automatic check never double-fires the window
+ * @param manual Skips the 24-hour stamp read for this call alone. A manual success still writes the stamp, so the automatic check never double-fires the window; a manual failure writes nothing, because the hour-back retry stamp would drag the stamp behind a fresher automatic success and re-arm the automatic check inside the window it had earned
  * @returns What the check learned: whether to show the update modal, and whether the store answered with no update
  */
 export const checkForUpdates = async ({ manual = false }: { manual?: boolean } = {}): Promise<UpdateCheckResult> => {
@@ -84,7 +84,10 @@ export const checkForUpdates = async ({ manual = false }: { manual?: boolean } =
   if (!manual && now - lastCheck < TIME_CONSTANTS.ONE_DAY_MS) return { modal: false, upToDate: false };
 
   // A read that never reached the store is not a check, so it costs an hour instead of the whole day
-  const stampFailure = () => setPopupUpdateLastCheck(now - TIME_CONSTANTS.ONE_DAY_MS + TIME_CONSTANTS.UPDATE_RETRY_MS);
+  const stampFailure = () => {
+    if (manual) return;
+    setPopupUpdateLastCheck(now - TIME_CONSTANTS.ONE_DAY_MS + TIME_CONSTANTS.UPDATE_RETRY_MS);
+  };
 
   try {
     if (!IS_IOS) {

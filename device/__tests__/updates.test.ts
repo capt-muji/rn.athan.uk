@@ -421,14 +421,14 @@ describe('checkForUpdates manual mode', () => {
     jest.useRealTimers();
   });
 
-  it('still stamps a failure an hour back', async () => {
+  it('writes nothing when a manual check cannot reach the store, so a fresher automatic stamp is never dragged back', async () => {
     jest.useFakeTimers({ now: PINNED_NOW });
     mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
     mockFetch.mockRejectedValue(new Error('Network error'));
 
     await checkForUpdates({ manual: true });
 
-    expect(mockSetPopupUpdateLastCheck).toHaveBeenCalledWith(PINNED_NOW - ONE_DAY_MS + RETRY_MS);
+    expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
     jest.useRealTimers();
   });
 
@@ -556,6 +556,15 @@ describe('checkForUpdates (Android)', () => {
 
     expect(mockCheckForUpdate).toHaveBeenCalledTimes(1);
     expect(result).toEqual({ modal: false, upToDate: true });
+  });
+
+  it('stamps nothing when a manual Play check is rejected', async () => {
+    mockGetPopupUpdateLastCheck.mockReturnValue(Date.now());
+    mockCheckForUpdate.mockRejectedValue(new Error('Binder has died'));
+
+    await checkForUpdatesAndroid({ manual: true });
+
+    expect(mockSetPopupUpdateLastCheck).not.toHaveBeenCalled();
   });
 
   it('stamps a Play failure an hour back so the day is not lost', async () => {

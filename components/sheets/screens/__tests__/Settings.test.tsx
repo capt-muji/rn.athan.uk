@@ -36,7 +36,6 @@ const mockCheckForUpdates = jest.fn((_options?: { manual?: boolean }) =>
 );
 jest.mock('@/device/updates', () => ({
   checkForUpdates: (options?: { manual?: boolean }) => mockCheckForUpdates(options),
-  openStore: jest.fn(() => Promise.resolve()),
 }));
 
 // The qibla sheet reaches the platform the moment it presents; the settings suite only needs it to exist
