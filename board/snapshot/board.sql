@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict AC5rgkGJK0juROt8B4vOwq9ionVNOPLgiRGCo9d0ZLyLDrmt5wf9gh8zy52h6ke
+\restrict DYMyAvkPi64RgzAltXAkFj2WnbN4V7dFMt6qaDibz5Lc5t7L5odiF2625Xf99lN
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6122,6 +6122,22 @@ Acceptance:
 - [ ] the badge''s Text carries numberOfLines={1} and renders each of the six locales'' composed ago string under that constraint (npx jest Ago green, red on today''s badge first)
 - [ ] transcribed device reads: Hindi''s badge on one line on the S23 with no cropped second line, and Thai''s badge spaced before and after the time on both the S23 and the XS
 - [ ] yarn validate green', NULL, NULL, NULL, 3500, '2026-10-25 05:27:14.749531+00', '2026-10-25 18:39:05.540674+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (381, 1, 381, NULL, 1, 'The Check for updates row: one check per launch, download and refresh glyphs, and the green up-to-date tick', 'Goal: rework the settings sheet''s Check for updates row - its place in the Other card, a once-per-launch guard on the check, and its checking and result presentation - so a press reads as download-then-refresh and settles on a green tick. The follow-up to T-376''s landed row, on the owner''s spec (2026-10-27).
+
+Where: components/sheets/screens/Settings.tsx (the Other card''s row order and the update row''s states), device/updates.ts (the manual verdict it already returns), shared/i18n/* (the six catalogs), the row''s suite.
+
+Acceptance:
+- [ ] The Other card reads Language, Help, What''s New, Check for updates, in that order: the What''s New and Help rows swap their current places, Check for updates stays last.
+- [ ] A manual check runs at most once per app launch: after one press the row settles into its result state and no further press starts another check. The count resets only when the app process is relaunched - backgrounding the app, returning to it, or closing and reopening the sheet must NOT reset it (an unpersisted in-memory flag, not storage).
+- [ ] The row''s left glyph becomes a down-arrow (a download arrow), replacing the current check glyph.
+- [ ] The row''s right side carries two arrows forming a circle, each pointing at the other''s tail (the classic two-arrow refresh glyph), where rows otherwise carry a chevron.
+- [ ] While the check runs, the two arrows spin clockwise and the label reads "Checking for updates..." in the pressed locale, with the trailing dots as part of the checking state.
+- [ ] On the up-to-date verdict, the two circular arrows disappear, the left glyph becomes a green tick (green replacing the purple for the settled state), and the label reads the existing up-to-date string.
+- [ ] On the newer-version verdict, the sheet closes and the update modal presents (the launch check''s own modal on iOS, the store flow on Android) - the landed T-376 behavior, kept as is.
+- [ ] The row mirrors correctly in Arabic: icons and layout flip with the direction, and the checking label carries its own Arabic string (with the other four locales'' equivalents: ar, so, hi, ms, th).
+- [ ] The catalog lock re-hashes for any changed English source; the row''s suite pins the once-per-launch guard, the three visual states, and the row order.
+
+Owner quotes that are the spec: the spin is "clockwise, round and round"; the up-to-date change is "purple to a green colour and then a tick instead, just to show the user, hey, you''re up to date, nothing to do"; the guard is "they can click that button one time only... when they close the app, that''s when it resets back to zero... they can''t just background it either". The owner ruled this ticket is planned and grilled heavily before execution, and executed by a dispatched lane.', NULL, NULL, NULL, 16500, '2026-10-27 04:41:57.167332+00', '2026-10-27 04:42:16.83696+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (347, 1, 347, 8, 4, 'The README catches up with the app: every user-facing change since 1.0.0 walks the git history into the page', 'Goal: README.md carries every user-facing feature the git history records, grouped the way a reader wants, with every claim true of the current build.
 
 Where: README.md, written from a survey of the git log from the first commit (2024-10-26) to the uat tip 2.4.40 (dc269768), through the 1.0.x build-out, the 1.1.x/1.2.x store era, the 1.3-1.23 series, the 1.24-1.29 rebuild, the 2.x restructure and the 2.4.x line.
@@ -10505,6 +10521,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3694, 377, 'comment', 'owner', 'Merged to uat in d7885e4e (2.8.3) and closed on the owner''s order. Final shape after the deep dive: no deprecated full-screen key anywhere (the hover band''s cause), phones keep the iOS 27 discrete scene resize, iPads keep the runtime portrait lock through the AppDelegate gate, the plist declares all four iPad orientations so a keyless build passes validation, and the Mac window is pinned phone-compact at 500x932 - the app''s own content cap - with no resizing and no full screen (TN3192''s sizeRestrictions, set on the Mac alone). The owner''s macOS-variant check of the pinned window is the one reading still owed on glass.', NULL, '2026-10-27 02:18:09.150786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3696, 376, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 02:21:44.848159+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3699, 375, 'comment', 'owner', 'Merged to uat in f7e85d90 (2.11.3) and closed: the owner read the Android settings shadow on both glass panels - the S23''s AMOLED and the 3T''s LCD - closing the ticket''s last open criterion the same session the fix landed. Every other criterion was owner-verified earlier on the production 2.10.5 glass; the three temporary previews were reverted before the audit per comment 3644''s reminder; the audit findings were all fixed pre-merge. The visual-polish loop continues on the dev builds as fresh owner orders.', NULL, '2026-10-27 02:53:12.259329+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3707, 381, 'activity', 'owner', NULL, 'created', '2026-10-27 04:41:57.2155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3695, 377, 'activity', 'owner', NULL, 'status', '2026-10-27 02:18:09.183607+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3689, 376, 'comment', 'owner', 'Executed and audited; four commits sit on branch t376-check-updates in the lane worktree $HOME/repos/wt-t376 (push is the lead''s). What the owner should verify on glass: the Other card''s new Check for updates row (last after Help, check glyph, no chevron, nothing else moved); a tap on a current install answers inline in the user''s language; a tap when the store has a newer version closes the sheet and shows the same update modal the launch check uses (iOS), and Play''s own flow on Android; the automatic launch check and its 24-hour throttle are untouched. Also worth an eye: the two new strings in each of en/ar/so/hi/ms/th. No What''s New item was added - restamping one is the owner''s editorial call.', NULL, '2026-10-27 00:33:25.474965+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 02:21:44.84+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3697, 376, 'comment', 'owner', 'Merged to uat in 241c12c7 (2.11.2) and closed on the owner''s acceptance, without the glass pass the Waiting-on named: the owner ruled the row accepted as shipped, with the minor tweaks they have in mind deferred to fresh orders after T-375. Everything the plan promised is in the merge: the manual mode, the six catalogs, the haptic, the inline answer, the no-stamp-on-failure audit fix, and the untouched automatic check.', NULL, '2026-10-27 02:23:35.159684+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -10533,6 +10550,8 @@ nitpick: components/ui/SettingsButton.tsx line 26 - the comment cites #4c21bb, t
 nitpick: mocks/simple.ts line 61 - the inline comment above eveningRow still lists "a realistic pre-dawn day" among today''s row shapes; that branch is deleted and a reader will hunt for a row that no longer exists.', NULL, '2026-10-27 04:07:01.059476+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3704, 375, 'comment', 'owner', 'Every finding is fixed in eea274f8 with zero pixel changes: the compass comment pair now states the owner''s on-glass ruling (the flattened ink plus a further 0.5 fillOpacity is quarter-strength digits) and the halving is pinned at the source in the Qibla suite; the settings comments name #4e23bc as the owner''s locked value; the mock''s stale inline arm, the edge-sample wording, the one-dim headers, and the glyph test''s try/finally all follow. 205 tests green across the four touched suites, full validate green through the commit hooks.', NULL, '2026-10-27 04:13:19.280283+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3702, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3705, 375, 'comment', 'owner', 'Conformance confirmed and the three record items fixed in eea274f8: the comment now names #4e23bc as the owner''s locked value (the derivation lives in the commit messages, where the arithmetic and its date are recorded together), the stale hex citation and the mock''s deleted arm are gone. The locked pixels are untouched.', NULL, '2026-10-27 04:13:19.282265+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3703, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3706, 377, 'comment', 'owner', 'Owner verification on glass (2026-10-27, the owner''s Mac mini, Debug Designed-for-iPad build of uat): the window is perfectly sized - phone-compact at the 500x932 pin, exactly the fix''s claim. Two residuals noted and accepted: a hover effect still appears near the window top (cosmetic, the macOS-drawn chrome area), and a console error that notifications are not allowed - expected for an unprovisioned debug Mac build, which carries no notification entitlement; the production line does. The title bar follows the system appearance by design: Designed-for-iPad apps have no titlebar API (AppKit/Catalyst only), ruled not worth a Catalyst port for a bar tint.', NULL, '2026-10-27 04:27:12.342853+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3708, 381, 'activity', 'owner', NULL, 'label_add', '2026-10-27 04:42:16.840037+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 202, "value": "#381"}}', NULL);
 
 
 --
@@ -11266,6 +11285,7 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (376, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 201);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (381, 202);
 
 
 --
@@ -12025,6 +12045,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (844, 377, 6, 'Planning', 'unstarted', '2026-10-26 23:53:30.8055+00', '2026-10-27 01:08:10.560215+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (857, 377, 4, 'Done', 'completed', '2026-10-27 02:18:09.176701+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (859, 375, 4, 'Done', 'completed', '2026-10-27 02:53:12.271649+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (861, 381, 1, 'Backlog', 'backlog', '2026-10-27 04:41:57.167+00', NULL);
 
 
 --
@@ -12385,6 +12406,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (199, 1, 3, '#375', '#ffffff', '2026-10-25 18:39:31.433692+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (200, 1, 3, '#376', '#ffffff', '2026-10-26 23:53:44.295257+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (201, 1, 3, '#377', '#ffffff', '2026-10-27 00:14:24.981432+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (202, 1, 3, '#381', '#ffffff', '2026-10-27 04:42:16.804458+00');
 
 
 --
@@ -12695,7 +12717,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 381, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 382, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -27680,6 +27702,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:316', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:377', 1, 32);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
@@ -27808,9 +27831,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:377', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4231);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 48);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4234);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 5);
 
 
 --
@@ -28072,7 +28095,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3705, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3708, true);
 
 
 --
@@ -28128,7 +28151,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 645, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 380, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 381, true);
 
 
 --
@@ -28149,7 +28172,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 860, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 861, true);
 
 
 --
@@ -28184,7 +28207,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 201, true);
+SELECT pg_catalog.setval('public.label_id_seq', 202, true);
 
 
 --
@@ -32632,5 +32655,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict AC5rgkGJK0juROt8B4vOwq9ionVNOPLgiRGCo9d0ZLyLDrmt5wf9gh8zy52h6ke
+\unrestrict DYMyAvkPi64RgzAltXAkFj2WnbN4V7dFMt6qaDibz5Lc5t7L5odiF2625Xf99lN
 

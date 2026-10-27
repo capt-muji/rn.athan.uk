@@ -83,7 +83,7 @@ describe('the AppDelegate portrait gate', () => {
 
     expect(edited).toContain('applicationDidBecomeActive');
     expect(edited).toContain('ProcessInfo.processInfo.isiOSAppOnMac');
-    expect(edited).toContain('CGSize(width: 500, height: 746)');
+    expect(edited).toContain('CGSize(width: 500, height: 821)');
     expect(edited).toContain('minimumSize = phone');
     expect(edited).toContain('maximumSize = phone');
     expect(edited).toContain('allowsFullScreen = false');
