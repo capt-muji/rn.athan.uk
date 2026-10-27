@@ -89,19 +89,6 @@ export const popupHelpEnabledAtom = atom(false);
 /** Timestamp of last update check (persisted) */
 export const popupUpdateLastCheckAtom = atomWithStorageNumber('popup_update_last_check', 0);
 
-/** The update row's three looks this launch */
-export type UpdateCheckRowState = 'idle' | 'checking' | 'upToDate';
-
-/**
- * The manual update check's once-per-launch budget (session-scoped, never stored: the relaunch
- * alone re-arms it, because the sheet's content unmounts on dismiss and component state would
- * reset with every reopen).
- */
-export const manualUpdateCheckSpentAtom = atom(false);
-
-/** The update row's visual state for this launch, held the same session-scoped way */
-export const updateCheckRowStateAtom = atom<UpdateCheckRowState>('idle');
-
 /** Reference to the sound selection bottom sheet modal */
 export const bottomSheetModalAtom = atom<BottomSheetModal | null>(null);
 
@@ -253,12 +240,6 @@ export const setPopupHelpEnabled = (enabled: boolean) => store.set(popupHelpEnab
 
 /** Sets the timestamp of the last app update check */
 export const setPopupUpdateLastCheck = (timestamp: number) => store.set(popupUpdateLastCheckAtom, timestamp);
-
-/** Whether this launch's one manual update check has run */
-export const getManualUpdateCheckSpent = () => store.get(manualUpdateCheckSpentAtom);
-
-/** Spends this launch's one manual update check */
-export const spendManualUpdateCheck = () => store.set(manualUpdateCheckSpentAtom, true);
 
 /**
  * Sets the measured width of the widest active-locale prayer name
