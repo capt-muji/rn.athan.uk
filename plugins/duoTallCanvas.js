@@ -1,6 +1,7 @@
-const { withAppDelegate, withInfoPlist } = require('expo/config-plugins');
-
-const PORTRAIT_PAIR = ['UIInterfaceOrientationPortrait', 'UIInterfaceOrientationPortraitUpsideDown'];
+const { withAppDelegate, withDangerousMod } = require('expo/config-plugins');
+const { default: plist } = require('@expo/plist');
+const { readFile, writeFile } = require('node:fs/promises');
+const path = require('node:path');
 
 // The inner display presents per pose and ignores any app orientation answer (Tech Talks 111461),
 // granting the full canvas only for a pose the plist declares (row 271 measured landscape spanning
@@ -9,8 +10,27 @@ const PORTRAIT_PAIR = ['UIInterfaceOrientationPortrait', 'UIInterfaceOrientation
 // edge, held wide the system keeps its centered letterbox. Everywhere else the delegate gate below
 // answers the portrait pair for every window, so no surface ever lays out wide.
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
+const PIN_FLAG = 'macWindowPinned';
 
-const GATE_SOURCE = `  public override func application(
+// The gate answers the portrait pair for every window; the pin freezes the Mac window at the
+// layout's own content cap so the desktop app reads as a phone: no tall or sideways resize,
+// no full screen. TN3192's sizeRestrictions are the sanctioned replacement for the deprecated
+// full-screen key both Mac defects traced to.
+const APPDELEGATE_BLOCK = `  private var ${PIN_FLAG} = false
+
+  public override func applicationDidBecomeActive(_ application: UIApplication) {
+    super.applicationDidBecomeActive(application)
+    guard !${PIN_FLAG}, ProcessInfo.processInfo.isiOSAppOnMac, let scene = window?.windowScene else { return }
+    // 500 is SIZE.contentMaxWidth, the tablet cap the centered column already honors
+    let phone = CGSize(width: 500, height: 932)
+    scene.sizeRestrictions?.minimumSize = phone
+    scene.sizeRestrictions?.maximumSize = phone
+    scene.sizeRestrictions?.allowsFullScreen = false
+    window?.frame = CGRect(origin: window?.frame.origin ?? .zero, size: phone)
+    ${PIN_FLAG} = true
+  }
+
+  public override func application(
     _ application: UIApplication,
     supportedInterfaceOrientationsFor window: UIWindow?
   ) -> UIInterfaceOrientationMask {
@@ -23,28 +43,54 @@ const CLASS_CLOSE = `}
 ${'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {'}`;
 
 const editAppDelegate = (contents) => {
-  if (contents.includes(GATE_MASK)) return contents;
+  if (contents.includes(PIN_FLAG)) return contents;
+  if (contents.includes(GATE_MASK)) {
+    throw new Error(
+      'duoTallCanvas: the AppDelegate carries the old gate without the Mac window pin; run prebuild --clean'
+    );
+  }
   if (!contents.includes(CLASS_CLOSE)) {
     throw new Error('duoTallCanvas: the AppDelegate class-close marker moved; read the new template');
   }
-  return contents.replace(CLASS_CLOSE, `\n${GATE_SOURCE}\n${CLASS_CLOSE}`);
+  return contents.replace(CLASS_CLOSE, `\n${APPDELEGATE_BLOCK}\n${CLASS_CLOSE}`);
 };
 
-const editInfoPlist = (plist) => {
-  plist.UISupportedInterfaceOrientations = PORTRAIT_PAIR;
-  plist['UISupportedInterfaceOrientations~ipad'] = PORTRAIT_PAIR;
-  // TN3192: with the full-screen key the system resizes the scene discretely, honoring the declared
-  // pair, which is the tall canvas's presentation on a folding iPhone's inner display
-  plist.UIRequiresFullScreen = true;
-  return plist;
+const IPAD_ALL_FOUR = [
+  'UIInterfaceOrientationPortrait',
+  'UIInterfaceOrientationPortraitUpsideDown',
+  'UIInterfaceOrientationLandscapeLeft',
+  'UIInterfaceOrientationLandscapeRight',
+];
+
+// TN3192: the unscoped key froze the Designed-for-iPad window on the Mac and is Apple's deprecated
+// opt-out, while iPhone-scoped it survives as the iOS 27 discrete-scene-resize request, which is
+// the tall canvas's presentation, so the phone fleet answers exactly as before. The iPad array
+// carries all four because the keyless build validates only with them declared; the delegate gate
+// above, not the plist, keeps every window portrait.
+const editFullScreenKeys = (infoPlist) => {
+  delete infoPlist.UIRequiresFullScreen;
+  infoPlist['UIRequiresFullScreen~iphone'] = true;
+  infoPlist['UISupportedInterfaceOrientations~ipad'] = IPAD_ALL_FOUR;
+  return infoPlist;
 };
 
 const withDuoTallCanvas = (config) =>
-  withAppDelegate(withInfoPlist(config, editInfoPlist), (cfg) => {
-    cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
-    return cfg;
-  });
+  withDangerousMod(
+    withAppDelegate(config, (cfg) => {
+      cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
+      return cfg;
+    }),
+    'duoTallCanvasFullScreen',
+    async (cfg) => {
+      // The prebuild's orientation pass writes the plist after every withInfoPlist edit here,
+      // so these keys ride a file edit that runs after all base mods.
+      const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
+      const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
+      await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
+      return cfg;
+    }
+  );
 
 module.exports = withDuoTallCanvas;
 module.exports.editAppDelegate = editAppDelegate;
-module.exports.editInfoPlist = editInfoPlist;
+module.exports.editFullScreenKeys = editFullScreenKeys;
