@@ -5,7 +5,10 @@
  * between the spinner, the lists and the error screen, and to retry the notification refresh once data lands. So
  * the sync must start on that first call, run once however often the loadable is read, and settle without waiting
  * for the iOS widget push. That push starts only after a frame and then a macrotask, so it cannot land on the first
- * paint, and a failed push is logged rather than left unhandled. A development build downloads on every launch.
+ * paint, and a failed push is logged rather than left unhandled. A push a caller does not
+ * defer (the foreground return, the background task) is awaited, and its rejection is
+ * logged the same way: the sync completes on the days it already holds. A development
+ * build downloads on every launch.
  *
  * Runs the real sync, database and notifications store over a fresh module graph per test, since the loadable holds
  * its one sync for the life of the store. The network, the sequences, the countdowns, the widgets and the upgrade
@@ -218,6 +221,21 @@ describe('the widget push on the launch path', () => {
     finishPush();
     await syncing;
     expect(settled).toBe(true);
+  });
+
+  it('completes a sync whose awaited push rejects, warns one line, and leaves the home screen on its data', async () => {
+    const failure = new Error('widget IO failed');
+    mockRefreshPrayerWidgets.mockRejectedValue(failure);
+    const { sync, store, syncLoadable, triggerSyncLoadable } = launch({ stored: [TODAY, TOMORROW] });
+
+    await expect(sync({ deferWidgetRefresh: false })).resolves.toBeUndefined();
+
+    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Foreground refresh failed', { error: failure });
+
+    // The home screen's own read stays on its data, never the error page
+    triggerSyncLoadable();
+    await settle();
+    expect(store.get(syncLoadable)).toEqual({ state: 'hasData', data: undefined });
   });
 });
 

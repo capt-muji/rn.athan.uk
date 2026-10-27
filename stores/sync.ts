@@ -256,7 +256,12 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
       }, 0);
     });
   } else {
-    await PrayerWidgets.refreshPrayerWidgets();
+    // A failed push costs a stale widget until the next one, never a failed sync over stored days
+    try {
+      await PrayerWidgets.refreshPrayerWidgets();
+    } catch (error) {
+      logger.warn('WIDGET: Foreground refresh failed', { error });
+    }
   }
 };
 
