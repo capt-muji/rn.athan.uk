@@ -462,9 +462,10 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
 
     const row = screen.getByRole('button', { name: 'You’re up to date' });
     expect(screen.queryByRole('button', { name: 'Check for updates' })).not.toBeOnTheScreen();
-    // The settled state is the owner's green replacing the purple, with the tick in the circle
+    // The settled state is the owner's green replacing the purple, a rung darker (order 2026-10-27),
+    // with the tick in the circle
     const badge = row.children[0] as unknown as ReactTestInstance;
-    expect(badge).toHaveStyle({ backgroundColor: '#16a34a', borderColor: '#22c55e' });
+    expect(badge).toHaveStyle({ backgroundColor: '#15803d', borderColor: '#16a34a' });
     expect(within(row).getByTestId('svg:check', { includeHiddenElements: true })).toBeOnTheScreen();
     expect(within(row).queryByTestId('svg:refresh', { includeHiddenElements: true })).not.toBeOnTheScreen();
   });
@@ -508,9 +509,10 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     const row = screen.getByRole('button', { name: 'Failed to check. Try again' });
     expect(screen.queryByRole('button', { name: 'Check for updates' })).not.toBeOnTheScreen();
     expect(screen.queryByText('You’re up to date')).not.toBeOnTheScreen();
-    // The owner's spec: the circle red with a white X, mirroring the green tick's construction
+    // The owner's spec: the circle red with a white X, mirroring the green tick's construction,
+    // both a rung darker (order 2026-10-27)
     const badge = row.children[0] as unknown as ReactTestInstance;
-    expect(badge).toHaveStyle({ backgroundColor: '#dc2626', borderColor: '#ef4444' });
+    expect(badge).toHaveStyle({ backgroundColor: '#b91c1c', borderColor: '#dc2626' });
     expect(within(row).getByTestId('svg:close', { includeHiddenElements: true })).toBeOnTheScreen();
     // The ring stays so the row reads retryable, and no modal is claimed
     expect(within(row).getByTestId('svg:refresh', { includeHiddenElements: true })).toBeOnTheScreen();
