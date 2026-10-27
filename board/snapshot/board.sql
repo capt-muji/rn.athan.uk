@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict DYMyAvkPi64RgzAltXAkFj2WnbN4V7dFMt6qaDibz5Lc5t7L5odiF2625Xf99lN
+\restrict MozACDEE15gw0gMq8vY6k9GV0bRt001WgRlyuU9InzUMmbdeOSeFTmtMo4PXOa1
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6122,7 +6122,8 @@ Acceptance:
 - [ ] the badge''s Text carries numberOfLines={1} and renders each of the six locales'' composed ago string under that constraint (npx jest Ago green, red on today''s badge first)
 - [ ] transcribed device reads: Hindi''s badge on one line on the S23 with no cropped second line, and Thai''s badge spaced before and after the time on both the S23 and the XS
 - [ ] yarn validate green', NULL, NULL, NULL, 3500, '2026-10-25 05:27:14.749531+00', '2026-10-25 18:39:05.540674+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (381, 1, 381, NULL, 1, 'The Check for updates row: one check per launch, download and refresh glyphs, and the green up-to-date tick', 'Goal: rework the settings sheet''s Check for updates row - its place in the Other card, a once-per-launch guard on the check, and its checking and result presentation - so a press reads as download-then-refresh and settles on a green tick. The follow-up to T-376''s landed row, on the owner''s spec (2026-10-27).
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (387, 1, 387, NULL, 4, 'Step 3: the on-glass proof on the iPhone XS and the 3T', 'Version bump, both platforms built in parallel, aapt2 badging before the 3T install, then the transcript of every criterion read on glass. Plan: T-381 doc.', NULL, NULL, NULL, 18500, '2026-10-27 05:02:46.006403+00', '2026-10-27 06:13:12.809682+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (381, 1, 381, 3, 9, 'The Check for updates row: one check per launch, download and refresh glyphs, and the green up-to-date tick', 'Goal: rework the settings sheet''s Check for updates row - its place in the Other card, a once-per-launch guard on the check, and its checking and result presentation - so a press reads as download-then-refresh and settles on a green tick. The follow-up to T-376''s landed row, on the owner''s spec (2026-10-27).
 
 Where: components/sheets/screens/Settings.tsx (the Other card''s row order and the update row''s states), device/updates.ts (the manual verdict it already returns), shared/i18n/* (the six catalogs), the row''s suite.
 
@@ -6137,7 +6138,7 @@ Acceptance:
 - [ ] The row mirrors correctly in Arabic: icons and layout flip with the direction, and the checking label carries its own Arabic string (with the other four locales'' equivalents: ar, so, hi, ms, th).
 - [ ] The catalog lock re-hashes for any changed English source; the row''s suite pins the once-per-launch guard, the three visual states, and the row order.
 
-Owner quotes that are the spec: the spin is "clockwise, round and round"; the up-to-date change is "purple to a green colour and then a tick instead, just to show the user, hey, you''re up to date, nothing to do"; the guard is "they can click that button one time only... when they close the app, that''s when it resets back to zero... they can''t just background it either". The owner ruled this ticket is planned and grilled heavily before execution, and executed by a dispatched lane.', NULL, NULL, NULL, 16500, '2026-10-27 04:41:57.167332+00', '2026-10-27 04:42:16.83696+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+Owner quotes that are the spec: the spin is "clockwise, round and round"; the up-to-date change is "purple to a green colour and then a tick instead, just to show the user, hey, you''re up to date, nothing to do"; the guard is "they can click that button one time only... when they close the app, that''s when it resets back to zero... they can''t just background it either". The owner ruled this ticket is planned and grilled heavily before execution, and executed by a dispatched lane.', NULL, NULL, NULL, 16500, '2026-10-27 04:41:57.167332+00', '2026-10-27 06:13:12.815164+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (347, 1, 347, 8, 4, 'The README catches up with the app: every user-facing change since 1.0.0 walks the git history into the page', 'Goal: README.md carries every user-facing feature the git history records, grouped the way a reader wants, with every claim true of the current build.
 
 Where: README.md, written from a survey of the git log from the first commit (2024-10-26) to the uat tip 2.4.40 (dc269768), through the 1.0.x build-out, the 1.1.x/1.2.x store era, the 1.3-1.23 series, the 1.24-1.29 rebuild, the 2.x restructure and the 2.4.x line.
@@ -6206,7 +6207,8 @@ Acceptance:
 - [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
 - [ ] the iPhone XS is measurably unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-26 07:23:36.201493+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 9, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (385, 1, 385, NULL, 4, 'Step 1: the six catalogs'' checking string and the re-hashed lock', 'settings.checkingUpdates in en, ar, so, hi, ms and th, then yarn i18n:lock re-hashes the lock for the changed English source. Plan: T-381 doc.', NULL, NULL, NULL, 16500, '2026-10-27 05:02:45.958118+00', '2026-10-27 05:21:45.013896+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
 
@@ -6222,7 +6224,8 @@ Acceptance:
 - [ ] the automatic launch check and its 24-hour throttle behave exactly as before
 - [ ] an available update presents the SAME modal or native flow the automatic check uses
 - [ ] an up-to-date install answers inline, in the user''s language
-- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 03:59:16.808372+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 04:47:38.260811+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (386, 1, 386, NULL, 4, 'Step 2: the row rework - guard, states, glyphs, spin, order', 'The row''s suite rewritten red, then the spent-budget and row-state atoms, the download and refresh glyphs, the IconView animated color, the clockwise spin, and the Other card order. Plan: T-381 doc.', NULL, NULL, NULL, 17500, '2026-10-27 05:02:45.983199+00', '2026-10-27 05:21:45.014161+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
 
 
 --
@@ -10552,6 +10555,39 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3705, 375, 'comment', 'owner', 'Conformance confirmed and the three record items fixed in eea274f8: the comment now names #4e23bc as the owner''s locked value (the derivation lives in the commit messages, where the arithmetic and its date are recorded together), the stale hex citation and the mock''s deleted arm are gone. The locked pixels are untouched.', NULL, '2026-10-27 04:13:19.282265+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3703, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3706, 377, 'comment', 'owner', 'Owner verification on glass (2026-10-27, the owner''s Mac mini, Debug Designed-for-iPad build of uat): the window is perfectly sized - phone-compact at the 500x932 pin, exactly the fix''s claim. Two residuals noted and accepted: a hover effect still appears near the window top (cosmetic, the macOS-drawn chrome area), and a console error that notifications are not allowed - expected for an unprovisioned debug Mac build, which carries no notification entitlement; the production line does. The title bar follows the system appearance by design: Designed-for-iPad apps have no titlebar API (AppKit/Catalyst only), ruled not worth a Catalyst port for a bar tint.', NULL, '2026-10-27 04:27:12.342853+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3708, 381, 'activity', 'owner', NULL, 'label_add', '2026-10-27 04:42:16.840037+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 202, "value": "#381"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3709, 376, 'comment', 'owner', 'Closed on the owner''s order (2026-10-27): the row is accepted as landed, and every tweak the owner had in mind is specced on its successor T-381 in the Backlog, ready for a fresh session to plan and grill.', NULL, '2026-10-27 04:47:38.242262+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3733, 381, 'activity', 'owner', NULL, 'type', '2026-10-27 05:02:53.253311+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3734, 381, 'activity', 'owner', NULL, 'estimate', '2026-10-27 05:02:53.253311+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3735, 381, 'activity', 'owner', NULL, 'label_add', '2026-10-27 05:02:53.264388+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3736, 381, 'activity', 'owner', NULL, 'label_add', '2026-10-27 05:02:53.264388+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3710, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 04:47:38.279508+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3711, 381, 'comment', 'owner', 'Owner''s session-close additions (2026-10-27): the update-found path is confirmed as specced - the sheet closes and the update modal presents on iOS, the store in-app flow on Android - and the ticket carries the repo''s full gate: 100 percent unit coverage of every changed line, red before green. The planner''s first open question is how the update-found path is proven on glass without a store version ahead of the build (T-376 never solved that either - only the suites pin it); plan it and grill it heavily, per the owner''s order.', NULL, '2026-10-27 04:49:20.772577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3712, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 05:00:37.960231+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3713, 327, 'comment', 'owner', 'Integrity fix: cleared the stale Lane and Waiting on lines - the ticket sits in Backlog with no relation behind them, so neither field may read set (the dim-shade work landed under T-374/T-375).', NULL, '2026-10-27 05:00:45.21223+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3716, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:00.777257+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 382, "value": "T-382"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3719, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:00.782082+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 383, "value": "T-383"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3722, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:00.788529+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 384, "value": "T-384"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3723, 385, 'activity', 'owner', NULL, 'created', '2026-10-27 05:02:45.962996+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3724, 385, 'activity', 'owner', NULL, 'parent', '2026-10-27 05:02:45.964279+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 381, "value": "T-381"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3725, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:45.964279+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 385, "value": "T-385"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3726, 386, 'activity', 'owner', NULL, 'created', '2026-10-27 05:02:45.987168+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3727, 386, 'activity', 'owner', NULL, 'parent', '2026-10-27 05:02:45.989163+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 381, "value": "T-381"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3728, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:45.989163+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 386, "value": "T-386"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3729, 387, 'activity', 'owner', NULL, 'created', '2026-10-27 05:02:46.009636+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3730, 387, 'activity', 'owner', NULL, 'parent', '2026-10-27 05:02:46.011073+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 381, "value": "T-381"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3731, 381, 'activity', 'owner', NULL, 'subtask_add', '2026-10-27 05:02:46.011073+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 387, "value": "T-387"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3732, 381, 'activity', 'owner', NULL, 'field', '2026-10-27 05:02:53.247309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "381"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3737, 381, 'comment', 'owner', 'Plan written, grilled and gated: the T-381 doc (3 steps, 7 points) - the row''s once-per-launch budget lands as session-scoped store state, the glyphs go download and refresh, and the glass proof covers every criterion the suites cannot.', NULL, '2026-10-27 05:04:02.157093+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3738, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 05:04:02.172586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3739, 381, 'activity', 'owner', NULL, 'field', '2026-10-27 05:04:14.01733+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3740, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 05:04:14.022923+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3741, 386, 'activity', 'owner', NULL, 'status', '2026-10-27 05:21:45.026654+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3742, 385, 'activity', 'owner', NULL, 'status', '2026-10-27 05:21:45.029056+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3743, 381, 'comment', 'owner', 'On-glass transcript (step 3, production 2.11.9 built for both platforms in parallel from f6d47451): the Other card reads Language, Help, What''s new, Check for updates on both the iPhone XS and the 3T, in the live trees and in the pixels. The resting row carries the download arrow in the purple circle and the two-arrow refresh ring where every other row carries its chevron. The press runs the check once: the 3T''s live tree caught the row mid-check (Checking for updates with its three dots, ring at the chevron''s slot) and then settled on You''re up to date with the circle green, the tick inside and the ring gone - the same settled frame on the XS, in English and in Arabic. A second press changed nothing on either phone, and the settled answer held across closing and reopening the sheet and across backgrounding and returning on the 3T. Arabic mirrors on both: the badge and ring swap sides with the direction, the chevrons point left, and the Arabic settle reads its own string. Both phones'' verdict was the store answering current (the builds sit far ahead of the store''s 1.5.1), so the update-found path stayed suite-pinned as planned; the spin''s clockwise direction is likewise proven by the suite and the code (a linear 0-to-360 positive rotation, armed only while checking) because the check window is shorter than any capture this rig can fire - the glass proves the ring renders during the check and disappears at the settle. The phones ended in English, the runner apps are uninstalled, and the 3T''s production slot carries 2.11.9 beside the untouched dev build.', NULL, '2026-10-27 06:09:39.122944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3744, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 06:13:12.830386+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3745, 387, 'activity', 'owner', NULL, 'status', '2026-10-27 06:13:12.830582+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3746, 381, 'activity', 'owner', NULL, 'field', '2026-10-27 06:13:12.8682+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass sign-off of the reworked row (transcript on the ticket; both phones carry production 2.11.9)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3747, 381, 'comment', 'owner', 'Merged to uat as 2.11.11 and pushed. Everything the suites and the glass can prove is done; the row waits on the owner''s eye on either phone. Ticket 327 stays untouched per the owner''s order until the green light.', NULL, '2026-10-27 06:13:21.023156+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -10649,6 +10685,7 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (36
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (327, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (377, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (376, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (381, 2, 1);
 
 
 --
@@ -10855,6 +10892,8 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (629, 368, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (643, 377, 1, NULL, 377, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (644, 376, 1, NULL, 376, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (646, 381, 1, NULL, 381, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (647, 381, 3, 'the owner''s on-glass sign-off of the reworked row (transcript on the ticket; both phones carry production 2.11.9)', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -11286,6 +11325,8 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 201);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (377, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (381, 202);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (381, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (381, 3);
 
 
 --
@@ -12023,7 +12064,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (855, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 00:33:25.408518+00', '2026-10-27 02:23:35.177063+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (841, 375, 3, 'In progress', 'started', '2026-10-26 12:28:10.271566+00', '2026-10-27 02:53:12.271649+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (858, 376, 4, 'Done', 'completed', '2026-10-27 02:23:35.177063+00', '2026-10-27 03:59:16.845305+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (860, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 03:59:16.845305+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (860, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 03:59:16.845305+00', '2026-10-27 04:47:38.272041+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (862, 376, 4, 'Done', 'completed', '2026-10-27 04:47:38.272041+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (870, 381, 2, 'Ready', 'unstarted', '2026-10-27 05:04:02.169678+00', '2026-10-27 05:04:14.020547+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (867, 385, 1, 'Backlog', 'backlog', '2026-10-27 05:02:45.958+00', '2026-10-27 05:21:45.025525+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (873, 385, 4, 'Done', 'completed', '2026-10-27 05:21:45.025525+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (869, 387, 1, 'Backlog', 'backlog', '2026-10-27 05:02:46.006+00', '2026-10-27 06:13:12.823738+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (871, 381, 3, 'In progress', 'started', '2026-10-27 05:04:14.020547+00', '2026-10-27 06:13:12.824918+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (875, 387, 4, 'Done', 'completed', '2026-10-27 06:13:12.823738+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12045,7 +12093,11 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (844, 377, 6, 'Planning', 'unstarted', '2026-10-26 23:53:30.8055+00', '2026-10-27 01:08:10.560215+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (857, 377, 4, 'Done', 'completed', '2026-10-27 02:18:09.176701+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (859, 375, 4, 'Done', 'completed', '2026-10-27 02:53:12.271649+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (861, 381, 1, 'Backlog', 'backlog', '2026-10-27 04:41:57.167+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (861, 381, 1, 'Backlog', 'backlog', '2026-10-27 04:41:57.167+00', '2026-10-27 05:00:37.95506+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (863, 381, 6, 'Planning', 'unstarted', '2026-10-27 05:00:37.95506+00', '2026-10-27 05:04:02.169678+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (868, 386, 1, 'Backlog', 'backlog', '2026-10-27 05:02:45.983+00', '2026-10-27 05:21:45.023105+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (872, 386, 4, 'Done', 'completed', '2026-10-27 05:21:45.023105+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (874, 381, 9, 'Awaiting Owner', 'started', '2026-10-27 06:13:12.824918+00', NULL);
 
 
 --
@@ -12717,7 +12769,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 382, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 388, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -16240,6 +16292,88 @@ Five notes, none blocking: the Waiting on value now names itself in Step 3; the 
 - Step 1: `yarn jest components/modals/__tests__/Help.test.tsx` exits red on HEAD (the rules are row children today).
 - Step 2: the same suite exits green; `yarn validate` exits 0; the mutation pass kills every guard mutant.
 - Step 3: `aapt2 dump badging <apk> | grep "^package"` prints the fleettest id with versionCode 1000000; `adb -s <serial> shell dumpsys package <pkg> | grep ''^    User ''` shows User 0 alone; the owner''s read on the new build shows one divider between every adjacent pair.', NULL, NULL, '{}', false, false, false, NULL, NULL, 31744, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-21 06:46:00.940174+00', '2026-10-21 06:53:51.60451+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (43, 1, NULL, 'T-381', '# T-381 - The Check for updates row: one check per launch, download and refresh glyphs, and the green up-to-date tick
+
+## Goal
+
+Today the row shows a check glyph, has no right-side glyph, runs a check on every press, and answers only with a label swap. When this is done the Other card reads Language, Help, What''s New, Check for updates; a press starts the one manual check the process allows, the row reads download-then-refresh while it runs (clockwise spin, checking label), and the up-to-date verdict settles it on a green tick with the refresh glyph gone. The newer-version verdict keeps T-376''s landed behavior untouched: the sheet closes and the modal presents on iOS, the store flow owns Android.
+
+## Decisions taken
+
+- 2026-10-27 - The row''s visual state and the once-per-launch budget live as two plain (unpersisted) Jotai atoms in stores/ui.ts, not component state and not MMKV. Why: the sheet''s content unmounts on dismiss, so component state resets on reopen while the budget must survive it; a plain atom dies only with the process, which is exactly the owner''s "when they close the app, that''s when it resets back to zero".
+- 2026-10-27 - The download glyph is the arrow-into-tray shape (download-simple), not a bare vertical arrow. Why: the owner named "a download arrow"; the tray is what makes a vertical arrow read as download rather than motion-down. A one-line SVG swap if the owner wants the bare arrow.
+- 2026-10-27 - The settled green is a local literal pair in Settings.tsx (fill #16a34a, border #22c55e), not a new COLORS role. Why: the palette carries no green token, this is one row''s settled state, and the file already carries local one-off constants (SHEET_ICON_COLOR precedent).
+- 2026-10-27 - The refresh glyph renders at SIZE.icon.sm (14) where other rows carry the chevron. Why: the chevron''s fontSize 20 draws a roughly 12px glyph; 14 matches the arrows'' visual weight at that position.
+- 2026-10-27 - The spent budget is consumed at press, before the check resolves, and a spent press returns before the haptic. Why: the owner''s words are "they can click that button one time only" - a hung check still spends it, and a dead press gives no feedback.
+- 2026-10-27 - The update-found verdict leaves the row at its resting look with the budget spent. Why: the modal on iOS and Play''s overlay on Android own the "update available" message; the row re-showing it would duplicate, and the row can no longer check.
+- 2026-10-27 - The update-found path stays suite-pinned exactly as T-376 left it (the owner''s open question in the ticket). Why: proving it on glass needs a store version ahead of the build, which means publishing - the owner''s act alone, never this ticket''s. The glass proves every other criterion; the verdict path''s code is the launch check''s own, unchanged here.
+- 2026-10-27 - The grill and the audit run in this session by the same agent, findings recorded here and on the ticket. Why: the owner''s order for this run is one agent, no lane or reviewer workers.
+- 2026-10-27 - The device proof builds a fresh production (non-mock) build for both platforms through the standard scripts and replaces the dev builds on the iPhone XS and the 3T. Why: the store lookup must answer honestly for the up-to-date verdict, the standing order builds both platforms in parallel, and the owner gave free hand on installs.
+- 2026-10-27 - The spin is Reanimated withRepeat(withTiming(360, linear 1000ms)) on the UI thread, cancelled on state exit and unmount, the RamadanDecorations cleanup precedent. Why: the stack invariant is Reanimated, and a JS-thread spinner would stutter exactly when the network settles.
+
+## Files
+
+- components/sheets/screens/Settings.tsx - the row''s three states, the press guard, the spin, the Other card''s order swap
+- stores/ui.ts - the spent-budget atom and the row-state atom with accessors
+- shared/types.ts - Icon.DOWNLOAD and Icon.REFRESH
+- assets/icons/svg/download.svg, assets/icons/svg/refresh.svg, assets/icons/svg/index.ts - the two glyphs
+- components/ui/Icon.tsx - the animated path keeps the color prop (first animated caller needs it)
+- shared/i18n/en.ts, ar.ts, so.ts, hi.ts, ms.ts, th.ts - settings.checkingUpdates
+- shared/i18n/catalog-lock.json - the re-hash
+- components/sheets/screens/__tests__/Settings.test.tsx - the row''s suite: order, guard, three states
+- components/ui/__tests__/Icon.test.tsx - the animated color path
+- stores/__tests__/ui.test.ts - the two atoms'' accessors, following the suite''s shape
+- app.json, package.json, android/app/build.gradle - the version bump
+
+## Design
+
+The row reads three session-scoped visual states - idle (download glyph, static refresh glyph, resting label), checking (download glyph, spinning refresh glyph, checking label), upToDate (green circle with the tick glyph, no refresh glyph, up-to-date label) - plus one orthogonal fact, the spent budget, which locks the press handler whatever the visual state. The launch check''s 24-hour stamp logic in device/updates.ts is untouched; the budget gates only this row''s press.
+
+The press handler: read spent and return; haptic; spend; set checking; await checkForUpdates({ manual: true }); on modal hide the sheet and present the update modal after the 150ms the What''s New and Help rows trust, and leave the row resting; on upToDate set the settled state; otherwise return the row to its resting look. checkForUpdates never rejects (its whole body sits in try/catch with silent verdicts), so no rejection handler exists to go dead.
+
+The spin lives in an effect keyed on the checking state: reset the shared value to 0, launch the repeat, cancel on cleanup. The refresh glyph mounts through IconView''s animated path with the spin style; the idle row renders the same glyph static. IconView''s animated branch learns to pass the color prop alongside the animated style, because the animated component drops it today.
+
+Alternatives rejected: component state resets on sheet reopen (violates the guard); an MMKV-backed atom persists across relaunch (violates the reset); the guard inside device/updates.ts confuses the 24-hour store policy with this row''s presentation policy; a bare down-arrow glyph (decision above); a chevron-plus-refresh pair doubles the right side''s glyphs against the spec.
+
+Mirroring: the row''s layout mirrors through flex and marginStart/paddingEnd as every row already does; the circular refresh glyph carries no reading direction so it takes no directional variant; the vertical download arrow mirrors to itself; the tick is the existing CheckIcon. The checking label ships its own string in all six catalogs.
+
+## Steps
+
+1. Step 1: the six catalogs'' checking string and the re-hashed lock (2 points, code). settings.checkingUpdates in en/ar/so/hi/ms/th - en ''Checking for updates...'', ar ''جارٍ التحقق من التحديثات...'', so ''Waxaa la hubinayaa cusboonaysiinta...'', hi ''अपडेट की जाँच हो रही है...'', ms ''Menyemak kemas kini...'', th ''กำลังตรวจสอบการอัปเดต...'' - then yarn i18n:lock.
+2. Step 2: the row rework - guard, states, glyphs, spin, order (2 points, code). Red first: the row suite rewritten for the order (both with and without a What''s New row), the guard (second press, sheet reopen, remount), the three states'' glyphs and labels; then the store atoms, the two SVGs, the enum entries, the IconView color fix, and the Settings row.
+3. Step 3: the on-glass proof on the iPhone XS and the 3T (3 points, device). Version bump, both platforms built in parallel through the standard production script, aapt2 badging before the 3T install, then the transcript: order, press, clockwise spin, checking label, green tick, second press dead, sheet reopen held, background/foreground held, Arabic mirror on the XS, and the 3T''s silent settle.
+
+## Risks
+
+- currentColor may not resolve through the animated SVG wrapper on device (jsdom cannot prove color). The device step reads the refresh glyph''s ink; the fallback is carrying color inside the animatedStyle.
+- If the sheet keeps its content mounted after dismiss, the store-held state is still correct; only the unmount assumption behind the decision weakens, harmlessly.
+- The checking label runs longer than the resting label in Arabic; the label''s flex absorbs the width and the row does not wrap.
+- A dev-menu reload resets the Jotai store; on glass the guard is proven without reloading mid-read.
+- The 3T''s fleettest install makes Play''s check answer nothing, so its honest settle is the silent one - resting label with the budget spent - and the transcript must read that as the pass, not a failure.
+
+## Proof
+
+- yarn validate green: lint, typecheck, the whole suite including catalogLock and catalogGates.
+- The row''s suite pins: the Other card''s order both ways; one check per press lifecycle with the second press, the reopen, and the remount all dead; each visual state''s glyphs and labels; the modal path unchanged; the silent path resting.
+- Mutation pass on the guard: invert the spent read and watch the guard tests fail, then restore.
+- The device transcript in the ticket names each acceptance criterion as read on glass.
+
+
+## Grill (self-pass, 2026-10-27, per the owner''s one-agent order this run)
+
+- "A stalled network leaves the row spinning forever?" No: fetchWithTimeout aborts at UPDATE_FETCH_TIMEOUT_MS (10s), startNativeUpdate catches its own errors, and checkForUpdates resolves silently - the spin is bounded by the fetch timeout.
+- "Days pass without a relaunch - the row stays spent forever?" Yes, per the owner''s quote: one press per process, the relaunch alone resets.
+- "The green tick needs a new glyph?" No: the existing CheckIcon stays; only the circle''s fill and border go green.
+- "The verdict lands while the app is backgrounded?" The promise resolves whenever it resolves; the atoms land in the store and the sheet shows them on next open. No path writes UI from a dead context.
+- "Clockwise?" Positive rotation degrees turn clockwise in React Native''s y-down transforms, on both platforms, both directions of layout.
+- "Does anything else read the new atoms?" Nothing: they are new, with the row as their only reader; the launch check and its 24-hour stamp are untouched.
+- "The order swap breaks ''Help always stays reachable''?" It strengthens it: Help now precedes the conditional What''s New row.
+- "The old test that relaxed an up-to-date answer back to rest on a later check?" Deleted with the behavior: the guard makes a later check impossible, and the guard tests replace it. Not a silent removal - the acceptance list names the change.
+- "Icon gains two members - any exhaustive switch breaks?" The only Record over Icon is the ICONS map itself (and a subset record in alerts.ts), and TypeScript forces the two new entries there. No switch exists.
+- "How does the suite pin a UI-thread spin under jest''s mock?" The published Reanimated mock runs no animation, so the suite spies withRepeat (armed) and cancelAnimation (stopped), the RamadanDecorations precedent, and the device step reads the rotation on glass.
+- "The dots: an ellipsis character or three dots?" Three ASCII dots, as the owner''s spec writes them, in every locale.
+- "A spent press still haptics?" No: the handler returns before the haptic; a dead button gives no feedback.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 43008, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:00:45.205528+00', '2026-10-27 05:03:45.976952+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (33, 1, NULL, 'T-294', '# T-294 — Text never renders through opacity: colours carry the dim
 
 ## Goal
@@ -16735,6 +16869,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (40, 346, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-25 08:53:23.789962+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (41, 368, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-25 14:17:10.458995+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (42, 376, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-26 23:59:31.064507+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (43, 381, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:01:45.567742+00');
 
 
 --
@@ -27498,6 +27633,89 @@ Alternatives rejected: re-showing the update modal for the up-to-date case (the 
 - `git diff origin/uat -- shared/i18n/` shows both keys in all six catalogs and the lock file.
 - `yarn validate` green, coverage over every touched line.
 ', NULL, NULL, '{}', false, false, false, NULL, 41984, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-26 23:59:31.009243+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (120, 43, 1, NULL, 'T-381', 'placeholder', NULL, NULL, '{}', false, false, false, NULL, 43008, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:00:45.205528+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (121, 43, 3, NULL, 'T-381', '# T-381 - The Check for updates row: one check per launch, download and refresh glyphs, and the green up-to-date tick
+
+## Goal
+
+Today the row shows a check glyph, has no right-side glyph, runs a check on every press, and answers only with a label swap. When this is done the Other card reads Language, Help, What''s New, Check for updates; a press starts the one manual check the process allows, the row reads download-then-refresh while it runs (clockwise spin, checking label), and the up-to-date verdict settles it on a green tick with the refresh glyph gone. The newer-version verdict keeps T-376''s landed behavior untouched: the sheet closes and the modal presents on iOS, the store flow owns Android.
+
+## Decisions taken
+
+- 2026-10-27 - The row''s visual state and the once-per-launch budget live as two plain (unpersisted) Jotai atoms in stores/ui.ts, not component state and not MMKV. Why: the sheet''s content unmounts on dismiss, so component state resets on reopen while the budget must survive it; a plain atom dies only with the process, which is exactly the owner''s "when they close the app, that''s when it resets back to zero".
+- 2026-10-27 - The download glyph is the arrow-into-tray shape (download-simple), not a bare vertical arrow. Why: the owner named "a download arrow"; the tray is what makes a vertical arrow read as download rather than motion-down. A one-line SVG swap if the owner wants the bare arrow.
+- 2026-10-27 - The settled green is a local literal pair in Settings.tsx (fill #16a34a, border #22c55e), not a new COLORS role. Why: the palette carries no green token, this is one row''s settled state, and the file already carries local one-off constants (SHEET_ICON_COLOR precedent).
+- 2026-10-27 - The refresh glyph renders at SIZE.icon.sm (14) where other rows carry the chevron. Why: the chevron''s fontSize 20 draws a roughly 12px glyph; 14 matches the arrows'' visual weight at that position.
+- 2026-10-27 - The spent budget is consumed at press, before the check resolves, and a spent press returns before the haptic. Why: the owner''s words are "they can click that button one time only" - a hung check still spends it, and a dead press gives no feedback.
+- 2026-10-27 - The update-found verdict leaves the row at its resting look with the budget spent. Why: the modal on iOS and Play''s overlay on Android own the "update available" message; the row re-showing it would duplicate, and the row can no longer check.
+- 2026-10-27 - The update-found path stays suite-pinned exactly as T-376 left it (the owner''s open question in the ticket). Why: proving it on glass needs a store version ahead of the build, which means publishing - the owner''s act alone, never this ticket''s. The glass proves every other criterion; the verdict path''s code is the launch check''s own, unchanged here.
+- 2026-10-27 - The grill and the audit run in this session by the same agent, findings recorded here and on the ticket. Why: the owner''s order for this run is one agent, no lane or reviewer workers.
+- 2026-10-27 - The device proof builds a fresh production (non-mock) build for both platforms through the standard scripts and replaces the dev builds on the iPhone XS and the 3T. Why: the store lookup must answer honestly for the up-to-date verdict, the standing order builds both platforms in parallel, and the owner gave free hand on installs.
+- 2026-10-27 - The spin is Reanimated withRepeat(withTiming(360, linear 1000ms)) on the UI thread, cancelled on state exit and unmount, the RamadanDecorations cleanup precedent. Why: the stack invariant is Reanimated, and a JS-thread spinner would stutter exactly when the network settles.
+
+## Files
+
+- components/sheets/screens/Settings.tsx - the row''s three states, the press guard, the spin, the Other card''s order swap
+- stores/ui.ts - the spent-budget atom and the row-state atom with accessors
+- shared/types.ts - Icon.DOWNLOAD and Icon.REFRESH
+- assets/icons/svg/download.svg, assets/icons/svg/refresh.svg, assets/icons/svg/index.ts - the two glyphs
+- components/ui/Icon.tsx - the animated path keeps the color prop (first animated caller needs it)
+- shared/i18n/en.ts, ar.ts, so.ts, hi.ts, ms.ts, th.ts - settings.checkingUpdates
+- shared/i18n/catalog-lock.json - the re-hash
+- components/sheets/screens/__tests__/Settings.test.tsx - the row''s suite: order, guard, three states
+- components/ui/__tests__/Icon.test.tsx - the animated color path
+- stores/__tests__/ui.test.ts - the two atoms'' accessors, following the suite''s shape
+- app.json, package.json, android/app/build.gradle - the version bump
+
+## Design
+
+The row reads three session-scoped visual states - idle (download glyph, static refresh glyph, resting label), checking (download glyph, spinning refresh glyph, checking label), upToDate (green circle with the tick glyph, no refresh glyph, up-to-date label) - plus one orthogonal fact, the spent budget, which locks the press handler whatever the visual state. The launch check''s 24-hour stamp logic in device/updates.ts is untouched; the budget gates only this row''s press.
+
+The press handler: read spent and return; haptic; spend; set checking; await checkForUpdates({ manual: true }); on modal hide the sheet and present the update modal after the 150ms the What''s New and Help rows trust, and leave the row resting; on upToDate set the settled state; otherwise return the row to its resting look. checkForUpdates never rejects (its whole body sits in try/catch with silent verdicts), so no rejection handler exists to go dead.
+
+The spin lives in an effect keyed on the checking state: reset the shared value to 0, launch the repeat, cancel on cleanup. The refresh glyph mounts through IconView''s animated path with the spin style; the idle row renders the same glyph static. IconView''s animated branch learns to pass the color prop alongside the animated style, because the animated component drops it today.
+
+Alternatives rejected: component state resets on sheet reopen (violates the guard); an MMKV-backed atom persists across relaunch (violates the reset); the guard inside device/updates.ts confuses the 24-hour store policy with this row''s presentation policy; a bare down-arrow glyph (decision above); a chevron-plus-refresh pair doubles the right side''s glyphs against the spec.
+
+Mirroring: the row''s layout mirrors through flex and marginStart/paddingEnd as every row already does; the circular refresh glyph carries no reading direction so it takes no directional variant; the vertical download arrow mirrors to itself; the tick is the existing CheckIcon. The checking label ships its own string in all six catalogs.
+
+## Steps
+
+1. Step 1: the six catalogs'' checking string and the re-hashed lock (2 points, code). settings.checkingUpdates in en/ar/so/hi/ms/th - en ''Checking for updates...'', ar ''جارٍ التحقق من التحديثات...'', so ''Waxaa la hubinayaa cusboonaysiinta...'', hi ''अपडेट की जाँच हो रही है...'', ms ''Menyemak kemas kini...'', th ''กำลังตรวจสอบการอัปเดต...'' - then yarn i18n:lock.
+2. Step 2: the row rework - guard, states, glyphs, spin, order (2 points, code). Red first: the row suite rewritten for the order (both with and without a What''s New row), the guard (second press, sheet reopen, remount), the three states'' glyphs and labels; then the store atoms, the two SVGs, the enum entries, the IconView color fix, and the Settings row.
+3. Step 3: the on-glass proof on the iPhone XS and the 3T (3 points, device). Version bump, both platforms built in parallel through the standard production script, aapt2 badging before the 3T install, then the transcript: order, press, clockwise spin, checking label, green tick, second press dead, sheet reopen held, background/foreground held, Arabic mirror on the XS, and the 3T''s silent settle.
+
+## Risks
+
+- currentColor may not resolve through the animated SVG wrapper on device (jsdom cannot prove color). The device step reads the refresh glyph''s ink; the fallback is carrying color inside the animatedStyle.
+- If the sheet keeps its content mounted after dismiss, the store-held state is still correct; only the unmount assumption behind the decision weakens, harmlessly.
+- The checking label runs longer than the resting label in Arabic; the label''s flex absorbs the width and the row does not wrap.
+- A dev-menu reload resets the Jotai store; on glass the guard is proven without reloading mid-read.
+- The 3T''s fleettest install makes Play''s check answer nothing, so its honest settle is the silent one - resting label with the budget spent - and the transcript must read that as the pass, not a failure.
+
+## Proof
+
+- yarn validate green: lint, typecheck, the whole suite including catalogLock and catalogGates.
+- The row''s suite pins: the Other card''s order both ways; one check per press lifecycle with the second press, the reopen, and the remount all dead; each visual state''s glyphs and labels; the modal path unchanged; the silent path resting.
+- Mutation pass on the guard: invert the spent read and watch the guard tests fail, then restore.
+- The device transcript in the ticket names each acceptance criterion as read on glass.
+
+
+## Grill (self-pass, 2026-10-27, per the owner''s one-agent order this run)
+
+- "A stalled network leaves the row spinning forever?" No: fetchWithTimeout aborts at UPDATE_FETCH_TIMEOUT_MS (10s), startNativeUpdate catches its own errors, and checkForUpdates resolves silently - the spin is bounded by the fetch timeout.
+- "Days pass without a relaunch - the row stays spent forever?" Yes, per the owner''s quote: one press per process, the relaunch alone resets.
+- "The green tick needs a new glyph?" No: the existing CheckIcon stays; only the circle''s fill and border go green.
+- "The verdict lands while the app is backgrounded?" The promise resolves whenever it resolves; the atoms land in the store and the sheet shows them on next open. No path writes UI from a dead context.
+- "Clockwise?" Positive rotation degrees turn clockwise in React Native''s y-down transforms, on both platforms, both directions of layout.
+- "Does anything else read the new atoms?" Nothing: they are new, with the row as their only reader; the launch check and its 24-hour stamp are untouched.
+- "The order swap breaks ''Help always stays reachable''?" It strengthens it: Help now precedes the conditional What''s New row.
+- "The old test that relaxed an up-to-date answer back to rest on a later check?" Deleted with the behavior: the guard makes a later check impossible, and the guard tests replace it. Not a silent removal - the acceptance list names the change.
+- "Icon gains two members - any exhaustive switch breaks?" The only Record over Icon is the ICONS map itself (and a subset record in alerts.ts), and TypeScript forces the two new entries there. No switch exists.
+- "How does the suite pin a UI-thread spin under jest''s mock?" The published Reanimated mock runs no animation, so the suite spies withRepeat (armed) and cancelAnimation (stopped), the RamadanDecorations precedent, and the device step reads the rotation on glass.
+- "The dots: an ellipsis character or three dots?" Three ASCII dots, as the owner''s spec writes them, in every locale.
+- "A spent press still haptics?" No: the handler returns before the haptic; a dead button gives no feedback.
+', NULL, NULL, '{}', false, false, false, NULL, 43008, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 05:03:45.976952+00');
 
 
 --
@@ -27692,6 +27910,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:64', 1, 30);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:18', 1, 130);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:85', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:87', 1, 28);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 177);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:9', 1, 39);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:312', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:94', 1, 46);
@@ -27823,17 +28042,19 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:372', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:370', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:373', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:347', 1, 55);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 173);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:378', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:368', 1, 74);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:348', 1, 62);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 48);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4234);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 109);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4267);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 40);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
 
 
 --
@@ -28095,7 +28316,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3708, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3747, true);
 
 
 --
@@ -28144,14 +28365,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 645, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 647, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 381, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 387, true);
 
 
 --
@@ -28172,7 +28393,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 861, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 875, true);
 
 
 --
@@ -28263,14 +28484,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 42, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 43, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 119, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 121, true);
 
 
 --
@@ -32655,5 +32876,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict DYMyAvkPi64RgzAltXAkFj2WnbN4V7dFMt6qaDibz5Lc5t7L5odiF2625Xf99lN
+\unrestrict MozACDEE15gw0gMq8vY6k9GV0bRt001WgRlyuU9InzUMmbdeOSeFTmtMo4PXOa1
 
