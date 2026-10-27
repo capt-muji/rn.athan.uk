@@ -22,7 +22,7 @@ const APPDELEGATE_BLOCK = `  private var ${PIN_FLAG} = false
     super.applicationDidBecomeActive(application)
     guard !${PIN_FLAG}, ProcessInfo.processInfo.isiOSAppOnMac, let scene = window?.windowScene else { return }
     // 500 is SIZE.contentMaxWidth, the tablet cap the centered column already honors
-    let phone = CGSize(width: 500, height: 932)
+    let phone = CGSize(width: 500, height: 746)
     scene.sizeRestrictions?.minimumSize = phone
     scene.sizeRestrictions?.maximumSize = phone
     scene.sizeRestrictions?.allowsFullScreen = false
