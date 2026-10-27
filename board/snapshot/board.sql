@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 0Gqm0aAPn7rgKGs8HyOqaA32ttwOK8uqXL48qynZIM7rkxNvK9Oeop6qWjVsTsQ
+\restrict AC5rgkGJK0juROt8B4vOwq9ionVNOPLgiRGCo9d0ZLyLDrmt5wf9gh8zy52h6ke
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6132,17 +6132,7 @@ Acceptance:
 - [ ] the survey''s source list (the commits or ranges each section came from) is recorded on this ticket
 - [ ] yarn validate green', NULL, NULL, NULL, 4500, '2026-10-25 05:56:30.556803+00', '2026-10-25 17:59:25.158591+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (371, 1, 371, NULL, 4, 'Step 3: The phones measured, nothing displaced - the 3T and XS lines and install refusals transcribed', '', NULL, NULL, NULL, 18500, '2026-10-25 14:17:44.161772+00', '2026-10-25 14:24:39.045513+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
-
-Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
-
-Acceptance:
-- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
-- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
-- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
-- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (375, 1, 375, NULL, 3, 'A visual polish pass: the ago pill grays instead of fading behind the opening overlay, and the Somali alert-sheet footer on iOS shows paired double-angle marks', 'Goal: two visual defects read by the owner on the 2.5.6 production build (2026-10-25).
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (375, 1, 375, NULL, 4, 'A visual polish pass: the ago pill grays instead of fading behind the opening overlay, and the Somali alert-sheet footer on iOS shows paired double-angle marks', 'Goal: two visual defects read by the owner on the 2.5.6 production build (2026-10-25).
 
 First: on BOTH platforms, as the prayer overlay opens, the prayer-ago pill below the list - its rounded rectangular background - turns gray instead of fading out with every other component; the black of the overlay fades in behind it while the pill''s own background grays. It was never like this before the shade work.
 
@@ -6154,7 +6144,17 @@ Acceptance:
 - [ ] the ago pill fades with the overlay on both platforms, no gray shift, verified by the owner on a production build
 - [ ] the Somali footer on iOS shows no double-angle marks, matching its Android render
 - [ ] no other locale''s footer gains or loses marks
-- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-26 12:28:10.241013+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-27 02:53:12.254632+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
+
+Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
+
+Acceptance:
+- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
+- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
+- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
+- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (368, 1, 368, 11, 4, 'The store builds awaiting review prove themselves on glass: the EAS production artifacts download, install and smoke on the phones before the public release', 'Goal: the owner approves the public release having verified the exact binaries users will get: the 2.4.39 production store builds awaiting Google''s and Apple''s review, downloaded from EAS and never compiled locally, identities recorded, and what each phone install displaces measured and tabled before any act.
 
 Where: the EAS builds through the expo MCP (read-only: list and download; never build, never push, never submit, the owner''s order of 2026-10-25); the attached OnePlus 3T and iPhone XS; the athan-smoke-28 emulator for the functional smoke of the exact Android binary; the app''s first sync, prayer list, countdown, notification arming and the qibla surface.
@@ -6190,7 +6190,7 @@ Acceptance:
 - [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
 - [ ] the iPhone XS is measurably unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-26 07:23:36.201493+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 9, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
 
@@ -6206,7 +6206,7 @@ Acceptance:
 - [ ] the automatic launch check and its 24-hour throttle behave exactly as before
 - [ ] an available update presents the SAME modal or native flow the automatic check uses
 - [ ] an up-to-date install answers inline, in the user''s language
-- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 02:23:35.161229+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 03:59:16.808372+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 
 
 --
@@ -10504,10 +10504,35 @@ Everything else checks: 2.8.1 consistent across app.json, package.json and the W
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3693, 377, 'comment', 'owner', 'Both findings are fixed in 60823aca (merged as d7885e4e): the ~ipad array now declares all four orientations - carried by a dangerous mod after every base pass, because the sentinel-keyed prebuild proved this pipeline discards the plugin''s withInfoPlist edits, so the original pin never reached a build either - and the comment''s iPad claim is trimmed to the Mac freeze the fix observed. The ~iphone key rides ios.infoPlist, the channel measured to survive.', NULL, '2026-10-27 02:18:09.148385+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3692, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3694, 377, 'comment', 'owner', 'Merged to uat in d7885e4e (2.8.3) and closed on the owner''s order. Final shape after the deep dive: no deprecated full-screen key anywhere (the hover band''s cause), phones keep the iOS 27 discrete scene resize, iPads keep the runtime portrait lock through the AppDelegate gate, the plist declares all four iPad orientations so a keyless build passes validation, and the Mac window is pinned phone-compact at 500x932 - the app''s own content cap - with no resizing and no full screen (TN3192''s sizeRestrictions, set on the Mac alone). The owner''s macOS-variant check of the pinned window is the one reading still owed on glass.', NULL, '2026-10-27 02:18:09.150786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3696, 376, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 02:21:44.848159+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3699, 375, 'comment', 'owner', 'Merged to uat in f7e85d90 (2.11.3) and closed: the owner read the Android settings shadow on both glass panels - the S23''s AMOLED and the 3T''s LCD - closing the ticket''s last open criterion the same session the fix landed. Every other criterion was owner-verified earlier on the production 2.10.5 glass; the three temporary previews were reverted before the audit per comment 3644''s reminder; the audit findings were all fixed pre-merge. The visual-polish loop continues on the dev builds as fresh owner orders.', NULL, '2026-10-27 02:53:12.259329+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3695, 377, 'activity', 'owner', NULL, 'status', '2026-10-27 02:18:09.183607+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3689, 376, 'comment', 'owner', 'Executed and audited; four commits sit on branch t376-check-updates in the lane worktree $HOME/repos/wt-t376 (push is the lead''s). What the owner should verify on glass: the Other card''s new Check for updates row (last after Help, check glyph, no chevron, nothing else moved); a tap on a current install answers inline in the user''s language; a tap when the store has a newer version closes the sheet and shows the same update modal the launch check uses (iOS), and Play''s own flow on Android; the automatic launch check and its 24-hour throttle are untouched. Also worth an eye: the two new strings in each of en/ar/so/hi/ms/th. No What''s New item was added - restamping one is the owner''s editorial call.', NULL, '2026-10-27 00:33:25.474965+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 02:21:44.84+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3697, 376, 'comment', 'owner', 'Merged to uat in 241c12c7 (2.11.2) and closed on the owner''s acceptance, without the glass pass the Waiting-on named: the owner ruled the row accepted as shipped, with the minor tweaks they have in mind deferred to fresh orders after T-375. Everything the plan promised is in the merge: the manual mode, the six catalogs, the haptic, the inline answer, the no-stamp-on-failure audit fix, and the untouched automatic check.', NULL, '2026-10-27 02:23:35.159684+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3698, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 02:23:35.183672+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3700, 375, 'activity', 'owner', NULL, 'status', '2026-10-27 02:53:12.280568+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3701, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 03:59:16.852025+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 4, "value": "Done", "stateType": "completed"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3702, 375, 'comment', 'owner', 'Blind review of the three visual-polish commits. The version triple holds (package.json and app.json move together per commit; build.gradle is untracked prebuild output, already 2.10.11), the What''s New bump silent-ships by construction, and all 205 tests across the four touched suites pass. Findings:
+
+question: components/sheets/screens/QiblaCompass.tsx:150,162 - the new fillOpacity 0.5 re-adds the halving that the ink constants already carry baked in. shared/constants.ts:870 says ink #33416b is "the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity", and Qibla.test.tsx:2327-2329 says the same; the 0.5 on top renders the cardinals at a quarter of the design ink, not the "half ink" the commit names. Both standing comments are now false, and the Qibla suite reads only the fill payload, so the dim has no test behind it. If the owner ruled the quarter-strength look on device, rewrite the two comments and pin the fillOpacity; if the ruling was half of the design ink, the fill should be the unflattened ink at 0.5.
+
+suggestion: components/ui/SettingsButton.tsx:24-28 - the comment says the fill "halves the tint''s strength (25.5% alpha, #4c21bb)", but line 32 bakes #4e23bc, which the final commit itself names as the owner''s locked value rather than the composite (the 25.5% composite over the gradient base works out to #4c21bb, not #4e23bc). Same stale claim in the test comment at components/ui/__tests__/SettingsButton.test.tsx:89-91. Name #4e23bc as the owner''s locked value and drop the composite derivation.
+
+suggestion: mocks/simple.ts:61-62 - the comment above eveningRow still lists three branches ("the owner''s evening reseed, a realistic pre-dawn day, or the spent late evening"), but this change deleted the pre-dawn branch. Delete the stale arm.
+
+nitpick: mocks/__tests__/simple.test.ts:27 - "The window''s two edges: its first minute" no longer holds: 06:00 London was the old window''s first minute, and the steady hour now runs from midnight, so 06:00 is mid-window.
+
+nitpick: shared/__tests__/oneDimInk.test.ts:1-6 - the header claims "no surface can carry its own shade", but prayerAgo.text (in DIM_ROLES) deliberately carries #4c47ae beside the #4a47ae dim on Android; the suite only stays green because jest runs the ios arm. shared/design.ts:19 still says "dim is the ONE dim ink". Refresh both so the next reader does not undo the fork as drift.
+
+nitpick: components/ui/__tests__/SettingsButton.test.tsx:111-120 - the new glyph test mutates Platform.OS without the try/finally its sibling at line 93 uses, so a failed assertion leaks ''android'' into the rest of the file.', NULL, '2026-10-27 04:06:57.524138+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3703, 375, 'comment', 'owner', 'Plan-conformance review of origin/t375-visual-polish (3 commits, 2.10.9 to 2.10.11): the change conforms to all six rulings. Android settings fill baked opaque at #4e23bc with border alpha 0.51 (same RGB as the shared border, alpha only) and Android-only glyph opacity 0.9, iOS untouched; ago pill text #4c47ae on Android and the dim token on iPhone; the dim forks #5254ac / #4a47ae with no other surface moved; the mock seeds the steady hour (Asr +60, Dhuhr -60) with the pre-dawn branch gone and both costs named in its header; the compass arrow rides above the jewel with the four degree numbers and their degree circles at fillOpacity 0.5; no What''s New item ships and every commit bumps all tracked version files together. 236 tests green across the touched and adjacent suites. Three record-level items, none blocking:
+
+question: the ruling record calls #4e23bc the 30%-alpha composite over the local gradient; the arithmetic that reproduces it is 25.5% (half of the prior 51% tint, #6941c6) - 30% over that gradient lands near #5025bd. The locked value itself is implemented exactly; correct whichever record mislabels the provenance so a future re-derivation cannot drift.
+
+nitpick: components/ui/SettingsButton.tsx line 26 - the comment cites #4c21bb, the first commit''s bake, superseded by the locked #4e23bc two commits later; the hex now matches neither the tint nor the fill below it. Update or drop it.
+
+nitpick: mocks/simple.ts line 61 - the inline comment above eveningRow still lists "a realistic pre-dawn day" among today''s row shapes; that branch is deleted and a reader will hunt for a row that no longer exists.', NULL, '2026-10-27 04:07:01.059476+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3704, 375, 'comment', 'owner', 'Every finding is fixed in eea274f8 with zero pixel changes: the compass comment pair now states the owner''s on-glass ruling (the flattened ink plus a further 0.5 fillOpacity is quarter-strength digits) and the halving is pinned at the source in the Qibla suite; the settings comments name #4e23bc as the owner''s locked value; the mock''s stale inline arm, the edge-sample wording, the one-dim headers, and the glyph test''s try/finally all follow. 205 tests green across the four touched suites, full validate green through the commit hooks.', NULL, '2026-10-27 04:13:19.280283+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3702, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3705, 375, 'comment', 'owner', 'Conformance confirmed and the three record items fixed in eea274f8: the comment now names #4e23bc as the owner''s locked value (the derivation lives in the commit messages, where the arithmetic and its date are recorded together), the stale hex citation and the mock''s deleted arm are gone. The locked pixels are untouched.', NULL, '2026-10-27 04:13:19.282265+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3703, '{}', NULL);
 
 
 --
@@ -11968,7 +11993,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (834, 374, 3, 'In progress', 'started', '2026-10-25 19:06:50.637349+00', '2026-10-25 20:56:05.319207+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (836, 374, 3, 'In progress', 'started', '2026-10-26 06:09:47.171573+00', '2026-10-26 06:41:57.136188+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (838, 374, 9, 'Awaiting Owner', 'started', '2026-10-26 06:42:36.549123+00', '2026-10-26 07:23:36.139822+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (841, 375, 3, 'In progress', 'started', '2026-10-26 12:28:10.271566+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (843, 377, 1, 'Backlog', 'backlog', '2026-10-26 23:47:27.492+00', '2026-10-26 23:53:30.8055+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (845, 376, 6, 'Planning', 'unstarted', '2026-10-26 23:53:44.371777+00', '2026-10-26 23:59:36.851388+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (849, 376, 2, 'Ready', 'unstarted', '2026-10-26 23:59:36.851388+00', '2026-10-27 00:00:18.776024+00');
@@ -11977,7 +12001,9 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (850, 376, 3, 'In progress', 'started', '2026-10-27 00:00:18.776024+00', '2026-10-27 00:15:19.935746+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (856, 377, 9, 'Awaiting Owner', 'started', '2026-10-27 01:08:10.560215+00', '2026-10-27 02:18:09.176701+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (855, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 00:33:25.408518+00', '2026-10-27 02:23:35.177063+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (858, 376, 4, 'Done', 'completed', '2026-10-27 02:23:35.177063+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (841, 375, 3, 'In progress', 'started', '2026-10-26 12:28:10.271566+00', '2026-10-27 02:53:12.271649+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (858, 376, 4, 'Done', 'completed', '2026-10-27 02:23:35.177063+00', '2026-10-27 03:59:16.845305+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (860, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 03:59:16.845305+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -11998,6 +12024,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (854, 376, 8, 'Audit', 'started', '2026-10-27 00:15:19.935746+00', '2026-10-27 00:33:25.408518+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (844, 377, 6, 'Planning', 'unstarted', '2026-10-26 23:53:30.8055+00', '2026-10-27 01:08:10.560215+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (857, 377, 4, 'Done', 'completed', '2026-10-27 02:18:09.176701+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (859, 375, 4, 'Done', 'completed', '2026-10-27 02:53:12.271649+00', NULL);
 
 
 --
@@ -27653,7 +27680,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:113', 1, 32)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:244', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:120', 1, 48);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:316', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 22);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:245', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:280', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:279', 1, 7);
@@ -27781,9 +27807,10 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:348', 1, 62)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:377', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4229);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 46);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4231);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 48);
 
 
 --
@@ -28045,7 +28072,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3698, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3705, true);
 
 
 --
@@ -28122,7 +28149,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 858, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 860, true);
 
 
 --
@@ -32605,5 +32632,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 0Gqm0aAPn7rgKGs8HyOqaA32ttwOK8uqXL48qynZIM7rkxNvK9Oeop6qWjVsTsQ
+\unrestrict AC5rgkGJK0juROt8B4vOwq9ionVNOPLgiRGCo9d0ZLyLDrmt5wf9gh8zy52h6ke
 

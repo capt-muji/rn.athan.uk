@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { DESIGN } from './design';
 
 // =============================================================================
@@ -825,8 +827,8 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text */
-    text: DESIGN.dim,
+    /** Prayer ago badge text: the owner's Android pick (2026-10-27), the dim everywhere else */
+    text: (Platform?.OS ?? 'ios') === 'android' ? '#4c47ae' : DESIGN.dim,
     /** The pill's tween pair, at rest and when recent */
     gradient: {
       start: 'rgba(77, 59, 175, 0.15)',
@@ -865,7 +867,7 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face; the owner's 2026-10-27 ruling stacks a further 0.5 fillOpacity on the flattened solid - quarter-strength digits, verified perfect on glass */
       ink: '#33416b',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',

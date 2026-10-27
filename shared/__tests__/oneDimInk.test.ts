@@ -1,15 +1,17 @@
 /**
  * The one-dim sweep: every dimmed-text surface resolves to the single dim
  * token, and the shared-label pair resolves to the label token - so no surface
- * can carry its own shade, and a typo in the hand-frozen design token reddens
- * here instead of shipping (the ticket's own acceptance wording).
+ * can carry its own shade on iPhone, and a typo in the hand-frozen design token
+ * reddens here instead of shipping (the ticket's own acceptance wording). The
+ * dim itself forks per platform (dimFor), and the ago text forks inside it on
+ * Android - both pinned below.
  */
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { COLORS } from '@/shared/constants';
-import { ANDROID_TAIL, DESIGN, IOS_TAIL, rootBgFor, tailFor } from '@/shared/design';
+import { ANDROID_DIM, ANDROID_TAIL, DESIGN, dimFor, IOS_DIM, IOS_TAIL, rootBgFor, tailFor } from '@/shared/design';
 
 /** Every role that paints a dimmed surface of the standard schedule */
 const DIM_ROLES = {
@@ -42,10 +44,26 @@ describe('the one dim ink', () => {
     expect(ownShades(planted, DESIGN.dim)).toEqual([['prayerAgo.text', '#5660a7']]);
   });
 
+  it('dims per platform: the iPhone pick and the locked Android ink', () => {
+    expect(IOS_DIM).toBe('#5254ac');
+    expect(ANDROID_DIM).toBe('#4a47ae');
+    expect(dimFor('ios')).toBe(IOS_DIM);
+    expect(dimFor('android')).toBe(ANDROID_DIM);
+  });
+
   // The pill's wash, pinned so drift reddens - the owner's hand-tuned values
   it('pins the prayer-ago pill wash', () => {
     expect(COLORS.prayerAgo.gradient.start).toBe('rgba(77, 59, 175, 0.15)');
     expect(COLORS.prayerAgo.gradient.end).toBe('rgba(59, 88, 146, 0.25)');
+  });
+
+  // The ago text forks by platform: the dim on iPhone, the owner's Android pick there.
+  // The fork evaluates at module load, so the pin reads the source the way the solids do
+  it('picks the ago text per platform: the dim on iPhone, the owner pick on Android', () => {
+    expect(COLORS.prayerAgo.text).toBe(DESIGN.dim);
+
+    const source = readFileSync(join(__dirname, '../constants.ts'), 'utf8');
+    expect(source).toContain("text: (Platform?.OS ?? 'ios') === 'android' ? '#4c47ae' : DESIGN.dim");
   });
 
   // The native-baked solids and the glyph stroke, pinned at the source: no
@@ -60,11 +78,12 @@ describe('the one dim ink', () => {
   });
 
   it('carries the owner-picked palette, hand-frozen', () => {
+    // jest runs the ios arm; the android arm is pinned through dimFor below
     expect(DESIGN).toEqual({
       bgStart: '#05134a',
       bgEnd: '#36208a',
       bgTail: '#7117c9',
-      dim: '#4a47ae',
+      dim: '#5254ac',
       label: '#4060ae',
       bright: '#f2f5f9',
       pill: '#2439f5',

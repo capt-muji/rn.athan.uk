@@ -9,13 +9,20 @@ export const tailFor = (os: string) => (os === 'android' ? ANDROID_TAIL : IOS_TA
 // The full-screen solids sit between the navy top and the gradient's middle
 export const rootBgFor = (os: string) => (os === 'android' ? '#17146a' : '#1e1a6a');
 
+// The dim is per-platform (owner order 2026-10-27): the iPhone takes the #5254ac pick,
+// Android keeps the locked #4a47ae
+export const IOS_DIM = '#5254ac';
+export const ANDROID_DIM = '#4a47ae';
+export const dimFor = (os: string) => (os === 'android' ? ANDROID_DIM : IOS_DIM);
+
 // T-374's landed design token: hand-frozen, nothing generates it. Every
-// visual role of the standard schedule reads this. dim is the ONE dim ink.
+// visual role of the standard schedule reads this. The dim is the one dim ink,
+// forked per platform (dimFor) since 2026-10-27.
 export const DESIGN = {
   bgStart: '#05134a',
   bgEnd: '#36208a',
   bgTail: tailFor(Platform?.OS ?? 'ios'),
-  dim: '#4a47ae',
+  dim: dimFor(Platform?.OS ?? 'ios'),
   label: '#4060ae',
   bright: '#f2f5f9',
   pill: '#2439f5',
