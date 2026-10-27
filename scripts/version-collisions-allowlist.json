@@ -130,5 +130,9 @@
   {
     "version": "2.9.0",
     "reason": "2026-10-27 lane T-376's manual-mode commit steps from uat's 2.8.0 while the t375-visual-polish branch holds 2.9.0; the standing ruling: each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.10.0",
+    "reason": "2026-10-27 lane T-376's catalog commit steps to 2.10.0 while the t375-visual-polish branch holds 2.10.0; the standing ruling: each merge renumbers above whatever uat then carries"
   }
 ]

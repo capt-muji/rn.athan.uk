@@ -36,6 +36,8 @@ export const hi = {
   'settings.display': 'प्रदर्शन',
   'settings.showHijriDate': 'हिजरी तारीख़ दिखाएँ',
   'settings.whatsNewLabel': 'नया क्या है',
+  'settings.checkUpdates': 'अपडेट के लिए जाँच करें',
+  'settings.upToDate': 'आप नवीनतम संस्करण पर हैं',
   'help.q.none': 'मुझे कोई सूचनाएँ क्यों नहीं मिलतीं?',
   'help.a.none': 'अनुमति के बिना सूचनाएँ नहीं दिखाई जा सकतीं।',
   'help.step.allowNotificationsIos': 'ऐप सेटिंग्स में सूचनाएँ अनुमति चालू करें',
