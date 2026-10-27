@@ -12,6 +12,7 @@ import {
 } from 'react-native-reanimated';
 
 import CheckIcon from '@/assets/icons/svg/check.svg';
+import CloseIcon from '@/assets/icons/svg/close.svg';
 import InfoBare from '@/assets/icons/svg/info-bare.svg';
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { IconView } from '@/components/ui';
@@ -50,9 +51,12 @@ const SETTINGS_PERF_NAME = 'sheet_settings';
 // The settled row's green, the owner's "purple to a green colour": one row's settled state, not a palette role
 const UPTODATE_BADGE = '#16a34a';
 const UPTODATE_BADGE_BORDER = '#22c55e';
+// The failed check's red, the green tick's mirror (owner order 2026-10-27): same one-row scope
+const FAILED_BADGE = '#dc2626';
+const FAILED_BADGE_BORDER = '#ef4444';
 
-/** The update row's three looks, scoped to one opening of the sheet */
-type UpdateRowState = 'idle' | 'checking' | 'upToDate';
+/** The update row's four looks, scoped to one opening of the sheet */
+type UpdateRowState = 'idle' | 'checking' | 'upToDate' | 'failed';
 
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
@@ -64,11 +68,14 @@ export default function BottomSheetSettings() {
   const [updateRowState, setUpdateRowState] = useState<UpdateRowState>('idle');
   const isChecking = updateRowState === 'checking';
   const isUpToDate = updateRowState === 'upToDate';
+  const isFailed = updateRowState === 'failed';
   const updateRowLabel = isChecking
     ? t('settings.checkingUpdates')
     : isUpToDate
       ? t('settings.upToDate')
-      : t('settings.checkUpdates');
+      : isFailed
+        ? t('settings.updateCheckFailed')
+        : t('settings.checkUpdates');
 
   // One check per opening of the sheet (owner order 2026-10-27). The spend and the session
   // counter live in refs so a press reads them synchronously, and closing the sheet re-arms
@@ -89,7 +96,11 @@ export default function BottomSheetSettings() {
   const isRtlLayout = localeDirection(currentLocaleId()) === 'rtl';
   const spin = useSharedValue(0);
   useEffect(() => {
-    if (!isChecking) return;
+    if (!isChecking) {
+      // A settle that keeps the ring (a failed check) rests it at its authored angle, not wherever the turn stopped
+      spin.value = 0;
+      return;
+    }
     spin.value = withRepeat(withTiming(360, { duration: ANIMATION.durationSlow, easing: Easing.linear }), -1);
     return () => cancelAnimation(spin);
   }, [isChecking, spin]);
@@ -133,9 +144,11 @@ export default function BottomSheetSettings() {
   };
 
   // The row's own entry into the one update flow. The sheet session's budget is spent on the
-  // press itself - a check that never answers still spends it - and manual skips only that
-  // call's throttle read, so the launch check keeps its 24-hour window. checkForUpdates never
-  // rejects, so the promise has no rejection path to handle
+  // press - which is what blocks a second check while one runs - and handed back by a
+  // failure: only a verdict (up to date, or update-found) keeps it spent, so a failed check
+  // stays retryable without the sheet closing (owner order 2026-10-27). Manual skips only
+  // that call's throttle read, so the launch check keeps its 24-hour window.
+  // checkForUpdates never rejects, so the promise has no rejection path to handle
   const handleCheckUpdatesPress = () => {
     if (checkSpentRef.current) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -153,8 +166,15 @@ export default function BottomSheetSettings() {
         setUpdateRowState('idle');
         return;
       }
-      // A store that answered current is the one answer the modal cannot show; anything else
-      // stays silent, and the resting label returns
+      if (result.failed) {
+        // No verdict was reached, so the budget returns and the row owns the message itself
+        checkSpentRef.current = false;
+        setUpdateRowState('failed');
+        return;
+      }
+      // A store that answered current is the one answer the modal cannot show; Play's own
+      // update flow (update-found on Android) rests the row the same way, its overlay owning
+      // the message
       setUpdateRowState(result.upToDate ? 'upToDate' : 'idle');
     });
   };
@@ -286,16 +306,20 @@ export default function BottomSheetSettings() {
           </Pressable>
         ) : null}
         {/* The row acts in place: the download glyph asks, the two-arrow circle where other rows
-            carry a chevron, and the up-to-date verdict settles the badge green with a tick */}
+            carry a chevron, the up-to-date verdict settles the badge green with a tick, and a
+            failed check settles it red with an X while the circle stays so the row reads retryable */}
         <Pressable
           style={styles.whatsNewButton}
           onPress={handleCheckUpdatesPress}
           hitSlop={HIT_SLOP.md}
           accessibilityLabel={updateRowLabel}
           accessibilityRole={'button'}>
-          <View style={[styles.infoButton, isUpToDate && styles.infoButtonSettled]}>
+          <View
+            style={[styles.infoButton, isUpToDate && styles.infoButtonSettled, isFailed && styles.infoButtonFailed]}>
             {isUpToDate ? (
               <CheckIcon width={9} height={9} style={{ color: COLORS.text.primary }} />
+            ) : isFailed ? (
+              <CloseIcon width={9} height={9} style={{ color: COLORS.text.primary }} />
             ) : (
               <IconView type={Icon.DOWNLOAD} size={9} color={COLORS.text.primary} />
             )}
@@ -370,6 +394,10 @@ const styles = StyleSheet.create({
   infoButtonSettled: {
     backgroundColor: UPTODATE_BADGE,
     borderColor: UPTODATE_BADGE_BORDER,
+  },
+  infoButtonFailed: {
+    backgroundColor: FAILED_BADGE,
+    borderColor: FAILED_BADGE_BORDER,
   },
   refreshMirrored: {
     transform: [{ scaleX: -1 }],

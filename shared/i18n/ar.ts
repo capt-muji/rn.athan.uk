@@ -39,6 +39,7 @@ export const ar = {
   'settings.checkUpdates': 'التحقق من التحديثات',
   'settings.checkingUpdates': 'جارٍ التحقق من التحديثات...',
   'settings.upToDate': 'أنت على أحدث إصدار',
+  'settings.updateCheckFailed': 'فشل التحقق. حاول مجددًا',
   'help.q.none': 'لماذا لا تصلني أي إشعارات؟',
   'help.a.none': 'بدون إذن، لا يمكن إظهار الإشعارات.',
   'help.step.allowNotificationsIos': 'شغّل السماح بالإشعارات في إعدادات التطبيق',

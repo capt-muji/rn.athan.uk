@@ -39,6 +39,7 @@ export const hi = {
   'settings.checkUpdates': 'अपडेट के लिए जाँच करें',
   'settings.checkingUpdates': 'अपडेट की जाँच हो रही है...',
   'settings.upToDate': 'आप नवीनतम संस्करण पर हैं',
+  'settings.updateCheckFailed': 'जाँच असफल रही. फिर से कोशिश करें',
   'help.q.none': 'मुझे कोई सूचनाएँ क्यों नहीं मिलतीं?',
   'help.a.none': 'अनुमति के बिना सूचनाएँ नहीं दिखाई जा सकतीं।',
   'help.step.allowNotificationsIos': 'ऐप सेटिंग्स में सूचनाएँ अनुमति चालू करें',

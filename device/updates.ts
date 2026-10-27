@@ -70,6 +70,8 @@ export type UpdateCheckResult = {
   modal: boolean;
   /** Whether the store answered and no update exists, so an inline "up to date" is a verdict and not silence */
   upToDate: boolean;
+  /** Whether the check ran and still reached no verdict - the store was never read, or no comparison ran - so a caller offering a retry may re-run it */
+  failed: boolean;
 };
 
 /**
@@ -81,7 +83,7 @@ export const checkForUpdates = async ({ manual = false }: { manual?: boolean } =
   const now = Date.now();
   const lastCheck = getPopupUpdateLastCheck();
 
-  if (!manual && now - lastCheck < TIME_CONSTANTS.ONE_DAY_MS) return { modal: false, upToDate: false };
+  if (!manual && now - lastCheck < TIME_CONSTANTS.ONE_DAY_MS) return { modal: false, upToDate: false, failed: false };
 
   // A read that never reached the store is not a check, so it costs an hour instead of the whole day
   const stampFailure = () => {
@@ -96,7 +98,7 @@ export const checkForUpdates = async ({ manual = false }: { manual?: boolean } =
       if (native.answered) setPopupUpdateLastCheck(now);
       else stampFailure();
 
-      return { modal: false, upToDate: native.answered && !native.updateAvailable };
+      return { modal: false, upToDate: native.answered && !native.updateAvailable, failed: !native.answered };
     }
 
     const installedVersion = getInstalledVersion();
@@ -104,21 +106,21 @@ export const checkForUpdates = async ({ manual = false }: { manual?: boolean } =
 
     if (storeVersion === false) {
       stampFailure();
-      return { modal: false, upToDate: false };
+      return { modal: false, upToDate: false, failed: true };
     }
 
     setPopupUpdateLastCheck(now);
 
     // An empty result or an unreadable installed version means no comparison ran, so nothing is claimed
-    if (!installedVersion || !storeVersion) return { modal: false, upToDate: false };
+    if (!installedVersion || !storeVersion) return { modal: false, upToDate: false, failed: true };
 
     const updateAvailable = isNewerVersion(installedVersion, storeVersion);
 
-    return { modal: updateAvailable, upToDate: !updateAvailable };
+    return { modal: updateAvailable, upToDate: !updateAvailable, failed: false };
   } catch (error) {
     logger.error('Failed to check for updates:', error);
     stampFailure();
-    return { modal: false, upToDate: false };
+    return { modal: false, upToDate: false, failed: true };
   }
 };
 

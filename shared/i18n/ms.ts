@@ -39,6 +39,7 @@ export const ms = {
   'settings.checkUpdates': 'Semak kemas kini',
   'settings.checkingUpdates': 'Menyemak kemas kini...',
   'settings.upToDate': 'Anda sudah terkini',
+  'settings.updateCheckFailed': 'Semakan gagal. Cuba lagi',
   'help.q.none': 'Mengapa saya tidak menerima sebarang notifikasi?',
   'help.a.none': 'Tanpa kebenaran, notifikasi tidak dapat ditunjukkan.',
   'help.step.allowNotificationsIos': 'Hidupkan Benarkan Notifikasi dalam tetapan apl',
