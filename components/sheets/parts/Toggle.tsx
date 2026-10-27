@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -18,7 +17,6 @@ interface ToggleProps {
  *
  * Features:
  * - Animated thumb with smooth sliding transition
- * - Haptic feedback on toggle
  * - Disabled state with reduced opacity
  *
  * @example
@@ -55,7 +53,6 @@ export default function Toggle({ value, onToggle, disabled, accessibilityLabel }
 
   const handlePress = () => {
     if (disabled) return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onToggle();
   };
 

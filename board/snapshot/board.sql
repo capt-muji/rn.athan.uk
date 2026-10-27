@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict RB50bKDkb6Lx4JLr4lUg2HushgVxjlZnMYt01i1JYa2TO21u3LwwjIFV0GmOXO0
+\restrict 0Gqm0aAPn7rgKGs8HyOqaA32ttwOK8uqXL48qynZIM7rkxNvK9Oeop6qWjVsTsQ
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6190,7 +6190,7 @@ Acceptance:
 - [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
 - [ ] the iPhone XS is measurably unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-26 07:23:36.201493+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 9, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
 
@@ -6206,7 +6206,7 @@ Acceptance:
 - [ ] the automatic launch check and its 24-hour throttle behave exactly as before
 - [ ] an available update presents the SAME modal or native flow the automatic check uses
 - [ ] an up-to-date install answers inline, in the user''s language
-- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 00:33:25.394435+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+- [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 02:23:35.161229+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 
 
 --
@@ -10506,6 +10506,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3696, 376, 'activity', 'owner', NULL, 'comment_edited', '2026-10-27 02:21:44.848159+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3695, 377, 'activity', 'owner', NULL, 'status', '2026-10-27 02:18:09.183607+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3689, 376, 'comment', 'owner', 'Executed and audited; four commits sit on branch t376-check-updates in the lane worktree $HOME/repos/wt-t376 (push is the lead''s). What the owner should verify on glass: the Other card''s new Check for updates row (last after Help, check glyph, no chevron, nothing else moved); a tap on a current install answers inline in the user''s language; a tap when the store has a newer version closes the sheet and shows the same update modal the launch check uses (iOS), and Play''s own flow on Android; the automatic launch check and its 24-hour throttle are untouched. Also worth an eye: the two new strings in each of en/ar/so/hi/ms/th. No What''s New item was added - restamping one is the owner''s editorial call.', NULL, '2026-10-27 00:33:25.474965+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 02:21:44.84+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3697, 376, 'comment', 'owner', 'Merged to uat in 241c12c7 (2.11.2) and closed on the owner''s acceptance, without the glass pass the Waiting-on named: the owner ruled the row accepted as shipped, with the minor tweaks they have in mind deferred to fresh orders after T-375. Everything the plan promised is in the merge: the manual mode, the six catalogs, the haptic, the inline answer, the no-stamp-on-failure audit fix, and the untouched automatic check.', NULL, '2026-10-27 02:23:35.159684+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3698, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 02:23:35.183672+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 
 
 --
@@ -11973,8 +11975,9 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (847, 379, 1, 'Backlog', 'backlog', '2026-10-26 23:59:36.775+00', '2026-10-27 00:11:05.230893+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (852, 379, 4, 'Done', 'completed', '2026-10-27 00:11:05.230893+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (850, 376, 3, 'In progress', 'started', '2026-10-27 00:00:18.776024+00', '2026-10-27 00:15:19.935746+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (855, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 00:33:25.408518+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (856, 377, 9, 'Awaiting Owner', 'started', '2026-10-27 01:08:10.560215+00', '2026-10-27 02:18:09.176701+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (855, 376, 9, 'Awaiting Owner', 'started', '2026-10-27 00:33:25.408518+00', '2026-10-27 02:23:35.177063+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (858, 376, 4, 'Done', 'completed', '2026-10-27 02:23:35.177063+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -27779,8 +27782,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 108);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:377', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4228);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 43);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4229);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 46);
 
 
 --
@@ -28042,7 +28045,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3696, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3698, true);
 
 
 --
@@ -28119,7 +28122,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 857, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 858, true);
 
 
 --
@@ -32602,5 +32605,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict RB50bKDkb6Lx4JLr4lUg2HushgVxjlZnMYt01i1JYa2TO21u3LwwjIFV0GmOXO0
+\unrestrict 0Gqm0aAPn7rgKGs8HyOqaA32ttwOK8uqXL48qynZIM7rkxNvK9Oeop6qWjVsTsQ
 

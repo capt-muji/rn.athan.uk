@@ -818,6 +818,13 @@ describe('footerFor', () => {
 });
 
 describe('isDateYesterdayOrFuture', () => {
+  // The date arithmetic rides the system clock, so the real one would straddle
+  // the London midnight inside one test's offset pairs
+  beforeEach(() => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T12:00:00Z'));
+  });
+  afterEach(() => jest.useRealTimers());
+
   it('returns true for yesterday', () => {
     const dateStr = prayerZoneDate(-86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(true);

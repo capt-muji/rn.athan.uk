@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
-import { useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '@/hooks/useAnimation';
+import { useDerivedBackgroundColor, useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
@@ -40,9 +40,9 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
 
-  // The overlay's veil wraps both tweens: the badge's ink and its pill wash sink toward the
-  // veil solid together, so no glyph renders through an opacity while it fades (derived, so
-  // the tween cannot strand on resume)
+  // The badge's ink sinks toward the veil solid while its pill keeps its own
+  // ink untouched: the overlay's backdrop darkens the pill on its own, so a
+  // self-shift toward the veil read as the pill strengthening mid-fade (T-375)
   const veilTarget = overlayIsOn ? 1 : 0;
   const prayerAgoColorStyle = useDerivedVeiledColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.text,
@@ -51,11 +51,9 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
     veilDuration: ANIMATION.durationFade,
     ...recentColorOptions,
   });
-  const prayerAgoBackgroundStyle = useDerivedVeiledBackgroundColor(veilTarget, isRecent, {
+  const prayerAgoBackgroundStyle = useDerivedBackgroundColor(isRecent, {
     fromColor: COLORS.prayerAgo.gradient.start,
     toColor: COLORS.prayerAgo.gradient.end,
-    veilColor: COLORS.gradient.overlay.veil,
-    veilDuration: ANIMATION.durationFade,
     ...recentColorOptions,
   });
 

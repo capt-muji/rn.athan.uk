@@ -1,27 +1,31 @@
-// T-374's landed design token: the one-dim system the owner picked on
-// 2026-10-26 (round 10, final-05). Every visual role of the standard schedule
-// reads this; the values are hand-frozen, nothing generates them.
-//
-// The gradient runs top-left to bottom-right; bgTail is the purple hint
-// BackgroundGradients eases in over the journey's lower reaches, strongest at
-// the bottom corner. dim is the ONE dim ink: every dimmed name, time, bell and
-// the time-ago chip read it; label serves the prayer name above the countdown
-// and the location line.
+import { Platform } from 'react-native';
+
+// The tail is per-platform: the same hex reads pinker on Android's panel
+export const IOS_TAIL = '#7117c9';
+export const ANDROID_TAIL = '#4c16ca';
+
+export const tailFor = (os: string) => (os === 'android' ? ANDROID_TAIL : IOS_TAIL);
+
+// The full-screen solids sit between the navy top and the gradient's middle
+export const rootBgFor = (os: string) => (os === 'android' ? '#17146a' : '#1e1a6a');
+
+// T-374's landed design token: hand-frozen, nothing generates it. Every
+// visual role of the standard schedule reads this. dim is the ONE dim ink.
 export const DESIGN = {
   bgStart: '#05134a',
   bgEnd: '#36208a',
-  bgTail: '#7117c9',
-  dim: '#485396',
+  bgTail: tailFor(Platform?.OS ?? 'ios'),
+  dim: '#4a47ae',
   label: '#4060ae',
   bright: '#f2f5f9',
   pill: '#2439f5',
   pillExtras: '#8d0ca0',
   pillShadow: '#111d89',
   pillShadowExtras: '#570962',
-  settingsShadow: '#27035c',
   dot: '#db98dc',
-  iconSettings: 'rgba(188, 176, 221, 0.62)',
-  settingsBg: 'rgba(103, 65, 190, 0.58)',
-  settingsBorder: 'rgba(115, 79, 186, 0.66)',
-  rootBg: '#05134a',
+  iconSettings: 'rgba(200, 176, 255, 0.71)',
+  settingsBg: 'rgba(105, 65, 198, 0.51)',
+  settingsBorder: 'rgba(116, 80, 207, 0.68)',
+  settingsShadow: '#27035c',
+  rootBg: rootBgFor(Platform?.OS ?? 'ios'),
 };

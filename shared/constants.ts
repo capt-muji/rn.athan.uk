@@ -538,7 +538,7 @@ export const COLOR_PICKER_DEFAULT = COLOR_PICKER_SWATCHES[0];
 export const SIZE = {
   /** Icon dimensions */
   icon: {
-    /** Small icon (14px) - settings icon, music icon */
+    /** Small icon (14px) - music icon */
     sm: 14,
     /** Medium icon (20px) - alert icons, chevrons */
     md: 20,
@@ -665,7 +665,7 @@ export const HIT_SLOP = {
 export const ELEVATION = {
   /** No elevation - element sits flat */
   none: 0,
-  /** Subtle elevation (5) - settings button */
+  /** Subtle elevation (5) */
   subtle: 5,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
@@ -768,7 +768,7 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** The settings glyph, bright enough to read against its own circle in direct sunlight */
+    /** The settings glyph, readable against its circle in direct sunlight */
     settings: DESIGN.iconSettings,
   },
 
@@ -825,12 +825,12 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text: the one dim ink, the same as every dimmed surface */
+    /** Prayer ago badge text */
     text: DESIGN.dim,
-    /** Background gradient for prayer ago badge */
+    /** The pill's tween pair, at rest and when recent */
     gradient: {
-      start: 'rgba(73, 75, 160, 0.15)',
-      end: 'rgba(70, 100, 160, 0.25)',
+      start: 'rgba(77, 59, 175, 0.15)',
+      end: 'rgba(59, 88, 146, 0.25)',
     },
   },
 

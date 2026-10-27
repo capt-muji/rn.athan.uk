@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -239,6 +240,9 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(({ she
         reminderType: sounds[slot],
       });
       if (next === null) return;
+
+      // The one place the reminder's two press paths meet: the card heading and the switch
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 
       // Switching on beside a reminder already holding this minute moves to the nearest free one, which is the
       // only moment a value can change without a press on its own stepper

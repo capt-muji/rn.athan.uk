@@ -2,12 +2,12 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.11.2",
+    "version": "2.11.3",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
     "icon": "./assets/icons/config/icon-ios.png",
-    "backgroundColor": "#2c1c77",
+    "backgroundColor": "#1e1a6a",
     "ios": {
       "icon": "./assets/icons/config/icon-ios.png",
       "supportsTablet": true,
@@ -25,12 +25,12 @@
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
         "UIRequiresFullScreen~iphone": true
       },
-      "backgroundColor": "#2c1c77"
+      "backgroundColor": "#1e1a6a"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
-        "backgroundColor": "#2c1c77"
+        "backgroundColor": "#05134a"
       },
       "package": "com.example.athan",
       "versionCode": 1000000,
@@ -67,9 +67,16 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#2c1c77",
-          "image": "./assets/icons/config/icon-splash.png",
-          "resizeMode": "contain"
+          "ios": {
+            "backgroundColor": "#1e1a6a",
+            "image": "./assets/icons/config/icon-splash.png",
+            "resizeMode": "contain"
+          },
+          "android": {
+            "backgroundColor": "#17146a",
+            "image": "./assets/icons/config/icon-splash.png",
+            "resizeMode": "contain"
+          }
         }
       ],
       [

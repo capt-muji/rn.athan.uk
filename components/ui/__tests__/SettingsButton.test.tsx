@@ -5,11 +5,12 @@
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { Platform } from 'react-native';
 
 import { COLORS } from '@/shared/constants';
 import { setSettingsSheetModal } from '@/stores/ui';
 
-import SettingsButton from '../SettingsButton';
+import SettingsButton, { ICON_SIZE } from '../SettingsButton';
 
 describe('the settings button, with the settings sheet mounted', () => {
   // An icon-only control, so its name is the only thing a screen reader could announce
@@ -38,6 +39,18 @@ describe('the settings button, with the settings sheet mounted', () => {
 
     expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+  });
+
+  // 39x39 with 2px margins holding the 43px slot, so the flanking dots never move
+  it('draws the circle at 39 inside the unchanged 43px slot', async () => {
+    setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
+    const tree = await render(<SettingsButton />);
+    const root = tree.root as NonNullable<typeof tree.root>;
+
+    expect(root.props.style).toEqual(
+      expect.arrayContaining([expect.objectContaining({ width: 39, height: 39, marginHorizontal: 2 })])
+    );
+    expect(ICON_SIZE).toBe(18);
   });
 
   // The owner's report, and it is an accessibility requirement rather than a preference: at 0.29 the circle
@@ -71,5 +84,25 @@ describe('the settings button, with the settings sheet mounted', () => {
 
     expect(sheet.present).not.toHaveBeenCalled();
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  // The fill bakes opaque on Android so elevation's outline exists; the value
+  // is the translucent fill's measured composite over the local gradient
+  it('bakes an opaque fill and a real elevation on Android', async () => {
+    Platform.OS = 'android';
+    try {
+      setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
+      const tree = await render(<SettingsButton />);
+      const root = tree.root as NonNullable<typeof tree.root>;
+      const style = root.props.style.find(
+        (s: { elevation?: number; shadowColor?: string }) => s?.elevation !== undefined
+      );
+
+      expect(style.elevation).toBe(10);
+      expect(style.shadowColor).toBe('#0a0426');
+      expect(style.backgroundColor).toBe('#562cbf');
+    } finally {
+      Platform.OS = 'ios';
+    }
   });
 });

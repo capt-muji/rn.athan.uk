@@ -305,6 +305,13 @@ describe('createPrayer edge cases', () => {
 // =============================================================================
 
 describe('filterApiData', () => {
+  // The date labels ride the system clock, so the real one would straddle the
+  // London midnight inside one test's offset pairs
+  beforeEach(() => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T12:00:00Z'));
+  });
+  afterEach(() => jest.useRealTimers());
+
   const createMockApiResponse = (dates: string[]): IApiResponse => {
     const times: IApiResponse['times'] = {};
     dates.forEach((date) => {
