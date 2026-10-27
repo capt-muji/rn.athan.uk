@@ -21,15 +21,16 @@ export default function SettingsButton() {
     showSettingsSheet();
   };
 
-  // Android's legacy shadow props are inert and elevation derives its outline
-  // from the translucent fill, which the S23's renderer discards - boxShadow
-  // paints around the border box and needs neither
+  // Android's outline rule draws a shadow only from an opaque background, so
+  // the 51% fill is baked opaque at its measured composite over the local
+  // gradient (86,44,191) - pixel-identical, and the outline then exists
   const computedStylesContainer: ViewStyle =
     Platform.OS === 'android'
       ? {
-          backgroundColor: COLORS.settingsButton.background,
+          backgroundColor: '#562cbf',
           borderColor: COLORS.settingsButton.border,
-          boxShadow: '0px 10px 10px rgba(10, 4, 38, 0.75)',
+          shadowColor: '#0a0426',
+          elevation: 10,
         }
       : {
           backgroundColor: COLORS.settingsButton.background,

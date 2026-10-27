@@ -86,17 +86,21 @@ describe('the settings button, with the settings sheet mounted', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // boxShadow paints the Android shadow around the border box: the legacy
-  // props are iOS-only and elevation's outline dies in the translucent fill
-  it('carries a boxShadow on Android', async () => {
+  // The fill bakes opaque on Android so elevation's outline exists; the value
+  // is the translucent fill's measured composite over the local gradient
+  it('bakes an opaque fill and a real elevation on Android', async () => {
     Platform.OS = 'android';
     try {
       setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
       const tree = await render(<SettingsButton />);
       const root = tree.root as NonNullable<typeof tree.root>;
-      const style = root.props.style.find((s: { boxShadow?: string }) => s?.boxShadow !== undefined);
+      const style = root.props.style.find(
+        (s: { elevation?: number; shadowColor?: string }) => s?.elevation !== undefined
+      );
 
-      expect(style.boxShadow).toBe('0px 10px 10px rgba(10, 4, 38, 0.75)');
+      expect(style.elevation).toBe(10);
+      expect(style.shadowColor).toBe('#0a0426');
+      expect(style.backgroundColor).toBe('#562cbf');
     } finally {
       Platform.OS = 'ios';
     }
