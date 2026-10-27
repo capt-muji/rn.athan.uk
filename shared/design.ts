@@ -16,7 +16,8 @@ export const ANDROID_DIM = '#4a47ae';
 export const dimFor = (os: string) => (os === 'android' ? ANDROID_DIM : IOS_DIM);
 
 // T-374's landed design token: hand-frozen, nothing generates it. Every
-// visual role of the standard schedule reads this. dim is the ONE dim ink.
+// visual role of the standard schedule reads this. The dim is the one dim ink,
+// forked per platform (dimFor) since 2026-10-27.
 export const DESIGN = {
   bgStart: '#05134a',
   bgEnd: '#36208a',

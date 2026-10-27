@@ -867,7 +867,7 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face; the owner's 2026-10-27 ruling stacks a further 0.5 fillOpacity on the flattened solid - quarter-strength digits, verified perfect on glass */
       ink: '#33416b',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',

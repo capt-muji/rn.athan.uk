@@ -24,9 +24,10 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
     '2026-09-15T14:30:00.000Z',
     '2026-09-15T14:30:00.001Z',
     '2026-09-15T14:30:59.999Z',
-    // The window's two edges: its first minute and its latest seed (today's Isha 23:59),
-    // and the small hours the same steady hour now covers (the seed's floor is 01:02:
-    // below it the -62 minute Fajr anchors against the previous midnight)
+    // The window's edges from the steady hour's side: mid-window at 06:00 and the latest
+    // seed before the spent branch takes over (today's Isha 23:59), plus the small hours
+    // the same steady hour now covers (the seed's floor is 01:02: below it the -62 minute
+    // Fajr anchors against the previous midnight)
     '2026-09-15T05:00:00.000Z',
     '2026-09-15T21:57:59.999Z',
     '2026-09-16T02:30:00.000Z',

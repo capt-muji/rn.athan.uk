@@ -22,10 +22,9 @@ export default function SettingsButton() {
   };
 
   // Android's outline rule draws a shadow only from an opaque background, so the fill is
-  // baked opaque at its measured composite over the local gradient. The owner's 2026-10-27
-  // ruling halves the tint's strength (25.5% alpha, #4c21bb) while the bake stays opaque
-  // so the outline - and the shadow it casts - survives; the same ruling dials the border
-  // and the icon down a notch on Android alone
+  // baked opaque over the local gradient. The owner's 2026-10-27 rulings, locked on glass:
+  // the #4e23bc fill, the 0.51 border, the 0.9 glyph - Android alone, and the bake stays
+  // opaque so the outline - and the shadow it casts - survives
   const computedStylesContainer: ViewStyle =
     Platform.OS === 'android'
       ? {

@@ -58,8 +58,8 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
     formatDateShort(addDays(downloadedAt, d))
   );
 
-  // [today]'s six rows by the download's London clock: the owner's evening reseed, a realistic
-  // pre-dawn day, or the spent late evening's real static shape
+  // [today]'s six rows by the download's London clock: the owner's steady-hour reseed,
+  // or the spent late evening's real static shape
   const eveningRow = {
     fajr: addMinutes(minuteFloor, -62),
     sunrise: addMinutes(minuteFloor, -61),

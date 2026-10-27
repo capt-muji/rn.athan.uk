@@ -1,8 +1,10 @@
 /**
  * The one-dim sweep: every dimmed-text surface resolves to the single dim
  * token, and the shared-label pair resolves to the label token - so no surface
- * can carry its own shade, and a typo in the hand-frozen design token reddens
- * here instead of shipping (the ticket's own acceptance wording).
+ * can carry its own shade on iPhone, and a typo in the hand-frozen design token
+ * reddens here instead of shipping (the ticket's own acceptance wording). The
+ * dim itself forks per platform (dimFor), and the ago text forks inside it on
+ * Android - both pinned below.
  */
 
 import { readFileSync } from 'node:fs';
