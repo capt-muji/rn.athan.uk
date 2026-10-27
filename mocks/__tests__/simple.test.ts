@@ -1,7 +1,7 @@
 /**
- * The mock feed a local build serves: each download seeds today from its own moment, so opening the
- * app finds Asr next about an hour out and Dhuhr the prayer an hour spent - the day rolls to
- * tomorrow's real schedule while you watch.
+ * The mock feed a local build serves: each download from 01:02 London onward seeds today
+ * from its own moment, so opening the app finds Asr next about an hour out and Dhuhr the
+ * prayer an hour spent - the day rolls to tomorrow's real schedule while you watch.
  */
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -24,9 +24,13 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
     '2026-09-15T14:30:00.000Z',
     '2026-09-15T14:30:00.001Z',
     '2026-09-15T14:30:59.999Z',
-    // The window's two edges: its first minute and its latest seed (today's Isha 23:59)
+    // The window's two edges: its first minute and its latest seed (today's Isha 23:59),
+    // and the small hours the same steady hour now covers (the seed's floor is 01:02:
+    // below it the -62 minute Fajr anchors against the previous midnight)
     '2026-09-15T05:00:00.000Z',
     '2026-09-15T21:57:59.999Z',
+    '2026-09-16T02:30:00.000Z',
+    '2026-09-16T02:30:59.999Z',
   ])('puts Asr next about one hour out and Dhuhr one hour spent, after a download at %s', (iso) => {
     const readAt = new Date(iso);
     jest.useFakeTimers({ now: readAt });
@@ -49,24 +53,6 @@ describe('the mock feed, downloaded on Tuesday 15 September 2026 around 15:30 in
       expect(instantOf(readAt, before)).toBeLessThan(readAt.getTime());
     }
   });
-
-  it.each(['2026-09-16T03:30:00.000Z', '2026-09-16T03:30:59.999Z', '2026-09-15T04:59:59.999Z'])(
-    'seeds a realistic pre-dawn day at %s London 04:30, Fajr next about one minute out, no small-hours Standard rows',
-    (iso) => {
-      const readAt = new Date(iso);
-      jest.useFakeTimers({ now: readAt });
-
-      const today = MOCK_DATA_SIMPLE.times[formatDateShort(readAt)];
-
-      const fajr = instantOf(readAt, today.fajr);
-      expect(fajr - readAt.getTime()).toBeGreaterThan(0);
-      expect(fajr - readAt.getTime()).toBeLessThanOrEqual(MINUTE);
-      // The rest of the day is the real static shape, so nothing trips the midnight-crossing rules
-      expect(today.dhuhr).toBe('13:04');
-      expect(today.isha).toBe('21:27');
-      expect(instantOf(readAt, today.sunrise)).toBeGreaterThan(fajr);
-    }
-  );
 
   it.each(['2026-09-15T21:58:00.000Z', '2026-09-15T22:55:00.000Z'])(
     'serves the spent day unchanged from a late-evening download at %s London, with tomorrow\u2019s Fajr next',

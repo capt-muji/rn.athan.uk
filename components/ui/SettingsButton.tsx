@@ -21,14 +21,16 @@ export default function SettingsButton() {
     showSettingsSheet();
   };
 
-  // Android's outline rule draws a shadow only from an opaque background, so
-  // the 51% fill is baked opaque at its measured composite over the local
-  // gradient (86,44,191) - pixel-identical, and the outline then exists
+  // Android's outline rule draws a shadow only from an opaque background, so the fill is
+  // baked opaque at its measured composite over the local gradient. The owner's 2026-10-27
+  // ruling halves the tint's strength (25.5% alpha, #4c21bb) while the bake stays opaque
+  // so the outline - and the shadow it casts - survives; the same ruling dials the border
+  // and the icon down a notch on Android alone
   const computedStylesContainer: ViewStyle =
     Platform.OS === 'android'
       ? {
-          backgroundColor: '#562cbf',
-          borderColor: COLORS.settingsButton.border,
+          backgroundColor: '#4c21bb',
+          borderColor: 'rgba(116, 80, 207, 0.51)',
           shadowColor: '#0a0426',
           elevation: 10,
         }
@@ -50,7 +52,11 @@ export default function SettingsButton() {
       accessibilityRole={'button'}
       // An icon-only control, so the glyph is all a sighted user needs and a screen reader gets nothing
       accessibilityLabel={t('settingsButton.label')}>
-      <SettingsIcon width={ICON_SIZE} height={ICON_SIZE} style={styles.icon} />
+      <SettingsIcon
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+        style={[styles.icon, Platform.OS === 'android' && styles.iconAndroid]}
+      />
     </AnimatedPressable>
   );
 }
@@ -69,5 +75,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: COLORS.icon.settings,
+  },
+  iconAndroid: {
+    opacity: 0.9,
   },
 });

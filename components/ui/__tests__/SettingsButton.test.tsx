@@ -86,8 +86,9 @@ describe('the settings button, with the settings sheet mounted', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // The fill bakes opaque on Android so elevation's outline exists; the value
-  // is the translucent fill's measured composite over the local gradient
+  // The fill bakes opaque on Android so elevation's outline exists; the value is the halved
+  // translucent fill's measured composite over the local gradient, and the border and glyph
+  // carry the owner's Android-only dial-down
   it('bakes an opaque fill and a real elevation on Android', async () => {
     Platform.OS = 'android';
     try {
@@ -100,9 +101,21 @@ describe('the settings button, with the settings sheet mounted', () => {
 
       expect(style.elevation).toBe(10);
       expect(style.shadowColor).toBe('#0a0426');
-      expect(style.backgroundColor).toBe('#562cbf');
+      expect(style.backgroundColor).toBe('#4c21bb');
+      expect(style.borderColor).toBe('rgba(116, 80, 207, 0.51)');
     } finally {
       Platform.OS = 'ios';
     }
+  });
+
+  it('dims the glyph one notch on Android alone', async () => {
+    setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
+    Platform.OS = 'android';
+    let tree = await render(<SettingsButton />);
+    expect(JSON.stringify(tree.toJSON())).toContain('"opacity":0.9');
+
+    Platform.OS = 'ios';
+    tree = await render(<SettingsButton />);
+    expect(JSON.stringify(tree.toJSON())).not.toContain('"opacity":0.9');
   });
 });
