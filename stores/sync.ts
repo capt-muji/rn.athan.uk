@@ -133,7 +133,16 @@ const saveDownloadedDays = (prayers: ISingleApiResponseTransformed[], armedBefor
 /** Whether any of today to today+2, the days the lists are built from, is stored: the check stores/bootstrap.ts hydrates on */
 const hasUsableDays = () => {
   const today = TimeUtils.getTodayDateString();
-  return [0, 1, 2].some((offset) => Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset)));
+  try {
+    return [0, 1, 2].some((offset) =>
+      Boolean(Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset)))
+    );
+  } catch (error) {
+    // A read that fails cannot prove the cache empty, and every failure gate below answers through here: treating the
+    // days as usable keeps a storage hiccup from turning into the error screen over days that may be stored
+    logger.warn('SYNC: Could not read which days are stored, treating them as usable', { error });
+    return true;
+  }
 };
 
 // --- Actions ---
@@ -232,14 +241,32 @@ const fetchLastDayOfPreviousYear = () => {
  *   still awaits so iOS keeps the process alive until widgets are refreshed.
  */
 const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
-  // Initialize prayer sequences (prayer-centric model)
+  // Initialize prayer sequences (prayer-centric model). A rebuild that fails must not cost the launch its stored
+  // days: stores/bootstrap.ts has already hydrated the lists, so the screen keeps what it has and the next sync
+  // rebuilds again. With nothing stored the throw stands, keeping the error screen the honest first-install landing
+  for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
+    try {
+      ScheduleStore.setSequence(type, date);
+    } catch (error) {
+      if (!hasUsableDays()) throw error;
+      logger.warn('SYNC: Failed to rebuild a sequence, showing the days already stored', { type, error });
+    }
+  }
 
-  ScheduleStore.setSequence(ScheduleType.Standard, date);
-  ScheduleStore.setSequence(ScheduleType.Extra, date);
+  try {
+    Countdown.startCountdowns();
+  } catch (error) {
+    if (!hasUsableDays()) throw error;
+    logger.warn('SYNC: Failed to start the countdowns, showing the days already stored', { error });
+  }
 
-  Countdown.startCountdowns();
-
-  if (TimeUtils.isJanuaryFirst(date)) fetchLastDayOfPreviousYear();
+  // The ask is fire-and-forget by design (see fetchLastDayOfPreviousYear), so a failure of its own prelude costs
+  // only the missing 31 December, which the next sync asks for again — never the days on screen
+  try {
+    if (TimeUtils.isJanuaryFirst(date)) fetchLastDayOfPreviousYear();
+  } catch (error) {
+    logger.warn('SYNC: Failed to ask for previous year Dec 31, will retry on next sync', { error });
+  }
 
   // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant).
   // Deferred path needs the explicit catch: an unhandled rejection here would
@@ -527,9 +554,25 @@ const updatePrayerData = async () => {
  */
 export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
   try {
-    handleAppUpgrade();
+    // Both checks carry the same rule as a failed refresh below: nothing they can throw costs the days already
+    // stored, and with nothing stored the error screen stays the honest landing (its Refresh wipes)
+    try {
+      handleAppUpgrade();
+    } catch (error) {
+      if (!hasUsableDays()) throw error;
+      logger.warn('SYNC: Upgrade check failed, showing the days already stored', { error });
+    }
 
-    if (needsDataUpdate()) {
+    let updateNeeded = true;
+    try {
+      updateNeeded = needsDataUpdate();
+    } catch (error) {
+      if (!hasUsableDays()) throw error;
+      logger.warn('SYNC: Could not tell whether a download was needed, showing the days already stored', { error });
+      updateNeeded = false;
+    }
+
+    if (updateNeeded) {
       try {
         await updatePrayerData();
       } catch (error) {
