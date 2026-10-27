@@ -37,6 +37,7 @@ export const th = {
   'settings.showHijriDate': 'แสดงวันที่ฮิจเราะห์',
   'settings.whatsNewLabel': 'มีอะไรใหม่',
   'settings.checkUpdates': 'ตรวจสอบการอัปเดต',
+  'settings.checkingUpdates': 'กำลังตรวจสอบการอัปเดต...',
   'settings.upToDate': 'เป็นเวอร์ชันล่าสุดแล้ว',
   'help.q.none': 'ทำไมฉันจึงไม่ได้รับการแจ้งเตือนเลย?',
   'help.a.none': 'หากไม่อนุญาต การแจ้งเตือนจะแสดงไม่ได้',
