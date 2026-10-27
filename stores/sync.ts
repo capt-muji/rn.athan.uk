@@ -260,7 +260,7 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
     try {
       await PrayerWidgets.refreshPrayerWidgets();
     } catch (error) {
-      logger.warn('WIDGET: Foreground refresh failed', { error });
+      logger.warn('WIDGET: Awaited refresh failed', { error });
     }
   }
 };

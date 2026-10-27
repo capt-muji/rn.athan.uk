@@ -230,7 +230,9 @@ describe('the widget push on the launch path', () => {
 
     await expect(sync({ deferWidgetRefresh: false })).resolves.toBeUndefined();
 
-    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Foreground refresh failed', { error: failure });
+    expect(logger().warn).toHaveBeenCalledTimes(1);
+    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Awaited refresh failed', { error: failure });
+    expect(logger().error).not.toHaveBeenCalled();
 
     // The home screen's own read stays on its data, never the error page
     triggerSyncLoadable();
