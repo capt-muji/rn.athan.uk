@@ -101,7 +101,7 @@ describe('the settings button, with the settings sheet mounted', () => {
 
       expect(style.elevation).toBe(10);
       expect(style.shadowColor).toBe('#0a0426');
-      expect(style.backgroundColor).toBe('#4c21bb');
+      expect(style.backgroundColor).toBe('#4e23bc');
       expect(style.borderColor).toBe('rgba(116, 80, 207, 0.51)');
     } finally {
       Platform.OS = 'ios';

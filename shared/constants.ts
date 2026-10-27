@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { DESIGN } from './design';
 
 // =============================================================================
@@ -825,8 +827,8 @@ export const COLORS = {
   },
 
   prayerAgo: {
-    /** Prayer ago badge text */
-    text: DESIGN.dim,
+    /** Prayer ago badge text: the owner's Android pick (2026-10-27), the dim everywhere else */
+    text: (Platform?.OS ?? 'ios') === 'android' ? '#4c47ae' : DESIGN.dim,
     /** The pill's tween pair, at rest and when recent */
     gradient: {
       start: 'rgba(77, 59, 175, 0.15)',

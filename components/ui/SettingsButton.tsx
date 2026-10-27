@@ -29,7 +29,7 @@ export default function SettingsButton() {
   const computedStylesContainer: ViewStyle =
     Platform.OS === 'android'
       ? {
-          backgroundColor: '#4c21bb',
+          backgroundColor: '#4e23bc',
           borderColor: 'rgba(116, 80, 207, 0.51)',
           shadowColor: '#0a0426',
           elevation: 10,
