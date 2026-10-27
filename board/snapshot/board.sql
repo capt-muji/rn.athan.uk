@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict zD3uBJuYYroty10lV8kq5GrIPrZBAg4lEo2sbCFwmhCl3HeoCkSj2hYsMiMnRk0
+\restrict QyutoG7scuBRmQoxUoDNYwftb7dqmESiOJ8dtlPmSI0U9UOcdqpuLRpGZ5WIc7p
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6173,16 +6173,7 @@ Acceptance:
 - [ ] no other locale''s footer gains or loses marks
 - [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-27 02:53:12.254632+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
-
-Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
-
-Acceptance:
-- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
-- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
-- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
-- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (389, 1, 389, 4, 9, 'Prove the Android store update flow on glass through a Play internal-test release', 'Goal: the Check for updates row''s Android verdict - Play''s own flexible-update overlay presenting on the 3T - is read on glass once, proving expo-in-app-updates'' flow end to end.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (389, 1, 389, 4, 7, 'Prove the Android store update flow on glass through a Play internal-test release', 'Goal: the Check for updates row''s Android verdict - Play''s own flexible-update overlay presenting on the 3T - is read on glass once, proving expo-in-app-updates'' flow end to end.
 
 Where: the owner''s Play Console (an internal-test track release ahead of an installed build), the 3T, device/updates.ts (the already-wired startNativeUpdate path).
 
@@ -6192,7 +6183,16 @@ Acceptance:
 - [ ] A press on the Check for updates row presents Play''s flexible-update flow, transcribed on this ticket
 - [ ] Any flaw the flow exposes (the overlay''s behaviour, the row''s verdict bookkeeping alongside Play''s download) is filed or ruled
 
-Measured background (2026-10-27, during T-381): a versionCode-1, versionName-1.0.0 prod APK installed on the 3T still answered You''re up to date - Play''s in-app update API is provenance-gated, so a sideloaded install receives no update offer at any version. The internal-test track is the standard route: Play owns the install and offers the update. Everything app-side is wired and waiting (startNativeUpdate starts Play''s flexible flow the moment Play offers).', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 10:18:20.261485+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+Measured background (2026-10-27, during T-381): a versionCode-1, versionName-1.0.0 prod APK installed on the 3T still answered You''re up to date - Play''s in-app update API is provenance-gated, so a sideloaded install receives no update offer at any version. The internal-test track is the standard route: Play owns the install and offers the update. Everything app-side is wired and waiting (startNativeUpdate starts Play''s flexible flow the moment Play offers).', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 10:19:48.880099+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
+
+Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
+
+Acceptance:
+- [ ] in every shipped locale, each reminder segment carries at least the English layout''s horizontal padding, measured not eyeballed
+- [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
+- [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
+- [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (368, 1, 368, 11, 4, 'The store builds awaiting review prove themselves on glass: the EAS production artifacts download, install and smoke on the phones before the public release', 'Goal: the owner approves the public release having verified the exact binaries users will get: the 2.4.39 production store builds awaiting Google''s and Apple''s review, downloaded from EAS and never compiled locally, identities recorded, and what each phone install displaces measured and tabled before any act.
 
 Where: the EAS builds through the expo MCP (read-only: list and download; never build, never push, never submit, the owner''s order of 2026-10-25); the attached OnePlus 3T and iPhone XS; the athan-smoke-28 emulator for the functional smoke of the exact Android binary; the app''s first sync, prayer list, countdown, notification arming and the qibla surface.
@@ -10631,9 +10631,11 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3767, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 10:13:28.002138+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "389"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3769, 381, 'comment', 'owner', 'Done: the Check for updates row shipped whole - the Other card''s new order, the gapped two-arrow glyph with its clockwise spin (mirrored anti-clockwise in the Arabic face), the green up-to-date tick, one check per opening of the settings sheet with the close re-arming it, and T-376''s modal path kept and now glass-proven. The owner verified every step on both phones across two sessions and saw the update modal; the update-found path''s Android half is measured as Play-gated and lives in #389, and the mimic-exposed foreground-sync flaw lives in #388. Merged at 2.11.15, both phones on 2.11.14.', NULL, '2026-10-27 10:13:54.867106+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3770, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 10:18:20.269772+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3773, 389, 'activity', 'owner', NULL, 'status', '2026-10-27 10:19:48.890064+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3768, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 10:13:54.838808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3771, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 10:18:20.302418+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release, ahead of a build the 3T installs from Play"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3772, 389, 'comment', 'owner', 'Parked at Awaiting Owner: nothing in the repository can advance this - the ticket needs the owner''s Play Console internal-test release and a Play-installed build on the 3T first. It moves the moment that release exists.', NULL, '2026-10-27 10:18:20.323168+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3774, 389, 'comment', 'owner', 'Column corrected to Blocked (owner''s read): Awaiting Owner parks a question for the owner to rule on, and this ticket asks nothing - it waits for an outside act, the Play Console internal-test release, which is Blocked by definition.', NULL, '2026-10-27 10:19:48.915887+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -12131,6 +12133,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (875, 387, 4, 'Done', 'completed', '2026-10-27 06:13:12.823738+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (877, 381, 9, 'Awaiting Owner', 'started', '2026-10-27 09:13:34.284158+00', '2026-10-27 10:13:54.836169+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (879, 389, 1, 'Backlog', 'backlog', '2026-10-27 10:13:27.92+00', '2026-10-27 10:18:20.266703+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (882, 389, 7, 'Blocked', 'started', '2026-10-27 10:19:48.884952+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12160,7 +12163,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (876, 381, 3, 'In progress', 'started', '2026-10-27 06:29:27.124825+00', '2026-10-27 09:13:34.284158+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (878, 388, 1, 'Backlog', 'backlog', '2026-10-27 10:09:00.804+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (880, 381, 4, 'Done', 'completed', '2026-10-27 10:13:54.836169+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (881, 389, 9, 'Awaiting Owner', 'started', '2026-10-27 10:18:20.266703+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (881, 389, 9, 'Awaiting Owner', 'started', '2026-10-27 10:18:20.266703+00', '2026-10-27 10:19:48.884952+00');
 
 
 --
@@ -28120,8 +28123,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 55);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4288);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 18);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4289);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 21);
 
 
 --
@@ -28383,7 +28386,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3772, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3774, true);
 
 
 --
@@ -28460,7 +28463,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 881, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 882, true);
 
 
 --
@@ -32943,5 +32946,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict zD3uBJuYYroty10lV8kq5GrIPrZBAg4lEo2sbCFwmhCl3HeoCkSj2hYsMiMnRk0
+\unrestrict QyutoG7scuBRmQoxUoDNYwftb7dqmESiOJ8dtlPmSI0U9UOcdqpuLRpGZ5WIc7p
 
