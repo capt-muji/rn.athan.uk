@@ -285,13 +285,15 @@ describe('sync', () => {
     await expect(syncPromise).resolves.toBe('done');
   });
 
-  it('throws on failure', async () => {
-    const error = new Error('Network failure');
+  it('completes on its stored days when the upgrade check fails', async () => {
+    const error = new Error('Upgrade check failed');
     mockHandleAppUpgrade.mockImplementation(() => {
       throw error;
     });
 
-    await expect(sync()).rejects.toThrow('Network failure');
+    await expect(sync()).resolves.toBeUndefined();
+
+    expect(logger.warn).toHaveBeenCalledWith('SYNC: Upgrade check failed, showing the days already stored', { error });
   });
 });
 
@@ -1366,11 +1368,12 @@ describe('initializeAppState behavior', () => {
 // =============================================================================
 
 describe('error handling', () => {
-  it('throws when upgrade check fails', async () => {
+  it('still throws when the upgrade check fails with nothing stored', async () => {
     const error = new Error('Sync failed');
     mockHandleAppUpgrade.mockImplementation(() => {
       throw error;
     });
+    mockGetPrayerByDate.mockReturnValue(null);
 
     await expect(sync()).rejects.toThrow('Sync failed');
   });
