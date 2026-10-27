@@ -57,7 +57,7 @@ long-press sheet (learned the hard way).
 | Settings sheet: Athan row | (540, 851) | first row of the Prayer card, sheet open at its default snap |
 | Settings sheet scrolled to Other: Language row | (516, 1509) | Arabic face; row اللغة at [143,1480][890,1538], sheet scrolled until the أخرى section (measured 2026-10-19). Below the fold at the default snap, and Maestro cannot text-find it there: scroll first, then tap |
 | Language sheet: English row | (888, 1450) | second list row, right-aligned [825,1421][952,1479] under the RTL sheet; list at its top, Arabic face (measured 2026-10-19) |
-| Settings sheet scrolled to Other: Language / What's new / Help rows | (540, 1373) / (540, 1499) / (540, 1626) | English face after two short swipes at the default snap; Help bounds [96,1579][984,1674], identical on 2.3.3 and 2.3.4 (measured 2026-10-21); What's new hides on a silent release and Help moves up one row |
+| Settings sheet scrolled to Other: Language / Help / What's new / Check for updates rows | (540, 1247) / (540, 1373) / (540, 1500) / (540, 1625) | English face after two `input swipe 540 1500 540 1000 400` flings at the default snap, centers from the live tree (re-measured 2026-10-27 when T-381 swapped What's New below Help and the update row settled last; row pitch ~127 px, so shift by the pitch for any deeper or shallower scroll); What's new hides on a silent release and every row below it moves up one pitch. The update row carries the download badge and the refresh ring in place of a chevron, and settles green after its one check per launch |
 
 ## Known dialogs
 

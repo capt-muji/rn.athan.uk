@@ -118,8 +118,8 @@ export default function BottomSheetSettings() {
 
   // The row's own entry into the one update flow. The launch budget is spent on the press itself -
   // a check that never answers still spends it - and manual skips only that call's throttle read,
-  // so the launch check keeps its 24-hour window. checkForUpdates never rejects, so no answer
-  // path is leftUnhandled
+  // so the launch check keeps its 24-hour window. checkForUpdates never rejects, so the promise
+  // has no rejection path to handle
   const handleCheckUpdatesPress = () => {
     if (getManualUpdateCheckSpent()) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
