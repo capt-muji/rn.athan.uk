@@ -5,8 +5,8 @@ const PORTRAIT_ONLY = ['UIInterfaceOrientationPortrait', 'UIInterfaceOrientation
 /**
  * Expo force-adds all four orientations to UISupportedInterfaceOrientations~ipad
  * when supportsTablet is on (Apple's multitasking rule), and a stale ~ipad
- * array survives in a warm ios/ dir even with requireFullScreen set. This
- * pins the key to portrait-only so every prebuild reproduces the lock.
+ * array survives in a warm ios/ dir. This pins the key to portrait-only so
+ * every prebuild reproduces the lock.
  */
 const withPortraitOnlyIpad = (config) => {
   return withInfoPlist(config, (config) => {

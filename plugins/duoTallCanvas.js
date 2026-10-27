@@ -33,9 +33,12 @@ const editAppDelegate = (contents) => {
 const editInfoPlist = (plist) => {
   plist.UISupportedInterfaceOrientations = PORTRAIT_PAIR;
   plist['UISupportedInterfaceOrientations~ipad'] = PORTRAIT_PAIR;
-  // TN3192: with the full-screen key the system resizes the scene discretely, honoring the declared
-  // pair, which is the tall canvas's presentation on a folding iPhone's inner display
-  plist.UIRequiresFullScreen = true;
+  // TN3192 deprecated UIRequiresFullScreen: unscoped, it freezes the Designed-for-iPad window
+  // on a Mac and opts the iPad out of resizable windows. iPhone-scoped it survives as the iOS 27
+  // discrete-scene-resize request, which is the tall canvas's presentation (Tech Talks 111461),
+  // so the phone fleet answers exactly as before.
+  delete plist.UIRequiresFullScreen;
+  plist['UIRequiresFullScreen~iphone'] = true;
   return plist;
 };
 

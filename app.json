@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.8.0",
+    "version": "2.8.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -11,7 +11,6 @@
     "ios": {
       "icon": "./assets/icons/config/icon-ios.png",
       "supportsTablet": true,
-      "requireFullScreen": true,
       "config": {
         "usesNonExemptEncryption": false
       },

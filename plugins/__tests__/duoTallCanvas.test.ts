@@ -100,7 +100,7 @@ describe('the AppDelegate portrait gate', () => {
 });
 
 describe('the Info.plist portrait pin', () => {
-  it('pins both orientation arrays to the portrait pair and keeps the full-screen key', () => {
+  it('pins both orientation arrays to the portrait pair and scopes the full-screen key to iPhone', () => {
     const edited = editInfoPlist({
       UISupportedInterfaceOrientations: [
         'UIInterfaceOrientationPortrait',
@@ -113,7 +113,14 @@ describe('the Info.plist portrait pin', () => {
 
     expect(edited.UISupportedInterfaceOrientations).toEqual(PORTRAIT_PAIR);
     expect(edited['UISupportedInterfaceOrientations~ipad']).toEqual(PORTRAIT_PAIR);
-    expect(edited.UIRequiresFullScreen).toBe(true);
+    expect(edited['UIRequiresFullScreen~iphone']).toBe(true);
+  });
+
+  it('drops an unscoped full-screen key, which is what froze the Mac and iPad window', () => {
+    const edited = editInfoPlist({ UIRequiresFullScreen: true });
+
+    expect(edited.UIRequiresFullScreen).toBeUndefined();
+    expect(edited['UIRequiresFullScreen~iphone']).toBe(true);
   });
 
   it('never declares a landscape value', () => {
@@ -129,5 +136,11 @@ describe('the app.json wiring', () => {
 
     const names = plugins.map((plugin) => (Array.isArray(plugin) ? plugin[0] : plugin));
     expect(names.indexOf('./plugins/duoTallCanvas')).toBe(names.indexOf('./plugins/portraitOnlyIpad') + 1);
+  });
+
+  it('declares no requireFullScreen, which would re-freeze the Mac and iPad window', () => {
+    const ios = JSON.parse(readFileSync('app.json', 'utf8')).expo.ios;
+
+    expect(ios.requireFullScreen).toBeUndefined();
   });
 });
