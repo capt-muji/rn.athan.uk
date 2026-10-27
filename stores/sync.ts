@@ -232,7 +232,11 @@ const fetchLastDayOfPreviousYear = () => {
  * 1. Sets up both standard and extra prayer sequences
  * 2. Starts the prayer time monitoring countdowns
  * 3. On 1 January without 31 December, asks for that day without waiting for it
- * 4. Pushes fresh data to the iOS widgets (failure-tolerant)
+ * 4. Pushes fresh data to the iOS widgets
+ *
+ * Every step is failure-tolerant over stored days: a failure is warned and the launch keeps its
+ * data, and only the sequence and countdown rebuilds still throw on a launch with nothing usable
+ * stored, where the error screen is the honest landing.
  *
  * @param date Current London date
  * @param deferWidgetRefresh Fire the widget push without awaiting it — the
@@ -549,6 +553,9 @@ const updatePrayerData = async () => {
  * 3. Fetches new data if required, carrying on when that fails while today to today+2 still has a stored day
  * 4. Initializes app state with current date
  *
+ * Every step carries step 3's rule: over stored days a failure is caught and warned, never thrown to the
+ * error screen whose Refresh would wipe those days.
+ *
  * @param options.deferWidgetRefresh Don't block completion on the iOS widget
  *   timeline push (startup only — the background task must await it)
  */
@@ -563,7 +570,7 @@ export const sync = async (options: { deferWidgetRefresh?: boolean } = {}) => {
       logger.warn('SYNC: Upgrade check failed, showing the days already stored', { error });
     }
 
-    let updateNeeded = true;
+    let updateNeeded: boolean;
     try {
       updateNeeded = needsDataUpdate();
     } catch (error) {
