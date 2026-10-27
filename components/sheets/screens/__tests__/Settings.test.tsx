@@ -18,7 +18,6 @@ import {
   decorationsEnabledAtom,
   hijriDateEnabledAtom,
   languageSheetModalAtom,
-  manualUpdateCheckSpentAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
@@ -26,7 +25,6 @@ import {
   settingsSheetModalAtom,
   showSecondsAtom,
   showTimePassedAtom,
-  updateCheckRowStateAtom,
 } from '@/stores/ui';
 
 import LanguageSheet from '../Language';
@@ -103,9 +101,6 @@ beforeEach(() => {
   mockQiblaGranted.value = true;
   mockCheckForUpdates.mockReset();
   mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: false }));
-  // The row's launch-scoped facts reset with the process, so each test starts a fresh launch
-  store.set(manualUpdateCheckSpentAtom, false);
-  store.set(updateCheckRowStateAtom, 'idle');
 });
 
 describe('the settings sheet outside the Ramadan season, Friday 11 September 2026 at 14:00', () => {
@@ -434,11 +429,16 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     try {
       await render(<SettingsSheet />);
 
-      await fireEvent.press(screen.getByRole('button', { name: 'التحقق من التحديثات' }));
+      // The turn stays clockwise in both faces; the glyph's wrapper carries the RTL mirror, and
+      // a mirrored clockwise turn is the anti-clockwise read (owner order 2026-10-27)
+      const row = screen.getByRole('button', { name: 'التحقق من التحديثات' });
+      const trailing = row.children[2] as unknown as ReactTestInstance;
+      expect(trailing).toHaveStyle({ transform: [{ scaleX: -1 }] });
+
+      await fireEvent.press(row);
 
       expect(screen.getByRole('button', { name: 'جارٍ التحقق من التحديثات...' })).toBeOnTheScreen();
-      // The mirrored face turns the mirrored way: anti-clockwise, the owner's ruling
-      expect(turned).toHaveBeenCalledWith(-360, { duration: 1000, easing: Reanimated.Easing.linear });
+      expect(turned).toHaveBeenCalledWith(360, { duration: 1000, easing: Reanimated.Easing.linear });
     } finally {
       setActiveLocale('en');
       await act(async () => {
@@ -496,7 +496,7 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(store.get(popupUpdateEnabledAtom)).toBe(false);
   });
 
-  it('starts no second check this launch: the press after the answer does nothing', async () => {
+  it('starts no second check while its sheet stays open: the press after the answer does nothing', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<SettingsSheet />);
 
@@ -510,17 +510,50 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(mockCheckForUpdates).not.toHaveBeenCalled();
   });
 
-  it('holds the spent check and its settled answer beyond the row, where a reopen reads them', async () => {
+  it('re-arms its one check when the sheet closes and opens again', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: false, upToDate: true }));
     await render(<SettingsSheet />);
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
     await settle();
-
-    // The row reads these through the store, so they are what a closed and reopened sheet finds
-    expect(store.get(manualUpdateCheckSpentAtom)).toBe(true);
-    expect(store.get(updateCheckRowStateAtom)).toBe('upToDate');
     expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
+
+    // Closing the sheet ends the session (owner order 2026-10-27): the budget re-arms and the row rests
+    await fireEvent(screen.getByText('Settings'), 'dismiss');
+    mockCheckForUpdates.mockClear();
+
+    expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
+
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    await settle();
+
+    expect(mockCheckForUpdates).toHaveBeenCalledTimes(1);
+    expect(mockCheckForUpdates).toHaveBeenCalledWith({ manual: true });
+    expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
+  });
+
+  it('drops the answer of a check whose sheet closed mid-flight', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    let answerCheck!: (verdict: { modal: boolean; upToDate: boolean }) => void;
+    mockCheckForUpdates.mockReturnValue(
+      new Promise<{ modal: boolean; upToDate: boolean }>((resolve) => {
+        answerCheck = resolve;
+      })
+    );
+    await render(<SettingsSheet />);
+    await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
+    expect(screen.getByRole('button', { name: 'Checking for updates...' })).toBeOnTheScreen();
+
+    await fireEvent(screen.getByText('Settings'), 'dismiss');
+
+    await act(async () => {
+      answerCheck({ modal: false, upToDate: true });
+      await Promise.resolve();
+    });
+
+    // The row rests: the settled answer belonged to the session the close ended
+    expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
+    expect(screen.queryByRole('button', { name: 'You’re up to date' })).not.toBeOnTheScreen();
   });
 
   it('gives a spent press no haptic', async () => {

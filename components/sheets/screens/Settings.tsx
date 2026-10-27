@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   cancelAnimation,
@@ -27,7 +27,6 @@ import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
-  getManualUpdateCheckSpent,
   hideSettingsSheet,
   hijriDateEnabledAtom,
   setPopupHelpEnabled,
@@ -40,8 +39,6 @@ import {
   showSecondsAtom,
   showSheet,
   showTimePassedAtom,
-  spendManualUpdateCheck,
-  updateCheckRowStateAtom,
 } from '@/stores/ui';
 
 import { SettingsToggle, Sheet } from '../parts';
@@ -54,6 +51,9 @@ const SETTINGS_PERF_NAME = 'sheet_settings';
 const UPTODATE_BADGE = '#16a34a';
 const UPTODATE_BADGE_BORDER = '#22c55e';
 
+/** The update row's three looks, scoped to one opening of the sheet */
+type UpdateRowState = 'idle' | 'checking' | 'upToDate';
+
 export default function BottomSheetSettings() {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
@@ -61,7 +61,7 @@ export default function BottomSheetSettings() {
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
-  const [updateRowState, setUpdateRowState] = useAtom(updateCheckRowStateAtom);
+  const [updateRowState, setUpdateRowState] = useState<UpdateRowState>('idle');
   const isChecking = updateRowState === 'checking';
   const isUpToDate = updateRowState === 'upToDate';
   const updateRowLabel = isChecking
@@ -70,21 +70,30 @@ export default function BottomSheetSettings() {
       ? t('settings.upToDate')
       : t('settings.checkUpdates');
 
+  // One check per opening of the sheet (owner order 2026-10-27). The spend and the session
+  // counter live in refs so a press reads them synchronously, and closing the sheet re-arms
+  const checkSpentRef = useRef(false);
+  const sheetSessionRef = useRef(0);
+
+  // Closing the sheet ends its session: the budget re-arms, the row rests, and an answer still
+  // in flight lands nowhere - the session counter has moved past it
+  const handleSheetDismiss = () => {
+    sheetSessionRef.current++;
+    checkSpentRef.current = false;
+    setUpdateRowState('idle');
+  };
+
   // The two arrows turn clockwise, round and round, for exactly as long as the check runs. The
-  // RTL face mirrors the row whole: the glyph flips and the turn runs the mirrored way
+  // RTL face mirrors the row whole: the glyph flips in its wrapper, and a mirrored clockwise
+  // turn is the anti-clockwise read
   const isRtlLayout = localeDirection(currentLocaleId()) === 'rtl';
   const spin = useSharedValue(0);
   useEffect(() => {
     if (!isChecking) return;
-    spin.value = withRepeat(
-      withTiming(isRtlLayout ? -360 : 360, { duration: ANIMATION.durationSlow, easing: Easing.linear }),
-      -1
-    );
+    spin.value = withRepeat(withTiming(360, { duration: ANIMATION.durationSlow, easing: Easing.linear }), -1);
     return () => cancelAnimation(spin);
-  }, [isChecking, isRtlLayout, spin]);
-  const refreshStyle = useAnimatedStyle(() => ({
-    transform: [{ scaleX: isRtlLayout ? -1 : 1 }, { rotate: `${spin.value}deg` }],
-  }));
+  }, [isChecking, spin]);
+  const spinStyle = useAnimatedStyle(() => ({ transform: [{ rotate: `${spin.value}deg` }] }));
 
   const handleAthanPress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -123,16 +132,19 @@ export default function BottomSheetSettings() {
     setTimeout(() => setPopupHelpEnabled(true), 150);
   };
 
-  // The row's own entry into the one update flow. The launch budget is spent on the press itself -
-  // a check that never answers still spends it - and manual skips only that call's throttle read,
-  // so the launch check keeps its 24-hour window. checkForUpdates never rejects, so the promise
-  // has no rejection path to handle
+  // The row's own entry into the one update flow. The sheet session's budget is spent on the
+  // press itself - a check that never answers still spends it - and manual skips only that
+  // call's throttle read, so the launch check keeps its 24-hour window. checkForUpdates never
+  // rejects, so the promise has no rejection path to handle
   const handleCheckUpdatesPress = () => {
-    if (getManualUpdateCheckSpent()) return;
+    if (checkSpentRef.current) return;
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    spendManualUpdateCheck();
+    checkSpentRef.current = true;
+    const session = sheetSessionRef.current;
     setUpdateRowState('checking');
     checkForUpdates({ manual: true }).then((result) => {
+      // The sheet closed on this check: its answer belongs to a session that has ended
+      if (session !== sheetSessionRef.current) return;
       if (result.modal) {
         // The modal renders under this sheet, so the sheet closes first - the What's New and
         // Help rows trust the same 150ms - and the row rests: the modal owns the message
@@ -155,6 +167,7 @@ export default function BottomSheetSettings() {
       icon={<SettingsIcon width={16} height={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['85%']}
       perfName={SETTINGS_PERF_NAME}
+      onDismiss={handleSheetDismiss}
       // The sound sheet is only reachable through this sheet: warming its
       // 32-row list on our first full open builds it invisibly, one tap
       // before it is needed (and off the launch path)
@@ -289,12 +302,11 @@ export default function BottomSheetSettings() {
           </View>
           <Text style={styles.whatsNewLabel}>{updateRowLabel}</Text>
           {isUpToDate ? null : (
-            <IconView
-              type={Icon.REFRESH}
-              size={SIZE.icon.sm}
-              color={COLORS.icon.primary}
-              animatedStyle={refreshStyle}
-            />
+            // The wrapper carries the RTL mirror: a flipped glyph under a clockwise turn reads
+            // anti-clockwise, the mirrored face's turn
+            <View style={isRtlLayout ? styles.refreshMirrored : undefined}>
+              <IconView type={Icon.REFRESH} size={SIZE.icon.sm} color={COLORS.icon.primary} animatedStyle={spinStyle} />
+            </View>
           )}
         </Pressable>
       </View>
@@ -358,6 +370,9 @@ const styles = StyleSheet.create({
   infoButtonSettled: {
     backgroundColor: UPTODATE_BADGE,
     borderColor: UPTODATE_BADGE_BORDER,
+  },
+  refreshMirrored: {
+    transform: [{ scaleX: -1 }],
   },
   whatsNewLabel: {
     flex: 1,
