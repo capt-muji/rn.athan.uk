@@ -48,12 +48,13 @@ import ColorPicker from './ColorPicker';
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SETTINGS_PERF_NAME = 'sheet_settings';
-// The settled row's green, the owner's "purple to a green colour": one row's settled state, not a palette role
-const UPTODATE_BADGE = '#16a34a';
-const UPTODATE_BADGE_BORDER = '#22c55e';
-// The failed check's red, the green tick's mirror (owner order 2026-10-27): same one-row scope
-const FAILED_BADGE = '#dc2626';
-const FAILED_BADGE_BORDER = '#ef4444';
+// The settled row's green, one rung darker at the owner's order ("not so bright", 2026-10-27):
+// one row's settled state, not a palette role
+const UPTODATE_BADGE = '#15803d';
+const UPTODATE_BADGE_BORDER = '#16a34a';
+// The failed check's red, the green tick's mirror, the same rung darker (owner order 2026-10-27)
+const FAILED_BADGE = '#b91c1c';
+const FAILED_BADGE_BORDER = '#dc2626';
 
 /** The update row's four looks, scoped to one opening of the sheet */
 type UpdateRowState = 'idle' | 'checking' | 'upToDate' | 'failed';
