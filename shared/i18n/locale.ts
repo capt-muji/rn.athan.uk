@@ -1,5 +1,5 @@
 /**
- * The locale resolution core: which of the twenty-two shipped locales the app speaks,
+ * The locale resolution core: which of the twenty-four shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -35,6 +35,8 @@ export const LOCALE_IDS = [
   'sq',
   'bs',
   'ps',
+  'ta',
+  'ml',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];

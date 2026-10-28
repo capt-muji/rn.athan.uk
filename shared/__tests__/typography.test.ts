@@ -96,7 +96,16 @@ describe('typographyFor', () => {
 
   it('resolves the Latin-shipped locales to the Roboto identity record', () => {
     for (const locale of LOCALE_IDS.filter(
-      (id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur' && id !== 'fa' && id !== 'bn' && id !== 'ps'
+      (id) =>
+        id !== 'ar' &&
+        id !== 'hi' &&
+        id !== 'th' &&
+        id !== 'ur' &&
+        id !== 'fa' &&
+        id !== 'bn' &&
+        id !== 'ps' &&
+        id !== 'ta' &&
+        id !== 'ml'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -141,6 +150,30 @@ describe('typographyFor', () => {
     expectScriptRecord(ty, 'NotoSansBengali-Regular', 'NotoSansBengali-Medium');
     // The pair's own 1.325em box does not clear its 1.403em win ink (this wave's own
     // measurement, decision 3), so ink-bearing surfaces take the 1.5em script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves ta to the Tamil pair with no script line box', () => {
+    const ty = typographyFor('ta');
+    expectScriptRecord(ty, 'NotoSansTamil-Regular', 'NotoSansTamil-Medium');
+    // The pair's own 1.240em box (ascent 870, descent -370, UPM 1000, both weights,
+    // this wave's own measurement, plan T-419 decision 7) already clears the script's
+    // ink: the win metrics match the box and the worst GPOS-stacked mark tops at 843
+    // units (0.843em, anusvara over a base) under the ascent, so no surface pins a
+    // script box, the Thai row-87 law
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ml to the Malayalam pair with the measured script line box', () => {
+    const ty = typographyFor('ml');
+    expectScriptRecord(ty, 'NotoSansMalayalam-Regular', 'NotoSansMalayalam-Medium');
+    // The pair's declared box and win ink are both 1.247em (ascent 864, descent -383,
+    // UPM 1000, both weights), but the script's own stacked ink runs past them: the
+    // GPOS reph-over-base rows top at 963 and 971 units (0.963em, 0.971em) against
+    // the 864 ascent (this wave's own measurement, plan T-419 decision 7), the Bengali
+    // matra case, so ink-bearing surfaces take the 1.5em script box the HINDI record
+    // already renders
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });

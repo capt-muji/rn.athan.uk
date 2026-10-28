@@ -1,5 +1,5 @@
 {
-  "_comment": "The null-props widget card's static strings (D44): a twenty-two-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_comment": "The null-props widget card's static strings (D44): a twenty-four-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
   "_surfaces": {
     "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
     "inline": "the accessoryInline neutral (en: Athan — prayer times)",
@@ -298,5 +298,31 @@
     "refreshLead": "Athan پرانیزئ",
     "refreshTail": "تازه کولو لپاره",
     "catchBody": "تازه کولو لپاره ایپ پرانیزئ"
+  },
+  "ta": {
+    "subtitle": "லண்டனுக்கான தொழுகை நேரங்கள்",
+    "inline": "Athan — தொழுகை நேரங்கள்",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "நேரங்களை ஏற்ற திறக்கவும்",
+    "staleTitle": "பழையது",
+    "staleBody": "புதுப்பிக்க செயலியைத் திறக்கவும்",
+    "staleInline": "Athan — புதுப்பிக்க திறக்கவும்",
+    "refreshLine": "புதுப்பிக்க Athan திறக்கவும்",
+    "refreshLead": "Athan திறக்கவும்",
+    "refreshTail": "புதுப்பிக்க",
+    "catchBody": "புதுப்பிக்க செயலியைத் திறக்கவும்"
+  },
+  "ml": {
+    "subtitle": "ലണ്ടനിലെ നമസ്കാര സമയങ്ങൾ",
+    "inline": "Athan — നമസ്കാര സമയങ്ങൾ",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "സമയങ്ങൾ ലോഡ് ചെയ്യാൻ തുറക്കുക",
+    "staleTitle": "കാലഹരണപ്പെട്ടു",
+    "staleBody": "റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക",
+    "staleInline": "Athan — റിഫ്രഷ് ചെയ്യാൻ തുറക്കുക",
+    "refreshLine": "റിഫ്രഷ് ചെയ്യാൻ Athan തുറക്കുക",
+    "refreshLead": "Athan തുറക്കുക",
+    "refreshTail": "റിഫ്രഷ് ചെയ്യാൻ",
+    "catchBody": "റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക"
   }
 }

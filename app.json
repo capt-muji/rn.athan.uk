@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.22.0",
+    "version": "2.23.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -42,7 +42,9 @@
           "de",
           "sq",
           "bs",
-          "ps"
+          "ps",
+          "ta",
+          "ml"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -123,7 +125,11 @@
             "./assets/fonts/NotoNaskhArabic-Regular.ttf",
             "./assets/fonts/NotoNaskhArabic-Medium.ttf",
             "./assets/fonts/NotoSansBengali-Regular.ttf",
-            "./assets/fonts/NotoSansBengali-Medium.ttf"
+            "./assets/fonts/NotoSansBengali-Medium.ttf",
+            "./assets/fonts/NotoSansTamil-Regular.ttf",
+            "./assets/fonts/NotoSansTamil-Medium.ttf",
+            "./assets/fonts/NotoSansMalayalam-Regular.ttf",
+            "./assets/fonts/NotoSansMalayalam-Medium.ttf"
           ]
         }
       ],
@@ -1607,6 +1613,118 @@
           "prayer_lock_widget_3_description": "د بل لمونځ وخت په شمېرنې.",
           "extras_lock_widget_3_display_name": "اضافي وختونه (بڼه ۳)",
           "extras_lock_widget_3_description": "بل اضافی وخت په شمېرنې."
+        }
+      },
+      "ta": {
+        "NSLocationWhenInUseUsageDescription": "உங்கள் இருப்பிடம் மக்காவின் திசையை அறியப் பயன்படுத்தப்படுகிறது. இது உங்கள் மொபைலை விட்டு வெளியே செல்வதில்லை.",
+        "NSUserNotificationsUsageDescription": "தொழுகை நேர அறிவிப்புகளைப் பெறவும்",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "அடுத்த தொழுகை (ஒளி)",
+            "A countdown to the next prayer.": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+            "Extra Times (Light)": "கூடுதல் நேரங்கள் (ஒளி)",
+            "A countdown to the next extra time.": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+            "Next Prayer (Dark)": "அடுத்த தொழுகை (இருள்)",
+            "Extra Times (Dark)": "கூடுதல் நேரங்கள் (இருள்)",
+            "Next Prayer (Layout 1)": "அடுத்த தொழுகை (அமைப்பு 1)",
+            "Countdown to the next prayer.": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+            "Extra Times (Layout 1)": "கூடுதல் நேரங்கள் (அமைப்பு 1)",
+            "Countdown to the next extra time.": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+            "Next Prayer (Layout 2)": "அடுத்த தொழுகை (அமைப்பு 2)",
+            "Next prayer time.": "அடுத்த தொழுகை நேரம்.",
+            "Extra Times (Layout 2)": "கூடுதல் நேரங்கள் (அமைப்பு 2)",
+            "Next extra time.": "அடுத்த கூடுதல் நேரம்.",
+            "Next Prayer (Layout 3)": "அடுத்த தொழுகை (அமைப்பு 3)",
+            "Next prayer time with a countdown.": "கவுண்டவுனுடன் அடுத்த தொழுகை நேரம்.",
+            "Extra Times (Layout 3)": "கூடுதல் நேரங்கள் (அமைப்பு 3)",
+            "Next extra time with a countdown.": "கவுண்டவுனுடன் அடுத்த கூடுதல் நேரம்."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "அடுத்த தொழுகை (ஒளி)",
+          "prayer_widget_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "extras_widget_display_name": "கூடுதல் நேரங்கள் (ஒளி)",
+          "extras_widget_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+          "prayer_widget_medium_display_name": "அடுத்த தொழுகை (ஒளி)",
+          "prayer_widget_medium_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "extras_widget_medium_display_name": "கூடுதல் நேரங்கள் (ஒளி)",
+          "extras_widget_medium_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+          "prayer_widget_dark_display_name": "அடுத்த தொழுகை (இருள்)",
+          "prayer_widget_dark_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "extras_widget_dark_display_name": "கூடுதல் நேரங்கள் (இருள்)",
+          "extras_widget_dark_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+          "prayer_widget_dark_medium_display_name": "அடுத்த தொழுகை (இருள்)",
+          "prayer_widget_dark_medium_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "extras_widget_dark_medium_display_name": "கூடுதல் நேரங்கள் (இருள்)",
+          "extras_widget_dark_medium_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+          "prayer_lock_widget_display_name": "அடுத்த தொழுகை (அமைப்பு 1)",
+          "prayer_lock_widget_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "extras_lock_widget_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 1)",
+          "extras_lock_widget_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
+          "prayer_lock_widget_2_display_name": "அடுத்த தொழுகை (அமைப்பு 2)",
+          "prayer_lock_widget_2_description": "அடுத்த தொழுகை நேரம்.",
+          "extras_lock_widget_2_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 2)",
+          "extras_lock_widget_2_description": "அடுத்த கூடுதல் நேரம்.",
+          "prayer_lock_widget_3_display_name": "அடுத்த தொழுகை (அமைப்பு 3)",
+          "prayer_lock_widget_3_description": "கவுண்டவுனுடன் அடுத்த தொழுகை நேரம்.",
+          "extras_lock_widget_3_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 3)",
+          "extras_lock_widget_3_description": "கவுண்டவுனுடன் அடுத்த கூடுதல் நேரம்."
+        }
+      },
+      "ml": {
+        "NSLocationWhenInUseUsageDescription": "മക്കയുടെ ദിശ കണ്ടെത്താൻ നിങ്ങളുടെ ലൊക്കേഷൻ ഉപയോഗിക്കുന്നു. ഇത് നിങ്ങളുടെ ഫോണിൽ നിന്ന് പുറത്തുപോകുന്നില്ല.",
+        "NSUserNotificationsUsageDescription": "നമസ്കാര സമയ അറിയിപ്പുകൾ സ്വീകരിക്കുക",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "അടുത്ത നമസ്കാരം (വെളിച്ചം)",
+            "A countdown to the next prayer.": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+            "Extra Times (Light)": "അധിക സമയങ്ങൾ (വെളിച്ചം)",
+            "A countdown to the next extra time.": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+            "Next Prayer (Dark)": "അടുത്ത നമസ്കാരം (ഇരുട്ട്)",
+            "Extra Times (Dark)": "അധിക സമയങ്ങൾ (ഇരുട്ട്)",
+            "Next Prayer (Layout 1)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 1)",
+            "Countdown to the next prayer.": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+            "Extra Times (Layout 1)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 1)",
+            "Countdown to the next extra time.": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+            "Next Prayer (Layout 2)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 2)",
+            "Next prayer time.": "അടുത്ത നമസ്കാര സമയം.",
+            "Extra Times (Layout 2)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 2)",
+            "Next extra time.": "അടുത്ത അധിക സമയം.",
+            "Next Prayer (Layout 3)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 3)",
+            "Next prayer time with a countdown.": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത നമസ്കാര സമയം.",
+            "Extra Times (Layout 3)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 3)",
+            "Next extra time with a countdown.": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത അധിക സമയം."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "അടുത്ത നമസ്കാരം (വെളിച്ചം)",
+          "prayer_widget_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "extras_widget_display_name": "അധിക സമയങ്ങൾ (വെളിച്ചം)",
+          "extras_widget_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_widget_medium_display_name": "അടുത്ത നമസ്കാരം (വെളിച്ചം)",
+          "prayer_widget_medium_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "extras_widget_medium_display_name": "അധിക സമയങ്ങൾ (വെളിച്ചം)",
+          "extras_widget_medium_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_widget_dark_display_name": "അടുത്ത നമസ്കാരം (ഇരുട്ട്)",
+          "prayer_widget_dark_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "extras_widget_dark_display_name": "അധിക സമയങ്ങൾ (ഇരുട്ട്)",
+          "extras_widget_dark_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_widget_dark_medium_display_name": "അടുത്ത നമസ്കാരം (ഇരുട്ട്)",
+          "prayer_widget_dark_medium_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "extras_widget_dark_medium_display_name": "അധിക സമയങ്ങൾ (ഇരുട്ട്)",
+          "extras_widget_dark_medium_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_lock_widget_display_name": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 1)",
+          "prayer_lock_widget_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "extras_lock_widget_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 1)",
+          "extras_lock_widget_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_lock_widget_2_display_name": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 2)",
+          "prayer_lock_widget_2_description": "അടുത്ത നമസ്കാര സമയം.",
+          "extras_lock_widget_2_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 2)",
+          "extras_lock_widget_2_description": "അടുത്ത അധിക സമയം.",
+          "prayer_lock_widget_3_display_name": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 3)",
+          "prayer_lock_widget_3_description": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത നമസ്കാര സമയം.",
+          "extras_lock_widget_3_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 3)",
+          "extras_lock_widget_3_description": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത അധിക സമയം."
         }
       }
     },

@@ -114,6 +114,43 @@ const BENGALI: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
+// Tamil has no R3 section 3 row, so this record's script box is this wave's own
+// measurement (plan T-419 decision 7): the pair's own hhea box is 1.240em (ascent
+// 870, descent -370, UPM 1000, both weights) and its win ink matches it, and the
+// worst GPOS-stacked mark (anusvara over a base) tops at 843 units (0.843em)
+// under that ascent, so the box clears the script's ink and the font's own
+// metrics serve - no script box, the Thai row-87 law
+const TAMIL: LocaleTypography = {
+  familyRegular: 'NotoSansTamil-Regular',
+  familyMedium: 'NotoSansTamil-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
+// Malayalam, same wave's own measurement: the declared hhea box and win ink are
+// both 1.247em (ascent 864, descent -383, UPM 1000, both weights), but the
+// script's stacked ink runs past them - the GPOS reph-over-base rows top at 963
+// and 971 units (0.963em and 0.971em, Regular and Medium) against the 864
+// ascent, the Bengali matra case - so ink-bearing surfaces take the 1.5em script
+// line the HINDI and BENGALI records already render
+const MALAYALAM: LocaleTypography = {
+  familyRegular: 'NotoSansMalayalam-Regular',
+  familyMedium: 'NotoSansMalayalam-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -154,6 +191,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   sq: LATIN,
   bs: LATIN,
   ps: URDU,
+  ta: TAMIL,
+  ml: MALAYALAM,
 };
 
 /**

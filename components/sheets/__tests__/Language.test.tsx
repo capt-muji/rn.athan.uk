@@ -1,5 +1,5 @@
 /**
- * The language sheet (D8, D26): the twenty-two native names in codepoint order, and a pick that closes
+ * The language sheet (D8, D26): the twenty-four native names in codepoint order, and a pick that closes
  * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
@@ -57,6 +57,8 @@ const SIX_NAMES = [
   'پښتو',
   'हिन्दी',
   'বাংলা',
+  'தமிழ்',
+  'മലയാളം',
   'ไทย',
 ] as const;
 
@@ -82,7 +84,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the twenty-two native names in codepoint order on the athan card pattern', async () => {
+  it('renders the twenty-four native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 

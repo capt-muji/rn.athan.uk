@@ -16,6 +16,7 @@ import { fr } from '@/shared/i18n/fr';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
@@ -24,6 +25,7 @@ import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
 import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
+import { ta } from '@/shared/i18n/ta';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
@@ -51,6 +53,8 @@ const CATALOGS: Record<string, Catalog> = {
   sq,
   bs,
   ps,
+  ta,
+  ml,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);

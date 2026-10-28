@@ -339,6 +339,32 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'تازه کولو لپاره',
       catchBody: 'تازه کولو لپاره ایپ پرانیزئ',
     },
+    ta: {
+      subtitle: 'லண்டனுக்கான தொழுகை நேரங்கள்',
+      inline: 'Athan — தொழுகை நேரங்கள்',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'நேரங்களை ஏற்ற திறக்கவும்',
+      staleTitle: 'பழையது',
+      staleBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+      staleInline: 'Athan — புதுப்பிக்க திறக்கவும்',
+      refreshLine: 'புதுப்பிக்க Athan திறக்கவும்',
+      refreshLead: 'Athan திறக்கவும்',
+      refreshTail: 'புதுப்பிக்க',
+      catchBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+    },
+    ml: {
+      subtitle: 'ലണ്ടനിലെ നമസ്കാര സമയങ്ങൾ',
+      inline: 'Athan — നമസ്കാര സമയങ്ങൾ',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'സമയങ്ങൾ ലോഡ് ചെയ്യാൻ തുറക്കുക',
+      staleTitle: 'കാലഹരണപ്പെട്ടു',
+      staleBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+      staleInline: 'Athan — റിഫ്രഷ് ചെയ്യാൻ തുറക്കുക',
+      refreshLine: 'റിഫ്രഷ് ചെയ്യാൻ Athan തുറക്കുക',
+      refreshLead: 'Athan തുറക്കുക',
+      refreshTail: 'റിഫ്രഷ് ചെയ്യാൻ',
+      catchBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   const localeKey = (
@@ -365,6 +391,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       'sq',
       'bs',
       'ps',
+      'ta',
+      'ml',
     ] as const
   ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`));
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -814,6 +842,32 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'تازه کولو لپاره',
       catchBody: 'تازه کولو لپاره ایپ پرانیزئ',
     },
+    ta: {
+      subtitle: 'லண்டனுக்கான தொழுகை நேரங்கள்',
+      inline: 'Athan — தொழுகை நேரங்கள்',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'நேரங்களை ஏற்ற திறக்கவும்',
+      staleTitle: 'பழையது',
+      staleBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+      staleInline: 'Athan — புதுப்பிக்க திறக்கவும்',
+      refreshLine: 'புதுப்பிக்க Athan திறக்கவும்',
+      refreshLead: 'Athan திறக்கவும்',
+      refreshTail: 'புதுப்பிக்க',
+      catchBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+    },
+    ml: {
+      subtitle: 'ലണ്ടനിലെ നമസ്കാര സമയങ്ങൾ',
+      inline: 'Athan — നമസ്കാര സമയങ്ങൾ',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'സമയങ്ങൾ ലോഡ് ചെയ്യാൻ തുറക്കുക',
+      staleTitle: 'കാലഹരണപ്പെട്ടു',
+      staleBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+      staleInline: 'Athan — റിഫ്രഷ് ചെയ്യാൻ തുറക്കുക',
+      refreshLine: 'റിഫ്രഷ് ചെയ്യാൻ Athan തുറക്കുക',
+      refreshLead: 'Athan തുറക്കുക',
+      refreshTail: 'റിഫ്രഷ് ചെയ്യാൻ',
+      catchBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   const localeKey = (
@@ -840,6 +894,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       'sq',
       'bs',
       'ps',
+      'ta',
+      'ml',
     ] as const
   ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`));
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1278,6 +1334,32 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'تازه کولو لپاره',
       catchBody: 'تازه کولو لپاره ایپ پرانیزئ',
     },
+    ta: {
+      subtitle: 'லண்டனுக்கான தொழுகை நேரங்கள்',
+      inline: 'Athan — தொழுகை நேரங்கள்',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'நேரங்களை ஏற்ற திறக்கவும்',
+      staleTitle: 'பழையது',
+      staleBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+      staleInline: 'Athan — புதுப்பிக்க திறக்கவும்',
+      refreshLine: 'புதுப்பிக்க Athan திறக்கவும்',
+      refreshLead: 'Athan திறக்கவும்',
+      refreshTail: 'புதுப்பிக்க',
+      catchBody: 'புதுப்பிக்க செயலியைத் திறக்கவும்',
+    },
+    ml: {
+      subtitle: 'ലണ്ടനിലെ നമസ്കാര സമയങ്ങൾ',
+      inline: 'Athan — നമസ്കാര സമയങ്ങൾ',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'സമയങ്ങൾ ലോഡ് ചെയ്യാൻ തുറക്കുക',
+      staleTitle: 'കാലഹരണപ്പെട്ടു',
+      staleBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+      staleInline: 'Athan — റിഫ്രഷ് ചെയ്യാൻ തുറക്കുക',
+      refreshLine: 'റിഫ്രഷ് ചെയ്യാൻ Athan തുറക്കുക',
+      refreshLead: 'Athan തുറക്കുക',
+      refreshTail: 'റിഫ്രഷ് ചെയ്യാൻ',
+      catchBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   const localeKey = (
@@ -1304,6 +1386,8 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       'sq',
       'bs',
       'ps',
+      'ta',
+      'ml',
     ] as const
   ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`));
   const staticRow = STATIC[localeKey ?? 'en'];
