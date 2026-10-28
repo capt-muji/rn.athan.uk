@@ -46,6 +46,40 @@ ${'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {'}`;
 
 const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
 
+const SCENE_MARKER = `@objc(SceneDelegate)
+class SceneDelegate: ExpoAppSceneDelegate {
+  // Extension point for config plugins
+}`;
+
+// iPadOS 27 resolves windowing orientation itself and overrides the root view controller's
+// portrait answer at runtime (T-401: the pair read back as the landscape mask under rotation),
+// so the posture holds only by re-requesting portrait geometry whenever the system lays the
+// scene out wide.
+const SCENE_BLOCK = `@objc(SceneDelegate)
+class SceneDelegate: ExpoAppSceneDelegate {
+  // Extension point for config plugins
+
+  public func scene(
+    _ scene: UIScene,
+    didUpdateCoordinateSpace coordinateSpace: UICoordinateSpace,
+    interfaceOrientation: UIInterfaceOrientation,
+    traitCollection: UITraitCollection
+  ) {
+    guard interfaceOrientation.isLandscape, let windowScene = scene as? UIWindowScene else { return }
+    windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))
+  }
+}`;
+
+const editSceneDelegate = (contents) => {
+  if (contents.includes('requestGeometryUpdate')) return contents;
+  if (!contents.includes(SCENE_MARKER)) {
+    throw new Error('duoTallCanvas: the SceneDelegate marker moved; read the new template');
+  }
+  return contents
+    .replace('internal import Expo', 'internal import Expo\nimport UIKit')
+    .replace(SCENE_MARKER, SCENE_BLOCK);
+};
+
 // The scene life cycle resolves the window's orientation from the root view controller, never
 // from the AppDelegate gate, so the stock factory controller's all-answer is what laid iPad
 // windows wide (T-401: the scene rotated landscapeRight under a portrait-only gate).
@@ -100,10 +134,18 @@ const editFullScreenKeys = (infoPlist) => {
 
 const withDuoTallCanvas = (config) =>
   withDangerousMod(
-    withAppDelegate(config, (cfg) => {
-      cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
-      return cfg;
-    }),
+    withDangerousMod(
+      withAppDelegate(config, (cfg) => {
+        cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
+        return cfg;
+      }),
+      'duoTallCanvasSceneDelegate',
+      async (cfg) => {
+        const delegatePath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'SceneDelegate.swift');
+        await writeFile(delegatePath, editSceneDelegate(await readFile(delegatePath, 'utf8')));
+        return cfg;
+      }
+    ),
     'duoTallCanvasFullScreen',
     async (cfg) => {
       // The prebuild's orientation pass writes the plist after every withInfoPlist edit here,
@@ -117,4 +159,5 @@ const withDuoTallCanvas = (config) =>
 
 module.exports = withDuoTallCanvas;
 module.exports.editAppDelegate = editAppDelegate;
+module.exports.editSceneDelegate = editSceneDelegate;
 module.exports.editFullScreenKeys = editFullScreenKeys;

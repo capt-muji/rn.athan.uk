@@ -7,8 +7,9 @@
 
 const { readFileSync } = require('node:fs');
 
-const { editAppDelegate, editFullScreenKeys } = require('../duoTallCanvas') as {
+const { editAppDelegate, editSceneDelegate, editFullScreenKeys } = require('../duoTallCanvas') as {
   editAppDelegate: (contents: string) => string;
+  editSceneDelegate: (contents: string) => string;
   editFullScreenKeys: (plist: Record<string, unknown>) => Record<string, unknown>;
 };
 
@@ -24,6 +25,19 @@ const IPAD_ALL_FOUR = [
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const GATE_SELECTOR = 'supportedInterfaceOrientationsFor window: UIWindow?';
 const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
+const SCENE_MARKER = 'class SceneDelegate: ExpoAppSceneDelegate {';
+
+/** The Expo SceneDelegate template abridged to the marker the surgery keys on */
+const sceneDelegateFixture = () =>
+  [
+    'internal import Expo',
+    '',
+    '@objc(SceneDelegate)',
+    SCENE_MARKER,
+    '  // Extension point for config plugins',
+    '}',
+    '',
+  ].join('\n');
 
 /** The Expo AppDelegate template abridged to the markers the surgery keys on; the real product
  * also carries the factory vars and a launch body, which the markers alone never touch */
@@ -189,6 +203,33 @@ class PortraitWindowController: UIViewController {
     );
 
     expect(editAppDelegate(warm)).toBe(warm);
+  });
+});
+
+describe('the scene geometry re-request', () => {
+  it('imports UIKit beside the internal Expo import', () => {
+    const edited = editSceneDelegate(sceneDelegateFixture());
+
+    expect(edited).toContain('import UIKit');
+    expect(edited.indexOf('import UIKit')).toBeGreaterThan(edited.indexOf('internal import Expo'));
+  });
+
+  it('re-requests portrait geometry when the scene lays out wide', () => {
+    const edited = editSceneDelegate(sceneDelegateFixture());
+
+    expect(edited).toContain('interfaceOrientation.isLandscape');
+    expect(edited).toContain('requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))');
+    expect(edited.indexOf('requestGeometryUpdate')).toBeGreaterThan(edited.indexOf(SCENE_MARKER));
+  });
+
+  it('is idempotent', () => {
+    const once = editSceneDelegate(sceneDelegateFixture());
+
+    expect(editSceneDelegate(once)).toBe(once);
+  });
+
+  it('throws when the template no longer carries the scene marker', () => {
+    expect(() => editSceneDelegate(sceneDelegateFixture().replace(SCENE_MARKER, 'class Other: NSObject {'))).toThrow();
   });
 });
 
