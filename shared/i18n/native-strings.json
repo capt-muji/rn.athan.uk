@@ -143,5 +143,53 @@
       "Extra Times (Layout 3)": "เวลาเพิ่มเติม (เลย์เอาต์ 3)",
       "Next extra time with a countdown.": "เวลาเพิ่มเติมถัดไปพร้อมนับถอยหลัง"
     }
+  },
+  "id": {
+    "NSLocationWhenInUseUsageDescription": "Lokasi Anda digunakan untuk menentukan arah Makkah dari tempat Anda berada. Lokasi tidak pernah meninggalkan ponsel Anda.",
+    "NSUserNotificationsUsageDescription": "Terima notifikasi waktu salat",
+    "gallery": {
+      "Next Prayer (Light)": "Salat Berikutnya (Terang)",
+      "A countdown to the next prayer.": "Hitung mundur menuju salat berikutnya.",
+      "Extra Times (Light)": "Waktu Tambahan (Terang)",
+      "A countdown to the next extra time.": "Hitung mundur menuju waktu tambahan berikutnya.",
+      "Next Prayer (Dark)": "Salat Berikutnya (Gelap)",
+      "Extra Times (Dark)": "Waktu Tambahan (Gelap)",
+      "Next Prayer (Layout 1)": "Salat Berikutnya (Tata Letak 1)",
+      "Countdown to the next prayer.": "Hitung mundur menuju salat berikutnya.",
+      "Extra Times (Layout 1)": "Waktu Tambahan (Tata Letak 1)",
+      "Countdown to the next extra time.": "Hitung mundur menuju waktu tambahan berikutnya.",
+      "Next Prayer (Layout 2)": "Salat Berikutnya (Tata Letak 2)",
+      "Next prayer time.": "Waktu salat berikutnya.",
+      "Extra Times (Layout 2)": "Waktu Tambahan (Tata Letak 2)",
+      "Next extra time.": "Waktu tambahan berikutnya.",
+      "Next Prayer (Layout 3)": "Salat Berikutnya (Tata Letak 3)",
+      "Next prayer time with a countdown.": "Waktu salat berikutnya dengan hitung mundur.",
+      "Extra Times (Layout 3)": "Waktu Tambahan (Tata Letak 3)",
+      "Next extra time with a countdown.": "Waktu tambahan berikutnya dengan hitung mundur."
+    }
+  },
+  "tr": {
+    "NSLocationWhenInUseUsageDescription": "Konumunuz, Mekke'nin bulunduğunuz yerden hangi yönde olduğunu hesaplamak için kullanılır. Asla telefonunuzdan çıkmaz.",
+    "NSUserNotificationsUsageDescription": "Namaz vakti bildirimleri alın",
+    "gallery": {
+      "Next Prayer (Light)": "Sonraki Namaz (Açık)",
+      "A countdown to the next prayer.": "Sonraki namaza geri sayım.",
+      "Extra Times (Light)": "Ek Vakitler (Açık)",
+      "A countdown to the next extra time.": "Sonraki ek vakte geri sayım.",
+      "Next Prayer (Dark)": "Sonraki Namaz (Koyu)",
+      "Extra Times (Dark)": "Ek Vakitler (Koyu)",
+      "Next Prayer (Layout 1)": "Sonraki Namaz (Düzen 1)",
+      "Countdown to the next prayer.": "Sonraki namaza geri sayım.",
+      "Extra Times (Layout 1)": "Ek Vakitler (Düzen 1)",
+      "Countdown to the next extra time.": "Sonraki ek vakte geri sayım.",
+      "Next Prayer (Layout 2)": "Sonraki Namaz (Düzen 2)",
+      "Next prayer time.": "Sonraki namaz vakti.",
+      "Extra Times (Layout 2)": "Ek Vakitler (Düzen 2)",
+      "Next extra time.": "Sonraki ek vakit.",
+      "Next Prayer (Layout 3)": "Sonraki Namaz (Düzen 3)",
+      "Next prayer time with a countdown.": "Geri sayımla sonraki namaz vakti.",
+      "Extra Times (Layout 3)": "Ek Vakitler (Düzen 3)",
+      "Next extra time with a countdown.": "Geri sayımla sonraki ek vakit."
+    }
   }
 }

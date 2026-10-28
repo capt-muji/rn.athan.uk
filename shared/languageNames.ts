@@ -8,9 +8,11 @@
 import type { LocaleId } from '@/shared/i18n/locale';
 
 export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
+  { id: 'id', name: 'Bahasa Indonesia' },
   { id: 'ms', name: 'Bahasa Melayu' },
   { id: 'en', name: 'English' },
   { id: 'so', name: 'Soomaali' },
+  { id: 'tr', name: 'Türkçe' },
   { id: 'ar', name: 'العربية' },
   { id: 'hi', name: 'हिन्दी' },
   { id: 'th', name: 'ไทย' },

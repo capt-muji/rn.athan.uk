@@ -1,20 +1,21 @@
 /**
- * The R2 mechanical gates over the six landed catalogs (D42), in-process so CI refuses
+ * The R2 mechanical gates over the landed catalogs (D42), in-process so CI refuses
  * a defective catalog without the plan folder. The provenance check has no twin here by
  * design: it is a planning artefact. The shipped suite pins the prayer names against
  * sourced-names.json, the committed copy of the research glossary.
  */
 
 import { ar } from '@/shared/i18n/ar';
-import type { Catalog } from '@/shared/i18n/en';
-import { en } from '@/shared/i18n/en';
+import { type Catalog, en } from '@/shared/i18n/en';
 import { hi } from '@/shared/i18n/hi';
+import { id } from '@/shared/i18n/id';
 import { ms } from '@/shared/i18n/ms';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
 import { th } from '@/shared/i18n/th';
+import { tr } from '@/shared/i18n/tr';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th };
+const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar']);
 const BRAND = 'Athan';

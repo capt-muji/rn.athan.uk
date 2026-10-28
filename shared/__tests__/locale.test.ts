@@ -30,6 +30,8 @@ describe('resolveInitialLocale', () => {
     ['hi-IN', 'hi', 'hi'],
     ['th-TH', 'th', 'th'],
     ['en-GB', 'en', 'en'],
+    ['id-ID', 'id', 'id'],
+    ['tr-TR', 'tr', 'tr'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });

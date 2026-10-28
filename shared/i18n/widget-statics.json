@@ -1,5 +1,5 @@
 {
-  "_comment": "The null-props widget card's static strings (D44): a six-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_comment": "The null-props widget card's static strings (D44): an eight-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
   "_surfaces": {
     "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
     "inline": "the accessoryInline neutral (en: Athan — prayer times)",
@@ -90,5 +90,31 @@
     "refreshLead": "เปิด Athan",
     "refreshTail": "เพื่อรีเฟรช",
     "catchBody": "เปิดแอปเพื่อรีเฟรช"
+  },
+  "id": {
+    "subtitle": "Waktu salat untuk London",
+    "inline": "Athan — waktu salat",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Buka untuk memuat waktu",
+    "staleTitle": "Kedaluwarsa",
+    "staleBody": "Buka aplikasi untuk menyegarkan",
+    "staleInline": "Athan — buka untuk menyegarkan waktu",
+    "refreshLine": "Buka Athan untuk menyegarkan",
+    "refreshLead": "Buka Athan",
+    "refreshTail": "untuk menyegarkan",
+    "catchBody": "Buka aplikasi untuk menyegarkan"
+  },
+  "tr": {
+    "subtitle": "Londra için namaz vakitleri",
+    "inline": "Athan — namaz vakitleri",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Vakitleri yüklemek için açın",
+    "staleTitle": "Güncel değil",
+    "staleBody": "Yenilemek için uygulamayı açın",
+    "staleInline": "Athan — vakitleri yenilemek için açın",
+    "refreshLine": "Yenilemek için Athan uygulamasını açın",
+    "refreshLead": "Athan uygulamasını açın",
+    "refreshTail": "yenilemek için",
+    "catchBody": "Yenilemek için uygulamayı açın"
   }
 }
