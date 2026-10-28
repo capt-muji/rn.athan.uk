@@ -1,7 +1,7 @@
 /**
  * The locale typography map (ticket 74 R1.5-R1.10): under ar every size and
  * line height resolves Math.round(n * 1) over the bundled Arabic faces and
- * letter spacing resolves 0; the five other locales resolve the Roboto
+ * letter spacing resolves 0; the Latin-record locales resolve the Roboto
  * families with identity mappings, so their rendered bytes stay pre-change.
  */
 

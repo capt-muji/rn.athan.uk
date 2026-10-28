@@ -383,5 +383,125 @@
       "Extra Times (Layout 3)": "অতিরিক্ত সময় (বিন্যাস ৩)",
       "Next extra time with a countdown.": "গণনাসহ পরবর্তী অতিরিক্ত সময়।"
     }
+  },
+  "ru": {
+    "NSLocationWhenInUseUsageDescription": "Ваше местоположение используется, чтобы определить, в какую сторону от вас находится Мекка. Оно никогда не покидает ваш телефон.",
+    "NSUserNotificationsUsageDescription": "Получайте уведомления о временах намаза",
+    "gallery": {
+      "Next Prayer (Light)": "Следующий намаз (Светлый)",
+      "A countdown to the next prayer.": "Обратный отсчёт до следующего намаза.",
+      "Extra Times (Light)": "Дополнительные времена (Светлый)",
+      "A countdown to the next extra time.": "Обратный отсчёт до следующего дополнительного времени.",
+      "Next Prayer (Dark)": "Следующий намаз (Тёмный)",
+      "Extra Times (Dark)": "Дополнительные времена (Тёмный)",
+      "Next Prayer (Layout 1)": "Следующий намаз (Макет 1)",
+      "Countdown to the next prayer.": "Отсчёт до следующего намаза.",
+      "Extra Times (Layout 1)": "Дополнительные времена (Макет 1)",
+      "Countdown to the next extra time.": "Отсчёт до следующего дополнительного времени.",
+      "Next Prayer (Layout 2)": "Следующий намаз (Макет 2)",
+      "Next prayer time.": "Время следующего намаза.",
+      "Extra Times (Layout 2)": "Дополнительные времена (Макет 2)",
+      "Next extra time.": "Время следующего дополнительного времени.",
+      "Next Prayer (Layout 3)": "Следующий намаз (Макет 3)",
+      "Next prayer time with a countdown.": "Время следующего намаза с обратным отсчётом.",
+      "Extra Times (Layout 3)": "Дополнительные времена (Макет 3)",
+      "Next extra time with a countdown.": "Время следующего дополнительного времени с обратным отсчётом."
+    }
+  },
+  "az": {
+    "NSLocationWhenInUseUsageDescription": "Məkanınız, Məkkənin sizdən hansı tərəfdə olduğunu müəyyən etmək üçün istifadə olunur. Heç vaxt telefonunuzdan çıxmır.",
+    "NSUserNotificationsUsageDescription": "Namaz vaxtı bildirişləri alın",
+    "gallery": {
+      "Next Prayer (Light)": "Növbəti namaz (Açıq)",
+      "A countdown to the next prayer.": "Növbəti namaza qədər geri sayım.",
+      "Extra Times (Light)": "Əlavə vaxtlar (Açıq)",
+      "A countdown to the next extra time.": "Növbəti əlavə vaxta qədər geri sayım.",
+      "Next Prayer (Dark)": "Növbəti namaz (Tünd)",
+      "Extra Times (Dark)": "Əlavə vaxtlar (Tünd)",
+      "Next Prayer (Layout 1)": "Növbəti namaz (Quruluş 1)",
+      "Countdown to the next prayer.": "Növbəti namaza qədər sayım.",
+      "Extra Times (Layout 1)": "Əlavə vaxtlar (Quruluş 1)",
+      "Countdown to the next extra time.": "Növbəti əlavə vaxta qədər sayım.",
+      "Next Prayer (Layout 2)": "Növbəti namaz (Quruluş 2)",
+      "Next prayer time.": "Növbəti namazın vaxtı.",
+      "Extra Times (Layout 2)": "Əlavə vaxtlar (Quruluş 2)",
+      "Next extra time.": "Növbəti əlavə vaxt.",
+      "Next Prayer (Layout 3)": "Növbəti namaz (Quruluş 3)",
+      "Next prayer time with a countdown.": "Geri sayımla növbəti namazın vaxtı.",
+      "Extra Times (Layout 3)": "Əlavə vaxtlar (Quruluş 3)",
+      "Next extra time with a countdown.": "Geri sayımla növbəti əlavə vaxt."
+    }
+  },
+  "de": {
+    "NSLocationWhenInUseUsageDescription": "Ihr Standort wird verwendet, um festzustellen, in welche Richtung Mekka von Ihnen aus liegt. Er verlässt Ihr Telefon nie.",
+    "NSUserNotificationsUsageDescription": "Benachrichtigungen zu Gebetszeiten erhalten",
+    "gallery": {
+      "Next Prayer (Light)": "Nächstes Gebet (Hell)",
+      "A countdown to the next prayer.": "Countdown zum nächsten Gebet.",
+      "Extra Times (Light)": "Zusatzzeiten (Hell)",
+      "A countdown to the next extra time.": "Countdown zur nächsten Zusatzzeit.",
+      "Next Prayer (Dark)": "Nächstes Gebet (Dunkel)",
+      "Extra Times (Dark)": "Zusatzzeiten (Dunkel)",
+      "Next Prayer (Layout 1)": "Nächstes Gebet (Layout 1)",
+      "Countdown to the next prayer.": "Countdown zum nächsten Gebet.",
+      "Extra Times (Layout 1)": "Zusatzzeiten (Layout 1)",
+      "Countdown to the next extra time.": "Countdown zur nächsten Zusatzzeit.",
+      "Next Prayer (Layout 2)": "Nächstes Gebet (Layout 2)",
+      "Next prayer time.": "Zeit des nächsten Gebets.",
+      "Extra Times (Layout 2)": "Zusatzzeiten (Layout 2)",
+      "Next extra time.": "Nächste Zusatzzeit.",
+      "Next Prayer (Layout 3)": "Nächstes Gebet (Layout 3)",
+      "Next prayer time with a countdown.": "Zeit des nächsten Gebets mit Countdown.",
+      "Extra Times (Layout 3)": "Zusatzzeiten (Layout 3)",
+      "Next extra time with a countdown.": "Nächste Zusatzzeit mit Countdown."
+    }
+  },
+  "sq": {
+    "NSLocationWhenInUseUsageDescription": "Vendndodhja jote përdoret për të kuptuar në cilën anë ndodhet Meka nga ti. Kurrë nuk del nga telefoni yt.",
+    "NSUserNotificationsUsageDescription": "Merr njoftime për kohët e namazit",
+    "gallery": {
+      "Next Prayer (Light)": "Namazi i ardhshëm (E ndritur)",
+      "A countdown to the next prayer.": "Numërim mbrapsht deri në namazin e ardhshëm.",
+      "Extra Times (Light)": "Kohët shtesë (E ndritur)",
+      "A countdown to the next extra time.": "Numërim mbrapsht deri në kohën shtesë të ardhshme.",
+      "Next Prayer (Dark)": "Namazi i ardhshëm (E errët)",
+      "Extra Times (Dark)": "Kohët shtesë (E errët)",
+      "Next Prayer (Layout 1)": "Namazi i ardhshëm (Skema 1)",
+      "Countdown to the next prayer.": "Numërimi mbrapsht për namazin e ardhshëm.",
+      "Extra Times (Layout 1)": "Kohët shtesë (Skema 1)",
+      "Countdown to the next extra time.": "Numërimi mbrapsht për kohën shtesë të ardhshme.",
+      "Next Prayer (Layout 2)": "Namazi i ardhshëm (Skema 2)",
+      "Next prayer time.": "Koha e namazit të ardhshëm.",
+      "Extra Times (Layout 2)": "Kohët shtesë (Skema 2)",
+      "Next extra time.": "Koha shtesë e ardhshme.",
+      "Next Prayer (Layout 3)": "Namazi i ardhshëm (Skema 3)",
+      "Next prayer time with a countdown.": "Koha e namazit të ardhshëm me numërim mbrapsht.",
+      "Extra Times (Layout 3)": "Kohët shtesë (Skema 3)",
+      "Next extra time with a countdown.": "Koha shtesë e ardhshme me numërim mbrapsht."
+    }
+  },
+  "bs": {
+    "NSLocationWhenInUseUsageDescription": "Vaša lokacija se koristi za određivanje u kojem se smjeru od vas nalazi Meka. Nikada ne napušta vaš telefon.",
+    "NSUserNotificationsUsageDescription": "Prima obavještenja o vremenima namaza",
+    "gallery": {
+      "Next Prayer (Light)": "Sljedeći namaz (Svijetli)",
+      "A countdown to the next prayer.": "Odbrojavanje do sljedećeg namaza.",
+      "Extra Times (Light)": "Dodatna vremena (Svijetla)",
+      "A countdown to the next extra time.": "Odbrojavanje do sljedećeg dodatnog vremena.",
+      "Next Prayer (Dark)": "Sljedeći namaz (Tamni)",
+      "Extra Times (Dark)": "Dodatna vremena (Tamna)",
+      "Next Prayer (Layout 1)": "Sljedeći namaz (Raspored 1)",
+      "Countdown to the next prayer.": "Odbrojavanje do sljedećeg namaza.",
+      "Extra Times (Layout 1)": "Dodatna vremena (Raspored 1)",
+      "Countdown to the next extra time.": "Odbrojavanje do sljedećeg dodatnog vremena.",
+      "Next Prayer (Layout 2)": "Sljedeći namaz (Raspored 2)",
+      "Next prayer time.": "Vrijeme sljedećeg namaza.",
+      "Extra Times (Layout 2)": "Dodatna vremena (Raspored 2)",
+      "Next extra time.": "Sljedeće dodatno vrijeme.",
+      "Next Prayer (Layout 3)": "Sljedeći namaz (Raspored 3)",
+      "Next prayer time with a countdown.": "Vrijeme sljedećeg namaza s odbrojavanjem.",
+      "Extra Times (Layout 3)": "Dodatna vremena (Raspored 3)",
+      "Next extra time with a countdown.": "Sljedeće dodatno vrijeme s odbrojavanjem."
+    }
   }
 }

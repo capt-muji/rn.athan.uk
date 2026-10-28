@@ -38,7 +38,28 @@ for (const property of literal.properties) {
   catalog[property.key.value] = property.value.value;
 }
 
-const LOCALES = ['ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz', 'sw', 'ha', 'pt', 'ur', 'fa', 'bn'];
+const LOCALES = [
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+];
 const englishHash = createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
 
 const lock = Object.fromEntries(LOCALES.map((loc) => [loc, englishHash]));

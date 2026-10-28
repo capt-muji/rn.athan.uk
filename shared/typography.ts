@@ -141,6 +141,13 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ur: URDU,
   fa: ARABIC,
   bn: BENGALI,
+  // Roboto covers ru's Cyrillic, az's schwa and every sq/bs/de diacritic
+  // (measured with fontTools, plan T-419 decision 7), so all five take LATIN
+  ru: LATIN,
+  az: LATIN,
+  de: LATIN,
+  sq: LATIN,
+  bs: LATIN,
 };
 
 /**

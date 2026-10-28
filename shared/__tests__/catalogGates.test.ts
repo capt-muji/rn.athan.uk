@@ -6,7 +6,10 @@
  */
 
 import { ar } from '@/shared/i18n/ar';
+import { az } from '@/shared/i18n/az';
 import { bn } from '@/shared/i18n/bn';
+import { bs } from '@/shared/i18n/bs';
+import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { fa } from '@/shared/i18n/fa';
 import { fr } from '@/shared/i18n/fr';
@@ -15,15 +18,38 @@ import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { ms } from '@/shared/i18n/ms';
 import { pt } from '@/shared/i18n/pt';
+import { ru } from '@/shared/i18n/ru';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
+import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn };
+const CATALOGS: Record<string, Catalog> = {
+  ar,
+  ms,
+  so,
+  hi,
+  th,
+  id,
+  tr,
+  fr,
+  uz,
+  sw,
+  ha,
+  pt,
+  ur,
+  fa,
+  bn,
+  ru,
+  az,
+  de,
+  sq,
+  bs,
+};
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa']);
 const BRAND = 'Athan';

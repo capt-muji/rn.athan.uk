@@ -40,6 +40,11 @@ describe('resolveInitialLocale', () => {
     ['ur-PK', 'ur', 'ur'],
     ['fa-IR', 'fa', 'fa'],
     ['bn-BD', 'bn', 'bn'],
+    ['ru-RU', 'ru', 'ru'],
+    ['az-AZ', 'az', 'az'],
+    ['de-DE', 'de', 'de'],
+    ['sq-AL', 'sq', 'sq'],
+    ['bs-BA', 'bs', 'bs'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });
