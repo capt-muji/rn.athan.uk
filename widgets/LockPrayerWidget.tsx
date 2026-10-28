@@ -159,10 +159,10 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectTitle}
         </Text>
-        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectSubtitle}
         </Text>
       </VStack>
@@ -198,11 +198,11 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
-          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleTitle}
           </Text>
-          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleBody}
           </Text>
         </VStack>
@@ -250,10 +250,10 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         <HStack spacing={0}>
           <Text
             modifiers={[
-              font({ size: 14, weight: 'bold' }),
+              font({ size: 17, weight: 'bold' }),
               foregroundStyle(WHITE),
               lineLimit(1),
-              minimumScaleFactor(0.6),
+              minimumScaleFactor(0.83),
               frame({ maxWidth: Infinity, alignment: 'trailing' }),
               padding({ trailing: 3 }),
             ]}>
@@ -263,11 +263,11 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             timerInterval={segment}
             countsDown
             modifiers={[
-              font({ size: 14, weight: 'medium' }),
+              font({ size: 17, weight: 'medium' }),
               monospacedDigit(),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
-              minimumScaleFactor(0.6),
+              minimumScaleFactor(0.83),
               frame({ maxWidth: Infinity, alignment: 'leading' }),
               padding({ leading: 3 }),
             ]}
@@ -403,10 +403,10 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectTitle}
         </Text>
-        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectSubtitle}
         </Text>
       </VStack>
@@ -442,11 +442,11 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
-          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleTitle}
           </Text>
-          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleBody}
           </Text>
         </VStack>
@@ -485,10 +485,10 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         <HStack spacing={0}>
           <Text
             modifiers={[
-              font({ size: 14, weight: 'bold' }),
+              font({ size: 17, weight: 'bold' }),
               foregroundStyle(WHITE),
               lineLimit(1),
-              minimumScaleFactor(0.6),
+              minimumScaleFactor(0.83),
               frame({ maxWidth: Infinity, alignment: 'trailing' }),
               padding({ trailing: 3 }),
             ]}>
@@ -496,11 +496,11 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           </Text>
           <Text
             modifiers={[
-              font({ size: 14, weight: 'medium' }),
+              font({ size: 17, weight: 'medium' }),
               monospacedDigit(),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
-              minimumScaleFactor(0.6),
+              minimumScaleFactor(0.83),
               frame({ maxWidth: Infinity, alignment: 'leading' }),
               padding({ leading: 3 }),
             ]}>
@@ -639,10 +639,10 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 11, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectTitle}
         </Text>
-        <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
           {staticRow.rectSubtitle}
         </Text>
       </VStack>
@@ -685,11 +685,11 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={17} color={WHITE} />
-          <Text modifiers={[font({ size: 17, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleTitle}
           </Text>
-          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.staleBody}
           </Text>
         </VStack>
@@ -735,11 +735,23 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
         <HStack spacing={6}>
-          <Text modifiers={[font({ size: 14, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+          <Text
+            modifiers={[
+              font({ size: 16, weight: 'medium' }),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+            ]}>
             {props.nextName}
           </Text>
           <Text
-            modifiers={[font({ size: 14, weight: 'medium' }), monospacedDigit(), foregroundStyle(WHITE), lineLimit(1)]}>
+            modifiers={[
+              font({ size: 16, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+            ]}>
             {props.nextTime}
           </Text>
         </HStack>
@@ -747,11 +759,12 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           timerInterval={segment}
           countsDown
           modifiers={[
-            font({ size: 14, weight: 'medium' }),
+            font({ size: 16, weight: 'medium' }),
             monospacedDigit(),
             multilineTextAlignment('center'),
             foregroundStyle(WHITE_MUTED),
             lineLimit(1),
+            minimumScaleFactor(0.88),
           ]}
         />
       </VStack>
