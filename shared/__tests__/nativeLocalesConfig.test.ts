@@ -2,7 +2,7 @@
  * Native strings from committed config (D43, D46): every per-locale native
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
- * table, and the locale declarations cover the six-language set on both
+ * table, and the locale declarations cover the sixteen-language set on both
  * platforms.
  */
 
@@ -20,8 +20,26 @@ const NATIVE = JSON.parse(readFileSync(join(ROOT, 'shared', 'i18n', 'native-stri
   }
 >;
 
-const LOCALES = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
-const NON_EN = LOCALES.slice(1) as readonly ('ar' | 'ms' | 'so' | 'hi' | 'th')[];
+const LOCALES = [
+  'en',
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+] as const;
+type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
+const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
 
 /** The widget kinds' config entries from the expo-widgets plugin block */
 const widgetKinds = (): Array<{ name: string; displayName: string; description: string }> => {
@@ -73,7 +91,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('declares the six locales in CFBundleLocalizations with the display name unchanged', () => {
+  it('declares the sixteen locales in CFBundleLocalizations with the display name unchanged', () => {
     const ios = app.ios as { infoPlist?: Record<string, unknown> };
     const infoPlist = (ios.infoPlist ?? {}) as Record<string, unknown>;
     expect(infoPlist.CFBundleLocalizations).toEqual([...LOCALES]);
@@ -164,7 +182,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('builds the Android locales_config with the six locales', () => {
+  it('builds the Android locales_config with the sixteen locales', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
 
@@ -173,7 +191,7 @@ describe('native strings from committed config', () => {
     for (const locale of LOCALES) {
       expect(xml).toContain(`<locale android:name="${locale}"/>`);
     }
-    expect(xml.match(/<locale /g)).toHaveLength(6);
+    expect(xml.match(/<locale /g)).toHaveLength(16);
     expect(xml).toContain('<locale-config xmlns:android="http://schemas.android.com/apk/res/android">');
   });
 });

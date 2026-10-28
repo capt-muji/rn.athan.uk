@@ -1,6 +1,6 @@
 /**
  * The widget statics table (D44, R7.2): every neutral, stale and catch card
- * in both widget modules draws its copy from an inline six-language table
+ * in both widget modules draws its copy from an inline sixteen-language table
  * keyed by the device locale the widget process itself reads through the
  * runtime patch's __expoWidgetDeviceLocale global. This suite pins the
  * rendered bytes to the plan's table row for row, locale for locale, and the
@@ -183,7 +183,24 @@ const TABLE = JSON.parse(
   readFileSync(join(__dirname, '..', '..', 'shared', 'i18n', 'widget-statics.json'), 'utf8')
 ) as Record<string, Record<string, string>>;
 
-const LOCALES = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
+const LOCALES = [
+  'en',
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;
 
