@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.28.0",
+    "version": "2.29.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -52,7 +52,9 @@
           "tl",
           "ff",
           "te",
-          "gu"
+          "gu",
+          "kn",
+          "am"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -147,7 +149,11 @@
             "./assets/fonts/NotoSansTelugu-Regular.ttf",
             "./assets/fonts/NotoSansTelugu-Medium.ttf",
             "./assets/fonts/NotoSansGujarati-Regular.ttf",
-            "./assets/fonts/NotoSansGujarati-Medium.ttf"
+            "./assets/fonts/NotoSansGujarati-Medium.ttf",
+            "./assets/fonts/NotoSansKannada-Regular.ttf",
+            "./assets/fonts/NotoSansKannada-Medium.ttf",
+            "./assets/fonts/NotoSansEthiopic-Regular.ttf",
+            "./assets/fonts/NotoSansEthiopic-Medium.ttf"
           ]
         }
       ],
@@ -2191,6 +2197,118 @@
           "prayer_lock_widget_3_description": "કાઉન્ટડાઉન સાથે આગલી નમાજનો સમય.",
           "extras_lock_widget_3_display_name": "વધારાના સમય (લેઆઉટ 3)",
           "extras_lock_widget_3_description": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
+        }
+      },
+      "kn": {
+        "NSLocationWhenInUseUsageDescription": "ನಿಮ್ಮ ಸ್ಥಳವು ನೀವು ಇರುವ ಸ್ಥಳದಿಂದ ಮಕ್ಕಾದ ದಿಕ್ಕನ್ನು ತಿಳಿಯಲು ಬಳಸಲಾಗುತ್ತದೆ. ಅದು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಹೊರಹೋಗುವುದಿಲ್ಲ.",
+        "NSUserNotificationsUsageDescription": "ನಮಾಜ್ ಸಮಯ ಅಧಿಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿ",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "ಮುಂದಿನ ನಮಾಜ್ (ಬೆಳಕು)",
+            "A countdown to the next prayer.": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+            "Extra Times (Light)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಬೆಳಕು)",
+            "A countdown to the next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+            "Next Prayer (Dark)": "ಮುಂದಿನ ನಮಾಜ್ (ಕಪ್ಪು)",
+            "Extra Times (Dark)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಕಪ್ಪು)",
+            "Next Prayer (Layout 1)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 1)",
+            "Countdown to the next prayer.": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+            "Extra Times (Layout 1)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 1)",
+            "Countdown to the next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+            "Next Prayer (Layout 2)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 2)",
+            "Next prayer time.": "ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+            "Extra Times (Layout 2)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 2)",
+            "Next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ.",
+            "Next Prayer (Layout 3)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 3)",
+            "Next prayer time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+            "Extra Times (Layout 3)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 3)",
+            "Next extra time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಬೆಳಕು)",
+          "prayer_widget_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "extras_widget_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಬೆಳಕು)",
+          "extras_widget_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_widget_medium_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಬೆಳಕು)",
+          "prayer_widget_medium_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "extras_widget_medium_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಬೆಳಕು)",
+          "extras_widget_medium_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_widget_dark_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಕಪ್ಪು)",
+          "prayer_widget_dark_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "extras_widget_dark_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಕಪ್ಪು)",
+          "extras_widget_dark_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_widget_dark_medium_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಕಪ್ಪು)",
+          "prayer_widget_dark_medium_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "extras_widget_dark_medium_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಕಪ್ಪು)",
+          "extras_widget_dark_medium_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_lock_widget_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 1)",
+          "prayer_lock_widget_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "extras_lock_widget_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 1)",
+          "extras_lock_widget_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_lock_widget_2_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 2)",
+          "prayer_lock_widget_2_description": "ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+          "extras_lock_widget_2_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 2)",
+          "extras_lock_widget_2_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ.",
+          "prayer_lock_widget_3_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 3)",
+          "prayer_lock_widget_3_description": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+          "extras_lock_widget_3_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 3)",
+          "extras_lock_widget_3_description": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ."
+        }
+      },
+      "am": {
+        "NSLocationWhenInUseUsageDescription": "እርስዎ ያሉበት ቦታ መካ የሚገኝበትን አቅጣጫ ለማወቅ ይጠቀማል። ከስልክዎ አይወጣም።",
+        "NSUserNotificationsUsageDescription": "የሶላት ጊዜ ማሳወቂያዎችን ይቀበሉ",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "ቀጣይ ሶላት (ብርሃን)",
+            "A countdown to the next prayer.": "ለቀጣዩ ሶላት ቆጣሪ።",
+            "Extra Times (Light)": "ተጨማሪ ጊዜዎች (ብርሃን)",
+            "A countdown to the next extra time.": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+            "Next Prayer (Dark)": "ቀጣይ ሶላት (ጨለማ)",
+            "Extra Times (Dark)": "ተጨማሪ ጊዜዎች (ጨለማ)",
+            "Next Prayer (Layout 1)": "ቀጣይ ሶላት (አቀራረብ 1)",
+            "Countdown to the next prayer.": "ለቀጣዩ ሶላት ቆጣሪ።",
+            "Extra Times (Layout 1)": "ተጨማሪ ጊዜዎች (አቀራረብ 1)",
+            "Countdown to the next extra time.": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+            "Next Prayer (Layout 2)": "ቀጣይ ሶላት (አቀራረብ 2)",
+            "Next prayer time.": "የቀጣዩ ሶላት ጊዜ።",
+            "Extra Times (Layout 2)": "ተጨማሪ ጊዜዎች (አቀራረብ 2)",
+            "Next extra time.": "ቀጣይ ተጨማሪ ጊዜ።",
+            "Next Prayer (Layout 3)": "ቀጣይ ሶላት (አቀራረብ 3)",
+            "Next prayer time with a countdown.": "ከቆጣሪ ጋር የቀጣዩ ሶላት ጊዜ።",
+            "Extra Times (Layout 3)": "ተጨማሪ ጊዜዎች (አቀራረብ 3)",
+            "Next extra time with a countdown.": "ከቆጣሪ ጋር ቀጣይ ተጨማሪ ጊዜ።"
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "ቀጣይ ሶላት (ብርሃን)",
+          "prayer_widget_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "extras_widget_display_name": "ተጨማሪ ጊዜዎች (ብርሃን)",
+          "extras_widget_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+          "prayer_widget_medium_display_name": "ቀጣይ ሶላት (ብርሃን)",
+          "prayer_widget_medium_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "extras_widget_medium_display_name": "ተጨማሪ ጊዜዎች (ብርሃን)",
+          "extras_widget_medium_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+          "prayer_widget_dark_display_name": "ቀጣይ ሶላት (ጨለማ)",
+          "prayer_widget_dark_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "extras_widget_dark_display_name": "ተጨማሪ ጊዜዎች (ጨለማ)",
+          "extras_widget_dark_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+          "prayer_widget_dark_medium_display_name": "ቀጣይ ሶላት (ጨለማ)",
+          "prayer_widget_dark_medium_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "extras_widget_dark_medium_display_name": "ተጨማሪ ጊዜዎች (ጨለማ)",
+          "extras_widget_dark_medium_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+          "prayer_lock_widget_display_name": "ቀጣይ ሶላት (አቀራረብ 1)",
+          "prayer_lock_widget_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "extras_lock_widget_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 1)",
+          "extras_lock_widget_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+          "prayer_lock_widget_2_display_name": "ቀጣይ ሶላት (አቀራረብ 2)",
+          "prayer_lock_widget_2_description": "የቀጣዩ ሶላት ጊዜ።",
+          "extras_lock_widget_2_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 2)",
+          "extras_lock_widget_2_description": "ቀጣይ ተጨማሪ ጊዜ።",
+          "prayer_lock_widget_3_display_name": "ቀጣይ ሶላት (አቀራረብ 3)",
+          "prayer_lock_widget_3_description": "ከቆጣሪ ጋር የቀጣዩ ሶላት ጊዜ።",
+          "extras_lock_widget_3_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 3)",
+          "extras_lock_widget_3_description": "ከቆጣሪ ጋር ቀጣይ ተጨማሪ ጊዜ።"
         }
       }
     },

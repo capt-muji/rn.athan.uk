@@ -38,8 +38,10 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'gu', name: 'ગુજરાતી' },
   { id: 'ta', name: 'தமிழ்' },
   { id: 'te', name: 'తెలుగు' },
+  { id: 'kn', name: 'ಕನ್ನಡ' },
   { id: 'ml', name: 'മലയാളം' },
   { id: 'th', name: 'ไทย' },
+  { id: 'am', name: 'አማርኛ' },
   { id: 'zh-Hans', name: '简体中文' },
   { id: 'zh-Hant', name: '繁體中文' },
 ];

@@ -55,6 +55,8 @@ describe('resolveInitialLocale', () => {
     ['ff-SN', 'ff', 'ff'],
     ['te-IN', 'te', 'te'],
     ['gu-IN', 'gu', 'gu'],
+    ['kn-IN', 'kn', 'kn'],
+    ['am-ET', 'am', 'am'],
     // Decision 9, plan T-419: the zh pair resolves by script subtag, then by the
     // TW/HK/MO region list CLDR's likely-subtags answers, and bare zh reads
     // Simplified (R4 A.4: a bare zh entry must never serve a Traditional reader)

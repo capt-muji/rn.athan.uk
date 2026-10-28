@@ -767,5 +767,53 @@
       "Extra Times (Layout 3)": "વધારાના સમય (લેઆઉટ 3)",
       "Next extra time with a countdown.": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
     }
+  },
+  "kn": {
+    "NSLocationWhenInUseUsageDescription": "ನಿಮ್ಮ ಸ್ಥಳವು ನೀವು ಇರುವ ಸ್ಥಳದಿಂದ ಮಕ್ಕಾದ ದಿಕ್ಕನ್ನು ತಿಳಿಯಲು ಬಳಸಲಾಗುತ್ತದೆ. ಅದು ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಹೊರಹೋಗುವುದಿಲ್ಲ.",
+    "NSUserNotificationsUsageDescription": "ನಮಾಜ್ ಸಮಯ ಅಧಿಸೂಚನೆಗಳನ್ನು ಸ್ವೀಕರಿಸಿ",
+    "gallery": {
+      "Next Prayer (Light)": "ಮುಂದಿನ ನಮಾಜ್ (ಬೆಳಕು)",
+      "A countdown to the next prayer.": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+      "Extra Times (Light)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಬೆಳಕು)",
+      "A countdown to the next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+      "Next Prayer (Dark)": "ಮುಂದಿನ ನಮಾಜ್ (ಕಪ್ಪು)",
+      "Extra Times (Dark)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಕಪ್ಪು)",
+      "Next Prayer (Layout 1)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 1)",
+      "Countdown to the next prayer.": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+      "Extra Times (Layout 1)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 1)",
+      "Countdown to the next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
+      "Next Prayer (Layout 2)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 2)",
+      "Next prayer time.": "ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+      "Extra Times (Layout 2)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 2)",
+      "Next extra time.": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ.",
+      "Next Prayer (Layout 3)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 3)",
+      "Next prayer time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+      "Extra Times (Layout 3)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 3)",
+      "Next extra time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ."
+    }
+  },
+  "am": {
+    "NSLocationWhenInUseUsageDescription": "እርስዎ ያሉበት ቦታ መካ የሚገኝበትን አቅጣጫ ለማወቅ ይጠቀማል። ከስልክዎ አይወጣም።",
+    "NSUserNotificationsUsageDescription": "የሶላት ጊዜ ማሳወቂያዎችን ይቀበሉ",
+    "gallery": {
+      "Next Prayer (Light)": "ቀጣይ ሶላት (ብርሃን)",
+      "A countdown to the next prayer.": "ለቀጣዩ ሶላት ቆጣሪ።",
+      "Extra Times (Light)": "ተጨማሪ ጊዜዎች (ብርሃን)",
+      "A countdown to the next extra time.": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+      "Next Prayer (Dark)": "ቀጣይ ሶላት (ጨለማ)",
+      "Extra Times (Dark)": "ተጨማሪ ጊዜዎች (ጨለማ)",
+      "Next Prayer (Layout 1)": "ቀጣይ ሶላት (አቀራረብ 1)",
+      "Countdown to the next prayer.": "ለቀጣዩ ሶላት ቆጣሪ።",
+      "Extra Times (Layout 1)": "ተጨማሪ ጊዜዎች (አቀራረብ 1)",
+      "Countdown to the next extra time.": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
+      "Next Prayer (Layout 2)": "ቀጣይ ሶላት (አቀራረብ 2)",
+      "Next prayer time.": "የቀጣዩ ሶላት ጊዜ።",
+      "Extra Times (Layout 2)": "ተጨማሪ ጊዜዎች (አቀራረብ 2)",
+      "Next extra time.": "ቀጣይ ተጨማሪ ጊዜ።",
+      "Next Prayer (Layout 3)": "ቀጣይ ሶላት (አቀራረብ 3)",
+      "Next prayer time with a countdown.": "ከቆጣሪ ጋር የቀጣዩ ሶላት ጊዜ።",
+      "Extra Times (Layout 3)": "ተጨማሪ ጊዜዎች (አቀራረብ 3)",
+      "Next extra time with a countdown.": "ከቆጣሪ ጋር ቀጣይ ተጨማሪ ጊዜ።"
+    }
   }
 }

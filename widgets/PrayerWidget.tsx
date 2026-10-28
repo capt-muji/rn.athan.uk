@@ -642,6 +642,32 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'રિફ્રેશ કરવા',
       catchBody: 'રિફ્રેશ કરવા એપ ખોલો',
     },
+    kn: {
+      subtitle: 'ಲಂಡನ್‌ನ ನಮಾಜ್ ಸಮಯಗಳು',
+      inline: 'Athan — ನಮಾಜ್ ಸಮಯಗಳು',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'ಸಮಯ ಲೋಡ್ ಮಾಡಲು ತೆರೆಯಿರಿ',
+      staleTitle: 'ಹಳೆಯದು',
+      staleBody: 'ರಿಫ್ರೆಶ್ ಮಾಡಲು ಆ್ಯಪ್ ತೆರೆಯಿರಿ',
+      staleInline: 'Athan — ಸಮಯ ರಿಫ್ರೆಶ್ ಮಾಡಲು ತೆರೆಯಿರಿ',
+      refreshLine: 'ರಿಫ್ರೆಶ್ ಮಾಡಲು Athan ತೆರೆಯಿರಿ',
+      refreshLead: 'Athan ತೆರೆಯಿರಿ',
+      refreshTail: 'ರಿಫ್ರೆಶ್ ಮಾಡಲು',
+      catchBody: 'ರಿಫ್ರೆಶ್ ಮಾಡಲು ಆ್ಯಪ್ ತೆರೆಯಿರಿ',
+    },
+    am: {
+      subtitle: 'የለንደን የሶላት ጊዜዎች',
+      inline: 'Athan — የሶላት ጊዜዎች',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'ጊዜዎችን ለመጫን ይክፈቱ',
+      staleTitle: 'ያረጀ',
+      staleBody: 'ለማደስ መተግበሪያውን ይክፈቱ',
+      staleInline: 'Athan — ጊዜዎችን ለማደስ ይክፈቱ',
+      refreshLine: 'ለማደስ Athan ይክፈቱ',
+      refreshLead: 'Athan ይክፈቱ',
+      refreshTail: 'ለማደስ',
+      catchBody: 'ለማደስ መተግበሪያውን ይክፈቱ',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -690,6 +716,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'ff',
         'te',
         'gu',
+        'kn',
+        'am',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

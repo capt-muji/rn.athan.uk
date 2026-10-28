@@ -111,7 +111,9 @@ describe('typographyFor', () => {
         id !== 'bm' &&
         id !== 'ff' &&
         id !== 'te' &&
-        id !== 'gu'
+        id !== 'gu' &&
+        id !== 'kn' &&
+        id !== 'am'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -230,6 +232,26 @@ describe('typographyFor', () => {
     expectScriptRecord(ty, 'NotoSansGujarati-Regular', 'NotoSansGujarati-Medium');
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves kn to the Kannada pair with the measured script line box', () => {
+    const ty = typographyFor('kn');
+    // The Noto Sans Kannada v2.006 pair's hhea box is 1.349em (ascent 809,
+    // descent -540, UPM 1000, both weights) while its win ink spans 1.645em
+    // (winAscent 1105, winDescent 540), so the 1.5em house line does not clear
+    // it and this record pins 1.65em, the measured ink rounded up
+    expectScriptRecord(ty, 'NotoSansKannada-Regular', 'NotoSansKannada-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(23);
+    expect(ty.scriptLineHeight?.(15)).toBe(25);
+  });
+
+  it('resolves am to the Ethiopic pair with no script line box', () => {
+    const ty = typographyFor('am');
+    // The Noto Sans Ethiopic v2.102 pair's hhea box is 1.362em (ascent 1069,
+    // descent -293, UPM 1000, both weights) and its win ink matches exactly
+    // (1069/293), so the font's own metrics serve - the Thai row-87 law
+    expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 
   it('resolves om and tl to the Roboto identity record', () => {

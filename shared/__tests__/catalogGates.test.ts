@@ -5,6 +5,7 @@
  * sourced-names.json, the committed copy of the research glossary.
  */
 
+import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
 import { bm } from '@/shared/i18n/bm';
@@ -19,6 +20,7 @@ import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { kn } from '@/shared/i18n/kn';
 import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
 import { om } from '@/shared/i18n/om';
@@ -71,6 +73,8 @@ const CATALOGS: Record<string, Catalog> = {
   ff,
   te,
   gu,
+  kn,
+  am,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);

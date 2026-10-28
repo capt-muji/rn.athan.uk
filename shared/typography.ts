@@ -254,6 +254,40 @@ const GUJARATI: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
+// Kannada has no coverage in any bundled face, so this wave bundles the Noto Sans
+// Kannada v2.006 pair. Its hhea box is 1.349em (ascent 809, descent -540, UPM 1000,
+// both weights) while its win ink spans 1.645em (winAscent 1105, winDescent 540),
+// so the 1.5em house line does not clear the measured ink: this record pins 1.65em,
+// the only record off the house value, the measurement rounded up
+const KANNADA: LocaleTypography = {
+  familyRegular: 'NotoSansKannada-Regular',
+  familyMedium: 'NotoSansKannada-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.65),
+};
+
+// Ethiopic, same wave's own measurement: the Noto Sans Ethiopic v2.102 pair's
+// hhea box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and its
+// win ink matches it exactly (winAscent 1069, winDescent 293), so the box clears
+// the ink and the font's own metrics serve - the Thai row-87 law
+const ETHIOPIC: LocaleTypography = {
+  familyRegular: 'NotoSansEthiopic-Regular',
+  familyMedium: 'NotoSansEthiopic-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -293,6 +327,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ff: AFRICAN,
   te: TELUGU,
   gu: GUJARATI,
+  kn: KANNADA,
+  am: ETHIOPIC,
 };
 
 /**
