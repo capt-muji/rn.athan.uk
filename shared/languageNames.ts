@@ -29,6 +29,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'ru', name: 'Русский' },
   { id: 'kk', name: 'Қазақша' },
   { id: 'ky', name: 'Кыргызча' },
+  { id: 'tg', name: 'Тоҷикӣ' },
   { id: 'ur', name: 'اردو' },
   { id: 'ar', name: 'العربية' },
   { id: 'fa', name: 'فارسی' },

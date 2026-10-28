@@ -44,6 +44,7 @@ describe('resolveInitialLocale', () => {
     ['nl-NL', 'nl', 'nl'],
     ['kk-KZ', 'kk', 'kk'],
     ['ky-KG', 'ky', 'ky'],
+    ['tg-TJ', 'tg', 'tg'],
     ['ru-RU', 'ru', 'ru'],
     ['az-AZ', 'az', 'az'],
     ['de-DE', 'de', 'de'],

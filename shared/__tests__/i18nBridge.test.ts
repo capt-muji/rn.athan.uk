@@ -38,6 +38,7 @@ import { so } from '@/shared/i18n/so';
 import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
+import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
@@ -76,6 +77,7 @@ const CATALOGS: Record<string, Catalog> = {
   nl,
   kk,
   ky,
+  tg,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -152,7 +154,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(30);
+    expect(Object.keys(CATALOGS)).toHaveLength(31);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

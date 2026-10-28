@@ -719,5 +719,29 @@
       "Extra Times (Layout 3)": "Кошумча убакыттар (3-чийме)",
       "Next extra time with a countdown.": "Кери эсептөө менен кийинки кошумча убакыт."
     }
+  },
+  "tg": {
+    "NSLocationWhenInUseUsageDescription": "Ҷойгиршавии шумо барои муайян кардани он ки Макка аз ҷои истодаатон ба кадом тараф аст, истифода мешавад. Он ҳеҷ гоҳ аз телефони шумо берун намеравад.",
+    "NSUserNotificationsUsageDescription": "Огоҳиномаҳо дар бораи вақти намоз гиред",
+    "gallery": {
+      "Next Prayer (Light)": "Намози навбатӣ (равшан)",
+      "A countdown to the next prayer.": "Ҳисоби баръакс ба намози навбатӣ.",
+      "Extra Times (Light)": "Вақтҳои иловагӣ (равшан)",
+      "A countdown to the next extra time.": "Ҳисоби баръакс ба вақти иловагии навбатӣ.",
+      "Next Prayer (Dark)": "Намози навбатӣ (торик)",
+      "Extra Times (Dark)": "Вақтҳои иловагӣ (торик)",
+      "Next Prayer (Layout 1)": "Намози навбатӣ (тарҳи 1)",
+      "Countdown to the next prayer.": "Ҳисоби баръакс ба намози навбатӣ.",
+      "Extra Times (Layout 1)": "Вақтҳои иловагӣ (тарҳи 1)",
+      "Countdown to the next extra time.": "Ҳисоби баръакс ба вақти иловагии навбатӣ.",
+      "Next Prayer (Layout 2)": "Намози навбатӣ (тарҳи 2)",
+      "Next prayer time.": "Вақти намози навбатӣ.",
+      "Extra Times (Layout 2)": "Вақтҳои иловагӣ (тарҳи 2)",
+      "Next extra time.": "Вақти иловагии навбатӣ.",
+      "Next Prayer (Layout 3)": "Намози навбатӣ (тарҳи 3)",
+      "Next prayer time with a countdown.": "Вақти намози навбатӣ бо ҳисоби баръакс.",
+      "Extra Times (Layout 3)": "Вақтҳои иловагӣ (тарҳи 3)",
+      "Next extra time with a countdown.": "Вақти иловагии навбатӣ бо ҳисоби баръакс."
+    }
   }
 }

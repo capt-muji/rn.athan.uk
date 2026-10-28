@@ -402,5 +402,18 @@
     "refreshLead": "Athan ачыңыз",
     "refreshTail": "жаңыртуу үчүн",
     "catchBody": "Жаңыртуу үчүн колдонмону ачыңыз"
+  },
+  "tg": {
+    "subtitle": "Вақтҳои намоз дар Лондон",
+    "inline": "Athan — вақтҳои намоз",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Барои бор кардани вақтҳо кушоед",
+    "staleTitle": "Кӯҳнашуда",
+    "staleBody": "Барои навсозӣ барномаро кушоед",
+    "staleInline": "Athan — барои навсозӣ кушоед",
+    "refreshLine": "Барои навсозӣ Athan-ро кушоед",
+    "refreshLead": "Athan-ро кушоед",
+    "refreshTail": "барои навсозӣ",
+    "catchBody": "Барои навсозӣ барномаро кушоед"
   }
 }
