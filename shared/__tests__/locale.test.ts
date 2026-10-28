@@ -36,6 +36,8 @@ describe('resolveInitialLocale', () => {
     ['uz-UZ', 'uz', 'uz'],
     ['sw-KE', 'sw', 'sw'],
     ['ha-NG', 'ha', 'ha'],
+    ['pt-BR', 'pt', 'pt'],
+    ['ur-PK', 'ur', 'ur'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });
@@ -140,11 +142,20 @@ describe('chevronFor', () => {
       setActiveLocale('en');
     }
   });
+
+  it('mirrors the chevron under ur, the second shipped RTL locale', () => {
+    setActiveLocale('ur');
+    try {
+      expect(chevronFor()).toBe('\u2039');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
 });
 
 describe('sentenceComma', () => {
-  it('carries the Arabic comma under ar', () => {
-    setActiveLocale('ar');
+  it.each(['ar', 'ur'] as const)('carries the Arabic comma under %s', (locale) => {
+    setActiveLocale(locale);
     try {
       expect(sentenceComma()).toBe('\u060C');
     } finally {

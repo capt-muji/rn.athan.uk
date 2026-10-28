@@ -287,5 +287,53 @@
       "Extra Times (Layout 3)": "Lokutan Ƙari (Tsari 3)",
       "Next extra time with a countdown.": "Lokacin ƙari mai zuwa da kirgawa."
     }
+  },
+  "pt": {
+    "NSLocationWhenInUseUsageDescription": "A sua localização é usada para determinar a direção de Makkah a partir do local onde está. Nunca sai do seu telefone.",
+    "NSUserNotificationsUsageDescription": "Receber notificações dos horários de oração",
+    "gallery": {
+      "Next Prayer (Light)": "Oração Seguinte (Claro)",
+      "A countdown to the next prayer.": "Uma contagem decrescente até a próxima oração.",
+      "Extra Times (Light)": "Horários Extra (Claro)",
+      "A countdown to the next extra time.": "Uma contagem decrescente até o próximo horário extra.",
+      "Next Prayer (Dark)": "Oração Seguinte (Escuro)",
+      "Extra Times (Dark)": "Horários Extra (Escuro)",
+      "Next Prayer (Layout 1)": "Oração Seguinte (Disposição 1)",
+      "Countdown to the next prayer.": "Contagem decrescente até a próxima oração.",
+      "Extra Times (Layout 1)": "Horários Extra (Disposição 1)",
+      "Countdown to the next extra time.": "Contagem decrescente até o próximo horário extra.",
+      "Next Prayer (Layout 2)": "Oração Seguinte (Disposição 2)",
+      "Next prayer time.": "Hora da próxima oração.",
+      "Extra Times (Layout 2)": "Horários Extra (Disposição 2)",
+      "Next extra time.": "Próximo horário extra.",
+      "Next Prayer (Layout 3)": "Oração Seguinte (Disposição 3)",
+      "Next prayer time with a countdown.": "Hora da próxima oração com contagem decrescente.",
+      "Extra Times (Layout 3)": "Horários Extra (Disposição 3)",
+      "Next extra time with a countdown.": "Próximo horário extra com contagem decrescente."
+    }
+  },
+  "ur": {
+    "NSLocationWhenInUseUsageDescription": "آپ کا مقام استعمال ہوتا ہے تاکہ آپ کے موجودہ مقام سے مکہ کی سمت معلوم کی جا سکے۔ یہ کبھی آپ کے فون سے باہر نہیں جاتا۔",
+    "NSUserNotificationsUsageDescription": "نماز کے اوقات کی اطلاعات وصول کریں",
+    "gallery": {
+      "Next Prayer (Light)": "اگلی نماز (ہلکا)",
+      "A countdown to the next prayer.": "اگلی نماز تک گنتی۔",
+      "Extra Times (Light)": "اضافی اوقات (ہلکا)",
+      "A countdown to the next extra time.": "اگلے اضافی وقت تک گنتی۔",
+      "Next Prayer (Dark)": "اگلی نماز (گہرا)",
+      "Extra Times (Dark)": "اضافی اوقات (گہرا)",
+      "Next Prayer (Layout 1)": "اگلی نماز (خاکہ 1)",
+      "Countdown to the next prayer.": "اگلی نماز تک گنتی۔",
+      "Extra Times (Layout 1)": "اضافی اوقات (خاکہ 1)",
+      "Countdown to the next extra time.": "اگلے اضافی وقت تک گنتی۔",
+      "Next Prayer (Layout 2)": "اگلی نماز (خاکہ 2)",
+      "Next prayer time.": "اگلی نماز کا وقت۔",
+      "Extra Times (Layout 2)": "اضافی اوقات (خاکہ 2)",
+      "Next extra time.": "اگلا اضافی وقت۔",
+      "Next Prayer (Layout 3)": "اگلی نماز (خاکہ 3)",
+      "Next prayer time with a countdown.": "اگلی نماز کا وقت گنتی کے ساتھ۔",
+      "Extra Times (Layout 3)": "اضافی اوقات (خاکہ 3)",
+      "Next extra time with a countdown.": "اگلا اضافی وقت گنتی کے ساتھ۔"
+    }
   }
 }

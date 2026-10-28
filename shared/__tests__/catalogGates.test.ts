@@ -12,16 +12,18 @@ import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { ms } from '@/shared/i18n/ms';
+import { pt } from '@/shared/i18n/pt';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
 import { sw } from '@/shared/i18n/sw';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
+import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha };
+const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar']);
+const RTL = new Set(['ar', 'ur']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 

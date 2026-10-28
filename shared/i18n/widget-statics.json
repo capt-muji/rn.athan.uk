@@ -168,5 +168,31 @@
     "refreshLead": "Buɗe Athan",
     "refreshTail": "don sabuntawa",
     "catchBody": "Buɗe app ɗin don sabuntawa"
+  },
+  "pt": {
+    "subtitle": "Horários de oração para Londres",
+    "inline": "Athan — horários de oração",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Abrir para carregar horários",
+    "staleTitle": "Desatualizado",
+    "staleBody": "Abrir o app para atualizar",
+    "staleInline": "Athan — abrir para atualizar horários",
+    "refreshLine": "Abrir Athan para atualizar",
+    "refreshLead": "Abrir Athan",
+    "refreshTail": "para atualizar",
+    "catchBody": "Abrir o aplicativo para atualizar"
+  },
+  "ur": {
+    "subtitle": "لندن کے نماز کے اوقات",
+    "inline": "Athan — اوقاتِ نماز",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "اوقات لوڈ کرنے کے لیے کھولیں",
+    "staleTitle": "تازہ نہیں",
+    "staleBody": "تازہ کاری کے لیے ایپ کھولیں",
+    "staleInline": "Athan — اوقات تازہ کرنے کے لیے کھولیں",
+    "refreshLine": "تازہ کاری کے لیے Athan کھولیں",
+    "refreshLead": "Athan کھولیں",
+    "refreshTail": "تازہ کاری کے لیے",
+    "catchBody": "تازہ کاری کے لیے ایپ کھولیں"
   }
 }

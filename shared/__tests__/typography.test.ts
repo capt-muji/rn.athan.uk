@@ -88,8 +88,8 @@ describe('typographyFor', () => {
     expectArabicRecord(typographyFor('ar'));
   });
 
-  it('resolves en, ms and so to the Roboto identity record', () => {
-    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar' && id !== 'hi' && id !== 'th')) {
+  it('resolves the Latin-shipped locales to the Roboto identity record', () => {
+    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur')) {
       expectLatinRecord(typographyFor(locale));
     }
   });
@@ -107,6 +107,15 @@ describe('typographyFor', () => {
     expectScriptRecord(ty, 'NotoSansThai-Regular', 'NotoSansThai-Medium');
     // The Thai face's own 1.511em box clears its ink, so no surface pins a script box
     expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ur to the Naskh pair with the measured script line box', () => {
+    const ty = typographyFor('ur');
+    expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
+    // The pair's own 1.703em box does not clear its 2.039em win ink (measured with
+    // fontTools, both weights), so ink-bearing surfaces take the 1.5em RTL script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 });
 

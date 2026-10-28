@@ -1,5 +1,5 @@
 /**
- * The locale resolution core: which of the twelve shipped locales the app speaks,
+ * The locale resolution core: which of the fourteen shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -12,13 +12,13 @@ import { atom, getDefaultStore } from 'jotai/vanilla';
 import * as Database from '@/stores/database';
 
 /** The D32 confidence set. Storage keys and surfaces locale-key off these ids. */
-export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz', 'sw', 'ha'] as const;
+export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz', 'sw', 'ha', 'pt', 'ur'] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'ur']);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 

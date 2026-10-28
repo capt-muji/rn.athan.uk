@@ -72,6 +72,25 @@ const THAI: LocaleTypography = {
   wordFace: true,
 };
 
+// Urdu's five own letters (ٹ ڈ ڑ ھ ے) are absent from Rubik (measured with fontTools,
+// plan T-410 decision 3), so its words name the Naskh pair; digits and row times stay
+// Roboto. The pair's own hhea box is 1.703em (ascent 1069, descent -634, UPM 1000, both
+// weights) while its win ink spans 2.039em (winAscent 1405), so the box-bearing row-106
+// law applies: ink-bearing surfaces take the script box, pinned at the shipped RTL 1.5em
+// line (R3 §3's Naskh floor is 1.4em; the ARABIC and HINDI records set the 1.5 precedent)
+const URDU: LocaleTypography = {
+  familyRegular: 'NotoNaskhArabic-Regular',
+  familyMedium: 'NotoNaskhArabic-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -100,6 +119,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   uz: LATIN,
   sw: LATIN,
   ha: LATIN,
+  pt: LATIN,
+  ur: URDU,
 };
 
 /**
