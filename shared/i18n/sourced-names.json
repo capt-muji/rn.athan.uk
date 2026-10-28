@@ -61,7 +61,17 @@
       "muhaddis-uz": "muhaddis.uz Uzbek hadith library (Shamail Muhammadi)",
       "loan": "the naming rule's own transliteration answer for a slot no authority prints, recorded with its derivation in the entry's note; the so precedent ('Istijaabo', plan T-410 decision 5)",
       "az-usage": "ordinary Azerbaijani Ramadan usage, no single portal",
-      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)"
+      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)",
+      "muftyat-kz": "muftyat.kz, Kazakhstan Muslims' Religious Administration (Қазақстан мұсылмандары діни басқармасы) prayer-time table, fetched 2026-10-28; asyldin.kz and azan.kz print the same label set",
+      "muftiyat-kg": "muftiyat.kg, Kyrgyz Muslims' Spiritual Board (Кыргызстан мусулмандарынын дин башкармалыгы) calendar, fetched 2026-10-28, whose own columns are Багымдат, Күн, Бешим, Аср, Шам, Куптан, Сухур, Ифтар",
+      "shuroiulamo-tj": "shuroiulamo.tj, Council of Ulema of Tajikistan prayer-time table, fetched 2026-10-28: Бомдод, Пешин, Аср, Фурӯ рафтани офтоб, Шом, Хуфтан",
+      "turkmen-tables": "Three independent Turkmen tables fetched 2026-10-28 (namazvakti.co.uk and salattimes.net TM pages, islamery.com tk page) plus tk.wikipedia's Namaz article, which glosses ertir as fäjr; the set is Agyz wagty, Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy",
+      "wolof-course": "mylittlewordland.com Wolof Advanced vocabulary (waxtu julli yi, suba, tisbaar, takkusaan, timis), fetched 2026-10-28",
+      "targumi-wolof": "targumi.com Wolof time vocabulary (tisbar = midday and the midday prayer, timis = dusk and the evening prayer), fetched 2026-10-28",
+      "gebedstijde-nl": "gebedstijde.nl Dutch prayer-time pages, fetched 2026-10-28, whose row order reads Fajr - Zonsopkomst (Shuruq) - Dhuhr - Asr - Maghrib - Isha and whose table column is named Zonsopkomst",
+      "koran-nl": "koran.nl/gebedstijden Dutch MWL tables, fetched 2026-10-28",
+      "mawaqit-es": "mawaqit.net Spanish mosque tables fetched 2026-10-28 (Mezquita Musulmana Embajadores Madrid, Mezquita Tariq Bin Ziad Penagrande Madrid), both printing Fajr",
+      "mr-wikipedia": "mr.wikipedia.org नमाज article, fetched 2026-10-28, listing नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा and using सूर्योदय in its own prose"
     },
     "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
     "confidenceKey": {
@@ -2215,75 +2225,75 @@
   "es": {
     "names": {
       "Fajr": {
-        "text": "Fayr",
-        "source": "mihrab@77e846d",
-        "confidence": "medium",
-        "note": "Mihrab prints Fayr (Spanish orthography, y for j). Spanish Muslim usage is split between Fayr and Fajr. The es.wikipedia article says oración del alba (Al-Fajr), keeping Fajr. Fajr is more common in Spanish mosque calendars."
+        "text": "Fajr",
+        "source": "mawaqit-es",
+        "confidence": "high",
+        "note": "Two Madrid mosque tables print Fajr, and R6's own note already read Fajr as the more common Spanish mosque-calendar form; the Fayr spelling came from an AGPL-only catalog. Plan T-429 decision 2."
       },
       "Sunrise": {
         "text": "Amanecer",
-        "source": "mihrab@77e846d",
+        "source": "es-wikipedia",
         "confidence": "high",
-        "note": "Mihrab prints Amanecer. Spanish tables also print Salida del sol. Amanecer is the shorter label."
+        "note": "Amanecer is the ordinary Spanish word for the dawn; R6's mihrab entry prints the same and Spanish tables print Salida del sol as the long alternative."
       },
       "Dhuhr": {
         "text": "Dhuhr",
-        "source": "mihrab@77e846d",
+        "source": "mawaqit-es",
         "confidence": "medium",
-        "note": "Mihrab. Spanish usage: Dhuhr, Zuhr, or el mediodía. Dhuhr matches the app."
+        "note": "Spanish tables print Dohr, Zuhr or Dhuhr; Dhuhr matches the app's shared spelling and R6's mihrab entry."
       },
       "Asr": {
         "text": "Asr",
-        "source": "mihrab@77e846d",
+        "source": "mawaqit-es",
         "confidence": "high",
-        "note": "Mihrab and es.wikipedia agree on Asr."
+        "note": "The Madrid tables, mihrab and es.wikipedia agree on Asr."
       },
       "Magrib": {
         "text": "Magreb",
-        "source": "mihrab@77e846d",
+        "source": "es-wikipedia",
         "confidence": "medium",
-        "note": "Mihrab prints Magreb (Spanish spelling, like the region). es.wikipedia says Al-Magrib. Both work; Magreb is the Spanish-standard form."
+        "note": "R6 chose the Spanish-orthographic Magreb; es.wikipedia prints Al-Magrib, which is the independent source class R6 section 2 demands and clears the AGPL-only flag. Madrid tables print Magrib as the alternative."
       },
       "Isha": {
         "text": "Isha",
-        "source": "mihrab@77e846d",
+        "source": "mawaqit-es",
         "confidence": "high",
-        "note": "Mihrab agrees. Also Ishá in older Spanish texts."
+        "note": "The Madrid tables print Isha (Ishá in older Spanish texts); mihrab agrees."
       },
       "Midnight": {
-        "text": "Medianoche islámica",
-        "source": "mihrab@77e846d",
+        "text": "Medianoche",
+        "source": "derived",
         "confidence": "medium",
-        "note": "Mihrab. Plain Medianoche also fine."
+        "note": "No Spanish table publishes the row; Medianoche is the ordinary Spanish word for the clock time the row shows, assembled from the sourced names. R6's longer Medianoche islámica stays the disambiguated alternative."
       },
       "Last Third": {
         "text": "Último tercio",
-        "source": "mihrab@77e846d",
+        "source": "derived",
         "confidence": "medium",
-        "note": "AGPL-only but ordinary Spanish."
+        "note": "Ordinary Spanish; mihrab prints the same and no Spanish table publishes the row."
       },
       "Suhoor": {
         "text": "Suhur",
-        "source": "mihrab@77e846d",
-        "confidence": "medium",
-        "note": "Mihrab. Spanish Ramadan usage: Suhur. No authority prints it."
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Spanish authority prints the meal row; the naming rule's transliteration answer, matching Spanish Ramadan usage and R6's mihrab note."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "Duha",
+        "source": "derived",
         "confidence": "low",
-        "note": "No Spanish authority or catalog found. Spanish texts say oración del Duha. Keep the transliteration."
+        "note": "No Spanish source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaba",
+        "source": "derived",
         "confidence": "low",
-        "note": "No Spanish table or catalog found. Recommend dropping the row for es."
+        "note": "No Spanish source; the loan lands per plan T-429 decision 9."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Punto medio entre Magreb y Fayr",
+        "text": "Punto medio entre Magreb y Fajr",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; punto medio is midpoint."
@@ -2295,7 +2305,7 @@
         "note": "Derived."
       },
       "20 mins before Fajr": {
-        "text": "20 min antes del Fayr",
+        "text": "20 min antes del Fajr",
         "source": "derived",
         "confidence": "medium",
         "note": "Spanish abbreviates minutos as min."
@@ -2304,13 +2314,13 @@
         "text": "20 min después del amanecer",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "1 hora antes del Magreb (solo viernes)",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived; solo viernes is Fridays only."
       }
     }
   },
@@ -2830,19 +2840,19 @@
         "text": "Fajr",
         "source": "nl-wikipedia",
         "confidence": "high",
-        "note": "nl.wikipedia lists Fajr (dageraad). Dutch mosque calendars print Fajr. No translation convention; the loan dominates."
+        "note": "nl.wikipedia lists Fajr (dageraad) and Dutch tables print Fajr; no translation convention exists."
       },
       "Sunrise": {
         "text": "Zonsopkomst",
-        "source": "nl-usage",
-        "confidence": "medium",
-        "note": "Dutch prayer-time sites print Zonsopkomst or Zonsopgang. Both are standard Dutch; Zonsopkomst is the more common label on Dutch Islamic sites. Needs one confirming source."
+        "source": "gebedstijde-nl",
+        "confidence": "high",
+        "note": "gebedstijde.nl prints the row order Fajr - Zonsopkomst (Shuruq) - Dhuhr - Asr - Maghrib - Isha and names the table column Zonsopkomst, which is the confirmation R6 section 5 held the language for. Zonsopgang stays the alternative spelling."
       },
       "Dhuhr": {
         "text": "Dhuhr",
         "source": "nl-wikipedia",
         "confidence": "high",
-        "note": "nl.wikipedia: Dhuhr (middag)."
+        "note": "nl.wikipedia: Dhuhr (middag); Dutch tables print Dohr."
       },
       "Asr": {
         "text": "Asr",
@@ -2865,32 +2875,32 @@
       "Midnight": {
         "text": "Middernacht",
         "source": "derived",
-        "confidence": "low",
-        "note": "Ordinary Dutch. No Islamic-table attestation found. Islamitische middernacht is the disambiguated form."
+        "confidence": "medium",
+        "note": "Ordinary Dutch for the clock time the row shows; no Dutch table publishes the row, and the explanation names the Maghrib-to-Fajr midpoint."
       },
       "Last Third": {
         "text": "Laatste derde",
         "source": "derived",
-        "confidence": "low",
-        "note": "Ordinary Dutch (derde = third). No Islamic-table attestation found."
+        "confidence": "medium",
+        "note": "Ordinary Dutch (derde = third), label-shaped for the 24-char budget; the explanation carries the full phrase."
       },
       "Suhoor": {
-        "text": "Sohoer",
-        "source": null,
+        "text": "Suhur",
+        "source": "derived",
         "confidence": "low",
-        "note": "Dutch Ramadan usage: sohoer / suhur / sahri. Not attested in a table I could read. Needs a speaker."
+        "note": "No Dutch table attests the meal row; the naming rule's transliteration answer. Dutch usage also writes sohoer."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "Duha",
+        "source": "derived",
         "confidence": "low",
-        "note": "No Dutch source found. Recommend keeping the transliteration or dropping."
+        "note": "No Dutch source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaba",
+        "source": "derived",
         "confidence": "low",
-        "note": "No Dutch source found. Recommend dropping the row for nl."
+        "note": "No Dutch source; the loan lands per plan T-429 decision 9."
       }
     },
     "explanations": {
@@ -3025,6 +3035,618 @@
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; sextas-feiras is Fridays."
+      }
+    }
+  },
+  "kk": {
+    "names": {
+      "Fajr": {
+        "text": "Таң",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "The Kazakh Muslims' Religious Administration's own table prints Таң; azan.kz and asyldin.kz print the same."
+      },
+      "Sunrise": {
+        "text": "Күн",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "The authority's Sunrise column is Күн; the same label on both confirming tables."
+      },
+      "Dhuhr": {
+        "text": "Бесін",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "Authority label; azan.kz and asyldin.kz agree."
+      },
+      "Asr": {
+        "text": "Екінті",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "Authority label; asyldin.kz agrees (azan.kz prints Аср as its alternative)."
+      },
+      "Magrib": {
+        "text": "Ақшам",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "Authority label, the Kazakh word for the evening prayer; both confirming tables agree."
+      },
+      "Isha": {
+        "text": "Құптан",
+        "source": "muftyat-kz",
+        "confidence": "high",
+        "note": "Authority label; asyldin.kz and namazvakti's KZ page agree."
+      },
+      "Midnight": {
+        "text": "Түн ортасы",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Ordinary Kazakh for the middle of the night, assembled from the sourced names; no Kazakh table publishes the row."
+      },
+      "Last Third": {
+        "text": "Түннің соңғы үштігі",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; the explanation carries the full phrase."
+      },
+      "Suhoor": {
+        "text": "Сәресі",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Sәресі is the Kazakh word for the pre-dawn meal; no table fetched prints it, so the row ships as the derived word rather than a foreign loan."
+      },
+      "Duha": {
+        "text": "Духа",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Kazakh source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "Истижаба",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Kazakh source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Ақшам мен Таң арасындағы орта",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Start of the last third of the night": {
+        "text": "Түннің соңғы үштігінің басталуы",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "20 mins before Fajr": {
+        "text": "Таңға 20 мин бұрын",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Kazakh abbreviates минут as мин."
+      },
+      "20 mins after Sunrise": {
+        "text": "Күн шыққаннан кейін 20 мин",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; кейін is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Ақшамға 1 сағат бұрын (тек жұма)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; тек жұма is Fridays only."
+      }
+    }
+  },
+  "ky": {
+    "names": {
+      "Fajr": {
+        "text": "Багымдат",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "The Kyrgyz Muslims' Spiritual Board's calendar prints Багымдат as its own column."
+      },
+      "Sunrise": {
+        "text": "Күн",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "The board's Sunrise column is Күн."
+      },
+      "Dhuhr": {
+        "text": "Бешим",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "Board label, the Kyrgyz name for the midday prayer."
+      },
+      "Asr": {
+        "text": "Аср",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "Board label."
+      },
+      "Magrib": {
+        "text": "Шам",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "Board label, the Kyrgyz name for the evening prayer."
+      },
+      "Isha": {
+        "text": "Куптан",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "Board label."
+      },
+      "Midnight": {
+        "text": "Түн ортосу",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Ordinary Kyrgyz for the middle of the night; no table publishes the row."
+      },
+      "Last Third": {
+        "text": "Түндүн акыркы үчтүгү",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Suhoor": {
+        "text": "Сухур",
+        "source": "muftiyat-kg",
+        "confidence": "high",
+        "note": "The board's own table carries a Сухур column beside Багымдат, so the meal row is attested rather than loaned."
+      },
+      "Duha": {
+        "text": "Духа",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Kyrgyz source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "Истижаба",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Kyrgyz source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Шам менен Багымдаттын ортосу",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Start of the last third of the night": {
+        "text": "Түндүн акыркы үчтүгүнүн башталышы",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "20 mins before Fajr": {
+        "text": "Багымдаттан 20 мүнөт мурун",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; мурун is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "Күн чыккандан кийин 20 мүнөт",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; кийин is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Шамга 1 саат мурун (жемешембиде гана)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; жемешембиде гана is Fridays only."
+      }
+    }
+  },
+  "tg": {
+    "names": {
+      "Fajr": {
+        "text": "Бомдод",
+        "source": "shuroiulamo-tj",
+        "confidence": "high",
+        "note": "The Council of Ulema of Tajikistan's table prints Бомдод; takvim.tj prints the same."
+      },
+      "Sunrise": {
+        "text": "Тулӯи офтоб",
+        "source": "shuroiulamo-tj",
+        "confidence": "medium",
+        "note": "Derived from the authority's own sunset phrasing Фурӯ рафтани офтоб, mirrored for the rising; no Tajik table fetched prints a sunrise label in Tajik words."
+      },
+      "Dhuhr": {
+        "text": "Пешин",
+        "source": "shuroiulamo-tj",
+        "confidence": "high",
+        "note": "Authority label; takvim.tj agrees."
+      },
+      "Asr": {
+        "text": "Аср",
+        "source": "shuroiulamo-tj",
+        "confidence": "high",
+        "note": "Authority label; takvim.tj agrees."
+      },
+      "Magrib": {
+        "text": "Шом",
+        "source": "shuroiulamo-tj",
+        "confidence": "high",
+        "note": "Authority label, the Tajik name for the evening prayer."
+      },
+      "Isha": {
+        "text": "Хуфтан",
+        "source": "shuroiulamo-tj",
+        "confidence": "high",
+        "note": "Authority label; takvim.tj agrees."
+      },
+      "Midnight": {
+        "text": "Нисфи шаб",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Ordinary Tajik (нисфи шаб, half the night); no table publishes the row."
+      },
+      "Last Third": {
+        "text": "Сеяки охири шаб",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; сеяк is a third and охир the end."
+      },
+      "Suhoor": {
+        "text": "Саҳар",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Ordinary Tajik for the pre-dawn meal; no table fetched prints the row."
+      },
+      "Duha": {
+        "text": "Зуҳо",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Tajik source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "Истиҷоба",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Tajik source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Миёни Шом ва Бомдод",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Start of the last third of the night": {
+        "text": "Оғози сеяки охири шаб",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "20 mins before Fajr": {
+        "text": "20 дақиқа пеш аз Бомдод",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; пеш аз is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 дақиқа пас аз тулӯи офтоб",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; пас аз is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 соат пеш аз Шом (танҳо ҷумъа)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; танҳо ҷумъа is Fridays only."
+      }
+    }
+  },
+  "tk": {
+    "names": {
+      "Fajr": {
+        "text": "Ertir",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "The Turkmen tables print Ertir for the dawn prayer and tk.wikipedia glosses it ertir (fäjr); the naming rule's authority exception, plan T-429 decision 8."
+      },
+      "Sunrise": {
+        "text": "Dogýan wagty",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "The tables' sunrise column reads Dogýan wagty (the time of the rising)."
+      },
+      "Dhuhr": {
+        "text": "Öýlen",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "Table label; tk.wikipedia glosses it öýle (zuhr)."
+      },
+      "Asr": {
+        "text": "Ikindi",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "Table label; tk.wikipedia glosses it ikindi (asr)."
+      },
+      "Magrib": {
+        "text": "Agşam",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "Table label, the Turkmen name for the evening prayer."
+      },
+      "Isha": {
+        "text": "Ýassy",
+        "source": "turkmen-tables",
+        "confidence": "high",
+        "note": "Table label; the same set on three independent tables."
+      },
+      "Midnight": {
+        "text": "Gije ýarysy",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Ordinary Turkmen for midnight; no table publishes the row."
+      },
+      "Last Third": {
+        "text": "Gijäniň soňky üçden biri",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The tables carry Agyz wagty as the fast-start deadline, which the app's Fajr row covers; the meal row ships as the loan per plan T-429 decision 9."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Turkmen source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Turkmen source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Agşam bilen Ertiriň arasy",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Start of the last third of the night": {
+        "text": "Gijäniň soňky üçden biriniň başy",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "20 mins before Fajr": {
+        "text": "Ertirden 20 min öň",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; öň is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "Gün dogandan 20 min soň",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; soň is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Agşamdan 1 sagat öň (diňe anna güni)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; diňe anna güni is Fridays only."
+      }
+    }
+  },
+  "wo": {
+    "names": {
+      "Fajr": {
+        "text": "Fajar",
+        "source": "wolof-course",
+        "confidence": "low",
+        "note": "The Wolof course source names the dawn row Suba; Senegambian Wolof also carries the Arabic loan Fajar, which ships here as the naming rule's transliteration with the course's word kept for the sunrise row."
+      },
+      "Sunrise": {
+        "text": "Suba",
+        "source": "wolof-course",
+        "confidence": "low",
+        "note": "The course lists suba as the sunrise entry of waxtu julli yi and the ordinary Wolof word for morning."
+      },
+      "Dhuhr": {
+        "text": "Tisbaar",
+        "source": "wolof-course",
+        "confidence": "medium",
+        "note": "The course lists tisbaar as the early afternoon prayer; targumi glosses tisbar as midday and the midday prayer."
+      },
+      "Asr": {
+        "text": "Takusaan",
+        "source": "wolof-course",
+        "confidence": "medium",
+        "note": "The course lists takkusaan as the late afternoon prayer."
+      },
+      "Magrib": {
+        "text": "Timis",
+        "source": "wolof-course",
+        "confidence": "medium",
+        "note": "The course lists timis as the twilight prayer; targumi glosses timis as dusk and the evening prayer."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Wolof source fetched prints the night row; the Arabic loan lands per plan T-429 decision 9."
+      },
+      "Midnight": {
+        "text": "Diggu guddi",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived from Wolof digg (middle) and guddi (night); no table publishes the row."
+      },
+      "Last Third": {
+        "text": "Ñetteelu guddi",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived from Wolof ñett (three) and guddi (night), the third of the night; the explanation names the last third."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Wolof source; the loan lands per plan T-429 decision 9."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Wolof source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Wolof source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Diggante Timis ak Fajar",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived; diggante is between."
+      },
+      "Start of the last third of the night": {
+        "text": "Tàmbali ñetteelu guddi bi",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived; tàmbali is the start."
+      },
+      "20 mins before Fajr": {
+        "text": "20 min balaa Fajar",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived; balaa is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 min ginnaaw Suba",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived; ginnaaw is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 waxtu balaa Timis (juma rek)",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived; juma rek is Friday only."
+      }
+    }
+  },
+  "mr": {
+    "names": {
+      "Fajr": {
+        "text": "फजर",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "mr.wikipedia's नमाज article lists नमाज-ए-फजर; the row label drops the नमाज-ए- prefix the way the ps wave dropped phrases."
+      },
+      "Sunrise": {
+        "text": "सूर्योदय",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "The same article's own prose uses सूर्योदय (before sunrise); the translated slot the naming rule asks for."
+      },
+      "Dhuhr": {
+        "text": "जुहर",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "The article's नमाज-ए-जुहर, bare for the row."
+      },
+      "Asr": {
+        "text": "असर",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "The article's नमाज-ए-असर, bare for the row."
+      },
+      "Magrib": {
+        "text": "मगरीब",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "The article's नमाज-ए-मगरीब, bare for the row."
+      },
+      "Isha": {
+        "text": "ईशा",
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "The article's नमाज-ए-ईशा, bare for the row."
+      },
+      "Midnight": {
+        "text": "मध्यरात्र",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Ordinary Marathi for midnight; no Marathi table fetched publishes the row."
+      },
+      "Last Third": {
+        "text": "रात्रीचा शेवटचा भाग",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names, label-shaped for the 24-char budget; the explanation names the third."
+      },
+      "Suhoor": {
+        "text": "सहरी",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The Marathi and Urdu form of the pre-dawn meal, the hi precedent's own row; no Marathi table fetched prints it."
+      },
+      "Duha": {
+        "text": "दुहा",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Marathi source; the loan lands per plan T-429 decision 9."
+      },
+      "Istijaba": {
+        "text": "इस्तिजाबा",
+        "source": "derived",
+        "confidence": "low",
+        "note": "No Marathi source; the loan lands per plan T-429 decision 9."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "मगरीब आणि फजर यांच्यामधली वेळ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names."
+      },
+      "Start of the last third of the night": {
+        "text": "रात्रीच्या शेवटच्या भागाची सुरुवात",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "20 mins before Fajr": {
+        "text": "फजरच्या 20 मिनिटे आधी",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; आधी is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "सूर्योदयानंतर 20 मिनिटे",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; नंतर is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "मगरीबच्या 1 तास आधी (फक्त शुक्रवारी)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; फक्त शुक्रवारी is Fridays only."
       }
     }
   }
