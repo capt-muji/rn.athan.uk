@@ -1,4 +1,4 @@
-const { withAppDelegate, withDangerousMod } = require('expo/config-plugins');
+const { withAppDelegate, withFinalizedMod } = require('expo/config-plugins');
 const { default: plist } = require('@expo/plist');
 const { readFile, writeFile } = require('node:fs/promises');
 const path = require('node:path');
@@ -137,29 +137,35 @@ const editFullScreenKeys = (infoPlist) => {
   return infoPlist;
 };
 
+// Both file edits ride finalized mods, not dangerous ones: dangerous mods sort FIRST in this
+// SDK's mod compiler (before the generated tree exists to read), and the old calls passed
+// (name, fn) where the API destructures [platform, action], so the actions were undefined and
+// the mods never ran at all - the fossil plist drift traced to exactly that.
 const withDuoTallCanvas = (config) =>
-  withDangerousMod(
-    withDangerousMod(
+  withFinalizedMod(
+    withFinalizedMod(
       withAppDelegate(config, (cfg) => {
         cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
         return cfg;
       }),
-      'duoTallCanvasSceneDelegate',
-      async (cfg) => {
-        const delegatePath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'SceneDelegate.swift');
-        await writeFile(delegatePath, editSceneDelegate(await readFile(delegatePath, 'utf8')));
-        return cfg;
-      }
+      [
+        'ios',
+        async (cfg) => {
+          const delegatePath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'SceneDelegate.swift');
+          await writeFile(delegatePath, editSceneDelegate(await readFile(delegatePath, 'utf8')));
+          return cfg;
+        },
+      ]
     ),
-    'duoTallCanvasFullScreen',
-    async (cfg) => {
-      // The prebuild's orientation pass writes the plist after every withInfoPlist edit here,
-      // so these keys ride a file edit that runs after all base mods.
-      const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
-      const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
-      await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
-      return cfg;
-    }
+    [
+      'ios',
+      async (cfg) => {
+        const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
+        const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
+        await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
+        return cfg;
+      },
+    ]
   );
 
 module.exports = withDuoTallCanvas;
