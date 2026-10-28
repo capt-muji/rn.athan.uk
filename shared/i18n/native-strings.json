@@ -623,5 +623,29 @@
       "Extra Times (Layout 3)": "額外時間（版面配置 3）",
       "Next extra time with a countdown.": "含倒數的下一個額外時間。"
     }
+  },
+  "es": {
+    "NSLocationWhenInUseUsageDescription": "Tu ubicación se usa para saber en qué dirección está La Meca desde donde estás. Nunca sale de tu teléfono.",
+    "NSUserNotificationsUsageDescription": "Recibe avisos de las horas de oración",
+    "gallery": {
+      "Next Prayer (Light)": "Próxima oración (claro)",
+      "A countdown to the next prayer.": "Cuenta atrás para la próxima oración.",
+      "Extra Times (Light)": "Horas adicionales (claro)",
+      "A countdown to the next extra time.": "Cuenta atrás para la próxima hora adicional.",
+      "Next Prayer (Dark)": "Próxima oración (oscuro)",
+      "Extra Times (Dark)": "Horas adicionales (oscuro)",
+      "Next Prayer (Layout 1)": "Próxima oración (diseño 1)",
+      "Countdown to the next prayer.": "Cuenta atrás para la próxima oración.",
+      "Extra Times (Layout 1)": "Horas adicionales (diseño 1)",
+      "Countdown to the next extra time.": "Cuenta atrás para la próxima hora adicional.",
+      "Next Prayer (Layout 2)": "Próxima oración (diseño 2)",
+      "Next prayer time.": "Hora de la próxima oración.",
+      "Extra Times (Layout 2)": "Horas adicionales (diseño 2)",
+      "Next extra time.": "Próxima hora adicional.",
+      "Next Prayer (Layout 3)": "Próxima oración (diseño 3)",
+      "Next prayer time with a countdown.": "Hora de la próxima oración con cuenta atrás.",
+      "Extra Times (Layout 3)": "Horas adicionales (diseño 3)",
+      "Next extra time with a countdown.": "Próxima hora adicional con cuenta atrás."
+    }
   }
 }

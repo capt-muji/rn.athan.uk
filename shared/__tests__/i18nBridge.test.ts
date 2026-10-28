@@ -19,6 +19,7 @@ import { bs } from '@/shared/i18n/bs';
 import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
+import { es } from '@/shared/i18n/es';
 import { fa } from '@/shared/i18n/fa';
 import { fr } from '@/shared/i18n/fr';
 import { ha } from '@/shared/i18n/ha';
@@ -68,6 +69,7 @@ const CATALOGS: Record<string, Catalog> = {
   ml,
   'zh-Hans': zhHans,
   'zh-Hant': zhHant,
+  es,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -144,7 +146,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(26);
+    expect(Object.keys(CATALOGS)).toHaveLength(27);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

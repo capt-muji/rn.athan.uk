@@ -40,6 +40,7 @@ describe('resolveInitialLocale', () => {
     ['ur-PK', 'ur', 'ur'],
     ['fa-IR', 'fa', 'fa'],
     ['bn-BD', 'bn', 'bn'],
+    ['es-ES', 'es', 'es'],
     ['ru-RU', 'ru', 'ru'],
     ['az-AZ', 'az', 'az'],
     ['de-DE', 'de', 'de'],
@@ -68,7 +69,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('falls back to en for an unsupported language', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: 'es' }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'yo-NG', languageCode: 'yo' }])).toBe('en');
     // yue is its own language code, never a zh tag: a yue-tagged device falls through
     expect(resolveInitialLocale(null, [{ languageTag: 'yue-Hant-HK', languageCode: 'yue' }])).toBe('en');
   });
@@ -85,7 +86,7 @@ describe('resolveInitialLocale', () => {
 
   it('an earlier device locale wins over a later one', () => {
     const deviceLocales: readonly DeviceLocaleInfo[] = [
-      { languageTag: 'es-ES', languageCode: 'es' },
+      { languageTag: 'yo-NG', languageCode: 'yo' },
       { languageTag: 'ar-EG', languageCode: 'ar' },
     ];
     expect(resolveInitialLocale(null, deviceLocales)).toBe('ar');
@@ -96,7 +97,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('skips a device locale with no language code', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: null }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'yo-NG', languageCode: null }])).toBe('en');
   });
 
   it('resolves en when the device reports no locales', () => {

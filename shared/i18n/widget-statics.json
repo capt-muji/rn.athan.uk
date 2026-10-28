@@ -350,5 +350,18 @@
     "refreshLead": "開啟 Athan",
     "refreshTail": "重新整理",
     "catchBody": "開啟應用程式重新整理"
+  },
+  "es": {
+    "subtitle": "Horas de oración en Londres",
+    "inline": "Athan — horas de oración",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Abre para cargar las horas",
+    "staleTitle": "Desactualizado",
+    "staleBody": "Abre la app para actualizar",
+    "staleInline": "Athan — abre para actualizar",
+    "refreshLine": "Abre Athan para actualizar",
+    "refreshLead": "Abre Athan",
+    "refreshTail": "para actualizar",
+    "catchBody": "Abre la app para actualizar"
   }
 }

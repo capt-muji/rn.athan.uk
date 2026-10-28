@@ -231,6 +231,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ml: MALAYALAM,
   'zh-Hans': HANS,
   'zh-Hant': HANT,
+  // Roboto carries every Spanish diacritic by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  es: LATIN,
 };
 
 /**

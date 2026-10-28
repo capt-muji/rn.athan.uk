@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.26.0",
+    "version": "2.27.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -46,7 +46,8 @@
           "ta",
           "ml",
           "zh-Hans",
-          "zh-Hant"
+          "zh-Hant",
+          "es"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -1843,6 +1844,62 @@
           "prayer_lock_widget_3_description": "含倒數的下一次禮拜時間。",
           "extras_lock_widget_3_display_name": "額外時間（版面配置 3）",
           "extras_lock_widget_3_description": "含倒數的下一個額外時間。"
+        }
+      },
+      "es": {
+        "NSLocationWhenInUseUsageDescription": "Tu ubicación se usa para saber en qué dirección está La Meca desde donde estás. Nunca sale de tu teléfono.",
+        "NSUserNotificationsUsageDescription": "Recibe avisos de las horas de oración",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "Próxima oración (claro)",
+            "A countdown to the next prayer.": "Cuenta atrás para la próxima oración.",
+            "Extra Times (Light)": "Horas adicionales (claro)",
+            "A countdown to the next extra time.": "Cuenta atrás para la próxima hora adicional.",
+            "Next Prayer (Dark)": "Próxima oración (oscuro)",
+            "Extra Times (Dark)": "Horas adicionales (oscuro)",
+            "Next Prayer (Layout 1)": "Próxima oración (diseño 1)",
+            "Countdown to the next prayer.": "Cuenta atrás para la próxima oración.",
+            "Extra Times (Layout 1)": "Horas adicionales (diseño 1)",
+            "Countdown to the next extra time.": "Cuenta atrás para la próxima hora adicional.",
+            "Next Prayer (Layout 2)": "Próxima oración (diseño 2)",
+            "Next prayer time.": "Hora de la próxima oración.",
+            "Extra Times (Layout 2)": "Horas adicionales (diseño 2)",
+            "Next extra time.": "Próxima hora adicional.",
+            "Next Prayer (Layout 3)": "Próxima oración (diseño 3)",
+            "Next prayer time with a countdown.": "Hora de la próxima oración con cuenta atrás.",
+            "Extra Times (Layout 3)": "Horas adicionales (diseño 3)",
+            "Next extra time with a countdown.": "Próxima hora adicional con cuenta atrás."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "Próxima oración (claro)",
+          "prayer_widget_description": "Cuenta atrás para la próxima oración.",
+          "extras_widget_display_name": "Horas adicionales (claro)",
+          "extras_widget_description": "Cuenta atrás para la próxima hora adicional.",
+          "prayer_widget_medium_display_name": "Próxima oración (claro)",
+          "prayer_widget_medium_description": "Cuenta atrás para la próxima oración.",
+          "extras_widget_medium_display_name": "Horas adicionales (claro)",
+          "extras_widget_medium_description": "Cuenta atrás para la próxima hora adicional.",
+          "prayer_widget_dark_display_name": "Próxima oración (oscuro)",
+          "prayer_widget_dark_description": "Cuenta atrás para la próxima oración.",
+          "extras_widget_dark_display_name": "Horas adicionales (oscuro)",
+          "extras_widget_dark_description": "Cuenta atrás para la próxima hora adicional.",
+          "prayer_widget_dark_medium_display_name": "Próxima oración (oscuro)",
+          "prayer_widget_dark_medium_description": "Cuenta atrás para la próxima oración.",
+          "extras_widget_dark_medium_display_name": "Horas adicionales (oscuro)",
+          "extras_widget_dark_medium_description": "Cuenta atrás para la próxima hora adicional.",
+          "prayer_lock_widget_display_name": "Próxima oración (diseño 1)",
+          "prayer_lock_widget_description": "Cuenta atrás para la próxima oración.",
+          "extras_lock_widget_display_name": "Horas adicionales (diseño 1)",
+          "extras_lock_widget_description": "Cuenta atrás para la próxima hora adicional.",
+          "prayer_lock_widget_2_display_name": "Próxima oración (diseño 2)",
+          "prayer_lock_widget_2_description": "Hora de la próxima oración.",
+          "extras_lock_widget_2_display_name": "Horas adicionales (diseño 2)",
+          "extras_lock_widget_2_description": "Próxima hora adicional.",
+          "prayer_lock_widget_3_display_name": "Próxima oración (diseño 3)",
+          "prayer_lock_widget_3_description": "Hora de la próxima oración con cuenta atrás.",
+          "extras_lock_widget_3_display_name": "Horas adicionales (diseño 3)",
+          "extras_lock_widget_3_description": "Próxima hora adicional con cuenta atrás."
         }
       }
     },
