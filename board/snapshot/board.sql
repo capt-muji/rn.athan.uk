@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 19EeQcknoufdri7nzX7iBNatjYQP6RmZmAvjDcilIS3WXoYcWdAcl6yWnESeXWS
+\restrict 4JAz5kkfa07iwxGzM6tlp6a69NoiuN8vnp5c8h5rTL7jeyyx8ChCzdMHA844LJa
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6213,7 +6213,7 @@ Acceptance:
 - [x] The iPhone XS restored to a real build once the rig passes
 
 How it was found and re-ruled: the owner''s below-store mimic (new code stamped 1.0.0, build 1, over carried 2.11.14 data) blanked to the error page on a plain open and stayed blanked through Refresh. The mimic is retired as an acceptance rig (owner order, 2026-10-27): a journey through a state no real user occupies cannot prove a state-invariant, and a release build is mute on glass - syslog, devicectl console attach and the log store all carry native lines only. The undiagnosed recurrence is the reason the exhaustive rig is acceptance, not decoration. The real update journeys ride the store tracks: TestFlight on iOS (T-393, with a test-gated check source because iTunes Lookup cannot see TestFlight) and the Play internal track on Android (T-389).', NULL, NULL, NULL, 16500, '2026-10-27 10:09:00.804374+00', '2026-10-27 16:50:07.417324+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (400, 1, 400, 9, 9, 'The lock screen widgets'' type reads too small on users'' devices', 'Goal: the lock screen widgets'' live readings render at a nominal 14pt (shrinking to 8.4pt at the floor on layouts 1-2) and users report the type reads too small. Grow the lock-screen type scale so the readings read much bigger, with per-format ceilings where a layout cannot carry the maximum.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (400, 1, 400, 9, 4, 'The lock screen widgets'' type reads too small on users'' devices', 'Goal: the lock screen widgets'' live readings render at a nominal 14pt (shrinking to 8.4pt at the floor on layouts 1-2) and users report the type reads too small. Grow the lock-screen type scale so the readings read much bigger, with per-format ceilings where a layout cannot carry the maximum.
 
 Where: widgets/LockPrayerWidget.tsx only - the three lock layouts'' live, stale and neutral faces, both schedules. The home screen widgets (widgets/PrayerWidget.tsx) and Android are untouched.
 
@@ -6225,7 +6225,7 @@ Acceptance:
 
 How it was filed (owner, 2026-10-27): users noted the iOS lock screen widgets'' font size is too small.
 
-The owner''s direction (2026-10-27): styling only - the widgets work perfectly, the type is just too small. Much bigger type on the LOCK SCREEN widgets alone; home screen widgets untouched. Not every format can carry the biggest size: layouts differ and at least one (layout 3, the longest) holds too many characters for the maximum, so a per-format ceiling is expected and allowed. The read happens on the iPhone XS physical device or an iPhone simulator.', NULL, NULL, NULL, 17500, '2026-10-27 22:43:33.028348+00', '2026-10-28 06:08:27.161187+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+The owner''s direction (2026-10-27): styling only - the widgets work perfectly, the type is just too small. Much bigger type on the LOCK SCREEN widgets alone; home screen widgets untouched. Not every format can carry the biggest size: layouts differ and at least one (layout 3, the longest) holds too many characters for the maximum, so a per-format ceiling is expected and allowed. The read happens on the iPhone XS physical device or an iPhone simulator.', NULL, NULL, NULL, 17500, '2026-10-27 22:43:33.028348+00', '2026-10-28 14:02:25.331586+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (375, 1, 375, NULL, 4, 'A visual polish pass: the ago pill grays instead of fading behind the opening overlay, and the Somali alert-sheet footer on iOS shows paired double-angle marks', 'Goal: two visual defects read by the owner on the 2.5.6 production build (2026-10-25).
 
 First: on BOTH platforms, as the prayer overlay opens, the prayer-ago pill below the list - its rounded rectangular background - turns gray instead of fading out with every other component; the black of the overlay fades in behind it while the pill''s own background grays. It was never like this before the shade work.
@@ -11160,6 +11160,10 @@ suggestion: widgets/LockPrayerWidget.tsx:22-23 and shared/__tests__/widgetLockRe
 nitpick: plugins/duoTallCanvas.js:172,185 - /[^A-Za-z0-9]/g equals prebuild''s sanitizer only for ASCII names; prebuild NFKD-normalizes and drops combining marks first, so the commit''s "sanitized exactly as prebuild names the directory" overstates it and a non-ASCII EXPO_NAME_SUFFIX reintroduces the same ENOENT. Reuse the exported sanitizedName from @expo/config-plugins, or note the ASCII-only assumption beside the regex.', NULL, '2026-10-28 06:05:09.431286+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4002, 400, 'activity', 'owner', NULL, 'field', '2026-10-28 06:08:27.135753+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s one-time Xcode session to register the fleettest App ID''s App Groups capability, then the eyeball read of the raised lock-screen type on the XS - or an owner ruling that the suite pins are enough"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3990, 400, 'comment', 'owner', 'Owner order (2026-10-28, good night): the iPhone XS navigation is costing too much - move Step 1''s baseline and the glass read to the iPhone SIMULATOR (Athan-76, UDID SIMULATOR_UDID, booted now, the only simulator running). The XS physical is released from this run. Supersedes the earlier XS direction; per-format type ceilings and the lock-screen-only scope are unchanged.', NULL, '2026-10-28 05:22:47.143324+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4006, 400, 'comment', 'owner', 'Owner order (2026-10-28): NEVER build a fleettest iOS variant, ever. The owner deleted the store app from the XS by hand and the development build installs as the original app - original bundle id, original name. This supersedes every earlier fleettest route on this ticket and in the atlas; the fleettest signing wall is moot from here.', NULL, '2026-10-28 12:43:11.955964+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4007, 400, 'comment', 'owner', 'Closed Done on the owner''s passing glass read (2026-10-28): the raised 17/17/16 lock-screen type read on the XS physical device - ''very very good, I like it'' - with the change confirmed type-only against the diff (sizes, floors and paired icon sizes; no alignment, layout or positioning line changed). The development build the owner read was the original app id at 2.11.44 under the owner''s never-fleettest order; production builds follow for both phones.', NULL, '2026-10-28 14:02:25.210517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4008, 400, 'activity', 'owner', NULL, 'field', '2026-10-28 14:02:25.297043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4009, 400, 'activity', 'owner', NULL, 'status', '2026-10-28 14:02:25.351641+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 
 
 --
@@ -11483,7 +11487,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (662, 403, 1, NULL, 403, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (658, 396, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (666, 401, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (668, 400, 3, 'The owner''s one-time Xcode session to register the fleettest App ID''s App Groups capability, then the eyeball read of the raised lock-screen type on the XS - or an owner ruling that the suite pins are enough', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (668, 400, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -12721,7 +12725,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (941, 408, 4, 'Done', 'completed', '2026-10-28 05:54:02.594359+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (942, 409, 4, 'Done', 'completed', '2026-10-28 05:54:02.622167+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (931, 400, 3, 'In progress', 'started', '2026-10-28 01:39:22.934046+00', '2026-10-28 05:54:02.649009+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (944, 400, 9, 'Awaiting Owner', 'started', '2026-10-28 06:08:27.166191+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (944, 400, 9, 'Awaiting Owner', 'started', '2026-10-28 06:08:27.166191+00', '2026-10-28 14:02:25.346389+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12780,6 +12784,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (929, 408, 1, 'Backlog', 'backlog', '2026-10-28 01:18:19.613+00', '2026-10-28 05:54:02.594359+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (930, 409, 1, 'Backlog', 'backlog', '2026-10-28 01:18:19.655+00', '2026-10-28 05:54:02.622167+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (943, 400, 8, 'Audit', 'started', '2026-10-28 05:54:02.649009+00', '2026-10-28 06:08:27.166191+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (945, 400, 4, 'Done', 'completed', '2026-10-28 14:02:25.346389+00', NULL);
 
 
 --
@@ -30035,9 +30040,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:408', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:402', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:409', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4444);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 64);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 197);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4446);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
 
 
 --
@@ -30299,7 +30304,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4005, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4009, true);
 
 
 --
@@ -30348,7 +30353,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 668, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 669, true);
 
 
 --
@@ -30376,7 +30381,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 944, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 945, true);
 
 
 --
@@ -34859,5 +34864,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 19EeQcknoufdri7nzX7iBNatjYQP6RmZmAvjDcilIS3WXoYcWdAcl6yWnESeXWS
+\unrestrict 4JAz5kkfa07iwxGzM6tlp6a69NoiuN8vnp5c8h5rTL7jeyyx8ChCzdMHA844LJa
 
