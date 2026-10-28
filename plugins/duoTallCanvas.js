@@ -57,15 +57,20 @@ class SceneDelegate: ExpoAppSceneDelegate {
 // scene out wide.
 const SCENE_BLOCK = `@objc(SceneDelegate)
 class SceneDelegate: ExpoAppSceneDelegate {
-  // Extension point for config plugins
+  // Extension point for config plugins.
 
-  public func windowScene(
+  // The conformance is inherited from ExpoAppSceneDelegate, so Swift gives this method no
+  // implicit @objc and UIKit's respondsToSelector read it absent until the attribute was
+  // added by hand (T-401, measured on the rig).
+  @objc public func windowScene(
     _ windowScene: UIWindowScene,
     didUpdateCoordinateSpace previousCoordinateSpace: UICoordinateSpace,
     interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
     traitCollection previousTraitCollection: UITraitCollection
   ) {
-    guard windowScene.interfaceOrientation.isLandscape else { return }
+    guard
+      windowScene.interfaceOrientation.isLandscape || previousInterfaceOrientation.isLandscape
+    else { return }
     windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))
   }
 }`;

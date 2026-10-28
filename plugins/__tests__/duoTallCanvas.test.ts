@@ -217,7 +217,7 @@ describe('the scene geometry re-request', () => {
   it('rides the windowScene selector UIKit actually calls, with the previous values', () => {
     const edited = editSceneDelegate(sceneDelegateFixture());
 
-    expect(edited).toContain('func windowScene(');
+    expect(edited).toContain('@objc public func windowScene(');
     expect(edited).toContain('didUpdateCoordinateSpace previousCoordinateSpace:');
     expect(edited).toContain('interfaceOrientation previousInterfaceOrientation:');
     expect(edited).not.toContain('func scene(');
@@ -226,7 +226,9 @@ describe('the scene geometry re-request', () => {
   it('re-requests portrait geometry when the scene lays out wide', () => {
     const edited = editSceneDelegate(sceneDelegateFixture());
 
-    expect(edited).toContain('windowScene.interfaceOrientation.isLandscape');
+    expect(edited).toContain(
+      'windowScene.interfaceOrientation.isLandscape || previousInterfaceOrientation.isLandscape'
+    );
     expect(edited).toContain('requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))');
     expect(edited.indexOf('requestGeometryUpdate')).toBeGreaterThan(edited.indexOf(SCENE_MARKER));
   });
