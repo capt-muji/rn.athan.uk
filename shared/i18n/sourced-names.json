@@ -61,7 +61,17 @@
       "muhaddis-uz": "muhaddis.uz Uzbek hadith library (Shamail Muhammadi)",
       "loan": "the naming rule's own transliteration answer for a slot no authority prints, recorded with its derivation in the entry's note; the so precedent ('Istijaabo', plan T-410 decision 5)",
       "az-usage": "ordinary Azerbaijani Ramadan usage, no single portal",
-      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)"
+      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)",
+      "pnb-wikipedia": "pnb.wikipedia.org (Western Punjabi, Shahmukhi) نماز article: the five times and their names سرگی، پیشی، ڈیگر، نماشاں، کفتاں",
+      "sd-wikipedia": "sd.wikipedia.org (Sindhi) نماز article: فجر، ظهر، عصر، مغرب ۽ عشاء, سج اڀرڻ for sunrise, and ضحى يا چاشت for Duha",
+      "ug-wikipedia": "ug.wikipedia.org (Uyghur) ناماز ۋاقتى article: بامدات، پېشىن، ئەسىر، شام and خۇپتەن",
+      "kati-nwezh": "kati-nwezh.com Sorani Kurdish prayer-times table (بەیانی، خۆرهەڵاتن، نیوەڕۆ، عەسر، مەغریب، عیشا)",
+      "zaniary": "zaniary.com Sorani Kurdish article on the prayer times and their names",
+      "yo-islamhouse": "islamhouse.com Yoruba library: irun wákàtí márùn-ún, the five daily prayers",
+      "yo-media": "Yoruba da'wah media naming the prayers (Irun Asuba, Irun Magrib, Irun Ṣalatu Ìṣàá)",
+      "yo-usage": "the Yoruba day-part lexicon as Yoruba cultural pages print it (Àárọ̀ dawn, Ọ̀sán afternoon, Ìrọ̀lẹ́ evening, Òru night)",
+      "jv-wikipedia": "jv.wikipedia.org Pepéling article: Subuh, Luhur, Asar, Maghrib lan Isya",
+      "su-wikipedia": "su.wikipedia.org Solat, Lohor, Asar, Magrib and Isya articles"
     },
     "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
     "confidenceKey": {
@@ -1538,65 +1548,65 @@
       },
       "Midnight": {
         "text": "Nîveşev",
-        "source": null,
+        "source": "loan",
         "confidence": "low",
-        "note": "Kurmanji for midnight is nîvşev / nîveşev. Not attested in an Islamic-time table. Needs a speaker."
+        "note": "Kurmanji for midnight is nîvşev / nîveşev. Not attested in an Islamic-time table. Needs a speaker. Closed by the loan rule (plan T-427 decision 8): nîveşev lands as the label with this derivation."
       },
       "Last Third": {
-        "text": null,
-        "source": null,
+        "text": "Sêyema dawî ya şevê",
+        "source": "loan",
         "confidence": "low",
-        "note": "Not found. Needs a speaker."
+        "note": "Loan per the naming rule: the last third of the night in Kurmanji syntax (sêyem is third). No table prints the row."
       },
       "Suhoor": {
-        "text": null,
-        "source": null,
+        "text": "Xwarina seherê",
+        "source": "loan",
         "confidence": "low",
-        "note": "Not found. Kurmanji Ramadan usage says xwarina seherê. Needs a speaker."
+        "note": "Loan per the naming rule: xwarina seherê, the pre-dawn meal phrase the research note records as Kurmanji Ramadan usage."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "Duha",
+        "source": "loan",
         "confidence": "low",
-        "note": "Not found. Recommend dropping the row for ku."
+        "note": "Loan per the naming rule: the Arabic الضحى transliterated, the tr and ur Duha precedents applied. No Kurdish table prints the row."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijabe",
+        "source": "loan",
         "confidence": "low",
-        "note": "Not found. Recommend dropping the row for ku."
+        "note": "Loan per the naming rule: the Arabic استجابة transliterated, the ur استجابہ precedent applied. No Kurdish table prints the row."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "Needs the name set confirmed first."
+        "text": "Nîvê di navbera Mexreb û Sibe de",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; di navbera ... de is between."
       },
       "Start of the last third of the night": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "Destpêka sêyema dawî ya şevê",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; destpêk is the start."
       },
       "20 mins before Fajr": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "20 deqîqe berî Sibe",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; berî is before, digits Latin per plan decision 7."
       },
       "20 mins after Sunrise": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "20 deqîqe piştî derketina rojê",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; piştî is after."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "1 saet berî Mexreb (tenê roja Înê)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; tenê roja Înê is Fridays only."
       }
     }
   },
@@ -3025,6 +3035,720 @@
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; sextas-feiras is Fridays."
+      }
+    }
+  },
+  "pa-Arab": {
+    "names": {
+      "Fajr": {
+        "text": "سرگی",
+        "source": "pnb-wikipedia",
+        "confidence": "medium",
+        "note": "The Shahmukhi encyclopedia prints the five times and their names, سرگی first. Attested as the Punjabi name, not a translation. The Urdu loan فجر is what Pakistani paper tables print, recorded here as the alternative per plan T-427 decision 2."
+      },
+      "Sunrise": {
+        "text": "طلوع آفتاب",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: no Shahmukhi source prints a sunrise row. Pakistani tables print the Arabic loan طلوع آفتاب; the Punjabi phrase سج اپرنا is unattested in print."
+      },
+      "Dhuhr": {
+        "text": "پیشی",
+        "source": "pnb-wikipedia",
+        "confidence": "medium",
+        "note": "The encyclopedia's second name, پیشی, for the midday prayer. Attested as the Punjabi name; the loan ظہر is the paper alternative."
+      },
+      "Asr": {
+        "text": "ڈیگر",
+        "source": "pnb-wikipedia",
+        "confidence": "medium",
+        "note": "The encyclopedia's third name, ڈیگر, the Punjabi word for the afternoon. Attested as the Punjabi name; the loan عصر is the paper alternative."
+      },
+      "Magrib": {
+        "text": "نماشاں",
+        "source": "pnb-wikipedia",
+        "confidence": "medium",
+        "note": "The encyclopedia's fourth name, نماشاں, the Punjabi dusk word. Attested as the Punjabi name; the loan مغرب is the paper alternative."
+      },
+      "Isha": {
+        "text": "کفتاں",
+        "source": "pnb-wikipedia",
+        "confidence": "medium",
+        "note": "The encyclopedia's fifth name, کفتاں, the Punjabi nightfall word. Attested as the Punjabi name; the loan عشاء is the paper alternative."
+      },
+      "Midnight": {
+        "text": "آدھی رات",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Punjabi phrase for midnight (آدھی رات), the Urdu print form the same script carries. No Shahmukhi table prints the row."
+      },
+      "Last Third": {
+        "text": "آخری تہائی",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: آخری تہائی, the third-of-the-night phrase the Urdu print carries in the same script. No Shahmukhi table prints the row."
+      },
+      "Suhoor": {
+        "text": "سحری",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: سحری, the circulating name of the pre-dawn meal in Punjabi and Urdu speech. No table prints the row."
+      },
+      "Duha": {
+        "text": "چاشت",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: چاشت, the forenoon prayer's name in the Urdu print the same script carries. No Shahmukhi table prints the row."
+      },
+      "Istijaba": {
+        "text": "استجابہ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة in Punjabi orthography, the hour-of-answer name the tr İcabet and ur استجابہ precedents carry. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "نماشاں تے سرگی دے وچکار",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names with Punjabi syntax; وچکار is between."
+      },
+      "Start of the last third of the night": {
+        "text": "رات دے آخری تہائی دا شروع",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; names the sourced Last Third row."
+      },
+      "20 mins before Fajr": {
+        "text": "سرگی توں 20 منٹ پہلاں",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; پہلاں is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "طلوع آفتاب توں 20 منٹ بعد",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; بعد is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "نماشاں توں 1 گھنٹہ پہلاں (صرف جمعہ)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; صرف جمعہ is Fridays only."
+      }
+    }
+  },
+  "sd": {
+    "names": {
+      "Fajr": {
+        "text": "فجر",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The Sindhi encyclopedia prints فجر for the first prayer, the Arabic loan Sindhi tables use."
+      },
+      "Sunrise": {
+        "text": "سج اڀرڻ",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The article prints سج اڀرڻ (the sun rising) for sunrise, and Sindhi religious books print the same phrase."
+      },
+      "Dhuhr": {
+        "text": "ظهر",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The article prints ظهر for the midday prayer."
+      },
+      "Asr": {
+        "text": "عصر",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The article prints عصر for the afternoon prayer."
+      },
+      "Magrib": {
+        "text": "مغرب",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The article prints مغرب for the sunset prayer."
+      },
+      "Isha": {
+        "text": "عشاء",
+        "source": "sd-wikipedia",
+        "confidence": "high",
+        "note": "The article prints عشاء for the night prayer."
+      },
+      "Midnight": {
+        "text": "اڌ رات",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: اڌ رات, the ordinary Sindhi phrase for midnight. No Sindhi table prints the row."
+      },
+      "Last Third": {
+        "text": "رات جو آخري ٽيون",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: رات جو آخري ٽيون, the third-of-the-night phrase in Sindhi syntax. No Sindhi table prints the row."
+      },
+      "Suhoor": {
+        "text": "سحري",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: سحري, the circulating Sindhi name of the pre-dawn meal. No table prints the row."
+      },
+      "Duha": {
+        "text": "چاشت",
+        "source": "sd-wikipedia",
+        "confidence": "medium",
+        "note": "The article prints ضحى يا چاشت for the forenoon prayer, so چاشت is the attested Sindhi label."
+      },
+      "Istijaba": {
+        "text": "استجاب",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة in Sindhi orthography, the ur استجابہ precedent applied. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "مغرب ۽ فجر جي وچ ۾",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; وچ ۾ is between."
+      },
+      "Start of the last third of the night": {
+        "text": "رات جي آخري ٽئين حصي جي شروعات",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; names the sourced Last Third row."
+      },
+      "20 mins before Fajr": {
+        "text": "فجر کان 20 منٽ اڳ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; اڳ is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "سج اڀرڻ کان 20 منٽ پوءِ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; پوءِ is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "مغرب کان 1 ڪلاڪ اڳ (رڳو جمعي جي ڏينهن)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; رڳو جمعي جي ڏينهن is Fridays only."
+      }
+    }
+  },
+  "ug": {
+    "names": {
+      "Fajr": {
+        "text": "بامدات",
+        "source": "ug-wikipedia",
+        "confidence": "high",
+        "note": "The Uyghur article ناماز ۋاقتى heads its first row بامدات."
+      },
+      "Sunrise": {
+        "text": "كۈن چىقىش",
+        "source": "ug-wikipedia",
+        "confidence": "medium",
+        "note": "The article bounds the Fajr window with كۈن چىققىچە (until the sun rises), so كۈن چىقىش is the language's own sunrise phrase, shortened to the label."
+      },
+      "Dhuhr": {
+        "text": "پېشىن",
+        "source": "ug-wikipedia",
+        "confidence": "high",
+        "note": "The article heads its second row پېشىن."
+      },
+      "Asr": {
+        "text": "ئەسىر",
+        "source": "ug-wikipedia",
+        "confidence": "high",
+        "note": "The article heads its third row ئەسىر."
+      },
+      "Magrib": {
+        "text": "شام",
+        "source": "ug-wikipedia",
+        "confidence": "high",
+        "note": "The article heads its fourth row شام."
+      },
+      "Isha": {
+        "text": "خۇپتەن",
+        "source": "ug-wikipedia",
+        "confidence": "high",
+        "note": "The article heads its fifth row خۈپتەن and prints خۇپتەن in its body; the standard spelling is recorded, the variant noted."
+      },
+      "Midnight": {
+        "text": "يېرىم كېچە",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: يېرىم كېچە, the ordinary Uyghur phrase for midnight. No Uyghur table prints the row."
+      },
+      "Last Third": {
+        "text": "كېچىنىڭ ئاخىرقى ئۈچى",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: كېچىنىڭ ئاخىرقى ئۈچى, the last third of the night in Uyghur syntax. No table prints the row."
+      },
+      "Suhoor": {
+        "text": "سەھەرلىك",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: سەھەرلىك, the pre-dawn meal name the Uzbek Saharlik precedent carries into Uyghur. No table prints the row."
+      },
+      "Duha": {
+        "text": "زۇھا",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic الضحى in Uyghur orthography. No Uyghur table prints the row."
+      },
+      "Istijaba": {
+        "text": "ئىستىجابە",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة in Uyghur orthography, the ur استجابہ precedent applied. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "شام بىلەن بامدات ئارىسىدا",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; ئارىسىدا is between."
+      },
+      "Start of the last third of the night": {
+        "text": "كېچىنىڭ ئاخىرقى ئۈچىنىڭ بېشى",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; بېشى is its beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "بامداتتىن 20 مىنۇت بۇرۇن",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; بۇرۇن is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "كۈن چىقىشتىن 20 مىنۇت كېيىن",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; كېيىن is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "شامدىن 1 سائەت بۇرۇن (پەقەت جۈمە كۈنى)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; پەقەت جۈمە كۈنى is Fridays only."
+      }
+    }
+  },
+  "ckb": {
+    "names": {
+      "Fajr": {
+        "text": "بەیانی",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The Sorani table prints بەیانی (morning) for the first prayer; zaniary.com lists the same name."
+      },
+      "Sunrise": {
+        "text": "خۆرهەڵاتن",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The Sorani table prints خۆرهەڵاتن (sunrise) beside its prayer rows, and the amozhgary.tv table prints the same label."
+      },
+      "Dhuhr": {
+        "text": "نیوەڕۆ",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The table prints نیوەڕۆ (midday) for the noon prayer; zaniary.com agrees."
+      },
+      "Asr": {
+        "text": "عەسر",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The table prints عەسر for the afternoon prayer; zaniary.com agrees."
+      },
+      "Magrib": {
+        "text": "مەغریب",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The table prints مەغریب for the sunset prayer; zaniary.com agrees."
+      },
+      "Isha": {
+        "text": "عیشا",
+        "source": "kati-nwezh",
+        "confidence": "high",
+        "note": "The table prints عیشا for the night prayer; zaniary.com agrees."
+      },
+      "Midnight": {
+        "text": "نیوەشەو",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: نیوەشەو, the ordinary Sorani word for midnight. No Sorani table prints the row."
+      },
+      "Last Third": {
+        "text": "سێیەکی کۆتایی شەو",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: سێیەکی کۆتایی شەو, the last third of the night in Sorani syntax. No table prints the row."
+      },
+      "Suhoor": {
+        "text": "سەحەر",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: سەحەر, the pre-dawn meal name Sorani religious speech carries. No table prints the row."
+      },
+      "Duha": {
+        "text": "چێشتەنگاو",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: چێشتەنگاو, the Sorani word for the forenoon the Duha prayer falls in. No table prints the row."
+      },
+      "Istijaba": {
+        "text": "ئیستیجابە",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة in Sorani orthography, the ur استجابہ precedent applied. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "لە نێوان مەغریب و بەیانی",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; لە نێوان is between."
+      },
+      "Start of the last third of the night": {
+        "text": "دەستپێکی سێیەکی کۆتایی شەو",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; دەستپێک is the start."
+      },
+      "20 mins before Fajr": {
+        "text": "20 خولەک پێش بەیانی",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; پێش is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 خولەک دوای خۆرهەڵاتن",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; دوای is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 کاتژمێر پێش مەغریب (تەنها ڕۆژی هەینی)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; تەنها ڕۆژی هەینی is Fridays only."
+      }
+    }
+  },
+  "yo": {
+    "names": {
+      "Fajr": {
+        "text": "Irun Àárọ̀",
+        "source": "yo-media",
+        "confidence": "low",
+        "note": "The Yoruba Islamic media name the dawn prayer by the day part; islamhouse yo calls the five daily prayers irun wákàtí márùn-ún without printing a table. R9 section 2 records that no Yoruba prayer-table genre exists, so the label rests on that usage and the owner's ear."
+      },
+      "Sunrise": {
+        "text": "Ìlà Oòrùn",
+        "source": "yo-usage",
+        "confidence": "low",
+        "note": "The Yoruba phrase for sunrise (the sun's rising) from the day-part lexicon; no table prints the row."
+      },
+      "Dhuhr": {
+        "text": "Irun Ọ̀sán",
+        "source": "yo-usage",
+        "confidence": "low",
+        "note": "Ọ̀sán is the Yoruba afternoon, the window the noon prayer falls in; the label joins it to irun, the prayer word the media use."
+      },
+      "Asr": {
+        "text": "Irun Àsárì",
+        "source": "yo-media",
+        "confidence": "low",
+        "note": "The media render Asr as a loan (Àsárì) inside the irun formula; no table prints the row."
+      },
+      "Magrib": {
+        "text": "Irun Magrib",
+        "source": "yo-media",
+        "confidence": "medium",
+        "note": "Yoruba da'wah media title the sunset prayer Irun Magrib verbatim."
+      },
+      "Isha": {
+        "text": "Irun Ìṣàá",
+        "source": "yo-media",
+        "confidence": "medium",
+        "note": "The media print Irun Ṣalatu Ìṣàá for the night prayer, so Ìṣàá is the attested loan this label carries."
+      },
+      "Midnight": {
+        "text": "Àárín òru",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: àárín òru, the middle of the night in Yoruba. No table prints the row."
+      },
+      "Last Third": {
+        "text": "Apá ìkẹyìn òru",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the last part of the night in Yoruba syntax (ìkẹyìn is last). No table prints the row."
+      },
+      "Suhoor": {
+        "text": "Sahuri",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic السحور in Yoruba orthography, the ha Sahur precedent applied. No table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic الضحى transliterated, the tr and ur Duha precedents applied. No table prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة transliterated, the ur استجابہ precedent applied. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Àárín Magrib àti Àárọ̀",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; àárín is the middle."
+      },
+      "Start of the last third of the night": {
+        "text": "Ìbẹ̀rẹ̀ apá ìkẹyìn òru",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ìbẹ̀rẹ̀ is the beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "Ìṣẹ́jú 20 ṣáájú Àárọ̀",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ṣáájú is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "Ìṣẹ́jú 20 lẹ́yìn ìlà oòrùn",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; lẹ́yìn is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ọjọ́ Jímọ̀ nìkan is Fridays only."
+      }
+    }
+  },
+  "jv": {
+    "names": {
+      "Fajr": {
+        "text": "Subuh",
+        "source": "jv-wikipedia",
+        "confidence": "high",
+        "note": "The Javanese Pepéling lyric names the five times: Subuh, Luhur, Asar, Maghrib lan Isya."
+      },
+      "Sunrise": {
+        "text": "Mletèking srengéngé",
+        "source": "jv-wikipedia",
+        "confidence": "low",
+        "note": "The Javanese phrase for the sun's rising (srengéngé is the sun); the lyric prints no sunrise row."
+      },
+      "Dhuhr": {
+        "text": "Luhur",
+        "source": "jv-wikipedia",
+        "confidence": "high",
+        "note": "The lyric names the midday prayer Luhur, the Javanese word rather than the Indonesian Dzuhur."
+      },
+      "Asr": {
+        "text": "Asar",
+        "source": "jv-wikipedia",
+        "confidence": "high",
+        "note": "The lyric names the afternoon prayer Asar."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "jv-wikipedia",
+        "confidence": "high",
+        "note": "The lyric names the sunset prayer Maghrib."
+      },
+      "Isha": {
+        "text": "Isya",
+        "source": "jv-wikipedia",
+        "confidence": "high",
+        "note": "The lyric names the night prayer Isya."
+      },
+      "Midnight": {
+        "text": "Tengah wengi",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: tengah wengi, the ordinary Javanese phrase for midnight. No Javanese table prints the row."
+      },
+      "Last Third": {
+        "text": "Pungkasan wengi",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: pungkasan wengi, the late part of the night in Javanese. No table prints the row."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Sahur, the pre-dawn meal name Javanese religious speech carries, the id precedent applied."
+      },
+      "Duha": {
+        "text": "Dhuha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Dhuha, the Arabic الضحى as Indonesian and Javanese print it. No table prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijabah",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة as Javanese print carries it, the id Istijabah precedent applied."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Antarané Maghrib lan Subuh",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; antarané is between."
+      },
+      "Start of the last third of the night": {
+        "text": "Wiwitan telung bagéyan pungkasan wengi",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; wiwitan is the beginning and telung bagéyan the three parts."
+      },
+      "20 mins before Fajr": {
+        "text": "20 menit sadurungé Subuh",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sadurungé is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 menit sawisé mletèking srengéngé",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sawisé is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 jam sadurungé Maghrib (mung dina Jumuwah)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; mung dina Jumuwah is Fridays only."
+      }
+    }
+  },
+  "su": {
+    "names": {
+      "Fajr": {
+        "text": "Subuh",
+        "source": "su-wikipedia",
+        "confidence": "high",
+        "note": "The Sundanese encyclopedia's Solat, Magrib and Jama articles name the dawn prayer Subuh."
+      },
+      "Sunrise": {
+        "text": "Panonpoé bijil",
+        "source": "su-wikipedia",
+        "confidence": "low",
+        "note": "The Sundanese phrase for the sun coming out (panonpoé is the sun); the articles print no sunrise row."
+      },
+      "Dhuhr": {
+        "text": "Lohor",
+        "source": "su-wikipedia",
+        "confidence": "high",
+        "note": "su.wikipedia has a Lohor article for the midday prayer, the Sundanese name rather than the Indonesian Dzuhur."
+      },
+      "Asr": {
+        "text": "Asar",
+        "source": "su-wikipedia",
+        "confidence": "high",
+        "note": "The Asar and Jama articles name the afternoon prayer Asar."
+      },
+      "Magrib": {
+        "text": "Magrib",
+        "source": "su-wikipedia",
+        "confidence": "high",
+        "note": "The Magrib article names the sunset prayer Magrib."
+      },
+      "Isha": {
+        "text": "Isya",
+        "source": "su-wikipedia",
+        "confidence": "high",
+        "note": "The Jama article names the night prayer Isya."
+      },
+      "Midnight": {
+        "text": "Tengah peuting",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: tengah peuting, the ordinary Sundanese phrase for midnight. No Sundanese table prints the row."
+      },
+      "Last Third": {
+        "text": "Ahir peuting",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: ahir peuting, the late part of the night in Sundanese. No table prints the row."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Sahur, the pre-dawn meal name Sundanese religious speech carries, the id precedent applied."
+      },
+      "Duha": {
+        "text": "Dhuha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Dhuha, the Arabic الضحى as Indonesian and Sundanese print it. No table prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijabah",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic استجابة as Sundanese print carries it, the id Istijabah precedent applied."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Antara Magrib jeung Subuh",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; antara ... jeung is between."
+      },
+      "Start of the last third of the night": {
+        "text": "Mimiti sapartilu ahir peuting",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; mimiti is the beginning and sapartilu the third."
+      },
+      "20 mins before Fajr": {
+        "text": "20 menit saméméh Subuh",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; saméméh is before, digits Latin per plan decision 7."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 menit sanggeus panonpoé bijil",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sanggeus is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 jam saméméh Magrib (ukur poé Jumaah)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ukur poé Jumaah is Fridays only."
       }
     }
   }
