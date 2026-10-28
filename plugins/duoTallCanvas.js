@@ -166,7 +166,10 @@ const withDuoTallCanvas = (config) =>
         'ios',
         async (cfg) => {
           // prebuild strips non-alphanumerics from the app directory name, so a
-          // suffixed build's "Athan BGTest" lives at AthanBGTest on disk
+          // suffixed build's "Athan BGTest" lives at AthanBGTest on disk. The regex
+          // matches prebuild's directory naming for ASCII names; a non-ASCII
+          // EXPO_NAME_SUFFIX would also need prebuild's NFKD combining-mark fold,
+          // which every fleettest suffix in this repo is ASCII enough to skip
           const delegatePath = path.join(
             cfg.modRequest.platformProjectRoot,
             cfg.name.replace(/[^A-Za-z0-9]/g, ''),

@@ -19,8 +19,10 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 /**
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so the system tints whatever
- * these set. One size throughout; weight and opacity carry the hierarchy,
- * and the SECOND reading on a line is the muted one.
+ * these set. The live faces read 17pt on layouts 1-2 and 16pt on layout 3,
+ * each with a floor holding the worst case at or above the old 14pt nominal;
+ * weight and opacity carry the hierarchy, and the SECOND reading on a line
+ * is the muted one.
  * Three compositions per schedule, in gallery order: Layout 1 (name +
  * ticking countdown), Layout 2 (name + absolute time; no countdown and no
  * dot) and Layout 3 (name + absolute time with the

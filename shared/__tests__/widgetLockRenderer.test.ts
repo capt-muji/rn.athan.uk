@@ -274,7 +274,8 @@ describe('lock widget renderer', () => {
     expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
-  // One size across every live face, so weight and opacity
+  // The live faces read 17pt on layouts 1-2 and 16pt on layout 3, each
+  // floored at or above the old 14pt nominal, so weight and opacity
   // carry the tiers. What recedes is the SECOND reading on a line, which is
   // the countdown beside the name in layout 1, the time beside it in layout 2,
   // and the countdown beneath layout 3's name-and-time row. Layout 3 alone
