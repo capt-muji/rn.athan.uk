@@ -40,6 +40,8 @@ const SIX_NAMES = [
   'Bahasa Melayu',
   'English',
   'Français',
+  'Hausa',
+  'Kiswahili',
   'Oʻzbekcha',
   'Soomaali',
   'Türkçe',
@@ -70,7 +72,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the ten native names in codepoint order on the athan card pattern', async () => {
+  it('renders the twelve native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 

@@ -9,11 +9,11 @@ import { createHash } from 'node:crypto';
 import lock from '@/shared/i18n/catalog-lock.json';
 import { en } from '@/shared/i18n/en';
 
-const LOCALES = ['ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz'] as const;
+const LOCALES = ['ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz', 'sw', 'ha'] as const;
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 
 describe('the catalog lock', () => {
-  it('covers exactly the nine translated locales', () => {
+  it('covers exactly the eleven translated locales', () => {
     expect(Object.keys(lock).sort()).toEqual([...LOCALES].sort());
   });
 

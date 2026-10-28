@@ -142,5 +142,31 @@
     "refreshLead": "Athan ilovasini oching",
     "refreshTail": "yangilash uchun",
     "catchBody": "Yangilash uchun ilovani oching"
+  },
+  "sw": {
+    "subtitle": "Nyakati za swala London",
+    "inline": "Athan — nyakati za swala",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Fungua kupakia nyakati",
+    "staleTitle": "Haijasasishwa",
+    "staleBody": "Fungua programu kusasisha",
+    "staleInline": "Athan — fungua kusasisha nyakati",
+    "refreshLine": "Fungua Athan kusasisha",
+    "refreshLead": "Fungua Athan",
+    "refreshTail": "kusasisha",
+    "catchBody": "Fungua programu kusasisha"
+  },
+  "ha": {
+    "subtitle": "Lokutan salla London",
+    "inline": "Athan — lokutan salla",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Buɗe don ɗora lokuta",
+    "staleTitle": "Ba a sabunta ba",
+    "staleBody": "Buɗe app ɗin don sabuntawa",
+    "staleInline": "Athan — buɗe don sabunta lokuta",
+    "refreshLine": "Buɗe Athan don sabuntawa",
+    "refreshLead": "Buɗe Athan",
+    "refreshTail": "don sabuntawa",
+    "catchBody": "Buɗe app ɗin don sabuntawa"
   }
 }

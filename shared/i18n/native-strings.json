@@ -239,5 +239,53 @@
       "Extra Times (Layout 3)": "Qo'shimcha vaqtlar (Joylashuv 3)",
       "Next extra time with a countdown.": "Teskari sanoq bilan keyingi qo'shimcha vaqt."
     }
+  },
+  "sw": {
+    "NSLocationWhenInUseUsageDescription": "Eneo lako linatumika kubaini mwelekeo wa Makkah kutoka mahali ulipo. Halitoki kamwe kwenye simu yako.",
+    "NSUserNotificationsUsageDescription": "Pokea arifa za nyakati za swala",
+    "gallery": {
+      "Next Prayer (Light)": "Swala Inayofuata (Nuru)",
+      "A countdown to the next prayer.": "Kuhesabu muda hadi swala linalofuata.",
+      "Extra Times (Light)": "Nyakati za Ziada (Nuru)",
+      "A countdown to the next extra time.": "Kuhesabu muda hadi wakati wa ziada unaoofuata.",
+      "Next Prayer (Dark)": "Swala Inayofuata (Giza)",
+      "Extra Times (Dark)": "Nyakati za Ziada (Giza)",
+      "Next Prayer (Layout 1)": "Swala Inayofuata (Mpangilio 1)",
+      "Countdown to the next prayer.": "Kuhesabu muda hadi swala linalofuata.",
+      "Extra Times (Layout 1)": "Nyakati za Ziada (Mpangilio 1)",
+      "Countdown to the next extra time.": "Kuhesabu muda hadi wakati wa ziada unaoofuata.",
+      "Next Prayer (Layout 2)": "Swala Inayofuata (Mpangilio 2)",
+      "Next prayer time.": "Wakati wa swala linalofuata.",
+      "Extra Times (Layout 2)": "Nyakati za Ziada (Mpangilio 2)",
+      "Next extra time.": "Wakati ujao wa ziada.",
+      "Next Prayer (Layout 3)": "Swala Inayofuata (Mpangilio 3)",
+      "Next prayer time with a countdown.": "Wakati wa swala linalofuata na kuhesabu muda.",
+      "Extra Times (Layout 3)": "Nyakati za Ziada (Mpangilio 3)",
+      "Next extra time with a countdown.": "Wakati ujao wa ziada na kuhesabu muda."
+    }
+  },
+  "ha": {
+    "NSLocationWhenInUseUsageDescription": "Ana amfani da wurin da kake ciki don sanin alkiblar Makka daga inda kake. Ba ya tafiya daga wayarka.",
+    "NSUserNotificationsUsageDescription": "Karɓi sanarwar lokutan salla",
+    "gallery": {
+      "Next Prayer (Light)": "Salla Mai Zuwa (Haske)",
+      "A countdown to the next prayer.": "Kirga saura har salla mai zuwa.",
+      "Extra Times (Light)": "Lokutan Ƙari (Haske)",
+      "A countdown to the next extra time.": "Kirga saura har lokacin ƙari mai zuwa.",
+      "Next Prayer (Dark)": "Salla Mai Zuwa (Duhu)",
+      "Extra Times (Dark)": "Lokutan Ƙari (Duhu)",
+      "Next Prayer (Layout 1)": "Salla Mai Zuwa (Tsari 1)",
+      "Countdown to the next prayer.": "Kirga saura har salla mai zuwa.",
+      "Extra Times (Layout 1)": "Lokutan Ƙari (Tsari 1)",
+      "Countdown to the next extra time.": "Kirga saura har lokacin ƙari mai zuwa.",
+      "Next Prayer (Layout 2)": "Salla Mai Zuwa (Tsari 2)",
+      "Next prayer time.": "Lokacin salla mai zuwa.",
+      "Extra Times (Layout 2)": "Lokutan Ƙari (Tsari 2)",
+      "Next extra time.": "Lokacin ƙari mai zuwa.",
+      "Next Prayer (Layout 3)": "Salla Mai Zuwa (Tsari 3)",
+      "Next prayer time with a countdown.": "Lokacin salla mai zuwa da kirgawa.",
+      "Extra Times (Layout 3)": "Lokutan Ƙari (Tsari 3)",
+      "Next extra time with a countdown.": "Lokacin ƙari mai zuwa da kirgawa."
+    }
   }
 }

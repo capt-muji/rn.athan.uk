@@ -98,6 +98,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   tr: LATIN,
   fr: LATIN,
   uz: LATIN,
+  sw: LATIN,
+  ha: LATIN,
 };
 
 /**
