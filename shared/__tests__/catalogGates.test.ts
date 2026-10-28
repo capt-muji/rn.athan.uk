@@ -18,9 +18,11 @@ import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
+import { paArab } from '@/shared/i18n/pa-Arab';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { ru } from '@/shared/i18n/ru';
+import { sd } from '@/shared/i18n/sd';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
 import { sq } from '@/shared/i18n/sq';
@@ -59,9 +61,11 @@ const CATALOGS: Record<string, Catalog> = {
   ml,
   'zh-Hans': zhHans,
   'zh-Hant': zhHant,
+  'pa-Arab': paArab,
+  sd,
 };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 

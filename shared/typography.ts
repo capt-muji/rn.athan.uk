@@ -82,7 +82,10 @@ const THAI: LocaleTypography = {
 // U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD U+06AB, measured absent
 // by explicit codepoint in both weights, plan T-419 decision 7) while this Naskh pair
 // carries them all plus the Persian prose digits ۰-۹, both weights, same 1.703em box
-// against 2.039em win ink
+// against 2.039em win ink. Sindhi, Uyghur and Shahmukhi Punjabi ride it too (plan
+// T-427 decision 4): measured the same day by explicit codepoint, this pair carries
+// all fifteen Sindhi letters, Uyghur's eight and Shahmukhi's thirteen, both weights,
+// while Rubik lacks every one of them
 const URDU: LocaleTypography = {
   familyRegular: 'NotoNaskhArabic-Regular',
   familyMedium: 'NotoNaskhArabic-Medium',
@@ -227,6 +230,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   sq: LATIN,
   bs: LATIN,
   ps: URDU,
+  'pa-Arab': URDU,
+  sd: URDU,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

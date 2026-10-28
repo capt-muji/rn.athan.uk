@@ -2,7 +2,7 @@
  * Native strings from committed config (D43, D46): every per-locale native
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
- * table, and the locale declarations cover the twenty-six-language set on both
+ * table, and the locale declarations cover the thirty-four-language set on both
  * platforms.
  */
 
@@ -47,6 +47,8 @@ const LOCALES = [
   'ml',
   'zh-Hans',
   'zh-Hant',
+  'pa-Arab',
+  'sd',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
@@ -101,7 +103,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('declares the twenty-six locales in CFBundleLocalizations with the display name unchanged', () => {
+  it('declares every shipped locale in CFBundleLocalizations with the display name unchanged', () => {
     const ios = app.ios as { infoPlist?: Record<string, unknown> };
     const infoPlist = (ios.infoPlist ?? {}) as Record<string, unknown>;
     expect(infoPlist.CFBundleLocalizations).toEqual([...LOCALES]);
@@ -192,7 +194,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('builds the Android locales_config with the twenty-six locales', () => {
+  it('builds the Android locales_config with every shipped locale', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
 
@@ -201,7 +203,7 @@ describe('native strings from committed config', () => {
     for (const locale of LOCALES) {
       expect(xml).toContain(`<locale android:name="${locale}"/>`);
     }
-    expect(xml.match(/<locale /g)).toHaveLength(26);
+    expect(xml.match(/<locale /g)).toHaveLength(LOCALES.length);
     expect(xml).toContain('<locale-config xmlns:android="http://schemas.android.com/apk/res/android">');
   });
 });

@@ -49,6 +49,12 @@ describe('resolveInitialLocale', () => {
     ['ta-IN', 'ta', 'ta'],
     ['ta-LK', 'ta', 'ta'],
     ['ml-IN', 'ml', 'ml'],
+    ['pa-PK', 'pa', 'pa-Arab'],
+    ['pa-Arab-PK', 'pa', 'pa-Arab'],
+    ['sd-PK', 'sd', 'sd'],
+    // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
+    ['pa-Guru-IN', 'pa', 'en'],
+    ['pa-IN', 'pa', 'en'],
     // Decision 9, plan T-419: the zh pair resolves by script subtag, then by the
     // TW/HK/MO region list CLDR's likely-subtags answers, and bare zh reads
     // Simplified (R4 A.4: a bare zh entry must never serve a Traditional reader)
@@ -169,18 +175,21 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa', 'ps'] as const)('mirrors the chevron under %s, the later RTL locales', (locale) => {
-    setActiveLocale(locale);
-    try {
-      expect(chevronFor()).toBe('\u2039');
-    } finally {
-      setActiveLocale('en');
+  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd'] as const)(
+    'mirrors the chevron under %s, the later RTL locales',
+    (locale) => {
+      setActiveLocale(locale);
+      try {
+        expect(chevronFor()).toBe('\u2039');
+      } finally {
+        setActiveLocale('en');
+      }
     }
-  });
+  );
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa', 'ps'] as const)('carries the Arabic comma under %s', (locale) => {
+  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd'] as const)('carries the Arabic comma under %s', (locale) => {
     setActiveLocale(locale);
     try {
       expect(sentenceComma()).toBe('\u060C');

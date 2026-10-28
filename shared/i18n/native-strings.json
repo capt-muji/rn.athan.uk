@@ -623,5 +623,53 @@
       "Extra Times (Layout 3)": "額外時間（版面配置 3）",
       "Next extra time with a countdown.": "含倒數的下一個額外時間。"
     }
+  },
+  "pa-Arab": {
+    "NSLocationWhenInUseUsageDescription": "تہاڈا مقام مکہ دی سمت معلوم کرن لئی ورتیا جاندا اے۔ ایہ کدی تہاڈے فون توں باہر نہیں جاندا۔",
+    "NSUserNotificationsUsageDescription": "نماز دے ویلیاں دیاں اطلاع حاصل کرو",
+    "gallery": {
+      "Next Prayer (Light)": "اگلا نماز (روشن)",
+      "A countdown to the next prayer.": "اگلے نماز تک گنتی۔",
+      "Extra Times (Light)": "ودھیرے ویلے (روشن)",
+      "A countdown to the next extra time.": "اگلے ودھیرے ویلے تک گنتی۔",
+      "Next Prayer (Dark)": "اگلا نماز (گہرا)",
+      "Extra Times (Dark)": "ودھیرے ویلے (گہرا)",
+      "Next Prayer (Layout 1)": "اگلا نماز (بݨاوت 1)",
+      "Countdown to the next prayer.": "اگلے نماز تک گنتی۔",
+      "Extra Times (Layout 1)": "ودھیرے ویلے (بݨاوت 1)",
+      "Countdown to the next extra time.": "اگلے ودھیرے ویلے تک گنتی۔",
+      "Next Prayer (Layout 2)": "اگلا نماز (بݨاوت 2)",
+      "Next prayer time.": "اگلے نماز دا ویلا۔",
+      "Extra Times (Layout 2)": "ودھیرے ویلے (بݨاوت 2)",
+      "Next extra time.": "اگلا ودھیرا ویلا۔",
+      "Next Prayer (Layout 3)": "اگلا نماز (بݨاوت 3)",
+      "Next prayer time with a countdown.": "اگلے نماز دا ویلا گنتی نال۔",
+      "Extra Times (Layout 3)": "ودھیرے ویلے (بݨاوت 3)",
+      "Next extra time with a countdown.": "اگلے ودھیرے ویلے دی گنتی۔"
+    }
+  },
+  "sd": {
+    "NSLocationWhenInUseUsageDescription": "توهان جو هنڌ مڪي جي طرف معلوم ڪرڻ لاءِ استعمال ٿئي ٿو. اهو ڪڏهن به توهان جي فون مان ٻاهر نه ٿو وڃي.",
+    "NSUserNotificationsUsageDescription": "نماز جي وقتن جا اطلاع حاصل ڪريو",
+    "gallery": {
+      "Next Prayer (Light)": "اڳيون نماز (روشن)",
+      "A countdown to the next prayer.": "اڳئين نماز تائين ڳڻپ.",
+      "Extra Times (Light)": "وڌيڪ وقت (روشن)",
+      "A countdown to the next extra time.": "اڳئين وڌيڪ وقت تائين ڳڻپ.",
+      "Next Prayer (Dark)": "اڳيون نماز (اونداهو)",
+      "Extra Times (Dark)": "وڌيڪ وقت (اونداهو)",
+      "Next Prayer (Layout 1)": "اڳيون نماز (ڊزائين 1)",
+      "Countdown to the next prayer.": "اڳئين نماز تائين ڳڻپ.",
+      "Extra Times (Layout 1)": "وڌيڪ وقت (ڊزائين 1)",
+      "Countdown to the next extra time.": "اڳئين وڌيڪ وقت تائين ڳڻپ.",
+      "Next Prayer (Layout 2)": "اڳيون نماز (ڊزائين 2)",
+      "Next prayer time.": "اڳئين نماز جو وقت.",
+      "Extra Times (Layout 2)": "وڌيڪ وقت (ڊزائين 2)",
+      "Next extra time.": "اڳيون وڌيڪ وقت.",
+      "Next Prayer (Layout 3)": "اڳيون نماز (ڊزائين 3)",
+      "Next prayer time with a countdown.": "اڳئين نماز جو وقت ڳڻپ سان.",
+      "Extra Times (Layout 3)": "وڌيڪ وقت (ڊزائين 3)",
+      "Next extra time with a countdown.": "اڳئين وڌيڪ وقت جي ڳڻپ."
+    }
   }
 }
