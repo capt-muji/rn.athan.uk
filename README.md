@@ -12,7 +12,7 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 
 - Six daily prayers plus five extra times (Midnight, Last Third, Suhoor, Duha, Friday Istijaba) with a live countdown to the next prayer.
 - The schedule rolls over after the last prayer of the day instead of midnight. Tomorrow sits one swipe away.
-- Sixteen languages - English, Arabic, Bahasa Indonesia, Bahasa Melayu, Somali, Hindi, Thai, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian and Bengali - with right-to-left layout for Arabic, Urdu and Persian.
+- Twenty-six languages - English, Arabic, Bahasa Indonesia, Bahasa Melayu, Somali, Hindi, Thai, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese and Traditional Chinese - with right-to-left layout for Arabic, Urdu, Persian and Pashto.
 - Fully offline after the first sync. The whole year is cached in MMKV, and an unreadable time shows `--:--`, never a guess.
 - Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
 - Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
