@@ -419,6 +419,90 @@ describe('lock widget renderer', () => {
     expect(second?.modifiers).toContainEqual({ modifier: 'padding', value: { leading: 3 } });
   });
 
+  // T-400: the raised lock type scale, pinned per layout and face. Every
+  // raised nominal reads no smaller at its floor than today's nominal 14
+  // (17 x 0.83 = 14.11, 16 x 0.88 = 14.08); the inline face stands at 14.
+  const imagesOf = (tree: unknown): number[] => {
+    const sizes: number[] = [];
+    const walk = (node: unknown): void => {
+      if (Array.isArray(node)) {
+        for (const child of node) walk(child);
+        return;
+      }
+      if (node !== null && typeof node === 'object' && 'marker' in node) {
+        const markerNode = node as MarkerNode;
+        if (markerNode.marker === 'Image') sizes.push(markerNode.props.size as number);
+        walk(markerNode.props.children);
+      }
+    };
+    walk(tree);
+    return sizes;
+  };
+
+  it.each([
+    [
+      'layout 1',
+      () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
+      ],
+    ],
+    [
+      'layout 2',
+      () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
+      ],
+    ],
+    [
+      'layout 3',
+      () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 16, weight: 'medium', floor: 0.88 },
+        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+      ],
+    ],
+  ] as const)('sizes the live %s readings at their raised nominals and floors', (_label, renderPath, pins) => {
+    const texts = styledTexts(renderPath());
+    expect(texts).toHaveLength(pins.length);
+    for (const pin of pins) {
+      const node = texts.find((entry) => entry.text === pin.text);
+      expect(node?.size).toBe(pin.size);
+      expect(node?.weight).toBe(pin.weight);
+      expect(node?.modifiers).toContainEqual({ modifier: 'minimumScaleFactor', value: pin.floor });
+    }
+  });
+
+  it('sizes the inline face at the system-chosen 14, unfloored, on every layout', () => {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+      for (const node of styledTexts(render(LIVE_PROPS, 'accessoryInline'))) {
+        expect(node.size).toBe(14);
+        expect(node.modifiers.map((entry) => entry.modifier)).not.toContain('minimumScaleFactor');
+      }
+    }
+  });
+
+  it('sizes the stale card one point up on every layout (slot 72pt, branch measured on the XS)', () => {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+      const tree = render({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular');
+      const texts = styledTexts(tree);
+      expect(texts.find((node) => node.text === 'Out of date')?.size).toBe(18);
+      expect(texts.find((node) => node.text === 'Open app to refresh')?.size).toBe(15);
+      expect(imagesOf(tree)).toEqual([18]);
+    }
+  });
+
+  it('sizes the neutral card one point up on every layout', () => {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+      const texts = styledTexts(render(null, 'accessoryRectangular'));
+      expect(texts.find((node) => node.text === 'ATHAN')?.size).toBe(12);
+      expect(texts.find((node) => node.text === 'Open to load times')?.size).toBe(18);
+    }
+  });
+
   it('never pins the layout 1 countdown to its reserved width', () => {
     // fixedSize holds a timer Text at the worst-case width it reserves, which
     // is the overflow that took its digits off the slot's trailing edge.
