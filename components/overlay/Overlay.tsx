@@ -12,7 +12,7 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, OVERLAY } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { perfMeasure } from '@/shared/perf';
-import { overlayFadeSettledAtom } from '@/stores/atoms/overlay';
+import { currentFadeGeneration, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, markOverlayFadeSettled, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
 
@@ -29,10 +29,13 @@ export default function Overlay() {
 
   // The layer's own fade is the family's settle clock: its completion raises
   // the fade-hold flag for every subtree the overlay holds displayable, so
-  // one batched commit flips them all after the fade truly ended
+  // one batched commit flips them all after the fade truly ended — carrying
+  // this render's generation, so a settle superseded by a newer fade (the
+  // open fade completing while the close handler runs) is dropped
+  const fadeGeneration = currentFadeGeneration();
   const layerOpacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, {
     duration: ANIMATION.duration,
-    onSettled: markOverlayFadeSettled,
+    onSettled: () => markOverlayFadeSettled(fadeGeneration),
   });
 
   const listMeasurements = useAtomValue(measurementsListAtom);

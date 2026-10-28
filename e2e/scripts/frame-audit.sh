@@ -28,7 +28,10 @@
 #
 # Modes (FRAME_AUDIT):
 #   dual (default)  -> video + SF read of the same tap, gap lists side by
-#                      side and the separation verdict
+#                      side and the separation verdict. Its cadence PASS line
+#                      is NOT a floor verdict (and matches the sf floor's
+#                      33ms band) — the recorder-free sf read's printed
+#                      present-gap list is the verdict of record (D16)
 #   video           -> video only (the pre-dual behaviour)
 #   sf              -> SurfaceFlinger --latency cadence instead of video
 #                      (no pixels) — D16's recorder-free FLOOR WITNESS, and
@@ -351,7 +354,7 @@ if len(tap) < 2:
 if not anim:
     print("SF 30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
     sys.exit(1)
-passed = all(g <= 34 for g in anim)
+passed = all(g <= 33 for g in anim)
 print("SF 30fps FLOOR (cadence):", "PASS" if passed else "FAIL")
 print("SF gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
 

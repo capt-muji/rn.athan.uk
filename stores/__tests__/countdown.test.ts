@@ -61,6 +61,8 @@ const mockOverlayAtom = mockAtom({
 const mockFadeSettledAtom = mockAtom(true);
 
 jest.mock('@/stores/atoms/overlay', () => ({
+  // The generation functions stay real: the boundary close stamps the true counter
+  ...jest.requireActual('@/stores/atoms/overlay'),
   overlayAtom: mockOverlayAtom,
   overlayFadeSettledAtom: mockFadeSettledAtom,
 }));

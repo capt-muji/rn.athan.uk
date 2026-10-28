@@ -44,6 +44,26 @@ export const overlayAtom = atom<OverlayStore>({
 export const overlayFadeSettledAtom = atom(true);
 
 /**
+ * The overlay family's fade generation. Every isOn writer stamps the next
+ * number beside its fade-hold drop, and a settle only counts while it carries
+ * the generation of the fade still in flight: without that, the open fade's
+ * completion — posted to the JS thread while the close tap's handler already
+ * ran — would raise the hold over the whole close fade and cut the layer to
+ * display:none at close-start, the hold-then-snap the shared flag exists to
+ * kill.
+ */
+let fadeGeneration = 0;
+
+/** Stamped by every isOn writer, in the same store batch as its fade-hold drop */
+export const nextFadeGeneration = (): number => {
+  fadeGeneration += 1;
+  return fadeGeneration;
+};
+
+/** The generation of the fade in flight, read by the render that starts it */
+export const currentFadeGeneration = (): number => fadeGeneration;
+
+/**
  * Derived boolean: whether the overlay is open
  *
  * Primitive-valued so overlay toggles re-render only components that care

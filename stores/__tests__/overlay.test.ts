@@ -47,12 +47,15 @@ jest.mock('@/stores/countdown', () => ({
 }));
 
 jest.mock('@/stores/atoms/overlay', () => ({
+  // The generation functions stay real: the guard tests run the true counter
+  ...jest.requireActual('@/stores/atoms/overlay'),
   overlayAtom: mockOverlayAtomSymbol,
   overlayFadeSettledAtom: mockFadeSettledAtomSymbol,
 }));
 
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
 const { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay } = require('../overlay');
+const { currentFadeGeneration } = require('@/stores/atoms/overlay');
 
 // =============================================================================
 // TEST SETUP
@@ -200,12 +203,46 @@ describe('the fade-hold flag', () => {
   });
 
   it('markOverlayFadeSettled raises it a microtask later, never mid-render', async () => {
-    markOverlayFadeSettled();
+    markOverlayFadeSettled(currentFadeGeneration());
 
     // The settle can fire from a render-phase animation mapper (Reanimated's
     // jest mock completes withTiming synchronously), so the write must not
     // land in that render
     expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+  });
+});
+
+// =============================================================================
+// THE STALE-SETTLE GUARD
+// =============================================================================
+
+describe('the stale-settle guard', () => {
+  it('ignores a settle from a superseded fade, so it cannot raise the hold over the fade that replaced it', async () => {
+    setNextPrayerIn(60_000);
+    openOverlay(ScheduleType.Standard, 3);
+    const openFadeGeneration = currentFadeGeneration();
+    // The mock store does not follow writes, so the close reads an open state
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+
+    // The close tap's handler runs while the open fade's finished settle is
+    // already posted to the JS thread: the writer stamps a fresh generation,
+    // and the stale settle lands only after it
+    closeOverlay();
+    markOverlayFadeSettled(openFadeGeneration);
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+  });
+
+  it('raises the hold for a settle that carries the live fade generation', async () => {
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+    closeOverlay();
+    markOverlayFadeSettled(currentFadeGeneration());
 
     await Promise.resolve();
 
