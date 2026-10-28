@@ -350,5 +350,57 @@
     "refreshLead": "開啟 Athan",
     "refreshTail": "重新整理",
     "catchBody": "開啟應用程式重新整理"
+  },
+  "om": {
+    "subtitle": "Yeroo salaataa London",
+    "inline": "Athan — yeroo salaataa",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Yeroo fe’uuf bani",
+    "staleTitle": "Yeroo dabre",
+    "staleBody": "Haaromsuuf appii bani",
+    "staleInline": "Athan — yeroo haaromsuuf bani",
+    "refreshLine": "Haaromsuuf Athan bani",
+    "refreshLead": "Athan bani",
+    "refreshTail": "haaromsuuf",
+    "catchBody": "Haaromsuuf appii bani"
+  },
+  "bm": {
+    "subtitle": "Seli waatiw London",
+    "inline": "Athan — seli waatiw",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Waatiw load walasa ka da wuli",
+    "staleTitle": "A tɛmɛna",
+    "staleBody": "Athan da wuli walasa ka a kura",
+    "staleInline": "Athan — waati kura walasa ka da wuli",
+    "refreshLine": "Athan da wuli walasa ka a kura",
+    "refreshLead": "Athan da wuli",
+    "refreshTail": "walasa ka a kura",
+    "catchBody": "Athan da wuli walasa ka a kura"
+  },
+  "tl": {
+    "subtitle": "Mga oras ng pagdarasal para sa London",
+    "inline": "Athan — mga oras ng pagdarasal",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Buksan para i-load ang mga oras",
+    "staleTitle": "Luma na",
+    "staleBody": "Buksan ang app para i-refresh",
+    "staleInline": "Athan — buksan para i-refresh ang mga oras",
+    "refreshLine": "Buksan ang Athan para i-refresh",
+    "refreshLead": "Buksan ang Athan",
+    "refreshTail": "para i-refresh",
+    "catchBody": "Buksan ang app para i-refresh"
+  },
+  "ff": {
+    "subtitle": "Waktuuji julde London",
+    "inline": "Athan — waktuuji julde",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Uddit ngam loowde waktuuji",
+    "staleTitle": "Ɓennuɗo",
+    "staleBody": "Uddit app ngam kesɗitinde",
+    "staleInline": "Athan — uddit ngam kesɗitinde waktuuji",
+    "refreshLine": "Uddit Athan ngam kesɗitinde",
+    "refreshLead": "Uddit Athan",
+    "refreshTail": "ngam kesɗitinde",
+    "catchBody": "Uddit app ngam kesɗitinde"
   }
 }

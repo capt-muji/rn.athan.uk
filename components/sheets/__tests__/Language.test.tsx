@@ -1,5 +1,5 @@
 /**
- * The language sheet (D8, D26): the twenty-six native names in codepoint order, and a pick that closes
+ * The language sheet (D8, D26): the thirty native names in codepoint order, and a pick that closes
  * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
@@ -39,16 +39,20 @@ const SIX_NAMES = [
   'Azərbaycanca',
   'Bahasa Indonesia',
   'Bahasa Melayu',
+  'Bamanankan',
   'Bosanski',
   'Deutsch',
   'English',
   'Français',
+  'Fulfulde',
   'Hausa',
   'Kiswahili',
+  'Oromoo',
   'Oʻzbekcha',
   'Português',
   'Shqip',
   'Soomaali',
+  'Tagalog',
   'Türkçe',
   'Русский',
   'اردو',
@@ -86,7 +90,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the twenty-six native names in codepoint order on the athan card pattern', async () => {
+  it('renders the thirty native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -183,8 +187,8 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits sixth, after the Latin latecomers: the seat is five rows and five gaps below the list's top
-    expect(highlight().seat).toBe(5 * 44 + 5 * SPACING.xs);
+    // English sits seventh, after the Latin latecomers: the seat is six rows and six gaps below the list's top
+    expect(highlight().seat).toBe(6 * 44 + 6 * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {

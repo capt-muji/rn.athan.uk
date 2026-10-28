@@ -199,6 +199,26 @@ const HANT: LocaleTypography = {
   wordFace: true,
 };
 
+// No shipped face carries the African Latin letters: Roboto and Rubik both lack
+// ɛ ɔ ɲ (U+025B U+0254 U+0272) and ɓ ɗ ƴ (U+0253 U+0257 U+01B4), measured by explicit
+// codepoint in both weights of all twenty bundled TTFs (plan T-428 decision 4), so
+// Bambara and Fulfulde name the bundled Noto Sans pair. Its hhea box is 1.362em
+// (ascent 1069, descent -293, UPM 1000, both weights) while its win ink spans
+// 1.519em (winAscent 1124, winDescent 395), so the box-bearing row-106 law applies
+// and ink-bearing surfaces take a script line that clears the measured ink: 1.55em
+const AFRICAN: LocaleTypography = {
+  familyRegular: 'NotoSans-Regular',
+  familyMedium: 'NotoSans-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.55),
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -231,6 +251,11 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ml: MALAYALAM,
   'zh-Hans': HANS,
   'zh-Hant': HANT,
+  // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
+  om: LATIN,
+  bm: AFRICAN,
+  tl: LATIN,
+  ff: AFRICAN,
 };
 
 /**

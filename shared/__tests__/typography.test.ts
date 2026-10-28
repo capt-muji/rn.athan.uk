@@ -107,7 +107,9 @@ describe('typographyFor', () => {
         id !== 'ta' &&
         id !== 'ml' &&
         id !== 'zh-Hans' &&
-        id !== 'zh-Hant'
+        id !== 'zh-Hant' &&
+        id !== 'bm' &&
+        id !== 'ff'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -190,6 +192,27 @@ describe('typographyFor', () => {
     // measurement over the bundled subsets), so no surface pins a script box -
     // the Thai row-87 law
     expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves bm and ff to the bundled Noto Sans pair with the measured script line box', () => {
+    for (const locale of ['bm', 'ff'] as const) {
+      const ty = typographyFor(locale);
+      // No shipped face carries the African letters (ɛ ɔ ɲ for bm, ɓ ɗ ƴ for
+      // ff, measured absent by codepoint in both weights of all twenty bundled
+      // TTFs), so both ride the Noto Sans pair. Its hhea box is 1.362em
+      // (ascent 1069, descent -293, UPM 1000) against a 1.519em win ink
+      // (1124/395, both weights, this wave's own measurement), so ink-bearing
+      // surfaces take the 1.55em script line that clears the measured ink
+      expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+      expect(ty.scriptLineHeight?.(14)).toBe(22);
+      expect(ty.scriptLineHeight?.(15)).toBe(23);
+    }
+  });
+
+  it('resolves om and tl to the Roboto identity record', () => {
+    // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
+    expectLatinRecord(typographyFor('om'));
+    expectLatinRecord(typographyFor('tl'));
   });
 
   it('resolves zh-Hant to the TC subset pair with no script line box', () => {
