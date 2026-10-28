@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.28.4",
+    "version": "2.28.5",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -52,7 +52,8 @@
           "kk",
           "ky",
           "tg",
-          "tk"
+          "tk",
+          "wo"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -2185,6 +2186,62 @@
           "prayer_lock_widget_3_description": "Yzyna hasaplama bilen indiki namazyň wagty.",
           "extras_lock_widget_3_display_name": "Goşmaça wagtlary (3-nji düzüliş)",
           "extras_lock_widget_3_description": "Yzyna hasaplama bilen indiki goşmaça wagt."
+        }
+      },
+      "wo": {
+        "NSLocationWhenInUseUsageDescription": "Sa bérab dafay jëfandikoo ngir xam ban wàll Maka bi ne ci fu nga ne. Dafay génn sa telefon.",
+        "NSUserNotificationsUsageDescription": "Jot xibaar yu waxtu julli",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "Julli bi ñëw (leer)",
+            "A countdown to the next prayer.": "Kont ngir julli bi ñëw.",
+            "Extra Times (Light)": "Waxtu yu yokk (leer)",
+            "A countdown to the next extra time.": "Kont ngir waxtu bu yokk bi ñëw.",
+            "Next Prayer (Dark)": "Julli bi ñëw (lëndëm)",
+            "Extra Times (Dark)": "Waxtu yu yokk (lëndëm)",
+            "Next Prayer (Layout 1)": "Julli bi ñëw (tëraan 1)",
+            "Countdown to the next prayer.": "Kont ngir julli bi ñëw.",
+            "Extra Times (Layout 1)": "Waxtu yu yokk (tëraan 1)",
+            "Countdown to the next extra time.": "Kont ngir waxtu bu yokk bi ñëw.",
+            "Next Prayer (Layout 2)": "Julli bi ñëw (tëraan 2)",
+            "Next prayer time.": "Waxtu julli bi ñëw.",
+            "Extra Times (Layout 2)": "Waxtu yu yokk (tëraan 2)",
+            "Next extra time.": "Waxtu bu yokk bi ñëw.",
+            "Next Prayer (Layout 3)": "Julli bi ñëw (tëraan 3)",
+            "Next prayer time with a countdown.": "Waxtu julli bi ñëw ak kont.",
+            "Extra Times (Layout 3)": "Waxtu yu yokk (tëraan 3)",
+            "Next extra time with a countdown.": "Waxtu bu yokk bi ñëw ak kont."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "Julli bi ñëw (leer)",
+          "prayer_widget_description": "Kont ngir julli bi ñëw.",
+          "extras_widget_display_name": "Waxtu yu yokk (leer)",
+          "extras_widget_description": "Kont ngir waxtu bu yokk bi ñëw.",
+          "prayer_widget_medium_display_name": "Julli bi ñëw (leer)",
+          "prayer_widget_medium_description": "Kont ngir julli bi ñëw.",
+          "extras_widget_medium_display_name": "Waxtu yu yokk (leer)",
+          "extras_widget_medium_description": "Kont ngir waxtu bu yokk bi ñëw.",
+          "prayer_widget_dark_display_name": "Julli bi ñëw (lëndëm)",
+          "prayer_widget_dark_description": "Kont ngir julli bi ñëw.",
+          "extras_widget_dark_display_name": "Waxtu yu yokk (lëndëm)",
+          "extras_widget_dark_description": "Kont ngir waxtu bu yokk bi ñëw.",
+          "prayer_widget_dark_medium_display_name": "Julli bi ñëw (lëndëm)",
+          "prayer_widget_dark_medium_description": "Kont ngir julli bi ñëw.",
+          "extras_widget_dark_medium_display_name": "Waxtu yu yokk (lëndëm)",
+          "extras_widget_dark_medium_description": "Kont ngir waxtu bu yokk bi ñëw.",
+          "prayer_lock_widget_display_name": "Julli bi ñëw (tëraan 1)",
+          "prayer_lock_widget_description": "Kont ngir julli bi ñëw.",
+          "extras_lock_widget_display_name": "Waxtu yu yokk (tëraan 1)",
+          "extras_lock_widget_description": "Kont ngir waxtu bu yokk bi ñëw.",
+          "prayer_lock_widget_2_display_name": "Julli bi ñëw (tëraan 2)",
+          "prayer_lock_widget_2_description": "Waxtu julli bi ñëw.",
+          "extras_lock_widget_2_display_name": "Waxtu yu yokk (tëraan 2)",
+          "extras_lock_widget_2_description": "Waxtu bu yokk bi ñëw.",
+          "prayer_lock_widget_3_display_name": "Julli bi ñëw (tëraan 3)",
+          "prayer_lock_widget_3_description": "Waxtu julli bi ñëw ak kont.",
+          "extras_lock_widget_3_display_name": "Waxtu yu yokk (tëraan 3)",
+          "extras_lock_widget_3_description": "Waxtu bu yokk bi ñëw ak kont."
         }
       }
     },

@@ -249,6 +249,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries Turkmen's ä ç ž ň ö ş ü ý by explicit codepoint in both weights
   // (measured with fontTools, plan T-429 decision 6)
   tk: LATIN,
+  // Roboto carries Wolof's ë é à ñ ó by explicit codepoint in both weights (measured
+  // with fontTools, plan T-429 decision 6)
+  wo: LATIN,
 };
 
 /**

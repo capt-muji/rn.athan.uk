@@ -767,5 +767,29 @@
       "Extra Times (Layout 3)": "Goşmaça wagtlary (3-nji düzüliş)",
       "Next extra time with a countdown.": "Yzyna hasaplama bilen indiki goşmaça wagt."
     }
+  },
+  "wo": {
+    "NSLocationWhenInUseUsageDescription": "Sa bérab dafay jëfandikoo ngir xam ban wàll Maka bi ne ci fu nga ne. Dafay génn sa telefon.",
+    "NSUserNotificationsUsageDescription": "Jot xibaar yu waxtu julli",
+    "gallery": {
+      "Next Prayer (Light)": "Julli bi ñëw (leer)",
+      "A countdown to the next prayer.": "Kont ngir julli bi ñëw.",
+      "Extra Times (Light)": "Waxtu yu yokk (leer)",
+      "A countdown to the next extra time.": "Kont ngir waxtu bu yokk bi ñëw.",
+      "Next Prayer (Dark)": "Julli bi ñëw (lëndëm)",
+      "Extra Times (Dark)": "Waxtu yu yokk (lëndëm)",
+      "Next Prayer (Layout 1)": "Julli bi ñëw (tëraan 1)",
+      "Countdown to the next prayer.": "Kont ngir julli bi ñëw.",
+      "Extra Times (Layout 1)": "Waxtu yu yokk (tëraan 1)",
+      "Countdown to the next extra time.": "Kont ngir waxtu bu yokk bi ñëw.",
+      "Next Prayer (Layout 2)": "Julli bi ñëw (tëraan 2)",
+      "Next prayer time.": "Waxtu julli bi ñëw.",
+      "Extra Times (Layout 2)": "Waxtu yu yokk (tëraan 2)",
+      "Next extra time.": "Waxtu bu yokk bi ñëw.",
+      "Next Prayer (Layout 3)": "Julli bi ñëw (tëraan 3)",
+      "Next prayer time with a countdown.": "Waxtu julli bi ñëw ak kont.",
+      "Extra Times (Layout 3)": "Waxtu yu yokk (tëraan 3)",
+      "Next extra time with a countdown.": "Waxtu bu yokk bi ñëw ak kont."
+    }
   }
 }
