@@ -9,7 +9,9 @@ const path = require('node:path');
 // tall presentation's opt-in and the wide hold's lock: held tall the portrait window spans edge to
 // edge, held wide the system keeps its centered letterbox. Everywhere else two carriers hold the
 // portrait pair for every window: the delegate gate below for the classic life cycle, and the
-// root view controller the scene life cycle actually reads, so no surface ever lays out wide.
+// root view controller the scene life cycle actually reads. iPadOS 27 overrides both carriers
+// and lays the iPad window wide through device rotation (T-401's measured finding), so the
+// wide-iPad posture is an open owner ruling, not a solved surface.
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const PIN_FLAG = 'macWindowPinned';
 const CARRIER_CLASS_NAME = 'PortraitWindowController';
@@ -52,16 +54,20 @@ class SceneDelegate: ExpoAppSceneDelegate {
 }`;
 
 // iPadOS 27 resolves windowing orientation itself and overrides the root view controller's
-// portrait answer at runtime (T-401: the pair read back as the landscape mask under rotation),
-// so the posture holds only by re-requesting portrait geometry whenever the system lays the
-// scene out wide.
+// portrait answer at runtime (T-401: the pair read back as the landscape mask under rotation,
+// and the geometry re-request below measured ignored against a rotated scene). The request
+// stays as the sanctioned ask for the surfaces that honor it; it does not hold the iPad's
+// posture.
 const SCENE_BLOCK = `@objc(SceneDelegate)
 class SceneDelegate: ExpoAppSceneDelegate {
   // Extension point for config plugins.
 
   // The conformance is inherited from ExpoAppSceneDelegate, so Swift gives this method no
   // implicit @objc and UIKit's respondsToSelector read it absent until the attribute was
-  // added by hand (T-401, measured on the rig).
+  // added by hand (T-401, measured on the rig). The selector itself is API_DEPRECATED
+  // since iOS 26 (successor windowScene:didUpdateEffectiveGeometry:); it still measured
+  // firing on the iPadOS 27 rig, but once Apple stops calling it this half goes silent -
+  // the same silent no-op shape T-401 hunted.
   @objc public func windowScene(
     _ windowScene: UIWindowScene,
     didUpdateCoordinateSpace previousCoordinateSpace: UICoordinateSpace,
@@ -103,7 +109,12 @@ const CARRIER_OVERRIDE = `
   }`;
 
 const editAppDelegate = (contents) => {
-  if (contents.includes(PIN_FLAG) || contents.includes(CARRIER_CLASS_NAME)) return contents;
+  if (contents.includes(CARRIER_CLASS_NAME)) return contents;
+  if (contents.includes(PIN_FLAG)) {
+    throw new Error(
+      "duoTallCanvas: the AppDelegate carries a previous release's pin without the carrier; run prebuild --clean"
+    );
+  }
   if (contents.includes(GATE_MASK)) {
     throw new Error(
       'duoTallCanvas: the AppDelegate carries the old gate without the Mac window pin; run prebuild --clean'

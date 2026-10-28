@@ -7,11 +7,12 @@
 
 const { readFileSync } = require('node:fs');
 
-const { editAppDelegate, editSceneDelegate, editFullScreenKeys } = require('../duoTallCanvas') as {
+const plugin = require('../duoTallCanvas') as ((config: unknown) => unknown) & {
   editAppDelegate: (contents: string) => string;
   editSceneDelegate: (contents: string) => string;
   editFullScreenKeys: (plist: Record<string, unknown>) => Record<string, unknown>;
 };
+const { editAppDelegate, editSceneDelegate, editFullScreenKeys } = plugin;
 
 // Literals of the repo's own template shape, not the plugin's exports: comparing the surgery
 // against its own words would prove nothing
@@ -275,5 +276,32 @@ describe('the app.json wiring', () => {
     const ios = JSON.parse(readFileSync('app.json', 'utf8')).expo.ios;
 
     expect(ios.requireFullScreen).toBeUndefined();
+  });
+});
+
+describe('the warm-tree guardrails', () => {
+  it("refuses a previous release's AppDelegate, which carries the pin without the carrier", () => {
+    // T-401 added the carrier after the pin already shipped: a warm tree in the old shape must
+    // not silently skip the carrier while the SceneDelegate edit lands beside it
+    const previousRelease = appDelegateFixture('  // macWindowPinned');
+
+    expect(() => editAppDelegate(previousRelease)).toThrow(/prebuild --clean/);
+  });
+
+  it('leaves a complete warm AppDelegate, pin and carrier both present, untouched', () => {
+    const complete = appDelegateFixture('  // macWindowPinned\nclass PortraitWindowController: UIViewController {}');
+
+    expect(editAppDelegate(complete)).toBe(complete);
+  });
+});
+
+describe('the mod wiring', () => {
+  it('registers both file edits as ios finalized mods the SDK can run', () => {
+    // withFinalizedMod destructures [platform, action]; the (name, fn) form this plugin once
+    // used registered nothing runnable, so both edits silently never ran (T-401's fossil drift)
+    const config = plugin({} as never) as { mods?: Record<string, { finalized?: unknown }> };
+
+    expect(Object.keys(config.mods ?? {})).toEqual(['ios']);
+    expect(typeof config.mods?.ios?.finalized).toBe('function');
   });
 });
