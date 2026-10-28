@@ -1,8 +1,9 @@
 /**
  * The D26 picker names: each language in its own name, sorted by codepoint,
  * so a reader scans for the name they know rather than an English gloss.
- * Latin before Arabic before Devanagari before Thai. Names data, not copy:
- * the scanner's data-module rule allows this module's `name` field.
+ * Latin before Arabic before Devanagari before Bengali before Thai. Names
+ * data, not copy: the scanner's data-module rule allows this module's `name`
+ * field.
  */
 
 import type { LocaleId } from '@/shared/i18n/locale';
@@ -20,7 +21,9 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'tr', name: 'Türkçe' },
   { id: 'ur', name: 'اردو' },
   { id: 'ar', name: 'العربية' },
+  { id: 'fa', name: 'فارسی' },
   { id: 'hi', name: 'हिन्दी' },
+  { id: 'bn', name: 'বাংলা' },
   { id: 'th', name: 'ไทย' },
 ];
 

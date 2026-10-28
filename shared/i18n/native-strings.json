@@ -335,5 +335,53 @@
       "Extra Times (Layout 3)": "اضافی اوقات (خاکہ 3)",
       "Next extra time with a countdown.": "اگلا اضافی وقت گنتی کے ساتھ۔"
     }
+  },
+  "fa": {
+    "NSLocationWhenInUseUsageDescription": "موقعیت شما برای تعیین جهت مکه از مکان شما استفاده می‌شود. هرگز از تلفن شما خارج نمی‌شود.",
+    "NSUserNotificationsUsageDescription": "دریافت اعلان‌های اوقات نماز",
+    "gallery": {
+      "Next Prayer (Light)": "نماز بعدی (روشن)",
+      "A countdown to the next prayer.": "شمارش معکوس تا نماز بعدی.",
+      "Extra Times (Light)": "اوقات اضافه (روشن)",
+      "A countdown to the next extra time.": "شمارش معکوس تا زمان اضافه بعدی.",
+      "Next Prayer (Dark)": "نماز بعدی (تیره)",
+      "Extra Times (Dark)": "اوقات اضافه (تیره)",
+      "Next Prayer (Layout 1)": "نماز بعدی (چیدمان ۱)",
+      "Countdown to the next prayer.": "شمارش معکوس تا نماز بعدی.",
+      "Extra Times (Layout 1)": "اوقات اضافه (چیدمان ۱)",
+      "Countdown to the next extra time.": "شمارش معکوس تا زمان اضافه بعدی.",
+      "Next Prayer (Layout 2)": "نماز بعدی (چیدمان ۲)",
+      "Next prayer time.": "زمان نماز بعدی.",
+      "Extra Times (Layout 2)": "اوقات اضافه (چیدمان ۲)",
+      "Next extra time.": "زمان اضافه بعدی.",
+      "Next Prayer (Layout 3)": "نماز بعدی (چیدمان ۳)",
+      "Next prayer time with a countdown.": "زمان نماز بعدی با شمارش معکوس.",
+      "Extra Times (Layout 3)": "اوقات اضافه (چیدمان ۳)",
+      "Next extra time with a countdown.": "زمان اضافه بعدی با شمارش معکوس."
+    }
+  },
+  "bn": {
+    "NSLocationWhenInUseUsageDescription": "আপনার অবস্থান ব্যবহার করা হয় আপনি যেখানে আছেন সেখান থেকে মক্কার দিক নির্ণয় করতে। এটি কখনও আপনার ফোন ছাড়ে না।",
+    "NSUserNotificationsUsageDescription": "নামাজের সময়ের বিজ্ঞপ্তি পান",
+    "gallery": {
+      "Next Prayer (Light)": "পরবর্তী নামাজ (হালকা)",
+      "A countdown to the next prayer.": "পরবর্তী নামাজ পর্যন্ত গণনা।",
+      "Extra Times (Light)": "অতিরিক্ত সময় (হালকা)",
+      "A countdown to the next extra time.": "পরবর্তী অতিরিক্ত সময় পর্যন্ত গণনা।",
+      "Next Prayer (Dark)": "পরবর্তী নামাজ (গাঢ়)",
+      "Extra Times (Dark)": "অতিরিক্ত সময় (গাঢ়)",
+      "Next Prayer (Layout 1)": "পরবর্তী নামাজ (বিন্যাস ১)",
+      "Countdown to the next prayer.": "পরবর্তী নামাজ পর্যন্ত গণনা।",
+      "Extra Times (Layout 1)": "অতিরিক্ত সময় (বিন্যাস ১)",
+      "Countdown to the next extra time.": "পরবর্তী অতিরিক্ত সময় পর্যন্ত গণনা।",
+      "Next Prayer (Layout 2)": "পরবর্তী নামাজ (বিন্যাস ২)",
+      "Next prayer time.": "পরবর্তী নামাজের সময়।",
+      "Extra Times (Layout 2)": "অতিরিক্ত সময় (বিন্যাস ২)",
+      "Next extra time.": "পরবর্তী অতিরিক্ত সময়।",
+      "Next Prayer (Layout 3)": "পরবর্তী নামাজ (বিন্যাস ৩)",
+      "Next prayer time with a countdown.": "গণনাসহ পরবর্তী নামাজের সময়।",
+      "Extra Times (Layout 3)": "অতিরিক্ত সময় (বিন্যাস ৩)",
+      "Next extra time with a countdown.": "গণনাসহ পরবর্তী অতিরিক্ত সময়।"
+    }
   }
 }

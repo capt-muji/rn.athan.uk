@@ -194,5 +194,31 @@
     "refreshLead": "Athan کھولیں",
     "refreshTail": "تازہ کاری کے لیے",
     "catchBody": "تازہ کاری کے لیے ایپ کھولیں"
+  },
+  "fa": {
+    "subtitle": "اوقات نماز لندن",
+    "inline": "Athan — اوقات نماز",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "برای بارگیری اوقات باز کنید",
+    "staleTitle": "به‌روز نیست",
+    "staleBody": "برای به‌روزرسانی برنامه را باز کنید",
+    "staleInline": "Athan — برای به‌روزرسانی اوقات باز کنید",
+    "refreshLine": "برای به‌روزرسانی Athan را باز کنید",
+    "refreshLead": "Athan را باز کنید",
+    "refreshTail": "برای به‌روزرسانی",
+    "catchBody": "برای به‌روزرسانی برنامه را باز کنید"
+  },
+  "bn": {
+    "subtitle": "লন্ডনের নামাজের সময়",
+    "inline": "Athan — নামাজের সময়",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "সময় লোড করতে খুলুন",
+    "staleTitle": "পুরোনো",
+    "staleBody": "রিফ্রেশ করতে অ্যাপ খুলুন",
+    "staleInline": "Athan — সময় রিফ্রেশ করতে খুলুন",
+    "refreshLine": "রিফ্রেশ করতে Athan খুলুন",
+    "refreshLead": "Athan খুলুন",
+    "refreshTail": "রিফ্রেশ করতে",
+    "catchBody": "রিফ্রেশ করতে অ্যাপটি খুলুন"
   }
 }

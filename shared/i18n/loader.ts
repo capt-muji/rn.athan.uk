@@ -28,6 +28,8 @@ const RAW = {
   ha: require('./ha') as typeof import('./ha'),
   pt: require('./pt') as typeof import('./pt'),
   ur: require('./ur') as typeof import('./ur'),
+  fa: require('./fa') as typeof import('./fa'),
+  bn: require('./bn') as typeof import('./bn'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -54,6 +56,8 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   ha: { en: RAW.ha.ha, PRAYER_LABELS: RAW.ha.PRAYER_LABELS },
   pt: { en: RAW.pt.pt, PRAYER_LABELS: RAW.pt.PRAYER_LABELS },
   ur: { en: RAW.ur.ur, PRAYER_LABELS: RAW.ur.PRAYER_LABELS },
+  fa: { en: RAW.fa.fa, PRAYER_LABELS: RAW.fa.PRAYER_LABELS },
+  bn: { en: RAW.bn.bn, PRAYER_LABELS: RAW.bn.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

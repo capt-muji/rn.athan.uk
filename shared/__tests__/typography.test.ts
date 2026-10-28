@@ -88,8 +88,16 @@ describe('typographyFor', () => {
     expectArabicRecord(typographyFor('ar'));
   });
 
+  it('resolves fa to the same Arabic record, Rubik covering all six Persian letters', () => {
+    // Decision 3, plan T-410: measured with fontTools, Rubik carries پ چ ژ گ ک ی,
+    // so fa needs no pair of its own and renders exactly the ar surfaces' record
+    expectArabicRecord(typographyFor('fa'));
+  });
+
   it('resolves the Latin-shipped locales to the Roboto identity record', () => {
-    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur')) {
+    for (const locale of LOCALE_IDS.filter(
+      (id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur' && id !== 'fa' && id !== 'bn'
+    )) {
       expectLatinRecord(typographyFor(locale));
     }
   });
@@ -114,6 +122,15 @@ describe('typographyFor', () => {
     expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
     // The pair's own 1.703em box does not clear its 2.039em win ink (measured with
     // fontTools, both weights), so ink-bearing surfaces take the 1.5em RTL script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves bn to the Bengali pair with the measured script line box', () => {
+    const ty = typographyFor('bn');
+    expectScriptRecord(ty, 'NotoSansBengali-Regular', 'NotoSansBengali-Medium');
+    // The pair's own 1.325em box does not clear its 1.403em win ink (this wave's own
+    // measurement, decision 3), so ink-bearing surfaces take the 1.5em script box
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });

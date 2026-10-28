@@ -91,6 +91,24 @@ const URDU: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
+// Bengali has no R3 §3 row, so this record's script box is this wave's own measurement
+// (plan T-410 decision 3): the pair's own hhea box is 1.325em (ascent 917, descent -408,
+// UPM 1000, both weights) while its win ink spans 1.403em (winAscent 995, the matra row
+// above the headline), so the box-bearing row-106 law applies and ink-bearing surfaces
+// take the 1.5em script line the HINDI record already renders
+const BENGALI: LocaleTypography = {
+  familyRegular: 'NotoSansBengali-Regular',
+  familyMedium: 'NotoSansBengali-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -121,6 +139,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ha: LATIN,
   pt: LATIN,
   ur: URDU,
+  fa: ARABIC,
+  bn: BENGALI,
 };
 
 /**

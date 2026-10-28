@@ -6,7 +6,9 @@
  */
 
 import { ar } from '@/shared/i18n/ar';
+import { bn } from '@/shared/i18n/bn';
 import { type Catalog, en } from '@/shared/i18n/en';
+import { fa } from '@/shared/i18n/fa';
 import { fr } from '@/shared/i18n/fr';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
@@ -21,9 +23,9 @@ import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur };
+const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur']);
+const RTL = new Set(['ar', 'ur', 'fa']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
