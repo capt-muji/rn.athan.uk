@@ -7,10 +7,12 @@ const path = require('node:path');
 // granting the full canvas only for a pose the plist declares (row 271 measured landscape spanning
 // the wide hold under a four-orientation plist). Declaring the portrait pair alone is therefore the
 // tall presentation's opt-in and the wide hold's lock: held tall the portrait window spans edge to
-// edge, held wide the system keeps its centered letterbox. Everywhere else the delegate gate below
-// answers the portrait pair for every window, so no surface ever lays out wide.
+// edge, held wide the system keeps its centered letterbox. Everywhere else two carriers hold the
+// portrait pair for every window: the delegate gate below for the classic life cycle, and the
+// root view controller the scene life cycle actually reads, so no surface ever lays out wide.
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const PIN_FLAG = 'macWindowPinned';
+const CARRIER_CLASS_NAME = 'PortraitWindowController';
 
 // The gate answers the portrait pair for every window; the pin freezes the Mac window at the
 // layout's own content cap so the desktop app reads as a phone: no tall or sideways resize,
@@ -42,8 +44,27 @@ const CLASS_CLOSE = `}
 
 ${'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {'}`;
 
+const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
+
+// The scene life cycle resolves the window's orientation from the root view controller, never
+// from the AppDelegate gate, so the stock factory controller's all-answer is what laid iPad
+// windows wide (T-401: the scene rotated landscapeRight under a portrait-only gate).
+const CARRIER_CLASS = `class ${CARRIER_CLASS_NAME}: UIViewController {
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    [.portrait, .portraitUpsideDown]
+  }
+}
+
+`;
+
+const CARRIER_OVERRIDE = `
+
+  override func createRootViewController() -> UIViewController {
+    ${CARRIER_CLASS_NAME}()
+  }`;
+
 const editAppDelegate = (contents) => {
-  if (contents.includes(PIN_FLAG)) return contents;
+  if (contents.includes(PIN_FLAG) || contents.includes(CARRIER_CLASS_NAME)) return contents;
   if (contents.includes(GATE_MASK)) {
     throw new Error(
       'duoTallCanvas: the AppDelegate carries the old gate without the Mac window pin; run prebuild --clean'
@@ -52,7 +73,10 @@ const editAppDelegate = (contents) => {
   if (!contents.includes(CLASS_CLOSE)) {
     throw new Error('duoTallCanvas: the AppDelegate class-close marker moved; read the new template');
   }
-  return contents.replace(CLASS_CLOSE, `\n${APPDELEGATE_BLOCK}\n${CLASS_CLOSE}`);
+  // The class-close replacement rewrites the same span the delegate anchor lives in, so the
+  // override insertion must run second or the class-close marker stops matching.
+  const withGate = contents.replace(CLASS_CLOSE, `\n${APPDELEGATE_BLOCK}\n${CLASS_CLOSE}`);
+  return withGate.replace(NEXT_CLASS, `${CARRIER_CLASS}${NEXT_CLASS}${CARRIER_OVERRIDE}`);
 };
 
 const IPAD_ALL_FOUR = [

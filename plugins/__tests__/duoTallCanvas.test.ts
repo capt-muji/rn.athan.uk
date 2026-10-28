@@ -1,6 +1,7 @@
 /**
  * The prebuild pin that locks the Duo's tall presentation: every window answers the portrait
- * pair through the AppDelegate gate, while the plist scopes the full-screen key to iPhone and
+ * pair through the AppDelegate gate on the classic life cycle and through the carrier root view
+ * controller on the scene life cycle, while the plist scopes the full-screen key to iPhone and
  * declares all four iPad orientations for the keyless build's validation (plugins/duoTallCanvas.js)
  */
 
@@ -65,7 +66,7 @@ describe('the AppDelegate portrait gate', () => {
     expect(edited.indexOf(GATE_MASK)).toBeGreaterThan(edited.indexOf('class AppDelegate:'));
   });
 
-  it('leaves ReactNativeDelegate untouched', () => {
+  it('keeps the AppDelegate gate out of ReactNativeDelegate', () => {
     const edited = editAppDelegate(appDelegateFixture());
 
     expect(edited).toContain('override func sourceURL(for bridge: RCTBridge) -> URL? {');
@@ -131,6 +132,63 @@ ${NEXT_CLASS}`
 
     expect(edited).toContain(GATE_MASK);
     expect(edited.match(new RegExp(GATE_SELECTOR.replace(/[()]/g, '\\$&'), 'g'))).toHaveLength(2);
+  });
+});
+
+describe('the scene-path carrier', () => {
+  const CARRIER_CLASS = 'class PortraitWindowController: UIViewController {';
+
+  it('overrides the factory root view controller on ReactNativeDelegate', () => {
+    const edited = editAppDelegate(appDelegateFixture());
+
+    expect(edited).toContain('override func createRootViewController() -> UIViewController {');
+    expect(edited).toContain('PortraitWindowController()');
+    expect(edited.indexOf('createRootViewController')).toBeGreaterThan(edited.indexOf(NEXT_CLASS));
+    expect(edited.indexOf('createRootViewController')).toBeLessThan(edited.indexOf('override func sourceURL'));
+  });
+
+  it('defines the carrier top-level, outside both classes', () => {
+    const edited = editAppDelegate(appDelegateFixture());
+
+    const classAt = edited.indexOf(CARRIER_CLASS);
+    // Swift has no string literals in this span, so brace depth at the class is nesting depth
+    const depth = edited
+      .slice(0, classAt)
+      .split('')
+      .reduce((a, c) => a + (c === '{' ? 1 : c === '}' ? -1 : 0), 0);
+    expect(depth).toBe(0);
+    expect(classAt).toBeGreaterThan(edited.indexOf(GATE_MASK));
+    expect(classAt).toBeLessThan(edited.indexOf(NEXT_CLASS));
+  });
+
+  it('answers the portrait pair inside the carrier, never all', () => {
+    const edited = editAppDelegate(appDelegateFixture());
+
+    const carrier = edited.slice(edited.indexOf(CARRIER_CLASS), edited.indexOf(NEXT_CLASS));
+    expect(carrier).toContain('supportedInterfaceOrientations');
+    expect(carrier).toContain('[.portrait, .portraitUpsideDown]');
+    expect(carrier).not.toContain('.all');
+  });
+
+  it('is idempotent over both insertions', () => {
+    const once = editAppDelegate(appDelegateFixture());
+
+    expect(editAppDelegate(once)).toBe(once);
+  });
+
+  it('does not duplicate anything onto a warm tree that already carries the carrier alone', () => {
+    const warm = appDelegateFixture().replace(
+      'internal import Expo',
+      `internal import Expo
+
+class PortraitWindowController: UIViewController {
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    [.portrait, .portraitUpsideDown]
+  }
+}`
+    );
+
+    expect(editAppDelegate(warm)).toBe(warm);
   });
 });
 
