@@ -106,6 +106,7 @@ describe('typographyFor', () => {
         id !== 'ps' &&
         id !== 'ta' &&
         id !== 'ml' &&
+        id !== 'mr' &&
         id !== 'zh-Hans' &&
         id !== 'zh-Hant'
     )) {
@@ -117,6 +118,15 @@ describe('typographyFor', () => {
     const ty = typographyFor('hi');
     expectScriptRecord(ty, 'NotoSansDevanagari-Regular', 'NotoSansDevanagari-Medium');
     // The face's win ink runs past its own box, so ink-bearing surfaces take the script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves mr to the same Devanagari pair, the Marathi script record', () => {
+    // Plan T-429 decision 6: NotoSansDevanagari carries every Marathi codepoint the
+    // catalog uses in both weights, so mr rides the HINDI record's own measured box
+    const ty = typographyFor('mr');
+    expectScriptRecord(ty, 'NotoSansDevanagari-Regular', 'NotoSansDevanagari-Medium');
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });

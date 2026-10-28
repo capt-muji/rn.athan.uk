@@ -441,5 +441,18 @@
     "refreshLead": "Ubbi Athan",
     "refreshTail": "ngir yees",
     "catchBody": "Ubbi app bi ngir yees"
+  },
+  "mr": {
+    "subtitle": "लंडनमधील नमाजच्या वेळा",
+    "inline": "Athan — नमाजच्या वेळा",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "वेळा लोड करण्यासाठी उघडा",
+    "staleTitle": "जुने",
+    "staleBody": "रीफ्रेशसाठी अ‍ॅप उघडा",
+    "staleInline": "Athan — रीफ्रेशसाठी उघडा",
+    "refreshLine": "रीफ्रेशसाठी Athan उघडा",
+    "refreshLead": "Athan उघडा",
+    "refreshTail": "रीफ्रेशसाठी",
+    "catchBody": "रीफ्रेशसाठी अ‍ॅप उघडा"
   }
 }

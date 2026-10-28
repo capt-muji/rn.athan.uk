@@ -252,6 +252,10 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries Wolof's ë é à ñ ó by explicit codepoint in both weights (measured
   // with fontTools, plan T-429 decision 6)
   wo: LATIN,
+  // Marathi rides the HINDI record's own bundled pair: NotoSansDevanagari carries every
+  // Marathi codepoint the catalog uses in both weights (measured with fontTools, plan
+  // T-429 decision 6), so the same measured 1.5em script box serves
+  mr: HINDI,
 };
 
 /**

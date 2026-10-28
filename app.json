@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.28.5",
+    "version": "2.28.6",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -53,7 +53,8 @@
           "ky",
           "tg",
           "tk",
-          "wo"
+          "wo",
+          "mr"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -2242,6 +2243,62 @@
           "prayer_lock_widget_3_description": "Waxtu julli bi ñëw ak kont.",
           "extras_lock_widget_3_display_name": "Waxtu yu yokk (tëraan 3)",
           "extras_lock_widget_3_description": "Waxtu bu yokk bi ñëw ak kont."
+        }
+      },
+      "mr": {
+        "NSLocationWhenInUseUsageDescription": "तुमचे स्थान तुम्ही कुठे आहात तिथून मक्का कोणत्या दिशेला आहे हे ठरवण्यासाठी वापरले जाते. ते तुमच्या फोनमधून कधीच बाहेर जात नाही.",
+        "NSUserNotificationsUsageDescription": "नमाजच्या वेळेच्या सूचना मिळवा",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "पुढील नमाज (फिकट)",
+            "A countdown to the next prayer.": "पुढील नमाजची उलटी गणती.",
+            "Extra Times (Light)": "अतिरिक्त वेळा (फिकट)",
+            "A countdown to the next extra time.": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+            "Next Prayer (Dark)": "पुढील नमाज (गडद)",
+            "Extra Times (Dark)": "अतिरिक्त वेळा (गडद)",
+            "Next Prayer (Layout 1)": "पुढील नमाज (रचना 1)",
+            "Countdown to the next prayer.": "पुढील नमाजची उलटी गणती.",
+            "Extra Times (Layout 1)": "अतिरिक्त वेळा (रचना 1)",
+            "Countdown to the next extra time.": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+            "Next Prayer (Layout 2)": "पुढील नमाज (रचना 2)",
+            "Next prayer time.": "पुढील नमाजची वेळ.",
+            "Extra Times (Layout 2)": "अतिरिक्त वेळा (रचना 2)",
+            "Next extra time.": "पुढील अतिरिक्त वेळ.",
+            "Next Prayer (Layout 3)": "पुढील नमाज (रचना 3)",
+            "Next prayer time with a countdown.": "उलट्या गणतीसह पुढील नमाजची वेळ.",
+            "Extra Times (Layout 3)": "अतिरिक्त वेळा (रचना 3)",
+            "Next extra time with a countdown.": "उलट्या गणतीसह पुढील अतिरिक्त वेळ."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "पुढील नमाज (फिकट)",
+          "prayer_widget_description": "पुढील नमाजची उलटी गणती.",
+          "extras_widget_display_name": "अतिरिक्त वेळा (फिकट)",
+          "extras_widget_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+          "prayer_widget_medium_display_name": "पुढील नमाज (फिकट)",
+          "prayer_widget_medium_description": "पुढील नमाजची उलटी गणती.",
+          "extras_widget_medium_display_name": "अतिरिक्त वेळा (फिकट)",
+          "extras_widget_medium_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+          "prayer_widget_dark_display_name": "पुढील नमाज (गडद)",
+          "prayer_widget_dark_description": "पुढील नमाजची उलटी गणती.",
+          "extras_widget_dark_display_name": "अतिरिक्त वेळा (गडद)",
+          "extras_widget_dark_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+          "prayer_widget_dark_medium_display_name": "पुढील नमाज (गडद)",
+          "prayer_widget_dark_medium_description": "पुढील नमाजची उलटी गणती.",
+          "extras_widget_dark_medium_display_name": "अतिरिक्त वेळा (गडद)",
+          "extras_widget_dark_medium_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+          "prayer_lock_widget_display_name": "पुढील नमाज (रचना 1)",
+          "prayer_lock_widget_description": "पुढील नमाजची उलटी गणती.",
+          "extras_lock_widget_display_name": "अतिरिक्त वेळा (रचना 1)",
+          "extras_lock_widget_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
+          "prayer_lock_widget_2_display_name": "पुढील नमाज (रचना 2)",
+          "prayer_lock_widget_2_description": "पुढील नमाजची वेळ.",
+          "extras_lock_widget_2_display_name": "अतिरिक्त वेळा (रचना 2)",
+          "extras_lock_widget_2_description": "पुढील अतिरिक्त वेळ.",
+          "prayer_lock_widget_3_display_name": "पुढील नमाज (रचना 3)",
+          "prayer_lock_widget_3_description": "उलट्या गणतीसह पुढील नमाजची वेळ.",
+          "extras_lock_widget_3_display_name": "अतिरिक्त वेळा (रचना 3)",
+          "extras_lock_widget_3_description": "उलट्या गणतीसह पुढील अतिरिक्त वेळ."
         }
       }
     },

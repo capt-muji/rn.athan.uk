@@ -37,6 +37,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'fa', name: 'فارسی' },
   { id: 'ps', name: 'پښتو' },
   { id: 'hi', name: 'हिन्दी' },
+  { id: 'mr', name: 'मराठी' },
   { id: 'bn', name: 'বাংলা' },
   { id: 'ta', name: 'தமிழ்' },
   { id: 'ml', name: 'മലയാളം' },

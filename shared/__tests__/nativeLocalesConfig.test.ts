@@ -54,6 +54,7 @@ const LOCALES = [
   'tg',
   'tk',
   'wo',
+  'mr',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
@@ -108,7 +109,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('declares the thirty-three locales in CFBundleLocalizations with the display name unchanged', () => {
+  it('declares the thirty-four locales in CFBundleLocalizations with the display name unchanged', () => {
     const ios = app.ios as { infoPlist?: Record<string, unknown> };
     const infoPlist = (ios.infoPlist ?? {}) as Record<string, unknown>;
     expect(infoPlist.CFBundleLocalizations).toEqual([...LOCALES]);
@@ -199,7 +200,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('builds the Android locales_config with the thirty-three locales', () => {
+  it('builds the Android locales_config with the thirty-four locales', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
 
@@ -208,7 +209,7 @@ describe('native strings from committed config', () => {
     for (const locale of LOCALES) {
       expect(xml).toContain(`<locale android:name="${locale}"/>`);
     }
-    expect(xml.match(/<locale /g)).toHaveLength(33);
+    expect(xml.match(/<locale /g)).toHaveLength(34);
     expect(xml).toContain('<locale-config xmlns:android="http://schemas.android.com/apk/res/android">');
   });
 });

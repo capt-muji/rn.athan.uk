@@ -20,6 +20,7 @@ import { id } from '@/shared/i18n/id';
 import { kk } from '@/shared/i18n/kk';
 import { ky } from '@/shared/i18n/ky';
 import { ml } from '@/shared/i18n/ml';
+import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
 import { nl } from '@/shared/i18n/nl';
 import { ps } from '@/shared/i18n/ps';
@@ -73,6 +74,7 @@ const CATALOGS: Record<string, Catalog> = {
   tg,
   tk,
   wo,
+  mr,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
