@@ -13,10 +13,22 @@ everywhere.
   to English). Tap points are OnePlus 3T coordinates (1080×1920).
 - `scripts/baseline-compare.sh`: run a flow while streaming `ReactNativeJS`
   perf marks. Medians diffed against `baselines/android-3t.json`.
-- `scripts/frame-audit.sh`: FPS + visual-quality audit of one animation.
-  Records per-frame pts (compositor truth), then a contact sheet, then a vision
-  prompt for an image-capable subagent. `FRAME_AUDIT=sf` falls back to
-  SurfaceFlinger compositor cadence when video capture is wedged.
+- `scripts/frame-audit.sh`: dual FPS audit of one animation. One tap, two
+  reads in one evidence dir: the screenrecord video (the ENCODER's word —
+  per-frame pts, contact sheet, vision prompt) and SurfaceFlinger's present
+  timestamps for the app's layer (the COMPOSITOR's word, layer resolved from
+  `dumpsys SurfaceFlinger --list`). The gap lists print side by side with a
+  separation verdict: a dead zone in both is compositor truth, in video
+  alone encoder loss. `PRE_TAP` opens the overlay first so a close audit
+  records a real closing tap (`PRE_TAP_WAIT`, default 1s, mock-safe).
+  `FRAME_AUDIT=video` keeps the video-only path; `FRAME_AUDIT=sf` is the
+  recorder-free floor witness (D16): the tap is stamped and anchored on the
+  SF clock, the layer resolved from `--list`, and the entrance window
+  bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000). The PRINTED
+  PRESENT-GAP LIST inside that window is the verdict of record, read
+  against the 33ms floor — gaps over 100ms inside the window are floor
+  failures, never "freeze or idle"; the PASS line only summarizes the list.
+  It is also the only read while video capture is wedged.
 - `scripts/device-checks.sh` (`yarn check:device`): on-demand audit of what the
   phone has: build identity, permissions, notification channels and
   every alarm the app has armed (`scripts/device_checks.py` parses
@@ -57,8 +69,10 @@ export PATH="$HOME/.maestro/bin:$PATH"
 yarn check:device                                        # what the phone has armed
 yarn check:device 3T_SERIAL "$APP_ID" expected-times.json   # check the times too
 e2e/scripts/baseline-compare.sh e2e/flows/overlay-x10.yaml
-e2e/scripts/frame-audit.sh overlay-open 540 974 3        # settle 12s, tap, audit
-FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
+e2e/scripts/frame-audit.sh overlay-open 540 1012 3                      # dual: video + SF
+PRE_TAP="540 1012" e2e/scripts/frame-audit.sh overlay-close 540 1100 3  # open, settle, record close
+FRAME_AUDIT=video e2e/scripts/frame-audit.sh overlay-open 540 1012 3    # video only
+FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 539 1833 3         # cadence-only
 ```
 
 ## The AVD lane: smoke only, never a witness
@@ -199,7 +213,32 @@ verification, never infer visuals from pixels alone.
   measurements. Check `top` for them before measuring.
 - **SF `--latency` layer names rotate** per process relaunch: dump both
   `$APP_ID/$APP_ID.MainActivity#0` and the
-  hash-prefixed variant from `dumpsys SurfaceFlinger --list`.
+  hash-prefixed variant from `dumpsys SurfaceFlinger --list`. The dual
+  frame-audit resolves the layer from `--list` itself for this reason.
+- **The dual read pairs two clocks through a measured offset**: the video's
+  tap sits at 0.5s of recording by construction, but SF present timestamps
+  ride CLOCK_MONOTONIC while `/proc/uptime` rides CLOCK_BOOTTIME (suspend
+  included) — a phone that has ever suspended carries the difference as a
+  growing offset (this 3T: ~8047s), so the script measures it per capture
+  (ring clear, anchor tap on the prayer row, uptime read in the same shell,
+  then dump; offset = uptime - first present, +-50ms vsync and read lag) and
+  subtracts it from the tap's boottime read. Dozes between captures grow the
+  offset, and an anchor tap that CLOSES a sheet presents 275-296ms late and
+  reads it LOW: offsets cannot decrease, so across a session the highest
+  coherent reading is the true one, and `SF_OFFSET=<seconds>` overrides a
+  polluted read without a re-capture. The SF dump must land AFTER the
+  recorded animation — tap, animation, then dump: the ring holds only ~127
+  presents and an idle layer presents nothing, so the ring still covers the
+  entrance, while a dump before the tap reads an idle layer and prints
+  NO DATA.
+- **The pre-tap settle wait is mock-tuned**: `PRE_TAP` opens the overlay
+  before a close audit records the closing tap, and `PRE_TAP_WAIT` (default
+  1s) is the entrance's settle time. The stock 3s wait is unusable on mock:
+  when the seeded boundary is near, the overlay auto-closes inside the wait
+  and the recorded "closing" tap captures a re-open — an open mislabelled as
+  a close. The 1s default shrinks the exposure window; evening seeds read as
+  boundary-adjacent, and a capture whose sheet shows two animations is a
+  re-run, not data (the vision read catches it).
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
   `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
   dismiss scrollable sheets. Per campaign directive, iOS is verified by

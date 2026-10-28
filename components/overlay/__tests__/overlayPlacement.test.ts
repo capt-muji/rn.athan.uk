@@ -34,7 +34,7 @@ jest.mock('jotai', () => ({
   useAtomValue: (...args: Parameters<typeof mockReadAtom>) => mockReadAtom(...args),
 }));
 
-// Effects do not run: they hold only the hide timer after a close, and neither places the card
+// Effects do not run: none remain in the component, and none place the card
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
   useState: <T>(initial: T) => [initial, () => undefined],
@@ -57,6 +57,7 @@ jest.mock('@/shared/time', () => ({
 
 jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: 'overlayAtom',
+  overlayFadeSettledAtom: 'overlayFadeSettledAtom',
 }));
 
 // The store write needs the real primitive atom, while the component read goes through the string
@@ -222,5 +223,35 @@ describe('the Extras card on a five-row Friday list, where the flip follows the 
 
     expect(card.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
     expect(style.top).toBe(above ? rowTop(row) + TIP_OVERLAP : rowTop(row) + STYLES.prayer.height - TIP_OVERLAP);
+  });
+});
+
+// The holder's display follows the fade-settled flag alone — the batched flip every overlay-family
+// subtree shares. Held flex through any unsettled fade whatever isOn says; none only at rest, closed
+// [overlay open, fade settled, the holder's display]
+describe('the holder display, decided by the fade-settled flag alone', () => {
+  const holderDisplay = (open: boolean, settled: boolean): unknown => {
+    const names = openOnReversedFriday(0);
+    void names;
+    mockAtomValues.set('overlayFadeSettledAtom', settled);
+    if (!open) {
+      mockAtomValues.set('overlayAtom', { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Extra });
+      mockStore.current = createStore();
+      mockStore.current.set(realOverlayAtom, { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Extra });
+    }
+
+    const tree = OverlayInfoBox({ type: ScheduleType.Extra });
+    if (!tree) throw new Error('the holder must render while the Extra list carries data');
+    const styles = tree.props.style as unknown as { display?: string }[];
+    return styles.find((entry) => entry.display !== undefined)?.display;
+  };
+
+  it.each<[boolean, boolean, string]>([
+    [true, true, 'flex'],
+    [true, false, 'flex'],
+    [false, false, 'flex'],
+    [false, true, 'none'],
+  ])('open %s, settled %s: display %s', (open, settled, display) => {
+    expect(holderDisplay(open, settled)).toBe(display);
   });
 });

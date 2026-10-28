@@ -1,5 +1,4 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
@@ -9,7 +8,7 @@ import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { overlayFadeSettledAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -36,6 +35,7 @@ export default function PrayerAgo({ type }: Props) {
 // Exported so tests render the real badge, the calculatePrayerAgo precedent (hooks/usePrayerAgo.ts:19)
 export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
+  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
@@ -57,24 +57,14 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
     ...recentColorOptions,
   });
 
-  // Hold the badge drawn through its fade, then drop it: the resting frame under an open
-  // overlay shows the backdrop exactly, as the old opacity 0 did
-  const [hiddenSettled, setHiddenSettled] = useState(false);
-  useEffect(() => {
-    if (!overlayIsOn) {
-      setHiddenSettled(false);
-      return;
-    }
-
-    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.durationFade);
-    return () => clearTimeout(hideTimer);
-  }, [overlayIsOn]);
-
+  // Held drawn through the shared fade by the fade-settled flag, then dropped:
+  // the resting frame under an open overlay shows the backdrop exactly, as the
+  // old opacity 0 did
   return (
     <Animated.Text
       style={[
         styles.prayerAgo,
-        { display: hiddenSettled ? 'none' : 'flex' },
+        { display: overlayIsOn && fadeSettled ? 'none' : 'flex' },
         prayerAgoColorStyle,
         prayerAgoBackgroundStyle,
       ]}

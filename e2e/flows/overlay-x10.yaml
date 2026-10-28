@@ -1,16 +1,22 @@
-appId: ${APP_ID}
+appId: com.example.athan
 name: overlay-x10
 tags:
   - baseline
 ---
 # Overlay open/close cadence suite (OnePlus 3T, 1080x1920 absolute pixels).
+# appId is the literal dev package id: maestro 2.10.0 no longer substitutes
+# ${APP_ID} from the environment, so a committed flow carrying it launches
+# no app and can drive the wrong package through the dock.
+# Tap points read from the live tree 2026-10-25 (prayer row at y~1012):
+# re-verify with Maestro `hierarchy` before driving — Android 9 AX dumps are
+# stale, and points drift with layout changes.
 # Pacing >=1.2s per transition — the SD820 drops encoder frames when
 # animations arrive back-to-back (video audits only; marks unaffected).
 - repeat:
     times: 10
     commands:
       - tapOn:
-          point: '540, 974'
+          point: '540, 1012'
       - waitForAnimationToEnd:
           timeout: 2500
       - tapOn:

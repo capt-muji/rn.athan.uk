@@ -4,12 +4,13 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import { getDefaultStore } from 'jotai/vanilla';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { ANIMATION } from '@/shared/constants';
 import { tIn } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { openOverlay } from '@/stores/overlay';
 
 import PrayerAgo, { PrayerAgoBadge } from '../Ago';
@@ -66,16 +67,17 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     }
   });
 
-  it('fades toward the veil ink while the overlay is open, then drops from the tree', async () => {
+  it('fades toward the veil ink while the overlay is open, then drops from the tree at the fade settle', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
     // The fade carries the ink, so the words stay drawn while it runs
     expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).toBeOnTheScreen();
 
-    await act(() => jest.advanceTimersByTime(ANIMATION.durationFade));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
     expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
   });
