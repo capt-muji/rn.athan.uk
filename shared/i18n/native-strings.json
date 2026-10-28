@@ -695,5 +695,29 @@
       "Extra Times (Layout 3)": "Қосымша уақыттар (3-өрнек)",
       "Next extra time with a countdown.": "Кері санақпен келесі қосымша уақыт."
     }
+  },
+  "ky": {
+    "NSLocationWhenInUseUsageDescription": "Жайгашкан жериңиз сиз турган жерден Мекке кайсы тарапта экенин аныктоо үчүн колдонулат. Ал телефонуңуздан эч качан чыкпайт.",
+    "NSUserNotificationsUsageDescription": "Намаз убагы тууралуу билдирүүлөрдү алыңыз",
+    "gallery": {
+      "Next Prayer (Light)": "Кийинки намаз (ачык)",
+      "A countdown to the next prayer.": "Кийинки намазга кери эсептөө.",
+      "Extra Times (Light)": "Кошумча убакыттар (ачык)",
+      "A countdown to the next extra time.": "Кийинки кошумча убакытка кери эсептөө.",
+      "Next Prayer (Dark)": "Кийинки намаз (караңгы)",
+      "Extra Times (Dark)": "Кошумча убакыттар (караңгы)",
+      "Next Prayer (Layout 1)": "Кийинки намаз (1-чийме)",
+      "Countdown to the next prayer.": "Кийинки намазга кери эсептөө.",
+      "Extra Times (Layout 1)": "Кошумча убакыттар (1-чийме)",
+      "Countdown to the next extra time.": "Кийинки кошумча убакытка кери эсептөө.",
+      "Next Prayer (Layout 2)": "Кийинки намаз (2-чийме)",
+      "Next prayer time.": "Кийинки намаздын убагы.",
+      "Extra Times (Layout 2)": "Кошумча убакыттар (2-чийме)",
+      "Next extra time.": "Кийинки кошумча убакыт.",
+      "Next Prayer (Layout 3)": "Кийинки намаз (3-чийме)",
+      "Next prayer time with a countdown.": "Кери эсептөө менен кийинки намаздын убагы.",
+      "Extra Times (Layout 3)": "Кошумча убакыттар (3-чийме)",
+      "Next extra time with a countdown.": "Кери эсептөө менен кийинки кошумча убакыт."
+    }
   }
 }

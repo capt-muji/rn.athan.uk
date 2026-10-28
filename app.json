@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.28.1",
+    "version": "2.28.2",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -49,7 +49,8 @@
           "zh-Hant",
           "es",
           "nl",
-          "kk"
+          "kk",
+          "ky"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -2014,6 +2015,62 @@
           "prayer_lock_widget_3_description": "Кері санақпен келесі намаз уақыты.",
           "extras_lock_widget_3_display_name": "Қосымша уақыттар (3-өрнек)",
           "extras_lock_widget_3_description": "Кері санақпен келесі қосымша уақыт."
+        }
+      },
+      "ky": {
+        "NSLocationWhenInUseUsageDescription": "Жайгашкан жериңиз сиз турган жерден Мекке кайсы тарапта экенин аныктоо үчүн колдонулат. Ал телефонуңуздан эч качан чыкпайт.",
+        "NSUserNotificationsUsageDescription": "Намаз убагы тууралуу билдирүүлөрдү алыңыз",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "Кийинки намаз (ачык)",
+            "A countdown to the next prayer.": "Кийинки намазга кери эсептөө.",
+            "Extra Times (Light)": "Кошумча убакыттар (ачык)",
+            "A countdown to the next extra time.": "Кийинки кошумча убакытка кери эсептөө.",
+            "Next Prayer (Dark)": "Кийинки намаз (караңгы)",
+            "Extra Times (Dark)": "Кошумча убакыттар (караңгы)",
+            "Next Prayer (Layout 1)": "Кийинки намаз (1-чийме)",
+            "Countdown to the next prayer.": "Кийинки намазга кери эсептөө.",
+            "Extra Times (Layout 1)": "Кошумча убакыттар (1-чийме)",
+            "Countdown to the next extra time.": "Кийинки кошумча убакытка кери эсептөө.",
+            "Next Prayer (Layout 2)": "Кийинки намаз (2-чийме)",
+            "Next prayer time.": "Кийинки намаздын убагы.",
+            "Extra Times (Layout 2)": "Кошумча убакыттар (2-чийме)",
+            "Next extra time.": "Кийинки кошумча убакыт.",
+            "Next Prayer (Layout 3)": "Кийинки намаз (3-чийме)",
+            "Next prayer time with a countdown.": "Кери эсептөө менен кийинки намаздын убагы.",
+            "Extra Times (Layout 3)": "Кошумча убакыттар (3-чийме)",
+            "Next extra time with a countdown.": "Кери эсептөө менен кийинки кошумча убакыт."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "Кийинки намаз (ачык)",
+          "prayer_widget_description": "Кийинки намазга кери эсептөө.",
+          "extras_widget_display_name": "Кошумча убакыттар (ачык)",
+          "extras_widget_description": "Кийинки кошумча убакытка кери эсептөө.",
+          "prayer_widget_medium_display_name": "Кийинки намаз (ачык)",
+          "prayer_widget_medium_description": "Кийинки намазга кери эсептөө.",
+          "extras_widget_medium_display_name": "Кошумча убакыттар (ачык)",
+          "extras_widget_medium_description": "Кийинки кошумча убакытка кери эсептөө.",
+          "prayer_widget_dark_display_name": "Кийинки намаз (караңгы)",
+          "prayer_widget_dark_description": "Кийинки намазга кери эсептөө.",
+          "extras_widget_dark_display_name": "Кошумча убакыттар (караңгы)",
+          "extras_widget_dark_description": "Кийинки кошумча убакытка кери эсептөө.",
+          "prayer_widget_dark_medium_display_name": "Кийинки намаз (караңгы)",
+          "prayer_widget_dark_medium_description": "Кийинки намазга кери эсептөө.",
+          "extras_widget_dark_medium_display_name": "Кошумча убакыттар (караңгы)",
+          "extras_widget_dark_medium_description": "Кийинки кошумча убакытка кери эсептөө.",
+          "prayer_lock_widget_display_name": "Кийинки намаз (1-чийме)",
+          "prayer_lock_widget_description": "Кийинки намазга кери эсептөө.",
+          "extras_lock_widget_display_name": "Кошумча убакыттар (1-чийме)",
+          "extras_lock_widget_description": "Кийинки кошумча убакытка кери эсептөө.",
+          "prayer_lock_widget_2_display_name": "Кийинки намаз (2-чийме)",
+          "prayer_lock_widget_2_description": "Кийинки намаздын убагы.",
+          "extras_lock_widget_2_display_name": "Кошумча убакыттар (2-чийме)",
+          "extras_lock_widget_2_description": "Кийинки кошумча убакыт.",
+          "prayer_lock_widget_3_display_name": "Кийинки намаз (3-чийме)",
+          "prayer_lock_widget_3_description": "Кери эсептөө менен кийинки намаздын убагы.",
+          "extras_lock_widget_3_display_name": "Кошумча убакыттар (3-чийме)",
+          "extras_lock_widget_3_description": "Кери эсептөө менен кийинки кошумча убакыт."
         }
       }
     },

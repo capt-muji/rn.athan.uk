@@ -240,6 +240,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries every Kazakh letter (ә ғ қ ң ө ұ ү һ і) by explicit codepoint in both
   // weights (measured with fontTools, plan T-429 decision 6)
   kk: LATIN,
+  // Roboto carries Kyrgyz's ң ө ү by explicit codepoint in both weights (measured with
+  // fontTools, plan T-429 decision 6)
+  ky: LATIN,
 };
 
 /**

@@ -389,5 +389,18 @@
     "refreshLead": "Athan ашыңыз",
     "refreshTail": "жаңарту үшін",
     "catchBody": "Жаңарту үшін қолданбаны ашыңыз"
+  },
+  "ky": {
+    "subtitle": "Лондондо намаз убакыттары",
+    "inline": "Athan — намаз убакыттары",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Убакыттарды жүктөө үчүн ачыңыз",
+    "staleTitle": "Эскирген",
+    "staleBody": "Жаңыртуу үчүн колдонмону ачыңыз",
+    "staleInline": "Athan — жаңыртуу үчүн ачыңыз",
+    "refreshLine": "Жаңыртуу үчүн Athan ачыңыз",
+    "refreshLead": "Athan ачыңыз",
+    "refreshTail": "жаңыртуу үчүн",
+    "catchBody": "Жаңыртуу үчүн колдонмону ачыңыз"
   }
 }
