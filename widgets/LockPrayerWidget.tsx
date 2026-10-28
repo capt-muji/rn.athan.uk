@@ -443,6 +443,32 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'ngam kesɗitinde',
       catchBody: 'Uddit app ngam kesɗitinde',
     },
+    te: {
+      subtitle: 'లండన్ ప్రార్థన సమయాలు',
+      inline: 'Athan — ప్రార్థన సమయాలు',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'సమయాలు లోడ్ చేయడానికి తెరవండి',
+      staleTitle: 'పాతది',
+      staleBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+      staleInline: 'Athan — సమయాలు రిఫ్రెష్ చేయడానికి తెరవండి',
+      refreshLine: 'రిఫ్రెష్ చేయడానికి Athan తెరవండి',
+      refreshLead: 'Athan తెరవండి',
+      refreshTail: 'రిఫ్రెష్ చేయడానికి',
+      catchBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+    },
+    gu: {
+      subtitle: 'લંડન માટે નમાજના સમય',
+      inline: 'Athan — નમાજના સમય',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'સમય લોડ કરવા ખોલો',
+      staleTitle: 'જૂનું',
+      staleBody: 'રિફ્રેશ કરવા એપ ખોલો',
+      staleInline: 'Athan — સમય રિફ્રેશ કરવા ખોલો',
+      refreshLine: 'રિફ્રેશ કરવા Athan ખોલો',
+      refreshLead: 'Athan ખોલો',
+      refreshTail: 'રિફ્રેશ કરવા',
+      catchBody: 'રિફ્રેશ કરવા એપ ખોલો',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -489,6 +515,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'bm',
         'tl',
         'ff',
+        'te',
+        'gu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1042,6 +1070,32 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'ngam kesɗitinde',
       catchBody: 'Uddit app ngam kesɗitinde',
     },
+    te: {
+      subtitle: 'లండన్ ప్రార్థన సమయాలు',
+      inline: 'Athan — ప్రార్థన సమయాలు',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'సమయాలు లోడ్ చేయడానికి తెరవండి',
+      staleTitle: 'పాతది',
+      staleBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+      staleInline: 'Athan — సమయాలు రిఫ్రెష్ చేయడానికి తెరవండి',
+      refreshLine: 'రిఫ్రెష్ చేయడానికి Athan తెరవండి',
+      refreshLead: 'Athan తెరవండి',
+      refreshTail: 'రిఫ్రెష్ చేయడానికి',
+      catchBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+    },
+    gu: {
+      subtitle: 'લંડન માટે નમાજના સમય',
+      inline: 'Athan — નમાજના સમય',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'સમય લોડ કરવા ખોલો',
+      staleTitle: 'જૂનું',
+      staleBody: 'રિફ્રેશ કરવા એપ ખોલો',
+      staleInline: 'Athan — સમય રિફ્રેશ કરવા ખોલો',
+      refreshLine: 'રિફ્રેશ કરવા Athan ખોલો',
+      refreshLead: 'Athan ખોલો',
+      refreshTail: 'રિફ્રેશ કરવા',
+      catchBody: 'રિફ્રેશ કરવા એપ ખોલો',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1088,6 +1142,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'bm',
         'tl',
         'ff',
+        'te',
+        'gu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1630,6 +1686,32 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'ngam kesɗitinde',
       catchBody: 'Uddit app ngam kesɗitinde',
     },
+    te: {
+      subtitle: 'లండన్ ప్రార్థన సమయాలు',
+      inline: 'Athan — ప్రార్థన సమయాలు',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'సమయాలు లోడ్ చేయడానికి తెరవండి',
+      staleTitle: 'పాతది',
+      staleBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+      staleInline: 'Athan — సమయాలు రిఫ్రెష్ చేయడానికి తెరవండి',
+      refreshLine: 'రిఫ్రెష్ చేయడానికి Athan తెరవండి',
+      refreshLead: 'Athan తెరవండి',
+      refreshTail: 'రిఫ్రెష్ చేయడానికి',
+      catchBody: 'రిఫ్రెష్ చేయడానికి యాప్ తెరవండి',
+    },
+    gu: {
+      subtitle: 'લંડન માટે નમાજના સમય',
+      inline: 'Athan — નમાજના સમય',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'સમય લોડ કરવા ખોલો',
+      staleTitle: 'જૂનું',
+      staleBody: 'રિફ્રેશ કરવા એપ ખોલો',
+      staleInline: 'Athan — સમય રિફ્રેશ કરવા ખોલો',
+      refreshLine: 'રિફ્રેશ કરવા Athan ખોલો',
+      refreshLead: 'Athan ખોલો',
+      refreshTail: 'રિફ્રેશ કરવા',
+      catchBody: 'રિફ્રેશ કરવા એપ ખોલો',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1676,6 +1758,8 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'bm',
         'tl',
         'ff',
+        'te',
+        'gu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

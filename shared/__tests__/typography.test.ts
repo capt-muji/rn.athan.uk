@@ -109,7 +109,9 @@ describe('typographyFor', () => {
         id !== 'zh-Hans' &&
         id !== 'zh-Hant' &&
         id !== 'bm' &&
-        id !== 'ff'
+        id !== 'ff' &&
+        id !== 'te' &&
+        id !== 'gu'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -207,6 +209,27 @@ describe('typographyFor', () => {
       expect(ty.scriptLineHeight?.(14)).toBe(22);
       expect(ty.scriptLineHeight?.(15)).toBe(23);
     }
+  });
+
+  it('resolves te to the Telugu pair with the measured script line box', () => {
+    const ty = typographyFor('te');
+    // No bundled face carries a Telugu letter, so te bundles the Noto Sans
+    // Telugu v2.005 pair. Its hhea box is 1.352em (ascent 869, descent -483,
+    // UPM 1000, both weights) against a 1.478em win ink (995/483), so ink-bearing
+    // surfaces take the 1.5em script line that clears the measured ink
+    expectScriptRecord(ty, 'NotoSansTelugu-Regular', 'NotoSansTelugu-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves gu to the Gujarati pair with the measured script line box', () => {
+    const ty = typographyFor('gu');
+    // The Noto Sans Gujarati v2.106 pair's hhea box is 1.304em (ascent 896,
+    // descent -408, UPM 1000, both weights) against a 1.484em win ink (1076/408),
+    // so ink-bearing surfaces take the 1.5em script line
+    expectScriptRecord(ty, 'NotoSansGujarati-Regular', 'NotoSansGujarati-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
   it('resolves om and tl to the Roboto identity record', () => {

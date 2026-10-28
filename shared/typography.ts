@@ -219,6 +219,41 @@ const AFRICAN: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.55),
 };
 
+// Telugu has no coverage in any bundled face, so this wave bundles the Noto Sans
+// Telugu v2.005 pair. Its hhea box is 1.352em (ascent 869, descent -483, UPM 1000,
+// both weights) while its win ink spans 1.478em (winAscent 995, winDescent 483),
+// so the box-bearing row-106 law applies and ink-bearing surfaces take the 1.5em
+// script line the HINDI and BENGALI records already render
+const TELUGU: LocaleTypography = {
+  familyRegular: 'NotoSansTelugu-Regular',
+  familyMedium: 'NotoSansTelugu-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Gujarati, same wave's own measurement: the Noto Sans Gujarati v2.106 pair's
+// hhea box is 1.304em (ascent 896, descent -408, UPM 1000, both weights) while
+// its win ink spans 1.484em (winAscent 1076, winDescent 408), so ink-bearing
+// surfaces take the 1.5em script line
+const GUJARATI: LocaleTypography = {
+  familyRegular: 'NotoSansGujarati-Regular',
+  familyMedium: 'NotoSansGujarati-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -256,6 +291,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   bm: AFRICAN,
   tl: LATIN,
   ff: AFRICAN,
+  te: TELUGU,
+  gu: GUJARATI,
 };
 
 /**

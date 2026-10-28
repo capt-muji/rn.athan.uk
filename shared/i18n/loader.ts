@@ -44,6 +44,8 @@ const RAW = {
   bm: require('./bm') as typeof import('./bm'),
   tl: require('./tl') as typeof import('./tl'),
   ff: require('./ff') as typeof import('./ff'),
+  te: require('./te') as typeof import('./te'),
+  gu: require('./gu') as typeof import('./gu'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -86,6 +88,8 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   bm: { en: RAW.bm.bm, PRAYER_LABELS: RAW.bm.PRAYER_LABELS },
   tl: { en: RAW.tl.tl, PRAYER_LABELS: RAW.tl.PRAYER_LABELS },
   ff: { en: RAW.ff.ff, PRAYER_LABELS: RAW.ff.PRAYER_LABELS },
+  te: { en: RAW.te.te, PRAYER_LABELS: RAW.te.PRAYER_LABELS },
+  gu: { en: RAW.gu.gu, PRAYER_LABELS: RAW.gu.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

@@ -719,5 +719,53 @@
       "Extra Times (Layout 3)": "Waktuuji Ɓeydaani (Mbaadi 3)",
       "Next extra time with a countdown.": "Waktu ɓeydaangal aroowal e limto."
     }
+  },
+  "te": {
+    "NSLocationWhenInUseUsageDescription": "మీ స్థలం మీరు ఉన్న చోటి నుండి మక్కా దిశను తెలుసుకోవడానికి ఉపయోగించబడుతుంది. ఇది మీ ఫోన్ నుండి బయటకు వెళ్లదు.",
+    "NSUserNotificationsUsageDescription": "ప్రార్థన సమయ నోటిఫికేషన్‌లు స్వీకరించండి",
+    "gallery": {
+      "Next Prayer (Light)": "తదుపరి ప్రార్థన (లైట్)",
+      "A countdown to the next prayer.": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+      "Extra Times (Light)": "అదనపు సమయాలు (లైట్)",
+      "A countdown to the next extra time.": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+      "Next Prayer (Dark)": "తదుపరి ప్రార్థన (డార్క్)",
+      "Extra Times (Dark)": "అదనపు సమయాలు (డార్క్)",
+      "Next Prayer (Layout 1)": "తదుపరి ప్రార్థన (లేఅవుట్ 1)",
+      "Countdown to the next prayer.": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+      "Extra Times (Layout 1)": "అదనపు సమయాలు (లేఅవుట్ 1)",
+      "Countdown to the next extra time.": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+      "Next Prayer (Layout 2)": "తదుపరి ప్రార్థన (లేఅవుట్ 2)",
+      "Next prayer time.": "తదుపరి ప్రార్థన సమయం.",
+      "Extra Times (Layout 2)": "అదనపు సమయాలు (లేఅవుట్ 2)",
+      "Next extra time.": "తదుపరి అదనపు సమయం.",
+      "Next Prayer (Layout 3)": "తదుపరి ప్రార్థన (లేఅవుట్ 3)",
+      "Next prayer time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి ప్రార్థన సమయం.",
+      "Extra Times (Layout 3)": "అదనపు సమయాలు (లేఅవుట్ 3)",
+      "Next extra time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి అదనపు సమయం."
+    }
+  },
+  "gu": {
+    "NSLocationWhenInUseUsageDescription": "તમારું સ્થાન તમે ક્યાં છો તેના પરથી મક્કાની દિશા જાણવા વપરાય છે. તે તમારા ફોનમાંથી બહાર જતું નથી.",
+    "NSUserNotificationsUsageDescription": "નમાજ સમયની સૂચનાઓ મેળવો",
+    "gallery": {
+      "Next Prayer (Light)": "આગલી નમાજ (લાઇટ)",
+      "A countdown to the next prayer.": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+      "Extra Times (Light)": "વધારાના સમય (લાઇટ)",
+      "A countdown to the next extra time.": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+      "Next Prayer (Dark)": "આગલી નમાજ (ડાર્ક)",
+      "Extra Times (Dark)": "વધારાના સમય (ડાર્ક)",
+      "Next Prayer (Layout 1)": "આગલી નમાજ (લેઆઉટ 1)",
+      "Countdown to the next prayer.": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+      "Extra Times (Layout 1)": "વધારાના સમય (લેઆઉટ 1)",
+      "Countdown to the next extra time.": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+      "Next Prayer (Layout 2)": "આગલી નમાજ (લેઆઉટ 2)",
+      "Next prayer time.": "આગલી નમાજનો સમય.",
+      "Extra Times (Layout 2)": "વધારાના સમય (લેઆઉટ 2)",
+      "Next extra time.": "આગલો વધારાનો સમય.",
+      "Next Prayer (Layout 3)": "આગલી નમાજ (લેઆઉટ 3)",
+      "Next prayer time with a countdown.": "કાઉન્ટડાઉન સાથે આગલી નમાજનો સમય.",
+      "Extra Times (Layout 3)": "વધારાના સમય (લેઆઉટ 3)",
+      "Next extra time with a countdown.": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
+    }
   }
 }

@@ -23,6 +23,7 @@ import { type Catalog, en } from '@/shared/i18n/en';
 import { fa } from '@/shared/i18n/fa';
 import { ff } from '@/shared/i18n/ff';
 import { fr } from '@/shared/i18n/fr';
+import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
@@ -37,6 +38,7 @@ import { so } from '@/shared/i18n/so';
 import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
+import { te } from '@/shared/i18n/te';
 import { th } from '@/shared/i18n/th';
 import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
@@ -76,6 +78,8 @@ const CATALOGS: Record<string, Catalog> = {
   bm,
   tl,
   ff,
+  te,
+  gu,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -152,7 +156,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(30);
+    expect(Object.keys(CATALOGS)).toHaveLength(32);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

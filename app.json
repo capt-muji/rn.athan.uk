@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.27.0",
+    "version": "2.28.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -50,7 +50,9 @@
           "om",
           "bm",
           "tl",
-          "ff"
+          "ff",
+          "te",
+          "gu"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -141,7 +143,11 @@
             "./assets/fonts/NotoSansTC-Subset-Regular.ttf",
             "./assets/fonts/NotoSansTC-Subset-Medium.ttf",
             "./assets/fonts/NotoSans-Regular.ttf",
-            "./assets/fonts/NotoSans-Medium.ttf"
+            "./assets/fonts/NotoSans-Medium.ttf",
+            "./assets/fonts/NotoSansTelugu-Regular.ttf",
+            "./assets/fonts/NotoSansTelugu-Medium.ttf",
+            "./assets/fonts/NotoSansGujarati-Regular.ttf",
+            "./assets/fonts/NotoSansGujarati-Medium.ttf"
           ]
         }
       ],
@@ -2073,6 +2079,118 @@
           "prayer_lock_widget_3_description": "Waktu julde aroore e limto.",
           "extras_lock_widget_3_display_name": "Waktuuji Ɓeydaani (Mbaadi 3)",
           "extras_lock_widget_3_description": "Waktu ɓeydaangal aroowal e limto."
+        }
+      },
+      "te": {
+        "NSLocationWhenInUseUsageDescription": "మీ స్థలం మీరు ఉన్న చోటి నుండి మక్కా దిశను తెలుసుకోవడానికి ఉపయోగించబడుతుంది. ఇది మీ ఫోన్ నుండి బయటకు వెళ్లదు.",
+        "NSUserNotificationsUsageDescription": "ప్రార్థన సమయ నోటిఫికేషన్‌లు స్వీకరించండి",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "తదుపరి ప్రార్థన (లైట్)",
+            "A countdown to the next prayer.": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+            "Extra Times (Light)": "అదనపు సమయాలు (లైట్)",
+            "A countdown to the next extra time.": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+            "Next Prayer (Dark)": "తదుపరి ప్రార్థన (డార్క్)",
+            "Extra Times (Dark)": "అదనపు సమయాలు (డార్క్)",
+            "Next Prayer (Layout 1)": "తదుపరి ప్రార్థన (లేఅవుట్ 1)",
+            "Countdown to the next prayer.": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+            "Extra Times (Layout 1)": "అదనపు సమయాలు (లేఅవుట్ 1)",
+            "Countdown to the next extra time.": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+            "Next Prayer (Layout 2)": "తదుపరి ప్రార్థన (లేఅవుట్ 2)",
+            "Next prayer time.": "తదుపరి ప్రార్థన సమయం.",
+            "Extra Times (Layout 2)": "అదనపు సమయాలు (లేఅవుట్ 2)",
+            "Next extra time.": "తదుపరి అదనపు సమయం.",
+            "Next Prayer (Layout 3)": "తదుపరి ప్రార్థన (లేఅవుట్ 3)",
+            "Next prayer time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి ప్రార్థన సమయం.",
+            "Extra Times (Layout 3)": "అదనపు సమయాలు (లేఅవుట్ 3)",
+            "Next extra time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి అదనపు సమయం."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "తదుపరి ప్రార్థన (లైట్)",
+          "prayer_widget_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "extras_widget_display_name": "అదనపు సమయాలు (లైట్)",
+          "extras_widget_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+          "prayer_widget_medium_display_name": "తదుపరి ప్రార్థన (లైట్)",
+          "prayer_widget_medium_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "extras_widget_medium_display_name": "అదనపు సమయాలు (లైట్)",
+          "extras_widget_medium_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+          "prayer_widget_dark_display_name": "తదుపరి ప్రార్థన (డార్క్)",
+          "prayer_widget_dark_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "extras_widget_dark_display_name": "అదనపు సమయాలు (డార్క్)",
+          "extras_widget_dark_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+          "prayer_widget_dark_medium_display_name": "తదుపరి ప్రార్థన (డార్క్)",
+          "prayer_widget_dark_medium_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "extras_widget_dark_medium_display_name": "అదనపు సమయాలు (డార్క్)",
+          "extras_widget_dark_medium_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+          "prayer_lock_widget_display_name": "తదుపరి ప్రార్థన (లేఅవుట్ 1)",
+          "prayer_lock_widget_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "extras_lock_widget_display_name": "అదనపు సమయాలు (లేఅవుట్ 1)",
+          "extras_lock_widget_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
+          "prayer_lock_widget_2_display_name": "తదుపరి ప్రార్థన (లేఅవుట్ 2)",
+          "prayer_lock_widget_2_description": "తదుపరి ప్రార్థన సమయం.",
+          "extras_lock_widget_2_display_name": "అదనపు సమయాలు (లేఅవుట్ 2)",
+          "extras_lock_widget_2_description": "తదుపరి అదనపు సమయం.",
+          "prayer_lock_widget_3_display_name": "తదుపరి ప్రార్థన (లేఅవుట్ 3)",
+          "prayer_lock_widget_3_description": "కౌంట్‌డౌన్‌తో తదుపరి ప్రార్థన సమయం.",
+          "extras_lock_widget_3_display_name": "అదనపు సమయాలు (లేఅవుట్ 3)",
+          "extras_lock_widget_3_description": "కౌంట్‌డౌన్‌తో తదుపరి అదనపు సమయం."
+        }
+      },
+      "gu": {
+        "NSLocationWhenInUseUsageDescription": "તમારું સ્થાન તમે ક્યાં છો તેના પરથી મક્કાની દિશા જાણવા વપરાય છે. તે તમારા ફોનમાંથી બહાર જતું નથી.",
+        "NSUserNotificationsUsageDescription": "નમાજ સમયની સૂચનાઓ મેળવો",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "આગલી નમાજ (લાઇટ)",
+            "A countdown to the next prayer.": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+            "Extra Times (Light)": "વધારાના સમય (લાઇટ)",
+            "A countdown to the next extra time.": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+            "Next Prayer (Dark)": "આગલી નમાજ (ડાર્ક)",
+            "Extra Times (Dark)": "વધારાના સમય (ડાર્ક)",
+            "Next Prayer (Layout 1)": "આગલી નમાજ (લેઆઉટ 1)",
+            "Countdown to the next prayer.": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+            "Extra Times (Layout 1)": "વધારાના સમય (લેઆઉટ 1)",
+            "Countdown to the next extra time.": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+            "Next Prayer (Layout 2)": "આગલી નમાજ (લેઆઉટ 2)",
+            "Next prayer time.": "આગલી નમાજનો સમય.",
+            "Extra Times (Layout 2)": "વધારાના સમય (લેઆઉટ 2)",
+            "Next extra time.": "આગલો વધારાનો સમય.",
+            "Next Prayer (Layout 3)": "આગલી નમાજ (લેઆઉટ 3)",
+            "Next prayer time with a countdown.": "કાઉન્ટડાઉન સાથે આગલી નમાજનો સમય.",
+            "Extra Times (Layout 3)": "વધારાના સમય (લેઆઉટ 3)",
+            "Next extra time with a countdown.": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "આગલી નમાજ (લાઇટ)",
+          "prayer_widget_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "extras_widget_display_name": "વધારાના સમય (લાઇટ)",
+          "extras_widget_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+          "prayer_widget_medium_display_name": "આગલી નમાજ (લાઇટ)",
+          "prayer_widget_medium_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "extras_widget_medium_display_name": "વધારાના સમય (લાઇટ)",
+          "extras_widget_medium_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+          "prayer_widget_dark_display_name": "આગલી નમાજ (ડાર્ક)",
+          "prayer_widget_dark_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "extras_widget_dark_display_name": "વધારાના સમય (ડાર્ક)",
+          "extras_widget_dark_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+          "prayer_widget_dark_medium_display_name": "આગલી નમાજ (ડાર્ક)",
+          "prayer_widget_dark_medium_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "extras_widget_dark_medium_display_name": "વધારાના સમય (ડાર્ક)",
+          "extras_widget_dark_medium_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+          "prayer_lock_widget_display_name": "આગલી નમાજ (લેઆઉટ 1)",
+          "prayer_lock_widget_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "extras_lock_widget_display_name": "વધારાના સમય (લેઆઉટ 1)",
+          "extras_lock_widget_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
+          "prayer_lock_widget_2_display_name": "આગલી નમાજ (લેઆઉટ 2)",
+          "prayer_lock_widget_2_description": "આગલી નમાજનો સમય.",
+          "extras_lock_widget_2_display_name": "વધારાના સમય (લેઆઉટ 2)",
+          "extras_lock_widget_2_description": "આગલો વધારાનો સમય.",
+          "prayer_lock_widget_3_display_name": "આગલી નમાજ (લેઆઉટ 3)",
+          "prayer_lock_widget_3_description": "કાઉન્ટડાઉન સાથે આગલી નમાજનો સમય.",
+          "extras_lock_widget_3_display_name": "વધારાના સમય (લેઆઉટ 3)",
+          "extras_lock_widget_3_description": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
         }
       }
     },
