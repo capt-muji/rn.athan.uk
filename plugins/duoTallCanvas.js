@@ -56,8 +56,8 @@ class SceneDelegate: ExpoAppSceneDelegate {
 // iPadOS 27 resolves windowing orientation itself and overrides the root view controller's
 // portrait answer at runtime (T-401: the pair read back as the landscape mask under rotation,
 // and the geometry re-request below measured ignored against a rotated scene). The request
-// stays as the sanctioned ask for the surfaces that honor it; it does not hold the iPad's
-// posture.
+// stays pending the owner's open ruling; no measured surface honors it, and it does not hold
+// the iPad's posture.
 const SCENE_BLOCK = `@objc(SceneDelegate)
 class SceneDelegate: ExpoAppSceneDelegate {
   // Extension point for config plugins.
@@ -82,7 +82,10 @@ class SceneDelegate: ExpoAppSceneDelegate {
 }`;
 
 const editSceneDelegate = (contents) => {
-  if (contents.includes('requestGeometryUpdate')) return contents;
+  if (contents.includes('requestGeometryUpdate')) {
+    if (contents.includes('API_DEPRECATED')) return contents;
+    throw new Error("duoTallCanvas: the SceneDelegate carries a previous release's scene block; run prebuild --clean");
+  }
   if (!contents.includes(SCENE_MARKER)) {
     throw new Error('duoTallCanvas: the SceneDelegate marker moved; read the new template');
   }

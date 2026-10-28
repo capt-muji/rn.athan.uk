@@ -5,7 +5,9 @@
  * declares all four iPad orientations for the keyless build's validation (plugins/duoTallCanvas.js)
  */
 
-const { readFileSync } = require('node:fs');
+const { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } = require('node:fs');
+const { tmpdir } = require('node:os');
+const { join } = require('node:path');
 
 const plugin = require('../duoTallCanvas') as ((config: unknown) => unknown) & {
   editAppDelegate: (contents: string) => string;
@@ -293,15 +295,39 @@ describe('the warm-tree guardrails', () => {
 
     expect(editAppDelegate(complete)).toBe(complete);
   });
+
+  it("refuses a previous release's SceneDelegate, whose comment predates the measured retraction", () => {
+    // The 2.11.37 scene block carried the posture-holds claim this tree retracted; its code is
+    // identical, so only a loud refusal keeps a warm rebuild from shipping the stale comment
+    const stale = sceneDelegateFixture().replace(
+      SCENE_MARKER,
+      `${SCENE_MARKER}\n\n  func staleScene() {\n    windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait]))\n  }`
+    );
+
+    expect(() => editSceneDelegate(stale)).toThrow(/prebuild --clean/);
+  });
 });
 
 describe('the mod wiring', () => {
-  it('registers both file edits as ios finalized mods the SDK can run', () => {
+  it('runs both file edits through the composed ios finalized mod', async () => {
     // withFinalizedMod destructures [platform, action]; the (name, fn) form this plugin once
-    // used registered nothing runnable, so both edits silently never ran (T-401's fossil drift)
-    const config = plugin({} as never) as { mods?: Record<string, { finalized?: unknown }> };
+    // used registered nothing runnable, so both edits silently never ran (T-401's fossil
+    // drift). Executing the composed chain proves each edit survived registration
+    const root = mkdtempSync(join(tmpdir(), 'duo-wiring-'));
+    mkdirSync(join(root, 'Athan'), { recursive: true });
+    writeFileSync(join(root, 'Athan', 'SceneDelegate.swift'), sceneDelegateFixture());
+    writeFileSync(
+      join(root, 'Athan', 'Info.plist'),
+      '<?xml version="1.0" encoding="UTF-8"?><plist version="1.0"><dict></dict></plist>'
+    );
 
-    expect(Object.keys(config.mods ?? {})).toEqual(['ios']);
-    expect(typeof config.mods?.ios?.finalized).toBe('function');
+    const config = plugin({} as never) as {
+      mods: { ios: { finalized: (cfg: unknown) => Promise<unknown> } };
+    };
+    await config.mods.ios.finalized({ name: 'Athan', modRequest: { platformProjectRoot: root } });
+
+    expect(readFileSync(join(root, 'Athan', 'SceneDelegate.swift'), 'utf8')).toContain('requestGeometryUpdate');
+    expect(readFileSync(join(root, 'Athan', 'Info.plist'), 'utf8')).toContain('UIRequiresFullScreen~iphone');
+    rmSync(root, { recursive: true, force: true });
   });
 });
