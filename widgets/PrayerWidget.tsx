@@ -499,6 +499,19 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'za osvježavanje',
       catchBody: 'Otvorite aplikaciju za osvježavanje',
     },
+    ps: {
+      subtitle: 'د لندن لپاره د لمانځه وختونه',
+      inline: 'Athan — د لمانځه وختونه',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'د وختونو د لوډ لپاره پرانیزئ',
+      staleTitle: 'تازه نه دی',
+      staleBody: 'تازه کولو لپاره ایپ پرانیزئ',
+      staleInline: 'Athan — د تازه کولو لپاره پرانیزئ',
+      refreshLine: 'تازه کولو لپاره Athan پرانیزئ',
+      refreshLead: 'Athan پرانیزئ',
+      refreshTail: 'تازه کولو لپاره',
+      catchBody: 'تازه کولو لپاره ایپ پرانیزئ',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   const localeKey = (
@@ -524,6 +537,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       'de',
       'sq',
       'bs',
+      'ps',
     ] as const
   ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`));
   const staticRow = STATIC[localeKey ?? 'en'];

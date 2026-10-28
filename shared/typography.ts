@@ -77,7 +77,12 @@ const THAI: LocaleTypography = {
 // Roboto. The pair's own hhea box is 1.703em (ascent 1069, descent -634, UPM 1000, both
 // weights) while its win ink spans 2.039em (winAscent 1405), so the box-bearing row-106
 // law applies: ink-bearing surfaces take the script box, pinned at the shipped RTL 1.5em
-// line (R3 §3's Naskh floor is 1.4em; the ARABIC and HINDI records set the 1.5 precedent)
+// line (R3 §3's Naskh floor is 1.4em; the ARABIC and HINDI records set the 1.5 precedent).
+// Pashto rides this same record: Rubik carries none of its eleven own letters (U+067C
+// U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD U+06AB, measured absent
+// by explicit codepoint in both weights, plan T-419 decision 7) while this Naskh pair
+// carries them all plus the Persian prose digits ۰-۹, both weights, same 1.703em box
+// against 2.039em win ink
 const URDU: LocaleTypography = {
   familyRegular: 'NotoNaskhArabic-Regular',
   familyMedium: 'NotoNaskhArabic-Medium',
@@ -148,6 +153,7 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   de: LATIN,
   sq: LATIN,
   bs: LATIN,
+  ps: URDU,
 };
 
 /**

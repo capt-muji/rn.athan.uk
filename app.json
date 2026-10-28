@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.21.0",
+    "version": "2.22.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -41,7 +41,8 @@
           "az",
           "de",
           "sq",
-          "bs"
+          "bs",
+          "ps"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -1550,6 +1551,62 @@
           "prayer_lock_widget_3_description": "Vrijeme sljedećeg namaza s odbrojavanjem.",
           "extras_lock_widget_3_display_name": "Dodatna vremena (Raspored 3)",
           "extras_lock_widget_3_description": "Sljedeće dodatno vrijeme s odbrojavanjem."
+        }
+      },
+      "ps": {
+        "NSLocationWhenInUseUsageDescription": "ستاسو موقعیت د مکې د لوري د معلومولو لپاره کارول کیږي. دا هیڅکله ستاسو له تلیفون څخه نه وزي.",
+        "NSUserNotificationsUsageDescription": "د لمانځه وختونو خبرتیاوې ترلاسه کړئ",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "بل لمونځ (روښنه)",
+            "A countdown to the next prayer.": "تر بل لمونځه شمېرنه.",
+            "Extra Times (Light)": "اضافي وختونه (روښنه)",
+            "A countdown to the next extra time.": "تر بل اضافي وخت شمېرنه.",
+            "Next Prayer (Dark)": "بل لمونځ (تیاره)",
+            "Extra Times (Dark)": "اضافي وختونه (تیاره)",
+            "Next Prayer (Layout 1)": "بل لمونځ (بڼه ۱)",
+            "Countdown to the next prayer.": "تر بل لمونځه شمېرنه.",
+            "Extra Times (Layout 1)": "اضافي وختونه (بڼه ۱)",
+            "Countdown to the next extra time.": "تر بل اضافي وخت شمېرنه.",
+            "Next Prayer (Layout 2)": "بل لمونځ (بڼه ۲)",
+            "Next prayer time.": "د بل لمونځ وخت.",
+            "Extra Times (Layout 2)": "اضافي وختونه (بڼه ۲)",
+            "Next extra time.": "بل اضافی وخت.",
+            "Next Prayer (Layout 3)": "بل لمونځ (بڼه ۳)",
+            "Next prayer time with a countdown.": "د بل لمونځ وخت په شمېرنې.",
+            "Extra Times (Layout 3)": "اضافي وختونه (بڼه ۳)",
+            "Next extra time with a countdown.": "بل اضافی وخت په شمېرنې."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "بل لمونځ (روښنه)",
+          "prayer_widget_description": "تر بل لمونځه شمېرنه.",
+          "extras_widget_display_name": "اضافي وختونه (روښنه)",
+          "extras_widget_description": "تر بل اضافي وخت شمېرنه.",
+          "prayer_widget_medium_display_name": "بل لمونځ (روښنه)",
+          "prayer_widget_medium_description": "تر بل لمونځه شمېرنه.",
+          "extras_widget_medium_display_name": "اضافي وختونه (روښنه)",
+          "extras_widget_medium_description": "تر بل اضافي وخت شمېرنه.",
+          "prayer_widget_dark_display_name": "بل لمونځ (تیاره)",
+          "prayer_widget_dark_description": "تر بل لمونځه شمېرنه.",
+          "extras_widget_dark_display_name": "اضافي وختونه (تیاره)",
+          "extras_widget_dark_description": "تر بل اضافي وخت شمېرنه.",
+          "prayer_widget_dark_medium_display_name": "بل لمونځ (تیاره)",
+          "prayer_widget_dark_medium_description": "تر بل لمونځه شمېرنه.",
+          "extras_widget_dark_medium_display_name": "اضافي وختونه (تیاره)",
+          "extras_widget_dark_medium_description": "تر بل اضافي وخت شمېرنه.",
+          "prayer_lock_widget_display_name": "بل لمونځ (بڼه ۱)",
+          "prayer_lock_widget_description": "تر بل لمونځه شمېرنه.",
+          "extras_lock_widget_display_name": "اضافي وختونه (بڼه ۱)",
+          "extras_lock_widget_description": "تر بل اضافي وخت شمېرنه.",
+          "prayer_lock_widget_2_display_name": "بل لمونځ (بڼه ۲)",
+          "prayer_lock_widget_2_description": "د بل لمونځ وخت.",
+          "extras_lock_widget_2_display_name": "اضافي وختونه (بڼه ۲)",
+          "extras_lock_widget_2_description": "بل اضافی وخت.",
+          "prayer_lock_widget_3_display_name": "بل لمونځ (بڼه ۳)",
+          "prayer_lock_widget_3_description": "د بل لمونځ وخت په شمېرنې.",
+          "extras_lock_widget_3_display_name": "اضافي وختونه (بڼه ۳)",
+          "extras_lock_widget_3_description": "بل اضافی وخت په شمېرنې."
         }
       }
     },

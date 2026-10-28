@@ -503,5 +503,29 @@
       "Extra Times (Layout 3)": "Dodatna vremena (Raspored 3)",
       "Next extra time with a countdown.": "Sljedeće dodatno vrijeme s odbrojavanjem."
     }
+  },
+  "ps": {
+    "NSLocationWhenInUseUsageDescription": "ستاسو موقعیت د مکې د لوري د معلومولو لپاره کارول کیږي. دا هیڅکله ستاسو له تلیفون څخه نه وزي.",
+    "NSUserNotificationsUsageDescription": "د لمانځه وختونو خبرتیاوې ترلاسه کړئ",
+    "gallery": {
+      "Next Prayer (Light)": "بل لمونځ (روښنه)",
+      "A countdown to the next prayer.": "تر بل لمونځه شمېرنه.",
+      "Extra Times (Light)": "اضافي وختونه (روښنه)",
+      "A countdown to the next extra time.": "تر بل اضافي وخت شمېرنه.",
+      "Next Prayer (Dark)": "بل لمونځ (تیاره)",
+      "Extra Times (Dark)": "اضافي وختونه (تیاره)",
+      "Next Prayer (Layout 1)": "بل لمونځ (بڼه ۱)",
+      "Countdown to the next prayer.": "تر بل لمونځه شمېرنه.",
+      "Extra Times (Layout 1)": "اضافي وختونه (بڼه ۱)",
+      "Countdown to the next extra time.": "تر بل اضافي وخت شمېرنه.",
+      "Next Prayer (Layout 2)": "بل لمونځ (بڼه ۲)",
+      "Next prayer time.": "د بل لمونځ وخت.",
+      "Extra Times (Layout 2)": "اضافي وختونه (بڼه ۲)",
+      "Next extra time.": "بل اضافی وخت.",
+      "Next Prayer (Layout 3)": "بل لمونځ (بڼه ۳)",
+      "Next prayer time with a countdown.": "د بل لمونځ وخت په شمېرنې.",
+      "Extra Times (Layout 3)": "اضافي وختونه (بڼه ۳)",
+      "Next extra time with a countdown.": "بل اضافی وخت په شمېرنې."
+    }
   }
 }

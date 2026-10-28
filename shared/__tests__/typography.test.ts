@@ -96,7 +96,7 @@ describe('typographyFor', () => {
 
   it('resolves the Latin-shipped locales to the Roboto identity record', () => {
     for (const locale of LOCALE_IDS.filter(
-      (id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur' && id !== 'fa' && id !== 'bn'
+      (id) => id !== 'ar' && id !== 'hi' && id !== 'th' && id !== 'ur' && id !== 'fa' && id !== 'bn' && id !== 'ps'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -122,6 +122,16 @@ describe('typographyFor', () => {
     expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
     // The pair's own 1.703em box does not clear its 2.039em win ink (measured with
     // fontTools, both weights), so ink-bearing surfaces take the 1.5em RTL script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves ps to the same Naskh record, Rubik lacking every Pashto letter', () => {
+    // Decision 7, plan T-419: measured by explicit codepoint, Rubik carries none of
+    // the eleven Pashto-specific letters while the Naskh pair carries them all, both
+    // weights, so ps renders the URDU record's exact surfaces
+    const ty = typographyFor('ps');
+    expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });

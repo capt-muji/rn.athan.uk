@@ -17,6 +17,7 @@ import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { ms } from '@/shared/i18n/ms';
+import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { ru } from '@/shared/i18n/ru';
 import { so } from '@/shared/i18n/so';
@@ -49,9 +50,10 @@ const CATALOGS: Record<string, Catalog> = {
   de,
   sq,
   bs,
+  ps,
 };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
