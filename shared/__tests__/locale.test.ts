@@ -30,12 +30,22 @@ describe('resolveInitialLocale', () => {
     ['hi-IN', 'hi', 'hi'],
     ['th-TH', 'th', 'th'],
     ['en-GB', 'en', 'en'],
+    ['id-ID', 'id', 'id'],
+    ['tr-TR', 'tr', 'tr'],
+    ['fr-FR', 'fr', 'fr'],
+    ['uz-UZ', 'uz', 'uz'],
+    ['sw-KE', 'sw', 'sw'],
+    ['ha-NG', 'ha', 'ha'],
+    ['pt-BR', 'pt', 'pt'],
+    ['ur-PK', 'ur', 'ur'],
+    ['fa-IR', 'fa', 'fa'],
+    ['bn-BD', 'bn', 'bn'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });
 
   it('falls back to en for an unsupported language', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'fr-FR', languageCode: 'fr' }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: 'es' }])).toBe('en');
     expect(resolveInitialLocale(null, [{ languageTag: 'zh-Hans', languageCode: 'zh' }])).toBe('en');
   });
 
@@ -51,7 +61,7 @@ describe('resolveInitialLocale', () => {
 
   it('an earlier device locale wins over a later one', () => {
     const deviceLocales: readonly DeviceLocaleInfo[] = [
-      { languageTag: 'fr-FR', languageCode: 'fr' },
+      { languageTag: 'es-ES', languageCode: 'es' },
       { languageTag: 'ar-EG', languageCode: 'ar' },
     ];
     expect(resolveInitialLocale(null, deviceLocales)).toBe('ar');
@@ -62,7 +72,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('skips a device locale with no language code', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'fr-FR', languageCode: null }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: null }])).toBe('en');
   });
 
   it('resolves en when the device reports no locales', () => {
@@ -134,11 +144,20 @@ describe('chevronFor', () => {
       setActiveLocale('en');
     }
   });
+
+  it.each(['ur', 'fa'] as const)('mirrors the chevron under %s, the later RTL locales', (locale) => {
+    setActiveLocale(locale);
+    try {
+      expect(chevronFor()).toBe('\u2039');
+    } finally {
+      setActiveLocale('en');
+    }
+  });
 });
 
 describe('sentenceComma', () => {
-  it('carries the Arabic comma under ar', () => {
-    setActiveLocale('ar');
+  it.each(['ar', 'ur', 'fa'] as const)('carries the Arabic comma under %s', (locale) => {
+    setActiveLocale(locale);
     try {
       expect(sentenceComma()).toBe('\u060C');
     } finally {

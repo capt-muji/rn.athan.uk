@@ -72,6 +72,43 @@ const THAI: LocaleTypography = {
   wordFace: true,
 };
 
+// Urdu's five own letters (ٹ ڈ ڑ ھ ے) are absent from Rubik (measured with fontTools,
+// plan T-410 decision 3), so its words name the Naskh pair; digits and row times stay
+// Roboto. The pair's own hhea box is 1.703em (ascent 1069, descent -634, UPM 1000, both
+// weights) while its win ink spans 2.039em (winAscent 1405), so the box-bearing row-106
+// law applies: ink-bearing surfaces take the script box, pinned at the shipped RTL 1.5em
+// line (R3 §3's Naskh floor is 1.4em; the ARABIC and HINDI records set the 1.5 precedent)
+const URDU: LocaleTypography = {
+  familyRegular: 'NotoNaskhArabic-Regular',
+  familyMedium: 'NotoNaskhArabic-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Bengali has no R3 §3 row, so this record's script box is this wave's own measurement
+// (plan T-410 decision 3): the pair's own hhea box is 1.325em (ascent 917, descent -408,
+// UPM 1000, both weights) while its win ink spans 1.403em (winAscent 995, the matra row
+// above the headline), so the box-bearing row-106 law applies and ink-bearing surfaces
+// take the 1.5em script line the HINDI record already renders
+const BENGALI: LocaleTypography = {
+  familyRegular: 'NotoSansBengali-Regular',
+  familyMedium: 'NotoSansBengali-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -94,6 +131,16 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   so: LATIN,
   hi: HINDI,
   th: THAI,
+  id: LATIN,
+  tr: LATIN,
+  fr: LATIN,
+  uz: LATIN,
+  sw: LATIN,
+  ha: LATIN,
+  pt: LATIN,
+  ur: URDU,
+  fa: ARABIC,
+  bn: BENGALI,
 };
 
 /**

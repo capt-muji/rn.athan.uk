@@ -13,15 +13,42 @@ import path from 'node:path';
 
 import { type ParamsOf, t } from '@/shared/i18n';
 import { ar } from '@/shared/i18n/ar';
+import { bn } from '@/shared/i18n/bn';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
+import { fa } from '@/shared/i18n/fa';
+import { fr } from '@/shared/i18n/fr';
+import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
+import { id } from '@/shared/i18n/id';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ms } from '@/shared/i18n/ms';
+import { pt } from '@/shared/i18n/pt';
 import { so } from '@/shared/i18n/so';
+import { sw } from '@/shared/i18n/sw';
 import { th } from '@/shared/i18n/th';
+import { tr } from '@/shared/i18n/tr';
+import { ur } from '@/shared/i18n/ur';
+import { uz } from '@/shared/i18n/uz';
 
-const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+const CATALOGS: Record<string, Catalog> = {
+  en,
+  ar,
+  ms,
+  so,
+  hi,
+  th,
+  id,
+  tr,
+  fr,
+  uz,
+  sw,
+  ha,
+  pt,
+  ur,
+  fa,
+  bn,
+};
 
 const DIST = path.join(__dirname, '../i18n/dist');
 const TOKEN = /\{(\w+)\}/g;
@@ -93,6 +120,21 @@ describe('the catalog as its own transfer format', () => {
 
   it('keys the file exactly as the TranslationKey union', () => {
     expect(Object.keys(exportTo(en)).sort()).toEqual([...(Object.keys(en) as TranslationKey[])].sort());
+  });
+
+  it('carries every catalog at en parity, flat strings only', () => {
+    const enKeys = Object.keys(exportTo(en)).sort();
+    expect(Object.keys(CATALOGS)).toHaveLength(16);
+    for (const [id, cat] of Object.entries(CATALOGS)) {
+      const exported = exportTo(cat);
+      expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);
+      for (const value of Object.values(exported)) {
+        expect(typeof value).toBe('string');
+        expect(value).not.toContain('{{');
+        expect(value).not.toMatch(/_(one|other)\b/);
+        expect(value).not.toContain('$t(');
+      }
+    }
   });
 
   it('covers every {token} in a value with the key typed params', () => {

@@ -1,22 +1,31 @@
 /**
- * The R2 mechanical gates over the six landed catalogs (D42), in-process so CI refuses
+ * The R2 mechanical gates over the landed catalogs (D42), in-process so CI refuses
  * a defective catalog without the plan folder. The provenance check has no twin here by
  * design: it is a planning artefact. The shipped suite pins the prayer names against
  * sourced-names.json, the committed copy of the research glossary.
  */
 
 import { ar } from '@/shared/i18n/ar';
-import type { Catalog } from '@/shared/i18n/en';
-import { en } from '@/shared/i18n/en';
+import { bn } from '@/shared/i18n/bn';
+import { type Catalog, en } from '@/shared/i18n/en';
+import { fa } from '@/shared/i18n/fa';
+import { fr } from '@/shared/i18n/fr';
+import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
+import { id } from '@/shared/i18n/id';
 import { ms } from '@/shared/i18n/ms';
+import { pt } from '@/shared/i18n/pt';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
+import { sw } from '@/shared/i18n/sw';
 import { th } from '@/shared/i18n/th';
+import { tr } from '@/shared/i18n/tr';
+import { ur } from '@/shared/i18n/ur';
+import { uz } from '@/shared/i18n/uz';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th };
+const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar']);
+const RTL = new Set(['ar', 'ur', 'fa']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
@@ -74,6 +83,15 @@ const sourcedNames = (loc: string): Array<[key: string, text: string]> => {
     return key ? [[key, entry.text] as [string, string]] : [];
   });
 };
+
+interface Entry {
+  text: string | null;
+  source: string | null;
+  confidence: string | null;
+}
+
+/** The ten locales T-410 ships; every slot they add to the glossary must carry sourcing */
+const T410_TEN = ['id', 'ur', 'bn', 'fa', 'fr', 'tr', 'sw', 'ha', 'pt', 'uz'] as const;
 
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
@@ -136,6 +154,28 @@ describe('the landed catalogs against the R2 gates', () => {
     for (const [key, text] of sourcedNames(loc)) {
       if (CATALOGS[loc][key as keyof Catalog] !== text) {
         failures.push(`${loc}: ${key} drifts from the sourced "${text}"`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('sources every T-410 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T410_TEN) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
       }
     }
     expect(failures).toEqual([]);

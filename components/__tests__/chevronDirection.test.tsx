@@ -7,7 +7,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-import type { LocaleId } from '@/shared/i18n/locale';
+import { type LocaleId, localeDirection } from '@/shared/i18n/locale';
 
 // The probes require the testing library inside isolateModules, mid-test,
 // where its import-time cleanup-hook registration is a jest-circus error
@@ -42,7 +42,7 @@ const settingsChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> 
     const rntl = require('@testing-library/react-native');
     const SettingsSheet = require('../sheets/screens/Settings').default;
     await rntl.render(<SettingsSheet />);
-    const glyph = locale === 'ar' ? '\u2039' : '\u203A';
+    const glyph = localeDirection(locale) === 'rtl' ? '\u2039' : '\u203A';
     styles = rntl.screen
       .getAllByText(glyph)
       .map((element: { props: { style: unknown } }) => StyleSheet.flatten(element.props.style));
@@ -64,7 +64,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
     const { getHelpTopics } = require('@/shared/help');
     const question = getHelpTopics('android').find((topic: { action?: string }) => topic.action)!.question;
     await rntl.fireEvent.press(rntl.screen.getByRole('button', { name: question }));
-    const glyph = locale === 'ar' ? '\u2039' : '\u203A';
+    const glyph = localeDirection(locale) === 'rtl' ? '\u2039' : '\u203A';
     styles = rntl.screen
       .getAllByText(glyph)
       .map((element: { props: { style: unknown } }) => StyleSheet.flatten(element.props.style));
@@ -72,7 +72,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
   return styles;
 };
 
-it.each(['en', 'ar'] as const)('pins every settings-sheet chevron paragraph under %s', async (locale) => {
+it.each(['en', 'ar', 'fa', 'ur'] as const)('pins every settings-sheet chevron paragraph under %s', async (locale) => {
   const styles = await settingsChevronStylesUnder(locale);
 
   // The authored codepoint is the locale's own (the JS half lives in
@@ -86,7 +86,7 @@ it.each(['en', 'ar'] as const)('pins every settings-sheet chevron paragraph unde
   }
 });
 
-it.each(['en', 'ar'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
+it.each(['en', 'ar', 'fa', 'ur'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
   const styles = await helpChevronStylesUnder(locale);
 
   expect(styles).toHaveLength(1);

@@ -35,7 +35,24 @@ const renderedSheet = () => {
   return sheet;
 };
 
-const SIX_NAMES = ['Bahasa Melayu', 'English', 'Soomaali', 'العربية', 'हिन्दी', 'ไทย'] as const;
+const SIX_NAMES = [
+  'Bahasa Indonesia',
+  'Bahasa Melayu',
+  'English',
+  'Français',
+  'Hausa',
+  'Kiswahili',
+  'Oʻzbekcha',
+  'Português',
+  'Soomaali',
+  'Türkçe',
+  'اردو',
+  'العربية',
+  'فارسی',
+  'हिन्दी',
+  'বাংলা',
+  'ไทย',
+] as const;
 
 // The hanging driver's release valve, armed by the busy test and fired here even
 // when one of its assertions throws
@@ -59,7 +76,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the six native names in codepoint order on the athan card pattern', async () => {
+  it('renders the sixteen native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -150,14 +167,14 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(false);
 
-    await fireEvent(screen.getByRole('radio', { name: 'Bahasa Melayu' }), 'layout', {
+    await fireEvent(screen.getByRole('radio', { name: 'Bahasa Indonesia' }), 'layout', {
       nativeEvent: { layout: { x: 0, y: 0, width: 300, height: 44 } },
     });
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits second: the seat is one row and one gap below the list's top
-    expect(highlight().seat).toBe(44 + SPACING.xs);
+    // English sits third, before the Latin latecomers: the seat is two rows and two gaps below the list's top
+    expect(highlight().seat).toBe(2 * 44 + 2 * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {

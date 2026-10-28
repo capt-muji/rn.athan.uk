@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md.",
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410.",
     "sourceSlugs": {
       "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
       "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
@@ -51,7 +51,15 @@
       "namajersomoysuchi": "namajersomoysuchi.com (Bangladesh)",
       "muslimbangla": "muslimbangla.com (Bangladesh)",
       "ismailaga": "ismailaga.org.tr (Turkish mosque foundation)",
-      "existing-app-catalog": "already in shared/constants.ts of this repository"
+      "existing-app-catalog": "already in shared/constants.ts of this repository",
+      "fambras": "Federação das Associações Muçulmanas do Brasil, fambras.org.br/horario-de-oracao",
+      "true-time-pt": "pt.true-time.com prayer-times tables (Brazil)",
+      "dateandtime-pt": "dateandtime.info Portuguese-language prayer tables (Brazil and Portugal)",
+      "luzdoislam-br": "luzdoislam.com.br articles on the five daily prayers (Brazil)",
+      "bbc-hausa": "BBC News Hausa service (bbc.com/hausa), Ramadan and fasting reports",
+      "al-feqh-ha": "al-feqh.com Hausa fiqh pages; the sallar nafila page's farilla table prints Asuba, Azzahar, La'asar, Magariba, Isha",
+      "muhaddis-uz": "muhaddis.uz Uzbek hadith library (Shamail Muhammadi)",
+      "loan": "the naming rule's own transliteration answer for a slot no authority prints, recorded with its derivation in the entry's note; the so precedent ('Istijaabo', plan T-410 decision 5)"
     },
     "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
     "confidenceKey": {
@@ -423,16 +431,16 @@
         "note": "سحری is the meal; اختیارِ سحری / سحری کا وقت is the deadline. Pakistan tables print سحری for the meal row. Also called Sehri in roman Urdu."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "چاشت",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Urdu authority or catalog found that prints a Duha/Chasht row. The Arabic loanwword چاشت exists in religious prose (from Persian chasht). Recommend dropping the row for ur or keeping the Arabic الضحى."
+        "note": "Loan per the naming rule (plan T-410 decision 5): no Urdu table prints the row, and the prior finding attests the loanword چاشت (chasht) in Urdu religious prose. Derivation: chasht, the Duha name across the Persian-Urdu tradition; bn prints the same loan চাশত."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "استجابہ",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Urdu table or catalog found. Urdu religious prose says دعائیں قبول ہونے کی گھڑی (the hour when duas are accepted), a phrase, not a name. Recommend dropping the row for ur."
+        "note": "Loan per the naming rule: Urdu adaptation of استجابة with ہ, the so precedent ('Istijaabo'). Prose says دعائیں قبول ہونے کی گھڑی, a phrase, not a row label."
       }
     },
     "explanations": {
@@ -531,10 +539,10 @@
         "note": "Bangladeshi nafil table prints চাশত (from Persian chasht) beside ইশরাক. The Arabic loan দোহা is rare in Bengali."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "ইস্তিজাবা",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Bengali table or catalog found. Bengali religious prose describes it, never names it in one word. Recommend dropping the row for bn."
+        "note": "Loan per the naming rule: Istijaba transliterated into Bengali script. Bengali religious prose describes the hour, never names it in one word."
       }
     },
     "explanations": {
@@ -730,15 +738,15 @@
       },
       "Duha": {
         "text": "Duha",
-        "source": null,
+        "source": "loan",
         "confidence": "low",
-        "note": "No French authority or catalog found. French Muslim texts say prière du Duha or ad-Duha. Safest: keep the transliteration Duha."
+        "note": "Transliteration kept, now recorded as the loan it is per the naming rule: no French authority prints it, and French Muslim texts say prière du Duha or ad-Duha. R9 §2 leaves the row unreviewed, not absent."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaba",
+        "source": "loan",
         "confidence": "low",
-        "note": "No French table or catalog found. French fatwa sites describe l'heure d'exaucement du vendredi, a phrase. Recommend dropping the row for fr or shipping the transliteration Istijaba."
+        "note": "The transliteration its own note recommends, recorded as the naming rule's loan. French fatwa sites describe l'heure d'exaucement du vendredi, a phrase, not a row label."
       }
     },
     "explanations": {
@@ -939,10 +947,10 @@
         "note": "Persian religious press: نماز چاشت یا ضحی. چاشت (from Persian chasht) is the Iranian name; ضحی is the Arabic loan. Either works."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "استجابه",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Persian portal prints it. Shia sources place the Friday answered-hour differently, so the Saudi-fixed definition may not suit the Iranian calendar anyway. Recommend dropping the row for fa."
+        "note": "Loan per the naming rule: استجابة in the Iranian convention's hamza-less form (the عشا precedent). No Persian portal prints it, and Shia sources place the Friday answered-hour differently, so the label is the loan, not a doctrine."
       }
     },
     "explanations": {
@@ -1125,28 +1133,28 @@
         "note": "al-azan prints Katikati ya usiku (middle of the night)."
       },
       "Last Third": {
-        "text": "Theluthi ya mwisho ya usiku",
+        "text": "Theluthi ya mwisho",
         "source": "al-azan@d89b047",
-        "confidence": "high",
-        "note": "al-azan's hint string: Tahajjud ni theluthi ya mwisho ya usiku. Attested verbatim."
+        "confidence": "medium",
+        "note": "Re-shortened to the label-shaped substring (18 chars) of al-azan's attested sentence Tahajjud ni theluthi ya mwisho ya usiku; the full sentence stays in the explanation string (plan T-410 decision 6)."
       },
       "Suhoor": {
-        "text": null,
-        "source": null,
+        "text": "Suhur",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Swahili authority or catalog found for the meal row. Swahili Ramadan usage says mlo wa usiku wa manane or the Arabic Suhur. Recommend keeping the transliteration Suhur after speaker review."
+        "note": "Loan per the naming rule: the Arabic Suhur, the form Swahili Ramadan usage circles (mlo wa usiku wa manane is the description, not a label). No Swahili authority prints the row."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "Duha",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Swahili authority or catalog found. The Arabic loan Duha is used in Swahili religious radio. Keep the transliteration Duha."
+        "note": "Loan per the naming rule: the Arabic loan already used in Swahili religious radio. No Swahili authority prints the row."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaba",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Swahili table or catalog found. Swahili describes it as saa ya maombi kukubalika Ijumaa. Recommend dropping the row for sw."
+        "note": "Loan per the naming rule: the Arabic name transliterated, the so precedent. Swahili describes it as saa ya maombi kukubalika Ijumaa, a phrase, not a row label."
       }
     },
     "explanations": {
@@ -1185,10 +1193,10 @@
   "ha": {
     "names": {
       "Fajr": {
-        "text": "Sallar Asuba",
+        "text": "Asuba",
         "source": "islamhouse-ha",
         "confidence": "high",
-        "note": "islamhouse Hausa and Hausa Wikipedia: Sallar asuba (dawn prayer). Bare form Asuba works as the row label; Hausa convention is Sallar X (the prayer of X)."
+        "note": "Bare form, the label shape plan T-410 rules over Sallar X. islamhouse prose says Sallar asuba; al-feqh's Hausa farilla table prints Asuba as the bare row."
       },
       "Sunrise": {
         "text": "Fitowar rana",
@@ -1197,90 +1205,90 @@
         "note": "islamhouse uses fitowar rana repeatedly (sunrise) as the boundary of the dawn prayer. Astronomical register, not a prayer name."
       },
       "Dhuhr": {
-        "text": "Sallar Azahar",
+        "text": "Azahar",
         "source": "islamhouse-ha",
         "confidence": "high",
-        "note": "islamhouse and Hausa Wikipedia: Azahar. Hausa keeps the Persian-derived name (from zuhr via Persian)."
+        "note": "Bare form per plan T-410. islamhouse and Hausa Wikipedia: Azahar; al-feqh's table prints Azzahar (doubled z). Hausa keeps the Persian-derived name (from zuhr via Persian)."
       },
       "Asr": {
-        "text": "Sallar Asora",
-        "source": "ha-wikipedia",
+        "text": "La'asar",
+        "source": "al-feqh-ha",
         "confidence": "medium",
-        "note": "Hausa Wikipedia calls it La'asar (also Sallar La'asar); islamhouse prose says la'asar. Asora appears in Hausa Islamic lists. La'asar is the more common Hausa name; category pages use both."
+        "note": "The more common Hausa name per the prior finding, and the bare row label al-feqh's farilla table prints. Hausa Wikipedia calls it La'asar; islamhouse prose says la'asar. Asora appears in Hausa Islamic lists as the rival."
       },
       "Magrib": {
-        "text": "Sallar Magriba",
+        "text": "Magriba",
         "source": "ha-wikipedia",
         "confidence": "medium",
-        "note": "Hausa Wikipedia article title is Maghrib with prose Magrib; the Hausa form is Magriba or La'asar rinjeya. Northern Nigerian calendars print Magriba."
+        "note": "Bare form per plan T-410. Northern Nigerian calendars print Magriba; al-feqh's table prints Magariba. Hausa Wikipedia article title is Maghrib with prose Magrib."
       },
       "Isha": {
-        "text": "Sallar Isha'i",
+        "text": "Isha'i",
         "source": "ha-wikipedia",
         "confidence": "high",
-        "note": "Hausa Wikipedia: Sallar isha'i. The apostrophe is part of the spelling."
+        "note": "Bare form per plan T-410; al-feqh's table prints Isha bare. Hausa Wikipedia: Sallar isha'i. The apostrophe is part of the spelling."
       },
       "Midnight": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Hausa table found printing a midnight row. Hausa says tsakar dare (midnight). Not attested in an Islamic-time context; needs a speaker."
+        "text": "Tsakar dare",
+        "source": "bbc-hausa",
+        "confidence": "medium",
+        "note": "Closed per plan T-410 from Hausa Islamic media: BBC Hausa's Ramadan report reads karfe 2:00 na tsakar dare in a fasting-times context, and ha.wikipedia's Ramadan article reads extra prayers a tsakar dare. No Hausa table prints the row; speaker pass still wanted."
       },
       "Last Third": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Hausa source found for the last-third concept. Tahajjud is the name used in Hausa religious radio. Needs a speaker."
+        "text": "Sulusin dare na ƙarshe",
+        "source": "al-feqh-ha",
+        "confidence": "medium",
+        "note": "Closed from Hausa Islamic media: al-feqh's nafila page glosses the sahur time as sulusin dare na qarshe (its plain-q spelling for ƙarshe), normalized here to standard hooked-k orthography. Tahajjud is the name Hausa religious radio uses for the same instant."
       },
       "Suhoor": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "Hausa Ramadan usage says azumin rana with the pre-dawn meal called shan izza or sallar asuba time. Not attested as a table row. Needs a speaker."
+        "text": "Sahur",
+        "source": "bbc-hausa",
+        "confidence": "medium",
+        "note": "Closed from Hausa Islamic media: BBC Hausa's Ramadan report reads su kan dakata da sahur, and al-feqh's page prints lokacin sahur. Sahur is the meal-time term; shan izza names the meal itself."
       },
       "Duha": {
-        "text": null,
-        "source": null,
+        "text": "Duha",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Hausa source found. The Arabic loan Duha appears in Hausa religious audio. Needs a speaker."
+        "note": "Loan per the naming rule: the Arabic loan already heard in Hausa religious audio. No Hausa source prints the row."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaba",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Hausa source found. Recommend dropping the row for ha."
+        "note": "Loan per the naming rule: the Arabic name transliterated, the so precedent. No Hausa source names the hour."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": null,
-        "source": null,
+        "text": "Tsakiyar Magriba da Asuba",
+        "source": "derived",
         "confidence": "low",
-        "note": "Needs the name set confirmed first."
+        "note": "Derived from the sourced bare names; tsakiya is the standard Hausa midpoint word. Speaker pass wanted."
       },
       "Start of the last third of the night": {
-        "text": null,
-        "source": null,
+        "text": "Farawar sulusin dare na ƙarshe",
+        "source": "derived",
         "confidence": "low",
-        "note": ""
+        "note": "Derived; farawa is beginning, in the construct form farawar before its possessive."
       },
       "20 mins before Fajr": {
-        "text": null,
-        "source": null,
+        "text": "Minti 20 kafin Asuba",
+        "source": "derived",
         "confidence": "low",
-        "note": ""
+        "note": "Derived; minti is minute, kafin is before, the number following the noun."
       },
       "20 mins after Sunrise": {
-        "text": null,
-        "source": null,
+        "text": "Minti 20 bayan Fitowar rana",
+        "source": "derived",
         "confidence": "low",
-        "note": ""
+        "note": "Derived; bayan is after."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": null,
-        "source": null,
+        "text": "Sa'a 1 kafin Magriba (Juma'a kawai)",
+        "source": "derived",
         "confidence": "low",
-        "note": ""
+        "note": "Derived; sa'a is hour, Juma'a is Friday, kawai is only."
       }
     }
   },
@@ -1629,10 +1637,10 @@
         "note": "Both portals print Xufton (also Xufton)."
       },
       "Midnight": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "Neither Uzbek portal prints a midnight row. Uzbek says yarim kecha. Needs a speaker."
+        "text": "Yarim kecha",
+        "source": "muhaddis-uz",
+        "confidence": "medium",
+        "note": "Closed per plan T-410: muhaddis.uz's Shamail Muhammadi text reads yarim kecha bo'lganda, uyg'ondilar in the Prophet's night-prayer account, an Islamic-time attestation. Neither prayer portal prints the row; speaker pass still wanted."
       },
       "Last Third": {
         "text": "Tahajjud",
@@ -1653,10 +1661,10 @@
         "note": "islom.uz prints Ишроқ as its own row and defines it exactly as the app defines Duha: 20 minutes after sunrise (Кун чиққандан сўнг 20 дақиқа ўтгач). This is the best authority match for Duha in any language."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijoba",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Uzbek source found. Recommend dropping the row for uz."
+        "note": "Loan per the naming rule: Uzbek adaptation of istijobat/ijoba (the accepted dua), the so precedent. No Uzbek source names the hour."
       }
     },
     "explanations": {
@@ -2913,6 +2921,108 @@
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
+      }
+    }
+  },
+  "pt": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "fambras",
+        "confidence": "high",
+        "note": "Sourced fresh per plan T-410 decision 7: FAMBRAS (the Brazilian federation), true-time's Porto Alegre table, dateandtime.info's Brazilian and Portuguese tables, and namazvakti's Brazilian table all print Fajr."
+      },
+      "Sunrise": {
+        "text": "Nascer do sol",
+        "source": "true-time-pt",
+        "confidence": "high",
+        "note": "true-time and dateandtime.info both print Nascer do sol; namazvakti agrees. R9 §2's attested pattern: the five transliterated plus the translated Sunrise. dateandtime title-cases do Sol in its header; sentence case is the running-text form."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "fambras",
+        "confidence": "high",
+        "note": "FAMBRAS, true-time and dateandtime print Dhuhr; namazvakti prints Dhur as a variant. All four tables agree on the shape."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "fambras",
+        "confidence": "high",
+        "note": "All four tables print Asr."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "fambras",
+        "confidence": "high",
+        "note": "All four tables print Maghrib, keeping the h (unlike the app's English Magrib spelling, a Latin-script issue only)."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "true-time-pt",
+        "confidence": "high",
+        "note": "true-time, dateandtime and namazvakti print Isha; FAMBRAS's prose prints Ishaa with the doubled a. Isha matches the app's other Latin catalogs."
+      },
+      "Midnight": {
+        "text": "Meia-noite",
+        "source": "luzdoislam-br",
+        "confidence": "medium",
+        "note": "No pt table prints the row. luzdoislam's five-prayers article reads o horário para 'Isha dura até à meia-noite, and Isha's deadline is the Islamic midnight, so the word lands in an Islamic-time context. R9 §2 flagged it for a speaker pass; plain form per the shortest-context-correct rule (the D81 precedent)."
+      },
+      "Last Third": {
+        "text": "Último terço",
+        "source": "derived",
+        "confidence": "low",
+        "note": "R9 §2's candidate for the speaker pass, ordinary Portuguese (terço = third); no pt table or authority text found printing the row."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic loan Portuguese-language Ramadan calendars use for the meal-time. No pt authority table found; R9 §2 flagged Suhoor for the speaker pass."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the transliteration, the form pt Muslim texts circle (oração do Duha). No pt source prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name transliterated, the so precedent. No pt source names the hour."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "A meio caminho entre Maghrib e Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; standard Portuguese syntax, the fr pattern's counterpart."
+      },
+      "Start of the last third of the night": {
+        "text": "Início do último terço da noite",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from Último terço."
+      },
+      "20 mins before Fajr": {
+        "text": "20 min antes do Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; Portuguese abbreviates minutos as min."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 min após o nascer do sol",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 hora antes do Maghrib (apenas sextas-feiras)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sextas-feiras is Fridays."
       }
     }
   }
