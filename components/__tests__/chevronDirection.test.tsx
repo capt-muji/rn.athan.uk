@@ -72,21 +72,24 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
   return styles;
 };
 
-it.each(['en', 'ar', 'fa', 'ur'] as const)('pins every settings-sheet chevron paragraph under %s', async (locale) => {
-  const styles = await settingsChevronStylesUnder(locale);
+it.each(['en', 'ar', 'fa', 'ur', 'ps'] as const)(
+  'pins every settings-sheet chevron paragraph under %s',
+  async (locale) => {
+    const styles = await settingsChevronStylesUnder(locale);
 
-  // The authored codepoint is the locale's own (the JS half lives in
-  // locale.test.ts); six sites: five rows plus the colour-picker row
-  expect(styles).toHaveLength(6);
-  // A rule the app must keep (the __tests__ README's named exception):
-  // Android mirrors this glyph inside an RTL paragraph, so the chevron's
-  // own paragraph is pinned ltr and the codepoint carries the direction
-  for (const style of styles) {
-    expect((style as Record<string, unknown>).direction).toBe('ltr');
+    // The authored codepoint is the locale's own (the JS half lives in
+    // locale.test.ts); six sites: five rows plus the colour-picker row
+    expect(styles).toHaveLength(6);
+    // A rule the app must keep (the __tests__ README's named exception):
+    // Android mirrors this glyph inside an RTL paragraph, so the chevron's
+    // own paragraph is pinned ltr and the codepoint carries the direction
+    for (const style of styles) {
+      expect((style as Record<string, unknown>).direction).toBe('ltr');
+    }
   }
-});
+);
 
-it.each(['en', 'ar', 'fa', 'ur'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
+it.each(['en', 'ar', 'fa', 'ur', 'ps'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
   const styles = await helpChevronStylesUnder(locale);
 
   expect(styles).toHaveLength(1);

@@ -40,13 +40,37 @@ describe('resolveInitialLocale', () => {
     ['ur-PK', 'ur', 'ur'],
     ['fa-IR', 'fa', 'fa'],
     ['bn-BD', 'bn', 'bn'],
+    ['ru-RU', 'ru', 'ru'],
+    ['az-AZ', 'az', 'az'],
+    ['de-DE', 'de', 'de'],
+    ['sq-AL', 'sq', 'sq'],
+    ['bs-BA', 'bs', 'bs'],
+    ['ps-AF', 'ps', 'ps'],
+    ['ta-IN', 'ta', 'ta'],
+    ['ta-LK', 'ta', 'ta'],
+    ['ml-IN', 'ml', 'ml'],
+    // Decision 9, plan T-419: the zh pair resolves by script subtag, then by the
+    // TW/HK/MO region list CLDR's likely-subtags answers, and bare zh reads
+    // Simplified (R4 A.4: a bare zh entry must never serve a Traditional reader)
+    ['zh-Hans', 'zh', 'zh-Hans'],
+    ['zh-Hans-CN', 'zh', 'zh-Hans'],
+    ['zh-Hans-SG', 'zh', 'zh-Hans'],
+    ['zh-Hant-TW', 'zh', 'zh-Hant'],
+    ['zh-Hant-HK', 'zh', 'zh-Hant'],
+    ['zh-TW', 'zh', 'zh-Hant'],
+    ['zh-HK', 'zh', 'zh-Hant'],
+    ['zh-MO', 'zh', 'zh-Hant'],
+    ['zh-CN', 'zh', 'zh-Hans'],
+    ['zh-SG', 'zh', 'zh-Hans'],
+    ['zh', 'zh', 'zh-Hans'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });
 
   it('falls back to en for an unsupported language', () => {
     expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: 'es' }])).toBe('en');
-    expect(resolveInitialLocale(null, [{ languageTag: 'zh-Hans', languageCode: 'zh' }])).toBe('en');
+    // yue is its own language code, never a zh tag: a yue-tagged device falls through
+    expect(resolveInitialLocale(null, [{ languageTag: 'yue-Hant-HK', languageCode: 'yue' }])).toBe('en');
   });
 
   it('the stored preference wins', () => {
@@ -145,7 +169,7 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa'] as const)('mirrors the chevron under %s, the later RTL locales', (locale) => {
+  it.each(['ur', 'fa', 'ps'] as const)('mirrors the chevron under %s, the later RTL locales', (locale) => {
     setActiveLocale(locale);
     try {
       expect(chevronFor()).toBe('\u2039');
@@ -156,7 +180,7 @@ describe('chevronFor', () => {
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa'] as const)('carries the Arabic comma under %s', (locale) => {
+  it.each(['ar', 'ur', 'fa', 'ps'] as const)('carries the Arabic comma under %s', (locale) => {
     setActiveLocale(locale);
     try {
       expect(sentenceComma()).toBe('\u060C');

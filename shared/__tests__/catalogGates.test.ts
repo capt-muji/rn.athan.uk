@@ -6,26 +6,62 @@
  */
 
 import { ar } from '@/shared/i18n/ar';
+import { az } from '@/shared/i18n/az';
 import { bn } from '@/shared/i18n/bn';
+import { bs } from '@/shared/i18n/bs';
+import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { fa } from '@/shared/i18n/fa';
 import { fr } from '@/shared/i18n/fr';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
+import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
+import { ru } from '@/shared/i18n/ru';
 import { so } from '@/shared/i18n/so';
 import sourced from '@/shared/i18n/sourced-names.json';
+import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
+import { ta } from '@/shared/i18n/ta';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { zhHans } from '@/shared/i18n/zh-Hans';
+import { zhHant } from '@/shared/i18n/zh-Hant';
 
-const CATALOGS: Record<string, Catalog> = { ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn };
+const CATALOGS: Record<string, Catalog> = {
+  ar,
+  ms,
+  so,
+  hi,
+  th,
+  id,
+  tr,
+  fr,
+  uz,
+  sw,
+  ha,
+  pt,
+  ur,
+  fa,
+  bn,
+  ru,
+  az,
+  de,
+  sq,
+  bs,
+  ps,
+  ta,
+  ml,
+  'zh-Hans': zhHans,
+  'zh-Hant': zhHant,
+};
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
@@ -92,6 +128,9 @@ interface Entry {
 
 /** The ten locales T-410 ships; every slot they add to the glossary must carry sourcing */
 const T410_TEN = ['id', 'ur', 'bn', 'fa', 'fr', 'tr', 'sw', 'ha', 'pt', 'uz'] as const;
+
+/** The ten locales T-419 ships next; the same bar covers their names and explanations */
+const T419_TEN = ['ps', 'zh-Hans', 'zh-Hant', 'ru', 'az', 'de', 'sq', 'bs', 'ta', 'ml'] as const;
 
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
@@ -166,6 +205,28 @@ describe('the landed catalogs against the R2 gates', () => {
     >;
     const failures: string[] = [];
     for (const loc of T410_TEN) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('sources every T-419 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T419_TEN) {
       const sections = glossary[loc];
       if (!sections) {
         failures.push(`${loc}: absent from the glossary`);

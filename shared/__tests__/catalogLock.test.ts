@@ -9,11 +9,37 @@ import { createHash } from 'node:crypto';
 import lock from '@/shared/i18n/catalog-lock.json';
 import { en } from '@/shared/i18n/en';
 
-const LOCALES = ['ar', 'ms', 'so', 'hi', 'th', 'id', 'tr', 'fr', 'uz', 'sw', 'ha', 'pt', 'ur', 'fa', 'bn'] as const;
+const LOCALES = [
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+  'ps',
+  'ta',
+  'ml',
+  'zh-Hans',
+  'zh-Hant',
+] as const;
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 
 describe('the catalog lock', () => {
-  it('covers exactly the fifteen translated locales', () => {
+  it('covers exactly the twenty-five translated locales', () => {
     expect(Object.keys(lock).sort()).toEqual([...LOCALES].sort());
   });
 

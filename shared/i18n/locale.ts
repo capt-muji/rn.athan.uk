@@ -1,5 +1,5 @@
 /**
- * The locale resolution core: which of the sixteen shipped locales the app speaks,
+ * The locale resolution core: which of the twenty-six shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -29,13 +29,23 @@ export const LOCALE_IDS = [
   'ur',
   'fa',
   'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+  'ps',
+  'ta',
+  'ml',
+  'zh-Hans',
+  'zh-Hant',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps']);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
@@ -87,7 +97,24 @@ export const setActiveLocale = (id: LocaleId): void => {
  * RFC 4647 lookup over the device's ordered locale list: a valid stored
  * preference wins (R1.2's shape), then each device locale in user order
  * matches its exact tag, then its language code. Anything else is en.
+ *
+ * zh is the one language that needs more than the lookup: iOS and Android report
+ * it as zh-Hans-CN, zh-Hant-TW, bare zh-TW and more, so a script subtag resolves
+ * its written standard and a region subtag falls to CLDR's likely-subtags answer
+ * (plan T-419 decision 9). yue never matches here: it is its own language code.
  */
+const ZH_HANT_REGIONS: ReadonlySet<string> = new Set(['TW', 'HK', 'MO']);
+
+const resolveZhTag = (languageTag: string): 'zh-Hans' | 'zh-Hant' | null => {
+  if (languageTag !== 'zh' && !languageTag.startsWith('zh-')) return null;
+  if (languageTag.startsWith('zh-Hans')) return 'zh-Hans';
+  if (languageTag.startsWith('zh-Hant')) return 'zh-Hant';
+  const region = languageTag.split('-')[1];
+  // Bare zh reads Simplified: a bare zh entry must never serve a Traditional
+  // reader (R4 A.4)
+  return region !== undefined && ZH_HANT_REGIONS.has(region) ? 'zh-Hant' : 'zh-Hans';
+};
+
 export const resolveInitialLocale = (
   preference: string | null,
   deviceLocales: readonly DeviceLocaleInfo[]
@@ -100,6 +127,8 @@ export const resolveInitialLocale = (
     if ((LOCALE_IDS as readonly string[]).includes(locale.languageTag)) {
       return locale.languageTag as LocaleId;
     }
+    const zh = resolveZhTag(locale.languageTag);
+    if (zh !== null) return zh;
     if (locale.languageCode !== null && (LOCALE_IDS as readonly string[]).includes(locale.languageCode)) {
       return locale.languageCode as LocaleId;
     }

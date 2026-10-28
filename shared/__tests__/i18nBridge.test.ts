@@ -13,7 +13,10 @@ import path from 'node:path';
 
 import { type ParamsOf, t } from '@/shared/i18n';
 import { ar } from '@/shared/i18n/ar';
+import { az } from '@/shared/i18n/az';
 import { bn } from '@/shared/i18n/bn';
+import { bs } from '@/shared/i18n/bs';
+import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { fa } from '@/shared/i18n/fa';
@@ -22,14 +25,21 @@ import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { setActiveLocale } from '@/shared/i18n/locale';
+import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
+import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
+import { ru } from '@/shared/i18n/ru';
 import { so } from '@/shared/i18n/so';
+import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
+import { ta } from '@/shared/i18n/ta';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { zhHans } from '@/shared/i18n/zh-Hans';
+import { zhHant } from '@/shared/i18n/zh-Hant';
 
 const CATALOGS: Record<string, Catalog> = {
   en,
@@ -48,6 +58,16 @@ const CATALOGS: Record<string, Catalog> = {
   ur,
   fa,
   bn,
+  ru,
+  az,
+  de,
+  sq,
+  bs,
+  ps,
+  ta,
+  ml,
+  'zh-Hans': zhHans,
+  'zh-Hant': zhHant,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -124,7 +144,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(16);
+    expect(Object.keys(CATALOGS)).toHaveLength(26);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

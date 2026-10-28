@@ -1,5 +1,5 @@
 /**
- * The language sheet (D8, D26): six native names in codepoint order, and a pick that closes
+ * The language sheet (D8, D26): the twenty-six native names in codepoint order, and a pick that closes
  * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
@@ -36,22 +36,32 @@ const renderedSheet = () => {
 };
 
 const SIX_NAMES = [
+  'Azərbaycanca',
   'Bahasa Indonesia',
   'Bahasa Melayu',
+  'Bosanski',
+  'Deutsch',
   'English',
   'Français',
   'Hausa',
   'Kiswahili',
   'Oʻzbekcha',
   'Português',
+  'Shqip',
   'Soomaali',
   'Türkçe',
+  'Русский',
   'اردو',
   'العربية',
   'فارسی',
+  'پښتو',
   'हिन्दी',
   'বাংলা',
+  'தமிழ்',
+  'മലയാളം',
   'ไทย',
+  '简体中文',
+  '繁體中文',
 ] as const;
 
 // The hanging driver's release valve, armed by the busy test and fired here even
@@ -76,7 +86,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the sixteen native names in codepoint order on the athan card pattern', async () => {
+  it('renders the twenty-six native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -167,14 +177,14 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(false);
 
-    await fireEvent(screen.getByRole('radio', { name: 'Bahasa Indonesia' }), 'layout', {
+    await fireEvent(screen.getByRole('radio', { name: 'Azərbaycanca' }), 'layout', {
       nativeEvent: { layout: { x: 0, y: 0, width: 300, height: 44 } },
     });
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits third, before the Latin latecomers: the seat is two rows and two gaps below the list's top
-    expect(highlight().seat).toBe(2 * 44 + 2 * SPACING.xs);
+    // English sits sixth, after the Latin latecomers: the seat is five rows and five gaps below the list's top
+    expect(highlight().seat).toBe(5 * 44 + 5 * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {
