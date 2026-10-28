@@ -31,8 +31,18 @@
 #                      side and the separation verdict
 #   video           -> video only (the pre-dual behaviour)
 #   sf              -> SurfaceFlinger --latency cadence instead of video
-#                      (no pixels; gaps <=33ms = 30fps floor pass) — the
-#                      fallback while video capture is wedged
+#                      (no pixels) — D16's recorder-free FLOOR WITNESS, and
+#                      still the only read while video capture is wedged.
+#                      The tap is stamped and anchored on the SF clock, the
+#                      layer resolved from --list, and the entrance window
+#                      bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000,
+#                      which covers every audited interaction's
+#                      tap-to-settled). THE PRINTED PRESENT-GAP LIST inside
+#                      that window IS THE VERDICT OF RECORD, read against the
+#                      33ms floor: every gap over 33ms in it is a floor
+#                      failure, gaps over 100ms included — never
+#                      "freeze or idle". The PASS line only summarizes the
+#                      list.
 # Known wedge: if screenrecord emits ~1 frame despite display changes, the
 # virtual-display pipeline is wedged — a device REBOOT restores it (s6). The
 # SF fallback still works in that state.
@@ -65,44 +75,132 @@ if [[ -n ${PRE_TAP:-} ]]; then
   sleep "$PRE_TAP_WAIT"
 fi
 
+# SurfaceFlinger's layer names rotate per process relaunch, so the layer is
+# resolved from --list, never from a fixed name: the plain
+# PKG/PKG.MainActivity#0 and the hash-prefixed variant are both live shapes,
+# and sibling packages must not match.
+resolve_sf_layer() {
+  local pkg_re=${PKG//./\\.}
+  adb -s "$SERIAL" shell dumpsys SurfaceFlinger --list | tr -d '\r' \
+    | grep -E "(^|/)$pkg_re/$pkg_re\.MainActivity#0$" | tail -1
+}
+
+# Per-capture suspend offset (boottime - monotonic): every phone that has
+# ever suspended carries one (this 3T: ~8047s) and every doze between
+# captures grows it. Clear the ring, tap the prayer row (any transition presents),
+# read uptime in the SAME shell, then dump: offset = uptime - first present
+# after the clear (+-50ms vsync and read lag). An anchor tap that CLOSES a
+# sheet presents late and reads the offset LOW (275-296ms on glass);
+# offsets cannot decrease, so across captures the highest coherent reading
+# is the true one — SF_OFFSET (seconds) overrides a polluted read without a
+# re-capture, recorded in anchor_note.txt.
+measure_sf_anchor() {
+  if [[ -n ${SF_OFFSET:-} ]]; then
+    echo "SF_OFFSET override: ${SF_OFFSET} (per-capture anchor not measured)" > "$OUT/anchor_note.txt"
+    echo "$SF_OFFSET" > "$OUT/anchor_offset.txt"
+    echo "anchor offset: ${SF_OFFSET}s (SF_OFFSET override)"
+  else
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency-clear '$LAYER'"
+    adb -s "$SERIAL" shell "input tap 540 1012; cat /proc/uptime" > "$OUT/anchor_uptime.txt"
+    sleep 1.2
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
+      > "$OUT/anchor_latency.txt" 2>&1
+    AUP=$(head -1 "$OUT/anchor_uptime.txt" | awk '{print $1}')
+    AFP=$(awk 'NF==3 && $3+0>0 && $3+0<4611686018427387904 {print $3; exit}' \
+      "$OUT/anchor_latency.txt")
+    if [[ -n "$AFP" && "$AFP" != "0" ]]; then
+      python3 -c "print(f'{$AUP - $AFP/1e9:.3f}')" > "$OUT/anchor_offset.txt"
+      echo "anchor offset: $(cat "$OUT/anchor_offset.txt")s (highest coherent reading wins across captures)"
+    else
+      echo "anchor FAILED: no present after the ring clear (anchor tap hit nothing that transitions?) — set SF_OFFSET from the session's highest coherent reading, or re-run"
+    fi
+  fi
+}
+
 if [[ $MODE == sf ]]; then
-  adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
-  sleep 1
-  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$PKG/$PKG.MainActivity#0'" \
+  # Tap and uptime read in ONE shell: the tap's CLOCK_BOOTTIME stamp must
+  # ride the same read discipline as the anchor's, or the offset arithmetic
+  # pulls the entrance window off the tap.
+  adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  # The dump lands after the entrance AND the universal late burst (~1.7-2.2s
+  # after the tap, step 10's Defect C): the ring's last ~127 presents hold
+  # entrance + burst + idle ticks at the 3T's cadence, while a dump before
+  # the animation reads an idle layer and prints NO DATA.
+  sleep 3
+  LAYER=$(resolve_sf_layer)
+  if [[ -z "$LAYER" ]]; then
+    echo "no SF layer for $PKG in SurfaceFlinger --list (names rotate per relaunch)"
+    echo "evidence: $OUT (no compositor read; this is not a pass)"
+    exit 1
+  fi
+  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
     > "$OUT/latency.txt" 2>&1
+  measure_sf_anchor
   # `|| verdict=$?` so `set -e` does not abort on a FAIL before it can be reported; the
   # status is re-raised deliberately below. Never name this `status`: zsh reserves it as a
   # read-only alias for `$?`, and assigning it kills the script before it measures anything.
   verdict=0
-  python3 - "$OUT/latency.txt" << 'EOF' || verdict=$?
-import sys
-lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
-# Third column = actual present timestamp; the trailing sentinel row
-# (INT64_MAX) and never-presented rows (0) fall to the bounds.
-pts = sorted(int(f[2]) for f in lines if 0 < int(f[2]) < 2**62)
-# Every quantity below is MILLISECONDS. The thresholds were once written in
-# seconds, which discarded every real frame gap before the verdict and left
-# all() over an empty list, so this branch could only ever print PASS.
-ms = [(t - pts[0]) / 1e6 for t in pts]
-tail = [m for m in ms if m > ms[-1] - 2500]
-gaps = [tail[i] - tail[i-1] for i in range(1, len(tail))]
-anim = [g for g in gaps if 0 < g <= 100]
-long = [g for g in gaps if g > 100]
-print(f"frames(last-2.5s)={len(tail)} anim-cadence-gaps(ms):", [f"{g:.0f}" for g in anim])
-# A gap over 100ms is either a real freeze or a stretch where nothing was drawn,
-# and SF latency alone cannot tell those apart. It is excluded from the cadence
-# verdict and printed, never silently dropped.
-print("gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
-if not anim:
-    print("30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
+  python3 - "$OUT" << 'SFEOF' || verdict=$?
+import os, sys
+
+out = sys.argv[1]
+
+# Third column = actual present timestamp (ns, CLOCK_MONOTONIC); the trailing
+# sentinel row (INT64_MAX) and never-presented rows (0) fall to the bounds.
+rows = [l.split() for l in open(f"{out}/latency.txt")]
+presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) < 2**62))
+
+# The tap was stamped on CLOCK_BOOTTIME (/proc/uptime, suspend included);
+# presents ride CLOCK_MONOTONIC. The per-capture anchor offset bridges the
+# two clocks; without it the entrance window cannot be placed on the timeline.
+try:
+    tap_boot = float(open(f"{out}/tap_uptime.txt").read().split()[0])
+    offset = float(open(f"{out}/anchor_offset.txt").read().split()[0])
+except (OSError, IndexError, ValueError):
+    print("SF 30fps FLOOR: NO DATA — no clock anchor (tap_uptime.txt or"
+          " anchor_offset.txt; a failed per-capture anchor needs SF_OFFSET"
+          " or a re-run); this is not a pass")
     sys.exit(1)
-passed = all(g <= 34 for g in anim)
-print("30fps FLOOR (cadence only):", "PASS" if passed else "FAIL")
-# Exit status, not just text: every caller reads $?, and a measurement tool that
-# prints FAIL while returning success is the same defect finding 28 was about —
-# a confident pass having measured nothing — one layer further out.
+
+# The entrance window: from 50ms before the tap (the anchor's vsync and
+# read-lag margin, as the dual branch) to ENTRANCE_MS after it. It must
+# cover the audited entrance end to end — the marks bands put
+# tap-to-settled at ~160ms (overlay) and ~660ms (sheets) — so the 1000ms
+# default covers every audited interaction with margin.
+ENTRANCE_MS = float(os.environ.get("ENTRANCE_MS", "1000"))
+tap_mono = tap_boot - offset
+rel = [(t / 1e9 - tap_mono) * 1000 for t in presents]
+win = [m for m in rel if -50 <= m <= ENTRANCE_MS]
+late = [m for m in rel if m > ENTRANCE_MS]
+
+if len(win) < 2:
+    print(f"SF 30fps FLOOR: NO DATA — {len(win)} presents inside the entrance"
+          " window (dump before the animation? ring rolled past the"
+          " entrance? nothing transitioned?); this is not a pass")
+    sys.exit(1)
+
+# THE VERDICT OF RECORD is the printed gap list below, read against the 33ms
+# floor inside the stated window — never the PASS summary alone. A gap over
+# 100ms between two presents INSIDE the window is a floor failure, not an
+# unclassifiable freeze: idle leaves through the window's far edge, and the
+# gap that crosses it ends outside and never prints as a failure.
+gaps = [(win[i] - win[i - 1], win[i - 1]) for i in range(1, len(win))]
+print(f"entrance window [tap-50ms, tap+{ENTRANCE_MS:.0f}ms]: {len(win)} presents,"
+      f" tap -> first present {win[0]:.0f}ms")
+print("present gaps inside the window:", [f"{g:.1f}ms@{a:+.0f}" for g, a in gaps])
+failures = [(g, a) for g, a in gaps if g > 33]
+print("FLOOR FAILURES (gaps over 33ms inside the window):",
+      [f"{g:.0f}ms@+{a:.0f}" for g, a in failures] or "NONE")
+if late:
+    print("late presents beyond the window (info, not floor):",
+          [f"+{m:.0f}ms" for m in late])
+passed = not failures
+print("30fps FLOOR:", "PASS" if passed else "FAIL",
+      "(summary — the printed list above is the verdict of record)")
+# Exit status, not just text: a measurement tool that prints FAIL while
+# returning success is a confident pass having measured nothing.
 sys.exit(0 if passed else 1)
-EOF
+SFEOF
   echo "evidence: $OUT"
   exit $verdict
 fi
@@ -125,13 +223,8 @@ if [[ $MODE == dual ]]; then
   # The dump lands AFTER the recorded animation (tap, animation, then dump):
   # an idle layer presents nothing, so the ring's last ~127 presents still
   # cover the entrance the video recorded, while a dump before the tap reads
-  # an idle layer and prints NO DATA. Layer names rotate per process relaunch,
-  # so the layer is resolved from --list, never from a fixed name: the plain
-  # PKG/PKG.MainActivity#0 and the hash-prefixed variant are both live shapes,
-  # and sibling packages must not match.
-  PKG_RE=${PKG//./\\.}
-  LAYER=$(adb -s "$SERIAL" shell dumpsys SurfaceFlinger --list | tr -d '\r' \
-    | grep -E "(^|/)$PKG_RE/$PKG_RE\.MainActivity#0$" | tail -1)
+  # an idle layer and prints NO DATA.
+  LAYER=$(resolve_sf_layer)
   if [[ -z "$LAYER" ]]; then
     echo "no SF layer for $PKG in SurfaceFlinger --list (names rotate per relaunch)"
     echo "evidence: $OUT (video evidence kept; separation FAILED — no compositor read)"
@@ -139,35 +232,7 @@ if [[ $MODE == dual ]]; then
   fi
   adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
     > "$OUT/latency.txt" 2>&1
-  # Per-capture suspend offset (boottime - monotonic): every phone that has
-  # ever suspended carries one (this 3T: ~8047s) and every doze between
-  # captures grows it. Clear the ring, tap the prayer row (any transition presents),
-  # read uptime in the SAME shell, then dump: offset = uptime - first present
-  # after the clear (+-50ms vsync and read lag). An anchor tap that CLOSES a
-  # sheet presents late and reads the offset LOW (275-296ms on glass);
-  # offsets cannot decrease, so across captures the highest coherent reading
-  # is the true one — SF_OFFSET (seconds) overrides a polluted read without
-  # a re-capture, recorded in anchor_note.txt.
-  if [[ -n ${SF_OFFSET:-} ]]; then
-    echo "SF_OFFSET override: ${SF_OFFSET} (per-capture anchor not measured)" > "$OUT/anchor_note.txt"
-    echo "$SF_OFFSET" > "$OUT/anchor_offset.txt"
-    echo "anchor offset: ${SF_OFFSET}s (SF_OFFSET override)"
-  else
-    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency-clear '$LAYER'"
-    adb -s "$SERIAL" shell "input tap 540 1012; cat /proc/uptime" > "$OUT/anchor_uptime.txt"
-    sleep 1.2
-    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
-      > "$OUT/anchor_latency.txt" 2>&1
-    AUP=$(head -1 "$OUT/anchor_uptime.txt" | awk '{print $1}')
-    AFP=$(awk 'NF==3 && $3+0>0 && $3+0<4611686018427387904 {print $3; exit}' \
-      "$OUT/anchor_latency.txt")
-    if [[ -n "$AFP" && "$AFP" != "0" ]]; then
-      python3 -c "print(f'{$AUP - $AFP/1e9:.3f}')" > "$OUT/anchor_offset.txt"
-      echo "anchor offset: $(cat "$OUT/anchor_offset.txt")s (highest coherent reading wins across captures)"
-    else
-      echo "anchor FAILED: no present after the ring clear (anchor tap hit nothing that transitions?) — set SF_OFFSET from the session's highest coherent reading, or re-run"
-    fi
-  fi
+  measure_sf_anchor
 fi
 
 ffprobe -select_streams v -show_entries frame=pts_time -of csv=p=0 "$OUT/rec.mp4" 2>/dev/null > "$OUT/pts.txt"

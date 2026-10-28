@@ -22,7 +22,13 @@ everywhere.
   alone encoder loss. `PRE_TAP` opens the overlay first so a close audit
   records a real closing tap (`PRE_TAP_WAIT`, default 1s, mock-safe).
   `FRAME_AUDIT=video` keeps the video-only path; `FRAME_AUDIT=sf` is the
-  cadence-only fallback when video capture is wedged.
+  recorder-free floor witness (D16): the tap is stamped and anchored on the
+  SF clock, the layer resolved from `--list`, and the entrance window
+  bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000). The PRINTED
+  PRESENT-GAP LIST inside that window is the verdict of record, read
+  against the 33ms floor — gaps over 100ms inside the window are floor
+  failures, never "freeze or idle"; the PASS line only summarizes the list.
+  It is also the only read while video capture is wedged.
 - `scripts/device-checks.sh` (`yarn check:device`): on-demand audit of what the
   phone has: build identity, permissions, notification channels and
   every alarm the app has armed (`scripts/device_checks.py` parses
