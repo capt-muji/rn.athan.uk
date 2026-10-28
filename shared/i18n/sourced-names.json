@@ -364,7 +364,7 @@
         "text": "20 menit setelah Terbit",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced Terbit plus standard syntax; setelah is after."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "1 jam sebelum Maghrib (hari Jumat saja)",
@@ -398,19 +398,19 @@
         "text": "عصر",
         "source": "ur-wikipedia",
         "confidence": "high",
-        "note": ""
+        "note": "Urdu Wikipedia's table prints the bare shared Arabic-script form; Mihrab agrees."
       },
       "Magrib": {
         "text": "مغرب",
         "source": "ur-wikipedia",
         "confidence": "high",
-        "note": ""
+        "note": "Urdu Wikipedia's table prints the bare shared Arabic-script form; Mihrab agrees."
       },
       "Isha": {
         "text": "عشاء",
         "source": "ur-wikipedia",
         "confidence": "high",
-        "note": ""
+        "note": "Urdu Wikipedia's table prints the bare shared Arabic-script form; Mihrab agrees."
       },
       "Midnight": {
         "text": "نصف شب",
@@ -772,13 +772,13 @@
         "text": "20 min après le lever du soleil",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced Lever du soleil plus standard syntax; après is after."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "1 heure avant le Maghrib (vendredis uniquement)",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced Maghrib plus standard syntax; vendredi is Friday."
       }
     }
   },
@@ -976,13 +976,13 @@
         "text": "20 دقیقه بعد از طلوع آفتاب",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced طلوع آفتاب plus standard syntax; بعد از is after."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "یک ساعت قبل از اذان مغرب (فقط جمعه‌ها)",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced اذان مغرب plus standard syntax; جمعه is Friday."
       }
     }
   },
@@ -1180,7 +1180,7 @@
         "text": "Dakika 20 baada ya Macheo",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived from the sourced Macheo plus standard syntax; baada ya is after."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "Saa 1 kabla ya Magharibi (Ijumaa tu)",
