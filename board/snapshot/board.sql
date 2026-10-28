@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 4JAz5kkfa07iwxGzM6tlp6a69NoiuN8vnp5c8h5rTL7jeyyx8ChCzdMHA844LJa
+\restrict ZXXjZYNesLhcW19frcNxb977UeKhomiiqYYdnaewbsBa8pwmAgpraUbPjvLCMgW
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5220,6 +5220,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (221, 1, 221, NULL, 4, 'Step 5: device pass on the changed sheet', '', NULL, NULL, NULL, 30000, '2026-10-19 03:25:16.306819+00', '2026-10-19 05:18:36.146529+00', NULL, NULL, NULL, NULL, NULL, 15, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (268, 1, 268, NULL, 4, 'Step 1: the sensitive-content sweep across both trees, history tabled', '', NULL, NULL, NULL, 1000, '2026-10-20 00:44:43.373257+00', '2026-10-20 01:29:03.096663+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (100, 1, 32, 2, 4, 'The day roll (ISSUES #27)', 'Queue status: DONE', NULL, NULL, NULL, 79000, '2026-10-18 23:35:57.198328+00', '2026-10-19 02:54:08.614918+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (420, 1, 420, NULL, 4, 'Step 1: The sourcing record completes for the ten languages', '', NULL, NULL, NULL, 21500, '2026-10-28 19:19:09.054625+00', '2026-10-28 19:47:55.602573+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (314, 1, 314, NULL, 4, 'Step 1: the pinning suite, red on HEAD', '', NULL, NULL, NULL, 18000, '2026-10-21 06:46:10.846494+00', '2026-10-21 08:57:33.537249+00', NULL, NULL, NULL, NULL, NULL, 302, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (13, 1, 136, 2, 4, 'Android chevrons do not mirror under Arabic (settings sheet)', 'OWNER REPORT 2026-10-18: on the 3T at 2.0.908 with Arabic active in-app, every chevron in the Settings bottom sheet points RIGHT (the English direction) instead of LEFT; on the iPhone XS the same switch mirrors the chevrons correctly every time (both directions, repeatedly). Not staleness: no chevron or settings-sheet code changed between 2.0.908 and HEAD (verified from git), so HEAD is presumed affected - the iOS-vs-Android split points at the mechanism, cf. row 73 finding: RN 0.88 applies transforms physically and the app branches on the I18nManager bridge-start snapshot, which a starved or Android-side crossing can leave at the launch direction while the React tree already renders Arabic (row 80 made the tree root follow the app locale; the chevron flip may ride the stale native half). RECOMMENDATION: reproduce on the FleetTest mock (2.0.996) on the 3T, pin which signal the chevron consumes on each platform, key it off the app locale like rows 80/103, red-first, and prove on the 3T under both switches. En-LTR byte-identical. Acceptance: the owner''s read on the 3T
 
@@ -5268,6 +5269,7 @@ Status note: 2026-10-15, audited (both passes clean bar one records nit that die
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (270, 1, 270, NULL, 4, 'Step 3: the board sweep and the close', '', NULL, NULL, NULL, 3000, '2026-10-20 00:44:43.480507+00', '2026-10-20 02:12:19.689915+00', NULL, NULL, NULL, NULL, NULL, 4, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (367, 1, 367, NULL, 4, 'Step 3: the device reads on the S23 and the XS', '', NULL, NULL, NULL, 21500, '2026-10-25 08:53:39.911866+00', '2026-10-25 11:48:15.102889+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (315, 1, 315, NULL, 4, 'Step 2: the separator moves to the list, green plus mutants', '', NULL, NULL, NULL, 19000, '2026-10-21 06:46:10.890822+00', '2026-10-21 08:57:33.54184+00', NULL, NULL, NULL, NULL, NULL, 302, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (421, 1, 421, NULL, 4, 'Step 2: Locale plumbing lands with the five Roboto-covered catalogs', '', NULL, NULL, NULL, 22500, '2026-10-28 19:19:09.094996+00', '2026-10-28 20:11:13.857347+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (323, 1, 323, NULL, 4, 'Step 1: the colour modal carries the sheets'' dimming backdrop', 'surface.backdropDim (rgba(0, 1, 22, 0.9), derived from COLORS.surface.backdrop at the shared renderBackdrop''s 0.9) lands in shared/constants.ts; ColorPicker.tsx''s modalOverlay paints it; ColorPicker.test.tsx pins the overlay colour and its derivation, red first. yarn validate green, version bumped.', NULL, NULL, NULL, 1000, '2026-10-24 12:26:26.699109+00', '2026-10-24 13:00:39.084135+00', NULL, NULL, NULL, NULL, NULL, 322, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (72, 1, 66, 4, 4, 'Language switch: always restart with cleared caches - investigation', 'Owner ask, 2026-10-12: a deep discussion and investigation into ALWAYS restarting the app on any language change (not only RTL, per D59): clear caches (the per-locale width cache the owner''s Somali wrap report also touches), keep preferences, converge notifications and widgets, restart last as a force-clean. Weigh pros (the launch path already reconciles every surface by job 39''s design, so a restart lands on the one moment the system cleans up after itself; kills every stale-cache class at once, including the width defect row 61), cons and side effects (the D51 in-sheet progress face dies at restart, so the restart point moves after convergence; widget re-push racing process death; splash cost on every switch; the current in-place remount already delivers R3.1). May revise D59 (absorbing RTL-only restart) and D51''s timing. INVESTIGATION ONLY: the row ends with options and a recommendation, the owner rules. AUDIT 57 CARRIED: the countdown display selectors'' one-second old-locale transient after a switch (job 57 audit finding 5) joins this row''s evidence
 
@@ -5460,6 +5462,8 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (125, 1, 4, 2, 4, 'iOS: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 104000, '2026-10-18 23:35:57.635715+00', '2026-10-19 02:54:08.864926+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (126, 1, 3, 2, 4, 'Android: a notification replaces the one before it', 'Queue status: DONE', NULL, NULL, NULL, 105000, '2026-10-18 23:35:57.662782+00', '2026-10-19 02:54:08.87441+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (274, 1, 274, NULL, 4, 'Step 3: the row''s records closed', '', NULL, NULL, NULL, 7000, '2026-10-20 02:39:47.789672+00', '2026-10-20 05:14:44.389714+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (422, 1, 422, NULL, 4, 'Step 3: ps lands RTL on the Naskh record', '', NULL, NULL, NULL, 23500, '2026-10-28 19:19:09.124319+00', '2026-10-28 20:26:47.718313+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (423, 1, 423, NULL, 4, 'Step 4: ta and ml land with their bundled Noto pairs', '', NULL, NULL, NULL, 24500, '2026-10-28 19:19:09.15125+00', '2026-10-28 21:02:35.315743+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (290, 1, 290, NULL, 4, 'Step 4: the history rewrite and the local purge', '', NULL, NULL, NULL, 13000, '2026-10-20 07:09:05.757784+00', '2026-10-20 08:59:26.483998+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (292, 1, 292, NULL, 4, 'Step 6: the regenerated snapshot and the close', '', NULL, NULL, NULL, 15000, '2026-10-20 07:09:05.816491+00', '2026-10-20 08:59:26.534661+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (76, 1, 62, 8, 4, 'Help page: remove the English-era hardcoded line breaks', 'Owner ask, 2026-10-12: some help questions were deliberately broken into multiple lines for English-only layout; with six languages that makes no sense. Remove the specific breaks and let the width wrap naturally. Copy job over the help catalog keys
@@ -5548,10 +5552,12 @@ Status note: 2026-10-12, audited and pushed: the six-language confidence build l
 
 Needs first: #38', NULL, NULL, NULL, 73000, '2026-10-18 23:35:57.097557+00', '2026-10-19 02:54:08.558262+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (372, 1, 372, NULL, 4, 'Step 4: The exact binary smoked on the emulator - sync, times, countdown, check:device, qibla', '', NULL, NULL, NULL, 19500, '2026-10-25 14:17:44.250048+00', '2026-10-25 14:52:03.472157+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (424, 1, 424, NULL, 4, 'Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag resolver', '', NULL, NULL, NULL, 25500, '2026-10-28 19:19:09.177861+00', '2026-10-28 21:27:47.242906+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (305, 1, 305, 3, 4, 'Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on the 3T, single-user assert, park for the owner''s read', '', NULL, NULL, NULL, 8000, '2026-10-21 02:49:38.267938+00', '2026-10-21 04:10:09.867051+00', NULL, NULL, NULL, NULL, NULL, 297, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 70, 3, 4, 'The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Owner ask 2026-10-12, amended twice 2026-10-18. The Kanboard prototype was built, physically proven (twelve end-to-end checks, 127 tickets, dependency links, dark theme, adopted MCP server, passwordless) and rejected by the owner the same day: ugly in every way, and custom glue kept creeping in against the no-custom law. Decommissioned 2026-10-18 in one commit: containers and volumes deleted, the branch discarded, every kanboard file removed from the tree, board/reader.mjs restored to its pre-70 bytes. THE NEW BRIEF: Paperclip (paperclip.ing, paperclip.inc, github.com/paperclipai/paperclip - verified 2026-10-18 as MIT-licensed, self-hosted, no account, a Node.js server and React UI built for orchestrating AI agents). The owner wants a WATCH board for running agents and subagents: which tickets each picks up, which lanes are free, tickets progressing - self-hosted and free through Docker on the home server, single or multiple projects, everything built-in and nothing custom (no self-built MCP servers, no sync code, no import tooling; agents use the product''s own interfaces; styling only through the product''s native mechanisms, and the real UI must be evaluated before anything is built - an ugly board is a rejected board). The full brief with every requirement and the session''s lessons lives in `ai/prompts/paperclip-board.md`; that file is the entry point for the next session
 
 Status note: 2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-19 02:54:08.908428+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (425, 1, 425, NULL, 4, 'Step 6: The full sweep is green and the README names twenty-six', '', NULL, NULL, NULL, 26500, '2026-10-28 19:19:09.203076+00', '2026-10-28 21:34:41.739311+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (225, 1, 225, NULL, 4, 'Step 4: Description verification, anonymity check and device evidence', '', NULL, NULL, NULL, 20000, '2026-10-19 07:11:31.817335+00', '2026-10-19 07:45:44.756703+00', NULL, NULL, NULL, NULL, NULL, 17, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (83, 1, 55, 2, 4, 'A reschedule inside 30s of an armed reminder cancels it', 'Defect found by the row 38 external adjudication (an external branch, `04-surfaces.md` section 2): a scheduling pass that runs within 30 seconds before an armed reminder fires cancels it (`stores/notifications.ts:1040-1051`, `:1130-1139`). Independent of localisation. Notification scheduling logic, ask-first by rule, so it gets its own job
 
@@ -5587,6 +5593,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-13, audited: the timer''s dim levels land on the owner''s corrected figures (a spent 00 group white reduced 30 percent, every colon white reduced 60 percent, one design in every locale) and the no-shift rule is pinned: the timer style carries tabular figures, honored on both platforms at the pinned React Native, over the equal-advance Roboto-Medium verified at planning, so only the changing digit pair can move; muted untouched for every other reader. The dev build is installed on the owner''s iPhone XS with Metro serving and the owner''s read is the acceptance bar (the owner tests, per the owner''s instruction); the owner''s verdict lands here through the lead. Two-reviewer audit: one lean fix (the dead bar-background key deleted at 2.0.238), the records set straight (the step-2 verdict, the DONE version collision); future device steps grep the case expo prints. Row 81 lands next on this baseline
 
 Needs first: #72, #74', NULL, NULL, NULL, 41000, '2026-10-18 23:35:56.549064+00', '2026-10-19 02:54:08.22907+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (426, 1, 426, NULL, 4, 'Step 7: The XS development build installs as the original app', '', NULL, NULL, NULL, 27500, '2026-10-28 19:19:09.230345+00', '2026-10-28 22:20:36.106219+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (66, 1, 75, 2, 4, 'Visual polish: mosque SVG mirroring, no scrollbars anywhere, toggle outline to the card edge', 'Owner''s test (2026-10-13), three rulings: (a) the mosque SVG on BOTH schedule pages (Standard and Extras) sits correctly on the left under ar but is not mirrored — it faces the phone''s edge instead of inwards; the entire SVG mirrors under RTL, and the Ramadan variant of the mark stays identical in facing to the standard one; (b) a visual scrollbar appears when scrolling the bottom sheets on the 3T — a scrollbar must never exist anywhere in the app, so every scrollable hides its indicator (verify whether this predates the RTL work and fix it regardless); (c) the off-state toggle''s slight purple outline is liked and stays, but its colour changes to match the cards'' outer edge colour (the border colour the Display card, the countdown bar card and the prayer cards carry), on every toggle in the app. The toggle''s off-state POSITION under ar (circle right on grey) the owner confirmed correct — no change there
 
 Status note: 2026-10-14, audited: the mosque mark mirrors under RTL on the locale''s own direction (both PNG variants, both schedule pages and the error screen on one rule), the sheets'' shared scroll wrapper hides its indicator (the sweep found the three modal scrollers already hidden; the 3T scrollbar the owner saw predates the RTL work, born in the 1.5.3 verbatim revert to the sheet library and answered from git), and every toggle''s off-state outline carries the cards'' edge colour rgba(99, 102, 241, 0.15) with ticket 73''s travel untouched; en and the other locales byte-identical except the owner''s two global rulings; simulator-proven under ar', NULL, NULL, NULL, 45000, '2026-10-18 23:35:56.626282+00', '2026-10-19 02:54:08.27162+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5902,6 +5909,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (360, 1, 360, NULL, 1, 'Step 15: the XS after-picture', '', NULL, NULL, NULL, 14500, '2026-10-25 07:53:19.727342+00', '2026-10-25 07:53:19.727342+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (363, 1, 363, NULL, 4, 'Step 2: the measured floor wired into the reminder rows and its suite', 'Wires the hidden measurers, the row onLayout, the shared minWidth hosts and the flexShrink label into ReminderCard.tsx, with ReminderCard.test.tsx driving all six shipped locales; Alert.test.tsx and SegmentedControl.test.tsx stay green; yarn validate green. Version bump 2.4.42.', NULL, NULL, NULL, 17500, '2026-10-25 07:53:41.316123+00', '2026-10-25 08:42:46.064728+00', NULL, NULL, NULL, NULL, NULL, 345, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (357, 1, 357, NULL, 4, 'Step 12: the widened bisect or the degradation record', '', NULL, NULL, NULL, 11500, '2026-10-25 07:53:19.64955+00', '2026-10-25 17:37:34.684786+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (358, 1, 358, NULL, 4, 'Step 13: the root cause named and the fix implemented', '', NULL, NULL, NULL, 12500, '2026-10-25 07:53:19.682623+00', '2026-10-28 17:27:25.550525+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (299, 1, 299, NULL, 4, 'Step 2: the measured readings on the 3T transcribed and the phone left whole', 'Two Ramadan-forced mock builds from measurement-only refs, badging and User-0 gates, fresh dumps for the gap and the decoration anchors, readings transcribed, leave-behind build installed, measurement refs deleted.', NULL, NULL, NULL, 6000, '2026-10-20 22:38:45.960676+00', '2026-10-21 03:45:34.393307+00', NULL, NULL, NULL, NULL, NULL, 293, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (301, 1, 301, NULL, 4, 'Step 2: the owner''s flash verdict on the 3T build - fixed closes the row, still-flashing reopens it', 'Goal: a frame walk of the Android Help open on the OnePlus 3T shows no frame where the Close row paints at full opacity before the card''s entrance completes, and the root cause is named on the row.
 
@@ -5913,7 +5921,6 @@ Acceptance:
 - [ ] the root cause comment names what makes Android differ from iOS, citing the walk''s numbers
 - [ ] after the entrance a topic toggle leaves the Close button visible (the settle read)
 - [ ] build slot guarded by the pgrep check, aapt2 badging read before install, User 0 alone carries the app after', NULL, NULL, NULL, 8000, '2026-10-20 22:42:35.463683+00', '2026-10-21 04:24:25.714143+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (358, 1, 358, NULL, 1, 'Step 13: the root cause named and the fix implemented', '', NULL, NULL, NULL, 12500, '2026-10-25 07:53:19.682623+00', '2026-10-25 07:53:19.682623+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (307, 1, 307, NULL, 4, 'No scroll bars anywhere: every scrollable surface in the app hides its indicators', 'Goal: no visible scroll indicator on any surface of the app, on either platform - modals, sheets, lists, settings, Help, What''s New, everywhere.
 
 Where: every ScrollView, FlatList and section list in the app - a sweep names them all (components/, app/, sheets). The default shows indicators; each surface sets showsVerticalScrollIndicator={false} and showsHorizontalScrollIndicator={false} where it scrolls.
@@ -6027,6 +6034,17 @@ Acceptance:
 
 How it was ruled (owner order, 2026-10-27): the downgrade-stamp mimic is retired - a journey through a state no user occupies cannot prove the invariant, and a release build is mute on glass. TestFlight is the sanctioned forward route. Apple publishes no TestFlight version API, so the test channel''s check source is the one deliberate addition; the Android half of the same order rides T-389''s Play internal-track recipe unchanged.', NULL, NULL, NULL, 16500, '2026-10-27 14:51:54.921889+00', '2026-10-27 14:52:44.596355+00', NULL, NULL, NULL, '2026-10-27 15:03:37.918154+00', NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (319, 1, 319, NULL, 4, 'Step 3: The resting-hidden fades converted to colour', 'Produces: the prayer-row veil fade (Prayer.tsx:63), the ago-badge fade (Ago.tsx:52) and the info-box fade (OverlayInfoBox.tsx:39) carrying their open/close transition through colour instead of opacity, on the veil-merge colour the owner ruled from the prototype read. Waits on the owner''s verdict.', NULL, NULL, NULL, 3000, '2026-10-21 11:40:11.458829+00', '2026-10-21 15:24:10.635039+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (410, 1, 410, 3, 9, 'The next ten languages: the follow-on localisation wave from the ranked launch-set research', 'Goal: ship the ten languages R9 ranks next, taking the app from six locales (en, ar, ms, so, hi, th) to sixteen.
+
+Where: shared/i18n/ (locale.ts, loader.ts, ten new catalogs, sourced-names.json, native-strings.json, widget-statics.json, catalog-lock.json), shared/languageNames.ts, shared/typography.ts, the widgets'' inline static tables, app.json fonts and locales, scripts/catalog-lock.mjs, the i18n suites, README.
+
+Acceptance:
+- [ ] The ten - id, ur, bn, fa, fr, tr, sw, ha, pt, uz - land, each with its R9 selection rationale recorded on the ticket and in the plan doc (id 249.8M READY; ur ~280M READY; bn ~160-180M READY; fa ~110M READY; fr ~125M READY; tr 81.2M EXCEPTION Diyanet; sw and ha NEEDS SOURCING, owner interests; pt NEEDS SOURCING, the cheapest to close; uz R9''s named first post-launch row, 29.9M)
+- [ ] Every new catalog satisfies the eleven-name rule with sourcing recorded: sourced-names.json carries a non-null entry (text, source slug, confidence) for each of the ten''s names and explanations, and the catalogGates sourced-verbatim row is green
+- [ ] The suite covers every new locale (catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typographySweep, chevronDirection) and yarn validate exits 0 with the existing six unregressed
+- [ ] RTL, numerals and locale detection behave per the standing research (R3, R12, R4, R8): fa and ur sit in RTL_IDS behind the landed relaunch machinery; prose digits follow R12''s table (bn Bengali, fa Persian, rest Latin) with times Latin everywhere per the landed row-82 law; resolveInitialLocale''s tests cover the new lookups (pt-BR to pt, fa-IR to fa) red first
+
+How it was filed (owner, 2026-10-28): add 10 new languages in a new session; the deep research on which languages we want - the top 50 for us - already exists.', NULL, NULL, NULL, 21500, '2026-10-28 15:30:17.798933+00', '2026-10-28 18:12:35.517974+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 16, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (328, 1, 328, NULL, 4, 'Step 1: the tip''s numbers on the 3T', '', NULL, NULL, NULL, 1000, '2026-10-24 20:03:03.793414+00', '2026-10-24 21:33:56.044077+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (333, 1, 333, NULL, 4, 'Step 6: post-fix proof on the 3T and the baselines refreshed', '', NULL, NULL, NULL, 6000, '2026-10-24 20:03:03.95213+00', '2026-10-25 04:44:08.434386+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (379, 1, 379, NULL, 4, 'Step 2: the copy in all six catalogs and the lock re-taken', '', NULL, NULL, NULL, 17500, '2026-10-26 23:59:36.77536+00', '2026-10-27 00:11:05.209232+00', NULL, NULL, NULL, NULL, NULL, 376, false, NULL, 2, NULL);
@@ -6065,6 +6083,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (407, 1, 407, NULL, 4, 'Step 1: Measured baseline of the lock widgets'' current type on the iPhone XS', '', NULL, NULL, NULL, 24500, '2026-10-28 01:18:19.579205+00', '2026-10-28 05:54:02.524402+00', NULL, NULL, NULL, NULL, NULL, 400, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (310, 1, 310, NULL, 4, 'Step 3: The launch suites and the stale truths - silent-patch integration test, fresh-install mock fix, version.ts and index.tsx comments, e2e/README.md gotcha', '', NULL, NULL, NULL, 14000, '2026-10-21 06:41:53.515644+00', '2026-10-21 07:13:19.847823+00', NULL, NULL, NULL, NULL, NULL, 306, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (408, 1, 408, NULL, 4, 'Step 2: The lock type scale raised with suite pins, load suite and validate green, version bump, lane commit', '', NULL, NULL, NULL, 25500, '2026-10-28 01:18:19.613218+00', '2026-10-28 05:54:02.588854+00', NULL, NULL, NULL, NULL, NULL, 400, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (411, 1, 411, NULL, 4, 'Step 1: The sourcing record completes for the ten languages', '', NULL, NULL, NULL, 21500, '2026-10-28 15:53:36.999395+00', '2026-10-28 16:31:54.597826+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (320, 1, 320, NULL, 4, 'Step 4: The device reads on the 3T and the iPhone', 'Produces: the owner''s mock-build read recorded here - on the 3T under Arabic the overlapping glyph regions read one even ink, and the iPhone reads unchanged apart from the colour basis. The owner is the eyes; the lane is the code. Waits on the prototype read and Step 3.', NULL, NULL, NULL, 4000, '2026-10-21 11:40:11.491042+00', '2026-10-21 16:12:29.311905+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (294, 1, 294, 2, 4, 'Text never renders through opacity: colours carry the dim, so overlapping Arabic glyphs stop compounding', 'Goal: no text in the app renders through an opacity value - dimmed or fading text is carried entirely by its colour, on both platforms with no platform split, so the slight overlaps between Arabic glyphs read one even ink instead of a brighter, denser band (visible on Android, and by the owner''s freshest word on iPhone too; the owner''s read is the bar either way).
 
@@ -6132,6 +6151,7 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (409, 1, 409, NULL, 4, 'Step 3: Both-platform mock build and merge to uat; the XS live-face read parked for the owner behind the fleettest signing wall', '', NULL, NULL, NULL, 26500, '2026-10-28 01:18:19.655922+00', '2026-10-28 06:08:27.127822+00', NULL, NULL, NULL, NULL, NULL, 400, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (321, 1, 321, NULL, 4, 'Step 5: The merge and close', 'Produces: lane/294 merged to uat, every step subtask ticked, relations cleared, the closing comment, and board/snapshot.sh in the run''s close commit. Waits on Steps 2-4.', NULL, NULL, NULL, 5000, '2026-10-21 11:40:11.516612+00', '2026-10-24 12:17:10.608043+00', NULL, NULL, NULL, NULL, NULL, 294, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (336, 1, 336, NULL, 4, 'Step 5: the qibla subtitle renders exactly one instruction line at a time', '', NULL, NULL, NULL, 9000, '2026-10-24 20:06:28.164097+00', '2026-10-24 20:23:28.618714+00', NULL, NULL, NULL, NULL, NULL, 322, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (412, 1, 412, NULL, 4, 'Step 2: Locale plumbing lands with the id and tr catalogs', '', NULL, NULL, NULL, 22500, '2026-10-28 15:53:37.035891+00', '2026-10-28 16:44:22.537019+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (377, 1, 377, 2, 4, 'The macOS desktop app: the window no longer resizes, and a phantom hover band highlights the status-bar area', 'Two defects the owner read on the macOS desktop build (2026-10-26, the 2.10.x production line). Neither appears on the phones.
 
 First: the app window is no longer resizable. It used to resize; the current build opens at a fixed size. First suspect: app.json''s ios.requireFullScreen, which locks window sizing for Designed-for-iPad/Catalyst-style macOS runs - check when it arrived in git history and what breaks when it leaves.
@@ -6145,6 +6165,7 @@ Acceptance:
 - [ ] no hover band appears anywhere on the macOS window
 - [ ] the phones'' behaviour is unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 17500, '2026-10-26 23:47:27.492121+00', '2026-10-27 02:18:09.148397+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (414, 1, 414, NULL, 4, 'Step 4: The sw and ha catalogs land', '', NULL, NULL, NULL, 24500, '2026-10-28 15:53:37.115855+00', '2026-10-28 17:12:53.71369+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (351, 1, 351, NULL, 4, 'Step 2: Survey eras C and D (1.24-1.29, 2.0-2.3) by keyword pass with commit confirmation', 'Goal: produce this step''s output per the T-347 plan doc.
 
 Where: the lane worktree.
@@ -6202,6 +6223,7 @@ Acceptance:
 - [ ] The 24-hour throttle holds across relaunches: a second launch inside the window runs no check and presents nothing
 - [ ] The manual row''s behavior (T-396''s failure and verdict states) is unchanged, pinned by its suite
 - [ ] Full unit coverage of every changed line, red before green; read once on glass on the XS', NULL, NULL, NULL, 20500, '2026-10-27 23:16:34.258255+00', '2026-10-27 23:16:34.364755+00', NULL, NULL, NULL, '2026-10-28 00:56:00.667423+00', NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (415, 1, 415, NULL, 4, 'Step 5: pt lands fresh-sourced and ur lands RTL', '', NULL, NULL, NULL, 25500, '2026-10-28 15:53:37.145945+00', '2026-10-28 17:23:23.176881+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (371, 1, 371, NULL, 4, 'Step 3: The phones measured, nothing displaced - the 3T and XS lines and install refusals transcribed', '', NULL, NULL, NULL, 18500, '2026-10-25 14:17:44.161772+00', '2026-10-25 14:24:39.045513+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (388, 1, 388, 2, 4, 'A foreground-sync widget-push failure blanks the home screen over stored days', 'Goal: no failure anywhere in the launch or foreground sync may leave the home screen on the error screen while good cached prayer days sit in storage - the state-invariant, proven exhaustively, not through one journey.
 
@@ -6226,6 +6248,18 @@ Acceptance:
 How it was filed (owner, 2026-10-27): users noted the iOS lock screen widgets'' font size is too small.
 
 The owner''s direction (2026-10-27): styling only - the widgets work perfectly, the type is just too small. Much bigger type on the LOCK SCREEN widgets alone; home screen widgets untouched. Not every format can carry the biggest size: layouts differ and at least one (layout 3, the longest) holds too many characters for the maximum, so a per-format ceiling is expected and allowed. The read happens on the iPhone XS physical device or an iPhone simulator.', NULL, NULL, NULL, 17500, '2026-10-27 22:43:33.028348+00', '2026-10-28 14:02:25.331586+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (417, 1, 417, NULL, 4, 'Step 7: The native and widget surfaces carry all ten locales', '', NULL, NULL, NULL, 27500, '2026-10-28 15:53:37.204615+00', '2026-10-28 17:45:04.617823+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (327, 1, 327, 2, 1, 'The 3T falls far below the animation floor it once held: the prayer overlay opens janked, the sheets drag, while the iPhone XS stays smooth', 'Goal: the 3T''s interactions return to the animation floor they held before the regression - the prayer overlay''s open and close, the alert and settings sheets'' entrances and every tapped interaction hold the 30fps minimum with 60fps the target, and the iPhone XS stays exactly as smooth as it is today.
+
+Where: the whole interaction path on Android - the overlay open/close (the prayer rows'' name, digits, colon and bell riding the veil ink interpolation, the ago badge, the info box), the bottom sheets'' entrances, and the settings sheet; the regression window starts around the colour-carried dim conversion (ticket 294) landing, but the investigation owns the truth: measure, bisect the window against the baselines, and name the commits. The e2e harness is the instrument: e2e/README.md first (its Gotchas cost real time), e2e/scripts/baseline-compare.sh against e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh for the fps verdicts, Release gate-ON builds with EXPO_PUBLIC_PERF_MONITOR=1 through the single build slot.
+
+Acceptance:
+- [ ] a baseline-compare run on the 3T names which marks regressed against e2e/baselines/android-3t.json, and the regressing commits are identified by measurement or bisect
+- [ ] the root cause is named with frame evidence: what work entered the tap path or the animation frame, on which thread, from which change
+- [ ] after the fix, a frame audit of the overlay open and close on the 3T passes the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target) on a Release gate-ON build
+- [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
+- [ ] the iPhone XS is measurably unchanged
+- [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-28 18:12:52.799736+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (375, 1, 375, NULL, 4, 'A visual polish pass: the ago pill grays instead of fading behind the opening overlay, and the Somali alert-sheet footer on iOS shows paired double-angle marks', 'Goal: two visual defects read by the owner on the 2.5.6 production build (2026-10-25).
 
 First: on BOTH platforms, as the prayer overlay opens, the prayer-ago pill below the list - its rounded rectangular background - turns gray instead of fading out with every other component; the black of the overlay fades in behind it while the pill''s own background grays. It was never like this before the shade work.
@@ -6312,21 +6346,20 @@ Acceptance:
 This is a placeholder: the owner refines the direction and planning refines the steps when work starts.
 
 The T-327 interplay, for whoever plans this: this redesign''s floor proof IS T-327''s acceptance criterion. If the 3T holds the 30fps floor recorder-free when this lands, T-327 closes as fixed-by-this-redesign and its remaining steps dissolve; if it does not, T-327 re-enters planning for its steps 13-16 with the instrument fold standing on lane1/T-327. The blocks-relation (this ticket blocks T-327) carries the dependency and removes itself by rule when this completes.', NULL, NULL, NULL, 3000, '2026-10-25 18:39:24.228498+00', '2026-10-26 07:23:36.128237+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (327, 1, 327, 2, 1, 'The 3T falls far below the animation floor it once held: the prayer overlay opens janked, the sheets drag, while the iPhone XS stays smooth', 'Goal: the 3T''s interactions return to the animation floor they held before the regression - the prayer overlay''s open and close, the alert and settings sheets'' entrances and every tapped interaction hold the 30fps minimum with 60fps the target, and the iPhone XS stays exactly as smooth as it is today.
-
-Where: the whole interaction path on Android - the overlay open/close (the prayer rows'' name, digits, colon and bell riding the veil ink interpolation, the ago badge, the info box), the bottom sheets'' entrances, and the settings sheet; the regression window starts around the colour-carried dim conversion (ticket 294) landing, but the investigation owns the truth: measure, bisect the window against the baselines, and name the commits. The e2e harness is the instrument: e2e/README.md first (its Gotchas cost real time), e2e/scripts/baseline-compare.sh against e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh for the fps verdicts, Release gate-ON builds with EXPO_PUBLIC_PERF_MONITOR=1 through the single build slot.
-
-Acceptance:
-- [ ] a baseline-compare run on the 3T names which marks regressed against e2e/baselines/android-3t.json, and the regressing commits are identified by measurement or bisect
-- [ ] the root cause is named with frame evidence: what work entered the tap path or the animation frame, on which thread, from which change
-- [ ] after the fix, a frame audit of the overlay open and close on the 3T passes the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target) on a Release gate-ON build
-- [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
-- [ ] the iPhone XS is measurably unchanged
-- [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-26 07:23:36.201493+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 43, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (385, 1, 385, NULL, 4, 'Step 1: the six catalogs'' checking string and the re-hashed lock', 'settings.checkingUpdates in en, ar, so, hi, ms and th, then yarn i18n:lock re-hashes the lock for the changed English source. Plan: T-381 doc.', NULL, NULL, NULL, 16500, '2026-10-27 05:02:45.958118+00', '2026-10-27 05:21:45.013896+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (391, 1, 391, NULL, 4, 'Step 2: the guarded foreground push', 'In stores/sync.ts initializeAppState: the non-deferred branch catches the push rejection and warns ''WIDGET: Foreground refresh failed'' through the Pino logger; the comment names the reason. The deferred branch is untouched.', NULL, NULL, NULL, 17500, '2026-10-27 10:43:57.360847+00', '2026-10-27 11:02:51.673557+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (397, 1, 397, 2, 4, 'Step 1: the plan doc - the design, the six-locale copy, the grill and the gate', '', NULL, NULL, NULL, 18500, '2026-10-27 16:29:23.175586+00', '2026-10-27 16:29:38.276904+00', NULL, NULL, NULL, NULL, NULL, 396, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (406, 1, 406, NULL, 4, 'Step 3: The fixed app proven open and stable through rotation on the iPad simulator, version bumped, validate green, merged to local uat', '', NULL, NULL, NULL, 23500, '2026-10-28 01:15:31.099171+00', '2026-10-28 04:20:29.425935+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (418, 1, 418, NULL, 4, 'Step 8: The full sweep is green and the README names sixteen', '', NULL, NULL, NULL, 28500, '2026-10-28 15:53:37.233956+00', '2026-10-28 17:45:04.610955+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (419, 1, 419, 3, 9, 'The next ten languages after #410''s sixteen, proven on the XS with a fresh development build', 'Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.
+
+Where: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).
+
+Acceptance:
+- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)
+- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations
+- [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged
+- [x] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket', NULL, NULL, NULL, 21500, '2026-10-28 18:22:09.755727+00', '2026-10-28 22:20:36.13993+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 15, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
@@ -6358,6 +6391,8 @@ Acceptance:
 How it was filed (owner, 2026-10-27): opening the app on an iPad rotates the whole screen, then the app crashes and closes every single time, and the orientation reverts.
 
 The rig route (owner order, 2026-10-27): reproduce first through the device hub - the rig''s iPad Pro 11-inch (M5) simulator - and transcribe the crash''s own stack or console line there; the app has never been run on an iPad simulator yet. If the hub reproduces it, the fix loop moves to Xcode, the same escalation the macOS app rode. Never the iPhone Duo.', NULL, NULL, NULL, 18500, '2026-10-27 22:43:33.172139+00', '2026-10-28 05:21:15.95189+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (413, 1, 413, NULL, 4, 'Step 3: The fr and uz catalogs land', '', NULL, NULL, NULL, 23500, '2026-10-28 15:53:37.082548+00', '2026-10-28 16:54:10.818551+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (416, 1, 416, NULL, 4, 'Step 6: fa lands RTL on the Arabic record and bn lands with its own', '', NULL, NULL, NULL, 26500, '2026-10-28 15:53:37.17376+00', '2026-10-28 17:33:40.470162+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 
 
 --
@@ -10819,6 +10854,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 
 Checked clean, not reported: points arithmetic (8 on the ticket, 3+2+3 on the subtasks), label order and type, the fossil-shape claims in both ios trees, the T-377 commits and the ee2defc2 worktree, the bundle id behind the simctl launch command, the editAppDelegate warm-tree throw, and the mock default env.', NULL, '2026-10-28 01:25:50.704208+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3963, 400, 'activity', 'owner', NULL, 'status', '2026-10-28 01:39:22.936248+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4042, 416, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.178752+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3809, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 12:05:55.918467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release from the recipe (an upload-key-signed artifact of uat, versionCode above 11, rolled to the internal track) - then the 3T installs production from the store, opts in, and the row''s press is the proof"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3797, 388, 'comment', 'owner', 'Device proof (step 3, 2026-10-27, executor continuation): the mimic is on the XS over carried data and waits for the owner''s test.
 
@@ -11091,6 +11127,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3977, 401, 'comment', 'owner', 'Execution done, merged to local uat at 2.11.37: the app opens and stays open on the iPad simulator through launch, landscape launch and both rotations, with no crash report anywhere in the session, and the fixed build carries the intended plist set for the first time since the drift (the plugin post-pass had silently never run in this SDK - its mod calls passed the wrong argument shape, which is also why the installed fossil trees drifted). Two honest findings for the audit and the owner: the crash itself never fired on the simulator in either plist shape, so the fix targets the transcribed mechanism (the scene-path orientation resolution), and iPadOS 27 measured as refusing every app-side portrait lock through device rotation (gate unread, root-controller answer overridden, geometry request ignored) - whether the iPad accepts wide layout or fights the system is the owner''s call, Apple says all-orientation support is coming regardless. Version line: this lane took 2.11.32 through 2.11.37 alone against origin at 2.11.31. Lock interleaving: Lane 1 late-cleanup dropped the lock mid-build-A at 02:03; lane 2 re-took it within a minute and held the protocol after.', NULL, '2026-10-28 04:20:37.584945+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3980, 401, 'comment', 'owner', 'Audit passed (lead, both reviewers): every finding adjudicated from the code. Landed in 9311082b at 2.11.38 - the warm-tree sentinel now refuses a previous release''s pin-without-carrier AppDelegate as loudly as the gate-without-pin shape, the mod wiring gained its missing unit pin (proven red under the faithful broken call form by mutation), and the plugin''s comments now state the measured iPadOS 27 limit and the ridden selector''s iOS 26 deprecation. The no-abort deviation is ratified agent-ruled: the fix was loud, and the withFinalizedMod wiring repair stands on its own as a proven defect fix. One caveat stands in the record: the Step 3 plist read-back is the lane''s paraphrase, not quoted PlistBuddy output - the built artifact was cleaned before the audit, and a rebuild for quoted output was ruled disproportionate.', NULL, '2026-10-28 04:44:11.380795+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3996, 408, 'activity', 'owner', NULL, 'status', '2026-10-28 05:54:02.596751+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4041, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.151583+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 415, "value": "T-415"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3978, 401, 'comment', 'owner', 'Audit (plan-conformance, merge 95047b2e at 2.11.37) - four findings for the owner and the lead:
 
 question: the lane proceeded past the plan''s own stop: doc v5 Decisions say "If neither shape aborts, the lane stops and reports" and "a reproduction that does not crash on the simulator is a stop and a report, never a silent fix of a neighbour symptom"; neither shape aborted, so acceptance (a)''s transcribed stack naming the throwing code has no log line behind it - the fix targets the transcribed mechanism (a neighbour of the crash), honestly recorded but contrary to the plan''s text, so the owner rules the deviation ratified or unwound before Done.
@@ -11118,6 +11155,7 @@ nitpick: plugins/duoTallCanvas.js:85 - the scene sentinel keys on ''requestGeome
 Checked clean: the sentinel reorder strands no sanctioned build path (build-mock* prebuild -p android with plugins-changed forcing --clean; build-prod always -p android --clean; the ios-build pattern -p ios --clean; the refused pin-without-carrier window 2.8.2-2.11.31 is the intended half-applied shape and complete trees are pinned untouched); warm-tree rows 1 and 2 pin their names; the API_DEPRECATED-since-iOS-26 comment matches the iPhoneOS 27.1 SDK header verbatim; the What''s New restamp gates nothing by the file''s own rules; android/app/build.gradle is gitignored and regenerates from app.json.', NULL, '2026-10-28 05:07:40.698154+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3984, 401, 'comment', 'owner', 'Audit follow-up (lead, 710e64f4 at 2.11.39): the cold review of the audit fix found its own gaps and all three are closed - the wiring row now executes the composed finalized chain against real temp files and asserts both files change (proven red under a dead-registration mutant), the SceneDelegate sentinel refuses a previous release''s stale scene block as loudly as its siblings (red first), and the geometry-request comment no longer claims an unnamed beneficiary. The 2.11.39 tree changes no generated output on any sanctioned clean prebuild, so the glass verification at 2.11.38 covers the shipped behavior.', NULL, '2026-10-28 05:13:03.233416+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3994, 400, 'comment', 'owner', 'Lead ruling (2026-10-28): the original lane session carries this ticket - it owns the branch, the 2.11.40/2.11.41 commits and the in-flight Step-3 build; the second session stood down correctly and its independent Step-1 baseline stands as corroboration (both measurements agree). The collision was the lead''s error: the original session was ruled stalled on device-side activity the lead could not see, and the respawn put two sessions on one phone - the XS navigation difficulty the owner observed was those two sessions fighting, not the device. The owner''s 05:22 order governs Step 3: the glass read moves to the Athan-76 simulator and the XS is released; the original session has not yet read that order, so the lead enforces it at the session''s next boundary.', NULL, '2026-10-28 05:43:05.6361+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4040, 415, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.151583+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3985, 400, 'comment', 'owner', 'Step 1 baseline measured. agent-ruled (2026-10-28): the read moved from Athan-76 to the iPhone XS''s Settings > Wallpaper > Customize sheet and its widget gallery cards - the iOS 18.5 simulator has no surface that renders accessory widgets (Settings carries no Wallpaper row on two fresh devices, search and prefs: URL dead, the home gallery lists home sizes only, and sims never auto-lock), and the 18.5 runtime is the class the fleet runs, so no other runtime is honest.
 
 Measured pt table (XS, 1125x2436 @3x, gallery card and customize cell both 157.0 x 72.0 pt, identical): live faces all nominal 14pt today - digit cap ink 10.0-10.3pt on every layout and row. Layout 1/Extras 1: one line, bold name + grey countdown. Layout 2: one line, bold name + grey absolute time. Layout 3/Extras 3: two rows, one weight, name + white time above a grey countdown, row pitch 18.0pt; the live widget shows the seven-glyph h:mm:ss worst case (Duha 2:11:02 read). Effective range today: nominal 14, shrinking to 8.4 at the 0.6 floor on layouts 1-2; layout 3 unfloored (truncates instead). Stale branch: slot 72.0 - current stack 56.2 (icon 17 + title 20.4 + body 16.8 + 2) = 15.8 >= 3, so the +1 rise applies (title 18, body 15, icon 18; new stack 59.6 fits with 12.4 to spare). The owner''s placement was untouched; only gallery pages were paged and read.', NULL, '2026-10-28 05:15:51.992103+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11164,6 +11202,197 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4007, 400, 'comment', 'owner', 'Closed Done on the owner''s passing glass read (2026-10-28): the raised 17/17/16 lock-screen type read on the XS physical device - ''very very good, I like it'' - with the change confirmed type-only against the diff (sizes, floors and paired icon sizes; no alignment, layout or positioning line changed). The development build the owner read was the original app id at 2.11.44 under the owner''s never-fleettest order; production builds follow for both phones.', NULL, '2026-10-28 14:02:25.210517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4008, 400, 'activity', 'owner', NULL, 'field', '2026-10-28 14:02:25.297043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4009, 400, 'activity', 'owner', NULL, 'status', '2026-10-28 14:02:25.351641+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4010, 410, 'activity', 'owner', NULL, 'created', '2026-10-28 15:30:17.834338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4011, 410, 'activity', 'owner', NULL, 'field', '2026-10-28 15:30:27.575343+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "410"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4012, 410, 'activity', 'owner', NULL, 'label_add', '2026-10-28 15:30:27.620673+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 211, "value": "#410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4013, 327, 'comment', 'owner', 'Integrity fix (lead, 2026-10-28): the stale Lane and Waiting on lines read set after the owner''s 2026-10-27 clear - re-applied, and the ticket is claimed by Lane 2 for steps 13-16 under the owner''s 2026-10-26 unblock order.', NULL, '2026-10-28 15:40:53.415649+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4014, 410, 'activity', 'owner', NULL, 'field', '2026-10-28 15:40:53.420455+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4015, 327, 'activity', 'owner', NULL, 'field', '2026-10-28 15:40:53.420612+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4016, 327, 'activity', 'owner', NULL, 'field', '2026-10-28 15:40:53.426468+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4017, 410, 'activity', 'owner', NULL, 'status', '2026-10-28 15:40:53.440494+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4018, 327, 'activity', 'owner', NULL, 'status', '2026-10-28 15:40:53.441057+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4019, 327, 'comment', 'owner', 'Plan re-scoped to v7 for steps 13-16 (2026-10-28): Step 12''s dossier and the owner''s 2026-10-25/26 orders are folded in - the shade theory and H1 are eliminated by the redesign''s landing, Step 10''s compositor-real defects (the sheet tap-to-present delay, the overlay-close gaps, the late burst) are the subject, floors now ride the recorder-free SF read (D16), and the unmerged instrument commits from lane1/T-327 fold forward ahead of the fix (D17). Subtask rows T-358..T-361 keep their numbers, titles and points. The re-grill runs before execution.', NULL, '2026-10-28 15:49:44.738254+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4028, 411, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.007443+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4029, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.007443+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 411, "value": "T-411"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4030, 412, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.045081+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4031, 412, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.046878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4032, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.046878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 412, "value": "T-412"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4034, 413, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.089569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4035, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.089569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 413, "value": "T-413"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4036, 414, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.120907+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4020, 410, 'activity', 'owner', NULL, 'description', '2026-10-28 15:53:31.16129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: ship the ten languages R9 ranks next, taking the app from six locales (en, ar, ms, so, hi, th) to sixteen.\n\nWhere: shared/i18n/ (locale.ts, loader.ts, ten new catalogs, sourced-names.json, native-strings.json, widget-statics.json, catalog-lock.json), shared/languageNames.ts, shared/typography.ts, the widgets'' inline static tables, app.json fonts and locales, scripts/catalog-lock.mjs, the i18n suites, README.\n\nAcceptance:\n- [ ] The ten - id, ur, bn, fa, fr, tr, sw, ha, pt, uz - land, each with its R9 selection rationale recorded on the ticket and in the plan doc (id 249.8M READY; ur ~280M READY; bn ~160-180M READY; fa ~110M READY; fr ~125M READY; tr 81.2M EXCEPTION Diyanet; sw and ha NEEDS SOURCING, owner interests; pt NEEDS SOURCING, the cheapest to close; uz R9''s named first post-launch row, 29.9M)\n- [ ] Every new catalog satisfies the eleven-name rule with sourcing recorded: sourced-names.json carries a non-null entry (text, source slug, confidence) for each of the ten''s names and explanations, and the catalogGates sourced-verbatim row is green\n- [ ] The suite covers every new locale (catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typographySweep, chevronDirection) and yarn validate exits 0 with the existing six unregressed\n- [ ] RTL, numerals and locale detection behave per the standing research (R3, R12, R4, R8): fa and ur sit in RTL_IDS behind the landed relaunch machinery; prose digits follow R12''s table (bn Bengali, fa Persian, rest Latin) with times Latin everywhere per the landed row-82 law; resolveInitialLocale''s tests cover the new lookups (pt-BR to pt, fa-IR to fa) red first\n\nHow it was filed (owner, 2026-10-28): add 10 new languages in a new session; the deep research on which languages we want - the top 50 for us - already exists."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4021, 410, 'activity', 'owner', NULL, 'type', '2026-10-28 15:53:31.16129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4022, 410, 'activity', 'owner', NULL, 'estimate', '2026-10-28 15:53:31.16129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "16"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4023, 410, 'activity', 'owner', NULL, 'label_add', '2026-10-28 15:53:31.178148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4024, 410, 'activity', 'owner', NULL, 'label_add', '2026-10-28 15:53:31.178148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4025, 410, 'activity', 'owner', NULL, 'label_add', '2026-10-28 15:53:31.178148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4026, 410, 'activity', 'owner', NULL, 'label_add', '2026-10-28 15:53:31.178148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4027, 411, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.005249+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4033, 413, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.087953+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4037, 414, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.122731+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4038, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.122731+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 414, "value": "T-414"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4039, 415, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.14987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4043, 416, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.180499+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4044, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.180499+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 416, "value": "T-416"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4045, 417, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.210613+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4055, 410, 'comment', 'owner', 'All eight findings fixed in plan doc v3: catalogLock.test.ts named in Files and every lock step (1); locale.test.ts named with per-step lookup rows and the fr-FR fixtures moved to es-ES in Step 3 (2); typography.test.ts named in Steps 5/6 with the filter and record cases (3); i18nBridge and chevronDirection named, the latter direction-aware per decision 14 (4); key count corrected to 201 (5); the endonym order given as measured with the hand-verified caveat and the compiler-forcing claim dropped (6); the Bengali floor attributed to this wave''s own hhea measurement, decision 3 (7); fr''s row corrected to Istijaba-null-only with Duha unreviewed, Step 1''s loan list matching (8).', NULL, '2026-10-28 16:12:26.525928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4054, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4046, 417, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.211922+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4047, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.211922+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 417, "value": "T-417"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4048, 418, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.237854+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4049, 418, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.240258+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4050, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.240258+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 418, "value": "T-418"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4052, 327, 'comment', 'owner', 'D17 done: the instrument commits are folded forward onto this lane''s branch (lane2/T-327, off uat 2.11.45) - step 9 as 2.11.46 and step 11''s honesty fold as 2.11.47, stamps renumbered under the standing collision ruling, the XS atlas resolution keeping T-400''s rows beside the re-measured taps. yarn validate green on the folded branch (236 suites, 6118 passed, 2 pre-existing skips). The lane1 branch itself stands untouched.', NULL, '2026-10-28 15:55:28.82643+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4053, 327, 'comment', 'owner', 'v7 re-grill returned six findings; all six are answered in the doc (now v9). The two that change execution: the folded sf branch''s PASS line was never a floor verdict (34ms tolerated, gaps over 100ms excluded) and it lacked the dual branch''s layer resolution, tap timestamp and anchors - Step 13 now opens with a small harness commit lifting the sf branch to D16''s floor-witness standard, and D16 names the printed present-gap list as the verdict of record. Step 14 also gains the two sheet-close reads Defect A''s late-closing-tap clause needs.', NULL, '2026-10-28 16:03:49.911711+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4051, 410, 'comment', 'owner', 'agent-ruled 2026-10-28 (plan doc T-410, twelve decisions, each dated there): the ten are R9 section 4''s launch set minus the shipped en/ar/ms plus uz (ps outranks uz on raw section-1 rank but section 4''s readiness-applied set excludes it); fa and ur join RTL_IDS on the landed relaunch machinery; fa reuses the Arabic Rubik record (measured: Rubik covers all six Persian letters), ur bundles a Noto Naskh pair (measured: Rubik lacks all five Urdu letters), bn bundles a Noto Sans Bengali pair; prose digits per R12 (bn Bengali, fa Persian, rest Latin) with times Latin everywhere per the landed row-82 law; unsourced name slots ship as the rule''s own transliteration loans recorded low-confidence, the so precedent; sw Last Third re-shortened to the attested substring "Theluthi ya mwisho"; pt sourced fresh from Brazilian/Portuguese mosque tables; tr ships the documented Diyanet exception labels; feat-typed commits take the minor line from 2.11.45, higher number wins a Lane 2 collision; app.json fonts/locales/version edits agent-ruled as R4 B.10''s mechanical carriers; no What''s New item, one README bullet.', NULL, '2026-10-28 15:53:49.199316+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4054, 410, 'comment', 'owner', 'FINDINGS
+
+1. Files misses the test that pins the lock: `shared/__tests__/catalogLock.test.ts` hard-codes `LOCALES = [''ar'',''ms'',''so'',''hi'',''th'']` and asserts "covers exactly the five translated locales", so Step 2''s lock regeneration turns it red and no step names the file. Fix: add catalogLock.test.ts''s LOCALES (and its test title) to Files and to every step that regenerates the lock.
+
+2. Proof 4 is unexecutable as written and Files misses `shared/__tests__/locale.test.ts`: its fallback test asserts fr-FR resolves en and its earlier-locale-wins test leads with fr-FR (expecting ar), both flipping when Step 3 ships fr; and "pt-BR to pt and fa-IR to fa red first in Step 2''s plumbing batch" cannot pass at Step 2 because pt joins LOCALE_IDS in Step 5 and fa in Step 6, leaving red rows across three completed steps'' yarn validate. Fix: name locale.test.ts in Files, rewrite the fr fixtures to a genuinely unshipped tag in Step 3, and land each new lookup row in its own locale''s step (id/tr in Step 2, pt in Step 5, fa in Step 6).
+
+3. Steps 5 and 6 go red on a file Files never names: `shared/__tests__/typography.test.ts` runs the LATIN-record assertion over `LOCALE_IDS.filter((id) => id !== ''ar'' && id !== ''hi'' && id !== ''th'')`, and ur (Step 5), fa and bn (Step 6) resolve the Naskh/Arabic/Bengali records. Fix: add typography.test.ts to Files and Steps 5/6 (extend the filter, add expectScriptRecord cases for the Naskh and Bengali pairs and the fa Arabic-record case).
+
+4. The acceptance and Proof name two suites no edit in the plan touches: i18nBridge.test.ts builds `CATALOGS = { en, ar, ms, so, hi, th }` and in bare CI asserts only en plus one ar case (no per-locale loop exists to "cover every new locale"), and chevronDirection.test.tsx pins `it.each([''en'',''ar''])` with a hard-coded `locale === ''ar''` glyph ternary that must also become direction-aware before fa/ur can join. Fix: name both files in Files (i18nBridge: add the ten to CATALOGS plus a per-locale parity assertion, or drop it from the acceptance''s list; chevronDirection: extend it.each to fa/ur and read localeDirection instead of the ternary).
+
+5. Files says each new catalog carries "194 keys"; en.ts carries 201 catalog keys (same AST literal catalog-lock.mjs parses). Fix: correct the count to 201 or drop the number, else an executor auditing parity hunts seven phantom keys.
+
+6. The languageNames bullet''s parenthetical is not codepoint order: it places Bahasa Melayu after Kiswahili, فارسی before العربية, and বাংলা before हिन्दी; the module''s own law is codepoint sort, and the measured order is Bahasa Indonesia, Bahasa Melayu, English, Français, Hausa, Kiswahili, Oʻzbekcha, Português, Soomaali, Türkçe, اردو, العربية, فارسی, हिन्दी, বাংলা, ไทย. The same bullet''s Design claim that growing LOCALE_IDS makes languageNames fail typecheck is false: LANGUAGE_NAMES is a ReadonlyArray, so a missing endonym compiles and silently drops the picker row. Fix: give the measured order, extend the header''s script chain to name Bengali, and state the endonym rows are hand-verified, not compiler-forced.
+
+7. Risks cites "R3: 1.4em Naskh, 1.5em Bengali" as the guard, but R3 §3''s measured table carries no Bengali font (its 1.5em floor is Devanagari and Thai). Fix: name decision 3''s fresh hhea measurement (the row-106/87 law) as the Bengali guard, or record the measured Bengali floor in the plan and stop attributing it to R3.
+
+8. The table''s fr row reads "(Duha/Istijaba null)" but sourced-names.json fr has only Istijaba null; Duha carries text (R9 §2 calls it unreviewed, not absent), so Step 1''s loan list wrongly opens a fr Duha slot. Fix: read the fr row as "(Istijaba null; Duha unreviewed)" and record only fr''s Istijaba loan in Step 1.
+
+Verified true, no action: the R9 §4 selection math (launch set minus en/ar/ms plus uz), Rubik''s Persian coverage and Urdu/Bengali gaps (measured with fontTools on the bundled TTFs), R12''s numeral table (ur Latin, bn Bengali, fa Persian), the four widget STATIC tables, native-strings'' 2+18 and widget-statics'' 11 keys, app.json fonts/locales/CFBundleLocalizations shapes, version 2.11.45, the What''s New archive item, the owner''s agent-ruled comment covering app.json, and plugins/androidLocaleConfig.js deriving its list from expo.locales.', NULL, '2026-10-28 16:09:37.625361+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4056, 410, 'activity', 'owner', NULL, 'status', '2026-10-28 16:12:26.574966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4057, 410, 'comment', 'owner', 'Planning done: plan doc T-410 (linked) carries the ten with their R9 rationale, 14 dated decisions and 8 steps at 2 points each (16 total). Ready for execution; a fresh lane session claims it and starts at Step 1 (the sourcing record).', NULL, '2026-10-28 16:12:26.607269+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4058, 410, 'activity', 'owner', NULL, 'status', '2026-10-28 16:14:12.107006+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4059, 411, 'comment', 'owner', 'Step 1 done at 2.12.0 (lane1/T-410 c4d96228): the glossary completes for the ten. pt sourced fresh (FAMBRAS, true-time, dateandtime, namazvakti), ha closed from al-feqh''s farilla table and BBC Hausa (bare forms Asuba/Azahar/La''asar/Magriba/Isha''i, Tsakar dare, Sulusin dare na karshe, Sahur), uz Midnight from muhaddis.uz, sw Last Third re-shortened to Theluthi ya mwisho, the decision-5 loans recorded under a new loan slug, id''s Istijabah kept low. catalogGates pins the completeness row red-first with a mutation pass; yarn validate green.', NULL, '2026-10-28 16:31:54.587436+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4060, 411, 'activity', 'owner', NULL, 'status', '2026-10-28 16:31:54.623682+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4061, 412, 'comment', 'owner', 'Step 2 done at 2.13.0 (lane1/T-410 ea191fd0): locale plumbing lands with id and tr. LOCALE_IDS at eight, loader/endonyms/LATIN records/lock (en hash unchanged, seven translated locales)/gates grown, id-ID and tr-TR detection rows red first, native-strings and widget-statics rows for both, the Language picker gate reading the eight names. id ships the Kemenag/NU set, tr the Diyanet exception set, verbatim behind the R2 gates with a mutation pass. yarn validate green, 100 percent coverage.', NULL, '2026-10-28 16:44:22.533939+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4062, 412, 'activity', 'owner', NULL, 'status', '2026-10-28 16:44:22.559843+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4063, 413, 'comment', 'owner', 'Step 3 done at 2.14.0 (lane1/T-410 8425c947): fr and uz land, LOCALE_IDS at ten. fr ships the habous set with the Duha and Istijaba loans, uz the islom.uz authority labels verbatim (Ishroq the best Duha match). The fr-FR fixtures moved to es-ES and fr-FR/uz-UZ detection rows landed red first; lock at nine translated locales with en''s hash unchanged. yarn validate green, 100 percent coverage. Lane 1 rotates here at 6 of 16 points; resume at Step 4 (T-414, sw and ha).', NULL, '2026-10-28 16:54:10.816949+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4064, 413, 'activity', 'owner', NULL, 'status', '2026-10-28 16:54:10.844364+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4065, 410, 'comment', 'owner', 'Lane 1 resumed in a fresh session at Step 4 (T-414, sw and ha), reusing the worktree at 8425c947 / 2.14.0; plan doc v3 re-read, recipe per Steps 2-3.', NULL, '2026-10-28 17:05:11.414367+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4066, 414, 'activity', 'owner', NULL, 'status', '2026-10-28 17:12:53.734935+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4067, 414, 'comment', 'owner', 'Step 4 done at 2.15.0 (lane1/T-410 f122c129): sw and ha land, LOCALE_IDS at twelve. sw ships the wikishia/al-azan set with the re-shortened Last Third and the three decision-5 loans; ha ships the bare-form al-feqh/BBC Hausa set with its hooked orthography. The sw-KE and ha-NG detection rows landed red first; lock at eleven translated locales with en''s hash unchanged; the sourced-verbatim gate covers both with a mutation pass. yarn validate green, 100 percent coverage.', NULL, '2026-10-28 17:12:53.773963+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-28 17:13:07.285+00');
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4068, 414, 'activity', 'owner', NULL, 'comment_edited', '2026-10-28 17:13:07.28786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4069, 327, 'comment', 'owner', 'REVIEW (blind, lane2/T-327 batch): 2.11.46..2.11.49 reviewed against uat blind. The app change is sound in every path I could trace: all three isOn writers (openOverlay, closeOverlay, countdown.ts''s boundary close) drop overlayFadeSettledAtom in the same synchronous batch as the flip, each behind its own early-return guard so a no-op flip cannot strand the flag down; the settle fires on finished=true only, on both snap paths (first evaluation, resync - which covers an Overlay mounted after a flip, since chromeDeferred latches true and Overlay never unmounts again), and the write is deferred a real microtask so a render-phase mapper cannot write mid-render; the ago badge''s longer hold (150ms veil tween vs the 200ms layer fade it now waits on) is invisible under the solid-ink invariant, and no pixel moves. Version lockstep held on all four commits (package.json + app.json + shared/whatsNew.ts each time; android/ is untracked, prebuild carries it), no dependency changes, no console.log, tests pin the truth tables, the batched writes and both snap-settle paths rather than mocking them away. Two findings:
+
+suggestion: stores/overlay.ts:79 - markOverlayFadeSettled writes unconditionally, so one interleaving falsifies the commit''s "the drop cannot precede the fade''s end by construction" claim: the open fade''s finished=true fires on the UI thread and posts its runOnJS while the JS thread is already inside the close tap''s handler; closeOverlay drops the flag and flips isOn, then the stale settle lands and raises the flag for the whole close fade - overlay.isOn || !fadeSettled goes false at close-start, the layer cuts to display:none in one frame and the close fade animates an invisible subtree. The window is only as wide as the tap handler straddling the fade-end instant, and the resting state self-corrects at the close fade''s own settle, but it is exactly the hold-then-snap this change exists to kill - and the jest Reanimated mock (synchronous completion inside act) cannot express it, so no test guards it. A generation counter closes it: the writers stamp a generation when they drop the flag, the settle only writes when it carries the current one.
+
+nitpick: e2e/scripts/frame-audit.sh:354 - one script now carries two floors: the lifted sf branch fails every gap over 33ms inside the window, while the default dual branch''s cadence summary still passes all(g <= 34). A 33.5ms gap in the same capture prints FLOOR FAILURE under FRAME_AUDIT=sf and "cadence PASS" under the default dual run (exit 0 when no dead zone corroborates). The docs are honest that dual''s verdict of record is the separation pairing, but a stranger running the default mode still gets the weaker line the step-13 commit message itself calls out as able to pass a known-bad build - worth either aligning the dual tolerance to 33 or saying in the usage comment that the dual PASS line is not a floor verdict.', NULL, '2026-10-28 17:16:06.795032+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4070, 415, 'activity', 'owner', NULL, 'status', '2026-10-28 17:23:23.1981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4071, 415, 'comment', 'owner', 'Step 5 done at 2.16.0 (lane1/T-410 5019dee2): pt lands fresh-sourced (FAMBRAS/true-time set, cancel labels lowercased to clear the echo gate) and ur lands RTL. The Noto Naskh pair is bundled and measured (all five Urdu letters present, hhea box 1.703em vs 2.039em win ink); the URDU record pins the 1.5em script box. The pt-BR and ur-PK detection rows landed red first; the lock grows to thirteen with en''s hash unchanged. yarn validate green, 100 percent coverage, mutation pass on the RTL membership, the script-box multiplier and the sourced-verbatim row.', NULL, '2026-10-28 17:23:23.249906+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4072, 410, 'comment', 'owner', 'agent-ruled 2026-10-28 (Step 5): the Urdu Naskh record pins scriptLineHeight at the 1.5em RTL line, not R3 §3''s 1.4em Naskh floor and not its own 1.703em box - the win ink (2.039em, both weights measured) exceeds the own box so row 106 demands a box, 1.5em matches the shipped ARABIC and HINDI records and clears the floor, and matching the own box would invent a third multiplier above the practical floor for no measured need; rejected twice because no surface at 1.4em beats the explicit-lineHeight fallbacks'' 1.33em and because ur must render the same script-box line the Arabic surfaces already render.', NULL, '2026-10-28 17:23:29.2132+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4073, 358, 'activity', 'owner', NULL, 'status', '2026-10-28 17:27:25.572145+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4074, 327, 'comment', 'owner', 'Step 13 done (T-358 ticked): the cause is named and Defect B is fixed. THE CAUSE: the overlay family''s hold-then-hide display flips were eight independent setTimeout(ANIMATION.duration) commits phase-locked to the close/open JS call rather than to the fade it starts (Overlay, OverlayInfoBox, Prayer''s per-row holds, the Ago badge), so on a phone whose close commit stalls (Step 10''s 46-71ms SF gaps) the +200ms timers fired mid-fade and cut them dead - the two-stage hold-then-snap tail; each timer also landed its own commit wave inside the entrance. Defect A is named library-side: @gorhom/bottom-sheet 5.2.14 mounts the sheet''s whole content tree inside present() and unmounts on every close, so every open pays full mount plus Yoga layout at the tap frame - the app-side levers are barred (nothing defers invisibly at the settings sheet''s 85% snap, and enableDismissOnClose=false breaks the alert draft and the settings re-arm), so it stays named for Step 14''s read and a possible owner ruling. Defect C''s surviving candidate by timing and universality is the wall-second ticker''s display writes; the lifted instrument prints the burst as beyond-window info so Step 14 can judge. THE FIX (behaviour only, no pixel moves): one shared fade-settled atom replaces all eight timers - every isOn writer drops it in the same batch as the flip, the layer''s own fade raises it from the animation''s actual completion (useDerivedProgress''s new onSettled, both snap paths covered), the batched display flip lands after the fade truly ended, and the review''s stale-settle interleaving is closed by a fade generation counter. PREDICTED SIGNATURE for Step 14: the overlay close''s entrance gaps fall from 46-71ms toward the 16-17ms band and the hold-then-snap tail disappears by construction; Defects A and C are named, not owned. Batch on uat at 2.11.50: the lane1 instrument commits folded forward (2.11.46/2.11.47), the sf branch lifted to the floor-witness standard per D16 (2.11.48: --list layer resolution, recorded tap timestamp, bounded entrance window, in-window gaps over 100ms as floor failures), the fix (2.11.49) and the review fixes (2.11.50: the generation guard, dual cadence aligned to 33ms). Blind review clean with both findings fixed; red-first 13 tests across the batch, mutations 11/11 killed, yarn validate green at 236 suites, 6134 passed, 2 pre-existing skips, coverage 100 percent. Step 14 (post-fix proof on the 3T, T-359) runs next, alone in a fresh session per the device rule.', NULL, '2026-10-28 17:27:25.603343+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4075, 416, 'activity', 'owner', NULL, 'status', '2026-10-28 17:33:40.484703+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4087, 410, 'activity', 'owner', NULL, 'status', '2026-10-28 18:12:35.528247+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4090, 327, 'activity', 'owner', NULL, 'field', '2026-10-28 18:12:52.782735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4098, 420, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.063175+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4099, 420, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.067022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4100, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.067022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 420, "value": "T-420"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4101, 421, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.100539+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4076, 416, 'comment', 'owner', 'Step 6 done at 2.17.0 (lane1/T-410 eb2c4609): fa lands RTL on the unchanged Arabic record (Rubik measured covering all six Persian letters) with Persian prose digits, and bn lands with its own Noto Sans Bengali pair and record (hhea box 1.325em vs 1.403em win ink, the 1.5em script box by the row-106 law, the numbers in the record''s comment). chevronDirection is direction-aware per decision 14; the mutation pass found fa''s RTL membership unguarded and the pinning rows were added. The fa-IR and bn-BD detection rows landed red first; the lock grows to fifteen with en''s hash unchanged. yarn validate green, 100 percent coverage.', NULL, '2026-10-28 17:33:40.526771+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4078, 417, 'activity', 'owner', NULL, 'status', '2026-10-28 17:45:04.637393+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4079, 418, 'activity', 'owner', NULL, 'status', '2026-10-28 17:45:04.639576+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4080, 410, 'comment', 'owner', 'Execution done: Steps 7 and 8 landed (T-417 ed9253fe at 2.18.0, T-418 c2c68dc0 at 2.19.0) - the native and widget surfaces carry all ten locales red first, i18nBridge at sixteen with its parity row, the widget runtime load suite re-run clean after the font installs, the README names sixteen, and yarn validate is green at 6383 tests and 100 percent coverage. All eight steps ticked; the lane moves to the merge and the audit.', NULL, '2026-10-28 17:45:04.683254+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4081, 410, 'comment', 'owner', 'PLAN-CONFORMANCE FINDINGS - T-410 wave (936228b6..e4d5050f, reviewed at e4d5050f)
+
+Verified against the v3 plan doc: the ten locales and their sourcing record (all names/explanations for the ten carry text, source slug and confidence; loans recorded under the loan slug with derivations; pt fresh-sourced; sw Last Third re-shortened to the 18-char substring at medium; id Istijabah kept low), the eleven-name sourced-verbatim gate over fifteen locales, catalog parity at en''s key set with en.ts and the other five pre-existing catalogs byte-untouched across the range and the lock green, RTL_IDS at ar/fa/ur with direction-keyed chevrons and the relaunch machinery inherited untouched, R12 numerals (Bengali digits in bn prose, Persian in fa, Latin elsewhere, times through the en-US Intl clock), the URDU/BENGALI records with their measured hhea boxes in comments and tests, the app.json fonts/locales/CFBundleLocalizations surfaces, the four widget STATIC tables at sixteen rows each with region-prefix finders, every suite extension named in Files, the README bullet, the What''s New restamp with no new item, and the version line (feat minors 2.12.0-2.19.0, merge patch 2.19.1, the untracked android prebuild synced). All four Proof items reproduced read-only: yarn validate exits 0 (236 suites, 6401 tests, 100 percent coverage), the named suites green including the widget runtime load suite, jq over sourced-names.json clean on text/source/confidence, and the detection rows (pt-BR, fa-IR, ur-PK, es-ES fallback) present in locale.test.ts. Per-step commit contents match the plan''s step recipe, including the same-commit lookup rows.
+
+Findings:
+
+- suggestion: shared/i18n/sourced-names.json:367 (also 401, 407, 413, 775, 781, 979, 985, 1183) - Step 1 closes with "Every entry non-null with slug, confidence, note", but nine entries inside the ten''s sections still carry an empty-string note (the "20 mins after Sunrise"-family explanations for id/fa/fr/sw, and ur''s Asr/Magrib/Isha names; all nine identical at the range base). Text, source and confidence are non-null everywhere and the ticket''s acceptance criterion names only those three, so this is a gap against the plan doc''s own sentence; the shipped gate (shared/__tests__/catalogGates.test.ts:163) checks text/source/confidence and cannot see note.
+
+- nitpick: shared/i18n/widget-statics.json:2 - the wave rewrote the _comment from "a six-language table" to "a ten-language table" while the table now keys all sixteen locales; the sibling suite (shared/__tests__/widgetStaticStrings.test.ts:3) correctly reads "sixteen-language table". The comment undercounts its own table by the six pre-existing rows.
+
+Everything else conforms.', NULL, '2026-10-28 18:02:07.087358+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4082, 410, 'comment', 'owner', 'BLIND FINDINGS
+
+Reviewed origin/uat..uat (936228b6..e4d5050f, 13 commits) read-only against the worktree at e4d5050f: the diff, the repository and AGENTS.md only. yarn validate re-run at the tip: green (tsc, biome, 236 suites / 6401 tests, 100 percent on every coverage metric, exit 0). Version lockstep verified per commit (package.json and app.json equal on all 13); en.ts untouched and the catalog lock hash holds; font coverage for the three new scripts measured with fontTools against the bundled TTFs (Noto Naskh Arabic and Noto Sans Bengali cover the ur/bn catalogs fully; Rubik covers the fa catalog except U+200C, a default-ignorable the shaper hides, not tofu). The fade-generation guard closes the stale-settle interleaving at the store level and all three isOn writers (openOverlay, closeOverlay, checkOverlayBoundary) stamp the generation and drop the flag in one batch.
+
+suggestion: components/overlay/Overlay.tsx:84 — the layer''s hold arm `overlay.isOn || !fadeSettled` is exercised but never asserted: the wall-timer test that used to pin the mid-fade flex was deleted and Overlay.test.tsx:93-98 defers the mid-fade flex window to overlayPlacement''s table, which renders OverlayInfoBox (components/overlay/__tests__/overlayPlacement.test.ts:232-255), not the layer — so deleting the `!fadeSettled` term from Overlay.tsx alone would pass every test and the coverage gate (a deleted condition cannot be unexecuted) and reintroduce the close-fade cut this change exists to kill; add one row asserting layer display flex while isOn is false and the flag is down.
+
+suggestion: e2e/scripts/frame-audit.sh:221 — dual mode stamps the tap with a separate `adb shell cat /proc/uptime` after `input tap` (line 215), so tap_boot is late by one full adb roundtrip, while the sf branch deliberately reads uptime in the SAME shell as its tap (line 127) because "the offset arithmetic pulls the entrance window off the tap"; the dual separation''s window (line 323) can therefore drop the entrance''s first presents and the first-draw print (line 348) understates SF latency by that roundtrip, which the documented +-50ms anchor margin does not cover.
+
+nitpick: e2e/scripts/frame-audit.sh:325-335 — dead_zones counts any gap over 34ms that dense frames follow, so the idle stretch before the late burst (~1.7-2.2s, Defect C) registers as a corroborated SF dead zone in dual mode (exit 1, "COMPOSITOR TRUTH") while the sf branch deliberately classifies the same presents as "info, not floor" (lines 197-199); the comment''s claim that idle gaps "never count" (line 328) holds only when the idle runs to the end of the list.
+
+No defects found: the ten catalogs pass the verbatim-sourcing, lock, parity, RTL-purity and budget gates mechanically (all 11 name slots per locale map to keys and are gated); the widget STATIC tables stay inline-const with the shared 16-locale finder; the off-schedule infobox going display:flex while the flag is down draws nothing (reveal 0 is a transparent face on an off-screen page), so no resting pixel moves.', NULL, '2026-10-28 18:05:44.229963+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4083, 410, 'activity', 'owner', NULL, 'status', '2026-10-28 18:10:54.817325+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4084, 410, 'comment', 'owner', 'AUDIT RECORD (Lane 1, 2026-10-28): range origin/uat..uat reviewed at uat c02b6c80 by two reviewers - plan-conformance (comment 4081) and blind (comment 4082). Plan-conformance: the wave conforms on every anchored obligation and all four Proof items reproduce; its two suggestions are FIXED in c02b6c80 (2.19.2) - the nine empty sourcing notes filled in the file''s own idiom so every T-410 entry carries text, slug, confidence and note per Step 1''s closing sentence, and widget-statics'' header names its sixteen-language table. Blind: all three findings sit on T-327''s hunks, not this ticket''s code. Finding 1 (Overlay''s !fadeSettled hold arm unasserted) is CONFIRMED ACCURATE by mutation - deleting the arm from Overlay.tsx leaves all 63 overlay tests green - and is routed to the lead for Lane 2''s open T-327 steps rather than edited here, the concurrent lane owning that file. Findings 2 and 3 (frame-audit dual-mode tap stamp and the dead_zones idle-burst edge) are REJECTED as defects: the SF window opens 50ms before the tap to absorb exactly that read lag (frame-audit.sh, the sms window line) and the 2.11.50-recorded rule makes the sf branch''s printed gap list the verdict of record, the dual run corroborative. Version-line interleaving: Lane 2''s 2.11.46-2.11.50 were already on uat; this lane''s 2.12.0-2.19.0 folded above with no collision, the merge took 2.19.1, the audit fix 2.19.2, and Lane 2''s next stamps go above 2.19.2. yarn validate green at c02b6c80: 236 suites, 6401 tests, 100 percent coverage. Per owner order 2026-10-28 the ticket stays here in Audit for the lead''s move to Awaiting Owner; no Done close.', NULL, '2026-10-28 18:10:54.840656+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4085, 327, 'comment', 'owner', 'Confirmed fix routed from T-410''s blind audit (lead-adjudicated, 2026-10-28): Overlay.tsx''s hold arm `overlay.isOn || !fadeSettled` is exercised but never asserted - deleting the `!fadeSettled` term leaves all 63 overlay tests green, so nothing pins the layer holding display:flex mid-fade. Lane 2 folds one red-first row into its open steps: assert the layer''s display stays flex while isOn is false and the flag is down.', NULL, '2026-10-28 18:12:35.514977+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4086, 410, 'activity', 'owner', NULL, 'field', '2026-10-28 18:12:35.521877+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s ruling on the audited ten-language wave: push the local uat line (2.12.0 through 2.19.2) to ship it, or amend - nothing is pushed and nothing ships without the ruling"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4088, 410, 'comment', 'owner', 'Parked in Awaiting Owner per the owner''s order (2026-10-28): the wave is planned, executed, audited and merged on local uat (2.12.0 through 2.19.2, validate green at 6401 tests, 100 percent coverage) and nothing is pushed. The owner rules: push to ship, or amend.', NULL, '2026-10-28 18:12:35.549777+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4089, 327, 'activity', 'owner', NULL, 'field', '2026-10-28 18:12:52.762245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the OnePlus 3T to be reconnected - its animation-floor device steps cannot run without it; the concurrent session''s plan and lane branch (lane2/T-327) hold the work in progress for resumption"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4091, 327, 'activity', 'owner', NULL, 'status', '2026-10-28 18:12:52.804565+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4092, 327, 'comment', 'owner', 'Owner order (2026-10-28, 18:12): returned to Backlog - nothing was running (the lane went quiet at 17:27) and the remaining device steps need the OnePlus 3T, which is disconnected until later today. The lane branch and plan hold the work; a future session resumes from Step 14.', NULL, '2026-10-28 18:12:52.821055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4093, 419, 'activity', 'owner', NULL, 'created', '2026-10-28 18:22:09.762129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4094, 419, 'activity', 'owner', NULL, 'field', '2026-10-28 18:22:15.643738+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "419"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4095, 419, 'activity', 'owner', NULL, 'label_add', '2026-10-28 18:22:15.674738+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 212, "value": "#419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4096, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 18:27:06.923934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4097, 419, 'activity', 'owner', NULL, 'field', '2026-10-28 18:27:17.044787+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4102, 421, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.102836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4103, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.102836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 421, "value": "T-421"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4104, 422, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.129366+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4105, 422, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.131162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4106, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.131162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 422, "value": "T-422"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4107, 423, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.155323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4116, 426, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.23344+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4122, 419, 'activity', 'owner', NULL, 'label_add', '2026-10-28 19:19:18.493577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4123, 419, 'activity', 'owner', NULL, 'label_add', '2026-10-28 19:19:18.493577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4124, 419, 'activity', 'owner', NULL, 'label_add', '2026-10-28 19:19:18.493577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4125, 419, 'activity', 'owner', NULL, 'label_add', '2026-10-28 19:19:18.493577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4130, 419, 'comment', 'owner', 'Step 1 landed at 2.20.0: the sourcing record for the ten languages is complete, every name and explanation slot now carrying text, a registered source and confidence, with the three prescribed swaps and the census confirmations recorded; the gate was red first naming all 54 nulls and validate is green. Steps 2 and 3 remain in this session. Acceptance line 2''s naming-rule clause spans the catalog steps (2 to 5) and stays open for them.', NULL, '2026-10-28 19:47:59.625928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4108, 423, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.157011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4109, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.157011+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 423, "value": "T-423"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4110, 424, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.18275+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4111, 424, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.183977+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4112, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.183977+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 424, "value": "T-424"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4113, 425, 'activity', 'owner', NULL, 'created', '2026-10-28 19:19:09.2076+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4114, 425, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.209316+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4115, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.209316+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 425, "value": "T-425"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4117, 426, 'activity', 'owner', NULL, 'parent', '2026-10-28 19:19:09.235344+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 419, "value": "T-419"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4118, 419, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 19:19:09.235344+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 426, "value": "T-426"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4127, 419, 'comment', 'owner', 'Plan doc T-419 (Docs page 49, linked) carries the selection, 18 agent-ruled decisions and 7 steps at 15 points; the griller''s six findings are answered in the doc. Ready for execution.', NULL, '2026-10-28 19:19:29.152951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4129, 420, 'activity', 'owner', NULL, 'status', '2026-10-28 19:47:55.612182+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4120, 419, 'activity', 'owner', NULL, 'type', '2026-10-28 19:19:18.481293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4121, 419, 'activity', 'owner', NULL, 'estimate', '2026-10-28 19:19:18.481293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "15"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4126, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 19:19:29.127823+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4128, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 19:21:41.032078+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4131, 421, 'activity', 'owner', NULL, 'status', '2026-10-28 20:11:13.872091+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4132, 419, 'comment', 'owner', 'Step 2 landed at 2.21.0: the five Roboto-covered locales (ru, az, de, sq, bs) ship whole - catalogs, picker endonyms, typography records, detection, and every native and widget surface - red first with a mutation pass, validate green at full coverage and en''s lock hash unchanged. Step 3 (ps RTL) remains in this session.', NULL, '2026-10-28 20:11:18.409938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4133, 422, 'activity', 'owner', NULL, 'status', '2026-10-28 20:26:47.731034+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4134, 419, 'comment', 'owner', 'Step 3 landed at 2.22.0: ps ships whole and right to left - the sourced Arabic-loan catalog with Persian prose digits per R12, the Naskh pair measured covering every Pashto letter by codepoint with no new font, RTL_IDS at ar/fa/ur/ps, and every native and widget surface - red first with a mutation pass, validate green at full coverage and en''s lock hash unchanged. Steps 4 to 7 remain for later sessions.', NULL, '2026-10-28 20:26:51.308248+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4135, 419, 'comment', 'owner', 'Session A landed Steps 1-3: the sourcing record completed for the ten, the ru, az, de, sq and bs catalogs on the Latin records, and ps right-to-left on the Naskh pair, at versions 2.20.0, 2.21.0 and 2.22.0 on the lane branch, validate green at 236 suites and 6556 tests with the sixteen shipped locales and the English lock hash unchanged. Two Step-1 readings stand recorded for the audit: the plan''s six-core-name swap for Pashto reads as R9''s five named slots (Sunrise was already attested one-word Pashto), and de''s two rows left on a single catalog slug sit outside the plan''s four-row confirmation census, their notes naming the second catalog that prints them. Steps 4-7 remain for the next sessions.', NULL, '2026-10-28 20:28:09.546721+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4136, 423, 'activity', 'owner', NULL, 'status', '2026-10-28 21:02:35.330998+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4137, 424, 'activity', 'owner', NULL, 'status', '2026-10-28 21:27:47.255172+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4139, 425, 'activity', 'owner', NULL, 'status', '2026-10-28 21:34:41.749749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4141, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 21:38:16.3755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4142, 419, 'comment', 'owner', 'Steps 4 to 6 landed and are merged to local uat at 73103393 (2.25.1): ta and ml on their bundled Noto pairs at 2.23.0, zh-Hans and zh-Hant on the subset pairs with the glyph lock and the script-subtag resolver at 2.24.0, and the full sweep at 2.25.0 with the README naming twenty-six - validate green at the merge commit over the twenty-six locales, 237 suites and 6685 tests at full coverage, en''s lock hash unchanged, the widget runtime load suite green. Two Step-1 readings from session A stand for the audit as recorded in comment 4135: the ps six-core-name swap read as R9''s five named slots (Sunrise already attested one-word Pashto), and de''s two rows left on a single catalog slug sitting outside the plan''s four-row confirmation census, their notes naming the second catalog that prints them. Step 7, the XS device build as the original app, follows the audit in a fresh session.', NULL, '2026-10-28 21:38:16.403335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4143, 419, 'comment', 'owner', 'Blind review of c02b6c80..73103393 (the ten-language wave). Gates re-run in the main tree: yarn validate exit 0, 237 suites, 6685 tests, 100 percent on statements, branches, functions and lines; versions in lockstep at 2.25.1 across package.json, app.json and the prebuild build.gradle; the four zh subset TTFs'' own cmaps equal the glyph lock exactly, both weights, both directions. Two findings:
+
+suggestion: widgets/PrayerWidget.tsx:574 and widgets/LockPrayerWidget.tsx:401, 944, 1476 - the zh region mapping (a TW, HK or MO tag reads Traditional) is unreachable in production: the runtime patch feeds __expoWidgetDeviceLocale the bare language code only (Android passes LocaleList.getDefault().get(0).language, iOS passes Locale.current.language.languageCode?.identifier - both yield "zh" on every Chinese device, no script, no region). So every zh device, a Traditional reader in Taiwan included, resolves zh-Hans at all four widget finder sites while the app itself resolves zh-Hant for the same device; the widgetStaticStrings rows for zh-TW, zh-HK and zh-MO certify inputs no device produces. Either pass the full language tag through the expo-widgets patch (toLanguageTag() on Android, the full language identifier on iOS) or correct the comment and the commit''s claim.
+
+suggestion: shared/__tests__/cjkSubset.test.ts - the gate proves the strings against the lock JSON but never reads the committed TTFs, so the fonts-to-lock tie holds only at generation time; a future re-cut that ships stale binaries with a regenerated-or-stale lock passes every gate green while zh renders tofu. I verified today the committed subsets match the lock byte-for-byte, so the shipped state is correct - the gap is the guard. Record the four subset files'' sha256 inside cjk-glyph-lock.json and hash the committed files in-test (node:crypto, no fontTools needed) so the binary side of the lock is pinned too.', NULL, '2026-10-28 21:45:20.234616+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4144, 419, 'comment', 'owner', 'Audit (plan-conformance, c02b6c80..73103393): the wave matches the plan row for row. Every Proof re-ran green here - yarn validate exit 0, 237 suites, 100 percent coverage, 6685 tests; the ten named suites green; RTL_IDS at ar/fa/ur/ps; the balanced jq over sourced-names.json printing 0; widgetRuntimeLoads green - and en plus the sixteen shipped catalogs are byte-untouched, the catalog-lock row values byte-identical, the expo-font array grown by exactly the eight TTFs, and the committed zh subsets'' cmaps verified identical to the glyph lock (377 and 378 characters, both weights). The ps six-core-name reading (Sunrise already attested one-word Pashto, and the loan rule forbids a loan beside an attested translation) and the Malayalam 1.5em box (GPOS stacked ink past the hhea box, the plan''s own Bengali-precedent risk row, both measurements in the record''s comment and verified against the bundled TTFs) are accepted readings, both recorded. The What''s New restamp riding the 2.25.1 merge patch is decision 16''s own rule. Two findings:
+
+question: shared/i18n/sourced-names.json (de rows) - decision 11''s rule gives every row sitting on an AGPL catalog as its sole slug one independent confirmation, but de''s Sunrise name and the "Start of the last third of the night" explanation still ship on al-azan@d89b047 alone, their notes naming Mihrab, the other AGPL catalog, rather than an independent source; recorded in comments 4135 and 4142, it needs an owner ruling or a gebetszeiten.de-tier confirmation.
+
+nitpick: plan doc (Docs page 49), Proof 2 - the jq one-liner is a syntax error under jq 1.8.1 (the collect bracket closes at the iterate, leaving the final bracket unmatched, exit 3); the balanced nested-collect pipeline prints 0, so the claim holds - fix the doc''s command so the next auditor can run it verbatim.', NULL, '2026-10-28 21:46:51.516095+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4147, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 22:04:30.733848+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4145, 419, 'comment', 'owner', 'AUDIT RECORD (Lane 1 lead, 2026-10-28): range c02b6c80..73103393 (the wave''s seven commits, T-410''s audited line below it untouched) reviewed at uat 73103393 by two reviewers - plan-conformance (comment 4144) and blind (comment 4143) - and the lead adjudicated every finding from the code. Blind finding 1 (the zh region mapping unreachable: the runtime patch fed the widget finders the bare language code, so every Chinese device resolved Simplified and the zh-TW/zh-HK/zh-MO rows certified inputs no device produces) CONFIRMED and FIXED in acce614d: the patch now feeds the full BCP 47 tag on both platforms (Android toLanguageTag, iOS minimalIdentifier), red first in widgetOpenAppPatch, node_modules re-patched with the reverse-check proving patch and tree agree, the widget runtime load suite green over the re-patched runtime. Blind finding 2 (the cjkSubset gate never read the committed TTFs, so stale binaries could ship tofu-green) CONFIRMED and FIXED in acce614d: cjk-glyph-lock.json gains a files sha256 map written by the generator and hashed in-test, mutation pass proven (an appended byte fails the row, the restored file passes). Plan-conformance question (de''s Sunrise and last-third explanation on al-azan alone, notes naming the non-independent Mihrab) CLOSED by measurement, not ruling: salatnow.com''s Diyanet-method German timetables print Sonnenaufgang as the row and tahajjud.de prints Das letzte Drittel der Nacht beginnt, both recorded as the rows'' confirming sources in acex614d''s sourced-names edit. Plan-conformance nitpick (the plan doc''s Proof-2 jq command exits 3 under jq 1.8.1) FIXED: the doc carries the balanced nested-collect form, verified printing 0 (doc version 4). yarn validate green at acex614d: 237 suites, 6687 tests, 100 percent coverage. The audit is GREEN; Step 7 (the XS development build) runs next in its own session, then the ticket parks for the owner.', NULL, '2026-10-28 21:56:51.463958+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4146, 419, 'comment', 'owner', 'Correction: the de sourcing closure sits in acce614d''s sourced-names edit - one character typo above.', NULL, '2026-10-28 21:57:18.715289+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4145, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4148, 419, 'comment', 'owner', 'Owner order (2026-10-28): agents are BANNED from navigating the phone - no driving the XS, no on-glass reads, no verification clicks. The owner navigates the phone, reads every text, and rules from the Awaiting Owner column. Step 7''s machine read is CANCELLED: the step ends at install (bundle-id assert, install, install-verified), then the ticket parks. Nothing else touches the phone.', NULL, '2026-10-28 22:17:14.149323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4149, 426, 'activity', 'owner', NULL, 'status', '2026-10-28 22:20:36.114434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4151, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 22:20:36.148605+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4152, 419, 'activity', 'owner', NULL, 'field', '2026-10-28 22:20:36.172942+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s click-around: read the twenty-six languages on the XS development build (installed as the original app, 2.25.2 at acce614d) and rule - push both unpushed waves (2.12.0-2.19.2 and 2.20.0-2.25.2) to ship, or amend"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4153, 419, 'comment', 'owner', 'Step 7 done under the owner''s no-navigation order: both platforms compiled in parallel from acce614d (2.25.2) - the Android proof APK''s own report reads package <pkg>, versionName 2.25.2, env local, never installed - and the iOS build installed on the iPhone XS as the ORIGINAL app: devicectl lists Athan <pkg> 2.25.2, bundle id asserted before install, no fleettest anything. The phone is the owner''s to navigate; the twenty-six languages are on it to read. Parked for the ruling: push both unpushed waves to ship, or amend.', NULL, '2026-10-28 22:20:36.188335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4077, 410, 'comment', 'owner', 'Lane 1 rotates here at 12 of 16 points: Steps 4-6 done (T-414 f122c129, T-415 5019dee2, T-416 eb2c4609), all ten catalogs landed, LOCALE_IDS at sixteen with RTL_IDS at ar/fa/ur and both script pairs bundled. Resume at Step 7 (T-417, the native and widget surfaces): worktree $HOME/repos/wt-lane1-t410 clean on lane1/T-410 at eb2c4609, next version stamp 2.18.0. Two agent rulings this batch sit on the ticket (the Naskh 1.5em script box; the missing fa RTL pin found by mutation).', NULL, '2026-10-28 17:33:59.361198+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4119, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 19:19:18.481293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [ ] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [ ] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [ ] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4138, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 21:27:52.751842+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [ ] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4140, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 21:34:41.783432+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4150, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 22:20:36.148605+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [x] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
 
 
 --
@@ -11258,7 +11487,6 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (34
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (345, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (346, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (368, 2, 3);
-INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (327, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (377, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (376, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (381, 2, 1);
@@ -11267,6 +11495,8 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (38
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (396, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (401, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (400, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (410, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (419, 2, 1);
 
 
 --
@@ -11465,7 +11695,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (626, 368, 1, NULL, 368, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (624, 345, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (628, 346, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (631, 327, 3, 'the dim-shade redesign ticket (Deferred) landing - owner order 2026-10-25', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (631, 327, 3, 'the OnePlus 3T to be reconnected - its animation-floor device steps cannot run without it; the concurrent session''s plan and lane branch (lane2/T-327) hold the work in progress for resumption', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (637, 374, 3, 'the owner starting the redesign (owner order 2026-10-25)', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (636, 374, 1, NULL, 374, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (638, 375, 1, NULL, 375, NULL, NULL, NULL, NULL, NULL);
@@ -11488,6 +11718,10 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (658, 396, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (666, 401, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (668, 400, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (670, 410, 1, NULL, 410, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (672, 410, 3, 'the owner''s ruling on the audited ten-language wave: push the local uat line (2.12.0 through 2.19.2) to ship it, or amend - nothing is pushed and nothing ships without the ruling', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (674, 419, 1, NULL, 419, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (675, 419, 3, 'the owner''s click-around: read the twenty-six languages on the XS development build (installed as the original app, 2.25.2 at acce614d) and rule - push both unpushed waves (2.12.0-2.19.2 and 2.20.0-2.25.2) to ship, or amend', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -11944,6 +12178,16 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (400, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (401, 208);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (401, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (401, 1);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (410, 211);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (410, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (410, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (410, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (410, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 212);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 4);
 
 
 --
@@ -12565,6 +12809,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (788, 345, 9, 'Awaiting Owner', 'started', '2026-10-25 08:42:46.118778+00', '2026-10-25 18:39:05.455781+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (797, 348, 9, 'Awaiting Owner', 'started', '2026-10-25 09:01:19.09999+00', '2026-10-25 18:42:55.397458+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (711, 337, 6, 'Planning', 'unstarted', '2026-10-24 20:41:25.899+00', '2026-10-24 21:04:40.660031+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (766, 358, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.682+00', '2026-10-28 17:27:25.566631+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (718, 337, 2, 'Ready', 'unstarted', '2026-10-24 21:04:40.660031+00', '2026-10-24 21:06:02.475461+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (712, 338, 1, 'Backlog', 'backlog', '2026-10-24 20:51:43.951+00', '2026-10-24 21:20:08.179286+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (720, 338, 4, 'Done', 'completed', '2026-10-24 21:20:08.179286+00', NULL);
@@ -12608,7 +12853,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (751, 347, 1, 'Backlog', 'backlog', '2026-10-25 07:41:57.108663+00', '2026-10-25 07:44:18.780777+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (755, 347, 6, 'Planning', 'unstarted', '2026-10-25 07:44:18.780777+00', '2026-10-25 07:48:46.68326+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (760, 347, 2, 'Ready', 'unstarted', '2026-10-25 07:48:46.68326+00', '2026-10-25 07:48:57.910106+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (766, 358, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.682+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (767, 359, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.706+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (768, 360, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.727+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (769, 361, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.749+00', NULL);
@@ -12726,6 +12970,31 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (942, 409, 4, 'Done', 'completed', '2026-10-28 05:54:02.622167+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (931, 400, 3, 'In progress', 'started', '2026-10-28 01:39:22.934046+00', '2026-10-28 05:54:02.649009+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (944, 400, 9, 'Awaiting Owner', 'started', '2026-10-28 06:08:27.166191+00', '2026-10-28 14:02:25.346389+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (946, 410, 1, 'Backlog', 'backlog', '2026-10-28 15:30:17.798+00', '2026-10-28 15:40:53.43487+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (947, 410, 6, 'Planning', 'unstarted', '2026-10-28 15:40:53.43487+00', '2026-10-28 16:12:26.572209+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (957, 410, 2, 'Ready', 'unstarted', '2026-10-28 16:12:26.572209+00', '2026-10-28 16:14:12.102196+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (949, 411, 1, 'Backlog', 'backlog', '2026-10-28 15:53:36.999+00', '2026-10-28 16:31:54.612763+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (950, 412, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.035+00', '2026-10-28 16:44:22.555497+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (960, 412, 4, 'Done', 'completed', '2026-10-28 16:44:22.555497+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (952, 414, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.115+00', '2026-10-28 17:12:53.72924+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (962, 414, 4, 'Done', 'completed', '2026-10-28 17:12:53.72924+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (953, 415, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.145+00', '2026-10-28 17:23:23.192976+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (964, 358, 4, 'Done', 'completed', '2026-10-28 17:27:25.566631+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (955, 417, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.204+00', '2026-10-28 17:45:04.629094+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (956, 418, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.233+00', '2026-10-28 17:45:04.634495+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (967, 418, 4, 'Done', 'completed', '2026-10-28 17:45:04.634495+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (958, 410, 3, 'In progress', 'started', '2026-10-28 16:14:12.102196+00', '2026-10-28 18:10:54.814292+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (972, 419, 6, 'Planning', 'unstarted', '2026-10-28 18:27:06.920692+00', '2026-10-28 19:19:29.125144+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (982, 420, 4, 'Done', 'completed', '2026-10-28 19:47:55.60903+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (974, 421, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.094+00', '2026-10-28 20:11:13.868693+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (983, 421, 4, 'Done', 'completed', '2026-10-28 20:11:13.868693+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (976, 423, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.151+00', '2026-10-28 21:02:35.32613+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (985, 423, 4, 'Done', 'completed', '2026-10-28 21:02:35.32613+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (977, 424, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.177+00', '2026-10-28 21:27:47.251948+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (986, 424, 4, 'Done', 'completed', '2026-10-28 21:27:47.251948+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (988, 419, 8, 'Audit', 'started', '2026-10-28 21:38:16.370964+00', '2026-10-28 22:04:30.730177+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (979, 426, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.23+00', '2026-10-28 22:20:36.111502+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (990, 426, 4, 'Done', 'completed', '2026-10-28 22:20:36.111502+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12736,7 +13005,6 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (837, 374, 8, 'Audit', 'started', '2026-10-26 06:41:57.136188+00', '2026-10-26 06:42:36.549123+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (839, 374, 4, 'Done', 'completed', '2026-10-26 07:23:36.139822+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (829, 327, 10, 'Deferred', 'started', '2026-10-25 18:39:05.616313+00', '2026-10-26 07:23:36.209614+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (840, 327, 1, 'Backlog', 'backlog', '2026-10-26 07:23:36.209614+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (831, 375, 1, 'Backlog', 'backlog', '2026-10-25 18:39:24.332+00', '2026-10-26 12:28:10.271566+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (842, 376, 1, 'Backlog', 'backlog', '2026-10-26 22:31:57.102+00', '2026-10-26 23:53:44.371777+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (846, 378, 1, 'Backlog', 'backlog', '2026-10-26 23:59:36.701+00', '2026-10-27 00:08:55.628878+00');
@@ -12785,6 +13053,28 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (930, 409, 1, 'Backlog', 'backlog', '2026-10-28 01:18:19.655+00', '2026-10-28 05:54:02.622167+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (943, 400, 8, 'Audit', 'started', '2026-10-28 05:54:02.649009+00', '2026-10-28 06:08:27.166191+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (945, 400, 4, 'Done', 'completed', '2026-10-28 14:02:25.346389+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (840, 327, 1, 'Backlog', 'backlog', '2026-10-26 07:23:36.209614+00', '2026-10-28 15:40:53.436086+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (959, 411, 4, 'Done', 'completed', '2026-10-28 16:31:54.612763+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (951, 413, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.082+00', '2026-10-28 16:54:10.840049+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (961, 413, 4, 'Done', 'completed', '2026-10-28 16:54:10.840049+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (963, 415, 4, 'Done', 'completed', '2026-10-28 17:23:23.192976+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (954, 416, 1, 'Backlog', 'backlog', '2026-10-28 15:53:37.173+00', '2026-10-28 17:33:40.480484+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (965, 416, 4, 'Done', 'completed', '2026-10-28 17:33:40.480484+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (966, 417, 4, 'Done', 'completed', '2026-10-28 17:45:04.629094+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (968, 410, 8, 'Audit', 'started', '2026-10-28 18:10:54.814292+00', '2026-10-28 18:12:35.525733+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (969, 410, 9, 'Awaiting Owner', 'started', '2026-10-28 18:12:35.525733+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (948, 327, 3, 'In progress', 'started', '2026-10-28 15:40:53.436086+00', '2026-10-28 18:12:52.802614+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (970, 327, 1, 'Backlog', 'backlog', '2026-10-28 18:12:52.802614+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (971, 419, 1, 'Backlog', 'backlog', '2026-10-28 18:22:09.755+00', '2026-10-28 18:27:06.920692+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (980, 419, 2, 'Ready', 'unstarted', '2026-10-28 19:19:29.125144+00', '2026-10-28 19:21:41.028977+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (973, 420, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.054+00', '2026-10-28 19:47:55.60903+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (975, 422, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.124+00', '2026-10-28 20:26:47.727398+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (984, 422, 4, 'Done', 'completed', '2026-10-28 20:26:47.727398+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (978, 425, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.203+00', '2026-10-28 21:34:41.745721+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (987, 425, 4, 'Done', 'completed', '2026-10-28 21:34:41.745721+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (981, 419, 3, 'In progress', 'started', '2026-10-28 19:21:41.028977+00', '2026-10-28 21:38:16.370964+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (989, 419, 3, 'In progress', 'started', '2026-10-28 22:04:30.730177+00', '2026-10-28 22:20:36.146722+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (991, 419, 9, 'Awaiting Owner', 'started', '2026-10-28 22:20:36.146722+00', NULL);
 
 
 --
@@ -13154,6 +13444,8 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (208, 1, 3, '#401', '#ffffff', '2026-10-27 22:43:33.200264+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (209, 1, 3, '#402', '#ffffff', '2026-10-27 22:43:33.279936+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (210, 1, 3, '#403', '#ffffff', '2026-10-27 23:16:34.301844+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (211, 1, 3, '#410', '#ffffff', '2026-10-28 15:30:27.5388+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (212, 1, 3, '#419', '#ffffff', '2026-10-28 18:22:15.618232+00');
 
 
 --
@@ -13464,7 +13756,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 410, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 427, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -15649,97 +15941,6 @@ zero outside the ruled-keep classes (docstring examples, mock seeds, the corpus 
 
 Both reviews clean after adjudication. yarn validate green at 2.1.31 (227 suites, 5871 passed,
 2 skipped, coverage 100 percent); the pre-commit discipline hook verified the bump.', NULL, NULL, '{}', false, false, false, NULL, NULL, 21504, 8, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 00:44:32.909031+00', '2026-10-20 07:20:34.449446+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (35, 1, NULL, 'T-327', '# T-327
-
-Re-planned 2026-10-25 on the owner''s run order: the 3T deep-dive is back on, the morning''s deferral is lifted, and the instrument must first be made able to answer the question the first plan died on: compositor truth or encoder loss.
-
-## Goal
-
-The 3T fell below the animation floor it held: the prayer overlay opens janked, the alert and settings sheets drag, while the iPhone XS stays smooth. Done means: the dead zone''s owner is named by measurement (a code regression dated to its commit, or the capture layer, or the device), the 3T''s audited interactions pass the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target, 60fps the goal) on Release gate-ON builds if the cause is code, the XS measures unchanged before and after any fix, and `yarn validate` is green.
-
-## The standing record (what the first plan settled)
-
-Steps 1, 3, 4, 5, 6, 7, 8 of the first plan are done; their records stand in the ticket''s comments. What they established, and this re-plans from:
-
-- Marks never regressed anywhere: overlay_open 134-156, overlay_close 139-158, sheet_alert_open 429-456, sheet_settings_open 368-392, closes 204-210, across every build and env measured.
-- The failure is in the frames: tap-adjacent dead zones 176-927ms, and entrance first-draws landing anywhere from 24 to 96 percent of travel run-to-run (the settings sheet sometimes first appears already 96.4 percent traveled).
-- The signature is version-invariant (anchors 2.4.11, 2.4.17, 2.4.23, 2.4.24 all show it to varying degree) and env-invariant (mock AND production builds). No commit in 887d7949..1c22014c owns it; a build does not have one signature - the same build snaps and renders cleanly within one night under fixed controls (Step 4''s A/B/A).
-- Against the 2026-09-11/12 baselines the regression is real on this same phone. Two candidates survive: a regression predating 2.4.11, or the capture layer (the SD820 encoder) degrading since September. Tonight''s instrument cannot separate them: the video path is the encoder''s word about the compositor.
-- Harness debt, all recorded in Steps 1-5: maestro 2.10.0 no longer substitutes `${APP_ID}` from the environment, so the committed flows through baseline-compare.sh launch no app; the committed flows'' tap points are stale on the 3T layout (live tree: row and bell at y~1012, settings 539,1833); a second Athan-family package on the 3T pollutes ReactNativeJS logcat captures; the stock 3s pre-tap close wait is unusable on mock (the overlay auto-closes inside it when the seeded boundary is near).
-
-## Decisions
-
-Standing from the first plan, unchanged: D2 (frame evidence is the verdict, marks are triage; the SF branch''s PASS line is a labelled fallback, never a verdict alone), D5 (the fix preserves the pinned solid-ink invariant; no text renders through opacity), D6 (measured builds share one env so deltas are valid; absolute numbers never compare across envs), D7 (version bump on every commit, fetch first, patch by default).
-
-New, 2026-10-25:
-
-- D9, the instrument first. No further attribution runs until one tap yields both reads in one evidence dir: the encoder read (screenrecord video, per-frame pts) and the compositor read (SurfaceFlinger present timestamps for the app''s layer, resolved from `dumpsys SurfaceFlinger --list` because layer names rotate per relaunch). A dead zone that appears in both is compositor truth; one that appears in video alone is encoder loss. This is Step 9, a harness change with its own commit, validated on glass in Step 10.
-- D10, the anchor. 6478619b (1.25.0), the commit the baselines'' own SF note names as measured 2026-09-12 on this 3T. Measured interleaved A/B/A (anchor, tip, anchor) on one night - Step 4''s lesson that sequential runs leave the order confound open. If the era''s tree will not build today, the earliest buildable commit forward from it, named in the record.
-- D11, mock-window discipline, binding on every mock-env capture: the 1s pre-tap close variant (the stock 3s pre-wait captures re-opens when the seeded boundary is near), evening seeds read as boundary-adjacent, the second Athan-family package force-stopped before every capture, force-stop and relaunch between flows, battery and charge state recorded with every run. Floor verdicts stay video-plus-vision per D2, with the SF record printed beside them from Step 10 on.
-- D12, builds and installs. Measured builds are the harness ritual (e2e/README.md''s build block) in a worktree at the target commit: com.example.athan, Release gate-ON, EXPO_PUBLIC_PERF_MONITOR=1, mock env - the only Android build path that emits marks (shared/perf.ts folds marks out at EXPO_PUBLIC_ENV=prod, and build-mock.zsh unsets EXPO_PUBLIC_* wholesale). Per the owner''s both-platforms standing order (2026-10-25), every build session compiles BOTH platforms in parallel for the same commit: the Android harness ritual under Gradle and the iOS Release build per the XS atlas''s xcodebuild row under Xcode - different toolchains, so they run beside each other inside the one slot session. The tip''s and the fix''s iOS artifacts feed Steps 2 and 15; an anchor or bisect candidate''s iOS artifact is the era''s buildability canary, recorded and discarded, and if an era''s iOS build breaks on today''s toolchain the session notes it and Android proceeds - a September-era iOS breakage says nothing about the current shared code. build-prod.zsh and build-mock.zsh serve owner-line installs only; no step of this re-plan installs over the owner''s line. Every session serializes through the single build slot: `pgrep -fl ''assembleRelease|xcodebuild''` first, wait until clear, never two of the same toolchain. Before every install: `aapt2 dump badging` - harness installs assert package com.example.athan and the versionName and proceed; any owner-package id stops the install. The fleettest rule keys on phones the owner uses, and the owner uses the 3T: this plan operates under the campaign''s standing precedent (the whole prior record - baselines, flows, marks history, the September floors - rode the com.example.athan parallel copy, which never touches the owner''s <pkg> line), and D15''s park asks the owner to bless that dev-id line explicitly. After every install: the User 0 alone assert.
-- D13, the run order (owner, voice, 2026-10-25, this re-plan''s authority): the 3T deep-dive is back on; the morning''s deferral until after the release is lifted. Automation tests on the 1+3T, recorded, every frame seen, FPS read: 60fps the goal, 30fps the floor. The iPhone XS must stay measurably unchanged. The owner approves the close personally.
-- D14, T-329 reconciled. It remains Step 2, the XS before-picture, unchanged in content; it must complete before Step 13''s fix lands and is otherwise free to run any time after Step 9.
-- D15, the terminal override. When the last step is merged and the audit passes, the ticket parks in Awaiting Owner with Waiting on "the owner''s approval to close (run order 2026-10-25)", every subtask ticked, the worktree and branch deleted. The owner approves every ticket of this run personally.
-
-## Files
-
-Read: e2e/README.md (mandatory before any measurement), e2e/AGENTS.md, e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh, e2e/scripts/baseline-compare.sh, e2e/flows/overlay-x10.yaml, e2e/flows/sheets-x10.yaml, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-iphone-xs.md (its Athan in-app tap rows, measured 2026-10-24), shared/perf.ts (the marks gate), and at Step 13 the suspects the bisect names (hooks/useAnimation.ts, components/prayer/*, components/overlay/*, components/sheets/parts/*, stores/atoms/overlay.ts).
-
-Changed: e2e/scripts/frame-audit.sh (the dual mode), e2e/flows/overlay-x10.yaml and sheets-x10.yaml (the honest appId and the live tap points), e2e/README.md (the traps learned: the SF-pairing note, the mock-safe pre-tap wait), e2e/baselines/android-3t.json (re-based medians and floors, dated), e2e/device-atlas-iphone-xs.md (tap points written back if the 344 visual pass moved them), the fix files Step 13 names, package.json / app.json / android/app/build.gradle (the version bump per D7, every commit).
-
-## Design
-
-The first plan bisected builds before asking whether the instrument can still see. This re-plan inverts that: the instrument''s honesty is settled first (Steps 9-10), the regression is dated against a baseline-era anchor (Step 11), and only a code-named window earns a bisect (Step 12). The verdict tree Step 11 hands to Step 12:
-
-- SF stalls on the tip, clean on the anchor (same night, interleaved): a real code regression entered 1.25.0..2.4.11 - Step 12 bisects that window.
-- SF stalls on both tonight: the September floor passes cannot be reproduced on this phone tonight; the change is the device or its capture pipeline, not the code - Step 12 records the degradation dossier and the question goes to the owner.
-- SF clean on both while video shows the dead zones: the encoder lost honesty since September; floors are re-judged on the SF record beside what video still shows, and the felt jank is re-read against compositor truth before any code is blamed.
-
-Hypotheses, unchanged from the first plan, tested only if the bisect names their window: H1 the per-row veiled ink (two useDerivedProgress plus a nested interpolateColor per element per frame), H2 the hold-then-hide timers landing inside entrance frames, H3 per-state colour map lookups on the sheet paths, H4 the sheets'' ink tweens and pre-composited backdrop, H5 anything else the window names; beside them the owner''s floated theory (per-row shaded colours, or a Reanimated upgrade due). Fix candidates, chosen only after the cause is named, each preserving D5 and the visual settlement: one veil progress per row shared by its ink styles; hoisted or pre-parsed colour inputs; memoised per-state colour resolution off the render path; the display:none drop batched after every fade settles.
-
-Alternatives rejected: bisecting before the instrument is separated (the first plan''s anchor bisect already produced an attribution the A/B/A dissolved); trusting the video path alone (it is the encoder''s word, and the encoder is a suspect); reverting the veil to opacity fades (violates D5); measuring on the emulator (banned; every perf number names a physical device); prod builds for the marks instrument (marks fold out at ENV=prod).
-
-## Steps
-
-The first plan''s steps 1-8 keep their numbers and records (1, 3, 4, 5, 6, 7, 8 done; 2 open). The re-plan''s new steps run as 9-16. Points: 2 code, 3 device; a device step runs alone in a fresh session; e2e/README.md is re-read before every measurement step and the 3T atlas before any 3T screen work.
-
-2. Step 2: the XS before-picture (T-329, 3 points, device). The uat tip as an iOS Release build with EXPO_PUBLIC_PERF_MONITOR=1 per e2e/device-atlas-iphone-xs.md (mock env keeps marks; deltas valid across builds sharing it). Install, discard the first post-install launch. Verify the atlas''s Athan in-app tap rows (measured 2026-10-24, before the 344 visual pass) from a screenshot before driving; write back any that moved. Drive ten iterations of each of the four interactions (overlay open, overlay close, alert sheet, settings sheet) through agent-device; capture PERF_MEASURE over pymobiledevice3 syslog live (tag Athan{React}); two capture runs establish each mark''s spread. Produces: the four before-medians and their band - the line "unchanged" is judged against in Step 15 - plus any atlas rows written back. The owner''s eyeball rides the same build.
-9. Step 9: the instrument separated - compositor beside encoder (2 points, code). First deliverable: frame-audit.sh regains the overlay-close pre-tap open mode - committed once at 4ffd1f34 on the first lane''s unmerged branch, absent from uat, so it is recovered from that commit or re-implemented, and it becomes the home of the parameterised pre-tap settle wait. Then the dual run: the video capture as today, plus the SurfaceFlinger latency read of the app''s layer into the same evidence dir, both aligned to the same tap (the layer resolved from `dumpsys SurfaceFlinger --list`; the dump lands after the recorded animation - tap, animation, then dump - so the ring''s last ~127 presents cover the same entrance the video recorded; an idle layer presents nothing, so a dump before the tap reads NO DATA). The analysis prints the two gap lists side by side and the separation verdict per capture; the SF block keeps its NO DATA and exit-status semantics. Same commit fixes the recorded harness debt: the two committed flows carry the literal dev package id (maestro 2.10.0 no longer substitutes `${APP_ID}`) and the live-tree tap points (rows and bell y~1012, settings 539,1833 - re-verified from the live tree at drive time, the atlas discipline); The pre-tap settle wait parameter carries the mock-safe default, recorded in the README''s Gotchas. Shell changes keep the e2e fail-loud style; the e2e scripts carry no jest suite, so Step 10''s on-glass run is the validation. yarn validate green, version bumped. Produces: the dual instrument, committed.
-10. Step 10: the dual-instrument verdict on the tip (3 points, device). Build the uat tip harness ritual per D12, install with the badging and User 0 asserts, discard the first launch, verify marks flow. Dual-audit the four interactions (overlay-open, overlay-close through the pre-tap open mode with the mock-safe wait, sheet-alert-open, sheet-settings-open), n>=2 runs each - Step 4 proved one run is one sample. Marks through the now-honest committed flows via baseline-compare.sh. Discipline per D11 throughout. Produces: per interaction, whether the compositor read corroborates the video dead zone - the instrument validated (closing Step 9''s validation) and the tip''s separated verdict.
-11. Step 11: the baseline-era anchor dated (3 points, device). Worktree at 6478619b (1.25.0), the era''s own build ritual (its yarn.lock governs; its e2e/README.md is the ritual of record), same asserts (`adb install -d` if the era''s versionCode demands it), first launch discarded. Interleaved A/B/A against the tip: anchor, tip re-run, anchor, one night, battery recorded per run. Produces: the dead zone dated - the code window named, or the device/capture degradation recorded, per the verdict tree.
-12. Step 12: the widened bisect or the degradation record (3 points, device). If Step 11 names 1.25.0..2.4.11: halve, build, dual-measure candidates (n>=2; the entrance-render verdict and the SF dead-zone verdict), narrow to the commit that turns the compositor dead zone on; each halving batch is its own device session if the window demands it, and the step''s acceptance is the commit named or the window narrowed to single-digit commits with the measured table. If Step 11 records degradation instead: the dossier (idle-cpu past the mock window, thermal and battery state, the XS control''s instrument independence noted) and the question prepared for the owner. Produces: the regressing commit(s) by measurement, or the degradation dossier.
-13. Step 13: the root cause named and the fix implemented (2 points, code). Name the cause with frame evidence: what work entered the tap path or the animation frame, on which thread (ReactNativeJS versus native in the logcat; the SF timeline beside the video gaps), from which commit (read against H1-H5 and the owner''s theory). Implement under D5 and the visual settlement, red-first coverage on every line touched, a mutation pass on guarded logic, yarn validate green. If Step 12 produced the dossier instead: no fix; the record stands and the ticket moves to audit and then Awaiting Owner per D15. Produces: the fix commits on the lane branch, or the owner question.
-14. Step 14: post-fix proof on the 3T and the baselines refreshed (3 points, device). Harness Release build of the fix; the four dual audits; floors per D2 - video gaps over 33ms NONE, vision-read contact sheets monotonic, 16-17ms cadence the target, 60fps the goal - with the SF record printed beside. Marks inside the band. Re-base e2e/baselines/android-3t.json medians and floors with a dated note; overlay_close_steady''s UNPROVEN verdict gets its corrected video-path run here. Produces: the passing audits, the refreshed baselines.
-15. Step 15: the XS after-picture (3 points, device). The same fix build as an iOS Release with marks, the same drive as Step 2, both capture runs, the atlas''s points, first launch discarded. Produces: the four after-medians inside Step 2''s band, read side by side, and the owner''s eyeball on the same build.
-16. Step 16: close-out on the final branch (2 points, code). yarn validate green on the final branch; e2e/README.md''s Gotchas gain the traps the re-plan learned (only ones learned); every commit along the way carries its version bump; the ticket''s records complete; every subtask ticked; then the D15 park: Awaiting Owner, Waiting on "the owner''s approval to close (run order 2026-10-25)".
-
-Points: Steps 2 and 9-16 carry 24; the done steps 1, 3-8 carry 19; the ticket''s estimate is 43.
-
-## Risks
-
-- The dual instrument lies in a new way: SF latency is the compositor''s own accounting and video is the encoder''s; the pairing only helps if both are read on the same tap. The A/B/A and n>=2 discipline carry here too; a single dual capture is a sample, never a verdict.
-- The anchor will not build today (SDK drift between the 1.25.0 era and now): take the earliest buildable commit forward, name it in the record; the dating logic survives a small shift.
-- The window 1.25.0..2.4.11 is large: the halving loop may span several device sessions; each batch lands its narrowed window in the ticket so the next session resumes cold.
-- The degradation branch lands: no fix exists to prove; Steps 14-15 collapse into the owner question and the ticket parks per D15 with the dossier attached. The plan says so now so the collapse is a ruling, not a failure.
-- The fix trades cost for a snap: the first-frame-settled rule and the 150/200ms feel are pinned by suites, and the vision read catches a snap in Step 14''s contact sheets.
-- The XS band is too loose to prove anything: two before-runs establish the spread; a third capture beats a widened claim.
-- Two builds at once: D12''s slot rule; a queued executor waits, a conflict is a stop-and-report.
-
-## Proof
-
-- Acceptance 1 (the regressed marks and the commits identified by measurement or bisect): the standing record closes the marks half (none regressed); Step 12''s per-candidate tables name the commit, or Step 11/12''s record names the non-code owner of the dead zone.
-- Acceptance 2 (the root cause named with frame evidence): Step 13''s record citing the dual audit''s paired gap lists, the thread the work landed on, and the named commit''s diff - or the degradation dossier, which names the cause with the same evidence.
-- Acceptance 3 and 4 (the overlay and both sheets pass the 30fps floor on a Release gate-ON build): Step 14''s video-path audits printing gaps over 33ms NONE, each contact sheet vision-read, the SF record beside.
-- Acceptance 5 (the XS measurably unchanged): Step 15''s four after-medians against Step 2''s recorded band.
-- Acceptance 6 (yarn validate green): Steps 13, 14''s build and 16''s final branch.
-
-## Grill findings answered
-
-- 2026-10-25, finding 1 (the pre-tap open mode is not on uat; Steps 10 and 14 would have no overlay-close instrument): fixed. Step 9''s first deliverable is the mode''s recovery or re-implementation from 4ffd1f34, named as its own deliverable.
-- 2026-10-25, finding 2 (D12 narrowed the fleettest gate the repo keys on the phone, not the package): fixed. D12 now states the tension openly, operates under the campaign''s standing dev-id precedent with the badging stop guarding the owner''s line, and D15''s park asks the owner to bless the line explicitly.
-- 2026-10-25, finding 3 (Android-only measured builds contradict the owner''s both-platforms order of the same day): fixed. Every build session compiles both platforms in parallel for the same commit; the tip''s and fix''s iOS artifacts feed the XS steps, anchor artifacts are recorded-and-discarded canaries with a toolchain-drift note rule.
-- 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. Step 9 now pins the order: tap, animation, then dump, so the ring''s presents cover the entrance the video recorded.
-', NULL, NULL, '{}', false, false, false, NULL, NULL, 34816, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-24 20:02:57.06513+00', '2026-10-25 17:43:31.640077+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (24, 1, NULL, 'T-276', '# T-276 — Ten bottom-bar arrangements, screenshotted for the owner''s pick
 
 Owner order 2026-10-20. The deliverable is ten screenshots on this row, not merged code: the branch dies after the shots, uat never moves.
@@ -16453,6 +16654,209 @@ at parity (row 77''s 0.007 ledger) and keeps its measured-accepted path.
 - 2026-10-21, D10 - Version 2.3.6: nothing above 2.3.5 had landed at fetch time, so this lane lands first
   under the standing collision rulings and the sisters renumber above.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 27648, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-20 22:42:26.304232+00', '2026-10-21 03:13:15.534399+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (48, 1, NULL, 'T-410', '# T-410 — The next ten languages
+
+## Goal
+
+The app ships six locales (en, ar, ms, so, hi, th). Ten more land, chosen by R9''s ranked launch
+set, taking the shipped set to sixteen. Every new catalog is gated, sourced and swept; the six
+existing locales and every English byte stay untouched.
+
+**The ten (R9 §1 rank, reach, state):**
+
+| Tag | R9 rank | Reach | R9 state | Catalog basis (sourced-names.json) |
+| --- | --- | --- | --- | --- |
+| id | 2 | 249.8M | READY, 11/11 (Istijabah low) | kemenag/nu-online, complete |
+| ur | 3 | ~280M | READY (Duha/Istijaba unsourced) | ur-wikipedia/mihrab, 9/11 |
+| bn | 4 | ~160-180M | READY, 10/11 (Istijaba null) | namajersomoysuchi/muslimbangla |
+| fa | 6 | ~110M | READY, 10/11 (Istijaba null) | bahesab/badesaba |
+| fr | 7 | ~125M | READY (Istijaba null; Duha unreviewed, text present) | habous/mihrab |
+| tr | 8 | ~85M | EXCEPTION (Diyanet labels) | diyanet, 11/11, exception documented in R9 §3 |
+| ha | 9 | ~60-75M | NEEDS SOURCING (5 nulls + explanations) | islamhouse-ha/ha-wikipedia, 6/11 |
+| sw | 10 | ~30-40M | NEEDS SOURCING (3 nulls + 27-char row) | wikishia-sw/al-azan, 8/11 |
+| pt | 18 | ~7.5M | NEEDS SOURCING (absent) | fresh from Brazilian/Portuguese mosque tables (R9 §2, sources 11-13) |
+| uz | 12 | 29.9M | READY, 9/11 (Midnight/Istijaba null) | islom-uz, the best Duha authority match |
+
+ps ranks above uz in R9 §1 but R9 §4''s own launch set excludes it (translated phrases violate
+the naming rule, 6/11 bare, all explanations null) and includes pt; §4''s set plus its first
+post-launch row is the selection, so ps is not in this wave.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are id, ur, bn, fa, fr, tr, sw, ha, pt, uz** — R9 §4''s launch set minus the shipped
+   en/ar/ms, plus uz, the named first post-launch row. Challenged: pure §1 rank pulls ps over uz.
+   Holds: the ticket names the ranked launch set, and §4 is the ranking with readiness applied.
+2. **fa and ur join RTL_IDS** and inherit the landed R3.1 machinery (crossing relaunch, forceRTL,
+   remount version, chevron/comma glyphs, widget rtl flags). No layout code changes: the surfaces
+   are direction-keyed already.
+3. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs**: Rubik-Regular covers all six
+   Persian-specific letters (U+067E U+0686 U+0698 U+06AF U+06A9 U+06CC), so **fa reuses the
+   ARABIC record**. Rubik lacks all five Urdu-specific letters (U+0679 U+0688 U+0691 U+06BE
+   U+06D2), so **ur bundles the Noto Naskh Arabic Regular/Medium pair** under its own record.
+   **bn bundles the Noto Sans Bengali Regular/Medium pair.** Each record''s scriptLineHeight is
+   set from the pair''s own measured hhea box (the row-106/row-87 laws): R3 §3''s floors carry
+   Naskh at 1.4em and Devanagari/Thai at 1.5em; Bengali has no R3 row, so the Bengali record''s
+   floor is this wave''s own hhea measurement, recorded in the record''s comment with the numbers.
+4. **Numerals**: catalog prose follows R12''s per-locale table — bn carries Bengali digits in its
+   explanation strings, fa Persian digits, all others Latin; times, dates and countdowns stay
+   Latin in every locale per the landed row-82 law that already governs hi and th.
+5. **Unsourced slots take the naming rule''s own transliteration answer** (Istijaba, Duha, Sahur
+   loans), recorded low-confidence with the derivation in the entry''s note — the so precedent
+   (''Istijaabo''). The Catalog type requires every key, so no row is ever dropped; R9''s
+   "suppress/drop" advice lands as the loan instead. fr needs only the Istijaba loan: its Duha
+   row already carries the transliteration text.
+6. **sw Last Third ships "Theluthi ya mwisho" (18 chars)**, the label-shaped substring of
+   al-azan''s attested sentence, keeping the full sentence in the explanation string; recorded
+   medium with the truncation basis. The 24-char prayer-label gate stays untouched.
+7. **pt is sourced fresh in Step 1** from live Brazilian and Portuguese mosque tables (R9 §2''s
+   attested pattern: the five transliterated, Nascer do sol for Sunrise), each entry with slug,
+   confidence and note.
+8. **tr ships R9''s Diyanet exception labels verbatim** (Imsak as the Fajr row, Gunes, Ogle,
+   Ikindi, Aksam, Yatsi, Teheccud, Sahur, Kusluk): the exception is R9 §3''s documented finding,
+   verified on both language versions of the Diyanet page.
+9. **Version line**: every commit is typed feat, so the first lane commit takes the minor from
+   2.11.45 to 2.12.0, package.json + app.json + android/app/build.gradle together, fetching
+   origin first; a Lane 2 collision resolves to the higher number.
+10. **app.json edits are agent-ruled inside this ticket**: the fonts array, the ten expo.locales
+    entries, CFBundleLocalizations and the version field are the mechanical carriers R4 B.10
+    pins; the edits are reversible in git and every byte is gated by nativeLocalesConfig
+    (androidLocaleConfig derives its list from expo.locales, so no second file).
+11. **No What''s New item ships** — the archive''s existing language item already reads "Added
+    support for more languages"; the banner restamps with the version.
+12. **README gains one Features bullet** naming the sixteen languages, satisfying the
+    user-facing-feature rule without touching any pixel.
+13. **Lookup test rows land with their locale''s own step** (grill finding 2): locale.test.ts''s
+    fixtures use fr-FR as an unshipped tag today; the moment Step 3 ships fr those rows flip, so
+    Step 3 rewrites the fr-FR fixtures to a genuinely unshipped tag (es-ES) and each step adds
+    its own locales'' lookup rows the same commit its LOCALE_IDS entries land. No suite stays red
+    across a step boundary.
+14. **chevronDirection''s test ternary becomes direction-aware** (grill finding 4): the suite
+    pins `locale === ''ar''`; before fa/ur join, the suite''s it.each gains fa and ur and reads
+    localeDirection so the glyph expectation follows the set, not a hard-coded locale.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by ten; RTL_IDS gains fa, ur.
+- `shared/i18n/id.ts, ur.ts, bn.ts, fa.ts, fr.ts, tr.ts, sw.ts, ha.ts, pt.ts, uz.ts` — new, one
+  full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed (pt added; nulls filled or
+  loan-recorded; sw Last Third re-shortened; fr gains only the Istijaba loan).
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; the lock
+  regenerates and the lock suite''s five-locale count statement updates in the same commit.
+- `shared/__tests__/locale.test.ts` — the new locales'' detection rows land per decision 13;
+  fr-FR fixtures move to es-ES in Step 3.
+- `shared/__tests__/typography.test.ts` — the LATIN-record filter''s exception list grows by
+  ur, fa, bn as their script records land; expectScriptRecord cases for the Naskh, Bengali and
+  fa-Arabic records.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — per decision 14.
+- `shared/languageNames.ts` — ten endonym rows, hand-verified (a ReadonlyArray row is not
+  compiler-forced), in the measured codepoint order: Bahasa Indonesia, Bahasa Melayu, English,
+  Français, Hausa, Kiswahili, Oʻzbekcha, Português, Soomaali, Türkçe, اردو, العربية, فارسی,
+  हिन्दी, বাংলা, ไทอ — the header''s script chain gains Bengali after Devanagari.
+- `shared/typography.ts` — RECORDS: id/fr/tr/sw/ha/pt/uz → LATIN; fa → ARABIC; ur → a new
+  Naskh record; bn → a new Bengali record.
+- `assets/fonts/` — NotoNaskhArabic-Regular/Medium.ttf, NotoSansBengali-Regular/Medium.ttf (OFL,
+  same licence file already present).
+- `app.json` — fonts array, ten expo.locales entries (permission strings, ios
+  Localizable.strings, android resource names), CFBundleLocalizations order, version.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and RTL sets grow (fa, ur join RTL).
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  LOCALES lists grow.
+- `README.md` — one Features bullet.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives most completeness: LocaleId is a closed union, so the moment LOCALE_IDS
+grows, loader MODULES and typography RECORDS fail to typecheck until every new locale carries
+its row, and each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES
+is the one hand-verified list (a ReadonlyArray entry is not compiler-forced), so each step''s
+gate re-reads the picker row count against LOCALE_IDS length. The data side is gated the same
+way: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity,
+24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces native-strings.json
+byte-identically on both platforms), widgetStaticStrings (the widget binaries render the
+statics table row for row), catalogLock (en''s hash unchanged, the suite''s locale list matching
+the lock file). Invariant: en stays byte-identical and the six existing locales'' suites stay
+green without editing a single existing value; no suite is left red across a step boundary.
+
+Per locale the recipe is: catalog file (sourced prayer names verbatim, UI copy authored to the
+R2 gates, calendar keys allowed loanword parity), loader rows, endonym row, typography record,
+RTL flag (fa, ur), lock-list and lock-suite rows, gates rows, detection rows, native-strings
+row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); the R2 machine-translation pipeline with a runtime i18n dependency (the landed
+practice is authored catalogs behind gates, no new dependency); a pseudo-locale stage (visuals
+are settled, no new surfaces, so the 140 percent expansion stage buys nothing here); shipping
+Nastaliq for ur (R3''s floors: 2.5em unusable; Naskh is the verdict).
+
+## Steps (each 2 points, total 16)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: pt
+   built fresh from live mosque tables; ha''s five nulls and explanations closed from Hausa
+   Islamic media (BBC Hausa Ramadan timetables, NSCIA output) with bare forms (Asuba, Azahar)
+   over Sallar X; sw''s Suhoor/Duha loans and the re-shortened Last Third; ur/fa/bn/uz loans and
+   fr''s Istijaba loan recorded per decision 5; id''s Istijabah entry kept low. Every entry
+   non-null with slug, confidence, note.
+2. **Step 2: Locale plumbing lands with the id and tr catalogs** — LOCALE_IDS + 2, loader,
+   endonyms, LATIN records, the lock list plus catalogLock.test.ts''s list, gates rows,
+   locale.test.ts rows for id/tr, native-strings and widget-statics rows for id and tr; the
+   plumbing comments (locale.ts, typography.ts) updated to the new counts.
+3. **Step 3: The fr and uz catalogs land** — same recipe, plus locale.test.ts''s fr-FR fixtures
+   rewritten to es-ES so the unshipped-tag rows stay true; uz carries the islom.uz authority
+   labels (Bomdod, Peshin, Shom, Xufton, Tahajjud, Saharlik, Ishroq).
+4. **Step 4: The sw and ha catalogs land** — same recipe; sw with the re-shortened Last Third,
+   ha with the bare-form names.
+5. **Step 5: pt lands fresh-sourced and ur lands RTL** — the Naskh pair bundled and measured,
+   the URDU record, RTL_IDS gains ur, typography.test.ts''s LATIN filter and record cases move
+   with it, the RTL gates rows red first, locale.test.ts''s ur rows and pt rows.
+6. **Step 6: fa lands RTL on the Arabic record and bn lands with its own** — RTL_IDS gains fa,
+   typography.test.ts extended for fa and bn, locale.test.ts''s fa rows, chevronDirection made
+   direction-aware per decision 14; the Bengali pair bundled and measured, the BENGALI record.
+7. **Step 7: The native and widget surfaces carry all ten locales** — app.json locales blocks +
+   fonts + CFBundleLocalizations, the four widget inline STATIC tables, nativeLocalesConfig and
+   widgetStaticStrings extended red first, i18nBridge''s CATALOGS grown with its per-locale
+   parity row.
+8. **Step 8: The full sweep is green and the README names sixteen** — every suite green, the
+   widget runtime load suite re-run after the font installs, yarn validate, README bullet,
+   audit-ready.
+
+## Risks
+
+- **Font metrics lie**: a Naskh or Bengali box that clips stacked marks. Shows in the
+  typography sweep and the measured hhea numbers in the record comments; R3 §3''s 1.4em floor
+  guards Naskh, and the Bengali record carries this wave''s own measured floor (decision 3).
+- **RTL purity in fa/ur copy**: a stray Latin run in an RTL string fails the catalogGates RTL
+  row before it can ship.
+- **Width**: a long name (fr''s Lever du soleil) pushes the first column. The runtime-measured
+  width surface absorbs it; the 24-char gate bounds the prayer labels.
+- **Version collision with Lane 2**: both lanes bump per commit. Fetch origin before every
+  bump, take the higher number, rebase forward before the merge.
+- **The catalog lock drifts**: en must stay byte-identical; any en edit is out of scope and
+  fails catalogLock.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table plus the ticket''s acceptance list, both
+   citing R9 §§1/4 rows verbatim.
+2. Sourcing recorded: `jq` over shared/i18n/sourced-names.json shows every names entry for the
+   ten non-null with a source slug; catalogGates'' sourced-verbatim row green in the suite
+   output.
+3. Coverage and regression: `yarn validate` exits 0; the suite list shows catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typographySweep,
+   chevronDirection green over sixteen locales.
+4. RTL, numerals, detection: `grep RTL_IDS shared/i18n/locale.ts` shows ar, fa, ur; the bn and
+   fa catalog prose carries Bengali and Persian digits per R12; locale.test.ts''s rows cover
+   pt-BR → pt, fa-IR → fa, ur-PK → ur and the unshipped es-ES fallback, each landed red first
+   in its own locale''s step.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 48128, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 15:53:12.003653+00', '2026-10-28 16:12:01.854337+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (29, 1, NULL, 'T-297', '# T-297 - The What''s New modal groups its items under version headings
 
 ## Goal
@@ -17773,6 +18177,306 @@ The posture limit, measured three ways on iPadOS 27.0: the AppDelegate gate is n
 
 Commits: 8e1ce268 (2.11.32 carrier), be2921dc (2.11.33 scene selector), 175ea507 (2.11.34 real selector), 784cb1dd (2.11.35 @objc), 53336425 (2.11.36 withFinalizedMod wiring), 852c7517 (2.11.37 marker), merge 95047b2e on local uat.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 46080, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:15:19.78053+00', '2026-10-28 04:20:24.245343+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (49, 1, NULL, 'T-419', '# T-419 — The next ten languages, proven on the XS
+
+## Goal
+
+The app ships sixteen locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn).
+Ten more land, taken from R9''s ranked remainder and completed into prayer-names.json''s own readiness
+order, taking the shipped set to twenty-six locale catalogs. Every new catalog is gated, sourced and
+swept; the sixteen existing locales and every English byte stay untouched. The merged tree then proves
+itself on the owner''s iPhone XS as a development build installed as the original app, so the owner
+reads the new languages on glass and rules.
+
+**The ten (rank, reach, state, closure this wave):**
+
+| Tag | Rank | Reach | State today | Closure this wave |
+| --- | --- | --- | --- | --- |
+| ps | R9 #11 | ~50M (Afghanistan, KPK) | NEEDS SOURCING, 6/11, phrases violate the naming rule | core six swap to the Arabic loans the same portal prints (R9 §3: "tables prefer the short loan"); five nulls and five explanations per the loan rule |
+| zh-Hans | R9 #13 | 28.1M | EXCEPTION, 9/11, translated set | the written standard both PRC and Taiwan religious-affairs pages print, kept as R9 §3''s documented exception; Duha/Istijaba loans; the mihrab-only Last Third gains one independent confirmation |
+| zh-Hant | R9 #13 | (the pair''s other half) | EXCEPTION, 9/11 | same exception; its Last Third is unsourced today and closes this wave |
+| ru | R9 #16 | 15M | READY, extras held, 10/11 | the four mihrab-only rows gain one independent confirmation each (ru-wikipedia prose); Duha/Istijaba loans |
+| az | R9 #19 | 10.1M+ | NEEDS SOURCING, 8/11 | Suhoor swaps to the attested Sahur (R9 §3); Last Third/Duha/Istijaba loans |
+| de | R9 #20 | 5.6M | READY after the fork, 9/11 | R9 §3 rules Fadschr and Ischa compliant German transliterations: they ship; the AGPL-only rows gain one independent confirmation each (gebetszeiten.de); Duha/Istijaba loans |
+| sq | R6 §5 no-speaker list | 5M+ (Albania, Kosovo, diaspora) | SHIP ON THIS DATA, 6/11 core all KMSH high | the only unshipped locale on R6 §5''s no-speaker list; Imsaku rides the shipped tr Imsak precedent (KMSH glosses it as Fajr); five nulls and two explanations close |
+| bs | R9 §3 exception row | 2M+ (Bosnia, diaspora) | READY as authority exception, 6/11 core all vaktija high | the vaktija''s own labels kept (R9 §3); four nulls per the loan rule |
+| ta | R4 C.2 UK diaspora | 10M+ (Tamil Nadu, Sri Lanka, UK) | standard six ready, extras held, 6/11 | Suhoor swaps to the attested Sahar loan in Tamil script (R9 §3); four nulls per the loan rule |
+| ml | R4 C.2 Kerala and Gulf | 10M+ | core ready, Duha sourced, 8/11 | Tahajjud kept as R9 §3''s documented exception (no one-word compliant form exists); Duha is a real sourced name; three nulls per the loan rule |
+
+**Not taken, ruled here:** yo, ig, ln, ku, es, nl — one line each under Decisions 4 through 6.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml, counted by locale catalog.**
+   R9''s ranked remainder after #410''s ten is ps, zh, ru, yo, az, de, ig, ln. R9 recommends against ig
+   and ln, and yo''s catalog is absent, which leaves ps, zh, ru, az, de. That is five; the pick extends
+   into the catalog''s other locales to complete ten. Challenged: count zh as one pick and take five
+   extensions. Rejected: the fifth-strongest extension is weaker than every locale already picked
+   (decision 3), and the owner''s goal line is sixteen-to-twenty-six, which holds only when the ten are
+   the ten new catalogs. zh ships as its two written standards because R4 C.1 rules the pair
+   both-or-neither: a Traditional reader cannot comfortably read Simplified. R9 itself abbreviates the
+   pair as "the zh pair" in one ranked row.
+2. **zh ships both standards and nothing less.** Shipping zh-Hans alone would lock Taiwan, Hong Kong
+   and Macau readers out; R4 A.4 rules a bare zh entry must never be the fallback for a Traditional
+   reader. Both files land, in one step, under one exception ruling.
+3. **The extension takes sq, bs, ta, ml and leaves ku, es, nl.** The four taken are the four
+   strongest by R6 §5''s readiness ladder (sq sits on the no-speaker-needed list on the KMSH
+   authority; bs on the vaktija authority; ta on true-time-ta; ml''s six rest on ml-wikipedia, R6
+   §5''s sourced tier) and by UK weight (R4 C.2 names the Tamil Muslim and Kerala
+   diaspora in Britain, Bosnian and Albanian communities are established). Challenged twice: ku''s R4
+   figure (30M+) beats all four on population. It does not flip the pick: R9''s own verified numbers
+   put the remaining catalog locales at 2-10M reachable, ku''s catalog is the weakest of the seven
+   (Sunrise unsourced above low confidence, all five extras null, R6 §5 holds the whole language), the
+   Kurdish Muslim majority reads Sorani (ckb), which no catalog carries, and the Kurmanji belt is
+   bilingual in tr, which already shipped.
+4. **yo stays out.** R9 §2 defers it unless a speaker is at hand, no speaker exists, and no
+   prayer-table genre exists to harvest. Revisit when a speaker appears.
+5. **ig and ln stay out.** R9 recommends against both: audiences under 2M and 1-3M with no source
+   genre; Nigeria and both Congos are served by the shipped ha, sw, fr, ar.
+6. **es and nl stay out.** Both are R6 §5 hold-the-whole-language orthographic forks (Fayr/Fajr;
+   Zonsopkomst confirmation) with AGPL-only extras, and their Muslim-reachable audiences read the
+   shipped ar, fr, tr. R4 C.3 itself marks nl "low priority, optional". Their exclusion keeps
+   locale.test.ts''s es-ES unshipped-tag fixtures true with no rewrite.
+7. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs, Pashto letters by explicit
+   codepoint:** Roboto carries ru''s Cyrillic, az''s schwa, and every sq/bs/de diacritic, so ru, az,
+   de, sq, bs take the LATIN record with no new font. Rubik carries the Persian six but lacks every
+   Pashto-specific letter (U+067C U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD
+   U+06AB all absent, both weights), and ps''s own sourced texts and endonym use them, so ps takes the
+   bundled Noto Naskh pair under the record ur already carries — no new font file, the URDU record''s
+   exact pattern — and joins RTL_IDS. NotoNaskhArabic measured present for the full Pashto set, both
+   weights. Tamil and Malayalam have no coverage in any bundled face, so ta and ml bundle the Noto
+   Sans Tamil and Noto Sans Malayalam Regular/Medium pairs, each script record''s line box pinned by
+   its own measured hhea box, the T-410 decision 3 pattern.
+8. **zh-Hans and zh-Hant bundle subset Noto Sans SC and TC pairs, not the full statics.** The full
+   pairs run near 10MB per weight, about 40MB for the four files, against a wave whose two other new
+   scripts cost about 1MB together. The subsets are cut with fontTools over the closed string set
+   (each zh catalog, its native-strings row, its widget-statics row, its endonym, the What''s New keys
+   resolve through the catalog), and a new gate recomputes that character set in-test from the
+   committed JSON and diffs it against a committed glyph lock generated from the subsets'' own cmaps,
+   so any catalog byte the subset misses fails the suite naming the character; the lock carries the
+    regenerating command in a _comment key, the house pattern for machine-read JSON. The record still names
+   a bundled face — the determinism the th, hi, ur, bn precedent buys — at a fortieth of the bytes.
+   OS fallback keeps serving the surfaces it already serves today: the picker''s foreign endonyms
+   (Roboto already lacks the Bengali that row shows under the en locale) and the widget binaries''
+   statics (no fontFamily named in either widget file, the system font on both platforms). Challenged:
+   bundle the full pairs and introduce no new mechanism. Rejected: forty megabytes for the wave''s
+   eleventh and twelfth locales, in a London-only app, is a cost no invariant demands, and the gate
+   closes the one risk the subset adds.
+9. **The resolver gains script-subtag matching for zh.** A device tag zh-Hans-CN resolves zh-Hans,
+   zh-Hant-TW resolves zh-Hant, a tag whose region is TW, HK or MO resolves zh-Hant, and every other
+   zh tag or a bare zh languageCode resolves zh-Hans — CLDR''s likely-subtags answers for the regions
+   iOS and Android report, and R4 A.4''s ruling that bare zh must not serve a Traditional reader.
+   locale.test.ts rows land red first in the zh step. No other locale needs it: the other nine match
+   by exact tag or languageCode today.
+10. **Numerals:** catalog prose follows R12 — ps carries Persian digits in its explanation strings,
+    every other new locale carries Latin; times, dates and countdowns stay Latin in every locale (the
+    row 82 law).
+11. **Unsourced slots take the naming rule''s own transliteration answer** — the loan rule, T-410
+    decision 5: the Catalog type requires every key, so no row drops; the loan lands with text, slug,
+    confidence and the derivation in its note. Rows whose only source is an AGPL catalog (mihrab or
+    al-azan as sole slug) gain one independent confirmation each before shipping, per R6 §2. The
+    census, row by row: de''s Ischa, Mitternacht, Letztes Drittel and Suhur confirm against
+    gebetszeiten.de; ru''s four mihrab-only rows confirm against ru-wikipedia prose; bs''s Ponoć gains
+    one independent Bosnian attestation; zh-Hans''s Midnight, Suhoor and the low-confidence Last
+    Third, and zh-Hant''s Midnight and Suhoor, confirm against the zh-wikipedia article and the two
+    government religion pages R6 §2 already registers (Taiwan religion.moi.gov.tw, PRC
+    mzzjj.gz.gov.cn), which corroborate the translated set as a whole.
+12. **The three prescribed swaps land in the sourcing step:** ps''s six core names move from the
+    translated phrases to the Arabic loans the same portal prints; az''s Suhoor moves to the attested
+    Sahur; ta''s Suhoor moves to the attested Sahar loan in Tamil script (all three are R9 §3 rows).
+13. **sq''s Fajr row keeps KMSH''s own Imsaku**, the authority printing the Arabic gloss beside it —
+    the shipped tr Imsak precedent applied, not a new exception. The same convention note lands in
+    the catalog''s help text the tr precedent set.
+14. **Version line:** every commit is typed feat, so the first lane commit takes the minor from
+    2.19.2 to 2.20.0, package.json, app.json and android/app/build.gradle together, fetching origin
+    first; a collision with a concurrent session resolves to the higher number.
+15. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10 precedent): the
+    expo-font array, the ten expo.locales entries, CFBundleLocalizations and the version field are the
+    mechanical carriers R4 B.10 pins; every byte is gated by nativeLocalesConfig.
+16. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+17. **README''s Features bullet rewrites from sixteen to twenty-six.**
+18. **The device step obeys the owner''s 2026-10-28 order (T-400, comment 4006): never a fleettest
+    iOS variant.** The development build installs on the iPhone XS as the ORIGINAL app — bundle id
+    <pkg>, original name — through the standing ios-build worktree recipe. Both platforms
+    compile in parallel in that build, never two of the same toolchain at once. The Android apk is
+    built to prove the platform unbroken and is not installed, so no aapt2 fleettest gate applies.
+    The step runs alone in a fresh lane session, after the audit is green. Reads are transcribed on
+    the ticket, never screenshotted; IPHONE_UDID stands in every record.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to twenty-six; RTL_IDS gains ps; resolveInitialLocale
+  gains the zh script-subtag match (decision 9).
+- `shared/i18n/ps.ts, zh-Hans.ts, zh-Hant.ts, ru.ts, az.ts, de.ts, sq.ts, bs.ts, ta.ts, ml.ts` —
+  new, one full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed per decisions 11 through 13; the
+  ps-islamery loan rows, the az and ta swaps, the independent confirmations, the loans and derived
+  explanations, every entry ending non-null with text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the ten''s detection rows (zh script-subtag rows red first);
+  es-ES fixtures stay untouched (decision 6).
+- `shared/__tests__/typography.test.ts` — the LATIN record''s list grows by ru, az, de, sq, bs; ps
+  joins the Arabic-record cases; Tamil, Malayalam and the two zh record cases with their measured
+  boxes.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — ps joins the RTL set; the suite is
+  direction-aware already.
+- `shared/languageNames.ts` — ten endonym rows in codepoint order: the Latin four (Azərbaycanca,
+  Bosanski, Deutsch, Shqip), Cyrillic (Русский) after Latin, پښتو beside the Arabic block, தமிழ்
+  after Bengali, മലയാളം after Tamil, 简体中文 and 繁體中文 after Thai.
+- `shared/typography.ts` — RECORDS: ru, az, de, sq, bs map LATIN; ps maps the Naskh record ur
+  carries; ta gets a Tamil
+  record and ml a Malayalam record pinned by their measured hhea boxes; zh-Hans and zh-Hant each get
+  a CJK record on the subset pairs.
+- `assets/fonts/` — NotoSansTamil-Regular/Medium.ttf and NotoSansMalayalam-Regular/Medium.ttf (full
+  statics, OFL); NotoSansSC-Subset-Regular/Medium.ttf and NotoSansTC-Subset-Regular/Medium.ttf
+  (generated subsets, OFL, the licence file already present).
+- `shared/i18n/cjk-glyph-lock.json` — new: the character set the two subset pairs carry, generated
+  from their cmaps, carrying the regenerating command in a _comment key.
+- `shared/__tests__/cjkSubset.test.ts` — new: recomputes the zh closed string set from the
+  committed catalogs and JSON rows, diffs it against the glyph lock, and fails naming any character
+  the lock lacks or any lock character the strings dropped.
+- `app.json` — the expo-font array grows by eight TTFs, ten expo.locales entries,
+  CFBundleLocalizations to twenty-six, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each, and the four locale-finder sites beside them gain the zh mapping of
+  decision 9 (a TW, HK or MO region resolves zh-Hant, every other zh tag resolves zh-Hans), so a
+  zh-TW device''s widgets render Traditional and not the en fallback.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow (ps joins RTL), and the
+  sourcing gate''s locale list grows a T419_TEN sibling beside T410_TEN so the text, slug and
+  confidence bar covers the ten''s names and explanations.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to twenty-six.
+- `README.md` — the Features bullet names twenty-six.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, the
+loader MODULES and typography RECORDS fail to typecheck until every new locale carries its row, and
+each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so each step''s gate re-reads the picker row count against LOCALE_IDS length. The
+data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget,
+brand bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged), plus this wave''s cjkSubset.
+Each locale step lands the locale''s whole keyed surface in one commit — catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows, the lock and gate list rows, its detection rows — so no suite is
+red across a step boundary (T-410 decision 13''s law, applied to the JSON-vs-app.json parity too).
+
+Per locale the recipe is the T-410 recipe: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, RTL flag where it reads right to left, lock-list and lock-suite rows, gates rows, detection
+rows, native-strings row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: full Noto Sans SC/TC statics (decision 8''s forty megabytes); relying on OS
+fallback for zh inside the app UI (the repo''s precedent names a bundled face for every non-Latin
+script it ships); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s answer);
+a runtime i18n dependency (the landed practice is authored catalogs behind gates); moving the device
+build before the audit (the owner tests once, on the audited tree).
+
+## Steps (6 x 2 points + 1 x 3 points = 15)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: the ps swap
+   to the portal''s own Arabic loans; the az and ta Suhoor swaps; the independent confirmations for
+   every mihrab-only or al-azan-only row the ten carry (de four rows, ru four, bs one, zh-Hans
+   three, zh-Hant two, per decision 11''s census); the loans and derived explanations filling every null (ps five names and five explanations,
+   sq five and two, bs four and two, ta four and two, ml three and two, zh two names and two
+   explanations each, ru one, az three, de two); every entry ending non-null with text, slug,
+   confidence and note.
+2. **Step 2: Locale plumbing lands with the five Roboto-covered catalogs** — LOCALE_IDS + 5 (ru, az,
+   de, sq, bs), the LATIN records, loader rows, endonym rows, lock list and catalogLock.test.ts list,
+   gates rows, detection rows, native-strings and widget-statics rows, app.json locale blocks and
+   CFBundleLocalizations, the four widget STATIC rows, i18nBridge parity rows; the plumbing comments
+   updated to the new counts.
+3. **Step 3: ps lands RTL on the Naskh record** — RTL_IDS gains ps, the Naskh pair measured
+   covering every Pashto letter by explicit codepoint, Persian digits in the explanation prose per R12, the RTL gates rows
+   red first, ps detection rows, chevronDirection riding the direction-aware suite.
+4. **Step 4: ta and ml land with their bundled Noto pairs** — the Tamil and Malayalam pairs bundled
+   and measured, their records'' script boxes pinned by the measured hhea numbers in each record''s
+   comment, the expo-font array grown, the widget runtime load suite re-run after the install, red
+   first.
+5. **Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag
+   resolver** — the subsets cut over the closed string set, cjk-glyph-lock.json generated from their
+   cmaps, cjkSubset.test.ts red first, the two CJK records, resolveInitialLocale''s zh matching with
+   its locale.test.ts rows red first, the four widget finder sites'' zh mapping with its rows red
+   first, both endonyms, both full surfaces.
+6. **Step 6: The full sweep is green and the README names twenty-six** — every suite green over the
+   twenty-six locales at full coverage, yarn validate exits 0, the widget runtime load suite re-run,
+   en''s lock hash unchanged, README bullet rewritten, audit-ready.
+7. **Step 7: The XS development build installs as the original app** — device step, 3 points, alone
+   in a fresh lane session, after the audit is green. The standing ios-build worktree
+   ($HOME/athan-gitree/worktrees/ios-build) moved to the merged lane SHA, its .env rewritten to
+   EXPO_PUBLIC_ENV=local and EXPO_PUBLIC_IOS_WIDGETS=1 with no suffix and no fleettest app group,
+   prebuild, the atlas''s xcodebuild command with DEVELOPMENT_TEAM=$TEAM_ID, the bundle id asserted
+   <pkg> with the original name; the Android side compiles in parallel from the same SHA
+   to prove the platform, its apk not installed; install to the XS through IPHONE_UDID, the owner
+   reads the twenty-six languages on glass, the reads transcribed on the ticket.
+
+## Risks
+
+- **The subset misses a byte** after a catalog edit: cjkSubset fails naming the character; the
+  regenerating command sits in the lock''s header. The full-pair fallback is the recorded escape.
+- **The zh script match over-matches**: a yue-tagged device falls through to en (yue is the language
+  code, not zh); the TW/HK/MO region list is CLDR''s own likely-subtags answer, pinned in tests.
+- **Tamil and Malayalam metrics lie**: a box that clips stacked marks shows in the measured hhea
+  numbers and the typography sweep; the Tamil and Malayalam floors are this wave''s own measurements,
+  the Bengali precedent.
+- **ps RTL purity**: a stray Latin run in an RTL string fails catalogGates'' RTL row before it ships.
+- **Width**: ru''s 17-char Midnight and ml''s stacked names ride the runtime-measured width surface;
+  the 24-char gate bounds every prayer label.
+- **Version collision with a concurrent session**: fetch origin before every bump, take the higher
+  number, rebase forward before the merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The device build breaks the both-platforms rule or drifts toward a fleettest variant**: the step
+  opens by restating the owner''s order; the bundle-id assert stops any suffixed artifact before
+  install.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table and the ticket''s acceptance list, citing R9 §1,
+   §3 and §4, R6 §5, R4 C.1, C.2 and A.4 row for row.
+2. Sourcing recorded: `jq ''[.ps, .["zh-Hans"], .["zh-Hant"], .ru, .az, .de, .sq, .bs, .ta, .ml] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0; the sourcing
+   gate of catalogGates (the T419_TEN list) is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, cjkSubset, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   chevronDirection and locale green over twenty-six locales at full coverage, with the sixteen
+   existing locales'' rows unedited.
+4. RTL, numerals, detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps; the ps
+   catalog prose carries Persian digits; locale.test.ts covers zh-Hans-CN to zh-Hans, zh-Hant-TW and
+   zh-TW to zh-Hant, zh-Hant-HK to zh-Hant, bare zh to zh-Hans, ps-AF to ps, ru-RU to ru, and the
+   untouched es-ES fallback.
+5. The widget runtime load suite re-run after the font installs:
+   `yarn test shared/__tests__/widgetRuntimeLoads.test.ts`.
+6. The device step: the ios-build worktree recipe invoked at the merged SHA; both compilers in
+   parallel; `plutil -extract CFBundleIdentifier raw <built.app>/Info.plist` prints <pkg>;
+   the XS install verified against IPHONE_UDID; the owner''s on-glass reads transcribed on the ticket.
+
+## Findings answered (griller pass 1, 2026-10-28)
+
+1. **BLOCKER, accepted and fixed.** The draft claimed Rubik covers the Pashto letters; re-measured
+   by explicit codepoint, Rubik lacks all eleven Pashto-specific letters and the first measurement
+   was an encoding artifact. Decision 7, the Files line, Step 3 and the typography cases now put ps
+   on the bundled Naskh pair under the ur record''s pattern. No new font file for ps.
+2. **GAP, accepted and fixed.** Decision 11 now names the rows each independent confirmation covers:
+   de four, ru four, bs one (Ponoć), zh-Hans three, zh-Hant two, each with its confirming source.
+3. **GAP, accepted and fixed.** The four widget locale-finder sites gain decision 9''s zh mapping, in
+   the Files list, in Step 5''s product, red first.
+4. **GAP, accepted and fixed.** catalogGates grows a T419_TEN sibling beside T410_TEN so the
+   sourcing gate enforces the ten''s text, slug and confidence bar over names and explanations; Proof
+   2''s jq now reads .explanations and the source and confidence fields, not .names alone.
+5. **NIT, accepted.** Decision 3 now names each of the four extensions'' basis, ml-wikipedia among
+   them, instead of claiming authority sourcing for ml.
+6. **NIT, accepted.** The glyph lock carries the regenerating command in a _comment key, the
+   native-strings and widget-statics pattern.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 49152, 4, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:03:18.607443+00', '2026-10-28 21:56:30.422846+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (47, 1, NULL, 'T-400', '# T-400 - the lock screen widgets'' type scale
 
 ## Goal
@@ -17852,6 +18556,103 @@ The run''s inter-lane build lock (the lead''s protocol for this run, backstopped
 8. Bare run:ios: the env is stated inline and the worktree .env is written.
 9. "Only such spot": the countdown now floors too, and its fixed-format worst case is stated.
 10. Atlas write-back: added to Files and Step 3.', NULL, NULL, '{}', false, false, false, NULL, NULL, 47104, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:18:07.287702+00', '2026-10-28 06:08:18.106379+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (35, 1, NULL, 'T-327', '# T-327
+
+Re-planned 2026-10-25 on the owner''s run order: the 3T deep-dive is back on, the morning''s deferral is lifted, and the instrument must first be made able to answer the question the first plan died on: compositor truth or encoder loss.
+
+Re-scoped 2026-10-28 (v7): Step 12 recorded the degradation dossier and parked the ticket, and the owner has since ruled twice - the 2.5.6 verdict (2026-10-25: XS very smooth, 3T still janky, per-shades suspected) and the unblock order (2026-10-26: the drops persist on the emptied 3T even under the landed redesign (T-374/T-375), the redesign introduced no regression, the floor problem is this ticket''s own subject again). This re-scope folds those orders into Steps 13-16; the subtask rows keep their numbers, titles and points.
+
+## Goal
+
+The 3T fell below the animation floor it held: the prayer overlay opens janked, the alert and settings sheets drag, while the iPhone XS stays smooth. Done means: the dead zone''s owner is named by measurement (a code regression dated to its commit, or the capture layer, or the device), the 3T''s audited interactions pass the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target, 60fps the goal) on Release gate-ON builds if the cause is code, the XS measures unchanged before and after any fix, and `yarn validate` is green.
+
+## The standing record (what the first plan settled)
+
+Steps 1, 3, 4, 5, 6, 7, 8 of the first plan are done; their records stand in the ticket''s comments. What they established, and this re-plans from:
+
+- Marks never regressed anywhere: overlay_open 134-156, overlay_close 139-158, sheet_alert_open 429-456, sheet_settings_open 368-392, closes 204-210, across every build and env measured.
+- The failure is in the frames: tap-adjacent dead zones 176-927ms, and entrance first-draws landing anywhere from 24 to 96 percent of travel run-to-run (the settings sheet sometimes first appears already 96.4 percent traveled).
+- The signature is version-invariant (anchors 2.4.11, 2.4.17, 2.4.23, 2.4.24 all show it to varying degree) and env-invariant (mock AND production builds). No commit in 887d7949..1c22014c owns it; a build does not have one signature - the same build snaps and renders cleanly within one night under fixed controls (Step 4''s A/B/A).
+- Against the 2026-09-11/12 baselines the regression is real on this same phone. Two candidates survive: a regression predating 2.4.11, or the capture layer (the SD820 encoder) degrading since September. Tonight''s instrument cannot separate them: the video path is the encoder''s word about the compositor.
+
+## What Steps 9-12 settled (the v6 record, still binding)
+
+- The instrument is separated (Step 9, committed 4f44752c) and made honest (Step 11''s fold, ed6a06a2: the SF read anchors on CLOCK_MONOTONIC through a measured per-capture suspend offset; the sentinel row falls; the present column is read). Both commits sit unmerged on lane1/T-327 and are folded forward onto the lane branch ahead of any new work (D17).
+- Step 10''s separated verdict on the 2.4.40 tip, the only on-glass dual read: the overlay open/close tap-adjacent dead zones are ENCODER LOSS (the compositor presents within a vsync of the tap); the sheets'' tap-adjacent delay is substantially COMPOSITOR TRUTH (a real 60-208ms tap-to-first-present on settings, a ~60ms wait then a 134ms compositor stall on alert, 275-296ms late presents on sheet-closing taps); the overlay close entrance carries REAL compositor gaps of 46-71ms (vision: a two-stage hold-then-snap tail); and every path shows a real ~100-250ms present burst ~1.7-2.2s after the tap, source unidentified (candidates: the hold-then-hide timers, the ago badge, the info-box fade).
+- Step 11''s A/B/A dated nothing in code: the September floors do not reproduce on either the 1.25.0 anchor or the tip on this phone tonight, and the recorder is a participant - under it even the September-smooth anchor fails SF cadence (entrance gaps 100-317ms), recorder-free the anchor still bumps 34-96ms while the tip holds 16-17ms. The 1.25.0..2.4.11 code window is REFUTED.
+- Step 12''s dossier: not app CPU (anchor idle 22.2 percent, tip 16.0), not charge, not heat. The phone and its recorder now convert the same app load into compositor stalls that September recorded as 16-17ms cadence.
+- The owner''s ruling on that dossier, delivered as orders: the felt jank is real on glass (2.4.28 and 2.5.6 production, 2026-10-25; still present on the emptied 3T under the landed redesign, 2026-10-26), the redesign introduced no regression, and the floor problem is this ticket''s own subject. The recorder-participant finding therefore re-weights the instrument, it does not end the ticket: what survives recorder-free and on glass is exactly Step 10''s compositor-real set - the sheet-path tap-to-present delay, the overlay-close entrance gaps, and the late burst.
+
+## Decisions
+
+Standing from the first plan, unchanged: D2 in part (frame evidence is the verdict, marks are triage; the SF branch''s PASS line is a labelled fallback, never a verdict alone - but see D16''s re-weighting), D5 (the fix preserves the pinned solid-ink invariant; no text renders through opacity), D6 (measured builds share one env so deltas are valid; absolute numbers never compare across envs), D7 (version bump on every commit, fetch first, patch by default).
+
+Standing from 2026-10-25: D9 (the instrument first - satisfied, Steps 9-11), D10 (the anchor - satisfied, Step 11), D11 (mock-window discipline, binding on every mock-env capture: the 1s pre-tap close variant, evening seeds read as boundary-adjacent, the second Athan-family package force-stopped before every capture, force-stop and relaunch between flows, battery and charge state recorded with every run), D12 (builds and installs: harness ritual builds in a worktree at the target commit, com.example.athan, Release gate-ON, EXPO_PUBLIC_PERF_MONITOR=1, mock env; every build session compiles BOTH platforms in parallel inside the one slot session; badging assert before every install, User 0 alone after; build-prod.zsh and build-mock.zsh serve owner-line installs only; the single build slot serializes everything), D13 (the owner''s run order: 60fps the goal, 30fps the floor, the XS must stay measurably unchanged, the owner approves the close), D14 (T-329 done, Step 2''s bands stand), D15 (the terminal park: when the last step is merged and the audit passes, the ticket parks in Awaiting Owner with Waiting on "the owner''s approval to close (run order 2026-10-25)", every subtask ticked, the worktree and branch deleted).
+
+New, 2026-10-28:
+
+- D16, floors ride the recorder-free read. Step 11 proved the recorder is a participant on this phone (the September-smooth anchor fails SF cadence under it), so a video-gap floor verdict is no longer sound evidence of a floor failure OR a pass on the 3T. The floor witness is the SF present-timestamp cadence read with no recorder running (FRAME_AUDIT=sf): zero present gaps over 33ms through the entrance window, 16-17ms the target. THE VERDICT OF RECORD IS THE PRINTED PRESENT-GAP LIST read against the 33ms floor and the bounded entrance window - never the script''s PASS line, whose band tolerates 34ms and excludes gaps over 100ms as freeze-or-idle (the folded sf branch prints them separately; on the folded code a known-bad build can print PASS). A present gap over 100ms inside the entrance window counts as a floor failure, not an unclassifiable freeze. The video+vision pass stays for what only it can say - the entrance''s visual honesty (monotonic travel, no snap, no ghosting) - and its gap list is read as the encoder''s word, per Step 10''s verdicts. A video-only failure with a clean SF read is recorded as encoder loss, never as a floor failure.
+- D17, the fold rides ahead of the fix. The two instrument commits (4f44752c, ed6a06a2) are folded forward from lane1/T-327 onto current uat as the first commits of this lane''s branch, version stamps renumbered above whatever uat then carries under the standing collision ruling, before any Step 13 work; Step 14''s measurements depend on the honest SF read. The lane1 branch itself stays untouched. The fold LANDED 2026-10-28 at 2.11.46/2.11.47 with these conflict resolutions (the record for any re-fold if uat moves): the stamps are three lockstep files (package.json, app.json, shared/whatsNew.ts - WHATS_NEW.version tracks the current stamp); e2e/device-atlas-iphone-xs.md keeps BOTH sides (T-400''s lock-widget and fleettest-wall rows beside this lane''s re-measured in-app tap row); scripts/version-collisions-allowlist.json keeps uat''s 2.4.41/2.4.42 entries and drops the lane''s duplicates (uat already carries rulings for both numbers). yarn validate green on the folded branch (236 suites, 6118 passed, 2 pre-existing skips).
+- D18, hypotheses after the redesign. H1 (per-row veiled ink) and the owner''s per-shade theory are ELIMINATED by experiment: T-374''s redesign replaced the shade system with one dim colour and the drops persist (owner order 2026-10-26). H3 (per-state colour map lookups) survives only where dim.ts still maps states on the sheet paths, and only as a secondary suspect. Live: H2 (hold-then-hide timers landing inside entrance frames - the Overlay''s setTimeout display flip and any sheet-path equivalent, candidates for both the close-tail gaps and the universal late burst) and H4/H5 (what work sits between the JS present() and the sheet layer''s first present - mount cost, layout, backdrop pre-compositing - and anything else the code read names). Step 13 ranks these against Step 10''s compositor-real defects and names the cause.
+
+## Files
+
+Read: e2e/README.md (mandatory before any measurement), e2e/AGENTS.md, e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh, e2e/scripts/baseline-compare.sh, e2e/flows/overlay-x10.yaml, e2e/flows/sheets-x10.yaml, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-iphone-xs.md, shared/perf.ts (the marks gate), and at Step 13 the live suspects the standing record names (components/overlay/Overlay.tsx, components/sheets/parts/Sheet.tsx and parts/*, components/sheets/screens/Settings.tsx and Alert.tsx, stores/ui.ts, stores/overlay.ts, hooks/useAnimation.ts).
+
+Changed: the fold (e2e/scripts/frame-audit.sh, e2e/flows/*.yaml, e2e/README.md, e2e/device-atlas-iphone-xs.md) then the fix files Step 13 names, e2e/baselines/android-3t.json (re-based medians and floors, dated, method noted), e2e/README.md''s Gotchas (the recorder-participant trap, D16), package.json / app.json (the version bump per D7, every commit).
+
+## Design
+
+The first plan bisected builds before asking whether the instrument can still see. The v6 re-plan inverted that: the instrument was made honest (Steps 9-11), the regression was dated (Step 11: nothing in code; the recorder is a participant; Step 12: the dossier), and the owner has since ruled the felt floor problem real and this ticket''s own. The design now: name the cause of what survives - Step 10''s compositor-real defects, the only frame findings that stand recorder-free interpretation and match the owner''s glass read - against the code as it stands after the redesign, fix it under the visual settlement, and prove the floor with the recorder-free instrument (D16).
+
+The three defects Step 13 must explain, from Step 10''s record (recorder running; each was corroborated on both instruments, so each is compositor-real, not encoder loss):
+
+- Defect A, the sheet paths'' tap-to-present delay: settings 60-208ms before the sheet layer first presents with a ragged 45-109ms first half-second; alert a ~60ms wait then a 134ms compositor stall before a clean 17ms entrance; sheet-CLOSING taps present 275-296ms late. The marks measure present-to-settled and never regressed, so the entrance animation is not slower - the delay sits between the JS present() and the first frame.
+- Defect B, the overlay close''s entrance gaps: 46-71ms real compositor gaps inside the close fade; vision reads a two-stage hold-then-snap tail.
+- Defect C, the universal late burst: a real ~100-250ms present cluster ~1.7-2.2s after the tap on every path, both instruments.
+
+And the constraint any named cause must respect: the iPhone XS (A12) shows none of it on glass, and the 3T''s JS marks never regressed - so the cause is work whose cost lands on the 3T''s first frame or its UI thread at tap time, not JS-thread animation math (which the marks would have caught).
+
+Fix candidates, chosen only after the cause is named, each preserving D5 and the visual settlement: deferring sheet content mount off the tap frame (the library''s own mount path, or the settings sheet''s onFirstPresent warm-up pattern generalised); batching display flips and other post-fade commits after every fade settles, off the entrance frame; timer discipline around hold-then-hide; hoisting any per-open computation the code read finds on the tap path.
+
+Alternatives rejected: bisecting further (Step 11 refuted the code window; a build has no one signature); trusting the video path alone for floors (D16); reverting the redesign (the owner ruled it introduced no regression); measuring on the emulator (banned; every perf number names a physical device); prod builds for the marks instrument (marks fold out at ENV=prod).
+
+## Steps
+
+The first plan''s steps 1-8 keep their numbers and records (1, 3-8 done; 2 done at the v6 re-plan). The v6 steps 9-12 are done. What remains runs as 13-16, points unchanged: 2 code, 3 device; a device step runs alone in a fresh session; e2e/README.md is re-read before every measurement step and the 3T atlas before any 3T screen work.
+
+13. Step 13: the root cause named and the fix implemented (2 points, code, T-358). First deliverable, the floor witness lifted: the folded sf branch is not yet D16''s witness - it hardcodes the layer name (which rotates per process relaunch), records no tap timestamp (so the entrance window cannot be bounded from the evidence), and its PASS line tolerates 34ms and excludes gaps over 100ms. One small harness commit lifts it: the dual branch''s --list layer resolution and per-capture anchor discipline, a recorded tap timestamp bounding the entrance window in the printout, and verdict semantics honest per D16 (gaps over 100ms inside the entrance window print as floor failures); desk-verified against synthetic captures as the e2e scripts'' precedent, yarn validate green. Then the cause and the fix. No bisect exists (Step 11 refuted the window); the cause is named by reading Defects A, B and C against the code as it stands after the redesign, on the threads the instrument already attributed them to (the delay is between JS present() and the first present; the close gaps and the late burst are compositor-timed work inside or after the entrance). Rank the live hypotheses per D18, name the cause in the step''s record with the frame evidence cited (which defect, which numbers, which code), and implement the fix under D5 and the visual settlement - behaviour only, no pixel moves. Red-first coverage on every line touched, a mutation pass on guarded logic, yarn validate green. The fix names its expected signature: which of A, B, C it moves and by how much, so Step 14 reads its verdict against a prediction, not a hope. Produces: the sf-lift commit and the fix commits on the lane branch (above D17''s fold), the cause named in the ticket''s record.
+14. Step 14: post-fix proof on the 3T and the baselines refreshed (3 points, device, T-359). Harness Release build of the fix (both platforms per D12, one slot session, badging and User 0 asserts, first launch discarded, marks verified flowing). Per interaction (overlay open, overlay close through the pre-tap open mode with the mock-safe wait, sheet-alert-open, sheet-settings-open, sheet-alert-close, sheet-settings-close - the closes read Defect A''s late-closing-tap clause: open through PRE_TAP, then the closing tap recorded): a recorder-free SF cadence read as the floor witness per D16 (n>=2; the printed present-gap list read against 33ms inside the bounded entrance window, 16-17ms the target, the per-capture anchors and SF_OFFSET discipline the lifted instrument carries, per-capture anchors mandatory), plus one video+vision pass per OPEN interaction for the entrance''s visual honesty (monotonic, no snap; gaps read as the encoder''s word). Marks through the committed flows, inside the band. Read every verdict against Step 13''s predicted signature. Re-base e2e/baselines/android-3t.json medians and floors with a dated note naming the D16 method; overlay_close_steady''s UNPROVEN verdict gets its corrected run here. Produces: the passing floor audits, the refreshed baselines.
+15. Step 15: the XS after-picture (3 points, device, T-360). The same fix build as an iOS Release with marks per the atlas''s ritual, the same drive as Step 2, both capture runs, the atlas''s points, first launch discarded. Produces: the four after-medians inside Step 2''s band, read side by side, and the build handed to the owner for the eyeball read with the ask recorded on this row; the reading lands in the record before the D15 close.
+16. Step 16: close-out on the final branch (2 points, code, T-361). yarn validate green on the final branch; e2e/README.md''s Gotchas gain only the traps the remaining steps learned; every commit along the way carries its version bump; the ticket''s records complete; every subtask ticked; then the D15 park: Awaiting Owner, Waiting on "the owner''s approval to close (run order 2026-10-25)".
+
+Points: steps 13-16 carry 10; the done steps carry 33; the ticket''s estimate is 43.
+
+## Risks
+
+- The named cause explains only part of the set: a fix that moves A but not B or C is still progress - Step 13''s record says which defects the fix owns and which it does not, and Step 14''s verdict reads against that claim; unowned defects stay named and open on this row, not silently dropped.
+- The recorder-free SF read has its own traps: the offset anchor discipline (Step 10/11''s lesson - anchors that close a sheet read LOW, dozes grow the offset, SF_OFFSET overrides from the highest coherent reading) and the ~127-frame ring window. n>=2 and per-capture anchors stay binding.
+- The XS band is too loose to prove anything: Step 2''s two before-runs set the spread; a third capture beats a widened claim.
+- The fix trades cost for a snap: the first-frame-settled rule and the 150/200ms feel are pinned by suites, and the vision read catches a snap in Step 14''s contact sheets.
+- Other lanes merge to uat in parallel: fetch before any merge; if uat moved, merge or rebase forward and renumber the version line above the new tip under the standing collision ruling.
+- Two builds at once: D12''s slot rule; a queued executor waits, a conflict is a stop-and-report.
+
+## Proof
+
+- Acceptance 1 (the regressed marks and the commits identified by measurement or bisect): closed by the standing record - the marks half (none regressed) and the dating half (Step 11''s A/B/A refuted the code window; Step 12 recorded the degradation dossier; the owner''s orders then returned the floor problem to this ticket as its own subject).
+- Acceptance 2 (the root cause named with frame evidence): Step 13''s record citing Step 10''s paired gap lists (the compositor-real set), the thread the work lands on, and the code the read names - with the fix''s predicted signature.
+- Acceptance 3 and 4 (the overlay and both sheets pass the 30fps floor on a Release gate-ON build): Step 14''s recorder-free SF cadence reads printing zero entrance gaps over 33ms, the vision pass confirming the entrance''s honesty, the SF record beside.
+- Acceptance 5 (the XS measurably unchanged): Step 15''s four after-medians against Step 2''s recorded band.
+- Acceptance 6 (yarn validate green): Steps 13 and 16.
+
+## Grill findings answered
+
+- 2026-10-25, finding 1 (the pre-tap open mode is not on uat; Steps 10 and 14 would have no overlay-close instrument): fixed. Step 9''s first deliverable was the mode''s recovery from 4ffd1f34. Done.
+- 2026-10-25, finding 2 (D12 narrowed the fleettest gate the repo keys on the phone, not the package): fixed. D12 states the tension openly, operates under the campaign''s standing dev-id precedent with the badging stop guarding the owner''s line, and D15''s park asks the owner to bless the line explicitly.
+- 2026-10-25, finding 3 (Android-only measured builds contradict the owner''s both-platforms order of the same day): fixed. Every build session compiles both platforms in parallel for the same commit.
+- 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. The dump lands after the recorded animation; the folded instrument measures its own offset per capture.
+- 2026-10-28, v7 re-grill, six findings: (1) the sf branch''s PASS line is not a floor verdict (it tolerates 34ms and excludes gaps over 100ms, so a known-bad build prints PASS) - D16 now names the printed present-gap list as the verdict of record and Step 13''s lift makes the semantics honest; (2) the sf branch lacks the dual branch''s --list layer resolution, tap timestamp and anchor discipline - Step 13''s first deliverable lifts all three; (3) the fold''s conflict sites and resolutions were unnamed - D17 now records them (atlas keeps both sides, allowlist keeps uat''s entries, three lockstep stamp files renumber); (4) Step 14 never measured the sheet closes Defect A''s late-closing-tap clause claims - the two sheet-close SF reads are added; (5) Step 15 asked the executor to produce the owner''s eyeball - reworded to hand the build and record the ask; (6) the Risks line named the wrong lane - now "other lanes".
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 34816, 9, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-24 20:02:57.06513+00', '2026-10-28 16:03:35.28204+00');
 
 
 --
@@ -17905,6 +18706,8 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (45, 396, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 16:18:57.327255+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (46, 401, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:15:19.838244+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (47, 400, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:18:07.317923+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (48, 410, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 15:53:12.048821+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (49, 419, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:03:18.636039+00');
 
 
 --
@@ -29682,6 +30485,1449 @@ The run''s inter-lane build lock (the lead''s protocol for this run, backstopped
 8. Bare run:ios: the env is stated inline and the worktree .env is written.
 9. "Only such spot": the countdown now floors too, and its fixed-format worst case is stated.
 10. Atlas write-back: added to Files and Step 3.', NULL, NULL, '{}', false, false, false, NULL, 47104, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:38:53.783536+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (134, 35, 8, NULL, 'T-327', '# T-327
+
+Re-planned 2026-10-25 on the owner''s run order: the 3T deep-dive is back on, the morning''s deferral is lifted, and the instrument must first be made able to answer the question the first plan died on: compositor truth or encoder loss.
+
+Re-scoped 2026-10-28 (v7): Step 12 recorded the degradation dossier and parked the ticket, and the owner has since ruled twice - the 2.5.6 verdict (2026-10-25: XS very smooth, 3T still janky, per-shades suspected) and the unblock order (2026-10-26: the drops persist on the emptied 3T even under the landed redesign (T-374/T-375), the redesign introduced no regression, the floor problem is this ticket''s own subject again). This re-scope folds those orders into Steps 13-16; the subtask rows keep their numbers, titles and points.
+
+## Goal
+
+The 3T fell below the animation floor it held: the prayer overlay opens janked, the alert and settings sheets drag, while the iPhone XS stays smooth. Done means: the dead zone''s owner is named by measurement (a code regression dated to its commit, or the capture layer, or the device), the 3T''s audited interactions pass the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target, 60fps the goal) on Release gate-ON builds if the cause is code, the XS measures unchanged before and after any fix, and `yarn validate` is green.
+
+## The standing record (what the first plan settled)
+
+Steps 1, 3, 4, 5, 6, 7, 8 of the first plan are done; their records stand in the ticket''s comments. What they established, and this re-plans from:
+
+- Marks never regressed anywhere: overlay_open 134-156, overlay_close 139-158, sheet_alert_open 429-456, sheet_settings_open 368-392, closes 204-210, across every build and env measured.
+- The failure is in the frames: tap-adjacent dead zones 176-927ms, and entrance first-draws landing anywhere from 24 to 96 percent of travel run-to-run (the settings sheet sometimes first appears already 96.4 percent traveled).
+- The signature is version-invariant (anchors 2.4.11, 2.4.17, 2.4.23, 2.4.24 all show it to varying degree) and env-invariant (mock AND production builds). No commit in 887d7949..1c22014c owns it; a build does not have one signature - the same build snaps and renders cleanly within one night under fixed controls (Step 4''s A/B/A).
+- Against the 2026-09-11/12 baselines the regression is real on this same phone. Two candidates survive: a regression predating 2.4.11, or the capture layer (the SD820 encoder) degrading since September. Tonight''s instrument cannot separate them: the video path is the encoder''s word about the compositor.
+
+## What Steps 9-12 settled (the v6 record, still binding)
+
+- The instrument is separated (Step 9, committed 4f44752c) and made honest (Step 11''s fold, ed6a06a2: the SF read anchors on CLOCK_MONOTONIC through a measured per-capture suspend offset; the sentinel row falls; the present column is read). Both commits sit unmerged on lane1/T-327 and are folded forward onto the lane branch ahead of any new work (D17).
+- Step 10''s separated verdict on the 2.4.40 tip, the only on-glass dual read: the overlay open/close tap-adjacent dead zones are ENCODER LOSS (the compositor presents within a vsync of the tap); the sheets'' tap-adjacent delay is substantially COMPOSITOR TRUTH (a real 60-208ms tap-to-first-present on settings, a ~60ms wait then a 134ms compositor stall on alert, 275-296ms late presents on sheet-closing taps); the overlay close entrance carries REAL compositor gaps of 46-71ms (vision: a two-stage hold-then-snap tail); and every path shows a real ~100-250ms present burst ~1.7-2.2s after the tap, source unidentified (candidates: the hold-then-hide timers, the ago badge, the info-box fade).
+- Step 11''s A/B/A dated nothing in code: the September floors do not reproduce on either the 1.25.0 anchor or the tip on this phone tonight, and the recorder is a participant - under it even the September-smooth anchor fails SF cadence (entrance gaps 100-317ms), recorder-free the anchor still bumps 34-96ms while the tip holds 16-17ms. The 1.25.0..2.4.11 code window is REFUTED.
+- Step 12''s dossier: not app CPU (anchor idle 22.2 percent, tip 16.0), not charge, not heat. The phone and its recorder now convert the same app load into compositor stalls that September recorded as 16-17ms cadence.
+- The owner''s ruling on that dossier, delivered as orders: the felt jank is real on glass (2.4.28 and 2.5.6 production, 2026-10-25; still present on the emptied 3T under the landed redesign, 2026-10-26), the redesign introduced no regression, and the floor problem is this ticket''s own subject. The recorder-participant finding therefore re-weights the instrument, it does not end the ticket: what survives recorder-free and on glass is exactly Step 10''s compositor-real set - the sheet-path tap-to-present delay, the overlay-close entrance gaps, and the late burst.
+
+## Decisions
+
+Standing from the first plan, unchanged: D2 in part (frame evidence is the verdict, marks are triage; the SF branch''s PASS line is a labelled fallback, never a verdict alone - but see D16''s re-weighting), D5 (the fix preserves the pinned solid-ink invariant; no text renders through opacity), D6 (measured builds share one env so deltas are valid; absolute numbers never compare across envs), D7 (version bump on every commit, fetch first, patch by default).
+
+Standing from 2026-10-25: D9 (the instrument first - satisfied, Steps 9-11), D10 (the anchor - satisfied, Step 11), D11 (mock-window discipline, binding on every mock-env capture: the 1s pre-tap close variant, evening seeds read as boundary-adjacent, the second Athan-family package force-stopped before every capture, force-stop and relaunch between flows, battery and charge state recorded with every run), D12 (builds and installs: harness ritual builds in a worktree at the target commit, com.example.athan, Release gate-ON, EXPO_PUBLIC_PERF_MONITOR=1, mock env; every build session compiles BOTH platforms in parallel inside the one slot session; badging assert before every install, User 0 alone after; build-prod.zsh and build-mock.zsh serve owner-line installs only; the single build slot serializes everything), D13 (the owner''s run order: 60fps the goal, 30fps the floor, the XS must stay measurably unchanged, the owner approves the close), D14 (T-329 done, Step 2''s bands stand), D15 (the terminal park: when the last step is merged and the audit passes, the ticket parks in Awaiting Owner with Waiting on "the owner''s approval to close (run order 2026-10-25)", every subtask ticked, the worktree and branch deleted).
+
+New, 2026-10-28:
+
+- D16, floors ride the recorder-free read. Step 11 proved the recorder is a participant on this phone (the September-smooth anchor fails SF cadence under it), so a video-gap floor verdict is no longer sound evidence of a floor failure OR a pass on the 3T. The floor witness is the SF present-timestamp cadence read with no recorder running (FRAME_AUDIT=sf): zero present gaps over 33ms through the entrance, 16-17ms the target. The video+vision pass stays for what only it can say - the entrance''s visual honesty (monotonic travel, no snap, no ghosting) - and its gap list is read as the encoder''s word, per Step 10''s verdicts. A video-only failure with a clean SF read is recorded as encoder loss, never as a floor failure.
+- D17, the fold rides ahead of the fix. The two instrument commits (4f44752c, ed6a06a2) are folded forward from lane1/T-327 onto current uat as the first commits of this lane''s branch, version stamps renumbered above whatever uat then carries under the standing collision ruling, before any Step 13 work; Step 14''s measurements depend on the honest SF read. The lane1 branch itself stays untouched.
+- D18, hypotheses after the redesign. H1 (per-row veiled ink) and the owner''s per-shade theory are ELIMINATED by experiment: T-374''s redesign replaced the shade system with one dim colour and the drops persist (owner order 2026-10-26). H3 (per-state colour map lookups) survives only where dim.ts still maps states on the sheet paths, and only as a secondary suspect. Live: H2 (hold-then-hide timers landing inside entrance frames - the Overlay''s setTimeout display flip and any sheet-path equivalent, candidates for both the close-tail gaps and the universal late burst) and H4/H5 (what work sits between the JS present() and the sheet layer''s first present - mount cost, layout, backdrop pre-compositing - and anything else the code read names). Step 13 ranks these against Step 10''s compositor-real defects and names the cause.
+
+## Files
+
+Read: e2e/README.md (mandatory before any measurement), e2e/AGENTS.md, e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh, e2e/scripts/baseline-compare.sh, e2e/flows/overlay-x10.yaml, e2e/flows/sheets-x10.yaml, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-iphone-xs.md, shared/perf.ts (the marks gate), and at Step 13 the live suspects the standing record names (components/overlay/Overlay.tsx, components/sheets/parts/Sheet.tsx and parts/*, components/sheets/screens/Settings.tsx and Alert.tsx, stores/ui.ts, stores/overlay.ts, hooks/useAnimation.ts).
+
+Changed: the fold (e2e/scripts/frame-audit.sh, e2e/flows/*.yaml, e2e/README.md, e2e/device-atlas-iphone-xs.md) then the fix files Step 13 names, e2e/baselines/android-3t.json (re-based medians and floors, dated, method noted), e2e/README.md''s Gotchas (the recorder-participant trap, D16), package.json / app.json (the version bump per D7, every commit).
+
+## Design
+
+The first plan bisected builds before asking whether the instrument can still see. The v6 re-plan inverted that: the instrument was made honest (Steps 9-11), the regression was dated (Step 11: nothing in code; the recorder is a participant; Step 12: the dossier), and the owner has since ruled the felt floor problem real and this ticket''s own. The design now: name the cause of what survives - Step 10''s compositor-real defects, the only frame findings that stand recorder-free interpretation and match the owner''s glass read - against the code as it stands after the redesign, fix it under the visual settlement, and prove the floor with the recorder-free instrument (D16).
+
+The three defects Step 13 must explain, from Step 10''s record (recorder running; each was corroborated on both instruments, so each is compositor-real, not encoder loss):
+
+- Defect A, the sheet paths'' tap-to-present delay: settings 60-208ms before the sheet layer first presents with a ragged 45-109ms first half-second; alert a ~60ms wait then a 134ms compositor stall before a clean 17ms entrance; sheet-CLOSING taps present 275-296ms late. The marks measure present-to-settled and never regressed, so the entrance animation is not slower - the delay sits between the JS present() and the first frame.
+- Defect B, the overlay close''s entrance gaps: 46-71ms real compositor gaps inside the close fade; vision reads a two-stage hold-then-snap tail.
+- Defect C, the universal late burst: a real ~100-250ms present cluster ~1.7-2.2s after the tap on every path, both instruments.
+
+And the constraint any named cause must respect: the iPhone XS (A12) shows none of it on glass, and the 3T''s JS marks never regressed - so the cause is work whose cost lands on the 3T''s first frame or its UI thread at tap time, not JS-thread animation math (which the marks would have caught).
+
+Fix candidates, chosen only after the cause is named, each preserving D5 and the visual settlement: deferring sheet content mount off the tap frame (the library''s own mount path, or the settings sheet''s onFirstPresent warm-up pattern generalised); batching display flips and other post-fade commits after every fade settles, off the entrance frame; timer discipline around hold-then-hide; hoisting any per-open computation the code read finds on the tap path.
+
+Alternatives rejected: bisecting further (Step 11 refuted the code window; a build has no one signature); trusting the video path alone for floors (D16); reverting the redesign (the owner ruled it introduced no regression); measuring on the emulator (banned; every perf number names a physical device); prod builds for the marks instrument (marks fold out at ENV=prod).
+
+## Steps
+
+The first plan''s steps 1-8 keep their numbers and records (1, 3-8 done; 2 done at the v6 re-plan). The v6 steps 9-12 are done. What remains runs as 13-16, points unchanged: 2 code, 3 device; a device step runs alone in a fresh session; e2e/README.md is re-read before every measurement step and the 3T atlas before any 3T screen work.
+
+13. Step 13: the root cause named and the fix implemented (2 points, code, T-358). No bisect exists (Step 11 refuted the window); the cause is named by reading Defects A, B and C against the code as it stands after the redesign, on the threads the instrument already attributed them to (the delay is between JS present() and the first present; the close gaps and the late burst are compositor-timed work inside or after the entrance). Rank the live hypotheses per D18, name the cause in the step''s record with the frame evidence cited (which defect, which numbers, which code), and implement the fix under D5 and the visual settlement - behaviour only, no pixel moves. Red-first coverage on every line touched, a mutation pass on guarded logic, yarn validate green. The fix names its expected signature: which of A, B, C it moves and by how much, so Step 14 reads its verdict against a prediction, not a hope. Produces: the fix commits on the lane branch (above D17''s fold), the cause named in the ticket''s record.
+14. Step 14: post-fix proof on the 3T and the baselines refreshed (3 points, device, T-359). Harness Release build of the fix (both platforms per D12, one slot session, badging and User 0 asserts, first launch discarded, marks verified flowing). Per interaction (overlay open, overlay close through the pre-tap open mode with the mock-safe wait, sheet-alert-open, sheet-settings-open): a recorder-free SF cadence read as the floor witness per D16 (n>=2; zero present gaps over 33ms through the entrance, 16-17ms the target, the anchors and offset discipline the folded instrument carries), plus one video+vision pass for the entrance''s visual honesty (monotonic, no snap; gaps read as the encoder''s word). Marks through the committed flows, inside the band. Read every verdict against Step 13''s predicted signature. Re-base e2e/baselines/android-3t.json medians and floors with a dated note naming the D16 method; overlay_close_steady''s UNPROVEN verdict gets its corrected run here. Produces: the passing floor audits, the refreshed baselines.
+15. Step 15: the XS after-picture (3 points, device, T-360). The same fix build as an iOS Release with marks per the atlas''s ritual, the same drive as Step 2, both capture runs, the atlas''s points, first launch discarded. Produces: the four after-medians inside Step 2''s band, read side by side, and the owner''s eyeball on the same build.
+16. Step 16: close-out on the final branch (2 points, code, T-361). yarn validate green on the final branch; e2e/README.md''s Gotchas gain only the traps the remaining steps learned; every commit along the way carries its version bump; the ticket''s records complete; every subtask ticked; then the D15 park: Awaiting Owner, Waiting on "the owner''s approval to close (run order 2026-10-25)".
+
+Points: steps 13-16 carry 10; the done steps carry 33; the ticket''s estimate is 43.
+
+## Risks
+
+- The named cause explains only part of the set: a fix that moves A but not B or C is still progress - Step 13''s record says which defects the fix owns and which it does not, and Step 14''s verdict reads against that claim; unowned defects stay named and open on this row, not silently dropped.
+- The recorder-free SF read has its own traps: the offset anchor discipline (Step 10/11''s lesson - anchors that close a sheet read LOW, dozes grow the offset, SF_OFFSET overrides from the highest coherent reading) and the ~127-frame ring window. n>=2 and per-capture anchors stay binding.
+- The XS band is too loose to prove anything: Step 2''s two before-runs set the spread; a third capture beats a widened claim.
+- The fix trades cost for a snap: the first-frame-settled rule and the 150/200ms feel are pinned by suites, and the vision read catches a snap in Step 14''s contact sheets.
+- Lane 1 merges to uat in parallel: fetch before any merge; if uat moved, merge or rebase forward and renumber the version line above the new tip under the standing collision ruling.
+- Two builds at once: D12''s slot rule; a queued executor waits, a conflict is a stop-and-report.
+
+## Proof
+
+- Acceptance 1 (the regressed marks and the commits identified by measurement or bisect): closed by the standing record - the marks half (none regressed) and the dating half (Step 11''s A/B/A refuted the code window; Step 12 recorded the degradation dossier; the owner''s orders then returned the floor problem to this ticket as its own subject).
+- Acceptance 2 (the root cause named with frame evidence): Step 13''s record citing Step 10''s paired gap lists (the compositor-real set), the thread the work lands on, and the code the read names - with the fix''s predicted signature.
+- Acceptance 3 and 4 (the overlay and both sheets pass the 30fps floor on a Release gate-ON build): Step 14''s recorder-free SF cadence reads printing zero entrance gaps over 33ms, the vision pass confirming the entrance''s honesty, the SF record beside.
+- Acceptance 5 (the XS measurably unchanged): Step 15''s four after-medians against Step 2''s recorded band.
+- Acceptance 6 (yarn validate green): Steps 13 and 16.
+
+## Grill findings answered
+
+- 2026-10-25, finding 1 (the pre-tap open mode is not on uat; Steps 10 and 14 would have no overlay-close instrument): fixed. Step 9''s first deliverable was the mode''s recovery from 4ffd1f34. Done.
+- 2026-10-25, finding 2 (D12 narrowed the fleettest gate the repo keys on the phone, not the package): fixed. D12 states the tension openly, operates under the campaign''s standing dev-id precedent with the badging stop guarding the owner''s line, and D15''s park asks the owner to bless the line explicitly.
+- 2026-10-25, finding 3 (Android-only measured builds contradict the owner''s both-platforms order of the same day): fixed. Every build session compiles both platforms in parallel for the same commit.
+- 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. The dump lands after the recorded animation; the folded instrument measures its own offset per capture.
+- 2026-10-28 (v7 re-grill): answered below once returned.
+', NULL, NULL, '{}', false, false, false, NULL, 34816, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 15:49:37.629168+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (135, 48, 1, NULL, 'T-410', '# T-410 — The next ten languages
+
+## Goal
+
+The app ships six locales (en, ar, ms, so, hi, th). Ten more land, chosen by R9''s ranked launch
+set, taking the shipped set to sixteen. Every new catalog is gated, sourced and swept; the six
+existing locales and every English byte stay untouched.
+
+**The ten (R9 §1 rank, reach, state):**
+
+| Tag | R9 rank | Reach | R9 state | Catalog basis (sourced-names.json) |
+| --- | --- | --- | --- | --- |
+| id | 2 | 249.8M | READY, 11/11 (Istijabah low) | kemenag/nu-online, complete |
+| ur | 3 | ~280M | READY (Duha/Istijaba unsourced) | ur-wikipedia/mihrab, 9/11 |
+| bn | 4 | ~160-180M | READY, 10/11 (Istijaba null) | namajersomoysuchi/muslimbangla |
+| fa | 6 | ~110M | READY, 10/11 (Istijaba null) | bahesab/badesaba |
+| fr | 7 | ~125M | READY, 10/11 (Duha/Istijaba null) | habous/mihrab |
+| tr | 8 | ~85M | EXCEPTION (Diyanet labels) | diyanet, 11/11, exception documented in R9 §3 |
+| ha | 9 | ~60-75M | NEEDS SOURCING (5 nulls + explanations) | islamhouse-ha/ha-wikipedia, 6/11 |
+| sw | 10 | ~30-40M | NEEDS SOURCING (3 nulls + 27-char row) | wikishia-sw/al-azan, 8/11 |
+| pt | 18 | ~7.5M | NEEDS SOURCING (absent) | fresh from Brazilian/Portuguese mosque tables (R9 §2, sources 11-13) |
+| uz | 12 | 29.9M | READY, 9/11 (Midnight/Istijaba null) | islom-uz, the best Duha authority match |
+
+ps ranks above uz in R9 §1 but R9 §4''s own launch set excludes it (translated phrases violate
+the naming rule, 6/11 bare, all explanations null) and includes pt; §4''s set plus its first
+post-launch row is the selection, so ps is not in this wave.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are id, ur, bn, fa, fr, tr, sw, ha, pt, uz** — R9 §4''s launch set minus the shipped
+   en/ar/ms, plus uz, the named first post-launch row. Challenged: pure §1 rank pulls ps over uz.
+   Holds: the ticket names the ranked launch set, and §4 is the ranking with readiness applied.
+2. **fa and ur join RTL_IDS** and inherit the landed R3.1 machinery (crossing relaunch, forceRTL,
+   remount version, chevron/comma glyphs, widget rtl flags). No layout code changes: the surfaces
+   are direction-keyed already.
+3. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs**: Rubik-Regular covers all six
+   Persian-specific letters (U+067E U+0686 U+0698 U+06AF U+06A9 U+06CC), so **fa reuses the
+   ARABIC record**. Rubik lacks all five Urdu-specific letters (U+0679 U+0688 U+0691 U+06BE
+   U+06D2), so **ur bundles the Noto Naskh Arabic Regular/Medium pair** under its own record.
+   **bn bundles the Noto Sans Bengali Regular/Medium pair.** Each record''s scriptLineHeight is
+   set from the pair''s measured hhea box per the row-106/row-87 laws (ink past the box takes the
+   1.5 script box; a box that clears its ink takes the font''s own metrics).
+4. **Numerals**: catalog prose follows R12''s per-locale table — bn carries Bengali digits in its
+   explanation strings, fa Persian digits, all others Latin; times, dates and countdowns stay
+   Latin in every locale per the landed row-82 law that already governs hi and th.
+5. **Unsourced slots take the naming rule''s own transliteration answer** (Istijaba, Duha, Sahur
+   loans), recorded low-confidence with the derivation in the entry''s note — the so precedent
+   (''Istijaabo''). The Catalog type requires every key, so no row is ever dropped; R9''s
+   "suppress/drop" advice lands as the loan instead.
+6. **sw Last Third ships "Theluthi ya mwisho" (18 chars)**, the label-shaped substring of
+   al-azan''s attested sentence, keeping the full sentence in the explanation string; recorded
+   medium with the truncation basis. The 24-char prayer-label gate stays untouched.
+7. **pt is sourced fresh in Step 1** from live Brazilian and Portuguese mosque tables (R9 §2''s
+   attested pattern: the five transliterated, Nascer do sol for Sunrise), each entry with slug,
+   confidence and note.
+8. **tr ships R9''s Diyanet exception labels verbatim** (Imsak as the Fajr row, Gunes, Ogle,
+   Ikindi, Aksam, Yatsi, Teheccud, Sahur, Kusluk): the exception is R9 §3''s documented finding,
+   verified on both language versions of the Diyanet page.
+9. **Version line**: every commit is typed feat, so the first lane commit takes the minor from
+   2.11.45 to 2.12.0, package.json + app.json + android/app/build.gradle together, fetching
+   origin first; a Lane 2 collision resolves to the higher number.
+10. **app.json edits are agent-ruled inside this ticket**: the fonts array, the ten expo.locales
+    entries, CFBundleLocalizations and the version field are the mechanical carriers R4 B.10
+    pins; the edits are reversible in git and every byte is gated by nativeLocalesConfig.
+11. **No What''s New item ships** — the archive''s existing language item already reads "Added
+    support for more languages"; the banner restamps with the version.
+12. **README gains one Features bullet** naming the sixteen languages, satisfying the
+    user-facing-feature rule without touching any pixel.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by ten; RTL_IDS gains fa, ur.
+- `shared/i18n/id.ts, ur.ts, bn.ts, fa.ts, fr.ts, tr.ts, sw.ts, ha.ts, pt.ts, uz.ts` — new, one
+  full catalog each (194 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed (pt added; nulls filled or
+  loan-recorded; sw Last Third re-shortened).
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json` + `scripts/catalog-lock.mjs` — the LOCALES list grows by ten;
+  the lock regenerates per landed batch.
+- `shared/languageNames.ts` — ten endonym rows in codepoint order (Bahasa Indonesia, English,
+  Français, Hausa, Kiswahili, Bahasa Melayu, Soomaali, Türkçe, Oʻzbekcha, Português, then
+  اردو, فارسی, العربية, then বাংলা, then हिन्दी, ไทย).
+- `shared/typography.ts` — RECORDS: id/fr/tr/sw/ha/pt/uz → LATIN; fa → ARABIC; ur → a new
+  Naskh record; bn → a new Bengali record.
+- `assets/fonts/` — NotoNaskhArabic-Regular/Medium.ttf, NotoSansBengali-Regular/Medium.ttf (OFL,
+  same licence file already present).
+- `app.json` — fonts array, ten expo.locales entries (permission strings, ios
+  Localizable.strings, android resource names), CFBundleLocalizations order, version.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and RTL sets grow (fa, ur join RTL).
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  LOCALES lists grow.
+- `README.md` — one Features bullet.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows,
+loader MODULES, languageNames and typography RECORDS fail to typecheck until every new locale
+carries its full record, and each catalog satisfies Catalog (all 194 keys) or the build fails.
+The data side is gated the same way: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig
+(app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget binaries render the statics table row for row), catalogLock
+(en''s hash unchanged). Invariant: en stays byte-identical and the six existing locales'' suites
+stay green without editing a single existing value.
+
+Per locale the recipe is: catalog file (sourced prayer names verbatim, UI copy authored to the
+R2 gates, calendar keys allowed loanword parity), loader rows, endonym row, typography record,
+RTL flag (fa, ur), lock-list entry, gates rows, native-strings row, widget-statics row,
+app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); the R2 machine-translation pipeline with a runtime i18n dependency (the landed
+practice is authored catalogs behind gates, no new dependency); a pseudo-locale stage (visuals
+are settled, no new surfaces, so the 140 percent expansion stage buys nothing here); shipping
+Nastaliq for ur (R3''s floors: 2.5em unusable; Naskh is the verdict).
+
+## Steps (each 2 points, total 16)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: pt
+   built fresh from live mosque tables; ha''s five nulls and explanations closed from Hausa
+   Islamic media (BBC Hausa Ramadan timetables, NSCIA output) with bare forms (Asuba, Azahar)
+   over Sallar X; sw''s Suhoor/Duha loans and the re-shortened Last Third; ur/fa/fr/bn/uz loans
+   recorded per decision 5; id''s Istijabah entry kept low. Every entry non-null with slug,
+   confidence, note.
+2. **Step 2: Locale plumbing lands with the id and tr catalogs** — LOCALE_IDS + 2, loader,
+   endonyms, LATIN records, lock list, gates rows, native-strings and widget-statics rows for
+   id and tr; the plumbing comments (locale.ts, typography.ts) updated to the new counts.
+3. **Step 3: The fr and uz catalogs land** — same recipe; uz carries the islom.uz authority
+   labels (Bomdod, Peshin, Shom, Xufton, Tahajjud, Saharlik, Ishroq).
+4. **Step 4: The sw and ha catalogs land** — same recipe; sw with the re-shortened Last Third,
+   ha with the bare-form names.
+5. **Step 5: pt lands fresh-sourced and ur lands RTL** — the Naskh pair bundled and measured,
+   the URDU record, RTL_IDS gains ur, the RTL gates rows red first.
+6. **Step 6: fa lands RTL on the Arabic record and bn lands with its own** — RTL_IDS gains fa;
+   the Bengali pair bundled and measured, the BENGALI record.
+7. **Step 7: The native and widget surfaces carry all ten locales** — app.json locales blocks +
+   fonts + CFBundleLocalizations, the four widget inline STATIC tables, nativeLocalesConfig and
+   widgetStaticStrings extended red first.
+8. **Step 8: The full sweep is green and the README names sixteen** — every suite green, the
+   widget runtime load suite re-run after the font installs, yarn validate, README bullet,
+   audit-ready.
+
+## Risks
+
+- **Font metrics lie**: a Naskh or Bengali box that clips stacked marks. Shows in the
+  typography sweep and the measured hhea numbers in the record comments; the floors (R3: 1.4em
+  Naskh, 1.5em Bengali) are the guard.
+- **RTL purity in fa/ur copy**: a stray Latin run in an RTL string fails the catalogGates RTL
+  row before it can ship.
+- **Width**: a long name (fr''s Lever du soleil) pushes the first column. The runtime-measured
+  width surface absorbs it; the 24-char gate bounds the prayer labels.
+- **Version collision with Lane 2**: both lanes bump per commit. Fetch origin before every
+  bump, take the higher number, rebase forward before the merge.
+- **The catalog lock drifts**: en must stay byte-identical; any en edit is out of scope and
+  fails catalogLock.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table plus the ticket''s acceptance list, both
+   citing R9 §§1/4 rows verbatim.
+2. Sourcing recorded: `jq` over shared/i18n/sourced-names.json shows every names entry for the
+   ten non-null with a source slug; catalogGates'' sourced-verbatim row green in the suite
+   output.
+3. Coverage and regression: `yarn validate` exits 0; the suite list shows catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typographySweep,
+   chevronDirection green over sixteen locales.
+4. RTL, numerals, detection: `grep RTL_IDS shared/i18n/locale.ts` shows ar, fa, ur; the bn and
+   fa catalog prose carries Bengali and Persian digits per R12; resolveInitialLocale''s tests
+   cover pt-BR → pt and fa-IR → fa lookups (red first in Step 2''s plumbing batch).
+', NULL, NULL, '{}', false, false, false, NULL, 48128, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 15:53:12.003653+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (136, 35, 9, NULL, 'T-327', '# T-327
+
+Re-planned 2026-10-25 on the owner''s run order: the 3T deep-dive is back on, the morning''s deferral is lifted, and the instrument must first be made able to answer the question the first plan died on: compositor truth or encoder loss.
+
+Re-scoped 2026-10-28 (v7): Step 12 recorded the degradation dossier and parked the ticket, and the owner has since ruled twice - the 2.5.6 verdict (2026-10-25: XS very smooth, 3T still janky, per-shades suspected) and the unblock order (2026-10-26: the drops persist on the emptied 3T even under the landed redesign (T-374/T-375), the redesign introduced no regression, the floor problem is this ticket''s own subject again). This re-scope folds those orders into Steps 13-16; the subtask rows keep their numbers, titles and points.
+
+## Goal
+
+The 3T fell below the animation floor it held: the prayer overlay opens janked, the alert and settings sheets drag, while the iPhone XS stays smooth. Done means: the dead zone''s owner is named by measurement (a code regression dated to its commit, or the capture layer, or the device), the 3T''s audited interactions pass the 30fps floor (zero frame gaps over 33ms, 16-17ms cadence the target, 60fps the goal) on Release gate-ON builds if the cause is code, the XS measures unchanged before and after any fix, and `yarn validate` is green.
+
+## The standing record (what the first plan settled)
+
+Steps 1, 3, 4, 5, 6, 7, 8 of the first plan are done; their records stand in the ticket''s comments. What they established, and this re-plans from:
+
+- Marks never regressed anywhere: overlay_open 134-156, overlay_close 139-158, sheet_alert_open 429-456, sheet_settings_open 368-392, closes 204-210, across every build and env measured.
+- The failure is in the frames: tap-adjacent dead zones 176-927ms, and entrance first-draws landing anywhere from 24 to 96 percent of travel run-to-run (the settings sheet sometimes first appears already 96.4 percent traveled).
+- The signature is version-invariant (anchors 2.4.11, 2.4.17, 2.4.23, 2.4.24 all show it to varying degree) and env-invariant (mock AND production builds). No commit in 887d7949..1c22014c owns it; a build does not have one signature - the same build snaps and renders cleanly within one night under fixed controls (Step 4''s A/B/A).
+- Against the 2026-09-11/12 baselines the regression is real on this same phone. Two candidates survive: a regression predating 2.4.11, or the capture layer (the SD820 encoder) degrading since September. Tonight''s instrument cannot separate them: the video path is the encoder''s word about the compositor.
+
+## What Steps 9-12 settled (the v6 record, still binding)
+
+- The instrument is separated (Step 9, committed 4f44752c) and made honest (Step 11''s fold, ed6a06a2: the SF read anchors on CLOCK_MONOTONIC through a measured per-capture suspend offset; the sentinel row falls; the present column is read). Both commits sit unmerged on lane1/T-327 and are folded forward onto the lane branch ahead of any new work (D17).
+- Step 10''s separated verdict on the 2.4.40 tip, the only on-glass dual read: the overlay open/close tap-adjacent dead zones are ENCODER LOSS (the compositor presents within a vsync of the tap); the sheets'' tap-adjacent delay is substantially COMPOSITOR TRUTH (a real 60-208ms tap-to-first-present on settings, a ~60ms wait then a 134ms compositor stall on alert, 275-296ms late presents on sheet-closing taps); the overlay close entrance carries REAL compositor gaps of 46-71ms (vision: a two-stage hold-then-snap tail); and every path shows a real ~100-250ms present burst ~1.7-2.2s after the tap, source unidentified (candidates: the hold-then-hide timers, the ago badge, the info-box fade).
+- Step 11''s A/B/A dated nothing in code: the September floors do not reproduce on either the 1.25.0 anchor or the tip on this phone tonight, and the recorder is a participant - under it even the September-smooth anchor fails SF cadence (entrance gaps 100-317ms), recorder-free the anchor still bumps 34-96ms while the tip holds 16-17ms. The 1.25.0..2.4.11 code window is REFUTED.
+- Step 12''s dossier: not app CPU (anchor idle 22.2 percent, tip 16.0), not charge, not heat. The phone and its recorder now convert the same app load into compositor stalls that September recorded as 16-17ms cadence.
+- The owner''s ruling on that dossier, delivered as orders: the felt jank is real on glass (2.4.28 and 2.5.6 production, 2026-10-25; still present on the emptied 3T under the landed redesign, 2026-10-26), the redesign introduced no regression, and the floor problem is this ticket''s own subject. The recorder-participant finding therefore re-weights the instrument, it does not end the ticket: what survives recorder-free and on glass is exactly Step 10''s compositor-real set - the sheet-path tap-to-present delay, the overlay-close entrance gaps, and the late burst.
+
+## Decisions
+
+Standing from the first plan, unchanged: D2 in part (frame evidence is the verdict, marks are triage; the SF branch''s PASS line is a labelled fallback, never a verdict alone - but see D16''s re-weighting), D5 (the fix preserves the pinned solid-ink invariant; no text renders through opacity), D6 (measured builds share one env so deltas are valid; absolute numbers never compare across envs), D7 (version bump on every commit, fetch first, patch by default).
+
+Standing from 2026-10-25: D9 (the instrument first - satisfied, Steps 9-11), D10 (the anchor - satisfied, Step 11), D11 (mock-window discipline, binding on every mock-env capture: the 1s pre-tap close variant, evening seeds read as boundary-adjacent, the second Athan-family package force-stopped before every capture, force-stop and relaunch between flows, battery and charge state recorded with every run), D12 (builds and installs: harness ritual builds in a worktree at the target commit, com.example.athan, Release gate-ON, EXPO_PUBLIC_PERF_MONITOR=1, mock env; every build session compiles BOTH platforms in parallel inside the one slot session; badging assert before every install, User 0 alone after; build-prod.zsh and build-mock.zsh serve owner-line installs only; the single build slot serializes everything), D13 (the owner''s run order: 60fps the goal, 30fps the floor, the XS must stay measurably unchanged, the owner approves the close), D14 (T-329 done, Step 2''s bands stand), D15 (the terminal park: when the last step is merged and the audit passes, the ticket parks in Awaiting Owner with Waiting on "the owner''s approval to close (run order 2026-10-25)", every subtask ticked, the worktree and branch deleted).
+
+New, 2026-10-28:
+
+- D16, floors ride the recorder-free read. Step 11 proved the recorder is a participant on this phone (the September-smooth anchor fails SF cadence under it), so a video-gap floor verdict is no longer sound evidence of a floor failure OR a pass on the 3T. The floor witness is the SF present-timestamp cadence read with no recorder running (FRAME_AUDIT=sf): zero present gaps over 33ms through the entrance window, 16-17ms the target. THE VERDICT OF RECORD IS THE PRINTED PRESENT-GAP LIST read against the 33ms floor and the bounded entrance window - never the script''s PASS line, whose band tolerates 34ms and excludes gaps over 100ms as freeze-or-idle (the folded sf branch prints them separately; on the folded code a known-bad build can print PASS). A present gap over 100ms inside the entrance window counts as a floor failure, not an unclassifiable freeze. The video+vision pass stays for what only it can say - the entrance''s visual honesty (monotonic travel, no snap, no ghosting) - and its gap list is read as the encoder''s word, per Step 10''s verdicts. A video-only failure with a clean SF read is recorded as encoder loss, never as a floor failure.
+- D17, the fold rides ahead of the fix. The two instrument commits (4f44752c, ed6a06a2) are folded forward from lane1/T-327 onto current uat as the first commits of this lane''s branch, version stamps renumbered above whatever uat then carries under the standing collision ruling, before any Step 13 work; Step 14''s measurements depend on the honest SF read. The lane1 branch itself stays untouched. The fold LANDED 2026-10-28 at 2.11.46/2.11.47 with these conflict resolutions (the record for any re-fold if uat moves): the stamps are three lockstep files (package.json, app.json, shared/whatsNew.ts - WHATS_NEW.version tracks the current stamp); e2e/device-atlas-iphone-xs.md keeps BOTH sides (T-400''s lock-widget and fleettest-wall rows beside this lane''s re-measured in-app tap row); scripts/version-collisions-allowlist.json keeps uat''s 2.4.41/2.4.42 entries and drops the lane''s duplicates (uat already carries rulings for both numbers). yarn validate green on the folded branch (236 suites, 6118 passed, 2 pre-existing skips).
+- D18, hypotheses after the redesign. H1 (per-row veiled ink) and the owner''s per-shade theory are ELIMINATED by experiment: T-374''s redesign replaced the shade system with one dim colour and the drops persist (owner order 2026-10-26). H3 (per-state colour map lookups) survives only where dim.ts still maps states on the sheet paths, and only as a secondary suspect. Live: H2 (hold-then-hide timers landing inside entrance frames - the Overlay''s setTimeout display flip and any sheet-path equivalent, candidates for both the close-tail gaps and the universal late burst) and H4/H5 (what work sits between the JS present() and the sheet layer''s first present - mount cost, layout, backdrop pre-compositing - and anything else the code read names). Step 13 ranks these against Step 10''s compositor-real defects and names the cause.
+
+## Files
+
+Read: e2e/README.md (mandatory before any measurement), e2e/AGENTS.md, e2e/baselines/android-3t.json, e2e/scripts/frame-audit.sh, e2e/scripts/baseline-compare.sh, e2e/flows/overlay-x10.yaml, e2e/flows/sheets-x10.yaml, e2e/device-atlas-oneplus3t.md, e2e/device-atlas-iphone-xs.md, shared/perf.ts (the marks gate), and at Step 13 the live suspects the standing record names (components/overlay/Overlay.tsx, components/sheets/parts/Sheet.tsx and parts/*, components/sheets/screens/Settings.tsx and Alert.tsx, stores/ui.ts, stores/overlay.ts, hooks/useAnimation.ts).
+
+Changed: the fold (e2e/scripts/frame-audit.sh, e2e/flows/*.yaml, e2e/README.md, e2e/device-atlas-iphone-xs.md) then the fix files Step 13 names, e2e/baselines/android-3t.json (re-based medians and floors, dated, method noted), e2e/README.md''s Gotchas (the recorder-participant trap, D16), package.json / app.json (the version bump per D7, every commit).
+
+## Design
+
+The first plan bisected builds before asking whether the instrument can still see. The v6 re-plan inverted that: the instrument was made honest (Steps 9-11), the regression was dated (Step 11: nothing in code; the recorder is a participant; Step 12: the dossier), and the owner has since ruled the felt floor problem real and this ticket''s own. The design now: name the cause of what survives - Step 10''s compositor-real defects, the only frame findings that stand recorder-free interpretation and match the owner''s glass read - against the code as it stands after the redesign, fix it under the visual settlement, and prove the floor with the recorder-free instrument (D16).
+
+The three defects Step 13 must explain, from Step 10''s record (recorder running; each was corroborated on both instruments, so each is compositor-real, not encoder loss):
+
+- Defect A, the sheet paths'' tap-to-present delay: settings 60-208ms before the sheet layer first presents with a ragged 45-109ms first half-second; alert a ~60ms wait then a 134ms compositor stall before a clean 17ms entrance; sheet-CLOSING taps present 275-296ms late. The marks measure present-to-settled and never regressed, so the entrance animation is not slower - the delay sits between the JS present() and the first frame.
+- Defect B, the overlay close''s entrance gaps: 46-71ms real compositor gaps inside the close fade; vision reads a two-stage hold-then-snap tail.
+- Defect C, the universal late burst: a real ~100-250ms present cluster ~1.7-2.2s after the tap on every path, both instruments.
+
+And the constraint any named cause must respect: the iPhone XS (A12) shows none of it on glass, and the 3T''s JS marks never regressed - so the cause is work whose cost lands on the 3T''s first frame or its UI thread at tap time, not JS-thread animation math (which the marks would have caught).
+
+Fix candidates, chosen only after the cause is named, each preserving D5 and the visual settlement: deferring sheet content mount off the tap frame (the library''s own mount path, or the settings sheet''s onFirstPresent warm-up pattern generalised); batching display flips and other post-fade commits after every fade settles, off the entrance frame; timer discipline around hold-then-hide; hoisting any per-open computation the code read finds on the tap path.
+
+Alternatives rejected: bisecting further (Step 11 refuted the code window; a build has no one signature); trusting the video path alone for floors (D16); reverting the redesign (the owner ruled it introduced no regression); measuring on the emulator (banned; every perf number names a physical device); prod builds for the marks instrument (marks fold out at ENV=prod).
+
+## Steps
+
+The first plan''s steps 1-8 keep their numbers and records (1, 3-8 done; 2 done at the v6 re-plan). The v6 steps 9-12 are done. What remains runs as 13-16, points unchanged: 2 code, 3 device; a device step runs alone in a fresh session; e2e/README.md is re-read before every measurement step and the 3T atlas before any 3T screen work.
+
+13. Step 13: the root cause named and the fix implemented (2 points, code, T-358). First deliverable, the floor witness lifted: the folded sf branch is not yet D16''s witness - it hardcodes the layer name (which rotates per process relaunch), records no tap timestamp (so the entrance window cannot be bounded from the evidence), and its PASS line tolerates 34ms and excludes gaps over 100ms. One small harness commit lifts it: the dual branch''s --list layer resolution and per-capture anchor discipline, a recorded tap timestamp bounding the entrance window in the printout, and verdict semantics honest per D16 (gaps over 100ms inside the entrance window print as floor failures); desk-verified against synthetic captures as the e2e scripts'' precedent, yarn validate green. Then the cause and the fix. No bisect exists (Step 11 refuted the window); the cause is named by reading Defects A, B and C against the code as it stands after the redesign, on the threads the instrument already attributed them to (the delay is between JS present() and the first present; the close gaps and the late burst are compositor-timed work inside or after the entrance). Rank the live hypotheses per D18, name the cause in the step''s record with the frame evidence cited (which defect, which numbers, which code), and implement the fix under D5 and the visual settlement - behaviour only, no pixel moves. Red-first coverage on every line touched, a mutation pass on guarded logic, yarn validate green. The fix names its expected signature: which of A, B, C it moves and by how much, so Step 14 reads its verdict against a prediction, not a hope. Produces: the sf-lift commit and the fix commits on the lane branch (above D17''s fold), the cause named in the ticket''s record.
+14. Step 14: post-fix proof on the 3T and the baselines refreshed (3 points, device, T-359). Harness Release build of the fix (both platforms per D12, one slot session, badging and User 0 asserts, first launch discarded, marks verified flowing). Per interaction (overlay open, overlay close through the pre-tap open mode with the mock-safe wait, sheet-alert-open, sheet-settings-open, sheet-alert-close, sheet-settings-close - the closes read Defect A''s late-closing-tap clause: open through PRE_TAP, then the closing tap recorded): a recorder-free SF cadence read as the floor witness per D16 (n>=2; the printed present-gap list read against 33ms inside the bounded entrance window, 16-17ms the target, the per-capture anchors and SF_OFFSET discipline the lifted instrument carries, per-capture anchors mandatory), plus one video+vision pass per OPEN interaction for the entrance''s visual honesty (monotonic, no snap; gaps read as the encoder''s word). Marks through the committed flows, inside the band. Read every verdict against Step 13''s predicted signature. Re-base e2e/baselines/android-3t.json medians and floors with a dated note naming the D16 method; overlay_close_steady''s UNPROVEN verdict gets its corrected run here. Produces: the passing floor audits, the refreshed baselines.
+15. Step 15: the XS after-picture (3 points, device, T-360). The same fix build as an iOS Release with marks per the atlas''s ritual, the same drive as Step 2, both capture runs, the atlas''s points, first launch discarded. Produces: the four after-medians inside Step 2''s band, read side by side, and the build handed to the owner for the eyeball read with the ask recorded on this row; the reading lands in the record before the D15 close.
+16. Step 16: close-out on the final branch (2 points, code, T-361). yarn validate green on the final branch; e2e/README.md''s Gotchas gain only the traps the remaining steps learned; every commit along the way carries its version bump; the ticket''s records complete; every subtask ticked; then the D15 park: Awaiting Owner, Waiting on "the owner''s approval to close (run order 2026-10-25)".
+
+Points: steps 13-16 carry 10; the done steps carry 33; the ticket''s estimate is 43.
+
+## Risks
+
+- The named cause explains only part of the set: a fix that moves A but not B or C is still progress - Step 13''s record says which defects the fix owns and which it does not, and Step 14''s verdict reads against that claim; unowned defects stay named and open on this row, not silently dropped.
+- The recorder-free SF read has its own traps: the offset anchor discipline (Step 10/11''s lesson - anchors that close a sheet read LOW, dozes grow the offset, SF_OFFSET overrides from the highest coherent reading) and the ~127-frame ring window. n>=2 and per-capture anchors stay binding.
+- The XS band is too loose to prove anything: Step 2''s two before-runs set the spread; a third capture beats a widened claim.
+- The fix trades cost for a snap: the first-frame-settled rule and the 150/200ms feel are pinned by suites, and the vision read catches a snap in Step 14''s contact sheets.
+- Other lanes merge to uat in parallel: fetch before any merge; if uat moved, merge or rebase forward and renumber the version line above the new tip under the standing collision ruling.
+- Two builds at once: D12''s slot rule; a queued executor waits, a conflict is a stop-and-report.
+
+## Proof
+
+- Acceptance 1 (the regressed marks and the commits identified by measurement or bisect): closed by the standing record - the marks half (none regressed) and the dating half (Step 11''s A/B/A refuted the code window; Step 12 recorded the degradation dossier; the owner''s orders then returned the floor problem to this ticket as its own subject).
+- Acceptance 2 (the root cause named with frame evidence): Step 13''s record citing Step 10''s paired gap lists (the compositor-real set), the thread the work lands on, and the code the read names - with the fix''s predicted signature.
+- Acceptance 3 and 4 (the overlay and both sheets pass the 30fps floor on a Release gate-ON build): Step 14''s recorder-free SF cadence reads printing zero entrance gaps over 33ms, the vision pass confirming the entrance''s honesty, the SF record beside.
+- Acceptance 5 (the XS measurably unchanged): Step 15''s four after-medians against Step 2''s recorded band.
+- Acceptance 6 (yarn validate green): Steps 13 and 16.
+
+## Grill findings answered
+
+- 2026-10-25, finding 1 (the pre-tap open mode is not on uat; Steps 10 and 14 would have no overlay-close instrument): fixed. Step 9''s first deliverable was the mode''s recovery from 4ffd1f34. Done.
+- 2026-10-25, finding 2 (D12 narrowed the fleettest gate the repo keys on the phone, not the package): fixed. D12 states the tension openly, operates under the campaign''s standing dev-id precedent with the badging stop guarding the owner''s line, and D15''s park asks the owner to bless the line explicitly.
+- 2026-10-25, finding 3 (Android-only measured builds contradict the owner''s both-platforms order of the same day): fixed. Every build session compiles both platforms in parallel for the same commit.
+- 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. The dump lands after the recorded animation; the folded instrument measures its own offset per capture.
+- 2026-10-28, v7 re-grill, six findings: (1) the sf branch''s PASS line is not a floor verdict (it tolerates 34ms and excludes gaps over 100ms, so a known-bad build prints PASS) - D16 now names the printed present-gap list as the verdict of record and Step 13''s lift makes the semantics honest; (2) the sf branch lacks the dual branch''s --list layer resolution, tap timestamp and anchor discipline - Step 13''s first deliverable lifts all three; (3) the fold''s conflict sites and resolutions were unnamed - D17 now records them (atlas keeps both sides, allowlist keeps uat''s entries, three lockstep stamp files renumber); (4) Step 14 never measured the sheet closes Defect A''s late-closing-tap clause claims - the two sheet-close SF reads are added; (5) Step 15 asked the executor to produce the owner''s eyeball - reworded to hand the build and record the ask; (6) the Risks line named the wrong lane - now "other lanes".
+', NULL, NULL, '{}', false, false, false, NULL, 34816, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 16:03:35.28204+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (137, 48, 3, NULL, 'T-410', '# T-410 — The next ten languages
+
+## Goal
+
+The app ships six locales (en, ar, ms, so, hi, th). Ten more land, chosen by R9''s ranked launch
+set, taking the shipped set to sixteen. Every new catalog is gated, sourced and swept; the six
+existing locales and every English byte stay untouched.
+
+**The ten (R9 §1 rank, reach, state):**
+
+| Tag | R9 rank | Reach | R9 state | Catalog basis (sourced-names.json) |
+| --- | --- | --- | --- | --- |
+| id | 2 | 249.8M | READY, 11/11 (Istijabah low) | kemenag/nu-online, complete |
+| ur | 3 | ~280M | READY (Duha/Istijaba unsourced) | ur-wikipedia/mihrab, 9/11 |
+| bn | 4 | ~160-180M | READY, 10/11 (Istijaba null) | namajersomoysuchi/muslimbangla |
+| fa | 6 | ~110M | READY, 10/11 (Istijaba null) | bahesab/badesaba |
+| fr | 7 | ~125M | READY (Istijaba null; Duha unreviewed, text present) | habous/mihrab |
+| tr | 8 | ~85M | EXCEPTION (Diyanet labels) | diyanet, 11/11, exception documented in R9 §3 |
+| ha | 9 | ~60-75M | NEEDS SOURCING (5 nulls + explanations) | islamhouse-ha/ha-wikipedia, 6/11 |
+| sw | 10 | ~30-40M | NEEDS SOURCING (3 nulls + 27-char row) | wikishia-sw/al-azan, 8/11 |
+| pt | 18 | ~7.5M | NEEDS SOURCING (absent) | fresh from Brazilian/Portuguese mosque tables (R9 §2, sources 11-13) |
+| uz | 12 | 29.9M | READY, 9/11 (Midnight/Istijaba null) | islom-uz, the best Duha authority match |
+
+ps ranks above uz in R9 §1 but R9 §4''s own launch set excludes it (translated phrases violate
+the naming rule, 6/11 bare, all explanations null) and includes pt; §4''s set plus its first
+post-launch row is the selection, so ps is not in this wave.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are id, ur, bn, fa, fr, tr, sw, ha, pt, uz** — R9 §4''s launch set minus the shipped
+   en/ar/ms, plus uz, the named first post-launch row. Challenged: pure §1 rank pulls ps over uz.
+   Holds: the ticket names the ranked launch set, and §4 is the ranking with readiness applied.
+2. **fa and ur join RTL_IDS** and inherit the landed R3.1 machinery (crossing relaunch, forceRTL,
+   remount version, chevron/comma glyphs, widget rtl flags). No layout code changes: the surfaces
+   are direction-keyed already.
+3. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs**: Rubik-Regular covers all six
+   Persian-specific letters (U+067E U+0686 U+0698 U+06AF U+06A9 U+06CC), so **fa reuses the
+   ARABIC record**. Rubik lacks all five Urdu-specific letters (U+0679 U+0688 U+0691 U+06BE
+   U+06D2), so **ur bundles the Noto Naskh Arabic Regular/Medium pair** under its own record.
+   **bn bundles the Noto Sans Bengali Regular/Medium pair.** Each record''s scriptLineHeight is
+   set from the pair''s own measured hhea box (the row-106/row-87 laws): R3 §3''s floors carry
+   Naskh at 1.4em and Devanagari/Thai at 1.5em; Bengali has no R3 row, so the Bengali record''s
+   floor is this wave''s own hhea measurement, recorded in the record''s comment with the numbers.
+4. **Numerals**: catalog prose follows R12''s per-locale table — bn carries Bengali digits in its
+   explanation strings, fa Persian digits, all others Latin; times, dates and countdowns stay
+   Latin in every locale per the landed row-82 law that already governs hi and th.
+5. **Unsourced slots take the naming rule''s own transliteration answer** (Istijaba, Duha, Sahur
+   loans), recorded low-confidence with the derivation in the entry''s note — the so precedent
+   (''Istijaabo''). The Catalog type requires every key, so no row is ever dropped; R9''s
+   "suppress/drop" advice lands as the loan instead. fr needs only the Istijaba loan: its Duha
+   row already carries the transliteration text.
+6. **sw Last Third ships "Theluthi ya mwisho" (18 chars)**, the label-shaped substring of
+   al-azan''s attested sentence, keeping the full sentence in the explanation string; recorded
+   medium with the truncation basis. The 24-char prayer-label gate stays untouched.
+7. **pt is sourced fresh in Step 1** from live Brazilian and Portuguese mosque tables (R9 §2''s
+   attested pattern: the five transliterated, Nascer do sol for Sunrise), each entry with slug,
+   confidence and note.
+8. **tr ships R9''s Diyanet exception labels verbatim** (Imsak as the Fajr row, Gunes, Ogle,
+   Ikindi, Aksam, Yatsi, Teheccud, Sahur, Kusluk): the exception is R9 §3''s documented finding,
+   verified on both language versions of the Diyanet page.
+9. **Version line**: every commit is typed feat, so the first lane commit takes the minor from
+   2.11.45 to 2.12.0, package.json + app.json + android/app/build.gradle together, fetching
+   origin first; a Lane 2 collision resolves to the higher number.
+10. **app.json edits are agent-ruled inside this ticket**: the fonts array, the ten expo.locales
+    entries, CFBundleLocalizations and the version field are the mechanical carriers R4 B.10
+    pins; the edits are reversible in git and every byte is gated by nativeLocalesConfig
+    (androidLocaleConfig derives its list from expo.locales, so no second file).
+11. **No What''s New item ships** — the archive''s existing language item already reads "Added
+    support for more languages"; the banner restamps with the version.
+12. **README gains one Features bullet** naming the sixteen languages, satisfying the
+    user-facing-feature rule without touching any pixel.
+13. **Lookup test rows land with their locale''s own step** (grill finding 2): locale.test.ts''s
+    fixtures use fr-FR as an unshipped tag today; the moment Step 3 ships fr those rows flip, so
+    Step 3 rewrites the fr-FR fixtures to a genuinely unshipped tag (es-ES) and each step adds
+    its own locales'' lookup rows the same commit its LOCALE_IDS entries land. No suite stays red
+    across a step boundary.
+14. **chevronDirection''s test ternary becomes direction-aware** (grill finding 4): the suite
+    pins `locale === ''ar''`; before fa/ur join, the suite''s it.each gains fa and ur and reads
+    localeDirection so the glyph expectation follows the set, not a hard-coded locale.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by ten; RTL_IDS gains fa, ur.
+- `shared/i18n/id.ts, ur.ts, bn.ts, fa.ts, fr.ts, tr.ts, sw.ts, ha.ts, pt.ts, uz.ts` — new, one
+  full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed (pt added; nulls filled or
+  loan-recorded; sw Last Third re-shortened; fr gains only the Istijaba loan).
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; the lock
+  regenerates and the lock suite''s five-locale count statement updates in the same commit.
+- `shared/__tests__/locale.test.ts` — the new locales'' detection rows land per decision 13;
+  fr-FR fixtures move to es-ES in Step 3.
+- `shared/__tests__/typography.test.ts` — the LATIN-record filter''s exception list grows by
+  ur, fa, bn as their script records land; expectScriptRecord cases for the Naskh, Bengali and
+  fa-Arabic records.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — per decision 14.
+- `shared/languageNames.ts` — ten endonym rows, hand-verified (a ReadonlyArray row is not
+  compiler-forced), in the measured codepoint order: Bahasa Indonesia, Bahasa Melayu, English,
+  Français, Hausa, Kiswahili, Oʻzbekcha, Português, Soomaali, Türkçe, اردو, العربية, فارسی,
+  हिन्दी, বাংলা, ไทอ — the header''s script chain gains Bengali after Devanagari.
+- `shared/typography.ts` — RECORDS: id/fr/tr/sw/ha/pt/uz → LATIN; fa → ARABIC; ur → a new
+  Naskh record; bn → a new Bengali record.
+- `assets/fonts/` — NotoNaskhArabic-Regular/Medium.ttf, NotoSansBengali-Regular/Medium.ttf (OFL,
+  same licence file already present).
+- `app.json` — fonts array, ten expo.locales entries (permission strings, ios
+  Localizable.strings, android resource names), CFBundleLocalizations order, version.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and RTL sets grow (fa, ur join RTL).
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  LOCALES lists grow.
+- `README.md` — one Features bullet.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives most completeness: LocaleId is a closed union, so the moment LOCALE_IDS
+grows, loader MODULES and typography RECORDS fail to typecheck until every new locale carries
+its row, and each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES
+is the one hand-verified list (a ReadonlyArray entry is not compiler-forced), so each step''s
+gate re-reads the picker row count against LOCALE_IDS length. The data side is gated the same
+way: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity,
+24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces native-strings.json
+byte-identically on both platforms), widgetStaticStrings (the widget binaries render the
+statics table row for row), catalogLock (en''s hash unchanged, the suite''s locale list matching
+the lock file). Invariant: en stays byte-identical and the six existing locales'' suites stay
+green without editing a single existing value; no suite is left red across a step boundary.
+
+Per locale the recipe is: catalog file (sourced prayer names verbatim, UI copy authored to the
+R2 gates, calendar keys allowed loanword parity), loader rows, endonym row, typography record,
+RTL flag (fa, ur), lock-list and lock-suite rows, gates rows, detection rows, native-strings
+row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); the R2 machine-translation pipeline with a runtime i18n dependency (the landed
+practice is authored catalogs behind gates, no new dependency); a pseudo-locale stage (visuals
+are settled, no new surfaces, so the 140 percent expansion stage buys nothing here); shipping
+Nastaliq for ur (R3''s floors: 2.5em unusable; Naskh is the verdict).
+
+## Steps (each 2 points, total 16)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: pt
+   built fresh from live mosque tables; ha''s five nulls and explanations closed from Hausa
+   Islamic media (BBC Hausa Ramadan timetables, NSCIA output) with bare forms (Asuba, Azahar)
+   over Sallar X; sw''s Suhoor/Duha loans and the re-shortened Last Third; ur/fa/bn/uz loans and
+   fr''s Istijaba loan recorded per decision 5; id''s Istijabah entry kept low. Every entry
+   non-null with slug, confidence, note.
+2. **Step 2: Locale plumbing lands with the id and tr catalogs** — LOCALE_IDS + 2, loader,
+   endonyms, LATIN records, the lock list plus catalogLock.test.ts''s list, gates rows,
+   locale.test.ts rows for id/tr, native-strings and widget-statics rows for id and tr; the
+   plumbing comments (locale.ts, typography.ts) updated to the new counts.
+3. **Step 3: The fr and uz catalogs land** — same recipe, plus locale.test.ts''s fr-FR fixtures
+   rewritten to es-ES so the unshipped-tag rows stay true; uz carries the islom.uz authority
+   labels (Bomdod, Peshin, Shom, Xufton, Tahajjud, Saharlik, Ishroq).
+4. **Step 4: The sw and ha catalogs land** — same recipe; sw with the re-shortened Last Third,
+   ha with the bare-form names.
+5. **Step 5: pt lands fresh-sourced and ur lands RTL** — the Naskh pair bundled and measured,
+   the URDU record, RTL_IDS gains ur, typography.test.ts''s LATIN filter and record cases move
+   with it, the RTL gates rows red first, locale.test.ts''s ur rows and pt rows.
+6. **Step 6: fa lands RTL on the Arabic record and bn lands with its own** — RTL_IDS gains fa,
+   typography.test.ts extended for fa and bn, locale.test.ts''s fa rows, chevronDirection made
+   direction-aware per decision 14; the Bengali pair bundled and measured, the BENGALI record.
+7. **Step 7: The native and widget surfaces carry all ten locales** — app.json locales blocks +
+   fonts + CFBundleLocalizations, the four widget inline STATIC tables, nativeLocalesConfig and
+   widgetStaticStrings extended red first, i18nBridge''s CATALOGS grown with its per-locale
+   parity row.
+8. **Step 8: The full sweep is green and the README names sixteen** — every suite green, the
+   widget runtime load suite re-run after the font installs, yarn validate, README bullet,
+   audit-ready.
+
+## Risks
+
+- **Font metrics lie**: a Naskh or Bengali box that clips stacked marks. Shows in the
+  typography sweep and the measured hhea numbers in the record comments; R3 §3''s 1.4em floor
+  guards Naskh, and the Bengali record carries this wave''s own measured floor (decision 3).
+- **RTL purity in fa/ur copy**: a stray Latin run in an RTL string fails the catalogGates RTL
+  row before it can ship.
+- **Width**: a long name (fr''s Lever du soleil) pushes the first column. The runtime-measured
+  width surface absorbs it; the 24-char gate bounds the prayer labels.
+- **Version collision with Lane 2**: both lanes bump per commit. Fetch origin before every
+  bump, take the higher number, rebase forward before the merge.
+- **The catalog lock drifts**: en must stay byte-identical; any en edit is out of scope and
+  fails catalogLock.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table plus the ticket''s acceptance list, both
+   citing R9 §§1/4 rows verbatim.
+2. Sourcing recorded: `jq` over shared/i18n/sourced-names.json shows every names entry for the
+   ten non-null with a source slug; catalogGates'' sourced-verbatim row green in the suite
+   output.
+3. Coverage and regression: `yarn validate` exits 0; the suite list shows catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typographySweep,
+   chevronDirection green over sixteen locales.
+4. RTL, numerals, detection: `grep RTL_IDS shared/i18n/locale.ts` shows ar, fa, ur; the bn and
+   fa catalog prose carries Bengali and Persian digits per R12; locale.test.ts''s rows cover
+   pt-BR → pt, fa-IR → fa, ur-PK → ur and the unshipped es-ES fallback, each landed red first
+   in its own locale''s step.
+', NULL, NULL, '{}', false, false, false, NULL, 48128, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 16:12:01.854337+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (140, 49, 4, NULL, 'T-419', '# T-419 — The next ten languages, proven on the XS
+
+## Goal
+
+The app ships sixteen locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn).
+Ten more land, taken from R9''s ranked remainder and completed into prayer-names.json''s own readiness
+order, taking the shipped set to twenty-six locale catalogs. Every new catalog is gated, sourced and
+swept; the sixteen existing locales and every English byte stay untouched. The merged tree then proves
+itself on the owner''s iPhone XS as a development build installed as the original app, so the owner
+reads the new languages on glass and rules.
+
+**The ten (rank, reach, state, closure this wave):**
+
+| Tag | Rank | Reach | State today | Closure this wave |
+| --- | --- | --- | --- | --- |
+| ps | R9 #11 | ~50M (Afghanistan, KPK) | NEEDS SOURCING, 6/11, phrases violate the naming rule | core six swap to the Arabic loans the same portal prints (R9 §3: "tables prefer the short loan"); five nulls and five explanations per the loan rule |
+| zh-Hans | R9 #13 | 28.1M | EXCEPTION, 9/11, translated set | the written standard both PRC and Taiwan religious-affairs pages print, kept as R9 §3''s documented exception; Duha/Istijaba loans; the mihrab-only Last Third gains one independent confirmation |
+| zh-Hant | R9 #13 | (the pair''s other half) | EXCEPTION, 9/11 | same exception; its Last Third is unsourced today and closes this wave |
+| ru | R9 #16 | 15M | READY, extras held, 10/11 | the four mihrab-only rows gain one independent confirmation each (ru-wikipedia prose); Duha/Istijaba loans |
+| az | R9 #19 | 10.1M+ | NEEDS SOURCING, 8/11 | Suhoor swaps to the attested Sahur (R9 §3); Last Third/Duha/Istijaba loans |
+| de | R9 #20 | 5.6M | READY after the fork, 9/11 | R9 §3 rules Fadschr and Ischa compliant German transliterations: they ship; the AGPL-only rows gain one independent confirmation each (gebetszeiten.de); Duha/Istijaba loans |
+| sq | R6 §5 no-speaker list | 5M+ (Albania, Kosovo, diaspora) | SHIP ON THIS DATA, 6/11 core all KMSH high | the only unshipped locale on R6 §5''s no-speaker list; Imsaku rides the shipped tr Imsak precedent (KMSH glosses it as Fajr); five nulls and two explanations close |
+| bs | R9 §3 exception row | 2M+ (Bosnia, diaspora) | READY as authority exception, 6/11 core all vaktija high | the vaktija''s own labels kept (R9 §3); four nulls per the loan rule |
+| ta | R4 C.2 UK diaspora | 10M+ (Tamil Nadu, Sri Lanka, UK) | standard six ready, extras held, 6/11 | Suhoor swaps to the attested Sahar loan in Tamil script (R9 §3); four nulls per the loan rule |
+| ml | R4 C.2 Kerala and Gulf | 10M+ | core ready, Duha sourced, 8/11 | Tahajjud kept as R9 §3''s documented exception (no one-word compliant form exists); Duha is a real sourced name; three nulls per the loan rule |
+
+**Not taken, ruled here:** yo, ig, ln, ku, es, nl — one line each under Decisions 4 through 6.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml, counted by locale catalog.**
+   R9''s ranked remainder after #410''s ten is ps, zh, ru, yo, az, de, ig, ln. R9 recommends against ig
+   and ln, and yo''s catalog is absent, which leaves ps, zh, ru, az, de. That is five; the pick extends
+   into the catalog''s other locales to complete ten. Challenged: count zh as one pick and take five
+   extensions. Rejected: the fifth-strongest extension is weaker than every locale already picked
+   (decision 3), and the owner''s goal line is sixteen-to-twenty-six, which holds only when the ten are
+   the ten new catalogs. zh ships as its two written standards because R4 C.1 rules the pair
+   both-or-neither: a Traditional reader cannot comfortably read Simplified. R9 itself abbreviates the
+   pair as "the zh pair" in one ranked row.
+2. **zh ships both standards and nothing less.** Shipping zh-Hans alone would lock Taiwan, Hong Kong
+   and Macau readers out; R4 A.4 rules a bare zh entry must never be the fallback for a Traditional
+   reader. Both files land, in one step, under one exception ruling.
+3. **The extension takes sq, bs, ta, ml and leaves ku, es, nl.** The four taken are the four
+   strongest by R6 §5''s readiness ladder (sq sits on the no-speaker-needed list on the KMSH
+   authority; bs on the vaktija authority; ta on true-time-ta; ml''s six rest on ml-wikipedia, R6
+   §5''s sourced tier) and by UK weight (R4 C.2 names the Tamil Muslim and Kerala
+   diaspora in Britain, Bosnian and Albanian communities are established). Challenged twice: ku''s R4
+   figure (30M+) beats all four on population. It does not flip the pick: R9''s own verified numbers
+   put the remaining catalog locales at 2-10M reachable, ku''s catalog is the weakest of the seven
+   (Sunrise unsourced above low confidence, all five extras null, R6 §5 holds the whole language), the
+   Kurdish Muslim majority reads Sorani (ckb), which no catalog carries, and the Kurmanji belt is
+   bilingual in tr, which already shipped.
+4. **yo stays out.** R9 §2 defers it unless a speaker is at hand, no speaker exists, and no
+   prayer-table genre exists to harvest. Revisit when a speaker appears.
+5. **ig and ln stay out.** R9 recommends against both: audiences under 2M and 1-3M with no source
+   genre; Nigeria and both Congos are served by the shipped ha, sw, fr, ar.
+6. **es and nl stay out.** Both are R6 §5 hold-the-whole-language orthographic forks (Fayr/Fajr;
+   Zonsopkomst confirmation) with AGPL-only extras, and their Muslim-reachable audiences read the
+   shipped ar, fr, tr. R4 C.3 itself marks nl "low priority, optional". Their exclusion keeps
+   locale.test.ts''s es-ES unshipped-tag fixtures true with no rewrite.
+7. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs, Pashto letters by explicit
+   codepoint:** Roboto carries ru''s Cyrillic, az''s schwa, and every sq/bs/de diacritic, so ru, az,
+   de, sq, bs take the LATIN record with no new font. Rubik carries the Persian six but lacks every
+   Pashto-specific letter (U+067C U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD
+   U+06AB all absent, both weights), and ps''s own sourced texts and endonym use them, so ps takes the
+   bundled Noto Naskh pair under the record ur already carries — no new font file, the URDU record''s
+   exact pattern — and joins RTL_IDS. NotoNaskhArabic measured present for the full Pashto set, both
+   weights. Tamil and Malayalam have no coverage in any bundled face, so ta and ml bundle the Noto
+   Sans Tamil and Noto Sans Malayalam Regular/Medium pairs, each script record''s line box pinned by
+   its own measured hhea box, the T-410 decision 3 pattern.
+8. **zh-Hans and zh-Hant bundle subset Noto Sans SC and TC pairs, not the full statics.** The full
+   pairs run near 10MB per weight, about 40MB for the four files, against a wave whose two other new
+   scripts cost about 1MB together. The subsets are cut with fontTools over the closed string set
+   (each zh catalog, its native-strings row, its widget-statics row, its endonym, the What''s New keys
+   resolve through the catalog), and a new gate recomputes that character set in-test from the
+   committed JSON and diffs it against a committed glyph lock generated from the subsets'' own cmaps,
+   so any catalog byte the subset misses fails the suite naming the character; the lock carries the
+    regenerating command in a _comment key, the house pattern for machine-read JSON. The record still names
+   a bundled face — the determinism the th, hi, ur, bn precedent buys — at a fortieth of the bytes.
+   OS fallback keeps serving the surfaces it already serves today: the picker''s foreign endonyms
+   (Roboto already lacks the Bengali that row shows under the en locale) and the widget binaries''
+   statics (no fontFamily named in either widget file, the system font on both platforms). Challenged:
+   bundle the full pairs and introduce no new mechanism. Rejected: forty megabytes for the wave''s
+   eleventh and twelfth locales, in a London-only app, is a cost no invariant demands, and the gate
+   closes the one risk the subset adds.
+9. **The resolver gains script-subtag matching for zh.** A device tag zh-Hans-CN resolves zh-Hans,
+   zh-Hant-TW resolves zh-Hant, a tag whose region is TW, HK or MO resolves zh-Hant, and every other
+   zh tag or a bare zh languageCode resolves zh-Hans — CLDR''s likely-subtags answers for the regions
+   iOS and Android report, and R4 A.4''s ruling that bare zh must not serve a Traditional reader.
+   locale.test.ts rows land red first in the zh step. No other locale needs it: the other nine match
+   by exact tag or languageCode today.
+10. **Numerals:** catalog prose follows R12 — ps carries Persian digits in its explanation strings,
+    every other new locale carries Latin; times, dates and countdowns stay Latin in every locale (the
+    row 82 law).
+11. **Unsourced slots take the naming rule''s own transliteration answer** — the loan rule, T-410
+    decision 5: the Catalog type requires every key, so no row drops; the loan lands with text, slug,
+    confidence and the derivation in its note. Rows whose only source is an AGPL catalog (mihrab or
+    al-azan as sole slug) gain one independent confirmation each before shipping, per R6 §2. The
+    census, row by row: de''s Ischa, Mitternacht, Letztes Drittel and Suhur confirm against
+    gebetszeiten.de; ru''s four mihrab-only rows confirm against ru-wikipedia prose; bs''s Ponoć gains
+    one independent Bosnian attestation; zh-Hans''s Midnight, Suhoor and the low-confidence Last
+    Third, and zh-Hant''s Midnight and Suhoor, confirm against the zh-wikipedia article and the two
+    government religion pages R6 §2 already registers (Taiwan religion.moi.gov.tw, PRC
+    mzzjj.gz.gov.cn), which corroborate the translated set as a whole.
+12. **The three prescribed swaps land in the sourcing step:** ps''s six core names move from the
+    translated phrases to the Arabic loans the same portal prints; az''s Suhoor moves to the attested
+    Sahur; ta''s Suhoor moves to the attested Sahar loan in Tamil script (all three are R9 §3 rows).
+13. **sq''s Fajr row keeps KMSH''s own Imsaku**, the authority printing the Arabic gloss beside it —
+    the shipped tr Imsak precedent applied, not a new exception. The same convention note lands in
+    the catalog''s help text the tr precedent set.
+14. **Version line:** every commit is typed feat, so the first lane commit takes the minor from
+    2.19.2 to 2.20.0, package.json, app.json and android/app/build.gradle together, fetching origin
+    first; a collision with a concurrent session resolves to the higher number.
+15. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10 precedent): the
+    expo-font array, the ten expo.locales entries, CFBundleLocalizations and the version field are the
+    mechanical carriers R4 B.10 pins; every byte is gated by nativeLocalesConfig.
+16. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+17. **README''s Features bullet rewrites from sixteen to twenty-six.**
+18. **The device step obeys the owner''s 2026-10-28 order (T-400, comment 4006): never a fleettest
+    iOS variant.** The development build installs on the iPhone XS as the ORIGINAL app — bundle id
+    <pkg>, original name — through the standing ios-build worktree recipe. Both platforms
+    compile in parallel in that build, never two of the same toolchain at once. The Android apk is
+    built to prove the platform unbroken and is not installed, so no aapt2 fleettest gate applies.
+    The step runs alone in a fresh lane session, after the audit is green. Reads are transcribed on
+    the ticket, never screenshotted; IPHONE_UDID stands in every record.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to twenty-six; RTL_IDS gains ps; resolveInitialLocale
+  gains the zh script-subtag match (decision 9).
+- `shared/i18n/ps.ts, zh-Hans.ts, zh-Hant.ts, ru.ts, az.ts, de.ts, sq.ts, bs.ts, ta.ts, ml.ts` —
+  new, one full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed per decisions 11 through 13; the
+  ps-islamery loan rows, the az and ta swaps, the independent confirmations, the loans and derived
+  explanations, every entry ending non-null with text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the ten''s detection rows (zh script-subtag rows red first);
+  es-ES fixtures stay untouched (decision 6).
+- `shared/__tests__/typography.test.ts` — the LATIN record''s list grows by ru, az, de, sq, bs; ps
+  joins the Arabic-record cases; Tamil, Malayalam and the two zh record cases with their measured
+  boxes.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — ps joins the RTL set; the suite is
+  direction-aware already.
+- `shared/languageNames.ts` — ten endonym rows in codepoint order: the Latin four (Azərbaycanca,
+  Bosanski, Deutsch, Shqip), Cyrillic (Русский) after Latin, پښتو beside the Arabic block, தமிழ்
+  after Bengali, മലയാളം after Tamil, 简体中文 and 繁體中文 after Thai.
+- `shared/typography.ts` — RECORDS: ru, az, de, sq, bs map LATIN; ps maps the Naskh record ur
+  carries; ta gets a Tamil
+  record and ml a Malayalam record pinned by their measured hhea boxes; zh-Hans and zh-Hant each get
+  a CJK record on the subset pairs.
+- `assets/fonts/` — NotoSansTamil-Regular/Medium.ttf and NotoSansMalayalam-Regular/Medium.ttf (full
+  statics, OFL); NotoSansSC-Subset-Regular/Medium.ttf and NotoSansTC-Subset-Regular/Medium.ttf
+  (generated subsets, OFL, the licence file already present).
+- `shared/i18n/cjk-glyph-lock.json` — new: the character set the two subset pairs carry, generated
+  from their cmaps, carrying the regenerating command in a _comment key.
+- `shared/__tests__/cjkSubset.test.ts` — new: recomputes the zh closed string set from the
+  committed catalogs and JSON rows, diffs it against the glyph lock, and fails naming any character
+  the lock lacks or any lock character the strings dropped.
+- `app.json` — the expo-font array grows by eight TTFs, ten expo.locales entries,
+  CFBundleLocalizations to twenty-six, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each, and the four locale-finder sites beside them gain the zh mapping of
+  decision 9 (a TW, HK or MO region resolves zh-Hant, every other zh tag resolves zh-Hans), so a
+  zh-TW device''s widgets render Traditional and not the en fallback.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow (ps joins RTL), and the
+  sourcing gate''s locale list grows a T419_TEN sibling beside T410_TEN so the text, slug and
+  confidence bar covers the ten''s names and explanations.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to twenty-six.
+- `README.md` — the Features bullet names twenty-six.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, the
+loader MODULES and typography RECORDS fail to typecheck until every new locale carries its row, and
+each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so each step''s gate re-reads the picker row count against LOCALE_IDS length. The
+data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget,
+brand bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged), plus this wave''s cjkSubset.
+Each locale step lands the locale''s whole keyed surface in one commit — catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows, the lock and gate list rows, its detection rows — so no suite is
+red across a step boundary (T-410 decision 13''s law, applied to the JSON-vs-app.json parity too).
+
+Per locale the recipe is the T-410 recipe: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, RTL flag where it reads right to left, lock-list and lock-suite rows, gates rows, detection
+rows, native-strings row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: full Noto Sans SC/TC statics (decision 8''s forty megabytes); relying on OS
+fallback for zh inside the app UI (the repo''s precedent names a bundled face for every non-Latin
+script it ships); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s answer);
+a runtime i18n dependency (the landed practice is authored catalogs behind gates); moving the device
+build before the audit (the owner tests once, on the audited tree).
+
+## Steps (6 x 2 points + 1 x 3 points = 15)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: the ps swap
+   to the portal''s own Arabic loans; the az and ta Suhoor swaps; the independent confirmations for
+   every mihrab-only or al-azan-only row the ten carry (de four rows, ru four, bs one, zh-Hans
+   three, zh-Hant two, per decision 11''s census); the loans and derived explanations filling every null (ps five names and five explanations,
+   sq five and two, bs four and two, ta four and two, ml three and two, zh two names and two
+   explanations each, ru one, az three, de two); every entry ending non-null with text, slug,
+   confidence and note.
+2. **Step 2: Locale plumbing lands with the five Roboto-covered catalogs** — LOCALE_IDS + 5 (ru, az,
+   de, sq, bs), the LATIN records, loader rows, endonym rows, lock list and catalogLock.test.ts list,
+   gates rows, detection rows, native-strings and widget-statics rows, app.json locale blocks and
+   CFBundleLocalizations, the four widget STATIC rows, i18nBridge parity rows; the plumbing comments
+   updated to the new counts.
+3. **Step 3: ps lands RTL on the Naskh record** — RTL_IDS gains ps, the Naskh pair measured
+   covering every Pashto letter by explicit codepoint, Persian digits in the explanation prose per R12, the RTL gates rows
+   red first, ps detection rows, chevronDirection riding the direction-aware suite.
+4. **Step 4: ta and ml land with their bundled Noto pairs** — the Tamil and Malayalam pairs bundled
+   and measured, their records'' script boxes pinned by the measured hhea numbers in each record''s
+   comment, the expo-font array grown, the widget runtime load suite re-run after the install, red
+   first.
+5. **Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag
+   resolver** — the subsets cut over the closed string set, cjk-glyph-lock.json generated from their
+   cmaps, cjkSubset.test.ts red first, the two CJK records, resolveInitialLocale''s zh matching with
+   its locale.test.ts rows red first, the four widget finder sites'' zh mapping with its rows red
+   first, both endonyms, both full surfaces.
+6. **Step 6: The full sweep is green and the README names twenty-six** — every suite green over the
+   twenty-six locales at full coverage, yarn validate exits 0, the widget runtime load suite re-run,
+   en''s lock hash unchanged, README bullet rewritten, audit-ready.
+7. **Step 7: The XS development build installs as the original app** — device step, 3 points, alone
+   in a fresh lane session, after the audit is green. The standing ios-build worktree
+   ($HOME/athan-gitree/worktrees/ios-build) moved to the merged lane SHA, its .env rewritten to
+   EXPO_PUBLIC_ENV=local and EXPO_PUBLIC_IOS_WIDGETS=1 with no suffix and no fleettest app group,
+   prebuild, the atlas''s xcodebuild command with DEVELOPMENT_TEAM=$TEAM_ID, the bundle id asserted
+   <pkg> with the original name; the Android side compiles in parallel from the same SHA
+   to prove the platform, its apk not installed; install to the XS through IPHONE_UDID, the owner
+   reads the twenty-six languages on glass, the reads transcribed on the ticket.
+
+## Risks
+
+- **The subset misses a byte** after a catalog edit: cjkSubset fails naming the character; the
+  regenerating command sits in the lock''s header. The full-pair fallback is the recorded escape.
+- **The zh script match over-matches**: a yue-tagged device falls through to en (yue is the language
+  code, not zh); the TW/HK/MO region list is CLDR''s own likely-subtags answer, pinned in tests.
+- **Tamil and Malayalam metrics lie**: a box that clips stacked marks shows in the measured hhea
+  numbers and the typography sweep; the Tamil and Malayalam floors are this wave''s own measurements,
+  the Bengali precedent.
+- **ps RTL purity**: a stray Latin run in an RTL string fails catalogGates'' RTL row before it ships.
+- **Width**: ru''s 17-char Midnight and ml''s stacked names ride the runtime-measured width surface;
+  the 24-char gate bounds every prayer label.
+- **Version collision with a concurrent session**: fetch origin before every bump, take the higher
+  number, rebase forward before the merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The device build breaks the both-platforms rule or drifts toward a fleettest variant**: the step
+  opens by restating the owner''s order; the bundle-id assert stops any suffixed artifact before
+  install.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table and the ticket''s acceptance list, citing R9 §1,
+   §3 and §4, R6 §5, R4 C.1, C.2 and A.4 row for row.
+2. Sourcing recorded: `jq ''[.ps, .["zh-Hans"], .["zh-Hant"], .ru, .az, .de, .sq, .bs, .ta, .ml] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0; the sourcing
+   gate of catalogGates (the T419_TEN list) is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, cjkSubset, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   chevronDirection and locale green over twenty-six locales at full coverage, with the sixteen
+   existing locales'' rows unedited.
+4. RTL, numerals, detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps; the ps
+   catalog prose carries Persian digits; locale.test.ts covers zh-Hans-CN to zh-Hans, zh-Hant-TW and
+   zh-TW to zh-Hant, zh-Hant-HK to zh-Hant, bare zh to zh-Hans, ps-AF to ps, ru-RU to ru, and the
+   untouched es-ES fallback.
+5. The widget runtime load suite re-run after the font installs:
+   `yarn test shared/__tests__/widgetRuntimeLoads.test.ts`.
+6. The device step: the ios-build worktree recipe invoked at the merged SHA; both compilers in
+   parallel; `plutil -extract CFBundleIdentifier raw <built.app>/Info.plist` prints <pkg>;
+   the XS install verified against IPHONE_UDID; the owner''s on-glass reads transcribed on the ticket.
+
+## Findings answered (griller pass 1, 2026-10-28)
+
+1. **BLOCKER, accepted and fixed.** The draft claimed Rubik covers the Pashto letters; re-measured
+   by explicit codepoint, Rubik lacks all eleven Pashto-specific letters and the first measurement
+   was an encoding artifact. Decision 7, the Files line, Step 3 and the typography cases now put ps
+   on the bundled Naskh pair under the ur record''s pattern. No new font file for ps.
+2. **GAP, accepted and fixed.** Decision 11 now names the rows each independent confirmation covers:
+   de four, ru four, bs one (Ponoć), zh-Hans three, zh-Hant two, each with its confirming source.
+3. **GAP, accepted and fixed.** The four widget locale-finder sites gain decision 9''s zh mapping, in
+   the Files list, in Step 5''s product, red first.
+4. **GAP, accepted and fixed.** catalogGates grows a T419_TEN sibling beside T410_TEN so the
+   sourcing gate enforces the ten''s text, slug and confidence bar over names and explanations; Proof
+   2''s jq now reads .explanations and the source and confidence fields, not .names alone.
+5. **NIT, accepted.** Decision 3 now names each of the four extensions'' basis, ml-wikipedia among
+   them, instead of claiming authority sourcing for ml.
+6. **NIT, accepted.** The glyph lock carries the regenerating command in a _comment key, the
+   native-strings and widget-statics pattern.
+', NULL, NULL, '{}', false, false, false, NULL, 49152, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 21:56:30.422846+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (138, 49, 1, NULL, 'T-419', '# T-419 — The next ten languages, proven on the XS
+
+## Goal
+
+The app ships sixteen locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn).
+Ten more land, taken from R9''s ranked remainder and completed into prayer-names.json''s own readiness
+order, taking the shipped set to twenty-six locale catalogs. Every new catalog is gated, sourced and
+swept; the sixteen existing locales and every English byte stay untouched. The merged tree then proves
+itself on the owner''s iPhone XS as a development build installed as the original app, so the owner
+reads the new languages on glass and rules.
+
+**The ten (rank, reach, state, closure this wave):**
+
+| Tag | Rank | Reach | State today | Closure this wave |
+| --- | --- | --- | --- | --- |
+| ps | R9 #11 | ~50M (Afghanistan, KPK) | NEEDS SOURCING, 6/11, phrases violate the naming rule | core six swap to the Arabic loans the same portal prints (R9 §3: "tables prefer the short loan"); five nulls and five explanations per the loan rule |
+| zh-Hans | R9 #13 | 28.1M | EXCEPTION, 9/11, translated set | the written standard both PRC and Taiwan religious-affairs pages print, kept as R9 §3''s documented exception; Duha/Istijaba loans; the mihrab-only Last Third gains one independent confirmation |
+| zh-Hant | R9 #13 | (the pair''s other half) | EXCEPTION, 9/11 | same exception; its Last Third is unsourced today and closes this wave |
+| ru | R9 #16 | 15M | READY, extras held, 10/11 | the four mihrab-only rows gain one independent confirmation each (ru-wikipedia prose); Duha/Istijaba loans |
+| az | R9 #19 | 10.1M+ | NEEDS SOURCING, 8/11 | Suhoor swaps to the attested Sahur (R9 §3); Last Third/Duha/Istijaba loans |
+| de | R9 #20 | 5.6M | READY after the fork, 9/11 | R9 §3 rules Fadschr and Ischa compliant German transliterations: they ship; the AGPL-only rows gain one independent confirmation each (gebetszeiten.de); Duha/Istijaba loans |
+| sq | R6 §5 no-speaker list | 5M+ (Albania, Kosovo, diaspora) | SHIP ON THIS DATA, 6/11 core all KMSH high | the only unshipped locale on R6 §5''s no-speaker list; Imsaku rides the shipped tr Imsak precedent (KMSH glosses it as Fajr); five nulls and two explanations close |
+| bs | R9 §3 exception row | 2M+ (Bosnia, diaspora) | READY as authority exception, 6/11 core all vaktija high | the vaktija''s own labels kept (R9 §3); four nulls per the loan rule |
+| ta | R4 C.2 UK diaspora | 10M+ (Tamil Nadu, Sri Lanka, UK) | standard six ready, extras held, 6/11 | Suhoor swaps to the attested Sahar loan in Tamil script (R9 §3); four nulls per the loan rule |
+| ml | R4 C.2 Kerala and Gulf | 10M+ | core ready, Duha sourced, 8/11 | Tahajjud kept as R9 §3''s documented exception (no one-word compliant form exists); Duha is a real sourced name; three nulls per the loan rule |
+
+**Not taken, ruled here:** yo, ig, ln, ku, es, nl — one line each under Decisions 4 through 6.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml, counted by locale catalog.**
+   R9''s ranked remainder after #410''s ten is ps, zh, ru, yo, az, de, ig, ln. R9 recommends against ig
+   and ln, and yo''s catalog is absent, which leaves ps, zh, ru, az, de. That is five; the pick extends
+   into the catalog''s other locales to complete ten. Challenged: count zh as one pick and take five
+   extensions. Rejected: the fifth-strongest extension is weaker than every locale already picked
+   (decision 3), and the owner''s goal line is sixteen-to-twenty-six, which holds only when the ten are
+   the ten new catalogs. zh ships as its two written standards because R4 C.1 rules the pair
+   both-or-neither: a Traditional reader cannot comfortably read Simplified. R9 itself abbreviates the
+   pair as "the zh pair" in one ranked row.
+2. **zh ships both standards and nothing less.** Shipping zh-Hans alone would lock Taiwan, Hong Kong
+   and Macau readers out; R4 A.4 rules a bare zh entry must never be the fallback for a Traditional
+   reader. Both files land, in one step, under one exception ruling.
+3. **The extension takes sq, bs, ta, ml and leaves ku, es, nl.** The four taken are the four
+   strongest by R6 §5''s readiness ladder (sq sits on the no-speaker-needed list; bs, ta, ml carry
+   authority-sourced standard sixes) and by UK weight (R4 C.2 names the Tamil Muslim and Kerala
+   diaspora in Britain, Bosnian and Albanian communities are established). Challenged twice: ku''s R4
+   figure (30M+) beats all four on population. It does not flip the pick: R9''s own verified numbers
+   put the remaining catalog locales at 2-10M reachable, ku''s catalog is the weakest of the seven
+   (Sunrise unsourced above low confidence, all five extras null, R6 §5 holds the whole language), the
+   Kurdish Muslim majority reads Sorani (ckb), which no catalog carries, and the Kurmanji belt is
+   bilingual in tr, which already shipped.
+4. **yo stays out.** R9 §2 defers it unless a speaker is at hand, no speaker exists, and no
+   prayer-table genre exists to harvest. Revisit when a speaker appears.
+5. **ig and ln stay out.** R9 recommends against both: audiences under 2M and 1-3M with no source
+   genre; Nigeria and both Congos are served by the shipped ha, sw, fr, ar.
+6. **es and nl stay out.** Both are R6 §5 hold-the-whole-language orthographic forks (Fayr/Fajr;
+   Zonsopkomst confirmation) with AGPL-only extras, and their Muslim-reachable audiences read the
+   shipped ar, fr, tr. R4 C.3 itself marks nl "low priority, optional". Their exclusion keeps
+   locale.test.ts''s es-ES unshipped-tag fixtures true with no rewrite.
+7. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs:** Roboto carries ru''s Cyrillic,
+   az''s schwa, and every sq/bs/de diacritic, so ru, az, de, sq, bs take the LATIN record with no new
+   font. Rubik carries every Pashto letter of the catalog''s script set (the Persian six and the
+   Pashto-only set measured present), so ps reuses the ARABIC record and joins RTL_IDS. Tamil and
+   Malayalam have no coverage in any bundled face, so ta and ml bundle the Noto Sans Tamil and Noto
+   Sans Malayalam Regular/Medium pairs, each script record''s line box pinned by its own measured hhea
+   box, the T-410 decision 3 pattern.
+8. **zh-Hans and zh-Hant bundle subset Noto Sans SC and TC pairs, not the full statics.** The full
+   pairs run near 10MB per weight, about 40MB for the four files, against a wave whose two other new
+   scripts cost about 1MB together. The subsets are cut with fontTools over the closed string set
+   (each zh catalog, its native-strings row, its widget-statics row, its endonym, the What''s New keys
+   resolve through the catalog), and a new gate recomputes that character set in-test from the
+   committed JSON and diffs it against a committed glyph lock generated from the subsets'' own cmaps,
+   so any catalog byte the subset misses fails the suite naming the character. The record still names
+   a bundled face — the determinism the th, hi, ur, bn precedent buys — at a fortieth of the bytes.
+   OS fallback keeps serving the surfaces it already serves today: the picker''s foreign endonyms
+   (Roboto already lacks the Bengali that row shows under the en locale) and the widget binaries''
+   statics (no fontFamily named in either widget file, the system font on both platforms). Challenged:
+   bundle the full pairs and introduce no new mechanism. Rejected: forty megabytes for the wave''s
+   eleventh and twelfth locales, in a London-only app, is a cost no invariant demands, and the gate
+   closes the one risk the subset adds.
+9. **The resolver gains script-subtag matching for zh.** A device tag zh-Hans-CN resolves zh-Hans,
+   zh-Hant-TW resolves zh-Hant, a tag whose region is TW, HK or MO resolves zh-Hant, and every other
+   zh tag or a bare zh languageCode resolves zh-Hans — CLDR''s likely-subtags answers for the regions
+   iOS and Android report, and R4 A.4''s ruling that bare zh must not serve a Traditional reader.
+   locale.test.ts rows land red first in the zh step. No other locale needs it: the other nine match
+   by exact tag or languageCode today.
+10. **Numerals:** catalog prose follows R12 — ps carries Persian digits in its explanation strings,
+    every other new locale carries Latin; times, dates and countdowns stay Latin in every locale (the
+    row 82 law).
+11. **Unsourced slots take the naming rule''s own transliteration answer** — the loan rule, T-410
+    decision 5: the Catalog type requires every key, so no row drops; the loan lands with text, slug,
+    confidence and the derivation in its note. Rows whose only source is an AGPL catalog (mihrab or
+    al-azan as sole slug) gain one independent confirmation each before shipping, per R6 §2:
+    gebetszeiten.de for de, ru-wikipedia prose for ru, the corroborating government religion pages
+    R6 already cites for zh.
+12. **The three prescribed swaps land in the sourcing step:** ps''s six core names move from the
+    translated phrases to the Arabic loans the same portal prints; az''s Suhoor moves to the attested
+    Sahur; ta''s Suhoor moves to the attested Sahar loan in Tamil script (all three are R9 §3 rows).
+13. **sq''s Fajr row keeps KMSH''s own Imsaku**, the authority printing the Arabic gloss beside it —
+    the shipped tr Imsak precedent applied, not a new exception. The same convention note lands in
+    the catalog''s help text the tr precedent set.
+14. **Version line:** every commit is typed feat, so the first lane commit takes the minor from
+    2.19.2 to 2.20.0, package.json, app.json and android/app/build.gradle together, fetching origin
+    first; a collision with a concurrent session resolves to the higher number.
+15. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10 precedent): the
+    expo-font array, the ten expo.locales entries, CFBundleLocalizations and the version field are the
+    mechanical carriers R4 B.10 pins; every byte is gated by nativeLocalesConfig.
+16. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+17. **README''s Features bullet rewrites from sixteen to twenty-six.**
+18. **The device step obeys the owner''s 2026-10-28 order (T-400, comment 4006): never a fleettest
+    iOS variant.** The development build installs on the iPhone XS as the ORIGINAL app — bundle id
+    <pkg>, original name — through the standing ios-build worktree recipe. Both platforms
+    compile in parallel in that build, never two of the same toolchain at once. The Android apk is
+    built to prove the platform unbroken and is not installed, so no aapt2 fleettest gate applies.
+    The step runs alone in a fresh lane session, after the audit is green. Reads are transcribed on
+    the ticket, never screenshotted; IPHONE_UDID stands in every record.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to twenty-six; RTL_IDS gains ps; resolveInitialLocale
+  gains the zh script-subtag match (decision 9).
+- `shared/i18n/ps.ts, zh-Hans.ts, zh-Hant.ts, ru.ts, az.ts, de.ts, sq.ts, bs.ts, ta.ts, ml.ts` —
+  new, one full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed per decisions 11 through 13; the
+  ps-islamery loan rows, the az and ta swaps, the independent confirmations, the loans and derived
+  explanations, every entry ending non-null with text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the ten''s detection rows (zh script-subtag rows red first);
+  es-ES fixtures stay untouched (decision 6).
+- `shared/__tests__/typography.test.ts` — the LATIN record''s list grows by ru, az, de, sq, bs; ps
+  joins the Arabic-record cases; Tamil, Malayalam and the two zh record cases with their measured
+  boxes.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — ps joins the RTL set; the suite is
+  direction-aware already.
+- `shared/languageNames.ts` — ten endonym rows in codepoint order: the Latin four (Azərbaycanca,
+  Bosanski, Deutsch, Shqip), Cyrillic (Русский) after Latin, پښتو beside the Arabic block, தமிழ்
+  after Bengali, മലയാളം after Tamil, 简体中文 and 繁體中文 after Thai.
+- `shared/typography.ts` — RECORDS: ru, az, de, sq, bs map LATIN; ps maps ARABIC; ta gets a Tamil
+  record and ml a Malayalam record pinned by their measured hhea boxes; zh-Hans and zh-Hant each get
+  a CJK record on the subset pairs.
+- `assets/fonts/` — NotoSansTamil-Regular/Medium.ttf and NotoSansMalayalam-Regular/Medium.ttf (full
+  statics, OFL); NotoSansSC-Subset-Regular/Medium.ttf and NotoSansTC-Subset-Regular/Medium.ttf
+  (generated subsets, OFL, the licence file already present).
+- `shared/i18n/cjk-glyph-lock.json` — new: the character set the two subset pairs carry, generated
+  from their cmaps, with the regenerating command in its header comment.
+- `shared/__tests__/cjkSubset.test.ts` — new: recomputes the zh closed string set from the
+  committed catalogs and JSON rows, diffs it against the glyph lock, and fails naming any character
+  the lock lacks or any lock character the strings dropped.
+- `app.json` — the expo-font array grows by eight TTFs, ten expo.locales entries,
+  CFBundleLocalizations to twenty-six, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow (ps joins RTL).
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to twenty-six.
+- `README.md` — the Features bullet names twenty-six.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, the
+loader MODULES and typography RECORDS fail to typecheck until every new locale carries its row, and
+each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so each step''s gate re-reads the picker row count against LOCALE_IDS length. The
+data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget,
+brand bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged), plus this wave''s cjkSubset.
+Each locale step lands the locale''s whole keyed surface in one commit — catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows, the lock and gate list rows, its detection rows — so no suite is
+red across a step boundary (T-410 decision 13''s law, applied to the JSON-vs-app.json parity too).
+
+Per locale the recipe is the T-410 recipe: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, RTL flag where it reads right to left, lock-list and lock-suite rows, gates rows, detection
+rows, native-strings row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: full Noto Sans SC/TC statics (decision 8''s forty megabytes); relying on OS
+fallback for zh inside the app UI (the repo''s precedent names a bundled face for every non-Latin
+script it ships); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s answer);
+a runtime i18n dependency (the landed practice is authored catalogs behind gates); moving the device
+build before the audit (the owner tests once, on the audited tree).
+
+## Steps (6 x 2 points + 1 x 3 points = 15)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: the ps swap
+   to the portal''s own Arabic loans; the az and ta Suhoor swaps; the independent confirmations for
+   every mihrab-only or al-azan-only row the ten carry (de four rows, ru four, zh-Hans one, zh-Hant
+   one); the loans and derived explanations filling every null (ps five names and five explanations,
+   sq five and two, bs four and two, ta four and two, ml three and two, zh two names and two
+   explanations each, ru one, az three, de two); every entry ending non-null with text, slug,
+   confidence and note.
+2. **Step 2: Locale plumbing lands with the five Roboto-covered catalogs** — LOCALE_IDS + 5 (ru, az,
+   de, sq, bs), the LATIN records, loader rows, endonym rows, lock list and catalogLock.test.ts list,
+   gates rows, detection rows, native-strings and widget-statics rows, app.json locale blocks and
+   CFBundleLocalizations, the four widget STATIC rows, i18nBridge parity rows; the plumbing comments
+   updated to the new counts.
+3. **Step 3: ps lands RTL on the Arabic record** — RTL_IDS gains ps, the ARABIC record measured
+   covering the Pashto letters, Persian digits in the explanation prose per R12, the RTL gates rows
+   red first, ps detection rows, chevronDirection riding the direction-aware suite.
+4. **Step 4: ta and ml land with their bundled Noto pairs** — the Tamil and Malayalam pairs bundled
+   and measured, their records'' script boxes pinned by the measured hhea numbers in each record''s
+   comment, the expo-font array grown, the widget runtime load suite re-run after the install, red
+   first.
+5. **Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag
+   resolver** — the subsets cut over the closed string set, cjk-glyph-lock.json generated from their
+   cmaps, cjkSubset.test.ts red first, the two CJK records, resolveInitialLocale''s zh matching with
+   its locale.test.ts rows red first, both endonyms, both full surfaces.
+6. **Step 6: The full sweep is green and the README names twenty-six** — every suite green over the
+   twenty-six locales at full coverage, yarn validate exits 0, the widget runtime load suite re-run,
+   en''s lock hash unchanged, README bullet rewritten, audit-ready.
+7. **Step 7: The XS development build installs as the original app** — device step, 3 points, alone
+   in a fresh lane session, after the audit is green. The standing ios-build worktree
+   ($HOME/athan-gitree/worktrees/ios-build) moved to the merged lane SHA, its .env rewritten to
+   EXPO_PUBLIC_ENV=local and EXPO_PUBLIC_IOS_WIDGETS=1 with no suffix and no fleettest app group,
+   prebuild, the atlas''s xcodebuild command with DEVELOPMENT_TEAM=$TEAM_ID, the bundle id asserted
+   <pkg> with the original name; the Android side compiles in parallel from the same SHA
+   to prove the platform, its apk not installed; install to the XS through IPHONE_UDID, the owner
+   reads the twenty-six languages on glass, the reads transcribed on the ticket.
+
+## Risks
+
+- **The subset misses a byte** after a catalog edit: cjkSubset fails naming the character; the
+  regenerating command sits in the lock''s header. The full-pair fallback is the recorded escape.
+- **The zh script match over-matches**: a yue-tagged device falls through to en (yue is the language
+  code, not zh); the TW/HK/MO region list is CLDR''s own likely-subtags answer, pinned in tests.
+- **Tamil and Malayalam metrics lie**: a box that clips stacked marks shows in the measured hhea
+  numbers and the typography sweep; the Tamil and Malayalam floors are this wave''s own measurements,
+  the Bengali precedent.
+- **ps RTL purity**: a stray Latin run in an RTL string fails catalogGates'' RTL row before it ships.
+- **Width**: ru''s 17-char Midnight and ml''s stacked names ride the runtime-measured width surface;
+  the 24-char gate bounds every prayer label.
+- **Version collision with a concurrent session**: fetch origin before every bump, take the higher
+  number, rebase forward before the merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The device build breaks the both-platforms rule or drifts toward a fleettest variant**: the step
+  opens by restating the owner''s order; the bundle-id assert stops any suffixed artifact before
+  install.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table and the ticket''s acceptance list, citing R9 §1,
+   §3 and §4, R6 §5, R4 C.1, C.2 and A.4 row for row.
+2. Sourcing recorded: `jq -r ''.ps.names, .["zh-Hans"].names, .["zh-Hant"].names, .ru.names,
+   .az.names, .de.names, .sq.names, .bs.names, .ta.names, .ml.names | to_entries[] |
+   select(.value.text == null)''` over shared/i18n/sourced-names.json prints nothing; the
+   sourced-verbatim row of catalogGates is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, cjkSubset, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   chevronDirection and locale green over twenty-six locales at full coverage, with the sixteen
+   existing locales'' rows unedited.
+4. RTL, numerals, detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps; the ps
+   catalog prose carries Persian digits; locale.test.ts covers zh-Hans-CN to zh-Hans, zh-Hant-TW and
+   zh-TW to zh-Hant, zh-Hant-HK to zh-Hant, bare zh to zh-Hans, ps-AF to ps, ru-RU to ru, and the
+   untouched es-ES fallback.
+5. The widget runtime load suite re-run after the font installs:
+   `yarn test shared/__tests__/widgetRuntimeLoads.test.ts`.
+6. The device step: the ios-build worktree recipe invoked at the merged SHA; both compilers in
+   parallel; `plutil -extract CFBundleIdentifier raw <built.app>/Info.plist` prints <pkg>;
+   the XS install verified against IPHONE_UDID; the owner''s on-glass reads transcribed on the ticket.
+', NULL, NULL, '{}', false, false, false, NULL, 49152, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:03:18.607443+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (139, 49, 3, NULL, 'T-419', '# T-419 — The next ten languages, proven on the XS
+
+## Goal
+
+The app ships sixteen locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa, bn).
+Ten more land, taken from R9''s ranked remainder and completed into prayer-names.json''s own readiness
+order, taking the shipped set to twenty-six locale catalogs. Every new catalog is gated, sourced and
+swept; the sixteen existing locales and every English byte stay untouched. The merged tree then proves
+itself on the owner''s iPhone XS as a development build installed as the original app, so the owner
+reads the new languages on glass and rules.
+
+**The ten (rank, reach, state, closure this wave):**
+
+| Tag | Rank | Reach | State today | Closure this wave |
+| --- | --- | --- | --- | --- |
+| ps | R9 #11 | ~50M (Afghanistan, KPK) | NEEDS SOURCING, 6/11, phrases violate the naming rule | core six swap to the Arabic loans the same portal prints (R9 §3: "tables prefer the short loan"); five nulls and five explanations per the loan rule |
+| zh-Hans | R9 #13 | 28.1M | EXCEPTION, 9/11, translated set | the written standard both PRC and Taiwan religious-affairs pages print, kept as R9 §3''s documented exception; Duha/Istijaba loans; the mihrab-only Last Third gains one independent confirmation |
+| zh-Hant | R9 #13 | (the pair''s other half) | EXCEPTION, 9/11 | same exception; its Last Third is unsourced today and closes this wave |
+| ru | R9 #16 | 15M | READY, extras held, 10/11 | the four mihrab-only rows gain one independent confirmation each (ru-wikipedia prose); Duha/Istijaba loans |
+| az | R9 #19 | 10.1M+ | NEEDS SOURCING, 8/11 | Suhoor swaps to the attested Sahur (R9 §3); Last Third/Duha/Istijaba loans |
+| de | R9 #20 | 5.6M | READY after the fork, 9/11 | R9 §3 rules Fadschr and Ischa compliant German transliterations: they ship; the AGPL-only rows gain one independent confirmation each (gebetszeiten.de); Duha/Istijaba loans |
+| sq | R6 §5 no-speaker list | 5M+ (Albania, Kosovo, diaspora) | SHIP ON THIS DATA, 6/11 core all KMSH high | the only unshipped locale on R6 §5''s no-speaker list; Imsaku rides the shipped tr Imsak precedent (KMSH glosses it as Fajr); five nulls and two explanations close |
+| bs | R9 §3 exception row | 2M+ (Bosnia, diaspora) | READY as authority exception, 6/11 core all vaktija high | the vaktija''s own labels kept (R9 §3); four nulls per the loan rule |
+| ta | R4 C.2 UK diaspora | 10M+ (Tamil Nadu, Sri Lanka, UK) | standard six ready, extras held, 6/11 | Suhoor swaps to the attested Sahar loan in Tamil script (R9 §3); four nulls per the loan rule |
+| ml | R4 C.2 Kerala and Gulf | 10M+ | core ready, Duha sourced, 8/11 | Tahajjud kept as R9 §3''s documented exception (no one-word compliant form exists); Duha is a real sourced name; three nulls per the loan rule |
+
+**Not taken, ruled here:** yo, ig, ln, ku, es, nl — one line each under Decisions 4 through 6.
+
+## Decisions taken (2026-10-28, lane 1)
+
+1. **The ten are ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml, counted by locale catalog.**
+   R9''s ranked remainder after #410''s ten is ps, zh, ru, yo, az, de, ig, ln. R9 recommends against ig
+   and ln, and yo''s catalog is absent, which leaves ps, zh, ru, az, de. That is five; the pick extends
+   into the catalog''s other locales to complete ten. Challenged: count zh as one pick and take five
+   extensions. Rejected: the fifth-strongest extension is weaker than every locale already picked
+   (decision 3), and the owner''s goal line is sixteen-to-twenty-six, which holds only when the ten are
+   the ten new catalogs. zh ships as its two written standards because R4 C.1 rules the pair
+   both-or-neither: a Traditional reader cannot comfortably read Simplified. R9 itself abbreviates the
+   pair as "the zh pair" in one ranked row.
+2. **zh ships both standards and nothing less.** Shipping zh-Hans alone would lock Taiwan, Hong Kong
+   and Macau readers out; R4 A.4 rules a bare zh entry must never be the fallback for a Traditional
+   reader. Both files land, in one step, under one exception ruling.
+3. **The extension takes sq, bs, ta, ml and leaves ku, es, nl.** The four taken are the four
+   strongest by R6 §5''s readiness ladder (sq sits on the no-speaker-needed list on the KMSH
+   authority; bs on the vaktija authority; ta on true-time-ta; ml''s six rest on ml-wikipedia, R6
+   §5''s sourced tier) and by UK weight (R4 C.2 names the Tamil Muslim and Kerala
+   diaspora in Britain, Bosnian and Albanian communities are established). Challenged twice: ku''s R4
+   figure (30M+) beats all four on population. It does not flip the pick: R9''s own verified numbers
+   put the remaining catalog locales at 2-10M reachable, ku''s catalog is the weakest of the seven
+   (Sunrise unsourced above low confidence, all five extras null, R6 §5 holds the whole language), the
+   Kurdish Muslim majority reads Sorani (ckb), which no catalog carries, and the Kurmanji belt is
+   bilingual in tr, which already shipped.
+4. **yo stays out.** R9 §2 defers it unless a speaker is at hand, no speaker exists, and no
+   prayer-table genre exists to harvest. Revisit when a speaker appears.
+5. **ig and ln stay out.** R9 recommends against both: audiences under 2M and 1-3M with no source
+   genre; Nigeria and both Congos are served by the shipped ha, sw, fr, ar.
+6. **es and nl stay out.** Both are R6 §5 hold-the-whole-language orthographic forks (Fayr/Fajr;
+   Zonsopkomst confirmation) with AGPL-only extras, and their Muslim-reachable audiences read the
+   shipped ar, fr, tr. R4 C.3 itself marks nl "low priority, optional". Their exclusion keeps
+   locale.test.ts''s es-ES unshipped-tag fixtures true with no rewrite.
+7. **Fonts, measured 2026-10-28 with fontTools on the bundled TTFs, Pashto letters by explicit
+   codepoint:** Roboto carries ru''s Cyrillic, az''s schwa, and every sq/bs/de diacritic, so ru, az,
+   de, sq, bs take the LATIN record with no new font. Rubik carries the Persian six but lacks every
+   Pashto-specific letter (U+067C U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD
+   U+06AB all absent, both weights), and ps''s own sourced texts and endonym use them, so ps takes the
+   bundled Noto Naskh pair under the record ur already carries — no new font file, the URDU record''s
+   exact pattern — and joins RTL_IDS. NotoNaskhArabic measured present for the full Pashto set, both
+   weights. Tamil and Malayalam have no coverage in any bundled face, so ta and ml bundle the Noto
+   Sans Tamil and Noto Sans Malayalam Regular/Medium pairs, each script record''s line box pinned by
+   its own measured hhea box, the T-410 decision 3 pattern.
+8. **zh-Hans and zh-Hant bundle subset Noto Sans SC and TC pairs, not the full statics.** The full
+   pairs run near 10MB per weight, about 40MB for the four files, against a wave whose two other new
+   scripts cost about 1MB together. The subsets are cut with fontTools over the closed string set
+   (each zh catalog, its native-strings row, its widget-statics row, its endonym, the What''s New keys
+   resolve through the catalog), and a new gate recomputes that character set in-test from the
+   committed JSON and diffs it against a committed glyph lock generated from the subsets'' own cmaps,
+   so any catalog byte the subset misses fails the suite naming the character; the lock carries the
+    regenerating command in a _comment key, the house pattern for machine-read JSON. The record still names
+   a bundled face — the determinism the th, hi, ur, bn precedent buys — at a fortieth of the bytes.
+   OS fallback keeps serving the surfaces it already serves today: the picker''s foreign endonyms
+   (Roboto already lacks the Bengali that row shows under the en locale) and the widget binaries''
+   statics (no fontFamily named in either widget file, the system font on both platforms). Challenged:
+   bundle the full pairs and introduce no new mechanism. Rejected: forty megabytes for the wave''s
+   eleventh and twelfth locales, in a London-only app, is a cost no invariant demands, and the gate
+   closes the one risk the subset adds.
+9. **The resolver gains script-subtag matching for zh.** A device tag zh-Hans-CN resolves zh-Hans,
+   zh-Hant-TW resolves zh-Hant, a tag whose region is TW, HK or MO resolves zh-Hant, and every other
+   zh tag or a bare zh languageCode resolves zh-Hans — CLDR''s likely-subtags answers for the regions
+   iOS and Android report, and R4 A.4''s ruling that bare zh must not serve a Traditional reader.
+   locale.test.ts rows land red first in the zh step. No other locale needs it: the other nine match
+   by exact tag or languageCode today.
+10. **Numerals:** catalog prose follows R12 — ps carries Persian digits in its explanation strings,
+    every other new locale carries Latin; times, dates and countdowns stay Latin in every locale (the
+    row 82 law).
+11. **Unsourced slots take the naming rule''s own transliteration answer** — the loan rule, T-410
+    decision 5: the Catalog type requires every key, so no row drops; the loan lands with text, slug,
+    confidence and the derivation in its note. Rows whose only source is an AGPL catalog (mihrab or
+    al-azan as sole slug) gain one independent confirmation each before shipping, per R6 §2. The
+    census, row by row: de''s Ischa, Mitternacht, Letztes Drittel and Suhur confirm against
+    gebetszeiten.de; ru''s four mihrab-only rows confirm against ru-wikipedia prose; bs''s Ponoć gains
+    one independent Bosnian attestation; zh-Hans''s Midnight, Suhoor and the low-confidence Last
+    Third, and zh-Hant''s Midnight and Suhoor, confirm against the zh-wikipedia article and the two
+    government religion pages R6 §2 already registers (Taiwan religion.moi.gov.tw, PRC
+    mzzjj.gz.gov.cn), which corroborate the translated set as a whole.
+12. **The three prescribed swaps land in the sourcing step:** ps''s six core names move from the
+    translated phrases to the Arabic loans the same portal prints; az''s Suhoor moves to the attested
+    Sahur; ta''s Suhoor moves to the attested Sahar loan in Tamil script (all three are R9 §3 rows).
+13. **sq''s Fajr row keeps KMSH''s own Imsaku**, the authority printing the Arabic gloss beside it —
+    the shipped tr Imsak precedent applied, not a new exception. The same convention note lands in
+    the catalog''s help text the tr precedent set.
+14. **Version line:** every commit is typed feat, so the first lane commit takes the minor from
+    2.19.2 to 2.20.0, package.json, app.json and android/app/build.gradle together, fetching origin
+    first; a collision with a concurrent session resolves to the higher number.
+15. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10 precedent): the
+    expo-font array, the ten expo.locales entries, CFBundleLocalizations and the version field are the
+    mechanical carriers R4 B.10 pins; every byte is gated by nativeLocalesConfig.
+16. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+17. **README''s Features bullet rewrites from sixteen to twenty-six.**
+18. **The device step obeys the owner''s 2026-10-28 order (T-400, comment 4006): never a fleettest
+    iOS variant.** The development build installs on the iPhone XS as the ORIGINAL app — bundle id
+    <pkg>, original name — through the standing ios-build worktree recipe. Both platforms
+    compile in parallel in that build, never two of the same toolchain at once. The Android apk is
+    built to prove the platform unbroken and is not installed, so no aapt2 fleettest gate applies.
+    The step runs alone in a fresh lane session, after the audit is green. Reads are transcribed on
+    the ticket, never screenshotted; IPHONE_UDID stands in every record.
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to twenty-six; RTL_IDS gains ps; resolveInitialLocale
+  gains the zh script-subtag match (decision 9).
+- `shared/i18n/ps.ts, zh-Hans.ts, zh-Hant.ts, ru.ts, az.ts, de.ts, sq.ts, bs.ts, ta.ts, ml.ts` —
+  new, one full catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the ten.
+- `shared/i18n/sourced-names.json` — the ten''s entries completed per decisions 11 through 13; the
+  ps-islamery loan rows, the az and ta swaps, the independent confirmations, the loans and derived
+  explanations, every entry ending non-null with text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — ten locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — ten locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs` and
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by ten together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the ten''s detection rows (zh script-subtag rows red first);
+  es-ES fixtures stay untouched (decision 6).
+- `shared/__tests__/typography.test.ts` — the LATIN record''s list grows by ru, az, de, sq, bs; ps
+  joins the Arabic-record cases; Tamil, Malayalam and the two zh record cases with their measured
+  boxes.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by ten with a per-locale parity row.
+- `components/__tests__/chevronDirection.test.tsx` — ps joins the RTL set; the suite is
+  direction-aware already.
+- `shared/languageNames.ts` — ten endonym rows in codepoint order: the Latin four (Azərbaycanca,
+  Bosanski, Deutsch, Shqip), Cyrillic (Русский) after Latin, پښتو beside the Arabic block, தமிழ்
+  after Bengali, മലയാളം after Tamil, 简体中文 and 繁體中文 after Thai.
+- `shared/typography.ts` — RECORDS: ru, az, de, sq, bs map LATIN; ps maps the Naskh record ur
+  carries; ta gets a Tamil
+  record and ml a Malayalam record pinned by their measured hhea boxes; zh-Hans and zh-Hant each get
+  a CJK record on the subset pairs.
+- `assets/fonts/` — NotoSansTamil-Regular/Medium.ttf and NotoSansMalayalam-Regular/Medium.ttf (full
+  statics, OFL); NotoSansSC-Subset-Regular/Medium.ttf and NotoSansTC-Subset-Regular/Medium.ttf
+  (generated subsets, OFL, the licence file already present).
+- `shared/i18n/cjk-glyph-lock.json` — new: the character set the two subset pairs carry, generated
+  from their cmaps, carrying the regenerating command in a _comment key.
+- `shared/__tests__/cjkSubset.test.ts` — new: recomputes the zh closed string set from the
+  committed catalogs and JSON rows, diffs it against the glyph lock, and fails naming any character
+  the lock lacks or any lock character the strings dropped.
+- `app.json` — the expo-font array grows by eight TTFs, ten expo.locales entries,
+  CFBundleLocalizations to twenty-six, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by ten locale rows each, and the four locale-finder sites beside them gain the zh mapping of
+  decision 9 (a TW, HK or MO region resolves zh-Hant, every other zh tag resolves zh-Hans), so a
+  zh-TW device''s widgets render Traditional and not the en fallback.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow (ps joins RTL), and the
+  sourcing gate''s locale list grows a T419_TEN sibling beside T410_TEN so the text, slug and
+  confidence bar covers the ten''s names and explanations.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to twenty-six.
+- `README.md` — the Features bullet names twenty-six.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, the
+loader MODULES and typography RECORDS fail to typecheck until every new locale carries its row, and
+each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so each step''s gate re-reads the picker row count against LOCALE_IDS length. The
+data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget,
+brand bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged), plus this wave''s cjkSubset.
+Each locale step lands the locale''s whole keyed surface in one commit — catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows, the lock and gate list rows, its detection rows — so no suite is
+red across a step boundary (T-410 decision 13''s law, applied to the JSON-vs-app.json parity too).
+
+Per locale the recipe is the T-410 recipe: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, RTL flag where it reads right to left, lock-list and lock-suite rows, gates rows, detection
+rows, native-strings row, widget-statics row, app.json locale block, the four widget STATIC tables.
+
+Alternatives rejected: full Noto Sans SC/TC statics (decision 8''s forty megabytes); relying on OS
+fallback for zh inside the app UI (the repo''s precedent names a bundled face for every non-Latin
+script it ships); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s answer);
+a runtime i18n dependency (the landed practice is authored catalogs behind gates); moving the device
+build before the audit (the owner tests once, on the audited tree).
+
+## Steps (6 x 2 points + 1 x 3 points = 15)
+
+1. **Step 1: The sourcing record completes for the ten languages** — sourced-names.json: the ps swap
+   to the portal''s own Arabic loans; the az and ta Suhoor swaps; the independent confirmations for
+   every mihrab-only or al-azan-only row the ten carry (de four rows, ru four, bs one, zh-Hans
+   three, zh-Hant two, per decision 11''s census); the loans and derived explanations filling every null (ps five names and five explanations,
+   sq five and two, bs four and two, ta four and two, ml three and two, zh two names and two
+   explanations each, ru one, az three, de two); every entry ending non-null with text, slug,
+   confidence and note.
+2. **Step 2: Locale plumbing lands with the five Roboto-covered catalogs** — LOCALE_IDS + 5 (ru, az,
+   de, sq, bs), the LATIN records, loader rows, endonym rows, lock list and catalogLock.test.ts list,
+   gates rows, detection rows, native-strings and widget-statics rows, app.json locale blocks and
+   CFBundleLocalizations, the four widget STATIC rows, i18nBridge parity rows; the plumbing comments
+   updated to the new counts.
+3. **Step 3: ps lands RTL on the Naskh record** — RTL_IDS gains ps, the Naskh pair measured
+   covering every Pashto letter by explicit codepoint, Persian digits in the explanation prose per R12, the RTL gates rows
+   red first, ps detection rows, chevronDirection riding the direction-aware suite.
+4. **Step 4: ta and ml land with their bundled Noto pairs** — the Tamil and Malayalam pairs bundled
+   and measured, their records'' script boxes pinned by the measured hhea numbers in each record''s
+   comment, the expo-font array grown, the widget runtime load suite re-run after the install, red
+   first.
+5. **Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag
+   resolver** — the subsets cut over the closed string set, cjk-glyph-lock.json generated from their
+   cmaps, cjkSubset.test.ts red first, the two CJK records, resolveInitialLocale''s zh matching with
+   its locale.test.ts rows red first, the four widget finder sites'' zh mapping with its rows red
+   first, both endonyms, both full surfaces.
+6. **Step 6: The full sweep is green and the README names twenty-six** — every suite green over the
+   twenty-six locales at full coverage, yarn validate exits 0, the widget runtime load suite re-run,
+   en''s lock hash unchanged, README bullet rewritten, audit-ready.
+7. **Step 7: The XS development build installs as the original app** — device step, 3 points, alone
+   in a fresh lane session, after the audit is green. The standing ios-build worktree
+   ($HOME/athan-gitree/worktrees/ios-build) moved to the merged lane SHA, its .env rewritten to
+   EXPO_PUBLIC_ENV=local and EXPO_PUBLIC_IOS_WIDGETS=1 with no suffix and no fleettest app group,
+   prebuild, the atlas''s xcodebuild command with DEVELOPMENT_TEAM=$TEAM_ID, the bundle id asserted
+   <pkg> with the original name; the Android side compiles in parallel from the same SHA
+   to prove the platform, its apk not installed; install to the XS through IPHONE_UDID, the owner
+   reads the twenty-six languages on glass, the reads transcribed on the ticket.
+
+## Risks
+
+- **The subset misses a byte** after a catalog edit: cjkSubset fails naming the character; the
+  regenerating command sits in the lock''s header. The full-pair fallback is the recorded escape.
+- **The zh script match over-matches**: a yue-tagged device falls through to en (yue is the language
+  code, not zh); the TW/HK/MO region list is CLDR''s own likely-subtags answer, pinned in tests.
+- **Tamil and Malayalam metrics lie**: a box that clips stacked marks shows in the measured hhea
+  numbers and the typography sweep; the Tamil and Malayalam floors are this wave''s own measurements,
+  the Bengali precedent.
+- **ps RTL purity**: a stray Latin run in an RTL string fails catalogGates'' RTL row before it ships.
+- **Width**: ru''s 17-char Midnight and ml''s stacked names ride the runtime-measured width surface;
+  the 24-char gate bounds every prayer label.
+- **Version collision with a concurrent session**: fetch origin before every bump, take the higher
+  number, rebase forward before the merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The device build breaks the both-platforms rule or drifts toward a fleettest variant**: the step
+  opens by restating the owner''s order; the bundle-id assert stops any suffixed artifact before
+  install.
+
+## Proof
+
+1. The ten named with rationale: this doc''s table and the ticket''s acceptance list, citing R9 §1,
+   §3 and §4, R6 §5, R4 C.1, C.2 and A.4 row for row.
+2. Sourcing recorded: `jq ''[.ps, .["zh-Hans"], .["zh-Hant"], .ru, .az, .de, .sq, .bs, .ta, .ml][] |
+   (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or
+   .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0; the sourcing
+   gate of catalogGates (the T419_TEN list) is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, cjkSubset, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   chevronDirection and locale green over twenty-six locales at full coverage, with the sixteen
+   existing locales'' rows unedited.
+4. RTL, numerals, detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps; the ps
+   catalog prose carries Persian digits; locale.test.ts covers zh-Hans-CN to zh-Hans, zh-Hant-TW and
+   zh-TW to zh-Hant, zh-Hant-HK to zh-Hant, bare zh to zh-Hans, ps-AF to ps, ru-RU to ru, and the
+   untouched es-ES fallback.
+5. The widget runtime load suite re-run after the font installs:
+   `yarn test shared/__tests__/widgetRuntimeLoads.test.ts`.
+6. The device step: the ios-build worktree recipe invoked at the merged SHA; both compilers in
+   parallel; `plutil -extract CFBundleIdentifier raw <built.app>/Info.plist` prints <pkg>;
+   the XS install verified against IPHONE_UDID; the owner''s on-glass reads transcribed on the ticket.
+
+## Findings answered (griller pass 1, 2026-10-28)
+
+1. **BLOCKER, accepted and fixed.** The draft claimed Rubik covers the Pashto letters; re-measured
+   by explicit codepoint, Rubik lacks all eleven Pashto-specific letters and the first measurement
+   was an encoding artifact. Decision 7, the Files line, Step 3 and the typography cases now put ps
+   on the bundled Naskh pair under the ur record''s pattern. No new font file for ps.
+2. **GAP, accepted and fixed.** Decision 11 now names the rows each independent confirmation covers:
+   de four, ru four, bs one (Ponoć), zh-Hans three, zh-Hant two, each with its confirming source.
+3. **GAP, accepted and fixed.** The four widget locale-finder sites gain decision 9''s zh mapping, in
+   the Files list, in Step 5''s product, red first.
+4. **GAP, accepted and fixed.** catalogGates grows a T419_TEN sibling beside T410_TEN so the
+   sourcing gate enforces the ten''s text, slug and confidence bar over names and explanations; Proof
+   2''s jq now reads .explanations and the source and confidence fields, not .names alone.
+5. **NIT, accepted.** Decision 3 now names each of the four extensions'' basis, ml-wikipedia among
+   them, instead of claiming authority sourcing for ml.
+6. **NIT, accepted.** The glyph lock carries the regenerating command in a _comment key, the
+   native-strings and widget-statics pattern.
+', NULL, NULL, '{}', false, false, false, NULL, 49152, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:18:52.578789+00');
 
 
 --
@@ -29929,7 +32175,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:317', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:272', 1, 73);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:249', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:303', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:358', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:358', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:304', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:355', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:254', 1, 47);
@@ -30016,33 +32262,50 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:348', 1, 62)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:374', 1, 49);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 109);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:404', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:395', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:397', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:416', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:396', 1, 70);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:417', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:403', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:398', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:418', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:405', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 72);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:420', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:406', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:399', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:421', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:422', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 130);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:393', 1, 19);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 49);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:423', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:424', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:401', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 55);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:425', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:407', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:408', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:402', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:409', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 197);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4446);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:426', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:412', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:413', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4526);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:410', 1, 58);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:414', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:419', 1, 69);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:415', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 209);
 
 
 --
@@ -30304,7 +32567,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4009, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4153, true);
 
 
 --
@@ -30353,14 +32616,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 669, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 675, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 409, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 426, true);
 
 
 --
@@ -30381,7 +32644,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 945, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 991, true);
 
 
 --
@@ -30416,7 +32679,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 210, true);
+SELECT pg_catalog.setval('public.label_id_seq', 212, true);
 
 
 --
@@ -30472,14 +32735,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 47, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 49, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 133, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 140, true);
 
 
 --
@@ -34864,5 +37127,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 4JAz5kkfa07iwxGzM6tlp6a69NoiuN8vnp5c8h5rTL7jeyyx8ChCzdMHA844LJa
+\unrestrict ZXXjZYNesLhcW19frcNxb977UeKhomiiqYYdnaewbsBa8pwmAgpraUbPjvLCMgW
 
