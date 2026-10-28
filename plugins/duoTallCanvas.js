@@ -165,7 +165,13 @@ const withDuoTallCanvas = (config) =>
       [
         'ios',
         async (cfg) => {
-          const delegatePath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'SceneDelegate.swift');
+          // prebuild strips non-alphanumerics from the app directory name, so a
+          // suffixed build's "Athan BGTest" lives at AthanBGTest on disk
+          const delegatePath = path.join(
+            cfg.modRequest.platformProjectRoot,
+            cfg.name.replace(/[^A-Za-z0-9]/g, ''),
+            'SceneDelegate.swift'
+          );
           await writeFile(delegatePath, editSceneDelegate(await readFile(delegatePath, 'utf8')));
           return cfg;
         },
@@ -174,7 +180,11 @@ const withDuoTallCanvas = (config) =>
     [
       'ios',
       async (cfg) => {
-        const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
+        const plistPath = path.join(
+          cfg.modRequest.platformProjectRoot,
+          cfg.name.replace(/[^A-Za-z0-9]/g, ''),
+          'Info.plist'
+        );
         const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
         await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
         return cfg;

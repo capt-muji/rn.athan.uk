@@ -330,4 +330,25 @@ describe('the mod wiring', () => {
     expect(readFileSync(join(root, 'Athan', 'Info.plist'), 'utf8')).toContain('UIRequiresFullScreen~iphone');
     rmSync(root, { recursive: true, force: true });
   });
+
+  it('resolves the app directory prebuild sanitized, so a suffixed build (Athan BGTest) still lands its edits', async () => {
+    // prebuild names the app directory "AthanBGTest" for config.name "Athan BGTest";
+    // a path built from the raw name ENOENTs and the fleettest build dies in prebuild
+    const root = mkdtempSync(join(tmpdir(), 'duo-suffix-'));
+    mkdirSync(join(root, 'AthanBGTest'), { recursive: true });
+    writeFileSync(join(root, 'AthanBGTest', 'SceneDelegate.swift'), sceneDelegateFixture());
+    writeFileSync(
+      join(root, 'AthanBGTest', 'Info.plist'),
+      '<?xml version="1.0" encoding="UTF-8"?><plist version="1.0"><dict></dict></plist>'
+    );
+
+    const config = plugin({} as never) as {
+      mods: { ios: { finalized: (cfg: unknown) => Promise<unknown> } };
+    };
+    await config.mods.ios.finalized({ name: 'Athan BGTest', modRequest: { platformProjectRoot: root } });
+
+    expect(readFileSync(join(root, 'AthanBGTest', 'SceneDelegate.swift'), 'utf8')).toContain('requestGeometryUpdate');
+    expect(readFileSync(join(root, 'AthanBGTest', 'Info.plist'), 'utf8')).toContain('UIRequiresFullScreen~iphone');
+    rmSync(root, { recursive: true, force: true });
+  });
 });
