@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419.",
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428.",
     "sourceSlugs": {
       "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
       "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
@@ -61,7 +61,19 @@
       "muhaddis-uz": "muhaddis.uz Uzbek hadith library (Shamail Muhammadi)",
       "loan": "the naming rule's own transliteration answer for a slot no authority prints, recorded with its derivation in the entry's note; the so precedent ('Istijaabo', plan T-410 decision 5)",
       "az-usage": "ordinary Azerbaijani Ramadan usage, no single portal",
-      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)"
+      "semerkand-bs": "vaktija.semerkand.ba (Bosnian prayer-times portal)",
+      "te-wikipedia": "te.wikipedia.org article నమాజ్ (Telugu Wikipedia, CC BY-SA; the daily-prayer section prints each prayer name)",
+      "gu-sunnah-global": "sunnah.global Gujarati hadith 66512 (the five pillars, naming ફજર ઝોહર અસર મગરિબ ઈશા)",
+      "gu-zindsa": "zindsa.com Gujarati prayer-time calculation article (ફજર, મગરિબ, ઇશા in prose)",
+      "kn-qiblafind": "qiblafind.net Kannada prayer-times page",
+      "kn-play-salah": "Google Play Kannada listings of the Salah Time and Azan prayer apps (the localized row set ಫಜರ್ ಜುಹರ್ ಅಸರ್ ಮಗ್ರಿಬ್ ಇಶಾ)",
+      "am-namazvakti": "namazvakti.com Amharic prayer table, WSLanguage=AM (columns ፈጅር ሱብህ ፀሃይ ዙህር አስር መግሪብ ኢሻ)",
+      "am-quran-et": "quran.et Amharic prayer-time page (ፈጅር ፀሐይ ዙሁር አስር መግሪብ ኢሻ)",
+      "om-getilham": "getilham.app Oromo prayer page and table (Fajrii, Baha Aduu, Zuhrii, Asrii, Magribii, Ishaa)",
+      "bm-sunnah-global": "sunnah.global Bambara hadith 66512 (the five pillars, naming fajiri selifana lansara fitiri saafo)",
+      "tl-newmuslims": "newmuslims.com Tagalog lesson 65 (the five prayers, Fajr Dhuhr Asr Maghrib Isha with Tagalog time-of-day glosses)",
+      "tl-islamarc": "islamarc.com Philippines prayer-times page (Oras ng Pagdarasal)",
+      "ff-islamhouse": "islamhouse.com Fulfulde library, Tonngaande nafoore ngam juulɗo keso (the five prayers: Juulde fajiri e tiisbaar e takkusaan e furura e geeƴe)"
     },
     "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
     "confidenceKey": {
@@ -3025,6 +3037,822 @@
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; sextas-feiras is Fridays."
+      }
+    }
+  },
+  "te": {
+    "names": {
+      "Fajr": {
+        "text": "ఫజ్ర్",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The Telugu Wikipedia daily-prayer section prints ఫజ్ర్ for Fajr; Andhra Pradesh mosque tables use the same Arabic loan in Telugu script."
+      },
+      "Sunrise": {
+        "text": "సూర్యోదయం",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The article's own word for sunrise (సూర్యోదయం), the astronomical event rather than a prayer."
+      },
+      "Dhuhr": {
+        "text": "జుహర్",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The article prints జుహర్ and జుహ్ర్; జుహర్ is the shorter form and rides the 24-char label budget."
+      },
+      "Asr": {
+        "text": "అసర్",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The article prints అసర్ and అస్ర్; the shorter అసర్ ships."
+      },
+      "Magrib": {
+        "text": "మగ్రిబ్",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The article prints మగ్రిబ్ in its prayer list."
+      },
+      "Isha": {
+        "text": "ఇషా",
+        "source": "te-wikipedia",
+        "confidence": "medium",
+        "note": "The article prints ఇషా."
+      },
+      "Midnight": {
+        "text": "నడిరేయి",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Telugu word for midnight (నడిరేయి); no Telugu table prints the row."
+      },
+      "Last Third": {
+        "text": "తహజ్జుద్",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Telugu Tahajjud that Telugu Islamic material circulates; no Telugu table prints the row."
+      },
+      "Suhoor": {
+        "text": "సహర్",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Sahar loan in Telugu script, the ta and az precedent; no Telugu table prints the row."
+      },
+      "Duha": {
+        "text": "దుహా",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Telugu script; no Telugu table prints the row."
+      },
+      "Istijaba": {
+        "text": "ఇస్తిజాబా",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba transliterated on the set's own ఫజ్ర్ pattern; no source prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "మగ్రిబ్కు ఫజ్ర్కు మధ్యలో",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced మగ్రిబ్ and ఫజ్ర్ with standard Telugu syntax (X, Y మధ్యలో)."
+      },
+      "Start of the last third of the night": {
+        "text": "రాత్రి చివరి మూడవ వంతు ప్రారంభం",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; రాత్రి is night, చివరి is last, మూడవ వంతు is a third, ప్రారంభం is beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "ఫజ్ర్కు 20 నిమిషాల ముందు",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; నిమిషాల is minutes, ముందు is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "సూర్యోదయానికి 20 నిమిషాల తర్వాత",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; తర్వాత is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "మగ్రిబ్కు 1 గంట ముందు (శుక్రవారం మాత్రమే)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; గంట is hour, శుక్రవారం is Friday, మాత్రమే is only."
+      }
+    }
+  },
+  "gu": {
+    "names": {
+      "Fajr": {
+        "text": "ફજર",
+        "source": "gu-sunnah-global",
+        "confidence": "medium",
+        "note": "The Gujarati hadith page prints ફજર; Gujarati prayer surfaces print the same loan."
+      },
+      "Sunrise": {
+        "text": "સૂર્યોદય",
+        "source": "gu-zindsa",
+        "confidence": "medium",
+        "note": "The Gujarati prayer-time article's own word for sunrise (સૂર્યોદય), the astronomical event rather than a prayer."
+      },
+      "Dhuhr": {
+        "text": "ઝોહર",
+        "source": "gu-sunnah-global",
+        "confidence": "medium",
+        "note": "The hadith page prints ઝોહર; Gujarati app surfaces also write ઝુહર, and ઝોહર is the local printed form."
+      },
+      "Asr": {
+        "text": "અસર",
+        "source": "gu-sunnah-global",
+        "confidence": "medium",
+        "note": "The hadith page prints અસર."
+      },
+      "Magrib": {
+        "text": "મગરિબ",
+        "source": "gu-sunnah-global",
+        "confidence": "medium",
+        "note": "The hadith page prints મગરિબ; the ZindSa article prints the same."
+      },
+      "Isha": {
+        "text": "ઈશા",
+        "source": "gu-sunnah-global",
+        "confidence": "medium",
+        "note": "The hadith page prints ઈશા."
+      },
+      "Midnight": {
+        "text": "મધ્યરાત્રિ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Gujarati word for midnight (મધ્યરાત્રિ); no Gujarati table prints the row."
+      },
+      "Last Third": {
+        "text": "તહજ્જુદ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Gujarati Tahajjud Gujarati Islamic material circulates; no table prints the row."
+      },
+      "Suhoor": {
+        "text": "સહર",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Sahar loan in Gujarati script, the ta precedent."
+      },
+      "Duha": {
+        "text": "દુહા",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Gujarati script."
+      },
+      "Istijaba": {
+        "text": "ઇસ્તિજાબા",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba transliterated on the set's own ફજર pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "મગરિબ અને ફજર વચ્ચે",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced મગરિબ and ફજર with standard Gujarati syntax (X અને Y વચ્ચે)."
+      },
+      "Start of the last third of the night": {
+        "text": "રાતના છેલ્લા ત્રીજા ભાગની શરૂઆત",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; રાત is night, છેલ્લા is last, ત્રીજા ભાગ is third part, શરૂઆત is beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "ફજરના 20 મિનિટ પહેલાં",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; મિનિટ is minutes, પહેલાં is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "સૂર્યોદયના 20 મિનિટ પછી",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; પછી is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "મગરિબના 1 કલાક પહેલાં (ફક્ત શુક્રવારે)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; કલાક is hour, શુક્રવાર is Friday, ફક્ત is only."
+      }
+    }
+  },
+  "kn": {
+    "names": {
+      "Fajr": {
+        "text": "ಫಜರ್",
+        "source": "kn-qiblafind",
+        "confidence": "medium",
+        "note": "The Kannada prayer-times page and the Kannada app listings print ಫಜರ್."
+      },
+      "Sunrise": {
+        "text": "ಸೂರ್ಯೋದಯ",
+        "source": "kn-play-salah",
+        "confidence": "medium",
+        "note": "The Kannada prayer app listing prints ಸೂರ್ಯೋದಯ for the Sunrise row."
+      },
+      "Dhuhr": {
+        "text": "ಜುಹರ್",
+        "source": "kn-play-salah",
+        "confidence": "medium",
+        "note": "The Kannada listing prints ಜುಹರ್; other Kannada surfaces write ಝುಹ್ರ್."
+      },
+      "Asr": {
+        "text": "ಅಸರ್",
+        "source": "kn-play-salah",
+        "confidence": "medium",
+        "note": "The Kannada listing prints ಅಸರ್."
+      },
+      "Magrib": {
+        "text": "ಮಗ್ರಿಬ್",
+        "source": "kn-play-salah",
+        "confidence": "medium",
+        "note": "The Kannada listing prints ಮಗ್ರಿಬ್."
+      },
+      "Isha": {
+        "text": "ಇಶಾ",
+        "source": "kn-play-salah",
+        "confidence": "medium",
+        "note": "The Kannada listing prints ಇಶಾ."
+      },
+      "Midnight": {
+        "text": "ಮಧ್ಯರಾತ್ರಿ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Kannada word for midnight (ಮಧ್ಯರಾತ್ರಿ); no Kannada table prints the row."
+      },
+      "Last Third": {
+        "text": "ತಹಜ್ಜುದ್",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Kannada Tahajjud Kannada Islamic material circulates; no table prints the row."
+      },
+      "Suhoor": {
+        "text": "ಸಹರ್",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Sahar loan in Kannada script, the ta precedent."
+      },
+      "Duha": {
+        "text": "ದುಹಾ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Kannada script."
+      },
+      "Istijaba": {
+        "text": "ಇಸ್ತಿಜಾಬಾ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba transliterated on the set's own ಫಜರ್ pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "ಮಗ್ರಿಬ್ ಮತ್ತು ಫಜರ್ ನಡುವೆ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced ಮಗ್ರಿಬ್ and ಫಜರ್ with standard Kannada syntax (X ಮತ್ತು Y ನಡುವೆ)."
+      },
+      "Start of the last third of the night": {
+        "text": "ರಾತ್ರಿಯ ಕೊನೆಯ ಮೂರನೇ ಒಂದು ಭಾಗದ ಆರಂಭ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ರಾತ್ರಿ is night, ಕೊನೆಯ is last, ಮೂರನೇ ಒಂದು ಭಾಗ is a third, ಆರಂಭ is beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "ಫಜರ್‌ಗೆ 20 ನಿಮಿಷ ಮೊದಲು",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ನಿಮಿಷ is minutes, ಮೊದಲು is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "ಸೂರ್ಯೋದಯದ 20 ನಿಮಿಷ ನಂತರ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ನಂತರ is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "ಮಗ್ರಿಬ್‌ಗೆ 1 ಗಂಟೆ ಮೊದಲು (ಶುಕ್ರವಾರ ಮಾತ್ರ)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ಗಂಟೆ is hour, ಶುಕ್ರವಾರ is Friday, ಮಾತ್ರ is only."
+      }
+    }
+  },
+  "am": {
+    "names": {
+      "Fajr": {
+        "text": "ፈጅር",
+        "source": "am-namazvakti",
+        "confidence": "high",
+        "note": "The Amharic prayer table prints ፈጅር as its Fajr column; quran.et prints the same."
+      },
+      "Sunrise": {
+        "text": "ፀሐይ",
+        "source": "am-quran-et",
+        "confidence": "medium",
+        "note": "The Amharic table's Sunrise column prints ፀሐይ (sun); namazvakti prints the variant ፀሃይ."
+      },
+      "Dhuhr": {
+        "text": "ዙህር",
+        "source": "am-namazvakti",
+        "confidence": "high",
+        "note": "The Amharic table prints ዙህር; quran.et prints ዙሁር."
+      },
+      "Asr": {
+        "text": "አስር",
+        "source": "am-namazvakti",
+        "confidence": "high",
+        "note": "The Amharic table prints አስር; tawkit's Amharic pages print the variant ዐስር."
+      },
+      "Magrib": {
+        "text": "መግሪብ",
+        "source": "am-namazvakti",
+        "confidence": "high",
+        "note": "The Amharic table prints መግሪብ."
+      },
+      "Isha": {
+        "text": "ኢሻ",
+        "source": "am-namazvakti",
+        "confidence": "high",
+        "note": "The Amharic table prints ኢሻ."
+      },
+      "Midnight": {
+        "text": "እኩለ ሌሊት",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Amharic phrase for midnight (እኩለ ሌሊት); no Amharic table prints the row."
+      },
+      "Last Third": {
+        "text": "ተሃጁድ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Amharic Tahajjud that Ethiopian Islamic material circulates; no table prints the row."
+      },
+      "Suhoor": {
+        "text": "ሱሑር",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Suhur loan in Ethiopic script, the ta precedent."
+      },
+      "Duha": {
+        "text": "ዱሓ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Ethiopic script."
+      },
+      "Istijaba": {
+        "text": "ኢስቲጃባ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba transliterated on the set's own ፈጅር pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "በመግሪብና በፈጅር መካከል",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced መግሪብ and ፈጅር with standard Amharic syntax (በXና በY መካከል)."
+      },
+      "Start of the last third of the night": {
+        "text": "የሌሊቱ የመጨረሻ ሶስተኛ መጀመሪያ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ሌሊት is night, መጨረሻ is last, ሶስተኛ is third, መጀመሪያ is beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "ከፈጅር 20 ደቂቃ በፊት",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ደቂቃ is minutes, በፊት is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "ከፀሐይ መውጣት 20 ደቂቃ በኋላ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; መውጣት is rising, በኋላ is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "ከመግሪብ 1 ሰዓት በፊት (ዓርብ ብቻ)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; ሰዓት is hour, ዓርብ is Friday, ብቻ is only."
+      }
+    }
+  },
+  "om": {
+    "names": {
+      "Fajr": {
+        "text": "Fajrii",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo prayer table prints Fajrii as its Fajr row."
+      },
+      "Sunrise": {
+        "text": "Baha Aduu",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo table's Sunrise row prints Baha Aduu (the sun's coming out)."
+      },
+      "Dhuhr": {
+        "text": "Zuhrii",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo table prints Zuhrii; islamhouse Oromo prints the same name in prose."
+      },
+      "Asr": {
+        "text": "Asrii",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo table prints Asrii."
+      },
+      "Magrib": {
+        "text": "Magribii",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo table prints Magribii."
+      },
+      "Isha": {
+        "text": "Ishaa",
+        "source": "om-getilham",
+        "confidence": "medium",
+        "note": "The Oromo table prints Ishaa."
+      },
+      "Midnight": {
+        "text": "Walakkaa halkanii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Oromo phrase for the middle of the night (walakkaa halkanii); no Oromo table prints the row."
+      },
+      "Last Third": {
+        "text": "Sadaffaa halkanii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sadaffaa is third and halkanii is of the night, the tr Teheccüd precedent of naming the third by its position. Held to 17 characters for the label budget."
+      },
+      "Suhoor": {
+        "text": "Suhuur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Suhur loan in Oromo orthography; no Oromo table prints the row."
+      },
+      "Duha": {
+        "text": "Dhuhaa",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Oromo orthography."
+      },
+      "Istijaba": {
+        "text": "Istijaabaa",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba transliterated on the set's own Fajrii pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Gidduu Magribii fi Fajrii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced Magribii and Fajrii with standard Oromo syntax (gidduu X fi Y)."
+      },
+      "Start of the last third of the night": {
+        "text": "Jalqaba sadaffaa halkanii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; jalqaba is beginning, sadaffaa is third, halkanii is of the night."
+      },
+      "20 mins before Fajr": {
+        "text": "Daqiiqaa 20 dura Fajrii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; daqiiqaa is minutes, dura is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "Daqiiqaa 20 booda Baha Aduu",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; booda is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Sa'aatii 1 dura Magribii (Jimaata qofa)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; sa'aatii is hour, Jimaata is Friday, qofa is only."
+      }
+    }
+  },
+  "bm": {
+    "names": {
+      "Fajr": {
+        "text": "fajiri",
+        "source": "bm-sunnah-global",
+        "confidence": "medium",
+        "note": "The Bambara hadith page lists the five prayers in order and prints fajiri first."
+      },
+      "Sunrise": {
+        "text": "tile bɔli",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Bambara phrase for sunrise (tile bɔli, the sun's coming out); no Bambara table prints the row. Sunrise is a translated slot."
+      },
+      "Dhuhr": {
+        "text": "selifana",
+        "source": "bm-sunnah-global",
+        "confidence": "medium",
+        "note": "The Bambara page prints selifana as the second of the five prayers."
+      },
+      "Asr": {
+        "text": "lansara",
+        "source": "bm-sunnah-global",
+        "confidence": "medium",
+        "note": "The Bambara page prints lansara third, the Arabic al-asr loan."
+      },
+      "Magrib": {
+        "text": "fitiri",
+        "source": "bm-sunnah-global",
+        "confidence": "medium",
+        "note": "The Bambara page prints fitiri fourth, the iftar-time name Bambara uses for Maghrib."
+      },
+      "Isha": {
+        "text": "saafo",
+        "source": "bm-sunnah-global",
+        "confidence": "medium",
+        "note": "The Bambara page prints saafo fifth."
+      },
+      "Midnight": {
+        "text": "su cɛmancɛ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; su is night and cɛmancɛ is the middle, the ordinary Bambara phrase; no table prints the row."
+      },
+      "Last Third": {
+        "text": "Tahajudi",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Bambara Tahajjud form; no Bambara table prints the row."
+      },
+      "Suhoor": {
+        "text": "Suhuri",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Suhur loan in Bambara orthography."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha as Bambara prints Arabic loans."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba on the set's own fajiri pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Magribi ni fajiri cɛ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced fitiri/fajiri with standard Bambara syntax (X ni Y cɛ)."
+      },
+      "Start of the last third of the night": {
+        "text": "Su laban sɔrɔ fɔlɔ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; su is night, laban is last, sɔrɔ is part, fɔlɔ is first/beginning."
+      },
+      "20 mins before Fajr": {
+        "text": "Fajiri 20 miniti ɲɛfɛ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; miniti is minutes, ɲɛfɛ is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "Tile bɔli 20 miniti kɔfɛ",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; kɔfɛ is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; lɛrɛ is hour, juma is Friday, dɔrɔn is only."
+      }
+    }
+  },
+  "tl": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "tl-newmuslims",
+        "confidence": "medium",
+        "note": "The Tagalog lesson lists Fajr Prayer (sa umaga); Filipino Muslim prayer pages print the Arabic name."
+      },
+      "Sunrise": {
+        "text": "Pagsikat ng araw",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "The ordinary Tagalog phrase for sunrise; Sunrise is a translated slot and no Tagalog table translates it."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "tl-newmuslims",
+        "confidence": "medium",
+        "note": "The Tagalog lesson prints Dhuhr prayer (sa tanghali)."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "tl-newmuslims",
+        "confidence": "medium",
+        "note": "The Tagalog lesson prints Asr Prayer (sa hapon)."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "tl-newmuslims",
+        "confidence": "medium",
+        "note": "The Tagalog lesson prints Maghrib; the app's English row drops the h, the Tagalog surface keeps the printed form."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "tl-newmuslims",
+        "confidence": "medium",
+        "note": "The Tagalog lesson prints Isha."
+      },
+      "Midnight": {
+        "text": "Hatinggabi",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Tagalog word for midnight (hatinggabi); no Tagalog table prints the row."
+      },
+      "Last Third": {
+        "text": "Huling ikatlo ng gabi",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; huling is last, ikatlo is third, gabi is night, held to 21 characters for the label budget."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Sahur loan Filipino Muslim material prints; no Tagalog table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha as Tagalog prints Arabic loans."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba on the set's own Fajr pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Kalahati sa pagitan ng Maghrib at Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced Maghrib and Fajr with standard Tagalog syntax (sa pagitan ng X at Y)."
+      },
+      "Start of the last third of the night": {
+        "text": "Simula ng huling ikatlo ng gabi",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; simula is start, huling ikatlo is last third, gabi is night."
+      },
+      "20 mins before Fajr": {
+        "text": "20 minuto bago ang Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; minuto is minutes, bago is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 minuto pagkatapos ng pagsikat ng araw",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; pagkatapos is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 oras bago ang Maghrib (Biyernes lamang)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; oras is hour, Biyernes is Friday, lamang is only."
+      }
+    }
+  },
+  "ff": {
+    "names": {
+      "Fajr": {
+        "text": "fajiri",
+        "source": "ff-islamhouse",
+        "confidence": "medium",
+        "note": "The Fulfulde Islamic text lists the five prayers and prints Juulde fajiri first."
+      },
+      "Sunrise": {
+        "text": "naange yaltugol",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the ordinary Fulfulde phrase for the sun's coming out (naange yaltugol); Sunrise is a translated slot and no Fulfulde table translates it."
+      },
+      "Dhuhr": {
+        "text": "tiisbaar",
+        "source": "ff-islamhouse",
+        "confidence": "medium",
+        "note": "The Fulfulde text prints tiisbaar second of the five prayers."
+      },
+      "Asr": {
+        "text": "takkusaan",
+        "source": "ff-islamhouse",
+        "confidence": "medium",
+        "note": "The Fulfulde text prints takkusaan third of the five prayers."
+      },
+      "Magrib": {
+        "text": "furura",
+        "source": "ff-islamhouse",
+        "confidence": "medium",
+        "note": "The Fulfulde text prints furura fourth, the breaking-of-fast hour."
+      },
+      "Isha": {
+        "text": "geeƴe",
+        "source": "ff-islamhouse",
+        "confidence": "medium",
+        "note": "The Fulfulde text prints geeƴe fifth."
+      },
+      "Midnight": {
+        "text": "hakkunde jemma",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; hakkunde is between/middle and jemma is night, the ordinary Fulfulde phrase; no table prints the row."
+      },
+      "Last Third": {
+        "text": "tataɓal jemma",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; tataɓal is the third part and jemma is night, the tr Teheccüd precedent; held to 14 characters."
+      },
+      "Suhoor": {
+        "text": "suhuur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Suhur loan in Fulfulde orthography."
+      },
+      "Duha": {
+        "text": "dhuhaa",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: Duha transliterated into Fulfulde orthography."
+      },
+      "Istijaba": {
+        "text": "istijaabaa",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: istijaba on the set's own fajiri pattern."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Hakkunde Magrib e Fajiri",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced Magrib (furura) and Fajiri with standard Fulfulde syntax (hakkunde X e Y)."
+      },
+      "Start of the last third of the night": {
+        "text": "Fuɗɗoode tataɓal jemma",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; fuɗɗoode is beginning, tataɓal is third, jemma is night."
+      },
+      "20 mins before Fajr": {
+        "text": "Minutooji 20 ado Fajiri",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; minutooji is minutes, ado is before, digits Latin per R12."
+      },
+      "20 mins after Sunrise": {
+        "text": "Minutooji 20 caggal naange yaltugol",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; caggal is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Waktu gootal ado Magrib (Aljumaa tan)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived; waktu gootal is one hour, Aljumaa is Friday, tan is only."
       }
     }
   }
