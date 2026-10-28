@@ -75,6 +75,15 @@ const sourcedNames = (loc: string): Array<[key: string, text: string]> => {
   });
 };
 
+interface Entry {
+  text: string | null;
+  source: string | null;
+  confidence: string | null;
+}
+
+/** The ten locales T-410 ships; every slot they add to the glossary must carry sourcing */
+const T410_TEN = ['id', 'ur', 'bn', 'fa', 'fr', 'tr', 'sw', 'ha', 'pt', 'uz'] as const;
+
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
     expect(Object.keys(CATALOGS[loc]).sort()).toEqual([...Object.keys(en).sort()]);
@@ -136,6 +145,28 @@ describe('the landed catalogs against the R2 gates', () => {
     for (const [key, text] of sourcedNames(loc)) {
       if (CATALOGS[loc][key as keyof Catalog] !== text) {
         failures.push(`${loc}: ${key} drifts from the sourced "${text}"`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('sources every T-410 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T410_TEN) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
       }
     }
     expect(failures).toEqual([]);
