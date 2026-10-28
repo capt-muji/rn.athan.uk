@@ -14,7 +14,7 @@ import { perfMark } from '@/shared/perf';
 import { findNextOccurrence, isReadable, isRowPassed } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/atoms/overlay';
+import { overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import {
   extraDisplayDateAtom,
   extraNextPrayerAtom,
@@ -292,6 +292,9 @@ const checkOverlayBoundary = (): boolean => {
   if (overlayBoundaryMs !== null && Date.now() >= overlayBoundaryMs - OVERLAY.closeWindowMs) {
     perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
     overlayBoundaryMs = null;
+    // Same batch as the close itself, like every writer of isOn: the held
+    // subtrees re-render once and hold through the close fade
+    store.set(overlayFadeSettledAtom, false);
     store.set(overlayAtom, { ...overlay, isOn: false });
     writeDisplayCountdown(overlay.scheduleType);
     return true;

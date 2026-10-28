@@ -21,6 +21,7 @@ const mockStoreGet = jest.fn();
 const mockStoreSet = jest.fn();
 
 const mockOverlayAtomSymbol = Symbol('overlayAtom');
+const mockFadeSettledAtomSymbol = Symbol('overlayFadeSettledAtom');
 
 jest.mock('jotai/vanilla', () => ({
   // atom stays real: shared/i18n/locale builds the remount version atom from it
@@ -47,10 +48,11 @@ jest.mock('@/stores/countdown', () => ({
 
 jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: mockOverlayAtomSymbol,
+  overlayFadeSettledAtom: mockFadeSettledAtomSymbol,
 }));
 
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
-const { closeOverlay, openOverlay, toggleOverlay } = require('../overlay');
+const { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay } = require('../overlay');
 
 // =============================================================================
 // TEST SETUP
@@ -158,6 +160,56 @@ describe('closeOverlay', () => {
 
     expect(mockStoreSet).not.toHaveBeenCalled();
     expect(mockClearOverlayBoundary).not.toHaveBeenCalled();
+  });
+});
+
+// =============================================================================
+// THE FADE-HOLD FLAG (one batched display flip for the whole overlay family)
+// =============================================================================
+
+describe('the fade-hold flag', () => {
+  it('drops in the same store batch that opens, so every held subtree re-renders once', () => {
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('drops in the same store batch that closes', () => {
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+
+    closeOverlay();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('the already-open no-op leaves it untouched', () => {
+    mockOverlayState.isOn = true;
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('the already-closed no-op leaves it untouched', () => {
+    closeOverlay();
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('markOverlayFadeSettled raises it a microtask later, never mid-render', async () => {
+    markOverlayFadeSettled();
+
+    // The settle can fire from a render-phase animation mapper (Reanimated's
+    // jest mock completes withTiming synchronously), so the write must not
+    // land in that render
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
   });
 });
 

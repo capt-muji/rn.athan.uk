@@ -9,9 +9,9 @@ import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { ANIMATION, COLORS } from '@/shared/constants';
+import { COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/atoms/overlay';
+import { overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Prayer from '../Prayer';
@@ -91,7 +91,7 @@ describe('the Fajr row on Friday 11 September 2026 at 14:00', () => {
 });
 
 describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once the overlay is opened on Fajr', () => {
-  it('keeps Sunrise drawn through its fade and drops it once the fade has run, leaving Fajr on show', async () => {
+  it('keeps Sunrise drawn while the fade runs and drops it when the fade settles, leaving Fajr on show', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(
       <>
@@ -101,6 +101,7 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
     );
 
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
     // The fade carries the ink, so the words stay drawn while it runs
     const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
@@ -108,7 +109,7 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
     expect(drawn()).toBe('flex');
     expect(screen.getByText('Fajr')).toBeVisible();
 
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
     expect(drawn()).toBe('none');
     expect(screen.getByText('Fajr')).toBeVisible();
@@ -123,8 +124,10 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
       </>
     );
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
+    // The close's own write drops the flag, and the row's display returns with
+    // it in the same commit — no second per-row commit wave inside the fade
     await act(() => closeOverlay());
 
     const sunrise = screen.getByText('Sunrise');
