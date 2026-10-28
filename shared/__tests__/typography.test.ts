@@ -105,7 +105,9 @@ describe('typographyFor', () => {
         id !== 'bn' &&
         id !== 'ps' &&
         id !== 'ta' &&
-        id !== 'ml'
+        id !== 'ml' &&
+        id !== 'zh-Hans' &&
+        id !== 'zh-Hant'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -176,6 +178,27 @@ describe('typographyFor', () => {
     // already renders
     expect(ty.scriptLineHeight?.(14)).toBe(21);
     expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves zh-Hans to the SC subset pair with no script line box', () => {
+    const ty = typographyFor('zh-Hans');
+    expectScriptRecord(ty, 'NotoSansSC-Subset-Regular', 'NotoSansSC-Subset-Medium');
+    // The subset pairs carry the closed string set's whole 377-character census (the
+    // glyph lock, plan T-419 decision 8) and their own declared box already clears
+    // their ink: hhea 1160/-288 with lineGap 0 and win 1160/288 against UPM 1000,
+    // a 1.448em box the win ink matches exactly, both weights (this wave's own
+    // measurement over the bundled subsets), so no surface pins a script box -
+    // the Thai row-87 law
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves zh-Hant to the TC subset pair with no script line box', () => {
+    const ty = typographyFor('zh-Hant');
+    expectScriptRecord(ty, 'NotoSansTC-Subset-Regular', 'NotoSansTC-Subset-Medium');
+    // The measured numbers match the SC pair's exactly (hhea 1160/-288, lineGap 0,
+    // win 1160/288, UPM 1000, both weights, 378 carried characters), so the same
+    // row-87 law serves: the font's own metrics, no script box
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 });
 

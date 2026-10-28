@@ -30,6 +30,8 @@ import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { zhHans } from '@/shared/i18n/zh-Hans';
+import { zhHant } from '@/shared/i18n/zh-Hant';
 
 const CATALOGS: Record<string, Catalog> = {
   ar,
@@ -55,6 +57,8 @@ const CATALOGS: Record<string, Catalog> = {
   ps,
   ta,
   ml,
+  'zh-Hans': zhHans,
+  'zh-Hant': zhHant,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);

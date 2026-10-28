@@ -1,6 +1,6 @@
 /**
  * The widget statics table (D44, R7.2): every neutral, stale and catch card
- * in both widget modules draws its copy from an inline twenty-four-language table
+ * in both widget modules draws its copy from an inline twenty-six-language table
  * keyed by the device locale the widget process itself reads through the
  * runtime patch's __expoWidgetDeviceLocale global. This suite pins the
  * rendered bytes to the plan's table row for row, locale for locale, and the
@@ -208,6 +208,8 @@ const LOCALES = [
   'ps',
   'ta',
   'ml',
+  'zh-Hans',
+  'zh-Hant',
 ] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;
@@ -387,5 +389,53 @@ describe('the widget statics table', () => {
       renderTree(homeIos.PrayerWidget(HOME_STALE, { colorScheme: 'light', widgetFamily: 'systemSmall' }))
     );
     expect(iosStale).toEqual([expected.staleTitle, expected.refreshLead, expected.refreshTail]);
+  });
+
+  // Decision 9's zh mapping at the widget's four finder sites (griller finding 3): a
+  // TW, HK or MO region reads Traditional, every other zh tag Simplified, so a
+  // zh-TW device's widgets render Traditional and not the en fallback
+  it.each([
+    ['zh-TW', 'zh-Hant'],
+    ['zh-HK', 'zh-Hant'],
+    ['zh-MO', 'zh-Hant'],
+    ['zh-Hans-CN', 'zh-Hans'],
+    ['zh-CN', 'zh-Hans'],
+    ['zh-SG', 'zh-Hans'],
+    ['zh', 'zh-Hans'],
+  ] as const)('resolves the device tag %s to the %s row', (tag, expected) => {
+    forceDeviceLocale(tag);
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', table[expected].subtitle]);
+
+    const lockInline = textsOf(
+      renderTree(lock.PrayerLockWidget(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(lockInline).toEqual([table[expected].inline]);
+
+    // The module's three finder copies each carry the zh mapping, so the later
+    // layouts render it too, not only the countdown pair
+    const centredInline = textsOf(
+      renderTree(lock.PrayerLockWidget2(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(centredInline).toEqual([table[expected].inline]);
+
+    const stackedInline = textsOf(
+      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(stackedInline).toEqual([table[expected].inline]);
+  });
+
+  it('renders the en row for a yue-tagged device: yue never matches as zh', () => {
+    forceDeviceLocale('yue-Hant-HK');
+    const expected = table.en;
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', expected.subtitle]);
+
+    const stackedInline = textsOf(
+      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(stackedInline).toEqual([expected.inline]);
   });
 });

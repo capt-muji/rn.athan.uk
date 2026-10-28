@@ -163,6 +163,42 @@ const LATIN: LocaleTypography = {
   wordFace: false,
 };
 
+// Simplified Chinese rides its own subset pair (plan T-419 decision 8): the full
+// statics run near 10MB a weight, so the bundled pair is cut over the closed
+// string set - every character of the zh-Hans catalog, its native-strings row,
+// its widget-statics row and its endonym, 377 characters, gated by the glyph
+// lock (shared/i18n/cjk-glyph-lock.json) - a fortieth of the bytes. This wave's
+// own measurement over the cut subsets (fontTools, both weights): hhea ascent
+// 1160, descent -288, lineGap 0 against UPM 1000, a 1.448em box the win ink
+// (1160/288) matches exactly, so the box clears the ink and no surface pins a
+// script box - the Thai row-87 law
+const HANS: LocaleTypography = {
+  familyRegular: 'NotoSansSC-Subset-Regular',
+  familyMedium: 'NotoSansSC-Subset-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
+// Traditional Chinese rides the TC twin of the same cut: 378 characters, the
+// same measured box (hhea 1160/-288, lineGap 0, win 1160/288, UPM 1000, both
+// weights), so the same row-87 law serves
+const HANT: LocaleTypography = {
+  familyRegular: 'NotoSansTC-Subset-Regular',
+  familyMedium: 'NotoSansTC-Subset-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -193,6 +229,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ps: URDU,
   ta: TAMIL,
   ml: MALAYALAM,
+  'zh-Hans': HANS,
+  'zh-Hant': HANT,
 };
 
 /**

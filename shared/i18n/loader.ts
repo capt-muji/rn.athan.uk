@@ -38,6 +38,8 @@ const RAW = {
   ps: require('./ps') as typeof import('./ps'),
   ta: require('./ta') as typeof import('./ta'),
   ml: require('./ml') as typeof import('./ml'),
+  'zh-Hans': require('./zh-Hans') as typeof import('./zh-Hans'),
+  'zh-Hant': require('./zh-Hant') as typeof import('./zh-Hant'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -74,6 +76,8 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   ps: { en: RAW.ps.ps, PRAYER_LABELS: RAW.ps.PRAYER_LABELS },
   ta: { en: RAW.ta.ta, PRAYER_LABELS: RAW.ta.PRAYER_LABELS },
   ml: { en: RAW.ml.ml, PRAYER_LABELS: RAW.ml.PRAYER_LABELS },
+  'zh-Hans': { en: RAW['zh-Hans'].zhHans, PRAYER_LABELS: RAW['zh-Hans'].PRAYER_LABELS },
+  'zh-Hant': { en: RAW['zh-Hant'].zhHant, PRAYER_LABELS: RAW['zh-Hant'].PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

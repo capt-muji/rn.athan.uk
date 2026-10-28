@@ -538,36 +538,76 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'റിഫ്രഷ് ചെയ്യാൻ',
       catchBody: 'റിഫ്രഷ് ചെയ്യാൻ ആപ്പ് തുറക്കുക',
     },
+    'zh-Hans': {
+      subtitle: '伦敦礼拜时间',
+      inline: 'Athan — 礼拜时间',
+      rectTitle: 'ATHAN',
+      rectSubtitle: '打开以载入时间',
+      staleTitle: '已过期',
+      staleBody: '打开应用刷新',
+      staleInline: 'Athan — 打开刷新时间',
+      refreshLine: '打开 Athan 刷新',
+      refreshLead: '打开 Athan',
+      refreshTail: '刷新',
+      catchBody: '打开应用刷新',
+    },
+    'zh-Hant': {
+      subtitle: '倫敦禮拜時間',
+      inline: 'Athan — 禮拜時間',
+      rectTitle: 'ATHAN',
+      rectSubtitle: '開啟以載入時間',
+      staleTitle: '已過期',
+      staleBody: '開啟應用程式重新整理',
+      staleInline: 'Athan — 開啟重新整理時間',
+      refreshLine: '開啟 Athan 重新整理',
+      refreshLead: '開啟 Athan',
+      refreshTail: '重新整理',
+      catchBody: '開啟應用程式重新整理',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
-  const localeKey = (
-    [
-      'en',
-      'ar',
-      'ms',
-      'so',
-      'hi',
-      'th',
-      'id',
-      'tr',
-      'fr',
-      'uz',
-      'sw',
-      'ha',
-      'pt',
-      'ur',
-      'fa',
-      'bn',
-      'ru',
-      'az',
-      'de',
-      'sq',
-      'bs',
-      'ps',
-      'ta',
-      'ml',
-    ] as const
-  ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`));
+  // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
+  // subtag resolves by region, TW, HK and MO reading Traditional (CLDR's
+  // likely-subtags answer) and every other zh tag Simplified. Script-tagged
+  // locales already matched the list above, and yue is its own language code
+  // and never matches zh
+  const zhKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | undefined =>
+    tag === 'zh' || tag.startsWith('zh-')
+      ? ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '')
+        ? 'zh-Hant'
+        : 'zh-Hans'
+      : undefined;
+  const localeKey =
+    (
+      [
+        'en',
+        'ar',
+        'ms',
+        'so',
+        'hi',
+        'th',
+        'id',
+        'tr',
+        'fr',
+        'uz',
+        'sw',
+        'ha',
+        'pt',
+        'ur',
+        'fa',
+        'bn',
+        'ru',
+        'az',
+        'de',
+        'sq',
+        'bs',
+        'ps',
+        'ta',
+        'ml',
+        'zh-Hans',
+        'zh-Hant',
+      ] as const
+    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
 
   // ===== Android composition =====

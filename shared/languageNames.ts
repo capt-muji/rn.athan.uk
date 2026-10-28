@@ -2,7 +2,7 @@
  * The D26 picker names: each language in its own name, sorted by codepoint,
  * so a reader scans for the name they know rather than an English gloss.
  * Latin before Cyrillic before Arabic before Devanagari before Bengali
- * before Tamil before Malayalam before Thai. Names
+ * before Tamil before Malayalam before Thai before Chinese. Names
  * data, not copy: the scanner's data-module rule allows this module's `name`
  * field.
  */
@@ -34,6 +34,8 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'ta', name: 'தமிழ்' },
   { id: 'ml', name: 'മലയാളം' },
   { id: 'th', name: 'ไทย' },
+  { id: 'zh-Hans', name: '简体中文' },
+  { id: 'zh-Hant', name: '繁體中文' },
 ];
 
 const NAMES_BY_ID = Object.fromEntries(LANGUAGE_NAMES.map((entry) => [entry.id, entry.name])) as Record<

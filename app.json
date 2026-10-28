@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.23.0",
+    "version": "2.24.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -44,7 +44,9 @@
           "bs",
           "ps",
           "ta",
-          "ml"
+          "ml",
+          "zh-Hans",
+          "zh-Hant"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -129,7 +131,11 @@
             "./assets/fonts/NotoSansTamil-Regular.ttf",
             "./assets/fonts/NotoSansTamil-Medium.ttf",
             "./assets/fonts/NotoSansMalayalam-Regular.ttf",
-            "./assets/fonts/NotoSansMalayalam-Medium.ttf"
+            "./assets/fonts/NotoSansMalayalam-Medium.ttf",
+            "./assets/fonts/NotoSansSC-Subset-Regular.ttf",
+            "./assets/fonts/NotoSansSC-Subset-Medium.ttf",
+            "./assets/fonts/NotoSansTC-Subset-Regular.ttf",
+            "./assets/fonts/NotoSansTC-Subset-Medium.ttf"
           ]
         }
       ],
@@ -1725,6 +1731,118 @@
           "prayer_lock_widget_3_description": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത നമസ്കാര സമയം.",
           "extras_lock_widget_3_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 3)",
           "extras_lock_widget_3_description": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത അധിക സമയം."
+        }
+      },
+      "zh-Hans": {
+        "NSLocationWhenInUseUsageDescription": "您的位置用于计算麦加相对于您所在位置的方向。它绝不会离开您的手机。",
+        "NSUserNotificationsUsageDescription": "接收礼拜时间通知",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "下一次礼拜（浅色）",
+            "A countdown to the next prayer.": "距下一次礼拜的倒计时。",
+            "Extra Times (Light)": "额外时间（浅色）",
+            "A countdown to the next extra time.": "距下一个额外时间的倒计时。",
+            "Next Prayer (Dark)": "下一次礼拜（深色）",
+            "Extra Times (Dark)": "额外时间（深色）",
+            "Next Prayer (Layout 1)": "下一次礼拜（布局 1）",
+            "Countdown to the next prayer.": "距下一次礼拜的倒计时。",
+            "Extra Times (Layout 1)": "额外时间（布局 1）",
+            "Countdown to the next extra time.": "距下一个额外时间的倒计时。",
+            "Next Prayer (Layout 2)": "下一次礼拜（布局 2）",
+            "Next prayer time.": "下一次礼拜的时间。",
+            "Extra Times (Layout 2)": "额外时间（布局 2）",
+            "Next extra time.": "下一个额外时间。",
+            "Next Prayer (Layout 3)": "下一次礼拜（布局 3）",
+            "Next prayer time with a countdown.": "带倒计时的下一次礼拜时间。",
+            "Extra Times (Layout 3)": "额外时间（布局 3）",
+            "Next extra time with a countdown.": "带倒计时的下一个额外时间。"
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "下一次礼拜（浅色）",
+          "prayer_widget_description": "距下一次礼拜的倒计时。",
+          "extras_widget_display_name": "额外时间（浅色）",
+          "extras_widget_description": "距下一个额外时间的倒计时。",
+          "prayer_widget_medium_display_name": "下一次礼拜（浅色）",
+          "prayer_widget_medium_description": "距下一次礼拜的倒计时。",
+          "extras_widget_medium_display_name": "额外时间（浅色）",
+          "extras_widget_medium_description": "距下一个额外时间的倒计时。",
+          "prayer_widget_dark_display_name": "下一次礼拜（深色）",
+          "prayer_widget_dark_description": "距下一次礼拜的倒计时。",
+          "extras_widget_dark_display_name": "额外时间（深色）",
+          "extras_widget_dark_description": "距下一个额外时间的倒计时。",
+          "prayer_widget_dark_medium_display_name": "下一次礼拜（深色）",
+          "prayer_widget_dark_medium_description": "距下一次礼拜的倒计时。",
+          "extras_widget_dark_medium_display_name": "额外时间（深色）",
+          "extras_widget_dark_medium_description": "距下一个额外时间的倒计时。",
+          "prayer_lock_widget_display_name": "下一次礼拜（布局 1）",
+          "prayer_lock_widget_description": "距下一次礼拜的倒计时。",
+          "extras_lock_widget_display_name": "额外时间（布局 1）",
+          "extras_lock_widget_description": "距下一个额外时间的倒计时。",
+          "prayer_lock_widget_2_display_name": "下一次礼拜（布局 2）",
+          "prayer_lock_widget_2_description": "下一次礼拜的时间。",
+          "extras_lock_widget_2_display_name": "额外时间（布局 2）",
+          "extras_lock_widget_2_description": "下一个额外时间。",
+          "prayer_lock_widget_3_display_name": "下一次礼拜（布局 3）",
+          "prayer_lock_widget_3_description": "带倒计时的下一次礼拜时间。",
+          "extras_lock_widget_3_display_name": "额外时间（布局 3）",
+          "extras_lock_widget_3_description": "带倒计时的下一个额外时间。"
+        }
+      },
+      "zh-Hant": {
+        "NSLocationWhenInUseUsageDescription": "您的位置用於計算麥加相對於您所在位置的方向。它絕不會離開您的手機。",
+        "NSUserNotificationsUsageDescription": "接收禮拜時間通知",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "下一次禮拜（淺色）",
+            "A countdown to the next prayer.": "距下一次禮拜的倒數。",
+            "Extra Times (Light)": "額外時間（淺色）",
+            "A countdown to the next extra time.": "距下一個額外時間的倒數。",
+            "Next Prayer (Dark)": "下一次禮拜（深色）",
+            "Extra Times (Dark)": "額外時間（深色）",
+            "Next Prayer (Layout 1)": "下一次禮拜（版面配置 1）",
+            "Countdown to the next prayer.": "距下一次禮拜的倒數。",
+            "Extra Times (Layout 1)": "額外時間（版面配置 1）",
+            "Countdown to the next extra time.": "距下一個額外時間的倒數。",
+            "Next Prayer (Layout 2)": "下一次禮拜（版面配置 2）",
+            "Next prayer time.": "下一次禮拜的時間。",
+            "Extra Times (Layout 2)": "額外時間（版面配置 2）",
+            "Next extra time.": "下一個額外時間。",
+            "Next Prayer (Layout 3)": "下一次禮拜（版面配置 3）",
+            "Next prayer time with a countdown.": "含倒數的下一次禮拜時間。",
+            "Extra Times (Layout 3)": "額外時間（版面配置 3）",
+            "Next extra time with a countdown.": "含倒數的下一個額外時間。"
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "下一次禮拜（淺色）",
+          "prayer_widget_description": "距下一次禮拜的倒數。",
+          "extras_widget_display_name": "額外時間（淺色）",
+          "extras_widget_description": "距下一個額外時間的倒數。",
+          "prayer_widget_medium_display_name": "下一次禮拜（淺色）",
+          "prayer_widget_medium_description": "距下一次禮拜的倒數。",
+          "extras_widget_medium_display_name": "額外時間（淺色）",
+          "extras_widget_medium_description": "距下一個額外時間的倒數。",
+          "prayer_widget_dark_display_name": "下一次禮拜（深色）",
+          "prayer_widget_dark_description": "距下一次禮拜的倒數。",
+          "extras_widget_dark_display_name": "額外時間（深色）",
+          "extras_widget_dark_description": "距下一個額外時間的倒數。",
+          "prayer_widget_dark_medium_display_name": "下一次禮拜（深色）",
+          "prayer_widget_dark_medium_description": "距下一次禮拜的倒數。",
+          "extras_widget_dark_medium_display_name": "額外時間（深色）",
+          "extras_widget_dark_medium_description": "距下一個額外時間的倒數。",
+          "prayer_lock_widget_display_name": "下一次禮拜（版面配置 1）",
+          "prayer_lock_widget_description": "距下一次禮拜的倒數。",
+          "extras_lock_widget_display_name": "額外時間（版面配置 1）",
+          "extras_lock_widget_description": "距下一個額外時間的倒數。",
+          "prayer_lock_widget_2_display_name": "下一次禮拜（版面配置 2）",
+          "prayer_lock_widget_2_description": "下一次禮拜的時間。",
+          "extras_lock_widget_2_display_name": "額外時間（版面配置 2）",
+          "extras_lock_widget_2_description": "下一個額外時間。",
+          "prayer_lock_widget_3_display_name": "下一次禮拜（版面配置 3）",
+          "prayer_lock_widget_3_description": "含倒數的下一次禮拜時間。",
+          "extras_lock_widget_3_display_name": "額外時間（版面配置 3）",
+          "extras_lock_widget_3_description": "含倒數的下一個額外時間。"
         }
       }
     },
