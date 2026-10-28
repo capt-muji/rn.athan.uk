@@ -59,13 +59,13 @@ const SCENE_BLOCK = `@objc(SceneDelegate)
 class SceneDelegate: ExpoAppSceneDelegate {
   // Extension point for config plugins
 
-  public func scene(
-    _ scene: UIScene,
-    didUpdateCoordinateSpace coordinateSpace: UICoordinateSpace,
-    interfaceOrientation: UIInterfaceOrientation,
-    traitCollection: UITraitCollection
+  public func windowScene(
+    _ windowScene: UIWindowScene,
+    didUpdateCoordinateSpace previousCoordinateSpace: UICoordinateSpace,
+    interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
+    traitCollection previousTraitCollection: UITraitCollection
   ) {
-    guard interfaceOrientation.isLandscape, let windowScene = scene as? UIWindowScene else { return }
+    guard windowScene.interfaceOrientation.isLandscape else { return }
     windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))
   }
 }`;
