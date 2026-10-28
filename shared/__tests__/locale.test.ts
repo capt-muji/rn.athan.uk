@@ -32,12 +32,14 @@ describe('resolveInitialLocale', () => {
     ['en-GB', 'en', 'en'],
     ['id-ID', 'id', 'id'],
     ['tr-TR', 'tr', 'tr'],
+    ['fr-FR', 'fr', 'fr'],
+    ['uz-UZ', 'uz', 'uz'],
   ] as const)('resolves %s to %s', (languageTag, languageCode, expected) => {
     expect(resolveInitialLocale(null, [{ languageTag, languageCode }])).toBe(expected);
   });
 
   it('falls back to en for an unsupported language', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'fr-FR', languageCode: 'fr' }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: 'es' }])).toBe('en');
     expect(resolveInitialLocale(null, [{ languageTag: 'zh-Hans', languageCode: 'zh' }])).toBe('en');
   });
 
@@ -53,7 +55,7 @@ describe('resolveInitialLocale', () => {
 
   it('an earlier device locale wins over a later one', () => {
     const deviceLocales: readonly DeviceLocaleInfo[] = [
-      { languageTag: 'fr-FR', languageCode: 'fr' },
+      { languageTag: 'es-ES', languageCode: 'es' },
       { languageTag: 'ar-EG', languageCode: 'ar' },
     ];
     expect(resolveInitialLocale(null, deviceLocales)).toBe('ar');
@@ -64,7 +66,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('skips a device locale with no language code', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'fr-FR', languageCode: null }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'es-ES', languageCode: null }])).toBe('en');
   });
 
   it('resolves en when the device reports no locales', () => {

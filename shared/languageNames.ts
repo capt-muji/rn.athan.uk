@@ -11,6 +11,8 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'id', name: 'Bahasa Indonesia' },
   { id: 'ms', name: 'Bahasa Melayu' },
   { id: 'en', name: 'English' },
+  { id: 'fr', name: 'Français' },
+  { id: 'uz', name: 'Oʻzbekcha' },
   { id: 'so', name: 'Soomaali' },
   { id: 'tr', name: 'Türkçe' },
   { id: 'ar', name: 'العربية' },

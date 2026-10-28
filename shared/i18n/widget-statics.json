@@ -1,5 +1,5 @@
 {
-  "_comment": "The null-props widget card's static strings (D44): an eight-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_comment": "The null-props widget card's static strings (D44): a ten-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
   "_surfaces": {
     "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
     "inline": "the accessoryInline neutral (en: Athan — prayer times)",
@@ -116,5 +116,31 @@
     "refreshLead": "Athan uygulamasını açın",
     "refreshTail": "yenilemek için",
     "catchBody": "Yenilemek için uygulamayı açın"
+  },
+  "fr": {
+    "subtitle": "Horaires de prière pour Londres",
+    "inline": "Athan — horaires de prière",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Ouvrir pour charger les heures",
+    "staleTitle": "Périmé",
+    "staleBody": "Ouvrir l'app pour actualiser",
+    "staleInline": "Athan — ouvrir pour actualiser les heures",
+    "refreshLine": "Ouvrir Athan pour actualiser",
+    "refreshLead": "Ouvrir Athan",
+    "refreshTail": "pour actualiser",
+    "catchBody": "Ouvrir l'application pour actualiser"
+  },
+  "uz": {
+    "subtitle": "London uchun namoz vaqtlari",
+    "inline": "Athan — namoz vaqtlari",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Vaqtlarni yuklash uchun oching",
+    "staleTitle": "Eskirgan",
+    "staleBody": "Yangilash uchun ilovani oching",
+    "staleInline": "Athan — vaqtlarni yangilash uchun oching",
+    "refreshLine": "Yangilash uchun Athan ilovasini oching",
+    "refreshLead": "Athan ilovasini oching",
+    "refreshTail": "yangilash uchun",
+    "catchBody": "Yangilash uchun ilovani oching"
   }
 }

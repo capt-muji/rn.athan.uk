@@ -191,5 +191,53 @@
       "Extra Times (Layout 3)": "Ek Vakitler (Düzen 3)",
       "Next extra time with a countdown.": "Geri sayımla sonraki ek vakit."
     }
+  },
+  "fr": {
+    "NSLocationWhenInUseUsageDescription": "Votre position sert à déterminer la direction de La Mecque depuis l'endroit où vous vous trouvez. Elle ne quitte jamais votre téléphone.",
+    "NSUserNotificationsUsageDescription": "Recevoir les notifications des heures de prière",
+    "gallery": {
+      "Next Prayer (Light)": "Prochaine prière (Clair)",
+      "A countdown to the next prayer.": "Un compte à rebours jusqu'à la prochaine prière.",
+      "Extra Times (Light)": "Horaires supplémentaires (Clair)",
+      "A countdown to the next extra time.": "Un compte à rebours jusqu'au prochain horaire supplémentaire.",
+      "Next Prayer (Dark)": "Prochaine prière (Sombre)",
+      "Extra Times (Dark)": "Horaires supplémentaires (Sombre)",
+      "Next Prayer (Layout 1)": "Prochaine prière (Disposition 1)",
+      "Countdown to the next prayer.": "Compte à rebours jusqu'à la prochaine prière.",
+      "Extra Times (Layout 1)": "Horaires supplémentaires (Disposition 1)",
+      "Countdown to the next extra time.": "Compte à rebours jusqu'au prochain horaire supplémentaire.",
+      "Next Prayer (Layout 2)": "Prochaine prière (Disposition 2)",
+      "Next prayer time.": "Heure de la prochaine prière.",
+      "Extra Times (Layout 2)": "Horaires supplémentaires (Disposition 2)",
+      "Next extra time.": "Prochain horaire supplémentaire.",
+      "Next Prayer (Layout 3)": "Prochaine prière (Disposition 3)",
+      "Next prayer time with a countdown.": "Heure de la prochaine prière avec compte à rebours.",
+      "Extra Times (Layout 3)": "Horaires supplémentaires (Disposition 3)",
+      "Next extra time with a countdown.": "Prochain horaire supplémentaire avec compte à rebours."
+    }
+  },
+  "uz": {
+    "NSLocationWhenInUseUsageDescription": "Joylashuvingiz Makkaning qaysi tomonda ekanini aniqlash uchun ishlatiladi. U hech qachon telefoningizdan chiqmaydi.",
+    "NSUserNotificationsUsageDescription": "Namoz vaqti bildirishnomalarini olish",
+    "gallery": {
+      "Next Prayer (Light)": "Keyingi namoz (Yorug')",
+      "A countdown to the next prayer.": "Keyingi namozgacha teskari sanoq.",
+      "Extra Times (Light)": "Qo'shimcha vaqtlar (Yorug')",
+      "A countdown to the next extra time.": "Keyingi qo'shimcha vaqtgacha teskari sanoq.",
+      "Next Prayer (Dark)": "Keyingi namoz (Qorong'i)",
+      "Extra Times (Dark)": "Qo'shimcha vaqtlar (Qorong'i)",
+      "Next Prayer (Layout 1)": "Keyingi namoz (Joylashuv 1)",
+      "Countdown to the next prayer.": "Keyingi namozgacha teskari sanoq.",
+      "Extra Times (Layout 1)": "Qo'shimcha vaqtlar (Joylashuv 1)",
+      "Countdown to the next extra time.": "Keyingi qo'shimcha vaqtgacha teskari sanoq.",
+      "Next Prayer (Layout 2)": "Keyingi namoz (Joylashuv 2)",
+      "Next prayer time.": "Keyingi namoz vaqti.",
+      "Extra Times (Layout 2)": "Qo'shimcha vaqtlar (Joylashuv 2)",
+      "Next extra time.": "Keyingi qo'shimcha vaqt.",
+      "Next Prayer (Layout 3)": "Keyingi namoz (Joylashuv 3)",
+      "Next prayer time with a countdown.": "Teskari sanoq bilan keyingi namoz vaqti.",
+      "Extra Times (Layout 3)": "Qo'shimcha vaqtlar (Joylashuv 3)",
+      "Next extra time with a countdown.": "Teskari sanoq bilan keyingi qo'shimcha vaqt."
+    }
   }
 }

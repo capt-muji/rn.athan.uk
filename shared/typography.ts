@@ -96,6 +96,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   th: THAI,
   id: LATIN,
   tr: LATIN,
+  fr: LATIN,
+  uz: LATIN,
 };
 
 /**

@@ -39,6 +39,8 @@ const SIX_NAMES = [
   'Bahasa Indonesia',
   'Bahasa Melayu',
   'English',
+  'Français',
+  'Oʻzbekcha',
   'Soomaali',
   'Türkçe',
   'العربية',
@@ -68,7 +70,7 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the eight native names in codepoint order on the athan card pattern', async () => {
+  it('renders the ten native names in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -165,7 +167,7 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits third: the seat is two rows and two gaps below the list's top
+    // English sits third, before the Latin latecomers: the seat is two rows and two gaps below the list's top
     expect(highlight().seat).toBe(2 * 44 + 2 * SPACING.xs);
   });
 
