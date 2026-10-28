@@ -376,5 +376,18 @@
     "refreshLead": "Athan openen",
     "refreshTail": "om te vernieuwen",
     "catchBody": "Open de app om te vernieuwen"
+  },
+  "kk": {
+    "subtitle": "Лондондағы намаз уақыттары",
+    "inline": "Athan — намаз уақыттары",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Уақыттарды жүктеу үшін ашыңыз",
+    "staleTitle": "Ескірген",
+    "staleBody": "Жаңарту үшін қолданбаны ашыңыз",
+    "staleInline": "Athan — жаңарту үшін ашыңыз",
+    "refreshLine": "Жаңарту үшін Athan ашыңыз",
+    "refreshLead": "Athan ашыңыз",
+    "refreshTail": "жаңарту үшін",
+    "catchBody": "Жаңарту үшін қолданбаны ашыңыз"
   }
 }

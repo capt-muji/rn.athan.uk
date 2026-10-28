@@ -66,6 +66,7 @@ const LOCALES = [
   'zh-Hant',
   'es',
   'nl',
+  'kk',
 ];
 const englishHash = createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
 
