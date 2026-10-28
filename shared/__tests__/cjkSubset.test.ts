@@ -9,6 +9,7 @@
  * cannot drift apart silently. Regenerate with the command in the lock's _comment.
  */
 
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -83,5 +84,20 @@ describe('the CJK glyph lock', () => {
 
   it('carries the regenerating command in its header, the machine-read JSON pattern', () => {
     expect(lock._comment).toContain('node scripts/cjk-subset.mjs');
+  });
+
+  it('binds the committed subset binaries to the lock by sha256', () => {
+    // The cmap rows above tie the lock to the strings, not to the files: a
+    // re-cut shipping stale binaries would pass every glyph row while zh
+    // renders tofu. The hashes close that hole - regenerate covers them.
+    const files = (lock as { files?: Record<string, string> }).files ?? {};
+    const names = Object.keys(files);
+    expect(names).not.toEqual([]);
+    for (const name of names) {
+      const digest = createHash('sha256')
+        .update(readFileSync(join(__dirname, '..', '..', 'assets', 'fonts', name)))
+        .digest('hex');
+      expect(`${name}: ${digest}`).toBe(`${name}: ${files[name]}`);
+    }
   });
 });

@@ -794,9 +794,9 @@
       },
       "Sunrise": {
         "text": "Sonnenaufgang",
-        "source": "al-azan@d89b047",
+        "source": "salatnow-de",
         "confidence": "high",
-        "note": "Both catalogs print Sonnenaufgang. gebetszeiten.de uses the Arabic loan Schuruk for the row. Sonnenaufgang is the plain-German label; Schuruk is the community label."
+        "note": "salatnow.com Diyanet-method German timetables print Sonnenaufgang as the row (Mülheim today row and the monthly Gebetsplan column Sonnenaufg.), the decision-11 independent confirmation; both AGPL catalogs print it and gebetszeiten.de prints Schuruk, so the plain-German label ships."
       },
       "Dhuhr": {
         "text": "Dhuhr",
@@ -862,9 +862,9 @@
       },
       "Start of the last third of the night": {
         "text": "Beginn des letzten Drittels der Nacht",
-        "source": "al-azan@d89b047",
+        "source": "tahajjud-de",
         "confidence": "high",
-        "note": "Every word attested in al-azan's German hint string."
+        "note": "tahajjud.de prints Das letzte Drittel der Nacht beginnt and es ergibt sich der Beginn um (begin, last third, night each attested), the decision-11 independent confirmation; al-azan German hint string carries the same phrase."
       },
       "20 mins before Fajr": {
         "text": "20 Min. vor dem Fadschr",

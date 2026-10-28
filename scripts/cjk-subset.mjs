@@ -19,6 +19,7 @@
 // The closed set is read through @babel/parser (the catalog-lock.mjs precedent)
 // because the catalog and name modules use ESM export syntax Node cannot load.
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from '@babel/parser';
@@ -161,9 +162,21 @@ const measured = JSON.parse(execFileSync('python3', ['-c', PYTHON, jobFile], { e
 
 const lock = {
   _comment:
-    "The character set the two zh subset pairs carry (plan T-419 decision 8): each subset is cut with fontTools over the closed string set - every character of its zh catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the two curl lines).",
+    "The character set the two zh subset pairs carry (plan T-419 decision 8): each subset is cut with fontTools over the closed string set - every character of its zh catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. files binds the four committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the two curl lines).",
   'zh-Hans': measured.SC.cmap.join(''),
   'zh-Hant': measured.TC.cmap.join(''),
+  files: Object.fromEntries(
+    Object.values(job)
+      .flatMap((spec) =>
+        Object.keys(measured.SC.weights).map((weight) => spec.out.replace('{weight}', weight).split('/').pop())
+      )
+      .map((name) => [
+        name,
+        createHash('sha256')
+          .update(readFileSync(join(ROOT, 'assets/fonts', name)))
+          .digest('hex'),
+      ])
+  ),
 };
 writeFileSync(join(ROOT, 'shared/i18n/cjk-glyph-lock.json'), `${JSON.stringify(lock, null, 2)}\n`);
 
