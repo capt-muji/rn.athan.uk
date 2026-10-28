@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MOk1XjHmjxLeTvjrQaCMrbqg3MJumwzft0fPiD33URw2id6qkOlSldKxcieklOj
+\restrict viV7UYLdw8j8H8wIGLVAyvcse0kd69fI0cIrGv9Rh0JZBflBwQWgDAm5LuqlCS8
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6184,20 +6184,6 @@ Acceptance:
 - [ ] transcribed device reads: Hindi''s badge on one line on the S23 with no cropped second line, and Thai''s badge spaced before and after the time on both the S23 and the XS
 - [ ] yarn validate green', NULL, NULL, NULL, 3500, '2026-10-25 05:27:14.749531+00', '2026-10-25 18:39:05.540674+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (387, 1, 387, NULL, 4, 'Step 3: the on-glass proof on the iPhone XS and the 3T', 'Version bump, both platforms built in parallel, aapt2 badging before the 3T install, then the transcript of every criterion read on glass. Plan: T-381 doc.', NULL, NULL, NULL, 18500, '2026-10-27 05:02:46.006403+00', '2026-10-27 06:13:12.809682+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 3, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (403, 1, 403, NULL, 1, 'The update modal presents at every launch, even with connectivity off', 'Goal: the launch update modal presents only when a fresh, successful check finds the store ahead of the installed build - never from stale state, never with the network unreachable.
-
-Where: app/index.tsx''s launch check (the 1500ms deferred checkForUpdates feeding setPopupUpdateEnabled), device/updates.ts (getStoreVersion''s fetch and its Cache-Control: no-cache against NSURLSession''s disk cache, the 24-hour stamp), stores/ui.ts (popupUpdateLastCheckAtom''s persistence across relaunches), stores/version.ts (getInstalledVersion from Constants.expoConfig).
-
-How it was found (owner, 2026-10-27, on the XS carrying the 2.11.27-era build): with Wi-Fi off, opening the app presents "Update available" before anything else; Later dismisses it; the manual Check for updates row correctly fails ("Failed to check. Try again") offline and greens ("You''re up to date") online; the store page reads 2.4.39 while the installed build reads far ahead of it; and the modal returns on EVERY relaunch, connectivity irrelevant. Tapping Update opens the store as built.
-
-The contradiction that names the investigation''s first step: within one process, the manual comparison read the store BEHIND the build (green) while the launch check read it AHEAD (modal) - unreachable from the same inputs in the current code, where a modal needs isNewerVersion(installed, store) true from a successful fetch and the throttle stamps every success. So first establish what the launch check actually saw: the installed binary''s real version off the phone, the launch check''s store answer (its log lines), and whether an offline launch serves the iTunes lookup from NSURLSession''s disk cache despite no-cache - then the throttle''s stamp persistence across relaunches. Any theory must explain modal-every-launch AND green-manual-offline-fails in the same session.
-
-Acceptance:
-- [ ] The launch check''s actual inputs and answer are read off the phone (log lines or a debug read): the installed version, the store version it compared against, and the fetch''s fate with connectivity off
-- [ ] The root cause is named with evidence and fixed: with connectivity off, a launch presents no modal; the modal presents only when a fresh successful comparison finds the store ahead
-- [ ] The 24-hour throttle holds across relaunches: a second launch inside the window runs no check and presents nothing
-- [ ] The manual row''s behavior (T-396''s failure and verdict states) is unchanged, pinned by its suite
-- [ ] Full unit coverage of every changed line, red before green; read once on glass on the XS', NULL, NULL, NULL, 20500, '2026-10-27 23:16:34.258255+00', '2026-10-27 23:16:34.364755+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (347, 1, 347, 8, 4, 'The README catches up with the app: every user-facing change since 1.0.0 walks the git history into the page', 'Goal: README.md carries every user-facing feature the git history records, grouped the way a reader wants, with every claim true of the current build.
 
 Where: README.md, written from a survey of the git log from the first commit (2024-10-26) to the uat tip 2.4.40 (dc269768), through the 1.0.x build-out, the 1.1.x/1.2.x store era, the 1.3-1.23 series, the 1.24-1.29 rebuild, the 2.x restructure and the 2.4.x line.
@@ -6223,6 +6209,20 @@ Acceptance:
 - [ ] The catalog lock re-hashes for any changed English source; the row''s suite pins the once-per-launch guard, the three visual states, and the row order.
 
 Owner quotes that are the spec: the spin is "clockwise, round and round"; the up-to-date change is "purple to a green colour and then a tick instead, just to show the user, hey, you''re up to date, nothing to do"; the guard is "they can click that button one time only... when they close the app, that''s when it resets back to zero... they can''t just background it either". The owner ruled this ticket is planned and grilled heavily before execution, and executed by a dispatched lane.', NULL, NULL, NULL, 16500, '2026-10-27 04:41:57.167332+00', '2026-10-27 10:13:54.832431+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (403, 1, 403, NULL, 1, 'The update modal presents at every launch, even with connectivity off', 'Goal: the launch update modal presents only when a fresh, successful check finds the store ahead of the installed build - never from stale state, never with the network unreachable.
+
+Where: app/index.tsx''s launch check (the 1500ms deferred checkForUpdates feeding setPopupUpdateEnabled), device/updates.ts (getStoreVersion''s fetch and its Cache-Control: no-cache against NSURLSession''s disk cache, the 24-hour stamp), stores/ui.ts (popupUpdateLastCheckAtom''s persistence across relaunches), stores/version.ts (getInstalledVersion from Constants.expoConfig).
+
+How it was found (owner, 2026-10-27, on the XS carrying the 2.11.27-era build): with Wi-Fi off, opening the app presents "Update available" before anything else; Later dismisses it; the manual Check for updates row correctly fails ("Failed to check. Try again") offline and greens ("You''re up to date") online; the store page reads 2.4.39 while the installed build reads far ahead of it; and the modal returns on EVERY relaunch, connectivity irrelevant. Tapping Update opens the store as built.
+
+The contradiction that names the investigation''s first step: within one process, the manual comparison read the store BEHIND the build (green) while the launch check read it AHEAD (modal) - unreachable from the same inputs in the current code, where a modal needs isNewerVersion(installed, store) true from a successful fetch and the throttle stamps every success. So first establish what the launch check actually saw: the installed binary''s real version off the phone, the launch check''s store answer (its log lines), and whether an offline launch serves the iTunes lookup from NSURLSession''s disk cache despite no-cache - then the throttle''s stamp persistence across relaunches. Any theory must explain modal-every-launch AND green-manual-offline-fails in the same session.
+
+Acceptance:
+- [ ] The launch check''s actual inputs and answer are read off the phone (log lines or a debug read): the installed version, the store version it compared against, and the fetch''s fate with connectivity off
+- [ ] The root cause is named with evidence and fixed: with connectivity off, a launch presents no modal; the modal presents only when a fresh successful comparison finds the store ahead
+- [ ] The 24-hour throttle holds across relaunches: a second launch inside the window runs no check and presents nothing
+- [ ] The manual row''s behavior (T-396''s failure and verdict states) is unchanged, pinned by its suite
+- [ ] Full unit coverage of every changed line, red before green; read once on glass on the XS', NULL, NULL, NULL, 20500, '2026-10-27 23:16:34.258255+00', '2026-10-27 23:16:34.364755+00', NULL, NULL, NULL, '2026-10-28 00:56:00.667423+00', NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (371, 1, 371, NULL, 4, 'Step 3: The phones measured, nothing displaced - the 3T and XS lines and install refusals transcribed', '', NULL, NULL, NULL, 18500, '2026-10-25 14:17:44.161772+00', '2026-10-25 14:24:39.045513+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (388, 1, 388, 2, 4, 'A foreground-sync widget-push failure blanks the home screen over stored days', 'Goal: no failure anywhere in the launch or foreground sync may leave the home screen on the error screen while good cached prayer days sit in storage - the state-invariant, proven exhaustively, not through one journey.
 
@@ -6290,7 +6290,7 @@ Acceptance:
 Fallback route, if the track''s rollout hygiene gets in the way: internal app sharing, Google''s own lighter recipe for in-app update testing - same hard rules, no track or rollout: share-install A via the link, upload B with a higher code, click B''s share link WITHOUT installing, open the app, the update is offered. Chosen only if the owner rules the track route heavier than the proof is worth.', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 15:04:19.549939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (392, 1, 392, NULL, 4, 'Step 3: proof and merge', 'Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), yarn validate green, version 2.11.20 riding the commit (package.json, app.json, shared/whatsNew.ts), merge the lane branch into local uat unpushed.', NULL, NULL, NULL, 18500, '2026-10-27 10:43:57.388819+00', '2026-10-27 11:02:51.668089+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (390, 1, 390, NULL, 4, 'Step 1: the foreground-rejection tests', 'In stores/__tests__/syncLoadable.test.ts: one test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject; the sync resolves, logger().warn fires ''WIDGET: Foreground refresh failed'' with the error, and the home screen''s read (triggerSyncLoadable then store.get(syncLoadable)) lands hasData. Red before the fix.', NULL, NULL, NULL, 16500, '2026-10-27 10:43:57.307831+00', '2026-10-27 11:02:51.672036+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (396, 1, 396, 2, 9, 'The Check for updates row must tell a failed check from an up-to-date verdict, and stay retryable', 'Goal: with the network unreachable, a press on Check for updates settles the row into an honest failure state - a red circle with a white X, a try-again label, the refresh arrows back - and the row re-runs the check on the next press without the sheet closing; only a check that reached a verdict consumes the once-per-opening budget.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (396, 1, 396, 2, 4, 'The Check for updates row must tell a failed check from an up-to-date verdict, and stay retryable', 'Goal: with the network unreachable, a press on Check for updates settles the row into an honest failure state - a red circle with a white X, a try-again label, the refresh arrows back - and the row re-runs the check on the next press without the sheet closing; only a check that reached a verdict consumes the once-per-opening budget.
 
 Where: components/sheets/screens/Settings.tsx (the row''s states and its once-per-opening guard), device/updates.ts (already honest: a failed store read returns upToDate:false, and the fetch is timeout-guarded at 10 seconds by an AbortController - no change expected there, verify), shared/i18n/* (six catalogs), the row''s suite.
 
@@ -6303,7 +6303,7 @@ Acceptance:
 - [x] Full unit coverage of every changed line, red before green; the verdict mapping pinned both sides (up-to-date green tick, failure red X, update-found modal/store path)
 - [x] Read once on glass on the iPhone XS after audit: airplane-mode press reads the red X and the retry label, a second press re-checks, connectivity restored reads the real verdict
 
-How it was found (owner, 2026-10-27, on-glass): Wi-Fi off, network disconnected, Settings, Check for updates - the row answered "You''re up to date" with the green tick. The data layer is not the liar: checkForUpdates returns upToDate:false when the store read fails, and the fetch times out at 10 seconds. The row reads "no modal" as "up to date" and settles the green tick on a failed check. Owner orders: red circle white X, try-again label, arrows back, tappable without closing the sheet, retry re-checks.', NULL, NULL, NULL, 17500, '2026-10-27 16:07:41.399714+00', '2026-10-28 00:15:57.019807+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+How it was found (owner, 2026-10-27, on-glass): Wi-Fi off, network disconnected, Settings, Check for updates - the row answered "You''re up to date" with the green tick. The data layer is not the liar: checkForUpdates returns upToDate:false when the store read fails, and the fetch times out at 10 seconds. The row reads "no modal" as "up to date" and settles the green tick on a failed check. Owner orders: red circle white X, try-again label, arrows back, tappable without closing the sheet, retry re-checks.', NULL, NULL, NULL, 17500, '2026-10-27 16:07:41.399714+00', '2026-10-28 00:55:50.431656+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (374, 1, 374, NULL, 4, 'The dim system redesign: one shared dim colour for all dimmed text and a lighter background gradient replace the per-component shades', 'Goal: the per-component shade system born in the colour-carried dim conversion gives way to a single dim colour serving every dimmed-text surface, with a lighter, more subtle background gradient - removing the shade machinery the owner suspects costs the 3T its animation floor, and simplifying the visual system.
 
 Where: the ink and shade constants and every surface that consumes them (the colour-carried dim system and the per-row shades across the prayer list, overlay and sheets), and the app''s background gradient.
@@ -10781,6 +10781,18 @@ Judgment: the 3T can install the app from Play as things stand - account, store 
 
 Code read (criterion 4): device/updates.ts read whole and ruled clean. The Android path asks Play only for updateAvailable and starts the flexible flow the moment Play answers yes - no version comparison runs app-side, Play gates on versionCode alone, so any internal release above the installed code arms the proof. The row resting without a verdict while Play''s overlay speaks is the landed T-376 design, and the launch check starting Play''s download on its own is that same landed behaviour. No app-side flaw filed.', NULL, '2026-10-27 12:05:46.95111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-27 12:09:46.47+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3824, 393, 'activity', 'owner', NULL, 'created', '2026-10-27 14:51:54.933018+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3919, 396, 'comment', 'owner', 'iPhone XS build and colour read, 2.11.29 (the step the audit handed over): production built locally from uat d2a90448 through the prod script in a scratch worktree with BOTH platforms compiled in parallel - the Android artifact verified (the app''s package, versionCode 1000000, versionName 2.11.29, the owner''s debug certificate, the prod key present in the Hermes bundle) and installed nowhere - then the iOS artifact upgrade-installed over the phone''s 2.11.27 with no uninstall and its data container kept. Launch-services reads 2.11.29. Screenshots were transcribed live through the vision worker and deleted; nothing was saved.
+
+(a) The darker red, offline: the radio off the owner''s way in the system Settings (the handset carries no cellular plan, and the capture holds no Wi-Fi glyph), my own press on the row settling into the failure. The badge reads fill 185,28,28 - #b91c1c exactly, flat across every sample - over a rim measuring 220,38,38, #dc2626 exactly, about 1 pt wide at the circle''s edge: the fill one rung darker than the rim, the relationship kept. The white X crosses the centre at the tick''s own size and ink (242,245,249), the label reads verbatim "Failed to check. Try again", and the two-arrow ring stays at the trailing edge, so the row still reads retryable.
+
+(b) The darker green, online: the radio back on and joined, the press settling to the verdict - "You''re up to date" with the typographic apostrophe, the tick badge reading fill 21,128,61, #15803d exactly, over a rim of 22,162,74, #16a34a exactly, the rim lighter than the fill, the white tick in the same ink, the ring gone, the Wi-Fi glyph in the same capture.
+
+Both pairs sit one rung darker than the 2.11.27 glass read with nothing else moved: the resting row read the same violet circle and ring before the presses, and after every interaction the sheet''s four toggles and the dimmed colour row read exactly as they started (hijri on, the other three off), so no stray tap flipped a preference.
+
+For the record: the owner ran their own confirmation steps on the phone through this window - Wi-Fi toggled by hand both ways, an excursion into a password prompt on an unrelated network, the sheet closed twice - so several presses around my captures were the owner''s, not this session''s; each colour claim above stands on its own capture (the red window''s press and outage were mine and switch-verified, the green window''s connectivity is in its own frame).
+
+Final state: production 2.11.29 stays installed over its carried data, the app rests on its home screen with Wi-Fi on, the automation runner''s helper apps are removed. Housekeeping: the scratch worktrees, both build logs, the APK and the iOS DerivedData are all deleted; the main tree is clean, the branch having advanced to the run''s 2.11.30 board snapshot mid-step, one commit past d2a90448, carrying nothing of this step.', NULL, '2026-10-28 00:29:56.923635+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3923, 396, 'comment', 'owner', 'Done (owner approval, 2026-10-28): the Check for updates row tells a failed check from a verdict and stays retryable. A failed check settles its own state - the red circle with the white X, ''Failed to check. Try again'' in all six locales with the Arabic mirror - and refunds the once-per-opening budget so the row retries without the sheet closing; only a verdict spends it. A verdict reads the green tick, and Play''s overlay owns Android''s update-found as built. The owner''s on-glass test passed the full cycle at 2.11.27 and approved the one-rung-darker badges at 2.11.29 (fill #15803d/#b91c1c, each rim lighter), twice pixel-verified on the XS. Merged through 2.11.29, pushed, the phone carrying the final build.', NULL, '2026-10-28 00:55:50.472086+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3809, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 12:05:55.918467+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release from the recipe (an upload-key-signed artifact of uat, versionCode above 11, rolled to the internal track) - then the 3T installs production from the store, opts in, and the row''s press is the proof"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3797, 388, 'comment', 'owner', 'Device proof (step 3, 2026-10-27, executor continuation): the mimic is on the XS over carried data and waits for the owner''s test.
 
@@ -10999,6 +11011,11 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 Both darker pairs read exactly the merged constants, each pair keeping its fill-darker border-lighter relationship, and only the colours were confirmed - the behaviour is the owner''s own pass at 2.11.27. The phone ends on 2.11.29, Wi-Fi on, the app at rest on home.', NULL, '2026-10-28 00:15:18.255114+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3916, 396, 'activity', 'owner', NULL, 'field', '2026-10-28 00:15:57.026665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s two-press colour re-read on the iPhone XS, which carries 2.11.29 with the darker verdict badges over its carried data"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3918, 396, 'comment', 'owner', 'Re-parked at Awaiting Owner for the colour re-read (2026-10-28): the behaviour passed the owner''s full test at 2.11.27, and 2.11.29 now sits on the XS carrying only the darker badges, pixel-verified to the merged constants (red fill #b91c1c over rim #dc2626, green fill #15803d over rim #16a34a, comment 3915). The owner''s two presses: (1) connectivity off, press Check for updates, read the darker red badge with the white X; (2) connectivity on, press again, read the darker green tick. Say ''T-396 passed, close it'' or name what reads wrong.', NULL, '2026-10-28 00:15:57.067733+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3920, 396, 'comment', 'owner', 'Record note (lead, 2026-10-28): comment 3919 is the duplicate device session''s own transcription of the same colour read, posted after its interruption was ordered - it corroborates 3915 exactly (the same hex pairs, the same final phone state, the runner helpers removed, the tree clean), and it accounts for the owner''s own presses through its window. The record stands; the owner''s two-press confirmation is the only thing this ticket waits on.', NULL, '2026-10-28 00:50:19.95705+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3921, 396, 'activity', 'owner', NULL, 'field', '2026-10-28 00:55:50.435429+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3922, 396, 'activity', 'owner', NULL, 'status', '2026-10-28 00:55:50.447318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3924, 403, 'comment', 'owner', 'Closed on the owner''s clean reads (2026-10-28), not as a code fix. The owner tested on the XS carrying 2.11.29: connectivity off, app opened - no modal; connectivity on, app opened - no modal. Nothing changed in code that could fix the symptom (the only commits between the failing reads and the clean ones are four badge colour constants). The yesterday presentations are attributed to the phone''s synthetic state: the retired mimic (a 1.0.0 build genuinely behind the store, where a launch modal is the designed behaviour and was the T-381 proof) and the concurrent reinstall window around it - both gone. The design contract stands and is already proven both ways: the modal presents only when a fresh successful comparison finds the store ahead (unit-pinned across all sixteen result shapes, glass-proven by T-381''s mimic), and the 24-hour throttle is suite-pinned. Reopen trigger, filed afresh if ever seen: the update modal presenting on any build that reads AHEAD of the store, or presenting with connectivity off on a real build. Archived.', NULL, '2026-10-28 00:56:00.642677+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3925, 403, 'activity', 'owner', NULL, 'archived', '2026-10-28 00:56:00.668752+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -11318,7 +11335,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (660, 401, 1, NULL, 401, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (661, 402, 1, NULL, 402, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (662, 403, 1, NULL, 403, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (658, 396, 3, 'the owner''s two-press colour re-read on the iPhone XS, which carries 2.11.29 with the darker verdict badges over its carried data', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (658, 396, 3, '', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -12539,6 +12556,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (917, 402, 1, 'Backlog', 'backlog', '2026-10-27 22:43:33.252+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (913, 396, 9, 'Awaiting Owner', 'started', '2026-10-27 17:59:00.993253+00', '2026-10-27 23:17:20.277367+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (919, 396, 3, 'In progress', 'started', '2026-10-27 23:17:20.277367+00', '2026-10-28 00:15:57.030715+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (921, 396, 4, 'Done', 'completed', '2026-10-28 00:55:50.442354+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -12585,7 +12603,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (914, 399, 4, 'Done', 'completed', '2026-10-27 17:59:00.997205+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (916, 401, 1, 'Backlog', 'backlog', '2026-10-27 22:43:33.172+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (918, 403, 1, 'Backlog', 'backlog', '2026-10-27 23:16:34.258+00', NULL);
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (920, 396, 9, 'Awaiting Owner', 'started', '2026-10-28 00:15:57.030715+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (920, 396, 9, 'Awaiting Owner', 'started', '2026-10-28 00:15:57.030715+00', '2026-10-28 00:55:50.442354+00');
 
 
 --
@@ -29017,6 +29035,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 109
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:395', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 184);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:397', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:396', 1, 70);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4387);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:403', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:398', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
@@ -29031,9 +29052,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:402', 1, 10)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:401', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:403', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4384);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:396', 1, 63);
 
 
 --
@@ -29295,7 +29313,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 3918, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 3925, true);
 
 
 --
@@ -29344,7 +29362,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 664, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 665, true);
 
 
 --
@@ -29372,7 +29390,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 920, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 921, true);
 
 
 --
@@ -33855,5 +33873,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MOk1XjHmjxLeTvjrQaCMrbqg3MJumwzft0fPiD33URw2id6qkOlSldKxcieklOj
+\unrestrict viV7UYLdw8j8H8wIGLVAyvcse0kd69fI0cIrGv9Rh0JZBflBwQWgDAm5LuqlCS8
 
