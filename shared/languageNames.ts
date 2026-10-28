@@ -20,6 +20,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
   { id: 'fr', name: 'Français' },
   { id: 'ha', name: 'Hausa' },
   { id: 'sw', name: 'Kiswahili' },
+  { id: 'nl', name: 'Nederlands' },
   { id: 'uz', name: 'Oʻzbekcha' },
   { id: 'pt', name: 'Português' },
   { id: 'sq', name: 'Shqip' },

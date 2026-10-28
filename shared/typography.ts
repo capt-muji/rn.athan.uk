@@ -234,6 +234,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries every Spanish diacritic by explicit codepoint in both weights
   // (measured with fontTools, plan T-429 decision 6)
   es: LATIN,
+  // Roboto carries every Dutch diacritic by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  nl: LATIN,
 };
 
 /**

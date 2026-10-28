@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.27.0",
+    "version": "2.28.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -47,7 +47,8 @@
           "ml",
           "zh-Hans",
           "zh-Hant",
-          "es"
+          "es",
+          "nl"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -1900,6 +1901,62 @@
           "prayer_lock_widget_3_description": "Hora de la próxima oración con cuenta atrás.",
           "extras_lock_widget_3_display_name": "Horas adicionales (diseño 3)",
           "extras_lock_widget_3_description": "Próxima hora adicional con cuenta atrás."
+        }
+      },
+      "nl": {
+        "NSLocationWhenInUseUsageDescription": "Je locatie wordt gebruikt om te bepalen welke kant Mekka op ligt vanaf waar je bent. Je locatie verlaat je telefoon nooit.",
+        "NSUserNotificationsUsageDescription": "Ontvang meldingen voor gebedstijden",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "Volgend gebed (licht)",
+            "A countdown to the next prayer.": "Aftelling naar het volgende gebed.",
+            "Extra Times (Light)": "Extra tijden (licht)",
+            "A countdown to the next extra time.": "Aftelling naar de volgende extra tijd.",
+            "Next Prayer (Dark)": "Volgend gebed (donker)",
+            "Extra Times (Dark)": "Extra tijden (donker)",
+            "Next Prayer (Layout 1)": "Volgend gebed (indeling 1)",
+            "Countdown to the next prayer.": "Aftelling naar het volgende gebed.",
+            "Extra Times (Layout 1)": "Extra tijden (indeling 1)",
+            "Countdown to the next extra time.": "Aftelling naar de volgende extra tijd.",
+            "Next Prayer (Layout 2)": "Volgend gebed (indeling 2)",
+            "Next prayer time.": "Tijd van het volgende gebed.",
+            "Extra Times (Layout 2)": "Extra tijden (indeling 2)",
+            "Next extra time.": "Volgende extra tijd.",
+            "Next Prayer (Layout 3)": "Volgend gebed (indeling 3)",
+            "Next prayer time with a countdown.": "Tijd van het volgende gebed met aftelling.",
+            "Extra Times (Layout 3)": "Extra tijden (indeling 3)",
+            "Next extra time with a countdown.": "Volgende extra tijd met aftelling."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "Volgend gebed (licht)",
+          "prayer_widget_description": "Aftelling naar het volgende gebed.",
+          "extras_widget_display_name": "Extra tijden (licht)",
+          "extras_widget_description": "Aftelling naar de volgende extra tijd.",
+          "prayer_widget_medium_display_name": "Volgend gebed (licht)",
+          "prayer_widget_medium_description": "Aftelling naar het volgende gebed.",
+          "extras_widget_medium_display_name": "Extra tijden (licht)",
+          "extras_widget_medium_description": "Aftelling naar de volgende extra tijd.",
+          "prayer_widget_dark_display_name": "Volgend gebed (donker)",
+          "prayer_widget_dark_description": "Aftelling naar het volgende gebed.",
+          "extras_widget_dark_display_name": "Extra tijden (donker)",
+          "extras_widget_dark_description": "Aftelling naar de volgende extra tijd.",
+          "prayer_widget_dark_medium_display_name": "Volgend gebed (donker)",
+          "prayer_widget_dark_medium_description": "Aftelling naar het volgende gebed.",
+          "extras_widget_dark_medium_display_name": "Extra tijden (donker)",
+          "extras_widget_dark_medium_description": "Aftelling naar de volgende extra tijd.",
+          "prayer_lock_widget_display_name": "Volgend gebed (indeling 1)",
+          "prayer_lock_widget_description": "Aftelling naar het volgende gebed.",
+          "extras_lock_widget_display_name": "Extra tijden (indeling 1)",
+          "extras_lock_widget_description": "Aftelling naar de volgende extra tijd.",
+          "prayer_lock_widget_2_display_name": "Volgend gebed (indeling 2)",
+          "prayer_lock_widget_2_description": "Tijd van het volgende gebed.",
+          "extras_lock_widget_2_display_name": "Extra tijden (indeling 2)",
+          "extras_lock_widget_2_description": "Volgende extra tijd.",
+          "prayer_lock_widget_3_display_name": "Volgend gebed (indeling 3)",
+          "prayer_lock_widget_3_description": "Tijd van het volgende gebed met aftelling.",
+          "extras_lock_widget_3_display_name": "Extra tijden (indeling 3)",
+          "extras_lock_widget_3_description": "Volgende extra tijd met aftelling."
         }
       }
     },

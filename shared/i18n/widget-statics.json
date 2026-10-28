@@ -363,5 +363,18 @@
     "refreshLead": "Abre Athan",
     "refreshTail": "para actualizar",
     "catchBody": "Abre la app para actualizar"
+  },
+  "nl": {
+    "subtitle": "Gebedstijden voor Londen",
+    "inline": "Athan — gebedstijden",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Open om tijden te laden",
+    "staleTitle": "Verouderd",
+    "staleBody": "Open de app om te vernieuwen",
+    "staleInline": "Athan — open om te vernieuwen",
+    "refreshLine": "Athan openen om te vernieuwen",
+    "refreshLead": "Athan openen",
+    "refreshTail": "om te vernieuwen",
+    "catchBody": "Open de app om te vernieuwen"
   }
 }

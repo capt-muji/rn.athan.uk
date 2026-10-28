@@ -19,6 +19,7 @@ import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { ml } from '@/shared/i18n/ml';
 import { ms } from '@/shared/i18n/ms';
+import { nl } from '@/shared/i18n/nl';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { ru } from '@/shared/i18n/ru';
@@ -61,6 +62,7 @@ const CATALOGS: Record<string, Catalog> = {
   'zh-Hans': zhHans,
   'zh-Hant': zhHant,
   es,
+  nl,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);

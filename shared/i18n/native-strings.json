@@ -647,5 +647,29 @@
       "Extra Times (Layout 3)": "Horas adicionales (diseño 3)",
       "Next extra time with a countdown.": "Próxima hora adicional con cuenta atrás."
     }
+  },
+  "nl": {
+    "NSLocationWhenInUseUsageDescription": "Je locatie wordt gebruikt om te bepalen welke kant Mekka op ligt vanaf waar je bent. Je locatie verlaat je telefoon nooit.",
+    "NSUserNotificationsUsageDescription": "Ontvang meldingen voor gebedstijden",
+    "gallery": {
+      "Next Prayer (Light)": "Volgend gebed (licht)",
+      "A countdown to the next prayer.": "Aftelling naar het volgende gebed.",
+      "Extra Times (Light)": "Extra tijden (licht)",
+      "A countdown to the next extra time.": "Aftelling naar de volgende extra tijd.",
+      "Next Prayer (Dark)": "Volgend gebed (donker)",
+      "Extra Times (Dark)": "Extra tijden (donker)",
+      "Next Prayer (Layout 1)": "Volgend gebed (indeling 1)",
+      "Countdown to the next prayer.": "Aftelling naar het volgende gebed.",
+      "Extra Times (Layout 1)": "Extra tijden (indeling 1)",
+      "Countdown to the next extra time.": "Aftelling naar de volgende extra tijd.",
+      "Next Prayer (Layout 2)": "Volgend gebed (indeling 2)",
+      "Next prayer time.": "Tijd van het volgende gebed.",
+      "Extra Times (Layout 2)": "Extra tijden (indeling 2)",
+      "Next extra time.": "Volgende extra tijd.",
+      "Next Prayer (Layout 3)": "Volgend gebed (indeling 3)",
+      "Next prayer time with a countdown.": "Tijd van het volgende gebed met aftelling.",
+      "Extra Times (Layout 3)": "Extra tijden (indeling 3)",
+      "Next extra time with a countdown.": "Volgende extra tijd met aftelling."
+    }
   }
 }

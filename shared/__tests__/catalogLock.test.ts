@@ -36,11 +36,12 @@ const LOCALES = [
   'zh-Hans',
   'zh-Hant',
   'es',
+  'nl',
 ] as const;
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 
 describe('the catalog lock', () => {
-  it('covers exactly the twenty-six translated locales', () => {
+  it('covers exactly the twenty-seven translated locales', () => {
     expect(Object.keys(lock).sort()).toEqual([...LOCALES].sort());
   });
 
