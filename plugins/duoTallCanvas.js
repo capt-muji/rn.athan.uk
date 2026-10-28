@@ -1,4 +1,4 @@
-const { withAppDelegate, withDangerousMod } = require('expo/config-plugins');
+const { withAppDelegate, withFinalizedMod } = require('expo/config-plugins');
 const { default: plist } = require('@expo/plist');
 const { readFile, writeFile } = require('node:fs/promises');
 const path = require('node:path');
@@ -7,10 +7,12 @@ const path = require('node:path');
 // granting the full canvas only for a pose the plist declares (row 271 measured landscape spanning
 // the wide hold under a four-orientation plist). Declaring the portrait pair alone is therefore the
 // tall presentation's opt-in and the wide hold's lock: held tall the portrait window spans edge to
-// edge, held wide the system keeps its centered letterbox. Everywhere else the delegate gate below
-// answers the portrait pair for every window, so no surface ever lays out wide.
+// edge, held wide the system keeps its centered letterbox. Everywhere else two carriers hold the
+// portrait pair for every window: the delegate gate below for the classic life cycle, and the
+// root view controller the scene life cycle actually reads, so no surface ever lays out wide.
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const PIN_FLAG = 'macWindowPinned';
+const CARRIER_CLASS_NAME = 'PortraitWindowController';
 
 // The gate answers the portrait pair for every window; the pin freezes the Mac window at the
 // layout's own content cap so the desktop app reads as a phone: no tall or sideways resize,
@@ -42,8 +44,66 @@ const CLASS_CLOSE = `}
 
 ${'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {'}`;
 
+const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
+
+const SCENE_MARKER = `@objc(SceneDelegate)
+class SceneDelegate: ExpoAppSceneDelegate {
+  // Extension point for config plugins.
+}`;
+
+// iPadOS 27 resolves windowing orientation itself and overrides the root view controller's
+// portrait answer at runtime (T-401: the pair read back as the landscape mask under rotation),
+// so the posture holds only by re-requesting portrait geometry whenever the system lays the
+// scene out wide.
+const SCENE_BLOCK = `@objc(SceneDelegate)
+class SceneDelegate: ExpoAppSceneDelegate {
+  // Extension point for config plugins.
+
+  // The conformance is inherited from ExpoAppSceneDelegate, so Swift gives this method no
+  // implicit @objc and UIKit's respondsToSelector read it absent until the attribute was
+  // added by hand (T-401, measured on the rig).
+  @objc public func windowScene(
+    _ windowScene: UIWindowScene,
+    didUpdateCoordinateSpace previousCoordinateSpace: UICoordinateSpace,
+    interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
+    traitCollection previousTraitCollection: UITraitCollection
+  ) {
+    guard
+      windowScene.interfaceOrientation.isLandscape || previousInterfaceOrientation.isLandscape
+    else { return }
+    windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: [.portrait, .portraitUpsideDown]))
+  }
+}`;
+
+const editSceneDelegate = (contents) => {
+  if (contents.includes('requestGeometryUpdate')) return contents;
+  if (!contents.includes(SCENE_MARKER)) {
+    throw new Error('duoTallCanvas: the SceneDelegate marker moved; read the new template');
+  }
+  return contents
+    .replace('internal import Expo', 'internal import Expo\nimport UIKit')
+    .replace(SCENE_MARKER, SCENE_BLOCK);
+};
+
+// The scene life cycle resolves the window's orientation from the root view controller, never
+// from the AppDelegate gate, so the stock factory controller's all-answer is what laid iPad
+// windows wide (T-401: the scene rotated landscapeRight under a portrait-only gate).
+const CARRIER_CLASS = `class ${CARRIER_CLASS_NAME}: UIViewController {
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    [.portrait, .portraitUpsideDown]
+  }
+}
+
+`;
+
+const CARRIER_OVERRIDE = `
+
+  override func createRootViewController() -> UIViewController {
+    ${CARRIER_CLASS_NAME}()
+  }`;
+
 const editAppDelegate = (contents) => {
-  if (contents.includes(PIN_FLAG)) return contents;
+  if (contents.includes(PIN_FLAG) || contents.includes(CARRIER_CLASS_NAME)) return contents;
   if (contents.includes(GATE_MASK)) {
     throw new Error(
       'duoTallCanvas: the AppDelegate carries the old gate without the Mac window pin; run prebuild --clean'
@@ -52,7 +112,10 @@ const editAppDelegate = (contents) => {
   if (!contents.includes(CLASS_CLOSE)) {
     throw new Error('duoTallCanvas: the AppDelegate class-close marker moved; read the new template');
   }
-  return contents.replace(CLASS_CLOSE, `\n${APPDELEGATE_BLOCK}\n${CLASS_CLOSE}`);
+  // The class-close replacement rewrites the same span the delegate anchor lives in, so the
+  // override insertion must run second or the class-close marker stops matching.
+  const withGate = contents.replace(CLASS_CLOSE, `\n${APPDELEGATE_BLOCK}\n${CLASS_CLOSE}`);
+  return withGate.replace(NEXT_CLASS, `${CARRIER_CLASS}${NEXT_CLASS}${CARRIER_OVERRIDE}`);
 };
 
 const IPAD_ALL_FOUR = [
@@ -74,23 +137,38 @@ const editFullScreenKeys = (infoPlist) => {
   return infoPlist;
 };
 
+// Both file edits ride finalized mods, not dangerous ones: dangerous mods sort FIRST in this
+// SDK's mod compiler (before the generated tree exists to read), and the old calls passed
+// (name, fn) where the API destructures [platform, action], so the actions were undefined and
+// the mods never ran at all - the fossil plist drift traced to exactly that.
 const withDuoTallCanvas = (config) =>
-  withDangerousMod(
-    withAppDelegate(config, (cfg) => {
-      cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
-      return cfg;
-    }),
-    'duoTallCanvasFullScreen',
-    async (cfg) => {
-      // The prebuild's orientation pass writes the plist after every withInfoPlist edit here,
-      // so these keys ride a file edit that runs after all base mods.
-      const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
-      const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
-      await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
-      return cfg;
-    }
+  withFinalizedMod(
+    withFinalizedMod(
+      withAppDelegate(config, (cfg) => {
+        cfg.modResults.contents = editAppDelegate(cfg.modResults.contents);
+        return cfg;
+      }),
+      [
+        'ios',
+        async (cfg) => {
+          const delegatePath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'SceneDelegate.swift');
+          await writeFile(delegatePath, editSceneDelegate(await readFile(delegatePath, 'utf8')));
+          return cfg;
+        },
+      ]
+    ),
+    [
+      'ios',
+      async (cfg) => {
+        const plistPath = path.join(cfg.modRequest.platformProjectRoot, cfg.name, 'Info.plist');
+        const infoPlist = plist.parse(await readFile(plistPath, 'utf8'));
+        await writeFile(plistPath, plist.build(editFullScreenKeys(infoPlist)));
+        return cfg;
+      },
+    ]
   );
 
 module.exports = withDuoTallCanvas;
 module.exports.editAppDelegate = editAppDelegate;
+module.exports.editSceneDelegate = editSceneDelegate;
 module.exports.editFullScreenKeys = editFullScreenKeys;
