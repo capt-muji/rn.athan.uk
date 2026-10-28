@@ -9,6 +9,7 @@ import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
+import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { fa } from '@/shared/i18n/fa';
@@ -30,6 +31,7 @@ import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
 import { th } from '@/shared/i18n/th';
 import { tr } from '@/shared/i18n/tr';
+import { ug } from '@/shared/i18n/ug';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 import { zhHans } from '@/shared/i18n/zh-Hans';
@@ -63,9 +65,11 @@ const CATALOGS: Record<string, Catalog> = {
   'zh-Hant': zhHant,
   'pa-Arab': paArab,
   sd,
+  ug,
+  ckb,
 };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 

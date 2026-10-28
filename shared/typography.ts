@@ -232,6 +232,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ps: URDU,
   'pa-Arab': URDU,
   sd: URDU,
+  ug: URDU,
+  ckb: URDU,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

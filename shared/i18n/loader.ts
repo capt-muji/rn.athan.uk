@@ -42,6 +42,8 @@ const RAW = {
   'zh-Hant': require('./zh-Hant') as typeof import('./zh-Hant'),
   'pa-Arab': require('./pa-Arab') as typeof import('./pa-Arab'),
   sd: require('./sd') as typeof import('./sd'),
+  ug: require('./ug') as typeof import('./ug'),
+  ckb: require('./ckb') as typeof import('./ckb'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -82,6 +84,8 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   'zh-Hant': { en: RAW['zh-Hant'].zhHant, PRAYER_LABELS: RAW['zh-Hant'].PRAYER_LABELS },
   'pa-Arab': { en: RAW['pa-Arab'].paArab, PRAYER_LABELS: RAW['pa-Arab'].PRAYER_LABELS },
   sd: { en: RAW.sd.sd, PRAYER_LABELS: RAW.sd.PRAYER_LABELS },
+  ug: { en: RAW.ug.ug, PRAYER_LABELS: RAW.ug.PRAYER_LABELS },
+  ckb: { en: RAW.ckb.ckb, PRAYER_LABELS: RAW.ckb.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

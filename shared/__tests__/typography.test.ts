@@ -106,6 +106,8 @@ describe('typographyFor', () => {
         id !== 'ps' &&
         id !== 'pa-Arab' &&
         id !== 'sd' &&
+        id !== 'ug' &&
+        id !== 'ckb' &&
         id !== 'ta' &&
         id !== 'ml' &&
         id !== 'zh-Hans' &&
@@ -119,7 +121,7 @@ describe('typographyFor', () => {
     // Plan T-427 decision 4: measured by explicit codepoint, the Naskh pair carries
     // Shahmukhi's thirteen letters and Sindhi's fifteen, both weights, while Rubik
     // lacks every one of them
-    for (const locale of ['pa-Arab', 'sd'] as const) {
+    for (const locale of ['pa-Arab', 'sd', 'ug', 'ckb'] as const) {
       const ty = typographyFor(locale);
       expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
       expect(ty.scriptLineHeight?.(14)).toBe(21);

@@ -1,5 +1,5 @@
 /**
- * The locale resolution core: which of the twenty-eight shipped locales the app speaks,
+ * The locale resolution core: which of the thirty shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -41,13 +41,15 @@ export const LOCALE_IDS = [
   'zh-Hant',
   'pa-Arab',
   'sd',
+  'ug',
+  'ckb',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb']);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
