@@ -48,7 +48,7 @@ const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {'
 
 const SCENE_MARKER = `@objc(SceneDelegate)
 class SceneDelegate: ExpoAppSceneDelegate {
-  // Extension point for config plugins
+  // Extension point for config plugins.
 }`;
 
 // iPadOS 27 resolves windowing orientation itself and overrides the root view controller's

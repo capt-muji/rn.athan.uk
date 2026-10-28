@@ -25,19 +25,13 @@ const IPAD_ALL_FOUR = [
 const GATE_MASK = 'return [.portrait, .portraitUpsideDown]';
 const GATE_SELECTOR = 'supportedInterfaceOrientationsFor window: UIWindow?';
 const NEXT_CLASS = 'class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {';
-const SCENE_MARKER = 'class SceneDelegate: ExpoAppSceneDelegate {';
+const SCENE_MARKER = `@objc(SceneDelegate)
+class SceneDelegate: ExpoAppSceneDelegate {
+  // Extension point for config plugins.
+}`;
 
 /** The Expo SceneDelegate template abridged to the marker the surgery keys on */
-const sceneDelegateFixture = () =>
-  [
-    'internal import Expo',
-    '',
-    '@objc(SceneDelegate)',
-    SCENE_MARKER,
-    '  // Extension point for config plugins',
-    '}',
-    '',
-  ].join('\n');
+const sceneDelegateFixture = () => ['internal import Expo', '', SCENE_MARKER, ''].join('\n');
 
 /** The Expo AppDelegate template abridged to the markers the surgery keys on; the real product
  * also carries the factory vars and a launch body, which the markers alone never touch */
