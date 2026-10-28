@@ -32,6 +32,7 @@ import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
 import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
+import { tk } from '@/shared/i18n/tk';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
@@ -69,6 +70,7 @@ const CATALOGS: Record<string, Catalog> = {
   kk,
   ky,
   tg,
+  tk,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);

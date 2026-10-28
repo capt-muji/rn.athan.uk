@@ -246,6 +246,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries Tajik's ғ ӣ қ ӯ ҳ ҷ by explicit codepoint in both weights (measured
   // with fontTools, plan T-429 decision 6)
   tg: LATIN,
+  // Roboto carries Turkmen's ä ç ž ň ö ş ü ý by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  tk: LATIN,
 };
 
 /**

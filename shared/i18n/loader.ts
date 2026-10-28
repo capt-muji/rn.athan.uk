@@ -45,6 +45,7 @@ const RAW = {
   kk: require('./kk') as typeof import('./kk'),
   ky: require('./ky') as typeof import('./ky'),
   tg: require('./tg') as typeof import('./tg'),
+  tk: require('./tk') as typeof import('./tk'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -88,6 +89,7 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   kk: { en: RAW.kk.kk, PRAYER_LABELS: RAW.kk.PRAYER_LABELS },
   ky: { en: RAW.ky.ky, PRAYER_LABELS: RAW.ky.PRAYER_LABELS },
   tg: { en: RAW.tg.tg, PRAYER_LABELS: RAW.tg.PRAYER_LABELS },
+  tk: { en: RAW.tk.tk, PRAYER_LABELS: RAW.tk.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

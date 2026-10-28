@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.28.3",
+    "version": "2.28.4",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -51,7 +51,8 @@
           "nl",
           "kk",
           "ky",
-          "tg"
+          "tg",
+          "tk"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -2128,6 +2129,62 @@
           "prayer_lock_widget_3_description": "Вақти намози навбатӣ бо ҳисоби баръакс.",
           "extras_lock_widget_3_display_name": "Вақтҳои иловагӣ (тарҳи 3)",
           "extras_lock_widget_3_description": "Вақти иловагии навбатӣ бо ҳисоби баръакс."
+        }
+      },
+      "tk": {
+        "NSLocationWhenInUseUsageDescription": "Ýerleşýän ýeriňiz Mekgäniň nireden haýsy tarapa bakýandygyny anyklamak üçin ulanylýar. Ol telefonyňyzdan hiç haçan çykmaýar.",
+        "NSUserNotificationsUsageDescription": "Namaz wagty barada bildirişleri alyň",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "Indiki namaz (ýagty)",
+            "A countdown to the next prayer.": "Indiki namaza yzyna hasaplama.",
+            "Extra Times (Light)": "Goşmaça wagtlary (ýagty)",
+            "A countdown to the next extra time.": "Indiki goşmaça wagta yzyna hasaplama.",
+            "Next Prayer (Dark)": "Indiki namaz (garafky)",
+            "Extra Times (Dark)": "Goşmaça wagtlary (garafky)",
+            "Next Prayer (Layout 1)": "Indiki namaz (1-nji düzüliş)",
+            "Countdown to the next prayer.": "Indiki namaza yzyna hasaplama.",
+            "Extra Times (Layout 1)": "Goşmaça wagtlary (1-nji düzüliş)",
+            "Countdown to the next extra time.": "Indiki goşmaça wagta yzyna hasaplama.",
+            "Next Prayer (Layout 2)": "Indiki namaz (2-nji düzüliş)",
+            "Next prayer time.": "Indiki namazyň wagty.",
+            "Extra Times (Layout 2)": "Goşmaça wagtlary (2-nji düzüliş)",
+            "Next extra time.": "Indiki goşmaça wagt.",
+            "Next Prayer (Layout 3)": "Indiki namaz (3-nji düzüliş)",
+            "Next prayer time with a countdown.": "Yzyna hasaplama bilen indiki namazyň wagty.",
+            "Extra Times (Layout 3)": "Goşmaça wagtlary (3-nji düzüliş)",
+            "Next extra time with a countdown.": "Yzyna hasaplama bilen indiki goşmaça wagt."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "Indiki namaz (ýagty)",
+          "prayer_widget_description": "Indiki namaza yzyna hasaplama.",
+          "extras_widget_display_name": "Goşmaça wagtlary (ýagty)",
+          "extras_widget_description": "Indiki goşmaça wagta yzyna hasaplama.",
+          "prayer_widget_medium_display_name": "Indiki namaz (ýagty)",
+          "prayer_widget_medium_description": "Indiki namaza yzyna hasaplama.",
+          "extras_widget_medium_display_name": "Goşmaça wagtlary (ýagty)",
+          "extras_widget_medium_description": "Indiki goşmaça wagta yzyna hasaplama.",
+          "prayer_widget_dark_display_name": "Indiki namaz (garafky)",
+          "prayer_widget_dark_description": "Indiki namaza yzyna hasaplama.",
+          "extras_widget_dark_display_name": "Goşmaça wagtlary (garafky)",
+          "extras_widget_dark_description": "Indiki goşmaça wagta yzyna hasaplama.",
+          "prayer_widget_dark_medium_display_name": "Indiki namaz (garafky)",
+          "prayer_widget_dark_medium_description": "Indiki namaza yzyna hasaplama.",
+          "extras_widget_dark_medium_display_name": "Goşmaça wagtlary (garafky)",
+          "extras_widget_dark_medium_description": "Indiki goşmaça wagta yzyna hasaplama.",
+          "prayer_lock_widget_display_name": "Indiki namaz (1-nji düzüliş)",
+          "prayer_lock_widget_description": "Indiki namaza yzyna hasaplama.",
+          "extras_lock_widget_display_name": "Goşmaça wagtlary (1-nji düzüliş)",
+          "extras_lock_widget_description": "Indiki goşmaça wagta yzyna hasaplama.",
+          "prayer_lock_widget_2_display_name": "Indiki namaz (2-nji düzüliş)",
+          "prayer_lock_widget_2_description": "Indiki namazyň wagty.",
+          "extras_lock_widget_2_display_name": "Goşmaça wagtlary (2-nji düzüliş)",
+          "extras_lock_widget_2_description": "Indiki goşmaça wagt.",
+          "prayer_lock_widget_3_display_name": "Indiki namaz (3-nji düzüliş)",
+          "prayer_lock_widget_3_description": "Yzyna hasaplama bilen indiki namazyň wagty.",
+          "extras_lock_widget_3_display_name": "Goşmaça wagtlary (3-nji düzüliş)",
+          "extras_lock_widget_3_description": "Yzyna hasaplama bilen indiki goşmaça wagt."
         }
       }
     },

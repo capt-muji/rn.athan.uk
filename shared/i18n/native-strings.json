@@ -743,5 +743,29 @@
       "Extra Times (Layout 3)": "Вақтҳои иловагӣ (тарҳи 3)",
       "Next extra time with a countdown.": "Вақти иловагии навбатӣ бо ҳисоби баръакс."
     }
+  },
+  "tk": {
+    "NSLocationWhenInUseUsageDescription": "Ýerleşýän ýeriňiz Mekgäniň nireden haýsy tarapa bakýandygyny anyklamak üçin ulanylýar. Ol telefonyňyzdan hiç haçan çykmaýar.",
+    "NSUserNotificationsUsageDescription": "Namaz wagty barada bildirişleri alyň",
+    "gallery": {
+      "Next Prayer (Light)": "Indiki namaz (ýagty)",
+      "A countdown to the next prayer.": "Indiki namaza yzyna hasaplama.",
+      "Extra Times (Light)": "Goşmaça wagtlary (ýagty)",
+      "A countdown to the next extra time.": "Indiki goşmaça wagta yzyna hasaplama.",
+      "Next Prayer (Dark)": "Indiki namaz (garafky)",
+      "Extra Times (Dark)": "Goşmaça wagtlary (garafky)",
+      "Next Prayer (Layout 1)": "Indiki namaz (1-nji düzüliş)",
+      "Countdown to the next prayer.": "Indiki namaza yzyna hasaplama.",
+      "Extra Times (Layout 1)": "Goşmaça wagtlary (1-nji düzüliş)",
+      "Countdown to the next extra time.": "Indiki goşmaça wagta yzyna hasaplama.",
+      "Next Prayer (Layout 2)": "Indiki namaz (2-nji düzüliş)",
+      "Next prayer time.": "Indiki namazyň wagty.",
+      "Extra Times (Layout 2)": "Goşmaça wagtlary (2-nji düzüliş)",
+      "Next extra time.": "Indiki goşmaça wagt.",
+      "Next Prayer (Layout 3)": "Indiki namaz (3-nji düzüliş)",
+      "Next prayer time with a countdown.": "Yzyna hasaplama bilen indiki namazyň wagty.",
+      "Extra Times (Layout 3)": "Goşmaça wagtlary (3-nji düzüliş)",
+      "Next extra time with a countdown.": "Yzyna hasaplama bilen indiki goşmaça wagt."
+    }
   }
 }

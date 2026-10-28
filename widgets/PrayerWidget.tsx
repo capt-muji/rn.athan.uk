@@ -629,6 +629,19 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'барои навсозӣ',
       catchBody: 'Барои навсозӣ барномаро кушоед',
     },
+    tk: {
+      subtitle: 'London üçin namaz wagtlary',
+      inline: 'Athan — namaz wagtlary',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wagtlary ýüklemek üçin açyň',
+      staleTitle: 'Köne',
+      staleBody: 'Täzelemek üçin programmany açyň',
+      staleInline: 'Athan — täzelemek üçin açyň',
+      refreshLine: 'Täzelemek üçin Athan-y açyň',
+      refreshLead: 'Athan-y açyň',
+      refreshTail: 'täzelemek üçin',
+      catchBody: 'Täzelemek üçin programmany açyň',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -676,6 +689,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'kk',
         'ky',
         'tg',
+        'tk',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

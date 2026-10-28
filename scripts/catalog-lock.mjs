@@ -69,6 +69,7 @@ const LOCALES = [
   'kk',
   'ky',
   'tg',
+  'tk',
 ];
 const englishHash = createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
 

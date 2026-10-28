@@ -415,5 +415,18 @@
     "refreshLead": "Athan-ро кушоед",
     "refreshTail": "барои навсозӣ",
     "catchBody": "Барои навсозӣ барномаро кушоед"
+  },
+  "tk": {
+    "subtitle": "London üçin namaz wagtlary",
+    "inline": "Athan — namaz wagtlary",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Wagtlary ýüklemek üçin açyň",
+    "staleTitle": "Köne",
+    "staleBody": "Täzelemek üçin programmany açyň",
+    "staleInline": "Athan — täzelemek üçin açyň",
+    "refreshLine": "Täzelemek üçin Athan-y açyň",
+    "refreshLead": "Athan-y açyň",
+    "refreshTail": "täzelemek üçin",
+    "catchBody": "Täzelemek üçin programmany açyň"
   }
 }
