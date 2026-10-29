@@ -94,6 +94,8 @@ export const su = {
   'notification.reminder': '{name} dina {n}',
   'sheet.closeToSave': 'Tutup pikeun nyimpen',
   'language.chooseHint': 'Pilih basa anjeun',
+  'language.search': 'Pilarian basa',
+  'language.noMatch': 'Teu aya basa anu kapendak',
   'alert.card.athan': 'Adzan',
   'alert.card.athanHint': 'Iber dina waktu solat',
   'alert.reminder': 'Panginget {n}',

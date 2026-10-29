@@ -96,6 +96,8 @@ export const tl = {
   'notification.reminder': '{name} sa {n}',
   'sheet.closeToSave': 'Isara para i-save',
   'language.chooseHint': 'Piliin ang iyong wika',
+  'language.search': 'Maghanap ng wika',
+  'language.noMatch': 'Walang nahanap na wika',
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso sa oras ng pagdarasal',
   'alert.reminder': 'Paalala {n}',

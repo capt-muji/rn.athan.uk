@@ -95,6 +95,8 @@ export const az = {
   'notification.reminder': '{name} {n} içində',
   'sheet.closeToSave': 'Saxlamaq üçün bağlayın',
   'language.chooseHint': 'Dilinizi seçin',
+  'language.search': 'Dil axtar',
+  'language.noMatch': 'Dil tapılmadı',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Namaz vaxtında bildiriş',
   'alert.reminder': 'Xatırladıcı {n}',

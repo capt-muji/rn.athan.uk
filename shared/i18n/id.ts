@@ -94,6 +94,8 @@ export const id = {
   'notification.reminder': '{name} dalam {n}',
   'sheet.closeToSave': 'Tutup untuk menyimpan',
   'language.chooseHint': 'Pilih bahasa Anda',
+  'language.search': 'Cari bahasa',
+  'language.noMatch': 'Tidak ada bahasa ditemukan',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi saat waktu salat',
   'alert.reminder': 'Pengingat {n}',

@@ -257,6 +257,7 @@ export enum Icon {
   GLOBE = 'GLOBE',
   DOWNLOAD = 'DOWNLOAD',
   REFRESH = 'REFRESH',
+  SEARCH = 'SEARCH',
 }
 
 // =============================================================================

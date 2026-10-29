@@ -94,6 +94,8 @@ export const jv = {
   'notification.reminder': '{name} ing {n}',
   'sheet.closeToSave': 'Tutupen kanggo nyimpen',
   'language.chooseHint': 'Pilih basamu',
+  'language.search': 'Golek basa',
+  'language.noMatch': 'Ora ana basa sing ditemokake',
   'alert.card.athan': 'Adzan',
   'alert.card.athanHint': 'Kabar nalika wektu sholat',
   'alert.reminder': 'Pangéling {n}',

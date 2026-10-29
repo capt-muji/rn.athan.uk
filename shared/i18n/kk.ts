@@ -95,6 +95,8 @@ export const kk = {
   'notification.reminder': '{name} {n} кейін',
   'sheet.closeToSave': 'Сақтау үшін жабыңыз',
   'language.chooseHint': 'Тіліңізді таңдаңыз',
+  'language.search': 'Тілді іздеу',
+  'language.noMatch': 'Тіл табылмады',
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Намаз уақытында хабарлама',
   'alert.reminder': 'Еске салу {n}',

@@ -95,6 +95,8 @@ export const ta = {
   'notification.reminder': '{name} {n} இல்',
   'sheet.closeToSave': 'சேமிக்க மூடவும்',
   'language.chooseHint': 'உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்',
+  'language.search': 'மொழியைத் தேடு',
+  'language.noMatch': 'மொழிகள் எதுவும் கிடைக்கவில்லை',
   'alert.card.athan': 'அசான்',
   'alert.card.athanHint': 'தொழுகை நேரத்தில் அறிவிப்பு',
   'alert.reminder': 'நினைவூட்டல் {n}',

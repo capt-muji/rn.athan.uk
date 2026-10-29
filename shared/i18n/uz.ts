@@ -98,6 +98,8 @@ export const uz = {
   'notification.reminder': '{name} {n} dan keyin',
   'sheet.closeToSave': 'Saqlash uchun yopish',
   'language.chooseHint': 'Tilni tanlang',
+  'language.search': 'Tilni qidirish',
+  'language.noMatch': 'Til topilmadi',
   'alert.card.athan': 'Azon',
   'alert.card.athanHint': 'Namoz vaqtida bildirishnoma',
   'alert.reminder': 'Eslatma {n}',

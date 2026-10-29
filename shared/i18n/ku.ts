@@ -94,6 +94,8 @@ export const ku = {
   'notification.reminder': '{name} di {n} de',
   'sheet.closeToSave': 'Ji bo tomarkirinê bigire',
   'language.chooseHint': 'Zimanê xwe hilbijêre',
+  'language.search': 'Li ziman bigere',
+  'language.noMatch': 'Ziman nehat dîtin',
   'alert.card.athan': 'Bang',
   'alert.card.athanHint': 'Agahdarî di dema nimêjê de',
   'alert.reminder': 'Bîranîn {n}',

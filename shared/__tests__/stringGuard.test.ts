@@ -108,6 +108,9 @@ describe('the string census guard', () => {
     // A spaced name is exactly what the data-module rule would flag without the
     // name-field allowance
     expect(source).toContain("'Bahasa Melayu'");
+    // The English names the search matches are names data too, and two of them
+    // carry a space and a bracket
+    expect(source).toContain("english: 'Chinese (Simplified)'");
     const census = execFileSync('node', ['scripts/scan-strings.mjs', ''], {
       cwd: ROOT,
       encoding: 'utf8',

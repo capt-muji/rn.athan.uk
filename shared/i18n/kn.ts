@@ -94,6 +94,8 @@ export const kn = {
   'notification.reminder': '{name} {n} ರಲ್ಲಿ',
   'sheet.closeToSave': 'ಉಳಿಸಲು ಮುಚ್ಚಿ',
   'language.chooseHint': 'ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ',
+  'language.search': 'ಭಾಷೆಯನ್ನು ಹುಡುಕಿ',
+  'language.noMatch': 'ಯಾವುದೇ ಭಾಷೆ ಸಿಗಲಿಲ್ಲ',
   'alert.card.athan': 'ಅಜಾನ್',
   'alert.card.athanHint': 'ನಮಾಜ್ ಸಮಯದಲ್ಲಿ ಅಧಿಸೂಚನೆ',
   'alert.reminder': 'ಜ್ಞಾಪನೆ {n}',

@@ -94,6 +94,8 @@ export const ms = {
   'notification.reminder': '{name} dalam {n}',
   'sheet.closeToSave': 'Tutup untuk simpan',
   'language.chooseHint': 'Pilih bahasa anda',
+  'language.search': 'Cari bahasa',
+  'language.noMatch': 'Tiada bahasa ditemui',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu solat',
   'alert.reminder': 'Peringatan {n}',

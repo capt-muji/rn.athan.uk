@@ -93,6 +93,8 @@ export const ug = {
   'notification.reminder': '{name} {n} كېيىن',
   'sheet.closeToSave': 'ساقلاش ئۈچۈن تاقاڭ',
   'language.chooseHint': 'تىلىڭىزنى تاللاڭ',
+  'language.search': 'تىل ئىزدەش',
+  'language.noMatch': 'تىل تېپىلمىدى',
   'alert.card.athan': 'ئازان',
   'alert.card.athanHint': 'ناماز ۋاقتىدا ئۇقتۇرۇش',
   'alert.reminder': 'ئەسكەرتىش {n}',

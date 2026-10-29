@@ -327,3 +327,50 @@ describe("Android's back button and a sheet", () => {
     expect(dismiss).not.toHaveBeenCalled();
   });
 });
+
+describe('a sheet that keeps a field out of the scroll', () => {
+  /** Whether a query result sits inside any scroll view: the only way to see that a node cannot scroll away */
+  const scrollsWith = (node: { parent: { type: string; parent: unknown } | null }) => {
+    for (let parent = node.parent; parent !== null; parent = parent.parent as typeof parent) {
+      if (parent.type === 'RCTScrollView') return true;
+    }
+    return false;
+  };
+
+  const field = () => <Text testID={'pinned-field'}>Search</Text>;
+
+  it('keeps the header and the pinned node outside the scroll view, and the content inside it', async () => {
+    await render(settingsSheet({ pinned: field() }));
+
+    expect(scrollsWith(screen.getByText(TITLE))).toBe(false);
+    expect(scrollsWith(screen.getByTestId('pinned-field'))).toBe(false);
+    expect(scrollsWith(screen.getByText('Show seconds'))).toBe(true);
+  });
+
+  it('leaves a sheet without a pinned node on its one scroll view, header and all', async () => {
+    await render(settingsSheet());
+
+    expect(scrollsWith(screen.getByText(TITLE))).toBe(true);
+    expect(scrollViews()).toHaveLength(1);
+  });
+
+  it('hands the library the keyboard behaviour it is given', async () => {
+    const setRef = jest.fn();
+
+    await render(settingsSheet({ setRef, keyboardBehavior: 'interactive', keyboardBlurBehavior: 'restore' }));
+
+    expect(setRef.mock.calls[0][0].props).toMatchObject({
+      keyboardBehavior: 'interactive',
+      keyboardBlurBehavior: 'restore',
+    });
+  });
+
+  it('leaves both keyboard behaviours to the library when it is given none', async () => {
+    const setRef = jest.fn();
+
+    await render(settingsSheet({ setRef }));
+
+    expect(setRef.mock.calls[0][0].props.keyboardBehavior).toBeUndefined();
+    expect(setRef.mock.calls[0][0].props.keyboardBlurBehavior).toBeUndefined();
+  });
+});

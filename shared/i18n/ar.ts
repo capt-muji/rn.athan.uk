@@ -92,6 +92,8 @@ export const ar = {
   'notification.reminder': '{name} بعد {n}',
   'sheet.closeToSave': 'أغلق للحفظ',
   'language.chooseHint': 'اختر لغتك',
+  'language.search': 'ابحث عن لغة',
+  'language.noMatch': 'لا توجد لغات مطابقة',
   'alert.card.athan': 'الأذان',
   'alert.card.athanHint': 'إشعار وقت الصلاة',
   'alert.reminder': 'تنبيه {n}',

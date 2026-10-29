@@ -97,6 +97,8 @@ export const ru = {
   'notification.reminder': '{name} через {n}',
   'sheet.closeToSave': 'Закройте, чтобы сохранить',
   'language.chooseHint': 'Выберите свой язык',
+  'language.search': 'Поиск языка',
+  'language.noMatch': 'Языки не найдены',
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Уведомление в момент наступления',
   'alert.reminder': 'Напоминание {n}',

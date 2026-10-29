@@ -82,6 +82,15 @@ interface SheetProps {
    * by the sound sheet so the Athan row closes settings and opens it
    * concurrently.
    */
+  /**
+   * Content that stays above the scroll view, so a field in it never scrolls
+   * away; given one, the header is pinned with it and only the children scroll
+   */
+  pinned?: React.ReactNode;
+  /** How the sheet answers the keyboard: `interactive` moves it with the keyboard */
+  keyboardBehavior?: BottomSheetModalProps['keyboardBehavior'];
+  /** What the sheet does with the keyboard when the field blurs */
+  keyboardBlurBehavior?: BottomSheetModalProps['keyboardBlurBehavior'];
   stackBehavior?: BottomSheetModalProps['stackBehavior'];
 }
 
@@ -123,6 +132,9 @@ export default function Sheet({
   enableDynamicSizing = false,
   scrollable = true,
   stackBehavior,
+  pinned,
+  keyboardBehavior,
+  keyboardBlurBehavior,
 }: SheetProps) {
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
@@ -210,6 +222,9 @@ export default function Sheet({
     ? { contentContainerStyle: { paddingBottom: contentPadding }, showsVerticalScrollIndicator: false }
     : { style: { paddingBottom: contentPadding } };
 
+  const columnStyle = [bottomSheetStyles.column, styles.content];
+  const header = <Header title={title} subtitle={subtitle} icon={icon} />;
+
   return (
     <BottomSheetModal
       ref={handleRef}
@@ -219,6 +234,8 @@ export default function Sheet({
       enablePanDownToClose
       animationConfigs={SHEET_ANIMATION_CONFIGS}
       stackBehavior={stackBehavior}
+      keyboardBehavior={keyboardBehavior}
+      keyboardBlurBehavior={keyboardBlurBehavior}
       onDismiss={handleDismiss}
       onAnimate={handleAnimate}
       onChange={handleChange}
@@ -230,12 +247,24 @@ export default function Sheet({
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      <ContentWrapper {...contentStyle}>
-        <View style={[bottomSheetStyles.column, styles.content]}>
-          <Header title={title} subtitle={subtitle} icon={icon} />
-          {children}
-        </View>
-      </ContentWrapper>
+      {pinned === undefined ? (
+        <ContentWrapper {...contentStyle}>
+          <View style={columnStyle}>
+            {header}
+            {children}
+          </View>
+        </ContentWrapper>
+      ) : (
+        <>
+          <View style={columnStyle}>
+            {header}
+            {pinned}
+          </View>
+          <ContentWrapper {...contentStyle}>
+            <View style={columnStyle}>{children}</View>
+          </ContentWrapper>
+        </>
+      )}
     </BottomSheetModal>
   );
 }

@@ -94,6 +94,8 @@ export const yo = {
   'notification.reminder': '{name} ní {n}',
   'sheet.closeToSave': 'Ti í láti fi pamọ́',
   'language.chooseHint': 'Yan èdè rẹ',
+  'language.search': 'Wá èdè',
+  'language.noMatch': 'Kò sí èdè tí a rí',
   'alert.card.athan': 'Ìpè',
   'alert.card.athanHint': 'Ìfitónilétí ní àkókò ìrun',
   'alert.reminder': 'Ìránnilétí {n}',

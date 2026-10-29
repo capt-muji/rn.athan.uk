@@ -94,6 +94,8 @@ export const mr = {
   'notification.reminder': '{name} {n} मध्ये',
   'sheet.closeToSave': 'जतन करण्यासाठी बंद करा',
   'language.chooseHint': 'तुमची भाषा निवडा',
+  'language.search': 'भाषा शोधा',
+  'language.noMatch': 'भाषा सापडली नाही',
   'alert.card.athan': 'अजान',
   'alert.card.athanHint': 'नमाजच्या वेळी सूचना',
   'alert.reminder': 'आठवण {n}',

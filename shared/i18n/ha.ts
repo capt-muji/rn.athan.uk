@@ -96,6 +96,8 @@ export const ha = {
   'notification.reminder': '{name} cikin {n}',
   'sheet.closeToSave': 'Rufe don ajiya',
   'language.chooseHint': 'Zaɓi harshenka',
+  'language.search': 'Nemo harshe',
+  'language.noMatch': 'Ba a sami harshe ba',
   'alert.card.athan': 'Kiran salla',
   'alert.card.athanHint': 'Sanarwa a lokacin salla',
   'alert.reminder': 'Tunatarwa {n}',

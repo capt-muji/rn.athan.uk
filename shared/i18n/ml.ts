@@ -95,6 +95,8 @@ export const ml = {
   'notification.reminder': '{name} {n} കഴിഞ്ഞ്',
   'sheet.closeToSave': 'സേവ് ചെയ്യാൻ അടയ്ക്കുക',
   'language.chooseHint': 'നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക',
+  'language.search': 'ഭാഷ തിരയുക',
+  'language.noMatch': 'ഭാഷകളൊന്നും കണ്ടെത്തിയില്ല',
   'alert.card.athan': 'അസാൻ',
   'alert.card.athanHint': 'നമസ്കാര സമയത്ത് അറിയിപ്പ്',
   'alert.reminder': 'റിമൈൻഡർ {n}',

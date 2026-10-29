@@ -95,6 +95,8 @@ export const so = {
   'notification.reminder': '{name} {n} gudahood',
   'sheet.closeToSave': 'Xidh si aad u kaydiso',
   'language.chooseHint': 'Dooro luqaddaada',
+  'language.search': 'Raadi luqad',
+  'language.noMatch': 'Luqad lama helin',
   'alert.card.athan': 'Aqaan',
   'alert.card.athanHint': 'Ogeysiis waqtiga salaadda',
   'alert.reminder': 'Xasuusiye {n}',

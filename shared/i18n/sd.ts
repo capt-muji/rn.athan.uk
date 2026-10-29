@@ -93,6 +93,8 @@ export const sd = {
   'notification.reminder': '{name} {n} ۾',
   'sheet.closeToSave': 'محفوظ ڪرڻ لاءِ بند ڪريو',
   'language.chooseHint': 'پنهنجي ٻولي چونڊيو',
+  'language.search': 'ٻولي ڳوليو',
+  'language.noMatch': 'ڪا ٻولي نه ملي',
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز جي وقت تي اطلاع',
   'alert.reminder': 'ياد ڏياريندڙ {n}',

@@ -92,6 +92,8 @@ export const hi = {
   'notification.reminder': '{name} {n} में',
   'sheet.closeToSave': 'सहेजने के लिए बंद करें',
   'language.chooseHint': 'अपनी भाषा चुनें',
+  'language.search': 'भाषा खोजें',
+  'language.noMatch': 'कोई भाषा नहीं मिली',
   'alert.card.athan': 'अज़ान',
   'alert.card.athanHint': 'नमाज़ के समय सूचना',
   'alert.reminder': 'रिमाइंडर {n}',

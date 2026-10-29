@@ -93,6 +93,8 @@ export const bn = {
   'notification.reminder': '{name} {n} পরে',
   'sheet.closeToSave': 'সেভ করতে বন্ধ করুন',
   'language.chooseHint': 'আপনার ভাষা বেছে নিন',
+  'language.search': 'ভাষা খুঁজুন',
+  'language.noMatch': 'কোনো ভাষা পাওয়া যায়নি',
   'alert.card.athan': 'আজান',
   'alert.card.athanHint': 'নামাজের সময়ে বিজ্ঞপ্তি',
   'alert.reminder': 'রিমাইন্ডার {n}',
