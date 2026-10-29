@@ -55,13 +55,21 @@ export const LOCALE_IDS = [
   'gu',
   'kn',
   'am',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'ku',
+  'yo',
+  'jv',
+  'su',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb']);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
@@ -131,6 +139,19 @@ const resolveZhTag = (languageTag: string): 'zh-Hans' | 'zh-Hant' | null => {
   return region !== undefined && ZH_HANT_REGIONS.has(region) ? 'zh-Hant' : 'zh-Hans';
 };
 
+/**
+ * Punjabi ships as Shahmukhi (pa-Arab), and CLDR's bare pa is Gurmukhi, so a bare pa or
+ * Pakistan's pa-PK resolves pa-Arab while a Gurmukhi or Indian Punjabi device stays
+ * unshipped and falls through to en (R4 A.4, plan T-427 decision 1).
+ */
+const resolvePaTag = (locale: DeviceLocaleInfo): 'pa-Arab' | null => {
+  const punjabi = locale.languageCode === 'pa' || locale.languageTag === 'pa' || locale.languageTag.startsWith('pa-');
+  if (!punjabi) return null;
+  const subtags = locale.languageTag.split('-');
+  if (subtags.includes('Guru') || subtags.includes('IN')) return null;
+  return 'pa-Arab';
+};
+
 export const resolveInitialLocale = (
   preference: string | null,
   deviceLocales: readonly DeviceLocaleInfo[]
@@ -145,6 +166,8 @@ export const resolveInitialLocale = (
     }
     const zh = resolveZhTag(locale.languageTag);
     if (zh !== null) return zh;
+    const pa = resolvePaTag(locale);
+    if (pa !== null) return pa;
     if (locale.languageCode !== null && (LOCALE_IDS as readonly string[]).includes(locale.languageCode)) {
       return locale.languageCode as LocaleId;
     }

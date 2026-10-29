@@ -82,7 +82,10 @@ const THAI: LocaleTypography = {
 // U+0688 U+0691 U+0681 U+0685 U+069A U+0696 U+06BC U+06D0 U+06CD U+06AB, measured absent
 // by explicit codepoint in both weights, plan T-419 decision 7) while this Naskh pair
 // carries them all plus the Persian prose digits ۰-۹, both weights, same 1.703em box
-// against 2.039em win ink
+// against 2.039em win ink. Sindhi, Uyghur and Shahmukhi Punjabi ride it too (plan
+// T-427 decision 4): measured the same day by explicit codepoint, this pair carries
+// all fifteen Sindhi letters, Uyghur's eight and Shahmukhi's thirteen, both weights,
+// while Rubik lacks every one of them
 const URDU: LocaleTypography = {
   familyRegular: 'NotoNaskhArabic-Regular',
   familyMedium: 'NotoNaskhArabic-Medium',
@@ -149,6 +152,26 @@ const MALAYALAM: LocaleTypography = {
   letterSpacing: (n) => n,
   wordFace: true,
   scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Yoruba cannot ride Roboto: measured 2026-10-28 with fontTools over the bundled faces,
+// Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights,
+// and no bundled face carries them (plan T-427 decision 5). The Noto Sans pair is instanced
+// from the google/fonts variable source at 400 and 500 outside the repository; its own hhea
+// box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and every character of
+// Yoruba's keyed surface inks inside it (worst glyph top 944, worst bottom -240, the combining
+// acute at 766, the dot below at -186), so box and ink agree and no script box is pinned -
+// the Thai row-87 law
+const YORUBA: LocaleTypography = {
+  familyRegular: 'NotoSans-Regular',
+  familyMedium: 'NotoSans-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
 };
 
 const LATIN: LocaleTypography = {
@@ -316,6 +339,14 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   sq: LATIN,
   bs: LATIN,
   ps: URDU,
+  'pa-Arab': URDU,
+  sd: URDU,
+  ug: URDU,
+  ckb: URDU,
+  ku: LATIN,
+  yo: YORUBA,
+  jv: LATIN,
+  su: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

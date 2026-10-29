@@ -65,6 +65,18 @@ describe('resolveInitialLocale', () => {
     ['gu-IN', 'gu', 'gu'],
     ['kn-IN', 'kn', 'kn'],
     ['am-ET', 'am', 'am'],
+    ['pa-PK', 'pa', 'pa-Arab'],
+    ['pa-Arab-PK', 'pa', 'pa-Arab'],
+    ['sd-PK', 'sd', 'sd'],
+    ['ug-CN', 'ug', 'ug'],
+    ['ckb-IQ', 'ckb', 'ckb'],
+    ['ku-TR', 'ku', 'ku'],
+    ['ig-NG', 'yo', 'yo'],
+    ['jv-ID', 'jv', 'jv'],
+    ['su-ID', 'su', 'su'],
+    // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
+    ['pa-Guru-IN', 'pa', 'en'],
+    ['pa-IN', 'pa', 'en'],
     // Decision 9, plan T-419: the zh pair resolves by script subtag, then by the
     // TW/HK/MO region list CLDR's likely-subtags answers, and bare zh reads
     // Simplified (R4 A.4: a bare zh entry must never serve a Traditional reader)
@@ -84,7 +96,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('falls back to en for an unsupported language', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'yo-NG', languageCode: 'yo' }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'ig-NG', languageCode: 'ig' }])).toBe('en');
     // yue is its own language code, never a zh tag: a yue-tagged device falls through
     expect(resolveInitialLocale(null, [{ languageTag: 'yue-Hant-HK', languageCode: 'yue' }])).toBe('en');
   });
@@ -101,7 +113,7 @@ describe('resolveInitialLocale', () => {
 
   it('an earlier device locale wins over a later one', () => {
     const deviceLocales: readonly DeviceLocaleInfo[] = [
-      { languageTag: 'yo-NG', languageCode: 'yo' },
+      { languageTag: 'ig-NG', languageCode: 'ig' },
       { languageTag: 'ar-EG', languageCode: 'ar' },
     ];
     expect(resolveInitialLocale(null, deviceLocales)).toBe('ar');
@@ -112,7 +124,7 @@ describe('resolveInitialLocale', () => {
   });
 
   it('skips a device locale with no language code', () => {
-    expect(resolveInitialLocale(null, [{ languageTag: 'yo-NG', languageCode: null }])).toBe('en');
+    expect(resolveInitialLocale(null, [{ languageTag: 'ig-NG', languageCode: null }])).toBe('en');
   });
 
   it('resolves en when the device reports no locales', () => {
@@ -185,25 +197,31 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa', 'ps'] as const)('mirrors the chevron under %s, the later RTL locales', (locale) => {
-    setActiveLocale(locale);
-    try {
-      expect(chevronFor()).toBe('\u2039');
-    } finally {
-      setActiveLocale('en');
+  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+    'mirrors the chevron under %s, the later RTL locales',
+    (locale) => {
+      setActiveLocale(locale);
+      try {
+        expect(chevronFor()).toBe('\u2039');
+      } finally {
+        setActiveLocale('en');
+      }
     }
-  });
+  );
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa', 'ps'] as const)('carries the Arabic comma under %s', (locale) => {
-    setActiveLocale(locale);
-    try {
-      expect(sentenceComma()).toBe('\u060C');
-    } finally {
-      setActiveLocale('en');
+  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+    'carries the Arabic comma under %s',
+    (locale) => {
+      setActiveLocale(locale);
+      try {
+        expect(sentenceComma()).toBe('\u060C');
+      } finally {
+        setActiveLocale('en');
+      }
     }
-  });
+  );
 
   it.each(['en', 'ms', 'so', 'hi', 'th'] as const)('keeps the Latin comma under %s', (locale) => {
     setActiveLocale(locale);

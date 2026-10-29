@@ -104,6 +104,11 @@ describe('typographyFor', () => {
         id !== 'fa' &&
         id !== 'bn' &&
         id !== 'ps' &&
+        id !== 'pa-Arab' &&
+        id !== 'sd' &&
+        id !== 'ug' &&
+        id !== 'ckb' &&
+        id !== 'yo' &&
         id !== 'ta' &&
         id !== 'ml' &&
         id !== 'mr' &&
@@ -118,6 +123,26 @@ describe('typographyFor', () => {
     )) {
       expectLatinRecord(typographyFor(locale));
     }
+  });
+
+  it('resolves pa-Arab and sd to the same Naskh record, Rubik lacking their letters', () => {
+    // Plan T-427 decision 4: measured by explicit codepoint, the Naskh pair carries
+    // Shahmukhi's thirteen letters and Sindhi's fifteen, both weights, while Rubik
+    // lacks every one of them
+    for (const locale of ['pa-Arab', 'sd', 'ug', 'ckb'] as const) {
+      const ty = typographyFor(locale);
+      expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
+      expect(ty.scriptLineHeight?.(14)).toBe(21);
+      expect(ty.scriptLineHeight?.(15)).toBe(23);
+    }
+  });
+
+  it('resolves yo to the Noto Sans pair with no script box', () => {
+    // Plan T-427 decision 5: Roboto lacks ṣ, and the instanced Noto Sans pair's own
+    // 1.362em box clears every character Yoruba inks, so the font's metrics serve
+    const ty = typographyFor('yo');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 
   it('resolves hi to the Devanagari pair with the taller script line box', () => {

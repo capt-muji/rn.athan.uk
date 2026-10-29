@@ -1,5 +1,5 @@
 /**
- * The language sheet (D8, D26): the thirty-four native names in codepoint order, and a pick that closes
+ * The language sheet (D8, D26): every shipped native name in codepoint order, and a pick that closes
  * the sheet at once and hands the wait to the full-screen loader (ticket 86, D86.8)
  */
 
@@ -12,6 +12,7 @@ import type { ReactTestRendererJSON } from 'react-test-renderer';
 import { london } from '@/__tests__/harness';
 import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
+import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import * as LanguageStore from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
 import { languageSheetModalAtom } from '@/stores/ui';
@@ -35,50 +36,7 @@ const renderedSheet = () => {
   return sheet;
 };
 
-const SIX_NAMES = [
-  'Azərbaycanca',
-  'Bahasa Indonesia',
-  'Bahasa Melayu',
-  'Bamanankan',
-  'Bosanski',
-  'Deutsch',
-  'English',
-  'Español',
-  'Français',
-  'Fulfulde',
-  'Hausa',
-  'Kiswahili',
-  'Nederlands',
-  'Oromoo',
-  'Oʻzbekcha',
-  'Português',
-  'Shqip',
-  'Soomaali',
-  'Tagalog',
-  'Türkçe',
-  'Türkmençe',
-  'Wolof',
-  'Русский',
-  'Қазақша',
-  'Кыргызча',
-  'Тоҷикӣ',
-  'اردو',
-  'العربية',
-  'فارسی',
-  'پښتو',
-  'हिन्दी',
-  'मराठी',
-  'বাংলা',
-  'ગુજરાતી',
-  'தமிழ்',
-  'తెలుగు',
-  'ಕನ್ನಡ',
-  'മലയാളം',
-  'ไทย',
-  'አማርኛ',
-  '简体中文',
-  '繁體中文',
-] as const;
+const SHIPPED_NAMES = LANGUAGE_NAMES.map((entry) => entry.name);
 
 // The hanging driver's release valve, armed by the busy test and fired here even
 // when one of its assertions throws
@@ -102,14 +60,14 @@ afterEach(async () => {
 });
 
 describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
-  it('renders the thirty-four native names in codepoint order on the athan card pattern', async () => {
+  it('renders every shipped native name in codepoint order on the athan card pattern', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
     // Reading each row's label from its props: the order is the assertion, and no
     // per-row query can express which came first
     const labels = screen.getAllByRole('radio').map((row) => row.props.accessibilityLabel);
-    expect(labels).toEqual([...SIX_NAMES]);
+    expect(labels).toEqual([...SHIPPED_NAMES]);
     expect(screen.getByText('Choose your language')).toBeOnTheScreen();
     const active = screen.getByRole('radio', { name: 'English' });
     expect(active.props.accessibilityState).toEqual({ selected: true });
@@ -199,8 +157,9 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits seventh, after the Latin latecomers: the seat is six rows and six gaps below the list's top
-    expect(highlight().seat).toBe(6 * 44 + 6 * SPACING.xs);
+    // English sits after every Latin row that sorts before it: the seat is one row and one gap per row above
+    const englishRow = SHIPPED_NAMES.indexOf('English');
+    expect(highlight().seat).toBe(englishRow * 44 + englishRow * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {
