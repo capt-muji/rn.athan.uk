@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict uvgbXB3in8Yc9ooEvKIUmHkglbCpvjTcvClreeJLGRVyUCJH2tKzjUHG1usBAbs
+\restrict KuEXMX7ZEYAtAVHwz4RrZSaUapMwoHOvTFd2SM6I7ijcAEDf7lYdJvhVKys7PoD
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5590,6 +5590,7 @@ Acceptance:
 - [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
 - [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.
 - [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.', NULL, NULL, NULL, 22500, '2026-10-28 23:19:35.311797+00', '2026-10-29 00:29:55.113468+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (471, 1, 471, 3, 4, 'Step 2: my lands with its bundled Myanmar pair', '', NULL, NULL, NULL, 26500, '2026-10-29 03:20:20.00305+00', '2026-10-29 04:04:44.10005+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 3, 4, 'RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch
 
 Status note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief
@@ -5687,6 +5688,7 @@ Acceptance:
 - [ ] mutation pass: deleting the style, un-gating it, deleting the entering and deleting the layout each turn a test red
 - [ ] yarn validate exits 0', NULL, NULL, NULL, 7000, '2026-10-20 22:42:35.40308+00', '2026-10-20 22:50:48.03425+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (435, 1, 435, 3, 4, 'Step 6: tg lands', 'Plan step of T-429. Step 6: tg lands.', NULL, NULL, NULL, 26500, '2026-10-28 23:25:19.962453+00', '2026-10-28 23:46:35.360196+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (473, 1, 473, 3, 4, 'Step 4: uk and qu land on Roboto', '', NULL, NULL, NULL, 28500, '2026-10-29 03:20:20.048643+00', '2026-10-29 04:25:23.61238+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5719,6 +5721,7 @@ Where: the lane worktree.
 
 Acceptance:
 - [ ] the step''s output exists as the plan names it', NULL, NULL, NULL, 6500, '2026-10-25 07:48:25.051172+00', '2026-10-25 08:02:59.438449+00', NULL, NULL, NULL, NULL, NULL, 347, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (474, 1, 474, 3, 4, 'Step 5: min, mad and bug land, mad on the Noto Sans pair', '', NULL, NULL, NULL, 29500, '2026-10-29 03:20:20.071239+00', '2026-10-29 07:31:11.427406+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (41, 1, 108, 2, 4, 'The Rubik cascade: the sheets'' pulls, the label gap, the footer clip', 'OWNER READ 2026-10-16 (pass two of the visual batch, on the 2.0.811 build): the location-date gap under Rubik is nearly perfect but wants a small dialled gap (row 106''s own follow-up); the countdown letters are locked perfect; and the font swap surfaced four cascades the Noto-tuned surfaces carried: (1) the sheets'' -10 subtitle pull-ups (row 87''s pattern, tuned for Noto''s 2.112em box) now MERGE the subtitle into the title on the settings, alert and sound sheets under ar - the owner''s ruling: REVERT the negative pulls to the normal line height and give a small gap instead, the same treatment as the location-date dial; (2) the qibla sheet carries the same pull-up copy and joins the sweep at planning; (3) the sound sheet''s notification-sound label sits too close to the first list row under ar - push the list down for a gap; (4) the footer note (the volume note, alert and sound sheets) CLIPS Arabic descenders at the bottom under Rubik - the bottom-extending letters cut; planning measures why the shorter box clips there. RIDES from row 104''s audit, the owner''s call pending: the backgrounding park window (the ~16ms dismiss-to-frame window where a backgrounded app parks the deferred commit and a process kill loses the pick - the fix shape breaks the store''s rollback invariant, hence a row not a patch), the pre-existing second-dismiss race, and the shared-deferral refactor.
 
 Status note: 2026-10-16, audited: the Rubik cascade lands - every sheet subtitle (qibla''s own included) sits a 6 point positive gap under its title with the -10 pulls dead, the sound list joins en at 12 clear of its label with the D94 branch gone, the ar location-date gap dials to 8, and the volume note takes the measured 21 point script line box (Rubik''s usWinDescent ink runs 3.0px past its own line box at 14px where Roboto''s runs 0.08px, which is why en never clipped); en byte-identical throughout; the two-reviewer audit (plan-conformance clean bar one orphaned comment the plan itself pinned wrong, blind) fixed three findings at 2.0.831 with the new en pin mutation-proven red and rejected two with their lines; the owner''s XS read under ar is the visual acceptance and every value the owner did not pin is a recorded default it dials; the plan folder died in this merge, AUDIT.md rides history', NULL, NULL, NULL, 20000, '2026-10-18 23:35:56.178691+00', '2026-10-19 02:54:08.004009+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5740,10 +5743,48 @@ Where: the lane worktree.
 
 Acceptance:
 - [ ] the step''s output exists as the plan names it', NULL, NULL, NULL, 7500, '2026-10-25 07:48:25.077132+00', '2026-10-25 08:02:59.438181+00', NULL, NULL, NULL, NULL, NULL, 347, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (475, 1, 475, 3, 4, 'Step 6: The full sweep is green and the README names every shipped language', '', NULL, NULL, NULL, 30500, '2026-10-29 03:20:20.093191+00', '2026-10-29 07:32:38.925409+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 64, 8, 4, 'Volume-source copy: alert and sound sheets plus a help question', 'Owner ask, 2026-10-12: text in the alert sheet and the athan sound sheet explaining that Android plays these alarms at the ALARM volume, not the notification volume; plus a Help modal question "Which volume controls the sound level?" (owner wants the wording improved). OWNER RULINGS 2026-10-12 (in session): add the copy to BOTH sheets for absolute clarity even though Help already carries the question (verified in-repo: `help.a.quiet` "It plays at alarm volume, not ring volume" plus `help.step.alarmVolume` exist, and their wording is itself Android-flavoured, so the help answer joins the platform split); the copy is PLATFORM-SPECIFIC by rule - Android states the alarm volume (row 27''s proof), iOS states its own path, each rendered for the platform running (planning verifies the iOS path against Apple''s documentation before the copy is drafted; unverified at planning: standard iOS notification sounds follow the ringer volume and are silenced by the silent switch). Copy drafts in six languages take the owner''s D42 verification during planning. Serialized behind row 63: both edit the six catalog files
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (278, 1, 278, NULL, 4, 'Step 2: ten screenshots from the iPhone XS attached in order', '', NULL, NULL, NULL, 2000, '2026-10-20 03:54:15.288006+00', '2026-10-20 05:15:59.27803+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (476, 1, 476, 3, 9, 'The language picker becomes a wheel: a centre-settling faint candidate under the scroll, the purple seat stays on the locale in force, and the change commits when the sheet closes', 'Goal: change the language sheet from tap-to-commit-and-close to an iOS-picker-feel wheel without the iOS looks: the list settles row by row on the sheet''s centreline, a very faint candidate band rides the row a stop would select while the purple highlight stays on the locale actually in force, a tap stages a choice instead of committing it, and the staged change commits together with the close (swipe down, back gesture or the close affordance). Code only until the run''s single final build. Owner order 2026-10-29.
+
+Where: components/sheets/screens/Language.tsx and its suite, components/sheets/screens/languageFilter.ts where the filtered seat feeds the wheel, the sheet parts only if the close path needs a hook, shared/__tests__ and components/sheets/__tests__ for the new guards, and stores/language.ts where the commit moves from the tap handler to the close boundary. The commit machinery itself (relaunch, loader, notification reschedule) is not rewritten, only re-timed.
+
+Behavior, as the owner described it:
+- The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it while scrolling.
+- A second, very faint marker (the dim colour family, never black, never opacity on text) rides the row nearest the list''s vertical centre while the finger drags and while the list settles, the lottery-wheel read: the user always sees where a stop lands.
+- Rows are uniform and the list snaps row-by-row to the centreline, so the settled row is always perfectly centred, at the top and at the bottom of the list alike.
+- On open, the list is positioned with the in-force locale centred.
+- A tap on a row stages that row as the candidate (the faint marker moves there) and does NOT close the sheet and does NOT commit.
+- The staged candidate commits when the sheet closes by swipe-down, back gesture or the close affordance: commit and close are one act. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.
+- Search still filters; the wheel, the snap and the two highlights work over the filtered list, and clearing the search restores the full list centred on the in-force locale.
+- The numbered dimmed indices and the centred names from T-451 are untouched.
+- First frames render settled: only value changes animate (the standing law).
+
+Acceptance:
+- [x] The two-highlight model holds: the purple seat never moves while the sheet is open, the faint candidate tracks the centre row through drag and settle, and both are visible together when they sit on different rows.
+- [x] The list snaps row-by-row to the centreline with the settled row centred, including at both ends of the list, and the sheet opens with the in-force locale centred.
+- [x] A tap stages without closing or committing; closing commits the staged candidate through the existing commit machinery exactly once, and closing without a staged change leaves the app untouched.
+- [x] Search, indices, centred names, the keyboard work and the RTL behaviour from T-451 all still hold over the wheel.
+- [x] Red-first guards: the staged-commit boundary, the centre-snap alignment, the faint marker''s seat, and the no-commit-on-tap row each redden a suite when broken, with a mutation pass.
+- [x] yarn validate exits 0 at full coverage. No device work: the run''s single final build is the owner''s read.
+
+Scheduling: planning now, execution immediately after the three language waves close, on the first lane that frees.
+
+Refinements, owner order 2026-10-29, second pass, which override anything above that reads otherwise:
+- Settling the scroll selects NOTHING. Scrolling is browsing only: closing without a tap changes nothing. The faint band marks the centre row as a guide, but only a TAP stages a choice.
+- Haptics, exactly three, and nowhere else: one when a row is tapped and staged, one when the sheet closes with a staged change committing (never when closing without one), and a light detent tick as each row passes the centreline while scrolling. No haptic while the language change loads and none when it finishes; if the tree fires any today on that path, they move off it. expo-haptics is already in the stack.
+- The snap is magnetic and elastic: the list may never rest between two rows, it always settles the nearest row to the centreline, with the rubber-band give at both ends. Use what the platform and the existing stack already give (FlatList snapToInterval at the row pitch with centre alignment, or the Reanimated equivalent already in the repo). No new third-party picker component enters the repo: the code mimics, it does not install.
+- The sheet''s subtitle reads close-to-save (a new or reworded catalog key carried across every locale at parity, the T-451 pattern), so the commit point is written on the sheet itself.
+- On close with a staged change: the haptic fires with the commit, then the existing language-change loader and relaunch machinery runs exactly as it does today.
+
+Refinements, owner order 2026-10-29, third pass, the loader choreography at the commit boundary:
+- The solid cover and the spinner appear the instant the sheet closes with a staged change, so the language never visibly shifts underneath. The tree already owns this shape: the language commit holds the switch cover (languageCommitBusyAtom in app/index.tsx) and the full-screen loader covers the wait, so this item re-times what exists rather than inventing a surface.
+- The line under the spinner (language.changing with the chosen language''s own name) today snaps in a beat late. It must instead fade in, a single 200ms fade, in the moment it becomes available in the settled locale, never a snap. The 200ms is the owner''s number and the plan dates it as such.
+- When the commit completes, the cover, the spinner and the line all lift together in one immediate act, with the existing reveal''s fast fade, no staggered teardown.
+- Law reconciliation, dated in the plan: the fade-in is a transient value change, the settled line carries full ink, so the row-294 rule (colour carries the dim, never text opacity) is not broken, and the first-frame-settled law keeps the loader''s own first frame settled with only the line''s availability animating.', NULL, NULL, NULL, 31500, '2026-10-29 03:27:43.359393+00', '2026-10-29 08:52:12.517569+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (285, 1, 285, NULL, 4, 'Step 4: the shipped Design 1 verified on the iPhone XS', 'Mock Release build with the paid-team signing installed on the iPhone XS (replacing the ten-design prototype build), one screenshot attached as shipped-design.png, verification readings transcribed to the row.', NULL, NULL, NULL, 9000, '2026-10-20 05:33:19.114557+00', '2026-10-20 06:33:14.938208+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (354, 1, 354, NULL, 4, 'Step 9: the instrument separated - compositor beside encoder', '', NULL, NULL, NULL, 8500, '2026-10-25 07:53:19.531064+00', '2026-10-25 09:04:54.199819+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (244, 1, 244, NULL, 4, 'Step 1: the verification record', 'Confirm the pin, the patch, the R8 keeps and the widgetrefresh history; log the reads in one comment on row 123.', NULL, NULL, NULL, 19000, '2026-10-19 13:50:51.212339+00', '2026-10-19 13:54:00.239468+00', NULL, NULL, NULL, NULL, NULL, 7, false, NULL, 1, NULL);
@@ -6207,9 +6248,21 @@ Where: the lane worktree.
 
 Acceptance:
 - [ ] the step''s output exists as the plan names it', NULL, NULL, NULL, 5500, '2026-10-25 07:48:25.02036+00', '2026-10-25 08:02:59.441649+00', NULL, NULL, NULL, NULL, NULL, 347, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (451, 1, 451, 3, 9, 'The language picker at seventy-five: dimmed numbered rows with truly centred names in both directions, and a name search over the list with the keyboard addressed', 'Goal: the language picker''s card gains a dimmed Latin index on every row, its name centred on the card in both directions, and a search field inside the card above the scroll list that filters by endonym or English name with the keyboard never covering the sheet. Code only: no phone, no simulator, no screenshot, no build. The owner reads the result and rules from Awaiting Owner.
+
+Where: components/sheets/screens/Language.tsx and its suite, components/sheets/parts/Sheet.tsx for the pinned slot and the keyboard props, app.json''s android block, shared/i18n/en.ts plus the forty-nine translation catalogs, shared/i18n/catalog-lock.json through scripts/catalog-lock.mjs, shared/languageNames.ts for the English names, and a new components/sheets/screens/languageFilter.ts with its suite.
+
+Acceptance:
+- [x] The search field sits inside the card above the scroll list and never scrolls away, it is a BottomSheetTextInput, the sheet carries keyboardBehavior interactive and keyboardBlurBehavior restore, and android softwareKeyboardLayoutMode reads resize in app.json.
+- [x] The field does not autofocus, carries a dimmed localized placeholder and a dimmed search glyph at the trailing edge mirrored under RTL, and types filter by endonym or English name folded case- and diacritic-insensitively, never by locale tag; the empty match renders its localized line and the input clears on close.
+- [x] Every row carries a dimmed Latin index (1. 2. 3., Latin digits in every locale per the row-82 law) at the card''s left edge in both directions, with the name geometrically centred on the card and the index in its own absolutely-positioned slot.
+- [x] The purple highlight follows the filtered list''s seat, the unfiltered order stays the picker''s codepoint order, and a pick still commits immediately and closes.
+- [x] The new keys land in en and all forty-nine translations at byte parity, the catalog lock regenerates deliberately through scripts/catalog-lock.mjs, and yarn validate exits 0 at full coverage.
+- [x] Dimmed elements use the shared dim colour, never text opacity (the row-294 law). No device work of any kind.', NULL, NULL, NULL, 21500, '2026-10-29 02:49:49.256022+00', '2026-10-29 03:35:11.25006+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (432, 1, 432, 3, 4, 'Step 3: nl lands', 'Plan step of T-429. Step 3: nl lands.', NULL, NULL, NULL, 23500, '2026-10-28 23:25:19.873483+00', '2026-10-28 23:39:46.332431+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (439, 1, 439, 3, 4, 'Step 10: The full sweep is green and the README names thirty-four', 'Plan step of T-429. Step 10: The full sweep is green and the README names thirty-four.', NULL, NULL, NULL, 30500, '2026-10-28 23:25:20.060043+00', '2026-10-28 23:58:12.486814+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (365, 1, 365, NULL, 4, 'Step 1: the time-ago spacing gate and the Thai byte', '', NULL, NULL, NULL, 19500, '2026-10-25 08:53:39.843768+00', '2026-10-25 09:11:05.234769+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (460, 1, 460, NULL, 4, 'Step 3: dv lands on the bundled Noto Sans Thaana pair', 'The pair bundles under OFL, both expo-font arrays grow, the THAANA record carries the measured 1.493em box with no script box, RTL_IDS gains dv, dv''s whole keyed surface lands in one commit, the widget runtime load suite re-runs green.', NULL, NULL, NULL, 23500, '2026-10-29 03:14:02.726928+00', '2026-10-29 04:24:21.430319+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (366, 1, 366, NULL, 4, 'Step 2: the one-line badge constraint and its suite', '', NULL, NULL, NULL, 20500, '2026-10-25 08:53:39.887276+00', '2026-10-25 09:11:05.270805+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (346, 1, 346, 2, 4, 'The prayer-ago badge keeps its space around the time in every language, and Hindi stays on one line on Android', 'Goal: two visual defects in the time-ago badge below the prayer list. Thai on both platforms renders the sentence''s trailing word touching the interpolated time''s last letter with no space; Somali, Malay, Arabic and English space correctly today. Hindi on Android only wraps the badge into two lines, the second cropped to a sliver; the badge must stay one line, and there is ample room to grow. The spacing rule is general, never language-specific.
 
@@ -6276,6 +6329,11 @@ Acceptance:
 - [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.
 - [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.', NULL, NULL, NULL, 23500, '2026-10-28 23:19:35.346098+00', '2026-10-29 00:29:55.180997+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 20, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (415, 1, 415, NULL, 4, 'Step 5: pt lands fresh-sourced and ur lands RTL', '', NULL, NULL, NULL, 25500, '2026-10-28 15:53:37.145945+00', '2026-10-28 17:23:23.176881+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (458, 1, 458, NULL, 4, 'Step 1: The sourcing record completes for the nine languages', 'sourced-names.json gains skr, bal, kas, dv, aa, kr, mdh, mnk and dje with eleven names and five explanations each, every slot non-null with text, slug, confidence and a note naming the table or the derivation; the new slugs register; catalogGates gains the T453_NINE sibling gate, red first, with a mutation pass on the guard.', NULL, NULL, NULL, 21500, '2026-10-29 03:14:02.67329+00', '2026-10-29 04:00:19.577553+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (469, 1, 469, NULL, 4, 'Step 6: The full sweep is green and the README names the merged count', '', NULL, NULL, NULL, 32500, '2026-10-29 03:14:30.544372+00', '2026-10-29 07:27:37.569654+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (478, 1, 478, NULL, 4, 'Step 2: Sheet hosts the caller''s scrollable, and the language screen renders as the wheel', 'Sheet''s host mode (children bare, no ContentWrapper) and the close-haptic suppression prop with Sheet.test.tsx coverage; Language.tsx renders the BottomSheetFlatList inside the mode with snap offsets, both-end padding, the clipped band layer, the seeded open, and the subtitle rewired to sheet.closeToSave; Language.test.tsx rewritten; Settings.test.tsx regression. See the plan doc T-476 (v2).', NULL, NULL, NULL, 34500, '2026-10-29 03:42:28.021877+00', '2026-10-29 08:12:20.918163+00', NULL, NULL, NULL, NULL, NULL, 476, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (479, 1, 479, NULL, 4, 'Step 3: The tap-only staged commit at the composed close boundary', 'The tap stages, ticks and scrolls; the composed onDismiss consumes the staged ref first, reveals and commits exactly once, then clears the query under the presented gate; the staged-survival reset rule; the detent wiring; the boundary and haptic guards, including settle-then-close changes nothing. See the plan doc T-476 (v2).', NULL, NULL, NULL, 35500, '2026-10-29 03:42:28.046614+00', '2026-10-29 08:21:19.739995+00', NULL, NULL, NULL, NULL, NULL, 476, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (459, 1, 459, NULL, 4, 'Step 2: skr, bal and kas land RTL on the Naskh record', 'LOCALE_IDS at fifty-three, RTL_IDS gains the three, each locale''s whole keyed surface in one commit on the URDU record whose comment gains this wave''s codepoint measurement, every suite green at the boundary.', NULL, NULL, NULL, 22500, '2026-10-29 03:14:02.704416+00', '2026-10-29 04:15:58.268251+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (446, 1, 446, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 37500, '2026-10-28 23:29:43.763696+00', '2026-10-28 23:51:54.144859+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (449, 1, 449, 3, 4, 'Step 4: kn and am land with their bundled pairs', '', NULL, NULL, NULL, 40500, '2026-10-28 23:29:44.208524+00', '2026-10-28 23:55:38.06316+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (438, 1, 438, 3, 4, 'Step 9: mr lands on the Devanagari record', 'Plan step of T-429. Step 9: mr lands on the Devanagari record.', NULL, NULL, NULL, 29500, '2026-10-28 23:25:20.03391+00', '2026-10-28 23:56:44.738788+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
@@ -6290,6 +6348,7 @@ Acceptance:
 - [x] The iPhone XS restored to a real build once the rig passes
 
 How it was found and re-ruled: the owner''s below-store mimic (new code stamped 1.0.0, build 1, over carried 2.11.14 data) blanked to the error page on a plain open and stayed blanked through Refresh. The mimic is retired as an acceptance rig (owner order, 2026-10-27): a journey through a state no real user occupies cannot prove a state-invariant, and a release build is mute on glass - syslog, devicectl console attach and the log store all carry native lines only. The undiagnosed recurrence is the reason the exhaustive rig is acceptance, not decoration. The real update journeys ride the store tracks: TestFlight on iOS (T-393, with a test-gated check source because iTunes Lookup cannot see TestFlight) and the Play internal track on Android (T-389).', NULL, NULL, NULL, 16500, '2026-10-27 10:09:00.804374+00', '2026-10-27 16:50:07.417324+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (456, 1, 456, 3, 4, 'Step 2: The name filter, its English names and its scanner rule', '', NULL, NULL, NULL, 22500, '2026-10-29 02:55:20.582985+00', '2026-10-29 03:06:58.611451+00', NULL, NULL, NULL, NULL, NULL, 451, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (400, 1, 400, 9, 4, 'The lock screen widgets'' type reads too small on users'' devices', 'Goal: the lock screen widgets'' live readings render at a nominal 14pt (shrinking to 8.4pt at the floor on layouts 1-2) and users report the type reads too small. Grow the lock-screen type scale so the readings read much bigger, with per-format ceilings where a layout cannot carry the maximum.
 
 Where: widgets/LockPrayerWidget.tsx only - the three lock layouts'' live, stale and neutral faces, both schedules. The home screen widgets (widgets/PrayerWidget.tsx) and Android are untouched.
@@ -6330,6 +6389,7 @@ Acceptance:
 - [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-27 02:53:12.254632+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (444, 1, 444, 3, 4, 'Step 5: jv and su land on the Latin record', '', NULL, NULL, NULL, 35500, '2026-10-28 23:26:34.558781+00', '2026-10-29 00:05:14.312424+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (457, 1, 457, 3, 4, 'Step 3: The picker rebuilt, its field pinned and its keyboard addressed', '', NULL, NULL, NULL, 23500, '2026-10-29 02:55:20.610113+00', '2026-10-29 03:06:58.633319+00', NULL, NULL, NULL, NULL, NULL, 451, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
 
 Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
@@ -6339,6 +6399,7 @@ Acceptance:
 - [ ] both options in a pair render equal widths at 50 percent of the container, and the two rows match each other in length
 - [ ] the container''s leftward expansion is the minimum the content needs - English''s own layout unchanged, no maximum introduced
 - [ ] yarn validate green', NULL, NULL, NULL, 2500, '2026-10-25 05:15:26.95386+00', '2026-10-25 18:39:05.424864+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (464, 1, 464, NULL, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 27500, '2026-10-29 03:14:30.430698+00', '2026-10-29 03:51:54.178992+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (368, 1, 368, 11, 4, 'The store builds awaiting review prove themselves on glass: the EAS production artifacts download, install and smoke on the phones before the public release', 'Goal: the owner approves the public release having verified the exact binaries users will get: the 2.4.39 production store builds awaiting Google''s and Apple''s review, downloaded from EAS and never compiled locally, identities recorded, and what each phone install displaces measured and tabled before any act.
 
 Where: the EAS builds through the expo MCP (read-only: list and download; never build, never push, never submit, the owner''s order of 2026-10-25); the attached OnePlus 3T and iPhone XS; the athan-smoke-28 emulator for the functional smoke of the exact Android binary; the app''s first sync, prayer list, countdown, notification arming and the qibla surface.
@@ -6371,10 +6432,23 @@ Acceptance:
 
 Fallback route, if the track''s rollout hygiene gets in the way: internal app sharing, Google''s own lighter recipe for in-app update testing - same hard rules, no track or rollout: share-install A via the link, upload B with a higher code, click B''s share link WITHOUT installing, open the app, the update is offered. Chosen only if the owner rules the track route heavier than the proof is worth.', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 15:04:19.549939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (404, 1, 404, NULL, 4, 'Step 1: The crash reproduced on the iPad simulator, its own stack or console line transcribed onto the ticket', '', NULL, NULL, NULL, 21500, '2026-10-28 01:15:31.006462+00', '2026-10-28 02:40:31.986827+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (480, 1, 480, 9, 9, 'The Android solid screens tint a little toward the gradient''s purple end: splash, error and the language-changing face read centred on Android while iOS stays byte-identical', 'Goal: on Android only, move the solid full-screen faces a little from the navy top of the house gradient toward its purple bottom, so the solid reads centred to the eye; every iOS byte stays as it is. Owner order 2026-10-29, fix-forward, read in the run''s single development build.
+
+Where: the colour constant behind the language-changing loader, the error screen and every other solid full-screen face (enumerate them from the tree, they share the solid), app.json''s android-facing splash and background fields wherever the native splash renders its own, and the suites that pin these values. The house gradient is DESIGN.bgStart ''#05134a'' to DESIGN.bgEnd ''#36208a'' in shared/design.ts, and today''s solid sits at the gradient''s midpoint (''#1e1a6a'' is the iOS background of record).
+
+Acceptance:
+- [x] The Android solid is a dated interpolation toward DESIGN.bgEnd, ruled at 65 percent (landing near ''#251b74''), named in the plan with its derivation, and the plan may measure and adjust within the plan''s own gate if the tree shows the Android solid holds a different source value today.
+- [x] iOS is byte-identical: the iOS background of record, every iOS-rendered solid and their pins are untouched, and a guard proves the split (one colour per platform, no shared drift).
+- [x] The Platform split is dated as the owner''s order (2026-10-29, Android-only tint), the one legal Platform check on this surface.
+- [x] Every suite pinning the old value is updated red-first with a mutation pass, and yarn validate exits 0 at full coverage.
+- [x] No device work of any kind: the owner reads it in the final build.', NULL, NULL, NULL, 31500, '2026-10-29 03:56:49.284546+00', '2026-10-29 08:52:12.603877+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (440, 1, 440, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 31500, '2026-10-28 23:26:34.451914+00', '2026-10-28 23:45:46.520696+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (445, 1, 445, 3, 4, 'Step 6: The full sweep is green and the README names thirty-four', '', NULL, NULL, NULL, 36500, '2026-10-28 23:26:34.583136+00', '2026-10-29 00:08:56.478732+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (455, 1, 455, 3, 4, 'Step 1: The two picker keys in fifty catalogs and the release stamp', '', NULL, NULL, NULL, 21500, '2026-10-29 02:55:20.546179+00', '2026-10-29 03:06:58.585888+00', NULL, NULL, NULL, NULL, NULL, 451, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (392, 1, 392, NULL, 4, 'Step 3: proof and merge', 'Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), yarn validate green, version 2.11.20 riding the commit (package.json, app.json, shared/whatsNew.ts), merge the lane branch into local uat unpushed.', NULL, NULL, NULL, 18500, '2026-10-27 10:43:57.388819+00', '2026-10-27 11:02:51.668089+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (390, 1, 390, NULL, 4, 'Step 1: the foreground-rejection tests', 'In stores/__tests__/syncLoadable.test.ts: one test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject; the sync resolves, logger().warn fires ''WIDGET: Foreground refresh failed'' with the error, and the home screen''s read (triggerSyncLoadable then store.get(syncLoadable)) lands hasData. Red before the fix.', NULL, NULL, NULL, 16500, '2026-10-27 10:43:57.307831+00', '2026-10-27 11:02:51.672036+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (467, 1, 467, NULL, 4, 'Step 4: ro and ceb land', '', NULL, NULL, NULL, 30500, '2026-10-29 03:14:30.504585+00', '2026-10-29 04:25:11.182346+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (461, 1, 461, NULL, 4, 'Step 4: aa and mdh land on the LATIN record', 'The two catalogs and their whole keyed surface, Roboto measured over every character each locale inks, both weights, zero missing.', NULL, NULL, NULL, 24500, '2026-10-29 03:14:02.747425+00', '2026-10-29 07:29:14.640495+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (396, 1, 396, 2, 4, 'The Check for updates row must tell a failed check from an up-to-date verdict, and stay retryable', 'Goal: with the network unreachable, a press on Check for updates settles the row into an honest failure state - a red circle with a white X, a try-again label, the refresh arrows back - and the row re-runs the check on the next press without the sheet closing; only a check that reached a verdict consumes the once-per-opening budget.
 
 Where: components/sheets/screens/Settings.tsx (the row''s states and its once-per-opening guard), device/updates.ts (already honest: a failed store read returns upToDate:false, and the fetch is timeout-guarded at 10 seconds by an AbortController - no change expected there, verify), shared/i18n/* (six catalogs), the row''s suite.
@@ -6389,6 +6463,7 @@ Acceptance:
 - [x] Read once on glass on the iPhone XS after audit: airplane-mode press reads the red X and the retry label, a second press re-checks, connectivity restored reads the real verdict
 
 How it was found (owner, 2026-10-27, on-glass): Wi-Fi off, network disconnected, Settings, Check for updates - the row answered "You''re up to date" with the green tick. The data layer is not the liar: checkForUpdates returns upToDate:false when the store read fails, and the fetch times out at 10 seconds. The row reads "no modal" as "up to date" and settles the green tick on a failed check. Owner orders: red circle white X, try-again label, arrows back, tappable without closing the sheet, retry re-checks.', NULL, NULL, NULL, 17500, '2026-10-27 16:07:41.399714+00', '2026-10-28 00:55:50.431656+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (483, 1, 483, NULL, 4, 'Step 1: the Android arm of the solid constant', 'Produces the dated Android solid in shared/design.ts: rootBgFor''s android arm lands #251b74 (the 65 percent point of DESIGN.bgStart to DESIGN.bgEnd) with the false sentence rewritten in both its places - the comment above rootBgFor (design.ts:9) and its standing copy at oneDimInk.test.ts:98 - and shared/__tests__/oneDimInk.test.ts pins it red-first (rootBgFor arms plus the not.toBe split guard) with a mutation pass. iOS arm and DESIGN.rootBg pin untouched. The commit carries the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle when present), the number one above the fetched tip. Plan doc: T-480 (Docs page 58).', NULL, NULL, NULL, 38500, '2026-10-29 04:10:33.596852+00', '2026-10-29 07:53:56.659714+00', NULL, NULL, NULL, NULL, NULL, 480, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (405, 1, 405, NULL, 4, 'Step 2: The fix - the orientation-path change the transcript names, red-first unit rows, mutation pass', '', NULL, NULL, NULL, 22500, '2026-10-28 01:15:31.062368+00', '2026-10-28 02:52:34.532093+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (374, 1, 374, NULL, 4, 'The dim system redesign: one shared dim colour for all dimmed text and a lighter background gradient replace the per-component shades', 'Goal: the per-component shade system born in the colour-carried dim conversion gives way to a single dim colour serving every dimmed-text surface, with a lighter, more subtle background gradient - removing the shade machinery the owner suspects costs the 3T its animation floor, and simplifying the visual system.
 
@@ -6409,7 +6484,46 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (391, 1, 391, NULL, 4, 'Step 2: the guarded foreground push', 'In stores/sync.ts initializeAppState: the non-deferred branch catches the push rejection and warns ''WIDGET: Foreground refresh failed'' through the Pino logger; the comment names the reason. The deferred branch is untouched.', NULL, NULL, NULL, 17500, '2026-10-27 10:43:57.360847+00', '2026-10-27 11:02:51.673557+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (397, 1, 397, 2, 4, 'Step 1: the plan doc - the design, the six-locale copy, the grill and the gate', '', NULL, NULL, NULL, 18500, '2026-10-27 16:29:23.175586+00', '2026-10-27 16:29:38.276904+00', NULL, NULL, NULL, NULL, NULL, 396, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (406, 1, 406, NULL, 4, 'Step 3: The fixed app proven open and stable through rotation on the iPad simulator, version bumped, validate green, merged to local uat', '', NULL, NULL, NULL, 23500, '2026-10-28 01:15:31.099171+00', '2026-10-28 04:20:29.425935+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (468, 1, 468, NULL, 4, 'Step 5: ilo and vi land', '', NULL, NULL, NULL, 31500, '2026-10-29 03:14:30.525395+00', '2026-10-29 07:25:04.957252+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (418, 1, 418, NULL, 4, 'Step 8: The full sweep is green and the README names sixteen', '', NULL, NULL, NULL, 28500, '2026-10-28 15:53:37.233956+00', '2026-10-28 17:45:04.610955+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (462, 1, 462, NULL, 4, 'Step 5: kr, mnk and dje land on the AFRICAN record', 'The three catalogs on the bundled Noto Sans pair, measured the same way over both weights, zero missing.', NULL, NULL, NULL, 25500, '2026-10-29 03:14:02.769638+00', '2026-10-29 07:38:48.463916+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (463, 1, 463, NULL, 4, 'Step 6: The full sweep is green and the README carries the merged count', 'Every suite green over the fifty-nine locales the tree holds, yarn validate exits 0 at full coverage, en''s catalog-lock hash unchanged from the branch point, the README bullet written from LOCALE_IDS.length, audit-ready.', NULL, NULL, NULL, 26500, '2026-10-29 03:14:02.790826+00', '2026-10-29 07:41:45.961075+00', NULL, NULL, NULL, NULL, NULL, 453, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (482, 1, 482, NULL, 4, 'Step 2: app.json''s android-facing fields', 'Produces the native Android solids: app.json''s android block gains "backgroundColor": "#251b74" and the splash plugin''s android.backgroundColor (line 128) moves to #251b74, the three #1e1a6a occurrences untouched. oneDimInk.test.ts count rows red-first (#251b74 x 2, #1e1a6a x 3) joined by the parsed positional block pinning every backgroundColor field by place (root, ios, android, adaptiveIcon #05134a, plugin ios, plugin android), with a mutation pass including the shape mutation whose counts stay green. The commit carries the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle when present), the next number above the fetched tip. Plan doc: T-480 (Docs page 58).', NULL, NULL, NULL, 37500, '2026-10-29 04:10:33.596786+00', '2026-10-29 07:55:51.186925+00', NULL, NULL, NULL, NULL, NULL, 480, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (465, 1, 465, NULL, 4, 'Step 2: ja and ko land on their cut subset pairs', '', NULL, NULL, NULL, 28500, '2026-10-29 03:14:30.459611+00', '2026-10-29 04:06:17.58716+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (466, 1, 466, NULL, 4, 'Step 3: it and pl land on the measured Latin records', '', NULL, NULL, NULL, 29500, '2026-10-29 03:14:30.481+00', '2026-10-29 04:15:38.409118+00', NULL, NULL, NULL, NULL, NULL, 452, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (481, 1, 481, NULL, 4, 'Step 4: The loader''s line fade and choreography', 'The 200ms fade-in of the language.changing line from availability, the one-act teardown confirmed as the existing single unmount, the dated law reconciliation; LanguageLoader.test.tsx gains the fade and lift guards. See the plan doc T-476 (v2).', NULL, NULL, NULL, 36500, '2026-10-29 03:59:04.539097+00', '2026-10-29 08:26:02.147993+00', NULL, NULL, NULL, NULL, NULL, 476, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (452, 1, 452, 3, 9, 'Seventy-five languages, wave one of three: the CJK and Latin eight (ja, ko, it, pl, ro, ceb, ilo, vi)', 'Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s languages, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.
+
+Languages: ja (Japanese, ~125M, the largest language missing), ko (Korean, ~82M), it (Italian, ~65M, the owner''s pick), pl (Polish, ~40M), ro (Romanian, ~24M), ceb (Cebuano, ~25M, the biggest Philippine regional), ilo (Ilocano, ~9M), vi (Vietnamese, ~85M).
+Font note: ja and ko ride the fontTools subset pipeline the zh pair built (cjk-glyph-lock.json, scripts/cjk-subset.mjs), never full statics; Vietnamese and Polish diacritics must be measured against the shipped Latin faces before choosing records.
+Popularity block: these eight carry almost no Muslim-reachable audience and ship on the owner''s world-popularity order (2026-10-29), which the plan records as the selection authority for this wave.
+
+Where: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and any font pair a script needs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their finders, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is waves #410, #419 and the fifty-language run (T-427, T-428, T-429) in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ with this run''s owner orders.
+
+Acceptance:
+- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.
+- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their finders, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps both waves'' rows, and the README count is the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.
+
+Standing owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces.', NULL, NULL, NULL, 22500, '2026-10-29 02:50:21.473599+00', '2026-10-29 08:52:12.237158+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 12, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (453, 1, 453, 3, 9, 'Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine (skr, bal, kas, dv, aa, kr, mdh, mnk, dje)', 'Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s nine, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.
+
+Languages: skr (Saraiki, ~26M, the largest unserved Muslim reading public, Pakistan), bal (Balochi, ~10M, Pakistan, Iran, Afghanistan), kas (Kashmiri, ~7M, Perso-Arabic Kashmir), dv (Dhivehi, ~0.34M, the Maldives, the one wholly Muslim nation), aa (Afar, ~3M, Djibouti and the Awsa), kr (Kanuri, ~10M, Borno and Niger), mdh (Maguindanao, ~1.5M, Muslim Mindanao, its true ISO code: mag is Magahi, an Indian language, and the picker and every surface must ship mdh), mnk (Mandinka, ~5M, the Senegambia), dje (Zarma, ~3M, Niger).
+Font note: skr, bal and kas read right to left on the Arabic script and are measured by explicit codepoint against the bundled Naskh pair, both weights, before records are chosen; dv bundles a Noto Sans Thaana pair, a new script for the app, with its script box decided by its own measured numbers.
+Mission block: these nine close the remaining Muslim-map gaps the owner audited (2026-10-29).
+
+Where: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the Thaana font pair under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, both expo-font arrays and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their four finder lists, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is the fifty-language run (T-427, T-428, T-429) and its plan docs; the selection authority is the ticket''s mission block with ai/plans/39-localisation/research/.
+
+Acceptance:
+- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.
+- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their four finder lists, the detection rows and the gates; every right-to-left one (skr, bal, kas, dv) joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps all three waves'' rows, and the README count is the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.
+
+Standing owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; Maguindanao ships as mdh, never mag.', NULL, NULL, NULL, 23500, '2026-10-29 02:50:21.507741+00', '2026-10-29 08:52:12.350567+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 12, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (419, 1, 419, 3, 9, 'The next ten languages after #410''s sixteen, proven on the XS with a fresh development build', 'Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.
 
 Where: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).
@@ -6440,6 +6554,7 @@ Acceptance:
 - [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-26 22:31:57.102538+00', '2026-10-27 04:47:38.260811+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 6, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (386, 1, 386, NULL, 4, 'Step 2: the row rework - guard, states, glyphs, spin, order', 'The row''s suite rewritten red, then the spent-budget and row-state atoms, the download and refresh glyphs, the IconView animated color, the clockwise spin, and the Other card order. Plan: T-381 doc.', NULL, NULL, NULL, 17500, '2026-10-27 05:02:45.983199+00', '2026-10-27 05:21:45.014161+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (398, 1, 398, 2, 4, 'Step 2: the row''s fourth state - failed in the result, the red X settle, the verdict-only budget, the six catalogs, both suites', '', NULL, NULL, NULL, 19500, '2026-10-27 16:29:23.223121+00', '2026-10-27 16:43:20.729915+00', NULL, NULL, NULL, NULL, NULL, 396, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (470, 1, 470, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 25500, '2026-10-29 03:20:19.974645+00', '2026-10-29 03:53:09.843273+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (401, 1, 401, 2, 4, 'The app crashes on launch on iPad after the screen rotates', 'Goal: the app must open and stay open on iPad instead of crashing at launch.
 
 Where: the crash path at app entry, the orientation handling, and whatever the iPad presentation exercises that iPhone does not.
@@ -6452,6 +6567,24 @@ Acceptance:
 How it was filed (owner, 2026-10-27): opening the app on an iPad rotates the whole screen, then the app crashes and closes every single time, and the orientation reverts.
 
 The rig route (owner order, 2026-10-27): reproduce first through the device hub - the rig''s iPad Pro 11-inch (M5) simulator - and transcribe the crash''s own stack or console line there; the app has never been run on an iPad simulator yet. If the hub reproduces it, the fix loop moves to Xcode, the same escalation the macOS app rode. Never the iPhone Duo.', NULL, NULL, NULL, 18500, '2026-10-27 22:43:33.172139+00', '2026-10-28 05:21:15.95189+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (472, 1, 472, 3, 4, 'Step 3: tt and ce land on Roboto''s Cyrillic', '', NULL, NULL, NULL, 27500, '2026-10-29 03:20:20.026353+00', '2026-10-29 04:17:18.810032+00', NULL, NULL, NULL, NULL, NULL, 454, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (477, 1, 477, NULL, 4, 'Step 1: The wheel''s pure geometry and staged-commit functions, with their suites', 'languageWheel.ts (pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, the commit guard) and languageSheet.ts rebuilt (stageLanguage, commitStagedOnClose). Red-first suites and a mutation pass on the guarded logic. See the plan doc T-476.', NULL, NULL, NULL, 33500, '2026-10-29 03:42:27.993485+00', '2026-10-29 08:12:20.7895+00', NULL, NULL, NULL, NULL, NULL, 476, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (454, 1, 454, 3, 9, 'Seventy-five languages, wave three of three: the Myanmar, Cyrillic and island eight (my, tt, ce, uk, min, mad, bug, qu)', 'Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s languages, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.
+
+Languages: my (Burmese, ~33M, incl. Myanmar''s Muslim minority), tt (Tatar, ~5M, Russia''s biggest Muslim language), ce (Chechen, ~1.6M), uk (Ukrainian, ~35M), min (Minangkabau, ~5.5M, West Sumatra), mad (Madurese, ~7M, Indonesia''s biggest unserved), bug (Bugis, ~5M, South Sulawesi), qu (Quechua, ~9M, the owner''s Peru pick).
+Font note: my bundles a Noto Sans Myanmar pair, a new script; tt, ce and uk ride Cyrillic and must be measured against Roboto including Chechen''s palochka and ә ҡ ң ӧ ү җ; the Indonesian trio and Quechua are Latin.
+Mixed block: mission languages (my, tt, ce, min, mad, bug) beside two popularity picks (uk, qu) under the owner''s 2026-10-29 order.
+
+Where: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and any font pair a script needs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their finders, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is waves #410, #419 and the fifty-language run (T-427, T-428, T-429) in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ with this run''s owner orders.
+
+Acceptance:
+- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.
+- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their finders, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps both waves'' rows, and the README count is the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.
+
+Standing owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces.', NULL, NULL, NULL, 24500, '2026-10-29 02:50:21.537237+00', '2026-10-29 08:52:12.43613+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 12, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (413, 1, 413, NULL, 4, 'Step 3: The fr and uz catalogs land', '', NULL, NULL, NULL, 23500, '2026-10-28 15:53:37.082548+00', '2026-10-28 16:54:10.818551+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (416, 1, 416, NULL, 4, 'Step 6: fa lands RTL on the Arabic record and bn lands with its own', '', NULL, NULL, NULL, 26500, '2026-10-28 15:53:37.17376+00', '2026-10-28 17:33:40.470162+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 
@@ -11581,6 +11714,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4302, 435, 'activity', 'owner', NULL, 'status', '2026-10-28 23:46:35.368791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4304, 429, 'comment', 'owner', 'Steps 4 to 6 done at 6 points: kk at 2.28.1, ky at 2.28.2 and tg at 2.28.3, yarn validate green at 6811 tests and full coverage. Resume at step 7, tk lands at 2.28.4, then wo at 2.28.5, mr at 2.28.6 and the sweep that takes the README to thirty-four.', NULL, '2026-10-28 23:46:41.764462+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4312, 428, 'comment', 'owner', 'Lead integrity fix 2026-10-28: Steps 1 to 3 landed as e1bfcd3c, 4b33c168 and cf0518ba but their subtasks were left untouched, so 446, 447 and 448 are ticked to Done. Step 4 resumes in a fresh worktree on the same branch, which the lane removed on rotation.', NULL, '2026-10-28 23:51:54.350431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4368, 453, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:50:30.717291+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 218, "value": "#453"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4259, 447, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:43.977266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4260, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:43.977266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 447, "value": "T-447"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4272, 428, 'comment', 'owner', 'agent-ruled 2026-10-28, lane 2: (1) the eight ship in the ticket''s order, te gu kn am om bm tl ff, appended after zh-Hant, because the merge protocol concatenates waves and this wave''s rows go last. (2) Key parity is 202, the count en.ts actually carries, because Catalog is derived from that object. (3) te, gu, kn and am bundle their Noto pairs with script boxes from the measured win ink (1.5em, 1.5em, 1.65em, none), because no bundled face carries one letter of those scripts. (4) bm and ff share a bundled Noto Sans pair, because every shipped face lacks ɛ ɔ ɲ and ɓ ɗ ƴ. (5) Sourcing is the localized tables read today; unprinted slots take the T-410 decision 5 loan. (6) None of the eight is RTL, so RTL_IDS is untouched. (7) Version band 2.27.x as the lead ordered; android/app/build.gradle is prebuild output and absent from the tree. (8) app.json edits are agent-ruled here, per T-410 decision 10. (9) No What''s New item; the stamp rides the version.', NULL, '2026-10-28 23:29:52.592305+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11697,6 +11831,8 @@ question: shared/i18n/widget-statics.json:436 — the jv rectSubtitle reads ''Bu
 suggestion: assets/fonts/OFL.txt — the notice line names only ''The Rubik Project Authors'' while the two files this range adds are Google''s Noto Sans (both name tables carry the Google unique ID); OFL 1.1 requires the font''s own copyright notice to travel with the font, and the commit records the pair as bundled under the present licence. Add the Noto Sans notice line.
 
 question: the ticket''s first acceptance criterion asks for en parity at 201 keys; shared/i18n/en.ts holds 202 keys and all eight catalogs match it in set and in order, so the criterion as written cannot be met.', NULL, '2026-10-29 00:14:56.724733+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4367, 453, 'activity', 'owner', NULL, 'status', '2026-10-29 02:50:30.710853+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4492, 476, 'activity', 'owner', NULL, 'created', '2026-10-29 03:27:43.365839+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4316, 427, 'comment', 'owner', 'Step 3 landed at 2.28.0 (4fc9886d): ug and ckb ship RTL on the Naskh record, thirty locales, suite green at 100 percent coverage. Budget spent at 6 of 6 points, so this session stops here. Resume at Step 4 (T-443): ku and yo, yo on its own bundled Noto Sans pair for ṣ, at 2.29.0 - then Step 5 (jv, su) at 2.30.0 and Step 6 (sweep, README naming thirty-four) at 2.31.0. Branch lane1/T-427 carries bc01bb1c, ae05a01e and 4fc9886d; the worktree is removed and the branch stays for the lead''s merge.', NULL, '2026-10-28 23:52:41.120959+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4317, 427, 'comment', 'owner', 'agent-ruled 2026-10-28: two corrections to step 3''s record, with the catalogs themselves clean. Parity is en''s 201 keys, not 202 (the gate reads parity and passes; the 202nd line counted was a label row), and the Naskh re-measurement over each locale''s whole keyed surface reads 85 Uyghur and 84 Sorani distinct characters, zero missing in both weights, so the 97 and 96 figures in the commit note do not reproduce. Both drafts hold en''s key set in en''s order with all eleven names and five explanations verbatim from the glossary, and Sorani keeps to Sorani letters with no Arabic-Indic digits, harakat or tatweel.', NULL, '2026-10-28 23:54:28.560123+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4318, 437, 'activity', 'owner', NULL, 'status', '2026-10-28 23:54:34.705933+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -11743,6 +11879,448 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4352, 429, 'activity', 'owner', NULL, 'description', '2026-10-29 00:29:55.186232+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, the third of three parallel waves that together add twenty-four and reach fifty. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: es (Spanish), nl (Dutch), kk (Kazakh), ky (Kyrgyz), tg (Tajik), tk (Turkmen), wo (Wolof), mr (Marathi).\nFont note: kk, ky, tg and tk ride Roboto''s Cyrillic, mr rides the bundled Noto Sans Devanagari pair, and the rest are Latin, so this wave bundles no new font; the plan''s decision 6 records the fontTools measurement, by explicit codepoint in both weights, that proves it.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and shared/languageNames.ts; shared/i18n/locale.ts, loader.ts, native-strings.json, widget-statics.json and catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/; README.md. The recipe is the shipped waves #410 and #419 and their plan docs (Docs pages 48 and 49).\n\nAcceptance:\n- [x] Eight catalogs ship at en''s parity (205 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [x] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the four widget STATIC tables and their locale-finder lists, the detection rows and the gates; the T429_EIGHT sourcing row is green in catalogGates.\n- [x] typography.ts maps es, nl, kk, ky, tg, tk and wo to the LATIN record and mr to the bundled Devanagari pair, and typography.test.ts covers both.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4353, 429, 'activity', 'owner', NULL, 'status', '2026-10-29 00:29:55.186232+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4354, 429, 'comment', 'owner', 'Merged to uat at 2.31.0 and audited: the eight locales (es, nl, kk, ky, tg, tk, wo, mr) ship with their sourcing evidence, seven on Roboto''s Latin and Cyrillic and Marathi on the recorded Devanagari pair. The audit''s fixes ride 2.31.1 - the source labels that credited a page printing no such word, the loan slugs, the empty Dutch note, the Devanagari guillemet claim and the picker order the merge put back in codepoint order. The suite is green at 100 percent on all four metrics. The phone pass is the owner''s and nothing is pushed.', NULL, '2026-10-29 00:29:55.210036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4355, 451, 'activity', 'owner', NULL, 'created', '2026-10-29 02:49:49.266944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4356, 452, 'activity', 'owner', NULL, 'created', '2026-10-29 02:50:21.482328+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4357, 453, 'activity', 'owner', NULL, 'created', '2026-10-29 02:50:21.512044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4358, 454, 'activity', 'owner', NULL, 'created', '2026-10-29 02:50:21.541979+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4359, 451, 'activity', 'owner', NULL, 'status', '2026-10-29 02:50:30.506402+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4360, 451, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:50:30.517641+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 216, "value": "#451"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4361, 451, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.53952+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "451"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4362, 451, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.557782+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4363, 452, 'activity', 'owner', NULL, 'status', '2026-10-29 02:50:30.61275+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4364, 452, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:50:30.619336+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 217, "value": "#452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4365, 452, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.638375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "452"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4366, 452, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.656137+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4376, 455, 'activity', 'owner', NULL, 'created', '2026-10-29 02:55:20.552859+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4369, 453, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.736119+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "453"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4385, 451, 'activity', 'owner', NULL, 'description', '2026-10-29 02:55:25.185725+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the language picker''s card gains a dimmed Latin index on every row, its name centred on the card in both directions, and a search field inside the card above the scroll list that filters by endonym or English name with the keyboard never covering the sheet. Code only: no phone, no simulator, no screenshot, no build. The owner reads the result and rules from Awaiting Owner.\n\nWhere: components/sheets/screens/Language.tsx and its suite, components/sheets/parts/Sheet.tsx for the pinned slot and the keyboard props, app.json''s android block, shared/i18n/en.ts plus the forty-nine translation catalogs, shared/i18n/catalog-lock.json through scripts/catalog-lock.mjs, shared/languageNames.ts for the English names, and a new components/sheets/screens/languageFilter.ts with its suite.\n\nAcceptance:\n- [ ] The search field sits inside the card above the scroll list and never scrolls away, it is a BottomSheetTextInput, the sheet carries keyboardBehavior interactive and keyboardBlurBehavior restore, and android softwareKeyboardLayoutMode reads resize in app.json.\n- [ ] The field does not autofocus, carries a dimmed localized placeholder and a dimmed search glyph at the trailing edge mirrored under RTL, and types filter by endonym or English name folded case- and diacritic-insensitively, never by locale tag; the empty match renders its localized line and the input clears on close.\n- [ ] Every row carries a dimmed Latin index (1. 2. 3., Latin digits in every locale per the row-82 law) at the card''s left edge in both directions, with the name geometrically centred on the card and the index in its own absolutely-positioned slot.\n- [ ] The purple highlight follows the filtered list''s seat, the unfiltered order stays the picker''s codepoint order, and a pick still commits immediately and closes.\n- [ ] The new keys land in en and all forty-nine translations at byte parity, the catalog lock regenerates deliberately through scripts/catalog-lock.mjs, and yarn validate exits 0 at full coverage.\n- [ ] Dimmed elements use the shared dim colour, never text opacity (the row-294 law). No device work of any kind."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4386, 451, 'activity', 'owner', NULL, 'type', '2026-10-29 02:55:25.185725+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4387, 451, 'activity', 'owner', NULL, 'estimate', '2026-10-29 02:55:25.185725+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4388, 451, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:55:25.196014+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4389, 451, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:55:25.196014+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4394, 451, 'comment', 'owner', 'Steps 1 to 3 executed and green on branch lane1/T-451 at 3cd93195 (e5d2e949, 25c25653, 3cd93195); yarn validate exits 0 at 238 suites, 7347 passed, 2 skipped, 100 percent coverage. Version line 2.31.3 -> 2.32.0 feat -> 2.32.1 -> 2.32.2 patch, all on this branch alone with no other lane interleaved; the wave numbers stay free per the allowlist. Steps 2 and 3 landed in one commit because the export sweep refuses a module no production file imports yet. Worktree and branch kept for the merge; the three subtasks tick with it.', NULL, '2026-10-29 03:06:25.87105+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4396, 455, 'activity', 'owner', NULL, 'status', '2026-10-29 03:06:58.592222+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4400, 453, 'activity', 'owner', NULL, 'title', '2026-10-29 03:07:55.930735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine (skr, bal, kas, dv, aa, kr, mdh, mnk, dje)"}, "from": {"value": "Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine (skr, bal, kas, dv, aa, kr, mag, mnk, dje)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4401, 453, 'activity', 'owner', NULL, 'description', '2026-10-29 03:07:55.930735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s languages, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.\n\nLanguages: skr (Saraiki, ~26M, the largest unserved Muslim reading public, Pakistan), bal (Balochi, ~10M, Pakistan, Iran, Afghanistan), kas (Kashmiri, ~7M, Perso-Arabic Kashmir), dv (Dhivehi, ~0.34M, the Maldives, the one wholly Muslim nation), aa (Afar, ~3M, Djibouti and the Awsa), kr (Kanuri, ~10M, Borno and Niger), mdh (Maguindanao, ~1.5M, Muslim Mindanao, its true ISO code: mag is Magahi, an Indian language, and the picker and every surface must ship mdh), mnk (Mandinka, ~5M, the Senegambia), dje (Zarma, ~3M, Niger).\nFont note: skr, bal and kas read right to left on the Arabic script and must be measured by explicit codepoint against the bundled Naskh pair, both weights, before records are chosen; dv bundles a Noto Sans Thaana pair, a new script for the app, with its script box pinned by its own measured numbers.\nMission block: these nine close the remaining Muslim-map gaps the owner audited (2026-10-29).\n\nWhere: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and any font pair a script needs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their finders, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is waves #410, #419 and the fifty-language run (T-427, T-428, T-429) in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ with this run''s owner orders.\n\nAcceptance:\n- [ ] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.\n- [ ] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their finders, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps both waves'' rows, and the README count is the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.\n\nStanding owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4410, 453, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:13:52.740635+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4411, 451, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:13:52.740635+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4427, 463, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.79418+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4437, 453, 'comment', 'owner', 'Planned. Plan doc T-453 (page 54) carries the selection rationale, the per-language sourcing with the tables fetched, this wave''s own font measurements, 19 dated decisions, and six steps at 2 points each (12 total), one subtask per step. Waiting on T-451''s merge before execution; nothing in the repository was touched this session.', NULL, '2026-10-29 03:14:25.017279+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4450, 468, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.528293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4460, 452, 'activity', 'owner', NULL, 'field', '2026-10-29 03:15:39.011074+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4471, 454, 'activity', 'owner', NULL, 'field', '2026-10-29 03:20:15.887167+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4476, 471, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:20.008194+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4477, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:20.008194+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 471, "value": "T-471"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4497, 476, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:27:48.554791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 221, "value": "#476"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4498, 476, 'activity', 'owner', NULL, 'label_remove', '2026-10-29 03:27:48.554791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 220, "value": "#455"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4370, 453, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.753427+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4372, 454, 'activity', 'owner', NULL, 'label_add', '2026-10-29 02:50:30.813742+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 219, "value": "#454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4391, 451, 'comment', 'owner', 'agent-ruled 2026-10-29: planned. Plan doc T-451 carries nine decisions and three code steps, six points; the field pins through a new Sheet slot, the English names ride languageNames, the zh copy stays inside the bundled glyph subsets.', NULL, '2026-10-29 02:55:31.124586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4393, 451, 'activity', 'owner', NULL, 'status', '2026-10-29 03:06:25.84927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4395, 453, 'activity', 'owner', NULL, 'field', '2026-10-29 03:06:42.062458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4456, 452, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:14:30.564026+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4457, 451, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:14:30.564026+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4461, 453, 'activity', 'owner', NULL, 'field', '2026-10-29 03:15:39.025612+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4462, 454, 'activity', 'owner', NULL, 'field', '2026-10-29 03:15:39.043562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4485, 474, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:20.076453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4486, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:20.076453+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 474, "value": "T-474"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4493, 476, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:27:43.395529+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 220, "value": "#455"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4371, 454, 'activity', 'owner', NULL, 'status', '2026-10-29 02:50:30.807934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4373, 454, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.830395+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "454"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4379, 456, 'activity', 'owner', NULL, 'created', '2026-10-29 02:55:20.58835+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4399, 451, 'comment', 'owner', 'Lead integrity fix 2026-10-29: Steps 1 to 3 landed as e5d2e949, 25c25653 and 3cd93195 but their subtasks were left untouched, so 455, 456 and 457 are ticked to Done. The audit runs over 0cfcbc4d..3cd93195 and the merge follows it.', NULL, '2026-10-29 03:06:58.656732+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4425, 462, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.774813+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4426, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.774813+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 462, "value": "T-462"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4436, 453, 'activity', 'owner', NULL, 'status', '2026-10-29 03:14:24.995234+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4451, 468, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.529326+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4452, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.529326+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 468, "value": "T-468"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4466, 454, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:20:12.740746+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4467, 454, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:20:12.740746+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4468, 454, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:20:12.740746+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4469, 454, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:20:12.740746+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4473, 470, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:19.981793+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4474, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:19.981793+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 470, "value": "T-470"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4487, 475, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:20.096584+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4491, 454, 'comment', 'owner', 'Planned: the plan doc T-454 (Docs page 56) carries the selection rationale, the per-language sourcing genres, the measured font plan (Roboto carries all of tt, ce and uk including the palochka; mad rides the bundled Noto Sans pair because Roboto lacks its ḍ; my bundles the measured Noto Sans Myanmar v2.107 pair), six code steps at twelve points, and the 2.33.0 version line. Ready for execution once T-451 merges; the branch point is en''s key set at that merge.', NULL, '2026-10-29 03:20:36.976353+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4374, 454, 'activity', 'owner', NULL, 'field', '2026-10-29 02:50:30.852116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4375, 451, 'comment', 'owner', 'Owner order 2026-10-29: this ticket runs alone first and merges before the three language waves branch, because its new catalog keys must exist in en before any new catalog is authored against it. The waves (T-452, T-453, T-454) follow on the three lanes.', NULL, '2026-10-29 02:50:30.868404+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4382, 457, 'activity', 'owner', NULL, 'created', '2026-10-29 02:55:20.614519+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4390, 451, 'activity', 'owner', NULL, 'status', '2026-10-29 02:55:31.101155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4422, 461, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.752781+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4423, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.752781+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 461, "value": "T-461"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4424, 462, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.773514+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4428, 463, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.795532+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4429, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.795532+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 463, "value": "T-463"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4442, 465, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.464548+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4443, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.464548+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 465, "value": "T-465"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4479, 472, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:20.030824+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4480, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:20.030824+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 472, "value": "T-472"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4488, 475, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:20.097735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4489, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:20.097735+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 475, "value": "T-475"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4494, 476, 'activity', 'owner', NULL, 'field', '2026-10-29 03:27:43.419786+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "476"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4377, 455, 'activity', 'owner', NULL, 'parent', '2026-10-29 02:55:20.555282+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4378, 451, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 02:55:20.555282+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 455, "value": "T-455"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4380, 456, 'activity', 'owner', NULL, 'parent', '2026-10-29 02:55:20.58994+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4381, 451, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 02:55:20.58994+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 456, "value": "T-456"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4402, 453, 'comment', 'owner', 'agent-ruled 2026-10-29: Maguindanao ships as mdh, not mag. The lane''s planning session verified Intl.DisplayNames prints Magahi for mag and Maguindanao for mdh (maximised mdh-Latn-PH), so the ticket''s title and description are corrected and the plan must carry the correction into every surface.', NULL, '2026-10-29 03:07:55.946536+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4412, 458, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.680732+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4421, 461, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.7514+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4430, 452, 'activity', 'owner', NULL, 'type', '2026-10-29 03:14:19.825412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4431, 452, 'activity', 'owner', NULL, 'estimate', '2026-10-29 03:14:19.825412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "12"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4444, 466, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.48448+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4453, 469, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.547267+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4481, 473, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:20.052713+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4383, 457, 'activity', 'owner', NULL, 'parent', '2026-10-29 02:55:20.615878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4384, 451, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 02:55:20.615878+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 457, "value": "T-457"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4392, 451, 'activity', 'owner', NULL, 'status', '2026-10-29 02:55:33.58787+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4397, 456, 'activity', 'owner', NULL, 'status', '2026-10-29 03:06:58.616404+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4398, 457, 'activity', 'owner', NULL, 'status', '2026-10-29 03:06:58.640275+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4403, 453, 'activity', 'owner', NULL, 'description', '2026-10-29 03:13:52.699934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s nine, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.\n\nLanguages: skr (Saraiki, ~26M, the largest unserved Muslim reading public, Pakistan), bal (Balochi, ~10M, Pakistan, Iran, Afghanistan), kas (Kashmiri, ~7M, Perso-Arabic Kashmir), dv (Dhivehi, ~0.34M, the Maldives, the one wholly Muslim nation), aa (Afar, ~3M, Djibouti and the Awsa), kr (Kanuri, ~10M, Borno and Niger), mdh (Maguindanao, ~1.5M, Muslim Mindanao, its true ISO code: mag is Magahi, an Indian language, and the picker and every surface must ship mdh), mnk (Mandinka, ~5M, the Senegambia), dje (Zarma, ~3M, Niger).\nFont note: skr, bal and kas read right to left on the Arabic script and are measured by explicit codepoint against the bundled Naskh pair, both weights, before records are chosen; dv bundles a Noto Sans Thaana pair, a new script for the app, with its script box decided by its own measured numbers.\nMission block: these nine close the remaining Muslim-map gaps the owner audited (2026-10-29).\n\nWhere: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the Thaana font pair under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, both expo-font arrays and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their four finder lists, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is the fifty-language run (T-427, T-428, T-429) and its plan docs; the selection authority is the ticket''s mission block with ai/plans/39-localisation/research/.\n\nAcceptance:\n- [ ] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.\n- [ ] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their four finder lists, the detection rows and the gates; every right-to-left one (skr, bal, kas, dv) joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps all three waves'' rows, and the README count is the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.\n\nStanding owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; Maguindanao ships as mdh, never mag."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4404, 453, 'activity', 'owner', NULL, 'type', '2026-10-29 03:13:52.699934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4405, 453, 'activity', 'owner', NULL, 'estimate', '2026-10-29 03:13:52.699934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "12"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4406, 453, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:13:52.711557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4407, 453, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:13:52.711557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4408, 453, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:13:52.711557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4409, 453, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:13:52.711557+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4413, 458, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.682689+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4414, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.682689+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 458, "value": "T-458"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4415, 459, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.707923+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4416, 459, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.709189+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4417, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.709189+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 459, "value": "T-459"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4418, 460, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:02.73005+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4419, 460, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:02.731227+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4420, 453, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:02.731227+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 460, "value": "T-460"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4432, 452, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:14:19.834338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4433, 452, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:14:19.834338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4434, 452, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:14:19.834338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4435, 452, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:14:19.834338+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4438, 464, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.436811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4439, 464, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.4389+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4440, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.4389+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 464, "value": "T-464"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4441, 465, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.463105+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4445, 466, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.486024+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4446, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.486024+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 466, "value": "T-466"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4447, 467, 'activity', 'owner', NULL, 'created', '2026-10-29 03:14:30.508631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4448, 467, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.509982+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4449, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.509982+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 467, "value": "T-467"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4454, 469, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:14:30.548593+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4455, 452, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:14:30.548593+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 469, "value": "T-469"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4458, 452, 'activity', 'owner', NULL, 'status', '2026-10-29 03:14:53.636153+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4459, 452, 'comment', 'owner', 'agent-ruled 2026-10-29: planned. Plan doc T-452 (Docs page 55) carries seventeen decisions and six code steps, twelve points, blocked by the picker T-451; ja and ko ride the zh subset pipeline, the Latin six take no new font, and ceb and ilo close under the loan rule. The wave branches only after T-451 merges, so en''s parity is read at the branch point, never remembered.', NULL, '2026-10-29 03:14:53.65592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4465, 454, 'activity', 'owner', NULL, 'estimate', '2026-10-29 03:20:12.730788+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "12"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4472, 470, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:19.979876+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4475, 471, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:20.006898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4478, 472, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:20.029618+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4482, 473, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:20:20.053904+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4483, 454, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:20:20.053904+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 473, "value": "T-473"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4490, 454, 'activity', 'owner', NULL, 'status', '2026-10-29 03:20:36.956129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4463, 451, 'comment', 'owner', 'suggestion: shared/__tests__/stringGuard.test.ts - the plan''s Files row promises this suite also pins "that a copy-shaped field in that module still reddens"; only the exemption''s positive side is pinned (''Bahasa Melayu'', "english: ''Chinese (Simplified)''"), so widening scripts/scan-strings.mjs''s isNameData to the whole module passes every test. Add the negative case the plan names.
+suggestion: components/sheets/__tests__/Language.test.tsx - the plan''s Proof row for the field promises "Language.test.tsx reads the input''s type"; no row asserts the field is a BottomSheetTextInput, so the plain-TextInput regression decision 10 exists to prevent has no red test (the eleven listed mutations do not include the swap).
+nitpick: components/sheets/parts/Sheet.tsx - the pinned and keyboard prop docs were inserted between stackBehavior''s doc comment and its declaration, leaving that comment attached to nothing; insert the new props after stackBehavior instead.
+
+Verified conforming, plan row by row: the field is a BottomSheetTextInput pinned in the card''s top piece with the header, outside the scroll view, unpinned sheets unchanged (decision 1, Sheet suite); the fold is NFD, combining marks, apostrophe family, case, matching endonym or english name and never the tag, blank returning the whole picker in codepoint order (decisions 2 and 3, languageFilter suite); the index is an absolutely-positioned slot at the physical left edge in both directions, allowlisted with the owner order and writingDirection ltr, the name centred with nothing pushing it (decision 5); the glyph is search.svg through the Icon record at logical end in the dim ink (decision 6); exactly the two keys in en and the forty-nine translations after chooseHint, fifty files each, the lock regenerated and the zh wording inside the bundled subsets (decisions 7 and 8, catalogLock and cjk gates green); the highlight seats on the filtered list and hides at minus one (decision 4); interactive and restore reach the modal and app.json names the android resize mode explicitly (decision 10, nativeConfig suite); every dimmed element reads COLORS.text.muted, which is DESIGN.dim, with no text opacity; the version line runs 2.31.3 to 2.32.0 feat to 2.32.1 to 2.32.2 patch across package.json, app.json and whatsNew.ts (decision 9); a pick still commits at once and closes. yarn validate in the worktree exits 0: 238 suites, 7347 passed, 2 skipped, 100 percent statements, branches, functions and lines.', NULL, '2026-10-29 03:15:50.759426+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4470, 454, 'activity', 'owner', NULL, 'type', '2026-10-29 03:20:15.863164+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4484, 474, 'activity', 'owner', NULL, 'created', '2026-10-29 03:20:20.075052+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4495, 476, 'activity', 'owner', NULL, 'field', '2026-10-29 03:27:43.445288+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4515, 476, 'activity', 'owner', NULL, 'type', '2026-10-29 03:42:20.52215+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4516, 476, 'activity', 'owner', NULL, 'estimate', '2026-10-29 03:42:20.52215+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4464, 451, 'comment', 'owner', 'suggestion: components/sheets/screens/Language.tsx:170 - styles.searchGlyph sets only `end`, so the 16px glyph seats against the row''s top edge (y 0 to 16) inside the 44px field rather than at the vertical centre; the same file''s optionIndexSlot (top:0, bottom:0, justifyContent:center) is the pattern to copy, and no suite row seats the glyph vertically so the misplacement cannot redden.
+suggestion: shared/languageNames.ts:49 - running the shipped fold and filter over all fifty rows, the Latin-script names speakers actually type return the no-match line while the row is in the list: farsi (fa), bangla (bn), azeri (az), uighur (ug), pushto (ps), fulani and pulaar (ff); carry the common variants in the never-drawn english gloss or an alias field, or a reader typing their own language''s name lands on nothing.
+question: shared/i18n/wo.ts:99 - ''language.noMatch'' reads ''Làkk gu ñu man gis'' with no negation marker, roughly ''a language that can be seen'', where the other forty-nine catalogs negate (''no language found''); confirm the Wolof line is the no-match sense and not a stray gloss.
+nitpick: components/sheets/__tests__/Language.test.tsx:177 and components/sheets/parts/__tests__/Sheet.test.tsx:333 - insideScroll and scrollsWith are the same ancestor-walk written twice; extract the one helper both suites share.', NULL, '2026-10-29 03:19:58.005887+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4503, 452, 'activity', 'owner', NULL, 'link_remove', '2026-10-29 03:35:11.350073+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4504, 451, 'activity', 'owner', NULL, 'link_remove', '2026-10-29 03:35:11.350073+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4505, 453, 'activity', 'owner', NULL, 'link_remove', '2026-10-29 03:35:11.389296+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 451, "value": "T-451"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4506, 451, 'activity', 'owner', NULL, 'link_remove', '2026-10-29 03:35:11.389296+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4496, 476, 'comment', 'owner', 'Run order 2026-10-29: this ticket plans now and executes after the three waves merge. At the run''s close every ticket sits in Awaiting Owner, uat carries them all, and ONE development build of both platforms installs on the iPhone XS as the original app so the owner reads seventy-five languages, the search and this wheel in a single build. Fix forward: nothing is reverted after the owner''s read, findings become tickets.', NULL, '2026-10-29 03:27:43.46022+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4499, 451, 'activity', 'owner', NULL, 'description', '2026-10-29 03:35:11.257445+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the language picker''s card gains a dimmed Latin index on every row, its name centred on the card in both directions, and a search field inside the card above the scroll list that filters by endonym or English name with the keyboard never covering the sheet. Code only: no phone, no simulator, no screenshot, no build. The owner reads the result and rules from Awaiting Owner.\n\nWhere: components/sheets/screens/Language.tsx and its suite, components/sheets/parts/Sheet.tsx for the pinned slot and the keyboard props, app.json''s android block, shared/i18n/en.ts plus the forty-nine translation catalogs, shared/i18n/catalog-lock.json through scripts/catalog-lock.mjs, shared/languageNames.ts for the English names, and a new components/sheets/screens/languageFilter.ts with its suite.\n\nAcceptance:\n- [x] The search field sits inside the card above the scroll list and never scrolls away, it is a BottomSheetTextInput, the sheet carries keyboardBehavior interactive and keyboardBlurBehavior restore, and android softwareKeyboardLayoutMode reads resize in app.json.\n- [x] The field does not autofocus, carries a dimmed localized placeholder and a dimmed search glyph at the trailing edge mirrored under RTL, and types filter by endonym or English name folded case- and diacritic-insensitively, never by locale tag; the empty match renders its localized line and the input clears on close.\n- [x] Every row carries a dimmed Latin index (1. 2. 3., Latin digits in every locale per the row-82 law) at the card''s left edge in both directions, with the name geometrically centred on the card and the index in its own absolutely-positioned slot.\n- [x] The purple highlight follows the filtered list''s seat, the unfiltered order stays the picker''s codepoint order, and a pick still commits immediately and closes.\n- [x] The new keys land in en and all forty-nine translations at byte parity, the catalog lock regenerates deliberately through scripts/catalog-lock.mjs, and yarn validate exits 0 at full coverage.\n- [x] Dimmed elements use the shared dim colour, never text opacity (the row-294 law). No device work of any kind."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4500, 451, 'activity', 'owner', NULL, 'status', '2026-10-29 03:35:11.257445+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4501, 451, 'activity', 'owner', NULL, 'field', '2026-10-29 03:35:11.28293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read of the picker (search, keyboard, numbered centred rows) in the run''s single final build, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4507, 476, 'activity', 'owner', NULL, 'description', '2026-10-29 03:36:13.821578+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: change the language sheet from tap-to-commit-and-close to an iOS-picker-feel wheel without the iOS looks: the list settles row by row on the sheet''s centreline, a very faint candidate band rides the row a stop would select while the purple highlight stays on the locale actually in force, a tap stages a choice instead of committing it, and the staged change commits together with the close (swipe down, back gesture or the close affordance). Code only until the run''s single final build. Owner order 2026-10-29.\n\nWhere: components/sheets/screens/Language.tsx and its suite, components/sheets/screens/languageFilter.ts where the filtered seat feeds the wheel, the sheet parts only if the close path needs a hook, shared/__tests__ and components/sheets/__tests__ for the new guards, and stores/language.ts where the commit moves from the tap handler to the close boundary. The commit machinery itself (relaunch, loader, notification reschedule) is not rewritten, only re-timed.\n\nBehavior, as the owner described it:\n- The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it while scrolling.\n- A second, very faint marker (the dim colour family, never black, never opacity on text) rides the row nearest the list''s vertical centre while the finger drags and while the list settles, the lottery-wheel read: the user always sees where a stop lands.\n- Rows are uniform and the list snaps row-by-row to the centreline, so the settled row is always perfectly centred, at the top and at the bottom of the list alike.\n- On open, the list is positioned with the in-force locale centred.\n- A tap on a row stages that row as the candidate (the faint marker moves there) and does NOT close the sheet and does NOT commit.\n- The staged candidate commits when the sheet closes by swipe-down, back gesture or the close affordance: commit and close are one act. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.\n- Search still filters; the wheel, the snap and the two highlights work over the filtered list, and clearing the search restores the full list centred on the in-force locale.\n- The numbered dimmed indices and the centred names from T-451 are untouched.\n- First frames render settled: only value changes animate (the standing law).\n\nAcceptance:\n- [ ] The two-highlight model holds: the purple seat never moves while the sheet is open, the faint candidate tracks the centre row through drag and settle, and both are visible together when they sit on different rows.\n- [ ] The list snaps row-by-row to the centreline with the settled row centred, including at both ends of the list, and the sheet opens with the in-force locale centred.\n- [ ] A tap stages without closing or committing; closing commits the staged candidate through the existing commit machinery exactly once, and closing without a staged change leaves the app untouched.\n- [ ] Search, indices, centred names, the keyboard work and the RTL behaviour from T-451 all still hold over the wheel.\n- [ ] Red-first guards: the staged-commit boundary, the centre-snap alignment, the faint marker''s seat, and the no-commit-on-tap row each redden a suite when broken, with a mutation pass.\n- [ ] yarn validate exits 0 at full coverage. No device work: the run''s single final build is the owner''s read.\n\nScheduling: planning now, execution immediately after the three language waves close, on the first lane that frees.\n\nRefinements, owner order 2026-10-29, second pass, which override anything above that reads otherwise:\n- Settling the scroll selects NOTHING. Scrolling is browsing only: closing without a tap changes nothing. The faint band marks the centre row as a guide, but only a TAP stages a choice.\n- Haptics, exactly three, and nowhere else: one when a row is tapped and staged, one when the sheet closes with a staged change committing (never when closing without one), and a light detent tick as each row passes the centreline while scrolling. No haptic while the language change loads and none when it finishes; if the tree fires any today on that path, they move off it. expo-haptics is already in the stack.\n- The snap is magnetic and elastic: the list may never rest between two rows, it always settles the nearest row to the centreline, with the rubber-band give at both ends. Use what the platform and the existing stack already give (FlatList snapToInterval at the row pitch with centre alignment, or the Reanimated equivalent already in the repo). No new third-party picker component enters the repo: the code mimics, it does not install.\n- The sheet''s subtitle reads close-to-save (a new or reworded catalog key carried across every locale at parity, the T-451 pattern), so the commit point is written on the sheet itself.\n- On close with a staged change: the haptic fires with the commit, then the existing language-change loader and relaunch machinery runs exactly as it does today."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4509, 452, 'activity', 'owner', NULL, 'status', '2026-10-29 03:36:29.400065+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4511, 453, 'activity', 'owner', NULL, 'status', '2026-10-29 03:38:42.188353+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4514, 476, 'comment', 'owner', 'Owner refinement 2026-10-29, third pass: the loader choreography. Cover and spinner instant at close-with-staged-change (already the tree''s shape via the switch cover and the full-screen loader, so this is a re-timing, not a new surface), the line under the spinner fades in over 200ms once available in the settled locale instead of snapping, and the whole loader lifts together in one immediate act at completion.', NULL, '2026-10-29 03:39:04.00021+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4525, 479, 'activity', 'owner', NULL, 'created', '2026-10-29 03:42:28.049932+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4532, 476, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.998707+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 454, "value": "T-454"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4533, 454, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.998707+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4537, 470, 'activity', 'owner', NULL, 'status', '2026-10-29 03:53:09.851092+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4551, 476, 'activity', 'owner', NULL, 'estimate', '2026-10-29 03:59:04.566885+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "8"}, "from": {"value": "6"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4555, 471, 'activity', 'owner', NULL, 'status', '2026-10-29 04:04:44.109978+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4558, 482, 'activity', 'owner', NULL, 'parent', '2026-10-29 04:10:33.606048+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 480, "value": "T-480"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4559, 480, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 04:10:33.606048+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 482, "value": "T-482"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4563, 480, 'activity', 'owner', NULL, 'status', '2026-10-29 04:10:37.028161+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4564, 480, 'activity', 'owner', NULL, 'type', '2026-10-29 04:10:37.028161+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4565, 480, 'activity', 'owner', NULL, 'estimate', '2026-10-29 04:10:37.028161+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "4"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4502, 451, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: range 0cfcbc4d..3cd93195 reviewed by two reviewers (comments 4463, 4464) and merged as f2686999; all six confirmed findings fixed in 9adbfddb at 2.32.3 (the glyph seated at the field''s centre, the variant spellings in the fold, the Wolof negation, the stringGuard red side, the BottomSheetTextInput pin, the shared ancestor walk, the doc comment). validate green at 238 suites, 7354 tests, 100 percent coverage. Parked for the owner''s read in the run''s single final build; nothing is pushed.', NULL, '2026-10-29 03:35:11.302112+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4508, 476, 'comment', 'owner', 'Owner refinement 2026-10-29, second pass: scroll-settle never selects, only a tap stages; three haptics exactly (tap-stage, close-commit, and the centreline detent tick while scrolling), none on the loading path; the snap is magnetic and elastic, never resting between rows, with no new third-party component; the subtitle reads close-to-save across every locale; close-with-staged-change fires the haptic with the commit then the existing loader and relaunch. The planning session folds these into the plan doc; if it returned before this comment, the lead resumes it to fold them in.', NULL, '2026-10-29 03:36:13.837748+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4510, 454, 'activity', 'owner', NULL, 'status', '2026-10-29 03:36:34.744581+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4512, 453, 'comment', 'owner', 'Execution starts in lane 2: worktree wt-lane2-t453, branch lane2/T-453, cut from uat at 9adbfddb (2.32.3). The session budget carries this lane through Step 3 (six points); Steps 4 to 6 resume in the next session.', NULL, '2026-10-29 03:38:42.206412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4513, 476, 'activity', 'owner', NULL, 'description', '2026-10-29 03:39:03.982229+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: change the language sheet from tap-to-commit-and-close to an iOS-picker-feel wheel without the iOS looks: the list settles row by row on the sheet''s centreline, a very faint candidate band rides the row a stop would select while the purple highlight stays on the locale actually in force, a tap stages a choice instead of committing it, and the staged change commits together with the close (swipe down, back gesture or the close affordance). Code only until the run''s single final build. Owner order 2026-10-29.\n\nWhere: components/sheets/screens/Language.tsx and its suite, components/sheets/screens/languageFilter.ts where the filtered seat feeds the wheel, the sheet parts only if the close path needs a hook, shared/__tests__ and components/sheets/__tests__ for the new guards, and stores/language.ts where the commit moves from the tap handler to the close boundary. The commit machinery itself (relaunch, loader, notification reschedule) is not rewritten, only re-timed.\n\nBehavior, as the owner described it:\n- The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it while scrolling.\n- A second, very faint marker (the dim colour family, never black, never opacity on text) rides the row nearest the list''s vertical centre while the finger drags and while the list settles, the lottery-wheel read: the user always sees where a stop lands.\n- Rows are uniform and the list snaps row-by-row to the centreline, so the settled row is always perfectly centred, at the top and at the bottom of the list alike.\n- On open, the list is positioned with the in-force locale centred.\n- A tap on a row stages that row as the candidate (the faint marker moves there) and does NOT close the sheet and does NOT commit.\n- The staged candidate commits when the sheet closes by swipe-down, back gesture or the close affordance: commit and close are one act. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.\n- Search still filters; the wheel, the snap and the two highlights work over the filtered list, and clearing the search restores the full list centred on the in-force locale.\n- The numbered dimmed indices and the centred names from T-451 are untouched.\n- First frames render settled: only value changes animate (the standing law).\n\nAcceptance:\n- [ ] The two-highlight model holds: the purple seat never moves while the sheet is open, the faint candidate tracks the centre row through drag and settle, and both are visible together when they sit on different rows.\n- [ ] The list snaps row-by-row to the centreline with the settled row centred, including at both ends of the list, and the sheet opens with the in-force locale centred.\n- [ ] A tap stages without closing or committing; closing commits the staged candidate through the existing commit machinery exactly once, and closing without a staged change leaves the app untouched.\n- [ ] Search, indices, centred names, the keyboard work and the RTL behaviour from T-451 all still hold over the wheel.\n- [ ] Red-first guards: the staged-commit boundary, the centre-snap alignment, the faint marker''s seat, and the no-commit-on-tap row each redden a suite when broken, with a mutation pass.\n- [ ] yarn validate exits 0 at full coverage. No device work: the run''s single final build is the owner''s read.\n\nScheduling: planning now, execution immediately after the three language waves close, on the first lane that frees.\n\nRefinements, owner order 2026-10-29, second pass, which override anything above that reads otherwise:\n- Settling the scroll selects NOTHING. Scrolling is browsing only: closing without a tap changes nothing. The faint band marks the centre row as a guide, but only a TAP stages a choice.\n- Haptics, exactly three, and nowhere else: one when a row is tapped and staged, one when the sheet closes with a staged change committing (never when closing without one), and a light detent tick as each row passes the centreline while scrolling. No haptic while the language change loads and none when it finishes; if the tree fires any today on that path, they move off it. expo-haptics is already in the stack.\n- The snap is magnetic and elastic: the list may never rest between two rows, it always settles the nearest row to the centreline, with the rubber-band give at both ends. Use what the platform and the existing stack already give (FlatList snapToInterval at the row pitch with centre alignment, or the Reanimated equivalent already in the repo). No new third-party picker component enters the repo: the code mimics, it does not install.\n- The sheet''s subtitle reads close-to-save (a new or reworded catalog key carried across every locale at parity, the T-451 pattern), so the commit point is written on the sheet itself.\n- On close with a staged change: the haptic fires with the commit, then the existing language-change loader and relaunch machinery runs exactly as it does today.\n\nRefinements, owner order 2026-10-29, third pass, the loader choreography at the commit boundary:\n- The solid cover and the spinner appear the instant the sheet closes with a staged change, so the language never visibly shifts underneath. The tree already owns this shape: the language commit holds the switch cover (languageCommitBusyAtom in app/index.tsx) and the full-screen loader covers the wait, so this item re-times what exists rather than inventing a surface.\n- The line under the spinner (language.changing with the chosen language''s own name) today snaps in a beat late. It must instead fade in, a single 200ms fade, in the moment it becomes available in the settled locale, never a snap. The 200ms is the owner''s number and the plan dates it as such.\n- When the commit completes, the cover, the spinner and the line all lift together in one immediate act, with the existing reveal''s fast fade, no staggered teardown.\n- Law reconciliation, dated in the plan: the fade-in is a transient value change, the settled line carries full ink, so the row-294 rule (colour carries the dim, never text opacity) is not broken, and the first-frame-settled law keeps the loader''s own first frame settled with only the line''s availability animating."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4517, 476, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:42:20.533354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4518, 476, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:42:20.533354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4519, 477, 'activity', 'owner', NULL, 'created', '2026-10-29 03:42:27.998653+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4520, 477, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:42:28.000374+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4521, 476, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:42:28.000374+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 477, "value": "T-477"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4522, 478, 'activity', 'owner', NULL, 'created', '2026-10-29 03:42:28.026225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4523, 478, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:42:28.027745+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4524, 476, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:42:28.027745+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 478, "value": "T-478"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4526, 479, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:42:28.051199+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4527, 476, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:42:28.051199+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 479, "value": "T-479"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4528, 476, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.956285+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 452, "value": "T-452"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4529, 452, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.956285+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4530, 476, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.978582+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 453, "value": "T-453"}, "subject": {"value": "blocked_by"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4531, 453, 'activity', 'owner', NULL, 'link_add', '2026-10-29 03:42:31.978582+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}, "subject": {"value": "blocks"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4534, 476, 'activity', 'owner', NULL, 'status', '2026-10-29 03:42:55.205754+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4535, 476, 'comment', 'owner', 'Planned 2026-10-29: the plan doc T-476 carries the owner''s behaviour spec restated, thirteen dated decisions (BottomSheetFlatList with snapToOffsets, the dim band under the rows, the commit re-timed to the sheet''s onDismiss), three steps at 2 points each, 6 total, blocked by the three waves. Ready for the first lane that frees.', NULL, '2026-10-29 03:42:55.228259+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4536, 464, 'activity', 'owner', NULL, 'status', '2026-10-29 03:51:54.191421+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4538, 476, 'comment', 'owner', 'Plan grill, T-476, against uat at 2.32.3. Findings only.
+
+1. Decision 1 ("Sheet scrollable={false}, so Sheet.tsx changes nothing") breaks the wheel deterministically. With scrollable={false} Sheet renders BottomSheetView (Sheet.tsx:219), so the BottomSheetFlatList is its descendant. In the pinned 5.2.14 both BottomSheetView and every library scrollable write animatedScrollableState and setScrollableRef on mount (node_modules/@gorhom/bottom-sheet/src/components/bottomSheetView/BottomSheetView.tsx, hooks/useScrollableSetter.ts); the ancestor BottomSheetView effect runs after the child''s and overwrites the registration with type VIEW at offset 0, so the sheet treats the content as a static view always at top and the pan-to-close steals the drag: the list never scrolls. Readable in the library source, no device needed. Fix: the doc replaces the mechanism with a new Sheet mode that hosts a caller-supplied scrollable directly (children rendered bare, no ContentWrapper, the BottomSheetFlatList the modal''s own child), and rewrites the Files rows "Sheet.tsx — read only" and "Sheet.test.tsx — regression; Sheet itself is unchanged" to changed with their coverage. The Risks row "snap fighting the sheet''s pan" is then a device unknown instead of a guaranteed break.
+
+2. The owner''s haptics order (second pass: exactly three — tap-stage, close-with-commit, per-row detent tick; never on close without a staged change; none while the change loads or finishes; "if the tree fires any today on that path, they move off it") appears nowhere in the plan. The tree fires one today on exactly that path: Sheet.handleDismiss fires a Light impact on every close of every sheet (Sheet.tsx:191-196, dated as the unified close haptic). As written, a no-staged close still buzzes and a staged close buzzes twice once the owner''s commit haptic lands. Fix: a dated haptics decision that suppresses or re-purposes the unified close haptic for the language sheet (a Sheet.tsx change with Sheet.test.tsx coverage, contra the read-only rows), wires the tap tick and the scroll detent (UI thread, once per row crossing the centreline), sweeps the load path naming the unified close haptic as the one moved, and adds the guards: three triggers fire, no buzz on close without staging, none during load.
+
+3. The owner''s third pass (loader choreography) is dropped and the Files list forbids it: the language.changing line must fade in over a single 200ms fade ("the plan dates it as such"), cover, spinner and line lift together at completion, and a dated law reconciliation (transient value change, full ink at settle, first-frame-settled holds). The plan has no decision, step, file or proof line for any of it, and reads "components/ui/LanguageLoader.tsx — read only; unchanged" while the line is a bare unanimated Text (LanguageLoader.tsx:42). Fix: a step for the 200ms Reanimated fade on the line with the owner-dated number, the one-act teardown (naming where "the existing reveal''s fast fade" lives, or dating that it must be added), the law reconciliation dated, and Files gains LanguageLoader.tsx and __tests__/app/_layout.test.tsx (the only suite covering the loader''s mount) as changed; re-cut the subtasks and re-sum the points if this becomes a fourth step.
+
+4. Decision 12 ("No new catalog keys. The wheel adds no copy") silently drops the owner''s subtitle order: "the sheet''s subtitle reads close-to-save". Today subtitle={null} (Language.tsx:84). The tree already carries the key: sheet.closeToSave = ''Close to save'' (shared/i18n/en.ts:100), in use by the Alert sheet (Alert.tsx:93), so the fix needs no catalog, scanner, string-census or directional-allowlist work. Fix: decision 12 becomes "the subtitle rewires to the existing sheet.closeToSave key (Alert''s own), no catalog change because the key exists at parity", and Step 2 plus the Language.test.tsx row add the subtitle assertion. An executor following the doc as written ships no subtitle and breaks the order.
+
+5. Decision 6 contradicts the owner''s first override. It says "The staged state is written only at settle — onMomentumScrollEnd and onScrollEndDragged — and at tap", but the order reads "Settling the scroll selects NOTHING... only a TAP stages a choice". Written as-is, a scroll-then-close commits the centre row, the exact forbidden behaviour, and no guard in Proof covers it. Fix: decision 6 states the staged value is written by the tap handler alone (the settle callbacks exist only for non-committing bookkeeping, or are deleted), and the Step 3 boundary guards add: settle-then-close with no tap calls neither reveal nor commit.
+
+6. Decision 8''s boundary prop is already occupied: Language.tsx:92 passes onDismiss={() => setQuery('''')} today, and the plan never composes the two. Order matters twice: commitStagedOnClose must consume the staged ref synchronously before setQuery('''') re-renders, or the decision-9 reset races the consume; and the query clear at close changes the filtered rows'' identity, firing the decision-9 reseed (scrollToOffset) into a dismissing sheet. Fix: decision 8 dates the composed handler (commit first, then the query clear) and decision 9 gates the reseed to fire only while the sheet is presented.
+
+7. Decision 9 resets the staged value on every filter change but justifies it only for "a staged row a filter has removed": typing one character that still contains the staged row silently discards the choice and scrolls the wheel back to the seat. The owner''s words cover only the removed row and the cleared query. Fix: the doc dates the decision — reset only when the staged id leaves the filtered set (the faint marker stays on the still-visible staged row), or reset on every change — and the Step 3 guards assert whichever it is; the current guard list covers neither.
+
+8. The Risks row on the Reanimated scroll handler under Jest lets "the executor record which one holds" between the animated-style guard and the pure bandSeat fallback: an acceptance the executor picks at run time is not a criterion. Fix: pin the primary guard now (the pure bandSeat/centreFloat suite is the acceptance; the animated-style assertion is a bonus that may be dropped), so the criterion is settled before the run.
+
+9. Decision 5 keeps only T-451''s "hidden when the locale is filtered out" and drops the current indicator''s other gate (opacity 0 when off-measure, Language.tsx:53). The overlay is now a fixed sibling of the scrolling list with no clip named, so a far scroll places translateY outside the list bounds and paints the purple over the card body. Fix: decision 5 adds the viewport gate or an overflow clip on the band container, and the band suite asserts it.
+
+10. Files omissions: components/sheets/screens/__tests__/Settings.test.tsx imports and renders the Language screen (lines 31, 148-165), so the rebuilt wheel flows into it — name it as regression; and decision 8 leans on hideLanguageSheet (stores/ui.ts:190) while Files never lists that file — add it read-only. Verified in the plan''s favour, for the record: the dim token (#5254ac/#4a47ae via COLORS.text.muted = DESIGN.dim), the 5.2.14 pin, the 2.33.0-2.40.0 collision-allowlist entries, and the pure-suite-observable snap identities all match the tree.', NULL, '2026-10-29 03:53:43.181014+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4539, 480, 'activity', 'owner', NULL, 'created', '2026-10-29 03:56:49.290303+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4540, 480, 'activity', 'owner', NULL, 'label_add', '2026-10-29 03:56:49.320531+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 222, "value": "#480"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4541, 480, 'activity', 'owner', NULL, 'field', '2026-10-29 03:56:49.350284+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "480"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4542, 480, 'activity', 'owner', NULL, 'field', '2026-10-29 03:56:49.373555+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4543, 480, 'comment', 'owner', 'Run order 2026-10-29: this ticket plans now and executes when a lane frees after the waves, in parallel with T-476 (disjoint files: this one touches the colour constants, app.json''s android fields and their suites; T-476 touches the sheet, the loader choreography and the stores). End-of-run build order, recorded here for the run: after every ticket of this session sits in Awaiting Owner and uat carries them all, ONE development build of both platforms installs on the iPhone XS as the original app (install and bundle-id assert only, no navigation), and a production iOS build and a production Android APK are built to standby on disk, installed nowhere, no Android being connected.', NULL, '2026-10-29 03:56:49.394676+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4544, 478, 'activity', 'owner', NULL, 'title', '2026-10-29 03:59:04.502278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 2: Sheet hosts the caller''s scrollable, and the language screen renders as the wheel"}, "from": {"value": "Step 2: The language screen rendered as a centre-snapping wheel with its two bands"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4548, 481, 'activity', 'owner', NULL, 'created', '2026-10-29 03:59:04.544744+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4556, 465, 'activity', 'owner', NULL, 'status', '2026-10-29 04:06:17.59592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4545, 478, 'activity', 'owner', NULL, 'description', '2026-10-29 03:59:04.502278+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Sheet''s host mode (children bare, no ContentWrapper) and the close-haptic suppression prop with Sheet.test.tsx coverage; Language.tsx renders the BottomSheetFlatList inside the mode with snap offsets, both-end padding, the clipped band layer, the seeded open, and the subtitle rewired to sheet.closeToSave; Language.test.tsx rewritten; Settings.test.tsx regression. See the plan doc T-476 (v2)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4546, 479, 'activity', 'owner', NULL, 'title', '2026-10-29 03:59:04.521831+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The tap-only staged commit at the composed close boundary"}, "from": {"value": "Step 3: The staged commit at the close boundary and the search interplay"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4547, 479, 'activity', 'owner', NULL, 'description', '2026-10-29 03:59:04.521831+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The tap stages, ticks and scrolls; the composed onDismiss consumes the staged ref first, reveals and commits exactly once, then clears the query under the presented gate; the staged-survival reset rule; the detent wiring; the boundary and haptic guards, including settle-then-close changes nothing. See the plan doc T-476 (v2)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4549, 481, 'activity', 'owner', NULL, 'parent', '2026-10-29 03:59:04.546099+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 476, "value": "T-476"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4550, 476, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 03:59:04.546099+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 481, "value": "T-481"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4552, 476, 'comment', 'owner', 'All ten answered in the plan doc (v2): Sheet gains a host mode for the caller''s scrollable (1), the haptics order is dated with the unified close haptic suppressed for this sheet (2), the loader''s 200ms line fade is a fourth step (3), the subtitle rewires to the existing sheet.closeToSave (4), staging is tap-only with a settle-then-close guard (5), the composed onDismiss ordering and presented gate are dated (6), the staged value resets only when its row leaves the filtered set (7), the pure suite is pinned as the Jest acceptance (8), the bands live in a clipped layer (9), and Settings.test.tsx, stores/ui.ts and en.ts join Files (10). One correction to the finding: the loader''s suite is components/ui/__tests__/LanguageLoader.test.tsx, which exists and covers the loader directly; no app/__tests__/_layout.test.tsx does. Now 4 steps, 8 points; stays Ready behind the three waves.', NULL, '2026-10-29 03:59:17.683721+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4538, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4553, 458, 'activity', 'owner', NULL, 'status', '2026-10-29 04:00:19.585226+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4557, 482, 'activity', 'owner', NULL, 'created', '2026-10-29 04:10:33.603993+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4574, 480, 'comment', 'owner', 'Grill findings on the plan doc, each with the row it breaks and the fix:
+
+1. The Changed row for oneDimInk.test.ts (and Step 1''s comment rewrite) rewrites the false sentence above rootBgFor in shared/design.ts:9 but leaves its standing copy inside the suite this ticket edits: oneDimInk.test.ts:98, "The full-screen solids sit between the navy top and the middle", three lines above the DESIGN pin the plan relies on. The plan''s own decision declares that sentence false once the arm passes the middle. Fix: add the line-98 comment to Step 1''s rewrite.
+
+2. Steps 1 and 2 land commits with no version bump and no origin fetch, against the standing order (patch bump on every commit, package.json and app.json together, fetch first because concurrent sessions have taken the same number twice). T-476 runs in the same window and bumps too, so the collision is concrete, and the parallel-lanes risk row covers file disjointness but not the number. Fix: give each step its patch bump and the origin fetch, and add the bumped numbers to Proof.
+
+3. The second Risks row names the #251b74 x 2 count as the guard against a missed Android window background, but a count cannot show where the two hexes sit: adaptiveIcon''s backgroundColor (app.json:85, an Android field that is not the window background) could hold one while the android block''s own field is missing, and the row stays green. Fix: pin the two fields positionally in the suite (parse app.json and assert expo.android.backgroundColor and the splash plugin''s android backgroundColor are each #251b74), or fold Proof''s positional grep into Step 2''s gate.
+
+Verified clean, no action: the consumer enumeration is exhaustive (widgets carry neither the constant nor the hex, both greps empty), the 65 percent arithmetic is exact and lands verbatim on every named face, the native path holds at plugin source on both platforms with expo.android.backgroundColor taking precedence while iOS resolves its own set field, no other suite pins the literals or reddens wrongly on the iOS arm, the string guard parses string literals and not comments, and the estimate (4 = 2 + 2, both subtasks at 2) and the label order (#480, Design, Android) are correct.', NULL, '2026-10-29 04:19:07.624729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4554, 453, 'comment', 'owner', 'agent-ruled 2026-10-29: bal''s Isha slot ships the Arabic loan عشاء (slug loan, low) because the plan''s sourcing table left the slot outside both its attested and loan-rule lists; the ruling rides the note in sourced-names.json. Step 1 landed at 2.33.0 (29a4471d): the sourcing record completes for the nine, the T453_NINE gate red first with a mutation pass, jq census 0, validate green at full coverage.', NULL, '2026-10-29 04:00:19.60987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4560, 483, 'activity', 'owner', NULL, 'created', '2026-10-29 04:10:33.609458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4561, 483, 'activity', 'owner', NULL, 'parent', '2026-10-29 04:10:33.611333+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 480, "value": "T-480"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4562, 480, 'activity', 'owner', NULL, 'subtask_add', '2026-10-29 04:10:33.611333+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 483, "value": "T-483"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4571, 459, 'activity', 'owner', NULL, 'status', '2026-10-29 04:15:58.276562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4566, 480, 'activity', 'owner', NULL, 'label_add', '2026-10-29 04:10:37.041442+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 148, "value": "Design"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4567, 480, 'activity', 'owner', NULL, 'label_add', '2026-10-29 04:10:37.041442+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Android"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4573, 454, 'comment', 'owner', 'Execution resumed and the first three of six steps are landed on branch lane3/T-454 (tip 3ecca8ca, worktree ~/repos/wt-lane3-t454 kept open for the next session): the sourcing record for all eight, my on its bundled and re-measured Myanmar pair, and tt and ce on Roboto''s measured Cyrillic. Story budget stops the lane here at six points; resume at Step 4 (uk and qu on Roboto), then Steps 5 and 6 as planned. Version line 2.33.0-2.33.2 shares numbers with the sibling lanes under the grandfathered collisions allowlist; validate green at the tip (238 suites, 7429 tests passing, en''s lock hash unchanged).', NULL, '2026-10-29 04:17:27.523333+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4568, 480, 'comment', 'owner', 'Planned: the plan doc T-480 carries the face enumeration, the #251b74 derivation (65 percent of the house gradient), the dated platform-keyed split, the iOS byte guard and the proof commands. Two code steps, 4 points; ticket Ready, executing when a lane frees after the waves.', NULL, '2026-10-29 04:10:46.985057+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4569, 452, 'comment', 'owner', 'Steps 1 to 3 of 6 are done on branch lane1/T-452, tip 64de03e1: the sourcing record for the eight, ja and ko on their cut subset pairs, and it and pl on the measured Latin records, versions 2.33.0 to 2.35.0, validate green at 238 suites, 7459 tests, 100 percent coverage, en''s catalog-lock hash unchanged. The session''s six story points are carried, so step 4 (ro and ceb) is the resume point in a fresh session.
+
+agent-ruled 2026-10-29: it''s font census caught the turned comma in the Hijri month spellings (Roboto lacks U+02BB); the months follow the Romance wave''s own plain-Latin convention (es, pt and fr all print Rabi al-awwal), so it rides Roboto with no new font file. Two stale counts from earlier waves (the locale header''s thirty-four, the lock suite''s thirty-three) were corrected on sight while touching those files.', NULL, '2026-10-29 04:15:38.404987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4570, 466, 'activity', 'owner', NULL, 'status', '2026-10-29 04:15:38.445596+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4572, 472, 'activity', 'owner', NULL, 'status', '2026-10-29 04:17:18.819637+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4575, 482, 'activity', 'owner', NULL, 'description', '2026-10-29 04:22:06.604246+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Produces the native Android solids: app.json''s android block gains \"backgroundColor\": \"#251b74\" and the splash plugin''s android.backgroundColor (line 128) moves to #251b74, the three #1e1a6a occurrences untouched. oneDimInk.test.ts count rows red-first (#251b74 x 2, #1e1a6a x 3) joined by the parsed positional block pinning every backgroundColor field by place (root, ios, android, adaptiveIcon #05134a, plugin ios, plugin android), with a mutation pass including the shape mutation whose counts stay green. The commit carries the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle when present), the next number above the fetched tip. Plan doc: T-480 (Docs page 58)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4576, 483, 'activity', 'owner', NULL, 'description', '2026-10-29 04:22:06.609912+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Produces the dated Android solid in shared/design.ts: rootBgFor''s android arm lands #251b74 (the 65 percent point of DESIGN.bgStart to DESIGN.bgEnd) with the false sentence rewritten in both its places - the comment above rootBgFor (design.ts:9) and its standing copy at oneDimInk.test.ts:98 - and shared/__tests__/oneDimInk.test.ts pins it red-first (rootBgFor arms plus the not.toBe split guard) with a mutation pass. iOS arm and DESIGN.rootBg pin untouched. The commit carries the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle when present), the number one above the fetched tip. Plan doc: T-480 (Docs page 58)."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4577, 480, 'comment', 'owner', 'All three folded into the plan doc (v2). Step 1 now rewrites the stale copy at oneDimInk.test.ts:98 together with the sentence above rootBgFor. Both steps name the fetch-origin-first patch bump (package.json and app.json together, the gradle when present, the next number above the fetched tip) and Proof gains the per-commit version read-back recorded on the ticket, with versionLockstep named for the half-done bump. The count rows are joined by a parsed positional block pinning every app.json backgroundColor field by place - root, ios, android, adaptiveIcon #05134a, and both splash plugin entries - chosen over the gate-grep, and Step 2''s mutation pass includes the shape mutation whose counts stay green to demonstrate the parse holds the placement. Estimate unchanged, 4 = 2 + 2; ticket stays Ready.', NULL, '2026-10-29 04:22:18.18832+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4574, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4578, 460, 'activity', 'owner', NULL, 'status', '2026-10-29 04:24:21.465983+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4579, 453, 'comment', 'owner', 'Lane 2 stops at its six-point budget boundary: Steps 1 to 3 are landed on branch lane2/T-453 in worktree wt-lane2-t453, tip ab9dfe03 at 2.35.0, yarn validate green at full coverage (238 suites, 7476 tests) over the fifty-four locales this tree holds. Resume at Step 4 (aa and mdh on the LATIN record, next version 2.36.0); the branch is unpushed and waits for the lead.', NULL, '2026-10-29 04:24:40.476971+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4580, 467, 'activity', 'owner', NULL, 'status', '2026-10-29 04:25:11.215185+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4581, 473, 'activity', 'owner', NULL, 'status', '2026-10-29 04:25:23.623676+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4582, 468, 'activity', 'owner', NULL, 'status', '2026-10-29 07:25:04.973209+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4583, 469, 'activity', 'owner', NULL, 'status', '2026-10-29 07:27:37.598188+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4584, 452, 'comment', 'owner', 'All six steps are done. Branch lane1/T-452, tip 0a41924c, versions 2.33.0 to 2.38.0, one commit per step: the sourcing record for the eight, ja and ko on their cut subset pairs, it and pl, ro and ceb, ilo and vi, and the sweep. yarn validate exits 0 at the tip: 238 suites, 7559 tests passed with 2 skipped, 100 percent coverage (statements 5909/5909, branches 2614/2614, functions 1247/1247, lines 5303/5303), the widget runtime load suite green, en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet naming fifty-eight, the count LOCALE_IDS.length returns in this tree. The branch is unpushed and unmerged, awaiting the lead''s audit and merge.
+
+agent-ruled 2026-10-29: the first Ilocano draft carried taray (the runner''s word) for prayer; the catalog ships dasal, with the correction in step 5''s commit. The two wave-one font rulings from the earlier boundary note stand: it follows the Romance plain-Latin Hijri months, and no new font file beyond the four subset pairs.', NULL, '2026-10-29 07:28:31.406343+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4585, 452, 'activity', 'owner', NULL, 'status', '2026-10-29 07:28:31.432068+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4586, 461, 'activity', 'owner', NULL, 'status', '2026-10-29 07:29:14.651202+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4587, 474, 'activity', 'owner', NULL, 'status', '2026-10-29 07:31:11.440411+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4588, 475, 'activity', 'owner', NULL, 'status', '2026-10-29 07:32:38.939595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4590, 454, 'comment', 'owner', 'Execution complete: all six steps landed on branch lane3/T-454 (tip 8fb3e091, worktree ~/repos/wt-lane3-t454, six commits 2.33.0-2.33.5, nothing pushed, uat untouched). The wave''s eight shipped: my on the bundled and re-measured Myanmar pair, tt/ce/uk on Roboto''s measured Cyrillic, qu on measured Latin loans and day-words, min and bug on Roboto, mad on the Noto Sans pair Roboto''s missing ḍ rules it to. yarn validate green at the tip: 238 suites, 7556 tests passing (2 skipped), en''s lock hash unchanged from the branch point, the widget runtime load suite green, and the README naming fifty-eight from LOCALE_IDS.length. Red-first with mutation passes on every touched guard each step; ready for audit.', NULL, '2026-10-29 07:32:50.770965+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4592, 452, 'comment', 'owner', 'PLAN-CONFORMANCE review (9adbfddb..0a41924c, plan doc 55):
+
+suggestion: Decision 1 / Decision 14 / acceptance "merge protocol" - shared/i18n/sourced-names.json was alphabetized: all fifty pre-existing sections moved from landing order (en, ar, id, ur, ...) to alphabetical (am, ar, az, ...) and the eight interleaved at alphabetical positions (ceb 6th, vi 53rd) instead of appended at the file''s end. Section values are identical, but 2193 lines are deleted textually, the step 6 claim "touches no row the eight steps did not add" is false for this file, and the additive three-wave merge the protocol exists for cannot concatenate a reordered file. Restore the historical section order with the eight appended at the end in the wave''s order.
+
+question: Step 2 record - the commit says "the zh pairs re-cutting byte-identical", but all four zh subset TTFs changed bytes and sha256 (character sets unchanged; I measured SC-Regular hhea 1160/-288, win 1160/288, so no metric drift). The plan names only the four new TTFs. Should the record say character-set-identical, and was the zh re-cut needed at all?
+
+question: Plan sourcing table (genres) - three named genres were swapped without disclosure: ja''s Tokyo Camii timetable (salaahdaily.com cited instead), ko''s KMF Seoul Central Mosque timetable (ko.true-time.com and a Play listing; ko-wikipedia registered but cited by no slot), it''s mawaqit/UCOII mosque tables (an App Store IT listing instead). ko-play, ko-wikipedia, it-wikipedia and vi-true-time are registered but uncited, and _meta.unusedSlugNote was not extended for them. Are the substitutes equivalent attestations, or should the plan-named genres have been fetched?
+
+nitpick: Decision 15 - the plan names the picker glosses "Cebuano (Cebuano)" and "Ilokano (Ilocano)"; shared/languageNames.ts carries "Cebuano (Bisaya)" and "Ilocano (Iluko)".
+
+nitpick: Step 2 record - "about 271KB the four new files" reads half the truth: the four subset TTFs total 543,568 bytes (~531KB).
+
+Verified conforming: the eight are the ticket''s eight, appended after su in order across LOCALE_IDS (58), the loader''s 58 requires, catalog-lock script and suite, nativeLocalesConfig and widgetStaticStrings lists, the eight detection rows and the T452_EIGHT gate; every catalog holds 203 keys in en''s exact order with en.ts byte-identical and en''s lock hash b8df38ba unchanged; the README bullet names 58 languages equal to LOCALE_IDS.length with the eight appended; all six commits are feat-typed 2.33.0 through 2.38.0 with package.json, app.json and whatsNew.ts stamped together and build.gradle absent as the plan states; ja and ko ride the grown cjk-subset pipeline (JP/KR fetch URLs in the header, ja 321 and ko 311 characters in the lock, all eight TTFs sha256-pinned and matching) and their typography records match the binaries'' own metrics, which I measured (hhea 1160/-288, lineGap 0, UPM 1000, 770/506 glyphs); the Latin six all take LATIN on the Roboto census with no new font file, no full statics, ceb and ilo shipped under the loan rule with Cebuano-syntax explanations, digits Latin, RTL_IDS untouched, no What''s New item; all four widget STATIC tables and all four finder lists carry the eight appended; app.json''s CFBundleLocalizations equals LOCALE_IDS byte-for-byte with both expo-font arrays grown by the four TTFs. Re-ran yarn validate in the worktree: exit 0, 238 suites passed, 7559 tests passed with 2 skipped, coverage 100 percent (statements 5909/5909, branches 2614/2614, functions 1247/1247, lines 5303/5303).', NULL, '2026-10-29 07:39:22.27522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4594, 463, 'activity', 'owner', NULL, 'status', '2026-10-29 07:41:45.969256+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4597, 454, 'comment', 'owner', 'question: Plan decision 1 rules the eight append "in the ticket''s order" (my, tt, ce, uk, min, mad, bug, qu), but every shared list ships my, tt, ce, uk, qu, min, mad, bug - the plan''s own steps force that order (step 4 lands uk and qu together, step 5 lands min, mad and bug), and the README bullet and the detection rows follow the committed order. Nothing turns on it at the merge, since the lead''s additive resolution re-concatenates the waves anyway, but decision 1''s parenthetical does not read literally true of the tree; rule it one way when merging.
+
+Verified conforming: the eight shipped at en''s 203-key branch-point parity with the sourcing record complete (128 slots across the eight sections, zero null text, source or confidence, nineteen new slugs registered); the Myanmar record re-measured against the shipped TTFs with fontTools 4.67.0 and every number matches - hhea 1324/-860 (2.184em), win ink equal, lineGap 0, UPM 1000, worst single-glyph ink 1004/-469 Regular and 1009/-471 Medium - with no script box pinned, the row-87 law; Roboto measured over the whole Cyrillic block missing only U+0487 in both weights, so tt, ce and uk ride LATIN, and Roboto lacks U+1E0D/U+1E0C while the bundled Noto Sans pair carries both, so mad rides AFRICAN with the exclusion-list and test cases; the version line opens at feat 2.33.0 and patches through 2.33.5 with package.json, app.json and whatsNew.ts stamped together on every commit and build.gradle untracked prebuild output; the README names every shipped language at 58, equal to LOCALE_IDS.length; en byte-identical from the branch point with lock hash b8df38ba on all 57 translated entries, the branch point''s own hash; all four widget STATIC tables and their four finders, native-strings, widget-statics, the app.json locale blocks and CFBundleLocalizations carry all eight in the committed order; no rejected alternative adopted and no device work. yarn validate re-run at the tip: exit 0, 238 of 238 suites, 7556 passed with 2 pre-existing skips, coverage 100 percent on statements, branches, functions and lines.', NULL, '2026-10-29 07:43:02.3322+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4599, 476, 'activity', 'owner', NULL, 'status', '2026-10-29 07:51:01.244446+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4606, 452, 'comment', 'owner', 'Lead plan-doc amendments 2026-10-29: the glosses row now reads Cebuano (Bisaya) and Ilocano (Iluko), the shipped values, and the ja sourcing genre is recorded as superseded by the source the wave actually fetched. The commit-note correction: the four subset TTFs total 531KB, not 271KB; the wave record is corrected here rather than rewritten in history.', NULL, '2026-10-29 07:56:52.174242+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4607, 453, 'comment', 'owner', 'Plan-conformance review of lane2/T-453 (tip 20be3f45) against plan doc T-453, page 54, read end to end in worktree wt-lane2-t453.
+
+question: plan decision 9 and shared/i18n/mdh.ts:7-8 - the Maguindanao keyed surface is Tagalog, not the vocabulary list''s Malay-world register that the file''s own header claims. settings.updateCheckFailed reads "Nabigo ang pagsusuri. Subukang muli", help.a.none reads "Walang pahintulot, hindi makakapakita ang mga abiso", and widget.refresh carries the same sentence tl.ts carries ("Buksan ang Athan para i-refresh"), with ang, ng, mga and hindi running 62, 65, 38 and 5 times over the file. Confirm Tagalog copy is intended for mdh, or the catalog, its native-strings row and its widget rows need the Maguindanao register before the owner''s phone read.
+
+suggestion: README.md:15 - the nine names were appended after "Javanese and Sundanese", so the bullet now carries two conjunctions and reads as two lists. Replace that mid-list "and" with a comma so the sentence names one list of fifty-nine.
+
+question: plan decision 1 against shared/i18n/locale.ts:66-74 and shared/i18n/sourced-names.json:5623-6031 - decision 1 fixes the wave order as skr, bal, kas, dv, aa, kr, mdh, mnk, dje, and the record takes exactly that order, while LOCALE_IDS, the loader, typography, the lock and CFBundleLocalizations carry aa, mdh, kr because steps 4 and 5 landed in that sequence. Name the order the merge resolution appends, since the two registries disagree today.
+
+suggestion: components/sheets/__tests__/Language.test.tsx:299 and the plan''s Design section - the plan names this file and promises that every step''s gate re-reads the picker row count against LOCALE_IDS.length. The file is untouched and the count it asserts is LANGUAGE_NAMES.length, so a dropped endonym row passes every suite. Add the equality assertion against LOCALE_IDS.
+
+question: plan decision 14 and the Files list against the tree - the version stamps land in package.json, app.json and shared/whatsNew.ts at each step and nowhere else, because /android is gitignored prebuild output in this repository. Confirm the plan should not list android/app/build.gradle, rather than the branch dropping a stamp AGENTS.md requires.
+
+question: shared/typography.ts:434-440 against the shipped copy - the AFRICAN comment justifies kr, mnk and dje by the six letters ǝ ɓ ɗ ɛ ɔ ɲ, and none of the three catalogs carries one of them (kr carries no non-ASCII letter at all, mnk and dje carry ŋ alone, which Roboto carries). The record still follows decision 10, but the stated basis should be the language''s orthography, or the copy should use it.
+
+question: shared/i18n/locale.ts:182-185 - resolveKasTag sends every ks tag to kas, so a device on ks-Deva-IN, CLDR''s Devanagari Kashmiri, receives Perso-Arabic copy. resolvePaTag guards exactly this case with its Guru and IN exclusions. Decide whether ks-Deva should fall through to en.
+
+nitpick: shared/i18n/sourced-names.json:108 - _meta.unusedSlugNote still enumerates the older registered-but-uncited slugs, so the four new ones (bal-incubator, dv-adhadhu, aa-islamhouse, kr-ajami) are absent from it. The step 1 message also counts ten new slugs where the record registers nine.
+
+nitpick: shared/__tests__/catalogLock.test.ts:75 - the title says "fifty-nine translated locales" while LOCALES holds 58, en excluded.
+
+Verified conforming: the nine ids with mdh rather than mag, and no Hebrew, Yiddish or Ladino in LOCALE_IDS, app.json or the catalogs. Every catalog holds en''s 203 keys and reproduces its glossary names byte for byte. The census over the nine prints 0, and the confidences match the table: skr and kas at medium on their own five, bal''s three at low with the misprint note, dv high on the council labels with both variants recorded, mdh''s Malay-world five at low, aa, kr, mnk and dje whole loans. I re-measured the fonts with fontTools: the Naskh pair carries all 25 distinct letters of the plan''s 27 in both weights while Rubik and Roboto carry none, the Thaana pair measures UPM 1000, hhea 1069 and -424, lineGap 0, win 1069 and 424, ink +751 and -306, 50 Thaana codepoints, version 3.001 and 414 glyphs, the six African letters are absent from Roboto and Rubik and present in Noto Sans, and every character of each of the nine''s surfaces is carried by its record''s pair with zero missing. The version line runs 2.33.0 to 2.38.0 with package.json, app.json and whatsNew stamped together and no new What''s New item. The README count of fifty-nine equals LOCALE_IDS.length, with 59 names and the right-to-left list plus four. sourced-names.json keeps the base''s fifty sections in landing order with the nine appended, every other registry appends, and LANGUAGE_NAMES sits in codepoint order. The whole keyed surface is present: loader RAW and MODULES, typography RECORDS, the lock list and its suite, native-strings at two permission strings and eighteen gallery keys, widget-statics at eleven, nine app.json blocks holding eighteen iOS strings and twenty-eight android keys each, CFBundleLocalizations at 59 in LOCALE_IDS order, all four widget STATIC tables and all four finder lists, fourteen detection rows, both chevron pin lists, and the RTL purity set at eight. yarn validate at the tip: exit 0, 238 suites, 7604 passed, 2 skipped, coverage 100 percent on statements, branches, functions and lines.', NULL, '2026-10-29 07:57:08.843019+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4613, 454, 'comment', 'owner', 'Blind review of 9adbfddb..lane3/T-454 (worktree tip 8fb3e091), read without the plan. yarn validate re-run in the worktree at that tip: exit 0, tsc and biome clean over 539 files, 238 of 238 suites passed, 7556 passed with 2 skipped, coverage 100 percent (statements 5905/5905, branches 2614/2614, functions 1244/1244, lines 5299/5299). The eight catalogs hold en''s 203 keys in en''s order, LOCALE_IDS and the README agree at 58, the lock hash is en''s at the branch point on all 57 translated entries, the four widget STATIC tables and their four finders carry all eight, app.json carries 28 android entries and 18 iOS strings per block and CFBundleLocalizations at 58, and the Myanmar record re-measures exactly (hhea 1324/-860, win 1324/860, lineGap 0, worst single-glyph ink 1004/-469 Regular and 1009/-471 Medium, the _tall_aa_asat ligature present in both weights). Findings:
+
+suggestion: shared/i18n/native-strings.json:1257, shared/i18n/ce.ts:35, app.json:3387. The Chechen rows mix Latin letters into Cyrillic where the palochka belongs. "ДӀахlумма" carries U+04C0 then U+006C inside one word, "Чlогla" at native-strings.json:1259 is Latin l, g, l, a, 56 catalog slots carry a Latin l ("Хlун" at ce.ts:35, "lалашдархьама" at ce.ts:102, "гlийла" at ce.ts:138), and ce.ts:124 ships the Latin "aka" in "{name} aka де". No other Cyrillic catalog carries a Latin letter inside a Cyrillic string (only the London place name), no slot in the gated record carries a Latin l, and nativeLocalesConfig.test.ts:141 now skips ce in the homoglyph guard, so nothing reddens. Replace with U+04C0 and U+04CF, then regenerate native-strings and app.json.
+
+suggestion: shared/__tests__/catalogGates.test.ts:172. The sourced-verbatim gate compares two of the five explanation slots, so sourced-names.json''s mad "20 mins after Sunrise" keeps U+2019 in "mata’are" while mad.ts:169 ships U+0027 and the suite stays green. That is the drift the step 5 message says was corrected. Compare all five slots, then straighten the record.
+
+question: the per-locale census numbers in the step 2 to step 5 messages do not reproduce on the surface they name. Over catalog values, native-strings, widget-statics and the endonym I measure my 92, tt 110, ce 105, uk 107, qu 71, min 66, mad 71 and bug 66 distinct characters against the claimed 102, 113, 137, 130, 70, 78, 85 and 75, and no wider surface I tried lands on them either. Which surface and command produced the claimed figures?
+
+nitpick: shared/i18n/widget-statics.json:2 still calls the table "twenty-six-language", shared/__tests__/nativeLocalesConfig.test.ts:5 and shared/__tests__/widgetStaticStrings.test.ts:3 still say "thirty-four-language", while shared/i18n/locale.ts:2 was swept to fifty-eight in this same change. Sweep the three.
+
+nitpick: shared/i18n/sourced-names.json:118. Seven slugs added in this change are named by no entry and are absent from unusedSlugNote: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary, islamic-invitation-qu. The note exists to account for exactly these.
+
+nitpick: shared/i18n/my.ts:5, shared/i18n/tt.ts:6, shared/i18n/min.ts:5. The headers call the Midnight and Last Third slots "loan-rule slots" while sourced-names.json records both as derived at medium confidence. The record separates derivation from loan, and the header erases it.', NULL, '2026-10-29 08:00:41.817744+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4589, 454, 'activity', 'owner', NULL, 'status', '2026-10-29 07:32:50.743939+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4591, 462, 'activity', 'owner', NULL, 'status', '2026-10-29 07:38:48.474312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4593, 452, 'comment', 'owner', 'suggestion: shared/i18n/ro.ts:48 - "Porntește" is a misspelling of "Pornește" (a porni); the file itself spells the verb correctly at lines 177/181. The non-word ships in six user-facing strings: ro.ts lines 48, 49, 53, 137, 175 and 180.
+suggestion: shared/i18n/ro.ts:70 - "Modul Nu deranja muțesc" pairs a singular subject with a plural verb; it should read "muțește", as line 67''s plural subject "Modurile ... muțesc" shows the pattern.
+suggestion: shared/typography.ts:392,398,404 - the census counts the comments pin (it 78, pl 80, ro 80, ceb 72, ilo 71) do not match the committed locales measured over the repo''s own closed-set definition (catalog + native-strings + widget-statics + endonym + app.json locale blocks): 73, 73, 74, 65, 64; only vi''s 128 matches. The load-bearing claim holds - every character of all six surfaces is carried in both Roboto weights, remeasured here - so re-run the census or re-pin the numbers; the step 3/4/5 commit messages repeat the stale counts.
+question: commit 8c1892bf says "the zh pairs re-cutting byte-identical", but all four zh subset TTFs changed bytes in this wave (NotoSansSC-Subset-Regular sha256 55b4f7c7.. before, a23d7920.. committed; the other three likewise, each matching the new lock). Only the zh character-set strings in cjk-glyph-lock.json are unchanged. If the message meant the character sets, the wording overclaims the binaries.
+nitpick: shared/i18n/sourced-names.json - the wholesale alphabetical re-sort rewrites every pre-existing locale block''s position (~7,700 of the diff''s lines), so the textual diff touches rows this wave did not author and git blame for every sourcing row now points here. The step 6 claim "the diff touches no row the eight steps did not add" holds only semantically (jq over old and new: 816 lines added, 0 rows changed or removed, verified).
+nitpick: shared/i18n/sourced-names.json _meta.unusedSlugNote - six of the fifteen new source slugs (ko-play, ko-wikipedia, it-wikipedia, vi-true-time, ceb-wikipedia, ilo-wikipedia) are cited by no entry, and the note that exists to declare exactly that was not extended. ceb/ilo-wikipedia arguably document the empty checks the loan rule rests on; the other four are agreeing-witness registrations no note cites, where the established pattern cites such slugs beside the stronger source.
+suggestion: shared/__tests__/catalogGates.test.ts:424 - the T452_EIGHT gate checks the glossary''s slots are non-null but never ties glossary text to the shipped catalog values, though every new catalog header claims the names are landed verbatim from sourced-names.json "gated by" this test. The verbatim claim holds today (all 16 slots across the eight locales verified equal); no suite would redden if a catalog byte later drifted from its source.', NULL, '2026-10-29 07:39:26.037362+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4595, 453, 'activity', 'owner', NULL, 'status', '2026-10-29 07:41:45.997174+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4600, 476, 'activity', 'owner', NULL, 'field', '2026-10-29 07:51:01.360863+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4601, 483, 'activity', 'owner', NULL, 'status', '2026-10-29 07:53:56.670833+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4602, 482, 'activity', 'owner', NULL, 'status', '2026-10-29 07:55:51.203946+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4596, 453, 'comment', 'owner', 'All six steps landed; the ticket moves to Audit. Branch lane2/T-453 in worktree wt-lane2-t453, tip 20be3f45 at 2.38.0, unpushed: six commits from 2.33.0 to 2.38.0 carrying the whole wave (sourcing record and T453_NINE gate; skr, bal, kas RTL on the measured Naskh record; dv on the bundled Thaana pair; aa and mdh on LATIN; kr, mnk, dje on AFRICAN; the sweep and README at fifty-nine from LOCALE_IDS.length). Yarn validate at the tip: exit 0 at full coverage, 238 suites, 7604 passed, en lock hash unchanged from the branch point, widget runtime load suite green on both platforms, jq census 0. One agent-ruled decision on record: bal''s Isha ships the Arabic loan (2026-10-29 comment).', NULL, '2026-10-29 07:41:46.039567+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4603, 480, 'activity', 'owner', NULL, 'status', '2026-10-29 07:56:02.838952+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4609, 453, 'comment', 'owner', 'suggestion: shared/i18n/mdh.ts:8 says the UI copy rides the Malay register, but 92 of the 203 values carry Tagalog particles (ang, ng, mga) and 83 are byte-identical to shared/i18n/tl.ts, full sentences included ("Ipakita ang lumipas na oras"); re-source the copy for Maguindanao or record the Tagalog derivation in this header and in the mdh glossary, which names no Tagalog source today.
+question: shared/typography.ts:92, repeated in the step 2 commit message, puts the whole keyed surface at 108, 104 and 112 distinct characters for skr, bal and kas; catalog + native-strings + widget-statics + endonym measures 92, 88 and 96 codepoints at this tip, so either name the command that prints 108/104/112 or correct the numbers.
+question: shared/typography.ts:431 puts aa and mdh at 67 distinct characters each; the same four surfaces measure 65 and 64.
+question: shared/typography.ts:438 and shared/__tests__/typography.test.ts:262 put kr, mnk and dje at 68 each with "the eng and the em dash the non-ASCII codepoints"; they measure 64, 63 and 64, and kr carries no eng at all, its only non-ASCII codepoint being the em dash.
+suggestion: shared/__tests__/catalogLock.test.ts:75 names fifty-nine translated locales while its list and shared/i18n/catalog-lock.json hold 58; en ships but is not translated, so fifty-eight.
+question: commit 29a4471d claims ten new source slugs; shared/i18n/sourced-names.json gains nine (93 to 102 registered).
+nitpick: shared/i18n/sourced-names.json:108 enumerates every registered slug that no entry names as its source; the nine add four to that class (bal-incubator, dv-adhadhu, aa-islamhouse, kr-ajami) and the note misses them.
+nitpick: shared/__tests__/widgetStaticStrings.test.ts:3 and shared/i18n/widget-statics.json:2 still call the table thirty-four-language and twenty-six-language; it holds 59 locale rows after this change.', NULL, '2026-10-29 08:00:08.068155+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4614, 454, 'comment', 'owner', 'Lead adjudication 2026-10-29 on comment 4613: the Chechen Latin l is a defect and gets the palochka (U+04C0/U+04CF) across the catalog, native strings and app.json, with ce un-skipped in the homoglyph guard so it can never regress that way again. The gate widens to all five explanation slots and the mad apostrophe aligns the catalog to the glossary, the record being the source. The census numbers are re-measured and re-pinned on the same four-surface definition the other waves used, the three stale headers swept, the seven slugs accounted for in unusedSlugNote, and the three headers restated so derived is not called a loan. One fix commit on the branch.', NULL, '2026-10-29 08:00:58.346368+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4598, 480, 'activity', 'owner', NULL, 'status', '2026-10-29 07:50:47.49844+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4604, 480, 'comment', 'owner', 'Executed both steps, audit-ready. Branch lane2/T-480 at 2dde1e69 (base 9adbfddb, 2.32.3): the Android solid is #251b74, the house gradient''s 65 percent, as the platform-keyed arm in shared/design.ts, on app.json''s android block window background and on the splash plugin''s android entry; the iPhone arm and app.json''s three #1e1a6a fields are byte-identical and the suite now parses all six backgroundColor fields by place beside the counts. The stale sentence dies in both places (design.ts and oneDimInk.test.ts:98) and the split guard proves the two arms differ.
+
+yarn validate exits 0 at the tip and at each commit: 238 suites, 7352 passed, 2 skipped, statements 5885/5885, branches 2614/2614, functions 1241/1241, lines 5279/5279. Versions 2.32.4 (step 1) then 2.32.5 (step 2), patches, one above the fetched tip and taken by no branch here; T-476 sits at 2.32.3 on the same base and its next patch will collide by number, grandfathered and resolved at the lead''s merge. One plan omission found by the tree: whatsNew.test.ts pins the What''s New banner to app.json''s version, so shared/whatsNew.ts was stamped with each bump although the plan''s Changed list did not name it. No device work of any kind.', NULL, '2026-10-29 07:56:02.908466+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4605, 452, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: range 9adbfddb..0a41924c reviewed by two reviewers (comments 4592, 4593) and fixed on the branch in e69c2b3a at 2.38.1 - the sourced-names file restored to landing order with the eight appended (the merge-critical finding), the six Romanian spellings and the verb agreement, the census re-measured and re-pinned at the repo''s own closed-set definition (one below the review''s count, which included U+000A that Roboto does not carry), and the six orphaned slugs credited or removed with unusedSlugNote rewritten. Ruled, not changed: the zh subset re-cut stands (character sets unchanged, sha256 pins updated), the shipped glosses stand and the plan doc is amended to them, and the gate-gap finding is rejected because the SHIPPED-based byte-for-byte gate already covers all eight. validate green at 238 suites, 7559 tests, 100 percent coverage. Awaiting the merge.', NULL, '2026-10-29 07:56:51.977722+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4608, 453, 'comment', 'owner', 'Lead adjudication 2026-10-29 on comment 4607. The mdh copy finding stands as a disclosed stand-in, not a rewrite: Maguindanao speakers are widely bilingual in Tagalog, no attested Maguindanao UI corpus exists to source 203 keys from, and inventing one would be worse than a documented stand-in, so the catalog ships its Tagalog-derived UI copy with the prayer names Maguindanao-sourced, dated low confidence on the ticket for a speaker pass. Everything else is a fix: the README''s double conjunction, the registry order amended to the landing order (aa, mdh, kr, as LOCALE_IDS carries), the Language test''s equality against LOCALE_IDS, the ks-Deva fall-through mirroring the pa-Guru guard, the four new slugs in unusedSlugNote, the catalogLock title, and the plan rows for the untracked gradle, the AFRICAN comment''s basis and the order.', NULL, '2026-10-29 07:57:28.585462+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4610, 480, 'comment', 'owner', 'Plan-conformance review of 9adbfddb..lane2/T-480 against Docs page 58 (T-480, v2), at the tip.
+
+suggestion: plan "Files, Changed" and the 2026-10-29 version decision: shared/whatsNew.ts is stamped 2.32.4 then 2.32.5 in both commits, and neither the Changed list nor the version discipline names it (package.json, app.json and the gradle only). whatsNew.test.ts:497 pins WHATS_NEW.version to app.json''s version, so the plan followed literally reddens that suite. Add whatsNew.ts to the stamp set, where the executor already declared it in its closing comment.
+
+suggestion: plan "Steps, Step 2" and "Proof", the shape mutation: "move the hex onto the root field and delete the android block''s field, the counts stay green" cannot hold, because the root is one of the three #1e1a6a fields, so the count row drops to 2 and reddens beside the parse. The run substituted the adaptiveIcon shape, which does keep both counts green and reddens the parsed rows, and recorded it in the step 2 commit body. Carry the performed shape in the plan so the next run''s proof and the doc agree.
+
+suggestion: plan decision of 2026-10-29 on the positional guard: the count rows are named "the no-stray-seventh guard". A seventh backgroundColor field carrying any hex but the two counted passes both count rows and all six parsed paths. Assert the file''s total backgroundColor occurrence count (6) beside the parse if that guard is meant to hold.
+
+nitpick: plan "Steps, Step 2", the per-step origin fetch: the worktree holds one FETCH_HEAD, written 07:51, before step 1''s commit at 07:52:56, and nothing was fetched between the two commits (07:54:55). The outcome holds, since 2.32.4 and 2.32.5 sit on no other branch here, but step 2''s fetch has no line behind it.
+
+Verified conforming: the ruled hex reproduces from bgStart #05134a to bgEnd #36208a at 65 percent (37/27/116 = #251b74), and both rejected readings land elsewhere (#2e1e7f, #2b1c7f). The split stays a platform-keyed constant pair selected once at module load in rootBgFor, with no per-render branch added and no face file edited. Every enumerated face moves through COLORS.navigation.rootBackground (app/_layout.tsx:93, components/ui/LanguageLoader.tsx:55, components/ui/Error.tsx:58, stores/language.ts:122), and the adaptiveIcon bed stays #05134a as the plan rules, being neither the window background nor a full-screen face. app.json carries exactly two #251b74 (android block line 83, splash plugin android line 129) and three #1e1a6a (root, ios, splash ios), with all six backgroundColor fields pinned by place beside the counts. The iOS arm, expo.ios.backgroundColor and the splash plugin''s ios entry are byte-identical in the diff. Both copies of the false sentence are gone (the comment above rootBgFor and the DESIGN pin comment in the suite), with no third copy left. The split guard and the two arm pins hold. Versions read 2.32.5 in package.json, app.json and shared/whatsNew.ts together, 2.32.4 in the step 1 commit, patch-only, no feat subject. yarn validate exits 0 at the tip: tsc and biome clean (531 files), 238 suites, 7352 passed, 2 skipped, statements 5885/5885, branches 2614/2614, functions 1241/1241, lines 5279/5279. No prebuild, no build and no device, and android/ and ios/ are absent from the worktree, so the gradle agreement is untestable by design. The native path holds at source: the plugin prebuild applies is the @expo/prebuild-config copy, whose android reader takes config.android?.backgroundColor before the root and whose iOS reader takes config.ios?.backgroundColor first, identical to the expo-system-ui copies the plan cites. The red-first states and the mutation pass were not re-run here, since both require editing the tree.', NULL, '2026-10-29 08:00:19.59623+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4611, 453, 'comment', 'owner', 'Lead adjudication 2026-10-29 on comment 4609, the blind pass: the mdh Tagalog finding is the same one the plan review raised and the ruling stands - the header and the glossary record the Tagalog derivation in a second fix commit, the copy itself stays as the disclosed stand-in. The census counts are confirmed stale (the reviewer''s four-surface measurement wins over the pinned 108/104/112, 67/67 and 68/68/68) and get re-pinned at measurement, with the kr eng claim corrected. The stale table headers (widget-statics, its suite, the widget test title) and the nine-vs-ten slug count in the step-1 note are corrected in the same second commit; the first fix commit already carries the README, the Language equality, ks-Deva, unusedSlugNote and the catalogLock title.', NULL, '2026-10-29 08:00:22.677499+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4612, 480, 'comment', 'owner', 'Lead adjudication 2026-10-29 on comment 4610: the four findings are plan-doc rows, not code defects. The plan is amended for whatsNew.ts in the Changed and version rows, the substituted adaptiveIcon shape mutation is accepted as the proof, and Step 2''s fetch is recorded honestly; the one code action, asserting the file''s total backgroundColor occurrence count beside the parse, lands in the audit-fix commit once the blind pass returns.', NULL, '2026-10-29 08:00:36.287867+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4615, 480, 'comment', 'owner', 'nitpick: shared/__tests__/oneDimInk.test.ts:124 - the split guard cannot fail on its own, because lines 121 and 122 already pin the two arms to different literals, so a collapsed fork reddens `toBe` first and `not.toBe` only repeats it. Delete the line, or pin `DESIGN.rootBg` on the android arm so the guard proves a property the literals do not.
+
+nitpick: shared/__tests__/oneDimInk.test.ts:79 - the comment says a tint landing on the root leaves the counts green, and that is not so: a tint on `expo.backgroundColor` moves #1e1a6a from 3 to 2, or #251b74 from 2 to 3 when the android field is in place, which the step 2 commit message itself records. Only the adaptive icon, whose #05134a no count reads, slips past the counts. Name that case, so the next editor does not trust the counts for the root.
+
+question: app.json:86 - the adaptive icon keeps #05134a while `android.backgroundColor` becomes #251b74, so on Android 12+ the system splash now draws a navy icon disc on a lighter field, where the two navies sat close together before. Confirm that sharper seam at launch is intended.', NULL, '2026-10-29 08:01:23.233129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4621, 479, 'activity', 'owner', NULL, 'status', '2026-10-29 08:21:19.75907+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4616, 480, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: range 9adbfddb..2dde1e69 reviewed by two reviewers (comments 4610, 4615) and fixed on the branch in 30fb2bf0 at 2.32.6 - the split guard now pins the token''s wiring at source instead of repeating two literals, the count comment names the adaptive icon as the only slip past the counts, the positional guard asserts the file''s six backgroundColor fields, and the launcher bed''s #05134a beside the moved field is recorded as the owner''s call on the build. Plan doc amended for whatsNew in the version rows, the substituted mutation, and Step 2''s fetch. validate green at 238 suites, 7352 tests, 100 percent coverage. Awaiting the merge.', NULL, '2026-10-29 08:04:45.971924+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4617, 453, 'comment', 'owner', 'Lead plan-doc amendment 2026-10-29: decision 1''s nominal order is superseded by the landing order (aa, mdh, kr), the version rows drop the untracked gradle, the AFRICAN basis is restated to the orthography plus the measured census, and the mdh Tagalog stand-in is recorded with its speaker-pass debt. The first fix batch landed as d2ce8a49 at 2.38.1 with the 2.38.1 collision allowlisted, the second batch is running for the census figures, the mdh header and glossary disclosure, and the stale table headers.', NULL, '2026-10-29 08:06:01.10827+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4618, 477, 'activity', 'owner', NULL, 'status', '2026-10-29 08:12:20.819522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4619, 478, 'activity', 'owner', NULL, 'status', '2026-10-29 08:12:20.9299+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4620, 476, 'comment', 'owner', 'Agent ruling, 2026-10-29: plan Steps 1 and 2 land as one commit (26b5e485, 2.33.0). The repository''s unused-exports gate refuses an export no production file reaches, so the geometry cannot land before the screen that reads it, and the screen cannot be the wheel before the sheet hosts its scrollable; T-477 and T-478 tick together. The same gate moved bandSeat, stageLanguage and commitStagedOnClose out of the first commit into the step that consumes them, so Steps 3 and 4 stay one commit each.
+
+Version line: two other lanes already hold 2.38.1 (T-452''s and T-453''s audit fixes) and this branch''s collisions allowlist predated that line, which blocked every commit here; T-453''s own record of the standing ruling landed verbatim in the same commit. The audit comment will name the interleaving.', NULL, '2026-10-29 08:12:21.000102+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4622, 481, 'activity', 'owner', NULL, 'status', '2026-10-29 08:26:02.178477+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4623, 476, 'comment', 'owner', 'Agent ruling, 2026-10-29: the loader''s line fades through an opacity on a wrapper around the Text, not in the Text''s own style. components/__tests__/textInk.test.ts refuses opacity on any Text or Animated.Text (the standing order: text ink is solid, never alpha) and leaves ancestor opacity to the component suites, so the fade rides the wrapper, the ink stays the solid white, and the loading face still lifts in one unmount.', NULL, '2026-10-29 08:26:10.267639+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4624, 476, 'comment', 'owner', 'Execution done, 2026-10-29: branch lane1/T-476 at ed2beb5c on base 9adbfddb (2.32.3), three commits at 2.33.0, 2.34.0 and 2.35.0, all four steps ticked. yarn validate exits 0 at full coverage: 240 suites, 7399 passed with 2 skipped, statements 5982/5982, branches 2645/2645, functions 1267/1267, lines 5364/5364. No device work: the build read is the owner''s.', NULL, '2026-10-29 08:26:10.294274+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4625, 476, 'comment', 'owner', 'Version interleaving, 2026-10-29: uat has moved to 8888ee3b (2.38.1) with T-452, T-454 and T-480 merged since this branch was cut, so the merge must renumber above 2.38.1 and resolve app.json and whatsNew between the waves'' locale work and this branch. One file will collide: the waves'' audit fix added a LANGUAGE_NAMES-equals-LOCALE_IDS row to components/sheets/__tests__/Language.test.tsx, which this branch rewrites as the wheel suite, so that row must be carried into the rewritten file at the merge.', NULL, '2026-10-29 08:26:10.316843+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4626, 476, 'activity', 'owner', NULL, 'status', '2026-10-29 08:26:10.344463+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4627, 476, 'comment', 'owner', 'Plan-conformance review of `9adbfddb..ed2beb5c` against plan Doc 57 v2 and the owner''s three passes.
+
+`yarn validate` re-run at the tip: exit 0, 240 suites, 7399 passed with 2 skipped, statements 5982/5982, branches 2645/2645, functions 1267/1267, lines 5364/5364.
+
+suggestion: plan decision 12 (components/ui/LanguageLoader.tsx:16, shared/constants.ts:959) — the decision''s parenthetical "ANIMATION carries no 200" is false: `ANIMATION.duration` is 200 and is the tree''s standard timing. Either take the token or state the real reason (the fade belongs to this surface alone), so the next reader does not check the premise and find it wrong.
+
+suggestion: plan Proof, band row (components/sheets/__tests__/Language.test.tsx:216) — no test fires a scroll and reads either band''s `translateY`, so the purple''s scroll tracking and `bandSeat(offset)` after a scroll are unproven at the component level, and the test titled "moves the purple with the filtered list" asserts only opacity. Decision 18 permits dropping the animated-style read, but then the Proof sentence naming it should go; either way the filter-change seat (one pitch per row) is cheap to assert.
+
+suggestion: plan decision 14 / Proof wheel row — "the reseed offset under Arabic equals the one under English" has no guard: the RTL rows assert the index slot and the selected radio only. One `scrollToOffset` capture under `setActiveLocale(''ar'')` closes it.
+
+suggestion: plan Proof, staged-survival row — "clearing the query reseeds the full list centred on the locale in force" is unasserted; the clearing test checks the commit and nothing about the offset the reseed writes.
+
+suggestion: plan decision 11 / Proof "the driver-hanging load window fires no haptic" (Language.test.tsx:414) — the boundary suite stubs `commitLanguagePreference`, so a haptic added inside the real commit path would not redden it, and the frozen driver the old suite held is gone. Hold the driver for that row or narrow the Proof line to what is covered.
+
+suggestion: plan Files row `stores/ui.ts` read-only — the file changed: `hideLanguageSheet` is deleted in 0cb94067. The deletion is right (nothing reaches it once the tap stops dismissing) and the commit records why; the plan row should read changed with that reason.
+
+nitpick: plan Files list — two changed files are missing: `components/sheets/screens/__tests__/languageSheet.test.ts` (new suite) and `__tests__/app/_layout.test.tsx` (the subtitle makes three "Close to save" lines). The grill''s note was right about `app/__tests__/_layout.test.tsx`; the root `__tests__/app/` path is the one that moved.
+
+nitpick: plan decision 17 — "the 2.33.0 through 2.40.0 allowlist entries already cover the waves'' collisions" is stale: 26b5e485 adds a 2.38.1 entry. The version line itself conforms: three feat commits at 2.33.0, 2.34.0, 2.35.0, minor per subject, patch reset, package.json, app.json and shared/whatsNew.ts stamped together (android/app/build.gradle is untracked prebuild output).
+
+nitpick: plan decision 1 — "the children rendered bare" is not literally what ships: Sheet.tsx:254 wraps them in the sheet''s column View, which carries the horizontal inset and the bottom padding. The operative requirement holds (no ContentWrapper, no library content view — asserted on the element tree the library receives); the plan wording should match so the inset is not stripped later.
+
+Verified conforming: decision 1''s host mode with its absence-of-content-view test; decisions 2 and 3''s measured pitch and pad, the settle offset as the row''s pitch count, the last row identical to the maximum offset and `decelerationRate ''fast''`, with the pure suite green as the pinned criterion; decisions 4 and 5''s one absolutely-positioned band layer with `overflow: ''hidden''` as the viewport gate, the faint band at 0.3 on `COLORS.text.muted` (the dim family, no text inside), the purple painted above it and keeping both T-451 gates; decision 6''s tap-only staging with the settle-then-close guard reddening on a restored settle write; decision 7''s worklet edge on the last settled seat at 16ms; decision 8''s composed `onDismiss` in the dated order (ref consumed synchronously, then the commit, then the query clear, then the presented flag) with the reseed gated on `presented`; decision 10''s reset only when the staged id leaves the filtered set, with the three survival guards and no reseed into a dismissing sheet; decision 11''s exactly three triggers, with the Sheet''s unified close impact behind a default-off suppression prop and its own guard; decision 13''s subtitle on the existing `sheet.closeToSave` at parity, `shared/i18n/en.ts` untouched; decision 12''s single 200ms fade riding a wrapper so the ink stays solid, with the one-act unmount confirmed; decision 15''s radio state unchanged; decision 9''s re-timed commit calling the unchanged machinery exactly once. Every file the plan names as changed is in the diff, and the read-only rows for `stores/language.ts`, `languageFilter.ts`, `en.ts`, `Settings.test.tsx`, `languageFilter.test.ts`, `SheetHost.test.tsx` and `languageCommitGuards.test.ts` are untouched and green. The merge rows in comment 4625 (renumber above uat''s 2.38.1, reconcile app.json and whatsNew, carry the LANGUAGE_NAMES-equals-LOCALE_IDS row into the rewritten suite) are recorded and still ahead of the merge.', NULL, '2026-10-29 08:32:21.096917+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4628, 476, 'comment', 'owner', 'Review, T-476, blind against 9adbfddb..lane1/T-476. Findings only.
+
+question: components/sheets/screens/Language.tsx:236 with components/sheets/screens/languageWheel.ts:107-117 - the wheel''s onScroll worklet is handed to BottomSheetFlatList, and the pinned 5.2.14 scrollable consumes a caller onScroll and re-dispatches it through runOnJS(onScroll)({ nativeEvent: event }) (createBottomSheetScrollableComponent.tsx:47-63 and 143, hooks/useScrollHandler.ts), so the handler can run twice per scroll event, once from the animated wrapper''s own native registration and once from that JS re-dispatch, and lastSeat is written from both sides while a UI-thread write does not update the JS copy, so one crossing can tick twice. Nothing measures either path: the suite''s only scroll fires (components/sheets/__tests__/Language.test.tsx:539-540) are scrollEndDrag and momentumScrollEnd, which the screen never listens to. Drive the handler in a test and assert one tick, or read the library''s own offset in a single useAnimatedReaction and drop the prop.
+
+question: components/sheets/__tests__/Language.test.tsx:428 - selectionAsync counted once after a tap holds only because the mocked list emits nothing for stageRow''s scrollToOffset({ animated: true }) (Language.tsx:122). On device that animation crosses every row between the old and the new seat, so a tap on a far row ticks once per row crossed on top of the tap tick. Either hold the detent while a staging scroll runs, or name that in the three-haptics order, because the suite cannot tell the two apart.
+
+suggestion: components/sheets/screens/Language.tsx:137-143 - the faint band carries no empty-list gate while the purple does (line 151), so on rows.length === 0 (the No languages found state at line 241) it paints a faint bar at the wheel''s centre over nothing. Gate it the way the seat gates.
+
+nitpick: components/sheets/__tests__/Language.test.tsx:130 - decelerationRate ''fast'' never reaches the list: the pinned scrollable applies its own value through animatedProps (SCROLLABLE_DECELERATION_RATE_MAPPER, 0.998 on iOS and 0.985 on Android), which lands after the inline prop. The line records a prop the wheel does not run on.
+
+question: components/sheets/screens/Language.tsx:212-215 - a tap stages a row without touching accessibilityState, so a reader user gets the tick and nothing else: the row still reads unselected and the close then commits it. Should the staged row carry its own state, or is the two-highlight model visual only by the owner''s ruling?
+
+validate in the worktree: exit 0, 240 suites, 7399 passed, 2 skipped, statements 5982/5982, branches 2645/2645, functions 1267/1267, lines 5364/5364.', NULL, '2026-10-29 08:33:35.324966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4629, 476, 'comment', 'owner', 'Lead adjudication 2026-10-29, both reviews in (4627, 4628). Confirmed and being fixed: the onScroll double-dispatch risk (the handler must be idempotent per seat and proven with a delivered scroll event), the tap on a far row firing a detent tick per row crossed (programmatic scrolls must suppress the tick), the faint band painting over the empty state (a rows gate), the meaningless decelerationRate assertion (replaced), the staged row''s missing accessible state, and the four proof gaps the plan review named (band seats after a scroll, the RTL reseed, staged survival on clearing the query, and the no-haptic-on-load guard against the real commit path). Plan rows amended for the ANIMATION token, decision 17''s allowlist note, decision 1''s bare-children wording, the stores/ui.ts Files row and the two missing Files entries.', NULL, '2026-10-29 08:33:46.799581+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4630, 452, 'activity', 'owner', NULL, 'description', '2026-10-29 08:52:12.248845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s languages, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.\n\nLanguages: ja (Japanese, ~125M, the largest language missing), ko (Korean, ~82M), it (Italian, ~65M, the owner''s pick), pl (Polish, ~40M), ro (Romanian, ~24M), ceb (Cebuano, ~25M, the biggest Philippine regional), ilo (Ilocano, ~9M), vi (Vietnamese, ~85M).\nFont note: ja and ko ride the fontTools subset pipeline the zh pair built (cjk-glyph-lock.json, scripts/cjk-subset.mjs), never full statics; Vietnamese and Polish diacritics must be measured against the shipped Latin faces before choosing records.\nPopularity block: these eight carry almost no Muslim-reachable audience and ship on the owner''s world-popularity order (2026-10-29), which the plan records as the selection authority for this wave.\n\nWhere: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and any font pair a script needs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their finders, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is waves #410, #419 and the fifty-language run (T-427, T-428, T-429) in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ with this run''s owner orders.\n\nAcceptance:\n- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.\n- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their finders, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps both waves'' rows, and the README count is the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.\n\nStanding owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4631, 452, 'activity', 'owner', NULL, 'status', '2026-10-29 08:52:12.248845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4645, 452, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: reviews 4592 and 4593, fixes e69c2b3a at 2.38.1 (sourced-names landing order restored, the six Romanian spellings, the census re-pinned at its own definition, the orphaned slugs). Merged at 2.38.1. Parked for the owner''s read in the single final build.', NULL, '2026-10-29 08:52:19.207228+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4632, 452, 'activity', 'owner', NULL, 'field', '2026-10-29 08:52:12.283053+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4642, 480, 'activity', 'owner', NULL, 'description', '2026-10-29 08:52:12.609739+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: on Android only, move the solid full-screen faces a little from the navy top of the house gradient toward its purple bottom, so the solid reads centred to the eye; every iOS byte stays as it is. Owner order 2026-10-29, fix-forward, read in the run''s single development build.\n\nWhere: the colour constant behind the language-changing loader, the error screen and every other solid full-screen face (enumerate them from the tree, they share the solid), app.json''s android-facing splash and background fields wherever the native splash renders its own, and the suites that pin these values. The house gradient is DESIGN.bgStart ''#05134a'' to DESIGN.bgEnd ''#36208a'' in shared/design.ts, and today''s solid sits at the gradient''s midpoint (''#1e1a6a'' is the iOS background of record).\n\nAcceptance:\n- [x] The Android solid is a dated interpolation toward DESIGN.bgEnd, ruled at 65 percent (landing near ''#251b74''), named in the plan with its derivation, and the plan may measure and adjust within the plan''s own gate if the tree shows the Android solid holds a different source value today.\n- [x] iOS is byte-identical: the iOS background of record, every iOS-rendered solid and their pins are untouched, and a guard proves the split (one colour per platform, no shared drift).\n- [x] The Platform split is dated as the owner''s order (2026-10-29, Android-only tint), the one legal Platform check on this surface.\n- [x] Every suite pinning the old value is updated red-first with a mutation pass, and yarn validate exits 0 at full coverage.\n- [x] No device work of any kind: the owner reads it in the final build."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4643, 480, 'activity', 'owner', NULL, 'status', '2026-10-29 08:52:12.609739+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4633, 453, 'activity', 'owner', NULL, 'description', '2026-10-29 08:52:12.358609+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s nine, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.\n\nLanguages: skr (Saraiki, ~26M, the largest unserved Muslim reading public, Pakistan), bal (Balochi, ~10M, Pakistan, Iran, Afghanistan), kas (Kashmiri, ~7M, Perso-Arabic Kashmir), dv (Dhivehi, ~0.34M, the Maldives, the one wholly Muslim nation), aa (Afar, ~3M, Djibouti and the Awsa), kr (Kanuri, ~10M, Borno and Niger), mdh (Maguindanao, ~1.5M, Muslim Mindanao, its true ISO code: mag is Magahi, an Indian language, and the picker and every surface must ship mdh), mnk (Mandinka, ~5M, the Senegambia), dje (Zarma, ~3M, Niger).\nFont note: skr, bal and kas read right to left on the Arabic script and are measured by explicit codepoint against the bundled Naskh pair, both weights, before records are chosen; dv bundles a Noto Sans Thaana pair, a new script for the app, with its script box decided by its own measured numbers.\nMission block: these nine close the remaining Muslim-map gaps the owner audited (2026-10-29).\n\nWhere: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the Thaana font pair under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, both expo-font arrays and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their four finder lists, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is the fifty-language run (T-427, T-428, T-429) and its plan docs; the selection authority is the ticket''s mission block with ai/plans/39-localisation/research/.\n\nAcceptance:\n- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.\n- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their four finder lists, the detection rows and the gates; every right-to-left one (skr, bal, kas, dv) joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps all three waves'' rows, and the README count is the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.\n\nStanding owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; Maguindanao ships as mdh, never mag."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4634, 453, 'activity', 'owner', NULL, 'status', '2026-10-29 08:52:12.358609+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4635, 453, 'activity', 'owner', NULL, 'field', '2026-10-29 08:52:12.381655+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4648, 476, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: reviews 4627 and 4628, fixes b2f06e56 at 2.35.1 (the single-dispatch scroll handler proven idempotent, the detent held under staging, the band gated on the empty list, the dead deceleration assertion gone, the staged row''s accessible state, and the four proof gaps closed). Merged at 2.38.3. Parked for the owner''s read: the wheel, the staging and the three haptics are the surfaces that need your hands.', NULL, '2026-10-29 08:52:19.279096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4636, 454, 'activity', 'owner', NULL, 'description', '2026-10-29 08:52:12.440873+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from fifty locale catalogs to seventy-five by shipping this wave''s languages, one of three parallel waves that together add twenty-five. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result and rules from Awaiting Owner.\n\nLanguages: my (Burmese, ~33M, incl. Myanmar''s Muslim minority), tt (Tatar, ~5M, Russia''s biggest Muslim language), ce (Chechen, ~1.6M), uk (Ukrainian, ~35M), min (Minangkabau, ~5.5M, West Sumatra), mad (Madurese, ~7M, Indonesia''s biggest unserved), bug (Bugis, ~5M, South Sulawesi), qu (Quechua, ~9M, the owner''s Peru pick).\nFont note: my bundles a Noto Sans Myanmar pair, a new script; tt, ce and uk ride Cyrillic and must be measured against Roboto including Chechen''s palochka and ә ҡ ң ӧ ү җ; the Indonesian trio and Quechua are Latin.\nMixed block: mission languages (my, tt, ce, min, mad, bug) beside two popularity picks (uk, qu) under the owner''s 2026-10-29 order.\n\nWhere: the new catalogs under shared/i18n/ beside the fifty shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and any font pair a script needs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx including all four inline STATIC tables and their finders, so home screen and lock screen widgets both render every new locale; the gates under shared/__tests__/ and components/__tests__/; README.md at the merged count. The recipe is waves #410, #419 and the fifty-language run (T-427, T-428, T-429) in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ with this run''s owner orders.\n\nAcceptance:\n- [x] Every catalog ships at en''s parity (the key count en holds at the branch point, which includes the picker ticket''s new keys) and satisfies the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the wave''s names and explanations.\n- [x] Every new id sits in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, all four widget inline STATIC tables and their finders, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged from the branch point, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, the additive resolution keeps both waves'' rows, and the README count is the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.\n\nStanding owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4637, 454, 'activity', 'owner', NULL, 'status', '2026-10-29 08:52:12.440873+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4638, 454, 'activity', 'owner', NULL, 'field', '2026-10-29 08:52:12.462442+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4641, 476, 'activity', 'owner', NULL, 'field', '2026-10-29 08:52:12.544575+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4647, 454, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: reviews 4597 and 4613, fixes 43071e5b at 2.33.6 (the Chechen palochka across 54 slots and both mirrors, the guard un-skipped and widened, the explanation gate at five slots, the census re-pinned, the slugs and headers). Merged at 2.33.6. Parked for the owner''s read.', NULL, '2026-10-29 08:52:19.262308+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4639, 476, 'activity', 'owner', NULL, 'description', '2026-10-29 08:52:12.522586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: change the language sheet from tap-to-commit-and-close to an iOS-picker-feel wheel without the iOS looks: the list settles row by row on the sheet''s centreline, a very faint candidate band rides the row a stop would select while the purple highlight stays on the locale actually in force, a tap stages a choice instead of committing it, and the staged change commits together with the close (swipe down, back gesture or the close affordance). Code only until the run''s single final build. Owner order 2026-10-29.\n\nWhere: components/sheets/screens/Language.tsx and its suite, components/sheets/screens/languageFilter.ts where the filtered seat feeds the wheel, the sheet parts only if the close path needs a hook, shared/__tests__ and components/sheets/__tests__ for the new guards, and stores/language.ts where the commit moves from the tap handler to the close boundary. The commit machinery itself (relaunch, loader, notification reschedule) is not rewritten, only re-timed.\n\nBehavior, as the owner described it:\n- The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it while scrolling.\n- A second, very faint marker (the dim colour family, never black, never opacity on text) rides the row nearest the list''s vertical centre while the finger drags and while the list settles, the lottery-wheel read: the user always sees where a stop lands.\n- Rows are uniform and the list snaps row-by-row to the centreline, so the settled row is always perfectly centred, at the top and at the bottom of the list alike.\n- On open, the list is positioned with the in-force locale centred.\n- A tap on a row stages that row as the candidate (the faint marker moves there) and does NOT close the sheet and does NOT commit.\n- The staged candidate commits when the sheet closes by swipe-down, back gesture or the close affordance: commit and close are one act. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.\n- Search still filters; the wheel, the snap and the two highlights work over the filtered list, and clearing the search restores the full list centred on the in-force locale.\n- The numbered dimmed indices and the centred names from T-451 are untouched.\n- First frames render settled: only value changes animate (the standing law).\n\nAcceptance:\n- [x] The two-highlight model holds: the purple seat never moves while the sheet is open, the faint candidate tracks the centre row through drag and settle, and both are visible together when they sit on different rows.\n- [x] The list snaps row-by-row to the centreline with the settled row centred, including at both ends of the list, and the sheet opens with the in-force locale centred.\n- [x] A tap stages without closing or committing; closing commits the staged candidate through the existing commit machinery exactly once, and closing without a staged change leaves the app untouched.\n- [x] Search, indices, centred names, the keyboard work and the RTL behaviour from T-451 all still hold over the wheel.\n- [x] Red-first guards: the staged-commit boundary, the centre-snap alignment, the faint marker''s seat, and the no-commit-on-tap row each redden a suite when broken, with a mutation pass.\n- [x] yarn validate exits 0 at full coverage. No device work: the run''s single final build is the owner''s read.\n\nScheduling: planning now, execution immediately after the three language waves close, on the first lane that frees.\n\nRefinements, owner order 2026-10-29, second pass, which override anything above that reads otherwise:\n- Settling the scroll selects NOTHING. Scrolling is browsing only: closing without a tap changes nothing. The faint band marks the centre row as a guide, but only a TAP stages a choice.\n- Haptics, exactly three, and nowhere else: one when a row is tapped and staged, one when the sheet closes with a staged change committing (never when closing without one), and a light detent tick as each row passes the centreline while scrolling. No haptic while the language change loads and none when it finishes; if the tree fires any today on that path, they move off it. expo-haptics is already in the stack.\n- The snap is magnetic and elastic: the list may never rest between two rows, it always settles the nearest row to the centreline, with the rubber-band give at both ends. Use what the platform and the existing stack already give (FlatList snapToInterval at the row pitch with centre alignment, or the Reanimated equivalent already in the repo). No new third-party picker component enters the repo: the code mimics, it does not install.\n- The sheet''s subtitle reads close-to-save (a new or reworded catalog key carried across every locale at parity, the T-451 pattern), so the commit point is written on the sheet itself.\n- On close with a staged change: the haptic fires with the commit, then the existing language-change loader and relaunch machinery runs exactly as it does today.\n\nRefinements, owner order 2026-10-29, third pass, the loader choreography at the commit boundary:\n- The solid cover and the spinner appear the instant the sheet closes with a staged change, so the language never visibly shifts underneath. The tree already owns this shape: the language commit holds the switch cover (languageCommitBusyAtom in app/index.tsx) and the full-screen loader covers the wait, so this item re-times what exists rather than inventing a surface.\n- The line under the spinner (language.changing with the chosen language''s own name) today snaps in a beat late. It must instead fade in, a single 200ms fade, in the moment it becomes available in the settled locale, never a snap. The 200ms is the owner''s number and the plan dates it as such.\n- When the commit completes, the cover, the spinner and the line all lift together in one immediate act, with the existing reveal''s fast fade, no staggered teardown.\n- Law reconciliation, dated in the plan: the fade-in is a transient value change, the settled line carries full ink, so the row-294 rule (colour carries the dim, never text opacity) is not broken, and the first-frame-settled law keeps the loader''s own first frame settled with only the line''s availability animating."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4640, 476, 'activity', 'owner', NULL, 'status', '2026-10-29 08:52:12.522586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4644, 480, 'activity', 'owner', NULL, 'field', '2026-10-29 08:52:12.630493+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4646, 453, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: reviews 4607 and 4609, fixes d2ce8a49 at 2.38.1 and 6add5a6b at 2.38.2 (README list, the picker equality row, the ks-Deva fall-through, the census re-pinned, the Tagalog stand-in disclosed in the header and the record, the stale headers and slugs). Merged at 2.38.2. Parked for the owner''s read.', NULL, '2026-10-29 08:52:19.238545+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4649, 480, 'comment', 'owner', 'AUDIT RECORD 2026-10-29: reviews 4610 and 4615, fixes 30fb2bf0 at 2.32.6 (the split guard at source, the count comment, the six-field positional row, the launcher-bed note). Merged at 2.32.6. Parked for the owner''s read: the Android 12+ splash seam with the icon''s navy is the owner''s call on glass.', NULL, '2026-10-29 08:52:19.29611+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -11850,6 +12428,12 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (41
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (427, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (428, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (429, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (451, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (452, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (453, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (454, 2, 3);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (480, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (476, 2, 1);
 
 
 --
@@ -12080,6 +12664,18 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (678, 429, 1, NULL, 429, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (679, 427, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (681, 428, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (683, 451, 1, NULL, 451, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (684, 452, 1, NULL, 452, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (685, 453, 1, NULL, 453, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (686, 454, 1, NULL, 454, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (687, 476, 1, NULL, 476, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (688, 451, 3, 'the owner''s on-glass read of the picker (search, keyboard, numbered centred rows) in the run''s single final build, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (689, 480, 1, NULL, 480, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (690, 452, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (691, 453, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (692, 454, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (693, 476, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (694, 480, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -12571,6 +13167,30 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 6);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (451, 216);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (451, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (451, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (453, 218);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (453, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (453, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (453, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (453, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (452, 217);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (452, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (452, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (452, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (452, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (454, 219);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (454, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (454, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (454, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (454, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (476, 221);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (476, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (476, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (480, 222);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (480, 148);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (480, 2);
 
 
 --
@@ -12623,6 +13243,9 @@ INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, creat
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (114, 95, 94, 'blocks', '2026-10-18 23:36:15.76907+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (115, 96, 95, 'blocks', '2026-10-18 23:36:15.776009+00');
 INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (116, 123, 112, 'blocks', '2026-10-18 23:36:15.785791+00');
+INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (128, 452, 476, 'blocks', '2026-10-29 03:42:31.956285+00');
+INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (129, 453, 476, 'blocks', '2026-10-29 03:42:31.978582+00');
+INSERT INTO public.issue_link (id, source_issue_id, target_issue_id, kind, created_at) VALUES (130, 454, 476, 'blocks', '2026-10-29 03:42:31.998707+00');
 
 
 --
@@ -13530,6 +14153,94 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1045, 428, 3, 'In progress', 'started', '2026-10-28 23:51:54.382183+00', '2026-10-28 23:57:54.168624+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1052, 429, 3, 'In progress', 'started', '2026-10-28 23:57:01.308809+00', '2026-10-28 23:58:17.739256+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1061, 427, 4, 'Done', 'completed', '2026-10-29 00:29:55.040967+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1064, 451, 1, 'Backlog', 'backlog', '2026-10-29 02:49:49.256+00', '2026-10-29 02:50:30.504753+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1065, 452, 1, 'Backlog', 'backlog', '2026-10-29 02:50:21.473+00', '2026-10-29 02:50:30.611341+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1066, 453, 1, 'Backlog', 'backlog', '2026-10-29 02:50:21.507+00', '2026-10-29 02:50:30.708908+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1067, 454, 1, 'Backlog', 'backlog', '2026-10-29 02:50:21.537+00', '2026-10-29 02:50:30.806271+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1068, 451, 6, 'Planning', 'unstarted', '2026-10-29 02:50:30.504753+00', '2026-10-29 02:55:31.098797+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1075, 451, 2, 'Ready', 'unstarted', '2026-10-29 02:55:31.098797+00', '2026-10-29 02:55:33.585937+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1076, 451, 3, 'In progress', 'started', '2026-10-29 02:55:33.585937+00', '2026-10-29 03:06:25.846493+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1072, 455, 1, 'Backlog', 'backlog', '2026-10-29 02:55:20.546+00', '2026-10-29 03:06:58.589575+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1078, 455, 4, 'Done', 'completed', '2026-10-29 03:06:58.589575+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1073, 456, 1, 'Backlog', 'backlog', '2026-10-29 02:55:20.582+00', '2026-10-29 03:06:58.614584+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1079, 456, 4, 'Done', 'completed', '2026-10-29 03:06:58.614584+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1074, 457, 1, 'Backlog', 'backlog', '2026-10-29 02:55:20.61+00', '2026-10-29 03:06:58.637141+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1080, 457, 4, 'Done', 'completed', '2026-10-29 03:06:58.637141+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1070, 453, 6, 'Planning', 'unstarted', '2026-10-29 02:50:30.708908+00', '2026-10-29 03:14:24.992931+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1069, 452, 6, 'Planning', 'unstarted', '2026-10-29 02:50:30.611341+00', '2026-10-29 03:14:53.634187+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1071, 454, 6, 'Planning', 'unstarted', '2026-10-29 02:50:30.806271+00', '2026-10-29 03:20:36.953705+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1077, 451, 8, 'Audit', 'started', '2026-10-29 03:06:25.846493+00', '2026-10-29 03:35:11.254953+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1103, 451, 9, 'Awaiting Owner', 'started', '2026-10-29 03:35:11.254953+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1094, 452, 2, 'Ready', 'unstarted', '2026-10-29 03:14:53.634187+00', '2026-10-29 03:36:29.397676+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1101, 454, 2, 'Ready', 'unstarted', '2026-10-29 03:20:36.953705+00', '2026-10-29 03:36:34.740375+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1087, 453, 2, 'Ready', 'unstarted', '2026-10-29 03:14:24.992931+00', '2026-10-29 03:38:42.186629+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1102, 476, 6, 'Planning', 'unstarted', '2026-10-29 03:27:43.359+00', '2026-10-29 03:42:55.203322+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1088, 464, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.43+00', '2026-10-29 03:51:54.185749+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1111, 464, 4, 'Done', 'completed', '2026-10-29 03:51:54.185749+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1095, 470, 6, 'Planning', 'unstarted', '2026-10-29 03:20:19.974+00', '2026-10-29 03:53:09.847243+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1112, 470, 4, 'Done', 'completed', '2026-10-29 03:53:09.847243+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1081, 458, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.673+00', '2026-10-29 04:00:19.581926+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1115, 458, 4, 'Done', 'completed', '2026-10-29 04:00:19.581926+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1096, 471, 6, 'Planning', 'unstarted', '2026-10-29 03:20:20.003+00', '2026-10-29 04:04:44.106196+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1116, 471, 4, 'Done', 'completed', '2026-10-29 04:04:44.106196+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1089, 465, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.459+00', '2026-10-29 04:06:17.592268+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1117, 465, 4, 'Done', 'completed', '2026-10-29 04:06:17.592268+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1113, 480, 6, 'Planning', 'unstarted', '2026-10-29 03:56:49.284+00', '2026-10-29 04:10:37.025594+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1090, 466, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.481+00', '2026-10-29 04:15:38.438602+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1121, 466, 4, 'Done', 'completed', '2026-10-29 04:15:38.438602+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1082, 459, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.704+00', '2026-10-29 04:15:58.273731+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1122, 459, 4, 'Done', 'completed', '2026-10-29 04:15:58.273731+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1097, 472, 6, 'Planning', 'unstarted', '2026-10-29 03:20:20.026+00', '2026-10-29 04:17:18.816189+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1123, 472, 4, 'Done', 'completed', '2026-10-29 04:17:18.816189+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1083, 460, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.726+00', '2026-10-29 04:24:21.453467+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1124, 460, 4, 'Done', 'completed', '2026-10-29 04:24:21.453467+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1091, 467, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.504+00', '2026-10-29 04:25:11.204308+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1125, 467, 4, 'Done', 'completed', '2026-10-29 04:25:11.204308+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1098, 473, 6, 'Planning', 'unstarted', '2026-10-29 03:20:20.048+00', '2026-10-29 04:25:23.620276+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1126, 473, 4, 'Done', 'completed', '2026-10-29 04:25:23.620276+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1092, 468, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.525+00', '2026-10-29 07:25:04.969281+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1127, 468, 4, 'Done', 'completed', '2026-10-29 07:25:04.969281+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1093, 469, 1, 'Backlog', 'backlog', '2026-10-29 03:14:30.544+00', '2026-10-29 07:27:37.589598+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1128, 469, 4, 'Done', 'completed', '2026-10-29 07:27:37.589598+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1104, 452, 3, 'In progress', 'started', '2026-10-29 03:36:29.397676+00', '2026-10-29 07:28:31.425851+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1084, 461, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.747+00', '2026-10-29 07:29:14.646878+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1130, 461, 4, 'Done', 'completed', '2026-10-29 07:29:14.646878+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1099, 474, 6, 'Planning', 'unstarted', '2026-10-29 03:20:20.071+00', '2026-10-29 07:31:11.437381+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1131, 474, 4, 'Done', 'completed', '2026-10-29 07:31:11.437381+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1100, 475, 6, 'Planning', 'unstarted', '2026-10-29 03:20:20.093+00', '2026-10-29 07:32:38.936965+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1132, 475, 4, 'Done', 'completed', '2026-10-29 07:32:38.936965+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1105, 454, 3, 'In progress', 'started', '2026-10-29 03:36:34.740375+00', '2026-10-29 07:32:50.7411+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1085, 462, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.769+00', '2026-10-29 07:38:48.470828+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1134, 462, 4, 'Done', 'completed', '2026-10-29 07:38:48.470828+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1086, 463, 1, 'Backlog', 'backlog', '2026-10-29 03:14:02.79+00', '2026-10-29 07:41:45.965769+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1135, 463, 4, 'Done', 'completed', '2026-10-29 07:41:45.965769+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1106, 453, 3, 'In progress', 'started', '2026-10-29 03:38:42.186629+00', '2026-10-29 07:41:45.995367+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1120, 480, 2, 'Ready', 'unstarted', '2026-10-29 04:10:37.025594+00', '2026-10-29 07:50:47.493466+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1110, 476, 2, 'Ready', 'unstarted', '2026-10-29 03:42:55.203322+00', '2026-10-29 07:51:01.233622+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1119, 483, 1, 'Backlog', 'backlog', '2026-10-29 04:10:33.596+00', '2026-10-29 07:53:56.666609+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1139, 483, 4, 'Done', 'completed', '2026-10-29 07:53:56.666609+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1118, 482, 1, 'Backlog', 'backlog', '2026-10-29 04:10:33.596+00', '2026-10-29 07:55:51.195971+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1140, 482, 4, 'Done', 'completed', '2026-10-29 07:55:51.195971+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1137, 480, 3, 'In progress', 'started', '2026-10-29 07:50:47.493466+00', '2026-10-29 07:56:02.83443+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1107, 477, 1, 'Backlog', 'backlog', '2026-10-29 03:42:27.993+00', '2026-10-29 08:12:20.804171+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1142, 477, 4, 'Done', 'completed', '2026-10-29 08:12:20.804171+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1108, 478, 1, 'Backlog', 'backlog', '2026-10-29 03:42:28.021+00', '2026-10-29 08:12:20.924662+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1143, 478, 4, 'Done', 'completed', '2026-10-29 08:12:20.924662+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1109, 479, 1, 'Backlog', 'backlog', '2026-10-29 03:42:28.046+00', '2026-10-29 08:21:19.753091+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1144, 479, 4, 'Done', 'completed', '2026-10-29 08:21:19.753091+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1114, 481, 1, 'Backlog', 'backlog', '2026-10-29 03:59:04.539+00', '2026-10-29 08:26:02.170772+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1145, 481, 4, 'Done', 'completed', '2026-10-29 08:26:02.170772+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1138, 476, 3, 'In progress', 'started', '2026-10-29 07:51:01.233622+00', '2026-10-29 08:26:10.342208+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1129, 452, 8, 'Audit', 'started', '2026-10-29 07:28:31.425851+00', '2026-10-29 08:52:12.244749+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1147, 452, 9, 'Awaiting Owner', 'started', '2026-10-29 08:52:12.244749+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1136, 453, 8, 'Audit', 'started', '2026-10-29 07:41:45.995367+00', '2026-10-29 08:52:12.355161+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1148, 453, 9, 'Awaiting Owner', 'started', '2026-10-29 08:52:12.355161+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1133, 454, 8, 'Audit', 'started', '2026-10-29 07:32:50.7411+00', '2026-10-29 08:52:12.438917+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1149, 454, 9, 'Awaiting Owner', 'started', '2026-10-29 08:52:12.438917+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1146, 476, 8, 'Audit', 'started', '2026-10-29 08:26:10.342208+00', '2026-10-29 08:52:12.520877+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1150, 476, 9, 'Awaiting Owner', 'started', '2026-10-29 08:52:12.520877+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1141, 480, 8, 'Audit', 'started', '2026-10-29 07:56:02.83443+00', '2026-10-29 08:52:12.607011+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1151, 480, 9, 'Awaiting Owner', 'started', '2026-10-29 08:52:12.607011+00', NULL);
 
 
 --
@@ -13904,6 +14615,13 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (213, 1, 3, '#427', '#94a3b8', '2026-10-28 23:19:37.964943+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (214, 1, 3, '#428', '#94a3b8', '2026-10-28 23:19:37.986605+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (215, 1, 3, '#429', '#94a3b8', '2026-10-28 23:19:38.003739+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (216, 1, 3, '#451', '#94a3b8', '2026-10-29 02:50:30.456035+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (217, 1, 3, '#452', '#94a3b8', '2026-10-29 02:50:30.572749+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (218, 1, 3, '#453', '#94a3b8', '2026-10-29 02:50:30.672645+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (219, 1, 3, '#454', '#94a3b8', '2026-10-29 02:50:30.772187+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (220, 1, 3, '#455', '#94a3b8', '2026-10-29 03:27:43.340815+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (221, 1, 3, '#476', '#94a3b8', '2026-10-29 03:27:48.534249+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (222, 1, 3, '#480', '#94a3b8', '2026-10-29 03:56:49.264254+00');
 
 
 --
@@ -14214,7 +14932,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 451, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 484, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -19566,6 +20284,170 @@ Points: steps 13-16 carry 10; the done steps carry 33; the ticket''s estimate is
 - 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. The dump lands after the recorded animation; the folded instrument measures its own offset per capture.
 - 2026-10-28, v7 re-grill, six findings: (1) the sf branch''s PASS line is not a floor verdict (it tolerates 34ms and excludes gaps over 100ms, so a known-bad build prints PASS) - D16 now names the printed present-gap list as the verdict of record and Step 13''s lift makes the semantics honest; (2) the sf branch lacks the dual branch''s --list layer resolution, tap timestamp and anchor discipline - Step 13''s first deliverable lifts all three; (3) the fold''s conflict sites and resolutions were unnamed - D17 now records them (atlas keeps both sides, allowlist keeps uat''s entries, three lockstep stamp files renumber); (4) Step 14 never measured the sheet closes Defect A''s late-closing-tap clause claims - the two sheet-close SF reads are added; (5) Step 15 asked the executor to produce the owner''s eyeball - reworded to hand the build and record the ask; (6) the Risks line named the wrong lane - now "other lanes".
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 34816, 9, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-24 20:02:57.06513+00', '2026-10-28 16:03:35.28204+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (53, 1, NULL, 'T-451', '# T-451 - The language picker at seventy-five: numbered rows, centred names, a name search
+
+## Goal
+
+The picker today is a bare column of fifty endonyms in codepoint order: no index, the name
+sits in the row''s remaining space after its own padding rather than on the card''s centreline,
+and a reader with fifty rows has no way to find a language but to scroll. Done, every row
+carries a dimmed Latin index at the card''s left edge, the name centres on the card in both
+directions, and a search field inside the card above the scroll list filters by endonym or
+English name while the keyboard never covers it.
+
+## Decisions taken
+
+1. **2026-10-29 - The field is pinned through a new `pinned` slot on Sheet, above the scroll
+   view.** The card splits into a fixed top (hint and field) and a scrolling body (the list)
+   that share one surface: the pinning must be real, because a field inside
+   `BottomSheetScrollView` scrolls away. On the pinned path the sheet''s header sits above the
+   scroll view with the field; the unpinned path keeps today''s tree byte for byte.
+   Rejected: `stickyHeaderIndices` (the card is a translucent rgba, so rows would show through
+   the stuck field); `scrollable={false}` with an inner scroll view (that path''s content carries
+   no flex, so the list would grow unbounded and every other non-scrollable sheet would move).
+2. **2026-10-29 - The English names live in `LANGUAGE_NAMES` as an `english` field.** They are
+   names data, never displayed, and the catalog holds no language names. The string scanner''s
+   name-data exemption extends from `name` to `english` for this one module, because an English
+   name with a space would otherwise read as copy.
+3. **2026-10-29 - The fold is NFD, strip combining marks, lowercase, then drop the apostrophe
+   family (`\u02BB`, `\u02BC`, `\u2019`, `''`).** NFD alone leaves "Oʻzbekcha" unfindable by
+   "ozbek". No shipped endonym carries a letter NFD cannot decompose (ø, ł, đ), so no
+   letter map is added.
+4. **2026-10-29 - The highlight hides when the active language is not in the filtered list.**
+   A seat is a row''s position; with no such row the honest state is no highlight, not a seat
+   borrowed from a neighbour.
+5. **2026-10-29 - The index sits at the physical left edge in both directions, as the owner
+   ordered, so its style enters `scripts/directional-styles-allowlist.json` with that reason.**
+   The index Text carries `writingDirection: ''ltr''`, because "12." in an RTL paragraph renders
+   the period on the wrong side of the digits.
+6. **2026-10-29 - The search glyph is a new `assets/icons/svg/search.svg` wired through the
+   existing `Icon` enum and `ICONS` record**, painted with the shared dim ink and positioned
+   with the logical `end`, so it mirrors under RTL without a direction check.
+7. **2026-10-29 - Two catalog keys only: `language.search` and `language.noMatch`.** The
+   placeholder is the field''s accessible name, so no separate a11y key is added; a row keeps
+   its endonym label.
+8. **2026-10-29 - The zh copy is cut from characters the bundled subsets already carry**
+   (查找语言 / 未找到语言, 查找語言 / 未找到語言), so the closed CJK glyph
+   lock does not move and no subset is recut. 搜 and 索 are absent from the subsets, so no wording
+   carrying them is used.
+9. **2026-10-29 - The ticket''s first commit is `feat` at 2.32.0** (`package.json`, `app.json`,
+   `shared/whatsNew.ts` together, no What''s New item); every later commit is a patch inside the
+   ticket, until the picker lands.
+10. **2026-10-29 - The search field''s input is
+   `BottomSheetTextInput` with `keyboardBehavior="interactive"` and
+   `keyboardBlurBehavior="restore"`.** The library''s own input is the one that tells the sheet a
+   keyboard moved; a plain TextInput would leave the sheet unaware, and `interactive` is the
+   mode that moves the sheet with the keyboard rather than over it.
+
+## Files
+
+- `shared/i18n/en.ts` - the two new keys, after `language.chooseHint`.
+- `shared/i18n/{ar,ms,so,hi,th,id,tr,fr,uz,sw,ha,pt,ur,fa,bn,ru,az,de,sq,bs,ps,ta,ml,zh-Hans,zh-Hant,es,nl,kk,ky,tg,tk,wo,mr,om,bm,tl,ff,te,gu,kn,am,pa-Arab,sd,ug,ckb,ku,yo,jv,su}.ts` - the same two keys, same position.
+- `shared/i18n/catalog-lock.json` - regenerated by `scripts/catalog-lock.mjs`.
+- `shared/__tests__/i18n.test.ts` - the two keys join `PINNED_LITERALS`.
+- `package.json`, `app.json`, `shared/whatsNew.ts` - 2.32.0, then patch steps.
+- `shared/languageNames.ts` - the `english` field on each entry.
+- `components/sheets/screens/languageFilter.ts` - the fold and the filter, pure.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` - its suite, red first.
+- `scripts/scan-strings.mjs` - the name-data exemption covers `english` in that module.
+- `shared/__tests__/stringGuard.test.ts` - pins the exemption, and that a copy-shaped field in
+  that module still reddens.
+- `components/sheets/parts/Sheet.tsx` - `pinned`, `keyboardBehavior`, `keyboardBlurBehavior`.
+- `components/sheets/parts/__tests__/Sheet.test.tsx` - the pinned slot renders outside the
+  scroll view; the keyboard props reach the modal.
+- `assets/icons/svg/search.svg`, `assets/icons/svg/index.ts`, `shared/types.ts` - the glyph.
+- `components/sheets/screens/Language.tsx` - the rebuild.
+- `components/sheets/__tests__/Language.test.tsx` - the new rows, red first.
+- `scripts/directional-styles-allowlist.json` - the index slot''s reason.
+- `shared/__tests__/nativeConfig.test.ts` - `android.softwareKeyboardLayoutMode` reads `resize`.
+- `app.json` - the android block''s explicit resize mode.
+
+## Design
+
+**Sheet.** `pinned?: React.ReactNode` plus the two keyboard props, typed from
+`BottomSheetModalProps`. With no `pinned`, the render tree is today''s, unchanged. With
+`pinned`, the modal renders one padded column holding the header and the pinned node, and the
+scroll view below it holds the children in the same padded column, so the two halves share the
+horizontal geometry exactly.
+
+**The card.** `Language.tsx` draws the card surface twice: the top piece carries the top
+corners and no bottom border, the body carries the bottom corners and no top border. The join
+is a butt joint, so the card reads as one surface while the field stays still. The body keeps
+`marginTop: SPACING.md` between the field and the first row.
+
+**The field.** `BottomSheetTextInput`, `returnKeyType="search"`, no `autoFocus`,
+`placeholder={t(''language.search'')}`, `placeholderTextColor={COLORS.text.muted}`,
+`onChangeText={setQuery}`, and `onDismiss` clears the query. Height 44, radius `RADIUS.md`,
+the card''s own wash and border. The glyph is `IconView` type `Icon.SEARCH` size 16 in
+`COLORS.text.muted`, absolutely positioned with `end: SPACING.md`, `pointerEvents: ''none''`.
+
+**The filter.** `matchesLanguage(entry, query)` is true when the folded query is empty or is a
+substring of the folded endonym or the folded English name. Never the locale tag: `T-452`''s
+catalogs would otherwise match on "zh-Hans". The rows render `filtered`; when it is empty the
+body renders one dimmed `t(''language.noMatch'')` line instead of the list.
+
+**The rows.** Each row is a `Pressable` with `alignItems: ''center''`; the name is a Text
+centred by that alignment, so the card''s symmetric padding puts the name on the card''s
+centreline in either direction. The index is a separate absolutely positioned Text at
+`start`-independent physical `left: SPACING.md`, vertically centred, no width, so a
+double-digit index cannot displace the name. Digits are Latin by construction (row 82: JS
+numbers render Latin digits in every locale).
+
+**The highlight.** The indicator is the list''s first child, positioned absolutely at the top
+of the list. Its seat is `filtered.findIndex(entry => entry.id === active)`; `-1` hides it.
+The transform is written from an effect on (seat, item height), so a filter change reseats it
+on the same commit and a value change is the only thing that animates.
+
+## Steps
+
+1. **Step 1: The two picker keys in fifty catalogs and the release stamp** (2). Adds
+   `language.search` and `language.noMatch` to en and the forty-nine translations at en''s
+   position, regenerates `catalog-lock.json` through the script, pins both keys in
+   `i18n.test.ts`, and stamps 2.32.0 in `package.json`, `app.json` and
+   `shared/whatsNew.ts`. Red first: `catalogGates` fails on every locale until all fifty
+   carry the key set.
+2. **Step 2: The name filter, its English names and its scanner rule** (2). Adds
+   `languageFilter.ts` (fold, match, filtered list) with its suite, the `english` field on
+   every `LANGUAGE_NAMES` entry, and the scanner exemption that lets a multiword English name
+   live in that data module. Red first: the suite is written and run before the module exists.
+3. **Step 3: The picker rebuilt, its field pinned and its keyboard addressed** (2). Adds
+   `pinned` and the two keyboard props to `Sheet` with their guards, `search.svg` through the
+   icon record, the explicit `resize` mode in `app.json` with its config guard, the rebuilt
+   `Language.tsx`, and the new rows in its suite (index text, absolute slot, centred name,
+   folded filter, no-match line, filtered highlight seat, clear on close, no autofocus).
+   Red first: every row fails against today''s tree.
+
+Total: 6 points.
+
+## Risks
+
+- **A pinned field that is not really pinned.** A render test cannot see scrolling. What shows
+  it: the field and the header are outside `BottomSheetScrollView` in the tree the test reads,
+  and the owner''s glass read at Awaiting Owner.
+- **A card seam at the join.** The two halves could read as two cards on the panel. What shows
+  it: the owner''s read; the fix is corner and border values, not structure.
+- **The highlight drifting after a filter.** A translateY written only on layout would leave
+  the highlight on the old seat. What shows it: the seat test after a query change.
+- **A translation carrying a glyph the bundled face lacks.** What shows it: nothing in Jest;
+  the catalog script prints the characters each locale adds, and a character outside the
+  locale''s existing set is dropped before commit.
+- **The CJK lock moving.** Adding a character the zh subsets lack fails `cjkSubset`. What shows
+  it: the suite; the wording in decision 8 avoids it.
+
+## Proof
+
+| Acceptance | Proof |
+| --- | --- |
+| Field inside the card, above the list, never scrolling away | `Language.test.tsx`: the field''s parent is the pinned node; the row list is inside a scroll view that does not contain the field |
+| `BottomSheetTextInput`, interactive/restore, resize mode | `Language.test.tsx` reads the input''s type and the modal''s props; `nativeConfig.test.ts` reads `app.json` |
+| No autofocus, dimmed placeholder, trailing glyph mirrored | `Language.test.tsx`: `autoFocus` undefined, placeholder colour is `COLORS.text.muted`, glyph style `end` under en and ar |
+| Filter by endonym or English name, folded, never the tag | `languageFilter.test.ts` cases: "spanish" finds Español, "ESPANOL" finds it, "espanol" finds it, "zh-Hans" finds nothing |
+| No-match line, input clears on close | `Language.test.tsx` |
+| Dimmed Latin index at the left edge, name centred, absolute slot | `Language.test.tsx`: index text "1." and "12." reads Latin; the slot style is `position: ''absolute''`; the name''s row alignment is centre; the index under ar still sits at `left` |
+| Highlight follows the filtered seat | `Language.test.tsx`: query then seat assertion |
+| Shared dim ink, no opacity | `textInk` sweep (existing) plus the suite''s colour assertions |
+| Keys in fifty catalogs at parity, lock regenerated, validate green | `catalogGates`, `catalogLock`, `yarn validate` |
+', NULL, NULL, '{}', true, false, false, NULL, NULL, 53248, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 02:55:15.791634+00', '2026-10-29 02:55:15.791634+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (52, 1, NULL, 'T-428', '# T-428 — Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight
 
 ## Goal
@@ -19767,6 +20649,888 @@ Ethiopic none), 2.30.0 the full sweep green over thirty-four locales at 100 perc
 README rewritten from LOCALE_IDS.length. All five steps are ticked, ten points carried. The branch is
 ready for the lead''s merge and the audit; nothing is pushed and nothing is merged to uat.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 52224, 6, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:29:32.480873+00', '2026-10-29 00:19:23.532031+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (57, 1, NULL, 'T-476', '# T-476 — the language picker becomes a wheel
+
+## Goal
+
+Today the language sheet commits on the tap itself: `pickLanguage` reveals the loader, dismisses the sheet and commits in one press, and the list is a plain scroll that stops anywhere. When this is done the list is a wheel: it settles row by row with the settled row exactly on the list''s centreline, a very faint dim band rides the row a stop would select while the purple seat stays on the locale in force, a tap stages a choice instead of committing it, and the staged choice commits through the existing machinery exactly once when the sheet closes by any path.
+
+## The behaviour spec (owner order 2026-10-29 with its three passes, restated)
+
+1. The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it onto another row while scrolling.
+2. A second, very faint band in the dim colour family rides the row nearest the list''s vertical centre through the drag and through the settle, the lottery-wheel read: the user always sees where a stop lands. Never black, never opacity on text.
+3. Rows are uniform and the list snaps row by row so the settled row is perfectly centred, at the top and the bottom of the list alike.
+4. On open the list is positioned with the in-force locale centred.
+5. A tap on a row stages that row as the candidate (the faint marker moves there) and neither closes the sheet nor commits.
+6. The staged candidate commits together with the close: swipe down, back gesture or the close affordance. Commit and close are one act, fired exactly once. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.
+7. Search still filters; the wheel, the snap and both highlights work over the filtered list; clearing the search restores the full list centred on the in-force locale.
+8. The numbered dimmed indices, the centred names, the keyboard work and the RTL behaviour from T-451 are untouched.
+9. First frames render settled; only value changes animate.
+10. First pass: settling the scroll selects nothing. Only a tap stages a choice; a scroll that stops on a row and a close that follows commit nothing.
+11. Second pass: exactly three haptic triggers — the tap that stages, the close that carries a commit, and the per-row detent tick while the wheel crosses the centreline. None on a close without a staged change, none while the change loads or finishes; any haptic the tree fires on those paths today moves off them.
+12. Third pass: the loader''s changing line fades in over a single 200ms fade once it is available; cover, spinner and line lift together at completion.
+13. Third pass: the sheet''s subtitle reads close-to-save.
+
+## Decisions taken (2026-10-29)
+
+1. **Sheet gains a mode that hosts the caller''s scrollable directly.** When the mode is set, Sheet renders the header and the pinned piece in the pinned View and the children bare — no `ContentWrapper` — so the caller''s `BottomSheetFlatList` mounts with no `BottomSheetView` ancestor between it and the modal. Why the plan''s first cut (`scrollable={false}`) is dead: in the pinned 5.2.14 a `BottomSheetView` writes the sheet''s scrollable state itself (`animatedScrollableState` to `type: VIEW` at `contentOffsetY: 0`; `src/components/bottomSheetView/BottomSheetView.tsx` beside `src/hooks/useScrollableSetter.ts`), and React runs child effects before parent effects, so the ancestor''s write lands after the list''s registration and overwrites it: the sheet reads the content as a static view always at the top and the pan steals every drag. Readable in the library source, deterministic. The host mode removes the guarantee of breakage; the top-edge handoff itself stays a device read (Risks). `Sheet.tsx` and `Sheet.test.tsx` become changed Files rows with their own coverage.
+
+2. **The snap is `snapToOffsets`, not `snapToInterval` plus `snapToAlignment`.** The pure geometry module computes the settle offset of row i as `pad + i*pitch + rowHeight/2 - listHeight/2`, with `pad = (listHeight - rowHeight) / 2` of content padding at both ends — the picker''s classic trick, which is exactly why the first and last rows centre: `offsetForIndex(0) = 0` and `offsetForIndex(N-1)` equals the maximum scroll offset identically. `decelerationRate={''fast''}` gives the settle. Rejected: `snapToInterval` with ''start'' or ''center'' alignment — each is exact only under the native snap formula, and this tree ships neither the iOS implementation nor the Android one to read them; explicit offsets make JavaScript the single source of truth on both platforms. Rejected: `disableIntervalMomentum` — one row per fling is a stepper, not a wheel.
+
+3. **The centreline and the pitch are measured, not hard-coded.** The list''s own `onLayout` gives `listHeight`, the first row''s `onLayout` gives `rowHeight` (the measure the T-451 indicator already uses), and `pitch = rowHeight + SPACING.xs`. Font-scale changes flow through the measure. The uniform-row invariant the T-451 seat already relies on carries over unchanged.
+
+4. **The faint band is one absolutely-positioned `Animated.View` inside a clipped band layer under the `BottomSheetFlatList`.** Height = the measured row height, `borderRadius: RADIUS.md`, `backgroundColor: COLORS.text.muted` — `DESIGN.dim`, per-platform `#5254ac` on iOS and `#4a47ae` on Android, the dim family — at View-level `opacity` 0.3, a surface wash in the house manner of the card''s own translucent fills. No text lives inside the band, so no text opacity exists; the row text renders above the band and is untouched. The band rides the centre row by `translateY` derived on the UI thread from one scroll shared value: `translateY = pad + centreFloat*pitch - offset` with `centreFloat = (offset + listHeight/2 - pad - rowHeight/2) / pitch` clamped to [0, count-1]. Continuous through the drag, exactly on the row at settle, because the snap geometry lands `centreFloat` on the integer. First frame settled: the shared value is seeded at the open offset and the band''s opacity is a constant, so the band appears already on the centre row and only its position ever changes.
+
+5. **The purple seat becomes a scroll-tracking overlay inside the same clipped layer**, and the layer is the viewport gate: one absolutely-positioned View matching the list''s frame with `overflow: ''hidden''`, holding both bands, so a far scroll can never paint either band outside the list''s bounds onto the card body. The purple''s `translateY = pad + seat*pitch - offset`, seat = the filtered index of the locale in force, and it keeps both T-451 gates: hidden when the locale is filtered out, and opacity 0 while the rows are off-measure. The stack inside the card body, bottom to top: clipped band layer (faint band, then purple seat), then the `BottomSheetFlatList` — the rows paint above both bands, the purple paints above the faint, so when both share a row, the open state, the in-force seat reads purple alone, and on different rows both read. Rejected: a per-row conditional purple style — it re-renders rows on every state change to reach the same pixels.
+
+6. **Only the tap writes the staged value.** The tap handler sets the staged locale, fires the tap-stage haptic and calls `scrollToOffset({ offset: offsetForIndex(i), animated: true })`, so the faint marker rides the animated scroll onto the tapped row. The settle callbacks carry no state that can reach the commit: `onMomentumScrollEnd` and `onScrollEndDragged` true the band''s seat and stage nothing; a scroll that stops anywhere, followed by a close, changes nothing (a Proof guard asserts it). The faint band remains the centre-rider by definition — after a later scroll the marker moves with the centre while the staged choice persists untouched until the close or a further tap.
+
+7. **Nothing re-renders on scroll; the detent ticks on the UI thread.** Both bands read the one scroll shared value (`useAnimatedScrollHandler`, `scrollEventThrottle` 16). The detent haptic is edge-triggered against the last integer centre in the worklet: when the rounded `centreFloat` changes value, one `runOnJS` call fires the selection tick; a bounce that recrosses a boundary ticks again, which is honest wheel feel and stays undebounced.
+
+8. **The close boundary is the composed `onDismiss`, ordered.** Every close path still lands in the Sheet''s `onDismiss` prop — pan-down-to-close, the backdrop tap, the hardware back and any programmatic `hideLanguageSheet()` all end in the library''s once-per-close callback, which `Sheet.handleDismiss` funnels. The prop is occupied today by `onDismiss={() => setQuery('''')}` (Language.tsx:92); the composed handler, dated: first consume the staged ref synchronously (a plain ref read, before any setState can re-render), then run `commitStagedOnClose`, then `setQuery('''')`, then clear the presented flag. The synchronous consume precedes the re-render the query clear triggers, so no reset can race it; and with the presented flag false, the decision-10 reseed does not fire into a dismissing sheet when the cleared query re-derives the full rows.
+
+9. **`commitStagedOnClose(staged, active, reveal, commit)` keeps its shape.** Nothing when the staged value is null or equals the locale in force; otherwise it reveals the loader on the close''s own tick and commits one paint later — the same requestAnimationFrame-then-timeout shape `pickLanguage` has today, so the commit''s first synchronous stretch lands behind the loader face (the D86.8 reasoning, re-timed from the tap to the close). The staged value is consumed from the ref synchronously, so a second `onDismiss` invocation is a no-op by construction. The commit machinery itself — `commitLanguagePreference`, the convergence, the reschedule, the relaunch — is not rewritten, only re-timed. `pickLanguage` and its sequencing are deleted; their only caller is the Language screen.
+
+10. **The staged-survival rule: the staged value resets only when the staged id leaves the filtered set.** Typing a query that still contains the staged row keeps the choice — the faint marker follows the centre as it always does, and the close still commits the tapped row; typing a query that removes the staged row resets to nothing-staged, because a staged row the user cannot see is incoherent; clearing the query restores the full list and the reseed centres the locale in force (the owner''s clearing sentence verbatim) while a surviving staged choice persists for the close. The reseed itself — `scrollToOffset({ offset: offsetForIndex(seat >= 0 ? seat : 0), animated: false })` — runs on every change of the filtered rows'' identity while the sheet is presented (the decision-8 gate), and writes the scroll shared value directly so no stale-band frame shows. Rejected: resetting on every query change — it silently discards a live staged choice the owner''s words never ordered away, and jerks the wheel back to the seat on every keystroke.
+
+11. **Haptics: exactly the owner''s three, and the tree''s one moves off.** The tap that stages fires the selection tick; the close that carries a commit fires the single Light impact — the re-purposed unified close haptic, moved from the close path onto the commit path; the wheel crossing the centreline fires the detent selection tick (decision 7). A close without a staged change fires nothing: Sheet''s unified close haptic (`Sheet.handleDismiss`, the Light impact on every close of every sheet, Sheet.tsx:191-196) gains a Sheet prop that suppresses it, defaulting to today''s behaviour for every other sheet, and the language sheet opts out so its close buzz comes from the commit alone. The load path fires none — the reveal and the commit add no haptics of their own, and a guard asserts the driver-hanging window is silent.
+
+12. **The loader''s line fades in; the teardown is already one act.** The `language.changing` line (LanguageLoader.tsx:42, a bare unanimated Text today) fades from opacity 0 to 1 over a single 200ms Reanimated timing — the owner-dated number, a local constant beside `LINE_MAX_WIDTH` (`ANIMATION` carries no 200 and the fade belongs to this surface alone) — starting the frame the line becomes available. At completion the cover, the spinner and the line lift together: the loader''s existing teardown already is one act (the whole container returns null when `busy` clears, one unmount, no stagger), and none is added. The reveal has no "fast fade" today — the container mounts hard — so the fade-in is added, not found. Law reconciliation, dated: this entrance is the owner''s own order and the one exception where a first frame is not settled; the transient is the line''s opacity value alone, the ink itself stays the solid white and never dims through alpha, the cover and spinner mount settled, and the standing law holds everywhere else in the loader and the wheel.
+
+13. **The subtitle rewires to the key the tree already carries.** `sheet.closeToSave` = ''Close to save'' (shared/i18n/en.ts:100) sits at parity in every catalog and is in use by the Alert sheet (Alert.tsx:93), so the change is `subtitle={t(''sheet.closeToSave'')}` in place of today''s `subtitle={null}`: no catalog, scanner, string-census or directional-allowlist work, en''s parity read at the branch point and untouched.
+
+14. **RTL is free.** The wheel''s geometry is vertical and reads no direction; the rows keep T-451''s absolute-left index slot, the `writingDirection: ''ltr''}` digits and the centred names; the bands span logical `start` and `end` exactly as today''s indicator does. The reseed offsets under Arabic equal those under English, and a guard asserts it.
+
+15. **Accessibility is unchanged**: `accessibilityRole={''radio''}` with `selected` on the locale in force remains the seat of truth; the staged band is visual, exactly like the purple. No owner order changes it, and none is invented.
+
+16. **No new catalog keys.** The subtitle uses the existing `sheet.closeToSave`; nothing else adds copy; the catalog lock and the i18n pin list are untouched.
+
+17. **The version line continues from whatever uat holds when the three waves close.** Fetch origin first; every commit bumps `package.json`, `app.json` and `android/app/build.gradle` together, minor for the feat-typed subjects, numbered above uat''s tip at branch time (the 2.33.0 through 2.40.0 allowlist entries already cover the waves'' collisions; this ticket branches after them and renumbers above).
+
+18. **The Jest acceptance is pinned before the run.** The pure geometry suite — `bandSeat`, `centreFloat`, the offset identities — is the acceptance criterion for the snap and the band''s seat. The component-level animated-style read through fired scroll events stays as a bonus assertion the executor may drop if the worklet proves inert under the test transform; dropping it touches no criterion.
+
+## Files
+
+Changed:
+
+- `components/sheets/parts/Sheet.tsx` — the caller-scrollable host mode (children rendered bare, no ContentWrapper) and the close-haptic suppression prop (decisions 1 and 11).
+- `components/sheets/parts/__tests__/Sheet.test.tsx` — coverage of both: the host mode renders children bare with no BottomSheetView ancestor, and the suppression prop holds the Light impact while the default keeps it for every other sheet.
+- `components/sheets/screens/languageWheel.ts` — new, the pure geometry: pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, and the staged-commit guard.
+- `components/sheets/screens/languageSheet.ts` — `pickLanguage` replaced by `stageLanguage` and `commitStagedOnClose` (the close-commit haptic lives here, on the commit path).
+- `components/sheets/screens/Language.tsx` — the wheel: `BottomSheetFlatList` inside Sheet''s host mode, the clipped band layer with both bands, the snap offsets and both-end padding, the seeded open, the tap-only staging with its tick, the detent wiring, the subtitle rewire, the composed `onDismiss` and the presented-gated reseed.
+- `components/sheets/__tests__/Language.test.tsx` — rewritten: the wheel''s snap props and padding, the clipped band layer, both bands'' seats, the purple''s gates, the subtitle, no-commit-on-tap, settle-then-close, the boundary commit, the staged-survival rule, the haptic guards, the search reseed, RTL.
+- `components/sheets/screens/__tests__/languageWheel.test.ts` — new, the pure geometry suite; the pinned acceptance criterion.
+- `components/ui/LanguageLoader.tsx` — the 200ms fade-in of the changing line (decision 12).
+- `components/ui/__tests__/LanguageLoader.test.tsx` — the loader''s own suite (six tests today) gains the fade guards; the grill named the root layout''s suite, but this one covers the loader directly and is the right home, and no `app/__tests__/_layout.test.tsx` exists in the tree.
+
+Read only:
+
+- `components/sheets/screens/languageFilter.ts` — the filtered rows feed the wheel, unchanged.
+- `stores/language.ts` — `commitLanguagePreference` and `revealLanguageLoader` are re-timed, not rewritten.
+- `stores/ui.ts` — `hideLanguageSheet` and `setLanguageSheetModal`, the programmatic close and the ref the boundary leans on.
+- `shared/i18n/en.ts` — the existing `sheet.closeToSave` key the subtitle rewires to, read for parity at the branch point.
+- `components/sheets/screens/__tests__/Settings.test.tsx` — regression; it imports and renders the Language screen, so the rebuilt wheel flows into it.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — regression, unchanged.
+- `components/sheets/__tests__/SheetHost.test.tsx` — regression; the sheet still hosts the rebuilt screen.
+- `stores/__tests__/languageCommitGuards.test.ts` — regression; the machinery''s own guards are untouched.
+
+## Design
+
+One invariant carries the ticket: **the settled row is always exactly centred; the app''s locale changes only through `commitLanguagePreference`, exactly once per close, and only when a tap-staged candidate differs from the locale in force.** Everything serves it: the offsets array owns the centring on both platforms without trusting a native alignment formula; the two bands are pure derivations of one scroll offset plus two integers inside a clipped layer, so no scroll can re-render a row, move the seat, or paint outside the list; the close boundary is a single library-guaranteed callback with a synchronous ref consume, ordered before the query clear, so no path can double-commit, race a reset, or skip.
+
+The layer stack inside the card body, bottom to top: the clipped band layer (faint band, purple seat), then the `BottomSheetFlatList`. The rows are transparent Pressables, so both bands read through the row text, and the clip is the viewport gate for both.
+
+Further alternatives rejected, beyond those dated above: a true `UIPickerView` wrapper (a new native dependency against the stack law, and the owner asked for the behaviour without the iOS looks); driving the bands from JS state on `onScroll` (a re-render per frame — the jank the risks name); committing on the backdrop tap alone (it misses the swipe, the back gesture and any programmatic close); hosting the list inside a `BottomSheetView` (decision 1''s dead cut).
+
+## Steps
+
+1. **Step 1: The wheel''s pure geometry and staged-commit functions, with their suites** — `languageWheel.ts` (pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, the commit guard) and `languageSheet.ts` rebuilt (`stageLanguage`, `commitStagedOnClose` with the close-commit haptic), red-first suites, mutation pass on the guarded logic. 2 points.
+2. **Step 2: Sheet hosts the caller''s scrollable, and the language screen renders as the wheel** — Sheet''s host mode (children bare, no ContentWrapper) and the close-haptic suppression prop with `Sheet.test.tsx` coverage; `Language.tsx` renders the `BottomSheetFlatList` inside the mode with the snap offsets and both-end padding, the clipped band layer with both bands and the purple''s gates, the seeded open, and the subtitle rewired to `sheet.closeToSave`; `Language.test.tsx` rewritten; `Settings.test.tsx` regression. 2 points.
+3. **Step 3: The tap-only staged commit at the composed close boundary** — the tap stages, ticks and scrolls; the composed `onDismiss` consumes the staged ref first, reveals and commits exactly once, then clears the query under the presented gate; the staged-survival reset rule; the detent wiring; the guards: no-commit-on-tap, settle-then-close changes nothing, one commit under a double `onDismiss`, nothing staged, staged equal to the locale in force, staged surviving a filter that keeps it and resetting under one that removes it, no buzz on a no-staged close, none during the load. 2 points.
+4. **Step 4: The loader''s line fade and choreography** — the 200ms fade-in of the `language.changing` line from availability, the one-act teardown confirmed as the existing single unmount, the law reconciliation dated in the code''s own terms; `LanguageLoader.test.tsx` gains the fade and lift guards. 2 points.
+
+## Risks
+
+- **Scroll jank.** Both bands derive from one shared value on the UI thread and no row re-renders on scroll. A regression shows as dropped frames in the owner''s build read; per the run order, findings become fix-forward tickets and nothing is reverted.
+- **The top-edge handoff is a device unknown.** The host mode removes the deterministic registration overwrite (decision 1), but the pan-to-close handoff at the list''s top edge is still device behaviour the suites cannot see. The owner''s single final build reads it; findings become tickets.
+- **The commit firing twice.** The library fires `onDismiss` once per close and `commitStagedOnClose` consumes the staged ref synchronously, before the query clear re-renders. The suite fires `onDismiss` twice and asserts one commit.
+- **The first-open centre before layout.** The seat offset exists only after the list and the first row have laid out; the seed lands in `onLayout` (`scrollToOffset` animated false, the shared value written directly) and the sheet''s own open animation covers the frames before it. A visible flash at open is a fix-forward finding.
+- **The Reanimated worklet under Jest.** Settled by decision 18: the pure suite is the criterion, the animated-style read is a droppable bonus. No run-time choice remains.
+- **Row nonuniformity at font scales.** The pitch derives from the first row''s measure and the T-451 seat already relies on uniform rows; a name that wrapped would break both. The names are single-line at the detail size in the card width; the owner''s read covers the scaled cases.
+- **The detent tick on a bounce.** An iOS bounce that recrosses a row boundary ticks again (decision 7); dated as honest wheel feel, undebounced. If the owner''s read calls it noisy, the fix is one edge-guard ticket.
+
+## Proof
+
+- `yarn validate` exits 0 at full coverage, with the rewritten `Language.test.tsx`, the new `languageWheel.test.ts` and `LanguageLoader.test.tsx` green, and `Sheet.test.tsx`, `Settings.test.tsx`, `SheetHost.test.tsx`, `languageFilter.test.ts` and `languageCommitGuards.test.ts` unchanged-green.
+- The pure suite asserts, for the shipped list shape: `offsetForIndex(0) = 0` and `offsetForIndex(N-1) = maximum offset` (the ends centre), and `centreFloat(offsetForIndex(i)) = i` for every i (the settled row is the centred row). This is the pinned acceptance for the snap and the band''s seat.
+- The boundary suite asserts: a tap calls neither `revealLanguageLoader` nor `commitLanguagePreference` nor `dismiss`, and fires the tap tick; a scroll fired to a stop followed by `onDismiss` calls neither reveal nor commit (settle selects nothing); one `onDismiss` with a staged foreign row reveals and commits that row exactly once and fires exactly one Light impact; a second `onDismiss` adds no commit; `onDismiss` with nothing staged and with the locale in force staged calls neither and fires no haptic; the driver-hanging load window fires no haptic.
+- The staged-survival suite asserts: a query that still contains the staged row keeps it (the close commits it); a query that removes the staged row resets to nothing-staged (the close commits nothing); clearing the query reseeds the full list centred on the locale in force and a surviving staged choice still commits at the close.
+- The band suite asserts: the band layer carries `overflow: ''hidden''` and matches the list''s frame; after the open seed the faint band''s `translateY` equals the centre seat; after a fired scroll it equals `bandSeat(offset)`; the purple seat equals `pad + seat*pitch - offset` at every fired offset, reads opacity 0 while off-measure and while the locale is filtered out, and the `selected` radio never moves.
+- The wheel suite asserts: `snapToOffsets` equals the computed offsets, `decelerationRate` is ''fast'', the content padding at both ends is `(listHeight - rowHeight) / 2`; the reseed offset under Arabic equals the one under English; the sheet''s subtitle reads the localized `sheet.closeToSave`.
+- The Sheet suite asserts: the host mode renders the children bare with no `BottomSheetView` ancestor; the suppression prop holds the unified close impact for the language sheet while the default fires it for every other sheet.
+- The loader suite asserts: the line''s opacity animates from 0 over the single 200ms timing once the line is available; the cover, spinner and line lift as one act at completion.
+
+## Grill, 2026-10-29 (comment 4538) — where each finding landed
+
+1. The `scrollable={false}` break: decision 1 replaces it with Sheet''s host mode; both Sheet Files rows are changed.
+2. The haptics order: decision 11 dates the three triggers, the suppression prop and the moved unified close haptic, with Proof guards.
+3. The loader choreography: decision 12 dates the 200ms fade, the one-act teardown and the law reconciliation; Step 4 and the changed `LanguageLoader.tsx` rows carry it.
+4. The subtitle: decision 13 rewires to the existing `sheet.closeToSave`; Step 2 and a Proof row assert it.
+5. Tap-only staging: decision 6 and the settle-then-close Proof guard.
+6. The occupied `onDismiss`: decision 8 dates the composed ordering and the presented gate on the reseed (decision 10).
+7. The staged-reset rule: decision 10 dates it — reset only when the staged id leaves the filtered set — with the three survival guards in Proof.
+8. The Jest criterion: decision 18 pins the pure suite as the acceptance; the animated-style read is a droppable bonus.
+9. The viewport gate: decision 5''s clipped band layer, asserted in the band suite.
+10. The Files omissions: `Settings.test.tsx` named as regression, `stores/ui.ts` read only, `shared/i18n/en.ts` read only. One correction to the finding itself: the loader''s suite is `components/ui/__tests__/LanguageLoader.test.tsx`, which exists and covers the loader directly; no `app/__tests__/_layout.test.tsx` exists in the tree, so that row is named instead.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 57344, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:42:16.611709+00', '2026-10-29 03:58:54.266796+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (54, 1, NULL, 'T-453', '# T-453 — Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine
+
+## Goal
+
+Fifty locale catalogs ship today (en plus forty-nine translated). This wave adds nine — skr, bal, kas, dv, aa, kr, mdh, mnk, dje — and the three waves together take the run to seventy-five at the merged line (T-452 eight, this wave nine, T-454 eight). Code only: no build, no install, no simulator, no screenshot. The owner reads the result on the phone afterwards and rules from Awaiting Owner. Nothing in the fifty shipped locales changes a byte, and en changes nothing this wave touches after T-451 merges.
+
+## Selection (the ticket''s mission block, the owner''s audit of 2026-10-29)
+
+| Tag | Language, reach | Script, record | Why it ships |
+| --- | --- | --- | --- |
+| skr | Saraiki, ~26M | Arabic RTL, URDU (Naskh) | the largest unserved Muslim reading public, southern Punjab |
+| bal | Balochi, ~10M | Arabic RTL, URDU | Balochistan across Pakistan, Iran, Afghanistan |
+| kas | Kashmiri, ~7M | Arabic RTL, URDU | Perso-Arabic Kashmir |
+| dv | Dhivehi, ~0.34M | Thaana RTL, THAANA (a new pair) | the Maldives, the one wholly Muslim nation |
+| aa | Afar, ~3M | Latin, LATIN | Djibouti and the Awsa |
+| kr | Kanuri, ~10M | Latin, AFRICAN | Borno and Niger |
+| mdh | Maguindanao, ~1.5M | Latin, LATIN | Muslim Mindanao |
+| mnk | Mandinka, ~5M | Latin, AFRICAN | the Senegambia |
+| dje | Zarma, ~3M | Latin, AFRICAN | Niger |
+
+## Sourcing (what attests what; the loan rule closes every slot no source prints)
+
+Fetched 2026-10-29. The loan rule is T-410 decision 5: the slot ships the loan in the language''s own orthography with text, slug `loan`, low confidence and the derivation in the note. The five explanations per locale derive from the sourced names in the language''s own syntax, slug `derived`.
+
+| Tag | The table or page that attests | Names it prints verbatim | Confidence | Loan-rule slots |
+| --- | --- | --- | --- | --- |
+| skr | skr.wikipedia''s own list `پنج نمازاں دے ناں` (the names of the five prayers), corroborated by its `نماز ویلے` article | دَھمِّی (glossed فجر دی نماز), پیشِیں (ظہر), دِیگَر (عصر), نِماشَاں (مغرب), خُفتاں (عشاء) | medium | Sunrise, Midnight, Last Third, Duha, Istijaba; Suhoor ships the attested token سحری at low |
+| bal | one Balochi vocabulary post (no Balochi Wikipedia exists; the sitematrix and DNS both refuse bal), beside the Western Balochi incubator''s اسلام article | فجر (Fajr), نماشاں (Maghrib, the post''s Nimasham), اسور (the pre-dawn meal, Suhoor) | low | Dhuhr, Asr, Sunrise, Midnight, Last Third, Duha, Istijaba. The post''s ويغَرَ is a misprint of the Saraiki دِیگَر and never ships; the reading is recorded in the note |
+| kas | ks.wikipedia''s `نؠماز` infobox and its own prayer articles (`صُبحٕچ نؠماز`, `پیٚشِن نؠماز`, `شام نؠماز`, the Isha article) | صُبُح, پیٚشِن, دِگر (the infobox''s three), شام, خۄفتَن (the articles) | medium | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| dv | adhadhu.com''s Dhivehi news table, corroborated by the Addu Meedhoo council''s own Dhivehi prayer page (addumeedhoo.gov.mv) | ފަތިސް, މެންދުރު, އަޞްރު, މަޣްރިބް, ޢިޝާ; Sunrise އިރުއެރުން from the council page, the news table''s އިރުއަރާ recorded as the variant | high | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| aa | islamhouse.com''s Afar section (`Qafár afa`, articles and audio), the register the loans transliterate into; no Afar prayer table exists | none | low, every slot a loan | all eleven names and the five explanations |
+| kr | the Kanuri Ajami corpus named in the scholarly record; no Kanuri timetable or page with the five names is fetchable | none | low, every slot a loan | all eleven and the five explanations |
+| mdh | one Maguindanao vocabulary list in Latin orthography (the language is written Latin today; the incubator''s `Wp/mdh` carries no prayer article) | Subuh (the list''s Pagiyar and Awal a Subuh recorded in the note), Luhur, Asar, Magrib (its Magarib recorded), Isya (its Aisa recorded) | low | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| mnk | no Mandinka page printing the five names exists; the incubator `Wp/mnk` holds no Islamic article | none | low, every slot a loan | all eleven and the five explanations |
+| dje | no Zarma page printing the five names exists; the incubator `Wp/dje` holds its main page alone | none | low, every slot a loan | all eleven and the five explanations |
+
+Midnight and Last Third take each language''s own vocabulary where the glossary can derive it, at low confidence with the derivation in the note; Suhoor, Duha and Istijaba take the naming rule''s transliteration in every one of the nine, the T-428 shape.
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The nine are skr, bal, kas, dv, aa, kr, mdh, mnk, dje, appended to LOCALE_IDS in that order.** The ticket names them; the mission block is the selection authority; the run''s merge protocol appends each wave''s rows at every list''s end.
+2. **Maguindanao ships as mdh, never mag** (the lead''s ruling on this ticket, 2026-10-29): `mag` is Magahi, and the picker, LOCALE_IDS, detection, native-strings, widget-statics, app.json''s arrays and every other surface carry mdh. Bare `mag` stays unshipped.
+3. **Kashmiri ships under the ticket''s tag kas**, with detection mapping the CLDR tags a device reports: ks-IN and ks-Arab-IN resolve kas, the pa-Arab precedent of mapping a foreign tag onto the shipped id.
+4. **skr ships its own five** — دَھمِّی، پیشِیں، دِیگَر، نِماشَاں، خُفتاں — not the Arabic loans its own encyclopedia also prints. The wave exists to give Saraiki readers Saraiki, the pa-Arab ruling of T-427 decision 2; the loan set stays in each entry''s note as the alternative. Challenged: Pakistani tables print the Arabic set. It does not flip.
+5. **kas ships its own five** — صُبُح، پیٚشِن، دِگر، شام، خۄفتَن — the Persianate names the valley''s own encyclopedia prints, with the Arabic glosses recorded in the notes.
+6. **dv ships the council page''s row labels** (the authority class) with the news table corroborating: ފަތިސް، އިރުއެރުން، މެންދުރު، އަޞްރު، މަޣްރިބް، ޢިޝާ. The variants އިރުއަރާ and ފަޖުރު are recorded in their notes.
+7. **The four loans-only languages ship under the loan rule** (aa, kr, mnk, dje), because the ticket names them and the wave''s law is sourcing recorded, not sourcing perfect (T-427 decision 3). Every slot carries text, slug, low confidence and the derivation; the census prints every one; the owner''s phone read is the ruling pass.
+8. **bal ships its three attested fragments at low** (فجر، نماشاں، اسور) and closes the rest by the loan rule; the post''s misprint is recorded, never shipped.
+9. **mdh ships the Malay-world set the fetched list prints at low** (Subuh، Luhur، Asar، Magrib، Isya), variants in the notes. Latin is the script the language is written in today (CLDR maximises mdh-Latn-PH).
+10. **Fonts and records, this wave''s own measurements, taken 2026-10-29 with fontTools over the bundled faces, both weights.**
+    - The bundled Noto Naskh Arabic v2.021 pair carries, by explicit codepoint, Saraiki''s eight own letters (ٻ U+067B, ڄ U+0684, ڃ U+0683, ڇ U+0687, ڏ U+068F, ڙ U+0699, ݙ U+0759, ݨ U+0768), Balochi''s five (ڳ U+06B3, ڃ, ڇ, ݔ U+0754, ڻ U+06BB) and Kashmiri''s fourteen (ٲ U+0672, ٳ U+0673, ٵ U+0675, ٶ U+0676, ٷ U+0677, ٸ U+0678, ۄ U+06C4, ۅ U+06C5, ۆ U+06C6, ۈ U+06C8, ۉ U+06C9, ې U+06D0, ۍ U+06CD, ێ U+06CE); Rubik carries none of those twenty-seven. skr, bal and kas map to the URDU record unchanged and its comment gains this wave''s measurement.
+    - No bundled face carries a single Thaana codepoint, so dv bundles Noto Sans Thaana v3.001 Regular and Medium from the notofonts release statics, under the OFL licence file already in assets/fonts. Measured: UPM 1000, hhea ascent 1069, descent -424, lineGap 0, a 1.493em box, with usWinAscent 1069 and usWinDescent 424 (1.493em), so the box equals the pair''s own declared ink bounds, and the block''s glyphs run +751 and -306 units at the extremes, inside the box. The box clears the ink, so the THAANA record pins no script box (the Thai row-87 law). A 1.5em pin was rejected: no measurement this pair makes asks for it.
+    - aa''s orthography is ASCII and mdh''s one non-ASCII letter is ñ U+00F1, which Roboto carries in both weights: aa and mdh take LATIN. Each step re-measures every character of the locale''s whole keyed surface.
+    - kr, mnk and dje take the AFRICAN record on the Noto Sans pair bundled for bm, ff and yo: ǝ U+01DD, ɓ U+0253, ɗ U+0257, ɛ U+025B, ɔ U+0254 and ɲ U+0272 are absent from Roboto and Rubik in both weights and present in Noto Sans (measured this wave). No new font for the three.
+11. **RTL_IDS gains skr, bal, kas and dv** — Thaana reads right to left — and catalogGates'' RTL purity set gains the same four, so the wave''s own Arabic-script and Thaana copy is gated; the four already in that set are untouched, and no layout code changes.
+12. **Prose digits are Latin in all nine** (the owner''s standing order; R12''s row-82 law). Times, dates and countdowns stay Latin in every locale.
+13. **No Hebrew, Yiddish or Ladino ships anywhere in the app** (owner order 2026-10-29), and no locale beyond the nine: the seventy-five cap is the maximum, not a target.
+14. **Version line.** The branch opens from the 2.32.0 tip T-451 lands. Step 1 commits `feat(i18n)` at 2.33.0, then one minor class step per commit through 2.38.0, `package.json`, `app.json`, `android/app/build.gradle` and `shared/whatsNew.ts` together. The collisions allowlist uat carries (2.33.0 through 2.40.0) grandfathers every collision under the standing ruling, and each merge renumbers above whatever uat then carries.
+15. **The merge protocol is append-only.** Every shared registry list (LOCALE_IDS, the loader''s RAW and MODULES, typography RECORDS, the catalog-lock LOCALES lists, native-strings.json, widget-statics.json, app.json''s arrays, the widget STATIC tables and their finder lists, the gates'' locale lists, the README) takes this wave''s rows at its end, in this wave''s order. The one exception is LANGUAGE_NAMES, whose contract is codepoint order: each endonym sits at its codepoint position, leaving every existing row''s relative order untouched. The README''s Features bullet is written from the count LOCALE_IDS.length returns in the tree committed, never a remembered number, and the lead''s merge resolution recomputes count and names to the merged seventy-five.
+16. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the two expo-font arrays, the nine expo.locales blocks derived from native-strings.json, CFBundleLocalizations and the version field are mechanical carriers, every byte gated by nativeLocalesConfig.
+17. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads "Added support for more languages"; the banner restamps with the version.
+18. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json block, CFBundleLocalizations entry, the four widget STATIC rows and their four finder lists — so no suite is red across a step boundary (T-419''s design law). Languages share a commit only inside a step this plan names.
+19. **The picker''s list is authored against the tree after T-451 merges**, in whatever shape T-451 lands (search, numbered rows, English names beside the endonyms); the nine''s endonyms join at their codepoint positions and the search folds over them with no further code.
+
+## Files
+
+- `shared/i18n/skr.ts`, `bal.ts`, `kas.ts`, `dv.ts`, `aa.ts`, `kr.ts`, `mdh.ts`, `mnk.ts`, `dje.ts` — new, one full catalog each at en''s parity in the branch tree, plus PRAYER_LABELS.
+- `shared/i18n/sourced-names.json` — the nine''s sections (eleven names and five explanations each, every slot non-null), the new source slugs registered in `_meta.sourceSlugs`, one line in `_meta.purpose`.
+- `shared/i18n/locale.ts` — LOCALE_IDS +9 appended; RTL_IDS gains skr, bal, kas, dv; the header count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the nine.
+- `shared/languageNames.ts` — nine endonym rows (سرائیکی، بلوچی، کٲشُر inside the Arabic block; ދިވެހި opening the Thaana position between the Arabic block and Devanagari; Qafar af, Kanuri, Magindanawn, Mandinka, Zarma among the Latin rows), each verified at its step against a page written in the language; the header''s script-order note gains Thaana; the English-name column in the shape T-451 lands.
+- `shared/typography.ts` — the THAANA record with this wave''s measured numbers; RECORDS gains the nine (skr, bal, kas → URDU; dv → THAANA; aa, mdh → LATIN; kr, mnk, dje → AFRICAN).
+- `assets/fonts/NotoSansThaana-Regular.ttf`, `NotoSansThaana-Medium.ttf` — new, OFL (the licence file is present).
+- `shared/i18n/native-strings.json` — nine locale rows (two permission strings and eighteen gallery keys each).
+- `shared/i18n/widget-statics.json` — nine locale rows (eleven statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts` — the LOCALES lists gain the nine together; en''s hash unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +9; the RTL purity set +4 (skr, bal, kas, dv); the T453_NINE sourcing gate beside T410_TEN and its siblings, red first.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +9 and the parity rows at fifty-nine.
+- `shared/__tests__/locale.test.ts` — detection rows: skr-PK → skr; bal-PK and bal-IR → bal; ks-IN and ks-Arab-IN → kas; dv-MV → dv; aa-DJ and aa-ET → aa; kr-NG and kr-NE → kr; mdh-PH → mdh; mnk-GM and mnk-SN → mnk; dje-NE → dje.
+- `shared/__tests__/typography.test.ts` — the THAANA case, the three URDU rows, the two LATIN rows and the three AFRICAN rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts` — LOCALES to fifty-nine; CFBundleLocalizations rides it.
+- `shared/__tests__/widgetStaticStrings.test.ts` — LOCALES to fifty-nine.
+- `components/__tests__/chevronDirection.test.tsx` — both RTL pin lists gain skr, bal, kas, dv.
+- `components/sheets/__tests__/Language.test.tsx` — the picker''s list at fifty-nine, in the shape T-451 lands.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table +9 rows and its one locale finder list +9 codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables +9 rows each and its three finder lists +9 codes each.
+- `app.json` — the nine expo.locales blocks, both expo-font arrays +2 (the Thaana pair), CFBundleLocalizations to fifty-nine, the version.
+- `package.json`, `android/app/build.gradle`, `shared/whatsNew.ts` — the version stamps together.
+- `README.md` — the Features bullet names the merged set, count read from LOCALE_IDS.length in the tree committed.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, loader MODULES and typography RECORDS stop typechecking until every new locale carries its row, and each catalog satisfies Catalog (exactly en''s key set at the branch point) or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T453_NINE sibling, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms and CFBundleLocalizations rides the LOCALES order), widgetStaticStrings (the widget tables render the statics row for row), catalogLock (en byte-identical, the lock''s list equal to the translated set) and i18nBridge''s parity rows.
+
+Per locale the recipe is T-427''s and T-428''s, in one commit per step: catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates, Latin digits), loader rows, endonym row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+
+The Thaana pair is bundled as full statics, not a subset: fifty codepoints carry the language''s whole keyed surface and a subset would add a second glyph-lock mechanism for a script the app gains once, the yo ruling of T-427.
+
+Alternatives rejected: the Arabic loans for skr and kas (decisions 4 and 5); holding aa, kr, mnk and dje for a speaker (the ticket names them and the loan rule ships a gated row now, the speaker pass improves it later); a script box pinned on dv''s record without a measurement that asks for one (decision 10); a new font for kr, mnk or dje (the AFRICAN pair already carries their letters); `mag` as Maguindanao''s id (the lead''s ruling); en key counts carried from memory instead of measured at the branch point.
+
+## Steps (6 × 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the nine languages** — sourced-names.json gains skr, bal, kas, dv, aa, kr, mdh, mnk and dje, each with eleven name slots and five explanation slots, every one non-null with text, slug, confidence and a note naming the table or the derivation; the new slugs registered; catalogGates gains the T453_NINE sibling gate, red first, with a mutation pass on the guard.
+2. **Step 2: skr, bal and kas land RTL on the Naskh record** — LOCALE_IDS at fifty-three, RTL_IDS gains the three, each locale''s whole keyed surface in one commit on the URDU record whose comment gains this wave''s measurement, every suite green at the boundary.
+3. **Step 3: dv lands on the bundled Noto Sans Thaana pair** — the pair fetched and bundled, both expo-font arrays grown, the THAANA record carrying the measured 1.493em box with no script box, RTL_IDS gains dv, dv''s whole keyed surface in one commit, the widget runtime load suite re-run green after the font lands.
+4. **Step 4: aa and mdh land on the LATIN record** — the two catalogs and their whole keyed surface, Roboto measured over every character each locale inks, both weights, zero missing.
+5. **Step 5: kr, mnk and dje land on the AFRICAN record** — the three catalogs on the bundled Noto Sans pair, measured the same way, zero missing.
+6. **Step 6: The full sweep is green and the README carries the merged count** — every suite green over the fifty-nine locales this tree holds, `yarn validate` exits 0 at full coverage, en''s catalog-lock hash unchanged from the branch point, the README bullet written from LOCALE_IDS.length with the nine appended, the What''s New banner restamped, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loans and the derived labels carry their derivations in the notes and the census prints every one; the owner''s phone read is the ruling pass. aa, kr, mnk and dje ship whole waves of loans, and that is the recorded state, not a hidden one.
+- **A low-confidence fragment is a misprint.** bal''s post prints ويغَرَ where Saraiki prints دِیگَر; the plan records the reading in the note and ships the loan instead.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row covers skr, bal, kas and dv from step 2 and 3, and names the key.
+- **Thaana renders as tofu** if the pair is absent: step 3 measures every character of dv''s whole keyed surface in both weights before the commit, and the widget runtime load suite re-runs after the font lands.
+- **A label exceeds the 24-char budget** (Kashmiri''s and Saraiki''s extras run long): the gate names the key, and the label takes a shorter attested or loan form.
+- **en''s parity drifts because T-451 lands late or changes again**: the branch is cut after T-451 merges and parity is measured in the branch tree; a remembered count is a defect. The blocked_by relation on this ticket carries the wait.
+- **The version line collides inside the band**: every commit takes one minor step from 2.33.0, the allowlist grandfathers the collisions, and the merge renumbers above uat.
+- **A shared list row is reordered at the merge**: every step appends, never sorts, and the lead concatenates; the README count is recomputed at the merge from the merged tree.
+
+## Proof
+
+1. The nine named with rationale: the Selection table, citing the ticket''s mission block and this doc''s fetched sources.
+2. Parity: the babel walk scripts/catalog-lock.mjs uses prints en''s member count in the branch tree, and the same walk over each of the nine catalogs prints the identical key list; the i18nBridge parity rows are green at fifty-nine.
+3. Sourcing recorded: `jq ''[.["skr"],.["bal"],.["kas"],.["dv"],.["aa"],.["kr"],.["mdh"],.["mnk"],.["dje"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0, and catalogGates'' T453_NINE row is green.
+4. Coverage and regression: `yarn validate` exits 0, full coverage, with catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale, the chevron pins and the Language sheet green over fifty-nine locales, and the fifty existing locales'' rows unedited.
+5. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows skr, bal, kas and dv inside the set, and locale.test.ts resolves the eleven detection rows this plan lists.
+6. Glyph coverage: fontTools over the bundled faces, both weights, prints zero missing characters for every character of each new locale''s whole keyed surface — the three Arabic-script locales against Noto Naskh, dv against Noto Sans Thaana, aa and mdh against Roboto, kr, mnk and dje against Noto Sans.
+7. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts shared/__tests__/nativeLocalesConfig.test.ts` green at fifty-nine, and the four finder lists in the two widget files each carry the nine codes.
+8. The version stamps: `jq ''.expo.version'' app.json`, `node -p "require(''./package.json'').version"` and `grep versionName android/app/build.gradle` print the same number at each step, one minor step from 2.33.0.
+9. The README: the Features bullet''s count equals the value LOCALE_IDS.length returns in the tree committed, and the merge resolution recomputes it to seventy-five.
+
+
+## Lead amendments after the audit (2026-10-29)
+
+1. Registry order: the waves landed in the steps'' order (aa, mdh, kr for steps 4 and 5), so every shared list appends in that order and decision 1''s nominal order is superseded, recorded here for the merge resolution.
+2. The version rows drop `android/app/build.gradle`: `/android` is gitignored prebuild output and the stamps live in `package.json`, `app.json` and `shared/whatsNew.ts`.
+3. The AFRICAN row''s stated basis is each language''s own orthography on the Sahel Latin record plus the measured census, not the six letters the wave inherits; the record and its figures are unchanged.
+4. Maguindanao ships its Tagalog-derived UI copy as a disclosed stand-in at low confidence, the eleven prayer names Maguindanao-sourced, with a speaker pass owed (owner read on the build; fix forward).', NULL, NULL, '{}', false, false, false, NULL, NULL, 54272, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:13:33.650622+00', '2026-10-29 08:06:01.041443+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (56, 1, NULL, 'T-454', '# T-454 — Seventy-five languages, wave three of three: the Myanmar, Cyrillic and island eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes the set toward seventy-five by shipping its
+eight — my, tt, ce, uk, min, mad, bug, qu — beside the two sibling waves (T-452''s eight, T-453''s
+nine), twenty-five together under the seventy-five cap. Code only: no build, no install, no
+simulator, no screenshot; the owner reads the result afterwards and rules from Awaiting Owner.
+The wave branches only after T-451 (the picker) merges at 2.32.0, because every new catalog is
+authored against the key set en carries at that branch point.
+
+**The eight, in this wave''s order:**
+
+| Tag | Language, script, face | Reach | Prayer-table genre | Slots the loan rule closes |
+| --- | --- | --- | --- | --- |
+| my | Burmese, Myanmar script, bundles Noto Sans Myanmar | ~33M, Myanmar''s Muslim minority | Burmese Muslim da''wah media and teaching pages (Deen For Muslimeen''s Burmese posts, Burmese-language namaz teachings), my.wikishia''s နမာဇ် encyclopedia, my.wikipedia''s Islamic articles, Dawat-e-Islami''s my-localized app strings | Suhoor, Duha, Istijaba and any name no page prints |
+| tt | Tatar, Cyrillic, Roboto | ~5M, Russia''s biggest Muslim language | Tatarstan''s own Tatar-language tables: islamtatar.ru''s Яр Чаллы table (Иртәнге намаз, Кояш чыга, Өйлә намазы, Икенде намазы, Ахшам намазы, Ястү намазы), namazvakti.com''s Tatar yearly table, the Tatarstan district press carrying the muftiat''s tables; the Kazan namaz page attests Сәхәр | Duha, Istijaba; Midnight and Last Third derived from Tatar''s own vocabulary |
+| ce | Chechen, Cyrillic, Roboto | ~1.6M | Chechen-language Islamic library texts (islamcontent.com/ce, which attests Духьа ламаз for Duha) and the govzalla.com Chechen dictionary (делкъ-ламаз and the ламазан хенаш entries); no printed five-name Chechen table exists | every slot no Chechen text attests; the genre is the wave''s thinnest beside qu |
+| uk | Ukrainian, Cyrillic, Roboto | ~35M | uk.wikipedia''s prayer articles (Фаджр, Зухр, Аср, Магріб, Іша each carry one) and Ukrainian Muslim community tables (umma.in.ua''s Час молитв) | Suhoor, Duha, Istijaba loans; Midnight and Last Third from Ukrainian''s own vocabulary |
+| min | Minangkabau, Latin, Roboto | ~5.5M, West Sumatra | min.wikipedia''s Islamic series (Sumbayang, Wakatu sumbayang — which names sumbayang Luhua —, Sumbayang tarawih) and Minangkabau religious discourse | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba where the stubs stay silent |
+| mad | Madurese, Latin with ḍ, bundled Noto Sans pair | ~7M, Indonesia''s biggest unserved | mad.wikipedia''s Islamic articles (Abhâjâng and the Ramadan series) in the official Madurese orthography, and the Madurese pesantren vocabulary | the extras; the five names where the articles borrow Indonesian forms |
+| bug | Bugis, Latin, Roboto | ~5M, South Sulawesi | Bugis prayer materials (the Patettongenna Sumpajang Waji''e guide), Wikimedia Indonesia''s Bugis time-terms teaching (attests subu''), the official Bugis-Indonesia dictionary, bug.wikipedia | most slots beside Subu; the loan rule with recorded derivations |
+| qu | Southern Quechua, Latin, Roboto | ~9M, the owner''s Peru pick | no Quechua prayer table exists; the genre is dictionaries and translated leaflets (glosbe''s Quechua Islamic terms, islamic-invitation.net''s Northern-Quechua section as corroboration only) | likely all eleven; every name a recorded loan or a derived Quechua day-word |
+
+## Decisions taken (2026-10-29, lane 3, agent-ruled)
+
+1. **The eight are my, tt, ce, uk, qu, min, mad, bug, in the order the steps landed them, appended
+   to the end of every shared list; the ticket''s nominal order is superseded by the plan''s own
+   Steps 4 and 5 (lead ruling 2026-10-29).** The selection authority is the owner''s 2026-10-29 order: the mission
+   block my, tt, ce, min, mad and bug beside the popularity picks uk and qu. The seventy-five cap
+   is a maximum, so nothing follows these three waves; Hebrew, Yiddish and Ladino stay banned for
+   good (2026-10-29).
+2. **Parity is en''s key count at the branch point, never a remembered number.** T-451 lands first
+   at 2.32.0 and adds exactly two keys (language.search, language.noMatch) after
+   language.chooseHint, so the branch-point truth is the pre-picker 201 plus those two; the
+   executor reads the count from the tree at branch time and every catalog satisfies Catalog at
+   that count, the two picker keys included at en''s position.
+3. **en''s catalog-lock hash is unchanged from the branch point** — the hash T-451''s regenerated
+   catalog-lock.json carries, not the remembered e20ae02c of the fifty-language line. No English
+   byte moves in this wave.
+4. **Fonts, measured 2026-10-29 with fontTools 4.67.0 over the bundled TTFs, by explicit
+   codepoint, both weights.** Roboto-Regular and Roboto-Medium carry every Cyrillic codepoint
+   U+0400 through U+04FF except U+0487 (the Church Slavonic combining titlo, which none of the
+   three uses), palochka Ӏ U+04C0 and ӏ U+04CF included, so tt, ce and uk take the LATIN record:
+   Tatar''s ә ғ ҡ ң ө ҫ ү һ җ, Chechen''s ә ҡ ң ӧ ү җ and Ukrainian''s і ї є ґ all measured
+   present. Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights and no other bundled face carries
+   them except the Noto Sans pair, so mad rides the AFRICAN record on that pair, its comment
+   gaining Madurese''s own measurement line — the URDU precedent of one record gaining members
+   across waves. min, bug and qu stay LATIN: Roboto carries their apostrophes ('' and ʼ), ñ, è é ê
+   and â. No bundled face carries a single Myanmar codepoint, so my bundles its pair.
+5. **The Myanmar pair is Noto Sans Myanmar v2.107, the hinted statics from the notofonts.github.io
+   release (the same source series as the shipped v2.0xx pairs), Regular 195,088 and Medium
+   197,360 bytes, so full statics and no subset pipeline — the zh pipeline exists for a
+   forty-megabyte problem that does not arise.** Measured both weights: hhea box 1324/-860
+   (2.184em), win ink equal (usWinAscent 1324, usWinDescent 860), lineGap 0, UPM 1000, the two
+   weights identical; worst single-glyph Myanmar-block ink 1004/-469 Regular and 1009/-471
+   Medium, inside the declared box with about a third headroom. The declared box clears its ink
+   (hhea equals win), so the row-87 Thai law applies and the MYANMAR record pins no script box:
+   the font''s own 2.184em metrics serve. The step re-measures the stacked sequences of the final
+   keyed surface before commit, the Malayalam lesson.
+6. **No RTL.** All eight read left to left — Myanmar, Cyrillic and Latin alike — so RTL_IDS, the
+   chevron and comma helpers, the crossing relaunch sets and the RTL gates stay untouched.
+7. **Digits stay Latin in all eight.** R12 carries no row for any of them and the row-82 law plus
+   the owner''s standing order (2026-10-29) keep times, dates and countdowns Latin everywhere:
+   Burmese''s own ၀-۹ never render.
+8. **The loan rule (T-410 decision 5) governs every slot no source attests**, and this wave leans
+   on it hardest for qu and ce: the Catalog type requires every key, so the slot takes the loan
+   in the language''s own orthography, recorded with text, slug, confidence and the derivation in
+   its note. Sunrise, Midnight and Last Third land from the language''s own day vocabulary at
+   medium where the words exist; Suhoor, Duha and Istijaba close as loans unless a table prints
+   them (islamcontent prints Духьа for ce, the Kazan page prints Сәхәр for tt). Every new slug
+   registers in _meta.sourceSlugs.
+9. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+   step; every later commit is a patch (2.33.1 through 2.33.5) under a non-feat subject** (the
+   T-429 ruling that the discipline gate admits a patch only under chore). package.json, app.json
+   and shared/whatsNew.ts stamp together; android/app/build.gradle is prebuild output the repo
+   does not track, and each commit message records that. Collisions with the sibling waves''
+   2.33.0 are grandfathered by scripts/version-collisions-allowlist.json under the standing
+   ruling, and each merge renumbers above whatever uat then carries — the lead''s.
+10. **The merge protocol is append-only.** Every shared registry (LOCALE_IDS, loader RAW and
+    MODULES, LANGUAGE_NAMES at codepoint position, typography RECORDS, the catalog-lock list,
+    native-strings.json, widget-statics.json, the app.json arrays, the four widget STATIC tables
+    and their finders, the gates'' CATALOGS and LOCALES lists, README) takes this wave''s rows at
+    its end in this wave''s order; no other wave''s row is rewritten, and the lead''s additive
+    resolution carries the merged seventy-five.
+11. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font
+    array gains the two Myanmar TTFs, eight expo.locales blocks byte-identical to
+    native-strings.json, CFBundleLocalizations in LOCALE_IDS order, the version field — every
+    byte gated by nativeLocalesConfig.
+12. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+13. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the suite is the proof, and the widget runtime load suite re-runs after the Myanmar font
+    install (the widget invariant).
+14. **Each locale lands its whole keyed surface in one commit** (T-419''s design law): catalog,
+    loader row, endonym row with its english field (the T-451 shape), typography record,
+    native-strings row, widget-statics row, the four widget inline STATIC rows and their four
+    finder lists, the app.json locale block, the CFBundleLocalizations entry, the lock list and
+    lock suite, the gates rows and the detection rows — so no suite is red across a step boundary.
+15. **The picker follows the set.** The Language sheet''s census derives from LANGUAGE_NAMES, so
+    the eight endonyms ride it; the search filter''s NFD fold handles every new name by
+    construction (it strips Madurese''s ḍ to d), and languageFilter''s suite gains that fold case.
+
+## Files
+
+- `shared/i18n/my.ts, tt.ts, ce.ts, uk.ts, min.ts, mad.ts, bug.ts, qu.ts` — new, one full catalog
+  each at en''s branch-point parity (the two picker keys included) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after su; the header count; no
+  RTL change.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order, each carrying its english
+  field: Baso Minangkabau, Basa Ugi, Madhurâ and Runa Simi among the Latin rows; Нохчийн,
+  Татарча and Українська in the Cyrillic block; the Burmese endonym (မြန်မာ or ဗမာ, attested
+  at execution) after ไทย, before the Ethiopic rows.
+- `shared/typography.ts` — the MYANMAR record on the bundled pair; tt, ce, uk, min, bug and qu
+  map LATIN with per-locale measurement comments; mad maps AFRICAN, the record''s comment gaining
+  Madurese''s ḍ line.
+- `assets/fonts/NotoSansMyanmar-Regular.ttf, NotoSansMyanmar-Medium.ttf` — new, OFL, the licence
+  file already present.
+- `shared/i18n/sourced-names.json` — the eight''s sections (11 names and 5 explanations each),
+  every slot non-null with text, slug, confidence and note; the new slugs registered.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery keys
+  each).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; the lock''s
+  new entries carry en''s branch-point hash.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8; a T454_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows: my-MM, tt-RU, ce-RU, uk-UA,
+  min-ID, mad-ID, bug-ID, qu-PE; the unshipped-tag fallback rows stay untouched.
+- `shared/__tests__/typography.test.ts` — the MYANMAR record case; the LATIN filter''s exclusion
+  list gains mad beside bm and ff.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows to fifty-eight and the count statement
+  moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — follows LANGUAGE_NAMES; the row-count
+  statement moves if it pins one.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — the ḍ-to-d fold case.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table grows by eight rows and its locale
+  finder list gains the eight codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables grow by eight rows each and
+  their three locale finder lists gain the eight codes.
+- `app.json` — the expo-font array gains the two Myanmar TTFs; eight expo.locales blocks
+  byte-identical to native-strings.json; CFBundleLocalizations to fifty-eight; the version field
+  riding every commit.
+- `README.md` — the Features bullet names every shipped language with the count read from
+  LOCALE_IDS.length at the merged commit.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps on every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog at en''s branch-point count
+or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so each step''s gate re-reads
+the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, the 24-char label budget, sourced-verbatim) plus this wave''s T454_EIGHT
+sourcing row, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms, CFBundleLocalizations riding LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical from the branch
+point, the lock''s list equal to the translated set) and i18nBridge''s parity row. No locale in
+this wave joins the RTL set, so the RTL purity gate simply never fires on them.
+
+Per locale the recipe is T-427''s and T-429''s, in one commit per step: catalog file (sourced
+prayer names verbatim from the glossary, UI copy authored to the R2 gates, the two picker keys
+at en''s position), loader rows, endonym row with its english field, typography record,
+lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, the app.json locale block, the CFBundleLocalizations entry, the four widget STATIC rows and
+the four finder lists.
+
+Alternatives rejected: Roboto with decomposed d-plus-U+0323 for Madurese''s ḍ, which no input
+method or normalisation step would preserve (the bundled Noto Sans pair carries the precomposed
+letters); a subset cut of Noto Sans Myanmar, which would add a second glyph-lock mechanism for a
+pair under 200KB a weight; a MYANMAR script box pinned at the house 1.5em, which would be
+shorter than the font''s own 2.184em line and would clip the script the box exists to protect;
+Quechua deferred for a speaker (the loan rule ships a gated row now and the owner''s read improves
+it later); a device read inside this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   the eight sections with their genres'' attestations and the loan or derived entry for every
+   unattested slot, every slot non-null with text, slug, confidence and note; the new slugs
+   registered; catalogGates gains the T454_EIGHT sourcing gate, red first.
+2. **Step 2: my lands with its bundled Myanmar pair** — the v2.107 pair fetched, measured and
+   installed, the MYANMAR record with its measured numbers, the full catalog at branch-point
+   parity and my''s whole keyed surface in one commit; the widget runtime load suite re-runs after
+   the install.
+3. **Step 3: tt and ce land on Roboto''s Cyrillic** — both LATIN on the measured whole-block
+   coverage, tt on the Tatarstan tables'' label set with Сәхәр attested, ce on the Chechen library
+   attestations with the loan rule closing the gaps; the whole keyed surface each.
+4. **Step 4: uk and qu land on Roboto** — the two popularity picks, uk on the Ukrainian articles''
+   set with derived extras, qu the wave''s loan-rule wave with derived Quechua day-words; both
+   LATIN; the whole keyed surface each.
+5. **Step 5: min, mad and bug land, mad on the Noto Sans pair** — the Indonesian trio: min and
+   bug LATIN, mad AFRICAN on the pair Roboto''s missing ḍ rules it to; the whole keyed surface
+   each.
+6. **Step 6: The full sweep is green and the README names every shipped language** — every suite
+   green over the fifty-eight at full coverage, yarn validate exits 0, en''s lock hash unchanged
+   from the branch point, the README Features bullet rewritten from LOCALE_IDS.length with the
+   merged count landing at the lead''s merge, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loan and derived slots carry their derivations in the note, the
+  census makes every one visible, and the owner''s read is the ruling pass.
+- **qu has no attested prayer table anywhere**, and ce''s genre is thin: both waves of loans ship
+  at their measured confidence, every derivation recorded, and the owner''s phone pass rules.
+- **Myanmar renders tofu if the pair is absent**: the step measures every character of the keyed
+  surface in both weights before commit, and the widget runtime load suite re-runs after the
+  install.
+- **Stacked Myanmar ink past the box** (the Malayalam lesson): the step measures the stacked
+  sequences before commit; the declared 2.184em box carries about a third headroom over the
+  worst single glyph.
+- **A label exceeds the 24-char budget** (Burmese transliterations run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: this wave appends only, the
+  collisions allowlist grandfathers 2.33.0, and the lead concatenates and renumbers.
+- **The catalog lock drifts**: en stays byte-identical from the branch point; any en edit fails
+  catalogLock.
+
+## Proof
+
+1. The eight named with the selection authority: this doc''s table, the owner''s 2026-10-29 order,
+   the seventy-five cap and the standing bans.
+2. Sourcing recorded: a jq census over the eight''s sections of shared/i18n/sourced-names.json
+   prints zero rows with null text, source or confidence; the T454_EIGHT row of catalogGates is
+   green.
+3. Coverage and regression: yarn validate exits 0 at full coverage; catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green
+   over the fifty-eight, with the fifty existing locales'' rows unedited and en''s lock hash equal
+   to the branch point''s.
+4. Detection: locale.test.ts resolves my-MM to my, tt-RU to tt, ce-RU to ce, uk-UA to uk, min-ID
+   to min, mad-ID to mad, bug-ID to bug and qu-PE to qu, with the unshipped-tag fallback rows
+   untouched.
+5. Glyph coverage: the per-locale fontTools census over both weights prints zero missing — tt,
+   ce and uk against Roboto, mad against the Noto Sans pair, my against its own pair, the Latin
+   trio against Roboto.
+6. The widget surfaces: the four inline STATIC tables and their finders resolve all eight codes,
+   and the widget runtime load suite is green after the Myanmar install.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 56320, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:20:06.843291+00', '2026-10-29 07:43:45.357369+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (55, 1, NULL, 'T-452', '# T-452 — Seventy-five languages, wave one of three: the CJK and Latin eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes it to fifty-eight by shipping the eight the
+ticket names (ja, ko, it, pl, ro, ceb, ilo, vi), the first of three parallel waves that together add
+twenty-five and land the set at seventy-five. Code only: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards.
+
+**The selection authority is the owner''s world-popularity order (2026-10-29), not the
+Muslim-reachable ranking the fifty-language run used.** This block carries almost no
+Muslim-reachable audience: Japanese sits at Ethnologue''s number 13 with 2M L2 Muslim-adjacent
+speakers and falls out of R4''s overlap table entirely, and the other seven fare the same. The order
+ships ja and ko because they are the two largest languages on earth the set still misses, it because
+it is the owner''s pick, and the rest by population. The plan records that order as this wave''s law.
+
+| Tag | Language, script | Reach | Record | Sourcing genres that exist | Slots under the loan rule |
+| --- | --- | --- | --- | --- | --- |
+| ja | Japanese, Han + Kana | ~125M | cut subset pair | the national mosque''s own Japanese monthly timetable (salaahdaily.com (the plan''s Tokyo Camii genre superseded, dated 2026-10-29)''s 礼拝時刻表, tokyocamii.org/ja/salat-timetable) and ja.wikipedia''s 礼拝 article printing the katakana set | Last Third, Suhoor, Duha, Istijaba |
+| ko | Korean, Hangul | ~82M | cut subset pair | the Korea Muslim Federation''s Seoul Central Mosque 예배시간 timetable and ko.wikipedia''s prayer articles | Last Third, Suhoor, Duha, Istijaba |
+| it | Italian, Latin | ~65M, the owner''s pick | LATIN by census | Italian mosque timetables (mawaqit''s Italian mosque pages, the UCOII community''s tables) printing the transliterated set, it.wikipedia''s Salat article glossing it | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| pl | Polish, Latin | ~40M | LATIN by census | the national body''s own Polish table (Muzułmański Związek Religijny, mzr.pl''s Pory modlitw) printing Fajr, Wschód, Dhuhr, Asr, Maghrib, Isha | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ro | Romanian, Latin | ~24M | LATIN by census | the Constanța muftiat family''s and Bucharest foundations'' Romanian ore de rugăciune pages, transliterated rows with Romanian glosses | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ceb | Cebuano, Latin | ~25M | LATIN by census | none: no prayer table in Cebuano exists to read; ceb.wikipedia''s Salat article is checked at execution and any attested name ships at its measured confidence | all eleven name slots unless that check attests one |
+| ilo | Ilocano, Latin | ~9M | LATIN by census | none; ilo.wikipedia checked the same way | all eleven name slots unless that check attests one |
+| vi | Vietnamese, Latin | ~85M | LATIN by census | Vietnamese-language Islamic pages (islam.com.vn and the Vietnamese prayer-time sites) printing Fajr and glossing the five in Vietnamese | Midnight, Last Third, Suhoor, Duha, Istijaba |
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The eight land in the ticket''s own order — ja, ko, it, pl, ro, ceb, ilo, vi — appended to the
+   end of every shared list, and the steps land in that same order, so the append order and the
+   landing order are one order.** The ticket names exactly these eight; the popularity order above
+   is the selection authority; nothing reorders another wave''s rows.
+2. **en''s parity is read at the branch point, never remembered.** The pre-picker truth was 201 keys,
+   and T-451 adds its picker keys to en before this wave branches, so the executor counts en''s keys
+   in the branched tree with the catalog-lock script and writes every catalog to that count, in en''s
+   key order. A remembered key count was wrong once already (T-428 decision 2), so the number in
+   this plan is the method, not a figure.
+3. **ja and ko ride the fontTools subset pipeline the zh pair built, never full statics** (the
+   ticket''s order, T-419 decision 8''s law). The full Noto Sans JP and KR run megabytes a weight;
+   the bundled pairs are cut over the closed string set — every character of the locale''s catalog,
+   native-strings row, widget-statics row, endonym, and the What''s New keys that resolve through the
+   catalog — into NotoSansJP-Subset-Regular/Medium.ttf and NotoSansKR-Subset-Regular/Medium.ttf.
+   The google/fonts variable sources are instanced at 400 and 500 outside the repository; the full
+   pairs never enter it. Challenged: full statics cost nothing to author. It does not flip: the
+   owner''s order names the pipeline, and the four committed zh subsets total 548KB against the
+   statics'' 40MB, the same forty-megabyte problem.
+4. **The pipeline grows, it is not forked.** scripts/cjk-subset.mjs''s pair list gains JP and KR with
+   their fetch URLs in its header comment, shared/i18n/cjk-glyph-lock.json gains ja and ko sections
+   written from the subsets'' own cmaps and a files map binding the four new TTFs by sha256, and
+   shared/__tests__/cjkSubset.test.ts recomputes the closed set for all four CJK locales and diffs
+   it against the lock in both directions, so a catalog byte the subsets miss fails naming the
+   character and a recut shipping stale binaries fails naming the file.
+5. **The JAPANESE and KOREAN typography records pin by the cut subsets'' own measured numbers**, the
+   HANS/HANT pattern: fontTools over both weights, hhea, lineGap and UPM against the win ink, and a
+   box that clears its ink pins no script box (the Thai row-87 law). The zh subsets measured hhea
+   1160/-288 at lineGap 0 against UPM 1000, a 1.448em box equal to their ink; ja and ko are
+   measured, not assumed, at their own step.
+6. **The Latin six bundle no new font file.** Every distinct character of each locale''s whole keyed
+   surface is measured against the shipped faces first, Roboto in both weights; a locale Roboto
+   fully carries takes LATIN, and a locale it fails takes a record on the bundled
+   NotoSans-Regular/Medium pair, the YORUBA and AFRICAN precedent. Vietnamese''s tone-marked Latin
+   Extended Additional set and Polish''s ł ń ś ź ż ą ć ę ó are the two the census is written for, and
+   Romanian''s comma-below ș ț rides the same census: the record follows the measurement, never a
+   guess. Challenged: bundle Noto Sans for all six up front. It does not flip: an unmeasured bundling
+   adds a megabyte the census may prove unneeded, and the shipped set already carries the fallback.
+7. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with text,
+   slug, confidence and the derivation in its note. ceb and ilo close all eleven name slots under
+   it when their wikipedia check attests nothing, and their five explanations derive from the
+   language''s own syntax with the derivation in each note.
+8. **Where a language''s own tables print transliterations, the transliterations ship** — the tr, tk,
+   kk, ky and tg authority exception (T-429 decisions 8 and 10): it, pl, ro and vi ship the row
+   labels their readers compare against, Fajr and Maghrib among them, not invented translations,
+   and Sunrise ships the language''s own word where the table prints one (pl''s Wschód, ro''s
+   Răsărit, vi''s own gloss).
+9. **Prose digits are Latin in all eight** (R12''s row-82 law): Japanese and Korean render Latin
+   digits in times, dates and countdowns exactly as the zh pair does, and no Latin-script locale
+   changes them.
+10. **No RTL.** None of the eight reads right to left; RTL_IDS, the chevron and comma helpers and
+    the RTL gates stay untouched.
+11. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+    step per commit — 2.33.0, 2.34.0, 2.35.0, 2.36.0, 2.37.0, 2.38.0 — with package.json, app.json
+    and shared/whatsNew.ts stamped together; android/app/build.gradle is untracked prebuild output.
+    The 2.33.0 through 2.40.0 collisions this run''s three lanes create are grandfathered already
+    (scripts/version-collisions-allowlist.json, uat 0cfcbc4d), and each merge renumbers above
+    whatever uat then carries.**
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight
+    expo.locales blocks byte-identical to native-strings.json, CFBundleLocalizations riding the
+    committed LOCALE_IDS order, the expo-font plugin''s fonts array gaining the four subset TTFs,
+    and the version field, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **The merge protocol appends only** (T-427 decision 11''s law): every shared registry list takes
+    this wave''s rows at its end in the order of decision 1, no other wave''s row is rewritten or
+    reordered, and the one documented exception holds — LANGUAGE_NAMES inserts each endonym at its
+    codepoint position, leaving every existing row''s relative order untouched. The additive
+    resolution keeps all three waves'' rows, and the README''s count is the merged length, never this
+    wave''s number alone: this wave''s sweep writes the count LOCALE_IDS.length returns in its own
+    tree, and the lead''s merge moves it to the merged seventy-five.
+15. **The picker rows carry the post-T-451 shape**: 日本語 (Japanese), 한국어 (Korean), Italiano
+    (Italian), Polski (Polish), Română (Romanian), Cebuano (Bisaya), Ilocano (Iluko) and Tiếng
+    Việt (Vietnamese), each row endonym plus English name, because the search field T-451 builds
+    reads the English name. The census derives from LANGUAGE_NAMES, so the picker follows the rows.
+16. **All four widget inline STATIC tables and all four locale-finder lists take the eight** —
+    widgets/PrayerWidget.tsx''s home-screen table and finder, and widgets/LockPrayerWidget.tsx''s
+    three lock-screen tables and finders — because the owner''s order requires home screen and lock
+    screen widgets to render every new locale.
+17. **No device work of any kind** (the ticket''s law): the wave''s proof is the suite alone, and the
+    owner rules from the read.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections, names and explanations, every slot
+  non-null with text, slug, confidence and a note naming the table or the derivation; the new
+  slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/ja.ts, ko.ts, it.ts, pl.ts, ro.ts, ceb.ts, ilo.ts, vi.ts` — new, one full catalog
+  each at en''s branch-point parity plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to fifty-eight, the eight appended after su; the
+  header count; RTL_IDS untouched.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonym rows in the post-T-451 endonym-plus-english shape, at
+  their codepoint positions.
+- `shared/typography.ts` — the JAPANESE and KOREAN records on the cut subset pairs; the Latin six
+  on LATIN or on a record over the bundled Noto Sans pair, by the census.
+- `assets/fonts/NotoSansJP-Subset-Regular.ttf, NotoSansJP-Subset-Medium.ttf,
+  NotoSansKR-Subset-Regular.ttf, NotoSansKR-Subset-Medium.ttf` — new, cut, OFL (the licence file is
+  present); never the full statics.
+- `shared/i18n/cjk-glyph-lock.json` — ja and ko sections and the files map gaining the four TTFs
+  by sha256.
+- `scripts/cjk-subset.mjs` — the pair list grows by JP and KR, the fetch URLs in the header.
+- `shared/__tests__/cjkSubset.test.ts` — the LOCALES list and the pair mapping grow to four.
+- `shared/i18n/native-strings.json` — eight locale rows, the shape en''s row carries (the two
+  permission strings, the eighteen gallery keys, the android resource entries).
+- `shared/i18n/widget-statics.json` — eight locale rows, eleven statics each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash
+  unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T452_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows (ja-JP, ko-KR, it-IT, pl-PL, ro-RO,
+  ceb-PH, ilo-PH, vi-VN); the unshipped-tag rows untouched.
+- `shared/__tests__/typography.test.ts` — the JAPANESE and KOREAN record cases, and the LATIN
+  filter''s exception list for any locale the census moves off Roboto.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight, the count statement moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — the eight picker rows follow the
+  LANGUAGE_NAMES census.
+- `widgets/PrayerWidget.tsx` — the home widget''s inline STATIC table +8 rows and its locale
+  finder''s code list +8.
+- `widgets/LockPrayerWidget.tsx` — the three lock widget inline STATIC tables +8 rows each and
+  their three finder lists +8 each.
+- `app.json` — eight expo.locales blocks, CFBundleLocalizations to fifty-eight riding the
+  committed LOCALE_IDS order, the expo-font plugin''s fonts array +4 subset TTFs, the version field.
+- `README.md` — the Features bullet names the count LOCALE_IDS.length returns in this tree.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do. LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog (all keys, at en''s
+branch-point parity, in en''s order) or the build fails. LANGUAGE_NAMES stays the one hand-verified
+list, so each step re-reads the picker census against LOCALE_IDS.length. The data side stays gated
+as it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity,
+the 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces native-strings.json
+byte-identically on both platforms), widgetStaticStrings (the widget modules render the statics
+table row for row), catalogLock (en''s hash unchanged from the branch point), plus this wave''s
+T452_EIGHT row in the sourcing gate and the cjkSubset lock over the four CJK locales.
+
+Per locale the recipe is the waves'' recipe, the locale''s whole keyed surface in one commit:
+catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates,
+prose digits Latin), loader row, endonym row with its English name, typography record, lock list
+and lock suite rows, gates rows, detection row, native-strings row, widget-statics row, app.json
+locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+No suite is red across a step boundary (T-419''s design law).
+
+The CJK work is one step, not two: the script extension, the four cut TTFs, the lock, the two
+records, the two catalogs and their plumbing land together, exactly as T-419 step 5 landed both zh
+pairs with the pipeline in one commit. Splitting the pipeline from the catalogs would leave the
+glyph lock computed over strings that do not exist yet and the suite red across the boundary.
+
+The Latin census runs inside each Latin locale''s step, before its record is written: fontTools over
+the shipped faces, both weights, every distinct character of the locale''s whole keyed surface
+(catalog, native strings, widget statics, endonym, What''s New keys), zero missing or the locale
+moves to a record on the bundled Noto Sans pair and the census is rerun against that pair before
+the commit.
+
+Alternatives rejected: full Noto Sans JP/KR statics (decision 3, the owner''s order and the size); a
+second glyph-lock mechanism for ja and ko (decision 4 — the zh lock generalises); bundling Noto Sans
+for all six Latin locales up front (decision 6 — the census decides, and the fallback pair is
+already bundled); dropping ceb and ilo for having no genre (the Catalog type forbids empty slots,
+and the loan rule ships gated rows the owner''s read later improves); native numerals for ja and ko
+(R12''s row-82 law); a device read inside this ticket (the run bans device work).
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains ja,
+   ko, it, pl, ro, ceb, ilo and vi, each with eleven name slots and five explanation slots, every
+   one non-null with text, slug, confidence and a note: the attested sets from the genres named in
+   the table (salaahdaily.com (the plan''s Tokyo Camii genre superseded, dated 2026-10-29)''s timetable and ja.wikipedia for ja, the KMF timetable and ko.wikipedia
+   for ko, the Italian mosque tables and it.wikipedia for it, mzr.pl''s own Polish table for pl, the
+   muftiat-family pages for ro, the Vietnamese Islamic pages for vi, the ceb and ilo wikipedia
+   checks), the loan-rule derivation for every slot no source prints, the five derived explanations
+   each in the language''s own syntax; the new slugs registered; catalogGates gains the T452_EIGHT
+   sibling, red first over the empty glossary naming all eight absent.
+2. **Step 2: ja and ko land on their cut subset pairs** — the variable sources instanced at 400 and
+   500 outside the repository, scripts/cjk-subset.mjs extended and run to cut the four TTFs over
+   each locale''s closed string set, cjk-glyph-lock.json regenerated with the ja and ko sections and
+   the files map, cjkSubset extended to four locales, the JAPANESE and KOREAN records pinned by the
+   cut subsets'' own measured numbers, the two full catalogs and their whole keyed surface in the
+   one commit, every suite green at the boundary, the widget runtime load suite re-run after the
+   font install.
+3. **Step 3: it and pl land on the measured Latin records** — the fontTools census over both Roboto
+   weights for every distinct character of each keyed surface, the records written by the census,
+   the two full catalogs and their whole keyed surface, red first.
+4. **Step 4: ro and ceb land** — the same census and recipe for ro; ceb''s wikipedia check recorded
+   and the loan rule closing what it leaves, red first.
+5. **Step 5: ilo and vi land** — ilo under the loan rule the same way, vi on the census with the
+   heaviest diacritic set of the six, red first.
+6. **Step 6: The full sweep is green and the README names the merged count** — every suite green
+   over the fifty-eight at full coverage, `yarn validate` exits 0, en''s lock hash unchanged from
+   the branch point, the README Features bullet rewritten from LOCALE_IDS.length naming every
+   language in the committed order, audit-ready.
+
+## Risks
+
+- **A wrong name ships on ceb and ilo**, where no genre exists: every slot''s derivation sits in its
+  note, the jq census prints every one of them, and the owner''s phone read is the ruling pass.
+- **A diacritic the shipped faces lack** on vi, pl or ro: the in-step census measures both weights
+  before the record is written, and a failing locale moves to the bundled Noto Sans pair; the gate
+  is the census print of zero missing.
+- **The subset cut misses a character a later catalog byte adds**: cjkSubset fails naming the
+  character in both directions, and the regenerating command sits in the lock''s own _comment.
+- **The full statics enter the repository by accident**: the script''s header is the law and the
+  files map pins the four committed TTFs by sha256, so a stale or wrong binary fails the suite
+  naming the file.
+- **A label exceeds the 24-char budget** (katakana and hangul loanwords run long): the gate names
+  the key, and the label takes a shorter attested or loan form.
+- **Version collision inside the run**: 2.33.0 through 2.40.0 are grandfathered on uat already, one
+  class step per commit, and each merge renumbers above whatever uat then carries.
+- **The catalog lock drifts**: en stays byte-identical to the branch point; any en edit fails
+  catalogLock naming the locale.
+- **A shared registry row is reordered at the merge**: every step appends at the list''s end, and
+  the lead''s additive resolution concatenates the waves.
+
+## Proof
+
+1. The eight named with rationale and reach: this doc''s table, citing the owner''s 2026-10-29
+   popularity order, R4 C.1''s Ethnologue table, and the genre list above.
+2. Sourcing recorded: `jq ''[.ja,.ko,.it,.pl,.ro,.ceb,.ilo,.vi] | [.[] | (.names, .explanations) |
+   to_entries[] | select(.value.text == null or .value.source == null or .value.confidence ==
+   null)] | length''` over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T452_EIGHT
+   row is green.
+3. Coverage and regression: `yarn validate` exits 0 at full coverage over the fifty-eight, with
+   catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   cjkSubset, locale and the Language sheet green, and every earlier locale''s rows unedited.
+4. Parity and the lock: each new catalog''s key count equals en''s at the branch point in en''s order,
+   and en''s lock hash is byte-identical to the branch point''s.
+5. Fonts: the fontTools census prints zero missing for the eight — ja and ko against their cut
+   subsets in both weights, the Latin six against the faces their records name — and the four
+   subset TTFs are bound by sha256 in the lock''s files map.
+6. Detection and widgets: locale.test.ts resolves ja-JP, ko-KR, it-IT, pl-PL, ro-RO, ceb-PH, ilo-PH
+   and vi-VN; widgetStaticStrings and nativeLocalesConfig certify the four inline STATIC tables and
+   the app.json rows over the fifty-eight, home screen and lock screen both.
+7. The count: `node -e "console.log(require(''./shared/i18n/locale.ts''))"` or the picker census
+   reads fifty-eight in this tree, and the README bullet names the same number the constant
+   returns, the merged seventy-five after the lead''s concatenation.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 55296, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:14:01.843745+00', '2026-10-29 07:56:52.096346+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (58, 1, NULL, 'T-480', '# T-480
+
+## Goal
+
+Today the Android solid full-screen faces sit at the gradient''s navy half: the JS root solid is the hand value `#17146a` and the Android window background is `#1e1a6a` (the shared root fallback), so the splash, the error screen, the language-changing loader and the relaunch cover read darker than the gradient they hand off to. The owner''s 2026-10-29 order moves every Android solid to the house gradient''s 65 percent point `#251b74`, so the solid reads centred on the panel. Done: every Android solid face, JS and native, carries `#251b74`; every iOS byte and pin is untouched; the guard rows prove the split.
+
+## Decisions taken
+
+- 2026-10-29. The landed hex is `#251b74`, the 65 percent point of the house gradient `DESIGN.bgStart` `#05134a` to `DESIGN.bgEnd` `#36208a` (shared/design.ts:22-23). Arithmetic: R round(5 + 0.65 x (54 - 5)) = round(36.85) = 37 = 0x25; G round(19 + 0.65 x (32 - 19)) = round(27.45) = 27 = 0x1b; B round(74 + 0.65 x (138 - 74)) = round(115.6) = 116 = 0x74. This reproduces the owner''s named hex exactly; the two "65 percent from the solid" readings do not (Design, rejected alternatives).
+- 2026-10-29. The tree''s Android arm holds `#17146a` today (shared/design.ts:10), not the `#1e1a6a` of record. The ruling''s landing hex is an absolute gradient position, so the value being replaced changes nothing: the arm lands at `#251b74`. This is the ticket''s "measure and adjust within the plan''s own gate" clause, exercised.
+- 2026-10-29. The split stays a platform-keyed constant pair in `rootBgFor` (shared/design.ts:10): two hand-frozen hexes selected once at module load, the house pattern of `tailFor` and `dimFor`. No runtime branch per render is added. The owner''s 2026-10-29 order is the one legal Platform check on this surface, and the constant already carries it; the ticket only changes the Android arm''s hex.
+- 2026-10-29. The false sentence dies in both its places, not one: the comment above `rootBgFor` (shared/design.ts:9, "the solids sit between the navy top and the gradient''s middle") and its standing copy inside the suite this ticket edits, shared/__tests__/oneDimInk.test.ts:98, three lines above the DESIGN pin the plan relies on. A copy left standing above the pin would keep declaring false what the change makes true. (Grill finding 1, 2026-10-29.)
+- 2026-10-29. Each step''s commit carries the repo''s version discipline: fetch origin first (concurrent sessions have taken the same number twice, and T-476 bumps in the same window), then the patch bump lands as part of the commit - package.json and app.json together, and android/app/build.gradle with them when the file is present (it is gitignored prebuild output; shared/__tests__/versionLockstep.test.ts asserts its agreement only when it exists). The commit subjects are not typed `feat`, so both bumps are patches, and each step takes the next number the fetched tip shows, never a number chosen now. (Grill finding 2, 2026-10-29.)
+- 2026-10-29. The app.json guard is positional, not a count alone. The suite JSON.parses app.json and pins every backgroundColor field by place: `expo.backgroundColor` `#1e1a6a`, `expo.ios.backgroundColor` `#1e1a6a`, `expo.android.backgroundColor` `#251b74`, `expo.android.adaptiveIcon.backgroundColor` `#05134a`, the splash plugin''s ios entry `#1e1a6a` and its android entry `#251b74`. The count rows stay beside the parse as the no-stray-seventh guard. Chosen over folding a positional grep into Step 2''s gate because a grep is positional only through brittle line numbers, while a parsed row is red-first, mutation-passable and survives formatting. The parse is also what enforces the rejected root-field alternative: a `#251b74` sitting on the root or on adaptiveIcon (app.json:85, an Android field that is not the window background) while the android block''s own field is missing keeps every count green and reddens two parsed rows. (Grill finding 3, 2026-10-29.)
+- 2026-10-29. The Android window background moves by adding `"backgroundColor": "#251b74"` to app.json''s `expo.android` block, leaving the shared root `backgroundColor` (app.json:10) at `#1e1a6a`. expo-system-ui writes the native `activityBackground` from `config.android?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js:68-70), so the android field takes precedence and the root field never changes. The splash plugin''s `android.backgroundColor` (app.json:128) moves `#17146a` to `#251b74`; prebuild writes it into colors.xml `splashscreen_background` (node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js, SPLASH_COLOR_NAME) which styles.xml reads as `windowSplashScreenBackground`.
+- 2026-10-29. iOS byte-identical is structural, not hoped for. expo-system-ui''s iOS side reads `config.ios?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withIosRootViewBackgroundColor.js:71-73), and `expo.ios.backgroundColor` (app.json:79) is set, so iOS resolves its own `#1e1a6a` and never sees an Android field. app.json keeps `#1e1a6a` in exactly its three present places (root 10, ios 79, splash plugin ios 123), pinned by count and by place in the suite.
+- 2026-10-29. No prebuild, no build, no device inside this ticket. The android/ and ios/ trees are untracked prebuild output (git ls-files returns nothing for both; the build scripts run `expo prebuild -p android --no-install --clean`, $HOME/athan-gitree/bin/build-prod.zsh:87), so nothing in the tree needs regenerating. The owner reads the tint in the run''s single development build, per the run-order comment of 2026-10-29.
+
+## Files
+
+Read:
+- shared/design.ts - the constant pair `rootBgFor` (line 10) and `DESIGN.rootBg` (line 37), and the comment above them (line 9).
+- shared/constants.ts:917 - `COLORS.navigation.rootBackground: DESIGN.rootBg`, the single constant every JS face reads.
+- app/_layout.tsx, components/ui/LanguageLoader.tsx, components/ui/Error.tsx, stores/language.ts - the faces, each reading the constant; none is edited.
+- node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js and withIosRootViewBackgroundColor.js - the native window background writers, both sides read at source.
+- node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js - the native splash colour writer.
+- android/app/src/main/res/values/colors.xml and values/styles.xml (untracked prebuild output) - what the two app.json fields become on device.
+- shared/__tests__/versionLockstep.test.ts - the suite that reddens a half-done version bump (package.json against app.json, and the gradle when present).
+
+Changed:
+- shared/design.ts - the Android arm''s hex and the fork''s comment (line 9).
+- app.json - `"backgroundColor": "#251b74"` added to the android block; the splash plugin''s `android.backgroundColor` (line 128) moved to `#251b74`; the version bumped with package.json (and the gradle when present) as part of each step''s commit.
+- shared/__tests__/oneDimInk.test.ts - the app.json count rows (lines 75-76) joined by the parsed positional block, the `rootBgFor` arms (lines 107-108), the new split guard row, and the stale sentence''s copy at line 98.
+
+## Design
+
+The solid''s source chain and every full-screen face, enumerated from the tree:
+
+| Face | Where its colour comes from |
+| --- | --- |
+| The JS solid constant | shared/design.ts:10 `rootBgFor(os)` (android `#17146a`, ios `#1e1a6a`) feeding shared/design.ts:37 `DESIGN.rootBg` feeding shared/constants.ts:917 `COLORS.navigation.rootBackground`. |
+| Root layout, the first JS frame behind every screen | app/_layout.tsx:93 - `backgroundColor: COLORS.navigation.rootBackground`. |
+| Language-changing loader | components/ui/LanguageLoader.tsx:55 - the same constant on the loader panel. |
+| Error screen | components/ui/Error.tsx:58 - the same constant on the error container. |
+| Language relaunch cover, Android alone (iOS keeps its last committed frame, stores/language.ts:26) | stores/language.ts:122 `coverOptionsFor` - the same constant rides `showSwitchCover` into `Updates.showReloadScreen` before `Updates.reloadAsync()`. |
+| Native splash, Android (API 31+) | app.json:128 (splash plugin `android.backgroundColor`) -> prebuild writes colors.xml `splashscreen_background` -> styles.xml `windowSplashScreenBackground`. |
+| Native window background, Android (the pre-31 cold start and the post-splash instant) | app.json:10 (root `backgroundColor`, the fallback expo-system-ui reads today) -> prebuild writes colors.xml `activityBackground` -> styles.xml `android:windowBackground`. After Step 2 the android block''s own `backgroundColor` feeds it. |
+| Native splash and root view, iOS, untouched | app.json:123 (splash plugin `ios.backgroundColor` `#1e1a6a`) and app.json:79 (`expo.ios.backgroundColor` `#1e1a6a`). |
+
+No other face carries the solid: widgets/ reads no `rootBackground` and no literal (both greps empty), and no suite outside oneDimInk.test.ts pins the literals. components/ui/__tests__/LanguageLoader.test.tsx:44 and stores/__tests__/languageReloadFace.test.ts:75 pin coherence through `COLORS.navigation.rootBackground` and stay green untouched, which also keeps this ticket''s file set disjoint from T-476''s sheets, loader choreography and stores.
+
+Approach: one hex moves in one constant, and every JS face moves with it because they all read the constant. Two fields move in app.json for the two native Android solids. The suite rows turn red first, the values land second, and a mutation pass proves each guard row can fail. The app.json guard pins place and value together: the parsed rows name every backgroundColor field in the file, so a hex in the wrong block reddens even when the file''s multiset of hexes is right.
+
+Invariant: iOS bytes. `rootBgFor(''ios'')` stays `#1e1a6a`; jest runs the iOS arm (oneDimInk.test.ts:81 comment), so the `DESIGN.rootBg: ''#1e1a6a''` pin at line 99 stays green through the change; app.json''s `#1e1a6a` count stays exactly three and its three fields stay pinned by place. The arithmetic pinning iOS: `#1e1a6a` is the gradient midpoint (the rounded channel means 30/26/106 = 0x1e/0x1a/0x6a), and iOS stays there.
+
+Alternatives rejected:
+- 65 percent measured from the solid of record toward bgEnd: `#1e1a6a` + 0.65 x (`#36208a` - `#1e1a6a`) = round(30+15.6) / round(26+3.9) / round(106+20.8) = 46/30/127 = `#2e1e7f`. Rejected: it does not reproduce the owner''s named `#251b74`. The ruling reads as a position on the house gradient.
+- 65 percent from today''s Android arm: `#17146a` + 0.65 x (`#36208a` - `#17146a`) = 43/28/127 = `#2b1c7f`. Rejected for the same reason, and it would tie the landed value to the value being replaced.
+- Changing the shared root `backgroundColor` instead of adding the android field. Rejected: it moves a field every platform falls back to, and app.json''s idiom for a platform fork is a platform field (the splash plugin already carries ios/android blocks). The parsed positional guard is what makes this rejection enforceable, not just stated.
+- A `Platform.OS` check at each face. Rejected: the fork already lives in one constant selected at module load; per-render branches would multiply the fork the owner limited to one.
+- The count rows alone as the app.json guard. Rejected (grill finding 3): a count cannot show where the hexes sit. adaptiveIcon''s backgroundColor (app.json:85) could hold one of the two while the android block''s own field is missing, and the count stays green. The parse closes this.
+
+## Steps
+
+1. Step 1 (2 points, code): the Android arm of the solid constant. Red first in shared/__tests__/oneDimInk.test.ts: line 107 expects `rootBgFor(''android'')` to be `#251b74`, and a new row `expect(rootBgFor(''android'')).not.toBe(rootBgFor(''ios''))` joins the arms block; `yarn test oneDimInk` shows the android row fail while the ios row and the `DESIGN.rootBg` pin stay green. Then shared/design.ts lands `#251b74` in the android arm (line 10), the false sentence above it (line 9) is rewritten to the dated ruling, and its standing copy at oneDimInk.test.ts:98 is rewritten with it; green. Mutation pass: replant `#17146a` (the android row reddens), then plant the ios hex into the android arm (the not.toBe guard reddens); revert both; green. The commit lands the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle too when present), the number one above the fetched tip.
+2. Step 2 (2 points, code): app.json''s android-facing fields. Red first: oneDimInk.test.ts line 75 becomes `expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);`, line 76 keeps `#1e1a6a` at exactly 3, and a parsed block joins them - `const app = JSON.parse(appJson)` with `expect(app.expo.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.ios.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.android.backgroundColor).toBe(''#251b74'')`, `expect(app.expo.android.adaptiveIcon.backgroundColor).toBe(''#05134a'')`, and the splash plugin''s entries read from `app.expo.plugins` pinned `ios` `#1e1a6a` and `android` `#251b74`; `yarn test oneDimInk` shows the count row and the parsed android rows fail. Then app.json lands the android block''s `"backgroundColor": "#251b74"` and moves the splash plugin''s android hex (line 128) to `#251b74`; green. Mutation pass: revert the plugin hex (the count and the parsed android row redden), delete the android block''s field (same), plant `#251b74` in any iOS field (the `#1e1a6a` x 3 row and its parsed row redden), then the grill''s shape mutation: move the hex onto the root field and delete the android block''s field - the counts stay green and both parsed rows redden, proving the parse closes what the count cannot - and plant `#251b74` on adaptiveIcon (two parsed rows redden); revert all; green. The commit lands the same version discipline as Step 1: fetch origin, patch bump in package.json and app.json together (the gradle too when present), the next number above the fetched tip.
+
+Estimate: 4 points, the sum of the steps.
+
+## Risks
+
+- The tint reads off-centre on the panel. Only the owner can see it, in the run''s single development build. What would show it: the splash or the loader reading a different purple than the gradient they hand off to. The fix is one hex in one constant plus two app.json fields, so a re-rule is a two-line change.
+- The Android window background is missed: a one-frame navy flash between the splash hiding and the first JS frame. The parsed positional rows are the guard - they name `expo.android.backgroundColor` and the splash plugin''s android field directly, so a hex landing anywhere else (root, adaptiveIcon) reddens - and the enumeration above names both native fields.
+- A later change collapses the fork back to one shared hex, silently moving iOS. The `not.toBe` guard reddens the moment both arms are equal.
+- Parallel lanes: T-476 runs in the same window and touches the sheet, the loader choreography and the stores; this ticket opens design.ts, app.json and oneDimInk.test.ts only. The loader and cover faces read the constant, so they move with Step 1 without their files being opened. If T-476 adds a literal pin of the loader''s background, that suite reddens against the new constant and T-476''s lane resolves it against this ruling, recorded in the audit comment rather than left silent.
+- The version number collides with T-476''s commits: both lanes bump in the same window. The fetch-origin-first, next-number rule in both steps is the guard; a taken-twice number shows at the read-back in Proof (a number already on the tip) and a half-done bump shows in `yarn validate` through versionLockstep.
+
+## Proof
+
+- `yarn test oneDimInk` - red after each step''s row edits, green after each step''s value lands; Steps 1 and 2 each show both states.
+- Mutation pass, the same command: every planted mutation named in the steps reddens its row, and every revert returns green. Step 2''s pass includes the shape mutation whose counts stay green - the demonstration that the parse, not the count, holds the placement.
+- `yarn validate` - exits 0 with the coverage gate at full coverage (tsc, biome and jest with --coverage run inside it, package.json:25); the same run carries versionLockstep, which reddens a bump done in one file alone.
+- The version numbers, read back per commit: `git fetch origin` then `grep ''"version"'' package.json app.json` shows one number, one patch above the fetched tip, and the gradle agrees when present. Each step records its resulting number in its closing comment on the ticket, so the interleaving with T-476''s bumps reads from the board.
+- iOS byte-identical, read back: `grep -c ''"backgroundColor": "#1e1a6a"'' app.json` prints 3; `grep -n ''251b74'' app.json` shows exactly the android block''s background line and the splash plugin''s android line; the git diff of shared/design.ts shows the ios arm untouched. The suite side of the same guarantee is the parsed block: every backgroundColor field of app.json pinned by place, not by count.
+- The native path is source-verified, not built: the two expo-system-ui readers and the splash plugin writer cited above. The device reading is the owner''s, in the run''s single development build.
+
+## Amendments after the audit (2026-10-29, lead)
+
+1. `shared/whatsNew.ts` belongs in the Changed list and in the version discipline of both steps: `whatsNew.test.ts` pins `WHATS_NEW.version` to app.json''s version, so the plan followed literally reddens that suite. The landed code carries it (2.32.4, 2.32.5) and this row records it.
+2. The Step 2 shape mutation as written cannot hold: moving the hex onto the root field drops a `#1e1a6a` count because the root is one of the three iOS fields. The run substituted the adaptiveIcon shape mutation, which keeps both counts green and reddens the parsed android and splash rows. That substitution is accepted as the proof.
+3. The "no-stray-seventh guard" needs the file''s total `backgroundColor` occurrence count asserted beside the parse, or a seventh field carrying any other hex passes. The landed guard is strengthened in the audit-fix commit.
+4. Step 2''s per-step origin fetch left no artefact (one `FETCH_HEAD` predates step 1); the outcome holds because neither number sits on another branch, recorded here rather than claimed.', NULL, NULL, '{}', false, false, false, NULL, NULL, 58368, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 04:10:19.48411+00', '2026-10-29 08:00:36.238484+00');
 
 
 --
@@ -19825,6 +21589,12 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (50, 429, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:25:16.90081+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (51, 427, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:26:31.996318+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (52, 428, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:29:35.353641+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (53, 451, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 02:55:17.878493+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (54, 453, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:13:52.669776+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (55, 452, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:14:01.865805+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (56, 454, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:20:06.868531+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (57, 476, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:42:20.49721+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (58, 480, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 04:10:33.591377+00');
 
 
 --
@@ -31137,6 +32907,170 @@ The posture limit, measured three ways on iPadOS 27.0: the AppDelegate gate is n
 
 Commits: 8e1ce268 (2.11.32 carrier), be2921dc (2.11.33 scene selector), 175ea507 (2.11.34 real selector), 784cb1dd (2.11.35 @objc), 53336425 (2.11.36 withFinalizedMod wiring), 852c7517 (2.11.37 marker), merge 95047b2e on local uat.
 ', NULL, NULL, '{}', false, false, false, NULL, 46080, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 04:20:24.245343+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (151, 53, 1, NULL, 'T-451', '# T-451 - The language picker at seventy-five: numbered rows, centred names, a name search
+
+## Goal
+
+The picker today is a bare column of fifty endonyms in codepoint order: no index, the name
+sits in the row''s remaining space after its own padding rather than on the card''s centreline,
+and a reader with fifty rows has no way to find a language but to scroll. Done, every row
+carries a dimmed Latin index at the card''s left edge, the name centres on the card in both
+directions, and a search field inside the card above the scroll list filters by endonym or
+English name while the keyboard never covers it.
+
+## Decisions taken
+
+1. **2026-10-29 - The field is pinned through a new `pinned` slot on Sheet, above the scroll
+   view.** The card splits into a fixed top (hint and field) and a scrolling body (the list)
+   that share one surface: the pinning must be real, because a field inside
+   `BottomSheetScrollView` scrolls away. On the pinned path the sheet''s header sits above the
+   scroll view with the field; the unpinned path keeps today''s tree byte for byte.
+   Rejected: `stickyHeaderIndices` (the card is a translucent rgba, so rows would show through
+   the stuck field); `scrollable={false}` with an inner scroll view (that path''s content carries
+   no flex, so the list would grow unbounded and every other non-scrollable sheet would move).
+2. **2026-10-29 - The English names live in `LANGUAGE_NAMES` as an `english` field.** They are
+   names data, never displayed, and the catalog holds no language names. The string scanner''s
+   name-data exemption extends from `name` to `english` for this one module, because an English
+   name with a space would otherwise read as copy.
+3. **2026-10-29 - The fold is NFD, strip combining marks, lowercase, then drop the apostrophe
+   family (`\u02BB`, `\u02BC`, `\u2019`, `''`).** NFD alone leaves "Oʻzbekcha" unfindable by
+   "ozbek". No shipped endonym carries a letter NFD cannot decompose (ø, ł, đ), so no
+   letter map is added.
+4. **2026-10-29 - The highlight hides when the active language is not in the filtered list.**
+   A seat is a row''s position; with no such row the honest state is no highlight, not a seat
+   borrowed from a neighbour.
+5. **2026-10-29 - The index sits at the physical left edge in both directions, as the owner
+   ordered, so its style enters `scripts/directional-styles-allowlist.json` with that reason.**
+   The index Text carries `writingDirection: ''ltr''`, because "12." in an RTL paragraph renders
+   the period on the wrong side of the digits.
+6. **2026-10-29 - The search glyph is a new `assets/icons/svg/search.svg` wired through the
+   existing `Icon` enum and `ICONS` record**, painted with the shared dim ink and positioned
+   with the logical `end`, so it mirrors under RTL without a direction check.
+7. **2026-10-29 - Two catalog keys only: `language.search` and `language.noMatch`.** The
+   placeholder is the field''s accessible name, so no separate a11y key is added; a row keeps
+   its endonym label.
+8. **2026-10-29 - The zh copy is cut from characters the bundled subsets already carry**
+   (查找语言 / 未找到语言, 查找語言 / 未找到語言), so the closed CJK glyph
+   lock does not move and no subset is recut. 搜 and 索 are absent from the subsets, so no wording
+   carrying them is used.
+9. **2026-10-29 - The ticket''s first commit is `feat` at 2.32.0** (`package.json`, `app.json`,
+   `shared/whatsNew.ts` together, no What''s New item); every later commit is a patch inside the
+   ticket, until the picker lands.
+10. **2026-10-29 - The search field''s input is
+   `BottomSheetTextInput` with `keyboardBehavior="interactive"` and
+   `keyboardBlurBehavior="restore"`.** The library''s own input is the one that tells the sheet a
+   keyboard moved; a plain TextInput would leave the sheet unaware, and `interactive` is the
+   mode that moves the sheet with the keyboard rather than over it.
+
+## Files
+
+- `shared/i18n/en.ts` - the two new keys, after `language.chooseHint`.
+- `shared/i18n/{ar,ms,so,hi,th,id,tr,fr,uz,sw,ha,pt,ur,fa,bn,ru,az,de,sq,bs,ps,ta,ml,zh-Hans,zh-Hant,es,nl,kk,ky,tg,tk,wo,mr,om,bm,tl,ff,te,gu,kn,am,pa-Arab,sd,ug,ckb,ku,yo,jv,su}.ts` - the same two keys, same position.
+- `shared/i18n/catalog-lock.json` - regenerated by `scripts/catalog-lock.mjs`.
+- `shared/__tests__/i18n.test.ts` - the two keys join `PINNED_LITERALS`.
+- `package.json`, `app.json`, `shared/whatsNew.ts` - 2.32.0, then patch steps.
+- `shared/languageNames.ts` - the `english` field on each entry.
+- `components/sheets/screens/languageFilter.ts` - the fold and the filter, pure.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` - its suite, red first.
+- `scripts/scan-strings.mjs` - the name-data exemption covers `english` in that module.
+- `shared/__tests__/stringGuard.test.ts` - pins the exemption, and that a copy-shaped field in
+  that module still reddens.
+- `components/sheets/parts/Sheet.tsx` - `pinned`, `keyboardBehavior`, `keyboardBlurBehavior`.
+- `components/sheets/parts/__tests__/Sheet.test.tsx` - the pinned slot renders outside the
+  scroll view; the keyboard props reach the modal.
+- `assets/icons/svg/search.svg`, `assets/icons/svg/index.ts`, `shared/types.ts` - the glyph.
+- `components/sheets/screens/Language.tsx` - the rebuild.
+- `components/sheets/__tests__/Language.test.tsx` - the new rows, red first.
+- `scripts/directional-styles-allowlist.json` - the index slot''s reason.
+- `shared/__tests__/nativeConfig.test.ts` - `android.softwareKeyboardLayoutMode` reads `resize`.
+- `app.json` - the android block''s explicit resize mode.
+
+## Design
+
+**Sheet.** `pinned?: React.ReactNode` plus the two keyboard props, typed from
+`BottomSheetModalProps`. With no `pinned`, the render tree is today''s, unchanged. With
+`pinned`, the modal renders one padded column holding the header and the pinned node, and the
+scroll view below it holds the children in the same padded column, so the two halves share the
+horizontal geometry exactly.
+
+**The card.** `Language.tsx` draws the card surface twice: the top piece carries the top
+corners and no bottom border, the body carries the bottom corners and no top border. The join
+is a butt joint, so the card reads as one surface while the field stays still. The body keeps
+`marginTop: SPACING.md` between the field and the first row.
+
+**The field.** `BottomSheetTextInput`, `returnKeyType="search"`, no `autoFocus`,
+`placeholder={t(''language.search'')}`, `placeholderTextColor={COLORS.text.muted}`,
+`onChangeText={setQuery}`, and `onDismiss` clears the query. Height 44, radius `RADIUS.md`,
+the card''s own wash and border. The glyph is `IconView` type `Icon.SEARCH` size 16 in
+`COLORS.text.muted`, absolutely positioned with `end: SPACING.md`, `pointerEvents: ''none''`.
+
+**The filter.** `matchesLanguage(entry, query)` is true when the folded query is empty or is a
+substring of the folded endonym or the folded English name. Never the locale tag: `T-452`''s
+catalogs would otherwise match on "zh-Hans". The rows render `filtered`; when it is empty the
+body renders one dimmed `t(''language.noMatch'')` line instead of the list.
+
+**The rows.** Each row is a `Pressable` with `alignItems: ''center''`; the name is a Text
+centred by that alignment, so the card''s symmetric padding puts the name on the card''s
+centreline in either direction. The index is a separate absolutely positioned Text at
+`start`-independent physical `left: SPACING.md`, vertically centred, no width, so a
+double-digit index cannot displace the name. Digits are Latin by construction (row 82: JS
+numbers render Latin digits in every locale).
+
+**The highlight.** The indicator is the list''s first child, positioned absolutely at the top
+of the list. Its seat is `filtered.findIndex(entry => entry.id === active)`; `-1` hides it.
+The transform is written from an effect on (seat, item height), so a filter change reseats it
+on the same commit and a value change is the only thing that animates.
+
+## Steps
+
+1. **Step 1: The two picker keys in fifty catalogs and the release stamp** (2). Adds
+   `language.search` and `language.noMatch` to en and the forty-nine translations at en''s
+   position, regenerates `catalog-lock.json` through the script, pins both keys in
+   `i18n.test.ts`, and stamps 2.32.0 in `package.json`, `app.json` and
+   `shared/whatsNew.ts`. Red first: `catalogGates` fails on every locale until all fifty
+   carry the key set.
+2. **Step 2: The name filter, its English names and its scanner rule** (2). Adds
+   `languageFilter.ts` (fold, match, filtered list) with its suite, the `english` field on
+   every `LANGUAGE_NAMES` entry, and the scanner exemption that lets a multiword English name
+   live in that data module. Red first: the suite is written and run before the module exists.
+3. **Step 3: The picker rebuilt, its field pinned and its keyboard addressed** (2). Adds
+   `pinned` and the two keyboard props to `Sheet` with their guards, `search.svg` through the
+   icon record, the explicit `resize` mode in `app.json` with its config guard, the rebuilt
+   `Language.tsx`, and the new rows in its suite (index text, absolute slot, centred name,
+   folded filter, no-match line, filtered highlight seat, clear on close, no autofocus).
+   Red first: every row fails against today''s tree.
+
+Total: 6 points.
+
+## Risks
+
+- **A pinned field that is not really pinned.** A render test cannot see scrolling. What shows
+  it: the field and the header are outside `BottomSheetScrollView` in the tree the test reads,
+  and the owner''s glass read at Awaiting Owner.
+- **A card seam at the join.** The two halves could read as two cards on the panel. What shows
+  it: the owner''s read; the fix is corner and border values, not structure.
+- **The highlight drifting after a filter.** A translateY written only on layout would leave
+  the highlight on the old seat. What shows it: the seat test after a query change.
+- **A translation carrying a glyph the bundled face lacks.** What shows it: nothing in Jest;
+  the catalog script prints the characters each locale adds, and a character outside the
+  locale''s existing set is dropped before commit.
+- **The CJK lock moving.** Adding a character the zh subsets lack fails `cjkSubset`. What shows
+  it: the suite; the wording in decision 8 avoids it.
+
+## Proof
+
+| Acceptance | Proof |
+| --- | --- |
+| Field inside the card, above the list, never scrolling away | `Language.test.tsx`: the field''s parent is the pinned node; the row list is inside a scroll view that does not contain the field |
+| `BottomSheetTextInput`, interactive/restore, resize mode | `Language.test.tsx` reads the input''s type and the modal''s props; `nativeConfig.test.ts` reads `app.json` |
+| No autofocus, dimmed placeholder, trailing glyph mirrored | `Language.test.tsx`: `autoFocus` undefined, placeholder colour is `COLORS.text.muted`, glyph style `end` under en and ar |
+| Filter by endonym or English name, folded, never the tag | `languageFilter.test.ts` cases: "spanish" finds Español, "ESPANOL" finds it, "espanol" finds it, "zh-Hans" finds nothing |
+| No-match line, input clears on close | `Language.test.tsx` |
+| Dimmed Latin index at the left edge, name centred, absolute slot | `Language.test.tsx`: index text "1." and "12." reads Latin; the slot style is `position: ''absolute''`; the name''s row alignment is centre; the index under ar still sits at `left` |
+| Highlight follows the filtered seat | `Language.test.tsx`: query then seat assertion |
+| Shared dim ink, no opacity | `textInk` sweep (existing) plus the suite''s colour assertions |
+| Keys in fifty catalogs at parity, lock regenerated, validate green | `catalogGates`, `catalogLock`, `yarn validate` |
+', NULL, NULL, '{}', true, false, false, NULL, 53248, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 02:55:15.791634+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (126, 46, 1, NULL, 'T-401', '# T-401 - the iPad launch crash after rotation
 
 ## Goal
@@ -31203,6 +33137,140 @@ Alternatives rejected:
 - Criterion (b): after the fix, `xcrun simctl launch <udid> com.example.athan` returns a pid, the process is still alive a minute later (`xcrun simctl spawn <udid> launchctl list` or `ps`), and `xcrun simctl ui <udid> orientation left` then `right` leaves the app open with portrait geometry and no new abort line in the log.
 - Criterion (c): `git diff uat...<lane branch>` touches only the orientation-path files listed above; the iPhone plist keys in the read-back build are byte-identical to the pre-change read-back; `yarn validate` green with the plugin suite covering every changed guard.
 ', NULL, NULL, '{}', false, false, false, NULL, 46080, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:15:19.78053+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (152, 54, 1, NULL, 'T-453', '# T-453 — Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine
+
+## Goal
+
+Fifty locale catalogs ship today (en plus forty-nine translated). This wave adds nine — skr, bal, kas, dv, aa, kr, mdh, mnk, dje — and the three waves together take the run to seventy-five at the merged line (T-452 eight, this wave nine, T-454 eight). Code only: no build, no install, no simulator, no screenshot. The owner reads the result on the phone afterwards and rules from Awaiting Owner. Nothing in the fifty shipped locales changes a byte, and en changes nothing this wave touches after T-451 merges.
+
+## Selection (the ticket''s mission block, the owner''s audit of 2026-10-29)
+
+| Tag | Language, reach | Script, record | Why it ships |
+| --- | --- | --- | --- |
+| skr | Saraiki, ~26M | Arabic RTL, URDU (Naskh) | the largest unserved Muslim reading public, southern Punjab |
+| bal | Balochi, ~10M | Arabic RTL, URDU | Balochistan across Pakistan, Iran, Afghanistan |
+| kas | Kashmiri, ~7M | Arabic RTL, URDU | Perso-Arabic Kashmir |
+| dv | Dhivehi, ~0.34M | Thaana RTL, THAANA (a new pair) | the Maldives, the one wholly Muslim nation |
+| aa | Afar, ~3M | Latin, LATIN | Djibouti and the Awsa |
+| kr | Kanuri, ~10M | Latin, AFRICAN | Borno and Niger |
+| mdh | Maguindanao, ~1.5M | Latin, LATIN | Muslim Mindanao |
+| mnk | Mandinka, ~5M | Latin, AFRICAN | the Senegambia |
+| dje | Zarma, ~3M | Latin, AFRICAN | Niger |
+
+## Sourcing (what attests what; the loan rule closes every slot no source prints)
+
+Fetched 2026-10-29. The loan rule is T-410 decision 5: the slot ships the loan in the language''s own orthography with text, slug `loan`, low confidence and the derivation in the note. The five explanations per locale derive from the sourced names in the language''s own syntax, slug `derived`.
+
+| Tag | The table or page that attests | Names it prints verbatim | Confidence | Loan-rule slots |
+| --- | --- | --- | --- | --- |
+| skr | skr.wikipedia''s own list `پنج نمازاں دے ناں` (the names of the five prayers), corroborated by its `نماز ویلے` article | دَھمِّی (glossed فجر دی نماز), پیشِیں (ظہر), دِیگَر (عصر), نِماشَاں (مغرب), خُفتاں (عشاء) | medium | Sunrise, Midnight, Last Third, Duha, Istijaba; Suhoor ships the attested token سحری at low |
+| bal | one Balochi vocabulary post (no Balochi Wikipedia exists; the sitematrix and DNS both refuse bal), beside the Western Balochi incubator''s اسلام article | فجر (Fajr), نماشاں (Maghrib, the post''s Nimasham), اسور (the pre-dawn meal, Suhoor) | low | Dhuhr, Asr, Sunrise, Midnight, Last Third, Duha, Istijaba. The post''s ويغَرَ is a misprint of the Saraiki دِیگَر and never ships; the reading is recorded in the note |
+| kas | ks.wikipedia''s `نؠماز` infobox and its own prayer articles (`صُبحٕچ نؠماز`, `پیٚشِن نؠماز`, `شام نؠماز`, the Isha article) | صُبُح, پیٚشِن, دِگر (the infobox''s three), شام, خۄفتَن (the articles) | medium | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| dv | adhadhu.com''s Dhivehi news table, corroborated by the Addu Meedhoo council''s own Dhivehi prayer page (addumeedhoo.gov.mv) | ފަތިސް, މެންދުރު, އަޞްރު, މަޣްރިބް, ޢިޝާ; Sunrise އިރުއެރުން from the council page, the news table''s އިރުއަރާ recorded as the variant | high | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| aa | islamhouse.com''s Afar section (`Qafár afa`, articles and audio), the register the loans transliterate into; no Afar prayer table exists | none | low, every slot a loan | all eleven names and the five explanations |
+| kr | the Kanuri Ajami corpus named in the scholarly record; no Kanuri timetable or page with the five names is fetchable | none | low, every slot a loan | all eleven and the five explanations |
+| mdh | one Maguindanao vocabulary list in Latin orthography (the language is written Latin today; the incubator''s `Wp/mdh` carries no prayer article) | Subuh (the list''s Pagiyar and Awal a Subuh recorded in the note), Luhur, Asar, Magrib (its Magarib recorded), Isya (its Aisa recorded) | low | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| mnk | no Mandinka page printing the five names exists; the incubator `Wp/mnk` holds no Islamic article | none | low, every slot a loan | all eleven and the five explanations |
+| dje | no Zarma page printing the five names exists; the incubator `Wp/dje` holds its main page alone | none | low, every slot a loan | all eleven and the five explanations |
+
+Midnight and Last Third take each language''s own vocabulary where the glossary can derive it, at low confidence with the derivation in the note; Suhoor, Duha and Istijaba take the naming rule''s transliteration in every one of the nine, the T-428 shape.
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The nine are skr, bal, kas, dv, aa, kr, mdh, mnk, dje, appended to LOCALE_IDS in that order.** The ticket names them; the mission block is the selection authority; the run''s merge protocol appends each wave''s rows at every list''s end.
+2. **Maguindanao ships as mdh, never mag** (the lead''s ruling on this ticket, 2026-10-29): `mag` is Magahi, and the picker, LOCALE_IDS, detection, native-strings, widget-statics, app.json''s arrays and every other surface carry mdh. Bare `mag` stays unshipped.
+3. **Kashmiri ships under the ticket''s tag kas**, with detection mapping the CLDR tags a device reports: ks-IN and ks-Arab-IN resolve kas, the pa-Arab precedent of mapping a foreign tag onto the shipped id.
+4. **skr ships its own five** — دَھمِّی، پیشِیں، دِیگَر، نِماشَاں، خُفتاں — not the Arabic loans its own encyclopedia also prints. The wave exists to give Saraiki readers Saraiki, the pa-Arab ruling of T-427 decision 2; the loan set stays in each entry''s note as the alternative. Challenged: Pakistani tables print the Arabic set. It does not flip.
+5. **kas ships its own five** — صُبُح، پیٚشِن، دِگر، شام، خۄفتَن — the Persianate names the valley''s own encyclopedia prints, with the Arabic glosses recorded in the notes.
+6. **dv ships the council page''s row labels** (the authority class) with the news table corroborating: ފަތިސް، އިރުއެރުން، މެންދުރު، އަޞްރު، މަޣްރިބް، ޢިޝާ. The variants އިރުއަރާ and ފަޖުރު are recorded in their notes.
+7. **The four loans-only languages ship under the loan rule** (aa, kr, mnk, dje), because the ticket names them and the wave''s law is sourcing recorded, not sourcing perfect (T-427 decision 3). Every slot carries text, slug, low confidence and the derivation; the census prints every one; the owner''s phone read is the ruling pass.
+8. **bal ships its three attested fragments at low** (فجر، نماشاں، اسور) and closes the rest by the loan rule; the post''s misprint is recorded, never shipped.
+9. **mdh ships the Malay-world set the fetched list prints at low** (Subuh، Luhur، Asar، Magrib، Isya), variants in the notes. Latin is the script the language is written in today (CLDR maximises mdh-Latn-PH).
+10. **Fonts and records, this wave''s own measurements, taken 2026-10-29 with fontTools over the bundled faces, both weights.**
+    - The bundled Noto Naskh Arabic v2.021 pair carries, by explicit codepoint, Saraiki''s eight own letters (ٻ U+067B, ڄ U+0684, ڃ U+0683, ڇ U+0687, ڏ U+068F, ڙ U+0699, ݙ U+0759, ݨ U+0768), Balochi''s five (ڳ U+06B3, ڃ, ڇ, ݔ U+0754, ڻ U+06BB) and Kashmiri''s fourteen (ٲ U+0672, ٳ U+0673, ٵ U+0675, ٶ U+0676, ٷ U+0677, ٸ U+0678, ۄ U+06C4, ۅ U+06C5, ۆ U+06C6, ۈ U+06C8, ۉ U+06C9, ې U+06D0, ۍ U+06CD, ێ U+06CE); Rubik carries none of those twenty-seven. skr, bal and kas map to the URDU record unchanged and its comment gains this wave''s measurement.
+    - No bundled face carries a single Thaana codepoint, so dv bundles Noto Sans Thaana v3.001 Regular and Medium from the notofonts release statics, under the OFL licence file already in assets/fonts. Measured: UPM 1000, hhea ascent 1069, descent -424, lineGap 0, a 1.493em box, with usWinAscent 1069 and usWinDescent 424 (1.493em), so the box equals the pair''s own declared ink bounds, and the block''s glyphs run +751 and -306 units at the extremes, inside the box. The box clears the ink, so the THAANA record pins no script box (the Thai row-87 law). A 1.5em pin was rejected: no measurement this pair makes asks for it.
+    - aa''s orthography is ASCII and mdh''s one non-ASCII letter is ñ U+00F1, which Roboto carries in both weights: aa and mdh take LATIN. Each step re-measures every character of the locale''s whole keyed surface.
+    - kr, mnk and dje take the AFRICAN record on the Noto Sans pair bundled for bm, ff and yo: ǝ U+01DD, ɓ U+0253, ɗ U+0257, ɛ U+025B, ɔ U+0254 and ɲ U+0272 are absent from Roboto and Rubik in both weights and present in Noto Sans (measured this wave). No new font for the three.
+11. **RTL_IDS gains skr, bal, kas and dv** — Thaana reads right to left — and catalogGates'' RTL purity set gains the same four, so the wave''s own Arabic-script and Thaana copy is gated; the four already in that set are untouched, and no layout code changes.
+12. **Prose digits are Latin in all nine** (the owner''s standing order; R12''s row-82 law). Times, dates and countdowns stay Latin in every locale.
+13. **No Hebrew, Yiddish or Ladino ships anywhere in the app** (owner order 2026-10-29), and no locale beyond the nine: the seventy-five cap is the maximum, not a target.
+14. **Version line.** The branch opens from the 2.32.0 tip T-451 lands. Step 1 commits `feat(i18n)` at 2.33.0, then one minor class step per commit through 2.38.0, `package.json`, `app.json`, `android/app/build.gradle` and `shared/whatsNew.ts` together. The collisions allowlist uat carries (2.33.0 through 2.40.0) grandfathers every collision under the standing ruling, and each merge renumbers above whatever uat then carries.
+15. **The merge protocol is append-only.** Every shared registry list (LOCALE_IDS, the loader''s RAW and MODULES, typography RECORDS, the catalog-lock LOCALES lists, native-strings.json, widget-statics.json, app.json''s arrays, the widget STATIC tables and their finder lists, the gates'' locale lists, the README) takes this wave''s rows at its end, in this wave''s order. The one exception is LANGUAGE_NAMES, whose contract is codepoint order: each endonym sits at its codepoint position, leaving every existing row''s relative order untouched. The README''s Features bullet is written from the count LOCALE_IDS.length returns in the tree committed, never a remembered number, and the lead''s merge resolution recomputes count and names to the merged seventy-five.
+16. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the two expo-font arrays, the nine expo.locales blocks derived from native-strings.json, CFBundleLocalizations and the version field are mechanical carriers, every byte gated by nativeLocalesConfig.
+17. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads "Added support for more languages"; the banner restamps with the version.
+18. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json block, CFBundleLocalizations entry, the four widget STATIC rows and their four finder lists — so no suite is red across a step boundary (T-419''s design law). Languages share a commit only inside a step this plan names.
+19. **The picker''s list is authored against the tree after T-451 merges**, in whatever shape T-451 lands (search, numbered rows, English names beside the endonyms); the nine''s endonyms join at their codepoint positions and the search folds over them with no further code.
+
+## Files
+
+- `shared/i18n/skr.ts`, `bal.ts`, `kas.ts`, `dv.ts`, `aa.ts`, `kr.ts`, `mdh.ts`, `mnk.ts`, `dje.ts` — new, one full catalog each at en''s parity in the branch tree, plus PRAYER_LABELS.
+- `shared/i18n/sourced-names.json` — the nine''s sections (eleven names and five explanations each, every slot non-null), the new source slugs registered in `_meta.sourceSlugs`, one line in `_meta.purpose`.
+- `shared/i18n/locale.ts` — LOCALE_IDS +9 appended; RTL_IDS gains skr, bal, kas, dv; the header count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the nine.
+- `shared/languageNames.ts` — nine endonym rows (سرائیکی، بلوچی، کٲشُر inside the Arabic block; ދިވެހި opening the Thaana position between the Arabic block and Devanagari; Qafar af, Kanuri, Magindanawn, Mandinka, Zarma among the Latin rows), each verified at its step against a page written in the language; the header''s script-order note gains Thaana; the English-name column in the shape T-451 lands.
+- `shared/typography.ts` — the THAANA record with this wave''s measured numbers; RECORDS gains the nine (skr, bal, kas → URDU; dv → THAANA; aa, mdh → LATIN; kr, mnk, dje → AFRICAN).
+- `assets/fonts/NotoSansThaana-Regular.ttf`, `NotoSansThaana-Medium.ttf` — new, OFL (the licence file is present).
+- `shared/i18n/native-strings.json` — nine locale rows (two permission strings and eighteen gallery keys each).
+- `shared/i18n/widget-statics.json` — nine locale rows (eleven statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts` — the LOCALES lists gain the nine together; en''s hash unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +9; the RTL purity set +4 (skr, bal, kas, dv); the T453_NINE sourcing gate beside T410_TEN and its siblings, red first.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +9 and the parity rows at fifty-nine.
+- `shared/__tests__/locale.test.ts` — detection rows: skr-PK → skr; bal-PK and bal-IR → bal; ks-IN and ks-Arab-IN → kas; dv-MV → dv; aa-DJ and aa-ET → aa; kr-NG and kr-NE → kr; mdh-PH → mdh; mnk-GM and mnk-SN → mnk; dje-NE → dje.
+- `shared/__tests__/typography.test.ts` — the THAANA case, the three URDU rows, the two LATIN rows and the three AFRICAN rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts` — LOCALES to fifty-nine; CFBundleLocalizations rides it.
+- `shared/__tests__/widgetStaticStrings.test.ts` — LOCALES to fifty-nine.
+- `components/__tests__/chevronDirection.test.tsx` — both RTL pin lists gain skr, bal, kas, dv.
+- `components/sheets/__tests__/Language.test.tsx` — the picker''s list at fifty-nine, in the shape T-451 lands.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table +9 rows and its one locale finder list +9 codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables +9 rows each and its three finder lists +9 codes each.
+- `app.json` — the nine expo.locales blocks, both expo-font arrays +2 (the Thaana pair), CFBundleLocalizations to fifty-nine, the version.
+- `package.json`, `android/app/build.gradle`, `shared/whatsNew.ts` — the version stamps together.
+- `README.md` — the Features bullet names the merged set, count read from LOCALE_IDS.length in the tree committed.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, loader MODULES and typography RECORDS stop typechecking until every new locale carries its row, and each catalog satisfies Catalog (exactly en''s key set at the branch point) or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T453_NINE sibling, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms and CFBundleLocalizations rides the LOCALES order), widgetStaticStrings (the widget tables render the statics row for row), catalogLock (en byte-identical, the lock''s list equal to the translated set) and i18nBridge''s parity rows.
+
+Per locale the recipe is T-427''s and T-428''s, in one commit per step: catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates, Latin digits), loader rows, endonym row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+
+The Thaana pair is bundled as full statics, not a subset: fifty codepoints carry the language''s whole keyed surface and a subset would add a second glyph-lock mechanism for a script the app gains once, the yo ruling of T-427.
+
+Alternatives rejected: the Arabic loans for skr and kas (decisions 4 and 5); holding aa, kr, mnk and dje for a speaker (the ticket names them and the loan rule ships a gated row now, the speaker pass improves it later); a script box pinned on dv''s record without a measurement that asks for one (decision 10); a new font for kr, mnk or dje (the AFRICAN pair already carries their letters); `mag` as Maguindanao''s id (the lead''s ruling); en key counts carried from memory instead of measured at the branch point.
+
+## Steps (6 × 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the nine languages** — sourced-names.json gains skr, bal, kas, dv, aa, kr, mdh, mnk and dje, each with eleven name slots and five explanation slots, every one non-null with text, slug, confidence and a note naming the table or the derivation; the new slugs registered; catalogGates gains the T453_NINE sibling gate, red first, with a mutation pass on the guard.
+2. **Step 2: skr, bal and kas land RTL on the Naskh record** — LOCALE_IDS at fifty-three, RTL_IDS gains the three, each locale''s whole keyed surface in one commit on the URDU record whose comment gains this wave''s measurement, every suite green at the boundary.
+3. **Step 3: dv lands on the bundled Noto Sans Thaana pair** — the pair fetched and bundled, both expo-font arrays grown, the THAANA record carrying the measured 1.493em box with no script box, RTL_IDS gains dv, dv''s whole keyed surface in one commit, the widget runtime load suite re-run green after the font lands.
+4. **Step 4: aa and mdh land on the LATIN record** — the two catalogs and their whole keyed surface, Roboto measured over every character each locale inks, both weights, zero missing.
+5. **Step 5: kr, mnk and dje land on the AFRICAN record** — the three catalogs on the bundled Noto Sans pair, measured the same way, zero missing.
+6. **Step 6: The full sweep is green and the README carries the merged count** — every suite green over the fifty-nine locales this tree holds, `yarn validate` exits 0 at full coverage, en''s catalog-lock hash unchanged from the branch point, the README bullet written from LOCALE_IDS.length with the nine appended, the What''s New banner restamped, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loans and the derived labels carry their derivations in the notes and the census prints every one; the owner''s phone read is the ruling pass. aa, kr, mnk and dje ship whole waves of loans, and that is the recorded state, not a hidden one.
+- **A low-confidence fragment is a misprint.** bal''s post prints ويغَرَ where Saraiki prints دِیگَر; the plan records the reading in the note and ships the loan instead.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row covers skr, bal, kas and dv from step 2 and 3, and names the key.
+- **Thaana renders as tofu** if the pair is absent: step 3 measures every character of dv''s whole keyed surface in both weights before the commit, and the widget runtime load suite re-runs after the font lands.
+- **A label exceeds the 24-char budget** (Kashmiri''s and Saraiki''s extras run long): the gate names the key, and the label takes a shorter attested or loan form.
+- **en''s parity drifts because T-451 lands late or changes again**: the branch is cut after T-451 merges and parity is measured in the branch tree; a remembered count is a defect. The blocked_by relation on this ticket carries the wait.
+- **The version line collides inside the band**: every commit takes one minor step from 2.33.0, the allowlist grandfathers the collisions, and the merge renumbers above uat.
+- **A shared list row is reordered at the merge**: every step appends, never sorts, and the lead concatenates; the README count is recomputed at the merge from the merged tree.
+
+## Proof
+
+1. The nine named with rationale: the Selection table, citing the ticket''s mission block and this doc''s fetched sources.
+2. Parity: the babel walk scripts/catalog-lock.mjs uses prints en''s member count in the branch tree, and the same walk over each of the nine catalogs prints the identical key list; the i18nBridge parity rows are green at fifty-nine.
+3. Sourcing recorded: `jq ''[.["skr"],.["bal"],.["kas"],.["dv"],.["aa"],.["kr"],.["mdh"],.["mnk"],.["dje"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0, and catalogGates'' T453_NINE row is green.
+4. Coverage and regression: `yarn validate` exits 0, full coverage, with catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale, the chevron pins and the Language sheet green over fifty-nine locales, and the fifty existing locales'' rows unedited.
+5. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows skr, bal, kas and dv inside the set, and locale.test.ts resolves the eleven detection rows this plan lists.
+6. Glyph coverage: fontTools over the bundled faces, both weights, prints zero missing characters for every character of each new locale''s whole keyed surface — the three Arabic-script locales against Noto Naskh, dv against Noto Sans Thaana, aa and mdh against Roboto, kr, mnk and dje against Noto Sans.
+7. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts shared/__tests__/nativeLocalesConfig.test.ts` green at fifty-nine, and the four finder lists in the two widget files each carry the nine codes.
+8. The version stamps: `jq ''.expo.version'' app.json`, `node -p "require(''./package.json'').version"` and `grep versionName android/app/build.gradle` print the same number at each step, one minor step from 2.33.0.
+9. The README: the Features bullet''s count equals the value LOCALE_IDS.length returns in the tree committed, and the merge resolution recomputes it to seventy-five.
+', NULL, NULL, '{}', false, false, false, NULL, 54272, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:13:33.650622+00');
 INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (129, 46, 2, NULL, 'T-401', '# T-401 - the iPad launch crash after rotation
 
 Revision 2 (2026-10-28): answers the grill''s six findings on doc v1 - the rotation mechanism (finding 1), the iPhone plist baseline (2), the diff scope (3), the quoted build authorization (4), the build site and the widgets env (5), and the named width hook (6).
@@ -35201,6 +37269,1658 @@ pass improves it later).
   en''s catalog-lock hash unchanged at e20ae02c. Nothing is merged and nothing pushed: the lead
   merges the three waves in order and audits them.
 ', NULL, NULL, '{}', false, false, false, NULL, 50176, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 00:19:23.570332+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (153, 55, 1, NULL, 'T-452', '# T-452 — Seventy-five languages, wave one of three: the CJK and Latin eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes it to fifty-eight by shipping the eight the
+ticket names (ja, ko, it, pl, ro, ceb, ilo, vi), the first of three parallel waves that together add
+twenty-five and land the set at seventy-five. Code only: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards.
+
+**The selection authority is the owner''s world-popularity order (2026-10-29), not the
+Muslim-reachable ranking the fifty-language run used.** This block carries almost no
+Muslim-reachable audience: Japanese sits at Ethnologue''s number 13 with 2M L2 Muslim-adjacent
+speakers and falls out of R4''s overlap table entirely, and the other seven fare the same. The order
+ships ja and ko because they are the two largest languages on earth the set still misses, it because
+it is the owner''s pick, and the rest by population. The plan records that order as this wave''s law.
+
+| Tag | Language, script | Reach | Record | Sourcing genres that exist | Slots under the loan rule |
+| --- | --- | --- | --- | --- | --- |
+| ja | Japanese, Han + Kana | ~125M | cut subset pair | the national mosque''s own Japanese monthly timetable (Tokyo Camii''s 礼拝時刻表, tokyocamii.org/ja/salat-timetable) and ja.wikipedia''s 礼拝 article printing the katakana set | Last Third, Suhoor, Duha, Istijaba |
+| ko | Korean, Hangul | ~82M | cut subset pair | the Korea Muslim Federation''s Seoul Central Mosque 예배시간 timetable and ko.wikipedia''s prayer articles | Last Third, Suhoor, Duha, Istijaba |
+| it | Italian, Latin | ~65M, the owner''s pick | LATIN by census | Italian mosque timetables (mawaqit''s Italian mosque pages, the UCOII community''s tables) printing the transliterated set, it.wikipedia''s Salat article glossing it | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| pl | Polish, Latin | ~40M | LATIN by census | the national body''s own Polish table (Muzułmański Związek Religijny, mzr.pl''s Pory modlitw) printing Fajr, Wschód, Dhuhr, Asr, Maghrib, Isha | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ro | Romanian, Latin | ~24M | LATIN by census | the Constanța muftiat family''s and Bucharest foundations'' Romanian ore de rugăciune pages, transliterated rows with Romanian glosses | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ceb | Cebuano, Latin | ~25M | LATIN by census | none: no prayer table in Cebuano exists to read; ceb.wikipedia''s Salat article is checked at execution and any attested name ships at its measured confidence | all eleven name slots unless that check attests one |
+| ilo | Ilocano, Latin | ~9M | LATIN by census | none; ilo.wikipedia checked the same way | all eleven name slots unless that check attests one |
+| vi | Vietnamese, Latin | ~85M | LATIN by census | Vietnamese-language Islamic pages (islam.com.vn and the Vietnamese prayer-time sites) printing Fajr and glossing the five in Vietnamese | Midnight, Last Third, Suhoor, Duha, Istijaba |
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The eight land in the ticket''s own order — ja, ko, it, pl, ro, ceb, ilo, vi — appended to the
+   end of every shared list, and the steps land in that same order, so the append order and the
+   landing order are one order.** The ticket names exactly these eight; the popularity order above
+   is the selection authority; nothing reorders another wave''s rows.
+2. **en''s parity is read at the branch point, never remembered.** The pre-picker truth was 201 keys,
+   and T-451 adds its picker keys to en before this wave branches, so the executor counts en''s keys
+   in the branched tree with the catalog-lock script and writes every catalog to that count, in en''s
+   key order. A remembered key count was wrong once already (T-428 decision 2), so the number in
+   this plan is the method, not a figure.
+3. **ja and ko ride the fontTools subset pipeline the zh pair built, never full statics** (the
+   ticket''s order, T-419 decision 8''s law). The full Noto Sans JP and KR run megabytes a weight;
+   the bundled pairs are cut over the closed string set — every character of the locale''s catalog,
+   native-strings row, widget-statics row, endonym, and the What''s New keys that resolve through the
+   catalog — into NotoSansJP-Subset-Regular/Medium.ttf and NotoSansKR-Subset-Regular/Medium.ttf.
+   The google/fonts variable sources are instanced at 400 and 500 outside the repository; the full
+   pairs never enter it. Challenged: full statics cost nothing to author. It does not flip: the
+   owner''s order names the pipeline, and the four committed zh subsets total 548KB against the
+   statics'' 40MB, the same forty-megabyte problem.
+4. **The pipeline grows, it is not forked.** scripts/cjk-subset.mjs''s pair list gains JP and KR with
+   their fetch URLs in its header comment, shared/i18n/cjk-glyph-lock.json gains ja and ko sections
+   written from the subsets'' own cmaps and a files map binding the four new TTFs by sha256, and
+   shared/__tests__/cjkSubset.test.ts recomputes the closed set for all four CJK locales and diffs
+   it against the lock in both directions, so a catalog byte the subsets miss fails naming the
+   character and a recut shipping stale binaries fails naming the file.
+5. **The JAPANESE and KOREAN typography records pin by the cut subsets'' own measured numbers**, the
+   HANS/HANT pattern: fontTools over both weights, hhea, lineGap and UPM against the win ink, and a
+   box that clears its ink pins no script box (the Thai row-87 law). The zh subsets measured hhea
+   1160/-288 at lineGap 0 against UPM 1000, a 1.448em box equal to their ink; ja and ko are
+   measured, not assumed, at their own step.
+6. **The Latin six bundle no new font file.** Every distinct character of each locale''s whole keyed
+   surface is measured against the shipped faces first, Roboto in both weights; a locale Roboto
+   fully carries takes LATIN, and a locale it fails takes a record on the bundled
+   NotoSans-Regular/Medium pair, the YORUBA and AFRICAN precedent. Vietnamese''s tone-marked Latin
+   Extended Additional set and Polish''s ł ń ś ź ż ą ć ę ó are the two the census is written for, and
+   Romanian''s comma-below ș ț rides the same census: the record follows the measurement, never a
+   guess. Challenged: bundle Noto Sans for all six up front. It does not flip: an unmeasured bundling
+   adds a megabyte the census may prove unneeded, and the shipped set already carries the fallback.
+7. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with text,
+   slug, confidence and the derivation in its note. ceb and ilo close all eleven name slots under
+   it when their wikipedia check attests nothing, and their five explanations derive from the
+   language''s own syntax with the derivation in each note.
+8. **Where a language''s own tables print transliterations, the transliterations ship** — the tr, tk,
+   kk, ky and tg authority exception (T-429 decisions 8 and 10): it, pl, ro and vi ship the row
+   labels their readers compare against, Fajr and Maghrib among them, not invented translations,
+   and Sunrise ships the language''s own word where the table prints one (pl''s Wschód, ro''s
+   Răsărit, vi''s own gloss).
+9. **Prose digits are Latin in all eight** (R12''s row-82 law): Japanese and Korean render Latin
+   digits in times, dates and countdowns exactly as the zh pair does, and no Latin-script locale
+   changes them.
+10. **No RTL.** None of the eight reads right to left; RTL_IDS, the chevron and comma helpers and
+    the RTL gates stay untouched.
+11. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+    step per commit — 2.33.0, 2.34.0, 2.35.0, 2.36.0, 2.37.0, 2.38.0 — with package.json, app.json
+    and shared/whatsNew.ts stamped together; android/app/build.gradle is untracked prebuild output.
+    The 2.33.0 through 2.40.0 collisions this run''s three lanes create are grandfathered already
+    (scripts/version-collisions-allowlist.json, uat 0cfcbc4d), and each merge renumbers above
+    whatever uat then carries.**
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight
+    expo.locales blocks byte-identical to native-strings.json, CFBundleLocalizations riding the
+    committed LOCALE_IDS order, the expo-font plugin''s fonts array gaining the four subset TTFs,
+    and the version field, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **The merge protocol appends only** (T-427 decision 11''s law): every shared registry list takes
+    this wave''s rows at its end in the order of decision 1, no other wave''s row is rewritten or
+    reordered, and the one documented exception holds — LANGUAGE_NAMES inserts each endonym at its
+    codepoint position, leaving every existing row''s relative order untouched. The additive
+    resolution keeps all three waves'' rows, and the README''s count is the merged length, never this
+    wave''s number alone: this wave''s sweep writes the count LOCALE_IDS.length returns in its own
+    tree, and the lead''s merge moves it to the merged seventy-five.
+15. **The picker rows carry the post-T-451 shape**: 日本語 (Japanese), 한국어 (Korean), Italiano
+    (Italian), Polski (Polish), Română (Romanian), Cebuano (Cebuano), Ilokano (Ilocano) and Tiếng
+    Việt (Vietnamese), each row endonym plus English name, because the search field T-451 builds
+    reads the English name. The census derives from LANGUAGE_NAMES, so the picker follows the rows.
+16. **All four widget inline STATIC tables and all four locale-finder lists take the eight** —
+    widgets/PrayerWidget.tsx''s home-screen table and finder, and widgets/LockPrayerWidget.tsx''s
+    three lock-screen tables and finders — because the owner''s order requires home screen and lock
+    screen widgets to render every new locale.
+17. **No device work of any kind** (the ticket''s law): the wave''s proof is the suite alone, and the
+    owner rules from the read.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections, names and explanations, every slot
+  non-null with text, slug, confidence and a note naming the table or the derivation; the new
+  slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/ja.ts, ko.ts, it.ts, pl.ts, ro.ts, ceb.ts, ilo.ts, vi.ts` — new, one full catalog
+  each at en''s branch-point parity plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to fifty-eight, the eight appended after su; the
+  header count; RTL_IDS untouched.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonym rows in the post-T-451 endonym-plus-english shape, at
+  their codepoint positions.
+- `shared/typography.ts` — the JAPANESE and KOREAN records on the cut subset pairs; the Latin six
+  on LATIN or on a record over the bundled Noto Sans pair, by the census.
+- `assets/fonts/NotoSansJP-Subset-Regular.ttf, NotoSansJP-Subset-Medium.ttf,
+  NotoSansKR-Subset-Regular.ttf, NotoSansKR-Subset-Medium.ttf` — new, cut, OFL (the licence file is
+  present); never the full statics.
+- `shared/i18n/cjk-glyph-lock.json` — ja and ko sections and the files map gaining the four TTFs
+  by sha256.
+- `scripts/cjk-subset.mjs` — the pair list grows by JP and KR, the fetch URLs in the header.
+- `shared/__tests__/cjkSubset.test.ts` — the LOCALES list and the pair mapping grow to four.
+- `shared/i18n/native-strings.json` — eight locale rows, the shape en''s row carries (the two
+  permission strings, the eighteen gallery keys, the android resource entries).
+- `shared/i18n/widget-statics.json` — eight locale rows, eleven statics each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash
+  unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T452_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows (ja-JP, ko-KR, it-IT, pl-PL, ro-RO,
+  ceb-PH, ilo-PH, vi-VN); the unshipped-tag rows untouched.
+- `shared/__tests__/typography.test.ts` — the JAPANESE and KOREAN record cases, and the LATIN
+  filter''s exception list for any locale the census moves off Roboto.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight, the count statement moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — the eight picker rows follow the
+  LANGUAGE_NAMES census.
+- `widgets/PrayerWidget.tsx` — the home widget''s inline STATIC table +8 rows and its locale
+  finder''s code list +8.
+- `widgets/LockPrayerWidget.tsx` — the three lock widget inline STATIC tables +8 rows each and
+  their three finder lists +8 each.
+- `app.json` — eight expo.locales blocks, CFBundleLocalizations to fifty-eight riding the
+  committed LOCALE_IDS order, the expo-font plugin''s fonts array +4 subset TTFs, the version field.
+- `README.md` — the Features bullet names the count LOCALE_IDS.length returns in this tree.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do. LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog (all keys, at en''s
+branch-point parity, in en''s order) or the build fails. LANGUAGE_NAMES stays the one hand-verified
+list, so each step re-reads the picker census against LOCALE_IDS.length. The data side stays gated
+as it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity,
+the 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces native-strings.json
+byte-identically on both platforms), widgetStaticStrings (the widget modules render the statics
+table row for row), catalogLock (en''s hash unchanged from the branch point), plus this wave''s
+T452_EIGHT row in the sourcing gate and the cjkSubset lock over the four CJK locales.
+
+Per locale the recipe is the waves'' recipe, the locale''s whole keyed surface in one commit:
+catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates,
+prose digits Latin), loader row, endonym row with its English name, typography record, lock list
+and lock suite rows, gates rows, detection row, native-strings row, widget-statics row, app.json
+locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+No suite is red across a step boundary (T-419''s design law).
+
+The CJK work is one step, not two: the script extension, the four cut TTFs, the lock, the two
+records, the two catalogs and their plumbing land together, exactly as T-419 step 5 landed both zh
+pairs with the pipeline in one commit. Splitting the pipeline from the catalogs would leave the
+glyph lock computed over strings that do not exist yet and the suite red across the boundary.
+
+The Latin census runs inside each Latin locale''s step, before its record is written: fontTools over
+the shipped faces, both weights, every distinct character of the locale''s whole keyed surface
+(catalog, native strings, widget statics, endonym, What''s New keys), zero missing or the locale
+moves to a record on the bundled Noto Sans pair and the census is rerun against that pair before
+the commit.
+
+Alternatives rejected: full Noto Sans JP/KR statics (decision 3, the owner''s order and the size); a
+second glyph-lock mechanism for ja and ko (decision 4 — the zh lock generalises); bundling Noto Sans
+for all six Latin locales up front (decision 6 — the census decides, and the fallback pair is
+already bundled); dropping ceb and ilo for having no genre (the Catalog type forbids empty slots,
+and the loan rule ships gated rows the owner''s read later improves); native numerals for ja and ko
+(R12''s row-82 law); a device read inside this ticket (the run bans device work).
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains ja,
+   ko, it, pl, ro, ceb, ilo and vi, each with eleven name slots and five explanation slots, every
+   one non-null with text, slug, confidence and a note: the attested sets from the genres named in
+   the table (Tokyo Camii''s timetable and ja.wikipedia for ja, the KMF timetable and ko.wikipedia
+   for ko, the Italian mosque tables and it.wikipedia for it, mzr.pl''s own Polish table for pl, the
+   muftiat-family pages for ro, the Vietnamese Islamic pages for vi, the ceb and ilo wikipedia
+   checks), the loan-rule derivation for every slot no source prints, the five derived explanations
+   each in the language''s own syntax; the new slugs registered; catalogGates gains the T452_EIGHT
+   sibling, red first over the empty glossary naming all eight absent.
+2. **Step 2: ja and ko land on their cut subset pairs** — the variable sources instanced at 400 and
+   500 outside the repository, scripts/cjk-subset.mjs extended and run to cut the four TTFs over
+   each locale''s closed string set, cjk-glyph-lock.json regenerated with the ja and ko sections and
+   the files map, cjkSubset extended to four locales, the JAPANESE and KOREAN records pinned by the
+   cut subsets'' own measured numbers, the two full catalogs and their whole keyed surface in the
+   one commit, every suite green at the boundary, the widget runtime load suite re-run after the
+   font install.
+3. **Step 3: it and pl land on the measured Latin records** — the fontTools census over both Roboto
+   weights for every distinct character of each keyed surface, the records written by the census,
+   the two full catalogs and their whole keyed surface, red first.
+4. **Step 4: ro and ceb land** — the same census and recipe for ro; ceb''s wikipedia check recorded
+   and the loan rule closing what it leaves, red first.
+5. **Step 5: ilo and vi land** — ilo under the loan rule the same way, vi on the census with the
+   heaviest diacritic set of the six, red first.
+6. **Step 6: The full sweep is green and the README names the merged count** — every suite green
+   over the fifty-eight at full coverage, `yarn validate` exits 0, en''s lock hash unchanged from
+   the branch point, the README Features bullet rewritten from LOCALE_IDS.length naming every
+   language in the committed order, audit-ready.
+
+## Risks
+
+- **A wrong name ships on ceb and ilo**, where no genre exists: every slot''s derivation sits in its
+  note, the jq census prints every one of them, and the owner''s phone read is the ruling pass.
+- **A diacritic the shipped faces lack** on vi, pl or ro: the in-step census measures both weights
+  before the record is written, and a failing locale moves to the bundled Noto Sans pair; the gate
+  is the census print of zero missing.
+- **The subset cut misses a character a later catalog byte adds**: cjkSubset fails naming the
+  character in both directions, and the regenerating command sits in the lock''s own _comment.
+- **The full statics enter the repository by accident**: the script''s header is the law and the
+  files map pins the four committed TTFs by sha256, so a stale or wrong binary fails the suite
+  naming the file.
+- **A label exceeds the 24-char budget** (katakana and hangul loanwords run long): the gate names
+  the key, and the label takes a shorter attested or loan form.
+- **Version collision inside the run**: 2.33.0 through 2.40.0 are grandfathered on uat already, one
+  class step per commit, and each merge renumbers above whatever uat then carries.
+- **The catalog lock drifts**: en stays byte-identical to the branch point; any en edit fails
+  catalogLock naming the locale.
+- **A shared registry row is reordered at the merge**: every step appends at the list''s end, and
+  the lead''s additive resolution concatenates the waves.
+
+## Proof
+
+1. The eight named with rationale and reach: this doc''s table, citing the owner''s 2026-10-29
+   popularity order, R4 C.1''s Ethnologue table, and the genre list above.
+2. Sourcing recorded: `jq ''[.ja,.ko,.it,.pl,.ro,.ceb,.ilo,.vi] | [.[] | (.names, .explanations) |
+   to_entries[] | select(.value.text == null or .value.source == null or .value.confidence ==
+   null)] | length''` over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T452_EIGHT
+   row is green.
+3. Coverage and regression: `yarn validate` exits 0 at full coverage over the fifty-eight, with
+   catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   cjkSubset, locale and the Language sheet green, and every earlier locale''s rows unedited.
+4. Parity and the lock: each new catalog''s key count equals en''s at the branch point in en''s order,
+   and en''s lock hash is byte-identical to the branch point''s.
+5. Fonts: the fontTools census prints zero missing for the eight — ja and ko against their cut
+   subsets in both weights, the Latin six against the faces their records name — and the four
+   subset TTFs are bound by sha256 in the lock''s files map.
+6. Detection and widgets: locale.test.ts resolves ja-JP, ko-KR, it-IT, pl-PL, ro-RO, ceb-PH, ilo-PH
+   and vi-VN; widgetStaticStrings and nativeLocalesConfig certify the four inline STATIC tables and
+   the app.json rows over the fifty-eight, home screen and lock screen both.
+7. The count: `node -e "console.log(require(''./shared/i18n/locale.ts''))"` or the picker census
+   reads fifty-eight in this tree, and the README bullet names the same number the constant
+   returns, the merged seventy-five after the lead''s concatenation.
+', NULL, NULL, '{}', false, false, false, NULL, 55296, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:14:01.843745+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (154, 56, 1, NULL, 'T-454', '# T-454 — Seventy-five languages, wave three of three: the Myanmar, Cyrillic and island eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes the set toward seventy-five by shipping its
+eight — my, tt, ce, uk, min, mad, bug, qu — beside the two sibling waves (T-452''s eight, T-453''s
+nine), twenty-five together under the seventy-five cap. Code only: no build, no install, no
+simulator, no screenshot; the owner reads the result afterwards and rules from Awaiting Owner.
+The wave branches only after T-451 (the picker) merges at 2.32.0, because every new catalog is
+authored against the key set en carries at that branch point.
+
+**The eight, in this wave''s order:**
+
+| Tag | Language, script, face | Reach | Prayer-table genre | Slots the loan rule closes |
+| --- | --- | --- | --- | --- |
+| my | Burmese, Myanmar script, bundles Noto Sans Myanmar | ~33M, Myanmar''s Muslim minority | Burmese Muslim da''wah media and teaching pages (Deen For Muslimeen''s Burmese posts, Burmese-language namaz teachings), my.wikishia''s နမာဇ် encyclopedia, my.wikipedia''s Islamic articles, Dawat-e-Islami''s my-localized app strings | Suhoor, Duha, Istijaba and any name no page prints |
+| tt | Tatar, Cyrillic, Roboto | ~5M, Russia''s biggest Muslim language | Tatarstan''s own Tatar-language tables: islamtatar.ru''s Яр Чаллы table (Иртәнге намаз, Кояш чыга, Өйлә намазы, Икенде намазы, Ахшам намазы, Ястү намазы), namazvakti.com''s Tatar yearly table, the Tatarstan district press carrying the muftiat''s tables; the Kazan namaz page attests Сәхәр | Duha, Istijaba; Midnight and Last Third derived from Tatar''s own vocabulary |
+| ce | Chechen, Cyrillic, Roboto | ~1.6M | Chechen-language Islamic library texts (islamcontent.com/ce, which attests Духьа ламаз for Duha) and the govzalla.com Chechen dictionary (делкъ-ламаз and the ламазан хенаш entries); no printed five-name Chechen table exists | every slot no Chechen text attests; the genre is the wave''s thinnest beside qu |
+| uk | Ukrainian, Cyrillic, Roboto | ~35M | uk.wikipedia''s prayer articles (Фаджр, Зухр, Аср, Магріб, Іша each carry one) and Ukrainian Muslim community tables (umma.in.ua''s Час молитв) | Suhoor, Duha, Istijaba loans; Midnight and Last Third from Ukrainian''s own vocabulary |
+| min | Minangkabau, Latin, Roboto | ~5.5M, West Sumatra | min.wikipedia''s Islamic series (Sumbayang, Wakatu sumbayang — which names sumbayang Luhua —, Sumbayang tarawih) and Minangkabau religious discourse | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba where the stubs stay silent |
+| mad | Madurese, Latin with ḍ, bundled Noto Sans pair | ~7M, Indonesia''s biggest unserved | mad.wikipedia''s Islamic articles (Abhâjâng and the Ramadan series) in the official Madurese orthography, and the Madurese pesantren vocabulary | the extras; the five names where the articles borrow Indonesian forms |
+| bug | Bugis, Latin, Roboto | ~5M, South Sulawesi | Bugis prayer materials (the Patettongenna Sumpajang Waji''e guide), Wikimedia Indonesia''s Bugis time-terms teaching (attests subu''), the official Bugis-Indonesia dictionary, bug.wikipedia | most slots beside Subu; the loan rule with recorded derivations |
+| qu | Southern Quechua, Latin, Roboto | ~9M, the owner''s Peru pick | no Quechua prayer table exists; the genre is dictionaries and translated leaflets (glosbe''s Quechua Islamic terms, islamic-invitation.net''s Northern-Quechua section as corroboration only) | likely all eleven; every name a recorded loan or a derived Quechua day-word |
+
+## Decisions taken (2026-10-29, lane 3, agent-ruled)
+
+1. **The eight are my, tt, ce, uk, min, mad, bug, qu, in the ticket''s order, appended to the end
+   of every shared list.** The selection authority is the owner''s 2026-10-29 order: the mission
+   block my, tt, ce, min, mad and bug beside the popularity picks uk and qu. The seventy-five cap
+   is a maximum, so nothing follows these three waves; Hebrew, Yiddish and Ladino stay banned for
+   good (2026-10-29).
+2. **Parity is en''s key count at the branch point, never a remembered number.** T-451 lands first
+   at 2.32.0 and adds exactly two keys (language.search, language.noMatch) after
+   language.chooseHint, so the branch-point truth is the pre-picker 201 plus those two; the
+   executor reads the count from the tree at branch time and every catalog satisfies Catalog at
+   that count, the two picker keys included at en''s position.
+3. **en''s catalog-lock hash is unchanged from the branch point** — the hash T-451''s regenerated
+   catalog-lock.json carries, not the remembered e20ae02c of the fifty-language line. No English
+   byte moves in this wave.
+4. **Fonts, measured 2026-10-29 with fontTools 4.67.0 over the bundled TTFs, by explicit
+   codepoint, both weights.** Roboto-Regular and Roboto-Medium carry every Cyrillic codepoint
+   U+0400 through U+04FF except U+0487 (the Church Slavonic combining titlo, which none of the
+   three uses), palochka Ӏ U+04C0 and ӏ U+04CF included, so tt, ce and uk take the LATIN record:
+   Tatar''s ә ғ ҡ ң ө ҫ ү һ җ, Chechen''s ә ҡ ң ӧ ү җ and Ukrainian''s і ї є ґ all measured
+   present. Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights and no other bundled face carries
+   them except the Noto Sans pair, so mad rides the AFRICAN record on that pair, its comment
+   gaining Madurese''s own measurement line — the URDU precedent of one record gaining members
+   across waves. min, bug and qu stay LATIN: Roboto carries their apostrophes ('' and ʼ), ñ, è é ê
+   and â. No bundled face carries a single Myanmar codepoint, so my bundles its pair.
+5. **The Myanmar pair is Noto Sans Myanmar v2.107, the hinted statics from the notofonts.github.io
+   release (the same source series as the shipped v2.0xx pairs), Regular 195,088 and Medium
+   197,360 bytes, so full statics and no subset pipeline — the zh pipeline exists for a
+   forty-megabyte problem that does not arise.** Measured both weights: hhea box 1324/-860
+   (2.184em), win ink equal (usWinAscent 1324, usWinDescent 860), lineGap 0, UPM 1000, the two
+   weights identical; worst single-glyph Myanmar-block ink 1004/-469 Regular and 1009/-471
+   Medium, inside the declared box with about a third headroom. The declared box clears its ink
+   (hhea equals win), so the row-87 Thai law applies and the MYANMAR record pins no script box:
+   the font''s own 2.184em metrics serve. The step re-measures the stacked sequences of the final
+   keyed surface before commit, the Malayalam lesson.
+6. **No RTL.** All eight read left to left — Myanmar, Cyrillic and Latin alike — so RTL_IDS, the
+   chevron and comma helpers, the crossing relaunch sets and the RTL gates stay untouched.
+7. **Digits stay Latin in all eight.** R12 carries no row for any of them and the row-82 law plus
+   the owner''s standing order (2026-10-29) keep times, dates and countdowns Latin everywhere:
+   Burmese''s own ၀-۹ never render.
+8. **The loan rule (T-410 decision 5) governs every slot no source attests**, and this wave leans
+   on it hardest for qu and ce: the Catalog type requires every key, so the slot takes the loan
+   in the language''s own orthography, recorded with text, slug, confidence and the derivation in
+   its note. Sunrise, Midnight and Last Third land from the language''s own day vocabulary at
+   medium where the words exist; Suhoor, Duha and Istijaba close as loans unless a table prints
+   them (islamcontent prints Духьа for ce, the Kazan page prints Сәхәр for tt). Every new slug
+   registers in _meta.sourceSlugs.
+9. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+   step; every later commit is a patch (2.33.1 through 2.33.5) under a non-feat subject** (the
+   T-429 ruling that the discipline gate admits a patch only under chore). package.json, app.json
+   and shared/whatsNew.ts stamp together; android/app/build.gradle is prebuild output the repo
+   does not track, and each commit message records that. Collisions with the sibling waves''
+   2.33.0 are grandfathered by scripts/version-collisions-allowlist.json under the standing
+   ruling, and each merge renumbers above whatever uat then carries — the lead''s.
+10. **The merge protocol is append-only.** Every shared registry (LOCALE_IDS, loader RAW and
+    MODULES, LANGUAGE_NAMES at codepoint position, typography RECORDS, the catalog-lock list,
+    native-strings.json, widget-statics.json, the app.json arrays, the four widget STATIC tables
+    and their finders, the gates'' CATALOGS and LOCALES lists, README) takes this wave''s rows at
+    its end in this wave''s order; no other wave''s row is rewritten, and the lead''s additive
+    resolution carries the merged seventy-five.
+11. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font
+    array gains the two Myanmar TTFs, eight expo.locales blocks byte-identical to
+    native-strings.json, CFBundleLocalizations in LOCALE_IDS order, the version field — every
+    byte gated by nativeLocalesConfig.
+12. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+13. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the suite is the proof, and the widget runtime load suite re-runs after the Myanmar font
+    install (the widget invariant).
+14. **Each locale lands its whole keyed surface in one commit** (T-419''s design law): catalog,
+    loader row, endonym row with its english field (the T-451 shape), typography record,
+    native-strings row, widget-statics row, the four widget inline STATIC rows and their four
+    finder lists, the app.json locale block, the CFBundleLocalizations entry, the lock list and
+    lock suite, the gates rows and the detection rows — so no suite is red across a step boundary.
+15. **The picker follows the set.** The Language sheet''s census derives from LANGUAGE_NAMES, so
+    the eight endonyms ride it; the search filter''s NFD fold handles every new name by
+    construction (it strips Madurese''s ḍ to d), and languageFilter''s suite gains that fold case.
+
+## Files
+
+- `shared/i18n/my.ts, tt.ts, ce.ts, uk.ts, min.ts, mad.ts, bug.ts, qu.ts` — new, one full catalog
+  each at en''s branch-point parity (the two picker keys included) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after su; the header count; no
+  RTL change.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order, each carrying its english
+  field: Baso Minangkabau, Basa Ugi, Madhurâ and Runa Simi among the Latin rows; Нохчийн,
+  Татарча and Українська in the Cyrillic block; the Burmese endonym (မြန်မာ or ဗမာ, attested
+  at execution) after ไทย, before the Ethiopic rows.
+- `shared/typography.ts` — the MYANMAR record on the bundled pair; tt, ce, uk, min, bug and qu
+  map LATIN with per-locale measurement comments; mad maps AFRICAN, the record''s comment gaining
+  Madurese''s ḍ line.
+- `assets/fonts/NotoSansMyanmar-Regular.ttf, NotoSansMyanmar-Medium.ttf` — new, OFL, the licence
+  file already present.
+- `shared/i18n/sourced-names.json` — the eight''s sections (11 names and 5 explanations each),
+  every slot non-null with text, slug, confidence and note; the new slugs registered.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery keys
+  each).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; the lock''s
+  new entries carry en''s branch-point hash.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8; a T454_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows: my-MM, tt-RU, ce-RU, uk-UA,
+  min-ID, mad-ID, bug-ID, qu-PE; the unshipped-tag fallback rows stay untouched.
+- `shared/__tests__/typography.test.ts` — the MYANMAR record case; the LATIN filter''s exclusion
+  list gains mad beside bm and ff.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows to fifty-eight and the count statement
+  moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — follows LANGUAGE_NAMES; the row-count
+  statement moves if it pins one.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — the ḍ-to-d fold case.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table grows by eight rows and its locale
+  finder list gains the eight codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables grow by eight rows each and
+  their three locale finder lists gain the eight codes.
+- `app.json` — the expo-font array gains the two Myanmar TTFs; eight expo.locales blocks
+  byte-identical to native-strings.json; CFBundleLocalizations to fifty-eight; the version field
+  riding every commit.
+- `README.md` — the Features bullet names every shipped language with the count read from
+  LOCALE_IDS.length at the merged commit.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps on every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog at en''s branch-point count
+or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so each step''s gate re-reads
+the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, the 24-char label budget, sourced-verbatim) plus this wave''s T454_EIGHT
+sourcing row, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms, CFBundleLocalizations riding LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical from the branch
+point, the lock''s list equal to the translated set) and i18nBridge''s parity row. No locale in
+this wave joins the RTL set, so the RTL purity gate simply never fires on them.
+
+Per locale the recipe is T-427''s and T-429''s, in one commit per step: catalog file (sourced
+prayer names verbatim from the glossary, UI copy authored to the R2 gates, the two picker keys
+at en''s position), loader rows, endonym row with its english field, typography record,
+lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, the app.json locale block, the CFBundleLocalizations entry, the four widget STATIC rows and
+the four finder lists.
+
+Alternatives rejected: Roboto with decomposed d-plus-U+0323 for Madurese''s ḍ, which no input
+method or normalisation step would preserve (the bundled Noto Sans pair carries the precomposed
+letters); a subset cut of Noto Sans Myanmar, which would add a second glyph-lock mechanism for a
+pair under 200KB a weight; a MYANMAR script box pinned at the house 1.5em, which would be
+shorter than the font''s own 2.184em line and would clip the script the box exists to protect;
+Quechua deferred for a speaker (the loan rule ships a gated row now and the owner''s read improves
+it later); a device read inside this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   the eight sections with their genres'' attestations and the loan or derived entry for every
+   unattested slot, every slot non-null with text, slug, confidence and note; the new slugs
+   registered; catalogGates gains the T454_EIGHT sourcing gate, red first.
+2. **Step 2: my lands with its bundled Myanmar pair** — the v2.107 pair fetched, measured and
+   installed, the MYANMAR record with its measured numbers, the full catalog at branch-point
+   parity and my''s whole keyed surface in one commit; the widget runtime load suite re-runs after
+   the install.
+3. **Step 3: tt and ce land on Roboto''s Cyrillic** — both LATIN on the measured whole-block
+   coverage, tt on the Tatarstan tables'' label set with Сәхәр attested, ce on the Chechen library
+   attestations with the loan rule closing the gaps; the whole keyed surface each.
+4. **Step 4: uk and qu land on Roboto** — the two popularity picks, uk on the Ukrainian articles''
+   set with derived extras, qu the wave''s loan-rule wave with derived Quechua day-words; both
+   LATIN; the whole keyed surface each.
+5. **Step 5: min, mad and bug land, mad on the Noto Sans pair** — the Indonesian trio: min and
+   bug LATIN, mad AFRICAN on the pair Roboto''s missing ḍ rules it to; the whole keyed surface
+   each.
+6. **Step 6: The full sweep is green and the README names every shipped language** — every suite
+   green over the fifty-eight at full coverage, yarn validate exits 0, en''s lock hash unchanged
+   from the branch point, the README Features bullet rewritten from LOCALE_IDS.length with the
+   merged count landing at the lead''s merge, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loan and derived slots carry their derivations in the note, the
+  census makes every one visible, and the owner''s read is the ruling pass.
+- **qu has no attested prayer table anywhere**, and ce''s genre is thin: both waves of loans ship
+  at their measured confidence, every derivation recorded, and the owner''s phone pass rules.
+- **Myanmar renders tofu if the pair is absent**: the step measures every character of the keyed
+  surface in both weights before commit, and the widget runtime load suite re-runs after the
+  install.
+- **Stacked Myanmar ink past the box** (the Malayalam lesson): the step measures the stacked
+  sequences before commit; the declared 2.184em box carries about a third headroom over the
+  worst single glyph.
+- **A label exceeds the 24-char budget** (Burmese transliterations run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: this wave appends only, the
+  collisions allowlist grandfathers 2.33.0, and the lead concatenates and renumbers.
+- **The catalog lock drifts**: en stays byte-identical from the branch point; any en edit fails
+  catalogLock.
+
+## Proof
+
+1. The eight named with the selection authority: this doc''s table, the owner''s 2026-10-29 order,
+   the seventy-five cap and the standing bans.
+2. Sourcing recorded: a jq census over the eight''s sections of shared/i18n/sourced-names.json
+   prints zero rows with null text, source or confidence; the T454_EIGHT row of catalogGates is
+   green.
+3. Coverage and regression: yarn validate exits 0 at full coverage; catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green
+   over the fifty-eight, with the fifty existing locales'' rows unedited and en''s lock hash equal
+   to the branch point''s.
+4. Detection: locale.test.ts resolves my-MM to my, tt-RU to tt, ce-RU to ce, uk-UA to uk, min-ID
+   to min, mad-ID to mad, bug-ID to bug and qu-PE to qu, with the unshipped-tag fallback rows
+   untouched.
+5. Glyph coverage: the per-locale fontTools census over both weights prints zero missing — tt,
+   ce and uk against Roboto, mad against the Noto Sans pair, my against its own pair, the Latin
+   trio against Roboto.
+6. The widget surfaces: the four inline STATIC tables and their finders resolve all eight codes,
+   and the widget runtime load suite is green after the Myanmar install.
+', NULL, NULL, '{}', false, false, false, NULL, 56320, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:20:06.843291+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (155, 57, 1, NULL, 'T-476', '# T-476 — the language picker becomes a wheel
+
+## Goal
+
+Today the language sheet commits on the tap itself: `pickLanguage` reveals the loader, dismisses the sheet and commits in one press, and the list is a plain scroll that stops anywhere. When this is done the list is a wheel: it settles row by row with the settled row exactly on the list''s centreline, a very faint dim band rides the row a stop would select while the purple seat stays on the locale in force, a tap stages a choice instead of committing it, and the staged choice commits through the existing machinery exactly once when the sheet closes by any path.
+
+## The behaviour spec (owner order 2026-10-29, restated)
+
+1. The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it onto another row while scrolling.
+2. A second, very faint band in the dim colour family rides the row nearest the list''s vertical centre through the drag and through the settle, the lottery-wheel read: the user always sees where a stop lands. Never black, never opacity on text.
+3. Rows are uniform and the list snaps row by row so the settled row is perfectly centred, at the top and the bottom of the list alike.
+4. On open the list is positioned with the in-force locale centred.
+5. A tap on a row stages that row as the candidate (the faint marker moves there) and neither closes the sheet nor commits.
+6. The staged candidate commits together with the close: swipe down, back gesture or the close affordance. Commit and close are one act, fired exactly once. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.
+7. Search still filters; the wheel, the snap and both highlights work over the filtered list; clearing the search restores the full list centred on the in-force locale.
+8. The numbered dimmed indices, the centred names, the keyboard work and the RTL behaviour from T-451 are untouched.
+9. First frames render settled; only value changes animate.
+
+## Decisions taken (2026-10-29)
+
+1. **The scrollable is `BottomSheetFlatList`** (the library''s own list, pinned 5.2.14), rendered by the Language screen itself inside `Sheet scrollable={false}` — the existing prop, so `Sheet.tsx` changes nothing. The list registers with the sheet through the library context, the one mechanism by which the sheet''s pan-to-close and the list''s scroll negotiate at the top edge. A raw `FlatList` inside a `BottomSheetScrollView` nests two scrollables that fight the sheet''s pan; rejected.
+
+2. **The snap is `snapToOffsets`, not `snapToInterval` plus `snapToAlignment`.** The pure geometry module computes the settle offset of row i as `pad + i*pitch + rowHeight/2 - listHeight/2`, with `pad = (listHeight - rowHeight) / 2` of content padding at both ends — the picker''s classic trick, which is exactly why the first and last rows centre: `offsetForIndex(0) = 0` and `offsetForIndex(N-1)` equals the maximum scroll offset identically. `decelerationRate={''fast''}` gives the settle. Rejected: `snapToInterval` with ''start'' or ''center'' alignment — each is exact only under the native snap formula, and this tree ships neither the iOS implementation nor the Android one to read them; explicit offsets make JavaScript the single source of truth on both platforms. Rejected: `disableIntervalMomentum` — one row per fling is a stepper, not a wheel.
+
+3. **The centreline and the pitch are measured, not hard-coded.** The list''s own `onLayout` gives `listHeight`, the first row''s `onLayout` gives `rowHeight` (the measure the T-451 indicator already uses), and `pitch = rowHeight + SPACING.xs`. Font-scale changes flow through the measure. The uniform-row invariant the T-451 seat already relies on carries over unchanged.
+
+4. **The faint band is one absolutely-positioned `Animated.View` laid under the `BottomSheetFlatList`** (a sibling rendered before it), height = the measured row height, `borderRadius: RADIUS.md`, `backgroundColor: COLORS.text.muted` — `DESIGN.dim`, per-platform `#5254ac` on iOS and `#4a47ae` on Android, the dim family — at View-level `opacity` 0.3, a surface wash in the house manner of the card''s own translucent fills. No text lives inside the band, so no text opacity exists; the row text renders above the band and is untouched. The band rides the centre row by `translateY` derived on the UI thread from one scroll shared value: `translateY = pad + centreFloat*pitch - offset` with `centreFloat = (offset + listHeight/2 - pad - rowHeight/2) / pitch` clamped to [0, count-1]. Continuous through the drag (the lottery-wheel glide), exactly on the row at settle, because the snap geometry lands `centreFloat` on the integer. First frame settled: the shared value is seeded at the open offset and the band''s opacity is a constant, so the band appears already on the centre row and only its position ever changes.
+
+5. **The purple seat becomes a scroll-tracking overlay of the same layer family**: `translateY = pad + seat*pitch - offset`, seat = the filtered index of the locale in force, hidden when the locale is filtered out (T-451''s rule). The card body stacks faint band, purple seat, then the `BottomSheetFlatList`: the rows paint above both bands, the purple paints above the faint, so when both share a row — the open state — the in-force seat reads purple alone, and on different rows both read. Rejected: a per-row conditional purple style — it re-renders rows on every state change to reach the same pixels.
+
+6. **Nothing re-renders on scroll.** Both bands read the one scroll shared value on the UI thread (`useAnimatedScrollHandler`, `scrollEventThrottle` 16). The staged state is written only at settle — `onMomentumScrollEnd` and `onScrollEndDragged`, plain JS props, the latter covering the drag released without momentum — and at tap.
+
+7. **The tap stages.** `stageLanguage(id)` sets the staged locale and calls `scrollToOffset({ offset: offsetForIndex(i), animated: true })`, so the faint marker rides the animated scroll onto the tapped row. No close, no commit, no reveal. `pickLanguage` and its sequencing are deleted; their only caller is the Language screen.
+
+8. **The commit boundary is the Sheet''s `onDismiss` prop.** Every close path lands there: pan-down-to-close, the backdrop tap, the hardware back (Sheet''s BackHandler calls `modalRef.current?.dismiss()`) and any programmatic `hideLanguageSheet()` all end in the modal''s `onDismiss`, which the library fires once per close and which `Sheet.handleDismiss` already funnels. The pure `commitStagedOnClose(staged, active, reveal, commit)` does nothing when the staged value is null or equals the locale in force; otherwise it reveals the loader on the close''s own tick and commits one paint later — the same requestAnimationFrame-then-timeout shape `pickLanguage` has today, so the commit''s first synchronous stretch lands behind the loader face (the D86.8 reasoning, re-timed from the tap to the close). The staged value is consumed from a ref synchronously, so a second `onDismiss` invocation is a no-op by construction. The commit machinery itself — `commitLanguagePreference`, the convergence, the reschedule, the relaunch — is not rewritten, only re-timed.
+
+9. **Search reseeds the wheel.** Every change of the filtered rows'' identity reseeds with `scrollToOffset({ offset: offsetForIndex(seat >= 0 ? seat : 0), animated: false })` and resets the staged value to null — a staged row a filter has removed is incoherent, and the wheel''s seat must sit on a visible row. Clearing the query restores the full list centred on the locale in force through this same path, which is the owner''s clearing requirement verbatim.
+
+10. **RTL is free.** The wheel''s geometry is vertical and reads no direction; the rows keep T-451''s absolute-left index slot, the `writingDirection: ''ltr''` digits and the centred names; the bands span logical `start` and `end` exactly as today''s indicator does. The reseed offsets under Arabic equal those under English, and a guard asserts it.
+
+11. **Accessibility is unchanged**: `accessibilityRole={''radio''}` with `selected` on the locale in force remains the seat of truth; the staged band is visual, exactly like the purple. No owner order changes it, and none is invented.
+
+12. **No new catalog keys.** The wheel adds no copy, so en''s parity is read at the branch point and untouched; the catalog lock does not regenerate; the i18n pin list is untouched.
+
+13. **The version line continues from whatever uat holds when the three waves close.** Fetch origin first; every commit bumps `package.json`, `app.json` and `android/app/build.gradle` together, minor for the feat-typed subjects, numbered above uat''s tip at branch time (the 2.33.0 through 2.40.0 allowlist entries already cover the waves'' collisions; this ticket branches after them and renumbers above).
+
+## Files
+
+- `components/sheets/screens/languageWheel.ts` — new, the pure geometry: pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, and the staged-commit guard.
+- `components/sheets/screens/languageSheet.ts` — `pickLanguage` replaced by `stageLanguage` and `commitStagedOnClose`.
+- `components/sheets/screens/Language.tsx` — the wheel: `BottomSheetFlatList` inside `Sheet scrollable={false}`, the two under-laid bands, the seeded open, the staged tap, the close-boundary commit.
+- `components/sheets/screens/languageFilter.ts` — read only; the filtered rows feed the wheel, unchanged.
+- `components/sheets/parts/Sheet.tsx` — read only; its `handleDismiss`, BackHandler and `enablePanDownToClose` are the close paths the boundary hooks, unchanged.
+- `components/ui/LanguageLoader.tsx` — read only; the loader the reveal drives, unchanged.
+- `stores/language.ts` — read only; `commitLanguagePreference` and `revealLanguageLoader` are re-timed, not rewritten.
+- `components/sheets/__tests__/Language.test.tsx` — rewritten: the wheel''s snap props and padding, both bands'' seats, the purple''s immobility, no-commit-on-tap, the boundary commit, the search reseed, RTL.
+- `components/sheets/screens/__tests__/languageWheel.test.ts` — new, the pure geometry suite.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — regression, unchanged.
+- `components/sheets/__tests__/SheetHost.test.tsx` — regression; the sheet still hosts the rebuilt screen.
+- `components/sheets/parts/__tests__/Sheet.test.tsx` — regression; Sheet itself is unchanged.
+- `stores/__tests__/languageCommitGuards.test.ts` — regression; the machinery''s own guards are untouched.
+
+## Design
+
+One invariant carries the ticket: **the settled row is always exactly centred, and the app''s locale changes only through `commitLanguagePreference`, exactly once per close, and only when the staged candidate differs from the locale in force.** Everything above serves it: the offsets array owns the centring on both platforms without trusting a native alignment formula; the two bands are pure derivations of one scroll offset plus two integers, so no scroll can re-render a row or move the seat; the close boundary is a single library-guaranteed callback plus a ref-consume, so no path can double-commit and no path can skip.
+
+The layer stack inside the card body, bottom to top: faint band, purple seat, `BottomSheetFlatList`. The rows are transparent Pressables, so both bands read through the row text. The stack order is what makes the open state read correctly — both bands share the centre row at open, and the purple covers the faint there.
+
+Further alternatives rejected, beyond those dated above: a true `UIPickerView` wrapper (a new native dependency against the stack law, and the owner asked for the behaviour without the iOS looks); driving the bands from JS state on `onScroll` (a re-render per frame — the jank the risks name); committing on the backdrop tap alone (it misses the swipe, the back gesture and any programmatic close).
+
+## Steps
+
+1. **Step 1: The wheel''s pure geometry and staged-commit functions, with their suites** — `languageWheel.ts` (pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, the commit guard) and `languageSheet.ts` rebuilt (`stageLanguage`, `commitStagedOnClose`), red-first suites, mutation pass on the guarded logic. 2 points.
+2. **Step 2: The language screen rendered as a centre-snapping wheel with its two bands** — `Language.tsx` renders the `BottomSheetFlatList` inside `Sheet scrollable={false}` with the snap offsets and both-end padding, both under-laid bands, the seeded open and the scroll-driven seats; `Language.test.tsx` rewritten for the wheel (snap props, padding, band seats through fired scroll events, purple immobility, rows, indices and RTL untouched). 2 points.
+3. **Step 3: The staged commit at the close boundary and the search interplay** — the tap stages and scrolls, `onDismiss` reveals and commits exactly once, the staged value resets on filter change and the cleared query restores the full list centred on the locale in force; the boundary guards in the suite: no-commit-on-tap, one commit under a double `onDismiss`, nothing staged, staged equal to the locale in force. 2 points.
+
+## Risks
+
+- **Scroll jank.** Both bands derive from one shared value on the UI thread and no row re-renders on scroll. A regression shows as dropped frames in the owner''s build read; per the run order, findings become fix-forward tickets and nothing is reverted.
+- **Snap fighting the sheet''s own pan.** `BottomSheetFlatList` is the library''s own answer to the top-edge handoff, but the handoff itself is device behaviour the suites cannot see. The owner''s single final build reads it; findings become tickets.
+- **The commit firing twice.** The library fires `onDismiss` once per close and `commitStagedOnClose` consumes the staged ref synchronously. The suite fires `onDismiss` twice and asserts one commit.
+- **The first-open centre before layout.** The seat offset exists only after the list and the first row have laid out; the seed lands in `onLayout` (`scrollToOffset` animated false, the shared value written directly) and the sheet''s own open animation covers the frames before it. A visible flash at open is a fix-forward finding.
+- **The Reanimated scroll handler under Jest.** The suite reads the band''s seat through fired scroll events; if the worklet proves inert under the test transform, the guard falls back to the pure `bandSeat` suite plus the handler''s attachment assertion, and the executor records which one holds.
+- **Row nonuniformity at font scales.** The pitch derives from the first row''s measure and the T-451 seat already relies on uniform rows; a name that wrapped would break both. The names are single-line at the detail size in the card width; the owner''s read covers the scaled cases.
+
+## Proof
+
+- `yarn validate` exits 0 at full coverage, with the rewritten `Language.test.tsx` and the new `languageWheel.test.ts` green.
+- The pure suite asserts, for the shipped list shape: `offsetForIndex(0) = 0` and `offsetForIndex(N-1) = maximum offset` (the ends centre), and `centreFloat(offsetForIndex(i)) = i` for every i (the settled row is the centred row).
+- The boundary suite asserts: a tap calls neither `revealLanguageLoader` nor `commitLanguagePreference` nor `dismiss`; one `onDismiss` with a staged foreign row reveals and commits that row exactly once; a second `onDismiss` adds no commit; `onDismiss` with nothing staged and with the locale in force staged calls neither.
+- The band suite asserts: after the open seed the faint band''s `translateY` equals the centre seat; after a fired scroll it equals `bandSeat(offset)`; the purple seat equals `pad + seat*pitch - offset` at every fired offset and the `selected` radio never moves.
+- The wheel suite asserts: `snapToOffsets` equals the computed offsets, `decelerationRate` is ''fast'', and the content padding at both ends is `(listHeight - rowHeight) / 2`; the reseed offset under Arabic equals the one under English.
+', NULL, NULL, '{}', false, false, false, NULL, 57344, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:42:16.611709+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (156, 57, 2, NULL, 'T-476', '# T-476 — the language picker becomes a wheel
+
+## Goal
+
+Today the language sheet commits on the tap itself: `pickLanguage` reveals the loader, dismisses the sheet and commits in one press, and the list is a plain scroll that stops anywhere. When this is done the list is a wheel: it settles row by row with the settled row exactly on the list''s centreline, a very faint dim band rides the row a stop would select while the purple seat stays on the locale in force, a tap stages a choice instead of committing it, and the staged choice commits through the existing machinery exactly once when the sheet closes by any path.
+
+## The behaviour spec (owner order 2026-10-29 with its three passes, restated)
+
+1. The in-force locale keeps the purple highlight for the whole session with the sheet open; nothing moves it onto another row while scrolling.
+2. A second, very faint band in the dim colour family rides the row nearest the list''s vertical centre through the drag and through the settle, the lottery-wheel read: the user always sees where a stop lands. Never black, never opacity on text.
+3. Rows are uniform and the list snaps row by row so the settled row is perfectly centred, at the top and the bottom of the list alike.
+4. On open the list is positioned with the in-force locale centred.
+5. A tap on a row stages that row as the candidate (the faint marker moves there) and neither closes the sheet nor commits.
+6. The staged candidate commits together with the close: swipe down, back gesture or the close affordance. Commit and close are one act, fired exactly once. Closing with nothing staged changes nothing. A staged candidate equal to the in-force locale changes nothing.
+7. Search still filters; the wheel, the snap and both highlights work over the filtered list; clearing the search restores the full list centred on the in-force locale.
+8. The numbered dimmed indices, the centred names, the keyboard work and the RTL behaviour from T-451 are untouched.
+9. First frames render settled; only value changes animate.
+10. First pass: settling the scroll selects nothing. Only a tap stages a choice; a scroll that stops on a row and a close that follows commit nothing.
+11. Second pass: exactly three haptic triggers — the tap that stages, the close that carries a commit, and the per-row detent tick while the wheel crosses the centreline. None on a close without a staged change, none while the change loads or finishes; any haptic the tree fires on those paths today moves off them.
+12. Third pass: the loader''s changing line fades in over a single 200ms fade once it is available; cover, spinner and line lift together at completion.
+13. Third pass: the sheet''s subtitle reads close-to-save.
+
+## Decisions taken (2026-10-29)
+
+1. **Sheet gains a mode that hosts the caller''s scrollable directly.** When the mode is set, Sheet renders the header and the pinned piece in the pinned View and the children bare — no `ContentWrapper` — so the caller''s `BottomSheetFlatList` mounts with no `BottomSheetView` ancestor between it and the modal. Why the plan''s first cut (`scrollable={false}`) is dead: in the pinned 5.2.14 a `BottomSheetView` writes the sheet''s scrollable state itself (`animatedScrollableState` to `type: VIEW` at `contentOffsetY: 0`; `src/components/bottomSheetView/BottomSheetView.tsx` beside `src/hooks/useScrollableSetter.ts`), and React runs child effects before parent effects, so the ancestor''s write lands after the list''s registration and overwrites it: the sheet reads the content as a static view always at the top and the pan steals every drag. Readable in the library source, deterministic. The host mode removes the guarantee of breakage; the top-edge handoff itself stays a device read (Risks). `Sheet.tsx` and `Sheet.test.tsx` become changed Files rows with their own coverage.
+
+2. **The snap is `snapToOffsets`, not `snapToInterval` plus `snapToAlignment`.** The pure geometry module computes the settle offset of row i as `pad + i*pitch + rowHeight/2 - listHeight/2`, with `pad = (listHeight - rowHeight) / 2` of content padding at both ends — the picker''s classic trick, which is exactly why the first and last rows centre: `offsetForIndex(0) = 0` and `offsetForIndex(N-1)` equals the maximum scroll offset identically. `decelerationRate={''fast''}` gives the settle. Rejected: `snapToInterval` with ''start'' or ''center'' alignment — each is exact only under the native snap formula, and this tree ships neither the iOS implementation nor the Android one to read them; explicit offsets make JavaScript the single source of truth on both platforms. Rejected: `disableIntervalMomentum` — one row per fling is a stepper, not a wheel.
+
+3. **The centreline and the pitch are measured, not hard-coded.** The list''s own `onLayout` gives `listHeight`, the first row''s `onLayout` gives `rowHeight` (the measure the T-451 indicator already uses), and `pitch = rowHeight + SPACING.xs`. Font-scale changes flow through the measure. The uniform-row invariant the T-451 seat already relies on carries over unchanged.
+
+4. **The faint band is one absolutely-positioned `Animated.View` inside a clipped band layer under the `BottomSheetFlatList`.** Height = the measured row height, `borderRadius: RADIUS.md`, `backgroundColor: COLORS.text.muted` — `DESIGN.dim`, per-platform `#5254ac` on iOS and `#4a47ae` on Android, the dim family — at View-level `opacity` 0.3, a surface wash in the house manner of the card''s own translucent fills. No text lives inside the band, so no text opacity exists; the row text renders above the band and is untouched. The band rides the centre row by `translateY` derived on the UI thread from one scroll shared value: `translateY = pad + centreFloat*pitch - offset` with `centreFloat = (offset + listHeight/2 - pad - rowHeight/2) / pitch` clamped to [0, count-1]. Continuous through the drag, exactly on the row at settle, because the snap geometry lands `centreFloat` on the integer. First frame settled: the shared value is seeded at the open offset and the band''s opacity is a constant, so the band appears already on the centre row and only its position ever changes.
+
+5. **The purple seat becomes a scroll-tracking overlay inside the same clipped layer**, and the layer is the viewport gate: one absolutely-positioned View matching the list''s frame with `overflow: ''hidden''`, holding both bands, so a far scroll can never paint either band outside the list''s bounds onto the card body. The purple''s `translateY = pad + seat*pitch - offset`, seat = the filtered index of the locale in force, and it keeps both T-451 gates: hidden when the locale is filtered out, and opacity 0 while the rows are off-measure. The stack inside the card body, bottom to top: clipped band layer (faint band, then purple seat), then the `BottomSheetFlatList` — the rows paint above both bands, the purple paints above the faint, so when both share a row, the open state, the in-force seat reads purple alone, and on different rows both read. Rejected: a per-row conditional purple style — it re-renders rows on every state change to reach the same pixels.
+
+6. **Only the tap writes the staged value.** The tap handler sets the staged locale, fires the tap-stage haptic and calls `scrollToOffset({ offset: offsetForIndex(i), animated: true })`, so the faint marker rides the animated scroll onto the tapped row. The settle callbacks carry no state that can reach the commit: `onMomentumScrollEnd` and `onScrollEndDragged` true the band''s seat and stage nothing; a scroll that stops anywhere, followed by a close, changes nothing (a Proof guard asserts it). The faint band remains the centre-rider by definition — after a later scroll the marker moves with the centre while the staged choice persists untouched until the close or a further tap.
+
+7. **Nothing re-renders on scroll; the detent ticks on the UI thread.** Both bands read the one scroll shared value (`useAnimatedScrollHandler`, `scrollEventThrottle` 16). The detent haptic is edge-triggered against the last integer centre in the worklet: when the rounded `centreFloat` changes value, one `runOnJS` call fires the selection tick; a bounce that recrosses a boundary ticks again, which is honest wheel feel and stays undebounced.
+
+8. **The close boundary is the composed `onDismiss`, ordered.** Every close path still lands in the Sheet''s `onDismiss` prop — pan-down-to-close, the backdrop tap, the hardware back and any programmatic `hideLanguageSheet()` all end in the library''s once-per-close callback, which `Sheet.handleDismiss` funnels. The prop is occupied today by `onDismiss={() => setQuery('''')}` (Language.tsx:92); the composed handler, dated: first consume the staged ref synchronously (a plain ref read, before any setState can re-render), then run `commitStagedOnClose`, then `setQuery('''')`, then clear the presented flag. The synchronous consume precedes the re-render the query clear triggers, so no reset can race it; and with the presented flag false, the decision-10 reseed does not fire into a dismissing sheet when the cleared query re-derives the full rows.
+
+9. **`commitStagedOnClose(staged, active, reveal, commit)` keeps its shape.** Nothing when the staged value is null or equals the locale in force; otherwise it reveals the loader on the close''s own tick and commits one paint later — the same requestAnimationFrame-then-timeout shape `pickLanguage` has today, so the commit''s first synchronous stretch lands behind the loader face (the D86.8 reasoning, re-timed from the tap to the close). The staged value is consumed from the ref synchronously, so a second `onDismiss` invocation is a no-op by construction. The commit machinery itself — `commitLanguagePreference`, the convergence, the reschedule, the relaunch — is not rewritten, only re-timed. `pickLanguage` and its sequencing are deleted; their only caller is the Language screen.
+
+10. **The staged-survival rule: the staged value resets only when the staged id leaves the filtered set.** Typing a query that still contains the staged row keeps the choice — the faint marker follows the centre as it always does, and the close still commits the tapped row; typing a query that removes the staged row resets to nothing-staged, because a staged row the user cannot see is incoherent; clearing the query restores the full list and the reseed centres the locale in force (the owner''s clearing sentence verbatim) while a surviving staged choice persists for the close. The reseed itself — `scrollToOffset({ offset: offsetForIndex(seat >= 0 ? seat : 0), animated: false })` — runs on every change of the filtered rows'' identity while the sheet is presented (the decision-8 gate), and writes the scroll shared value directly so no stale-band frame shows. Rejected: resetting on every query change — it silently discards a live staged choice the owner''s words never ordered away, and jerks the wheel back to the seat on every keystroke.
+
+11. **Haptics: exactly the owner''s three, and the tree''s one moves off.** The tap that stages fires the selection tick; the close that carries a commit fires the single Light impact — the re-purposed unified close haptic, moved from the close path onto the commit path; the wheel crossing the centreline fires the detent selection tick (decision 7). A close without a staged change fires nothing: Sheet''s unified close haptic (`Sheet.handleDismiss`, the Light impact on every close of every sheet, Sheet.tsx:191-196) gains a Sheet prop that suppresses it, defaulting to today''s behaviour for every other sheet, and the language sheet opts out so its close buzz comes from the commit alone. The load path fires none — the reveal and the commit add no haptics of their own, and a guard asserts the driver-hanging window is silent.
+
+12. **The loader''s line fades in; the teardown is already one act.** The `language.changing` line (LanguageLoader.tsx:42, a bare unanimated Text today) fades from opacity 0 to 1 over a single 200ms Reanimated timing — the owner-dated number, a local constant beside `LINE_MAX_WIDTH` (`ANIMATION` carries no 200 and the fade belongs to this surface alone) — starting the frame the line becomes available. At completion the cover, the spinner and the line lift together: the loader''s existing teardown already is one act (the whole container returns null when `busy` clears, one unmount, no stagger), and none is added. The reveal has no "fast fade" today — the container mounts hard — so the fade-in is added, not found. Law reconciliation, dated: this entrance is the owner''s own order and the one exception where a first frame is not settled; the transient is the line''s opacity value alone, the ink itself stays the solid white and never dims through alpha, the cover and spinner mount settled, and the standing law holds everywhere else in the loader and the wheel.
+
+13. **The subtitle rewires to the key the tree already carries.** `sheet.closeToSave` = ''Close to save'' (shared/i18n/en.ts:100) sits at parity in every catalog and is in use by the Alert sheet (Alert.tsx:93), so the change is `subtitle={t(''sheet.closeToSave'')}` in place of today''s `subtitle={null}`: no catalog, scanner, string-census or directional-allowlist work, en''s parity read at the branch point and untouched.
+
+14. **RTL is free.** The wheel''s geometry is vertical and reads no direction; the rows keep T-451''s absolute-left index slot, the `writingDirection: ''ltr''}` digits and the centred names; the bands span logical `start` and `end` exactly as today''s indicator does. The reseed offsets under Arabic equal those under English, and a guard asserts it.
+
+15. **Accessibility is unchanged**: `accessibilityRole={''radio''}` with `selected` on the locale in force remains the seat of truth; the staged band is visual, exactly like the purple. No owner order changes it, and none is invented.
+
+16. **No new catalog keys.** The subtitle uses the existing `sheet.closeToSave`; nothing else adds copy; the catalog lock and the i18n pin list are untouched.
+
+17. **The version line continues from whatever uat holds when the three waves close.** Fetch origin first; every commit bumps `package.json`, `app.json` and `android/app/build.gradle` together, minor for the feat-typed subjects, numbered above uat''s tip at branch time (the 2.33.0 through 2.40.0 allowlist entries already cover the waves'' collisions; this ticket branches after them and renumbers above).
+
+18. **The Jest acceptance is pinned before the run.** The pure geometry suite — `bandSeat`, `centreFloat`, the offset identities — is the acceptance criterion for the snap and the band''s seat. The component-level animated-style read through fired scroll events stays as a bonus assertion the executor may drop if the worklet proves inert under the test transform; dropping it touches no criterion.
+
+## Files
+
+Changed:
+
+- `components/sheets/parts/Sheet.tsx` — the caller-scrollable host mode (children rendered bare, no ContentWrapper) and the close-haptic suppression prop (decisions 1 and 11).
+- `components/sheets/parts/__tests__/Sheet.test.tsx` — coverage of both: the host mode renders children bare with no BottomSheetView ancestor, and the suppression prop holds the Light impact while the default keeps it for every other sheet.
+- `components/sheets/screens/languageWheel.ts` — new, the pure geometry: pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, and the staged-commit guard.
+- `components/sheets/screens/languageSheet.ts` — `pickLanguage` replaced by `stageLanguage` and `commitStagedOnClose` (the close-commit haptic lives here, on the commit path).
+- `components/sheets/screens/Language.tsx` — the wheel: `BottomSheetFlatList` inside Sheet''s host mode, the clipped band layer with both bands, the snap offsets and both-end padding, the seeded open, the tap-only staging with its tick, the detent wiring, the subtitle rewire, the composed `onDismiss` and the presented-gated reseed.
+- `components/sheets/__tests__/Language.test.tsx` — rewritten: the wheel''s snap props and padding, the clipped band layer, both bands'' seats, the purple''s gates, the subtitle, no-commit-on-tap, settle-then-close, the boundary commit, the staged-survival rule, the haptic guards, the search reseed, RTL.
+- `components/sheets/screens/__tests__/languageWheel.test.ts` — new, the pure geometry suite; the pinned acceptance criterion.
+- `components/ui/LanguageLoader.tsx` — the 200ms fade-in of the changing line (decision 12).
+- `components/ui/__tests__/LanguageLoader.test.tsx` — the loader''s own suite (six tests today) gains the fade guards; the grill named the root layout''s suite, but this one covers the loader directly and is the right home, and no `app/__tests__/_layout.test.tsx` exists in the tree.
+
+Read only:
+
+- `components/sheets/screens/languageFilter.ts` — the filtered rows feed the wheel, unchanged.
+- `stores/language.ts` — `commitLanguagePreference` and `revealLanguageLoader` are re-timed, not rewritten.
+- `stores/ui.ts` — `hideLanguageSheet` and `setLanguageSheetModal`, the programmatic close and the ref the boundary leans on.
+- `shared/i18n/en.ts` — the existing `sheet.closeToSave` key the subtitle rewires to, read for parity at the branch point.
+- `components/sheets/screens/__tests__/Settings.test.tsx` — regression; it imports and renders the Language screen, so the rebuilt wheel flows into it.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — regression, unchanged.
+- `components/sheets/__tests__/SheetHost.test.tsx` — regression; the sheet still hosts the rebuilt screen.
+- `stores/__tests__/languageCommitGuards.test.ts` — regression; the machinery''s own guards are untouched.
+
+## Design
+
+One invariant carries the ticket: **the settled row is always exactly centred; the app''s locale changes only through `commitLanguagePreference`, exactly once per close, and only when a tap-staged candidate differs from the locale in force.** Everything serves it: the offsets array owns the centring on both platforms without trusting a native alignment formula; the two bands are pure derivations of one scroll offset plus two integers inside a clipped layer, so no scroll can re-render a row, move the seat, or paint outside the list; the close boundary is a single library-guaranteed callback with a synchronous ref consume, ordered before the query clear, so no path can double-commit, race a reset, or skip.
+
+The layer stack inside the card body, bottom to top: the clipped band layer (faint band, purple seat), then the `BottomSheetFlatList`. The rows are transparent Pressables, so both bands read through the row text, and the clip is the viewport gate for both.
+
+Further alternatives rejected, beyond those dated above: a true `UIPickerView` wrapper (a new native dependency against the stack law, and the owner asked for the behaviour without the iOS looks); driving the bands from JS state on `onScroll` (a re-render per frame — the jank the risks name); committing on the backdrop tap alone (it misses the swipe, the back gesture and any programmatic close); hosting the list inside a `BottomSheetView` (decision 1''s dead cut).
+
+## Steps
+
+1. **Step 1: The wheel''s pure geometry and staged-commit functions, with their suites** — `languageWheel.ts` (pitch, pad, offsetForIndex, snapOffsets, centreFloat, bandSeat, the commit guard) and `languageSheet.ts` rebuilt (`stageLanguage`, `commitStagedOnClose` with the close-commit haptic), red-first suites, mutation pass on the guarded logic. 2 points.
+2. **Step 2: Sheet hosts the caller''s scrollable, and the language screen renders as the wheel** — Sheet''s host mode (children bare, no ContentWrapper) and the close-haptic suppression prop with `Sheet.test.tsx` coverage; `Language.tsx` renders the `BottomSheetFlatList` inside the mode with the snap offsets and both-end padding, the clipped band layer with both bands and the purple''s gates, the seeded open, and the subtitle rewired to `sheet.closeToSave`; `Language.test.tsx` rewritten; `Settings.test.tsx` regression. 2 points.
+3. **Step 3: The tap-only staged commit at the composed close boundary** — the tap stages, ticks and scrolls; the composed `onDismiss` consumes the staged ref first, reveals and commits exactly once, then clears the query under the presented gate; the staged-survival reset rule; the detent wiring; the guards: no-commit-on-tap, settle-then-close changes nothing, one commit under a double `onDismiss`, nothing staged, staged equal to the locale in force, staged surviving a filter that keeps it and resetting under one that removes it, no buzz on a no-staged close, none during the load. 2 points.
+4. **Step 4: The loader''s line fade and choreography** — the 200ms fade-in of the `language.changing` line from availability, the one-act teardown confirmed as the existing single unmount, the law reconciliation dated in the code''s own terms; `LanguageLoader.test.tsx` gains the fade and lift guards. 2 points.
+
+## Risks
+
+- **Scroll jank.** Both bands derive from one shared value on the UI thread and no row re-renders on scroll. A regression shows as dropped frames in the owner''s build read; per the run order, findings become fix-forward tickets and nothing is reverted.
+- **The top-edge handoff is a device unknown.** The host mode removes the deterministic registration overwrite (decision 1), but the pan-to-close handoff at the list''s top edge is still device behaviour the suites cannot see. The owner''s single final build reads it; findings become tickets.
+- **The commit firing twice.** The library fires `onDismiss` once per close and `commitStagedOnClose` consumes the staged ref synchronously, before the query clear re-renders. The suite fires `onDismiss` twice and asserts one commit.
+- **The first-open centre before layout.** The seat offset exists only after the list and the first row have laid out; the seed lands in `onLayout` (`scrollToOffset` animated false, the shared value written directly) and the sheet''s own open animation covers the frames before it. A visible flash at open is a fix-forward finding.
+- **The Reanimated worklet under Jest.** Settled by decision 18: the pure suite is the criterion, the animated-style read is a droppable bonus. No run-time choice remains.
+- **Row nonuniformity at font scales.** The pitch derives from the first row''s measure and the T-451 seat already relies on uniform rows; a name that wrapped would break both. The names are single-line at the detail size in the card width; the owner''s read covers the scaled cases.
+- **The detent tick on a bounce.** An iOS bounce that recrosses a row boundary ticks again (decision 7); dated as honest wheel feel, undebounced. If the owner''s read calls it noisy, the fix is one edge-guard ticket.
+
+## Proof
+
+- `yarn validate` exits 0 at full coverage, with the rewritten `Language.test.tsx`, the new `languageWheel.test.ts` and `LanguageLoader.test.tsx` green, and `Sheet.test.tsx`, `Settings.test.tsx`, `SheetHost.test.tsx`, `languageFilter.test.ts` and `languageCommitGuards.test.ts` unchanged-green.
+- The pure suite asserts, for the shipped list shape: `offsetForIndex(0) = 0` and `offsetForIndex(N-1) = maximum offset` (the ends centre), and `centreFloat(offsetForIndex(i)) = i` for every i (the settled row is the centred row). This is the pinned acceptance for the snap and the band''s seat.
+- The boundary suite asserts: a tap calls neither `revealLanguageLoader` nor `commitLanguagePreference` nor `dismiss`, and fires the tap tick; a scroll fired to a stop followed by `onDismiss` calls neither reveal nor commit (settle selects nothing); one `onDismiss` with a staged foreign row reveals and commits that row exactly once and fires exactly one Light impact; a second `onDismiss` adds no commit; `onDismiss` with nothing staged and with the locale in force staged calls neither and fires no haptic; the driver-hanging load window fires no haptic.
+- The staged-survival suite asserts: a query that still contains the staged row keeps it (the close commits it); a query that removes the staged row resets to nothing-staged (the close commits nothing); clearing the query reseeds the full list centred on the locale in force and a surviving staged choice still commits at the close.
+- The band suite asserts: the band layer carries `overflow: ''hidden''` and matches the list''s frame; after the open seed the faint band''s `translateY` equals the centre seat; after a fired scroll it equals `bandSeat(offset)`; the purple seat equals `pad + seat*pitch - offset` at every fired offset, reads opacity 0 while off-measure and while the locale is filtered out, and the `selected` radio never moves.
+- The wheel suite asserts: `snapToOffsets` equals the computed offsets, `decelerationRate` is ''fast'', the content padding at both ends is `(listHeight - rowHeight) / 2`; the reseed offset under Arabic equals the one under English; the sheet''s subtitle reads the localized `sheet.closeToSave`.
+- The Sheet suite asserts: the host mode renders the children bare with no `BottomSheetView` ancestor; the suppression prop holds the unified close impact for the language sheet while the default fires it for every other sheet.
+- The loader suite asserts: the line''s opacity animates from 0 over the single 200ms timing once the line is available; the cover, spinner and line lift as one act at completion.
+
+## Grill, 2026-10-29 (comment 4538) — where each finding landed
+
+1. The `scrollable={false}` break: decision 1 replaces it with Sheet''s host mode; both Sheet Files rows are changed.
+2. The haptics order: decision 11 dates the three triggers, the suppression prop and the moved unified close haptic, with Proof guards.
+3. The loader choreography: decision 12 dates the 200ms fade, the one-act teardown and the law reconciliation; Step 4 and the changed `LanguageLoader.tsx` rows carry it.
+4. The subtitle: decision 13 rewires to the existing `sheet.closeToSave`; Step 2 and a Proof row assert it.
+5. Tap-only staging: decision 6 and the settle-then-close Proof guard.
+6. The occupied `onDismiss`: decision 8 dates the composed ordering and the presented gate on the reseed (decision 10).
+7. The staged-reset rule: decision 10 dates it — reset only when the staged id leaves the filtered set — with the three survival guards in Proof.
+8. The Jest criterion: decision 18 pins the pure suite as the acceptance; the animated-style read is a droppable bonus.
+9. The viewport gate: decision 5''s clipped band layer, asserted in the band suite.
+10. The Files omissions: `Settings.test.tsx` named as regression, `stores/ui.ts` read only, `shared/i18n/en.ts` read only. One correction to the finding itself: the loader''s suite is `components/ui/__tests__/LanguageLoader.test.tsx`, which exists and covers the loader directly; no `app/__tests__/_layout.test.tsx` exists in the tree, so that row is named instead.
+', NULL, NULL, '{}', false, false, false, NULL, 57344, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 03:58:54.266796+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (157, 58, 1, NULL, 'T-480', '# T-480
+
+## Goal
+
+Today the Android solid full-screen faces sit at the gradient''s navy half: the JS root solid is the hand value `#17146a` and the Android window background is `#1e1a6a` (the shared root fallback), so the splash, the error screen, the language-changing loader and the relaunch cover read darker than the gradient they hand off to. The owner''s 2026-10-29 order moves every Android solid to the house gradient''s 65 percent point `#251b74`, so the solid reads centred on the panel. Done: every Android solid face, JS and native, carries `#251b74`; every iOS byte and pin is untouched; the guard rows prove the split.
+
+## Decisions taken
+
+- 2026-10-29. The landed hex is `#251b74`, the 65 percent point of the house gradient `DESIGN.bgStart` `#05134a` to `DESIGN.bgEnd` `#36208a` (shared/design.ts:22-23). Arithmetic: R round(5 + 0.65 x (54 - 5)) = round(36.85) = 37 = 0x25; G round(19 + 0.65 x (32 - 19)) = round(27.45) = 27 = 0x1b; B round(74 + 0.65 x (138 - 74)) = round(115.6) = 116 = 0x74. This reproduces the owner''s named hex exactly; the two "65 percent from the solid" readings do not (Design, rejected alternatives).
+- 2026-10-29. The tree''s Android arm holds `#17146a` today (shared/design.ts:10), not the `#1e1a6a` of record. The ruling''s landing hex is an absolute gradient position, so the value being replaced changes nothing: the arm lands at `#251b74`. This is the ticket''s "measure and adjust within the plan''s own gate" clause, exercised.
+- 2026-10-29. The split stays a platform-keyed constant pair in `rootBgFor` (shared/design.ts:10): two hand-frozen hexes selected once at module load, the house pattern of `tailFor` and `dimFor`. No runtime branch per render is added. The owner''s 2026-10-29 order is the one legal Platform check on this surface, and the constant already carries it; the ticket only changes the Android arm''s hex. The comment above `rootBgFor` ("the solids sit between the navy top and the gradient''s middle") is false the moment the arm passes the middle, so it is rewritten to name the dated ruling.
+- 2026-10-29. The Android window background moves by adding `"backgroundColor": "#251b74"` to app.json''s `expo.android` block, leaving the shared root `backgroundColor` (app.json:10) at `#1e1a6a`. expo-system-ui writes the native `activityBackground` from `config.android?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js:68-70), so the android field takes precedence and the root field never changes. The splash plugin''s `android.backgroundColor` (app.json:128) moves `#17146a` to `#251b74`; prebuild writes it into colors.xml `splashscreen_background` (node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js, SPLASH_COLOR_NAME) which styles.xml reads as `windowSplashScreenBackground`.
+- 2026-10-29. iOS byte-identical is structural, not hoped for. expo-system-ui''s iOS side reads `config.ios?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withIosRootViewBackgroundColor.js:71-73), and `expo.ios.backgroundColor` (app.json:79) is set, so iOS resolves its own `#1e1a6a` and never sees an Android field. app.json keeps `#1e1a6a` in exactly its three present places (root 10, ios 79, splash plugin ios 123), pinned by count in the suite.
+- 2026-10-29. No prebuild, no build, no device inside this ticket. The android/ and ios/ trees are untracked prebuild output (git ls-files returns nothing for both; the build scripts run `expo prebuild -p android --no-install --clean`, $HOME/athan-gitree/bin/build-prod.zsh:87), so nothing in the tree needs regenerating. The owner reads the tint in the run''s single development build, per the run-order comment of 2026-10-29.
+
+## Files
+
+Read:
+- shared/design.ts - the constant pair `rootBgFor` (line 10) and `DESIGN.rootBg` (line 37).
+- shared/constants.ts:917 - `COLORS.navigation.rootBackground: DESIGN.rootBg`, the single constant every JS face reads.
+- app/_layout.tsx, components/ui/LanguageLoader.tsx, components/ui/Error.tsx, stores/language.ts - the faces, each reading the constant; none is edited.
+- node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js and withIosRootViewBackgroundColor.js - the native window background writers, both sides read at source.
+- node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js - the native splash colour writer.
+- android/app/src/main/res/values/colors.xml and values/styles.xml (untracked prebuild output) - what the two app.json fields become on device.
+
+Changed:
+- shared/design.ts - the Android arm''s hex and the fork''s comment.
+- app.json - `"backgroundColor": "#251b74"` added to the android block; the splash plugin''s `android.backgroundColor` (line 128) moved to `#251b74`. The three `#1e1a6a` occurrences untouched.
+- shared/__tests__/oneDimInk.test.ts - the app.json count rows (lines 75-76), the `rootBgFor` arms (lines 107-108) and the new split guard row.
+
+## Design
+
+The solid''s source chain and every full-screen face, enumerated from the tree:
+
+| Face | Where its colour comes from |
+| --- | --- |
+| The JS solid constant | shared/design.ts:10 `rootBgFor(os)` (android `#17146a`, ios `#1e1a6a`) feeding shared/design.ts:37 `DESIGN.rootBg` feeding shared/constants.ts:917 `COLORS.navigation.rootBackground`. |
+| Root layout, the first JS frame behind every screen | app/_layout.tsx93 - `backgroundColor: COLORS.navigation.rootBackground`. |
+| Language-changing loader | components/ui/LanguageLoader.tsx:55 - the same constant on the loader panel. |
+| Error screen | components/ui/Error.tsx:58 - the same constant on the error container. |
+| Language relaunch cover, Android alone (iOS keeps its last committed frame, stores/language.ts:26) | stores/language.ts:122 `coverOptionsFor` - the same constant rides `showSwitchCover` into `Updates.showReloadScreen` before `Updates.reloadAsync()`. |
+| Native splash, Android (API 31+) | app.json:128 (splash plugin `android.backgroundColor`) -> prebuild writes colors.xml `splashscreen_background` -> styles.xml `windowSplashScreenBackground`. |
+| Native window background, Android (the pre-31 cold start and the post-splash instant) | app.json:10 (root `backgroundColor`, the fallback expo-system-ui reads today) -> prebuild writes colors.xml `activityBackground` -> styles.xml `android:windowBackground`. After Step 2 the android block''s own `backgroundColor` feeds it. |
+| Native splash and root view, iOS, untouched | app.json:123 (splash plugin `ios.backgroundColor` `#1e1a6a`) and app.json:79 (`expo.ios.backgroundColor` `#1e1a6a`). |
+
+No other face carries the solid: widgets/ reads no `rootBackground` (grep empty), and no suite outside oneDimInk.test.ts pins the literals. components/ui/__tests__/LanguageLoader.test.tsx:44 and stores/__tests__/languageReloadFace.test.ts:75 pin coherence through `COLORS.navigation.rootBackground` and stay green untouched, which also keeps this ticket''s file set disjoint from T-476''s sheets, loader choreography and stores.
+
+Approach: one hex moves in one constant, and every JS face moves with it because they all read the constant. Two fields move in app.json for the two native Android solids. The suite rows turn red first, the values land second, and a mutation pass proves each guard row can fail.
+
+Invariant: iOS bytes. `rootBgFor(''ios'')` stays `#1e1a6a`; jest runs the iOS arm (oneDimInk.test.ts:81 comment), so the `DESIGN.rootBg: ''#1e1a6a''` pin at line 99 stays green through the change; app.json''s `#1e1a6a` count stays exactly three. The arithmetic pinning iOS: `#1e1a6a` is the gradient midpoint (the rounded channel means 30/26/106 = 0x1e/0x1a/0x6a), and iOS stays there.
+
+Alternatives rejected:
+- 65 percent measured from the solid of record toward bgEnd: `#1e1a6a` + 0.65 x (`#36208a` - `#1e1a6a`) = round(30+15.6) / round(26+3.9) / round(106+20.8) = 46/30/127 = `#2e1e7f`. Rejected: it does not reproduce the owner''s named `#251b74`. The ruling reads as a position on the house gradient.
+- 65 percent from today''s Android arm: `#17146a` + 0.65 x (`#36208a` - `#17146a`) = 43/28/127 = `#2b1c7f`. Rejected for the same reason, and it would tie the landed value to the value being replaced.
+- Changing the shared root `backgroundColor` instead of adding the android field. Rejected: it moves a field every platform falls back to, and app.json''s idiom for a platform fork is a platform field (the splash plugin already carries ios/android blocks).
+- A `Platform.OS` check at each face. Rejected: the fork already lives in one constant selected at module load; per-render branches would multiply the fork the owner limited to one.
+
+## Steps
+
+1. Step 1 (2 points, code): the Android arm of the solid constant. Red first in shared/__tests__/oneDimInk.test.ts: line 107 expects `rootBgFor(''android'')` to be `#251b74`, and a new row `expect(rootBgFor(''android'')).not.toBe(rootBgFor(''ios''))` joins the arms block; `yarn test oneDimInk` shows the android row fail while the ios row and the `DESIGN.rootBg` pin stay green. Then shared/design.ts:10 lands `#251b74` in the android arm and the comment above it is rewritten to the dated ruling; green. Mutation pass: replant `#17146a` (the android row reddens), then plant the ios hex into the android arm (the not.toBe guard reddens); revert both; green.
+2. Step 2 (2 points, code): app.json''s android-facing fields. Red first: oneDimInk.test.ts line 75 becomes `expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);` and line 76 keeps `#1e1a6a` at exactly 3, its role now the iOS-untouched guard; `yarn test oneDimInk` shows the count row fail. Then app.json lands the android block''s `"backgroundColor": "#251b74"` and moves the splash plugin''s android hex (line 128) to `#251b74`; green. Mutation pass: revert the plugin hex (the count drops to 1, the row reddens), delete the android block''s field (same), plant `#251b74` in any iOS field (the `#1e1a6a` x 3 row reddens); revert all; green.
+
+Estimate: 4 points, the sum of the steps.
+
+## Risks
+
+- The tint reads off-centre on the panel. Only the owner can see it, in the run''s single development build. What would show it: the splash or the loader reading a different purple than the gradient they hand off to. The fix is one hex in one constant plus two app.json fields, so a re-rule is a two-line change.
+- The Android window background is missed: a one-frame navy flash between the splash hiding and the first JS frame. The `#251b74` x 2 count row is the guard, and the enumeration above names both native fields.
+- A later change collapses the fork back to one shared hex, silently moving iOS. The `not.toBe` guard reddens the moment both arms are equal.
+- Parallel lanes: T-476 runs in the same window and touches the sheet, the loader choreography and the stores; this ticket opens design.ts, app.json and oneDimInk.test.ts only. The loader and cover faces read the constant, so they move with Step 1 without their files being opened. If T-476 adds a literal pin of the loader''s background, that suite reddens against the new constant and T-476''s lane resolves it against this ruling, recorded in the audit comment rather than left silent.
+
+## Proof
+
+- `yarn test oneDimInk` - red after each step''s row edits, green after each step''s value lands; Steps 1 and 2 each show both states.
+- Mutation pass, the same command: every planted mutation named in the steps reddens its row, and every revert returns green.
+- `yarn validate` - exits 0 with the coverage gate at full coverage (tsc, biome and jest with --coverage run inside it, package.json:25).
+- iOS byte-identical, read back: `grep -c ''"backgroundColor": "#1e1a6a"'' app.json` prints 3; `grep -n ''251b74'' app.json` shows exactly the android block''s background line and the splash plugin''s android line; the git diff of shared/design.ts shows the ios arm untouched.
+- The native path is source-verified, not built: the two expo-system-ui readers and the splash plugin writer cited above. The device reading is the owner''s, in the run''s single development build.', NULL, NULL, '{}', false, false, false, NULL, 58368, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 04:10:19.48411+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (158, 58, 2, NULL, 'T-480', '# T-480
+
+## Goal
+
+Today the Android solid full-screen faces sit at the gradient''s navy half: the JS root solid is the hand value `#17146a` and the Android window background is `#1e1a6a` (the shared root fallback), so the splash, the error screen, the language-changing loader and the relaunch cover read darker than the gradient they hand off to. The owner''s 2026-10-29 order moves every Android solid to the house gradient''s 65 percent point `#251b74`, so the solid reads centred on the panel. Done: every Android solid face, JS and native, carries `#251b74`; every iOS byte and pin is untouched; the guard rows prove the split.
+
+## Decisions taken
+
+- 2026-10-29. The landed hex is `#251b74`, the 65 percent point of the house gradient `DESIGN.bgStart` `#05134a` to `DESIGN.bgEnd` `#36208a` (shared/design.ts:22-23). Arithmetic: R round(5 + 0.65 x (54 - 5)) = round(36.85) = 37 = 0x25; G round(19 + 0.65 x (32 - 19)) = round(27.45) = 27 = 0x1b; B round(74 + 0.65 x (138 - 74)) = round(115.6) = 116 = 0x74. This reproduces the owner''s named hex exactly; the two "65 percent from the solid" readings do not (Design, rejected alternatives).
+- 2026-10-29. The tree''s Android arm holds `#17146a` today (shared/design.ts:10), not the `#1e1a6a` of record. The ruling''s landing hex is an absolute gradient position, so the value being replaced changes nothing: the arm lands at `#251b74`. This is the ticket''s "measure and adjust within the plan''s own gate" clause, exercised.
+- 2026-10-29. The split stays a platform-keyed constant pair in `rootBgFor` (shared/design.ts:10): two hand-frozen hexes selected once at module load, the house pattern of `tailFor` and `dimFor`. No runtime branch per render is added. The owner''s 2026-10-29 order is the one legal Platform check on this surface, and the constant already carries it; the ticket only changes the Android arm''s hex.
+- 2026-10-29. The false sentence dies in both its places, not one: the comment above `rootBgFor` (shared/design.ts:9, "the solids sit between the navy top and the gradient''s middle") and its standing copy inside the suite this ticket edits, shared/__tests__/oneDimInk.test.ts:98, three lines above the DESIGN pin the plan relies on. A copy left standing above the pin would keep declaring false what the change makes true. (Grill finding 1, 2026-10-29.)
+- 2026-10-29. Each step''s commit carries the repo''s version discipline: fetch origin first (concurrent sessions have taken the same number twice, and T-476 bumps in the same window), then the patch bump lands as part of the commit - package.json and app.json together, and android/app/build.gradle with them when the file is present (it is gitignored prebuild output; shared/__tests__/versionLockstep.test.ts asserts its agreement only when it exists). The commit subjects are not typed `feat`, so both bumps are patches, and each step takes the next number the fetched tip shows, never a number chosen now. (Grill finding 2, 2026-10-29.)
+- 2026-10-29. The app.json guard is positional, not a count alone. The suite JSON.parses app.json and pins every backgroundColor field by place: `expo.backgroundColor` `#1e1a6a`, `expo.ios.backgroundColor` `#1e1a6a`, `expo.android.backgroundColor` `#251b74`, `expo.android.adaptiveIcon.backgroundColor` `#05134a`, the splash plugin''s ios entry `#1e1a6a` and its android entry `#251b74`. The count rows stay beside the parse as the no-stray-seventh guard. Chosen over folding a positional grep into Step 2''s gate because a grep is positional only through brittle line numbers, while a parsed row is red-first, mutation-passable and survives formatting. The parse is also what enforces the rejected root-field alternative: a `#251b74` sitting on the root or on adaptiveIcon (app.json:85, an Android field that is not the window background) while the android block''s own field is missing keeps every count green and reddens two parsed rows. (Grill finding 3, 2026-10-29.)
+- 2026-10-29. The Android window background moves by adding `"backgroundColor": "#251b74"` to app.json''s `expo.android` block, leaving the shared root `backgroundColor` (app.json:10) at `#1e1a6a`. expo-system-ui writes the native `activityBackground` from `config.android?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js:68-70), so the android field takes precedence and the root field never changes. The splash plugin''s `android.backgroundColor` (app.json:128) moves `#17146a` to `#251b74`; prebuild writes it into colors.xml `splashscreen_background` (node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js, SPLASH_COLOR_NAME) which styles.xml reads as `windowSplashScreenBackground`.
+- 2026-10-29. iOS byte-identical is structural, not hoped for. expo-system-ui''s iOS side reads `config.ios?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withIosRootViewBackgroundColor.js:71-73), and `expo.ios.backgroundColor` (app.json:79) is set, so iOS resolves its own `#1e1a6a` and never sees an Android field. app.json keeps `#1e1a6a` in exactly its three present places (root 10, ios 79, splash plugin ios 123), pinned by count and by place in the suite.
+- 2026-10-29. No prebuild, no build, no device inside this ticket. The android/ and ios/ trees are untracked prebuild output (git ls-files returns nothing for both; the build scripts run `expo prebuild -p android --no-install --clean`, $HOME/athan-gitree/bin/build-prod.zsh:87), so nothing in the tree needs regenerating. The owner reads the tint in the run''s single development build, per the run-order comment of 2026-10-29.
+
+## Files
+
+Read:
+- shared/design.ts - the constant pair `rootBgFor` (line 10) and `DESIGN.rootBg` (line 37), and the comment above them (line 9).
+- shared/constants.ts:917 - `COLORS.navigation.rootBackground: DESIGN.rootBg`, the single constant every JS face reads.
+- app/_layout.tsx, components/ui/LanguageLoader.tsx, components/ui/Error.tsx, stores/language.ts - the faces, each reading the constant; none is edited.
+- node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js and withIosRootViewBackgroundColor.js - the native window background writers, both sides read at source.
+- node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js - the native splash colour writer.
+- android/app/src/main/res/values/colors.xml and values/styles.xml (untracked prebuild output) - what the two app.json fields become on device.
+- shared/__tests__/versionLockstep.test.ts - the suite that reddens a half-done version bump (package.json against app.json, and the gradle when present).
+
+Changed:
+- shared/design.ts - the Android arm''s hex and the fork''s comment (line 9).
+- app.json - `"backgroundColor": "#251b74"` added to the android block; the splash plugin''s `android.backgroundColor` (line 128) moved to `#251b74`; the version bumped with package.json (and the gradle when present) as part of each step''s commit.
+- shared/__tests__/oneDimInk.test.ts - the app.json count rows (lines 75-76) joined by the parsed positional block, the `rootBgFor` arms (lines 107-108), the new split guard row, and the stale sentence''s copy at line 98.
+
+## Design
+
+The solid''s source chain and every full-screen face, enumerated from the tree:
+
+| Face | Where its colour comes from |
+| --- | --- |
+| The JS solid constant | shared/design.ts:10 `rootBgFor(os)` (android `#17146a`, ios `#1e1a6a`) feeding shared/design.ts:37 `DESIGN.rootBg` feeding shared/constants.ts:917 `COLORS.navigation.rootBackground`. |
+| Root layout, the first JS frame behind every screen | app/_layout.tsx:93 - `backgroundColor: COLORS.navigation.rootBackground`. |
+| Language-changing loader | components/ui/LanguageLoader.tsx:55 - the same constant on the loader panel. |
+| Error screen | components/ui/Error.tsx:58 - the same constant on the error container. |
+| Language relaunch cover, Android alone (iOS keeps its last committed frame, stores/language.ts:26) | stores/language.ts:122 `coverOptionsFor` - the same constant rides `showSwitchCover` into `Updates.showReloadScreen` before `Updates.reloadAsync()`. |
+| Native splash, Android (API 31+) | app.json:128 (splash plugin `android.backgroundColor`) -> prebuild writes colors.xml `splashscreen_background` -> styles.xml `windowSplashScreenBackground`. |
+| Native window background, Android (the pre-31 cold start and the post-splash instant) | app.json:10 (root `backgroundColor`, the fallback expo-system-ui reads today) -> prebuild writes colors.xml `activityBackground` -> styles.xml `android:windowBackground`. After Step 2 the android block''s own `backgroundColor` feeds it. |
+| Native splash and root view, iOS, untouched | app.json:123 (splash plugin `ios.backgroundColor` `#1e1a6a`) and app.json:79 (`expo.ios.backgroundColor` `#1e1a6a`). |
+
+No other face carries the solid: widgets/ reads no `rootBackground` and no literal (both greps empty), and no suite outside oneDimInk.test.ts pins the literals. components/ui/__tests__/LanguageLoader.test.tsx:44 and stores/__tests__/languageReloadFace.test.ts:75 pin coherence through `COLORS.navigation.rootBackground` and stay green untouched, which also keeps this ticket''s file set disjoint from T-476''s sheets, loader choreography and stores.
+
+Approach: one hex moves in one constant, and every JS face moves with it because they all read the constant. Two fields move in app.json for the two native Android solids. The suite rows turn red first, the values land second, and a mutation pass proves each guard row can fail. The app.json guard pins place and value together: the parsed rows name every backgroundColor field in the file, so a hex in the wrong block reddens even when the file''s multiset of hexes is right.
+
+Invariant: iOS bytes. `rootBgFor(''ios'')` stays `#1e1a6a`; jest runs the iOS arm (oneDimInk.test.ts:81 comment), so the `DESIGN.rootBg: ''#1e1a6a''` pin at line 99 stays green through the change; app.json''s `#1e1a6a` count stays exactly three and its three fields stay pinned by place. The arithmetic pinning iOS: `#1e1a6a` is the gradient midpoint (the rounded channel means 30/26/106 = 0x1e/0x1a/0x6a), and iOS stays there.
+
+Alternatives rejected:
+- 65 percent measured from the solid of record toward bgEnd: `#1e1a6a` + 0.65 x (`#36208a` - `#1e1a6a`) = round(30+15.6) / round(26+3.9) / round(106+20.8) = 46/30/127 = `#2e1e7f`. Rejected: it does not reproduce the owner''s named `#251b74`. The ruling reads as a position on the house gradient.
+- 65 percent from today''s Android arm: `#17146a` + 0.65 x (`#36208a` - `#17146a`) = 43/28/127 = `#2b1c7f`. Rejected for the same reason, and it would tie the landed value to the value being replaced.
+- Changing the shared root `backgroundColor` instead of adding the android field. Rejected: it moves a field every platform falls back to, and app.json''s idiom for a platform fork is a platform field (the splash plugin already carries ios/android blocks). The parsed positional guard is what makes this rejection enforceable, not just stated.
+- A `Platform.OS` check at each face. Rejected: the fork already lives in one constant selected at module load; per-render branches would multiply the fork the owner limited to one.
+- The count rows alone as the app.json guard. Rejected (grill finding 3): a count cannot show where the hexes sit. adaptiveIcon''s backgroundColor (app.json:85) could hold one of the two while the android block''s own field is missing, and the count stays green. The parse closes this.
+
+## Steps
+
+1. Step 1 (2 points, code): the Android arm of the solid constant. Red first in shared/__tests__/oneDimInk.test.ts: line 107 expects `rootBgFor(''android'')` to be `#251b74`, and a new row `expect(rootBgFor(''android'')).not.toBe(rootBgFor(''ios''))` joins the arms block; `yarn test oneDimInk` shows the android row fail while the ios row and the `DESIGN.rootBg` pin stay green. Then shared/design.ts lands `#251b74` in the android arm (line 10), the false sentence above it (line 9) is rewritten to the dated ruling, and its standing copy at oneDimInk.test.ts:98 is rewritten with it; green. Mutation pass: replant `#17146a` (the android row reddens), then plant the ios hex into the android arm (the not.toBe guard reddens); revert both; green. The commit lands the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle too when present), the number one above the fetched tip.
+2. Step 2 (2 points, code): app.json''s android-facing fields. Red first: oneDimInk.test.ts line 75 becomes `expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);`, line 76 keeps `#1e1a6a` at exactly 3, and a parsed block joins them - `const app = JSON.parse(appJson)` with `expect(app.expo.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.ios.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.android.backgroundColor).toBe(''#251b74'')`, `expect(app.expo.android.adaptiveIcon.backgroundColor).toBe(''#05134a'')`, and the splash plugin''s entries read from `app.expo.plugins` pinned `ios` `#1e1a6a` and `android` `#251b74`; `yarn test oneDimInk` shows the count row and the parsed android rows fail. Then app.json lands the android block''s `"backgroundColor": "#251b74"` and moves the splash plugin''s android hex (line 128) to `#251b74`; green. Mutation pass: revert the plugin hex (the count and the parsed android row redden), delete the android block''s field (same), plant `#251b74` in any iOS field (the `#1e1a6a` x 3 row and its parsed row redden), then the grill''s shape mutation: move the hex onto the root field and delete the android block''s field - the counts stay green and both parsed rows redden, proving the parse closes what the count cannot - and plant `#251b74` on adaptiveIcon (two parsed rows redden); revert all; green. The commit lands the same version discipline as Step 1: fetch origin, patch bump in package.json and app.json together (the gradle too when present), the next number above the fetched tip.
+
+Estimate: 4 points, the sum of the steps.
+
+## Risks
+
+- The tint reads off-centre on the panel. Only the owner can see it, in the run''s single development build. What would show it: the splash or the loader reading a different purple than the gradient they hand off to. The fix is one hex in one constant plus two app.json fields, so a re-rule is a two-line change.
+- The Android window background is missed: a one-frame navy flash between the splash hiding and the first JS frame. The parsed positional rows are the guard - they name `expo.android.backgroundColor` and the splash plugin''s android field directly, so a hex landing anywhere else (root, adaptiveIcon) reddens - and the enumeration above names both native fields.
+- A later change collapses the fork back to one shared hex, silently moving iOS. The `not.toBe` guard reddens the moment both arms are equal.
+- Parallel lanes: T-476 runs in the same window and touches the sheet, the loader choreography and the stores; this ticket opens design.ts, app.json and oneDimInk.test.ts only. The loader and cover faces read the constant, so they move with Step 1 without their files being opened. If T-476 adds a literal pin of the loader''s background, that suite reddens against the new constant and T-476''s lane resolves it against this ruling, recorded in the audit comment rather than left silent.
+- The version number collides with T-476''s commits: both lanes bump in the same window. The fetch-origin-first, next-number rule in both steps is the guard; a taken-twice number shows at the read-back in Proof (a number already on the tip) and a half-done bump shows in `yarn validate` through versionLockstep.
+
+## Proof
+
+- `yarn test oneDimInk` - red after each step''s row edits, green after each step''s value lands; Steps 1 and 2 each show both states.
+- Mutation pass, the same command: every planted mutation named in the steps reddens its row, and every revert returns green. Step 2''s pass includes the shape mutation whose counts stay green - the demonstration that the parse, not the count, holds the placement.
+- `yarn validate` - exits 0 with the coverage gate at full coverage (tsc, biome and jest with --coverage run inside it, package.json:25); the same run carries versionLockstep, which reddens a bump done in one file alone.
+- The version numbers, read back per commit: `git fetch origin` then `grep ''"version"'' package.json app.json` shows one number, one patch above the fetched tip, and the gradle agrees when present. Each step records its resulting number in its closing comment on the ticket, so the interleaving with T-476''s bumps reads from the board.
+- iOS byte-identical, read back: `grep -c ''"backgroundColor": "#1e1a6a"'' app.json` prints 3; `grep -n ''251b74'' app.json` shows exactly the android block''s background line and the splash plugin''s android line; the git diff of shared/design.ts shows the ios arm untouched. The suite side of the same guarantee is the parsed block: every backgroundColor field of app.json pinned by place, not by count.
+- The native path is source-verified, not built: the two expo-system-ui readers and the splash plugin writer cited above. The device reading is the owner''s, in the run''s single development build.', NULL, NULL, '{}', false, false, false, NULL, 58368, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 04:21:59.574206+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (159, 56, 2, NULL, 'T-454', '# T-454 — Seventy-five languages, wave three of three: the Myanmar, Cyrillic and island eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes the set toward seventy-five by shipping its
+eight — my, tt, ce, uk, min, mad, bug, qu — beside the two sibling waves (T-452''s eight, T-453''s
+nine), twenty-five together under the seventy-five cap. Code only: no build, no install, no
+simulator, no screenshot; the owner reads the result afterwards and rules from Awaiting Owner.
+The wave branches only after T-451 (the picker) merges at 2.32.0, because every new catalog is
+authored against the key set en carries at that branch point.
+
+**The eight, in this wave''s order:**
+
+| Tag | Language, script, face | Reach | Prayer-table genre | Slots the loan rule closes |
+| --- | --- | --- | --- | --- |
+| my | Burmese, Myanmar script, bundles Noto Sans Myanmar | ~33M, Myanmar''s Muslim minority | Burmese Muslim da''wah media and teaching pages (Deen For Muslimeen''s Burmese posts, Burmese-language namaz teachings), my.wikishia''s နမာဇ် encyclopedia, my.wikipedia''s Islamic articles, Dawat-e-Islami''s my-localized app strings | Suhoor, Duha, Istijaba and any name no page prints |
+| tt | Tatar, Cyrillic, Roboto | ~5M, Russia''s biggest Muslim language | Tatarstan''s own Tatar-language tables: islamtatar.ru''s Яр Чаллы table (Иртәнге намаз, Кояш чыга, Өйлә намазы, Икенде намазы, Ахшам намазы, Ястү намазы), namazvakti.com''s Tatar yearly table, the Tatarstan district press carrying the muftiat''s tables; the Kazan namaz page attests Сәхәр | Duha, Istijaba; Midnight and Last Third derived from Tatar''s own vocabulary |
+| ce | Chechen, Cyrillic, Roboto | ~1.6M | Chechen-language Islamic library texts (islamcontent.com/ce, which attests Духьа ламаз for Duha) and the govzalla.com Chechen dictionary (делкъ-ламаз and the ламазан хенаш entries); no printed five-name Chechen table exists | every slot no Chechen text attests; the genre is the wave''s thinnest beside qu |
+| uk | Ukrainian, Cyrillic, Roboto | ~35M | uk.wikipedia''s prayer articles (Фаджр, Зухр, Аср, Магріб, Іша each carry one) and Ukrainian Muslim community tables (umma.in.ua''s Час молитв) | Suhoor, Duha, Istijaba loans; Midnight and Last Third from Ukrainian''s own vocabulary |
+| min | Minangkabau, Latin, Roboto | ~5.5M, West Sumatra | min.wikipedia''s Islamic series (Sumbayang, Wakatu sumbayang — which names sumbayang Luhua —, Sumbayang tarawih) and Minangkabau religious discourse | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba where the stubs stay silent |
+| mad | Madurese, Latin with ḍ, bundled Noto Sans pair | ~7M, Indonesia''s biggest unserved | mad.wikipedia''s Islamic articles (Abhâjâng and the Ramadan series) in the official Madurese orthography, and the Madurese pesantren vocabulary | the extras; the five names where the articles borrow Indonesian forms |
+| bug | Bugis, Latin, Roboto | ~5M, South Sulawesi | Bugis prayer materials (the Patettongenna Sumpajang Waji''e guide), Wikimedia Indonesia''s Bugis time-terms teaching (attests subu''), the official Bugis-Indonesia dictionary, bug.wikipedia | most slots beside Subu; the loan rule with recorded derivations |
+| qu | Southern Quechua, Latin, Roboto | ~9M, the owner''s Peru pick | no Quechua prayer table exists; the genre is dictionaries and translated leaflets (glosbe''s Quechua Islamic terms, islamic-invitation.net''s Northern-Quechua section as corroboration only) | likely all eleven; every name a recorded loan or a derived Quechua day-word |
+
+## Decisions taken (2026-10-29, lane 3, agent-ruled)
+
+1. **The eight are my, tt, ce, uk, qu, min, mad, bug, in the order the steps landed them, appended
+   to the end of every shared list; the ticket''s nominal order is superseded by the plan''s own
+   Steps 4 and 5 (lead ruling 2026-10-29).** The selection authority is the owner''s 2026-10-29 order: the mission
+   block my, tt, ce, min, mad and bug beside the popularity picks uk and qu. The seventy-five cap
+   is a maximum, so nothing follows these three waves; Hebrew, Yiddish and Ladino stay banned for
+   good (2026-10-29).
+2. **Parity is en''s key count at the branch point, never a remembered number.** T-451 lands first
+   at 2.32.0 and adds exactly two keys (language.search, language.noMatch) after
+   language.chooseHint, so the branch-point truth is the pre-picker 201 plus those two; the
+   executor reads the count from the tree at branch time and every catalog satisfies Catalog at
+   that count, the two picker keys included at en''s position.
+3. **en''s catalog-lock hash is unchanged from the branch point** — the hash T-451''s regenerated
+   catalog-lock.json carries, not the remembered e20ae02c of the fifty-language line. No English
+   byte moves in this wave.
+4. **Fonts, measured 2026-10-29 with fontTools 4.67.0 over the bundled TTFs, by explicit
+   codepoint, both weights.** Roboto-Regular and Roboto-Medium carry every Cyrillic codepoint
+   U+0400 through U+04FF except U+0487 (the Church Slavonic combining titlo, which none of the
+   three uses), palochka Ӏ U+04C0 and ӏ U+04CF included, so tt, ce and uk take the LATIN record:
+   Tatar''s ә ғ ҡ ң ө ҫ ү һ җ, Chechen''s ә ҡ ң ӧ ү җ and Ukrainian''s і ї є ґ all measured
+   present. Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights and no other bundled face carries
+   them except the Noto Sans pair, so mad rides the AFRICAN record on that pair, its comment
+   gaining Madurese''s own measurement line — the URDU precedent of one record gaining members
+   across waves. min, bug and qu stay LATIN: Roboto carries their apostrophes ('' and ʼ), ñ, è é ê
+   and â. No bundled face carries a single Myanmar codepoint, so my bundles its pair.
+5. **The Myanmar pair is Noto Sans Myanmar v2.107, the hinted statics from the notofonts.github.io
+   release (the same source series as the shipped v2.0xx pairs), Regular 195,088 and Medium
+   197,360 bytes, so full statics and no subset pipeline — the zh pipeline exists for a
+   forty-megabyte problem that does not arise.** Measured both weights: hhea box 1324/-860
+   (2.184em), win ink equal (usWinAscent 1324, usWinDescent 860), lineGap 0, UPM 1000, the two
+   weights identical; worst single-glyph Myanmar-block ink 1004/-469 Regular and 1009/-471
+   Medium, inside the declared box with about a third headroom. The declared box clears its ink
+   (hhea equals win), so the row-87 Thai law applies and the MYANMAR record pins no script box:
+   the font''s own 2.184em metrics serve. The step re-measures the stacked sequences of the final
+   keyed surface before commit, the Malayalam lesson.
+6. **No RTL.** All eight read left to left — Myanmar, Cyrillic and Latin alike — so RTL_IDS, the
+   chevron and comma helpers, the crossing relaunch sets and the RTL gates stay untouched.
+7. **Digits stay Latin in all eight.** R12 carries no row for any of them and the row-82 law plus
+   the owner''s standing order (2026-10-29) keep times, dates and countdowns Latin everywhere:
+   Burmese''s own ၀-۹ never render.
+8. **The loan rule (T-410 decision 5) governs every slot no source attests**, and this wave leans
+   on it hardest for qu and ce: the Catalog type requires every key, so the slot takes the loan
+   in the language''s own orthography, recorded with text, slug, confidence and the derivation in
+   its note. Sunrise, Midnight and Last Third land from the language''s own day vocabulary at
+   medium where the words exist; Suhoor, Duha and Istijaba close as loans unless a table prints
+   them (islamcontent prints Духьа for ce, the Kazan page prints Сәхәр for tt). Every new slug
+   registers in _meta.sourceSlugs.
+9. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+   step; every later commit is a patch (2.33.1 through 2.33.5) under a non-feat subject** (the
+   T-429 ruling that the discipline gate admits a patch only under chore). package.json, app.json
+   and shared/whatsNew.ts stamp together; android/app/build.gradle is prebuild output the repo
+   does not track, and each commit message records that. Collisions with the sibling waves''
+   2.33.0 are grandfathered by scripts/version-collisions-allowlist.json under the standing
+   ruling, and each merge renumbers above whatever uat then carries — the lead''s.
+10. **The merge protocol is append-only.** Every shared registry (LOCALE_IDS, loader RAW and
+    MODULES, LANGUAGE_NAMES at codepoint position, typography RECORDS, the catalog-lock list,
+    native-strings.json, widget-statics.json, the app.json arrays, the four widget STATIC tables
+    and their finders, the gates'' CATALOGS and LOCALES lists, README) takes this wave''s rows at
+    its end in this wave''s order; no other wave''s row is rewritten, and the lead''s additive
+    resolution carries the merged seventy-five.
+11. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font
+    array gains the two Myanmar TTFs, eight expo.locales blocks byte-identical to
+    native-strings.json, CFBundleLocalizations in LOCALE_IDS order, the version field — every
+    byte gated by nativeLocalesConfig.
+12. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+13. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the suite is the proof, and the widget runtime load suite re-runs after the Myanmar font
+    install (the widget invariant).
+14. **Each locale lands its whole keyed surface in one commit** (T-419''s design law): catalog,
+    loader row, endonym row with its english field (the T-451 shape), typography record,
+    native-strings row, widget-statics row, the four widget inline STATIC rows and their four
+    finder lists, the app.json locale block, the CFBundleLocalizations entry, the lock list and
+    lock suite, the gates rows and the detection rows — so no suite is red across a step boundary.
+15. **The picker follows the set.** The Language sheet''s census derives from LANGUAGE_NAMES, so
+    the eight endonyms ride it; the search filter''s NFD fold handles every new name by
+    construction (it strips Madurese''s ḍ to d), and languageFilter''s suite gains that fold case.
+
+## Files
+
+- `shared/i18n/my.ts, tt.ts, ce.ts, uk.ts, min.ts, mad.ts, bug.ts, qu.ts` — new, one full catalog
+  each at en''s branch-point parity (the two picker keys included) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after su; the header count; no
+  RTL change.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order, each carrying its english
+  field: Baso Minangkabau, Basa Ugi, Madhurâ and Runa Simi among the Latin rows; Нохчийн,
+  Татарча and Українська in the Cyrillic block; the Burmese endonym (မြန်မာ or ဗမာ, attested
+  at execution) after ไทย, before the Ethiopic rows.
+- `shared/typography.ts` — the MYANMAR record on the bundled pair; tt, ce, uk, min, bug and qu
+  map LATIN with per-locale measurement comments; mad maps AFRICAN, the record''s comment gaining
+  Madurese''s ḍ line.
+- `assets/fonts/NotoSansMyanmar-Regular.ttf, NotoSansMyanmar-Medium.ttf` — new, OFL, the licence
+  file already present.
+- `shared/i18n/sourced-names.json` — the eight''s sections (11 names and 5 explanations each),
+  every slot non-null with text, slug, confidence and note; the new slugs registered.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery keys
+  each).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; the lock''s
+  new entries carry en''s branch-point hash.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8; a T454_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows: my-MM, tt-RU, ce-RU, uk-UA,
+  min-ID, mad-ID, bug-ID, qu-PE; the unshipped-tag fallback rows stay untouched.
+- `shared/__tests__/typography.test.ts` — the MYANMAR record case; the LATIN filter''s exclusion
+  list gains mad beside bm and ff.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows to fifty-eight and the count statement
+  moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — follows LANGUAGE_NAMES; the row-count
+  statement moves if it pins one.
+- `components/sheets/screens/__tests__/languageFilter.test.ts` — the ḍ-to-d fold case.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table grows by eight rows and its locale
+  finder list gains the eight codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables grow by eight rows each and
+  their three locale finder lists gain the eight codes.
+- `app.json` — the expo-font array gains the two Myanmar TTFs; eight expo.locales blocks
+  byte-identical to native-strings.json; CFBundleLocalizations to fifty-eight; the version field
+  riding every commit.
+- `README.md` — the Features bullet names every shipped language with the count read from
+  LOCALE_IDS.length at the merged commit.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps on every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog at en''s branch-point count
+or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so each step''s gate re-reads
+the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, the 24-char label budget, sourced-verbatim) plus this wave''s T454_EIGHT
+sourcing row, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms, CFBundleLocalizations riding LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical from the branch
+point, the lock''s list equal to the translated set) and i18nBridge''s parity row. No locale in
+this wave joins the RTL set, so the RTL purity gate simply never fires on them.
+
+Per locale the recipe is T-427''s and T-429''s, in one commit per step: catalog file (sourced
+prayer names verbatim from the glossary, UI copy authored to the R2 gates, the two picker keys
+at en''s position), loader rows, endonym row with its english field, typography record,
+lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, the app.json locale block, the CFBundleLocalizations entry, the four widget STATIC rows and
+the four finder lists.
+
+Alternatives rejected: Roboto with decomposed d-plus-U+0323 for Madurese''s ḍ, which no input
+method or normalisation step would preserve (the bundled Noto Sans pair carries the precomposed
+letters); a subset cut of Noto Sans Myanmar, which would add a second glyph-lock mechanism for a
+pair under 200KB a weight; a MYANMAR script box pinned at the house 1.5em, which would be
+shorter than the font''s own 2.184em line and would clip the script the box exists to protect;
+Quechua deferred for a speaker (the loan rule ships a gated row now and the owner''s read improves
+it later); a device read inside this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   the eight sections with their genres'' attestations and the loan or derived entry for every
+   unattested slot, every slot non-null with text, slug, confidence and note; the new slugs
+   registered; catalogGates gains the T454_EIGHT sourcing gate, red first.
+2. **Step 2: my lands with its bundled Myanmar pair** — the v2.107 pair fetched, measured and
+   installed, the MYANMAR record with its measured numbers, the full catalog at branch-point
+   parity and my''s whole keyed surface in one commit; the widget runtime load suite re-runs after
+   the install.
+3. **Step 3: tt and ce land on Roboto''s Cyrillic** — both LATIN on the measured whole-block
+   coverage, tt on the Tatarstan tables'' label set with Сәхәр attested, ce on the Chechen library
+   attestations with the loan rule closing the gaps; the whole keyed surface each.
+4. **Step 4: uk and qu land on Roboto** — the two popularity picks, uk on the Ukrainian articles''
+   set with derived extras, qu the wave''s loan-rule wave with derived Quechua day-words; both
+   LATIN; the whole keyed surface each.
+5. **Step 5: min, mad and bug land, mad on the Noto Sans pair** — the Indonesian trio: min and
+   bug LATIN, mad AFRICAN on the pair Roboto''s missing ḍ rules it to; the whole keyed surface
+   each.
+6. **Step 6: The full sweep is green and the README names every shipped language** — every suite
+   green over the fifty-eight at full coverage, yarn validate exits 0, en''s lock hash unchanged
+   from the branch point, the README Features bullet rewritten from LOCALE_IDS.length with the
+   merged count landing at the lead''s merge, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loan and derived slots carry their derivations in the note, the
+  census makes every one visible, and the owner''s read is the ruling pass.
+- **qu has no attested prayer table anywhere**, and ce''s genre is thin: both waves of loans ship
+  at their measured confidence, every derivation recorded, and the owner''s phone pass rules.
+- **Myanmar renders tofu if the pair is absent**: the step measures every character of the keyed
+  surface in both weights before commit, and the widget runtime load suite re-runs after the
+  install.
+- **Stacked Myanmar ink past the box** (the Malayalam lesson): the step measures the stacked
+  sequences before commit; the declared 2.184em box carries about a third headroom over the
+  worst single glyph.
+- **A label exceeds the 24-char budget** (Burmese transliterations run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: this wave appends only, the
+  collisions allowlist grandfathers 2.33.0, and the lead concatenates and renumbers.
+- **The catalog lock drifts**: en stays byte-identical from the branch point; any en edit fails
+  catalogLock.
+
+## Proof
+
+1. The eight named with the selection authority: this doc''s table, the owner''s 2026-10-29 order,
+   the seventy-five cap and the standing bans.
+2. Sourcing recorded: a jq census over the eight''s sections of shared/i18n/sourced-names.json
+   prints zero rows with null text, source or confidence; the T454_EIGHT row of catalogGates is
+   green.
+3. Coverage and regression: yarn validate exits 0 at full coverage; catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green
+   over the fifty-eight, with the fifty existing locales'' rows unedited and en''s lock hash equal
+   to the branch point''s.
+4. Detection: locale.test.ts resolves my-MM to my, tt-RU to tt, ce-RU to ce, uk-UA to uk, min-ID
+   to min, mad-ID to mad, bug-ID to bug and qu-PE to qu, with the unshipped-tag fallback rows
+   untouched.
+5. Glyph coverage: the per-locale fontTools census over both weights prints zero missing — tt,
+   ce and uk against Roboto, mad against the Noto Sans pair, my against its own pair, the Latin
+   trio against Roboto.
+6. The widget surfaces: the four inline STATIC tables and their finders resolve all eight codes,
+   and the widget runtime load suite is green after the Myanmar install.
+', NULL, NULL, '{}', false, false, false, NULL, 56320, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 07:43:45.357369+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (160, 55, 2, NULL, 'T-452', '# T-452 — Seventy-five languages, wave one of three: the CJK and Latin eight
+
+## Goal
+
+The app ships fifty locale catalogs. This wave takes it to fifty-eight by shipping the eight the
+ticket names (ja, ko, it, pl, ro, ceb, ilo, vi), the first of three parallel waves that together add
+twenty-five and land the set at seventy-five. Code only: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards.
+
+**The selection authority is the owner''s world-popularity order (2026-10-29), not the
+Muslim-reachable ranking the fifty-language run used.** This block carries almost no
+Muslim-reachable audience: Japanese sits at Ethnologue''s number 13 with 2M L2 Muslim-adjacent
+speakers and falls out of R4''s overlap table entirely, and the other seven fare the same. The order
+ships ja and ko because they are the two largest languages on earth the set still misses, it because
+it is the owner''s pick, and the rest by population. The plan records that order as this wave''s law.
+
+| Tag | Language, script | Reach | Record | Sourcing genres that exist | Slots under the loan rule |
+| --- | --- | --- | --- | --- | --- |
+| ja | Japanese, Han + Kana | ~125M | cut subset pair | the national mosque''s own Japanese monthly timetable (salaahdaily.com (the plan''s Tokyo Camii genre superseded, dated 2026-10-29)''s 礼拝時刻表, tokyocamii.org/ja/salat-timetable) and ja.wikipedia''s 礼拝 article printing the katakana set | Last Third, Suhoor, Duha, Istijaba |
+| ko | Korean, Hangul | ~82M | cut subset pair | the Korea Muslim Federation''s Seoul Central Mosque 예배시간 timetable and ko.wikipedia''s prayer articles | Last Third, Suhoor, Duha, Istijaba |
+| it | Italian, Latin | ~65M, the owner''s pick | LATIN by census | Italian mosque timetables (mawaqit''s Italian mosque pages, the UCOII community''s tables) printing the transliterated set, it.wikipedia''s Salat article glossing it | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| pl | Polish, Latin | ~40M | LATIN by census | the national body''s own Polish table (Muzułmański Związek Religijny, mzr.pl''s Pory modlitw) printing Fajr, Wschód, Dhuhr, Asr, Maghrib, Isha | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ro | Romanian, Latin | ~24M | LATIN by census | the Constanța muftiat family''s and Bucharest foundations'' Romanian ore de rugăciune pages, transliterated rows with Romanian glosses | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| ceb | Cebuano, Latin | ~25M | LATIN by census | none: no prayer table in Cebuano exists to read; ceb.wikipedia''s Salat article is checked at execution and any attested name ships at its measured confidence | all eleven name slots unless that check attests one |
+| ilo | Ilocano, Latin | ~9M | LATIN by census | none; ilo.wikipedia checked the same way | all eleven name slots unless that check attests one |
+| vi | Vietnamese, Latin | ~85M | LATIN by census | Vietnamese-language Islamic pages (islam.com.vn and the Vietnamese prayer-time sites) printing Fajr and glossing the five in Vietnamese | Midnight, Last Third, Suhoor, Duha, Istijaba |
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The eight land in the ticket''s own order — ja, ko, it, pl, ro, ceb, ilo, vi — appended to the
+   end of every shared list, and the steps land in that same order, so the append order and the
+   landing order are one order.** The ticket names exactly these eight; the popularity order above
+   is the selection authority; nothing reorders another wave''s rows.
+2. **en''s parity is read at the branch point, never remembered.** The pre-picker truth was 201 keys,
+   and T-451 adds its picker keys to en before this wave branches, so the executor counts en''s keys
+   in the branched tree with the catalog-lock script and writes every catalog to that count, in en''s
+   key order. A remembered key count was wrong once already (T-428 decision 2), so the number in
+   this plan is the method, not a figure.
+3. **ja and ko ride the fontTools subset pipeline the zh pair built, never full statics** (the
+   ticket''s order, T-419 decision 8''s law). The full Noto Sans JP and KR run megabytes a weight;
+   the bundled pairs are cut over the closed string set — every character of the locale''s catalog,
+   native-strings row, widget-statics row, endonym, and the What''s New keys that resolve through the
+   catalog — into NotoSansJP-Subset-Regular/Medium.ttf and NotoSansKR-Subset-Regular/Medium.ttf.
+   The google/fonts variable sources are instanced at 400 and 500 outside the repository; the full
+   pairs never enter it. Challenged: full statics cost nothing to author. It does not flip: the
+   owner''s order names the pipeline, and the four committed zh subsets total 548KB against the
+   statics'' 40MB, the same forty-megabyte problem.
+4. **The pipeline grows, it is not forked.** scripts/cjk-subset.mjs''s pair list gains JP and KR with
+   their fetch URLs in its header comment, shared/i18n/cjk-glyph-lock.json gains ja and ko sections
+   written from the subsets'' own cmaps and a files map binding the four new TTFs by sha256, and
+   shared/__tests__/cjkSubset.test.ts recomputes the closed set for all four CJK locales and diffs
+   it against the lock in both directions, so a catalog byte the subsets miss fails naming the
+   character and a recut shipping stale binaries fails naming the file.
+5. **The JAPANESE and KOREAN typography records pin by the cut subsets'' own measured numbers**, the
+   HANS/HANT pattern: fontTools over both weights, hhea, lineGap and UPM against the win ink, and a
+   box that clears its ink pins no script box (the Thai row-87 law). The zh subsets measured hhea
+   1160/-288 at lineGap 0 against UPM 1000, a 1.448em box equal to their ink; ja and ko are
+   measured, not assumed, at their own step.
+6. **The Latin six bundle no new font file.** Every distinct character of each locale''s whole keyed
+   surface is measured against the shipped faces first, Roboto in both weights; a locale Roboto
+   fully carries takes LATIN, and a locale it fails takes a record on the bundled
+   NotoSans-Regular/Medium pair, the YORUBA and AFRICAN precedent. Vietnamese''s tone-marked Latin
+   Extended Additional set and Polish''s ł ń ś ź ż ą ć ę ó are the two the census is written for, and
+   Romanian''s comma-below ș ț rides the same census: the record follows the measurement, never a
+   guess. Challenged: bundle Noto Sans for all six up front. It does not flip: an unmeasured bundling
+   adds a megabyte the census may prove unneeded, and the shipped set already carries the fallback.
+7. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with text,
+   slug, confidence and the derivation in its note. ceb and ilo close all eleven name slots under
+   it when their wikipedia check attests nothing, and their five explanations derive from the
+   language''s own syntax with the derivation in each note.
+8. **Where a language''s own tables print transliterations, the transliterations ship** — the tr, tk,
+   kk, ky and tg authority exception (T-429 decisions 8 and 10): it, pl, ro and vi ship the row
+   labels their readers compare against, Fajr and Maghrib among them, not invented translations,
+   and Sunrise ships the language''s own word where the table prints one (pl''s Wschód, ro''s
+   Răsărit, vi''s own gloss).
+9. **Prose digits are Latin in all eight** (R12''s row-82 law): Japanese and Korean render Latin
+   digits in times, dates and countdowns exactly as the zh pair does, and no Latin-script locale
+   changes them.
+10. **No RTL.** None of the eight reads right to left; RTL_IDS, the chevron and comma helpers and
+    the RTL gates stay untouched.
+11. **Version line: the first commit is feat at 2.33.0 from the 2.32.0 tip T-451 lands, one class
+    step per commit — 2.33.0, 2.34.0, 2.35.0, 2.36.0, 2.37.0, 2.38.0 — with package.json, app.json
+    and shared/whatsNew.ts stamped together; android/app/build.gradle is untracked prebuild output.
+    The 2.33.0 through 2.40.0 collisions this run''s three lanes create are grandfathered already
+    (scripts/version-collisions-allowlist.json, uat 0cfcbc4d), and each merge renumbers above
+    whatever uat then carries.**
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight
+    expo.locales blocks byte-identical to native-strings.json, CFBundleLocalizations riding the
+    committed LOCALE_IDS order, the expo-font plugin''s fonts array gaining the four subset TTFs,
+    and the version field, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **The merge protocol appends only** (T-427 decision 11''s law): every shared registry list takes
+    this wave''s rows at its end in the order of decision 1, no other wave''s row is rewritten or
+    reordered, and the one documented exception holds — LANGUAGE_NAMES inserts each endonym at its
+    codepoint position, leaving every existing row''s relative order untouched. The additive
+    resolution keeps all three waves'' rows, and the README''s count is the merged length, never this
+    wave''s number alone: this wave''s sweep writes the count LOCALE_IDS.length returns in its own
+    tree, and the lead''s merge moves it to the merged seventy-five.
+15. **The picker rows carry the post-T-451 shape**: 日本語 (Japanese), 한국어 (Korean), Italiano
+    (Italian), Polski (Polish), Română (Romanian), Cebuano (Bisaya), Ilocano (Iluko) and Tiếng
+    Việt (Vietnamese), each row endonym plus English name, because the search field T-451 builds
+    reads the English name. The census derives from LANGUAGE_NAMES, so the picker follows the rows.
+16. **All four widget inline STATIC tables and all four locale-finder lists take the eight** —
+    widgets/PrayerWidget.tsx''s home-screen table and finder, and widgets/LockPrayerWidget.tsx''s
+    three lock-screen tables and finders — because the owner''s order requires home screen and lock
+    screen widgets to render every new locale.
+17. **No device work of any kind** (the ticket''s law): the wave''s proof is the suite alone, and the
+    owner rules from the read.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections, names and explanations, every slot
+  non-null with text, slug, confidence and a note naming the table or the derivation; the new
+  slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/ja.ts, ko.ts, it.ts, pl.ts, ro.ts, ceb.ts, ilo.ts, vi.ts` — new, one full catalog
+  each at en''s branch-point parity plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to fifty-eight, the eight appended after su; the
+  header count; RTL_IDS untouched.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonym rows in the post-T-451 endonym-plus-english shape, at
+  their codepoint positions.
+- `shared/typography.ts` — the JAPANESE and KOREAN records on the cut subset pairs; the Latin six
+  on LATIN or on a record over the bundled Noto Sans pair, by the census.
+- `assets/fonts/NotoSansJP-Subset-Regular.ttf, NotoSansJP-Subset-Medium.ttf,
+  NotoSansKR-Subset-Regular.ttf, NotoSansKR-Subset-Medium.ttf` — new, cut, OFL (the licence file is
+  present); never the full statics.
+- `shared/i18n/cjk-glyph-lock.json` — ja and ko sections and the files map gaining the four TTFs
+  by sha256.
+- `scripts/cjk-subset.mjs` — the pair list grows by JP and KR, the fetch URLs in the header.
+- `shared/__tests__/cjkSubset.test.ts` — the LOCALES list and the pair mapping grow to four.
+- `shared/i18n/native-strings.json` — eight locale rows, the shape en''s row carries (the two
+  permission strings, the eighteen gallery keys, the android resource entries).
+- `shared/i18n/widget-statics.json` — eight locale rows, eleven statics each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash
+  unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T452_EIGHT sourcing gate beside
+  T410_TEN, T419_TEN, T427_EIGHT, T428_EIGHT and T429_EIGHT.
+- `shared/__tests__/locale.test.ts` — the eight detection rows (ja-JP, ko-KR, it-IT, pl-PL, ro-RO,
+  ceb-PH, ilo-PH, vi-VN); the unshipped-tag rows untouched.
+- `shared/__tests__/typography.test.ts` — the JAPANESE and KOREAN record cases, and the LATIN
+  filter''s exception list for any locale the census moves off Roboto.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight, the count statement moves.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts`
+  — the LOCALES lists grow to fifty-eight.
+- `components/sheets/__tests__/Language.test.tsx` — the eight picker rows follow the
+  LANGUAGE_NAMES census.
+- `widgets/PrayerWidget.tsx` — the home widget''s inline STATIC table +8 rows and its locale
+  finder''s code list +8.
+- `widgets/LockPrayerWidget.tsx` — the three lock widget inline STATIC tables +8 rows each and
+  their three finder lists +8 each.
+- `app.json` — eight expo.locales blocks, CFBundleLocalizations to fifty-eight riding the
+  committed LOCALE_IDS order, the expo-font plugin''s fonts array +4 subset TTFs, the version field.
+- `README.md` — the Features bullet names the count LOCALE_IDS.length returns in this tree.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — the version stamps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do. LocaleId is a closed union, so
+the moment LOCALE_IDS grows the loader''s MODULES and typography''s RECORDS stop typechecking until
+every new locale carries its row, and each catalog satisfies Catalog (all keys, at en''s
+branch-point parity, in en''s order) or the build fails. LANGUAGE_NAMES stays the one hand-verified
+list, so each step re-reads the picker census against LOCALE_IDS.length. The data side stays gated
+as it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity,
+the 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces native-strings.json
+byte-identically on both platforms), widgetStaticStrings (the widget modules render the statics
+table row for row), catalogLock (en''s hash unchanged from the branch point), plus this wave''s
+T452_EIGHT row in the sourcing gate and the cjkSubset lock over the four CJK locales.
+
+Per locale the recipe is the waves'' recipe, the locale''s whole keyed surface in one commit:
+catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates,
+prose digits Latin), loader row, endonym row with its English name, typography record, lock list
+and lock suite rows, gates rows, detection row, native-strings row, widget-statics row, app.json
+locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+No suite is red across a step boundary (T-419''s design law).
+
+The CJK work is one step, not two: the script extension, the four cut TTFs, the lock, the two
+records, the two catalogs and their plumbing land together, exactly as T-419 step 5 landed both zh
+pairs with the pipeline in one commit. Splitting the pipeline from the catalogs would leave the
+glyph lock computed over strings that do not exist yet and the suite red across the boundary.
+
+The Latin census runs inside each Latin locale''s step, before its record is written: fontTools over
+the shipped faces, both weights, every distinct character of the locale''s whole keyed surface
+(catalog, native strings, widget statics, endonym, What''s New keys), zero missing or the locale
+moves to a record on the bundled Noto Sans pair and the census is rerun against that pair before
+the commit.
+
+Alternatives rejected: full Noto Sans JP/KR statics (decision 3, the owner''s order and the size); a
+second glyph-lock mechanism for ja and ko (decision 4 — the zh lock generalises); bundling Noto Sans
+for all six Latin locales up front (decision 6 — the census decides, and the fallback pair is
+already bundled); dropping ceb and ilo for having no genre (the Catalog type forbids empty slots,
+and the loan rule ships gated rows the owner''s read later improves); native numerals for ja and ko
+(R12''s row-82 law); a device read inside this ticket (the run bans device work).
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains ja,
+   ko, it, pl, ro, ceb, ilo and vi, each with eleven name slots and five explanation slots, every
+   one non-null with text, slug, confidence and a note: the attested sets from the genres named in
+   the table (salaahdaily.com (the plan''s Tokyo Camii genre superseded, dated 2026-10-29)''s timetable and ja.wikipedia for ja, the KMF timetable and ko.wikipedia
+   for ko, the Italian mosque tables and it.wikipedia for it, mzr.pl''s own Polish table for pl, the
+   muftiat-family pages for ro, the Vietnamese Islamic pages for vi, the ceb and ilo wikipedia
+   checks), the loan-rule derivation for every slot no source prints, the five derived explanations
+   each in the language''s own syntax; the new slugs registered; catalogGates gains the T452_EIGHT
+   sibling, red first over the empty glossary naming all eight absent.
+2. **Step 2: ja and ko land on their cut subset pairs** — the variable sources instanced at 400 and
+   500 outside the repository, scripts/cjk-subset.mjs extended and run to cut the four TTFs over
+   each locale''s closed string set, cjk-glyph-lock.json regenerated with the ja and ko sections and
+   the files map, cjkSubset extended to four locales, the JAPANESE and KOREAN records pinned by the
+   cut subsets'' own measured numbers, the two full catalogs and their whole keyed surface in the
+   one commit, every suite green at the boundary, the widget runtime load suite re-run after the
+   font install.
+3. **Step 3: it and pl land on the measured Latin records** — the fontTools census over both Roboto
+   weights for every distinct character of each keyed surface, the records written by the census,
+   the two full catalogs and their whole keyed surface, red first.
+4. **Step 4: ro and ceb land** — the same census and recipe for ro; ceb''s wikipedia check recorded
+   and the loan rule closing what it leaves, red first.
+5. **Step 5: ilo and vi land** — ilo under the loan rule the same way, vi on the census with the
+   heaviest diacritic set of the six, red first.
+6. **Step 6: The full sweep is green and the README names the merged count** — every suite green
+   over the fifty-eight at full coverage, `yarn validate` exits 0, en''s lock hash unchanged from
+   the branch point, the README Features bullet rewritten from LOCALE_IDS.length naming every
+   language in the committed order, audit-ready.
+
+## Risks
+
+- **A wrong name ships on ceb and ilo**, where no genre exists: every slot''s derivation sits in its
+  note, the jq census prints every one of them, and the owner''s phone read is the ruling pass.
+- **A diacritic the shipped faces lack** on vi, pl or ro: the in-step census measures both weights
+  before the record is written, and a failing locale moves to the bundled Noto Sans pair; the gate
+  is the census print of zero missing.
+- **The subset cut misses a character a later catalog byte adds**: cjkSubset fails naming the
+  character in both directions, and the regenerating command sits in the lock''s own _comment.
+- **The full statics enter the repository by accident**: the script''s header is the law and the
+  files map pins the four committed TTFs by sha256, so a stale or wrong binary fails the suite
+  naming the file.
+- **A label exceeds the 24-char budget** (katakana and hangul loanwords run long): the gate names
+  the key, and the label takes a shorter attested or loan form.
+- **Version collision inside the run**: 2.33.0 through 2.40.0 are grandfathered on uat already, one
+  class step per commit, and each merge renumbers above whatever uat then carries.
+- **The catalog lock drifts**: en stays byte-identical to the branch point; any en edit fails
+  catalogLock naming the locale.
+- **A shared registry row is reordered at the merge**: every step appends at the list''s end, and
+  the lead''s additive resolution concatenates the waves.
+
+## Proof
+
+1. The eight named with rationale and reach: this doc''s table, citing the owner''s 2026-10-29
+   popularity order, R4 C.1''s Ethnologue table, and the genre list above.
+2. Sourcing recorded: `jq ''[.ja,.ko,.it,.pl,.ro,.ceb,.ilo,.vi] | [.[] | (.names, .explanations) |
+   to_entries[] | select(.value.text == null or .value.source == null or .value.confidence ==
+   null)] | length''` over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T452_EIGHT
+   row is green.
+3. Coverage and regression: `yarn validate` exits 0 at full coverage over the fifty-eight, with
+   catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography,
+   cjkSubset, locale and the Language sheet green, and every earlier locale''s rows unedited.
+4. Parity and the lock: each new catalog''s key count equals en''s at the branch point in en''s order,
+   and en''s lock hash is byte-identical to the branch point''s.
+5. Fonts: the fontTools census prints zero missing for the eight — ja and ko against their cut
+   subsets in both weights, the Latin six against the faces their records name — and the four
+   subset TTFs are bound by sha256 in the lock''s files map.
+6. Detection and widgets: locale.test.ts resolves ja-JP, ko-KR, it-IT, pl-PL, ro-RO, ceb-PH, ilo-PH
+   and vi-VN; widgetStaticStrings and nativeLocalesConfig certify the four inline STATIC tables and
+   the app.json rows over the fifty-eight, home screen and lock screen both.
+7. The count: `node -e "console.log(require(''./shared/i18n/locale.ts''))"` or the picker census
+   reads fifty-eight in this tree, and the README bullet names the same number the constant
+   returns, the merged seventy-five after the lead''s concatenation.
+', NULL, NULL, '{}', false, false, false, NULL, 55296, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 07:56:52.096346+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (161, 58, 3, NULL, 'T-480', '# T-480
+
+## Goal
+
+Today the Android solid full-screen faces sit at the gradient''s navy half: the JS root solid is the hand value `#17146a` and the Android window background is `#1e1a6a` (the shared root fallback), so the splash, the error screen, the language-changing loader and the relaunch cover read darker than the gradient they hand off to. The owner''s 2026-10-29 order moves every Android solid to the house gradient''s 65 percent point `#251b74`, so the solid reads centred on the panel. Done: every Android solid face, JS and native, carries `#251b74`; every iOS byte and pin is untouched; the guard rows prove the split.
+
+## Decisions taken
+
+- 2026-10-29. The landed hex is `#251b74`, the 65 percent point of the house gradient `DESIGN.bgStart` `#05134a` to `DESIGN.bgEnd` `#36208a` (shared/design.ts:22-23). Arithmetic: R round(5 + 0.65 x (54 - 5)) = round(36.85) = 37 = 0x25; G round(19 + 0.65 x (32 - 19)) = round(27.45) = 27 = 0x1b; B round(74 + 0.65 x (138 - 74)) = round(115.6) = 116 = 0x74. This reproduces the owner''s named hex exactly; the two "65 percent from the solid" readings do not (Design, rejected alternatives).
+- 2026-10-29. The tree''s Android arm holds `#17146a` today (shared/design.ts:10), not the `#1e1a6a` of record. The ruling''s landing hex is an absolute gradient position, so the value being replaced changes nothing: the arm lands at `#251b74`. This is the ticket''s "measure and adjust within the plan''s own gate" clause, exercised.
+- 2026-10-29. The split stays a platform-keyed constant pair in `rootBgFor` (shared/design.ts:10): two hand-frozen hexes selected once at module load, the house pattern of `tailFor` and `dimFor`. No runtime branch per render is added. The owner''s 2026-10-29 order is the one legal Platform check on this surface, and the constant already carries it; the ticket only changes the Android arm''s hex.
+- 2026-10-29. The false sentence dies in both its places, not one: the comment above `rootBgFor` (shared/design.ts:9, "the solids sit between the navy top and the gradient''s middle") and its standing copy inside the suite this ticket edits, shared/__tests__/oneDimInk.test.ts:98, three lines above the DESIGN pin the plan relies on. A copy left standing above the pin would keep declaring false what the change makes true. (Grill finding 1, 2026-10-29.)
+- 2026-10-29. Each step''s commit carries the repo''s version discipline: fetch origin first (concurrent sessions have taken the same number twice, and T-476 bumps in the same window), then the patch bump lands as part of the commit - package.json and app.json together, and android/app/build.gradle with them when the file is present (it is gitignored prebuild output; shared/__tests__/versionLockstep.test.ts asserts its agreement only when it exists). The commit subjects are not typed `feat`, so both bumps are patches, and each step takes the next number the fetched tip shows, never a number chosen now. (Grill finding 2, 2026-10-29.)
+- 2026-10-29. The app.json guard is positional, not a count alone. The suite JSON.parses app.json and pins every backgroundColor field by place: `expo.backgroundColor` `#1e1a6a`, `expo.ios.backgroundColor` `#1e1a6a`, `expo.android.backgroundColor` `#251b74`, `expo.android.adaptiveIcon.backgroundColor` `#05134a`, the splash plugin''s ios entry `#1e1a6a` and its android entry `#251b74`. The count rows stay beside the parse as the no-stray-seventh guard. Chosen over folding a positional grep into Step 2''s gate because a grep is positional only through brittle line numbers, while a parsed row is red-first, mutation-passable and survives formatting. The parse is also what enforces the rejected root-field alternative: a `#251b74` sitting on the root or on adaptiveIcon (app.json:85, an Android field that is not the window background) while the android block''s own field is missing keeps every count green and reddens two parsed rows. (Grill finding 3, 2026-10-29.)
+- 2026-10-29. The Android window background moves by adding `"backgroundColor": "#251b74"` to app.json''s `expo.android` block, leaving the shared root `backgroundColor` (app.json:10) at `#1e1a6a`. expo-system-ui writes the native `activityBackground` from `config.android?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js:68-70), so the android field takes precedence and the root field never changes. The splash plugin''s `android.backgroundColor` (app.json:128) moves `#17146a` to `#251b74`; prebuild writes it into colors.xml `splashscreen_background` (node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js, SPLASH_COLOR_NAME) which styles.xml reads as `windowSplashScreenBackground`.
+- 2026-10-29. iOS byte-identical is structural, not hoped for. expo-system-ui''s iOS side reads `config.ios?.backgroundColor || config.backgroundColor` (node_modules/expo-system-ui/plugin/build/withIosRootViewBackgroundColor.js:71-73), and `expo.ios.backgroundColor` (app.json:79) is set, so iOS resolves its own `#1e1a6a` and never sees an Android field. app.json keeps `#1e1a6a` in exactly its three present places (root 10, ios 79, splash plugin ios 123), pinned by count and by place in the suite.
+- 2026-10-29. No prebuild, no build, no device inside this ticket. The android/ and ios/ trees are untracked prebuild output (git ls-files returns nothing for both; the build scripts run `expo prebuild -p android --no-install --clean`, $HOME/athan-gitree/bin/build-prod.zsh:87), so nothing in the tree needs regenerating. The owner reads the tint in the run''s single development build, per the run-order comment of 2026-10-29.
+
+## Files
+
+Read:
+- shared/design.ts - the constant pair `rootBgFor` (line 10) and `DESIGN.rootBg` (line 37), and the comment above them (line 9).
+- shared/constants.ts:917 - `COLORS.navigation.rootBackground: DESIGN.rootBg`, the single constant every JS face reads.
+- app/_layout.tsx, components/ui/LanguageLoader.tsx, components/ui/Error.tsx, stores/language.ts - the faces, each reading the constant; none is edited.
+- node_modules/expo-system-ui/plugin/build/withAndroidRootViewBackgroundColor.js and withIosRootViewBackgroundColor.js - the native window background writers, both sides read at source.
+- node_modules/expo-splash-screen/plugin/build/withAndroidSplashStyles.js - the native splash colour writer.
+- android/app/src/main/res/values/colors.xml and values/styles.xml (untracked prebuild output) - what the two app.json fields become on device.
+- shared/__tests__/versionLockstep.test.ts - the suite that reddens a half-done version bump (package.json against app.json, and the gradle when present).
+
+Changed:
+- shared/design.ts - the Android arm''s hex and the fork''s comment (line 9).
+- app.json - `"backgroundColor": "#251b74"` added to the android block; the splash plugin''s `android.backgroundColor` (line 128) moved to `#251b74`; the version bumped with package.json (and the gradle when present) as part of each step''s commit.
+- shared/__tests__/oneDimInk.test.ts - the app.json count rows (lines 75-76) joined by the parsed positional block, the `rootBgFor` arms (lines 107-108), the new split guard row, and the stale sentence''s copy at line 98.
+
+## Design
+
+The solid''s source chain and every full-screen face, enumerated from the tree:
+
+| Face | Where its colour comes from |
+| --- | --- |
+| The JS solid constant | shared/design.ts:10 `rootBgFor(os)` (android `#17146a`, ios `#1e1a6a`) feeding shared/design.ts:37 `DESIGN.rootBg` feeding shared/constants.ts:917 `COLORS.navigation.rootBackground`. |
+| Root layout, the first JS frame behind every screen | app/_layout.tsx:93 - `backgroundColor: COLORS.navigation.rootBackground`. |
+| Language-changing loader | components/ui/LanguageLoader.tsx:55 - the same constant on the loader panel. |
+| Error screen | components/ui/Error.tsx:58 - the same constant on the error container. |
+| Language relaunch cover, Android alone (iOS keeps its last committed frame, stores/language.ts:26) | stores/language.ts:122 `coverOptionsFor` - the same constant rides `showSwitchCover` into `Updates.showReloadScreen` before `Updates.reloadAsync()`. |
+| Native splash, Android (API 31+) | app.json:128 (splash plugin `android.backgroundColor`) -> prebuild writes colors.xml `splashscreen_background` -> styles.xml `windowSplashScreenBackground`. |
+| Native window background, Android (the pre-31 cold start and the post-splash instant) | app.json:10 (root `backgroundColor`, the fallback expo-system-ui reads today) -> prebuild writes colors.xml `activityBackground` -> styles.xml `android:windowBackground`. After Step 2 the android block''s own `backgroundColor` feeds it. |
+| Native splash and root view, iOS, untouched | app.json:123 (splash plugin `ios.backgroundColor` `#1e1a6a`) and app.json:79 (`expo.ios.backgroundColor` `#1e1a6a`). |
+
+No other face carries the solid: widgets/ reads no `rootBackground` and no literal (both greps empty), and no suite outside oneDimInk.test.ts pins the literals. components/ui/__tests__/LanguageLoader.test.tsx:44 and stores/__tests__/languageReloadFace.test.ts:75 pin coherence through `COLORS.navigation.rootBackground` and stay green untouched, which also keeps this ticket''s file set disjoint from T-476''s sheets, loader choreography and stores.
+
+Approach: one hex moves in one constant, and every JS face moves with it because they all read the constant. Two fields move in app.json for the two native Android solids. The suite rows turn red first, the values land second, and a mutation pass proves each guard row can fail. The app.json guard pins place and value together: the parsed rows name every backgroundColor field in the file, so a hex in the wrong block reddens even when the file''s multiset of hexes is right.
+
+Invariant: iOS bytes. `rootBgFor(''ios'')` stays `#1e1a6a`; jest runs the iOS arm (oneDimInk.test.ts:81 comment), so the `DESIGN.rootBg: ''#1e1a6a''` pin at line 99 stays green through the change; app.json''s `#1e1a6a` count stays exactly three and its three fields stay pinned by place. The arithmetic pinning iOS: `#1e1a6a` is the gradient midpoint (the rounded channel means 30/26/106 = 0x1e/0x1a/0x6a), and iOS stays there.
+
+Alternatives rejected:
+- 65 percent measured from the solid of record toward bgEnd: `#1e1a6a` + 0.65 x (`#36208a` - `#1e1a6a`) = round(30+15.6) / round(26+3.9) / round(106+20.8) = 46/30/127 = `#2e1e7f`. Rejected: it does not reproduce the owner''s named `#251b74`. The ruling reads as a position on the house gradient.
+- 65 percent from today''s Android arm: `#17146a` + 0.65 x (`#36208a` - `#17146a`) = 43/28/127 = `#2b1c7f`. Rejected for the same reason, and it would tie the landed value to the value being replaced.
+- Changing the shared root `backgroundColor` instead of adding the android field. Rejected: it moves a field every platform falls back to, and app.json''s idiom for a platform fork is a platform field (the splash plugin already carries ios/android blocks). The parsed positional guard is what makes this rejection enforceable, not just stated.
+- A `Platform.OS` check at each face. Rejected: the fork already lives in one constant selected at module load; per-render branches would multiply the fork the owner limited to one.
+- The count rows alone as the app.json guard. Rejected (grill finding 3): a count cannot show where the hexes sit. adaptiveIcon''s backgroundColor (app.json:85) could hold one of the two while the android block''s own field is missing, and the count stays green. The parse closes this.
+
+## Steps
+
+1. Step 1 (2 points, code): the Android arm of the solid constant. Red first in shared/__tests__/oneDimInk.test.ts: line 107 expects `rootBgFor(''android'')` to be `#251b74`, and a new row `expect(rootBgFor(''android'')).not.toBe(rootBgFor(''ios''))` joins the arms block; `yarn test oneDimInk` shows the android row fail while the ios row and the `DESIGN.rootBg` pin stay green. Then shared/design.ts lands `#251b74` in the android arm (line 10), the false sentence above it (line 9) is rewritten to the dated ruling, and its standing copy at oneDimInk.test.ts:98 is rewritten with it; green. Mutation pass: replant `#17146a` (the android row reddens), then plant the ios hex into the android arm (the not.toBe guard reddens); revert both; green. The commit lands the version discipline: fetch origin, then the patch bump in package.json and app.json together (the gradle too when present), the number one above the fetched tip.
+2. Step 2 (2 points, code): app.json''s android-facing fields. Red first: oneDimInk.test.ts line 75 becomes `expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);`, line 76 keeps `#1e1a6a` at exactly 3, and a parsed block joins them - `const app = JSON.parse(appJson)` with `expect(app.expo.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.ios.backgroundColor).toBe(''#1e1a6a'')`, `expect(app.expo.android.backgroundColor).toBe(''#251b74'')`, `expect(app.expo.android.adaptiveIcon.backgroundColor).toBe(''#05134a'')`, and the splash plugin''s entries read from `app.expo.plugins` pinned `ios` `#1e1a6a` and `android` `#251b74`; `yarn test oneDimInk` shows the count row and the parsed android rows fail. Then app.json lands the android block''s `"backgroundColor": "#251b74"` and moves the splash plugin''s android hex (line 128) to `#251b74`; green. Mutation pass: revert the plugin hex (the count and the parsed android row redden), delete the android block''s field (same), plant `#251b74` in any iOS field (the `#1e1a6a` x 3 row and its parsed row redden), then the grill''s shape mutation: move the hex onto the root field and delete the android block''s field - the counts stay green and both parsed rows redden, proving the parse closes what the count cannot - and plant `#251b74` on adaptiveIcon (two parsed rows redden); revert all; green. The commit lands the same version discipline as Step 1: fetch origin, patch bump in package.json and app.json together (the gradle too when present), the next number above the fetched tip.
+
+Estimate: 4 points, the sum of the steps.
+
+## Risks
+
+- The tint reads off-centre on the panel. Only the owner can see it, in the run''s single development build. What would show it: the splash or the loader reading a different purple than the gradient they hand off to. The fix is one hex in one constant plus two app.json fields, so a re-rule is a two-line change.
+- The Android window background is missed: a one-frame navy flash between the splash hiding and the first JS frame. The parsed positional rows are the guard - they name `expo.android.backgroundColor` and the splash plugin''s android field directly, so a hex landing anywhere else (root, adaptiveIcon) reddens - and the enumeration above names both native fields.
+- A later change collapses the fork back to one shared hex, silently moving iOS. The `not.toBe` guard reddens the moment both arms are equal.
+- Parallel lanes: T-476 runs in the same window and touches the sheet, the loader choreography and the stores; this ticket opens design.ts, app.json and oneDimInk.test.ts only. The loader and cover faces read the constant, so they move with Step 1 without their files being opened. If T-476 adds a literal pin of the loader''s background, that suite reddens against the new constant and T-476''s lane resolves it against this ruling, recorded in the audit comment rather than left silent.
+- The version number collides with T-476''s commits: both lanes bump in the same window. The fetch-origin-first, next-number rule in both steps is the guard; a taken-twice number shows at the read-back in Proof (a number already on the tip) and a half-done bump shows in `yarn validate` through versionLockstep.
+
+## Proof
+
+- `yarn test oneDimInk` - red after each step''s row edits, green after each step''s value lands; Steps 1 and 2 each show both states.
+- Mutation pass, the same command: every planted mutation named in the steps reddens its row, and every revert returns green. Step 2''s pass includes the shape mutation whose counts stay green - the demonstration that the parse, not the count, holds the placement.
+- `yarn validate` - exits 0 with the coverage gate at full coverage (tsc, biome and jest with --coverage run inside it, package.json:25); the same run carries versionLockstep, which reddens a bump done in one file alone.
+- The version numbers, read back per commit: `git fetch origin` then `grep ''"version"'' package.json app.json` shows one number, one patch above the fetched tip, and the gradle agrees when present. Each step records its resulting number in its closing comment on the ticket, so the interleaving with T-476''s bumps reads from the board.
+- iOS byte-identical, read back: `grep -c ''"backgroundColor": "#1e1a6a"'' app.json` prints 3; `grep -n ''251b74'' app.json` shows exactly the android block''s background line and the splash plugin''s android line; the git diff of shared/design.ts shows the ios arm untouched. The suite side of the same guarantee is the parsed block: every backgroundColor field of app.json pinned by place, not by count.
+- The native path is source-verified, not built: the two expo-system-ui readers and the splash plugin writer cited above. The device reading is the owner''s, in the run''s single development build.
+
+## Amendments after the audit (2026-10-29, lead)
+
+1. `shared/whatsNew.ts` belongs in the Changed list and in the version discipline of both steps: `whatsNew.test.ts` pins `WHATS_NEW.version` to app.json''s version, so the plan followed literally reddens that suite. The landed code carries it (2.32.4, 2.32.5) and this row records it.
+2. The Step 2 shape mutation as written cannot hold: moving the hex onto the root field drops a `#1e1a6a` count because the root is one of the three iOS fields. The run substituted the adaptiveIcon shape mutation, which keeps both counts green and reddens the parsed android and splash rows. That substitution is accepted as the proof.
+3. The "no-stray-seventh guard" needs the file''s total `backgroundColor` occurrence count asserted beside the parse, or a seventh field carrying any other hex passes. The landed guard is strengthened in the audit-fix commit.
+4. Step 2''s per-step origin fetch left no artefact (one `FETCH_HEAD` predates step 1); the outcome holds because neither number sits on another branch, recorded here rather than claimed.', NULL, NULL, '{}', false, false, false, NULL, 58368, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 08:00:36.238484+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (162, 54, 2, NULL, 'T-453', '# T-453 — Seventy-five languages, wave two of three: the Arabic-script, Thaana and Sahel nine
+
+## Goal
+
+Fifty locale catalogs ship today (en plus forty-nine translated). This wave adds nine — skr, bal, kas, dv, aa, kr, mdh, mnk, dje — and the three waves together take the run to seventy-five at the merged line (T-452 eight, this wave nine, T-454 eight). Code only: no build, no install, no simulator, no screenshot. The owner reads the result on the phone afterwards and rules from Awaiting Owner. Nothing in the fifty shipped locales changes a byte, and en changes nothing this wave touches after T-451 merges.
+
+## Selection (the ticket''s mission block, the owner''s audit of 2026-10-29)
+
+| Tag | Language, reach | Script, record | Why it ships |
+| --- | --- | --- | --- |
+| skr | Saraiki, ~26M | Arabic RTL, URDU (Naskh) | the largest unserved Muslim reading public, southern Punjab |
+| bal | Balochi, ~10M | Arabic RTL, URDU | Balochistan across Pakistan, Iran, Afghanistan |
+| kas | Kashmiri, ~7M | Arabic RTL, URDU | Perso-Arabic Kashmir |
+| dv | Dhivehi, ~0.34M | Thaana RTL, THAANA (a new pair) | the Maldives, the one wholly Muslim nation |
+| aa | Afar, ~3M | Latin, LATIN | Djibouti and the Awsa |
+| kr | Kanuri, ~10M | Latin, AFRICAN | Borno and Niger |
+| mdh | Maguindanao, ~1.5M | Latin, LATIN | Muslim Mindanao |
+| mnk | Mandinka, ~5M | Latin, AFRICAN | the Senegambia |
+| dje | Zarma, ~3M | Latin, AFRICAN | Niger |
+
+## Sourcing (what attests what; the loan rule closes every slot no source prints)
+
+Fetched 2026-10-29. The loan rule is T-410 decision 5: the slot ships the loan in the language''s own orthography with text, slug `loan`, low confidence and the derivation in the note. The five explanations per locale derive from the sourced names in the language''s own syntax, slug `derived`.
+
+| Tag | The table or page that attests | Names it prints verbatim | Confidence | Loan-rule slots |
+| --- | --- | --- | --- | --- |
+| skr | skr.wikipedia''s own list `پنج نمازاں دے ناں` (the names of the five prayers), corroborated by its `نماز ویلے` article | دَھمِّی (glossed فجر دی نماز), پیشِیں (ظہر), دِیگَر (عصر), نِماشَاں (مغرب), خُفتاں (عشاء) | medium | Sunrise, Midnight, Last Third, Duha, Istijaba; Suhoor ships the attested token سحری at low |
+| bal | one Balochi vocabulary post (no Balochi Wikipedia exists; the sitematrix and DNS both refuse bal), beside the Western Balochi incubator''s اسلام article | فجر (Fajr), نماشاں (Maghrib, the post''s Nimasham), اسور (the pre-dawn meal, Suhoor) | low | Dhuhr, Asr, Sunrise, Midnight, Last Third, Duha, Istijaba. The post''s ويغَرَ is a misprint of the Saraiki دِیگَر and never ships; the reading is recorded in the note |
+| kas | ks.wikipedia''s `نؠماز` infobox and its own prayer articles (`صُبحٕچ نؠماز`, `پیٚشِن نؠماز`, `شام نؠماز`, the Isha article) | صُبُح, پیٚشِن, دِگر (the infobox''s three), شام, خۄفتَن (the articles) | medium | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| dv | adhadhu.com''s Dhivehi news table, corroborated by the Addu Meedhoo council''s own Dhivehi prayer page (addumeedhoo.gov.mv) | ފަތިސް, މެންދުރު, އަޞްރު, މަޣްރިބް, ޢިޝާ; Sunrise އިރުއެރުން from the council page, the news table''s އިރުއަރާ recorded as the variant | high | Midnight, Last Third, Suhoor, Duha, Istijaba |
+| aa | islamhouse.com''s Afar section (`Qafár afa`, articles and audio), the register the loans transliterate into; no Afar prayer table exists | none | low, every slot a loan | all eleven names and the five explanations |
+| kr | the Kanuri Ajami corpus named in the scholarly record; no Kanuri timetable or page with the five names is fetchable | none | low, every slot a loan | all eleven and the five explanations |
+| mdh | one Maguindanao vocabulary list in Latin orthography (the language is written Latin today; the incubator''s `Wp/mdh` carries no prayer article) | Subuh (the list''s Pagiyar and Awal a Subuh recorded in the note), Luhur, Asar, Magrib (its Magarib recorded), Isya (its Aisa recorded) | low | Sunrise, Midnight, Last Third, Suhoor, Duha, Istijaba |
+| mnk | no Mandinka page printing the five names exists; the incubator `Wp/mnk` holds no Islamic article | none | low, every slot a loan | all eleven and the five explanations |
+| dje | no Zarma page printing the five names exists; the incubator `Wp/dje` holds its main page alone | none | low, every slot a loan | all eleven and the five explanations |
+
+Midnight and Last Third take each language''s own vocabulary where the glossary can derive it, at low confidence with the derivation in the note; Suhoor, Duha and Istijaba take the naming rule''s transliteration in every one of the nine, the T-428 shape.
+
+## Decisions taken (2026-10-29, lane 2, agent-ruled)
+
+1. **The nine are skr, bal, kas, dv, aa, kr, mdh, mnk, dje, appended to LOCALE_IDS in that order.** The ticket names them; the mission block is the selection authority; the run''s merge protocol appends each wave''s rows at every list''s end.
+2. **Maguindanao ships as mdh, never mag** (the lead''s ruling on this ticket, 2026-10-29): `mag` is Magahi, and the picker, LOCALE_IDS, detection, native-strings, widget-statics, app.json''s arrays and every other surface carry mdh. Bare `mag` stays unshipped.
+3. **Kashmiri ships under the ticket''s tag kas**, with detection mapping the CLDR tags a device reports: ks-IN and ks-Arab-IN resolve kas, the pa-Arab precedent of mapping a foreign tag onto the shipped id.
+4. **skr ships its own five** — دَھمِّی، پیشِیں، دِیگَر، نِماشَاں، خُفتاں — not the Arabic loans its own encyclopedia also prints. The wave exists to give Saraiki readers Saraiki, the pa-Arab ruling of T-427 decision 2; the loan set stays in each entry''s note as the alternative. Challenged: Pakistani tables print the Arabic set. It does not flip.
+5. **kas ships its own five** — صُبُح، پیٚشِن، دِگر، شام، خۄفتَن — the Persianate names the valley''s own encyclopedia prints, with the Arabic glosses recorded in the notes.
+6. **dv ships the council page''s row labels** (the authority class) with the news table corroborating: ފަތިސް، އިރުއެރުން، މެންދުރު، އަޞްރު، މަޣްރިބް، ޢިޝާ. The variants އިރުއަރާ and ފަޖުރު are recorded in their notes.
+7. **The four loans-only languages ship under the loan rule** (aa, kr, mnk, dje), because the ticket names them and the wave''s law is sourcing recorded, not sourcing perfect (T-427 decision 3). Every slot carries text, slug, low confidence and the derivation; the census prints every one; the owner''s phone read is the ruling pass.
+8. **bal ships its three attested fragments at low** (فجر، نماشاں، اسور) and closes the rest by the loan rule; the post''s misprint is recorded, never shipped.
+9. **mdh ships the Malay-world set the fetched list prints at low** (Subuh، Luhur، Asar، Magrib، Isya), variants in the notes. Latin is the script the language is written in today (CLDR maximises mdh-Latn-PH).
+10. **Fonts and records, this wave''s own measurements, taken 2026-10-29 with fontTools over the bundled faces, both weights.**
+    - The bundled Noto Naskh Arabic v2.021 pair carries, by explicit codepoint, Saraiki''s eight own letters (ٻ U+067B, ڄ U+0684, ڃ U+0683, ڇ U+0687, ڏ U+068F, ڙ U+0699, ݙ U+0759, ݨ U+0768), Balochi''s five (ڳ U+06B3, ڃ, ڇ, ݔ U+0754, ڻ U+06BB) and Kashmiri''s fourteen (ٲ U+0672, ٳ U+0673, ٵ U+0675, ٶ U+0676, ٷ U+0677, ٸ U+0678, ۄ U+06C4, ۅ U+06C5, ۆ U+06C6, ۈ U+06C8, ۉ U+06C9, ې U+06D0, ۍ U+06CD, ێ U+06CE); Rubik carries none of those twenty-seven. skr, bal and kas map to the URDU record unchanged and its comment gains this wave''s measurement.
+    - No bundled face carries a single Thaana codepoint, so dv bundles Noto Sans Thaana v3.001 Regular and Medium from the notofonts release statics, under the OFL licence file already in assets/fonts. Measured: UPM 1000, hhea ascent 1069, descent -424, lineGap 0, a 1.493em box, with usWinAscent 1069 and usWinDescent 424 (1.493em), so the box equals the pair''s own declared ink bounds, and the block''s glyphs run +751 and -306 units at the extremes, inside the box. The box clears the ink, so the THAANA record pins no script box (the Thai row-87 law). A 1.5em pin was rejected: no measurement this pair makes asks for it.
+    - aa''s orthography is ASCII and mdh''s one non-ASCII letter is ñ U+00F1, which Roboto carries in both weights: aa and mdh take LATIN. Each step re-measures every character of the locale''s whole keyed surface.
+    - kr, mnk and dje take the AFRICAN record on the Noto Sans pair bundled for bm, ff and yo: ǝ U+01DD, ɓ U+0253, ɗ U+0257, ɛ U+025B, ɔ U+0254 and ɲ U+0272 are absent from Roboto and Rubik in both weights and present in Noto Sans (measured this wave). No new font for the three.
+11. **RTL_IDS gains skr, bal, kas and dv** — Thaana reads right to left — and catalogGates'' RTL purity set gains the same four, so the wave''s own Arabic-script and Thaana copy is gated; the four already in that set are untouched, and no layout code changes.
+12. **Prose digits are Latin in all nine** (the owner''s standing order; R12''s row-82 law). Times, dates and countdowns stay Latin in every locale.
+13. **No Hebrew, Yiddish or Ladino ships anywhere in the app** (owner order 2026-10-29), and no locale beyond the nine: the seventy-five cap is the maximum, not a target.
+14. **Version line.** The branch opens from the 2.32.0 tip T-451 lands. Step 1 commits `feat(i18n)` at 2.33.0, then one minor class step per commit through 2.38.0, `package.json`, `app.json`, `android/app/build.gradle` and `shared/whatsNew.ts` together. The collisions allowlist uat carries (2.33.0 through 2.40.0) grandfathers every collision under the standing ruling, and each merge renumbers above whatever uat then carries.
+15. **The merge protocol is append-only.** Every shared registry list (LOCALE_IDS, the loader''s RAW and MODULES, typography RECORDS, the catalog-lock LOCALES lists, native-strings.json, widget-statics.json, app.json''s arrays, the widget STATIC tables and their finder lists, the gates'' locale lists, the README) takes this wave''s rows at its end, in this wave''s order. The one exception is LANGUAGE_NAMES, whose contract is codepoint order: each endonym sits at its codepoint position, leaving every existing row''s relative order untouched. The README''s Features bullet is written from the count LOCALE_IDS.length returns in the tree committed, never a remembered number, and the lead''s merge resolution recomputes count and names to the merged seventy-five.
+16. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the two expo-font arrays, the nine expo.locales blocks derived from native-strings.json, CFBundleLocalizations and the version field are mechanical carriers, every byte gated by nativeLocalesConfig.
+17. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads "Added support for more languages"; the banner restamps with the version.
+18. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json block, CFBundleLocalizations entry, the four widget STATIC rows and their four finder lists — so no suite is red across a step boundary (T-419''s design law). Languages share a commit only inside a step this plan names.
+19. **The picker''s list is authored against the tree after T-451 merges**, in whatever shape T-451 lands (search, numbered rows, English names beside the endonyms); the nine''s endonyms join at their codepoint positions and the search folds over them with no further code.
+
+## Files
+
+- `shared/i18n/skr.ts`, `bal.ts`, `kas.ts`, `dv.ts`, `aa.ts`, `kr.ts`, `mdh.ts`, `mnk.ts`, `dje.ts` — new, one full catalog each at en''s parity in the branch tree, plus PRAYER_LABELS.
+- `shared/i18n/sourced-names.json` — the nine''s sections (eleven names and five explanations each, every slot non-null), the new source slugs registered in `_meta.sourceSlugs`, one line in `_meta.purpose`.
+- `shared/i18n/locale.ts` — LOCALE_IDS +9 appended; RTL_IDS gains skr, bal, kas, dv; the header count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the nine.
+- `shared/languageNames.ts` — nine endonym rows (سرائیکی، بلوچی، کٲشُر inside the Arabic block; ދިވެހި opening the Thaana position between the Arabic block and Devanagari; Qafar af, Kanuri, Magindanawn, Mandinka, Zarma among the Latin rows), each verified at its step against a page written in the language; the header''s script-order note gains Thaana; the English-name column in the shape T-451 lands.
+- `shared/typography.ts` — the THAANA record with this wave''s measured numbers; RECORDS gains the nine (skr, bal, kas → URDU; dv → THAANA; aa, mdh → LATIN; kr, mnk, dje → AFRICAN).
+- `assets/fonts/NotoSansThaana-Regular.ttf`, `NotoSansThaana-Medium.ttf` — new, OFL (the licence file is present).
+- `shared/i18n/native-strings.json` — nine locale rows (two permission strings and eighteen gallery keys each).
+- `shared/i18n/widget-statics.json` — nine locale rows (eleven statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts` — the LOCALES lists gain the nine together; en''s hash unchanged from the branch point.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +9; the RTL purity set +4 (skr, bal, kas, dv); the T453_NINE sourcing gate beside T410_TEN and its siblings, red first.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +9 and the parity rows at fifty-nine.
+- `shared/__tests__/locale.test.ts` — detection rows: skr-PK → skr; bal-PK and bal-IR → bal; ks-IN and ks-Arab-IN → kas; dv-MV → dv; aa-DJ and aa-ET → aa; kr-NG and kr-NE → kr; mdh-PH → mdh; mnk-GM and mnk-SN → mnk; dje-NE → dje.
+- `shared/__tests__/typography.test.ts` — the THAANA case, the three URDU rows, the two LATIN rows and the three AFRICAN rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts` — LOCALES to fifty-nine; CFBundleLocalizations rides it.
+- `shared/__tests__/widgetStaticStrings.test.ts` — LOCALES to fifty-nine.
+- `components/__tests__/chevronDirection.test.tsx` — both RTL pin lists gain skr, bal, kas, dv.
+- `components/sheets/__tests__/Language.test.tsx` — the picker''s list at fifty-nine, in the shape T-451 lands.
+- `widgets/PrayerWidget.tsx` — its one inline STATIC table +9 rows and its one locale finder list +9 codes.
+- `widgets/LockPrayerWidget.tsx` — its three inline STATIC tables +9 rows each and its three finder lists +9 codes each.
+- `app.json` — the nine expo.locales blocks, both expo-font arrays +2 (the Thaana pair), CFBundleLocalizations to fifty-nine, the version.
+- `package.json`, `android/app/build.gradle`, `shared/whatsNew.ts` — the version stamps together.
+- `README.md` — the Features bullet names the merged set, count read from LOCALE_IDS.length in the tree committed.
+
+## Design
+
+The compiler drives completeness: LocaleId is a closed union, so the moment LOCALE_IDS grows, loader MODULES and typography RECORDS stop typechecking until every new locale carries its row, and each catalog satisfies Catalog (exactly en''s key set at the branch point) or the build fails. LANGUAGE_NAMES stays the one hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS.length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T453_NINE sibling, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms and CFBundleLocalizations rides the LOCALES order), widgetStaticStrings (the widget tables render the statics row for row), catalogLock (en byte-identical, the lock''s list equal to the translated set) and i18nBridge''s parity rows.
+
+Per locale the recipe is T-427''s and T-428''s, in one commit per step: catalog file (sourced prayer names verbatim from the glossary, UI copy authored to the R2 gates, Latin digits), loader rows, endonym row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the four widget STATIC rows and the four finder lists.
+
+The Thaana pair is bundled as full statics, not a subset: fifty codepoints carry the language''s whole keyed surface and a subset would add a second glyph-lock mechanism for a script the app gains once, the yo ruling of T-427.
+
+Alternatives rejected: the Arabic loans for skr and kas (decisions 4 and 5); holding aa, kr, mnk and dje for a speaker (the ticket names them and the loan rule ships a gated row now, the speaker pass improves it later); a script box pinned on dv''s record without a measurement that asks for one (decision 10); a new font for kr, mnk or dje (the AFRICAN pair already carries their letters); `mag` as Maguindanao''s id (the lead''s ruling); en key counts carried from memory instead of measured at the branch point.
+
+## Steps (6 × 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the nine languages** — sourced-names.json gains skr, bal, kas, dv, aa, kr, mdh, mnk and dje, each with eleven name slots and five explanation slots, every one non-null with text, slug, confidence and a note naming the table or the derivation; the new slugs registered; catalogGates gains the T453_NINE sibling gate, red first, with a mutation pass on the guard.
+2. **Step 2: skr, bal and kas land RTL on the Naskh record** — LOCALE_IDS at fifty-three, RTL_IDS gains the three, each locale''s whole keyed surface in one commit on the URDU record whose comment gains this wave''s measurement, every suite green at the boundary.
+3. **Step 3: dv lands on the bundled Noto Sans Thaana pair** — the pair fetched and bundled, both expo-font arrays grown, the THAANA record carrying the measured 1.493em box with no script box, RTL_IDS gains dv, dv''s whole keyed surface in one commit, the widget runtime load suite re-run green after the font lands.
+4. **Step 4: aa and mdh land on the LATIN record** — the two catalogs and their whole keyed surface, Roboto measured over every character each locale inks, both weights, zero missing.
+5. **Step 5: kr, mnk and dje land on the AFRICAN record** — the three catalogs on the bundled Noto Sans pair, measured the same way, zero missing.
+6. **Step 6: The full sweep is green and the README carries the merged count** — every suite green over the fifty-nine locales this tree holds, `yarn validate` exits 0 at full coverage, en''s catalog-lock hash unchanged from the branch point, the README bullet written from LOCALE_IDS.length with the nine appended, the What''s New banner restamped, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The loans and the derived labels carry their derivations in the notes and the census prints every one; the owner''s phone read is the ruling pass. aa, kr, mnk and dje ship whole waves of loans, and that is the recorded state, not a hidden one.
+- **A low-confidence fragment is a misprint.** bal''s post prints ويغَرَ where Saraiki prints دِیگَر; the plan records the reading in the note and ships the loan instead.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row covers skr, bal, kas and dv from step 2 and 3, and names the key.
+- **Thaana renders as tofu** if the pair is absent: step 3 measures every character of dv''s whole keyed surface in both weights before the commit, and the widget runtime load suite re-runs after the font lands.
+- **A label exceeds the 24-char budget** (Kashmiri''s and Saraiki''s extras run long): the gate names the key, and the label takes a shorter attested or loan form.
+- **en''s parity drifts because T-451 lands late or changes again**: the branch is cut after T-451 merges and parity is measured in the branch tree; a remembered count is a defect. The blocked_by relation on this ticket carries the wait.
+- **The version line collides inside the band**: every commit takes one minor step from 2.33.0, the allowlist grandfathers the collisions, and the merge renumbers above uat.
+- **A shared list row is reordered at the merge**: every step appends, never sorts, and the lead concatenates; the README count is recomputed at the merge from the merged tree.
+
+## Proof
+
+1. The nine named with rationale: the Selection table, citing the ticket''s mission block and this doc''s fetched sources.
+2. Parity: the babel walk scripts/catalog-lock.mjs uses prints en''s member count in the branch tree, and the same walk over each of the nine catalogs prints the identical key list; the i18nBridge parity rows are green at fifty-nine.
+3. Sourcing recorded: `jq ''[.["skr"],.["bal"],.["kas"],.["dv"],.["aa"],.["kr"],.["mdh"],.["mnk"],.["dje"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''` over shared/i18n/sourced-names.json prints 0, and catalogGates'' T453_NINE row is green.
+4. Coverage and regression: `yarn validate` exits 0, full coverage, with catalogGates, catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale, the chevron pins and the Language sheet green over fifty-nine locales, and the fifty existing locales'' rows unedited.
+5. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows skr, bal, kas and dv inside the set, and locale.test.ts resolves the eleven detection rows this plan lists.
+6. Glyph coverage: fontTools over the bundled faces, both weights, prints zero missing characters for every character of each new locale''s whole keyed surface — the three Arabic-script locales against Noto Naskh, dv against Noto Sans Thaana, aa and mdh against Roboto, kr, mnk and dje against Noto Sans.
+7. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts shared/__tests__/nativeLocalesConfig.test.ts` green at fifty-nine, and the four finder lists in the two widget files each carry the nine codes.
+8. The version stamps: `jq ''.expo.version'' app.json`, `node -p "require(''./package.json'').version"` and `grep versionName android/app/build.gradle` print the same number at each step, one minor step from 2.33.0.
+9. The README: the Features bullet''s count equals the value LOCALE_IDS.length returns in the tree committed, and the merge resolution recomputes it to seventy-five.
+
+
+## Lead amendments after the audit (2026-10-29)
+
+1. Registry order: the waves landed in the steps'' order (aa, mdh, kr for steps 4 and 5), so every shared list appends in that order and decision 1''s nominal order is superseded, recorded here for the merge resolution.
+2. The version rows drop `android/app/build.gradle`: `/android` is gitignored prebuild output and the stamps live in `package.json`, `app.json` and `shared/whatsNew.ts`.
+3. The AFRICAN row''s stated basis is each language''s own orthography on the Sahel Latin record plus the measured census, not the six letters the wave inherits; the record and its figures are unchanged.
+4. Maguindanao ships its Tagalog-derived UI copy as a disclosed stand-in at low confidence, the eleven prayer names Maguindanao-sourced, with a speaker pass owed (owner read on the build; fix forward).', NULL, NULL, '{}', false, false, false, NULL, 54272, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 08:06:01.041443+00');
 
 
 --
@@ -35537,15 +39257,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:379', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:375', 1, 29);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:404', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:395', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:466', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:397', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:416', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:396', 1, 70);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:465', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:417', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:403', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:398', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:418', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:478', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:433', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:450', 1, 5);
@@ -35554,30 +39277,40 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:405', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:420', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:406', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:451', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:399', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:421', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:439', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:422', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 130);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:459', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:393', 1, 19);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 49);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:423', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:479', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:424', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:440', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:401', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 55);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:461', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:425', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:443', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:441', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:407', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:408', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:402', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:472', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:483', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:435', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:481', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:409', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:444', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:474', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:482', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:426', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:475', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:445', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
@@ -35588,21 +39321,41 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:414', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:446', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:419', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:415', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4861);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:447', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:460', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:448', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 228);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:455', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:452', 1, 58);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:456', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:462', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:427', 1, 65);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:457', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:436', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:442', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:428', 1, 65);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4661);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:453', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:430', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:454', 1, 69);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:467', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:437', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:476', 1, 66);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:431', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:429', 1, 74);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:432', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:449', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:480', 1, 42);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:438', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:463', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:473', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 246);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:470', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:471', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:469', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:477', 1, 5);
 
 
 --
@@ -35864,7 +39617,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4354, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4649, true);
 
 
 --
@@ -35913,14 +39666,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 682, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 694, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 450, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 483, true);
 
 
 --
@@ -35934,14 +39687,14 @@ SELECT pg_catalog.setval('public.issue_import_id_seq', 1, false);
 -- Name: issue_link_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
+SELECT pg_catalog.setval('public.issue_link_id_seq', 130, true);
 
 
 --
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1063, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1151, true);
 
 
 --
@@ -35976,7 +39729,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 215, true);
+SELECT pg_catalog.setval('public.label_id_seq', 222, true);
 
 
 --
@@ -36032,14 +39785,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 52, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 58, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 150, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 162, true);
 
 
 --
@@ -40424,5 +44177,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict uvgbXB3in8Yc9ooEvKIUmHkglbCpvjTcvClreeJLGRVyUCJH2tKzjUHG1usBAbs
+\unrestrict KuEXMX7ZEYAtAVHwz4RrZSaUapMwoHOvTFd2SM6I7ijcAEDf7lYdJvhVKys7PoD
 
