@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.42.2",
+    "version": "2.42.3",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -330,6 +330,7 @@
       "./plugins/replacePreviousNotification",
       "expo-asset",
       "expo-background-task",
+      "./plugins/iosReleaseSettings",
       [
         "expo-widgets",
         {
