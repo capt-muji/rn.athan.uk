@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict M1iQcdBKLwOhQtg93uX3l5NAG8prZlwL8ibQJMlXUohrAK5Tfu3turMKLT5RlLH
+\restrict 2hedFR9GNHNUFNiUT4rVoBjweFDU7rGH1C6xfaN6UrdVh7gSIFhec1vTa5QkaLe
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6630,6 +6630,22 @@ Acceptance:
 Standing owner orders: the seventy-five cap is the maximum; Hebrew, Yiddish and Ladino are banned from the app for good (2026-10-29); digits are Latin English in every locale; visual behaviour changes nothing outside this wave''s own surfaces.', NULL, NULL, NULL, 24500, '2026-10-29 02:50:21.537237+00', '2026-10-29 08:52:12.43613+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 12, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (413, 1, 413, NULL, 4, 'Step 3: The fr and uz catalogs land', '', NULL, NULL, NULL, 23500, '2026-10-28 15:53:37.082548+00', '2026-10-28 16:54:10.818551+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (416, 1, 416, NULL, 4, 'Step 6: fa lands RTL on the Arabic record and bn lands with its own', '', NULL, NULL, NULL, 26500, '2026-10-28 15:53:37.17376+00', '2026-10-28 17:33:40.470162+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (490, 1, 490, NULL, 1, 'The Extras explanation card''s words linger as opaque dark text after the overlay has gone, and their exit switches rather than fades', 'Goal: the Extras explanation card must leave with the overlay it belongs to. When the overlay is dismissed by a tap outside the selected row (or by the back gesture), the card''s face disappears with the overlay, but its title and description currently linger for a few milliseconds as opaque near-black text over the page, and the text''s disappearance reads as an on-off switch rather than a fade. The owner sees it on both platforms.
+
+Where: components/prayer/Explanation.tsx (the title and description inks are animated colours, interpolateColor from COLORS.surface.elevated to their real colours on the reveal progress, while only the card''s face, arrows and badges carry an opacity) and components/overlay/OverlayInfoBox.tsx (the reveal progress the card is handed, and the placer''s display gate on overlayFadeSettledAtom).
+
+What happens today, as the code reads: the card is mounted inside the prayer list, not inside components/overlay/Overlay.tsx''s fading layer, so its exit is its own reveal animation. On close the reveal animates 1 to 0, the face''s opacity falls to 0, and the inks interpolate back toward COLORS.surface.elevated; at the end of that interpolation the letters are still painted, fully opaque, in the card''s own surface colour, so the last frames show dark text on a card that has already gone. The placer only flips to display none once the overlay layer''s fade settles, which is not the same instant the inks finish. That is the black ghost and the switch-like read.
+
+Constraints: the repo''s T-294 law stands - no text may be rendered through a translucent opacity, because translucent text compounds where glyph strokes overlap. The fix must therefore move or mask the words with the card, or otherwise make the last visible frame of each ink coincident with the face''s last visible frame, without putting the title or the description behind an opacity. No visual change to the card''s open state, its placement, its arrow orientation, its colours at rest, or the overlay''s own fade.
+
+Acceptance:
+- [ ] Dismissing the overlay leaves no frame in which the card''s title or description is visible after the card''s face has gone, on the iPhone and on Android, judged frame by frame from a screen recording.
+- [ ] The title, the description, the badge, the separator, the arrows and the face all disappear over the overlay''s own fade duration, with no element reaching its end early or late.
+- [ ] The open path is unchanged: the card still rises with the same timing and settles fully drawn on its first settled frame.
+- [ ] No text is rendered through an opacity anywhere on this path, and the T-294 rule is restated where the fix lands if the mechanism changes.
+- [ ] Red-first guards cover the exit coincidence and the absence of an opacity on the inks, and yarn validate exits 0 at full coverage.
+
+Owner order 2026-10-29. Backlog: not executed in the session that filed it.', NULL, NULL, NULL, 27500, '2026-10-29 09:55:42.394485+00', '2026-10-29 09:55:42.408693+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (486, 1, 486, NULL, 4, 'Step 2: The four new kinds join both schedules'' pushes', 'stores/widget.ts pushes PrayerLockWidget4, ExtrasLockWidget4, PrayerLockWidget5 and ExtrasLockWidget5, the mock module grows the four kinds, and the push suites pin one update per kind per refresh on both schedules.', NULL, NULL, NULL, 23500, '2026-10-29 09:37:10.441767+00', '2026-10-29 09:53:47.50743+00', NULL, NULL, NULL, NULL, NULL, 484, false, NULL, 2, NULL);
 
 
@@ -8754,6 +8770,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4661, 487, 'activity', 'owner', NULL, 'created', '2026-10-29 09:37:10.471785+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4667, 484, 'activity', 'owner', NULL, 'status', '2026-10-29 09:37:25.706652+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4686, 484, 'comment', 'owner', 'Audit passed: two reviewers read the two commits, and their findings are fixed in 2.39.1 (the pushed-kind counts, the layout-5 tick-centring guard, and the registration order). yarn validate is green at 240 suites and 8096 tests with 100 percent coverage. Waiting on the owner''s device read: the four new kinds are generated into the widget extension at prebuild, so they reach the lock screen with the next iOS build, not a JS reload.', NULL, '2026-10-29 09:53:54.70233+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4688, 490, 'activity', 'owner', NULL, 'label_add', '2026-10-29 09:55:42.411686+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 225, "value": "#490"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2067, 1, 'comment', 'owner', '2026-10-19 board run: removed the stale blocked-by relations to #37 and #39 - both are Done, so they block nothing - and trimmed the now-false runs-behind-37-to-39 tail off the Waiting on line, keeping the v3.0 deferral ruling. The workflow now drops a relation when its blocker completes.', NULL, '2026-10-19 13:41:28.762888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', '2026-10-19 13:42:01.114+00');
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2076, 240, 'activity', 'owner', NULL, 'field', '2026-10-19 13:43:53.285255+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2077, 240, 'activity', 'owner', NULL, 'status', '2026-10-19 13:43:53.347375+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -8842,6 +8859,7 @@ nitpick: stores/__tests__/widgetSettingsSync.test.ts:325, with :339 and :343, st
 
 Verified, so it is not a finding: yarn validate exits 0 (240 suites, 8095 tests, 100 percent coverage). The five inline static tables and their locale finders match shared/i18n/widget-statics.json row for row across all seventy-five locales. Each of the 74 locale blocks in app.json carries the four new display names and the eight Android keys, each display name is layout 3''s with a single digit substituted, native-strings.json matches app.json key for key, and the four descriptions reuse the en literals layouts 1 and 2 already translated. Layout 4 renders the name over nextTime with no ticking Text, layout 5 the name over the timer with no absolute time, both inline faces carry name and nextTime, and all ten lock kinds sit in both schedules'' pushes.', NULL, '2026-10-29 09:51:01.040107+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4681, 487, 'activity', 'owner', NULL, 'status', '2026-10-29 09:53:47.548577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4687, 490, 'activity', 'owner', NULL, 'created', '2026-10-29 09:55:42.402363+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2168, 16, 'comment', 'owner', 'OWNER ORDER 2026-10-19: the widgets answer makes each platform''s extent explicit - two labeled bullets, iOS first, Android second, in the shape ''iOS: Yes, on the home screen and the lock screen.'' then ''Android: Yes, on the home screen.'' The shipped facts were right; the single unnamed line read as a claim for both. The copy change lands in this row before it closes; the plan doc records the decision shift.', NULL, '2026-10-19 16:19:10.648585+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2169, 16, 'comment', 'owner', 'OnePlus 3T re-read, mock build 2.1.2 from uat (package id checked before install): the help modal lists the widgets question last, and the phone''s English locale reads "Are widgets supported?" The copy matches the catalogues; the Somali fix this locale cannot show stays pinned by the suite.
 
@@ -13290,6 +13308,7 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (484, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (484, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (484, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (489, 224);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (490, 225);
 
 
 --
@@ -14235,6 +14254,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1166, 484, 9, 'Awaiting Owner', 'started', '2026-10-29 09:53:47.610428+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1034, 433, 4, 'Done', 'completed', '2026-10-28 23:42:18.22997+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1047, 442, 4, 'Done', 'completed', '2026-10-28 23:52:41.077365+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1167, 490, 1, 'Backlog', 'backlog', '2026-10-29 09:55:42.394+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1035, 434, 4, 'Done', 'completed', '2026-10-28 23:44:52.78298+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1048, 437, 4, 'Done', 'completed', '2026-10-28 23:54:34.702833+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1021, 449, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.208+00', '2026-10-28 23:55:38.066456+00');
@@ -14738,6 +14758,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (222, 1, 3, '#480', '#94a3b8', '2026-10-29 03:56:49.264254+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (223, 1, 3, '#484', '#ffffff', '2026-10-29 09:37:06.07192+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (224, 1, 3, '#489', '#ffffff', '2026-10-29 09:42:11.873893+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (225, 1, 3, '#490', '#ffffff', '2026-10-29 09:55:42.371002+00');
 
 
 --
@@ -15048,7 +15069,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 490, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 491, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -39558,7 +39579,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:475', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:445', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4886);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:412', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:413', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:410', 1, 58);
@@ -39594,11 +39614,13 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:438', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:489', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:463', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:473', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4889);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:470', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 248);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:490', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:471', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:469', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:477', 1, 5);
@@ -39865,7 +39887,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4686, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4688, true);
 
 
 --
@@ -39921,7 +39943,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 695, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 489, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 490, true);
 
 
 --
@@ -39942,7 +39964,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 130, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1166, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1167, true);
 
 
 --
@@ -39977,7 +39999,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 224, true);
+SELECT pg_catalog.setval('public.label_id_seq', 225, true);
 
 
 --
@@ -44425,5 +44447,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict M1iQcdBKLwOhQtg93uX3l5NAG8prZlwL8ibQJMlXUohrAK5Tfu3turMKLT5RlLH
+\unrestrict 2hedFR9GNHNUFNiUT4rVoBjweFDU7rGH1C6xfaN6UrdVh7gSIFhec1vTa5QkaLe
 
