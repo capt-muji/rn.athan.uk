@@ -47,6 +47,14 @@ export const LOCALE_IDS = [
   'tk',
   'wo',
   'mr',
+  'om',
+  'bm',
+  'tl',
+  'ff',
+  'te',
+  'gu',
+  'kn',
+  'am',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];

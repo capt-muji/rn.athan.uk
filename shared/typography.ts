@@ -199,6 +199,95 @@ const HANT: LocaleTypography = {
   wordFace: true,
 };
 
+// No shipped face carries the African Latin letters: Roboto and Rubik both lack
+// ɛ ɔ ɲ (U+025B U+0254 U+0272) and ɓ ɗ ƴ (U+0253 U+0257 U+01B4), measured by explicit
+// codepoint in both weights of all twenty bundled TTFs (plan T-428 decision 4), so
+// Bambara and Fulfulde name the bundled Noto Sans pair. Its hhea box is 1.362em
+// (ascent 1069, descent -293, UPM 1000, both weights) while its win ink spans
+// 1.519em (winAscent 1124, winDescent 395), so the box-bearing row-106 law applies
+// and ink-bearing surfaces take a script line that clears the measured ink: 1.55em
+const AFRICAN: LocaleTypography = {
+  familyRegular: 'NotoSans-Regular',
+  familyMedium: 'NotoSans-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.55),
+};
+
+// Telugu has no coverage in any bundled face, so this wave bundles the Noto Sans
+// Telugu v2.005 pair. Its hhea box is 1.352em (ascent 869, descent -483, UPM 1000,
+// both weights) while its win ink spans 1.478em (winAscent 995, winDescent 483),
+// so the box-bearing row-106 law applies and ink-bearing surfaces take the 1.5em
+// script line the HINDI and BENGALI records already render
+const TELUGU: LocaleTypography = {
+  familyRegular: 'NotoSansTelugu-Regular',
+  familyMedium: 'NotoSansTelugu-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Gujarati, same wave's own measurement: the Noto Sans Gujarati v2.106 pair's
+// hhea box is 1.304em (ascent 896, descent -408, UPM 1000, both weights) while
+// its win ink spans 1.484em (winAscent 1076, winDescent 408), so ink-bearing
+// surfaces take the 1.5em script line
+const GUJARATI: LocaleTypography = {
+  familyRegular: 'NotoSansGujarati-Regular',
+  familyMedium: 'NotoSansGujarati-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.5),
+};
+
+// Kannada has no coverage in any bundled face, so this wave bundles the Noto Sans
+// Kannada v2.006 pair. Its hhea box is 1.349em (ascent 809, descent -540, UPM 1000,
+// both weights) while its win ink spans 1.645em (winAscent 1105, winDescent 540),
+// so the 1.5em house line does not clear the measured ink: this record pins 1.65em,
+// the only record off the house value, the measurement rounded up
+const KANNADA: LocaleTypography = {
+  familyRegular: 'NotoSansKannada-Regular',
+  familyMedium: 'NotoSansKannada-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.65),
+};
+
+// Ethiopic, same wave's own measurement: the Noto Sans Ethiopic v2.102 pair's
+// hhea box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and its
+// win ink matches it exactly (winAscent 1069, winDescent 293), so the box clears
+// the ink and the font's own metrics serve - the Thai row-87 law
+const ETHIOPIC: LocaleTypography = {
+  familyRegular: 'NotoSansEthiopic-Regular',
+  familyMedium: 'NotoSansEthiopic-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -256,6 +345,15 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Marathi codepoint the catalog uses in both weights (measured with fontTools, plan
   // T-429 decision 6), so the same measured 1.5em script box serves
   mr: HINDI,
+  // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
+  om: LATIN,
+  bm: AFRICAN,
+  tl: LATIN,
+  ff: AFRICAN,
+  te: TELUGU,
+  gu: GUJARATI,
+  kn: KANNADA,
+  am: ETHIOPIC,
 };
 
 /**

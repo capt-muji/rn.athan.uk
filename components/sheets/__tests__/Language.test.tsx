@@ -39,18 +39,22 @@ const SIX_NAMES = [
   'Azərbaycanca',
   'Bahasa Indonesia',
   'Bahasa Melayu',
+  'Bamanankan',
   'Bosanski',
   'Deutsch',
   'English',
   'Español',
   'Français',
+  'Fulfulde',
   'Hausa',
   'Kiswahili',
   'Nederlands',
+  'Oromoo',
   'Oʻzbekcha',
   'Português',
   'Shqip',
   'Soomaali',
+  'Tagalog',
   'Türkçe',
   'Türkmençe',
   'Wolof',
@@ -65,9 +69,13 @@ const SIX_NAMES = [
   'हिन्दी',
   'मराठी',
   'বাংলা',
+  'ગુજરાતી',
   'தமிழ்',
+  'తెలుగు',
+  'ಕನ್ನಡ',
   'മലയാളം',
   'ไทย',
+  'አማርኛ',
   '简体中文',
   '繁體中文',
 ] as const;
@@ -191,8 +199,8 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits sixth, after the Latin latecomers: the seat is five rows and five gaps below the list's top
-    expect(highlight().seat).toBe(5 * 44 + 5 * SPACING.xs);
+    // English sits seventh, after the Latin latecomers: the seat is six rows and six gaps below the list's top
+    expect(highlight().seat).toBe(6 * 44 + 6 * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {

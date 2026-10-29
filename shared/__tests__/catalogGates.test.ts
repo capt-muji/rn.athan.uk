@@ -5,24 +5,30 @@
  * sourced-names.json, the committed copy of the research glossary.
  */
 
+import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
+import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { es } from '@/shared/i18n/es';
 import { fa } from '@/shared/i18n/fa';
+import { ff } from '@/shared/i18n/ff';
 import { fr } from '@/shared/i18n/fr';
+import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
 import { kk } from '@/shared/i18n/kk';
+import { kn } from '@/shared/i18n/kn';
 import { ky } from '@/shared/i18n/ky';
 import { ml } from '@/shared/i18n/ml';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
 import { nl } from '@/shared/i18n/nl';
+import { om } from '@/shared/i18n/om';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { ru } from '@/shared/i18n/ru';
@@ -31,9 +37,11 @@ import sourced from '@/shared/i18n/sourced-names.json';
 import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
+import { te } from '@/shared/i18n/te';
 import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
 import { tk } from '@/shared/i18n/tk';
+import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
@@ -75,6 +83,14 @@ const CATALOGS: Record<string, Catalog> = {
   tk,
   wo,
   mr,
+  om,
+  bm,
+  tl,
+  ff,
+  te,
+  gu,
+  kn,
+  am,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
@@ -150,6 +166,7 @@ const T419_TEN = ['ps', 'zh-Hans', 'zh-Hant', 'ru', 'az', 'de', 'sq', 'bs', 'ta'
 
 /** The eight locales T-429 ships last; the same bar covers their names and explanations */
 const T429_EIGHT = ['es', 'nl', 'kk', 'ky', 'tg', 'tk', 'wo', 'mr'] as const;
+const T428_EIGHT = ['te', 'gu', 'kn', 'am', 'om', 'bm', 'tl', 'ff'] as const;
 
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
@@ -268,6 +285,28 @@ describe('the landed catalogs against the R2 gates', () => {
     >;
     const failures: string[] = [];
     for (const loc of T429_EIGHT) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('sources every T-428 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T428_EIGHT) {
       const sections = glossary[loc];
       if (!sections) {
         failures.push(`${loc}: absent from the glossary`);

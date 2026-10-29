@@ -55,6 +55,14 @@ const LOCALES = [
   'tk',
   'wo',
   'mr',
+  'om',
+  'bm',
+  'tl',
+  'ff',
+  'te',
+  'gu',
+  'kn',
+  'am',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
@@ -200,7 +208,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('builds the Android locales_config with the thirty-four locales', () => {
+  it('builds the Android locales_config with the forty-two locales', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
 
@@ -209,7 +217,7 @@ describe('native strings from committed config', () => {
     for (const locale of LOCALES) {
       expect(xml).toContain(`<locale android:name="${locale}"/>`);
     }
-    expect(xml.match(/<locale /g)).toHaveLength(34);
+    expect(xml.match(/<locale /g)).toHaveLength(42);
     expect(xml).toContain('<locale-config xmlns:android="http://schemas.android.com/apk/res/android">');
   });
 });

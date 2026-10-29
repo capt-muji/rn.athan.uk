@@ -108,7 +108,13 @@ describe('typographyFor', () => {
         id !== 'ml' &&
         id !== 'mr' &&
         id !== 'zh-Hans' &&
-        id !== 'zh-Hant'
+        id !== 'zh-Hant' &&
+        id !== 'bm' &&
+        id !== 'ff' &&
+        id !== 'te' &&
+        id !== 'gu' &&
+        id !== 'kn' &&
+        id !== 'am'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -200,6 +206,68 @@ describe('typographyFor', () => {
     // measurement over the bundled subsets), so no surface pins a script box -
     // the Thai row-87 law
     expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves bm and ff to the bundled Noto Sans pair with the measured script line box', () => {
+    for (const locale of ['bm', 'ff'] as const) {
+      const ty = typographyFor(locale);
+      // No shipped face carries the African letters (ɛ ɔ ɲ for bm, ɓ ɗ ƴ for
+      // ff, measured absent by codepoint in both weights of all twenty bundled
+      // TTFs), so both ride the Noto Sans pair. Its hhea box is 1.362em
+      // (ascent 1069, descent -293, UPM 1000) against a 1.519em win ink
+      // (1124/395, both weights, this wave's own measurement), so ink-bearing
+      // surfaces take the 1.55em script line that clears the measured ink
+      expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+      expect(ty.scriptLineHeight?.(14)).toBe(22);
+      expect(ty.scriptLineHeight?.(15)).toBe(23);
+    }
+  });
+
+  it('resolves te to the Telugu pair with the measured script line box', () => {
+    const ty = typographyFor('te');
+    // No bundled face carries a Telugu letter, so te bundles the Noto Sans
+    // Telugu v2.005 pair. Its hhea box is 1.352em (ascent 869, descent -483,
+    // UPM 1000, both weights) against a 1.478em win ink (995/483), so ink-bearing
+    // surfaces take the 1.5em script line that clears the measured ink
+    expectScriptRecord(ty, 'NotoSansTelugu-Regular', 'NotoSansTelugu-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves gu to the Gujarati pair with the measured script line box', () => {
+    const ty = typographyFor('gu');
+    // The Noto Sans Gujarati v2.106 pair's hhea box is 1.304em (ascent 896,
+    // descent -408, UPM 1000, both weights) against a 1.484em win ink (1076/408),
+    // so ink-bearing surfaces take the 1.5em script line
+    expectScriptRecord(ty, 'NotoSansGujarati-Regular', 'NotoSansGujarati-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves kn to the Kannada pair with the measured script line box', () => {
+    const ty = typographyFor('kn');
+    // The Noto Sans Kannada v2.006 pair's hhea box is 1.349em (ascent 809,
+    // descent -540, UPM 1000, both weights) while its win ink spans 1.645em
+    // (winAscent 1105, winDescent 540), so the 1.5em house line does not clear
+    // it and this record pins 1.65em, the measured ink rounded up
+    expectScriptRecord(ty, 'NotoSansKannada-Regular', 'NotoSansKannada-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(23);
+    expect(ty.scriptLineHeight?.(15)).toBe(25);
+  });
+
+  it('resolves am to the Ethiopic pair with no script line box', () => {
+    const ty = typographyFor('am');
+    // The Noto Sans Ethiopic v2.102 pair's hhea box is 1.362em (ascent 1069,
+    // descent -293, UPM 1000, both weights) and its win ink matches exactly
+    // (1069/293), so the font's own metrics serve - the Thai row-87 law
+    expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves om and tl to the Roboto identity record', () => {
+    // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
+    expectLatinRecord(typographyFor('om'));
+    expectLatinRecord(typographyFor('tl'));
   });
 
   it('resolves zh-Hant to the TC subset pair with no script line box', () => {
