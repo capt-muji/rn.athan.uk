@@ -48,5 +48,10 @@
     "file": "components/countdown/tipGeometry.ts",
     "snippet": "isRTL ? { right: 0 } : { left: 0 }",
     "reason": "the fill's anchor is the physical key the direction argument selects; no logical key can express a per-direction layout"
+  },
+  {
+    "file": "components/sheets/screens/Language.tsx",
+    "snippet": "left: SPACING.md,",
+    "reason": "the picker's row index keeps the card's physical left edge in both directions (owner order 2026-10-29), so the slot is direction-blind by design"
   }
 ]

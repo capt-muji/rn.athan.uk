@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.32.0",
+    "version": "2.32.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -79,6 +79,7 @@
       "backgroundColor": "#1e1a6a"
     },
     "android": {
+      "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/config/icon-android-adaptive.png",
         "backgroundColor": "#05134a"

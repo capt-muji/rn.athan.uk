@@ -13,6 +13,7 @@ import PauseIcon from './pause.svg';
 import PlayIcon from './play.svg';
 import QuestionIcon from './question.svg';
 import RefreshIcon from './refresh.svg';
+import SearchIcon from './search.svg';
 import SpeakerIcon from './speaker.svg';
 import WidgetIcon from './widget.svg';
 
@@ -32,6 +33,7 @@ const ICONS: Record<Icon, typeof BellRingIcon> = {
   [Icon.GLOBE]: GlobeIcon,
   [Icon.DOWNLOAD]: DownloadIcon,
   [Icon.REFRESH]: RefreshIcon,
+  [Icon.SEARCH]: SearchIcon,
 };
 
 export default ICONS;
