@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ZXXjZYNesLhcW19frcNxb977UeKhomiiqYYdnaewbsBa8pwmAgpraUbPjvLCMgW
+\restrict uvgbXB3in8Yc9ooEvKIUmHkglbCpvjTcvClreeJLGRVyUCJH2tKzjUHG1usBAbs
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5554,6 +5554,7 @@ Needs first: #38', NULL, NULL, NULL, 73000, '2026-10-18 23:35:57.097557+00', '20
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (372, 1, 372, NULL, 4, 'Step 4: The exact binary smoked on the emulator - sync, times, countdown, check:device, qibla', '', NULL, NULL, NULL, 19500, '2026-10-25 14:17:44.250048+00', '2026-10-25 14:52:03.472157+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (424, 1, 424, NULL, 4, 'Step 5: zh-Hans and zh-Hant land with the subset pairs, the glyph lock and the script-subtag resolver', '', NULL, NULL, NULL, 25500, '2026-10-28 19:19:09.177861+00', '2026-10-28 21:27:47.242906+00', NULL, NULL, NULL, NULL, NULL, 419, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (305, 1, 305, 3, 4, 'Step 3: The built modal reaches the 3T - mock build through the single slot, aapt2 fleettest gate, install on the 3T, single-user assert, park for the owner''s read', '', NULL, NULL, NULL, 8000, '2026-10-21 02:49:38.267938+00', '2026-10-21 04:10:09.867051+00', NULL, NULL, NULL, NULL, NULL, 297, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (433, 1, 433, 3, 4, 'Step 4: kk lands', 'Plan step of T-429. Step 4: kk lands.', NULL, NULL, NULL, 24500, '2026-10-28 23:25:19.90366+00', '2026-10-28 23:42:18.224614+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (5, 1, 70, 3, 4, 'The board and workflow as a portable system: Paperclip after Kanboard was tried and rejected', 'Owner ask 2026-10-12, amended twice 2026-10-18. The Kanboard prototype was built, physically proven (twelve end-to-end checks, 127 tickets, dependency links, dark theme, adopted MCP server, passwordless) and rejected by the owner the same day: ugly in every way, and custom glue kept creeping in against the no-custom law. Decommissioned 2026-10-18 in one commit: containers and volumes deleted, the branch discarded, every kanboard file removed from the tree, board/reader.mjs restored to its pre-70 bytes. THE NEW BRIEF: Paperclip (paperclip.ing, paperclip.inc, github.com/paperclipai/paperclip - verified 2026-10-18 as MIT-licensed, self-hosted, no account, a Node.js server and React UI built for orchestrating AI agents). The owner wants a WATCH board for running agents and subagents: which tickets each picks up, which lanes are free, tickets progressing - self-hosted and free through Docker on the home server, single or multiple projects, everything built-in and nothing custom (no self-built MCP servers, no sync code, no import tooling; agents use the product''s own interfaces; styling only through the product''s native mechanisms, and the real UI must be evaluated before anything is built - an ugly board is a rejected board). The full brief with every requirement and the session''s lessons lives in `ai/prompts/paperclip-board.md`; that file is the entry point for the next session
 
 Status note: 2026-10-18, awaiting the owner''s go in a fresh session', NULL, NULL, NULL, 5000, '2026-10-18 23:35:55.576136+00', '2026-10-19 02:54:08.908428+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5572,6 +5573,23 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 
 Monitoring row for the `expo-location` compass corrections. Three corrections to `expo-location`''s own code, so Expo maintains them and this repo carries nothing once merged and released: iOS `headingFilter` is never set (on the XS, 731 of 731 readings were discarded); the Android 2-degree emission gate starves a slow turn (0.83 Hz at 2 degrees per second), so it becomes configurable; `headingAccuracy` is bucketed 0 to 3 and the negative invalid-heading sentinel collapses into bucket 0, so it goes numeric. The local patch `patches/expo-location+58.0.17.patch` (Android 50Hz sensors, no emission gate, module from source; iOS `kCLHeadingFilterNone`) dies at the first re-pin past the release, proven on a phone per the standing re-pin rule. Waiting on Expo reviewing and releasing.', NULL, NULL, NULL, 3000, '2026-10-18 23:35:55.539356+00', '2026-10-20 01:54:24.422226+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (277, 1, 277, NULL, 4, 'Step 1: the debug switcher and the ten arrangements land on lane/276', '', NULL, NULL, NULL, 1000, '2026-10-20 03:54:15.258751+00', '2026-10-20 04:11:22.101692+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (434, 1, 434, 3, 4, 'Step 5: ky lands', 'Plan step of T-429. Step 5: ky lands.', NULL, NULL, NULL, 25500, '2026-10-28 23:25:19.932078+00', '2026-10-28 23:44:52.77259+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (447, 1, 447, 3, 4, 'Step 2: Locale plumbing lands with the four Latin catalogs', '', NULL, NULL, NULL, 38500, '2026-10-28 23:29:43.954839+00', '2026-10-28 23:51:54.222259+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (448, 1, 448, 3, 4, 'Step 3: te and gu land with their bundled Noto pairs', '', NULL, NULL, NULL, 39500, '2026-10-28 23:29:44.143016+00', '2026-10-28 23:51:54.305643+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (450, 1, 450, 3, 4, 'Step 5: The full sweep is green and the README names thirty-four', '', NULL, NULL, NULL, 41500, '2026-10-28 23:29:44.347364+00', '2026-10-28 23:57:42.140577+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (428, 1, 428, 3, 4, 'Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight (te, gu, kn, am, om, bm, tl, ff)', 'Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four (2.27.x). Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.
+
+Languages: te (Telugu), gu (Gujarati), kn (Kannada), am (Amharic, Ethiopic script), om (Oromo), bm (Bambara), tl (Tagalog), ff (Fulfulde).
+Font note: Telugu, Gujarati, Kannada and Ethiopic have no coverage in any bundled face, so te, gu, kn and am bundle their Noto pairs and take script records pinned by their own measured hhea and win boxes, the ta/ml precedent of #419. bm (ɛ ɔ ɲ) and ff (ɓ ɗ ƴ) have no coverage in any shipped face either and share one bundled Noto Sans pair; om and tl ride the LATIN record (Oromo is ASCII, Tagalog needs only ñ).
+
+Where: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the five font pairs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).
+
+Acceptance:
+- [x] Eight catalogs ship at en''s parity (202 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.
+- [x] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; none of the eight reads right to left, so RTL_IDS is unchanged.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.', NULL, NULL, NULL, 22500, '2026-10-28 23:19:35.311797+00', '2026-10-29 00:29:55.113468+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 10, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (71, 1, 68, 3, 4, 'RTL flip: supportsRTL, forceRTL-at-switch, relaunch, widget layoutDirection (58b)', 'Second stage of row 58''s mirroring goal, ruled D60 (2026-10-11) and split to its own row by D68 (2026-10-12): flip `app.json` `supportsRTL`, add forceRTL-at-switch plus the app relaunch on entering or leaving an RTL locale (D59: Fabric treats direction as launch-time), pass `layoutDirection` to the widgets, and mirror the no-logical-form sites row 58a''s allowlist names - the countdown tip worklet (`tipGeometry.ts`), the SegmentedControl pill index, the toggle travel, the wave path; the window-space overlay catchers stay physical (pageX never mirrors). RN''s own `swapLeftAndRightInRTL` fires on every remaining physical prop when this flips, which is why 58a converted what it could first. Small, concentrated, the risky half; row 66''s always-restart investigation may absorb the D59 relaunch
 
 Status note: 2026-10-13, audited: supportsRTL flipped, direction forced at bootstrap and at boundary crossings with a post-convergence relaunch (D59; the relaunch is an in-process JS reload, measured on the 3T), the mirror sites landed (the tip''s mirror rides the layout swap), the window-space sites transform-pinned under LTR containing views, and the widget rtl field stamped (v8/v4; the Host application recorded blocked on the widget runtime); LTR byte-identical, proven on the 3T mock. Executed as 2.0.151/2.0.153/2.0.155 through two planner-ruled stops; the two-reviewer audit plus the device recapture fixed twelve findings at 2.0.156/2.0.158 (the pill double-mirror, the direction-record regression the recapture caught, the stamp''s mutation-proved true-path tests among them); the residual RTL travel family the owner''s test found (the pill, the toggles, the colour picker) is re-scoped to row 73 with the diagnosis in its brief
@@ -5635,6 +5653,19 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence
 
 Needs first: #85, #88', NULL, NULL, NULL, 37000, '2026-10-18 23:35:56.472517+00', '2026-10-19 02:54:08.188234+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (427, 1, 427, 3, 4, 'Fifty languages, wave one of three: the Arabic-script and West African eight (pa-Arab, sd, ug, ckb, ku, yo, jv, su)', 'Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.
+
+Languages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).
+Script note: four of the eight read right to left. pa ships under the script subtag pa-Arab following the zh-Hans/zh-Hant precedent, because the Muslim Punjabi reading public uses Shahmukhi and Gurmukhi is the Sikh script; a device tag of pa or pa-PK resolves to pa-Arab. ckb and ku ship as separate languages: Sorani is written in Arabic script and Kurmanji in Latin.
+
+Where: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the one font pair a Latin script needs for Yoruba''s ṣ under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).
+
+Acceptance:
+- [x] Eight catalogs ship at en''s parity (201 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.
+- [x] The eight ids sit in LOCALE_IDS (thirty-four total), the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.', NULL, NULL, NULL, 21500, '2026-10-28 23:19:29.715191+00', '2026-10-29 00:29:55.031486+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 12, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (230, 1, 230, 5, 11, '`expo-background-task` configurable network requirement (expo/expo#50581)', 'PR: https://github.com/expo/expo/pull/50581
 
 Monitoring row for PR `expo/expo#50581`, which makes the background network requirement configurable. The local patch `patches/expo-background-task+58.0.11.patch` adds `requiresNetworkConnectivity` to `BackgroundTaskOptions` (default true); the app registers with `false` (`stores/notifications.ts`) so the notification refresh runs offline, and published builds to 58.0.11 hardcode both constraints. The patch dies at the first re-pin past the release. Competing draft `expo/expo#48469` stalled since 2026-08-04; issue #48122 carries a needs review label. Carries the retired issue ledger''s item 37. Opened 2026-10-09, open and unmerged at the 2026-10-17 re-check.', NULL, NULL, NULL, 4000, '2026-10-19 07:36:49.676207+00', '2026-10-20 00:31:39.883775+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5644,6 +5675,7 @@ Monitoring row for PR `expo/expo#51292`, which adds the `openApp` option to the 
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (231, 1, 231, 5, 11, '`expo-widgets` fillMaxWidth fraction', 'PR: https://github.com/expo/expo/pull/51290
 
 Monitoring row for PR `expo/expo#51290`: the Android Glance converter drops the `fillMaxWidth` fraction (a 0.5 renders at 1.0) and has no `weight` case. This is the true cause behind row 15d''s proportional-layout workaround; nothing in this repo changes until it merges, and the workaround simplifies only at the owner''s say. Removes no patch.', NULL, NULL, NULL, 5000, '2026-10-19 07:36:59.463754+00', '2026-10-20 01:54:24.42644+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (431, 1, 431, 3, 4, 'Step 2: es lands', 'Plan step of T-429. Step 2: es lands.', NULL, NULL, NULL, 22500, '2026-10-28 23:25:19.84443+00', '2026-10-28 23:39:46.310976+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (300, 1, 300, NULL, 4, 'Step 1: the Close row''s Android entrance starts at zero opacity in its own style', 'Goal: the Close row''s static style carries opacity 0 on Android alone, with the jest contract red before green and a mutation pass on the Platform gate, the entering and the layout.
 
 Where: components/modals/Help.tsx, components/modals/__tests__/Help.test.tsx.
@@ -5654,6 +5686,7 @@ Acceptance:
 - [ ] the row keeps layout={GROW} and entering={FadeIn} on both platforms
 - [ ] mutation pass: deleting the style, un-gating it, deleting the entering and deleting the layout each turn a test red
 - [ ] yarn validate exits 0', NULL, NULL, NULL, 7000, '2026-10-20 22:42:35.40308+00', '2026-10-20 22:50:48.03425+00', NULL, NULL, NULL, NULL, NULL, 295, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (435, 1, 435, 3, 4, 'Step 6: tg lands', 'Plan step of T-429. Step 6: tg lands.', NULL, NULL, NULL, 26500, '2026-10-28 23:25:19.962453+00', '2026-10-28 23:46:35.360196+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (35, 1, 114, 2, 4, 'The owner''s pass-four read: the colon''s advance, the round info badge, the Thai step', 'OWNER READ 2026-10-16 (on the 2.0.841 tree): (1) when an upcoming row becomes the next prayer the colon stayed dim - the advance never took the next ink (the rollover cascades read fine); (2) the overlay info box''s information icon becomes ROUND matching the sheet footers exactly (same style, same size, same glyph) - the info box only, nowhere else; (3) the Thai Help modal carried ''Time Sensitive Notifications'' in English inside Thai copy - every sibling locale translates the term inline. The owner''s confirmations on the same read: the loader''s frame-one language fixed, Hindi''s bold acceptable and good, the footer glyph size right, Thai otherwise great. FOLLOW-UPS same session: the colon SNAPPED to dim at the day-roll cascade instead of fading with the digits (fixed at 2.0.845 - the pair''s bright end stays put so the cascade rides the same endpoints as the digits), and the mock''s ceil-based gaps displayed as 2m and 3m (fixed at 2.0.844 - boundary-based seeding always reads 1m and 2m)
 
 Status note: 2026-10-16, landed direct at 2.0.842, 2.0.844 and 2.0.845 by the owner''s order (all gates green each time, 100 percent): the colon rides ONE derived colour whose endpoint pair keys off the row state (colonInkPair, pure and pinned - the root was Fabric keeping the last UI-thread value when a static ink replaced an animated style in the array), InfoBadge becomes round-only at the footer''s exact 20pt chip and 10pt glyph with the round prop dying beside its last square caller, and the Thai step names time-sensitive notifications in Thai', NULL, NULL, NULL, 14000, '2026-10-18 23:35:56.074831+00', '2026-10-19 02:54:07.938665+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
@@ -5735,6 +5768,7 @@ Acceptance:
 - [ ] red-first tests pin the cover''s face values and their arrival order
 - [ ] En byte-identical when not switching; iOS unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 1000, '2026-10-19 09:16:24.693186+00', '2026-10-19 16:08:14.174025+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (437, 1, 437, 3, 4, 'Step 8: wo lands', 'Plan step of T-429. Step 8: wo lands.', NULL, NULL, NULL, 28500, '2026-10-28 23:25:20.010182+00', '2026-10-28 23:54:34.698941+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, 2, 4, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.
 
 Where: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.
@@ -6165,6 +6199,7 @@ Acceptance:
 - [ ] no hover band appears anywhere on the macOS window
 - [ ] the phones'' behaviour is unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 17500, '2026-10-26 23:47:27.492121+00', '2026-10-27 02:18:09.148397+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (436, 1, 436, 3, 4, 'Step 7: tk lands', 'Plan step of T-429. Step 7: tk lands.', NULL, NULL, NULL, 27500, '2026-10-28 23:25:19.986144+00', '2026-10-28 23:52:14.771778+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (414, 1, 414, NULL, 4, 'Step 4: The sw and ha catalogs land', '', NULL, NULL, NULL, 24500, '2026-10-28 15:53:37.115855+00', '2026-10-28 17:12:53.71369+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (351, 1, 351, NULL, 4, 'Step 2: Survey eras C and D (1.24-1.29, 2.0-2.3) by keyword pass with commit confirmation', 'Goal: produce this step''s output per the T-347 plan doc.
 
@@ -6172,6 +6207,8 @@ Where: the lane worktree.
 
 Acceptance:
 - [ ] the step''s output exists as the plan names it', NULL, NULL, NULL, 5500, '2026-10-25 07:48:25.02036+00', '2026-10-25 08:02:59.441649+00', NULL, NULL, NULL, NULL, NULL, 347, false, NULL, 1, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (432, 1, 432, 3, 4, 'Step 3: nl lands', 'Plan step of T-429. Step 3: nl lands.', NULL, NULL, NULL, 23500, '2026-10-28 23:25:19.873483+00', '2026-10-28 23:39:46.332431+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (439, 1, 439, 3, 4, 'Step 10: The full sweep is green and the README names thirty-four', 'Plan step of T-429. Step 10: The full sweep is green and the README names thirty-four.', NULL, NULL, NULL, 30500, '2026-10-28 23:25:20.060043+00', '2026-10-28 23:58:12.486814+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (365, 1, 365, NULL, 4, 'Step 1: the time-ago spacing gate and the Thai byte', '', NULL, NULL, NULL, 19500, '2026-10-25 08:53:39.843768+00', '2026-10-25 09:11:05.234769+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (366, 1, 366, NULL, 4, 'Step 2: the one-line badge constraint and its suite', '', NULL, NULL, NULL, 20500, '2026-10-25 08:53:39.887276+00', '2026-10-25 09:11:05.270805+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (346, 1, 346, 2, 4, 'The prayer-ago badge keeps its space around the time in every language, and Hindi stays on one line on Android', 'Goal: two visual defects in the time-ago badge below the prayer list. Thai on both platforms renders the sentence''s trailing word touching the interpolated time''s last letter with no space; Somali, Malay, Arabic and English space correctly today. Hindi on Android only wraps the badge into two lines, the second cropped to a sliver; the badge must stay one line, and there is ample room to grow. The spacing rule is general, never language-specific.
@@ -6184,6 +6221,7 @@ Acceptance:
 - [ ] transcribed device reads: Hindi''s badge on one line on the S23 with no cropped second line, and Thai''s badge spaced before and after the time on both the S23 and the XS
 - [ ] yarn validate green', NULL, NULL, NULL, 3500, '2026-10-25 05:27:14.749531+00', '2026-10-25 18:39:05.540674+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (387, 1, 387, NULL, 4, 'Step 3: the on-glass proof on the iPhone XS and the 3T', 'Version bump, both platforms built in parallel, aapt2 badging before the 3T install, then the transcript of every criterion read on glass. Plan: T-381 doc.', NULL, NULL, NULL, 18500, '2026-10-27 05:02:46.006403+00', '2026-10-27 06:13:12.809682+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (430, 1, 430, 3, 4, 'Step 1: The sourcing record completes for the eight languages', 'Plan step of T-429. Step 1: The sourcing record completes for the eight languages.', NULL, NULL, NULL, 21500, '2026-10-28 23:25:19.811135+00', '2026-10-28 23:39:46.283325+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (347, 1, 347, 8, 4, 'The README catches up with the app: every user-facing change since 1.0.0 walks the git history into the page', 'Goal: README.md carries every user-facing feature the git history records, grouped the way a reader wants, with every claim true of the current build.
 
 Where: README.md, written from a survey of the git log from the first commit (2024-10-26) to the uat tip 2.4.40 (dc269768), through the 1.0.x build-out, the 1.1.x/1.2.x store era, the 1.3-1.23 series, the 1.24-1.29 rebuild, the 2.x restructure and the 2.4.x line.
@@ -6223,7 +6261,24 @@ Acceptance:
 - [ ] The 24-hour throttle holds across relaunches: a second launch inside the window runs no check and presents nothing
 - [ ] The manual row''s behavior (T-396''s failure and verdict states) is unchanged, pinned by its suite
 - [ ] Full unit coverage of every changed line, red before green; read once on glass on the XS', NULL, NULL, NULL, 20500, '2026-10-27 23:16:34.258255+00', '2026-10-27 23:16:34.364755+00', NULL, NULL, NULL, '2026-10-28 00:56:00.667423+00', NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (429, 1, 429, 3, 4, 'Fifty languages, wave three of three: the Europe, Central Asia and India eight (es, nl, kk, ky, tg, tk, wo, mr)', 'Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, the third of three parallel waves that together add twenty-four and reach fifty. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.
+
+Languages: es (Spanish), nl (Dutch), kk (Kazakh), ky (Kyrgyz), tg (Tajik), tk (Turkmen), wo (Wolof), mr (Marathi).
+Font note: kk, ky, tg and tk ride Roboto''s Cyrillic, mr rides the bundled Noto Sans Devanagari pair, and the rest are Latin, so this wave bundles no new font; the plan''s decision 6 records the fontTools measurement, by explicit codepoint in both weights, that proves it.
+
+Where: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and shared/languageNames.ts; shared/i18n/locale.ts, loader.ts, native-strings.json, widget-statics.json and catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/; README.md. The recipe is the shipped waves #410 and #419 and their plan docs (Docs pages 48 and 49).
+
+Acceptance:
+- [x] Eight catalogs ship at en''s parity (205 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.
+- [x] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the four widget STATIC tables and their locale-finder lists, the detection rows and the gates; the T429_EIGHT sourcing row is green in catalogGates.
+- [x] typography.ts maps es, nl, kk, ky, tg, tk and wo to the LATIN record and mr to the bundled Devanagari pair, and typography.test.ts covers both.
+- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.
+- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.
+- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone.', NULL, NULL, NULL, 23500, '2026-10-28 23:19:35.346098+00', '2026-10-29 00:29:55.180997+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 20, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (415, 1, 415, NULL, 4, 'Step 5: pt lands fresh-sourced and ur lands RTL', '', NULL, NULL, NULL, 25500, '2026-10-28 15:53:37.145945+00', '2026-10-28 17:23:23.176881+00', NULL, NULL, NULL, NULL, NULL, 410, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (446, 1, 446, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 37500, '2026-10-28 23:29:43.763696+00', '2026-10-28 23:51:54.144859+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (449, 1, 449, 3, 4, 'Step 4: kn and am land with their bundled pairs', '', NULL, NULL, NULL, 40500, '2026-10-28 23:29:44.208524+00', '2026-10-28 23:55:38.06316+00', NULL, NULL, NULL, NULL, NULL, 428, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (438, 1, 438, 3, 4, 'Step 9: mr lands on the Devanagari record', 'Plan step of T-429. Step 9: mr lands on the Devanagari record.', NULL, NULL, NULL, 29500, '2026-10-28 23:25:20.03391+00', '2026-10-28 23:56:44.738788+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (371, 1, 371, NULL, 4, 'Step 3: The phones measured, nothing displaced - the 3T and XS lines and install refusals transcribed', '', NULL, NULL, NULL, 18500, '2026-10-25 14:17:44.161772+00', '2026-10-25 14:24:39.045513+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (388, 1, 388, 2, 4, 'A foreground-sync widget-push failure blanks the home screen over stored days', 'Goal: no failure anywhere in the launch or foreground sync may leave the home screen on the error screen while good cached prayer days sit in storage - the state-invariant, proven exhaustively, not through one journey.
 
@@ -6274,6 +6329,7 @@ Acceptance:
 - [ ] no other locale''s footer gains or loses marks
 - [ ] yarn validate green', NULL, NULL, NULL, 16500, '2026-10-25 18:39:24.332476+00', '2026-10-27 02:53:12.254632+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (370, 1, 370, NULL, 4, 'Step 2: The artifacts in hand - AAB and IPA downloaded from EAS, sha256, derived APK badged, IPA plist and profile read', '', NULL, NULL, NULL, 17500, '2026-10-25 14:17:44.077641+00', '2026-10-25 14:22:37.642776+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (444, 1, 444, 3, 4, 'Step 5: jv and su land on the Latin record', '', NULL, NULL, NULL, 35500, '2026-10-28 23:26:34.558781+00', '2026-10-29 00:05:14.312424+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (345, 1, 345, 9, 4, 'The alert sheet''s reminder options keep their padding in every locale: wide-glyph languages stop squashing the Silent and Sound segments', 'Goal: the reminder rows'' option segments (the Silent and Sound pair, and the before-time options) keep a minimum of breathing room in every locale - content-driven, never language-specific: the floor is exactly the padding today''s English layout shows, there is no maximum (a row is one word; no shipped language''s row approaches the Sound title, an assumption the owner tests as languages are added), and the option container grows leftward by just what the content needs so the floor holds. Of the six shipped languages only Somali is currently tight.
 
 Where: the alert bottom sheet''s reminder segmented controls (components/sheets/parts/SegmentedControl.tsx and the reminder rows in ReminderCard.tsx), across the six shipped locales; the owner''s constraint set: each option stays exactly 50 percent of its container, both options equal, both rows (the sound pair and the before pair) equal in length, English''s own layout unchanged.
@@ -6315,6 +6371,8 @@ Acceptance:
 
 Fallback route, if the track''s rollout hygiene gets in the way: internal app sharing, Google''s own lighter recipe for in-app update testing - same hard rules, no track or rollout: share-install A via the link, upload B with a higher code, click B''s share link WITHOUT installing, open the app, the update is offered. Chosen only if the owner rules the track route heavier than the proof is worth.', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 15:04:19.549939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (404, 1, 404, NULL, 4, 'Step 1: The crash reproduced on the iPad simulator, its own stack or console line transcribed onto the ticket', '', NULL, NULL, NULL, 21500, '2026-10-28 01:15:31.006462+00', '2026-10-28 02:40:31.986827+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (440, 1, 440, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 31500, '2026-10-28 23:26:34.451914+00', '2026-10-28 23:45:46.520696+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (445, 1, 445, 3, 4, 'Step 6: The full sweep is green and the README names thirty-four', '', NULL, NULL, NULL, 36500, '2026-10-28 23:26:34.583136+00', '2026-10-29 00:08:56.478732+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (392, 1, 392, NULL, 4, 'Step 3: proof and merge', 'Coverage on the touched lines, mutation pass on the new guard (catch removed, warn demoted, message changed, payload dropped: each fails a test), yarn validate green, version 2.11.20 riding the commit (package.json, app.json, shared/whatsNew.ts), merge the lane branch into local uat unpushed.', NULL, NULL, NULL, 18500, '2026-10-27 10:43:57.388819+00', '2026-10-27 11:02:51.668089+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (390, 1, 390, NULL, 4, 'Step 1: the foreground-rejection tests', 'In stores/__tests__/syncLoadable.test.ts: one test drives sync({ deferWidgetRefresh: false }) with the widget push mocked to reject; the sync resolves, logger().warn fires ''WIDGET: Foreground refresh failed'' with the error, and the home screen''s read (triggerSyncLoadable then store.get(syncLoadable)) lands hasData. Red before the fix.', NULL, NULL, NULL, 16500, '2026-10-27 10:43:57.307831+00', '2026-10-27 11:02:51.672036+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (396, 1, 396, 2, 4, 'The Check for updates row must tell a failed check from an up-to-date verdict, and stay retryable', 'Goal: with the network unreachable, a press on Check for updates settles the row into an honest failure state - a red circle with a white X, a try-again label, the refresh arrows back - and the row re-runs the check on the next press without the sheet closing; only a check that reached a verdict consumes the once-per-opening budget.
@@ -6346,6 +6404,7 @@ Acceptance:
 This is a placeholder: the owner refines the direction and planning refines the steps when work starts.
 
 The T-327 interplay, for whoever plans this: this redesign''s floor proof IS T-327''s acceptance criterion. If the 3T holds the 30fps floor recorder-free when this lands, T-327 closes as fixed-by-this-redesign and its remaining steps dissolve; if it does not, T-327 re-enters planning for its steps 13-16 with the instrument fold standing on lane1/T-327. The blocks-relation (this ticket blocks T-327) carries the dependency and removes itself by rule when this completes.', NULL, NULL, NULL, 3000, '2026-10-25 18:39:24.228498+00', '2026-10-26 07:23:36.128237+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (441, 1, 441, 3, 4, 'Step 2: pa-Arab and sd land RTL on the Naskh record', '', NULL, NULL, NULL, 32500, '2026-10-28 23:26:34.479405+00', '2026-10-28 23:45:46.547533+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (385, 1, 385, NULL, 4, 'Step 1: the six catalogs'' checking string and the re-hashed lock', 'settings.checkingUpdates in en, ar, so, hi, ms and th, then yarn i18n:lock re-hashes the lock for the changed English source. Plan: T-381 doc.', NULL, NULL, NULL, 16500, '2026-10-27 05:02:45.958118+00', '2026-10-27 05:21:45.013896+00', NULL, NULL, NULL, NULL, NULL, 381, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (391, 1, 391, NULL, 4, 'Step 2: the guarded foreground push', 'In stores/sync.ts initializeAppState: the non-deferred branch catches the push rejection and warns ''WIDGET: Foreground refresh failed'' through the Pino logger; the comment names the reason. The deferred branch is untouched.', NULL, NULL, NULL, 17500, '2026-10-27 10:43:57.360847+00', '2026-10-27 11:02:51.673557+00', NULL, NULL, NULL, NULL, NULL, 388, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (397, 1, 397, 2, 4, 'Step 1: the plan doc - the design, the six-locale copy, the grill and the gate', '', NULL, NULL, NULL, 18500, '2026-10-27 16:29:23.175586+00', '2026-10-27 16:29:38.276904+00', NULL, NULL, NULL, NULL, NULL, 396, false, NULL, 1, NULL);
@@ -6360,6 +6419,8 @@ Acceptance:
 - [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations
 - [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged
 - [x] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket', NULL, NULL, NULL, 21500, '2026-10-28 18:22:09.755727+00', '2026-10-28 22:20:36.13993+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 15, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (442, 1, 442, 3, 4, 'Step 3: ug and ckb land RTL on the Naskh record', '', NULL, NULL, NULL, 33500, '2026-10-28 23:26:34.505854+00', '2026-10-28 23:52:41.071547+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (443, 1, 443, 3, 4, 'Step 4: ku and yo land, yo on its own bundled pair', '', NULL, NULL, NULL, 34500, '2026-10-28 23:26:34.53244+00', '2026-10-29 00:02:32.686747+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (376, 1, 376, 3, 4, 'A Check for updates button in the settings sheet''s Other card: the update check on demand', 'Goal: a Check for updates button in the settings bottom sheet''s OTHER card that triggers the app''s ONE update flow on demand. The button is complementary to the automatic check, never a parallel system: same device/updates.ts machinery, same update modal, same Play flow - a second entry point, not a second pipeline.
 
 How it composes: checkForUpdates gains a manual mode (an option such as manual: true) that skips only the 24-hour popup_update_last_check read for that call. Everything else is shared: the same version comparison, the same modal presentation through the existing popupUpdateEnabled path, the same startNativeUpdate on Android. The background launch check keeps its throttle untouched. A manual tap still writes the stamp, so the automatic check never double-fires the same window.
@@ -11368,6 +11429,26 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4136, 423, 'activity', 'owner', NULL, 'status', '2026-10-28 21:02:35.330998+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4137, 424, 'activity', 'owner', NULL, 'status', '2026-10-28 21:27:47.255172+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4139, 425, 'activity', 'owner', NULL, 'status', '2026-10-28 21:34:41.749749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4159, 427, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.43387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "427"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4165, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:19:40.542875+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4166, 429, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:19:40.551083+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 215, "value": "#429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4168, 429, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.589404+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4178, 430, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.818839+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4179, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.818839+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 430, "value": "T-430"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4182, 431, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.85067+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4183, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.85067+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 431, "value": "T-431"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4186, 432, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.879042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4187, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.879042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 432, "value": "T-432"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4210, 438, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:20.039208+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4211, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:20.039208+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 438, "value": "T-438"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4238, 443, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.537598+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4239, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.537598+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 443, "value": "T-443"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4241, 444, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.564345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4242, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.564345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 444, "value": "T-444"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4244, 445, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.587954+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4245, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.587954+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 445, "value": "T-445"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4246, 427, 'comment', 'owner', 'Plan written as Docs page T-427 (id 51), six steps of 2 points each, 12 total. Eight languages, pa-Arab and sd first; the wave''s version band is 2.26.x.', NULL, '2026-10-28 23:26:39.110457+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4247, 427, 'activity', 'owner', NULL, 'status', '2026-10-28 23:26:39.133932+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4141, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 21:38:16.3755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4142, 419, 'comment', 'owner', 'Steps 4 to 6 landed and are merged to local uat at 73103393 (2.25.1): ta and ml on their bundled Noto pairs at 2.23.0, zh-Hans and zh-Hant on the subset pairs with the glyph lock and the script-subtag resolver at 2.24.0, and the full sweep at 2.25.0 with the README naming twenty-six - validate green at the merge commit over the twenty-six locales, 237 suites and 6685 tests at full coverage, en''s lock hash unchanged, the widget runtime load suite green. Two Step-1 readings from session A stand for the audit as recorded in comment 4135: the ps six-core-name swap read as R9''s five named slots (Sunrise already attested one-word Pashto), and de''s two rows left on a single catalog slug sitting outside the plan''s four-row confirmation census, their notes naming the second catalog that prints them. Step 7, the XS device build as the original app, follows the audit in a fresh session.', NULL, '2026-10-28 21:38:16.403335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4143, 419, 'comment', 'owner', 'Blind review of c02b6c80..73103393 (the ten-language wave). Gates re-run in the main tree: yarn validate exit 0, 237 suites, 6685 tests, 100 percent on statements, branches, functions and lines; versions in lockstep at 2.25.1 across package.json, app.json and the prebuild build.gradle; the four zh subset TTFs'' own cmaps equal the glyph lock exactly, both weights, both directions. Two findings:
@@ -11381,6 +11462,19 @@ question: shared/i18n/sourced-names.json (de rows) - decision 11''s rule gives e
 
 nitpick: plan doc (Docs page 49), Proof 2 - the jq one-liner is a syntax error under jq 1.8.1 (the collect bracket closes at the iterate, leaving the final bracket unmatched, exit 3); the balanced nested-collect pipeline prints 0, so the claim holds - fix the doc''s command so the next auditor can run it verbatim.', NULL, '2026-10-28 21:46:51.516095+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4147, 419, 'activity', 'owner', NULL, 'status', '2026-10-28 22:04:30.733848+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4160, 427, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.453962+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4161, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:19:40.475475+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4163, 428, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.50331+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "428"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4164, 428, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.521687+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4167, 429, 'activity', 'owner', NULL, 'field', '2026-10-28 23:19:40.572288+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "429"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4169, 429, 'activity', 'owner', NULL, 'field', '2026-10-28 23:21:54.393807+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4181, 431, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.849235+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4184, 431, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.85528+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4201, 436, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.989003+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4204, 436, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.993897+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4213, 439, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:20.062957+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4216, 439, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:20.06764+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4219, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:25:25.518915+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4145, 419, 'comment', 'owner', 'AUDIT RECORD (Lane 1 lead, 2026-10-28): range c02b6c80..73103393 (the wave''s seven commits, T-410''s audited line below it untouched) reviewed at uat 73103393 by two reviewers - plan-conformance (comment 4144) and blind (comment 4143) - and the lead adjudicated every finding from the code. Blind finding 1 (the zh region mapping unreachable: the runtime patch fed the widget finders the bare language code, so every Chinese device resolved Simplified and the zh-TW/zh-HK/zh-MO rows certified inputs no device produces) CONFIRMED and FIXED in acce614d: the patch now feeds the full BCP 47 tag on both platforms (Android toLanguageTag, iOS minimalIdentifier), red first in widgetOpenAppPatch, node_modules re-patched with the reverse-check proving patch and tree agree, the widget runtime load suite green over the re-patched runtime. Blind finding 2 (the cjkSubset gate never read the committed TTFs, so stale binaries could ship tofu-green) CONFIRMED and FIXED in acce614d: cjk-glyph-lock.json gains a files sha256 map written by the generator and hashed in-test, mutation pass proven (an appended byte fails the row, the restored file passes). Plan-conformance question (de''s Sunrise and last-third explanation on al-azan alone, notes naming the non-independent Mihrab) CLOSED by measurement, not ruling: salatnow.com''s Diyanet-method German timetables print Sonnenaufgang as the row and tahajjud.de prints Das letzte Drittel der Nacht beginnt, both recorded as the rows'' confirming sources in acex614d''s sourced-names edit. Plan-conformance nitpick (the plan doc''s Proof-2 jq command exits 3 under jq 1.8.1) FIXED: the doc carries the balanced nested-collect form, verified printing 0 (doc version 4). yarn validate green at acex614d: 237 suites, 6687 tests, 100 percent coverage. The audit is GREEN; Step 7 (the XS development build) runs next in its own session, then the ticket parks for the owner.', NULL, '2026-10-28 21:56:51.463958+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4146, 419, 'comment', 'owner', 'Correction: the de sourcing closure sits in acce614d''s sourced-names edit - one character typo above.', NULL, '2026-10-28 21:57:18.715289+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4145, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4148, 419, 'comment', 'owner', 'Owner order (2026-10-28): agents are BANNED from navigating the phone - no driving the XS, no on-glass reads, no verification clicks. The owner navigates the phone, reads every text, and rules from the Awaiting Owner column. Step 7''s machine read is CANCELLED: the step ends at install (bundle-id assert, install, install-verified), then the ticket parks. Nothing else touches the phone.', NULL, '2026-10-28 22:17:14.149323+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11389,10 +11483,266 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4152, 419, 'activity', 'owner', NULL, 'field', '2026-10-28 22:20:36.172942+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s click-around: read the twenty-six languages on the XS development build (installed as the original app, 2.25.2 at acce614d) and rule - push both unpushed waves (2.12.0-2.19.2 and 2.20.0-2.25.2) to ship, or amend"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4153, 419, 'comment', 'owner', 'Step 7 done under the owner''s no-navigation order: both platforms compiled in parallel from acce614d (2.25.2) - the Android proof APK''s own report reads package <pkg>, versionName 2.25.2, env local, never installed - and the iOS build installed on the iPhone XS as the ORIGINAL app: devicectl lists Athan <pkg> 2.25.2, bundle id asserted before install, no fleettest anything. The phone is the owner''s to navigate; the twenty-six languages are on it to read. Parked for the ruling: push both unpushed waves to ship, or amend.', NULL, '2026-10-28 22:20:36.188335+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4077, 410, 'comment', 'owner', 'Lane 1 rotates here at 12 of 16 points: Steps 4-6 done (T-414 f122c129, T-415 5019dee2, T-416 eb2c4609), all ten catalogs landed, LOCALE_IDS at sixteen with RTL_IDS at ar/fa/ur and both script pairs bundled. Resume at Step 7 (T-417, the native and widget surfaces): worktree $HOME/repos/wt-lane1-t410 clean on lane1/T-410 at eb2c4609, next version stamp 2.18.0. Two agent rulings this batch sit on the ticket (the Naskh 1.5em script box; the missing fa RTL pin found by mutation).', NULL, '2026-10-28 17:33:59.361198+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4162, 428, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:19:40.483647+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 214, "value": "#428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4173, 429, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:16.940908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4174, 429, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:16.940908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4175, 429, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:16.940908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4176, 429, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:16.940908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4185, 432, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.877624+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4188, 432, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.883505+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4190, 433, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.910025+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4191, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.910025+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 433, "value": "T-433"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4194, 434, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.941444+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4195, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.941444+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 434, "value": "T-434"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4205, 437, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:20.013988+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4206, 437, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:20.015292+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4207, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:20.015292+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 437, "value": "T-437"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4208, 437, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:20.018962+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4218, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:25:23.841866+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4237, 443, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.535979+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4240, 444, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.56287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4119, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 19:19:18.481293+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [ ] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [ ] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [ ] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4138, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 21:27:52.751842+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [ ] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4140, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 21:34:41.783432+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [ ] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4150, 419, 'activity', 'owner', NULL, 'description', '2026-10-28 22:20:36.148605+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.\n\nWhere: the ten new catalogs in shared/i18n/ (ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml) beside the sixteen shipped, the language sheet and picker, the RTL and numeral paths, the widget statics and locale finders, and the standing ios-build worktree recipe for the device step; the selection authority is ai/plans/39-localisation/research/ (R9-LAUNCH-SET.md, R6-PRAYER-NAME-CATALOG.md, R4-LOCALE-DETECTION-AND-UX.md, R12-NUMERALS.md, prayer-names.json).\n\nAcceptance:\n- [x] Ten new locale catalogs ship, each named with its selection rationale and readiness state in the plan doc: ps, zh-Hans, zh-Hant, ru, az, de, sq, bs, ta, ml (R9 sections 1, 3 and 4; R6 section 5; R4 C.1, C.2 and A.4)\n- [x] Every new catalog satisfies the naming rule (eleven prayer names, one word where the language allows) with sourcing recorded per language: jq over shared/i18n/sourced-names.json prints 0 rows with null text, source or confidence across the ten''s names and explanations\n- [x] The suite covers every new locale at full coverage and yarn validate exits 0 with the sixteen existing locales unregressed and en''s catalog-lock hash unchanged\n- [x] A development build of the merged tree installs on the iPhone XS as the ORIGINAL app (plutil asserts <pkg>, original name, never a fleettest variant, owner order 2026-10-28) via the standing ios-build worktree recipe with both platforms compiled in parallel, and the owner''s on-glass reads are transcribed on the ticket"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4154, 427, 'activity', 'owner', NULL, 'created', '2026-10-28 23:19:29.730532+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4155, 428, 'activity', 'owner', NULL, 'created', '2026-10-28 23:19:35.320756+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4156, 429, 'activity', 'owner', NULL, 'created', '2026-10-28 23:19:35.3517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4157, 427, 'activity', 'owner', NULL, 'status', '2026-10-28 23:19:40.392582+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4158, 427, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:19:40.406386+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 213, "value": "#427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4243, 445, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.586464+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4170, 429, 'activity', 'owner', NULL, 'description', '2026-10-28 23:25:16.929305+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, the third of three parallel waves that together add twenty-four and reach fifty. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: es (Spanish), nl (Dutch), kk (Kazakh), ky (Kyrgyz), tg (Tajik), tk (Turkmen), wo (Wolof), mr (Marathi).\nFont note: kk, ky, tg and tk ride Roboto''s Cyrillic, mr rides the bundled Noto Sans Devanagari pair, and the rest are Latin, so this wave bundles no new font; the plan''s decision 6 records the fontTools measurement, by explicit codepoint in both weights, that proves it.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and shared/languageNames.ts; shared/i18n/locale.ts, loader.ts, native-strings.json, widget-statics.json and catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/; README.md. The recipe is the shipped waves #410 and #419 and their plan docs (Docs pages 48 and 49).\n\nAcceptance:\n- [ ] Eight catalogs ship at en''s parity (205 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [ ] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the four widget STATIC tables and their locale-finder lists, the detection rows and the gates; the T429_EIGHT sourcing row is green in catalogGates.\n- [ ] typography.ts maps es, nl, kk, ky, tg, tk and wo to the LATIN record and mr to the bundled Devanagari pair, and typography.test.ts covers both.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4171, 429, 'activity', 'owner', NULL, 'type', '2026-10-28 23:25:16.929305+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4172, 429, 'activity', 'owner', NULL, 'estimate', '2026-10-28 23:25:16.929305+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "20"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4177, 430, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.81669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4180, 430, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.824463+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4189, 433, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.908697+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4192, 433, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.915048+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4193, 434, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.940127+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4196, 434, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.945268+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4197, 435, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:19.965175+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4198, 435, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.966705+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4199, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.966705+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 435, "value": "T-435"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4200, 435, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:19.969834+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4202, 436, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:19.990202+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4203, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:19.990202+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 436, "value": "T-436"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4209, 438, 'activity', 'owner', NULL, 'created', '2026-10-28 23:25:20.037933+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4212, 438, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:25:20.04275+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4214, 439, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:25:20.06416+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 429, "value": "T-429"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4215, 429, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:25:20.06416+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 439, "value": "T-439"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4217, 429, 'comment', 'owner', 'Plan written as Docs page T-429: eight catalogs in ten steps, 20 points; es and nl ship Fajr and Zonsopkomst on fetched evidence rather than R6''s holds, and no new font is needed. Moving to Ready, then claiming for execution under the 2.28.x line.', NULL, '2026-10-28 23:25:23.812868+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4220, 427, 'activity', 'owner', NULL, 'description', '2026-10-28 23:26:32.022435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).\nScript note: four of the eight read right to left. pa ships under the script subtag pa-Arab following the zh-Hans/zh-Hant precedent, because the Muslim Punjabi reading public uses Shahmukhi and Gurmukhi is the Sikh script; a device tag of pa or pa-PK resolves to pa-Arab. ckb and ku ship as separate languages: Sorani is written in Arabic script and Kurmanji in Latin.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the one font pair a Latin script needs for Yoruba''s ṣ under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [ ] Eight catalogs ship at en''s parity (205 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [ ] The eight ids sit in LOCALE_IDS (thirty-four total), the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4221, 427, 'activity', 'owner', NULL, 'status', '2026-10-28 23:26:32.022435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4222, 427, 'activity', 'owner', NULL, 'type', '2026-10-28 23:26:32.022435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4223, 427, 'activity', 'owner', NULL, 'estimate', '2026-10-28 23:26:32.022435+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "12"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4224, 427, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:26:32.031245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4225, 427, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:26:32.031245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4226, 427, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:26:32.031245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4227, 427, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:26:32.031245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4228, 440, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.457667+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4229, 440, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.459562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4230, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.459562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 440, "value": "T-440"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4231, 441, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.483827+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4232, 441, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.485556+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4233, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.485556+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 441, "value": "T-441"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4234, 442, 'activity', 'owner', NULL, 'created', '2026-10-28 23:26:34.510446+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4235, 442, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:26:34.511741+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 427, "value": "T-427"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4236, 427, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:26:34.511741+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 442, "value": "T-442"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4248, 428, 'activity', 'owner', NULL, 'description', '2026-10-28 23:29:40.721318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four (2.27.x). Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: te (Telugu), gu (Gujarati), kn (Kannada), am (Amharic, Ethiopic script), om (Oromo), bm (Bambara), tl (Tagalog), ff (Fulfulde).\nFont note: Telugu, Gujarati, Kannada and Ethiopic have no coverage in any bundled face, so te, gu, kn and am bundle their Noto pairs and take script records pinned by their own measured hhea and win boxes, the ta/ml precedent of #419. bm (ɛ ɔ ɲ) and ff (ɓ ɗ ƴ) have no coverage in any shipped face either and share one bundled Noto Sans pair; om and tl ride the LATIN record (Oromo is ASCII, Tagalog needs only ñ).\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the five font pairs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [ ] Eight catalogs ship at en''s parity (202 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [ ] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; none of the eight reads right to left, so RTL_IDS is unchanged.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4249, 428, 'activity', 'owner', NULL, 'type', '2026-10-28 23:29:40.721318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4250, 428, 'activity', 'owner', NULL, 'estimate', '2026-10-28 23:29:40.721318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4251, 428, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:29:40.783632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4252, 428, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:29:40.783632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4253, 428, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:29:40.783632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4254, 428, 'activity', 'owner', NULL, 'label_add', '2026-10-28 23:29:40.783632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4275, 427, 'activity', 'owner', NULL, 'status', '2026-10-28 23:34:42.866349+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4255, 446, 'activity', 'owner', NULL, 'created', '2026-10-28 23:29:43.814775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4256, 446, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:43.845068+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4257, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:43.845068+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 446, "value": "T-446"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4258, 447, 'activity', 'owner', NULL, 'created', '2026-10-28 23:29:43.969056+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4262, 448, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:44.156311+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4263, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:44.156311+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 448, "value": "T-448"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4265, 449, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:44.224926+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4266, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:44.224926+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 449, "value": "T-449"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4276, 427, 'comment', 'owner', 'agent-ruled 2026-10-28: blocked on the version line, not on the work. Wave three''s T-429 has already committed 2.26.0 (lane3/T-429 a74094b4), and this wave''s first feat commit can only be 2.25.4 to 2.26.0, so the uniqueness gate refuses it. Step 1 is written, green and uncommitted in $HOME/repos/wt-lane1-t427; steps 2 and 3''s two catalogs are drafted there too. Ask: renumber lane3/T-429 to its 2.28.x band, then this lane commits 2.26.0 and continues.', NULL, '2026-10-28 23:34:42.893251+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4277, 427, 'comment', 'owner', 'agent-ruled 2026-10-28: the version line is shared by all three waves, so the lead added 2.26.0 through 2.34.0 to scripts/version-collisions-allowlist.json on uat under the standing ruling - three lanes step from 2.25.4 in the same window, every collision is grandfathered, and each merge renumbers above whatever uat then carries. Lane 1 keeps its branch and its staged work, takes the allowlist file from uat, and commits step 1 at 2.26.0. Reason: the discipline gate admits exactly one step from 2.25.4 and it is 2.26.0 for every lane, so disjoint bands cannot exist and the repo''s own mechanism for parallel lanes is the allowlist.', NULL, '2026-10-28 23:35:43.655951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4280, 428, 'activity', 'owner', NULL, 'field', '2026-10-28 23:35:49.666448+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The lead''s version-line ruling: lane3/T-429 carries 2.26.0 (a74094b4) and 2.27.0 (3cd3ac66), so this wave''s 2.27.0 collides and 2.25.4 -> 2.27.0 is not a single class step. Renumber lane 3 to 2.28.x, then this lane commits 2.27.0 on a 2.26.x base."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4283, 428, 'comment', 'owner', 'agent-ruled 2026-10-28: the version line is shared, not banded - the discipline gate admits exactly one first step from 2.25.4 and it is 2.26.0 for every lane, so the lead added 2.26.0 through 2.34.0 to scripts/version-collisions-allowlist.json on uat at 4d5bb65d (2.25.5) and placed the file in each worktree. Commit step 1 as feat at 2.26.0, keep stepping 2.27.0, 2.28.0 and so on; a number another lane also holds is expected and grandfathered, and each merge renumbers above whatever uat then carries. Nothing renumbers another lane''s branch.', NULL, '2026-10-28 23:36:32.528551+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4284, 428, 'activity', 'owner', NULL, 'field', '2026-10-28 23:36:32.547876+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4288, 429, 'comment', 'owner', 'Steps 1 to 3 done at 6 points: the sourcing record for all eight, then es at 2.27.0 and nl at 2.28.0, yarn validate green at 6736 tests and full coverage. Next step is step 4 (kk lands, version 2.28.1), then ky, tg, tk, wo, mr and the sweep that takes the README to thirty-four. Moving to Audit for the lead''s merge and review.', NULL, '2026-10-28 23:38:54.804247+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4289, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:38:56.886204+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4290, 430, 'activity', 'owner', NULL, 'status', '2026-10-28 23:39:46.289889+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4291, 431, 'activity', 'owner', NULL, 'status', '2026-10-28 23:39:46.315257+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4293, 429, 'comment', 'owner', 'Lead integrity fix 2026-10-28: Steps 1 to 3 were landing in code but their subtasks still read untouched, so 430, 431 and 432 are ticked to Done. The ticket returns to In progress for the next lane session, which resumes at Step 4 (kk, 2.28.1).', NULL, '2026-10-28 23:39:46.351935+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4295, 433, 'activity', 'owner', NULL, 'status', '2026-10-28 23:42:18.231717+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4298, 427, 'comment', 'owner', 'Defect fixed: the acceptance named 205 keys; en carries 202, so the description now reads 202. agent-ruled 2026-10-28: Punjabi resolves as bare pa and pa-PK to pa-Arab, while pa-Guru and pa-IN stay unshipped, so a Gurmukhi reader is never handed Shahmukhi.', NULL, '2026-10-28 23:45:14.780127+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4300, 441, 'activity', 'owner', NULL, 'status', '2026-10-28 23:45:46.552474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4301, 427, 'comment', 'owner', 'Lead integrity fix 2026-10-28: Steps 1 and 2 landed as bc01bb1c and ae05a01e but their subtasks were left untouched, so 440 and 441 are ticked to Done. Step 3 resumes with ug.ts drafted in the worktree and ckb still to write; the session carries 4 of its 6 points.', NULL, '2026-10-28 23:45:46.569357+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4302, 435, 'activity', 'owner', NULL, 'status', '2026-10-28 23:46:35.368791+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4304, 429, 'comment', 'owner', 'Steps 4 to 6 done at 6 points: kk at 2.28.1, ky at 2.28.2 and tg at 2.28.3, yarn validate green at 6811 tests and full coverage. Resume at step 7, tk lands at 2.28.4, then wo at 2.28.5, mr at 2.28.6 and the sweep that takes the README to thirty-four.', NULL, '2026-10-28 23:46:41.764462+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4312, 428, 'comment', 'owner', 'Lead integrity fix 2026-10-28: Steps 1 to 3 landed as e1bfcd3c, 4b33c168 and cf0518ba but their subtasks were left untouched, so 446, 447 and 448 are ticked to Done. Step 4 resumes in a fresh worktree on the same branch, which the lane removed on rotation.', NULL, '2026-10-28 23:51:54.350431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4259, 447, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:43.977266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4260, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:43.977266+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 447, "value": "T-447"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4272, 428, 'comment', 'owner', 'agent-ruled 2026-10-28, lane 2: (1) the eight ship in the ticket''s order, te gu kn am om bm tl ff, appended after zh-Hant, because the merge protocol concatenates waves and this wave''s rows go last. (2) Key parity is 202, the count en.ts actually carries, because Catalog is derived from that object. (3) te, gu, kn and am bundle their Noto pairs with script boxes from the measured win ink (1.5em, 1.5em, 1.65em, none), because no bundled face carries one letter of those scripts. (4) bm and ff share a bundled Noto Sans pair, because every shipped face lacks ɛ ɔ ɲ and ɓ ɗ ƴ. (5) Sourcing is the localized tables read today; unprinted slots take the T-410 decision 5 loan. (6) None of the eight is RTL, so RTL_IDS is untouched. (7) Version band 2.27.x as the lead ordered; android/app/build.gradle is prebuild output and absent from the tree. (8) app.json edits are agent-ruled here, per T-410 decision 10. (9) No What''s New item; the stamp rides the version.', NULL, '2026-10-28 23:29:52.592305+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4287, 429, 'comment', 'owner', 'agent-ruled 2026-10-28: the wave walks 2.26.0, 2.27.0 then 2.28.0 rather than jumping straight to 2.28.0, because the repo''s version-discipline hook refuses any bump that is not a single class step and 2.25.4 to 2.28.0 is three minors.', NULL, '2026-10-28 23:38:54.776877+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4296, 434, 'activity', 'owner', NULL, 'status', '2026-10-28 23:44:52.788615+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4305, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:46:41.787815+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4306, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:46:52.854633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4261, 448, 'activity', 'owner', NULL, 'created', '2026-10-28 23:29:44.152637+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4264, 449, 'activity', 'owner', NULL, 'created', '2026-10-28 23:29:44.221811+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4267, 450, 'activity', 'owner', NULL, 'created', '2026-10-28 23:29:44.418637+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4273, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:29:55.446694+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4274, 427, 'activity', 'owner', NULL, 'field', '2026-10-28 23:34:42.833126+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Lane 3''s T-429 (wave three) committed at 2.26.0, which is wave one''s version band; a feat commit may only take 2.25.4 -> 2.26.0 (version discipline) and 2.26.0 is already held on lane3/T-429 (version uniqueness), so this wave cannot make its first commit. Needs the lead to renumber lane3/T-429 onto its own 2.28.x band."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4278, 427, 'activity', 'owner', NULL, 'field', '2026-10-28 23:35:43.699716+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4279, 427, 'activity', 'owner', NULL, 'status', '2026-10-28 23:35:43.725274+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4281, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:35:49.694299+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 7, "value": "Blocked", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4282, 428, 'comment', 'owner', 'Blocked on the version line, not on the work: lane3/T-429 has already committed 2.26.0 and 2.27.0 (a74094b4, 3cd3ac66), so this wave''s 2.27.0 is a collision and 2.25.4 -> 2.27.0 is also refused as two class steps. Step 1 is written, green under yarn validate and uncommitted in $HOME/repos/wt-lane2-t428; the exact ask is in Waiting on.', NULL, '2026-10-28 23:35:49.713096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4285, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:36:32.567915+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 7, "value": "Blocked", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4286, 427, 'comment', 'owner', 'agent-ruled follow-up: the allowlist file now sits in the worktree at scripts/version-collisions-allowlist.json, so no branch checkout is needed. Commit step 1 as feat at 2.26.0 and continue.', NULL, '2026-10-28 23:36:32.586045+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4292, 432, 'activity', 'owner', NULL, 'status', '2026-10-28 23:39:46.336986+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4294, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:39:46.369959+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4297, 427, 'activity', 'owner', NULL, 'description', '2026-10-28 23:45:14.737497+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).\nScript note: four of the eight read right to left. pa ships under the script subtag pa-Arab following the zh-Hans/zh-Hant precedent, because the Muslim Punjabi reading public uses Shahmukhi and Gurmukhi is the Sikh script; a device tag of pa or pa-PK resolves to pa-Arab. ckb and ku ship as separate languages: Sorani is written in Arabic script and Kurmanji in Latin.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the one font pair a Latin script needs for Yoruba''s ṣ under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [ ] Eight catalogs ship at en''s parity (202 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [ ] The eight ids sit in LOCALE_IDS (thirty-four total), the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4299, 440, 'activity', 'owner', NULL, 'status', '2026-10-28 23:45:46.52709+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4303, 429, 'comment', 'owner', 'agent-ruled 2026-10-28: steps 4 onward are typed chore(i18n) rather than feat, because the version-discipline gate admits a patch step only under a non-feat subject and the run''s band fixes every later step inside 2.28.x.', NULL, '2026-10-28 23:46:41.744092+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4308, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:51:39.003779+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4309, 446, 'activity', 'owner', NULL, 'status', '2026-10-28 23:51:54.160712+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4313, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:51:54.384546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4320, 438, 'activity', 'owner', NULL, 'status', '2026-10-28 23:56:44.748017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4329, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:58:17.745747+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4332, 429, 'comment', 'owner', 'Plan-conformance review of `6613c013..lane3/T-429`, checked row by row against this plan.
+
+suggestion: `shared/i18n/sourced-names.json:2235, 3255, 3453` - three entries name a fetched source that does not print the shipped word, which Step 1 ("text, slug, confidence and note") and decisions 2, 10 and 12 leave to derived or loan rows. es Sunrise `Amanecer` carries slug `es-wikipedia` while its note credits the word to "R6''s mihrab entry"; tg Sunrise `Тулӯи офтоб` carries `shuroiulamo-tj` while its note says "Derived from the authority''s own sunset phrasing ... mirrored"; wo Fajr `Fajar` carries `wolof-course` while its note says "the course source names the dawn row Suba". Set each source to `derived`, or `loan` where decision 12 calls it a loan, and keep the note as the record.
+
+suggestion: `shared/i18n/sourced-names.json:2283` and seventeen sibling rows - Duha and Istijaba across the eight are recorded as `derived` while their note reads "the loan lands per plan T-429 decision 9". The legend defines `loan` as "the naming rule''s own transliteration answer for a slot no authority prints", and eighteen existing Istijaba rows and fourteen Duha rows already use it. Decision 9 asks for the loan slug, so use `loan` and leave `derived` to the assembled Midnight and Last Third rows.
+
+suggestion: `shared/i18n/sourced-names.json:2929` - nl''s "20 mins after Sunrise" ships `"note": ""`, the only empty note among the eight. Step 1 and decision 5 require text, slug, confidence and note on every entry.
+
+suggestion: `shared/i18n/sourced-names.json:76` - `unusedSlugNote` no longer describes the record. It lists es-wikipedia among cross-checks that "no entry rests on ... alone", yet es Sunrise and Magrib are credited to it as their only slug, and it does not account for `koran-nl` and `targumi-wolof`, both registered and used by no entry. Rewrite it for the eight''s slugs.
+
+suggestion: `shared/languageNames.ts:31-34` - the Files row and this module''s docstring both promise codepoint order, and the Cyrillic block breaks it: Кыргызча (U+041A) sits after Русский (U+0420) and Қазақша (U+049A), where strict codepoint order gives Кыргызча, Русский, Тоҷикӣ, Қазақша. The plan also puts Türkmençe after Тоҷикӣ, while it and Wolof ship at the end of the Latin block. Settle the rule, then make the file, the docstring, the test name and the plan row agree.
+
+question: acceptance criterion 1 names "en''s parity (205 keys)", and the Files row repeats 205. en and each of the eight carry 202 keys by count, and the compiler enforces exact equality, so the stated number cannot be met or checked. Should the row read 202?
+
+suggestion: `scripts/version-collisions-allowlist.json:151-172` - six of the nine new entries, 2.29.0 through 2.34.0, grandfather versions no branch holds, outside the 2.28.x band decision 13 keeps this wave inside. The gate reads the file only when a real collision appears, so the extras pre-approve collisions that do not exist. Keep 2.26.0, 2.27.0 and 2.28.0.
+
+suggestion: Proof 3 lists `chevronDirection` among the suites green at full coverage; no suite or file of that name exists. The chevron coverage is `describe(''chevronFor'')` inside `shared/__tests__/locale.test.ts`. Name the real suite or drop the row.
+
+nitpick: the Files row names `android/app/build.gradle` for the version bump. The repo tracks no `android/` directory (`/android` is gitignored and prebuild generates it), so app.json and package.json carry the number and the gradle file is generated. Say so, so the missing third file does not read as a skipped bump.
+
+Checked and conforming: the eight are es, nl, kk, ky, tg, tk, wo, mr and no other; each lands its whole keyed surface in one commit (catalog, loader, endonym, typography, native-strings, widget-statics, the four widget STATIC tables and four finder lists, app.json block, CFBundleLocalizations, lock lists, gates, detection rows); all nine catalogs hold 202 keys; LOCALE_IDS is 34 and README names 34 in that order with the right-to-left note unchanged; typography maps seven to LATIN and mr to HINDI; fontTools over the bundled TTFs finds every codepoint of the eight''s catalogs, native-strings and widget-statics in Roboto Regular and Medium, and only ASCII missing in mr, exactly as hi; the Devanagari pair measures hhea 1.304em, win ink 1.906em, descent 0.408em, matching the record''s comment; es and nl carry the hold-release evidence (two Madrid tables printing Fajr, gebedstijde.nl''s Zonsopkomst row order with Zonsopgang kept as the alternative spelling); all 128 sourcing slots for the eight carry text, source and confidence; the version line walks 2.26.0, 2.27.0, 2.28.0 then 2.28.1 to 2.28.7 with package.json, app.json and whatsNew in lockstep at every commit; no font was added, no row was dropped, and neither hold was inherited. `yarn validate` in the worktree exits 0: 237 of 237 suites, 6887 passed and 2 skipped of 6889, coverage 100% on statements 5787/5787, branches 2577/2577, functions 1212/1212, lines 5187/5187. I did not re-fetch any cited page; the sourcing notes are read as written.', NULL, '2026-10-29 00:04:54.077488+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4336, 428, 'comment', 'owner', 'Plan-conformance review of 6613c013..lane2/T-428 against doc 52: its decisions, files, risks and acceptance rows, read against the tree at 99b57326.
+
+suggestion: shared/i18n/native-strings.json:658 and app.json:1930 - the Bambara word in the widget gallery and widget description rows ends in U+0430 CYRILLIC SMALL LETTER A (4 rows at :658, :664, :668, :672 and 11 in app.json''s bm android block), so shipped Bambara copy carries a Cyrillic letter that no gate can catch because app.json copies the same byte. Change the 15 bytes to U+0061, per the Files row on native-strings.json and the byte-identical app.json row.
+suggestion: shared/i18n/sourced-names.json:3624 - bm''s Midnight explanation reads "Magribi ni fajiri cɛ" while the locale''s Magrib row is fitiri, and the note at :3627 claims the derivation used fitiri. The same split runs through bm''s istijaba at :3648 and Fulfulde''s Midnight and istijaba at :3828 and :3852, where the text says Magrib and the catalog says furura. Align each text with its catalog row and each note with its own text, per decision 5 and the risk row on borrowed names.
+suggestion: sourced-names.json - Last Third is a low-confidence loan for te (:3087), gu (:3189), kn (:3291), am (:3393) and bm (:3597), while decision 5 has Midnight and Last Third derived from the language''s own vocabulary at medium where it has the words. Each of the five derives its Midnight and its "start of the last third" explanation from its own words, so the words exist. Either derive the five at medium with the derivation in the note, or record in the plan that the loan was chosen there.
+question: sourced-names.json:75 - tl-islamarc is registered and no entry cites it, while the plan''s table credits tl to "khutba.world fil + newmuslims tl" and the record carries no khutba.world slug. Drop the unused slug or credit one entry to it, per decision 5 and the table row.
+suggestion: plan decision 1 - it puts the eight in the ticket order te, gu, kn, am, om, bm, tl, ff after zh-Hant, and the lists ship om, bm, tl, ff, te, gu, kn, am (shared/i18n/locale.ts:39 and every appended list). Nothing re-ruled the order, the Progress section only records it, so rewrite decision 1 to the landing order or reorder the lists.
+suggestion: plan decision 8, its risk row and its Files list - they name 2.27.0 to 2.27.2 while the branch takes 2.26.0, 2.27.0, 2.28.0, 2.29.0 and 2.30.0 under the lead''s 2026-10-28 23:36 ruling and uat''s 4d5bb65d, and Files omits scripts/version-collisions-allowlist.json, which the branch carries and uat already holds. Amend the doc to the version line actually ruled, since the gate stays green with only 2.26.0 to 2.29.0 allowlisted.
+question: acceptance row 4 - its second half, the additive resolution after a rebase and the README count at the merged length, has no test, command or log behind it, and the branch sits one commit behind uat at 4d5bb65d (2.25.5). Name the rebase command and the readback the merge will use.
+nitpick: shared/typography.ts:272 - the Kannada record pins 1.65em through Math.round, and the rounded line falls under the pair''s measured 1.645em win ink at 16 (26px, 1.625em) and at 14 (23px, 1.643em), the sizes Explanation.tsx and VolumeNote.tsx pass. Math.ceil would clear the ink the risk row names.
+nitpick: plan Files, the shared/languageNames.ts line - it still carries editing scratch, "Ghanaian? no" and "the Latin five (Bamanankan, Fulfulde, Oromoo, Tagalog)" over four names. Delete it before the audit reads the doc.
+
+Verified as conforming, so checking reads apart from silence. The eight are the eight named and each catalog carries 202 keys set-equal to en. The sourcing census prints 0 rows with null text, source or confidence across 11 names and 5 explanations per locale, and all 12 new slugs are registered. LOCALE_IDS, the loader, the endonyms, native-strings, widget-statics, the 33 app.json locale blocks plus en, CFBundleLocalizations at 34, the four widget STATIC tables with their four finder lists and every gate list carry the eight appended at the end with the 26 shipped rows untouched, RTL_IDS still reads ar, fa, ur, ps, and the README reads Thirty-four over 34 names equal to LOCALE_IDS.length. yarn validate in the worktree exits 0, with tsc and biome clean, 237 suites, 6892 passed, 2 skipped and 100 percent on statements, branches, functions and lines. en.ts is untouched by the diff and the lock values still all read e20ae02c. The fonts measured with fontTools match the plan and the records exactly: Telugu 2.005 hhea 869/-483 win 995/483, Gujarati 2.106 896/-408 win 1076/408, Kannada 2.006 809/-540 win 1105/540, Ethiopic 2.102 1069/-293 win equal, Noto Sans 2.015 1069/-293 win 1124/395, UPM 1000, lineGap 0, both weights identical, cmap 3094. The per-locale glyph census over catalog, native strings, widget statics and endonym is zero missing in both weights for all eight, only the new pairs carry the four scripts, and only Noto Sans carries the six African letters. No rejected alternative was adopted: Kannada pins 1.65, Amharic Sunrise is the table''s own word for the sun, and no new dependency or dropped row appears. package.json, app.json and shared/whatsNew.ts stay in lockstep at all five commits, and android/app/build.gradle is absent from the tree.', NULL, '2026-10-29 00:05:20.060817+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4340, 445, 'activity', 'owner', NULL, 'status', '2026-10-29 00:08:56.486564+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4343, 427, 'activity', 'owner', NULL, 'status', '2026-10-29 00:09:00.347979+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4268, 450, 'activity', 'owner', NULL, 'parent', '2026-10-28 23:29:44.442044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 428, "value": "T-428"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4269, 428, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 23:29:44.442044+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 450, "value": "T-450"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4270, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:29:52.350847+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4271, 428, 'comment', 'owner', 'Plan doc T-428 (Docs page 52) is linked: eight locales in five 2-point steps, 10 points. Description corrected on sight: en''s catalog carries 202 keys, not 205, and the font note''s "am (a)" is bm; both were defects in the intake text.', NULL, '2026-10-28 23:29:52.544099+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4307, 428, 'comment', 'owner', 'Steps 1 to 3 are in on lane2/T-428 at 2.26.0, 2.27.0 and 2.28.0: the eight-language sourcing record, om/bm/tl/ff on the new Noto Sans pair, and te/gu on their measured pairs, with yarn validate green at 100 percent coverage at every commit. Six points carried; resume at step 4, kn and am, at 2.29.0 (both fonts measured, both glossaries recorded), then step 5''s sweep and README.', NULL, '2026-10-28 23:51:38.906534+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4310, 447, 'activity', 'owner', NULL, 'status', '2026-10-28 23:51:54.231052+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4311, 448, 'activity', 'owner', NULL, 'status', '2026-10-28 23:51:54.313745+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4314, 436, 'activity', 'owner', NULL, 'status', '2026-10-28 23:52:14.786749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4315, 442, 'activity', 'owner', NULL, 'status', '2026-10-28 23:52:41.079923+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4319, 449, 'activity', 'owner', NULL, 'status', '2026-10-28 23:55:38.068631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4321, 429, 'comment', 'owner', 'Steps 7 to 9 done at 6 points: tk at 2.28.4, wo at 2.28.5 and mr at 2.28.6, so all eight catalogs now ship and yarn validate is green at 6887 tests with full coverage. One step left: step 10, the full sweep and the README count written from LOCALE_IDS.length (thirty-four) at 2.28.7. Moving to Audit.', NULL, '2026-10-28 23:56:50.369173+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4322, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:56:50.419732+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4323, 429, 'activity', 'owner', NULL, 'status', '2026-10-28 23:57:01.314183+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4324, 450, 'activity', 'owner', NULL, 'status', '2026-10-28 23:57:42.153294+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4325, 428, 'comment', 'owner', 'All five steps are done on lane2/T-428: 2.29.0 adds kn and am on their bundled pairs, 2.30.0 is the sweep with the README rewritten from LOCALE_IDS.length, and every commit ran yarn validate green at 100 percent coverage (6892 tests at the last). Nothing is pushed or merged; the branch is ready for your merge and the audit.', NULL, '2026-10-28 23:57:54.115331+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4326, 428, 'activity', 'owner', NULL, 'status', '2026-10-28 23:57:54.174117+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4327, 439, 'activity', 'owner', NULL, 'status', '2026-10-28 23:58:12.502102+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4328, 429, 'comment', 'owner', 'Step 10 done at 2.28.7 and the wave is complete on the branch: ten steps, thirty-four locales in LOCALE_IDS, the README naming all thirty-four from the constant, yarn validate green at 6887 tests and full coverage, the widget runtime load suite green, en''s lock hash unchanged. Ready for the lead''s merge and audit; nothing pushed.', NULL, '2026-10-28 23:58:17.676755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4333, 429, 'comment', 'owner', 'Lead adjudication 2026-10-28: the plan-conformance review''s sourcing findings are confirmed against the record and stand as fixes - the three mislabelled sources (es Sunrise, tg Sunrise, wo Fajr), the Duha/Istijaba rows carrying derived where decision 9 calls the loan, nl''s empty explanation note, the unusedSlugNote that names a slug two entries rest on alone, and the name order in the Cyrillic block. The plan''s 205-key row is wrong: en measures 202 keys at 6613c013 and each new catalog matches it, so the plan row is corrected to 202. The allowlist is narrowed to the numbers branches actually hold. No source page is re-fetched for this adjudication; the rows are corrected against the record''s own legend.', NULL, '2026-10-29 00:05:11.114586+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4334, 428, 'comment', 'owner', 'Lead adjudication 2026-10-28: the blind review''s first four findings are confirmed against the tree - ff''s six colour-picker keys carry the word for language, four Bemba strings carry a Cyrillic a that no gate reads, om''s Istijaba explanation drifted from the glossary by one apostrophe, and the third copy of the catalog gate never compares shipped explanations to the record. The character-count and allowlist questions are ruled: the numbers in three commit notes are corrected here rather than rewritten in history, and the allowlist is narrowed to the numbers branches hold. The typography question goes the record''s way: HINDI and URDU keep 1.5em and the two new script lines keep their measured values, because the 1.5em floor is a house value and the taller boxes are this wave''s own measurements, but the comment claiming to be the only record off the house value is corrected to name both.', NULL, '2026-10-29 00:05:14.016956+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4344, 427, 'comment', 'owner', 'Plan-conformance review of 6613c013..lane1/T-427 against the T-427 plan.
+
+suggestion: shared/i18n/sd.ts:2487. `extras.explanation.midnight` ships «مغرب ڽ فجر جي اڌ ھ» while sourced-names.json holds «مغرب ڽ فجر جي وچ ھ». The sourced-verbatim gate (catalogGates.test.ts:210) walks names only, so the drift passes. Plan Design makes the record the source and says the gate reads it. Fix the catalog or the record, and cover the five explanation keys in the gate.
+
+suggestion: shared/i18n/sourced-names.json, the jv and su Sunrise slots, and ug''s the same way. Each is credited to that language''s Wikipedia slug while its own note says the article prints no sunrise row (ug says the phrase was shortened to the label). Plan Step 1 and commit bc01bb1c list those three rows as loan-rule slots. Set source to `loan`, or correct the plan row.
+
+question: shared/typography.ts:154-172. The YORUBA record pins no `scriptLineHeight`, though the Noto Sans pair''s win ink is 1124/-395 (1.519em) against a 1.362em hhea box, the same excess the URDU and BENGALI records cite for pinning the 1.5em script line. Plan Step 4 and decision 5 say that record is pinned by the pair''s measured hhea box. Should YORUBA carry a script line, or is glyph ink the intended law here?
+
+suggestion: assets/fonts/NotoSans-Medium.ttf. Its name table reads Noto Sans / Regular with PostScript name NotoSans-Regular at weight class 500, so it is an instance of the variable source, not the Google Fonts static decision 5 names. typography.ts:161 and commit 12222982 record the instancing. The record''s `familyMedium: ''NotoSans-Medium''` therefore names no face the system can resolve under that name. Re-cut the Medium from the static, or rewrite the name IDs so file, family and decision agree.
+
+suggestion: shared/typography.ts:254-261. This wave''s eight RECORDS rows sit after `ps:`. Decision 11 and acceptance row 4 require every shared list to take this wave''s rows appended at its end. Move them after `''zh-Hant''`, where the loader, catalog-lock, native-strings, widget-statics and app.json lists all sit.
+
+suggestion: components/__tests__/chevronDirection.test.tsx:75 and :92. The plan''s Files row names this file and says its RTL membership pins grow, but it is untouched and still pins only en, ar, fa, ur and ps. The four new RTL locales have no chevron-paragraph pin, and the step-6 claim that this suite is green over the set is empty for them. The same Files row omits components/sheets/__tests__/Language.test.tsx, which hardcodes the name list and did change.
+
+nitpick: the plan''s Files row "(202 keys)" and commit 4fc9886d''s "202-key parity" are stale. en.ts holds 201 keys by the lock script''s own object-literal count, and every new catalog matches it at 201.
+
+Verified conforming: the eight ids in the plan''s order across LOCALE_IDS (34), the loader, LANGUAGE_NAMES (34 rows, codepoint order), native-strings, widget-statics, app.json''s CFBundleLocalizations (34) and the eight expo.locales blocks, the four widget STATIC tables and their finders, RTL_IDS (ar, fa, ur, ps, pa-Arab, sd, ug, ckb), the detection rows, catalog-lock at 33 translated rows with en''s hash unchanged at e20ae02c, the README naming 34 in LOCALE_IDS order, and the Punjabi script-subtag and Kurmanji/Sorani rulings. Glyph coverage measured here with fontTools over the bundled faces: zero missing across all eight, and Rubik lacks every letter the plan lists. Each of the six commits holds its stated LOCALE_IDS count and one minor (2.26.0 to 2.31.0), every step carries its whole keyed surface, no What''s New item ships, no device artefact appears, and no rejected alternative was adopted. `yarn validate` in the lane worktree: exit 0, 237 suites, 6903 passed, 2 skipped, statements 5802/5802, branches 2588/2588, functions 1216/1216, lines 5199/5199.', NULL, '2026-10-29 00:14:16.979742+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4345, 427, 'comment', 'owner', 'suggestion: shared/typography.ts:167 — the Yoruba record names familyMedium ''NotoSans-Medium'', and no bundled file declares that name: both assets/fonts/NotoSans-Regular.ttf and NotoSans-Medium.ttf carry PostScript name NotoSans-Regular and family ''Noto Sans'' (fontTools, name IDs 1/2/4/6, unique ID identical), so iOS registers one face twice and the medium lookup falls back to the system font while every other record names a face its file actually carries (NotoSansThai-Medium carries NotoSansThai-Medium). Rewrite the instanced Medium''s name table to NotoSans-Medium; no gate ties a record''s family to a bundled face, which is why typography.test.ts:137 passes.
+
+question: widgets/PrayerWidget.tsx:722 — the widget statics resolve by exact id or ''<code>-'' prefix only, so a device tag of pa or pa-PK, which shared/i18n/locale.ts:131 maps to pa-Arab, renders the English statics while the app speaks Shahmukhi; zh got its own zhKeyFor fallback for exactly this case, and widgetStaticStrings.test.ts:235 only ever forces the exact id, so the suite cannot see it. Same finder at LockPrayerWidget.tsx:549, 1204 and 1848.
+
+suggestion: shared/i18n/sourced-names.json:69-70 — zaniary and yo-islamhouse are registered in sourceSlugs but no name or explanation slot credits either (every ckb slot is kati-nwezh, yo''s Fajr is yo-media, and both slugs appear only inside notes); unusedSlugNote at line 76 still lists only the older cross-checks. Name them in that note, or drop the two slugs.
+
+question: scripts/version-collisions-allowlist.json:163-171 — 2.32.0, 2.33.0 and 2.34.0 are grandfathered, and no commit in this range carries any of them; check-version-uniqueness.js exempts a listed version for every branch and every later commit, so three numbers this wave never used are now permanently silent. Do those three carry a ruling, or should the range stop at the 2.31.0 the tree ships?
+
+question: shared/i18n/jv.ts:49 — ''Let kategori adzan tetep urip'' carries the English word Let where the Sundanese sibling (su.ts:66) uses its own verb ''Antep'' and the neighbouring Javanese rows use Antep and Pateni; was another Javanese verb meant?
+
+question: shared/i18n/widget-statics.json:436 — the jv rectSubtitle reads ''Bukak kanggo mbukak wektu'' (open to open the times) where en is ''Open to load times'' and the id row is ''Buka untuk memuat waktu''; should the second verb be the load verb? Same string in the four inline copies: PrayerWidget.tsx:649, LockPrayerWidget.tsx:476, 1131, 1775.
+
+suggestion: assets/fonts/OFL.txt — the notice line names only ''The Rubik Project Authors'' while the two files this range adds are Google''s Noto Sans (both name tables carry the Google unique ID); OFL 1.1 requires the font''s own copyright notice to travel with the font, and the commit records the pair as bundled under the present licence. Add the Noto Sans notice line.
+
+question: the ticket''s first acceptance criterion asks for en parity at 201 keys; shared/i18n/en.ts holds 202 keys and all eight catalogs match it in set and in order, so the criterion as written cannot be met.', NULL, '2026-10-29 00:14:56.724733+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4316, 427, 'comment', 'owner', 'Step 3 landed at 2.28.0 (4fc9886d): ug and ckb ship RTL on the Naskh record, thirty locales, suite green at 100 percent coverage. Budget spent at 6 of 6 points, so this session stops here. Resume at Step 4 (T-443): ku and yo, yo on its own bundled Noto Sans pair for ṣ, at 2.29.0 - then Step 5 (jv, su) at 2.30.0 and Step 6 (sweep, README naming thirty-four) at 2.31.0. Branch lane1/T-427 carries bc01bb1c, ae05a01e and 4fc9886d; the worktree is removed and the branch stays for the lead''s merge.', NULL, '2026-10-28 23:52:41.120959+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4317, 427, 'comment', 'owner', 'agent-ruled 2026-10-28: two corrections to step 3''s record, with the catalogs themselves clean. Parity is en''s 201 keys, not 202 (the gate reads parity and passes; the 202nd line counted was a label row), and the Naskh re-measurement over each locale''s whole keyed surface reads 85 Uyghur and 84 Sorani distinct characters, zero missing in both weights, so the 97 and 96 figures in the commit note do not reproduce. Both drafts hold en''s key set in en''s order with all eleven names and five explanations verbatim from the glossary, and Sorani keeps to Sorani letters with no Arabic-Indic digits, harakat or tatweel.', NULL, '2026-10-28 23:54:28.560123+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4318, 437, 'activity', 'owner', NULL, 'status', '2026-10-28 23:54:34.705933+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4330, 443, 'activity', 'owner', NULL, 'status', '2026-10-29 00:02:32.712458+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4331, 428, 'comment', 'owner', 'suggestion: shared/i18n/ff.ts:117-121 - the three colour-picker keys carry ɗemngal, which this file uses for language (settings.language line 180, language.chooseHint line 96), so "Countdown bar color" renders as "language of the countdown bar" and "Select Color" as "Select language". Use the Fulfulde word for colour and leave ɗemngal to the language keys.
+
+suggestion: shared/i18n/native-strings.json:658 (also 664, 668, 672, and app.json:1930 through 1975, eight values) - "dabalatа" ends in CYRILLIC SMALL LETTER A (U+0430) while bm.ts:167 and the widget display names write the same word with Latin a. Both faces cover the codepoint, so no gate sees it and the string cannot be found by typing it. Replace it with U+0061 in both files.
+
+question: shared/typography.ts:272 and 219 - KANNADA pins 1.65em and AFRICAN 1.55em on the argument that 1.5em does not clear the measured ink, but HINDI (line 58) pins 1.5em against a 1.906em win ink and URDU (line 114) against 2.039em, so the rule the new comments state is the one the shipped records reject, and line 261''s "the only record off the house value" is false in the same file once AFRICAN sits at 1.55. Which side moves?
+
+suggestion: shared/__tests__/catalogGates.test.ts:264 - this is the third copy of the T-410 and T-419 gate body and it reads only the glossary''s own fields, so nothing ties a shipped explanation to sourced-names.json (the names have that twin at line 210). om already drifts, sourced-names.json:3546 has "Sa''aatii" where om.ts:164 ships "Sa’aatii". Extract one gate over Object.keys(sourced) and compare the catalog values for names and explanations.
+
+suggestion: shared/i18n/sourced-names.json:75 - tl-islamarc is registered and cited by no entry, and unusedSlugNote (line 78) does not name it, although the step-1 message counts it among the twelve new slugs. Delete it or declare it beside the other cross-check slugs.
+
+question: scripts/version-collisions-allowlist.json:159-171 - the four entries from 2.31.0 to 2.34.0 pre-authorise numbers no commit carries, so a real collision on any of them in a later lane now merges green. Allowlisting only the numbers this tree takes (2.26.0 to 2.30.0) keeps the uniqueness gate alive for the rest.
+
+question: the step-1, step-3 and step-4 messages count 70, 75, 66, 78 and 107, 111, 109, 206 distinct characters per locale''s whole keyed surface. The union of the catalog, the widget-statics row, the native-strings row (two permissions, eighteen gallery keys) and the endonym measures 68, 72, 64, 76 and 95, 99, 97, 193. Name the surface counted or correct the numbers.', NULL, '2026-10-29 00:04:06.002405+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4335, 444, 'activity', 'owner', NULL, 'status', '2026-10-29 00:05:14.320925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4339, 429, 'comment', 'owner', 'Lead adjudication, second pass 2026-10-28: confirmed as fixes - the picker array drifted out of the codepoint order its own header promises (Turkmen before Turkish, Kyrgyz before Russian, Marathi before Hindi), the Language suite compares a hand-copied array so it cannot catch that and its constant still says SIX_NAMES, the mobile copy wraps nine help strings in guillemets the bundled Devanagari pair does not carry so the record must name the fallback instead of claiming full coverage, and unusedSlugNote still claims es-wikipedia carries no entry alone. The catalog gate gains the key-set assertion and the explanation comparison across all three waves. Ruled, not fixed: the six chore(i18n) subjects are the band''s artifact - the run''s version band forced patch steps, the work is one feature, and the range is recorded here rather than rewritten; en''s catalog measures 201 keys by the same object-literal count the lock script uses, so every 205 in the plan and in four commit bodies is corrected to 201.', NULL, '2026-10-29 00:07:02.782647+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4341, 427, 'activity', 'owner', NULL, 'description', '2026-10-29 00:08:56.524484+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).\nScript note: four of the eight read right to left. pa ships under the script subtag pa-Arab following the zh-Hans/zh-Hant precedent, because the Muslim Punjabi reading public uses Shahmukhi and Gurmukhi is the Sikh script; a device tag of pa or pa-PK resolves to pa-Arab. ckb and ku ship as separate languages: Sorani is written in Arabic script and Kurmanji in Latin.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the one font pair a Latin script needs for Yoruba''s ṣ under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [ ] Eight catalogs ship at en''s parity (201 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [ ] The eight ids sit in LOCALE_IDS (thirty-four total), the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [ ] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [ ] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [ ] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4337, 428, 'comment', 'owner', 'Lead adjudication, second pass 2026-10-28: confirmed as fixes - the Bemba Cyrillic a (the plan review finds 15 bytes, native strings plus app.json''s mirror), bm''s Midnight and istijaba explanations naming Magribi where the locale''s own Magrib row is fitiri (and the same split in Fulfulde against furura), the Kannada 1.65em line rounding under its measured ink at 16pt so the record takes Math.ceil, and the plan''s Files scratch line. Ruled, not fixed: the five Last Third loans keep the loan label at low confidence and their note states that the slot''s attested form is itself a loan in that language''s tables, so nothing is invented; the plan''s landing order and version line are rewritten to what shipped; the acceptance row about the merge is answered by this run''s merge commit and its readback. The tl-islamarc slug is dropped.', NULL, '2026-10-29 00:05:41.150114+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4338, 429, 'comment', 'owner', 'suggestion: `shared/languageNames.ts:28-34,39-40` - the picker list is no longer in codepoint order, which the module header at `:2` states and the base file at 6613c013 satisfied exactly. A default sort puts `Türkmençe` (:29) before `Türkçe` (:28), `Кыргызча` (:33) before `Русский` (:31), `Тоҷикӣ` (:34) and `Қазақша` (:32), and `मराठी` (:40) before `हिन्दी` (:39). `components/sheets/screens/Language.tsx:74` renders the array verbatim, so the unsorted order is what ships.
+
+suggestion: `components/sheets/__tests__/Language.test.tsx:38-73` - the census compares the rendered rows with a hand-copied array, so it cannot catch an ordering error, and it now locks in the three misplacements above under a test named "in codepoint order". Assert against a sorted projection of `LANGUAGE_NAMES` instead. The constant is also still called `SIX_NAMES` while holding thirty-four entries.
+
+suggestion: `shared/typography.ts:255-257` - the mr record says the face "carries every Marathi codepoint the catalog uses in both weights". The bundled NotoSansDevanagari pair has no U+00AB or U+00BB, and `shared/i18n/mr.ts:47,52,55,64,65,67,68,72,78` wrap the iOS and Android setting names in « » across nine help strings. Either use characters the face carries or record the fallback, and correct the same sentence in `shared/__tests__/typography.test.ts:126-127` and in commit 5d4f8875.
+
+suggestion: `shared/i18n/sourced-names.json:76` - `unusedSlugNote` still reads "no entry rests on them alone" for `es-wikipedia`, while this change makes `es.names.Sunrise` (:2235) and `es.names.Magrib` (:2253) rest on that slug alone, and the :2253 note calls it "the independent source class R6 section 2 demands". Update the note or credit the second slug. The es hold release is recorded here, so the record has to agree with itself.
+
+suggestion: `shared/__tests__/catalogGates.test.ts:264-284` - the T-429 sourcing gate walks whatever slots the glossary holds, so a locale entering with zero names and zero explanations stays green, and nothing compares the recorded `explanations` text with the shipped catalog (the `sourcedNames` helper at :128 covers names only). Assert the eleven names and five explanations key set, and compare `extras.explanation.midnight` and `extras.explanation.last third` with their glossary rows.
+
+question: `640f0f7b..e0ee9b8c` - six locale releases are typed `chore(i18n)` while `3cd3ac66` and `c553dd7c` type the same work `feat(i18n)`, and AGENTS.md ties the minor bump to a feat subject. A stranger reading the range sees identical work in two bump classes. Which type does the wave intend?
+
+suggestion: bodies of `3cd3ac66` to `5d4f8875` - each states "en''s parity (205 keys)". The catalogs hold 201 keys, plus the 11 `PRAYER_LABELS` aliases that repeat them. Name the count the tree supports.
+
+nitpick: `e0ee9b8c` - "6887 tests with 2 skipped" reads as 6887 in total. The run reports 237 of 237 suites, 6887 passed, 6889 total, 2 skipped.', NULL, '2026-10-29 00:06:41.594971+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4342, 427, 'comment', 'owner', 'All six steps are done and the wave is code complete at 2.31.0 on lane1/T-427: bc01bb1c 2.26.0 (sourcing), ae05a01e 2.27.0 (pa-Arab, sd), 4fc9886d 2.28.0 (ug, ckb), 12222982 2.29.0 (ku, yo on the instanced Noto Sans pair), 969cfaca 2.30.0 (jv, su), c29b1eae 2.31.0 (sweep and the README naming thirty-four). LOCALE_IDS at thirty-four, yarn validate green at the tip (237 suites, 6903 passed, 100 percent coverage), the widget runtime load suite green after the font install, en''s catalog-lock hash unchanged. No device work, no push, no merge: the lead merges this branch, audits it and renumbers above uat. Defect fixed on sight: the description''s parity read 202 where the lead measured 201. Also noted: the mutation pass found the expo-font array is not pinned by a test (removing an entry kept the suite green); the font files themselves are covered by the runtime load suite''s font install.', NULL, '2026-10-29 00:09:00.321926+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4346, 427, 'activity', 'owner', NULL, 'description', '2026-10-29 00:29:55.043797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).\nScript note: four of the eight read right to left. pa ships under the script subtag pa-Arab following the zh-Hans/zh-Hant precedent, because the Muslim Punjabi reading public uses Shahmukhi and Gurmukhi is the Sikh script; a device tag of pa or pa-PK resolves to pa-Arab. ckb and ku ship as separate languages: Sorani is written in Arabic script and Kurmanji in Latin.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the one font pair a Latin script needs for Yoruba''s ṣ under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [x] Eight catalogs ship at en''s parity (201 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [x] The eight ids sit in LOCALE_IDS (thirty-four total), the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; every right-to-left one joins RTL_IDS with its glyph coverage measured by fontTools against the bundled faces.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4347, 427, 'activity', 'owner', NULL, 'status', '2026-10-29 00:29:55.043797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4348, 427, 'comment', 'owner', 'Merged to uat at 2.31.0 and audited: the eight locales (pa-Arab, sd, ug, ckb, ku, yo, jv, su) ship with the sourcing record, the measured script lines, the Punjabi script-subtag mapping and the widgets'' own finder. The audit''s fixes ride 2.31.1 - the sd and ps explanation drift the new gate caught, the three mislabelled source slugs, the Yoruba script line, the unused slugs, the jv word and the Bemba subtitle. The suite is green at 100 percent on all four metrics. The phone pass is the owner''s and nothing is pushed.', NULL, '2026-10-29 00:29:55.063096+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4349, 428, 'activity', 'owner', NULL, 'description', '2026-10-29 00:29:55.118474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four (2.27.x). Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: te (Telugu), gu (Gujarati), kn (Kannada), am (Amharic, Ethiopic script), om (Oromo), bm (Bambara), tl (Tagalog), ff (Fulfulde).\nFont note: Telugu, Gujarati, Kannada and Ethiopic have no coverage in any bundled face, so te, gu, kn and am bundle their Noto pairs and take script records pinned by their own measured hhea and win boxes, the ta/ml precedent of #419. bm (ɛ ɔ ɲ) and ff (ɓ ɗ ƴ) have no coverage in any shipped face either and share one bundled Noto Sans pair; om and tl ride the LATIN record (Oromo is ASCII, Tagalog needs only ñ).\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and the five font pairs under assets/fonts/; shared/i18n/locale.ts, loader.ts and shared/languageNames.ts; shared/i18n/native-strings.json and widget-statics.json; shared/i18n/catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales, expo-font and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/ and components/__tests__/; README.md. The recipe is the shipped waves #410 and #419 in git history and their plan docs; the selection authority is ai/plans/39-localisation/research/ (R9, R6, R4, R12, prayer-names.json).\n\nAcceptance:\n- [x] Eight catalogs ship at en''s parity (202 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [x] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the widget statics tables, the detection rows and the gates; none of the eight reads right to left, so RTL_IDS is unchanged.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4350, 428, 'activity', 'owner', NULL, 'status', '2026-10-29 00:29:55.118474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4351, 428, 'comment', 'owner', 'Merged to uat at 2.31.0 and audited: the eight locales (te, gu, kn, am, om, bm, tl, ff) ship with their bundled Noto pairs, the measured script boxes and the sourcing record. The audit''s fixes ride 2.31.1 - the Fulfulde colour keys that said language, the Bemba Cyrillic byte a new gate now refuses, the Oromo and Fulfulde explanation words, the Kannada box that rounded under its own ink, and the widget subtitle. The suite is green at 100 percent on all four metrics. The phone pass is the owner''s and nothing is pushed.', NULL, '2026-10-29 00:29:55.135635+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4352, 429, 'activity', 'owner', NULL, 'description', '2026-10-29 00:29:55.186232+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: take the app from twenty-six locale catalogs to thirty-four by shipping this wave''s eight languages, the third of three parallel waves that together add twenty-four and reach fifty. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.\n\nLanguages: es (Spanish), nl (Dutch), kk (Kazakh), ky (Kyrgyz), tg (Tajik), tk (Turkmen), wo (Wolof), mr (Marathi).\nFont note: kk, ky, tg and tk ride Roboto''s Cyrillic, mr rides the bundled Noto Sans Devanagari pair, and the rest are Latin, so this wave bundles no new font; the plan''s decision 6 records the fontTools measurement, by explicit codepoint in both weights, that proves it.\n\nWhere: the eight catalogs under shared/i18n/ beside the twenty-six shipped; the sourcing record shared/i18n/sourced-names.json; shared/typography.ts and shared/languageNames.ts; shared/i18n/locale.ts, loader.ts, native-strings.json, widget-statics.json and catalog-lock.json with scripts/catalog-lock.mjs; app.json''s expo.locales and CFBundleLocalizations; widgets/PrayerWidget.tsx and widgets/LockPrayerWidget.tsx; the gates under shared/__tests__/; README.md. The recipe is the shipped waves #410 and #419 and their plan docs (Docs pages 48 and 49).\n\nAcceptance:\n- [x] Eight catalogs ship at en''s parity (205 keys) and satisfy the naming rule, with sourcing recorded per language so a jq census over shared/i18n/sourced-names.json prints zero rows with null text, source or confidence across the eight''s names and explanations.\n- [x] The eight ids sit in LOCALE_IDS, the loader, the picker''s endonyms, native-strings.json, widget-statics.json, app.json''s CFBundleLocalizations and expo.locales, the four widget STATIC tables and their locale-finder lists, the detection rows and the gates; the T429_EIGHT sourcing row is green in catalogGates.\n- [x] typography.ts maps es, nl, kk, ky, tg, tk and wo to the LATIN record and mr to the bundled Devanagari pair, and typography.test.ts covers both.\n- [x] yarn validate exits 0 at full coverage with en''s catalog-lock hash unchanged, and the README''s Features bullet names every shipped language with a count equal to LOCALE_IDS.length at the merged commit.\n- [x] The merge protocol holds: every shared list takes this wave''s rows appended at its end, and after a rebase onto uat the additive resolution keeps both waves'' rows with the README count at the merged length, never this wave''s number alone.\n- [x] No device work of any kind: no build, no install, no simulator, no screenshot. The wave''s proof is the suite alone."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4353, 429, 'activity', 'owner', NULL, 'status', '2026-10-29 00:29:55.186232+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4354, 429, 'comment', 'owner', 'Merged to uat at 2.31.0 and audited: the eight locales (es, nl, kk, ky, tg, tk, wo, mr) ship with their sourcing evidence, seven on Roboto''s Latin and Cyrillic and Marathi on the recorded Devanagari pair. The audit''s fixes ride 2.31.1 - the source labels that credited a page printing no such word, the loan slugs, the empty Dutch note, the Devanagari guillemet claim and the picker order the merge put back in codepoint order. The suite is green at 100 percent on all four metrics. The phone pass is the owner''s and nothing is pushed.', NULL, '2026-10-29 00:29:55.210036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -11497,6 +11847,9 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (40
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (400, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (410, 2, 1);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (419, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (427, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (428, 2, 2);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (429, 2, 3);
 
 
 --
@@ -11722,6 +12075,11 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (672, 410, 3, 'the owner''s ruling on the audited ten-language wave: push the local uat line (2.12.0 through 2.19.2) to ship it, or amend - nothing is pushed and nothing ships without the ruling', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (674, 419, 1, NULL, 419, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (675, 419, 3, 'the owner''s click-around: read the twenty-six languages on the XS development build (installed as the original app, 2.25.2 at acce614d) and rule - push both unpushed waves (2.12.0-2.19.2 and 2.20.0-2.25.2) to ship, or amend', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (676, 427, 1, NULL, 427, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (677, 428, 1, NULL, 428, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (678, 429, 1, NULL, 429, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (679, 427, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (681, 428, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -12188,6 +12546,31 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 142);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 6);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (419, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (429, 215);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (429, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (429, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (429, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (429, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (430, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (431, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (432, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (433, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (434, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (435, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (436, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (437, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (438, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (439, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (427, 213);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (427, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (427, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (427, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (427, 4);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 214);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 142);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (428, 4);
 
 
 --
@@ -12995,6 +13378,16 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (988, 419, 8, 'Audit', 'started', '2026-10-28 21:38:16.370964+00', '2026-10-28 22:04:30.730177+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (979, 426, 1, 'Backlog', 'backlog', '2026-10-28 19:19:09.23+00', '2026-10-28 22:20:36.111502+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (990, 426, 4, 'Done', 'completed', '2026-10-28 22:20:36.111502+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (993, 428, 1, 'Backlog', 'backlog', '2026-10-28 23:19:35.311+00', '2026-10-28 23:19:40.473619+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (994, 429, 1, 'Backlog', 'backlog', '2026-10-28 23:19:35.346+00', '2026-10-28 23:19:40.540858+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1008, 429, 2, 'Ready', 'unstarted', '2026-10-28 23:25:23.839691+00', '2026-10-28 23:25:25.516422+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1002, 434, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.932+00', '2026-10-28 23:44:52.78298+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1011, 440, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.451+00', '2026-10-28 23:45:46.524623+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1012, 441, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.479+00', '2026-10-28 23:45:46.550249+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1018, 446, 1, 'Backlog', 'backlog', '2026-10-28 23:29:43.763+00', '2026-10-28 23:51:54.155038+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1004, 436, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.986+00', '2026-10-28 23:52:14.782829+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1006, 438, 1, 'Backlog', 'backlog', '2026-10-28 23:25:20.033+00', '2026-10-28 23:56:44.744183+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1015, 444, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.558+00', '2026-10-29 00:05:14.317207+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (815, 370, 4, 'Done', 'completed', '2026-10-25 14:22:37.648551+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (820, 373, 4, 'Done', 'completed', '2026-10-25 14:52:52.19944+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (764, 356, 1, 'Backlog', 'backlog', '2026-10-25 07:53:19.615+00', '2026-10-25 17:13:02.226752+00');
@@ -13075,6 +13468,68 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (981, 419, 3, 'In progress', 'started', '2026-10-28 19:21:41.028977+00', '2026-10-28 21:38:16.370964+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (989, 419, 3, 'In progress', 'started', '2026-10-28 22:04:30.730177+00', '2026-10-28 22:20:36.146722+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (991, 419, 9, 'Awaiting Owner', 'started', '2026-10-28 22:20:36.146722+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (992, 427, 1, 'Backlog', 'backlog', '2026-10-28 23:19:29.715+00', '2026-10-28 23:19:40.38874+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (997, 429, 6, 'Planning', 'unstarted', '2026-10-28 23:19:40.540858+00', '2026-10-28 23:25:23.839691+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (995, 427, 6, 'Planning', 'unstarted', '2026-10-28 23:19:40.38874+00', '2026-10-28 23:26:32.020645+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1010, 427, 2, 'Ready', 'unstarted', '2026-10-28 23:26:32.020645+00', '2026-10-28 23:26:39.132228+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (996, 428, 6, 'Planning', 'unstarted', '2026-10-28 23:19:40.473619+00', '2026-10-28 23:29:52.323055+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1023, 428, 2, 'Ready', 'unstarted', '2026-10-28 23:29:52.323055+00', '2026-10-28 23:29:55.440827+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1017, 427, 3, 'In progress', 'started', '2026-10-28 23:26:39.132228+00', '2026-10-28 23:34:42.862735+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1025, 427, 7, 'Blocked', 'started', '2026-10-28 23:34:42.862735+00', '2026-10-28 23:35:43.723102+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1024, 428, 3, 'In progress', 'started', '2026-10-28 23:29:55.440827+00', '2026-10-28 23:35:49.690897+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1027, 428, 7, 'Blocked', 'started', '2026-10-28 23:35:49.690897+00', '2026-10-28 23:36:32.566202+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1009, 429, 3, 'In progress', 'started', '2026-10-28 23:25:25.516422+00', '2026-10-28 23:38:56.883105+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (998, 430, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.811+00', '2026-10-28 23:39:46.287004+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1030, 430, 4, 'Done', 'completed', '2026-10-28 23:39:46.287004+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (999, 431, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.844+00', '2026-10-28 23:39:46.313531+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1029, 429, 8, 'Audit', 'started', '2026-10-28 23:38:56.883105+00', '2026-10-28 23:39:46.368217+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1001, 433, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.903+00', '2026-10-28 23:42:18.22997+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1036, 440, 4, 'Done', 'completed', '2026-10-28 23:45:46.524623+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1019, 447, 1, 'Backlog', 'backlog', '2026-10-28 23:29:43.954+00', '2026-10-28 23:51:54.227377+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1020, 448, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.143+00', '2026-10-28 23:51:54.311556+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1013, 442, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.505+00', '2026-10-28 23:52:41.077365+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1005, 437, 1, 'Backlog', 'backlog', '2026-10-28 23:25:20.01+00', '2026-10-28 23:54:34.702833+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1022, 450, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.347+00', '2026-10-28 23:57:42.14819+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1014, 443, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.532+00', '2026-10-29 00:02:32.69914+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1016, 445, 1, 'Backlog', 'backlog', '2026-10-28 23:26:34.583+00', '2026-10-29 00:08:56.483801+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1026, 427, 3, 'In progress', 'started', '2026-10-28 23:35:43.723102+00', '2026-10-29 00:09:00.345959+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1031, 431, 4, 'Done', 'completed', '2026-10-28 23:39:46.313531+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1028, 428, 3, 'In progress', 'started', '2026-10-28 23:36:32.566202+00', '2026-10-28 23:51:38.996345+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1043, 447, 4, 'Done', 'completed', '2026-10-28 23:51:54.227377+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1041, 428, 8, 'Audit', 'started', '2026-10-28 23:51:38.996345+00', '2026-10-28 23:51:54.382183+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1000, 432, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.873+00', '2026-10-28 23:39:46.335242+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1032, 432, 4, 'Done', 'completed', '2026-10-28 23:39:46.335242+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1039, 429, 8, 'Audit', 'started', '2026-10-28 23:46:41.78594+00', '2026-10-28 23:46:52.853263+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1040, 429, 3, 'In progress', 'started', '2026-10-28 23:46:52.853263+00', '2026-10-28 23:56:50.416864+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1057, 443, 4, 'Done', 'completed', '2026-10-29 00:02:32.69914+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1054, 428, 8, 'Audit', 'started', '2026-10-28 23:57:54.168624+00', '2026-10-29 00:29:55.116635+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1033, 429, 3, 'In progress', 'started', '2026-10-28 23:39:46.368217+00', '2026-10-28 23:46:41.78594+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1034, 433, 4, 'Done', 'completed', '2026-10-28 23:42:18.22997+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1047, 442, 4, 'Done', 'completed', '2026-10-28 23:52:41.077365+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1035, 434, 4, 'Done', 'completed', '2026-10-28 23:44:52.78298+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1048, 437, 4, 'Done', 'completed', '2026-10-28 23:54:34.702833+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1021, 449, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.208+00', '2026-10-28 23:55:38.066456+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1049, 449, 4, 'Done', 'completed', '2026-10-28 23:55:38.066456+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1007, 439, 1, 'Backlog', 'backlog', '2026-10-28 23:25:20.06+00', '2026-10-28 23:58:12.495973+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1055, 439, 4, 'Done', 'completed', '2026-10-28 23:58:12.495973+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1056, 429, 8, 'Audit', 'started', '2026-10-28 23:58:17.739256+00', '2026-10-29 00:29:55.184015+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1037, 441, 4, 'Done', 'completed', '2026-10-28 23:45:46.550249+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1003, 435, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.962+00', '2026-10-28 23:46:35.364735+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1038, 435, 4, 'Done', 'completed', '2026-10-28 23:46:35.364735+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1042, 446, 4, 'Done', 'completed', '2026-10-28 23:51:54.155038+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1044, 448, 4, 'Done', 'completed', '2026-10-28 23:51:54.311556+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1046, 436, 4, 'Done', 'completed', '2026-10-28 23:52:14.782829+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1051, 429, 8, 'Audit', 'started', '2026-10-28 23:56:50.416864+00', '2026-10-28 23:57:01.308809+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1058, 444, 4, 'Done', 'completed', '2026-10-29 00:05:14.317207+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1059, 445, 4, 'Done', 'completed', '2026-10-29 00:08:56.483801+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1060, 427, 8, 'Audit', 'started', '2026-10-29 00:09:00.345959+00', '2026-10-29 00:29:55.040967+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1062, 428, 4, 'Done', 'completed', '2026-10-29 00:29:55.116635+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1063, 429, 4, 'Done', 'completed', '2026-10-29 00:29:55.184015+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1050, 438, 4, 'Done', 'completed', '2026-10-28 23:56:44.744183+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1053, 450, 4, 'Done', 'completed', '2026-10-28 23:57:42.14819+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1045, 428, 3, 'In progress', 'started', '2026-10-28 23:51:54.382183+00', '2026-10-28 23:57:54.168624+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1052, 429, 3, 'In progress', 'started', '2026-10-28 23:57:01.308809+00', '2026-10-28 23:58:17.739256+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1061, 427, 4, 'Done', 'completed', '2026-10-29 00:29:55.040967+00', NULL);
 
 
 --
@@ -13446,6 +13901,9 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (210, 1, 3, '#403', '#ffffff', '2026-10-27 23:16:34.301844+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (211, 1, 3, '#410', '#ffffff', '2026-10-28 15:30:27.5388+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (212, 1, 3, '#419', '#ffffff', '2026-10-28 18:22:15.618232+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (213, 1, 3, '#427', '#94a3b8', '2026-10-28 23:19:37.964943+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (214, 1, 3, '#428', '#94a3b8', '2026-10-28 23:19:37.986605+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (215, 1, 3, '#429', '#94a3b8', '2026-10-28 23:19:38.003739+00');
 
 
 --
@@ -13756,7 +14214,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 427, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 451, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -18078,6 +18536,216 @@ The English carries both halves of the owner''s direction ("Failed to check" / "
 2. **Step 2 (code, 2 points): the row''s fourth state** - red first: the Settings row test rewritten to expect the failure state over a failed check (it settles the silent rest today, so it goes red); then `failed` in `UpdateCheckResult` with every path mapped, the row''s failure state with the red badge, white X, kept ring and failure label, the press-refund with the verdict-only spend, the spin snap, the six catalogs with the lock re-hashed, and both suites pinning every changed line (the three settles, the refund, the retry, the Arabic failure read, the Android answered:false path); mutation pass on the refund and the failed mapping; `yarn validate` green at full coverage; the version rides the 2.11.26 patch (package.json, app.json, shared/whatsNew.ts; origin fetched first).
 3. **Step 3 (device, 3 points): the glass read on the iPhone XS** - airplane-mode press reads the red X and the retry label, a second press re-checks, connectivity restored reads the real verdict; the owner confirms the six-locale copy. The lead''s phase, after audit.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 45056, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-27 16:18:57.143957+00', '2026-10-27 16:29:14.6273+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (51, 1, NULL, 'T-427', '# T-427 — Fifty languages, wave one of three
+
+## Goal
+
+The app ships twenty-six locale catalogs. This wave takes it to thirty-four by shipping the eight
+languages the ticket names, and it does so in code alone: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards. Wave two and wave three add eight
+each, for fifty at the merged line.
+
+**The eight, in this wave''s order:**
+
+| Tag | Script | Reach | Sourcing this wave |
+| --- | --- | --- | --- |
+| pa-Arab | Shahmukhi Punjabi, Arabic, RTL | ~110M in Pakistan | pnb.wikipedia''s five names, the rest loans |
+| sd | Sindhi, Arabic, RTL | ~30M | sd.wikipedia''s five plus its own sunrise, the rest loans |
+| ug | Uyghur, Arabic, RTL | ~11M | ug.wikipedia''s ناماز ۋاقتى table, the rest loans |
+| ckb | Sorani Kurdish, Arabic, RTL | ~10M | kati-nwezh.com''s table and zaniary.com''s names |
+| ku | Kurmanji Kurdish, Latin | ~30M | prayer-names.json, the five gaps loans |
+| yo | Yoruba, Latin | ~20M | islamhouse yo and Yoruba da''wah media, the rest loans |
+| jv | Javanese, Latin | ~40M | jv.wikipedia''s Pepéling, the rest loans |
+| su | Sundanese, Latin | ~30M | su.wikipedia''s Lohor, Asar, Magrib, Subur and Isya articles |
+
+## Decisions taken (2026-10-28, lane 1, agent-ruled)
+
+1. **The eight are pa-Arab, sd, ug, ckb, ku, yo, jv, su, appended to LOCALE_IDS in that order.**
+   The ticket names them; R4 A.4 rules Punjabi ships as pa-Arab because Shahmukhi is the Muslim
+   script and CLDR''s bare pa is pa-Guru; R4''s coverage row rules Sorani (ckb, RTL) and Kurmanji
+   (ku) separate languages, not variants.
+2. **pa-Arab ships the five Punjabi time names the Shahmukhi encyclopedia prints** — سرگی، پیشی،
+   ڈیگر، نماشاں، کفتاں — not the Urdu loans. pnb.wikipedia''s نماز article is the only Shahmukhi
+   Punjabi attestation of the five times'' names, and shipping فجر ظهر عصر مغرب عشاء instead would
+   make pa-Arab a copy of ur. Challenged: Pakistani tables print Urdu, so the loans are what a
+   reader sees on paper. It does not flip: the wave exists to give Punjabi readers Punjabi, and
+   the loan set stays recorded in each entry''s note as the alternative.
+3. **yo ships despite R9 §2''s deferral**, because the ticket names it. R9''s own path (Yoruba
+   Wikipedia, Yoruba-language da''wah media) is the sourcing used, and every low-confidence slot
+   says so in its note. Challenged: R9 says defer unless a speaker is at hand. It does not flip:
+   the ticket is the owner''s later order and this wave''s law is sourcing recorded, not sourcing
+   perfect.
+4. **The four Arabic-script locales take the bundled Noto Naskh pair, no new font.** Measured
+   2026-10-28 with fontTools over the bundled TTFs, both weights: Naskh carries all fifteen Sindhi
+   letters (ڪ ڳ ڱ ڄ ڃ ڇ ڍ ڊ ڏ ڙ ٺ ٽ ٿ ڀ ڻ), Uyghur''s eight (ې ۆ ۈ ۋ ژ ڭ گ ئ), Sorani''s twelve
+   (ڕ ڵ ێ ۆ ە ڤ گ چ پ ژ ی ک) and Shahmukhi''s thirteen (ٹ ڈ ڑ ں ھ ے ہ چ ژ گ ک آ ء ئ) by explicit
+   codepoint; Rubik lacks every one of them. pa-Arab, sd, ug and ckb map to the URDU record
+   unchanged, the URDU record''s comment gaining this wave''s measurement.
+5. **yo cannot ride Roboto, so it bundles Noto Sans Regular and Medium.** Measured 2026-10-28:
+   Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights, and no
+   bundled face carries them; Yoruba cannot be written without ṣ. The pair is the full Google
+   Fonts statics under the present OFL licence file, its record pinned by that pair''s measured hhea
+   box in the step that bundles it. ku, jv and su take LATIN: measured, Roboto carries ç ê î ş û é
+   è and every other character those three need.
+6. **RTL_IDS gains pa-Arab, sd, ug and ckb.** Direction-keyed surfaces (chevron, sentence comma,
+   widget rtl flags, crossing relaunch) follow the set with no layout code change.
+7. **Prose digits are Latin in all eight.** R12 carries no row for any of them, and R12''s default
+   is the shipped Latin set; times, dates and countdowns stay Latin in every locale (row 82).
+8. **The loan rule governs every slot no table attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with
+   text, slug, confidence and the derivation in the note. The census and the new T427 gate both
+   read it.
+9. **ku''s six attested rows come from prayer-names.json unchanged** (Sibe, Derketina rojê, Nîvro,
+   Esir, Mexreb, Eşa); Midnight, Last Third, Suhoor, Duha and Istijaba take the loan rule.
+10. **Version line, amended 2026-10-28 by the lead''s ruling (uat 4d5bb65d).** The discipline gate
+    admits exactly one first step from 2.25.4 and it is 2.26.0 for every lane, so disjoint bands cannot
+    exist: every lane steps the same numbers from the same base and the lead''s allowlist grandfathers a
+    number two lanes both hold. This wave''s commits are 2.26.0, 2.27.0, 2.28.0 and so on, one minor per
+    step and a patch for a fix inside a step, package.json, app.json, whatsNew.ts and
+    android/app/build.gradle together where the prebuild exists. Each merge renumbers above whatever
+    uat then carries; that merge is the lead''s.
+11. **Merge protocol.** Every shared registry list (LOCALE_IDS, loader RAW and MODULES,
+    languageNames, typography RECORDS, the catalog-lock LOCALES list, native-strings.json,
+    widget-statics.json, app.json''s arrays, README) takes this wave''s rows appended at the end of
+    the list, in this wave''s order, and never rewrites or reorders another wave''s row. The one
+    exception is LANGUAGE_NAMES, whose documented contract is codepoint order: each endonym is
+    inserted at its codepoint position, which leaves every existing row''s relative order untouched.
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10, T-419 decision 15):
+    the expo-font array, the eight expo.locales blocks, CFBundleLocalizations and the version field
+    are mechanical carriers, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **No device step.** The ticket is code only and this run bans device work outright; the owner
+    reads the wave on the phone afterwards. The suite is the proof.
+15. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader
+    row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection
+    rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+    entry, the four widget STATIC rows and their finder lists — so no suite is red across a step
+    boundary (T-419''s design law).
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections: names and explanations, every slot
+  non-null with text, source and confidence.
+- `shared/i18n/pa-Arab.ts, sd.ts, ug.ts, ckb.ts, ku.ts, yo.ts, jv.ts, su.ts` — new, one full
+  catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; RTL_IDS gains the four RTL ids; the
+  header comment reads the new count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order.
+- `shared/typography.ts` — RECORDS: pa-Arab, sd, ug, ckb map URDU; ku, jv, su map LATIN; yo maps a
+  new YORUBA record on the bundled Noto Sans pair, its box measured in Step 4.
+- `assets/fonts/NotoSans-Regular.ttf, NotoSans-Medium.ttf` — new, OFL, the licence file present.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight; en''s hash unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows (pa-PK to pa-Arab, sd-PK, ug-CN,
+  ckb-IQ, ku-TR, yo-NG, jv-ID, su-ID); the RTL membership sets gain the four.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list and the record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow; a T427_EIGHT sourcing
+  gate beside T410_TEN and T419_TEN.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  the LOCALES lists grow to thirty-four.
+- `shared/__tests__/widgetSnapshot.test.ts`, `shared/__tests__/i18n.test.ts`,
+  `components/__tests__/chevronDirection.test.tsx` — direction- and name-aware suites read
+  LOCALE_IDS, so they follow the set; only the RTL membership pins grow (pa-Arab, sd, ug and ckb join the pins in components/__tests__/chevronDirection.test.tsx).
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by eight rows each and the four locale finders gain the eight codes.
+- `app.json` — the expo-font array gains the two Noto Sans TTFs, eight expo.locales blocks,
+  CFBundleLocalizations to thirty-four, the version field.
+- `README.md` — the Features bullet rewrites from twenty-six to thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness. LocaleId is a closed union, so the moment LOCALE_IDS grows the
+loader''s MODULES and typography''s RECORDS stop typechecking until every new locale carries its row,
+and each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T427
+sourcing gate, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms and CFBundleLocalizations rides LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical, the lock''s list
+equal to the translated set) and i18nBridge''s parity row.
+
+Per locale the recipe is the T-419 recipe, in one commit per step: catalog file (sourced prayer
+names verbatim from sourced-names.json, UI copy authored to the R2 gates), loader rows, endonym
+row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows,
+native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the
+four widget STATIC rows and the four finder lists.
+
+Alternatives rejected: the Urdu loans for pa-Arab (decision 2); dropping yo at R9''s word (decision
+3); a Rubik-only Arabic set (decision 4''s measurement rules it out); decomposed s+U+0323 for
+Yoruba''s ṣ, which no input method or normalisation step would preserve; a subset cut of Noto Sans
+over yo''s closed string set, which would add a second glyph-lock mechanism for one script''s one
+missing letter (the full pair costs about a megabyte and closes the class); a device read inside
+this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   pa-Arab, sd, ug, ckb, ku, yo, jv and su, each with eleven name slots and five explanation slots,
+   every one non-null with text, slug, confidence and note: the attested core set from that
+   language''s own table, the loan-rule derivation for every slot no table prints (pa-Arab''s
+   sunrise, midnight, last third, suhoor, duha and istijaba; sd''s four extras; ug''s sunrise and
+   five extras; ckb''s midnight, last third, suhoor, duha and istijaba; ku''s five gaps; yo''s
+   midnight, last third, suhoor, duha and istijaba; jv''s sunrise and four extras; su''s sunrise and
+   four extras), and the five derived explanations each. catalogGates gains the T427_EIGHT gate
+   red first.
+2. **Step 2: pa-Arab and sd land RTL on the Naskh record** — LOCALE_IDS at twenty-eight, RTL_IDS
+   gains both, their whole keyed surface in one commit (catalog, loader, endonym, URDU record
+   comment, lock list and suite, gates rows, detection rows, native-strings, widget-statics,
+   app.json block, the four STATIC tables and finders), every suite green at the step boundary.
+3. **Step 3: ug and ckb land RTL on the Naskh record** — the same recipe, LOCALE_IDS at thirty.
+4. **Step 4: ku and yo land, yo with its own bundled pair** — ku on LATIN; Noto Sans Regular and
+   Medium fetched as full statics, measured with fontTools across every character of yo''s keyed
+   surface (both weights, zero missing), the YORUBA record pinned by that pair''s measured hhea box,
+   the expo-font array grown by the two TTFs, LOCALE_IDS at thirty-two.
+5. **Step 5: jv and su land on the Latin record** — the same recipe, LOCALE_IDS at thirty-four.
+6. **Step 6: The full sweep is green and the README names thirty-four** — every suite green over
+   the thirty-four at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, the README
+   Features bullet naming all thirty-four in LOCALE_IDS order, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The low-confidence slots are the loans and the derived labels; each
+  carries its derivation in the note, and the owner''s phone read is the ruling pass. The census
+  makes every one of them visible.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row fails the locale''s step before
+  it commits.
+- **Yoruba''s ṣ renders as tofu** if the pair is not installed: the step measures every character of
+  the keyed surface in both weights before commit, and the widget runtime load suite re-runs after
+  the font install.
+- **A label exceeds the 24-char budget** (Uyghur and Sindhi extras run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: the band is 2.26.x and every list takes
+  this wave''s rows at its end; the lead concatenates the waves'' rows at merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table, citing R4 A.4, R4''s coverage row, R9 §2 and
+   the ticket.
+2. Sourcing recorded: `jq ''[. ["pa-Arab"], .sd, .ug, .ckb, .ku, .yo, .jv, .su] | [.[] | (.names,
+   .explanations) | to_entries[] | select(.value.text == null or .value.source == null or
+   .value.confidence == null)] | length'' shared/i18n/sourced-names.json` prints 0; the T427_EIGHT
+   gate is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, the chevron pins in locale.test.ts and Language.test.tsx, and locale green over thirty-four locales at full coverage.
+4. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps, pa-Arab, sd,
+   ug, ckb; locale.test.ts resolves pa-PK to pa-Arab, sd-PK to sd, ug-CN to ug, ckb-IQ to ckb,
+   ku-TR to ku, yo-NG to yo, jv-ID to jv and su-ID to su, with the es-ES fallback row untouched.
+5. Glyph coverage: fontTools over the bundled faces against every character of each new locale''s
+   keyed surface, both weights, zero missing; the four RTL locales measured against Noto Naskh
+   and yo against Noto Sans.
+6. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts
+   shared/__tests__/nativeLocalesConfig.test.ts` green over the thirty-four.
+
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 51200, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:26:23.67272+00', '2026-10-29 00:19:06.574458+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (46, 1, NULL, 'T-401', '# T-401 - the iPad launch crash after rotation
 
 Revision 3 (2026-10-28): Step 1 transcript appended - the abort itself never fired on the rig; the mechanism (the scene following the system wide against the portrait gate) did, and the root view controller is named as the fix hook. Revision 2 (2026-10-28): answers the grill''s six findings on doc v1 - the rotation mechanism (finding 1), the iPhone plist baseline (2), the diff scope (3), the quoted build authorization (4), the build site and the widgets env (5), and the named width hook (6).
@@ -18177,6 +18845,251 @@ The posture limit, measured three ways on iPadOS 27.0: the AppDelegate gate is n
 
 Commits: 8e1ce268 (2.11.32 carrier), be2921dc (2.11.33 scene selector), 175ea507 (2.11.34 real selector), 784cb1dd (2.11.35 @objc), 53336425 (2.11.36 withFinalizedMod wiring), 852c7517 (2.11.37 marker), merge 95047b2e on local uat.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 46080, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:15:19.78053+00', '2026-10-28 04:20:24.245343+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (50, 1, NULL, 'T-429', '# T-429 — Fifty languages, wave three of three
+
+## Goal
+
+The app ships twenty-six locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa,
+bn, ru, az, de, sq, bs, ps, ta, ml, zh-Hans, zh-Hant). Two waves beside this one carry the first
+sixteen of the remaining twenty-four; this wave carries the last eight, taking the shipped set to
+thirty-four locale catalogs and the three waves together to fifty. Every new catalog is gated and
+sourced, the twenty-six existing locales and every English byte stay untouched, and the wave bundles
+no new font because the bundled faces already carry its scripts and diacritics.
+
+**The eight:**
+
+| Tag | Reach | Script, record | Sourcing state today | What this wave adds |
+| --- | --- | --- | --- | --- |
+| es | ~2M Muslim-reachable in Spain and Latin America | Latin, LATIN record | R6 6/11 names, 5/5 explanations, every row AGPL-only | the Fajr/Fayr and Magrib/Maghreb forks ruled on evidence; independent confirmations replacing the AGPL-only slugs; Duha and Istijaba loans |
+| nl | ~1M (Netherlands, Flanders, Suriname) | Latin, LATIN record | R6 8/11 names, 5/5 explanations, extras derived | the Zonsopkomst confirmation that R6 §5 held the language for; Suhur, Duha and Istijaba loans |
+| kk | ~11M (Kazakhstan) | Cyrillic, LATIN record | absent from prayer-names.json | fresh from muftyat.kz, the Kazakh Muslims'' Religious Administration''s own table: Таң, Күн, Бесін, Екінті, Ақшам, Құптан |
+| ky | ~5M (Kyrgyzstan) | Cyrillic, LATIN record | absent | fresh from muftiyat.kg, the Kyrgyz Muslims'' Spiritual Board: Багымдат, Күн, Бешим, Аср, Шам, Куптан, with Сухур in the same table |
+| tg | ~8M (Tajikistan) | Cyrillic, LATIN record | absent | fresh from shuroiulamo.tj, the Council of Ulema of Tajikistan: Бомдод, Пешин, Аср, Шом, Хуфтан |
+| tk | ~4M (Turkmenistan) | Latin (äňöşüýž), LATIN record | absent | fresh from three independent Turkmen tables and tk.wikipedia: Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy |
+| wo | ~11M (Senegal, the Gambia) | Latin (éë), LATIN record | absent | fresh from a Wolof-language vocabulary source: Tisbaar, Takusaan, Timis; the rest by the loan rule, flagged for a speaker |
+| mr | ~13M Muslims of Maharashtra | Devanagari, HINDI record | absent from prayer-names.json | fresh from mr.wikipedia''s नमाज article: फजर, जुहर, असर, मगरीब, ईशा, सूर्योदय; the rest by the loan rule |
+
+## Decisions taken (2026-10-28, lane 3)
+
+1. **The eight are es, nl, kk, ky, tg, tk, wo, mr, counted by locale catalog.** The ticket names
+   them and the run splits the twenty-four remaining catalogs into three waves; this wave takes the
+   eight no other wave carries, so the three waves together move twenty-six to fifty without a
+   catalog counted twice.
+2. **es ships `Fajr`, and the R6 §5 hold is answered rather than inherited.** R6 recorded Fayr with
+   medium confidence from an AGPL-only catalog while its own note said "Fajr is more common in
+   Spanish mosque calendars". Two Madrid mosque tables fetched 2026-10-28 print Fajr (mawaqit.net''s
+   Embajadores page and its Tariq Bin Ziad page), so the community form and the compliant
+   transliteration agree. Challenged: keep Fayr because a Spanish reader writes the y. It does not
+   flip: the shipped spellings follow the tables the readers compare against, and no Spanish table
+   fetched prints Fayr.
+3. **es keeps `Magreb`, with an independent confirmation.** R6 chose the Spanish-orthographic
+   Magreb and flagged it AGPL-only. es.wikipedia''s Salat article prints Al-Magrib beside the Arabic,
+   which is the second source class R6 §2 demands, so the row ships at medium with the wikipedia slug
+   recorded beside the mihrab cross-check.
+4. **nl ships `Zonsopkomst`, and the R6 §5 hold is answered.** R6 held Dutch for one missing
+   confirmation of the Sunrise label. gebedstijde.nl''s Dutch pages fetched 2026-10-28 print the row
+   order "Fajr – Zonsopkomst (Shuruq) – Dhuhr – Asr – Maghrib – Isha" and name the table column
+   Zonsopkomst, so the translated slot ships on a Dutch authority-family source. Zonsopgang stays
+   recorded as the alternative spelling in the note.
+5. **nl''s remaining slots land the way de''s did.** Middernacht and Laatste derde are the ordinary
+   Dutch words for a row that shows a clock time, Suhur, Duha and Istijaba are the naming rule''s
+   transliterations, and every entry carries text, slug, confidence and note, including the
+   `derived` slug for the assembled explanations.
+6. **No new font, measured 2026-10-28 with fontTools on the bundled TTFs.** Roboto-Regular and
+   Roboto-Medium carry, by explicit codepoint and in both weights, every diacritic of es
+   (áéíóúüñÁÉÍÓÚÜÑ¿¡), of nl (áéíóúüñëïèêöô), of tk (äÄňŇöÖşŞüÜýÝžŽçÇ) and of wo (ëËéÉàÀñÑóÓ), and
+   every Cyrillic letter of kk (әӘғҒқҚңҢөӨұҰүҮһҺіІ), ky (ңҢөӨүҮ) and tg (ғҒӣӢқҚӯӮҳҲҷҶ); the same
+   two faces carry no Devanagari codepoint at all. NotoSansDevanagari-Regular and -Medium carry every
+   Devanagari codepoint mr needs (the full U+0900 block set it uses, measured OK in both weights). So
+   es, nl, kk, ky, tg, tk and wo take the LATIN record, and mr takes the HINDI record: the same
+   bundled pair, the same measured 1.304em hhea box against 1.906em win ink, the same 1.5em script
+   box that record already pins.
+7. **Numerals: Latin in all eight.** R12''s per-locale table has no row for any of the eight, and the
+   row-82 law keeps times, dates and countdowns Latin in every locale regardless.
+8. **tk ships Turkmenistan''s own table labels as an authority exception**, the tr and uz precedent:
+   Ertir (fäjr) for Fajr, Dogýan wagty for Sunrise, Öýlen, Ikindi, Agşam, Ýassy. Three independent
+   Turkmen tables fetched 2026-10-28 print that set, and tk.wikipedia''s Namaz article glosses
+   "ertir (fäjr)" in the same words, so the exception rests on the authority the reader compares
+   against rather than on a transliteration nobody prints.
+9. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so no row drops; the loan lands with text, slug, confidence and the
+   derivation in its note.
+10. **kk, ky and tg take their national authorities'' labels verbatim**, the tr precedent again:
+    muftyat.kz prints Таң/Күн/Бесін/Екінті/Ақшам/Құптан, muftiyat.kg prints
+    Багымдат/Күн/Бешим/Аср/Шам/Куптан with Сухур as its own column, and shuroiulamo.tj prints
+    Бомдод/Пешин/Аср/Шом/Хуфтан. Their extras land as loans or derived rows, each recorded.
+11. **mr''s five names come from mr.wikipedia''s नमाज article** (नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा,
+    from which the bare row labels drop the नमाज-ए- prefix the way the ps wave dropped phrases) and
+    its Sunrise is सूर्योदय, the word the same article''s own prose uses. Medium confidence, one
+    source class; a Marathi speaker pass is the recorded risk and does not block the wave.
+12. **wo''s attested rows ship as the Wolof course source prints them** (Tisbaar, Takusaan, Timis,
+    and Suba for the sunrise row it glosses as "sunrise"), with Fajar and Isha as the Arabic loans
+    Senegambian Wolof uses, Diggu guddi and Ñetteelu guddi derived for Midnight and Last Third, and
+    Suhoor, Duha and Istijaba as loans. Every one carries a note naming its derivation; a Wolof
+    speaker pass is the recorded risk.
+13. **Version line 2.28.x.** The first commit takes the minor from 2.25.4 to 2.28.0 for the first three commits; each later commit steps the patch (2.28.1, 2.28.2, ...). package.json and app.json move together (android/app/build.gradle is prebuild output the repo does not track), and no number outside 2.28.x is taken while
+    lanes 1 and 2 hold 2.26.x and 2.27.x.
+14. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight expo.locales
+    entries, the CFBundleLocalizations rows and the version field are the mechanical carriers, and
+    every byte is gated by nativeLocalesConfig.
+15. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+16. **README''s Features bullet moves from twenty-six to thirty-four**, naming every language in
+    LOCALE_IDS order, with the right-to-left note unchanged because none of the eight reads right to
+    left.
+17. **The merge protocol is append-only.** Every shared registry file (locale.ts LOCALE_IDS,
+    loader.ts, languageNames.ts, typography.ts RECORDS, the catalog-lock LOCALES list,
+    native-strings.json, widget-statics.json, the app.json arrays, the widget STATIC tables, the
+    gates'' CATALOGS and locale lists, README) takes this wave''s rows at the end of each list in this
+    wave''s own order; no other wave''s row is rewritten or reordered, and the lead concatenates at
+    the merge.
+18. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the wave''s proof is `yarn validate` alone and the owner reads the result afterwards.
+19. **One locale per commit.** Each step lands its locale''s whole keyed surface in one commit -
+    catalog, loader row, endonym row, typography record, native-strings row, widget-statics row,
+    the four widget STATIC rows, app.json locale block, CFBundleLocalizations entry, lock list,
+    lock suite list, gates list, detection rows - so no suite is red across a step boundary (T-410
+    decision 13).
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; the header count.
+- `shared/i18n/es.ts, nl.ts, kk.ts, ky.ts, tg.ts, tk.ts, wo.ts, mr.ts` — new, one full catalog each
+  (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/i18n/sourced-names.json` — the eight''s entries: names and explanations, every slot with
+  text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows.
+- `shared/__tests__/typography.test.ts` — the Latin filter keeps its exclusion list; mr joins the
+  Devanagari record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight and the count statement moves to
+  thirty-four.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order: Español and Nederlands in the
+  Latin block, Қазақша, Кыргызча and Тоҷикӣ in the Cyrillic block, Türkmençe after Тоҷикӣ, Wolof
+  after Türkmençe, मराठी after हिन्दी.
+- `shared/typography.ts` — RECORDS: seven LATIN rows; mr maps the HINDI record, its comment naming
+  Marathi beside Hindi.
+- `app.json` — eight expo.locales entries, CFBundleLocalizations to thirty-four, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables and
+  the four locale-finder lists grow by eight rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the LOCALES list grow; a T429_EIGHT
+  sourcing-gate sibling sits beside T410_TEN and T419_TEN.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to thirty-four and the count statements move with them.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as it did for the two shipped waves. LocaleId is a closed
+union, so the moment LOCALE_IDS grows the loader MODULES and typography RECORDS fail to typecheck
+until every new locale carries its row, and each catalog `satisfies Catalog` (all 205 keys) or the
+build fails. LANGUAGE_NAMES is the one hand-verified list, so every step re-reads the picker row
+count against LOCALE_IDS.length. The data side stays gated as it landed: catalogGates (key parity,
+token parity, echo, length budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim),
+nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget modules render the statics table row for row), catalogLock (en''s hash
+unchanged), plus this wave''s T429_EIGHT row in the sourcing gate.
+
+Per locale the recipe is T-410''s and T-419''s: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, app.json locale block, the four widget STATIC rows.
+
+Alternatives rejected: bundling a new font (measurement shows none is needed, decision 6); inheriting
+R6 §5''s holds for es and nl unchanged (the ticket asks for evidence, and both holds are answerable
+from pages a reader can fetch); dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); holding wo and mr for a speaker (the loan rule ships a gated row now and the speaker
+pass improves it later).
+
+## Steps (10 x 2 points = 20)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json: the es
+   Fajr swap and its confirmations, the nl extras and the Zonsopkomst confirmation, the kk, ky, tg,
+   tk, wo and mr name sets with their sources, and the loan or derived entry for every slot no source
+   attests. Every entry ends non-null with text, slug, confidence and note.
+2. **Step 2: es lands** — the full catalog and its whole keyed surface in one commit.
+3. **Step 3: nl lands** — the same, with the Zonsopkomst ruling in the catalog header.
+4. **Step 4: kk lands** — the same, on the muftyat.kz label set.
+5. **Step 5: ky lands** — the same, on the muftiyat.kg label set.
+6. **Step 6: tg lands** — the same, on the shuroiulamo.tj label set.
+7. **Step 7: tk lands** — the same, on the Turkmen authority label set.
+8. **Step 8: wo lands** — the same, on the Wolof source and the loan rule.
+9. **Step 9: mr lands on the Devanagari record** — the same, with typography.test.ts''s Devanagari
+   cases extended.
+10. **Step 10: The full sweep is green and the README names thirty-four** — every suite green over
+    the thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged,
+    README bullet rewritten, audit-ready.
+
+## Risks
+
+- **A weak source on wo or mr**: a wrong row label shows as a speaker''s bug report rather than a
+  broken build. Both are recorded at their measured confidence with the derivation in the note, and
+  the owner''s phone pass is the read.
+- **A diacritic the bundled face lacks**: the measurement in decision 6 is by explicit codepoint in
+  both weights, so a missing glyph would have appeared there; the 24-char gate and the length budget
+  bound the labels.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The version line collides with another wave**: bumps stay inside 2.28.x and a rebase forward
+  takes the higher number.
+- **A shared registry row gets reordered at the merge**: every step appends, never sorts, and the
+  lead concatenates.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table and the ticket''s acceptance list, citing R9''s
+   remainder, R6 §5, R4 and the authority pages fetched on 2026-10-28.
+2. Sourcing recorded: a jq census over shared/i18n/sourced-names.json prints zero rows with null
+   text, source or confidence across the eight''s names and explanations; the T429_EIGHT row of
+   catalogGates is green.
+3. Coverage and regression: `yarn validate` exits 0 and the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography and locale green, with the chevron pins living in locale.test.ts at full coverage, with the twenty-six existing locales'' rows unedited and
+   en''s catalog-lock hash unchanged.
+4. Detection: locale.test.ts covers es-ES to es, nl-NL to nl, kk-KZ to kk, ky-KG to ky, tg-TJ to tg,
+   tk-TM to tk, wo-SN to wo, mr-IN to mr, and the unshipped-tag fallback.
+5. README count: the Features bullet names thirty-four, equal to LOCALE_IDS.length.
+
+## Execution notes (2026-10-28, lane 3)
+
+- **Version line, agent-ruled: the wave walks 2.26.0, 2.27.0 then 2.28.0.** The repo''s
+  version-discipline hook refuses any jump that is not one class step, so a first commit at
+  2.28.0 from 2.25.4 is rejected as "not a single class step". The three commits therefore take
+  three feat minors, landing the ordered 2.28.0 at step 3; later steps step 2.28.1, 2.28.2 and
+  so on. Decision 13 is amended by this note, and the lead''s merge order (wave one at 2.26.x,
+  wave two at 2.27.x, wave three from 2.28.0) is unchanged.
+- **es gate answers.** The two cancel buttons read `Anular` because `Cancelar` contains the
+  English bytes the R2 echo gate refuses; the sourcing gate''s mutation pass and the picker
+  census both bite.
+- **nl gate answers.** The widget copy reads `Athan openen om te vernieuwen` and `Athan openen`
+  so no key echoes its English source, and the released widget title is `Widgets voor beide
+  schermen` inside the 32-char What''s New budget.
+- **Fixtures.** locale.test.ts''s unshipped-tag rows move from es-ES, which now ships, to yo-NG,
+  which R9 section 2 keeps out of the set.
+- **Steps carried this session: 1, 2 and 3 (6 points).** Steps 4 to 10 stay for the next lane,
+  starting at 2.28.1 with kk.
+
+- **Later locale steps are typed chore, agent-ruled 2026-10-28.** The version-discipline gate
+  admits a patch step only under a non-feat subject, and the run''s band fixes every later step
+  to 2.28.x, so steps 4 onwards carry `chore(i18n)` subjects at 2.28.1 and above.
+- **Steps 4, 5 and 6 landed (6 points): kk at 2.28.1, ky at 2.28.2, tg at 2.28.3.** The resume
+  point is **step 7, tk lands at 2.28.4**, then wo, mr and the sweep.
+
+- **Steps 7, 8 and 9 landed (6 points): tk at 2.28.4, wo at 2.28.5, mr at 2.28.6.** All eight
+  catalogs now ship; the only step left is **step 10, the full sweep and the README at
+  2.28.7**, whose count is written from `LOCALE_IDS.length` (thirty-four) rather than a
+  remembered number.
+
+- **Step 10 landed at 2.28.7 and the wave is complete on the branch.** All ten steps are done:
+  eight catalogs, thirty-four ids in LOCALE_IDS, README at thirty-four read from the constant,
+  yarn validate green at 6887 tests and full coverage, the widget runtime load suite green, and
+  en''s catalog-lock hash unchanged at e20ae02c. Nothing is merged and nothing pushed: the lead
+  merges the three waves in order and audits them.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 50176, 7, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:25:11.47019+00', '2026-10-29 00:19:23.570332+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (49, 1, NULL, 'T-419', '# T-419 — The next ten languages, proven on the XS
 
 ## Goal
@@ -18653,6 +19566,207 @@ Points: steps 13-16 carry 10; the done steps carry 33; the ticket''s estimate is
 - 2026-10-25, finding 4 (the SF dump as written lands before the tap and reads NO DATA): fixed. The dump lands after the recorded animation; the folded instrument measures its own offset per capture.
 - 2026-10-28, v7 re-grill, six findings: (1) the sf branch''s PASS line is not a floor verdict (it tolerates 34ms and excludes gaps over 100ms, so a known-bad build prints PASS) - D16 now names the printed present-gap list as the verdict of record and Step 13''s lift makes the semantics honest; (2) the sf branch lacks the dual branch''s --list layer resolution, tap timestamp and anchor discipline - Step 13''s first deliverable lifts all three; (3) the fold''s conflict sites and resolutions were unnamed - D17 now records them (atlas keeps both sides, allowlist keeps uat''s entries, three lockstep stamp files renumber); (4) Step 14 never measured the sheet closes Defect A''s late-closing-tap clause claims - the two sheet-close SF reads are added; (5) Step 15 asked the executor to produce the owner''s eyeball - reworded to hand the build and record the ask; (6) the Risks line named the wrong lane - now "other lanes".
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 34816, 9, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-24 20:02:57.06513+00', '2026-10-28 16:03:35.28204+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (52, 1, NULL, 'T-428', '# T-428 — Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight
+
+## Goal
+
+The app ships twenty-six locale catalogs (en plus twenty-five translated). Eight more land in this
+wave: te, gu, kn, am, om, bm, tl, ff. Three parallel waves add twenty-four together; this wave owns
+2.27.x and appends its rows at the end of every shared list, so the lead concatenates at the merge.
+Nothing about the twenty-six shipped locales changes a byte. Code only: the proof is `yarn validate`,
+and the owner reads the phone afterwards.
+
+**The eight, with the measured decision each carries:**
+
+| Tag | Language | Script and face | Core names, sourced |
+| --- | --- | --- | --- |
+| te | Telugu | Telugu; bundles Noto Sans Telugu v2.005 | ఫజ్ర్ జుహర్ అసర్ మగ్రిబ్ ఇషా, te-wikipedia |
+| gu | Gujarati | Gujarati; bundles Noto Sans Gujarati v2.106 | ફજર ઝોહર અસર મગરિબ ઈશા, sunnah.global gu + ZindSa |
+| kn | Kannada | Kannada; bundles Noto Sans Kannada v2.006 | ಫಜರ್ ಜುಹರ್ ಅಸರ್ ಮಗ್ರಿಬ್ ಇಶಾ, qiblafind kn + Play listings |
+| am | Amharic | Ethiopic; bundles Noto Sans Ethiopic v2.102 | ፈጅር ዙህር አስር መግሪብ ኢሻ, namazvakti AM + quran.et |
+| om | Oromo | Latin; Roboto | Fajrii Zuhrii Asrii Magribii Ishaa, getilham om table |
+| bm | Bambara | Latin with ɛ ɔ ɲ; bundles Noto Sans v2.015 | fajiri selifana lansara fitiri saafo, sunnah.global bm |
+| tl | Tagalog | Latin; Roboto | Fajr Dhuhr Asr Maghrib Isha, khutba.world fil + newmuslims tl |
+| ff | Fulfulde | Latin with ɓ ɗ ƴ; bundles Noto Sans v2.015 | fajiri tiisbaar takkusaan furura geeƴe, islamhouse ff |
+
+## Decisions taken (2026-10-28, lane 2, agent-ruled)
+
+1. **The eight are te, gu, kn, am, om, bm, tl, ff, in that order, appended after zh-Hant.** The
+   ticket names exactly these eight and the run''s merge protocol appends each wave''s rows at the end
+   of every shared list. The lists append in the order the wave actually landed (om, bm, tl, ff, te, gu, kn, am), and every registry follows that one order so the lead''s concatenation is unambiguous.
+2. **The key parity is 201, and the ticket''s "205 keys" was a remembered number: the lock script''s object-literal count reads 201.** `shared/i18n/en.ts`
+   carries 201 keys, measured by counting its string-literal members; the Catalog type is derived
+   from that object, so parity is enforced against 202 and no catalog can carry a different number.
+3. **Fonts, measured 2026-10-28 with fontTools over the downloaded statics, both weights.** No
+   bundled face carries a single Telugu, Gujarati, Kannada or Ethiopic letter, so each of the four
+   bundles its Noto pair. The records follow the ta/ml precedent of T-419: a pair whose hhea box
+   clears its own win ink takes no script box, and a pair whose ink runs past the box pins the
+   script line at the measured height.
+   - Noto Sans Telugu v2.005: hhea 869/-483 (1.352em), win 995/483 (1.478em) -> 1.5em script box.
+   - Noto Sans Gujarati v2.106: hhea 896/-408 (1.304em), win 1076/408 (1.484em) -> 1.5em script box.
+   - Noto Sans Kannada v2.006: hhea 809/-540 (1.349em), win 1105/540 (1.645em) -> 1.65em script box.
+     The only record off the house 1.5em, because 1.5em does not clear the measured 1.645em ink; the
+     factor is the measurement rounded up.
+   - Noto Sans Ethiopic v2.102: hhea 1069/-293 (1.362em), win 1069/293, equal -> no script box.
+   All four UPM 1000, lineGap 0, Regular and Medium identical.
+4. **ff and bm bundle Noto Sans v2.015 too, because every shipped face fails them.** Measured by
+   explicit codepoint across both weights of all twenty bundled TTFs: Roboto and Rubik carry none of
+   ɛ (U+025B), ɔ (U+0254), ɲ (U+0272), ɓ (U+0253), ɗ (U+0257) or ƴ (U+01B4). Noto Sans carries all
+   six (3094-codepoint cmap). Its hhea 1069/-293 (1.362em) against win 1124/395 (1.519em) pins a
+   1.55em script line. om and tl stay on LATIN: Oromo''s orthography is ASCII (c, dh, ny, ph, sh, x)
+   and Tagalog''s only non-ASCII letter is ñ (U+00F1), which Roboto carries.
+5. **Sourcing is fresh, from the localized tables and texts read on 2026-10-28.** New slugs:
+   te-wikipedia, gu-sunnah-global, gu-zindsa, kn-qiblafind, kn-play-salah, am-namazvakti, am-quran-et,
+   om-getilham, bm-sunnah-global, tl-newmuslims, tl-islamarc, ff-islamhouse. The core six of every
+   language come from those; Sunrise is the language''s own word for the sun rising; Midnight and Last
+   Third are derived from the language''s own vocabulary at medium where it has the words, and the loan
+   rule of T-410 decision 5 (text, slug "loan", low confidence, derivation in the note) closes
+   Suhoor, Duha and Istijaba in every language and any slot no source prints.
+6. **Numerals are Latin in all eight.** The Amharic table prints Western digits, and no source for the
+   other seven prints native numerals; R12''s row-82 law keeps times, dates and countdowns Latin.
+7. **No RTL.** None of the eight reads right to left, so RTL_IDS, the chevron and comma helpers and
+   the RTL gates stay untouched.
+8. **Version line: the lead''s 2026-10-28 ruling replaced the planned band with the shared line, so the branch takes 2.26.0, 2.27.0, 2.28.0, 2.29.0 and 2.30.0, one class step per commit, under the collisions allowlist uat carries from 4d5bb65d**: the first commit 2.27.0, the next 2.27.1, the next
+   2.27.2, `package.json`, `app.json` and the `shared/whatsNew.ts` stamp together. `android/app/build.gradle` is prebuild output and untracked, so it is not part of the line. It was never 2.27.x: the branch opened at 2.26.0, as recorded above. Old note: utput and is absent from the repository tree, so there is no third tracked file to
+   bump; the lane records that in its commit message.
+9. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font array, the
+   expo.locales blocks, CFBundleLocalizations and the version field are mechanical carriers, and every
+   byte is gated by nativeLocalesConfig.
+10. **No What''s New item ships.** The archive''s language item already reads "Added support for more
+    languages"; the banner stamp rides the version.
+11. **Step order and budget.** Five code steps at 2 points each, 10 points. This session carries
+    steps 1 to 3 (6 points) and parks in Audit with the exact next step named, per the lead''s order.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — eight entries: names (11) and explanations (5) each, with the
+  new slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/te.ts, gu.ts, kn.ts, am.ts, om.ts, bm.ts, tl.ts, ff.ts` — one full 202-key catalog
+  each plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after zh-Hant; the header count.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonyms in the picker''s own codepoint order: Bamanankan, Fulfulde, Oromoo and Tagalog sit among the Latin rows, and తెలుగు, ગુજરાતી, ಕನ್ನಡ and አማርኛ open their script blocks.
+- `shared/typography.ts` — TELUGU, GUJARATI, KANNADA and ETHIOPIC records plus one AFRICAN record
+  shared by bm and ff; RECORDS gains the eight.
+- `assets/fonts/` — NotoSansTelugu, NotoSansGujarati, NotoSansKannada, NotoSansEthiopic and
+  NotoSans Regular/Medium pairs, ten TTFs, OFL (the licence file is already present).
+- `app.json` — expo-font array +10, eight expo.locales blocks, CFBundleLocalizations to thirty-four,
+  version.
+- `shared/i18n/native-strings.json`, `shared/i18n/widget-statics.json` — eight rows each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight together; en''s hash unchanged.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T428_EIGHT sourcing gate.
+- `shared/__tests__/locale.test.ts` — eight detection rows.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list, the four script cases and
+  the African record case.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +8 with the per-locale parity rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  LOCALES lists to thirty-four.
+- `components/sheets/__tests__/Language.test.tsx` — the name list to thirty-four.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables +8 rows
+  and the four locale finder lists +8.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version stamps.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so the
+moment LOCALE_IDS grows, loader MODULES and typography RECORDS fail to typecheck until every new
+locale carries its row, and each catalog satisfies Catalog (all 202 keys) or the build fails.
+LANGUAGE_NAMES is hand-verified, so each step re-reads the picker row count against LOCALE_IDS. The
+data side stays gated as it landed: catalogGates (key parity, token parity, echo, length budget, brand
+bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged).
+
+Each locale step lands that locale''s whole keyed surface in one commit - catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows and finder lists, the lock and gate list rows, its detection rows -
+so no suite is red across a step boundary.
+
+The four script pairs are bundled as full statics, not subsets: their closed character sets run past
+the Latin range a subset would save, the four pairs total about 3MB, and T-419''s zh subsets exist for
+a forty-megabyte problem that does not arise here.
+
+Alternatives rejected: a runtime i18n dependency (the landed practice is authored catalogs behind
+gates, no new dependency); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s
+answer); translating Sunrise for Amharic into the Ethiopic word for "dawn" (the table''s ፀሃይ is the
+sun, and the Sunrise row is a translated slot); pinning Kannada at the house 1.5em (it does not clear
+the pair''s measured 1.645em ink).
+
+## Steps (5 x 2 points = 10)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains te,
+   gu, kn, am, om, bm, tl, ff; every name and explanation slot non-null with text, source, confidence
+   and a note that names the table or the derivation; the twelve new slugs registered; catalogGates
+   gains a T428_EIGHT sibling gate over names and explanations, red first.
+2. **Step 2: Locale plumbing lands with the four Latin catalogs** — om, bm, tl and ff ship their whole
+   surface in one commit: the Noto Sans pair bundled for bm and ff, the AFRICAN record and the LATIN
+   rows for om and tl, LOCALE_IDS at thirty, loader, endonyms, lock list, gates rows, detection rows,
+   native-strings and widget-statics rows, app.json blocks and CFBundleLocalizations, the four widget
+   STATIC tables and finders, i18nBridge parity, the Language sheet list.
+3. **Step 3: te and gu land with their bundled Noto pairs** — the Telugu and Gujarati pairs bundled,
+   measured and recorded (1.5em script boxes), the two full catalogs, their plumbing rows and their
+   tests, red first.
+4. **Step 4: kn and am land with their bundled pairs** — the Kannada pair at the measured 1.65em
+   script box and the Ethiopic pair at its own metrics, the two full catalogs, their plumbing rows and
+   their tests, red first.
+5. **Step 5: The full sweep is green and the README names thirty-four** — every suite green over the
+   thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, README
+   bullet rewritten, audit-ready.
+
+## Risks
+
+- **A catalog drifts from its sourced names**: catalogGates'' sourced-verbatim row fails naming the
+  locale and key, because the catalog member must equal the glossary text byte for byte.
+- **A missing glyph**: each script step measures every distinct character of the locale''s whole keyed
+  surface (catalog, native strings, widget statics, endonym) against both weights'' cmaps before the
+  commit; a missing character stops the step.
+- **Kannada ink**: the pair''s win descent is 540 units against a 809 ascent; the 1.65em pin is the
+  measurement, and a clipped subscript shows in the typography sweep or on the owner''s phone.
+- **A borrowed name in a translated slot**: Sunrise is authored from the language''s own word in every
+  one of the eight; a transliteration there would fail the naming rule''s own review.
+- **Merge collision**: the three waves share every list; this lane appends only, never reorders, and
+  the lead concatenates.
+- **Version collision inside the band**: the lane takes 2.27.0, 2.27.1, 2.27.2 in sequence and touches
+  no other number.
+
+## Proof
+
+1. The eight named with their sources and measurements: this doc''s table, decision 3 and decision 4.
+2. Sourcing recorded: `jq ''[.["te"],.["gu"],.["kn"],.["am"],.["om"],.["bm"],.["tl"],.["ff"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''`
+   over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T428_EIGHT row is green.
+3. Coverage and regression: `yarn validate` exits 0; the output lists catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green over
+   the shipped set, with every earlier locale''s rows unedited.
+4. Detection: locale.test.ts carries om-ET -> om, bm-ML -> bm, tl-PH -> tl, ff-SN -> ff, te-IN -> te,
+   gu-IN -> gu, kn-IN -> kn, am-ET -> am, and the es-ES fallback stays unshipped.
+5. Glyph coverage: the per-locale character census over both weights prints zero missing.
+6. The README bullet and the picker list both read thirty-four at step 5.
+
+## Progress (2026-10-28, lane 2)
+
+Steps 1 to 3 are committed on `lane2/T-428` and `yarn validate` is green at each: 2.26.0 the sourcing
+record and the T-428 gate, 2.27.0 the plumbing with om, bm, tl and ff on the new Noto Sans pair, 2.28.0
+te and gu on their bundled pairs. Six points carried.
+
+The lists take each wave''s rows in landing order, so LOCALE_IDS reads zh-Hant, om, bm, tl, ff, te, gu
+and the remaining two append after them: the run''s merge protocol allows this wave''s own order, and
+this is that order.
+
+Resume at step 4: kn and am, at 2.29.0. Both pairs are already measured from the Noto project''s
+releases (Noto Sans Kannada v2.006 hhea 809/-540 against win 1105/540, so a 1.65em script line;
+Noto Sans Ethiopic v2.102 hhea 1069/-293 with win equal, so no script box), and the sourcing record
+for both is already in the glossary. Fetch the four TTFs from those releases, then step 5 sweeps and
+writes the README.
+
+## Progress (2026-10-28, lane 2, completed)
+
+Steps 4 and 5 are committed: 2.29.0 kn and am on their bundled pairs (Kannada 1.65em script line,
+Ethiopic none), 2.30.0 the full sweep green over thirty-four locales at 100 percent coverage with the
+README rewritten from LOCALE_IDS.length. All five steps are ticked, ten points carried. The branch is
+ready for the lead''s merge and the audit; nothing is pushed and nothing is merged to uat.
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 52224, 6, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:29:32.480873+00', '2026-10-29 00:19:23.532031+00');
 
 
 --
@@ -18708,6 +19822,9 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (47, 400, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 01:18:07.317923+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (48, 410, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 15:53:12.048821+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (49, 419, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:03:18.636039+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (50, 429, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:25:16.90081+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (51, 427, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:26:31.996318+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (52, 428, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:29:35.353641+00');
 
 
 --
@@ -31928,6 +33045,2162 @@ build before the audit (the owner tests once, on the audited tree).
 6. **NIT, accepted.** The glyph lock carries the regenerating command in a _comment key, the
    native-strings and widget-statics pattern.
 ', NULL, NULL, '{}', false, false, false, NULL, 49152, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 19:18:52.578789+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (141, 50, 1, NULL, 'T-429', '# T-429 — Fifty languages, wave three of three
+
+## Goal
+
+The app ships twenty-six locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa,
+bn, ru, az, de, sq, bs, ps, ta, ml, zh-Hans, zh-Hant). Two waves beside this one carry the first
+sixteen of the remaining twenty-four; this wave carries the last eight, taking the shipped set to
+thirty-four locale catalogs and the three waves together to fifty. Every new catalog is gated and
+sourced, the twenty-six existing locales and every English byte stay untouched, and the wave bundles
+no new font because the bundled faces already carry its scripts and diacritics.
+
+**The eight:**
+
+| Tag | Reach | Script, record | Sourcing state today | What this wave adds |
+| --- | --- | --- | --- | --- |
+| es | ~2M Muslim-reachable in Spain and Latin America | Latin, LATIN record | R6 6/11 names, 5/5 explanations, every row AGPL-only | the Fajr/Fayr and Magrib/Maghreb forks ruled on evidence; independent confirmations replacing the AGPL-only slugs; Duha and Istijaba loans |
+| nl | ~1M (Netherlands, Flanders, Suriname) | Latin, LATIN record | R6 8/11 names, 5/5 explanations, extras derived | the Zonsopkomst confirmation that R6 §5 held the language for; Suhur, Duha and Istijaba loans |
+| kk | ~11M (Kazakhstan) | Cyrillic, LATIN record | absent from prayer-names.json | fresh from muftyat.kz, the Kazakh Muslims'' Religious Administration''s own table: Таң, Күн, Бесін, Екінті, Ақшам, Құптан |
+| ky | ~5M (Kyrgyzstan) | Cyrillic, LATIN record | absent | fresh from muftiyat.kg, the Kyrgyz Muslims'' Spiritual Board: Багымдат, Күн, Бешим, Аср, Шам, Куптан, with Сухур in the same table |
+| tg | ~8M (Tajikistan) | Cyrillic, LATIN record | absent | fresh from shuroiulamo.tj, the Council of Ulema of Tajikistan: Бомдод, Пешин, Аср, Шом, Хуфтан |
+| tk | ~4M (Turkmenistan) | Latin (äňöşüýž), LATIN record | absent | fresh from three independent Turkmen tables and tk.wikipedia: Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy |
+| wo | ~11M (Senegal, the Gambia) | Latin (éë), LATIN record | absent | fresh from a Wolof-language vocabulary source: Tisbaar, Takusaan, Timis; the rest by the loan rule, flagged for a speaker |
+| mr | ~13M Muslims of Maharashtra | Devanagari, HINDI record | absent from prayer-names.json | fresh from mr.wikipedia''s नमाज article: फजर, जुहर, असर, मगरीब, ईशा, सूर्योदय; the rest by the loan rule |
+
+## Decisions taken (2026-10-28, lane 3)
+
+1. **The eight are es, nl, kk, ky, tg, tk, wo, mr, counted by locale catalog.** The ticket names
+   them and the run splits the twenty-four remaining catalogs into three waves; this wave takes the
+   eight no other wave carries, so the three waves together move twenty-six to fifty without a
+   catalog counted twice.
+2. **es ships `Fajr`, and the R6 §5 hold is answered rather than inherited.** R6 recorded Fayr with
+   medium confidence from an AGPL-only catalog while its own note said "Fajr is more common in
+   Spanish mosque calendars". Two Madrid mosque tables fetched 2026-10-28 print Fajr (mawaqit.net''s
+   Embajadores page and its Tariq Bin Ziad page), so the community form and the compliant
+   transliteration agree. Challenged: keep Fayr because a Spanish reader writes the y. It does not
+   flip: the shipped spellings follow the tables the readers compare against, and no Spanish table
+   fetched prints Fayr.
+3. **es keeps `Magreb`, with an independent confirmation.** R6 chose the Spanish-orthographic
+   Magreb and flagged it AGPL-only. es.wikipedia''s Salat article prints Al-Magrib beside the Arabic,
+   which is the second source class R6 §2 demands, so the row ships at medium with the wikipedia slug
+   recorded beside the mihrab cross-check.
+4. **nl ships `Zonsopkomst`, and the R6 §5 hold is answered.** R6 held Dutch for one missing
+   confirmation of the Sunrise label. gebedstijde.nl''s Dutch pages fetched 2026-10-28 print the row
+   order "Fajr – Zonsopkomst (Shuruq) – Dhuhr – Asr – Maghrib – Isha" and name the table column
+   Zonsopkomst, so the translated slot ships on a Dutch authority-family source. Zonsopgang stays
+   recorded as the alternative spelling in the note.
+5. **nl''s remaining slots land the way de''s did.** Middernacht and Laatste derde are the ordinary
+   Dutch words for a row that shows a clock time, Suhur, Duha and Istijaba are the naming rule''s
+   transliterations, and every entry carries text, slug, confidence and note, including the
+   `derived` slug for the assembled explanations.
+6. **No new font, measured 2026-10-28 with fontTools on the bundled TTFs.** Roboto-Regular and
+   Roboto-Medium carry, by explicit codepoint and in both weights, every diacritic of es
+   (áéíóúüñÁÉÍÓÚÜÑ¿¡), of nl (áéíóúüñëïèêöô), of tk (äÄňŇöÖşŞüÜýÝžŽçÇ) and of wo (ëËéÉàÀñÑóÓ), and
+   every Cyrillic letter of kk (әӘғҒқҚңҢөӨұҰүҮһҺіІ), ky (ңҢөӨүҮ) and tg (ғҒӣӢқҚӯӮҳҲҷҶ); the same
+   two faces carry no Devanagari codepoint at all. NotoSansDevanagari-Regular and -Medium carry every
+   Devanagari codepoint mr needs (the full U+0900 block set it uses, measured OK in both weights). So
+   es, nl, kk, ky, tg, tk and wo take the LATIN record, and mr takes the HINDI record: the same
+   bundled pair, the same measured 1.304em hhea box against 1.906em win ink, the same 1.5em script
+   box that record already pins.
+7. **Numerals: Latin in all eight.** R12''s per-locale table has no row for any of the eight, and the
+   row-82 law keeps times, dates and countdowns Latin in every locale regardless.
+8. **tk ships Turkmenistan''s own table labels as an authority exception**, the tr and uz precedent:
+   Ertir (fäjr) for Fajr, Dogýan wagty for Sunrise, Öýlen, Ikindi, Agşam, Ýassy. Three independent
+   Turkmen tables fetched 2026-10-28 print that set, and tk.wikipedia''s Namaz article glosses
+   "ertir (fäjr)" in the same words, so the exception rests on the authority the reader compares
+   against rather than on a transliteration nobody prints.
+9. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so no row drops; the loan lands with text, slug, confidence and the
+   derivation in its note.
+10. **kk, ky and tg take their national authorities'' labels verbatim**, the tr precedent again:
+    muftyat.kz prints Таң/Күн/Бесін/Екінті/Ақшам/Құптан, muftiyat.kg prints
+    Багымдат/Күн/Бешим/Аср/Шам/Куптан with Сухур as its own column, and shuroiulamo.tj prints
+    Бомдод/Пешин/Аср/Шом/Хуфтан. Their extras land as loans or derived rows, each recorded.
+11. **mr''s five names come from mr.wikipedia''s नमाज article** (नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा,
+    from which the bare row labels drop the नमाज-ए- prefix the way the ps wave dropped phrases) and
+    its Sunrise is सूर्योदय, the word the same article''s own prose uses. Medium confidence, one
+    source class; a Marathi speaker pass is the recorded risk and does not block the wave.
+12. **wo''s attested rows ship as the Wolof course source prints them** (Tisbaar, Takusaan, Timis,
+    and Suba for the sunrise row it glosses as "sunrise"), with Fajar and Isha as the Arabic loans
+    Senegambian Wolof uses, Diggu guddi and Ñetteelu guddi derived for Midnight and Last Third, and
+    Suhoor, Duha and Istijaba as loans. Every one carries a note naming its derivation; a Wolof
+    speaker pass is the recorded risk.
+13. **Version line 2.28.x.** The first commit takes the minor from 2.25.4 to 2.28.0 because every
+    commit is typed feat; each later commit steps the patch (2.28.1, 2.28.2, ...). package.json,
+    app.json and android/app/build.gradle move together, and no number outside 2.28.x is taken while
+    lanes 1 and 2 hold 2.26.x and 2.27.x.
+14. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight expo.locales
+    entries, the CFBundleLocalizations rows and the version field are the mechanical carriers, and
+    every byte is gated by nativeLocalesConfig.
+15. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+16. **README''s Features bullet moves from twenty-six to thirty-four**, naming every language in
+    LOCALE_IDS order, with the right-to-left note unchanged because none of the eight reads right to
+    left.
+17. **The merge protocol is append-only.** Every shared registry file (locale.ts LOCALE_IDS,
+    loader.ts, languageNames.ts, typography.ts RECORDS, the catalog-lock LOCALES list,
+    native-strings.json, widget-statics.json, the app.json arrays, the widget STATIC tables, the
+    gates'' CATALOGS and locale lists, README) takes this wave''s rows at the end of each list in this
+    wave''s own order; no other wave''s row is rewritten or reordered, and the lead concatenates at
+    the merge.
+18. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the wave''s proof is `yarn validate` alone and the owner reads the result afterwards.
+19. **One locale per commit.** Each step lands its locale''s whole keyed surface in one commit -
+    catalog, loader row, endonym row, typography record, native-strings row, widget-statics row,
+    the four widget STATIC rows, app.json locale block, CFBundleLocalizations entry, lock list,
+    lock suite list, gates list, detection rows - so no suite is red across a step boundary (T-410
+    decision 13).
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; the header count.
+- `shared/i18n/es.ts, nl.ts, kk.ts, ky.ts, tg.ts, tk.ts, wo.ts, mr.ts` — new, one full catalog each
+  (205 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/i18n/sourced-names.json` — the eight''s entries: names and explanations, every slot with
+  text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows.
+- `shared/__tests__/typography.test.ts` — the Latin filter keeps its exclusion list; mr joins the
+  Devanagari record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight and the count statement moves to
+  thirty-four.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order: Español and Nederlands in the
+  Latin block, Қазақша, Кыргызча and Тоҷикӣ in the Cyrillic block, Türkmençe after Тоҷикӣ, Wolof
+  after Türkmençe, मराठी after हिन्दी.
+- `shared/typography.ts` — RECORDS: seven LATIN rows; mr maps the HINDI record, its comment naming
+  Marathi beside Hindi.
+- `app.json` — eight expo.locales entries, CFBundleLocalizations to thirty-four, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables and
+  the four locale-finder lists grow by eight rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the LOCALES list grow; a T429_EIGHT
+  sourcing-gate sibling sits beside T410_TEN and T419_TEN.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to thirty-four and the count statements move with them.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as it did for the two shipped waves. LocaleId is a closed
+union, so the moment LOCALE_IDS grows the loader MODULES and typography RECORDS fail to typecheck
+until every new locale carries its row, and each catalog `satisfies Catalog` (all 205 keys) or the
+build fails. LANGUAGE_NAMES is the one hand-verified list, so every step re-reads the picker row
+count against LOCALE_IDS.length. The data side stays gated as it landed: catalogGates (key parity,
+token parity, echo, length budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim),
+nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget modules render the statics table row for row), catalogLock (en''s hash
+unchanged), plus this wave''s T429_EIGHT row in the sourcing gate.
+
+Per locale the recipe is T-410''s and T-419''s: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, app.json locale block, the four widget STATIC rows.
+
+Alternatives rejected: bundling a new font (measurement shows none is needed, decision 6); inheriting
+R6 §5''s holds for es and nl unchanged (the ticket asks for evidence, and both holds are answerable
+from pages a reader can fetch); dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); holding wo and mr for a speaker (the loan rule ships a gated row now and the speaker
+pass improves it later).
+
+## Steps (10 x 2 points = 20)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json: the es
+   Fajr swap and its confirmations, the nl extras and the Zonsopkomst confirmation, the kk, ky, tg,
+   tk, wo and mr name sets with their sources, and the loan or derived entry for every slot no source
+   attests. Every entry ends non-null with text, slug, confidence and note.
+2. **Step 2: es lands** — the full catalog and its whole keyed surface in one commit.
+3. **Step 3: nl lands** — the same, with the Zonsopkomst ruling in the catalog header.
+4. **Step 4: kk lands** — the same, on the muftyat.kz label set.
+5. **Step 5: ky lands** — the same, on the muftiyat.kg label set.
+6. **Step 6: tg lands** — the same, on the shuroiulamo.tj label set.
+7. **Step 7: tk lands** — the same, on the Turkmen authority label set.
+8. **Step 8: wo lands** — the same, on the Wolof source and the loan rule.
+9. **Step 9: mr lands on the Devanagari record** — the same, with typography.test.ts''s Devanagari
+   cases extended.
+10. **Step 10: The full sweep is green and the README names thirty-four** — every suite green over
+    the thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged,
+    README bullet rewritten, audit-ready.
+
+## Risks
+
+- **A weak source on wo or mr**: a wrong row label shows as a speaker''s bug report rather than a
+  broken build. Both are recorded at their measured confidence with the derivation in the note, and
+  the owner''s phone pass is the read.
+- **A diacritic the bundled face lacks**: the measurement in decision 6 is by explicit codepoint in
+  both weights, so a missing glyph would have appeared there; the 24-char gate and the length budget
+  bound the labels.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The version line collides with another wave**: bumps stay inside 2.28.x and a rebase forward
+  takes the higher number.
+- **A shared registry row gets reordered at the merge**: every step appends, never sorts, and the
+  lead concatenates.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table and the ticket''s acceptance list, citing R9''s
+   remainder, R6 §5, R4 and the authority pages fetched on 2026-10-28.
+2. Sourcing recorded: a jq census over shared/i18n/sourced-names.json prints zero rows with null
+   text, source or confidence across the eight''s names and explanations; the T429_EIGHT row of
+   catalogGates is green.
+3. Coverage and regression: `yarn validate` exits 0 and the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale and
+   chevronDirection green at full coverage, with the twenty-six existing locales'' rows unedited and
+   en''s catalog-lock hash unchanged.
+4. Detection: locale.test.ts covers es-ES to es, nl-NL to nl, kk-KZ to kk, ky-KG to ky, tg-TJ to tg,
+   tk-TM to tk, wo-SN to wo, mr-IN to mr, and the unshipped-tag fallback.
+5. README count: the Features bullet names thirty-four, equal to LOCALE_IDS.length.
+', NULL, NULL, '{}', false, false, false, NULL, 50176, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:25:11.47019+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (142, 51, 1, NULL, 'T-427', '# T-427 — Fifty languages, wave one of three
+
+## Goal
+
+The app ships twenty-six locale catalogs. This wave takes it to thirty-four by shipping the eight
+languages the ticket names, and it does so in code alone: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards. Wave two and wave three add eight
+each, for fifty at the merged line.
+
+**The eight, in this wave''s order:**
+
+| Tag | Script | Reach | Sourcing this wave |
+| --- | --- | --- | --- |
+| pa-Arab | Shahmukhi Punjabi, Arabic, RTL | ~110M in Pakistan | pnb.wikipedia''s five names, the rest loans |
+| sd | Sindhi, Arabic, RTL | ~30M | sd.wikipedia''s five plus its own sunrise, the rest loans |
+| ug | Uyghur, Arabic, RTL | ~11M | ug.wikipedia''s ناماز ۋاقتى table, the rest loans |
+| ckb | Sorani Kurdish, Arabic, RTL | ~10M | kati-nwezh.com''s table and zaniary.com''s names |
+| ku | Kurmanji Kurdish, Latin | ~30M | prayer-names.json, the five gaps loans |
+| yo | Yoruba, Latin | ~20M | islamhouse yo and Yoruba da''wah media, the rest loans |
+| jv | Javanese, Latin | ~40M | jv.wikipedia''s Pepéling, the rest loans |
+| su | Sundanese, Latin | ~30M | su.wikipedia''s Lohor, Asar, Magrib, Subur and Isya articles |
+
+## Decisions taken (2026-10-28, lane 1, agent-ruled)
+
+1. **The eight are pa-Arab, sd, ug, ckb, ku, yo, jv, su, appended to LOCALE_IDS in that order.**
+   The ticket names them; R4 A.4 rules Punjabi ships as pa-Arab because Shahmukhi is the Muslim
+   script and CLDR''s bare pa is pa-Guru; R4''s coverage row rules Sorani (ckb, RTL) and Kurmanji
+   (ku) separate languages, not variants.
+2. **pa-Arab ships the five Punjabi time names the Shahmukhi encyclopedia prints** — سرگی، پیشی،
+   ڈیگر، نماشاں، کفتاں — not the Urdu loans. pnb.wikipedia''s نماز article is the only Shahmukhi
+   Punjabi attestation of the five times'' names, and shipping فجر ظهر عصر مغرب عشاء instead would
+   make pa-Arab a copy of ur. Challenged: Pakistani tables print Urdu, so the loans are what a
+   reader sees on paper. It does not flip: the wave exists to give Punjabi readers Punjabi, and
+   the loan set stays recorded in each entry''s note as the alternative.
+3. **yo ships despite R9 §2''s deferral**, because the ticket names it. R9''s own path (Yoruba
+   Wikipedia, Yoruba-language da''wah media) is the sourcing used, and every low-confidence slot
+   says so in its note. Challenged: R9 says defer unless a speaker is at hand. It does not flip:
+   the ticket is the owner''s later order and this wave''s law is sourcing recorded, not sourcing
+   perfect.
+4. **The four Arabic-script locales take the bundled Noto Naskh pair, no new font.** Measured
+   2026-10-28 with fontTools over the bundled TTFs, both weights: Naskh carries all fifteen Sindhi
+   letters (ڪ ڳ ڱ ڄ ڃ ڇ ڍ ڊ ڏ ڙ ٺ ٽ ٿ ڀ ڻ), Uyghur''s eight (ې ۆ ۈ ۋ ژ ڭ گ ئ), Sorani''s twelve
+   (ڕ ڵ ێ ۆ ە ڤ گ چ پ ژ ی ک) and Shahmukhi''s thirteen (ٹ ڈ ڑ ں ھ ے ہ چ ژ گ ک آ ء ئ) by explicit
+   codepoint; Rubik lacks every one of them. pa-Arab, sd, ug and ckb map to the URDU record
+   unchanged, the URDU record''s comment gaining this wave''s measurement.
+5. **yo cannot ride Roboto, so it bundles Noto Sans Regular and Medium.** Measured 2026-10-28:
+   Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights, and no
+   bundled face carries them; Yoruba cannot be written without ṣ. The pair is the full Google
+   Fonts statics under the present OFL licence file, its record pinned by that pair''s measured hhea
+   box in the step that bundles it. ku, jv and su take LATIN: measured, Roboto carries ç ê î ş û é
+   è and every other character those three need.
+6. **RTL_IDS gains pa-Arab, sd, ug and ckb.** Direction-keyed surfaces (chevron, sentence comma,
+   widget rtl flags, crossing relaunch) follow the set with no layout code change.
+7. **Prose digits are Latin in all eight.** R12 carries no row for any of them, and R12''s default
+   is the shipped Latin set; times, dates and countdowns stay Latin in every locale (row 82).
+8. **The loan rule governs every slot no table attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with
+   text, slug, confidence and the derivation in the note. The census and the new T427 gate both
+   read it.
+9. **ku''s six attested rows come from prayer-names.json unchanged** (Sibe, Derketina rojê, Nîvro,
+   Esir, Mexreb, Eşa); Midnight, Last Third, Suhoor, Duha and Istijaba take the loan rule.
+10. **Version band 2.26.x.** The first commit takes the minor 2.25.4 to 2.26.0, every later commit
+    steps the patch, package.json, app.json and android/app/build.gradle together, origin fetched
+    before each bump. Lanes 2 and 3 own 2.27.x and 2.28.x; this lane never takes a number outside
+    2.26.x.
+11. **Merge protocol.** Every shared registry list (LOCALE_IDS, loader RAW and MODULES,
+    languageNames, typography RECORDS, the catalog-lock LOCALES list, native-strings.json,
+    widget-statics.json, app.json''s arrays, README) takes this wave''s rows appended at the end of
+    the list, in this wave''s order, and never rewrites or reorders another wave''s row. The one
+    exception is LANGUAGE_NAMES, whose documented contract is codepoint order: each endonym is
+    inserted at its codepoint position, which leaves every existing row''s relative order untouched.
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10, T-419 decision 15):
+    the expo-font array, the eight expo.locales blocks, CFBundleLocalizations and the version field
+    are mechanical carriers, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **No device step.** The ticket is code only and this run bans device work outright; the owner
+    reads the wave on the phone afterwards. The suite is the proof.
+15. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader
+    row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection
+    rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+    entry, the four widget STATIC rows and their finder lists — so no suite is red across a step
+    boundary (T-419''s design law).
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections: names and explanations, every slot
+  non-null with text, source and confidence.
+- `shared/i18n/pa-Arab.ts, sd.ts, ug.ts, ckb.ts, ku.ts, yo.ts, jv.ts, su.ts` — new, one full
+  catalog each (205 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; RTL_IDS gains the four RTL ids; the
+  header comment reads the new count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order.
+- `shared/typography.ts` — RECORDS: pa-Arab, sd, ug, ckb map URDU; ku, jv, su map LATIN; yo maps a
+  new YORUBA record on the bundled Noto Sans pair, its box measured in Step 4.
+- `assets/fonts/NotoSans-Regular.ttf, NotoSans-Medium.ttf` — new, OFL, the licence file present.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight; en''s hash unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows (pa-PK to pa-Arab, sd-PK, ug-CN,
+  ckb-IQ, ku-TR, yo-NG, jv-ID, su-ID); the RTL membership sets gain the four.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list and the record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow; a T427_EIGHT sourcing
+  gate beside T410_TEN and T419_TEN.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  the LOCALES lists grow to thirty-four.
+- `shared/__tests__/widgetSnapshot.test.ts`, `shared/__tests__/i18n.test.ts`,
+  `components/__tests__/chevronDirection.test.tsx` — direction- and name-aware suites read
+  LOCALE_IDS, so they follow the set; only the RTL membership pins grow.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by eight rows each and the four locale finders gain the eight codes.
+- `app.json` — the expo-font array gains the two Noto Sans TTFs, eight expo.locales blocks,
+  CFBundleLocalizations to thirty-four, the version field.
+- `README.md` — the Features bullet rewrites from twenty-six to thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness. LocaleId is a closed union, so the moment LOCALE_IDS grows the
+loader''s MODULES and typography''s RECORDS stop typechecking until every new locale carries its row,
+and each catalog satisfies Catalog (all 205 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T427
+sourcing gate, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms and CFBundleLocalizations rides LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical, the lock''s list
+equal to the translated set) and i18nBridge''s parity row.
+
+Per locale the recipe is the T-419 recipe, in one commit per step: catalog file (sourced prayer
+names verbatim from sourced-names.json, UI copy authored to the R2 gates), loader rows, endonym
+row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows,
+native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the
+four widget STATIC rows and the four finder lists.
+
+Alternatives rejected: the Urdu loans for pa-Arab (decision 2); dropping yo at R9''s word (decision
+3); a Rubik-only Arabic set (decision 4''s measurement rules it out); decomposed s+U+0323 for
+Yoruba''s ṣ, which no input method or normalisation step would preserve; a subset cut of Noto Sans
+over yo''s closed string set, which would add a second glyph-lock mechanism for one script''s one
+missing letter (the full pair costs about a megabyte and closes the class); a device read inside
+this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   pa-Arab, sd, ug, ckb, ku, yo, jv and su, each with eleven name slots and five explanation slots,
+   every one non-null with text, slug, confidence and note: the attested core set from that
+   language''s own table, the loan-rule derivation for every slot no table prints (pa-Arab''s
+   sunrise, midnight, last third, suhoor, duha and istijaba; sd''s four extras; ug''s sunrise and
+   five extras; ckb''s midnight, last third, suhoor, duha and istijaba; ku''s five gaps; yo''s
+   midnight, last third, suhoor, duha and istijaba; jv''s sunrise and four extras; su''s sunrise and
+   four extras), and the five derived explanations each. catalogGates gains the T427_EIGHT gate
+   red first.
+2. **Step 2: pa-Arab and sd land RTL on the Naskh record** — LOCALE_IDS at twenty-eight, RTL_IDS
+   gains both, their whole keyed surface in one commit (catalog, loader, endonym, URDU record
+   comment, lock list and suite, gates rows, detection rows, native-strings, widget-statics,
+   app.json block, the four STATIC tables and finders), every suite green at the step boundary.
+3. **Step 3: ug and ckb land RTL on the Naskh record** — the same recipe, LOCALE_IDS at thirty.
+4. **Step 4: ku and yo land, yo with its own bundled pair** — ku on LATIN; Noto Sans Regular and
+   Medium fetched as full statics, measured with fontTools across every character of yo''s keyed
+   surface (both weights, zero missing), the YORUBA record pinned by that pair''s measured hhea box,
+   the expo-font array grown by the two TTFs, LOCALE_IDS at thirty-two.
+5. **Step 5: jv and su land on the Latin record** — the same recipe, LOCALE_IDS at thirty-four.
+6. **Step 6: The full sweep is green and the README names thirty-four** — every suite green over
+   the thirty-four at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, the README
+   Features bullet naming all thirty-four in LOCALE_IDS order, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The low-confidence slots are the loans and the derived labels; each
+  carries its derivation in the note, and the owner''s phone read is the ruling pass. The census
+  makes every one of them visible.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row fails the locale''s step before
+  it commits.
+- **Yoruba''s ṣ renders as tofu** if the pair is not installed: the step measures every character of
+  the keyed surface in both weights before commit, and the widget runtime load suite re-runs after
+  the font install.
+- **A label exceeds the 24-char budget** (Uyghur and Sindhi extras run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: the band is 2.26.x and every list takes
+  this wave''s rows at its end; the lead concatenates the waves'' rows at merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table, citing R4 A.4, R4''s coverage row, R9 §2 and
+   the ticket.
+2. Sourcing recorded: `jq ''[. ["pa-Arab"], .sd, .ug, .ckb, .ku, .yo, .jv, .su] | [.[] | (.names,
+   .explanations) | to_entries[] | select(.value.text == null or .value.source == null or
+   .value.confidence == null)] | length'' shared/i18n/sourced-names.json` prints 0; the T427_EIGHT
+   gate is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, chevronDirection
+   and locale green over thirty-four locales at full coverage.
+4. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps, pa-Arab, sd,
+   ug, ckb; locale.test.ts resolves pa-PK to pa-Arab, sd-PK to sd, ug-CN to ug, ckb-IQ to ckb,
+   ku-TR to ku, yo-NG to yo, jv-ID to jv and su-ID to su, with the es-ES fallback row untouched.
+5. Glyph coverage: fontTools over the bundled faces against every character of each new locale''s
+   keyed surface, both weights, zero missing; the four RTL locales measured against Noto Naskh
+   and yo against Noto Sans.
+6. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts
+   shared/__tests__/nativeLocalesConfig.test.ts` green over the thirty-four.
+', NULL, NULL, '{}', false, false, false, NULL, 51200, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:26:23.67272+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (143, 52, 1, NULL, 'T-428', '# T-428 — Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight
+
+## Goal
+
+The app ships twenty-six locale catalogs (en plus twenty-five translated). Eight more land in this
+wave: te, gu, kn, am, om, bm, tl, ff. Three parallel waves add twenty-four together; this wave owns
+2.27.x and appends its rows at the end of every shared list, so the lead concatenates at the merge.
+Nothing about the twenty-six shipped locales changes a byte. Code only: the proof is `yarn validate`,
+and the owner reads the phone afterwards.
+
+**The eight, with the measured decision each carries:**
+
+| Tag | Language | Script and face | Core names, sourced |
+| --- | --- | --- | --- |
+| te | Telugu | Telugu; bundles Noto Sans Telugu v2.005 | ఫజ్ర్ జుహర్ అసర్ మగ్రిబ్ ఇషా, te-wikipedia |
+| gu | Gujarati | Gujarati; bundles Noto Sans Gujarati v2.106 | ફજર ઝોહર અસર મગરિબ ઈશા, sunnah.global gu + ZindSa |
+| kn | Kannada | Kannada; bundles Noto Sans Kannada v2.006 | ಫಜರ್ ಜುಹರ್ ಅಸರ್ ಮಗ್ರಿಬ್ ಇಶಾ, qiblafind kn + Play listings |
+| am | Amharic | Ethiopic; bundles Noto Sans Ethiopic v2.102 | ፈጅር ዙህር አስር መግሪብ ኢሻ, namazvakti AM + quran.et |
+| om | Oromo | Latin; Roboto | Fajrii Zuhrii Asrii Magribii Ishaa, getilham om table |
+| bm | Bambara | Latin with ɛ ɔ ɲ; bundles Noto Sans v2.015 | fajiri selifana lansara fitiri saafo, sunnah.global bm |
+| tl | Tagalog | Latin; Roboto | Fajr Dhuhr Asr Maghrib Isha, khutba.world fil + newmuslims tl |
+| ff | Fulfulde | Latin with ɓ ɗ ƴ; bundles Noto Sans v2.015 | fajiri tiisbaar takkusaan furura geeƴe, islamhouse ff |
+
+## Decisions taken (2026-10-28, lane 2, agent-ruled)
+
+1. **The eight are te, gu, kn, am, om, bm, tl, ff, in that order, appended after zh-Hant.** The
+   ticket names exactly these eight and the run''s merge protocol appends each wave''s rows at the end
+   of every shared list. The order is the ticket''s own, so the lead''s concatenation reads the waves
+   in rank order.
+2. **The key parity is 202, and the ticket''s "205 keys" is corrected to 202.** `shared/i18n/en.ts`
+   carries 202 keys, measured by counting its string-literal members; the Catalog type is derived
+   from that object, so parity is enforced against 202 and no catalog can carry a different number.
+3. **Fonts, measured 2026-10-28 with fontTools over the downloaded statics, both weights.** No
+   bundled face carries a single Telugu, Gujarati, Kannada or Ethiopic letter, so each of the four
+   bundles its Noto pair. The records follow the ta/ml precedent of T-419: a pair whose hhea box
+   clears its own win ink takes no script box, and a pair whose ink runs past the box pins the
+   script line at the measured height.
+   - Noto Sans Telugu v2.005: hhea 869/-483 (1.352em), win 995/483 (1.478em) -> 1.5em script box.
+   - Noto Sans Gujarati v2.106: hhea 896/-408 (1.304em), win 1076/408 (1.484em) -> 1.5em script box.
+   - Noto Sans Kannada v2.006: hhea 809/-540 (1.349em), win 1105/540 (1.645em) -> 1.65em script box.
+     The only record off the house 1.5em, because 1.5em does not clear the measured 1.645em ink; the
+     factor is the measurement rounded up.
+   - Noto Sans Ethiopic v2.102: hhea 1069/-293 (1.362em), win 1069/293, equal -> no script box.
+   All four UPM 1000, lineGap 0, Regular and Medium identical.
+4. **ff and bm bundle Noto Sans v2.015 too, because every shipped face fails them.** Measured by
+   explicit codepoint across both weights of all twenty bundled TTFs: Roboto and Rubik carry none of
+   ɛ (U+025B), ɔ (U+0254), ɲ (U+0272), ɓ (U+0253), ɗ (U+0257) or ƴ (U+01B4). Noto Sans carries all
+   six (3094-codepoint cmap). Its hhea 1069/-293 (1.362em) against win 1124/395 (1.519em) pins a
+   1.55em script line. om and tl stay on LATIN: Oromo''s orthography is ASCII (c, dh, ny, ph, sh, x)
+   and Tagalog''s only non-ASCII letter is ñ (U+00F1), which Roboto carries.
+5. **Sourcing is fresh, from the localized tables and texts read on 2026-10-28.** New slugs:
+   te-wikipedia, gu-sunnah-global, gu-zindsa, kn-qiblafind, kn-play-salah, am-namazvakti, am-quran-et,
+   om-getilham, bm-sunnah-global, tl-newmuslims, tl-islamarc, ff-islamhouse. The core six of every
+   language come from those; Sunrise is the language''s own word for the sun rising; Midnight and Last
+   Third are derived from the language''s own vocabulary at medium where it has the words, and the loan
+   rule of T-410 decision 5 (text, slug "loan", low confidence, derivation in the note) closes
+   Suhoor, Duha and Istijaba in every language and any slot no source prints.
+6. **Numerals are Latin in all eight.** The Amharic table prints Western digits, and no source for the
+   other seven prints native numerals; R12''s row-82 law keeps times, dates and countdowns Latin.
+7. **No RTL.** None of the eight reads right to left, so RTL_IDS, the chevron and comma helpers and
+   the RTL gates stay untouched.
+8. **Version line 2.27.x, as the lead ordered**: the first commit 2.27.0, the next 2.27.1, the next
+   2.27.2, `package.json`, `app.json` and the `shared/whatsNew.ts` stamp together. `android/app/build.gradle`
+   is prebuild output and is absent from the repository tree, so there is no third tracked file to
+   bump; the lane records that in its commit message.
+9. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font array, the
+   expo.locales blocks, CFBundleLocalizations and the version field are mechanical carriers, and every
+   byte is gated by nativeLocalesConfig.
+10. **No What''s New item ships.** The archive''s language item already reads "Added support for more
+    languages"; the banner stamp rides the version.
+11. **Step order and budget.** Five code steps at 2 points each, 10 points. This session carries
+    steps 1 to 3 (6 points) and parks in Audit with the exact next step named, per the lead''s order.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — eight entries: names (11) and explanations (5) each, with the
+  new slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/te.ts, gu.ts, kn.ts, am.ts, om.ts, bm.ts, tl.ts, ff.ts` — one full 202-key catalog
+  each plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after zh-Hant; the header count.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonyms in codepoint order: Ghanaian? no; the Latin five
+  (Bamanankan, Fulfulde, Oromoo, Tagalog) then the four scripts (తెలుగు, ગુજરાતી, ಕನ್ನಡ, አማርኛ).
+- `shared/typography.ts` — TELUGU, GUJARATI, KANNADA and ETHIOPIC records plus one AFRICAN record
+  shared by bm and ff; RECORDS gains the eight.
+- `assets/fonts/` — NotoSansTelugu, NotoSansGujarati, NotoSansKannada, NotoSansEthiopic and
+  NotoSans Regular/Medium pairs, ten TTFs, OFL (the licence file is already present).
+- `app.json` — expo-font array +10, eight expo.locales blocks, CFBundleLocalizations to thirty-four,
+  version.
+- `shared/i18n/native-strings.json`, `shared/i18n/widget-statics.json` — eight rows each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight together; en''s hash unchanged.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T428_EIGHT sourcing gate.
+- `shared/__tests__/locale.test.ts` — eight detection rows.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list, the four script cases and
+  the African record case.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +8 with the per-locale parity rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  LOCALES lists to thirty-four.
+- `components/sheets/__tests__/Language.test.tsx` — the name list to thirty-four.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables +8 rows
+  and the four locale finder lists +8.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version stamps.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so the
+moment LOCALE_IDS grows, loader MODULES and typography RECORDS fail to typecheck until every new
+locale carries its row, and each catalog satisfies Catalog (all 202 keys) or the build fails.
+LANGUAGE_NAMES is hand-verified, so each step re-reads the picker row count against LOCALE_IDS. The
+data side stays gated as it landed: catalogGates (key parity, token parity, echo, length budget, brand
+bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged).
+
+Each locale step lands that locale''s whole keyed surface in one commit - catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows and finder lists, the lock and gate list rows, its detection rows -
+so no suite is red across a step boundary.
+
+The four script pairs are bundled as full statics, not subsets: their closed character sets run past
+the Latin range a subset would save, the four pairs total about 3MB, and T-419''s zh subsets exist for
+a forty-megabyte problem that does not arise here.
+
+Alternatives rejected: a runtime i18n dependency (the landed practice is authored catalogs behind
+gates, no new dependency); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s
+answer); translating Sunrise for Amharic into the Ethiopic word for "dawn" (the table''s ፀሃይ is the
+sun, and the Sunrise row is a translated slot); pinning Kannada at the house 1.5em (it does not clear
+the pair''s measured 1.645em ink).
+
+## Steps (5 x 2 points = 10)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains te,
+   gu, kn, am, om, bm, tl, ff; every name and explanation slot non-null with text, source, confidence
+   and a note that names the table or the derivation; the twelve new slugs registered; catalogGates
+   gains a T428_EIGHT sibling gate over names and explanations, red first.
+2. **Step 2: Locale plumbing lands with the four Latin catalogs** — om, bm, tl and ff ship their whole
+   surface in one commit: the Noto Sans pair bundled for bm and ff, the AFRICAN record and the LATIN
+   rows for om and tl, LOCALE_IDS at thirty, loader, endonyms, lock list, gates rows, detection rows,
+   native-strings and widget-statics rows, app.json blocks and CFBundleLocalizations, the four widget
+   STATIC tables and finders, i18nBridge parity, the Language sheet list.
+3. **Step 3: te and gu land with their bundled Noto pairs** — the Telugu and Gujarati pairs bundled,
+   measured and recorded (1.5em script boxes), the two full catalogs, their plumbing rows and their
+   tests, red first.
+4. **Step 4: kn and am land with their bundled pairs** — the Kannada pair at the measured 1.65em
+   script box and the Ethiopic pair at its own metrics, the two full catalogs, their plumbing rows and
+   their tests, red first.
+5. **Step 5: The full sweep is green and the README names thirty-four** — every suite green over the
+   thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, README
+   bullet rewritten, audit-ready.
+
+## Risks
+
+- **A catalog drifts from its sourced names**: catalogGates'' sourced-verbatim row fails naming the
+  locale and key, because the catalog member must equal the glossary text byte for byte.
+- **A missing glyph**: each script step measures every distinct character of the locale''s whole keyed
+  surface (catalog, native strings, widget statics, endonym) against both weights'' cmaps before the
+  commit; a missing character stops the step.
+- **Kannada ink**: the pair''s win descent is 540 units against a 809 ascent; the 1.65em pin is the
+  measurement, and a clipped subscript shows in the typography sweep or on the owner''s phone.
+- **A borrowed name in a translated slot**: Sunrise is authored from the language''s own word in every
+  one of the eight; a transliteration there would fail the naming rule''s own review.
+- **Merge collision**: the three waves share every list; this lane appends only, never reorders, and
+  the lead concatenates.
+- **Version collision inside the band**: the lane takes 2.27.0, 2.27.1, 2.27.2 in sequence and touches
+  no other number.
+
+## Proof
+
+1. The eight named with their sources and measurements: this doc''s table, decision 3 and decision 4.
+2. Sourcing recorded: `jq ''[.["te"],.["gu"],.["kn"],.["am"],.["om"],.["bm"],.["tl"],.["ff"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''`
+   over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T428_EIGHT row is green.
+3. Coverage and regression: `yarn validate` exits 0; the output lists catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green over
+   the shipped set, with every earlier locale''s rows unedited.
+4. Detection: locale.test.ts carries om-ET -> om, bm-ML -> bm, tl-PH -> tl, ff-SN -> ff, te-IN -> te,
+   gu-IN -> gu, kn-IN -> kn, am-ET -> am, and the es-ES fallback stays unshipped.
+5. Glyph coverage: the per-locale character census over both weights prints zero missing.
+6. The README bullet and the picker list both read thirty-four at step 5.
+', NULL, NULL, '{}', false, false, false, NULL, 52224, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:29:32.480873+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (145, 51, 2, NULL, 'T-427', '# T-427 — Fifty languages, wave one of three
+
+## Goal
+
+The app ships twenty-six locale catalogs. This wave takes it to thirty-four by shipping the eight
+languages the ticket names, and it does so in code alone: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards. Wave two and wave three add eight
+each, for fifty at the merged line.
+
+**The eight, in this wave''s order:**
+
+| Tag | Script | Reach | Sourcing this wave |
+| --- | --- | --- | --- |
+| pa-Arab | Shahmukhi Punjabi, Arabic, RTL | ~110M in Pakistan | pnb.wikipedia''s five names, the rest loans |
+| sd | Sindhi, Arabic, RTL | ~30M | sd.wikipedia''s five plus its own sunrise, the rest loans |
+| ug | Uyghur, Arabic, RTL | ~11M | ug.wikipedia''s ناماز ۋاقتى table, the rest loans |
+| ckb | Sorani Kurdish, Arabic, RTL | ~10M | kati-nwezh.com''s table and zaniary.com''s names |
+| ku | Kurmanji Kurdish, Latin | ~30M | prayer-names.json, the five gaps loans |
+| yo | Yoruba, Latin | ~20M | islamhouse yo and Yoruba da''wah media, the rest loans |
+| jv | Javanese, Latin | ~40M | jv.wikipedia''s Pepéling, the rest loans |
+| su | Sundanese, Latin | ~30M | su.wikipedia''s Lohor, Asar, Magrib, Subur and Isya articles |
+
+## Decisions taken (2026-10-28, lane 1, agent-ruled)
+
+1. **The eight are pa-Arab, sd, ug, ckb, ku, yo, jv, su, appended to LOCALE_IDS in that order.**
+   The ticket names them; R4 A.4 rules Punjabi ships as pa-Arab because Shahmukhi is the Muslim
+   script and CLDR''s bare pa is pa-Guru; R4''s coverage row rules Sorani (ckb, RTL) and Kurmanji
+   (ku) separate languages, not variants.
+2. **pa-Arab ships the five Punjabi time names the Shahmukhi encyclopedia prints** — سرگی، پیشی،
+   ڈیگر، نماشاں، کفتاں — not the Urdu loans. pnb.wikipedia''s نماز article is the only Shahmukhi
+   Punjabi attestation of the five times'' names, and shipping فجر ظهر عصر مغرب عشاء instead would
+   make pa-Arab a copy of ur. Challenged: Pakistani tables print Urdu, so the loans are what a
+   reader sees on paper. It does not flip: the wave exists to give Punjabi readers Punjabi, and
+   the loan set stays recorded in each entry''s note as the alternative.
+3. **yo ships despite R9 §2''s deferral**, because the ticket names it. R9''s own path (Yoruba
+   Wikipedia, Yoruba-language da''wah media) is the sourcing used, and every low-confidence slot
+   says so in its note. Challenged: R9 says defer unless a speaker is at hand. It does not flip:
+   the ticket is the owner''s later order and this wave''s law is sourcing recorded, not sourcing
+   perfect.
+4. **The four Arabic-script locales take the bundled Noto Naskh pair, no new font.** Measured
+   2026-10-28 with fontTools over the bundled TTFs, both weights: Naskh carries all fifteen Sindhi
+   letters (ڪ ڳ ڱ ڄ ڃ ڇ ڍ ڊ ڏ ڙ ٺ ٽ ٿ ڀ ڻ), Uyghur''s eight (ې ۆ ۈ ۋ ژ ڭ گ ئ), Sorani''s twelve
+   (ڕ ڵ ێ ۆ ە ڤ گ چ پ ژ ی ک) and Shahmukhi''s thirteen (ٹ ڈ ڑ ں ھ ے ہ چ ژ گ ک آ ء ئ) by explicit
+   codepoint; Rubik lacks every one of them. pa-Arab, sd, ug and ckb map to the URDU record
+   unchanged, the URDU record''s comment gaining this wave''s measurement.
+5. **yo cannot ride Roboto, so it bundles Noto Sans Regular and Medium.** Measured 2026-10-28:
+   Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights, and no
+   bundled face carries them; Yoruba cannot be written without ṣ. The pair is the full Google
+   Fonts statics under the present OFL licence file, its record pinned by that pair''s measured hhea
+   box in the step that bundles it. ku, jv and su take LATIN: measured, Roboto carries ç ê î ş û é
+   è and every other character those three need.
+6. **RTL_IDS gains pa-Arab, sd, ug and ckb.** Direction-keyed surfaces (chevron, sentence comma,
+   widget rtl flags, crossing relaunch) follow the set with no layout code change.
+7. **Prose digits are Latin in all eight.** R12 carries no row for any of them, and R12''s default
+   is the shipped Latin set; times, dates and countdowns stay Latin in every locale (row 82).
+8. **The loan rule governs every slot no table attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with
+   text, slug, confidence and the derivation in the note. The census and the new T427 gate both
+   read it.
+9. **ku''s six attested rows come from prayer-names.json unchanged** (Sibe, Derketina rojê, Nîvro,
+   Esir, Mexreb, Eşa); Midnight, Last Third, Suhoor, Duha and Istijaba take the loan rule.
+10. **Version line, amended 2026-10-28 by the lead''s ruling (uat 4d5bb65d).** The discipline gate
+    admits exactly one first step from 2.25.4 and it is 2.26.0 for every lane, so disjoint bands cannot
+    exist: every lane steps the same numbers from the same base and the lead''s allowlist grandfathers a
+    number two lanes both hold. This wave''s commits are 2.26.0, 2.27.0, 2.28.0 and so on, one minor per
+    step and a patch for a fix inside a step, package.json, app.json, whatsNew.ts and
+    android/app/build.gradle together where the prebuild exists. Each merge renumbers above whatever
+    uat then carries; that merge is the lead''s.
+11. **Merge protocol.** Every shared registry list (LOCALE_IDS, loader RAW and MODULES,
+    languageNames, typography RECORDS, the catalog-lock LOCALES list, native-strings.json,
+    widget-statics.json, app.json''s arrays, README) takes this wave''s rows appended at the end of
+    the list, in this wave''s order, and never rewrites or reorders another wave''s row. The one
+    exception is LANGUAGE_NAMES, whose documented contract is codepoint order: each endonym is
+    inserted at its codepoint position, which leaves every existing row''s relative order untouched.
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10, T-419 decision 15):
+    the expo-font array, the eight expo.locales blocks, CFBundleLocalizations and the version field
+    are mechanical carriers, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **No device step.** The ticket is code only and this run bans device work outright; the owner
+    reads the wave on the phone afterwards. The suite is the proof.
+15. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader
+    row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection
+    rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+    entry, the four widget STATIC rows and their finder lists — so no suite is red across a step
+    boundary (T-419''s design law).
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections: names and explanations, every slot
+  non-null with text, source and confidence.
+- `shared/i18n/pa-Arab.ts, sd.ts, ug.ts, ckb.ts, ku.ts, yo.ts, jv.ts, su.ts` — new, one full
+  catalog each (202 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; RTL_IDS gains the four RTL ids; the
+  header comment reads the new count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order.
+- `shared/typography.ts` — RECORDS: pa-Arab, sd, ug, ckb map URDU; ku, jv, su map LATIN; yo maps a
+  new YORUBA record on the bundled Noto Sans pair, its box measured in Step 4.
+- `assets/fonts/NotoSans-Regular.ttf, NotoSans-Medium.ttf` — new, OFL, the licence file present.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight; en''s hash unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows (pa-PK to pa-Arab, sd-PK, ug-CN,
+  ckb-IQ, ku-TR, yo-NG, jv-ID, su-ID); the RTL membership sets gain the four.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list and the record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow; a T427_EIGHT sourcing
+  gate beside T410_TEN and T419_TEN.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  the LOCALES lists grow to thirty-four.
+- `shared/__tests__/widgetSnapshot.test.ts`, `shared/__tests__/i18n.test.ts`,
+  `components/__tests__/chevronDirection.test.tsx` — direction- and name-aware suites read
+  LOCALE_IDS, so they follow the set; only the RTL membership pins grow.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by eight rows each and the four locale finders gain the eight codes.
+- `app.json` — the expo-font array gains the two Noto Sans TTFs, eight expo.locales blocks,
+  CFBundleLocalizations to thirty-four, the version field.
+- `README.md` — the Features bullet rewrites from twenty-six to thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness. LocaleId is a closed union, so the moment LOCALE_IDS grows the
+loader''s MODULES and typography''s RECORDS stop typechecking until every new locale carries its row,
+and each catalog satisfies Catalog (all 202 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T427
+sourcing gate, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms and CFBundleLocalizations rides LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical, the lock''s list
+equal to the translated set) and i18nBridge''s parity row.
+
+Per locale the recipe is the T-419 recipe, in one commit per step: catalog file (sourced prayer
+names verbatim from sourced-names.json, UI copy authored to the R2 gates), loader rows, endonym
+row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows,
+native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the
+four widget STATIC rows and the four finder lists.
+
+Alternatives rejected: the Urdu loans for pa-Arab (decision 2); dropping yo at R9''s word (decision
+3); a Rubik-only Arabic set (decision 4''s measurement rules it out); decomposed s+U+0323 for
+Yoruba''s ṣ, which no input method or normalisation step would preserve; a subset cut of Noto Sans
+over yo''s closed string set, which would add a second glyph-lock mechanism for one script''s one
+missing letter (the full pair costs about a megabyte and closes the class); a device read inside
+this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   pa-Arab, sd, ug, ckb, ku, yo, jv and su, each with eleven name slots and five explanation slots,
+   every one non-null with text, slug, confidence and note: the attested core set from that
+   language''s own table, the loan-rule derivation for every slot no table prints (pa-Arab''s
+   sunrise, midnight, last third, suhoor, duha and istijaba; sd''s four extras; ug''s sunrise and
+   five extras; ckb''s midnight, last third, suhoor, duha and istijaba; ku''s five gaps; yo''s
+   midnight, last third, suhoor, duha and istijaba; jv''s sunrise and four extras; su''s sunrise and
+   four extras), and the five derived explanations each. catalogGates gains the T427_EIGHT gate
+   red first.
+2. **Step 2: pa-Arab and sd land RTL on the Naskh record** — LOCALE_IDS at twenty-eight, RTL_IDS
+   gains both, their whole keyed surface in one commit (catalog, loader, endonym, URDU record
+   comment, lock list and suite, gates rows, detection rows, native-strings, widget-statics,
+   app.json block, the four STATIC tables and finders), every suite green at the step boundary.
+3. **Step 3: ug and ckb land RTL on the Naskh record** — the same recipe, LOCALE_IDS at thirty.
+4. **Step 4: ku and yo land, yo with its own bundled pair** — ku on LATIN; Noto Sans Regular and
+   Medium fetched as full statics, measured with fontTools across every character of yo''s keyed
+   surface (both weights, zero missing), the YORUBA record pinned by that pair''s measured hhea box,
+   the expo-font array grown by the two TTFs, LOCALE_IDS at thirty-two.
+5. **Step 5: jv and su land on the Latin record** — the same recipe, LOCALE_IDS at thirty-four.
+6. **Step 6: The full sweep is green and the README names thirty-four** — every suite green over
+   the thirty-four at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, the README
+   Features bullet naming all thirty-four in LOCALE_IDS order, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The low-confidence slots are the loans and the derived labels; each
+  carries its derivation in the note, and the owner''s phone read is the ruling pass. The census
+  makes every one of them visible.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row fails the locale''s step before
+  it commits.
+- **Yoruba''s ṣ renders as tofu** if the pair is not installed: the step measures every character of
+  the keyed surface in both weights before commit, and the widget runtime load suite re-runs after
+  the font install.
+- **A label exceeds the 24-char budget** (Uyghur and Sindhi extras run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: the band is 2.26.x and every list takes
+  this wave''s rows at its end; the lead concatenates the waves'' rows at merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table, citing R4 A.4, R4''s coverage row, R9 §2 and
+   the ticket.
+2. Sourcing recorded: `jq ''[. ["pa-Arab"], .sd, .ug, .ckb, .ku, .yo, .jv, .su] | [.[] | (.names,
+   .explanations) | to_entries[] | select(.value.text == null or .value.source == null or
+   .value.confidence == null)] | length'' shared/i18n/sourced-names.json` prints 0; the T427_EIGHT
+   gate is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, chevronDirection
+   and locale green over thirty-four locales at full coverage.
+4. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps, pa-Arab, sd,
+   ug, ckb; locale.test.ts resolves pa-PK to pa-Arab, sd-PK to sd, ug-CN to ug, ckb-IQ to ckb,
+   ku-TR to ku, yo-NG to yo, jv-ID to jv and su-ID to su, with the es-ES fallback row untouched.
+5. Glyph coverage: fontTools over the bundled faces against every character of each new locale''s
+   keyed surface, both weights, zero missing; the four RTL locales measured against Noto Naskh
+   and yo against Noto Sans.
+6. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts
+   shared/__tests__/nativeLocalesConfig.test.ts` green over the thirty-four.
+
+', NULL, NULL, '{}', false, false, false, NULL, 51200, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:45:31.770095+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (144, 50, 3, NULL, 'T-429', '# T-429 — Fifty languages, wave three of three
+
+## Goal
+
+The app ships twenty-six locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa,
+bn, ru, az, de, sq, bs, ps, ta, ml, zh-Hans, zh-Hant). Two waves beside this one carry the first
+sixteen of the remaining twenty-four; this wave carries the last eight, taking the shipped set to
+thirty-four locale catalogs and the three waves together to fifty. Every new catalog is gated and
+sourced, the twenty-six existing locales and every English byte stay untouched, and the wave bundles
+no new font because the bundled faces already carry its scripts and diacritics.
+
+**The eight:**
+
+| Tag | Reach | Script, record | Sourcing state today | What this wave adds |
+| --- | --- | --- | --- | --- |
+| es | ~2M Muslim-reachable in Spain and Latin America | Latin, LATIN record | R6 6/11 names, 5/5 explanations, every row AGPL-only | the Fajr/Fayr and Magrib/Maghreb forks ruled on evidence; independent confirmations replacing the AGPL-only slugs; Duha and Istijaba loans |
+| nl | ~1M (Netherlands, Flanders, Suriname) | Latin, LATIN record | R6 8/11 names, 5/5 explanations, extras derived | the Zonsopkomst confirmation that R6 §5 held the language for; Suhur, Duha and Istijaba loans |
+| kk | ~11M (Kazakhstan) | Cyrillic, LATIN record | absent from prayer-names.json | fresh from muftyat.kz, the Kazakh Muslims'' Religious Administration''s own table: Таң, Күн, Бесін, Екінті, Ақшам, Құптан |
+| ky | ~5M (Kyrgyzstan) | Cyrillic, LATIN record | absent | fresh from muftiyat.kg, the Kyrgyz Muslims'' Spiritual Board: Багымдат, Күн, Бешим, Аср, Шам, Куптан, with Сухур in the same table |
+| tg | ~8M (Tajikistan) | Cyrillic, LATIN record | absent | fresh from shuroiulamo.tj, the Council of Ulema of Tajikistan: Бомдод, Пешин, Аср, Шом, Хуфтан |
+| tk | ~4M (Turkmenistan) | Latin (äňöşüýž), LATIN record | absent | fresh from three independent Turkmen tables and tk.wikipedia: Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy |
+| wo | ~11M (Senegal, the Gambia) | Latin (éë), LATIN record | absent | fresh from a Wolof-language vocabulary source: Tisbaar, Takusaan, Timis; the rest by the loan rule, flagged for a speaker |
+| mr | ~13M Muslims of Maharashtra | Devanagari, HINDI record | absent from prayer-names.json | fresh from mr.wikipedia''s नमाज article: फजर, जुहर, असर, मगरीब, ईशा, सूर्योदय; the rest by the loan rule |
+
+## Decisions taken (2026-10-28, lane 3)
+
+1. **The eight are es, nl, kk, ky, tg, tk, wo, mr, counted by locale catalog.** The ticket names
+   them and the run splits the twenty-four remaining catalogs into three waves; this wave takes the
+   eight no other wave carries, so the three waves together move twenty-six to fifty without a
+   catalog counted twice.
+2. **es ships `Fajr`, and the R6 §5 hold is answered rather than inherited.** R6 recorded Fayr with
+   medium confidence from an AGPL-only catalog while its own note said "Fajr is more common in
+   Spanish mosque calendars". Two Madrid mosque tables fetched 2026-10-28 print Fajr (mawaqit.net''s
+   Embajadores page and its Tariq Bin Ziad page), so the community form and the compliant
+   transliteration agree. Challenged: keep Fayr because a Spanish reader writes the y. It does not
+   flip: the shipped spellings follow the tables the readers compare against, and no Spanish table
+   fetched prints Fayr.
+3. **es keeps `Magreb`, with an independent confirmation.** R6 chose the Spanish-orthographic
+   Magreb and flagged it AGPL-only. es.wikipedia''s Salat article prints Al-Magrib beside the Arabic,
+   which is the second source class R6 §2 demands, so the row ships at medium with the wikipedia slug
+   recorded beside the mihrab cross-check.
+4. **nl ships `Zonsopkomst`, and the R6 §5 hold is answered.** R6 held Dutch for one missing
+   confirmation of the Sunrise label. gebedstijde.nl''s Dutch pages fetched 2026-10-28 print the row
+   order "Fajr – Zonsopkomst (Shuruq) – Dhuhr – Asr – Maghrib – Isha" and name the table column
+   Zonsopkomst, so the translated slot ships on a Dutch authority-family source. Zonsopgang stays
+   recorded as the alternative spelling in the note.
+5. **nl''s remaining slots land the way de''s did.** Middernacht and Laatste derde are the ordinary
+   Dutch words for a row that shows a clock time, Suhur, Duha and Istijaba are the naming rule''s
+   transliterations, and every entry carries text, slug, confidence and note, including the
+   `derived` slug for the assembled explanations.
+6. **No new font, measured 2026-10-28 with fontTools on the bundled TTFs.** Roboto-Regular and
+   Roboto-Medium carry, by explicit codepoint and in both weights, every diacritic of es
+   (áéíóúüñÁÉÍÓÚÜÑ¿¡), of nl (áéíóúüñëïèêöô), of tk (äÄňŇöÖşŞüÜýÝžŽçÇ) and of wo (ëËéÉàÀñÑóÓ), and
+   every Cyrillic letter of kk (әӘғҒқҚңҢөӨұҰүҮһҺіІ), ky (ңҢөӨүҮ) and tg (ғҒӣӢқҚӯӮҳҲҷҶ); the same
+   two faces carry no Devanagari codepoint at all. NotoSansDevanagari-Regular and -Medium carry every
+   Devanagari codepoint mr needs (the full U+0900 block set it uses, measured OK in both weights). So
+   es, nl, kk, ky, tg, tk and wo take the LATIN record, and mr takes the HINDI record: the same
+   bundled pair, the same measured 1.304em hhea box against 1.906em win ink, the same 1.5em script
+   box that record already pins.
+7. **Numerals: Latin in all eight.** R12''s per-locale table has no row for any of the eight, and the
+   row-82 law keeps times, dates and countdowns Latin in every locale regardless.
+8. **tk ships Turkmenistan''s own table labels as an authority exception**, the tr and uz precedent:
+   Ertir (fäjr) for Fajr, Dogýan wagty for Sunrise, Öýlen, Ikindi, Agşam, Ýassy. Three independent
+   Turkmen tables fetched 2026-10-28 print that set, and tk.wikipedia''s Namaz article glosses
+   "ertir (fäjr)" in the same words, so the exception rests on the authority the reader compares
+   against rather than on a transliteration nobody prints.
+9. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so no row drops; the loan lands with text, slug, confidence and the
+   derivation in its note.
+10. **kk, ky and tg take their national authorities'' labels verbatim**, the tr precedent again:
+    muftyat.kz prints Таң/Күн/Бесін/Екінті/Ақшам/Құптан, muftiyat.kg prints
+    Багымдат/Күн/Бешим/Аср/Шам/Куптан with Сухур as its own column, and shuroiulamo.tj prints
+    Бомдод/Пешин/Аср/Шом/Хуфтан. Their extras land as loans or derived rows, each recorded.
+11. **mr''s five names come from mr.wikipedia''s नमाज article** (नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा,
+    from which the bare row labels drop the नमाज-ए- prefix the way the ps wave dropped phrases) and
+    its Sunrise is सूर्योदय, the word the same article''s own prose uses. Medium confidence, one
+    source class; a Marathi speaker pass is the recorded risk and does not block the wave.
+12. **wo''s attested rows ship as the Wolof course source prints them** (Tisbaar, Takusaan, Timis,
+    and Suba for the sunrise row it glosses as "sunrise"), with Fajar and Isha as the Arabic loans
+    Senegambian Wolof uses, Diggu guddi and Ñetteelu guddi derived for Midnight and Last Third, and
+    Suhoor, Duha and Istijaba as loans. Every one carries a note naming its derivation; a Wolof
+    speaker pass is the recorded risk.
+13. **Version line 2.28.x.** The first commit takes the minor from 2.25.4 to 2.28.0 because every
+    commit is typed feat; each later commit steps the patch (2.28.1, 2.28.2, ...). package.json,
+    app.json and android/app/build.gradle move together, and no number outside 2.28.x is taken while
+    lanes 1 and 2 hold 2.26.x and 2.27.x.
+14. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight expo.locales
+    entries, the CFBundleLocalizations rows and the version field are the mechanical carriers, and
+    every byte is gated by nativeLocalesConfig.
+15. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+16. **README''s Features bullet moves from twenty-six to thirty-four**, naming every language in
+    LOCALE_IDS order, with the right-to-left note unchanged because none of the eight reads right to
+    left.
+17. **The merge protocol is append-only.** Every shared registry file (locale.ts LOCALE_IDS,
+    loader.ts, languageNames.ts, typography.ts RECORDS, the catalog-lock LOCALES list,
+    native-strings.json, widget-statics.json, the app.json arrays, the widget STATIC tables, the
+    gates'' CATALOGS and locale lists, README) takes this wave''s rows at the end of each list in this
+    wave''s own order; no other wave''s row is rewritten or reordered, and the lead concatenates at
+    the merge.
+18. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the wave''s proof is `yarn validate` alone and the owner reads the result afterwards.
+19. **One locale per commit.** Each step lands its locale''s whole keyed surface in one commit -
+    catalog, loader row, endonym row, typography record, native-strings row, widget-statics row,
+    the four widget STATIC rows, app.json locale block, CFBundleLocalizations entry, lock list,
+    lock suite list, gates list, detection rows - so no suite is red across a step boundary (T-410
+    decision 13).
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; the header count.
+- `shared/i18n/es.ts, nl.ts, kk.ts, ky.ts, tg.ts, tk.ts, wo.ts, mr.ts` — new, one full catalog each
+  (205 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/i18n/sourced-names.json` — the eight''s entries: names and explanations, every slot with
+  text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows.
+- `shared/__tests__/typography.test.ts` — the Latin filter keeps its exclusion list; mr joins the
+  Devanagari record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight and the count statement moves to
+  thirty-four.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order: Español and Nederlands in the
+  Latin block, Қазақша, Кыргызча and Тоҷикӣ in the Cyrillic block, Türkmençe after Тоҷикӣ, Wolof
+  after Türkmençe, मराठी after हिन्दी.
+- `shared/typography.ts` — RECORDS: seven LATIN rows; mr maps the HINDI record, its comment naming
+  Marathi beside Hindi.
+- `app.json` — eight expo.locales entries, CFBundleLocalizations to thirty-four, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables and
+  the four locale-finder lists grow by eight rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the LOCALES list grow; a T429_EIGHT
+  sourcing-gate sibling sits beside T410_TEN and T419_TEN.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to thirty-four and the count statements move with them.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as it did for the two shipped waves. LocaleId is a closed
+union, so the moment LOCALE_IDS grows the loader MODULES and typography RECORDS fail to typecheck
+until every new locale carries its row, and each catalog `satisfies Catalog` (all 205 keys) or the
+build fails. LANGUAGE_NAMES is the one hand-verified list, so every step re-reads the picker row
+count against LOCALE_IDS.length. The data side stays gated as it landed: catalogGates (key parity,
+token parity, echo, length budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim),
+nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget modules render the statics table row for row), catalogLock (en''s hash
+unchanged), plus this wave''s T429_EIGHT row in the sourcing gate.
+
+Per locale the recipe is T-410''s and T-419''s: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, app.json locale block, the four widget STATIC rows.
+
+Alternatives rejected: bundling a new font (measurement shows none is needed, decision 6); inheriting
+R6 §5''s holds for es and nl unchanged (the ticket asks for evidence, and both holds are answerable
+from pages a reader can fetch); dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); holding wo and mr for a speaker (the loan rule ships a gated row now and the speaker
+pass improves it later).
+
+## Steps (10 x 2 points = 20)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json: the es
+   Fajr swap and its confirmations, the nl extras and the Zonsopkomst confirmation, the kk, ky, tg,
+   tk, wo and mr name sets with their sources, and the loan or derived entry for every slot no source
+   attests. Every entry ends non-null with text, slug, confidence and note.
+2. **Step 2: es lands** — the full catalog and its whole keyed surface in one commit.
+3. **Step 3: nl lands** — the same, with the Zonsopkomst ruling in the catalog header.
+4. **Step 4: kk lands** — the same, on the muftyat.kz label set.
+5. **Step 5: ky lands** — the same, on the muftiyat.kg label set.
+6. **Step 6: tg lands** — the same, on the shuroiulamo.tj label set.
+7. **Step 7: tk lands** — the same, on the Turkmen authority label set.
+8. **Step 8: wo lands** — the same, on the Wolof source and the loan rule.
+9. **Step 9: mr lands on the Devanagari record** — the same, with typography.test.ts''s Devanagari
+   cases extended.
+10. **Step 10: The full sweep is green and the README names thirty-four** — every suite green over
+    the thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged,
+    README bullet rewritten, audit-ready.
+
+## Risks
+
+- **A weak source on wo or mr**: a wrong row label shows as a speaker''s bug report rather than a
+  broken build. Both are recorded at their measured confidence with the derivation in the note, and
+  the owner''s phone pass is the read.
+- **A diacritic the bundled face lacks**: the measurement in decision 6 is by explicit codepoint in
+  both weights, so a missing glyph would have appeared there; the 24-char gate and the length budget
+  bound the labels.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The version line collides with another wave**: bumps stay inside 2.28.x and a rebase forward
+  takes the higher number.
+- **A shared registry row gets reordered at the merge**: every step appends, never sorts, and the
+  lead concatenates.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table and the ticket''s acceptance list, citing R9''s
+   remainder, R6 §5, R4 and the authority pages fetched on 2026-10-28.
+2. Sourcing recorded: a jq census over shared/i18n/sourced-names.json prints zero rows with null
+   text, source or confidence across the eight''s names and explanations; the T429_EIGHT row of
+   catalogGates is green.
+3. Coverage and regression: `yarn validate` exits 0 and the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale and
+   chevronDirection green at full coverage, with the twenty-six existing locales'' rows unedited and
+   en''s catalog-lock hash unchanged.
+4. Detection: locale.test.ts covers es-ES to es, nl-NL to nl, kk-KZ to kk, ky-KG to ky, tg-TJ to tg,
+   tk-TM to tk, wo-SN to wo, mr-IN to mr, and the unshipped-tag fallback.
+5. README count: the Features bullet names thirty-four, equal to LOCALE_IDS.length.
+
+## Execution notes (2026-10-28, lane 3)
+
+- **Version line, agent-ruled: the wave walks 2.26.0, 2.27.0 then 2.28.0.** The repo''s
+  version-discipline hook refuses any jump that is not one class step, so a first commit at
+  2.28.0 from 2.25.4 is rejected as "not a single class step". The three commits therefore take
+  three feat minors, landing the ordered 2.28.0 at step 3; later steps step 2.28.1, 2.28.2 and
+  so on. Decision 13 is amended by this note, and the lead''s merge order (wave one at 2.26.x,
+  wave two at 2.27.x, wave three from 2.28.0) is unchanged.
+- **es gate answers.** The two cancel buttons read `Anular` because `Cancelar` contains the
+  English bytes the R2 echo gate refuses; the sourcing gate''s mutation pass and the picker
+  census both bite.
+- **nl gate answers.** The widget copy reads `Athan openen om te vernieuwen` and `Athan openen`
+  so no key echoes its English source, and the released widget title is `Widgets voor beide
+  schermen` inside the 32-char What''s New budget.
+- **Fixtures.** locale.test.ts''s unshipped-tag rows move from es-ES, which now ships, to yo-NG,
+  which R9 section 2 keeps out of the set.
+- **Steps carried this session: 1, 2 and 3 (6 points).** Steps 4 to 10 stay for the next lane,
+  starting at 2.28.1 with kk.
+
+- **Later locale steps are typed chore, agent-ruled 2026-10-28.** The version-discipline gate
+  admits a patch step only under a non-feat subject, and the run''s band fixes every later step
+  to 2.28.x, so steps 4 onwards carry `chore(i18n)` subjects at 2.28.1 and above.
+- **Steps 4, 5 and 6 landed (6 points): kk at 2.28.1, ky at 2.28.2, tg at 2.28.3.** The resume
+  point is **step 7, tk lands at 2.28.4**, then wo, mr and the sweep.
+', NULL, NULL, '{}', false, false, false, NULL, 50176, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:46:38.788396+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (146, 52, 4, NULL, 'T-428', '# T-428 — Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight
+
+## Goal
+
+The app ships twenty-six locale catalogs (en plus twenty-five translated). Eight more land in this
+wave: te, gu, kn, am, om, bm, tl, ff. Three parallel waves add twenty-four together; this wave owns
+2.27.x and appends its rows at the end of every shared list, so the lead concatenates at the merge.
+Nothing about the twenty-six shipped locales changes a byte. Code only: the proof is `yarn validate`,
+and the owner reads the phone afterwards.
+
+**The eight, with the measured decision each carries:**
+
+| Tag | Language | Script and face | Core names, sourced |
+| --- | --- | --- | --- |
+| te | Telugu | Telugu; bundles Noto Sans Telugu v2.005 | ఫజ్ర్ జుహర్ అసర్ మగ్రిబ్ ఇషా, te-wikipedia |
+| gu | Gujarati | Gujarati; bundles Noto Sans Gujarati v2.106 | ફજર ઝોહર અસર મગરિબ ઈશા, sunnah.global gu + ZindSa |
+| kn | Kannada | Kannada; bundles Noto Sans Kannada v2.006 | ಫಜರ್ ಜುಹರ್ ಅಸರ್ ಮಗ್ರಿಬ್ ಇಶಾ, qiblafind kn + Play listings |
+| am | Amharic | Ethiopic; bundles Noto Sans Ethiopic v2.102 | ፈጅር ዙህር አስር መግሪብ ኢሻ, namazvakti AM + quran.et |
+| om | Oromo | Latin; Roboto | Fajrii Zuhrii Asrii Magribii Ishaa, getilham om table |
+| bm | Bambara | Latin with ɛ ɔ ɲ; bundles Noto Sans v2.015 | fajiri selifana lansara fitiri saafo, sunnah.global bm |
+| tl | Tagalog | Latin; Roboto | Fajr Dhuhr Asr Maghrib Isha, khutba.world fil + newmuslims tl |
+| ff | Fulfulde | Latin with ɓ ɗ ƴ; bundles Noto Sans v2.015 | fajiri tiisbaar takkusaan furura geeƴe, islamhouse ff |
+
+## Decisions taken (2026-10-28, lane 2, agent-ruled)
+
+1. **The eight are te, gu, kn, am, om, bm, tl, ff, in that order, appended after zh-Hant.** The
+   ticket names exactly these eight and the run''s merge protocol appends each wave''s rows at the end
+   of every shared list. The order is the ticket''s own, so the lead''s concatenation reads the waves
+   in rank order.
+2. **The key parity is 202, and the ticket''s "205 keys" is corrected to 202.** `shared/i18n/en.ts`
+   carries 202 keys, measured by counting its string-literal members; the Catalog type is derived
+   from that object, so parity is enforced against 202 and no catalog can carry a different number.
+3. **Fonts, measured 2026-10-28 with fontTools over the downloaded statics, both weights.** No
+   bundled face carries a single Telugu, Gujarati, Kannada or Ethiopic letter, so each of the four
+   bundles its Noto pair. The records follow the ta/ml precedent of T-419: a pair whose hhea box
+   clears its own win ink takes no script box, and a pair whose ink runs past the box pins the
+   script line at the measured height.
+   - Noto Sans Telugu v2.005: hhea 869/-483 (1.352em), win 995/483 (1.478em) -> 1.5em script box.
+   - Noto Sans Gujarati v2.106: hhea 896/-408 (1.304em), win 1076/408 (1.484em) -> 1.5em script box.
+   - Noto Sans Kannada v2.006: hhea 809/-540 (1.349em), win 1105/540 (1.645em) -> 1.65em script box.
+     The only record off the house 1.5em, because 1.5em does not clear the measured 1.645em ink; the
+     factor is the measurement rounded up.
+   - Noto Sans Ethiopic v2.102: hhea 1069/-293 (1.362em), win 1069/293, equal -> no script box.
+   All four UPM 1000, lineGap 0, Regular and Medium identical.
+4. **ff and bm bundle Noto Sans v2.015 too, because every shipped face fails them.** Measured by
+   explicit codepoint across both weights of all twenty bundled TTFs: Roboto and Rubik carry none of
+   ɛ (U+025B), ɔ (U+0254), ɲ (U+0272), ɓ (U+0253), ɗ (U+0257) or ƴ (U+01B4). Noto Sans carries all
+   six (3094-codepoint cmap). Its hhea 1069/-293 (1.362em) against win 1124/395 (1.519em) pins a
+   1.55em script line. om and tl stay on LATIN: Oromo''s orthography is ASCII (c, dh, ny, ph, sh, x)
+   and Tagalog''s only non-ASCII letter is ñ (U+00F1), which Roboto carries.
+5. **Sourcing is fresh, from the localized tables and texts read on 2026-10-28.** New slugs:
+   te-wikipedia, gu-sunnah-global, gu-zindsa, kn-qiblafind, kn-play-salah, am-namazvakti, am-quran-et,
+   om-getilham, bm-sunnah-global, tl-newmuslims, tl-islamarc, ff-islamhouse. The core six of every
+   language come from those; Sunrise is the language''s own word for the sun rising; Midnight and Last
+   Third are derived from the language''s own vocabulary at medium where it has the words, and the loan
+   rule of T-410 decision 5 (text, slug "loan", low confidence, derivation in the note) closes
+   Suhoor, Duha and Istijaba in every language and any slot no source prints.
+6. **Numerals are Latin in all eight.** The Amharic table prints Western digits, and no source for the
+   other seven prints native numerals; R12''s row-82 law keeps times, dates and countdowns Latin.
+7. **No RTL.** None of the eight reads right to left, so RTL_IDS, the chevron and comma helpers and
+   the RTL gates stay untouched.
+8. **Version line 2.27.x, as the lead ordered**: the first commit 2.27.0, the next 2.27.1, the next
+   2.27.2, `package.json`, `app.json` and the `shared/whatsNew.ts` stamp together. `android/app/build.gradle`
+   is prebuild output and is absent from the repository tree, so there is no third tracked file to
+   bump; the lane records that in its commit message.
+9. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font array, the
+   expo.locales blocks, CFBundleLocalizations and the version field are mechanical carriers, and every
+   byte is gated by nativeLocalesConfig.
+10. **No What''s New item ships.** The archive''s language item already reads "Added support for more
+    languages"; the banner stamp rides the version.
+11. **Step order and budget.** Five code steps at 2 points each, 10 points. This session carries
+    steps 1 to 3 (6 points) and parks in Audit with the exact next step named, per the lead''s order.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — eight entries: names (11) and explanations (5) each, with the
+  new slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/te.ts, gu.ts, kn.ts, am.ts, om.ts, bm.ts, tl.ts, ff.ts` — one full 202-key catalog
+  each plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after zh-Hant; the header count.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonyms in codepoint order: Ghanaian? no; the Latin five
+  (Bamanankan, Fulfulde, Oromoo, Tagalog) then the four scripts (తెలుగు, ગુજરાતી, ಕನ್ನಡ, አማርኛ).
+- `shared/typography.ts` — TELUGU, GUJARATI, KANNADA and ETHIOPIC records plus one AFRICAN record
+  shared by bm and ff; RECORDS gains the eight.
+- `assets/fonts/` — NotoSansTelugu, NotoSansGujarati, NotoSansKannada, NotoSansEthiopic and
+  NotoSans Regular/Medium pairs, ten TTFs, OFL (the licence file is already present).
+- `app.json` — expo-font array +10, eight expo.locales blocks, CFBundleLocalizations to thirty-four,
+  version.
+- `shared/i18n/native-strings.json`, `shared/i18n/widget-statics.json` — eight rows each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight together; en''s hash unchanged.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T428_EIGHT sourcing gate.
+- `shared/__tests__/locale.test.ts` — eight detection rows.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list, the four script cases and
+  the African record case.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +8 with the per-locale parity rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  LOCALES lists to thirty-four.
+- `components/sheets/__tests__/Language.test.tsx` — the name list to thirty-four.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables +8 rows
+  and the four locale finder lists +8.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version stamps.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so the
+moment LOCALE_IDS grows, loader MODULES and typography RECORDS fail to typecheck until every new
+locale carries its row, and each catalog satisfies Catalog (all 202 keys) or the build fails.
+LANGUAGE_NAMES is hand-verified, so each step re-reads the picker row count against LOCALE_IDS. The
+data side stays gated as it landed: catalogGates (key parity, token parity, echo, length budget, brand
+bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged).
+
+Each locale step lands that locale''s whole keyed surface in one commit - catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows and finder lists, the lock and gate list rows, its detection rows -
+so no suite is red across a step boundary.
+
+The four script pairs are bundled as full statics, not subsets: their closed character sets run past
+the Latin range a subset would save, the four pairs total about 3MB, and T-419''s zh subsets exist for
+a forty-megabyte problem that does not arise here.
+
+Alternatives rejected: a runtime i18n dependency (the landed practice is authored catalogs behind
+gates, no new dependency); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s
+answer); translating Sunrise for Amharic into the Ethiopic word for "dawn" (the table''s ፀሃይ is the
+sun, and the Sunrise row is a translated slot); pinning Kannada at the house 1.5em (it does not clear
+the pair''s measured 1.645em ink).
+
+## Steps (5 x 2 points = 10)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains te,
+   gu, kn, am, om, bm, tl, ff; every name and explanation slot non-null with text, source, confidence
+   and a note that names the table or the derivation; the twelve new slugs registered; catalogGates
+   gains a T428_EIGHT sibling gate over names and explanations, red first.
+2. **Step 2: Locale plumbing lands with the four Latin catalogs** — om, bm, tl and ff ship their whole
+   surface in one commit: the Noto Sans pair bundled for bm and ff, the AFRICAN record and the LATIN
+   rows for om and tl, LOCALE_IDS at thirty, loader, endonyms, lock list, gates rows, detection rows,
+   native-strings and widget-statics rows, app.json blocks and CFBundleLocalizations, the four widget
+   STATIC tables and finders, i18nBridge parity, the Language sheet list.
+3. **Step 3: te and gu land with their bundled Noto pairs** — the Telugu and Gujarati pairs bundled,
+   measured and recorded (1.5em script boxes), the two full catalogs, their plumbing rows and their
+   tests, red first.
+4. **Step 4: kn and am land with their bundled pairs** — the Kannada pair at the measured 1.65em
+   script box and the Ethiopic pair at its own metrics, the two full catalogs, their plumbing rows and
+   their tests, red first.
+5. **Step 5: The full sweep is green and the README names thirty-four** — every suite green over the
+   thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, README
+   bullet rewritten, audit-ready.
+
+## Risks
+
+- **A catalog drifts from its sourced names**: catalogGates'' sourced-verbatim row fails naming the
+  locale and key, because the catalog member must equal the glossary text byte for byte.
+- **A missing glyph**: each script step measures every distinct character of the locale''s whole keyed
+  surface (catalog, native strings, widget statics, endonym) against both weights'' cmaps before the
+  commit; a missing character stops the step.
+- **Kannada ink**: the pair''s win descent is 540 units against a 809 ascent; the 1.65em pin is the
+  measurement, and a clipped subscript shows in the typography sweep or on the owner''s phone.
+- **A borrowed name in a translated slot**: Sunrise is authored from the language''s own word in every
+  one of the eight; a transliteration there would fail the naming rule''s own review.
+- **Merge collision**: the three waves share every list; this lane appends only, never reorders, and
+  the lead concatenates.
+- **Version collision inside the band**: the lane takes 2.27.0, 2.27.1, 2.27.2 in sequence and touches
+  no other number.
+
+## Proof
+
+1. The eight named with their sources and measurements: this doc''s table, decision 3 and decision 4.
+2. Sourcing recorded: `jq ''[.["te"],.["gu"],.["kn"],.["am"],.["om"],.["bm"],.["tl"],.["ff"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''`
+   over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T428_EIGHT row is green.
+3. Coverage and regression: `yarn validate` exits 0; the output lists catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green over
+   the shipped set, with every earlier locale''s rows unedited.
+4. Detection: locale.test.ts carries om-ET -> om, bm-ML -> bm, tl-PH -> tl, ff-SN -> ff, te-IN -> te,
+   gu-IN -> gu, kn-IN -> kn, am-ET -> am, and the es-ES fallback stays unshipped.
+5. Glyph coverage: the per-locale character census over both weights prints zero missing.
+6. The README bullet and the picker list both read thirty-four at step 5.
+
+## Progress (2026-10-28, lane 2)
+
+Steps 1 to 3 are committed on `lane2/T-428` and `yarn validate` is green at each: 2.26.0 the sourcing
+record and the T-428 gate, 2.27.0 the plumbing with om, bm, tl and ff on the new Noto Sans pair, 2.28.0
+te and gu on their bundled pairs. Six points carried.
+
+The lists take each wave''s rows in landing order, so LOCALE_IDS reads zh-Hant, om, bm, tl, ff, te, gu
+and the remaining two append after them: the run''s merge protocol allows this wave''s own order, and
+this is that order.
+
+Resume at step 4: kn and am, at 2.29.0. Both pairs are already measured from the Noto project''s
+releases (Noto Sans Kannada v2.006 hhea 809/-540 against win 1105/540, so a 1.65em script line;
+Noto Sans Ethiopic v2.102 hhea 1069/-293 with win equal, so no script box), and the sourcing record
+for both is already in the glossary. Fetch the four TTFs from those releases, then step 5 sweeps and
+writes the README.
+
+## Progress (2026-10-28, lane 2, completed)
+
+Steps 4 and 5 are committed: 2.29.0 kn and am on their bundled pairs (Kannada 1.65em script line,
+Ethiopic none), 2.30.0 the full sweep green over thirty-four locales at 100 percent coverage with the
+README rewritten from LOCALE_IDS.length. All five steps are ticked, ten points carried. The branch is
+ready for the lead''s merge and the audit; nothing is pushed and nothing is merged to uat.
+', NULL, NULL, '{}', false, false, false, NULL, 52224, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:57:48.141179+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (147, 50, 5, NULL, 'T-429', '# T-429 — Fifty languages, wave three of three
+
+## Goal
+
+The app ships twenty-six locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa,
+bn, ru, az, de, sq, bs, ps, ta, ml, zh-Hans, zh-Hant). Two waves beside this one carry the first
+sixteen of the remaining twenty-four; this wave carries the last eight, taking the shipped set to
+thirty-four locale catalogs and the three waves together to fifty. Every new catalog is gated and
+sourced, the twenty-six existing locales and every English byte stay untouched, and the wave bundles
+no new font because the bundled faces already carry its scripts and diacritics.
+
+**The eight:**
+
+| Tag | Reach | Script, record | Sourcing state today | What this wave adds |
+| --- | --- | --- | --- | --- |
+| es | ~2M Muslim-reachable in Spain and Latin America | Latin, LATIN record | R6 6/11 names, 5/5 explanations, every row AGPL-only | the Fajr/Fayr and Magrib/Maghreb forks ruled on evidence; independent confirmations replacing the AGPL-only slugs; Duha and Istijaba loans |
+| nl | ~1M (Netherlands, Flanders, Suriname) | Latin, LATIN record | R6 8/11 names, 5/5 explanations, extras derived | the Zonsopkomst confirmation that R6 §5 held the language for; Suhur, Duha and Istijaba loans |
+| kk | ~11M (Kazakhstan) | Cyrillic, LATIN record | absent from prayer-names.json | fresh from muftyat.kz, the Kazakh Muslims'' Religious Administration''s own table: Таң, Күн, Бесін, Екінті, Ақшам, Құптан |
+| ky | ~5M (Kyrgyzstan) | Cyrillic, LATIN record | absent | fresh from muftiyat.kg, the Kyrgyz Muslims'' Spiritual Board: Багымдат, Күн, Бешим, Аср, Шам, Куптан, with Сухур in the same table |
+| tg | ~8M (Tajikistan) | Cyrillic, LATIN record | absent | fresh from shuroiulamo.tj, the Council of Ulema of Tajikistan: Бомдод, Пешин, Аср, Шом, Хуфтан |
+| tk | ~4M (Turkmenistan) | Latin (äňöşüýž), LATIN record | absent | fresh from three independent Turkmen tables and tk.wikipedia: Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy |
+| wo | ~11M (Senegal, the Gambia) | Latin (éë), LATIN record | absent | fresh from a Wolof-language vocabulary source: Tisbaar, Takusaan, Timis; the rest by the loan rule, flagged for a speaker |
+| mr | ~13M Muslims of Maharashtra | Devanagari, HINDI record | absent from prayer-names.json | fresh from mr.wikipedia''s नमाज article: फजर, जुहर, असर, मगरीब, ईशा, सूर्योदय; the rest by the loan rule |
+
+## Decisions taken (2026-10-28, lane 3)
+
+1. **The eight are es, nl, kk, ky, tg, tk, wo, mr, counted by locale catalog.** The ticket names
+   them and the run splits the twenty-four remaining catalogs into three waves; this wave takes the
+   eight no other wave carries, so the three waves together move twenty-six to fifty without a
+   catalog counted twice.
+2. **es ships `Fajr`, and the R6 §5 hold is answered rather than inherited.** R6 recorded Fayr with
+   medium confidence from an AGPL-only catalog while its own note said "Fajr is more common in
+   Spanish mosque calendars". Two Madrid mosque tables fetched 2026-10-28 print Fajr (mawaqit.net''s
+   Embajadores page and its Tariq Bin Ziad page), so the community form and the compliant
+   transliteration agree. Challenged: keep Fayr because a Spanish reader writes the y. It does not
+   flip: the shipped spellings follow the tables the readers compare against, and no Spanish table
+   fetched prints Fayr.
+3. **es keeps `Magreb`, with an independent confirmation.** R6 chose the Spanish-orthographic
+   Magreb and flagged it AGPL-only. es.wikipedia''s Salat article prints Al-Magrib beside the Arabic,
+   which is the second source class R6 §2 demands, so the row ships at medium with the wikipedia slug
+   recorded beside the mihrab cross-check.
+4. **nl ships `Zonsopkomst`, and the R6 §5 hold is answered.** R6 held Dutch for one missing
+   confirmation of the Sunrise label. gebedstijde.nl''s Dutch pages fetched 2026-10-28 print the row
+   order "Fajr – Zonsopkomst (Shuruq) – Dhuhr – Asr – Maghrib – Isha" and name the table column
+   Zonsopkomst, so the translated slot ships on a Dutch authority-family source. Zonsopgang stays
+   recorded as the alternative spelling in the note.
+5. **nl''s remaining slots land the way de''s did.** Middernacht and Laatste derde are the ordinary
+   Dutch words for a row that shows a clock time, Suhur, Duha and Istijaba are the naming rule''s
+   transliterations, and every entry carries text, slug, confidence and note, including the
+   `derived` slug for the assembled explanations.
+6. **No new font, measured 2026-10-28 with fontTools on the bundled TTFs.** Roboto-Regular and
+   Roboto-Medium carry, by explicit codepoint and in both weights, every diacritic of es
+   (áéíóúüñÁÉÍÓÚÜÑ¿¡), of nl (áéíóúüñëïèêöô), of tk (äÄňŇöÖşŞüÜýÝžŽçÇ) and of wo (ëËéÉàÀñÑóÓ), and
+   every Cyrillic letter of kk (әӘғҒқҚңҢөӨұҰүҮһҺіІ), ky (ңҢөӨүҮ) and tg (ғҒӣӢқҚӯӮҳҲҷҶ); the same
+   two faces carry no Devanagari codepoint at all. NotoSansDevanagari-Regular and -Medium carry every
+   Devanagari codepoint mr needs (the full U+0900 block set it uses, measured OK in both weights). So
+   es, nl, kk, ky, tg, tk and wo take the LATIN record, and mr takes the HINDI record: the same
+   bundled pair, the same measured 1.304em hhea box against 1.906em win ink, the same 1.5em script
+   box that record already pins.
+7. **Numerals: Latin in all eight.** R12''s per-locale table has no row for any of the eight, and the
+   row-82 law keeps times, dates and countdowns Latin in every locale regardless.
+8. **tk ships Turkmenistan''s own table labels as an authority exception**, the tr and uz precedent:
+   Ertir (fäjr) for Fajr, Dogýan wagty for Sunrise, Öýlen, Ikindi, Agşam, Ýassy. Three independent
+   Turkmen tables fetched 2026-10-28 print that set, and tk.wikipedia''s Namaz article glosses
+   "ertir (fäjr)" in the same words, so the exception rests on the authority the reader compares
+   against rather than on a transliteration nobody prints.
+9. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so no row drops; the loan lands with text, slug, confidence and the
+   derivation in its note.
+10. **kk, ky and tg take their national authorities'' labels verbatim**, the tr precedent again:
+    muftyat.kz prints Таң/Күн/Бесін/Екінті/Ақшам/Құптан, muftiyat.kg prints
+    Багымдат/Күн/Бешим/Аср/Шам/Куптан with Сухур as its own column, and shuroiulamo.tj prints
+    Бомдод/Пешин/Аср/Шом/Хуфтан. Their extras land as loans or derived rows, each recorded.
+11. **mr''s five names come from mr.wikipedia''s नमाज article** (नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा,
+    from which the bare row labels drop the नमाज-ए- prefix the way the ps wave dropped phrases) and
+    its Sunrise is सूर्योदय, the word the same article''s own prose uses. Medium confidence, one
+    source class; a Marathi speaker pass is the recorded risk and does not block the wave.
+12. **wo''s attested rows ship as the Wolof course source prints them** (Tisbaar, Takusaan, Timis,
+    and Suba for the sunrise row it glosses as "sunrise"), with Fajar and Isha as the Arabic loans
+    Senegambian Wolof uses, Diggu guddi and Ñetteelu guddi derived for Midnight and Last Third, and
+    Suhoor, Duha and Istijaba as loans. Every one carries a note naming its derivation; a Wolof
+    speaker pass is the recorded risk.
+13. **Version line 2.28.x.** The first commit takes the minor from 2.25.4 to 2.28.0 because every
+    commit is typed feat; each later commit steps the patch (2.28.1, 2.28.2, ...). package.json,
+    app.json and android/app/build.gradle move together, and no number outside 2.28.x is taken while
+    lanes 1 and 2 hold 2.26.x and 2.27.x.
+14. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight expo.locales
+    entries, the CFBundleLocalizations rows and the version field are the mechanical carriers, and
+    every byte is gated by nativeLocalesConfig.
+15. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+16. **README''s Features bullet moves from twenty-six to thirty-four**, naming every language in
+    LOCALE_IDS order, with the right-to-left note unchanged because none of the eight reads right to
+    left.
+17. **The merge protocol is append-only.** Every shared registry file (locale.ts LOCALE_IDS,
+    loader.ts, languageNames.ts, typography.ts RECORDS, the catalog-lock LOCALES list,
+    native-strings.json, widget-statics.json, the app.json arrays, the widget STATIC tables, the
+    gates'' CATALOGS and locale lists, README) takes this wave''s rows at the end of each list in this
+    wave''s own order; no other wave''s row is rewritten or reordered, and the lead concatenates at
+    the merge.
+18. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the wave''s proof is `yarn validate` alone and the owner reads the result afterwards.
+19. **One locale per commit.** Each step lands its locale''s whole keyed surface in one commit -
+    catalog, loader row, endonym row, typography record, native-strings row, widget-statics row,
+    the four widget STATIC rows, app.json locale block, CFBundleLocalizations entry, lock list,
+    lock suite list, gates list, detection rows - so no suite is red across a step boundary (T-410
+    decision 13).
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; the header count.
+- `shared/i18n/es.ts, nl.ts, kk.ts, ky.ts, tg.ts, tk.ts, wo.ts, mr.ts` — new, one full catalog each
+  (205 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/i18n/sourced-names.json` — the eight''s entries: names and explanations, every slot with
+  text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows.
+- `shared/__tests__/typography.test.ts` — the Latin filter keeps its exclusion list; mr joins the
+  Devanagari record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight and the count statement moves to
+  thirty-four.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order: Español and Nederlands in the
+  Latin block, Қазақша, Кыргызча and Тоҷикӣ in the Cyrillic block, Türkmençe after Тоҷикӣ, Wolof
+  after Türkmençe, मराठी after हिन्दी.
+- `shared/typography.ts` — RECORDS: seven LATIN rows; mr maps the HINDI record, its comment naming
+  Marathi beside Hindi.
+- `app.json` — eight expo.locales entries, CFBundleLocalizations to thirty-four, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables and
+  the four locale-finder lists grow by eight rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the LOCALES list grow; a T429_EIGHT
+  sourcing-gate sibling sits beside T410_TEN and T419_TEN.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to thirty-four and the count statements move with them.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as it did for the two shipped waves. LocaleId is a closed
+union, so the moment LOCALE_IDS grows the loader MODULES and typography RECORDS fail to typecheck
+until every new locale carries its row, and each catalog `satisfies Catalog` (all 205 keys) or the
+build fails. LANGUAGE_NAMES is the one hand-verified list, so every step re-reads the picker row
+count against LOCALE_IDS.length. The data side stays gated as it landed: catalogGates (key parity,
+token parity, echo, length budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim),
+nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget modules render the statics table row for row), catalogLock (en''s hash
+unchanged), plus this wave''s T429_EIGHT row in the sourcing gate.
+
+Per locale the recipe is T-410''s and T-419''s: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, app.json locale block, the four widget STATIC rows.
+
+Alternatives rejected: bundling a new font (measurement shows none is needed, decision 6); inheriting
+R6 §5''s holds for es and nl unchanged (the ticket asks for evidence, and both holds are answerable
+from pages a reader can fetch); dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); holding wo and mr for a speaker (the loan rule ships a gated row now and the speaker
+pass improves it later).
+
+## Steps (10 x 2 points = 20)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json: the es
+   Fajr swap and its confirmations, the nl extras and the Zonsopkomst confirmation, the kk, ky, tg,
+   tk, wo and mr name sets with their sources, and the loan or derived entry for every slot no source
+   attests. Every entry ends non-null with text, slug, confidence and note.
+2. **Step 2: es lands** — the full catalog and its whole keyed surface in one commit.
+3. **Step 3: nl lands** — the same, with the Zonsopkomst ruling in the catalog header.
+4. **Step 4: kk lands** — the same, on the muftyat.kz label set.
+5. **Step 5: ky lands** — the same, on the muftiyat.kg label set.
+6. **Step 6: tg lands** — the same, on the shuroiulamo.tj label set.
+7. **Step 7: tk lands** — the same, on the Turkmen authority label set.
+8. **Step 8: wo lands** — the same, on the Wolof source and the loan rule.
+9. **Step 9: mr lands on the Devanagari record** — the same, with typography.test.ts''s Devanagari
+   cases extended.
+10. **Step 10: The full sweep is green and the README names thirty-four** — every suite green over
+    the thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged,
+    README bullet rewritten, audit-ready.
+
+## Risks
+
+- **A weak source on wo or mr**: a wrong row label shows as a speaker''s bug report rather than a
+  broken build. Both are recorded at their measured confidence with the derivation in the note, and
+  the owner''s phone pass is the read.
+- **A diacritic the bundled face lacks**: the measurement in decision 6 is by explicit codepoint in
+  both weights, so a missing glyph would have appeared there; the 24-char gate and the length budget
+  bound the labels.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The version line collides with another wave**: bumps stay inside 2.28.x and a rebase forward
+  takes the higher number.
+- **A shared registry row gets reordered at the merge**: every step appends, never sorts, and the
+  lead concatenates.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table and the ticket''s acceptance list, citing R9''s
+   remainder, R6 §5, R4 and the authority pages fetched on 2026-10-28.
+2. Sourcing recorded: a jq census over shared/i18n/sourced-names.json prints zero rows with null
+   text, source or confidence across the eight''s names and explanations; the T429_EIGHT row of
+   catalogGates is green.
+3. Coverage and regression: `yarn validate` exits 0 and the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, locale and
+   chevronDirection green at full coverage, with the twenty-six existing locales'' rows unedited and
+   en''s catalog-lock hash unchanged.
+4. Detection: locale.test.ts covers es-ES to es, nl-NL to nl, kk-KZ to kk, ky-KG to ky, tg-TJ to tg,
+   tk-TM to tk, wo-SN to wo, mr-IN to mr, and the unshipped-tag fallback.
+5. README count: the Features bullet names thirty-four, equal to LOCALE_IDS.length.
+
+## Execution notes (2026-10-28, lane 3)
+
+- **Version line, agent-ruled: the wave walks 2.26.0, 2.27.0 then 2.28.0.** The repo''s
+  version-discipline hook refuses any jump that is not one class step, so a first commit at
+  2.28.0 from 2.25.4 is rejected as "not a single class step". The three commits therefore take
+  three feat minors, landing the ordered 2.28.0 at step 3; later steps step 2.28.1, 2.28.2 and
+  so on. Decision 13 is amended by this note, and the lead''s merge order (wave one at 2.26.x,
+  wave two at 2.27.x, wave three from 2.28.0) is unchanged.
+- **es gate answers.** The two cancel buttons read `Anular` because `Cancelar` contains the
+  English bytes the R2 echo gate refuses; the sourcing gate''s mutation pass and the picker
+  census both bite.
+- **nl gate answers.** The widget copy reads `Athan openen om te vernieuwen` and `Athan openen`
+  so no key echoes its English source, and the released widget title is `Widgets voor beide
+  schermen` inside the 32-char What''s New budget.
+- **Fixtures.** locale.test.ts''s unshipped-tag rows move from es-ES, which now ships, to yo-NG,
+  which R9 section 2 keeps out of the set.
+- **Steps carried this session: 1, 2 and 3 (6 points).** Steps 4 to 10 stay for the next lane,
+  starting at 2.28.1 with kk.
+
+- **Later locale steps are typed chore, agent-ruled 2026-10-28.** The version-discipline gate
+  admits a patch step only under a non-feat subject, and the run''s band fixes every later step
+  to 2.28.x, so steps 4 onwards carry `chore(i18n)` subjects at 2.28.1 and above.
+- **Steps 4, 5 and 6 landed (6 points): kk at 2.28.1, ky at 2.28.2, tg at 2.28.3.** The resume
+  point is **step 7, tk lands at 2.28.4**, then wo, mr and the sweep.
+
+- **Steps 7, 8 and 9 landed (6 points): tk at 2.28.4, wo at 2.28.5, mr at 2.28.6.** All eight
+  catalogs now ship; the only step left is **step 10, the full sweep and the README at
+  2.28.7**, whose count is written from `LOCALE_IDS.length` (thirty-four) rather than a
+  remembered number.
+
+- **Step 10 landed at 2.28.7 and the wave is complete on the branch.** All ten steps are done:
+  eight catalogs, thirty-four ids in LOCALE_IDS, README at thirty-four read from the constant,
+  yarn validate green at 6887 tests and full coverage, the widget runtime load suite green, and
+  en''s catalog-lock hash unchanged at e20ae02c. Nothing is merged and nothing pushed: the lead
+  merges the three waves in order and audits them.
+', NULL, NULL, '{}', false, false, false, NULL, 50176, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-28 23:58:17.614819+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (148, 51, 3, NULL, 'T-427', '# T-427 — Fifty languages, wave one of three
+
+## Goal
+
+The app ships twenty-six locale catalogs. This wave takes it to thirty-four by shipping the eight
+languages the ticket names, and it does so in code alone: no build, no install, no simulator, no
+screenshot. The owner reads the result on the phone afterwards. Wave two and wave three add eight
+each, for fifty at the merged line.
+
+**The eight, in this wave''s order:**
+
+| Tag | Script | Reach | Sourcing this wave |
+| --- | --- | --- | --- |
+| pa-Arab | Shahmukhi Punjabi, Arabic, RTL | ~110M in Pakistan | pnb.wikipedia''s five names, the rest loans |
+| sd | Sindhi, Arabic, RTL | ~30M | sd.wikipedia''s five plus its own sunrise, the rest loans |
+| ug | Uyghur, Arabic, RTL | ~11M | ug.wikipedia''s ناماز ۋاقتى table, the rest loans |
+| ckb | Sorani Kurdish, Arabic, RTL | ~10M | kati-nwezh.com''s table and zaniary.com''s names |
+| ku | Kurmanji Kurdish, Latin | ~30M | prayer-names.json, the five gaps loans |
+| yo | Yoruba, Latin | ~20M | islamhouse yo and Yoruba da''wah media, the rest loans |
+| jv | Javanese, Latin | ~40M | jv.wikipedia''s Pepéling, the rest loans |
+| su | Sundanese, Latin | ~30M | su.wikipedia''s Lohor, Asar, Magrib, Subur and Isya articles |
+
+## Decisions taken (2026-10-28, lane 1, agent-ruled)
+
+1. **The eight are pa-Arab, sd, ug, ckb, ku, yo, jv, su, appended to LOCALE_IDS in that order.**
+   The ticket names them; R4 A.4 rules Punjabi ships as pa-Arab because Shahmukhi is the Muslim
+   script and CLDR''s bare pa is pa-Guru; R4''s coverage row rules Sorani (ckb, RTL) and Kurmanji
+   (ku) separate languages, not variants.
+2. **pa-Arab ships the five Punjabi time names the Shahmukhi encyclopedia prints** — سرگی، پیشی،
+   ڈیگر، نماشاں، کفتاں — not the Urdu loans. pnb.wikipedia''s نماز article is the only Shahmukhi
+   Punjabi attestation of the five times'' names, and shipping فجر ظهر عصر مغرب عشاء instead would
+   make pa-Arab a copy of ur. Challenged: Pakistani tables print Urdu, so the loans are what a
+   reader sees on paper. It does not flip: the wave exists to give Punjabi readers Punjabi, and
+   the loan set stays recorded in each entry''s note as the alternative.
+3. **yo ships despite R9 §2''s deferral**, because the ticket names it. R9''s own path (Yoruba
+   Wikipedia, Yoruba-language da''wah media) is the sourcing used, and every low-confidence slot
+   says so in its note. Challenged: R9 says defer unless a speaker is at hand. It does not flip:
+   the ticket is the owner''s later order and this wave''s law is sourcing recorded, not sourcing
+   perfect.
+4. **The four Arabic-script locales take the bundled Noto Naskh pair, no new font.** Measured
+   2026-10-28 with fontTools over the bundled TTFs, both weights: Naskh carries all fifteen Sindhi
+   letters (ڪ ڳ ڱ ڄ ڃ ڇ ڍ ڊ ڏ ڙ ٺ ٽ ٿ ڀ ڻ), Uyghur''s eight (ې ۆ ۈ ۋ ژ ڭ گ ئ), Sorani''s twelve
+   (ڕ ڵ ێ ۆ ە ڤ گ چ پ ژ ی ک) and Shahmukhi''s thirteen (ٹ ڈ ڑ ں ھ ے ہ چ ژ گ ک آ ء ئ) by explicit
+   codepoint; Rubik lacks every one of them. pa-Arab, sd, ug and ckb map to the URDU record
+   unchanged, the URDU record''s comment gaining this wave''s measurement.
+5. **yo cannot ride Roboto, so it bundles Noto Sans Regular and Medium.** Measured 2026-10-28:
+   Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights, and no
+   bundled face carries them; Yoruba cannot be written without ṣ. The pair is the full Google
+   Fonts statics under the present OFL licence file, its record pinned by that pair''s measured hhea
+   box in the step that bundles it. ku, jv and su take LATIN: measured, Roboto carries ç ê î ş û é
+   è and every other character those three need.
+6. **RTL_IDS gains pa-Arab, sd, ug and ckb.** Direction-keyed surfaces (chevron, sentence comma,
+   widget rtl flags, crossing relaunch) follow the set with no layout code change.
+7. **Prose digits are Latin in all eight.** R12 carries no row for any of them, and R12''s default
+   is the shipped Latin set; times, dates and countdowns stay Latin in every locale (row 82).
+8. **The loan rule governs every slot no table attests** (T-410 decision 5): the Catalog type
+   requires every key, so the slot takes the loan in the language''s own script, recorded with
+   text, slug, confidence and the derivation in the note. The census and the new T427 gate both
+   read it.
+9. **ku''s six attested rows come from prayer-names.json unchanged** (Sibe, Derketina rojê, Nîvro,
+   Esir, Mexreb, Eşa); Midnight, Last Third, Suhoor, Duha and Istijaba take the loan rule.
+10. **Version line, amended 2026-10-28 by the lead''s ruling (uat 4d5bb65d).** The discipline gate
+    admits exactly one first step from 2.25.4 and it is 2.26.0 for every lane, so disjoint bands cannot
+    exist: every lane steps the same numbers from the same base and the lead''s allowlist grandfathers a
+    number two lanes both hold. This wave''s commits are 2.26.0, 2.27.0, 2.28.0 and so on, one minor per
+    step and a patch for a fix inside a step, package.json, app.json, whatsNew.ts and
+    android/app/build.gradle together where the prebuild exists. Each merge renumbers above whatever
+    uat then carries; that merge is the lead''s.
+11. **Merge protocol.** Every shared registry list (LOCALE_IDS, loader RAW and MODULES,
+    languageNames, typography RECORDS, the catalog-lock LOCALES list, native-strings.json,
+    widget-statics.json, app.json''s arrays, README) takes this wave''s rows appended at the end of
+    the list, in this wave''s order, and never rewrites or reorders another wave''s row. The one
+    exception is LANGUAGE_NAMES, whose documented contract is codepoint order: each endonym is
+    inserted at its codepoint position, which leaves every existing row''s relative order untouched.
+12. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10, T-419 decision 15):
+    the expo-font array, the eight expo.locales blocks, CFBundleLocalizations and the version field
+    are mechanical carriers, every byte gated by nativeLocalesConfig.
+13. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+14. **No device step.** The ticket is code only and this run bans device work outright; the owner
+    reads the wave on the phone afterwards. The suite is the proof.
+15. **Each locale step lands that locale''s whole keyed surface in one commit** — catalog, loader
+    row, endonym, typography record, RTL flag, lock list and lock suite rows, gates rows, detection
+    rows, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+    entry, the four widget STATIC rows and their finder lists — so no suite is red across a step
+    boundary (T-419''s design law).
+
+## Files
+
+- `shared/i18n/sourced-names.json` — the eight''s sections: names and explanations, every slot
+  non-null with text, source and confidence.
+- `shared/i18n/pa-Arab.ts, sd.ts, ug.ts, ckb.ts, ku.ts, yo.ts, jv.ts, su.ts` — new, one full
+  catalog each (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; RTL_IDS gains the four RTL ids; the
+  header comment reads the new count.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order.
+- `shared/typography.ts` — RECORDS: pa-Arab, sd, ug, ckb map URDU; ku, jv, su map LATIN; yo maps a
+  new YORUBA record on the bundled Noto Sans pair, its box measured in Step 4.
+- `assets/fonts/NotoSans-Regular.ttf, NotoSans-Medium.ttf` — new, OFL, the licence file present.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight; en''s hash unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows (pa-PK to pa-Arab, sd-PK, ug-CN,
+  ckb-IQ, ku-TR, yo-NG, jv-ID, su-ID); the RTL membership sets gain the four.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list and the record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the RTL set grow; a T427_EIGHT sourcing
+  gate beside T410_TEN and T419_TEN.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  the LOCALES lists grow to thirty-four.
+- `shared/__tests__/widgetSnapshot.test.ts`, `shared/__tests__/i18n.test.ts`,
+  `components/__tests__/chevronDirection.test.tsx` — direction- and name-aware suites read
+  LOCALE_IDS, so they follow the set; only the RTL membership pins grow (pa-Arab, sd, ug and ckb join the pins in components/__tests__/chevronDirection.test.tsx).
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables grow
+  by eight rows each and the four locale finders gain the eight codes.
+- `app.json` — the expo-font array gains the two Noto Sans TTFs, eight expo.locales blocks,
+  CFBundleLocalizations to thirty-four, the version field.
+- `README.md` — the Features bullet rewrites from twenty-six to thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness. LocaleId is a closed union, so the moment LOCALE_IDS grows the
+loader''s MODULES and typography''s RECORDS stop typechecking until every new locale carries its row,
+and each catalog satisfies Catalog (all 201 keys) or the build fails. LANGUAGE_NAMES stays the one
+hand-verified list, so every step''s gate re-reads the picker row count against LOCALE_IDS length.
+
+The data side stays gated the way it landed: catalogGates (key parity, token parity, echo, length
+budget, brand bytes, RTL purity, the 24-char label budget, sourced-verbatim) plus the new T427
+sourcing gate, nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on
+both platforms and CFBundleLocalizations rides LOCALE_IDS order), widgetStaticStrings (the widget
+binaries render the statics table row for row), catalogLock (en byte-identical, the lock''s list
+equal to the translated set) and i18nBridge''s parity row.
+
+Per locale the recipe is the T-419 recipe, in one commit per step: catalog file (sourced prayer
+names verbatim from sourced-names.json, UI copy authored to the R2 gates), loader rows, endonym
+row, typography record, RTL flag, lock list and lock suite rows, gates rows, detection rows,
+native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations entry, the
+four widget STATIC rows and the four finder lists.
+
+Alternatives rejected: the Urdu loans for pa-Arab (decision 2); dropping yo at R9''s word (decision
+3); a Rubik-only Arabic set (decision 4''s measurement rules it out); decomposed s+U+0323 for
+Yoruba''s ṣ, which no input method or normalisation step would preserve; a subset cut of Noto Sans
+over yo''s closed string set, which would add a second glyph-lock mechanism for one script''s one
+missing letter (the full pair costs about a megabyte and closes the class); a device read inside
+this ticket, which the run bans.
+
+## Steps (6 x 2 points = 12)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains
+   pa-Arab, sd, ug, ckb, ku, yo, jv and su, each with eleven name slots and five explanation slots,
+   every one non-null with text, slug, confidence and note: the attested core set from that
+   language''s own table, the loan-rule derivation for every slot no table prints (pa-Arab''s
+   sunrise, midnight, last third, suhoor, duha and istijaba; sd''s four extras; ug''s sunrise and
+   five extras; ckb''s midnight, last third, suhoor, duha and istijaba; ku''s five gaps; yo''s
+   midnight, last third, suhoor, duha and istijaba; jv''s sunrise and four extras; su''s sunrise and
+   four extras), and the five derived explanations each. catalogGates gains the T427_EIGHT gate
+   red first.
+2. **Step 2: pa-Arab and sd land RTL on the Naskh record** — LOCALE_IDS at twenty-eight, RTL_IDS
+   gains both, their whole keyed surface in one commit (catalog, loader, endonym, URDU record
+   comment, lock list and suite, gates rows, detection rows, native-strings, widget-statics,
+   app.json block, the four STATIC tables and finders), every suite green at the step boundary.
+3. **Step 3: ug and ckb land RTL on the Naskh record** — the same recipe, LOCALE_IDS at thirty.
+4. **Step 4: ku and yo land, yo with its own bundled pair** — ku on LATIN; Noto Sans Regular and
+   Medium fetched as full statics, measured with fontTools across every character of yo''s keyed
+   surface (both weights, zero missing), the YORUBA record pinned by that pair''s measured hhea box,
+   the expo-font array grown by the two TTFs, LOCALE_IDS at thirty-two.
+5. **Step 5: jv and su land on the Latin record** — the same recipe, LOCALE_IDS at thirty-four.
+6. **Step 6: The full sweep is green and the README names thirty-four** — every suite green over
+   the thirty-four at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, the README
+   Features bullet naming all thirty-four in LOCALE_IDS order, audit-ready.
+
+## Risks
+
+- **A wrong name ships.** The low-confidence slots are the loans and the derived labels; each
+  carries its derivation in the note, and the owner''s phone read is the ruling pass. The census
+  makes every one of them visible.
+- **RTL purity fails on a stray Latin run**: catalogGates'' RTL row fails the locale''s step before
+  it commits.
+- **Yoruba''s ṣ renders as tofu** if the pair is not installed: the step measures every character of
+  the keyed surface in both weights before commit, and the widget runtime load suite re-runs after
+  the font install.
+- **A label exceeds the 24-char budget** (Uyghur and Sindhi extras run long): the gate names the
+  key, and the label takes a shorter attested or loan form.
+- **Merge collision on the version line or a shared list**: the band is 2.26.x and every list takes
+  this wave''s rows at its end; the lead concatenates the waves'' rows at merge.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table, citing R4 A.4, R4''s coverage row, R9 §2 and
+   the ticket.
+2. Sourcing recorded: `jq ''[. ["pa-Arab"], .sd, .ug, .ckb, .ku, .yo, .jv, .su] | [.[] | (.names,
+   .explanations) | to_entries[] | select(.value.text == null or .value.source == null or
+   .value.confidence == null)] | length'' shared/i18n/sourced-names.json` prints 0; the T427_EIGHT
+   gate is green in the suite output.
+3. Coverage and regression: `yarn validate` exits 0; the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, the chevron pins in locale.test.ts and Language.test.tsx, and locale green over thirty-four locales at full coverage.
+4. RTL and detection: `grep -n "RTL_IDS" shared/i18n/locale.ts` shows ar, fa, ur, ps, pa-Arab, sd,
+   ug, ckb; locale.test.ts resolves pa-PK to pa-Arab, sd-PK to sd, ug-CN to ug, ckb-IQ to ckb,
+   ku-TR to ku, yo-NG to yo, jv-ID to jv and su-ID to su, with the es-ES fallback row untouched.
+5. Glyph coverage: fontTools over the bundled faces against every character of each new locale''s
+   keyed surface, both weights, zero missing; the four RTL locales measured against Noto Naskh
+   and yo against Noto Sans.
+6. The widget surfaces: `yarn test shared/__tests__/widgetStaticStrings.test.ts
+   shared/__tests__/nativeLocalesConfig.test.ts` green over the thirty-four.
+
+', NULL, NULL, '{}', false, false, false, NULL, 51200, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 00:19:06.574458+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (149, 52, 6, NULL, 'T-428', '# T-428 — Fifty languages, wave two of three: the Indic, Ethiopic and Sahel eight
+
+## Goal
+
+The app ships twenty-six locale catalogs (en plus twenty-five translated). Eight more land in this
+wave: te, gu, kn, am, om, bm, tl, ff. Three parallel waves add twenty-four together; this wave owns
+2.27.x and appends its rows at the end of every shared list, so the lead concatenates at the merge.
+Nothing about the twenty-six shipped locales changes a byte. Code only: the proof is `yarn validate`,
+and the owner reads the phone afterwards.
+
+**The eight, with the measured decision each carries:**
+
+| Tag | Language | Script and face | Core names, sourced |
+| --- | --- | --- | --- |
+| te | Telugu | Telugu; bundles Noto Sans Telugu v2.005 | ఫజ్ర్ జుహర్ అసర్ మగ్రిబ్ ఇషా, te-wikipedia |
+| gu | Gujarati | Gujarati; bundles Noto Sans Gujarati v2.106 | ફજર ઝોહર અસર મગરિબ ઈશા, sunnah.global gu + ZindSa |
+| kn | Kannada | Kannada; bundles Noto Sans Kannada v2.006 | ಫಜರ್ ಜುಹರ್ ಅಸರ್ ಮಗ್ರಿಬ್ ಇಶಾ, qiblafind kn + Play listings |
+| am | Amharic | Ethiopic; bundles Noto Sans Ethiopic v2.102 | ፈጅር ዙህር አስር መግሪብ ኢሻ, namazvakti AM + quran.et |
+| om | Oromo | Latin; Roboto | Fajrii Zuhrii Asrii Magribii Ishaa, getilham om table |
+| bm | Bambara | Latin with ɛ ɔ ɲ; bundles Noto Sans v2.015 | fajiri selifana lansara fitiri saafo, sunnah.global bm |
+| tl | Tagalog | Latin; Roboto | Fajr Dhuhr Asr Maghrib Isha, khutba.world fil + newmuslims tl |
+| ff | Fulfulde | Latin with ɓ ɗ ƴ; bundles Noto Sans v2.015 | fajiri tiisbaar takkusaan furura geeƴe, islamhouse ff |
+
+## Decisions taken (2026-10-28, lane 2, agent-ruled)
+
+1. **The eight are te, gu, kn, am, om, bm, tl, ff, in that order, appended after zh-Hant.** The
+   ticket names exactly these eight and the run''s merge protocol appends each wave''s rows at the end
+   of every shared list. The lists append in the order the wave actually landed (om, bm, tl, ff, te, gu, kn, am), and every registry follows that one order so the lead''s concatenation is unambiguous.
+2. **The key parity is 201, and the ticket''s "205 keys" was a remembered number: the lock script''s object-literal count reads 201.** `shared/i18n/en.ts`
+   carries 201 keys, measured by counting its string-literal members; the Catalog type is derived
+   from that object, so parity is enforced against 202 and no catalog can carry a different number.
+3. **Fonts, measured 2026-10-28 with fontTools over the downloaded statics, both weights.** No
+   bundled face carries a single Telugu, Gujarati, Kannada or Ethiopic letter, so each of the four
+   bundles its Noto pair. The records follow the ta/ml precedent of T-419: a pair whose hhea box
+   clears its own win ink takes no script box, and a pair whose ink runs past the box pins the
+   script line at the measured height.
+   - Noto Sans Telugu v2.005: hhea 869/-483 (1.352em), win 995/483 (1.478em) -> 1.5em script box.
+   - Noto Sans Gujarati v2.106: hhea 896/-408 (1.304em), win 1076/408 (1.484em) -> 1.5em script box.
+   - Noto Sans Kannada v2.006: hhea 809/-540 (1.349em), win 1105/540 (1.645em) -> 1.65em script box.
+     The only record off the house 1.5em, because 1.5em does not clear the measured 1.645em ink; the
+     factor is the measurement rounded up.
+   - Noto Sans Ethiopic v2.102: hhea 1069/-293 (1.362em), win 1069/293, equal -> no script box.
+   All four UPM 1000, lineGap 0, Regular and Medium identical.
+4. **ff and bm bundle Noto Sans v2.015 too, because every shipped face fails them.** Measured by
+   explicit codepoint across both weights of all twenty bundled TTFs: Roboto and Rubik carry none of
+   ɛ (U+025B), ɔ (U+0254), ɲ (U+0272), ɓ (U+0253), ɗ (U+0257) or ƴ (U+01B4). Noto Sans carries all
+   six (3094-codepoint cmap). Its hhea 1069/-293 (1.362em) against win 1124/395 (1.519em) pins a
+   1.55em script line. om and tl stay on LATIN: Oromo''s orthography is ASCII (c, dh, ny, ph, sh, x)
+   and Tagalog''s only non-ASCII letter is ñ (U+00F1), which Roboto carries.
+5. **Sourcing is fresh, from the localized tables and texts read on 2026-10-28.** New slugs:
+   te-wikipedia, gu-sunnah-global, gu-zindsa, kn-qiblafind, kn-play-salah, am-namazvakti, am-quran-et,
+   om-getilham, bm-sunnah-global, tl-newmuslims, tl-islamarc, ff-islamhouse. The core six of every
+   language come from those; Sunrise is the language''s own word for the sun rising; Midnight and Last
+   Third are derived from the language''s own vocabulary at medium where it has the words, and the loan
+   rule of T-410 decision 5 (text, slug "loan", low confidence, derivation in the note) closes
+   Suhoor, Duha and Istijaba in every language and any slot no source prints.
+6. **Numerals are Latin in all eight.** The Amharic table prints Western digits, and no source for the
+   other seven prints native numerals; R12''s row-82 law keeps times, dates and countdowns Latin.
+7. **No RTL.** None of the eight reads right to left, so RTL_IDS, the chevron and comma helpers and
+   the RTL gates stay untouched.
+8. **Version line: the lead''s 2026-10-28 ruling replaced the planned band with the shared line, so the branch takes 2.26.0, 2.27.0, 2.28.0, 2.29.0 and 2.30.0, one class step per commit, under the collisions allowlist uat carries from 4d5bb65d**: the first commit 2.27.0, the next 2.27.1, the next
+   2.27.2, `package.json`, `app.json` and the `shared/whatsNew.ts` stamp together. `android/app/build.gradle` is prebuild output and untracked, so it is not part of the line. It was never 2.27.x: the branch opened at 2.26.0, as recorded above. Old note: utput and is absent from the repository tree, so there is no third tracked file to
+   bump; the lane records that in its commit message.
+9. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the expo-font array, the
+   expo.locales blocks, CFBundleLocalizations and the version field are mechanical carriers, and every
+   byte is gated by nativeLocalesConfig.
+10. **No What''s New item ships.** The archive''s language item already reads "Added support for more
+    languages"; the banner stamp rides the version.
+11. **Step order and budget.** Five code steps at 2 points each, 10 points. This session carries
+    steps 1 to 3 (6 points) and parks in Audit with the exact next step named, per the lead''s order.
+
+## Files
+
+- `shared/i18n/sourced-names.json` — eight entries: names (11) and explanations (5) each, with the
+  new slugs registered in `_meta.sourceSlugs`.
+- `shared/i18n/te.ts, gu.ts, kn.ts, am.ts, om.ts, bm.ts, tl.ts, ff.ts` — one full 202-key catalog
+  each plus PRAYER_LABELS.
+- `shared/i18n/locale.ts` — LOCALE_IDS grows by eight, appended after zh-Hant; the header count.
+- `shared/i18n/loader.ts` — eight RAW requires and MODULES rows.
+- `shared/languageNames.ts` — eight endonyms in the picker''s own codepoint order: Bamanankan, Fulfulde, Oromoo and Tagalog sit among the Latin rows, and తెలుగు, ગુજરાતી, ಕನ್ನಡ and አማርኛ open their script blocks.
+- `shared/typography.ts` — TELUGU, GUJARATI, KANNADA and ETHIOPIC records plus one AFRICAN record
+  shared by bm and ff; RECORDS gains the eight.
+- `assets/fonts/` — NotoSansTelugu, NotoSansGujarati, NotoSansKannada, NotoSansEthiopic and
+  NotoSans Regular/Medium pairs, ten TTFs, OFL (the licence file is already present).
+- `app.json` — expo-font array +10, eight expo.locales blocks, CFBundleLocalizations to thirty-four,
+  version.
+- `shared/i18n/native-strings.json`, `shared/i18n/widget-statics.json` — eight rows each.
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`, `shared/__tests__/catalogLock.test.ts`
+  — the LOCALES lists grow by eight together; en''s hash unchanged.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS +8 and a T428_EIGHT sourcing gate.
+- `shared/__tests__/locale.test.ts` — eight detection rows.
+- `shared/__tests__/typography.test.ts` — the LATIN filter''s exception list, the four script cases and
+  the African record case.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS +8 with the per-locale parity rows.
+- `shared/__tests__/nativeLocalesConfig.test.ts`, `shared/__tests__/widgetStaticStrings.test.ts` —
+  LOCALES lists to thirty-four.
+- `components/sheets/__tests__/Language.test.tsx` — the name list to thirty-four.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables +8 rows
+  and the four locale finder lists +8.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `app.json`, `shared/whatsNew.ts` — version stamps.
+
+## Design
+
+The compiler drives completeness exactly as the shipped waves do: LocaleId is a closed union, so the
+moment LOCALE_IDS grows, loader MODULES and typography RECORDS fail to typecheck until every new
+locale carries its row, and each catalog satisfies Catalog (all 202 keys) or the build fails.
+LANGUAGE_NAMES is hand-verified, so each step re-reads the picker row count against LOCALE_IDS. The
+data side stays gated as it landed: catalogGates (key parity, token parity, echo, length budget, brand
+bytes, RTL purity, 24-char labels, sourced-verbatim), nativeLocalesConfig (app.json reproduces
+native-strings.json byte-identically on both platforms), widgetStaticStrings (the widget binaries
+render the statics table row for row), catalogLock (en''s hash unchanged).
+
+Each locale step lands that locale''s whole keyed surface in one commit - catalog, loader row, endonym,
+typography record, native-strings row, widget-statics row, app.json locale block, CFBundleLocalizations
+entry, the four widget STATIC rows and finder lists, the lock and gate list rows, its detection rows -
+so no suite is red across a step boundary.
+
+The four script pairs are bundled as full statics, not subsets: their closed character sets run past
+the Latin range a subset would save, the four pairs total about 3MB, and T-419''s zh subsets exist for
+a forty-megabyte problem that does not arise here.
+
+Alternatives rejected: a runtime i18n dependency (the landed practice is authored catalogs behind
+gates, no new dependency); dropping unsourced rows (the Catalog type forbids it; loans are the rule''s
+answer); translating Sunrise for Amharic into the Ethiopic word for "dawn" (the table''s ፀሃይ is the
+sun, and the Sunrise row is a translated slot); pinning Kannada at the house 1.5em (it does not clear
+the pair''s measured 1.645em ink).
+
+## Steps (5 x 2 points = 10)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json gains te,
+   gu, kn, am, om, bm, tl, ff; every name and explanation slot non-null with text, source, confidence
+   and a note that names the table or the derivation; the twelve new slugs registered; catalogGates
+   gains a T428_EIGHT sibling gate over names and explanations, red first.
+2. **Step 2: Locale plumbing lands with the four Latin catalogs** — om, bm, tl and ff ship their whole
+   surface in one commit: the Noto Sans pair bundled for bm and ff, the AFRICAN record and the LATIN
+   rows for om and tl, LOCALE_IDS at thirty, loader, endonyms, lock list, gates rows, detection rows,
+   native-strings and widget-statics rows, app.json blocks and CFBundleLocalizations, the four widget
+   STATIC tables and finders, i18nBridge parity, the Language sheet list.
+3. **Step 3: te and gu land with their bundled Noto pairs** — the Telugu and Gujarati pairs bundled,
+   measured and recorded (1.5em script boxes), the two full catalogs, their plumbing rows and their
+   tests, red first.
+4. **Step 4: kn and am land with their bundled pairs** — the Kannada pair at the measured 1.65em
+   script box and the Ethiopic pair at its own metrics, the two full catalogs, their plumbing rows and
+   their tests, red first.
+5. **Step 5: The full sweep is green and the README names thirty-four** — every suite green over the
+   thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged, README
+   bullet rewritten, audit-ready.
+
+## Risks
+
+- **A catalog drifts from its sourced names**: catalogGates'' sourced-verbatim row fails naming the
+  locale and key, because the catalog member must equal the glossary text byte for byte.
+- **A missing glyph**: each script step measures every distinct character of the locale''s whole keyed
+  surface (catalog, native strings, widget statics, endonym) against both weights'' cmaps before the
+  commit; a missing character stops the step.
+- **Kannada ink**: the pair''s win descent is 540 units against a 809 ascent; the 1.65em pin is the
+  measurement, and a clipped subscript shows in the typography sweep or on the owner''s phone.
+- **A borrowed name in a translated slot**: Sunrise is authored from the language''s own word in every
+  one of the eight; a transliteration there would fail the naming rule''s own review.
+- **Merge collision**: the three waves share every list; this lane appends only, never reorders, and
+  the lead concatenates.
+- **Version collision inside the band**: the lane takes 2.27.0, 2.27.1, 2.27.2 in sequence and touches
+  no other number.
+
+## Proof
+
+1. The eight named with their sources and measurements: this doc''s table, decision 3 and decision 4.
+2. Sourcing recorded: `jq ''[.["te"],.["gu"],.["kn"],.["am"],.["om"],.["bm"],.["tl"],.["ff"]] | [.[] | (.names, .explanations) | to_entries[] | select(.value.text == null or .value.source == null or .value.confidence == null)] | length''`
+   over `shared/i18n/sourced-names.json` prints 0, and catalogGates'' T428_EIGHT row is green.
+3. Coverage and regression: `yarn validate` exits 0; the output lists catalogGates, catalogLock,
+   i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography, Language and locale green over
+   the shipped set, with every earlier locale''s rows unedited.
+4. Detection: locale.test.ts carries om-ET -> om, bm-ML -> bm, tl-PH -> tl, ff-SN -> ff, te-IN -> te,
+   gu-IN -> gu, kn-IN -> kn, am-ET -> am, and the es-ES fallback stays unshipped.
+5. Glyph coverage: the per-locale character census over both weights prints zero missing.
+6. The README bullet and the picker list both read thirty-four at step 5.
+
+## Progress (2026-10-28, lane 2)
+
+Steps 1 to 3 are committed on `lane2/T-428` and `yarn validate` is green at each: 2.26.0 the sourcing
+record and the T-428 gate, 2.27.0 the plumbing with om, bm, tl and ff on the new Noto Sans pair, 2.28.0
+te and gu on their bundled pairs. Six points carried.
+
+The lists take each wave''s rows in landing order, so LOCALE_IDS reads zh-Hant, om, bm, tl, ff, te, gu
+and the remaining two append after them: the run''s merge protocol allows this wave''s own order, and
+this is that order.
+
+Resume at step 4: kn and am, at 2.29.0. Both pairs are already measured from the Noto project''s
+releases (Noto Sans Kannada v2.006 hhea 809/-540 against win 1105/540, so a 1.65em script line;
+Noto Sans Ethiopic v2.102 hhea 1069/-293 with win equal, so no script box), and the sourcing record
+for both is already in the glossary. Fetch the four TTFs from those releases, then step 5 sweeps and
+writes the README.
+
+## Progress (2026-10-28, lane 2, completed)
+
+Steps 4 and 5 are committed: 2.29.0 kn and am on their bundled pairs (Kannada 1.65em script line,
+Ethiopic none), 2.30.0 the full sweep green over thirty-four locales at 100 percent coverage with the
+README rewritten from LOCALE_IDS.length. All five steps are ticked, ten points carried. The branch is
+ready for the lead''s merge and the audit; nothing is pushed and nothing is merged to uat.
+', NULL, NULL, '{}', false, false, false, NULL, 52224, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 00:19:23.532031+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (150, 50, 7, NULL, 'T-429', '# T-429 — Fifty languages, wave three of three
+
+## Goal
+
+The app ships twenty-six locale catalogs (en, ar, ms, so, hi, th, id, tr, fr, uz, sw, ha, pt, ur, fa,
+bn, ru, az, de, sq, bs, ps, ta, ml, zh-Hans, zh-Hant). Two waves beside this one carry the first
+sixteen of the remaining twenty-four; this wave carries the last eight, taking the shipped set to
+thirty-four locale catalogs and the three waves together to fifty. Every new catalog is gated and
+sourced, the twenty-six existing locales and every English byte stay untouched, and the wave bundles
+no new font because the bundled faces already carry its scripts and diacritics.
+
+**The eight:**
+
+| Tag | Reach | Script, record | Sourcing state today | What this wave adds |
+| --- | --- | --- | --- | --- |
+| es | ~2M Muslim-reachable in Spain and Latin America | Latin, LATIN record | R6 6/11 names, 5/5 explanations, every row AGPL-only | the Fajr/Fayr and Magrib/Maghreb forks ruled on evidence; independent confirmations replacing the AGPL-only slugs; Duha and Istijaba loans |
+| nl | ~1M (Netherlands, Flanders, Suriname) | Latin, LATIN record | R6 8/11 names, 5/5 explanations, extras derived | the Zonsopkomst confirmation that R6 §5 held the language for; Suhur, Duha and Istijaba loans |
+| kk | ~11M (Kazakhstan) | Cyrillic, LATIN record | absent from prayer-names.json | fresh from muftyat.kz, the Kazakh Muslims'' Religious Administration''s own table: Таң, Күн, Бесін, Екінті, Ақшам, Құптан |
+| ky | ~5M (Kyrgyzstan) | Cyrillic, LATIN record | absent | fresh from muftiyat.kg, the Kyrgyz Muslims'' Spiritual Board: Багымдат, Күн, Бешим, Аср, Шам, Куптан, with Сухур in the same table |
+| tg | ~8M (Tajikistan) | Cyrillic, LATIN record | absent | fresh from shuroiulamo.tj, the Council of Ulema of Tajikistan: Бомдод, Пешин, Аср, Шом, Хуфтан |
+| tk | ~4M (Turkmenistan) | Latin (äňöşüýž), LATIN record | absent | fresh from three independent Turkmen tables and tk.wikipedia: Ertir, Dogýan wagty, Öýlen, Ikindi, Agşam, Ýassy |
+| wo | ~11M (Senegal, the Gambia) | Latin (éë), LATIN record | absent | fresh from a Wolof-language vocabulary source: Tisbaar, Takusaan, Timis; the rest by the loan rule, flagged for a speaker |
+| mr | ~13M Muslims of Maharashtra | Devanagari, HINDI record | absent from prayer-names.json | fresh from mr.wikipedia''s नमाज article: फजर, जुहर, असर, मगरीब, ईशा, सूर्योदय; the rest by the loan rule |
+
+## Decisions taken (2026-10-28, lane 3)
+
+1. **The eight are es, nl, kk, ky, tg, tk, wo, mr, counted by locale catalog.** The ticket names
+   them and the run splits the twenty-four remaining catalogs into three waves; this wave takes the
+   eight no other wave carries, so the three waves together move twenty-six to fifty without a
+   catalog counted twice.
+2. **es ships `Fajr`, and the R6 §5 hold is answered rather than inherited.** R6 recorded Fayr with
+   medium confidence from an AGPL-only catalog while its own note said "Fajr is more common in
+   Spanish mosque calendars". Two Madrid mosque tables fetched 2026-10-28 print Fajr (mawaqit.net''s
+   Embajadores page and its Tariq Bin Ziad page), so the community form and the compliant
+   transliteration agree. Challenged: keep Fayr because a Spanish reader writes the y. It does not
+   flip: the shipped spellings follow the tables the readers compare against, and no Spanish table
+   fetched prints Fayr.
+3. **es keeps `Magreb`, with an independent confirmation.** R6 chose the Spanish-orthographic
+   Magreb and flagged it AGPL-only. es.wikipedia''s Salat article prints Al-Magrib beside the Arabic,
+   which is the second source class R6 §2 demands, so the row ships at medium with the wikipedia slug
+   recorded beside the mihrab cross-check.
+4. **nl ships `Zonsopkomst`, and the R6 §5 hold is answered.** R6 held Dutch for one missing
+   confirmation of the Sunrise label. gebedstijde.nl''s Dutch pages fetched 2026-10-28 print the row
+   order "Fajr – Zonsopkomst (Shuruq) – Dhuhr – Asr – Maghrib – Isha" and name the table column
+   Zonsopkomst, so the translated slot ships on a Dutch authority-family source. Zonsopgang stays
+   recorded as the alternative spelling in the note.
+5. **nl''s remaining slots land the way de''s did.** Middernacht and Laatste derde are the ordinary
+   Dutch words for a row that shows a clock time, Suhur, Duha and Istijaba are the naming rule''s
+   transliterations, and every entry carries text, slug, confidence and note, including the
+   `derived` slug for the assembled explanations.
+6. **No new font, measured 2026-10-28 with fontTools on the bundled TTFs.** Roboto-Regular and
+   Roboto-Medium carry, by explicit codepoint and in both weights, every diacritic of es
+   (áéíóúüñÁÉÍÓÚÜÑ¿¡), of nl (áéíóúüñëïèêöô), of tk (äÄňŇöÖşŞüÜýÝžŽçÇ) and of wo (ëËéÉàÀñÑóÓ), and
+   every Cyrillic letter of kk (әӘғҒқҚңҢөӨұҰүҮһҺіІ), ky (ңҢөӨүҮ) and tg (ғҒӣӢқҚӯӮҳҲҷҶ); the same
+   two faces carry no Devanagari codepoint at all. NotoSansDevanagari-Regular and -Medium carry every
+   Devanagari codepoint mr needs (the full U+0900 block set it uses, measured OK in both weights). So
+   es, nl, kk, ky, tg, tk and wo take the LATIN record, and mr takes the HINDI record: the same
+   bundled pair, the same measured 1.304em hhea box against 1.906em win ink, the same 1.5em script
+   box that record already pins.
+7. **Numerals: Latin in all eight.** R12''s per-locale table has no row for any of the eight, and the
+   row-82 law keeps times, dates and countdowns Latin in every locale regardless.
+8. **tk ships Turkmenistan''s own table labels as an authority exception**, the tr and uz precedent:
+   Ertir (fäjr) for Fajr, Dogýan wagty for Sunrise, Öýlen, Ikindi, Agşam, Ýassy. Three independent
+   Turkmen tables fetched 2026-10-28 print that set, and tk.wikipedia''s Namaz article glosses
+   "ertir (fäjr)" in the same words, so the exception rests on the authority the reader compares
+   against rather than on a transliteration nobody prints.
+9. **The loan rule governs every slot no source attests** (T-410 decision 5): the Catalog type
+   requires every key, so no row drops; the loan lands with text, slug, confidence and the
+   derivation in its note.
+10. **kk, ky and tg take their national authorities'' labels verbatim**, the tr precedent again:
+    muftyat.kz prints Таң/Күн/Бесін/Екінті/Ақшам/Құптан, muftiyat.kg prints
+    Багымдат/Күн/Бешим/Аср/Шам/Куптан with Сухур as its own column, and shuroiulamo.tj prints
+    Бомдод/Пешин/Аср/Шом/Хуфтан. Their extras land as loans or derived rows, each recorded.
+11. **mr''s five names come from mr.wikipedia''s नमाज article** (नमाज-ए-फजर, जुहर, असर, मगरीब, ईशा,
+    from which the bare row labels drop the नमाज-ए- prefix the way the ps wave dropped phrases) and
+    its Sunrise is सूर्योदय, the word the same article''s own prose uses. Medium confidence, one
+    source class; a Marathi speaker pass is the recorded risk and does not block the wave.
+12. **wo''s attested rows ship as the Wolof course source prints them** (Tisbaar, Takusaan, Timis,
+    and Suba for the sunrise row it glosses as "sunrise"), with Fajar and Isha as the Arabic loans
+    Senegambian Wolof uses, Diggu guddi and Ñetteelu guddi derived for Midnight and Last Third, and
+    Suhoor, Duha and Istijaba as loans. Every one carries a note naming its derivation; a Wolof
+    speaker pass is the recorded risk.
+13. **Version line 2.28.x.** The first commit takes the minor from 2.25.4 to 2.28.0 for the first three commits; each later commit steps the patch (2.28.1, 2.28.2, ...). package.json and app.json move together (android/app/build.gradle is prebuild output the repo does not track), and no number outside 2.28.x is taken while
+    lanes 1 and 2 hold 2.26.x and 2.27.x.
+14. **app.json edits are agent-ruled inside this ticket** (T-410 decision 10): the eight expo.locales
+    entries, the CFBundleLocalizations rows and the version field are the mechanical carriers, and
+    every byte is gated by nativeLocalesConfig.
+15. **No What''s New item ships** (T-410 decision 11): the archive''s language item already reads
+    "Added support for more languages"; the banner restamps with the version.
+16. **README''s Features bullet moves from twenty-six to thirty-four**, naming every language in
+    LOCALE_IDS order, with the right-to-left note unchanged because none of the eight reads right to
+    left.
+17. **The merge protocol is append-only.** Every shared registry file (locale.ts LOCALE_IDS,
+    loader.ts, languageNames.ts, typography.ts RECORDS, the catalog-lock LOCALES list,
+    native-strings.json, widget-statics.json, the app.json arrays, the widget STATIC tables, the
+    gates'' CATALOGS and locale lists, README) takes this wave''s rows at the end of each list in this
+    wave''s own order; no other wave''s row is rewritten or reordered, and the lead concatenates at
+    the merge.
+18. **No device work of any kind.** No build, no install, no simulator, no screenshot, no maestro
+    run: the wave''s proof is `yarn validate` alone and the owner reads the result afterwards.
+19. **One locale per commit.** Each step lands its locale''s whole keyed surface in one commit -
+    catalog, loader row, endonym row, typography record, native-strings row, widget-statics row,
+    the four widget STATIC rows, app.json locale block, CFBundleLocalizations entry, lock list,
+    lock suite list, gates list, detection rows - so no suite is red across a step boundary (T-410
+    decision 13).
+
+## Files
+
+- `shared/i18n/locale.ts` — LOCALE_IDS grows to thirty-four; the header count.
+- `shared/i18n/es.ts, nl.ts, kk.ts, ky.ts, tg.ts, tk.ts, wo.ts, mr.ts` — new, one full catalog each
+  (201 keys, satisfies Catalog) plus PRAYER_LABELS.
+- `shared/i18n/loader.ts` — RAW requires and MODULES rows for the eight.
+- `shared/i18n/sourced-names.json` — the eight''s entries: names and explanations, every slot with
+  text, slug, confidence and note.
+- `shared/i18n/native-strings.json` — eight locale rows (2 permission strings + 18 gallery).
+- `shared/i18n/widget-statics.json` — eight locale rows (11 statics each).
+- `shared/i18n/catalog-lock.json`, `scripts/catalog-lock.mjs`,
+  `shared/__tests__/catalogLock.test.ts` — the LOCALES lists grow by eight together; en''s hash stays
+  unchanged.
+- `shared/__tests__/locale.test.ts` — the eight''s detection rows.
+- `shared/__tests__/typography.test.ts` — the Latin filter keeps its exclusion list; mr joins the
+  Devanagari record cases.
+- `shared/__tests__/i18nBridge.test.ts` — CATALOGS grows by eight and the count statement moves to
+  thirty-four.
+- `shared/languageNames.ts` — eight endonym rows in codepoint order: Español and Nederlands in the
+  Latin block, Қазақша, Кыргызча and Тоҷикӣ in the Cyrillic block, Türkmençe after Тоҷикӣ, Wolof
+  after Türkmençe, मराठी after हिन्दी.
+- `shared/typography.ts` — RECORDS: seven LATIN rows; mr maps the HINDI record, its comment naming
+  Marathi beside Hindi.
+- `app.json` — eight expo.locales entries, CFBundleLocalizations to thirty-four, the version field.
+- `widgets/PrayerWidget.tsx`, `widgets/LockPrayerWidget.tsx` — the four inline STATIC tables and
+  the four locale-finder lists grow by eight rows each.
+- `shared/__tests__/catalogGates.test.ts` — CATALOGS and the LOCALES list grow; a T429_EIGHT
+  sourcing-gate sibling sits beside T410_TEN and T419_TEN.
+- `shared/__tests__/widgetStaticStrings.test.ts`, `shared/__tests__/nativeLocalesConfig.test.ts` —
+  the LOCALES lists grow to thirty-four and the count statements move with them.
+- `README.md` — the Features bullet names thirty-four.
+- `package.json`, `android/app/build.gradle` — version bumps riding every commit.
+
+## Design
+
+The compiler drives completeness exactly as it did for the two shipped waves. LocaleId is a closed
+union, so the moment LOCALE_IDS grows the loader MODULES and typography RECORDS fail to typecheck
+until every new locale carries its row, and each catalog `satisfies Catalog` (all 205 keys) or the
+build fails. LANGUAGE_NAMES is the one hand-verified list, so every step re-reads the picker row
+count against LOCALE_IDS.length. The data side stays gated as it landed: catalogGates (key parity,
+token parity, echo, length budget, brand bytes, RTL purity, 24-char labels, sourced-verbatim),
+nativeLocalesConfig (app.json reproduces native-strings.json byte-identically on both platforms),
+widgetStaticStrings (the widget modules render the statics table row for row), catalogLock (en''s hash
+unchanged), plus this wave''s T429_EIGHT row in the sourcing gate.
+
+Per locale the recipe is T-410''s and T-419''s: catalog file (sourced prayer names verbatim, UI copy
+authored to the R2 gates, calendar keys allowed loanword parity), loader row, endonym row, typography
+record, lock-list and lock-suite rows, gates rows, detection rows, native-strings row, widget-statics
+row, app.json locale block, the four widget STATIC rows.
+
+Alternatives rejected: bundling a new font (measurement shows none is needed, decision 6); inheriting
+R6 §5''s holds for es and nl unchanged (the ticket asks for evidence, and both holds are answerable
+from pages a reader can fetch); dropping unsourced rows (the Catalog type forbids it; loans are the
+rule''s answer); holding wo and mr for a speaker (the loan rule ships a gated row now and the speaker
+pass improves it later).
+
+## Steps (10 x 2 points = 20)
+
+1. **Step 1: The sourcing record completes for the eight languages** — sourced-names.json: the es
+   Fajr swap and its confirmations, the nl extras and the Zonsopkomst confirmation, the kk, ky, tg,
+   tk, wo and mr name sets with their sources, and the loan or derived entry for every slot no source
+   attests. Every entry ends non-null with text, slug, confidence and note.
+2. **Step 2: es lands** — the full catalog and its whole keyed surface in one commit.
+3. **Step 3: nl lands** — the same, with the Zonsopkomst ruling in the catalog header.
+4. **Step 4: kk lands** — the same, on the muftyat.kz label set.
+5. **Step 5: ky lands** — the same, on the muftiyat.kg label set.
+6. **Step 6: tg lands** — the same, on the shuroiulamo.tj label set.
+7. **Step 7: tk lands** — the same, on the Turkmen authority label set.
+8. **Step 8: wo lands** — the same, on the Wolof source and the loan rule.
+9. **Step 9: mr lands on the Devanagari record** — the same, with typography.test.ts''s Devanagari
+   cases extended.
+10. **Step 10: The full sweep is green and the README names thirty-four** — every suite green over
+    the thirty-four locales at full coverage, `yarn validate` exits 0, en''s lock hash unchanged,
+    README bullet rewritten, audit-ready.
+
+## Risks
+
+- **A weak source on wo or mr**: a wrong row label shows as a speaker''s bug report rather than a
+  broken build. Both are recorded at their measured confidence with the derivation in the note, and
+  the owner''s phone pass is the read.
+- **A diacritic the bundled face lacks**: the measurement in decision 6 is by explicit codepoint in
+  both weights, so a missing glyph would have appeared there; the 24-char gate and the length budget
+  bound the labels.
+- **The catalog lock drifts**: en stays byte-identical; any en edit fails catalogLock.
+- **The version line collides with another wave**: bumps stay inside 2.28.x and a rebase forward
+  takes the higher number.
+- **A shared registry row gets reordered at the merge**: every step appends, never sorts, and the
+  lead concatenates.
+
+## Proof
+
+1. The eight named with rationale: this doc''s table and the ticket''s acceptance list, citing R9''s
+   remainder, R6 §5, R4 and the authority pages fetched on 2026-10-28.
+2. Sourcing recorded: a jq census over shared/i18n/sourced-names.json prints zero rows with null
+   text, source or confidence across the eight''s names and explanations; the T429_EIGHT row of
+   catalogGates is green.
+3. Coverage and regression: `yarn validate` exits 0 and the suite output lists catalogGates,
+   catalogLock, i18nBridge, widgetStaticStrings, nativeLocalesConfig, typography and locale green, with the chevron pins living in locale.test.ts at full coverage, with the twenty-six existing locales'' rows unedited and
+   en''s catalog-lock hash unchanged.
+4. Detection: locale.test.ts covers es-ES to es, nl-NL to nl, kk-KZ to kk, ky-KG to ky, tg-TJ to tg,
+   tk-TM to tk, wo-SN to wo, mr-IN to mr, and the unshipped-tag fallback.
+5. README count: the Features bullet names thirty-four, equal to LOCALE_IDS.length.
+
+## Execution notes (2026-10-28, lane 3)
+
+- **Version line, agent-ruled: the wave walks 2.26.0, 2.27.0 then 2.28.0.** The repo''s
+  version-discipline hook refuses any jump that is not one class step, so a first commit at
+  2.28.0 from 2.25.4 is rejected as "not a single class step". The three commits therefore take
+  three feat minors, landing the ordered 2.28.0 at step 3; later steps step 2.28.1, 2.28.2 and
+  so on. Decision 13 is amended by this note, and the lead''s merge order (wave one at 2.26.x,
+  wave two at 2.27.x, wave three from 2.28.0) is unchanged.
+- **es gate answers.** The two cancel buttons read `Anular` because `Cancelar` contains the
+  English bytes the R2 echo gate refuses; the sourcing gate''s mutation pass and the picker
+  census both bite.
+- **nl gate answers.** The widget copy reads `Athan openen om te vernieuwen` and `Athan openen`
+  so no key echoes its English source, and the released widget title is `Widgets voor beide
+  schermen` inside the 32-char What''s New budget.
+- **Fixtures.** locale.test.ts''s unshipped-tag rows move from es-ES, which now ships, to yo-NG,
+  which R9 section 2 keeps out of the set.
+- **Steps carried this session: 1, 2 and 3 (6 points).** Steps 4 to 10 stay for the next lane,
+  starting at 2.28.1 with kk.
+
+- **Later locale steps are typed chore, agent-ruled 2026-10-28.** The version-discipline gate
+  admits a patch step only under a non-feat subject, and the run''s band fixes every later step
+  to 2.28.x, so steps 4 onwards carry `chore(i18n)` subjects at 2.28.1 and above.
+- **Steps 4, 5 and 6 landed (6 points): kk at 2.28.1, ky at 2.28.2, tg at 2.28.3.** The resume
+  point is **step 7, tk lands at 2.28.4**, then wo, mr and the sweep.
+
+- **Steps 7, 8 and 9 landed (6 points): tk at 2.28.4, wo at 2.28.5, mr at 2.28.6.** All eight
+  catalogs now ship; the only step left is **step 10, the full sweep and the README at
+  2.28.7**, whose count is written from `LOCALE_IDS.length` (thirty-four) rather than a
+  remembered number.
+
+- **Step 10 landed at 2.28.7 and the wave is complete on the branch.** All ten steps are done:
+  eight catalogs, thirty-four ids in LOCALE_IDS, README at thirty-four read from the constant,
+  yarn validate green at 6887 tests and full coverage, the widget runtime load suite green, and
+  en''s catalog-lock hash unchanged at e20ae02c. Nothing is merged and nothing pushed: the lead
+  merges the three waves in order and audits them.
+', NULL, NULL, '{}', false, false, false, NULL, 50176, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 00:19:23.570332+00');
 
 
 --
@@ -32273,13 +35546,17 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:398', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:418', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:386', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:385', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:433', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:387', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:450', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:434', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:405', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 72);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:420', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:406', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:399', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:421', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:439', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:422', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 130);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:393', 1, 19);
@@ -32287,25 +35564,45 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:389', 1, 49)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:423', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:376', 1, 51);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:424', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:440', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:401', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:381', 1, 55);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:425', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:443', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:441', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:407', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:408', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:402', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:435', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:391', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:409', 1, 7);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:444', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:426', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:445', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:412', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:413', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4526);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:410', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:414', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:446', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:419', 1, 69);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:415', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 209);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:447', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:448', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 228);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:427', 1, 65);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:436', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:442', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:428', 1, 65);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4661);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:430', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:437', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:431', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:429', 1, 74);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:432', 1, 8);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:449', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:438', 1, 8);
 
 
 --
@@ -32567,7 +35864,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4153, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4354, true);
 
 
 --
@@ -32616,14 +35913,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 675, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 682, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 426, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 450, true);
 
 
 --
@@ -32644,7 +35941,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 125, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 991, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1063, true);
 
 
 --
@@ -32679,7 +35976,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 212, true);
+SELECT pg_catalog.setval('public.label_id_seq', 215, true);
 
 
 --
@@ -32735,14 +36032,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 49, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 52, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 140, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 150, true);
 
 
 --
@@ -37127,5 +40424,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ZXXjZYNesLhcW19frcNxb977UeKhomiiqYYdnaewbsBa8pwmAgpraUbPjvLCMgW
+\unrestrict uvgbXB3in8Yc9ooEvKIUmHkglbCpvjTcvClreeJLGRVyUCJH2tKzjUHG1usBAbs
 
