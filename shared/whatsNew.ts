@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.41.1',
+  version: '2.41.2',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -183,6 +183,19 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
       version: '1.29.258',
+    },
+    {
+      // More languages, the seventy-five-locale waves behind this build
+      titleKey: 'whatsNew.title.moreLanguages',
+      bodyKey: 'whatsNew.body.moreLanguages',
+      version: '2.41.2',
+    },
+    {
+      // iOS only: the layouts live in the widget extension, which Android never builds
+      titleKey: 'whatsNew.title.lockLayouts',
+      bodyKey: 'whatsNew.body.lockLayouts',
+      platform: 'ios',
+      version: '2.41.2',
     },
   ],
 };
