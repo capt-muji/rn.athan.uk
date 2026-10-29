@@ -389,22 +389,24 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ja: JAPANESE,
   ko: KOREAN,
   // Roboto carries every Italian and Polish character of both locales' whole
-  // keyed surface by explicit census in both weights (78 and 80 distinct chars,
-  // measured with fontTools, plan T-452 decision 6: it's è é à ò ù ì É and pl's
-  // ą ć ę ł ń ó ś ź ż all present), so both take LATIN
+  // keyed surface by explicit census in both weights (72 and 72 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: it's è é à ò ù ì É and pl's ą ć ę ł ń ó ś ź ż all
+  // present), so both take LATIN
   it: LATIN,
   pl: LATIN,
   // Roboto carries every Romanian and Cebuano character of both locales' whole
-  // keyed surface by explicit census in both weights (80 and 72 distinct chars,
-  // measured with fontTools, plan T-452 decision 6: ro's comma-below ș ț Ș and
-  // every ă â î diacritic present, ceb's set plain Latin), so both take LATIN
+  // keyed surface by explicit census in both weights (73 and 64 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: ro's comma-below ș ț Ș and every ă â î diacritic
+  // present, ceb's set plain Latin), so both take LATIN
   ro: LATIN,
   ceb: LATIN,
   // Roboto carries every Ilocano and Vietnamese character of both locales' whole
-  // keyed surface by explicit census in both weights (71 and 128 distinct chars,
-  // measured with fontTools, plan T-452 decision 6: vi's whole tone-marked Latin
-  // Extended Additional set, the heaviest of the six, carried in both weights),
-  // so both take LATIN
+  // keyed surface by explicit census in both weights (63 and 127 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: vi's whole tone-marked Latin Extended Additional set,
+  // the heaviest of the six, carried in both weights), so both take LATIN
   ilo: LATIN,
   vi: LATIN,
   ta: TAMIL,
