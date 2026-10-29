@@ -321,6 +321,27 @@ const ETHIOPIC: LocaleTypography = {
   wordFace: true,
 };
 
+// No bundled face carries a single Thaana codepoint (measured 2026-10-29), so this
+// wave bundles the Noto Sans Thaana v3.001 pair from the notofonts release statics,
+// under the OFL licence file already in assets/fonts. This wave's own measurement
+// with fontTools over the bundled pair, both weights: UPM 1000, hhea ascent 1069,
+// descent -424, lineGap 0, a 1.493em box, with usWinAscent 1069 and usWinDescent
+// 424 (1.493em), so the box equals the pair's own declared ink bounds, and the
+// block's glyphs run +751 and -306 units at the extremes, inside the box. The box
+// clears the ink, so no script box is pinned - the Thai row-87 law. A 1.5em pin was
+// rejected: no measurement this pair makes asks for it (plan T-453 decision 10)
+const THAANA: LocaleTypography = {
+  familyRegular: 'NotoSansThaana-Regular',
+  familyMedium: 'NotoSansThaana-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -403,6 +424,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   skr: URDU,
   bal: URDU,
   kas: URDU,
+  // Thaana reads right to left, so dv joins RTL_IDS with its own bundled pair
+  dv: THAANA,
 };
 
 /**

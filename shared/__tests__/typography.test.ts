@@ -111,6 +111,7 @@ describe('typographyFor', () => {
         id !== 'skr' &&
         id !== 'bal' &&
         id !== 'kas' &&
+        id !== 'dv' &&
         id !== 'yo' &&
         id !== 'ta' &&
         id !== 'ml' &&
@@ -305,6 +306,17 @@ describe('typographyFor', () => {
     // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
     expectLatinRecord(typographyFor('om'));
     expectLatinRecord(typographyFor('tl'));
+  });
+
+  it('resolves dv to the bundled Thaana pair with no script line box', () => {
+    // Plan T-453 decision 10: no bundled face carries a single Thaana codepoint, so the
+    // Noto Sans Thaana v3.001 pair is bundled; its hhea box is 1.493em (ascent 1069,
+    // descent -424, lineGap 0, UPM 1000, both weights) and equals its win ink
+    // (usWin 1069/424), while the block's glyphs run +751/-306, inside the box, so the
+    // box clears the ink and the font's own metrics serve - the Thai row-87 law
+    const ty = typographyFor('dv');
+    expectScriptRecord(ty, 'NotoSansThaana-Regular', 'NotoSansThaana-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 
   it('resolves zh-Hant to the TC subset pair with no script line box', () => {

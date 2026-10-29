@@ -1271,5 +1271,29 @@
       "Extra Times (Layout 3)": "اِضافئے وَقت (ترتیب 3)",
       "Next extra time with a countdown.": "کاؤنٹ ڈاؤنئس سیتئہ بیٲنئژئ اضافئے وَقت۔"
     }
+  },
+  "dv": {
+    "NSLocationWhenInUseUsageDescription": "ޤިބްލާ ހިސާބުކުރަނީ ތިބާ ހުންނަނީ ކޮންތާރެއްތޯ މިންވެގެން، އެހެންކަމުން ލޮކޭޝަންގެ އެހީތެރިކަން ބޭނުންވެއެވެ. އެހާ ކުރާ ފޯނުން ބޭރަށް ނުދާނެ.",
+    "NSUserNotificationsUsageDescription": "ނަމަޒުގެ ވަގުތުގެ އެންގުންތައް ލިބޭނެ",
+    "gallery": {
+      "Next Prayer (Light)": "ކައިރިއަށްވާ ނަމަޒު (ލައިޓް)",
+      "A countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+      "Extra Times (Light)": "އިތުރު ވަގުތްތައް (ލައިޓް)",
+      "A countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+      "Next Prayer (Dark)": "ކައިރިއަށްވާ ނަމަޒު (ޑާރކް)",
+      "Extra Times (Dark)": "އިތުރު ވަގުތްތައް (ޑާރކް)",
+      "Next Prayer (Layout 1)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 1)",
+      "Countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+      "Extra Times (Layout 1)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 1)",
+      "Countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+      "Next Prayer (Layout 2)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 2)",
+      "Next prayer time.": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+      "Extra Times (Layout 2)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 2)",
+      "Next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
+      "Next Prayer (Layout 3)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 3)",
+      "Next prayer time with a countdown.": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+      "Extra Times (Layout 3)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
+      "Next extra time with a countdown.": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ އިތުރު ވަގުތް."
+    }
   }
 }

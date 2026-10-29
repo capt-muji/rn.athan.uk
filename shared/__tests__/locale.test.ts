@@ -79,6 +79,7 @@ describe('resolveInitialLocale', () => {
     ['bal-IR', 'bal', 'bal'],
     ['ks-IN', 'ks', 'kas'],
     ['ks-Arab-IN', 'ks', 'kas'],
+    ['dv-MV', 'dv', 'dv'],
     // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
     ['pa-Guru-IN', 'pa', 'en'],
     ['pa-IN', 'pa', 'en'],
@@ -202,7 +203,7 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const)(
+  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
     'mirrors the chevron under %s, the later RTL locales',
     (locale) => {
       setActiveLocale(locale);
@@ -216,7 +217,7 @@ describe('chevronFor', () => {
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const)(
+  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
     'carries the Arabic comma under %s',
     (locale) => {
       setActiveLocale(locale);

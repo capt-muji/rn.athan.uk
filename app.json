@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.34.0",
+    "version": "2.35.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -73,7 +73,8 @@
           "su",
           "skr",
           "bal",
-          "kas"
+          "kas",
+          "dv"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -173,7 +174,9 @@
             "./assets/fonts/NotoSansKannada-Regular.ttf",
             "./assets/fonts/NotoSansKannada-Medium.ttf",
             "./assets/fonts/NotoSansEthiopic-Regular.ttf",
-            "./assets/fonts/NotoSansEthiopic-Medium.ttf"
+            "./assets/fonts/NotoSansEthiopic-Medium.ttf",
+            "./assets/fonts/NotoSansThaana-Regular.ttf",
+            "./assets/fonts/NotoSansThaana-Medium.ttf"
           ]
         }
       ],
@@ -506,7 +509,9 @@
             "./assets/fonts/NotoSansTC-Subset-Regular.ttf",
             "./assets/fonts/NotoSansTC-Subset-Medium.ttf",
             "./assets/fonts/NotoSans-Regular.ttf",
-            "./assets/fonts/NotoSans-Medium.ttf"
+            "./assets/fonts/NotoSans-Medium.ttf",
+            "./assets/fonts/NotoSansThaana-Regular.ttf",
+            "./assets/fonts/NotoSansThaana-Medium.ttf"
           ]
         }
       ]
@@ -3422,6 +3427,62 @@
           "prayer_lock_widget_3_description": "کاؤنٹ ڈاؤنئس سیتئہ بیٲنئژئے نؠمازُک وَقت۔",
           "extras_lock_widget_3_display_name": "اِضافئے وَقت (ترتیب 3)",
           "extras_lock_widget_3_description": "کاؤنٹ ڈاؤنئس سیتئہ بیٲنئژئ اضافئے وَقت۔"
+        }
+      },
+      "dv": {
+        "NSLocationWhenInUseUsageDescription": "ޤިބްލާ ހިސާބުކުރަނީ ތިބާ ހުންނަނީ ކޮންތާރެއްތޯ މިންވެގެން، އެހެންކަމުން ލޮކޭޝަންގެ އެހީތެރިކަން ބޭނުންވެއެވެ. އެހާ ކުރާ ފޯނުން ބޭރަށް ނުދާނެ.",
+        "NSUserNotificationsUsageDescription": "ނަމަޒުގެ ވަގުތުގެ އެންގުންތައް ލިބޭނެ",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "ކައިރިއަށްވާ ނަމަޒު (ލައިޓް)",
+            "A countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+            "Extra Times (Light)": "އިތުރު ވަގުތްތައް (ލައިޓް)",
+            "A countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+            "Next Prayer (Dark)": "ކައިރިއަށްވާ ނަމަޒު (ޑާރކް)",
+            "Extra Times (Dark)": "އިތުރު ވަގުތްތައް (ޑާރކް)",
+            "Next Prayer (Layout 1)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 1)",
+            "Countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+            "Extra Times (Layout 1)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 1)",
+            "Countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+            "Next Prayer (Layout 2)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 2)",
+            "Next prayer time.": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+            "Extra Times (Layout 2)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 2)",
+            "Next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
+            "Next Prayer (Layout 3)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 3)",
+            "Next prayer time with a countdown.": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+            "Extra Times (Layout 3)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
+            "Next extra time with a countdown.": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ އިތުރު ވަގުތް."
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލައިޓް)",
+          "prayer_widget_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "extras_widget_display_name": "އިތުރު ވަގުތްތައް (ލައިޓް)",
+          "extras_widget_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+          "prayer_widget_medium_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލައިޓް)",
+          "prayer_widget_medium_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "extras_widget_medium_display_name": "އިތުރު ވަގުތްތައް (ލައިޓް)",
+          "extras_widget_medium_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+          "prayer_widget_dark_display_name": "ކައިރިއަށްވާ ނަމަޒު (ޑާރކް)",
+          "prayer_widget_dark_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "extras_widget_dark_display_name": "އިތުރު ވަގުތްތައް (ޑާރކް)",
+          "extras_widget_dark_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+          "prayer_widget_dark_medium_display_name": "ކައިރިއަށްވާ ނަމަޒު (ޑާރކް)",
+          "prayer_widget_dark_medium_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "extras_widget_dark_medium_display_name": "އިތުރު ވަގުތްތައް (ޑާރކް)",
+          "extras_widget_dark_medium_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+          "prayer_lock_widget_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 1)",
+          "prayer_lock_widget_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "extras_lock_widget_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 1)",
+          "extras_lock_widget_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
+          "prayer_lock_widget_2_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 2)",
+          "prayer_lock_widget_2_description": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+          "extras_lock_widget_2_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 2)",
+          "extras_lock_widget_2_description": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
+          "prayer_lock_widget_3_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 3)",
+          "prayer_lock_widget_3_description": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+          "extras_lock_widget_3_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
+          "extras_lock_widget_3_description": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ އިތުރު ވަގުތް."
         }
       }
     },

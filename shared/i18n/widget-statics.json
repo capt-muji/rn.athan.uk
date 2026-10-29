@@ -701,5 +701,18 @@
     "refreshLead": "Athan کھولِو",
     "refreshTail": "تازہ کٲری خٲطرئہ",
     "catchBody": "تازہ کٲری خٲطرئہ ایپ کھولِو"
+  },
+  "dv": {
+    "subtitle": "ލަންޑަންގެ ނަމަޒުގެ ވަގުތް",
+    "inline": "Athan — ނަމަޒުގެ ވަގުތް",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "ވަގުތް ލޯޑްކުރަން ހުޅުވާ",
+    "staleTitle": "ކުރީގެ",
+    "staleBody": "ރިފްރެޝްކުރަން އެޕް ހުޅުވާ",
+    "staleInline": "Athan — ވަގުތް ރިފްރެޝްކުރަން ހުޅުވާ",
+    "refreshLine": "ރިފްރެޝްކުރަން Athan ހުޅުވާ",
+    "refreshLead": "Athan ހުޅުވާ",
+    "refreshTail": "ރިފްރެޝްކުރަން",
+    "catchBody": "ރިފްރެޝްކުރަން އެޕް ހުޅުވާ"
   }
 }

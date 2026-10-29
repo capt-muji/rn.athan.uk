@@ -15,6 +15,7 @@ import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
+import { dv } from '@/shared/i18n/dv';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { es } from '@/shared/i18n/es';
 import { fa } from '@/shared/i18n/fa';
@@ -114,9 +115,10 @@ const CATALOGS: Record<string, Catalog> = {
   skr,
   bal,
   kas,
+  dv,
 };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas', 'dv']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
