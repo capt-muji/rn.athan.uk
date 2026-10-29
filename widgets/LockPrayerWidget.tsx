@@ -742,6 +742,32 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'карладаккхархьама',
       catchBody: 'Карладаккхархьама апликаци схьайилла',
     },
+    uk: {
+      subtitle: 'Часи намазу для Лондона',
+      inline: 'Athan — часи намазу',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Відкрийте, щоб завантажити часи',
+      staleTitle: 'Застаріло',
+      staleBody: 'Відкрийте програму, щоб оновити',
+      staleInline: 'Athan — відкрийте, щоб оновити',
+      refreshLine: 'Відкрийте Athan, щоб оновити',
+      refreshLead: 'Відкрийте Athan',
+      refreshTail: 'щоб оновити',
+      catchBody: 'Відкрийте програму, щоб оновити',
+    },
+    qu: {
+      subtitle: 'Londrespaq mañay pachakuna',
+      inline: 'Athan — mañay pachakuna',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Pachakuna apamuspa kichay',
+      staleTitle: 'Musuq mana kasqa',
+      staleBody: 'Musuqyachinapaq programata kichay',
+      staleInline: 'Athan — musuqyachinapaq kichay',
+      refreshLine: 'Musuqyachinapaq Athan kichay',
+      refreshLead: 'Athan kichay',
+      refreshTail: 'musuqyachinapaq',
+      catchBody: 'Musuqyachinapaq programata kichay',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -813,6 +839,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'my',
         'tt',
         'ce',
+        'uk',
+        'qu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1665,6 +1693,32 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'карладаккхархьама',
       catchBody: 'Карладаккхархьама апликаци схьайилла',
     },
+    uk: {
+      subtitle: 'Часи намазу для Лондона',
+      inline: 'Athan — часи намазу',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Відкрийте, щоб завантажити часи',
+      staleTitle: 'Застаріло',
+      staleBody: 'Відкрийте програму, щоб оновити',
+      staleInline: 'Athan — відкрийте, щоб оновити',
+      refreshLine: 'Відкрийте Athan, щоб оновити',
+      refreshLead: 'Відкрийте Athan',
+      refreshTail: 'щоб оновити',
+      catchBody: 'Відкрийте програму, щоб оновити',
+    },
+    qu: {
+      subtitle: 'Londrespaq mañay pachakuna',
+      inline: 'Athan — mañay pachakuna',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Pachakuna apamuspa kichay',
+      staleTitle: 'Musuq mana kasqa',
+      staleBody: 'Musuqyachinapaq programata kichay',
+      staleInline: 'Athan — musuqyachinapaq kichay',
+      refreshLine: 'Musuqyachinapaq Athan kichay',
+      refreshLead: 'Athan kichay',
+      refreshTail: 'musuqyachinapaq',
+      catchBody: 'Musuqyachinapaq programata kichay',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1736,6 +1790,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'my',
         'tt',
         'ce',
+        'uk',
+        'qu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -2577,6 +2633,32 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'карладаккхархьама',
       catchBody: 'Карладаккхархьама апликаци схьайилла',
     },
+    uk: {
+      subtitle: 'Часи намазу для Лондона',
+      inline: 'Athan — часи намазу',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Відкрийте, щоб завантажити часи',
+      staleTitle: 'Застаріло',
+      staleBody: 'Відкрийте програму, щоб оновити',
+      staleInline: 'Athan — відкрийте, щоб оновити',
+      refreshLine: 'Відкрийте Athan, щоб оновити',
+      refreshLead: 'Відкрийте Athan',
+      refreshTail: 'щоб оновити',
+      catchBody: 'Відкрийте програму, щоб оновити',
+    },
+    qu: {
+      subtitle: 'Londrespaq mañay pachakuna',
+      inline: 'Athan — mañay pachakuna',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Pachakuna apamuspa kichay',
+      staleTitle: 'Musuq mana kasqa',
+      staleBody: 'Musuqyachinapaq programata kichay',
+      staleInline: 'Athan — musuqyachinapaq kichay',
+      refreshLine: 'Musuqyachinapaq Athan kichay',
+      refreshLead: 'Athan kichay',
+      refreshTail: 'musuqyachinapaq',
+      catchBody: 'Musuqyachinapaq programata kichay',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -2648,6 +2730,8 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'my',
         'tt',
         'ce',
+        'uk',
+        'qu',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
