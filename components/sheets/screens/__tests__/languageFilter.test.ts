@@ -39,9 +39,28 @@ describe('the search fold', () => {
 });
 
 describe('the filtered list', () => {
-  it('returns the whole picker untouched for an empty or blank query', () => {
-    expect(filterLanguages('')).toEqual(LANGUAGE_NAMES);
-    expect(filterLanguages('   ')).toEqual(LANGUAGE_NAMES);
+  it('returns the whole picker untouched for an empty or blank query, each row on its own place', () => {
+    expect(filterLanguages('')).toEqual(LANGUAGE_NAMES.map((entry, index) => ({ ...entry, position: index + 1 })));
+    expect(filterLanguages('   ')).toEqual(LANGUAGE_NAMES.map((entry, index) => ({ ...entry, position: index + 1 })));
+  });
+
+  it('numbers the whole list 1..N in the picker’s own order', () => {
+    expect(filterLanguages('').map((entry) => entry.position)).toEqual(LANGUAGE_NAMES.map((_, index) => index + 1));
+  });
+
+  it('carries every row its whole-list place under any query', () => {
+    const esPlace = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'es') + 1;
+    // The picker ships es past its first seat, so a filtered place can never pass as its own
+    expect(esPlace).not.toBe(1);
+
+    // The single match for ‘spanish’ carries the es row’s own place, not the filtered list’s first seat
+    expect(filterLanguages('spanish').map((entry) => entry.position)).toEqual([esPlace]);
+
+    // Every row of every filtered list, however many it holds, keeps its LANGUAGE_NAMES place
+    for (const query of ['', 'espanol', 'turk', 'zzz']) {
+      const places = ids(query).map((id) => LANGUAGE_NAMES.findIndex((entry) => entry.id === id) + 1);
+      expect(filterLanguages(query).map((entry) => entry.position)).toEqual(places);
+    }
   });
 
   it('matches the endonym with its own diacritics typed or dropped', () => {

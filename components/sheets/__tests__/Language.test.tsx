@@ -65,6 +65,7 @@ const renderedSheet = () => {
 const SHIPPED_NAMES = LANGUAGE_NAMES.map((entry) => entry.name);
 const ENGLISH_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'en');
 const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
+const SPANISH_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'es');
 
 // The wheel's own measures: a 400-point viewport, one 44-point row and the row gap
 const LIST_HEIGHT = 400;
@@ -488,6 +489,18 @@ describe('the language wheel over T-451’s picker', () => {
     expect(StyleSheet.flatten(first.parent?.props.style)).toMatchObject({ position: 'absolute', left: SPACING.md });
     // The digits read left to right inside an RTL paragraph too
     expect(StyleSheet.flatten(first.props.style)).toMatchObject({ writingDirection: 'ltr' });
+  });
+
+  it('prints a searched row its whole-list number, never the filtered list’s own count', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    await fireEvent.changeText(field(), 'spanish');
+
+    // The picker ships Español past the first seat, so the filtered list’s single row keeps its own number
+    expect(SPANISH_ROW).not.toBe(0);
+    expect(screen.getByText(`${SPANISH_ROW + 1}.`)).toBeOnTheScreen();
+    expect(screen.queryByText('1.')).toBeNull();
   });
 
   it('keeps the Latin index at the same physical edge under Arabic', async () => {

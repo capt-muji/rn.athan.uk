@@ -21,13 +21,21 @@ export interface LanguageRow {
   id: LocaleId;
   name: string;
   english: string;
+  /** The row's 1-based place in the whole picker, held under any query */
+  position: number;
 }
+
+/** Every row carrying its whole-list place, computed once: a filtered list keeps its rows' own numbers */
+const POSITIONED_NAMES: readonly LanguageRow[] = LANGUAGE_NAMES.map((entry, index) => ({
+  ...entry,
+  position: index + 1,
+}));
 
 /** The rows a query keeps, in the picker's own codepoint order */
 export const filterLanguages = (query: string): readonly LanguageRow[] => {
   const folded = foldForSearch(query.trim());
-  if (folded === '') return LANGUAGE_NAMES;
-  return LANGUAGE_NAMES.filter(
+  if (folded === '') return POSITIONED_NAMES;
+  return POSITIONED_NAMES.filter(
     (entry) => foldForSearch(entry.name).includes(folded) || foldForSearch(entry.english).includes(folded)
   );
 };

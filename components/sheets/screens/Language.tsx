@@ -232,7 +232,7 @@ export default function BottomSheetLanguage() {
                 accessibilityLabel={item.id === staged ? `${item.name}, ${closeToSave}` : item.name}>
                 {/* The index owns its slot, so a second digit never moves the name off the card's centre */}
                 <View style={styles.optionIndexSlot} pointerEvents={'none'}>
-                  <Text style={styles.optionIndex}>{`${index + 1}.`}</Text>
+                  <Text style={styles.optionIndex}>{`${item.position}.`}</Text>
                 </View>
                 <Text style={styles.optionLabel}>{item.name}</Text>
               </Pressable>
