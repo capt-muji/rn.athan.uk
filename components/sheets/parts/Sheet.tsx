@@ -64,6 +64,13 @@ interface SheetProps {
   /** Use scrollable content area */
   scrollable?: boolean;
   /**
+   * Host a scrollable the caller brings. The children render bare — no content view of the sheet's
+   * own — so the caller's list registers with the sheet as its scrollable: a library content view
+   * writes the sheet's scrollable state itself, and an ancestor's write lands after the child's and
+   * overwrites it, leaving the list unable to scroll
+   */
+  hostsScrollable?: boolean;
+  /**
    * Called once, the first time the sheet fully opens (settles on its first
    * snap point). Used by the settings sheet to warm the sound list — the
    * sound sheet is only reachable through settings, so its 32-row list
@@ -131,6 +138,7 @@ export default function Sheet({
   contentCap,
   enableDynamicSizing = false,
   scrollable = true,
+  hostsScrollable = false,
   stackBehavior,
   pinned,
   keyboardBehavior,
@@ -225,6 +233,42 @@ export default function Sheet({
   const columnStyle = [bottomSheetStyles.column, styles.content];
   const header = <Header title={title} subtitle={subtitle} icon={icon} />;
 
+  let body: React.ReactNode;
+  if (hostsScrollable) {
+    body = (
+      <>
+        <View style={columnStyle}>
+          {header}
+          {pinned}
+        </View>
+        {/* The sheet's own column keeps the horizontal inset and the home-indicator room the
+            content view carried, with the caller's list filling what is left */}
+        <View style={[columnStyle, styles.hostedContent, { paddingBottom: contentPadding }]}>{children}</View>
+      </>
+    );
+  } else if (pinned === undefined) {
+    body = (
+      <ContentWrapper {...contentStyle}>
+        <View style={columnStyle}>
+          {header}
+          {children}
+        </View>
+      </ContentWrapper>
+    );
+  } else {
+    body = (
+      <>
+        <View style={columnStyle}>
+          {header}
+          {pinned}
+        </View>
+        <ContentWrapper {...contentStyle}>
+          <View style={columnStyle}>{children}</View>
+        </ContentWrapper>
+      </>
+    );
+  }
+
   return (
     <BottomSheetModal
       ref={handleRef}
@@ -247,24 +291,7 @@ export default function Sheet({
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      {pinned === undefined ? (
-        <ContentWrapper {...contentStyle}>
-          <View style={columnStyle}>
-            {header}
-            {children}
-          </View>
-        </ContentWrapper>
-      ) : (
-        <>
-          <View style={columnStyle}>
-            {header}
-            {pinned}
-          </View>
-          <ContentWrapper {...contentStyle}>
-            <View style={columnStyle}>{children}</View>
-          </ContentWrapper>
-        </>
-      )}
+      {body}
     </BottomSheetModal>
   );
 }
@@ -272,5 +299,8 @@ export default function Sheet({
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SPACING.xl,
+  },
+  hostedContent: {
+    flex: 1,
   },
 });

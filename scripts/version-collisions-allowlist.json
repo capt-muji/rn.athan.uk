@@ -184,6 +184,10 @@
     "reason": "2026-10-29 the seventy-five run holds three language lanes that all step from uat 2.32.0 in the same window (T-452, T-453, T-454) after the picker ticket T-451 lands alone at 2.32.0; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
+    "version": "2.38.1",
+    "reason": "2026-10-29 T-453's audit fix takes 2.38.1 because the discipline gate allows one patch step from 2.38.0 and lane1/T-452's audit fix already holds that number on its branch; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
     "version": "2.39.0",
     "reason": "2026-10-29 the seventy-five run holds three language lanes that all step from uat 2.32.0 in the same window (T-452, T-453, T-454) after the picker ticket T-451 lands alone at 2.32.0; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
