@@ -12,6 +12,8 @@ import { az } from '@/shared/i18n/az';
 import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
+import { bug } from '@/shared/i18n/bug';
+import { ce } from '@/shared/i18n/ce';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
@@ -28,14 +30,18 @@ import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
+import { mad } from '@/shared/i18n/mad';
+import { min } from '@/shared/i18n/min';
 import { ml } from '@/shared/i18n/ml';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
+import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
 import { om } from '@/shared/i18n/om';
 import { paArab } from '@/shared/i18n/pa-Arab';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
+import { qu } from '@/shared/i18n/qu';
 import { ru } from '@/shared/i18n/ru';
 import { sd } from '@/shared/i18n/sd';
 import { so } from '@/shared/i18n/so';
@@ -50,7 +56,9 @@ import { th } from '@/shared/i18n/th';
 import { tk } from '@/shared/i18n/tk';
 import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
+import { tt } from '@/shared/i18n/tt';
 import { ug } from '@/shared/i18n/ug';
+import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 import { wo } from '@/shared/i18n/wo';
@@ -108,6 +116,14 @@ const CATALOGS: Record<string, Catalog> = {
   yo,
   jv,
   su,
+  my,
+  tt,
+  ce,
+  uk,
+  qu,
+  min,
+  mad,
+  bug,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
@@ -152,10 +168,13 @@ const GLOSSARY_EXPLANATIONS = [
   '1 hour before Magrib (Fridays only)',
 ];
 
-/** The two explanations whose catalog text is the glossary's own sentence, never a paraphrase */
+/** Every explanation whose catalog text is the glossary's own sentence, never a paraphrase */
 const GLOSSARY_EXPLANATION_PAIRS: Array<[catalogKey: string, slot: string]> = [
   ['extras.explanation.midnight', 'Halfway between Magrib and Fajr'],
   ['extras.explanation.last third', 'Start of the last third of the night'],
+  ['extras.explanation.suhoor', '20 mins before Fajr'],
+  ['extras.explanation.duha', '20 mins after Sunrise'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
 ];
 
 // Brand bytes: only app-open copy names the application; "athan" elsewhere is the
@@ -213,6 +232,9 @@ const T429_EIGHT = ['es', 'nl', 'kk', 'ky', 'tg', 'tk', 'wo', 'mr'] as const;
 const T428_EIGHT = ['te', 'gu', 'kn', 'am', 'om', 'bm', 'tl', 'ff'] as const;
 const T427_EIGHT = ['pa-Arab', 'sd', 'ug', 'ckb', 'ku', 'yo', 'jv', 'su'] as const;
 
+/** The eight locales T-454 ships; the same bar covers their names and explanations */
+const T454_EIGHT = ['my', 'tt', 'ce', 'uk', 'min', 'mad', 'bug', 'qu'] as const;
+
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
     expect(Object.keys(CATALOGS[loc]).sort()).toEqual([...Object.keys(en).sort()]);
@@ -269,8 +291,24 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(failures).toEqual([]);
   });
 
+  it('keeps every Cyrillic-script catalog free of a Latin letter inside its words', () => {
+    // A Latin letter glued to Cyrillic inside one word is a homoglyph, the Chechen
+    // palochka case, while a whole Latin token is the brand or a platform label, so
+    // the scan reads word by word
+    const mixedWords = (value: string) =>
+      value.split(/[^\p{L}]+/u).filter((word) => /\p{Script=Latin}/u.test(word) && /\p{Script=Cyrillic}/u.test(word));
+    const failures: string[] = [];
+    for (const loc of ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk']) {
+      for (const [key, value] of Object.entries(CATALOGS[loc])) {
+        const words = mixedWords(value);
+        if (words.length) failures.push(`${loc}: ${key} carries ${words.join(', ')}`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
   it.each(Object.keys(SHIPPED))(
-    '%s carries the glossary whole and reproduces its names and two derived explanations byte for byte',
+    '%s carries the glossary whole and reproduces its names and explanations byte for byte',
     (loc) => {
       const sections = glossaryFor(loc);
       expect(Object.keys(sections?.names ?? {}).sort()).toEqual(GLOSSARY_NAMES.map(([, slot]) => slot).sort());
@@ -387,6 +425,28 @@ describe('the landed catalogs against the R2 gates', () => {
     >;
     const failures: string[] = [];
     for (const loc of T427_EIGHT) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('sources every T-454 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T454_EIGHT) {
       const sections = glossary[loc];
       if (!sections) {
         failures.push(`${loc}: absent from the glossary`);

@@ -116,6 +116,8 @@ describe('typographyFor', () => {
         id !== 'zh-Hant' &&
         id !== 'bm' &&
         id !== 'ff' &&
+        id !== 'my' &&
+        id !== 'mad' &&
         id !== 'te' &&
         id !== 'gu' &&
         id !== 'kn' &&
@@ -253,6 +255,17 @@ describe('typographyFor', () => {
     }
   });
 
+  it('resolves mad to the same Noto Sans pair, Roboto lacking its ḍ (plan T-454 decision 4)', () => {
+    // Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights while the Noto Sans pair
+    // carries them (measured by explicit codepoint over the bundled TTFs), and no
+    // other bundled face carries them, so Madurese rides the AFRICAN record's pair
+    // and its 1.55em script line
+    const ty = typographyFor('mad');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(22);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
   it('resolves te to the Telugu pair with the measured script line box', () => {
     const ty = typographyFor('te');
     // No bundled face carries a Telugu letter, so te bundles the Noto Sans
@@ -293,6 +306,17 @@ describe('typographyFor', () => {
     // descent -293, UPM 1000, both weights) and its win ink matches exactly
     // (1069/293), so the font's own metrics serve - the Thai row-87 law
     expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves my to the Myanmar pair with no script line box', () => {
+    // Plan T-454 decision 5: the bundled Noto Sans Myanmar v2.107 pair's declared
+    // box clears its ink - hhea 1324/-860 against win 1324/860 (2.184em, UPM 1000,
+    // both weights), the worst single-glyph Myanmar-block ink at 1004/-469 Regular
+    // and 1009/-471 Medium inside it with about a third headroom - so the row-87
+    // Thai law applies and the font's own metrics serve, no script box
+    const ty = typographyFor('my');
+    expectScriptRecord(ty, 'NotoSansMyanmar-Regular', 'NotoSansMyanmar-Medium');
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 

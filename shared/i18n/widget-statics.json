@@ -1,5 +1,5 @@
 {
-  "_comment": "The null-props widget card's static strings (D44): a twenty-six-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_comment": "The null-props widget card's static strings (D44): a fifty-eight-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
   "_surfaces": {
     "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
     "inline": "the accessoryInline neutral (en: Athan — prayer times)",
@@ -662,5 +662,109 @@
     "refreshLead": "Buka Athan",
     "refreshTail": "pikeun nyegerkeun",
     "catchBody": "Buka aplikasi pikeun nyegerkeun"
+  },
+  "my": {
+    "subtitle": "လန်ဒန်အတွက် နမာဇ်အချိန်များ",
+    "inline": "Athan — နမာဇ်အချိန်များ",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "အချိန်များ ဆွဲယူရန် ဖွင့်ပါ",
+    "staleTitle": "အချိန်ကျော်နေပြီ",
+    "staleBody": "အသစ်ပြောင်းရန် အက်ပ် ဖွင့်ပါ",
+    "staleInline": "Athan — အသစ်ပြောင်းရန် ဖွင့်ပါ",
+    "refreshLine": "Athan ကို ဖွင့်၍ အသစ်ပြောင်းပါ",
+    "refreshLead": "Athan ကို ဖွင့်ပါ",
+    "refreshTail": "အသစ်ပြောင်းရန်",
+    "catchBody": "အသစ်ပြောင်းရန် အက်ပ်ကို ဖွင့်ပါ"
+  },
+  "tt": {
+    "subtitle": "Лондон өчен намаз вакытлары",
+    "inline": "Athan — намаз вакытлары",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Вакытларны йөкләргә ачыгыз",
+    "staleTitle": "Яңартылмаган",
+    "staleBody": "Яңарту өчен апны ачыгыз",
+    "staleInline": "Athan — яңарту өчен ачыгыз",
+    "refreshLine": "Яңарту өчен Athan ачыгыз",
+    "refreshLead": "Athan ачыгыз",
+    "refreshTail": "яңарту өчен",
+    "catchBody": "Яңарту өчен апликацияне ачыгыз"
+  },
+  "ce": {
+    "subtitle": "Лондонан ламазан хенаш",
+    "inline": "Athan — ламазан хенаш",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Хенаш чуйохуьйта схьайилла",
+    "staleTitle": "Карладаьккхина дац",
+    "staleBody": "Карладаккхархьама апликаци схьайилла",
+    "staleInline": "Athan — карладаккхархьама схьайилла",
+    "refreshLine": "Карладаккхархьама Athan схьайилла",
+    "refreshLead": "Athan схьайилла",
+    "refreshTail": "карладаккхархьама",
+    "catchBody": "Карладаккхархьама апликаци схьайилла"
+  },
+  "uk": {
+    "subtitle": "Часи намазу для Лондона",
+    "inline": "Athan — часи намазу",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Відкрийте, щоб завантажити часи",
+    "staleTitle": "Застаріло",
+    "staleBody": "Відкрийте програму, щоб оновити",
+    "staleInline": "Athan — відкрийте, щоб оновити",
+    "refreshLine": "Відкрийте Athan, щоб оновити",
+    "refreshLead": "Відкрийте Athan",
+    "refreshTail": "щоб оновити",
+    "catchBody": "Відкрийте програму, щоб оновити"
+  },
+  "qu": {
+    "subtitle": "Londrespaq mañay pachakuna",
+    "inline": "Athan — mañay pachakuna",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Pachakuna apamuspa kichay",
+    "staleTitle": "Musuq mana kasqa",
+    "staleBody": "Musuqyachinapaq programata kichay",
+    "staleInline": "Athan — musuqyachinapaq kichay",
+    "refreshLine": "Musuqyachinapaq Athan kichay",
+    "refreshLead": "Athan kichay",
+    "refreshTail": "musuqyachinapaq",
+    "catchBody": "Musuqyachinapaq programata kichay"
+  },
+  "min": {
+    "subtitle": "Wakatu sumbayang untuak London",
+    "inline": "Athan — wakatu sumbayang",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Bukak untuak mamuat wakatu",
+    "staleTitle": "Alah lamo",
+    "staleBody": "Bukak aplikasi untuak mambarui",
+    "staleInline": "Athan — bukak untuak mambarui",
+    "refreshLine": "Bukak Athan untuak mambarui",
+    "refreshLead": "Bukak Athan",
+    "refreshTail": "untuak mambarui",
+    "catchBody": "Bukak aplikasi untuak mambarui"
+  },
+  "mad": {
+    "subtitle": "Bakto sembahyang ghâbây London",
+    "inline": "Athan — bakto sembahyang",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Bukak ghâbây amampatè bakto",
+    "staleTitle": "La lamo",
+    "staleBody": "Bukak aplikasi ghâbây pabhârhârân",
+    "staleInline": "Athan — bukak ghâbây pabhârhârân",
+    "refreshLine": "Bukak Athan ghâbây pabhârhârân",
+    "refreshLead": "Bukak Athan",
+    "refreshTail": "ghâbây pabhârhârân",
+    "catchBody": "Bukak aplikasi ghâbây pabhârhârân"
+  },
+  "bug": {
+    "subtitle": "Wettu sumpajang ri London",
+    "inline": "Athan — wettu sumpajang",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "Bukak pola amuat wettu",
+    "staleTitle": "Lao la",
+    "staleBody": "Bukak aplikasi pola pabbaru",
+    "staleInline": "Athan — bukak pola pabbaru",
+    "refreshLine": "Bukak Athan pola pabbaru",
+    "refreshLead": "Bukak Athan",
+    "refreshTail": "pola pabbaru",
+    "catchBody": "Bukak aplikasi pola pabbaru"
   }
 }

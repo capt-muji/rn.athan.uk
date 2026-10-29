@@ -19,6 +19,14 @@ describe('the search fold', () => {
     expect(foldForSearch('ESPAÑOL')).toBe('espanol');
   });
 
+  it('folds Madurese’s ḍ and â to plain Latin (T-454)', () => {
+    // The picker must find the Madurese row whether a reader types the
+    // precomposed letters or the plain keys: NFD separates ḍ into d plus the
+    // dot below, and â into a plus the circumflex, and the fold drops both
+    expect(foldForSearch('Madhurâ')).toBe('madhura');
+    expect(foldForSearch('bâ\u1e0dâ')).toBe('bada');
+  });
+
   it('drops the apostrophe family NFD cannot reach', () => {
     expect(foldForSearch('Oʻzbekcha')).toBe('ozbekcha');
     expect(foldForSearch('O\u02bczbekcha')).toBe('ozbekcha');

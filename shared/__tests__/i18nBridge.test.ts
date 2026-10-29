@@ -18,6 +18,8 @@ import { az } from '@/shared/i18n/az';
 import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
+import { bug } from '@/shared/i18n/bug';
+import { ce } from '@/shared/i18n/ce';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
@@ -36,14 +38,18 @@ import { kn } from '@/shared/i18n/kn';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
+import { mad } from '@/shared/i18n/mad';
+import { min } from '@/shared/i18n/min';
 import { ml } from '@/shared/i18n/ml';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
+import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
 import { om } from '@/shared/i18n/om';
 import { paArab } from '@/shared/i18n/pa-Arab';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
+import { qu } from '@/shared/i18n/qu';
 import { ru } from '@/shared/i18n/ru';
 import { sd } from '@/shared/i18n/sd';
 import { so } from '@/shared/i18n/so';
@@ -57,7 +63,9 @@ import { th } from '@/shared/i18n/th';
 import { tk } from '@/shared/i18n/tk';
 import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
+import { tt } from '@/shared/i18n/tt';
 import { ug } from '@/shared/i18n/ug';
+import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 import { wo } from '@/shared/i18n/wo';
@@ -116,6 +124,14 @@ const CATALOGS: Record<string, Catalog> = {
   yo,
   jv,
   su,
+  my,
+  tt,
+  ce,
+  uk,
+  qu,
+  min,
+  mad,
+  bug,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -192,7 +208,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(50);
+    expect(Object.keys(CATALOGS)).toHaveLength(58);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

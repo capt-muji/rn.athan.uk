@@ -228,7 +228,10 @@ const HANT: LocaleTypography = {
 // No shipped face carries the African Latin letters: Roboto and Rubik both lack
 // ɛ ɔ ɲ (U+025B U+0254 U+0272) and ɓ ɗ ƴ (U+0253 U+0257 U+01B4), measured by explicit
 // codepoint in both weights of all twenty bundled TTFs (plan T-428 decision 4), so
-// Bambara and Fulfulde name the bundled Noto Sans pair. Its hhea box is 1.362em
+// Bambara and Fulfulde name the bundled Noto Sans pair. Madurese joins them (plan
+// T-454 decision 4): Roboto lacks its ḍ U+1E0D and Ḍ U+1E0C in both weights while
+// this pair carries both, measured by explicit codepoint over the bundled faces.
+// The pair's hhea box is 1.362em
 // (ascent 1069, descent -293, UPM 1000, both weights) while its win ink spans
 // 1.519em (winAscent 1124, winDescent 395), so the box-bearing row-106 law applies
 // and ink-bearing surfaces take a script line that clears the measured ink: 1.55em
@@ -315,6 +318,27 @@ const ETHIOPIC: LocaleTypography = {
   wordFace: true,
 };
 
+// No bundled face carries a single Myanmar codepoint (measured by explicit codepoint
+// over every bundled TTF, plan T-454 decision 5), so this wave bundles the Noto Sans
+// Myanmar v2.107 hinted pair. Its declared box clears its ink: hhea 1324/-860
+// (2.184em, UPM 1000, both weights) with the win ink equal (1324/860) and lineGap 0,
+// while the worst single-glyph Myanmar-block ink tops at 1004/-469 Regular and
+// 1009/-471 Medium, inside the box with about a third headroom, and the GPOS-stacked
+// sequences of the landed keyed surface stay inside it too (the Malayalam lesson
+// re-checked before commit) - so the row-87 Thai law applies and no surface pins a
+// script box: the font's own metrics serve
+const MYANMAR: LocaleTypography = {
+  familyRegular: 'NotoSansMyanmar-Regular',
+  familyMedium: 'NotoSansMyanmar-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -392,6 +416,37 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   gu: GUJARATI,
   kn: KANNADA,
   am: ETHIOPIC,
+  // my rides its own bundled Myanmar pair: no other bundled face carries the script
+  // (measured, plan T-454 decision 5); its box clears its ink, so no script box. Its
+  // whole keyed surface (catalog values, native-strings row, widget-statics row,
+  // endonym) censuses 92 distinct characters, every Myanmar-block one carried in both
+  // weights while the Latin brand, digits and punctuation fall to the OS face
+  my: MYANMAR,
+  // Roboto carries every Cyrillic codepoint U+0400 through U+04FF except U+0487, the
+  // Church Slavonic combining titlo none of the three uses, palochka Ӏ U+04C0 and ӏ
+  // U+04CF included (measured by explicit codepoint in both weights over the bundled
+  // TTFs, plan T-454 decision 4): Tatar's ә ғ ҡ ң ө ҫ ү һ җ, Chechen's
+  // ә ҡ ң ӧ ү җ and Ukrainian's і ї є ґ all measured present, so all three take
+  // the LATIN record. The same four-surface census counts 110 distinct characters for
+  // Tatar, 104 for Chechen and 107 for Ukrainian, every one present in both weights
+  tt: LATIN,
+  ce: LATIN,
+  uk: LATIN,
+  // Roboto carries Quechua's apostrophes ' and ʼ, its ñ and its è é ê â by explicit
+  // codepoint in both weights (measured with fontTools, plan T-454 decision 4), so
+  // qu takes the LATIN record; its four-surface census is 71 distinct characters,
+  // every one present in both weights
+  qu: LATIN,
+  // Roboto carries Minangkabau's and Bugis's whole keyed surfaces by explicit
+  // codepoint in both weights (measured with fontTools, plan T-454 decision 4),
+  // apostrophes included, so both take the LATIN record; the four-surface census is
+  // 66 distinct characters each, every one present in both weights
+  min: LATIN,
+  bug: LATIN,
+  // Roboto lacks Madurese's ḍ Ḍ in both weights while the AFRICAN pair carries
+  // them (measured, plan T-454 decision 4), so mad rides that pair's record; its
+  // four-surface census is 71 distinct characters, every one present in both weights
+  mad: AFRICAN,
 };
 
 /**
