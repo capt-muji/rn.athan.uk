@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict DSDDIcbhgbn1Sz8OLc4GSCbU0fLe0HpsXBLiNFN7ONMuCj2Z4iHzXydBTSzxVh5
+\restrict E7wS6ANTrwbpJGbFAzu5Z40KtHA8lpagZBjOc9WwdgFX3jMMMbHagqqdwB71Klr
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6660,7 +6660,7 @@ Acceptance:
 - [x] Every push updates all sixteen kinds, the eight lock kinds included, on both schedules.
 - [x] All four layouts'' neutral, stale and catch cards render from the static table in all seventy-five locales, and the inline face carries the name and the absolute time.
 - [x] Every gallery string the four layouts need exists in every locale in app.json and native-strings.json, the retired kind''s copy is gone from both, and the locale parity suite passes.
-- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 11:17:26.298286+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 11:32:24.471015+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 
 
 --
@@ -9163,6 +9163,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2350, 264, 'activity', 'owner', NULL, 'field', '2026-10-19 22:48:47.96081+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "264"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2351, 264, 'activity', 'owner', NULL, 'description', '2026-10-19 22:50:22.487328+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Duo''s open-pose landscape renders the app''s background edge to edge and the countdown block at its designed offset, with no black bars and no tall gap above it.\n\nWhere: the app''s root background and top spacing as the iPhone Duo simulator renders the open pose in landscape. One schedule, centred, inside the existing max content width, per the standing design ruling. No other form factor may change.\n\nOWNER REPORT 2026-10-19, iPhone Duo simulator, open pose, landscape: black bars sit left and right of the app where the purple gradient should run, and a tall gap sits above the countdown component, above the prayer name. The owner''s read: the black background should never show, and the gap should not be there.\n\nOWNER REPORT 2, 2026-10-19, same view: the push-down displaces the whole schedule - on the Standard page the Isha row overlaps the Settings button at the bottom. The owner''s read: the overlap must not exist.\n\nNOTE (agent-ruled, 2026-10-19): this report supersedes the earlier note that landscape support was excluded on this row''s prior life; the current order is that landscape renders correctly on the Duo open pose.\n\nAcceptance:\n- [ ] the mechanism named: what paints the bars beside the content in landscape, and what plants the tall gap above the countdown\n- [ ] on the iPhone Duo simulator, open pose, landscape: the app''s background runs edge to edge, no black bars, reading transcribed onto this row\n- [ ] the countdown block sits at its designed top offset in landscape, the gap gone\n- [ ] on the same view the Standard page''s last row (Isha) clears the Settings button, no overlap\n- [ ] portrait poses and every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2352, 264, 'comment', 'owner', 'Owner report 2 folded in: the landscape push-down overlaps the Standard page''s Isha row onto the Settings button. Same view, same row, added to the acceptance.', NULL, '2026-10-19 22:50:22.516546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4707, 484, 'activity', 'owner', NULL, 'field', '2026-10-29 11:32:24.42818+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s read of 2.41.3 on the iPhone XS: every layout centred, installed and launched."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2354, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:53:31.314758+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [ ] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [ ] every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2358, 33, 'comment', 'owner', 'Step 3 done: the records close is written, the diff names only the version bump and the board''s records, so zero Duo code ships and every other form factor is unchanged. Nothing left on this row.', NULL, '2026-10-19 22:56:20.681347+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2359, 33, 'activity', 'owner', NULL, 'status', '2026-10-19 22:56:39.29775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
@@ -9172,6 +9173,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2357, 33, 'activity', 'owner', NULL, 'description', '2026-10-19 22:56:03.856816+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: answer Apple''s iPhone Duo requirement (April 2027) with the existing adaptive layout, verified against the Duo support Apple shipped with iOS 27 and SDK 58.\n\nWhere: the iPhone Duo simulator in the device hub, Apple''s SDK 58 Duo skills and documentation, and no Duo-specific code path.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked after #130, #241 and #254, immediately before #54 (the final hygiene pass).\n\nDESIGN (owner, 2026-10-19): the Duo is one resizable larger screen. One schedule, centred, inside the app''s existing max content width, exactly as a resized desktop window renders today. Explicitly rejected, again: two schedules (one per panel), a centre settings button, centre-anchored sheets, any Duo-branched layout. Nothing may complicate the code base and no other form factor may change.\n\nPRIOR CLOSE (2026-10-18, this row''s earlier life): audited clean with zero Duo code - closed pose one schedule on 466x678; open pose a centred 469x669 portrait window; both schedules, the overlay, the settings sheet and its Help row working in both poses; a fold keeping the process and overlay alive. Filling the open panel fully would need landscape support, which the owner excluded.\n\nAcceptance:\n- [x] Apple''s iOS 27 / SDK 58 Duo requirements named from the official skills and docs, with any hard requirement beyond running recorded\n- [x] the app verified on the iPhone Duo simulator in both poses at current uat, one centred schedule in each\n- [x] one Duo simulator screenshot attached to this row for the owner (never committed to the repository)\n- [x] zero Duo-specific layout code, unless a named Apple requirement forces it, and then only at the owner''s tabled ruling\n- [x] every other form factor unchanged"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2365, 33, 'comment', 'owner', 'Closed and merged to uat at 2.1.23: the existing adaptive layout answers Apple''s Duo requirement with zero Duo code. The one obligation beyond running is App Store screenshots for submissions from April 2027; both poses verified centred on iOS 27.1 with the screenshot on this row, and every other form factor untouched. One item leaves this row for the owner''s hygiene pass: ticket 22''s record carries a gendered owner pronoun, present before this row.', NULL, '2026-10-19 23:03:47.865415+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2373, 264, 'activity', 'owner', NULL, 'status', '2026-10-19 23:19:19.425584+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4708, 484, 'comment', 'owner', '2.41.3 is installed and launched. Layouts 3 and 4 now centre one row instead of two half-anchored shares, so a long Extra times name can no longer fill the left half and read as left-aligned; the stacked layouts centre each line full width, and the one-line names shrink to 0.6 rather than fill. Every widget now centres horizontally.', NULL, '2026-10-29 11:32:24.448752+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2361, 33, 'comment', 'owner', 'Plan-conformance review: 2 minors, nothing blocking.
 
 1. MINOR: the plan doc''s Proof section claims `git diff --name-only uat..lane/116` lists "package.json, app.json, android/app/build.gradle and board/snapshot/board.sql". The diff names three files, not four: android/ is gitignored (.gitignore line 14), so build.gradle can never appear, exactly as the doc''s own Files and Records close sections state. The proof bullet misdescribes the read; the substance (zero code files) holds.
@@ -12840,7 +12842,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (692, 454, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (693, 476, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (694, 480, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.41.0 on the iPhone XS: the gallery order 4, 3, 1, 2, installed and launched.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.41.3 on the iPhone XS: every layout centred, installed and launched.', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -39654,14 +39656,12 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:450', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:434', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:405', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 72);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4898);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:420', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:406', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:487', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:451', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:399', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:421', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 56);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:439', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:422', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 130);
@@ -39697,7 +39697,9 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:475', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:445', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4900);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:412', 1, 6);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:413', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:410', 1, 58);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:414', 1, 8);
@@ -40003,7 +40005,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4706, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4708, true);
 
 
 --
@@ -40052,7 +40054,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 698, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 699, true);
 
 
 --
@@ -44563,5 +44565,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict DSDDIcbhgbn1Sz8OLc4GSCbU0fLe0HpsXBLiNFN7ONMuCj2Z4iHzXydBTSzxVh5
+\unrestrict E7wS6ANTrwbpJGbFAzu5Z40KtHA8lpagZBjOc9WwdgFX3jMMMbHagqqdwB71Klr
 
