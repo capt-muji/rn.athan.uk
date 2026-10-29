@@ -95,7 +95,7 @@ describe('the one dim ink', () => {
       settingsBg: 'rgba(105, 65, 198, 0.51)',
       settingsBorder: 'rgba(116, 80, 207, 0.68)',
       settingsShadow: '#27035c',
-      // The full-screen solids sit between the navy top and the middle
+      // The iPhone solid stays at the gradient's middle (owner order 2026-10-29)
       rootBg: '#1e1a6a',
     });
   });
@@ -104,8 +104,10 @@ describe('the one dim ink', () => {
   it('serves each platform its own tail and root solid', () => {
     expect(tailFor('android')).toBe('#4c16ca');
     expect(tailFor('ios')).toBe('#7117c9');
-    expect(rootBgFor('android')).toBe('#17146a');
+    expect(rootBgFor('android')).toBe('#251b74');
     expect(rootBgFor('ios')).toBe('#1e1a6a');
+    // The split itself: a collapsed fork would move the iPhone's solid silently
+    expect(rootBgFor('android')).not.toBe(rootBgFor('ios'));
   });
 
   // The tails are pinned per platform: the same hex reads pinker on Android's
