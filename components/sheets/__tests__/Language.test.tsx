@@ -23,11 +23,35 @@ import LanguageSheet from '../screens/Language';
 // The published mock maps BottomSheetTextInput onto the plain TextInput, so the two read
 // the same in a rendered tree: this tag keeps the library's own input findable, which is
 // what the pin below hangs on
-jest.mock('@gorhom/bottom-sheet', () => ({
-  ...jest.requireActual('@gorhom/bottom-sheet/mock'),
-  BottomSheetTextInput: (props: { [key: string]: unknown }) =>
-    require('react').createElement('BottomSheetTextInput', props),
-}));
+jest.mock('@gorhom/bottom-sheet', () => {
+  const { createElement } = require('react');
+  const { FlatList: NativeFlatList } = require('react-native') as typeof import('react-native');
+
+  // The pinned 5.2.14 scrollable strips the caller's onScroll and re-dispatches it on the JS thread
+  // as { nativeEvent: event } (createBottomSheetScrollableComponent, useScrollHandler). The suite's
+  // list hands it over the same way, so a scroll reaches the screen exactly as it does on a phone
+  const BottomSheetFlatList = (props: Record<string, unknown>) => {
+    const { onScroll, onScrollBeginDrag, ...rest } = props as {
+      onScroll?: (event: { nativeEvent: unknown }) => void;
+      onScrollBeginDrag?: (event: { nativeEvent: unknown }) => void;
+    };
+    const deliver = (handler?: (event: { nativeEvent: unknown }) => void) =>
+      handler && ((event: { nativeEvent: unknown }) => handler({ nativeEvent: event.nativeEvent }));
+
+    return createElement(NativeFlatList, {
+      ...rest,
+      onScroll: deliver(onScroll),
+      onScrollBeginDrag: onScrollBeginDrag && (() => onScrollBeginDrag({ nativeEvent: {} })),
+    });
+  };
+
+  return {
+    ...jest.requireActual('@gorhom/bottom-sheet/mock'),
+    BottomSheetTextInput: (props: { [key: string]: unknown }) =>
+      require('react').createElement('BottomSheetTextInput', props),
+    BottomSheetFlatList,
+  };
+});
 
 const store = getDefaultStore();
 
@@ -40,6 +64,7 @@ const renderedSheet = () => {
 
 const SHIPPED_NAMES = LANGUAGE_NAMES.map((entry) => entry.name);
 const ENGLISH_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'en');
+const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
 
 // The wheel's own measures: a 400-point viewport, one 44-point row and the row gap
 const LIST_HEIGHT = 400;
@@ -80,6 +105,21 @@ const measureFirstRow = (height = ROW_HEIGHT) =>
 
 /** The sheet library reporting its settle at the open snap point, which is the sheet's own onPresent */
 const presentSheet = () => fireEvent(list(), 'change', 0);
+
+/** A scroll as the list reports it: the native event, delivered the way the library re-dispatches onScroll */
+const scrollEvent = (offset: number) => ({
+  nativeEvent: {
+    contentOffset: { x: 0, y: offset },
+    contentSize: { width: 300, height: LANGUAGE_NAMES.length * PITCH },
+    layoutMeasurement: { width: 300, height: LIST_HEIGHT },
+    zoomScale: 1,
+  },
+});
+
+const scrollTo = (offset: number) => fireEvent(list(), 'scroll', scrollEvent(offset));
+
+/** A finger taking the scroll back, as the list reports it */
+const scrollBegin = () => fireEvent(list(), 'scrollBeginDrag', { nativeEvent: {} });
 
 /** The wheel as a person finds it open: both measures landed and the sheet presented */
 const openWheel = async () => {
@@ -122,12 +162,11 @@ describe('the language wheel', () => {
     });
   });
 
-  it('snaps to one offset per row at the row pitch, on the fast settle', async () => {
+  it('snaps to one offset per row at the row pitch, which is the wheel’s whole settle line', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
     await openWheel();
 
-    expect(list().props.decelerationRate).toBe('fast');
     expect(list().props.snapToOffsets).toEqual(LANGUAGE_NAMES.map((_, index) => index * PITCH));
   });
 
@@ -202,8 +241,41 @@ describe('the language wheel', () => {
     expect(seat.backgroundColor).toBe(COLORS.interactive.active);
     expect(seat.opacity).toBe(1);
     expect(seat.height).toBe(ROW_HEIGHT);
-    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toEqual({ selected: true });
-    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: false });
+    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toMatchObject({
+      selected: true,
+      checked: false,
+    });
+    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: false,
+    });
+  });
+
+  it('rides the delivered scroll: the faint band holds the centreline and the purple its row, one pitch per row travelled', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    // The list's own event, through the pinned library's dispatch: the wheel moves, one row down
+    await scrollTo((ENGLISH_ROW + 1) * PITCH);
+    await screen.rerender(<LanguageSheet />);
+
+    // The faint band is the centreline itself, and the purple keeps the locale in force one pitch above it
+    expect(bandSeat()).toBe(PAD);
+    expect(seatSeat()).toBe(PAD - PITCH);
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('ticks once for a seat the library delivers twice, because the tick is the seat’s own edge', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    // One event re-dispatched twice still crosses one seat: the detent fires on the crossing, not the delivery
+    await scrollTo((ENGLISH_ROW + 1) * PITCH);
+    await scrollTo((ENGLISH_ROW + 1) * PITCH);
+
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
   });
 
   it('hides the purple while the rows are off-measure', async () => {
@@ -211,6 +283,18 @@ describe('the language wheel', () => {
     await render(<LanguageSheet />);
 
     expect(styleOf('language-seat').opacity).toBe(0);
+  });
+
+  it('hides the faint band over an empty list, as the purple already hides', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    await fireEvent.changeText(field(), 'zzz');
+
+    // Nothing matches, so the wheel has no row to ride: the empty line is all the card says
+    expect(styleOf('language-band').opacity).toBe(0);
+    expect(screen.getByText('No languages found')).toBeOnTheScreen();
   });
 
   it('moves the purple with the filtered list and hides it when the locale leaves the filter', async () => {
@@ -225,6 +309,22 @@ describe('the language wheel', () => {
 
     await fireEvent.changeText(field(), 'spanish');
     expect(styleOf('language-seat').opacity).toBe(0);
+  });
+
+  it('reseeds on the row’s own pitch under Arabic, the same geometry the LTR locale gets', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const scroll = scrollToOffset();
+    const english = await render(<LanguageSheet />);
+    await openWheel();
+    expect(scroll).toHaveBeenLastCalledWith({ offset: ENGLISH_ROW * PITCH, animated: false });
+    await english.unmount();
+
+    act(() => setActiveLocale('ar'));
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    // A row index and the row pitch, never a mirrored sign: RTL centres the locale in force on the same line
+    expect(scroll).toHaveBeenLastCalledWith({ offset: ARABIC_ROW * PITCH, animated: false });
   });
 
   it('re-centres on the filtered list while the sheet is up, and on the seat the query removed', async () => {
@@ -393,8 +493,14 @@ describe('the language wheel over T-451’s picker', () => {
     await render(<LanguageSheet />);
     await openWheel();
 
-    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toEqual({ selected: true });
-    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toEqual({ selected: false });
+    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toMatchObject({
+      selected: true,
+      checked: false,
+    });
+    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: false,
+    });
   });
 
   it('renders every shipped native name in codepoint order on the athan card pattern', async () => {
@@ -408,8 +514,6 @@ describe('the language wheel over T-451’s picker', () => {
 });
 
 describe('the staged commit at the close boundary', () => {
-  const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
-
   /** The commit the close boundary carries, stubbed so no surface converges in the suite */
   const stubCommit = () => jest.spyOn(LanguageStore, 'commitLanguagePreference').mockResolvedValue();
   const stubReveal = () => jest.spyOn(LanguageStore, 'revealLanguageLoader');
@@ -432,6 +536,76 @@ describe('the staged commit at the close boundary', () => {
     expect(dismiss).not.toHaveBeenCalled();
     // The faint band rides the animated scroll onto the row that was tapped
     expect(scroll).toHaveBeenLastCalledWith({ offset: ARABIC_ROW * PITCH, animated: true });
+  });
+
+  it('hands the detent back when a finger grabs a staging scroll', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
+    await scrollTo((ENGLISH_ROW - 1) * PITCH);
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
+
+    // The finger takes the wheel back mid-flight: the rows it then crosses are its own, and each ticks
+    await scrollBegin();
+    await scrollTo((ENGLISH_ROW - 2) * PITCH);
+
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(2);
+  });
+
+  it('gives the staged row its own state and the close it commits on, so a reader is told what a close will do', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    stubReveal();
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
+
+    // The purple still carries the locale in force; the staged row carries the close-to-save contract alone
+    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toMatchObject({
+      selected: true,
+      checked: false,
+    });
+    expect(screen.getByRole('radio', { name: `العربية, Close to save` }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: true,
+    });
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
+    // The close consumes the stage: the row is its name again and nothing is staged
+    expect(commitSpy).toHaveBeenCalledWith('ar');
+    expect(screen.getByRole('radio', { name: 'العربية' }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: false,
+    });
+  });
+
+  it('ticks once for a tap on a far row, however many rows the staging scroll crosses', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
+
+    // The staged scroll rides the wheel back to the tapped row, and every row it crosses reports its own seat
+    for (let row = ENGLISH_ROW - 1; row > ARABIC_ROW; row -= 1) {
+      await scrollTo(row * PITCH);
+    }
+    await scrollTo(ARABIC_ROW * PITCH);
+
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
+
+    // The arrival hands the wheel back to the finger, so the next drag ticks again
+    await scrollTo((ARABIC_ROW + 1) * PITCH);
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(2);
   });
 
   it('commits the staged row once on the close, with one tick, and never while it loads', async () => {
@@ -527,17 +701,8 @@ describe('the staged commit at the close boundary', () => {
     await render(<LanguageSheet />);
     await openWheel();
 
-    // Settling is browsing only: the wheel stops on a row and the close that follows commits nothing
-    const settled = {
-      nativeEvent: {
-        contentOffset: { x: 0, y: ARABIC_ROW * PITCH },
-        contentSize: { width: 300, height: LANGUAGE_NAMES.length * PITCH },
-        layoutMeasurement: { width: 300, height: LIST_HEIGHT },
-        zoomScale: 1,
-      },
-    };
-    await fireEvent(list(), 'scrollEndDrag', settled);
-    await fireEvent(list(), 'momentumScrollEnd', settled);
+    // Settling is browsing only: the wheel is scrolled to another row and the close that follows commits nothing
+    await scrollTo(ARABIC_ROW * PITCH);
 
     await act(async () => {
       sheetProps().onDismiss();
@@ -586,15 +751,23 @@ describe('the staged commit at the close boundary', () => {
     expect(commitSpy).not.toHaveBeenCalled();
   });
 
-  it('keeps a staged row through clearing the query, and commits it at the close', async () => {
+  it('keeps a staged row through clearing the query, and the full list reseeds centred on the locale in force', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     const commitSpy = stubCommit();
+    const scroll = scrollToOffset();
     await render(<LanguageSheet />);
     await openWheel();
     await fireEvent.press(screen.getByRole('radio', { name: 'Español' }));
     await fireEvent.changeText(field(), 'spanish');
     await fireEvent.changeText(field(), '');
     expect(commitSpy).not.toHaveBeenCalled();
+
+    // The reseed lands on the locale in force's seat in the whole list, not on the filtered row
+    expect(scroll).toHaveBeenLastCalledWith({ offset: ENGLISH_ROW * PITCH, animated: false });
+    // and the stage survives the reseed, still the row a close would save
+    expect(screen.getByRole('radio', { name: 'Español, Close to save' }).props.accessibilityState).toMatchObject({
+      checked: true,
+    });
 
     await act(async () => {
       sheetProps().onDismiss();

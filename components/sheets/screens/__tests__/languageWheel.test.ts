@@ -3,10 +3,8 @@
  * offsets, the centre float the faint band reads, both bands' seats, and the scroll handler's one write
  */
 
-// The wheel's scroll handler hands its detent to the JS thread, and the unit project runs without the
-// animation runtime: the seam is the identity here, so the edge can be counted
-jest.mock('react-native-reanimated', () => ({ runOnJS: (fn: () => void) => fn }));
-
+// The wheel's scroll handler is plain JS: the pinned sheet re-dispatches the caller's onScroll on the
+// JS thread, so the unit project needs no animation runtime for it
 import { SPACING } from '@/shared/constants';
 
 import {
@@ -20,7 +18,11 @@ import {
   snapOffsets,
   stagesLanguageChange,
   type WheelMetrics,
+  type WheelScrollState,
+  wheelReseed,
+  wheelScrollBegin,
   wheelScrollHandler,
+  wheelScrollTarget,
 } from '../languageWheel';
 
 /** Seven 44-point rows in a 400-point viewport, the picker's own measures */
@@ -102,34 +104,98 @@ describe('the language wheel’s geometry', () => {
 
 describe('the wheel’s scroll handler', () => {
   const handlerFor = () => {
-    const scrollY = { value: 0 };
-    const lastSeat = { value: 0 };
+    const state: WheelScrollState = { offset: { value: 0 }, seat: { current: 0 }, target: { current: null } };
     const onDetent = jest.fn();
-    return { scrollY, lastSeat, onDetent, handle: wheelScrollHandler(wheel(), scrollY, lastSeat, onDetent) };
+    return { state, onDetent, handle: wheelScrollHandler(wheel(), state, onDetent) };
   };
 
+  const scroll = (y: number) => ({ nativeEvent: { contentOffset: { y } } });
+
   it('writes the list’s own scroll position, which is the one value both bands ride', () => {
-    const { scrollY, handle } = handlerFor();
+    const { state, handle } = handlerFor();
 
-    handle({ contentOffset: { y: 96 } });
+    handle(scroll(96));
 
-    expect(scrollY.value).toBe(96);
+    expect(state.offset.value).toBe(96);
   });
 
   it('ticks once for the row that newly holds the centreline, and not again while it holds it', () => {
-    const { lastSeat, onDetent, handle } = handlerFor();
+    const { state, onDetent, handle } = handlerFor();
 
-    handle({ contentOffset: { y: 24 } });
+    handle(scroll(24));
 
     expect(onDetent).toHaveBeenCalledTimes(1);
-    expect(lastSeat.value).toBe(1);
+    expect(state.seat.current).toBe(1);
 
-    handle({ contentOffset: { y: 30 } });
+    handle(scroll(30));
     expect(onDetent).toHaveBeenCalledTimes(1);
 
-    handle({ contentOffset: { y: 96 } });
+    handle(scroll(96));
     expect(onDetent).toHaveBeenCalledTimes(2);
-    expect(lastSeat.value).toBe(2);
+    expect(state.seat.current).toBe(2);
+  });
+
+  it('holds the detent while a programmatic scroll crosses the rows to its target', () => {
+    const { state, onDetent, handle } = handlerFor();
+
+    // The wheel is sent to row 3: every row it passes on the way is the animation's, not the finger's
+    expect(wheelScrollTarget(wheel(), state, 3)).toBe(144);
+    expect(state.target.current).toBe(3);
+
+    handle(scroll(96));
+    handle(scroll(120));
+    expect(onDetent).not.toHaveBeenCalled();
+
+    handle(scroll(144));
+    expect(onDetent).not.toHaveBeenCalled();
+    // The arrival leaves the wheel where the finger will pick it up, under the target row
+    expect(state.seat.current).toBe(3);
+    expect(state.target.current).toBe(null);
+  });
+
+  it('ticks again once the programmatic scroll has arrived', () => {
+    const { state, onDetent, handle } = handlerFor();
+
+    wheelScrollTarget(wheel(), state, 3);
+    handle(scroll(144));
+    handle(scroll(192));
+
+    expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(state.seat.current).toBe(4);
+  });
+
+  it('holds nothing when the wheel already rests on the row it is sent to', () => {
+    const { state } = handlerFor();
+
+    wheelScrollTarget(wheel(), state, 0);
+
+    expect(state.target.current).toBe(null);
+  });
+
+  it('releases the detent when a finger takes the wheel back mid-scroll', () => {
+    const { state, onDetent, handle } = handlerFor();
+
+    wheelScrollTarget(wheel(), state, 3);
+    handle(scroll(24));
+    expect(onDetent).not.toHaveBeenCalled();
+
+    wheelScrollBegin(state);
+    handle(scroll(72));
+
+    expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(state.seat.current).toBe(2);
+  });
+
+  it('seeds the wheel on a row without a scroll: the seat it rests on is the one it ticked on', () => {
+    const { state, onDetent, handle } = handlerFor();
+
+    expect(wheelReseed(wheel(), state, 2)).toBe(96);
+    expect(state.offset.value).toBe(96);
+    expect(state.seat.current).toBe(2);
+
+    // The reseed's own delivery is the seat the wheel already holds, so it ticks nothing
+    handle(scroll(96));
+    expect(onDetent).not.toHaveBeenCalled();
   });
 });
 

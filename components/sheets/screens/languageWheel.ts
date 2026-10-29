@@ -2,12 +2,11 @@
  * The language wheel's geometry (T-476): one derivation of where a row sits in the list, shared by the
  * snap offsets, the faint band that rides the centreline and the purple seat on the locale in force.
  *
- * The scroll handler calls centreFloat, bandSeat and the two translate functions on the UI thread, so
- * each of those, and every helper they call, carries its own worklet directive: a worklet that calls a
- * plain function throws on the device, and the Jest mock's one thread cannot show it.
+ * The scroll handler calls centreFloat, bandSeat and the two translate functions on the UI thread for
+ * the bands' styles, so each of those carries its own worklet directive: a worklet that calls a plain
+ * function throws on the device, and the Jest mock's one thread cannot show it. The handler itself is
+ * plain JS: the pinned sheet re-dispatches the caller's onScroll on the JS thread.
  */
-
-import { runOnJS } from 'react-native-reanimated';
 
 import type { LocaleId } from '@/shared/i18n/locale';
 
@@ -70,13 +69,26 @@ export const bandTranslateY = (metrics: WheelMetrics, offset: number): number =>
   return centrePad(metrics) + centreFloat(metrics, offset) * rowPitch(metrics) - offset;
 };
 
-/** A scroll event as the list reports it, and the one value the bands ride */
+/** A scroll event as the list hands it over: the library re-dispatches the native event under nativeEvent */
 export interface WheelScrollEvent {
-  contentOffset: { y: number };
+  nativeEvent: { contentOffset: { y: number } };
 }
 
+/** The list's own offset: a shared value, because both bands' styles read it on the UI thread */
 export interface ScrollPosition {
   value: number;
+}
+
+/** The wheel's scroll state: the offset both bands ride, and the two seats the detent reads */
+export interface WheelScrollState {
+  offset: ScrollPosition;
+  /** The row the detent last ticked on, so one tick fires per row that newly holds the centreline */
+  seat: { current: number };
+  /**
+   * The row a programmatic scroll is travelling to, while the detent holds: the seats a finger is not
+   * crossing do not tick. Null while the finger owns the wheel
+   */
+  target: { current: number | null };
 }
 
 /** The row nearest the centreline: the faint band's seat, and the detent's integer */
@@ -99,19 +111,52 @@ export const stagesLanguageChange = (staged: LocaleId | null, active: LocaleId):
   staged !== null && staged !== active;
 
 /**
- * The list's scroll handler: the one write both bands read, and the detent's edge. The seat is
- * compared against the last one the wheel settled on, so one tick fires per row that newly holds the
- * centreline; a bounce that recrosses it ticks again. A factory so the worklet sits beside the
- * geometry it calls and the component hands the library a ready handler
+ * The list's scroll handler: the one write both bands ride, and the detent's edge. The pinned 5.2.14
+ * scrollable consumes the caller's onScroll and re-dispatches it on the JS thread, so this is a plain
+ * function and every delivery lands on one state: a seat already ticked stays quiet, and a programmatic
+ * scroll holds the detent until it arrives at the row it was sent to
  */
 export const wheelScrollHandler =
-  (metrics: WheelMetrics, scrollY: ScrollPosition, lastSeat: ScrollPosition, onDetent: () => void) =>
+  (metrics: WheelMetrics, state: WheelScrollState, onDetent: () => void) =>
   (event: WheelScrollEvent): void => {
-    'worklet';
-    const offset = event.contentOffset.y;
+    const offset = event.nativeEvent.contentOffset.y;
     const seat = bandSeat(metrics, offset);
-    scrollY.value = offset;
-    if (seat === lastSeat.value) return;
-    lastSeat.value = seat;
-    runOnJS(onDetent)();
+    state.offset.value = offset;
+
+    const travelling = state.target.current;
+    if (travelling !== null) {
+      if (seat !== travelling) return;
+      state.target.current = null;
+      state.seat.current = seat;
+      return;
+    }
+
+    if (seat === state.seat.current) return;
+    state.seat.current = seat;
+    onDetent();
   };
+
+/**
+ * Sends the wheel to row `index` with the detent held, and hands back the offset to command. A row the
+ * wheel already rests on holds nothing, so the next drag ticks from wherever the finger takes it
+ */
+export const wheelScrollTarget = (metrics: WheelMetrics, state: WheelScrollState, index: number): number => {
+  const offset = offsetForIndex(metrics, index);
+  const seat = bandSeat(metrics, offset);
+  state.target.current = seat === state.seat.current ? null : seat;
+  return offset;
+};
+
+/** A finger takes the wheel back: the row a programmatic scroll was heading to no longer holds the detent */
+export const wheelScrollBegin = (state: WheelScrollState): void => {
+  state.target.current = null;
+};
+
+/** Seeds the wheel on a row with no scroll of its own: the seat it comes to rest on is the one it ticked on */
+export const wheelReseed = (metrics: WheelMetrics, state: WheelScrollState, index: number): number => {
+  const offset = offsetForIndex(metrics, index);
+  state.offset.value = offset;
+  state.seat.current = bandSeat(metrics, offset);
+  state.target.current = null;
+  return offset;
+};
