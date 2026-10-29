@@ -72,9 +72,23 @@ describe('the one dim ink', () => {
     const appJson = readFileSync(join(__dirname, '../../app.json'), 'utf8');
     const svg = readFileSync(join(__dirname, '../../assets/icons/svg/settings.svg'), 'utf8');
 
-    expect(appJson.match(/"backgroundColor": "#17146a"/g)).toHaveLength(1);
+    expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);
     expect(appJson.match(/"backgroundColor": "#1e1a6a"/g)).toHaveLength(3);
     expect(svg.match(/stroke-width="1.5"/g)).toHaveLength(2);
+
+    // The counts above cannot show where a hex sits, so every backgroundColor
+    // field is pinned by place: a tint landing on the root or the adaptive icon
+    // leaves them green while the Android window background goes untinted
+    const app = JSON.parse(appJson);
+    const splash = app.expo.plugins.find(
+      (plugin: unknown) => Array.isArray(plugin) && plugin[0] === 'expo-splash-screen'
+    )[1];
+    expect(app.expo.backgroundColor).toBe('#1e1a6a');
+    expect(app.expo.ios.backgroundColor).toBe('#1e1a6a');
+    expect(app.expo.android.backgroundColor).toBe('#251b74');
+    expect(app.expo.android.adaptiveIcon.backgroundColor).toBe('#05134a');
+    expect(splash.ios.backgroundColor).toBe('#1e1a6a');
+    expect(splash.android.backgroundColor).toBe('#251b74');
   });
 
   it('carries the owner-picked palette, hand-frozen', () => {
