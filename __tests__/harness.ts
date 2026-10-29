@@ -72,3 +72,15 @@ export const seedCountdownBarOn = (): void => {
 export const seedTimePassedOn = (): void => {
   getDefaultStore().set(showTimePassedAtom, true);
 };
+
+/**
+ * Whether a query result sits inside any scroll view: the one way to see that a node cannot scroll away
+ *
+ * @param node A React Native Testing Library query result
+ */
+export const insideScroll = (node: { parent: { type: string; parent: unknown } | null }): boolean => {
+  for (let parent = node.parent; parent !== null; parent = parent.parent as typeof parent) {
+    if (parent.type === 'RCTScrollView') return true;
+  }
+  return false;
+};

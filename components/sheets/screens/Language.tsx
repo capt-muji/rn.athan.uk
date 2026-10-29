@@ -170,8 +170,11 @@ const styles = StyleSheet.create({
   searchGlyph: {
     position: 'absolute',
     end: SPACING.md,
+    // Top and bottom at zero stretch the slot over the field's height, the seat the row's index slot takes
+    top: 0,
+    bottom: 0,
+    justifyContent: 'center',
     width: SEARCH_GLYPH_SIZE,
-    height: SEARCH_GLYPH_SIZE,
   },
   listContainer: {
     marginTop: SPACING.md,

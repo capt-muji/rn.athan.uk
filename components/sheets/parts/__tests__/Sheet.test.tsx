@@ -9,7 +9,7 @@ import type { ComponentProps } from 'react';
 import { BackHandler, DeviceEventEmitter, StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { onPlatform } from '@/__tests__/harness';
+import { insideScroll, onPlatform } from '@/__tests__/harness';
 import { perfMark, perfMeasure } from '@/shared/perf';
 
 import Sheet from '../Sheet';
@@ -329,28 +329,20 @@ describe("Android's back button and a sheet", () => {
 });
 
 describe('a sheet that keeps a field out of the scroll', () => {
-  /** Whether a query result sits inside any scroll view: the only way to see that a node cannot scroll away */
-  const scrollsWith = (node: { parent: { type: string; parent: unknown } | null }) => {
-    for (let parent = node.parent; parent !== null; parent = parent.parent as typeof parent) {
-      if (parent.type === 'RCTScrollView') return true;
-    }
-    return false;
-  };
-
   const field = () => <Text testID={'pinned-field'}>Search</Text>;
 
   it('keeps the header and the pinned node outside the scroll view, and the content inside it', async () => {
     await render(settingsSheet({ pinned: field() }));
 
-    expect(scrollsWith(screen.getByText(TITLE))).toBe(false);
-    expect(scrollsWith(screen.getByTestId('pinned-field'))).toBe(false);
-    expect(scrollsWith(screen.getByText('Show seconds'))).toBe(true);
+    expect(insideScroll(screen.getByText(TITLE))).toBe(false);
+    expect(insideScroll(screen.getByTestId('pinned-field'))).toBe(false);
+    expect(insideScroll(screen.getByText('Show seconds'))).toBe(true);
   });
 
   it('leaves a sheet without a pinned node on its one scroll view, header and all', async () => {
     await render(settingsSheet());
 
-    expect(scrollsWith(screen.getByText(TITLE))).toBe(true);
+    expect(insideScroll(screen.getByText(TITLE))).toBe(true);
     expect(scrollViews()).toHaveLength(1);
   });
 

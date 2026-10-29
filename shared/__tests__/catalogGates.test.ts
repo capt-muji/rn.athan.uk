@@ -409,6 +409,10 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(CATALOGS.so['prayer.midnight']).toBe('Saqda dhexe');
   });
 
+  it('negates the Wolof no-match line with the existential negation the catalog itself uses (T-451)', () => {
+    expect(wo['language.noMatch']).toContain('Amul');
+  });
+
   it.each(LOCALES)('%s stays inside the length budget', (loc) => {
     const failures: string[] = [];
     for (const [key, value] of Object.entries(CATALOGS[loc])) {

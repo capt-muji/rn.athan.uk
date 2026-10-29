@@ -10,6 +10,7 @@
 
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 
 const ROOT = path.join(__dirname, '../..');
@@ -120,6 +121,39 @@ describe('the string census guard', () => {
       (row: { file: string }) => row.file === 'shared/languageNames.ts'
     );
     expect(namesRows).toEqual([]);
+  });
+
+  it('still flags the names module’s copy outside its name fields, so widening the allowance reddens', () => {
+    // A probe at the scanner's own recorded module path: its note field is the copy
+    // the name-data rule must never let through
+    const probeDir = fs.mkdtempSync(path.join(tmpdir(), 'names-guard-'));
+    try {
+      fs.mkdirSync(path.join(probeDir, 'shared'));
+      fs.writeFileSync(
+        path.join(probeDir, 'shared/languageNames.ts'),
+        `export const PROBE = {
+  id: 'zz',
+  name: 'Probe Endonym',
+  english: 'Probe English',
+  note: 'Copy no name field ever carries',
+};
+`
+      );
+      // The scanner records paths from its working root, so the probe reads as the
+      // names module and the data-module rule answers for it
+      const census = execFileSync('node', [path.join(ROOT, 'scripts/scan-strings.mjs'), 'shared'], {
+        cwd: probeDir,
+        encoding: 'utf8',
+      });
+      const flagged: Array<{ file: string; kind: string; value: string }> = JSON.parse(census).rows.filter(
+        (row: { kind: string }) => row.kind === 'data-module'
+      );
+      expect(flagged).toEqual([
+        expect.objectContaining({ file: 'shared/languageNames.ts', value: 'Copy no name field ever carries' }),
+      ]);
+    } finally {
+      fs.rmSync(probeDir, { recursive: true, force: true });
+    }
   });
 
   it('holds the compass ring’s bearings as module data, not catalog copy', () => {

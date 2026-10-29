@@ -46,6 +46,16 @@ describe('the filtered list', () => {
     expect(ids('arabic')).toEqual(['ar']);
   });
 
+  it('matches the variant spellings speakers type at the gloss', () => {
+    expect(ids('farsi')).toEqual(['fa']);
+    expect(ids('bangla')).toEqual(['bn']);
+    expect(ids('azeri')).toEqual(['az']);
+    expect(ids('uighur')).toEqual(['ug']);
+    expect(ids('pushto')).toEqual(['ps']);
+    expect(ids('fulani')).toEqual(['ff']);
+    expect(ids('pulaar')).toEqual(['ff']);
+  });
+
   it('keeps the picker order across several matches', () => {
     const matched = ids('turk');
     expect(matched).toEqual(['tk', 'tr']);

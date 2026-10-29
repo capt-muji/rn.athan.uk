@@ -76,13 +76,6 @@ interface SheetProps {
    */
   onPresent?: () => void;
   /**
-   * Bottom-sheet stack behavior when presented over another sheet. Default
-   * 'switch' serializes: the lib waits for the previous sheet to unmount
-   * before animating this one in. 'push' presents immediately on top — used
-   * by the sound sheet so the Athan row closes settings and opens it
-   * concurrently.
-   */
-  /**
    * Content that stays above the scroll view, so a field in it never scrolls
    * away; given one, the header is pinned with it and only the children scroll
    */
@@ -91,6 +84,13 @@ interface SheetProps {
   keyboardBehavior?: BottomSheetModalProps['keyboardBehavior'];
   /** What the sheet does with the keyboard when the field blurs */
   keyboardBlurBehavior?: BottomSheetModalProps['keyboardBlurBehavior'];
+  /**
+   * Bottom-sheet stack behavior when presented over another sheet. Default
+   * 'switch' serializes: the lib waits for the previous sheet to unmount
+   * before animating this one in. 'push' presents immediately on top — used
+   * by the sound sheet so the Athan row closes settings and opens it
+   * concurrently.
+   */
   stackBehavior?: BottomSheetModalProps['stackBehavior'];
 }
 

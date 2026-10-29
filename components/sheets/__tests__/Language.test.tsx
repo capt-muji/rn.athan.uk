@@ -9,7 +9,7 @@ import { act } from 'react';
 import { StyleSheet } from 'react-native';
 import type { ReactTestRendererJSON } from 'react-test-renderer';
 
-import { london } from '@/__tests__/harness';
+import { insideScroll, london } from '@/__tests__/harness';
 import { COLORS, SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
@@ -24,6 +24,15 @@ import LanguageSheet from '../screens/Language';
 jest.mock('@/stores/notifications', () => ({
   ...jest.requireActual('@/stores/notifications'),
   rescheduleAllForLanguageChange: jest.fn(),
+}));
+
+// The published mock maps BottomSheetTextInput onto the plain TextInput, so the two read
+// the same in a rendered tree: this tag keeps the library's own input findable, which is
+// what the pin below hangs on
+jest.mock('@gorhom/bottom-sheet', () => ({
+  ...jest.requireActual('@gorhom/bottom-sheet/mock'),
+  BottomSheetTextInput: (props: { [key: string]: unknown }) =>
+    require('react').createElement('BottomSheetTextInput', props),
 }));
 
 const store = getDefaultStore();
@@ -173,14 +182,6 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 });
 
 describe('the language sheet rebuilt for the seventy-five (T-451)', () => {
-  /** Whether a query result sits inside any scroll view: the one way to see that a node cannot scroll away */
-  const insideScroll = (node: { parent: { type: string; parent: unknown } | null }) => {
-    for (let parent = node.parent; parent !== null; parent = parent.parent as typeof parent) {
-      if (parent.type === 'RCTScrollView') return true;
-    }
-    return false;
-  };
-
   const field = () => screen.getByTestId('language-search');
 
   /** The props the sheet handed the modal, which its published mock keeps on the instance */
@@ -239,6 +240,24 @@ describe('the language sheet rebuilt for the seventy-five (T-451)', () => {
     expect(glyph.left).toBeUndefined();
     expect(glyph.right).toBeUndefined();
     expect(screen.getByTestId('language-search-glyph').props.pointerEvents).toBe('none');
+  });
+
+  it('seats the glyph at the field’s vertical centre, the way the row’s index slot seats', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    expect(StyleSheet.flatten(screen.getByTestId('language-search-glyph').props.style)).toMatchObject({
+      top: 0,
+      bottom: 0,
+      justifyContent: 'center',
+    });
+  });
+
+  it('keeps the field the sheet library’s own text input', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    expect(field().type).toBe('BottomSheetTextInput');
   });
 
   it('matches the endonym folded, the English name, and never the locale tag', async () => {

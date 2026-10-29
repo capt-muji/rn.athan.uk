@@ -96,7 +96,7 @@ export const wo = {
   'sheet.closeToSave': 'Tëj ngir denc',
   'language.chooseHint': 'Tann sa làkk',
   'language.search': 'Seet làkk',
-  'language.noMatch': 'Làkk gu ñu man gis',
+  'language.noMatch': 'Amul làkk gu ñu man gis',
   'alert.card.athan': 'Adaan',
   'alert.card.athanHint': 'Xibaar ci waxtu julli',
   'alert.reminder': 'Fàttali {n}',
