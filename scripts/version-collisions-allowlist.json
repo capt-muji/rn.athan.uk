@@ -202,5 +202,21 @@
   {
     "version": "2.41.6",
     "reason": "2026-10-29 three lanes step from uat's 2.41.5 in the same window (lane2/T-489's height-and-ink step, lane3/T-490's placer step, lane1/T-491's widget-extension step); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.41.7",
+    "reason": "2026-10-29 concurrent lanes in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries (lane1/T-491's strip pins, lane3/T-490's badge veil step, lane2/T-489's stable numbering step)"
+  },
+  {
+    "version": "2.41.8",
+    "reason": "2026-10-29 concurrent lanes in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries (lane1/T-491's LTO measurement, lane3/T-490's audit nit, lane2/T-489's settle-stage step)"
+  },
+  {
+    "version": "2.41.9",
+    "reason": "2026-10-29 concurrent lanes in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries (lane1/T-491's LTO revert, lane3/T-490's revision 1, lane2/T-489's window step)"
+  },
+  {
+    "version": "2.41.10",
+    "reason": "2026-10-29 concurrent lanes in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries (lane1/T-491's audit fix, lane3/T-490's revision 2)"
   }
 ]

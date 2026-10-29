@@ -33,8 +33,8 @@ import {
 const ITEM_GAP = SPACING.xs;
 const SEARCH_GLYPH_SIZE = 16;
 const BAND_OPACITY = 0.3;
-// The rows mounted before the list has scrolled: the tallest sheet slot at 85% on the shortest
-// supported phone shows under 11 viewport rows, so 12 covers it and the rest mount as reached
+// The first mount batch, sized to the measured XS slot (12 rows at 85%): taller phones fill the
+// extra rows on the window's first update cycle, which costs less than mounting them up front
 const WINDOW_ROWS = 12;
 
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
@@ -78,6 +78,8 @@ export default function BottomSheetLanguage() {
   const listRef = useRef<BottomSheetFlatListMethods | null>(null);
   // The staged row is read synchronously at the close, before any state write re-derives the rows
   const stagedRef = useRef<LocaleId | null>(null);
+  // The rows the last reseed ran on: a rerun on the same rows is a geometry change, not a query
+  const seededRowsRef = useRef<readonly LanguageRow[] | null>(null);
   const scrollY = useSharedValue(0);
   const [wheel] = useState<WheelScrollState>(() => ({
     offset: scrollY,
@@ -106,11 +108,16 @@ export default function BottomSheetLanguage() {
 
   // The wheel opens on the locale in force, and re-centres whenever the filtered rows change while
   // the sheet is up: a reseed into the dismissing query clear would scroll a sheet on its way out.
-  // The reseed stages its own settled row, so the stage always names a row the wheel is showing
+  // The reseed stages its own settled row, so the stage always names a row the wheel is showing.
+  // A geometry-only rerun - the interactive keyboard resizing the list - is not a rows change, so
+  // it re-anchors onto the staged row and the pick survives it
   useEffect(() => {
     if (!presented || listHeight === 0 || rowHeight === 0) return;
 
-    const seatToSeed = seat >= 0 ? seat : 0;
+    const rowsChanged = seededRowsRef.current !== rows;
+    seededRowsRef.current = rows;
+    const stagedSeat = stagedRef.current === null ? -1 : rows.findIndex((row) => row.id === stagedRef.current);
+    const seatToSeed = !rowsChanged && stagedSeat >= 0 ? stagedSeat : seat >= 0 ? seat : 0;
     const offset = wheelReseed(metrics, wheel, seatToSeed);
     listRef.current?.scrollToOffset({ offset, animated: false });
     holdStaged(settleStageLanguage(rows, seatToSeed));
@@ -255,7 +262,13 @@ export default function BottomSheetLanguage() {
             // row's slot from it instead of waiting on a measuring mount
             getItemLayout={
               rowHeight > 0
-                ? (_data, index) => ({ length: rowHeight, offset: index * rowPitch(metrics), index })
+                ? (_data, index) => ({
+                    length: rowHeight,
+                    // The container padding opens the list's offset space, so the estimate must
+                    // carry it too: a bare index * pitch sits every unmounted row a pad too low
+                    offset: centrePad(metrics) + index * rowPitch(metrics),
+                    index,
+                  })
                 : undefined
             }
             // The window mounts what the slot can show; the whole picker rides in the data, reached

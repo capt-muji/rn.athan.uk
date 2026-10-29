@@ -388,12 +388,31 @@ describe('the windowed mount', () => {
     // A whole-picker mount is the open cost the owner measured: the window is a constant, not a
     // row count that grows with the catalogue
     expect(list().props.initialNumToRender).toBe(WINDOW_ROWS);
-    expect(list().props.initialNumToRender).not.toBe(LANGUAGE_NAMES.length);
     expect(list().props.data).toHaveLength(LANGUAGE_NAMES.length);
     expect(screen.getAllByRole('radio')).toHaveLength(WINDOW_ROWS);
   });
 
-  it('hands the list the row layout from the measured pitch, so a jump needs no measuring mount', async () => {
+  it('keeps a picked row staged when the list resizes under the keyboard, instead of reseeding onto the locale in force', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    await scrollTo(GERMAN_ROW * PITCH);
+    expect(screen.getByRole('radio', { name: 'Deutsch, Close to save' })).toBeOnTheScreen();
+
+    // The interactive keyboard shrinks the list on layout, and the reseed effect hears the height
+    await measureList(LIST_HEIGHT - 200);
+
+    // The pick survives the resize: the wheel re-anchors onto the staged row, not the seat in force
+    expect(screen.getByRole('radio', { name: 'Deutsch, Close to save' }).props.accessibilityState).toMatchObject({
+      checked: true,
+    });
+    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).not.toMatchObject({
+      checked: true,
+    });
+  });
+
+  it('hands the list the row layout in the container own offset space, so a jump needs no measuring mount', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -404,7 +423,11 @@ describe('the windowed mount', () => {
 
     const itemLayout = list().props.getItemLayout;
     expect(typeof itemLayout).toBe('function');
-    expect(itemLayout?.(null, 5)).toEqual({ length: ROW_HEIGHT, offset: 5 * PITCH, index: 5 });
+    // The list's frames carry the container padding, so the layout offsets must open at the pad:
+    // an offset that starts at 0 sits every unmounted row's estimate one pad below its real frame
+    const pad = list().props.contentContainerStyle.paddingTop;
+    expect(itemLayout?.(null, 0)).toEqual({ length: ROW_HEIGHT, offset: pad, index: 0 });
+    expect(itemLayout?.(null, 5).offset).toBe(pad + 5 * PITCH);
   });
 });
 
@@ -432,7 +455,7 @@ describe('the language wheel over T-451’s picker', () => {
     expect(sheetProps().keyboardBlurBehavior).toBe('restore');
   });
 
-  it('prints the sheet’s three dim readings in its own darker ink, none in the shared dim', async () => {
+  it('prints the sheet’s three dim readings in its own darker ink; the no-match line keeps the shared dim', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
@@ -441,6 +464,11 @@ describe('the language wheel over T-451’s picker', () => {
     expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.sheetDim);
     // The shared dim stays the surface wash’s own ink: no reading borrows it
     expect(COLORS.text.sheetDim).not.toBe(COLORS.text.muted);
+
+    // The acceptance’s darker ink covers the three readings; the empty-result line keeps the
+    // shared dim, and the scope is pinned so a fourth reading cannot drift silently
+    await fireEvent.changeText(field(), 'zzz');
+    expect(StyleSheet.flatten(screen.getByText('No languages found').props.style).color).toBe(COLORS.text.muted);
   });
 
   it('puts the search glyph at the trailing edge in the dim ink, and the edge mirrors under RTL', async () => {
