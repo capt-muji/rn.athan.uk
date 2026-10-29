@@ -1199,5 +1199,53 @@
       "Extra Times (Layout 3)": "Waktu tambahan (Tata 3)",
       "Next extra time with a countdown.": "Waktu tambahan salajengna kalawan itungan mundur."
     }
+  },
+  "ja": {
+    "NSLocationWhenInUseUsageDescription": "現在地からメッカの方角を計算するために位置情報を使用します。位置情報が電話の外に出ることはありません。",
+    "NSUserNotificationsUsageDescription": "礼拝時刻の通知を受け取ります",
+    "gallery": {
+      "Next Prayer (Light)": "次の礼拝（ライト）",
+      "A countdown to the next prayer.": "次の礼拝へのカウントダウン。",
+      "Extra Times (Light)": "追加の時刻（ライト）",
+      "A countdown to the next extra time.": "次の追加時刻へのカウントダウン。",
+      "Next Prayer (Dark)": "次の礼拝（ダーク）",
+      "Extra Times (Dark)": "追加の時刻（ダーク）",
+      "Next Prayer (Layout 1)": "次の礼拝（レイアウト 1）",
+      "Countdown to the next prayer.": "次の礼拝へのカウントダウン。",
+      "Extra Times (Layout 1)": "追加の時刻（レイアウト 1）",
+      "Countdown to the next extra time.": "次の追加時刻へのカウントダウン。",
+      "Next Prayer (Layout 2)": "次の礼拝（レイアウト 2）",
+      "Next prayer time.": "次の礼拝の時刻。",
+      "Extra Times (Layout 2)": "追加の時刻（レイアウト 2）",
+      "Next extra time.": "次の追加時刻。",
+      "Next Prayer (Layout 3)": "次の礼拝（レイアウト 3）",
+      "Next prayer time with a countdown.": "カウントダウン付きの次の礼拝時刻。",
+      "Extra Times (Layout 3)": "追加の時刻（レイアウト 3）",
+      "Next extra time with a countdown.": "カウントダウン付きの次の追加時刻。"
+    }
+  },
+  "ko": {
+    "NSLocationWhenInUseUsageDescription": "현재 위치에서 메카 방향을 계산하기 위해 위치 정보를 사용합니다. 위치 정보는 전화기 밖으로 나가지 않습니다.",
+    "NSUserNotificationsUsageDescription": "예배 시간 알림 받기",
+    "gallery": {
+      "Next Prayer (Light)": "다음 예배 (라이트)",
+      "A countdown to the next prayer.": "다음 예배까지 카운트다운입니다.",
+      "Extra Times (Light)": "추가 시간 (라이트)",
+      "A countdown to the next extra time.": "다음 추가 시간까지 카운트다운입니다.",
+      "Next Prayer (Dark)": "다음 예배 (다크)",
+      "Extra Times (Dark)": "추가 시간 (다크)",
+      "Next Prayer (Layout 1)": "다음 예배 (레이아웃 1)",
+      "Countdown to the next prayer.": "다음 예배까지 카운트다운입니다.",
+      "Extra Times (Layout 1)": "추가 시간 (레이아웃 1)",
+      "Countdown to the next extra time.": "다음 추가 시간까지 카운트다운입니다.",
+      "Next Prayer (Layout 2)": "다음 예배 (레이아웃 2)",
+      "Next prayer time.": "다음 예배 시간입니다.",
+      "Extra Times (Layout 2)": "추가 시간 (레이아웃 2)",
+      "Next extra time.": "다음 추가 시간입니다.",
+      "Next Prayer (Layout 3)": "다음 예배 (레이아웃 3)",
+      "Next prayer time with a countdown.": "카운트다운이 있는 다음 예배 시간입니다.",
+      "Extra Times (Layout 3)": "추가 시간 (레이아웃 3)",
+      "Next extra time with a countdown.": "카운트다운이 있는 다음 추가 시간입니다."
+    }
   }
 }

@@ -1,6 +1,7 @@
 /**
- * The CJK glyph lock (plan T-419 decision 8): the bundled zh subsets are cut over a
- * closed string set - every character of each zh catalog, its native-strings row,
+ * The CJK glyph lock (plan T-419 decision 8, grown by T-452): the bundled CJK subsets
+ * (the zh pair, ja and ko) are cut over a
+ * closed string set - every character of each CJK catalog, its native-strings row,
  * its widget-statics row, its endonym, and the What's New keys that resolve through
  * the catalog - and this gate recomputes that set from the committed files and diffs
  * it against the lock generated from the subsets' own cmaps. A catalog byte the
@@ -14,6 +15,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import lock from '@/shared/i18n/cjk-glyph-lock.json';
+import { ja } from '@/shared/i18n/ja';
+import { ko } from '@/shared/i18n/ko';
 import { zhHans } from '@/shared/i18n/zh-Hans';
 import { zhHant } from '@/shared/i18n/zh-Hant';
 import { nativeLanguageName } from '@/shared/languageNames';
@@ -31,14 +34,14 @@ const STATICS = JSON.parse(readFileSync(join(__dirname, '..', 'i18n', 'widget-st
   Record<string, string>
 >;
 
-const CATALOGS = { 'zh-Hans': zhHans, 'zh-Hant': zhHant } as const;
-type ZhLocale = keyof typeof CATALOGS;
+const CATALOGS = { 'zh-Hans': zhHans, 'zh-Hant': zhHant, ja, ko } as const;
+type CjkLocale = keyof typeof CATALOGS;
 
 /**
  * The closed string set's every character, newline excepted (no cmap maps it): the
  * exact list decision 8 pins, so the gate and the generator read the same set
  */
-const closedChars = (locale: ZhLocale): Set<string> => {
+const closedChars = (locale: CjkLocale): Set<string> => {
   const strings = [
     ...Object.values(CATALOGS[locale]),
     NATIVE[locale].NSLocationWhenInUseUsageDescription,
@@ -58,18 +61,21 @@ const closedChars = (locale: ZhLocale): Set<string> => {
 const codepointOf = (ch: string): string => `U+${ch.codePointAt(0)?.toString(16).toUpperCase().padStart(4, '0')}`;
 
 describe('the CJK glyph lock', () => {
-  it.each(['zh-Hans', 'zh-Hant'] as const)('%s locks every character its closed string set carries', (locale) => {
-    const locked = new Set(lock[locale].split(''));
-    const failures: string[] = [];
-    for (const ch of closedChars(locale)) {
-      if (!locked.has(ch)) {
-        failures.push(`${locale}: the lock lacks ${ch} ${codepointOf(ch)} - regenerate the subsets (lock _comment)`);
+  it.each(['zh-Hans', 'zh-Hant', 'ja', 'ko'] as const)(
+    '%s locks every character its closed string set carries',
+    (locale) => {
+      const locked = new Set(lock[locale].split(''));
+      const failures: string[] = [];
+      for (const ch of closedChars(locale)) {
+        if (!locked.has(ch)) {
+          failures.push(`${locale}: the lock lacks ${ch} ${codepointOf(ch)} - regenerate the subsets (lock _comment)`);
+        }
       }
+      expect(failures).toEqual([]);
     }
-    expect(failures).toEqual([]);
-  });
+  );
 
-  it.each(['zh-Hans', 'zh-Hant'] as const)('%s keeps no character the strings have dropped', (locale) => {
+  it.each(['zh-Hans', 'zh-Hant', 'ja', 'ko'] as const)('%s keeps no character the strings have dropped', (locale) => {
     const closed = closedChars(locale);
     const failures: string[] = [];
     for (const ch of lock[locale].split('')) {

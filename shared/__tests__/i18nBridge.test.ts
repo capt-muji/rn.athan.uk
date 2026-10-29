@@ -30,9 +30,11 @@ import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { ja } from '@/shared/i18n/ja';
 import { jv } from '@/shared/i18n/jv';
 import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
+import { ko } from '@/shared/i18n/ko';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -116,6 +118,8 @@ const CATALOGS: Record<string, Catalog> = {
   yo,
   jv,
   su,
+  ja,
+  ko,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -192,7 +196,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(50);
+    expect(Object.keys(CATALOGS)).toHaveLength(52);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

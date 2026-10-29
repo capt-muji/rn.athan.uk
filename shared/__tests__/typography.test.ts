@@ -119,7 +119,9 @@ describe('typographyFor', () => {
         id !== 'te' &&
         id !== 'gu' &&
         id !== 'kn' &&
-        id !== 'am'
+        id !== 'am' &&
+        id !== 'ja' &&
+        id !== 'ko'
     )) {
       expectLatinRecord(typographyFor(locale));
     }
@@ -308,6 +310,24 @@ describe('typographyFor', () => {
     // The measured numbers match the SC pair's exactly (hhea 1160/-288, lineGap 0,
     // win 1160/288, UPM 1000, both weights, 378 carried characters), so the same
     // row-87 law serves: the font's own metrics, no script box
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ja to the JP subset pair with no script line box', () => {
+    const ty = typographyFor('ja');
+    expectScriptRecord(ty, 'NotoSansJP-Subset-Regular', 'NotoSansJP-Subset-Medium');
+    // The JP subsets carry the closed string set's own census (the glyph lock,
+    // plan T-452 decision 3) and their measured box clears their ink, so no
+    // surface pins a script box - the Thai row-87 law, the numbers in the record
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ko to the KR subset pair with no script line box', () => {
+    const ty = typographyFor('ko');
+    expectScriptRecord(ty, 'NotoSansKR-Subset-Regular', 'NotoSansKR-Subset-Medium');
+    // The KR subsets carry the closed string set's own census (the glyph lock,
+    // plan T-452 decision 3) and their measured box clears their ink, so no
+    // surface pins a script box - the Thai row-87 law, the numbers in the record
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 });

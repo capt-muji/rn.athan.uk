@@ -61,8 +61,10 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'ml', name: 'മലയാളം', english: 'Malayalam' },
   { id: 'th', name: 'ไทย', english: 'Thai' },
   { id: 'am', name: 'አማርኛ', english: 'Amharic' },
+  { id: 'ja', name: '日本語', english: 'Japanese' },
   { id: 'zh-Hans', name: '简体中文', english: 'Chinese (Simplified)' },
   { id: 'zh-Hant', name: '繁體中文', english: 'Chinese (Traditional)' },
+  { id: 'ko', name: '한국어', english: 'Korean' },
 ];
 
 const NAMES_BY_ID = Object.fromEntries(LANGUAGE_NAMES.map((entry) => [entry.id, entry.name])) as Record<
