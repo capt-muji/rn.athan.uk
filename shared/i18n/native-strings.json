@@ -719,5 +719,53 @@
       "Extra Times (Layout 3)": "کاتە زیادەکان (شێواز 3)",
       "Next extra time with a countdown.": "کاتی زیادەی داهاتوو لەگەڵ ژماردنەوە."
     }
+  },
+  "ku": {
+    "NSLocationWhenInUseUsageDescription": "Cihê te tê bikaranîn da were zanîn ku Mekke ji kuderê ye. Ew qet ji telefona te dernakeve.",
+    "NSUserNotificationsUsageDescription": "Agahdariyên dema nimêjê werbigire",
+    "gallery": {
+      "Next Prayer (Light)": "Nimêja bê (Ronî)",
+      "A countdown to the next prayer.": "Hejmartin ber bi nimêja bê.",
+      "Extra Times (Light)": "Demên zêde (Ronî)",
+      "A countdown to the next extra time.": "Hejmartin ber bi dema zêde ya bê.",
+      "Next Prayer (Dark)": "Nimêja bê (Tarî)",
+      "Extra Times (Dark)": "Demên zêde (Tarî)",
+      "Next Prayer (Layout 1)": "Nimêja bê (Sazgeh 1)",
+      "Countdown to the next prayer.": "Hejmartin ber bi nimêja bê.",
+      "Extra Times (Layout 1)": "Demên zêde (Sazgeh 1)",
+      "Countdown to the next extra time.": "Hejmartin ber bi dema zêde ya bê.",
+      "Next Prayer (Layout 2)": "Nimêja bê (Sazgeh 2)",
+      "Next prayer time.": "Dema nimêja bê.",
+      "Extra Times (Layout 2)": "Demên zêde (Sazgeh 2)",
+      "Next extra time.": "Dema zêde ya bê.",
+      "Next Prayer (Layout 3)": "Nimêja bê (Sazgeh 3)",
+      "Next prayer time with a countdown.": "Dema nimêja bê bi hejmartinê.",
+      "Extra Times (Layout 3)": "Demên zêde (Sazgeh 3)",
+      "Next extra time with a countdown.": "Dema zêde ya bê bi hejmartinê."
+    }
+  },
+  "yo": {
+    "NSLocationWhenInUseUsageDescription": "A ń lo ibi tí o wà láti mọ ọ̀nà tí Màká wà láti ibẹ̀. Kò kúrò lórí fọ́nù rẹ rárá.",
+    "NSUserNotificationsUsageDescription": "Gbà ìfitónilétí àkókò ìrun",
+    "gallery": {
+      "Next Prayer (Light)": "Ìrun tó ń bọ̀ (Ìmọ́lẹ̀)",
+      "A countdown to the next prayer.": "Ìkàsí sí ìrun tó ń bọ̀.",
+      "Extra Times (Light)": "Àkókò àfikún (Ìmọ́lẹ̀)",
+      "A countdown to the next extra time.": "Ìkàsí sí àkókò àfikún tó ń bọ̀.",
+      "Next Prayer (Dark)": "Ìrun tó ń bọ̀ (Òkùnkùn)",
+      "Extra Times (Dark)": "Àkókò àfikún (Òkùnkùn)",
+      "Next Prayer (Layout 1)": "Ìrun tó ń bọ̀ (Ìṣètò 1)",
+      "Countdown to the next prayer.": "Ìkàsí sí ìrun tó ń bọ̀.",
+      "Extra Times (Layout 1)": "Àkókò àfikún (Ìṣètò 1)",
+      "Countdown to the next extra time.": "Ìkàsí sí àkókò àfikún tó ń bọ̀.",
+      "Next Prayer (Layout 2)": "Ìrun tó ń bọ̀ (Ìṣètò 2)",
+      "Next prayer time.": "Àkókò ìrun tó ń bọ̀.",
+      "Extra Times (Layout 2)": "Àkókò àfikún (Ìṣètò 2)",
+      "Next extra time.": "Àkókò àfikún tó ń bọ̀.",
+      "Next Prayer (Layout 3)": "Ìrun tó ń bọ̀ (Ìṣètò 3)",
+      "Next prayer time with a countdown.": "Àkókò ìrun tó ń bọ̀ pẹ̀lú ìkàsí.",
+      "Extra Times (Layout 3)": "Àkókò àfikún (Ìṣètò 3)",
+      "Next extra time with a countdown.": "Àkókò àfikún tó ń bọ̀ pẹ̀lú ìkàsí."
+    }
   }
 }

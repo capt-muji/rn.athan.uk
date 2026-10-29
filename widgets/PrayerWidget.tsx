@@ -616,6 +616,32 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'بۆ نوێکردنەوە',
       catchBody: 'ئەپەکە بکەرەوە بۆ نوێکردنەوە',
     },
+    ku: {
+      subtitle: 'Demên nimêjê ji bo Londonê',
+      inline: 'Athan — demên nimêjê',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Ji bo barkirina deman veke',
+      staleTitle: 'Kehnbûyî',
+      staleBody: 'Ji bo nûkirinê sepanê veke',
+      staleInline: 'Athan — ji bo nûkirinê veke',
+      refreshLine: 'Ji bo nûkirinê Athan veke',
+      refreshLead: 'Athan veke',
+      refreshTail: 'ji bo nûkirinê',
+      catchBody: 'Ji bo nûkirinê sepanê veke',
+    },
+    yo: {
+      subtitle: 'Àwọn àkókò ìrun fún London',
+      inline: 'Athan — àwọn àkókò ìrun',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Ṣí láti gbé àwọn àkókò wọlé',
+      staleTitle: 'Ó ti kọjá',
+      staleBody: 'Ṣí áàpù láti sọdọ̀tun',
+      staleInline: 'Athan — ṣí láti sọdọ̀tun',
+      refreshLine: 'Ṣí Athan láti sọdọ̀tun',
+      refreshLead: 'Ṣí Athan',
+      refreshTail: 'láti sọdọ̀tun',
+      catchBody: 'Ṣí áàpù láti sọdọ̀tun',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -662,6 +688,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'sd',
         'ug',
         'ckb',
+        'ku',
+        'yo',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

@@ -154,6 +154,26 @@ const MALAYALAM: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.5),
 };
 
+// Yoruba cannot ride Roboto: measured 2026-10-28 with fontTools over the bundled faces,
+// Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights,
+// and no bundled face carries them (plan T-427 decision 5). The Noto Sans pair is instanced
+// from the google/fonts variable source at 400 and 500 outside the repository; its own hhea
+// box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and every character of
+// Yoruba's keyed surface inks inside it (worst glyph top 944, worst bottom -240, the combining
+// acute at 766, the dot below at -186), so box and ink agree and no script box is pinned -
+// the Thai row-87 law
+const YORUBA: LocaleTypography = {
+  familyRegular: 'NotoSans-Regular',
+  familyMedium: 'NotoSans-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -234,6 +254,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   sd: URDU,
   ug: URDU,
   ckb: URDU,
+  ku: LATIN,
+  yo: YORUBA,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

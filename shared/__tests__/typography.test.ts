@@ -108,6 +108,7 @@ describe('typographyFor', () => {
         id !== 'sd' &&
         id !== 'ug' &&
         id !== 'ckb' &&
+        id !== 'yo' &&
         id !== 'ta' &&
         id !== 'ml' &&
         id !== 'zh-Hans' &&
@@ -127,6 +128,14 @@ describe('typographyFor', () => {
       expect(ty.scriptLineHeight?.(14)).toBe(21);
       expect(ty.scriptLineHeight?.(15)).toBe(23);
     }
+  });
+
+  it('resolves yo to the Noto Sans pair with no script box', () => {
+    // Plan T-427 decision 5: Roboto lacks ṣ, and the instanced Noto Sans pair's own
+    // 1.362em box clears every character Yoruba inks, so the font's metrics serve
+    const ty = typographyFor('yo');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
   });
 
   it('resolves hi to the Devanagari pair with the taller script line box', () => {
