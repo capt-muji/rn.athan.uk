@@ -2,7 +2,7 @@
  * Native strings from committed config (D43, D46): every per-locale native
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
- * table, and the locale declarations cover the thirty-four-language set on both
+ * table, and the locale declarations cover the fifty-nine-language set on both
  * platforms.
  */
 

@@ -258,9 +258,10 @@ describe('typographyFor', () => {
       // surfaces take the 1.55em script line that clears the measured ink.
       // Plan T-453 decision 10: the same measurement sends the Sahel three
       // here - the six letters ǝ ɓ ɗ ɛ ɔ ɲ are absent from Roboto and Rubik in
-      // both weights and present in this pair, and every character of each
-      // locale's whole keyed surface (68 distinct characters each, the eng ŋ
-      // and the em dash the non-ASCII codepoints) is carried by both weights
+      // both weights and present in this pair, and both weights carry every
+      // character of each locale's whole keyed surface (64, 63 and 64 distinct
+      // characters for kr, mnk and dje: kr's only non-ASCII codepoint is the em
+      // dash, mnk and dje add ŋ)
       expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
       expect(ty.scriptLineHeight?.(14)).toBe(22);
       expect(ty.scriptLineHeight?.(15)).toBe(23);
@@ -313,9 +314,9 @@ describe('typographyFor', () => {
   it('resolves om, tl, aa and mdh to the Roboto identity record', () => {
     // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries.
     // Afar's is ASCII too, and Maguindanao's only non-ASCII character is the em dash
-    // beside the ñ its register may ask for: measured with fontTools in both weights,
-    // Roboto carries every character of both locales' whole keyed surface (67
-    // distinct characters each, plan T-453 decision 10)
+    // beside the ñ its copy may ask for: measured with fontTools in both weights,
+    // Roboto carries every character of both locales' whole keyed surface (65 for
+    // Afar and 64 for Maguindanao, plan T-453 decision 10)
     for (const locale of ['om', 'tl', 'aa', 'mdh'] as const) {
       expectLatinRecord(typographyFor(locale));
     }

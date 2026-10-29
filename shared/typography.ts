@@ -88,10 +88,10 @@ const THAI: LocaleTypography = {
 // while Rubik lacks every one of them. Saraiki, Balochi and Kashmiri ride it too
 // (plan T-453 decision 10): measured 2026-10-29 by explicit codepoint, this pair
 // carries Saraiki's eight own letters, Balochi's five and Kashmiri's fourteen in
-// both weights while Roboto and Rubik carry none of the twenty-seven, and every
-// character of each locale's whole keyed surface (108, 104 and 112 distinct
-// characters: catalog, native strings, widget statics and endonym) is carried by
-// both weights
+// both weights while Roboto and Rubik carry none of the twenty-seven, and both
+// weights carry every character of each locale's whole keyed surface (catalog,
+// native strings, widget statics and endonym, newlines excepted): 92 distinct
+// characters for Saraiki, 88 for Balochi and 96 for Kashmiri
 const URDU: LocaleTypography = {
   familyRegular: 'NotoNaskhArabic-Regular',
   familyMedium: 'NotoNaskhArabic-Medium',
@@ -426,19 +426,19 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   kas: URDU,
   // Thaana reads right to left, so dv joins RTL_IDS with its own bundled pair
   dv: THAANA,
-  // Afar's orthography is ASCII and Maguindanao's register needs at most ñ: measured
+  // Afar's orthography is ASCII and Maguindanao's copy needs at most ñ: measured
   // with fontTools in both weights, Roboto carries every character of both locales'
-  // whole keyed surface (67 distinct characters each, the em dash the one non-ASCII
-  // codepoint besides the digits), and ñ beside it (plan T-453 decision 10)
+  // whole keyed surface (65 and 64 distinct characters, the em dash the only
+  // non-ASCII codepoint in either), and ñ beside it (plan T-453 decision 10)
   aa: LATIN,
   mdh: LATIN,
   // The Sahel three ride the AFRICAN record's Noto Sans pair (plan T-453 decision 10),
   // which Bambara and Fulfulde already take for the Sahel Latin letters Roboto and Rubik
   // lack. None of the three needs one of those letters: the basis is each language's own
   // orthography on the same Sahel Latin record, and this wave's census over its whole
-  // keyed surface (68 distinct characters each, ŋ and the em dash the non-ASCII
-  // codepoints, and kr's dash alone), every character carried by both weights, riding
-  // the record's measured 1.55em script line
+  // keyed surface (64, 63 and 64 distinct characters for kr, mnk and dje: kr's
+  // only non-ASCII codepoint is the em dash, mnk and dje add ŋ), every character
+  // carried by both weights, riding the record's measured 1.55em script line
   kr: AFRICAN,
   mnk: AFRICAN,
   dje: AFRICAN,

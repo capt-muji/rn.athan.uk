@@ -5924,7 +5924,8 @@
         "confidence": "low",
         "note": "Derived; jam is hour, Jumaat Friday, sahaja only, digits Latin per R12."
       }
-    }
+    },
+    "notes": "2026-10-29: only the eleven prayer names are Maguindanao-sourced; the shipped UI copy is Tagalog-derived (Maguindanao speakers read Tagalog) and this record names no Tagalog source, so the copy stands at low confidence until a Maguindanao speaker pass replaces it."
   },
   "mnk": {
     "names": {

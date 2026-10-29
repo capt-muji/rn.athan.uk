@@ -1,12 +1,15 @@
 /**
  * The Maguindanao catalog: flat because Hermes compiles large nested literals
- * slowly (hermes#1046); the prayer names are the vocabulary list's Malay-world
- * five (Subuh, Luhur, Asar, Magrib, Isya) with its Pagiyar, Awal a Subuh,
- * Magarib and Aisa variants recorded in the sourcing notes and the unattested
- * slots closed by the loan rule on the same Malay register (plan T-453 decision
- * 9), gated by shared/__tests__/catalogGates.test.ts. The UI copy rides that
- * same register, a recorded state the owner's speaker pass improves, and Latin
- * is the script the language is written in today. Prose digits are Latin per
+ * slowly (hermes#1046). The eleven prayer names are Maguindanao-sourced: the
+ * vocabulary list's Malay-world five (Subuh, Luhur, Asar, Magrib, Isya) with its
+ * Pagiyar, Awal a Subuh, Magarib and Aisa variants recorded in the sourcing
+ * notes and the unattested slots closed by the loan rule on the same Malay
+ * register (plan T-453 decision 9), gated by
+ * shared/__tests__/catalogGates.test.ts. The rest of the UI copy is
+ * Tagalog-derived (2026-10-29): Maguindanao speakers read Tagalog, no attested
+ * Maguindanao UI corpus exists to source it, so the copy ships as a disclosed
+ * stand-in at low confidence and a Maguindanao speaker pass is owed. Latin is
+ * the script the language is written in today. Prose digits are Latin per
  * R12, and the calendar loanwords echo en legitimately.
  */
 
