@@ -6,8 +6,9 @@ export const ANDROID_TAIL = '#4c16ca';
 
 export const tailFor = (os: string) => (os === 'android' ? ANDROID_TAIL : IOS_TAIL);
 
-// The full-screen solids sit between the navy top and the gradient's middle
-export const rootBgFor = (os: string) => (os === 'android' ? '#17146a' : '#1e1a6a');
+// The solid is platform-keyed (owner order 2026-10-29): Android takes the house
+// gradient's 65 percent, the iPhone stays at its middle
+export const rootBgFor = (os: string) => (os === 'android' ? '#251b74' : '#1e1a6a');
 
 // The dim is per-platform (owner order 2026-10-27): the iPhone takes the #5254ac pick,
 // Android keeps the locked #4a47ae

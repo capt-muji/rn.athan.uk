@@ -72,9 +72,24 @@ describe('the one dim ink', () => {
     const appJson = readFileSync(join(__dirname, '../../app.json'), 'utf8');
     const svg = readFileSync(join(__dirname, '../../assets/icons/svg/settings.svg'), 'utf8');
 
-    expect(appJson.match(/"backgroundColor": "#17146a"/g)).toHaveLength(1);
+    expect(appJson.match(/"backgroundColor": "#251b74"/g)).toHaveLength(2);
     expect(appJson.match(/"backgroundColor": "#1e1a6a"/g)).toHaveLength(3);
     expect(svg.match(/stroke-width="1.5"/g)).toHaveLength(2);
+
+    // The counts above cannot show where a hex sits, so every backgroundColor
+    // field is pinned by place. The one slip past the counts is the adaptive
+    // icon's #05134a: any other hex there leaves both counts green
+    const app = JSON.parse(appJson);
+    expect(appJson.match(/"backgroundColor"/g)).toHaveLength(6);
+    const splash = app.expo.plugins.find(
+      (plugin: unknown) => Array.isArray(plugin) && plugin[0] === 'expo-splash-screen'
+    )[1];
+    expect(app.expo.backgroundColor).toBe('#1e1a6a');
+    expect(app.expo.ios.backgroundColor).toBe('#1e1a6a');
+    expect(app.expo.android.backgroundColor).toBe('#251b74');
+    expect(app.expo.android.adaptiveIcon.backgroundColor).toBe('#05134a');
+    expect(splash.ios.backgroundColor).toBe('#1e1a6a');
+    expect(splash.android.backgroundColor).toBe('#251b74');
   });
 
   it('carries the owner-picked palette, hand-frozen', () => {
@@ -95,7 +110,7 @@ describe('the one dim ink', () => {
       settingsBg: 'rgba(105, 65, 198, 0.51)',
       settingsBorder: 'rgba(116, 80, 207, 0.68)',
       settingsShadow: '#27035c',
-      // The full-screen solids sit between the navy top and the middle
+      // The iPhone solid stays at the gradient's middle (owner order 2026-10-29)
       rootBg: '#1e1a6a',
     });
   });
@@ -104,8 +119,15 @@ describe('the one dim ink', () => {
   it('serves each platform its own tail and root solid', () => {
     expect(tailFor('android')).toBe('#4c16ca');
     expect(tailFor('ios')).toBe('#7117c9');
-    expect(rootBgFor('android')).toBe('#17146a');
+    expect(rootBgFor('android')).toBe('#251b74');
     expect(rootBgFor('ios')).toBe('#1e1a6a');
+    // The token carries the fork, not just the helper: a hardcoded hex in
+    // DESIGN.rootBg would serve one solid on both platforms with the arms green
+    const designSource = readFileSync(join(__dirname, '../design.ts'), 'utf8');
+    expect(designSource).toContain("rootBg: rootBgFor(Platform?.OS ?? 'ios')");
+    // 2026-10-29: the adaptive icon keeps #05134a deliberately as the launcher
+    // bed while android.backgroundColor moves to #251b74. The sharper Android
+    // 12+ splash seam is the owner's call on the build, not drift to tune here
   });
 
   // The tails are pinned per platform: the same hex reads pinker on Android's
