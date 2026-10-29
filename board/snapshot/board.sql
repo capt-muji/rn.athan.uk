@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict g8hU1uRVo726tqr6rcYMdIhwmyfeW6qxDEPcDcW3TUaRWzHyR3Cfz2184soVU91
+\restrict DSDDIcbhgbn1Sz8OLc4GSCbU0fLe0HpsXBLiNFN7ONMuCj2Z4iHzXydBTSzxVh5
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6660,7 +6660,7 @@ Acceptance:
 - [x] Every push updates all sixteen kinds, the eight lock kinds included, on both schedules.
 - [x] All four layouts'' neutral, stale and catch cards render from the static table in all seventy-five locales, and the inline face carries the name and the absolute time.
 - [x] Every gallery string the four layouts need exists in every locale in app.json and native-strings.json, the retired kind''s copy is gone from both, and the locale parity suite passes.
-- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 10:33:29.50456+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
+- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 11:17:26.298286+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 
 
 --
@@ -9065,6 +9065,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2290, 254, 'comment', 'owner', 'Closed at 2.1.13 on uat, both reviews clean. The mechanism: BOTH CoreLocation streams were dead together - the heading watch and the accuracy watch are two managers under one authorization record, Apple documents that a heading start which cannot deliver raises no event, and with no accuracy event the gate never opened, so the wave held. The permission cycle rewrote the app''s authorization record in the system''s location service; the next open drew. The patch and the build stand acquitted.
 
 Tabled to the owner, both agent-ruled: the app CAN detect the state itself (granted plus heading-available plus zero events from both streams across an open; today it sees only "lost", and on the heading side an errorHandler is the one missing wire), and the app CANNOT recover it itself (fresh managers per open never cleared it; only the user''s permission cycle, a privacy reset or a restart does). Two orders wait: build the detection; and for that state, offer the Settings route naming the cycle. Until an order, nothing changes. Full argument in the plan doc''s Findings.', NULL, '2026-10-19 20:54:58.818339+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4705, 484, 'activity', 'owner', NULL, 'field', '2026-10-29 11:17:26.243225+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s read of 2.41.0 on the iPhone XS: the gallery order 4, 3, 1, 2, installed and launched."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2291, 254, 'activity', 'owner', NULL, 'description', '2026-10-19 20:54:58.863354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: know why the iPhone''s heading stream stays dead after an app replacement until iOS location settings are toggled, and rule whether the app can recover it itself.\n\nWhere: the qibla sheet''s open path on iOS (hooks/useQibla.ts, device/qibla.ts) and the phone''s location permission state. Qibla is locked: investigation only, no gate or drawing change without the owner''s order.\n\nOWNER REPORT 2026-10-19, iPhone XS, mock 2.1.7 installed over the production app: the qibla never left the wave animation across many opens, indoors and out; Android on the same data draws after a wave. The compass then started working after the owner toggled iOS location from While Using to Always and back to While Using, closed Settings and the app, and reopened: the qibla loaded.\n\nBrief look 2026-10-19: the build is sound - the patched heading streamer (kCLHeadingFilterNone) is in the tree the build used, and the compass works on this build after the toggle - so the stuck state is the phone''s location state, not the code. The gate needs two streams (headings from expo-location, accuracy from the ExpoQiblaHeading module), and a heading nothing vouches for is never drawn.\n\nAcceptance:\n- [x] the mechanism named: which stream was dead and what the toggle reset\n- [x] a ruling, argued twice and tabled to the owner, on whether the app can detect and recover the state itself\n- [x] no compass logic change without the owner''s order"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2292, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:54:58.904302+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2293, 258, 'activity', 'owner', NULL, 'status', '2026-10-19 20:55:00.672631+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -9089,6 +9090,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2312, 241, 'comment', 'owner', 'Lead''s fix: the claim move to In progress was missed while execution ran under Ready; the column now matches the work. The claim step is being made explicit in the lane and executor agent files.', NULL, '2026-10-19 21:23:10.202716+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2314, 241, 'comment', 'owner', 'Step 1 landed on the branch (2.1.16, one commit, validate green, mutation pass on the width guard). uat moved twice mid-run (2.1.13, 2.1.14, 2.1.15); the branch rebased onto the published line and took the next free number. The device proof runs next.', NULL, '2026-10-19 21:24:08.644777+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2315, 260, 'activity', 'owner', NULL, 'status', '2026-10-19 21:25:40.176027+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4706, 484, 'comment', 'owner', 'Reorder done and installed: 2.41.0 puts the name-above-countdown first, the name-above-time second, the one-line countdown pair third and the name-and-time one-liner fourth, each schedule beside its partner. The kind numbers follow the slots, so a placed widget of the old numbering changes face and should be re-added.', NULL, '2026-10-29 11:17:26.271433+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2311, 241, 'comment', 'owner', 'Step 1 landed on lane/241 (2.1.16, commit fabeeb5e): the medium''s granted width now rides the widget environment through a new patch hunk, the stored-props field and the scheduler''s width stamp are gone, and the renderer suite derives the halves from the environment with the 310dp fallback, green in yarn validate. The branch took 2.1.16 because uat published 2.1.15 (the row-130 follow-on) after this lane was cut, so the lane advanced onto that tip per the version-discipline rule. Step 2, the 3T proof, remains.', NULL, '2026-10-19 21:22:44.231803+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2313, 241, 'activity', 'owner', NULL, 'status', '2026-10-19 21:23:10.22454+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2316, 241, 'activity', 'owner', NULL, 'description', '2026-10-19 21:48:18.540249+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the Android medium home-screen widget''s countdown centers in its own space in both directions, at every label length.\n\nWhere: the medium Android widget composition in widgets/PrayerWidget.tsx, the widget render path in patches/expo-widgets+58.0.20.patch, and the native tick''s width stamp in modules/widgetrefresh; the 3T is the measurement device. Never the small widget, never the iPhone widgets.\n\nOwner report 2026-10-19 (first): with the app in Arabic, a newly added widget mirrors (list left, countdown right) but the countdown is not centered in its own space and reads left-aligned; the English face reads almost perfectly aligned.\n\nOwner report 2, 2026-10-19, mock 2.1.7, medium only: with a short countdown (\"1 minute left\") the two halves hug the outer edges of the card with a wide empty band in the middle, in English and mirrored in Arabic; a long countdown (\"7h 50m\") reads centered. The owner''s read: the countdown string''s length drives it.\n\nDiagnosis 2026-10-19 (measured on the 3T, plan doc): the countdown string''s length only reveals the defect. The medium''s halves read grantedWidthDp from the stored props; the native minute tick stamps it, but every JS push rewrites the props without it, so every render between a push and the next tick computes at the 310dp fallback inside the launcher''s real 370dp grant. Measured: the pushed widget renders the fallback arithmetic to the pixel (pill x 88..441, trio center 647), and the same widget twenty minutes later, tick-stamped, renders centered at 370dp (pill x 88..504, trio center 764 against a half center of 765). The fix carries the render-time granted width from Glance''s provideRoot through the widget environment, which no push can wipe, and the tick''s width stamp is removed with the dead snapshot field.\n\nAcceptance:\n- [x] the medium countdown''s ink center sits within 20px of its rendered half''s center in both languages at a one-minute label, and the slack inside each half is symmetric within 20px, measured by screencap and transcribed in this ticket\n- [x] the gap between the list half''s trailing ink and the hero half''s leading ink reads no wider than the halves'' own slack, and no dead band past 30px sits at either content edge, in either language\n- [x] the English long-countdown face keeps its hero-left, list-right shape with the same proportions\n- [x] the renderer suite derives the medium halves from the environment''s granted width and falls back to the declared minimum when absent, green in yarn validate\n- [x] no iOS widget file, no small-widget composition change (byte-equal trees in the renderer suite)"}}', NULL);
@@ -12838,7 +12840,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (692, 454, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (693, 476, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (694, 480, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.40.1 on the iPhone XS: four layouts, the name bold on 3 and 4, installed and launched from the ios-build worktree.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.41.0 on the iPhone XS: the gallery order 4, 3, 1, 2, installed and launched.', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -39652,12 +39654,14 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:450', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:434', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:405', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:388', 1, 72);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4898);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:420', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:406', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:487', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:451', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:399', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:421', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 56);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:439', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:422', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:327', 1, 130);
@@ -39732,10 +39736,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:470', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4896);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:471', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:469', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:477', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:490', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:485', 1, 7);
@@ -40001,7 +40003,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4704, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4706, true);
 
 
 --
@@ -40050,7 +40052,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 697, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 698, true);
 
 
 --
@@ -44561,5 +44563,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict g8hU1uRVo726tqr6rcYMdIhwmyfeW6qxDEPcDcW3TUaRWzHyR3Cfz2184soVU91
+\unrestrict DSDDIcbhgbn1Sz8OLc4GSCbU0fLe0HpsXBLiNFN7ONMuCj2Z4iHzXydBTSzxVh5
 
