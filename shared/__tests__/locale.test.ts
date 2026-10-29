@@ -83,6 +83,11 @@ describe('resolveInitialLocale', () => {
     ['aa-DJ', 'aa', 'aa'],
     ['aa-ET', 'aa', 'aa'],
     ['mdh-PH', 'mdh', 'mdh'],
+    ['kr-NG', 'kr', 'kr'],
+    ['kr-NE', 'kr', 'kr'],
+    ['mnk-GM', 'mnk', 'mnk'],
+    ['mnk-SN', 'mnk', 'mnk'],
+    ['dje-NE', 'dje', 'dje'],
     // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
     ['pa-Guru-IN', 'pa', 'en'],
     ['pa-IN', 'pa', 'en'],

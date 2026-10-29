@@ -432,6 +432,15 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // codepoint besides the digits), and ñ beside it (plan T-453 decision 10)
   aa: LATIN,
   mdh: LATIN,
+  // The Sahel three ride the AFRICAN record's Noto Sans pair (plan T-453 decision 10):
+  // measured this wave, the six letters their orthographies ask for (ǝ ɓ ɗ ɛ ɔ ɲ)
+  // are absent from Roboto and Rubik in both weights and present in this pair, and
+  // every character of each locale's whole keyed surface (68 distinct characters
+  // each, the eng ŋ and the em dash the non-ASCII codepoints) is carried by both
+  // weights, riding the record's measured 1.55em script line
+  kr: AFRICAN,
+  mnk: AFRICAN,
+  dje: AFRICAN,
 };
 
 /**

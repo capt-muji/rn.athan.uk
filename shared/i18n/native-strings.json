@@ -1343,5 +1343,77 @@
       "Extra Times (Layout 3)": "Mga Karagdagang Oras (Layout 3)",
       "Next extra time with a countdown.": "Susunod na karagdagang oras na may kawnangdown."
     }
+  },
+  "kr": {
+    "NSLocationWhenInUseUsageDescription": "Qibla nyeduo location lan cintana, kuru location amarkto ba. Usuk telefon nyeduo gure lan ba.",
+    "NSUserNotificationsUsageDescription": "Salla loktu bayenjiwa duwawu",
+    "gallery": {
+      "Next Prayer (Light)": "Salla libzana (gana)",
+      "A countdown to the next prayer.": "Salla libzana kauntidaun.",
+      "Extra Times (Light)": "Loktura tawatsagana (gana)",
+      "A countdown to the next extra time.": "Loktura libzana kauntidaun.",
+      "Next Prayer (Dark)": "Salla libzana (kuruga)",
+      "Extra Times (Dark)": "Loktura tawatsagana (kuruga)",
+      "Next Prayer (Layout 1)": "Salla libzana (tartiib 1)",
+      "Countdown to the next prayer.": "Salla libzana kauntidaun.",
+      "Extra Times (Layout 1)": "Loktura tawatsagana (tartiib 1)",
+      "Countdown to the next extra time.": "Loktura libzana kauntidaun.",
+      "Next Prayer (Layout 2)": "Salla libzana (tartiib 2)",
+      "Next prayer time.": "Salla libzana loktu.",
+      "Extra Times (Layout 2)": "Loktura tawatsagana (tartiib 2)",
+      "Next extra time.": "Loktura libzana loktu.",
+      "Next Prayer (Layout 3)": "Salla libzana (tartiib 3)",
+      "Next prayer time with a countdown.": "Salla libzana loktu nda kauntidaun.",
+      "Extra Times (Layout 3)": "Loktura tawatsagana (tartiib 3)",
+      "Next extra time with a countdown.": "Loktura libzana loktu nda kauntidaun."
+    }
+  },
+  "mnk": {
+    "NSLocationWhenInUseUsageDescription": "Qibla be i jaa ro hesee, a be location amarktoo. A te kottaa i telefoono buloo ro.",
+    "NSUserNotificationsUsageDescription": "Sunkuntu salia wakti lu duwawu",
+    "gallery": {
+      "Next Prayer (Light)": "Salia toomafoo (jarayoo)",
+      "A countdown to the next prayer.": "Kawntidaun salia toomafoo ro.",
+      "Extra Times (Light)": "Wakti tawaa lu (jarayoo)",
+      "A countdown to the next extra time.": "Kawntidaun wakti tawaa toomafoo ro.",
+      "Next Prayer (Dark)": "Salia toomafoo (duloo)",
+      "Extra Times (Dark)": "Wakti tawaa lu (duloo)",
+      "Next Prayer (Layout 1)": "Salia toomafoo (layout 1)",
+      "Countdown to the next prayer.": "Kawntidaun salia toomafoo ro.",
+      "Extra Times (Layout 1)": "Wakti tawaa lu (layout 1)",
+      "Countdown to the next extra time.": "Kawntidaun wakti tawaa toomafoo ro.",
+      "Next Prayer (Layout 2)": "Salia toomafoo (layout 2)",
+      "Next prayer time.": "Salia toomafoo wakti.",
+      "Extra Times (Layout 2)": "Wakti tawaa lu (layout 2)",
+      "Next extra time.": "Wakti tawaa toomafoo wakti.",
+      "Next Prayer (Layout 3)": "Salia toomafoo (layout 3)",
+      "Next prayer time with a countdown.": "Salia toomafoo wakti kaŋ kawntidaun.",
+      "Extra Times (Layout 3)": "Wakti tawaa lu (layout 3)",
+      "Next extra time with a countdown.": "Wakti tawaa toomafoo wakti kaŋ kawntidaun."
+    }
+  },
+  "dje": {
+    "NSLocationWhenInUseUsageDescription": "Qibla ga i doo ga hesey, a ga location duwaa. A ma hun telfoon i se gure.",
+    "NSUserNotificationsUsageDescription": "Ibaasiya jinai wuray se duwawu",
+    "gallery": {
+      "Next Prayer (Light)": "Jinai tooma (bayray)",
+      "A countdown to the next prayer.": "Kawntidawn jinai tooma ga.",
+      "Extra Times (Light)": "Waktu taway (bayray)",
+      "A countdown to the next extra time.": "Kawntidawn waktu tooma ga.",
+      "Next Prayer (Dark)": "Jinai tooma (biyey)",
+      "Extra Times (Dark)": "Waktu taway (biyey)",
+      "Next Prayer (Layout 1)": "Jinai tooma (layout 1)",
+      "Countdown to the next prayer.": "Kawntidawn jinai tooma ga.",
+      "Extra Times (Layout 1)": "Waktu taway (layout 1)",
+      "Countdown to the next extra time.": "Kawntidawn waktu tooma ga.",
+      "Next Prayer (Layout 2)": "Jinai tooma (layout 2)",
+      "Next prayer time.": "Jinai tooma waktu.",
+      "Extra Times (Layout 2)": "Waktu taway (layout 2)",
+      "Next extra time.": "Waktu tooma.",
+      "Next Prayer (Layout 3)": "Jinai tooma (layout 3)",
+      "Next prayer time with a countdown.": "Jinai tooma waktu nda kawntidawn.",
+      "Extra Times (Layout 3)": "Waktu taway (layout 3)",
+      "Next extra time with a countdown.": "Waktu tooma nda kawntidawn."
+    }
   }
 }

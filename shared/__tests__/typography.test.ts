@@ -112,6 +112,9 @@ describe('typographyFor', () => {
         id !== 'bal' &&
         id !== 'kas' &&
         id !== 'dv' &&
+        id !== 'kr' &&
+        id !== 'mnk' &&
+        id !== 'dje' &&
         id !== 'yo' &&
         id !== 'ta' &&
         id !== 'ml' &&
@@ -244,15 +247,20 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
-  it('resolves bm and ff to the bundled Noto Sans pair with the measured script line box', () => {
-    for (const locale of ['bm', 'ff'] as const) {
+  it('resolves bm, ff, kr, mnk and dje to the bundled Noto Sans pair with the measured script line box', () => {
+    for (const locale of ['bm', 'ff', 'kr', 'mnk', 'dje'] as const) {
       const ty = typographyFor(locale);
       // No shipped face carries the African letters (ɛ ɔ ɲ for bm, ɓ ɗ ƴ for
       // ff, measured absent by codepoint in both weights of all twenty bundled
       // TTFs), so both ride the Noto Sans pair. Its hhea box is 1.362em
       // (ascent 1069, descent -293, UPM 1000) against a 1.519em win ink
       // (1124/395, both weights, this wave's own measurement), so ink-bearing
-      // surfaces take the 1.55em script line that clears the measured ink
+      // surfaces take the 1.55em script line that clears the measured ink.
+      // Plan T-453 decision 10: the same measurement sends the Sahel three
+      // here - the six letters ǝ ɓ ɗ ɛ ɔ ɲ are absent from Roboto and Rubik in
+      // both weights and present in this pair, and every character of each
+      // locale's whole keyed surface (68 distinct characters each, the eng ŋ
+      // and the em dash the non-ASCII codepoints) is carried by both weights
       expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
       expect(ty.scriptLineHeight?.(14)).toBe(22);
       expect(ty.scriptLineHeight?.(15)).toBe(23);

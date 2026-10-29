@@ -781,6 +781,45 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'para i-refresh',
       catchBody: 'Buksan ang app para i-refresh',
     },
+    kr: {
+      subtitle: 'Salla loktuwa London lan',
+      inline: 'Athan — salla loktuwa',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Loktuwa lowo ro tuta',
+      staleTitle: 'Sabuwa ba',
+      staleBody: 'Refresh ro appoo tuta',
+      staleInline: 'Athan — loktuwa refresh ro tuta',
+      refreshLine: 'Refresh ro Athan tuta',
+      refreshLead: 'Athan tuta',
+      refreshTail: 'refresh ro',
+      catchBody: 'Refresh ro appoo tuta',
+    },
+    mnk: {
+      subtitle: 'Salia wakti lu London ro',
+      inline: 'Athan — salia wakti lu',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wakti lu low se tee',
+      staleTitle: 'Koura ba',
+      staleBody: 'Athan tee refresh ro',
+      staleInline: 'Athan — wakti lu refresh ro tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
+    dje: {
+      subtitle: 'Jinai wuray London ga',
+      inline: 'Athan — jinai wuray',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wuray low se tee',
+      staleTitle: 'Curoy ba',
+      staleBody: 'Refresh se appoo tee',
+      staleInline: 'Athan — wuray refresh se tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -855,6 +894,9 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'dv',
         'aa',
         'mdh',
+        'kr',
+        'mnk',
+        'dje',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1746,6 +1788,45 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'para i-refresh',
       catchBody: 'Buksan ang app para i-refresh',
     },
+    kr: {
+      subtitle: 'Salla loktuwa London lan',
+      inline: 'Athan — salla loktuwa',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Loktuwa lowo ro tuta',
+      staleTitle: 'Sabuwa ba',
+      staleBody: 'Refresh ro appoo tuta',
+      staleInline: 'Athan — loktuwa refresh ro tuta',
+      refreshLine: 'Refresh ro Athan tuta',
+      refreshLead: 'Athan tuta',
+      refreshTail: 'refresh ro',
+      catchBody: 'Refresh ro appoo tuta',
+    },
+    mnk: {
+      subtitle: 'Salia wakti lu London ro',
+      inline: 'Athan — salia wakti lu',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wakti lu low se tee',
+      staleTitle: 'Koura ba',
+      staleBody: 'Athan tee refresh ro',
+      staleInline: 'Athan — wakti lu refresh ro tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
+    dje: {
+      subtitle: 'Jinai wuray London ga',
+      inline: 'Athan — jinai wuray',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wuray low se tee',
+      staleTitle: 'Curoy ba',
+      staleBody: 'Refresh se appoo tee',
+      staleInline: 'Athan — wuray refresh se tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1820,6 +1901,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'dv',
         'aa',
         'mdh',
+        'kr',
+        'mnk',
+        'dje',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -2700,6 +2784,45 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'para i-refresh',
       catchBody: 'Buksan ang app para i-refresh',
     },
+    kr: {
+      subtitle: 'Salla loktuwa London lan',
+      inline: 'Athan — salla loktuwa',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Loktuwa lowo ro tuta',
+      staleTitle: 'Sabuwa ba',
+      staleBody: 'Refresh ro appoo tuta',
+      staleInline: 'Athan — loktuwa refresh ro tuta',
+      refreshLine: 'Refresh ro Athan tuta',
+      refreshLead: 'Athan tuta',
+      refreshTail: 'refresh ro',
+      catchBody: 'Refresh ro appoo tuta',
+    },
+    mnk: {
+      subtitle: 'Salia wakti lu London ro',
+      inline: 'Athan — salia wakti lu',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wakti lu low se tee',
+      staleTitle: 'Koura ba',
+      staleBody: 'Athan tee refresh ro',
+      staleInline: 'Athan — wakti lu refresh ro tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
+    dje: {
+      subtitle: 'Jinai wuray London ga',
+      inline: 'Athan — jinai wuray',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Wuray low se tee',
+      staleTitle: 'Curoy ba',
+      staleBody: 'Refresh se appoo tee',
+      staleInline: 'Athan — wuray refresh se tee',
+      refreshLine: 'Refresh se Athan tee',
+      refreshLead: 'Athan tee',
+      refreshTail: 'refresh se',
+      catchBody: 'Refresh se appoo tee',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -2774,6 +2897,9 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'dv',
         'aa',
         'mdh',
+        'kr',
+        'mnk',
+        'dje',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

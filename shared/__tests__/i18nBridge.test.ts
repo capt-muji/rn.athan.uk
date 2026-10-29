@@ -22,6 +22,7 @@ import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
+import { dje } from '@/shared/i18n/dje';
 import { dv } from '@/shared/i18n/dv';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
@@ -37,11 +38,13 @@ import { jv } from '@/shared/i18n/jv';
 import { kas } from '@/shared/i18n/kas';
 import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
+import { kr } from '@/shared/i18n/kr';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { mdh } from '@/shared/i18n/mdh';
 import { ml } from '@/shared/i18n/ml';
+import { mnk } from '@/shared/i18n/mnk';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
 import { nl } from '@/shared/i18n/nl';
@@ -128,6 +131,9 @@ const CATALOGS: Record<string, Catalog> = {
   dv,
   aa,
   mdh,
+  kr,
+  mnk,
+  dje,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -204,7 +210,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(56);
+    expect(Object.keys(CATALOGS)).toHaveLength(59);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

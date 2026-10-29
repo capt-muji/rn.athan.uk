@@ -16,6 +16,7 @@ import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
+import { dje } from '@/shared/i18n/dje';
 import { dv } from '@/shared/i18n/dv';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { es } from '@/shared/i18n/es';
@@ -30,10 +31,12 @@ import { jv } from '@/shared/i18n/jv';
 import { kas } from '@/shared/i18n/kas';
 import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
+import { kr } from '@/shared/i18n/kr';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { mdh } from '@/shared/i18n/mdh';
 import { ml } from '@/shared/i18n/ml';
+import { mnk } from '@/shared/i18n/mnk';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
 import { nl } from '@/shared/i18n/nl';
@@ -120,6 +123,9 @@ const CATALOGS: Record<string, Catalog> = {
   dv,
   aa,
   mdh,
+  kr,
+  mnk,
+  dje,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas', 'dv']);
