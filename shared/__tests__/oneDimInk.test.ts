@@ -77,9 +77,10 @@ describe('the one dim ink', () => {
     expect(svg.match(/stroke-width="1.5"/g)).toHaveLength(2);
 
     // The counts above cannot show where a hex sits, so every backgroundColor
-    // field is pinned by place: a tint landing on the root or the adaptive icon
-    // leaves them green while the Android window background goes untinted
+    // field is pinned by place. The one slip past the counts is the adaptive
+    // icon's #05134a: any other hex there leaves both counts green
     const app = JSON.parse(appJson);
+    expect(appJson.match(/"backgroundColor"/g)).toHaveLength(6);
     const splash = app.expo.plugins.find(
       (plugin: unknown) => Array.isArray(plugin) && plugin[0] === 'expo-splash-screen'
     )[1];
@@ -120,8 +121,13 @@ describe('the one dim ink', () => {
     expect(tailFor('ios')).toBe('#7117c9');
     expect(rootBgFor('android')).toBe('#251b74');
     expect(rootBgFor('ios')).toBe('#1e1a6a');
-    // The split itself: a collapsed fork would move the iPhone's solid silently
-    expect(rootBgFor('android')).not.toBe(rootBgFor('ios'));
+    // The token carries the fork, not just the helper: a hardcoded hex in
+    // DESIGN.rootBg would serve one solid on both platforms with the arms green
+    const designSource = readFileSync(join(__dirname, '../design.ts'), 'utf8');
+    expect(designSource).toContain("rootBg: rootBgFor(Platform?.OS ?? 'ios')");
+    // 2026-10-29: the adaptive icon keeps #05134a deliberately as the launcher
+    // bed while android.backgroundColor moves to #251b74. The sharper Android
+    // 12+ splash seam is the owner's call on the build, not drift to tune here
   });
 
   // The tails are pinned per platform: the same hex reads pinker on Android's
