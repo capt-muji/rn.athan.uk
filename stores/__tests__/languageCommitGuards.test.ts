@@ -3,6 +3,7 @@
  * and a starved non-crossing pass cannot hold the loader past the cap (audit 86)
  */
 
+import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -16,6 +17,15 @@ import {
   revealLanguageLoader,
 } from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
+
+// The load path is the commit's own wait: a reader is shown the loader, and the three haptics the owner
+// ordered belong to the tap, the close and the detent, never to the change loading or finishing
+jest.mock('expo-haptics', () => ({
+  ImpactFeedbackStyle: { Light: 'light' },
+  impactAsync: jest.fn(() => Promise.resolve()),
+  notificationAsync: jest.fn(() => Promise.resolve()),
+  selectionAsync: jest.fn(() => Promise.resolve()),
+}));
 
 // The lock's queueing has its own suite (notificationSchedulingLock); here it must
 // only pass the operation through, so the commit's own guards are what the tests see
@@ -118,5 +128,18 @@ describe('commitLanguagePreference', () => {
     } finally {
       jest.useRealTimers();
     }
+  });
+
+  it('fires no haptic anywhere on the load path, against the real commit', async () => {
+    store.set(lastArmedLanguageAtom, 'en');
+    rescheduleMock.mockResolvedValue(true);
+
+    // The same-direction switch is the plain load; the crossing is the relaunch the change hangs on
+    await commitLanguagePreference('ms');
+    await commitLanguagePreference('ar');
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.selectionAsync).not.toHaveBeenCalled();
+    expect(Haptics.notificationAsync).not.toHaveBeenCalled();
   });
 });

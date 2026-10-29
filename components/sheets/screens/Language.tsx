@@ -1,23 +1,37 @@
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
-import { useCallback, useMemo, useState } from 'react';
-import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { BottomSheetFlatList, type BottomSheetFlatListMethods, BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import * as Haptics from 'expo-haptics';
+import type { ComponentType, Ref } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { type FlatListProps, type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { currentLocaleId, type LocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { commitLanguagePreference, revealLanguageLoader } from '@/stores/language';
-import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
+import { setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
-import { filterLanguages } from './languageFilter';
-import { pickLanguage } from './languageSheet';
+import { filterLanguages, type LanguageRow } from './languageFilter';
+import { commitStagedOnClose, stageLanguage } from './languageSheet';
+import {
+  bandTranslateY,
+  centrePad,
+  seatTranslateY,
+  snapOffsets,
+  type WheelScrollState,
+  wheelReseed,
+  wheelScrollBegin,
+  wheelScrollHandler,
+  wheelScrollTarget,
+} from './languageWheel';
 
 const ITEM_GAP = SPACING.xs;
 const SEARCH_GLYPH_SIZE = 16;
+const BAND_OPACITY = 0.3;
 
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
@@ -25,35 +39,135 @@ const SHEET_PERF_NAME = 'sheet_language';
 const CARD_BACKGROUND = 'rgba(99, 102, 241, 0.06)';
 const CARD_BORDER = 'rgba(99, 102, 241, 0.15)';
 
+// The wheel needs the library's own scrollable, which registers itself with the sheet. Its type drops
+// onScroll, which the pinned scrollable nonetheless consumes and re-dispatches on the JS thread, so the
+// wheel takes the list at the surface it runs on
+type WheelListProps = FlatListProps<LanguageRow> & { ref?: Ref<BottomSheetFlatListMethods> };
+
+const WheelList = BottomSheetFlatList as unknown as ComponentType<WheelListProps>;
+
+/** The gap a row's own pitch carries, drawn as the list's separator */
+const RowGap = () => <View style={styles.rowGap} />;
+
 /**
- * The language sheet, on the athan sheet's own pattern: the card, its hint and
- * the purple highlight behind the row in force. The search field is pinned in
- * the card's top piece so it never scrolls, and its query filters the list by
- * name (T-451). A pick commits immediately and closes (D47's no-cancel); the
- * loader covers the wait.
+ * The language sheet as a wheel (T-476): the list settles row by row on its centreline, a faint dim
+ * band rides the row a stop would select, and the purple stays on the locale in force for the whole
+ * session with the sheet open. The search field is pinned in the card's top piece and filters the
+ * rows by name (T-451). Only a tap stages a choice; the sheet's close is the one commit boundary (D47's
+ * no-cancel), and the loader covers the wait.
  */
 export default function BottomSheetLanguage() {
   const active = currentLocaleId();
   const [query, setQuery] = useState('');
-  const [itemHeight, setItemHeight] = useState(0);
+  const [listHeight, setListHeight] = useState(0);
+  const [rowHeight, setRowHeight] = useState(0);
+  const [presented, setPresented] = useState(false);
+  const [staged, setStaged] = useState<LocaleId | null>(null);
 
   const rows = useMemo(() => filterLanguages(query), [query]);
   const seat = rows.findIndex((entry) => entry.id === active);
+  const metrics = useMemo(
+    () => ({ count: rows.length, listHeight, rowHeight, gap: ITEM_GAP }),
+    [rows.length, listHeight, rowHeight]
+  );
+
+  const listRef = useRef<BottomSheetFlatListMethods | null>(null);
+  // The staged row is read synchronously at the close, before any state write re-derives the rows
+  const stagedRef = useRef<LocaleId | null>(null);
+  const scrollY = useSharedValue(0);
+  const [wheel] = useState<WheelScrollState>(() => ({
+    offset: scrollY,
+    seat: { current: 0 },
+    target: { current: null },
+  }));
+
+  const tickSelection = useCallback(() => {
+    void Haptics.selectionAsync();
+  }, []);
+
+  // The staged row is drawn as well as held: the reader hears what a close will save
+  const holdStaged = useCallback((next: LocaleId | null) => {
+    stagedRef.current = next;
+    setStaged(next);
+  }, []);
+
+  const handleListLayout = useCallback((e: LayoutChangeEvent) => {
+    setListHeight(e.nativeEvent.layout.height);
+  }, []);
 
   const handleItemLayout = useCallback((e: LayoutChangeEvent) => {
     const height = e.nativeEvent.layout.height;
-    setItemHeight((current) => current || height);
+    setRowHeight((current) => current || height);
   }, []);
 
-  // The seat follows the filtered list, and hides when the language in force is not in it
-  const indicatorStyle = useAnimatedStyle(
-    () => ({
-      transform: [{ translateY: Math.max(seat, 0) * (itemHeight + ITEM_GAP) }],
-      height: itemHeight,
-      opacity: seat >= 0 && itemHeight > 0 ? 1 : 0,
-    }),
-    [seat, itemHeight]
+  // The wheel opens on the locale in force, and re-centres whenever the filtered rows change while
+  // the sheet is up: a reseed into the dismissing query clear would scroll a sheet on its way out
+  useEffect(() => {
+    if (!presented || listHeight === 0 || rowHeight === 0) return;
+
+    const offset = wheelReseed(metrics, wheel, seat >= 0 ? seat : 0);
+    listRef.current?.scrollToOffset({ offset, animated: false });
+  }, [presented, metrics, seat, listHeight, rowHeight, wheel]);
+
+  // A staged row the filter removes is incoherent: the wheel drops it, and the close then changes nothing
+  useEffect(() => {
+    const candidate = stagedRef.current;
+    if (candidate === null) return;
+    if (rows.some((entry) => entry.id === candidate)) return;
+    holdStaged(null);
+  }, [rows, holdStaged]);
+
+  const scrollHandler = useMemo(
+    () => wheelScrollHandler(metrics, wheel, tickSelection),
+    [metrics, wheel, tickSelection]
   );
+  const handleScrollBegin = useCallback(() => wheelScrollBegin(wheel), [wheel]);
+
+  // The tap is the only thing that stages: the wheel ticks, the row becomes the candidate the close
+  // carries, and the animated scroll rides the faint band onto it
+  const stageRow = useCallback(
+    (id: LocaleId, index: number) => {
+      holdStaged(stageLanguage(id, tickSelection));
+      const offset = wheelScrollTarget(metrics, wheel, index);
+      listRef.current?.scrollToOffset({ offset, animated: true });
+    },
+    [holdStaged, metrics, wheel, tickSelection]
+  );
+
+  const handleDismiss = useCallback(() => {
+    // Read and clear the staged row before any state write: the query clear below re-derives the
+    // rows, and no reset may race the close's commit
+    const candidate = stagedRef.current;
+    holdStaged(null);
+    commitStagedOnClose(candidate, active, revealLanguageLoader, commitLanguagePreference);
+    setQuery('');
+    setPresented(false);
+  }, [active, holdStaged]);
+
+  const bandStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ translateY: bandTranslateY(metrics, scrollY.value) }],
+      height: rowHeight,
+      // No band over an empty list: the empty state's own line is the only thing the wheel has to say
+      opacity: rows.length > 0 ? BAND_OPACITY : 0,
+    }),
+    [metrics, rowHeight, rows.length]
+  );
+
+  // The purple stays on the locale in force: only a filter change can move it to another row, and
+  // the filtered-out and off-measure gates are T-451's own
+  const seatStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ translateY: seatTranslateY(metrics, Math.max(seat, 0), scrollY.value) }],
+      height: rowHeight,
+      opacity: seat >= 0 && rowHeight > 0 ? 1 : 0,
+    }),
+    [metrics, seat, rowHeight]
+  );
+
+  // The close point is written on the sheet and in the staged row's own label, so a reader is told
+  // what a close will do to the row under the finger
+  const closeToSave = t('sheet.closeToSave');
 
   const cardTop = (
     <View style={styles.cardTop}>
@@ -80,40 +194,64 @@ export default function BottomSheetLanguage() {
     <Sheet
       setRef={setLanguageSheetModal}
       title={t('settings.language')}
-      // No subheading: the title centres against the icon alone
-      subtitle={null}
+      subtitle={closeToSave}
       icon={<IconView type={Icon.GLOBE} size={16} color={SHEET_ICON_COLOR} />}
       snapPoints={['60%']}
       perfName={SHEET_PERF_NAME}
       stackBehavior={'push'}
       pinned={cardTop}
+      hostsScrollable
+      suppressCloseHaptic
       keyboardBehavior={'interactive'}
       keyboardBlurBehavior={'restore'}
-      onDismiss={() => setQuery('')}>
+      onPresent={() => setPresented(true)}
+      onDismiss={handleDismiss}>
       <View style={styles.cardBody}>
-        <View testID={'language-list'} style={styles.listContainer}>
-          <Animated.View style={[styles.indicator, indicatorStyle]} />
+        <View style={styles.wheel}>
+          {/* The clip is the viewport gate: neither band can paint over the card on a far scroll */}
+          <View testID={'language-band-layer'} style={styles.bandLayer} pointerEvents={'none'}>
+            <Animated.View testID={'language-band'} style={[styles.band, bandStyle]} />
+            <Animated.View testID={'language-seat'} style={[styles.seat, seatStyle]} />
+          </View>
 
-          {rows.map((entry, index) => (
-            <Pressable
-              key={entry.id}
-              style={styles.option}
-              onPress={() =>
-                pickLanguage(entry.id, active, commitLanguagePreference, hideLanguageSheet, revealLanguageLoader)
-              }
-              onLayout={index === 0 ? handleItemLayout : undefined}
-              accessibilityRole={'radio'}
-              // Which language is in force is carried by the highlight and this state,
-              // so a screen reader can tell the rows apart
-              accessibilityState={{ selected: entry.id === active }}
-              accessibilityLabel={entry.name}>
-              {/* The index owns its slot, so a second digit never moves the name off the card's centre */}
-              <View style={styles.optionIndexSlot} pointerEvents={'none'}>
-                <Text style={styles.optionIndex}>{`${index + 1}.`}</Text>
-              </View>
-              <Text style={styles.optionLabel}>{entry.name}</Text>
-            </Pressable>
-          ))}
+          <WheelList
+            testID={'language-list'}
+            ref={listRef}
+            style={styles.list}
+            data={rows}
+            keyExtractor={(entry) => entry.id}
+            renderItem={({ item, index }) => (
+              <Pressable
+                style={styles.option}
+                onPress={() => stageRow(item.id, index)}
+                onLayout={index === 0 ? handleItemLayout : undefined}
+                accessibilityRole={'radio'}
+                // Which language is in force is the purple seat's state and which one a close would
+                // save is the staged row's, so a screen reader hears the same two states the wheel draws
+                accessibilityState={{ selected: item.id === active, checked: item.id === staged }}
+                accessibilityLabel={item.id === staged ? `${item.name}, ${closeToSave}` : item.name}>
+                {/* The index owns its slot, so a second digit never moves the name off the card's centre */}
+                <View style={styles.optionIndexSlot} pointerEvents={'none'}>
+                  <Text style={styles.optionIndex}>{`${index + 1}.`}</Text>
+                </View>
+                <Text style={styles.optionLabel}>{item.name}</Text>
+              </Pressable>
+            )}
+            ItemSeparatorComponent={RowGap}
+            contentContainerStyle={{
+              paddingTop: centrePad(metrics),
+              paddingBottom: centrePad(metrics),
+            }}
+            onLayout={handleListLayout}
+            snapToOffsets={snapOffsets(metrics)}
+            // Every row stays mounted: the picker's census reads them all, and the wheel measures
+            // the first one
+            initialNumToRender={Math.max(rows.length, 1)}
+            showsVerticalScrollIndicator={false}
+            onScroll={scrollHandler}
+            onScrollBeginDrag={handleScrollBegin}
+            scrollEventThrottle={16}
+          />
         </View>
 
         {rows.length === 0 && <Text style={styles.noMatch}>{t('language.noMatch')}</Text>}
@@ -125,7 +263,7 @@ export default function BottomSheetLanguage() {
 const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
-  // One card split across the pinned piece and the scrolling one: the corners and
+  // One card split across the pinned piece and the wheel: the corners and
   // the border meet at a butt joint, so the surface reads as one
   cardTop: {
     backgroundColor: CARD_BACKGROUND,
@@ -138,6 +276,7 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING.md,
   },
   cardBody: {
+    flex: 1,
     backgroundColor: CARD_BACKGROUND,
     borderBottomLeftRadius: RADIUS.xl,
     borderBottomRightRadius: RADIUS.xl,
@@ -176,11 +315,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: SEARCH_GLYPH_SIZE,
   },
-  listContainer: {
+  wheel: {
+    flex: 1,
     marginTop: SPACING.md,
-    gap: ITEM_GAP,
   },
-  indicator: {
+  bandLayer: {
+    position: 'absolute',
+    top: 0,
+    start: 0,
+    end: 0,
+    bottom: 0,
+    overflow: 'hidden',
+  },
+  // The dim family at the surface's own wash: no text lives in the band, so no text carries its opacity
+  band: {
+    position: 'absolute',
+    top: 0,
+    start: 0,
+    end: 0,
+    backgroundColor: COLORS.text.muted,
+    borderRadius: RADIUS.md,
+  },
+  seat: {
     position: 'absolute',
     top: 0,
     start: 0,
@@ -189,6 +345,12 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     borderWidth: 1,
     borderColor: COLORS.interactive.activeBorder,
+  },
+  list: {
+    flex: 1,
+  },
+  rowGap: {
+    height: ITEM_GAP,
   },
   option: {
     alignItems: 'center',
