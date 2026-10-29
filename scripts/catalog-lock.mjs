@@ -104,6 +104,15 @@ const LOCALES = [
   'ceb',
   'ilo',
   'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
 ];
 const englishHash = createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
 

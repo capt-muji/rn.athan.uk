@@ -185,7 +185,7 @@
   },
   {
     "version": "2.38.1",
-    "reason": "2026-10-29 lanes T-452 and T-453 both step to 2.38.1 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+    "reason": "2026-10-29 T-453's audit fix takes 2.38.1 because the discipline gate allows one patch step from 2.38.0 and lane1/T-452's audit fix already holds that number on its branch; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.39.0",

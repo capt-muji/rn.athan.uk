@@ -1,7 +1,7 @@
 /**
  * The D26 picker names: each language in its own name, sorted by codepoint,
  * so a reader scans for the name they know rather than an English gloss.
- * Latin before Cyrillic before Arabic before Devanagari before Bengali
+ * Latin before Cyrillic before Arabic before Thaana before Devanagari before Bengali
  * before Tamil before Malayalam before Thai before Chinese. Names
  * data, not copy: the scanner's data-module rule allows this module's `name`
  * and `english` fields. The English name is never drawn: the picker's search
@@ -34,6 +34,9 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'sw', name: 'Kiswahili', english: 'Swahili' },
   { id: 'ku', name: 'Kurdî', english: 'Kurdish (Kurmanji)' },
   { id: 'mad', name: 'Madhurâ', english: 'Madurese' },
+  { id: 'kr', name: 'Kanuri', english: 'Kanuri (Kanouri)' },
+  { id: 'mdh', name: 'Magindanawn', english: 'Maguindanao (Magindanawn)' },
+  { id: 'mnk', name: 'Mandinka', english: 'Mandinka (Mandingo)' },
   { id: 'nl', name: 'Nederlands', english: 'Dutch' },
   { id: 'om', name: 'Oromoo', english: 'Oromo' },
   { id: 'uz', name: 'Oʻzbekcha', english: 'Uzbek' },
@@ -41,6 +44,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'pt', name: 'Português', english: 'Portuguese' },
   { id: 'qu', name: 'Runa Simi', english: 'Quechua (Quichua)' },
   { id: 'ro', name: 'Română', english: 'Romanian' },
+  { id: 'aa', name: 'Qafar af', english: 'Afar (Afaraf)' },
   { id: 'sq', name: 'Shqip', english: 'Albanian' },
   { id: 'so', name: 'Soomaali', english: 'Somali' },
   { id: 'tl', name: 'Tagalog', english: 'Tagalog' },
@@ -49,6 +53,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'tr', name: 'Türkçe', english: 'Turkish' },
   { id: 'wo', name: 'Wolof', english: 'Wolof' },
   { id: 'yo', name: 'Yorùbá', english: 'Yoruba' },
+  { id: 'dje', name: 'Zarma', english: 'Zarma (Djerma)' },
   { id: 'ky', name: 'Кыргызча', english: 'Kyrgyz' },
   { id: 'ce', name: 'Нохчийн', english: 'Chechen (Noxchi)' },
   { id: 'ru', name: 'Русский', english: 'Russian' },
@@ -59,11 +64,15 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'ug', name: 'ئۇيغۇرچە', english: 'Uyghur (Uighur)' },
   { id: 'ur', name: 'اردو', english: 'Urdu' },
   { id: 'ar', name: 'العربية', english: 'Arabic' },
+  { id: 'bal', name: 'بلوچی', english: 'Balochi (Baluchi)' },
+  { id: 'skr', name: 'سرائیکی', english: 'Saraiki (Siraiki)' },
   { id: 'sd', name: 'سنڌي', english: 'Sindhi' },
   { id: 'fa', name: 'فارسی', english: 'Persian (Farsi)' },
   { id: 'pa-Arab', name: 'پنجابی', english: 'Punjabi' },
   { id: 'ps', name: 'پښتو', english: 'Pashto (Pushto)' },
   { id: 'ckb', name: 'کوردی', english: 'Kurdish (Sorani)' },
+  { id: 'kas', name: 'کٲشُر', english: 'Kashmiri (Koshur)' },
+  { id: 'dv', name: 'ދިވެހި', english: 'Dhivehi (Maldivian)' },
   { id: 'mr', name: 'मराठी', english: 'Marathi' },
   { id: 'hi', name: 'हिन्दी', english: 'Hindi' },
   { id: 'bn', name: 'বাংলা', english: 'Bengali (Bangla)' },

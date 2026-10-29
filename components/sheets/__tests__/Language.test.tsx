@@ -11,7 +11,7 @@ import type { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { insideScroll, london } from '@/__tests__/harness';
 import { COLORS, SPACING } from '@/shared/constants';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import * as LanguageStore from '@/stores/language';
 import { rescheduleAllForLanguageChange } from '@/stores/notifications';
@@ -284,6 +284,10 @@ describe('the language sheet rebuilt for the seventy-five (T-451)', () => {
     await fireEvent.changeText(field(), 'zzz');
 
     expect(screen.getByText('No languages found')).toBeOnTheScreen();
+  });
+
+  it('names every shipped id, so a dropped endonym row cannot pass', () => {
+    expect(LANGUAGE_NAMES).toHaveLength(LOCALE_IDS.length);
   });
 
   it('clears the query when the sheet closes, so the next open is the whole list', async () => {

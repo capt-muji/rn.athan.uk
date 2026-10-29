@@ -3,6 +3,7 @@
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
  * table, and the locale declarations cover the fifty-eight-language set on both
+ * table, and the locale declarations cover the fifty-nine-language set on both
  * platforms.
  */
 
@@ -87,6 +88,15 @@ const LOCALES = [
   'ceb',
   'ilo',
   'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];

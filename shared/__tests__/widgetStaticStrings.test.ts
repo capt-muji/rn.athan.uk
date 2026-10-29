@@ -1,6 +1,7 @@
 /**
  * The widget statics table (D44, R7.2): every neutral, stale and catch card
  * in both widget modules draws its copy from an inline fifty-eight-language table
+ * in both widget modules draws its copy from an inline fifty-nine-language table
  * keyed by the device locale the widget process itself reads through the
  * runtime patch's __expoWidgetDeviceLocale global. This suite pins the
  * rendered bytes to the plan's table row for row, locale for locale, and the
@@ -250,6 +251,15 @@ const LOCALES = [
   'ceb',
   'ilo',
   'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
 ] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;

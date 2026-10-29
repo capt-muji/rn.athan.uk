@@ -90,6 +90,22 @@ describe('resolveInitialLocale', () => {
     ['ceb-PH', 'ceb', 'ceb'],
     ['ilo-PH', 'ilo', 'ilo'],
     ['vi-VN', 'vi', 'vi'],
+    ['skr-PK', 'skr', 'skr'],
+    ['bal-PK', 'bal', 'bal'],
+    ['bal-IR', 'bal', 'bal'],
+    ['ks-IN', 'ks', 'kas'],
+    ['ks-Arab-IN', 'ks', 'kas'],
+    // Devanagari Kashmiri stays unshipped: a ks-Deva reader is not served Perso-Arabic copy
+    ['ks-Deva-IN', 'ks', 'en'],
+    ['dv-MV', 'dv', 'dv'],
+    ['aa-DJ', 'aa', 'aa'],
+    ['aa-ET', 'aa', 'aa'],
+    ['mdh-PH', 'mdh', 'mdh'],
+    ['kr-NG', 'kr', 'kr'],
+    ['kr-NE', 'kr', 'kr'],
+    ['mnk-GM', 'mnk', 'mnk'],
+    ['mnk-SN', 'mnk', 'mnk'],
+    ['dje-NE', 'dje', 'dje'],
     // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
     ['pa-Guru-IN', 'pa', 'en'],
     ['pa-IN', 'pa', 'en'],
@@ -213,7 +229,7 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
     'mirrors the chevron under %s, the later RTL locales',
     (locale) => {
       setActiveLocale(locale);
@@ -227,7 +243,7 @@ describe('chevronFor', () => {
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
     'carries the Arabic comma under %s',
     (locale) => {
       setActiveLocale(locale);

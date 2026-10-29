@@ -1,5 +1,6 @@
 /**
  * The locale resolution core: which of the fifty-eight shipped locales the app speaks,
+ * The locale resolution core: which of the fifty-nine shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -79,13 +80,35 @@ export const LOCALE_IDS = [
   'ceb',
   'ilo',
   'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set([
+  'ar',
+  'fa',
+  'ur',
+  'ps',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+]);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
@@ -168,6 +191,20 @@ const resolvePaTag = (locale: DeviceLocaleInfo): 'pa-Arab' | null => {
   return 'pa-Arab';
 };
 
+/**
+ * Kashmiri ships under its CLDR-external tag kas, while a device reports the CLDR code ks
+ * (bare, region-tagged or Arab-tagged), so a ks tag resolves kas - the pa-Arab precedent
+ * of mapping a foreign tag onto the shipped id (plan T-453 decision 3). CLDR's ks-Deva is
+ * Devanagari Kashmiri, which this catalog does not serve, so it falls through to en on the
+ * resolvePaTag Guru/IN pattern.
+ */
+const resolveKasTag = (locale: DeviceLocaleInfo): 'kas' | null => {
+  const kashmiri = locale.languageCode === 'ks' || locale.languageTag === 'ks' || locale.languageTag.startsWith('ks-');
+  if (!kashmiri) return null;
+  if (locale.languageTag.split('-').includes('Deva')) return null;
+  return 'kas';
+};
+
 export const resolveInitialLocale = (
   preference: string | null,
   deviceLocales: readonly DeviceLocaleInfo[]
@@ -184,6 +221,8 @@ export const resolveInitialLocale = (
     if (zh !== null) return zh;
     const pa = resolvePaTag(locale);
     if (pa !== null) return pa;
+    const kas = resolveKasTag(locale);
+    if (kas !== null) return kas;
     if (locale.languageCode !== null && (LOCALE_IDS as readonly string[]).includes(locale.languageCode)) {
       return locale.languageCode as LocaleId;
     }

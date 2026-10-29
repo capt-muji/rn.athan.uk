@@ -72,7 +72,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
   return styles;
 };
 
-it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
   'pins every settings-sheet chevron paragraph under %s',
   async (locale) => {
     const styles = await settingsChevronStylesUnder(locale);
@@ -89,7 +89,7 @@ it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
   }
 );
 
-it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
   'pins the help action chevron paragraph under %s',
   async (locale) => {
     const styles = await helpChevronStylesUnder(locale);
