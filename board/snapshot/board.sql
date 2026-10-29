@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict OBypnaHkFbbCXFgavTXOmXmvcBeqv8fAPI2HWO59cHmP8UAqhigtQbp5jBrbOxb
+\restrict g8hU1uRVo726tqr6rcYMdIhwmyfeW6qxDEPcDcW3TUaRWzHyR3Cfz2184soVU91
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5775,18 +5775,6 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (74, 1, 64, 8, 4, 'Volume-source copy: alert and sound sheets plus a help question', 'Owner ask, 2026-10-12: text in the alert sheet and the athan sound sheet explaining that Android plays these alarms at the ALARM volume, not the notification volume; plus a Help modal question "Which volume controls the sound level?" (owner wants the wording improved). OWNER RULINGS 2026-10-12 (in session): add the copy to BOTH sheets for absolute clarity even though Help already carries the question (verified in-repo: `help.a.quiet` "It plays at alarm volume, not ring volume" plus `help.step.alarmVolume` exist, and their wording is itself Android-flavoured, so the help answer joins the platform split); the copy is PLATFORM-SPECIFIC by rule - Android states the alarm volume (row 27''s proof), iOS states its own path, each rendered for the platform running (planning verifies the iOS path against Apple''s documentation before the copy is drafted; unverified at planning: standard iOS notification sounds follow the ringer volume and are silenced by the silent switch). Copy drafts in six languages take the owner''s D42 verification during planning. Serialized behind row 63: both edit the six catalog files
 
 Status note: 2026-10-13, audited and pushed: alert and sound sheets carry the platform-keyed volume note (Android alarm volume per row 27''s proof, iOS the documented Ringer & Alerts path per D64.4), the Help question is reworded with an iOS answer added; six catalogs and the lock in one commit. The executor''s coverage-gate stop became replan D64.9 (the dead null-answer drop and its ` null` union deleted, shared/help.ts); the two-reviewer audit fixed one stale pin-header comment at 2.0.178, carried the hi sheet note''s dropped "& Alerts" half to the owner''s copy veto, and rejected the platform-harness note. The copy veto on all five drafts stays open with the owner', NULL, NULL, NULL, 53000, '2026-10-18 23:35:56.762749+00', '2026-10-19 02:54:08.357667+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (484, 1, 484, 3, 9, 'Two more lock screen layouts: the prayer name above the absolute time, and above the countdown, on both schedules', 'Goal: add Lock Screen widget layouts 4 and 5 on both schedules, each the self-contained composition layout 3 established, stacked as two centred lines: layout 4 reads the prayer name above the absolute time, layout 5 reads the prayer name above the ticking countdown. Owner order 2026-10-29.
-
-Where: widgets/LockPrayerWidget.tsx (two new widget-directive layout bodies and four createWidget kinds), stores/widget.ts (the four kinds join the standard and the extras pushes), app.json (the four gallery entries and their strings for every locale), shared/i18n/native-strings.json (the same gallery strings on the native table''s side), shared/__mocks__/widgets/LockPrayerWidget.ts, and the suites that enumerate the layouts.
-
-Acceptance:
-- [ ] The gallery offers Next Prayer (Layout 4), Extra Times (Layout 4), Next Prayer (Layout 5) and Extra Times (Layout 5), each accessoryRectangular and accessoryInline.
-- [ ] Layout 4''s rectangular face renders the prayer name on the first line and the absolute time on the second, centred, with no countdown.
-- [ ] Layout 5''s rectangular face renders the prayer name on the first line and a self-ticking countdown on the second, centred, with no absolute time.
-- [ ] Every push updates all eighteen kinds, the four new ones included, on both schedules.
-- [ ] Both layouts'' neutral, stale and catch cards render from the static table in all seventy-five locales, and the inline face carries the name and the absolute time.
-- [ ] Every gallery string the four new kinds need exists in every locale in app.json and native-strings.json, and the locale parity suite passes.
-- [ ] yarn validate exits 0 at full coverage.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 09:53:47.60638+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (278, 1, 278, NULL, 4, 'Step 2: ten screenshots from the iPhone XS attached in order', '', NULL, NULL, NULL, 2000, '2026-10-20 03:54:15.288006+00', '2026-10-20 05:15:59.27803+00', NULL, NULL, NULL, NULL, NULL, 276, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (476, 1, 476, 3, 9, 'The language picker becomes a wheel: a centre-settling faint candidate under the scroll, the purple seat stays on the locale in force, and the change commits when the sheet closes', 'Goal: change the language sheet from tap-to-commit-and-close to an iOS-picker-feel wheel without the iOS looks: the list settles row by row on the sheet''s centreline, a very faint candidate band rides the row a stop would select while the purple highlight stays on the locale actually in force, a tap stages a choice instead of committing it, and the staged change commits together with the close (swipe down, back gesture or the close affordance). Code only until the run''s single final build. Owner order 2026-10-29.
 
@@ -6661,6 +6649,18 @@ Acceptance for this finding:
 - [ ] The badge''s ink never reaches a dark veil colour while any of it is visible: it either leaves with the overlay''s fade or sits under the veil unchanged.
 - [ ] The badge''s exit is a fade or a coincident drop with the rest of the page''s overlay treatment, never a one-frame disappearance, and the close path is symmetric with it.
 - [ ] Red-first guards cover the entry path (the badge is not displayable above the veil) and the ink''s target at entry, and yarn validate exits 0 at full coverage.', NULL, NULL, NULL, 27500, '2026-10-29 09:55:42.394485+00', '2026-10-29 09:59:29.687547+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (484, 1, 484, 3, 9, 'Two more lock screen layouts: the prayer name above the absolute time, and above the countdown, on both schedules', 'Goal: four Lock Screen widget layouts on both schedules, each a self-contained composition in gallery order: Layout 1 (name beside a live countdown), Layout 2 (name beside the absolute time, one line), Layout 3 (prayer name above the absolute time) and Layout 4 (prayer name above the ticking countdown), the name bold on 3 and 4. Owner order 2026-10-29 retired the first landed shape''s three-line layout and renumbered the surviving pair.
+
+Where: widgets/LockPrayerWidget.tsx (four widget-directive bodies and eight createWidget kinds), stores/widget.ts (eight lock kinds on each schedule''s push), app.json (the eight gallery entries and their strings in every locale), shared/i18n/native-strings.json (the same strings on the native table''s side), shared/i18n/cjk-glyph-lock.json and the subset fonts (recut against the smaller closed set), shared/__mocks__/widgets/LockPrayerWidget.ts, and the suites that enumerate the layouts.
+
+Acceptance:
+- [x] The gallery offers Next Prayer and Extra Times on Layouts 1 to 4, each accessoryRectangular and accessoryInline.
+- [x] Layout 3''s rectangular face renders the bold prayer name on the first line and the absolute time on the second, centred, with no countdown.
+- [x] Layout 4''s rectangular face renders the bold prayer name on the first line and a self-ticking countdown on the second, centred, with no absolute time.
+- [x] Every push updates all sixteen kinds, the eight lock kinds included, on both schedules.
+- [x] All four layouts'' neutral, stale and catch cards render from the static table in all seventy-five locales, and the inline face carries the name and the absolute time.
+- [x] Every gallery string the four layouts need exists in every locale in app.json and native-strings.json, the retired kind''s copy is gone from both, and the locale parity suite passes.
+- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds.', NULL, NULL, NULL, 21500, '2026-10-29 09:37:06.095277+00', '2026-10-29 10:33:29.50456+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 
 
 --
@@ -8957,9 +8957,13 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2224, 4, 'activity', 'owner', NULL, 'description', '2026-10-19 19:49:05.960805+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: close the 2026-10-14 bundle''s remainder - one verification question and the repository hygiene pass.\n\nWhere: the 3T, the repo.\n\nThe bundle''s other parts are closed or superseded (owner''s rulings 2026-10-19): the patch questions are the board''s upstream rows (#51 #230 #231 #232 #239) under the standing rule that every patch is re-proven at each re-pin; the one line of qibla copy is merged and the owner read it fine on glass; the hygiene pass stays and this row is worked last among the current Backlog rows.\n\nLEFT from the original bundle: one build (the one without the Android hunks) was never made because the owner lacked the 3T. The 2026-10-17 SDK 58 re-pin regenerated every patch whole and proved them on phones, so the planner''s first check is whether that covers the leftover; if it does, this row closes by verification.\n\nAcceptance:\n- [ ] the leftover''s purpose verified against the 2026-10-17 re-pin record: covered, or one build and one read on the 3T\n- [ ] the hygiene pass run once\n- [ ] no patch or upstream work: those live on the board''s rows"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4682, 488, 'activity', 'owner', NULL, 'status', '2026-10-29 09:53:47.582925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2228, 4, 'comment', 'owner', 'Re-scoped 2026-10-19 by the owner: the qibla copy verified on glass (''Hold flat and turn slowly'' reads right on the sheet), the leftover 3T build covered by the owner''s full-app test on the 3T, and this row becomes the board''s last ticket - a deep typed review and cleanup of code and board, picked only after every other row is done.', NULL, '2026-10-19 19:49:35.300345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4696, 484, 'activity', 'owner', NULL, 'status', '2026-10-29 10:14:41.519977+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2229, 253, 'activity', 'owner', NULL, 'status', '2026-10-19 19:59:04.845122+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2230, 253, 'comment', 'owner', 'Closed 2026-10-19 by the owner''s ruling: no store release is planned, the exact-alarm fix has run perfectly on the owner''s affected phones for weeks, and SDK 58 carries it officially, so the store-gated close-out has nothing to wait for. One line survives here for the day a store release happens: the Play in-app update happy path has never run, because side-loaded builds answer ERROR_APP_NOT_OWNED; it gets its own row at the owner''s order then.', NULL, '2026-10-19 19:59:04.877918+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2231, 4, 'activity', 'owner', NULL, 'description', '2026-10-19 20:02:24.866749+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the last row on the board - a deep review and cleanup of the codebase (typing, dead code, pattern drift) and the board, so both end clean.\n\nWhere: the whole repository and the open board.\n\nTHE ORDER OF THIS ROW (owner, 2026-10-19): picked LAST, after every other row is Done or parked. The number-order picking rule yields to this order.\n\nCLOSED 2026-10-19 by the owner''s rulings: the one line of qibla copy verified on glass (the sheet''s subheading reads right); the one leftover build covered by the owner''s full-app test on the 3T, which works perfectly; the patch questions owned by the upstream rows; the 2026-10-14 hygiene check (already done) folds into this broader pass.\n\nAcceptance:\n- [ ] every other board row Done or parked\n- [ ] a deep typed code review run across the repo, findings fixed or ticketed\n- [ ] dead code, stale comments and pattern drift cleaned\n- [ ] a sensitive-content sweep across the working tree AND git history: no home paths, no last name, no personal or family media, nothing that identifies the owner beyond the public Play Store name (owner''s order 2026-10-19: the owner is public, the last name is not), with any history hit tabled to the owner for the rewrite decision\n- [ ] the board swept: no defect the integrity checklist can catch\n- [ ] yarn validate green at the close"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4697, 484, 'comment', 'owner', 'Owner order 2026-10-29: the stacked three-line layout goes entirely, and four layouts remain in gallery order - 1 the countdown pair, 2 the one-liner, 3 the name above the absolute time, 4 the name above the countdown - with the name bold on 3 and 4. Execution reopened in this session.', NULL, '2026-10-29 10:14:41.546888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4698, 484, 'activity', 'owner', NULL, 'status', '2026-10-29 10:19:18.387419+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4701, 484, 'activity', 'owner', NULL, 'description', '2026-10-29 10:27:10.756109+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: four Lock Screen widget layouts on both schedules, each a self-contained composition in gallery order: Layout 1 (name beside a live countdown), Layout 2 (name beside the absolute time, one line), Layout 3 (prayer name above the absolute time) and Layout 4 (prayer name above the ticking countdown), the name bold on 3 and 4. Owner order 2026-10-29 retired the first landed shape''s three-line layout and renumbered the surviving pair.\n\nWhere: widgets/LockPrayerWidget.tsx (four widget-directive bodies and eight createWidget kinds), stores/widget.ts (eight lock kinds on each schedule''s push), app.json (the eight gallery entries and their strings in every locale), shared/i18n/native-strings.json (the same strings on the native table''s side), shared/i18n/cjk-glyph-lock.json and the subset fonts (recut against the smaller closed set), shared/__mocks__/widgets/LockPrayerWidget.ts, and the suites that enumerate the layouts.\n\nAcceptance:\n- [x] The gallery offers Next Prayer and Extra Times on Layouts 1 to 4, each accessoryRectangular and accessoryInline.\n- [x] Layout 3''s rectangular face renders the bold prayer name on the first line and the absolute time on the second, centred, with no countdown.\n- [x] Layout 4''s rectangular face renders the bold prayer name on the first line and a self-ticking countdown on the second, centred, with no absolute time.\n- [x] Every push updates all sixteen kinds, the eight lock kinds included, on both schedules.\n- [x] All four layouts'' neutral, stale and catch cards render from the static table in all seventy-five locales, and the inline face carries the name and the absolute time.\n- [x] Every gallery string the four layouts need exists in every locale in app.json and native-strings.json, the retired kind''s copy is gone from both, and the locale parity suite passes.\n- [x] yarn validate exits 0 at full coverage, and the iPhone XS carries a development build with the four kinds."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2232, 4, 'comment', 'owner', 'Scope added by the owner 2026-10-19: the pass checks the working tree and git history for anything sensitive - the owner''s home path, the owner''s last name (the Play Store first name is public and fine), and any family or personal pictures. Nothing of the kind belongs in the repository.', NULL, '2026-10-19 20:02:24.886365+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2233, 4, 'comment', 'owner', 'Sensitive-sweep baseline 2026-10-19: the last name has zero hits in the working tree, in HEAD, and in every commit of history (git log -S, both spellings). The four tracked /Users/ references are benign: three are vendored skill docs using generic example accounts, and one is the guard test asserting the widgets patch carries no home path. The only tracked image outside assets/ is a global-prayer-times feature reference photo, not personal media. The pass re-runs the sweep for anything beyond these named classes.', NULL, '2026-10-19 20:03:09.812243+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2234, 33, 'activity', 'owner', NULL, 'title', '2026-10-19 20:21:07.920938+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "iPhone Duo: the adaptive layout answers Apple''s requirement"}, "from": {"value": "iPhone Duo support: one schedule on both displays through the existing adaptive layout (the owner''s 2026-10-18 evening order; the benched two-pane design superseded and its branch kept as history)."}}', NULL);
@@ -8990,13 +8994,40 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2257, 11, 'activity', 'owner', NULL, 'type', '2026-10-19 20:37:31.933525+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 10, "value": "Testing"}, "from": {"id": 4, "value": "Investigation"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2258, 11, 'activity', 'owner', NULL, 'estimate', '2026-10-19 20:37:31.933525+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2270, 11, 'comment', 'owner', 'Planned: the plan doc T-130 carries the measured v1-blob face (already lawful at uat, so the re-issue is law-named and byte-identical) and one code step. Grilled, one major fixed (the zero-drop pins now name their freeze instants).', NULL, '2026-10-19 20:43:04.918806+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4699, 484, 'comment', 'owner', 'Reviewed ce04dfa2 against Plan: #484 and the owner''s order of 2026-10-29. The change does what the order says: layouts 1 and 2 unchanged, layout 3 the name over the absolute time with no countdown, layout 4 the name over a self-ticking countdown with no absolute time, the name bold at 16pt on both, and both inline faces carrying the name and the absolute time. The retired kind is gone from app.json, both schedules'' pushes, the mock and every suite, and every sixteen/eight count follows. I ran tsc, biome and jest --coverage: 240 suites, 8087 tests, 100 percent on all four metrics. All four display names and four descriptions resolve in the 74 locale blocks plus en, app.json and native-strings.json hold identical gallery keys with the retired copy deleted from both, and the recut CJK binaries match shared/i18n/cjk-glyph-lock.json character for character.
+
+suggestion: Plan: #484 lines 34-37, the step list describes work that did not happen. "The two layout bodies and their four kinds", "The four kinds on both schedules'' pushes" and "the enumerating suites widened to five layouts" are all false of this commit: two bodies reused kinds 3 and 4 with no kinds added, eight lock kinds go out across the two pushes, and the suites went from five layouts to four. Rewrite the four steps against the renumbering.
+
+suggestion: Plan: #484 lines 5, 7-8, 14, 18, 24 and 28-30 still carry the pre-order design: "four new gallery kinds beside the six" (5), layouts 4 and 5 (7-8), "Layout 3 already stacks" and a type scale that is "all layout 3''s" (14), "two more bodies" (18), "Only the four display names are new" (24, none are: 3 and 4 already existed), "Eighteen kinds push" and "the five tables" (28-30). Restate them as four layouts, eight lock kinds, sixteen kinds pushed, four tables and no new display name.
+
+suggestion: shared/__tests__/nativeLocalesConfig.test.ts:269 - the title says "derives all 18 defaults when the resolution strips expo-widgets" while line 279 asserts 34. Eighteen is the count with the plugin present, 34 after the retired kind''s four keys go. Say 34 in the title.
+
+suggestion: shared/__tests__/widgetLockRenderer.test.ts:291-297 - the comment says "The stacked layouts alone leave the name unbolded: the line break separates the readings already", which is the opposite of the owner''s order and of the assertion six lines below that requires bold on layouts 3 and 4. It also still reads "16pt on layouts 3-5" and "layouts 3 to 5", as does the title at line 282. Correct it to layouts 3 and 4 with a bold name on both, and drop the nameIsBold column at 298-302 now that every row passes true: the medium branch at 306 can no longer be reached.
+
+nitpick: shared/__tests__/widgetContract.test.ts:160-161 says "The lock module holds three layouts ... leaves the other two unguarded" under a test that walks four, and shared/__tests__/widgetStaticStrings.test.ts:468 says "the module''s five finder copies" where four bodies carry four. Say four in both.
+
+question: the ticket description and subtask T-486 still name layouts 4 and 5, eighteen kinds and PrayerLockWidget5, all removed by the order. Restate the acceptance list and the step-2 description against layouts 1 to 4 and sixteen kinds, so the close records what shipped.', NULL, '2026-10-29 10:25:54.229064+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4703, 484, 'comment', 'owner', 'The rework is audited and installed: 2.40.1 carries four layouts, the retired three-line one gone, layouts 3 and 4 the two-line pair with a bold name. Long-press the lock screen and add a widget. The three-line layout you removed leaves the gallery.', NULL, '2026-10-29 10:33:29.479053+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2262, 11, 'activity', 'owner', NULL, 'label_remove', '2026-10-19 20:37:31.94925+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 143, "value": "Investigation"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2264, 258, 'activity', 'owner', NULL, 'parent', '2026-10-19 20:37:31.984121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "T-130"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2265, 11, 'activity', 'owner', NULL, 'subtask_add', '2026-10-19 20:37:31.984121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 258, "value": "T-258"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2271, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:43:34.751945+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4700, 484, 'comment', 'owner', 'Blind review of ce04dfa2. The behaviour is right: layouts 1 and 2 untouched, 3 the name over the absolute time, 4 the name over the ticking countdown, the name bold at 16pt on both, four layouts under eight kinds, sixteen kinds pushed, and the retired kind gone from app.json, both pushes, the mock and every suite. tsc, biome and jest --coverage are green at 240 suites, 8087 tests, 100 percent on all four metrics, and the recut CJK binaries and lock agree character for character.
+
+suggestion: shared/__tests__/widgetLockRenderer.test.ts:291-297 - the comment says "The stacked layouts alone leave the name unbolded" and "16pt on layouts 3-5", the opposite of what this commit ships and of the assertion at :301. Rewrite it for layouts 3 and 4 with a bold name on both, or the next reader reverts the bold.
+suggestion: shared/__tests__/nativeLocalesConfig.test.ts:269 - the title says all 18 defaults while :279 asserts 34. Eighteen is the count with the plugin present, 34 after the retired kind''s four keys go. Say 34 in the title.
+suggestion: shared/__tests__/widgetLockRenderer.test.ts:298-306 - every row now passes nameIsBold true, so the medium branch at :306 cannot be reached and the title''s "only where it should" claims a discrimination the table can no longer make. Drop the column and assert bold on the name.
+suggestion: stores/widget.ts:156 - "its six widget kinds" describes a push that now reaches eight kinds, four home and four lock, in each schedule. Say eight, as :234 already says sixteen.
+suggestion: shared/__tests__/widgetLockRenderer.test.ts:282 - the title still says "layouts 3 to 5", and only 3 and 4 remain. Say 3 and 4.
+nitpick: shared/__tests__/widgetContract.test.ts:160-161 - "The lock module holds three layouts ... leaves the other two unguarded" sits under a test that walks four. Say four and the other three.
+nitpick: shared/__tests__/widgetStaticStrings.test.ts:468 - "the module''s five finder copies" where four bodies carry four.
+
+The plan-conformance review of this commit (comment 4699) named six of these same lines, and none has changed at HEAD.', NULL, '2026-10-29 10:26:33.038594+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2266, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:41:44.90179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4702, 484, 'activity', 'owner', NULL, 'field', '2026-10-29 10:33:29.454339+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s read of 2.40.1 on the iPhone XS: four layouts, the name bold on 3 and 4, installed and launched from the ios-build worktree."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2267, 254, 'comment', 'owner', 'Planned: the plan doc on this ticket carries the three steps (trace, ruling, close) at 3 points, and the griller''s two findings are answered in it.', NULL, '2026-10-19 20:41:44.935704+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2268, 254, 'activity', 'owner', NULL, 'status', '2026-10-19 20:41:49.827986+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4704, 484, 'activity', 'owner', NULL, 'status', '2026-10-29 10:33:29.513255+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2269, 11, 'activity', 'owner', NULL, 'status', '2026-10-19 20:43:04.897936+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2272, 254, 'comment', 'owner', 'Mechanism, from the code and Apple''s docs: both CoreLocation streams were dead together. The install-over kept the grant, so every open read granted, armed the heading watch and the accuracy watch, and got nothing from either: Apple documents that a heading start which cannot deliver raises no event at all. With no accuracy event the gate never opened (isCertain stays false), so the wave held and the lost hint read beneath it. The permission cycle rewrote the app''s authorization record in the system''s location service; the next open registered against a live record and drew. The kCLHeadingFilterNone patch is acquitted: the same build works after the toggle.', NULL, '2026-10-19 20:46:24.560884+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2273, 254, 'comment', 'owner', 'Ruling, agent-ruled, argued in the plan doc''s Findings: the app CAN detect the state (grant reads granted, heading available, zero events from both streams across an open, while interference still delivers invalid events and reports itself through the error channel the app does not currently wire), and the app CANNOT recover it itself (fresh managers per open never cleared it; no API resets the system''s record; only the user''s permission cycle, a privacy reset or a restart does). Two orders wait on the owner, both because qibla is locked: build the detection, and for that state offer the Settings route naming the permission cycle. Until an order, nothing changes.', NULL, '2026-10-19 20:46:24.566514+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -12807,7 +12838,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (692, 454, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (693, 476, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (694, 480, 3, 'the owner''s on-glass read in the run''s single final development build on the iPhone XS, and the standing push ruling on the unpushed uat line', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.39.4 on the iPhone XS, installed and launched from the ios-build worktree at uat.', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (695, 484, 3, 'The owner''s read of 2.40.1 on the iPhone XS: four layouts, the name bold on 3 and 4, installed and launched from the ios-build worktree.', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -14262,6 +14293,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1164, 487, 4, 'Done', 'completed', '2026-10-29 09:53:47.546413+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1043, 447, 4, 'Done', 'completed', '2026-10-28 23:51:54.227377+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1041, 428, 8, 'Audit', 'started', '2026-10-28 23:51:38.996345+00', '2026-10-28 23:51:54.382183+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1168, 484, 3, 'In progress', 'started', '2026-10-29 10:14:41.516333+00', '2026-10-29 10:19:18.383417+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1000, 432, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.873+00', '2026-10-28 23:39:46.335242+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1032, 432, 4, 'Done', 'completed', '2026-10-28 23:39:46.335242+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1165, 488, 4, 'Done', 'completed', '2026-10-29 09:53:47.580386+00', NULL);
@@ -14271,7 +14303,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1054, 428, 8, 'Audit', 'started', '2026-10-28 23:57:54.168624+00', '2026-10-29 00:29:55.116635+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1161, 484, 8, 'Audit', 'started', '2026-10-29 09:46:27.680282+00', '2026-10-29 09:53:47.610428+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1033, 429, 3, 'In progress', 'started', '2026-10-28 23:39:46.368217+00', '2026-10-28 23:46:41.78594+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1166, 484, 9, 'Awaiting Owner', 'started', '2026-10-29 09:53:47.610428+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1166, 484, 9, 'Awaiting Owner', 'started', '2026-10-29 09:53:47.610428+00', '2026-10-29 10:14:41.516333+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1034, 433, 4, 'Done', 'completed', '2026-10-28 23:42:18.22997+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1047, 442, 4, 'Done', 'completed', '2026-10-28 23:52:41.077365+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1167, 490, 1, 'Backlog', 'backlog', '2026-10-29 09:55:42.394+00', NULL);
@@ -14282,12 +14314,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1007, 439, 1, 'Backlog', 'backlog', '2026-10-28 23:25:20.06+00', '2026-10-28 23:58:12.495973+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1055, 439, 4, 'Done', 'completed', '2026-10-28 23:58:12.495973+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1056, 429, 8, 'Audit', 'started', '2026-10-28 23:58:17.739256+00', '2026-10-29 00:29:55.184015+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1169, 484, 8, 'Audit', 'started', '2026-10-29 10:19:18.383417+00', '2026-10-29 10:33:29.508936+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1037, 441, 4, 'Done', 'completed', '2026-10-28 23:45:46.550249+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1003, 435, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.962+00', '2026-10-28 23:46:35.364735+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1038, 435, 4, 'Done', 'completed', '2026-10-28 23:46:35.364735+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1042, 446, 4, 'Done', 'completed', '2026-10-28 23:51:54.155038+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1044, 448, 4, 'Done', 'completed', '2026-10-28 23:51:54.311556+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1046, 436, 4, 'Done', 'completed', '2026-10-28 23:52:14.782829+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1170, 484, 9, 'Awaiting Owner', 'started', '2026-10-29 10:33:29.508936+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1051, 429, 8, 'Audit', 'started', '2026-10-28 23:56:50.416864+00', '2026-10-28 23:57:01.308809+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1058, 444, 4, 'Done', 'completed', '2026-10-29 00:05:14.317207+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1059, 445, 4, 'Done', 'completed', '2026-10-29 00:08:56.483801+00', NULL);
@@ -21692,44 +21726,53 @@ INSERT INTO public.project_document (id, project_id, parent_id, title, content, 
 
 ## What lands
 
-Two Lock Screen layouts, each registered on both schedules, so four new gallery kinds beside the six that carry layouts 1 to 3.
+Four Lock Screen layouts, each registered on both schedules, so eight gallery kinds.
 
-- **Layout 4 - name above, absolute time below.** Rectangular face only: the prayer name on the first line, the absolute time (`nextTime`) on the second, both centred, no countdown.
-- **Layout 5 - name above, countdown below.** Rectangular face only: the prayer name on the first line, a self-ticking countdown on the second, both centred, no absolute time.
+- **Layout 1** - the name beside a live countdown.
+- **Layout 2** - the name beside the absolute time, on one line.
+- **Layout 3** - the prayer name above the absolute time, both bold and muted in that order.
+- **Layout 4** - the prayer name above the ticking countdown.
 
-The inline face carries the name and the absolute time on both, exactly as layouts 1 to 3 do, because SwiftUI stops updating a timer Text once it is concatenated into a single line.
+Every name is bold at 16pt on layouts 3 and 4 and 17pt bold on 1 and 2; the second reading is muted, and the inline face carries the name and absolute time on all four because SwiftUI stops a timer Text once concatenated.
+
+## Revision, owner order 2026-10-29 (governs)
+
+The first landed shape had five layouts: the stacked three-line one (name, time and countdown), then the two-line pair. The owner retired the three-line layout outright and kept the two-line pair, which renumber as 3 and 4, with the prayer name bold on both. The ticket''s opening description and the sections below predate that order and are kept only as the record of how the module got here: read every count of five, six, ten, fourteen or eighteen kinds, and every mention of Layout 5, against this section.
+
+Consequences the change carried: the retired kind''s four gallery strings went from app.json and native-strings.json together in all seventy-five locales, the two surviving layouts reuse the existing "Next prayer time." and "Countdown to the next prayer." descriptions rather than adding translations, both schedules push eight lock kinds instead of ten (sixteen in all, home included), and the CJK subsets were recut against the smaller closed string set.
 
 ## Why this shape
 
-Layout 3 already stacks: a name-and-time row over a ticking countdown. Layouts 4 and 5 are that stack with one of the two lower readings removed and the remaining reading given the whole second line. Nothing new is invented: the type scale (16pt name, 16pt second reading, 0.88 floor), the muted second reading, the vibrant-monochrome colours and the container-width root are all layout 3''s.
+Each layout is a self-contained composition, and the two-line pair keeps the smallest hierarchy that still separates the name from its reading: bold name on top, one muted reading below. Nothing new is invented - the type scale (16pt, 0.88 floor), the muted second reading, the vibrant-monochrome colours and the container-width root are shared across the stacked layouts.
 
 ## The constraint that decides the file shape
 
-The `''widget''` directive serializes each layout body alone, so a layout cannot reference a helper or a table declared outside its own body. The module therefore holds one self-contained function per layout, and the 990-line static table (seventy-five locales) is copied whole into each. Layouts 4 and 5 follow the same rule: two more bodies, each carrying its own copy, byte-identical to the table the statics suite pins.
+The `''widget''` directive serializes each layout body alone, so a layout cannot reference a helper or a table declared outside its own body. The module therefore holds one self-contained function per layout, and the 990-line static table (seventy-five locales) is copied whole into each. All four do this, byte-identical to the table the statics suite pins.
 
 ## Alternatives rejected
 
-- **One function, two configs.** Rejected: the directive serializes a single body, so a shared body cannot carry two kinds, and a parameterised body would still need both kinds'' defaults inside it without saving a line.
-- **Reuse layout 3 and hide a row.** Rejected: a hidden row still occupies the stack, and the kind the gallery offers must render its own composition; the owner asked for two layouts, not a toggle.
-- **New gallery descriptions for layouts 4 and 5.** Rejected in favour of reusing the existing en literals `Next prayer time.` and `Countdown to the next prayer.`, which every locale already carries, so no new translation is invented. Only the four display names are new, and each is layout 3''s display name with the digit changed, which is a substitution and not a translation.
+- **One function, two configs.** Rejected: the directive serializes a single body, so a shared body cannot carry two kinds.
+- **Keeping the three-line layout.** Rejected by the owner: the two-line pair covers its readings without the crowding.
+- **New gallery descriptions.** Rejected in favour of reusing the existing en literals every locale already carries, so no translation is invented.
+- **A What''s New item.** None ships; the archive''s own rule is that a release adding no item silent-ships, and an item would need new copy in seventy-five locales.
 
 ## Risks
 
-- **Four more kinds on every push.** A widget push reloads every kind''s timeline; the repo''s standing note is that ten kinds a minute exhausted the extension''s CPU budget, and the fix was to stop pushing per minute, not to cap kinds. Eighteen kinds push only on data change, same as today.
-- **A missed locale row.** The gallery parity suite fails loudly if any of the four display names is missing from any locale in app.json or native-strings.json.
-- **Copy drift between the five tables.** The statics suite compares every inline table against `shared/i18n/widget-statics.json` for all seventy-five locales, so a drifted copy fails on the first run.
+- **Eight kinds per schedule on every push.** A push reloads every kind''s timeline, and the repo''s standing note is that the fix for cost was to stop pushing per minute, not to cap kinds. Sixteen kinds push only on data change.
+- **A missed locale row.** The gallery parity suite fails loudly if a display name is missing from any locale in app.json or native-strings.json.
+- **Copy drift between the four tables.** The statics suite compares every inline table against shared/i18n/widget-statics.json for all seventy-five locales.
 
 ## Steps
 
-1. The two layout bodies and their four kinds, with renderer pins.
+1. The two stacked layout bodies and their four kinds, with renderer pins.
 2. The four kinds on both schedules'' pushes, with the push suites.
 3. The gallery entries and their strings in every locale, with the parity suite.
-4. The enumerating suites widened to five layouts, the feature minor bump, and `yarn validate` green.
+4. The enumerating suites widened to four layouts, the feature minor bump, and `yarn validate` green.
 
 ## Device
 
-None in this run. The owner reads both layouts on the iPhone XS and decides; the run stops at Awaiting Owner with the owner as the reader.
-', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 59392, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 09:37:17.484844+00', '2026-10-29 09:52:24.143163+00');
+The owner reads the layouts on the iPhone XS. The run builds and installs a development build carrying the four kinds and stops at Awaiting Owner.
+', NULL, 'file-text', '{}', false, false, false, NULL, NULL, 59392, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 09:37:17.484844+00', '2026-10-29 10:27:04.883652+00');
 
 
 --
@@ -39204,6 +39247,57 @@ The `''widget''` directive serializes each layout body alone, so a layout cannot
 
 None in this run. The owner reads both layouts on the iPhone XS and decides; the run stops at Awaiting Owner with the owner as the reader.
 ', NULL, 'file-text', '{}', false, false, false, NULL, 59392, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 09:52:24.143163+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (165, 59, 3, NULL, 'Plan: #484', '# Plan: #484
+
+## What lands
+
+Four Lock Screen layouts, each registered on both schedules, so eight gallery kinds.
+
+- **Layout 1** - the name beside a live countdown.
+- **Layout 2** - the name beside the absolute time, on one line.
+- **Layout 3** - the prayer name above the absolute time, both bold and muted in that order.
+- **Layout 4** - the prayer name above the ticking countdown.
+
+Every name is bold at 16pt on layouts 3 and 4 and 17pt bold on 1 and 2; the second reading is muted, and the inline face carries the name and absolute time on all four because SwiftUI stops a timer Text once concatenated.
+
+## Revision, owner order 2026-10-29 (governs)
+
+The first landed shape had five layouts: the stacked three-line one (name, time and countdown), then the two-line pair. The owner retired the three-line layout outright and kept the two-line pair, which renumber as 3 and 4, with the prayer name bold on both. The ticket''s opening description and the sections below predate that order and are kept only as the record of how the module got here: read every count of five, six, ten, fourteen or eighteen kinds, and every mention of Layout 5, against this section.
+
+Consequences the change carried: the retired kind''s four gallery strings went from app.json and native-strings.json together in all seventy-five locales, the two surviving layouts reuse the existing "Next prayer time." and "Countdown to the next prayer." descriptions rather than adding translations, both schedules push eight lock kinds instead of ten (sixteen in all, home included), and the CJK subsets were recut against the smaller closed string set.
+
+## Why this shape
+
+Each layout is a self-contained composition, and the two-line pair keeps the smallest hierarchy that still separates the name from its reading: bold name on top, one muted reading below. Nothing new is invented - the type scale (16pt, 0.88 floor), the muted second reading, the vibrant-monochrome colours and the container-width root are shared across the stacked layouts.
+
+## The constraint that decides the file shape
+
+The `''widget''` directive serializes each layout body alone, so a layout cannot reference a helper or a table declared outside its own body. The module therefore holds one self-contained function per layout, and the 990-line static table (seventy-five locales) is copied whole into each. All four do this, byte-identical to the table the statics suite pins.
+
+## Alternatives rejected
+
+- **One function, two configs.** Rejected: the directive serializes a single body, so a shared body cannot carry two kinds.
+- **Keeping the three-line layout.** Rejected by the owner: the two-line pair covers its readings without the crowding.
+- **New gallery descriptions.** Rejected in favour of reusing the existing en literals every locale already carries, so no translation is invented.
+- **A What''s New item.** None ships; the archive''s own rule is that a release adding no item silent-ships, and an item would need new copy in seventy-five locales.
+
+## Risks
+
+- **Eight kinds per schedule on every push.** A push reloads every kind''s timeline, and the repo''s standing note is that the fix for cost was to stop pushing per minute, not to cap kinds. Sixteen kinds push only on data change.
+- **A missed locale row.** The gallery parity suite fails loudly if a display name is missing from any locale in app.json or native-strings.json.
+- **Copy drift between the four tables.** The statics suite compares every inline table against shared/i18n/widget-statics.json for all seventy-five locales.
+
+## Steps
+
+1. The two stacked layout bodies and their four kinds, with renderer pins.
+2. The four kinds on both schedules'' pushes, with the push suites.
+3. The gallery entries and their strings in every locale, with the parity suite.
+4. The enumerating suites widened to four layouts, the feature minor bump, and `yarn validate` green.
+
+## Device
+
+The owner reads the layouts on the iPhone XS. The run builds and installs a development build carrying the four kinds and stops at Awaiting Owner.
+', NULL, 'file-text', '{}', false, false, false, NULL, 59392, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 10:27:04.883652+00');
 
 
 --
@@ -39594,7 +39688,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:409', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:444', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:474', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:482', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 38);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:426', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:475', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
@@ -39634,17 +39727,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:438', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:489', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:463', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:473', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 249);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:470', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 248);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4896);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:471', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:469', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 52);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:477', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:490', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:485', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4891);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:486', 1, 5);
 
 
@@ -39907,7 +40001,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4695, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4704, true);
 
 
 --
@@ -39956,7 +40050,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 696, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 697, true);
 
 
 --
@@ -39984,7 +40078,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 130, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1167, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1170, true);
 
 
 --
@@ -40082,7 +40176,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 59, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 164, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 165, true);
 
 
 --
@@ -44467,5 +44561,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict OBypnaHkFbbCXFgavTXOmXmvcBeqv8fAPI2HWO59cHmP8UAqhigtQbp5jBrbOxb
+\unrestrict g8hU1uRVo726tqr6rcYMdIhwmyfeW6qxDEPcDcW3TUaRWzHyR3Cfz2184soVU91
 
