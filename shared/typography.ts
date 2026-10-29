@@ -394,6 +394,12 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // ą ć ę ł ń ó ś ź ż all present), so both take LATIN
   it: LATIN,
   pl: LATIN,
+  // Roboto carries every Romanian and Cebuano character of both locales' whole
+  // keyed surface by explicit census in both weights (80 and 72 distinct chars,
+  // measured with fontTools, plan T-452 decision 6: ro's comma-below ș ț Ș and
+  // every ă â î diacritic present, ceb's set plain Latin), so both take LATIN
+  ro: LATIN,
+  ceb: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

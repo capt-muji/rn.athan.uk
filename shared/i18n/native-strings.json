@@ -1295,5 +1295,53 @@
       "Extra Times (Layout 3)": "Czasy dodatkowe (Układ 3)",
       "Next extra time with a countdown.": "Następny czas dodatkowy z odliczaniem."
     }
+  },
+  "ro": {
+    "NSLocationWhenInUseUsageDescription": "Locația ta este folosită pentru a calcula direcția către Makkah din locul în care te afli. Nu părăsește niciodată telefonul tău.",
+    "NSUserNotificationsUsageDescription": "Primește notificări cu orele de rugăciune",
+    "gallery": {
+      "Next Prayer (Light)": "Rugăciunea următoare (Luminoasă)",
+      "A countdown to the next prayer.": "O numărătoare inversă până la următoarea rugăciune.",
+      "Extra Times (Light)": "Ore suplimentare (Luminoasă)",
+      "A countdown to the next extra time.": "O numărătoare inversă până la următorul moment suplimentar.",
+      "Next Prayer (Dark)": "Rugăciunea următoare (Întunecată)",
+      "Extra Times (Dark)": "Ore suplimentare (Întunecată)",
+      "Next Prayer (Layout 1)": "Rugăciunea următoare (Aspect 1)",
+      "Countdown to the next prayer.": "Numărătoare inversă până la următoarea rugăciune.",
+      "Extra Times (Layout 1)": "Ore suplimentare (Aspect 1)",
+      "Countdown to the next extra time.": "Numărătoare inversă până la următorul moment suplimentar.",
+      "Next Prayer (Layout 2)": "Rugăciunea următoare (Aspect 2)",
+      "Next prayer time.": "Ora următoarei rugăciuni.",
+      "Extra Times (Layout 2)": "Ore suplimentare (Aspect 2)",
+      "Next extra time.": "Următorul moment suplimentar.",
+      "Next Prayer (Layout 3)": "Rugăciunea următoare (Aspect 3)",
+      "Next prayer time with a countdown.": "Ora următoarei rugăciuni cu numărătoare inversă.",
+      "Extra Times (Layout 3)": "Ore suplimentare (Aspect 3)",
+      "Next extra time with a countdown.": "Următorul moment suplimentar cu numărătoare inversă."
+    }
+  },
+  "ceb": {
+    "NSLocationWhenInUseUsageDescription": "Ang imong lokasyon gigamit sa pagkalkula sa direksyon sa Makkah gikan sa asa ka karon. Dili kini mobiya sa imong telepono.",
+    "NSUserNotificationsUsageDescription": "Dawata ang mga notipikasyon sa oras sa pag-ampo",
+    "gallery": {
+      "Next Prayer (Light)": "Sunod nga Pag-ampo (Hayag)",
+      "A countdown to the next prayer.": "Usa ka pag-ihap pakatkad sa sunod nga pag-ampo.",
+      "Extra Times (Light)": "Mga Dugang nga Oras (Hayag)",
+      "A countdown to the next extra time.": "Usa ka pag-ihap pakatkad sa sunod nga dugang nga oras.",
+      "Next Prayer (Dark)": "Sunod nga Pag-ampo (Ngitngit)",
+      "Extra Times (Dark)": "Mga Dugang nga Oras (Ngitngit)",
+      "Next Prayer (Layout 1)": "Sunod nga Pag-ampo (Layout 1)",
+      "Countdown to the next prayer.": "Pag-ihap pakatkad sa sunod nga pag-ampo.",
+      "Extra Times (Layout 1)": "Mga Dugang nga Oras (Layout 1)",
+      "Countdown to the next extra time.": "Pag-ihap pakatkad sa sunod nga dugang nga oras.",
+      "Next Prayer (Layout 2)": "Sunod nga Pag-ampo (Layout 2)",
+      "Next prayer time.": "Oras sa sunod nga pag-ampo.",
+      "Extra Times (Layout 2)": "Mga Dugang nga Oras (Layout 2)",
+      "Next extra time.": "Sunod nga dugang nga oras.",
+      "Next Prayer (Layout 3)": "Sunod nga Pag-ampo (Layout 3)",
+      "Next prayer time with a countdown.": "Oras sa sunod nga pag-ampo uban sa pag-ihap.",
+      "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
+      "Next extra time with a countdown.": "Sunod nga dugang nga oras uban sa pag-ihap."
+    }
   }
 }

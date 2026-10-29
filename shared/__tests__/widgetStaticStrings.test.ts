@@ -238,6 +238,8 @@ const LOCALES = [
   'ko',
   'it',
   'pl',
+  'ro',
+  'ceb',
 ] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;

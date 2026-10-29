@@ -68,6 +68,8 @@ const RAW = {
   ko: require('./ko') as typeof import('./ko'),
   it: require('./it') as typeof import('./it'),
   pl: require('./pl') as typeof import('./pl'),
+  ro: require('./ro') as typeof import('./ro'),
+  ceb: require('./ceb') as typeof import('./ceb'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -134,6 +136,8 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   ko: { en: RAW.ko.ko, PRAYER_LABELS: RAW.ko.PRAYER_LABELS },
   it: { en: RAW.it.it, PRAYER_LABELS: RAW.it.PRAYER_LABELS },
   pl: { en: RAW.pl.pl, PRAYER_LABELS: RAW.pl.PRAYER_LABELS },
+  ro: { en: RAW.ro.ro, PRAYER_LABELS: RAW.ro.PRAYER_LABELS },
+  ceb: { en: RAW.ceb.ceb, PRAYER_LABELS: RAW.ceb.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;
