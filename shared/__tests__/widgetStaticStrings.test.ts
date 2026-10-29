@@ -339,6 +339,8 @@ describe('the widget statics table', () => {
         ['countdown pair', lock.PrayerLockWidget],
         ['centred', lock.PrayerLockWidget2],
         ['stacked', lock.PrayerLockWidget3],
+        ['time below the name', lock.PrayerLockWidget4],
+        ['countdown below the name', lock.PrayerLockWidget5],
       ] as const) {
         const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
         expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${expected.inline}`);
@@ -373,6 +375,8 @@ describe('the widget statics table', () => {
         ['countdown pair', lock.PrayerLockWidget],
         ['centred', lock.PrayerLockWidget2],
         ['stacked', lock.PrayerLockWidget3],
+        ['time below the name', lock.PrayerLockWidget4],
+        ['countdown below the name', lock.PrayerLockWidget5],
       ] as const) {
         const staleInline = textsOf(
           renderTree(layout(LOCK_STALE, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
@@ -463,17 +467,17 @@ describe('the widget statics table', () => {
     );
     expect(lockInline).toEqual([table[expected].inline]);
 
-    // The module's three finder copies each carry the zh mapping, so the later
-    // layouts render it too, not only the countdown pair
-    const centredInline = textsOf(
-      renderTree(lock.PrayerLockWidget2(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
-    );
-    expect(centredInline).toEqual([table[expected].inline]);
-
-    const stackedInline = textsOf(
-      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
-    );
-    expect(stackedInline).toEqual([table[expected].inline]);
+    // The module's five finder copies each carry the zh mapping, so every
+    // layout renders it, not only the countdown pair
+    for (const layout of [
+      lock.PrayerLockWidget2,
+      lock.PrayerLockWidget3,
+      lock.PrayerLockWidget4,
+      lock.PrayerLockWidget5,
+    ]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([table[expected].inline]);
+    }
   });
 
   // The same four finder sites resolve Shahmukhi Punjabi: the app speaks pa-Arab for
@@ -494,15 +498,15 @@ describe('the widget statics table', () => {
     );
     expect(lockInline).toEqual([table[expected].inline]);
 
-    const centredInline = textsOf(
-      renderTree(lock.PrayerLockWidget2(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
-    );
-    expect(centredInline).toEqual([table[expected].inline]);
-
-    const stackedInline = textsOf(
-      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
-    );
-    expect(stackedInline).toEqual([table[expected].inline]);
+    for (const layout of [
+      lock.PrayerLockWidget2,
+      lock.PrayerLockWidget3,
+      lock.PrayerLockWidget4,
+      lock.PrayerLockWidget5,
+    ]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([table[expected].inline]);
+    }
   });
 
   it('renders the en row for a yue-tagged device: yue never matches as zh', () => {
@@ -512,9 +516,14 @@ describe('the widget statics table', () => {
     const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
     expect(androidNeutral).toEqual(['Athan', expected.subtitle]);
 
-    const stackedInline = textsOf(
-      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
-    );
-    expect(stackedInline).toEqual([expected.inline]);
+    for (const layout of [
+      lock.PrayerLockWidget2,
+      lock.PrayerLockWidget3,
+      lock.PrayerLockWidget4,
+      lock.PrayerLockWidget5,
+    ]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([expected.inline]);
+    }
   });
 });

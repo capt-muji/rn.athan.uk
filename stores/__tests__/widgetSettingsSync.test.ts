@@ -25,7 +25,18 @@ import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
 import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import {
+  ExtrasLockWidget,
+  ExtrasLockWidget2,
+  ExtrasLockWidget3,
+  ExtrasLockWidget4,
+  ExtrasLockWidget5,
+  PrayerLockWidget,
+  PrayerLockWidget2,
+  PrayerLockWidget3,
+  PrayerLockWidget4,
+  PrayerLockWidget5,
+} from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -93,6 +104,19 @@ const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
 const lockPush = () => (PrayerLockWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasLockPush = () => (ExtrasLockWidget.updateTimeline as jest.Mock).mock.calls;
+const lockKindPushes = () =>
+  [
+    PrayerLockWidget,
+    PrayerLockWidget2,
+    PrayerLockWidget3,
+    PrayerLockWidget4,
+    PrayerLockWidget5,
+    ExtrasLockWidget,
+    ExtrasLockWidget2,
+    ExtrasLockWidget3,
+    ExtrasLockWidget4,
+    ExtrasLockWidget5,
+  ].map((kind) => (kind.updateTimeline as jest.Mock).mock.calls.length);
 const darkPush = () => (PrayerWidgetDark.updateTimeline as jest.Mock).mock.calls;
 const extrasDarkPush = () => (ExtrasWidgetDark.updateTimeline as jest.Mock).mock.calls;
 const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.calls;
@@ -103,6 +127,12 @@ const extrasDarkMediumPush = () => (ExtrasWidgetDarkMedium.updateTimeline as jes
 const resetWidgetMocks = () => {
   (PrayerWidget.updateTimeline as jest.Mock).mockClear();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
+  for (const kind of [PrayerLockWidget2, PrayerLockWidget3, PrayerLockWidget4, PrayerLockWidget5]) {
+    (kind.updateTimeline as jest.Mock).mockClear();
+  }
+  for (const kind of [ExtrasLockWidget2, ExtrasLockWidget3, ExtrasLockWidget4, ExtrasLockWidget5]) {
+    (kind.updateTimeline as jest.Mock).mockClear();
+  }
   (ExtrasWidget.updateTimeline as jest.Mock).mockClear();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockClear();
   (PrayerWidgetDark.updateTimeline as jest.Mock).mockClear();
@@ -292,7 +322,7 @@ describe('push cadence', () => {
     jest.useRealTimers();
   });
 
-  it('pushes each of the twelve kinds once per refresh and never again on a timer', async () => {
+  it('pushes each of the fourteen kinds once per refresh and never again on a timer', async () => {
     await refreshPrayerWidgets();
 
     expect(widgetPush()).toHaveLength(1);
@@ -306,8 +336,11 @@ describe('push cadence', () => {
     expect(extrasMediumPush()).toHaveLength(1);
     expect(extrasDarkMediumPush()).toHaveLength(1);
 
+    // Every lock layout's kind carries the same push: ten of the fourteen.
+    expect(lockKindPushes()).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+
     // A per-minute chain used to fire here, costing a WidgetKit reload on all
-    // twelve kinds; each reload re-renders that kind's whole timeline, which
+    // fourteen kinds; each reload re-renders that kind's whole timeline, which
     // exhausted the extension's CPU budget (ledger G.1 (git history))
     await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
 

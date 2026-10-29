@@ -129,6 +129,10 @@ describe('lock widget renderer', () => {
     renderTree(layouts.PrayerLockWidget2(props, { colorScheme: 'light', widgetFamily: family }));
   const renderTreeFor3 = (props: unknown, family: string): unknown =>
     renderTree(layouts.PrayerLockWidget3(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor4 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget4(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor5 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget5(props, { colorScheme: 'light', widgetFamily: family }));
   const render = (props: unknown, family: string): string[] => textsOf(renderTreeFor(props, family));
 
   /** Every Text node's font and colour, paired, for hierarchy assertions */
@@ -274,16 +278,68 @@ describe('lock widget renderer', () => {
     expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
-  // The live faces read 17pt on layouts 1-2 and 16pt on layout 3, each
+  it('stacks the name over the absolute time on layout 4, with no countdown', () => {
+    const tree = renderTreeFor4(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toEqual(['Asr', '15:20']);
+    expect(tickingIntervalOf(tree)).toBeUndefined();
+  });
+
+  it('stacks the name over the ticking countdown on layout 5, with no absolute time', () => {
+    const tree = renderTreeFor5(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toEqual(['Asr']);
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
+  });
+
+  it('degrades layouts 4 and 5 to the same fallbacks per family', () => {
+    for (const render of [renderTreeFor4, renderTreeFor5]) {
+      expect(textsOf(render({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
+      expect(textsOf(render({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
+        'Athan — open to refresh times'
+      );
+      expect(textsOf(render(null, 'accessoryRectangular'))).toContain('Open to load times');
+      expect(textsOf(render(null, 'accessoryInline'))).toContain('Athan — prayer times');
+      const legacy = { ...LIVE_PROPS } as Record<string, unknown>;
+      delete legacy.nextEpochMs;
+      expect(textsOf(render(legacy, 'accessoryRectangular'))).toContain('Out of date');
+      const poisoned: Record<string, unknown> = { ...LIVE_PROPS };
+      Object.defineProperty(poisoned, 'nextName', {
+        get(): string {
+          throw new Error('boom');
+        },
+      });
+      expect(textsOf(render(poisoned, 'accessoryRectangular'))).toContain('Open to load times');
+    }
+  });
+
+  it('falls back to the absolute time on layouts 3 to 5 inline, which cannot tick', () => {
+    for (const render of [renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
+      const tree = render(LIVE_PROPS, 'accessoryInline');
+
+      expect(textsOf(tree).join(' ')).toContain('Asr 15:20');
+      expect(tickingIntervalOf(tree)).toBeUndefined();
+    }
+  });
+
+  // The live faces read 17pt on layouts 1-2 and 16pt on layouts 3-5, each
   // floored at or above the old 14pt nominal, so weight and opacity
   // carry the tiers. What recedes is the SECOND reading on a line, which is
   // the countdown beside the name in layout 1, the time beside it in layout 2,
-  // and the countdown beneath layout 3's name-and-time row. Layout 3 alone
-  // leaves its name unbolded: its stacked row separates the readings already.
+  // and the second line beneath the name in layouts 3 to 5. The stacked
+  // layouts alone leave the name unbolded: the line break separates the
+  // readings already.
   it.each([
     ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>'], true],
     ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime], true],
     ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>'], false],
+    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime], false],
+    ['layout 5', (p: unknown) => renderTreeFor5(p, 'accessoryRectangular'), ['<countdown>'], false],
   ])('mutes only what recedes on %s and bolds the name only where it should', (_l, renderPath, muted, nameIsBold) => {
     for (const node of styledTexts(renderPath(LIVE_PROPS))) {
       expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
@@ -293,7 +349,7 @@ describe('lock widget renderer', () => {
   });
 
   it('never mutes a fallback card, which has no absolute time to recede', () => {
-    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       for (const props of [{ ...LIVE_PROPS, stale: true }, null]) {
         for (const node of styledTexts(renderPath(props, 'accessoryRectangular'))) {
           expect(node.colour).toBe(SOLID);
@@ -367,6 +423,12 @@ describe('lock widget renderer', () => {
     ['layout 3 live', () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular')],
     ['layout 3 stale', () => renderTreeFor3({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
     ['layout 3 placeholder', () => renderTreeFor3(null, 'accessoryRectangular')],
+    ['layout 4 live', () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 4 stale', () => renderTreeFor4({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
+    ['layout 4 placeholder', () => renderTreeFor4(null, 'accessoryRectangular')],
+    ['layout 5 live', () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 5 stale', () => renderTreeFor5({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular')],
+    ['layout 5 placeholder', () => renderTreeFor5(null, 'accessoryRectangular')],
   ])('sizes %s to the widget container before filling the slot', (_label, renderPath) => {
     const tree = renderPath() as MarkerNode;
     const modifiers = (tree.props.modifiers ?? []) as Array<{ modifier: string; value: unknown }>;
@@ -382,7 +444,7 @@ describe('lock widget renderer', () => {
   });
 
   it('keeps the container-width modifier off the inline faces and centres both live blocks', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const inlineTree = render(LIVE_PROPS, 'accessoryInline') as MarkerNode;
       const inlineModifiers = JSON.stringify(inlineTree.props.modifiers ?? []);
       expect(inlineModifiers).not.toContain('containerRelativeFrame');
@@ -466,6 +528,22 @@ describe('lock widget renderer', () => {
         { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
       ],
     ],
+    [
+      'layout 4',
+      () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 16, weight: 'medium', floor: 0.88 },
+        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+      ],
+    ],
+    [
+      'layout 5',
+      () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 16, weight: 'medium', floor: 0.88 },
+        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+      ],
+    ],
   ] as const)('sizes the live %s readings at their raised nominals and floors', (_label, renderPath, pins) => {
     const texts = styledTexts(renderPath());
     expect(texts).toHaveLength(pins.length);
@@ -478,7 +556,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the inline face at the system-chosen 14, unfloored, on every layout', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       for (const node of styledTexts(render(LIVE_PROPS, 'accessoryInline'))) {
         expect(node.size).toBe(14);
         expect(node.modifiers.map((entry) => entry.modifier)).not.toContain('minimumScaleFactor');
@@ -487,7 +565,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the stale card one point up on every layout (slot 72pt, branch measured on the XS)', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const tree = render({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular');
       const texts = styledTexts(tree);
       expect(texts.find((node) => node.text === 'Out of date')?.size).toBe(18);
@@ -497,7 +575,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the neutral card one point up on every layout', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const texts = styledTexts(render(null, 'accessoryRectangular'));
       expect(texts.find((node) => node.text === 'ATHAN')?.size).toBe(12);
       expect(texts.find((node) => node.text === 'Open to load times')?.size).toBe(18);

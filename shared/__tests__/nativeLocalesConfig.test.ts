@@ -236,12 +236,12 @@ describe('native strings from committed config', () => {
       android?: unknown;
     }>;
     const iosOnly = widgets.filter((widget) => !widget.android);
-    expect(iosOnly).toHaveLength(6);
+    expect(iosOnly).toHaveLength(10);
     for (const widget of iosOnly) {
       expect(defaults.get(`${resourceName(widget.name)}_display_name`)).toBe(NATIVE.en.gallery[widget.displayName]);
       expect(defaults.get(`${resourceName(widget.name)}_description`)).toBe(NATIVE.en.gallery[widget.description]);
     }
-    expect(defaults.size).toBe(14);
+    expect(defaults.size).toBe(22);
 
     // No translated key may lack either a default twin or an android-kind owner in values/
     const locales = app.locales as Record<string, { android: Record<string, string> }>;
@@ -260,13 +260,13 @@ describe('native strings from committed config', () => {
     // The written resource matches the stock locale writer's quoted-value shape
     const xml = buildDefaultLocaleStringsXml(entries);
     expect(xml).toContain('<resources>');
-    expect(xml.match(/<string /g)).toHaveLength(14);
+    expect(xml.match(/<string /g)).toHaveLength(22);
     expect(xml).toContain(
       `<string name="NSUserNotificationsUsageDescription">"${NATIVE.en.NSUserNotificationsUsageDescription}"</string>`
     );
   });
 
-  it('derives all 30 defaults when the resolution strips expo-widgets', () => {
+  it('derives all 38 defaults when the resolution strips expo-widgets', () => {
     const { defaultLocaleStringEntries } = require(join(ROOT, 'plugins', 'androidLocaleConfig.js')) as {
       defaultLocaleStringEntries: (projectRoot: string, config: Record<string, unknown>) => Array<[string, string]>;
     };
@@ -276,14 +276,14 @@ describe('native strings from committed config', () => {
     };
     const entries = defaultLocaleStringEntries(ROOT, stripped);
     const defaults = new Map(entries);
-    expect(defaults.size).toBe(30);
+    expect(defaults.size).toBe(38);
 
     // The ExtraTranslation invariant: every translated key gains a default twin
     const locales = app.locales as Record<string, { android: Record<string, string> }>;
     const translatedKeys = new Set(Object.values(locales).flatMap((entry) => Object.keys(entry.android)));
     translatedKeys.add('NSLocationWhenInUseUsageDescription');
     translatedKeys.add('NSUserNotificationsUsageDescription');
-    expect(translatedKeys.size).toBe(30);
+    expect(translatedKeys.size).toBe(38);
     for (const key of translatedKeys) {
       expect(defaults.has(key)).toBe(true);
     }

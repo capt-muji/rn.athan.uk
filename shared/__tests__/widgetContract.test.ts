@@ -156,14 +156,14 @@ describe('widget function closure', () => {
     });
   }
 
-  it('walks the closure of all three lock layouts', () => {
+  it('walks the closure of all five lock layouts', () => {
     // The lock module holds three layouts; a walk that only reaches the first
     // leaves the other two unguarded (they drift free silently). Layouts gain
     // no import here: `strings` and `id` arrive as props, and a body importing
     // from @/shared/i18n still fails the walk as a module-scope reference.
     const ast = parseFile(WIDGET_FILES[1].path);
     const layouts = findWidgetFunctions(ast);
-    expect(layouts).toHaveLength(3);
+    expect(layouts).toHaveLength(5);
 
     const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
     layouts.forEach((layout, index) => {
@@ -421,9 +421,9 @@ describe('widget directive', () => {
         },
       });
 
-      // The home module holds one layout; the lock module holds three (its
+      // The home module holds one layout; the lock module holds five (its
       // layouts differ only in composition and share nothing by reference)
-      expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
+      expect(count).toBe(name === 'PrayerLockWidget' ? 5 : 1);
     });
   }
 });
@@ -738,6 +738,8 @@ describe('the statics table resolves every neutral and stale site', () => {
       ['countdown pair', lock.PrayerLockWidget],
       ['centred', lock.PrayerLockWidget2],
       ['stacked', lock.PrayerLockWidget3],
+      ['time below the name', lock.PrayerLockWidget4],
+      ['countdown below the name', lock.PrayerLockWidget5],
     ] as const) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${AR.inline}`);
