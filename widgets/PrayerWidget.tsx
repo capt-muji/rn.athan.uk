@@ -902,6 +902,32 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: '해서 새로 고침',
       catchBody: '앱을 열어 새로 고침',
     },
+    it: {
+      subtitle: 'Orari delle preghiere per Londra',
+      inline: 'Athan — orari delle preghiere',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Apri per caricare gli orari',
+      staleTitle: 'Non aggiornato',
+      staleBody: "Apri l'app per aggiornare",
+      staleInline: 'Athan — apri per aggiornare',
+      refreshLine: 'Apri Athan per aggiornare',
+      refreshLead: 'Apri Athan',
+      refreshTail: 'per aggiornare',
+      catchBody: "Apri l'app per aggiornare",
+    },
+    pl: {
+      subtitle: 'Czasy modlitw dla Londynu',
+      inline: 'Athan — czasy modlitw',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Otwórz, aby wczytać czasy',
+      staleTitle: 'Nieaktualne',
+      staleBody: 'Otwórz aplikację, aby odświeżyć',
+      staleInline: 'Athan — otwórz, aby odświeżyć',
+      refreshLine: 'Otwórz Athan, aby odświeżyć',
+      refreshLead: 'Otwórz Athan',
+      refreshTail: 'aby odświeżyć',
+      catchBody: 'Otwórz aplikację, aby odświeżyć',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -972,6 +998,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'su',
         'ja',
         'ko',
+        'it',
+        'pl',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

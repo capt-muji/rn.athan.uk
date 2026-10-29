@@ -1247,5 +1247,53 @@
       "Extra Times (Layout 3)": "추가 시간 (레이아웃 3)",
       "Next extra time with a countdown.": "카운트다운이 있는 다음 추가 시간입니다."
     }
+  },
+  "it": {
+    "NSLocationWhenInUseUsageDescription": "La tua posizione serve a calcolare la direzione della Mecca da dove ti trovi. Non lascia mai il tuo telefono.",
+    "NSUserNotificationsUsageDescription": "Ricevi le notifiche degli orari delle preghiere",
+    "gallery": {
+      "Next Prayer (Light)": "Prossima preghiera (Chiaro)",
+      "A countdown to the next prayer.": "Un conto alla rovescia per la prossima preghiera.",
+      "Extra Times (Light)": "Orari extra (Chiaro)",
+      "A countdown to the next extra time.": "Un conto alla rovescia per il prossimo orario extra.",
+      "Next Prayer (Dark)": "Prossima preghiera (Scuro)",
+      "Extra Times (Dark)": "Orari extra (Scuro)",
+      "Next Prayer (Layout 1)": "Prossima preghiera (Layout 1)",
+      "Countdown to the next prayer.": "Conto alla rovescia per la prossima preghiera.",
+      "Extra Times (Layout 1)": "Orari extra (Layout 1)",
+      "Countdown to the next extra time.": "Conto alla rovescia per il prossimo orario extra.",
+      "Next Prayer (Layout 2)": "Prossima preghiera (Layout 2)",
+      "Next prayer time.": "Orario della prossima preghiera.",
+      "Extra Times (Layout 2)": "Orari extra (Layout 2)",
+      "Next extra time.": "Prossimo orario extra.",
+      "Next Prayer (Layout 3)": "Prossima preghiera (Layout 3)",
+      "Next prayer time with a countdown.": "Orario della prossima preghiera con conto alla rovescia.",
+      "Extra Times (Layout 3)": "Orari extra (Layout 3)",
+      "Next extra time with a countdown.": "Prossimo orario extra con conto alla rovescia."
+    }
+  },
+  "pl": {
+    "NSLocationWhenInUseUsageDescription": "Twoja lokalizacja służy do wyznaczenia kierunku Mekki z miejsca, w którym się znajdujesz. Nigdy nie opuszcza Twojego telefonu.",
+    "NSUserNotificationsUsageDescription": "Otrzymuj powiadomienia o czasach modlitw",
+    "gallery": {
+      "Next Prayer (Light)": "Następna modlitwa (Jasny)",
+      "A countdown to the next prayer.": "Odliczanie do następnej modlitwy.",
+      "Extra Times (Light)": "Czasy dodatkowe (Jasny)",
+      "A countdown to the next extra time.": "Odliczanie do następnego czasu dodatkowego.",
+      "Next Prayer (Dark)": "Następna modlitwa (Ciemny)",
+      "Extra Times (Dark)": "Czasy dodatkowe (Ciemny)",
+      "Next Prayer (Layout 1)": "Następna modlitwa (Układ 1)",
+      "Countdown to the next prayer.": "Odliczanie do następnej modlitwy.",
+      "Extra Times (Layout 1)": "Czasy dodatkowe (Układ 1)",
+      "Countdown to the next extra time.": "Odliczanie do następnego czasu dodatkowego.",
+      "Next Prayer (Layout 2)": "Następna modlitwa (Układ 2)",
+      "Next prayer time.": "Czas następnej modlitwy.",
+      "Extra Times (Layout 2)": "Czasy dodatkowe (Układ 2)",
+      "Next extra time.": "Następny czas dodatkowy.",
+      "Next Prayer (Layout 3)": "Następna modlitwa (Układ 3)",
+      "Next prayer time with a countdown.": "Czas następnej modlitwy z odliczaniem.",
+      "Extra Times (Layout 3)": "Czasy dodatkowe (Układ 3)",
+      "Next extra time with a countdown.": "Następny czas dodatkowy z odliczaniem."
+    }
   }
 }

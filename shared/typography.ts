@@ -388,6 +388,12 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // T-452 decision 3), never the full statics
   ja: JAPANESE,
   ko: KOREAN,
+  // Roboto carries every Italian and Polish character of both locales' whole
+  // keyed surface by explicit census in both weights (78 and 80 distinct chars,
+  // measured with fontTools, plan T-452 decision 6: it's è é à ò ù ì É and pl's
+  // ą ć ę ł ń ó ś ź ż all present), so both take LATIN
+  it: LATIN,
+  pl: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,
