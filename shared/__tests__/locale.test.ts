@@ -79,6 +79,8 @@ describe('resolveInitialLocale', () => {
     ['bal-IR', 'bal', 'bal'],
     ['ks-IN', 'ks', 'kas'],
     ['ks-Arab-IN', 'ks', 'kas'],
+    // Devanagari Kashmiri stays unshipped: a ks-Deva reader is not served Perso-Arabic copy
+    ['ks-Deva-IN', 'ks', 'en'],
     ['dv-MV', 'dv', 'dv'],
     ['aa-DJ', 'aa', 'aa'],
     ['aa-ET', 'aa', 'aa'],

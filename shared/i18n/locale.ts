@@ -176,12 +176,16 @@ const resolvePaTag = (locale: DeviceLocaleInfo): 'pa-Arab' | null => {
 
 /**
  * Kashmiri ships under its CLDR-external tag kas, while a device reports the CLDR code ks
- * (bare, region-tagged or Arab-tagged), so every ks tag resolves kas - the pa-Arab precedent
- * of mapping a foreign tag onto the shipped id (plan T-453 decision 3).
+ * (bare, region-tagged or Arab-tagged), so a ks tag resolves kas - the pa-Arab precedent
+ * of mapping a foreign tag onto the shipped id (plan T-453 decision 3). CLDR's ks-Deva is
+ * Devanagari Kashmiri, which this catalog does not serve, so it falls through to en on the
+ * resolvePaTag Guru/IN pattern.
  */
 const resolveKasTag = (locale: DeviceLocaleInfo): 'kas' | null => {
   const kashmiri = locale.languageCode === 'ks' || locale.languageTag === 'ks' || locale.languageTag.startsWith('ks-');
-  return kashmiri ? 'kas' : null;
+  if (!kashmiri) return null;
+  if (locale.languageTag.split('-').includes('Deva')) return null;
+  return 'kas';
 };
 
 export const resolveInitialLocale = (

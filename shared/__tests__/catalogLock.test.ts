@@ -72,7 +72,7 @@ const LOCALES = [
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 
 describe('the catalog lock', () => {
-  it('covers exactly the fifty-nine translated locales', () => {
+  it('covers exactly the fifty-eight translated locales', () => {
     expect(Object.keys(lock).sort()).toEqual([...LOCALES].sort());
   });
 
