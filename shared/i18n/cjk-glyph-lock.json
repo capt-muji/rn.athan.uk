@@ -1,17 +1,17 @@
 {
   "_comment": "The character set the four CJK subset pairs carry (plan T-419 decision 8, ja and ko added by plan T-452 decision 3): each subset is cut with fontTools over the closed string set - every character of its CJK catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the four curl lines).",
-  "zh-Hans": " %./0123456789:AHNOSTacdefghilmnoprstuv{}·—“”。一三下不与专两个中丹为主么之了予二于五些什仅他以件伊优会伦位低体余作使保倒偏停像允入全六兰关其再减几出分别到制刷前剩剪功加动助勒勿化北午南卜即却历发取受可台后向吗否启周和哈哪哲唤四因国在增声复外多夜大天失好姆始存它完定宣宵对封将小少尔局屏已巴布希带帮幕平应开式德性恢您情慢成所手打扰找拜择持指按换据授接控提播操支收放效敖敦数文斋斯新方无日时明昏是显晌晡晨更最月有朝期未本机权杜束板查栏样根检模次止正此段每比池没法注浅消深添点然照版现瓦用电留的盖盘目相省知示礼祖离秒移稍穆立第简算类组终经结绝缓罕罗置而能舍色英莱获被装要览言计认让许设试详语说请调败贾赖距跟转载辑达过这退送适选通邦都醒重量针钟铃锁错闪闭问间闹阻阿限随需静非面音页项预题颜额饭饰马高鲁麦默！（），：？",
-  "zh-Hant": " %./0123456789:AHNOSTacdefghilmnoprstuv{}·—。「」一三下不中丹主之了予二五些什他以伊位低作佳使保個倒倫偏停僅像儲允入全兩六其具再出分切列別到制前剩剪功加勒動勿化北午南卜即卻取受可合向否含和哈哪哲問啟喚嗎四因國在增外多夜大天失好姆始存它完定宣宵封將專對小少工已巴希平幾式後復德性恢您情慢應成所手找拜持指按授接控提換援播擇操據擾支收放效敖敗敦整數文斯新方於日明昏是時晌晡晨景曆更最會月有朝期未本杜束板查根模樣機檢權次止正此段每比池沒法注消深淺減為無然照爾版獲現理瓦生用留畫發的盤目相省知示祖禮秒移程稍穆立符第算終結絕經緩繁罕置羅而耗聲背能與舍色英萊蓋蘭被裝要覽言計設許試詳語說調請讓賈賴距跟載輯轉退送這通週過達選邦都配醒重量針鈴錯鎖鐘閃閉開間關阻阿限隨離電需靜非面音頁項預題額顏類顯飯飾餘馬體高鬧魯麥麼點齋！（），：？",
+  "zh-Hans": " %./0123456789:AHNOSTacdefghilmnoprstuv{}·—“”。一三下不与专两个中丹为主么之了予二于五些什仅他以件伊优会伦位低体余作使保倒偏停像允入全六兰关其再减几出分别到制刷前剩剪功加动助勒勿化北午南卜即却历发取受可台后向吗否启周和哈哪哲唤四因国在增声复外多夜大天失好姆始存它完定宣宵对封将小少尔局屏已巴布希帮幕平应开式德性恢您情慢成所手打扰找拜择持指按换据授接控提播操支收放效敖敦数文斋斯新方无日时明昏是显晌晡晨更最月有朝期未本机权杜束板查栏样根检模次止正此段每比池没法注浅消深添点然照版现瓦用电留的盖盘目相省知示礼祖离秒移稍穆立第简算类组终经结绝缓罕罗置而能舍色英莱获被装要览言计认让许设试详语说请调败贾赖距跟转载辑达过这退送适选通邦都醒重量针钟铃锁错闪闭问间闹阻阿限随需静非面音页项预题颜额饭饰马高鲁麦默！（），：？",
+  "zh-Hant": " %./0123456789:AHNOSTacdefghilmnoprstuv{}·—。「」一三下不中丹主之了予二五些什他以伊位低作佳使保個倒倫偏停僅像儲允入全兩六其具再出分切列別到制前剩剪功加勒動勿化北午南卜即卻取受可合向否和哈哪哲問啟喚嗎四因國在增外多夜大天失好姆始存它完定宣宵封將專對小少工已巴希平幾式後復德性恢您情慢應成所手找拜持指按授接控提換援播擇操據擾支收放效敖敗敦整數文斯新方於日明昏是時晌晡晨景曆更最會月有朝期未本杜束板查根模樣機檢權次止正此段每比池沒法注消深淺減為無然照爾版獲現理瓦生用留畫發的盤目相省知示祖禮秒移程稍穆立符第算終結絕經緩繁罕置羅而耗聲背能與舍色英萊蓋蘭被裝要覽言計設許試詳語說調請讓賈賴距跟載輯轉退送這通週過達選邦都配醒重量針鈴錯鎖鐘閃閉開間關阻阿限隨離電需靜非面音頁項預題額顏類顯飯飾餘馬體高鬧魯麥麼點齋！（），：？",
   "ja": " %./0123456789:AHNOSTacdefghilmnoprstuv{}—、。「」あいうおかがきくぐけげこさしじすせぜそただちっつてでとどなにのはへべまみむめもやゆょよらりるれをんァアィイゥウェォオカキギクグコゴサザシジスズセタダチッテトドニハバパヒビフブプヘペホポマムメモャュョラリルレロワン・ー一三上下不中了今他付位低使保信停再出分切別利制刻前力加効動化北収取受古可各問回土在地報場増変外夜大始存完定対届平度後従必応情戻所手択拝持数整新方既日早明時暦曜更最月有木本検次止残水池決消減火無特現理生用由画発的目真着知短確示礼秒立算約索細終経置聴能色表装要見角言計設許試話詳認語説読調起込追送通過適選量金閉開間限電面音順題飾鳴！（）？",
   "ko": " !%(),-./0123456789:?AHNOSTacdefghilmnoprstuv{}가각간감개검게겠경계고과국권그근금기까깨꺼끊끔끕나남내높는늘니다단닫대더던데도돌되될됨됩두둘둡뒤드든듣들따때떤뜨라람래러런렇레력로료륨르른를릅리림립릿링마막만많말맞멈메며면명모목무묶문므미민및바밖반받발밤방배백버번벗벨변보본볼부북분불브블비사산상새색생샤서선설세션소송수스습시식신실아안않알앱약어언업없엇었에여열엽영예오옵와완왈요용우운울움웁웃원월위유으은을음의이인일입있자작잔잠장재저적전절접정제젯져조종주줄중즈지직집짧째쪽찍찾천쳐초최추출춥취치칠침카켜켠켭크키타태택터테토트특티파패페평표플필하한할합해했향허현홈화확환후흐히",
   "files": {
-    "NotoSansSC-Subset-Regular.ttf": "a23d79204722626810faf53df24f0e2cfa52cdeb7c69723d3707309b8ff62d78",
-    "NotoSansSC-Subset-Medium.ttf": "aae7b9fc0418ce11efce4a2241ca71e24a4b4cade852a51912f8490e84e7b64c",
-    "NotoSansTC-Subset-Regular.ttf": "89b8f2baaca75a3de170ebb5132dbffe7c3010e5b0ab46f89ad00d93fd43294b",
-    "NotoSansTC-Subset-Medium.ttf": "44e331e2636da42fa24db6a4601257f20779b1e383cd6e3b6966c47bbad0e01e",
-    "NotoSansJP-Subset-Regular.ttf": "b7cf7bb1b38b5ac65a912dd8279ced3f843da0a77bc40947b110dc03ff0da069",
-    "NotoSansJP-Subset-Medium.ttf": "e187b36b5a1740766adad893d39cbdece0ac07802290b7b3dce9442d7458edfc",
-    "NotoSansKR-Subset-Regular.ttf": "ae061eb2447eae6f1eb66ec60436834088aa822caf888de5727c0c27dc0a3001",
-    "NotoSansKR-Subset-Medium.ttf": "06da50a4c900bd28f76a5acb5b6a10682fd2f93b9434c0ae046524e21fbdd3d2"
+    "NotoSansSC-Subset-Regular.ttf": "2802a40d2b01d1277a65b8f80af090255f87fdd857bccc1d724a1b320a6bcba5",
+    "NotoSansSC-Subset-Medium.ttf": "b3d5798cb9a805771e37d8f88bf8426d844a0e63ed8cf50fbe81864c606af071",
+    "NotoSansTC-Subset-Regular.ttf": "06cfd15111a9743c6ddfed04c9bfaf242cc449e89401651a77c1c0d256bccd8c",
+    "NotoSansTC-Subset-Medium.ttf": "721d835453e05ac454018bdfb948924a0403fd9f22c4f0be607f47f06fb88357",
+    "NotoSansJP-Subset-Regular.ttf": "46574286aef8616b596879003f3654b63c76e5e65d8f1f856225f12d55ffd715",
+    "NotoSansJP-Subset-Medium.ttf": "15a13b4017f2ae729595cf508373c3793099c812e98130de0c8baa948a9dab6b",
+    "NotoSansKR-Subset-Regular.ttf": "80d29b21dcabf077fb2bc8dc949967349e85cc3d8a5c2ca1fea77429a96871b8",
+    "NotoSansKR-Subset-Medium.ttf": "a146ed1812ae94d7147eea99c944ddb59bd1c80c78272e21e35b742627d8929d"
   }
 }

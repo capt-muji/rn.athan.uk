@@ -338,9 +338,8 @@ describe('the widget statics table', () => {
       for (const [name, layout] of [
         ['countdown pair', lock.PrayerLockWidget],
         ['centred', lock.PrayerLockWidget2],
-        ['stacked', lock.PrayerLockWidget3],
-        ['time below the name', lock.PrayerLockWidget4],
-        ['countdown below the name', lock.PrayerLockWidget5],
+        ['time below the name', lock.PrayerLockWidget3],
+        ['countdown below the name', lock.PrayerLockWidget4],
       ] as const) {
         const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
         expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${expected.inline}`);
@@ -374,9 +373,8 @@ describe('the widget statics table', () => {
       for (const [name, layout] of [
         ['countdown pair', lock.PrayerLockWidget],
         ['centred', lock.PrayerLockWidget2],
-        ['stacked', lock.PrayerLockWidget3],
-        ['time below the name', lock.PrayerLockWidget4],
-        ['countdown below the name', lock.PrayerLockWidget5],
+        ['time below the name', lock.PrayerLockWidget3],
+        ['countdown below the name', lock.PrayerLockWidget4],
       ] as const) {
         const staleInline = textsOf(
           renderTree(layout(LOCK_STALE, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
@@ -469,12 +467,7 @@ describe('the widget statics table', () => {
 
     // The module's five finder copies each carry the zh mapping, so every
     // layout renders it, not only the countdown pair
-    for (const layout of [
-      lock.PrayerLockWidget2,
-      lock.PrayerLockWidget3,
-      lock.PrayerLockWidget4,
-      lock.PrayerLockWidget5,
-    ]) {
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(inline).toEqual([table[expected].inline]);
     }
@@ -498,12 +491,7 @@ describe('the widget statics table', () => {
     );
     expect(lockInline).toEqual([table[expected].inline]);
 
-    for (const layout of [
-      lock.PrayerLockWidget2,
-      lock.PrayerLockWidget3,
-      lock.PrayerLockWidget4,
-      lock.PrayerLockWidget5,
-    ]) {
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(inline).toEqual([table[expected].inline]);
     }
@@ -516,12 +504,7 @@ describe('the widget statics table', () => {
     const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
     expect(androidNeutral).toEqual(['Athan', expected.subtitle]);
 
-    for (const layout of [
-      lock.PrayerLockWidget2,
-      lock.PrayerLockWidget3,
-      lock.PrayerLockWidget4,
-      lock.PrayerLockWidget5,
-    ]) {
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(inline).toEqual([expected.inline]);
     }
