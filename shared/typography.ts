@@ -400,6 +400,13 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // every ă â î diacritic present, ceb's set plain Latin), so both take LATIN
   ro: LATIN,
   ceb: LATIN,
+  // Roboto carries every Ilocano and Vietnamese character of both locales' whole
+  // keyed surface by explicit census in both weights (71 and 128 distinct chars,
+  // measured with fontTools, plan T-452 decision 6: vi's whole tone-marked Latin
+  // Extended Additional set, the heaviest of the six, carried in both weights),
+  // so both take LATIN
+  ilo: LATIN,
+  vi: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

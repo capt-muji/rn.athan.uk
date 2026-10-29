@@ -1343,5 +1343,53 @@
       "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
       "Next extra time with a countdown.": "Sunod nga dugang nga oras uban sa pag-ihap."
     }
+  },
+  "ilo": {
+    "NSLocationWhenInUseUsageDescription": "Ti lokasionmo ket maus-usar a mangikarkulo ti turong ti Makkah manipud iti sadin ka. Saan a las-udan ti teleponom.",
+    "NSUserNotificationsUsageDescription": "Awatam dagiti pakaammo ti oras ti dasal",
+    "gallery": {
+      "Next Prayer (Light)": "Sumarsaruno a Dasal (Naraniag)",
+      "A countdown to the next prayer.": "Panagbilang agingga iti sumarsaruno a dasal.",
+      "Extra Times (Light)": "Dagiti Kanayonan nga Oras (Naraniag)",
+      "A countdown to the next extra time.": "Panagbilang agingga iti sumarsaruno a kanayonan nga oras.",
+      "Next Prayer (Dark)": "Sumarsaruno a Dasal (Nabuntag)",
+      "Extra Times (Dark)": "Dagiti Kanayonan nga Oras (Nabuntag)",
+      "Next Prayer (Layout 1)": "Sumarsaruno a Dasal (Layout 1)",
+      "Countdown to the next prayer.": "Panagbilang agingga iti sumarsaruno a dasal.",
+      "Extra Times (Layout 1)": "Dagiti Kanayonan nga Oras (Layout 1)",
+      "Countdown to the next extra time.": "Panagbilang agingga iti sumarsaruno a kanayonan nga oras.",
+      "Next Prayer (Layout 2)": "Sumarsaruno a Dasal (Layout 2)",
+      "Next prayer time.": "Oras ti sumarsaruno a dasal.",
+      "Extra Times (Layout 2)": "Dagiti Kanayonan nga Oras (Layout 2)",
+      "Next extra time.": "Sumarsaruno a kanayonan nga oras.",
+      "Next Prayer (Layout 3)": "Sumarsaruno a Dasal (Layout 3)",
+      "Next prayer time with a countdown.": "Oras ti sumarsaruno a dasal agramit iti panagbilang.",
+      "Extra Times (Layout 3)": "Dagiti Kanayonan nga Oras (Layout 3)",
+      "Next extra time with a countdown.": "Sumarsaruno a kanayonan nga oras agramit iti panagbilang."
+    }
+  },
+  "vi": {
+    "NSLocationWhenInUseUsageDescription": "Vị trí của bạn được dùng để tính hướng Makkah từ nơi bạn đang đứng. Nó không bao giờ rời khỏi điện thoại của bạn.",
+    "NSUserNotificationsUsageDescription": "Nhận thông báo giờ lễ nguyện",
+    "gallery": {
+      "Next Prayer (Light)": "Lễ nguyện tiếp theo (Sáng)",
+      "A countdown to the next prayer.": "Đếm ngược đến lễ nguyện tiếp theo.",
+      "Extra Times (Light)": "Giờ bổ sung (Sáng)",
+      "A countdown to the next extra time.": "Đếm ngược đến giờ bổ sung tiếp theo.",
+      "Next Prayer (Dark)": "Lễ nguyện tiếp theo (Tối)",
+      "Extra Times (Dark)": "Giờ bổ sung (Tối)",
+      "Next Prayer (Layout 1)": "Lễ nguyện tiếp theo (Bố cục 1)",
+      "Countdown to the next prayer.": "Đếm ngược đến lễ nguyện tiếp theo.",
+      "Extra Times (Layout 1)": "Giờ bổ sung (Bố cục 1)",
+      "Countdown to the next extra time.": "Đếm ngược đến giờ bổ sung tiếp theo.",
+      "Next Prayer (Layout 2)": "Lễ nguyện tiếp theo (Bố cục 2)",
+      "Next prayer time.": "Giờ lễ nguyện tiếp theo.",
+      "Extra Times (Layout 2)": "Giờ bổ sung (Bố cục 2)",
+      "Next extra time.": "Giờ bổ sung tiếp theo.",
+      "Next Prayer (Layout 3)": "Lễ nguyện tiếp theo (Bố cục 3)",
+      "Next prayer time with a countdown.": "Giờ lễ nguyện tiếp theo kèm đếm ngược.",
+      "Extra Times (Layout 3)": "Giờ bổ sung (Bố cục 3)",
+      "Next extra time with a countdown.": "Giờ bổ sung tiếp theo kèm đếm ngược."
+    }
   }
 }
