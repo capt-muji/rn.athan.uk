@@ -889,6 +889,32 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'အသစ်ပြောင်းရန်',
       catchBody: 'အသစ်ပြောင်းရန် အက်ပ်ကို ဖွင့်ပါ',
     },
+    tt: {
+      subtitle: 'Лондон өчен намаз вакытлары',
+      inline: 'Athan — намаз вакытлары',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Вакытларны йөкләргә ачыгыз',
+      staleTitle: 'Яңартылмаган',
+      staleBody: 'Яңарту өчен апны ачыгыз',
+      staleInline: 'Athan — яңарту өчен ачыгыз',
+      refreshLine: 'Яңарту өчен Athan ачыгыз',
+      refreshLead: 'Athan ачыгыз',
+      refreshTail: 'яңарту өчен',
+      catchBody: 'Яңарту өчен апликацияне ачыгыз',
+    },
+    ce: {
+      subtitle: 'Лондонан ламазан хенаш',
+      inline: 'Athan — ламазан хенаш',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Хенаш чуйохуьйта схьайилла',
+      staleTitle: 'Карладаьккхина дац',
+      staleBody: 'Карладаккхархьама апликаци схьайилла',
+      staleInline: 'Athan — карладаккхархьама схьайилла',
+      refreshLine: 'Карладаккхархьама Athan схьайилла',
+      refreshLead: 'Athan схьайилла',
+      refreshTail: 'карладаккхархьама',
+      catchBody: 'Карладаккхархьама апликаци схьайилла',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -958,6 +984,8 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'jv',
         'su',
         'my',
+        'tt',
+        'ce',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

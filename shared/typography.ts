@@ -416,6 +416,13 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // my rides its own bundled Myanmar pair: no other bundled face carries the script
   // (measured, plan T-454 decision 5); its box clears its ink, so no script box
   my: MYANMAR,
+  // Roboto carries every Cyrillic codepoint U+0400 through U+04FF except U+0487, the
+  // Church Slavonic combining titlo neither language uses, palochka Ӏ U+04C0 and ӏ
+  // U+04CF included (measured by explicit codepoint in both weights over the bundled
+  // TTFs, plan T-454 decision 4): Tatar's ә ғ ҡ ң ө ҫ ү һ җ and Chechen's
+  // ә ҡ ң ӧ ү җ all measured present, so both take the LATIN record
+  tt: LATIN,
+  ce: LATIN,
 };
 
 /**

@@ -1223,5 +1223,53 @@
       "Extra Times (Layout 3)": "အပိုအချိန်များ (ပုံစံ 3)",
       "Next extra time with a countdown.": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် အပိုအချိန်။"
     }
+  },
+  "tt": {
+    "NSLocationWhenInUseUsageDescription": "Кыйбла сезнең урыныгыздан исәпләнә, шуңа аңа сезнең урыныгыз кулланыла. Ул телефоныгыздан беркайчан да чыкмый.",
+    "NSUserNotificationsUsageDescription": "Намаз вакыты белдерүләрен кабул итү",
+    "gallery": {
+      "Next Prayer (Light)": "Киләсе намаз (Якты)",
+      "A countdown to the next prayer.": "Киләсе намазга кадәр санагыч.",
+      "Extra Times (Light)": "Өстәмә вакытлар (Якты)",
+      "A countdown to the next extra time.": "Киләсе өстәмә вакытка кадәр санагыч.",
+      "Next Prayer (Dark)": "Киләсе намаз (Караңгы)",
+      "Extra Times (Dark)": "Өстәмә вакытлар (Караңгы)",
+      "Next Prayer (Layout 1)": "Киләсе намаз (Кыяфәт 1)",
+      "Countdown to the next prayer.": "Киләсе намазга кадәр санагыч.",
+      "Extra Times (Layout 1)": "Өстәмә вакытлар (Кыяфәт 1)",
+      "Countdown to the next extra time.": "Киләсе өстәмә вакытка кадәр санагыч.",
+      "Next Prayer (Layout 2)": "Киләсе намаз (Кыяфәт 2)",
+      "Next prayer time.": "Киләсе намаз вакыты.",
+      "Extra Times (Layout 2)": "Өстәмә вакытлар (Кыяфәт 2)",
+      "Next extra time.": "Киләсе өстәмә вакыт.",
+      "Next Prayer (Layout 3)": "Киләсе намаз (Кыяфәт 3)",
+      "Next prayer time with a countdown.": "Санагыч белән киләсе намаз вакыты.",
+      "Extra Times (Layout 3)": "Өстәмә вакытлар (Кыяфәт 3)",
+      "Next extra time with a countdown.": "Санагыч белән киләсе өстәмә вакыт."
+    }
+  },
+  "ce": {
+    "NSLocationWhenInUseUsageDescription": "КӀибла хьана меттигера йоцуш юьсуш ю, цундела аьтто цунна хьан меттиг лелош ю. Иза телефона чуьра ца го.",
+    "NSUserNotificationsUsageDescription": "Ламазан хенашнан хаамаш тlелоцийта",
+    "gallery": {
+      "Next Prayer (Light)": "Кхин ламаз (Сирло)",
+      "A countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
+      "Extra Times (Light)": "ДӀахlумма хенаш (Сирло)",
+      "A countdown to the next extra time.": "Кхин дӀахlумма хане юхасаккхар.",
+      "Next Prayer (Dark)": "Кхин ламаз (Чlогla)",
+      "Extra Times (Dark)": "ДӀахlумма хенаш (Чlогla)",
+      "Next Prayer (Layout 1)": "Кхин ламаз (Барт 1)",
+      "Countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
+      "Extra Times (Layout 1)": "ДӀахlумма хенаш (Барт 1)",
+      "Countdown to the next extra time.": "Кхин дӀахlумма хане юхасаккхар.",
+      "Next Prayer (Layout 2)": "Кхин ламаз (Барт 2)",
+      "Next prayer time.": "Кхин ламазан ха.",
+      "Extra Times (Layout 2)": "ДӀахlумма хенаш (Барт 2)",
+      "Next extra time.": "Кхин дӀахlумма ха.",
+      "Next Prayer (Layout 3)": "Кхин ламаз (Барт 3)",
+      "Next prayer time with a countdown.": "Юхасаккхарца кхин ламазан ха.",
+      "Extra Times (Layout 3)": "ДӀахlумма хенаш (Барт 3)",
+      "Next extra time with a countdown.": "Юхасаккхарца кхин дӀахlумма ха."
+    }
   }
 }

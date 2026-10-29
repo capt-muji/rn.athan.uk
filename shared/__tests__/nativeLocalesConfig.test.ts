@@ -72,6 +72,8 @@ const LOCALES = [
   'jv',
   'su',
   'my',
+  'tt',
+  'ce',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
@@ -129,9 +131,9 @@ describe('native strings from committed config', () => {
   it('refuses a Cyrillic letter inside a Latin-script locale', () => {
     // Russian, Kazakh, Kyrgyz and Tajik write Cyrillic; every other shipped locale
     // writes Latin, Arabic, Devanagari, Thai, Bengali, Tamil, Malayalam, Kannada,
-    // Telugu, Gujarati, Ethiopic or Han, so a Cyrillic letter in one of their rows
-    // is a homoglyph slip, not a spelling
-    const CYRILLIC_SCRIPT = new Set(['ru', 'kk', 'ky', 'tg']);
+    // Telugu, Gujarati, Ethiopic, Myanmar or Han, so a Cyrillic letter in one of
+    // their rows is a homoglyph slip, not a spelling
+    const CYRILLIC_SCRIPT = new Set(['ru', 'kk', 'ky', 'tg', 'tt', 'ce']);
     const CYRILLIC = /[\u0400-\u04FF]/;
     const failures: string[] = [];
     for (const locale of LOCALES) {
