@@ -13,9 +13,9 @@ const { withXcodeProject } = require('expo/config-plugins');
 // installed binaries. Neither the app target nor the extension sets any of the three, so the
 // strip pass pins them on the root project's Release configuration and both binaries inherit
 // (T-491 step 3; each setting measured alone on the Athan binary against the 27,706,400-byte /
-// 12,539-symbol baseline). LLVM_LTO=YES_THIN rides the same pin: thin LTO links the whole app
-// across module boundaries, measured alone after the strip lever and reverted first if it
-// regresses the link or breaks a native module.
+// 12,539-symbol baseline). LLVM_LTO=YES_THIN was measured alone after the strip lever and
+// reverted: it links different code (hashes differ) but the stripped binaries land the same
+// byte size and symbol count, so it buys nothing for its native-module risk (T-491 step 3).
 const WIDGET_TARGET_NAME = 'ExpoWidgetsTarget';
 
 // Quoted the way every value in the generated entry already rides, so the pbxproj writer
@@ -29,7 +29,6 @@ const PROJECT_RELEASE_BUILD_SETTINGS = {
   DEPLOYMENT_POSTPROCESSING: '"YES"',
   STRIP_INSTALLED_PRODUCT: '"YES"',
   DEAD_CODE_STRIPPING: '"YES"',
-  LLVM_LTO: '"YES_THIN"',
 };
 
 // The xcode library names a list's build configurations as { value, comment } pairs over the

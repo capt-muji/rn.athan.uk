@@ -258,7 +258,6 @@ describe('the project-level strip pin', () => {
     expect(release.DEPLOYMENT_POSTPROCESSING).toBe('"YES"');
     expect(release.STRIP_INSTALLED_PRODUCT).toBe('"YES"');
     expect(release.DEAD_CODE_STRIPPING).toBe('"YES"');
-    expect(release.LLVM_LTO).toBe('"YES_THIN"');
   });
 
   it('leaves the project Debug entry and every other setting it carried in place', () => {
