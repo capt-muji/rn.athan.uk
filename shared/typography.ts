@@ -225,6 +225,39 @@ const HANT: LocaleTypography = {
   wordFace: true,
 };
 
+// Japanese rides the same pipeline (plan T-452 decision 3): the cut pair carries
+// the closed string set whole, 321 characters, gated by the same glyph lock.
+// This wave's own measurement over the cut subsets (fontTools, both weights):
+// hhea ascent 1160, descent -288, lineGap 0 against UPM 1000, a 1.448em box the
+// win ink (1160/288) matches exactly, so the box clears the ink and no surface
+// pins a script box - the Thai row-87 law, the HANS pattern
+const JAPANESE: LocaleTypography = {
+  familyRegular: 'NotoSansJP-Subset-Regular',
+  familyMedium: 'NotoSansJP-Subset-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
+// Korean rides the KR twin of the same cut: 311 characters, the same measured
+// box (hhea 1160/-288, lineGap 0, win 1160/288, UPM 1000, both weights), so
+// the same row-87 law serves
+const KOREAN: LocaleTypography = {
+  familyRegular: 'NotoSansKR-Subset-Regular',
+  familyMedium: 'NotoSansKR-Subset-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 // No shipped face carries the African Latin letters: Roboto and Rubik both lack
 // ɛ ɔ ɲ (U+025B U+0254 U+0272) and ɓ ɗ ƴ (U+0253 U+0257 U+01B4), measured by explicit
 // codepoint in both weights of all twenty bundled TTFs (plan T-428 decision 4), so
@@ -375,6 +408,31 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   yo: YORUBA,
   jv: LATIN,
   su: LATIN,
+  // The CJK pair's own wave: ja and ko ride their cut subset pairs (plan
+  // T-452 decision 3), never the full statics
+  ja: JAPANESE,
+  ko: KOREAN,
+  // Roboto carries every Italian and Polish character of both locales' whole
+  // keyed surface by explicit census in both weights (72 and 72 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: it's è é à ò ù ì É and pl's ą ć ę ł ń ó ś ź ż all
+  // present), so both take LATIN
+  it: LATIN,
+  pl: LATIN,
+  // Roboto carries every Romanian and Cebuano character of both locales' whole
+  // keyed surface by explicit census in both weights (73 and 64 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: ro's comma-below ș ț Ș and every ă â î diacritic
+  // present, ceb's set plain Latin), so both take LATIN
+  ro: LATIN,
+  ceb: LATIN,
+  // Roboto carries every Ilocano and Vietnamese character of both locales' whole
+  // keyed surface by explicit census in both weights (63 and 127 distinct chars,
+  // the newline excepted because no glyph maps it, measured with fontTools,
+  // plan T-452 decision 6: vi's whole tone-marked Latin Extended Additional set,
+  // the heaviest of the six, carried in both weights), so both take LATIN
+  ilo: LATIN,
+  vi: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

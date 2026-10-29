@@ -72,6 +72,14 @@ const RAW = {
   min: require('./min') as typeof import('./min'),
   mad: require('./mad') as typeof import('./mad'),
   bug: require('./bug') as typeof import('./bug'),
+  ja: require('./ja') as typeof import('./ja'),
+  ko: require('./ko') as typeof import('./ko'),
+  it: require('./it') as typeof import('./it'),
+  pl: require('./pl') as typeof import('./pl'),
+  ro: require('./ro') as typeof import('./ro'),
+  ceb: require('./ceb') as typeof import('./ceb'),
+  ilo: require('./ilo') as typeof import('./ilo'),
+  vi: require('./vi') as typeof import('./vi'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -142,6 +150,14 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   min: { en: RAW.min.min, PRAYER_LABELS: RAW.min.PRAYER_LABELS },
   mad: { en: RAW.mad.mad, PRAYER_LABELS: RAW.mad.PRAYER_LABELS },
   bug: { en: RAW.bug.bug, PRAYER_LABELS: RAW.bug.PRAYER_LABELS },
+  ja: { en: RAW.ja.ja, PRAYER_LABELS: RAW.ja.PRAYER_LABELS },
+  ko: { en: RAW.ko.ko, PRAYER_LABELS: RAW.ko.PRAYER_LABELS },
+  it: { en: RAW.it.it, PRAYER_LABELS: RAW.it.PRAYER_LABELS },
+  pl: { en: RAW.pl.pl, PRAYER_LABELS: RAW.pl.PRAYER_LABELS },
+  ro: { en: RAW.ro.ro, PRAYER_LABELS: RAW.ro.PRAYER_LABELS },
+  ceb: { en: RAW.ceb.ceb, PRAYER_LABELS: RAW.ceb.PRAYER_LABELS },
+  ilo: { en: RAW.ilo.ilo, PRAYER_LABELS: RAW.ilo.PRAYER_LABELS },
+  vi: { en: RAW.vi.vi, PRAYER_LABELS: RAW.vi.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

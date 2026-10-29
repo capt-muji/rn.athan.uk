@@ -71,6 +71,14 @@ export const LOCALE_IDS = [
   'min',
   'mad',
   'bug',
+  'ja',
+  'ko',
+  'it',
+  'pl',
+  'ro',
+  'ceb',
+  'ilo',
+  'vi',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];

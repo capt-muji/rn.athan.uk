@@ -14,6 +14,7 @@ import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { bug } from '@/shared/i18n/bug';
 import { ce } from '@/shared/i18n/ce';
+import { ceb } from '@/shared/i18n/ceb';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
 import { type Catalog, en } from '@/shared/i18n/en';
@@ -25,9 +26,13 @@ import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { ilo } from '@/shared/i18n/ilo';
+import { it as itCatalog } from '@/shared/i18n/it';
+import { ja } from '@/shared/i18n/ja';
 import { jv } from '@/shared/i18n/jv';
 import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
+import { ko } from '@/shared/i18n/ko';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { mad } from '@/shared/i18n/mad';
@@ -39,9 +44,11 @@ import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
 import { om } from '@/shared/i18n/om';
 import { paArab } from '@/shared/i18n/pa-Arab';
+import { pl } from '@/shared/i18n/pl';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { qu } from '@/shared/i18n/qu';
+import { ro } from '@/shared/i18n/ro';
 import { ru } from '@/shared/i18n/ru';
 import { sd } from '@/shared/i18n/sd';
 import { so } from '@/shared/i18n/so';
@@ -61,6 +68,7 @@ import { ug } from '@/shared/i18n/ug';
 import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { vi } from '@/shared/i18n/vi';
 import { wo } from '@/shared/i18n/wo';
 import { yo } from '@/shared/i18n/yo';
 import { zhHans } from '@/shared/i18n/zh-Hans';
@@ -124,6 +132,14 @@ const CATALOGS: Record<string, Catalog> = {
   min,
   mad,
   bug,
+  ja,
+  ko,
+  it: itCatalog,
+  pl,
+  ro,
+  ceb,
+  ilo,
+  vi,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
@@ -234,6 +250,8 @@ const T427_EIGHT = ['pa-Arab', 'sd', 'ug', 'ckb', 'ku', 'yo', 'jv', 'su'] as con
 
 /** The eight locales T-454 ships; the same bar covers their names and explanations */
 const T454_EIGHT = ['my', 'tt', 'ce', 'uk', 'min', 'mad', 'bug', 'qu'] as const;
+/** The eight locales T-452 ships; the same bar covers their names and explanations */
+const T452_EIGHT = ['ja', 'ko', 'it', 'pl', 'ro', 'ceb', 'ilo', 'vi'] as const;
 
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
@@ -447,6 +465,27 @@ describe('the landed catalogs against the R2 gates', () => {
     >;
     const failures: string[] = [];
     for (const loc of T454_EIGHT) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+  it('sources every T-452 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T452_EIGHT) {
       const sections = glossary[loc];
       if (!sections) {
         failures.push(`${loc}: absent from the glossary`);

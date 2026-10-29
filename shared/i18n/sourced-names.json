@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-454 closures (the Myanmar, Cyrillic and island wave’s tables and loans) are recorded per plan doc T-454.",
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-452 closures (the CJK and Latin wave's katakana and hangul sets, the it pl ro vi transliterated sets with their own sunrise words, and the ceb and ilo loan-rule closures over the empty wikipedia checks) are recorded per plan doc T-452.",
     "sourceSlugs": {
       "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
       "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
@@ -113,9 +113,21 @@
       "bug-wikipedia": "bug.wikipedia’s Bugis articles, corroborating the prayer vocabulary",
       "bug-dictionary": "The official Bugis-Indonesia dictionary",
       "glosbe-qu": "glosbe’s Quechua Islamic terms dictionary",
-      "islamic-invitation-qu": "islamic-invitation.net’s Northern-Quechua section (corroboration only)"
+      "islamic-invitation-qu": "islamic-invitation.net’s Northern-Quechua section (corroboration only)",
+      "ja-wikipedia": "ja.wikipedia.org サラート article's prayer navbox, fetched 2026-10-29, printing ファジュル ズフル アスル マグリブ イシャー タハッジュド",
+      "salaahdaily-ja": "salaahdaily.com/ja/japan Japanese timetable, fetched 2026-10-29, rows ファジュル、日の出、ズフル、アスル、マグリブ、イシャー",
+      "ko-true-time": "ko.true-time.com 기도 시간 page, fetched 2026-10-29, printing 파즈르 주흐르 아스르 마그립 이샤 and 일출 in its Fajr prose",
+      "ko-play": "Google Play Korean listings of the Azan Alarm and Prayer Times apps (파즈르, 주흐르, 아스르, 마그립, 이샤), fetched 2026-10-29, the kn-play-salah precedent",
+      "it-appstore": "App Store IT listing Orario Preghiera & Adan Italia, fetched 2026-10-29, printing Fajr, Dhuhr, Asr, Maghrib, Isha with Italian glosses and orari di Suhoor e Iftar",
+      "it-wikipedia": "it.wikipedia.org Ṣalāt article, fetched 2026-10-29, naming the five in transliteration with Italian glosses (alba, mezzogiorno, pomeriggio, tramonto, notte)",
+      "mzr-pl": "mzr.pl Pory modlitw, the Muzułmański Związek Religijny's own table, fetched 2026-10-29, printing Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha",
+      "qiblafinder-pl": "qiblafinder.io/pl prayer-times page, fetched 2026-10-29, rows Fajr, Wschód słońca, Dhuhr, Asr, Maghrib, Isha",
+      "tawhid-ro": "tawhid.ro orar-rugăciune, a Romanian ore de rugăciune page, fetched 2026-10-29, sections Fajr (Zori) & Răsărit, Dhuhr & Asr, Maghrib & Isha",
+      "vi-true-time": "vi.true-time.com giờ cầu nguyện page, fetched 2026-10-29, whose prose runs từ buổi sáng Fajr đến buổi tối Isha",
+      "vi-scribd": "the Vietnamese document 5 Thời Điểm Cầu Nguyện Của Người Hồi Giáo on scribd.com, fetched 2026-10-29, printing Fajr (trước bình minh), Dhuhr (ngay sau giữa trưa), Asr (buổi chiều)",
+      "vi-play": "Google Play Vietnamese listing of Prayer Times - Qibla & Salah (hl=vi), fetched 2026-10-29, printing Fajr, Shuruq, Dhuhr, Asr, Maghrib, Isha and Qiyam vào lúc nửa đêm"
     },
-    "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. The seven slugs T-454 added are in the same position, registered for corroboration and cited by no entry and no note: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary and islamic-invitation-qu. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor.",
+    "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. The seven slugs T-454 added are in the same position, registered for corroboration and cited by no entry and no note: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary and islamic-invitation-qu. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor. The T-452 wave names ko-play, it-wikipedia and vi-true-time in the notes of the rows they corroborate, while its ko-wikipedia, ceb-wikipedia and ilo-wikipedia were checked 2026-10-29 and no entry rests on one, so none of the three is registered.",
     "confidenceKey": {
       "high": "national authority, or two independent source classes agree",
       "medium": "one good source",
@@ -6035,6 +6047,822 @@
         "source": "derived",
         "confidence": "low",
         "note": "Derived; ura is hour, viernesllallapunim is Fridays only, the Spanish day-word the leaflets carry."
+      }
+    }
+  },
+  "ja": {
+    "names": {
+      "Fajr": {
+        "text": "ファジュル",
+        "source": "ja-wikipedia",
+        "confidence": "high",
+        "note": "ja.wikipedia's サラート article's prayer navbox prints ファジュル, ズフル, アスル, マグリブ, イシャー; a Japanese timetable (salaahdaily.com's Japan page) prints the same set as its rows, two independent source classes."
+      },
+      "Sunrise": {
+        "text": "日の出",
+        "source": "salaahdaily-ja",
+        "confidence": "medium",
+        "note": "The Japan timetable's Tokyo row prints 日の出 between Fajr and Dhuhr; it is also the ordinary Japanese word for sunrise."
+      },
+      "Dhuhr": {
+        "text": "ズフル",
+        "source": "ja-wikipedia",
+        "confidence": "high",
+        "note": "The サラート navbox names the midday prayer ズフル; the Japan timetable prints the same row."
+      },
+      "Asr": {
+        "text": "アスル",
+        "source": "ja-wikipedia",
+        "confidence": "high",
+        "note": "The サラート navbox names the afternoon prayer アスル; the Japan timetable prints the same row."
+      },
+      "Magrib": {
+        "text": "マグリブ",
+        "source": "ja-wikipedia",
+        "confidence": "high",
+        "note": "The サラート navbox names the sunset prayer マグリブ; the Japan timetable prints the same row."
+      },
+      "Isha": {
+        "text": "イシャー",
+        "source": "ja-wikipedia",
+        "confidence": "high",
+        "note": "The サラート navbox names the night prayer イシャー; the Japan timetable prints the same row."
+      },
+      "Midnight": {
+        "text": "真夜中",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: 真夜中, the ordinary Japanese word for midnight. No Japanese timetable prints the row."
+      },
+      "Last Third": {
+        "text": "夜の最後の三分の一",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Japanese phrase for the last third of the night. The navbox's タハッジュド names the night prayer, not the time row, so the row takes the phrase."
+      },
+      "Suhoor": {
+        "text": "スフール",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic suhur as Japanese Ramadan media print it in katakana. No timetable prints the row."
+      },
+      "Duha": {
+        "text": "ドゥハー",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha in katakana, the zh 杜ハ/杜哈 precedent shape. No timetable prints the row."
+      },
+      "Istijaba": {
+        "text": "イスティジャーバ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba in katakana. No timetable prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "マグリブとファジュルのちょうど真ん中",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; XとYのちょうど真ん中 is exactly halfway between X and Y."
+      },
+      "Start of the last third of the night": {
+        "text": "夜の最後の三分の一の始まり",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; の始まり is the start of."
+      },
+      "20 mins before Fajr": {
+        "text": "ファジュルの20分前",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; Xの20分前 is 20 minutes before X, digits Latin."
+      },
+      "20 mins after Sunrise": {
+        "text": "日の出の20分後",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; Xの20分後 is 20 minutes after X."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "マグリブの1時間前（金曜のみ）",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; 金曜のみ is Fridays only."
+      }
+    }
+  },
+  "ko": {
+    "names": {
+      "Fajr": {
+        "text": "파즈르",
+        "source": "ko-true-time",
+        "confidence": "high",
+        "note": "The Korean prayer-times page prints 파즈르, 주흐르, 아스르, 마그립, 이샤 as its set; the ko-play listing prints the same five, two independent source classes."
+      },
+      "Sunrise": {
+        "text": "일출",
+        "source": "ko-true-time",
+        "confidence": "medium",
+        "note": "The page's Fajr prose prints 일출 (Fajr runs to sunrise); it is also the ordinary Korean word for sunrise."
+      },
+      "Dhuhr": {
+        "text": "주흐르",
+        "source": "ko-true-time",
+        "confidence": "high",
+        "note": "The page prints 주흐르 as the midday prayer; the Play listing agrees (qiblafinder's Korean page prints the 두흐르 variant, the minority spelling)."
+      },
+      "Asr": {
+        "text": "아스르",
+        "source": "ko-true-time",
+        "confidence": "high",
+        "note": "The page prints 아스르; the Play listing agrees."
+      },
+      "Magrib": {
+        "text": "마그립",
+        "source": "ko-true-time",
+        "confidence": "high",
+        "note": "The page prints 마그립; the Play listing agrees."
+      },
+      "Isha": {
+        "text": "이샤",
+        "source": "ko-true-time",
+        "confidence": "high",
+        "note": "The page prints 이샤; the Play listing agrees."
+      },
+      "Midnight": {
+        "text": "자정",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: 자정, the ordinary Korean word for midnight. The page's Isha prose mentions 자정 as the window's end, not a row."
+      },
+      "Last Third": {
+        "text": "밤의 마지막 3분의 1",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Korean phrase for the last third of the night, the share written with a Latin digit per the digits law."
+      },
+      "Suhoor": {
+        "text": "수후르",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic suhur in hangul as Korean Ramadan media print it. No Korean table prints the row."
+      },
+      "Duha": {
+        "text": "두하",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha in hangul. No Korean table prints the row."
+      },
+      "Istijaba": {
+        "text": "이스티자바",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba in hangul. No Korean table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "마그립과 파즈르의 정가운데",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; X과 Y의 정가운데 is the middle point between X and Y, 과 the after-consonant linker."
+      },
+      "Start of the last third of the night": {
+        "text": "밤의 마지막 3분의 1의 시작",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; 의 시작 is the start of."
+      },
+      "20 mins before Fajr": {
+        "text": "파즈르 20분 전",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; 20분 전 is 20 minutes before."
+      },
+      "20 mins after Sunrise": {
+        "text": "일출 20분 후",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; 20분 후 is 20 minutes after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "마그립 1시간 전 (금요일만)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; 금요일만 is Fridays only."
+      }
+    }
+  },
+  "it": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "it-appstore",
+        "confidence": "high",
+        "note": "The Italian App Store's Orario Preghiera listing prints the five as Fajr, Dhuhr, Asr, Maghrib and Isha; it-wikipedia's Salat article's salat al-fajr agrees, two independent source classes."
+      },
+      "Sunrise": {
+        "text": "Alba",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Italian's own word for sunrise; the fetched Italian pages print no sunrise row, the su Panonpoé bijil precedent. The listing glosses Fajr itself as preghiera dell'alba."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "it-appstore",
+        "confidence": "high",
+        "note": "The listing prints Dhuhr with the gloss preghiera di mezzogiorno; it.wikipedia's al-zuhr agrees."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "it-appstore",
+        "confidence": "high",
+        "note": "The listing prints Asr with the gloss preghiera del pomeriggio; it.wikipedia's al-asr agrees."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "it-appstore",
+        "confidence": "high",
+        "note": "The listing prints Maghrib with the gloss preghiera del tramonto; it.wikipedia's al-maghrib agrees."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "it-appstore",
+        "confidence": "high",
+        "note": "The listing prints Isha with the gloss preghiera della sera; it.wikipedia's al-isa' agrees."
+      },
+      "Midnight": {
+        "text": "Mezzanotte",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: mezzanotte, the ordinary Italian word for midnight. No Italian table prints the row."
+      },
+      "Last Third": {
+        "text": "Ultimo terzo della notte",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Italian phrase for the last third of the night. No Italian table prints the row."
+      },
+      "Suhoor": {
+        "text": "Suhoor",
+        "source": "it-appstore",
+        "confidence": "medium",
+        "note": "The listing's Ramadan features name orari di Suhoor e Iftar, the transliteration Italian Islamic pages print."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Italian Islamic pages print it. No fetched page prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Italian Islamic pages print it. No fetched page prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "A metà tra Maghrib e Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; a metà tra X e Y is halfway between."
+      },
+      "Start of the last third of the night": {
+        "text": "Inizio dell'ultimo terzo della notte",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; inizio is the start, the rest the loan phrase in full."
+      },
+      "20 mins before Fajr": {
+        "text": "20 minuti prima di Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; prima di is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 minuti dopo l'Alba",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; dopo is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 ora prima di Maghrib (solo il venerdì)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; solo il venerdì is Fridays only."
+      }
+    }
+  },
+  "pl": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "mzr-pl",
+        "confidence": "high",
+        "note": "The national body's own Pory modlitw table (Muzułmański Związek Religijny) prints Fajr, Sunrise, Dhuhr, Asr, Maghrib and Isha, the transliterated set with the English sunrise row."
+      },
+      "Sunrise": {
+        "text": "Wschód słońca",
+        "source": "qiblafinder-pl",
+        "confidence": "medium",
+        "note": "A Polish prayer-times page prints Wschód słońca as its second row, the language's own word; the national body's own table prints the English Sunrise, decision 8's rule."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "mzr-pl",
+        "confidence": "high",
+        "note": "The national body's table prints Dhuhr as its row."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "mzr-pl",
+        "confidence": "high",
+        "note": "The national body's table prints Asr as its row."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "mzr-pl",
+        "confidence": "high",
+        "note": "The national body's table prints Maghrib as its row."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "mzr-pl",
+        "confidence": "high",
+        "note": "The national body's table prints Isha as its row."
+      },
+      "Midnight": {
+        "text": "Północ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: północ, the ordinary Polish word for midnight. No Polish table prints the row."
+      },
+      "Last Third": {
+        "text": "Ostatnia 1/3 nocy",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Polish phrase for the last third of the night, the share written with a Latin digit per the digits law; the spelled-out ostatnia trzecia część nocy runs past the 24-char label budget."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic suhur as Polish Islamic pages print it. No Polish table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Polish Islamic pages print it. No Polish table prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Polish Islamic pages print it. No Polish table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "W połowie między Maghrib a Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; w połowie między X a Y is halfway between."
+      },
+      "Start of the last third of the night": {
+        "text": "Początek ostatniej 1/3 nocy",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; początek is the start, the rest the loan phrase in full."
+      },
+      "20 mins before Fajr": {
+        "text": "20 minut przed Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; przed is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 minut po Wschodzie słońca",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; po is after, the sourced sunrise name in its inflected form."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 godzina przed Maghrib (tylko w piątki)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; tylko w piątki is Fridays only."
+      }
+    }
+  },
+  "ro": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "A Bucharest foundation's Romanian orar de rugăciune prints Fajr (Zori), Răsărit, Dhuhr, Asr, Maghrib and Isha: the transliterated rows with Romanian glosses, the muftiat-family genre the plan names."
+      },
+      "Sunrise": {
+        "text": "Răsărit",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "The same page's first section reads Fajr (Zori) & Răsărit, the Romanian word printed beside the dawn row."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "The same page's second section reads Dhuhr & Asr."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "The same page's second section reads Dhuhr & Asr."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "The same page's third section reads Maghrib & Isha."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "tawhid-ro",
+        "confidence": "medium",
+        "note": "The same page's third section reads Maghrib & Isha."
+      },
+      "Midnight": {
+        "text": "Miezul nopții",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: miezul nopții, the ordinary Romanian phrase for midnight. No Romanian table prints the row."
+      },
+      "Last Third": {
+        "text": "Ultima treime a nopții",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Romanian phrase for the last third of the night. No Romanian table prints the row."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic suhur as Romanian Islamic pages print it. No Romanian table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Romanian Islamic pages print it. No Romanian table prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Romanian Islamic pages print it. No Romanian table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "La mijloc între Maghrib și Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; la mijloc între X și Y is halfway between."
+      },
+      "Start of the last third of the night": {
+        "text": "Începutul ultimei treimi a nopții",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; începutul is the start of, the rest the loan phrase in its inflected form."
+      },
+      "20 mins before Fajr": {
+        "text": "20 de minute înainte de Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; înainte de is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 de minute după Răsărit",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; după is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Cu o oră înainte de Maghrib (doar vinerea)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; doar vinerea is on Fridays only."
+      }
+    }
+  },
+  "ceb": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The plan's ceb.wikipedia check ran 2026-10-29 and attests nothing: ceb.wikipedia's Salat page is a disambiguation over places named Salat (a peak, streams, villages), so no Cebuano prayer table exists to read."
+      },
+      "Sunrise": {
+        "text": "Pagsikat sa adlaw",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ordinary Cebuano phrase for the sun's rising (adlaw is the sun, pagsikat its rising); no table prints the row, the su Panonpoé bijil precedent."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ceb.wikipedia check attests no Cebuano row."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ceb.wikipedia check attests no Cebuano row."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ceb.wikipedia check attests no Cebuano row."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ceb.wikipedia check attests no Cebuano row."
+      },
+      "Midnight": {
+        "text": "Tungang gabii",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: tungang gabii, the ordinary Cebuano phrase for midnight (gabii is night). No table prints the row."
+      },
+      "Last Third": {
+        "text": "Kataposang ikatulo",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the last (kataposang) third (ikatulo, the ordinal share) of the night; the full phrase kataposang ikatulo sa gabii runs past the 24-char label budget, so the row carries the head."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the pre-dawn meal name as Philippine Islamic speech prints it. No table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Philippine Islamic speech prints it. Cebuano's own duha (two) is a numeral, no conflict in the row's context."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Philippine Islamic speech prints it. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Taliwala sa Maghrib ug Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; taliwala sa is halfway between."
+      },
+      "Start of the last third of the night": {
+        "text": "Pagsugod sa kataposang ikatulo sa gabii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; pagsugod sa is the start of, and the phrase spells the loan in full."
+      },
+      "20 mins before Fajr": {
+        "text": "20 ka minuto sa wala pa ang Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; sa wala pa ang is before, ka the counter linker."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 ka minuto human sa pagsikat sa adlaw",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; human sa is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 ka oras sa wala pa ang Maghrib (biyernes ra)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; biyernes ra is Fridays only."
+      }
+    }
+  },
+  "ilo": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The plan's ilo.wikipedia check ran 2026-10-29 and attests nothing: ilo.wikipedia carries no Salat article (the fetch returns no page), so no Ilocano prayer table exists to read."
+      },
+      "Sunrise": {
+        "text": "Rummuar ti init",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ordinary Ilocano phrase for the sun coming out (init is the sun, rummuar its coming out); no table prints the row, the su Panonpoé bijil precedent."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ilo.wikipedia check attests no Ilocano row."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ilo.wikipedia check attests no Ilocano row."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ilo.wikipedia check attests no Ilocano row."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule; the ilo.wikipedia check attests no Ilocano row."
+      },
+      "Midnight": {
+        "text": "Tengnga ti rabii",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: tengnga ti rabii, the ordinary Ilocano phrase for midnight (rabii is night). No table prints the row."
+      },
+      "Last Third": {
+        "text": "Maudi a maikatlo",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: maudi (the last) with maikatlo (the ordinal third); the full phrase maudi a maikatlo ti rabii runs past the 24-char label budget, so the row carries the head."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the pre-dawn meal name as Philippine Islamic speech prints it. No table prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Philippine Islamic speech prints it. Ilocano's own dua (two) is a numeral, no conflict in the row's context."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Philippine Islamic speech prints it. No table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Tengnga a pagbaetan ti Maghrib ken Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; tengnga a pagbaetan ti X ken Y is the middle point between X and Y."
+      },
+      "Start of the last third of the night": {
+        "text": "Rugian ti maudi a maikatlo ti rabii",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; rugian ti is the start of, and the phrase spells the loan in full."
+      },
+      "20 mins before Fajr": {
+        "text": "20 a minuto sakbay ti Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; sakbay ti is before."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 a minuto kalpasan ti rummuar ti init",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; kalpasan ti is after."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 nga oras sakbay ti Maghrib (iti Fiernes la)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; iti Fiernes la is on Fridays only."
+      }
+    }
+  },
+  "vi": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "vi-scribd",
+        "confidence": "high",
+        "note": "A Vietnamese five-prayer-times document prints Fajr, Dhuhr, Asr with Vietnamese glosses (trước bình minh, ngay sau giữa trưa, buổi chiều); a Vietnamese Play Store listing prints Fajr, Dhuhr, Asr, Maghrib, Isha, two independent source classes."
+      },
+      "Sunrise": {
+        "text": "Bình minh",
+        "source": "vi-scribd",
+        "confidence": "medium",
+        "note": "The document's Fajr entry glosses the row as trước bình minh (before bình minh), the word Vietnamese timetables print for the sunrise row; the Play listing prints the transliteration Shuruq beside it, decision 8's own-gloss rule."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "vi-scribd",
+        "confidence": "high",
+        "note": "The document prints Dhuhr (ngay sau giữa trưa); the Play listing agrees."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "vi-scribd",
+        "confidence": "high",
+        "note": "The document prints Asr (buổi chiều); the Play listing agrees."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "vi-play",
+        "confidence": "high",
+        "note": "The Play listing prints Maghrib in its row set; the document's set completes the five the same way."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "vi-play",
+        "confidence": "high",
+        "note": "The Play listing prints Isha; vi-true-time's own prose runs từ buổi sáng Fajr đến buổi tối Isha."
+      },
+      "Midnight": {
+        "text": "Nửa đêm",
+        "source": "vi-play",
+        "confidence": "medium",
+        "note": "The Play listing's Qiyam line prints lúc nửa đêm, the ordinary Vietnamese phrase for midnight, attested in Islamic usage."
+      },
+      "Last Third": {
+        "text": "1/3 cuối của đêm",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the ordinary Vietnamese phrase for the last third of the night, the share written with a Latin digit per the digits law. No Vietnamese table prints the row."
+      },
+      "Suhoor": {
+        "text": "Suhoor",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic suhur as Vietnamese Islamic pages print it. No fetched page prints the row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha as Vietnamese Islamic pages print it. No fetched page prints the row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba as Vietnamese Islamic pages print it. No fetched page prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Đúng giữa Maghrib và Fajr",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; đúng giữa X và Y is exactly halfway between."
+      },
+      "Start of the last third of the night": {
+        "text": "Bắt đầu 1/3 cuối của đêm",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; bắt đầu is the start of, the rest the loan phrase in full."
+      },
+      "20 mins before Fajr": {
+        "text": "Trước Fajr 20 phút",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; trước X 20 phút is 20 minutes before X."
+      },
+      "20 mins after Sunrise": {
+        "text": "Sau Bình minh 20 phút",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; sau X 20 phút is 20 minutes after X."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "Trước Maghrib 1 giờ (chỉ thứ Sáu)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "Derived from the sourced names; chỉ thứ Sáu is Fridays only."
       }
     }
   }

@@ -67,11 +67,19 @@ const LOCALES = [
   'min',
   'mad',
   'bug',
+  'ja',
+  'ko',
+  'it',
+  'pl',
+  'ro',
+  'ceb',
+  'ilo',
+  'vi',
 ] as const;
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 
 describe('the catalog lock', () => {
-  it('covers exactly the thirty-three translated locales', () => {
+  it('covers exactly the fifty-seven translated locales', () => {
     expect(Object.keys(lock).sort()).toEqual([...LOCALES].sort());
   });
 

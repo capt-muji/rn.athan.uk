@@ -20,6 +20,7 @@ import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { bug } from '@/shared/i18n/bug';
 import { ce } from '@/shared/i18n/ce';
+import { ceb } from '@/shared/i18n/ceb';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
@@ -32,9 +33,13 @@ import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { ilo } from '@/shared/i18n/ilo';
+import { it as itCatalog } from '@/shared/i18n/it';
+import { ja } from '@/shared/i18n/ja';
 import { jv } from '@/shared/i18n/jv';
 import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
+import { ko } from '@/shared/i18n/ko';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -47,9 +52,11 @@ import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
 import { om } from '@/shared/i18n/om';
 import { paArab } from '@/shared/i18n/pa-Arab';
+import { pl } from '@/shared/i18n/pl';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { qu } from '@/shared/i18n/qu';
+import { ro } from '@/shared/i18n/ro';
 import { ru } from '@/shared/i18n/ru';
 import { sd } from '@/shared/i18n/sd';
 import { so } from '@/shared/i18n/so';
@@ -68,6 +75,7 @@ import { ug } from '@/shared/i18n/ug';
 import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { vi } from '@/shared/i18n/vi';
 import { wo } from '@/shared/i18n/wo';
 import { yo } from '@/shared/i18n/yo';
 import { zhHans } from '@/shared/i18n/zh-Hans';
@@ -132,6 +140,14 @@ const CATALOGS: Record<string, Catalog> = {
   min,
   mad,
   bug,
+  ja,
+  ko,
+  it: itCatalog,
+  pl,
+  ro,
+  ceb,
+  ilo,
+  vi,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -208,7 +224,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(58);
+    expect(Object.keys(CATALOGS)).toHaveLength(66);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);
