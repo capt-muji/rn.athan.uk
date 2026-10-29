@@ -53,11 +53,12 @@ const plugin = require('../iosReleaseSettings') as ((config: unknown) => unknown
   pinReleaseBuildSettings: (
     configurationList: ConfigurationListFixture,
     buildConfigurationSection: Record<string, ConfigurationEntryFixture>,
-    settings: Record<string, string>
+    settings: Record<string, string>,
+    owner?: string
   ) => ConfigurationEntryFixture;
   pinWidgetTargetRelease: (xcodeProject: ProjectFixture) => ConfigurationEntryFixture;
   pinProjectReleaseSettings: (xcodeProject: ProjectFixture) => ConfigurationEntryFixture;
-  pinModResults: <C extends { modResults: ProjectFixture }>(config: C) => C;
+  pinModResults: <C extends { modResults: ProjectFixture }>(config: C, env?: Record<string, string | undefined>) => C;
 };
 const { pinReleaseBuildSettings, pinWidgetTargetRelease, pinProjectReleaseSettings, pinModResults } = plugin;
 
@@ -209,7 +210,8 @@ describe('the Release settings surgery', () => {
       pinReleaseBuildSettings(
         listFixture([{ value: DEBUG_UUID, comment: 'Debug' }]),
         sectionFixture(),
-        plugin.RELEASE_BUILD_SETTINGS
+        plugin.RELEASE_BUILD_SETTINGS,
+        'the test list'
       )
     ).toThrow(/no Release configuration/);
   });
@@ -299,7 +301,7 @@ describe('the mod wiring', () => {
   it('pins the xcodeProject mod results in place and returns the config', () => {
     const config = { modResults: projectFixture() };
 
-    const returned = pinModResults(config);
+    const returned = pinModResults(config, { EXPO_PUBLIC_IOS_WIDGETS: '1' });
 
     expect(returned).toBe(config);
     expect(config.modResults.pbxXCBuildConfigurationSection()[RELEASE_UUID].buildSettings.ENABLE_DEBUG_DYLIB).toBe(
@@ -308,6 +310,36 @@ describe('the mod wiring', () => {
     expect(
       config.modResults.pbxXCBuildConfigurationSection()[PROJECT_RELEASE_UUID].buildSettings.DEPLOYMENT_POSTPROCESSING
     ).toBe('"YES"');
+  });
+
+  it('skips the widget pin and still strips when widgets are resolved out, so a widgets-off prebuild runs green', () => {
+    // app.config.ts strips expo-widgets whenever EXPO_PUBLIC_IOS_WIDGETS is unset but leaves this
+    // plugin registered, so the pin must read the same flag or a fresh clone's prebuild dies on
+    // the missing-target guard; the project strip pin serves the app binary with or without widgets
+    const config = { modResults: projectFixture({ withoutTarget: true }) };
+
+    expect(() => pinModResults(config, {})).not.toThrow();
+    expect(
+      config.modResults.pbxXCBuildConfigurationSection()[PROJECT_RELEASE_UUID].buildSettings.DEPLOYMENT_POSTPROCESSING
+    ).toBe('"YES"');
+  });
+
+  it('reads the process env by default, so the fresh-clone path needs no caller change', () => {
+    const previous = process.env.EXPO_PUBLIC_IOS_WIDGETS;
+    delete process.env.EXPO_PUBLIC_IOS_WIDGETS;
+    try {
+      const config = { modResults: projectFixture({ withoutTarget: true }) };
+
+      expect(() => pinModResults(config)).not.toThrow();
+    } finally {
+      if (previous !== undefined) process.env.EXPO_PUBLIC_IOS_WIDGETS = previous;
+    }
+  });
+
+  it('throws naming the flag when widgets are resolved in but the target never appeared', () => {
+    expect(() =>
+      pinModResults({ modResults: projectFixture({ withoutTarget: true }) }, { EXPO_PUBLIC_IOS_WIDGETS: '1' })
+    ).toThrow(/EXPO_PUBLIC_IOS_WIDGETS/);
   });
 
   it('registers an ios xcodeProject mod on a bare config', () => {

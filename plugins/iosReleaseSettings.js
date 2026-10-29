@@ -33,7 +33,7 @@ const PROJECT_RELEASE_BUILD_SETTINGS = {
 
 // The xcode library names a list's build configurations as { value, comment } pairs over the
 // entries the section holds, so the walk resolves uuids through both maps
-const pinReleaseBuildSettings = (configurationList, buildConfigurationSection, settings, owner) => {
+const pinReleaseBuildSettings = (configurationList, buildConfigurationSection, settings, owner = 'this list') => {
   for (const { value: uuid } of configurationList.buildConfigurations) {
     const entry = buildConfigurationSection[uuid];
     if (entry?.name !== 'Release') continue;
@@ -47,8 +47,9 @@ const pinWidgetTargetRelease = (xcodeProject) => {
   const target = xcodeProject.pbxTargetByName(WIDGET_TARGET_NAME);
   if (!target) {
     throw new Error(
-      `iosReleaseSettings: the native target "${WIDGET_TARGET_NAME}" is missing from the Xcode project; ` +
-        'expo-widgets should have created it - is "./plugins/iosReleaseSettings" registered before "expo-widgets" in app.json?'
+      `iosReleaseSettings: EXPO_PUBLIC_IOS_WIDGETS is set but the native target "${WIDGET_TARGET_NAME}" is missing ` +
+        'from the Xcode project - expo-widgets should have created it; is "./plugins/iosReleaseSettings" registered ' +
+        'before "expo-widgets" in app.json?'
     );
   }
   const configurationList = xcodeProject.pbxXCConfigurationList()[target.buildConfigurationList];
@@ -81,8 +82,13 @@ const pinProjectReleaseSettings = (xcodeProject) => {
   );
 };
 
-const pinModResults = (config) => {
-  pinWidgetTargetRelease(config.modResults);
+// app.config.ts strips expo-widgets whenever EXPO_PUBLIC_IOS_WIDGETS is unset but leaves this
+// plugin registered, so the pin reads the same flag: widgets-off prebuilds skip the target pin
+// and still take the project strip pin, which serves the app binary with or without widgets
+const widgetsResolvedIn = (env) => env.EXPO_PUBLIC_IOS_WIDGETS === '1';
+
+const pinModResults = (config, env = process.env) => {
+  if (widgetsResolvedIn(env)) pinWidgetTargetRelease(config.modResults);
   pinProjectReleaseSettings(config.modResults);
   return config;
 };
@@ -99,6 +105,7 @@ module.exports.pinReleaseBuildSettings = pinReleaseBuildSettings;
 module.exports.pinWidgetTargetRelease = pinWidgetTargetRelease;
 module.exports.pinProjectReleaseSettings = pinProjectReleaseSettings;
 module.exports.pinModResults = pinModResults;
+module.exports.widgetsResolvedIn = widgetsResolvedIn;
 module.exports.WIDGET_TARGET_NAME = WIDGET_TARGET_NAME;
 module.exports.RELEASE_BUILD_SETTINGS = RELEASE_BUILD_SETTINGS;
 module.exports.PROJECT_RELEASE_BUILD_SETTINGS = PROJECT_RELEASE_BUILD_SETTINGS;
