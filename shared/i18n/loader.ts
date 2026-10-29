@@ -64,6 +64,9 @@ const RAW = {
   yo: require('./yo') as typeof import('./yo'),
   jv: require('./jv') as typeof import('./jv'),
   su: require('./su') as typeof import('./su'),
+  skr: require('./skr') as typeof import('./skr'),
+  bal: require('./bal') as typeof import('./bal'),
+  kas: require('./kas') as typeof import('./kas'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -126,6 +129,9 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   yo: { en: RAW.yo.yo, PRAYER_LABELS: RAW.yo.PRAYER_LABELS },
   jv: { en: RAW.jv.jv, PRAYER_LABELS: RAW.jv.PRAYER_LABELS },
   su: { en: RAW.su.su, PRAYER_LABELS: RAW.su.PRAYER_LABELS },
+  skr: { en: RAW.skr.skr, PRAYER_LABELS: RAW.skr.PRAYER_LABELS },
+  bal: { en: RAW.bal.bal, PRAYER_LABELS: RAW.bal.PRAYER_LABELS },
+  kas: { en: RAW.kas.kas, PRAYER_LABELS: RAW.kas.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

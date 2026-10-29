@@ -108,6 +108,9 @@ describe('typographyFor', () => {
         id !== 'sd' &&
         id !== 'ug' &&
         id !== 'ckb' &&
+        id !== 'skr' &&
+        id !== 'bal' &&
+        id !== 'kas' &&
         id !== 'yo' &&
         id !== 'ta' &&
         id !== 'ml' &&
@@ -125,11 +128,13 @@ describe('typographyFor', () => {
     }
   });
 
-  it('resolves pa-Arab and sd to the same Naskh record, Rubik lacking their letters', () => {
+  it('resolves the Arabic-script locales to the same Naskh record, Rubik lacking their letters', () => {
     // Plan T-427 decision 4: measured by explicit codepoint, the Naskh pair carries
     // Shahmukhi's thirteen letters and Sindhi's fifteen, both weights, while Rubik
-    // lacks every one of them
-    for (const locale of ['pa-Arab', 'sd', 'ug', 'ckb'] as const) {
+    // lacks every one of them. Plan T-453 decision 10: the same measurement carries
+    // Saraiki's eight, Balochi's five and Kashmiri's fourteen, both weights, while
+    // Roboto and Rubik carry none of the twenty-seven
+    for (const locale of ['pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const) {
       const ty = typographyFor(locale);
       expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
       expect(ty.scriptLineHeight?.(14)).toBe(21);

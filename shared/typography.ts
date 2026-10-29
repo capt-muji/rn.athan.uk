@@ -85,7 +85,13 @@ const THAI: LocaleTypography = {
 // against 2.039em win ink. Sindhi, Uyghur and Shahmukhi Punjabi ride it too (plan
 // T-427 decision 4): measured the same day by explicit codepoint, this pair carries
 // all fifteen Sindhi letters, Uyghur's eight and Shahmukhi's thirteen, both weights,
-// while Rubik lacks every one of them
+// while Rubik lacks every one of them. Saraiki, Balochi and Kashmiri ride it too
+// (plan T-453 decision 10): measured 2026-10-29 by explicit codepoint, this pair
+// carries Saraiki's eight own letters, Balochi's five and Kashmiri's fourteen in
+// both weights while Roboto and Rubik carry none of the twenty-seven, and every
+// character of each locale's whole keyed surface (108, 104 and 112 distinct
+// characters: catalog, native strings, widget statics and endonym) is carried by
+// both weights
 const URDU: LocaleTypography = {
   familyRegular: 'NotoNaskhArabic-Regular',
   familyMedium: 'NotoNaskhArabic-Medium',
@@ -392,6 +398,11 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   gu: GUJARATI,
   kn: KANNADA,
   am: ETHIOPIC,
+  // This wave's Arabic-script three (plan T-453 decision 10): skr, bal and kas ride
+  // the URDU record's Naskh pair, the measurement recorded in the record's comment
+  skr: URDU,
+  bal: URDU,
+  kas: URDU,
 };
 
 /**

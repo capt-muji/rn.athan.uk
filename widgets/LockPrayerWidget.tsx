@@ -703,6 +703,45 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'pikeun nyegerkeun',
       catchBody: 'Buka aplikasi pikeun nyegerkeun',
     },
+    skr: {
+      subtitle: 'لندن کیتے نمازاں دے ویلھے',
+      inline: 'Athan — نمازاں دے ویلھے',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'ویلھے لوڈ کرݨ کیتے کھولو',
+      staleTitle: 'تازہ کائنی',
+      staleBody: 'تازہ کاری کیتے ایپ کھولو',
+      staleInline: 'Athan — ویلھے تازہ کاری کیتے کھولو',
+      refreshLine: 'تازہ کاری کیتے Athan کھولو',
+      refreshLead: 'Athan کھولو',
+      refreshTail: 'تازہ کاری کیتے',
+      catchBody: 'تازہ کاری کیتے ایپ کھولو',
+    },
+    bal: {
+      subtitle: 'لندنءَ کیتے نمازءِ وختئں',
+      inline: 'Athan — نمازءِ وختئں',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وختئںءَ لوڈ کنگءَ کیتے کَشا کَن',
+      staleTitle: 'تازہ نئے',
+      staleBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+      staleInline: 'Athan — وختئںءَ تازہ کاریءَ کیتے کَشا کَن',
+      refreshLine: 'تازہ کاریءَ کیتے Athanءَ کَشا کَن',
+      refreshLead: 'Athanءَ کَشا کَن',
+      refreshTail: 'تازہ کاریءَ کیتے',
+      catchBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+    },
+    kas: {
+      subtitle: 'لَنڈَنئے خٲطرئہ نؠمازٕکئے وَقت',
+      inline: 'Athan — نؠمازٕکئے وَقت',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وَقت لوڈ کَرنئے خٲطرئہ کھولِو',
+      staleTitle: 'تازہ نہِ',
+      staleBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+      staleInline: 'Athan — وَقت تازہ کٲری خٲطرئہ کھولِو',
+      refreshLine: 'تازہ کٲری خٲطرئہ Athan کھولِو',
+      refreshLead: 'Athan کھولِو',
+      refreshTail: 'تازہ کٲری خٲطرئہ',
+      catchBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -771,6 +810,9 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'yo',
         'jv',
         'su',
+        'skr',
+        'bal',
+        'kas',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1584,6 +1626,45 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'pikeun nyegerkeun',
       catchBody: 'Buka aplikasi pikeun nyegerkeun',
     },
+    skr: {
+      subtitle: 'لندن کیتے نمازاں دے ویلھے',
+      inline: 'Athan — نمازاں دے ویلھے',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'ویلھے لوڈ کرݨ کیتے کھولو',
+      staleTitle: 'تازہ کائنی',
+      staleBody: 'تازہ کاری کیتے ایپ کھولو',
+      staleInline: 'Athan — ویلھے تازہ کاری کیتے کھولو',
+      refreshLine: 'تازہ کاری کیتے Athan کھولو',
+      refreshLead: 'Athan کھولو',
+      refreshTail: 'تازہ کاری کیتے',
+      catchBody: 'تازہ کاری کیتے ایپ کھولو',
+    },
+    bal: {
+      subtitle: 'لندنءَ کیتے نمازءِ وختئں',
+      inline: 'Athan — نمازءِ وختئں',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وختئںءَ لوڈ کنگءَ کیتے کَشا کَن',
+      staleTitle: 'تازہ نئے',
+      staleBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+      staleInline: 'Athan — وختئںءَ تازہ کاریءَ کیتے کَشا کَن',
+      refreshLine: 'تازہ کاریءَ کیتے Athanءَ کَشا کَن',
+      refreshLead: 'Athanءَ کَشا کَن',
+      refreshTail: 'تازہ کاریءَ کیتے',
+      catchBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+    },
+    kas: {
+      subtitle: 'لَنڈَنئے خٲطرئہ نؠمازٕکئے وَقت',
+      inline: 'Athan — نؠمازٕکئے وَقت',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وَقت لوڈ کَرنئے خٲطرئہ کھولِو',
+      staleTitle: 'تازہ نہِ',
+      staleBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+      staleInline: 'Athan — وَقت تازہ کٲری خٲطرئہ کھولِو',
+      refreshLine: 'تازہ کٲری خٲطرئہ Athan کھولِو',
+      refreshLead: 'Athan کھولِو',
+      refreshTail: 'تازہ کٲری خٲطرئہ',
+      catchBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1652,6 +1733,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'yo',
         'jv',
         'su',
+        'skr',
+        'bal',
+        'kas',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -2454,6 +2538,45 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'pikeun nyegerkeun',
       catchBody: 'Buka aplikasi pikeun nyegerkeun',
     },
+    skr: {
+      subtitle: 'لندن کیتے نمازاں دے ویلھے',
+      inline: 'Athan — نمازاں دے ویلھے',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'ویلھے لوڈ کرݨ کیتے کھولو',
+      staleTitle: 'تازہ کائنی',
+      staleBody: 'تازہ کاری کیتے ایپ کھولو',
+      staleInline: 'Athan — ویلھے تازہ کاری کیتے کھولو',
+      refreshLine: 'تازہ کاری کیتے Athan کھولو',
+      refreshLead: 'Athan کھولو',
+      refreshTail: 'تازہ کاری کیتے',
+      catchBody: 'تازہ کاری کیتے ایپ کھولو',
+    },
+    bal: {
+      subtitle: 'لندنءَ کیتے نمازءِ وختئں',
+      inline: 'Athan — نمازءِ وختئں',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وختئںءَ لوڈ کنگءَ کیتے کَشا کَن',
+      staleTitle: 'تازہ نئے',
+      staleBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+      staleInline: 'Athan — وختئںءَ تازہ کاریءَ کیتے کَشا کَن',
+      refreshLine: 'تازہ کاریءَ کیتے Athanءَ کَشا کَن',
+      refreshLead: 'Athanءَ کَشا کَن',
+      refreshTail: 'تازہ کاریءَ کیتے',
+      catchBody: 'تازہ کاریءَ کیتے ایپءَ کَشا کَن',
+    },
+    kas: {
+      subtitle: 'لَنڈَنئے خٲطرئہ نؠمازٕکئے وَقت',
+      inline: 'Athan — نؠمازٕکئے وَقت',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'وَقت لوڈ کَرنئے خٲطرئہ کھولِو',
+      staleTitle: 'تازہ نہِ',
+      staleBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+      staleInline: 'Athan — وَقت تازہ کٲری خٲطرئہ کھولِو',
+      refreshLine: 'تازہ کٲری خٲطرئہ Athan کھولِو',
+      refreshLead: 'Athan کھولِو',
+      refreshTail: 'تازہ کٲری خٲطرئہ',
+      catchBody: 'تازہ کٲری خٲطرئہ ایپ کھولِو',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -2522,6 +2645,9 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'yo',
         'jv',
         'su',
+        'skr',
+        'bal',
+        'kas',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
