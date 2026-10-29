@@ -2,8 +2,8 @@
  * The Burmese catalog: flat because Hermes compiles large nested literals slowly
  * (hermes#1046); the prayer names are the Myanmar Islamic Program's Burmese adhan
  * table's set landed verbatim from sourced-names.json (ဖဂျရ်, နေထွက်, ဇဟိုရ်,
- * အဆွရ်, မဂ်ရိဗ်, အီရှာ), with the loan-rule slots (ညဉ့်အလယ်,
- * ညဉ့်နောက်ဆုံးသုံးပုံ, ဆူဟူရ်, ဒူဟာ, အစ်တီဂျာဘာ), gated by
+ * အဆွရ်, မဂ်ရိဗ်, အီရှာ), with the derived slots (ညဉ့်အလယ်,
+ * ညဉ့်နောက်ဆုံးသုံးပုံ) and the loan-rule slots (ဆူဟူရ်, ဒူဟာ, အစ်တီဂျာဘာ), gated by
  * shared/__tests__/catalogGates.test.ts. Prose digits are Latin and the script rides
  * the bundled Noto Sans Myanmar pair (plan T-454 decision 5).
  */

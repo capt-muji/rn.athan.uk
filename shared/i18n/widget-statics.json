@@ -1,5 +1,5 @@
 {
-  "_comment": "The null-props widget card's static strings (D44): a twenty-six-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
+  "_comment": "The null-props widget card's static strings (D44): a fifty-eight-language table baked into the widget binary, keyed by the device locale the widget process itself reads via the __expoWidgetDeviceLocale global the runtime patch installs. The title stays the brand Athan. The owner verifies every string in the confidence build (D42).",
   "_surfaces": {
     "subtitle": "the neutral home/lock card's second line (en: Prayer times for London)",
     "inline": "the accessoryInline neutral (en: Athan — prayer times)",

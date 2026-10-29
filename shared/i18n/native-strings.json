@@ -1250,26 +1250,26 @@
   },
   "ce": {
     "NSLocationWhenInUseUsageDescription": "КӀибла хьана меттигера йоцуш юьсуш ю, цундела аьтто цунна хьан меттиг лелош ю. Иза телефона чуьра ца го.",
-    "NSUserNotificationsUsageDescription": "Ламазан хенашнан хаамаш тlелоцийта",
+    "NSUserNotificationsUsageDescription": "Ламазан хенашнан хаамаш тӀелоцийта",
     "gallery": {
       "Next Prayer (Light)": "Кхин ламаз (Сирло)",
       "A countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
-      "Extra Times (Light)": "ДӀахlумма хенаш (Сирло)",
-      "A countdown to the next extra time.": "Кхин дӀахlумма хане юхасаккхар.",
-      "Next Prayer (Dark)": "Кхин ламаз (Чlогla)",
-      "Extra Times (Dark)": "ДӀахlумма хенаш (Чlогla)",
+      "Extra Times (Light)": "ДӀахӀумма хенаш (Сирло)",
+      "A countdown to the next extra time.": "Кхин дӀахӀумма хане юхасаккхар.",
+      "Next Prayer (Dark)": "Кхин ламаз (ЧӀогӀа)",
+      "Extra Times (Dark)": "ДӀахӀумма хенаш (ЧӀогӀа)",
       "Next Prayer (Layout 1)": "Кхин ламаз (Барт 1)",
       "Countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
-      "Extra Times (Layout 1)": "ДӀахlумма хенаш (Барт 1)",
-      "Countdown to the next extra time.": "Кхин дӀахlумма хане юхасаккхар.",
+      "Extra Times (Layout 1)": "ДӀахӀумма хенаш (Барт 1)",
+      "Countdown to the next extra time.": "Кхин дӀахӀумма хане юхасаккхар.",
       "Next Prayer (Layout 2)": "Кхин ламаз (Барт 2)",
       "Next prayer time.": "Кхин ламазан ха.",
-      "Extra Times (Layout 2)": "ДӀахlумма хенаш (Барт 2)",
-      "Next extra time.": "Кхин дӀахlумма ха.",
+      "Extra Times (Layout 2)": "ДӀахӀумма хенаш (Барт 2)",
+      "Next extra time.": "Кхин дӀахӀумма ха.",
       "Next Prayer (Layout 3)": "Кхин ламаз (Барт 3)",
       "Next prayer time with a countdown.": "Юхасаккхарца кхин ламазан ха.",
-      "Extra Times (Layout 3)": "ДӀахlумма хенаш (Барт 3)",
-      "Next extra time with a countdown.": "Юхасаккхарца кхин дӀахlумма ха."
+      "Extra Times (Layout 3)": "ДӀахӀумма хенаш (Барт 3)",
+      "Next extra time with a countdown.": "Юхасаккхарца кхин дӀахӀумма ха."
     }
   },
   "uk": {

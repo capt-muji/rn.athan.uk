@@ -168,10 +168,13 @@ const GLOSSARY_EXPLANATIONS = [
   '1 hour before Magrib (Fridays only)',
 ];
 
-/** The two explanations whose catalog text is the glossary's own sentence, never a paraphrase */
+/** Every explanation whose catalog text is the glossary's own sentence, never a paraphrase */
 const GLOSSARY_EXPLANATION_PAIRS: Array<[catalogKey: string, slot: string]> = [
   ['extras.explanation.midnight', 'Halfway between Magrib and Fajr'],
   ['extras.explanation.last third', 'Start of the last third of the night'],
+  ['extras.explanation.suhoor', '20 mins before Fajr'],
+  ['extras.explanation.duha', '20 mins after Sunrise'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
 ];
 
 // Brand bytes: only app-open copy names the application; "athan" elsewhere is the
@@ -288,8 +291,24 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(failures).toEqual([]);
   });
 
+  it('keeps every Cyrillic-script catalog free of a Latin letter inside its words', () => {
+    // A Latin letter glued to Cyrillic inside one word is a homoglyph, the Chechen
+    // palochka case, while a whole Latin token is the brand or a platform label, so
+    // the scan reads word by word
+    const mixedWords = (value: string) =>
+      value.split(/[^\p{L}]+/u).filter((word) => /\p{Script=Latin}/u.test(word) && /\p{Script=Cyrillic}/u.test(word));
+    const failures: string[] = [];
+    for (const loc of ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk']) {
+      for (const [key, value] of Object.entries(CATALOGS[loc])) {
+        const words = mixedWords(value);
+        if (words.length) failures.push(`${loc}: ${key} carries ${words.join(', ')}`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
   it.each(Object.keys(SHIPPED))(
-    '%s carries the glossary whole and reproduces its names and two derived explanations byte for byte',
+    '%s carries the glossary whole and reproduces its names and explanations byte for byte',
     (loc) => {
       const sections = glossaryFor(loc);
       expect(Object.keys(sections?.names ?? {}).sort()).toEqual(GLOSSARY_NAMES.map(([, slot]) => slot).sort());

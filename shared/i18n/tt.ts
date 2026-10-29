@@ -3,8 +3,9 @@
  * (hermes#1046); the prayer names are the Tatarstan muftiat's own Tatar-language
  * Яр Чаллы table's set landed verbatim from sourced-names.json (Иртәнге намаз,
  * Кояш чыга, Өйлә намазы, Икенде намазы, Ахшам намазы, Ястү намазы, Сәхәр from
- * the Kazan page), with the loan-rule slots (Төн уртасы, Төннең соңгы өчлеге,
- * Дүһә, Истиҗабә), gated by shared/__tests__/catalogGates.test.ts. Roboto carries
+ * the Kazan page), with the derived slots (Төн уртасы, Төннең соңгы өчлеге) and
+ * the loan-rule slots (Дүһә, Истиҗабә), gated by shared/__tests__/catalogGates.test.ts.
+ * Roboto carries
  * every Cyrillic codepoint the catalog uses, ә ғ ҡ ң ө ҫ ү һ җ included (measured
  * by explicit codepoint in both weights, plan T-454 decision 4), so tt rides the
  * LATIN record. Prose digits are Latin.

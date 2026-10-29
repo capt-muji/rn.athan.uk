@@ -417,28 +417,35 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   kn: KANNADA,
   am: ETHIOPIC,
   // my rides its own bundled Myanmar pair: no other bundled face carries the script
-  // (measured, plan T-454 decision 5); its box clears its ink, so no script box
+  // (measured, plan T-454 decision 5); its box clears its ink, so no script box. Its
+  // whole keyed surface (catalog values, native-strings row, widget-statics row,
+  // endonym) censuses 92 distinct characters, every Myanmar-block one carried in both
+  // weights while the Latin brand, digits and punctuation fall to the OS face
   my: MYANMAR,
   // Roboto carries every Cyrillic codepoint U+0400 through U+04FF except U+0487, the
   // Church Slavonic combining titlo none of the three uses, palochka Ӏ U+04C0 and ӏ
   // U+04CF included (measured by explicit codepoint in both weights over the bundled
   // TTFs, plan T-454 decision 4): Tatar's ә ғ ҡ ң ө ҫ ү һ җ, Chechen's
   // ә ҡ ң ӧ ү җ and Ukrainian's і ї є ґ all measured present, so all three take
-  // the LATIN record
+  // the LATIN record. The same four-surface census counts 110 distinct characters for
+  // Tatar, 104 for Chechen and 107 for Ukrainian, every one present in both weights
   tt: LATIN,
   ce: LATIN,
   uk: LATIN,
   // Roboto carries Quechua's apostrophes ' and ʼ, its ñ and its è é ê â by explicit
   // codepoint in both weights (measured with fontTools, plan T-454 decision 4), so
-  // qu takes the LATIN record
+  // qu takes the LATIN record; its four-surface census is 71 distinct characters,
+  // every one present in both weights
   qu: LATIN,
   // Roboto carries Minangkabau's and Bugis's whole keyed surfaces by explicit
   // codepoint in both weights (measured with fontTools, plan T-454 decision 4),
-  // apostrophes included, so both take the LATIN record
+  // apostrophes included, so both take the LATIN record; the four-surface census is
+  // 66 distinct characters each, every one present in both weights
   min: LATIN,
   bug: LATIN,
   // Roboto lacks Madurese's ḍ Ḍ in both weights while the AFRICAN pair carries
-  // them (measured, plan T-454 decision 4), so mad rides that pair's record
+  // them (measured, plan T-454 decision 4), so mad rides that pair's record; its
+  // four-surface census is 71 distinct characters, every one present in both weights
   mad: AFRICAN,
 };
 

@@ -2,8 +2,9 @@
  * The Minangkabau catalog: flat because Hermes compiles large nested literals slowly
  * (hermes#1046); the prayer names are min.wikipedia's Sumbayang series' set landed
  * verbatim from sourced-names.json (Subuh, the Wakatu sumbayang article's Luhua,
- * Magrib, with Matoari tabik for sunrise), with the loan-rule slots (Tangah malam,
- * Tigo paheuik tarakhia, Asar, Isya, Sahua, Dhuha, Istijabah), gated by
+ * Magrib, with Matoari tabik for sunrise), with the derived slots (Tangah malam,
+ * Tigo paheuik tarakhia) and the loan-rule slots (Asar, Isya, Sahua, Dhuha,
+ * Istijabah), gated by
  * shared/__tests__/catalogGates.test.ts. Roboto carries every codepoint the catalog
  * uses (measured by explicit codepoint in both weights, plan T-454 decision 4), so
  * min rides the LATIN record. Prose digits are Latin.

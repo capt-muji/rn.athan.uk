@@ -2,7 +2,7 @@
  * Native strings from committed config (D43, D46): every per-locale native
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
- * table, and the locale declarations cover the thirty-four-language set on both
+ * table, and the locale declarations cover the fifty-eight-language set on both
  * platforms.
  */
 
@@ -83,6 +83,23 @@ const LOCALES = [
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
 
+/** The locales whose native rows are written in Cyrillic, so a Latin letter in one is a slip */
+const CYRILLIC_SCRIPT: readonly string[] = ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk'];
+
+/** The words of a value that carry both scripts, the shape of a homoglyph */
+const mixedWords = (value: string): string[] =>
+  value.split(/[^\p{L}]+/u).filter((word) => /\p{Script=Latin}/u.test(word) && /\p{Script=Cyrillic}/u.test(word));
+
+/** A native row's strings, keyed for the failure message */
+const nativeStrings = (locale: string): Record<string, string> => {
+  const row = NATIVE[locale];
+  return {
+    NSLocationWhenInUseUsageDescription: row.NSLocationWhenInUseUsageDescription,
+    NSUserNotificationsUsageDescription: row.NSUserNotificationsUsageDescription,
+    ...row.gallery,
+  };
+};
+
 /** The widget kinds' config entries from the expo-widgets plugin block */
 const widgetKinds = (): Array<{ name: string; displayName: string; description: string }> => {
   const plugins = app.plugins as unknown[];
@@ -138,11 +155,10 @@ describe('native strings from committed config', () => {
     // writes Latin, Arabic, Devanagari, Thai, Bengali, Tamil, Malayalam, Kannada,
     // Telugu, Gujarati, Ethiopic, Myanmar or Han, so a Cyrillic letter in one of
     // their rows is a homoglyph slip, not a spelling
-    const CYRILLIC_SCRIPT = new Set(['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk']);
     const CYRILLIC = /[\u0400-\u04FF]/;
     const failures: string[] = [];
     for (const locale of LOCALES) {
-      if (CYRILLIC_SCRIPT.has(locale)) continue;
+      if (CYRILLIC_SCRIPT.includes(locale)) continue;
       const row = NATIVE[locale];
       const strings: Record<string, string> = {
         NSLocationWhenInUseUsageDescription: row.NSLocationWhenInUseUsageDescription,
@@ -151,6 +167,20 @@ describe('native strings from committed config', () => {
       };
       for (const [key, value] of Object.entries(strings)) {
         if (CYRILLIC.test(value)) failures.push(`${locale}: ${key} carries a Cyrillic letter`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('refuses a Latin letter inside a Cyrillic-script locale', () => {
+    // The mirror rule, and the one Chechen broke: a Latin letter glued to Cyrillic
+    // inside one word is a homoglyph for the palochka, while a whole Latin token is
+    // the brand or a platform label, so the scan reads word by word
+    const failures: string[] = [];
+    for (const locale of CYRILLIC_SCRIPT) {
+      for (const [key, value] of Object.entries(nativeStrings(locale))) {
+        const words = mixedWords(value);
+        if (words.length) failures.push(`${locale}: ${key} carries ${words.join(', ')}`);
       }
     }
     expect(failures).toEqual([]);

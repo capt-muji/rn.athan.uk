@@ -166,7 +166,7 @@ export const mad = {
   'extras.explanation.midnight': 'E tengnga antara Magreb ban Subuh',
   'extras.explanation.last third': "Onorna bengi tello' bhagi",
   'extras.explanation.suhoor': '20 menit sabellunna Subuh',
-  'extras.explanation.duha': "20 menit saamargerra mata'are kalowar",
+  'extras.explanation.duha': '20 menit saamargerra mata’are kalowar',
   'extras.explanation.istijaba': '1 jam sabellunna Magreb (binte Jumaah bhai)',
   'duration.now': 'satèya',
   'time.now': '{name} satèya',

@@ -115,7 +115,7 @@
       "glosbe-qu": "glosbe’s Quechua Islamic terms dictionary",
       "islamic-invitation-qu": "islamic-invitation.net’s Northern-Quechua section (corroboration only)"
     },
-    "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor.",
+    "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. The seven slugs T-454 added are in the same position, registered for corroboration and cited by no entry and no note: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary and islamic-invitation-qu. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor.",
     "confidenceKey": {
       "high": "national authority, or two independent source classes agree",
       "medium": "one good source",
@@ -205,13 +205,13 @@
         "note": ""
       },
       "20 mins before Fajr": {
-        "text": "20 mins before Fajr",
+        "text": "20 minutes before Fajr",
         "source": "existing-app-catalog",
         "confidence": "high",
         "note": ""
       },
       "20 mins after Sunrise": {
-        "text": "20 mins after Sunrise",
+        "text": "20 minutes after Sunrise",
         "source": "existing-app-catalog",
         "confidence": "high",
         "note": ""
@@ -1021,13 +1021,13 @@
         "note": "Built from al-azan's attested ثلث آخر شب."
       },
       "20 mins before Fajr": {
-        "text": "20 دقیقه قبل از اذان صبح",
+        "text": "۲۰ دقیقه قبل از اذان صبح",
         "source": "derived",
         "confidence": "medium",
         "note": "Persian uses Persian digits; verify with script plan (R3)."
       },
       "20 mins after Sunrise": {
-        "text": "20 دقیقه بعد از طلوع آفتاب",
+        "text": "۲۰ دقیقه بعد از طلوع آفتاب",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced طلوع آفتاب plus standard syntax; بعد از is after."
@@ -1531,19 +1531,19 @@
         "note": "Derived from the loan تهجد row's concept and standard Pashto syntax; پيل is start."
       },
       "20 mins before Fajr": {
-        "text": "له صبح 20 دقيقې دمخه",
+        "text": "له صبح ۲۰ دقيقې دمخه",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; له ... دمخه is before. The catalog carries Persian digits per R12 (plan T-419 decision 10); the record keeps Latin."
+        "note": "Derived; له ... دمخه is before. The catalog’s Persian digits follow R12 (plan T-419 decision 10), and the record carries the shipped form."
       },
       "20 mins after Sunrise": {
-        "text": "له لمرختنې 20 دقيقې وروسته",
+        "text": "له لمرختنې ۲۰ دقيقې وروسته",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced لمرختنه plus standard syntax; وروسته is after."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": "له مغرب 1 ساعت دمخه (يوازې د جمعې ورځ)",
+        "text": "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ساعت is hour, جمعه is Friday."
@@ -2347,19 +2347,19 @@
         "note": "Derived."
       },
       "20 mins before Fajr": {
-        "text": "20 min antes del Fajr",
+        "text": "20 minutos antes del Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Spanish abbreviates minutos as min."
+        "note": "Derived; Spanish spells minutos out."
       },
       "20 mins after Sunrise": {
-        "text": "20 min después del amanecer",
+        "text": "20 minutos después del amanecer",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": "1 hora antes del Magreb (solo viernes)",
+        "text": "1 hora antes del Magreb (solo los viernes)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; solo viernes is Fridays only."
@@ -3163,13 +3163,13 @@
         "note": "Derived."
       },
       "20 mins before Fajr": {
-        "text": "Таңға 20 мин бұрын",
+        "text": "Таңға 20 минут бұрын",
         "source": "derived",
         "confidence": "medium",
-        "note": "Kazakh abbreviates минут as мин."
+        "note": "Derived; Kazakh spells минут out."
       },
       "20 mins after Sunrise": {
-        "text": "Күн шыққаннан кейін 20 мин",
+        "text": "Күн шыққаннан 20 минут кейін",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; кейін is after."
@@ -3271,7 +3271,7 @@
         "note": "Derived; мурун is before."
       },
       "20 mins after Sunrise": {
-        "text": "Күн чыккандан кийин 20 мүнөт",
+        "text": "Күн чыккандан 20 мүнөт кийин",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; кийин is after."
@@ -3469,13 +3469,13 @@
         "note": "Derived."
       },
       "20 mins before Fajr": {
-        "text": "Ertirden 20 min öň",
+        "text": "Ertirden 20 minut öň",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; öň is before."
       },
       "20 mins after Sunrise": {
-        "text": "Gün dogandan 20 min soň",
+        "text": "Gün dogandan 20 minut soň",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; soň is after."
@@ -3571,22 +3571,22 @@
         "note": "Derived; tàmbali is the start."
       },
       "20 mins before Fajr": {
-        "text": "20 min balaa Fajar",
+        "text": "20 min laata Fajar",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; balaa is before."
+        "note": "Derived; laata is before."
       },
       "20 mins after Sunrise": {
-        "text": "20 min ginnaaw Suba",
+        "text": "20 min ginaaw Suba",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; ginnaaw is after."
+        "note": "Derived; ginaaw is after."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": "1 waxtu balaa Timis (juma rek)",
+        "text": "1 waxtu laata Timis (juma rekk)",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; juma rek is Friday only."
+        "note": "Derived; juma rekk is Friday only."
       }
     }
   },
