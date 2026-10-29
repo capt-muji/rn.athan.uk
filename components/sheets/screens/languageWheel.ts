@@ -104,8 +104,8 @@ export const seatTranslateY = (metrics: WheelMetrics, seat: number, offset: numb
 };
 
 /**
- * Whether a close carries a change. A staged row is required, and it must be foreign: settling the
- * scroll stages nothing, and a staged row equal to the locale in force changes nothing
+ * Whether a close carries a change. A staged row is required, and it must be foreign: the settle and
+ * the tap both stage, and a staged row equal to the locale in force changes nothing
  */
 export const stagesLanguageChange = (staged: LocaleId | null, active: LocaleId): staged is LocaleId =>
   staged !== null && staged !== active;
@@ -117,7 +117,7 @@ export const stagesLanguageChange = (staged: LocaleId | null, active: LocaleId):
  * scroll holds the detent until it arrives at the row it was sent to
  */
 export const wheelScrollHandler =
-  (metrics: WheelMetrics, state: WheelScrollState, onDetent: () => void) =>
+  (metrics: WheelMetrics, state: WheelScrollState, onDetent: (seat: number) => void) =>
   (event: WheelScrollEvent): void => {
     const offset = event.nativeEvent.contentOffset.y;
     const seat = bandSeat(metrics, offset);
@@ -125,6 +125,7 @@ export const wheelScrollHandler =
 
     const travelling = state.target.current;
     if (travelling !== null) {
+      // A programmatic scroll's arrival stages nothing: the tap that sent it already staged its row
       if (seat !== travelling) return;
       state.target.current = null;
       state.seat.current = seat;
@@ -133,7 +134,7 @@ export const wheelScrollHandler =
 
     if (seat === state.seat.current) return;
     state.seat.current = seat;
-    onDetent();
+    onDetent(seat);
   };
 
 /**

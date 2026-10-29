@@ -14,7 +14,8 @@ jest.mock('expo-haptics', () => ({
 
 import * as Haptics from 'expo-haptics';
 
-import { commitStagedOnClose, stageLanguage } from '../languageSheet';
+import { filterLanguages } from '../languageFilter';
+import { commitStagedOnClose, settleStageLanguage, stageLanguage } from '../languageSheet';
 
 // The unit project runs without React Native's timer setup; the commit waits one frame, as the tap did
 globalThis.requestAnimationFrame = ((callback: () => void) =>
@@ -31,6 +32,26 @@ describe('staging a tap', () => {
     expect(stageLanguage('ar', tick)).toBe('ar');
     expect(tick).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+describe('staging a settle', () => {
+  it('makes the settled row the staged candidate, with no tick and no buzz of its own', () => {
+    const rows = filterLanguages('');
+
+    expect(settleStageLanguage(rows, 2)).toBe(rows[2].id);
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('stages nothing off either end of the list', () => {
+    const rows = filterLanguages('');
+
+    expect(settleStageLanguage(rows, -1)).toBeNull();
+    expect(settleStageLanguage(rows, rows.length)).toBeNull();
+  });
+
+  it('stages nothing over an empty list', () => {
+    expect(settleStageLanguage([], 0)).toBeNull();
   });
 });
 

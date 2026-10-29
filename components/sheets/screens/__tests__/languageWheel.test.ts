@@ -125,6 +125,7 @@ describe('the wheel’s scroll handler', () => {
     handle(scroll(24));
 
     expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(onDetent).toHaveBeenCalledWith(1);
     expect(state.seat.current).toBe(1);
 
     handle(scroll(30));
@@ -132,6 +133,7 @@ describe('the wheel’s scroll handler', () => {
 
     handle(scroll(96));
     expect(onDetent).toHaveBeenCalledTimes(2);
+    expect(onDetent).toHaveBeenCalledWith(2);
     expect(state.seat.current).toBe(2);
   });
 
@@ -158,9 +160,12 @@ describe('the wheel’s scroll handler', () => {
 
     wheelScrollTarget(wheel(), state, 3);
     handle(scroll(144));
+    // The arrival itself holds the detent quiet: the tap that sent the scroll already staged its row
+    expect(onDetent).not.toHaveBeenCalled();
     handle(scroll(192));
 
     expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(onDetent).toHaveBeenCalledWith(4);
     expect(state.seat.current).toBe(4);
   });
 
@@ -183,6 +188,7 @@ describe('the wheel’s scroll handler', () => {
     handle(scroll(72));
 
     expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(onDetent).toHaveBeenCalledWith(2);
     expect(state.seat.current).toBe(2);
   });
 

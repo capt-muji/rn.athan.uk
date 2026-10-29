@@ -16,7 +16,7 @@ import { setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 import { filterLanguages, type LanguageRow } from './languageFilter';
-import { commitStagedOnClose, stageLanguage } from './languageSheet';
+import { commitStagedOnClose, settleStageLanguage, stageLanguage } from './languageSheet';
 import {
   bandTranslateY,
   centrePad,
@@ -53,8 +53,8 @@ const RowGap = () => <View style={styles.rowGap} />;
  * The language sheet as a wheel (T-476): the list settles row by row on its centreline, a faint dim
  * band rides the row a stop would select, and the purple stays on the locale in force for the whole
  * session with the sheet open. The search field is pinned in the card's top piece and filters the
- * rows by name (T-451). Only a tap stages a choice; the sheet's close is the one commit boundary (D47's
- * no-cancel), and the loader covers the wait.
+ * rows by name (T-451). The settled row and the tap both stage a choice; the sheet's close is the one
+ * commit boundary (D47's no-cancel), and the loader covers the wait.
  */
 export default function BottomSheetLanguage() {
   const active = currentLocaleId();
@@ -101,30 +101,33 @@ export default function BottomSheetLanguage() {
   }, []);
 
   // The wheel opens on the locale in force, and re-centres whenever the filtered rows change while
-  // the sheet is up: a reseed into the dismissing query clear would scroll a sheet on its way out
+  // the sheet is up: a reseed into the dismissing query clear would scroll a sheet on its way out.
+  // The reseed stages its own settled row, so the stage always names a row the wheel is showing
   useEffect(() => {
     if (!presented || listHeight === 0 || rowHeight === 0) return;
 
-    const offset = wheelReseed(metrics, wheel, seat >= 0 ? seat : 0);
+    const seatToSeed = seat >= 0 ? seat : 0;
+    const offset = wheelReseed(metrics, wheel, seatToSeed);
     listRef.current?.scrollToOffset({ offset, animated: false });
-  }, [presented, metrics, seat, listHeight, rowHeight, wheel]);
+    holdStaged(settleStageLanguage(rows, seatToSeed));
+  }, [presented, metrics, seat, rows, listHeight, rowHeight, wheel, holdStaged]);
 
-  // A staged row the filter removes is incoherent: the wheel drops it, and the close then changes nothing
-  useEffect(() => {
-    const candidate = stagedRef.current;
-    if (candidate === null) return;
-    if (rows.some((entry) => entry.id === candidate)) return;
-    holdStaged(null);
-  }, [rows, holdStaged]);
-
-  const scrollHandler = useMemo(
-    () => wheelScrollHandler(metrics, wheel, tickSelection),
-    [metrics, wheel, tickSelection]
+  // The detent's own tick is the settle's: the row the wheel comes to rest on becomes the candidate,
+  // and the same crossing's tick already fired, so the settle adds no buzz of its own
+  const handleDetent = useCallback(
+    (seat: number) => {
+      tickSelection();
+      holdStaged(settleStageLanguage(rows, seat));
+    },
+    [tickSelection, holdStaged, rows]
   );
+
+  // rows is a dep because two queries can share a count while their ids differ
+  const scrollHandler = useMemo(() => wheelScrollHandler(metrics, wheel, handleDetent), [metrics, wheel, handleDetent]);
   const handleScrollBegin = useCallback(() => wheelScrollBegin(wheel), [wheel]);
 
-  // The tap is the only thing that stages: the wheel ticks, the row becomes the candidate the close
-  // carries, and the animated scroll rides the faint band onto it
+  // The tap stages at once: the wheel ticks, the row becomes the candidate the close carries, and the
+  // animated scroll rides the faint band onto it
   const stageRow = useCallback(
     (id: LocaleId, index: number) => {
       holdStaged(stageLanguage(id, tickSelection));
