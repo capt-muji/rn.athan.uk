@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict E7wS6ANTrwbpJGbFAzu5Z40KtHA8lpagZBjOc9WwdgFX3jMMMbHagqqdwB71Klr
+\restrict ytrakiBz5XAxjjqQ73tAUAMd0tMjgLYJ6C2rMoYuhQKdpsaGMPAcvGlcpnxi8xV
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5519,6 +5519,109 @@ Needs first: #39', NULL, NULL, NULL, 60000, '2026-10-18 23:35:56.876931+00', '20
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (85, 1, 52, 4, 4, 'Settling gate: timing and cold-open cost', 'Queue status: DONE', NULL, NULL, NULL, 64000, '2026-10-18 23:35:56.944844+00', '2026-10-19 02:54:08.463855+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (87, 1, 49, 3, 4, 'Native heading module: the Fused Orientation Provider', 'Queue status: DONE', NULL, NULL, NULL, 66000, '2026-10-18 23:35:56.977075+00', '2026-10-19 02:54:08.487164+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (91, 1, 44, 3, 4, 'Delete the qibla', 'Queue status: DONE', NULL, NULL, NULL, 70000, '2026-10-18 23:35:57.042518+00', '2026-10-19 02:54:08.529922+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (491, 1, 491, NULL, 1, 'Shrink the production bundle: one copy of the sounds, a Release widget extension, and a measured strip pass', 'Goal: make the shipped app materially smaller, starting from measurements taken off the production iOS bundle rather than guesses. The three confirmed wastes are the athan sounds shipped twice, a Debug-built widget extension inside a Release app, and an unstripped main binary. Fonts and the Metro `___repos` assets were investigated and are NOT waste: both are in use, and the earlier claim that they were dead was wrong. Re-encoding the sounds is explicitly rejected by the owner and is out of scope.
+
+Owner order 2026-10-29: "I would love to have concrete optimisations to reduce the build... I would love it if you could reduce the build more and more." The owner also ruled the sound set final: "my audio will never change again, like this is now set in stone", and "don''t touch the athan set". So do not re-encode, re-record, trim or replace any mp3.
+
+Where: app.json (the expo-notifications `sounds` list and the expo-font list), assets/audio/index.ts (the JS require list behind the in-app sound preview), components/sheets/screens/Sound.tsx (the preview player), the iOS build path that produces the widget extension, and the Xcode/Expo build settings for stripping and link-time optimisation. No source file under components/prayer, widgets/ or shared/i18n changes for this ticket.
+
+## Measurements, taken from `~/athan-gitree/out/athan-2.38.4-ios-prod.app`
+
+Method: `du` inside the .app for on-disk sizes, and a `tar -cf - | gzip -9 | wc -c` pipeline for the download estimate, which matches how an IPA is packed. Fonts were counted per file with `zlib.deflateRawSync` at level 9.
+
+| Component | On disk | Notes |
+| --- | --- | --- |
+| Main binary `Athan` | 26.4 MB | 12,539 exported symbols |
+| Frameworks | 27 MB | React 12.5, Hermes 6.3, ExpoModulesCore 3.9, ExpoFileSystem 1.3, RN side 1.3, ExpoModulesJSI 1.0 |
+| Audio at the bundle root | 15.46 MB | 32 athan files 9.02 MB + 67 reminder files 6.08 MB |
+| Audio under `assets/assets/audio/athans` | 9.02 MB | byte-identical copies, same md5 per file |
+| Widget extension `PlugIns/ExpoWidgetsTarget.appex` | 9.5 MB | contains `ExpoWidgetsTarget.debug.dylib` 8.8 MB and `__preview.dylib` 36 KB |
+| `main.jsbundle` | 6.73 MB | Hermes bytecode, magic 0xC61FBC03 |
+| `Assets.car` | 2 MB | icons |
+| `.lproj` strings | 1.15 MB | 74 locale directories |
+| `assets/___repos` | 620 KB | dependency assets, see item 3 |
+| Whole .app | 105 MB on disk | 45.7 MB compressed estimate |
+
+## Item 1: the sounds ship twice, and the fix must not touch notifications
+
+What happens today, with evidence: `app.json` lists all 99 mp3s under the `expo-notifications` plugin''s `sounds`, and that plugin copies each file into the app bundle root so iOS can play it as `UNNotificationSound(named: "athan1.mp3")` and Android can put it in `res/raw`. Separately, `assets/audio/index.ts` builds `ATHAN_AUDIOS` from `require()` calls on the same 32 athan files, which puts a second copy under `assets/assets/audio/athans/` for the sound-sheet preview player in `components/sheets/screens/Sound.tsx`. `shared/notifications.ts` schedules notifications by bare filename (`''athan1.mp3''`, `''reminder.mp3''`), so the root copy is the one the OS reads.
+
+Constraint that decides the approach: Apple requires a custom notification sound to live in the app bundle''s main directory or in `Library/Sounds`; a sound named by a nested path is not reliably found. The bundle root copies therefore stay. The removable copy is the JS one, and it is removable only if the in-app preview can play the root file.
+
+Plan of attack, in order:
+1. Spike: prove on a device that `expo-audio` can play an mp3 that lives in the bundle root by bare filename, or by a `file://` URI resolved from the bundle path. Try `useAudioPlayer({ uri: ''athan1.mp3'' })` first. If that fails, a tiny Expo module returning `Bundle.main.path(forResource:ofType:)` is the fallback, modelled on `modules/widgetrefresh`.
+2. If the spike succeeds: delete the `require()` list from `assets/audio/index.ts` and build the preview sources from the bare filenames the notification layer already uses, so one list of names drives both. The prebuild then stops emitting the `assets/assets/audio` copy.
+3. If the spike fails: stop here and leave the duplication in place. Do not move notification sounds to `Library/Sounds` as a workaround: copying 9 MB at first launch trades download size for install size, adds a failure path, and the app''s offline invariant makes it worse.
+
+Verification protocol, on real hardware, both platforms, no exceptions:
+- iPhone: schedule a notification one minute out with an athan sound selected, lock the phone, hear it play. Repeat with a reminder sound. Then open the sound sheet and preview three different sounds in a row.
+- Android: same, plus check the notification channel''s sound, since channels freeze their sound at creation.
+- After the change, confirm the built bundle has exactly one copy: `find <App>.app -name ''athan1.mp3''` returns one path, and `grep -c ''assets/assets/audio'' <App>.app/main.jsbundle` is zero.
+- Confirm notification sound names are unchanged in the scheduled payload (`getNotificationSound` still returns the same strings, and `shared/__tests__/notifications.test.ts` is untouched and green).
+
+Acceptance: the production bundle carries each sound once, `yarn validate` is green, the notification payloads are byte-identical to today''s, and the on-device protocol above passes on both platforms and is transcribed onto this ticket.
+
+## Item 2: the widget extension is built in Debug inside a Release app
+
+What it means: Xcode builds each target with a configuration, Debug or Release. Release adds optimisation, strips symbols and produces a single executable. A Debug build keeps symbols, disables optimisation and, in Xcode 16 and later, splits the code into a separate `<Target>.debug.dylib` with a small stub executable, which is what previews use. Evidence the extension is Debug: `ExpoWidgetsTarget.appex` holds `ExpoWidgetsTarget.debug.dylib` at 8.8 MB, a `__preview.dylib` at 36 KB, and a 92 KB stub executable; the app binary itself has no debug dylib, so the app is Release and the extension is not.
+
+Fix: build the widget extension with the same configuration as the app. In practice that means the iOS build command must use `-configuration Release` for the whole scheme, and the scheme''s archive action must not override the extension target. Check the generated project after prebuild: the extension target''s `CONFIGURATION` in the built product, or simply that no `.debug.dylib` appears in the `.appex` and that the executable is a full-size binary rather than a stub.
+
+Verification: build Release, then `find <App>.app -name ''*.debug.dylib'' -o -name ''__preview.dylib''` returns nothing, the `.appex` executable is no longer ~92 KB, and the widgets still render on the lock screen and home screen.
+
+Acceptance: no debug dylibs in the shipped bundle, widgets proven on device, and the measured saving recorded (expect about 7 MB on disk and 1.5 MB compressed).
+
+## Item 3: `assets/___repos` is NOT waste, corrected
+
+The earlier suggestion to delete it was wrong, and this ticket records the correction. The folder is Metro''s naming for assets that live outside the project root: 28 files from `reanimated-color-picker` (the hue and luminance textures the colour picker draws) and from `expo-router` (`unmatched.png`, `pkg.png`). `components/sheets/screens/ColorPicker.tsx` imports `reanimated-color-picker`, so those textures are live.
+
+Only the `expo-router` pair is a candidate, and only if the app can never reach the unmatched route; that is a dependency-level decision with a visible failure mode (a blank error screen) for at most 300 KB. Recommendation: leave it alone unless a later measurement shows the pair is worth the risk. No acceptance criterion is attached to this item.
+
+## Item 4: the fonts are not dead weight, corrected
+
+Every one of the 38 shipped TTFs is referenced by name in `shared/typography.ts` (each locale maps `familyRegular` and `familyMedium`), and the Medium faces are used across the UI, including the question and reminder sheets. So there is no unused weight to cut, and the earlier "trim unused Medium faces" estimate was wrong by construction. The 7.5 MB is the price of shipping 75 languages; the only real levers are below, and both are large projects rather than quick wins:
+- drop languages (a product decision, not a build change);
+- load a script''s fonts only when that locale is chosen. This conflicts with the offline invariant unless the fonts ship anyway, so it would need a per-locale bundled split and still ship everything.
+
+Record the fonts as measured and leave them out of scope for this ticket.
+
+## Item 5: strip and link-time optimisation for the main binary
+
+What it means: the 26.4 MB `Athan` binary contains code and, unless stripped, its symbol tables. "Strip" removes symbol names not needed at runtime; "dead code stripping" removes functions nothing calls; "link-time optimisation" (LTO) lets the compiler optimise across translation units and discard what it proves unreachable. Expo''s generated project does not always enable all three for Release, and this app has 12,539 exported symbols, which is a strong hint they are not all on.
+
+Plan: add the settings to the Release build via the build command or a config plugin, not by hand-editing the generated project (prebuild overwrites it). The settings to try, in order of confidence: `STRIP_INSTALLED_PRODUCT = YES`, `DEPLOYMENT_POSTPROCESSING = YES`, `DEAD_CODE_STRIPPING = YES`, then `GCC_ENABLE_LTO` / `SWIFT_OPTIMIZATION_LEVEL = -O`. Measure after each one; LTO can also slow the link badly and occasionally breaks a native module, so it is the last to try and the first to revert.
+
+Acceptance: each setting is measured on its own (binary size before and after, plus a device smoke test of the app and both widget families), and the total saving is recorded. No behavioural change is acceptable to gain a few MB.
+
+## Item 6: rejected, recorded so nobody revisits it
+
+Re-encoding the athan set at a lower bitrate: rejected by the owner in this session. The audio is final. Do not touch it.
+
+## Order of work and expected result
+
+1. Item 2 (Release extension): mechanical, no risk to app behaviour, about 7 MB disk and 1.5 MB download.
+2. Item 1 (single copy of the sounds): gated on the spike, about 9 MB disk and 8.8 MB download.
+3. Item 5 (strip and LTO): measure per setting, multi-MB, highest regression risk.
+4. Items 3 and 4: closed as investigated, no change.
+
+Rough target: 105 MB on disk to about 89 MB, and 45.7 MB compressed to about 35 MB, before any strip win. Report the real numbers after each step rather than the estimate.
+
+## Do not
+
+- Do not re-encode, trim or replace any mp3.
+- Do not delete `assets/___repos` wholesale, and do not delete the colour picker''s textures.
+- Do not remove any font without the owner naming the language that goes with it.
+- Do not hand-edit `ios/` or `android/`, which prebuild overwrites.
+- Do not move notification sounds into `Library/Sounds`.
+- Do not ship a build that has not had the notification-sound protocol run on both phones.
+
+## Owner questions already answered, recorded
+
+- Why not cut Medium faces: they are used. The earlier claim was wrong; the correction is in item 4.
+- Why delete `assets/___repos`: it should not be deleted; it is live dependency imagery. The correction is in item 3.
+- Will notifications still work if the sounds ship once: yes if and only if the spike proves the preview can read the bundle-root file, and the on-device protocol passes on both platforms. That is the gate in item 1.
+
+Backlog: not executed in the session that filed it.', NULL, NULL, NULL, 28500, '2026-10-29 11:53:52.614189+00', '2026-10-29 11:53:52.635086+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (275, 1, 275, NULL, 4, 'Step 1: the orientation gate lands', '', NULL, NULL, NULL, 8000, '2026-10-20 02:39:47.792452+00', '2026-10-20 03:12:01.603662+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (373, 1, 373, NULL, 4, 'Step 5: The verdict on the ticket - owner decisions tabled with exact commands, ticket to Awaiting Owner', '', NULL, NULL, NULL, 20500, '2026-10-25 14:17:44.292029+00', '2026-10-25 14:52:52.187891+00', NULL, NULL, NULL, NULL, NULL, 368, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (291, 1, 291, NULL, 4, 'Step 5: the recurrence proof', '', NULL, NULL, NULL, 14000, '2026-10-20 07:09:05.790432+00', '2026-10-20 08:59:26.510932+00', NULL, NULL, NULL, NULL, NULL, 272, false, NULL, 1, NULL);
@@ -9182,6 +9285,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 
 Everything else conforms, verified by running the reads: the diff names exactly app.json, board/snapshot/board.sql and package.json at 2.1.20/21/22 (uat at 2.1.19, HEAD 2.1.22 in both version files); the snapshot carries the Requirements, Verification and Records close sections, all five acceptance boxes ticked, the Step 2 comment and the attachment row; the open-pose screenshot (duo-open-pose.png) is attached to this row, and no image path or device udid entered the diff; the Apple quotes check verbatim against the fetched news post, prepare page and Tech Talks 111461/111463, including the April 2027 sentence and both orientation-sanctioning quotes; the Step 2 readings agree between the row comment and the doc, the arithmetic closes (12+442+12=466, 12+445+12=469, 241+469+241=951), and the numbers match the prior close; the three pattern reads re-ran at the same zero production hits (UIScreen 0 in 18 Swift files outside Pods, Dimensions.get only in three test files, idiom/orientation only in portraitOnlyIpad.js declarations); the doc''s version at each commit matches the commit messages (3 at 2.1.20, 5 at 2.1.22); yarn validate at the branch tip is green at 100 percent coverage (226 suites, 5863 passed).', NULL, '2026-10-19 23:01:25.86613+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2363, 33, 'comment', 'owner', 'Audit adjudicated: four findings, all MINOR, none blocking. Confirmed and repaired - the plan doc''s zero-Duo-code proof named android/app/build.gradle, which a diff can never list, and its Files section claimed an on-disk build.gradle bump no tree received (both corrected at doc v6); and the 2.1.22 snapshot was dumped before the last two acceptance ticks and the records-close subtask''s Done move, so the committed record showed a half-closed row (refreshed in the 2.1.23 snapshot). Tabled for the owner at the hygiene row - ticket 22''s board record carries a gendered owner pronoun, present verbatim at uat before this row and left untouched under the one-ticket rule. An independent pixel read of the attached screenshot confirms the claim: one column, window x 241-709 in a 951-wide canvas, margins 241 and 241, no split, no clip.', NULL, '2026-10-19 23:02:49.330946+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4709, 491, 'activity', 'owner', NULL, 'created', '2026-10-29 11:53:52.62953+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4710, 491, 'activity', 'owner', NULL, 'label_add', '2026-10-29 11:53:52.638503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 226, "value": "#491"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2362, 33, 'comment', 'owner', 'Blind review of uat..lane/116 (b22c367f, 0dd682b7, 4130ba71). No blockers. The change is records-only (package.json, app.json, board/snapshot/board.sql), versions run 2.1.19 to 2.1.22 one bump per commit in both tracked files, the uniqueness gate passes, the added records carry no secrets, no device identifiers (SIMULATOR_UDID placeholder used; the only UUIDs are board attachment ids), no screenshot bytes, and no owner pronouns; each commit''s snapshot carries exactly what its subject claims, and the device record''s arithmetic checks out (466-24=442, 469 centred in 951 at 241 each side).
 
 1. MINOR - the shipped snapshot''s own records outrun the row''s state: acceptance criteria 4 and 5 (zero Duo-specific layout code, every other form factor unchanged) are still unticked in the final description, and subtask 263 (the records close itself) still sits in Backlog, while the plan doc''s Records close section (version 5) and the 2.1.22 commit message both assert those two proven by the diff read. Tick them and close 263, in this row or at the Done move, so the merged snapshot does not publish a half-closed row.
@@ -13364,6 +13469,7 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (484, 1);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (484, 4);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (489, 224);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (490, 225);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (491, 226);
 
 
 --
@@ -14342,6 +14448,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1154, 486, 1, 'Backlog', 'backlog', '2026-10-29 09:37:10.441+00', '2026-10-29 09:53:47.511453+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1155, 487, 1, 'Backlog', 'backlog', '2026-10-29 09:37:10.467+00', '2026-10-29 09:53:47.546413+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1156, 488, 1, 'Backlog', 'backlog', '2026-10-29 09:37:10.496+00', '2026-10-29 09:53:47.580386+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1171, 491, 1, 'Backlog', 'backlog', '2026-10-29 11:53:52.614+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1064, 451, 1, 'Backlog', 'backlog', '2026-10-29 02:49:49.256+00', '2026-10-29 02:50:30.504753+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1065, 452, 1, 'Backlog', 'backlog', '2026-10-29 02:50:21.473+00', '2026-10-29 02:50:30.611341+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1066, 453, 1, 'Backlog', 'backlog', '2026-10-29 02:50:21.507+00', '2026-10-29 02:50:30.708908+00');
@@ -14817,6 +14924,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (223, 1, 3, '#484', '#ffffff', '2026-10-29 09:37:06.07192+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (224, 1, 3, '#489', '#ffffff', '2026-10-29 09:42:11.873893+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (225, 1, 3, '#490', '#ffffff', '2026-10-29 09:55:42.371002+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (226, 1, 3, '#491', '#ffffff', '2026-10-29 11:53:52.58933+00');
 
 
 --
@@ -15127,7 +15235,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 491, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 492, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -39697,7 +39805,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:475', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:400', 1, 70);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:445', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:411', 1, 6);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4900);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:412', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:484', 1, 60);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:413', 1, 6);
@@ -39734,6 +39841,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:489', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:463', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:473', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 249);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 4903);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:491', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
@@ -40005,7 +40114,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 4708, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 4710, true);
 
 
 --
@@ -40061,7 +40170,7 @@ SELECT pg_catalog.setval('public.issue_field_value_id_seq', 699, true);
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 490, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 491, true);
 
 
 --
@@ -40082,7 +40191,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 130, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1170, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1171, true);
 
 
 --
@@ -40117,7 +40226,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 225, true);
+SELECT pg_catalog.setval('public.label_id_seq', 226, true);
 
 
 --
@@ -44565,5 +44674,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict E7wS6ANTrwbpJGbFAzu5Z40KtHA8lpagZBjOc9WwdgFX3jMMMbHagqqdwB71Klr
+\unrestrict ytrakiBz5XAxjjqQ73tAUAMd0tMjgLYJ6C2rMoYuhQKdpsaGMPAcvGlcpnxi8xV
 
