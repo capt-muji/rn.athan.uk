@@ -116,11 +116,7 @@ export default function BottomSheetLanguage() {
           ))}
         </View>
 
-        {rows.length === 0 && (
-          <Text testID={'language-no-match'} style={styles.noMatch}>
-            {t('language.noMatch')}
-          </Text>
-        )}
+        {rows.length === 0 && <Text style={styles.noMatch}>{t('language.noMatch')}</Text>}
       </View>
     </Sheet>
   );
@@ -158,7 +154,6 @@ const styles = StyleSheet.create({
   },
   searchRow: {
     marginTop: SPACING.sm,
-    justifyContent: 'center',
   },
   searchField: {
     height: 44,
