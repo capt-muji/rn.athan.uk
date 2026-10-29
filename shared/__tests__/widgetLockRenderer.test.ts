@@ -216,8 +216,27 @@ describe('lock widget renderer', () => {
     return found;
   };
 
-  it('pairs the name with the ticking countdown and drops the absolute time', () => {
+  it('stacks the name over the ticking countdown on layout 1, with no absolute time', () => {
     const tree = renderTreeFor(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toEqual(['Asr']);
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
+  });
+
+  it('stacks the name over the absolute time on layout 2, with no countdown', () => {
+    const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toEqual(['Asr', '15:20']);
+    expect(tickingIntervalOf(tree)).toBeUndefined();
+  });
+
+  it('pairs the name with the ticking countdown on one line for layout 3', () => {
+    const tree = renderTreeFor3(LIVE_PROPS, 'accessoryRectangular');
 
     expect(textsOf(tree)).toContain('Asr');
     expect(textsOf(tree)).not.toContain('15:20');
@@ -227,35 +246,16 @@ describe('lock widget renderer', () => {
     });
   });
 
-  it('lays out the centred one-liner as the name and the absolute time', () => {
-    const tree = renderTreeFor2(LIVE_PROPS, 'accessoryRectangular');
+  it('lays out the centred one-liner as the name and the absolute time for layout 4', () => {
+    const tree = renderTreeFor4(LIVE_PROPS, 'accessoryRectangular');
     const all = textsOf(tree);
 
-    // No countdown and no dot in Layout 2 — the
-    // rectangular face carries the name and absolute time, centred.
+    // No countdown and no dot in Layout 4 — the rectangular face carries the
+    // name and absolute time, centred.
     expect(all).toContain('Asr');
     expect(all).toContain('15:20');
     expect(all).not.toContain('·');
     expect(tickingIntervalOf(tree)).toBeUndefined();
-  });
-
-  it('stacks the name over the absolute time on layout 3, with no countdown', () => {
-    const tree = renderTreeFor3(LIVE_PROPS, 'accessoryRectangular');
-    const all = textsOf(tree);
-
-    expect(all).toEqual(['Asr', '15:20']);
-    expect(tickingIntervalOf(tree)).toBeUndefined();
-  });
-
-  it('stacks the name over the ticking countdown on layout 4, with no absolute time', () => {
-    const tree = renderTreeFor4(LIVE_PROPS, 'accessoryRectangular');
-    const all = textsOf(tree);
-
-    expect(all).toEqual(['Asr']);
-    expect(tickingIntervalOf(tree)).toEqual({
-      lower: new Date(LIVE_PROPS.prevEpochMs),
-      upper: new Date(LIVE_PROPS.nextEpochMs),
-    });
   });
 
   it('degrades layouts 3 and 4 to the same fallbacks per family', () => {
@@ -288,17 +288,17 @@ describe('lock widget renderer', () => {
     }
   });
 
-  // The live faces read 17pt on layouts 1-2 and 16pt on layouts 3-4, each
+  // The live faces read 17pt on layouts 3-4 and 16pt on layouts 1-2, each
   // floored at or above the old 14pt nominal, so weight and opacity
-  // carry the tiers. What recedes is the SECOND reading on a line, which is
-  // the countdown beside the name in layout 1, the time beside it in layout 2,
-  // and the second line beneath the name in layouts 3 and 4. The name itself
-  // is bold on every layout, so the line break alone never carries it.
+  // carry the tiers. What recedes is the SECOND reading, which is the
+  // countdown beneath the name in layout 1, the time beneath it in layout 2,
+  // the countdown beside the name in layout 3, and the time beside it in
+  // layout 4. The name itself is bold on every layout.
   it.each([
     ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>']],
     ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
-    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
-    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), ['<countdown>']],
+    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>']],
+    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
   ])('mutes only what recedes on %s and leaves the name bold', (_l, renderPath, muted) => {
     for (const node of styledTexts(renderPath(LIVE_PROPS))) {
       expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
@@ -410,22 +410,20 @@ describe('lock widget renderer', () => {
     }
   });
 
-  it.each([['layout 4', () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular')]])(
-    'centres the ticking digits inside their reserved frame on %s',
-    (_label, renderPath) => {
-      // Text(timerInterval:) reserves a worst-case width and parks its glyphs
-      // against the leading edge of it (the home hero's §13d lesson); without
-      // this modifier the countdown ink reads left-aligned on the glass.
-      // Layouts 1 and 4 tick; layouts 2 and 3 carry no countdown.
-      const found = collectTickingModifiers(renderPath());
-      expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
-      expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
-    }
-  );
+  it('centres the stacked countdown inside its reserved frame', () => {
+    // Text(timerInterval:) reserves a worst-case width and parks its glyphs
+    // against the leading edge of it (the home hero's §13d lesson); without
+    // this modifier the countdown ink reads left-aligned on the glass. The
+    // one-line pair anchors its halves at the seam instead, so only the
+    // stacked countdown carries the centre alignment.
+    const found = collectTickingModifiers(renderTreeFor(LIVE_PROPS, 'accessoryRectangular'));
+    expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
+    expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
+  });
 
   it.each([
-    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), '<countdown>'],
-    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), LIVE_PROPS.nextTime],
+    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), '<countdown>'],
+    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), LIVE_PROPS.nextTime],
   ])('splits %s into halves meeting at the midline', (_label, renderPath, secondLabel) => {
     const texts = styledTexts(renderPath(LIVE_PROPS));
     const name = texts.find((node) => node.text === LIVE_PROPS.nextName);
@@ -465,32 +463,32 @@ describe('lock widget renderer', () => {
       'layout 1',
       () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
-        { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
+        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 2',
       () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
-        { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
+        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 3',
       () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
       ],
     ],
     [
       'layout 4',
       () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
       ],
     ],
   ] as const)('sizes the live %s readings at their raised nominals and floors', (_label, renderPath, pins) => {

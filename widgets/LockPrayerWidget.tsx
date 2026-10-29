@@ -19,20 +19,19 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 /**
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so the system tints whatever
- * these set. The live faces read 17pt on layouts 1-2 and 16pt on layouts 3-4,
+ * these set. The live faces read 17pt on layouts 3-4 and 16pt on layouts 1-2,
  * each with a floor holding the worst case at or above the old 14pt nominal;
- * weight and opacity carry the hierarchy, and the SECOND reading on a line
- * is the muted one.
- * Four compositions per schedule, in gallery order: Layout 1 (name +
- * ticking countdown), Layout 2 (name + absolute time; no countdown and no
- * dot), Layout 3 (name above the absolute time) and Layout 4 (name above the
- * countdown).
- * Layouts 1 and 2 split the slot into halves meeting at
+ * every name is bold, and the SECOND reading on a line is the muted one.
+ * Four compositions per schedule, in gallery order: Layout 1 (name above the
+ * ticking countdown), Layout 2 (name above the absolute time), Layout 3 (name +
+ * ticking countdown on one line) and Layout 4 (name + absolute time on one
+ * line; no countdown and no dot).
+ * Layouts 3 and 4 split the slot into halves meeting at
  * its midline: a timer Text reports a worst-case width as its intrinsic
  * size, so a shrink-wrapped row measures a reservation rather than the
  * glyphs and centring it strands the name at the slot's edge. Anchoring each
  * half at the seam holds the name's last letter and the second reading's
- * first character in place whatever their lengths. Layouts 3 and 4 stack
+ * first character in place whatever their lengths. Layouts 1 and 2 stack
  * instead, so they centre by shrink-wrapping as usual. iOS 16 renders
  * containerRelativeFrame leading (the modifier needs 17), accepted on the
  * three-year-old floor. A timer Text stops ticking once concatenated, so the
@@ -1270,8 +1269,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
   }
 };
 
-export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidgetCountdownPair);
-export const ExtrasLockWidget = createWidget('ExtrasLockWidget', AthanLockWidgetCountdownPair);
+export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetCountdownPair);
+export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetCountdownPair);
 
 // A separate self-contained function: the 'widget' directive serializes
 // each body alone, so nothing can be shared across the layouts.
@@ -2491,8 +2490,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
   }
 };
 
-export const PrayerLockWidget2 = createWidget('PrayerLockWidget2', AthanLockWidgetCentred);
-export const ExtrasLockWidget2 = createWidget('ExtrasLockWidget2', AthanLockWidgetCentred);
+export const PrayerLockWidget4 = createWidget('PrayerLockWidget4', AthanLockWidgetCentred);
+export const ExtrasLockWidget4 = createWidget('ExtrasLockWidget4', AthanLockWidgetCentred);
 
 // A separate self-contained function: the 'widget' directive serializes
 // each body alone, so nothing can be shared across the layouts.
@@ -4952,10 +4951,10 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
 
 // One layout, two kinds: identical rendering, different timelines — the
 // standard pair and the extras pair (see widgets/PrayerWidget.tsx).
-export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetTimeBelowName);
-export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetTimeBelowName);
+export const PrayerLockWidget2 = createWidget('PrayerLockWidget2', AthanLockWidgetTimeBelowName);
+export const ExtrasLockWidget2 = createWidget('ExtrasLockWidget2', AthanLockWidgetTimeBelowName);
 
 // One layout, two kinds: identical rendering, different timelines — the
 // standard pair and the extras pair (see widgets/PrayerWidget.tsx).
-export const PrayerLockWidget4 = createWidget('PrayerLockWidget4', AthanLockWidgetCountdownBelowName);
-export const ExtrasLockWidget4 = createWidget('ExtrasLockWidget4', AthanLockWidgetCountdownBelowName);
+export const PrayerLockWidget = createWidget('PrayerLockWidget', AthanLockWidgetCountdownBelowName);
+export const ExtrasLockWidget = createWidget('ExtrasLockWidget', AthanLockWidgetCountdownBelowName);

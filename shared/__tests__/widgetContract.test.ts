@@ -735,10 +735,10 @@ describe('the statics table resolves every neutral and stale site', () => {
     const lock = loadWith('../../widgets/LockPrayerWidget', 'ios');
 
     for (const [name, layout] of [
-      ['countdown pair', lock.PrayerLockWidget],
-      ['centred', lock.PrayerLockWidget2],
-      ['time below the name', lock.PrayerLockWidget3],
-      ['countdown below the name', lock.PrayerLockWidget4],
+      ['countdown below the name', lock.PrayerLockWidget],
+      ['time below the name', lock.PrayerLockWidget2],
+      ['countdown pair', lock.PrayerLockWidget3],
+      ['centred', lock.PrayerLockWidget4],
     ] as const) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${AR.inline}`);

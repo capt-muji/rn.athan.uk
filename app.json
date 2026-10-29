@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.40.2",
+    "version": "2.41.0",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -493,7 +493,7 @@
             {
               "name": "PrayerLockWidget3",
               "displayName": "Next Prayer (Layout 3)",
-              "description": "Next prayer time.",
+              "description": "Countdown to the next prayer.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
               },
@@ -502,7 +502,7 @@
             {
               "name": "ExtrasLockWidget3",
               "displayName": "Extra Times (Layout 3)",
-              "description": "Next extra time.",
+              "description": "Countdown to the next extra time.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
               },
@@ -511,7 +511,7 @@
             {
               "name": "PrayerLockWidget4",
               "displayName": "Next Prayer (Layout 4)",
-              "description": "Countdown to the next prayer.",
+              "description": "Next prayer time.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
               },
@@ -520,7 +520,7 @@
             {
               "name": "ExtrasLockWidget4",
               "displayName": "Extra Times (Layout 4)",
-              "description": "Countdown to the next extra time.",
+              "description": "Next extra time.",
               "ios": {
                 "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
               },
@@ -583,13 +583,13 @@
           "extras_lock_widget_2_display_name": "الأوقات الإضافية (تصميم 2)",
           "extras_lock_widget_2_description": "الوقت الإضافي التالي.",
           "prayer_lock_widget_3_display_name": "الصلاة التالية (تصميم 3)",
-          "prayer_lock_widget_3_description": "وقت الصلاة التالية.",
+          "prayer_lock_widget_3_description": "عد تنازلي إلى الصلاة التالية.",
           "extras_lock_widget_3_display_name": "الأوقات الإضافية (تصميم 3)",
-          "extras_lock_widget_3_description": "الوقت الإضافي التالي.",
+          "extras_lock_widget_3_description": "عد تنازلي إلى الوقت الإضافي التالي.",
           "prayer_lock_widget_4_display_name": "الصلاة التالية (تصميم 4)",
-          "prayer_lock_widget_4_description": "عد تنازلي إلى الصلاة التالية.",
+          "prayer_lock_widget_4_description": "وقت الصلاة التالية.",
           "extras_lock_widget_4_display_name": "الأوقات الإضافية (تصميم 4)",
-          "extras_lock_widget_4_description": "عد تنازلي إلى الوقت الإضافي التالي."
+          "extras_lock_widget_4_description": "الوقت الإضافي التالي."
         }
       },
       "ms": {
@@ -643,13 +643,13 @@
           "extras_lock_widget_2_display_name": "Masa Tambahan (Susun atur 2)",
           "extras_lock_widget_2_description": "Masa tambahan seterusnya.",
           "prayer_lock_widget_3_display_name": "Solat Seterusnya (Susun atur 3)",
-          "prayer_lock_widget_3_description": "Waktu solat seterusnya.",
+          "prayer_lock_widget_3_description": "Kiraan detik ke solat seterusnya.",
           "extras_lock_widget_3_display_name": "Masa Tambahan (Susun atur 3)",
-          "extras_lock_widget_3_description": "Masa tambahan seterusnya.",
+          "extras_lock_widget_3_description": "Kiraan detik ke masa tambahan seterusnya.",
           "prayer_lock_widget_4_display_name": "Solat Seterusnya (Susun atur 4)",
-          "prayer_lock_widget_4_description": "Kiraan detik ke solat seterusnya.",
+          "prayer_lock_widget_4_description": "Waktu solat seterusnya.",
           "extras_lock_widget_4_display_name": "Masa Tambahan (Susun atur 4)",
-          "extras_lock_widget_4_description": "Kiraan detik ke masa tambahan seterusnya."
+          "extras_lock_widget_4_description": "Masa tambahan seterusnya."
         }
       },
       "so": {
@@ -703,13 +703,13 @@
           "extras_lock_widget_2_display_name": "Waqtiyada Dheeriga ah (Hab-rajiska 2)",
           "extras_lock_widget_2_description": "Waqtiga dheeriga ah ee xiga.",
           "prayer_lock_widget_3_display_name": "Salaadda Xigta (Hab-rajiska 3)",
-          "prayer_lock_widget_3_description": "Waqtiga salaadda xigta.",
+          "prayer_lock_widget_3_description": "Hoos-u-tiris illaa salaadda xigta.",
           "extras_lock_widget_3_display_name": "Waqtiyada Dheeriga ah (Hab-rajiska 3)",
-          "extras_lock_widget_3_description": "Waqtiga dheeriga ah ee xiga.",
+          "extras_lock_widget_3_description": "Hoos-u-tiris illaa waqtiga dheeriga ah ee xiga.",
           "prayer_lock_widget_4_display_name": "Salaadda Xigta (Hab-rajiska 4)",
-          "prayer_lock_widget_4_description": "Hoos-u-tiris illaa salaadda xigta.",
+          "prayer_lock_widget_4_description": "Waqtiga salaadda xigta.",
           "extras_lock_widget_4_display_name": "Waqtiyada Dheeriga ah (Hab-rajiska 4)",
-          "extras_lock_widget_4_description": "Hoos-u-tiris illaa waqtiga dheeriga ah ee xiga."
+          "extras_lock_widget_4_description": "Waqtiga dheeriga ah ee xiga."
         }
       },
       "hi": {
@@ -763,13 +763,13 @@
           "extras_lock_widget_2_display_name": "अतिरिक्त समय (लेआउट 2)",
           "extras_lock_widget_2_description": "अगला अतिरिक्त समय।",
           "prayer_lock_widget_3_display_name": "अगली नमाज़ (लेआउट 3)",
-          "prayer_lock_widget_3_description": "अगली नमाज़ का समय।",
+          "prayer_lock_widget_3_description": "अगली नमाज़ तक काउंटडाउन।",
           "extras_lock_widget_3_display_name": "अतिरिक्त समय (लेआउट 3)",
-          "extras_lock_widget_3_description": "अगला अतिरिक्त समय।",
+          "extras_lock_widget_3_description": "अगले अतिरिक्त समय तक काउंटडाउन।",
           "prayer_lock_widget_4_display_name": "अगली नमाज़ (लेआउट 4)",
-          "prayer_lock_widget_4_description": "अगली नमाज़ तक काउंटडाउन।",
+          "prayer_lock_widget_4_description": "अगली नमाज़ का समय।",
           "extras_lock_widget_4_display_name": "अतिरिक्त समय (लेआउट 4)",
-          "extras_lock_widget_4_description": "अगले अतिरिक्त समय तक काउंटडाउन।"
+          "extras_lock_widget_4_description": "अगला अतिरिक्त समय।"
         }
       },
       "th": {
@@ -823,13 +823,13 @@
           "extras_lock_widget_2_display_name": "เวลาเพิ่มเติม (เลย์เอาต์ 2)",
           "extras_lock_widget_2_description": "เวลาเพิ่มเติมถัดไป",
           "prayer_lock_widget_3_display_name": "ละหมาดถัดไป (เลย์เอาต์ 3)",
-          "prayer_lock_widget_3_description": "เวลาละหมาดถัดไป",
+          "prayer_lock_widget_3_description": "นับถอยหลังสู่การละหมาดครั้งถัดไป",
           "extras_lock_widget_3_display_name": "เวลาเพิ่มเติม (เลย์เอาต์ 3)",
-          "extras_lock_widget_3_description": "เวลาเพิ่มเติมถัดไป",
+          "extras_lock_widget_3_description": "นับถอยหลังสู่เวลาเพิ่มเติมถัดไป",
           "prayer_lock_widget_4_display_name": "ละหมาดถัดไป (เลย์เอาต์ 4)",
-          "prayer_lock_widget_4_description": "นับถอยหลังสู่การละหมาดครั้งถัดไป",
+          "prayer_lock_widget_4_description": "เวลาละหมาดถัดไป",
           "extras_lock_widget_4_display_name": "เวลาเพิ่มเติม (เลย์เอาต์ 4)",
-          "extras_lock_widget_4_description": "นับถอยหลังสู่เวลาเพิ่มเติมถัดไป"
+          "extras_lock_widget_4_description": "เวลาเพิ่มเติมถัดไป"
         }
       },
       "id": {
@@ -883,13 +883,13 @@
           "extras_lock_widget_2_display_name": "Waktu Tambahan (Tata Letak 2)",
           "extras_lock_widget_2_description": "Waktu tambahan berikutnya.",
           "prayer_lock_widget_3_display_name": "Salat Berikutnya (Tata Letak 3)",
-          "prayer_lock_widget_3_description": "Waktu salat berikutnya.",
+          "prayer_lock_widget_3_description": "Hitung mundur menuju salat berikutnya.",
           "extras_lock_widget_3_display_name": "Waktu Tambahan (Tata Letak 3)",
-          "extras_lock_widget_3_description": "Waktu tambahan berikutnya.",
+          "extras_lock_widget_3_description": "Hitung mundur menuju waktu tambahan berikutnya.",
           "prayer_lock_widget_4_display_name": "Salat Berikutnya (Tata Letak 4)",
-          "prayer_lock_widget_4_description": "Hitung mundur menuju salat berikutnya.",
+          "prayer_lock_widget_4_description": "Waktu salat berikutnya.",
           "extras_lock_widget_4_display_name": "Waktu Tambahan (Tata Letak 4)",
-          "extras_lock_widget_4_description": "Hitung mundur menuju waktu tambahan berikutnya."
+          "extras_lock_widget_4_description": "Waktu tambahan berikutnya."
         }
       },
       "tr": {
@@ -943,13 +943,13 @@
           "extras_lock_widget_2_display_name": "Ek Vakitler (Düzen 2)",
           "extras_lock_widget_2_description": "Sonraki ek vakit.",
           "prayer_lock_widget_3_display_name": "Sonraki Namaz (Düzen 3)",
-          "prayer_lock_widget_3_description": "Sonraki namaz vakti.",
+          "prayer_lock_widget_3_description": "Sonraki namaza geri sayım.",
           "extras_lock_widget_3_display_name": "Ek Vakitler (Düzen 3)",
-          "extras_lock_widget_3_description": "Sonraki ek vakit.",
+          "extras_lock_widget_3_description": "Sonraki ek vakte geri sayım.",
           "prayer_lock_widget_4_display_name": "Sonraki Namaz (Düzen 4)",
-          "prayer_lock_widget_4_description": "Sonraki namaza geri sayım.",
+          "prayer_lock_widget_4_description": "Sonraki namaz vakti.",
           "extras_lock_widget_4_display_name": "Ek Vakitler (Düzen 4)",
-          "extras_lock_widget_4_description": "Sonraki ek vakte geri sayım."
+          "extras_lock_widget_4_description": "Sonraki ek vakit."
         }
       },
       "fr": {
@@ -1003,13 +1003,13 @@
           "extras_lock_widget_2_display_name": "Horaires supplémentaires (Disposition 2)",
           "extras_lock_widget_2_description": "Prochain horaire supplémentaire.",
           "prayer_lock_widget_3_display_name": "Prochaine prière (Disposition 3)",
-          "prayer_lock_widget_3_description": "Heure de la prochaine prière.",
+          "prayer_lock_widget_3_description": "Compte à rebours jusqu'à la prochaine prière.",
           "extras_lock_widget_3_display_name": "Horaires supplémentaires (Disposition 3)",
-          "extras_lock_widget_3_description": "Prochain horaire supplémentaire.",
+          "extras_lock_widget_3_description": "Compte à rebours jusqu'au prochain horaire supplémentaire.",
           "prayer_lock_widget_4_display_name": "Prochaine prière (Disposition 4)",
-          "prayer_lock_widget_4_description": "Compte à rebours jusqu'à la prochaine prière.",
+          "prayer_lock_widget_4_description": "Heure de la prochaine prière.",
           "extras_lock_widget_4_display_name": "Horaires supplémentaires (Disposition 4)",
-          "extras_lock_widget_4_description": "Compte à rebours jusqu'au prochain horaire supplémentaire."
+          "extras_lock_widget_4_description": "Prochain horaire supplémentaire."
         }
       },
       "uz": {
@@ -1063,13 +1063,13 @@
           "extras_lock_widget_2_display_name": "Qo'shimcha vaqtlar (Joylashuv 2)",
           "extras_lock_widget_2_description": "Keyingi qo'shimcha vaqt.",
           "prayer_lock_widget_3_display_name": "Keyingi namoz (Joylashuv 3)",
-          "prayer_lock_widget_3_description": "Keyingi namoz vaqti.",
+          "prayer_lock_widget_3_description": "Keyingi namozgacha teskari sanoq.",
           "extras_lock_widget_3_display_name": "Qo'shimcha vaqtlar (Joylashuv 3)",
-          "extras_lock_widget_3_description": "Keyingi qo'shimcha vaqt.",
+          "extras_lock_widget_3_description": "Keyingi qo'shimcha vaqtgacha teskari sanoq.",
           "prayer_lock_widget_4_display_name": "Keyingi namoz (Joylashuv 4)",
-          "prayer_lock_widget_4_description": "Keyingi namozgacha teskari sanoq.",
+          "prayer_lock_widget_4_description": "Keyingi namoz vaqti.",
           "extras_lock_widget_4_display_name": "Qo'shimcha vaqtlar (Joylashuv 4)",
-          "extras_lock_widget_4_description": "Keyingi qo'shimcha vaqtgacha teskari sanoq."
+          "extras_lock_widget_4_description": "Keyingi qo'shimcha vaqt."
         }
       },
       "sw": {
@@ -1123,13 +1123,13 @@
           "extras_lock_widget_2_display_name": "Nyakati za Ziada (Mpangilio 2)",
           "extras_lock_widget_2_description": "Wakati ujao wa ziada.",
           "prayer_lock_widget_3_display_name": "Swala Inayofuata (Mpangilio 3)",
-          "prayer_lock_widget_3_description": "Wakati wa swala linalofuata.",
+          "prayer_lock_widget_3_description": "Kuhesabu muda hadi swala linalofuata.",
           "extras_lock_widget_3_display_name": "Nyakati za Ziada (Mpangilio 3)",
-          "extras_lock_widget_3_description": "Wakati ujao wa ziada.",
+          "extras_lock_widget_3_description": "Kuhesabu muda hadi wakati wa ziada unaoofuata.",
           "prayer_lock_widget_4_display_name": "Swala Inayofuata (Mpangilio 4)",
-          "prayer_lock_widget_4_description": "Kuhesabu muda hadi swala linalofuata.",
+          "prayer_lock_widget_4_description": "Wakati wa swala linalofuata.",
           "extras_lock_widget_4_display_name": "Nyakati za Ziada (Mpangilio 4)",
-          "extras_lock_widget_4_description": "Kuhesabu muda hadi wakati wa ziada unaoofuata."
+          "extras_lock_widget_4_description": "Wakati ujao wa ziada."
         }
       },
       "ha": {
@@ -1183,13 +1183,13 @@
           "extras_lock_widget_2_display_name": "Lokutan Ƙari (Tsari 2)",
           "extras_lock_widget_2_description": "Lokacin ƙari mai zuwa.",
           "prayer_lock_widget_3_display_name": "Salla Mai Zuwa (Tsari 3)",
-          "prayer_lock_widget_3_description": "Lokacin salla mai zuwa.",
+          "prayer_lock_widget_3_description": "Kirga saura har salla mai zuwa.",
           "extras_lock_widget_3_display_name": "Lokutan Ƙari (Tsari 3)",
-          "extras_lock_widget_3_description": "Lokacin ƙari mai zuwa.",
+          "extras_lock_widget_3_description": "Kirga saura har lokacin ƙari mai zuwa.",
           "prayer_lock_widget_4_display_name": "Salla Mai Zuwa (Tsari 4)",
-          "prayer_lock_widget_4_description": "Kirga saura har salla mai zuwa.",
+          "prayer_lock_widget_4_description": "Lokacin salla mai zuwa.",
           "extras_lock_widget_4_display_name": "Lokutan Ƙari (Tsari 4)",
-          "extras_lock_widget_4_description": "Kirga saura har lokacin ƙari mai zuwa."
+          "extras_lock_widget_4_description": "Lokacin ƙari mai zuwa."
         }
       },
       "pt": {
@@ -1243,13 +1243,13 @@
           "extras_lock_widget_2_display_name": "Horários Extra (Disposição 2)",
           "extras_lock_widget_2_description": "Próximo horário extra.",
           "prayer_lock_widget_3_display_name": "Oração Seguinte (Disposição 3)",
-          "prayer_lock_widget_3_description": "Hora da próxima oração.",
+          "prayer_lock_widget_3_description": "Contagem decrescente até a próxima oração.",
           "extras_lock_widget_3_display_name": "Horários Extra (Disposição 3)",
-          "extras_lock_widget_3_description": "Próximo horário extra.",
+          "extras_lock_widget_3_description": "Contagem decrescente até o próximo horário extra.",
           "prayer_lock_widget_4_display_name": "Oração Seguinte (Disposição 4)",
-          "prayer_lock_widget_4_description": "Contagem decrescente até a próxima oração.",
+          "prayer_lock_widget_4_description": "Hora da próxima oração.",
           "extras_lock_widget_4_display_name": "Horários Extra (Disposição 4)",
-          "extras_lock_widget_4_description": "Contagem decrescente até o próximo horário extra."
+          "extras_lock_widget_4_description": "Próximo horário extra."
         }
       },
       "ur": {
@@ -1303,13 +1303,13 @@
           "extras_lock_widget_2_display_name": "اضافی اوقات (خاکہ 2)",
           "extras_lock_widget_2_description": "اگلا اضافی وقت۔",
           "prayer_lock_widget_3_display_name": "اگلی نماز (خاکہ 3)",
-          "prayer_lock_widget_3_description": "اگلی نماز کا وقت۔",
+          "prayer_lock_widget_3_description": "اگلی نماز تک گنتی۔",
           "extras_lock_widget_3_display_name": "اضافی اوقات (خاکہ 3)",
-          "extras_lock_widget_3_description": "اگلا اضافی وقت۔",
+          "extras_lock_widget_3_description": "اگلے اضافی وقت تک گنتی۔",
           "prayer_lock_widget_4_display_name": "اگلی نماز (خاکہ 4)",
-          "prayer_lock_widget_4_description": "اگلی نماز تک گنتی۔",
+          "prayer_lock_widget_4_description": "اگلی نماز کا وقت۔",
           "extras_lock_widget_4_display_name": "اضافی اوقات (خاکہ 4)",
-          "extras_lock_widget_4_description": "اگلے اضافی وقت تک گنتی۔"
+          "extras_lock_widget_4_description": "اگلا اضافی وقت۔"
         }
       },
       "fa": {
@@ -1363,13 +1363,13 @@
           "extras_lock_widget_2_display_name": "اوقات اضافه (چیدمان ۲)",
           "extras_lock_widget_2_description": "زمان اضافه بعدی.",
           "prayer_lock_widget_3_display_name": "نماز بعدی (چیدمان ۳)",
-          "prayer_lock_widget_3_description": "زمان نماز بعدی.",
+          "prayer_lock_widget_3_description": "شمارش معکوس تا نماز بعدی.",
           "extras_lock_widget_3_display_name": "اوقات اضافه (چیدمان ۳)",
-          "extras_lock_widget_3_description": "زمان اضافه بعدی.",
+          "extras_lock_widget_3_description": "شمارش معکوس تا زمان اضافه بعدی.",
           "prayer_lock_widget_4_display_name": "نماز بعدی (چیدمان ۴)",
-          "prayer_lock_widget_4_description": "شمارش معکوس تا نماز بعدی.",
+          "prayer_lock_widget_4_description": "زمان نماز بعدی.",
           "extras_lock_widget_4_display_name": "اوقات اضافه (چیدمان ۴)",
-          "extras_lock_widget_4_description": "شمارش معکوس تا زمان اضافه بعدی."
+          "extras_lock_widget_4_description": "زمان اضافه بعدی."
         }
       },
       "bn": {
@@ -1423,13 +1423,13 @@
           "extras_lock_widget_2_display_name": "অতিরিক্ত সময় (বিন্যাস ২)",
           "extras_lock_widget_2_description": "পরবর্তী অতিরিক্ত সময়।",
           "prayer_lock_widget_3_display_name": "পরবর্তী নামাজ (বিন্যাস ৩)",
-          "prayer_lock_widget_3_description": "পরবর্তী নামাজের সময়।",
+          "prayer_lock_widget_3_description": "পরবর্তী নামাজ পর্যন্ত গণনা।",
           "extras_lock_widget_3_display_name": "অতিরিক্ত সময় (বিন্যাস ৩)",
-          "extras_lock_widget_3_description": "পরবর্তী অতিরিক্ত সময়।",
+          "extras_lock_widget_3_description": "পরবর্তী অতিরিক্ত সময় পর্যন্ত গণনা।",
           "prayer_lock_widget_4_display_name": "পরবর্তী নামাজ (বিন্যাস ৪)",
-          "prayer_lock_widget_4_description": "পরবর্তী নামাজ পর্যন্ত গণনা।",
+          "prayer_lock_widget_4_description": "পরবর্তী নামাজের সময়।",
           "extras_lock_widget_4_display_name": "অতিরিক্ত সময় (বিন্যাস ৪)",
-          "extras_lock_widget_4_description": "পরবর্তী অতিরিক্ত সময় পর্যন্ত গণনা।"
+          "extras_lock_widget_4_description": "পরবর্তী অতিরিক্ত সময়।"
         }
       },
       "ru": {
@@ -1483,13 +1483,13 @@
           "extras_lock_widget_2_display_name": "Дополнительные времена (Макет 2)",
           "extras_lock_widget_2_description": "Время следующего дополнительного времени.",
           "prayer_lock_widget_3_display_name": "Следующий намаз (Макет 3)",
-          "prayer_lock_widget_3_description": "Время следующего намаза.",
+          "prayer_lock_widget_3_description": "Отсчёт до следующего намаза.",
           "extras_lock_widget_3_display_name": "Дополнительные времена (Макет 3)",
-          "extras_lock_widget_3_description": "Время следующего дополнительного времени.",
+          "extras_lock_widget_3_description": "Отсчёт до следующего дополнительного времени.",
           "prayer_lock_widget_4_display_name": "Следующий намаз (Макет 4)",
-          "prayer_lock_widget_4_description": "Отсчёт до следующего намаза.",
+          "prayer_lock_widget_4_description": "Время следующего намаза.",
           "extras_lock_widget_4_display_name": "Дополнительные времена (Макет 4)",
-          "extras_lock_widget_4_description": "Отсчёт до следующего дополнительного времени."
+          "extras_lock_widget_4_description": "Время следующего дополнительного времени."
         }
       },
       "az": {
@@ -1543,13 +1543,13 @@
           "extras_lock_widget_2_display_name": "Əlavə vaxtlar (Quruluş 2)",
           "extras_lock_widget_2_description": "Növbəti əlavə vaxt.",
           "prayer_lock_widget_3_display_name": "Növbəti namaz (Quruluş 3)",
-          "prayer_lock_widget_3_description": "Növbəti namazın vaxtı.",
+          "prayer_lock_widget_3_description": "Növbəti namaza qədər sayım.",
           "extras_lock_widget_3_display_name": "Əlavə vaxtlar (Quruluş 3)",
-          "extras_lock_widget_3_description": "Növbəti əlavə vaxt.",
+          "extras_lock_widget_3_description": "Növbəti əlavə vaxta qədər sayım.",
           "prayer_lock_widget_4_display_name": "Növbəti namaz (Quruluş 4)",
-          "prayer_lock_widget_4_description": "Növbəti namaza qədər sayım.",
+          "prayer_lock_widget_4_description": "Növbəti namazın vaxtı.",
           "extras_lock_widget_4_display_name": "Əlavə vaxtlar (Quruluş 4)",
-          "extras_lock_widget_4_description": "Növbəti əlavə vaxta qədər sayım."
+          "extras_lock_widget_4_description": "Növbəti əlavə vaxt."
         }
       },
       "de": {
@@ -1603,13 +1603,13 @@
           "extras_lock_widget_2_display_name": "Zusatzzeiten (Layout 2)",
           "extras_lock_widget_2_description": "Nächste Zusatzzeit.",
           "prayer_lock_widget_3_display_name": "Nächstes Gebet (Layout 3)",
-          "prayer_lock_widget_3_description": "Zeit des nächsten Gebets.",
+          "prayer_lock_widget_3_description": "Countdown zum nächsten Gebet.",
           "extras_lock_widget_3_display_name": "Zusatzzeiten (Layout 3)",
-          "extras_lock_widget_3_description": "Nächste Zusatzzeit.",
+          "extras_lock_widget_3_description": "Countdown zur nächsten Zusatzzeit.",
           "prayer_lock_widget_4_display_name": "Nächstes Gebet (Layout 4)",
-          "prayer_lock_widget_4_description": "Countdown zum nächsten Gebet.",
+          "prayer_lock_widget_4_description": "Zeit des nächsten Gebets.",
           "extras_lock_widget_4_display_name": "Zusatzzeiten (Layout 4)",
-          "extras_lock_widget_4_description": "Countdown zur nächsten Zusatzzeit."
+          "extras_lock_widget_4_description": "Nächste Zusatzzeit."
         }
       },
       "sq": {
@@ -1663,13 +1663,13 @@
           "extras_lock_widget_2_display_name": "Kohët shtesë (Skema 2)",
           "extras_lock_widget_2_description": "Koha shtesë e ardhshme.",
           "prayer_lock_widget_3_display_name": "Namazi i ardhshëm (Skema 3)",
-          "prayer_lock_widget_3_description": "Koha e namazit të ardhshëm.",
+          "prayer_lock_widget_3_description": "Numërimi mbrapsht për namazin e ardhshëm.",
           "extras_lock_widget_3_display_name": "Kohët shtesë (Skema 3)",
-          "extras_lock_widget_3_description": "Koha shtesë e ardhshme.",
+          "extras_lock_widget_3_description": "Numërimi mbrapsht për kohën shtesë të ardhshme.",
           "prayer_lock_widget_4_display_name": "Namazi i ardhshëm (Skema 4)",
-          "prayer_lock_widget_4_description": "Numërimi mbrapsht për namazin e ardhshëm.",
+          "prayer_lock_widget_4_description": "Koha e namazit të ardhshëm.",
           "extras_lock_widget_4_display_name": "Kohët shtesë (Skema 4)",
-          "extras_lock_widget_4_description": "Numërimi mbrapsht për kohën shtesë të ardhshme."
+          "extras_lock_widget_4_description": "Koha shtesë e ardhshme."
         }
       },
       "bs": {
@@ -1723,13 +1723,13 @@
           "extras_lock_widget_2_display_name": "Dodatna vremena (Raspored 2)",
           "extras_lock_widget_2_description": "Sljedeće dodatno vrijeme.",
           "prayer_lock_widget_3_display_name": "Sljedeći namaz (Raspored 3)",
-          "prayer_lock_widget_3_description": "Vrijeme sljedećeg namaza.",
+          "prayer_lock_widget_3_description": "Odbrojavanje do sljedećeg namaza.",
           "extras_lock_widget_3_display_name": "Dodatna vremena (Raspored 3)",
-          "extras_lock_widget_3_description": "Sljedeće dodatno vrijeme.",
+          "extras_lock_widget_3_description": "Odbrojavanje do sljedećeg dodatnog vremena.",
           "prayer_lock_widget_4_display_name": "Sljedeći namaz (Raspored 4)",
-          "prayer_lock_widget_4_description": "Odbrojavanje do sljedećeg namaza.",
+          "prayer_lock_widget_4_description": "Vrijeme sljedećeg namaza.",
           "extras_lock_widget_4_display_name": "Dodatna vremena (Raspored 4)",
-          "extras_lock_widget_4_description": "Odbrojavanje do sljedećeg dodatnog vremena."
+          "extras_lock_widget_4_description": "Sljedeće dodatno vrijeme."
         }
       },
       "ps": {
@@ -1783,13 +1783,13 @@
           "extras_lock_widget_2_display_name": "اضافي وختونه (بڼه ۲)",
           "extras_lock_widget_2_description": "بل اضافی وخت.",
           "prayer_lock_widget_3_display_name": "بل لمونځ (بڼه ۳)",
-          "prayer_lock_widget_3_description": "د بل لمونځ وخت.",
+          "prayer_lock_widget_3_description": "تر بل لمونځه شمېرنه.",
           "extras_lock_widget_3_display_name": "اضافي وختونه (بڼه ۳)",
-          "extras_lock_widget_3_description": "بل اضافی وخت.",
+          "extras_lock_widget_3_description": "تر بل اضافي وخت شمېرنه.",
           "prayer_lock_widget_4_display_name": "بل لمونځ (بڼه ۴)",
-          "prayer_lock_widget_4_description": "تر بل لمونځه شمېرنه.",
+          "prayer_lock_widget_4_description": "د بل لمونځ وخت.",
           "extras_lock_widget_4_display_name": "اضافي وختونه (بڼه ۴)",
-          "extras_lock_widget_4_description": "تر بل اضافي وخت شمېرنه."
+          "extras_lock_widget_4_description": "بل اضافی وخت."
         }
       },
       "ta": {
@@ -1843,13 +1843,13 @@
           "extras_lock_widget_2_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 2)",
           "extras_lock_widget_2_description": "அடுத்த கூடுதல் நேரம்.",
           "prayer_lock_widget_3_display_name": "அடுத்த தொழுகை (அமைப்பு 3)",
-          "prayer_lock_widget_3_description": "அடுத்த தொழுகை நேரம்.",
+          "prayer_lock_widget_3_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
           "extras_lock_widget_3_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 3)",
-          "extras_lock_widget_3_description": "அடுத்த கூடுதல் நேரம்.",
+          "extras_lock_widget_3_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்.",
           "prayer_lock_widget_4_display_name": "அடுத்த தொழுகை (அமைப்பு 4)",
-          "prayer_lock_widget_4_description": "அடுத்த தொழுகைக்கான கவுண்டவுன்.",
+          "prayer_lock_widget_4_description": "அடுத்த தொழுகை நேரம்.",
           "extras_lock_widget_4_display_name": "கூடுதல் நேரங்கள் (அமைப்பு 4)",
-          "extras_lock_widget_4_description": "அடுத்த கூடுதல் நேரத்திற்கான கவுண்டவுன்."
+          "extras_lock_widget_4_description": "அடுத்த கூடுதல் நேரம்."
         }
       },
       "ml": {
@@ -1903,13 +1903,13 @@
           "extras_lock_widget_2_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 2)",
           "extras_lock_widget_2_description": "അടുത്ത അധിക സമയം.",
           "prayer_lock_widget_3_display_name": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 3)",
-          "prayer_lock_widget_3_description": "അടുത്ത നമസ്കാര സമയം.",
+          "prayer_lock_widget_3_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
           "extras_lock_widget_3_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 3)",
-          "extras_lock_widget_3_description": "അടുത്ത അധിക സമയം.",
+          "extras_lock_widget_3_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
           "prayer_lock_widget_4_display_name": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 4)",
-          "prayer_lock_widget_4_description": "അടുത്ത നമസ്കാരത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ.",
+          "prayer_lock_widget_4_description": "അടുത്ത നമസ്കാര സമയം.",
           "extras_lock_widget_4_display_name": "അധിക സമയങ്ങൾ (ലേഔട്ട് 4)",
-          "extras_lock_widget_4_description": "അടുത്ത അധിക സമയത്തിലേക്കുള്ള കൗണ്ട്ഡൗൺ."
+          "extras_lock_widget_4_description": "അടുത്ത അധിക സമയം."
         }
       },
       "zh-Hans": {
@@ -1963,13 +1963,13 @@
           "extras_lock_widget_2_display_name": "额外时间（布局 2）",
           "extras_lock_widget_2_description": "下一个额外时间。",
           "prayer_lock_widget_3_display_name": "下一次礼拜（布局 3）",
-          "prayer_lock_widget_3_description": "下一次礼拜的时间。",
+          "prayer_lock_widget_3_description": "距下一次礼拜的倒计时。",
           "extras_lock_widget_3_display_name": "额外时间（布局 3）",
-          "extras_lock_widget_3_description": "下一个额外时间。",
+          "extras_lock_widget_3_description": "距下一个额外时间的倒计时。",
           "prayer_lock_widget_4_display_name": "下一次礼拜（布局 4）",
-          "prayer_lock_widget_4_description": "距下一次礼拜的倒计时。",
+          "prayer_lock_widget_4_description": "下一次礼拜的时间。",
           "extras_lock_widget_4_display_name": "额外时间（布局 4）",
-          "extras_lock_widget_4_description": "距下一个额外时间的倒计时。"
+          "extras_lock_widget_4_description": "下一个额外时间。"
         }
       },
       "zh-Hant": {
@@ -2023,13 +2023,13 @@
           "extras_lock_widget_2_display_name": "額外時間（版面配置 2）",
           "extras_lock_widget_2_description": "下一個額外時間。",
           "prayer_lock_widget_3_display_name": "下一次禮拜（版面配置 3）",
-          "prayer_lock_widget_3_description": "下一次禮拜的時間。",
+          "prayer_lock_widget_3_description": "距下一次禮拜的倒數。",
           "extras_lock_widget_3_display_name": "額外時間（版面配置 3）",
-          "extras_lock_widget_3_description": "下一個額外時間。",
+          "extras_lock_widget_3_description": "距下一個額外時間的倒數。",
           "prayer_lock_widget_4_display_name": "下一次禮拜（版面配置 4）",
-          "prayer_lock_widget_4_description": "距下一次禮拜的倒數。",
+          "prayer_lock_widget_4_description": "下一次禮拜的時間。",
           "extras_lock_widget_4_display_name": "額外時間（版面配置 4）",
-          "extras_lock_widget_4_description": "距下一個額外時間的倒數。"
+          "extras_lock_widget_4_description": "下一個額外時間。"
         }
       },
       "es": {
@@ -2083,13 +2083,13 @@
           "extras_lock_widget_2_display_name": "Horas adicionales (diseño 2)",
           "extras_lock_widget_2_description": "Próxima hora adicional.",
           "prayer_lock_widget_3_display_name": "Próxima oración (diseño 3)",
-          "prayer_lock_widget_3_description": "Hora de la próxima oración.",
+          "prayer_lock_widget_3_description": "Cuenta atrás para la próxima oración.",
           "extras_lock_widget_3_display_name": "Horas adicionales (diseño 3)",
-          "extras_lock_widget_3_description": "Próxima hora adicional.",
+          "extras_lock_widget_3_description": "Cuenta atrás para la próxima hora adicional.",
           "prayer_lock_widget_4_display_name": "Próxima oración (diseño 4)",
-          "prayer_lock_widget_4_description": "Cuenta atrás para la próxima oración.",
+          "prayer_lock_widget_4_description": "Hora de la próxima oración.",
           "extras_lock_widget_4_display_name": "Horas adicionales (diseño 4)",
-          "extras_lock_widget_4_description": "Cuenta atrás para la próxima hora adicional."
+          "extras_lock_widget_4_description": "Próxima hora adicional."
         }
       },
       "nl": {
@@ -2143,13 +2143,13 @@
           "extras_lock_widget_2_display_name": "Extra tijden (indeling 2)",
           "extras_lock_widget_2_description": "Volgende extra tijd.",
           "prayer_lock_widget_3_display_name": "Volgend gebed (indeling 3)",
-          "prayer_lock_widget_3_description": "Tijd van het volgende gebed.",
+          "prayer_lock_widget_3_description": "Aftelling naar het volgende gebed.",
           "extras_lock_widget_3_display_name": "Extra tijden (indeling 3)",
-          "extras_lock_widget_3_description": "Volgende extra tijd.",
+          "extras_lock_widget_3_description": "Aftelling naar de volgende extra tijd.",
           "prayer_lock_widget_4_display_name": "Volgend gebed (indeling 4)",
-          "prayer_lock_widget_4_description": "Aftelling naar het volgende gebed.",
+          "prayer_lock_widget_4_description": "Tijd van het volgende gebed.",
           "extras_lock_widget_4_display_name": "Extra tijden (indeling 4)",
-          "extras_lock_widget_4_description": "Aftelling naar de volgende extra tijd."
+          "extras_lock_widget_4_description": "Volgende extra tijd."
         }
       },
       "kk": {
@@ -2203,13 +2203,13 @@
           "extras_lock_widget_2_display_name": "Қосымша уақыттар (2-өрнек)",
           "extras_lock_widget_2_description": "Келесі қосымша уақыт.",
           "prayer_lock_widget_3_display_name": "Келесі намаз (3-өрнек)",
-          "prayer_lock_widget_3_description": "Келесі намаз уақыты.",
+          "prayer_lock_widget_3_description": "Келесі намазға кері санақ.",
           "extras_lock_widget_3_display_name": "Қосымша уақыттар (3-өрнек)",
-          "extras_lock_widget_3_description": "Келесі қосымша уақыт.",
+          "extras_lock_widget_3_description": "Келесі қосымша уақытқа кері санақ.",
           "prayer_lock_widget_4_display_name": "Келесі намаз (4-өрнек)",
-          "prayer_lock_widget_4_description": "Келесі намазға кері санақ.",
+          "prayer_lock_widget_4_description": "Келесі намаз уақыты.",
           "extras_lock_widget_4_display_name": "Қосымша уақыттар (4-өрнек)",
-          "extras_lock_widget_4_description": "Келесі қосымша уақытқа кері санақ."
+          "extras_lock_widget_4_description": "Келесі қосымша уақыт."
         }
       },
       "ky": {
@@ -2263,13 +2263,13 @@
           "extras_lock_widget_2_display_name": "Кошумча убакыттар (2-чийме)",
           "extras_lock_widget_2_description": "Кийинки кошумча убакыт.",
           "prayer_lock_widget_3_display_name": "Кийинки намаз (3-чийме)",
-          "prayer_lock_widget_3_description": "Кийинки намаздын убагы.",
+          "prayer_lock_widget_3_description": "Кийинки намазга кери эсептөө.",
           "extras_lock_widget_3_display_name": "Кошумча убакыттар (3-чийме)",
-          "extras_lock_widget_3_description": "Кийинки кошумча убакыт.",
+          "extras_lock_widget_3_description": "Кийинки кошумча убакытка кери эсептөө.",
           "prayer_lock_widget_4_display_name": "Кийинки намаз (4-чийме)",
-          "prayer_lock_widget_4_description": "Кийинки намазга кери эсептөө.",
+          "prayer_lock_widget_4_description": "Кийинки намаздын убагы.",
           "extras_lock_widget_4_display_name": "Кошумча убакыттар (4-чийме)",
-          "extras_lock_widget_4_description": "Кийинки кошумча убакытка кери эсептөө."
+          "extras_lock_widget_4_description": "Кийинки кошумча убакыт."
         }
       },
       "tg": {
@@ -2323,13 +2323,13 @@
           "extras_lock_widget_2_display_name": "Вақтҳои иловагӣ (тарҳи 2)",
           "extras_lock_widget_2_description": "Вақти иловагии навбатӣ.",
           "prayer_lock_widget_3_display_name": "Намози навбатӣ (тарҳи 3)",
-          "prayer_lock_widget_3_description": "Вақти намози навбатӣ.",
+          "prayer_lock_widget_3_description": "Ҳисоби баръакс ба намози навбатӣ.",
           "extras_lock_widget_3_display_name": "Вақтҳои иловагӣ (тарҳи 3)",
-          "extras_lock_widget_3_description": "Вақти иловагии навбатӣ.",
+          "extras_lock_widget_3_description": "Ҳисоби баръакс ба вақти иловагии навбатӣ.",
           "prayer_lock_widget_4_display_name": "Намози навбатӣ (тарҳи 4)",
-          "prayer_lock_widget_4_description": "Ҳисоби баръакс ба намози навбатӣ.",
+          "prayer_lock_widget_4_description": "Вақти намози навбатӣ.",
           "extras_lock_widget_4_display_name": "Вақтҳои иловагӣ (тарҳи 4)",
-          "extras_lock_widget_4_description": "Ҳисоби баръакс ба вақти иловагии навбатӣ."
+          "extras_lock_widget_4_description": "Вақти иловагии навбатӣ."
         }
       },
       "tk": {
@@ -2383,13 +2383,13 @@
           "extras_lock_widget_2_display_name": "Goşmaça wagtlary (2-nji düzüliş)",
           "extras_lock_widget_2_description": "Indiki goşmaça wagt.",
           "prayer_lock_widget_3_display_name": "Indiki namaz (3-nji düzüliş)",
-          "prayer_lock_widget_3_description": "Indiki namazyň wagty.",
+          "prayer_lock_widget_3_description": "Indiki namaza yzyna hasaplama.",
           "extras_lock_widget_3_display_name": "Goşmaça wagtlary (3-nji düzüliş)",
-          "extras_lock_widget_3_description": "Indiki goşmaça wagt.",
+          "extras_lock_widget_3_description": "Indiki goşmaça wagta yzyna hasaplama.",
           "prayer_lock_widget_4_display_name": "Indiki namaz (4-nji düzüliş)",
-          "prayer_lock_widget_4_description": "Indiki namaza yzyna hasaplama.",
+          "prayer_lock_widget_4_description": "Indiki namazyň wagty.",
           "extras_lock_widget_4_display_name": "Goşmaça wagtlary (4-nji düzüliş)",
-          "extras_lock_widget_4_description": "Indiki goşmaça wagta yzyna hasaplama."
+          "extras_lock_widget_4_description": "Indiki goşmaça wagt."
         }
       },
       "wo": {
@@ -2443,13 +2443,13 @@
           "extras_lock_widget_2_display_name": "Waxtu yu yokk (tëraan 2)",
           "extras_lock_widget_2_description": "Waxtu bu yokk bi ñëw.",
           "prayer_lock_widget_3_display_name": "Julli bi ñëw (tëraan 3)",
-          "prayer_lock_widget_3_description": "Waxtu julli bi ñëw.",
+          "prayer_lock_widget_3_description": "Kont ngir julli bi ñëw.",
           "extras_lock_widget_3_display_name": "Waxtu yu yokk (tëraan 3)",
-          "extras_lock_widget_3_description": "Waxtu bu yokk bi ñëw.",
+          "extras_lock_widget_3_description": "Kont ngir waxtu bu yokk bi ñëw.",
           "prayer_lock_widget_4_display_name": "Julli bi ñëw (tëraan 4)",
-          "prayer_lock_widget_4_description": "Kont ngir julli bi ñëw.",
+          "prayer_lock_widget_4_description": "Waxtu julli bi ñëw.",
           "extras_lock_widget_4_display_name": "Waxtu yu yokk (tëraan 4)",
-          "extras_lock_widget_4_description": "Kont ngir waxtu bu yokk bi ñëw."
+          "extras_lock_widget_4_description": "Waxtu bu yokk bi ñëw."
         }
       },
       "mr": {
@@ -2503,13 +2503,13 @@
           "extras_lock_widget_2_display_name": "अतिरिक्त वेळा (रचना 2)",
           "extras_lock_widget_2_description": "पुढील अतिरिक्त वेळ.",
           "prayer_lock_widget_3_display_name": "पुढील नमाज (रचना 3)",
-          "prayer_lock_widget_3_description": "पुढील नमाजची वेळ.",
+          "prayer_lock_widget_3_description": "पुढील नमाजची उलटी गणती.",
           "extras_lock_widget_3_display_name": "अतिरिक्त वेळा (रचना 3)",
-          "extras_lock_widget_3_description": "पुढील अतिरिक्त वेळ.",
+          "extras_lock_widget_3_description": "पुढील अतिरिक्त वेळेची उलटी गणती.",
           "prayer_lock_widget_4_display_name": "पुढील नमाज (रचना 4)",
-          "prayer_lock_widget_4_description": "पुढील नमाजची उलटी गणती.",
+          "prayer_lock_widget_4_description": "पुढील नमाजची वेळ.",
           "extras_lock_widget_4_display_name": "अतिरिक्त वेळा (रचना 4)",
-          "extras_lock_widget_4_description": "पुढील अतिरिक्त वेळेची उलटी गणती."
+          "extras_lock_widget_4_description": "पुढील अतिरिक्त वेळ."
         }
       },
       "om": {
@@ -2563,13 +2563,13 @@
           "extras_lock_widget_2_display_name": "Yeroo Dabalataa (Bifa 2)",
           "extras_lock_widget_2_description": "Yeroo dabalataa itti aanuutti.",
           "prayer_lock_widget_3_display_name": "Salaata Itti Aanu (Bifa 3)",
-          "prayer_lock_widget_3_description": "Yeroo salaata itti aanuutti.",
+          "prayer_lock_widget_3_description": "Lakkoofsa hanga salaata itti aanuutti.",
           "extras_lock_widget_3_display_name": "Yeroo Dabalataa (Bifa 3)",
-          "extras_lock_widget_3_description": "Yeroo dabalataa itti aanuutti.",
+          "extras_lock_widget_3_description": "Lakkoofsa hanga yeroo dabalataa itti aanuutti.",
           "prayer_lock_widget_4_display_name": "Salaata Itti Aanu (Bifa 4)",
-          "prayer_lock_widget_4_description": "Lakkoofsa hanga salaata itti aanuutti.",
+          "prayer_lock_widget_4_description": "Yeroo salaata itti aanuutti.",
           "extras_lock_widget_4_display_name": "Yeroo Dabalataa (Bifa 4)",
-          "extras_lock_widget_4_description": "Lakkoofsa hanga yeroo dabalataa itti aanuutti."
+          "extras_lock_widget_4_description": "Yeroo dabalataa itti aanuutti."
         }
       },
       "bm": {
@@ -2623,13 +2623,13 @@
           "extras_lock_widget_2_display_name": "Waati Dabalataw (Labɛn 2)",
           "extras_lock_widget_2_description": "Waati dabalata nata.",
           "prayer_lock_widget_3_display_name": "Seli Nata (Labɛn 3)",
-          "prayer_lock_widget_3_description": "Seli waati nata.",
+          "prayer_lock_widget_3_description": "Waati kalanni seli nata la.",
           "extras_lock_widget_3_display_name": "Waati Dabalataw (Labɛn 3)",
-          "extras_lock_widget_3_description": "Waati dabalata nata.",
+          "extras_lock_widget_3_description": "Waati kalanni waati dabalata nata la.",
           "prayer_lock_widget_4_display_name": "Seli Nata (Labɛn 4)",
-          "prayer_lock_widget_4_description": "Waati kalanni seli nata la.",
+          "prayer_lock_widget_4_description": "Seli waati nata.",
           "extras_lock_widget_4_display_name": "Waati Dabalataw (Labɛn 4)",
-          "extras_lock_widget_4_description": "Waati kalanni waati dabalata nata la."
+          "extras_lock_widget_4_description": "Waati dabalata nata."
         }
       },
       "tl": {
@@ -2683,13 +2683,13 @@
           "extras_lock_widget_2_display_name": "Karagdagang Oras (Layout 2)",
           "extras_lock_widget_2_description": "Susunod na karagdagang oras.",
           "prayer_lock_widget_3_display_name": "Susunod na Pagdarasal (Layout 3)",
-          "prayer_lock_widget_3_description": "Oras ng susunod na pagdarasal.",
+          "prayer_lock_widget_3_description": "Countdown sa susunod na pagdarasal.",
           "extras_lock_widget_3_display_name": "Karagdagang Oras (Layout 3)",
-          "extras_lock_widget_3_description": "Susunod na karagdagang oras.",
+          "extras_lock_widget_3_description": "Countdown sa susunod na karagdagang oras.",
           "prayer_lock_widget_4_display_name": "Susunod na Pagdarasal (Layout 4)",
-          "prayer_lock_widget_4_description": "Countdown sa susunod na pagdarasal.",
+          "prayer_lock_widget_4_description": "Oras ng susunod na pagdarasal.",
           "extras_lock_widget_4_display_name": "Karagdagang Oras (Layout 4)",
-          "extras_lock_widget_4_description": "Countdown sa susunod na karagdagang oras."
+          "extras_lock_widget_4_description": "Susunod na karagdagang oras."
         }
       },
       "ff": {
@@ -2743,13 +2743,13 @@
           "extras_lock_widget_2_display_name": "Waktuuji Ɓeydaani (Mbaadi 2)",
           "extras_lock_widget_2_description": "Waktu ɓeydaangal aroowal.",
           "prayer_lock_widget_3_display_name": "Julde Aroori (Mbaadi 3)",
-          "prayer_lock_widget_3_description": "Waktu julde aroore.",
+          "prayer_lock_widget_3_description": "Limto haa julde aroore.",
           "extras_lock_widget_3_display_name": "Waktuuji Ɓeydaani (Mbaadi 3)",
-          "extras_lock_widget_3_description": "Waktu ɓeydaangal aroowal.",
+          "extras_lock_widget_3_description": "Limto haa waktu ɓeydaangal aroowal.",
           "prayer_lock_widget_4_display_name": "Julde Aroori (Mbaadi 4)",
-          "prayer_lock_widget_4_description": "Limto haa julde aroore.",
+          "prayer_lock_widget_4_description": "Waktu julde aroore.",
           "extras_lock_widget_4_display_name": "Waktuuji Ɓeydaani (Mbaadi 4)",
-          "extras_lock_widget_4_description": "Limto haa waktu ɓeydaangal aroowal."
+          "extras_lock_widget_4_description": "Waktu ɓeydaangal aroowal."
         }
       },
       "te": {
@@ -2803,13 +2803,13 @@
           "extras_lock_widget_2_display_name": "అదనపు సమయాలు (లేఅవుట్ 2)",
           "extras_lock_widget_2_description": "తదుపరి అదనపు సమయం.",
           "prayer_lock_widget_3_display_name": "తదుపరి ప్రార్థన (లేఅవుట్ 3)",
-          "prayer_lock_widget_3_description": "తదుపరి ప్రార్థన సమయం.",
+          "prayer_lock_widget_3_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
           "extras_lock_widget_3_display_name": "అదనపు సమయాలు (లేఅవుట్ 3)",
-          "extras_lock_widget_3_description": "తదుపరి అదనపు సమయం.",
+          "extras_lock_widget_3_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్.",
           "prayer_lock_widget_4_display_name": "తదుపరి ప్రార్థన (లేఅవుట్ 4)",
-          "prayer_lock_widget_4_description": "తదుపరి ప్రార్థనకు కౌంట్‌డౌన్.",
+          "prayer_lock_widget_4_description": "తదుపరి ప్రార్థన సమయం.",
           "extras_lock_widget_4_display_name": "అదనపు సమయాలు (లేఅవుట్ 4)",
-          "extras_lock_widget_4_description": "తదుపరి అదనపు సమయానికి కౌంట్‌డౌన్."
+          "extras_lock_widget_4_description": "తదుపరి అదనపు సమయం."
         }
       },
       "gu": {
@@ -2863,13 +2863,13 @@
           "extras_lock_widget_2_display_name": "વધારાના સમય (લેઆઉટ 2)",
           "extras_lock_widget_2_description": "આગલો વધારાનો સમય.",
           "prayer_lock_widget_3_display_name": "આગલી નમાજ (લેઆઉટ 3)",
-          "prayer_lock_widget_3_description": "આગલી નમાજનો સમય.",
+          "prayer_lock_widget_3_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
           "extras_lock_widget_3_display_name": "વધારાના સમય (લેઆઉટ 3)",
-          "extras_lock_widget_3_description": "આગલો વધારાનો સમય.",
+          "extras_lock_widget_3_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન.",
           "prayer_lock_widget_4_display_name": "આગલી નમાજ (લેઆઉટ 4)",
-          "prayer_lock_widget_4_description": "આગલી નમાજ માટે કાઉન્ટડાઉન.",
+          "prayer_lock_widget_4_description": "આગલી નમાજનો સમય.",
           "extras_lock_widget_4_display_name": "વધારાના સમય (લેઆઉટ 4)",
-          "extras_lock_widget_4_description": "આગલા વધારાના સમય માટે કાઉન્ટડાઉન."
+          "extras_lock_widget_4_description": "આગલો વધારાનો સમય."
         }
       },
       "kn": {
@@ -2923,13 +2923,13 @@
           "extras_lock_widget_2_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 2)",
           "extras_lock_widget_2_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ.",
           "prayer_lock_widget_3_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 3)",
-          "prayer_lock_widget_3_description": "ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+          "prayer_lock_widget_3_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
           "extras_lock_widget_3_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 3)",
-          "extras_lock_widget_3_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ.",
+          "extras_lock_widget_3_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್.",
           "prayer_lock_widget_4_display_name": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 4)",
-          "prayer_lock_widget_4_description": "ಮುಂದಿನ ನಮಾಜ್‌ಗೆ ಕೌಂಟ್‌ಡೌನ್.",
+          "prayer_lock_widget_4_description": "ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
           "extras_lock_widget_4_display_name": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 4)",
-          "extras_lock_widget_4_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯಕ್ಕೆ ಕೌಂಟ್‌ಡೌನ್."
+          "extras_lock_widget_4_description": "ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ."
         }
       },
       "am": {
@@ -2983,13 +2983,13 @@
           "extras_lock_widget_2_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 2)",
           "extras_lock_widget_2_description": "ቀጣይ ተጨማሪ ጊዜ።",
           "prayer_lock_widget_3_display_name": "ቀጣይ ሶላት (አቀራረብ 3)",
-          "prayer_lock_widget_3_description": "የቀጣዩ ሶላት ጊዜ።",
+          "prayer_lock_widget_3_description": "ለቀጣዩ ሶላት ቆጣሪ።",
           "extras_lock_widget_3_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 3)",
-          "extras_lock_widget_3_description": "ቀጣይ ተጨማሪ ጊዜ።",
+          "extras_lock_widget_3_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።",
           "prayer_lock_widget_4_display_name": "ቀጣይ ሶላት (አቀራረብ 4)",
-          "prayer_lock_widget_4_description": "ለቀጣዩ ሶላት ቆጣሪ።",
+          "prayer_lock_widget_4_description": "የቀጣዩ ሶላት ጊዜ።",
           "extras_lock_widget_4_display_name": "ተጨማሪ ጊዜዎች (አቀራረብ 4)",
-          "extras_lock_widget_4_description": "ለቀጣዩ ተጨማሪ ጊዜ ቆጣሪ።"
+          "extras_lock_widget_4_description": "ቀጣይ ተጨማሪ ጊዜ።"
         }
       },
       "pa-Arab": {
@@ -3043,13 +3043,13 @@
           "extras_lock_widget_2_display_name": "ودھیرے ویلے (بݨاوت 2)",
           "extras_lock_widget_2_description": "اگلا ودھیرا ویلا۔",
           "prayer_lock_widget_3_display_name": "اگلا نماز (بݨاوت 3)",
-          "prayer_lock_widget_3_description": "اگلے نماز دا ویلا۔",
+          "prayer_lock_widget_3_description": "اگلے نماز تک گنتی۔",
           "extras_lock_widget_3_display_name": "ودھیرے ویلے (بݨاوت 3)",
-          "extras_lock_widget_3_description": "اگلا ودھیرا ویلا۔",
+          "extras_lock_widget_3_description": "اگلے ودھیرے ویلے تک گنتی۔",
           "prayer_lock_widget_4_display_name": "اگلا نماز (بݨاوت 4)",
-          "prayer_lock_widget_4_description": "اگلے نماز تک گنتی۔",
+          "prayer_lock_widget_4_description": "اگلے نماز دا ویلا۔",
           "extras_lock_widget_4_display_name": "ودھیرے ویلے (بݨاوت 4)",
-          "extras_lock_widget_4_description": "اگلے ودھیرے ویلے تک گنتی۔"
+          "extras_lock_widget_4_description": "اگلا ودھیرا ویلا۔"
         }
       },
       "sd": {
@@ -3103,13 +3103,13 @@
           "extras_lock_widget_2_display_name": "وڌيڪ وقت (ڊزائين 2)",
           "extras_lock_widget_2_description": "اڳيون وڌيڪ وقت.",
           "prayer_lock_widget_3_display_name": "اڳيون نماز (ڊزائين 3)",
-          "prayer_lock_widget_3_description": "اڳئين نماز جو وقت.",
+          "prayer_lock_widget_3_description": "اڳئين نماز تائين ڳڻپ.",
           "extras_lock_widget_3_display_name": "وڌيڪ وقت (ڊزائين 3)",
-          "extras_lock_widget_3_description": "اڳيون وڌيڪ وقت.",
+          "extras_lock_widget_3_description": "اڳئين وڌيڪ وقت تائين ڳڻپ.",
           "prayer_lock_widget_4_display_name": "اڳيون نماز (ڊزائين 4)",
-          "prayer_lock_widget_4_description": "اڳئين نماز تائين ڳڻپ.",
+          "prayer_lock_widget_4_description": "اڳئين نماز جو وقت.",
           "extras_lock_widget_4_display_name": "وڌيڪ وقت (ڊزائين 4)",
-          "extras_lock_widget_4_description": "اڳئين وڌيڪ وقت تائين ڳڻپ."
+          "extras_lock_widget_4_description": "اڳيون وڌيڪ وقت."
         }
       },
       "ug": {
@@ -3163,13 +3163,13 @@
           "extras_lock_widget_2_display_name": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 2)",
           "extras_lock_widget_2_description": "كېيىنكى قوشۇمچە ۋاقىت.",
           "prayer_lock_widget_3_display_name": "كېيىنكى ناماز (كۆرۈنۈش 3)",
-          "prayer_lock_widget_3_description": "كېيىنكى ناماز ۋاقتى.",
+          "prayer_lock_widget_3_description": "كېيىنكى نامازغىچە سانا.",
           "extras_lock_widget_3_display_name": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 3)",
-          "extras_lock_widget_3_description": "كېيىنكى قوشۇمچە ۋاقىت.",
+          "extras_lock_widget_3_description": "كېيىنكى قوشۇمچە ۋاقىتقىچە سانا.",
           "prayer_lock_widget_4_display_name": "كېيىنكى ناماز (كۆرۈنۈش 4)",
-          "prayer_lock_widget_4_description": "كېيىنكى نامازغىچە سانا.",
+          "prayer_lock_widget_4_description": "كېيىنكى ناماز ۋاقتى.",
           "extras_lock_widget_4_display_name": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 4)",
-          "extras_lock_widget_4_description": "كېيىنكى قوشۇمچە ۋاقىتقىچە سانا."
+          "extras_lock_widget_4_description": "كېيىنكى قوشۇمچە ۋاقىت."
         }
       },
       "ckb": {
@@ -3223,13 +3223,13 @@
           "extras_lock_widget_2_display_name": "کاتە زیادەکان (شێواز 2)",
           "extras_lock_widget_2_description": "کاتی زیادەی داهاتوو.",
           "prayer_lock_widget_3_display_name": "نوێژی داهاتوو (شێواز 3)",
-          "prayer_lock_widget_3_description": "کاتی نوێژی داهاتوو.",
+          "prayer_lock_widget_3_description": "ژماردنەوە بۆ نوێژی داهاتوو.",
           "extras_lock_widget_3_display_name": "کاتە زیادەکان (شێواز 3)",
-          "extras_lock_widget_3_description": "کاتی زیادەی داهاتوو.",
+          "extras_lock_widget_3_description": "ژماردنەوە بۆ کاتی زیادەی داهاتوو.",
           "prayer_lock_widget_4_display_name": "نوێژی داهاتوو (شێواز 4)",
-          "prayer_lock_widget_4_description": "ژماردنەوە بۆ نوێژی داهاتوو.",
+          "prayer_lock_widget_4_description": "کاتی نوێژی داهاتوو.",
           "extras_lock_widget_4_display_name": "کاتە زیادەکان (شێواز 4)",
-          "extras_lock_widget_4_description": "ژماردنەوە بۆ کاتی زیادەی داهاتوو."
+          "extras_lock_widget_4_description": "کاتی زیادەی داهاتوو."
         }
       },
       "ku": {
@@ -3283,13 +3283,13 @@
           "extras_lock_widget_2_display_name": "Demên zêde (Sazgeh 2)",
           "extras_lock_widget_2_description": "Dema zêde ya bê.",
           "prayer_lock_widget_3_display_name": "Nimêja bê (Sazgeh 3)",
-          "prayer_lock_widget_3_description": "Dema nimêja bê.",
+          "prayer_lock_widget_3_description": "Hejmartin ber bi nimêja bê.",
           "extras_lock_widget_3_display_name": "Demên zêde (Sazgeh 3)",
-          "extras_lock_widget_3_description": "Dema zêde ya bê.",
+          "extras_lock_widget_3_description": "Hejmartin ber bi dema zêde ya bê.",
           "prayer_lock_widget_4_display_name": "Nimêja bê (Sazgeh 4)",
-          "prayer_lock_widget_4_description": "Hejmartin ber bi nimêja bê.",
+          "prayer_lock_widget_4_description": "Dema nimêja bê.",
           "extras_lock_widget_4_display_name": "Demên zêde (Sazgeh 4)",
-          "extras_lock_widget_4_description": "Hejmartin ber bi dema zêde ya bê."
+          "extras_lock_widget_4_description": "Dema zêde ya bê."
         }
       },
       "yo": {
@@ -3343,13 +3343,13 @@
           "extras_lock_widget_2_display_name": "Àkókò àfikún (Ìṣètò 2)",
           "extras_lock_widget_2_description": "Àkókò àfikún tó ń bọ̀.",
           "prayer_lock_widget_3_display_name": "Ìrun tó ń bọ̀ (Ìṣètò 3)",
-          "prayer_lock_widget_3_description": "Àkókò ìrun tó ń bọ̀.",
+          "prayer_lock_widget_3_description": "Ìkàsí sí ìrun tó ń bọ̀.",
           "extras_lock_widget_3_display_name": "Àkókò àfikún (Ìṣètò 3)",
-          "extras_lock_widget_3_description": "Àkókò àfikún tó ń bọ̀.",
+          "extras_lock_widget_3_description": "Ìkàsí sí àkókò àfikún tó ń bọ̀.",
           "prayer_lock_widget_4_display_name": "Ìrun tó ń bọ̀ (Ìṣètò 4)",
-          "prayer_lock_widget_4_description": "Ìkàsí sí ìrun tó ń bọ̀.",
+          "prayer_lock_widget_4_description": "Àkókò ìrun tó ń bọ̀.",
           "extras_lock_widget_4_display_name": "Àkókò àfikún (Ìṣètò 4)",
-          "extras_lock_widget_4_description": "Ìkàsí sí àkókò àfikún tó ń bọ̀."
+          "extras_lock_widget_4_description": "Àkókò àfikún tó ń bọ̀."
         }
       },
       "jv": {
@@ -3403,13 +3403,13 @@
           "extras_lock_widget_2_display_name": "Wektu tambahan (Tata 2)",
           "extras_lock_widget_2_description": "Wektu tambahan sabanjuré.",
           "prayer_lock_widget_3_display_name": "Sholat sabanjuré (Tata 3)",
-          "prayer_lock_widget_3_description": "Wektu sholat sabanjuré.",
+          "prayer_lock_widget_3_description": "Cacah mudhun menyang sholat sabanjuré.",
           "extras_lock_widget_3_display_name": "Wektu tambahan (Tata 3)",
-          "extras_lock_widget_3_description": "Wektu tambahan sabanjuré.",
+          "extras_lock_widget_3_description": "Cacah mudhun menyang wektu tambahan sabanjuré.",
           "prayer_lock_widget_4_display_name": "Sholat sabanjuré (Tata 4)",
-          "prayer_lock_widget_4_description": "Cacah mudhun menyang sholat sabanjuré.",
+          "prayer_lock_widget_4_description": "Wektu sholat sabanjuré.",
           "extras_lock_widget_4_display_name": "Wektu tambahan (Tata 4)",
-          "extras_lock_widget_4_description": "Cacah mudhun menyang wektu tambahan sabanjuré."
+          "extras_lock_widget_4_description": "Wektu tambahan sabanjuré."
         }
       },
       "su": {
@@ -3463,13 +3463,13 @@
           "extras_lock_widget_2_display_name": "Waktu tambahan (Tata 2)",
           "extras_lock_widget_2_description": "Waktu tambahan salajengna.",
           "prayer_lock_widget_3_display_name": "Solat salajengna (Tata 3)",
-          "prayer_lock_widget_3_description": "Waktu solat salajengna.",
+          "prayer_lock_widget_3_description": "Itungan mundur kana solat salajengna.",
           "extras_lock_widget_3_display_name": "Waktu tambahan (Tata 3)",
-          "extras_lock_widget_3_description": "Waktu tambahan salajengna.",
+          "extras_lock_widget_3_description": "Itungan mundur kana waktu tambahan salajengna.",
           "prayer_lock_widget_4_display_name": "Solat salajengna (Tata 4)",
-          "prayer_lock_widget_4_description": "Itungan mundur kana solat salajengna.",
+          "prayer_lock_widget_4_description": "Waktu solat salajengna.",
           "extras_lock_widget_4_display_name": "Waktu tambahan (Tata 4)",
-          "extras_lock_widget_4_description": "Itungan mundur kana waktu tambahan salajengna."
+          "extras_lock_widget_4_description": "Waktu tambahan salajengna."
         }
       },
       "my": {
@@ -3523,13 +3523,13 @@
           "extras_lock_widget_2_display_name": "အပိုအချိန်များ (ပုံစံ 2)",
           "extras_lock_widget_2_description": "နောက် အပိုအချိန်။",
           "prayer_lock_widget_3_display_name": "နောက် နမာဇ် (ပုံစံ 3)",
-          "prayer_lock_widget_3_description": "နောက် နမာဇ်အချိန်။",
+          "prayer_lock_widget_3_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
           "extras_lock_widget_3_display_name": "အပိုအချိန်များ (ပုံစံ 3)",
-          "extras_lock_widget_3_description": "နောက် အပိုအချိန်။",
+          "extras_lock_widget_3_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
           "prayer_lock_widget_4_display_name": "နောက် နမာဇ် (ပုံစံ 4)",
-          "prayer_lock_widget_4_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_lock_widget_4_description": "နောက် နမာဇ်အချိန်။",
           "extras_lock_widget_4_display_name": "အပိုအချိန်များ (ပုံစံ 4)",
-          "extras_lock_widget_4_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။"
+          "extras_lock_widget_4_description": "နောက် အပိုအချိန်။"
         }
       },
       "tt": {
@@ -3583,13 +3583,13 @@
           "extras_lock_widget_2_display_name": "Өстәмә вакытлар (Кыяфәт 2)",
           "extras_lock_widget_2_description": "Киләсе өстәмә вакыт.",
           "prayer_lock_widget_3_display_name": "Киләсе намаз (Кыяфәт 3)",
-          "prayer_lock_widget_3_description": "Киләсе намаз вакыты.",
+          "prayer_lock_widget_3_description": "Киләсе намазга кадәр санагыч.",
           "extras_lock_widget_3_display_name": "Өстәмә вакытлар (Кыяфәт 3)",
-          "extras_lock_widget_3_description": "Киләсе өстәмә вакыт.",
+          "extras_lock_widget_3_description": "Киләсе өстәмә вакытка кадәр санагыч.",
           "prayer_lock_widget_4_display_name": "Киләсе намаз (Кыяфәт 4)",
-          "prayer_lock_widget_4_description": "Киләсе намазга кадәр санагыч.",
+          "prayer_lock_widget_4_description": "Киләсе намаз вакыты.",
           "extras_lock_widget_4_display_name": "Өстәмә вакытлар (Кыяфәт 4)",
-          "extras_lock_widget_4_description": "Киләсе өстәмә вакытка кадәр санагыч."
+          "extras_lock_widget_4_description": "Киләсе өстәмә вакыт."
         }
       },
       "ce": {
@@ -3643,13 +3643,13 @@
           "extras_lock_widget_2_display_name": "ДӀахӀумма хенаш (Барт 2)",
           "extras_lock_widget_2_description": "Кхин дӀахӀумма ха.",
           "prayer_lock_widget_3_display_name": "Кхин ламаз (Барт 3)",
-          "prayer_lock_widget_3_description": "Кхин ламазан ха.",
+          "prayer_lock_widget_3_description": "Кхин ламазе юхасаккхар.",
           "extras_lock_widget_3_display_name": "ДӀахӀумма хенаш (Барт 3)",
-          "extras_lock_widget_3_description": "Кхин дӀахӀумма ха.",
+          "extras_lock_widget_3_description": "Кхин дӀахӀумма хане юхасаккхар.",
           "prayer_lock_widget_4_display_name": "Кхин ламаз (Барт 4)",
-          "prayer_lock_widget_4_description": "Кхин ламазе юхасаккхар.",
+          "prayer_lock_widget_4_description": "Кхин ламазан ха.",
           "extras_lock_widget_4_display_name": "ДӀахӀумма хенаш (Барт 4)",
-          "extras_lock_widget_4_description": "Кхин дӀахӀумма хане юхасаккхар."
+          "extras_lock_widget_4_description": "Кхин дӀахӀумма ха."
         }
       },
       "uk": {
@@ -3703,13 +3703,13 @@
           "extras_lock_widget_2_display_name": "Додаткові часи (Вигляд 2)",
           "extras_lock_widget_2_description": "Наступний додатковий час.",
           "prayer_lock_widget_3_display_name": "Наступний намаз (Вигляд 3)",
-          "prayer_lock_widget_3_description": "Час наступного намазу.",
+          "prayer_lock_widget_3_description": "Відлік до наступного намазу.",
           "extras_lock_widget_3_display_name": "Додаткові часи (Вигляд 3)",
-          "extras_lock_widget_3_description": "Наступний додатковий час.",
+          "extras_lock_widget_3_description": "Відлік до наступного додаткового часу.",
           "prayer_lock_widget_4_display_name": "Наступний намаз (Вигляд 4)",
-          "prayer_lock_widget_4_description": "Відлік до наступного намазу.",
+          "prayer_lock_widget_4_description": "Час наступного намазу.",
           "extras_lock_widget_4_display_name": "Додаткові часи (Вигляд 4)",
-          "extras_lock_widget_4_description": "Відлік до наступного додаткового часу."
+          "extras_lock_widget_4_description": "Наступний додатковий час."
         }
       },
       "qu": {
@@ -3763,13 +3763,13 @@
           "extras_lock_widget_2_display_name": "Yapa pachakuna (Rantiy 2)",
           "extras_lock_widget_2_description": "Qatiq yapa pacha.",
           "prayer_lock_widget_3_display_name": "Qatiq mañay (Rantiy 3)",
-          "prayer_lock_widget_3_description": "Qatiq mañaypa pachan.",
+          "prayer_lock_widget_3_description": "Qatiq mañayman kutichiy.",
           "extras_lock_widget_3_display_name": "Yapa pachakuna (Rantiy 3)",
-          "extras_lock_widget_3_description": "Qatiq yapa pacha.",
+          "extras_lock_widget_3_description": "Qatiq yapa pachaman kutichiy.",
           "prayer_lock_widget_4_display_name": "Qatiq mañay (Rantiy 4)",
-          "prayer_lock_widget_4_description": "Qatiq mañayman kutichiy.",
+          "prayer_lock_widget_4_description": "Qatiq mañaypa pachan.",
           "extras_lock_widget_4_display_name": "Yapa pachakuna (Rantiy 4)",
-          "extras_lock_widget_4_description": "Qatiq yapa pachaman kutichiy."
+          "extras_lock_widget_4_description": "Qatiq yapa pacha."
         }
       },
       "min": {
@@ -3823,13 +3823,13 @@
           "extras_lock_widget_2_display_name": "Wakatu tambahan (Bantuak 2)",
           "extras_lock_widget_2_description": "Wakatu tambahan barikuiknyo.",
           "prayer_lock_widget_3_display_name": "Sumbayang barikuiknyo (Bantuak 3)",
-          "prayer_lock_widget_3_description": "Wakatu sumbayang barikuiknyo.",
+          "prayer_lock_widget_3_description": "Baliwaik wakatu ka sumbayang barikuiknyo.",
           "extras_lock_widget_3_display_name": "Wakatu tambahan (Bantuak 3)",
-          "extras_lock_widget_3_description": "Wakatu tambahan barikuiknyo.",
+          "extras_lock_widget_3_description": "Baliwaik wakatu ka wakatu tambahan barikuiknyo.",
           "prayer_lock_widget_4_display_name": "Sumbayang barikuiknyo (Bantuak 4)",
-          "prayer_lock_widget_4_description": "Baliwaik wakatu ka sumbayang barikuiknyo.",
+          "prayer_lock_widget_4_description": "Wakatu sumbayang barikuiknyo.",
           "extras_lock_widget_4_display_name": "Wakatu tambahan (Bantuak 4)",
-          "extras_lock_widget_4_description": "Baliwaik wakatu ka wakatu tambahan barikuiknyo."
+          "extras_lock_widget_4_description": "Wakatu tambahan barikuiknyo."
         }
       },
       "mad": {
@@ -3883,13 +3883,13 @@
           "extras_lock_widget_2_display_name": "Bakto tambâ’ân (Bentuk 2)",
           "extras_lock_widget_2_description": "Bakto tambâ’ân saterrossa.",
           "prayer_lock_widget_3_display_name": "Sembahyang saterrossa (Bentuk 3)",
-          "prayer_lock_widget_3_description": "Bakto sembahyang saterrossa.",
+          "prayer_lock_widget_3_description": "Pangèbâna bakto ka sembahyang saterrossa.",
           "extras_lock_widget_3_display_name": "Bakto tambâ’ân (Bentuk 3)",
-          "extras_lock_widget_3_description": "Bakto tambâ’ân saterrossa.",
+          "extras_lock_widget_3_description": "Pangèbâna bakto ka bakto tambâ’ân saterrossa.",
           "prayer_lock_widget_4_display_name": "Sembahyang saterrossa (Bentuk 4)",
-          "prayer_lock_widget_4_description": "Pangèbâna bakto ka sembahyang saterrossa.",
+          "prayer_lock_widget_4_description": "Bakto sembahyang saterrossa.",
           "extras_lock_widget_4_display_name": "Bakto tambâ’ân (Bentuk 4)",
-          "extras_lock_widget_4_description": "Pangèbâna bakto ka bakto tambâ’ân saterrossa."
+          "extras_lock_widget_4_description": "Bakto tambâ’ân saterrossa."
         }
       },
       "bug": {
@@ -3943,13 +3943,13 @@
           "extras_lock_widget_2_display_name": "Wettu tamba (Bentuk 2)",
           "extras_lock_widget_2_description": "Wettu tamba selaenna.",
           "prayer_lock_widget_3_display_name": "Sumpajang selaenna (Bentuk 3)",
-          "prayer_lock_widget_3_description": "Wettu sumpajang selaenna.",
+          "prayer_lock_widget_3_description": "Baro wettu ri sumpajang selaenna.",
           "extras_lock_widget_3_display_name": "Wettu tamba (Bentuk 3)",
-          "extras_lock_widget_3_description": "Wettu tamba selaenna.",
+          "extras_lock_widget_3_description": "Baro wettu ri wettu tamba selaenna.",
           "prayer_lock_widget_4_display_name": "Sumpajang selaenna (Bentuk 4)",
-          "prayer_lock_widget_4_description": "Baro wettu ri sumpajang selaenna.",
+          "prayer_lock_widget_4_description": "Wettu sumpajang selaenna.",
           "extras_lock_widget_4_display_name": "Wettu tamba (Bentuk 4)",
-          "extras_lock_widget_4_description": "Baro wettu ri wettu tamba selaenna."
+          "extras_lock_widget_4_description": "Wettu tamba selaenna."
         }
       },
       "ja": {
@@ -4003,13 +4003,13 @@
           "extras_lock_widget_2_display_name": "追加の時刻（レイアウト 2）",
           "extras_lock_widget_2_description": "次の追加時刻。",
           "prayer_lock_widget_3_display_name": "次の礼拝（レイアウト 3）",
-          "prayer_lock_widget_3_description": "次の礼拝の時刻。",
+          "prayer_lock_widget_3_description": "次の礼拝へのカウントダウン。",
           "extras_lock_widget_3_display_name": "追加の時刻（レイアウト 3）",
-          "extras_lock_widget_3_description": "次の追加時刻。",
+          "extras_lock_widget_3_description": "次の追加時刻へのカウントダウン。",
           "prayer_lock_widget_4_display_name": "次の礼拝（レイアウト 4）",
-          "prayer_lock_widget_4_description": "次の礼拝へのカウントダウン。",
+          "prayer_lock_widget_4_description": "次の礼拝の時刻。",
           "extras_lock_widget_4_display_name": "追加の時刻（レイアウト 4）",
-          "extras_lock_widget_4_description": "次の追加時刻へのカウントダウン。"
+          "extras_lock_widget_4_description": "次の追加時刻。"
         }
       },
       "ko": {
@@ -4063,13 +4063,13 @@
           "extras_lock_widget_2_display_name": "추가 시간 (레이아웃 2)",
           "extras_lock_widget_2_description": "다음 추가 시간입니다.",
           "prayer_lock_widget_3_display_name": "다음 예배 (레이아웃 3)",
-          "prayer_lock_widget_3_description": "다음 예배 시간입니다.",
+          "prayer_lock_widget_3_description": "다음 예배까지 카운트다운입니다.",
           "extras_lock_widget_3_display_name": "추가 시간 (레이아웃 3)",
-          "extras_lock_widget_3_description": "다음 추가 시간입니다.",
+          "extras_lock_widget_3_description": "다음 추가 시간까지 카운트다운입니다.",
           "prayer_lock_widget_4_display_name": "다음 예배 (레이아웃 4)",
-          "prayer_lock_widget_4_description": "다음 예배까지 카운트다운입니다.",
+          "prayer_lock_widget_4_description": "다음 예배 시간입니다.",
           "extras_lock_widget_4_display_name": "추가 시간 (레이아웃 4)",
-          "extras_lock_widget_4_description": "다음 추가 시간까지 카운트다운입니다."
+          "extras_lock_widget_4_description": "다음 추가 시간입니다."
         }
       },
       "it": {
@@ -4123,13 +4123,13 @@
           "extras_lock_widget_2_display_name": "Orari extra (Layout 2)",
           "extras_lock_widget_2_description": "Prossimo orario extra.",
           "prayer_lock_widget_3_display_name": "Prossima preghiera (Layout 3)",
-          "prayer_lock_widget_3_description": "Orario della prossima preghiera.",
+          "prayer_lock_widget_3_description": "Conto alla rovescia per la prossima preghiera.",
           "extras_lock_widget_3_display_name": "Orari extra (Layout 3)",
-          "extras_lock_widget_3_description": "Prossimo orario extra.",
+          "extras_lock_widget_3_description": "Conto alla rovescia per il prossimo orario extra.",
           "prayer_lock_widget_4_display_name": "Prossima preghiera (Layout 4)",
-          "prayer_lock_widget_4_description": "Conto alla rovescia per la prossima preghiera.",
+          "prayer_lock_widget_4_description": "Orario della prossima preghiera.",
           "extras_lock_widget_4_display_name": "Orari extra (Layout 4)",
-          "extras_lock_widget_4_description": "Conto alla rovescia per il prossimo orario extra."
+          "extras_lock_widget_4_description": "Prossimo orario extra."
         }
       },
       "pl": {
@@ -4183,13 +4183,13 @@
           "extras_lock_widget_2_display_name": "Czasy dodatkowe (Układ 2)",
           "extras_lock_widget_2_description": "Następny czas dodatkowy.",
           "prayer_lock_widget_3_display_name": "Następna modlitwa (Układ 3)",
-          "prayer_lock_widget_3_description": "Czas następnej modlitwy.",
+          "prayer_lock_widget_3_description": "Odliczanie do następnej modlitwy.",
           "extras_lock_widget_3_display_name": "Czasy dodatkowe (Układ 3)",
-          "extras_lock_widget_3_description": "Następny czas dodatkowy.",
+          "extras_lock_widget_3_description": "Odliczanie do następnego czasu dodatkowego.",
           "prayer_lock_widget_4_display_name": "Następna modlitwa (Układ 4)",
-          "prayer_lock_widget_4_description": "Odliczanie do następnej modlitwy.",
+          "prayer_lock_widget_4_description": "Czas następnej modlitwy.",
           "extras_lock_widget_4_display_name": "Czasy dodatkowe (Układ 4)",
-          "extras_lock_widget_4_description": "Odliczanie do następnego czasu dodatkowego."
+          "extras_lock_widget_4_description": "Następny czas dodatkowy."
         }
       },
       "ro": {
@@ -4243,13 +4243,13 @@
           "extras_lock_widget_2_display_name": "Ore suplimentare (Aspect 2)",
           "extras_lock_widget_2_description": "Următorul moment suplimentar.",
           "prayer_lock_widget_3_display_name": "Rugăciunea următoare (Aspect 3)",
-          "prayer_lock_widget_3_description": "Ora următoarei rugăciuni.",
+          "prayer_lock_widget_3_description": "Numărătoare inversă până la următoarea rugăciune.",
           "extras_lock_widget_3_display_name": "Ore suplimentare (Aspect 3)",
-          "extras_lock_widget_3_description": "Următorul moment suplimentar.",
+          "extras_lock_widget_3_description": "Numărătoare inversă până la următorul moment suplimentar.",
           "prayer_lock_widget_4_display_name": "Rugăciunea următoare (Aspect 4)",
-          "prayer_lock_widget_4_description": "Numărătoare inversă până la următoarea rugăciune.",
+          "prayer_lock_widget_4_description": "Ora următoarei rugăciuni.",
           "extras_lock_widget_4_display_name": "Ore suplimentare (Aspect 4)",
-          "extras_lock_widget_4_description": "Numărătoare inversă până la următorul moment suplimentar."
+          "extras_lock_widget_4_description": "Următorul moment suplimentar."
         }
       },
       "ceb": {
@@ -4303,13 +4303,13 @@
           "extras_lock_widget_2_display_name": "Mga Dugang nga Oras (Layout 2)",
           "extras_lock_widget_2_description": "Sunod nga dugang nga oras.",
           "prayer_lock_widget_3_display_name": "Sunod nga Pag-ampo (Layout 3)",
-          "prayer_lock_widget_3_description": "Oras sa sunod nga pag-ampo.",
+          "prayer_lock_widget_3_description": "Pag-ihap pakatkad sa sunod nga pag-ampo.",
           "extras_lock_widget_3_display_name": "Mga Dugang nga Oras (Layout 3)",
-          "extras_lock_widget_3_description": "Sunod nga dugang nga oras.",
+          "extras_lock_widget_3_description": "Pag-ihap pakatkad sa sunod nga dugang nga oras.",
           "prayer_lock_widget_4_display_name": "Sunod nga Pag-ampo (Layout 4)",
-          "prayer_lock_widget_4_description": "Pag-ihap pakatkad sa sunod nga pag-ampo.",
+          "prayer_lock_widget_4_description": "Oras sa sunod nga pag-ampo.",
           "extras_lock_widget_4_display_name": "Mga Dugang nga Oras (Layout 4)",
-          "extras_lock_widget_4_description": "Pag-ihap pakatkad sa sunod nga dugang nga oras."
+          "extras_lock_widget_4_description": "Sunod nga dugang nga oras."
         }
       },
       "ilo": {
@@ -4363,13 +4363,13 @@
           "extras_lock_widget_2_display_name": "Dagiti Kanayonan nga Oras (Layout 2)",
           "extras_lock_widget_2_description": "Sumarsaruno a kanayonan nga oras.",
           "prayer_lock_widget_3_display_name": "Sumarsaruno a Dasal (Layout 3)",
-          "prayer_lock_widget_3_description": "Oras ti sumarsaruno a dasal.",
+          "prayer_lock_widget_3_description": "Panagbilang agingga iti sumarsaruno a dasal.",
           "extras_lock_widget_3_display_name": "Dagiti Kanayonan nga Oras (Layout 3)",
-          "extras_lock_widget_3_description": "Sumarsaruno a kanayonan nga oras.",
+          "extras_lock_widget_3_description": "Panagbilang agingga iti sumarsaruno a kanayonan nga oras.",
           "prayer_lock_widget_4_display_name": "Sumarsaruno a Dasal (Layout 4)",
-          "prayer_lock_widget_4_description": "Panagbilang agingga iti sumarsaruno a dasal.",
+          "prayer_lock_widget_4_description": "Oras ti sumarsaruno a dasal.",
           "extras_lock_widget_4_display_name": "Dagiti Kanayonan nga Oras (Layout 4)",
-          "extras_lock_widget_4_description": "Panagbilang agingga iti sumarsaruno a kanayonan nga oras."
+          "extras_lock_widget_4_description": "Sumarsaruno a kanayonan nga oras."
         }
       },
       "vi": {
@@ -4423,13 +4423,13 @@
           "extras_lock_widget_2_display_name": "Giờ bổ sung (Bố cục 2)",
           "extras_lock_widget_2_description": "Giờ bổ sung tiếp theo.",
           "prayer_lock_widget_3_display_name": "Lễ nguyện tiếp theo (Bố cục 3)",
-          "prayer_lock_widget_3_description": "Giờ lễ nguyện tiếp theo.",
+          "prayer_lock_widget_3_description": "Đếm ngược đến lễ nguyện tiếp theo.",
           "extras_lock_widget_3_display_name": "Giờ bổ sung (Bố cục 3)",
-          "extras_lock_widget_3_description": "Giờ bổ sung tiếp theo.",
+          "extras_lock_widget_3_description": "Đếm ngược đến giờ bổ sung tiếp theo.",
           "prayer_lock_widget_4_display_name": "Lễ nguyện tiếp theo (Bố cục 4)",
-          "prayer_lock_widget_4_description": "Đếm ngược đến lễ nguyện tiếp theo.",
+          "prayer_lock_widget_4_description": "Giờ lễ nguyện tiếp theo.",
           "extras_lock_widget_4_display_name": "Giờ bổ sung (Bố cục 4)",
-          "extras_lock_widget_4_description": "Đếm ngược đến giờ bổ sung tiếp theo."
+          "extras_lock_widget_4_description": "Giờ bổ sung tiếp theo."
         }
       },
       "skr": {
@@ -4483,13 +4483,13 @@
           "extras_lock_widget_2_display_name": "اضافی ویلھے (ترتیب 2)",
           "extras_lock_widget_2_description": "اڳلا اضافی ویلھا۔",
           "prayer_lock_widget_3_display_name": "اڳلی نماز (ترتیب 3)",
-          "prayer_lock_widget_3_description": "اڳلی نماز دا ویلھا۔",
+          "prayer_lock_widget_3_description": "اڳلی نماز تک کاؤنٹ ڈاؤن۔",
           "extras_lock_widget_3_display_name": "اضافی ویلھے (ترتیب 3)",
-          "extras_lock_widget_3_description": "اڳلا اضافی ویلھا۔",
+          "extras_lock_widget_3_description": "اڳلے اضافی ویلھے تک کاؤنٹ ڈاؤن۔",
           "prayer_lock_widget_4_display_name": "اڳلی نماز (ترتیب 4)",
-          "prayer_lock_widget_4_description": "اڳلی نماز تک کاؤنٹ ڈاؤن۔",
+          "prayer_lock_widget_4_description": "اڳلی نماز دا ویلھا۔",
           "extras_lock_widget_4_display_name": "اضافی ویلھے (ترتیب 4)",
-          "extras_lock_widget_4_description": "اڳلے اضافی ویلھے تک کاؤنٹ ڈاؤن۔"
+          "extras_lock_widget_4_description": "اڳلا اضافی ویلھا۔"
         }
       },
       "bal": {
@@ -4543,13 +4543,13 @@
           "extras_lock_widget_2_display_name": "اضافی وختئں (ترتیب 2)",
           "extras_lock_widget_2_description": "بَعدئے اضافی وخت۔",
           "prayer_lock_widget_3_display_name": "بَعدئے نماز (ترتیب 3)",
-          "prayer_lock_widget_3_description": "بَعدئے نمازءِ وخت۔",
+          "prayer_lock_widget_3_description": "بَعدئے نمازءَ کاؤنٹ ڈاؤن۔",
           "extras_lock_widget_3_display_name": "اضافی وختئں (ترتیب 3)",
-          "extras_lock_widget_3_description": "بَعدئے اضافی وخت۔",
+          "extras_lock_widget_3_description": "بَعدئے اضافی وختءَ کاؤنٹ ڈاؤن۔",
           "prayer_lock_widget_4_display_name": "بَعدئے نماز (ترتیب 4)",
-          "prayer_lock_widget_4_description": "بَعدئے نمازءَ کاؤنٹ ڈاؤن۔",
+          "prayer_lock_widget_4_description": "بَعدئے نمازءِ وخت۔",
           "extras_lock_widget_4_display_name": "اضافی وختئں (ترتیب 4)",
-          "extras_lock_widget_4_description": "بَعدئے اضافی وختءَ کاؤنٹ ڈاؤن۔"
+          "extras_lock_widget_4_description": "بَعدئے اضافی وخت۔"
         }
       },
       "kas": {
@@ -4603,13 +4603,13 @@
           "extras_lock_widget_2_display_name": "اِضافئے وَقت (ترتیب 2)",
           "extras_lock_widget_2_description": "بیٲنئژئ اضافئے وَقت۔",
           "prayer_lock_widget_3_display_name": "بیٲنئژئے نؠماز (ترتیب 3)",
-          "prayer_lock_widget_3_description": "بیٲنئژئے نؠمازُک وَقت۔",
+          "prayer_lock_widget_3_description": "بیٲنئژئے نؠمازس تام کاؤنٹ ڈاؤن۔",
           "extras_lock_widget_3_display_name": "اِضافئے وَقت (ترتیب 3)",
-          "extras_lock_widget_3_description": "بیٲنئژئ اضافئے وَقت۔",
+          "extras_lock_widget_3_description": "بیٲنئس اضافئے وَقتئس تام کاؤنٹ ڈاؤن۔",
           "prayer_lock_widget_4_display_name": "بیٲنئژئے نؠماز (ترتیب 4)",
-          "prayer_lock_widget_4_description": "بیٲنئژئے نؠمازس تام کاؤنٹ ڈاؤن۔",
+          "prayer_lock_widget_4_description": "بیٲنئژئے نؠمازُک وَقت۔",
           "extras_lock_widget_4_display_name": "اِضافئے وَقت (ترتیب 4)",
-          "extras_lock_widget_4_description": "بیٲنئس اضافئے وَقتئس تام کاؤنٹ ڈاؤن۔"
+          "extras_lock_widget_4_description": "بیٲنئژئ اضافئے وَقت۔"
         }
       },
       "dv": {
@@ -4663,13 +4663,13 @@
           "extras_lock_widget_2_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 2)",
           "extras_lock_widget_2_description": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
           "prayer_lock_widget_3_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 3)",
-          "prayer_lock_widget_3_description": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
+          "prayer_lock_widget_3_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
           "extras_lock_widget_3_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
-          "extras_lock_widget_3_description": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
+          "extras_lock_widget_3_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
           "prayer_lock_widget_4_display_name": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 4)",
-          "prayer_lock_widget_4_description": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
+          "prayer_lock_widget_4_description": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
           "extras_lock_widget_4_display_name": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 4)",
-          "extras_lock_widget_4_description": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން."
+          "extras_lock_widget_4_description": "ކައިރިއަށްވާ އިތުރު ވަގުތް."
         }
       },
       "aa": {
@@ -4723,13 +4723,13 @@
           "extras_lock_widget_2_display_name": "Caddow waktitte (tartiib 2)",
           "extras_lock_widget_2_description": "Kukubuk caddow wakti.",
           "prayer_lock_widget_3_display_name": "Kukubuk salaata (tartiib 3)",
-          "prayer_lock_widget_3_description": "Kukubuk salaatah wakti.",
+          "prayer_lock_widget_3_description": "Kukubuk salaatah kaowntedaan.",
           "extras_lock_widget_3_display_name": "Caddow waktitte (tartiib 3)",
-          "extras_lock_widget_3_description": "Kukubuk caddow wakti.",
+          "extras_lock_widget_3_description": "Kukubuk caddow waktih kaowntedaan.",
           "prayer_lock_widget_4_display_name": "Kukubuk salaata (tartiib 4)",
-          "prayer_lock_widget_4_description": "Kukubuk salaatah kaowntedaan.",
+          "prayer_lock_widget_4_description": "Kukubuk salaatah wakti.",
           "extras_lock_widget_4_display_name": "Caddow waktitte (tartiib 4)",
-          "extras_lock_widget_4_description": "Kukubuk caddow waktih kaowntedaan."
+          "extras_lock_widget_4_description": "Kukubuk caddow wakti."
         }
       },
       "mdh": {
@@ -4783,13 +4783,13 @@
           "extras_lock_widget_2_display_name": "Mga Karagdagang Oras (Layout 2)",
           "extras_lock_widget_2_description": "Susunod na karagdagang oras.",
           "prayer_lock_widget_3_display_name": "Susunod na sambayang (Layout 3)",
-          "prayer_lock_widget_3_description": "Oras ng susunod na sambayang.",
+          "prayer_lock_widget_3_description": "Kawnangdown sa susunod na sambayang.",
           "extras_lock_widget_3_display_name": "Mga Karagdagang Oras (Layout 3)",
-          "extras_lock_widget_3_description": "Susunod na karagdagang oras.",
+          "extras_lock_widget_3_description": "Kawnangdown sa susunod na karagdagang oras.",
           "prayer_lock_widget_4_display_name": "Susunod na sambayang (Layout 4)",
-          "prayer_lock_widget_4_description": "Kawnangdown sa susunod na sambayang.",
+          "prayer_lock_widget_4_description": "Oras ng susunod na sambayang.",
           "extras_lock_widget_4_display_name": "Mga Karagdagang Oras (Layout 4)",
-          "extras_lock_widget_4_description": "Kawnangdown sa susunod na karagdagang oras."
+          "extras_lock_widget_4_description": "Susunod na karagdagang oras."
         }
       },
       "kr": {
@@ -4843,13 +4843,13 @@
           "extras_lock_widget_2_display_name": "Loktura tawatsagana (tartiib 2)",
           "extras_lock_widget_2_description": "Loktura libzana loktu.",
           "prayer_lock_widget_3_display_name": "Salla libzana (tartiib 3)",
-          "prayer_lock_widget_3_description": "Salla libzana loktu.",
+          "prayer_lock_widget_3_description": "Salla libzana kauntidaun.",
           "extras_lock_widget_3_display_name": "Loktura tawatsagana (tartiib 3)",
-          "extras_lock_widget_3_description": "Loktura libzana loktu.",
+          "extras_lock_widget_3_description": "Loktura libzana kauntidaun.",
           "prayer_lock_widget_4_display_name": "Salla libzana (tartiib 4)",
-          "prayer_lock_widget_4_description": "Salla libzana kauntidaun.",
+          "prayer_lock_widget_4_description": "Salla libzana loktu.",
           "extras_lock_widget_4_display_name": "Loktura tawatsagana (tartiib 4)",
-          "extras_lock_widget_4_description": "Loktura libzana kauntidaun."
+          "extras_lock_widget_4_description": "Loktura libzana loktu."
         }
       },
       "mnk": {
@@ -4903,13 +4903,13 @@
           "extras_lock_widget_2_display_name": "Wakti tawaa lu (layout 2)",
           "extras_lock_widget_2_description": "Wakti tawaa toomafoo wakti.",
           "prayer_lock_widget_3_display_name": "Salia toomafoo (layout 3)",
-          "prayer_lock_widget_3_description": "Salia toomafoo wakti.",
+          "prayer_lock_widget_3_description": "Kawntidaun salia toomafoo ro.",
           "extras_lock_widget_3_display_name": "Wakti tawaa lu (layout 3)",
-          "extras_lock_widget_3_description": "Wakti tawaa toomafoo wakti.",
+          "extras_lock_widget_3_description": "Kawntidaun wakti tawaa toomafoo ro.",
           "prayer_lock_widget_4_display_name": "Salia toomafoo (layout 4)",
-          "prayer_lock_widget_4_description": "Kawntidaun salia toomafoo ro.",
+          "prayer_lock_widget_4_description": "Salia toomafoo wakti.",
           "extras_lock_widget_4_display_name": "Wakti tawaa lu (layout 4)",
-          "extras_lock_widget_4_description": "Kawntidaun wakti tawaa toomafoo ro."
+          "extras_lock_widget_4_description": "Wakti tawaa toomafoo wakti."
         }
       },
       "dje": {
@@ -4963,13 +4963,13 @@
           "extras_lock_widget_2_display_name": "Waktu taway (layout 2)",
           "extras_lock_widget_2_description": "Waktu tooma.",
           "prayer_lock_widget_3_display_name": "Jinai tooma (layout 3)",
-          "prayer_lock_widget_3_description": "Jinai tooma waktu.",
+          "prayer_lock_widget_3_description": "Kawntidawn jinai tooma ga.",
           "extras_lock_widget_3_display_name": "Waktu taway (layout 3)",
-          "extras_lock_widget_3_description": "Waktu tooma.",
+          "extras_lock_widget_3_description": "Kawntidawn waktu tooma ga.",
           "prayer_lock_widget_4_display_name": "Jinai tooma (layout 4)",
-          "prayer_lock_widget_4_description": "Kawntidawn jinai tooma ga.",
+          "prayer_lock_widget_4_description": "Jinai tooma waktu.",
           "extras_lock_widget_4_display_name": "Waktu taway (layout 4)",
-          "extras_lock_widget_4_description": "Kawntidawn waktu tooma ga."
+          "extras_lock_widget_4_description": "Waktu tooma."
         }
       }
     },

@@ -336,10 +336,10 @@ describe('the widget statics table', () => {
       expect(iosNeutral).toEqual(['Athan', expected.subtitle]);
 
       for (const [name, layout] of [
-        ['countdown pair', lock.PrayerLockWidget],
-        ['centred', lock.PrayerLockWidget2],
-        ['time below the name', lock.PrayerLockWidget3],
-        ['countdown below the name', lock.PrayerLockWidget4],
+        ['countdown below the name', lock.PrayerLockWidget],
+        ['time below the name', lock.PrayerLockWidget2],
+        ['countdown pair', lock.PrayerLockWidget3],
+        ['centred', lock.PrayerLockWidget4],
       ] as const) {
         const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
         expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${expected.inline}`);
@@ -371,10 +371,10 @@ describe('the widget statics table', () => {
       expect(caught).toEqual(['Athan', expected.catchBody]);
 
       for (const [name, layout] of [
-        ['countdown pair', lock.PrayerLockWidget],
-        ['centred', lock.PrayerLockWidget2],
-        ['time below the name', lock.PrayerLockWidget3],
-        ['countdown below the name', lock.PrayerLockWidget4],
+        ['countdown below the name', lock.PrayerLockWidget],
+        ['time below the name', lock.PrayerLockWidget2],
+        ['countdown pair', lock.PrayerLockWidget3],
+        ['centred', lock.PrayerLockWidget4],
       ] as const) {
         const staleInline = textsOf(
           renderTree(layout(LOCK_STALE, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
