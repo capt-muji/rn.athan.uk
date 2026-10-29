@@ -59,6 +59,7 @@ const LOCALES = [
   'yo',
   'jv',
   'su',
+  'my',
 ] as const;
 const englishHash = createHash('sha256').update(JSON.stringify(en)).digest('hex');
 

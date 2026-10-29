@@ -662,5 +662,18 @@
     "refreshLead": "Buka Athan",
     "refreshTail": "pikeun nyegerkeun",
     "catchBody": "Buka aplikasi pikeun nyegerkeun"
+  },
+  "my": {
+    "subtitle": "လန်ဒန်အတွက် နမာဇ်အချိန်များ",
+    "inline": "Athan — နမာဇ်အချိန်များ",
+    "rectTitle": "ATHAN",
+    "rectSubtitle": "အချိန်များ ဆွဲယူရန် ဖွင့်ပါ",
+    "staleTitle": "အချိန်ကျော်နေပြီ",
+    "staleBody": "အသစ်ပြောင်းရန် အက်ပ် ဖွင့်ပါ",
+    "staleInline": "Athan — အသစ်ပြောင်းရန် ဖွင့်ပါ",
+    "refreshLine": "Athan ကို ဖွင့်၍ အသစ်ပြောင်းပါ",
+    "refreshLead": "Athan ကို ဖွင့်ပါ",
+    "refreshTail": "အသစ်ပြောင်းရန်",
+    "catchBody": "အသစ်ပြောင်းရန် အက်ပ်ကို ဖွင့်ပါ"
   }
 }

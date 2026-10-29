@@ -876,6 +876,19 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
       refreshTail: 'pikeun nyegerkeun',
       catchBody: 'Buka aplikasi pikeun nyegerkeun',
     },
+    my: {
+      subtitle: 'လန်ဒန်အတွက် နမာဇ်အချိန်များ',
+      inline: 'Athan — နမာဇ်အချိန်များ',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'အချိန်များ ဆွဲယူရန် ဖွင့်ပါ',
+      staleTitle: 'အချိန်ကျော်နေပြီ',
+      staleBody: 'အသစ်ပြောင်းရန် အက်ပ် ဖွင့်ပါ',
+      staleInline: 'Athan — အသစ်ပြောင်းရန် ဖွင့်ပါ',
+      refreshLine: 'Athan ကို ဖွင့်၍ အသစ်ပြောင်းပါ',
+      refreshLead: 'Athan ကို ဖွင့်ပါ',
+      refreshTail: 'အသစ်ပြောင်းရန်',
+      catchBody: 'အသစ်ပြောင်းရန် အက်ပ်ကို ဖွင့်ပါ',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -944,6 +957,7 @@ const AthanHomeWidget = (props: PrayerWidgetProps | PrayerWidgetAndroidProps, en
         'yo',
         'jv',
         'su',
+        'my',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

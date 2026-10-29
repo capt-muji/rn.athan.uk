@@ -60,6 +60,7 @@ export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english
   { id: 'kn', name: 'ಕನ್ನಡ', english: 'Kannada' },
   { id: 'ml', name: 'മലയാളം', english: 'Malayalam' },
   { id: 'th', name: 'ไทย', english: 'Thai' },
+  { id: 'my', name: 'မြန်မာ', english: 'Burmese (Myanmar)' },
   { id: 'am', name: 'አማርኛ', english: 'Amharic' },
   { id: 'zh-Hans', name: '简体中文', english: 'Chinese (Simplified)' },
   { id: 'zh-Hant', name: '繁體中文', english: 'Chinese (Traditional)' },

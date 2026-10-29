@@ -116,6 +116,7 @@ describe('typographyFor', () => {
         id !== 'zh-Hant' &&
         id !== 'bm' &&
         id !== 'ff' &&
+        id !== 'my' &&
         id !== 'te' &&
         id !== 'gu' &&
         id !== 'kn' &&
@@ -293,6 +294,17 @@ describe('typographyFor', () => {
     // descent -293, UPM 1000, both weights) and its win ink matches exactly
     // (1069/293), so the font's own metrics serve - the Thai row-87 law
     expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves my to the Myanmar pair with no script line box', () => {
+    // Plan T-454 decision 5: the bundled Noto Sans Myanmar v2.107 pair's declared
+    // box clears its ink - hhea 1324/-860 against win 1324/860 (2.184em, UPM 1000,
+    // both weights), the worst single-glyph Myanmar-block ink at 1004/-469 Regular
+    // and 1009/-471 Medium inside it with about a third headroom - so the row-87
+    // Thai law applies and the font's own metrics serve, no script box
+    const ty = typographyFor('my');
+    expectScriptRecord(ty, 'NotoSansMyanmar-Regular', 'NotoSansMyanmar-Medium');
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 

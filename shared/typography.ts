@@ -315,6 +315,27 @@ const ETHIOPIC: LocaleTypography = {
   wordFace: true,
 };
 
+// No bundled face carries a single Myanmar codepoint (measured by explicit codepoint
+// over every bundled TTF, plan T-454 decision 5), so this wave bundles the Noto Sans
+// Myanmar v2.107 hinted pair. Its declared box clears its ink: hhea 1324/-860
+// (2.184em, UPM 1000, both weights) with the win ink equal (1324/860) and lineGap 0,
+// while the worst single-glyph Myanmar-block ink tops at 1004/-469 Regular and
+// 1009/-471 Medium, inside the box with about a third headroom, and the GPOS-stacked
+// sequences of the landed keyed surface stay inside it too (the Malayalam lesson
+// re-checked before commit) - so the row-87 Thai law applies and no surface pins a
+// script box: the font's own metrics serve
+const MYANMAR: LocaleTypography = {
+  familyRegular: 'NotoSansMyanmar-Regular',
+  familyMedium: 'NotoSansMyanmar-Medium',
+  familyDigits: TEXT.family.medium,
+  familyRowTime: TEXT.family.regular,
+  countdownSize: TEXT.sizeLarge,
+  size: (n) => n,
+  lineHeight: (n) => n,
+  letterSpacing: (n) => n,
+  wordFace: true,
+};
+
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
  * if it reads right to left. A record boundary (a script record against the Latin set) changes
  * the faces a context froze at module scope, so a switch across one relaunches the context. */
@@ -392,6 +413,9 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   gu: GUJARATI,
   kn: KANNADA,
   am: ETHIOPIC,
+  // my rides its own bundled Myanmar pair: no other bundled face carries the script
+  // (measured, plan T-454 decision 5); its box clears its ink, so no script box
+  my: MYANMAR,
 };
 
 /**

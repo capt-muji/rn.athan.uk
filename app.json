@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.33.0",
+    "version": "2.33.1",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -70,7 +70,8 @@
           "ku",
           "yo",
           "jv",
-          "su"
+          "su",
+          "my"
         ],
         "NSLocationWhenInUseUsageDescription": "Your location is used to work out which way Makkah is from where you are. It never leaves your phone.",
         "NSUserNotificationsUsageDescription": "Receive prayer time notifications",
@@ -170,7 +171,9 @@
             "./assets/fonts/NotoSansKannada-Regular.ttf",
             "./assets/fonts/NotoSansKannada-Medium.ttf",
             "./assets/fonts/NotoSansEthiopic-Regular.ttf",
-            "./assets/fonts/NotoSansEthiopic-Medium.ttf"
+            "./assets/fonts/NotoSansEthiopic-Medium.ttf",
+            "./assets/fonts/NotoSansMyanmar-Regular.ttf",
+            "./assets/fonts/NotoSansMyanmar-Medium.ttf"
           ]
         }
       ],
@@ -3251,6 +3254,62 @@
           "prayer_lock_widget_3_description": "Waktu solat salajengna kalawan itungan mundur.",
           "extras_lock_widget_3_display_name": "Waktu tambahan (Tata 3)",
           "extras_lock_widget_3_description": "Waktu tambahan salajengna kalawan itungan mundur."
+        }
+      },
+      "my": {
+        "NSLocationWhenInUseUsageDescription": "မက္ကာသည် သင့်တည်နေရာမှ မည်သည့်အရပ်ဘက်သို့ ရှိသည်ကို တွက်ချက်ရန် သင့်တည်နေရာကို အသုံးပြုပါသည်။ ၎င်းသည် သင့်ဖုန်းမှ မည်သည့်အခါမှ မထွက်ပါ။",
+        "NSUserNotificationsUsageDescription": "နမာဇ်အချိန် အသိပေးချက်များ လက်ခံရန်",
+        "ios": {
+          "Localizable.strings": {
+            "Next Prayer (Light)": "နောက် နမာဇ် (အလင်း)",
+            "A countdown to the next prayer.": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+            "Extra Times (Light)": "အပိုအချိန်များ (အလင်း)",
+            "A countdown to the next extra time.": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+            "Next Prayer (Dark)": "နောက် နမာဇ် (အမှောင်)",
+            "Extra Times (Dark)": "အပိုအချိန်များ (အမှောင်)",
+            "Next Prayer (Layout 1)": "နောက် နမာဇ် (ပုံစံ 1)",
+            "Countdown to the next prayer.": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+            "Extra Times (Layout 1)": "အပိုအချိန်များ (ပုံစံ 1)",
+            "Countdown to the next extra time.": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+            "Next Prayer (Layout 2)": "နောက် နမာဇ် (ပုံစံ 2)",
+            "Next prayer time.": "နောက် နမာဇ်အချိန်။",
+            "Extra Times (Layout 2)": "အပိုအချိန်များ (ပုံစံ 2)",
+            "Next extra time.": "နောက် အပိုအချိန်။",
+            "Next Prayer (Layout 3)": "နောက် နမာဇ် (ပုံစံ 3)",
+            "Next prayer time with a countdown.": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် နမာဇ်အချိန်။",
+            "Extra Times (Layout 3)": "အပိုအချိန်များ (ပုံစံ 3)",
+            "Next extra time with a countdown.": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် အပိုအချိန်။"
+          }
+        },
+        "android": {
+          "prayer_widget_display_name": "နောက် နမာဇ် (အလင်း)",
+          "prayer_widget_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "extras_widget_display_name": "အပိုအချိန်များ (အလင်း)",
+          "extras_widget_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_widget_medium_display_name": "နောက် နမာဇ် (အလင်း)",
+          "prayer_widget_medium_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "extras_widget_medium_display_name": "အပိုအချိန်များ (အလင်း)",
+          "extras_widget_medium_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_widget_dark_display_name": "နောက် နမာဇ် (အမှောင်)",
+          "prayer_widget_dark_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "extras_widget_dark_display_name": "အပိုအချိန်များ (အမှောင်)",
+          "extras_widget_dark_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_widget_dark_medium_display_name": "နောက် နမာဇ် (အမှောင်)",
+          "prayer_widget_dark_medium_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "extras_widget_dark_medium_display_name": "အပိုအချိန်များ (အမှောင်)",
+          "extras_widget_dark_medium_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_lock_widget_display_name": "နောက် နမာဇ် (ပုံစံ 1)",
+          "prayer_lock_widget_description": "နောက် နမာဇ်အထိ ပြန်ရေတွက်ချိန်။",
+          "extras_lock_widget_display_name": "အပိုအချိန်များ (ပုံစံ 1)",
+          "extras_lock_widget_description": "နောက် အပိုအချိန်အထိ ပြန်ရေတွက်ချိန်။",
+          "prayer_lock_widget_2_display_name": "နောက် နမာဇ် (ပုံစံ 2)",
+          "prayer_lock_widget_2_description": "နောက် နမာဇ်အချိန်။",
+          "extras_lock_widget_2_display_name": "အပိုအချိန်များ (ပုံစံ 2)",
+          "extras_lock_widget_2_description": "နောက် အပိုအချိန်။",
+          "prayer_lock_widget_3_display_name": "နောက် နမာဇ် (ပုံစံ 3)",
+          "prayer_lock_widget_3_description": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် နမာဇ်အချိန်။",
+          "extras_lock_widget_3_display_name": "အပိုအချိန်များ (ပုံစံ 3)",
+          "extras_lock_widget_3_description": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် အပိုအချိန်။"
         }
       }
     },
