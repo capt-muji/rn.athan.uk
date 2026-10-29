@@ -9,7 +9,6 @@ import {
   minimumScaleFactor,
   monospacedDigit,
   multilineTextAlignment,
-  padding,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
 import type { ReactNode } from 'react';
@@ -26,13 +25,11 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * ticking countdown), Layout 2 (name above the absolute time), Layout 3 (name +
  * ticking countdown on one line) and Layout 4 (name + absolute time on one
  * line; no countdown and no dot).
- * Layouts 3 and 4 split the slot into halves meeting at
- * its midline: a timer Text reports a worst-case width as its intrinsic
- * size, so a shrink-wrapped row measures a reservation rather than the
- * glyphs and centring it strands the name at the slot's edge. Anchoring each
- * half at the seam holds the name's last letter and the second reading's
- * first character in place whatever their lengths. Layouts 1 and 2 stack
- * instead, so they centre by shrink-wrapping as usual. iOS 16 renders
+ * Layouts 3 and 4 centre one shrink-wrapped row: the countdown's worst-case
+ * reservation is capped, so a long name cannot fill a half and read as
+ * left-aligned the way an Extra times row did. Layouts 1 and 2 stack, each
+ * line full width and centre-aligned, so a long name truncates inside the
+ * slot rather than overflowing the stack from its left edge. iOS 16 renders
  * containerRelativeFrame leading (the modifier needs 17), accepted on the
  * three-year-old floor. A timer Text stops ticking once concatenated, so the
  * inline faces carry the name and absolute time only, and every ticking
@@ -1229,22 +1226,18 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        {/* Two equal halves meeting at the slot's midline, because a timer Text
-            reserves a worst-case width: a shrink-wrapped row measures that
-            reservation rather than the glyphs, so centring the row leaves the
-            name against the slot's edge. Anchoring each half to the midline
-            instead makes the name's last letter and the countdown's first digit
-            land in the same place whatever their lengths, which no centred row
-            can do while one child misreports its width. */}
-        <HStack spacing={0}>
+        {/* A centred row, never two halves: a half-anchored row reads as
+            left-aligned whenever the name is long enough to fill its share,
+            which every Extra times row is. The countdown's reservation is
+            capped instead, so the row's own width is the glyphs beside a
+            bounded box and the pair centres on the slot whatever the names. */}
+        <HStack spacing={6}>
           <Text
             modifiers={[
               font({ size: 17, weight: 'bold' }),
               foregroundStyle(WHITE),
               lineLimit(1),
-              minimumScaleFactor(0.83),
-              frame({ maxWidth: Infinity, alignment: 'trailing' }),
-              padding({ trailing: 3 }),
+              minimumScaleFactor(0.6),
             ]}>
             {props.nextName}
           </Text>
@@ -1254,11 +1247,11 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             modifiers={[
               font({ size: 17, weight: 'medium' }),
               monospacedDigit(),
+              multilineTextAlignment('center'),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
               minimumScaleFactor(0.83),
-              frame({ maxWidth: Infinity, alignment: 'leading' }),
-              padding({ leading: 3 }),
+              frame({ maxWidth: 70, alignment: 'center' }),
             ]}
           />
         </HStack>
@@ -2454,19 +2447,16 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        {/* Halves anchored at the midline, as Layout 1 does: prayer names differ
-            in length, so a shrink-wrapped row moves the whole pair with every
-            name, while a fixed seam keeps the last letter and the first digit
-            where they were. */}
-        <HStack spacing={0}>
+        {/* A centred row for the same reason as Layout 3: a long Extra times name
+            filled its half from the slot's left edge and read as left-aligned,
+            so the row is the glyphs side by side and the stack centres it. */}
+        <HStack spacing={6}>
           <Text
             modifiers={[
               font({ size: 17, weight: 'bold' }),
               foregroundStyle(WHITE),
               lineLimit(1),
-              minimumScaleFactor(0.83),
-              frame({ maxWidth: Infinity, alignment: 'trailing' }),
-              padding({ trailing: 3 }),
+              minimumScaleFactor(0.6),
             ]}>
             {props.nextName}
           </Text>
@@ -2477,8 +2467,6 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
               minimumScaleFactor(0.83),
-              frame({ maxWidth: Infinity, alignment: 'leading' }),
-              padding({ leading: 3 }),
             ]}>
             {props.nextTime}
           </Text>
@@ -3692,8 +3680,10 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
           modifiers={[
             font({ size: 16, weight: 'bold' }),
             foregroundStyle(WHITE),
+            multilineTextAlignment('center'),
             lineLimit(1),
             minimumScaleFactor(0.88),
+            frame({ maxWidth: Infinity, alignment: 'center' }),
           ]}>
           {props.nextName}
         </Text>
@@ -3702,8 +3692,10 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
             font({ size: 16, weight: 'medium' }),
             monospacedDigit(),
             foregroundStyle(WHITE_MUTED),
+            multilineTextAlignment('center'),
             lineLimit(1),
             minimumScaleFactor(0.88),
+            frame({ maxWidth: Infinity, alignment: 'center' }),
           ]}>
           {props.nextTime}
         </Text>
@@ -4924,8 +4916,10 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
           modifiers={[
             font({ size: 16, weight: 'bold' }),
             foregroundStyle(WHITE),
+            multilineTextAlignment('center'),
             lineLimit(1),
             minimumScaleFactor(0.88),
+            frame({ maxWidth: Infinity, alignment: 'center' }),
           ]}>
           {props.nextName}
         </Text>
@@ -4939,6 +4933,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
             foregroundStyle(WHITE_MUTED),
             lineLimit(1),
             minimumScaleFactor(0.88),
+            frame({ maxWidth: Infinity, alignment: 'center' }),
           ]}
         />
       </VStack>

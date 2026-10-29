@@ -424,18 +424,35 @@ describe('lock widget renderer', () => {
   it.each([
     ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), '<countdown>'],
     ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), LIVE_PROPS.nextTime],
-  ])('splits %s into halves meeting at the midline', (_label, renderPath, secondLabel) => {
+  ])('centres %s as one row rather than two half-anchored shares', (_label, renderPath, secondLabel) => {
+    // A long name fills a half-anchored share from the slot's left edge, which
+    // is what read as left-aligned in every Extra times row. The row is the
+    // glyphs side by side, the stack centres it, and nothing here may take the
+    // whole width: an infinity frame on either child puts the pair back on the
+    // edge it came from.
     const texts = styledTexts(renderPath(LIVE_PROPS));
-    const name = texts.find((node) => node.text === LIVE_PROPS.nextName);
-    const second = texts.find((node) => node.text === secondLabel);
-
-    expect(name?.modifiers).toContainEqual({ modifier: 'frame', value: { maxWidth: Infinity, alignment: 'trailing' } });
-    expect(name?.modifiers).toContainEqual({ modifier: 'padding', value: { trailing: 3 } });
-    expect(second?.modifiers).toContainEqual({
+    for (const node of texts) {
+      expect(node.modifiers.map((entry) => entry.modifier)).not.toContain('padding');
+      expect(node.modifiers).not.toContainEqual({ modifier: 'frame', value: { maxWidth: Infinity } });
+    }
+    expect(texts.find((node) => node.text === secondLabel)?.modifiers).not.toContainEqual({
       modifier: 'frame',
       value: { maxWidth: Infinity, alignment: 'leading' },
     });
-    expect(second?.modifiers).toContainEqual({ modifier: 'padding', value: { leading: 3 } });
+  });
+
+  it('centres the stacked layouts line by line inside the slot', () => {
+    // Long names overflow a shrink-wrapped stack from the left edge; a
+    // full-width, centre-aligned line truncates inside the slot instead.
+    for (const renderPath of [renderTreeFor, renderTreeFor2]) {
+      for (const node of styledTexts(renderPath(LIVE_PROPS, 'accessoryRectangular'))) {
+        expect(node.modifiers).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
+        expect(node.modifiers).toContainEqual({
+          modifier: 'frame',
+          value: { maxWidth: Infinity, alignment: 'center' },
+        });
+      }
+    }
   });
 
   // T-400: the raised lock type scale, pinned per layout and face. Every
@@ -479,7 +496,7 @@ describe('lock widget renderer', () => {
       'layout 3',
       () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
         { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
       ],
     ],
@@ -487,7 +504,7 @@ describe('lock widget renderer', () => {
       'layout 4',
       () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.83 },
+        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
         { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
       ],
     ],
