@@ -135,6 +135,7 @@ const sheetProps = () =>
       props: {
         keyboardBehavior?: string;
         keyboardBlurBehavior?: string;
+        snapPoints?: (string | number)[];
         onDismiss: () => void;
       };
     }
@@ -356,6 +357,13 @@ describe('the language wheel', () => {
     expect(field().props.value).toBe('');
   });
 
+  it('spans the height the settings and sound sheets span, so the three read as one family', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    expect(sheetProps().snapPoints).toEqual(['85%']);
+  });
+
   it('reads close-to-save on the sheet’s subtitle', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
@@ -375,16 +383,27 @@ describe('the language wheel over T-451’s picker', () => {
     expect(insideScroll(screen.getByRole('radio', { name: 'English' }))).toBe(true);
   });
 
-  it('opens without the keyboard, asks for the search key, and dims the placeholder in the shared ink', async () => {
+  it('opens without the keyboard, asks for the search key, and dims the placeholder in the sheet’s own ink', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
     expect(field().props.autoFocus).toBeUndefined();
     expect(field().props.returnKeyType).toBe('search');
     expect(field().props.placeholder).toBe('Search languages');
-    expect(field().props.placeholderTextColor).toBe(COLORS.text.muted);
+    expect(field().props.placeholderTextColor).toBe(COLORS.text.sheetDim);
     expect(sheetProps().keyboardBehavior).toBe('interactive');
     expect(sheetProps().keyboardBlurBehavior).toBe('restore');
+  });
+
+  it('prints the sheet’s three dim readings in its own darker ink, none in the shared dim', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    const glyph = screen.getByTestId('svg:search', { includeHiddenElements: true });
+    expect(StyleSheet.flatten(glyph.props.style).color).toBe(COLORS.text.sheetDim);
+    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.sheetDim);
+    // The shared dim stays the surface wash’s own ink: no reading borrows it
+    expect(COLORS.text.sheetDim).not.toBe(COLORS.text.muted);
   });
 
   it('puts the search glyph at the trailing edge in the dim ink, and the edge mirrors under RTL', async () => {

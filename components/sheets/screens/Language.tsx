@@ -179,12 +179,12 @@ export default function BottomSheetLanguage() {
           value={query}
           onChangeText={setQuery}
           placeholder={t('language.search')}
-          placeholderTextColor={COLORS.text.muted}
+          placeholderTextColor={COLORS.text.sheetDim}
           returnKeyType={'search'}
           autoCorrect={false}
         />
         <View testID={'language-search-glyph'} style={styles.searchGlyph} pointerEvents={'none'}>
-          <IconView type={Icon.SEARCH} size={SEARCH_GLYPH_SIZE} color={COLORS.text.muted} />
+          <IconView type={Icon.SEARCH} size={SEARCH_GLYPH_SIZE} color={COLORS.text.sheetDim} />
         </View>
       </View>
     </View>
@@ -196,7 +196,7 @@ export default function BottomSheetLanguage() {
       title={t('settings.language')}
       subtitle={closeToSave}
       icon={<IconView type={Icon.GLOBE} size={16} color={SHEET_ICON_COLOR} />}
-      snapPoints={['60%']}
+      snapPoints={['85%']}
       perfName={SHEET_PERF_NAME}
       stackBehavior={'push'}
       pinned={cardTop}
@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   optionIndex: {
-    color: COLORS.text.muted,
+    color: COLORS.text.sheetDim,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
     // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them

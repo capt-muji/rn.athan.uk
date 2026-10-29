@@ -710,6 +710,8 @@ export const COLORS = {
     emphasis: 'rgba(224, 231, 255, 1)',
     /** Every supporting line under a sheet's own title, so they all read as one voice. Old rgba(86,134,189,.725) flattened over the sheet #0b183a */
     sheetSubtitle: '#416899',
+    /** The sheet's own dim readings - the language sheet's row numbers, search placeholder and search glyph - as one ink: the sheet hint #416899 darkened 25 percent (0x41,0x68,0x99 x 0.75) */
+    sheetDim: '#314e73',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
