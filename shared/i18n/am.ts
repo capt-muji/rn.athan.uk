@@ -95,6 +95,8 @@ export const am = {
   'notification.reminder': '{name} በ{n}',
   'sheet.closeToSave': 'ለማስቀመጥ ይዝጉ',
   'language.chooseHint': 'ቋንቋዎን ይምረጡ',
+  'language.search': 'ቋንቋ ፈልግ',
+  'language.noMatch': 'ቋንቋ አልተገኘም',
   'alert.card.athan': 'አዛን',
   'alert.card.athanHint': 'በሶላት ጊዜ ማሳወቂያ',
   'alert.reminder': 'ማስታወሻ {n}',

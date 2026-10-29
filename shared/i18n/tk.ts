@@ -95,6 +95,8 @@ export const tk = {
   'notification.reminder': '{name} {n} soň',
   'sheet.closeToSave': 'Saklamak üçin ýapyň',
   'language.chooseHint': 'Diliňizi saýlaň',
+  'language.search': 'Dil gözle',
+  'language.noMatch': 'Dil tapylmady',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Namaz wagtynda bildiriş',
   'alert.reminder': 'Ýatlatma {n}',

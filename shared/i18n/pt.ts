@@ -95,6 +95,8 @@ export const pt = {
   'notification.reminder': '{name} em {n}',
   'sheet.closeToSave': 'Feche para salvar',
   'language.chooseHint': 'Escolha seu idioma',
+  'language.search': 'Pesquisar idioma',
+  'language.noMatch': 'Nenhum idioma encontrado',
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Notificação na hora da oração',
   'alert.reminder': 'Lembrete {n}',

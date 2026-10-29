@@ -94,6 +94,8 @@ export const bm = {
   'notification.reminder': '{name} {n} kɔnɔ',
   'sheet.closeToSave': 'Da tugu walasa ka mara',
   'language.chooseHint': 'I ka kan suɓa',
+  'language.search': 'Ɲɛli kan',
+  'language.noMatch': 'Kan ma sɔrɔ',
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Kibaro seli waati la',
   'alert.reminder': 'Miiri {n}',

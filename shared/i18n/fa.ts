@@ -93,6 +93,8 @@ export const fa = {
   'notification.reminder': '{name} در {n}',
   'sheet.closeToSave': 'برای ذخیره ببندید',
   'language.chooseHint': 'زبان خود را انتخاب کنید',
+  'language.search': 'جستجوی زبان',
+  'language.noMatch': 'زبانی یافت نشد',
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'اعلان در وقت نماز',
   'alert.reminder': 'یادآور {n}',

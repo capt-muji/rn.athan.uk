@@ -94,6 +94,8 @@ export const tr = {
   'notification.reminder': '{name} {n} içinde',
   'sheet.closeToSave': 'Kaydetmek için kapatın',
   'language.chooseHint': 'Dilinizi seçin',
+  'language.search': 'Dil ara',
+  'language.noMatch': 'Dil bulunamadı',
   'alert.card.athan': 'Ezan',
   'alert.card.athanHint': 'Namaz vaktinde bildirim',
   'alert.reminder': 'Hatırlatıcı {n}',

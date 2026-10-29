@@ -96,6 +96,8 @@ export const sq = {
   'notification.reminder': '{name} pas {n}',
   'sheet.closeToSave': 'Mbyll për të ruajtur',
   'language.chooseHint': 'Zgjidh gjuhën tënde',
+  'language.search': 'Kërko gjuhë',
+  'language.noMatch': 'Nuk u gjet asnjë gjuhë',
   'alert.card.athan': 'Ezani',
   'alert.card.athanHint': 'Njoftim në kohën e namazit',
   'alert.reminder': 'Rikujtuesi {n}',

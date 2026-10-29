@@ -96,6 +96,8 @@ export const tg = {
   'notification.reminder': '{name} баъди {n}',
   'sheet.closeToSave': 'Барои нигоҳ доштан пӯшед',
   'language.chooseHint': 'Забони худро интихоб кунед',
+  'language.search': 'Ҷустуҷӯи забон',
+  'language.noMatch': 'Забон ёфт нашуд',
   'alert.card.athan': 'Азон',
   'alert.card.athanHint': 'Огоҳинома дар вақти намоз',
   'alert.reminder': 'Ёдоварӣ {n}',

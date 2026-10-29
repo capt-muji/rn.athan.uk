@@ -98,6 +98,8 @@ export const de = {
   'notification.reminder': '{name} in {n}',
   'sheet.closeToSave': 'Schließen zum Speichern',
   'language.chooseHint': 'Wählen Sie Ihre Sprache',
+  'language.search': 'Sprache suchen',
+  'language.noMatch': 'Keine Sprache gefunden',
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Benachrichtigung zur Gebetszeit',
   'alert.reminder': 'Erinnerung {n}',

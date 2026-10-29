@@ -96,6 +96,8 @@ export const sw = {
   'notification.reminder': '{name} baada ya {n}',
   'sheet.closeToSave': 'Funga ili kuhifadhi',
   'language.chooseHint': 'Chagua lugha yako',
+  'language.search': 'Tafuta lugha',
+  'language.noMatch': 'Hakuna lugha iliyopatikana',
   'alert.card.athan': 'Adhani',
   'alert.card.athanHint': 'Arifa wakati wa swala',
   'alert.reminder': 'Kikumbusho {n}',

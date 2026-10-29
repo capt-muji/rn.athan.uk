@@ -94,6 +94,8 @@ export const te = {
   'notification.reminder': '{name} {n} లో',
   'sheet.closeToSave': 'సేవ్ చేయడానికి మూసివేయండి',
   'language.chooseHint': 'మీ భాషను ఎంచుకోండి',
+  'language.search': 'భాషను వెతకండి',
+  'language.noMatch': 'భాషలు కనుగొనబడలేదు',
   'alert.card.athan': 'అజాన్',
   'alert.card.athanHint': 'ప్రార్థన సమయంలో నోటిఫికేషన్',
   'alert.reminder': 'రిమైండర్ {n}',

@@ -94,6 +94,8 @@ export const paArab = {
   'notification.reminder': '{name} {n} وچ',
   'sheet.closeToSave': 'محفوظ کرن لئی بند کرو',
   'language.chooseHint': 'اپنی بولی چنو',
+  'language.search': 'زبان لبھو',
+  'language.noMatch': 'کوئی زبان نئیں لبھی',
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز دے ویلے اطلاع',
   'alert.reminder': 'یاد دہانی {n}',

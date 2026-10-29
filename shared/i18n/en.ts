@@ -99,6 +99,8 @@ export const en = {
 
   'sheet.closeToSave': 'Close to save',
   'language.chooseHint': 'Choose your language',
+  'language.search': 'Search languages',
+  'language.noMatch': 'No languages found',
 
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Notification at prayer time',

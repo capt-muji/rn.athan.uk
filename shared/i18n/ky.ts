@@ -96,6 +96,8 @@ export const ky = {
   'notification.reminder': '{name} {n} кийин',
   'sheet.closeToSave': 'Сактоо үчүн жабыңыз',
   'language.chooseHint': 'Тилиңизди тандаңыз',
+  'language.search': 'Тилди издөө',
+  'language.noMatch': 'Тил табылган жок',
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Намаз убагында билдирүү',
   'alert.reminder': 'Эскертүү {n}',

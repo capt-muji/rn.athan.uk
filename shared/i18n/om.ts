@@ -96,6 +96,8 @@ export const om = {
   'notification.reminder': '{name} {n} keessatti',
   'sheet.closeToSave': 'Olkaa’uuf cufi',
   'language.chooseHint': 'Afaan kee filadhu',
+  'language.search': 'Afaan barbaadi',
+  'language.noMatch': 'Afaan hin argamne',
   'alert.card.athan': 'Azaana',
   'alert.card.athanHint': 'Yeroo salaataa beeksisa',
   'alert.reminder': 'Yaadachiisa {n}',

@@ -92,6 +92,8 @@ export const th = {
   'notification.reminder': '{name} อีก {n}',
   'sheet.closeToSave': 'ปิดเพื่อบันทึก',
   'language.chooseHint': 'เลือกภาษาของคุณ',
+  'language.search': 'ค้นหาภาษา',
+  'language.noMatch': 'ไม่พบภาษา',
   'alert.card.athan': 'อะซาน',
   'alert.card.athanHint': 'แจ้งเตือนเมื่อถึงเวลาละหมาด',
   'alert.reminder': 'การแจ้งเตือนล่วงหน้า {n}',

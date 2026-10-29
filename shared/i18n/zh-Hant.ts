@@ -94,6 +94,8 @@ export const zhHant = {
   'notification.reminder': '{name} 將在 {n} 後',
   'sheet.closeToSave': '關閉以儲存',
   'language.chooseHint': '選擇您的語言',
+  'language.search': '查找語言',
+  'language.noMatch': '未找到語言',
   'alert.card.athan': '宣禮',
   'alert.card.athanHint': '禮拜時間到時通知',
   'alert.reminder': '提醒 {n}',

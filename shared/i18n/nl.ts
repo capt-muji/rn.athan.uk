@@ -96,6 +96,8 @@ export const nl = {
   'notification.reminder': '{name} over {n}',
   'sheet.closeToSave': 'Sluiten om op te slaan',
   'language.chooseHint': 'Kies je taal',
+  'language.search': 'Taal zoeken',
+  'language.noMatch': 'Geen taal gevonden',
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Melding op gebedstijd',
   'alert.reminder': 'Herinnering {n}',

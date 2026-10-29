@@ -98,6 +98,8 @@ export const es = {
   'notification.reminder': '{name} en {n}',
   'sheet.closeToSave': 'Cierra para guardar',
   'language.chooseHint': 'Elige tu idioma',
+  'language.search': 'Buscar idioma',
+  'language.noMatch': 'No se encontró ningún idioma',
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Aviso a la hora de la oración',
   'alert.reminder': 'Recordatorio {n}',

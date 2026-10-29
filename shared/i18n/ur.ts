@@ -93,6 +93,8 @@ export const ur = {
   'notification.reminder': '{name} میں {n}',
   'sheet.closeToSave': 'محفوظ کرنے کے لیے بند کریں',
   'language.chooseHint': 'اپنی زبان چنیں',
+  'language.search': 'زبان تلاش کریں',
+  'language.noMatch': 'کوئی زبان نہیں ملی',
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز کے وقت اطلاع',
   'alert.reminder': 'ریمائنڈر {n}',
