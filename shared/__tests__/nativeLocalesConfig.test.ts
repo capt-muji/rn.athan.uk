@@ -266,7 +266,7 @@ describe('native strings from committed config', () => {
     );
   });
 
-  it('derives all 18 defaults when the resolution strips expo-widgets', () => {
+  it('derives all 34 defaults when the resolution strips expo-widgets', () => {
     const { defaultLocaleStringEntries } = require(join(ROOT, 'plugins', 'androidLocaleConfig.js')) as {
       defaultLocaleStringEntries: (projectRoot: string, config: Record<string, unknown>) => Array<[string, string]>;
     };

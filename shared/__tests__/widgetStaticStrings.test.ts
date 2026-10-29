@@ -465,7 +465,7 @@ describe('the widget statics table', () => {
     );
     expect(lockInline).toEqual([table[expected].inline]);
 
-    // The module's five finder copies each carry the zh mapping, so every
+    // The module's four finder copies each carry the zh mapping, so every
     // layout renders it, not only the countdown pair
     for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));

@@ -157,8 +157,8 @@ describe('widget function closure', () => {
   }
 
   it('walks the closure of all four lock layouts', () => {
-    // The lock module holds three layouts; a walk that only reaches the first
-    // leaves the other two unguarded (they drift free silently). Layouts gain
+    // The lock module holds four layouts; a walk that only reaches the first
+    // leaves the other three unguarded (they drift free silently). Layouts gain
     // no import here: `strings` and `id` arrive as props, and a body importing
     // from @/shared/i18n still fails the walk as a module-scope reference.
     const ast = parseFile(WIDGET_FILES[1].path);

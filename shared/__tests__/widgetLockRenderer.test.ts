@@ -279,7 +279,7 @@ describe('lock widget renderer', () => {
     }
   });
 
-  it('falls back to the absolute time on layouts 3 to 5 inline, which cannot tick', () => {
+  it('falls back to the absolute time on layouts 3 and 4 inline, which cannot tick', () => {
     for (const render of [renderTreeFor3, renderTreeFor4]) {
       const tree = render(LIVE_PROPS, 'accessoryInline');
 
@@ -288,23 +288,21 @@ describe('lock widget renderer', () => {
     }
   });
 
-  // The live faces read 17pt on layouts 1-2 and 16pt on layouts 3-5, each
+  // The live faces read 17pt on layouts 1-2 and 16pt on layouts 3-4, each
   // floored at or above the old 14pt nominal, so weight and opacity
   // carry the tiers. What recedes is the SECOND reading on a line, which is
   // the countdown beside the name in layout 1, the time beside it in layout 2,
-  // and the second line beneath the name in layouts 3 to 5. The stacked
-  // layouts alone leave the name unbolded: the line break separates the
-  // readings already.
+  // and the second line beneath the name in layouts 3 and 4. The name itself
+  // is bold on every layout, so the line break alone never carries it.
   it.each([
-    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>'], true],
-    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime], true],
-    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime], true],
-    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), ['<countdown>'], true],
-  ])('mutes only what recedes on %s and bolds the name only where it should', (_l, renderPath, muted, nameIsBold) => {
+    ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>']],
+    ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
+    ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
+    ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), ['<countdown>']],
+  ])('mutes only what recedes on %s and leaves the name bold', (_l, renderPath, muted) => {
     for (const node of styledTexts(renderPath(LIVE_PROPS))) {
       expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
-      const expected = nameIsBold && node.text === LIVE_PROPS.nextName ? 'bold' : 'medium';
-      expect(node.weight).toBe(expected);
+      expect(node.weight).toBe(node.text === LIVE_PROPS.nextName ? 'bold' : 'medium');
     }
   });
 

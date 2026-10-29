@@ -153,7 +153,7 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
 };
 
 /**
- * Pushes ONE schedule's timelines to its six widget kinds — light small +
+ * Pushes ONE schedule's timelines to its eight widget kinds — light small +
  * medium + lock share the light entries; the dark small + medium pair gets
  * the theme-stamped dark copy. The sequence is always rebuilt: every caller
  * is a data, settings or launch event, so reading through a cache here could
