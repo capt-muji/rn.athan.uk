@@ -7,6 +7,13 @@ const { withXcodeProject } = require('expo/config-plugins');
 // built from debug content: an 8.8 MB ExpoWidgetsTarget.debug.dylib, a __preview.dylib and a
 // 92 KB stub executable inside PlugIns/ExpoWidgetsTarget.appex (measured on 2.38.4). This plugin
 // pins the target's Release configuration; Debug keeps exactly what expo-widgets wrote.
+//
+// Xcode defaults DEPLOYMENT_POSTPROCESSING to NO for the whole project, which leaves
+// STRIP_INSTALLED_PRODUCT and DEAD_CODE_STRIPPING (both default YES) inert: nothing strips the
+// installed binaries. Neither the app target nor the extension sets any of the three, so the
+// strip pass pins them on the root project's Release configuration and both binaries inherit
+// (T-491 step 3; each setting measured alone on the Athan binary against the 27,706,400-byte /
+// 12,539-symbol baseline).
 const WIDGET_TARGET_NAME = 'ExpoWidgetsTarget';
 
 // Quoted the way every value in the generated entry already rides, so the pbxproj writer
@@ -16,18 +23,22 @@ const RELEASE_BUILD_SETTINGS = {
   SWIFT_OPTIMIZATION_LEVEL: '"-O"',
 };
 
+const PROJECT_RELEASE_BUILD_SETTINGS = {
+  DEPLOYMENT_POSTPROCESSING: '"YES"',
+  STRIP_INSTALLED_PRODUCT: '"YES"',
+  DEAD_CODE_STRIPPING: '"YES"',
+};
+
 // The xcode library names a list's build configurations as { value, comment } pairs over the
 // entries the section holds, so the walk resolves uuids through both maps
-const pinReleaseBuildSettings = (configurationList, buildConfigurationSection, settings) => {
+const pinReleaseBuildSettings = (configurationList, buildConfigurationSection, settings, owner) => {
   for (const { value: uuid } of configurationList.buildConfigurations) {
     const entry = buildConfigurationSection[uuid];
     if (entry?.name !== 'Release') continue;
     Object.assign(entry.buildSettings, settings);
     return entry;
   }
-  throw new Error(
-    `iosReleaseSettings: the build configuration list for "${WIDGET_TARGET_NAME}" carries no Release configuration`
-  );
+  throw new Error(`iosReleaseSettings: the build configuration list for ${owner} carries no Release configuration`);
 };
 
 const pinWidgetTargetRelease = (xcodeProject) => {
@@ -47,12 +58,30 @@ const pinWidgetTargetRelease = (xcodeProject) => {
   return pinReleaseBuildSettings(
     configurationList,
     xcodeProject.pbxXCBuildConfigurationSection(),
-    RELEASE_BUILD_SETTINGS
+    RELEASE_BUILD_SETTINGS,
+    `the target "${WIDGET_TARGET_NAME}"`
+  );
+};
+
+const pinProjectReleaseSettings = (xcodeProject) => {
+  const rootUuid = xcodeProject.hash?.project?.rootObject;
+  const project = rootUuid ? xcodeProject.pbxProjectSection()[rootUuid] : undefined;
+  const listUuid = project?.buildConfigurationList;
+  const configurationList = listUuid ? xcodeProject.pbxXCConfigurationList()[listUuid] : undefined;
+  if (!configurationList) {
+    throw new Error('iosReleaseSettings: the root PBXProject of the Xcode project carries no build configuration list');
+  }
+  return pinReleaseBuildSettings(
+    configurationList,
+    xcodeProject.pbxXCBuildConfigurationSection(),
+    PROJECT_RELEASE_BUILD_SETTINGS,
+    'the root project'
   );
 };
 
 const pinModResults = (config) => {
   pinWidgetTargetRelease(config.modResults);
+  pinProjectReleaseSettings(config.modResults);
   return config;
 };
 
@@ -66,6 +95,8 @@ const withIosReleaseSettings = (config) => withXcodeProject(config, pinModResult
 module.exports = withIosReleaseSettings;
 module.exports.pinReleaseBuildSettings = pinReleaseBuildSettings;
 module.exports.pinWidgetTargetRelease = pinWidgetTargetRelease;
+module.exports.pinProjectReleaseSettings = pinProjectReleaseSettings;
 module.exports.pinModResults = pinModResults;
 module.exports.WIDGET_TARGET_NAME = WIDGET_TARGET_NAME;
 module.exports.RELEASE_BUILD_SETTINGS = RELEASE_BUILD_SETTINGS;
+module.exports.PROJECT_RELEASE_BUILD_SETTINGS = PROJECT_RELEASE_BUILD_SETTINGS;

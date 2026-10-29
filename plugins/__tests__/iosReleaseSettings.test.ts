@@ -1,11 +1,12 @@
 /**
- * The Release pin that makes the widget extension build like the app: expo-widgets' own config
- * plugin writes the target's build settings itself and pins SWIFT_OPTIMIZATION_LEVEL=-Onone for
- * BOTH configurations while leaving ENABLE_DEBUG_DYLIB to default YES for the target, so the
- * shipped Release app carried a debug-dylib extension (an 8.8 MB debug dylib, a __preview.dylib
- * and a 92 KB stub inside PlugIns/ExpoWidgetsTarget.appex, measured on 2.38.4). The fixtures
- * mirror the xcode library's parse output, the only shape the surgery reads
- * (plugins/iosReleaseSettings.js)
+ * The Release pins that make the shipped app smaller: expo-widgets' own config plugin writes
+ * its target's build settings itself and pins SWIFT_OPTIMIZATION_LEVEL=-Onone for BOTH
+ * configurations while leaving ENABLE_DEBUG_DYLIB to default YES for the target, so the shipped
+ * Release app carried a debug-dylib extension (an 8.8 MB debug dylib, a __preview.dylib and a
+ * 92 KB stub inside PlugIns/ExpoWidgetsTarget.appex, measured on 2.38.4); and Xcode defaults
+ * DEPLOYMENT_POSTPROCESSING to NO project-wide, which leaves STRIP_INSTALLED_PRODUCT and
+ * DEAD_CODE_STRIPPING (both default YES) inert. The fixtures mirror the xcode library's parse
+ * output, the only shape the surgery reads (plugins/iosReleaseSettings.js)
  */
 
 const { readFileSync } = require('node:fs');
@@ -30,33 +31,48 @@ interface ConfigurationListFixture {
   defaultConfigurationName: string;
 }
 
+/** The root PBXProject entry as the xcode library parses it */
+interface ProjectSectionEntryFixture {
+  isa: 'PBXProject';
+  buildConfigurationList: string;
+}
+
 /** The three reads the surgery makes on a parsed project, over fixture maps */
 interface ProjectFixture {
   pbxTargetByName: (name: string) => { buildConfigurationList: string } | undefined;
   pbxXCConfigurationList: () => Record<string, ConfigurationListFixture>;
   pbxXCBuildConfigurationSection: () => Record<string, ConfigurationEntryFixture>;
+  pbxProjectSection: () => Record<string, ProjectSectionEntryFixture>;
+  hash: { project: { rootObject?: string } };
 }
 
 const plugin = require('../iosReleaseSettings') as ((config: unknown) => unknown) & {
   WIDGET_TARGET_NAME: string;
   RELEASE_BUILD_SETTINGS: Record<string, string>;
+  PROJECT_RELEASE_BUILD_SETTINGS: Record<string, string>;
   pinReleaseBuildSettings: (
     configurationList: ConfigurationListFixture,
     buildConfigurationSection: Record<string, ConfigurationEntryFixture>,
     settings: Record<string, string>
   ) => ConfigurationEntryFixture;
   pinWidgetTargetRelease: (xcodeProject: ProjectFixture) => ConfigurationEntryFixture;
+  pinProjectReleaseSettings: (xcodeProject: ProjectFixture) => ConfigurationEntryFixture;
   pinModResults: <C extends { modResults: ProjectFixture }>(config: C) => C;
 };
-const { pinReleaseBuildSettings, pinWidgetTargetRelease, pinModResults } = plugin;
+const { pinReleaseBuildSettings, pinWidgetTargetRelease, pinProjectReleaseSettings, pinModResults } = plugin;
 
 const TARGET = 'ExpoWidgetsTarget';
 const RELEASE_UUID = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
 const DEBUG_UUID = 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB';
 const LIST_UUID = 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC';
+const ROOT_UUID = 'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD';
+const PROJECT_LIST_UUID = 'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE';
+const PROJECT_RELEASE_UUID = 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF';
+const PROJECT_DEBUG_UUID = '11111111111111111111111111111111';
 
 /** The section exactly as expo-widgets leaves it: -Onone pinned on BOTH configurations, and no
- * debug-dylib key anywhere, which is what let the Release default resolve YES */
+ * debug-dylib key anywhere, which is what let the Release default resolve YES. The root
+ * project's own entries ride the same section, exactly as the template generates them */
 const sectionFixture = (): Record<string, ConfigurationEntryFixture> => ({
   [RELEASE_UUID]: {
     isa: 'XCBuildConfiguration',
@@ -74,6 +90,22 @@ const sectionFixture = (): Record<string, ConfigurationEntryFixture> => ({
       SWIFT_OPTIMIZATION_LEVEL: '"-Onone"',
     },
   },
+  [PROJECT_RELEASE_UUID]: {
+    isa: 'XCBuildConfiguration',
+    name: 'Release',
+    buildSettings: {
+      ALWAYS_SEARCH_USER_PATHS: 'NO',
+      CLANG_ENABLE_MODULES: 'YES',
+    },
+  },
+  [PROJECT_DEBUG_UUID]: {
+    isa: 'XCBuildConfiguration',
+    name: 'Debug',
+    buildSettings: {
+      ALWAYS_SEARCH_USER_PATHS: 'NO',
+      CLANG_ENABLE_MODULES: 'YES',
+    },
+  },
 });
 
 const listFixture = (refs: ConfigurationRefFixture[]): ConfigurationListFixture => ({
@@ -88,7 +120,13 @@ const releaseAndDebug = (): ConfigurationRefFixture[] => [
 ];
 
 const projectFixture = (
-  overrides: { withoutTarget?: boolean; withoutList?: boolean; listNamesNoRelease?: boolean } = {}
+  overrides: {
+    withoutTarget?: boolean;
+    withoutList?: boolean;
+    listNamesNoRelease?: boolean;
+    withoutRootObject?: boolean;
+    projectListNamesNoRelease?: boolean;
+  } = {}
 ) => {
   const buildConfigurations = sectionFixture();
   const configurationLists: Record<string, ConfigurationListFixture> = {};
@@ -99,6 +137,16 @@ const projectFixture = (
       defaultConfigurationName: 'Release',
     };
   }
+  configurationLists[PROJECT_LIST_UUID] = {
+    isa: 'XCConfigurationList',
+    buildConfigurations: overrides.projectListNamesNoRelease
+      ? [{ value: PROJECT_DEBUG_UUID, comment: 'Debug' }]
+      : [
+          { value: PROJECT_RELEASE_UUID, comment: 'Release' },
+          { value: PROJECT_DEBUG_UUID, comment: 'Debug' },
+        ],
+    defaultConfigurationName: 'Release',
+  };
   const target = overrides.withoutTarget
     ? undefined
     : { isa: 'PBXNativeTarget', name: TARGET, buildConfigurationList: LIST_UUID, buildPhases: [] };
@@ -106,6 +154,10 @@ const projectFixture = (
     pbxTargetByName: (name: string) => (name === TARGET ? target : undefined),
     pbxXCConfigurationList: () => configurationLists,
     pbxXCBuildConfigurationSection: () => buildConfigurations,
+    pbxProjectSection: () => ({
+      [ROOT_UUID]: { isa: 'PBXProject', buildConfigurationList: PROJECT_LIST_UUID },
+    }),
+    hash: { project: { rootObject: overrides.withoutRootObject ? undefined : ROOT_UUID } },
   } satisfies ProjectFixture;
 };
 
@@ -192,6 +244,57 @@ describe('the target guard', () => {
   });
 });
 
+describe('the project-level strip pin', () => {
+  it('pins the strip settings on the root project Release entry every target inherits from', () => {
+    // DEPLOYMENT_POSTPROCESSING is the lever: Xcode defaults it NO, leaving
+    // STRIP_INSTALLED_PRODUCT and DEAD_CODE_STRIPPING (both default YES) inert. Pinned at the
+    // project level because neither the app target nor the extension sets any of the three, so
+    // both binaries inherit the pin (measured on the 2.38.4 Release build log, T-491)
+    const project = projectFixture();
+
+    pinProjectReleaseSettings(project);
+
+    const release = project.pbxXCBuildConfigurationSection()[PROJECT_RELEASE_UUID].buildSettings;
+    expect(release.DEPLOYMENT_POSTPROCESSING).toBe('"YES"');
+    expect(release.STRIP_INSTALLED_PRODUCT).toBe('"YES"');
+    expect(release.DEAD_CODE_STRIPPING).toBe('"YES"');
+  });
+
+  it('leaves the project Debug entry and every other setting it carried in place', () => {
+    const project = projectFixture();
+
+    pinProjectReleaseSettings(project);
+
+    const debug = project.pbxXCBuildConfigurationSection()[PROJECT_DEBUG_UUID].buildSettings;
+    expect(debug.DEPLOYMENT_POSTPROCESSING).toBeUndefined();
+    expect(debug.ALWAYS_SEARCH_USER_PATHS).toBe('NO');
+    expect(project.pbxXCBuildConfigurationSection()[PROJECT_RELEASE_UUID].buildSettings.ALWAYS_SEARCH_USER_PATHS).toBe(
+      'NO'
+    );
+  });
+
+  it('throws naming the root project when the parse carries no root object', () => {
+    const project = projectFixture({ withoutRootObject: true });
+
+    expect(() => pinProjectReleaseSettings(project)).toThrow(/root PBXProject/);
+  });
+
+  it('throws when the root project configuration list names no Release configuration', () => {
+    expect(() => pinProjectReleaseSettings(projectFixture({ projectListNamesNoRelease: true }))).toThrow(
+      /root project.*no Release configuration/
+    );
+  });
+
+  it('does not disturb the widget target own entry the extension pin owns', () => {
+    const project = projectFixture();
+
+    pinProjectReleaseSettings(project);
+
+    const targetRelease = project.pbxXCBuildConfigurationSection()[RELEASE_UUID].buildSettings;
+    expect(targetRelease.DEPLOYMENT_POSTPROCESSING).toBeUndefined();
+  });
+});
+
 describe('the mod wiring', () => {
   it('pins the xcodeProject mod results in place and returns the config', () => {
     const config = { modResults: projectFixture() };
@@ -202,6 +305,9 @@ describe('the mod wiring', () => {
     expect(config.modResults.pbxXCBuildConfigurationSection()[RELEASE_UUID].buildSettings.ENABLE_DEBUG_DYLIB).toBe(
       '"NO"'
     );
+    expect(
+      config.modResults.pbxXCBuildConfigurationSection()[PROJECT_RELEASE_UUID].buildSettings.DEPLOYMENT_POSTPROCESSING
+    ).toBe('"YES"');
   });
 
   it('registers an ios xcodeProject mod on a bare config', () => {
