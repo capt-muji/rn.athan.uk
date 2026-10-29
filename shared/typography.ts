@@ -157,11 +157,13 @@ const MALAYALAM: LocaleTypography = {
 // Yoruba cannot ride Roboto: measured 2026-10-28 with fontTools over the bundled faces,
 // Roboto carries ẹ U+1EB9 and ọ U+1ECD but lacks ṣ U+1E63 and Ṣ U+1E62 in both weights,
 // and no bundled face carries them (plan T-427 decision 5). The Noto Sans pair is instanced
-// from the google/fonts variable source at 400 and 500 outside the repository; its own hhea
-// box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and every character of
-// Yoruba's keyed surface inks inside it (worst glyph top 944, worst bottom -240, the combining
-// acute at 766, the dot below at -186), so box and ink agree and no script box is pinned -
-// the Thai row-87 law
+// from the google/fonts variable source at 400 and 500 outside the repository. Yoruba's own
+// glyph ink sits inside the em square (worst glyph top 944, worst bottom -240, the combining
+// acute at 766, the dot below at -186), but the pair's declared win metrics do not: its hhea
+// box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) against a 1.519em win
+// ink (winAscent 1124, winDescent 395), the measurement the AFRICAN record carries over the
+// same pair, so the box-bearing row-106 law applies and ink-bearing surfaces take AFRICAN's
+// 1.55em script line
 const YORUBA: LocaleTypography = {
   familyRegular: 'NotoSans-Regular',
   familyMedium: 'NotoSans-Medium',
@@ -172,6 +174,7 @@ const YORUBA: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: true,
+  scriptLineHeight: (n) => Math.round(n * 1.55),
 };
 
 const LATIN: LocaleTypography = {
@@ -279,9 +282,10 @@ const GUJARATI: LocaleTypography = {
 
 // Kannada has no coverage in any bundled face, so this wave bundles the Noto Sans
 // Kannada v2.006 pair. Its hhea box is 1.349em (ascent 809, descent -540, UPM 1000,
-// both weights) while its win ink spans 1.645em (winAscent 1105, winDescent 540),
-// so the 1.5em house line does not clear the measured ink: this record pins 1.65em,
-// the only record off the house value, the measurement rounded up
+// both weights) while its win ink spans 1.645em (winAscent 1105, winDescent 540), so
+// the 1.5em house value does not clear the measured ink and this wave's own measurement
+// pins a taller box: a 1.65em factor rounded up with Math.ceil, because Math.round lands
+// under the ink at the 16pt row (16 x 1.65 is 26.4, and 26px is 1.625em against 1.645em)
 const KANNADA: LocaleTypography = {
   familyRegular: 'NotoSansKannada-Regular',
   familyMedium: 'NotoSansKannada-Medium',
@@ -292,7 +296,7 @@ const KANNADA: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: true,
-  scriptLineHeight: (n) => Math.round(n * 1.65),
+  scriptLineHeight: (n) => Math.ceil(n * 1.65),
 };
 
 // Ethiopic, same wave's own measurement: the Noto Sans Ethiopic v2.102 pair's
@@ -373,8 +377,11 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // with fontTools, plan T-429 decision 6)
   wo: LATIN,
   // Marathi rides the HINDI record's own bundled pair: NotoSansDevanagari carries every
-  // Marathi codepoint the catalog uses in both weights (measured with fontTools, plan
-  // T-429 decision 6), so the same measured 1.5em script box serves
+  // Marathi codepoint the catalog uses in both weights except the two guillemets U+00AB
+  // and U+00BB that nine help strings quote with (measured with fontTools by explicit
+  // codepoint, plan T-429 decision 6); those two have no glyph in the pair and fall to
+  // the OS face, as the Latin brand text already does, while the Devanagari itself takes
+  // the same measured 1.5em script box
   mr: HINDI,
   // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries
   om: LATIN,

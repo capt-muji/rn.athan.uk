@@ -154,7 +154,7 @@ export const sd = {
   'prayerAlert.state.unavailable': 'دستياب ناهي',
   'prayerAlert.hintUnavailable': 'ٻڌائي ٿو ته هن نماز لاءِ ڪا اطلاع ڇو مقرر نه ٿي سگهي',
   'prayerAlert.hintOpen': 'هن نماز لاءِ اطلاع جا اختيار کولي ٿو',
-  'extras.explanation.midnight': 'مغرب ۽ فجر جي اڌ ۾',
+  'extras.explanation.midnight': 'مغرب ۽ فجر جي وچ ۾',
   'extras.explanation.last third': 'رات جي آخري ٽئين حصي جي شروعات',
   'extras.explanation.suhoor': 'فجر کان 20 منٽ اڳ',
   'extras.explanation.duha': 'سج اڀرڻ کان 20 منٽ پوءِ',

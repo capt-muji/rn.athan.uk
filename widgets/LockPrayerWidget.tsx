@@ -512,7 +512,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       subtitle: 'Seli waatiw London',
       inline: 'Athan — seli waatiw',
       rectTitle: 'ATHAN',
-      rectSubtitle: 'Waatiw load walasa ka da wuli',
+      rectSubtitle: 'Da wuli walasa ka waatiw sɔrɔ',
       staleTitle: 'A tɛmɛna',
       staleBody: 'Athan da wuli walasa ka a kura',
       staleInline: 'Athan — waati kura walasa ka da wuli',
@@ -709,13 +709,15 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
   // subtag resolves by region, TW, HK and MO reading Traditional (CLDR's
   // likely-subtags answer) and every other zh tag Simplified. Script-tagged
   // locales already matched the list above, and yue is its own language code
-  // and never matches zh
-  const zhKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | undefined =>
-    tag === 'zh' || tag.startsWith('zh-')
-      ? ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '')
-        ? 'zh-Hant'
-        : 'zh-Hans'
-      : undefined;
+  // and never matches zh. Shahmukhi Punjabi is the only other scriptless code
+  // the app ships: a bare pa, or a pa region such as pa-PK, reads its row
+  // rather than the en fallback
+  const fallbackKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | 'pa-Arab' | undefined => {
+    if (tag === 'zh' || tag.startsWith('zh-')) {
+      return ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '') ? 'zh-Hant' : 'zh-Hans';
+    }
+    return tag === 'pa' || tag.startsWith('pa-') ? 'pa-Arab' : undefined;
+  };
   const localeKey =
     (
       [
@@ -770,7 +772,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'jv',
         'su',
       ] as const
-    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
+    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
 
   const neutralForFamily = () => {
@@ -1391,7 +1393,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       subtitle: 'Seli waatiw London',
       inline: 'Athan — seli waatiw',
       rectTitle: 'ATHAN',
-      rectSubtitle: 'Waatiw load walasa ka da wuli',
+      rectSubtitle: 'Da wuli walasa ka waatiw sɔrɔ',
       staleTitle: 'A tɛmɛna',
       staleBody: 'Athan da wuli walasa ka a kura',
       staleInline: 'Athan — waati kura walasa ka da wuli',
@@ -1588,13 +1590,15 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
   // subtag resolves by region, TW, HK and MO reading Traditional (CLDR's
   // likely-subtags answer) and every other zh tag Simplified. Script-tagged
   // locales already matched the list above, and yue is its own language code
-  // and never matches zh
-  const zhKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | undefined =>
-    tag === 'zh' || tag.startsWith('zh-')
-      ? ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '')
-        ? 'zh-Hant'
-        : 'zh-Hans'
-      : undefined;
+  // and never matches zh. Shahmukhi Punjabi is the only other scriptless code
+  // the app ships: a bare pa, or a pa region such as pa-PK, reads its row
+  // rather than the en fallback
+  const fallbackKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | 'pa-Arab' | undefined => {
+    if (tag === 'zh' || tag.startsWith('zh-')) {
+      return ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '') ? 'zh-Hant' : 'zh-Hans';
+    }
+    return tag === 'pa' || tag.startsWith('pa-') ? 'pa-Arab' : undefined;
+  };
   const localeKey =
     (
       [
@@ -1649,7 +1653,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'jv',
         'su',
       ] as const
-    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
+    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
 
   const neutralForFamily = () => {
@@ -2259,7 +2263,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       subtitle: 'Seli waatiw London',
       inline: 'Athan — seli waatiw',
       rectTitle: 'ATHAN',
-      rectSubtitle: 'Waatiw load walasa ka da wuli',
+      rectSubtitle: 'Da wuli walasa ka waatiw sɔrɔ',
       staleTitle: 'A tɛmɛna',
       staleBody: 'Athan da wuli walasa ka a kura',
       staleInline: 'Athan — waati kura walasa ka da wuli',
@@ -2456,13 +2460,15 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
   // subtag resolves by region, TW, HK and MO reading Traditional (CLDR's
   // likely-subtags answer) and every other zh tag Simplified. Script-tagged
   // locales already matched the list above, and yue is its own language code
-  // and never matches zh
-  const zhKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | undefined =>
-    tag === 'zh' || tag.startsWith('zh-')
-      ? ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '')
-        ? 'zh-Hant'
-        : 'zh-Hans'
-      : undefined;
+  // and never matches zh. Shahmukhi Punjabi is the only other scriptless code
+  // the app ships: a bare pa, or a pa region such as pa-PK, reads its row
+  // rather than the en fallback
+  const fallbackKeyFor = (tag: string): 'zh-Hans' | 'zh-Hant' | 'pa-Arab' | undefined => {
+    if (tag === 'zh' || tag.startsWith('zh-')) {
+      return ['TW', 'HK', 'MO'].includes(tag.split('-')[1] ?? '') ? 'zh-Hant' : 'zh-Hans';
+    }
+    return tag === 'pa' || tag.startsWith('pa-') ? 'pa-Arab' : undefined;
+  };
   const localeKey =
     (
       [
@@ -2517,7 +2523,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'jv',
         'su',
       ] as const
-    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
+    ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
 
   // Neutral fallbacks for states without renderable data: the gallery/jiggle

@@ -72,7 +72,7 @@ const helpChevronStylesUnder = async (locale: LocaleId): Promise<unknown[]> => {
   return styles;
 };
 
-it.each(['en', 'ar', 'fa', 'ur', 'ps'] as const)(
+it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
   'pins every settings-sheet chevron paragraph under %s',
   async (locale) => {
     const styles = await settingsChevronStylesUnder(locale);
@@ -89,12 +89,15 @@ it.each(['en', 'ar', 'fa', 'ur', 'ps'] as const)(
   }
 );
 
-it.each(['en', 'ar', 'fa', 'ur', 'ps'] as const)('pins the help action chevron paragraph under %s', async (locale) => {
-  const styles = await helpChevronStylesUnder(locale);
+it.each(['en', 'ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb'] as const)(
+  'pins the help action chevron paragraph under %s',
+  async (locale) => {
+    const styles = await helpChevronStylesUnder(locale);
 
-  expect(styles).toHaveLength(1);
-  expect((styles[0] as Record<string, unknown>).direction).toBe('ltr');
-});
+    expect(styles).toHaveLength(1);
+    expect((styles[0] as Record<string, unknown>).direction).toBe('ltr');
+  }
+);
 
 it('leaves no chevronFor() caller outside the three pinned files', () => {
   const componentsRoot = join(__dirname, '..');

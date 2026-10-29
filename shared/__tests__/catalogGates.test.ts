@@ -1,8 +1,9 @@
 /**
  * The R2 mechanical gates over the landed catalogs (D42), in-process so CI refuses
  * a defective catalog without the plan folder. The provenance check has no twin here by
- * design: it is a planning artefact. The shipped suite pins the prayer names against
- * sourced-names.json, the committed copy of the research glossary.
+ * design: it is a planning artefact. The shipped suite pins the prayer names and the two
+ * derived explanations against sourced-names.json, the committed copy of the research
+ * glossary.
  */
 
 import { am } from '@/shared/i18n/am';
@@ -127,6 +128,36 @@ const PRAYER_NAME_KEYS = [
   'prayer.istijaba',
 ];
 
+/** The eleven name slots every locale's glossary section carries, against the catalog keys */
+const GLOSSARY_NAMES: Array<[catalogKey: string, slot: string]> = [
+  ['prayer.fajr', 'Fajr'],
+  ['prayer.sunrise', 'Sunrise'],
+  ['prayer.dhuhr', 'Dhuhr'],
+  ['prayer.asr', 'Asr'],
+  ['prayer.magrib', 'Magrib'],
+  ['prayer.isha', 'Isha'],
+  ['prayer.midnight', 'Midnight'],
+  ['prayer.last third', 'Last Third'],
+  ['prayer.suhoor', 'Suhoor'],
+  ['prayer.duha', 'Duha'],
+  ['prayer.istijaba', 'Istijaba'],
+];
+
+/** The five explanation slots every locale's glossary section carries */
+const GLOSSARY_EXPLANATIONS = [
+  'Halfway between Magrib and Fajr',
+  'Start of the last third of the night',
+  '20 mins before Fajr',
+  '20 mins after Sunrise',
+  '1 hour before Magrib (Fridays only)',
+];
+
+/** The two explanations whose catalog text is the glossary's own sentence, never a paraphrase */
+const GLOSSARY_EXPLANATION_PAIRS: Array<[catalogKey: string, slot: string]> = [
+  ['extras.explanation.midnight', 'Halfway between Magrib and Fajr'],
+  ['extras.explanation.last third', 'Start of the last third of the night'],
+];
+
 // Brand bytes: only app-open copy names the application; "athan" elsewhere is the
 // feature word, which translates
 const BRAND_REQUIRED = new Set(['widget.refresh', 'widget.refreshLead']);
@@ -157,22 +188,19 @@ const gluedSides = (template: string): string[] => {
   return glued;
 };
 
-const sourcedNames = (loc: string): Array<[key: string, text: string]> => {
-  const glossary = sourced as unknown as Record<string, { names: Record<string, { text: string | null }> }>;
-  const entries = glossary[loc].names;
-  return Object.entries(entries).flatMap(([name, entry]) => {
-    if (!entry?.text) return [];
-    const slug = name === 'Last Third' ? 'last third' : name.toLowerCase();
-    const key = PRAYER_NAME_KEYS.find((k) => k.endsWith(slug));
-    return key ? [[key, entry.text] as [string, string]] : [];
-  });
-};
-
 interface Entry {
   text: string | null;
   source: string | null;
   confidence: string | null;
 }
+
+interface GlossarySections {
+  names: Record<string, Entry>;
+  explanations: Record<string, Entry>;
+}
+
+const glossaryFor = (loc: string): GlossarySections | undefined =>
+  (sourced as unknown as Record<string, GlossarySections | undefined>)[loc];
 
 /** The ten locales T-410 ships; every slot they add to the glossary must carry sourcing */
 const T410_TEN = ['id', 'ur', 'bn', 'fa', 'fr', 'tr', 'sw', 'ha', 'pt', 'uz'] as const;
@@ -241,15 +269,28 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(failures).toEqual([]);
   });
 
-  it.each(LOCALES)('%s matches the sourced prayer names verbatim', (loc) => {
-    const failures: string[] = [];
-    for (const [key, text] of sourcedNames(loc)) {
-      if (CATALOGS[loc][key as keyof Catalog] !== text) {
-        failures.push(`${loc}: ${key} drifts from the sourced "${text}"`);
-      }
+  it.each(Object.keys(SHIPPED))(
+    '%s carries the glossary whole and reproduces its names and two derived explanations byte for byte',
+    (loc) => {
+      const sections = glossaryFor(loc);
+      expect(Object.keys(sections?.names ?? {}).sort()).toEqual(GLOSSARY_NAMES.map(([, slot]) => slot).sort());
+      expect(Object.keys(sections?.explanations ?? {}).sort()).toEqual([...GLOSSARY_EXPLANATIONS].sort());
+
+      const failures: string[] = [];
+      const compare = (key: string, slot: string, section: Record<string, Entry>) => {
+        // A slot the glossary leaves without text carries nothing to compare
+        const text = section[slot]?.text;
+        if (text && SHIPPED[loc][key as keyof Catalog] !== text) {
+          failures.push(`${loc}: ${key} drifts from the glossary "${text}"`);
+        }
+      };
+      const names = sections?.names ?? {};
+      const explanations = sections?.explanations ?? {};
+      for (const [key, slot] of GLOSSARY_NAMES) compare(key, slot, names);
+      for (const [key, slot] of GLOSSARY_EXPLANATION_PAIRS) compare(key, slot, explanations);
+      expect(failures).toEqual([]);
     }
-    expect(failures).toEqual([]);
-  });
+  );
 
   it('sources every T-410 name and explanation slot with text, slug and confidence', () => {
     const glossary = sourced as unknown as Record<

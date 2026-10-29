@@ -450,6 +450,35 @@ describe('the widget statics table', () => {
     expect(stackedInline).toEqual([table[expected].inline]);
   });
 
+  // The same four finder sites resolve Shahmukhi Punjabi: the app speaks pa-Arab for
+  // every pa tag, so a bare pa or a pa-PK device renders its row and not the en fallback
+  it.each([
+    ['pa', 'pa-Arab'],
+    ['pa-PK', 'pa-Arab'],
+    ['pa-Arab', 'pa-Arab'],
+    ['pa-Arab-PK', 'pa-Arab'],
+  ] as const)('resolves the device tag %s to the %s row', (tag, expected) => {
+    forceDeviceLocale(tag);
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', table[expected].subtitle]);
+
+    const lockInline = textsOf(
+      renderTree(lock.PrayerLockWidget(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(lockInline).toEqual([table[expected].inline]);
+
+    const centredInline = textsOf(
+      renderTree(lock.PrayerLockWidget2(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(centredInline).toEqual([table[expected].inline]);
+
+    const stackedInline = textsOf(
+      renderTree(lock.PrayerLockWidget3(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(stackedInline).toEqual([table[expected].inline]);
+  });
+
   it('renders the en row for a yue-tagged device: yue never matches as zh', () => {
     forceDeviceLocale('yue-Hant-HK');
     const expected = table.en;

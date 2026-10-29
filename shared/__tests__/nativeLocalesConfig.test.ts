@@ -125,6 +125,29 @@ describe('native strings from committed config', () => {
     }
   });
 
+  it('refuses a Cyrillic letter inside a Latin-script locale', () => {
+    // Russian, Kazakh, Kyrgyz and Tajik write Cyrillic; every other shipped locale
+    // writes Latin, Arabic, Devanagari, Thai, Bengali, Tamil, Malayalam, Kannada,
+    // Telugu, Gujarati, Ethiopic or Han, so a Cyrillic letter in one of their rows
+    // is a homoglyph slip, not a spelling
+    const CYRILLIC_SCRIPT = new Set(['ru', 'kk', 'ky', 'tg']);
+    const CYRILLIC = /[\u0400-\u04FF]/;
+    const failures: string[] = [];
+    for (const locale of LOCALES) {
+      if (CYRILLIC_SCRIPT.has(locale)) continue;
+      const row = NATIVE[locale];
+      const strings: Record<string, string> = {
+        NSLocationWhenInUseUsageDescription: row.NSLocationWhenInUseUsageDescription,
+        NSUserNotificationsUsageDescription: row.NSUserNotificationsUsageDescription,
+        ...row.gallery,
+      };
+      for (const [key, value] of Object.entries(strings)) {
+        if (CYRILLIC.test(value)) failures.push(`${locale}: ${key} carries a Cyrillic letter`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
   it('declares every shipped locale in CFBundleLocalizations with the display name unchanged', () => {
     const ios = app.ios as { infoPlist?: Record<string, unknown> };
     const infoPlist = (ios.infoPlist ?? {}) as Record<string, unknown>;

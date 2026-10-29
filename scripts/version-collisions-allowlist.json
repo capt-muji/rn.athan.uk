@@ -137,38 +137,26 @@
   },
   {
     "version": "2.26.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   },
   {
     "version": "2.27.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   },
   {
     "version": "2.28.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   },
   {
     "version": "2.29.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   },
   {
     "version": "2.30.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   },
   {
     "version": "2.31.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.32.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.33.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.34.0",
-    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (T-427, T-428, T-429), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
+    "reason": "2026-10-28 the fifty-language run holds three lanes that all step from uat 2.25.4 in the same window (lane1/T-427 on the first wave, lane2/T-428 on the second, lane3/T-429 on the third), and the discipline gate admits exactly one first step from that base, 2.26.0; the standing ruling: every collision is grandfathered and the merge that lands second renumbers above whatever uat then carries"
   }
 ]

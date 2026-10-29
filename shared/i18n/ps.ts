@@ -156,7 +156,7 @@ export const ps = {
   'prayerAlert.hintUnavailable': 'روښاندوي چې ولې د دې لمونځ لپاره خبرتیا نه ټاکل کیږي',
   'prayerAlert.hintOpen': 'د دې لمونځ د خبرتیا اختیارونه پرانیزي',
   'extras.explanation.midnight': 'د مغرب او صبح په منځ کې',
-  'extras.explanation.last third': 'د شپې د وروستۍ دریمې برخې پيل',
+  'extras.explanation.last third': 'د شپې د وروستۍ دريمې برخې پيل',
   'extras.explanation.suhoor': 'له صبح ۲۰ دقيقې دمخه',
   'extras.explanation.duha': 'له لمرختنې ۲۰ دقيقې وروسته',
   'extras.explanation.istijaba': 'له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)',

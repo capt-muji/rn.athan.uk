@@ -46,7 +46,7 @@ export const jv = {
   'help.a.none': 'Tanpa idin, kabar ora bisa ditampilaké.',
   'help.step.allowNotificationsIos': 'Bukak idin kabar ing setelan aplikasi',
   'help.step.allowNotificationsAndroid': 'Bukak kabar ing setelan aplikasi',
-  'help.step.leaveAthanCategories': 'Let kategori adzan tetep urip',
+  'help.step.leaveAthanCategories': 'Antep kategori adzan tetep urip',
   'help.q.stopAfterDays': 'Yagéné kabar mandheg sawisé sawetara dina?',
   'help.a.stopAfterDays.ios': 'Rong setelan ngalang-alangi kabar anyar.',
   'help.step.backgroundRefresh': 'Bukak Anyaran Latar ing setelan aplikasi',

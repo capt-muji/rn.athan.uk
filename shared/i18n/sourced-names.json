@@ -82,7 +82,6 @@
       "om-getilham": "getilham.app Oromo prayer page and table (Fajrii, Baha Aduu, Zuhrii, Asrii, Magribii, Ishaa)",
       "bm-sunnah-global": "sunnah.global Bambara hadith 66512 (the five pillars, naming fajiri selifana lansara fitiri saafo)",
       "tl-newmuslims": "newmuslims.com Tagalog lesson 65 (the five prayers, Fajr Dhuhr Asr Maghrib Isha with Tagalog time-of-day glosses)",
-      "tl-islamarc": "islamarc.com Philippines prayer-times page (Oras ng Pagdarasal)",
       "ff-islamhouse": "islamhouse.com Fulfulde library, Tonngaande nafoore ngam juulɗo keso (the five prayers: Juulde fajiri e tiisbaar e takkusaan e furura e geeƴe)",
       "pnb-wikipedia": "pnb.wikipedia.org (Western Punjabi, Shahmukhi) نماز article: the five times and their names سرگی، پیشی، ڈیگر، نماشاں، کفتاں",
       "sd-wikipedia": "sd.wikipedia.org (Sindhi) نماز article: فجر، ظهر، عصر، مغرب ۽ عشاء, سج اڀرڻ for sunrise, and ضحى يا چاشت for Duha",
@@ -93,9 +92,11 @@
       "yo-media": "Yoruba da'wah media naming the prayers (Irun Asuba, Irun Magrib, Irun Ṣalatu Ìṣàá)",
       "yo-usage": "the Yoruba day-part lexicon as Yoruba cultural pages print it (Àárọ̀ dawn, Ọ̀sán afternoon, Ìrọ̀lẹ́ evening, Òru night)",
       "jv-wikipedia": "jv.wikipedia.org Pepéling article: Subuh, Luhur, Asar, Maghrib lan Isya",
-      "su-wikipedia": "su.wikipedia.org Solat, Lohor, Asar, Magrib and Isya articles"
+      "su-wikipedia": "su.wikipedia.org Solat, Lohor, Asar, Magrib and Isya articles",
+      "salatnow-de": "salatnow.com Diyanet-method German timetables (the Mülheim today row and the monthly Gebetsplan column), fetched for the de census, plan T-419 decision 11",
+      "tahajjud-de": "tahajjud.de German article on the night prayer (Das letzte Drittel der Nacht beginnt), fetched for the de census, plan T-419 decision 11"
     },
-    "unusedSlugNote": "es-wikipedia, frtjislam-ta, gebet, hi-wikipedia, islamqa, muis, islamkavadam-ml and ps-wikipedia are registered as cross-checks for entries credited to a stronger source; no entry rests on them alone. The generic slug wikipedia-<lang> resolves to the specific lang slugs (ur-wikipedia, ru-wikipedia and so on).",
+    "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor.",
     "confidenceKey": {
       "high": "national authority, or two independent source classes agree",
       "medium": "one good source",
@@ -2254,7 +2255,7 @@
       },
       "Sunrise": {
         "text": "Amanecer",
-        "source": "es-wikipedia",
+        "source": "derived",
         "confidence": "high",
         "note": "Amanecer is the ordinary Spanish word for the dawn; R6's mihrab entry prints the same and Spanish tables print Salida del sol as the long alternative."
       },
@@ -2302,13 +2303,13 @@
       },
       "Duha": {
         "text": "Duha",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Spanish source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Istijaba",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Spanish source; the loan lands per plan T-429 decision 9."
       }
@@ -2914,13 +2915,13 @@
       },
       "Duha": {
         "text": "Duha",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Dutch source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Istijaba",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Dutch source; the loan lands per plan T-429 decision 9."
       }
@@ -2948,7 +2949,7 @@
         "text": "20 min na zonsopkomst",
         "source": "derived",
         "confidence": "medium",
-        "note": ""
+        "note": "Derived; Dutch abbreviates minuten as min and na is after."
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "1 uur vóór Maghrib (alleen vrijdag)",
@@ -3118,13 +3119,13 @@
       },
       "Duha": {
         "text": "Духа",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Kazakh source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Истижаба",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Kazakh source; the loan lands per plan T-429 decision 9."
       }
@@ -3220,13 +3221,13 @@
       },
       "Duha": {
         "text": "Духа",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Kyrgyz source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Истижаба",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Kyrgyz source; the loan lands per plan T-429 decision 9."
       }
@@ -3274,7 +3275,7 @@
       },
       "Sunrise": {
         "text": "Тулӯи офтоб",
-        "source": "shuroiulamo-tj",
+        "source": "derived",
         "confidence": "medium",
         "note": "Derived from the authority's own sunset phrasing Фурӯ рафтани офтоб, mirrored for the rising; no Tajik table fetched prints a sunrise label in Tajik words."
       },
@@ -3322,13 +3323,13 @@
       },
       "Duha": {
         "text": "Зуҳо",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Tajik source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Истиҷоба",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Tajik source; the loan lands per plan T-429 decision 9."
       }
@@ -3418,19 +3419,19 @@
       },
       "Suhoor": {
         "text": "Sahur",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "The tables carry Agyz wagty as the fast-start deadline, which the app's Fajr row covers; the meal row ships as the loan per plan T-429 decision 9."
       },
       "Duha": {
         "text": "Duha",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Turkmen source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Istijaba",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Turkmen source; the loan lands per plan T-429 decision 9."
       }
@@ -3472,7 +3473,7 @@
     "names": {
       "Fajr": {
         "text": "Fajar",
-        "source": "wolof-course",
+        "source": "loan",
         "confidence": "low",
         "note": "The Wolof course source names the dawn row Suba; Senegambian Wolof also carries the Arabic loan Fajar, which ships here as the naming rule's transliteration with the course's word kept for the sunrise row."
       },
@@ -3502,7 +3503,7 @@
       },
       "Isha": {
         "text": "Isha",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Wolof source fetched prints the night row; the Arabic loan lands per plan T-429 decision 9."
       },
@@ -3520,19 +3521,19 @@
       },
       "Suhoor": {
         "text": "Suhur",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Wolof source; the loan lands per plan T-429 decision 9."
       },
       "Duha": {
         "text": "Duha",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Wolof source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "Istijaba",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Wolof source; the loan lands per plan T-429 decision 9."
       }
@@ -3628,13 +3629,13 @@
       },
       "Duha": {
         "text": "दुहा",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Marathi source; the loan lands per plan T-429 decision 9."
       },
       "Istijaba": {
         "text": "इस्तिजाबा",
-        "source": "derived",
+        "source": "loan",
         "confidence": "low",
         "note": "No Marathi source; the loan lands per plan T-429 decision 9."
       }
@@ -4702,7 +4703,7 @@
       },
       "Sunrise": {
         "text": "كۈن چىقىش",
-        "source": "ug-wikipedia",
+        "source": "derived",
         "confidence": "medium",
         "note": "The article bounds the Fajr window with كۈن چىققىچە (until the sun rises), so كۈن چىقىش is the language's own sunrise phrase, shortened to the label."
       },
@@ -5008,7 +5009,7 @@
       },
       "Sunrise": {
         "text": "Mletèking srengéngé",
-        "source": "jv-wikipedia",
+        "source": "derived",
         "confidence": "low",
         "note": "The Javanese phrase for the sun's rising (srengéngé is the sun); the lyric prints no sunrise row."
       },
@@ -5110,7 +5111,7 @@
       },
       "Sunrise": {
         "text": "Panonpoé bijil",
-        "source": "su-wikipedia",
+        "source": "derived",
         "confidence": "low",
         "note": "The Sundanese phrase for the sun coming out (panonpoé is the sun); the articles print no sunrise row."
       },

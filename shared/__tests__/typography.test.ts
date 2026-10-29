@@ -137,12 +137,15 @@ describe('typographyFor', () => {
     }
   });
 
-  it('resolves yo to the Noto Sans pair with no script box', () => {
-    // Plan T-427 decision 5: Roboto lacks ṣ, and the instanced Noto Sans pair's own
-    // 1.362em box clears every character Yoruba inks, so the font's metrics serve
+  it('resolves yo to the Noto Sans pair with the measured script line box', () => {
+    // Plan T-427 decision 5: Roboto lacks ṣ, so yo rides the instanced Noto Sans pair.
+    // Its hhea box is 1.362em against a 1.519em win ink (1124/395, both weights, the
+    // AFRICAN record's measurement over the same pair), so ink-bearing surfaces take
+    // the 1.55em script line that clears the measured ink
     const ty = typographyFor('yo');
     expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
-    expect(ty.scriptLineHeight).toBeUndefined();
+    expect(ty.scriptLineHeight?.(14)).toBe(22);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
   it('resolves hi to the Devanagari pair with the taller script line box', () => {
@@ -155,7 +158,9 @@ describe('typographyFor', () => {
 
   it('resolves mr to the same Devanagari pair, the Marathi script record', () => {
     // Plan T-429 decision 6: NotoSansDevanagari carries every Marathi codepoint the
-    // catalog uses in both weights, so mr rides the HINDI record's own measured box
+    // catalog uses in both weights except U+00AB and U+00BB, the two guillemets nine
+    // help strings quote with, which fall to the OS face as the Latin brand text
+    // already does, so mr rides the HINDI record's own measured box
     const ty = typographyFor('mr');
     expectScriptRecord(ty, 'NotoSansDevanagari-Regular', 'NotoSansDevanagari-Medium');
     expect(ty.scriptLineHeight?.(14)).toBe(21);
@@ -273,10 +278,12 @@ describe('typographyFor', () => {
     const ty = typographyFor('kn');
     // The Noto Sans Kannada v2.006 pair's hhea box is 1.349em (ascent 809,
     // descent -540, UPM 1000, both weights) while its win ink spans 1.645em
-    // (winAscent 1105, winDescent 540), so the 1.5em house line does not clear
-    // it and this record pins 1.65em, the measured ink rounded up
+    // (winAscent 1105, winDescent 540), so the 1.5em house value does not clear
+    // it and this wave's own measurement pins a 1.65em factor rounded up with
+    // Math.ceil: Math.round lands under the ink at the 16pt row (26px is 1.625em
+    // against 1.645em)
     expectScriptRecord(ty, 'NotoSansKannada-Regular', 'NotoSansKannada-Medium');
-    expect(ty.scriptLineHeight?.(14)).toBe(23);
+    expect(ty.scriptLineHeight?.(14)).toBe(24);
     expect(ty.scriptLineHeight?.(15)).toBe(25);
   });
 

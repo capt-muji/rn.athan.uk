@@ -161,7 +161,7 @@ export const om = {
   'extras.explanation.last third': 'Jalqaba sadaffaa halkanii',
   'extras.explanation.suhoor': 'Daqiiqaa 20 dura Fajrii',
   'extras.explanation.duha': 'Daqiiqaa 20 booda Baha Aduu',
-  'extras.explanation.istijaba': 'Sa’aatii 1 dura Magribii (Jimaata qofa)',
+  'extras.explanation.istijaba': "Sa'aatii 1 dura Magribii (Jimaata qofa)",
   'duration.now': 'amma',
   'time.now': '{name} amma',
   'time.ago': '{name} {duration} dura',
