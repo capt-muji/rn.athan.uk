@@ -75,6 +75,8 @@ const LOCALES = [
   'bal',
   'kas',
   'dv',
+  'aa',
+  'mdh',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];

@@ -1295,5 +1295,53 @@
       "Extra Times (Layout 3)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
       "Next extra time with a countdown.": "ކައުންޓްޑައުންއަކާއެކު ކައިރިއަށްވާ އިތުރު ވަގުތް."
     }
+  },
+  "aa": {
+    "NSLocationWhenInUseUsageDescription": "Qibla ku duddah yamellek taamitta, usuk gara dudda amollak guruh tan. Usuk koo fonih gideh bayyise mali.",
+    "NSUserNotificationsUsageDescription": "Salaatih waktih milaango gibitta",
+    "gallery": {
+      "Next Prayer (Light)": "Kukubuk salaata (iffa)",
+      "A countdown to the next prayer.": "Kukubuk salaatah kaowntedaan.",
+      "Extra Times (Light)": "Caddow waktitte (iffa)",
+      "A countdown to the next extra time.": "Kukubuk caddow waktih kaowntedaan.",
+      "Next Prayer (Dark)": "Kukubuk salaata (dilmih)",
+      "Extra Times (Dark)": "Caddow waktitte (dilmih)",
+      "Next Prayer (Layout 1)": "Kukubuk salaata (tartiib 1)",
+      "Countdown to the next prayer.": "Kukubuk salaatah kaowntedaan.",
+      "Extra Times (Layout 1)": "Caddow waktitte (tartiib 1)",
+      "Countdown to the next extra time.": "Kukubuk caddow waktih kaowntedaan.",
+      "Next Prayer (Layout 2)": "Kukubuk salaata (tartiib 2)",
+      "Next prayer time.": "Kukubuk salaatah wakti.",
+      "Extra Times (Layout 2)": "Caddow waktitte (tartiib 2)",
+      "Next extra time.": "Kukubuk caddow wakti.",
+      "Next Prayer (Layout 3)": "Kukubuk salaata (tartiib 3)",
+      "Next prayer time with a countdown.": "Kaowntedaanh gaba kukubuk salaatah wakti.",
+      "Extra Times (Layout 3)": "Caddow waktitte (tartiib 3)",
+      "Next extra time with a countdown.": "Kaowntedaanh gaba kukubuk caddow wakti."
+    }
+  },
+  "mdh": {
+    "NSLocationWhenInUseUsageDescription": "Ang qibla ay kinakalkula mula sa kinalalagyan mo, kaya nangangailangan ito ng access sa lokasyon. Hindi ito kailanman umaalis sa iyong telepono.",
+    "NSUserNotificationsUsageDescription": "Tumanggap ng mga abiso ng oras ng sambayang",
+    "gallery": {
+      "Next Prayer (Light)": "Susunod na sambayang (Maliwanag)",
+      "A countdown to the next prayer.": "Kawnangdown sa susunod na sambayang.",
+      "Extra Times (Light)": "Mga Karagdagang Oras (Maliwanag)",
+      "A countdown to the next extra time.": "Kawnangdown sa susunod na karagdagang oras.",
+      "Next Prayer (Dark)": "Susunod na sambayang (Madilim)",
+      "Extra Times (Dark)": "Mga Karagdagang Oras (Madilim)",
+      "Next Prayer (Layout 1)": "Susunod na sambayang (Layout 1)",
+      "Countdown to the next prayer.": "Kawnangdown sa susunod na sambayang.",
+      "Extra Times (Layout 1)": "Mga Karagdagang Oras (Layout 1)",
+      "Countdown to the next extra time.": "Kawnangdown sa susunod na karagdagang oras.",
+      "Next Prayer (Layout 2)": "Susunod na sambayang (Layout 2)",
+      "Next prayer time.": "Oras ng susunod na sambayang.",
+      "Extra Times (Layout 2)": "Mga Karagdagang Oras (Layout 2)",
+      "Next extra time.": "Susunod na karagdagang oras.",
+      "Next Prayer (Layout 3)": "Susunod na sambayang (Layout 3)",
+      "Next prayer time with a countdown.": "Oras ng susunod na sambayang na may kawnangdown.",
+      "Extra Times (Layout 3)": "Mga Karagdagang Oras (Layout 3)",
+      "Next extra time with a countdown.": "Susunod na karagdagang oras na may kawnangdown."
+    }
   }
 }

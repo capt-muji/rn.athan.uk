@@ -6,6 +6,7 @@
  * glossary.
  */
 
+import { aa } from '@/shared/i18n/aa';
 import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
@@ -31,6 +32,7 @@ import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
+import { mdh } from '@/shared/i18n/mdh';
 import { ml } from '@/shared/i18n/ml';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
@@ -116,6 +118,8 @@ const CATALOGS: Record<string, Catalog> = {
   bal,
   kas,
   dv,
+  aa,
+  mdh,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas', 'dv']);

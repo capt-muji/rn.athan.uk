@@ -426,6 +426,12 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   kas: URDU,
   // Thaana reads right to left, so dv joins RTL_IDS with its own bundled pair
   dv: THAANA,
+  // Afar's orthography is ASCII and Maguindanao's register needs at most ñ: measured
+  // with fontTools in both weights, Roboto carries every character of both locales'
+  // whole keyed surface (67 distinct characters each, the em dash the one non-ASCII
+  // codepoint besides the digits), and ñ beside it (plan T-453 decision 10)
+  aa: LATIN,
+  mdh: LATIN,
 };
 
 /**
