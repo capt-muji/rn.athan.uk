@@ -2,10 +2,14 @@
  * The language wheel's geometry (T-476): one derivation of where a row sits in the list, shared by the
  * snap offsets, the faint band that rides the centreline and the purple seat on the locale in force.
  *
- * The scroll handler calls centreFloat and the two translate functions on the UI thread, so
+ * The scroll handler calls centreFloat, bandSeat and the two translate functions on the UI thread, so
  * each of those, and every helper they call, carries its own worklet directive: a worklet that calls a
  * plain function throws on the device, and the Jest mock's one thread cannot show it.
  */
+
+import { runOnJS } from 'react-native-reanimated';
+
+import type { LocaleId } from '@/shared/i18n/locale';
 
 export interface WheelMetrics {
   /** Rows in the filtered list */
@@ -75,19 +79,39 @@ export interface ScrollPosition {
   value: number;
 }
 
-/**
- * The list's scroll handler: the one write both bands and the detent read. A factory so the worklet
- * sits beside the geometry it calls and the component hands the library a ready handler
- */
-export const wheelScrollHandler =
-  (scrollY: ScrollPosition) =>
-  (event: WheelScrollEvent): void => {
-    'worklet';
-    scrollY.value = event.contentOffset.y;
-  };
+/** The row nearest the centreline: the faint band's seat, and the detent's integer */
+export const bandSeat = (metrics: WheelMetrics, offset: number): number => {
+  'worklet';
+  return Math.round(centreFloat(metrics, offset));
+};
 
 /** The purple seat: the locale in force, one pitch per row above the centreline */
 export const seatTranslateY = (metrics: WheelMetrics, seat: number, offset: number): number => {
   'worklet';
   return centrePad(metrics) + seat * rowPitch(metrics) - offset;
 };
+
+/**
+ * Whether a close carries a change. A staged row is required, and it must be foreign: settling the
+ * scroll stages nothing, and a staged row equal to the locale in force changes nothing
+ */
+export const stagesLanguageChange = (staged: LocaleId | null, active: LocaleId): staged is LocaleId =>
+  staged !== null && staged !== active;
+
+/**
+ * The list's scroll handler: the one write both bands read, and the detent's edge. The seat is
+ * compared against the last one the wheel settled on, so one tick fires per row that newly holds the
+ * centreline; a bounce that recrosses it ticks again. A factory so the worklet sits beside the
+ * geometry it calls and the component hands the library a ready handler
+ */
+export const wheelScrollHandler =
+  (metrics: WheelMetrics, scrollY: ScrollPosition, lastSeat: ScrollPosition, onDetent: () => void) =>
+  (event: WheelScrollEvent): void => {
+    'worklet';
+    const offset = event.contentOffset.y;
+    const seat = bandSeat(metrics, offset);
+    scrollY.value = offset;
+    if (seat === lastSeat.value) return;
+    lastSeat.value = seat;
+    runOnJS(onDetent)();
+  };

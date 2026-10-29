@@ -5,28 +5,20 @@
  * keyboard work and RTL — still holds over the wheel
  */
 
-import { fireEvent, type RenderResult, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { act } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import type { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { insideScroll, london } from '@/__tests__/harness';
 import { COLORS, SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import * as LanguageStore from '@/stores/language';
-import { rescheduleAllForLanguageChange } from '@/stores/notifications';
 import { languageSheetModalAtom } from '@/stores/ui';
 
 import LanguageSheet from '../screens/Language';
-
-// The convergence driver is the seam the suite freezes: a hanging driver holds the real
-// commit's promise unsettled, which is the state the progress face covers
-jest.mock('@/stores/notifications', () => ({
-  ...jest.requireActual('@/stores/notifications'),
-  rescheduleAllForLanguageChange: jest.fn(),
-}));
 
 // The published mock maps BottomSheetTextInput onto the plain TextInput, so the two read
 // the same in a rendered tree: this tag keeps the library's own input findable, which is
@@ -38,7 +30,6 @@ jest.mock('@gorhom/bottom-sheet', () => ({
 }));
 
 const store = getDefaultStore();
-const driverMock = jest.mocked(rescheduleAllForLanguageChange);
 
 /** The modal a sheet handed the store when it rendered */
 const renderedSheet = () => {
@@ -111,27 +102,11 @@ const sheetProps = () =>
 
 const rowNames = () => screen.getAllByRole('radio').map((row) => row.props.accessibilityLabel);
 
-// The spinner carries no role, label or text of its own, so it is counted in the
-// serialized tree, the one shape every renderer agrees on
-const spinnerCount = (node: ReactTestRendererJSON): number => {
-  const own = node.type === 'ActivityIndicator' ? 1 : 0;
-  const children = (node.children ?? []).filter((child): child is ReactTestRendererJSON => typeof child === 'object');
-  return own + children.reduce((total, child) => total + spinnerCount(child), 0);
-};
-
 /** The list's own scroll command, which is where the wheel's opening and reseeding land */
 const scrollToOffset = () => jest.spyOn(FlatList.prototype, 'scrollToOffset');
 
-// The hanging driver's release valve, armed by the busy test and fired here even
-// when one of its assertions throws
-let release: () => void = () => {};
-
 afterEach(async () => {
   setActiveLocale('en');
-  driverMock.mockReset();
-  // A failed assertion throws past the test's own release, and the hanging driver
-  // would hold the scheduling queue for every test after it
-  release();
   await act(async () => {});
 });
 
@@ -432,89 +407,202 @@ describe('the language wheel over T-451’s picker', () => {
   });
 });
 
-describe('a pick on the wheel', () => {
-  it('dismisses a paint after the tap, once the loader has been revealed', async () => {
+describe('the staged commit at the close boundary', () => {
+  const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
+
+  /** The commit the close boundary carries, stubbed so no surface converges in the suite */
+  const stubCommit = () => jest.spyOn(LanguageStore, 'commitLanguagePreference').mockResolvedValue();
+  const stubReveal = () => jest.spyOn(LanguageStore, 'revealLanguageLoader');
+
+  it('stages the tapped row without committing, revealing or closing, and ticks', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    // The driver hangs exactly while the assertions run; the afterEach releases it
-    driverMock.mockImplementation(
-      () =>
-        new Promise<boolean>((resolve) => {
-          release = () => resolve(true);
-        })
-    );
-    const commitSpy = jest.spyOn(LanguageStore, 'commitLanguagePreference');
-    const revealSpy = jest.spyOn(LanguageStore, 'revealLanguageLoader');
-    const rendered: RenderResult = await render(<LanguageSheet />);
+    const commitSpy = stubCommit();
+    const revealSpy = stubReveal();
+    const scroll = scrollToOffset();
+    await render(<LanguageSheet />);
     const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
+    await openWheel();
 
     await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
 
-    // The reveal is the tap's own tick, so the loader paints before anything heavy can freeze the sheet
-    expect(revealSpy).toHaveBeenCalledWith('ar');
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
     expect(commitSpy).not.toHaveBeenCalled();
+    expect(revealSpy).not.toHaveBeenCalled();
     expect(dismiss).not.toHaveBeenCalled();
+    // The faint band rides the animated scroll onto the row that was tapped
+    expect(scroll).toHaveBeenLastCalledWith({ offset: ARABIC_ROW * PITCH, animated: true });
+  });
+
+  it('commits the staged row once on the close, with one tick, and never while it loads', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    const revealSpy = stubReveal();
+    await render(<LanguageSheet />);
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+
+    // The loader stands on the close's own tick and the commit follows a paint later
+    expect(revealSpy).toHaveBeenCalledWith('ar');
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Light);
+    expect(commitSpy).not.toHaveBeenCalled();
 
     await act(async () => {
       await jest.runAllTimersAsync();
     });
 
+    expect(commitSpy).toHaveBeenCalledTimes(1);
     expect(commitSpy).toHaveBeenCalledWith('ar');
-    expect(dismiss).toHaveBeenCalledTimes(1);
-    const tree = rendered.toJSON();
-    expect(tree ? spinnerCount(tree) : 0).toBe(0);
+    // Nothing on the load path adds a second buzz
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('swallows a rejected commit: the loader owns the wait, so the sheet has no failure face', async () => {
+  it('commits nothing on a second close of the same dismissal', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    jest.spyOn(LanguageStore, 'commitLanguagePreference').mockRejectedValueOnce(new Error('refused'));
+    const commitSpy = stubCommit();
     await render(<LanguageSheet />);
-    const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'العربية' }));
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'ไทย' }));
+    await act(async () => {
+      sheetProps().onDismiss();
+      sheetProps().onDismiss();
+    });
     await act(async () => {
       await jest.runAllTimersAsync();
     });
 
-    expect(dismiss).toHaveBeenCalledTimes(1);
-    await act(async () => {});
+    expect(commitSpy).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('closes without committing or revealing when the active locale is tapped', async () => {
+  it('changes nothing when the close carries no staged row', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = jest.spyOn(LanguageStore, 'commitLanguagePreference');
-    const revealSpy = jest.spyOn(LanguageStore, 'revealLanguageLoader');
+    const commitSpy = stubCommit();
+    const revealSpy = stubReveal();
     await render(<LanguageSheet />);
-    const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
+    await openWheel();
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'English' }));
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
 
     expect(commitSpy).not.toHaveBeenCalled();
     expect(revealSpy).not.toHaveBeenCalled();
-    expect(dismiss).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('commits a filtered pick at once and closes', async () => {
+  it('changes nothing when the staged row is the locale already in force', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    driverMock.mockImplementation(
-      () =>
-        new Promise<boolean>((resolve) => {
-          release = () => resolve(true);
-        })
-    );
-    const revealSpy = jest.spyOn(LanguageStore, 'revealLanguageLoader');
-    const rendered = await render(<LanguageSheet />);
-    const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
-    await fireEvent.changeText(field(), 'spanish');
+    const commitSpy = stubCommit();
+    const revealSpy = stubReveal();
+    await render(<LanguageSheet />);
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'English' }));
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'Español' }));
-
-    expect(revealSpy).toHaveBeenCalledWith('es');
-    expect(dismiss).not.toHaveBeenCalled();
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
     await act(async () => {
       await jest.runAllTimersAsync();
     });
-    expect(dismiss).toHaveBeenCalledTimes(1);
-    const tree = rendered.toJSON();
-    expect(tree ? spinnerCount(tree) : 0).toBe(0);
+
+    expect(commitSpy).not.toHaveBeenCalled();
+    expect(revealSpy).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('stages nothing when the scroll settles, so a close after a scroll changes nothing', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    await render(<LanguageSheet />);
+    await openWheel();
+
+    // Settling is browsing only: the wheel stops on a row and the close that follows commits nothing
+    const settled = {
+      nativeEvent: {
+        contentOffset: { x: 0, y: ARABIC_ROW * PITCH },
+        contentSize: { width: 300, height: LANGUAGE_NAMES.length * PITCH },
+        layoutMeasurement: { width: 300, height: LIST_HEIGHT },
+        zoomScale: 1,
+      },
+    };
+    await fireEvent(list(), 'scrollEndDrag', settled);
+    await fireEvent(list(), 'momentumScrollEnd', settled);
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
+    expect(commitSpy).not.toHaveBeenCalled();
+  });
+
+  it('keeps a staged row a filter still shows, and commits it at the close', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    await render(<LanguageSheet />);
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'Español' }));
+    await fireEvent.changeText(field(), 'spanish');
+    expect(commitSpy).not.toHaveBeenCalled();
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
+    expect(commitSpy).toHaveBeenCalledWith('es');
+  });
+
+  it('drops a staged row its filter removed, so the close changes nothing', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    await render(<LanguageSheet />);
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'Español' }));
+    await fireEvent.changeText(field(), 'zzz');
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
+    expect(commitSpy).not.toHaveBeenCalled();
+  });
+
+  it('keeps a staged row through clearing the query, and commits it at the close', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    const commitSpy = stubCommit();
+    await render(<LanguageSheet />);
+    await openWheel();
+    await fireEvent.press(screen.getByRole('radio', { name: 'Español' }));
+    await fireEvent.changeText(field(), 'spanish');
+    await fireEvent.changeText(field(), '');
+    expect(commitSpy).not.toHaveBeenCalled();
+
+    await act(async () => {
+      sheetProps().onDismiss();
+    });
+    await act(async () => {
+      await jest.runAllTimersAsync();
+    });
+
+    expect(commitSpy).toHaveBeenCalledWith('es');
   });
 });

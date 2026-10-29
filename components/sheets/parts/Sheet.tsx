@@ -71,6 +71,11 @@ interface SheetProps {
    */
   hostsScrollable?: boolean;
   /**
+   * Holds the unified close haptic. A sheet that gives its own close feedback — the language wheel's
+   * commit tick — opts out, so a close that carries nothing stays silent
+   */
+  suppressCloseHaptic?: boolean;
+  /**
    * Called once, the first time the sheet fully opens (settles on its first
    * snap point). Used by the settings sheet to warm the sound list — the
    * sound sheet is only reachable through settings, so its 32-row list
@@ -139,6 +144,7 @@ export default function Sheet({
   enableDynamicSizing = false,
   scrollable = true,
   hostsScrollable = false,
+  suppressCloseHaptic = false,
   stackBehavior,
   pinned,
   keyboardBehavior,
@@ -197,11 +203,13 @@ export default function Sheet({
   // bounce). Firing at close start instead buzzed the moment a drag began,
   // detached from the outcome.
   const handleDismiss = useCallback(() => {
-    perfMark('sheet_close_haptic');
-    const impact = Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    void impact.then(() => perfMark('sheet_close_haptic_settled'));
+    if (!suppressCloseHaptic) {
+      perfMark('sheet_close_haptic');
+      const impact = Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      void impact.then(() => perfMark('sheet_close_haptic_settled'));
+    }
     onDismiss?.();
-  }, [onDismiss]);
+  }, [onDismiss, suppressCloseHaptic]);
 
   const handleChange = useCallback(
     (index: number) => {

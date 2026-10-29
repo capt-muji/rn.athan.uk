@@ -188,6 +188,14 @@ describe('a sheet as the library opens and closes it', () => {
     jest.mocked(Haptics.impactAsync).mockImplementation(() => Promise.resolve());
   });
 
+  it('holds the close impact for a sheet that gives its own', async () => {
+    await render(settingsSheet({ suppressCloseHaptic: true }));
+
+    await libraryReports('dismiss');
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
   it('tells the screen when a dismiss completes', async () => {
     const onDismiss = jest.fn();
     await render(settingsSheet({ onDismiss }));

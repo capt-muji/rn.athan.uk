@@ -186,9 +186,6 @@ export const showLanguageSheet = () => {
   store.get(languageSheetModalAtom)?.present();
 };
 
-/** Dismisses the language bottom sheet */
-export const hideLanguageSheet = () => store.get(languageSheetModalAtom)?.dismiss();
-
 /** Dismisses the settings bottom sheet */
 export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
 

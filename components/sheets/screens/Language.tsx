@@ -1,4 +1,5 @@
 import { BottomSheetFlatList, type BottomSheetFlatListMethods, BottomSheetTextInput } from '@gorhom/bottom-sheet';
+import * as Haptics from 'expo-haptics';
 import type { ComponentType, Ref } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { type FlatListProps, type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -7,16 +8,17 @@ import Animated, { useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } 
 import { IconView } from '@/components/ui';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { currentLocaleId, type LocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { commitLanguagePreference, revealLanguageLoader } from '@/stores/language';
-import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
+import { setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
 import { filterLanguages, type LanguageRow } from './languageFilter';
-import { pickLanguage } from './languageSheet';
+import { commitStagedOnClose, stageLanguage } from './languageSheet';
 import {
+  bandSeat,
   bandTranslateY,
   centrePad,
   offsetForIndex,
@@ -50,8 +52,8 @@ const RowGap = () => <View style={styles.rowGap} />;
  * The language sheet as a wheel (T-476): the list settles row by row on its centreline, a faint dim
  * band rides the row a stop would select, and the purple stays on the locale in force for the whole
  * session with the sheet open. The search field is pinned in the card's top piece and filters the
- * rows by name (T-451). A pick commits on the tap and closes (D47's no-cancel); the loader covers the
- * wait.
+ * rows by name (T-451). Only a tap stages a choice; the sheet's close is the one commit boundary (D47's
+ * no-cancel), and the loader covers the wait.
  */
 export default function BottomSheetLanguage() {
   const active = currentLocaleId();
@@ -68,7 +70,14 @@ export default function BottomSheetLanguage() {
   );
 
   const listRef = useRef<BottomSheetFlatListMethods | null>(null);
+  const stagedRef = useRef<LocaleId | null>(null);
   const scrollY = useSharedValue(0);
+  // The seat the wheel last settled on, so a drag ticks once per row it newly brings to the centre
+  const lastSeat = useSharedValue(0);
+
+  const tickSelection = useCallback(() => {
+    void Haptics.selectionAsync();
+  }, []);
 
   const handleListLayout = useCallback((e: LayoutChangeEvent) => {
     setListHeight(e.nativeEvent.layout.height);
@@ -86,10 +95,44 @@ export default function BottomSheetLanguage() {
 
     const offset = offsetForIndex(metrics, seat >= 0 ? seat : 0);
     scrollY.value = offset;
+    lastSeat.value = bandSeat(metrics, offset);
     listRef.current?.scrollToOffset({ offset, animated: false });
-  }, [presented, metrics, seat, listHeight, rowHeight, scrollY]);
+  }, [presented, metrics, seat, listHeight, rowHeight, scrollY, lastSeat]);
 
-  const scrollHandler = useAnimatedScrollHandler(wheelScrollHandler(scrollY), [scrollY]);
+  // A staged row the filter removes is incoherent: the wheel drops it, and the close then changes nothing
+  useEffect(() => {
+    const staged = stagedRef.current;
+    if (staged === null) return;
+    if (rows.some((entry) => entry.id === staged)) return;
+    stagedRef.current = null;
+  }, [rows]);
+
+  const scrollHandler = useAnimatedScrollHandler(wheelScrollHandler(metrics, scrollY, lastSeat, tickSelection), [
+    metrics,
+    scrollY,
+    lastSeat,
+    tickSelection,
+  ]);
+
+  // The tap is the only thing that stages: the wheel ticks, the row becomes the candidate the close
+  // carries, and the animated scroll rides the faint band onto it
+  const stageRow = useCallback(
+    (id: LocaleId, index: number) => {
+      stagedRef.current = stageLanguage(id, tickSelection);
+      listRef.current?.scrollToOffset({ offset: offsetForIndex(metrics, index), animated: true });
+    },
+    [metrics, tickSelection]
+  );
+
+  const handleDismiss = useCallback(() => {
+    // Read and clear the staged row before any state write: the query clear below re-derives the
+    // rows, and no reset may race the close's commit
+    const staged = stagedRef.current;
+    stagedRef.current = null;
+    commitStagedOnClose(staged, active, revealLanguageLoader, commitLanguagePreference);
+    setQuery('');
+    setPresented(false);
+  }, [active]);
 
   const bandStyle = useAnimatedStyle(
     () => ({
@@ -142,13 +185,11 @@ export default function BottomSheetLanguage() {
       stackBehavior={'push'}
       pinned={cardTop}
       hostsScrollable
+      suppressCloseHaptic
       keyboardBehavior={'interactive'}
       keyboardBlurBehavior={'restore'}
       onPresent={() => setPresented(true)}
-      onDismiss={() => {
-        setPresented(false);
-        setQuery('');
-      }}>
+      onDismiss={handleDismiss}>
       <View style={styles.cardBody}>
         <View style={styles.wheel}>
           {/* The clip is the viewport gate: neither band can paint over the card on a far scroll */}
@@ -166,9 +207,7 @@ export default function BottomSheetLanguage() {
             renderItem={({ item, index }) => (
               <Pressable
                 style={styles.option}
-                onPress={() =>
-                  pickLanguage(item.id, active, commitLanguagePreference, hideLanguageSheet, revealLanguageLoader)
-                }
+                onPress={() => stageRow(item.id, index)}
                 onLayout={index === 0 ? handleItemLayout : undefined}
                 accessibilityRole={'radio'}
                 // Which language is in force is carried by the highlight and this state,

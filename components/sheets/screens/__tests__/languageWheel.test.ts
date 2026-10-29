@@ -3,9 +3,14 @@
  * offsets, the centre float the faint band reads, both bands' seats, and the scroll handler's one write
  */
 
+// The wheel's scroll handler hands its detent to the JS thread, and the unit project runs without the
+// animation runtime: the seam is the identity here, so the edge can be counted
+jest.mock('react-native-reanimated', () => ({ runOnJS: (fn: () => void) => fn }));
+
 import { SPACING } from '@/shared/constants';
 
 import {
+  bandSeat,
   bandTranslateY,
   centreFloat,
   centrePad,
@@ -13,6 +18,7 @@ import {
   rowPitch,
   seatTranslateY,
   snapOffsets,
+  stagesLanguageChange,
   type WheelMetrics,
   wheelScrollHandler,
 } from '../languageWheel';
@@ -95,11 +101,52 @@ describe('the language wheel’s geometry', () => {
 });
 
 describe('the wheel’s scroll handler', () => {
-  it('writes the list’s own scroll position, which is the one value both bands ride', () => {
+  const handlerFor = () => {
     const scrollY = { value: 0 };
+    const lastSeat = { value: 0 };
+    const onDetent = jest.fn();
+    return { scrollY, lastSeat, onDetent, handle: wheelScrollHandler(wheel(), scrollY, lastSeat, onDetent) };
+  };
 
-    wheelScrollHandler(scrollY)({ contentOffset: { y: 96 } });
+  it('writes the list’s own scroll position, which is the one value both bands ride', () => {
+    const { scrollY, handle } = handlerFor();
+
+    handle({ contentOffset: { y: 96 } });
 
     expect(scrollY.value).toBe(96);
+  });
+
+  it('ticks once for the row that newly holds the centreline, and not again while it holds it', () => {
+    const { lastSeat, onDetent, handle } = handlerFor();
+
+    handle({ contentOffset: { y: 24 } });
+
+    expect(onDetent).toHaveBeenCalledTimes(1);
+    expect(lastSeat.value).toBe(1);
+
+    handle({ contentOffset: { y: 30 } });
+    expect(onDetent).toHaveBeenCalledTimes(1);
+
+    handle({ contentOffset: { y: 96 } });
+    expect(onDetent).toHaveBeenCalledTimes(2);
+    expect(lastSeat.value).toBe(2);
+  });
+});
+
+describe('the staged-commit guard', () => {
+  it('commits only a staged row that is not the locale already in force', () => {
+    expect(stagesLanguageChange('ar', 'en')).toBe(true);
+    expect(stagesLanguageChange('en', 'en')).toBe(false);
+    expect(stagesLanguageChange(null, 'en')).toBe(false);
+  });
+});
+
+describe('the band’s seat', () => {
+  it('rounds to the row nearest the centreline, and never past either end', () => {
+    const metrics = wheel();
+
+    expect(bandSeat(metrics, offsetForIndex(metrics, 2))).toBe(2);
+    expect(bandSeat(metrics, 24)).toBe(1);
+    expect(bandSeat(metrics, -500)).toBe(0);
   });
 });
