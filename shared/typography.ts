@@ -256,6 +256,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ckb: URDU,
   ku: LATIN,
   yo: YORUBA,
+  jv: LATIN,
+  su: LATIN,
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,

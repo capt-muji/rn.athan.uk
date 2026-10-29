@@ -39,6 +39,8 @@ const SIX_NAMES = [
   'Azərbaycanca',
   'Bahasa Indonesia',
   'Bahasa Melayu',
+  'Basa Jawa',
+  'Basa Sunda',
   'Bosanski',
   'Deutsch',
   'English',
@@ -189,8 +191,9 @@ describe('the language sheet, Friday 11 September 2026 at 14:00', () => {
 
     expect(highlight().isShown).toBe(true);
     expect(highlight().height).toBe(44);
-    // English sits sixth, after the Latin latecomers: the seat is five rows and five gaps below the list's top
-    expect(highlight().seat).toBe(5 * 44 + 5 * SPACING.xs);
+    // English sits after every Latin row that sorts before it: the seat is one row and one gap per row above
+    const englishRow = SIX_NAMES.indexOf('English');
+    expect(highlight().seat).toBe(englishRow * 44 + englishRow * SPACING.xs);
   });
 
   it('marks the persisted pick as the selected row when the sheet opens again', async () => {

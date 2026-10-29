@@ -469,6 +469,32 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'láti sọdọ̀tun',
       catchBody: 'Ṣí áàpù láti sọdọ̀tun',
     },
+    jv: {
+      subtitle: 'Wektu sholat kanggo London',
+      inline: 'Athan — wektu sholat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak kanggo mbukak wektu',
+      staleTitle: 'Wis lawas',
+      staleBody: 'Bukak app kanggo gawe anyar',
+      staleInline: 'Athan — bukak kanggo gawe anyar',
+      refreshLine: 'Bukak Athan kanggo gawe anyar',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'kanggo gawe anyar',
+      catchBody: 'Bukak app kanggo gawe anyar',
+    },
+    su: {
+      subtitle: 'Waktu solat pikeun London',
+      inline: 'Athan — waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka pikeun ngamuat waktu',
+      staleTitle: 'Geus kolot',
+      staleBody: 'Buka aplikasi pikeun nyegerkeun',
+      staleInline: 'Athan — buka pikeun nyegerkeun',
+      refreshLine: 'Buka Athan pikeun nyegerkeun',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'pikeun nyegerkeun',
+      catchBody: 'Buka aplikasi pikeun nyegerkeun',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -517,6 +543,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'ckb',
         'ku',
         'yo',
+        'jv',
+        'su',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1096,6 +1124,32 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'láti sọdọ̀tun',
       catchBody: 'Ṣí áàpù láti sọdọ̀tun',
     },
+    jv: {
+      subtitle: 'Wektu sholat kanggo London',
+      inline: 'Athan — wektu sholat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak kanggo mbukak wektu',
+      staleTitle: 'Wis lawas',
+      staleBody: 'Bukak app kanggo gawe anyar',
+      staleInline: 'Athan — bukak kanggo gawe anyar',
+      refreshLine: 'Bukak Athan kanggo gawe anyar',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'kanggo gawe anyar',
+      catchBody: 'Bukak app kanggo gawe anyar',
+    },
+    su: {
+      subtitle: 'Waktu solat pikeun London',
+      inline: 'Athan — waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka pikeun ngamuat waktu',
+      staleTitle: 'Geus kolot',
+      staleBody: 'Buka aplikasi pikeun nyegerkeun',
+      staleInline: 'Athan — buka pikeun nyegerkeun',
+      refreshLine: 'Buka Athan pikeun nyegerkeun',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'pikeun nyegerkeun',
+      catchBody: 'Buka aplikasi pikeun nyegerkeun',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1144,6 +1198,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'ckb',
         'ku',
         'yo',
+        'jv',
+        'su',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1712,6 +1768,32 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'láti sọdọ̀tun',
       catchBody: 'Ṣí áàpù láti sọdọ̀tun',
     },
+    jv: {
+      subtitle: 'Wektu sholat kanggo London',
+      inline: 'Athan — wektu sholat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak kanggo mbukak wektu',
+      staleTitle: 'Wis lawas',
+      staleBody: 'Bukak app kanggo gawe anyar',
+      staleInline: 'Athan — bukak kanggo gawe anyar',
+      refreshLine: 'Bukak Athan kanggo gawe anyar',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'kanggo gawe anyar',
+      catchBody: 'Bukak app kanggo gawe anyar',
+    },
+    su: {
+      subtitle: 'Waktu solat pikeun London',
+      inline: 'Athan — waktu solat',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Buka pikeun ngamuat waktu',
+      staleTitle: 'Geus kolot',
+      staleBody: 'Buka aplikasi pikeun nyegerkeun',
+      staleInline: 'Athan — buka pikeun nyegerkeun',
+      refreshLine: 'Buka Athan pikeun nyegerkeun',
+      refreshLead: 'Buka Athan',
+      refreshTail: 'pikeun nyegerkeun',
+      catchBody: 'Buka aplikasi pikeun nyegerkeun',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1760,6 +1842,8 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'ckb',
         'ku',
         'yo',
+        'jv',
+        'su',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? zhKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

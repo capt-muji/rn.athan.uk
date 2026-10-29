@@ -767,5 +767,53 @@
       "Extra Times (Layout 3)": "Àkókò àfikún (Ìṣètò 3)",
       "Next extra time with a countdown.": "Àkókò àfikún tó ń bọ̀ pẹ̀lú ìkàsí."
     }
+  },
+  "jv": {
+    "NSLocationWhenInUseUsageDescription": "Panggonanmu dipigunakaké kanggo nemtokaké arah Mekah saka panggonanmu. Ora tau metu saka telponmu.",
+    "NSUserNotificationsUsageDescription": "Tampa kabar wektu sholat",
+    "gallery": {
+      "Next Prayer (Light)": "Sholat sabanjuré (Padhang)",
+      "A countdown to the next prayer.": "Cacah mudhun menyang sholat sabanjuré.",
+      "Extra Times (Light)": "Wektu tambahan (Padhang)",
+      "A countdown to the next extra time.": "Cacah mudhun menyang wektu tambahan sabanjuré.",
+      "Next Prayer (Dark)": "Sholat sabanjuré (Peteng)",
+      "Extra Times (Dark)": "Wektu tambahan (Peteng)",
+      "Next Prayer (Layout 1)": "Sholat sabanjuré (Tata 1)",
+      "Countdown to the next prayer.": "Cacah mudhun menyang sholat sabanjuré.",
+      "Extra Times (Layout 1)": "Wektu tambahan (Tata 1)",
+      "Countdown to the next extra time.": "Cacah mudhun menyang wektu tambahan sabanjuré.",
+      "Next Prayer (Layout 2)": "Sholat sabanjuré (Tata 2)",
+      "Next prayer time.": "Wektu sholat sabanjuré.",
+      "Extra Times (Layout 2)": "Wektu tambahan (Tata 2)",
+      "Next extra time.": "Wektu tambahan sabanjuré.",
+      "Next Prayer (Layout 3)": "Sholat sabanjuré (Tata 3)",
+      "Next prayer time with a countdown.": "Wektu sholat sabanjuré kanthi cacah mudhun.",
+      "Extra Times (Layout 3)": "Wektu tambahan (Tata 3)",
+      "Next extra time with a countdown.": "Wektu tambahan sabanjuré kanthi cacah mudhun."
+    }
+  },
+  "su": {
+    "NSLocationWhenInUseUsageDescription": "Lokasi anjeun dipaké pikeun nangtukeun arah Mekah ti tempat anjeun. Éta henteu pernah kaluar tina telepon anjeun.",
+    "NSUserNotificationsUsageDescription": "Narima iber waktu solat",
+    "gallery": {
+      "Next Prayer (Light)": "Solat salajengna (Caang)",
+      "A countdown to the next prayer.": "Itungan mundur kana solat salajengna.",
+      "Extra Times (Light)": "Waktu tambahan (Caang)",
+      "A countdown to the next extra time.": "Itungan mundur kana waktu tambahan salajengna.",
+      "Next Prayer (Dark)": "Solat salajengna (Poék)",
+      "Extra Times (Dark)": "Waktu tambahan (Poék)",
+      "Next Prayer (Layout 1)": "Solat salajengna (Tata 1)",
+      "Countdown to the next prayer.": "Itungan mundur kana solat salajengna.",
+      "Extra Times (Layout 1)": "Waktu tambahan (Tata 1)",
+      "Countdown to the next extra time.": "Itungan mundur kana waktu tambahan salajengna.",
+      "Next Prayer (Layout 2)": "Solat salajengna (Tata 2)",
+      "Next prayer time.": "Waktu solat salajengna.",
+      "Extra Times (Layout 2)": "Waktu tambahan (Tata 2)",
+      "Next extra time.": "Waktu tambahan salajengna.",
+      "Next Prayer (Layout 3)": "Solat salajengna (Tata 3)",
+      "Next prayer time with a countdown.": "Waktu solat salajengna kalawan itungan mundur.",
+      "Extra Times (Layout 3)": "Waktu tambahan (Tata 3)",
+      "Next extra time with a countdown.": "Waktu tambahan salajengna kalawan itungan mundur."
+    }
   }
 }
