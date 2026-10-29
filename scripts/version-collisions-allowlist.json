@@ -198,5 +198,9 @@
   {
     "version": "2.38.1",
     "reason": "2026-10-29 T-452 and T-453 both step to 2.38.1 from their own 2.38.0 tips; the standing ruling: one branch takes 2.38.2 and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.41.6",
+    "reason": "2026-10-29 three lanes step from uat's 2.41.5 in the same window (lane2/T-489's height-and-ink step, lane3/T-490's placer step, lane1/T-491's widget-extension step); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

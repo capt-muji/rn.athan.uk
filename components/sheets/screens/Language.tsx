@@ -20,6 +20,7 @@ import { commitStagedOnClose, settleStageLanguage, stageLanguage } from './langu
 import {
   bandTranslateY,
   centrePad,
+  rowPitch,
   seatTranslateY,
   snapOffsets,
   type WheelScrollState,
@@ -32,6 +33,9 @@ import {
 const ITEM_GAP = SPACING.xs;
 const SEARCH_GLYPH_SIZE = 16;
 const BAND_OPACITY = 0.3;
+// The rows mounted before the list has scrolled: the tallest sheet slot at 85% on the shortest
+// supported phone shows under 11 viewport rows, so 12 covers it and the rest mount as reached
+const WINDOW_ROWS = 12;
 
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
@@ -247,9 +251,16 @@ export default function BottomSheetLanguage() {
             }}
             onLayout={handleListLayout}
             snapToOffsets={snapOffsets(metrics)}
-            // Every row stays mounted: the picker's census reads them all, and the wheel measures
-            // the first one
-            initialNumToRender={Math.max(rows.length, 1)}
+            // The measured pitch is the list's own geometry: the reseed jump and the window read a
+            // row's slot from it instead of waiting on a measuring mount
+            getItemLayout={
+              rowHeight > 0
+                ? (_data, index) => ({ length: rowHeight, offset: index * rowPitch(metrics), index })
+                : undefined
+            }
+            // The window mounts what the slot can show; the whole picker rides in the data, reached
+            // by scroll or by search
+            initialNumToRender={WINDOW_ROWS}
             showsVerticalScrollIndicator={false}
             onScroll={scrollHandler}
             onScrollBeginDrag={handleScrollBegin}
