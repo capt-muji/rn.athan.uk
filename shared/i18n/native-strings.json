@@ -1319,5 +1319,77 @@
       "Extra Times (Layout 3)": "Yapa pachakuna (Rantiy 3)",
       "Next extra time with a countdown.": "Kutichiywan qatiq yapa pacha."
     }
+  },
+  "min": {
+    "NSLocationWhenInUseUsageDescription": "Lokasi sanak pagunoan untuak maila arah Makkah dari tampek sanak barado. Lokasi indak pernah kalua dari telepon sanak.",
+    "NSUserNotificationsUsageDescription": "Mandapek pemberitahuan wakatu sumbayang",
+    "gallery": {
+      "Next Prayer (Light)": "Sumbayang barikuiknyo (Tarang)",
+      "A countdown to the next prayer.": "Baliwaik wakatu ka sumbayang barikuiknyo.",
+      "Extra Times (Light)": "Wakatu tambahan (Tarang)",
+      "A countdown to the next extra time.": "Baliwaik wakatu ka wakatu tambahan barikuiknyo.",
+      "Next Prayer (Dark)": "Sumbayang barikuiknyo (Gelap)",
+      "Extra Times (Dark)": "Wakatu tambahan (Gelap)",
+      "Next Prayer (Layout 1)": "Sumbayang barikuiknyo (Bantuak 1)",
+      "Countdown to the next prayer.": "Baliwaik wakatu ka sumbayang barikuiknyo.",
+      "Extra Times (Layout 1)": "Wakatu tambahan (Bantuak 1)",
+      "Countdown to the next extra time.": "Baliwaik wakatu ka wakatu tambahan barikuiknyo.",
+      "Next Prayer (Layout 2)": "Sumbayang barikuiknyo (Bantuak 2)",
+      "Next prayer time.": "Wakatu sumbayang barikuiknyo.",
+      "Extra Times (Layout 2)": "Wakatu tambahan (Bantuak 2)",
+      "Next extra time.": "Wakatu tambahan barikuiknyo.",
+      "Next Prayer (Layout 3)": "Sumbayang barikuiknyo (Bantuak 3)",
+      "Next prayer time with a countdown.": "Wakatu sumbayang barikuiknyo jo baliwaiknyo.",
+      "Extra Times (Layout 3)": "Wakatu tambahan (Bantuak 3)",
+      "Next extra time with a countdown.": "Wakatu tambahan barikuiknyo jo baliwaiknyo."
+    }
+  },
+  "mad": {
+    "NSLocationWhenInUseUsageDescription": "Lokasina bâḍâ èangghuy ghâbây ngoccingi arahna Makkah ḍâri kennengan bâḍâ. Lokasi ta’ perna kalowar ḍâri tilpon bâḍâ.",
+    "NSUserNotificationsUsageDescription": "Narèma kabheratân bakto sembahyang",
+    "gallery": {
+      "Next Prayer (Light)": "Sembahyang saterrossa (Terrerang)",
+      "A countdown to the next prayer.": "Pangèbâna bakto ka sembahyang saterrossa.",
+      "Extra Times (Light)": "Bakto tambâ’ân (Terrerang)",
+      "A countdown to the next extra time.": "Pangèbâna bakto ka bakto tambâ’ân saterrossa.",
+      "Next Prayer (Dark)": "Sembahyang saterrossa (Gelap)",
+      "Extra Times (Dark)": "Bakto tambâ’ân (Gelap)",
+      "Next Prayer (Layout 1)": "Sembahyang saterrossa (Bentuk 1)",
+      "Countdown to the next prayer.": "Pangèbâna bakto ka sembahyang saterrossa.",
+      "Extra Times (Layout 1)": "Bakto tambâ’ân (Bentuk 1)",
+      "Countdown to the next extra time.": "Pangèbâna bakto ka bakto tambâ’ân saterrossa.",
+      "Next Prayer (Layout 2)": "Sembahyang saterrossa (Bentuk 2)",
+      "Next prayer time.": "Bakto sembahyang saterrossa.",
+      "Extra Times (Layout 2)": "Bakto tambâ’ân (Bentuk 2)",
+      "Next extra time.": "Bakto tambâ’ân saterrossa.",
+      "Next Prayer (Layout 3)": "Sembahyang saterrossa (Bentuk 3)",
+      "Next prayer time with a countdown.": "Bakto sembahyang saterrossa kalabân pangèbâna.",
+      "Extra Times (Layout 3)": "Bakto tambâ’ân (Bentuk 3)",
+      "Next extra time with a countdown.": "Bakto tambâ’ân saterrossa kalabân pangèbâna."
+    }
+  },
+  "bug": {
+    "NSLocationWhenInUseUsageDescription": "Lokasimu paguno ri maddiroi arakna Makkah ri tempomu. Lokasi teai perna kalowar ri HP mu.",
+    "NSUserNotificationsUsageDescription": "Narima kabaraka wettu sumpajang",
+    "gallery": {
+      "Next Prayer (Light)": "Sumpajang selaenna (Terang)",
+      "A countdown to the next prayer.": "Baro wettu ri sumpajang selaenna.",
+      "Extra Times (Light)": "Wettu tamba (Terang)",
+      "A countdown to the next extra time.": "Baro wettu ri wettu tamba selaenna.",
+      "Next Prayer (Dark)": "Sumpajang selaenna (Gelap)",
+      "Extra Times (Dark)": "Wettu tamba (Gelap)",
+      "Next Prayer (Layout 1)": "Sumpajang selaenna (Bentuk 1)",
+      "Countdown to the next prayer.": "Baro wettu ri sumpajang selaenna.",
+      "Extra Times (Layout 1)": "Wettu tamba (Bentuk 1)",
+      "Countdown to the next extra time.": "Baro wettu ri wettu tamba selaenna.",
+      "Next Prayer (Layout 2)": "Sumpajang selaenna (Bentuk 2)",
+      "Next prayer time.": "Wettu sumpajang selaenna.",
+      "Extra Times (Layout 2)": "Wettu tamba (Bentuk 2)",
+      "Next extra time.": "Wettu tamba selaenna.",
+      "Next Prayer (Layout 3)": "Sumpajang selaenna (Bentuk 3)",
+      "Next prayer time with a countdown.": "Wettu sumpajang selaenna ri baro wettu.",
+      "Extra Times (Layout 3)": "Wettu tamba (Bentuk 3)",
+      "Next extra time with a countdown.": "Wettu tamba selaenna ri baro wettu."
+    }
   }
 }

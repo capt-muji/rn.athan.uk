@@ -5741,7 +5741,7 @@
         "note": "mad.wikipedia’s Ramadan series carries Subuh for the dawn prayer in the official Madurese orthography."
       },
       "Sunrise": {
-        "text": "Mata’are kalowar",
+        "text": "Mata'are kalowar",
         "source": "derived",
         "confidence": "low",
         "note": "Mata’are (sun) + kalowar (comes out), Madurese’s own compound; the articles borrow the Indonesian form where they name the row at all."
@@ -5777,10 +5777,10 @@
         "note": "Tengnga (middle) + bengi (night), Madurese’s own words."
       },
       "Last Third": {
-        "text": "Ahir bengi tello’ bhagi",
+        "text": "Ahir bengi tello' bhagi",
         "source": "derived",
         "confidence": "low",
-        "note": "Ahir (last) + bengi (night) + tello’ bhagi (three parts, a third), Madurese’s own vocabulary with the Arabic ahir the pesantren speech carries."
+        "note": "Ahir (last) + bengi (night) + tello' bhagi (three parts, a third), Madurese’s own vocabulary with the Arabic ahir the pesantren speech carries."
       },
       "Suhoor": {
         "text": "Sahur",
@@ -5809,7 +5809,7 @@
         "note": "Derived from the sourced names; antara ... ban is between."
       },
       "Start of the last third of the night": {
-        "text": "Onorna bengi tello’ bhagi",
+        "text": "Onorna bengi tello' bhagi",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; onorna is the beginning."
@@ -5905,7 +5905,7 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ri tengnga antamengi Magrib ri Subu",
+        "text": "Ri tengnga antamengi Magrib ri Subu'",
         "source": "derived",
         "confidence": "low",
         "note": "Derived from the sourced names; antamengi is between, recorded derivation."

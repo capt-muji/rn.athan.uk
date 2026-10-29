@@ -768,6 +768,45 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       refreshTail: 'musuqyachinapaq',
       catchBody: 'Musuqyachinapaq programata kichay',
     },
+    min: {
+      subtitle: 'Wakatu sumbayang untuak London',
+      inline: 'Athan — wakatu sumbayang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak untuak mamuat wakatu',
+      staleTitle: 'Alah lamo',
+      staleBody: 'Bukak aplikasi untuak mambarui',
+      staleInline: 'Athan — bukak untuak mambarui',
+      refreshLine: 'Bukak Athan untuak mambarui',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'untuak mambarui',
+      catchBody: 'Bukak aplikasi untuak mambarui',
+    },
+    mad: {
+      subtitle: 'Bakto sembahyang ghâbây London',
+      inline: 'Athan — bakto sembahyang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak ghâbây amampatè bakto',
+      staleTitle: 'La lamo',
+      staleBody: 'Bukak aplikasi ghâbây pabhârhârân',
+      staleInline: 'Athan — bukak ghâbây pabhârhârân',
+      refreshLine: 'Bukak Athan ghâbây pabhârhârân',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'ghâbây pabhârhârân',
+      catchBody: 'Bukak aplikasi ghâbây pabhârhârân',
+    },
+    bug: {
+      subtitle: 'Wettu sumpajang ri London',
+      inline: 'Athan — wettu sumpajang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak pola amuat wettu',
+      staleTitle: 'Lao la',
+      staleBody: 'Bukak aplikasi pola pabbaru',
+      staleInline: 'Athan — bukak pola pabbaru',
+      refreshLine: 'Bukak Athan pola pabbaru',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'pola pabbaru',
+      catchBody: 'Bukak aplikasi pola pabbaru',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -841,6 +880,9 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
         'ce',
         'uk',
         'qu',
+        'min',
+        'mad',
+        'bug',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -1719,6 +1761,45 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'musuqyachinapaq',
       catchBody: 'Musuqyachinapaq programata kichay',
     },
+    min: {
+      subtitle: 'Wakatu sumbayang untuak London',
+      inline: 'Athan — wakatu sumbayang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak untuak mamuat wakatu',
+      staleTitle: 'Alah lamo',
+      staleBody: 'Bukak aplikasi untuak mambarui',
+      staleInline: 'Athan — bukak untuak mambarui',
+      refreshLine: 'Bukak Athan untuak mambarui',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'untuak mambarui',
+      catchBody: 'Bukak aplikasi untuak mambarui',
+    },
+    mad: {
+      subtitle: 'Bakto sembahyang ghâbây London',
+      inline: 'Athan — bakto sembahyang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak ghâbây amampatè bakto',
+      staleTitle: 'La lamo',
+      staleBody: 'Bukak aplikasi ghâbây pabhârhârân',
+      staleInline: 'Athan — bukak ghâbây pabhârhârân',
+      refreshLine: 'Bukak Athan ghâbây pabhârhârân',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'ghâbây pabhârhârân',
+      catchBody: 'Bukak aplikasi ghâbây pabhârhârân',
+    },
+    bug: {
+      subtitle: 'Wettu sumpajang ri London',
+      inline: 'Athan — wettu sumpajang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak pola amuat wettu',
+      staleTitle: 'Lao la',
+      staleBody: 'Bukak aplikasi pola pabbaru',
+      staleInline: 'Athan — bukak pola pabbaru',
+      refreshLine: 'Bukak Athan pola pabbaru',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'pola pabbaru',
+      catchBody: 'Bukak aplikasi pola pabbaru',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -1792,6 +1873,9 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
         'ce',
         'uk',
         'qu',
+        'min',
+        'mad',
+        'bug',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];
@@ -2659,6 +2743,45 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       refreshTail: 'musuqyachinapaq',
       catchBody: 'Musuqyachinapaq programata kichay',
     },
+    min: {
+      subtitle: 'Wakatu sumbayang untuak London',
+      inline: 'Athan — wakatu sumbayang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak untuak mamuat wakatu',
+      staleTitle: 'Alah lamo',
+      staleBody: 'Bukak aplikasi untuak mambarui',
+      staleInline: 'Athan — bukak untuak mambarui',
+      refreshLine: 'Bukak Athan untuak mambarui',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'untuak mambarui',
+      catchBody: 'Bukak aplikasi untuak mambarui',
+    },
+    mad: {
+      subtitle: 'Bakto sembahyang ghâbây London',
+      inline: 'Athan — bakto sembahyang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak ghâbây amampatè bakto',
+      staleTitle: 'La lamo',
+      staleBody: 'Bukak aplikasi ghâbây pabhârhârân',
+      staleInline: 'Athan — bukak ghâbây pabhârhârân',
+      refreshLine: 'Bukak Athan ghâbây pabhârhârân',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'ghâbây pabhârhârân',
+      catchBody: 'Bukak aplikasi ghâbây pabhârhârân',
+    },
+    bug: {
+      subtitle: 'Wettu sumpajang ri London',
+      inline: 'Athan — wettu sumpajang',
+      rectTitle: 'ATHAN',
+      rectSubtitle: 'Bukak pola amuat wettu',
+      staleTitle: 'Lao la',
+      staleBody: 'Bukak aplikasi pola pabbaru',
+      staleInline: 'Athan — bukak pola pabbaru',
+      refreshLine: 'Bukak Athan pola pabbaru',
+      refreshLead: 'Bukak Athan',
+      refreshTail: 'pola pabbaru',
+      catchBody: 'Bukak aplikasi pola pabbaru',
+    },
   } as const;
   const deviceLocale = (globalThis as { __expoWidgetDeviceLocale?: string }).__expoWidgetDeviceLocale ?? '';
   // Decision 9's zh mapping, the resolver's own rule: a zh tag with no script
@@ -2732,6 +2855,9 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
         'ce',
         'uk',
         'qu',
+        'min',
+        'mad',
+        'bug',
       ] as const
     ).find((code) => deviceLocale === code || deviceLocale.startsWith(`${code}-`)) ?? fallbackKeyFor(deviceLocale);
   const staticRow = STATIC[localeKey ?? 'en'];

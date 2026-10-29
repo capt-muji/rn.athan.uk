@@ -93,6 +93,9 @@ const LOCALES = [
   'ce',
   'uk',
   'qu',
+  'min',
+  'mad',
+  'bug',
 ];
 const englishHash = createHash('sha256').update(JSON.stringify(catalog)).digest('hex');
 

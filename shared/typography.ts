@@ -228,7 +228,10 @@ const HANT: LocaleTypography = {
 // No shipped face carries the African Latin letters: Roboto and Rubik both lack
 // ɛ ɔ ɲ (U+025B U+0254 U+0272) and ɓ ɗ ƴ (U+0253 U+0257 U+01B4), measured by explicit
 // codepoint in both weights of all twenty bundled TTFs (plan T-428 decision 4), so
-// Bambara and Fulfulde name the bundled Noto Sans pair. Its hhea box is 1.362em
+// Bambara and Fulfulde name the bundled Noto Sans pair. Madurese joins them (plan
+// T-454 decision 4): Roboto lacks its ḍ U+1E0D and Ḍ U+1E0C in both weights while
+// this pair carries both, measured by explicit codepoint over the bundled faces.
+// The pair's hhea box is 1.362em
 // (ascent 1069, descent -293, UPM 1000, both weights) while its win ink spans
 // 1.519em (winAscent 1124, winDescent 395), so the box-bearing row-106 law applies
 // and ink-bearing surfaces take a script line that clears the measured ink: 1.55em
@@ -429,6 +432,14 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // codepoint in both weights (measured with fontTools, plan T-454 decision 4), so
   // qu takes the LATIN record
   qu: LATIN,
+  // Roboto carries Minangkabau's and Bugis's whole keyed surfaces by explicit
+  // codepoint in both weights (measured with fontTools, plan T-454 decision 4),
+  // apostrophes included, so both take the LATIN record
+  min: LATIN,
+  bug: LATIN,
+  // Roboto lacks Madurese's ḍ Ḍ in both weights while the AFRICAN pair carries
+  // them (measured, plan T-454 decision 4), so mad rides that pair's record
+  mad: AFRICAN,
 };
 
 /**

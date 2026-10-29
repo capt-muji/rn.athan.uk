@@ -117,6 +117,7 @@ describe('typographyFor', () => {
         id !== 'bm' &&
         id !== 'ff' &&
         id !== 'my' &&
+        id !== 'mad' &&
         id !== 'te' &&
         id !== 'gu' &&
         id !== 'kn' &&
@@ -252,6 +253,17 @@ describe('typographyFor', () => {
       expect(ty.scriptLineHeight?.(14)).toBe(22);
       expect(ty.scriptLineHeight?.(15)).toBe(23);
     }
+  });
+
+  it('resolves mad to the same Noto Sans pair, Roboto lacking its ḍ (plan T-454 decision 4)', () => {
+    // Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights while the Noto Sans pair
+    // carries them (measured by explicit codepoint over the bundled TTFs), and no
+    // other bundled face carries them, so Madurese rides the AFRICAN record's pair
+    // and its 1.55em script line
+    const ty = typographyFor('mad');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(22);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
   it('resolves te to the Telugu pair with the measured script line box', () => {

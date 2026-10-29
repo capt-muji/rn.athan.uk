@@ -12,6 +12,7 @@ import { az } from '@/shared/i18n/az';
 import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
+import { bug } from '@/shared/i18n/bug';
 import { ce } from '@/shared/i18n/ce';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
@@ -29,6 +30,8 @@ import { kk } from '@/shared/i18n/kk';
 import { kn } from '@/shared/i18n/kn';
 import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
+import { mad } from '@/shared/i18n/mad';
+import { min } from '@/shared/i18n/min';
 import { ml } from '@/shared/i18n/ml';
 import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
@@ -118,6 +121,9 @@ const CATALOGS: Record<string, Catalog> = {
   ce,
   uk,
   qu,
+  min,
+  mad,
+  bug,
 };
 const LOCALES = Object.keys(CATALOGS);
 const RTL = new Set(['ar', 'ur', 'fa', 'ps']);
