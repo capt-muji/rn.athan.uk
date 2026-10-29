@@ -455,12 +455,15 @@ describe('lock widget renderer', () => {
     }
   });
 
-  it('centres the ticking digits inside their reserved frame', () => {
+  it.each([
+    ['layout 3', () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular')],
+    ['layout 5', () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular')],
+  ])('centres the ticking digits inside their reserved frame on %s', (_label, renderPath) => {
     // Text(timerInterval:) reserves a worst-case width and parks its glyphs
     // against the leading edge of it (the home hero's §13d lesson); without
     // this modifier the countdown ink reads left-aligned on the glass.
-    // Layout 2 carries no countdown.
-    const found = collectTickingModifiers(renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'));
+    // Layouts 1, 3 and 5 tick; layout 2 and layout 4 carry no countdown.
+    const found = collectTickingModifiers(renderPath());
     expect(found).toContainEqual({ modifier: 'multilineTextAlignment', value: 'center' });
     expect(found).toContainEqual({ modifier: 'monospacedDigit', value: undefined });
   });

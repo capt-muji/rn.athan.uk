@@ -322,7 +322,7 @@ describe('push cadence', () => {
     jest.useRealTimers();
   });
 
-  it('pushes each of the fourteen kinds once per refresh and never again on a timer', async () => {
+  it('pushes each of the eighteen kinds once per refresh and never again on a timer', async () => {
     await refreshPrayerWidgets();
 
     expect(widgetPush()).toHaveLength(1);
@@ -336,11 +336,11 @@ describe('push cadence', () => {
     expect(extrasMediumPush()).toHaveLength(1);
     expect(extrasDarkMediumPush()).toHaveLength(1);
 
-    // Every lock layout's kind carries the same push: ten of the fourteen.
+    // Every lock layout's kind carries the same push: ten of the eighteen.
     expect(lockKindPushes()).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
     // A per-minute chain used to fire here, costing a WidgetKit reload on all
-    // fourteen kinds; each reload re-renders that kind's whole timeline, which
+    // eighteen kinds; each reload re-renders that kind's whole timeline, which
     // exhausted the extension's CPU budget (ledger G.1 (git history))
     await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
 

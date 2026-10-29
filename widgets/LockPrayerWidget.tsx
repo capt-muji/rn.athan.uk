@@ -3739,6 +3739,11 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
   }
 };
 
+// One layout, two kinds: identical rendering, different timelines — the
+// standard pair and the extras pair (see widgets/PrayerWidget.tsx).
+export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetStacked);
+export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetStacked);
+
 // A separate self-contained function: the 'widget' directive serializes
 // each body alone, so nothing can be shared across the layouts.
 const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: WidgetEnvironment) => {
@@ -6201,8 +6206,3 @@ export const PrayerLockWidget4 = createWidget('PrayerLockWidget4', AthanLockWidg
 export const ExtrasLockWidget4 = createWidget('ExtrasLockWidget4', AthanLockWidgetTimeBelowName);
 export const PrayerLockWidget5 = createWidget('PrayerLockWidget5', AthanLockWidgetCountdownBelowName);
 export const ExtrasLockWidget5 = createWidget('ExtrasLockWidget5', AthanLockWidgetCountdownBelowName);
-
-// One layout, two kinds: identical rendering, different timelines — the
-// standard pair and the extras pair (see widgets/PrayerWidget.tsx).
-export const PrayerLockWidget3 = createWidget('PrayerLockWidget3', AthanLockWidgetStacked);
-export const ExtrasLockWidget3 = createWidget('ExtrasLockWidget3', AthanLockWidgetStacked);

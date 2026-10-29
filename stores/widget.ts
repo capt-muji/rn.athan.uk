@@ -233,7 +233,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
 };
 
 /**
- * Pushes a fresh timeline to all ten widgets from the cached prayer data —
+ * Pushes a fresh timeline to all eighteen kinds from the cached prayer data —
  * both schedules, rebuilding their sequences so the caches repopulate.
  * Call this wherever fresh data or preferences are known; the per-schedule
  * label-flip timers handle the in-between minute pushes themselves.
