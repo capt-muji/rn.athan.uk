@@ -19,14 +19,19 @@ import { bs } from '@/shared/i18n/bs';
 import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
+import { es } from '@/shared/i18n/es';
 import { fa } from '@/shared/i18n/fa';
 import { fr } from '@/shared/i18n/fr';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
 import { id } from '@/shared/i18n/id';
+import { kk } from '@/shared/i18n/kk';
+import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ml } from '@/shared/i18n/ml';
+import { mr } from '@/shared/i18n/mr';
 import { ms } from '@/shared/i18n/ms';
+import { nl } from '@/shared/i18n/nl';
 import { ps } from '@/shared/i18n/ps';
 import { pt } from '@/shared/i18n/pt';
 import { ru } from '@/shared/i18n/ru';
@@ -34,10 +39,13 @@ import { so } from '@/shared/i18n/so';
 import { sq } from '@/shared/i18n/sq';
 import { sw } from '@/shared/i18n/sw';
 import { ta } from '@/shared/i18n/ta';
+import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
+import { tk } from '@/shared/i18n/tk';
 import { tr } from '@/shared/i18n/tr';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
+import { wo } from '@/shared/i18n/wo';
 import { zhHans } from '@/shared/i18n/zh-Hans';
 import { zhHant } from '@/shared/i18n/zh-Hant';
 
@@ -68,6 +76,14 @@ const CATALOGS: Record<string, Catalog> = {
   ml,
   'zh-Hans': zhHans,
   'zh-Hant': zhHant,
+  es,
+  nl,
+  kk,
+  ky,
+  tg,
+  tk,
+  wo,
+  mr,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');
@@ -144,7 +160,7 @@ describe('the catalog as its own transfer format', () => {
 
   it('carries every catalog at en parity, flat strings only', () => {
     const enKeys = Object.keys(exportTo(en)).sort();
-    expect(Object.keys(CATALOGS)).toHaveLength(26);
+    expect(Object.keys(CATALOGS)).toHaveLength(34);
     for (const [id, cat] of Object.entries(CATALOGS)) {
       const exported = exportTo(cat);
       expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);

@@ -40,6 +40,14 @@ const RAW = {
   ml: require('./ml') as typeof import('./ml'),
   'zh-Hans': require('./zh-Hans') as typeof import('./zh-Hans'),
   'zh-Hant': require('./zh-Hant') as typeof import('./zh-Hant'),
+  es: require('./es') as typeof import('./es'),
+  nl: require('./nl') as typeof import('./nl'),
+  kk: require('./kk') as typeof import('./kk'),
+  ky: require('./ky') as typeof import('./ky'),
+  tg: require('./tg') as typeof import('./tg'),
+  tk: require('./tk') as typeof import('./tk'),
+  wo: require('./wo') as typeof import('./wo'),
+  mr: require('./mr') as typeof import('./mr'),
 } as const;
 perfMark('catalog_require_end');
 
@@ -78,6 +86,14 @@ const MODULES: Record<LocaleId, CatalogModule> = {
   ml: { en: RAW.ml.ml, PRAYER_LABELS: RAW.ml.PRAYER_LABELS },
   'zh-Hans': { en: RAW['zh-Hans'].zhHans, PRAYER_LABELS: RAW['zh-Hans'].PRAYER_LABELS },
   'zh-Hant': { en: RAW['zh-Hant'].zhHant, PRAYER_LABELS: RAW['zh-Hant'].PRAYER_LABELS },
+  es: { en: RAW.es.es, PRAYER_LABELS: RAW.es.PRAYER_LABELS },
+  nl: { en: RAW.nl.nl, PRAYER_LABELS: RAW.nl.PRAYER_LABELS },
+  kk: { en: RAW.kk.kk, PRAYER_LABELS: RAW.kk.PRAYER_LABELS },
+  ky: { en: RAW.ky.ky, PRAYER_LABELS: RAW.ky.PRAYER_LABELS },
+  tg: { en: RAW.tg.tg, PRAYER_LABELS: RAW.tg.PRAYER_LABELS },
+  tk: { en: RAW.tk.tk, PRAYER_LABELS: RAW.tk.PRAYER_LABELS },
+  wo: { en: RAW.wo.wo, PRAYER_LABELS: RAW.wo.PRAYER_LABELS },
+  mr: { en: RAW.mr.mr, PRAYER_LABELS: RAW.mr.PRAYER_LABELS },
 };
 
 export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;

@@ -231,6 +231,31 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ml: MALAYALAM,
   'zh-Hans': HANS,
   'zh-Hant': HANT,
+  // Roboto carries every Spanish diacritic by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  es: LATIN,
+  // Roboto carries every Dutch diacritic by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  nl: LATIN,
+  // Roboto carries every Kazakh letter (ә ғ қ ң ө ұ ү һ і) by explicit codepoint in both
+  // weights (measured with fontTools, plan T-429 decision 6)
+  kk: LATIN,
+  // Roboto carries Kyrgyz's ң ө ү by explicit codepoint in both weights (measured with
+  // fontTools, plan T-429 decision 6)
+  ky: LATIN,
+  // Roboto carries Tajik's ғ ӣ қ ӯ ҳ ҷ by explicit codepoint in both weights (measured
+  // with fontTools, plan T-429 decision 6)
+  tg: LATIN,
+  // Roboto carries Turkmen's ä ç ž ň ö ş ü ý by explicit codepoint in both weights
+  // (measured with fontTools, plan T-429 decision 6)
+  tk: LATIN,
+  // Roboto carries Wolof's ë é à ñ ó by explicit codepoint in both weights (measured
+  // with fontTools, plan T-429 decision 6)
+  wo: LATIN,
+  // Marathi rides the HINDI record's own bundled pair: NotoSansDevanagari carries every
+  // Marathi codepoint the catalog uses in both weights (measured with fontTools, plan
+  // T-429 decision 6), so the same measured 1.5em script box serves
+  mr: HINDI,
 };
 
 /**
