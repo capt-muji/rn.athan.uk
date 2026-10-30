@@ -246,6 +246,20 @@ verification, never infer visuals from pixels alone.
   a close. The 1s default shrinks the exposure window; evening seeds read as
   boundary-adjacent, and a capture whose sheet shows two animations is a
   re-run, not data (the vision read catches it).
+- **A pager swipe audit needs PRE_SWIPE**: every capture force-stops and
+  relaunches onto the standard page, so a recorded extras->std swipe with no
+  pre-swipe measures the first page's overscroll glow — a clean 15-30ms
+  cadence that is NOT a page turn (the vision read catches it: no
+  translation anywhere, a decaying edge glow). `PRE_SWIPE` pre-advances the
+  pager first; the dots are not tappable.
+- **A production build (ENV=prod) carries no marks and no logs**:
+  `shared/perf.ts` gates PERF on `EXPO_PUBLIC_ENV !== 'prod'` and the pino
+  logger is off, so `baseline-compare.sh` cannot run against one and an
+  empty logcat proves nothing — the recorder-free SF read is the only
+  witness. `check:device`'s alarm gate then fails by the phone's own
+  toggles when alerts are off (every bell struck through on the schedule
+  face): read the schedule face for the real times and leave the toggles
+  alone.
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
   `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
   dismiss scrollable sheets. Per campaign directive, iOS is verified by
