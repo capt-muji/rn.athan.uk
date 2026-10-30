@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.42.0',
+  version: '2.42.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -196,7 +196,7 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       // names this release - the modal gate reads stamps, not the build's own version
       titleKey: 'whatsNew.title.checkUpdates',
       bodyKey: 'whatsNew.body.checkUpdates',
-      version: '2.41.24',
+      version: '2.42.1',
     },
     {
       // iOS only: the layouts live in the widget extension, which Android never builds
