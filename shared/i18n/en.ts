@@ -100,9 +100,6 @@ export const en = {
   'notification.reminder': '{name} in {n}',
 
   'sheet.closeToSave': 'Close to save',
-  'language.chooseHint': 'Choose your language',
-  'language.search': 'Search languages',
-  'language.noMatch': 'No languages found',
 
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Notification at prayer time',

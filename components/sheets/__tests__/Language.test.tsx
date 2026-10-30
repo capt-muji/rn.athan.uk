@@ -37,8 +37,6 @@ const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
 const ROW_HEIGHT = 48;
 const PITCH = ROW_HEIGHT + SPACING.xs;
 
-const list = () => screen.getByTestId('language-list');
-
 /** The drawn style of the seat, read as drawn so a hidden seat is read hidden */
 const styleOf = (testID: string) => {
   const node = screen.getByTestId(testID, { includeHiddenElements: true });
@@ -158,15 +156,6 @@ describe('the wheel’s strip', () => {
     expect(screen.queryByTestId('language-band-layer')).toBeNull();
     expect(screen.queryByTestId('language-search')).toBeNull();
     expect(screen.queryByText('No languages found')).toBeNull();
-  });
-
-  it('settles nothing: the list carries no snap offsets, no scroll handler and no detents', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<LanguageSheet />);
-
-    expect(list().props.snapToOffsets).toBeUndefined();
-    expect(list().props.onScroll).toBeUndefined();
-    expect(list().props.getItemLayout).toBeUndefined();
   });
 
   it('pads the card’s own edges only, with no oversized gap above the first row or below the last', async () => {

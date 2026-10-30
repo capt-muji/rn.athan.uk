@@ -105,8 +105,6 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['whatsNew.body.qiblaCompass', 'Added new qibla compass'],
 
   ['sheet.closeToSave', 'Close to save'],
-  ['language.search', 'Search languages'],
-  ['language.noMatch', 'No languages found'],
 
   ['alert.card.athan', 'Athan'],
   ['alert.card.athanHint', 'Notification at prayer time'],

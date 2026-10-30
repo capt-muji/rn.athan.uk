@@ -71,8 +71,8 @@ interface SheetProps {
    */
   hostsScrollable?: boolean;
   /**
-   * Holds the unified close haptic. A sheet that gives its own close feedback — the language wheel's
-   * commit tick — opts out, so a close that carries nothing stays silent
+   * Holds the unified close haptic. A sheet that gives its own close feedback opts out, so a
+   * close that carries nothing stays silent
    */
   suppressCloseHaptic?: boolean;
   /**
