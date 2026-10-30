@@ -312,7 +312,8 @@ if len(files) >= 2:
 EOF
 
 if [[ -n $SWIPE ]]; then
-  INTERACTION="a swipe from (${swipe_parts[1]},${swipe_parts[2]}) to (${swipe_parts[3]},${swipe_parts[4]}) over ${swipe_parts[5]:-250}ms"
+  sp=(${=SWIPE})
+  INTERACTION="a swipe from (${sp[1]},${sp[2]}) to (${sp[3]},${sp[4]}) over ${sp[5]:-250}ms"
 else
   INTERACTION="a tap at ($TAPX,$TAPY)"
 fi
