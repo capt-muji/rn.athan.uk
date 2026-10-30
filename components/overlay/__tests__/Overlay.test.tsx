@@ -7,6 +7,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
 import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
@@ -192,6 +193,11 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(StyleSheet.flatten(screen.getByText('Halfway between Magrib and Fajr').props.style).opacity).toBe(1);
     const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
     expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
+    // No band interpolation fires anywhere on this path: the words' colour is the
+    // settled constant, so the tween entry point never speaks (T-490 revision 3)
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    expect(interpolateColor).not.toHaveBeenCalled();
+    interpolateColor.mockRestore();
   });
 
   // [action, open before the action, the action, the measure, the mark it measures from]

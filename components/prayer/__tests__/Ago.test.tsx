@@ -123,14 +123,16 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
   it('cuts its own display to none inside the veil worklet, ahead of the settle gate', async () => {
     showLondonDay('2026-09-11', '14:00');
     await act(() => openOverlay(ScheduleType.Standard, ASR));
+    // The ghost window the cut exists for: the veil progress rests at 1 while the settle flag
+    // has not spoken yet - here the gate still reads flex, so only the cut hides the badge
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     const badge = screen.getByText('Dhuhr \u206658m\u2069 ago', { includeHiddenElements: true });
-    const animatedDisplay = (badge.props.style as { display?: string }[]).find(
-      (entry) => entry.display !== undefined
-    )?.display;
-    expect(animatedDisplay).toBe('none');
+    const displayEntries = (badge.props.style as { display?: string }[]).filter((entry) => entry.display !== undefined);
+    expect(displayEntries[0].display).toBe('none');
+    expect(displayEntries[displayEntries.length - 1].display).toBe('flex');
   });
 
   it('keeps the cut at flex while no veil is drawn, the overlay closed', async () => {

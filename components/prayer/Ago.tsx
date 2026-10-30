@@ -71,8 +71,9 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
   const veilProgress = useDerivedProgress(veilTarget, { duration: ANIMATION.duration });
   const badgeCutStyle = useAnimatedStyle(() => ({ display: veilProgress.value >= 1 ? 'none' : 'flex' }));
 
-  // The resting backstop, no longer carrying the transition: the animated cut above overrides
-  // it whenever they disagree, and it holds the resting frame should the cut never run
+  // The resting backstop, no longer carrying the transition: as the array's last entry it owns
+  // every JS flatten, so between commits the cut above is what lands the hidden frame a commit
+  // before this gate's own flip; should the cut never run, the gate still holds the resting frame
   return (
     <Animated.Text
       style={[
