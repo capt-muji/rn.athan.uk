@@ -230,5 +230,9 @@
   {
     "version": "2.42.6",
     "reason": "2026-10-30 the lead's e2e-README parallel-phones order steps from uat's 2.42.5 while lane1/T-491's strip-plugin step already holds 2.42.6; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.7",
+    "reason": "2026-10-30 the run's board-snapshot commit steps from uat's 2.42.6 while lane1/T-491's rebased audit-fix commit already holds 2.42.7; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
