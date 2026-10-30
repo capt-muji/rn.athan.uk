@@ -244,6 +244,10 @@ describe('the Extras card on a five-row Friday list, where the flip follows the 
 // rests at 0. The card's last drawn frame is then the last frame of its own fade - the words
 // leave with the face by display, never through an opacity (T-294)
 describe('the holder display, cut on the reveal itself', () => {
+  afterEach(() => {
+    mockReveal.at = undefined;
+  });
+
   const holderDisplay = (open: boolean, revealAt: number | undefined, settled: boolean): unknown => {
     openOnReversedFriday(0);
     mockReveal.at = revealAt;
