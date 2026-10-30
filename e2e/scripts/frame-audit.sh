@@ -21,14 +21,16 @@
 #     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
 #     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
 #     boundary is near, so the default is mock-safe (README Gotchas).
-#   SWIPE="x1 y1 x2 y2 [duration_ms]"
+#   SWIPE="x1 y1 x2 y2 duration_ms"
 #     Records a swipe instead of a tap (the schedule pager's cadence). A
 #     swipe runs for its whole duration, so the SF stamp anchors on the
 #     swipe START (the uptime read lands before the input, same shell in the
 #     sf branch) — stamping after would open the entrance window ~duration
-#     late and miss it. <tap-x> <tap-y> carry the swipe's start point for
-#     the vision prompt.
-#   PRE_SWIPE="x1 y1 x2 y2 [duration_ms]"
+#     late and miss it. <tap-x> <tap-y> are unused in swipe mode (the
+#     prompt builds from SWIPE itself); dual+SWIPE pays one adb round trip
+#     between the stamp and the input, so idle presents may open the window
+#     and first-draw reads early - pairing stays duration-based.
+#   PRE_SWIPE="x1 y1 x2 y2 duration_ms"
 #     Drives one swipe before the recorded interaction and waits out its
 #     settle (PRE_TAP_WAIT). The extras->std audit needs it: a relaunch
 #     lands on the standard page, so the recorded rightward swipe would
@@ -83,11 +85,13 @@ check_swipe_shape() {
   parts=(${=1})
   local numeric=${#${(M)parts:#<->}}
   # Hoisted out of (( )): the <-> glob dies inside it (< and > parse as math).
-  (( ${#parts} >= 4 && ${#parts} <= 5 )) && (( numeric == ${#parts} ))
+  # Duration is required: adb input swipe applies its own near-instant default without it,
+  # and the prompt below asserts the number it was given
+  (( ${#parts} == 5 )) && (( numeric == 5 ))
 }
 for v in "$SWIPE" "$PRE_SWIPE"; do
   if [[ -n $v ]] && ! check_swipe_shape "$v"; then
-    echo "SWIPE/PRE_SWIPE must be 'x1 y1 x2 y2 [duration_ms]' (got '$v')"
+    echo "SWIPE/PRE_SWIPE must be 'x1 y1 x2 y2 duration_ms' (got '$v')"
     exit 1
   fi
 done
@@ -313,10 +317,11 @@ EOF
 
 if [[ -n $SWIPE ]]; then
   sp=(${=SWIPE})
-  INTERACTION="a swipe from (${sp[1]},${sp[2]}) to (${sp[3]},${sp[4]}) over ${sp[5]:-250}ms"
+  INTERACTION="a swipe from (${sp[1]},${sp[2]}) to (${sp[3]},${sp[4]}) over ${sp[5]}ms"
 else
   INTERACTION="a tap at ($TAPX,$TAPY)"
 fi
+[[ -n $PRE_SWIPE ]] && INTERACTION+=" (a preparatory swipe pre-advanced the pager before the recorded interaction)"
 cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
