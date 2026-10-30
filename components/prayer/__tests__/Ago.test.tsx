@@ -5,8 +5,10 @@
 
 import { act, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai/vanilla';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
+import { ANIMATION, COLORS } from '@/shared/constants';
 import { tIn } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
@@ -80,6 +82,60 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
     expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
+  });
+
+  // The badge joins the veil in lockstep (T-490): the ink and the pill each wrap their own tween
+  // inside a veil interpolation, so both descriptors carry the veil solid as their far end, and
+  // every veil tween the badge starts rides the overlay's own 200ms clock - the pill darkening
+  // with its ink is what keeps the ink from ever reading dark on a bright pill
+  it('sinks its ink and its pill toward the veil solid together, on the overlay own fade clock', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+
+    await act(() => openOverlay(ScheduleType.Standard, ASR));
+
+    const veilFarEnds = interpolateColor.mock.calls.filter(
+      (call) => (call[2] as unknown as readonly string[])[1] === COLORS.gradient.overlay.veil
+    );
+    expect(veilFarEnds).toHaveLength(2);
+
+    // The badge's three veil tweens: the ink's, the pill's and the display cut's
+    const veilClocks = withTiming.mock.calls.filter(([toValue]) => toValue === 1);
+    expect(veilClocks).toHaveLength(3);
+    for (const [, config] of veilClocks) {
+      expect((config as { duration: number }).duration).toBe(ANIMATION.duration);
+    }
+  });
+
+  // The cut, mirroring the card's (T-490): the badge's animated style itself reads display none
+  // once the veil progress rests at 1, before any settle flag has spoken. The first
+  // display-carrying entry of the style array is the animated cut; the settle gate behind it
+  // is only the resting backstop
+  it('cuts its own display to none inside the veil worklet, ahead of the settle gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await act(() => openOverlay(ScheduleType.Standard, ASR));
+
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    const badge = screen.getByText('Dhuhr \u206658m\u2069 ago', { includeHiddenElements: true });
+    const animatedDisplay = (badge.props.style as { display?: string }[]).find(
+      (entry) => entry.display !== undefined
+    )?.display;
+    expect(animatedDisplay).toBe('none');
+  });
+
+  it('keeps the cut at flex while no veil is drawn, the overlay closed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    const badge = screen.getByText('Dhuhr \u206658m\u2069 ago');
+    const animatedDisplay = (badge.props.style as { display?: string }[]).find(
+      (entry) => entry.display !== undefined
+    )?.display;
+    expect(animatedDisplay).toBe('flex');
   });
 });
 

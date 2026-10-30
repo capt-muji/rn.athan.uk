@@ -179,15 +179,25 @@ export const useDerivedVeiledColor = (
   }));
 };
 
-/** A background colour tween between two inks, the ago pill's own state machine */
-export const useDerivedBackgroundColor = (
+/**
+ * The pill twin of the veiled ink: the ago badge's background rides its own state tween inside
+ * the same veil interpolation, so the pill sinks toward the veil solid in lockstep with its ink
+ * and the ink never reads dark on a still-bright pill mid-fade (T-490).
+ */
+export const useDerivedVeiledBackgroundColor = (
+  veilTarget: number,
   backgroundTarget: number,
-  input: ColorAnimationInput & DerivedTimingOptions
+  input: VeiledColorInput & DerivedTimingOptions
 ) => {
-  const { fromColor, toColor, duration, delay, easing, defaultTiming } = input;
+  const { fromColor, toColor, veilColor, veilDuration, duration, delay, easing, defaultTiming } = input;
   const backgroundProgress = useDerivedProgress(backgroundTarget, { duration, delay, easing, defaultTiming });
+  const veilProgress = useDerivedProgress(veilTarget, { duration: veilDuration ?? ANIMATION.duration });
   return useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(backgroundProgress.value, [0, 1], [fromColor, toColor]),
+    backgroundColor: interpolateColor(
+      veilProgress.value,
+      [0, 1],
+      [interpolateColor(backgroundProgress.value, [0, 1], [fromColor, toColor]), veilColor]
+    ),
   }));
 };
 
