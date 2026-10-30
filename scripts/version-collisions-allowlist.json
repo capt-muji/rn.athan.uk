@@ -196,10 +196,6 @@
     "reason": "2026-10-29 the seventy-five run holds three language lanes that all step from uat 2.32.0 in the same window (T-452, T-453, T-454) after the picker ticket T-451 lands alone at 2.32.0; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
-    "version": "2.38.1",
-    "reason": "2026-10-29 T-452 and T-453 both step to 2.38.1 from their own 2.38.0 tips; the standing ruling: one branch takes 2.38.2 and each merge renumbers above whatever uat then carries"
-  },
-  {
     "version": "2.41.6",
     "reason": "2026-10-29 three lanes step from uat's 2.41.5 in the same window (lane2/T-489's height-and-ink step, lane3/T-490's placer step, lane1/T-491's widget-extension step); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
@@ -244,11 +240,15 @@
     "reason": "2026-10-30 the lead's glow-falloff fix steps from uat's 2.42.8 while lane1/T-491's strip-plugin step already holds 2.42.9; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
-    "version": "2.42.10",
-    "reason": "2026-10-30 lane2/T-519's step 1 steps from uat's 2.42.9 while lane1/T-491 already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
     "version": "2.42.11",
     "reason": "2026-10-30 lane2/T-519's step 2 steps from 2.42.10 while lane1/T-327 already holds 2.42.11; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.13",
+    "reason": "2026-10-30 uat's T-520 merge steps from uat's 2.42.12 while lane1/T-327's step-14 harness fix already holds 2.42.13; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.10",
+    "reason": "2026-10-30 uat's T-520 merge carries lane3/T-520's outline commit while lane1/T-491's sounds step already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

@@ -7,13 +7,17 @@
     "mobile-mcp": {
       "type": "local",
       "command": ["npx", "-y", "@mobilenext/mobile-mcp@latest"],
-      "environment": { "MOBILEMCP_DISABLE_TELEMETRY": "1" },
+      "environment": {
+        "MOBILEMCP_DISABLE_TELEMETRY": "1"
+      },
       "enabled": true
     },
     "maestro": {
       "type": "local",
       "command": ["{env:HOME}/.maestro/bin/maestro", "mcp"],
-      "environment": { "MAESTRO_CLI_NO_ANALYTICS": "1" },
+      "environment": {
+        "MAESTRO_CLI_NO_ANALYTICS": "1"
+      },
       "enabled": true
     },
     "agent-device": {
@@ -29,7 +33,7 @@
     "expo": {
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
-      "enabled": true
+      "enabled": false
     },
     "servers": {
       "codegraph": {
