@@ -19,7 +19,7 @@ interface Props {
  *
  * Shows "now" for the first 60 seconds, then the lettered duration (Xh Ym) inside
  * the catalog sentence. Animates between normal and "recent" color states (≤5 mins).
- * Sinks ink and pill toward the veil together while the overlay is open.
+ * Sinks its ink toward the veil and thins its pill into it while the overlay is open.
  *
  * @param type - Schedule type (Standard or Extra)
  */
@@ -40,10 +40,13 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
 
-  // The badge joins the veil in lockstep with the overlay's own 200ms fade, the treatment the
-  // rows already carry: the ink AND the pill sink toward the veil solid together, so the ink
-  // never reads dark on a still-bright pill mid-fade and the pill no longer snaps at the end
-  // (T-375's "fades with the overlay, no gray shift" is the pair dissolving, not the ink alone)
+  // The badge joins the veil on the overlay's own 200ms clock, the treatment the rows carry:
+  // the ink sinks toward the veil solid exactly as the rows' glyphs do, while the pill THINS
+  // into the veil - the wash's alpha runs down to zero over the veil's own channels, so the
+  // veil shows through it unhindered instead of the pill filling toward the opaque solid,
+  // which rode above the veil mid-fade with a crisp edge and re-entered effectively complete
+  // on the close (T-490 step 4). The pair still sinks together: the ink never reads dark on
+  // its own pill (T-375's "fades with the overlay, no gray shift" holds - the hue never moves)
   const veilTarget = overlayIsOn ? 1 : 0;
   const prayerAgoColorStyle = useDerivedVeiledColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.text,
@@ -55,7 +58,7 @@ export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: strin
   const prayerAgoBackgroundStyle = useDerivedVeiledBackgroundColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.gradient.start,
     toColor: COLORS.prayerAgo.gradient.end,
-    veilColor: COLORS.gradient.overlay.veil,
+    veilColor: COLORS.gradient.overlay.veilThrough,
     veilDuration: ANIMATION.duration,
     ...recentColorOptions,
   });

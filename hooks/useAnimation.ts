@@ -181,8 +181,10 @@ export const useDerivedVeiledColor = (
 
 /**
  * The pill twin of the veiled ink: the ago badge's background rides its own state tween inside
- * the same veil interpolation, so the pill sinks toward the veil solid in lockstep with its ink
- * and the ink never reads dark on a still-bright pill mid-fade (T-490).
+ * the same veil interpolation, so whatever veil end the caller hands it lands on the pill's own
+ * clock - the badge thins its translucent wash into the veil (alpha to zero) while its ink
+ * falls to the veil solid, and the ink never reads dark on a still-bright pill mid-fade
+ * (T-490). A background, not ink: the T-294 opacity ban exempts it by design.
  */
 export const useDerivedVeiledBackgroundColor = (
   veilTarget: number,

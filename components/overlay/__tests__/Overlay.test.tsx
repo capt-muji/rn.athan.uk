@@ -173,7 +173,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByText(english)).toBeVisible();
   });
 
-  it('raises the explanation inks from the card surface as the box reveals', async () => {
+  it('falls the explanation inks to the page at the card band as the box reveals', async () => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(
@@ -186,11 +186,13 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     await act(() => openOverlay(ScheduleType.Extra, 0));
 
-    // The reveal drives the face's fade and the inks' rise from the card's own surface; the
-    // placer itself no longer fades, so nothing that holds text carries an opacity
+    // The reveal drives the face's fade and the inks' fall to the page behind the card's band,
+    // never to the card's own surface - a surface end state leaves the words a ghost once the
+    // face has faded (T-490 step 4); the placer itself never fades, so nothing that holds text
+    // carries an opacity
     expect(
       interpolateColor.mock.calls.filter(
-        (call) => (call[2] as unknown as readonly string[])[0] === COLORS.surface.elevated
+        (call) => (call[2] as unknown as readonly string[])[0] === COLORS.gradient.overlay.cardBand
       ).length
     ).toBeGreaterThanOrEqual(2);
     const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];

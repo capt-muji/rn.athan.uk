@@ -119,17 +119,31 @@ describe('the explanation box of an Extras prayer', () => {
     expect(face?.queryAll((node) => node.type === 'Text')).toHaveLength(0);
   });
 
-  it('raises its inks from the card surface as it reveals, through colour and never opacity', async () => {
+  // The coincidence boundary the step-4 proof demanded (T-490): the words' end state is the PAGE
+  // at the card's band, not the card's own surface - which sits levels above the page and leaves
+  // the words a ghost by construction once the face has faded. And the fall completes by half
+  // the reveal: below it the words are page-coloured however long the face lingers, so no frame
+  // can show them after the face's perceptibility. The values are pinned, not read back from the
+  // code under test - the knee and the page ARE the design. The words are opaque paints end to
+  // end (T-294): colour only, never opacity
+  it('falls each ink to the page at the card band, completing the fall by half the reveal', async () => {
+    expect(COLORS.gradient.overlay.cardBand).toBe('#04000d');
+
     const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
     await render(
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    const surface = COLORS.surface.elevated;
-    const ends = interpolateColor.mock.calls
-      .filter((call) => (call[2] as unknown as readonly string[])[0] === surface)
-      .map((call) => (call[2] as unknown as readonly string[])[1]);
-    expect(ends).toEqual([COLORS.text.emphasis, COLORS.icon.primary]);
+    const inks = [COLORS.text.emphasis, COLORS.icon.primary];
+    const falls = interpolateColor.mock.calls.filter((call) =>
+      inks.includes((call[2] as unknown as readonly string[])[2])
+    );
+
+    expect(falls.map((call) => (call[2] as unknown as readonly string[])[2])).toEqual(inks);
+    for (const call of falls) {
+      expect(call[1]).toEqual([0, 0.5, 1]);
+      expect(call[2]).toEqual(['#04000d', '#04000d', (call[2] as unknown as readonly string[])[2]]);
+    }
     expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBeUndefined();
   });
 });

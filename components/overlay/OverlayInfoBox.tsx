@@ -33,7 +33,7 @@ export default function OverlayInfoBox({ type }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const isOnThisList = overlay.isOn && overlay.scheduleType === type;
 
-  // The reveal drives the card face's fade and the inks' rise from the card's own surface
+  // The reveal drives the card face's fade and the inks' fall to the page at the card's band
   // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
   // subtree while the box appears
   const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });

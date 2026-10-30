@@ -17,9 +17,18 @@ interface PrayerExplanationProps {
   explanation: string;
   arrowPosition?: 'top' | 'bottom';
   style?: ViewProps['style'];
-  /** How far the card has revealed: drives the face's fade and the inks' rise from the surface. Unveiled by default, so the card stands alone fully drawn */
+  /** How far the card has revealed: drives the face's fade and the inks' rise from the page. Unveiled by default, so the card stands alone fully drawn */
   reveal?: SharedValue<number>;
 }
+
+/**
+ * The reveal level at which each ink has completed its fall to the page colour: the words'
+ * settled contrast (about 230 luma above the page) dwarfs the face's (about 9), so a linear
+ * fall would leave them legible long after the face is imperceptible - the measured ghost.
+ * Completing the fall by half the reveal puts their last legible frame where the face still
+ * holds half its settled strength (T-490 step 4).
+ */
+export const INK_EXIT_REVEAL = 0.5;
 
 /**
  * Tooltip component explaining extra prayer times
@@ -29,8 +38,12 @@ interface PrayerExplanationProps {
  *
  * The reveal is carried so no text ever renders through an opacity (T-294): the card's own
  * face - background, border, radius - fades as a text-free view behind the words, and each
- * ink rises from the face's colour on the same progress, which over the card's opaque surface
- * equals the old layer fade formula for formula.
+ * ink is an opaque paint end to end that falls to the PAGE at the card's band - not to the
+ * card's surface, which sits levels above the page and would leave the words themselves a
+ * ghost once the face has faded. The fall completes by INK_EXIT_REVEAL, so the words' last
+ * legible frame never outlives the face's own perceptibility; the same interpolation read
+ * backwards carries the open path, where the words gain colour only over a face already
+ * present and settle fully drawn.
  *
  * @param prayerName - Name of the extra prayer (e.g., "Midnight")
  * @param explanation - the explanation text
@@ -49,11 +62,21 @@ export default function PrayerExplanation({
   const shown = reveal ?? unveiled;
 
   const faceStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
+  // Each ink's knee'd fall (T-294: colour only, never opacity - the words stay opaque paints):
+  // page-coloured below INK_EXIT_REVEAL however long the face lingers, the real ink at 1
   const titleStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.text.emphasis]),
+    color: interpolateColor(
+      shown.value,
+      [0, INK_EXIT_REVEAL, 1],
+      [COLORS.gradient.overlay.cardBand, COLORS.gradient.overlay.cardBand, COLORS.text.emphasis]
+    ),
   }));
   const explanationStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.icon.primary]),
+    color: interpolateColor(
+      shown.value,
+      [0, INK_EXIT_REVEAL, 1],
+      [COLORS.gradient.overlay.cardBand, COLORS.gradient.overlay.cardBand, COLORS.icon.primary]
+    ),
   }));
 
   return (
