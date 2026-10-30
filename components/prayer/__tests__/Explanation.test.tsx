@@ -2,8 +2,9 @@
  * The box explaining an Extras prayer: its words, its Latin digits, and which side of the box its arrow is drawn on
  */
 
-import { render, screen, within } from '@testing-library/react-native';
+import { act, render, screen, within } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
+import type { SharedValue } from 'react-native-reanimated';
 import * as Reanimated from 'react-native-reanimated';
 import type { TestInstance } from 'test-renderer';
 
@@ -25,6 +26,17 @@ const arrowOf = (parts: TestInstance[], boxPart: number): { svg?: TestInstance; 
   const svg = parts[1 - boxPart].queryAll((node) => node.type === 'RNSVGSvgView')[0];
   const ds = parts[1 - boxPart].queryAll((node) => node.type === 'RNSVGPath').map((node) => node.props.d);
   return { svg, ds };
+};
+
+/** The arrow's paths whole, so a test can read each path's fill and stroke, not only its d */
+const arrowPaths = (parts: TestInstance[], boxPart: number) =>
+  parts[1 - boxPart].queryAll((node) => node.type === 'RNSVGPath');
+
+// The native path receives a packed ARGB payload, so the assertions do too
+const argbOf = (color: string): number => {
+  if (color.startsWith('#')) return 0xff000000 + Number.parseInt(color.slice(1), 16);
+  const [r, g, b, a = 1] = (color.match(/[\d.]+/g) ?? []).map(Number);
+  return Math.round(a * 255) * 0x1000000 + (r << 16) + (g << 8) + b;
 };
 
 describe('the explanation box of an Extras prayer', () => {
@@ -81,8 +93,8 @@ describe('the explanation box of an Extras prayer', () => {
     expect(svg?.props.width).toBe(36);
     expect(svg?.props.height).toBe(15);
 
-    // The fill closes on itself with Z; the border stroke rides the side edges only, unclosed
-    expect(ds).toEqual(['M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z', 'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15']);
+    // The fill closes on itself with Z: the arrow is its fill alone, the outline is gone
+    expect(ds).toEqual(['M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z']);
   });
 
   it('draws the down arrow at 36 by 15 mirrored', async () => {
@@ -98,7 +110,47 @@ describe('the explanation box of an Extras prayer', () => {
     expect(svg?.props.width).toBe(36);
     expect(svg?.props.height).toBe(15);
 
-    expect(ds).toEqual(['M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z', 'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0']);
+    expect(ds).toEqual(['M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z']);
+  });
+
+  // The outline is gone (owner order 2026-10-30): the arrow is its fill alone
+  it.each<['top' | 'bottom', number]>([
+    ['top', 1],
+    ['bottom', 0],
+  ])('draws the %s arrow as its fill alone, with no outline stroke', async (position, boxPart) => {
+    await render(
+      <PrayerExplanation
+        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
+        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
+        arrowPosition={position}
+      />
+    );
+
+    const paths = arrowPaths(drawnParts(), boxPart);
+
+    expect(paths).toHaveLength(1);
+    expect(paths[0].props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
+    expect(paths[0].props.stroke).toBeUndefined();
+  });
+
+  it('carries its face with no border, the background alone', async () => {
+    await render(
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
+    );
+
+    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
+    const face = box?.children.find((child) => typeof child !== 'string');
+    const style = face
+      ? (StyleSheet.flatten(face.props.style) as {
+          borderColor?: string;
+          borderWidth?: number;
+          backgroundColor?: string;
+        })
+      : null;
+
+    expect(style?.borderColor).toBeUndefined();
+    expect(style?.borderWidth).toBeUndefined();
+    expect(style?.backgroundColor).toBe(COLORS.surface.elevated);
   });
 
   it('overlap-into-the-row constant is 6', () => {
@@ -119,18 +171,82 @@ describe('the explanation box of an Extras prayer', () => {
     expect(face?.queryAll((node) => node.type === 'Text')).toHaveLength(0);
   });
 
-  it('raises its inks from the card surface as it reveals, through colour and never opacity', async () => {
+  // The owner-ordered opacity ramp (T-490 revision 3, comments 4875/4877): after two
+  // colour-tween revisions measured as one-frame steps on glass (+113 luma at the
+  // open's knee, -115 at the close's, a 60fps recording), the words fade on opacity
+  // alone - 0 at the open's start, 1 at settle, 1 to 0 across the close - with their
+  // colour the settled constant at every frame. T-294's one scoped exception,
+  // restated in the component's doc and in the sweep: these two texts on this path only.
+  type Words = { color?: string; opacity?: number };
+
+  const wordsOf = (text: string): Words => StyleSheet.flatten(screen.getByText(text).props.style);
+
+  const cardAt = (revealAt: number) => (
+    <PrayerExplanation
+      prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
+      explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
+      reveal={{ value: revealAt } as unknown as SharedValue<number>}
+    />
+  );
+
+  const placed = async (revealAt: number): Promise<{ title: Words; description: Words }> => {
+    await render(cardAt(revealAt));
+    return {
+      title: wordsOf('Midnight'),
+      description: wordsOf('Halfway between Magrib and Fajr'),
+    };
+  };
+
+  it.each([0, 0.25, 0.5, 0.75, 1])(
+    'rides the reveal %s as a true opacity, its colour the settled constant',
+    async (revealAt) => {
+      const words = await placed(revealAt);
+
+      expect(words.title.opacity).toBe(revealAt);
+      expect(words.description.opacity).toBe(revealAt);
+      expect(words.title.color).toBe(COLORS.text.emphasis);
+      expect(words.description.color).toBe(COLORS.icon.primary);
+    }
+  );
+
+  it('moves only the opacity between phases - the colour is constant on the whole ramp', async () => {
+    const rendered = await render(cardAt(0.3));
+    const dim = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+
+    // The mock runs every updater on each render, so a re-render at another reveal re-reads it
+    // without mounting a second tree
+    await act(async () => {
+      rendered.rerender(cardAt(0.8));
+    });
+
+    const bright = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+    expect(bright.title.color).toBe(dim.title.color);
+    expect(bright.description.color).toBe(dim.description.color);
+    expect(bright.title.opacity).not.toBe(dim.title.opacity);
+  });
+
+  it('interpolates no colour for either ink - the ramp is opacity alone', async () => {
     const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await placed(0.5);
+
+    expect(interpolateColor).not.toHaveBeenCalled();
+  });
+
+  it('stands fully drawn when carried with no reveal', async () => {
     await render(
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    const surface = COLORS.surface.elevated;
-    const ends = interpolateColor.mock.calls
-      .filter((call) => (call[2] as unknown as readonly string[])[0] === surface)
-      .map((call) => (call[2] as unknown as readonly string[])[1]);
-    expect(ends).toEqual([COLORS.text.emphasis, COLORS.icon.primary]);
-    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBeUndefined();
+    expect(wordsOf('Midnight').opacity).toBe(1);
+    expect(wordsOf('Halfway between Magrib and Fajr').opacity).toBe(1);
+  });
+
+  // The colour revisions' measured pins leave the constants behind dead: no ink
+  // interpolates toward any band, so the band itself is gone
+  it('carries no band constants for the words', () => {
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBand');
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBandRest');
   });
 });
 

@@ -3,13 +3,15 @@
  * an upcoming row's bright one
  */
 
+import { COLORS } from '@/shared/constants';
+
 import { colonInkPair } from '../colonInk';
 
-const DIM = '#5f60ad';
+const DIM = COLORS.text.muted;
 const NEXT = '#a9b1de';
 const NEXT_EXTRAS = '#d7d9ef';
 const PAST = 'rgb(170, 182, 212)';
-const PRIMARY = '#ffffff';
+const PRIMARY = COLORS.text.primary;
 
 describe('colonInkPair', () => {
   it('rides the dim-to-bright endpoints on an upcoming row, at rest and selected alike', () => {

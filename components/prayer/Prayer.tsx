@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
@@ -15,7 +15,7 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Alert from './Alert';
@@ -39,6 +39,7 @@ export default function Prayer({ type, index }: Props) {
   const Prayer = usePrayer(type, index);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
   const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
+  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
   // One-shot date-roll stagger: the colour target flips (bright to dim) when
   // the display date rolls to the next day
@@ -65,18 +66,11 @@ export default function Prayer({ type, index }: Props) {
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
-  // Hold the row drawn through its fade, then drop it: the resting frame under an open overlay
-  // shows the backdrop exactly, as the old veil opacity 0 did, while the ink tween runs first
-  const [hiddenSettled, setHiddenSettled] = useState(false);
-  useEffect(() => {
-    if (!isHiddenByOverlay) {
-      setHiddenSettled(false);
-      return;
-    }
-
-    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.duration);
-    return () => clearTimeout(hideTimer);
-  }, [isHiddenByOverlay]);
+  // Held drawn through the fade by the shared fade-settled flag, then dropped:
+  // the resting frame under an open overlay shows the backdrop exactly, while
+  // the close's own flag write returns the row in the same commit — no second
+  // per-row commit wave inside the fade
+  const hiddenSettled = isHiddenByOverlay && fadeSettled;
 
   // A row whose occurrence left the sequence (refresh mid-selection) reports the
   // loading frame: empty time, the sentinel id. It draws no name, exactly as the

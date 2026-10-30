@@ -1,7 +1,7 @@
 /**
  * The locale typography map (ticket 74 R1.5-R1.10): under ar every size and
  * line height resolves Math.round(n * 1) over the bundled Arabic faces and
- * letter spacing resolves 0; the five other locales resolve the Roboto
+ * letter spacing resolves 0; the Latin-record locales resolve the Roboto
  * families with identity mappings, so their rendered bytes stay pre-change.
  */
 
@@ -88,10 +88,77 @@ describe('typographyFor', () => {
     expectArabicRecord(typographyFor('ar'));
   });
 
-  it('resolves en, ms and so to the Roboto identity record', () => {
-    for (const locale of LOCALE_IDS.filter((id) => id !== 'ar' && id !== 'hi' && id !== 'th')) {
+  it('resolves fa to the same Arabic record, Rubik covering all six Persian letters', () => {
+    // Decision 3, plan T-410: measured with fontTools, Rubik carries پ چ ژ گ ک ی,
+    // so fa needs no pair of its own and renders exactly the ar surfaces' record
+    expectArabicRecord(typographyFor('fa'));
+  });
+
+  it('resolves the Latin-shipped locales to the Roboto identity record', () => {
+    for (const locale of LOCALE_IDS.filter(
+      (id) =>
+        id !== 'ar' &&
+        id !== 'hi' &&
+        id !== 'th' &&
+        id !== 'ur' &&
+        id !== 'fa' &&
+        id !== 'bn' &&
+        id !== 'ps' &&
+        id !== 'pa-Arab' &&
+        id !== 'sd' &&
+        id !== 'ug' &&
+        id !== 'ckb' &&
+        id !== 'skr' &&
+        id !== 'bal' &&
+        id !== 'kas' &&
+        id !== 'dv' &&
+        id !== 'kr' &&
+        id !== 'mnk' &&
+        id !== 'dje' &&
+        id !== 'yo' &&
+        id !== 'ta' &&
+        id !== 'ml' &&
+        id !== 'mr' &&
+        id !== 'zh-Hans' &&
+        id !== 'zh-Hant' &&
+        id !== 'bm' &&
+        id !== 'ff' &&
+        id !== 'my' &&
+        id !== 'mad' &&
+        id !== 'te' &&
+        id !== 'gu' &&
+        id !== 'kn' &&
+        id !== 'am' &&
+        id !== 'ja' &&
+        id !== 'ko'
+    )) {
       expectLatinRecord(typographyFor(locale));
     }
+  });
+
+  it('resolves the Arabic-script locales to the same Naskh record, Rubik lacking their letters', () => {
+    // Plan T-427 decision 4: measured by explicit codepoint, the Naskh pair carries
+    // Shahmukhi's thirteen letters and Sindhi's fifteen, both weights, while Rubik
+    // lacks every one of them. Plan T-453 decision 10: the same measurement carries
+    // Saraiki's eight, Balochi's five and Kashmiri's fourteen, both weights, while
+    // Roboto and Rubik carry none of the twenty-seven
+    for (const locale of ['pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const) {
+      const ty = typographyFor(locale);
+      expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
+      expect(ty.scriptLineHeight?.(14)).toBe(21);
+      expect(ty.scriptLineHeight?.(15)).toBe(23);
+    }
+  });
+
+  it('resolves yo to the Noto Sans pair with the measured script line box', () => {
+    // Plan T-427 decision 5: Roboto lacks ṣ, so yo rides the instanced Noto Sans pair.
+    // Its hhea box is 1.362em against a 1.519em win ink (1124/395, both weights, the
+    // AFRICAN record's measurement over the same pair), so ink-bearing surfaces take
+    // the 1.55em script line that clears the measured ink
+    const ty = typographyFor('yo');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(22);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
   it('resolves hi to the Devanagari pair with the taller script line box', () => {
@@ -102,10 +169,220 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
+  it('resolves mr to the same Devanagari pair, the Marathi script record', () => {
+    // Plan T-429 decision 6: NotoSansDevanagari carries every Marathi codepoint the
+    // catalog uses in both weights except U+00AB and U+00BB, the two guillemets nine
+    // help strings quote with, which fall to the OS face as the Latin brand text
+    // already does, so mr rides the HINDI record's own measured box
+    const ty = typographyFor('mr');
+    expectScriptRecord(ty, 'NotoSansDevanagari-Regular', 'NotoSansDevanagari-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
   it('resolves th to the Thai pair with no script line box', () => {
     const ty = typographyFor('th');
     expectScriptRecord(ty, 'NotoSansThai-Regular', 'NotoSansThai-Medium');
     // The Thai face's own 1.511em box clears its ink, so no surface pins a script box
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ur to the Naskh pair with the measured script line box', () => {
+    const ty = typographyFor('ur');
+    expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
+    // The pair's own 1.703em box does not clear its 2.039em win ink (measured with
+    // fontTools, both weights), so ink-bearing surfaces take the 1.5em RTL script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves ps to the same Naskh record, Rubik lacking every Pashto letter', () => {
+    // Decision 7, plan T-419: measured by explicit codepoint, Rubik carries none of
+    // the eleven Pashto-specific letters while the Naskh pair carries them all, both
+    // weights, so ps renders the URDU record's exact surfaces
+    const ty = typographyFor('ps');
+    expectScriptRecord(ty, 'NotoNaskhArabic-Regular', 'NotoNaskhArabic-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves bn to the Bengali pair with the measured script line box', () => {
+    const ty = typographyFor('bn');
+    expectScriptRecord(ty, 'NotoSansBengali-Regular', 'NotoSansBengali-Medium');
+    // The pair's own 1.325em box does not clear its 1.403em win ink (this wave's own
+    // measurement, decision 3), so ink-bearing surfaces take the 1.5em script box
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves ta to the Tamil pair with no script line box', () => {
+    const ty = typographyFor('ta');
+    expectScriptRecord(ty, 'NotoSansTamil-Regular', 'NotoSansTamil-Medium');
+    // The pair's own 1.240em box (ascent 870, descent -370, UPM 1000, both weights,
+    // this wave's own measurement, plan T-419 decision 7) already clears the script's
+    // ink: the win metrics match the box and the worst GPOS-stacked mark tops at 843
+    // units (0.843em, anusvara over a base) under the ascent, so no surface pins a
+    // script box, the Thai row-87 law
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ml to the Malayalam pair with the measured script line box', () => {
+    const ty = typographyFor('ml');
+    expectScriptRecord(ty, 'NotoSansMalayalam-Regular', 'NotoSansMalayalam-Medium');
+    // The pair's declared box and win ink are both 1.247em (ascent 864, descent -383,
+    // UPM 1000, both weights), but the script's own stacked ink runs past them: the
+    // GPOS reph-over-base rows top at 963 and 971 units (0.963em, 0.971em) against
+    // the 864 ascent (this wave's own measurement, plan T-419 decision 7), the Bengali
+    // matra case, so ink-bearing surfaces take the 1.5em script box the HINDI record
+    // already renders
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves zh-Hans to the SC subset pair with no script line box', () => {
+    const ty = typographyFor('zh-Hans');
+    expectScriptRecord(ty, 'NotoSansSC-Subset-Regular', 'NotoSansSC-Subset-Medium');
+    // The subset pairs carry the closed string set's whole 377-character census (the
+    // glyph lock, plan T-419 decision 8) and their own declared box already clears
+    // their ink: hhea 1160/-288 with lineGap 0 and win 1160/288 against UPM 1000,
+    // a 1.448em box the win ink matches exactly, both weights (this wave's own
+    // measurement over the bundled subsets), so no surface pins a script box -
+    // the Thai row-87 law
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves bm, ff, kr, mnk and dje to the bundled Noto Sans pair with the measured script line box', () => {
+    for (const locale of ['bm', 'ff', 'kr', 'mnk', 'dje'] as const) {
+      const ty = typographyFor(locale);
+      // No shipped face carries the African letters (ɛ ɔ ɲ for bm, ɓ ɗ ƴ for
+      // ff, measured absent by codepoint in both weights of all twenty bundled
+      // TTFs), so both ride the Noto Sans pair. Its hhea box is 1.362em
+      // (ascent 1069, descent -293, UPM 1000) against a 1.519em win ink
+      // (1124/395, both weights, this wave's own measurement), so ink-bearing
+      // surfaces take the 1.55em script line that clears the measured ink.
+      // Plan T-453 decision 10: the same measurement sends the Sahel three
+      // here - the six letters ǝ ɓ ɗ ɛ ɔ ɲ are absent from Roboto and Rubik in
+      // both weights and present in this pair, and both weights carry every
+      // character of each locale's whole keyed surface (64, 63 and 64 distinct
+      // characters for kr, mnk and dje: kr's only non-ASCII codepoint is the em
+      // dash, mnk and dje add ŋ)
+      expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+      expect(ty.scriptLineHeight?.(14)).toBe(22);
+      expect(ty.scriptLineHeight?.(15)).toBe(23);
+    }
+  });
+
+  it('resolves mad to the same Noto Sans pair, Roboto lacking its ḍ (plan T-454 decision 4)', () => {
+    // Roboto lacks ḍ U+1E0D and Ḍ U+1E0C in both weights while the Noto Sans pair
+    // carries them (measured by explicit codepoint over the bundled TTFs), and no
+    // other bundled face carries them, so Madurese rides the AFRICAN record's pair
+    // and its 1.55em script line
+    const ty = typographyFor('mad');
+    expectScriptRecord(ty, 'NotoSans-Regular', 'NotoSans-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(22);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves te to the Telugu pair with the measured script line box', () => {
+    const ty = typographyFor('te');
+    // No bundled face carries a Telugu letter, so te bundles the Noto Sans
+    // Telugu v2.005 pair. Its hhea box is 1.352em (ascent 869, descent -483,
+    // UPM 1000, both weights) against a 1.478em win ink (995/483), so ink-bearing
+    // surfaces take the 1.5em script line that clears the measured ink
+    expectScriptRecord(ty, 'NotoSansTelugu-Regular', 'NotoSansTelugu-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves gu to the Gujarati pair with the measured script line box', () => {
+    const ty = typographyFor('gu');
+    // The Noto Sans Gujarati v2.106 pair's hhea box is 1.304em (ascent 896,
+    // descent -408, UPM 1000, both weights) against a 1.484em win ink (1076/408),
+    // so ink-bearing surfaces take the 1.5em script line
+    expectScriptRecord(ty, 'NotoSansGujarati-Regular', 'NotoSansGujarati-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(21);
+    expect(ty.scriptLineHeight?.(15)).toBe(23);
+  });
+
+  it('resolves kn to the Kannada pair with the measured script line box', () => {
+    const ty = typographyFor('kn');
+    // The Noto Sans Kannada v2.006 pair's hhea box is 1.349em (ascent 809,
+    // descent -540, UPM 1000, both weights) while its win ink spans 1.645em
+    // (winAscent 1105, winDescent 540), so the 1.5em house value does not clear
+    // it and this wave's own measurement pins a 1.65em factor rounded up with
+    // Math.ceil: Math.round lands under the ink at the 16pt row (26px is 1.625em
+    // against 1.645em)
+    expectScriptRecord(ty, 'NotoSansKannada-Regular', 'NotoSansKannada-Medium');
+    expect(ty.scriptLineHeight?.(14)).toBe(24);
+    expect(ty.scriptLineHeight?.(15)).toBe(25);
+  });
+
+  it('resolves am to the Ethiopic pair with no script line box', () => {
+    const ty = typographyFor('am');
+    // The Noto Sans Ethiopic v2.102 pair's hhea box is 1.362em (ascent 1069,
+    // descent -293, UPM 1000, both weights) and its win ink matches exactly
+    // (1069/293), so the font's own metrics serve - the Thai row-87 law
+    expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves my to the Myanmar pair with no script line box', () => {
+    // Plan T-454 decision 5: the bundled Noto Sans Myanmar v2.107 pair's declared
+    // box clears its ink - hhea 1324/-860 against win 1324/860 (2.184em, UPM 1000,
+    // both weights), the worst single-glyph Myanmar-block ink at 1004/-469 Regular
+    // and 1009/-471 Medium inside it with about a third headroom - so the row-87
+    // Thai law applies and the font's own metrics serve, no script box
+    const ty = typographyFor('my');
+    expectScriptRecord(ty, 'NotoSansMyanmar-Regular', 'NotoSansMyanmar-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves om, tl, aa and mdh to the Roboto identity record', () => {
+    // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries.
+    // Afar's is ASCII too, and Maguindanao's only non-ASCII character is the em dash
+    // beside the ñ its copy may ask for: measured with fontTools in both weights,
+    // Roboto carries every character of both locales' whole keyed surface (65 for
+    // Afar and 64 for Maguindanao, plan T-453 decision 10)
+    for (const locale of ['om', 'tl', 'aa', 'mdh'] as const) {
+      expectLatinRecord(typographyFor(locale));
+    }
+  });
+
+  it('resolves dv to the bundled Thaana pair with no script line box', () => {
+    // Plan T-453 decision 10: no bundled face carries a single Thaana codepoint, so the
+    // Noto Sans Thaana v3.001 pair is bundled; its hhea box is 1.493em (ascent 1069,
+    // descent -424, lineGap 0, UPM 1000, both weights) and equals its win ink
+    // (usWin 1069/424), while the block's glyphs run +751/-306, inside the box, so the
+    // box clears the ink and the font's own metrics serve - the Thai row-87 law
+    const ty = typographyFor('dv');
+    expectScriptRecord(ty, 'NotoSansThaana-Regular', 'NotoSansThaana-Medium');
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves zh-Hant to the TC subset pair with no script line box', () => {
+    const ty = typographyFor('zh-Hant');
+    expectScriptRecord(ty, 'NotoSansTC-Subset-Regular', 'NotoSansTC-Subset-Medium');
+    // The measured numbers match the SC pair's exactly (hhea 1160/-288, lineGap 0,
+    // win 1160/288, UPM 1000, both weights, 378 carried characters), so the same
+    // row-87 law serves: the font's own metrics, no script box
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ja to the JP subset pair with no script line box', () => {
+    const ty = typographyFor('ja');
+    expectScriptRecord(ty, 'NotoSansJP-Subset-Regular', 'NotoSansJP-Subset-Medium');
+    // The JP subsets carry the closed string set's own census (the glyph lock,
+    // plan T-452 decision 3) and their measured box clears their ink, so no
+    // surface pins a script box - the Thai row-87 law, the numbers in the record
+    expect(ty.scriptLineHeight).toBeUndefined();
+  });
+
+  it('resolves ko to the KR subset pair with no script line box', () => {
+    const ty = typographyFor('ko');
+    expectScriptRecord(ty, 'NotoSansKR-Subset-Regular', 'NotoSansKR-Subset-Medium');
+    // The KR subsets carry the closed string set's own census (the glyph lock,
+    // plan T-452 decision 3) and their measured box clears their ink, so no
+    // surface pins a script box - the Thai row-87 law, the numbers in the record
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 });

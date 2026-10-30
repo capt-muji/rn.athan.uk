@@ -27,14 +27,15 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
     expect(screen.getByRole('switch', { name: 'Show seconds' })).toBeOnTheScreen();
   });
 
-  it('toggles once, with no haptic, when the label is pressed', async () => {
+  it('toggles once, with one medium haptic, when the label is pressed', async () => {
     const onToggle = jest.fn();
     await render(<LabeledToggle label='Show seconds' value={false} onToggle={onToggle} />);
 
     await fireEvent.press(screen.getByText('Show seconds'));
 
     expect(onToggle).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
   it('toggles once, with one medium haptic, when the switch itself is pressed', async () => {

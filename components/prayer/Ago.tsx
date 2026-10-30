@@ -1,15 +1,14 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, { Easing } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle } from 'react-native-reanimated';
 
-import { useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '@/hooks/useAnimation';
+import { useDerivedProgress, useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayerAgo } from '@/hooks/usePrayerAgo';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { overlayFadeSettledAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -20,7 +19,7 @@ interface Props {
  *
  * Shows "now" for the first 60 seconds, then the lettered duration (Xh Ym) inside
  * the catalog sentence. Animates between normal and "recent" color states (≤5 mins).
- * Fades toward the veil ink when the overlay is open.
+ * Sinks its ink toward the veil and thins its pill into it while the overlay is open.
  *
  * @param type - Schedule type (Standard or Extra)
  */
@@ -33,52 +32,58 @@ export default function PrayerAgo({ type }: Props) {
   return <PrayerAgoBadge prayerAgo={prayerAgo} minutesElapsed={minutesElapsed} />;
 }
 
-function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
+// Exported so tests render the real badge, the calculatePrayerAgo precedent (hooks/usePrayerAgo.ts:19)
+export function PrayerAgoBadge({ prayerAgo, minutesElapsed }: { prayerAgo: string; minutesElapsed: number }) {
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
+  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
   const isRecent = minutesElapsed <= 5 ? 1 : 0;
   const recentColorOptions = { duration: ANIMATION.durationMedium, easing: Easing.linear };
 
-  // The overlay's veil wraps both tweens: the badge's ink and its pill wash sink toward the
-  // veil solid together, so no glyph renders through an opacity while it fades (derived, so
-  // the tween cannot strand on resume)
+  // The badge joins the veil on the overlay's own 200ms clock, the treatment the rows carry:
+  // the ink sinks toward the veil solid exactly as the rows' glyphs do, while the pill THINS
+  // into the veil - the wash's alpha runs down to zero over the veil's own channels, so the
+  // veil shows through it unhindered instead of the pill filling toward the opaque solid,
+  // which rode above the veil mid-fade with a crisp edge and re-entered effectively complete
+  // on the close (T-490 step 4). The pair still sinks together: the ink never reads dark on
+  // its own pill (T-375's "fades with the overlay, no gray shift" holds - the hue never moves)
   const veilTarget = overlayIsOn ? 1 : 0;
   const prayerAgoColorStyle = useDerivedVeiledColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.text,
     toColor: COLORS.feedback.success,
     veilColor: COLORS.gradient.overlay.veil,
-    veilDuration: ANIMATION.durationFade,
+    veilDuration: ANIMATION.duration,
     ...recentColorOptions,
   });
   const prayerAgoBackgroundStyle = useDerivedVeiledBackgroundColor(veilTarget, isRecent, {
     fromColor: COLORS.prayerAgo.gradient.start,
     toColor: COLORS.prayerAgo.gradient.end,
-    veilColor: COLORS.gradient.overlay.veil,
-    veilDuration: ANIMATION.durationFade,
+    veilColor: COLORS.gradient.overlay.veilThrough,
+    veilDuration: ANIMATION.duration,
     ...recentColorOptions,
   });
 
-  // Hold the badge drawn through its fade, then drop it: the resting frame under an open
-  // overlay shows the backdrop exactly, as the old opacity 0 did
-  const [hiddenSettled, setHiddenSettled] = useState(false);
-  useEffect(() => {
-    if (!overlayIsOn) {
-      setHiddenSettled(false);
-      return;
-    }
+  // The badge's own cut, mirroring the card's placer (T-490): display flips to none in the
+  // worklet evaluation that carries the veil progress to 1 - by then every pixel of the badge
+  // has dissolved into the veil solid, so the cut lands on the first frame that no longer
+  // shows it, never a settle-gate snap a commit later. On close it flips flex the moment the
+  // veil lifts. The words leave by display alone, never through an opacity (T-294)
+  const veilProgress = useDerivedProgress(veilTarget, { duration: ANIMATION.duration });
+  const badgeCutStyle = useAnimatedStyle(() => ({ display: veilProgress.value >= 1 ? 'none' : 'flex' }));
 
-    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.durationFade);
-    return () => clearTimeout(hideTimer);
-  }, [overlayIsOn]);
-
+  // The resting backstop, no longer carrying the transition: as the array's last entry it owns
+  // every JS flatten, so between commits the cut above is what lands the hidden frame a commit
+  // before this gate's own flip; should the cut never run, the gate still holds the resting frame
   return (
     <Animated.Text
       style={[
         styles.prayerAgo,
-        { display: hiddenSettled ? 'none' : 'flex' },
         prayerAgoColorStyle,
         prayerAgoBackgroundStyle,
-      ]}>
+        badgeCutStyle,
+        { display: overlayIsOn && fadeSettled ? 'none' : 'flex' },
+      ]}
+      numberOfLines={1}>
       {prayerAgo}
     </Animated.Text>
   );

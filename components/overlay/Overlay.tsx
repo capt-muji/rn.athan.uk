@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { BackHandler, Pressable, StyleSheet, type ViewProps } from 'react-native';
 import Reanimated from 'react-native-reanimated';
 
@@ -12,7 +12,8 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, OVERLAY } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { perfMeasure } from '@/shared/perf';
-import { closeOverlay, overlayAtom } from '@/stores/overlay';
+import { currentFadeGeneration, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
+import { closeOverlay, markOverlayFadeSettled, overlayAtom } from '@/stores/overlay';
 import { measurementsListAtom } from '@/stores/ui';
 
 /**
@@ -24,10 +25,18 @@ import { measurementsListAtom } from '@/stores/ui';
  */
 export default function Overlay() {
   const overlay = useAtomValue(overlayAtom);
+  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
-  const [visible, setVisible] = useState(overlay.isOn);
-
-  const layerOpacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
+  // The layer's own fade is the family's settle clock: its completion raises
+  // the fade-hold flag for every subtree the overlay holds displayable, so
+  // one batched commit flips them all after the fade truly ended — carrying
+  // this render's generation, so a settle superseded by a newer fade (the
+  // open fade completing while the close handler runs) is dropped
+  const fadeGeneration = currentFadeGeneration();
+  const layerOpacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, {
+    duration: ANIMATION.duration,
+    onSettled: () => markOverlayFadeSettled(fadeGeneration),
+  });
 
   const listMeasurements = useAtomValue(measurementsListAtom);
 
@@ -66,21 +75,13 @@ export default function Overlay() {
     );
   }, [overlay.isOn]);
 
-  // Hold the subtree displayable through the close fade-out, then hide it
-  useEffect(() => {
-    if (overlay.isOn) {
-      setVisible(true);
-      return;
-    }
-
-    const hideTimer = setTimeout(() => setVisible(false), ANIMATION.duration);
-    return () => clearTimeout(hideTimer);
-  }, [overlay.isOn]);
-
+  // Held displayable through the close fade by the fade-settled flag: the
+  // display drops when the fade has truly settled, never on a wall timer
+  // phase-locked to the JS call
   // box-none: catchers catch, the row exempt falls through to the real row
   const computedStyleContainer: ViewProps['style'] = {
     pointerEvents: overlay.isOn ? 'box-none' : 'none',
-    display: visible ? 'flex' : 'none',
+    display: overlay.isOn || !fadeSettled ? 'flex' : 'none',
   };
 
   // selectedPrayerIndex indexes the sequence's rows; position uses the row List actually renders

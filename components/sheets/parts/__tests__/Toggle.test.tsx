@@ -66,15 +66,14 @@ describe('the reminder switch', () => {
     expect(thumb()).toHaveStyle({ transform: [{ translateX: SIZE.toggle.translateX }] });
   });
 
-  it('gives a medium haptic and reports one toggle when pressed', async () => {
+  it('reports one toggle when pressed, leaving the haptic to its owner row', async () => {
     const onToggle = jest.fn();
     await render(<Toggle value={false} onToggle={onToggle} />);
 
     await fireEvent.press(screen.getByRole('switch'));
 
     expect(onToggle).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
   it("borders its off state with the cards' edge colour", async () => {

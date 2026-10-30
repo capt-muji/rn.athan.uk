@@ -105,6 +105,8 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['whatsNew.body.qiblaCompass', 'Added new qibla compass'],
 
   ['sheet.closeToSave', 'Close to save'],
+  ['language.search', 'Search languages'],
+  ['language.noMatch', 'No languages found'],
 
   ['alert.card.athan', 'Athan'],
   ['alert.card.athanHint', 'Notification at prayer time'],
@@ -169,8 +171,8 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
 
   ['extras.explanation.midnight', 'Halfway between Magrib and Fajr'],
   ['extras.explanation.last third', 'Start of the last third of the night'],
-  ['extras.explanation.suhoor', '20 mins before Fajr'],
-  ['extras.explanation.duha', '20 mins after Sunrise'],
+  ['extras.explanation.suhoor', '20 minutes before Fajr'],
+  ['extras.explanation.duha', '20 minutes after Sunrise'],
   ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
 
   ['duration.now', 'now'],

@@ -8,6 +8,7 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getPlatformBadges, groupWhatsNewItems, type WhatsNewItem } from '@/shared/whatsNew';
+import { getInstalledVersion } from '@/stores/version';
 
 import Modal from './Modal';
 
@@ -34,9 +35,16 @@ type Props = {
 export default function ModalWhatsNew({ visible, items, onClose }: Props) {
   const { height } = useWindowDimensions();
   const groups = groupWhatsNewItems(items);
+  const installedVersion = getInstalledVersion();
 
   return (
     <Modal visible={visible} title={t('whatsNew.heading')} onRequestClose={onClose}>
+      {installedVersion !== '' && (
+        <Text style={styles.version}>
+          {'v'}
+          {installedVersion}
+        </Text>
+      )}
       <ScrollView
         style={[styles.list, { maxHeight: height * LIST_HEIGHT_SHARE }]}
         contentContainerStyle={styles.listContent}
@@ -97,6 +105,18 @@ export default function ModalWhatsNew({ visible, items, onClose }: Props) {
 const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
+  /** The version line's own faint: FAINT_BLUE one step toward white, so the
+   * number reads as barely there (owner order 2026-10-26) */
+  version: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    textAlign: 'center',
+    color: '#ccd4e3',
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
+    marginBottom: SPACING.xl,
+    marginTop: -SPACING.sm,
+  },
   list: {
     width: '100%',
     marginBottom: 36,

@@ -124,9 +124,6 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.xxs + 1,
     color: COLORS.text.labelHome,
     transform: [{ translateY: -2 }],
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 0, height: 3 },
-    textShadowRadius: 6,
   },
   countdown: {
     color: COLORS.text.primary,

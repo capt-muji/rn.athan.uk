@@ -1,0 +1,39 @@
+import { Platform } from 'react-native';
+
+// The tail is per-platform: the same hex reads pinker on Android's panel
+export const IOS_TAIL = '#7117c9';
+export const ANDROID_TAIL = '#4c16ca';
+
+export const tailFor = (os: string) => (os === 'android' ? ANDROID_TAIL : IOS_TAIL);
+
+// The solid is platform-keyed (owner order 2026-10-29): Android takes the house
+// gradient's 65 percent, the iPhone stays at its middle
+export const rootBgFor = (os: string) => (os === 'android' ? '#251b74' : '#1e1a6a');
+
+// The dim is per-platform (owner order 2026-10-27): the iPhone takes the #5254ac pick,
+// Android keeps the locked #4a47ae
+export const IOS_DIM = '#5254ac';
+export const ANDROID_DIM = '#4a47ae';
+export const dimFor = (os: string) => (os === 'android' ? ANDROID_DIM : IOS_DIM);
+
+// T-374's landed design token: hand-frozen, nothing generates it. Every
+// visual role of the standard schedule reads this. The dim is the one dim ink,
+// forked per platform (dimFor) since 2026-10-27.
+export const DESIGN = {
+  bgStart: '#05134a',
+  bgEnd: '#36208a',
+  bgTail: tailFor(Platform?.OS ?? 'ios'),
+  dim: dimFor(Platform?.OS ?? 'ios'),
+  label: '#4060ae',
+  bright: '#f2f5f9',
+  pill: '#2439f5',
+  pillExtras: '#8d0ca0',
+  pillShadow: '#111d89',
+  pillShadowExtras: '#570962',
+  dot: '#db98dc',
+  iconSettings: 'rgba(200, 176, 255, 0.71)',
+  settingsBg: 'rgba(105, 65, 198, 0.51)',
+  settingsBorder: 'rgba(116, 80, 207, 0.68)',
+  settingsShadow: '#27035c',
+  rootBg: rootBgFor(Platform?.OS ?? 'ios'),
+};

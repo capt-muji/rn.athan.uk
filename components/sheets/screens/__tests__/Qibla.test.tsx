@@ -2,6 +2,8 @@
  * The qibla sheet: what it draws, when it arms the sensors, and the one tap the user feels per crossing
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type React from 'react';
@@ -2325,8 +2327,11 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
       expect(numbers.map((number) => number.content)).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
       expect(degrees).toHaveLength(8);
       // Each degree circle is smaller than its number, raised at its top right and drawn in the
-      // number's own ink: the palette's solid at full fill opacity (the old 0.5 fillOpacity folded
-      // into the ink), away then facing as the two palettes stack
+      // number's own ink: the palette's flattened solid, which the owner's 2026-10-27 ruling
+      // further halves at draw time (fillOpacity 0.5) - quarter-strength digits, ruled perfect
+      // on glass; the source pin below holds the halving against silent drift
+      const compassSource = readFileSync(join(__dirname, '../QiblaCompass.tsx'), 'utf8');
+      expect(compassSource.match(/fillOpacity=\{0\.5\}/g)).toHaveLength(2);
       const paletteInks = degrees.map((degree) => degree.ink).filter((ink): ink is string => typeof ink === 'string');
       expect(paletteInks).toEqual([
         '#33416b',

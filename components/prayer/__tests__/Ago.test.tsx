@@ -1,17 +1,21 @@
 /**
  * The badge saying how long ago the prayer above next was: its lettered words, when it shows
- * nothing, and its fade under the overlay
+ * nothing, its fade under the overlay, and its one-line pin in every shipped locale
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import { getDefaultStore } from 'jotai/vanilla';
+import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { ANIMATION } from '@/shared/constants';
-import { setActiveLocale } from '@/shared/i18n/locale';
+import { ANIMATION, COLORS } from '@/shared/constants';
+import { tIn } from '@/shared/i18n';
+import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
+import { overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { openOverlay } from '@/stores/overlay';
 
-import PrayerAgo from '../Ago';
+import PrayerAgo, { PrayerAgoBadge } from '../Ago';
 
 const ASR = 3;
 
@@ -65,18 +69,82 @@ describe('the Standard badge on Friday 11 September 2026, after Dhuhr at 13:02',
     }
   });
 
-  it('fades toward the veil ink while the overlay is open, then drops from the tree', async () => {
+  it('fades toward the veil ink while the overlay is open, then drops from the tree at the fade settle', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     await act(() => openOverlay(ScheduleType.Standard, ASR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
     // The fade carries the ink, so the words stay drawn while it runs
     expect(screen.getByText('Dhuhr \u206658m\u2069 ago')).toBeOnTheScreen();
 
-    await act(() => jest.advanceTimersByTime(ANIMATION.durationFade));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
     expect(screen.queryByText('Dhuhr \u206658m\u2069 ago')).not.toBeOnTheScreen();
+  });
+
+  // The badge's veil ends split (T-490 revision): the INK keeps the rows' own treatment - the
+  // solid veil as its far end - while the PILL thins into the veil instead of filling toward the
+  // opaque solid, which rode above the veil mid-fade with a crisp edge and re-entered complete on
+  // the close. The pill's far end is the veil solid at alpha zero: the wash keeps the veil's own
+  // channels, so it thins without a hue shift and the veil shows through it unhindered. Every
+  // veil tween still rides the overlay's own 200ms clock
+  it('sinks its ink to the veil solid and thins its pill into the veil, on the overlay own fade clock', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+
+    await act(() => openOverlay(ScheduleType.Standard, ASR));
+
+    const farEnds = (end: string) =>
+      interpolateColor.mock.calls.filter((call) => (call[2] as unknown as readonly string[])[1] === end);
+    expect(farEnds(COLORS.gradient.overlay.veil)).toHaveLength(1);
+    expect(farEnds(COLORS.gradient.overlay.veilThrough)).toHaveLength(1);
+
+    // The pill's veil end is the veil solid at ALPHA ZERO - pinned here, because a filled pill
+    // at any alpha above zero is the crisp-edge float the proof measured; the veil's own
+    // channels hold the wash's hue while it thins, the "no gray shift" of T-375
+    expect(COLORS.gradient.overlay.veilThrough).toBe('rgba(11, 0, 22, 0)');
+
+    // The badge's three veil tweens: the ink's, the pill's and the display cut's
+    const veilClocks = withTiming.mock.calls.filter(([toValue]) => toValue === 1);
+    expect(veilClocks).toHaveLength(3);
+    for (const [, config] of veilClocks) {
+      expect((config as { duration: number }).duration).toBe(ANIMATION.duration);
+    }
+  });
+
+  // The cut, mirroring the card's (T-490): the badge's animated style itself reads display none
+  // once the veil progress rests at 1, before any settle flag has spoken. The first
+  // display-carrying entry of the style array is the animated cut; the settle gate behind it
+  // is only the resting backstop
+  it('cuts its own display to none inside the veil worklet, ahead of the settle gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await act(() => openOverlay(ScheduleType.Standard, ASR));
+    // The ghost window the cut exists for: the veil progress rests at 1 while the settle flag
+    // has not spoken yet - here the gate still reads flex, so only the cut hides the badge
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
+
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    const badge = screen.getByText('Dhuhr \u206658m\u2069 ago', { includeHiddenElements: true });
+    const displayEntries = (badge.props.style as { display?: string }[]).filter((entry) => entry.display !== undefined);
+    expect(displayEntries[0].display).toBe('none');
+    expect(displayEntries[displayEntries.length - 1].display).toBe('flex');
+  });
+
+  it('keeps the cut at flex while no veil is drawn, the overlay closed', async () => {
+    showLondonDay('2026-09-11', '14:00');
+
+    await render(<PrayerAgo type={ScheduleType.Standard} />);
+
+    const badge = screen.getByText('Dhuhr \u206658m\u2069 ago');
+    const animatedDisplay = (badge.props.style as { display?: string }[]).find(
+      (entry) => entry.display !== undefined
+    )?.display;
+    expect(animatedDisplay).toBe('flex');
   });
 });
 
@@ -93,5 +161,22 @@ describe('the Standard badge with no prayer above next to measure from', () => {
     await render(<PrayerAgo type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
+  });
+});
+
+describe('the badge pinned to one line in every shipped locale', () => {
+  // Hindi wraps the badge into a cropped second line on Android when the text element goes
+  // unconstrained, so the badge caps itself and every locale's sentence must survive the cap
+  it.each(LOCALE_IDS)('renders the %s sentence whole on one line', async (locale) => {
+    const composed = tIn(locale, 'time.ago', {
+      name: tIn(locale, 'prayer.fajr'),
+      duration: '\u206658m\u2069',
+    });
+
+    await render(<PrayerAgoBadge prayerAgo={composed} minutesElapsed={10} />);
+
+    const badge = screen.getByText(composed);
+    expect(badge).toBeOnTheScreen();
+    expect(badge.props.numberOfLines).toBe(1);
   });
 });

@@ -14,6 +14,19 @@ interface GlowProps {
   size?: number;
 }
 
+// Accelerating decay, so the rim sinks into the veil instead of banding grey
+const FALLOFF = [
+  ['0%', 0.75],
+  ['12%', 0.62],
+  ['25%', 0.48],
+  ['40%', 0.34],
+  ['55%', 0.22],
+  ['70%', 0.12],
+  ['82%', 0.055],
+  ['92%', 0.018],
+  ['100%', 0],
+] as const;
+
 export default function Glow({ color, style, baseOpacity = 0.5, size }: GlowProps) {
   const window = useWindowDimensions();
   const columnWidth = Math.min(window.width, SIZE.contentMaxWidth);
@@ -26,11 +39,9 @@ export default function Glow({ color, style, baseOpacity = 0.5, size }: GlowProp
       viewBox={`0 0 ${computedSize} ${computedSize}`}
       style={[styles.glow, style]}>
       <RadialGradient id={'radialGlow'} cx={'50%'} cy={'50%'} r={'50%'} fx={'50%'} fy={'50%'}>
-        <Stop offset={'0%'} stopColor={color} stopOpacity={baseOpacity * 0.75} />
-        <Stop offset={'35%'} stopColor={color} stopOpacity={baseOpacity * 0.4} />
-        <Stop offset={'65%'} stopColor={color} stopOpacity={baseOpacity * 0.15} />
-        <Stop offset={'85%'} stopColor={color} stopOpacity={baseOpacity * 0.05} />
-        <Stop offset={'100%'} stopColor={color} stopOpacity={'0'} />
+        {FALLOFF.map(([offset, opacity]) => (
+          <Stop key={offset} offset={offset} stopColor={color} stopOpacity={baseOpacity * opacity} />
+        ))}
       </RadialGradient>
       <Circle cx={computedSize / 2} cy={computedSize / 2} r={computedSize / 2} fill={'url(#radialGlow)'} />
     </AnimatedSvg>

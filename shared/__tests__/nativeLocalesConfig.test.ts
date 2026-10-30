@@ -2,7 +2,8 @@
  * Native strings from committed config (D43, D46): every per-locale native
  * value - the permission purposes and the widget gallery names - reproduces
  * from app.json on every prebuild, byte-identical to the plan's native
- * table, and the locale declarations cover the six-language set on both
+ * table, and the locale declarations cover the fifty-eight-language set on both
+ * table, and the locale declarations cover the fifty-nine-language set on both
  * platforms.
  */
 
@@ -20,8 +21,102 @@ const NATIVE = JSON.parse(readFileSync(join(ROOT, 'shared', 'i18n', 'native-stri
   }
 >;
 
-const LOCALES = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
-const NON_EN = LOCALES.slice(1) as readonly ('ar' | 'ms' | 'so' | 'hi' | 'th')[];
+const LOCALES = [
+  'en',
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+  'ps',
+  'ta',
+  'ml',
+  'zh-Hans',
+  'zh-Hant',
+  'es',
+  'nl',
+  'kk',
+  'ky',
+  'tg',
+  'tk',
+  'wo',
+  'mr',
+  'om',
+  'bm',
+  'tl',
+  'ff',
+  'te',
+  'gu',
+  'kn',
+  'am',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'ku',
+  'yo',
+  'jv',
+  'su',
+  'my',
+  'tt',
+  'ce',
+  'uk',
+  'qu',
+  'min',
+  'mad',
+  'bug',
+  'ja',
+  'ko',
+  'it',
+  'pl',
+  'ro',
+  'ceb',
+  'ilo',
+  'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
+] as const;
+type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
+const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
+
+/** The locales whose native rows are written in Cyrillic, so a Latin letter in one is a slip */
+const CYRILLIC_SCRIPT: readonly string[] = ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk'];
+
+/** The words of a value that carry both scripts, the shape of a homoglyph */
+const mixedWords = (value: string): string[] =>
+  value.split(/[^\p{L}]+/u).filter((word) => /\p{Script=Latin}/u.test(word) && /\p{Script=Cyrillic}/u.test(word));
+
+/** A native row's strings, keyed for the failure message */
+const nativeStrings = (locale: string): Record<string, string> => {
+  const row = NATIVE[locale];
+  return {
+    NSLocationWhenInUseUsageDescription: row.NSLocationWhenInUseUsageDescription,
+    NSUserNotificationsUsageDescription: row.NSUserNotificationsUsageDescription,
+    ...row.gallery,
+  };
+};
 
 /** The widget kinds' config entries from the expo-widgets plugin block */
 const widgetKinds = (): Array<{ name: string; displayName: string; description: string }> => {
@@ -73,7 +168,43 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('declares the six locales in CFBundleLocalizations with the display name unchanged', () => {
+  it('refuses a Cyrillic letter inside a Latin-script locale', () => {
+    // Russian, Kazakh, Kyrgyz and Tajik write Cyrillic; every other shipped locale
+    // writes Latin, Arabic, Devanagari, Thai, Bengali, Tamil, Malayalam, Kannada,
+    // Telugu, Gujarati, Ethiopic, Myanmar or Han, so a Cyrillic letter in one of
+    // their rows is a homoglyph slip, not a spelling
+    const CYRILLIC = /[\u0400-\u04FF]/;
+    const failures: string[] = [];
+    for (const locale of LOCALES) {
+      if (CYRILLIC_SCRIPT.includes(locale)) continue;
+      const row = NATIVE[locale];
+      const strings: Record<string, string> = {
+        NSLocationWhenInUseUsageDescription: row.NSLocationWhenInUseUsageDescription,
+        NSUserNotificationsUsageDescription: row.NSUserNotificationsUsageDescription,
+        ...row.gallery,
+      };
+      for (const [key, value] of Object.entries(strings)) {
+        if (CYRILLIC.test(value)) failures.push(`${locale}: ${key} carries a Cyrillic letter`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('refuses a Latin letter inside a Cyrillic-script locale', () => {
+    // The mirror rule, and the one Chechen broke: a Latin letter glued to Cyrillic
+    // inside one word is a homoglyph for the palochka, while a whole Latin token is
+    // the brand or a platform label, so the scan reads word by word
+    const failures: string[] = [];
+    for (const locale of CYRILLIC_SCRIPT) {
+      for (const [key, value] of Object.entries(nativeStrings(locale))) {
+        const words = mixedWords(value);
+        if (words.length) failures.push(`${locale}: ${key} carries ${words.join(', ')}`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('declares every shipped locale in CFBundleLocalizations with the display name unchanged', () => {
     const ios = app.ios as { infoPlist?: Record<string, unknown> };
     const infoPlist = (ios.infoPlist ?? {}) as Record<string, unknown>;
     expect(infoPlist.CFBundleLocalizations).toEqual([...LOCALES]);
@@ -105,12 +236,12 @@ describe('native strings from committed config', () => {
       android?: unknown;
     }>;
     const iosOnly = widgets.filter((widget) => !widget.android);
-    expect(iosOnly).toHaveLength(6);
+    expect(iosOnly).toHaveLength(8);
     for (const widget of iosOnly) {
       expect(defaults.get(`${resourceName(widget.name)}_display_name`)).toBe(NATIVE.en.gallery[widget.displayName]);
       expect(defaults.get(`${resourceName(widget.name)}_description`)).toBe(NATIVE.en.gallery[widget.description]);
     }
-    expect(defaults.size).toBe(14);
+    expect(defaults.size).toBe(18);
 
     // No translated key may lack either a default twin or an android-kind owner in values/
     const locales = app.locales as Record<string, { android: Record<string, string> }>;
@@ -129,13 +260,13 @@ describe('native strings from committed config', () => {
     // The written resource matches the stock locale writer's quoted-value shape
     const xml = buildDefaultLocaleStringsXml(entries);
     expect(xml).toContain('<resources>');
-    expect(xml.match(/<string /g)).toHaveLength(14);
+    expect(xml.match(/<string /g)).toHaveLength(18);
     expect(xml).toContain(
       `<string name="NSUserNotificationsUsageDescription">"${NATIVE.en.NSUserNotificationsUsageDescription}"</string>`
     );
   });
 
-  it('derives all 30 defaults when the resolution strips expo-widgets', () => {
+  it('derives all 34 defaults when the resolution strips expo-widgets', () => {
     const { defaultLocaleStringEntries } = require(join(ROOT, 'plugins', 'androidLocaleConfig.js')) as {
       defaultLocaleStringEntries: (projectRoot: string, config: Record<string, unknown>) => Array<[string, string]>;
     };
@@ -145,14 +276,14 @@ describe('native strings from committed config', () => {
     };
     const entries = defaultLocaleStringEntries(ROOT, stripped);
     const defaults = new Map(entries);
-    expect(defaults.size).toBe(30);
+    expect(defaults.size).toBe(34);
 
     // The ExtraTranslation invariant: every translated key gains a default twin
     const locales = app.locales as Record<string, { android: Record<string, string> }>;
     const translatedKeys = new Set(Object.values(locales).flatMap((entry) => Object.keys(entry.android)));
     translatedKeys.add('NSLocationWhenInUseUsageDescription');
     translatedKeys.add('NSUserNotificationsUsageDescription');
-    expect(translatedKeys.size).toBe(30);
+    expect(translatedKeys.size).toBe(34);
     for (const key of translatedKeys) {
       expect(defaults.has(key)).toBe(true);
     }
@@ -164,7 +295,7 @@ describe('native strings from committed config', () => {
     }
   });
 
-  it('builds the Android locales_config with the six locales', () => {
+  it('builds the Android locales_config with every shipped locale', () => {
     const pluginPath = join(ROOT, 'plugins', 'androidLocaleConfig.js');
     expect(existsSync(pluginPath)).toBe(true);
 
@@ -173,7 +304,7 @@ describe('native strings from committed config', () => {
     for (const locale of LOCALES) {
       expect(xml).toContain(`<locale android:name="${locale}"/>`);
     }
-    expect(xml.match(/<locale /g)).toHaveLength(6);
+    expect(xml.match(/<locale /g)).toHaveLength(LOCALES.length);
     expect(xml).toContain('<locale-config xmlns:android="http://schemas.android.com/apk/res/android">');
   });
 });

@@ -2,8 +2,10 @@
  * Overlay state management
  *
  * `isOn` changes only on the owner's tap, app close, and the 2 second schedule
- * boundary. `openOverlay` and `closeOverlay` are the only writers.
- *
+ * boundary. `openOverlay` and `closeOverlay` are the only tap-path writers;
+ * the boundary close in stores/countdown.ts writes the atoms directly to keep
+ * that module free of a cycle. Every isOn write drops the fade-hold flag in
+ * the same batch, and `markOverlayFadeSettled` raises it once the fade ends.
  */
 
 import { getDefaultStore } from 'jotai/vanilla';
@@ -11,7 +13,12 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { OVERLAY } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
+import {
+  currentFadeGeneration,
+  nextFadeGeneration,
+  overlayAtom as overlayAtomImport,
+  overlayFadeSettledAtom,
+} from '@/stores/atoms/overlay';
 import { armOverlayBoundary, clearOverlayBoundary, writeDisplayCountdown } from '@/stores/countdown';
 import { getNextBoundary } from '@/stores/schedule';
 
@@ -45,6 +52,11 @@ const openOverlay = (type: ScheduleType, index: number) => {
 
   perfMark('overlay_open_start', { scheduleType: type });
   armOverlayBoundary(type);
+  // Same batch as the flip itself: every subtree the overlay holds displayable
+  // re-renders once, holds through the incoming fade, and retires any settle
+  // still in flight from the fade this write replaces
+  nextFadeGeneration();
+  store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { isOn: true, selectedPrayerIndex: index, scheduleType: type });
 
   // Flip the hero display on the toggle instant, not the next wall-second tick
@@ -57,8 +69,30 @@ const closeOverlay = () => {
 
   perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
   clearOverlayBoundary();
+  nextFadeGeneration();
+  store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { ...overlay, isOn: false });
   writeDisplayCountdown(overlay.scheduleType);
+};
+
+/**
+ * Raises the fade-hold flag when the overlay family's fade has truly settled.
+ * Called from the animation's completion (useDerivedProgress's onSettled)
+ * carrying the generation of the fade it belongs to — captured by the render
+ * that started it — so the one batched display flip lands after the fade
+ * ended, never inside it, and never for a fade a newer writer has replaced:
+ * the open fade's completion can be posted to the JS thread while the close
+ * tap's handler already ran, and letting that stale settle through would cut
+ * the layer dead at close-start. Deferred one Promise microtask because the
+ * completion can fire from a render-phase animation mapper (a store write
+ * there would land mid-render), and on the real queueMicrotask, which jest's
+ * fake timers stub and never flush.
+ */
+const markOverlayFadeSettled = (settledGeneration: number) => {
+  void Promise.resolve().then(() => {
+    if (settledGeneration !== currentFadeGeneration()) return;
+    store.set(overlayFadeSettledAtom, true);
+  });
 };
 
 /**
@@ -76,4 +110,4 @@ const toggleOverlay = (force?: boolean) => {
   else closeOverlay();
 };
 
-export { closeOverlay, openOverlay, toggleOverlay };
+export { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay };

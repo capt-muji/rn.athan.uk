@@ -37,6 +37,10 @@ export const en = {
   'settings.display': 'Display',
   'settings.showHijriDate': 'Show hijri date',
   'settings.whatsNewLabel': 'What’s new',
+  'settings.checkUpdates': 'Check for updates',
+  'settings.checkingUpdates': 'Checking for updates...',
+  'settings.upToDate': 'You’re up to date',
+  'settings.updateCheckFailed': 'Failed to check. Try again',
 
   'help.q.none': "Why don't I get any notifications?",
   'help.a.none': 'Without permission, notifications cannot be shown.',
@@ -83,6 +87,8 @@ export const en = {
   'whatsNew.body.reminderSounds': 'Added a sound to every reminder',
   'whatsNew.title.widgets': 'Home & Lock widgets',
   'whatsNew.body.widgets': 'Added prayer times to Home and Lock Screen',
+  'whatsNew.title.lockLayouts': 'Lock Screen layouts',
+  'whatsNew.body.lockLayouts': 'Four new layouts for the next prayer and the extra times',
   'whatsNew.title.secondReminder': 'Second reminder',
   'whatsNew.body.secondReminder': 'Each prayer now has 2 reminders',
   'whatsNew.title.helpPage': 'Help page',
@@ -95,6 +101,8 @@ export const en = {
 
   'sheet.closeToSave': 'Close to save',
   'language.chooseHint': 'Choose your language',
+  'language.search': 'Search languages',
+  'language.noMatch': 'No languages found',
 
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Notification at prayer time',
@@ -165,8 +173,8 @@ export const en = {
 
   'extras.explanation.midnight': 'Halfway between Magrib and Fajr',
   'extras.explanation.last third': 'Start of the last third of the night',
-  'extras.explanation.suhoor': '20 mins before Fajr',
-  'extras.explanation.duha': '20 mins after Sunrise',
+  'extras.explanation.suhoor': '20 minutes before Fajr',
+  'extras.explanation.duha': '20 minutes after Sunrise',
   'extras.explanation.istijaba': '1 hour before Magrib (Fridays only)',
 
   'duration.now': 'now',
@@ -195,6 +203,12 @@ export const en = {
   'channel.reminder': '{name} in {n}m Reminder',
   'whatsNew.title.language': 'Language',
   'whatsNew.body.language': 'Added support for more languages',
+  'whatsNew.title.moreLanguages': 'More languages',
+  'whatsNew.body.moreLanguages': 'Added support for more languages',
+  'whatsNew.title.checkUpdates': 'Check for updates',
+  'whatsNew.body.checkUpdates': 'Added a Check for updates option',
+  'whatsNew.title.whatsNew': "What's New page",
+  'whatsNew.body.whatsNew': "Added the What's New page",
   'calendar.monthShort.1': 'Jan',
   'calendar.monthShort.2': 'Feb',
   'calendar.monthShort.3': 'Mar',

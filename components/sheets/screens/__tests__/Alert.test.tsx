@@ -702,7 +702,7 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
 });
 
 describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14:00", () => {
-  it('toggles a reminder from a press on its title, with no haptic of the row', async () => {
+  it('toggles a reminder from a press on its title, with the haptic the switch itself gives', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     openSheetFor(FAJR);
@@ -711,7 +711,8 @@ describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14
     await fireEvent.press(screen.getByText('Reminder 1'));
 
     expect(reminderSwitch()).toBeChecked();
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
   it('refuses a header press while the athan is Off', async () => {

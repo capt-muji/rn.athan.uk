@@ -1,3 +1,7 @@
+import { Platform } from 'react-native';
+
+import { DESIGN } from './design';
+
 // =============================================================================
 // PRAYER NAMES
 // =============================================================================
@@ -536,7 +540,7 @@ export const COLOR_PICKER_DEFAULT = COLOR_PICKER_SWATCHES[0];
 export const SIZE = {
   /** Icon dimensions */
   icon: {
-    /** Small icon (14px) - settings icon, music icon */
+    /** Small icon (14px) - music icon */
     sm: 14,
     /** Medium icon (20px) - alert icons, chevrons */
     md: 20,
@@ -663,7 +667,7 @@ export const HIT_SLOP = {
 export const ELEVATION = {
   /** No elevation - element sits flat */
   none: 0,
-  /** Subtle elevation (5) - settings button */
+  /** Subtle elevation (5) */
   subtle: 5,
   /** Standard elevation (15) - popups, sheets */
   standard: 15,
@@ -678,6 +682,9 @@ export const ELEVATION = {
 /**
  * Application color palette
  * Organized by semantic role: text, surface, interactive, icons, etc.
+ *
+ * T-374: the standard schedule's visual roles read the design token in
+ * shared/design.ts - the owner's picked palette. Everything else stays literal.
  */
 export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
@@ -685,25 +692,26 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   text: {
     // Text inks are solid: translucent ink compounds where glyph strokes overlap (the
-    // Arabic overlap band), so each dim role is its old rgba flattened to one constant
+    // Arabic overlap band), so each dim role is its old rgba flattened to one constant.
+    // T-374: one dim ink below serves every dimmed name, time and bell.
     /** Primary text: active prayers, main content */
-    primary: '#ffffff',
-    /** Secondary text over the screen gradient: the old rgba(160,200,255,.54) flattened over the gradient midpoint #2f1c7b */
-    secondary: '#6c79c2',
-    /** The header labels at home: secondary one step toward the band behind them (hue 231 to 225, saturation 41 to 33), owner-tuned (T-322) */
-    labelHome: '#6c79c2',
-    /** The header labels while the overlay glows: secondary greyer and toward the glow (hue 238, saturation 36), owner-tuned (T-322) */
+    primary: DESIGN.bright,
+    /** The header labels at home: the prayer name above the countdown and the location share this ink */
+    labelHome: DESIGN.label,
+    /** The header labels while the overlay is open: the overlay's own ink, outside the redesign */
     labelOverlay: '#585c8c',
-    /** Muted text over the screen gradient (inactive prayers): the old rgba(138,169,214,.38) flattened over #2f1c7b */
-    muted: '#52529e',
-    /** The prayer row's time at rest, a quarter above the muted ink, which alone read too dim. The row's own name and bell keep `muted`. Old rgba(138,169,214,.475) over #2f1c7b */
-    rowTime: '#5a5fa6',
+    /** Muted text over the screen gradient: every dimmed name, time and bell */
+    muted: DESIGN.dim,
+    /** The prayer row's time at rest: the same single dim ink (the quarter-step shade is gone) */
+    rowTime: DESIGN.dim,
     /** Disabled/hint text on the sheet: the old rgba(146,211,255,.65) flattened over #0b183a */
     disabled: '#6392ba',
     /** Emphasis text: info box titles */
     emphasis: 'rgba(224, 231, 255, 1)',
     /** Every supporting line under a sheet's own title, so they all read as one voice. Old rgba(86,134,189,.725) flattened over the sheet #0b183a */
     sheetSubtitle: '#416899',
+    /** The sheet's own dim readings - the language sheet's search placeholder and search glyph - as one ink: the sheet hint #416899 darkened 25 percent (0x41,0x68,0x99 x 0.75) */
+    sheetDim: '#314e73',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -714,16 +722,16 @@ export const COLORS = {
     sheet: '#0b183a',
     /** Bottom sheet border */
     sheetBorder: '#0f1d46',
-    /** The sheet grabber indicator: text.secondary's old rgba over the sheet, held pixel-exact now that the text constant is a gradient flatten */
+    /** The sheet grabber indicator: flattened over the sheet from the pre-redesign palette */
     sheetGrabber: '#5b77a4',
     /** Bottom sheet backdrop overlay */
     backdrop: '#000116',
     /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
      * for overlays that must not dim their own children */
     backdropDim: 'rgba(0, 1, 22, 0.9)',
-    /** Elevated surface (info boxes, modals) */
-    elevated: 'rgba(18, 6, 42, 1)',
-    /** Elevated surface border */
+    /** Elevated surface (info boxes, modals): rgb(17, 7, 44) lifted a touch to read on glass (owner order 2026-10-30) */
+    elevated: 'rgba(22, 9, 56, 1)',
+    /** The card's inner separator line, the border family's one remaining reader */
     elevatedBorder: 'rgba(45, 22, 106, 0.29)',
   },
 
@@ -732,13 +740,17 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   gradient: {
     /** Main screen background gradient */
-    screen: { start: '#031a4c', end: '#5b1eaa' },
+    screen: { start: DESIGN.bgStart, end: DESIGN.bgEnd },
     /** Overlay background gradient */
     overlay: {
       start: '#110022',
       end: '#000000',
       /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
       veil: '#0b0016',
+      /** The ago pill's veil end, the veil solid at alpha zero: the wash thins as the veil arrives - the veil showing through it unhindered, its hue held by the veil's own channels - instead of filling toward the opaque solid, which rode above the veil mid-fade and re-entered complete on the close (T-490 step 4) */
+      veilThrough: 'rgba(11, 0, 22, 0)',
+      /** The veil glow's navy: the gradient top's hue at a lightness that reads on glass (owner order 2026-10-30) */
+      glow: '#1431a0',
     },
   },
 
@@ -764,8 +776,8 @@ export const COLORS = {
     primary: 'rgba(165, 180, 252, 1)',
     /** Icon wrapper background */
     background: 'rgba(99, 102, 241, 0.2)',
-    /** The settings glyph, bright enough to read against its own circle in direct sunlight */
-    settings: 'rgba(200, 176, 255, 0.71)',
+    /** The settings glyph, readable against its circle in direct sunlight */
+    settings: DESIGN.iconSettings,
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -780,12 +792,12 @@ export const COLORS = {
   // SHADOWS
   // ───────────────────────────────────────────────────────────────────────────
   shadow: {
-    /** Active prayer shadow */
-    prayer: '#081a76',
+    /** Active prayer shadow: the pill's own hue sunk dark, per design */
+    prayer: DESIGN.pillShadow,
     /** Active prayer shadow (extras page) */
-    prayerExtras: '#6e006b',
+    prayerExtras: DESIGN.pillShadowExtras,
     /** Settings button shadow */
-    button: '#27035c',
+    button: DESIGN.settingsShadow,
     /** Alert popup shadow */
     alert: '#010931',
   },
@@ -801,32 +813,22 @@ export const COLORS = {
   },
 
   // ───────────────────────────────────────────────────────────────────────────
-  // GLOWS & EFFECTS
-  // ───────────────────────────────────────────────────────────────────────────
-  glow: {
-    /** Purple glow for overlay component */
-    overlay: '#8000ff',
-    /** Purple glow for overlay component (extras page) */
-    overlayExtras: '#630fb7',
-  },
-
-  // ───────────────────────────────────────────────────────────────────────────
   // PRAYER-SPECIFIC
   // ───────────────────────────────────────────────────────────────────────────
   prayer: {
     /** Active prayer highlight background */
-    activeBackground: '#0847e5',
+    activeBackground: DESIGN.pill,
     /** Active prayer highlight background (extras page) */
-    activeBackgroundExtras: '#9200a2',
+    activeBackgroundExtras: DESIGN.pillExtras,
   },
 
   prayerAgo: {
-    /** Prayer ago badge text: the old rgba(128,162,212,.45) flattened over its pill wash on the gradient midpoint */
-    text: '#5660a7',
-    /** Background gradient for prayer ago badge */
+    /** Prayer ago badge text: the owner's Android pick (2026-10-27), the dim everywhere else */
+    text: (Platform?.OS ?? 'ios') === 'android' ? '#4c47ae' : DESIGN.dim,
+    /** The pill's tween pair, at rest and when recent */
     gradient: {
-      start: 'rgba(73, 75, 160, 0.15)',
-      end: 'rgba(70, 100, 160, 0.25)',
+      start: 'rgba(77, 59, 175, 0.15)',
+      end: 'rgba(59, 88, 146, 0.25)',
     },
   },
 
@@ -835,15 +837,13 @@ export const COLORS = {
   // ───────────────────────────────────────────────────────────────────────────
   /** Settings button (transparent style) */
   settingsButton: {
-    // Halfway between the original, which vanished against the gradient in sunlight, and the first fix, which
-    // the owner judged too strong: findable with poor eyesight without taking the eye off the prayer list
-    background: 'rgba(105, 65, 198, 0.51)',
-    border: 'rgba(116, 80, 207, 0.68)',
+    background: DESIGN.settingsBg,
+    border: DESIGN.settingsBorder,
   },
 
   countdown: {
-    /** Colon inks are solid, the old rgba flattened over the gradient midpoint #2f1c7b */
-    timeColon: '#5f60ad',
+    /** Colon inks are solid; the at-rest colon rides the single dim ink */
+    timeColon: DESIGN.dim,
     pastTimeColon: 'rgb(170, 182, 212)',
     nextTimeColon: '#a9b1de',
     nextTimeColonExtras: '#d7d9ef',
@@ -863,7 +863,7 @@ export const COLORS = {
       medallion: 'rgba(30, 40, 88, 1)',
       /** Ticks, rings and the jewel, in the alert sheet's own label blue */
       structure: '146, 184, 228',
-      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face, so the digits carry no fill opacity and still sit behind the instrument */
+      /** The cardinal numbers' ink: the old rgba(146,184,228,.45) at its 0.5 fillOpacity flattened over the face; the owner's 2026-10-27 ruling stacks a further 0.5 fillOpacity on the flattened solid - quarter-strength digits, verified perfect on glass */
       ink: '#33416b',
       /** The one warm note while turning: the line, the pivot, the rim arc and the Kaaba's band */
       accent: 'rgba(212, 160, 58, 1)',
@@ -908,13 +908,13 @@ export const COLORS = {
   /** Navigation colors */
   navigation: {
     /** Navigation background (matches gradient.screen.start) */
-    background: '#031a4c',
+    background: DESIGN.bgStart,
     /** Root layout background */
-    rootBackground: '#2c1c77',
+    rootBackground: DESIGN.rootBg,
     /** Loading spinner color */
     activityIndicator: '#8d73ff',
     /** Navigation dot color */
-    dot: '#cf98f4',
+    dot: DESIGN.dot,
   },
 
   /** Light mode colors (system modals, update dialogs) */

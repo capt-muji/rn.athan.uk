@@ -1,6 +1,7 @@
 /**
  * The widget statics table (D44, R7.2): every neutral, stale and catch card
- * in both widget modules draws its copy from an inline six-language table
+ * in both widget modules draws its copy from an inline fifty-eight-language table
+ * in both widget modules draws its copy from an inline fifty-nine-language table
  * keyed by the device locale the widget process itself reads through the
  * runtime patch's __expoWidgetDeviceLocale global. This suite pins the
  * rendered bytes to the plan's table row for row, locale for locale, and the
@@ -183,7 +184,83 @@ const TABLE = JSON.parse(
   readFileSync(join(__dirname, '..', '..', 'shared', 'i18n', 'widget-statics.json'), 'utf8')
 ) as Record<string, Record<string, string>>;
 
-const LOCALES = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
+const LOCALES = [
+  'en',
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+  'ps',
+  'ta',
+  'ml',
+  'zh-Hans',
+  'zh-Hant',
+  'es',
+  'nl',
+  'kk',
+  'ky',
+  'tg',
+  'tk',
+  'wo',
+  'mr',
+  'om',
+  'bm',
+  'tl',
+  'ff',
+  'te',
+  'gu',
+  'kn',
+  'am',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'ku',
+  'yo',
+  'jv',
+  'su',
+  'my',
+  'tt',
+  'ce',
+  'uk',
+  'qu',
+  'min',
+  'mad',
+  'bug',
+  'ja',
+  'ko',
+  'it',
+  'pl',
+  'ro',
+  'ceb',
+  'ilo',
+  'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
+] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;
 
@@ -259,9 +336,10 @@ describe('the widget statics table', () => {
       expect(iosNeutral).toEqual(['Athan', expected.subtitle]);
 
       for (const [name, layout] of [
-        ['countdown pair', lock.PrayerLockWidget],
-        ['centred', lock.PrayerLockWidget2],
-        ['stacked', lock.PrayerLockWidget3],
+        ['countdown below the name', lock.PrayerLockWidget],
+        ['time below the name', lock.PrayerLockWidget2],
+        ['countdown pair', lock.PrayerLockWidget3],
+        ['centred', lock.PrayerLockWidget4],
       ] as const) {
         const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
         expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${expected.inline}`);
@@ -293,9 +371,10 @@ describe('the widget statics table', () => {
       expect(caught).toEqual(['Athan', expected.catchBody]);
 
       for (const [name, layout] of [
-        ['countdown pair', lock.PrayerLockWidget],
-        ['centred', lock.PrayerLockWidget2],
-        ['stacked', lock.PrayerLockWidget3],
+        ['countdown below the name', lock.PrayerLockWidget],
+        ['time below the name', lock.PrayerLockWidget2],
+        ['countdown pair', lock.PrayerLockWidget3],
+        ['centred', lock.PrayerLockWidget4],
       ] as const) {
         const staleInline = textsOf(
           renderTree(layout(LOCK_STALE, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
@@ -362,5 +441,72 @@ describe('the widget statics table', () => {
       renderTree(homeIos.PrayerWidget(HOME_STALE, { colorScheme: 'light', widgetFamily: 'systemSmall' }))
     );
     expect(iosStale).toEqual([expected.staleTitle, expected.refreshLead, expected.refreshTail]);
+  });
+
+  // Decision 9's zh mapping at the widget's four finder sites (griller finding 3): a
+  // TW, HK or MO region reads Traditional, every other zh tag Simplified, so a
+  // zh-TW device's widgets render Traditional and not the en fallback
+  it.each([
+    ['zh-TW', 'zh-Hant'],
+    ['zh-HK', 'zh-Hant'],
+    ['zh-MO', 'zh-Hant'],
+    ['zh-Hans-CN', 'zh-Hans'],
+    ['zh-CN', 'zh-Hans'],
+    ['zh-SG', 'zh-Hans'],
+    ['zh', 'zh-Hans'],
+  ] as const)('resolves the device tag %s to the %s row', (tag, expected) => {
+    forceDeviceLocale(tag);
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', table[expected].subtitle]);
+
+    const lockInline = textsOf(
+      renderTree(lock.PrayerLockWidget(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(lockInline).toEqual([table[expected].inline]);
+
+    // The module's four finder copies each carry the zh mapping, so every
+    // layout renders it, not only the countdown pair
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([table[expected].inline]);
+    }
+  });
+
+  // The same four finder sites resolve Shahmukhi Punjabi: the app speaks pa-Arab for
+  // every pa tag, so a bare pa or a pa-PK device renders its row and not the en fallback
+  it.each([
+    ['pa', 'pa-Arab'],
+    ['pa-PK', 'pa-Arab'],
+    ['pa-Arab', 'pa-Arab'],
+    ['pa-Arab-PK', 'pa-Arab'],
+  ] as const)('resolves the device tag %s to the %s row', (tag, expected) => {
+    forceDeviceLocale(tag);
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', table[expected].subtitle]);
+
+    const lockInline = textsOf(
+      renderTree(lock.PrayerLockWidget(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' }))
+    );
+    expect(lockInline).toEqual([table[expected].inline]);
+
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([table[expected].inline]);
+    }
+  });
+
+  it('renders the en row for a yue-tagged device: yue never matches as zh', () => {
+    forceDeviceLocale('yue-Hant-HK');
+    const expected = table.en;
+
+    const androidNeutral = textsOf(renderTree(homeAndroid.PrayerWidget(null, { colorScheme: 'light' })));
+    expect(androidNeutral).toEqual(['Athan', expected.subtitle]);
+
+    for (const layout of [lock.PrayerLockWidget2, lock.PrayerLockWidget3, lock.PrayerLockWidget4]) {
+      const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
+      expect(inline).toEqual([expected.inline]);
+    }
   });
 });

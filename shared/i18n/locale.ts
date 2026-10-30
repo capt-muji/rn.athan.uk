@@ -1,5 +1,6 @@
 /**
- * The locale resolution core: which of the six shipped locales the app speaks,
+ * The locale resolution core: which of the fifty-eight shipped locales the app speaks,
+ * The locale resolution core: which of the fifty-nine shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -12,13 +13,102 @@ import { atom, getDefaultStore } from 'jotai/vanilla';
 import * as Database from '@/stores/database';
 
 /** The D32 confidence set. Storage keys and surfaces locale-key off these ids. */
-export const LOCALE_IDS = ['en', 'ar', 'ms', 'so', 'hi', 'th'] as const;
+export const LOCALE_IDS = [
+  'en',
+  'ar',
+  'ms',
+  'so',
+  'hi',
+  'th',
+  'id',
+  'tr',
+  'fr',
+  'uz',
+  'sw',
+  'ha',
+  'pt',
+  'ur',
+  'fa',
+  'bn',
+  'ru',
+  'az',
+  'de',
+  'sq',
+  'bs',
+  'ps',
+  'ta',
+  'ml',
+  'zh-Hans',
+  'zh-Hant',
+  'es',
+  'nl',
+  'kk',
+  'ky',
+  'tg',
+  'tk',
+  'wo',
+  'mr',
+  'om',
+  'bm',
+  'tl',
+  'ff',
+  'te',
+  'gu',
+  'kn',
+  'am',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'ku',
+  'yo',
+  'jv',
+  'su',
+  'my',
+  'tt',
+  'ce',
+  'uk',
+  'qu',
+  'min',
+  'mad',
+  'bug',
+  'ja',
+  'ko',
+  'it',
+  'pl',
+  'ro',
+  'ceb',
+  'ilo',
+  'vi',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+  'aa',
+  'mdh',
+  'kr',
+  'mnk',
+  'dje',
+] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
 
 /** Every shipped locale that reads right to left; a new RTL language joins this set and every
  * direction-keyed surface follows without further code */
-const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar']);
+const RTL_IDS: ReadonlySet<LocaleId> = new Set([
+  'ar',
+  'fa',
+  'ur',
+  'ps',
+  'pa-Arab',
+  'sd',
+  'ug',
+  'ckb',
+  'skr',
+  'bal',
+  'kas',
+  'dv',
+]);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
 
@@ -70,7 +160,51 @@ export const setActiveLocale = (id: LocaleId): void => {
  * RFC 4647 lookup over the device's ordered locale list: a valid stored
  * preference wins (R1.2's shape), then each device locale in user order
  * matches its exact tag, then its language code. Anything else is en.
+ *
+ * zh is the one language that needs more than the lookup: iOS and Android report
+ * it as zh-Hans-CN, zh-Hant-TW, bare zh-TW and more, so a script subtag resolves
+ * its written standard and a region subtag falls to CLDR's likely-subtags answer
+ * (plan T-419 decision 9). yue never matches here: it is its own language code.
  */
+const ZH_HANT_REGIONS: ReadonlySet<string> = new Set(['TW', 'HK', 'MO']);
+
+const resolveZhTag = (languageTag: string): 'zh-Hans' | 'zh-Hant' | null => {
+  if (languageTag !== 'zh' && !languageTag.startsWith('zh-')) return null;
+  if (languageTag.startsWith('zh-Hans')) return 'zh-Hans';
+  if (languageTag.startsWith('zh-Hant')) return 'zh-Hant';
+  const region = languageTag.split('-')[1];
+  // Bare zh reads Simplified: a bare zh entry must never serve a Traditional
+  // reader (R4 A.4)
+  return region !== undefined && ZH_HANT_REGIONS.has(region) ? 'zh-Hant' : 'zh-Hans';
+};
+
+/**
+ * Punjabi ships as Shahmukhi (pa-Arab), and CLDR's bare pa is Gurmukhi, so a bare pa or
+ * Pakistan's pa-PK resolves pa-Arab while a Gurmukhi or Indian Punjabi device stays
+ * unshipped and falls through to en (R4 A.4, plan T-427 decision 1).
+ */
+const resolvePaTag = (locale: DeviceLocaleInfo): 'pa-Arab' | null => {
+  const punjabi = locale.languageCode === 'pa' || locale.languageTag === 'pa' || locale.languageTag.startsWith('pa-');
+  if (!punjabi) return null;
+  const subtags = locale.languageTag.split('-');
+  if (subtags.includes('Guru') || subtags.includes('IN')) return null;
+  return 'pa-Arab';
+};
+
+/**
+ * Kashmiri ships under its CLDR-external tag kas, while a device reports the CLDR code ks
+ * (bare, region-tagged or Arab-tagged), so a ks tag resolves kas - the pa-Arab precedent
+ * of mapping a foreign tag onto the shipped id (plan T-453 decision 3). CLDR's ks-Deva is
+ * Devanagari Kashmiri, which this catalog does not serve, so it falls through to en on the
+ * resolvePaTag Guru/IN pattern.
+ */
+const resolveKasTag = (locale: DeviceLocaleInfo): 'kas' | null => {
+  const kashmiri = locale.languageCode === 'ks' || locale.languageTag === 'ks' || locale.languageTag.startsWith('ks-');
+  if (!kashmiri) return null;
+  if (locale.languageTag.split('-').includes('Deva')) return null;
+  return 'kas';
+};
+
 export const resolveInitialLocale = (
   preference: string | null,
   deviceLocales: readonly DeviceLocaleInfo[]
@@ -83,6 +217,12 @@ export const resolveInitialLocale = (
     if ((LOCALE_IDS as readonly string[]).includes(locale.languageTag)) {
       return locale.languageTag as LocaleId;
     }
+    const zh = resolveZhTag(locale.languageTag);
+    if (zh !== null) return zh;
+    const pa = resolvePaTag(locale);
+    if (pa !== null) return pa;
+    const kas = resolveKasTag(locale);
+    if (kas !== null) return kas;
     if (locale.languageCode !== null && (LOCALE_IDS as readonly string[]).includes(locale.languageCode)) {
       return locale.languageCode as LocaleId;
     }

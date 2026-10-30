@@ -78,8 +78,10 @@ const walk = (node, file, ctx) => {
       const fieldOf = (owner) => owner && owner.type === 'ObjectProperty' && !owner.computed && owner.key.name;
       const copyField = fieldOf(parent) || fieldOf(ctx.grandparent);
       // The language-names module's `name` field holds native names ('Bahasa
-      // Melayu' carries a space), which are names data, not copy
-      const isNameData = copyField === 'name' && file === 'shared/languageNames.ts';
+      // Melayu' carries a space) and its `english` field the English gloss the
+      // search matches ('Chinese (Simplified)' carries both), which are names
+      // data, not copy
+      const isNameData = file === 'shared/languageNames.ts' && (copyField === 'name' || copyField === 'english');
       if (
         !inType &&
         !isImport &&

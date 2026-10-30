@@ -47,8 +47,8 @@ const drawnIds = (rows: Prayer[]): PrayerId[] => EXTRA_PRAYER_IDS.filter((id) =>
 const EXPLAINED: [PrayerId, string, string][] = [
   ['midnight', 'Midnight', 'Halfway between Magrib and Fajr'],
   ['last third', 'Last Third', 'Start of the last third of the night'],
-  ['suhoor', 'Suhoor', '20 mins before Fajr'],
-  ['duha', 'Duha', '20 mins after Sunrise'],
+  ['suhoor', 'Suhoor', '20 minutes before Fajr'],
+  ['duha', 'Duha', '20 minutes after Sunrise'],
   ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only)'],
 ];
 

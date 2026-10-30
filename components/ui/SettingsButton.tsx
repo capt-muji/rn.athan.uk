@@ -1,14 +1,17 @@
 import * as Haptics from 'expo-haptics';
-import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, Pressable, StyleSheet, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';
 import { useAnimationScale } from '@/hooks/useAnimation';
-import { COLORS, ELEVATION, HIT_SLOP, RADIUS, SHADOW, SIZE, SPACING } from '@/shared/constants';
+import { COLORS, ELEVATION, HIT_SLOP, RADIUS, SHADOW, SIZE } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { showSettingsSheet } from '@/stores/ui';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
+export const ICON_SIZE = 18;
+const BUTTON_WIDTH = 39;
 
 export default function SettingsButton() {
   const AnimScale = useAnimationScale(1);
@@ -18,11 +21,25 @@ export default function SettingsButton() {
     showSettingsSheet();
   };
 
-  const computedStylesContainer: ViewStyle = {
-    backgroundColor: COLORS.settingsButton.background,
-    borderColor: COLORS.settingsButton.border,
-    shadowColor: COLORS.shadow.button,
-  };
+  // Android's outline rule draws a shadow only from an opaque background, so the fill is
+  // baked opaque over the local gradient. The owner's 2026-10-27 rulings, locked on glass:
+  // the #4e23bc fill, the 0.51 border, the 0.9 glyph - Android alone, and the bake stays
+  // opaque so the outline - and the shadow it casts - survives
+  const computedStylesContainer: ViewStyle =
+    Platform.OS === 'android'
+      ? {
+          backgroundColor: '#4e23bc',
+          borderColor: 'rgba(116, 80, 207, 0.51)',
+          shadowColor: '#0a0426',
+          elevation: 10,
+        }
+      : {
+          backgroundColor: COLORS.settingsButton.background,
+          borderColor: COLORS.settingsButton.border,
+          ...SHADOW.button,
+          shadowColor: COLORS.shadow.button,
+          elevation: ELEVATION.subtle,
+        };
 
   return (
     <AnimatedPressable
@@ -34,23 +51,31 @@ export default function SettingsButton() {
       accessibilityRole={'button'}
       // An icon-only control, so the glyph is all a sighted user needs and a screen reader gets nothing
       accessibilityLabel={t('settingsButton.label')}>
-      <SettingsIcon width={SIZE.icon.md} height={SIZE.icon.md} style={styles.icon} />
+      <SettingsIcon
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+        style={[styles.icon, Platform.OS === 'android' && styles.iconAndroid]}
+      />
     </AnimatedPressable>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: SPACING.gap,
     borderRadius: RADIUS.rounded,
     borderWidth: 1,
-    ...SHADOW.button,
-    elevation: ELEVATION.subtle, // Android shadow
-    zIndex: 0, // Lowest z-index - should never appear above sheets or overlays
-    width: SIZE.button.icon,
+    zIndex: 0,
+    // The margins hold the 43px slot so the flanking dots never move
+    width: BUTTON_WIDTH,
+    height: BUTTON_WIDTH,
+    justifyContent: 'center',
+    marginHorizontal: (SIZE.button.icon - BUTTON_WIDTH) / 2,
     alignItems: 'center',
   },
   icon: {
     color: COLORS.icon.settings,
+  },
+  iconAndroid: {
+    opacity: 0.9,
   },
 });

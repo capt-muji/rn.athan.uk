@@ -146,7 +146,7 @@ export default function Index() {
       runBackgroundTaskDebugSequence();
 
       // Check for updates in background
-      checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
+      checkForUpdates().then((result) => setPopupUpdateEnabled(result.modal));
     }, 1500);
 
     // Show the What's New modal only when the archive stamps an item newer

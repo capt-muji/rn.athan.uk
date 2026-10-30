@@ -4,9 +4,9 @@
  * (small and medium register separately so the gallery groups smalls before
  * mediums), and every kind receives its own schedule- and theme-stamped
  * timeline: the standard light set (PrayerWidget + PrayerWidgetMedium +
- * PrayerLockWidget 1 to 3), the standard dark pair (PrayerWidgetDark +
+ * PrayerLockWidget 1 to 4), the standard dark pair (PrayerWidgetDark +
  * PrayerWidgetDarkMedium), the extras light set (ExtrasWidget +
- * ExtrasWidgetMedium + ExtrasLockWidget 1 to 3), and the extras dark pair
+ * ExtrasWidgetMedium + ExtrasLockWidget 1 to 4), and the extras dark pair
  * (ExtrasWidgetDark + ExtrasWidgetDarkMedium).
  *
  * Reads the cached prayer data and the user's widget-relevant preferences,
@@ -153,7 +153,7 @@ const msUntilMinuteFlip = (targetEpochMs: number): number | null => {
 };
 
 /**
- * Pushes ONE schedule's timelines to its six widget kinds — light small +
+ * Pushes ONE schedule's timelines to its eight widget kinds — light small +
  * medium + lock share the light entries; the dark small + medium pair gets
  * the theme-stamped dark copy. The sequence is always rebuilt: every caller
  * is a data, settings or launch event, so reading through a cache here could
@@ -203,6 +203,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       lock.PrayerLockWidget.updateTimeline(lightEntries);
       lock.PrayerLockWidget2.updateTimeline(lightEntries);
       lock.PrayerLockWidget3.updateTimeline(lightEntries);
+      lock.PrayerLockWidget4.updateTimeline(lightEntries);
       home.PrayerWidgetDark.updateTimeline(darkEntries);
       home.PrayerWidgetDarkMedium.updateTimeline(darkEntries);
     } else {
@@ -213,6 +214,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
       lock.ExtrasLockWidget.updateTimeline(lightEntries);
       lock.ExtrasLockWidget2.updateTimeline(lightEntries);
       lock.ExtrasLockWidget3.updateTimeline(lightEntries);
+      lock.ExtrasLockWidget4.updateTimeline(lightEntries);
       home.ExtrasWidgetDark.updateTimeline(darkEntries);
       home.ExtrasWidgetDarkMedium.updateTimeline(darkEntries);
     }
@@ -229,7 +231,7 @@ const pushScheduleTimelines = async (schedule: ScheduleType): Promise<void> => {
 };
 
 /**
- * Pushes a fresh timeline to all ten widgets from the cached prayer data —
+ * Pushes a fresh timeline to all sixteen kinds from the cached prayer data —
  * both schedules, rebuilding their sequences so the caches repopulate.
  * Call this wherever fresh data or preferences are known; the per-schedule
  * label-flip timers handle the in-between minute pushes themselves.

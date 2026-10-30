@@ -148,8 +148,9 @@ describe('the root layout on screen', () => {
 
     expect(screen.getByText('Set your preferences')).toBeOnTheScreen();
     expect(screen.getByText('Select Athan')).toBeOnTheScreen();
-    // The alert sheet has no prayer until a bell opens it, so its subtitle is all it shows beside the Athan sheet's
-    expect(screen.getAllByText('Close to save')).toHaveLength(2);
+    // The alert sheet has no prayer until a bell opens it, and the language sheet's subtitle is the
+    // same close-to-save line, so the three subtitles are all they show beside the Athan sheet's
+    expect(screen.getAllByText('Close to save')).toHaveLength(3);
   });
 
   it('shows the error screen in place of a route that threw', async () => {

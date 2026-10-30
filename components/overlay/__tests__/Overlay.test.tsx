@@ -11,9 +11,9 @@ import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
-import { ANIMATION, COLORS } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
+import { overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay, overlayAtom } from '@/stores/overlay';
 import { setMeasurementsList } from '@/stores/ui';
 
@@ -72,7 +72,6 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     await act(() => openOverlay(ScheduleType.Standard, DHUHR));
 
     await fireEvent.press(closeTargets()[0]);
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
 
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
     expect(closeTargets()).toHaveLength(0);
@@ -91,34 +90,64 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
   });
 
   // The display value is the rule itself (the retired ai/AGENTS.md (git history), Performance Design Rule 4): the layer stays displayed
-  // through the close fade and is hidden only once it has run, whatever a screen reader is told meanwhile
-  // [milliseconds into the close fade, the layer's display]
-  it.each<[number, 'flex' | 'none']>([
-    [ANIMATION.duration - 1, 'flex'],
-    [ANIMATION.duration, 'none'],
-  ])('keeps the close layer displayed through the fade: %i ms in, its display is %s', async (elapsed, display) => {
+  // while the fade flag is down, whatever isOn says, and drops once the fade has truly settled — the flag is the only clock, no wall
+  // timer phase-locked to the JS call (which step 10 caught cutting the fade mid-travel on the 3T). The jest mock completes animations
+  // on the render that starts them and act drains every settle before a test can read, so the mid-fade flex window is pinned at the
+  // unit level (overlayPlacement's table) and by the rows and badge; here the drop is pinned end to end
+  it('drops the layer once the fade settles, from a flag that started down', async () => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
+    getDefaultStore().set(overlayFadeSettledAtom, false);
     await render(<Overlay />);
-    await act(() => openOverlay(ScheduleType.Standard, DHUHR));
-    await act(() => closeOverlay());
+    const layer = () => screen.queryAllByTestId('overlay-layer', { includeHiddenElements: true })[0];
 
-    await act(() => jest.advanceTimersByTime(elapsed));
+    await act(async () => {
+      await Promise.resolve();
+    });
 
-    const layer = screen.queryAllByTestId('overlay-layer', { includeHiddenElements: true })[0];
-    expect(layer).toHaveStyle({ display });
+    expect(getDefaultStore().get(overlayFadeSettledAtom)).toBe(true);
+    expect(layer()).toHaveStyle({ display: 'none' });
   });
 
-  it('stays shown when it opens again before the close fade has run', async () => {
+  it('returns the fade-settled flag to true when its fade completes, on open and on close', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Overlay />);
+    const store = getDefaultStore();
+
+    await act(async () => openOverlay(ScheduleType.Standard, DHUHR));
+    expect(store.get(overlayFadeSettledAtom)).toBe(true);
+
+    await act(async () => closeOverlay());
+    expect(store.get(overlayFadeSettledAtom)).toBe(true);
+  });
+
+  it('drops the explanation box at the settle like the layer, from a flag that started down', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setMeasurementsList(LIST);
+    getDefaultStore().set(overlayFadeSettledAtom, false);
+    await render(
+      <>
+        <Overlay />
+        <OverlayInfoBox type={ScheduleType.Extra} />
+      </>
+    );
+    const placer = () => screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(placer()).toHaveStyle({ display: 'none' });
+  });
+
+  it('stays shown when it opens again after a close, whatever the flag held', async () => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(<Overlay />);
     await act(() => openOverlay(ScheduleType.Standard, DHUHR));
     await act(() => closeOverlay());
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration / 2));
 
     await act(() => openOverlay(ScheduleType.Standard, DHUHR));
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
 
     expect(closeTargets()).toHaveLength(4);
   });
@@ -143,7 +172,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByText(english)).toBeVisible();
   });
 
-  it('raises the explanation inks from the card surface as the box reveals', async () => {
+  it('rides the explanation words on the reveal as a true opacity once the box opens', async () => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(
@@ -152,19 +181,23 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
         <OverlayInfoBox type={ScheduleType.Extra} />
       </>
     );
-    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
 
     await act(() => openOverlay(ScheduleType.Extra, 0));
 
-    // The reveal drives the face's fade and the inks' rise from the card's own surface; the
-    // placer itself no longer fades, so nothing that holds text carries an opacity
-    expect(
-      interpolateColor.mock.calls.filter(
-        (call) => (call[2] as unknown as readonly string[])[0] === COLORS.surface.elevated
-      ).length
-    ).toBeGreaterThanOrEqual(2);
+    // The reveal snaps to 1 on the open's first evaluation, so both words read
+    // fully drawn at the top of their ramp - presence fades on the reveal alone
+    // and the colour never interpolates (T-490 revision 3, the owner's ordered
+    // ramp) - while the placer itself still never fades, so no subtree opacity
+    // holds text
+    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBe(1);
+    expect(StyleSheet.flatten(screen.getByText('Halfway between Magrib and Fajr').props.style).opacity).toBe(1);
     const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
     expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
+    // No band interpolation fires anywhere on this path: the words' colour is the
+    // settled constant, so the tween entry point never speaks (T-490 revision 3)
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+    expect(interpolateColor).not.toHaveBeenCalled();
+    interpolateColor.mockRestore();
   });
 
   // [action, open before the action, the action, the measure, the mark it measures from]

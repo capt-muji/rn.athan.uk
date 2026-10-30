@@ -1,19 +1,93 @@
 /**
  * The D26 picker names: each language in its own name, sorted by codepoint,
  * so a reader scans for the name they know rather than an English gloss.
- * Latin before Arabic before Devanagari before Thai. Names data, not copy:
- * the scanner's data-module rule allows this module's `name` field.
+ * Latin before Cyrillic before Arabic before Thaana before Devanagari before Bengali
+ * before Tamil before Malayalam before Thai before Chinese. Names
+ * data, not copy: the scanner's data-module rule allows this module's `name`
+ * and `english` fields. The English name is never drawn: the picker's search
+ * matches it, so a reader who knows only the English gloss can still land,
+ * and the variant spellings speakers type (Farsi, Bangla, Pulaar) ride the
+ * gloss while the drawn endonym stays the language's own name (T-451).
  */
 
 import type { LocaleId } from '@/shared/i18n/locale';
 
-export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string }> = [
-  { id: 'ms', name: 'Bahasa Melayu' },
-  { id: 'en', name: 'English' },
-  { id: 'so', name: 'Soomaali' },
-  { id: 'ar', name: 'العربية' },
-  { id: 'hi', name: 'हिन्दी' },
-  { id: 'th', name: 'ไทย' },
+export const LANGUAGE_NAMES: ReadonlyArray<{ id: LocaleId; name: string; english: string }> = [
+  { id: 'az', name: 'Azərbaycanca', english: 'Azerbaijani (Azeri)' },
+  { id: 'id', name: 'Bahasa Indonesia', english: 'Indonesian' },
+  { id: 'ms', name: 'Bahasa Melayu', english: 'Malay' },
+  { id: 'bm', name: 'Bamanankan', english: 'Bambara' },
+  { id: 'jv', name: 'Basa Jawa', english: 'Javanese' },
+  { id: 'su', name: 'Basa Sunda', english: 'Sundanese' },
+  { id: 'bug', name: 'Basa Ugi', english: 'Bugis (Buginese)' },
+  { id: 'min', name: 'Baso Minangkabau', english: 'Minangkabau (Minang)' },
+  { id: 'bs', name: 'Bosanski', english: 'Bosnian' },
+  { id: 'ceb', name: 'Cebuano', english: 'Cebuano (Bisaya)' },
+  { id: 'de', name: 'Deutsch', english: 'German' },
+  { id: 'en', name: 'English', english: 'English' },
+  { id: 'es', name: 'Español', english: 'Spanish' },
+  { id: 'fr', name: 'Français', english: 'French' },
+  { id: 'ff', name: 'Fulfulde', english: 'Fulfulde (Fulani, Pulaar)' },
+  { id: 'ha', name: 'Hausa', english: 'Hausa' },
+  { id: 'ilo', name: 'Ilokano', english: 'Ilocano (Iluko)' },
+  { id: 'it', name: 'Italiano', english: 'Italian' },
+  { id: 'sw', name: 'Kiswahili', english: 'Swahili' },
+  { id: 'ku', name: 'Kurdî', english: 'Kurdish (Kurmanji)' },
+  { id: 'mad', name: 'Madhurâ', english: 'Madurese' },
+  { id: 'kr', name: 'Kanuri', english: 'Kanuri (Kanouri)' },
+  { id: 'mdh', name: 'Magindanawn', english: 'Maguindanao (Magindanawn)' },
+  { id: 'mnk', name: 'Mandinka', english: 'Mandinka (Mandingo)' },
+  { id: 'nl', name: 'Nederlands', english: 'Dutch' },
+  { id: 'om', name: 'Oromoo', english: 'Oromo' },
+  { id: 'uz', name: 'Oʻzbekcha', english: 'Uzbek' },
+  { id: 'pl', name: 'Polski', english: 'Polish' },
+  { id: 'pt', name: 'Português', english: 'Portuguese' },
+  { id: 'qu', name: 'Runa Simi', english: 'Quechua (Quichua)' },
+  { id: 'ro', name: 'Română', english: 'Romanian' },
+  { id: 'aa', name: 'Qafar af', english: 'Afar (Afaraf)' },
+  { id: 'sq', name: 'Shqip', english: 'Albanian' },
+  { id: 'so', name: 'Soomaali', english: 'Somali' },
+  { id: 'tl', name: 'Tagalog', english: 'Tagalog' },
+  { id: 'vi', name: 'Tiếng Việt', english: 'Vietnamese' },
+  { id: 'tk', name: 'Türkmençe', english: 'Turkmen' },
+  { id: 'tr', name: 'Türkçe', english: 'Turkish' },
+  { id: 'wo', name: 'Wolof', english: 'Wolof' },
+  { id: 'yo', name: 'Yorùbá', english: 'Yoruba' },
+  { id: 'dje', name: 'Zarma', english: 'Zarma (Djerma)' },
+  { id: 'ky', name: 'Кыргызча', english: 'Kyrgyz' },
+  { id: 'ce', name: 'Нохчийн', english: 'Chechen (Noxchi)' },
+  { id: 'ru', name: 'Русский', english: 'Russian' },
+  { id: 'tt', name: 'Татарча', english: 'Tatar' },
+  { id: 'tg', name: 'Тоҷикӣ', english: 'Tajik' },
+  { id: 'uk', name: 'Українська', english: 'Ukrainian' },
+  { id: 'kk', name: 'Қазақша', english: 'Kazakh' },
+  { id: 'ug', name: 'ئۇيغۇرچە', english: 'Uyghur (Uighur)' },
+  { id: 'ur', name: 'اردو', english: 'Urdu' },
+  { id: 'ar', name: 'العربية', english: 'Arabic' },
+  { id: 'bal', name: 'بلوچی', english: 'Balochi (Baluchi)' },
+  { id: 'skr', name: 'سرائیکی', english: 'Saraiki (Siraiki)' },
+  { id: 'sd', name: 'سنڌي', english: 'Sindhi' },
+  { id: 'fa', name: 'فارسی', english: 'Persian (Farsi)' },
+  { id: 'pa-Arab', name: 'پنجابی', english: 'Punjabi' },
+  { id: 'ps', name: 'پښتو', english: 'Pashto (Pushto)' },
+  { id: 'ckb', name: 'کوردی', english: 'Kurdish (Sorani)' },
+  { id: 'kas', name: 'کٲشُر', english: 'Kashmiri (Koshur)' },
+  { id: 'dv', name: 'ދިވެހި', english: 'Dhivehi (Maldivian)' },
+  { id: 'mr', name: 'मराठी', english: 'Marathi' },
+  { id: 'hi', name: 'हिन्दी', english: 'Hindi' },
+  { id: 'bn', name: 'বাংলা', english: 'Bengali (Bangla)' },
+  { id: 'gu', name: 'ગુજરાતી', english: 'Gujarati' },
+  { id: 'ta', name: 'தமிழ்', english: 'Tamil' },
+  { id: 'te', name: 'తెలుగు', english: 'Telugu' },
+  { id: 'kn', name: 'ಕನ್ನಡ', english: 'Kannada' },
+  { id: 'ml', name: 'മലയാളം', english: 'Malayalam' },
+  { id: 'th', name: 'ไทย', english: 'Thai' },
+  { id: 'my', name: 'မြန်မာ', english: 'Burmese (Myanmar)' },
+  { id: 'am', name: 'አማርኛ', english: 'Amharic' },
+  { id: 'ja', name: '日本語', english: 'Japanese' },
+  { id: 'zh-Hans', name: '简体中文', english: 'Chinese (Simplified)' },
+  { id: 'zh-Hant', name: '繁體中文', english: 'Chinese (Traditional)' },
+  { id: 'ko', name: '한국어', english: 'Korean' },
 ];
 
 const NAMES_BY_ID = Object.fromEntries(LANGUAGE_NAMES.map((entry) => [entry.id, entry.name])) as Record<

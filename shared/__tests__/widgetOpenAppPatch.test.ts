@@ -74,13 +74,24 @@ describe('the open-the-app patch', () => {
     const runtime = read('node_modules/expo-widgets/ios/Widgets/WidgetsJSRuntime.swift');
 
     // `forKey:` is not a selector JSContext exposes to Swift, and
-    // `Locale.LanguageCode` is a struct that will not bridge to NSString;
-    // `.identifier` is the language-code string. The whole line, because the
-    // layout line above it would satisfy a bare substring check
+    // `Locale.LanguageCode` is a struct that will not bridge to NSString.
+    // minimalIdentifier carries the full BCP 47 tag (zh-Hant-TW), because the
+    // widget finders resolve script and region: the bare languageCode fed
+    // every Chinese device Simplified. The whole line, because the layout
+    // line above it would satisfy a bare substring check
     expect(runtime).toContain(
-      'context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)'
+      'context.setObject((Locale.current.language.minimalIdentifier) as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)'
     );
     expect(runtime).not.toContain('forKey: "__expoWidgetDeviceLocale"');
+  });
+
+  it('feeds Android the full BCP 47 tag, not the bare language code', () => {
+    const runtime = read('node_modules/expo-widgets/android/src/main/java/expo/modules/widgets/WidgetsJSRuntime.kt');
+
+    // toLanguageTag yields zh-TW and zh-Hans-CN; `.language` yields bare zh,
+    // which resolved every Chinese device Simplified at the widget finders
+    expect(runtime).toContain('LocaleList.getDefault().get(0).toLanguageTag()');
+    expect(runtime).not.toContain('LocaleList.getDefault().get(0).language\n');
   });
 
   it('keeps the library\u2019s own interaction path for a button that does not open the app', () => {

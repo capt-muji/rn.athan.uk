@@ -134,12 +134,19 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.42',
+  version: '2.42.10',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
       version: '2.0.37',
+    },
+    {
+      // The screen's own debut: the modal first shipped at 1.13.0 (git df08bfb1,
+      // 2026-08-30), named from history per the T-297 restamp ruling
+      titleKey: 'whatsNew.title.whatsNew',
+      bodyKey: 'whatsNew.body.whatsNew',
+      version: '1.13.0',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',
@@ -176,6 +183,27 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
       version: '1.29.258',
+    },
+    {
+      // More languages, the seventy-five-locale waves behind this build
+      titleKey: 'whatsNew.title.moreLanguages',
+      bodyKey: 'whatsNew.body.moreLanguages',
+      version: '2.41.2',
+    },
+    {
+      // The missed announcement: the feature debuted 2.11.0 (T-376) and settled into today's
+      // row at 2.11.9 (T-381), both silent. The owner ordered it announced now, so the stamp
+      // names this release - the modal gate reads stamps, not the build's own version
+      titleKey: 'whatsNew.title.checkUpdates',
+      bodyKey: 'whatsNew.body.checkUpdates',
+      version: '2.42.3',
+    },
+    {
+      // iOS only: the layouts live in the widget extension, which Android never builds
+      titleKey: 'whatsNew.title.lockLayouts',
+      bodyKey: 'whatsNew.body.lockLayouts',
+      platform: 'ios',
+      version: '2.41.2',
     },
   ],
 };

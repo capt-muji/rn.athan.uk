@@ -50,7 +50,7 @@ function Icon({ type, size, color, animatedStyle }: Props) {
 
   if (animatedStyle) {
     const AnimatedIcon = getAnimatedIcon(type);
-    return <AnimatedIcon width={size} height={size} style={animatedStyle} />;
+    return <AnimatedIcon width={size} height={size} style={[{ color }, animatedStyle]} />;
   }
 
   return <IconComponent width={size} height={size} style={{ color }} />;

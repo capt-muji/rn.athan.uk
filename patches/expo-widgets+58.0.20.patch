@@ -122,7 +122,7 @@ index 1e3ac96..2033a4d 100644
        Arguments.makeNativeMap(props),
 -      Arguments.makeNativeMap(environment)
 +      Arguments.makeNativeMap(environment),
-+      LocaleList.getDefault().get(0).language
++      LocaleList.getDefault().get(0).toLanguageTag()
      )
    }
  
@@ -189,7 +189,7 @@ index 0df3263..d792155 100644
        return nil
      }
  
-+    context.setObject((Locale.current.language.languageCode?.identifier ?? "en") as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)
++    context.setObject((Locale.current.language.minimalIdentifier) as NSString, forKeyedSubscript: "__expoWidgetDeviceLocale" as NSString)
 +
      self.context = context
      return context

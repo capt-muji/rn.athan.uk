@@ -64,3 +64,10 @@ describe('the expo-localization plugin config', () => {
     expect(pluginProps('expo-localization')).toEqual({ supportsRTL: true });
   });
 });
+
+describe('the Android window as the keyboard opens', () => {
+  it('resizes the window, so a sheet’s field and its first rows stay above the keyboard', () => {
+    // Expo's default, made explicit here: the picker's search field depends on the window shrinking
+    expect(loadAppConfigFresh().android?.softwareKeyboardLayoutMode).toBe('resize');
+  });
+});

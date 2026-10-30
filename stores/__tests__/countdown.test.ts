@@ -58,8 +58,13 @@ const mockOverlayAtom = mockAtom({
   scheduleType: 'standard',
 });
 
+const mockFadeSettledAtom = mockAtom(true);
+
 jest.mock('@/stores/atoms/overlay', () => ({
+  // The generation functions stay real: the boundary close stamps the true counter
+  ...jest.requireActual('@/stores/atoms/overlay'),
   overlayAtom: mockOverlayAtom,
+  overlayFadeSettledAtom: mockFadeSettledAtom,
 }));
 
 import type { PrayerId } from '@/shared/constants';
@@ -573,6 +578,9 @@ describe('overlay close deadline', () => {
 
     const defaultStore = getDefaultStore();
     defaultStore.set(mockOverlayAtom, { isOn: true, selectedPrayerIndex: 0, scheduleType: 'standard' });
+    // The open had settled: the boundary close must re-arm the fade hold with
+    // the same write that closes, like every other close path
+    defaultStore.set(mockFadeSettledAtom, true);
 
     const { getNextPrayer } = require('@/stores/schedule');
     (getNextPrayer as jest.Mock).mockReturnValue({
@@ -595,6 +603,7 @@ describe('overlay close deadline', () => {
 
     expect(checkOverlayBoundary()).toBe(true);
     expect(defaultStore.get(mockOverlayAtom).isOn).toBe(false);
+    expect(defaultStore.get(mockFadeSettledAtom)).toBe(false);
   });
 });
 
