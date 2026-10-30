@@ -14,8 +14,9 @@ import { OVERLAY } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
 import {
+  beginOverlayFadeHold,
   currentFadeGeneration,
-  nextFadeGeneration,
+  endOverlayFadeHold,
   overlayAtom as overlayAtomImport,
   overlayFadeSettledAtom,
 } from '@/stores/atoms/overlay';
@@ -55,7 +56,7 @@ const openOverlay = (type: ScheduleType, index: number) => {
   // Same batch as the flip itself: every subtree the overlay holds displayable
   // re-renders once, holds through the incoming fade, and retires any settle
   // still in flight from the fade this write replaces
-  nextFadeGeneration();
+  beginOverlayFadeHold();
   store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { isOn: true, selectedPrayerIndex: index, scheduleType: type });
 
@@ -69,7 +70,7 @@ const closeOverlay = () => {
 
   perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
   clearOverlayBoundary();
-  nextFadeGeneration();
+  beginOverlayFadeHold();
   store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { ...overlay, isOn: false });
   writeDisplayCountdown(overlay.scheduleType);
@@ -92,6 +93,7 @@ const markOverlayFadeSettled = (settledGeneration: number) => {
   void Promise.resolve().then(() => {
     if (settledGeneration !== currentFadeGeneration()) return;
     store.set(overlayFadeSettledAtom, true);
+    endOverlayFadeHold();
   });
 };
 

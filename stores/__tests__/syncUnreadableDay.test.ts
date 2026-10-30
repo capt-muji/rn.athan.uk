@@ -310,15 +310,15 @@ describe.each(SHAPES)('14 September $shape', (shape) => {
     // The 15th's night starts at the 14th's Magrib, which the provider did not give, so nothing may stand in for it
     expect(rowsOf(STANDARD, '2026-09-15')).toEqual(['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha']);
     expect(rowsOf(EXTRA, '2026-09-15')).toEqual(['[midnight]', '[last third]', 'suhoor', 'duha']);
-    // --:-- until the 00:00 tick, then Fajr at 05:00 BST and Suhoor at 04:40 BST from that same tick
+    // The countdown was already WAITING before the flip, so the flip tick's unchanged WAITING write
+    // is deduped (nothing changes on screen, nothing commits); the first countdown second of the
+    // new day is the first write
     expect(standardCountdown).toEqual([
-      WAITING,
       { timeLeft: 18000, name: 'fajr' },
       { timeLeft: 17999, name: 'fajr' },
       { timeLeft: 17998, name: 'fajr' },
     ]);
     expect(extraCountdown).toEqual([
-      WAITING,
       { timeLeft: 16800, name: 'suhoor' },
       { timeLeft: 16799, name: 'suhoor' },
       { timeLeft: 16798, name: 'suhoor' },

@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ELEVATION, OVERLAY, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
+import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { bumpSheetSettleTick } from '@/stores/geometry';
 
 import Header from './Header';
@@ -201,6 +202,9 @@ export default function Sheet({
       // position, not at the settle: a swipe-down that closes the sheet
       // mid-entrance still owes the sheet its close
       if (toIndex !== null && toIndex >= 0) openSessionRef.current = true;
+      // The entrance or close is an animation window: per-second writes stand
+      // down for it and the settle re-admits them
+      openAnimationEpoch();
       if (perfName) {
         if (toIndex === 0) {
           perfMark(`${perfName}_animate`);
@@ -233,6 +237,8 @@ export default function Sheet({
     (index: number) => {
       setPresented(index !== -1);
       if (index !== -1) openSessionRef.current = true;
+      // The animation window is over: whatever the entrance deferred may write
+      closeAnimationEpoch();
       if (index === 0) {
         if (!firstPresentFiredRef.current) {
           firstPresentFiredRef.current = true;

@@ -67,6 +67,41 @@ export const nextFadeGeneration = (): number => {
 export const currentFadeGeneration = (): number => fadeGeneration;
 
 /**
+ * The grace within which a fade hold still gates per-second writes. The fade
+ * itself runs ~200ms and its settle clears the hold; a hold older than the
+ * grace is a settle that never came, and the display's correctness outranks
+ * the gate.
+ */
+const FADE_HOLD_GRACE_MS = 600;
+
+let fadeHeldSinceMs: number | null = null;
+
+/**
+ * Begins the fade hold: stamped by every isOn writer beside its
+ * fade-hold drop, so per-second writes can stand down for the fade's window.
+ */
+export const beginOverlayFadeHold = (): number => {
+  fadeHeldSinceMs = Date.now();
+  return nextFadeGeneration();
+};
+
+/** Ends the fade hold: called from the fade's own settle, never a wall timer */
+export const endOverlayFadeHold = () => {
+  fadeHeldSinceMs = null;
+};
+
+/** Whether the overlay family's fade window is in flight, for writers that must not land inside it */
+export const overlayFadeInFlight = (): boolean => {
+  if (fadeHeldSinceMs === null) return false;
+
+  const heldFor = Date.now() - fadeHeldSinceMs;
+  // A stamp from the future (a clock that moved back) is not a hold
+  if (heldFor < 0 || heldFor > FADE_HOLD_GRACE_MS) return false;
+
+  return true;
+};
+
+/**
  * Derived boolean: whether the overlay is open
  *
  * Primitive-valued so overlay toggles re-render only components that care

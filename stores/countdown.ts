@@ -14,7 +14,8 @@ import { perfMark } from '@/shared/perf';
 import { findNextOccurrence, isReadable, isRowPassed } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { CountdownKey, type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
-import { nextFadeGeneration, overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
+import { animationEpochOpen } from '@/stores/animationEpoch';
+import { beginOverlayFadeHold, overlayAtom, overlayFadeInFlight, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import {
   extraDisplayDateAtom,
   extraNextPrayerAtom,
@@ -295,7 +296,7 @@ const checkOverlayBoundary = (): boolean => {
     // Same batch as the close itself, like every writer of isOn: the held
     // subtrees re-render once, hold through the close fade, and any settle
     // still in flight from the open fade retires with the stamped generation
-    nextFadeGeneration();
+    beginOverlayFadeHold();
     store.set(overlayFadeSettledAtom, false);
     store.set(overlayAtom, { ...overlay, isOn: false });
     writeDisplayCountdown(overlay.scheduleType);
@@ -325,6 +326,13 @@ const startSequenceCountdown = (type: ScheduleType) => {
   const which = isStandard ? 'std' : 'extra';
 
   const tick = () => {
+    // A tick landing inside an open animation epoch stands down: nothing writes
+    // during an animation, and the next tick heals whatever this one deferred.
+    // The boundary checks ride the same gate - the overlay's close deadline
+    // carries a 2s window and a prayer transition holds at 1s displayed, so a
+    // deferred second costs nothing the window does not already cover.
+    if (animationEpochOpen() || overlayFadeInFlight()) return;
+
     // Overlay close deadline first (stored deadline checked before any refresh)
     checkOverlayBoundary();
 
@@ -415,12 +423,22 @@ const writeDisplayCountdown = (type: ScheduleType) => {
   const overlayOwnsPage = overlay.isOn && overlay.scheduleType === type;
   const countdownAtom = getCountdownAtom(type);
 
+  // An unchanged second never writes: a waiting or unreadable target holds the
+  // same value every tick, and a fresh object per tick is pure commit churn
+  // (Defect C) - the notify fires only when the display actually changes.
+  // Boundary correctness is untouched: the tick reads the schedule's boundary
+  // directly, never this atom.
+  const write = (next: CountdownStore) => {
+    const current = store.get(countdownAtom);
+    if (current.name === next.name && current.timeLeft === next.timeLeft) return;
+    store.set(countdownAtom, next);
+  };
+
   // A row the overlay opens has something to show, so it is named and counted to, or --:-- when its time is
   // unreadable, even while the list waits for its day to end
   const selected = overlayOwnsPage ? getOverlayTarget() : null;
   if (selected) {
-    store.set(
-      countdownAtom,
+    write(
       isReadable(selected)
         ? { timeLeft: TimeUtils.getSecondsRemaining(selected.datetime), name: selected.id }
         : { timeLeft: null, name: selected.id }
@@ -432,14 +450,14 @@ const writeDisplayCountdown = (type: ScheduleType) => {
   // neither a count nor that prayer's name is shown until the list moves on at 00:00 (R11).
   // The held atom is also true once no readable prayer is left at all
   if (store.get(getDisplayHeldAtom(type))) {
-    store.set(countdownAtom, { timeLeft: null, name: COUNTDOWN_WAITING_NAME });
+    write({ timeLeft: null, name: COUNTDOWN_WAITING_NAME });
     return;
   }
 
   const next = getNextPrayer(type);
   if (!next) return;
 
-  store.set(countdownAtom, { timeLeft: TimeUtils.getSecondsRemaining(next.datetime), name: next.id });
+  write({ timeLeft: TimeUtils.getSecondsRemaining(next.datetime), name: next.id });
 };
 
 /**

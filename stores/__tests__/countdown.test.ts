@@ -234,7 +234,7 @@ describe('ticker integrity (wall-second chain)', () => {
 
   it('is immune to re-entrancy: repeated startCountdowns never stacks tickers', () => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+    jest.setSystemTime(new Date('2026-01-20T06:14:50.000Z'));
 
     // Baseline: sync re-entrancy once left up to SIX
     // concurrent std intervals; each start must fully replace the previous ticker
@@ -264,7 +264,7 @@ describe('ticker integrity (wall-second chain)', () => {
   it('aligns the first tick to the next wall-second boundary regardless of start phase', () => {
     jest.useFakeTimers();
     // Clock starts mid-second at :00.350 — first tick must land at :01.000, not :01.350
-    jest.setSystemTime(new Date('2026-01-20T10:00:00.350Z'));
+    jest.setSystemTime(new Date('2026-01-20T06:14:50.350Z'));
 
     const defaultStore = getDefaultStore();
     let firstTickAt: number | null = null;
@@ -280,13 +280,13 @@ describe('ticker integrity (wall-second chain)', () => {
     expect(firstTickAt).toBeNull(); // no tick before the boundary
 
     jest.advanceTimersByTime(1);
-    expect(firstTickAt).toBe(new Date('2026-01-20T10:00:01.000Z').getTime());
+    expect(firstTickAt).toBe(new Date('2026-01-20T06:14:51.000Z').getTime());
     unsub();
   });
 
   it('self-corrects after a late tick: the next tick re-anchors to :000', () => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
+    jest.setSystemTime(new Date('2026-01-20T06:14:50.000Z'));
 
     const defaultStore = getDefaultStore();
     const tickTimes: number[] = [];
@@ -307,6 +307,68 @@ describe('ticker integrity (wall-second chain)', () => {
       expect(t % 1000).toBe(0);
     }
     unsub();
+  });
+
+  it('skips every tick that lands inside an open animation epoch, and the next tick heals', () => {
+    jest.useFakeTimers();
+    // The clock starts 800ms into a wall second, so the first tick lands 200ms
+    // in - inside any epoch opened now - and the one after it is past the valve
+    jest.setSystemTime(new Date('2026-01-20T06:14:50.800Z'));
+
+    const defaultStore = getDefaultStore();
+    const { openAnimationEpoch, closeAnimationEpoch } = require('@/stores/animationEpoch');
+    const writes: number[] = [];
+
+    startCountdowns();
+
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      writes.push(defaultStore.get(standardCountdownAtom).timeLeft);
+    });
+
+    // An animation window opens beside the countdown: the tick inside it stands down
+    openAnimationEpoch();
+    jest.advanceTimersByTime(200);
+    expect(writes).toEqual([]);
+
+    // The window holds through its settle: still nothing
+    jest.advanceTimersByTime(300);
+    expect(writes).toEqual([]);
+
+    // The settle: the next wall second writes the healed value - every skipped
+    // second is absorbed into the one catch-up the clock moved past
+    closeAnimationEpoch();
+    jest.advanceTimersByTime(700);
+
+    expect(writes).toEqual([defaultStore.get(standardCountdownAtom).timeLeft]);
+    unsub();
+  });
+
+  it('writes nothing on a second that changes nothing, the waiting list case', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-01-20T06:14:50.000Z'));
+
+    // A list waiting for its day to end holds the same value every tick
+    const { atom } = require('jotai');
+    const schedule = require('@/stores/schedule');
+    const { getDisplayHeldAtom } = schedule;
+    const heldAtom = atom(true);
+    getDisplayHeldAtom.mockReturnValue(heldAtom);
+
+    const defaultStore = getDefaultStore();
+    const writes: number[] = [];
+
+    startCountdowns();
+    expect(defaultStore.get(standardCountdownAtom).timeLeft).toBeNull();
+
+    const unsub = defaultStore.sub(standardCountdownAtom, () => {
+      writes.push(1);
+    });
+
+    jest.advanceTimersByTime(5000);
+
+    expect(writes).toEqual([]);
+    unsub();
+    getDisplayHeldAtom.mockReturnValue(atom(false));
   });
 
   it('never displays 00:00:00 across a full countdown and swaps at the boundary', () => {
