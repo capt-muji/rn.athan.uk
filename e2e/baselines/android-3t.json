@@ -1,5 +1,5 @@
 {
-  "_comment": "OnePlus 3T (3T_SERIAL) medians, Release gate-ON, dev env (mock API: every launch runs the mock refresh production never does — deltas are valid across builds sharing the env, absolute startup numbers are NOT comparable to production). s7 build (2026-09-06); overlay marks and idle re-based 2026-09-11 (see _2026_09_11).",
+  "_comment": "OnePlus 3T (3T_SERIAL) medians, Release gate-ON, dev env (mock API: every launch runs the mock refresh production never does — deltas are valid across builds sharing the env, absolute startup numbers are NOT comparable to production). s7 build (2026-09-06); overlay marks and idle re-based 2026-09-11 (see _2026_09_11); animation floors re-based 2026-10-30 on a PRODUCTION build (see _2026_10_30).",
   "js_to_content": 1076,
   "overlay_open": 240,
   "overlay_close": 240,
@@ -13,7 +13,7 @@
     "overlay_open_first": "PASS 16-17ms cadence, vision-verified smooth",
     "overlay_open_steady": "PASS 60fps",
     "overlay_close_first": "PASS 60fps, vision-verified",
-    "overlay_close_steady": "UNPROVEN — the SF-latency verdict that produced this could not print FAIL (audit finding 28, fixed 1.25.14). Re-measure with the corrected script before quoting it.",
+    "overlay_close_steady": "PASS 16-17ms cadence after the entrance - corrected run 2026-10-30 on the production build (see _2026_10_30); the entrance itself carries one 40-59ms first gap there",
     "sheet_alert_entrance": "PASS zero >33ms misses post-#10 (was 235/202ms)",
     "pager_swipe": "PASS 24x17ms",
     "idle_traversal_bumps": "NONE in 5s (was 6.7+12.4ms per second pre-#10)"
@@ -23,6 +23,14 @@
     "_note": "e2e/scripts/idle-cpu.sh on 1.24.8. 19.1% at 1.23.13; 1.23.14 re-introduced a per-second 1s bar animation (75-85% until 1.24.8). Phantom 60fps Choreographer loop ~6-7% remains (progress.md #14)."
   },
   "sheet_settings_close": 202,
+  "_2026_10_30": {
+    "method": "Production build 2.42.10 (merge 6fede48b, uat's tree + stamp), real API, EXPO_PUBLIC_ENV=prod: the marks instrument folds out by design (shared/perf.ts gates PERF on ENV != 'prod') so NO mark medians exist on this line and the mock-env medians above stand unchanged. The D16 recorder-free SF present-gap lists are the verdict of record (33ms floor inside [tap-50ms, tap+1000ms]), n>=2 per interaction, dual video+SF corroborating, vision-read contact sheets. Alerts are toggled off on this phone (bells struck through), so no alarms arm - a phone state, not a scheduling failure. Evidence: $HOME/athan-gitree/out/t327-s14-3t-production-audit.md.",
+    "overlay_open_first": "FAIL 5/5: 3-5 present gaps of 34-98ms inside the entrance's first ~350ms (early gaps 68/98/74ms), then clean 11-17ms to settle. COMPOSITOR TRUTH - every video dead zone has an SF twin. Entrance visually monotone (veil scrim + 1.50x hero countdown scale), no snap, no ghost. A NEW defect: Step 10 classed the open's tap-adjacent zones as encoder loss under the recorder; recorder-free on production they are real. Named for the owner's ruling.",
+    "overlay_close_first": "FAIL 5/5 marginal: exactly one 40-59ms gap at the entrance's very start (one vision read: a real ~51ms whole-frame stall mid-fade at 77 percent opacity), body 10-30ms. Step 13's fix HELD: Step 10's 46-71ms multi-gap entrances and the two-stage hold-then-snap tail are gone (vision reads the tail a clean monotone ease-out).",
+    "overlay_close_steady": "PASS 16-17ms cadence after the entrance (body gaps 9-20ms across all sf captures) - the old UNPROVEN verdict's corrected run.",
+    "pager_swipe": "PASS on the compositor's word: 4 of 6 valid captures strictly clean (max 32.3ms), the only strict miss one 41ms single-gap sf run; both corrected duals dead-zone-free on BOTH instruments (SEPARATION CLEAN / encoder loss). Settle cadence 15-30ms, tails 16-17ms. Protocol note: an extras->std audit needs PRE_SWIPE (a relaunch lands on standard and the rightward swipe otherwise measures the overscroll glow).",
+    "late_burst": "Defect C stands unowned: presents ~1.2-1.8s after every input, and a ~17ms-cadence present train for ~350ms beyond the window on the extras page (the wall-second ticker's display writes)."
+  },
   "_s7_notes": {
     "overlay_open_family": "61-89ms after #17 derived overlay atoms (was 162-230)",
     "sheet_animation_config": "200ms cubic-out Android / tightened spring iOS (#18); cadence 16-17ms on open+close",
