@@ -11,7 +11,7 @@ import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
-import { ATHAN_AUDIOS } from '@/assets/audio';
+import { ATHAN_COUNT, athanPreviewSource } from '@/assets/audio';
 import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import * as NotificationStore from '@/stores/notifications';
@@ -111,7 +111,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
     await act(() => setSoundListReady());
 
-    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_COUNT);
   });
 
   it('carries the volume note below every athan row', async () => {
@@ -121,7 +121,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     await render(<SoundSheet />);
 
     const drawn = JSON.stringify(screen.toJSON());
-    const lastRow = `Athan ${ATHAN_AUDIOS.length}`;
+    const lastRow = `Athan ${ATHAN_COUNT}`;
     expect(drawn.indexOf(t('volume.note.ios').split('\n')[0])).toBeGreaterThan(drawn.indexOf(lastRow));
     expect(screen.getAllByText(t('volume.note.ios'))).toHaveLength(1);
   });
@@ -142,7 +142,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
     await fireEvent(screen.getByText('Select Athan'), 'change', 0);
 
-    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_COUNT);
   });
 
   it('builds its rows with Latin digits under ar', async () => {
@@ -153,7 +153,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
       await act(() => setSoundListReady());
 
-      expect(screen.getAllByText(/^أذان \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+      expect(screen.getAllByText(/^أذان \d+$/)).toHaveLength(ATHAN_COUNT);
     } finally {
       setActiveLocale('en');
     }
@@ -166,7 +166,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
     await fireEvent.press(playButtonOf(3));
 
-    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[2]);
+    expect(useAudioPlayer).toHaveBeenLastCalledWith(athanPreviewSource(2));
     expect(currentPlayer().seekTo).toHaveBeenCalledWith(0);
     expect(currentPlayer().play).toHaveBeenCalledTimes(1);
     const [seekedAt] = currentPlayer().seekTo.mock.invocationCallOrder;
@@ -228,7 +228,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
 
     await fireEvent.press(playButtonOf(2));
 
-    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[1]);
+    expect(useAudioPlayer).toHaveBeenLastCalledWith(athanPreviewSource(1));
     expect(currentPlayer().play).toHaveBeenCalledTimes(1);
     expect(screen.getByText('0:30')).toBeOnTheScreen();
   });

@@ -1,10 +1,10 @@
-import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
+import { ATHAN_COUNT, ATHAN_DURATION_SECONDS, athanPreviewSource } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -60,7 +60,7 @@ export default function BottomSheetSound() {
   // AVPlayers exhausted audio resources on older devices, G.4/G.5). The hook
   // releases and recreates the player when the source changes, so exactly
   // one instance is ever alive.
-  const playingSource = playingIndex !== null ? (ATHAN_AUDIOS[playingIndex] as AudioSource) : null;
+  const playingSource = playingIndex !== null ? athanPreviewSource(playingIndex) : null;
   const player = useAudioPlayer(playingSource);
   const status = useAudioPlayerStatus(player);
   const pendingPlayRef = useRef(false);
@@ -201,9 +201,9 @@ export default function BottomSheetSound() {
             <Animated.View style={[styles.indicator, indicatorStyle]} />
 
             {/* Sound items */}
-            {ATHAN_AUDIOS.map((_, index) => (
+            {Array.from({ length: ATHAN_COUNT }, (_, index) => (
               <SoundItem
-                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static list, never reordered or filtered
+                // biome-ignore lint/suspicious/noArrayIndexKey: the row list is static, never reordered or filtered
                 key={index}
                 index={index}
                 isSelected={index === currentSelection}
