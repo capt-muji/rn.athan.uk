@@ -1,11 +1,8 @@
 /**
- * The language sheet's staged commit (T-476): a tap stages and ticks, and nothing else, while a close
- * that carries a foreign staged row reveals the loader, ticks once and commits that row exactly once
+ * The language sheet's staged commit (T-519): a tap stages and ticks, the seat follows the staged row
+ * or the locale in force, and a close that carries a foreign staged row reveals the loader, ticks
+ * once and commits that row exactly once
  */
-
-// The staged commit imports the wheel, whose scroll handler uses runOnJS; the unit project runs
-// without the animation runtime, so the seam is the identity here
-jest.mock('react-native-reanimated', () => ({ runOnJS: (fn: () => void) => fn }));
 
 jest.mock('expo-haptics', () => ({
   ImpactFeedbackStyle: { Light: 'light' },
@@ -14,8 +11,7 @@ jest.mock('expo-haptics', () => ({
 
 import * as Haptics from 'expo-haptics';
 
-import { filterLanguages } from '../languageFilter';
-import { commitStagedOnClose, settleStageLanguage, stageLanguage } from '../languageSheet';
+import { commitStagedOnClose, seatLocaleFor, stageLanguage, stagesLanguageChange } from '../languageSheet';
 
 // The unit project runs without React Native's timer setup; the commit waits one frame, as the tap did
 globalThis.requestAnimationFrame = ((callback: () => void) =>
@@ -23,6 +19,16 @@ globalThis.requestAnimationFrame = ((callback: () => void) =>
 
 beforeEach(() => {
   jest.mocked(Haptics.impactAsync).mockClear();
+});
+
+describe('the seat’s row', () => {
+  it('holds the staged row while one is staged', () => {
+    expect(seatLocaleFor('ar', 'en')).toBe('ar');
+  });
+
+  it('falls back to the locale in force when nothing is staged', () => {
+    expect(seatLocaleFor(null, 'en')).toBe('en');
+  });
 });
 
 describe('staging a tap', () => {
@@ -35,23 +41,11 @@ describe('staging a tap', () => {
   });
 });
 
-describe('staging a settle', () => {
-  it('makes the settled row the staged candidate, with no tick and no buzz of its own', () => {
-    const rows = filterLanguages('');
-
-    expect(settleStageLanguage(rows, 2)).toBe(rows[2].id);
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
-  });
-
-  it('stages nothing off either end of the list', () => {
-    const rows = filterLanguages('');
-
-    expect(settleStageLanguage(rows, -1)).toBeNull();
-    expect(settleStageLanguage(rows, rows.length)).toBeNull();
-  });
-
-  it('stages nothing over an empty list', () => {
-    expect(settleStageLanguage([], 0)).toBeNull();
+describe('the staged-commit guard', () => {
+  it('commits only a staged row that is not the locale already in force', () => {
+    expect(stagesLanguageChange('ar', 'en')).toBe(true);
+    expect(stagesLanguageChange('en', 'en')).toBe(false);
+    expect(stagesLanguageChange(null, 'en')).toBe(false);
   });
 });
 

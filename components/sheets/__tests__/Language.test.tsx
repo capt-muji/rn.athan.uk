@@ -1,17 +1,16 @@
 /**
- * The language wheel (T-476): the list settles row by row on the centreline, a faint band in the dim
- * family rides the centre row while the purple stays on the locale in force, the sheet opens with that
- * locale centred, and everything T-451 built — the pinned search, the numbered centred rows, the
- * keyboard work and RTL — still holds over the wheel
+ * The language sheet's plain numbered list (T-519): every shipped row in one freely scrolling list,
+ * the purple seat on the locale in force when it opens, a tap staging its row with the sound sheet's
+ * own impact, and the close as the one commit boundary
  */
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { act } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { insideScroll, london } from '@/__tests__/harness';
+import { insideScroll, showLondonDay } from '@/__tests__/harness';
 import { COLORS, SPACING } from '@/shared/constants';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
@@ -19,39 +18,6 @@ import * as LanguageStore from '@/stores/language';
 import { languageSheetModalAtom } from '@/stores/ui';
 
 import LanguageSheet from '../screens/Language';
-
-// The published mock maps BottomSheetTextInput onto the plain TextInput, so the two read
-// the same in a rendered tree: this tag keeps the library's own input findable, which is
-// what the pin below hangs on
-jest.mock('@gorhom/bottom-sheet', () => {
-  const { createElement } = require('react');
-  const { FlatList: NativeFlatList } = require('react-native') as typeof import('react-native');
-
-  // The pinned 5.2.14 scrollable strips the caller's onScroll and re-dispatches it on the JS thread
-  // as { nativeEvent: event } (createBottomSheetScrollableComponent, useScrollHandler). The suite's
-  // list hands it over the same way, so a scroll reaches the screen exactly as it does on a phone
-  const BottomSheetFlatList = (props: Record<string, unknown>) => {
-    const { onScroll, onScrollBeginDrag, ...rest } = props as {
-      onScroll?: (event: { nativeEvent: unknown }) => void;
-      onScrollBeginDrag?: (event: { nativeEvent: unknown }) => void;
-    };
-    const deliver = (handler?: (event: { nativeEvent: unknown }) => void) =>
-      handler && ((event: { nativeEvent: unknown }) => handler({ nativeEvent: event.nativeEvent }));
-
-    return createElement(NativeFlatList, {
-      ...rest,
-      onScroll: deliver(onScroll),
-      onScrollBeginDrag: onScrollBeginDrag && (() => onScrollBeginDrag({ nativeEvent: {} })),
-    });
-  };
-
-  return {
-    ...jest.requireActual('@gorhom/bottom-sheet/mock'),
-    BottomSheetTextInput: (props: { [key: string]: unknown }) =>
-      require('react').createElement('BottomSheetTextInput', props),
-    BottomSheetFlatList,
-  };
-});
 
 const store = getDefaultStore();
 
@@ -62,489 +28,74 @@ const renderedSheet = () => {
   return sheet;
 };
 
-const SHIPPED_NAMES = LANGUAGE_NAMES.map((entry) => entry.name);
 const ENGLISH_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'en');
-const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
-const SPANISH_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'es');
-// The commit guards tap rows the mount window holds, because the wheel's own rows are what it presses
 const GERMAN_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'de');
-const AZERI_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'az');
+const ARABIC_ROW = LANGUAGE_NAMES.findIndex((entry) => entry.id === 'ar');
 
-// The wheel's own measures: a 400-point viewport, one 44-point row and the row gap
-const LIST_HEIGHT = 400;
-const ROW_HEIGHT = 44;
+// The list's own measures: one measured row and the row gap, which is every row's pitch
+const ROW_HEIGHT = 48;
 const PITCH = ROW_HEIGHT + SPACING.xs;
-const PAD = (LIST_HEIGHT - ROW_HEIGHT) / 2;
-
-// The rows the tallest sheet slot can show: the rest of the picker mounts as the wheel reaches them
-const WINDOW_ROWS = 12;
 
 const list = () => screen.getByTestId('language-list');
-const field = () => screen.getByTestId('language-search');
 
-/** The drawn style of a band: hidden while the rows are off-measure, so it is read as drawn */
+/** The drawn style of the seat, read as drawn so a hidden seat is read hidden */
 const styleOf = (testID: string) => {
   const node = screen.getByTestId(testID, { includeHiddenElements: true });
   return StyleSheet.flatten(node.props.style) as {
     backgroundColor?: string;
     opacity?: number;
     height?: number;
-    overflow?: string;
-    position?: string;
-    top?: number;
-    start?: number | string;
-    end?: number | string;
-    bottom?: number;
+    marginTop?: number;
+    gap?: number;
+    paddingTop?: number;
+    paddingBottom?: number;
     transform?: { translateY: number }[];
   };
 };
 
-const seatSeat = () => styleOf('language-seat').transform?.[0]?.translateY ?? Number.NaN;
-const bandSeat = () => styleOf('language-band').transform?.[0]?.translateY ?? Number.NaN;
-
-const measureList = (height = LIST_HEIGHT) =>
-  fireEvent(list(), 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 300, height } } });
+const seatOffset = () => styleOf('language-seat').transform?.[0]?.translateY ?? Number.NaN;
 
 const measureFirstRow = (height = ROW_HEIGHT) =>
   fireEvent(screen.getAllByRole('radio')[0], 'layout', {
     nativeEvent: { layout: { x: 0, y: 0, width: 300, height } },
   });
 
-/** The sheet library reporting its settle at the open snap point, which is the sheet's own onPresent */
-const presentSheet = () => fireEvent(list(), 'change', 0);
-
-/** A scroll as the list reports it: the native event, delivered the way the library re-dispatches onScroll */
-const scrollEvent = (offset: number) => ({
-  nativeEvent: {
-    contentOffset: { x: 0, y: offset },
-    contentSize: { width: 300, height: LANGUAGE_NAMES.length * PITCH },
-    layoutMeasurement: { width: 300, height: LIST_HEIGHT },
-    zoomScale: 1,
-  },
-});
-
-const scrollTo = (offset: number) => fireEvent(list(), 'scroll', scrollEvent(offset));
-
-/** A finger taking the scroll back, as the list reports it */
-const scrollBegin = () => fireEvent(list(), 'scrollBeginDrag', { nativeEvent: {} });
-
-/** The wheel as a person finds it open: both measures landed and the sheet presented */
-const openWheel = async () => {
-  await measureList();
-  await measureFirstRow();
-  await presentSheet();
-};
-
 /** The props the sheet handed the modal, which its published mock keeps on the instance */
 const sheetProps = () =>
   (
     renderedSheet() as unknown as {
       props: {
-        keyboardBehavior?: string;
-        keyboardBlurBehavior?: string;
         snapPoints?: (string | number)[];
         onDismiss: () => void;
       };
     }
   ).props;
 
-const rowNames = () => screen.getAllByRole('radio').map((row) => row.props.accessibilityLabel);
-
-/** The list's own scroll command, which is where the wheel's opening and reseeding land */
-const scrollToOffset = () => jest.spyOn(FlatList.prototype, 'scrollToOffset');
-
 afterEach(async () => {
   setActiveLocale('en');
   await act(async () => {});
 });
 
-describe('the language wheel', () => {
-  it('pads each end by half a row, so the first and last rows reach the centreline', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    expect(StyleSheet.flatten(list().props.contentContainerStyle)).toMatchObject({
-      paddingTop: PAD,
-      paddingBottom: PAD,
-    });
-  });
-
-  it('snaps to one offset per row at the row pitch, which is the wheel’s whole settle line', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    expect(list().props.snapToOffsets).toEqual(LANGUAGE_NAMES.map((_, index) => index * PITCH));
-  });
-
-  it('opens with the locale in force settled on the centreline', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const scroll = scrollToOffset();
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    expect(scroll).toHaveBeenCalledWith({ offset: ENGLISH_ROW * PITCH, animated: false });
-  });
-
-  it('places the purple on the locale’s own row and the faint band on the centre row, one pitch per row', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await measureList();
-    await measureFirstRow();
-
-    // The wheel has not settled yet, so the scroll sits at zero: the seat is its row's pitch count
-    // down and the faint band is the first row, already on the centreline
-    expect(seatSeat()).toBe(PAD + ENGLISH_ROW * PITCH);
-    expect(bandSeat()).toBe(PAD);
-  });
-
-  it('does not settle the wheel before the sheet is presented', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const scroll = scrollToOffset();
-    await render(<LanguageSheet />);
-    await measureList();
-    await measureFirstRow();
-
-    expect(scroll).not.toHaveBeenCalled();
-
-    await presentSheet();
-
-    expect(scroll).toHaveBeenCalledTimes(1);
-  });
-
-  it('rides a faint band on the centre row, in the dim family and under the rows', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    const band = styleOf('language-band');
-    expect(band.backgroundColor).toBe(COLORS.text.muted);
-    expect(band.opacity).toBe(0.25);
-    expect(band.height).toBe(ROW_HEIGHT);
-    expect(bandSeat()).toBe(PAD);
-  });
-
-  it('clips both bands to the list’s own frame, so a far scroll paints neither over the card', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    expect(styleOf('language-band-layer')).toMatchObject({
-      position: 'absolute',
-      top: 0,
-      start: 0,
-      end: 0,
-      bottom: 0,
-      overflow: 'hidden',
-    });
-  });
-
-  it('keeps the purple on the locale in force, with the faint band beside it', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    const seat = styleOf('language-seat');
-    expect(seat.backgroundColor).toBe(COLORS.interactive.active);
-    expect(seat.opacity).toBe(1);
-    expect(seat.height).toBe(ROW_HEIGHT);
-    // The open reseed stages the locale in force, so the row a close would save is told from the open
-    expect(screen.getByRole('radio', { name: 'English, Close to save' }).props.accessibilityState).toMatchObject({
-      selected: true,
-      checked: true,
-    });
-    expect(screen.getByRole('radio', { name: 'Deutsch' }).props.accessibilityState).toMatchObject({
-      selected: false,
-      checked: false,
-    });
-  });
-
-  it('rides the delivered scroll: the faint band holds the centreline and the purple its row, one pitch per row travelled', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    // The list's own event, through the pinned library's dispatch: the wheel moves, one row down
-    await scrollTo((ENGLISH_ROW + 1) * PITCH);
-    await screen.rerender(<LanguageSheet />);
-
-    // The faint band is the centreline itself, and the purple keeps the locale in force one pitch above it
-    expect(bandSeat()).toBe(PAD);
-    expect(seatSeat()).toBe(PAD - PITCH);
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-  });
-
-  it('ticks once for a seat the library delivers twice, because the tick is the seat’s own edge', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    // One event re-dispatched twice still crosses one seat: the detent fires on the crossing, not the delivery
-    await scrollTo((ENGLISH_ROW + 1) * PITCH);
-    await scrollTo((ENGLISH_ROW + 1) * PITCH);
-
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-  });
-
-  it('hides the purple while the rows are off-measure', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+describe('the plain list', () => {
+  it('carries every shipped row in the picker’s own codepoint order, numbered from 1', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    expect(styleOf('language-seat').opacity).toBe(0);
+    expect(screen.getAllByRole('radio')).toHaveLength(LANGUAGE_NAMES.length);
+    expect(screen.getByRole('radio', { name: 'Azərbaycanca' })).toBeOnTheScreen();
+    expect(screen.getByText('1.')).toBeOnTheScreen();
+    expect(screen.getByText(`${LANGUAGE_NAMES.length}.`)).toBeOnTheScreen();
   });
 
-  it('hides the faint band over an empty list, as the purple already hides', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    await fireEvent.changeText(field(), 'zzz');
-
-    // Nothing matches, so the wheel has no row to ride: the empty line is all the card says
-    expect(styleOf('language-band').opacity).toBe(0);
-    expect(screen.getByText('No languages found')).toBeOnTheScreen();
-  });
-
-  it('moves the purple with the filtered list and hides it when the locale leaves the filter', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    act(() => setActiveLocale('tr'));
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    await fireEvent.changeText(field(), 'turk');
-    // Türkmençe keeps the first seat, Türkçe the second, so the purple moves with its row
-    expect(styleOf('language-seat').opacity).toBe(1);
-
-    await fireEvent.changeText(field(), 'spanish');
-    expect(styleOf('language-seat').opacity).toBe(0);
-  });
-
-  it('reseeds on the row’s own pitch under Arabic, the same geometry the LTR locale gets', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const scroll = scrollToOffset();
-    const english = await render(<LanguageSheet />);
-    await openWheel();
-    expect(scroll).toHaveBeenLastCalledWith({ offset: ENGLISH_ROW * PITCH, animated: false });
-    await english.unmount();
-
-    act(() => setActiveLocale('ar'));
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    // A row index and the row pitch, never a mirrored sign: RTL centres the locale in force on the same line
-    expect(scroll).toHaveBeenLastCalledWith({ offset: ARABIC_ROW * PITCH, animated: false });
-  });
-
-  it('re-centres on the filtered list while the sheet is up, and on the seat the query removed', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const scroll = scrollToOffset();
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    await fireEvent.changeText(field(), 'spanish');
-
-    // The locale in force is filtered out, so the wheel centres the list's first row
-    expect(scroll).toHaveBeenLastCalledWith({ offset: 0, animated: false });
-  });
-
-  it('does not re-centre the wheel into a dismissing sheet', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const scroll = scrollToOffset();
-    await render(<LanguageSheet />);
-    await openWheel();
-    await fireEvent.changeText(field(), 'spanish');
-    const beforeClose = scroll.mock.calls.length;
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-
-    // The close clears the query, which re-derives the full list: no reseed lands on the way out
-    expect(scroll).toHaveBeenCalledTimes(beforeClose);
-    expect(field().props.value).toBe('');
-  });
-
-  it('spans the height the settings and sound sheets span, so the three read as one family', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  it('names every shipped id, so a dropped endonym row cannot pass', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    expect(sheetProps().snapPoints).toEqual(['85%']);
-  });
-
-  it('reads close-to-save on the sheet’s subtitle', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    expect(screen.getByText('Close to save')).toBeOnTheScreen();
-  });
-});
-
-describe('the windowed mount', () => {
-  it('mounts the window the slot can show, never the picker itself, which stays in the data', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    // A whole-picker mount is the open cost the owner measured: the window is a constant, not a
-    // row count that grows with the catalogue
-    expect(list().props.initialNumToRender).toBe(WINDOW_ROWS);
-    expect(list().props.data).toHaveLength(LANGUAGE_NAMES.length);
-    expect(screen.getAllByRole('radio')).toHaveLength(WINDOW_ROWS);
-  });
-
-  it('keeps a picked row staged when the list resizes under the keyboard, instead of reseeding onto the locale in force', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    await scrollTo(GERMAN_ROW * PITCH);
-    expect(screen.getByRole('radio', { name: 'Deutsch, Close to save' })).toBeOnTheScreen();
-
-    // The interactive keyboard shrinks the list on layout, and the reseed effect hears the height
-    await measureList(LIST_HEIGHT - 200);
-
-    // The pick survives the resize: the wheel re-anchors onto the staged row, not the seat in force
-    expect(screen.getByRole('radio', { name: 'Deutsch, Close to save' }).props.accessibilityState).toMatchObject({
-      checked: true,
-    });
-    expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).not.toMatchObject({
-      checked: true,
-    });
-  });
-
-  it('hands the list the row layout in the container own offset space, so a jump needs no measuring mount', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    // Off measure there is no pitch to read, and the wheel measures the first row itself
-    expect(list().props.getItemLayout).toBeUndefined();
-
-    await openWheel();
-
-    const itemLayout = list().props.getItemLayout;
-    expect(typeof itemLayout).toBe('function');
-    // The list's frames carry the container padding, so the layout offsets must open at the pad:
-    // an offset that starts at 0 sits every unmounted row's estimate one pad below its real frame
-    const pad = list().props.contentContainerStyle.paddingTop;
-    expect(itemLayout?.(null, 0)).toEqual({ length: ROW_HEIGHT, offset: pad, index: 0 });
-    expect(itemLayout?.(null, 5).offset).toBe(pad + 5 * PITCH);
-  });
-});
-
-describe('the language wheel over T-451’s picker', () => {
-  it('pins the field inside the card above the list, and the list is what scrolls', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    expect(insideScroll(field())).toBe(false);
-    expect(insideScroll(screen.getByText('Choose your language'))).toBe(false);
-    // The open reseed stages the locale in force, so its label already carries the close-to-save contract
-    expect(insideScroll(screen.getByRole('radio', { name: 'English, Close to save' }))).toBe(true);
-  });
-
-  it('opens without the keyboard, asks for the search key, and dims the placeholder in the sheet’s own ink', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    expect(field().props.autoFocus).toBeUndefined();
-    expect(field().props.returnKeyType).toBe('search');
-    expect(field().props.placeholder).toBe('Search languages');
-    expect(field().props.placeholderTextColor).toBe(COLORS.text.sheetDim);
-    expect(sheetProps().keyboardBehavior).toBe('interactive');
-    expect(sheetProps().keyboardBlurBehavior).toBe('restore');
-  });
-
-  it('dims the placeholder and glyph in the sheet’s own ink; the row number rides the white ink; the no-match line keeps the shared dim', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    const glyph = screen.getByTestId('svg:search', { includeHiddenElements: true });
-    expect(StyleSheet.flatten(glyph.props.style).color).toBe(COLORS.text.sheetDim);
-    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.primary);
-    // The shared dim stays the surface wash’s own ink: no reading borrows it
-    expect(COLORS.text.sheetDim).not.toBe(COLORS.text.muted);
-
-    // The empty-result line keeps the shared dim, and the scope stays pinned
-    await fireEvent.changeText(field(), 'zzz');
-    expect(StyleSheet.flatten(screen.getByText('No languages found').props.style).color).toBe(COLORS.text.muted);
-  });
-
-  it('puts the search glyph at the trailing edge in the dim ink, and the edge mirrors under RTL', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    const glyph = StyleSheet.flatten(screen.getByTestId('language-search-glyph').props.style);
-    expect(glyph).toMatchObject({ position: 'absolute', end: SPACING.md });
-    expect(glyph.left).toBeUndefined();
-    expect(glyph.right).toBeUndefined();
-    expect(screen.getByTestId('language-search-glyph').props.pointerEvents).toBe('none');
-  });
-
-  it('seats the glyph at the field’s vertical centre, the way the row’s index slot seats', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    expect(StyleSheet.flatten(screen.getByTestId('language-search-glyph').props.style)).toMatchObject({
-      top: 0,
-      bottom: 0,
-      justifyContent: 'center',
-    });
-  });
-
-  it('keeps the field the sheet library’s own text input', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    expect(field().type).toBe('BottomSheetTextInput');
-  });
-
-  it('matches the endonym folded, the English name, and never the locale tag', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    await fireEvent.changeText(field(), 'espanol');
-    expect(rowNames()).toEqual(['Español']);
-
-    await fireEvent.changeText(field(), 'SPANISH');
-    expect(rowNames()).toEqual(['Español']);
-
-    await fireEvent.changeText(field(), 'turk');
-    expect(rowNames()).toEqual(['Türkmençe', 'Türkçe']);
-
-    await fireEvent.changeText(field(), 'zh-Hans');
-    expect(screen.queryAllByRole('radio')).toEqual([]);
-  });
-
-  it('names the empty match in the reader’s language', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    await fireEvent.changeText(field(), 'zzz');
-
-    expect(screen.getByText('No languages found')).toBeOnTheScreen();
-  });
-
-  it('names every shipped id, so a dropped endonym row cannot pass', () => {
     expect(LANGUAGE_NAMES).toHaveLength(LOCALE_IDS.length);
   });
 
-  it('clears the query when the sheet closes, so the next open is the whole list', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-    await fireEvent.changeText(field(), 'spanish');
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-
-    expect(field().props.value).toBe('');
-    // The whole picker is back in the data the window rides on
-    expect(list().props.data).toHaveLength(LANGUAGE_NAMES.length);
-  });
-
   it('numbers every row with Latin digits in an absolute slot at the card’s left edge', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
     const first = screen.getByText('1.');
@@ -555,20 +106,8 @@ describe('the language wheel over T-451’s picker', () => {
     expect(StyleSheet.flatten(first.props.style)).toMatchObject({ writingDirection: 'ltr' });
   });
 
-  it('prints a searched row its whole-list number, never the filtered list’s own count', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    await render(<LanguageSheet />);
-
-    await fireEvent.changeText(field(), 'spanish');
-
-    // The picker ships Español past the first seat, so the filtered list’s single row keeps its own number
-    expect(SPANISH_ROW).not.toBe(0);
-    expect(screen.getByText(`${SPANISH_ROW + 1}.`)).toBeOnTheScreen();
-    expect(screen.queryByText('1.')).toBeNull();
-  });
-
   it('keeps the Latin index at the same physical edge under Arabic', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     act(() => setActiveLocale('ar'));
     await render(<LanguageSheet />);
 
@@ -578,91 +117,126 @@ describe('the language wheel over T-451’s picker', () => {
   });
 
   it('centres the name on the card, with nothing pushing it and the index out of its way', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    const row = screen.getByRole('radio', { name: 'English' });
+    const row = screen.getByRole('radio', { name: 'English, Close to save' });
     expect(StyleSheet.flatten(row.props.style).alignItems).toBe('center');
     expect(StyleSheet.flatten(row.props.style).paddingStart).toBeUndefined();
     expect(StyleSheet.flatten(screen.getByText('1.').parent?.props.style).position).toBe('absolute');
   });
 
-  it('marks the persisted pick as the selected row its search shows, in the reader’s own language', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    act(() => setActiveLocale('ar'));
+  it('rides the sheet’s own scroll view, so the reader scrolls the list free', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    await openWheel();
 
-    // The window holds the picker's first rows, so a far pick is reached the way a person reaches it
-    await fireEvent.changeText(field(), 'arab');
-
-    // The persisted pick draws selected and checked, and the close-to-save contract reads in Arabic
-    expect(screen.getByRole('radio', { name: 'العربية, أغلق للحفظ' }).props.accessibilityState).toMatchObject({
-      selected: true,
-      checked: true,
-    });
+    expect(insideScroll(screen.getByRole('radio', { name: 'English, Close to save' }))).toBe(true);
   });
 
-  it('carries every shipped native name in codepoint order in the data, mounted a window at a time', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  it('spans the height the settings and sound sheets span, so the three read as one family', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    // Reading the rows from the data: the window decides which rows are mounted, never which are shipped
-    expect(list().props.data.map((row: { name: string }) => row.name)).toEqual([...SHIPPED_NAMES]);
+    expect(sheetProps().snapPoints).toEqual(['85%']);
+  });
+
+  it('reads close-to-save on the sheet’s subtitle', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    expect(screen.getByText('Close to save')).toBeOnTheScreen();
   });
 });
 
-describe('the staged commit at the close boundary', () => {
-  /** The commit the close boundary carries, stubbed so no surface converges in the suite */
-  const stubCommit = () => jest.spyOn(LanguageStore, 'commitLanguagePreference').mockResolvedValue();
-  const stubReveal = () => jest.spyOn(LanguageStore, 'revealLanguageLoader');
-
-  it('stages the tapped row without committing, revealing or closing, and ticks', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    const revealSpy = stubReveal();
-    const scroll = scrollToOffset();
+describe('the wheel’s strip', () => {
+  it('draws no band, no search field and no empty-state line', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
-    await openWheel();
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
-
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
-    expect(commitSpy).not.toHaveBeenCalled();
-    expect(revealSpy).not.toHaveBeenCalled();
-    expect(dismiss).not.toHaveBeenCalled();
-    // The faint band rides the animated scroll onto the row that was tapped
-    expect(scroll).toHaveBeenLastCalledWith({ offset: GERMAN_ROW * PITCH, animated: true });
+    expect(screen.queryByTestId('language-band')).toBeNull();
+    expect(screen.queryByTestId('language-band-layer')).toBeNull();
+    expect(screen.queryByTestId('language-search')).toBeNull();
+    expect(screen.queryByText('No languages found')).toBeNull();
   });
 
-  it('hands the detent back when a finger grabs a staging scroll', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  it('settles nothing: the list carries no snap offsets, no scroll handler and no detents', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    await openWheel();
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
-    await scrollTo((ENGLISH_ROW - 1) * PITCH);
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-
-    // The finger takes the wheel back mid-flight: the rows it then crosses are its own, and each ticks
-    await scrollBegin();
-    await scrollTo((ENGLISH_ROW - 2) * PITCH);
-
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(2);
+    expect(list().props.snapToOffsets).toBeUndefined();
+    expect(list().props.onScroll).toBeUndefined();
+    expect(list().props.getItemLayout).toBeUndefined();
   });
 
-  it('gives the staged row its own state and the close it commits on, so a reader is told what a close will do', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    stubReveal();
+  it('pads the card’s own edges only, with no oversized gap above the first row or below the last', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    await openWheel();
+
+    const container = styleOf('language-list');
+    expect(container).toMatchObject({ marginTop: SPACING.md, gap: SPACING.xs });
+    expect(container.paddingTop).toBeUndefined();
+    expect(container.paddingBottom).toBeUndefined();
+  });
+});
+
+describe('the purple seat', () => {
+  it('stays hidden until the first row has been measured', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    expect(styleOf('language-seat').opacity).toBe(0);
+
+    await measureFirstRow();
+
+    expect(styleOf('language-seat').opacity).toBe(1);
+    expect(styleOf('language-seat').height).toBe(ROW_HEIGHT);
+  });
+
+  it('keeps the height it first measured when the first row is laid out again at another height', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+    await measureFirstRow();
+
+    await measureFirstRow(60);
+
+    expect(styleOf('language-seat').height).toBe(ROW_HEIGHT);
+  });
+
+  it('opens on the locale in force, which carries the close-to-save contract', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+    await measureFirstRow();
+
+    expect(seatOffset()).toBe(ENGLISH_ROW * PITCH);
+    expect(screen.getByRole('radio', { name: 'English, Close to save' }).props.accessibilityState).toMatchObject({
+      selected: true,
+      checked: true,
+    });
+    expect(screen.getByRole('radio', { name: 'Deutsch' }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: false,
+    });
+  });
+
+  it('seats on the locale in force’s own row under Arabic, the same geometry the LTR locale gets', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    act(() => setActiveLocale('ar'));
+    await render(<LanguageSheet />);
+    await measureFirstRow();
+
+    // A row index and the row pitch, never a mirrored sign
+    expect(seatOffset()).toBe(ARABIC_ROW * PITCH);
+  });
+
+  it('moves onto the tapped row, which becomes the row a close would save', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+    await measureFirstRow();
 
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
-    // The purple still carries the locale in force; the staged row carries the close-to-save contract alone
+    expect(seatOffset()).toBe(GERMAN_ROW * PITCH);
+    // The locale in force keeps its own state; the tapped row carries the close-to-save contract alone
     expect(screen.getByRole('radio', { name: 'English' }).props.accessibilityState).toMatchObject({
       selected: true,
       checked: false,
@@ -671,48 +245,80 @@ describe('the staged commit at the close boundary', () => {
       selected: false,
       checked: true,
     });
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-    await act(async () => {
-      await jest.runAllTimersAsync();
-    });
-
-    // The close consumes the stage: the row is its name again and nothing is staged
-    expect(commitSpy).toHaveBeenCalledWith('de');
-    expect(screen.getByRole('radio', { name: 'Deutsch' }).props.accessibilityState).toMatchObject({
-      selected: false,
-      checked: false,
-    });
   });
 
-  it('ticks once for a tap on a far row, however many rows the staging scroll crosses', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  it('draws the seat in the family’s own ink', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    await openWheel();
+    await measureFirstRow();
 
-    await fireEvent.press(screen.getByRole('radio', { name: 'Azərbaycanca' }));
+    const seat = styleOf('language-seat');
+    expect(seat.backgroundColor).toBe(COLORS.interactive.active);
+  });
+});
 
-    // The staged scroll rides the wheel to the tapped row, and every row it crosses reports its own seat
-    for (let row = ENGLISH_ROW - 1; row > AZERI_ROW; row -= 1) {
-      await scrollTo(row * PITCH);
-    }
-    await scrollTo(AZERI_ROW * PITCH);
+describe('the number’s two inks', () => {
+  it('reads the seated row’s number white and every other row’s number dim', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
 
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-
-    // The arrival hands the wheel back to the finger, so the next drag ticks again
-    await scrollTo((AZERI_ROW + 1) * PITCH);
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(2);
+    expect(StyleSheet.flatten(screen.getByText(`${ENGLISH_ROW + 1}.`).props.style).color).toBe(COLORS.text.primary);
+    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.sheetDim);
   });
 
-  it('commits the staged row once on the close, with one tick, and never while it loads', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  it('crosses the inks when the seat moves: the tapped row’s number goes white, the row that loses the seat goes dim', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
+
+    expect(StyleSheet.flatten(screen.getByText(`${GERMAN_ROW + 1}.`).props.style).color).toBe(COLORS.text.primary);
+    expect(StyleSheet.flatten(screen.getByText(`${ENGLISH_ROW + 1}.`).props.style).color).toBe(COLORS.text.sheetDim);
+  });
+
+  it('keeps the language name white in every state', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    expect(StyleSheet.flatten(screen.getByText('English').props.style).color).toBe(COLORS.text.primary);
+    expect(StyleSheet.flatten(screen.getByText('Deutsch').props.style).color).toBe(COLORS.text.primary);
+  });
+});
+
+describe('the tap', () => {
+  /** The commit the close boundary carries, stubbed so no surface converges in the suite */
+  const stubCommit = () => jest.spyOn(LanguageStore, 'commitLanguagePreference').mockResolvedValue();
+  const stubReveal = () => jest.spyOn(LanguageStore, 'revealLanguageLoader');
+
+  it('stages the tapped row without committing, revealing or closing, on the sound sheet’s own impact', async () => {
+    showLondonDay('2026-09-11', '14:00');
     const commitSpy = stubCommit();
     const revealSpy = stubReveal();
     await render(<LanguageSheet />);
-    await openWheel();
+    const dismiss = jest.spyOn(renderedSheet(), 'dismiss');
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
+
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+    // The scroll lost every tick it had: nothing the sheet does buzzes like a wheel
+    expect(Haptics.selectionAsync).not.toHaveBeenCalled();
+    expect(commitSpy).not.toHaveBeenCalled();
+    expect(revealSpy).not.toHaveBeenCalled();
+    expect(dismiss).not.toHaveBeenCalled();
+  });
+});
+
+describe('the staged commit at the close boundary', () => {
+  const stubCommit = () => jest.spyOn(LanguageStore, 'commitLanguagePreference').mockResolvedValue();
+  const stubReveal = () => jest.spyOn(LanguageStore, 'revealLanguageLoader');
+
+  it('commits the staged row once on the close, with one Light impact, and never while it loads', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const commitSpy = stubCommit();
+    const revealSpy = stubReveal();
+    await render(<LanguageSheet />);
+    await measureFirstRow();
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
@@ -721,7 +327,6 @@ describe('the staged commit at the close boundary', () => {
 
     // The loader stands on the close's own tick and the commit follows a paint later
     expect(revealSpy).toHaveBeenCalledWith('de');
-    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Light);
     expect(commitSpy).not.toHaveBeenCalled();
 
@@ -731,16 +336,17 @@ describe('the staged commit at the close boundary', () => {
 
     expect(commitSpy).toHaveBeenCalledTimes(1);
     expect(commitSpy).toHaveBeenCalledWith('de');
-    // Nothing on the load path adds a second buzz
-    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
+    // The tap's Medium and the close's Light are the whole sheet's buzz: nothing on the load path adds one
+    const impacts = jest.mocked(Haptics.impactAsync).mock.calls;
+    expect(impacts.filter(([style]) => style === Haptics.ImpactFeedbackStyle.Medium)).toHaveLength(1);
+    expect(impacts.filter(([style]) => style === Haptics.ImpactFeedbackStyle.Light)).toHaveLength(1);
+    expect(Haptics.selectionAsync).not.toHaveBeenCalled();
   });
 
   it('commits nothing on a second close of the same dismissal', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     const commitSpy = stubCommit();
     await render(<LanguageSheet />);
-    await openWheel();
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
@@ -752,15 +358,17 @@ describe('the staged commit at the close boundary', () => {
     });
 
     expect(commitSpy).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    const lights = jest
+      .mocked(Haptics.impactAsync)
+      .mock.calls.filter(([style]) => style === Haptics.ImpactFeedbackStyle.Light);
+    expect(lights).toHaveLength(1);
   });
 
   it('changes nothing when the close carries no staged row', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     const commitSpy = stubCommit();
     const revealSpy = stubReveal();
     await render(<LanguageSheet />);
-    await openWheel();
 
     await act(async () => {
       sheetProps().onDismiss();
@@ -775,12 +383,12 @@ describe('the staged commit at the close boundary', () => {
   });
 
   it('changes nothing when the staged row is the locale already in force', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    showLondonDay('2026-09-11', '14:00');
     const commitSpy = stubCommit();
     const revealSpy = stubReveal();
     await render(<LanguageSheet />);
-    await openWheel();
-    // The open already staged the locale in force, so the row carries the close-to-save label
+
+    // The open already seats the locale in force, so tapping its row stages no change
     await fireEvent.press(screen.getByRole('radio', { name: 'English, Close to save' }));
 
     await act(async () => {
@@ -792,72 +400,18 @@ describe('the staged commit at the close boundary', () => {
 
     expect(commitSpy).not.toHaveBeenCalled();
     expect(revealSpy).not.toHaveBeenCalled();
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    const lights = jest
+      .mocked(Haptics.impactAsync)
+      .mock.calls.filter(([style]) => style === Haptics.ImpactFeedbackStyle.Light);
+    expect(lights).toHaveLength(0);
   });
 
-  it('a settle stages the settled row and the close commits it, with one tick and one impact', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    const revealSpy = stubReveal();
+  it('consumes the stage at the close: the row is its name again and the seat returns to the locale in force', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    stubCommit();
     await render(<LanguageSheet />);
-    await openWheel();
-
-    // Browsing is no longer inert: the wheel's own settle makes the row it rests on the candidate
-    await scrollTo(GERMAN_ROW * PITCH);
-    expect(screen.getByRole('radio', { name: 'Deutsch, Close to save' }).props.accessibilityState).toMatchObject({
-      checked: true,
-    });
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-    await act(async () => {
-      await jest.runAllTimersAsync();
-    });
-
-    expect(commitSpy).toHaveBeenCalledTimes(1);
-    expect(commitSpy).toHaveBeenCalledWith('de');
-    expect(revealSpy).toHaveBeenCalledWith('de');
-    // The detent's own crossing ticked once, and the close's impact is the only buzz it adds
-    expect(Haptics.selectionAsync).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
-  });
-
-  it('stages the locale in force when the wheel settles back on it, and the close changes nothing', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    const revealSpy = stubReveal();
-    await render(<LanguageSheet />);
-    await openWheel();
-
-    await scrollTo((ENGLISH_ROW + 1) * PITCH);
-    await scrollTo(ENGLISH_ROW * PITCH);
-
-    // The settle back restaged the locale in force: it draws checked, and committing it changes nothing
-    expect(screen.getByRole('radio', { name: 'English, Close to save' }).props.accessibilityState).toMatchObject({
-      checked: true,
-    });
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-    await act(async () => {
-      await jest.runAllTimersAsync();
-    });
-
-    expect(commitSpy).not.toHaveBeenCalled();
-    expect(revealSpy).not.toHaveBeenCalled();
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
-  });
-
-  it('keeps a staged row a filter still shows, and commits it at the close', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    await render(<LanguageSheet />);
-    await openWheel();
+    await measureFirstRow();
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
-    await fireEvent.changeText(field(), 'deutsch');
-    expect(commitSpy).not.toHaveBeenCalled();
 
     await act(async () => {
       sheetProps().onDismiss();
@@ -866,52 +420,10 @@ describe('the staged commit at the close boundary', () => {
       await jest.runAllTimersAsync();
     });
 
-    expect(commitSpy).toHaveBeenCalledWith('de');
-  });
-
-  it('drops a staged row its filter removed: the empty settle stages nothing, and the close changes nothing', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    await render(<LanguageSheet />);
-    await openWheel();
-    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
-    await fireEvent.changeText(field(), 'zzz');
-
-    await act(async () => {
-      sheetProps().onDismiss();
+    expect(screen.getByRole('radio', { name: 'Deutsch' }).props.accessibilityState).toMatchObject({
+      selected: false,
+      checked: false,
     });
-    await act(async () => {
-      await jest.runAllTimersAsync();
-    });
-
-    expect(commitSpy).not.toHaveBeenCalled();
-  });
-
-  it('rests on the locale in force after clearing the query: the stage follows it, and the close changes nothing', async () => {
-    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-    const commitSpy = stubCommit();
-    const scroll = scrollToOffset();
-    await render(<LanguageSheet />);
-    await openWheel();
-    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
-    await fireEvent.changeText(field(), 'deutsch');
-    await fireEvent.changeText(field(), '');
-    expect(commitSpy).not.toHaveBeenCalled();
-
-    // The reseed lands on the locale in force's seat in the whole list, not on the filtered row
-    expect(scroll).toHaveBeenLastCalledWith({ offset: ENGLISH_ROW * PITCH, animated: false });
-    // and the stage follows the reseed: the locale in force draws checked, and a close saves nothing new
-    expect(screen.getByRole('radio', { name: 'English, Close to save' }).props.accessibilityState).toMatchObject({
-      checked: true,
-    });
-
-    await act(async () => {
-      sheetProps().onDismiss();
-    });
-    await act(async () => {
-      await jest.runAllTimersAsync();
-    });
-
-    expect(commitSpy).not.toHaveBeenCalled();
+    expect(seatOffset()).toBe(ENGLISH_ROW * PITCH);
   });
 });
