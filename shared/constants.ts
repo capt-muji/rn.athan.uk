@@ -729,10 +729,12 @@ export const COLORS = {
     /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
      * for overlays that must not dim their own children */
     backdropDim: 'rgba(0, 1, 22, 0.9)',
-    /** Elevated surface (info boxes, modals) */
-    elevated: 'rgba(18, 6, 42, 1)',
-    /** Elevated surface border */
+    /** Elevated surface (info boxes, modals): the pre-lean card rgb(18, 6, 42) moved 5 percent toward the gradient's navy top #05134a (T-515) */
+    elevated: 'rgba(17, 7, 44, 1)',
+    /** The card's inner separator line; the outline roles moved off this token (T-515) */
     elevatedBorder: 'rgba(45, 22, 106, 0.29)',
+    /** The info card's outline (T-515): the border's own 0.29 faintness on a vibrant violet hue, tracing the card and its arrow as one pill */
+    elevatedOutline: 'rgba(168, 85, 247, 0.29)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
