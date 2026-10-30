@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { StyleSheet, type ViewProps } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
 // Direct path, not the barrel: going through components/prayer would cycle back here via List
@@ -10,7 +10,7 @@ import { usePrayer } from '@/hooks/usePrayer';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, STYLES } from '@/shared/constants';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
+import { overlayAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -32,12 +32,20 @@ export const TIP_OVERLAP = 7;
 export default function OverlayInfoBox({ type }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const isOnThisList = overlay.isOn && overlay.scheduleType === type;
-  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
   // The reveal drives the card face's fade and the inks' rise from the card's own surface
   // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
   // subtree while the box appears
   const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
+
+  // The exit cut, evaluated where the reveal animates: display drops to none in the frame the
+  // reveal rests at 0, so the words' last drawn frame is the face's own last frame. A JS-side
+  // flip (the old fade-settled gate) lands a commit later and those frames are the ghost. The
+  // words leave by display alone, never through an opacity: translucent ink compounds where
+  // glyph strokes overlap (T-294)
+  const placerStyle = useAnimatedStyle(() => ({
+    display: reveal.value > 0 || isOnThisList ? 'flex' : 'none',
+  }));
 
   const selectedPrayer = usePrayer(type, overlay.selectedPrayerIndex, true);
   const { prayers, displayDate } = usePrayerSequence(type);
@@ -63,10 +71,7 @@ export default function OverlayInfoBox({ type }: Props) {
   if (!prayerName || !explanation) return null;
 
   return (
-    <Reanimated.View
-      testID={'overlay-infobox'}
-      style={[styles.placer, { display: isOnThisList || !fadeSettled ? 'flex' : 'none' }]}
-      pointerEvents={'none'}>
+    <Reanimated.View testID={'overlay-infobox'} style={[styles.placer, placerStyle]} pointerEvents={'none'}>
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}

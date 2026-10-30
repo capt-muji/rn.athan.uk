@@ -42,8 +42,21 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles } }));
-jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedProgress: () => ({ value: 1 }), useDerivedOpacity: () => ({}) }));
+
+// Worklets run as plain functions here, so an animated style is its updater's plain object
+jest.mock('react-native-reanimated', () => ({
+  __esModule: true,
+  default: { View: 'Animated.View' },
+  useAnimatedStyle: (updater: () => unknown) => updater(),
+}));
+
+// Target-aware: the derived value reads its target, and a test can place the reveal mid-fade
+// by overriding it, which is the only handle a render-time harness has on an animation
+const mockReveal = { at: undefined as number | undefined };
+jest.mock('@/hooks/useAnimation', () => ({
+  useDerivedProgress: (target: number) => ({ value: mockReveal.at ?? target }),
+  useDerivedOpacity: () => ({}),
+}));
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: jest.fn(),
   getItem: () => null,
@@ -226,13 +239,14 @@ describe('the Extras card on a five-row Friday list, where the flip follows the 
   });
 });
 
-// The holder's display follows the fade-settled flag alone — the batched flip every overlay-family
-// subtree shares. Held flex through any unsettled fade whatever isOn says; none only at rest, closed
-// [overlay open, fade settled, the holder's display]
-describe('the holder display, decided by the fade-settled flag alone', () => {
-  const holderDisplay = (open: boolean, settled: boolean): unknown => {
-    const names = openOnReversedFriday(0);
-    void names;
+// The holder's display is a cut on the reveal itself, evaluated where the reveal animates:
+// flex while the reveal is above 0 or the overlay is on this list, none only once the reveal
+// rests at 0. The card's last drawn frame is then the last frame of its own fade - the words
+// leave with the face by display, never through an opacity (T-294)
+describe('the holder display, cut on the reveal itself', () => {
+  const holderDisplay = (open: boolean, revealAt: number | undefined, settled: boolean): unknown => {
+    openOnReversedFriday(0);
+    mockReveal.at = revealAt;
     mockAtomValues.set('overlayFadeSettledAtom', settled);
     if (!open) {
       mockAtomValues.set('overlayAtom', { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Extra });
@@ -246,12 +260,17 @@ describe('the holder display, decided by the fade-settled flag alone', () => {
     return styles.find((entry) => entry.display !== undefined)?.display;
   };
 
-  it.each<[boolean, boolean, string]>([
-    [true, true, 'flex'],
-    [true, false, 'flex'],
-    [false, false, 'flex'],
-    [false, true, 'none'],
-  ])('open %s, settled %s: display %s', (open, settled, display) => {
-    expect(holderDisplay(open, settled)).toBe(display);
+  it('reads flex while the overlay is on this list, whatever the reveal', () => {
+    expect(holderDisplay(true, 0, false)).toBe('flex');
+  });
+
+  it('reads none once the overlay is off and the reveal rests at 0, the fade still unsettled', () => {
+    // The ghost window: the reveal has landed, the settle flag has not spoken. Only the cut
+    // itself can drop the card on the frame the reveal reaches 0
+    expect(holderDisplay(false, 0, false)).toBe('none');
+  });
+
+  it('reads flex while the reveal is still travelling, even with the fade settled', () => {
+    expect(holderDisplay(false, 0.5, true)).toBe('flex');
   });
 });
