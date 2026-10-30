@@ -710,7 +710,7 @@ export const COLORS = {
     emphasis: 'rgba(224, 231, 255, 1)',
     /** Every supporting line under a sheet's own title, so they all read as one voice. Old rgba(86,134,189,.725) flattened over the sheet #0b183a */
     sheetSubtitle: '#416899',
-    /** The sheet's own dim readings - the language sheet's row numbers, search placeholder and search glyph - as one ink: the sheet hint #416899 darkened 25 percent (0x41,0x68,0x99 x 0.75) */
+    /** The sheet's own dim readings - the language sheet's search placeholder and search glyph - as one ink: the sheet hint #416899 darkened 25 percent (0x41,0x68,0x99 x 0.75) */
     sheetDim: '#314e73',
   },
 
@@ -729,12 +729,10 @@ export const COLORS = {
     /** The sheets' dim as one rgba: the backdrop's channels at the 0.9 renderBackdrop composites,
      * for overlays that must not dim their own children */
     backdropDim: 'rgba(0, 1, 22, 0.9)',
-    /** Elevated surface (info boxes, modals): the pre-lean card rgb(18, 6, 42) moved 5 percent toward the gradient's navy top #05134a (T-515) */
-    elevated: 'rgba(17, 7, 44, 1)',
-    /** The card's inner separator line; the outline roles moved off this token (T-515) */
+    /** Elevated surface (info boxes, modals): rgb(17, 7, 44) lifted a touch to read on glass (owner order 2026-10-30) */
+    elevated: 'rgba(22, 9, 56, 1)',
+    /** The card's inner separator line, the border family's one remaining reader */
     elevatedBorder: 'rgba(45, 22, 106, 0.29)',
-    /** The info card's outline (T-515): the border's own 0.29 faintness on a vibrant violet hue, tracing the card and its arrow as one pill */
-    elevatedOutline: 'rgba(168, 85, 247, 0.29)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -751,6 +749,8 @@ export const COLORS = {
       veil: '#0b0016',
       /** The ago pill's veil end, the veil solid at alpha zero: the wash thins as the veil arrives - the veil showing through it unhindered, its hue held by the veil's own channels - instead of filling toward the opaque solid, which rode above the veil mid-fade and re-entered complete on the close (T-490 step 4) */
       veilThrough: 'rgba(11, 0, 22, 0)',
+      /** The veil glow's navy: the gradient top's hue at a lightness that reads on glass (owner order 2026-10-30) */
+      glow: '#1431a0',
     },
   },
 

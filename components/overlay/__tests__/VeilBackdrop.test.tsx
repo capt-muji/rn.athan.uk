@@ -39,8 +39,6 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
     expect(screen.root).not.toBeVisible();
   });
 
-  // T-515 (owner order 2026-10-30): the veil's glow matches exactly the navy-blue top colour of
-  // the resting page's gradient - one constant both readers paint - so the colour is pinned now
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
     'comes into sight when the overlay opens on the %s list',
     async (type) => {
@@ -53,8 +51,9 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
     }
   );
 
+  // The gradient top read as black on glass, so the glow is its own navy now (owner order 2026-10-30)
   it.each([ScheduleType.Standard, ScheduleType.Extra])(
-    "glows the resting gradient's own top colour on the %s list, unconverted",
+    'glows its own vivid navy on the %s list, not the gradient top it superseded',
     async (type) => {
       glowColors.length = 0;
       showLondonDay('2026-09-11', '14:00');
@@ -62,7 +61,8 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
 
       await act(() => openOverlay(type, 1));
 
-      expect(glowColors.at(-1)).toBe(COLORS.gradient.screen.start);
+      expect(glowColors.at(-1)).toBe(COLORS.gradient.overlay.glow);
+      expect(COLORS.gradient.overlay.glow).not.toBe(COLORS.gradient.screen.start);
       expect(COLORS.gradient.screen.start).toBe(DESIGN.bgStart);
     }
   );

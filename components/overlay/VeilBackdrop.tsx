@@ -27,10 +27,8 @@ export default function VeilBackdrop() {
 
   const opacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
-  // T-515 (owner order 2026-10-30): the glow matches exactly the navy-blue top colour of the
-  // resting page's gradient - the same constant BackgroundGradients paints, no conversion,
-  // one colour on both lists
-  const glowColor = COLORS.gradient.screen.start;
+  // The gradient top reads as black on glass, so the glow carries its own vivid navy
+  const glowColor = COLORS.gradient.overlay.glow;
 
   // Anchored to the content column so the glow keeps phone proportions on
   // large screens; reduces exactly to the old -width/2 math on phones

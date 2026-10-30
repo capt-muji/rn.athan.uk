@@ -32,7 +32,7 @@ import {
 
 const ITEM_GAP = SPACING.xs;
 const SEARCH_GLYPH_SIZE = 16;
-const BAND_OPACITY = 0.3;
+const BAND_OPACITY = 0.25;
 // The first mount batch, sized to the measured XS slot (12 rows at 85%): taller phones fill the
 // extra rows on the window's first update cycle, which costs less than mounting them up front
 const WINDOW_ROWS = 12;
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   optionIndex: {
-    color: COLORS.text.sheetDim,
+    color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
     // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them

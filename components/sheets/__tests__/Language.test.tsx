@@ -220,7 +220,7 @@ describe('the language wheel', () => {
 
     const band = styleOf('language-band');
     expect(band.backgroundColor).toBe(COLORS.text.muted);
-    expect(band.opacity).toBe(0.3);
+    expect(band.opacity).toBe(0.25);
     expect(band.height).toBe(ROW_HEIGHT);
     expect(bandSeat()).toBe(PAD);
   });
@@ -455,18 +455,17 @@ describe('the language wheel over T-451’s picker', () => {
     expect(sheetProps().keyboardBlurBehavior).toBe('restore');
   });
 
-  it('prints the sheet’s three dim readings in its own darker ink; the no-match line keeps the shared dim', async () => {
+  it('dims the placeholder and glyph in the sheet’s own ink; the row number rides the white ink; the no-match line keeps the shared dim', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
 
     const glyph = screen.getByTestId('svg:search', { includeHiddenElements: true });
     expect(StyleSheet.flatten(glyph.props.style).color).toBe(COLORS.text.sheetDim);
-    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.sheetDim);
+    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.primary);
     // The shared dim stays the surface wash’s own ink: no reading borrows it
     expect(COLORS.text.sheetDim).not.toBe(COLORS.text.muted);
 
-    // The acceptance’s darker ink covers the three readings; the empty-result line keeps the
-    // shared dim, and the scope is pinned so a fourth reading cannot drift silently
+    // The empty-result line keeps the shared dim, and the scope stays pinned
     await fireEvent.changeText(field(), 'zzz');
     expect(StyleSheet.flatten(screen.getByText('No languages found').props.style).color).toBe(COLORS.text.muted);
   });

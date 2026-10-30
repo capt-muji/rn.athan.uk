@@ -93,13 +93,8 @@ describe('the explanation box of an Extras prayer', () => {
     expect(svg?.props.width).toBe(36);
     expect(svg?.props.height).toBe(15);
 
-    // The fill closes on itself with Z; the cover erases the border band under the base; the
-    // border stroke rides the side edges only, unclosed
-    expect(ds).toEqual([
-      'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z',
-      'M0 14 L36 14 L36 15 L0 15 Z',
-      'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15',
-    ]);
+    // The fill closes on itself with Z: the arrow is its fill alone, the outline is gone
+    expect(ds).toEqual(['M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z']);
   });
 
   it('draws the down arrow at 36 by 15 mirrored', async () => {
@@ -115,47 +110,30 @@ describe('the explanation box of an Extras prayer', () => {
     expect(svg?.props.width).toBe(36);
     expect(svg?.props.height).toBe(15);
 
-    expect(ds).toEqual([
-      'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z',
-      'M0 0 L36 0 L36 1 L0 1 Z',
-      'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0',
-    ]);
+    expect(ds).toEqual(['M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z']);
   });
 
-  // T-515 (owner order 2026-10-30): the outline traces the card AND its arrow as one pill.
-  // The arrow sits 1px into the card (SPACING.overlap -1), so the card border's band at that
-  // edge is the SVG's own last pixel: covered here in the card's own background, which ends
-  // the horizontal line at the arrow's base corners - the outline never slices the arrow,
-  // the border's ends meet the side strokes there and run around the tip instead
+  // The outline is gone (owner order 2026-10-30): the arrow is its fill alone
   it.each<['top' | 'bottom', number]>([
     ['top', 1],
     ['bottom', 0],
-  ])(
-    "covers the card border band under the %s arrow's base, so the outline includes the arrow",
-    async (position, boxPart) => {
-      await render(
-        <PrayerExplanation
-          prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
-          explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
-          arrowPosition={position}
-        />
-      );
+  ])('draws the %s arrow as its fill alone, with no outline stroke', async (position, boxPart) => {
+    await render(
+      <PrayerExplanation
+        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
+        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
+        arrowPosition={position}
+      />
+    );
 
-      const [fill, cover, stroke] = arrowPaths(drawnParts(), boxPart);
+    const paths = arrowPaths(drawnParts(), boxPart);
 
-      // The cover is the card's own background, spanning the base's full width in that last pixel
-      expect(cover.props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
-      expect(cover.props.stroke).toBeUndefined();
-      expect(cover.props.d).toMatch(/^M0 (0|14) L36 (0|14) L36 (1|15) L0 (1|15) Z$/);
-      expect(fill.props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
+    expect(paths).toHaveLength(1);
+    expect(paths[0].props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
+    expect(paths[0].props.stroke).toBeUndefined();
+  });
 
-      // The side strokes carry the outline token, and the cover does not blunt them: it draws first
-      expect(stroke.props.stroke.payload).toBe(argbOf(COLORS.surface.elevatedOutline));
-      expect(stroke.props.fill).toBeNull();
-    }
-  );
-
-  it("traces the face's border with the same outline token the arrow strokes carry", async () => {
+  it('carries its face with no border, the background alone', async () => {
     await render(
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
@@ -163,10 +141,15 @@ describe('the explanation box of an Extras prayer', () => {
     const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
     const face = box?.children.find((child) => typeof child !== 'string');
     const style = face
-      ? (StyleSheet.flatten(face.props.style) as { borderColor?: string; backgroundColor?: string })
+      ? (StyleSheet.flatten(face.props.style) as {
+          borderColor?: string;
+          borderWidth?: number;
+          backgroundColor?: string;
+        })
       : null;
 
-    expect(style?.borderColor).toBe(COLORS.surface.elevatedOutline);
+    expect(style?.borderColor).toBeUndefined();
+    expect(style?.borderWidth).toBeUndefined();
     expect(style?.backgroundColor).toBe(COLORS.surface.elevated);
   });
 
