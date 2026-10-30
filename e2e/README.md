@@ -79,6 +79,7 @@ e2e/scripts/frame-audit.sh overlay-open 540 1012 3                      # dual: 
 PRE_TAP="540 1012" e2e/scripts/frame-audit.sh overlay-close 540 1100 3  # open, settle, record close
 FRAME_AUDIT=video e2e/scripts/frame-audit.sh overlay-open 540 1012 3    # video only
 FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 539 1833 3         # cadence-only
+SWIPE="864 403 216 403 250" e2e/scripts/frame-audit.sh pager-swipe 864 403 3  # a swipe, not a tap
 ```
 
 ## The AVD lane: smoke only, never a witness

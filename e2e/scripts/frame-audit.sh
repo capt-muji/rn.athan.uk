@@ -21,6 +21,13 @@
 #     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
 #     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
 #     boundary is near, so the default is mock-safe (README Gotchas).
+#   SWIPE="x1 y1 x2 y2 [duration_ms]"
+#     Records a swipe instead of a tap (the schedule pager's cadence). A
+#     swipe runs for its whole duration, so the SF stamp anchors on the
+#     swipe START (the uptime read lands before the input, same shell in the
+#     sf branch) — stamping after would open the entrance window ~duration
+#     late and miss it. <tap-x> <tap-y> carry the swipe's start point for
+#     the vision prompt.
 #   SF_OFFSET=<seconds>
 #     Overrides the per-capture clock anchor when it read LOW (an anchor tap
 #     that closes a sheet presents late). Offsets cannot decrease, so the
@@ -63,6 +70,16 @@ MODE=${FRAME_AUDIT:-dual}
 if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
   echo "FRAME_AUDIT must be dual, video or sf (got '$MODE')"
   exit 1
+fi
+SWIPE=${SWIPE:-}
+if [[ -n $SWIPE ]]; then
+  swipe_parts=(${=SWIPE})
+  # Hoisted: the <-> glob dies inside (( )) where < and > are math operators.
+  swipe_numeric=${#${(M)swipe_parts:#<->}}
+  if (( ${#swipe_parts} < 4 || ${#swipe_parts} > 5 )) || (( swipe_numeric != ${#swipe_parts} )); then
+    echo "SWIPE must be 'x1 y1 x2 y2 [duration_ms]' (got '$SWIPE')"
+    exit 1
+  fi
 fi
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
@@ -121,10 +138,15 @@ measure_sf_anchor() {
 }
 
 if [[ $MODE == sf ]]; then
-  # Tap and uptime read in ONE shell: the tap's CLOCK_BOOTTIME stamp must
-  # ride the same read discipline as the anchor's, or the offset arithmetic
-  # pulls the entrance window off the tap.
-  adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  # Interaction and uptime read in ONE shell: the input's CLOCK_BOOTTIME
+  # stamp must ride the same read discipline as the anchor's, or the offset
+  # arithmetic pulls the entrance window off the input. A swipe runs for its
+  # whole duration, so the stamp is read BEFORE it starts.
+  if [[ -n $SWIPE ]]; then
+    adb -s "$SERIAL" shell "cat /proc/uptime; input swipe ${=SWIPE}" > "$OUT/tap_uptime.txt"
+  else
+    adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  fi
   # The dump lands after the entrance AND the universal late burst (~1.7-2.2s
   # after the tap, step 10's Defect C): the ring's last ~127 presents hold
   # entrance + burst + idle ticks at the 3T's cadence, while a dump before
@@ -212,13 +234,22 @@ adb -s "$SERIAL" shell "rm -f /sdcard/frame_audit.mp4"
 adb -s "$SERIAL" shell screenrecord --time-limit "$SECONDS_LIMIT" --bit-rate 16000000 /sdcard/frame_audit.mp4 &
 REC=$!
 sleep 0.5
-adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
-if [[ $MODE == dual ]]; then
-  # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
-  # immediately after the tap. SF presents ride CLOCK_MONOTONIC, so this read
-  # alone cannot open the SF window: the per-capture anchor measured below
-  # supplies the suspend offset, and the pairing subtracts it.
-  adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+if [[ -n $SWIPE ]]; then
+  # A swipe runs ~duration ms, so the SF anchor must stamp the swipe's START:
+  # the uptime read precedes the input (the two adb calls are sequential).
+  if [[ $MODE == dual ]]; then
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
+  adb -s "$SERIAL" shell "input swipe ${=SWIPE}"
+else
+  adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
+  if [[ $MODE == dual ]]; then
+    # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
+    # immediately after the tap. SF presents ride CLOCK_MONOTONIC, so this read
+    # alone cannot open the SF window: the per-capture anchor measured below
+    # supplies the suspend offset, and the pairing subtracts it.
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
 fi
 wait $REC 2>/dev/null || true
 adb -s "$SERIAL" pull /sdcard/frame_audit.mp4 "$OUT/rec.mp4" >/dev/null
@@ -265,11 +296,16 @@ if len(files) >= 2:
     print(f"contact sheet: {out}/contact_sheet.png")
 EOF
 
+if [[ -n $SWIPE ]]; then
+  INTERACTION="a swipe from (${swipe_parts[1]},${swipe_parts[2]}) to (${swipe_parts[3]},${swipe_parts[4]}) over ${swipe_parts[5]:-250}ms"
+else
+  INTERACTION="a tap at ($TAPX,$TAPY)"
+fi
 cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
 It is a labeled contact sheet of sequential frames from a prayer-times app
-recording (dark navy UI). The interaction was a tap at ($TAPX,$TAPY)${PRE_TAP:+,
+recording (dark navy UI). The interaction was $INTERACTION${PRE_TAP:+,
 which followed a prior tap at ($PRE_TAP) whose transition is already settled}.
 For each frame report its state and mid-animation progress; then answer:
 (1) Which frames form the animation? (2) Does the animated element progress
