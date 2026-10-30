@@ -238,5 +238,9 @@
   {
     "version": "2.42.8",
     "reason": "2026-10-30 the owner's unticketed visual pass steps from uat's 2.42.7 while lane1/T-491's sounds step already holds 2.42.8; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.9",
+    "reason": "2026-10-30 the lead's glow-falloff fix steps from uat's 2.42.8 while lane1/T-491's strip-plugin step already holds 2.42.9; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
