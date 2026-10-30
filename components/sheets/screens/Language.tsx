@@ -1,10 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { memo, useCallback, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { useDerivedProgress } from '@/hooks/useAnimation';
+import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId, type LocaleId, localeVersionAtom } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
@@ -58,6 +60,13 @@ function LanguageItemImpl({
   onStage,
   onLayout,
 }: LanguageItemProps) {
+  // The number's two inks crossfade on the seat's own slide duration: dim at rest, white on the seat.
+  // The progress snaps on first evaluation, so a row that mounts already seated paints its settled ink
+  const seatedProgress = useDerivedProgress(isSeated ? 1 : 0, { duration: ANIMATION.duration });
+  const numberStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(seatedProgress.value, [0, 1], [COLORS.text.sheetDim, COLORS.text.primary]),
+  }));
+
   const handlePress = useCallback(() => onStage(index), [onStage, index]);
 
   return (
@@ -72,7 +81,7 @@ function LanguageItemImpl({
       accessibilityLabel={isSeated ? `${name}, ${closeToSave}` : name}>
       {/* The index owns its slot, so a second digit never moves the name off the card's centre */}
       <View style={styles.optionIndexSlot} pointerEvents={'none'}>
-        <Text style={[styles.optionIndex, isSeated && styles.optionIndexSeated]}>{`${position}.`}</Text>
+        <Animated.Text style={[styles.optionIndex, numberStyle]}>{`${position}.`}</Animated.Text>
       </View>
       <Text style={styles.optionLabel}>{name}</Text>
     </Pressable>
@@ -97,6 +106,8 @@ export default function BottomSheetLanguage() {
 
   // The staged row is read synchronously at the close, before any state write re-derives the rows
   const stagedRef = useRef<LocaleId | null>(null);
+  const hasInitialized = useRef(false);
+  const seatTranslateY = useSharedValue(0);
 
   // The staged row is drawn as well as held: the reader hears what a close will save
   const holdStaged = useCallback((next: LocaleId | null) => {
@@ -136,12 +147,29 @@ export default function BottomSheetLanguage() {
   const seatLocale = seatLocaleFor(staged, active);
   const seatIndex = ROWS.findIndex((row) => row.id === seatLocale);
 
-  // The seat holds its row's own slot in the list: one pitch per row below the first
-  const seatStyle = {
-    transform: [{ translateY: seatIndex * (rowHeight + ITEM_GAP) }],
-    height: rowHeight,
-    opacity: rowHeight > 0 ? 1 : 0,
-  };
+  // The seat slides on the sound sheet's own selection timing: it is set, not animated, on the row it
+  // opens on, and every later move rides the sound sheet's duration
+  useEffect(() => {
+    if (rowHeight === 0) return;
+
+    const targetY = seatIndex * (rowHeight + ITEM_GAP);
+
+    if (!hasInitialized.current) {
+      seatTranslateY.value = targetY;
+      hasInitialized.current = true;
+    } else {
+      seatTranslateY.value = withTiming(targetY, { duration: ANIMATION.duration });
+    }
+  }, [seatIndex, rowHeight, seatTranslateY]);
+
+  const seatStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ translateY: seatTranslateY.value }],
+      height: rowHeight,
+      opacity: rowHeight > 0 ? 1 : 0,
+    }),
+    [rowHeight]
+  );
 
   // The close point is written on the sheet and in the seated row's own label, so a reader is told
   // what a close will do to the row under the finger
@@ -161,7 +189,7 @@ export default function BottomSheetLanguage() {
       <View style={styles.card}>
         <View testID={'language-list'} style={styles.listContainer}>
           {/* The purple seat, absolutely placed behind the rows it slides between */}
-          <View testID={'language-seat'} style={[styles.seat, seatStyle]} />
+          <Animated.View testID={'language-seat'} style={[styles.seat, seatStyle]} />
 
           {ROWS.map((row, index) => (
             <LanguageItem
@@ -224,16 +252,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   optionIndex: {
+    // Dim at rest: the seat's tween lifts this ink to white on the row that holds it
     color: COLORS.text.sheetDim,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
     // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them
     writingDirection: 'ltr',
   },
-  // The seated row's number: the one ink the sheet keeps white-on-purple beside the always-white name
-  optionIndexSeated: {
-    color: COLORS.text.primary,
-  },
+  // The name stays white in every state; only the number carries the seat's two inks
   optionLabel: {
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,

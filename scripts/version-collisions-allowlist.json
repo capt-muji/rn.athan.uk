@@ -246,5 +246,9 @@
   {
     "version": "2.42.10",
     "reason": "2026-10-30 lane2/T-519's step 1 steps from uat's 2.42.9 while lane1/T-491 already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.11",
+    "reason": "2026-10-30 lane2/T-519's step 2 steps from 2.42.10 while lane1/T-327 already holds 2.42.11; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

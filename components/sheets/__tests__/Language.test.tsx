@@ -9,9 +9,10 @@ import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { act } from 'react';
 import { StyleSheet } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { insideScroll, showLondonDay } from '@/__tests__/harness';
-import { COLORS, SPACING } from '@/shared/constants';
+import { ANIMATION, COLORS, SPACING } from '@/shared/constants';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import * as LanguageStore from '@/stores/language';
@@ -206,6 +207,9 @@ describe('the purple seat', () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
     await measureFirstRow();
+    // Reanimated's mock works an animated style out only when the sheet renders, so the seat is read
+    // after a render past the move
+    await screen.rerender(<LanguageSheet />);
 
     expect(seatOffset()).toBe(ENGLISH_ROW * PITCH);
     expect(screen.getByRole('radio', { name: 'English, Close to save' }).props.accessibilityState).toMatchObject({
@@ -223,6 +227,7 @@ describe('the purple seat', () => {
     act(() => setActiveLocale('ar'));
     await render(<LanguageSheet />);
     await measureFirstRow();
+    await screen.rerender(<LanguageSheet />);
 
     // A row index and the row pitch, never a mirrored sign
     expect(seatOffset()).toBe(ARABIC_ROW * PITCH);
@@ -232,8 +237,8 @@ describe('the purple seat', () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
     await measureFirstRow();
-
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
+    await screen.rerender(<LanguageSheet />);
 
     expect(seatOffset()).toBe(GERMAN_ROW * PITCH);
     // The locale in force keeps its own state; the tapped row carries the close-to-save contract alone
@@ -255,25 +260,85 @@ describe('the purple seat', () => {
     const seat = styleOf('language-seat');
     expect(seat.backgroundColor).toBe(COLORS.interactive.active);
   });
-});
 
-describe('the number’s two inks', () => {
-  it('reads the seated row’s number white and every other row’s number dim', async () => {
+  it('opens with the seat already on the locale in force, never sliding it in', async () => {
     showLondonDay('2026-09-11', '14:00');
+    const timing = jest.spyOn(Reanimated, 'withTiming');
     await render(<LanguageSheet />);
+    await measureFirstRow();
+    await screen.rerender(<LanguageSheet />);
 
-    expect(StyleSheet.flatten(screen.getByText(`${ENGLISH_ROW + 1}.`).props.style).color).toBe(COLORS.text.primary);
-    expect(StyleSheet.flatten(screen.getByText('1.').props.style).color).toBe(COLORS.text.sheetDim);
+    // The seat must open on the locale in force as its settled frame, not slide in from the top
+    expect(timing).not.toHaveBeenCalledWith(ENGLISH_ROW * PITCH, expect.anything());
   });
 
-  it('crosses the inks when the seat moves: the tapped row’s number goes white, the row that loses the seat goes dim', async () => {
+  it('slides the seat onto the tapped row on the sound sheet’s own duration', async () => {
     showLondonDay('2026-09-11', '14:00');
+    const timing = jest.spyOn(Reanimated, 'withTiming');
     await render(<LanguageSheet />);
+    await measureFirstRow();
+    await screen.rerender(<LanguageSheet />);
+    timing.mockClear();
 
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
-    expect(StyleSheet.flatten(screen.getByText(`${GERMAN_ROW + 1}.`).props.style).color).toBe(COLORS.text.primary);
-    expect(StyleSheet.flatten(screen.getByText(`${ENGLISH_ROW + 1}.`).props.style).color).toBe(COLORS.text.sheetDim);
+    expect(timing).toHaveBeenCalledWith(GERMAN_ROW * PITCH, { duration: ANIMATION.duration });
+  });
+
+  it('keeps the seat still when the row that already holds it is tapped', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+    await render(<LanguageSheet />);
+    await measureFirstRow();
+    await screen.rerender(<LanguageSheet />);
+    timing.mockClear();
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'English, Close to save' }));
+
+    // Staging the row the seat already holds moves nothing: no slide, no re-tween, only the tick
+    expect(timing).not.toHaveBeenCalled();
+  });
+});
+
+describe('the number’s two inks', () => {
+  /** One row's evaluation of the number's ink, as the mock recorded it */
+  type InkEvaluation = [number, number[], (string | number)[]];
+
+  /** The seat's tween endpoints as the rows evaluate them: which ink each end of the sweep carries */
+  const numberInkCalls = () =>
+    (jest.mocked(Reanimated.interpolateColor).mock.calls as unknown as InkEvaluation[])
+      .filter(([, input]) => input[0] === 0 && input[1] === 1)
+      .map(([progress, , colors]) => ({ progress, colors }));
+
+  it('paints the seated row’s number white and every other row’s dim, from the first frame', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    jest.spyOn(Reanimated, 'interpolateColor');
+    await render(<LanguageSheet />);
+
+    const inks = numberInkCalls();
+    // The crossfade's own law: dim below, white above, and the seated row already at its settled end
+    expect(
+      inks.some(
+        (ink) => ink.progress === 1 && ink.colors[0] === COLORS.text.sheetDim && ink.colors[1] === COLORS.text.primary
+      )
+    ).toBe(true);
+    expect(inks.some((ink) => ink.progress === 0 && ink.colors[1] === COLORS.text.primary)).toBe(true);
+  });
+
+  it('crossfades both ways on the seat’s own duration when the seat moves', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+    await render(<LanguageSheet />);
+    await measureFirstRow();
+    await screen.rerender(<LanguageSheet />);
+    timing.mockClear();
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
+
+    // The tapped row’s number tweens to white and the row that loses the seat tweens back to dim, on
+    // the same 200ms the seat itself slides on
+    expect(timing).toHaveBeenCalledWith(1, { duration: ANIMATION.duration });
+    expect(timing).toHaveBeenCalledWith(0, { duration: ANIMATION.duration });
   });
 
   it('keeps the language name white in every state', async () => {
@@ -419,6 +484,7 @@ describe('the staged commit at the close boundary', () => {
     await act(async () => {
       await jest.runAllTimersAsync();
     });
+    await screen.rerender(<LanguageSheet />);
 
     expect(screen.getByRole('radio', { name: 'Deutsch' }).props.accessibilityState).toMatchObject({
       selected: false,
