@@ -188,6 +188,8 @@ export const yo = {
   'whatsNew.body.language': 'A ti ṣàfikún àtìlẹ́yìn fún àwọn èdè mìíràn',
   'whatsNew.title.moreLanguages': 'Àwọn èdè mìíràn',
   'whatsNew.body.moreLanguages': 'A ti ṣàfikún àtìlẹ́yìn fún àwọn èdè mìíràn',
+  'whatsNew.title.checkUpdates': 'Wo àwọn ìmúdójúìwọ̀n',
+  'whatsNew.body.checkUpdates': 'A ti ṣàfikún Wo àwọn ìmúdójúìwọ̀n',
   'whatsNew.title.whatsNew': 'Ojú-ìwé ohun tuntun',
   'whatsNew.body.whatsNew': 'A ti ṣàfikún ojú-ìwé ohun tuntun',
   'calendar.monthShort.1': 'Ṣẹ́rẹ́',

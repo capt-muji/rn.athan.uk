@@ -196,6 +196,8 @@ export const uk = {
   'whatsNew.body.language': 'Додано підтримку інших мов',
   'whatsNew.title.moreLanguages': 'Більше мов',
   'whatsNew.body.moreLanguages': 'Додано підтримку інших мов',
+  'whatsNew.title.checkUpdates': 'Перевірити оновлення',
+  'whatsNew.body.checkUpdates': 'Додано опцію «Перевірити оновлення»',
   'whatsNew.title.whatsNew': 'Сторінка «Що нового»',
   'whatsNew.body.whatsNew': 'Додано сторінку «Що нового»',
   'calendar.monthShort.1': 'січ',

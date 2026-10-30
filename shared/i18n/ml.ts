@@ -188,6 +188,8 @@ export const ml = {
   'whatsNew.body.language': 'കൂടുതൽ ഭാഷകൾക്കുള്ള പിന്തുണ ചേർത്തു',
   'whatsNew.title.moreLanguages': 'കൂടുതൽ ഭാഷകൾ',
   'whatsNew.body.moreLanguages': 'കൂടുതൽ ഭാഷകൾക്കുള്ള പിന്തുണ ചേർത്തു',
+  'whatsNew.title.checkUpdates': 'അപ്ഡേറ്റുകൾ പരിശോധിക്കുക',
+  'whatsNew.body.checkUpdates': 'അപ്ഡേറ്റുകൾ പരിശോധിക്കുക ഓപ്ഷൻ ചേർത്തു',
   'whatsNew.title.whatsNew': 'പുതിയത് പേജ്',
   'whatsNew.body.whatsNew': 'പുതിയത് പേജ് ചേർത്തു',
   'calendar.monthShort.1': 'ജനു',

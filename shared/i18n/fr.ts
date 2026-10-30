@@ -193,6 +193,8 @@ export const fr = {
   'whatsNew.body.language': 'Ajout de la prise en charge de plus de langues',
   'whatsNew.title.moreLanguages': 'Plus de langues',
   'whatsNew.body.moreLanguages': 'Ajout de la prise en charge de plus de langues',
+  'whatsNew.title.checkUpdates': 'Rechercher des mises à jour',
+  'whatsNew.body.checkUpdates': 'Ajout de l’option Rechercher des mises à jour',
   'whatsNew.title.whatsNew': 'Page Nouveautés',
   'whatsNew.body.whatsNew': 'Ajout de la page Nouveautés',
   'calendar.monthShort.1': 'Jan',

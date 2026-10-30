@@ -189,6 +189,8 @@ export const skr = {
   'whatsNew.body.language': 'ٻئیاں زباناں دی سپورٹ رلائی ڳئی',
   'whatsNew.title.moreLanguages': 'ٻئیاں زباناں',
   'whatsNew.body.moreLanguages': 'ٻئیاں زباناں دی سپورٹ رلائی ڳئی',
+  'whatsNew.title.checkUpdates': 'اپ ڈیٹاں ݙیکھو',
+  'whatsNew.body.checkUpdates': 'اپ ڈیٹاں ݙیکھو دا آپشن رلایا ڳیا',
   'whatsNew.title.whatsNew': 'نواں کیا ہے دا صفحہ',
   'whatsNew.body.whatsNew': 'نواں کیا ہے دا صفحہ رلایا ڳیا',
   'calendar.monthShort.1': 'جنوری',

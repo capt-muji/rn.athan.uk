@@ -188,6 +188,8 @@ export const kas = {
   'whatsNew.body.language': 'مَزئید زَبانئنئ چھہ سپورٹ شٲمل کٔرمِت',
   'whatsNew.title.moreLanguages': 'مَزئید زَبان',
   'whatsNew.body.moreLanguages': 'مَزئید زَبانئنئ چھہ سپورٹ شٲمل کٔرمِت',
+  'whatsNew.title.checkUpdates': 'اپڈیٹئن وُچھِو',
+  'whatsNew.body.checkUpdates': 'اپڈیٹئن وُچھِو شٲمل کٔرمِت',
   'whatsNew.title.whatsNew': 'کیاہ نُو چُھہ پَجہٕ',
   'whatsNew.body.whatsNew': 'کیاہ نُو چُھہ پَجہٕ شٲمل کٔرمِت',
   'calendar.monthShort.1': 'جنوری',

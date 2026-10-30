@@ -192,6 +192,8 @@ export const ro = {
   'whatsNew.body.language': 'Au fost adăugate mai multe limbi',
   'whatsNew.title.moreLanguages': 'Mai multe limbi',
   'whatsNew.body.moreLanguages': 'Au fost adăugate mai multe limbi',
+  'whatsNew.title.checkUpdates': 'Verifică actualizările',
+  'whatsNew.body.checkUpdates': 'A fost adăugată opțiunea Verifică actualizările',
   'whatsNew.title.whatsNew': 'Pagina Ce este nou',
   'whatsNew.body.whatsNew': 'A fost adăugată pagina Ce este nou',
   'calendar.monthShort.1': 'ian',

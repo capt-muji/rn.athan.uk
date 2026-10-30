@@ -188,6 +188,8 @@ export const paArab = {
   'whatsNew.body.language': 'ہور بولیاں دا سہارا شامل کیتا',
   'whatsNew.title.moreLanguages': 'ہور بولیاں',
   'whatsNew.body.moreLanguages': 'ہور بولیاں دا سہارا شامل کیتا',
+  'whatsNew.title.checkUpdates': 'اپ ڈیٹ ویکھو',
+  'whatsNew.body.checkUpdates': 'اپ ڈیٹ ویکھو آپشن شامل کیتا',
   'whatsNew.title.whatsNew': 'نواں کیہ اے صفحہ',
   'whatsNew.body.whatsNew': 'نواں کیہ اے صفحہ شامل کیتا',
   'calendar.monthShort.1': 'جنوری',

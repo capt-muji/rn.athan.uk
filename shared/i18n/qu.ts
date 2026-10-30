@@ -198,6 +198,8 @@ export const qu = {
   'whatsNew.body.language': 'Wak simikunapa yanapayta churayku',
   'whatsNew.title.moreLanguages': 'Wak simikuna',
   'whatsNew.body.moreLanguages': 'Wak simikunapa yanapayta churayku',
+  'whatsNew.title.checkUpdates': 'Musuqyachiykunata qawariy',
+  'whatsNew.body.checkUpdates': 'Musuqyachiykunata qawariy churayku',
   'whatsNew.title.whatsNew': 'Ima musuq rasti',
   'whatsNew.body.whatsNew': 'Ima musuq rastita churayku',
   'calendar.monthShort.1': 'Ene',

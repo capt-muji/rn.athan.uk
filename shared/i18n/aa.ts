@@ -193,6 +193,8 @@ export const aa = {
   'whatsNew.body.language': 'Mango afih suportih yamellekta',
   'whatsNew.title.moreLanguages': 'Afih yamellekta',
   'whatsNew.body.moreLanguages': 'Mango afih suportih yamellekta',
+  'whatsNew.title.checkUpdates': 'Apteeitih bayyisse',
+  'whatsNew.body.checkUpdates': 'Apteeitih bayyisse yamellekta',
   'whatsNew.title.whatsNew': 'Mihcu kaxxa baddih',
   'whatsNew.body.whatsNew': 'Mihcu kaxxa baddih yamellekta',
   'calendar.monthShort.1': 'Jan',

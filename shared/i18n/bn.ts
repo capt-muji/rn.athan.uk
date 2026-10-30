@@ -186,6 +186,8 @@ export const bn = {
   'whatsNew.body.language': 'আরও ভাষার সমর্থন যোগ হয়েছে',
   'whatsNew.title.moreLanguages': 'আরও ভাষা',
   'whatsNew.body.moreLanguages': 'আরও ভাষার সমর্থন যোগ হয়েছে',
+  'whatsNew.title.checkUpdates': 'আপডেট দেখুন',
+  'whatsNew.body.checkUpdates': 'আপডেট দেখুন অপশন যোগ হয়েছে',
   'whatsNew.title.whatsNew': 'নতুন কী পাতা',
   'whatsNew.body.whatsNew': 'নতুন কী পাতা যোগ হয়েছে',
   'calendar.monthShort.1': 'জানু',

@@ -185,6 +185,8 @@ export const zhHant = {
   'whatsNew.body.language': '新增了更多語言支援',
   'whatsNew.title.moreLanguages': '更多語言',
   'whatsNew.body.moreLanguages': '新增了更多語言支援',
+  'whatsNew.title.checkUpdates': '檢查更新',
+  'whatsNew.body.checkUpdates': '新增了檢查更新選項',
   'whatsNew.title.whatsNew': '新功能頁面',
   'whatsNew.body.whatsNew': '新增了新功能頁面',
   'calendar.monthShort.1': '1月',

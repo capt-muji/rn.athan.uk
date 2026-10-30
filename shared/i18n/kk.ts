@@ -189,6 +189,8 @@ export const kk = {
   'whatsNew.body.language': 'Қосымша тілдерге қолдау қосылды',
   'whatsNew.title.moreLanguages': 'Қосымша тілдер',
   'whatsNew.body.moreLanguages': 'Қосымша тілдерге қолдау қосылды',
+  'whatsNew.title.checkUpdates': 'Жаңартуларды тексеру',
+  'whatsNew.body.checkUpdates': '«Жаңартуларды тексеру» опциясы қосылды',
   'whatsNew.title.whatsNew': 'Жаңалықтар парақшасы',
   'whatsNew.body.whatsNew': 'Жаңалықтар парақшасы қосылды',
   'calendar.monthShort.1': 'қаң',

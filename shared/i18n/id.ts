@@ -187,6 +187,8 @@ export const id = {
   'whatsNew.body.language': 'Ditambahkan dukungan untuk lebih banyak bahasa',
   'whatsNew.title.moreLanguages': 'Bahasa lainnya',
   'whatsNew.body.moreLanguages': 'Ditambahkan dukungan untuk lebih banyak bahasa',
+  'whatsNew.title.checkUpdates': 'Periksa pembaruan',
+  'whatsNew.body.checkUpdates': 'Ditambahkan opsi Periksa pembaruan',
   'whatsNew.title.whatsNew': 'Halaman Apa yang Baru',
   'whatsNew.body.whatsNew': 'Ditambahkan halaman Apa yang Baru',
   'calendar.monthShort.1': 'Jan',

@@ -187,6 +187,8 @@ export const sd = {
   'whatsNew.body.language': 'وڌيڪ ٻولين لاءِ حمايت شامل ڪئي وئي',
   'whatsNew.title.moreLanguages': 'وڌيڪ ٻوليون',
   'whatsNew.body.moreLanguages': 'وڌيڪ ٻولين لاءِ حمايت شامل ڪئي وئي',
+  'whatsNew.title.checkUpdates': 'اپڊيٽ ڳوليو',
+  'whatsNew.body.checkUpdates': 'اپڊيٽ ڳوليو آپشن شامل ڪئي وئي',
   'whatsNew.title.whatsNew': 'ڇا نئون آهي جو صفحو',
   'whatsNew.body.whatsNew': 'ڇا نئون آهي جو صفحو شامل ڪيو ويو',
   'calendar.monthShort.1': 'جنوري',

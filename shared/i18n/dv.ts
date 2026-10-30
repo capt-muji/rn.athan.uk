@@ -187,6 +187,8 @@ export const dv = {
   'whatsNew.body.language': 'އިތުރު ބަސްބަހުގެ ސަޕޯޓް އިތުރުކުރި',
   'whatsNew.title.moreLanguages': 'އިތުރު ބަސް',
   'whatsNew.body.moreLanguages': 'އިތުރު ބަސްބަހުގެ ސަޕޯޓް އިތުރުކުރި',
+  'whatsNew.title.checkUpdates': 'އަޕްޑޭޓް ބައްލަވާ',
+  'whatsNew.body.checkUpdates': 'އަޕްޑޭޓް ބައްލަވާ ޚިޔާރު އިތުރުކުރި',
   'whatsNew.title.whatsNew': 'އައުންނަވާ ސަފްޙާ',
   'whatsNew.body.whatsNew': 'އައުންނަވާ ސަފްޙާ އިތުރުކުރި',
   'calendar.monthShort.1': 'ޖަނު',

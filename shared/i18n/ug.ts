@@ -187,6 +187,8 @@ export const ug = {
   'whatsNew.body.language': 'تېخىمۇ كۆپ تىلگە قوللاش قوشۇلدى',
   'whatsNew.title.moreLanguages': 'تېخىمۇ كۆپ تىل',
   'whatsNew.body.moreLanguages': 'تېخىمۇ كۆپ تىلگە قوللاش قوشۇلدى',
+  'whatsNew.title.checkUpdates': 'يېڭىلانمىلارنى تەكشۈر',
+  'whatsNew.body.checkUpdates': 'يېڭىلانمىلارنى تەكشۈر قوشۇلدى',
   'whatsNew.title.whatsNew': 'يېڭىلىقلار بېتى',
   'whatsNew.body.whatsNew': 'يېڭىلىقلار بېتى قوشۇلدى',
   'calendar.monthShort.1': 'يانۋار',

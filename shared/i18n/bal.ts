@@ -187,6 +187,8 @@ export const bal = {
   'whatsNew.body.language': 'دِگہ زبانئںءِ سپورٹءَ شامل کنگ بیتَگ',
   'whatsNew.title.moreLanguages': 'دِگہ زبانئں',
   'whatsNew.body.moreLanguages': 'دِگہ زبانئںءِ سپورٹءَ شامل کنگ بیتَگ',
+  'whatsNew.title.checkUpdates': 'اپ ڈیٹءَ چَک کَن',
+  'whatsNew.body.checkUpdates': 'اپ ڈیٹءَ چَک کَن شامل کنگ بیتَگ',
   'whatsNew.title.whatsNew': 'نوک چی بیتءِ صفحہ',
   'whatsNew.body.whatsNew': 'نوک چی بیتءِ صفحہ شامل کنگ بیتَگ',
   'calendar.monthShort.1': 'جنوری',

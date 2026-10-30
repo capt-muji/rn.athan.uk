@@ -188,6 +188,8 @@ export const tr = {
   'whatsNew.body.language': 'Daha fazla dil desteği eklendi',
   'whatsNew.title.moreLanguages': 'Daha fazla dil',
   'whatsNew.body.moreLanguages': 'Daha fazla dil desteği eklendi',
+  'whatsNew.title.checkUpdates': 'Güncellemeleri kontrol et',
+  'whatsNew.body.checkUpdates': 'Güncellemeleri kontrol et seçeneği eklendi',
   'whatsNew.title.whatsNew': 'Yenilikler sayfası',
   'whatsNew.body.whatsNew': 'Yenilikler sayfası eklendi',
   'calendar.monthShort.1': 'Oca',

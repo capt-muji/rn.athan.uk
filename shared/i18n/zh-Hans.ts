@@ -185,6 +185,8 @@ export const zhHans = {
   'whatsNew.body.language': '新增了更多语言支持',
   'whatsNew.title.moreLanguages': '更多语言',
   'whatsNew.body.moreLanguages': '新增了更多语言支持',
+  'whatsNew.title.checkUpdates': '检查更新',
+  'whatsNew.body.checkUpdates': '新增了检查更新选项',
   'whatsNew.title.whatsNew': '新功能页面',
   'whatsNew.body.whatsNew': '新增了新功能页面',
   'calendar.monthShort.1': '1月',

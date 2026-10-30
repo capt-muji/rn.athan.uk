@@ -189,6 +189,8 @@ export const ja = {
   'whatsNew.body.language': '他の言語に対応しました',
   'whatsNew.title.moreLanguages': '言語を追加',
   'whatsNew.body.moreLanguages': '他の言語に対応しました',
+  'whatsNew.title.checkUpdates': '更新を確認',
+  'whatsNew.body.checkUpdates': '更新の確認を追加しました',
   'whatsNew.title.whatsNew': '新着情報ページ',
   'whatsNew.body.whatsNew': '新着情報ページを追加しました',
   'calendar.monthShort.1': '1月',

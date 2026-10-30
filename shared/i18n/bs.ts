@@ -188,6 +188,8 @@ export const bs = {
   'whatsNew.body.language': 'Dodata podrška za više jezika',
   'whatsNew.title.moreLanguages': 'Više jezika',
   'whatsNew.body.moreLanguages': 'Dodata podrška za više jezika',
+  'whatsNew.title.checkUpdates': 'Provjeri ažuriranja',
+  'whatsNew.body.checkUpdates': 'Dodana opcija Provjeri ažuriranja',
   'whatsNew.title.whatsNew': 'Stranica novosti',
   'whatsNew.body.whatsNew': 'Dodata stranica novosti',
   'calendar.monthShort.1': 'Jan',

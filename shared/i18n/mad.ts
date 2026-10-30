@@ -193,6 +193,8 @@ export const mad = {
   'whatsNew.body.language': 'Dhukunganna bhâsa laèn ètambâi',
   'whatsNew.title.moreLanguages': 'Bhâsa laèn',
   'whatsNew.body.moreLanguages': 'Dhukunganna bhâsa laèn ètambâi',
+  'whatsNew.title.checkUpdates': 'Parèksâna pabhârhârân',
+  'whatsNew.body.checkUpdates': 'Parèksâna pabhârhârân ètambâi',
   'whatsNew.title.whatsNew': 'Kaca Sapa sè anyar',
   'whatsNew.body.whatsNew': 'Kaca Sapa sè anyar ètambâi',
   'calendar.monthShort.1': 'Jan',

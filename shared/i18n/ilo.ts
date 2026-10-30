@@ -197,6 +197,8 @@ export const ilo = {
   'whatsNew.body.language': 'Nainayon ti suporta kadagiti adu a pagsasao',
   'whatsNew.title.moreLanguages': 'Adu a pagsasao',
   'whatsNew.body.moreLanguages': 'Nainayon ti suporta kadagiti adu a pagsasao',
+  'whatsNew.title.checkUpdates': 'Sukimatam dagiti pabaro',
+  'whatsNew.body.checkUpdates': 'Nainayon ti pagsukimat kadagiti pabaro',
   'whatsNew.title.whatsNew': 'Panid ti Ania ti baro',
   'whatsNew.body.whatsNew': 'Nainayon ti panid kadagiti pabaro',
   'calendar.monthShort.1': 'Ene',

@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.41.11',
+  version: '2.42.0',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -189,6 +189,14 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       titleKey: 'whatsNew.title.moreLanguages',
       bodyKey: 'whatsNew.body.moreLanguages',
       version: '2.41.2',
+    },
+    {
+      // The missed announcement: the feature debuted 2.11.0 (T-376) and settled into today's
+      // row at 2.11.9 (T-381), both silent. The owner ordered it announced now, so the stamp
+      // names this release - the modal gate reads stamps, not the build's own version
+      titleKey: 'whatsNew.title.checkUpdates',
+      bodyKey: 'whatsNew.body.checkUpdates',
+      version: '2.41.24',
     },
     {
       // iOS only: the layouts live in the widget extension, which Android never builds

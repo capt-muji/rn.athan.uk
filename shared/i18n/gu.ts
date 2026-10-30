@@ -187,6 +187,8 @@ export const gu = {
   'whatsNew.body.language': 'વધુ ભાષાઓ માટે સપોર્ટ ઉમેરાયો',
   'whatsNew.title.moreLanguages': 'વધુ ભાષાઓ',
   'whatsNew.body.moreLanguages': 'વધુ ભાષાઓ માટે સપોર્ટ ઉમેરાયો',
+  'whatsNew.title.checkUpdates': 'અપડેટ તપાસો',
+  'whatsNew.body.checkUpdates': 'અપડેટ તપાસો વિકલ્પ ઉમેરાયો',
   'whatsNew.title.whatsNew': 'નવું શું છે પૃષ્ઠ',
   'whatsNew.body.whatsNew': 'નવું શું છે પૃષ્ઠ ઉમેરાયું',
   'calendar.monthShort.1': 'જાન્યુ',

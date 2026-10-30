@@ -190,6 +190,8 @@ export const tg = {
   'whatsNew.body.language': 'Дастгирӣ барои забонҳои бештар илова шуд',
   'whatsNew.title.moreLanguages': 'Забонҳои бештар',
   'whatsNew.body.moreLanguages': 'Дастгирӣ барои забонҳои бештар илова шуд',
+  'whatsNew.title.checkUpdates': 'Санҷиши навсозиҳо',
+  'whatsNew.body.checkUpdates': 'Имконияти Санҷиши навсозиҳо илова шуд',
   'whatsNew.title.whatsNew': 'Саҳифаи навигариҳо',
   'whatsNew.body.whatsNew': 'Саҳифаи навигариҳо илова шуд',
   'calendar.monthShort.1': 'янв',

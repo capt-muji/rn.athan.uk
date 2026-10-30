@@ -188,6 +188,8 @@ export const ms = {
   'whatsNew.body.language': 'Ditambah sokongan untuk lebih banyak bahasa',
   'whatsNew.title.moreLanguages': 'Lebih banyak bahasa',
   'whatsNew.body.moreLanguages': 'Ditambah sokongan untuk lebih banyak bahasa',
+  'whatsNew.title.checkUpdates': 'Semak kemas kini',
+  'whatsNew.body.checkUpdates': 'Pilihan Semak kemas kini ditambah',
   'whatsNew.title.whatsNew': 'Halaman apa yang baharu',
   'whatsNew.body.whatsNew': 'Ditambah halaman apa yang baharu',
   'calendar.monthShort.1': 'Jan',

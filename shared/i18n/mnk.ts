@@ -189,6 +189,8 @@ export const mnk = {
   'whatsNew.body.language': 'Lanno mandoo dindin tawadu',
   'whatsNew.title.moreLanguages': 'Lanno mandoo',
   'whatsNew.body.moreLanguages': 'Lanno mandoo dindin tawadu',
+  'whatsNew.title.checkUpdates': 'Laloo apteji',
+  'whatsNew.body.checkUpdates': 'Laloo apteji tawadu',
   'whatsNew.title.whatsNew': 'Mun koura foo',
   'whatsNew.body.whatsNew': 'Mun koura foo tawadu',
   'calendar.monthShort.1': 'Jan',

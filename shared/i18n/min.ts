@@ -194,6 +194,8 @@ export const min = {
   'whatsNew.body.language': 'Dukuangan bahaso lain ditambahan',
   'whatsNew.title.moreLanguages': 'Bahaso lain',
   'whatsNew.body.moreLanguages': 'Dukuangan bahaso lain ditambahan',
+  'whatsNew.title.checkUpdates': 'Pareso pambaruan',
+  'whatsNew.body.checkUpdates': 'Pareso pambaruan ditambahan',
   'whatsNew.title.whatsNew': 'Halaman Apo nan baru',
   'whatsNew.body.whatsNew': 'Halaman Apo nan baru ditambahan',
   'calendar.monthShort.1': 'Jan',

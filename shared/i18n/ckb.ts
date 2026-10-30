@@ -189,6 +189,8 @@ export const ckb = {
   'whatsNew.body.language': 'پشتگیری بۆ زیاتر لە زمان زیادکرا',
   'whatsNew.title.moreLanguages': 'زمانە زیادەکان',
   'whatsNew.body.moreLanguages': 'پشتگیری بۆ زیاتر لە زمان زیادکرا',
+  'whatsNew.title.checkUpdates': 'پشکنین بۆ نوێکردنەوە',
+  'whatsNew.body.checkUpdates': 'پشکنین بۆ نوێکردنەوە زیادکرا',
   'whatsNew.title.whatsNew': 'لاپەڕەی چی نوێیە',
   'whatsNew.body.whatsNew': 'لاپەڕەی چی نوێیە زیادکرا',
   'calendar.monthShort.1': 'کانوونی دووەم',

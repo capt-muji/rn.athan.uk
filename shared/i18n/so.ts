@@ -189,6 +189,8 @@ export const so = {
   'whatsNew.body.language': 'Waxaa lagu daray taageero luqado dheeraad ah',
   'whatsNew.title.moreLanguages': 'Luqado dheeraad ah',
   'whatsNew.body.moreLanguages': 'Waxaa lagu daray taageero luqado dheeraad ah',
+  'whatsNew.title.checkUpdates': 'Hubi cusboonaysiinta',
+  'whatsNew.body.checkUpdates': 'Waxaa lagu daray Hubi cusboonaysiinta',
   'whatsNew.title.whatsNew': 'Bogga maxay tahay cusub',
   'whatsNew.body.whatsNew': 'Waxaa lagu daray bogga maxay tahay cusub',
   'calendar.monthShort.1': 'Jan',

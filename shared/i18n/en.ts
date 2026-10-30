@@ -205,6 +205,8 @@ export const en = {
   'whatsNew.body.language': 'Added support for more languages',
   'whatsNew.title.moreLanguages': 'More languages',
   'whatsNew.body.moreLanguages': 'Added support for more languages',
+  'whatsNew.title.checkUpdates': 'Check for updates',
+  'whatsNew.body.checkUpdates': 'Added a Check for updates option',
   'whatsNew.title.whatsNew': "What's New page",
   'whatsNew.body.whatsNew': "Added the What's New page",
   'calendar.monthShort.1': 'Jan',

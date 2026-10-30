@@ -187,6 +187,8 @@ export const te = {
   'whatsNew.body.language': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
   'whatsNew.title.moreLanguages': 'మరిన్ని భాషలు',
   'whatsNew.body.moreLanguages': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
+  'whatsNew.title.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి',
+  'whatsNew.body.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి ఎంపిక జోడించబడింది',
   'whatsNew.title.whatsNew': 'కొత్తవి పేజీ',
   'whatsNew.body.whatsNew': 'కొత్తవి పేజీ జోడించబడింది',
   'calendar.monthShort.1': 'జన',

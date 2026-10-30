@@ -189,6 +189,8 @@ export const my = {
   'whatsNew.body.language': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
   'whatsNew.title.moreLanguages': 'ဘာသာစကား ပိုမို',
   'whatsNew.body.moreLanguages': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
+  'whatsNew.title.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန်',
+  'whatsNew.body.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန် ရွေးချယ်ချက် ထည့်ပေးခဲ့သည်',
   'whatsNew.title.whatsNew': 'ဘာအသစ်ရှိလဲ စာမျက်နှာ',
   'whatsNew.body.whatsNew': 'ဘာအသစ်ရှိလဲ စာမျက်နှာကို ထည့်ပေးခဲ့သည်',
   'calendar.monthShort.1': 'ဇန်',

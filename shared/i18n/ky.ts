@@ -190,6 +190,8 @@ export const ky = {
   'whatsNew.body.language': 'Кошумча тилдерге колдоо кошулду',
   'whatsNew.title.moreLanguages': 'Кошумча тилдер',
   'whatsNew.body.moreLanguages': 'Кошумча тилдерге колдоо кошулду',
+  'whatsNew.title.checkUpdates': 'Жаңыртууларды текшерүү',
+  'whatsNew.body.checkUpdates': '«Жаңыртууларды текшерүү» кошулду',
   'whatsNew.title.whatsNew': 'Жаңылыктар барагы',
   'whatsNew.body.whatsNew': 'Жаңылыктар барагы кошулду',
   'calendar.monthShort.1': 'янв',

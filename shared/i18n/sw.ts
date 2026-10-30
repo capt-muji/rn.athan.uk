@@ -190,6 +190,8 @@ export const sw = {
   'whatsNew.body.language': 'Imeongezwa usaidizi wa lugha zaidi',
   'whatsNew.title.moreLanguages': 'Lugha zaidi',
   'whatsNew.body.moreLanguages': 'Imeongezwa usaidizi wa lugha zaidi',
+  'whatsNew.title.checkUpdates': 'Angalia visasisho',
+  'whatsNew.body.checkUpdates': 'Imeongezwa chaguo Angalia visasisho',
   'whatsNew.title.whatsNew': 'Ukurasa wa Nini Kipya',
   'whatsNew.body.whatsNew': 'Imeongezwa ukurasa wa Nini Kipya',
   'calendar.monthShort.1': 'Jan',

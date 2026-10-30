@@ -185,6 +185,8 @@ export const ar = {
   'whatsNew.body.language': 'أضيف دعم المزيد من اللغات',
   'whatsNew.title.moreLanguages': 'لغات أكثر',
   'whatsNew.body.moreLanguages': 'أضيف دعم المزيد من اللغات',
+  'whatsNew.title.checkUpdates': 'التحقق من التحديثات',
+  'whatsNew.body.checkUpdates': 'أُضيف خيار التحقق من التحديثات',
   'whatsNew.title.whatsNew': 'صفحة ما الجديد',
   'whatsNew.body.whatsNew': 'أُضيفت صفحة ما الجديد',
   'calendar.monthShort.1': 'يناير',

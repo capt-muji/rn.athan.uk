@@ -186,6 +186,8 @@ export const am = {
   'whatsNew.body.language': 'ለተጨማሪ ቋንቋዎች ድጋፍ ተጨምሯል',
   'whatsNew.title.moreLanguages': 'ተጨማሪ ቋንቋዎች',
   'whatsNew.body.moreLanguages': 'ለተጨማሪ ቋንቋዎች ድጋፍ ተጨምሯል',
+  'whatsNew.title.checkUpdates': 'ማሻሻያዎችን ፈትሽ',
+  'whatsNew.body.checkUpdates': 'የማሻሻያ ፍተሻ ምርጫ ተጨምሯል',
   'whatsNew.title.whatsNew': 'የአዲስ ገጽ',
   'whatsNew.body.whatsNew': 'የአዲስ ገጽ ተጨምሯል',
   'calendar.monthShort.1': 'ጃን',

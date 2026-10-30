@@ -198,6 +198,8 @@ export const mdh = {
   'whatsNew.body.language': 'Nagdagdag ng suporta sa mas maraming wika',
   'whatsNew.title.moreLanguages': 'Mas maraming wika',
   'whatsNew.body.moreLanguages': 'Nagdagdag ng suporta sa mas maraming wika',
+  'whatsNew.title.checkUpdates': 'Tignan ang mga kaaayos',
+  'whatsNew.body.checkUpdates': 'Nagdagdag ng Tignan ang mga kaaayos',
   'whatsNew.title.whatsNew': 'Pahina ng Anong Bago',
   'whatsNew.body.whatsNew': 'Nagdagdag ng pahina ng Anong Bago',
   'calendar.monthShort.1': 'Ene',

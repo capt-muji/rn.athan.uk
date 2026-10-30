@@ -187,6 +187,8 @@ export const bm = {
   'whatsNew.body.language': 'Kan wɛrɛw dɛmɛ fara',
   'whatsNew.title.moreLanguages': 'Kan wɛrɛw',
   'whatsNew.body.moreLanguages': 'Kan wɛrɛw dɛmɛ fara',
+  'whatsNew.title.checkUpdates': 'Sabatiw ɲinini',
+  'whatsNew.body.checkUpdates': 'Sabatiw ɲinini dɔ farala',
   'whatsNew.title.whatsNew': 'Kura ɲɛ',
   'whatsNew.body.whatsNew': 'Kura ɲɛ fara',
   'calendar.monthShort.1': 'Zan',

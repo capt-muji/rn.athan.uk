@@ -190,6 +190,8 @@ export const ha = {
   'whatsNew.body.language': 'An ƙara goyon bayan harsuna da yawa',
   'whatsNew.title.moreLanguages': 'Ƙarin harsuna',
   'whatsNew.body.moreLanguages': 'An ƙara goyon bayan harsuna da yawa',
+  'whatsNew.title.checkUpdates': 'Duba sabuntawa',
+  'whatsNew.body.checkUpdates': 'An ƙara zaɓin Duba sabuntawa',
   'whatsNew.title.whatsNew': 'Shafin Sababbi',
   'whatsNew.body.whatsNew': 'An ƙara shafin Sababbi',
   'calendar.monthShort.1': 'Jan',

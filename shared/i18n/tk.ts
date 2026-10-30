@@ -189,6 +189,8 @@ export const tk = {
   'whatsNew.body.language': 'Has köp dile goldaw goşuldy',
   'whatsNew.title.moreLanguages': 'Has köp dil',
   'whatsNew.body.moreLanguages': 'Has köp dile goldaw goşuldy',
+  'whatsNew.title.checkUpdates': 'Täzelenmeleri barla',
+  'whatsNew.body.checkUpdates': 'Täzelenmeleri barla goşuldy',
   'whatsNew.title.whatsNew': 'Täzelikler sahypasy',
   'whatsNew.body.whatsNew': 'Täzelikler sahypasy goşuldy',
   'calendar.monthShort.1': 'ýan',

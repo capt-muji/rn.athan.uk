@@ -187,6 +187,8 @@ export const kn = {
   'whatsNew.body.language': 'ಹೆಚ್ಚಿನ ಭಾಷೆಗಳಿಗೆ ಬೆಂಬಲ ಸೇರಿಸಲಾಗಿದೆ',
   'whatsNew.title.moreLanguages': 'ಹೆಚ್ಚಿನ ಭಾಷೆಗಳು',
   'whatsNew.body.moreLanguages': 'ಹೆಚ್ಚಿನ ಭಾಷೆಗಳಿಗೆ ಬೆಂಬಲ ಸೇರಿಸಲಾಗಿದೆ',
+  'whatsNew.title.checkUpdates': 'ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ',
+  'whatsNew.body.checkUpdates': 'ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಆಯ್ಕೆ ಸೇರಿಸಲಾಗಿದೆ',
   'whatsNew.title.whatsNew': 'ಹೊಸದು ಪುಟ',
   'whatsNew.body.whatsNew': 'ಹೊಸದು ಪುಟ ಸೇರಿಸಲಾಗಿದೆ',
   'calendar.monthShort.1': 'ಜನ',

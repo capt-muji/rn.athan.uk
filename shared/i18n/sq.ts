@@ -191,6 +191,8 @@ export const sq = {
   'whatsNew.body.language': 'U shtua mbështetje për më shumë gjuhë',
   'whatsNew.title.moreLanguages': 'Më shumë gjuhë',
   'whatsNew.body.moreLanguages': 'U shtua mbështetje për më shumë gjuhë',
+  'whatsNew.title.checkUpdates': 'Kontrollo përditësimet',
+  'whatsNew.body.checkUpdates': 'U shtua mundësia Kontrollo përditësimet',
   'whatsNew.title.whatsNew': 'Faqja e të rejave',
   'whatsNew.body.whatsNew': 'U shtua faqja e të rejave',
   'calendar.monthShort.1': 'Jan',

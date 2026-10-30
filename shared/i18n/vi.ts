@@ -194,6 +194,8 @@ export const vi = {
   'whatsNew.body.language': 'Đã thêm hỗ trợ nhiều ngôn ngữ hơn',
   'whatsNew.title.moreLanguages': 'Nhiều ngôn ngữ hơn',
   'whatsNew.body.moreLanguages': 'Đã thêm hỗ trợ nhiều ngôn ngữ hơn',
+  'whatsNew.title.checkUpdates': 'Kiểm tra bản cập nhật',
+  'whatsNew.body.checkUpdates': 'Đã thêm tùy chọn Kiểm tra bản cập nhật',
   'whatsNew.title.whatsNew': 'Trang Có gì mới',
   'whatsNew.body.whatsNew': 'Đã thêm trang Có gì mới',
   'calendar.monthShort.1': 'Th1',

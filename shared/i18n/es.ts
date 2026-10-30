@@ -193,6 +193,8 @@ export const es = {
   'whatsNew.body.language': 'Se añadió compatibilidad con más idiomas',
   'whatsNew.title.moreLanguages': 'Más idiomas',
   'whatsNew.body.moreLanguages': 'Se añadió compatibilidad con más idiomas',
+  'whatsNew.title.checkUpdates': 'Buscar actualizaciones',
+  'whatsNew.body.checkUpdates': 'Se añadió la opción Buscar actualizaciones',
   'whatsNew.title.whatsNew': 'Página de novedades',
   'whatsNew.body.whatsNew': 'Se añadió la página de novedades',
   'calendar.monthShort.1': 'ene',

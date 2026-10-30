@@ -193,6 +193,8 @@ export const de = {
   'whatsNew.body.language': 'Unterstützung für weitere Sprachen hinzugefügt',
   'whatsNew.title.moreLanguages': 'Weitere Sprachen',
   'whatsNew.body.moreLanguages': 'Unterstützung für weitere Sprachen hinzugefügt',
+  'whatsNew.title.checkUpdates': 'Nach Updates suchen',
+  'whatsNew.body.checkUpdates': 'Option „Nach Updates suchen“ hinzugefügt',
   'whatsNew.title.whatsNew': 'Neuigkeiten-Seite',
   'whatsNew.body.whatsNew': 'Die Neuigkeiten-Seite wurde hinzugefügt',
   'calendar.monthShort.1': 'Jan',

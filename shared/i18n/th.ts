@@ -184,6 +184,8 @@ export const th = {
   'whatsNew.body.language': 'เพิ่มการรองรับภาษาเพิ่มเติม',
   'whatsNew.title.moreLanguages': 'ภาษาเพิ่มเติม',
   'whatsNew.body.moreLanguages': 'เพิ่มการรองรับภาษาเพิ่มเติม',
+  'whatsNew.title.checkUpdates': 'ตรวจสอบการอัปเดต',
+  'whatsNew.body.checkUpdates': 'เพิ่มตัวเลือกตรวจสอบการอัปเดต',
   'whatsNew.title.whatsNew': 'หน้ามีอะไรใหม่',
   'whatsNew.body.whatsNew': 'เพิ่มหน้ามีอะไรใหม่',
   'calendar.monthShort.1': 'ม.ค.',

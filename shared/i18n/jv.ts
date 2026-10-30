@@ -187,6 +187,8 @@ export const jv = {
   'whatsNew.body.language': 'Dhukungan kanggo basa liyané ditambahaké',
   'whatsNew.title.moreLanguages': 'Basa liyané',
   'whatsNew.body.moreLanguages': 'Dhukungan kanggo basa liyané ditambahaké',
+  'whatsNew.title.checkUpdates': 'Priksa anyaran',
+  'whatsNew.body.checkUpdates': 'Opsi Priksa anyaran ditambahaké',
   'whatsNew.title.whatsNew': 'Kaca apa sing anyar',
   'whatsNew.body.whatsNew': 'Kaca apa sing anyar ditambahaké',
   'calendar.monthShort.1': 'Jan',

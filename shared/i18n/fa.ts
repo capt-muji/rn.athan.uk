@@ -187,6 +187,8 @@ export const fa = {
   'whatsNew.body.language': 'پشتیبانی از زبان‌های بیشتر افزوده شد',
   'whatsNew.title.moreLanguages': 'زبان‌های بیشتر',
   'whatsNew.body.moreLanguages': 'پشتیبانی از زبان‌های بیشتر افزوده شد',
+  'whatsNew.title.checkUpdates': 'بررسی به‌روزرسانی‌ها',
+  'whatsNew.body.checkUpdates': 'گزینه بررسی به‌روزرسانی‌ها افزوده شد',
   'whatsNew.title.whatsNew': 'صفحه تازه‌ها',
   'whatsNew.body.whatsNew': 'صفحه تازه‌ها افزوده شد',
   'calendar.monthShort.1': 'ژانویه',

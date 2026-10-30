@@ -187,6 +187,8 @@ export const su = {
   'whatsNew.body.language': 'Rojongan pikeun basa séjén ditambahkeun',
   'whatsNew.title.moreLanguages': 'Basa séjén',
   'whatsNew.body.moreLanguages': 'Rojongan pikeun basa séjén ditambahkeun',
+  'whatsNew.title.checkUpdates': 'Pariksa anyaran',
+  'whatsNew.body.checkUpdates': 'Pilihan Pariksa anyaran ditambahkeun',
   'whatsNew.title.whatsNew': 'Kaca naon nu anyar',
   'whatsNew.body.whatsNew': 'Kaca naon nu anyar ditambahkeun',
   'calendar.monthShort.1': 'Jan',

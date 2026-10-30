@@ -195,6 +195,8 @@ export const ce = {
   'whatsNew.body.language': 'Кхыдолчу меттанашна гӀо тӀетоьхна',
   'whatsNew.title.moreLanguages': 'Кхин меттанаш',
   'whatsNew.body.moreLanguages': 'Кхыдолчу меттанашна гӀо тӀетоьхна',
+  'whatsNew.title.checkUpdates': 'Карладаккхараш терахдехьа',
+  'whatsNew.body.checkUpdates': 'Карладаккхараш терахдехьа тӀетоьхна',
   'whatsNew.title.whatsNew': '«ХӀун керладериг ду» агӀо',
   'whatsNew.body.whatsNew': '«ХӀун керладериг ду» агӀо тӀетоьхна',
   'calendar.monthShort.1': 'янв',

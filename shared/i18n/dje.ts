@@ -189,6 +189,8 @@ export const dje = {
   'whatsNew.body.language': 'Koyne fofoo madamay tawaci',
   'whatsNew.title.moreLanguages': 'Koyne fofoo',
   'whatsNew.body.moreLanguages': 'Koyne fofoo madamay tawaci',
+  'whatsNew.title.checkUpdates': 'Guna apteyji',
+  'whatsNew.body.checkUpdates': 'Guna apteyji tawaci',
   'whatsNew.title.whatsNew': 'Mun no curoy kadda',
   'whatsNew.body.whatsNew': 'Mun no curoy kadda tawaci',
   'calendar.monthShort.1': 'Jan',
