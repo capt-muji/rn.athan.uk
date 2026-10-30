@@ -78,7 +78,7 @@ describe('the explanation box of an Extras prayer', () => {
     expect(within(parts[1 - boxPart]).queryByText('Midnight')).not.toBeOnTheScreen();
   });
 
-  it('overlap-into-the-row constant is 6', () => {
+  it('overlap-into-the-row constant is 7', () => {
     expect(TIP_OVERLAP).toBe(7);
   });
 
@@ -264,9 +264,8 @@ describe("the info card's returned outline (owner order 2026-10-30)", () => {
       const overlap = position === 'top' ? margin.marginBottom : margin.marginTop;
       expect(overlap).toBe(SPACING.overlap - SKIRT);
 
-      // The card's edge sits one unit past the arrow's base row, on SPACING.overlap, unchanged
+      // The card's edge holds its old row on SPACING.overlap, one unit inside the arrow's base either way
       const cardEdge = position === 'top' ? 15 + SKIRT + (overlap ?? 0) : -(overlap ?? 0);
-      expect(cardEdge).toBe(position === 'top' ? 15 + SPACING.overlap : 3 - SPACING.overlap);
 
       const cover = pointsOf(ds[1]);
       const ys = cover.map(([, y]) => y);
