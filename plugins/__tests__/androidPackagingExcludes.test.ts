@@ -1,12 +1,15 @@
 /**
  * The java-resource excludes that strip the APK's measured-dead dependency data (T-491 step 6):
- * commons-codec's Beider-Morse phonetic tables under org/apache/commons/codec/** (1,326,984
- * stored bytes, read only by language.bm classes R8 strips from both dex files) plus the
+ * commons-codec's Beider-Morse phonetic tables under org/apache/commons/codec/** (measured
+ * 131,145 bytes off the stored APK, read only by language.bm classes R8 strips from both dex
+ * files) plus the
  * root-level dependency leftovers (/*.properties, /*.proto, DebugProbesKt.bin,
  * kotlin-tooling-metadata.json, 4,783 compressed bytes together). The fixtures mirror the
  * app build.gradle Expo's template generates, whose android block carries a packagingOptions
  * section the excludes join (plugins/androidPackagingExcludes.js)
  */
+
+import { readFileSync } from 'node:fs';
 
 interface GradleConfigFixture {
   modResults: { contents: string };
@@ -83,5 +86,33 @@ describe('the java-resource excludes on the app build.gradle', () => {
     const config = plugin({ modResults: { contents: templateGradle() } });
 
     expect(config.modResults.contents).toContain('excludes += [');
+  });
+
+  it('still applies beside a template that grows its own excludes line, where a generic marker would read as already-applied', () => {
+    const ownExcludes = templateGradle().replace(
+      'packagingOptions {',
+      "packagingOptions {\n            resources {\n                excludes += ['META-INF/AL2.0', 'META-INF/LGPL2.1']\n            }"
+    );
+
+    const applied = applyPackagingExcludes(ownExcludes);
+
+    expect(applied).toContain("'org/apache/commons/codec/**'");
+    expect(applied).toContain('META-INF/AL2.0');
+  });
+
+  it('is idempotent on its own applied output', () => {
+    const once = applyPackagingExcludes(templateGradle());
+
+    expect(applyPackagingExcludes(once)).toBe(once);
+  });
+});
+
+describe('the app.json wiring', () => {
+  it('registers the plugin, without which the excludes never reach the build', () => {
+    const names = (JSON.parse(readFileSync('app.json', 'utf8')).expo.plugins as unknown[]).map((entry) =>
+      Array.isArray(entry) ? entry[0] : entry
+    );
+
+    expect(names).toContain('./plugins/androidPackagingExcludes');
   });
 });

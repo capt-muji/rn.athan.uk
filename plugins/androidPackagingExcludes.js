@@ -5,10 +5,11 @@ const { withAppBuildGradle } = require('expo/config-plugins');
  * entry is Beider-Morse phonetic data under org/apache/commons/codec/language/bm/** that only
  * org.apache.commons.codec.language.bm classes read, and R8 strips those classes from both dex
  * files (expo-file-system, whose build.gradle declares the api dependency, uses
- * android.util.Base64 and its own hex in source): 1,326,984 stored bytes. The root-level
- * leftovers are dependency metadata nothing reads at runtime: 4,783 compressed bytes together.
- * The patterns stay this narrow on purpose — a future dependency reading org/apache/** java
- * resources fails at classload with a missing-resource exception, never silently.
+ * android.util.Base64 and its own hex in source): measured 131,145 bytes off the stored APK.
+ * The root-level leftovers are dependency metadata nothing reads at runtime: 4,783 compressed
+ * bytes together. The patterns stay this narrow on purpose — a future dependency reading
+ * org/apache/** java resources fails at classload with a missing-resource exception, never
+ * silently.
  */
 const JAVA_RESOURCE_EXCLUDES = [
   'org/apache/commons/codec/**',
@@ -24,7 +25,9 @@ const EXCLUDES_BLOCK = `        resources {
 `;
 
 const ANCHOR = 'packagingOptions {';
-const MARKER = 'excludes += [';
+// Plugin-specific: one of our own patterns. A generic `excludes += [` marker would let a
+// future template's own excludes line silence this plugin; ours never appears by accident
+const MARKER = "'org/apache/commons/codec/**'";
 
 /** Joins the excludes into the template's packagingOptions section inside the android block */
 const applyPackagingExcludes = (modResults) => {
