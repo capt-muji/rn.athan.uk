@@ -66,11 +66,13 @@ export default function PrayerExplanation({
           <Svg width={36} height={15} viewBox={'0 0 36 15'}>
             {/* Fill first */}
             <Path d={'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z'} fill={COLORS.surface.elevated} />
+            {/* The card border's band under the base, covered in the card's own colour so the outline runs through the arrow instead of slicing it */}
+            <Path d={'M0 14 L36 14 L36 15 L0 15 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not bottom */}
             <Path
               d={'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15'}
               fill={'none'}
-              stroke={COLORS.surface.elevatedBorder}
+              stroke={COLORS.surface.elevatedOutline}
               strokeWidth={1}
               strokeLinecap={'round'}
             />
@@ -106,11 +108,13 @@ export default function PrayerExplanation({
           <Svg width={36} height={15} viewBox={'0 0 36 15'}>
             {/* Fill first */}
             <Path d={'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z'} fill={COLORS.surface.elevated} />
+            {/* The card border's band under the base, covered in the card's own colour so the outline runs through the arrow instead of slicing it */}
+            <Path d={'M0 0 L36 0 L36 1 L0 1 Z'} fill={COLORS.surface.elevated} />
             {/* Border stroke - only left and right edges, not top */}
             <Path
               d={'M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0'}
               fill={'none'}
-              stroke={COLORS.surface.elevatedBorder}
+              stroke={COLORS.surface.elevatedOutline}
               strokeWidth={1}
               strokeLinecap={'round'}
             />
@@ -152,7 +156,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface.elevated,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.surface.elevatedBorder,
+    borderColor: COLORS.surface.elevatedOutline,
   },
   infoHeader: {
     flexDirection: 'row',

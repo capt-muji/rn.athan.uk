@@ -8,7 +8,6 @@ import { Glow } from '@/components/ui';
 import { useDerivedOpacity } from '@/hooks/useAnimation';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
-import { ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 
 // Memoized with stabilized props so overlay toggles (which re-render this
@@ -28,8 +27,10 @@ export default function VeilBackdrop() {
 
   const opacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
-  const isExtra = overlay.scheduleType === ScheduleType.Extra;
-  const glowColor = isExtra ? COLORS.glow.overlayExtras : COLORS.glow.overlay;
+  // T-515 (owner order 2026-10-30): the glow matches exactly the navy-blue top colour of the
+  // resting page's gradient - the same constant BackgroundGradients paints, no conversion,
+  // one colour on both lists
+  const glowColor = COLORS.gradient.screen.start;
 
   // Anchored to the content column so the glow keeps phone proportions on
   // large screens; reduces exactly to the old -width/2 math on phones

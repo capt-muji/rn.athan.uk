@@ -218,5 +218,13 @@
   {
     "version": "2.41.10",
     "reason": "2026-10-29 concurrent lanes in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries (lane1/T-491's audit fix, lane3/T-490's revision 2)"
+  },
+  {
+    "version": "2.42.4",
+    "reason": "2026-10-30 lane2/T-515's card-outline step steps from uat's 2.42.3 while lane1/T-491's strip-pass step already holds 2.42.4; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.5",
+    "reason": "2026-10-30 lane2/T-515's glow step steps from its own 2.42.4 tip while lane1/T-491's thin-LTO step already holds 2.42.5; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
