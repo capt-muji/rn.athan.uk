@@ -28,6 +28,11 @@
 #     sf branch) — stamping after would open the entrance window ~duration
 #     late and miss it. <tap-x> <tap-y> carry the swipe's start point for
 #     the vision prompt.
+#   PRE_SWIPE="x1 y1 x2 y2 [duration_ms]"
+#     Drives one swipe before the recorded interaction and waits out its
+#     settle (PRE_TAP_WAIT). The extras->std audit needs it: a relaunch
+#     lands on the standard page, so the recorded rightward swipe would
+#     otherwise overscroll the first page — the edge glow, not a page turn.
 #   SF_OFFSET=<seconds>
 #     Overrides the per-capture clock anchor when it read LOW (an anchor tap
 #     that closes a sheet presents late). Offsets cannot decrease, so the
@@ -72,15 +77,20 @@ if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
   exit 1
 fi
 SWIPE=${SWIPE:-}
-if [[ -n $SWIPE ]]; then
-  swipe_parts=(${=SWIPE})
-  # Hoisted: the <-> glob dies inside (( )) where < and > are math operators.
-  swipe_numeric=${#${(M)swipe_parts:#<->}}
-  if (( ${#swipe_parts} < 4 || ${#swipe_parts} > 5 )) || (( swipe_numeric != ${#swipe_parts} )); then
-    echo "SWIPE must be 'x1 y1 x2 y2 [duration_ms]' (got '$SWIPE')"
+PRE_SWIPE=${PRE_SWIPE:-}
+check_swipe_shape() {
+  local parts
+  parts=(${=1})
+  local numeric=${#${(M)parts:#<->}}
+  # Hoisted out of (( )): the <-> glob dies inside it (< and > parse as math).
+  (( ${#parts} >= 4 && ${#parts} <= 5 )) && (( numeric == ${#parts} ))
+}
+for v in "$SWIPE" "$PRE_SWIPE"; do
+  if [[ -n $v ]] && ! check_swipe_shape "$v"; then
+    echo "SWIPE/PRE_SWIPE must be 'x1 y1 x2 y2 [duration_ms]' (got '$v')"
     exit 1
   fi
-fi
+done
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
@@ -92,6 +102,11 @@ echo "settling 12s (JS warmup + widget pushes land ~2.5s in)"; sleep 12
 if [[ -n ${PRE_TAP:-} ]]; then
   adb -s "$SERIAL" shell input tap ${=PRE_TAP}
   echo "pre-tap at $PRE_TAP, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n $PRE_SWIPE ]]; then
+  adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE}"
+  echo "pre-swipe ${=PRE_SWIPE}, waiting out the settle (${PRE_TAP_WAIT}s)"
   sleep "$PRE_TAP_WAIT"
 fi
 

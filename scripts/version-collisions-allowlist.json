@@ -246,5 +246,9 @@
   {
     "version": "2.42.11",
     "reason": "2026-10-30 lane1/T-327's swipe-mode harness step steps from its own 2.42.10 merge tip while lane1/T-491's parked branch already holds 2.42.11; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.10",
+    "reason": "2026-10-30 lane3/T-520's step-1 commit and lane1/T-491's step-6-fix commit both step to 2.42.10 from uat's 2.42.9 in the same window, beside this lane's excluded merge that carries 2.42.10 on lane1/T-327; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
