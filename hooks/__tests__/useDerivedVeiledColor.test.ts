@@ -6,7 +6,7 @@
 
 import { ANIMATION } from '@/shared/constants';
 
-import { useDerivedBackgroundColor, useDerivedVeiledColor } from '../useAnimation';
+import { useDerivedVeiledBackgroundColor, useDerivedVeiledColor } from '../useAnimation';
 import { mountHook } from './hookHarness';
 import type { Animation } from './reanimatedFake';
 
@@ -96,19 +96,65 @@ describe('useDerivedVeiledColor', () => {
     expect(veil.value).toEqual(timing(1, { duration: ANIMATION.durationFade }));
     expect((veil.outputRange[0] as { value: unknown }).value).toEqual(timing(1, { duration: ANIMATION.durationSlow }));
   });
+});
 
-  it('tweens the background property between its two inks, with no veil layer', () => {
+describe('useDerivedVeiledBackgroundColor', () => {
+  it('wraps the pill tween inside the veil interpolation, the veil colour as its far end', () => {
     const view = mountHook(
       (props: VeiledProps) =>
-        useDerivedBackgroundColor(props.colorTarget, {
+        useDerivedVeiledBackgroundColor(props.veilTarget, props.colorTarget, {
           fromColor: FROM,
           toColor: TO,
+          veilColor: VEIL,
         }),
       { veilTarget: 0, colorTarget: 0 }
     );
 
-    const background = descriptorOf(view.result, 'backgroundColor');
-    expect(background.inputRange).toEqual([0, 1]);
-    expect(background.outputRange).toEqual([FROM, TO]);
+    const veil = descriptorOf(view.result, 'backgroundColor');
+    const pill = veil.outputRange[0] as { outputRange: string[] };
+
+    expect(veil.inputRange).toEqual([0, 1]);
+    expect(veil.outputRange[1]).toBe(VEIL);
+    expect(pill.outputRange).toEqual([FROM, TO]);
+  });
+
+  it('draws the veil over whatever pill colour the pill tween rests on, at its own duration', () => {
+    const view = mountHook(
+      (props: VeiledProps) =>
+        useDerivedVeiledBackgroundColor(props.veilTarget, props.colorTarget, {
+          fromColor: FROM,
+          toColor: TO,
+          veilColor: VEIL,
+          veilDuration: ANIMATION.durationFade,
+          duration: ANIMATION.durationMedium,
+        }),
+      { veilTarget: 0, colorTarget: 0 }
+    );
+
+    view.rerender({ veilTarget: 0, colorTarget: 1 });
+    view.rerender({ veilTarget: 1, colorTarget: 1 });
+
+    const veil = descriptorOf(view.result, 'backgroundColor');
+    expect(veil.value).toEqual(timing(1, { duration: ANIMATION.durationFade }));
+    expect((veil.outputRange[0] as { value: unknown }).value).toEqual(
+      timing(1, { duration: ANIMATION.durationMedium })
+    );
+  });
+
+  it('rides the veil at the overlay clock when no veil duration is given', () => {
+    const view = mountHook(
+      (props: VeiledProps) =>
+        useDerivedVeiledBackgroundColor(props.veilTarget, props.colorTarget, {
+          fromColor: FROM,
+          toColor: TO,
+          veilColor: VEIL,
+        }),
+      { veilTarget: 0, colorTarget: 0 }
+    );
+
+    view.rerender({ veilTarget: 1, colorTarget: 0 });
+
+    const veil = descriptorOf(view.result, 'backgroundColor');
+    expect(veil.value).toEqual(timing(1, { duration: ANIMATION.duration }));
   });
 });

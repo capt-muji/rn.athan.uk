@@ -2,8 +2,9 @@
  * The box explaining an Extras prayer: its words, its Latin digits, and which side of the box its arrow is drawn on
  */
 
-import { render, screen, within } from '@testing-library/react-native';
+import { act, render, screen, within } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
+import type { SharedValue } from 'react-native-reanimated';
 import * as Reanimated from 'react-native-reanimated';
 import type { TestInstance } from 'test-renderer';
 
@@ -119,18 +120,82 @@ describe('the explanation box of an Extras prayer', () => {
     expect(face?.queryAll((node) => node.type === 'Text')).toHaveLength(0);
   });
 
-  it('raises its inks from the card surface as it reveals, through colour and never opacity', async () => {
+  // The owner-ordered opacity ramp (T-490 revision 3, comments 4875/4877): after two
+  // colour-tween revisions measured as one-frame steps on glass (+113 luma at the
+  // open's knee, -115 at the close's, a 60fps recording), the words fade on opacity
+  // alone - 0 at the open's start, 1 at settle, 1 to 0 across the close - with their
+  // colour the settled constant at every frame. T-294's one scoped exception,
+  // restated in the component's doc and in the sweep: these two texts on this path only.
+  type Words = { color?: string; opacity?: number };
+
+  const wordsOf = (text: string): Words => StyleSheet.flatten(screen.getByText(text).props.style);
+
+  const cardAt = (revealAt: number) => (
+    <PrayerExplanation
+      prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
+      explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
+      reveal={{ value: revealAt } as unknown as SharedValue<number>}
+    />
+  );
+
+  const placed = async (revealAt: number): Promise<{ title: Words; description: Words }> => {
+    await render(cardAt(revealAt));
+    return {
+      title: wordsOf('Midnight'),
+      description: wordsOf('Halfway between Magrib and Fajr'),
+    };
+  };
+
+  it.each([0, 0.25, 0.5, 0.75, 1])(
+    'rides the reveal %s as a true opacity, its colour the settled constant',
+    async (revealAt) => {
+      const words = await placed(revealAt);
+
+      expect(words.title.opacity).toBe(revealAt);
+      expect(words.description.opacity).toBe(revealAt);
+      expect(words.title.color).toBe(COLORS.text.emphasis);
+      expect(words.description.color).toBe(COLORS.icon.primary);
+    }
+  );
+
+  it('moves only the opacity between phases - the colour is constant on the whole ramp', async () => {
+    const rendered = await render(cardAt(0.3));
+    const dim = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+
+    // The mock runs every updater on each render, so a re-render at another reveal re-reads it
+    // without mounting a second tree
+    await act(async () => {
+      rendered.rerender(cardAt(0.8));
+    });
+
+    const bright = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+    expect(bright.title.color).toBe(dim.title.color);
+    expect(bright.description.color).toBe(dim.description.color);
+    expect(bright.title.opacity).not.toBe(dim.title.opacity);
+  });
+
+  it('interpolates no colour for either ink - the ramp is opacity alone', async () => {
     const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
+
+    await placed(0.5);
+
+    expect(interpolateColor).not.toHaveBeenCalled();
+  });
+
+  it('stands fully drawn when carried with no reveal', async () => {
     await render(
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    const surface = COLORS.surface.elevated;
-    const ends = interpolateColor.mock.calls
-      .filter((call) => (call[2] as unknown as readonly string[])[0] === surface)
-      .map((call) => (call[2] as unknown as readonly string[])[1]);
-    expect(ends).toEqual([COLORS.text.emphasis, COLORS.icon.primary]);
-    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBeUndefined();
+    expect(wordsOf('Midnight').opacity).toBe(1);
+    expect(wordsOf('Halfway between Magrib and Fajr').opacity).toBe(1);
+  });
+
+  // The colour revisions' measured pins leave the constants behind dead: no ink
+  // interpolates toward any band, so the band itself is gone
+  it('carries no band constants for the words', () => {
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBand');
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBandRest');
   });
 });
 

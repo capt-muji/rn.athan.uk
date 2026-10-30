@@ -12,12 +12,27 @@ import { COLORS } from '@/shared/constants';
  * and hide ride an opaque face colour, never alpha - the owner's standing order,
  * pinned here so no new text can ship translucency or a transparent hide by omission.
  *
+ * One scoped exception (owner order 2026-10-29, T-490): the explanation card's
+ * title and description - components/prayer/Explanation.tsx, the two tags whose
+ * style names the reveal ramp - ride a TRUE OPACITY on the overlay's open and
+ * close path, their colour constant at every frame. The colour tween the law
+ * first forced onto these two texts measured as four one-frame steps on glass,
+ * so the owner scoped this single exception by name. No other text, in that
+ * file or any other, may ride it: the exemption below keys on the file and the
+ * one ramp style identifier, and a test pins the exempted count at exactly two.
+ *
  * Source-level by design: the invariant lives in what each element declares (its own
  * style, the styles it names, the hooks its style consumes), which a render test would
  * reach only by mounting every screen. Ancestor opacity that dims a text subtree is
  * pinned by the component suites instead, which assert the colours those conversions
  * paint.
  */
+
+/** The file and style identifier the owner's opacity-ramp exception names; nothing else rides it */
+const OPACITY_RAMP_EXCEPTION = {
+  file: 'components/prayer/Explanation.tsx',
+  style: 'wordsStyle',
+} as const;
 
 const ROOTS = ['app', 'components'];
 
@@ -198,19 +213,31 @@ interface Offence {
   detail: string;
 }
 
+interface Sweep {
+  offences: Offence[];
+  /** Tags the scoped opacity-ramp exception carried, each already named by the order */
+  exempted: string[];
+}
+
 /** The offences one source text carries; the file path only names them, so a plant can carry any name */
-const sweepSource = (file: string, source: string): Offence[] => {
+const sweepSource = (file: string, source: string): Sweep => {
   const offences: Offence[] = [];
+  const exempted: string[] = [];
   const facts = factsOf(source);
   for (const tag of textTags(source)) {
     const style = styleExpressionOf(tag);
     if (style === null) continue;
     const where = `${file}: ${tag.slice(0, 60).replace(/\s+/g, ' ')}`;
+    const rampExempt =
+      file === OPACITY_RAMP_EXCEPTION.file && new RegExp(`\\b${OPACITY_RAMP_EXCEPTION.style}\\b`).test(style);
+    if (rampExempt) exempted.push(where);
 
     const styleSources = [style, ...referencedEntries(style, facts)];
-    for (const text of styleSources) {
-      if (/[{,]\s*opacity\s*:/.test(text)) {
-        offences.push({ file, detail: `${where} declares opacity in a style it names` });
+    if (!rampExempt) {
+      for (const text of styleSources) {
+        if (/[{,]\s*opacity\s*:/.test(text)) {
+          offences.push({ file, detail: `${where} declares opacity in a style it names` });
+        }
       }
     }
 
@@ -219,14 +246,16 @@ const sweepSource = (file: string, source: string): Offence[] => {
       offences.push({ file, detail: `${where} carries fillOpacity ${fillOpacity[1].trim()}` });
     }
 
-    for (const [name] of facts.opacityHooks) {
-      if (new RegExp(`\\b${name}\\b`).test(style)) {
-        offences.push({ file, detail: `${where} carries the opacity style ${name}` });
+    if (!rampExempt) {
+      for (const [name] of facts.opacityHooks) {
+        if (new RegExp(`\\b${name}\\b`).test(style)) {
+          offences.push({ file, detail: `${where} carries the opacity style ${name}` });
+        }
       }
-    }
-    for (const [name, body] of facts.animatedStyles) {
-      if (new RegExp(`\\b${name}\\b`).test(style) && /[{,]\s*opacity\s*:/.test(body)) {
-        offences.push({ file, detail: `${where} carries ${name}, whose animated style sets opacity` });
+      for (const [name, body] of facts.animatedStyles) {
+        if (new RegExp(`\\b${name}\\b`).test(style) && /[{,]\s*opacity\s*:/.test(body)) {
+          offences.push({ file, detail: `${where} carries ${name}, whose animated style sets opacity` });
+        }
       }
     }
 
@@ -269,10 +298,11 @@ const sweepSource = (file: string, source: string): Offence[] => {
       }
     }
   }
-  return offences;
+  return { offences, exempted };
 };
 
-const sweep = (root: string): Offence[] => files(root).flatMap((file) => sweepSource(file, readFileSync(file, 'utf8')));
+const sweep = (root: string): Offence[] =>
+  files(root).flatMap((file) => sweepSource(file, readFileSync(file, 'utf8')).offences);
 
 /** Every string a role table holds, so a whole state matrix is alpha-checked in one call */
 const stringsOf = (node: unknown): string[] =>
@@ -292,7 +322,7 @@ describe('text ink', () => {
       'export const Row = () => <Text style={[styles.text, { color: hiddenInk }]}>Reset</Text>;',
     ].join('\n');
 
-    const offences = sweepSource('plant.tsx', plant);
+    const { offences } = sweepSource('plant.tsx', plant);
 
     expect(offences).toHaveLength(1);
     expect(offences[0].detail).toContain("'transparent'");
@@ -313,10 +343,73 @@ describe('text ink', () => {
       'export const Row = () => <Text style={styles.row}>Hidden</Text>;',
     ].join('\n');
 
-    const offences = sweepSource('plant.tsx', plant);
+    const { offences } = sweepSource('plant.tsx', plant);
 
     expect(offences).toHaveLength(1);
     expect(offences[0].detail).toContain('rgba(255, 255, 255, 0.5)');
+  });
+
+  // The owner-ordered scoped exception (T-490, 2026-10-29): exactly the explanation
+  // card's two words ride a true opacity ramp, keyed on the file and the one ramp
+  // style identifier. The count is pinned so a third tag naming that style - or any
+  // tag in any other file - can never ride the exemption silently
+  it('carries the explanation words as the one scoped opacity-ramp exception, exactly two tags', () => {
+    const source = readFileSync(OPACITY_RAMP_EXCEPTION.file, 'utf8');
+    const { offences, exempted } = sweepSource(OPACITY_RAMP_EXCEPTION.file, source);
+
+    expect(offences).toEqual([]);
+    expect(exempted).toHaveLength(2);
+  });
+
+  it('exempts any tag naming the ramp style in that file, which is why the count is pinned at two', () => {
+    const plant = [
+      'const wordsStyle = useAnimatedStyle(() => ({ opacity: shown.value }));',
+      'const styles = StyleSheet.create({',
+      '  third: {',
+      '    fontSize: 12,',
+      '  },',
+      '});',
+      'export const Row = () => <Animated.Text style={[styles.third, wordsStyle]}>Stowaway</Animated.Text>;',
+    ].join('\n');
+
+    const { offences, exempted } = sweepSource(OPACITY_RAMP_EXCEPTION.file, plant);
+
+    // The exemption keys on the identifier, so a stowaway tag would ride it silently:
+    // this plant proves the mechanism, and the count test above - exactly two on the
+    // real file - is what reddens a third rider
+    expect(offences).toHaveLength(0);
+    expect(exempted).toHaveLength(1);
+  });
+
+  it('reddens the ramp style named outside the excepted file', () => {
+    const plant = [
+      'const wordsStyle = useAnimatedStyle(() => ({ opacity: shown.value }));',
+      'export const Row = () => <Animated.Text style={wordsStyle}>Elsewhere</Animated.Text>;',
+    ].join('\n');
+
+    const { offences, exempted } = sweepSource('components/prayer/Elsewhere.tsx', plant);
+
+    expect(offences).toHaveLength(1);
+    expect(offences[0].detail).toContain('whose animated style sets opacity');
+    expect(exempted).toHaveLength(0);
+  });
+
+  it('still reddens a translucent colour on an exempted tag: the exception is opacity alone', () => {
+    const plant = [
+      'const wordsStyle = useAnimatedStyle(() => ({ opacity: shown.value }));',
+      'const styles = StyleSheet.create({',
+      '  third: {',
+      "    color: 'rgba(255, 255, 255, 0.4)',",
+      '  },',
+      '});',
+      'export const Row = () => <Animated.Text style={[styles.third, wordsStyle]}>Ghost</Animated.Text>;',
+    ].join('\n');
+
+    const { offences, exempted } = sweepSource(OPACITY_RAMP_EXCEPTION.file, plant);
+
+    expect(offences).toHaveLength(1);
+    expect(offences[0].detail).toContain('rgba(255, 255, 255, 0.4)');
+    expect(exempted).toHaveLength(1);
   });
 
   it('finds the text elements it claims to guard', () => {

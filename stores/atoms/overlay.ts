@@ -28,16 +28,19 @@ export const overlayAtom = atom<OverlayStore>({
  * Whether the overlay family's most recent fade has truly settled.
  *
  * One flag for every subtree the overlay holds displayable through a fade —
- * the input layer, the explanation box, the hidden rows, the ago badge. The
- * writers of `isOn` drop it in the same store batch as their flip, so every
- * held subtree re-renders once with the state change itself; the layer's own
- * fade raises it again from the ANIMATION's completion (never a wall timer:
- * a timer phase-locked to the JS call fires before a commit-stalled fade has
- * finished and cuts it mid-travel — the 3T's close-path snap, step 10's
- * Defect B). Display rules read it as:
+ * the input layer, the hidden rows, the ago badge. The writers of `isOn` drop
+ * it in the same store batch as their flip, so every held subtree re-renders
+ * once with the state change itself; the layer's own fade raises it again from
+ * the ANIMATION's completion (never a wall timer: a timer phase-locked to the
+ * JS call fires before a commit-stalled fade has finished and cuts it
+ * mid-travel — the 3T's close-path snap, step 10's Defect B). Display rules
+ * read it as:
  *
- *   layer, explanation box:  isOn || !settled  ? 'flex' : 'none'
+ *   layer:                   isOn || !settled  ? 'flex' : 'none'
  *   hidden rows, ago badge:  hidden && settled ? 'none' : 'flex'
+ *
+ * The explanation box left the flag's readers (T-490): its placer now cuts
+ * display on its own reveal inside the worklet, same-frame with the face.
  *
  * True at rest: nothing is in flight.
  */

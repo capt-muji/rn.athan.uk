@@ -1,10 +1,5 @@
 import { StyleSheet, View, type ViewProps } from 'react-native';
-import Animated, {
-  interpolateColor,
-  type SharedValue,
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
+import Animated, { type SharedValue, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
 import { InfoBadge } from '@/components/ui';
@@ -17,7 +12,7 @@ interface PrayerExplanationProps {
   explanation: string;
   arrowPosition?: 'top' | 'bottom';
   style?: ViewProps['style'];
-  /** How far the card has revealed: drives the face's fade and the inks' rise from the surface. Unveiled by default, so the card stands alone fully drawn */
+  /** How far the card has revealed: drives the face's fade and the words' opacity ramp. Unveiled by default, so the card stands alone fully drawn */
   reveal?: SharedValue<number>;
 }
 
@@ -27,10 +22,15 @@ interface PrayerExplanationProps {
  * Displays a floating info box with the prayer name and its explanation.
  * Includes a triangular arrow pointing to the associated prayer row.
  *
- * The reveal is carried so no text ever renders through an opacity (T-294): the card's own
- * face - background, border, radius - fades as a text-free view behind the words, and each
- * ink rises from the face's colour on the same progress, which over the card's opaque surface
- * equals the old layer fade formula for formula.
+ * T-294 restated (owner order 2026-10-29): no text renders through an opacity,
+ * because translucent glyph ink compounds where strokes overlap - the law
+ * stands everywhere except the one scope named here: the info box's title and
+ * description ride a TRUE OPACITY on the reveal, 0 at the open's start, 1 at
+ * settle, 1 to 0 across the close, their colour constant at every frame. The
+ * colour tween the law first forced onto these two texts produced four
+ * one-frame steps on glass (a 60fps recording measured +113 luma in a single
+ * frame on the open, -115 on the close); presence fades smoothly on opacity
+ * alone. No other text rides this exception.
  *
  * @param prayerName - Name of the extra prayer (e.g., "Midnight")
  * @param explanation - the explanation text
@@ -49,12 +49,9 @@ export default function PrayerExplanation({
   const shown = reveal ?? unveiled;
 
   const faceStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
-  const titleStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.text.emphasis]),
-  }));
-  const explanationStyle = useAnimatedStyle(() => ({
-    color: interpolateColor(shown.value, [0, 1], [COLORS.surface.elevated, COLORS.icon.primary]),
-  }));
+  // The scoped T-294 exception named in the component doc: both words ramp
+  // their presence on the reveal itself, their colour never moving
+  const wordsStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
 
   return (
     // Live region: this box is mounted, not navigated to — the overlay reveals
@@ -88,7 +85,7 @@ export default function PrayerExplanation({
         <Animated.View style={[styles.face, faceStyle]} />
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
-          <Animated.Text style={[styles.infoTitle, titleStyle]}>{prayerName}</Animated.Text>
+          <Animated.Text style={[styles.infoTitle, wordsStyle]}>{prayerName}</Animated.Text>
           <Animated.View style={faceStyle}>
             <InfoBadge size={20} glyph={10} color={COLORS.icon.primary} />
           </Animated.View>
@@ -100,7 +97,7 @@ export default function PrayerExplanation({
         </Animated.View>
 
         {/* English explanation */}
-        <Animated.Text style={[styles.infoExplanation, explanationStyle]}>{explanation}</Animated.Text>
+        <Animated.Text style={[styles.infoExplanation, wordsStyle]}>{explanation}</Animated.Text>
       </View>
 
       {/* Triangle arrow pointing down */}

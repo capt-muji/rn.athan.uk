@@ -747,6 +747,8 @@ export const COLORS = {
       end: '#000000',
       /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
       veil: '#0b0016',
+      /** The ago pill's veil end, the veil solid at alpha zero: the wash thins as the veil arrives - the veil showing through it unhindered, its hue held by the veil's own channels - instead of filling toward the opaque solid, which rode above the veil mid-fade and re-entered complete on the close (T-490 step 4) */
+      veilThrough: 'rgba(11, 0, 22, 0)',
     },
   },
 
