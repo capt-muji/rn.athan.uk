@@ -7,11 +7,9 @@ import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai/vanilla';
 import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
-import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
-import { COLORS } from '@/shared/constants';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { overlayFadeSettledAtom } from '@/stores/atoms/overlay';
@@ -173,7 +171,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByText(english)).toBeVisible();
   });
 
-  it('rides the explanation inks on the live band composite as the box reveals', async () => {
+  it('rides the explanation words on the reveal as a true opacity once the box opens', async () => {
     showLondonDay('2026-09-11', '14:00');
     setMeasurementsList(LIST);
     await render(
@@ -182,21 +180,16 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
         <OverlayInfoBox type={ScheduleType.Extra} />
       </>
     );
-    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
 
     await act(() => openOverlay(ScheduleType.Extra, 0));
 
-    // The reveal drives the face's fade and the inks' ride on the LIVE band composite - the page
-    // at rest under the band mixed toward the veiled band on the reveal itself, one pairing per
-    // ink - never a static pin, which the moving background leaves a ghost (T-490 revision 2);
-    // the placer itself never fades, so nothing that holds text carries an opacity
-    expect(
-      interpolateColor.mock.calls.filter(
-        (call) =>
-          (call[2] as unknown as readonly string[])[0] === COLORS.gradient.overlay.cardBandRest &&
-          (call[2] as unknown as readonly string[])[1] === COLORS.gradient.overlay.cardBand
-      ).length
-    ).toBeGreaterThanOrEqual(2);
+    // The reveal snaps to 1 on the open's first evaluation, so both words read
+    // fully drawn at the top of their ramp - presence fades on the reveal alone
+    // and the colour never interpolates (T-490 revision 3, the owner's ordered
+    // ramp) - while the placer itself still never fades, so no subtree opacity
+    // holds text
+    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBe(1);
+    expect(StyleSheet.flatten(screen.getByText('Halfway between Magrib and Fajr').props.style).opacity).toBe(1);
     const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
     expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
   });

@@ -13,48 +13,9 @@ import { COLORS, EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/const
 import { t } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 
-import PrayerExplanation, { INK_EXIT_REVEAL } from '../Explanation';
+import PrayerExplanation from '../Explanation';
 
 const MIDNIGHT = 0;
-
-/** The colour forms the card's interpolations carry: 6-digit hex and rgba(), as channels */
-const channelsOf = (colour: string): [number, number, number, number] => {
-  if (colour.startsWith('#')) {
-    const n = Number.parseInt(colour.slice(1), 16);
-    return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 1];
-  }
-  const [r, g, b, a] = (colour.match(/[\d.]+/g) ?? []).map(Number);
-  return [r, g, b, a ?? 1];
-};
-
-/** interpolateColor's own arithmetic: clamp to the range, then mix per channel */
-const mix = (value: number, inputRange: readonly number[], outputRange: readonly string[]): string => {
-  const clamp = Math.min(Math.max(value, inputRange[0]), inputRange[inputRange.length - 1]);
-  const last = inputRange.length - 1;
-  for (let i = 0; i < last; i++) {
-    if (clamp <= inputRange[i + 1]) {
-      const t = (clamp - inputRange[i]) / (inputRange[i + 1] - inputRange[i]);
-      const from = channelsOf(outputRange[i]);
-      const to = channelsOf(outputRange[i + 1]);
-      const mixed = from.map((channel, n) => Math.round(channel + (to[n] - channel) * t));
-      return `rgba(${mixed[0]}, ${mixed[1]}, ${mixed[2]}, ${mixed[3]})`;
-    }
-  }
-  const end = channelsOf(outputRange[last]);
-  return `rgba(${end[0]}, ${end[1]}, ${end[2]}, ${end[3]})`;
-};
-
-/** The live composite under the words, mirrored here from the constants: the veil arriving over
- *  the resting page at the card's band, the face's wash over that - each on the reveal itself */
-const bandComposite = (reveal: number): string =>
-  mix(
-    reveal,
-    [0, 1],
-    [
-      mix(reveal, [0, 1], [COLORS.gradient.overlay.cardBandRest, COLORS.gradient.overlay.cardBand]),
-      COLORS.surface.elevated,
-    ]
-  );
 
 /** The box's two parts top to bottom: the arrow and the info box, in the order they are drawn */
 const drawnParts = (): TestInstance[] =>
@@ -159,23 +120,15 @@ describe('the explanation box of an Extras prayer', () => {
     expect(face?.queryAll((node) => node.type === 'Text')).toHaveLength(0);
   });
 
-  // The coupling the step-7 proof demanded (T-490 revision 2): through the exit tail each ink's
-  // colour IS the live composite under the words - the face's wash over the veil arriving over
-  // the resting page at the card's band - computed on the same reveal the exit rides. A static
-  // end colour cannot match the moving background: through the tail the measured composite runs
-  // 22-33+ luma while a pinned constant sits still, and the words read as dark text under their
-  // own surround, reaching their end early. The words are opaque paints end to end (T-294):
-  // colour only, never opacity
-  //
-  // The spy carries a real per-channel mix (the published mock's interpolateColor is a no-op), so
-  // the component's nested interpolations compute and the guards read values, not just shapes
-  const spyInterpolate = () =>
-    jest
-      .spyOn(Reanimated, 'interpolateColor')
-      .mockImplementation(((value: number, inputRange: number[], outputRange: string[]) =>
-        mix(value, inputRange, outputRange)) as unknown as typeof Reanimated.interpolateColor);
+  // The owner-ordered opacity ramp (T-490 revision 3, comments 4875/4877): after two
+  // colour-tween revisions measured as one-frame steps on glass (+113 luma at the
+  // open's knee, -115 at the close's, a 60fps recording), the words fade on opacity
+  // alone - 0 at the open's start, 1 at settle, 1 to 0 across the close - with their
+  // colour the settled constant at every frame. T-294's one scoped exception,
+  // restated in the component's doc and in the sweep: these two texts on this path only.
+  type Words = { color?: string; opacity?: number };
 
-  const inkOf = (text: string) => (StyleSheet.flatten(screen.getByText(text).props.style) as { color?: string }).color;
+  const wordsOf = (text: string): Words => StyleSheet.flatten(screen.getByText(text).props.style);
 
   const cardAt = (revealAt: number) => (
     <PrayerExplanation
@@ -185,86 +138,64 @@ describe('the explanation box of an Extras prayer', () => {
     />
   );
 
-  const placed = async (revealAt: number): Promise<{ title?: string; description?: string }> => {
+  const placed = async (revealAt: number): Promise<{ title: Words; description: Words }> => {
     await render(cardAt(revealAt));
     return {
-      title: inkOf('Midnight'),
-      description: inkOf('Halfway between Magrib and Fajr'),
+      title: wordsOf('Midnight'),
+      description: wordsOf('Halfway between Magrib and Fajr'),
     };
   };
 
-  it.each([0.25, 0.1])('rides the live band composite under the words at reveal %s', async (revealAt) => {
-    spyInterpolate();
+  it.each([0, 0.25, 0.5, 0.75, 1])(
+    'rides the reveal %s as a true opacity, its colour the settled constant',
+    async (revealAt) => {
+      const words = await placed(revealAt);
 
-    const inks = await placed(revealAt);
-
-    expect(inks.title).toBe(bandComposite(revealAt));
-    expect(inks.description).toBe(bandComposite(revealAt));
-    // Never pinned at either end of the pairing: the tail moves, the ink moves with it
-    for (const ink of [inks.title, inks.description]) {
-      expect(ink).not.toBe(mix(revealAt, [0, 1], [COLORS.gradient.overlay.cardBand, COLORS.gradient.overlay.cardBand]));
-      expect(ink).not.toBe(
-        mix(revealAt, [0, 1], [COLORS.gradient.overlay.cardBandRest, COLORS.gradient.overlay.cardBandRest])
-      );
+      expect(words.title.opacity).toBe(revealAt);
+      expect(words.description.opacity).toBe(revealAt);
+      expect(words.title.color).toBe(COLORS.text.emphasis);
+      expect(words.description.color).toBe(COLORS.icon.primary);
     }
-  });
+  );
 
-  it('keeps each ink moving through the tail, reaching its end only at the cut', async () => {
-    spyInterpolate();
-
-    const rendered = await render(cardAt(0.1));
-    const deepTitle = inkOf('Midnight');
-    const deepDescription = inkOf('Halfway between Magrib and Fajr');
+  it('moves only the opacity between phases - the colour is constant on the whole ramp', async () => {
+    const rendered = await render(cardAt(0.3));
+    const dim = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
 
     // The mock runs every updater on each render, so a re-render at another reveal re-reads it
     // without mounting a second tree
     await act(async () => {
-      rendered.rerender(cardAt(0.25));
+      rendered.rerender(cardAt(0.8));
     });
 
-    expect(inkOf('Midnight')).not.toBe(deepTitle);
-    expect(inkOf('Halfway between Magrib and Fajr')).not.toBe(deepDescription);
+    const bright = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+    expect(bright.title.color).toBe(dim.title.color);
+    expect(bright.description.color).toBe(dim.description.color);
+    expect(bright.title.opacity).not.toBe(dim.title.opacity);
   });
 
-  it('builds the composite from the page/veil pairing and the face wash on the reveal itself', async () => {
-    const spy = spyInterpolate();
+  it('interpolates no colour for either ink - the ramp is opacity alone', async () => {
+    const interpolateColor = jest.spyOn(Reanimated, 'interpolateColor');
 
-    await placed(0.25);
+    await placed(0.5);
 
-    // One page-to-veil mix per ink, riding [0, 1]: the page at rest, the veiled band
-    const fields = spy.mock.calls.filter(
-      (call) => (call[2] as unknown as readonly string[])[0] === COLORS.gradient.overlay.cardBandRest
-    );
-    expect(fields).toHaveLength(2);
-    for (const call of fields) {
-      expect(call[1]).toEqual([0, 1]);
-      expect((call[2] as unknown as readonly string[])[1]).toBe(COLORS.gradient.overlay.cardBand);
-    }
-
-    // The knee'd rise keeps its shape: below INK_EXIT_REVEAL the composite, the real ink at 1
-    const inks = [COLORS.text.emphasis, COLORS.icon.primary];
-    const rises = spy.mock.calls.filter((call) => inks.includes((call[2] as unknown as readonly string[])[2]));
-    expect(rises.map((call) => (call[2] as unknown as readonly string[])[2])).toEqual(inks);
-    for (const call of rises) {
-      expect(call[1]).toEqual([0, INK_EXIT_REVEAL, 1]);
-    }
+    expect(interpolateColor).not.toHaveBeenCalled();
   });
 
-  // The design's constants, pinned: the veiled band measured in step 4, the resting band from
-  // step 7 (the rows' ink over the screen gradient's start, luma on the recorded box mean L 33.6)
-  it('pins the band constants and the knee', () => {
-    expect(COLORS.gradient.overlay.cardBand).toBe('#04000d');
-    expect(COLORS.gradient.overlay.cardBandRest).toBe('#111e5a');
-    expect(INK_EXIT_REVEAL).toBe(0.5);
-  });
-
-  it('carries no opacity on either word', async () => {
+  it('stands fully drawn when carried with no reveal', async () => {
     await render(
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBeUndefined();
-    expect(StyleSheet.flatten(screen.getByText('Halfway between Magrib and Fajr').props.style).opacity).toBeUndefined();
+    expect(wordsOf('Midnight').opacity).toBe(1);
+    expect(wordsOf('Halfway between Magrib and Fajr').opacity).toBe(1);
+  });
+
+  // The colour revisions' measured pins leave the constants behind dead: no ink
+  // interpolates toward any band, so the band itself is gone
+  it('carries no band constants for the words', () => {
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBand');
+    expect(COLORS.gradient.overlay).not.toHaveProperty('cardBandRest');
   });
 });
 

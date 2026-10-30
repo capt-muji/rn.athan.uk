@@ -1,10 +1,5 @@
 import { StyleSheet, View, type ViewProps } from 'react-native';
-import Animated, {
-  interpolateColor,
-  type SharedValue,
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
+import Animated, { type SharedValue, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
 import { InfoBadge } from '@/components/ui';
@@ -17,35 +12,9 @@ interface PrayerExplanationProps {
   explanation: string;
   arrowPosition?: 'top' | 'bottom';
   style?: ViewProps['style'];
-  /** How far the card has revealed: drives the face's fade and the inks' ride on the live band composite. Unveiled by default, so the card stands alone fully drawn */
+  /** How far the card has revealed: drives the face's fade and the words' opacity ramp. Unveiled by default, so the card stands alone fully drawn */
   reveal?: SharedValue<number>;
 }
-
-/**
- * The reveal below which each ink IS the live band composite rather than its real colour. The
- * words' settled contrast (about 230 luma above the page) dwarfs the face's (about 9), so a
- * linear rise would leave them legible long after the face is imperceptible - the measured
- * ghost. Rising only above half the reveal puts their last legible frame where the face still
- * holds half its settled strength (T-490 step 4).
- */
-export const INK_EXIT_REVEAL = 0.5;
-
-/**
- * The live colour under the words at the card's band, on the same reveal the whole exit rides:
- * the veil arriving over the resting page, then the face's own wash over that. A static end
- * colour cannot stand here - through the exit tail the measured composite runs 22-33+ luma
- * while the words must equal it at every phase, or they read as a ghost against their own
- * moving background (T-490 step 7).
- */
-const bandComposite = (reveal: number) => {
-  'worklet';
-  const band = interpolateColor(
-    reveal,
-    [0, 1],
-    [COLORS.gradient.overlay.cardBandRest, COLORS.gradient.overlay.cardBand]
-  );
-  return interpolateColor(reveal, [0, 1], [band, COLORS.surface.elevated]);
-};
 
 /**
  * Tooltip component explaining extra prayer times
@@ -53,15 +22,15 @@ const bandComposite = (reveal: number) => {
  * Displays a floating info box with the prayer name and its explanation.
  * Includes a triangular arrow pointing to the associated prayer row.
  *
- * The reveal is carried so no text ever renders through an opacity (T-294): the card's own
- * face - background, border, radius - fades as a text-free view behind the words, and each
- * ink is an opaque paint end to end whose colour below INK_EXIT_REVEAL IS the live band
- * composite (T-490 step 7) - the page at rest mixed toward the veiled band as the veil
- * arrives, the face's wash over that, computed on the same reveal - so the words equal their
- * moving background at every phase and keep moving to the cut, never pinned at a static
- * colour the exit tail would leave as a ghost. The same interpolation read backwards carries
- * the open path, where the words gain colour only over a face already present and settle
- * fully drawn.
+ * T-294 restated (owner order 2026-10-29): no text renders through an opacity,
+ * because translucent glyph ink compounds where strokes overlap - the law
+ * stands everywhere except the one scope named here: the info box's title and
+ * description ride a TRUE OPACITY on the reveal, 0 at the open's start, 1 at
+ * settle, 1 to 0 across the close, their colour constant at every frame. The
+ * colour tween the law first forced onto these two texts produced four
+ * one-frame steps on glass (a 60fps recording measured +113 luma in a single
+ * frame on the open, -115 on the close); presence fades smoothly on opacity
+ * alone. No other text rides this exception.
  *
  * @param prayerName - Name of the extra prayer (e.g., "Midnight")
  * @param explanation - the explanation text
@@ -80,21 +49,9 @@ export default function PrayerExplanation({
   const shown = reveal ?? unveiled;
 
   const faceStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
-  // Each ink's knee'd rise (T-294: colour only, never opacity - the words stay opaque paints):
-  // below INK_EXIT_REVEAL the ink IS the live band composite, however long the face lingers and
-  // however the page brightens under the lifting veil; above it the real ink rises over the face
-  const titleStyle = useAnimatedStyle(() => {
-    const surround = bandComposite(shown.value);
-    return {
-      color: interpolateColor(shown.value, [0, INK_EXIT_REVEAL, 1], [surround, surround, COLORS.text.emphasis]),
-    };
-  });
-  const explanationStyle = useAnimatedStyle(() => {
-    const surround = bandComposite(shown.value);
-    return {
-      color: interpolateColor(shown.value, [0, INK_EXIT_REVEAL, 1], [surround, surround, COLORS.icon.primary]),
-    };
-  });
+  // The scoped T-294 exception named in the component doc: both words ramp
+  // their presence on the reveal itself, their colour never moving
+  const wordsStyle = useAnimatedStyle(() => ({ opacity: shown.value }));
 
   return (
     // Live region: this box is mounted, not navigated to — the overlay reveals
@@ -128,7 +85,7 @@ export default function PrayerExplanation({
         <Animated.View style={[styles.face, faceStyle]} />
         {/* Header with title and icon */}
         <View style={styles.infoHeader}>
-          <Animated.Text style={[styles.infoTitle, titleStyle]}>{prayerName}</Animated.Text>
+          <Animated.Text style={[styles.infoTitle, wordsStyle]}>{prayerName}</Animated.Text>
           <Animated.View style={faceStyle}>
             <InfoBadge size={20} glyph={10} color={COLORS.icon.primary} />
           </Animated.View>
@@ -140,7 +97,7 @@ export default function PrayerExplanation({
         </Animated.View>
 
         {/* English explanation */}
-        <Animated.Text style={[styles.infoExplanation, explanationStyle]}>{explanation}</Animated.Text>
+        <Animated.Text style={[styles.infoExplanation, wordsStyle]}>{explanation}</Animated.Text>
       </View>
 
       {/* Triangle arrow pointing down */}

@@ -747,10 +747,6 @@ export const COLORS = {
       end: '#000000',
       /** The ink hidden rows and the ago badge sink toward while the overlay is open: the overlay backdrop flattened at the prayer list's band (the gradient's midpoint #080011 plus the veil glow's band-average wash). Solid, so the fade never renders text through opacity */
       veil: '#0b0016',
-      /** The page behind the explanation card's band, measured (4,0,13) in the step-4 XS recording (T-490): the VEILED band, the veil settled over the page - the near end the card's exit composite sinks toward as the veil arrives */
-      cardBand: '#04000d',
-      /** The same band at REST, the veil gone and the rows re-brightened - the far end the composite lifts from as the veil departs: the rows' #5254ac ink flattened over the screen gradient's start at the band's stroke coverage (about a sixth), its luma pinned to the step-7 resting box mean (L 33.6, the PIL read at the last pre-cut close frame). Through the exit tail the live composite runs 22-33+ luma, so any static pin - this or cardBand - leaves the words a ghost against their own moving background (T-490 step 7): the inks mix the two LIVE on the reveal itself */
-      cardBandRest: '#111e5a',
       /** The ago pill's veil end, the veil solid at alpha zero: the wash thins as the veil arrives - the veil showing through it unhindered, its hue held by the veil's own channels - instead of filling toward the opaque solid, which rode above the veil mid-fade and re-entered complete on the close (T-490 step 4) */
       veilThrough: 'rgba(11, 0, 22, 0)',
     },
