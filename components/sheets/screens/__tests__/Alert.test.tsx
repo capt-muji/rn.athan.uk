@@ -35,12 +35,12 @@ jest.mock('@/components/sheets/parts', () => {
   const { createElement } = require('react');
   const { Pressable, Text, View } = require('react-native');
 
-  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: () => void }) =>
+  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: (next: boolean) => void }) =>
     mockLockedPressesGetThrough
       ? createElement(Pressable, {
           accessibilityRole: 'switch',
           accessibilityState: { checked: props.value, disabled: props.disabled === true },
-          onPress: props.onToggle,
+          onPress: () => props.onToggle(!props.value),
         })
       : createElement(parts.Toggle, props);
 

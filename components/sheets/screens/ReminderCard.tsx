@@ -1,7 +1,9 @@
-import { useCallback } from 'react';
+import * as Haptics from 'expo-haptics';
+import { useCallback, useRef } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, type TextLayoutEvent, View } from 'react-native';
 
 import { type DimState, dimState, REMINDER_CARD } from '@/components/sheets/parts/dim';
+import type { ToggleHandle } from '@/components/sheets/parts/Toggle';
 import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
@@ -31,7 +33,7 @@ interface Props {
   taken: number | null;
   /** While the athan is Off, or the reminder before this one is, nothing here can fire */
   locked: boolean;
-  onToggle: () => void;
+  onToggle: (next: boolean) => void;
   onSelectSound: (sound: AlertType) => void;
   onSelectInterval: (interval: ReminderInterval) => void;
 }
@@ -95,8 +97,13 @@ export default function ReminderCard({
     if (next !== null) onSelectInterval(next);
   };
 
+  // The card's heading routes through the switch's own press, so the thumb
+  // flips, the haptic lands and the write settles identically whichever was
+  // touched
+  const toggleRef = useRef<ToggleHandle>(null);
+
   const handleHeaderPress = () => {
-    if (!locked) onToggle();
+    if (!locked) toggleRef.current?.press();
   };
 
   return (
@@ -117,14 +124,26 @@ export default function ReminderCard({
             {hint}
           </Text>
         </View>
-        <Toggle value={isOn} onToggle={onToggle} disabled={locked} />
+        <Toggle
+          ref={toggleRef}
+          value={isOn}
+          onToggle={onToggle}
+          onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
+          disabled={locked}
+        />
       </Pressable>
 
       <View style={[styles.reminderOptions, { borderTopColor: REMINDER_CARD.rule[dim] }]}>
         <View style={styles.optionRow} onLayout={handleRowLayout} testID={'reminder-sound-row'}>
           <Text style={[styles.optionLabel, { color: optionInk }]}>{t('reminder.sound')}</Text>
           <View style={[styles.controlHost, { minWidth: requiredControl }]} testID={'reminder-sound-host'}>
-            <SegmentedControl options={soundOptions()} selected={sound} onSelect={onSelectSound} dim={dim} />
+            <SegmentedControl
+              options={soundOptions()}
+              selected={sound}
+              onSelect={onSelectSound}
+              dim={dim}
+              commitOnSettle
+            />
           </View>
         </View>
 

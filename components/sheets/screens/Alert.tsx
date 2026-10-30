@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -8,6 +7,7 @@ import { useNotification } from '@/hooks/useNotification';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
+import { deferPastNextPaint } from '@/shared/nextPaint';
 import {
   type AlertMenuState,
   AlertType,
@@ -29,7 +29,6 @@ import {
   initialReminderInterval,
   selectionNeedsPermission,
   takenInterval,
-  toggledReminder,
 } from './alertDraft';
 import ReminderCard from './ReminderCard';
 
@@ -78,7 +77,9 @@ export default function BottomSheetAlert() {
 
   // Fires from the sheet's unified close signal once the close animation has
   // settled; the warm body stays mounted, so its ref is live here — see
-  // AlertSheetBody below
+  // AlertSheetBody below. The commit starts past the next paint, the sound
+  // sheet's own parity: the close haptic's dispatch has left the thread before
+  // any scheduling call begins
   const handleDismiss = useCallback(async () => {
     if (!sheetState) return;
     const body = bodyRef.current;
@@ -86,6 +87,9 @@ export default function BottomSheetAlert() {
 
     const originalState = body.getOriginalState();
     const currentState = body.getCurrentState();
+
+    await deferPastNextPaint();
+
     await commitAlertMenuChanges(sheetState.type, sheetState.index, sheetState.prayerId, originalState, currentState);
   }, [sheetState, commitAlertMenuChanges]);
 
@@ -228,26 +232,22 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(
     );
 
     const handleReminderToggle = useCallback(
-      (slot: ReminderSlot) => {
-        const other = reminders[slot === 0 ? 1 : 0];
-        const next = toggledReminder({
-          canEnableReminder: atTimeAlert !== AlertType.Off && (slot === 0 || reminders[0].alert !== AlertType.Off),
-          isReminderOn: reminders[slot].alert !== AlertType.Off,
-          reminderType: sounds[slot],
-        });
-        if (next === null) return;
+      (slot: ReminderSlot, next: boolean) => {
+        // A locked control refuses the press itself; the guard stays for a control
+        // that stops refusing. The switch always delivers a flip of its drawn
+        // state, so the pressed target is always a change
+        const canEnable = atTimeAlert !== AlertType.Off && (slot === 0 || reminders[0].alert !== AlertType.Off);
+        if (!canEnable) return;
 
-        // The one place the reminder's two press paths meet: the card heading and the switch
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        const other = reminders[slot === 0 ? 1 : 0];
 
         // Switching on beside a reminder already holding this minute moves to the nearest free one, which is the
         // only moment a value can change without a press on its own stepper
-        const interval =
-          next === AlertType.Off
-            ? reminders[slot].interval
-            : freeReminderInterval(reminders[slot].interval, takenInterval(other));
+        const interval = next
+          ? freeReminderInterval(reminders[slot].interval, takenInterval(other))
+          : reminders[slot].interval;
 
-        updateReminder(slot, { alert: next, interval });
+        updateReminder(slot, { alert: next ? sounds[slot] : AlertType.Off, interval });
       },
       [atTimeAlert, reminders, sounds, updateReminder]
     );
@@ -300,7 +300,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(
           sound={sounds[0]}
           taken={takenInterval(reminders[1])}
           locked={!canEnableReminder}
-          onToggle={() => handleReminderToggle(0)}
+          onToggle={(next) => handleReminderToggle(0, next)}
           onSelectSound={(type) => handleReminderSoundSelect(0, type)}
           onSelectInterval={(interval) => updateReminder(0, { interval })}
         />
@@ -312,7 +312,7 @@ const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(
           sound={sounds[1]}
           taken={takenInterval(reminders[0])}
           locked={!canEnableReminder || reminders[0].alert === AlertType.Off}
-          onToggle={() => handleReminderToggle(1)}
+          onToggle={(next) => handleReminderToggle(1, next)}
           onSelectSound={(type) => handleReminderSoundSelect(1, type)}
           onSelectInterval={(interval) => updateReminder(1, { interval })}
         />

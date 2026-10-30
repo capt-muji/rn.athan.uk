@@ -229,23 +229,23 @@ export default function BottomSheetSettings() {
           <SettingsToggle
             label={t('settings.showHijriDate')}
             value={hijriEnabled}
-            onToggle={() => setHijriEnabled(!hijriEnabled)}
+            onToggle={(next) => setHijriEnabled(next)}
           />
           <SettingsToggle
             label={t('settings.showSeconds')}
             value={showSeconds}
-            onToggle={() => setShowSeconds(!showSeconds)}
+            onToggle={(next) => setShowSeconds(next)}
           />
           <SettingsToggle
             label={t('settings.showTimePassed')}
             value={showTimePassed}
-            onToggle={() => setShowTimePassed(!showTimePassed)}
+            onToggle={(next) => setShowTimePassed(next)}
           />
           {showDecorationToggle && (
             <SettingsToggle
               label={t('settings.showDecorations')}
               value={decorationsEnabled}
-              onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
+              onToggle={(next) => setDecorationsEnabled(next)}
             />
           )}
         </View>
@@ -258,7 +258,7 @@ export default function BottomSheetSettings() {
           <SettingsToggle
             label={t('settings.showCountdownBar')}
             value={countdownBarShown}
-            onToggle={() => setCountdownBarShown(!countdownBarShown)}
+            onToggle={(next) => setCountdownBarShown(next)}
           />
           <ColorPicker />
         </View>

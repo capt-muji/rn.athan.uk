@@ -1,12 +1,37 @@
+import { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  runOnJS,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 
+import { useSettledWrite } from '@/hooks/useSettledWrite';
 import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 
+/** What a labelled row needs to drive the switch as if it were pressed itself */
+export interface ToggleHandle {
+  /**
+   * The switch's own press: flips the thumb optimistically and defers the
+   * write to the thumb animation's settle
+   */
+  press: () => void;
+}
+
 interface ToggleProps {
   value: boolean;
-  onToggle: () => void;
+  /**
+   * The settled write: called once, with the pressed target, when the thumb's
+   * animation settles - never inside the slide. The pressed target, not a
+   * flip of the prop: a second press before the first settles supersedes it,
+   * and the one write carries the thumb's final position.
+   */
+  onToggle: (next: boolean) => void;
+  /** Fired the moment the switch is pressed, for feedback that belongs to the press itself */
+  onPress?: () => void;
   disabled?: boolean;
   /** What the switch announces; the setting's own label, since the track carries no text */
   accessibilityLabel?: string;
@@ -16,59 +41,72 @@ interface ToggleProps {
  * Raw toggle switch primitive for binary on/off states.
  *
  * Features:
- * - Animated thumb with smooth sliding transition
+ * - Animated thumb with smooth sliding transition, flipped optimistically on press
+ * - The preference write rides the settle: nothing writes during the thumb's slide
  * - Disabled state with reduced opacity
  *
  * @example
- * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
+ * <Toggle value={isOn} onToggle={(next) => setIsOn(next)} />
  */
-export default function Toggle({ value, onToggle, disabled, accessibilityLabel }: ToggleProps) {
-  // RTL travels the thumb the other way: the layout swap owns the inset keys, not the
-  // travel. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
-  // renders Arabic while I18nManager still reports the launch direction, and the English
-  // travel then pushes the thumb off the track under the RTL layout (row 73)
-  const isRTL = localeDirection(currentLocaleId()) === 'rtl';
+const Toggle = forwardRef<ToggleHandle, ToggleProps>(
+  ({ value, onToggle, onPress, disabled, accessibilityLabel }, ref) => {
+    // RTL travels the thumb the other way: the layout swap owns the inset keys, not the
+    // travel. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
+    // renders Arabic while I18nManager still reports the launch direction, and the English
+    // travel then pushes the thumb off the track under the RTL layout (row 73)
+    const isRTL = localeDirection(currentLocaleId()) === 'rtl';
 
-  // Derived, not effect-driven: every value flip re-runs the timing from the
-  // thumb's live position on the UI thread, so the knob always converges on
-  // the current value. The previous effect + JS-side shared-value
-  // assignments raced under fast toggling — the G.3 knob desync and the
-  // suspected rapid-press crash (G.8) both live in that race window.
-  // First evaluation snaps instead of animating: a toggle mounted in the ON
-  // state (persisted preferences) must appear settled, not slide in — the
-  // mount behavior of the previous implementation, preserved exactly.
-  const isFirstEvaluation = useSharedValue(true);
-  const translateX = useDerivedValue(() => {
-    const target = value ? (isRTL ? -SIZE.toggle.translateX : SIZE.toggle.translateX) : 0;
-    if (isFirstEvaluation.value) {
-      isFirstEvaluation.value = false;
-      return target;
-    }
-    return withTiming(target, { duration: ANIMATION.duration });
-  });
+    // Derived, not effect-driven: every flip re-runs the timing from the
+    // thumb's live position on the UI thread, so the knob always converges on
+    // the current value. The previous effect + JS-side shared-value
+    // assignments raced under fast toggling — the G.3 knob desync and the
+    // suspected rapid-press crash (G.8) both live in that race window.
+    // First evaluation snaps instead of animating: a toggle mounted in the ON
+    // state (persisted preferences) must appear settled, not slide in — the
+    // mount behavior of the previous implementation, preserved exactly.
+    const { pending, press, settle, generation } = useSettledWrite(onToggle);
+    const effective = pending ?? value;
 
-  const thumbStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value }],
-  }));
+    const isFirstEvaluation = useSharedValue(true);
+    const translateX = useDerivedValue(() => {
+      const target = effective ? (isRTL ? -SIZE.toggle.translateX : SIZE.toggle.translateX) : 0;
+      if (isFirstEvaluation.value) {
+        isFirstEvaluation.value = false;
+        return target;
+      }
+      return withTiming(target, { duration: ANIMATION.duration }, (finished) => {
+        if (finished) runOnJS(settle)(generation, effective);
+      });
+    });
 
-  const handlePress = () => {
-    if (disabled) return;
-    onToggle();
-  };
+    const handlePress = useCallback(() => {
+      if (disabled) return;
+      onPress?.();
+      press(!effective);
+    }, [disabled, onPress, press, effective]);
 
-  return (
-    <Pressable
-      accessibilityRole={'switch'}
-      // `checked` is what a screen reader announces as on/off; without it the state is
-      // carried only by the thumb's position and the track colour
-      accessibilityState={{ checked: value, disabled: disabled === true }}
-      accessibilityLabel={accessibilityLabel}
-      onPress={handlePress}
-      style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
-      <Animated.View style={[styles.thumb, thumbStyle]} />
-    </Pressable>
-  );
-}
+    useImperativeHandle(ref, () => ({ press: handlePress }), [handlePress]);
+
+    const thumbStyle = useAnimatedStyle(() => ({
+      transform: [{ translateX: translateX.value }],
+    }));
+
+    return (
+      <Pressable
+        accessibilityRole={'switch'}
+        // `checked` is what a screen reader announces as on/off; without it the state is
+        // carried only by the thumb's position and the track colour
+        accessibilityState={{ checked: effective, disabled: disabled === true }}
+        accessibilityLabel={accessibilityLabel}
+        onPress={handlePress}
+        style={[styles.track, effective && styles.trackOn, disabled && styles.disabled]}>
+        <Animated.View style={[styles.thumb, thumbStyle]} />
+      </Pressable>
+    );
+  }
+);
+
+export default Toggle;
 
 const styles = StyleSheet.create({
   track: {

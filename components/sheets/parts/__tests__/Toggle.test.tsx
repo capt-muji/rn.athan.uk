@@ -2,15 +2,16 @@
  * The switch on the alert sheet's reminder card: what a screen reader hears, where its thumb sits, what a press does
  */
 
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { useState } from 'react';
 import { I18nManager } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { ANIMATION, SIZE } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
-import Toggle from '../Toggle';
+import Toggle, { type ToggleHandle } from '../Toggle';
 
 /** The thumb has no role or text of its own: it is the one thing inside the switch */
 const thumb = () => screen.getByRole('switch').children[0];
@@ -55,7 +56,13 @@ describe('the reminder switch', () => {
 
     await screen.rerender(<Toggle value onToggle={jest.fn()} />);
 
-    expect(withTiming).toHaveBeenCalledWith(SIZE.toggle.translateX, { duration: ANIMATION.duration });
+    // The third argument is the settle the deferred write rides; an external value change
+    // carries generation 0 and the settle writes nothing
+    expect(withTiming).toHaveBeenCalledWith(
+      SIZE.toggle.translateX,
+      { duration: ANIMATION.duration },
+      expect.any(Function)
+    );
   });
 
   it('moves its thumb to the on position when the value changes after mount', async () => {
@@ -66,14 +73,85 @@ describe('the reminder switch', () => {
     expect(thumb()).toHaveStyle({ transform: [{ translateX: SIZE.toggle.translateX }] });
   });
 
-  it('reports one toggle when pressed, leaving the haptic to its owner row', async () => {
+  it('reports one toggle when pressed, carrying the pressed target for the settled write, leaving the haptic to its owner row', async () => {
     const onToggle = jest.fn();
     await render(<Toggle value={false} onToggle={onToggle} />);
 
     await fireEvent.press(screen.getByRole('switch'));
 
     expect(onToggle).toHaveBeenCalledTimes(1);
+    expect(onToggle).toHaveBeenCalledWith(true);
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('writes the pressed target once per press, in the pressed order', async () => {
+    const writes: boolean[] = [];
+    const StatefulToggle = () => {
+      const [value, setValue] = useState(false);
+      const write = (next: boolean) => {
+        writes.push(next);
+        setValue(next);
+      };
+      return <Toggle value={value} onToggle={write} />;
+    };
+    await render(<StatefulToggle />);
+
+    await fireEvent.press(screen.getByRole('switch'));
+    await fireEvent.press(screen.getByRole('switch'));
+
+    expect(writes).toEqual([true, false]);
+  });
+
+  it('gives the press its own feedback through onPress, once', async () => {
+    const onPress = jest.fn();
+    await render(<Toggle value={false} onToggle={jest.fn()} onPress={onPress} />);
+
+    await fireEvent.press(screen.getByRole('switch'));
+
+    expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('lets a label drive the switch through its press handle, writing as the switch itself does', async () => {
+    const onToggle = jest.fn();
+    let handle: ToggleHandle | null = null;
+    await render(
+      <Toggle
+        ref={(current) => {
+          handle = current;
+        }}
+        value={false}
+        onToggle={onToggle}
+      />
+    );
+
+    await act(() => handle?.press());
+
+    expect(onToggle).toHaveBeenCalledTimes(1);
+    expect(onToggle).toHaveBeenCalledWith(true);
+  });
+
+  it('writes nothing when its animation is superseded mid-flight, the completion cancelled', async () => {
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+    withTiming.mockImplementation(((target: number, _config: unknown, callback?: (finished: boolean) => void) => {
+      callback?.(false);
+      return target;
+    }) as unknown as typeof Reanimated.withTiming);
+    const onToggle = jest.fn();
+    await render(<Toggle value={false} onToggle={onToggle} />);
+
+    await fireEvent.press(screen.getByRole('switch'));
+
+    expect(onToggle).not.toHaveBeenCalled();
+    withTiming.mockRestore();
+  });
+
+  it('writes nothing for an animation nobody pressed, however the value arrives', async () => {
+    const onToggle = jest.fn();
+    await render(<Toggle value={false} onToggle={onToggle} />);
+
+    await screen.rerender(<Toggle value onToggle={onToggle} />);
+
+    expect(onToggle).not.toHaveBeenCalled();
   });
 
   it("borders its off state with the cards' edge colour", async () => {
@@ -139,14 +217,22 @@ describe('the reminder switch under the Arabic locale while the bridge still rep
     expect(thumb()).toHaveStyle({ transform: [{ translateX: -SIZE.toggle.translateX }] });
   });
 
-  // AGENTS.md: a toggle mounted on shows its settled state on the first frame, and only a change animates
+  // AGENTS.md: a toggle mounted on shows its settled state on the first frame
   it('animates its thumb to the mirrored on position when the value changes after mount', async () => {
     const withTiming = jest.spyOn(Reanimated, 'withTiming');
     await render(<Toggle value={false} onToggle={jest.fn()} />);
 
     await screen.rerender(<Toggle value onToggle={jest.fn()} />);
 
-    expect(withTiming).toHaveBeenCalledWith(-SIZE.toggle.translateX, { duration: ANIMATION.duration });
-    expect(withTiming).not.toHaveBeenCalledWith(SIZE.toggle.translateX, { duration: ANIMATION.duration });
+    expect(withTiming).toHaveBeenCalledWith(
+      -SIZE.toggle.translateX,
+      { duration: ANIMATION.duration },
+      expect.any(Function)
+    );
+    expect(withTiming).not.toHaveBeenCalledWith(
+      SIZE.toggle.translateX,
+      { duration: ANIMATION.duration },
+      expect.any(Function)
+    );
   });
 });
