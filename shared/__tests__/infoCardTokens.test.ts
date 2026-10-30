@@ -1,6 +1,6 @@
 /**
  * The info card's background lift (owner order 2026-10-30): brighter to read on glass, still
- * dull, the outline it replaces gone
+ * dull, its outline returned as the card's own colour lifted a bounded step
  */
 
 import { COLORS } from '@/shared/constants';
@@ -70,8 +70,21 @@ describe('the info card background lift (owner order 2026-10-30)', () => {
 });
 
 describe('the info card outline (owner order 2026-10-30)', () => {
-  it('is gone: no outline token survives the lift that replaced it', () => {
-    expect(COLORS.surface).not.toHaveProperty('elevatedOutline');
+  it("returns as the card's own background lifted a bounded step, opaque, its hue held", () => {
+    const elevated = channelsOf(COLORS.surface.elevated);
+    const outline = channelsOf(COLORS.surface.elevatedOutline);
+
+    // A solid, not a wash: translucent outline ink would re-tint against whatever page sits
+    // behind the card on glass
+    expect(outline.a).toBe(1);
+
+    for (const channel of ['r', 'g', 'b'] as const) {
+      const lift = outline[channel] - elevated[channel];
+      expect(lift).toBeGreaterThanOrEqual(6);
+      expect(lift).toBeLessThanOrEqual(15);
+    }
+
+    expect(Math.abs(hueOf(outline) - hueOf(elevated))).toBeLessThanOrEqual(10);
   });
 });
 

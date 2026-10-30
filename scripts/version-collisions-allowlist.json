@@ -242,5 +242,13 @@
   {
     "version": "2.42.9",
     "reason": "2026-10-30 the lead's glow-falloff fix steps from uat's 2.42.8 while lane1/T-491's strip-plugin step already holds 2.42.9; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.10",
+    "reason": "2026-10-30 lane3/T-520's outline step steps from uat's 2.42.9 while lane1/T-491 already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.11",
+    "reason": "2026-10-30 lane1/T-327's swipe-harness stamp and lane1/T-491's audit fix already hold 2.42.11 on their branches while lane3/T-520's commit gate scans the same set; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

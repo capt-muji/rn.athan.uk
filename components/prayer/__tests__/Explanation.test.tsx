@@ -9,7 +9,7 @@ import * as Reanimated from 'react-native-reanimated';
 import type { TestInstance } from 'test-renderer';
 
 import { TIP_OVERLAP } from '@/components/overlay/OverlayInfoBox';
-import { COLORS, EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS } from '@/shared/constants';
+import { COLORS, EXTRA_PRAYER_TITLES, EXTRAS_EXPLANATIONS, SPACING } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 
@@ -76,81 +76,6 @@ describe('the explanation box of an Extras prayer', () => {
     expect(parts).toHaveLength(2);
     expect(within(parts[boxPart]).getByText('Midnight')).toBeOnTheScreen();
     expect(within(parts[1 - boxPart]).queryByText('Midnight')).not.toBeOnTheScreen();
-  });
-
-  // The arrow draws 36 by 15, the same curve scaled - its tip sinks 7 into the row band
-  // while the card body keeps its placement arithmetic
-  it('draws the up arrow at 36 by 15', async () => {
-    await render(
-      <PrayerExplanation
-        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
-        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
-        arrowPosition={'top'}
-      />
-    );
-
-    const { svg, ds } = arrowOf(drawnParts(), 1);
-    expect(svg?.props.width).toBe(36);
-    expect(svg?.props.height).toBe(15);
-
-    // The fill closes on itself with Z: the arrow is its fill alone, the outline is gone
-    expect(ds).toEqual(['M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z']);
-  });
-
-  it('draws the down arrow at 36 by 15 mirrored', async () => {
-    await render(
-      <PrayerExplanation
-        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
-        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
-        arrowPosition={'bottom'}
-      />
-    );
-
-    const { svg, ds } = arrowOf(drawnParts(), 0);
-    expect(svg?.props.width).toBe(36);
-    expect(svg?.props.height).toBe(15);
-
-    expect(ds).toEqual(['M0 0 L14.4 10.6 Q18 13.7 21.6 10.6 L36 0 Z']);
-  });
-
-  // The outline is gone (owner order 2026-10-30): the arrow is its fill alone
-  it.each<['top' | 'bottom', number]>([
-    ['top', 1],
-    ['bottom', 0],
-  ])('draws the %s arrow as its fill alone, with no outline stroke', async (position, boxPart) => {
-    await render(
-      <PrayerExplanation
-        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
-        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
-        arrowPosition={position}
-      />
-    );
-
-    const paths = arrowPaths(drawnParts(), boxPart);
-
-    expect(paths).toHaveLength(1);
-    expect(paths[0].props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
-    expect(paths[0].props.stroke).toBeUndefined();
-  });
-
-  it('carries its face with no border, the background alone', async () => {
-    await render(
-      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
-    );
-
-    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
-    const face = box?.children.find((child) => typeof child !== 'string');
-    const style = face
-      ? (StyleSheet.flatten(face.props.style) as {
-          borderColor?: string;
-          borderWidth?: number;
-          backgroundColor?: string;
-        })
-      : null;
-
-    expect(style?.borderColor).toBeUndefined();
-    expect(style?.borderWidth).toBeUndefined();
-    expect(style?.backgroundColor).toBe(COLORS.surface.elevated);
   });
 
   it('overlap-into-the-row constant is 6', () => {
@@ -247,6 +172,159 @@ describe('the explanation box of an Extras prayer', () => {
   it('carries no band constants for the words', () => {
     expect(COLORS.gradient.overlay).not.toHaveProperty('cardBand');
     expect(COLORS.gradient.overlay).not.toHaveProperty('cardBandRest');
+  });
+});
+
+describe("the info card's returned outline (owner order 2026-10-30)", () => {
+  /** Every coordinate pair in a path's d, in order - the geometry guards read these */
+  const pointsOf = (d: unknown): Array<[number, number]> =>
+    (String(d).match(/-?[\d.]+ -?[\d.]+/g) ?? []).map((pair) => pair.split(' ').map(Number) as [number, number]);
+
+  const card = async (arrowPosition: 'top' | 'bottom') => {
+    await render(
+      <PrayerExplanation
+        prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]}
+        explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])}
+        arrowPosition={arrowPosition}
+      />
+    );
+    return arrowOf(drawnParts(), arrowPosition === 'top' ? 1 : 0);
+  };
+
+  // The seam diagnosis: the arrow rides as much as a pixel high on Android, so the cover
+  // must reach past the band, not just meet it - the skirt is that tolerance
+  const SKIRT = 3;
+
+  it('draws the up arrow over an 18-unit viewport, its cover spanning the border band and past it', async () => {
+    const { svg, ds } = await card('top');
+
+    expect(svg?.props.width).toBe(36);
+    expect(svg?.props.height).toBe(15 + SKIRT);
+    // The native view carries the viewBox extracted: user units map one to one on the viewport
+    expect(svg?.props.vbWidth).toBe(36);
+    expect(svg?.props.vbHeight).toBe(15 + SKIRT);
+
+    // Fill, then the band's cover, then the stroke: the cover sits under the stroke's ink
+    expect(ds).toEqual([
+      'M0 15 L14.4 4.4 Q18 1.3 21.6 4.4 L36 15 Z',
+      'M0 14 L36 14 L36 18 L0 18 Z',
+      'M0.68 14.5 L14.4 4.4 Q18 1.3 21.6 4.4 L35.32 14.5',
+    ]);
+  });
+
+  it('draws the down arrow mirrored, its cover spanning the border band and past it', async () => {
+    const { svg, ds } = await card('bottom');
+
+    expect(svg?.props.width).toBe(36);
+    expect(svg?.props.height).toBe(15 + SKIRT);
+    expect(svg?.props.vbWidth).toBe(36);
+    expect(svg?.props.vbHeight).toBe(15 + SKIRT);
+
+    expect(ds).toEqual([
+      'M0 3 L14.4 13.6 Q18 16.7 21.6 13.6 L36 3 Z',
+      'M0 4 L36 4 L36 0 L0 0 Z',
+      'M0.68 3.5 L14.4 13.6 Q18 16.7 21.6 13.6 L35.32 3.5',
+    ]);
+  });
+
+  it.each<['top' | 'bottom']>([['top'], ['bottom']])(
+    'inks the %s arrow with the card colour and the lifted outline token, the slants alone stroked',
+    async (position) => {
+      await card(position);
+      const parts = drawnParts();
+      const boxPart = position === 'top' ? 1 : 0;
+      const paths = arrowPaths(parts, boxPart);
+
+      expect(paths).toHaveLength(3);
+      expect(paths[0].props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
+      expect(paths[1].props.fill.payload).toBe(argbOf(COLORS.surface.elevated));
+      // The native path receives 'none' extracted to null, as the packed payloads above
+      expect(paths[2].props.fill).toBeNull();
+      expect(paths[2].props.stroke.payload).toBe(argbOf(COLORS.surface.elevatedOutline));
+      expect(paths[2].props.strokeWidth).toBe(1);
+      // strokeLinecap's 'round' extracts to its enum value on the native path
+      expect(paths[2].props.strokeLinecap).toBe(1);
+    }
+  );
+
+  it.each<['top' | 'bottom']>([['top'], ['bottom']])(
+    'sinks the %s arrow past the card edge by the cover, so the band reads covered while the arrow rides high',
+    async (position) => {
+      await card(position);
+      const parts = drawnParts();
+      const boxPart = position === 'top' ? 1 : 0;
+      const { ds } = arrowOf(parts, boxPart);
+
+      // The margin deepens by the skirt so the card edge and the tip hold their exact
+      // pre-outline places: only the viewport grew
+      const margin = StyleSheet.flatten(parts[1 - boxPart].props.style) as {
+        marginBottom?: number;
+        marginTop?: number;
+      };
+      const overlap = position === 'top' ? margin.marginBottom : margin.marginTop;
+      expect(overlap).toBe(SPACING.overlap - SKIRT);
+
+      // The card's edge sits one unit past the arrow's base row, on SPACING.overlap, unchanged
+      const cardEdge = position === 'top' ? 15 + SKIRT + (overlap ?? 0) : -(overlap ?? 0);
+      expect(cardEdge).toBe(position === 'top' ? 15 + SPACING.overlap : 3 - SPACING.overlap);
+
+      const cover = pointsOf(ds[1]);
+      const ys = cover.map(([, y]) => y);
+      const xs = cover.map(([x]) => x);
+      expect(Math.min(...xs)).toBe(0);
+      expect(Math.max(...xs)).toBe(36);
+      // The cover spans from the card's edge inward across the band and SKIRT past it
+      expect(ys).toContain(cardEdge);
+      expect(position === 'top' ? Math.max(...ys) : Math.min(...ys)).toBe(
+        position === 'top' ? cardEdge + 1 + SKIRT : cardEdge - 1 - SKIRT
+      );
+    }
+  );
+
+  it.each<['top' | 'bottom']>([['top'], ['bottom']])(
+    'ends the %s slants on the band, never inside the face, and never runs a stroke along the base',
+    async (position) => {
+      await card(position);
+      const parts = drawnParts();
+      const { ds } = arrowOf(parts, position === 'top' ? 1 : 0);
+
+      const stroke = pointsOf(ds[2]);
+      // The base row: 15 up, 3 down - the band runs between it and the card's edge, and the
+      // face's interior starts on the band's far side
+      const baseRow = position === 'top' ? 15 : 3;
+      const bandCentre = position === 'top' ? baseRow - 0.5 : baseRow + 0.5;
+      const depths = stroke.map(([, y]) => y);
+      expect(position === 'top' ? Math.max(...depths) : Math.min(...depths)).toBe(bandCentre);
+
+      // The slants end on the band's centre row, where the face border's ink runs
+      expect(stroke[0]).toEqual([0.68, bandCentre]);
+      expect(stroke[stroke.length - 1]).toEqual([35.32, bandCentre]);
+
+      // No horizontal stroke anywhere: the base carries no line of its own
+      for (let i = 1; i < stroke.length; i++) {
+        expect(stroke[i][1]).not.toBe(stroke[i - 1][1]);
+      }
+    }
+  );
+
+  it('traces the face with the lifted outline one wide over the card colour', async () => {
+    await render(
+      <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
+    );
+
+    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
+    const face = box?.children.find((child) => typeof child !== 'string');
+    const style = face
+      ? (StyleSheet.flatten(face.props.style) as {
+          borderColor?: string;
+          borderWidth?: number;
+          backgroundColor?: string;
+        })
+      : null;
+
+    expect(style?.borderColor).toBe(COLORS.surface.elevatedOutline);
+    expect(style?.borderWidth).toBe(1);
+    expect(style?.backgroundColor).toBe(COLORS.surface.elevated);
   });
 });
 

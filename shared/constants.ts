@@ -733,6 +733,9 @@ export const COLORS = {
     elevated: 'rgba(22, 9, 56, 1)',
     /** The card's inner separator line, the border family's one remaining reader */
     elevatedBorder: 'rgba(45, 22, 106, 0.29)',
+    /** The info card's outline (owner order 2026-10-30): the card's own background rgb(22, 9, 56)
+     *  lifted a bounded step with its hue held, one trace around the face and its arrow */
+    elevatedOutline: 'rgba(32, 19, 66, 1)',
   },
 
   // ───────────────────────────────────────────────────────────────────────────
