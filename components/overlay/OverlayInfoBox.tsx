@@ -33,16 +33,15 @@ export default function OverlayInfoBox({ type }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const isOnThisList = overlay.isOn && overlay.scheduleType === type;
 
-  // The reveal drives the card face's fade and the inks' ride on the live band composite
-  // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
-  // subtree while the box appears
+  // The reveal drives the card face's fade and the words' opacity ramp (PrayerExplanation),
+  // so the layer itself never fades and no text sits in a translucent subtree while the box
+  // appears - the words' own opacity is T-294's one scoped exception, named where it lands
   const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
 
   // The exit cut, evaluated where the reveal animates: display drops to none in the frame the
-  // reveal rests at 0, so the words' last drawn frame is the face's own last frame. A JS-side
-  // flip (the old fade-settled gate) lands a commit later and those frames are the ghost. The
-  // words leave by display alone, never through an opacity: translucent ink compounds where
-  // glyph strokes overlap (T-294)
+  // reveal rests at 0, and the words' opacity ramp reaches 0 on that same reveal, so the cut
+  // drops a card whose every element is already invisible. A JS-side flip (the old
+  // fade-settled gate) lands a commit later and those frames are the ghost.
   const placerStyle = useAnimatedStyle(() => ({
     display: reveal.value > 0 || isOnThisList ? 'flex' : 'none',
   }));
