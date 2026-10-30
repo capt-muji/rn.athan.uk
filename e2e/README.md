@@ -64,6 +64,12 @@ adb -s 3T_SERIAL logcat -s ReactNativeJS -v threadtime   # PERF_MEASURE lines mu
 
 ## Run
 
+Devices are independent: when a protocol needs both phones, run one executor per
+phone SIMULTANEOUSLY - never let one idle while the other waits on an alarm
+(owner order 2026-10-30). Only the build slot serialises (one Gradle, one
+Xcode); driving, protocols and installs parallelise freely across devices, and
+each phone's evidence lands in its own directory.
+
 ```sh
 export PATH="$HOME/.maestro/bin:$PATH"
 yarn check:device                                        # what the phone has armed

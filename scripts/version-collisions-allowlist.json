@@ -226,5 +226,9 @@
   {
     "version": "2.42.5",
     "reason": "2026-10-30 lane2/T-515's glow step steps from its own 2.42.4 tip while lane1/T-491's thin-LTO step already holds 2.42.5; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.6",
+    "reason": "2026-10-30 the lead's e2e-README parallel-phones order steps from uat's 2.42.5 while lane1/T-491's strip-plugin step already holds 2.42.6; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
