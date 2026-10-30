@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
@@ -45,7 +45,7 @@ const DIAL_HEIGHT_SHARE = 0.45;
  * The wait does NOT fail open. A heading nothing has vouched for is never drawn, however long the user waits,
  * because a wrong qibla is worse than none.
  */
-const QiblaCalibration = ({ size }: { size: number }) => (
+const QiblaCalibration = ({ size, active }: { size: number; active: boolean }) => (
   <View style={styles.waiting}>
     <View style={styles.instruction}>
       {/* No "calibrate" and no "figure eight": both are engineering words, and the drawing below already
@@ -53,7 +53,7 @@ const QiblaCalibration = ({ size }: { size: number }) => (
       <Text style={styles.headline}>{t('qibla.calibrationHeadline')}</Text>
       <Text style={styles.message}>{t('qibla.calibrationMessage')}</Text>
     </View>
-    <QiblaWave size={size} />
+    <QiblaWave size={size} active={active} />
   </View>
 );
 
@@ -110,6 +110,10 @@ export default function BottomSheetQibla() {
   const { width, height } = useWindowDimensions();
   const { bearing, hasHeading, permissionDenied, place, heading, aligned, arrivedQuietly, lost, start, stop } =
     useQibla();
+  // The sheet's tree stays mounted once it has opened (the warm sheet), so the
+  // calibration figure's loop is paused whenever the sheet is not up: the wave
+  // is driven by the animate/dismiss pair, the one animation the sheet stops
+  const [sheetUp, setSheetUp] = useState(false);
 
   const size = Math.min(Math.min(width, SIZE.contentMaxWidth) - SPACING.xl * 2, height * DIAL_HEIGHT_SHARE);
   // What the compass waits for depends on which sensor the phone reads, and the hook decides it: a heading
@@ -132,8 +136,14 @@ export default function BottomSheetQibla() {
       title={t('qibla.title')}
       subtitle={<QiblaSubtitle showsCompass={showsCompass} />}
       icon={<IconView type={Icon.COMPASS} size={16} color={SHEET_ICON_COLOR} />}
+      onAnimate={(toIndex) => {
+        if (toIndex !== null && toIndex >= 0) setSheetUp(true);
+      }}
       onPresent={start}
-      onDismiss={stop}
+      onDismiss={() => {
+        setSheetUp(false);
+        stop();
+      }}
       perfName={SHEET_PERF_NAME}
       scrollable={false}
       enableDynamicSizing
@@ -146,8 +156,9 @@ export default function BottomSheetQibla() {
         {/* A dial drawn without a live heading would hold its last angle and quietly point the wrong way, which is
             the one thing this feature must never do */}
         {showsCompass && <QiblaCompass size={size} bearing={bearing} heading={heading} aligned={aligned} />}
-        {/* Mounted only while the hint is up, so its looping animation never ticks on behind the compass */}
-        {isCalibrating && <QiblaCalibration size={size} />}
+        {/* Mounted only while the hint is up, so its looping animation never ticks on behind the compass; the
+            loop itself runs only while the sheet is up */}
+        {isCalibrating && <QiblaCalibration size={size} active={sheetUp} />}
         {/* Only ever beside the hint: over a drawn compass it would be reporting a north that was found */}
         {lost && isCalibrating && <QiblaLost />}
         {permissionDenied && <QiblaPermissionDenied />}

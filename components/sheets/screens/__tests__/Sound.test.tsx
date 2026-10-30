@@ -80,8 +80,13 @@ const playButtonOf = (athan: number) => {
   return button;
 };
 
-/** Closes the sheet as the bottom sheet library reports it, once the close has finished */
-const closeSheet = () => fireEvent(screen.getByText('Select Athan'), 'dismiss');
+/** Closes the sheet as the bottom sheet library reports it: open, then the close animation and its settle */
+const closeSheet = async () => {
+  await fireEvent(screen.getByText('Select Athan'), 'animate', -1, 0);
+  await fireEvent(screen.getByText('Select Athan'), 'change', 0);
+  await fireEvent(screen.getByText('Select Athan'), 'animate', 0, -1);
+  await fireEvent(screen.getByText('Select Athan'), 'change', -1);
+};
 
 /** Lets the save, which waits on scheduling, run to its end */
 const settle = () => act(() => jest.runAllTimersAsync());

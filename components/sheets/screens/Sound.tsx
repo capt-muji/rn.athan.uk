@@ -6,6 +6,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 
 import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
 import { IconView } from '@/components/ui';
+import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
@@ -50,9 +51,15 @@ export default function BottomSheetSound() {
   // covers any path that skips settings.
   const soundListReady = useAtomValue(soundListReadyAtom);
   const [tempSoundSelection, setTempSoundSelection] = useState<number | null>(null);
-  const [itemHeight, setItemHeight] = useState(0);
+  // Seeded from the MMKV cache at mount so a session's first open positions the
+  // indicator from the start; the first live layout corrects a stale seed, and
+  // the cache is written back only after the sheet settles open
+  const [itemHeight, measureItemHeight] = useCachedGeometry(`sound_row_height_${currentLocaleId()}`, 'replace');
   const hasInitialized = useRef(false);
   const translateY = useSharedValue(0);
+  // The first row's measured height is taken once, so a later layout cannot resize the
+  // highlight away from the rows it sits behind
+  const heightTakenRef = useRef(false);
 
   const currentSelection = displayedSoundSelection(tempSoundSelection, selectedSound);
 
@@ -103,14 +110,14 @@ export default function BottomSheetSound() {
     [playingIndex, player]
   );
 
-  // Measure first item to get consistent height
   const handleItemLayout = useCallback(
     (e: LayoutChangeEvent) => {
-      if (itemHeight === 0) {
-        setItemHeight(e.nativeEvent.layout.height);
-      }
+      const height = e.nativeEvent.layout.height;
+      if (heightTakenRef.current || height <= 0) return;
+      heightTakenRef.current = true;
+      measureItemHeight(height);
     },
-    [itemHeight]
+    [measureItemHeight]
   );
 
   // Update translateY: no animation on first render, animate on subsequent changes

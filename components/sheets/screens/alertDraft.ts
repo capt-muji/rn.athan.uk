@@ -7,7 +7,14 @@
  */
 
 import { DEFAULT_REMINDER_INTERVAL, validateReminderInterval } from '@/shared/constants';
-import { AlertType, type ReminderInterval, type ReminderSetting } from '@/shared/types';
+import {
+  type AlertMenuState,
+  AlertType,
+  type PerReminderSlot,
+  type ReminderInterval,
+  type ReminderSetting,
+  type ReminderSlot,
+} from '@/shared/types';
 
 /**
  * The sound the reminder toggle turns on with. An Off reminder still needs one, and silent is the choice that
@@ -81,3 +88,45 @@ export const toggledReminder = ({
  */
 export const takenInterval = (other: ReminderSetting): number | null =>
   other.alert === AlertType.Off ? null : other.interval;
+
+export interface AlertDraft {
+  atTimeAlert: AlertType;
+  reminders: PerReminderSlot<ReminderSetting>;
+  /** The sound each reminder switches back on with, kept while it is Off so the choice survives a toggle */
+  sounds: Record<ReminderSlot, AlertType.Silent | AlertType.Sound>;
+  /** The reminder choices held while the athan is Off: the stored values at open, re-snapshotted at every in-session move into Off */
+  preservedAlerts: PerReminderSlot<AlertType>;
+}
+
+/**
+ * The draft a fresh open of this prayer shows, from the baseline the stores
+ * hold for it. Pure on the baseline so a warm body can re-derive it during
+ * render when the open session changes, with the values correct in the reveal
+ * frame - the remount a fresh mount used to give, without the mount.
+ *
+ * While the mounted athan is Off, each reminder drafts Off and a Silent pill
+ * whatever the store holds, so the slide-off keeps today's pixels; the stored
+ * choices live in preservedAlerts alone until the athan turns back on.
+ */
+export const initialDraft = (baseline: AlertMenuState): AlertDraft => {
+  const reminders: PerReminderSlot<ReminderSetting> = [
+    {
+      ...baseline.reminders[0],
+      alert: baseline.atTimeAlert === AlertType.Off ? AlertType.Off : baseline.reminders[0].alert,
+    },
+    {
+      ...baseline.reminders[1],
+      alert: baseline.atTimeAlert === AlertType.Off ? AlertType.Off : baseline.reminders[1].alert,
+    },
+  ];
+
+  return {
+    atTimeAlert: baseline.atTimeAlert,
+    reminders,
+    sounds: {
+      0: initialReminderType(reminders[0].alert),
+      1: initialReminderType(reminders[1].alert),
+    },
+    preservedAlerts: [baseline.reminders[0].alert, baseline.reminders[1].alert],
+  };
+};

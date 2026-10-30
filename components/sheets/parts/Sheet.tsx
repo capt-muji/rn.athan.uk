@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ELEVATION, OVERLAY, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
+import { bumpSheetSettleTick } from '@/stores/geometry';
 
 import Header from './Header';
 import { bottomSheetStyles, renderBackdrop, renderSheetBackground } from './Shared';
@@ -43,10 +44,10 @@ interface SheetProps {
   icon: React.ReactNode;
   /** Sheet content */
   children: React.ReactNode;
-  /** Called when sheet is dismissed */
+  /** Called when the sheet has closed, on every close path - swipe, backdrop, back, programmatic */
   onDismiss?: () => void;
-  /** Called when sheet animation starts */
-  onAnimate?: () => void;
+  /** Called when a sheet animation starts, with the index it moves to (null before it knows) */
+  onAnimate?: (toIndex: number | null) => void;
   /**
    * Performance mark prefix for open/close timing (e.g. 'sheet_settings').
    * Produces <perfName>_open (present → settled) and <perfName>_close measures
@@ -115,7 +116,14 @@ interface SheetProps {
  * - Shared background and backdrop
  * - Configurable snap points or dynamic sizing
  * - Scrollable or fixed content area
- * - Android hardware back dismisses an open sheet instead of exiting the app
+ * - Android hardware back closes an open sheet instead of exiting the app
+ *
+ * The tree stays warm: the modal never unmounts on a close (enableDismissOnClose
+ * false), so the first open pays the mount and every open after animates a
+ * mounted sheet. Closes go through close(), never dismiss() - a dismiss
+ * unmounts the tree whatever the flag says. With the flag false the library
+ * never fires its own onDismiss on a close, so onChange reaching -1 is the one
+ * close signal, deduped per open session against a dismiss firing both.
  *
  * @example
  * <Sheet
@@ -164,11 +172,16 @@ export default function Sheet({
   const modalRef = useRef<BottomSheetModal | null>(null);
   const [presented, setPresented] = useState(false);
   const firstPresentFiredRef = useRef(false);
+  // Whether an open session's close is still owed: set when an animation
+  // targets an open position or a settle reaches one, consumed by the one close
+  // signal. A dismiss that fires beside the change to -1 dedupes against it,
+  // and a close before any open (nothing to commit) fires nothing.
+  const openSessionRef = useRef(false);
 
   useEffect(() => {
     if (!presented) return;
     const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
-      modalRef.current?.dismiss();
+      modalRef.current?.close();
       return true;
     });
     return () => subscription.remove();
@@ -184,6 +197,10 @@ export default function Sheet({
 
   const handleAnimate = useCallback(
     (_fromIndex: number, toIndex: number | null) => {
+      // The open session opens when an animation first targets an open
+      // position, not at the settle: a swipe-down that closes the sheet
+      // mid-entrance still owes the sheet its close
+      if (toIndex !== null && toIndex >= 0) openSessionRef.current = true;
       if (perfName) {
         if (toIndex === 0) {
           perfMark(`${perfName}_animate`);
@@ -191,18 +208,19 @@ export default function Sheet({
           perfMark(`${perfName}_close_start`);
         }
       }
-      onAnimate?.();
+      onAnimate?.(toIndex);
     },
     [perfName, onAnimate]
   );
 
-  // One unified close haptic for every sheet, native
-  // consistency: a single Light impact when the sheet finishes closing, on
-  // every close path — swipe, backdrop, back, programmatic — landing on the
-  // same tick as any dismiss-time commit (the alert sheet's save and icon
-  // bounce). Firing at close start instead buzzed the moment a drag began,
-  // detached from the outcome.
-  const handleDismiss = useCallback(() => {
+  // One unified close signal for every sheet, native consistency: a single
+  // Light impact when the sheet finishes closing, on every close path — swipe,
+  // backdrop, back, programmatic — landing on the same tick as any close-time
+  // commit (the alert sheet's save and icon bounce). Firing at close start
+  // instead buzzed the moment a drag began, detached from the outcome.
+  const handleClosed = useCallback(() => {
+    if (!openSessionRef.current) return;
+    openSessionRef.current = false;
     if (!suppressCloseHaptic) {
       perfMark('sheet_close_haptic');
       const impact = Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -214,12 +232,18 @@ export default function Sheet({
   const handleChange = useCallback(
     (index: number) => {
       setPresented(index !== -1);
+      if (index !== -1) openSessionRef.current = true;
       if (index === 0) {
         if (!firstPresentFiredRef.current) {
           firstPresentFiredRef.current = true;
           onFirstPresent?.();
         }
         onPresent?.();
+        // The entrance is over: the sanctioned moment for a sheet's measured
+        // geometry to reach its cache
+        bumpSheetSettleTick();
+      } else if (index === -1) {
+        handleClosed();
       }
       if (!perfName) return;
       if (index === 0) {
@@ -229,7 +253,7 @@ export default function Sheet({
         perfMeasure(`${perfName}_close`, `${perfName}_close_start`);
       }
     },
-    [perfName, onFirstPresent, onPresent]
+    [perfName, onFirstPresent, onPresent, handleClosed]
   );
 
   const ContentWrapper = scrollable ? BottomSheetScrollView : BottomSheetView;
@@ -288,7 +312,8 @@ export default function Sheet({
       stackBehavior={stackBehavior}
       keyboardBehavior={keyboardBehavior}
       keyboardBlurBehavior={keyboardBlurBehavior}
-      onDismiss={handleDismiss}
+      enableDismissOnClose={false}
+      onDismiss={handleClosed}
       onAnimate={handleAnimate}
       onChange={handleChange}
       style={bottomSheetStyles.modal}

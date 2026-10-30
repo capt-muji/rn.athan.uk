@@ -46,9 +46,10 @@ const WAVE_DURATION = 3200;
  * the same path at falling width and opacity read as a glow on both platforms and cost three paints of one path.
  *
  * Shown only while the compass waits for the heading to converge, which is what waving the phone brings about.
- * Mounted for exactly that long, so the loop is never ticking behind the compass (Performance Design Rule 7).
+ * The tree stays mounted in the warm sheet, so the loop runs only while `active`: never ticking behind the
+ * compass (Performance Design Rule 7), never behind a closed sheet.
  */
-export default function QiblaWave({ size }: { size: number }) {
+export default function QiblaWave({ size, active }: { size: number; active: boolean }) {
   const figureWidth = size * WAVE.width;
   const figureHeight = size * WAVE.height;
   // The figure mirrors under RTL; the worklets cannot read react-native, so the direction passes in.
@@ -65,12 +66,14 @@ export default function QiblaWave({ size }: { size: number }) {
   const progress = useSharedValue(0);
 
   useEffect(() => {
+    if (!active) return;
     // Starts the motion and never places the phone, which first-frames settled at progress 0 on its own
     progress.value = withRepeat(withTiming(1, { duration: WAVE_DURATION, easing: Easing.linear }), -1);
 
-    // withRepeat(-1) would otherwise keep driving the UI thread once the compass has replaced this
+    // withRepeat(-1) would otherwise keep driving the UI thread once the compass has replaced
+    // this, or behind the warm sheet's closed doors
     return () => cancelAnimation(progress);
-  }, [progress]);
+  }, [active, progress]);
 
   const trailProps = useAnimatedProps(() => ({
     d: waveTrail(progress.value, figureWidth, figureHeight, isRTL),

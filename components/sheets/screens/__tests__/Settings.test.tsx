@@ -117,12 +117,12 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     );
     // Each sheet's own modal is spied on, so a test tells the settings sheet from the athan sheet by its call count.
     // Comparing the modals themselves would make a failure print a whole React component, which never finishes
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
     const athanPresent = jest.spyOn(renderedSheet(bottomSheetModalAtom), 'present');
 
     await fireEvent.press(screen.getByRole('button', { name: 'Change athan' }));
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     expect(athanPresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
@@ -135,12 +135,12 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
         <QiblaSheet />
       </>
     );
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
     const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
 
     await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     expect(qiblaPresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
@@ -153,7 +153,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
         <LanguageSheet />
       </>
     );
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
     const languagePresent = jest.spyOn(renderedSheet(languageSheetModalAtom), 'present');
 
     const languageRow = screen.getByRole('button', { name: 'Language' });
@@ -166,7 +166,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
     await fireEvent.press(languageRow);
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     expect(languagePresent).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
@@ -200,13 +200,13 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
         <QiblaSheet />
       </>
     );
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
     const qiblaPresent = jest.spyOn(renderedSheet(qiblaSheetModalAtom), 'present');
 
     await fireEvent.press(screen.getByRole('button', { name: 'Qibla' }));
 
     expect(qiblaPresent).not.toHaveBeenCalled();
-    expect(settingsDismiss).not.toHaveBeenCalled();
+    expect(settingsClose).not.toHaveBeenCalled();
     expect(qiblaDevice.showQiblaLocationDialog).toHaveBeenCalledTimes(1);
   });
 
@@ -229,14 +229,14 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<SettingsSheet />);
     // The settings sheet's own modal is spied on, so its close is counted without printing the component
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
 
     await fireEvent.press(screen.getByRole('button', { name: "What's new" }));
     await act(() => jest.advanceTimersByTime(149));
     expect(store.get(popupWhatsNewEnabledAtom)).toBe(false);
     await act(() => jest.advanceTimersByTime(1));
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     expect(store.get(popupWhatsNewEnabledAtom)).toBe(true);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
@@ -275,14 +275,14 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<SettingsSheet />);
     // The settings sheet's own modal is spied on, so its close is counted without printing the component
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
 
     await fireEvent.press(screen.getByRole('button', { name: 'Help' }));
     await act(() => jest.advanceTimersByTime(149));
     expect(store.get(popupHelpEnabledAtom)).toBe(false);
     await act(() => jest.advanceTimersByTime(1));
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     expect(store.get(popupHelpEnabledAtom)).toBe(true);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
@@ -475,12 +475,12 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     store.set(popupUpdateEnabledAtom, false);
     mockCheckForUpdates.mockReturnValue(Promise.resolve({ modal: true, upToDate: false, failed: false }));
     await render(<SettingsSheet />);
-    const settingsDismiss = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'dismiss');
+    const settingsClose = jest.spyOn(renderedSheet(settingsSheetModalAtom), 'close');
 
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
     await settle();
 
-    expect(settingsDismiss).toHaveBeenCalledTimes(1);
+    expect(settingsClose).toHaveBeenCalledTimes(1);
     await act(() => jest.advanceTimersByTime(149));
     expect(store.get(popupUpdateEnabledAtom)).toBe(false);
     await act(() => jest.advanceTimersByTime(1));
@@ -619,7 +619,10 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getByRole('button', { name: 'You’re up to date' })).toBeOnTheScreen();
 
     // Closing the sheet ends the session (owner order 2026-10-27): the budget re-arms and the row rests
-    await fireEvent(screen.getByText('Settings'), 'dismiss');
+    await fireEvent(screen.getByText('Settings'), 'animate', -1, 0);
+    await fireEvent(screen.getByText('Settings'), 'change', 0);
+    await fireEvent(screen.getByText('Settings'), 'animate', 0, -1);
+    await fireEvent(screen.getByText('Settings'), 'change', -1);
     mockCheckForUpdates.mockClear();
 
     expect(screen.getByRole('button', { name: 'Check for updates' })).toBeOnTheScreen();
@@ -644,7 +647,10 @@ describe('the Check for updates row, Friday 11 September 2026 at 14:00', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Check for updates' }));
     expect(screen.getByRole('button', { name: 'Checking for updates...' })).toBeOnTheScreen();
 
-    await fireEvent(screen.getByText('Settings'), 'dismiss');
+    await fireEvent(screen.getByText('Settings'), 'animate', -1, 0);
+    await fireEvent(screen.getByText('Settings'), 'change', 0);
+    await fireEvent(screen.getByText('Settings'), 'animate', 0, -1);
+    await fireEvent(screen.getByText('Settings'), 'change', -1);
 
     await act(async () => {
       answerCheck({ modal: false, upToDate: true, failed: false });

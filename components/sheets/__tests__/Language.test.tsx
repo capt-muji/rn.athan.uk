@@ -144,6 +144,7 @@ const sheetProps = () =>
         keyboardBlurBehavior?: string;
         snapPoints?: (string | number)[];
         onDismiss: () => void;
+        onChange: (index: number) => void;
       };
     }
   ).props;
@@ -223,6 +224,19 @@ describe('the language wheel', () => {
     expect(band.opacity).toBe(0.25);
     expect(band.height).toBe(ROW_HEIGHT);
     expect(bandSeat()).toBe(PAD);
+  });
+
+  it('takes its row height from the first layout that reports one, and never again', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<LanguageSheet />);
+
+    // A zero layout reports nothing, and the height once taken cannot be resized by a later layout
+    await measureFirstRow(0);
+    await measureList();
+    await measureFirstRow(44);
+    await measureFirstRow(60);
+
+    expect(styleOf('language-band').height).toBe(44);
   });
 
   it('clips both bands to the list’s own frame, so a far scroll paints neither over the card', async () => {
@@ -357,7 +371,7 @@ describe('the language wheel', () => {
     const beforeClose = scroll.mock.calls.length;
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
 
     // The close clears the query, which re-derives the full list: no reseed lands on the way out
@@ -532,10 +546,11 @@ describe('the language wheel over T-451’s picker', () => {
   it('clears the query when the sheet closes, so the next open is the whole list', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<LanguageSheet />);
+    await presentSheet();
     await fireEvent.changeText(field(), 'spanish');
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
 
     expect(field().props.value).toBe('');
@@ -673,7 +688,7 @@ describe('the staged commit at the close boundary', () => {
     });
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -716,7 +731,7 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
 
     // The loader stands on the close's own tick and the commit follows a paint later
@@ -744,8 +759,8 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -763,7 +778,7 @@ describe('the staged commit at the close boundary', () => {
     await openWheel();
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -784,7 +799,7 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'English, Close to save' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -809,7 +824,7 @@ describe('the staged commit at the close boundary', () => {
     });
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -839,7 +854,7 @@ describe('the staged commit at the close boundary', () => {
     });
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -860,7 +875,7 @@ describe('the staged commit at the close boundary', () => {
     expect(commitSpy).not.toHaveBeenCalled();
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -878,7 +893,7 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.changeText(field(), 'zzz');
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -906,7 +921,7 @@ describe('the staged commit at the close boundary', () => {
     });
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();

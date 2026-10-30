@@ -1,7 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, type TextLayoutEvent, View } from 'react-native';
 
 import { type DimState, dimState, REMINDER_CARD } from '@/components/sheets/parts/dim';
+import { useCachedGeometry } from '@/hooks/useCachedGeometry';
+import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { en } from '@/shared/i18n/en';
@@ -59,27 +61,33 @@ export default function ReminderCard({
 
   // The rows' shared minimum control width. The floor is the per-side slack today's English layout
   // shows, so the control grows leftward by exactly the content's excess and English never moves;
-  // 0 while any measurement is missing keeps the first frame at today's layout
-  const [rowWidth, setRowWidth] = useState(0);
-  const [baselineTextWidth, setBaselineTextWidth] = useState(0);
-  const [activeTextWidth, setActiveTextWidth] = useState(0);
+  // each value seeds from its MMKV cache at mount, so a session's first open renders the settled
+  // layout instead of measuring inside its own entrance, and the cache is written back only after
+  // the sheet has settled open
+  const { width: windowWidth } = useWindowDimensions();
+  const [rowWidth, measureRowWidth] = useCachedGeometry(`reminder_row_width_${Math.round(windowWidth)}`);
+  const [baselineTextWidth, measureBaselineText] = useCachedGeometry('reminder_baseline_text');
+  const [activeTextWidth, measureActiveText] = useCachedGeometry(`reminder_active_text_${currentLocaleId()}`);
   const requiredControl = requiredControlWidth({
     rowWidth,
     baselineContentWidth: segmentContentWidth(baselineTextWidth),
     contentWidth: segmentContentWidth(activeTextWidth),
   });
 
-  const handleRowLayout = useCallback((e: LayoutChangeEvent) => setRowWidth(e.nativeEvent.layout.width), []);
+  const handleRowLayout = useCallback(
+    (e: LayoutChangeEvent) => measureRowWidth(e.nativeEvent.layout.width),
+    [measureRowWidth]
+  );
 
   // A relayout can report a narrower line than the widest the pair ever showed, and a text with no
   // lines reports none, so the running maximum is what the floor reads
-  const measureBaselineText = useCallback(
-    (e: TextLayoutEvent) => setBaselineTextWidth((current) => Math.max(current, e.nativeEvent.lines[0]?.width ?? 0)),
-    []
+  const handleBaselineTextLayout = useCallback(
+    (e: TextLayoutEvent) => measureBaselineText(e.nativeEvent.lines[0]?.width ?? 0),
+    [measureBaselineText]
   );
-  const measureActiveText = useCallback(
-    (e: TextLayoutEvent) => setActiveTextWidth((current) => Math.max(current, e.nativeEvent.lines[0]?.width ?? 0)),
-    []
+  const handleActiveTextLayout = useCallback(
+    (e: TextLayoutEvent) => measureActiveText(e.nativeEvent.lines[0]?.width ?? 0),
+    [measureActiveText]
   );
 
   const step = (direction: -1 | 1) => {
@@ -145,16 +153,22 @@ export default function ReminderCard({
         // TalkBack focuses alpha-0 text, so hiding by sight alone would read four phantom labels per card
         accessibilityElementsHidden={true}
         importantForAccessibility={'no-hide-descendants'}>
-        <Text testID={'reminder-baseline-silent'} style={styles.measuredBaseline} onTextLayout={measureBaselineText}>
+        <Text
+          testID={'reminder-baseline-silent'}
+          style={styles.measuredBaseline}
+          onTextLayout={handleBaselineTextLayout}>
           {en['alert.option.silent']}
         </Text>
-        <Text testID={'reminder-baseline-sound'} style={styles.measuredBaseline} onTextLayout={measureBaselineText}>
+        <Text
+          testID={'reminder-baseline-sound'}
+          style={styles.measuredBaseline}
+          onTextLayout={handleBaselineTextLayout}>
           {en['alert.option.sound']}
         </Text>
-        <Text testID={'reminder-active-silent'} style={styles.measuredActive} onTextLayout={measureActiveText}>
+        <Text testID={'reminder-active-silent'} style={styles.measuredActive} onTextLayout={handleActiveTextLayout}>
           {t('alert.option.silent')}
         </Text>
-        <Text testID={'reminder-active-sound'} style={styles.measuredActive} onTextLayout={measureActiveText}>
+        <Text testID={'reminder-active-sound'} style={styles.measuredActive} onTextLayout={handleActiveTextLayout}>
           {t('alert.option.sound')}
         </Text>
       </View>

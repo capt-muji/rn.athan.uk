@@ -6,6 +6,7 @@ import { type FlatListProps, type LayoutChangeEvent, Pressable, StyleSheet, Text
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
+import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId, type LocaleId } from '@/shared/i18n/locale';
@@ -64,9 +65,14 @@ export default function BottomSheetLanguage() {
   const active = currentLocaleId();
   const [query, setQuery] = useState('');
   const [listHeight, setListHeight] = useState(0);
-  const [rowHeight, setRowHeight] = useState(0);
+  // Seeded from the MMKV cache at mount so the wheel's geometry is known before
+  // the first row lays out; the first live layout corrects a stale seed, and the
+  // cache is written back only after the sheet settles open
+  const [rowHeight, measureRowHeight] = useCachedGeometry(`language_row_height_${active}`, 'replace');
   const [presented, setPresented] = useState(false);
   const [staged, setStaged] = useState<LocaleId | null>(null);
+  // The row's height is taken once: a later layout cannot resize the wheel's pitch
+  const heightTakenRef = useRef(false);
 
   const rows = useMemo(() => filterLanguages(query), [query]);
   const seat = rows.findIndex((entry) => entry.id === active);
@@ -101,10 +107,15 @@ export default function BottomSheetLanguage() {
     setListHeight(e.nativeEvent.layout.height);
   }, []);
 
-  const handleItemLayout = useCallback((e: LayoutChangeEvent) => {
-    const height = e.nativeEvent.layout.height;
-    setRowHeight((current) => current || height);
-  }, []);
+  const handleItemLayout = useCallback(
+    (e: LayoutChangeEvent) => {
+      const height = e.nativeEvent.layout.height;
+      if (heightTakenRef.current || height <= 0) return;
+      heightTakenRef.current = true;
+      measureRowHeight(height);
+    },
+    [measureRowHeight]
+  );
 
   // The wheel opens on the locale in force, and re-centres whenever the filtered rows change while
   // the sheet is up: a reseed into the dismissing query clear would scroll a sheet on its way out.
