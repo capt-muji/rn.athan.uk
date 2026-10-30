@@ -42,7 +42,7 @@ const applyPackagingExcludes = (modResults) => {
 
 const withAndroidPackagingExcludes = (config) => {
   return withAppBuildGradle(config, (config) => {
-    config.modResults = applyPackagingExcludes(config.modResults);
+    config.modResults.contents = applyPackagingExcludes(config.modResults.contents);
     return config;
   });
 };

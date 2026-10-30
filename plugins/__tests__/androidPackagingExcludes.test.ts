@@ -9,12 +9,18 @@
  */
 
 interface GradleConfigFixture {
-  modResults: string;
+  modResults: { contents: string };
 }
+
+/** withAppBuildGradle as this SDK runs it: the callback receives modResults as a FileInfo */
+jest.mock('expo/config-plugins', () => ({
+  withAppBuildGradle: (config: GradleConfigFixture, callback: (config: GradleConfigFixture) => GradleConfigFixture) =>
+    callback(config),
+}));
 
 const plugin = require('../androidPackagingExcludes') as ((config: GradleConfigFixture) => GradleConfigFixture) & {
   JAVA_RESOURCE_EXCLUDES: string[];
-  applyPackagingExcludes: (modResults: string) => string;
+  applyPackagingExcludes: (contents: string) => string;
 };
 const { applyPackagingExcludes, JAVA_RESOURCE_EXCLUDES } = plugin;
 
@@ -71,5 +77,11 @@ describe('the java-resource excludes on the app build.gradle', () => {
     const withoutAnchor = templateGradle().replace('packagingOptions {', 'packaging {');
 
     expect(() => applyPackagingExcludes(withoutAnchor)).toThrow(/packagingOptions/);
+  });
+
+  it('writes the excludes through the gradle file info the SDK hands the plugin', () => {
+    const config = plugin({ modResults: { contents: templateGradle() } });
+
+    expect(config.modResults.contents).toContain('excludes += [');
   });
 });
