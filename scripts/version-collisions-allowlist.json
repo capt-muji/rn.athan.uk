@@ -269,6 +269,10 @@
   },
   {
     "version": "2.42.18",
-    "reason": "2026-10-31 the session-close queue row steps from uat's 2.42.17 while branch owner-visuals-2 already holds 2.42.18; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+    "reason": "2026-10-31 uat's session-close queue row, the owner's visual batch (owner-visuals-2) and the owner's glow tint (owner-glow-tint) all step from uat's 2.42.17 while lane1/T-327 already holds 2.42.18; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.19",
+    "reason": "2026-10-31 the T-540 merge of owner-visuals-2 steps from uat's 2.42.18 while lane1/T-327's branch already holds 2.42.19; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

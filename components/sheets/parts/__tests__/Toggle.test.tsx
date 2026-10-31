@@ -4,10 +4,10 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
-import { I18nManager } from 'react-native';
+import { I18nManager, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { ANIMATION, SIZE } from '@/shared/constants';
+import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
 import Toggle from '../Toggle';
@@ -109,10 +109,32 @@ describe('the reminder switch while the Athan is off', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('dims to half its uat value', async () => {
+  // Owner order 2026-10-31: dim rides the row's disabled state alone, and the circle joins its row
+  // at the sheet hint's own ink - the old whole-switch 0.2 opacity left a white thumb outshining
+  // the row it sat in
+  it('dims its thumb to the sheet hint ink, carrying no opacity of its own', async () => {
     await render(<Toggle value={false} onToggle={jest.fn()} disabled />);
 
-    expect(screen.getByRole('switch')).toHaveStyle({ opacity: 0.2 });
+    expect(thumb()).toHaveStyle({ backgroundColor: COLORS.text.sheetSubtitle });
+    expect(StyleSheet.flatten(screen.getByRole('switch').props.style).opacity).toBeUndefined();
+  });
+
+  it('flattens its disabled off track over the locked card', async () => {
+    await render(<Toggle value={false} onToggle={jest.fn()} disabled />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#132145', borderColor: '#0f1b40' });
+  });
+
+  it('flattens its disabled on track the same way', async () => {
+    await render(<Toggle value onToggle={jest.fn()} disabled />);
+
+    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#1a1853', borderColor: '#1e1d59' });
+  });
+
+  it('keeps its thumb in the primary ink while its row can be used', async () => {
+    await render(<Toggle value={false} onToggle={jest.fn()} />);
+
+    expect(thumb()).toHaveStyle({ backgroundColor: COLORS.text.primary });
   });
 });
 

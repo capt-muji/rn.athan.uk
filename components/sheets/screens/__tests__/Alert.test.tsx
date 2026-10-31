@@ -663,13 +663,15 @@ describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:
 });
 
 describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
-  it("paints a locked reminder card's title and hint in the locked solids while the athan is Off", async () => {
+  it("paints a locked reminder card's title in the subheading's own shade while the athan is Off", async () => {
     showLondonDay('2026-09-11', '14:00');
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
+    // Owner order 2026-10-31: the locked title takes the sheet hint's own ink, the shade the
+    // "notification before prayer time" line carries, whatever the reminder's own on/off
     for (const n of [1, 2] as const) {
-      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#253252' });
+      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#416899' });
       expect(within(reminderCard(n)).getByText(t('alert.reminderHint'))).toHaveStyle({ color: '#122246' });
     }
   });
@@ -684,7 +686,7 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // Reminder 1 off locks the second card, whose own reminder is also off: the locked-off
     // solid, deeper than the off solid the first card's block carries
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#0e1b3e' });
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#416899' });
   });
 
   it('paints a locked card whose own reminder is on in the locked-on solids', async () => {
@@ -697,7 +699,8 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // Reminder 1 off locks the second card; reminder 2 itself stays on, so its options sit
     // between the two dims: the locked-on solid, brighter than the locked-off one
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#1c2c4f' });
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
+    // The title's dim keys on the lock alone: the circle and this line read the hint's shade
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#416899' });
   });
 });
 

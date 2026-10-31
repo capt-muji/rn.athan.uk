@@ -22,7 +22,9 @@ export const dimDisables = (dim: DimState): boolean => dim === 'off' || dim === 
 export const REMINDER_CARD = {
   background: { rest: 'rgba(99, 102, 241, 0.06)', locked: '#0c193b' },
   border: { rest: 'rgba(99, 102, 241, 0.15)', locked: '#0d193d' },
-  title: { rest: '#d8eaf8', locked: '#253252' },
+  // The locked title takes the sheet hint's own shade (owner order 2026-10-31), the one the
+  // "notification before prayer time" line carries, so the dimmed row and its circle read as one
+  title: { rest: '#d8eaf8', locked: COLORS.text.sheetSubtitle },
   hint: { rest: COLORS.text.sheetSubtitle, locked: '#122246' },
   optionLabel: { rest: '#92b8e4', off: '#203059', lockedOn: '#1c2c4f', lockedOff: '#0e1b3e' },
   rule: { rest: '#162251', off: '#111d46', lockedOn: '#0c193d', lockedOff: '#0c193c' },
@@ -57,4 +59,15 @@ export const CONTROL_WASH: Record<DimState, string> = {
   off: '#121e48',
   lockedOn: '#0d1a3e',
   lockedOff: '#0c193c',
+};
+
+/** The reminder switch's own dim (owner order 2026-10-31): the circle dims with its row's title to
+ * the sheet hint's ink, and the track flattens the old whole-switch 0.2 opacity over the locked
+ * card #0c193b, so the thumb sits at its shade with no opacity dragging it darker */
+export const REMINDER_SWITCH = {
+  thumbDisabled: COLORS.text.sheetSubtitle,
+  track: {
+    off: { background: '#132145', border: '#0f1b40' },
+    on: { background: '#1a1853', border: '#1e1d59' },
+  },
 };

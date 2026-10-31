@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type { ComponentProps } from 'react';
+import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -132,6 +133,25 @@ describe('the Athan 3 row, not playing', () => {
     await render(athan3({ onLayout }));
 
     expect(screen.getByText('Athan 3').parent).toHaveProp('onLayout', onLayout);
+  });
+});
+
+describe("the row's height", () => {
+  // Owner order 2026-10-31: the rows ride the language sheet's own 48, and the tall control
+  // column no longer stretches them past it
+  it("carries the language rows' own 48, with the play column's press room kept whole", async () => {
+    await render(athan3());
+
+    const row = StyleSheet.flatten(screen.getByText('Athan 3').parent?.props.style) as {
+      minHeight?: number;
+      paddingVertical?: number;
+    };
+    expect(row.minHeight).toBe(48);
+
+    // The play glyph is 18 inside its own padding, and the row's vertical padding is a hair:
+    // the column plus the row's padding never outgrows the 48 the row draws
+    const playPadding = StyleSheet.flatten(playButton().props.style).padding as number;
+    expect(18 + 2 * playPadding + 2 * (row.paddingVertical ?? 0)).toBeLessThanOrEqual(48);
   });
 });
 

@@ -12,15 +12,18 @@ import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { insideScroll, showLondonDay } from '@/__tests__/harness';
-import { ANIMATION, COLORS, SPACING } from '@/shared/constants';
+import { ANIMATION, COLORS, SPACING, TEXT } from '@/shared/constants';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
+import { typographyFor } from '@/shared/typography';
 import * as LanguageStore from '@/stores/language';
 import { languageSheetModalAtom } from '@/stores/ui';
 
 import LanguageSheet from '../screens/Language';
 
 const store = getDefaultStore();
+
+const ty = typographyFor('en');
 
 /** The modal a sheet handed the store when it rendered */
 const renderedSheet = () => {
@@ -144,6 +147,24 @@ describe('the plain list', () => {
     await render(<LanguageSheet />);
 
     expect(screen.getByText('Close to save')).toBeOnTheScreen();
+  });
+});
+
+describe("the card's own heading", () => {
+  // Owner order 2026-10-31: the sound sheet's hint voice, mirrored above this list
+  it("carries the tap-to-select wording above the list, in the sound sheet's hint voice", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    const hint = screen.getByText('Tap to select language');
+    expect(StyleSheet.flatten(hint.props.style)).toMatchObject({
+      color: COLORS.text.sheetSubtitle,
+      fontFamily: ty.familyRegular,
+      fontSize: ty.size(TEXT.sizeDetail),
+    });
+
+    const drawn = JSON.stringify(screen.toJSON());
+    expect(drawn.indexOf('Tap to select language')).toBeLessThan(drawn.indexOf('English'));
   });
 });
 
