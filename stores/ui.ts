@@ -151,6 +151,12 @@ export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_p
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
 
+/**
+ * The owner's off-season override (T-541, default off): showing the Ramadan decorations
+ * outside the season. The seasonal gate stands untouched while this is off.
+ */
+export const decorationsOffSeasonAtom = atomWithStorageBoolean('preference_decorations_offseason', false);
+
 // =============================================================================
 // ACTIONS
 // =============================================================================

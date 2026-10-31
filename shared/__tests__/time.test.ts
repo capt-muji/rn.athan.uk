@@ -7,6 +7,7 @@ import {
   adjustTime,
   createInstant,
   createPrayerDatetime,
+  decorationsVisible,
   footerFor,
   formatDateLocalized,
   formatDateShort,
@@ -479,6 +480,20 @@ describe('isRamadan', () => {
       process.env.EXPO_PUBLIC_ENV = 'prod';
       expect(isRamadan()).toBe(false);
     });
+  });
+});
+
+describe('decorationsVisible', () => {
+  // Owner order 2026-10-31 (the 2.43.1 read batch): a settings toggle shows the decorations
+  // outside Ramadan, default off, the seasonal gate intact when off
+  it.each([
+    ['in season, the override off, decorations on', true, false, true, true],
+    ['in season with decorations off', true, false, false, false],
+    ['outside the season with the override off', false, false, true, false],
+    ['outside the season with the override on', false, true, true, true],
+    ['outside the season with the override on but decorations off', false, true, false, false],
+  ])('shows the decorations %s', (_situation, season, offSeason, enabled, expected) => {
+    expect(decorationsVisible(season, offSeason, enabled)).toBe(expected);
   });
 });
 

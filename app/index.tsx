@@ -22,7 +22,7 @@ import { isRevealReady, isWaitingForData } from '@/shared/launchGate';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
-import { isRamadan } from '@/shared/time';
+import { decorationsVisible, isRamadan } from '@/shared/time';
 import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
 import { consumeRelaunchHandoff, languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
@@ -31,6 +31,7 @@ import { syncLoadable } from '@/stores/sync';
 import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
+  decorationsOffSeasonAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
@@ -93,7 +94,11 @@ export default function Index() {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
   // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
   // one screen whose Refresh can recover the app
-  const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
+  // The off-season override lets the owner see the decorations outside Ramadan (T-541), so the
+  // splash's sprite wait follows the override exactly as it follows the season
+  const decorationsOffSeason = useAtomValue(decorationsOffSeasonAtom);
+  const decorationsExpected =
+    decorationsVisible(isRamadan(), decorationsOffSeason, decorationsEnabled) && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   const installedVersion = getInstalledVersion();
   const visibleWhatsNew = currentVisibleWhatsNew();

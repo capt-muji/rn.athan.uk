@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { london, onPlatform } from '@/__tests__/harness';
-import { decorationsEnabledAtom, decorationsLoadedAtom } from '@/stores/ui';
+import { decorationsEnabledAtom, decorationsLoadedAtom, decorationsOffSeasonAtom } from '@/stores/ui';
 
 import RamadanDecorations from '../RamadanDecorations';
 
@@ -64,6 +64,10 @@ const spriteNames = () =>
 const stoppedValueCount = (stopped: jest.SpiedFunction<typeof Reanimated.cancelAnimation>) =>
   new Set(stopped.mock.calls.map(([value]) => value)).size;
 
+afterEach(() => {
+  store.set(decorationsOffSeasonAtom, false);
+});
+
 describe("the Ramadan decorations at the edges of the 2027 season, 15 Sha'ban to 29 Ramadan", () => {
   it.each([
     // the moment in words, then as a London date and clock reading
@@ -85,6 +89,30 @@ describe("the Ramadan decorations at the edges of the 2027 season, 15 Sha'ban to
     ['Monday 8 March 2027 at 23:59, 29 Ramadan', '2027-03-08', '23:59'],
   ])('draws every sprite and arms its animations on %s', async (_moment, date, time) => {
     setClock(date, time);
+    const { armed } = watchAnimations();
+
+    await render(<RamadanDecorations />);
+
+    expect(spriteNames()).toEqual(ALL_SPRITES);
+    expect(armed).toHaveBeenCalled();
+  });
+});
+
+describe('the Ramadan decorations under the off-season override, Friday 11 September 2026', () => {
+  it('draws nothing and arms no animation outside the season with the override off', async () => {
+    setClock('2026-09-11', '14:00');
+    store.set(decorationsOffSeasonAtom, false);
+    const { armed } = watchAnimations();
+
+    await render(<RamadanDecorations />);
+
+    expect(screen.toJSON()).toBeNull();
+    expect(armed).not.toHaveBeenCalled();
+  });
+
+  it('draws every sprite and arms its animations outside the season with the override on', async () => {
+    setClock('2026-09-11', '14:00');
+    store.set(decorationsOffSeasonAtom, true);
     const { armed } = watchAnimations();
 
     await render(<RamadanDecorations />);

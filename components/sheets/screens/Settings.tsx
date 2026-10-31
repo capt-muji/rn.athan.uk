@@ -28,6 +28,7 @@ import { currentVisibleWhatsNew } from '@/shared/whatsNew';
 import {
   countdownBarShownAtom,
   decorationsEnabledAtom,
+  decorationsOffSeasonAtom,
   hideSettingsSheet,
   hijriDateEnabledAtom,
   setPopupHelpEnabled,
@@ -79,7 +80,11 @@ export const SettingsBody = forwardRef<SettingsBodyHandle, Record<never, never>>
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
+  const [decorationsOffSeason, setDecorationsOffSeason] = useAtom(decorationsOffSeasonAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
+  // The override's row is the master's mirror: offered only outside the season
+  // the master never shows in, so exactly one decorations row ever shows (T-541)
+  const showOffSeasonToggle = !showDecorationToggle;
   const [updateRowState, setUpdateRowState] = useState<UpdateRowState>('idle');
   const isChecking = updateRowState === 'checking';
   const isUpToDate = updateRowState === 'upToDate';
@@ -259,6 +264,13 @@ export const SettingsBody = forwardRef<SettingsBodyHandle, Record<never, never>>
               label={t('settings.showDecorations')}
               value={decorationsEnabled}
               onToggle={(next) => setDecorationsEnabled(next)}
+            />
+          )}
+          {showOffSeasonToggle && (
+            <SettingsToggle
+              label={t('settings.showDecorations')}
+              value={decorationsOffSeason}
+              onToggle={(next) => setDecorationsOffSeason(next)}
             />
           )}
         </View>
