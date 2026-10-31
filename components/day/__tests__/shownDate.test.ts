@@ -9,6 +9,7 @@
 
 import { type Breakage, london, sequenceFrom, storeLondonDays } from '@/hooks/__tests__/londonDays';
 import { usePrayer } from '@/hooks/usePrayer';
+import { setActiveLocale } from '@/shared/i18n/locale';
 import { resolveDisplayDate } from '@/shared/sequence';
 import { ScheduleType } from '@/shared/types';
 
@@ -17,6 +18,10 @@ import { formatShownDate, getShownDateSource } from '../shownDate';
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockClock = { now: new Date(0) };
 const mockAtomValues = new Map<string, unknown>();
+// Every formatter call the cache's callers trigger, recorded where shownDate's own imports land (the
+// loader-thunk suite's recording-factory pattern: a spy on the namespace object does not see the
+// module the component tree holds)
+const mockFormatted: string[] = [];
 
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: jest.fn(),
@@ -27,6 +32,16 @@ jest.mock('@/stores/database', () => ({
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
   createInstant: (date?: Date | number | string) => (date ? new Date(date) : mockClock.now),
+  formatDateLocalized: (date: string) => {
+    const actual = jest.requireActual<typeof import('@/shared/time')>('@/shared/time');
+    mockFormatted.push(date);
+    return actual.formatDateLocalized(date);
+  },
+  formatHijriDateLocalized: (date: string) => {
+    const actual = jest.requireActual<typeof import('@/shared/time')>('@/shared/time');
+    mockFormatted.push(`hijri ${date}`);
+    return actual.formatHijriDateLocalized(date);
+  },
 }));
 
 jest.mock('jotai', () => ({ useAtomValue: (atom: string) => mockAtomValues.get(atom) }));
@@ -169,6 +184,41 @@ describe('the date on the header (real London 2026 days)', () => {
     const displayDate = show(type, breakage, now);
 
     expect(headerText(type, displayDate, overlayIndex, hijriEnabled)).toBe(text);
+  });
+});
+
+describe('the formatted-date cache (the overlay-open re-format trimmed, step 25)', () => {
+  /** The formatter calls for one date on one calendar, the cache's own accounting */
+  const callsFor = (needle: string) => mockFormatted.filter((entry) => entry.includes(needle)).length;
+
+  it('formats a date once and serves every later open of the same day from the cache', () => {
+    const first = formatShownDate('2030-05-04', false);
+    const second = formatShownDate('2030-05-04', false);
+
+    expect(second).toBe(first);
+    expect(callsFor('2030-05-04')).toBe(1);
+  });
+
+  it('formats the same day per calendar, never serving the Gregorian words to the Hijri face', () => {
+    const gregorian = formatShownDate('2030-05-05', false);
+    const hijri = formatShownDate('2030-05-05', true);
+
+    expect(hijri).not.toBe(gregorian);
+    expect(callsFor('2030-05-05')).toBe(2);
+  });
+
+  it("never serves one locale's words to another", () => {
+    const english = formatShownDate('2030-05-06', false);
+
+    setActiveLocale('ar');
+    try {
+      const arabic = formatShownDate('2030-05-06', false);
+
+      expect(arabic).not.toBe(english);
+      expect(callsFor('2030-05-06')).toBe(2);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
 

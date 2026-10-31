@@ -41,6 +41,7 @@ jest.mock('jotai', () => ({
 
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
+  useMemo: (create: () => unknown) => create(),
   useRef: (initial: unknown) => {
     const refs = mockHooks.refs.get(mockHooks.page) ?? [];
     mockHooks.refs.set(mockHooks.page, refs);

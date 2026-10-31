@@ -12,7 +12,7 @@ import { type Breakage, london, sequenceFrom, storeLondonDays } from '@/hooks/__
 import { computePrayerStatuses, type PrayerWithStatus } from '@/hooks/usePrayerSequence';
 import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { isReadable, resolveDisplayDate } from '@/shared/sequence';
-import { type OverlayStore, type Prayer, ScheduleType } from '@/shared/types';
+import { type Prayer, ScheduleType } from '@/shared/types';
 
 import { getActivePillOpacity, getActivePillRow } from '../activePill';
 
@@ -31,7 +31,6 @@ jest.mock('@/stores/schedule', () => ({
 
 const DAYS = ['2026-09-10', '2026-09-11', '2026-09-12'];
 const HOUR = 3_600_000;
-const CLOSED: OverlayStore = { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Standard };
 
 type ListOrder = [string, (rows: Prayer[]) => Prayer[]];
 
@@ -66,16 +65,23 @@ const momentsAcross = (prayers: Prayer[]): Date[] => {
   return moments.sort((a, b) => a - b).map((moment) => new Date(moment));
 };
 
+/** The overlay's schedule-gated inputs as the pill now takes them: active on this page, and its selected row */
+const pillOverlay = (activeForType: boolean, selectedIndex: number): [boolean, number] => [
+  activeForType,
+  activeForType ? selectedIndex : 0,
+];
+
 /** The pill's row and opacity, each from the function ActiveBackground calls for it */
 const placePill = (
   prayers: PrayerWithStatus[],
   displayDate: string | null,
   type: ScheduleType,
-  overlay: OverlayStore,
+  overlayActiveForType: boolean,
+  overlaySelectedIndexForType: number,
   heldRow: number
 ) => ({
   row: getActivePillRow(prayers, displayDate, type, heldRow),
-  opacity: getActivePillOpacity(prayers, displayDate, type, overlay),
+  opacity: getActivePillOpacity(prayers, displayDate, overlayActiveForType, overlaySelectedIndexForType),
 });
 
 /** The page at a London moment, as ActiveBackground receives it */
@@ -130,7 +136,7 @@ describe('the active pill across three real London days', () => {
           const rows = statuses.filter((row) => row.belongsToDate === displayDate);
           const next = rows.find((row) => row.isNext);
 
-          const pill = placePill(statuses, displayDate, type, CLOSED, heldRow);
+          const pill = placePill(statuses, displayDate, type, false, 0, heldRow);
 
           const expected = next
             ? { row: drawnIds(type, rows).indexOf(next.id), opacity: 1 }
@@ -155,14 +161,14 @@ describe('the active pill across three real London days', () => {
     const { prayers, displayDate } = pageAt(ScheduleType.Standard, {}, ['2026-09-12', '22:00'], (rows) => rows);
 
     expect(displayDate).toBeNull();
-    expect(placePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 5)).toEqual({ row: 5, opacity: 0 });
+    expect(placePill(prayers, displayDate, ScheduleType.Standard, false, 0, 5)).toEqual({ row: 5, opacity: 0 });
   });
 
   it("takes the next row from the list day on screen: Friday's Isha, not the sequence's first Isha", () => {
     const { prayers, displayDate } = pageAt(ScheduleType.Standard, {}, ['2026-09-11', '20:00'], (rows) => rows);
 
     expect(displayDate).toBe('2026-09-11');
-    expect(placePill(prayers, displayDate, ScheduleType.Standard, CLOSED, 0)).toEqual({ row: 5, opacity: 1 });
+    expect(placePill(prayers, displayDate, ScheduleType.Standard, false, 0, 0)).toEqual({ row: 5, opacity: 1 });
   });
 });
 
@@ -171,21 +177,15 @@ describe('the active pill across three real London days', () => {
 // =============================================================================
 
 describe('the active pill with the overlay', () => {
-  const extras = (isOn: boolean, selectedPrayerIndex: number): OverlayStore => ({
-    isOn,
-    selectedPrayerIndex,
-    scheduleType: ScheduleType.Extra,
-  });
-  const standard = (isOn: boolean, selectedPrayerIndex: number): OverlayStore => ({
-    isOn,
-    selectedPrayerIndex,
-    scheduleType: ScheduleType.Standard,
-  });
+  const extras = (isOn: boolean, selectedPrayerIndex: number): [boolean, number] =>
+    pillOverlay(isOn && true, selectedPrayerIndex);
+  // An overlay open on the OTHER page: the primitives this page's pill reads hold at false and 0
+  const standard = (_isOn: boolean, _selectedPrayerIndex: number): [boolean, number] => pillOverlay(false, 0);
 
   // Friday 11 September 2026 at 12:00 on the Extras page: Istijaba is next and drawn last. As built it is index 4
   // of the day's rows; reversed it is index 0 and Midnight is index 4.
   // [scenario, opacity, list order, overlay]
-  it.each<[string, number, ListOrder, OverlayStore]>([
+  it.each<[string, number, ListOrder, [boolean, number]]>([
     ['closed, holding the selection it last had', 1, LIST_ORDERS[0], extras(false, 2)],
     ['open on Istijaba, the next prayer', 1, LIST_ORDERS[0], extras(true, 4)],
     ['open on Suhoor', 0, LIST_ORDERS[0], extras(true, 2)],
@@ -195,7 +195,10 @@ describe('the active pill with the overlay', () => {
   ])('%s: the pill stays on Istijaba at opacity %i', (_scenario, opacity, [, order], overlay) => {
     const { prayers, displayDate } = pageAt(ScheduleType.Extra, {}, ['2026-09-11', '12:00'], order);
 
-    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay, 0)).toEqual({ row: 4, opacity });
+    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay[0], overlay[1], 0)).toEqual({
+      row: 4,
+      opacity,
+    });
   });
 
   it.each([
@@ -210,6 +213,9 @@ describe('the active pill with the overlay', () => {
     );
 
     expect(displayDate).toBe('2026-09-11');
-    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay, 3)).toEqual({ row: 3, opacity: 0 });
+    expect(placePill(prayers, displayDate, ScheduleType.Extra, overlay[0], overlay[1], 3)).toEqual({
+      row: 3,
+      opacity: 0,
+    });
   });
 });
