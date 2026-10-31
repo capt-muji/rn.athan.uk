@@ -7,6 +7,7 @@ import Navigation from '@/app/Navigation';
 import { ModalHelp, ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
+import IdleLadder from '@/components/warmup/IdleLadder';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { hideSwitchCover } from '@/device/switchCover';
@@ -267,6 +268,8 @@ export default function Index() {
       )}
       <Navigation />
       {chromeDeferred && <Overlay />}
+      {/* The idle ladder warms behind the init burst; its stages mount here */}
+      {chromeDeferred && <IdleLadder />}
     </>
   );
 }
