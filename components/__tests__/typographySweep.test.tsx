@@ -112,6 +112,24 @@ const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string,
   return subtitle;
 };
 
+/** The line box the language rows ride under a locale: the record's own boxes where its ink
+ * needs them, the Latin-parity pin everywhere else (T-538) */
+const languageRowLineHeightUnder = async (locale: LocaleId): Promise<number> => {
+  let lineHeight: number | undefined;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetLanguage = require('../sheets/screens/Language').default;
+    await rntl.render(<BottomSheetLanguage />);
+    lineHeight = (StyleSheet.flatten(rntl.screen.getByText('Deutsch').props.style) as Record<string, unknown>)
+      .lineHeight as number;
+  });
+  return lineHeight ?? Number.NaN;
+};
+
 const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
   let marginTop: unknown;
   jest.resetModules();
@@ -197,6 +215,24 @@ const explanationLineHeightUnder = async (locale: LocaleId): Promise<unknown> =>
     lineHeight = (StyleSheet.flatten(rntl.screen.getByText('نص').props.style) as Record<string, unknown>).lineHeight;
   });
   return lineHeight;
+};
+
+/** One language row's resolved line box under one locale: the sheet resolves its row styles at module scope, so the locale must be set before the component loads */
+const languageRowLineBoxUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let label: Record<string, unknown> = {};
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { showLondonDay } = require('@/__tests__/harness');
+    showLondonDay('2026-09-11', '14:00');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetLanguage = require('../sheets/screens/Language').default;
+    await rntl.render(<BottomSheetLanguage />);
+    label = StyleSheet.flatten(rntl.screen.getByText('简体中文').props.style) as Record<string, unknown>;
+  });
+  return label;
 };
 
 describe('the sweep guard', () => {
@@ -314,6 +350,41 @@ describe('the sound sheet spacing under ar', () => {
 
   it('keeps the note gap at 24 under en', async () => {
     expect(await noteFootMarginUnder('en')).toBe(24);
+  });
+});
+
+describe('the language row line box', () => {
+  // The four CJK subsets carry a 1.448em line box where Roboto carries 1.172em (T-538): the
+  // row pins the Latin-parity box, so the CJK rows measure every other row's height in their
+  // own faces too
+  it.each(['zh-Hans', 'zh-Hant', 'ja', 'ko'] as const)('pins the Latin line box under %s', async (locale) => {
+    const label = await languageRowLineBoxUnder(locale);
+
+    expect(label.fontSize).toBe(14);
+    expect(label.lineHeight).toBe(16);
+  });
+
+  it('keeps the pinned Latin line box under en', async () => {
+    const label = await languageRowLineBoxUnder('en');
+
+    expect(label.fontSize).toBe(14);
+    expect(label.lineHeight).toBe(16);
+  });
+});
+
+describe('the language rows’ line boxes', () => {
+  it('rides the active record’s script box under ur, so the Naskh ink never sits under the pin', async () => {
+    expect(await languageRowLineHeightUnder('ur')).toBe(21);
+  });
+
+  it('rides the measured row boxes under my and ta, whose endonym ink crosses the Latin pin', async () => {
+    expect(await languageRowLineHeightUnder('my')).toBe(21);
+    expect(await languageRowLineHeightUnder('ta')).toBe(17);
+  });
+
+  it('keeps the Latin-parity pin under the faces whose measured ink fits it', async () => {
+    expect(await languageRowLineHeightUnder('th')).toBe(16);
+    expect(await languageRowLineHeightUnder('en')).toBe(16);
   });
 });
 

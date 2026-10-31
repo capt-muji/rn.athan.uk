@@ -26,6 +26,8 @@ export interface LocaleTypography {
   wordFace: boolean;
   /** The record's script needs a taller line box than its size suggests (ar's clamped blocks); absent when the font's own metrics serve */
   scriptLineHeight?: (n: number) => number;
+  /** The language rows' own box where only the endonym's measured ink needs one; row-facing, never word surfaces (T-538) */
+  rowLineHeight?: (n: number) => number;
 }
 
 const ARABIC: LocaleTypography = {
@@ -139,6 +141,9 @@ const TAMIL: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: true,
+  // The endonym's measured ink is 1.164em (fontTools over the shipped pair), 0.3px past the
+  // language rows' 16px pin at sizeDetail 14, so the rows ride their measured box (T-538)
+  rowLineHeight: (n) => Math.ceil(n * 1.164),
 };
 
 // Malayalam, same wave's own measurement: the declared hhea box and win ink are
@@ -183,6 +188,8 @@ const YORUBA: LocaleTypography = {
   scriptLineHeight: (n) => Math.round(n * 1.55),
 };
 
+// The pair's own hhea box measures 1.172em (16.41px at 14pt), the basis of the language
+// rows' 16px Latin-parity pin (T-538)
 const LATIN: LocaleTypography = {
   familyRegular: TEXT.family.regular,
   familyMedium: TEXT.family.medium,
@@ -376,6 +383,9 @@ const MYANMAR: LocaleTypography = {
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
   wordFace: true,
+  // The endonym's measured ink is 1.470em (fontTools over the shipped pair), past the language
+  // rows' 16px Latin-parity pin at sizeDetail 14, so the rows ride their measured box (T-538)
+  rowLineHeight: (n) => Math.ceil(n * 1.47),
 };
 
 // No bundled face carries a single Thaana codepoint (measured 2026-10-29), so this

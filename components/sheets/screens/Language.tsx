@@ -21,6 +21,11 @@ import { commitStagedOnClose, seatLocaleFor, stageLanguage } from './languageShe
 
 const ITEM_GAP = SPACING.xs;
 
+// The row texts' line box, pinned at the Latin face's own metrics (Math.round(14 * 1.172)):
+// the four CJK subsets carry a 1.448em box, and unpinned each face's own box would own its
+// row's height, growing the CJK rows past their neighbours and the seat's row-0 slide math (T-538)
+const OPTION_LINE_HEIGHT = 16;
+
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SHEET_PERF_NAME = 'sheet_language';
@@ -219,6 +224,12 @@ export default function BottomSheetLanguage() {
 
 const ty = typographyFor(currentLocaleId());
 
+// A script record's ink runs past the Latin-parity pin, so the record's own boxes own the
+// line: the script box where the record mandates one, the measured row box where only the
+// endonym's ink crosses the pin, and the pin everywhere else
+const OPTION_ROW_LINE_HEIGHT =
+  ty.rowLineHeight?.(ty.size(TEXT.sizeDetail)) ?? ty.scriptLineHeight?.(ty.size(TEXT.sizeDetail)) ?? OPTION_LINE_HEIGHT;
+
 const styles = StyleSheet.create({
   card: {
     backgroundColor: CARD_BACKGROUND,
@@ -269,6 +280,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.sheetDim,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
+    lineHeight: OPTION_ROW_LINE_HEIGHT,
     // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them
     writingDirection: 'ltr',
   },
@@ -277,5 +289,6 @@ const styles = StyleSheet.create({
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
+    lineHeight: OPTION_ROW_LINE_HEIGHT,
   },
 });
