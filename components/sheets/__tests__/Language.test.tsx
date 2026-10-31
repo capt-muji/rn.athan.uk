@@ -191,6 +191,35 @@ describe('the wheel’s strip', () => {
   });
 });
 
+describe("the row's line box", () => {
+  it('pins both row texts to the Latin line box, so no face grows its own row', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    // The CJK subsets carry a 1.448em line box where the Latin face carries 1.172em: an
+    // unpinned box lets the row's face own its height, and the four CJK rows outgrow every
+    // neighbour (T-538)
+    expect(StyleSheet.flatten(screen.getByText('Deutsch').props.style)).toMatchObject({
+      fontSize: ty.size(TEXT.sizeDetail),
+      lineHeight: 16,
+    });
+    expect(StyleSheet.flatten(screen.getByText('1.').props.style)).toMatchObject({
+      fontSize: ty.size(TEXT.sizeDetail),
+      lineHeight: 16,
+    });
+  });
+
+  it('keeps the pinned box inside the row’s content budget, so every row measures the minimum', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<LanguageSheet />);
+
+    const row = StyleSheet.flatten(screen.getByRole('radio', { name: 'Deutsch' }).props.style);
+    // The row’s height is its own to carry: minHeight 48 with paddingVertical 12 leaves a
+    // 24px content budget the 16px box never crosses, whatever face draws the row
+    expect((row.minHeight as number) - 2 * (row.paddingVertical as number)).toBeGreaterThanOrEqual(16);
+  });
+});
+
 describe('the purple seat', () => {
   it('stays hidden until the first row has been measured', async () => {
     showLondonDay('2026-09-11', '14:00');

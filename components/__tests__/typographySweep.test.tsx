@@ -199,6 +199,24 @@ const explanationLineHeightUnder = async (locale: LocaleId): Promise<unknown> =>
   return lineHeight;
 };
 
+/** One language row's resolved line box under one locale: the sheet resolves its row styles at module scope, so the locale must be set before the component loads */
+const languageRowLineBoxUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
+  let label: Record<string, unknown> = {};
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { showLondonDay } = require('@/__tests__/harness');
+    showLondonDay('2026-09-11', '14:00');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetLanguage = require('../sheets/screens/Language').default;
+    await rntl.render(<BottomSheetLanguage />);
+    label = StyleSheet.flatten(rntl.screen.getByText('简体中文').props.style) as Record<string, unknown>;
+  });
+  return label;
+};
+
 describe('the sweep guard', () => {
   it.each(INVENTORY)('resolves %s through the locale typography map', (file) => {
     const source = readFileSync(join(__dirname, '..', file), 'utf8');
@@ -314,6 +332,25 @@ describe('the sound sheet spacing under ar', () => {
 
   it('keeps the note gap at 24 under en', async () => {
     expect(await noteFootMarginUnder('en')).toBe(24);
+  });
+});
+
+describe('the language row line box', () => {
+  // The four CJK subsets carry a 1.448em line box where Roboto carries 1.172em (T-538): the
+  // row pins the Latin-parity box, so the CJK rows measure every other row's height in their
+  // own faces too
+  it.each(['zh-Hans', 'zh-Hant', 'ja', 'ko'] as const)('pins the Latin line box under %s', async (locale) => {
+    const label = await languageRowLineBoxUnder(locale);
+
+    expect(label.fontSize).toBe(14);
+    expect(label.lineHeight).toBe(16);
+  });
+
+  it('keeps the pinned Latin line box under en', async () => {
+    const label = await languageRowLineBoxUnder('en');
+
+    expect(label.fontSize).toBe(14);
+    expect(label.lineHeight).toBe(16);
   });
 });
 
