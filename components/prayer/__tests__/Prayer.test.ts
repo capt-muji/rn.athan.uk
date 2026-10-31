@@ -50,12 +50,17 @@ jest.mock('react-native', () => ({
 jest.mock('react-native-gesture-handler', () => ({ Pressable: 'Pressable' }));
 jest.mock('react-native-reanimated', () => ({
   __esModule: true,
-  default: { Text: 'Animated.Text', createAnimatedComponent: () => 'AnimatedPressable' },
+  default: { Text: 'Animated.Text', View: 'Animated.View', createAnimatedComponent: () => 'AnimatedPressable' },
+  useAnimatedStyle: (updater: () => unknown) => updater(),
 }));
 jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: { Medium: 'medium' } }));
 jest.mock('@/components/prayer/Alert', () => ({ __esModule: true, default: 'Alert' }));
 jest.mock('@/components/prayer/Time', () => ({ __esModule: true, default: 'Time' }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedVeiledColor: () => ({}) }));
+jest.mock('@/hooks/useAnimation', () => ({
+  useDerivedVeiledColor: () => ({}),
+  useDerivedProgress: () => ({ value: 0 }),
+  useAnimatedStyle: (updater: () => unknown) => updater(),
+}));
 jest.mock('@/stores/database', () => ({
   getPrayerByDateString: jest.fn(),
   getItem: () => null,

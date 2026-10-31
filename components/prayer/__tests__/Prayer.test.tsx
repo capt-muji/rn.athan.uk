@@ -91,8 +91,15 @@ describe('the Fajr row on Friday 11 September 2026 at 14:00', () => {
 });
 
 describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once the overlay is opened on Fajr', () => {
-  it('keeps Sunrise drawn while the fade runs and drops it when the fade settles, leaving Fajr on show', async () => {
+  // The row's cut rides the veil's own progress in the worklet (step 25, the badge's pattern):
+  // the drop lands the frame the veil rests at 1, and the settle flag's later rise re-renders
+  // no row at all - that write was digest 5111's wave 4, a JS commit plus a deletion-heavy
+  // diff inside the entrance window, and the row no longer holds a reader for it
+  it('drops the hidden row inside the veil worklet while the settle flag is still down', async () => {
     showLondonDay('2026-09-11', '14:00');
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
+
     await render(
       <>
         <Prayer type={ScheduleType.Standard} index={FAJR} />
@@ -100,18 +107,32 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
       </>
     );
 
+    const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
+    const wrapperStyle = () => sunrise().parent!.props.style as { display?: string }[];
+    const displayEntries = () => wrapperStyle().filter((entry) => entry.display !== undefined);
+    // The worklet cut is the only display owner: it says none with the flag down, and no
+    // JS-settled gate entry exists behind it to flip on the flag's rise
+    expect(displayEntries().map((entry) => entry.display)).toEqual(['none']);
+    expect(screen.getByText('Fajr')).toBeVisible();
+  });
+
+  it('re-renders no row when the settle flag rises, the wave-four commit de-staged', async () => {
+    showLondonDay('2026-09-11', '14:00');
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
     await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
-    // The fade carries the ink, so the words stay drawn while it runs
+    await render(
+      <>
+        <Prayer type={ScheduleType.Standard} index={FAJR} />
+        <Prayer type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
     const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
-    const drawn = () => (StyleSheet.flatten(sunrise().parent!.props.style) as { display?: string }).display;
-    expect(drawn()).toBe('flex');
-    expect(screen.getByText('Fajr')).toBeVisible();
+    const before = JSON.stringify(sunrise().parent!.props.style);
 
     await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
-    expect(drawn()).toBe('none');
+    expect(JSON.stringify(sunrise().parent!.props.style)).toBe(before);
     expect(screen.getByText('Fajr')).toBeVisible();
   });
 
@@ -126,8 +147,9 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
     await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
-    // The close's own write drops the flag, and the row's display returns with
-    // it in the same commit — no second per-row commit wave inside the fade
+    // The close's own write flips the veil target back to 0, and the row's
+    // display returns with the veil lift in the worklet — the jest mock lands
+    // the tween instantly, so the resting frame reads flex
     await act(() => closeOverlay());
 
     const sunrise = screen.getByText('Sunrise');

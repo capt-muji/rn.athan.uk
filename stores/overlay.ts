@@ -92,6 +92,7 @@ const closeOverlay = () => {
 const markOverlayFadeSettled = (settledGeneration: number) => {
   void Promise.resolve().then(() => {
     if (settledGeneration !== currentFadeGeneration()) return;
+    perfMark('overlay_fade_settled');
     store.set(overlayFadeSettledAtom, true);
     endOverlayFadeHold();
   });
