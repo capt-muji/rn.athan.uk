@@ -205,7 +205,7 @@ const LATIN: LocaleTypography = {
 // Simplified Chinese rides its own subset pair (plan T-419 decision 8): the full
 // statics run near 10MB a weight, so the bundled pair is cut over the closed
 // string set - every character of the zh-Hans catalog, its native-strings row,
-// its widget-statics row and its endonym, 377 characters, gated by the glyph
+// its widget-statics row and its endonym, 378 characters, gated by the glyph
 // lock (shared/i18n/cjk-glyph-lock.json) - a fortieth of the bytes. This wave's
 // own measurement over the cut subsets (fontTools, both weights): hhea ascent
 // 1160, descent -288, lineGap 0 against UPM 1000, a 1.448em box the win ink
@@ -214,21 +214,6 @@ const LATIN: LocaleTypography = {
 const HANS: LocaleTypography = {
   familyRegular: 'NotoSansSC-Subset-Regular',
   familyMedium: 'NotoSansSC-Subset-Medium',
-  familyDigits: TEXT.family.medium,
-  familyRowTime: TEXT.family.regular,
-  countdownSize: TEXT.sizeLarge,
-  size: (n) => n,
-  lineHeight: (n) => n,
-  letterSpacing: (n) => n,
-  wordFace: true,
-};
-
-// Traditional Chinese rides the TC twin of the same cut: 378 characters, the
-// same measured box (hhea 1160/-288, lineGap 0, win 1160/288, UPM 1000, both
-// weights), so the same row-87 law serves
-const HANT: LocaleTypography = {
-  familyRegular: 'NotoSansTC-Subset-Regular',
-  familyMedium: 'NotoSansTC-Subset-Medium',
   familyDigits: TEXT.family.medium,
   familyRowTime: TEXT.family.regular,
   countdownSize: TEXT.sizeLarge,
@@ -351,7 +336,12 @@ const KANNADA: LocaleTypography = {
 // Ethiopic, same wave's own measurement: the Noto Sans Ethiopic v2.102 pair's
 // hhea box is 1.362em (ascent 1069, descent -293, UPM 1000, both weights) and its
 // win ink matches it exactly (winAscent 1069, winDescent 293), so the box clears
-// the ink and the font's own metrics serve - the Thai row-87 law
+// the ink and the font's own metrics serve - the Thai row-87 law. Tigrinya rides
+// the same pair (T-537): measured in both weights, it carries every character of
+// ti's whole keyed surface, 184 distinct catalog characters, 187 with the
+// native-strings gallery (U+1203, y, 4), all its Ethiopic codepoints
+// inside U+1200-137F, so no font ships for it - the glyph-lock measurement the
+// wave's sourcing record names
 const ETHIOPIC: LocaleTypography = {
   familyRegular: 'NotoSansEthiopic-Regular',
   familyMedium: 'NotoSansEthiopic-Medium',
@@ -386,27 +376,6 @@ const MYANMAR: LocaleTypography = {
   // The endonym's measured ink is 1.470em (fontTools over the shipped pair), past the language
   // rows' 16px Latin-parity pin at sizeDetail 14, so the rows ride their measured box (T-538)
   rowLineHeight: (n) => Math.ceil(n * 1.47),
-};
-
-// No bundled face carries a single Thaana codepoint (measured 2026-10-29), so this
-// wave bundles the Noto Sans Thaana v3.001 pair from the notofonts release statics,
-// under the OFL licence file already in assets/fonts. This wave's own measurement
-// with fontTools over the bundled pair, both weights: UPM 1000, hhea ascent 1069,
-// descent -424, lineGap 0, a 1.493em box, with usWinAscent 1069 and usWinDescent
-// 424 (1.493em), so the box equals the pair's own declared ink bounds, and the
-// block's glyphs run +751 and -306 units at the extremes, inside the box. The box
-// clears the ink, so no script box is pinned - the Thai row-87 law. A 1.5em pin was
-// rejected: no measurement this pair makes asks for it (plan T-453 decision 10)
-const THAANA: LocaleTypography = {
-  familyRegular: 'NotoSansThaana-Regular',
-  familyMedium: 'NotoSansThaana-Medium',
-  familyDigits: TEXT.family.medium,
-  familyRowTime: TEXT.family.regular,
-  countdownSize: TEXT.sizeLarge,
-  size: (n) => n,
-  lineHeight: (n) => n,
-  letterSpacing: (n) => n,
-  wordFace: true,
 };
 
 /** One record per shipped locale: a new language adds its entry here and its id to RTL_IDS
@@ -473,7 +442,6 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   ta: TAMIL,
   ml: MALAYALAM,
   'zh-Hans': HANS,
-  'zh-Hant': HANT,
   // Roboto carries every Spanish diacritic by explicit codepoint in both weights
   // (measured with fontTools, plan T-429 decision 6)
   es: LATIN,
@@ -520,12 +488,11 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   // Roboto carries every Cyrillic codepoint U+0400 through U+04FF except U+0487, the
   // Church Slavonic combining titlo none of the three uses, palochka Ӏ U+04C0 and ӏ
   // U+04CF included (measured by explicit codepoint in both weights over the bundled
-  // TTFs, plan T-454 decision 4): Tatar's ә ғ ҡ ң ө ҫ ү һ җ, Chechen's
-  // ә ҡ ң ӧ ү җ and Ukrainian's і ї є ґ all measured present, so all three take
-  // the LATIN record. The same four-surface census counts 110 distinct characters for
-  // Tatar, 104 for Chechen and 107 for Ukrainian, every one present in both weights
+  // TTFs, plan T-454 decision 4): Tatar's ә ғ ҡ ң ө ҫ ү һ җ and Ukrainian's
+  // і ї є ґ all measured present, so both take the LATIN record. The same
+  // four-surface census counts 110 distinct characters for Tatar and 107 for
+  // Ukrainian, every one present in both weights
   tt: LATIN,
-  ce: LATIN,
   uk: LATIN,
   // Roboto carries Quechua's apostrophes ' and ʼ, its ñ and its è é ê â by explicit
   // codepoint in both weights (measured with fontTools, plan T-454 decision 4), so
@@ -547,24 +514,30 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   skr: URDU,
   bal: URDU,
   kas: URDU,
-  // Thaana reads right to left, so dv joins RTL_IDS with its own bundled pair
-  dv: THAANA,
-  // Afar's orthography is ASCII and Maguindanao's copy needs at most ñ: measured
-  // with fontTools in both weights, Roboto carries every character of both locales'
-  // whole keyed surface (65 and 64 distinct characters, the em dash the only
-  // non-ASCII codepoint in either), and ñ beside it (plan T-453 decision 10)
-  aa: LATIN,
+  // Maguindanao's copy needs at most ñ: measured with fontTools in both weights,
+  // Roboto carries every character of its whole keyed surface (64 distinct
+  // characters, the em dash the only non-ASCII codepoint), and ñ beside it (plan
+  // T-453 decision 10)
   mdh: LATIN,
-  // The Sahel three ride the AFRICAN record's Noto Sans pair (plan T-453 decision 10),
-  // which Bambara and Fulfulde already take for the Sahel Latin letters Roboto and Rubik
-  // lack. None of the three needs one of those letters: the basis is each language's own
-  // orthography on the same Sahel Latin record, and this wave's census over its whole
-  // keyed surface (64, 63 and 64 distinct characters for kr, mnk and dje: kr's
-  // only non-ASCII codepoint is the em dash, mnk and dje add ŋ), every character
-  // carried by both weights, riding the record's measured 1.55em script line
+  // The language wave's Latin five (T-537): measured with fontTools in both
+  // weights, Roboto carries every character of each locale's whole keyed surface
+  // (65 distinct characters for hil, 67 for bcl and mrw, 68 for war, 65 for mfa;
+  // the non-ASCII sets are the em dash shared by the four - mfa's set is pure
+  // ASCII - plus bcl's á â, war's á and mrw's ë, the schwa the KWF 2013
+  // Ortograpiya carries), so all five take LATIN
+  hil: LATIN,
+  bcl: LATIN,
+  war: LATIN,
+  mrw: LATIN,
+  mfa: LATIN,
+  // Tigrinya rides the ETHIOPIC record's shipped pair (T-537): no new font, the
+  // record's comment carries the measurement
+  ti: ETHIOPIC,
+  // Kanuri rides the AFRICAN record's Noto Sans pair (plan T-453 decision 10):
+  // its census over its whole keyed surface counts 64 distinct characters, kr's
+  // only non-ASCII codepoint the em dash, every character carried by both weights,
+  // riding the record's measured 1.55em script line
   kr: AFRICAN,
-  mnk: AFRICAN,
-  dje: AFRICAN,
 };
 
 /**

@@ -126,10 +126,6 @@ const RAW: Record<LocaleId, () => CatalogModule> = {
     const m = require('./zh-Hans') as typeof import('./zh-Hans');
     return { en: m.zhHans, PRAYER_LABELS: m.PRAYER_LABELS };
   },
-  'zh-Hant': () => {
-    const m = require('./zh-Hant') as typeof import('./zh-Hant');
-    return { en: m.zhHant, PRAYER_LABELS: m.PRAYER_LABELS };
-  },
   es: () => {
     const m = require('./es') as typeof import('./es');
     return { en: m.es, PRAYER_LABELS: m.PRAYER_LABELS };
@@ -234,10 +230,6 @@ const RAW: Record<LocaleId, () => CatalogModule> = {
     const m = require('./tt') as typeof import('./tt');
     return { en: m.tt, PRAYER_LABELS: m.PRAYER_LABELS };
   },
-  ce: () => {
-    const m = require('./ce') as typeof import('./ce');
-    return { en: m.ce, PRAYER_LABELS: m.PRAYER_LABELS };
-  },
   uk: () => {
     const m = require('./uk') as typeof import('./uk');
     return { en: m.uk, PRAYER_LABELS: m.PRAYER_LABELS };
@@ -302,14 +294,6 @@ const RAW: Record<LocaleId, () => CatalogModule> = {
     const m = require('./kas') as typeof import('./kas');
     return { en: m.kas, PRAYER_LABELS: m.PRAYER_LABELS };
   },
-  dv: () => {
-    const m = require('./dv') as typeof import('./dv');
-    return { en: m.dv, PRAYER_LABELS: m.PRAYER_LABELS };
-  },
-  aa: () => {
-    const m = require('./aa') as typeof import('./aa');
-    return { en: m.aa, PRAYER_LABELS: m.PRAYER_LABELS };
-  },
   mdh: () => {
     const m = require('./mdh') as typeof import('./mdh');
     return { en: m.mdh, PRAYER_LABELS: m.PRAYER_LABELS };
@@ -318,13 +302,29 @@ const RAW: Record<LocaleId, () => CatalogModule> = {
     const m = require('./kr') as typeof import('./kr');
     return { en: m.kr, PRAYER_LABELS: m.PRAYER_LABELS };
   },
-  mnk: () => {
-    const m = require('./mnk') as typeof import('./mnk');
-    return { en: m.mnk, PRAYER_LABELS: m.PRAYER_LABELS };
+  hil: () => {
+    const m = require('./hil') as typeof import('./hil');
+    return { en: m.hil, PRAYER_LABELS: m.PRAYER_LABELS };
   },
-  dje: () => {
-    const m = require('./dje') as typeof import('./dje');
-    return { en: m.dje, PRAYER_LABELS: m.PRAYER_LABELS };
+  bcl: () => {
+    const m = require('./bcl') as typeof import('./bcl');
+    return { en: m.bcl, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  war: () => {
+    const m = require('./war') as typeof import('./war');
+    return { en: m.war, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mrw: () => {
+    const m = require('./mrw') as typeof import('./mrw');
+    return { en: m.mrw, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mfa: () => {
+    const m = require('./mfa') as typeof import('./mfa');
+    return { en: m.mfa, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ti: () => {
+    const m = require('./ti') as typeof import('./ti');
+    return { en: m.ti, PRAYER_LABELS: m.PRAYER_LABELS };
   },
 };
 

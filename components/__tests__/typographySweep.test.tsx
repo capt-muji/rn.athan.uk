@@ -357,7 +357,9 @@ describe('the language row line box', () => {
   // The four CJK subsets carry a 1.448em line box where Roboto carries 1.172em (T-538): the
   // row pins the Latin-parity box, so the CJK rows measure every other row's height in their
   // own faces too
-  it.each(['zh-Hans', 'zh-Hant', 'ja', 'ko'] as const)('pins the Latin line box under %s', async (locale) => {
+  // zh-Hant left with the language wave (T-537): every zh tag resolves to zh-Hans,
+  // so the Hant subset's pin rode away with the face
+  it.each(['zh-Hans', 'ja', 'ko'] as const)('pins the Latin line box under %s', async (locale) => {
     const label = await languageRowLineBoxUnder(locale);
 
     expect(label.fontSize).toBe(14);

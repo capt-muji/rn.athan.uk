@@ -186,6 +186,8 @@ export const ko = {
   'whatsNew.body.language': '더 많은 언어를 지원합니다',
   'whatsNew.title.moreLanguages': '언어 추가',
   'whatsNew.body.moreLanguages': '더 많은 언어를 지원합니다',
+  'whatsNew.title.languageWave': '새 언어 6개',
+  'whatsNew.body.languageWave': '언어 6개가 추가되고 6개가 종료되었습니다',
   'whatsNew.title.checkUpdates': '업데이트 확인',
   'whatsNew.body.checkUpdates': '업데이트 확인 옵션 추가됨',
   'whatsNew.title.whatsNew': '새로운 소식 페이지',

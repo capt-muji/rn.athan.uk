@@ -185,6 +185,8 @@ export const mr = {
   'whatsNew.body.language': 'अधिक भाषांसाठी आधार जोडला',
   'whatsNew.title.moreLanguages': 'अधिक भाषा',
   'whatsNew.body.moreLanguages': 'अधिक भाषांसाठी आधार जोडला',
+  'whatsNew.title.languageWave': 'सहा नवीन भाषा',
+  'whatsNew.body.languageWave': 'सहा भाषा जोडल्या आणि सहा काढल्या',
   'whatsNew.title.checkUpdates': 'अपडेट तपासा',
   'whatsNew.body.checkUpdates': 'अपडेट तपासा पर्याय जोडला',
   'whatsNew.title.whatsNew': 'नवीन काय आहे पृष्ठ',

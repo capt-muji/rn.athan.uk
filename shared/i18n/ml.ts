@@ -186,6 +186,8 @@ export const ml = {
   'whatsNew.body.language': 'കൂടുതൽ ഭാഷകൾക്കുള്ള പിന്തുണ ചേർത്തു',
   'whatsNew.title.moreLanguages': 'കൂടുതൽ ഭാഷകൾ',
   'whatsNew.body.moreLanguages': 'കൂടുതൽ ഭാഷകൾക്കുള്ള പിന്തുണ ചേർത്തു',
+  'whatsNew.title.languageWave': 'ആറ് പുതിയ ഭാഷകൾ',
+  'whatsNew.body.languageWave': 'ആറ് ഭാഷകൾ ചേർത്തു, ആറ് ഭാഷകൾ നീക്കി',
   'whatsNew.title.checkUpdates': 'അപ്ഡേറ്റുകൾ പരിശോധിക്കുക',
   'whatsNew.body.checkUpdates': 'അപ്ഡേറ്റുകൾ പരിശോധിക്കുക ഓപ്ഷൻ ചേർത്തു',
   'whatsNew.title.whatsNew': 'പുതിയത് പേജ്',

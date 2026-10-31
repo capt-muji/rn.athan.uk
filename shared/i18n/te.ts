@@ -185,6 +185,8 @@ export const te = {
   'whatsNew.body.language': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
   'whatsNew.title.moreLanguages': 'మరిన్ని భాషలు',
   'whatsNew.body.moreLanguages': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
+  'whatsNew.title.languageWave': 'ఆరు కొత్త భాషలు',
+  'whatsNew.body.languageWave': 'ఆరు భాషలు జోడించబడ్డాయి, ఆరు తొలగించబడ్డాయి',
   'whatsNew.title.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి',
   'whatsNew.body.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి ఎంపిక జోడించబడింది',
   'whatsNew.title.whatsNew': 'కొత్తవి పేజీ',

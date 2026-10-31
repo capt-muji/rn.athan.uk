@@ -210,7 +210,6 @@ const LOCALES = [
   'ta',
   'ml',
   'zh-Hans',
-  'zh-Hant',
   'es',
   'nl',
   'kk',
@@ -237,7 +236,6 @@ const LOCALES = [
   'su',
   'my',
   'tt',
-  'ce',
   'uk',
   'qu',
   'min',
@@ -254,12 +252,14 @@ const LOCALES = [
   'skr',
   'bal',
   'kas',
-  'dv',
-  'aa',
   'mdh',
   'kr',
-  'mnk',
-  'dje',
+  'hil',
+  'bcl',
+  'war',
+  'mrw',
+  'mfa',
+  'ti',
 ] as const;
 
 type LocaleRow = Record<(typeof LOCALES)[number], Record<string, string>>;
@@ -447,9 +447,9 @@ describe('the widget statics table', () => {
   // TW, HK or MO region reads Traditional, every other zh tag Simplified, so a
   // zh-TW device's widgets render Traditional and not the en fallback
   it.each([
-    ['zh-TW', 'zh-Hant'],
-    ['zh-HK', 'zh-Hant'],
-    ['zh-MO', 'zh-Hant'],
+    ['zh-TW', 'zh-Hans'],
+    ['zh-HK', 'zh-Hans'],
+    ['zh-MO', 'zh-Hans'],
     ['zh-Hans-CN', 'zh-Hans'],
     ['zh-CN', 'zh-Hans'],
     ['zh-SG', 'zh-Hans'],

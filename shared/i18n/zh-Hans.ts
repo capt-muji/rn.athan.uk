@@ -183,6 +183,8 @@ export const zhHans = {
   'whatsNew.body.language': '新增了更多语言支持',
   'whatsNew.title.moreLanguages': '更多语言',
   'whatsNew.body.moreLanguages': '新增了更多语言支持',
+  'whatsNew.title.languageWave': '六种新语言',
+  'whatsNew.body.languageWave': '新增六种语言，移除六种语言',
   'whatsNew.title.checkUpdates': '检查更新',
   'whatsNew.body.checkUpdates': '新增了检查更新选项',
   'whatsNew.title.whatsNew': '新功能页面',

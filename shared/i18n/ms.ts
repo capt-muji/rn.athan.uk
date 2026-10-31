@@ -186,6 +186,8 @@ export const ms = {
   'whatsNew.body.language': 'Ditambah sokongan untuk lebih banyak bahasa',
   'whatsNew.title.moreLanguages': 'Lebih banyak bahasa',
   'whatsNew.body.moreLanguages': 'Ditambah sokongan untuk lebih banyak bahasa',
+  'whatsNew.title.languageWave': 'Enam bahasa baharu',
+  'whatsNew.body.languageWave': 'Enam bahasa ditambah dan enam dikeluarkan',
   'whatsNew.title.checkUpdates': 'Semak kemas kini',
   'whatsNew.body.checkUpdates': 'Pilihan Semak kemas kini ditambah',
   'whatsNew.title.whatsNew': 'Halaman apa yang baharu',

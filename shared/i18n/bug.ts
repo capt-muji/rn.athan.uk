@@ -189,6 +189,8 @@ export const bug = {
   'whatsNew.body.language': 'Dukunganna basa lain ditambah',
   'whatsNew.title.moreLanguages': 'Basa lain',
   'whatsNew.body.moreLanguages': 'Dukunganna basa lain ditambah',
+  'whatsNew.title.languageWave': 'Enneng basa baru',
+  'whatsNew.body.languageWave': 'Ditambah enneng basa, dibuang enneng basa',
   'whatsNew.title.checkUpdates': 'Cek pabbaru',
   'whatsNew.body.checkUpdates': 'Cek pabbaru ditambah',
   'whatsNew.title.whatsNew': 'Halaman Umba baru',

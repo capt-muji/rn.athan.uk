@@ -186,6 +186,8 @@ export const tr = {
   'whatsNew.body.language': 'Daha fazla dil desteği eklendi',
   'whatsNew.title.moreLanguages': 'Daha fazla dil',
   'whatsNew.body.moreLanguages': 'Daha fazla dil desteği eklendi',
+  'whatsNew.title.languageWave': 'Altı yeni dil',
+  'whatsNew.body.languageWave': 'Altı dil eklendi ve altı dil kaldırıldı',
   'whatsNew.title.checkUpdates': 'Güncellemeleri kontrol et',
   'whatsNew.body.checkUpdates': 'Güncellemeleri kontrol et seçeneği eklendi',
   'whatsNew.title.whatsNew': 'Yenilikler sayfası',

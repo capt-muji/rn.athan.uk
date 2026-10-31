@@ -47,7 +47,6 @@ const LOCALES = [
   'ta',
   'ml',
   'zh-Hans',
-  'zh-Hant',
   'es',
   'nl',
   'kk',
@@ -74,7 +73,6 @@ const LOCALES = [
   'su',
   'my',
   'tt',
-  'ce',
   'uk',
   'qu',
   'min',
@@ -91,18 +89,20 @@ const LOCALES = [
   'skr',
   'bal',
   'kas',
-  'dv',
-  'aa',
   'mdh',
   'kr',
-  'mnk',
-  'dje',
+  'hil',
+  'bcl',
+  'war',
+  'mrw',
+  'mfa',
+  'ti',
 ] as const;
 type NonEnLocale = Exclude<(typeof LOCALES)[number], 'en'>;
 const NON_EN = LOCALES.slice(1) as readonly NonEnLocale[];
 
 /** The locales whose native rows are written in Cyrillic, so a Latin letter in one is a slip */
-const CYRILLIC_SCRIPT: readonly string[] = ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk'];
+const CYRILLIC_SCRIPT: readonly string[] = ['ru', 'kk', 'ky', 'tg', 'tt', 'uk'];
 
 /** The words of a value that carry both scripts, the shape of a homoglyph */
 const mixedWords = (value: string): string[] =>

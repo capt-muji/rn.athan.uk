@@ -1,6 +1,5 @@
 /**
- * The locale resolution core: which of the fifty-eight shipped locales the app speaks,
- * The locale resolution core: which of the fifty-nine shipped locales the app speaks,
+ * The locale resolution core: which of the seventy-five shipped locales the app speaks,
  * and the runtime switch a Settings pick drives (R1.1, R3.1). The resolution
  * half stays pure, so a test can drive the algorithm without a device.
  */
@@ -39,7 +38,6 @@ export const LOCALE_IDS = [
   'ta',
   'ml',
   'zh-Hans',
-  'zh-Hant',
   'es',
   'nl',
   'kk',
@@ -66,7 +64,6 @@ export const LOCALE_IDS = [
   'su',
   'my',
   'tt',
-  'ce',
   'uk',
   'qu',
   'min',
@@ -83,12 +80,14 @@ export const LOCALE_IDS = [
   'skr',
   'bal',
   'kas',
-  'dv',
-  'aa',
   'mdh',
   'kr',
-  'mnk',
-  'dje',
+  'hil',
+  'bcl',
+  'war',
+  'mrw',
+  'mfa',
+  'ti',
 ] as const;
 
 export type LocaleId = (typeof LOCALE_IDS)[number];
@@ -107,7 +106,6 @@ const RTL_IDS: ReadonlySet<LocaleId> = new Set([
   'skr',
   'bal',
   'kas',
-  'dv',
 ]);
 
 export const localeDirection = (id: LocaleId): 'ltr' | 'rtl' => (RTL_IDS.has(id) ? 'rtl' : 'ltr');
@@ -162,20 +160,14 @@ export const setActiveLocale = (id: LocaleId): void => {
  * matches its exact tag, then its language code. Anything else is en.
  *
  * zh is the one language that needs more than the lookup: iOS and Android report
- * it as zh-Hans-CN, zh-Hant-TW, bare zh-TW and more, so a script subtag resolves
- * its written standard and a region subtag falls to CLDR's likely-subtags answer
- * (plan T-419 decision 9). yue never matches here: it is its own language code.
+ * it as zh-Hans-CN, zh-Hant-TW, bare zh-TW and more, so the resolver reads the
+ * script subtag and the region, but since T-537 retired the Traditional catalog
+ * every zh tag resolves Simplified - the ruling's cover: Simplified serves the
+ * Traditional reader too. yue never matches here: it is its own language code.
  */
-const ZH_HANT_REGIONS: ReadonlySet<string> = new Set(['TW', 'HK', 'MO']);
-
-const resolveZhTag = (languageTag: string): 'zh-Hans' | 'zh-Hant' | null => {
+const resolveZhTag = (languageTag: string): 'zh-Hans' | null => {
   if (languageTag !== 'zh' && !languageTag.startsWith('zh-')) return null;
-  if (languageTag.startsWith('zh-Hans')) return 'zh-Hans';
-  if (languageTag.startsWith('zh-Hant')) return 'zh-Hant';
-  const region = languageTag.split('-')[1];
-  // Bare zh reads Simplified: a bare zh entry must never serve a Traditional
-  // reader (R4 A.4)
-  return region !== undefined && ZH_HANT_REGIONS.has(region) ? 'zh-Hant' : 'zh-Hans';
+  return 'zh-Hans';
 };
 
 /**

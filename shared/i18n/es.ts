@@ -191,6 +191,8 @@ export const es = {
   'whatsNew.body.language': 'Se añadió compatibilidad con más idiomas',
   'whatsNew.title.moreLanguages': 'Más idiomas',
   'whatsNew.body.moreLanguages': 'Se añadió compatibilidad con más idiomas',
+  'whatsNew.title.languageWave': 'Seis idiomas nuevos',
+  'whatsNew.body.languageWave': 'Se añaden seis idiomas y se retiran seis',
   'whatsNew.title.checkUpdates': 'Buscar actualizaciones',
   'whatsNew.body.checkUpdates': 'Se añadió la opción Buscar actualizaciones',
   'whatsNew.title.whatsNew': 'Página de novedades',

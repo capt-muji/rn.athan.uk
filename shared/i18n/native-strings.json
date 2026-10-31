@@ -600,30 +600,6 @@
       "Extra Times (Layout 4)": "额外时间（布局 4）"
     }
   },
-  "zh-Hant": {
-    "NSLocationWhenInUseUsageDescription": "您的位置用於計算麥加相對於您所在位置的方向。它絕不會離開您的手機。",
-    "NSUserNotificationsUsageDescription": "接收禮拜時間通知",
-    "gallery": {
-      "Next Prayer (Light)": "下一次禮拜（淺色）",
-      "A countdown to the next prayer.": "距下一次禮拜的倒數。",
-      "Extra Times (Light)": "額外時間（淺色）",
-      "A countdown to the next extra time.": "距下一個額外時間的倒數。",
-      "Next Prayer (Dark)": "下一次禮拜（深色）",
-      "Extra Times (Dark)": "額外時間（深色）",
-      "Next Prayer (Layout 1)": "下一次禮拜（版面配置 1）",
-      "Countdown to the next prayer.": "距下一次禮拜的倒數。",
-      "Extra Times (Layout 1)": "額外時間（版面配置 1）",
-      "Countdown to the next extra time.": "距下一個額外時間的倒數。",
-      "Next Prayer (Layout 2)": "下一次禮拜（版面配置 2）",
-      "Next prayer time.": "下一次禮拜的時間。",
-      "Extra Times (Layout 2)": "額外時間（版面配置 2）",
-      "Next extra time.": "下一個額外時間。",
-      "Next Prayer (Layout 3)": "下一次禮拜（版面配置 3）",
-      "Extra Times (Layout 3)": "額外時間（版面配置 3）",
-      "Next Prayer (Layout 4)": "下一次禮拜（版面配置 4）",
-      "Extra Times (Layout 4)": "額外時間（版面配置 4）"
-    }
-  },
   "es": {
     "NSLocationWhenInUseUsageDescription": "Tu ubicación se usa para saber en qué dirección está La Meca desde donde estás. Nunca sale de tu teléfono.",
     "NSUserNotificationsUsageDescription": "Recibe avisos de las horas de oración",
@@ -1248,30 +1224,6 @@
       "Extra Times (Layout 4)": "Өстәмә вакытлар (Кыяфәт 4)"
     }
   },
-  "ce": {
-    "NSLocationWhenInUseUsageDescription": "КӀибла хьана меттигера йоцуш юьсуш ю, цундела аьтто цунна хьан меттиг лелош ю. Иза телефона чуьра ца го.",
-    "NSUserNotificationsUsageDescription": "Ламазан хенашнан хаамаш тӀелоцийта",
-    "gallery": {
-      "Next Prayer (Light)": "Кхин ламаз (Сирло)",
-      "A countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
-      "Extra Times (Light)": "ДӀахӀумма хенаш (Сирло)",
-      "A countdown to the next extra time.": "Кхин дӀахӀумма хане юхасаккхар.",
-      "Next Prayer (Dark)": "Кхин ламаз (ЧӀогӀа)",
-      "Extra Times (Dark)": "ДӀахӀумма хенаш (ЧӀогӀа)",
-      "Next Prayer (Layout 1)": "Кхин ламаз (Барт 1)",
-      "Countdown to the next prayer.": "Кхин ламазе юхасаккхар.",
-      "Extra Times (Layout 1)": "ДӀахӀумма хенаш (Барт 1)",
-      "Countdown to the next extra time.": "Кхин дӀахӀумма хане юхасаккхар.",
-      "Next Prayer (Layout 2)": "Кхин ламаз (Барт 2)",
-      "Next prayer time.": "Кхин ламазан ха.",
-      "Extra Times (Layout 2)": "ДӀахӀумма хенаш (Барт 2)",
-      "Next extra time.": "Кхин дӀахӀумма ха.",
-      "Next Prayer (Layout 3)": "Кхин ламаз (Барт 3)",
-      "Extra Times (Layout 3)": "ДӀахӀумма хенаш (Барт 3)",
-      "Next Prayer (Layout 4)": "Кхин ламаз (Барт 4)",
-      "Extra Times (Layout 4)": "ДӀахӀумма хенаш (Барт 4)"
-    }
-  },
   "uk": {
     "NSLocationWhenInUseUsageDescription": "Ваше місцезнаходження використовується, щоб визначити, у який бік від вас лежить Мекка. Воно ніколи не покидає ваш телефон.",
     "NSUserNotificationsUsageDescription": "Отримувати сповіщення про часи намазу",
@@ -1656,54 +1608,6 @@
       "Extra Times (Layout 4)": "اِضافئے وَقت (ترتیب 4)"
     }
   },
-  "dv": {
-    "NSLocationWhenInUseUsageDescription": "ޤިބްލާ ހިސާބުކުރަނީ ތިބާ ހުންނަނީ ކޮންތާރެއްތޯ މިންވެގެން، އެހެންކަމުން ލޮކޭޝަންގެ އެހީތެރިކަން ބޭނުންވެއެވެ. އެހާ ކުރާ ފޯނުން ބޭރަށް ނުދާނެ.",
-    "NSUserNotificationsUsageDescription": "ނަމަޒުގެ ވަގުތުގެ އެންގުންތައް ލިބޭނެ",
-    "gallery": {
-      "Next Prayer (Light)": "ކައިރިއަށްވާ ނަމަޒު (ލައިޓް)",
-      "A countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
-      "Extra Times (Light)": "އިތުރު ވަގުތްތައް (ލައިޓް)",
-      "A countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
-      "Next Prayer (Dark)": "ކައިރިއަށްވާ ނަމަޒު (ޑާރކް)",
-      "Extra Times (Dark)": "އިތުރު ވަގުތްތައް (ޑާރކް)",
-      "Next Prayer (Layout 1)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 1)",
-      "Countdown to the next prayer.": "ކައިރިއަށްވާ ނަމަޒުގެ ކައުންޓްޑައުން.",
-      "Extra Times (Layout 1)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 1)",
-      "Countdown to the next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތުގެ ކައުންޓްޑައުން.",
-      "Next Prayer (Layout 2)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 2)",
-      "Next prayer time.": "ކައިރިއަށްވާ ނަމަޒުގެ ވަގުތް.",
-      "Extra Times (Layout 2)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 2)",
-      "Next extra time.": "ކައިރިއަށްވާ އިތުރު ވަގުތް.",
-      "Next Prayer (Layout 3)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 3)",
-      "Extra Times (Layout 3)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 3)",
-      "Next Prayer (Layout 4)": "ކައިރިއަށްވާ ނަމަޒު (ލޭއައުޓް 4)",
-      "Extra Times (Layout 4)": "އިތުރު ވަގުތްތައް (ލޭއައުޓް 4)"
-    }
-  },
-  "aa": {
-    "NSLocationWhenInUseUsageDescription": "Qibla ku duddah yamellek taamitta, usuk gara dudda amollak guruh tan. Usuk koo fonih gideh bayyise mali.",
-    "NSUserNotificationsUsageDescription": "Salaatih waktih milaango gibitta",
-    "gallery": {
-      "Next Prayer (Light)": "Kukubuk salaata (iffa)",
-      "A countdown to the next prayer.": "Kukubuk salaatah kaowntedaan.",
-      "Extra Times (Light)": "Caddow waktitte (iffa)",
-      "A countdown to the next extra time.": "Kukubuk caddow waktih kaowntedaan.",
-      "Next Prayer (Dark)": "Kukubuk salaata (dilmih)",
-      "Extra Times (Dark)": "Caddow waktitte (dilmih)",
-      "Next Prayer (Layout 1)": "Kukubuk salaata (tartiib 1)",
-      "Countdown to the next prayer.": "Kukubuk salaatah kaowntedaan.",
-      "Extra Times (Layout 1)": "Caddow waktitte (tartiib 1)",
-      "Countdown to the next extra time.": "Kukubuk caddow waktih kaowntedaan.",
-      "Next Prayer (Layout 2)": "Kukubuk salaata (tartiib 2)",
-      "Next prayer time.": "Kukubuk salaatah wakti.",
-      "Extra Times (Layout 2)": "Caddow waktitte (tartiib 2)",
-      "Next extra time.": "Kukubuk caddow wakti.",
-      "Next Prayer (Layout 3)": "Kukubuk salaata (tartiib 3)",
-      "Extra Times (Layout 3)": "Caddow waktitte (tartiib 3)",
-      "Next Prayer (Layout 4)": "Kukubuk salaata (tartiib 4)",
-      "Extra Times (Layout 4)": "Caddow waktitte (tartiib 4)"
-    }
-  },
   "mdh": {
     "NSLocationWhenInUseUsageDescription": "Ang qibla ay kinakalkula mula sa kinalalagyan mo, kaya nangangailangan ito ng access sa lokasyon. Hindi ito kailanman umaalis sa iyong telepono.",
     "NSUserNotificationsUsageDescription": "Tumanggap ng mga abiso ng oras ng sambayang",
@@ -1752,52 +1656,148 @@
       "Extra Times (Layout 4)": "Loktura tawatsagana (tartiib 4)"
     }
   },
-  "mnk": {
-    "NSLocationWhenInUseUsageDescription": "Qibla be i jaa ro hesee, a be location amarktoo. A te kottaa i telefoono buloo ro.",
-    "NSUserNotificationsUsageDescription": "Sunkuntu salia wakti lu duwawu",
+  "hil": {
+    "NSLocationWhenInUseUsageDescription": "Ang qibla ginakalkula halin sa diin ka yanda, gani nagakinahanglan ini sang access sa lokasyon. Wala ini gwa sa imong telepono.",
+    "NSUserNotificationsUsageDescription": "Magdawat sang mga pahibalo sang oras sang pagpangamuyo",
     "gallery": {
-      "Next Prayer (Light)": "Salia toomafoo (jarayoo)",
-      "A countdown to the next prayer.": "Kawntidaun salia toomafoo ro.",
-      "Extra Times (Light)": "Wakti tawaa lu (jarayoo)",
-      "A countdown to the next extra time.": "Kawntidaun wakti tawaa toomafoo ro.",
-      "Next Prayer (Dark)": "Salia toomafoo (duloo)",
-      "Extra Times (Dark)": "Wakti tawaa lu (duloo)",
-      "Next Prayer (Layout 1)": "Salia toomafoo (layout 1)",
-      "Countdown to the next prayer.": "Kawntidaun salia toomafoo ro.",
-      "Extra Times (Layout 1)": "Wakti tawaa lu (layout 1)",
-      "Countdown to the next extra time.": "Kawntidaun wakti tawaa toomafoo ro.",
-      "Next Prayer (Layout 2)": "Salia toomafoo (layout 2)",
-      "Next prayer time.": "Salia toomafoo wakti.",
-      "Extra Times (Layout 2)": "Wakti tawaa lu (layout 2)",
-      "Next extra time.": "Wakti tawaa toomafoo wakti.",
-      "Next Prayer (Layout 3)": "Salia toomafoo (layout 3)",
-      "Extra Times (Layout 3)": "Wakti tawaa lu (layout 3)",
-      "Next Prayer (Layout 4)": "Salia toomafoo (layout 4)",
-      "Extra Times (Layout 4)": "Wakti tawaa lu (layout 4)"
+      "Next Prayer (Light)": "Masunod nga Pagpangamuyo (Maliwanag)",
+      "A countdown to the next prayer.": "Kawnangdown sa masunod nga pagpangamuyo.",
+      "Extra Times (Light)": "Mga Dugang nga Oras (Maliwanag)",
+      "A countdown to the next extra time.": "Kawnangdown sa masunod nga dugang nga oras.",
+      "Next Prayer (Dark)": "Masunod nga Pagpangamuyo (Madulom)",
+      "Extra Times (Dark)": "Mga Dugang nga Oras (Madulom)",
+      "Next Prayer (Layout 1)": "Masunod nga Pagpangamuyo (Layout 1)",
+      "Countdown to the next prayer.": "Kawnangdown sa masunod nga pagpangamuyo.",
+      "Extra Times (Layout 1)": "Mga Dugang nga Oras (Layout 1)",
+      "Countdown to the next extra time.": "Kawnangdown sa masunod nga dugang nga oras.",
+      "Next Prayer (Layout 2)": "Masunod nga Pagpangamuyo (Layout 2)",
+      "Next prayer time.": "Oras sang masunod nga pagpangamuyo.",
+      "Extra Times (Layout 2)": "Mga Dugang nga Oras (Layout 2)",
+      "Next extra time.": "Masunod nga dugang nga oras.",
+      "Next Prayer (Layout 3)": "Masunod nga Pagpangamuyo (Layout 3)",
+      "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
+      "Next Prayer (Layout 4)": "Masunod nga Pagpangamuyo (Layout 4)",
+      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)"
     }
   },
-  "dje": {
-    "NSLocationWhenInUseUsageDescription": "Qibla ga i doo ga hesey, a ga location duwaa. A ma hun telfoon i se gure.",
-    "NSUserNotificationsUsageDescription": "Ibaasiya jinai wuray se duwawu",
+  "bcl": {
+    "NSLocationWhenInUseUsageDescription": "Kinakalkula an qibla hale sa lugar na kaini ka, kaya kaipuhan kaini an access sa lokasyon. Dai ini naghahale sa telepono mo.",
+    "NSUserNotificationsUsageDescription": "Magresibi nin mga abiso sa oras nin pagpangadyi",
     "gallery": {
-      "Next Prayer (Light)": "Jinai tooma (bayray)",
-      "A countdown to the next prayer.": "Kawntidawn jinai tooma ga.",
-      "Extra Times (Light)": "Waktu taway (bayray)",
-      "A countdown to the next extra time.": "Kawntidawn waktu tooma ga.",
-      "Next Prayer (Dark)": "Jinai tooma (biyey)",
-      "Extra Times (Dark)": "Waktu taway (biyey)",
-      "Next Prayer (Layout 1)": "Jinai tooma (layout 1)",
-      "Countdown to the next prayer.": "Kawntidawn jinai tooma ga.",
-      "Extra Times (Layout 1)": "Waktu taway (layout 1)",
-      "Countdown to the next extra time.": "Kawntidawn waktu tooma ga.",
-      "Next Prayer (Layout 2)": "Jinai tooma (layout 2)",
-      "Next prayer time.": "Jinai tooma waktu.",
-      "Extra Times (Layout 2)": "Waktu taway (layout 2)",
-      "Next extra time.": "Waktu tooma.",
-      "Next Prayer (Layout 3)": "Jinai tooma (layout 3)",
-      "Extra Times (Layout 3)": "Waktu taway (layout 3)",
-      "Next Prayer (Layout 4)": "Jinai tooma (layout 4)",
-      "Extra Times (Layout 4)": "Waktu taway (layout 4)"
+      "Next Prayer (Light)": "Sunod na Pagpangadyi (Maliwanag)",
+      "A countdown to the next prayer.": "Pagbilang pabalik sa sunod na pagpangadyi.",
+      "Extra Times (Light)": "Mga Dagdag na Oras (Maliwanag)",
+      "A countdown to the next extra time.": "Pagbilang pabalik sa sunod na dagdag na oras.",
+      "Next Prayer (Dark)": "Sunod na Pagpangadyi (Madiklom)",
+      "Extra Times (Dark)": "Mga Dagdag na Oras (Madiklom)",
+      "Next Prayer (Layout 1)": "Sunod na Pagpangadyi (Layout 1)",
+      "Countdown to the next prayer.": "Pagbilang pabalik sa sunod na pagpangadyi.",
+      "Extra Times (Layout 1)": "Mga Dagdag na Oras (Layout 1)",
+      "Countdown to the next extra time.": "Pagbilang pabalik sa sunod na dagdag na oras.",
+      "Next Prayer (Layout 2)": "Sunod na Pagpangadyi (Layout 2)",
+      "Next prayer time.": "Oras kan sunod na pagpangadyi.",
+      "Extra Times (Layout 2)": "Mga Dagdag na Oras (Layout 2)",
+      "Next extra time.": "Sunod na dagdag na oras.",
+      "Next Prayer (Layout 3)": "Sunod na Pagpangadyi (Layout 3)",
+      "Extra Times (Layout 3)": "Mga Dagdag na Oras (Layout 3)",
+      "Next Prayer (Layout 4)": "Sunod na Pagpangadyi (Layout 4)",
+      "Extra Times (Layout 4)": "Mga Dagdag na Oras (Layout 4)"
+    }
+  },
+  "war": {
+    "NSLocationWhenInUseUsageDescription": "Ginakalkula an qibla tikang ha diin ka yana, busa kinahanglan ini hin access ha lokasyon. Diri ini nabubalhin ha imo telepono.",
+    "NSUserNotificationsUsageDescription": "Magdawat hin mga abiso han oras han pangadi",
+    "gallery": {
+      "Next Prayer (Light)": "Masunod nga Pangadi (Maliwanag)",
+      "A countdown to the next prayer.": "Pagbilang ha masunod nga pangadi.",
+      "Extra Times (Light)": "Mga Dugang nga Oras (Maliwanag)",
+      "A countdown to the next extra time.": "Pagbilang ha masunod nga dugang nga oras.",
+      "Next Prayer (Dark)": "Masunod nga Pangadi (Dusok)",
+      "Extra Times (Dark)": "Mga Dugang nga Oras (Dusok)",
+      "Next Prayer (Layout 1)": "Masunod nga Pangadi (Layout 1)",
+      "Countdown to the next prayer.": "Pagbilang ha masunod nga pangadi.",
+      "Extra Times (Layout 1)": "Mga Dugang nga Oras (Layout 1)",
+      "Countdown to the next extra time.": "Pagbilang ha masunod nga dugang nga oras.",
+      "Next Prayer (Layout 2)": "Masunod nga Pangadi (Layout 2)",
+      "Next prayer time.": "Oras han masunod nga pangadi.",
+      "Extra Times (Layout 2)": "Mga Dugang nga Oras (Layout 2)",
+      "Next extra time.": "Masunod nga dugang nga oras.",
+      "Next Prayer (Layout 3)": "Masunod nga Pangadi (Layout 3)",
+      "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
+      "Next Prayer (Layout 4)": "Masunod nga Pangadi (Layout 4)",
+      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)"
+    }
+  },
+  "ti": {
+    "NSLocationWhenInUseUsageDescription": "ቐብላ ካብ ኣብታ ዘለኩም ቦታ ትሕሰብ እያ፣ ስለዚ ፍቓድ ቦታ ትሓትት። ካብ ተሌፎንኩም ኣይትሓድጥን።",
+    "NSUserNotificationsUsageDescription": "ፅንሒታት ግዜ ስላት ተቐበሉ",
+    "gallery": {
+      "Next Prayer (Light)": "ዝቕጽል ስላት (ብርሃናዊ)",
+      "A countdown to the next prayer.": "ቆጸራ ናብ ዝቕጽል ስላት።",
+      "Extra Times (Light)": "ተወሳኺ ግዜታት (ብርሃናዊ)",
+      "A countdown to the next extra time.": "ቆጸራ ናብ ዝቕጽል ተወሳኺ ግዜ።",
+      "Next Prayer (Dark)": "ዝቕጽል ስላት (ጸልማዊ)",
+      "Extra Times (Dark)": "ተወሳኺ ግዜታት (ጸልማዊ)",
+      "Next Prayer (Layout 1)": "ዝቕጽል ስላት (Layout 1)",
+      "Countdown to the next prayer.": "ቆጸራ ናብ ዝቕጽል ስላት።",
+      "Extra Times (Layout 1)": "ተወሳኺ ግዜታት (Layout 1)",
+      "Countdown to the next extra time.": "ቆጸራ ናብ ዝቕጽል ተወሳኺ ግዜ።",
+      "Next Prayer (Layout 2)": "ዝቕጽል ስላት (Layout 2)",
+      "Next prayer time.": "ግዜ ዝቕጽል ስላት።",
+      "Extra Times (Layout 2)": "ተወሳኺ ግዜታት (Layout 2)",
+      "Next extra time.": "ዝቕጽል ተወሳኺ ግዜ።",
+      "Next Prayer (Layout 3)": "ዝቕጽል ስላት (Layout 3)",
+      "Extra Times (Layout 3)": "ተወሳኺ ግዜታት (Layout 3)",
+      "Next Prayer (Layout 4)": "ዝቕጽል ስላት (Layout 4)",
+      "Extra Times (Layout 4)": "ተወሳኺ ግዜታት (Layout 4)"
+    }
+  },
+  "mrw": {
+    "NSLocationWhenInUseUsageDescription": "Ang qibla ay kinakalkula mula sa kinalalagyan mo, kaya nangangailangan ito ng access sa lokasyon. Hindi ito kailanman umaalis sa iyong telepono.",
+    "NSUserNotificationsUsageDescription": "Tumanggap ng mga abiso ng oras ng sambayang",
+    "gallery": {
+      "Next Prayer (Light)": "Susunod na sambayang (Maliwanag)",
+      "A countdown to the next prayer.": "Kawnangdown sa susunod na sambayang.",
+      "Extra Times (Light)": "Mga Karagdagang Oras (Maliwanag)",
+      "A countdown to the next extra time.": "Kawnangdown sa susunod na karagdagang oras.",
+      "Next Prayer (Dark)": "Susunod na sambayang (Madilim)",
+      "Extra Times (Dark)": "Mga Karagdagang Oras (Madilim)",
+      "Next Prayer (Layout 1)": "Susunod na sambayang (Layout 1)",
+      "Countdown to the next prayer.": "Kawnangdown sa susunod na sambayang.",
+      "Extra Times (Layout 1)": "Mga Karagdagang Oras (Layout 1)",
+      "Countdown to the next extra time.": "Kawnangdown sa susunod na karagdagang oras.",
+      "Next Prayer (Layout 2)": "Susunod na sambayang (Layout 2)",
+      "Next prayer time.": "Oras ng susunod na sambayang.",
+      "Extra Times (Layout 2)": "Mga Karagdagang Oras (Layout 2)",
+      "Next extra time.": "Susunod na karagdagang oras.",
+      "Next Prayer (Layout 3)": "Susunod na sambayang (Layout 3)",
+      "Extra Times (Layout 3)": "Mga Karagdagang Oras (Layout 3)",
+      "Next Prayer (Layout 4)": "Susunod na sambayang (Layout 4)",
+      "Extra Times (Layout 4)": "Mga Karagdagang Oras (Layout 4)"
+    }
+  },
+  "mfa": {
+    "NSLocationWhenInUseUsageDescription": "Lokasi awak digunakan untuk menentukan arah Makkah dari tempat awak berada. Ia tidak pernah keluar dari telepon awak.",
+    "NSUserNotificationsUsageDescription": "Terima notifikasi waktu sembayang",
+    "gallery": {
+      "Next Prayer (Light)": "Sembayang Seterusnya (Cerah)",
+      "A countdown to the next prayer.": "Kiraan detik ke sembayang seterusnya.",
+      "Extra Times (Light)": "Masa Tambahan (Cerah)",
+      "A countdown to the next extra time.": "Kiraan detik ke masa tambahan seterusnya.",
+      "Next Prayer (Dark)": "Sembayang Seterusnya (Gelap)",
+      "Extra Times (Dark)": "Masa Tambahan (Gelap)",
+      "Next Prayer (Layout 1)": "Sembayang Seterusnya (Susun atur 1)",
+      "Countdown to the next prayer.": "Kiraan detik ke sembayang seterusnya.",
+      "Extra Times (Layout 1)": "Masa Tambahan (Susun atur 1)",
+      "Countdown to the next extra time.": "Kiraan detik ke masa tambahan seterusnya.",
+      "Next Prayer (Layout 2)": "Sembayang Seterusnya (Susun atur 2)",
+      "Next prayer time.": "Waktu sembayang seterusnya.",
+      "Extra Times (Layout 2)": "Masa Tambahan (Susun atur 2)",
+      "Next extra time.": "Masa tambahan seterusnya.",
+      "Next Prayer (Layout 3)": "Sembayang Seterusnya (Susun atur 3)",
+      "Extra Times (Layout 3)": "Masa Tambahan (Susun atur 3)",
+      "Next Prayer (Layout 4)": "Sembayang Seterusnya (Susun atur 4)",
+      "Extra Times (Layout 4)": "Masa Tambahan (Susun atur 4)"
     }
   }
 }

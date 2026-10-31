@@ -187,6 +187,8 @@ export const my = {
   'whatsNew.body.language': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
   'whatsNew.title.moreLanguages': 'ဘာသာစကား ပိုမို',
   'whatsNew.body.moreLanguages': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
+  'whatsNew.title.languageWave': 'ဘာသာစကားအသစ် ခြောက်မျိုး',
+  'whatsNew.body.languageWave': 'ဘာသာစကား ခြောက်မျိုး ထပ်ထည့်၍ ခြောက်မျိုး ဖျက်သည်',
   'whatsNew.title.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန်',
   'whatsNew.body.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန် ရွေးချယ်ချက် ထည့်ပေးခဲ့သည်',
   'whatsNew.title.whatsNew': 'ဘာအသစ်ရှိလဲ စာမျက်နှာ',

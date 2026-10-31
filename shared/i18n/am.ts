@@ -184,6 +184,8 @@ export const am = {
   'whatsNew.body.language': 'ለተጨማሪ ቋንቋዎች ድጋፍ ተጨምሯል',
   'whatsNew.title.moreLanguages': 'ተጨማሪ ቋንቋዎች',
   'whatsNew.body.moreLanguages': 'ለተጨማሪ ቋንቋዎች ድጋፍ ተጨምሯል',
+  'whatsNew.title.languageWave': 'ስድስት አዳዲስ ቋንቋዎች',
+  'whatsNew.body.languageWave': 'ስድስት ቋንቋዎች ተጨመሩ፣ ስድስት ተወገዱ',
   'whatsNew.title.checkUpdates': 'ማሻሻያዎችን ፈትሽ',
   'whatsNew.body.checkUpdates': 'የማሻሻያ ፍተሻ ምርጫ ተጨምሯል',
   'whatsNew.title.whatsNew': 'የአዲስ ገጽ',

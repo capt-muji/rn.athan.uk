@@ -185,6 +185,8 @@ export const jv = {
   'whatsNew.body.language': 'Dhukungan kanggo basa liyané ditambahaké',
   'whatsNew.title.moreLanguages': 'Basa liyané',
   'whatsNew.body.moreLanguages': 'Dhukungan kanggo basa liyané ditambahaké',
+  'whatsNew.title.languageWave': 'Basa enem anyar',
+  'whatsNew.body.languageWave': 'Basa enem ditambahaké lan enem dicabut',
   'whatsNew.title.checkUpdates': 'Priksa anyaran',
   'whatsNew.body.checkUpdates': 'Opsi Priksa anyaran ditambahaké',
   'whatsNew.title.whatsNew': 'Kaca apa sing anyar',
