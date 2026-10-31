@@ -8,6 +8,7 @@ import { useAtomValue } from 'jotai';
 import { useEffect } from 'react';
 
 import EntranceRehearsal from '@/components/warmup/EntranceRehearsal';
+import SheetWarmup from '@/components/warmup/SheetWarmup';
 import { beginIdleLadder, WARMUP_STAGE, warmupStageAtom } from '@/stores/warmup';
 
 export default function IdleLadder() {
@@ -17,5 +18,10 @@ export default function IdleLadder() {
     beginIdleLadder();
   }, []);
 
-  return <>{stage === WARMUP_STAGE.REHEARSAL && <EntranceRehearsal />}</>;
+  return (
+    <>
+      {stage === WARMUP_STAGE.REHEARSAL && <EntranceRehearsal />}
+      {stage >= WARMUP_STAGE.SHEET_BODIES && <SheetWarmup />}
+    </>
+  );
 }

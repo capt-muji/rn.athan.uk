@@ -59,7 +59,8 @@ const mapSlots = (
   change: (reminder: ReminderSetting, slot: ReminderSlot) => ReminderSetting
 ): PerReminderSlot<ReminderSetting> => [change(reminders[0], 0), change(reminders[1], 1)];
 
-interface AlertSheetBodyProps {
+/** Exported for the idle ladder's warm copy, which renders the body with a placeholder state (T-327 step 24) */
+export interface AlertSheetBodyProps {
   sheetState: AlertSheetState;
   /** The open session: the body re-derives its draft when it changes, instead of remounting */
   session: number;
@@ -143,7 +144,8 @@ export default function BottomSheetAlert() {
  * choices live in the draft's preservedAlerts alone until the athan turns
  * back on.
  */
-const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(
+/** The alert sheet's content, exported so the idle ladder can mount a warm copy off-screen: all state is body-local (drafts and baselines read the stores, nothing writes them), and the wrapper reaches in only through the ref at close */
+export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>(
   ({ sheetState, session, ensurePermissions }, ref) => {
     // The store's own settings for this prayer, snapshotted at open and at every
     // session change: the baseline the commit rolls back to, and the preserved

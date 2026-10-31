@@ -36,8 +36,23 @@ jest.mock('@/components/warmup/EntranceRehearsal', () => {
   };
   return { __esModule: true, default: Rig, ledger };
 });
+jest.mock('@/components/warmup/SheetWarmup', () => {
+  const { useEffect } = require('react');
+  const ledger = { mounted: false };
+  const Warmup = () => {
+    useEffect(() => {
+      ledger.mounted = true;
+      return () => {
+        ledger.mounted = false;
+      };
+    }, []);
+    return null;
+  };
+  return { __esModule: true, default: Warmup, ledger };
+});
 
 const rehearsalMounted = () => jest.requireMock('@/components/warmup/EntranceRehearsal').ledger.mounted;
+const warmupMounted = () => jest.requireMock('@/components/warmup/SheetWarmup').ledger.mounted;
 
 const setStage = async (stage: number) => {
   await act(async () => {
@@ -58,13 +73,18 @@ describe('the idle ladder mount point', () => {
     expect(rehearsalMounted()).toBe(false);
   });
 
-  it('renders the entrance rehearsal while its stage is the current one, and drops it once it settled', async () => {
+  it('renders the entrance rehearsal while its stage is the current one, then the warm bodies for the session', async () => {
     await setStage(WARMUP_STAGE.REHEARSAL);
     await render(<IdleLadder />);
     expect(rehearsalMounted()).toBe(true);
+    expect(warmupMounted()).toBe(false);
 
     await setStage(WARMUP_STAGE.SHEET_BODIES);
     expect(rehearsalMounted()).toBe(false);
+    expect(warmupMounted()).toBe(true);
+
+    await setStage(WARMUP_STAGE.COMPLETE);
+    expect(warmupMounted()).toBe(true);
   });
 
   it('asks the store to arm on every mount, and re-renders never ask again', async () => {
