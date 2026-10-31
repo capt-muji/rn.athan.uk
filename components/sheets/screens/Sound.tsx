@@ -1,16 +1,10 @@
-import {
-  type AudioPlayer,
-  type AudioSource,
-  setAudioModeAsync,
-  useAudioPlayer,
-  useAudioPlayerStatus,
-} from 'expo-audio';
+import { type AudioPlayer, setAudioModeAsync, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ATHAN_DURATION_SECONDS, athanAudio } from '@/assets/audio';
+import { ATHAN_COUNT, ATHAN_DURATION_SECONDS, athanPreviewSource } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { useNotification } from '@/hooks/useNotification';
@@ -72,8 +66,9 @@ interface EngineProps {
  */
 function SoundAudioEngine({ pendingPlay, onPlayer, onStatus }: EngineProps) {
   const playingIndex = useAtomValue(playingSoundIndexAtom);
-  // The clip module resolves here, on the play press that set the index - the inline require
-  const playingSource = playingIndex !== null ? (athanAudio(playingIndex) as AudioSource) : null;
+  // The source names the OS's own copy of the clip - the one the notifications
+  // read - so no second Metro asset copy rides the build
+  const playingSource = playingIndex !== null ? athanPreviewSource(playingIndex) : null;
   const player = useAudioPlayer(playingSource);
   const status = useAudioPlayerStatus(player);
 
@@ -287,9 +282,9 @@ export default function BottomSheetSound() {
             <Animated.View style={[styles.indicator, indicatorStyle]} />
 
             {/* Sound items */}
-            {ATHAN_DURATION_SECONDS.map((_, index) => (
+            {Array.from({ length: ATHAN_COUNT }, (_, index) => (
               <SoundItem
-                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_DURATION_SECONDS is a static list, never reordered or filtered
+                // biome-ignore lint/suspicious/noArrayIndexKey: the row list is static, never reordered or filtered
                 key={index}
                 index={index}
                 isSelected={index === currentSelection}

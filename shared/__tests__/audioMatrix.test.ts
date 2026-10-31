@@ -47,16 +47,19 @@ const slug = prayerNameSlug;
 
 /**
  * How many athans the sound sheet offers, read from the source text rather than imported:
- * `assets/audio/index.ts` require()s the mp3 binaries, which jest cannot parse.
- * Same approach athanDurations.test.ts uses for the same reason.
+ * `assets/audio/index.ts` derives its rows from ATHAN_DURATION_SECONDS, whose mp3-relative
+ * comment history predates the array. Same approach athanDurations.test.ts uses.
  */
 const athanCount = (): number => {
   const source = readFileSync(join(ROOT, 'assets', 'audio', 'index.ts'), 'utf8');
-  const match = source.match(/ATHAN_AUDIOS\s*=\s*\[([^\]]*)\]/);
+  const match = source.match(/ATHAN_COUNT\s*=\s*ATHAN_DURATION_SECONDS\.length;/);
 
-  if (!match) throw new Error('ATHAN_AUDIOS array not found in assets/audio/index.ts');
+  if (!match) throw new Error('ATHAN_COUNT derivation not found in assets/audio/index.ts');
 
-  return match[1].split('require(').length - 1;
+  const durations = source.match(/ATHAN_DURATION_SECONDS\s*=\s*\[([^\]]*)\]/);
+  if (!durations) throw new Error('ATHAN_DURATION_SECONDS array not found in assets/audio/index.ts');
+
+  return durations[1].split(',').filter((value) => value.trim() !== '').length;
 };
 
 /** Every sound file the code can ask for, derived the same way the code derives it */

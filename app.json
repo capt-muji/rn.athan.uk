@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.42.23",
+    "version": "2.42.24",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -327,10 +327,12 @@
       ],
       "./plugins/gradleJvmMemory",
       "./plugins/duoTallCanvas",
+      "./plugins/androidPackagingExcludes",
       "./plugins/replacePreviousNotification",
       "./plugins/removeFirebaseInitProvider",
       "expo-asset",
       "expo-background-task",
+      "./plugins/iosReleaseSettings",
       [
         "expo-widgets",
         {
