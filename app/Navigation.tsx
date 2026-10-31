@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { memo, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -15,6 +15,7 @@ import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
+import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { toggleOverlay } from '@/stores/overlay';
 
@@ -40,10 +41,21 @@ export default function Navigation() {
 
   const direction = localeDirection(currentLocaleId());
 
+  // A page-snap write gated behind the slide: released at the pager's rest
+  const gatedOverlayCloseRef = useRef<(() => void) | null>(null);
+
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
     if (state === 'dragging' || state === 'settling') {
+      // The slide is an animation window: per-second writes stand down for it,
+      // and the pager's own rest re-admits them
+      openAnimationEpoch();
       perfMark('pager_swipe_start');
+    } else if (state === 'idle') {
+      closeAnimationEpoch();
+      const gatedClose = gatedOverlayCloseRef.current;
+      gatedOverlayCloseRef.current = null;
+      gatedClose?.();
     }
   };
 
@@ -57,7 +69,10 @@ export default function Navigation() {
     const overlay = getDefaultStore().get(overlayAtom);
     const settledSchedule = position === 0 ? ScheduleType.Standard : ScheduleType.Extra;
     if (overlay.isOn && settledSchedule !== overlay.scheduleType) {
-      toggleOverlay(false);
+      // The close is a whole-overlay store batch and the snap still owes the
+      // settle tail, so the write rides the slide's rest instead of landing
+      // inside it
+      gatedOverlayCloseRef.current = () => toggleOverlay(false);
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });

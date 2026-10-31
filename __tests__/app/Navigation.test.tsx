@@ -12,6 +12,7 @@ import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
+import { animationEpochOpen, closeAnimationEpoch } from '@/stores/animationEpoch';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { openOverlay } from '@/stores/overlay';
 
@@ -42,9 +43,11 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
-  // The locale cases mutate module state; every later assertion reads en
+  // The locale cases mutate module state; every later assertion reads en. The epoch is module
+  // state too: a slide left open would leak its window into the next case
   afterEach(() => {
     setActiveLocale('en');
+    closeAnimationEpoch();
   });
 
   it('shows the Standard and Extras lists once the first frame has passed', async () => {
@@ -76,6 +79,43 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(perfMark).not.toHaveBeenCalledWith('pager_swipe_start');
   });
 
+  // The slide is an animation window: the epoch it opens stands the per-second writes down so
+  // nothing writes mid-slide, exactly as a sheet entrance does
+  it.each(['dragging', 'settling'])('opens the animation epoch while the pager reports %s', async (pageScrollState) => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState } });
+
+    expect(animationEpochOpen()).toBe(true);
+  });
+
+  it('closes the animation epoch when the pager rests', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'dragging' } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+
+    expect(animationEpochOpen()).toBe(false);
+  });
+
+  // Only the pager's rest closes the window: a state a future library version
+  // adds is neither a slide's start nor its rest, so it must leave the window
+  // and any gated write alone
+  it('treats an unknown pager state as neither slide nor rest', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'dragging' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'decelerating' } });
+
+    expect(animationEpochOpen()).toBe(true);
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+  });
+
   it('measures a swipe against the page it settled on', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Navigation />);
@@ -85,13 +125,30 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(perfMeasure).toHaveBeenCalledWith('pager_page', 'pager_swipe_start', { position: 1 });
   });
 
-  it('closes an overlay open on the Standard list when a swipe settles on the Extras page', async () => {
+  // setCurrentPage is the dots' own animation trigger, so it stays at the snap - not gated
+  // with the store write, which would blank the flip until the slide rested
+  it('flips the dots the moment the snap names the page', async () => {
     showLondonDay('2026-09-11', '14:00');
-    openOverlay(ScheduleType.Standard, MAGRIB);
     await render(<Navigation />);
 
     await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
 
+    expect(screen.getByTestId('schedule-dot-0', { includeHiddenElements: true })).toHaveStyle({ opacity: 0.25 });
+    expect(screen.getByTestId('schedule-dot-1', { includeHiddenElements: true })).toHaveStyle({ opacity: 1 });
+  });
+
+  // The self-heal close is a whole-overlay store batch, so it rides the slide's rest: the snap
+  // still owes the settle tail, and no store write may land inside it
+  it("closes an overlay open on the Standard list when a swipe settles on the Extras page, at the slide's rest", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
@@ -100,7 +157,9 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     openOverlay(ScheduleType.Standard, MAGRIB);
     await render(<Navigation />);
 
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
     await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 0 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
 
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
   });
