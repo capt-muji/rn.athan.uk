@@ -1,5 +1,5 @@
 {
-  "_comment": "OnePlus 3T (3T_SERIAL) medians, Release gate-ON, dev env (mock API: every launch runs the mock refresh production never does — deltas are valid across builds sharing the env, absolute startup numbers are NOT comparable to production). s7 build (2026-09-06); overlay marks and idle re-based 2026-09-11 (see _2026_09_11); animation floors re-based 2026-10-30 on a PRODUCTION build (see _2026_10_30).",
+  "_comment": "OnePlus 3T (3T_SERIAL) medians, Release gate-ON, dev env (mock API: every launch runs the mock refresh production never does — deltas are valid across builds sharing the env, absolute startup numbers are NOT comparable to production). s7 build (2026-09-06); overlay marks and idle re-based 2026-09-11 (see _2026_09_11); animation floors re-based 2026-10-30 on a PRODUCTION build (see _2026_10_30); the 60fps mandate's second-run audit block 2026-10-31 (see _2026_10_31).",
   "js_to_content": 1076,
   "overlay_open": 240,
   "overlay_close": 240,
@@ -30,6 +30,22 @@
     "overlay_close_steady": "PASS 16-17ms cadence after the entrance (body gaps 9-27ms across sf captures, mid-entrance bodies to 32ms) - the old UNPROVEN verdict's corrected run.",
     "pager_swipe": "PASS on the compositor's word: 4 of 6 valid captures strictly clean (max 32.3ms), the only strict miss one 41ms single-gap sf run; both valid duals SF dead-zone-free (the std->extras dual's single 689ms video zone reads encoder loss; the corrected extras->std dual SEPARATION CLEAN on both). Settle cadence 15-30ms, tails 16-17ms. Protocol note: an extras->std audit needs PRE_SWIPE (a relaunch lands on standard and the rightward swipe otherwise measures the overscroll glow).",
     "late_burst": "Defect C stands unowned: presents ~1.2-1.8s after every input, and a ~17ms-cadence present train for ~350ms beyond the window on the extras page (the wall-second ticker's display writes)."
+  },
+  "_2026_10_31": {
+    "method": "T-327 step 23, the 60fps mandate's closing audit: SECOND-RUN is the bar (order 5071: first run warm-up, captured run second; force-stop between families only). Production build 2.42.33 (3c509cbc, real API, owner's cert) on the 3T - agent-ruled equivalent to the branch tip 865b4c2b/2.42.34, whose only diff is the atlas row and version stamps. Recorder-free SF present-gap lists per D16, window [stamp-300ms, stamp+WINDOW]: `input tap` takes 410-450ms on this device with the touch injected mid-command (bracket-measured), so tween-scale animations sit inside the stamp lag - gap magnitudes exact, positions carry that stated skew. Verdicts in two forms (step 25's convention): STRICT at 33ms across the interaction window, and ANIMATION-ONLY (write-after-settle sanctions post-animation commits, order 5071). Evidence: $HOME/athan-gitree/out/t327-s23/transcript.md.",
+    "overlay_open_second": "FAIL 2/2 (strict and animation): one tap-adjacent 43-57ms gap, entrance body 16.7-17.2ms median. WAVE 1, step 25's named finding, unchanged on the same binary - the honest baseline, not fudged.",
+    "overlay_close_second": "FAIL 2/2: one 49-52ms gap at the entrance's start, body 16.7-20.3ms median - the standing close shape (_2026_10_30's marginal FAIL, persisting).",
+    "pager_swipe_second": "PASS 4/4 both directions, strictly clean: 16.7-16.8ms median through the turn, max 20-28ms. Step 20's verdict re-proven on the standing branch.",
+    "sheet_settings_second": "PASS 2/2: 16.8ms median, max 27ms - the step 18 warm entrance holds the bar.",
+    "sheet_alert_second": "PASS 2/2: 16.7-16.8ms median, max 30ms.",
+    "sheet_qibla_second": "PASS 2/2: 16.1-16.7ms median; the calibration wave presents at a perfect 17ms while it runs and rests once the heading settles (the active gate).",
+    "sheet_sound_second": "FAIL 2/2: a 146-182ms present block ~114ms into the interaction, then the entrance clean at 16.7ms - the old first-open mount cap (_s7_notes) survives the warm path, shrunk from ~600ms to ~180ms but not killed. The audit's heaviest new finding.",
+    "sheet_language_second": "FAIL 2/2: same shape, 73-138ms at ~119ms in; body 16.8ms. Both list-carrying push sheets pay it; the light qibla push sheet does not; attribution (settings-close settle vs the destination's heavy warm tree) needs a marked build.",
+    "toggle_settings_second": "ANIMATION PASS (tweens 14-23ms, clean); strict FAIL on the 104ms tap-to-animation latency (Show seconds) and the 177ms post-tween quiet before Show-time-passed's settle wave (itself a clean 12-present train). No write lands inside any tween - step 21's gate holds.",
+    "toggle_alert_second": "ANIMATION PASS: the athan segment pill 13-18ms, the reminder sound pill 16.0ms median (zero >33ms anywhere), the reminder toggle tween 15-23ms; the settle commits land 82-245ms AFTER their animations (sanctioned post-settle, their landing costs now measured).",
+    "scroll_sound_list_second": "PASS 2/2 both directions: 16.7-16.8ms median, max 22ms.",
+    "scroll_language_list_second": "PASS 1/2 strict: the down-scroll carries one 40ms gap at its settling tail; the up-scroll strictly clean; 16.7ms median both.",
+    "second_run_totals": "6 of 14 interactions PASS the strict 33ms window, 9 of 14 the animation bar. Every failure is one of three named classes: the overlay family's tap-adjacent first-frame cost (wave 1), the list-carrying push sheets' entrance block, and post-animation settle-commit landings (plus one 40ms scroll tail)."
   },
   "_s7_notes": {
     "overlay_open_family": "61-89ms after #17 derived overlay atoms (was 162-230)",
