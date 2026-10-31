@@ -160,11 +160,6 @@ export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
 };
 
 /**
- * Gets prayer data for a calendar day of the prayer timetable
- * @param date Date string in YYYY-MM-DD format
- * @returns Prayer data or null if not found
- */
-/**
  * The year marker may only vouch for days that are actually stored (the
  * replacePrayerCache law): a day whose bytes will not read takes its year's
  * claim away, so the next sync re-asks the API instead of showing a hole the
@@ -182,6 +177,11 @@ const voidYearMarker = (year: string): void => {
   }
 };
 
+/**
+ * Gets prayer data for a calendar day of the prayer timetable
+ * @param date Date string in YYYY-MM-DD format
+ * @returns Prayer data or null if not found
+ */
 export const getPrayerByDateString = (date: string): ISingleApiResponseTransformed | null => {
   const key = `prayer_${date}`;
 
