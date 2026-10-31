@@ -705,10 +705,11 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
-    // Owner order 2026-10-31: the locked title takes the sheet hint's own ink, the shade the
-    // "notification before prayer time" line carries, whatever the reminder's own on/off
+    // Owner order 2026-10-31, the 2.43.1 read: the locked title reads exactly as dark as the
+    // "notification before prayer time" line BESIDE it - the hint's own locked solid, not the
+    // brighter sheet-hint token the first pass took
     for (const n of [1, 2] as const) {
-      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#416899' });
+      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#122246' });
       expect(within(reminderCard(n)).getByText(t('alert.reminderHint'))).toHaveStyle({ color: '#122246' });
     }
   });
@@ -723,7 +724,7 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // Reminder 1 off locks the second card, whose own reminder is also off: the locked-off
     // solid, deeper than the off solid the first card's block carries
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#0e1b3e' });
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#416899' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#122246' });
   });
 
   it('paints a locked card whose own reminder is on in the locked-on solids', async () => {
@@ -737,7 +738,7 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // between the two dims: the locked-on solid, brighter than the locked-off one
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#1c2c4f' });
     // The title's dim keys on the lock alone: the circle and this line read the hint's shade
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#416899' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#122246' });
   });
 });
 
