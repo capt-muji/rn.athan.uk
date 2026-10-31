@@ -1,16 +1,23 @@
-import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import {
+  type AudioPlayer,
+  type AudioSource,
+  setAudioModeAsync,
+  useAudioPlayer,
+  useAudioPlayerStatus,
+} from 'expo-audio';
 import { useAtomValue } from 'jotai';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { ATHAN_AUDIOS, ATHAN_DURATION_SECONDS } from '@/assets/audio';
+import { ATHAN_DURATION_SECONDS, athanAudio } from '@/assets/audio';
 import { IconView } from '@/components/ui';
 import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { useNotification } from '@/hooks/useNotification';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
+import logger from '@/shared/logger';
 import { deferPastNextPaint } from '@/shared/nextPaint';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -32,6 +39,85 @@ const ITEM_GAP = SPACING.xs;
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SHEET_PERF_NAME = 'sheet_sound';
 
+/** What the engine reports to the sheet: the player identity and its latest status payload */
+interface EngineStatus {
+  playerId: string;
+  statusId: string;
+  playing: boolean;
+  currentTime: number;
+  duration: number;
+}
+
+/** The stand-in before any engine exists: never the current player, so the tabulated seconds answer */
+const NO_ENGINE_STATUS: EngineStatus = {
+  playerId: 'no engine',
+  statusId: 'no engine',
+  playing: false,
+  currentTime: 0,
+  duration: 0,
+};
+
+interface EngineProps {
+  /** Set by a play press; the engine consumes it, so a mount-time playing index never autoplays */
+  pendingPlay: { current: boolean };
+  onPlayer: (player: AudioPlayer) => void;
+  onStatus: (status: EngineStatus) => void;
+}
+
+/**
+ * The playback engine, mounted only once the sound sheet has first presented
+ * (owner order 5110): expo-audio, its ExoPlayer and its MediaSession come to
+ * life at construction, so nothing audio exists until a surface that plays is
+ * actually open. Renders nothing.
+ */
+function SoundAudioEngine({ pendingPlay, onPlayer, onStatus }: EngineProps) {
+  const playingIndex = useAtomValue(playingSoundIndexAtom);
+  // The clip module resolves here, on the play press that set the index - the inline require
+  const playingSource = playingIndex !== null ? (athanAudio(playingIndex) as AudioSource) : null;
+  const player = useAudioPlayer(playingSource);
+  const status = useAudioPlayerStatus(player);
+
+  useEffect(() => {
+    onPlayer(player);
+  }, [player, onPlayer]);
+
+  // Playback is armed from a press: switching rows swaps the player
+  // instance, so play() must run after the new source exists.
+  useEffect(() => {
+    if (playingIndex === null || !pendingPlay.current) return;
+    pendingPlay.current = false;
+    player.seekTo(0);
+    player.play();
+  }, [playingIndex, player, pendingPlay]);
+
+  // Clip finished — clear the playing row. The status hook keeps the released player's
+  // last payload until the replacement emits its own; a status from another
+  // instance must never reap a freshly armed one (ISSUES #25).
+  useEffect(() => {
+    const finished = isPreviewFinished({
+      playingIndex,
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    });
+    if (finished) setPlayingSoundIndex(null);
+  }, [playingIndex, player.id, status.id, status.playing, status.currentTime, status.duration]);
+
+  useEffect(() => {
+    onStatus({
+      playerId: player.id,
+      statusId: status.id,
+      playing: status.playing,
+      currentTime: status.currentTime,
+      duration: status.duration,
+    });
+  }, [player.id, status.id, status.playing, status.currentTime, status.duration, onStatus]);
+
+  return null;
+}
+
 export default function BottomSheetSound() {
   const { commitSoundSelection } = useNotification();
   const selectedSound = useAtomValue(soundPreferenceAtom);
@@ -52,53 +138,46 @@ export default function BottomSheetSound() {
   // highlight away from the rows it sits behind
   const heightTakenRef = useRef(false);
 
+  // The audio session arms at this sheet's first full open (owner order 5110):
+  // rows are visible only once the sheet has presented, so the mode call always
+  // precedes any play press
+  const [audioSessionArmed, setAudioSessionArmed] = useState(false);
+  const playerRef = useRef<AudioPlayer | null>(null);
+  const pendingPlayRef = useRef(false);
+  const [engineStatus, setEngineStatus] = useState<EngineStatus>(NO_ENGINE_STATUS);
+
   const currentSelection = displayedSoundSelection(tempSoundSelection, selectedSound);
+
+  const handleArmAudioSession = useCallback(() => {
+    if (audioSessionArmed) return;
+    setAudioSessionArmed(true);
+    // Athan previews must be audible regardless of the ring/silent switch (moved from
+    // the root layout, owner order 5110): until a mode is set explicitly, the app runs
+    // on iOS's default session category (.soloAmbient), which the mute switch silences
+    setAudioModeAsync({ playsInSilentMode: true }).catch((error) => {
+      logger.warn('AUDIO: Failed to set audio mode', { error });
+    });
+  }, [audioSessionArmed]);
+
+  const handlePlayerReady = useCallback((player: AudioPlayer) => {
+    playerRef.current = player;
+  }, []);
 
   // ONE player for the whole sheet (was one per row — 32 concurrent
   // AVPlayers exhausted audio resources on older devices, G.4/G.5). The hook
   // releases and recreates the player when the source changes, so exactly
   // one instance is ever alive.
-  const playingSource = playingIndex !== null ? (ATHAN_AUDIOS[playingIndex] as AudioSource) : null;
-  const player = useAudioPlayer(playingSource);
-  const status = useAudioPlayerStatus(player);
-  const pendingPlayRef = useRef(false);
-
-  // Playback is armed from an effect: switching rows swaps the player
-  // instance, so play() must run after the new source exists.
-  useEffect(() => {
-    if (playingIndex === null || !pendingPlayRef.current) return;
-    pendingPlayRef.current = false;
-    player.seekTo(0);
-    player.play();
-  }, [playingIndex, player]);
-
-  // Clip finished — clear the playing row (was per-item before the
-  // single-player refactor). The status hook keeps the released player's
-  // last payload until the replacement emits its own; a status from another
-  // instance must never reap a freshly armed one (ISSUES #25).
-  useEffect(() => {
-    const finished = isPreviewFinished({
-      playingIndex,
-      playerId: player.id,
-      statusId: status.id,
-      playing: status.playing,
-      currentTime: status.currentTime,
-      duration: status.duration,
-    });
-    if (finished) setPlayingSoundIndex(null);
-  }, [playingIndex, player.id, status.id, status.playing, status.currentTime, status.duration]);
-
   const handlePlayPress = useCallback(
     (index: number) => {
       if (playingIndex === index) {
-        player.pause();
+        playerRef.current?.pause();
         setPlayingSoundIndex(null);
         return;
       }
       pendingPlayRef.current = true;
       setPlayingSoundIndex(index);
     },
-    [playingIndex, player]
+    [playingIndex]
   );
 
   const handleItemLayout = useCallback(
@@ -144,15 +223,16 @@ export default function BottomSheetSound() {
   // flash the previous clip's leftover seconds, ISSUES #25), rounded so the
   // first value stays steady while iOS refines its provisional duration;
   // until the fresh player reports, the clip's tabulated seconds stand in
-  // so the countdown lands in the same frame as the icon flip.
+  // so the countdown lands in the same frame as the icon flip. With no
+  // engine yet the same stand-in answers (NO_ENGINE_STATUS never matches).
   const playingRemainingSeconds = previewRemainingSeconds(
     {
       playingIndex,
-      playerId: player.id,
-      statusId: status.id,
-      playing: status.playing,
-      currentTime: status.currentTime,
-      duration: status.duration,
+      playerId: engineStatus.playerId,
+      statusId: engineStatus.statusId,
+      playing: engineStatus.playing,
+      currentTime: engineStatus.currentTime,
+      duration: engineStatus.duration,
     },
     ATHAN_DURATION_SECONDS
   );
@@ -187,7 +267,15 @@ export default function BottomSheetSound() {
       onAnimate={clearAudio}
       perfName={SHEET_PERF_NAME}
       onFirstPresent={setSoundListReady}
+      onPresent={handleArmAudioSession}
       stackBehavior={'push'}>
+      {/* The playback engine mounts at this sheet's first full open (owner order
+          5110): nothing audio initialises at launch, and rows are reachable only
+          once the sheet has presented, so the player always exists before a
+          press can ask it to play */}
+      {audioSessionArmed && (
+        <SoundAudioEngine pendingPlay={pendingPlayRef} onPlayer={handlePlayerReady} onStatus={setEngineStatus} />
+      )}
       {/* Card + 32 rows mount once the settings sheet (the only path here)
           has fully opened — invisible warming, complete before first present */}
       {soundListReady && (
@@ -199,9 +287,9 @@ export default function BottomSheetSound() {
             <Animated.View style={[styles.indicator, indicatorStyle]} />
 
             {/* Sound items */}
-            {ATHAN_AUDIOS.map((_, index) => (
+            {ATHAN_DURATION_SECONDS.map((_, index) => (
               <SoundItem
-                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_AUDIOS is a static list, never reordered or filtered
+                // biome-ignore lint/suspicious/noArrayIndexKey: ATHAN_DURATION_SECONDS is a static list, never reordered or filtered
                 key={index}
                 index={index}
                 isSelected={index === currentSelection}

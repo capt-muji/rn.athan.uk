@@ -10,7 +10,6 @@ import '@/device/tls13';
 import '@/stores/bootstrap';
 
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { setAudioModeAsync } from 'expo-audio';
 import { type ErrorBoundaryProps, Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useAtomValue } from 'jotai';
@@ -51,15 +50,9 @@ SplashScreen.preventAutoHideAsync();
 // Call API During App Start in background
 setTimeout(triggerSyncLoadable, 0);
 
-// Athan sound previews must be audible regardless of the ring/silent switch:
-// until a mode is set explicitly, the app runs on iOS's default session
-// category (.soloAmbient), which the mute switch silences — expo-audio
-// configures nothing on its own (AudioModule.swift only touches the session
-// inside setAudioModeAsync). mixWithOthers stays the interruption mode, so
-// previews never steal focus from background audio.
-setAudioModeAsync({ playsInSilentMode: true }).catch((error) => {
-  logger.warn('AUDIO: Failed to set audio mode', { error });
-});
+// Nothing audio initialises here (owner order 5110): the audio session and the
+// player come to life at the sound sheet's first full open, the only surface
+// that plays - see components/sheets/screens/Sound.tsx.
 
 // Ignore logs
 LogBox.ignoreLogs(['Require cycle']);
