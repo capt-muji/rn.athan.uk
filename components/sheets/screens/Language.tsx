@@ -224,6 +224,12 @@ export default function BottomSheetLanguage() {
 
 const ty = typographyFor(currentLocaleId());
 
+// A script record's ink runs past the Latin-parity pin, so the record's own boxes own the
+// line: the script box where the record mandates one, the measured row box where only the
+// endonym's ink crosses the pin, and the pin everywhere else
+const OPTION_ROW_LINE_HEIGHT =
+  ty.rowLineHeight?.(ty.size(TEXT.sizeDetail)) ?? ty.scriptLineHeight?.(ty.size(TEXT.sizeDetail)) ?? OPTION_LINE_HEIGHT;
+
 const styles = StyleSheet.create({
   card: {
     backgroundColor: CARD_BACKGROUND,
@@ -274,7 +280,7 @@ const styles = StyleSheet.create({
     color: COLORS.text.sheetDim,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
-    lineHeight: OPTION_LINE_HEIGHT,
+    lineHeight: OPTION_ROW_LINE_HEIGHT,
     // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them
     writingDirection: 'ltr',
   },
@@ -283,6 +289,6 @@ const styles = StyleSheet.create({
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
-    lineHeight: OPTION_LINE_HEIGHT,
+    lineHeight: OPTION_ROW_LINE_HEIGHT,
   },
 });

@@ -290,5 +290,9 @@
   {
     "version": "2.42.23",
     "reason": "2026-10-31 the mandate's closing snapshot steps from uat's 2.42.22 while lane1/T-327's step 22 already held 2.42.23; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.25",
+    "reason": "2026-10-31 the T-538 audit fix steps from the branch's own 2.42.24 while t526-sheet-trim already holds 2.42.25; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

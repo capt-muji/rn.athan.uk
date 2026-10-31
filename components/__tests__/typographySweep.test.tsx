@@ -112,6 +112,24 @@ const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string,
   return subtitle;
 };
 
+/** The line box the language rows ride under a locale: the record's own boxes where its ink
+ * needs them, the Latin-parity pin everywhere else (T-538) */
+const languageRowLineHeightUnder = async (locale: LocaleId): Promise<number> => {
+  let lineHeight: number | undefined;
+  jest.resetModules();
+  await jest.isolateModulesAsync(async () => {
+    const { StyleSheet } = require('react-native');
+    const { setActiveLocale } = require('@/shared/i18n/locale');
+    setActiveLocale(locale);
+    const rntl = require('@testing-library/react-native');
+    const BottomSheetLanguage = require('../sheets/screens/Language').default;
+    await rntl.render(<BottomSheetLanguage />);
+    lineHeight = (StyleSheet.flatten(rntl.screen.getByText('Deutsch').props.style) as Record<string, unknown>)
+      .lineHeight as number;
+  });
+  return lineHeight ?? Number.NaN;
+};
+
 const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
   let marginTop: unknown;
   jest.resetModules();
@@ -351,6 +369,22 @@ describe('the language row line box', () => {
 
     expect(label.fontSize).toBe(14);
     expect(label.lineHeight).toBe(16);
+  });
+});
+
+describe('the language rows’ line boxes', () => {
+  it('rides the active record’s script box under ur, so the Naskh ink never sits under the pin', async () => {
+    expect(await languageRowLineHeightUnder('ur')).toBe(21);
+  });
+
+  it('rides the measured row boxes under my and ta, whose endonym ink crosses the Latin pin', async () => {
+    expect(await languageRowLineHeightUnder('my')).toBe(21);
+    expect(await languageRowLineHeightUnder('ta')).toBe(17);
+  });
+
+  it('keeps the Latin-parity pin under the faces whose measured ink fits it', async () => {
+    expect(await languageRowLineHeightUnder('th')).toBe(16);
+    expect(await languageRowLineHeightUnder('en')).toBe(16);
   });
 });
 
