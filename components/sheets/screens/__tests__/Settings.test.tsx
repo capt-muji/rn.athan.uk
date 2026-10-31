@@ -7,8 +7,10 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
+import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 import type { ReactTestInstance } from 'react-test-renderer';
+import type { TestInstance } from 'test-renderer';
 
 import { london } from '@/__tests__/harness';
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -685,5 +687,59 @@ describe('the icons beside the Settings rows, Friday 11 September 2026 at 14:00'
       expect(screen.getByTestId(name, { includeHiddenElements: true })).toBeOnTheScreen();
     }
     expect(screen.queryByText('\u266a')).not.toBeOnTheScreen();
+  });
+});
+
+// The owner's general row rule (T-540, order 2026-10-31): every row whose label sits beside a
+// trailing control ellipsizes at one line and yields to that control, so no language pushes a
+// chevron, a switch or the colour chip out of the card. One guard sweeps every row the sheet
+// renders, whatever card it sits in
+describe('every settings row label beside its trailing control', () => {
+  /** The rule's two facts: one line, and the label is the element that yields */
+  const oneLineAndYielding = (label: TestInstance) => {
+    const style = StyleSheet.flatten(label.props.style);
+
+    expect(label.props.numberOfLines).toBe(1);
+    expect(style.flex === 1 || style.flexShrink === 1).toBe(true);
+  };
+
+  it('ellipsizes at one line and yields on every row the sheet renders', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    // Every label with a control at its edge: the two prayer rows, the display and countdown
+    // toggles, the colour row, and the four other-card rows
+    for (const label of [
+      'Change athan',
+      'Qibla',
+      'Show hijri date',
+      'Show seconds',
+      'Show time passed',
+      'Show countdown bar',
+      'Countdown bar color',
+      'Language',
+      'Help',
+      'What’s new',
+      'Check for updates',
+    ]) {
+      oneLineAndYielding(screen.getByText(label));
+    }
+  });
+
+  // The overflow is real, not hypothetical: Italian carries the longest settings strings any
+  // shipped catalog holds, and the narrowest phone (the XS) is where the owner read the defect
+  it('holds the rule in the Italian face, the longest strings any shipped catalog carries', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    setActiveLocale('it');
+
+    try {
+      await render(<SettingsSheet />);
+
+      for (const label of ['Mostra la barra del conto alla rovescia', 'Colore della barra del conto alla rovescia']) {
+        oneLineAndYielding(screen.getByText(label));
+      }
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });

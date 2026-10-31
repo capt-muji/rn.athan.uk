@@ -4,6 +4,8 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { StyleSheet } from 'react-native';
+import type { TestInstance } from 'test-renderer';
 
 import { perfMark } from '@/shared/perf';
 
@@ -59,5 +61,32 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
     await fireEvent.press(find());
 
     expect(jest.mocked(perfMark).mock.calls).toEqual([['toggle_tap', { label: 'Show seconds' }]]);
+  });
+});
+
+// The owner's general row rule (T-540, order 2026-10-31): a label that runs long ellipsizes at
+// one line and never displaces the control at its edge - the XS in Spanish pushed the control
+// out of the card. The worst real input is the longest string any shipped catalog carries for
+// a settings row (Italian, the countdown-bar row); the artificial one runs past every catalog
+const ROW_LABEL_ONE_LINE = (label: TestInstance) => {
+  expect(label.props.numberOfLines).toBe(1);
+  expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
+  // The control the label must not displace: the switch still renders beside it
+  expect(screen.getByRole('switch')).toBeOnTheScreen();
+};
+
+describe('a settings toggle row whose label runs long', () => {
+  it('ellipsizes at one line with the longest string any shipped catalog carries', async () => {
+    await render(<LabeledToggle label='Mostra la barra del conto alla rovescia' value={false} onToggle={jest.fn()} />);
+
+    ROW_LABEL_ONE_LINE(screen.getByText('Mostra la barra del conto alla rovescia'));
+  });
+
+  it('ellipsizes at one line with a string longer than any shipped catalog', async () => {
+    const artificial = 'A row label long enough to outgrow the narrowest card any shipped language fills';
+
+    await render(<LabeledToggle label={artificial} value={false} onToggle={jest.fn()} />);
+
+    ROW_LABEL_ONE_LINE(screen.getByText(artificial));
   });
 });

@@ -205,7 +205,9 @@ export default function BottomSheetSettings() {
           <View style={styles.musicButton}>
             <IconView type={Icon.MUSIC_NOTE} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.athanLabel}>{t('settings.changeAthan')}</Text>
+          <Text style={styles.athanLabel} numberOfLines={1}>
+            {t('settings.changeAthan')}
+          </Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         <Pressable
@@ -217,7 +219,9 @@ export default function BottomSheetSettings() {
           <View style={styles.musicButton}>
             <IconView type={Icon.COMPASS} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.athanLabel}>{t('settings.qibla')}</Text>
+          <Text style={styles.athanLabel} numberOfLines={1}>
+            {t('settings.qibla')}
+          </Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
       </View>
@@ -277,7 +281,9 @@ export default function BottomSheetSettings() {
           <View style={styles.infoButton}>
             <IconView type={Icon.GLOBE} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.whatsNewLabel}>{t('settings.language')}</Text>
+          <Text style={styles.whatsNewLabel} numberOfLines={1}>
+            {t('settings.language')}
+          </Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         <Pressable
@@ -289,7 +295,9 @@ export default function BottomSheetSettings() {
           <View style={styles.infoButton}>
             <IconView type={Icon.QUESTION} size={9} color={COLORS.text.primary} />
           </View>
-          <Text style={styles.whatsNewLabel}>{t('settings.help')}</Text>
+          <Text style={styles.whatsNewLabel} numberOfLines={1}>
+            {t('settings.help')}
+          </Text>
           <Text style={styles.chevron}>{chevronFor()}</Text>
         </Pressable>
         {currentVisibleWhatsNew() ? (
@@ -302,7 +310,9 @@ export default function BottomSheetSettings() {
             <View style={styles.infoButton}>
               <InfoBare width={9} height={9} style={{ color: COLORS.text.primary }} />
             </View>
-            <Text style={styles.whatsNewLabel}>{t('settings.whatsNewLabel')}</Text>
+            <Text style={styles.whatsNewLabel} numberOfLines={1}>
+              {t('settings.whatsNewLabel')}
+            </Text>
             <Text style={styles.chevron}>{chevronFor()}</Text>
           </Pressable>
         ) : null}
@@ -325,7 +335,9 @@ export default function BottomSheetSettings() {
               <IconView type={Icon.DOWNLOAD} size={9} color={COLORS.text.primary} />
             )}
           </View>
-          <Text style={styles.whatsNewLabel}>{updateRowLabel}</Text>
+          <Text style={styles.whatsNewLabel} numberOfLines={1}>
+            {updateRowLabel}
+          </Text>
           {isUpToDate ? null : (
             // The wrapper carries the RTL mirror: a flipped glyph under a clockwise turn reads
             // anti-clockwise, the mirrored face's turn

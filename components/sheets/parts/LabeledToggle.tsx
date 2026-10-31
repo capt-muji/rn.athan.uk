@@ -33,7 +33,10 @@ export default function LabeledToggle({ label, value, onToggle }: LabeledToggleP
     // row stays unnamed on purpose: naming it too would have a screen reader offer two controls
     // for one setting, and the switch is the one that reports its state
     <Pressable style={styles.container} onPress={handleToggle} hitSlop={HIT_SLOP.md} accessibilityLabel={label}>
-      <Text style={styles.label}>{label}</Text>
+      {/* One line, yielding: a long label ellipsizes and never pushes the switch out of the card (T-540) */}
+      <Text style={styles.label} numberOfLines={1}>
+        {label}
+      </Text>
       <Toggle value={value} onToggle={handleToggle} accessibilityLabel={label} />
     </Pressable>
   );
@@ -49,6 +52,8 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.smd,
   },
   label: {
+    // Yields to the trailing controls: a long label shrinks and ellipsizes, the chip never leaves the card
+    flexShrink: 1,
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),

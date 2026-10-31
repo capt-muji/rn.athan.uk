@@ -9,6 +9,9 @@ import { I18nManager, StyleSheet } from 'react-native';
 
 import { seedCountdownBarOn } from '@/__tests__/harness';
 import { COLOR_PICKER_DEFAULT, COLORS } from '@/shared/constants';
+// The active English catalog object, patched in one test below: t reads the live object, so an
+// artificial overflow longer than any shipped catalog can ride the row's own key
+import { en as englishCatalog } from '@/shared/i18n/en';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { countdownBarColorAtom, countdownBarShownAtom } from '@/stores/ui';
 
@@ -225,5 +228,66 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     expect(store.get(countdownBarColorAtom)).toBe(CUSTOM_COLOUR);
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+});
+
+// The owner's general row rule (T-540, order 2026-10-31): a label that runs long ellipsizes at
+// one line and never displaces the control at its edge - this row on the XS in Spanish pushed
+// the colour chip out of the card. The worst real input is the longest string any shipped
+// catalog carries for a settings row (Italian, this row's own label)
+describe('the colour row label beside its chip, reset and chevron', () => {
+  it('ellipsizes at one line and yields to its trailing controls with the longest shipped catalog string', async () => {
+    setActiveLocale('it');
+
+    try {
+      await render(<ColorPickerSettings />);
+
+      const label = screen.getByText('Colore della barra del conto alla rovescia');
+
+      expect(label.props.numberOfLines).toBe(1);
+      expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
+      // The controls the label must not displace still render beside it
+      expect(screen.getByText('Ripristina', { includeHiddenElements: true })).toBeOnTheScreen();
+    } finally {
+      setActiveLocale('en');
+    }
+  });
+
+  it('ellipsizes at one line with a string longer than any shipped catalog', async () => {
+    const shipped = englishCatalog['colorPicker.label'];
+    const artificial = 'A row label long enough to outgrow the narrowest card any shipped language fills';
+    // The catalog type is readonly to the app; this test writes through it, as the one place a
+    // string no shipped language carries must come from
+    const labelOf = englishCatalog as Record<string, string>;
+    labelOf['colorPicker.label'] = artificial;
+
+    try {
+      await render(<ColorPickerSettings />);
+
+      const label = screen.getByText(artificial);
+
+      expect(label.props.numberOfLines).toBe(1);
+      expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
+      expect(screen.getByText('Reset', { includeHiddenElements: true })).toBeOnTheScreen();
+    } finally {
+      labelOf['colorPicker.label'] = shipped;
+    }
+  });
+
+  // The rule is direction-agnostic: the RTL face renders the same yielding label beside the
+  // same controls, mirrored whole
+  it('ellipsizes at one line in the Arabic face too', async () => {
+    setActiveLocale('ar');
+
+    try {
+      await render(<ColorPickerSettings />);
+
+      const label = screen.getByText('لون شريط العد التنازلي');
+
+      expect(label.props.numberOfLines).toBe(1);
+      expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
+    } finally {
+      setActiveLocale('en');
+    }
   });
 });
