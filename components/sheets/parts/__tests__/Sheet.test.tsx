@@ -3,6 +3,8 @@
  * it, and Android's back button
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
@@ -418,50 +420,11 @@ describe("Android's back button and a sheet", () => {
   });
 });
 
-describe('a sheet that keeps a field out of the scroll', () => {
-  const field = () => <Text testID={'pinned-field'}>Search</Text>;
-
-  it('keeps the header and the pinned node outside the scroll view, and the content inside it', async () => {
-    await render(settingsSheet({ pinned: field() }));
-
-    expect(insideScroll(screen.getByText(TITLE))).toBe(false);
-    expect(insideScroll(screen.getByTestId('pinned-field'))).toBe(false);
-    expect(insideScroll(screen.getByText('Show seconds'))).toBe(true);
-  });
-
-  it('leaves a sheet without a pinned node on its one scroll view, header and all', async () => {
-    await render(settingsSheet());
-
-    expect(insideScroll(screen.getByText(TITLE))).toBe(true);
-    expect(scrollViews()).toHaveLength(1);
-  });
-
-  it('hands the library the keyboard behaviour it is given', async () => {
-    const setRef = jest.fn();
-
-    await render(settingsSheet({ setRef, keyboardBehavior: 'interactive', keyboardBlurBehavior: 'restore' }));
-
-    expect(setRef.mock.calls[0][0].props).toMatchObject({
-      keyboardBehavior: 'interactive',
-      keyboardBlurBehavior: 'restore',
-    });
-  });
-
-  it('leaves both keyboard behaviours to the library when it is given none', async () => {
-    const setRef = jest.fn();
-
-    await render(settingsSheet({ setRef }));
-
-    expect(setRef.mock.calls[0][0].props.keyboardBehavior).toBeUndefined();
-    expect(setRef.mock.calls[0][0].props.keyboardBlurBehavior).toBeUndefined();
-  });
-});
-
-describe('a sheet that hosts the caller’s own scrollable', () => {
+describe('the content the sheet hands the library', () => {
   /**
    * Every component type in the element tree the sheet hands the library. The published mock draws a
    * content view as its children alone, so the tree on screen cannot show which one the sheet chose;
-   * what the library receives is the contract that keeps the hosted list's registration its own
+   * what the library receives is the contract
    */
   const typesIn = (node: unknown, found: unknown[] = []): unknown[] => {
     if (Array.isArray(node)) {
@@ -477,38 +440,15 @@ describe('a sheet that hosts the caller’s own scrollable', () => {
 
   const handedToLibrary = (setRef: jest.Mock): unknown[] => typesIn(setRef.mock.calls[0][0].props.children);
 
-  const hostedSheet = (setRef: jest.Mock, props: Partial<ComponentProps<typeof Sheet>> = {}) => (
-    <Sheet
-      setRef={setRef}
-      title={TITLE}
-      subtitle='Set your preferences'
-      icon={<Text>icon</Text>}
-      hostsScrollable
-      {...props}>
-      <Text testID={'hosted-list'}>rows</Text>
-    </Sheet>
-  );
+  it('keeps every sheet on its one scroll view, header and all', async () => {
+    await render(settingsSheet());
 
-  it('renders the caller’s scrollable bare, with no library content view around it', async () => {
-    const setRef = jest.fn();
-    await render(hostedSheet(setRef));
-
-    expect(handedToLibrary(setRef)).not.toContain(BottomSheetView);
-    expect(handedToLibrary(setRef)).not.toContain(BottomSheetScrollView);
-    expect(screen.getByTestId('hosted-list')).toBeOnTheScreen();
-    expect(scrollViews()).toHaveLength(0);
+    expect(insideScroll(screen.getByText(TITLE))).toBe(true);
+    expect(insideScroll(screen.getByText('Show seconds'))).toBe(true);
+    expect(scrollViews()).toHaveLength(1);
   });
 
-  it('keeps the header and the pinned piece above the hosted list', async () => {
-    const setRef = jest.fn();
-    await render(hostedSheet(setRef, { pinned: <Text testID={'pinned-field'}>Search</Text> }));
-
-    expect(insideScroll(screen.getByText(TITLE))).toBe(false);
-    expect(insideScroll(screen.getByTestId('pinned-field'))).toBe(false);
-    expect(insideScroll(screen.getByTestId('hosted-list'))).toBe(false);
-  });
-
-  it('keeps its scrolling content view on a sheet that does not host its own', async () => {
+  it('keeps its scrolling content view on a sheet that scrolls', async () => {
     const setRef = jest.fn();
     await render(settingsSheet({ setRef }));
 
@@ -520,5 +460,25 @@ describe('a sheet that hosts the caller’s own scrollable', () => {
     await render(settingsSheet({ setRef, scrollable: false }));
 
     expect(handedToLibrary(setRef)).toContain(BottomSheetView);
+  });
+
+  it('hands the library no keyboard behaviour of its own, on any sheet', async () => {
+    const setRef = jest.fn();
+    await render(settingsSheet({ setRef }));
+
+    // The keys themselves: a forwarded undefined still writes the prop, and the library reads the key
+    expect(setRef.mock.calls[0][0].props).not.toHaveProperty('keyboardBehavior');
+    expect(setRef.mock.calls[0][0].props).not.toHaveProperty('keyboardBlurBehavior');
+  });
+
+  it('carries none of the machinery the language sheet’s rebuild orphaned', () => {
+    const source = readFileSync(join(__dirname, '..', 'Sheet.tsx'), 'utf8');
+
+    expect(source).not.toContain('hostsScrollable');
+    expect(source).not.toContain('hostedContent');
+    expect(source).not.toContain('keyboardBehavior');
+    expect(source).not.toContain('keyboardBlurBehavior');
+    // The prop’s own shapes, so the scroll-indicator comment’s “pinned 5.2.14” does not match
+    expect(source).not.toMatch(/pinned\s*[?=,}]/);
   });
 });
