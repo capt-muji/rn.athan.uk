@@ -40,6 +40,15 @@ afterEach(() => {
   jest.dontMock('expo-modules-core');
 });
 
+// The gate reads the build's dev flag, which the node test environment does not define
+const previousDev = (globalThis as Record<string, unknown>).__DEV__;
+beforeEach(() => {
+  (globalThis as Record<string, unknown>).__DEV__ = true;
+});
+afterEach(() => {
+  (globalThis as Record<string, unknown>).__DEV__ = previousDev;
+});
+
 describe('the TLS 1.3 status, read once as the app loads', () => {
   it('reports the first security provider the Tls13 native module names on Android', () => {
     const loaded = loadOn('android', () => ({ status: () => 'GmsCore_OpenSSL' }));
@@ -78,4 +87,25 @@ describe('the TLS 1.3 status, read once as the app loads', () => {
     expect(loaded.requireNativeModule).not.toHaveBeenCalled();
     expect(loaded.info).not.toHaveBeenCalled();
   });
+
+  // The read feeds a logger that prod and preview silence, so the synchronous native call has no reader there
+  it.each(['prod', 'preview'])(
+    'skips the native read entirely on Android when the environment is %s and the build is not dev',
+    (env) => {
+      const previousEnv = process.env.EXPO_PUBLIC_ENV;
+      const previousDev = (globalThis as Record<string, unknown>).__DEV__;
+      process.env.EXPO_PUBLIC_ENV = env;
+      (globalThis as Record<string, unknown>).__DEV__ = false;
+      try {
+        const loaded = loadOn('android', () => ({ status: () => 'GmsCore_OpenSSL' }));
+
+        expect(loaded.requireNativeModule).not.toHaveBeenCalled();
+        expect(loaded.info).not.toHaveBeenCalled();
+      } finally {
+        if (previousEnv === undefined) delete process.env.EXPO_PUBLIC_ENV;
+        else process.env.EXPO_PUBLIC_ENV = previousEnv;
+        (globalThis as Record<string, unknown>).__DEV__ = previousDev;
+      }
+    }
+  );
 });

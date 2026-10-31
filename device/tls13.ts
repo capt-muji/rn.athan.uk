@@ -15,7 +15,14 @@ import { Platform } from 'react-native';
 
 import logger from '@/shared/logger';
 
-if (Platform.OS === 'android') {
+// The report feeds the logger, which prod and preview silence (shared/logger.ts),
+// so the synchronous native call has no reader there: skip it. Literal
+// comparisons so Metro folds the clause out of store builds, the same shape
+// device/backgroundTaskDebug.ts gates its diagnostics with.
+const isObservabilityEnabled = () =>
+  __DEV__ || (process.env.EXPO_PUBLIC_ENV !== 'prod' && process.env.EXPO_PUBLIC_ENV !== 'preview');
+
+if (Platform.OS === 'android' && isObservabilityEnabled()) {
   try {
     logger.info('TLS13: first security provider', { provider: requireNativeModule('Tls13').status() as string });
   } catch (error) {
