@@ -14,16 +14,19 @@ interface GlowProps {
   size?: number;
 }
 
-// Accelerating decay, so the rim sinks into the veil instead of banding grey
+// Accelerating decay, so the rim sinks into the veil instead of banding grey. The
+// 2026-10-31 pass densified the mid-band (no run wider than 12 percent) and eased the
+// tail, so the fade crosses the muddy mid-alphas in shorter native interpolation runs
 const FALLOFF = [
   ['0%', 0.75],
   ['12%', 0.62],
-  ['25%', 0.48],
-  ['40%', 0.34],
-  ['55%', 0.22],
-  ['70%', 0.12],
-  ['82%', 0.055],
-  ['92%', 0.018],
+  ['24%', 0.485],
+  ['36%', 0.36],
+  ['48%', 0.26],
+  ['60%', 0.175],
+  ['72%', 0.105],
+  ['84%', 0.05],
+  ['93%', 0.015],
   ['100%', 0],
 ] as const;
 

@@ -27,7 +27,7 @@ export default function VeilBackdrop() {
 
   const opacityStyle = useDerivedOpacity(overlay.isOn ? 1 : 0, { duration: ANIMATION.duration });
 
-  // The gradient top reads as black on glass, so the glow carries its own vivid navy
+  // The gradient top reads as black on glass, so the glow carries its own vivid blue-violet
   const glowColor = COLORS.gradient.overlay.glow;
 
   // Anchored to the content column so the glow keeps phone proportions on
