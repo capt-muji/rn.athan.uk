@@ -215,6 +215,12 @@ describe('the lettered countdown on the Standard schedule', () => {
         )
         .map((call) => call[0]);
 
+    // The owner's order: the overlay's two dim labels drop their purple hint for the glow's blue
+    // family - same muted class (sat 22.8, light 44.7), hue 235 to 228. No textShadow rides either
+    // label anywhere in the app; the timer's three shadow styles are the only ones and stay.
+    expect(COLORS.text.labelOverlay).toBe('#58628c');
+    expect(COLORS.text.labelHome).not.toBe(COLORS.text.labelOverlay);
+
     expect(labelTween().at(-1)).toBe(0);
 
     await act(() => openOverlay(ScheduleType.Standard, MAGRIB));

@@ -7384,7 +7384,8 @@
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
       }
-    }
+    },
+    "notes": "2026-10-31 re-sourcing after the owner's read: the sunrise row reads Pagsirang (Wiktionary's Central Bikol sunrise noun; the old row was the long rising-of-the-sun phrase and misspelled the sun word itself - saldang, not saldog); the qibla subtitle's conjunction is asin (asg is not a Bikol word, per Wiktionary), so the line reads Kaptan na patag asin luway-luway na magrikos; the sound-sheet hint is correct and naturally long - tanog is Wiktionary's Central Bikol noun for sound and the purpose clause is the register's own - so it stands. The same asg spelling sits in about a dozen other Bikol strings, left alone because the order named three."
   },
   "war": {
     "names": {
