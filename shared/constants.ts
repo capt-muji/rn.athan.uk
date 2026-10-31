@@ -752,8 +752,10 @@ export const COLORS = {
       veil: '#0b0016',
       /** The ago pill's veil end, the veil solid at alpha zero: the wash thins as the veil arrives - the veil showing through it unhindered, its hue held by the veil's own channels - instead of filling toward the opaque solid, which rode above the veil mid-fade and re-entered complete on the close (T-490 step 4) */
       veilThrough: 'rgba(11, 0, 22, 0)',
-      /** The veil glow's navy: the gradient top's hue at a lightness that reads on glass (owner order 2026-10-30) */
-      glow: '#1431a0',
+      /** The veil glow's deep blue-violet: the 2026-10-30 navy's hue bent a hint toward the veil top's purple
+       *  (228 to 247 degrees), saturation and lightness held, so the blend into the veil stays on one saturated
+       *  line instead of greying at the rim (owner order 2026-10-31) */
+      glow: '#2514a0',
     },
   },
 
