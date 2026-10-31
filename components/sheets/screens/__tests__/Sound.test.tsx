@@ -4,7 +4,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
-import { type AudioSource, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { type AudioSource, setAudioModeAsync, useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
 import { StyleSheet } from 'react-native';
@@ -80,8 +80,18 @@ const playButtonOf = (athan: number) => {
   return button;
 };
 
-/** Closes the sheet as the bottom sheet library reports it, once the close has finished */
-const closeSheet = () => fireEvent(screen.getByText('Select Athan'), 'dismiss');
+/** The sheet's first full open, as the bottom sheet library reports the settle: what arms the audio session */
+const presentSheet = async () => {
+  await fireEvent(screen.getByText('Select Athan'), 'change', 0);
+};
+
+/** Closes the sheet as the bottom sheet library reports it: open, then the close animation and its settle */
+const closeSheet = async () => {
+  await fireEvent(screen.getByText('Select Athan'), 'animate', -1, 0);
+  await fireEvent(screen.getByText('Select Athan'), 'change', 0);
+  await fireEvent(screen.getByText('Select Athan'), 'animate', 0, -1);
+  await fireEvent(screen.getByText('Select Athan'), 'change', -1);
+};
 
 /** Lets the save, which waits on scheduling, run to its end */
 const settle = () => act(() => jest.runAllTimersAsync());
@@ -104,6 +114,48 @@ const highlight = () => {
 };
 
 describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
+  it('builds its warmed rows with no player and no audio session behind them', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<SoundSheet />);
+    await act(() => setSoundListReady());
+
+    expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
+    expect(useAudioPlayer).not.toHaveBeenCalled();
+    expect(setAudioModeAsync).not.toHaveBeenCalled();
+  });
+
+  it('arms the audio session once at its first full open, and only then constructs a player', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+    await render(<SoundSheet />);
+
+    await presentSheet();
+
+    expect(setAudioModeAsync).toHaveBeenCalledTimes(1);
+    expect(setAudioModeAsync).toHaveBeenCalledWith({ playsInSilentMode: true });
+    expect(useAudioPlayer).toHaveBeenCalledWith(null);
+
+    await closeSheet();
+    await settle();
+    await presentSheet();
+
+    expect(setAudioModeAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('logs, rather than throws, when the audio mode cannot be set at the first open', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const error = new Error('Audio session unavailable');
+    jest.mocked(setAudioModeAsync).mockRejectedValueOnce(error);
+    setSoundListReady();
+    await render(<SoundSheet />);
+
+    await presentSheet();
+    await settle();
+
+    const { default: logger } = require('@/shared/logger') as typeof import('@/shared/logger');
+    expect(logger.warn).toHaveBeenCalledWith('AUDIO: Failed to set audio mode', { error });
+  });
+
   it('builds no rows until the settings sheet has fully opened', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<SoundSheet />);
@@ -174,10 +226,11 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     await render(<SoundSheet />);
+    await presentSheet();
 
     await fireEvent.press(playButtonOf(3));
 
-    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[2]);
+    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[2]());
     expect(currentPlayer().seekTo).toHaveBeenCalledWith(0);
     expect(currentPlayer().play).toHaveBeenCalledTimes(1);
     const [seekedAt] = currentPlayer().seekTo.mock.invocationCallOrder;
@@ -189,6 +242,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(3));
     const playing = currentPlayer();
 
@@ -202,6 +256,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     await render(<SoundSheet />);
+    await presentSheet();
 
     await fireEvent.press(playButtonOf(2));
 
@@ -212,6 +267,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     const { rerender } = await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(2));
 
     await reportFromCurrentPlayer({ playing: true, currentTime: 10.2, duration: 30.4 }, () => rerender(<SoundSheet />));
@@ -223,6 +279,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     const { rerender } = await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(1));
 
     await reportFromCurrentPlayer({ playing: false, currentTime: 28, duration: 28 }, () => rerender(<SoundSheet />));
@@ -234,12 +291,13 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     const { rerender } = await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(1));
     await reportFromCurrentPlayer({ playing: false, currentTime: 28, duration: 28 }, () => rerender(<SoundSheet />));
 
     await fireEvent.press(playButtonOf(2));
 
-    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[1]);
+    expect(useAudioPlayer).toHaveBeenLastCalledWith(ATHAN_AUDIOS[1]());
     expect(currentPlayer().play).toHaveBeenCalledTimes(1);
     expect(screen.getByText('0:30')).toBeOnTheScreen();
   });
@@ -248,6 +306,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(2));
 
     await fireEvent(screen.getByText('Select Athan'), 'animate', 0, -1);
@@ -259,6 +318,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();
     await render(<SoundSheet />);
+    await presentSheet();
     await fireEvent.press(playButtonOf(2));
 
     await closeSheet();
@@ -349,6 +409,7 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     setPlayingSoundIndex(2);
 
     await render(<SoundSheet />);
+    await presentSheet();
 
     expect(currentPlayer().play).not.toHaveBeenCalled();
   });

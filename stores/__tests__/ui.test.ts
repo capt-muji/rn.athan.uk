@@ -15,10 +15,12 @@ import { createStore } from 'jotai';
 
 const mockPresent = jest.fn();
 const mockDismiss = jest.fn();
+const mockClose = jest.fn();
 
 const createMockModal = () => ({
   present: mockPresent,
   dismiss: mockDismiss,
+  close: mockClose,
 });
 
 const mockStoreValues = new Map();
@@ -201,13 +203,14 @@ describe('sheet modal functions', () => {
     expect(mockPresent).toHaveBeenCalled();
   });
 
-  it('hideSettingsSheet calls dismiss on modal', () => {
+  it('hideSettingsSheet closes the modal rather than dismissing it, keeping the warm tree mounted', () => {
     const mockModal = createMockModal();
     mockDefaultStoreGet.mockReturnValue(mockModal);
 
     hideSettingsSheet();
 
-    expect(mockDismiss).toHaveBeenCalled();
+    expect(mockClose).toHaveBeenCalled();
+    expect(mockDismiss).not.toHaveBeenCalled();
   });
 });
 
@@ -250,14 +253,30 @@ describe('alert sheet state functions', () => {
     isUnavailable: false,
   };
 
-  it('showAlertSheet sets state and calls present', () => {
+  it('showAlertSheet sets state stamped with a fresh open session, and calls present', () => {
     const mockModal = createMockModal();
-    mockDefaultStoreGet.mockReturnValue(mockModal);
+    // The state atom reads what earlier sets wrote, so the session advances; every
+    // other atom still serves the modal
+    mockDefaultStoreGet.mockImplementation((atom) =>
+      atom === alertSheetStateAtom ? mockStoreValues.get(atom) : mockModal
+    );
 
-    showAlertSheet(mockAlertState);
+    try {
+      showAlertSheet(mockAlertState);
 
-    expect(mockDefaultStoreSet).toHaveBeenCalledWith(alertSheetStateAtom, mockAlertState);
-    expect(mockPresent).toHaveBeenCalled();
+      expect(mockDefaultStoreSet).toHaveBeenCalledWith(alertSheetStateAtom, { ...mockAlertState, session: 1 });
+      expect(mockPresent).toHaveBeenCalled();
+
+      showAlertSheet(mockAlertState);
+
+      // Every open advances the session: the warm body re-derives its draft on the change
+      expect(mockDefaultStoreSet).toHaveBeenLastCalledWith(alertSheetStateAtom, {
+        ...mockAlertState,
+        session: 2,
+      });
+    } finally {
+      mockDefaultStoreGet.mockImplementation((atom) => mockStoreValues.get(atom));
+    }
   });
 });
 

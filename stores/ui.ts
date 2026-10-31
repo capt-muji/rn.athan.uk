@@ -22,6 +22,13 @@ export interface AlertSheetState {
   prayerId: PrayerId;
   /** The occurrence on screen has no readable time, so the sheet explains that instead of offering options */
   isUnavailable: boolean;
+  /**
+   * Advances on every open. The sheet's tree stays mounted once it has opened
+   * (enableDismissOnClose false), so the body re-derives its draft from the
+   * stores during render when this changes - the warm-sheet stand-in for the
+   * remount a fresh mount used to give.
+   */
+  session: number;
 }
 
 /** Current alert sheet state (which prayer is being edited) */
@@ -57,17 +64,6 @@ export const popupUpdateEnabledAtom = atom(false);
  * point: the user is one tap away from the sound sheet and sees nothing.
  */
 export const soundListReadyAtom = atom(false);
-
-/**
- * Whether the Masjid header icon's bitmap has loaded (session-scoped).
- *
- * The icon renders from a PNG, so its bitmap arrives through Fresco's async
- * pipeline after the first content commit — perf22 pulled first paint early
- * enough to win that race, and the icon popped in ~200ms after the splash
- * revealed the screen. The splash now holds until this flips (onLoadEnd on
- * the Image), so the first visible frame is complete by construction.
- */
-export const masjidIconLoadedAtom = atom(false);
 
 /**
  * Whether the Ramadan decoration sprites have all loaded (session-scoped).
@@ -186,8 +182,8 @@ export const showLanguageSheet = () => {
   store.get(languageSheetModalAtom)?.present();
 };
 
-/** Dismisses the settings bottom sheet */
-export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.dismiss();
+/** Closes the settings bottom sheet: close, never dismiss - a dismiss unmounts the warm tree */
+export const hideSettingsSheet = () => store.get(settingsSheetModalAtom)?.close();
 
 /** Sets the sound selection bottom sheet modal reference */
 export const setBottomSheetModal = (modal: BottomSheetModal | null) => store.set(bottomSheetModalAtom, modal);
@@ -204,10 +200,10 @@ export const setLanguageSheetModal = (modal: BottomSheetModal | null) => store.s
 /** Sets the alert bottom sheet modal reference */
 export const setAlertSheetModal = (modal: BottomSheetModal | null) => store.set(alertSheetModalAtom, modal);
 
-/** Shows the alert bottom sheet for a specific prayer */
-export const showAlertSheet = (state: AlertSheetState) => {
+/** Shows the alert bottom sheet for a specific prayer, opening a new draft session */
+export const showAlertSheet = (state: Omit<AlertSheetState, 'session'>) => {
   perfMark('sheet_alert_present');
-  store.set(alertSheetStateAtom, state);
+  store.set(alertSheetStateAtom, { ...state, session: (store.get(alertSheetStateAtom)?.session ?? 0) + 1 });
   store.get(alertSheetModalAtom)?.present();
 };
 
@@ -219,9 +215,6 @@ export const bumpResync = () => store.set(resyncAtom, (value) => value + 1);
 
 /** Allows the sound sheet's list to mount (set when the settings sheet first fully opens) */
 export const setSoundListReady = () => store.set(soundListReadyAtom, true);
-
-/** Marks the Masjid header icon's bitmap as loaded (splash gate) */
-export const markMasjidIconLoaded = () => store.set(masjidIconLoadedAtom, true);
 
 /** Marks all Ramadan decoration sprites as loaded (splash gate) */
 export const markDecorationsLoaded = () => store.set(decorationsLoadedAtom, true);

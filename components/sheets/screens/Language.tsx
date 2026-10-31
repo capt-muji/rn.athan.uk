@@ -6,6 +6,7 @@ import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTimin
 
 import { IconView } from '@/components/ui';
 import { useDerivedProgress } from '@/hooks/useAnimation';
+import { useCachedGeometry } from '@/hooks/useCachedGeometry';
 import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
 import { currentLocaleId, type LocaleId, localeVersionAtom } from '@/shared/i18n/locale';
@@ -102,7 +103,12 @@ export default function BottomSheetLanguage() {
   // while the sheet is already closed and reopens settled
   useAtomValue(localeVersionAtom);
   const [staged, setStaged] = useState<LocaleId | null>(null);
-  const [rowHeight, setRowHeight] = useState(0);
+  // Seeded from the MMKV cache at mount so the seat's geometry is known before the first row
+  // lays out; the first live layout corrects a stale seed, and the cache is written back only
+  // after the sheet settles open
+  const [rowHeight, measureRowHeight] = useCachedGeometry(`language_row_height_${active}`, 'replace');
+  // The row's height is taken once: a later layout cannot move the seat's pitch
+  const heightTakenRef = useRef(false);
 
   // The staged row is read synchronously at the close, before any state write re-derives the rows
   const stagedRef = useRef<LocaleId | null>(null);
@@ -115,14 +121,14 @@ export default function BottomSheetLanguage() {
     setStaged(next);
   }, []);
 
-  // Measure first row to get consistent height
   const handleItemLayout = useCallback(
     (e: LayoutChangeEvent) => {
-      if (rowHeight === 0) {
-        setRowHeight(e.nativeEvent.layout.height);
-      }
+      const height = e.nativeEvent.layout.height;
+      if (heightTakenRef.current || height <= 0) return;
+      heightTakenRef.current = true;
+      measureRowHeight(height);
     },
-    [rowHeight]
+    [measureRowHeight]
   );
 
   // The sound sheet's own tap impact: the seat's move onto the row is the pick's whole answer

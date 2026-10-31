@@ -4,6 +4,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { useState } from 'react';
 import { I18nManager, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
@@ -127,6 +128,84 @@ describe('the Athan control with Silent saved', () => {
     await screen.rerender(<SegmentedControl options={ATHAN_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />);
 
     expect(drawn()[0]).toHaveStyle({ transform: [{ translateX: '200%' }] });
+  });
+});
+
+describe('a settle-committed control', () => {
+  it('reports the pressed option once, carrying its value', async () => {
+    const onSelect = jest.fn();
+    await render(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} commitOnSettle />
+    );
+    await measure(306);
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Sound' }));
+
+    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelect).toHaveBeenCalledWith(AlertType.Sound);
+  });
+
+  it('announces the pressed option as selected from its own press, the write latching to the settle', async () => {
+    const writes: AlertType[] = [];
+    const StatefulControl = () => {
+      const [selected, setSelected] = useState(AlertType.Silent);
+      const write = (next: AlertType) => {
+        writes.push(next);
+        setSelected(next);
+      };
+      return <SegmentedControl options={REMINDER_OPTIONS} selected={selected} onSelect={write} commitOnSettle />;
+    };
+    await render(<StatefulControl />);
+    await measure(306);
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Sound' }));
+
+    expect(screen.getByRole('radio', { name: 'Sound' })).toBeSelected();
+    expect(writes).toEqual([AlertType.Sound]);
+  });
+
+  it('writes nothing for a selection change nobody pressed', async () => {
+    const onSelect = jest.fn();
+    await render(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} commitOnSettle />
+    );
+    await measure(306);
+
+    await screen.rerender(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Sound} onSelect={onSelect} commitOnSettle />
+    );
+
+    expect(onSelect).not.toHaveBeenCalled();
+  });
+
+  it('writes nothing when its animation is superseded mid-flight, the completion cancelled', async () => {
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+    withTiming.mockImplementation(((target: number, _config: unknown, callback?: (finished: boolean) => void) => {
+      callback?.(false);
+      return target;
+    }) as unknown as typeof Reanimated.withTiming);
+    const onSelect = jest.fn();
+    await render(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={onSelect} commitOnSettle />
+    );
+    await measure(306);
+
+    await fireEvent.press(screen.getByRole('radio', { name: 'Sound' }));
+
+    expect(onSelect).not.toHaveBeenCalled();
+    withTiming.mockRestore();
+  });
+
+  it('wires its settle into the pill animation only when the write rides it', async () => {
+    await render(<SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Silent} onSelect={jest.fn()} />);
+    await measure(306);
+    const withTiming = jest.spyOn(Reanimated, 'withTiming');
+
+    await screen.rerender(
+      <SegmentedControl options={REMINDER_OPTIONS} selected={AlertType.Sound} onSelect={jest.fn()} />
+    );
+
+    expect(withTiming).toHaveBeenCalledWith(100, { duration: ANIMATION.duration });
   });
 });
 

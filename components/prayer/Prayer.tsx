@@ -1,11 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { StyleSheet } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { getRowPressAction } from '@/components/prayer/rowPress';
-import { useDerivedVeiledColor } from '@/hooks/useAnimation';
+import { useDerivedProgress, useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
@@ -15,7 +16,7 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
 import type { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { getOverlayHiddenAtom, getOverlaySelectedAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
+import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Alert from './Alert';
@@ -39,7 +40,6 @@ export default function Prayer({ type, index }: Props) {
   const Prayer = usePrayer(type, index);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
   const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
-  const fadeSettled = useAtomValue(overlayFadeSettledAtom);
 
   // One-shot date-roll stagger: the colour target flips (bright to dim) when
   // the display date rolls to the next day
@@ -57,7 +57,8 @@ export default function Prayer({ type, index }: Props) {
   // The overlay's veil wraps this tween: a hidden row's ink sinks toward the veil solid, so the
   // row fades without any of its text ever rendering through an opacity
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-  const colorStyle = useDerivedVeiledColor(isHiddenByOverlay ? 1 : 0, colorPos, {
+  const veilTarget = isHiddenByOverlay ? 1 : 0;
+  const colorStyle = useDerivedVeiledColor(veilTarget, colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
     veilColor: COLORS.gradient.overlay.veil,
@@ -66,11 +67,15 @@ export default function Prayer({ type, index }: Props) {
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
-  // Held drawn through the fade by the shared fade-settled flag, then dropped:
-  // the resting frame under an open overlay shows the backdrop exactly, while
-  // the close's own flag write returns the row in the same commit — no second
-  // per-row commit wave inside the fade
-  const hiddenSettled = isHiddenByOverlay && fadeSettled;
+  // The row's own cut, the badge's pattern (T-490): display drops to none in the worklet
+  // evaluation that carries the veil progress to 1 - the frame the row's ink finished
+  // sinking into the veil - and flips flex the moment the veil lifts on close. The row
+  // reads no settle flag: the fade's completion used to re-render all six rows to drop
+  // five of them, a JS commit plus a deletion-heavy diff inside the entrance window
+  // (digest 5111's wave 4, step 25's subject), and the worklet lands the same cut on
+  // content already invisible with no commit at all
+  const veilProgress = useDerivedProgress(veilTarget, { duration: ANIMATION.duration });
+  const contentCutStyle = useAnimatedStyle(() => ({ display: veilProgress.value >= 1 ? 'none' : 'flex' }));
 
   // A row whose occurrence left the sequence (refresh mid-selection) reports the
   // loading frame: empty time, the sentinel id. It draws no name, exactly as the
@@ -100,11 +105,11 @@ export default function Prayer({ type, index }: Props) {
       onPress={handlePress}
       accessibilityElementsHidden={isHiddenByOverlay}
       importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
-      <View style={[styles.content, { display: hiddenSettled ? 'none' : 'flex' }]}>
+      <Animated.View style={[styles.content, contentCutStyle]}>
         <Animated.Text style={[styles.text, styles.name, computedNameStyle, colorStyle]}>{shownName}</Animated.Text>
         <Time index={index} type={type} />
         <Alert index={index} type={type} />
-      </View>
+      </Animated.View>
     </AnimatedPressable>
   );
 }

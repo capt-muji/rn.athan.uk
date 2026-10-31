@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useAtom } from 'jotai';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   cancelAnimation,
@@ -59,7 +59,21 @@ const FAILED_BADGE_BORDER = '#dc2626';
 /** The update row's four looks, scoped to one opening of the sheet */
 type UpdateRowState = 'idle' | 'checking' | 'upToDate' | 'failed';
 
-export default function BottomSheetSettings() {
+/** What the wrapper can ask of the mounted body at its close */
+export interface SettingsBodyHandle {
+  /** Ends the update row's session: the budget re-arms and an in-flight answer lands nowhere */
+  endSession: () => void;
+}
+
+/**
+ * The settings sheet's content, on its own so the idle ladder can mount a
+ * warm copy of exactly this tree off-screen (T-327 step 24): the first open
+ * then renders through component code, catalogs and font shaping that have
+ * already run once, at idle, instead of paying them inside its entrance.
+ * All state is body-local; the wrapper reaches in only through the handle,
+ * the Alert-sheet body's own pattern.
+ */
+export const SettingsBody = forwardRef<SettingsBodyHandle, Record<never, never>>((_props, ref) => {
   const [countdownBarShown, setCountdownBarShown] = useAtom(countdownBarShownAtom);
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
@@ -85,11 +99,17 @@ export default function BottomSheetSettings() {
 
   // Closing the sheet ends its session: the budget re-arms, the row rests, and an answer still
   // in flight lands nowhere - the session counter has moved past it
-  const handleSheetDismiss = () => {
-    sheetSessionRef.current++;
-    checkSpentRef.current = false;
-    setUpdateRowState('idle');
-  };
+  useImperativeHandle(
+    ref,
+    () => ({
+      endSession: () => {
+        sheetSessionRef.current++;
+        checkSpentRef.current = false;
+        setUpdateRowState('idle');
+      },
+    }),
+    []
+  );
 
   // The two arrows turn clockwise, round and round, for exactly as long as the check runs. The
   // RTL face mirrors the row whole: the glyph flips in its wrapper, and a mirrored clockwise
@@ -181,18 +201,7 @@ export default function BottomSheetSettings() {
   };
 
   return (
-    <Sheet
-      setRef={setSettingsSheetModal}
-      title={t('settings.title')}
-      subtitle={t('settings.subtitle')}
-      icon={<SettingsIcon width={16} height={16} color={SHEET_ICON_COLOR} />}
-      snapPoints={['85%']}
-      perfName={SETTINGS_PERF_NAME}
-      onDismiss={handleSheetDismiss}
-      // The sound sheet is only reachable through this sheet: warming its
-      // 32-row list on our first full open builds it invisibly, one tap
-      // before it is needed (and off the launch path)
-      onFirstPresent={setSoundListReady}>
+    <>
       {/* Prayer Card */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>{t('settings.prayer')}</Text>
@@ -233,23 +242,23 @@ export default function BottomSheetSettings() {
           <SettingsToggle
             label={t('settings.showHijriDate')}
             value={hijriEnabled}
-            onToggle={() => setHijriEnabled(!hijriEnabled)}
+            onToggle={(next) => setHijriEnabled(next)}
           />
           <SettingsToggle
             label={t('settings.showSeconds')}
             value={showSeconds}
-            onToggle={() => setShowSeconds(!showSeconds)}
+            onToggle={(next) => setShowSeconds(next)}
           />
           <SettingsToggle
             label={t('settings.showTimePassed')}
             value={showTimePassed}
-            onToggle={() => setShowTimePassed(!showTimePassed)}
+            onToggle={(next) => setShowTimePassed(next)}
           />
           {showDecorationToggle && (
             <SettingsToggle
               label={t('settings.showDecorations')}
               value={decorationsEnabled}
-              onToggle={() => setDecorationsEnabled(!decorationsEnabled)}
+              onToggle={(next) => setDecorationsEnabled(next)}
             />
           )}
         </View>
@@ -262,7 +271,7 @@ export default function BottomSheetSettings() {
           <SettingsToggle
             label={t('settings.showCountdownBar')}
             value={countdownBarShown}
-            onToggle={() => setCountdownBarShown(!countdownBarShown)}
+            onToggle={(next) => setCountdownBarShown(next)}
           />
           <ColorPicker />
         </View>
@@ -347,6 +356,30 @@ export default function BottomSheetSettings() {
           )}
         </Pressable>
       </View>
+    </>
+  );
+});
+
+/**
+ * The settings sheet: the library wrapper around the body, closing through
+ * the body's own session handle. The sound sheet is only reachable through
+ * this sheet: warming its 32-row list on our first full open builds it
+ * invisibly, one tap before it is needed (and off the launch path).
+ */
+export default function BottomSheetSettings() {
+  const bodyRef = useRef<SettingsBodyHandle>(null);
+
+  return (
+    <Sheet
+      setRef={setSettingsSheetModal}
+      title={t('settings.title')}
+      subtitle={t('settings.subtitle')}
+      icon={<SettingsIcon width={16} height={16} color={SHEET_ICON_COLOR} />}
+      snapPoints={['85%']}
+      perfName={SETTINGS_PERF_NAME}
+      onDismiss={() => bodyRef.current?.endSession()}
+      onFirstPresent={setSoundListReady}>
+      <SettingsBody ref={bodyRef} />
     </Sheet>
   );
 }

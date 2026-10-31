@@ -69,6 +69,7 @@ const sheetProps = () =>
       props: {
         snapPoints?: (string | number)[];
         onDismiss: () => void;
+        onChange: (index: number) => void;
       };
     }
   ).props;
@@ -206,8 +207,10 @@ describe('the purple seat', () => {
   it('keeps the height it first measured when the first row is laid out again at another height', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
-    await measureFirstRow();
 
+    // A zero layout reports nothing, and the height once taken cannot be replaced by a later layout
+    await measureFirstRow(0);
+    await measureFirstRow();
     await measureFirstRow(60);
 
     expect(styleOf('language-seat').height).toBe(ROW_HEIGHT);
@@ -397,7 +400,8 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(0);
+      sheetProps().onChange(-1);
     });
 
     // The loader stands on the close's own tick and the commit follows a paint later
@@ -425,8 +429,9 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
-      sheetProps().onDismiss();
+      sheetProps().onChange(0);
+      sheetProps().onChange(-1);
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -446,7 +451,8 @@ describe('the staged commit at the close boundary', () => {
     await render(<LanguageSheet />);
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(0);
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -467,7 +473,8 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'English, Close to save' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(0);
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();
@@ -489,7 +496,8 @@ describe('the staged commit at the close boundary', () => {
     await fireEvent.press(screen.getByRole('radio', { name: 'Deutsch' }));
 
     await act(async () => {
-      sheetProps().onDismiss();
+      sheetProps().onChange(0);
+      sheetProps().onChange(-1);
     });
     await act(async () => {
       await jest.runAllTimersAsync();

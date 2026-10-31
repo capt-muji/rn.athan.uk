@@ -369,7 +369,7 @@ describe("the Help modal's fold reveal", () => {
   };
   const scroller = () => screen.root?.queryAll((node) => node.type === 'RCTScrollView')[0] as TestInstance;
 
-  it('scrolls the minimum distance when an answer opens below the fold', async () => {
+  it("scrolls the minimum distance when an answer opens below the fold, past the grow's own first frame", async () => {
     await render(<ModalHelp visible={true} onClose={jest.fn()} />);
     await reportLayout(scroller(), 0, 1190);
     const widgets = screen.getByRole('button', { name: 'Are widgets supported?' });
@@ -379,6 +379,13 @@ describe("the Help modal's fold reveal", () => {
     expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
 
     await reportLayout(widgets, 1104, 281);
+    expect(jest.mocked(scrollReveal)).not.toHaveBeenCalled();
+
+    // The scroll waits out the grow's layout frame: the next paint, then the task after it
+    await act(async () => {
+      await new Promise<void>((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+    });
+
     expect(jest.mocked(scrollReveal)).toHaveBeenCalledTimes(1);
     expect(jest.mocked(scrollReveal).mock.calls[0]?.[1]).toBe(195);
   });

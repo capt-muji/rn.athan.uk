@@ -55,6 +55,7 @@ describe('the Fajr bell on the Standard list, Friday 11 September 2026 at 14:00'
       index: FAJR,
       prayerId: 'fajr',
       isUnavailable: false,
+      session: expect.any(Number),
     });
   });
 

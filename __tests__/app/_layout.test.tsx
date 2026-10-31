@@ -87,21 +87,10 @@ describe('the root layout as it loads', () => {
     expect(sync.triggerSyncLoadable).toHaveBeenCalledTimes(1);
   });
 
-  it('makes sound previews audible with the ring switch on silent', () => {
+  it("configures nothing audio while it loads: the audio session exists only from the sound sheet's first open", () => {
     const { audio } = loadLayout();
 
-    expect(audio.setAudioModeAsync).toHaveBeenCalledWith({ playsInSilentMode: true });
-  });
-
-  it('logs, rather than throws, when the audio mode cannot be set', async () => {
-    const error = new Error('Audio session unavailable');
-    const modules = loadLayout(({ audio }) => {
-      jest.mocked(audio.setAudioModeAsync).mockImplementationOnce(() => Promise.reject(error));
-    });
-
-    await new Promise(setImmediate);
-
-    expect(modules.logger.warn).toHaveBeenCalledWith('AUDIO: Failed to set audio mode', { error });
+    expect(audio.setAudioModeAsync).not.toHaveBeenCalled();
   });
 
   it('defines the background task, so a launch the system starts in the background can find it', () => {

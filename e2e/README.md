@@ -79,6 +79,7 @@ e2e/scripts/frame-audit.sh overlay-open 540 1012 3                      # dual: 
 PRE_TAP="540 1012" e2e/scripts/frame-audit.sh overlay-close 540 1100 3  # open, settle, record close
 FRAME_AUDIT=video e2e/scripts/frame-audit.sh overlay-open 540 1012 3    # video only
 FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 539 1833 3         # cadence-only
+SWIPE="864 403 216 403 250" e2e/scripts/frame-audit.sh pager-swipe 864 403 3  # a swipe, not a tap
 ```
 
 ## The AVD lane: smoke only, never a witness
@@ -237,6 +238,14 @@ verification, never infer visuals from pixels alone.
   presents and an idle layer presents nothing, so the ring still covers the
   entrance, while a dump before the tap reads an idle layer and prints
   NO DATA.
+- **`input tap` injection lag**: on the 3T `adb shell input tap` runs
+  410-450ms with the touch injected mid-command (bracket-measured,
+  2026-10-31), so an uptime stamp read after the command trails the touch
+  by ~150-250ms. A window anchored on the stamp must open its left edge to
+  -300ms to cover an entrance's first presents — the recorded method of
+  record (`android-3t.json` `_2026_10_31`); frame-audit's sf branch prints
+  the [stamp-50ms] bounds it filters beside that skew. Swipes stamp BEFORE
+  the action and keep the -50ms margin.
 - **The pre-tap settle wait is mock-tuned**: `PRE_TAP` opens the overlay
   before a close audit records the closing tap, and `PRE_TAP_WAIT` (default
   1s) is the entrance's settle time. The stock 3s wait is unusable on mock:
@@ -245,6 +254,20 @@ verification, never infer visuals from pixels alone.
   a close. The 1s default shrinks the exposure window; evening seeds read as
   boundary-adjacent, and a capture whose sheet shows two animations is a
   re-run, not data (the vision read catches it).
+- **A pager swipe audit needs PRE_SWIPE**: every capture force-stops and
+  relaunches onto the standard page, so a recorded extras->std swipe with no
+  pre-swipe measures the first page's overscroll glow — a clean 15-30ms
+  cadence that is NOT a page turn (the vision read catches it: no
+  translation anywhere, a decaying edge glow). `PRE_SWIPE` pre-advances the
+  pager first; the dots are not tappable.
+- **A production build (ENV=prod) carries no marks and no logs**:
+  `shared/perf.ts` gates PERF on `EXPO_PUBLIC_ENV !== 'prod'` and the pino
+  logger is off, so `baseline-compare.sh` cannot run against one and an
+  empty logcat proves nothing — the recorder-free SF read is the only
+  witness. `check:device`'s alarm gate then fails by the phone's own
+  toggles when alerts are off (every bell struck through on the schedule
+  face): read the schedule face for the real times and leave the toggles
+  alone.
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
   `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
   dismiss scrollable sheets. Per campaign directive, iOS is verified by

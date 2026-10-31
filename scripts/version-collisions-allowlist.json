@@ -282,5 +282,9 @@
   {
     "version": "2.42.21",
     "reason": "2026-10-31 the T-539 merge of owner-glow-tint steps from uat's 2.42.20 while lane1/T-327's branch already holds 2.42.21; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.22",
+    "reason": "2026-10-31 the T-327 merge of lane1/T-327 steps from uat's 2.42.21 while the branch's own step history already holds 2.42.22; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

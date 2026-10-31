@@ -1,5 +1,5 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Platform, StyleSheet, type ViewProps } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
@@ -8,7 +8,7 @@ import { useDerivedOpacity, useDerivedTranslateY } from '@/hooks/useAnimation';
 import { usePrayerSequence } from '@/hooks/usePrayerSequence';
 import { ANIMATION, COLORS, RADIUS, SHADOW, SHADOW_ANDROID, STYLES } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/atoms/overlay';
+import { getOverlayActiveForTypeAtom, getOverlaySelectedIndexForTypeAtom } from '@/stores/atoms/overlay';
 
 interface Props {
   type: ScheduleType;
@@ -38,8 +38,12 @@ export default function ActiveBackground({ type }: Props) {
   const activeColor =
     type === ScheduleType.Standard ? COLORS.prayer.activeBackground : COLORS.prayer.activeBackgroundExtras;
 
-  const overlay = useAtomValue(overlayAtom);
-  const pillOpacity = getActivePillOpacity(prayers, displayDate, type, overlay);
+  // The overlay reaches the pill through the schedule-gated primitives, never its whole
+  // object: the cold page's host holds both values across the other page's toggles, so an
+  // overlay open costs this page nothing (digest 5111's wave-one trim)
+  const overlayActiveForType = useAtomValue(useMemo(() => getOverlayActiveForTypeAtom(type), [type]));
+  const overlaySelectedIndexForType = useAtomValue(useMemo(() => getOverlaySelectedIndexForTypeAtom(type), [type]));
+  const pillOpacity = getActivePillOpacity(prayers, displayDate, overlayActiveForType, overlaySelectedIndexForType);
 
   const veilStyle = useDerivedOpacity(pillOpacity, {
     duration: ANIMATION.duration,

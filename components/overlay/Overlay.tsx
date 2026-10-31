@@ -1,7 +1,8 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useEffect, useLayoutEffect } from 'react';
-import { BackHandler, Pressable, StyleSheet, type ViewProps } from 'react-native';
+import { BackHandler, StyleSheet, type ViewProps } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 import Reanimated from 'react-native-reanimated';
 
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';

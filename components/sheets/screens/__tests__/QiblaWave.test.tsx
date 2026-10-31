@@ -5,6 +5,7 @@
  */
 import { render, screen } from '@testing-library/react-native';
 import { I18nManager } from 'react-native';
+import * as Reanimated from 'react-native-reanimated';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { WAVE, wavePath } from '@/shared/qiblaWave';
@@ -25,7 +26,7 @@ describe('the calibration wave mirror', () => {
   });
 
   it('draws the figure unmirrored under the app English locale', async () => {
-    await render(<QiblaWave size={SIZE} />);
+    await render(<QiblaWave size={SIZE} active />);
 
     expect(guidePath()).toBe(wavePath(figureWidth, figureHeight, false));
   });
@@ -33,9 +34,29 @@ describe('the calibration wave mirror', () => {
   it('draws the figure mirrored under the app Arabic locale, the bridge snapshot notwithstanding', async () => {
     setActiveLocale('ar');
 
-    await render(<QiblaWave size={SIZE} />);
+    await render(<QiblaWave size={SIZE} active />);
 
     expect(I18nManager.getConstants().isRTL).toBe(false);
     expect(guidePath()).toBe(wavePath(figureWidth, figureHeight, true));
+  });
+});
+
+describe('the calibration wave behind a warm sheet', () => {
+  it('arms its loop only while the sheet is up, and cancels it when the sheet closes', async () => {
+    const withRepeat = jest.spyOn(Reanimated, 'withRepeat');
+    const cancel = jest.spyOn(Reanimated, 'cancelAnimation');
+    const wave = await render(<QiblaWave size={SIZE} active={false} />);
+
+    expect(withRepeat).not.toHaveBeenCalled();
+
+    await wave.rerender(<QiblaWave size={SIZE} active />);
+
+    expect(withRepeat).toHaveBeenCalledTimes(1);
+
+    await wave.rerender(<QiblaWave size={SIZE} active={false} />);
+
+    expect(cancel).toHaveBeenCalled();
+    withRepeat.mockRestore();
+    cancel.mockRestore();
   });
 });

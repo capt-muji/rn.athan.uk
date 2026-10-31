@@ -12,6 +12,11 @@ import { setSettingsSheetModal } from '@/stores/ui';
 
 import SettingsButton, { ICON_SIZE } from '../SettingsButton';
 
+// RNGH's host composes the caller's style one level deep ([pointerStyle, [...callerStyles]]),
+// so the entries the assertions name are reached by flattening every nested array
+const flattenStyle = (style: unknown): Record<string, unknown>[] =>
+  Array.isArray(style) ? style.flatMap((entry) => flattenStyle(entry)) : [style as Record<string, unknown>];
+
 describe('the settings button, with the settings sheet mounted', () => {
   // An icon-only control, so its name is the only thing a screen reader could announce
   it('is named for a screen reader', async () => {
@@ -47,7 +52,7 @@ describe('the settings button, with the settings sheet mounted', () => {
     const tree = await render(<SettingsButton />);
     const root = tree.root as NonNullable<typeof tree.root>;
 
-    expect(root.props.style).toEqual(
+    expect(flattenStyle(root.props.style)).toEqual(
       expect.arrayContaining([expect.objectContaining({ width: 39, height: 39, marginHorizontal: 2 })])
     );
     expect(ICON_SIZE).toBe(18);
@@ -94,9 +99,9 @@ describe('the settings button, with the settings sheet mounted', () => {
       setSettingsSheetModal({ present: jest.fn() } as unknown as BottomSheetModal);
       const tree = await render(<SettingsButton />);
       const root = tree.root as NonNullable<typeof tree.root>;
-      const style = root.props.style.find(
+      const style = flattenStyle(root.props.style).find(
         (s: { elevation?: number; shadowColor?: string }) => s?.elevation !== undefined
-      );
+      )!;
 
       expect(style.elevation).toBe(10);
       expect(style.shadowColor).toBe('#0a0426');

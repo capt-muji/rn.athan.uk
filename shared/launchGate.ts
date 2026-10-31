@@ -3,7 +3,8 @@
  * components/countdown/tipGeometry.ts). They live here rather than beside the screen because expo-router loads every
  * .ts and .tsx file under app/ as a route, a test file included.
  *
- * A wrong answer leaves the splash over a screen that is ready, or lifts it onto a frame whose art is still missing.
+ * A wrong answer leaves the splash over a screen that is ready, lifts it onto a frame that has not drawn, or onto
+ * a frame whose art is still missing.
  */
 
 /** The states of the sync loadable app/index.tsx reads */
@@ -25,24 +26,29 @@ export interface RevealInput {
   coldLaunch: boolean;
   /** Whether the screen has something other than the spinner to show */
   contentExists: boolean;
-  masjidIconLoaded: boolean;
+  /** Whether the content tree's root has laid out, which on Fabric is its first drawn frame */
+  contentDrawn: boolean;
   /** Whether the Ramadan decorations render this session */
   decorationsExpected: boolean;
   decorationsLoaded: boolean;
 }
 
 /**
- * A cold launch lifts the splash onto its spinner at the first commit, so it never waits here. A warm launch waits
- * for the bitmaps that arrive after its first commit, so the first frame it reveals is complete, but only for
- * decorations it is going to render.
+ * A cold launch lifts the splash onto its spinner at the first commit, so it never waits here. A warm launch lifts
+ * only on the content's first DRAWN frame, not the commit that scheduled it: onLayout rides the native layout
+ * pass, which on Fabric lands past the mount burst that on a slow phone trails the commit by a second or two -
+ * revealing at the commit lifts the splash onto the window background (the splash purple) showing through - the
+ * app straight from cache, the Masjid icon's bitmap decoding behind the revealed frame rather than holding the
+ * splash over a finished screen (owner order 2026-10-30: a near-zero native splash in both launch shapes). Only
+ * the Ramadan decorations still hold it: the one art that screen is about to draw full-bleed, and only when it is
+ * going to render.
  *
  * @returns Whether a warm launch may hide the splash now
  */
 export const isRevealReady = ({
   coldLaunch,
   contentExists,
-  masjidIconLoaded,
+  contentDrawn,
   decorationsExpected,
   decorationsLoaded,
-}: RevealInput): boolean =>
-  !coldLaunch && contentExists && masjidIconLoaded && (!decorationsExpected || decorationsLoaded);
+}: RevealInput): boolean => !coldLaunch && contentExists && contentDrawn && (!decorationsExpected || decorationsLoaded);

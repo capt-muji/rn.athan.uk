@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom, markMasjidIconLoaded } from '@/stores/ui';
+import { decorationsEnabledAtom } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -29,13 +29,7 @@ export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   return (
     <View style={styles.container}>
-      {/* onLoadEnd fires on success AND failure: the splash gate must never
-          wedge on a lost bitmap. Warm-cache deliveries still fire it. */}
-      <Image
-        source={ICON_SOURCES[variant]}
-        style={[styles.icon, { height, width }, isRTL && styles.mirrored]}
-        onLoadEnd={markMasjidIconLoaded}
-      />
+      <Image source={ICON_SOURCES[variant]} style={[styles.icon, { height, width }, isRTL && styles.mirrored]} />
     </View>
   );
 }

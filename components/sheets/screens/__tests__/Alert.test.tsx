@@ -35,12 +35,12 @@ jest.mock('@/components/sheets/parts', () => {
   const { createElement } = require('react');
   const { Pressable, Text, View } = require('react-native');
 
-  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: () => void }) =>
+  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: (next: boolean) => void }) =>
     mockLockedPressesGetThrough
       ? createElement(Pressable, {
           accessibilityRole: 'switch',
           accessibilityState: { checked: props.value, disabled: props.disabled === true },
-          onPress: props.onToggle,
+          onPress: () => props.onToggle(!props.value),
         })
       : createElement(parts.Toggle, props);
 
@@ -91,8 +91,17 @@ const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
 // A reminder's own card: its title text up through the view that draws and dims the whole card
 const reminderCard = (n: 1 | 2) => screen.getByText(`Reminder ${n}`).parent!.parent!.parent!;
 
-/** Closes the sheet as the bottom sheet library reports it, once the close has finished */
-const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
+/**
+ * Closes the sheet as the bottom sheet library reports it: the sheet was presented (an animation
+ * to open, then the settle), then the close animation runs and settles at closed - the unified
+ * close signal
+ */
+const closeSheet = async () => {
+  await fireEvent(screen.getByText('Close to save'), 'animate', -1, 0);
+  await fireEvent(screen.getByText('Close to save'), 'change', 0);
+  await fireEvent(screen.getByText('Close to save'), 'animate', 0, -1);
+  await fireEvent(screen.getByText('Close to save'), 'change', -1);
+};
 
 /** Lets work that waits on notification permission and scheduling run to its end */
 const settle = () => act(() => jest.runAllTimersAsync());
@@ -546,6 +555,34 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
 });
 
 describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:00", () => {
+  it('re-derives its draft from the stores on every open of the same prayer, warm tree and all', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    // The committed draft leaves the store holding Sound
+    await fireEvent.press(athanOption('Sound'));
+    await closeSheet();
+    await settle();
+
+    // Whatever changed the store after that commit - a rolled-back schedule, another
+    // surface - the next open of the SAME prayer must draft what the store now holds
+    await act(() => setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent));
+    await act(() => setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Off));
+    (Notifications.scheduleNotificationAsync as jest.Mock).mockClear();
+    await act(() => openSheetFor(FAJR));
+
+    expect(athanOption('Silent')).toBeSelected();
+    expect(reminderSwitch()).not.toBeChecked();
+
+    // And the commit baseline is the fresh store, so closing unchanged writes nothing
+    await closeSheet();
+    await settle();
+
+    expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Silent);
+  });
+
   it('restores each reminder to its pre-off choice when the athan comes back on in the same session', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
@@ -579,9 +616,9 @@ describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:
     await closeSheet();
     await settle();
 
-    // A fresh open: the body remounts from the store, exactly as the modal's own unmount and
-    // present do, through the key change the suite's prayer move already uses
-    await act(() => openSheetFor(DHUHR));
+    // A fresh open of the same prayer: the warm body re-derives its draft from the
+    // stores when the open session advances, which is what the remount through a key
+    // change used to give
     await act(() => openSheetFor(FAJR));
 
     // The mounted slide-off keeps today's pixels: switch off, pill on Silent, whatever the store holds

@@ -1043,6 +1043,11 @@ const isPassedNow = (type: ScheduleType, english: string, listDay: string): bool
 describe('on the real builder', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    // No component settles a fade in here, and a hold stamped by the previous
+    // test could land age-zero on this test's own boundary tick once the clock
+    // jumps: each store-level test starts hold-free, as the settled app is
+    const { endOverlayFadeHold } = require('@/stores/atoms/overlay');
+    endOverlayFadeHold();
 
     const { createPrayerSequence, createPrayersForDate, firstStillDueListDay } = actualPrayer();
     mockCreateLondonDate.mockImplementation(() => new Date());
@@ -1643,9 +1648,11 @@ describe('on the real builder', () => {
 
       expect(standardWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
       expect(extraWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
-      // --:-- until the 00:00 tick moves the list on, and the real countdown from that same tick
-      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 21300, 21299, 21298]);
-      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 20100, 20099, 20098]);
+      // The countdown was already --:-- before the flip, so the flip tick's unchanged waiting write is
+      // deduped (nothing changes on screen, nothing commits); the first countdown second of the new
+      // day is the first write
+      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([21300, 21299, 21298]);
+      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([20100, 20099, 20098]);
 
       expect(observe(STANDARD)).toEqual({
         next: row('fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),

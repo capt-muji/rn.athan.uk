@@ -21,6 +21,20 @@
 #     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
 #     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
 #     boundary is near, so the default is mock-safe (README Gotchas).
+#   SWIPE="x1 y1 x2 y2 duration_ms"
+#     Records a swipe instead of a tap (the schedule pager's cadence). A
+#     swipe runs for its whole duration, so the SF stamp anchors on the
+#     swipe START (the uptime read lands before the input, same shell in the
+#     sf branch) — stamping after would open the entrance window ~duration
+#     late and miss it. <tap-x> <tap-y> are unused in swipe mode (the
+#     prompt builds from SWIPE itself); dual+SWIPE pays one adb round trip
+#     between the stamp and the input, so idle presents may open the window
+#     and first-draw reads early - pairing stays duration-based.
+#   PRE_SWIPE="x1 y1 x2 y2 duration_ms"
+#     Drives one swipe before the recorded interaction and waits out its
+#     settle (PRE_TAP_WAIT). The extras->std audit needs it: a relaunch
+#     lands on the standard page, so the recorded rightward swipe would
+#     otherwise overscroll the first page — the edge glow, not a page turn.
 #   SF_OFFSET=<seconds>
 #     Overrides the per-capture clock anchor when it read LOW (an anchor tap
 #     that closes a sheet presents late). Offsets cannot decrease, so the
@@ -36,16 +50,25 @@
 #   sf              -> SurfaceFlinger --latency cadence instead of video
 #                      (no pixels) — D16's recorder-free FLOOR WITNESS, and
 #                      still the only read while video capture is wedged.
-#                      The tap is stamped and anchored on the SF clock, the
+#                      The input is stamped and anchored on the SF clock, the
 #                      layer resolved from --list, and the entrance window
-#                      bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000,
-#                      which covers every audited interaction's
-#                      tap-to-settled). THE PRINTED PRESENT-GAP LIST inside
-#                      that window IS THE VERDICT OF RECORD, read against the
-#                      33ms floor: every gap over 33ms in it is a floor
-#                      failure, gaps over 100ms included — never
-#                      "freeze or idle". The PASS line only summarizes the
-#                      list.
+#                      read against the STAMP, not the touch: `input tap`
+#                      runs 410-450ms on the 3T with the touch injected
+#                      mid-command, so a stamp read after the command trails
+#                      the touch ~150-250ms, and the recorded method of
+#                      record (android-3t.json _2026_10_31) bounds a tap
+#                      window [stamp-300ms, stamp+ENTRANCE_MS] (swipes stamp
+#                      before the action and keep the -50ms margin); this
+#                      script filters [stamp-50ms, stamp+ENTRANCE_MS]
+#                      (default 1000, which beside the lag still covers
+#                      every audited interaction's tap-to-settled) and
+#                      prints the bounds it used, so gap magnitudes are
+#                      exact and positions carry the stated skew. THE
+#                      PRINTED PRESENT-GAP LIST inside that window IS THE
+#                      VERDICT OF RECORD, read against the 33ms floor: every
+#                      gap over 33ms in it is a floor failure, gaps over
+#                      100ms included — never "freeze or idle". The PASS
+#                      line only summarizes the list.
 # Known wedge: if screenrecord emits ~1 frame despite display changes, the
 # virtual-display pipeline is wedged — a device REBOOT restores it (s6). The
 # SF fallback still works in that state.
@@ -64,6 +87,23 @@ if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
   echo "FRAME_AUDIT must be dual, video or sf (got '$MODE')"
   exit 1
 fi
+SWIPE=${SWIPE:-}
+PRE_SWIPE=${PRE_SWIPE:-}
+check_swipe_shape() {
+  local parts
+  parts=(${=1})
+  local numeric=${#${(M)parts:#<->}}
+  # Hoisted out of (( )): the <-> glob dies inside it (< and > parse as math).
+  # Duration is required: adb input swipe applies its own near-instant default without it,
+  # and the prompt below asserts the number it was given
+  (( ${#parts} == 5 )) && (( numeric == 5 ))
+}
+for v in "$SWIPE" "$PRE_SWIPE"; do
+  if [[ -n $v ]] && ! check_swipe_shape "$v"; then
+    echo "SWIPE/PRE_SWIPE must be 'x1 y1 x2 y2 duration_ms' (got '$v')"
+    exit 1
+  fi
+done
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
@@ -75,6 +115,11 @@ echo "settling 12s (JS warmup + widget pushes land ~2.5s in)"; sleep 12
 if [[ -n ${PRE_TAP:-} ]]; then
   adb -s "$SERIAL" shell input tap ${=PRE_TAP}
   echo "pre-tap at $PRE_TAP, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n $PRE_SWIPE ]]; then
+  adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE}"
+  echo "pre-swipe ${=PRE_SWIPE}, waiting out the settle (${PRE_TAP_WAIT}s)"
   sleep "$PRE_TAP_WAIT"
 fi
 
@@ -121,10 +166,18 @@ measure_sf_anchor() {
 }
 
 if [[ $MODE == sf ]]; then
-  # Tap and uptime read in ONE shell: the tap's CLOCK_BOOTTIME stamp must
-  # ride the same read discipline as the anchor's, or the offset arithmetic
-  # pulls the entrance window off the tap.
-  adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  # Interaction and uptime read in ONE shell: the input's CLOCK_BOOTTIME
+  # stamp must ride the same read discipline as the anchor's, or the offset
+  # arithmetic pulls the entrance window off the input. A swipe runs for its
+  # whole duration, so the stamp is read BEFORE it starts; a tap's stamp
+  # lands AFTER the command, and `input tap` runs 410-450ms with the touch
+  # injected mid-command, so the stamp trails the touch ~150-250ms (README
+  # Gotchas).
+  if [[ -n $SWIPE ]]; then
+    adb -s "$SERIAL" shell "cat /proc/uptime; input swipe ${=SWIPE}" > "$OUT/tap_uptime.txt"
+  else
+    adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  fi
   # The dump lands after the entrance AND the universal late burst (~1.7-2.2s
   # after the tap, step 10's Defect C): the ring's last ~127 presents hold
   # entrance + burst + idle ticks at the 3T's cadence, while a dump before
@@ -165,11 +218,14 @@ except (OSError, IndexError, ValueError):
           " or a re-run); this is not a pass")
     sys.exit(1)
 
-# The entrance window: from 50ms before the tap (the anchor's vsync and
-# read-lag margin, as the dual branch) to ENTRANCE_MS after it. It must
-# cover the audited entrance end to end — the marks bands put
-# tap-to-settled at ~160ms (overlay) and ~660ms (sheets) — so the 1000ms
-# default covers every audited interaction with margin.
+# The entrance window rides the STAMP beside the input, not the touch:
+# `input tap` takes 410-450ms on the 3T with the touch injected
+# mid-command, so a stamp read after the command trails the touch
+# ~150-250ms and the recorded method of record opens a tap window to
+# [stamp-300ms, stamp+WINDOW] (android-3t.json _2026_10_31); this filter
+# holds [stamp-50ms, stamp+ENTRANCE_MS] and prints the bounds it used. The
+# 1000ms default still covers every audited interaction's tap-to-settled
+# beside the lag (marks bands: ~160ms overlay, ~660ms sheets).
 ENTRANCE_MS = float(os.environ.get("ENTRANCE_MS", "1000"))
 tap_mono = tap_boot - offset
 rel = [(t / 1e9 - tap_mono) * 1000 for t in presents]
@@ -188,8 +244,9 @@ if len(win) < 2:
 # unclassifiable freeze: idle leaves through the window's far edge, and the
 # gap that crosses it ends outside and never prints as a failure.
 gaps = [(win[i] - win[i - 1], win[i - 1]) for i in range(1, len(win))]
-print(f"entrance window [tap-50ms, tap+{ENTRANCE_MS:.0f}ms]: {len(win)} presents,"
-      f" tap -> first present {win[0]:.0f}ms")
+print(f"entrance window [stamp-50ms, stamp+{ENTRANCE_MS:.0f}ms] (the stamp trails"
+      f" the touch ~150-250ms on taps; the method of record opens taps to"
+      f" -300ms): {len(win)} presents, stamp -> first present {win[0]:.0f}ms")
 print("present gaps inside the window:", [f"{g:.1f}ms@{a:+.0f}" for g, a in gaps])
 failures = [(g, a) for g, a in gaps if g > 33]
 print("FLOOR FAILURES (gaps over 33ms inside the window):",
@@ -212,13 +269,24 @@ adb -s "$SERIAL" shell "rm -f /sdcard/frame_audit.mp4"
 adb -s "$SERIAL" shell screenrecord --time-limit "$SECONDS_LIMIT" --bit-rate 16000000 /sdcard/frame_audit.mp4 &
 REC=$!
 sleep 0.5
-adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
-if [[ $MODE == dual ]]; then
-  # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
-  # immediately after the tap. SF presents ride CLOCK_MONOTONIC, so this read
-  # alone cannot open the SF window: the per-capture anchor measured below
-  # supplies the suspend offset, and the pairing subtracts it.
-  adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+if [[ -n $SWIPE ]]; then
+  # A swipe runs ~duration ms, so the SF anchor must stamp the swipe's START:
+  # the uptime read precedes the input (the two adb calls are sequential).
+  if [[ $MODE == dual ]]; then
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
+  adb -s "$SERIAL" shell "input swipe ${=SWIPE}"
+else
+  adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
+  if [[ $MODE == dual ]]; then
+    # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
+    # after the tap command - whose 410-450ms run injects the touch
+    # mid-command, so the stamp trails the touch ~150-250ms (README
+    # Gotchas). SF presents ride CLOCK_MONOTONIC, so this read
+    # alone cannot open the SF window: the per-capture anchor measured below
+    # supplies the suspend offset, and the pairing subtracts it.
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
 fi
 wait $REC 2>/dev/null || true
 adb -s "$SERIAL" pull /sdcard/frame_audit.mp4 "$OUT/rec.mp4" >/dev/null
@@ -265,11 +333,18 @@ if len(files) >= 2:
     print(f"contact sheet: {out}/contact_sheet.png")
 EOF
 
+if [[ -n $SWIPE ]]; then
+  sp=(${=SWIPE})
+  INTERACTION="a swipe from (${sp[1]},${sp[2]}) to (${sp[3]},${sp[4]}) over ${sp[5]}ms"
+else
+  INTERACTION="a tap at ($TAPX,$TAPY)"
+fi
+[[ -n $PRE_SWIPE ]] && INTERACTION+=" (a preparatory swipe pre-advanced the pager before the recorded interaction)"
 cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
 It is a labeled contact sheet of sequential frames from a prayer-times app
-recording (dark navy UI). The interaction was a tap at ($TAPX,$TAPY)${PRE_TAP:+,
+recording (dark navy UI). The interaction was $INTERACTION${PRE_TAP:+,
 which followed a prior tap at ($PRE_TAP) whose transition is already settled}.
 For each frame report its state and mid-animation progress; then answer:
 (1) Which frames form the animation? (2) Does the animated element progress
@@ -317,8 +392,11 @@ presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) <
 tap_mono = tap_boot - offset
 
 # Every quantity below is MILLISECONDS, video tap-relative (0 = the tap). The
-# SF window opens 50ms BEFORE the tap: the anchor carries +-50ms of vsync and
-# read lag, so the entrance's first presents may sit slightly before it.
+# SF window opens 50ms before its STAMP, which the tap command's own read
+# trails: `input tap` runs 410-450ms with the touch injected mid-command, so
+# the stamp sits ~150-250ms after the touch and the window's left edge may
+# cut an entrance's first presents (README Gotchas; the recorded method opens
+# taps to -300ms).
 vms = [(p - 0.5) * 1000 for p in tap]
 sms = [(t / 1e9 - tap_mono) * 1000 for t in presents if t / 1e9 >= tap_mono - 0.05]
 

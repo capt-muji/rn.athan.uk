@@ -394,8 +394,8 @@ export default function RamadanDecorations() {
   ]);
 
   // Splash-gate accounting: every Image the visible tree renders reports via
-  // onLoadEnd, and the splash reveals once all land (the mosque-icon Fresco
-  // race generalized to sprites — see masjidIconLoadedAtom). The expected
+  // onLoadEnd, and the splash reveals once all land (a Fresco async-decode
+  // race, on every sprite at once). The expected
   // total derives from the same configs that render the tree, so adding a
   // hanging or cloud keeps it correct. onLoadEnd fires on failure too, so a
   // lost bitmap can never wedge the splash. Hooks live above the visibility
