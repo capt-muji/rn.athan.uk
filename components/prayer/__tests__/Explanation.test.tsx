@@ -45,8 +45,8 @@ describe('the explanation box of an Extras prayer', () => {
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    expect(screen.getByText('Midnight')).toBeOnTheScreen();
-    expect(screen.getByText('Halfway between Magrib and Fajr')).toBeOnTheScreen();
+    // Title and its explanation both carry the noun under the short-noun rule
+    expect(screen.getAllByText('Midnight')).toHaveLength(2);
     expect(screen.queryByText(/[\u0600-\u06FF]/)).not.toBeOnTheScreen();
   });
 
@@ -74,7 +74,7 @@ describe('the explanation box of an Extras prayer', () => {
 
     const parts = drawnParts();
     expect(parts).toHaveLength(2);
-    expect(within(parts[boxPart]).getByText('Midnight')).toBeOnTheScreen();
+    expect(within(parts[boxPart]).getAllByText('Midnight')).toHaveLength(2);
     expect(within(parts[1 - boxPart]).queryByText('Midnight')).not.toBeOnTheScreen();
   });
 
@@ -87,7 +87,7 @@ describe('the explanation box of an Extras prayer', () => {
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
+    const box = drawnParts().find((part) => within(part).queryAllByText('Midnight').length > 0);
     const face = box?.children.find((child) => typeof child !== 'string');
     const style = face ? (StyleSheet.flatten(face.props.style) as { position?: string }) : null;
 
@@ -104,7 +104,11 @@ describe('the explanation box of an Extras prayer', () => {
   // restated in the component's doc and in the sweep: these two texts on this path only.
   type Words = { color?: string; opacity?: number };
 
-  const wordsOf = (text: string): Words => StyleSheet.flatten(screen.getByText(text).props.style);
+  // The short-noun rule (owner order 2026-10-31) made the midnight box's title and
+  // description the same noun, so the words are told apart by position: title first,
+  // description second
+  const wordsOf = (text: string, which: 0 | 1 = 0): Words =>
+    StyleSheet.flatten(screen.getAllByText(text)[which].props.style);
 
   const cardAt = (revealAt: number) => (
     <PrayerExplanation
@@ -117,8 +121,8 @@ describe('the explanation box of an Extras prayer', () => {
   const placed = async (revealAt: number): Promise<{ title: Words; description: Words }> => {
     await render(cardAt(revealAt));
     return {
-      title: wordsOf('Midnight'),
-      description: wordsOf('Halfway between Magrib and Fajr'),
+      title: wordsOf('Midnight', 0),
+      description: wordsOf('Midnight', 1),
     };
   };
 
@@ -136,7 +140,7 @@ describe('the explanation box of an Extras prayer', () => {
 
   it('moves only the opacity between phases - the colour is constant on the whole ramp', async () => {
     const rendered = await render(cardAt(0.3));
-    const dim = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+    const dim = { title: wordsOf('Midnight', 0), description: wordsOf('Midnight', 1) };
 
     // The mock runs every updater on each render, so a re-render at another reveal re-reads it
     // without mounting a second tree
@@ -144,7 +148,7 @@ describe('the explanation box of an Extras prayer', () => {
       rendered.rerender(cardAt(0.8));
     });
 
-    const bright = { title: wordsOf('Midnight'), description: wordsOf('Halfway between Magrib and Fajr') };
+    const bright = { title: wordsOf('Midnight', 0), description: wordsOf('Midnight', 1) };
     expect(bright.title.color).toBe(dim.title.color);
     expect(bright.description.color).toBe(dim.description.color);
     expect(bright.title.opacity).not.toBe(dim.title.opacity);
@@ -163,8 +167,8 @@ describe('the explanation box of an Extras prayer', () => {
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    expect(wordsOf('Midnight').opacity).toBe(1);
-    expect(wordsOf('Halfway between Magrib and Fajr').opacity).toBe(1);
+    expect(wordsOf('Midnight', 0).opacity).toBe(1);
+    expect(wordsOf('Midnight', 1).opacity).toBe(1);
   });
 
   // The colour revisions' measured pins leave the constants behind dead: no ink
@@ -311,7 +315,7 @@ describe("the info card's returned outline (owner order 2026-10-30)", () => {
       <PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[MIDNIGHT]} explanation={t(EXTRAS_EXPLANATIONS[MIDNIGHT])} />
     );
 
-    const box = drawnParts().find((part) => within(part).queryByText('Midnight') !== null);
+    const box = drawnParts().find((part) => within(part).queryAllByText('Midnight').length > 0);
     const face = box?.children.find((child) => typeof child !== 'string');
     const style = face
       ? (StyleSheet.flatten(face.props.style) as {
@@ -351,7 +355,10 @@ describe('the five Extras boxes across the six locales', () => {
       try {
         await render(<PrayerExplanation prayerName={EXTRA_PRAYER_TITLES[prayer]} explanation={t(key)} />);
 
-        const shown = screen.getByText(t(key));
+        // Under en the box's title is the same noun as the explanation (the
+        // short-noun rule), so the explanation is the last text carrying the bytes
+        const all = screen.getAllByText(t(key));
+        const shown = all[all.length - 1];
         expect(shown.props.children).toBe(t(key));
         expect(shown.props.children).not.toMatch(/[\u0660-\u0669]/);
       } finally {

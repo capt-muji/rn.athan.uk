@@ -19,6 +19,7 @@ import {
   bottomSheetModalAtom,
   countdownBarShownAtom,
   decorationsEnabledAtom,
+  decorationsOffSeasonAtom,
   hijriDateEnabledAtom,
   languageSheetModalAtom,
   popupHelpEnabledAtom,
@@ -289,12 +290,21 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
-  it('offers no decorations toggle', async () => {
+  it('offers the decorations row as the off-season override, default off, outside the season', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    store.set(decorationsOffSeasonAtom, false);
 
     await render(<SettingsSheet />);
 
-    expect(screen.queryByText('Show decorations')).not.toBeOnTheScreen();
+    // The master's mirror (T-541): outside the season the row drives the override
+    expect(switchOf('Show decorations')).not.toBeChecked();
+
+    await fireEvent.press(screen.getByText('Show decorations'));
+
+    expect(switchOf('Show decorations')).toBeChecked();
+    expect(store.get(decorationsOffSeasonAtom)).toBe(true);
+    // The override never touches the master preference
+    expect(store.get(decorationsEnabledAtom)).toBe(true);
   });
 
   it('shows no arabic-names toggle', async () => {

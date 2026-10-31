@@ -214,16 +214,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Halfway between Magrib and Fajr",
+        "text": "Midnight",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Start of the last third of the night",
+        "text": "Last Third",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minutes before Fajr",
@@ -316,16 +316,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نصف الليل بين المغرب والفجر",
+        "text": "نصف الليل",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "عند بداية الثلث الأخير من الليل",
+        "text": "آخر ثلث",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 دقيقة قبل الفجر",
@@ -418,16 +418,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah antara Maghrib dan Subuh",
+        "text": "Tengah malam",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from the sourced name set and standard Indonesian syntax (antara X dan Y). Meaning-safe; have a speaker polish."
+        "note": "Assembled from the sourced name set and standard Indonesian syntax (antara X dan Y). Meaning-safe; have a speaker polish.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Awal sepertiga malam terakhir",
+        "text": "Sepertiga akhir",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from sepertiga akhir plus standard syntax."
+        "note": "Derived from sepertiga akhir plus standard syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 menit sebelum Subuh",
@@ -458,10 +458,10 @@
         "note": "Urdu Wikipedia: نماز فجر. Tables print the bare name فجر; Mihrab and al-azan agree."
       },
       "Sunrise": {
-        "text": "طلوع آفتاب",
+        "text": "طلوع",
         "source": "mihrab@77e846d",
         "confidence": "high",
-        "note": "Mihrab and al-azan print it identically. The shorter طلوع also circulates. Do not use صبح صادق: that is true dawn, a different concept."
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the row takes the short طلوع the record itself noted circulates beside the full طلوع آفتاب"
       },
       "Dhuhr": {
         "text": "ظہر",
@@ -520,16 +520,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "مغرب اور فجر کے درمیان آدھی رات",
+        "text": "نصف شب",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from sourced names and al-azan's آدھی رات. Have a speaker polish the izafat."
+        "note": "Assembled from sourced names and al-azan's آدھی رات. Have a speaker polish the izafat.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات کے آخری تہائی کا آغاز",
+        "text": "آخری تہائی",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "فجر سے 20 منٹ پہلے",
@@ -622,16 +622,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "মাগরিব ও ফজরের মধ্যবর্তী সময়",
+        "text": "মধ্যরাত",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; মধ্যবর্তী is the standard Bengali for midway."
+        "note": "Derived; মধ্যবর্তী is the standard Bengali for midway.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "রাতের শেষ তৃতীয়াংশের শুরু",
+        "text": "শেষ তৃতীয়াংশ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ফজরের ২০ মিনিট পূর্বে",
@@ -724,16 +724,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Akşam ile İmsak arasının ortası",
+        "text": "Gece yarısı",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Diyanet's own names; verify with a speaker."
+        "note": "Derived from Diyanet's own names; verify with a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Gecenin son üçte birinin başlangıcı",
+        "text": "Teheccüd",
         "source": "al-azan@d89b047",
         "confidence": "high",
-        "note": "al-azan's own hint string Teheccüd gecenin son üçte birlik kısmıdır attests every word of this."
+        "note": "al-azan's own hint string Teheccüd gecenin son üçte birlik kısmıdır attests every word of this.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "İmsak'tan 20 dakika önce",
@@ -764,10 +764,10 @@
         "note": "Habous prints Alfajr; the Grande Mosquée de Paris and mawaqit print Fajr. Mihrab agrees."
       },
       "Sunrise": {
-        "text": "Lever du soleil",
+        "text": "Chourouq",
         "source": "habous",
         "confidence": "high",
-        "note": "Habous prints Chourouq (the Arabic loan, 8 chars); Mihrab and mawaqit print Lever du soleil (16 chars). French Muslim usage is split. Chourouq is common in mosque calendars; Lever du soleil in apps. shortText: Chourouq."
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the row takes the short form the chain already carried - Habous prints Chourouq, the loan the mosque calendars use, where Lever du soleil was the 16-char periphrasis"
       },
       "Dhuhr": {
         "text": "Dhuhr",
@@ -826,16 +826,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "À mi-chemin entre Maghrib et Fajr",
+        "text": "Minuit islamique",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard French syntax."
+        "note": "Derived; standard French syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Début du dernier tiers de la nuit",
+        "text": "Dernier tiers",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Dernier tiers."
+        "note": "Derived from Dernier tiers.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 min avant le Fajr",
@@ -928,16 +928,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Genau zwischen Maghrib und Fadschr",
+        "text": "Mitternacht",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; halbwegs zwischen is more colloquial. Confirm."
+        "note": "Derived; halbwegs zwischen is more colloquial. Confirm.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Beginn des letzten Drittels der Nacht",
+        "text": "Letztes Drittel",
         "source": "tahajjud-de",
         "confidence": "high",
-        "note": "tahajjud.de prints Das letzte Drittel der Nacht beginnt and es ergibt sich der Beginn um (begin, last third, night each attested), the decision-11 independent confirmation; al-azan German hint string carries the same phrase."
+        "note": "tahajjud.de prints Das letzte Drittel der Nacht beginnt and es ergibt sich der Beginn um (begin, last third, night each attested), the decision-11 independent confirmation; al-azan German hint string carries the same phrase.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 Min. vor dem Fadschr",
@@ -968,10 +968,10 @@
         "note": "Iranian tables print اذان صبح (badesaba, tala, tabdil). The bare word فجر is the Quranic name (al-azan prints it). اذان صبح is the row label users expect; فجر is the short form."
       },
       "Sunrise": {
-        "text": "طلوع آفتاب",
+        "text": "طلوع",
         "source": "bahesab",
         "confidence": "high",
-        "note": "All Iranian portals agree. al-azan prints the shorter طلوع. Either works; طلوع آفتاب is the full table label."
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the row takes the shorter طلوع al-azan prints, which the record already carried beside the full طلوع آفتاب"
       },
       "Dhuhr": {
         "text": "اذان ظهر",
@@ -1030,16 +1030,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نیمه شب بین مغرب و صبح",
+        "text": "نیمه شب شرعی",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from the app's existing Arabic phrasing and the sourced Persian names. Confirm with a speaker."
+        "note": "Assembled from the app's existing Arabic phrasing and the sourced Persian names. Confirm with a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "شروع ثلث آخر شب",
+        "text": "ثلث آخر شب",
         "source": "al-azan@d89b047",
         "confidence": "high",
-        "note": "Built from al-azan's attested ثلث آخر شب."
+        "note": "Built from al-azan's attested ثلث آخر شب.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "۲۰ دقیقه قبل از اذان صبح",
@@ -1132,16 +1132,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Pertengahan antara Maghrib dan Subuh",
+        "text": "Tengah malam",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Malay syntax."
+        "note": "Derived; standard Malay syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Permulaan sepertiga akhir malam",
+        "text": "Sepertiga malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; same caveat as the name."
+        "note": "Derived; same caveat as the name.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -1234,16 +1234,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Katikati ya Magharibi na Alfajiri",
+        "text": "Katikati ya usiku",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; katikati ya X na Y is the standard construction."
+        "note": "Derived; katikati ya X na Y is the standard construction.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Mwanzo wa theluthi ya mwisho ya usiku",
+        "text": "Theluthi ya mwisho",
         "source": "derived",
         "confidence": "high",
-        "note": "Assembled from al-azan's attested phrase plus mwanzo wa (start of)."
+        "note": "Assembled from al-azan's attested phrase plus mwanzo wa (start of).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Dakika 20 kabla ya Alfajiri",
@@ -1336,16 +1336,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tsakiyar Magriba da Asuba",
+        "text": "Tsakar dare",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced bare names; tsakiya is the standard Hausa midpoint word. Speaker pass wanted."
+        "note": "Derived from the sourced bare names; tsakiya is the standard Hausa midpoint word. Speaker pass wanted.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Farawar sulusin dare na ƙarshe",
+        "text": "Sulusin dare na ƙarshe",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; farawa is beginning, in the construct form farawar before its possessive."
+        "note": "Derived; farawa is beginning, in the construct form farawar before its possessive.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Minti 20 kafin Asuba",
@@ -1438,16 +1438,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": null,
+        "text": "Saqda dhexe",
         "source": null,
         "confidence": "low",
-        "note": "Needs the name set confirmed first."
+        "note": "Needs the name set confirmed first.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": null,
+        "text": "Seddexaad u dambeeya",
         "source": null,
         "confidence": "low",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": null,
@@ -1540,16 +1540,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "د مغرب او صبح په منځ کې",
+        "text": "د شپې نيمه",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the swapped loans مغرب and صبح with standard Pashto syntax (د X او Y په منځ کې)."
+        "note": "Derived from the swapped loans مغرب and صبح with standard Pashto syntax (د X او Y په منځ کې).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "د شپې د وروستۍ دريمې برخې پيل",
+        "text": "تهجد",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the loan تهجد row's concept and standard Pashto syntax; پيل is start."
+        "note": "Derived from the loan تهجد row's concept and standard Pashto syntax; پيل is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "له صبح ۲۰ دقيقې دمخه",
@@ -1642,16 +1642,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Nîvê di navbera Mexreb û Sibe de",
+        "text": "Nîveşev",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; di navbera ... de is between."
+        "note": "Derived from the sourced names; di navbera ... de is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Destpêka sêyema dawî ya şevê",
+        "text": "Sêyema dawî ya şevê",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; destpêk is the start."
+        "note": "Derived; destpêk is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 deqîqe berî Sibe",
@@ -1744,16 +1744,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Shom va Bomdod o'rtasidagi yarim kecha",
+        "text": "Yarim kecha",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; o'rtasida is between. Needs a speaker."
+        "note": "Derived; o'rtasida is between. Needs a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Tungan so'nggi uchdan birining boshlanishi",
+        "text": "Tahajjud",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; tunda (in the night), uchdan biri (one third). Needs a speaker."
+        "note": "Derived; tunda (in the night), uchdan biri (one third). Needs a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Bomdoddan 20 daqiqa oldin",
@@ -1784,10 +1784,10 @@
         "note": "namazvaxti.az and islam.az print Sübh. hacishahin.az prints Fəcr. Sübh is the standard Azerbaijani table label; Fəcr the rival."
       },
       "Sunrise": {
-        "text": "Gün çıxır",
+        "text": "Günəş",
         "source": "metbuat-az",
         "confidence": "high",
-        "note": "metbuat.az and islam.az print Gün çıxır. namazvaxti.az prints Günəş. Both current; Gün çıxır is more explicit, Günəş shorter."
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the row takes Günəş, which namazvaxti.az prints, where Gün çıxır was the explicit periphrasis"
       },
       "Dhuhr": {
         "text": "Zöhr",
@@ -1846,16 +1846,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Məğrib ilə Sübh arasının ortası",
+        "text": "Gecə yarısı",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Məğrib and Sübh with the tr twin's construction (X ilə Y arasının ortası)."
+        "note": "Derived from the sourced Məğrib and Sübh with the tr twin's construction (X ilə Y arasının ortası).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Gecənin son üçdə birinin başlanğıcı",
+        "text": "Gecənin son üçdə biri",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third label plus başlanğıcı (start)."
+        "note": "Derived from the Last Third label plus başlanğıcı (start).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Sübh'dən 20 dəqiqə əvvəl",
@@ -1948,16 +1948,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "மஃகிரிபுக்கும் ஃபஜ்ருக்கும் நடுவில்",
+        "text": "நள்ளிரவு",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced மஃகிரிப் and ஃபஜ்ர் with standard Tamil syntax (X, Y நடுவில்)."
+        "note": "Derived from the sourced மஃகிரிப் and ஃபஜ்ர் with standard Tamil syntax (X, Y நடுவில்).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "இரவின் கடைசி மூன்றில் ஒரு பங்கின் தொடக்கம்",
+        "text": "தஹஜ்ஜுத்",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the loan தஹஜ்ஜுத் row's concept with standard Tamil fraction syntax; தொடக்கம் is start."
+        "note": "Derived from the loan தஹஜ்ஜுத் row's concept with standard Tamil fraction syntax; தொடக்கம் is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ஃபஜ்ருக்கு 20 நிமிடம் முன்பு",
@@ -2050,16 +2050,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "മഗ്രിബിനും സുബഹിനും ഇടയിലുള്ള മധ്യം",
+        "text": "അർദ്ധരാത്രി",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced മഗ്രിബ് and സുബഹ് with standard Malayalam syntax (X-ിനും Y-ിനും ഇടയിൽ)."
+        "note": "Derived from the sourced മഗ്രിബ് and സുബഹ് with standard Malayalam syntax (X-ിനും Y-ിനും ഇടയിൽ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "രാത്രിയുടെ അവസാന മൂന്നിലൊരു ഭാഗത്തിന്റെ തുടക്കം",
+        "text": "തഹജ്ജുദ്",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced തഹജ്ജുദ് row's concept with standard Malayalam fraction syntax; തുടക്കം is start."
+        "note": "Derived from the sourced തഹജ്ജുദ് row's concept with standard Malayalam fraction syntax; തുടക്കം is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "സുബഹിന് 20 മിനിറ്റ് മുമ്പ്",
@@ -2152,16 +2152,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "मग़रिब और फज्र के बीच का मध्य बिंदु",
+        "text": "आधी रात",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; के बीच is between, मध्य बिंदु is midpoint."
+        "note": "Derived; के बीच is between, मध्य बिंदु is midpoint.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "रात के अंतिम तिहाई की शुरुआत",
+        "text": "अंतिम तिहाई",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "फज्र से 20 मिनट पहले",
@@ -2254,16 +2254,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Середина между Магрибом и Фаджром",
+        "text": "Исламская полночь",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; instrumental case after между is standard Russian."
+        "note": "Derived; instrumental case after между is standard Russian.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Начало последней трети ночи",
+        "text": "Последняя треть",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Последняя треть."
+        "note": "Derived from Последняя треть.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "За 20 минут до Фаджра",
@@ -2356,16 +2356,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Punto medio entre Magreb y Fajr",
+        "text": "Medianoche",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; punto medio is midpoint."
+        "note": "Derived; punto medio is midpoint.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Inicio del último tercio de la noche",
+        "text": "Último tercio",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minutos antes del Fajr",
@@ -2458,16 +2458,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "昏礼与晨礼之间的中点",
+        "text": "午夜",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced 昏礼 and 晨礼 with the standard 与...之间的中点 construction, the very form the research note constructed."
+        "note": "Derived from the sourced 昏礼 and 晨礼 with the standard 与...之间的中点 construction, the very form the research note constructed.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "夜间最后三分之一的开始",
+        "text": "夜间后三分之一",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third row plus standard syntax; 开始 is start."
+        "note": "Derived from the Last Third row plus standard syntax; 开始 is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "晨礼前20分钟",
@@ -2498,10 +2498,10 @@
         "note": "Bosnian vaktija prints Zora (dawn) for the Fajr row on vaktija.ba; al-azan prints Sabah; Bosnian Islamic usage says Sabah-namaz. Both attested. Zora is the dawn instant; Sabah is the prayer's name."
       },
       "Sunrise": {
-        "text": "Izlazak sunca",
+        "text": "Izlazak",
         "source": "vaktija",
         "confidence": "high",
-        "note": "vaktija.ba prints Izlazak sunca; al-azan prints the short Izlazak. Standard Bosnian, astronomical register; the vaktija's full form ships as the sourced label."
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the row takes the short Izlazak al-azan prints, which the record already carried beside vaktija.ba's full Izlazak sunca"
       },
       "Dhuhr": {
         "text": "Podne",
@@ -2560,16 +2560,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Sredina između Akšama i Sabaha",
+        "text": "Ponoć",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Akšam and Sabah with standard Bosnian syntax (sredina između X i Y)."
+        "note": "Derived from the sourced Akšam and Sabah with standard Bosnian syntax (sredina između X i Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Početak zadnje trećine noći",
+        "text": "Zadnja trećina noći",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third loan plus standard syntax; početak is start."
+        "note": "Derived from the Last Third loan plus standard syntax; početak is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuta prije Sabaha",
@@ -2662,16 +2662,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Në mes të Akshamit dhe Imsakut",
+        "text": "Mesnatë",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Akshami and Imsaku with standard Albanian syntax (në mes të X dhe Y); the anchors follow the Imsaku convention the row set carries."
+        "note": "Derived from the sourced Akshami and Imsaku with standard Albanian syntax (në mes të X dhe Y); the anchors follow the Imsaku convention the row set carries.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Fillimi i të tretës së fundit të natës",
+        "text": "E treta e fundit",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third loan plus standard syntax; fillimi is start."
+        "note": "Derived from the Last Third loan plus standard syntax; fillimi is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuta para Imsakut",
@@ -2764,16 +2764,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": null,
+        "text": "เที่ยงคืน",
         "source": null,
         "confidence": "low",
-        "note": "Needs the extras set confirmed first."
+        "note": "Needs the extras set confirmed first.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": null,
+        "text": "ช่วงสุดท้าย",
         "source": null,
         "confidence": "low",
-        "note": ""
+        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ก่อนซุบฮิ 20 นาที",
@@ -2866,16 +2866,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Halfweg tussen Maghrib en Fajr",
+        "text": "Middernacht",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Dutch pattern."
+        "note": "Derived; standard Dutch pattern.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Begin van het laatste derde deel van de nacht",
+        "text": "Laatste derde",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 min voor de Fajr",
@@ -2968,16 +2968,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "A meio caminho entre Maghrib e Fajr",
+        "text": "Meia-noite",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Portuguese syntax, the fr pattern's counterpart."
+        "note": "Derived; standard Portuguese syntax, the fr pattern's counterpart.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Início do último terço da noite",
+        "text": "Último terço",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Último terço."
+        "note": "Derived from Último terço.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 min antes do Fajr",
@@ -3070,16 +3070,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ақшам мен Таң арасындағы орта",
+        "text": "Түн ортасы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names."
+        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Түннің соңғы үштігінің басталуы",
+        "text": "Түннің соңғы үштігі",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Таңға 20 минут бұрын",
@@ -3172,16 +3172,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Шам менен Багымдаттын ортосу",
+        "text": "Түн ортосу",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names."
+        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Түндүн акыркы үчтүгүнүн башталышы",
+        "text": "Түндүн акыркы үчтүгү",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Багымдаттан 20 мүнөт мурун",
@@ -3274,16 +3274,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Миёни Шом ва Бомдод",
+        "text": "Нисфи шаб",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names."
+        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Оғози сеяки охири шаб",
+        "text": "Сеяки охири шаб",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 дақиқа пеш аз Бомдод",
@@ -3376,16 +3376,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Agşam bilen Ertiriň arasy",
+        "text": "Gije ýarysy",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names."
+        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Gijäniň soňky üçden biriniň başy",
+        "text": "Gijäniň soňky üçden biri",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Ertirden 20 minut öň",
@@ -3478,16 +3478,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Diggante Timis ak Fajar",
+        "text": "Diggu guddi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; diggante is between."
+        "note": "Derived; diggante is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Tàmbali ñetteelu guddi bi",
+        "text": "Ñetteelu guddi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; tàmbali is the start."
+        "note": "Derived; tàmbali is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 min laata Fajar",
@@ -3580,16 +3580,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "मगरीब आणि फजर यांच्यामधली वेळ",
+        "text": "मध्यरात्र",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names."
+        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "रात्रीच्या शेवटच्या भागाची सुरुवात",
+        "text": "रात्रीचा शेवटचा भाग",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived."
+        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "फजरच्या 20 मिनिटे आधी",
@@ -3682,16 +3682,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "మగ్రిబ్కు ఫజ్ర్కు మధ్యలో",
+        "text": "నడిరేయి",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced మగ్రిబ్ and ఫజ్ర్ with standard Telugu syntax (X, Y మధ్యలో)."
+        "note": "Derived from the sourced మగ్రిబ్ and ఫజ్ర్ with standard Telugu syntax (X, Y మధ్యలో).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "రాత్రి చివరి మూడవ వంతు ప్రారంభం",
+        "text": "తహజ్జుద్",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; రాత్రి is night, చివరి is last, మూడవ వంతు is a third, ప్రారంభం is beginning."
+        "note": "Derived; రాత్రి is night, చివరి is last, మూడవ వంతు is a third, ప్రారంభం is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ఫజ్ర్కు 20 నిమిషాల ముందు",
@@ -3784,16 +3784,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "મગરિબ અને ફજર વચ્ચે",
+        "text": "મધ્યરાત્રિ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced મગરિબ and ફજર with standard Gujarati syntax (X અને Y વચ્ચે)."
+        "note": "Derived from the sourced મગરિબ and ફજર with standard Gujarati syntax (X અને Y વચ્ચે).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "રાતના છેલ્લા ત્રીજા ભાગની શરૂઆત",
+        "text": "તહજ્જુદ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; રાત is night, છેલ્લા is last, ત્રીજા ભાગ is third part, શરૂઆત is beginning."
+        "note": "Derived; રાત is night, છેલ્લા is last, ત્રીજા ભાગ is third part, શરૂઆત is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ફજરના 20 મિનિટ પહેલાં",
@@ -3886,16 +3886,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "ಮಗ್ರಿಬ್ ಮತ್ತು ಫಜರ್ ನಡುವೆ",
+        "text": "ಮಧ್ಯರಾತ್ರಿ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced ಮಗ್ರಿಬ್ and ಫಜರ್ with standard Kannada syntax (X ಮತ್ತು Y ನಡುವೆ)."
+        "note": "Derived from the sourced ಮಗ್ರಿಬ್ and ಫಜರ್ with standard Kannada syntax (X ಮತ್ತು Y ನಡುವೆ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "ರಾತ್ರಿಯ ಕೊನೆಯ ಮೂರನೇ ಒಂದು ಭಾಗದ ಆರಂಭ",
+        "text": "ತಹಜ್ಜುದ್",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ರಾತ್ರಿ is night, ಕೊನೆಯ is last, ಮೂರನೇ ಒಂದು ಭಾಗ is a third, ಆರಂಭ is beginning."
+        "note": "Derived; ರಾತ್ರಿ is night, ಕೊನೆಯ is last, ಮೂರನೇ ಒಂದು ಭಾಗ is a third, ಆರಂಭ is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ಫಜರ್‌ಗೆ 20 ನಿಮಿಷ ಮೊದಲು",
@@ -3988,16 +3988,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "በመግሪብና በፈጅር መካከል",
+        "text": "እኩለ ሌሊት",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced መግሪብ and ፈጅር with standard Amharic syntax (በXና በY መካከል)."
+        "note": "Derived from the sourced መግሪብ and ፈጅር with standard Amharic syntax (በXና በY መካከል).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "የሌሊቱ የመጨረሻ ሶስተኛ መጀመሪያ",
+        "text": "ተሃጁድ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ሌሊት is night, መጨረሻ is last, ሶስተኛ is third, መጀመሪያ is beginning."
+        "note": "Derived; ሌሊት is night, መጨረሻ is last, ሶስተኛ is third, መጀመሪያ is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ከፈጅር 20 ደቂቃ በፊት",
@@ -4090,16 +4090,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Gidduu Magribii fi Fajrii",
+        "text": "Walakkaa halkanii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Magribii and Fajrii with standard Oromo syntax (gidduu X fi Y)."
+        "note": "Derived from the sourced Magribii and Fajrii with standard Oromo syntax (gidduu X fi Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Jalqaba sadaffaa halkanii",
+        "text": "Sadaffaa halkanii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; jalqaba is beginning, sadaffaa is third, halkanii is of the night."
+        "note": "Derived; jalqaba is beginning, sadaffaa is third, halkanii is of the night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Daqiiqaa 20 dura Fajrii",
@@ -4192,16 +4192,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Magribi ni fajiri cɛ",
+        "text": "su cɛmancɛ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced fitiri/fajiri with standard Bambara syntax (X ni Y cɛ)."
+        "note": "Derived from the sourced fitiri/fajiri with standard Bambara syntax (X ni Y cɛ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Su laban sɔrɔ fɔlɔ",
+        "text": "Tahajudi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; su is night, laban is last, sɔrɔ is part, fɔlɔ is first/beginning."
+        "note": "Derived; su is night, laban is last, sɔrɔ is part, fɔlɔ is first/beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Fajiri 20 miniti ɲɛfɛ",
@@ -4294,16 +4294,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Kalahati sa pagitan ng Maghrib at Fajr",
+        "text": "Hatinggabi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Maghrib and Fajr with standard Tagalog syntax (sa pagitan ng X at Y)."
+        "note": "Derived from the sourced Maghrib and Fajr with standard Tagalog syntax (sa pagitan ng X at Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Simula ng huling ikatlo ng gabi",
+        "text": "Huling ikatlo ng gabi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; simula is start, huling ikatlo is last third, gabi is night."
+        "note": "Derived; simula is start, huling ikatlo is last third, gabi is night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago ang Fajr",
@@ -4396,16 +4396,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Hakkunde Magrib e Fajiri",
+        "text": "hakkunde jemma",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Magrib (furura) and Fajiri with standard Fulfulde syntax (hakkunde X e Y)."
+        "note": "Derived from the sourced Magrib (furura) and Fajiri with standard Fulfulde syntax (hakkunde X e Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Fuɗɗoode tataɓal jemma",
+        "text": "tataɓal jemma",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; fuɗɗoode is beginning, tataɓal is third, jemma is night."
+        "note": "Derived; fuɗɗoode is beginning, tataɓal is third, jemma is night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Minutooji 20 ado Fajiri",
@@ -4498,16 +4498,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نماشاں تے سرگی دے وچکار",
+        "text": "آدھی رات",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names with Punjabi syntax; وچکار is between."
+        "note": "Derived from the sourced names with Punjabi syntax; وچکار is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات دے آخری تہائی دا شروع",
+        "text": "آخری تہائی",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; names the sourced Last Third row."
+        "note": "Derived; names the sourced Last Third row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "سرگی توں 20 منٹ پہلاں",
@@ -4600,16 +4600,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "مغرب ۽ فجر جي وچ ۾",
+        "text": "اڌ رات",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; وچ ۾ is between."
+        "note": "Derived from the sourced names; وچ ۾ is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات جي آخري ٽئين حصي جي شروعات",
+        "text": "رات جو آخري ٽيون",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; names the sourced Last Third row."
+        "note": "Derived; names the sourced Last Third row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "فجر کان 20 منٽ اڳ",
@@ -4702,16 +4702,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "شام بىلەن بامدات ئارىسىدا",
+        "text": "يېرىم كېچە",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; ئارىسىدا is between."
+        "note": "Derived from the sourced names; ئارىسىدا is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "كېچىنىڭ ئاخىرقى ئۈچىنىڭ بېشى",
+        "text": "كېچىنىڭ ئاخىرقى ئۈچى",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; بېشى is its beginning."
+        "note": "Derived; بېشى is its beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "بامداتتىن 20 مىنۇت بۇرۇن",
@@ -4804,16 +4804,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "لە نێوان مەغریب و بەیانی",
+        "text": "نیوەشەو",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; لە نێوان is between."
+        "note": "Derived from the sourced names; لە نێوان is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "دەستپێکی سێیەکی کۆتایی شەو",
+        "text": "سێیەکی کۆتایی شەو",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; دەستپێک is the start."
+        "note": "Derived; دەستپێک is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 خولەک پێش بەیانی",
@@ -4906,16 +4906,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Àárín Magrib àti Àárọ̀",
+        "text": "Àárín òru",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; àárín is the middle."
+        "note": "Derived from the sourced names; àárín is the middle.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Ìbẹ̀rẹ̀ apá ìkẹyìn òru",
+        "text": "Apá ìkẹyìn òru",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ìbẹ̀rẹ̀ is the beginning."
+        "note": "Derived; ìbẹ̀rẹ̀ is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Ìṣẹ́jú 20 ṣáájú Àárọ̀",
@@ -5008,16 +5008,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Antarané Maghrib lan Subuh",
+        "text": "Tengah wengi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antarané is between."
+        "note": "Derived from the sourced names; antarané is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Wiwitan telung bagéyan pungkasan wengi",
+        "text": "Pungkasan wengi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; wiwitan is the beginning and telung bagéyan the three parts."
+        "note": "Derived; wiwitan is the beginning and telung bagéyan the three parts.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 menit sadurungé Subuh",
@@ -5110,16 +5110,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Antara Magrib jeung Subuh",
+        "text": "Tengah peuting",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antara ... jeung is between."
+        "note": "Derived from the sourced names; antara ... jeung is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Mimiti sapartilu ahir peuting",
+        "text": "Ahir peuting",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; mimiti is the beginning and sapartilu the third."
+        "note": "Derived; mimiti is the beginning and sapartilu the third.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 menit saméméh Subuh",
@@ -5212,16 +5212,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "မဂ်ရိဗ်နှင့် ဖဂျရ်အကြား အလယ်",
+        "text": "ညဉ့်အလယ်",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; အကြား အလယ် is the middle of the span between."
+        "note": "Derived from the sourced names; အကြား အလယ် is the middle of the span between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "ညဉ့်နောက်ဆုံးသုံးပုံ အစပိုင်း",
+        "text": "ညဉ့်နောက်ဆုံးသုံးပုံ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; အစပိုင်း is the beginning part."
+        "note": "Derived; အစပိုင်း is the beginning part.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ဖဂျရ်မတိုင်မီ 20 မိနစ်",
@@ -5314,16 +5314,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ахшам намазы белән Иртәнге намаз арасының уртасы",
+        "text": "Төн уртасы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; белән is and, арасының уртасы the middle of the span."
+        "note": "Derived from the sourced names; белән is and, арасының уртасы the middle of the span.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Төннең соңгы өчлегенең башы",
+        "text": "Төннең соңгы өчлеге",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; башы is the beginning."
+        "note": "Derived; башы is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Иртәнге намазга 20 минут кала",
@@ -5416,16 +5416,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Посередині між Магрібом і Фаджром",
+        "text": "Ісламська північ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; посередині між is halfway between."
+        "note": "Derived from the sourced names; посередині між is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Початок останньої третини ночі",
+        "text": "Остання третина",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; початок is the beginning."
+        "note": "Derived; початок is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "За 20 хвилин до Фаджру",
@@ -5518,16 +5518,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Di tangah antaro Magrib jo Subuh",
+        "text": "Tangah malam",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antaro ... jo is between."
+        "note": "Derived from the sourced names; antaro ... jo is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Mulo tigo paheuik tarakhia malam",
+        "text": "Tigo paheuik tarakhia",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; mulo is the beginning."
+        "note": "Derived; mulo is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minik sabalun Subuh",
@@ -5620,16 +5620,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "E tengnga antara Magreb ban Subuh",
+        "text": "Tengnga bengi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antara ... ban is between."
+        "note": "Derived from the sourced names; antara ... ban is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Onorna bengi tello' bhagi",
+        "text": "Ahir bengi tello' bhagi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; onorna is the beginning."
+        "note": "Derived; onorna is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 menit sabellunna Subuh",
@@ -5722,16 +5722,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ri tengnga antamengi Magrib ri Subu'",
+        "text": "Tengnga bessi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced names; antamengi is between, recorded derivation."
+        "note": "Derived from the sourced names; antamengi is between, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Onronna bessi tellu bageang",
+        "text": "Bessi tellu bageang",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; onronna is the beginning, recorded derivation."
+        "note": "Derived; onronna is the beginning, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 menit sabbela Subu'",
@@ -5824,16 +5824,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Chawpin Inti chinkaywan Fajrpa",
+        "text": "Chawpi tuta",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced names; chawpin is the middle of, -wan and, recorded derivation."
+        "note": "Derived from the sourced names; chawpin is the middle of, -wan and, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Tuta qhipa kimsa ch'iqa qallariy",
+        "text": "Tuta qhipa kimsa ch'iqa",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; qallariy is the beginning, recorded derivation."
+        "note": "Derived; qallariy is the beginning, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Fajrman 20 minutu ñawpaq",
@@ -5926,16 +5926,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "マグリブとファジュルのちょうど真ん中",
+        "text": "真夜中",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; XとYのちょうど真ん中 is exactly halfway between X and Y."
+        "note": "Derived from the sourced names; XとYのちょうど真ん中 is exactly halfway between X and Y.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "夜の最後の三分の一の始まり",
+        "text": "夜の最後の三分の一",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; の始まり is the start of."
+        "note": "Derived from the sourced names; の始まり is the start of.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "ファジュルの20分前",
@@ -6028,16 +6028,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "마그립과 파즈르의 정가운데",
+        "text": "자정",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; X과 Y의 정가운데 is the middle point between X and Y, 과 the after-consonant linker."
+        "note": "Derived from the sourced names; X과 Y의 정가운데 is the middle point between X and Y, 과 the after-consonant linker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "밤의 마지막 3분의 1의 시작",
+        "text": "밤의 마지막 3분의 1",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; 의 시작 is the start of."
+        "note": "Derived from the sourced names; 의 시작 is the start of.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "파즈르 20분 전",
@@ -6130,16 +6130,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "A metà tra Maghrib e Fajr",
+        "text": "Mezzanotte",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; a metà tra X e Y is halfway between."
+        "note": "Derived from the sourced names; a metà tra X e Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Inizio dell'ultimo terzo della notte",
+        "text": "Ultimo terzo della notte",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; inizio is the start, the rest the loan phrase in full."
+        "note": "Derived from the sourced names; inizio is the start, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuti prima di Fajr",
@@ -6232,16 +6232,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "W połowie między Maghrib a Fajr",
+        "text": "Północ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; w połowie między X a Y is halfway between."
+        "note": "Derived from the sourced names; w połowie między X a Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Początek ostatniej 1/3 nocy",
+        "text": "Ostatnia 1/3 nocy",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; początek is the start, the rest the loan phrase in full."
+        "note": "Derived from the sourced names; początek is the start, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minut przed Fajr",
@@ -6334,16 +6334,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "La mijloc între Maghrib și Fajr",
+        "text": "Miezul nopții",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; la mijloc între X și Y is halfway between."
+        "note": "Derived from the sourced names; la mijloc între X și Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Începutul ultimei treimi a nopții",
+        "text": "Ultima treime a nopții",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; începutul is the start of, the rest the loan phrase in its inflected form."
+        "note": "Derived from the sourced names; începutul is the start of, the rest the loan phrase in its inflected form.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 de minute înainte de Fajr",
@@ -6436,16 +6436,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Taliwala sa Maghrib ug Fajr",
+        "text": "Tungang gabii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; taliwala sa is halfway between."
+        "note": "Derived from the sourced names; taliwala sa is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Pagsugod sa kataposang ikatulo sa gabii",
+        "text": "Kataposang ikatulo",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; pagsugod sa is the start of, and the phrase spells the loan in full."
+        "note": "Derived from the sourced names; pagsugod sa is the start of, and the phrase spells the loan in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto sa wala pa ang Fajr",
@@ -6538,16 +6538,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengnga a pagbaetan ti Maghrib ken Fajr",
+        "text": "Tengnga ti rabii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; tengnga a pagbaetan ti X ken Y is the middle point between X and Y."
+        "note": "Derived from the sourced names; tengnga a pagbaetan ti X ken Y is the middle point between X and Y.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Rugian ti maudi a maikatlo ti rabii",
+        "text": "Maudi a maikatlo",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; rugian ti is the start of, and the phrase spells the loan in full."
+        "note": "Derived from the sourced names; rugian ti is the start of, and the phrase spells the loan in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 a minuto sakbay ti Fajr",
@@ -6640,16 +6640,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Đúng giữa Maghrib và Fajr",
+        "text": "Nửa đêm",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; đúng giữa X và Y is exactly halfway between."
+        "note": "Derived from the sourced names; đúng giữa X và Y is exactly halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Bắt đầu 1/3 cuối của đêm",
+        "text": "1/3 cuối của đêm",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; bắt đầu is the start of, the rest the loan phrase in full."
+        "note": "Derived from the sourced names; bắt đầu is the start of, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Trước Fajr 20 phút",
@@ -6742,16 +6742,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نِماشَاں اَتے دَھمِّی دے وچکار",
+        "text": "آدھی رات",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced نِماشَاں and دَھمِّی in Saraiki syntax: اَتے is and, دے وچکار between."
+        "note": "Derived from the sourced نِماشَاں and دَھمِّی in Saraiki syntax: اَتے is and, دے وچکار between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات دی آخری تہائی دا آغاز",
+        "text": "رات دی آخری تہائی",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; آغاز is the start, riding the loaned label itself."
+        "note": "Derived; آغاز is the start, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "دَھمِّی توں 20 منٹ پہلے",
@@ -6844,16 +6844,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نماشاں و فجر دا وچکار",
+        "text": "نصف شب",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced نماشاں and فجر; و is and, وچکار between, the register's shared Perso-Arabic forms."
+        "note": "Derived from the sourced نماشاں and فجر; و is and, وچکار between, the register's shared Perso-Arabic forms.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات دی آخری تہائی دا آغاز",
+        "text": "آخری تہائی",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; آغاز is the start, riding the loaned label itself."
+        "note": "Derived; آغاز is the start, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "فجر 20 منٹ پہلے",
@@ -6946,16 +6946,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "شام تہ صُبُح درمیان",
+        "text": "نصف شب",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced شام and صُبُح; تہ is Kashmiri's and, درمیان the Perso-Arabic between the register shares."
+        "note": "Derived from the sourced شام and صُبُح; تہ is Kashmiri's and, درمیان the Perso-Arabic between the register shares.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "رات کی آخری تہائی کا آغاز",
+        "text": "آخری تہائی",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; the register's Urdu-shaped construction in Kashmiri script, آغاز the start."
+        "note": "Derived; the register's Urdu-shaped construction in Kashmiri script, آغاز the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "صُبُح 20 منٹ پہلے",
@@ -7048,16 +7048,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Magaribi a Faaji dawu",
+        "text": "Nisfu layl",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the loans; a is Kanuri's with, dawu its middle."
+        "note": "Derived from the loans; a is Kanuri's with, dawu its middle.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Tultu layl badi",
+        "text": "Tultu layl",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; badi is Kanuri's beginning, riding the loaned label itself."
+        "note": "Derived; badi is Kanuri's beginning, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "Faaji gaba 20 minti",
@@ -7150,16 +7150,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Antara Magrib dan Subuh",
+        "text": "Tengah malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced Magrib and Subuh; antara and dan are the Malay register the list itself rides."
+        "note": "Derived from the sourced Magrib and Subuh; antara and dan are the Malay register the list itself rides.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Mula sa sepertiga malam",
+        "text": "Sepertiga malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; mula is the register's start, sa the of-marker, riding the loaned label itself."
+        "note": "Derived; mula is the register's start, sa the of-marker, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -7253,16 +7253,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Taliwala sang Maghrib kag Fajr",
+        "text": "Tungang gab-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row."
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Pagsugod sang katapusan nga ikatulo sang gab-i",
+        "text": "Katapusan nga ikatulo",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head."
+        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto antes sang Fajr",
@@ -7293,10 +7293,10 @@
         "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Sunrise": {
-        "text": "Pagsirang kan saldog",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived: the Central Bikol phrase for the sun rising (saldog the sun, pagsirang its rising), the Mintz-Britanico dictionary register."
+        "text": "Pagsirang",
+        "source": "wiktionary-sunrise",
+        "confidence": "medium",
+        "note": "Re-sourced (T-541, the owner's 2.43.1 read): en.wiktionary.org/wiki/sunrise lists Central Bikol pagsirang (with pagsubang) as the sunrise term, and the sirang entry's own derived terms carry pagsirang; the former Pagsirang kan saldog read as the long rising-of-the-sun phrase and misspelled the sun word (saldang, per the same corpus), so the row takes the attested short noun"
       },
       "Dhuhr": {
         "text": "Dhuhr",
@@ -7355,16 +7355,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tangâ kan Maghrib asg Fajr",
+        "text": "Tangang banggi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row."
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Poon kan huring ikatolo kan banggi",
+        "text": "Huring ikatolo",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word."
+        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago an Fajr",
@@ -7373,10 +7373,10 @@
         "note": "Derived from the loaned names and Bikol number syntax, the bcl.wikipedia register."
       },
       "20 mins after Sunrise": {
-        "text": "20 minuto pakatapos kan pagsirang kan saldog",
+        "text": "20 minuto pakatapos kan pagsirang",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the Central Bikol phrase for the sun rising (saldog the sun, pagsirang its rising), the Mintz-Britanico dictionary register."
+        "note": "Re-sourced with the sunrise row (T-541): the explanation rides the row's new short noun pagsirang, dropping the misspelled saldog phrase"
       },
       "1 hour before Magrib (Fridays only)": {
         "text": "1 oras bago an Maghrib (Biyernes sana)",
@@ -7384,7 +7384,8 @@
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
       }
-    }
+    },
+    "notes": "2026-10-31 re-sourcing after the owner's read: the sunrise row reads Pagsirang (Wiktionary's Central Bikol sunrise noun; the old row was the long rising-of-the-sun phrase and misspelled the sun word itself - saldang, not saldog); the qibla subtitle's conjunction is asin (asg is not a Bikol word, per Wiktionary), so the line reads Kaptan na patag asin luway-luway na magrikos; the sound-sheet hint is correct and naturally long - tanog is Wiktionary's Central Bikol noun for sound and the purpose clause is the register's own - so it stands. The same asg spelling sits in about a dozen other Bikol strings, left alone because the order named three."
   },
   "war": {
     "names": {
@@ -7457,16 +7458,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Butnga han Maghrib ngan Fajr",
+        "text": "Tunga nga gab-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row."
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Pagtikang han kataposan nga ikatulo han gab-i",
+        "text": "Kataposan nga ikatulo",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: kataposan the last, ikatulo the third."
+        "note": "Derived: kataposan the last, ikatulo the third.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto ugsa han Fajr",
@@ -7559,16 +7560,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Sa gitna ng Magrib at Subuh",
+        "text": "Tengah kagabi-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row."
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Simula ng katatlong bahagi ng gabi",
+        "text": "Katelo a kagabi-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line."
+        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago ang Subuh",
@@ -7662,16 +7663,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Pertengahan antara Maghrib dan Subuh",
+        "text": "Tengah malam",
         "source": "derived",
         "confidence": "low",
-        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row."
+        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "Permulaan sepertiga akhir malam",
+        "text": "Sepertiga malam",
         "source": "derived",
         "confidence": "low",
-        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard."
+        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -7764,16 +7765,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "ኣብ ማእከል ምግሪብን ፈጅርን",
+        "text": "ግማዕ ለይቲ",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row."
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "Start of the last third of the night": {
-        "text": "ምብጻሕ ወሲኽታን ሳልሳይ ለይቲ",
+        "text": "ወሲኽታን ሳልሳይ ለይቲ",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night."
+        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
       },
       "20 mins before Fajr": {
         "text": "20 ደቒቕ ቅድሚ ፈጅር",

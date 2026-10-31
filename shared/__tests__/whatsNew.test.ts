@@ -72,6 +72,24 @@ const archiveItem = (overrides: Partial<WhatsNewArchiveItem> = {}): WhatsNewArch
 // shouldShowWhatsNew TESTS
 // =============================================================================
 
+describe("the retired 2.43 language-wave row (T-541, the owner's read)", () => {
+  it('archives no item under the languageWave keys', () => {
+    for (const item of WHATS_NEW?.items ?? []) {
+      expect(item.titleKey).not.toBe('whatsNew.title.languageWave');
+      expect(item.bodyKey).not.toBe('whatsNew.body.languageWave');
+    }
+  });
+
+  it('ships the languageWave keys in no catalog', () => {
+    for (const locale of LOCALE_IDS) {
+      const catalog = readFileSync(join(__dirname, '..', 'i18n', `${locale}.ts`), 'utf8');
+      expect(catalog).not.toContain('languageWave');
+    }
+    const sources = readFileSync(join(__dirname, '..', 'i18n', 'en.ts'), 'utf8');
+    expect(sources).not.toContain('languageWave');
+  });
+});
+
 describe('shouldShowWhatsNew', () => {
   // The gate is content-driven (owner order 2026-10-21, design B): the archive's newest
   // stamped item is the bar, and the modal opens only when that bar clears the stored

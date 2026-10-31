@@ -2,8 +2,8 @@ import { useAtomValue } from 'jotai';
 import { Image, StyleSheet, View } from 'react-native';
 
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
-import { isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom } from '@/stores/ui';
+import { decorationsVisible, isRamadan } from '@/shared/time';
+import { decorationsEnabledAtom, decorationsOffSeasonAtom, markMasjidLoaded } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -23,13 +23,20 @@ const ICON_SOURCES = {
 
 export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
-  const useRamadanIcon = isRamadan() && decorationsEnabled;
+  const offSeason = useAtomValue(decorationsOffSeasonAtom);
+  const useRamadanIcon = decorationsVisible(isRamadan(), offSeason, decorationsEnabled);
   const variant = useRamadanIcon ? 'ramadan' : 'standard';
   // The locale's own direction, the row 73 precedent: a starved crossing (row 78) renders Arabic while the bridge still reports the launch direction
   const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   return (
     <View style={styles.container}>
-      <Image source={ICON_SOURCES[variant]} style={[styles.icon, { height, width }, isRTL && styles.mirrored]} />
+      {/* onLoadEnd fires on success and failure alike, so the splash's icon gate
+          (T-541) can never strand: the reveal waits only for the first decode */}
+      <Image
+        source={ICON_SOURCES[variant]}
+        style={[styles.icon, { height, width }, isRTL && styles.mirrored]}
+        onLoadEnd={markMasjidLoaded}
+      />
     </View>
   );
 }

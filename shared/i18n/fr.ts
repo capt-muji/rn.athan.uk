@@ -10,7 +10,7 @@ import type { Catalog } from './en';
 
 export const fr = {
   'prayer.fajr': 'Fajr',
-  'prayer.sunrise': 'Lever du soleil',
+  'prayer.sunrise': 'Chourouq',
   'prayer.dhuhr': 'Dhuhr',
   'prayer.asr': 'Asr',
   'prayer.magrib': 'Maghrib',
@@ -160,8 +160,8 @@ export const fr = {
   'prayerAlert.state.unavailable': 'indisponible',
   'prayerAlert.hintUnavailable': 'Explique pourquoi aucune alerte ne peut être réglée pour cette prière',
   'prayerAlert.hintOpen': "Ouvre les options d'alerte de cette prière",
-  'extras.explanation.midnight': 'À mi-chemin entre Maghrib et Fajr',
-  'extras.explanation.last third': 'Début du dernier tiers de la nuit',
+  'extras.explanation.midnight': 'Minuit islamique',
+  'extras.explanation.last third': 'Dernier tiers',
   'extras.explanation.suhoor': '20 min avant le Fajr',
   'extras.explanation.duha': '20 min après le lever du soleil',
   'extras.explanation.istijaba': '1 heure avant le Maghrib (vendredis uniquement)',
@@ -191,8 +191,6 @@ export const fr = {
   'whatsNew.body.language': 'Ajout de la prise en charge de plus de langues',
   'whatsNew.title.moreLanguages': 'Plus de langues',
   'whatsNew.body.moreLanguages': 'Ajout de la prise en charge de plus de langues',
-  'whatsNew.title.languageWave': 'Six nouvelles langues',
-  'whatsNew.body.languageWave': 'Six langues ajoutées et six retirées',
   'whatsNew.title.checkUpdates': 'Rechercher des mises à jour',
   'whatsNew.body.checkUpdates': 'Ajout de l’option Rechercher des mises à jour',
   'whatsNew.title.whatsNew': 'Page Nouveautés',

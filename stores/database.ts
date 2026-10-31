@@ -41,10 +41,16 @@ export const database = createMMKV({ id: DATABASE_ID });
  */
 export const getItem = (key: string) => {
   const value = database.getString(key);
-  const data = value ? JSON.parse(value) : null;
-  logger.info(`MMKV READ: ${key} ::`, data);
+  if (!value) return null;
 
-  return data;
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    // Torn bytes read as absent (T-541's XS capture: one unparseable record took
+    // the whole launch down); the value is lost, never invented
+    logger.warn('MMKV: a stored value failed to parse, reading it as absent', { key, error });
+    return null;
+  }
 };
 
 /**
@@ -154,6 +160,24 @@ export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
 };
 
 /**
+ * The year marker may only vouch for days that are actually stored (the
+ * replacePrayerCache law): a day whose bytes will not read takes its year's
+ * claim away, so the next sync re-asks the API instead of showing a hole the
+ * gap rule would keep.
+ */
+const voidYearMarker = (year: string): void => {
+  try {
+    const years = getItem('fetched_years');
+    if (years && years[year] !== undefined) {
+      delete years[year];
+      setItem('fetched_years', years);
+    }
+  } catch {
+    // The marker is a cache; nothing here may throw into the caller's read
+  }
+};
+
+/**
  * Gets prayer data for a calendar day of the prayer timetable
  * @param date Date string in YYYY-MM-DD format
  * @returns Prayer data or null if not found
@@ -165,7 +189,23 @@ export const getPrayerByDateString = (date: string): ISingleApiResponseTransform
 
   logger.info(`MMKV READ: ${key}`);
 
-  return data ? JSON.parse(data) : null;
+  if (!data) return null;
+
+  try {
+    return JSON.parse(data) as ISingleApiResponseTransformed;
+  } catch (error) {
+    // Torn bytes read as an absent day and are dropped (T-541's XS capture: a
+    // record a kill tore mid-write bricked every launch through the sync
+    // pipeline's bare parse). Never substituted, never invented: the marker
+    // goes, so the next sync downloads the year again from the source of truth
+    logger.warn('MMKV: a stored day failed to parse, dropping it and its year marker', {
+      key,
+      error,
+    });
+    database.remove(key);
+    voidYearMarker(date.slice(0, 4));
+    return null;
+  }
 };
 
 /**

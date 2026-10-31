@@ -11,7 +11,7 @@ import type { Catalog } from './en';
 
 export const ur = {
   'prayer.fajr': 'فجر',
-  'prayer.sunrise': 'طلوع آفتاب',
+  'prayer.sunrise': 'طلوع',
   'prayer.dhuhr': 'ظہر',
   'prayer.asr': 'عصر',
   'prayer.magrib': 'مغرب',
@@ -155,8 +155,8 @@ export const ur = {
   'prayerAlert.state.unavailable': 'دستیاب نہیں',
   'prayerAlert.hintUnavailable': 'بیان کرتا ہے کہ اس نماز کے لیے اطلاع کیوں سیٹ نہیں ہو سکتی',
   'prayerAlert.hintOpen': 'اس نماز کی اطلاع کے اختیارات کھولتا ہے',
-  'extras.explanation.midnight': 'مغرب اور فجر کے درمیان آدھی رات',
-  'extras.explanation.last third': 'رات کے آخری تہائی کا آغاز',
+  'extras.explanation.midnight': 'نصف شب',
+  'extras.explanation.last third': 'آخری تہائی',
   'extras.explanation.suhoor': 'فجر سے 20 منٹ پہلے',
   'extras.explanation.duha': 'طلوع آفتاب سے 20 منٹ بعد',
   'extras.explanation.istijaba': 'مغرب سے ایک گھنٹہ پہلے (صرف جمعہ)',
@@ -185,8 +185,6 @@ export const ur = {
   'whatsNew.body.language': 'مزید زبانوں کی سپورٹ شامل کی گئی',
   'whatsNew.title.moreLanguages': 'مزید زبانیں',
   'whatsNew.body.moreLanguages': 'مزید زبانوں کی سپورٹ شامل کی گئی',
-  'whatsNew.title.languageWave': 'چھ نئی زبانیں',
-  'whatsNew.body.languageWave': 'چھ زبانیں شامل کی گئیں اور چھ ہٹا دی گئیں',
   'whatsNew.title.checkUpdates': 'اپ ڈیٹس دیکھیں',
   'whatsNew.body.checkUpdates': 'اپ ڈیٹس دیکھیں کا اختیار شامل کیا گیا',
   'whatsNew.title.whatsNew': 'نیا کیا ہے کا صفحہ',

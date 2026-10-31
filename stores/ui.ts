@@ -76,6 +76,17 @@ export const soundListReadyAtom = atom(false);
  */
 export const decorationsLoadedAtom = atom(false);
 
+/**
+ * Whether the mosque icon's bitmap has decoded this session (T-541, the owner's 2.43.1 read).
+ *
+ * The icon renders from the first content commit, but its PNG decodes through
+ * Fresco after that frame has drawn: the owner read a ~300ms gap and a snap on
+ * every launch. The reveal holds the splash through the decode - the decoration
+ * sprites' own precedent - so the first frame the owner sees carries the icon.
+ * Session-scoped and one-way, exactly like the sprite gate.
+ */
+export const masjidLoadedAtom = atom(false);
+
 /** Whether the What's New popup should be shown (post-update announcement) */
 export const popupWhatsNewEnabledAtom = atom(false);
 
@@ -151,6 +162,12 @@ export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_p
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
 
+/**
+ * The owner's off-season override (T-541, default off): showing the Ramadan decorations
+ * outside the season. The seasonal gate stands untouched while this is off.
+ */
+export const decorationsOffSeasonAtom = atomWithStorageBoolean('preference_decorations_offseason', false);
+
 // =============================================================================
 // ACTIONS
 // =============================================================================
@@ -218,6 +235,9 @@ export const setSoundListReady = () => store.set(soundListReadyAtom, true);
 
 /** Marks all Ramadan decoration sprites as loaded (splash gate) */
 export const markDecorationsLoaded = () => store.set(decorationsLoadedAtom, true);
+
+/** Marks the mosque icon's bitmap decoded (the splash's icon gate) */
+export const markMasjidLoaded = () => store.set(masjidLoadedAtom, true);
 
 /** Sets whether the app update popup should be shown */
 export const setPopupUpdateEnabled = (enabled: boolean) => store.set(popupUpdateEnabledAtom, enabled);

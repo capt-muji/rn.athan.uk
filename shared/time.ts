@@ -445,6 +445,14 @@ export const isDecorationSeason = (): boolean => {
 };
 
 /**
+ * Whether the decorations render anywhere (T-541, owner order 2026-10-31): the season or the
+ * owner's off-season override, and the master toggle. The override is default off, so with it
+ * unset the answer is exactly the seasonal gate that always stood.
+ */
+export const decorationsVisible = (season: boolean, offSeason: boolean, enabled: boolean): boolean =>
+  (season || offSeason) && enabled;
+
+/**
  * Checks if an instant falls on January 1st in the prayer timezone
  * (needed for CountdownBar yesterday's data)
  * @param date Date object

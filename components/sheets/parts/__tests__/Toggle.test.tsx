@@ -187,13 +187,12 @@ describe('the reminder switch while the Athan is off', () => {
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  // Owner order 2026-10-31: dim rides the row's disabled state alone, and the circle joins its row
-  // at the sheet hint's own ink - the old whole-switch 0.2 opacity left a white thumb outshining
-  // the row it sat in
-  it('dims its thumb to the sheet hint ink, carrying no opacity of its own', async () => {
+  // Owner order 2026-10-31, the 2.43.1 read: the circle reads exactly as dark as the row's hint
+  // line beside it - the hint's own locked solid, not the brighter sheet-hint token
+  it('dims its thumb to the locked hint ink, carrying no opacity of its own', async () => {
     await render(<Toggle value={false} onToggle={jest.fn()} disabled />);
 
-    expect(thumb()).toHaveStyle({ backgroundColor: COLORS.text.sheetSubtitle });
+    expect(thumb()).toHaveStyle({ backgroundColor: '#122246' });
     expect(StyleSheet.flatten(screen.getByRole('switch').props.style).opacity).toBeUndefined();
   });
 
