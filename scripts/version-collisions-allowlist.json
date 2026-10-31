@@ -266,5 +266,9 @@
   {
     "version": "2.42.17",
     "reason": "2026-10-31 the run's closing snapshot steps from uat's 2.42.16 while lane1/T-327's step 18 already holds 2.42.17; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.18",
+    "reason": "2026-10-31 the session-close queue row steps from uat's 2.42.17 while branch owner-visuals-2 already holds 2.42.18; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
