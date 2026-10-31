@@ -1,7 +1,7 @@
 /**
  * The splash gates, the resume counter and the What's New flag in stores/ui.ts
  *
- * The splash holds until the Masjid icon has loaded and, in Ramadan, every decoration sprite, so each loader must
+ * The splash holds until, in Ramadan, every decoration sprite has loaded, so each loader must
  * open only its own gate: a crossed write reveals a half-drawn first frame. The gates last one launch, so the next
  * launch waits again. The sound list mounts once the settings sheet first opens. The resume counter must move on
  * every foreground, since the animation mappers that snap on resume re-run only when it changes. And raising the
@@ -15,8 +15,6 @@ import {
   bumpResync,
   decorationsLoadedAtom,
   markDecorationsLoaded,
-  markMasjidIconLoaded,
-  masjidIconLoadedAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
   resyncAtom,
@@ -28,7 +26,6 @@ import {
 const store = getDefaultStore();
 
 const GATES = [
-  { gate: 'the Masjid icon', open: markMasjidIconLoaded, atom: masjidIconLoadedAtom },
   { gate: 'the decoration sprites', open: markDecorationsLoaded, atom: decorationsLoadedAtom },
   { gate: 'the sound list', open: setSoundListReady, atom: soundListReadyAtom },
 ];

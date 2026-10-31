@@ -66,17 +66,6 @@ export const popupUpdateEnabledAtom = atom(false);
 export const soundListReadyAtom = atom(false);
 
 /**
- * Whether the Masjid header icon's bitmap has loaded (session-scoped).
- *
- * The icon renders from a PNG, so its bitmap arrives through Fresco's async
- * pipeline after the first content commit — perf22 pulled first paint early
- * enough to win that race, and the icon popped in ~200ms after the splash
- * revealed the screen. The splash now holds until this flips (onLoadEnd on
- * the Image), so the first visible frame is complete by construction.
- */
-export const masjidIconLoadedAtom = atom(false);
-
-/**
  * Whether the Ramadan decoration sprites have all loaded (session-scoped).
  *
  * The decorations render ~12 async PNG sprites that arrive through Fresco
@@ -226,9 +215,6 @@ export const bumpResync = () => store.set(resyncAtom, (value) => value + 1);
 
 /** Allows the sound sheet's list to mount (set when the settings sheet first fully opens) */
 export const setSoundListReady = () => store.set(soundListReadyAtom, true);
-
-/** Marks the Masjid header icon's bitmap as loaded (splash gate) */
-export const markMasjidIconLoaded = () => store.set(masjidIconLoadedAtom, true);
 
 /** Marks all Ramadan decoration sprites as loaded (splash gate) */
 export const markDecorationsLoaded = () => store.set(decorationsLoadedAtom, true);

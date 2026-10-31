@@ -28,7 +28,7 @@ import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/lang
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
-import { decorationsEnabledAtom, markDecorationsLoaded, markMasjidIconLoaded, setPopupHelpEnabled } from '@/stores/ui';
+import { decorationsEnabledAtom, markDecorationsLoaded, setPopupHelpEnabled } from '@/stores/ui';
 import {
   CACHE_SCHEMA_VERSION,
   getInstalledVersion,
@@ -369,21 +369,11 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
   });
 
-  it('holds the splash over stored lists until the Masjid icon has loaded', async () => {
+  it("lifts the splash over stored lists at the content commit, without waiting for the Masjid icon's async decode", async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Index />);
 
-    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
-
-    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
-  });
-
-  it('lifts the splash over stored lists once the Masjid icon has loaded', async () => {
-    showLondonDay('2026-09-11', '14:00');
-    await render(<Index />);
-
-    await act(() => markMasjidIconLoaded());
-
+    // No icon event ever fires: the bitmap decodes behind the revealed frame (owner order 2026-10-30)
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 });
@@ -391,7 +381,6 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
 describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () => {
   it('holds the splash until the decorations have loaded', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
@@ -401,7 +390,6 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
   it('lifts the splash once the decorations have loaded', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     await render(<Index />);
 
     await act(() => markDecorationsLoaded());
@@ -411,7 +399,6 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
   it('lifts the splash without waiting for decorations that are turned off', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     // The Settings toggle writes this preference through its atom, and the store has no setter for it
     getDefaultStore().set(decorationsEnabledAtom, false);
 
@@ -423,7 +410,6 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
   // No day of 2027 is stored, so the failed download leaves nothing usable and sync fails
   it('lifts the splash onto the error screen, without waiting for decorations that screen never draws', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
 
     await render(<Index />);
@@ -432,19 +418,14 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('holds the splash over the error screen until its Masjid icon has loaded, then lifts it', async () => {
+  it('lifts the splash onto the error screen at its own commit, without waiting for any bitmap', async () => {
     showRamadanLists();
     jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+
     await render(<Index />);
+
     await screen.findByText('Something went wrong.');
-    const beforeIcon = jest.mocked(SplashScreen.hideAsync).mock.calls.length;
-
-    await act(() => markMasjidIconLoaded());
-
-    expect({ beforeIcon, afterIcon: jest.mocked(SplashScreen.hideAsync).mock.calls.length }).toEqual({
-      beforeIcon: 0,
-      afterIcon: 1,
-    });
+    expect(SplashScreen.hideAsync).toHaveBeenCalled();
   });
 });
 

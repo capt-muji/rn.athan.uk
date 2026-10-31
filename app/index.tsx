@@ -30,7 +30,6 @@ import { syncLoadable } from '@/stores/sync';
 import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
-  masjidIconLoadedAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
@@ -80,10 +79,6 @@ export default function Index() {
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
   const helpVisible = useAtomValue(popupHelpEnabledAtom);
-  // Splash gate: the Masjid icon's PNG arrives async (Fresco) after the first
-  // content commit — hold the splash until its bitmap exists so the first
-  // revealed frame is complete (no icon pop-in)
-  const masjidIconLoaded = useAtomValue(masjidIconLoadedAtom);
   // Same race on the ~12 Ramadan decoration sprites: wait only when the
   // decorations are expected this session (mirrors RamadanDecorations'
   // visibility condition, computed synchronously so the gate knows at the
@@ -215,14 +210,13 @@ export default function Index() {
     const revealReady = isRevealReady({
       coldLaunch: coldLaunchRef.current,
       contentExists,
-      masjidIconLoaded,
       decorationsExpected,
       decorationsLoaded,
     });
     if (revealReady) {
       SplashScreen.hideAsync();
     }
-  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded, languageBusy]);
+  }, [sequenceReady, state, decorationsExpected, decorationsLoaded, languageBusy]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
