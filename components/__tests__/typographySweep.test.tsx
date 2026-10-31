@@ -112,22 +112,23 @@ const qiblaSubtitleStyleUnder = async (locale: LocaleId): Promise<Record<string,
   return subtitle;
 };
 
-/** The line box the language rows ride under a locale: the record's own boxes where its ink
- * needs them, the Latin-parity pin everywhere else (T-538) */
-const languageRowLineHeightUnder = async (locale: LocaleId): Promise<number> => {
-  let lineHeight: number | undefined;
+/** One named language row's resolved label style under one locale: the sheet resolves its
+ * row styles at module scope, so the locale must be set before the component loads */
+const languageRowLabelStyleUnder = async (locale: LocaleId, name: string): Promise<Record<string, unknown>> => {
+  let label: Record<string, unknown> = {};
   jest.resetModules();
   await jest.isolateModulesAsync(async () => {
     const { StyleSheet } = require('react-native');
+    const { showLondonDay } = require('@/__tests__/harness');
+    showLondonDay('2026-09-11', '14:00');
     const { setActiveLocale } = require('@/shared/i18n/locale');
     setActiveLocale(locale);
     const rntl = require('@testing-library/react-native');
     const BottomSheetLanguage = require('../sheets/screens/Language').default;
     await rntl.render(<BottomSheetLanguage />);
-    lineHeight = (StyleSheet.flatten(rntl.screen.getByText('Deutsch').props.style) as Record<string, unknown>)
-      .lineHeight as number;
+    label = StyleSheet.flatten(rntl.screen.getByText(name).props.style) as Record<string, unknown>;
   });
-  return lineHeight ?? Number.NaN;
+  return label;
 };
 
 const soundListMarginUnder = async (locale: LocaleId): Promise<unknown> => {
@@ -215,24 +216,6 @@ const explanationLineHeightUnder = async (locale: LocaleId): Promise<unknown> =>
     lineHeight = (StyleSheet.flatten(rntl.screen.getByText('نص').props.style) as Record<string, unknown>).lineHeight;
   });
   return lineHeight;
-};
-
-/** One language row's resolved line box under one locale: the sheet resolves its row styles at module scope, so the locale must be set before the component loads */
-const languageRowLineBoxUnder = async (locale: LocaleId): Promise<Record<string, unknown>> => {
-  let label: Record<string, unknown> = {};
-  jest.resetModules();
-  await jest.isolateModulesAsync(async () => {
-    const { StyleSheet } = require('react-native');
-    const { showLondonDay } = require('@/__tests__/harness');
-    showLondonDay('2026-09-11', '14:00');
-    const { setActiveLocale } = require('@/shared/i18n/locale');
-    setActiveLocale(locale);
-    const rntl = require('@testing-library/react-native');
-    const BottomSheetLanguage = require('../sheets/screens/Language').default;
-    await rntl.render(<BottomSheetLanguage />);
-    label = StyleSheet.flatten(rntl.screen.getByText('简体中文').props.style) as Record<string, unknown>;
-  });
-  return label;
 };
 
 describe('the sweep guard', () => {
@@ -353,40 +336,52 @@ describe('the sound sheet spacing under ar', () => {
   });
 });
 
-describe('the language row line box', () => {
-  // The four CJK subsets carry a 1.448em line box where Roboto carries 1.172em (T-538): the
-  // row pins the Latin-parity box, so the CJK rows measure every other row's height in their
-  // own faces too
-  // zh-Hant left with the language wave (T-537): every zh tag resolves to zh-Hans,
-  // so the Hant subset's pin rode away with the face
-  it.each(['zh-Hans', 'ja', 'ko'] as const)('pins the Latin line box under %s', async (locale) => {
-    const label = await languageRowLineBoxUnder(locale);
+describe("the language rows' own faces and boxes", () => {
+  // A row's label rides its OWN record's face and line box, never the active record's: no
+  // bundled face carries a foreign endonym's script, and Android stacks a fallback run's
+  // line spacing on top of any pinned lineHeight (TextLayoutManager
+  // setUseLineSpacingFromFallbacks, RN 0.86), so a row whose glyphs fall back cannot be
+  // equalized by any pin - the owner's 3T read that reopened T-538. The box is the record's
+  // own rowLineHeight where its endonym's ink crosses the Latin pin, its scriptLineHeight
+  // where the record mandates one, and the Latin-parity pin everywhere else
+  it.each([
+    ['Deutsch', 'Roboto-Regular', 16],
+    ['اردو', 'NotoNaskhArabic-Regular', 21],
+    ['العربية', 'Rubik-Regular', 21],
+    ['मराठी', 'NotoSansDevanagari-Regular', 21],
+    ['ಕನ್ನಡ', 'NotoSansKannada-Regular', 24],
+    ['தமிழ்', 'NotoSansTamil-Regular', 17],
+    ['မြန်မာ', 'NotoSansMyanmar-Regular', 21],
+    ['አማርኛ', 'NotoSansEthiopic-Regular', 16],
+    ['ไทย', 'NotoSansThai-Regular', 16],
+    ['Yorùbá', 'NotoSans-Regular', 22],
+    ['日本語', 'NotoSansJP-Subset-Regular', 16],
+    ['简体中文', 'NotoSansSC-Subset-Regular', 16],
+    ['한국어', 'NotoSansKR-Subset-Regular', 16],
+  ] as const)('%s rides its own record under en', async (name, family, box) => {
+    const label = await languageRowLabelStyleUnder('en', name);
 
     expect(label.fontSize).toBe(14);
-    expect(label.lineHeight).toBe(16);
+    expect(label.fontFamily).toBe(family);
+    expect(label.lineHeight).toBe(box);
   });
 
-  it('keeps the pinned Latin line box under en', async () => {
-    const label = await languageRowLineBoxUnder('en');
+  it('keeps every row on its own record under a script active, where the active face once owned the sheet', async () => {
+    const german = await languageRowLabelStyleUnder('ur', 'Deutsch');
+    expect(german.fontFamily).toBe('Roboto-Regular');
+    expect(german.lineHeight).toBe(16);
 
-    expect(label.fontSize).toBe(14);
-    expect(label.lineHeight).toBe(16);
-  });
-});
+    const urdu = await languageRowLabelStyleUnder('ur', 'اردو');
+    expect(urdu.fontFamily).toBe('NotoNaskhArabic-Regular');
+    expect(urdu.lineHeight).toBe(21);
 
-describe('the language rows’ line boxes', () => {
-  it('rides the active record’s script box under ur, so the Naskh ink never sits under the pin', async () => {
-    expect(await languageRowLineHeightUnder('ur')).toBe(21);
-  });
+    const burmese = await languageRowLabelStyleUnder('my', 'မြန်မာ');
+    expect(burmese.fontFamily).toBe('NotoSansMyanmar-Regular');
+    expect(burmese.lineHeight).toBe(21);
 
-  it('rides the measured row boxes under my and ta, whose endonym ink crosses the Latin pin', async () => {
-    expect(await languageRowLineHeightUnder('my')).toBe(21);
-    expect(await languageRowLineHeightUnder('ta')).toBe(17);
-  });
-
-  it('keeps the Latin-parity pin under the faces whose measured ink fits it', async () => {
-    expect(await languageRowLineHeightUnder('th')).toBe(16);
-    expect(await languageRowLineHeightUnder('en')).toBe(16);
+    const english = await languageRowLabelStyleUnder('my', 'English');
+    expect(english.fontFamily).toBe('Roboto-Regular');
+    expect(english.lineHeight).toBe(16);
   });
 });
 

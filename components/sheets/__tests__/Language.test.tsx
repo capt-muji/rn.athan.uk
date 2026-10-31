@@ -192,31 +192,48 @@ describe('the wheel’s strip', () => {
 });
 
 describe("the row's line box", () => {
-  it('pins both row texts to the Latin line box, so no face grows its own row', async () => {
+  it("rides the row's own record's face and box, so no glyph falls back and no face grows its own row", async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    // The CJK subsets carry a 1.448em line box where the Latin face carries 1.172em: an
-    // unpinned box lets the row's face own its height, and the four CJK rows outgrow every
-    // neighbour (T-538)
-    expect(StyleSheet.flatten(screen.getByText('Deutsch').props.style)).toMatchObject({
+    // The CJK subsets carry a 1.448em line box and no bundled Latin face carries their
+    // endonyms at all: under the active record's face those rows fell back on glass, and
+    // Android stacks a fallback run's line spacing on top of any pin (T-538's 3T read), so
+    // each row's label rides its own record's face - which carries its endonym by census -
+    // at its own record's box (the pin, no script box needed at 14)
+    expect(StyleSheet.flatten(screen.getByText('简体中文').props.style)).toMatchObject({
+      fontFamily: 'NotoSansSC-Subset-Regular',
       fontSize: ty.size(TEXT.sizeDetail),
       lineHeight: 16,
     });
+    expect(StyleSheet.flatten(screen.getByText('اردو').props.style)).toMatchObject({
+      fontFamily: 'NotoNaskhArabic-Regular',
+      lineHeight: 21,
+    });
+    // The index's Latin digits stay on the active face inside the row's absolute centered
+    // slot, so a device-side fallback cannot move the row's height
     expect(StyleSheet.flatten(screen.getByText('1.').props.style)).toMatchObject({
       fontSize: ty.size(TEXT.sizeDetail),
       lineHeight: 16,
     });
   });
 
-  it('keeps the pinned box inside the row’s content budget, so every row measures the minimum', async () => {
+  it('keeps every row’s box inside the row’s content budget, so every row measures the minimum', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
     const row = StyleSheet.flatten(screen.getByRole('radio', { name: 'Deutsch' }).props.style);
     // The row’s height is its own to carry: minHeight 48 with paddingVertical 12 leaves a
-    // 24px content budget the 16px box never crosses, whatever face draws the row
-    expect((row.minHeight as number) - 2 * (row.paddingVertical as number)).toBeGreaterThanOrEqual(16);
+    // 24px content budget every record’s box sits inside (the tallest, Kannada’s 1.65em
+    // script line, lands on it exactly), whatever face draws the row
+    const budget = (row.minHeight as number) - 2 * (row.paddingVertical as number);
+    expect(budget).toBeGreaterThanOrEqual(16);
+    for (const entry of LANGUAGE_NAMES) {
+      const record = typographyFor(entry.id);
+      const box =
+        record.rowLineHeight?.(ty.size(TEXT.sizeDetail)) ?? record.scriptLineHeight?.(ty.size(TEXT.sizeDetail)) ?? 16;
+      expect(box).toBeLessThanOrEqual(budget);
+    }
   });
 });
 

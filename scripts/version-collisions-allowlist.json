@@ -306,5 +306,9 @@
   {
     "version": "2.43.0",
     "reason": "2026-10-31 the T-537 wave merge lands the branch's own 2.43.0 (feat minor) above uat's 2.42.26 while the branch's commit history already holds 2.43.0; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.2",
+    "reason": "2026-10-31 the T-538 reopen steps from uat's 2.43.1 while the parallel lane may hold the same number; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
