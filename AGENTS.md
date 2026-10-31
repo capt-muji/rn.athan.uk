@@ -73,15 +73,20 @@ produced it. Everything else in `check:device` is build-agnostic.
 
 ## Supervision
 
-Every parent owns its children; no agent waits on a reply. While any descendant runs, the
-parent checks the session DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)`
-per `session_id` in `session_message`) every 60 seconds across the WHOLE subtree - its
-children, their children, to the leaves - matched by the work's name
-(`LIKE '%<ticket or step>%'`). Idle is legal only while some descendant is progressing:
-liveness is judged at the deepest active node of a chain. A chain whose every node is
-quiet past its work's explanation (a build ~15 min, a capture ~5 min) is walked to its
-deepest dead node and respawned from its ticket that same minute. Completion
-notifications are courtesy, never the mechanism (owner order 2026-10-31).
+Every parent owns its children; no agent waits on a reply. The law binds every agent at
+every depth - the lead, each lane, each executor, reviewer, griller, any agent deployed:
+whoever deploys a child owns the whole subtree beneath it, and every dispatch prompt
+carries this block so the duty travels. While any descendant runs, the parent checks the
+session DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)` per `session_id`
+in `session_message`) every 5 minutes, in the background - a `sleep 300` shell that
+reads the subtree and reports, never a blocking wait in the parent's own turn - across
+the WHOLE subtree, its children, their children, to the leaves, matched by the work's
+name (`LIKE '%<ticket or step>%'`). Idle is legal only while some descendant is
+progressing: liveness is judged at the deepest active node of a chain. A chain whose
+every node is quiet past its work's explanation (a build ~15 min, a capture ~5 min) is
+walked to its deepest dead node and respawned from its ticket that same minute.
+Completion notifications are courtesy, never the mechanism (owner order 2026-10-31;
+cadence 5-minute background checks, owner order 2026-10-31 later the same day).
 
 ## Hard rules
 

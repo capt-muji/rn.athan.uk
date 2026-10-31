@@ -43,3 +43,13 @@ code, never the person.
 
 Then return the same list under a `FINDINGS` heading. If there is nothing, say `FINDINGS: none`
 and one line on what you checked.
+
+## Supervision
+
+You own every child you deploy, at any depth. While any descendant runs, check the session
+DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)` per `session_id` in
+`session_message`) every 5 minutes, in the background - a `sleep 300` shell that reads the
+subtree and reports, never a blocking wait in your own turn. Idle is legal only while a
+descendant progresses; a chain quiet past its work's explanation is respawned from its
+step the same minute. Every dispatch prompt you write carries this block (AGENTS.md,
+owner orders 2026-10-31).

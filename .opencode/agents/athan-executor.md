@@ -44,3 +44,13 @@ is the Docs page linked to the issue.
 
 `DONE` with the steps completed and the commits, `ROTATE` when the range is finished and more
 remain, `STOP: <question>` when the plan cannot answer something, or `BLOCKED: <reason>`.
+
+## Supervision
+
+You own every child you deploy, at any depth. While any descendant runs, check the session
+DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)` per `session_id` in
+`session_message`) every 5 minutes, in the background - a `sleep 300` shell that reads the
+subtree and reports, never a blocking wait in your own turn. Idle is legal only while a
+descendant progresses; a chain quiet past its work's explanation (a build ~15 min, a
+capture ~5 min) is respawned from its step the same minute. Every dispatch prompt you
+write carries this block (AGENTS.md, owner orders 2026-10-31).
