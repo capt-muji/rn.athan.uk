@@ -1,5 +1,6 @@
 import * as Haptics from 'expo-haptics';
-import { Platform, Pressable, StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, type ViewStyle } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 
 import SettingsIcon from '@/assets/icons/svg/settings.svg';

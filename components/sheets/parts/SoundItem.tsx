@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { memo, useEffect, useRef, useState } from 'react';
-import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';

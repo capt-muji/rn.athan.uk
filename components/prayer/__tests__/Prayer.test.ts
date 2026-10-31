@@ -47,6 +47,7 @@ jest.mock('react-native', () => ({
   StyleSheet: { create: <T>(styles: T) => styles },
   View: 'View',
 }));
+jest.mock('react-native-gesture-handler', () => ({ Pressable: 'Pressable' }));
 jest.mock('react-native-reanimated', () => ({
   __esModule: true,
   default: { Text: 'Animated.Text', createAnimatedComponent: () => 'AnimatedPressable' },
