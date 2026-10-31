@@ -28,7 +28,13 @@ import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/lang
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
-import { decorationsEnabledAtom, markDecorationsLoaded, setPopupHelpEnabled } from '@/stores/ui';
+import {
+  decorationsEnabledAtom,
+  markDecorationsLoaded,
+  markMasjidLoaded,
+  masjidLoadedAtom,
+  setPopupHelpEnabled,
+} from '@/stores/ui';
 import {
   CACHE_SCHEMA_VERSION,
   getInstalledVersion,
@@ -190,7 +196,11 @@ beforeEach(() => {
   setStoredVersion(getInstalledVersion());
   Database.setItem('cache_schema_version', CACHE_SCHEMA_VERSION);
   __resetLaunchInitForTests();
+  getDefaultStore().set(masjidLoadedAtom, false);
 });
+
+/** The icon's decode mark, as the real Image's onLoadEnd fires it (T-541) */
+const decodeMasjidIcon = () => act(() => markMasjidLoaded());
 
 afterEach(() => {
   resetMockExpoConfig();
@@ -378,8 +388,9 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
   });
 
-  it("holds the splash past the content commit and lifts it on the first drawn frame, without waiting for the Masjid icon's async decode", async () => {
+  it("holds the splash past the content commit, the first drawn frame and the Masjid icon's decode, and lifts with the icon in the first revealed frame", async () => {
     showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(masjidLoadedAtom, false);
     await render(<Index />);
 
     // The commit is not the frame: Fabric's native mount burst trails it on a launch-busy phone
@@ -389,12 +400,18 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
 
     await drawFirstContentFrame();
 
-    // No icon event ever fires either: the bitmap decodes behind the revealed frame (owner order 2026-10-30)
+    // The frame has drawn but the icon's bitmap is still decoding: the owner's 2.43.1 read
+    // measured a ~300ms gap and a snap here (T-541), so the reveal now waits for the decode
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await act(() => markMasjidLoaded());
+
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 
   it('lifts the splash anyway once the backstop passes with no first frame, so a tree that never lays out cannot strand the splash', async () => {
     showLondonDay('2026-09-11', '14:00');
+    await decodeMasjidIcon();
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(DRAWN_BACKSTOP_MS - 1));
@@ -407,6 +424,7 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
 
   it('keeps the reveal at one once the first frame has drawn and the backstop passes later', async () => {
     showLondonDay('2026-09-11', '14:00');
+    await decodeMasjidIcon();
     await render(<Index />);
 
     await drawFirstContentFrame();
@@ -429,6 +447,7 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
   it('lifts the splash once the decorations have loaded onto a drawn frame', async () => {
     showRamadanLists();
+    await decodeMasjidIcon();
     await render(<Index />);
 
     await drawFirstContentFrame();
@@ -441,6 +460,7 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
     showRamadanLists();
     // The Settings toggle writes this preference through its atom, and the store has no setter for it
     getDefaultStore().set(decorationsEnabledAtom, false);
+    await decodeMasjidIcon();
 
     await render(<Index />);
 

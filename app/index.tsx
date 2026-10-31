@@ -32,6 +32,7 @@ import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
   decorationsOffSeasonAtom,
+  masjidLoadedAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
@@ -100,6 +101,9 @@ export default function Index() {
   const decorationsExpected =
     decorationsVisible(isRamadan(), decorationsOffSeason, decorationsEnabled) && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
+  // The icon gate (T-541): the bitmap decodes behind the first drawn frame, so the reveal
+  // waits for it - except on the error screen, whose own Refresh must not sit under a splash
+  const masjidLoaded = useAtomValue(masjidLoadedAtom);
   const installedVersion = getInstalledVersion();
   const visibleWhatsNew = currentVisibleWhatsNew();
   // Overlay + modals mount past the first content frame (launch chrome defer)
@@ -239,11 +243,13 @@ export default function Index() {
       contentDrawn,
       decorationsExpected,
       decorationsLoaded,
+      iconExpected: state !== 'hasError',
+      iconLoaded: masjidLoaded,
     });
     if (revealReady) {
       SplashScreen.hideAsync();
     }
-  }, [sequenceReady, state, contentDrawn, decorationsExpected, decorationsLoaded, languageBusy]);
+  }, [sequenceReady, state, contentDrawn, decorationsExpected, decorationsLoaded, masjidLoaded, languageBusy]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);

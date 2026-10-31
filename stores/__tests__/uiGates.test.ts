@@ -15,6 +15,8 @@ import {
   bumpResync,
   decorationsLoadedAtom,
   markDecorationsLoaded,
+  markMasjidLoaded,
+  masjidLoadedAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
   resyncAtom,
@@ -27,6 +29,7 @@ const store = getDefaultStore();
 
 const GATES = [
   { gate: 'the decoration sprites', open: markDecorationsLoaded, atom: decorationsLoadedAtom },
+  { gate: 'the mosque icon bitmap', open: markMasjidLoaded, atom: masjidLoadedAtom },
   { gate: 'the sound list', open: setSoundListReady, atom: soundListReadyAtom },
 ];
 

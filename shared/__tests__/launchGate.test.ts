@@ -20,7 +20,19 @@ const allRevealInputs = (): RevealInput[] => {
       for (const contentDrawn of BOOLEANS) {
         for (const decorationsExpected of BOOLEANS) {
           for (const decorationsLoaded of BOOLEANS) {
-            inputs.push({ coldLaunch, contentExists, contentDrawn, decorationsExpected, decorationsLoaded });
+            for (const iconExpected of BOOLEANS) {
+              for (const iconLoaded of BOOLEANS) {
+                inputs.push({
+                  coldLaunch,
+                  contentExists,
+                  contentDrawn,
+                  decorationsExpected,
+                  decorationsLoaded,
+                  iconExpected,
+                  iconLoaded,
+                });
+              }
+            }
           }
         }
       }
@@ -43,38 +55,26 @@ describe('isWaitingForData', () => {
 });
 
 describe('isRevealReady', () => {
-  it('reveals in exactly three of the 32 states: a warm launch with content, its first frame drawn, decorations loaded if expected', () => {
+  it('reveals in exactly nine of the 64 states: a warm launch with content, its first frame drawn, decorations loaded if expected, the icon decoded when it is expected', () => {
     const revealing = allRevealInputs().filter((input) => isRevealReady(input));
 
-    expect(revealing).toEqual([
-      {
-        coldLaunch: false,
-        contentExists: true,
-        contentDrawn: true,
-        decorationsExpected: false,
-        decorationsLoaded: false,
-      },
-      {
-        coldLaunch: false,
-        contentExists: true,
-        contentDrawn: true,
-        decorationsExpected: false,
-        decorationsLoaded: true,
-      },
-      {
-        coldLaunch: false,
-        contentExists: true,
-        contentDrawn: true,
-        decorationsExpected: true,
-        decorationsLoaded: true,
-      },
-    ]);
+    // The three states the old rule revealed (decorations settled), each free to
+    // skip the icon wait when no icon-bearing screen shows, plus the same three
+    // with the icon decoded: nine of sixty-four
+    expect(revealing).toHaveLength(9);
+    for (const input of revealing) {
+      expect(input.coldLaunch).toBe(false);
+      expect(input.contentExists).toBe(true);
+      expect(input.contentDrawn).toBe(true);
+      expect(input.decorationsExpected && !input.decorationsLoaded).toBe(false);
+      expect(input.iconExpected && !input.iconLoaded).toBe(false);
+    }
   });
 
   it('never reveals from this gate on a cold launch, which lifted the splash at its first commit', () => {
     const cold = allRevealInputs().filter((input) => input.coldLaunch);
 
-    expect(cold).toHaveLength(16);
+    expect(cold).toHaveLength(64);
     for (const input of cold) expect(isRevealReady(input)).toBe(false);
   });
 
@@ -86,11 +86,13 @@ describe('isRevealReady', () => {
         contentDrawn: false,
         decorationsExpected: false,
         decorationsLoaded: false,
+        iconExpected: true,
+        iconLoaded: true,
       })
     ).toBe(false);
   });
 
-  it('reveals a warm launch outside Ramadan at the first drawn frame, without waiting for any bitmap', () => {
+  it('reveals a warm launch outside Ramadan at the first drawn frame once the icon has decoded', () => {
     expect(
       isRevealReady({
         coldLaunch: false,
@@ -98,6 +100,36 @@ describe('isRevealReady', () => {
         contentDrawn: true,
         decorationsExpected: false,
         decorationsLoaded: false,
+        iconExpected: true,
+        iconLoaded: true,
+      })
+    ).toBe(true);
+  });
+
+  it("holds a warm launch through the mosque icon's decode: the first revealed frame carries the icon, never a snap (T-541)", () => {
+    expect(
+      isRevealReady({
+        coldLaunch: false,
+        contentExists: true,
+        contentDrawn: true,
+        decorationsExpected: false,
+        decorationsLoaded: false,
+        iconExpected: true,
+        iconLoaded: false,
+      })
+    ).toBe(false);
+  });
+
+  it('never holds the error screen behind the icon it also draws: its Refresh must stay reachable', () => {
+    expect(
+      isRevealReady({
+        coldLaunch: false,
+        contentExists: true,
+        contentDrawn: true,
+        decorationsExpected: false,
+        decorationsLoaded: false,
+        iconExpected: false,
+        iconLoaded: false,
       })
     ).toBe(true);
   });
@@ -110,6 +142,8 @@ describe('isRevealReady', () => {
         contentDrawn: true,
         decorationsExpected: true,
         decorationsLoaded,
+        iconExpected: true,
+        iconLoaded: true,
       })
     );
 

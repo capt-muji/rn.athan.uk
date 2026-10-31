@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { decorationsVisible, isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom, decorationsOffSeasonAtom } from '@/stores/ui';
+import { decorationsEnabledAtom, decorationsOffSeasonAtom, markMasjidLoaded } from '@/stores/ui';
 
 type MasjidProps = {
   width?: number;
@@ -30,7 +30,13 @@ export default function Masjid({ height = 45, width = 45 }: MasjidProps) {
   const isRTL = localeDirection(currentLocaleId()) === 'rtl';
   return (
     <View style={styles.container}>
-      <Image source={ICON_SOURCES[variant]} style={[styles.icon, { height, width }, isRTL && styles.mirrored]} />
+      {/* onLoadEnd fires on success and failure alike, so the splash's icon gate
+          (T-541) can never strand: the reveal waits only for the first decode */}
+      <Image
+        source={ICON_SOURCES[variant]}
+        style={[styles.icon, { height, width }, isRTL && styles.mirrored]}
+        onLoadEnd={markMasjidLoaded}
+      />
     </View>
   );
 }

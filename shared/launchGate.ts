@@ -31,6 +31,10 @@ export interface RevealInput {
   /** Whether the Ramadan decorations render this session */
   decorationsExpected: boolean;
   decorationsLoaded: boolean;
+  /** Whether a screen that draws the mosque icon is about to show (the error screen's own icon never holds the splash) */
+  iconExpected: boolean;
+  /** Whether the mosque icon's bitmap has decoded this session */
+  iconLoaded: boolean;
 }
 
 /**
@@ -38,10 +42,11 @@ export interface RevealInput {
  * only on the content's first DRAWN frame, not the commit that scheduled it: onLayout rides the native layout
  * pass, which on Fabric lands past the mount burst that on a slow phone trails the commit by a second or two -
  * revealing at the commit lifts the splash onto the window background (the splash purple) showing through - the
- * app straight from cache, the Masjid icon's bitmap decoding behind the revealed frame rather than holding the
- * splash over a finished screen (owner order 2026-10-30: a near-zero native splash in both launch shapes). Only
- * the Ramadan decorations still hold it: the one art that screen is about to draw full-bleed, and only when it is
- * going to render.
+ * app straight from cache (owner order 2026-10-30: a near-zero native splash in both launch shapes). Two arts
+ * still hold it, each only when it is going to show: the Ramadan decorations, the one art that screen is about to
+ * draw full-bleed, and the mosque icon's own bitmap (T-541, the owner's 2.43.1 read) - the PNG decodes through
+ * Fresco behind the first drawn frame, and revealing before it left a ~300ms gap and a snap on every launch; the
+ * splash now holds through the decode so the first revealed frame carries the icon, the sprites' own precedent.
  *
  * @returns Whether a warm launch may hide the splash now
  */
@@ -51,4 +56,11 @@ export const isRevealReady = ({
   contentDrawn,
   decorationsExpected,
   decorationsLoaded,
-}: RevealInput): boolean => !coldLaunch && contentExists && contentDrawn && (!decorationsExpected || decorationsLoaded);
+  iconExpected,
+  iconLoaded,
+}: RevealInput): boolean =>
+  !coldLaunch &&
+  contentExists &&
+  contentDrawn &&
+  (!decorationsExpected || decorationsLoaded) &&
+  (!iconExpected || iconLoaded);
