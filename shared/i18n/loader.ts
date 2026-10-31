@@ -1,6 +1,11 @@
 /**
  * The loader indirection: the one module a locale switch or the JSON.parse experiment may
- * rewrite without touching a call site (R16, step 15's timing decision)
+ * rewrite without touching a call site (R16, step 15's timing decision).
+ *
+ * The table is thunks: a catalog module evaluates only when its locale is first
+ * read, so the 74 locales the first frame never reads cost loader evaluation
+ * nothing (all 75 ran at module scope before the table, inside the launch
+ * window - digest 5117 A1).
  */
 
 import type { PrayerId } from '@/shared/constants';
@@ -9,178 +14,342 @@ import { perfMark } from '@/shared/perf';
 import type { Catalog } from './en';
 import { currentLocaleId, type LocaleId } from './locale';
 
-// Brackets the catalogs' one-time evaluation: pre-init the marks replay with
-// true detail.at epochs, post-init the ring ts already is one - either way the
-// require cost reads offline.
-perfMark('catalog_require_start');
-const RAW = {
-  en: require('./en') as typeof import('./en'),
-  ar: require('./ar') as typeof import('./ar'),
-  ms: require('./ms') as typeof import('./ms'),
-  so: require('./so') as typeof import('./so'),
-  hi: require('./hi') as typeof import('./hi'),
-  th: require('./th') as typeof import('./th'),
-  id: require('./id') as typeof import('./id'),
-  tr: require('./tr') as typeof import('./tr'),
-  fr: require('./fr') as typeof import('./fr'),
-  uz: require('./uz') as typeof import('./uz'),
-  sw: require('./sw') as typeof import('./sw'),
-  ha: require('./ha') as typeof import('./ha'),
-  pt: require('./pt') as typeof import('./pt'),
-  ur: require('./ur') as typeof import('./ur'),
-  fa: require('./fa') as typeof import('./fa'),
-  bn: require('./bn') as typeof import('./bn'),
-  ru: require('./ru') as typeof import('./ru'),
-  az: require('./az') as typeof import('./az'),
-  de: require('./de') as typeof import('./de'),
-  sq: require('./sq') as typeof import('./sq'),
-  bs: require('./bs') as typeof import('./bs'),
-  ps: require('./ps') as typeof import('./ps'),
-  ta: require('./ta') as typeof import('./ta'),
-  ml: require('./ml') as typeof import('./ml'),
-  'zh-Hans': require('./zh-Hans') as typeof import('./zh-Hans'),
-  'zh-Hant': require('./zh-Hant') as typeof import('./zh-Hant'),
-  es: require('./es') as typeof import('./es'),
-  nl: require('./nl') as typeof import('./nl'),
-  kk: require('./kk') as typeof import('./kk'),
-  ky: require('./ky') as typeof import('./ky'),
-  tg: require('./tg') as typeof import('./tg'),
-  tk: require('./tk') as typeof import('./tk'),
-  wo: require('./wo') as typeof import('./wo'),
-  mr: require('./mr') as typeof import('./mr'),
-  om: require('./om') as typeof import('./om'),
-  bm: require('./bm') as typeof import('./bm'),
-  tl: require('./tl') as typeof import('./tl'),
-  ff: require('./ff') as typeof import('./ff'),
-  te: require('./te') as typeof import('./te'),
-  gu: require('./gu') as typeof import('./gu'),
-  kn: require('./kn') as typeof import('./kn'),
-  am: require('./am') as typeof import('./am'),
-  'pa-Arab': require('./pa-Arab') as typeof import('./pa-Arab'),
-  sd: require('./sd') as typeof import('./sd'),
-  ug: require('./ug') as typeof import('./ug'),
-  ckb: require('./ckb') as typeof import('./ckb'),
-  ku: require('./ku') as typeof import('./ku'),
-  yo: require('./yo') as typeof import('./yo'),
-  jv: require('./jv') as typeof import('./jv'),
-  su: require('./su') as typeof import('./su'),
-  my: require('./my') as typeof import('./my'),
-  tt: require('./tt') as typeof import('./tt'),
-  ce: require('./ce') as typeof import('./ce'),
-  uk: require('./uk') as typeof import('./uk'),
-  qu: require('./qu') as typeof import('./qu'),
-  min: require('./min') as typeof import('./min'),
-  mad: require('./mad') as typeof import('./mad'),
-  bug: require('./bug') as typeof import('./bug'),
-  ja: require('./ja') as typeof import('./ja'),
-  ko: require('./ko') as typeof import('./ko'),
-  it: require('./it') as typeof import('./it'),
-  pl: require('./pl') as typeof import('./pl'),
-  ro: require('./ro') as typeof import('./ro'),
-  ceb: require('./ceb') as typeof import('./ceb'),
-  ilo: require('./ilo') as typeof import('./ilo'),
-  vi: require('./vi') as typeof import('./vi'),
-  skr: require('./skr') as typeof import('./skr'),
-  bal: require('./bal') as typeof import('./bal'),
-  kas: require('./kas') as typeof import('./kas'),
-  dv: require('./dv') as typeof import('./dv'),
-  aa: require('./aa') as typeof import('./aa'),
-  mdh: require('./mdh') as typeof import('./mdh'),
-  kr: require('./kr') as typeof import('./kr'),
-  mnk: require('./mnk') as typeof import('./mnk'),
-  dje: require('./dje') as typeof import('./dje'),
-} as const;
-perfMark('catalog_require_end');
-
 /** Every locale module normalised to one shape, so the lookups stay one-line calls */
 interface CatalogModule {
   en: Catalog;
   PRAYER_LABELS: Record<PrayerId, string>;
 }
 
-// Each locale exports its catalog under its own name; the adapter reads that
-// name into the shared `en` slot without copying the catalog
-const MODULES: Record<LocaleId, CatalogModule> = {
-  en: { en: RAW.en.en, PRAYER_LABELS: RAW.en.PRAYER_LABELS },
-  ar: { en: RAW.ar.ar, PRAYER_LABELS: RAW.ar.PRAYER_LABELS },
-  ms: { en: RAW.ms.ms, PRAYER_LABELS: RAW.ms.PRAYER_LABELS },
-  so: { en: RAW.so.so, PRAYER_LABELS: RAW.so.PRAYER_LABELS },
-  hi: { en: RAW.hi.hi, PRAYER_LABELS: RAW.hi.PRAYER_LABELS },
-  th: { en: RAW.th.th, PRAYER_LABELS: RAW.th.PRAYER_LABELS },
-  id: { en: RAW.id.id, PRAYER_LABELS: RAW.id.PRAYER_LABELS },
-  tr: { en: RAW.tr.tr, PRAYER_LABELS: RAW.tr.PRAYER_LABELS },
-  fr: { en: RAW.fr.fr, PRAYER_LABELS: RAW.fr.PRAYER_LABELS },
-  uz: { en: RAW.uz.uz, PRAYER_LABELS: RAW.uz.PRAYER_LABELS },
-  sw: { en: RAW.sw.sw, PRAYER_LABELS: RAW.sw.PRAYER_LABELS },
-  ha: { en: RAW.ha.ha, PRAYER_LABELS: RAW.ha.PRAYER_LABELS },
-  pt: { en: RAW.pt.pt, PRAYER_LABELS: RAW.pt.PRAYER_LABELS },
-  ur: { en: RAW.ur.ur, PRAYER_LABELS: RAW.ur.PRAYER_LABELS },
-  fa: { en: RAW.fa.fa, PRAYER_LABELS: RAW.fa.PRAYER_LABELS },
-  bn: { en: RAW.bn.bn, PRAYER_LABELS: RAW.bn.PRAYER_LABELS },
-  ru: { en: RAW.ru.ru, PRAYER_LABELS: RAW.ru.PRAYER_LABELS },
-  az: { en: RAW.az.az, PRAYER_LABELS: RAW.az.PRAYER_LABELS },
-  de: { en: RAW.de.de, PRAYER_LABELS: RAW.de.PRAYER_LABELS },
-  sq: { en: RAW.sq.sq, PRAYER_LABELS: RAW.sq.PRAYER_LABELS },
-  bs: { en: RAW.bs.bs, PRAYER_LABELS: RAW.bs.PRAYER_LABELS },
-  ps: { en: RAW.ps.ps, PRAYER_LABELS: RAW.ps.PRAYER_LABELS },
-  ta: { en: RAW.ta.ta, PRAYER_LABELS: RAW.ta.PRAYER_LABELS },
-  ml: { en: RAW.ml.ml, PRAYER_LABELS: RAW.ml.PRAYER_LABELS },
-  'zh-Hans': { en: RAW['zh-Hans'].zhHans, PRAYER_LABELS: RAW['zh-Hans'].PRAYER_LABELS },
-  'zh-Hant': { en: RAW['zh-Hant'].zhHant, PRAYER_LABELS: RAW['zh-Hant'].PRAYER_LABELS },
-  es: { en: RAW.es.es, PRAYER_LABELS: RAW.es.PRAYER_LABELS },
-  nl: { en: RAW.nl.nl, PRAYER_LABELS: RAW.nl.PRAYER_LABELS },
-  kk: { en: RAW.kk.kk, PRAYER_LABELS: RAW.kk.PRAYER_LABELS },
-  ky: { en: RAW.ky.ky, PRAYER_LABELS: RAW.ky.PRAYER_LABELS },
-  tg: { en: RAW.tg.tg, PRAYER_LABELS: RAW.tg.PRAYER_LABELS },
-  tk: { en: RAW.tk.tk, PRAYER_LABELS: RAW.tk.PRAYER_LABELS },
-  wo: { en: RAW.wo.wo, PRAYER_LABELS: RAW.wo.PRAYER_LABELS },
-  mr: { en: RAW.mr.mr, PRAYER_LABELS: RAW.mr.PRAYER_LABELS },
-  om: { en: RAW.om.om, PRAYER_LABELS: RAW.om.PRAYER_LABELS },
-  bm: { en: RAW.bm.bm, PRAYER_LABELS: RAW.bm.PRAYER_LABELS },
-  tl: { en: RAW.tl.tl, PRAYER_LABELS: RAW.tl.PRAYER_LABELS },
-  ff: { en: RAW.ff.ff, PRAYER_LABELS: RAW.ff.PRAYER_LABELS },
-  te: { en: RAW.te.te, PRAYER_LABELS: RAW.te.PRAYER_LABELS },
-  gu: { en: RAW.gu.gu, PRAYER_LABELS: RAW.gu.PRAYER_LABELS },
-  kn: { en: RAW.kn.kn, PRAYER_LABELS: RAW.kn.PRAYER_LABELS },
-  am: { en: RAW.am.am, PRAYER_LABELS: RAW.am.PRAYER_LABELS },
-  'pa-Arab': { en: RAW['pa-Arab'].paArab, PRAYER_LABELS: RAW['pa-Arab'].PRAYER_LABELS },
-  sd: { en: RAW.sd.sd, PRAYER_LABELS: RAW.sd.PRAYER_LABELS },
-  ug: { en: RAW.ug.ug, PRAYER_LABELS: RAW.ug.PRAYER_LABELS },
-  ckb: { en: RAW.ckb.ckb, PRAYER_LABELS: RAW.ckb.PRAYER_LABELS },
-  ku: { en: RAW.ku.ku, PRAYER_LABELS: RAW.ku.PRAYER_LABELS },
-  yo: { en: RAW.yo.yo, PRAYER_LABELS: RAW.yo.PRAYER_LABELS },
-  jv: { en: RAW.jv.jv, PRAYER_LABELS: RAW.jv.PRAYER_LABELS },
-  su: { en: RAW.su.su, PRAYER_LABELS: RAW.su.PRAYER_LABELS },
-  my: { en: RAW.my.my, PRAYER_LABELS: RAW.my.PRAYER_LABELS },
-  tt: { en: RAW.tt.tt, PRAYER_LABELS: RAW.tt.PRAYER_LABELS },
-  ce: { en: RAW.ce.ce, PRAYER_LABELS: RAW.ce.PRAYER_LABELS },
-  uk: { en: RAW.uk.uk, PRAYER_LABELS: RAW.uk.PRAYER_LABELS },
-  qu: { en: RAW.qu.qu, PRAYER_LABELS: RAW.qu.PRAYER_LABELS },
-  min: { en: RAW.min.min, PRAYER_LABELS: RAW.min.PRAYER_LABELS },
-  mad: { en: RAW.mad.mad, PRAYER_LABELS: RAW.mad.PRAYER_LABELS },
-  bug: { en: RAW.bug.bug, PRAYER_LABELS: RAW.bug.PRAYER_LABELS },
-  ja: { en: RAW.ja.ja, PRAYER_LABELS: RAW.ja.PRAYER_LABELS },
-  ko: { en: RAW.ko.ko, PRAYER_LABELS: RAW.ko.PRAYER_LABELS },
-  it: { en: RAW.it.it, PRAYER_LABELS: RAW.it.PRAYER_LABELS },
-  pl: { en: RAW.pl.pl, PRAYER_LABELS: RAW.pl.PRAYER_LABELS },
-  ro: { en: RAW.ro.ro, PRAYER_LABELS: RAW.ro.PRAYER_LABELS },
-  ceb: { en: RAW.ceb.ceb, PRAYER_LABELS: RAW.ceb.PRAYER_LABELS },
-  ilo: { en: RAW.ilo.ilo, PRAYER_LABELS: RAW.ilo.PRAYER_LABELS },
-  vi: { en: RAW.vi.vi, PRAYER_LABELS: RAW.vi.PRAYER_LABELS },
-  skr: { en: RAW.skr.skr, PRAYER_LABELS: RAW.skr.PRAYER_LABELS },
-  bal: { en: RAW.bal.bal, PRAYER_LABELS: RAW.bal.PRAYER_LABELS },
-  kas: { en: RAW.kas.kas, PRAYER_LABELS: RAW.kas.PRAYER_LABELS },
-  dv: { en: RAW.dv.dv, PRAYER_LABELS: RAW.dv.PRAYER_LABELS },
-  aa: { en: RAW.aa.aa, PRAYER_LABELS: RAW.aa.PRAYER_LABELS },
-  mdh: { en: RAW.mdh.mdh, PRAYER_LABELS: RAW.mdh.PRAYER_LABELS },
-  kr: { en: RAW.kr.kr, PRAYER_LABELS: RAW.kr.PRAYER_LABELS },
-  mnk: { en: RAW.mnk.mnk, PRAYER_LABELS: RAW.mnk.PRAYER_LABELS },
-  dje: { en: RAW.dje.dje, PRAYER_LABELS: RAW.dje.PRAYER_LABELS },
+// Each locale exports its catalog under its own name; each factory reads that
+// name into the shared `en` slot without copying the catalog. The require sits
+// inside the factory, so CommonJS laziness - not the inline-requires transform,
+// which only defers requires referenced through a variable - keeps the module
+// off the launch path.
+const RAW: Record<LocaleId, () => CatalogModule> = {
+  en: () => {
+    const m = require('./en') as typeof import('./en');
+    return { en: m.en, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ar: () => {
+    const m = require('./ar') as typeof import('./ar');
+    return { en: m.ar, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ms: () => {
+    const m = require('./ms') as typeof import('./ms');
+    return { en: m.ms, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  so: () => {
+    const m = require('./so') as typeof import('./so');
+    return { en: m.so, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  hi: () => {
+    const m = require('./hi') as typeof import('./hi');
+    return { en: m.hi, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  th: () => {
+    const m = require('./th') as typeof import('./th');
+    return { en: m.th, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  id: () => {
+    const m = require('./id') as typeof import('./id');
+    return { en: m.id, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  tr: () => {
+    const m = require('./tr') as typeof import('./tr');
+    return { en: m.tr, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  fr: () => {
+    const m = require('./fr') as typeof import('./fr');
+    return { en: m.fr, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  uz: () => {
+    const m = require('./uz') as typeof import('./uz');
+    return { en: m.uz, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  sw: () => {
+    const m = require('./sw') as typeof import('./sw');
+    return { en: m.sw, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ha: () => {
+    const m = require('./ha') as typeof import('./ha');
+    return { en: m.ha, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  pt: () => {
+    const m = require('./pt') as typeof import('./pt');
+    return { en: m.pt, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ur: () => {
+    const m = require('./ur') as typeof import('./ur');
+    return { en: m.ur, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  fa: () => {
+    const m = require('./fa') as typeof import('./fa');
+    return { en: m.fa, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  bn: () => {
+    const m = require('./bn') as typeof import('./bn');
+    return { en: m.bn, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ru: () => {
+    const m = require('./ru') as typeof import('./ru');
+    return { en: m.ru, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  az: () => {
+    const m = require('./az') as typeof import('./az');
+    return { en: m.az, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  de: () => {
+    const m = require('./de') as typeof import('./de');
+    return { en: m.de, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  sq: () => {
+    const m = require('./sq') as typeof import('./sq');
+    return { en: m.sq, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  bs: () => {
+    const m = require('./bs') as typeof import('./bs');
+    return { en: m.bs, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ps: () => {
+    const m = require('./ps') as typeof import('./ps');
+    return { en: m.ps, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ta: () => {
+    const m = require('./ta') as typeof import('./ta');
+    return { en: m.ta, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ml: () => {
+    const m = require('./ml') as typeof import('./ml');
+    return { en: m.ml, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  'zh-Hans': () => {
+    const m = require('./zh-Hans') as typeof import('./zh-Hans');
+    return { en: m.zhHans, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  'zh-Hant': () => {
+    const m = require('./zh-Hant') as typeof import('./zh-Hant');
+    return { en: m.zhHant, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  es: () => {
+    const m = require('./es') as typeof import('./es');
+    return { en: m.es, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  nl: () => {
+    const m = require('./nl') as typeof import('./nl');
+    return { en: m.nl, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  kk: () => {
+    const m = require('./kk') as typeof import('./kk');
+    return { en: m.kk, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ky: () => {
+    const m = require('./ky') as typeof import('./ky');
+    return { en: m.ky, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  tg: () => {
+    const m = require('./tg') as typeof import('./tg');
+    return { en: m.tg, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  tk: () => {
+    const m = require('./tk') as typeof import('./tk');
+    return { en: m.tk, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  wo: () => {
+    const m = require('./wo') as typeof import('./wo');
+    return { en: m.wo, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mr: () => {
+    const m = require('./mr') as typeof import('./mr');
+    return { en: m.mr, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  om: () => {
+    const m = require('./om') as typeof import('./om');
+    return { en: m.om, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  bm: () => {
+    const m = require('./bm') as typeof import('./bm');
+    return { en: m.bm, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  tl: () => {
+    const m = require('./tl') as typeof import('./tl');
+    return { en: m.tl, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ff: () => {
+    const m = require('./ff') as typeof import('./ff');
+    return { en: m.ff, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  te: () => {
+    const m = require('./te') as typeof import('./te');
+    return { en: m.te, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  gu: () => {
+    const m = require('./gu') as typeof import('./gu');
+    return { en: m.gu, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  kn: () => {
+    const m = require('./kn') as typeof import('./kn');
+    return { en: m.kn, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  am: () => {
+    const m = require('./am') as typeof import('./am');
+    return { en: m.am, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  'pa-Arab': () => {
+    const m = require('./pa-Arab') as typeof import('./pa-Arab');
+    return { en: m.paArab, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  sd: () => {
+    const m = require('./sd') as typeof import('./sd');
+    return { en: m.sd, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ug: () => {
+    const m = require('./ug') as typeof import('./ug');
+    return { en: m.ug, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ckb: () => {
+    const m = require('./ckb') as typeof import('./ckb');
+    return { en: m.ckb, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ku: () => {
+    const m = require('./ku') as typeof import('./ku');
+    return { en: m.ku, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  yo: () => {
+    const m = require('./yo') as typeof import('./yo');
+    return { en: m.yo, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  jv: () => {
+    const m = require('./jv') as typeof import('./jv');
+    return { en: m.jv, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  su: () => {
+    const m = require('./su') as typeof import('./su');
+    return { en: m.su, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  my: () => {
+    const m = require('./my') as typeof import('./my');
+    return { en: m.my, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  tt: () => {
+    const m = require('./tt') as typeof import('./tt');
+    return { en: m.tt, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ce: () => {
+    const m = require('./ce') as typeof import('./ce');
+    return { en: m.ce, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  uk: () => {
+    const m = require('./uk') as typeof import('./uk');
+    return { en: m.uk, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  qu: () => {
+    const m = require('./qu') as typeof import('./qu');
+    return { en: m.qu, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  min: () => {
+    const m = require('./min') as typeof import('./min');
+    return { en: m.min, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mad: () => {
+    const m = require('./mad') as typeof import('./mad');
+    return { en: m.mad, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  bug: () => {
+    const m = require('./bug') as typeof import('./bug');
+    return { en: m.bug, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ja: () => {
+    const m = require('./ja') as typeof import('./ja');
+    return { en: m.ja, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ko: () => {
+    const m = require('./ko') as typeof import('./ko');
+    return { en: m.ko, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  it: () => {
+    const m = require('./it') as typeof import('./it');
+    return { en: m.it, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  pl: () => {
+    const m = require('./pl') as typeof import('./pl');
+    return { en: m.pl, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ro: () => {
+    const m = require('./ro') as typeof import('./ro');
+    return { en: m.ro, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ceb: () => {
+    const m = require('./ceb') as typeof import('./ceb');
+    return { en: m.ceb, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  ilo: () => {
+    const m = require('./ilo') as typeof import('./ilo');
+    return { en: m.ilo, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  vi: () => {
+    const m = require('./vi') as typeof import('./vi');
+    return { en: m.vi, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  skr: () => {
+    const m = require('./skr') as typeof import('./skr');
+    return { en: m.skr, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  bal: () => {
+    const m = require('./bal') as typeof import('./bal');
+    return { en: m.bal, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  kas: () => {
+    const m = require('./kas') as typeof import('./kas');
+    return { en: m.kas, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  dv: () => {
+    const m = require('./dv') as typeof import('./dv');
+    return { en: m.dv, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  aa: () => {
+    const m = require('./aa') as typeof import('./aa');
+    return { en: m.aa, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mdh: () => {
+    const m = require('./mdh') as typeof import('./mdh');
+    return { en: m.mdh, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  kr: () => {
+    const m = require('./kr') as typeof import('./kr');
+    return { en: m.kr, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  mnk: () => {
+    const m = require('./mnk') as typeof import('./mnk');
+    return { en: m.mnk, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
+  dje: () => {
+    const m = require('./dje') as typeof import('./dje');
+    return { en: m.dje, PRAYER_LABELS: m.PRAYER_LABELS };
+  },
 };
 
-export const currentCatalog = (): Catalog => MODULES[currentLocaleId()].en;
+// Resolved once per locale: the first read pays that locale's factory, every
+// later read the cached module
+const RESOLVED: Partial<Record<LocaleId, CatalogModule>> = {};
+
+const catalogModuleFor = (locale: LocaleId): CatalogModule => {
+  const cached = RESOLVED[locale];
+  if (cached !== undefined) return cached;
+
+  // Brackets the catalog's one-time evaluation: pre-init the marks replay with
+  // true detail.at epochs, post-init the ring ts already is one - either way
+  // the require cost reads offline.
+  perfMark('catalog_require_start', { locale });
+  const module = RAW[locale]();
+  perfMark('catalog_require_end', { locale });
+
+  RESOLVED[locale] = module;
+  return module;
+};
+
+export const currentCatalog = (): Catalog => catalogModuleFor(currentLocaleId()).en;
 
 /** A named locale's catalog, so a surface can speak its target's words before the switch lands */
-export const catalogFor = (locale: LocaleId): Catalog => MODULES[locale].en;
+export const catalogFor = (locale: LocaleId): Catalog => catalogModuleFor(locale).en;
 
-export const currentPrayerLabels = (): Record<PrayerId, string> => MODULES[currentLocaleId()].PRAYER_LABELS;
+export const currentPrayerLabels = (): Record<PrayerId, string> => catalogModuleFor(currentLocaleId()).PRAYER_LABELS;
