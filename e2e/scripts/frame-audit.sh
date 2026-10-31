@@ -50,16 +50,25 @@
 #   sf              -> SurfaceFlinger --latency cadence instead of video
 #                      (no pixels) — D16's recorder-free FLOOR WITNESS, and
 #                      still the only read while video capture is wedged.
-#                      The tap is stamped and anchored on the SF clock, the
+#                      The input is stamped and anchored on the SF clock, the
 #                      layer resolved from --list, and the entrance window
-#                      bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000,
-#                      which covers every audited interaction's
-#                      tap-to-settled). THE PRINTED PRESENT-GAP LIST inside
-#                      that window IS THE VERDICT OF RECORD, read against the
-#                      33ms floor: every gap over 33ms in it is a floor
-#                      failure, gaps over 100ms included — never
-#                      "freeze or idle". The PASS line only summarizes the
-#                      list.
+#                      read against the STAMP, not the touch: `input tap`
+#                      runs 410-450ms on the 3T with the touch injected
+#                      mid-command, so a stamp read after the command trails
+#                      the touch ~150-250ms, and the recorded method of
+#                      record (android-3t.json _2026_10_31) bounds a tap
+#                      window [stamp-300ms, stamp+ENTRANCE_MS] (swipes stamp
+#                      before the action and keep the -50ms margin); this
+#                      script filters [stamp-50ms, stamp+ENTRANCE_MS]
+#                      (default 1000, which beside the lag still covers
+#                      every audited interaction's tap-to-settled) and
+#                      prints the bounds it used, so gap magnitudes are
+#                      exact and positions carry the stated skew. THE
+#                      PRINTED PRESENT-GAP LIST inside that window IS THE
+#                      VERDICT OF RECORD, read against the 33ms floor: every
+#                      gap over 33ms in it is a floor failure, gaps over
+#                      100ms included — never "freeze or idle". The PASS
+#                      line only summarizes the list.
 # Known wedge: if screenrecord emits ~1 frame despite display changes, the
 # virtual-display pipeline is wedged — a device REBOOT restores it (s6). The
 # SF fallback still works in that state.
@@ -160,7 +169,10 @@ if [[ $MODE == sf ]]; then
   # Interaction and uptime read in ONE shell: the input's CLOCK_BOOTTIME
   # stamp must ride the same read discipline as the anchor's, or the offset
   # arithmetic pulls the entrance window off the input. A swipe runs for its
-  # whole duration, so the stamp is read BEFORE it starts.
+  # whole duration, so the stamp is read BEFORE it starts; a tap's stamp
+  # lands AFTER the command, and `input tap` runs 410-450ms with the touch
+  # injected mid-command, so the stamp trails the touch ~150-250ms (README
+  # Gotchas).
   if [[ -n $SWIPE ]]; then
     adb -s "$SERIAL" shell "cat /proc/uptime; input swipe ${=SWIPE}" > "$OUT/tap_uptime.txt"
   else
@@ -206,11 +218,14 @@ except (OSError, IndexError, ValueError):
           " or a re-run); this is not a pass")
     sys.exit(1)
 
-# The entrance window: from 50ms before the tap (the anchor's vsync and
-# read-lag margin, as the dual branch) to ENTRANCE_MS after it. It must
-# cover the audited entrance end to end — the marks bands put
-# tap-to-settled at ~160ms (overlay) and ~660ms (sheets) — so the 1000ms
-# default covers every audited interaction with margin.
+# The entrance window rides the STAMP beside the input, not the touch:
+# `input tap` takes 410-450ms on the 3T with the touch injected
+# mid-command, so a stamp read after the command trails the touch
+# ~150-250ms and the recorded method of record opens a tap window to
+# [stamp-300ms, stamp+WINDOW] (android-3t.json _2026_10_31); this filter
+# holds [stamp-50ms, stamp+ENTRANCE_MS] and prints the bounds it used. The
+# 1000ms default still covers every audited interaction's tap-to-settled
+# beside the lag (marks bands: ~160ms overlay, ~660ms sheets).
 ENTRANCE_MS = float(os.environ.get("ENTRANCE_MS", "1000"))
 tap_mono = tap_boot - offset
 rel = [(t / 1e9 - tap_mono) * 1000 for t in presents]
@@ -229,8 +244,9 @@ if len(win) < 2:
 # unclassifiable freeze: idle leaves through the window's far edge, and the
 # gap that crosses it ends outside and never prints as a failure.
 gaps = [(win[i] - win[i - 1], win[i - 1]) for i in range(1, len(win))]
-print(f"entrance window [tap-50ms, tap+{ENTRANCE_MS:.0f}ms]: {len(win)} presents,"
-      f" tap -> first present {win[0]:.0f}ms")
+print(f"entrance window [stamp-50ms, stamp+{ENTRANCE_MS:.0f}ms] (the stamp trails"
+      f" the touch ~150-250ms on taps; the method of record opens taps to"
+      f" -300ms): {len(win)} presents, stamp -> first present {win[0]:.0f}ms")
 print("present gaps inside the window:", [f"{g:.1f}ms@{a:+.0f}" for g, a in gaps])
 failures = [(g, a) for g, a in gaps if g > 33]
 print("FLOOR FAILURES (gaps over 33ms inside the window):",
@@ -264,7 +280,9 @@ else
   adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
   if [[ $MODE == dual ]]; then
     # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
-    # immediately after the tap. SF presents ride CLOCK_MONOTONIC, so this read
+    # after the tap command - whose 410-450ms run injects the touch
+    # mid-command, so the stamp trails the touch ~150-250ms (README
+    # Gotchas). SF presents ride CLOCK_MONOTONIC, so this read
     # alone cannot open the SF window: the per-capture anchor measured below
     # supplies the suspend offset, and the pairing subtracts it.
     adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
@@ -374,8 +392,11 @@ presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) <
 tap_mono = tap_boot - offset
 
 # Every quantity below is MILLISECONDS, video tap-relative (0 = the tap). The
-# SF window opens 50ms BEFORE the tap: the anchor carries +-50ms of vsync and
-# read lag, so the entrance's first presents may sit slightly before it.
+# SF window opens 50ms before its STAMP, which the tap command's own read
+# trails: `input tap` runs 410-450ms with the touch injected mid-command, so
+# the stamp sits ~150-250ms after the touch and the window's left edge may
+# cut an entrance's first presents (README Gotchas; the recorded method opens
+# taps to -300ms).
 vms = [(p - 0.5) * 1000 for p in tap]
 sms = [(t / 1e9 - tap_mono) * 1000 for t in presents if t / 1e9 >= tap_mono - 0.05]
 

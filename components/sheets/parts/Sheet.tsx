@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { ELEVATION, OVERLAY, SIZE, SPACING } from '@/shared/constants';
 import { perfMark, perfMeasure } from '@/shared/perf';
-import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
+import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { bumpSheetSettleTick } from '@/stores/geometry';
 
 import Header from './Header';
@@ -178,6 +178,7 @@ export default function Sheet({
   // signal. A dismiss that fires beside the change to -1 dedupes against it,
   // and a close before any open (nothing to commit) fires nothing.
   const openSessionRef = useRef(false);
+  const epochSlotRef = useRef<AnimationEpochSlot | null>(null);
 
   useEffect(() => {
     if (!presented) return;
@@ -203,8 +204,10 @@ export default function Sheet({
       // mid-entrance still owes the sheet its close
       if (toIndex !== null && toIndex >= 0) openSessionRef.current = true;
       // The entrance or close is an animation window: per-second writes stand
-      // down for it and the settle re-admits them
-      openAnimationEpoch();
+      // down for it and the settle re-admits them. A second animation beside
+      // a live one replaces the slot, keeping the window unbroken
+      closeAnimationEpoch(epochSlotRef.current);
+      epochSlotRef.current = openAnimationEpoch();
       if (perfName) {
         if (toIndex === 0) {
           perfMark(`${perfName}_animate`);
@@ -238,7 +241,8 @@ export default function Sheet({
       setPresented(index !== -1);
       if (index !== -1) openSessionRef.current = true;
       // The animation window is over: whatever the entrance deferred may write
-      closeAnimationEpoch();
+      closeAnimationEpoch(epochSlotRef.current);
+      epochSlotRef.current = null;
       if (index === 0) {
         if (!firstPresentFiredRef.current) {
           firstPresentFiredRef.current = true;

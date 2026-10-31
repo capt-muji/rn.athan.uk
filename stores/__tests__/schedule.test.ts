@@ -1047,9 +1047,7 @@ describe('on the real builder', () => {
     // test could land age-zero on this test's own boundary tick once the clock
     // jumps: each store-level test starts hold-free, as the settled app is
     const { endOverlayFadeHold } = require('@/stores/atoms/overlay');
-    const { closeAnimationEpoch } = require('@/stores/animationEpoch');
     endOverlayFadeHold();
-    closeAnimationEpoch();
 
     const { createPrayerSequence, createPrayersForDate, firstStillDueListDay } = actualPrayer();
     mockCreateLondonDate.mockImplementation(() => new Date());

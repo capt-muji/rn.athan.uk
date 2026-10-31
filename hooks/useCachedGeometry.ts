@@ -30,19 +30,24 @@ export const useCachedGeometry = (key: string, accept: 'widen' | 'replace' = 'wi
   const valueRef = useRef(value);
   valueRef.current = value;
 
+  // The key that value was measured under: a flush may only write its own key's cache
+  const measuredKeyRef = useRef<string | null>(null);
+
   // The write rides the settle tick alone: the entrance that measured the value
   // is over when the tick moves, and the cache write is idempotent until then
   // biome-ignore lint/correctness/useExhaustiveDependencies: the settle tick is the deliberate trigger, and the value flows through valueRef so a mid-measurement tick does not re-run the effect
   useEffect(() => {
+    if (measuredKeyRef.current !== key) return;
     const measured = valueRef.current;
     if (measured > 0) growMeasuredGeometry(key, measured);
   }, [settleTick, key]);
 
   const measure = useCallback(
     (measured: number) => {
+      measuredKeyRef.current = key;
       setValue((current) => (accept === 'widen' ? Math.max(current, measured) : measured));
     },
-    [accept]
+    [accept, key]
   );
 
   return [value, measure] as const;

@@ -3,36 +3,79 @@
  * runs, and whether a settle that never comes can freeze the display forever
  */
 
-import { animationEpochOpen, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
+import {
+  type AnimationEpochSlot,
+  animationEpochOpen,
+  closeAnimationEpoch,
+  openAnimationEpoch,
+} from '@/stores/animationEpoch';
 
 describe('the animation epoch', () => {
+  let opened: AnimationEpochSlot[];
+
+  beforeEach(() => {
+    opened = [];
+  });
+
   afterEach(() => {
-    closeAnimationEpoch();
+    for (const slot of opened) closeAnimationEpoch(slot);
+    opened = [];
     jest.useRealTimers();
   });
+
+  const open = () => {
+    const slot = openAnimationEpoch();
+    opened.push(slot);
+    return slot;
+  };
 
   it('is closed at rest, so ticks write', () => {
     expect(animationEpochOpen()).toBe(false);
   });
 
   it('is open between an animation starting and its settle', () => {
-    openAnimationEpoch();
+    const slot = open();
 
     expect(animationEpochOpen()).toBe(true);
 
-    closeAnimationEpoch();
+    closeAnimationEpoch(slot);
 
     expect(animationEpochOpen()).toBe(false);
   });
 
-  it('keeps the earliest opening when a second animation starts before the first settles', () => {
+  it("holds one owner's window when another owner's animation settles first", () => {
+    const first = open();
+    const second = open();
+
+    closeAnimationEpoch(second);
+
+    expect(animationEpochOpen()).toBe(true);
+
+    closeAnimationEpoch(first);
+
+    expect(animationEpochOpen()).toBe(false);
+  });
+
+  it('releases nothing when a close arrives with no slot, the rest of an owner that never started', () => {
+    const slot = open();
+
+    closeAnimationEpoch(null);
+
+    expect(animationEpochOpen()).toBe(true);
+
+    closeAnimationEpoch(slot);
+
+    expect(animationEpochOpen()).toBe(false);
+  });
+
+  it('holds the window when a second animation starts beside a first the valve expired', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    openAnimationEpoch();
+    open();
 
     jest.advanceTimersByTime(1000);
-    openAnimationEpoch();
+    open();
 
     expect(animationEpochOpen()).toBe(true);
   });
@@ -41,7 +84,7 @@ describe('the animation epoch', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    openAnimationEpoch();
+    open();
     jest.advanceTimersByTime(601);
 
     expect(animationEpochOpen()).toBe(false);
@@ -51,7 +94,7 @@ describe('the animation epoch', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    openAnimationEpoch();
+    open();
     jest.setSystemTime(new Date('2026-01-20T09:59:59.000Z'));
 
     expect(animationEpochOpen()).toBe(false);
@@ -61,7 +104,7 @@ describe('the animation epoch', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
-    openAnimationEpoch();
+    open();
     jest.advanceTimersByTime(600);
 
     expect(animationEpochOpen()).toBe(true);

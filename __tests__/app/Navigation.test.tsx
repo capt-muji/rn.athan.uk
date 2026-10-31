@@ -12,7 +12,7 @@ import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
-import { animationEpochOpen, closeAnimationEpoch } from '@/stores/animationEpoch';
+import { animationEpochOpen } from '@/stores/animationEpoch';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { openOverlay } from '@/stores/overlay';
 
@@ -43,11 +43,10 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
-  // The locale cases mutate module state; every later assertion reads en. The epoch is module
-  // state too: a slide left open would leak its window into the next case
+  // The locale cases mutate module state; every later assertion reads en. The epoch is
+  // module state too, so every pager case below rests the slide it starts
   afterEach(() => {
     setActiveLocale('en');
-    closeAnimationEpoch();
   });
 
   it('shows the Standard and Extras lists once the first frame has passed', async () => {
@@ -68,6 +67,9 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState } });
 
     expect(perfMark).toHaveBeenCalledWith('pager_swipe_start');
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
   });
 
   it('marks no swipe start when the pager comes to rest', async () => {
@@ -88,6 +90,9 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState } });
 
     expect(animationEpochOpen()).toBe(true);
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
   });
 
   it('closes the animation epoch when the pager rests', async () => {
@@ -114,6 +119,9 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
 
     expect(animationEpochOpen()).toBe(true);
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
   });
 
   it('measures a swipe against the page it settled on', async () => {

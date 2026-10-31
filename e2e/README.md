@@ -238,6 +238,14 @@ verification, never infer visuals from pixels alone.
   presents and an idle layer presents nothing, so the ring still covers the
   entrance, while a dump before the tap reads an idle layer and prints
   NO DATA.
+- **`input tap` injection lag**: on the 3T `adb shell input tap` runs
+  410-450ms with the touch injected mid-command (bracket-measured,
+  2026-10-31), so an uptime stamp read after the command trails the touch
+  by ~150-250ms. A window anchored on the stamp must open its left edge to
+  -300ms to cover an entrance's first presents — the recorded method of
+  record (`android-3t.json` `_2026_10_31`); frame-audit's sf branch prints
+  the [stamp-50ms] bounds it filters beside that skew. Swipes stamp BEFORE
+  the action and keep the -50ms margin.
 - **The pre-tap settle wait is mock-tuned**: `PRE_TAP` opens the overlay
   before a close audit records the closing tap, and `PRE_TAP_WAIT` (default
   1s) is the entrance's settle time. The stock 3s wait is unusable on mock:

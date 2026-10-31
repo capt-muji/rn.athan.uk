@@ -15,7 +15,7 @@ import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
-import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
+import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
 import { toggleOverlay } from '@/stores/overlay';
 
@@ -43,16 +43,20 @@ export default function Navigation() {
 
   // A page-snap write gated behind the slide: released at the pager's rest
   const gatedOverlayCloseRef = useRef<(() => void) | null>(null);
+  const pagerEpochSlotRef = useRef<AnimationEpochSlot | null>(null);
 
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
     if (state === 'dragging' || state === 'settling') {
       // The slide is an animation window: per-second writes stand down for it,
-      // and the pager's own rest re-admits them
-      openAnimationEpoch();
+      // and the pager's own rest re-admits them. A later slide state beside a
+      // live one replaces the slot, keeping the window unbroken
+      closeAnimationEpoch(pagerEpochSlotRef.current);
+      pagerEpochSlotRef.current = openAnimationEpoch();
       perfMark('pager_swipe_start');
     } else if (state === 'idle') {
-      closeAnimationEpoch();
+      closeAnimationEpoch(pagerEpochSlotRef.current);
+      pagerEpochSlotRef.current = null;
       const gatedClose = gatedOverlayCloseRef.current;
       gatedOverlayCloseRef.current = null;
       gatedClose?.();

@@ -133,14 +133,14 @@ describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
 
     // The idle callback is not an animation gate: an idle JS thread wakes inside the
     // thumb's slide, and the re-measure must re-arm rather than write
-    openAnimationEpoch();
+    const epochSlot = openAnimationEpoch();
     await act(() => getDefaultStore().set(countdownBarShownAtom, false));
     await act(() => jest.advanceTimersByTime(300));
 
     expect(measureInWindow).toHaveBeenCalledTimes(1);
 
     // The settle: the re-measure lands
-    closeAnimationEpoch();
+    closeAnimationEpoch(epochSlot);
     await act(() => jest.advanceTimersByTime(300));
 
     expect(getMeasurementsList()).toEqual({ pageX: 12, pageY: 180, width: 366, height: 342 });

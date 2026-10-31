@@ -326,7 +326,7 @@ describe('ticker integrity (wall-second chain)', () => {
     });
 
     // An animation window opens beside the countdown: the tick inside it stands down
-    openAnimationEpoch();
+    const epochSlot = openAnimationEpoch();
     jest.advanceTimersByTime(200);
     expect(writes).toEqual([]);
 
@@ -336,7 +336,7 @@ describe('ticker integrity (wall-second chain)', () => {
 
     // The settle: the next wall second writes the healed value - every skipped
     // second is absorbed into the one catch-up the clock moved past
-    closeAnimationEpoch();
+    closeAnimationEpoch(epochSlot);
     jest.advanceTimersByTime(700);
 
     expect(writes).toEqual([defaultStore.get(standardCountdownAtom).timeLeft]);

@@ -13,7 +13,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 
-import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
+import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 
 export interface SettledWrite<T> {
   /** The optimistic target while a press's write is deferred, else null */
@@ -29,11 +29,14 @@ export interface SettledWrite<T> {
 export const useSettledWrite = <T>(write: (target: T) => void): SettledWrite<T> => {
   const [pending, setPending] = useState<T | null>(null);
   const generationRef = useRef(0);
+  const epochSlotRef = useRef<AnimationEpochSlot | null>(null);
 
   const press = useCallback((target: T) => {
     generationRef.current += 1;
     setPending(target);
-    openAnimationEpoch();
+    // The superseded press's window ended the moment this one replaced it
+    closeAnimationEpoch(epochSlotRef.current);
+    epochSlotRef.current = openAnimationEpoch();
   }, []);
 
   const settle = useCallback(
@@ -42,7 +45,8 @@ export const useSettledWrite = <T>(write: (target: T) => void): SettledWrite<T> 
       if (generation === 0 || generation !== generationRef.current) return;
       generationRef.current = 0;
       setPending(null);
-      closeAnimationEpoch();
+      closeAnimationEpoch(epochSlotRef.current);
+      epochSlotRef.current = null;
       write(target);
     },
     [write]
