@@ -182,8 +182,6 @@ export const th = {
   'whatsNew.body.language': 'เพิ่มการรองรับภาษาเพิ่มเติม',
   'whatsNew.title.moreLanguages': 'ภาษาเพิ่มเติม',
   'whatsNew.body.moreLanguages': 'เพิ่มการรองรับภาษาเพิ่มเติม',
-  'whatsNew.title.languageWave': 'หกภาษาใหม่',
-  'whatsNew.body.languageWave': 'เพิ่มหกภาษาและเลิกใช้หกภาษา',
   'whatsNew.title.checkUpdates': 'ตรวจสอบการอัปเดต',
   'whatsNew.body.checkUpdates': 'เพิ่มตัวเลือกตรวจสอบการอัปเดต',
   'whatsNew.title.whatsNew': 'หน้ามีอะไรใหม่',

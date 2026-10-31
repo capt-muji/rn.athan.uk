@@ -186,8 +186,6 @@ export const ku = {
   'whatsNew.body.language': 'Piştgirî ji bo zêdetir zimanan hate zêdekirin',
   'whatsNew.title.moreLanguages': 'Zimanên zêdetir',
   'whatsNew.body.moreLanguages': 'Piştgirî ji bo zêdetir zimanan hate zêdekirin',
-  'whatsNew.title.languageWave': 'Zimanên şeş nû',
-  'whatsNew.body.languageWave': 'Şeş ziman lê zêde bûn, şeş hatine rakirin',
   'whatsNew.title.checkUpdates': 'Nûvekirinan kontrol bike',
   'whatsNew.body.checkUpdates': 'Nûvekirinan kontrol bike hate zêdekirin',
   'whatsNew.title.whatsNew': 'Rûpela çi nû ye',

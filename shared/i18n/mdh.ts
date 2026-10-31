@@ -196,8 +196,6 @@ export const mdh = {
   'whatsNew.body.language': 'Nagdagdag ng suporta sa mas maraming wika',
   'whatsNew.title.moreLanguages': 'Mas maraming wika',
   'whatsNew.body.moreLanguages': 'Nagdagdag ng suporta sa mas maraming wika',
-  'whatsNew.title.languageWave': 'Anim na bagong wika',
-  'whatsNew.body.languageWave': 'Dinagdag ng anim ang pagpilian ng wika at binawasan ng anim',
   'whatsNew.title.checkUpdates': 'Tignan ang mga kaaayos',
   'whatsNew.body.checkUpdates': 'Nagdagdag ng Tignan ang mga kaaayos',
   'whatsNew.title.whatsNew': 'Pahina ng Anong Bago',

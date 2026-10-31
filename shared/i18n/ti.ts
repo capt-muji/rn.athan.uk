@@ -187,8 +187,6 @@ export const ti = {
   'whatsNew.body.language': 'ድገፍ ንተወሳኺ ቋንቋታት ተወሰኸ',
   'whatsNew.title.moreLanguages': 'ተወሳኺ ቋንቋታት',
   'whatsNew.body.moreLanguages': 'ድገፍ ንተወሳኺ ቋንቋታት ተወሰኸ',
-  'whatsNew.title.languageWave': 'ሽደ ሓድሽ ቋንቋታት',
-  'whatsNew.body.languageWave': 'ምርጫ ቋንቋ ሽደ ቋንቋታት ተወስኸ እሞ ሽደ ኣውጽአ',
   'whatsNew.title.checkUpdates': 'ምሕያሻት ፈትሹ',
   'whatsNew.body.checkUpdates': 'ኣማራጺ ምሕያሻት ፈትሽ ተወሰኸ',
   'whatsNew.title.whatsNew': 'ገጽ ዝሓዱሽ',

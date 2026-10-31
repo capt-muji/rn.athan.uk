@@ -190,8 +190,6 @@ export const uz = {
   'whatsNew.body.language': "Ko'proq tillar qo'llab-quvvatlashi qo'shildi",
   'whatsNew.title.moreLanguages': "Ko'proq tillar",
   'whatsNew.body.moreLanguages': "Ko'proq tillar qo'llab-quvvatlashi qo'shildi",
-  'whatsNew.title.languageWave': 'Oltita yangi til',
-  'whatsNew.body.languageWave': "Oltita til qo'shildi va oltita olib tashlandi",
   'whatsNew.title.checkUpdates': 'Yangilanishlarni tekshirish',
   'whatsNew.body.checkUpdates': "Yangilanishlarni tekshirish opsiyasi qo'shildi",
   'whatsNew.title.whatsNew': 'Yangi narsalar sahifasi',

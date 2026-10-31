@@ -185,8 +185,6 @@ export const bm = {
   'whatsNew.body.language': 'Kan wɛrɛw dɛmɛ fara',
   'whatsNew.title.moreLanguages': 'Kan wɛrɛw',
   'whatsNew.body.moreLanguages': 'Kan wɛrɛw dɛmɛ fara',
-  'whatsNew.title.languageWave': 'Kan wɔrɛ kura',
-  'whatsNew.body.languageWave': 'Kan wɔrɛ fara a kan, kan wɔrɛ bɔ',
   'whatsNew.title.checkUpdates': 'Sabatiw ɲinini',
   'whatsNew.body.checkUpdates': 'Sabatiw ɲinini dɔ farala',
   'whatsNew.title.whatsNew': 'Kura ɲɛ',

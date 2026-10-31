@@ -189,8 +189,6 @@ export const tl = {
   'whatsNew.body.language': 'Nagdagdag ng suporta sa mas maraming wika',
   'whatsNew.title.moreLanguages': 'Mas maraming wika',
   'whatsNew.body.moreLanguages': 'Nagdagdag ng suporta sa mas maraming wika',
-  'whatsNew.title.languageWave': 'Anim na bagong wika',
-  'whatsNew.body.languageWave': 'Anim na wika ang dinagdag at anim ang tinanggal',
   'whatsNew.title.checkUpdates': 'Tingnan ang mga update',
   'whatsNew.body.checkUpdates': 'Nagdagdag ng opsyon sa Tingnan ang mga update',
   'whatsNew.title.whatsNew': 'Pahina ng Ano ang Bago',

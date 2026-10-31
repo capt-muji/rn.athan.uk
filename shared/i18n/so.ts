@@ -187,8 +187,6 @@ export const so = {
   'whatsNew.body.language': 'Waxaa lagu daray taageero luqado dheeraad ah',
   'whatsNew.title.moreLanguages': 'Luqado dheeraad ah',
   'whatsNew.body.moreLanguages': 'Waxaa lagu daray taageero luqado dheeraad ah',
-  'whatsNew.title.languageWave': 'Luqado lixan oo cusub',
-  'whatsNew.body.languageWave': 'Waxaa lagu daray lix luqad oo laga saaray lix',
   'whatsNew.title.checkUpdates': 'Hubi cusboonaysiinta',
   'whatsNew.body.checkUpdates': 'Waxaa lagu daray Hubi cusboonaysiinta',
   'whatsNew.title.whatsNew': 'Bogga maxay tahay cusub',

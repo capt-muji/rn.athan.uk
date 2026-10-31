@@ -185,8 +185,6 @@ export const ur = {
   'whatsNew.body.language': 'مزید زبانوں کی سپورٹ شامل کی گئی',
   'whatsNew.title.moreLanguages': 'مزید زبانیں',
   'whatsNew.body.moreLanguages': 'مزید زبانوں کی سپورٹ شامل کی گئی',
-  'whatsNew.title.languageWave': 'چھ نئی زبانیں',
-  'whatsNew.body.languageWave': 'چھ زبانیں شامل کی گئیں اور چھ ہٹا دی گئیں',
   'whatsNew.title.checkUpdates': 'اپ ڈیٹس دیکھیں',
   'whatsNew.body.checkUpdates': 'اپ ڈیٹس دیکھیں کا اختیار شامل کیا گیا',
   'whatsNew.title.whatsNew': 'نیا کیا ہے کا صفحہ',

@@ -186,8 +186,6 @@ export const ff = {
   'whatsNew.body.language': 'Ɓeydii ballal ɗemɗe goɗɗe',
   'whatsNew.title.moreLanguages': 'Ɗemɗe goɗɗe',
   'whatsNew.body.moreLanguages': 'Ɓeydii ballal ɗemɗe goɗɗe',
-  'whatsNew.title.languageWave': 'Ɗemɗe jeegom kese',
-  'whatsNew.body.languageWave': 'Ɗemɗe jeegom ɓeydaama, jeegom ittaa',
   'whatsNew.title.checkUpdates': 'Ƴeew kesɗitine',
   'whatsNew.body.checkUpdates': 'Ɓeydii ƴeew kesɗitine',
   'whatsNew.title.whatsNew': 'Hello Ko Hesɗi',

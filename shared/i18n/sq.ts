@@ -189,8 +189,6 @@ export const sq = {
   'whatsNew.body.language': 'U shtua mbështetje për më shumë gjuhë',
   'whatsNew.title.moreLanguages': 'Më shumë gjuhë',
   'whatsNew.body.moreLanguages': 'U shtua mbështetje për më shumë gjuhë',
-  'whatsNew.title.languageWave': 'Gjashtë gjuhë të reja',
-  'whatsNew.body.languageWave': 'U shtuan gjashtë gjuhë dhe u hoqën gjashtë',
   'whatsNew.title.checkUpdates': 'Kontrollo përditësimet',
   'whatsNew.body.checkUpdates': 'U shtua mundësia Kontrollo përditësimet',
   'whatsNew.title.whatsNew': 'Faqja e të rejave',

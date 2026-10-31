@@ -188,8 +188,6 @@ export const sw = {
   'whatsNew.body.language': 'Imeongezwa usaidizi wa lugha zaidi',
   'whatsNew.title.moreLanguages': 'Lugha zaidi',
   'whatsNew.body.moreLanguages': 'Imeongezwa usaidizi wa lugha zaidi',
-  'whatsNew.title.languageWave': 'Lugha sita mpya',
-  'whatsNew.body.languageWave': 'Lugha sita zimeongezwa na sita zimeondolewa',
   'whatsNew.title.checkUpdates': 'Angalia visasisho',
   'whatsNew.body.checkUpdates': 'Imeongezwa chaguo Angalia visasisho',
   'whatsNew.title.whatsNew': 'Ukurasa wa Nini Kipya',

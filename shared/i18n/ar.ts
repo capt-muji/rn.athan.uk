@@ -183,8 +183,6 @@ export const ar = {
   'whatsNew.body.language': 'أضيف دعم المزيد من اللغات',
   'whatsNew.title.moreLanguages': 'لغات أكثر',
   'whatsNew.body.moreLanguages': 'أضيف دعم المزيد من اللغات',
-  'whatsNew.title.languageWave': 'ست لغات جديدة',
-  'whatsNew.body.languageWave': 'أضيف ست لغات وأزيلت ست لغات',
   'whatsNew.title.checkUpdates': 'التحقق من التحديثات',
   'whatsNew.body.checkUpdates': 'أُضيف خيار التحقق من التحديثات',
   'whatsNew.title.whatsNew': 'صفحة ما الجديد',

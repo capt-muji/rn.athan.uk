@@ -188,8 +188,6 @@ export const ha = {
   'whatsNew.body.language': 'An ƙara goyon bayan harsuna da yawa',
   'whatsNew.title.moreLanguages': 'Ƙarin harsuna',
   'whatsNew.body.moreLanguages': 'An ƙara goyon bayan harsuna da yawa',
-  'whatsNew.title.languageWave': 'Harsuna shida sababbi',
-  'whatsNew.body.languageWave': 'An ƙara harsuna shida kuma an cire shida',
   'whatsNew.title.checkUpdates': 'Duba sabuntawa',
   'whatsNew.body.checkUpdates': 'An ƙara zaɓin Duba sabuntawa',
   'whatsNew.title.whatsNew': 'Shafin Sababbi',

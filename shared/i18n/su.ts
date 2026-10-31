@@ -185,8 +185,6 @@ export const su = {
   'whatsNew.body.language': 'Rojongan pikeun basa séjén ditambahkeun',
   'whatsNew.title.moreLanguages': 'Basa séjén',
   'whatsNew.body.moreLanguages': 'Rojongan pikeun basa séjén ditambahkeun',
-  'whatsNew.title.languageWave': 'Basa genep anyar',
-  'whatsNew.body.languageWave': 'Basa genep ditambihan jeung genep dipiceun',
   'whatsNew.title.checkUpdates': 'Pariksa anyaran',
   'whatsNew.body.checkUpdates': 'Pilihan Pariksa anyaran ditambahkeun',
   'whatsNew.title.whatsNew': 'Kaca naon nu anyar',

@@ -192,8 +192,6 @@ export const min = {
   'whatsNew.body.language': 'Dukuangan bahaso lain ditambahan',
   'whatsNew.title.moreLanguages': 'Bahaso lain',
   'whatsNew.body.moreLanguages': 'Dukuangan bahaso lain ditambahan',
-  'whatsNew.title.languageWave': 'Anam bahaso anyar',
-  'whatsNew.body.languageWave': 'Ditambahan anam bahaso, dihapuih anam bahaso',
   'whatsNew.title.checkUpdates': 'Pareso pambaruan',
   'whatsNew.body.checkUpdates': 'Pareso pambaruan ditambahan',
   'whatsNew.title.whatsNew': 'Halaman Apo nan baru',

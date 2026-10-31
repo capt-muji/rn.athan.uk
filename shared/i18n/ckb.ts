@@ -187,8 +187,6 @@ export const ckb = {
   'whatsNew.body.language': 'پشتگیری بۆ زیاتر لە زمان زیادکرا',
   'whatsNew.title.moreLanguages': 'زمانە زیادەکان',
   'whatsNew.body.moreLanguages': 'پشتگیری بۆ زیاتر لە زمان زیادکرا',
-  'whatsNew.title.languageWave': 'شەش زمانی نوێ',
-  'whatsNew.body.languageWave': 'شەش زمان زیادکرا و شەش زمان لابرا',
   'whatsNew.title.checkUpdates': 'پشکنین بۆ نوێکردنەوە',
   'whatsNew.body.checkUpdates': 'پشکنین بۆ نوێکردنەوە زیادکرا',
   'whatsNew.title.whatsNew': 'لاپەڕەی چی نوێیە',

@@ -195,8 +195,6 @@ export const bcl = {
   'whatsNew.body.language': 'Dinagdag an suporta sa kadakol na tataramon',
   'whatsNew.title.moreLanguages': 'Kadakol pang tataramon',
   'whatsNew.body.moreLanguages': 'Dinagdag an suporta sa kadakol na tataramon',
-  'whatsNew.title.languageWave': 'Anom na bagong tataramon',
-  'whatsNew.body.languageWave': 'Dagdagan an pagpili kan tataramon nin anom asg halean nin anom',
   'whatsNew.title.checkUpdates': 'Hilingon an mga kaaayos',
   'whatsNew.body.checkUpdates': 'Dinagdag an Hilingon an mga kaaayos',
   'whatsNew.title.whatsNew': 'Pahina kan Ano an Bago',

@@ -188,8 +188,6 @@ export const pt = {
   'whatsNew.body.language': 'Adicionado suporte a mais idiomas',
   'whatsNew.title.moreLanguages': 'Mais idiomas',
   'whatsNew.body.moreLanguages': 'Adicionado suporte a mais idiomas',
-  'whatsNew.title.languageWave': 'Seis novos idiomas',
-  'whatsNew.body.languageWave': 'Seis idiomas adicionados e seis removidos',
   'whatsNew.title.checkUpdates': 'Verificar atualizações',
   'whatsNew.body.checkUpdates': 'Adicionada a opção Verificar atualizações',
   'whatsNew.title.whatsNew': 'Página de Novidades',

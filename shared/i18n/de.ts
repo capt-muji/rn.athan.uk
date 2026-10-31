@@ -191,8 +191,6 @@ export const de = {
   'whatsNew.body.language': 'Unterstützung für weitere Sprachen hinzugefügt',
   'whatsNew.title.moreLanguages': 'Weitere Sprachen',
   'whatsNew.body.moreLanguages': 'Unterstützung für weitere Sprachen hinzugefügt',
-  'whatsNew.title.languageWave': 'Sechs neue Sprachen',
-  'whatsNew.body.languageWave': 'Sechs Sprachen kamen dazu, sechs wurden entfernt',
   'whatsNew.title.checkUpdates': 'Nach Updates suchen',
   'whatsNew.body.checkUpdates': 'Option „Nach Updates suchen“ hinzugefügt',
   'whatsNew.title.whatsNew': 'Neuigkeiten-Seite',

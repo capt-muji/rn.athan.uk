@@ -187,8 +187,6 @@ export const skr = {
   'whatsNew.body.language': 'ٻئیاں زباناں دی سپورٹ رلائی ڳئی',
   'whatsNew.title.moreLanguages': 'ٻئیاں زباناں',
   'whatsNew.body.moreLanguages': 'ٻئیاں زباناں دی سپورٹ رلائی ڳئی',
-  'whatsNew.title.languageWave': 'ڇہ نویاں زباناں',
-  'whatsNew.body.languageWave': 'ڇہ زباناں رلایاں ڳیاں تے ڇہ ہٹایاں ڳیاں',
   'whatsNew.title.checkUpdates': 'اپ ڈیٹاں ݙیکھو',
   'whatsNew.body.checkUpdates': 'اپ ڈیٹاں ݙیکھو دا آپشن رلایا ڳیا',
   'whatsNew.title.whatsNew': 'نواں کیا ہے دا صفحہ',

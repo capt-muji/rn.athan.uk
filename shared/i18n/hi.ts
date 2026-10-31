@@ -184,8 +184,6 @@ export const hi = {
   'whatsNew.body.language': 'और भाषाओं का समर्थन जोड़ा गया',
   'whatsNew.title.moreLanguages': 'अधिक भाषाएँ',
   'whatsNew.body.moreLanguages': 'और भाषाओं का समर्थन जोड़ा गया',
-  'whatsNew.title.languageWave': 'छह नई भाषाएँ',
-  'whatsNew.body.languageWave': 'छह भाषाएँ जोड़ी गईं और छह हटाई गईं',
   'whatsNew.title.checkUpdates': 'अपडेट के लिए जाँच करें',
   'whatsNew.body.checkUpdates': 'अपडेट के लिए जाँच करें विकल्प जोड़ा गया',
   'whatsNew.title.whatsNew': 'नया क्या है पृष्ठ',

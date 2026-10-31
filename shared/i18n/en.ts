@@ -203,8 +203,6 @@ export const en = {
   'whatsNew.body.language': 'Added support for more languages',
   'whatsNew.title.moreLanguages': 'More languages',
   'whatsNew.body.moreLanguages': 'Added support for more languages',
-  'whatsNew.title.languageWave': 'Six new languages',
-  'whatsNew.body.languageWave': 'The language picker gains six and retires six',
   'whatsNew.title.checkUpdates': 'Check for updates',
   'whatsNew.body.checkUpdates': 'Added a Check for updates option',
   'whatsNew.title.whatsNew': "What's New page",

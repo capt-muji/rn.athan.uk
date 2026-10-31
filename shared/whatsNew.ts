@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.43.4',
+  version: '2.43.5',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -183,13 +183,6 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
       version: '1.29.258',
-    },
-    {
-      // The language wave (T-537): six catalogs in, six retired, the count held at
-      // 75 - the row the owner ordered announced with the wave's production order
-      titleKey: 'whatsNew.title.languageWave',
-      bodyKey: 'whatsNew.body.languageWave',
-      version: '2.43.0',
     },
     {
       // More languages, the seventy-five-locale waves behind this build
