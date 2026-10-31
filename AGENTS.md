@@ -71,6 +71,22 @@ produced it. Everything else in `check:device` is build-agnostic.
   comment, ticket, plan or log.
 - A session that finds a file breaking these rules fixes it and tells the owner.
 
+## Supervision
+
+Every parent owns its children. No agent waits on a child's reply, ever.
+
+- While a child runs, its parent checks it every 60 seconds against
+  `~/.local/share/opencode/opencode.db`: `SELECT session_id, MAX(time_created) FROM
+  session_message WHERE session_id IN (...) GROUP BY session_id` is the liveness proof.
+- A child whose last message is older than its work can explain (a build ~15 min, a
+  capture cycle ~5 min) is investigated at once: read its session's last rows, the branch
+  it works, the board it reports to. A dead child is respawned from its ticket the same
+  minute; silence is never absorbed.
+- The lead arms a self-re-arming 60-second timer; every lane and executor checks its own
+  children the same way between steps, recursively to every depth.
+- A completion notification is a courtesy, never the mechanism (owner order 2026-10-31,
+  after a six-hour silent death).
+
 ## Hard rules
 
 - Posture is aggressive: fix and report. Update the README when a change adds a user-facing
