@@ -16,7 +16,7 @@ import type { Catalog } from './en';
 
 export const bcl = {
   'prayer.fajr': 'Fajr',
-  'prayer.sunrise': 'Pagsirang kan saldog',
+  'prayer.sunrise': 'Pagsirang',
   'prayer.dhuhr': 'Dhuhr',
   'prayer.asr': 'Asr',
   'prayer.magrib': 'Maghrib',
@@ -135,7 +135,7 @@ export const bcl = {
   'qibla.lostTitle': 'Dai nahanap an amihanan',
   'qibla.lostMessage': 'Tabi, sulayan magtindog sa ibang lugar',
   'qibla.subtitleWaiting': 'Sundon an mga instruksyon sa ibaba',
-  'qibla.subtitleReady': 'Kaptan na patag asg luway-luway na magrikos',
+  'qibla.subtitleReady': 'Kaptan na patag asín luway-luway na magrikos',
   'qibla.permissionDenied':
     'Kinakalkula an qibla hale sa lugar kaini ka, kaya kaipuhan kaini an access sa lokasyon. Buksan ini sa mga Setting, dangan buksan giraray an pahinang ini.',
   'qibla.openSettingsLabel': 'Buksan an mga setting',
@@ -164,10 +164,10 @@ export const bcl = {
   'prayerAlert.state.unavailable': 'daeng makukua',
   'prayerAlert.hintUnavailable': 'Ipinapaliwanag taano dai makakabugtak nin abiso para sa pagpangadying ini',
   'prayerAlert.hintOpen': 'Nagbubukas kan mga opsyon kan abiso para sa pagpangadying ini',
-  'extras.explanation.midnight': 'Tangâ kan Maghrib asg Fajr',
-  'extras.explanation.last third': 'Poon kan huring ikatolo kan banggi',
+  'extras.explanation.midnight': 'Tangang banggi',
+  'extras.explanation.last third': 'Huring ikatolo',
   'extras.explanation.suhoor': '20 minuto bago an Fajr',
-  'extras.explanation.duha': '20 minuto pakatapos kan pagsirang kan saldog',
+  'extras.explanation.duha': '20 minuto pakatapos kan pagsirang',
   'extras.explanation.istijaba': '1 oras bago an Maghrib (Biyernes sana)',
   'duration.now': 'ngonyan',
   'time.now': '{name} ngonyan',

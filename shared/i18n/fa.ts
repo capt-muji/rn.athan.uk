@@ -11,7 +11,7 @@ import type { Catalog } from './en';
 
 export const fa = {
   'prayer.fajr': 'اذان صبح',
-  'prayer.sunrise': 'طلوع آفتاب',
+  'prayer.sunrise': 'طلوع',
   'prayer.dhuhr': 'اذان ظهر',
   'prayer.asr': 'اذان عصر',
   'prayer.magrib': 'اذان مغرب',
@@ -155,8 +155,8 @@ export const fa = {
   'prayerAlert.state.unavailable': 'در دسترس نیست',
   'prayerAlert.hintUnavailable': 'توضیح می‌دهد چرا برای این نماز هشداری نمی‌توان تنظیم کرد',
   'prayerAlert.hintOpen': 'گزینه‌های هشدار این نماز را باز می‌کند',
-  'extras.explanation.midnight': 'نیمه شب بین مغرب و صبح',
-  'extras.explanation.last third': 'شروع ثلث آخر شب',
+  'extras.explanation.midnight': 'نیمه شب شرعی',
+  'extras.explanation.last third': 'ثلث آخر شب',
   'extras.explanation.suhoor': '۲۰ دقیقه قبل از اذان صبح',
   'extras.explanation.duha': '۲۰ دقیقه بعد از طلوع آفتاب',
   'extras.explanation.istijaba': 'یک ساعت قبل از اذان مغرب (فقط جمعه‌ها)',

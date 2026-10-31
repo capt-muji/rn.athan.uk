@@ -11,7 +11,7 @@ import type { Catalog } from './en';
 
 export const bs = {
   'prayer.fajr': 'Sabah',
-  'prayer.sunrise': 'Izlazak sunca',
+  'prayer.sunrise': 'Izlazak',
   'prayer.dhuhr': 'Podne',
   'prayer.asr': 'Ikindija',
   'prayer.magrib': 'Akšam',
@@ -156,8 +156,8 @@ export const bs = {
   'prayerAlert.state.unavailable': 'nedostupno',
   'prayerAlert.hintUnavailable': 'Objašnjava zašto se obavještenje ne može postaviti za ovaj namaz',
   'prayerAlert.hintOpen': 'Otvara opcije obavještenja za ovaj namaz',
-  'extras.explanation.midnight': 'Sredina između Akšama i Sabaha',
-  'extras.explanation.last third': 'Početak zadnje trećine noći',
+  'extras.explanation.midnight': 'Ponoć',
+  'extras.explanation.last third': 'Zadnja trećina noći',
   'extras.explanation.suhoor': '20 minuta prije Sabaha',
   'extras.explanation.duha': '20 minuta poslije izlaska sunca',
   'extras.explanation.istijaba': '1 sat prije Akšama (samo petkom)',

@@ -11,7 +11,7 @@ import type { Catalog } from './en';
 
 export const az = {
   'prayer.fajr': 'Sübh',
-  'prayer.sunrise': 'Gün çıxır',
+  'prayer.sunrise': 'Günəş',
   'prayer.dhuhr': 'Zöhr',
   'prayer.asr': 'Əsr',
   'prayer.magrib': 'Məğrib',
@@ -157,8 +157,8 @@ export const az = {
   'prayerAlert.state.unavailable': 'mövcud deyil',
   'prayerAlert.hintUnavailable': 'Bu namaz üçün bildirişin niyə qoyula bilmədiyini izah edir',
   'prayerAlert.hintOpen': 'Bu namazın bildiriş seçimlərini açır',
-  'extras.explanation.midnight': 'Məğrib ilə Sübh arasının ortası',
-  'extras.explanation.last third': 'Gecənin son üçdə birinin başlanğıcı',
+  'extras.explanation.midnight': 'Gecə yarısı',
+  'extras.explanation.last third': 'Gecənin son üçdə biri',
   'extras.explanation.suhoor': "Sübh'dən 20 dəqiqə əvvəl",
   'extras.explanation.duha': 'Gün çıxandan 20 dəqiqə sonra',
   'extras.explanation.istijaba': "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri)",

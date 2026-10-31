@@ -45,8 +45,8 @@ const drawnIds = (rows: Prayer[]): PrayerId[] => EXTRA_PRAYER_IDS.filter((id) =>
 
 /** Text each Extras prayer's box must carry: id, the label the box shows, the explanation */
 const EXPLAINED: [PrayerId, string, string][] = [
-  ['midnight', 'Midnight', 'Halfway between Magrib and Fajr'],
-  ['last third', 'Last Third', 'Start of the last third of the night'],
+  ['midnight', 'Midnight', 'Midnight'],
+  ['last third', 'Last Third', 'Last Third'],
   ['suhoor', 'Suhoor', '20 minutes before Fajr'],
   ['duha', 'Duha', '20 minutes after Sunrise'],
   ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only)'],
