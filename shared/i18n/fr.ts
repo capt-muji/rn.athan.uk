@@ -191,6 +191,8 @@ export const fr = {
   'whatsNew.body.language': 'Ajout de la prise en charge de plus de langues',
   'whatsNew.title.moreLanguages': 'Plus de langues',
   'whatsNew.body.moreLanguages': 'Ajout de la prise en charge de plus de langues',
+  'whatsNew.title.languageWave': 'Six nouvelles langues',
+  'whatsNew.body.languageWave': 'Six langues ajoutées et six retirées',
   'whatsNew.title.checkUpdates': 'Rechercher des mises à jour',
   'whatsNew.body.checkUpdates': 'Ajout de l’option Rechercher des mises à jour',
   'whatsNew.title.whatsNew': 'Page Nouveautés',

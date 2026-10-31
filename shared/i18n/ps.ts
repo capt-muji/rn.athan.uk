@@ -186,6 +186,8 @@ export const ps = {
   'whatsNew.body.language': 'د نورو ژبو ملاتړ زیات شو',
   'whatsNew.title.moreLanguages': 'نورې ژبې',
   'whatsNew.body.moreLanguages': 'د نورو ژبو ملاتړ زیات شو',
+  'whatsNew.title.languageWave': 'شپږ نوي ژبې',
+  'whatsNew.body.languageWave': 'شپږ ژبې زیاتې شوې او شپږ لرې شوې',
   'whatsNew.title.checkUpdates': 'اپډیټونه وګورئ',
   'whatsNew.body.checkUpdates': 'د اپډیټونه وګورئ کتاره زیاته شوه',
   'whatsNew.title.whatsNew': 'د نوي څه پاڼه',

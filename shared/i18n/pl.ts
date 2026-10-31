@@ -191,6 +191,8 @@ export const pl = {
   'whatsNew.body.language': 'Dodano obsługę większej liczby języków',
   'whatsNew.title.moreLanguages': 'Więcej języków',
   'whatsNew.body.moreLanguages': 'Dodano obsługę większej liczby języków',
+  'whatsNew.title.languageWave': 'Sześć nowych języków',
+  'whatsNew.body.languageWave': 'Dodano sześć języków i usunięto sześć',
   'whatsNew.title.checkUpdates': 'Sprawdź aktualizacje',
   'whatsNew.body.checkUpdates': 'Dodano opcję Sprawdź aktualizacje',
   'whatsNew.title.whatsNew': 'Strona Co nowego',

@@ -189,6 +189,8 @@ export const ru = {
   'whatsNew.body.language': 'Добавлена поддержка других языков',
   'whatsNew.title.moreLanguages': 'Больше языков',
   'whatsNew.body.moreLanguages': 'Добавлена поддержка других языков',
+  'whatsNew.title.languageWave': 'Шесть новых языков',
+  'whatsNew.body.languageWave': 'Добавлено шесть языков и удалено шесть',
   'whatsNew.title.checkUpdates': 'Проверить обновления',
   'whatsNew.body.checkUpdates': 'Добавлена опция «Проверить обновления»',
   'whatsNew.title.whatsNew': 'Страница «Что нового»',

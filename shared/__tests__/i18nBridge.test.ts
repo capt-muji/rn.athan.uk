@@ -12,21 +12,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { type ParamsOf, t } from '@/shared/i18n';
-import { aa } from '@/shared/i18n/aa';
 import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
 import { bal } from '@/shared/i18n/bal';
+import { bcl } from '@/shared/i18n/bcl';
 import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { bug } from '@/shared/i18n/bug';
-import { ce } from '@/shared/i18n/ce';
 import { ceb } from '@/shared/i18n/ceb';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
-import { dje } from '@/shared/i18n/dje';
-import { dv } from '@/shared/i18n/dv';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { es } from '@/shared/i18n/es';
@@ -36,6 +33,7 @@ import { fr } from '@/shared/i18n/fr';
 import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
+import { hil } from '@/shared/i18n/hil';
 import { id } from '@/shared/i18n/id';
 import { ilo } from '@/shared/i18n/ilo';
 import { it as itCatalog } from '@/shared/i18n/it';
@@ -51,10 +49,11 @@ import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { mad } from '@/shared/i18n/mad';
 import { mdh } from '@/shared/i18n/mdh';
+import { mfa } from '@/shared/i18n/mfa';
 import { min } from '@/shared/i18n/min';
 import { ml } from '@/shared/i18n/ml';
-import { mnk } from '@/shared/i18n/mnk';
 import { mr } from '@/shared/i18n/mr';
+import { mrw } from '@/shared/i18n/mrw';
 import { ms } from '@/shared/i18n/ms';
 import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
@@ -76,6 +75,7 @@ import { ta } from '@/shared/i18n/ta';
 import { te } from '@/shared/i18n/te';
 import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
+import { ti } from '@/shared/i18n/ti';
 import { tk } from '@/shared/i18n/tk';
 import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
@@ -85,10 +85,10 @@ import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 import { vi } from '@/shared/i18n/vi';
+import { war } from '@/shared/i18n/war';
 import { wo } from '@/shared/i18n/wo';
 import { yo } from '@/shared/i18n/yo';
 import { zhHans } from '@/shared/i18n/zh-Hans';
-import { zhHant } from '@/shared/i18n/zh-Hant';
 
 const CATALOGS: Record<string, Catalog> = {
   en,
@@ -116,7 +116,6 @@ const CATALOGS: Record<string, Catalog> = {
   ta,
   ml,
   'zh-Hans': zhHans,
-  'zh-Hant': zhHant,
   es,
   nl,
   kk,
@@ -143,7 +142,6 @@ const CATALOGS: Record<string, Catalog> = {
   su,
   my,
   tt,
-  ce,
   uk,
   qu,
   min,
@@ -160,12 +158,14 @@ const CATALOGS: Record<string, Catalog> = {
   skr,
   bal,
   kas,
-  dv,
-  aa,
   mdh,
   kr,
-  mnk,
-  dje,
+  hil,
+  bcl,
+  war,
+  mrw,
+  mfa,
+  ti,
 };
 
 const DIST = path.join(__dirname, '../i18n/dist');

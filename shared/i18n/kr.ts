@@ -188,6 +188,8 @@ export const kr = {
   'whatsNew.body.language': 'Tlamuwa madde tawatsana',
   'whatsNew.title.moreLanguages': 'Tlamuwa madde',
   'whatsNew.body.moreLanguages': 'Tlamuwa madde tawatsana',
+  'whatsNew.title.languageWave': 'Madde aride kuroye',
+  'whatsNew.body.languageWave': 'Madde aramide tawatsana, madde aramide dabsana',
   'whatsNew.title.checkUpdates': 'Apteji laarra',
   'whatsNew.body.checkUpdates': 'Apteji laarra tawatsana',
   'whatsNew.title.whatsNew': 'Sabuwa page',

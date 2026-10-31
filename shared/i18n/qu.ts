@@ -196,6 +196,8 @@ export const qu = {
   'whatsNew.body.language': 'Wak simikunapa yanapayta churayku',
   'whatsNew.title.moreLanguages': 'Wak simikuna',
   'whatsNew.body.moreLanguages': 'Wak simikunapa yanapayta churayku',
+  'whatsNew.title.languageWave': 'Suqta simi mushuq',
+  'whatsNew.body.languageWave': 'Suqta simi yapasqa, suqta simi qichusqa',
   'whatsNew.title.checkUpdates': 'Musuqyachiykunata qawariy',
   'whatsNew.body.checkUpdates': 'Musuqyachiykunata qawariy churayku',
   'whatsNew.title.whatsNew': 'Ima musuq rasti',

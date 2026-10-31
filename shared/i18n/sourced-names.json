@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-452 closures (the CJK and Latin wave's katakana and hangul sets, the it pl ro vi transliterated sets with their own sunrise words, and the ceb and ilo loan-rule closures over the empty wikipedia checks) are recorded per plan doc T-452.",
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-452 closures (the CJK and Latin wave's katakana and hangul sets, the it pl ro vi transliterated sets with their own sunrise words, and the ceb and ilo loan-rule closures over the empty wikipedia checks) are recorded per plan doc T-452. The six T-537 closures (the language wave's loan-rule and nearest-standard sets, with the hil incubator check, the bcl and war wikipedia register checks, the mrw Saromantang/McKaughan register, the mfa JAKIM/MUIS five and the ti am-model respells) are recorded per the ticket's sourcing comments 5188 and 5217.",
     "sourceSlugs": {
       "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
       "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
@@ -2486,108 +2486,6 @@
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; 周五 is Friday, 仅限 is only."
-      }
-    }
-  },
-  "zh-Hant": {
-    "names": {
-      "Fajr": {
-        "text": "晨禮",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "zh.wikipedia is written in Traditional and prints 晨禮; Taiwan's religion.moi.gov.cn (sic: gov.tw) prints the same five names in Traditional. Direct attestation."
-      },
-      "Sunrise": {
-        "text": "日出",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "Same in both scripts."
-      },
-      "Dhuhr": {
-        "text": "晌禮",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "zh.wikipedia is written in Traditional and prints 晌禮."
-      },
-      "Asr": {
-        "text": "晡禮",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "zh.wikipedia prints 晡禮 in Traditional."
-      },
-      "Magrib": {
-        "text": "昏禮",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "zh.wikipedia prints 昏禮 in Traditional."
-      },
-      "Isha": {
-        "text": "宵禮",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "zh.wikipedia prints 宵禮 in Traditional."
-      },
-      "Midnight": {
-        "text": "午夜",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "The zh-wikipedia article, written in Traditional, prints 午夜 and the two government religion pages corroborate the translated set, the census's confirmation (plan T-419 decision 11); al-azan agrees. Character-for-character identical to Simplified."
-      },
-      "Last Third": {
-        "text": "夜間後三分之一",
-        "source": "zh-wikipedia",
-        "confidence": "medium",
-        "note": "Character-for-character Traditional twin of the confirmed Simplified rendering, closing the row the plan table names unsourced; the government pages corroborate the translated set as a whole. No table prints the row."
-      },
-      "Suhoor": {
-        "text": "封齋飯",
-        "source": "zh-wikipedia",
-        "confidence": "high",
-        "note": "The zh-wikipedia article prints the Traditional form and the government pages corroborate the translated set, the census's confirmation (plan T-419 decision 11); Mihrab's 封斋饭 is the Simplified twin."
-      },
-      "Duha": {
-        "text": "杜哈",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: the Arabic 杜哈, characters unchanged in Traditional; the zh-Hans twin's derivation."
-      },
-      "Istijaba": {
-        "text": "伊斯提賈巴",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: the zh-Hans transliteration's Traditional twin, 賈 for 贾; no Chinese source prints the row."
-      }
-    },
-    "explanations": {
-      "Halfway between Magrib and Fajr": {
-        "text": "昏禮與晨禮之間的中點",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived, the Traditional twin of the zh-Hans construction (與...之間的中點)."
-      },
-      "Start of the last third of the night": {
-        "text": "夜間最後三分之一的開始",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived from the Last Third row plus standard syntax; 開始 is start."
-      },
-      "20 mins before Fajr": {
-        "text": "晨禮前20分鐘",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Traditional 分鐘."
-      },
-      "20 mins after Sunrise": {
-        "text": "日出後20分鐘",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; 後 is after, 分鐘 is minutes."
-      },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "昏禮前1小時（僅限週五）",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Traditional 週五/小時."
       }
     }
   },
@@ -5447,108 +5345,6 @@
       }
     }
   },
-  "ce": {
-    "names": {
-      "Fajr": {
-        "text": "Фаджр",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: الفجر in Chechen Cyrillic. No printed five-name Chechen table exists."
-      },
-      "Sunrise": {
-        "text": "Малх хьалабаккхар",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Малх (sun) + хьалабаккхар (raising up), Chechen’s own compound for sunrise."
-      },
-      "Dhuhr": {
-        "text": "Делкъ-ламаз",
-        "source": "govzalla",
-        "confidence": "high",
-        "note": "The govzalla.com Chechen dictionary’s делкъ-ламаз entry names the midday prayer."
-      },
-      "Asr": {
-        "text": "Аср",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: العصر in Chechen Cyrillic. No Chechen table prints the row."
-      },
-      "Magrib": {
-        "text": "МагӀриб",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: المغرب in Chechen Cyrillic, гӀ carrying the ghayin. No Chechen table prints the row."
-      },
-      "Isha": {
-        "text": "Иша",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: العشاء in Chechen Cyrillic. No Chechen table prints the row."
-      },
-      "Midnight": {
-        "text": "Буьйсан юккъ",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Буьйса (night) + юккъ (middle), Chechen’s own words. No Chechen table prints the row."
-      },
-      "Last Third": {
-        "text": "Буьйсан кхоалгӀа дакъа",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Буьйсан (of the night) + кхоалгӀа (third) + дакъа (part), the budget-short form; the derivation is Chechen own vocabulary, the qualifier the explanation carries."
-      },
-      "Suhoor": {
-        "text": "Сахур",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: السحور in Chechen Cyrillic. No Chechen table prints the row."
-      },
-      "Duha": {
-        "text": "Духьа ламаз",
-        "source": "islamcontent-ce",
-        "confidence": "high",
-        "note": "islamcontent.com’s Chechen library text prints Духьа ламаз for the mid-morning prayer, хь carrying the ha."
-      },
-      "Istijaba": {
-        "text": "Истижаба",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: استجابة in Chechen Cyrillic. No Chechen page prints the row."
-      }
-    },
-    "explanations": {
-      "Halfway between Magrib and Fajr": {
-        "text": "МагӀрибна а Фаджрна а юккъехь",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived from the sourced names; юккъехь is between."
-      },
-      "Start of the last third of the night": {
-        "text": "Буьйсан кхоалгӀа дакъа долалуш",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; долалуш is beginning. The genre is thin, so the derivation rides the record."
-      },
-      "20 mins before Fajr": {
-        "text": "Фаджрал 20 минут хьалха",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; хьалха is before, digits Latin per plan decision 7."
-      },
-      "20 mins after Sunrise": {
-        "text": "Малх хьалабаккхарал 20 минут тӏаьхьа",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; тӏаьхьа is after."
-      },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "МагӀрибал 1 сахьт хьалха (барин дийнахь бен)",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; сахьт is hour, барин де is Friday, дийнахь бен only on the day."
-      }
-    }
-  },
   "uk": {
     "names": {
       "Fajr": {
@@ -7181,210 +6977,6 @@
       }
     }
   },
-  "dv": {
-    "names": {
-      "Fajr": {
-        "text": "ފަތިސް",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The Addu Meedhoo council page's Fajr row label; the news table prints the variant ފަޖުރު, recorded here and never shipped."
-      },
-      "Sunrise": {
-        "text": "އިރުއެރުން",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The council page's sunrise label; the news table's އިރުއަރާ is the variant, recorded here."
-      },
-      "Dhuhr": {
-        "text": "މެންދުރު",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The council page's row label; the adhadhu news table corroborates byte for byte."
-      },
-      "Asr": {
-        "text": "އަޞްރު",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The council page's row label; the news table corroborates."
-      },
-      "Magrib": {
-        "text": "މަޣްރިބް",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The council page's row label; the news table corroborates."
-      },
-      "Isha": {
-        "text": "ޢިޝާ",
-        "source": "dv-addumeedhoo",
-        "confidence": "high",
-        "note": "The council page's row label; the news table corroborates."
-      },
-      "Midnight": {
-        "text": "ރޭގެ މެދު",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; ރޭ is night, ގެ the genitive and މެދު the middle, Dhivehi's own half-night phrase; neither fetched page prints the row."
-      },
-      "Last Third": {
-        "text": "ރޭގެ ފަހު ތިންބައި",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; ފަހު is last and ތިންބައި the three-part fraction reading the register uses for a third; neither fetched page prints the row."
-      },
-      "Suhoor": {
-        "text": "ސުޙޫރު",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: saḥūr in Thaana orthography, on the އަޞްރު pattern of Arabic loans."
-      },
-      "Duha": {
-        "text": "ދުޟާ",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: ḍuḥā in Thaana orthography, the emphatic carried by ޟ."
-      },
-      "Istijaba": {
-        "text": "އިސްތިޖާބާ",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: istijāba in Thaana orthography."
-      }
-    },
-    "explanations": {
-      "Halfway between Magrib and Fajr": {
-        "text": "މަޣްރިބާއާއި ފަތިސް ދެމެދު",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived from the two sourced row labels; އާއި is and, ދެމެދު between."
-      },
-      "Start of the last third of the night": {
-        "text": "ރޭގެ ފަހު ތިންބައި ފެށުން",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; ފެށުން is the beginning, riding the derived label itself."
-      },
-      "20 mins before Fajr": {
-        "text": "ފަތިސްގެ 20 މިނިޓު ކުރީން",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; ގެ is of, މިނިޓު the loanword for minutes, ކުރީން before, digits Latin per R12."
-      },
-      "20 mins after Sunrise": {
-        "text": "އިރުއެރުންގެ 20 މިނިޓު ފަހު",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; ފަހު is after, digits Latin per R12."
-      },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "މަޣްރިބްގެ 1 ގަޑި ކުރީން (ހުކުރު ދުވަހު އެންމެ)",
-        "source": "derived",
-        "confidence": "medium",
-        "note": "Derived; ގަޑި is hour, ކުރީން before, ހުކުރު ދުވަހު Friday, އެންމެ only, digits Latin per R12."
-      }
-    }
-  },
-  "aa": {
-    "names": {
-      "Fajr": {
-        "text": "Faajar",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic fajr in the Afar register islamhouse.com's Qafar af section prints loans in, the long vowel doubled per the Afar convention."
-      },
-      "Sunrise": {
-        "text": "Shuruk",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic shurūq, same register; no Afar prayer table exists."
-      },
-      "Dhuhr": {
-        "text": "Dhuhur",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ẓuhr with the Horn vowel the register shares with Somali."
-      },
-      "Asr": {
-        "text": "Asar",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿasr, the Horn form."
-      },
-      "Magrib": {
-        "text": "Magrib",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic maghrib, the final cluster simplified as the Horn register prints it."
-      },
-      "Isha": {
-        "text": "Isha",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿishāʾ."
-      },
-      "Midnight": {
-        "text": "Nisfu layl",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic niṣf al-layl; no Afar table prints the row."
-      },
-      "Last Third": {
-        "text": "Tultu layl",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic thuluth al-layl."
-      },
-      "Suhoor": {
-        "text": "Suhoor",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic saḥūr, long vowel doubled per the Afar convention."
-      },
-      "Duha": {
-        "text": "Duhaa",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ḍuḥā."
-      },
-      "Istijaba": {
-        "text": "Istijaaba",
-        "source": "loan",
-        "confidence": "low",
-        "note": "Loan per the naming rule: Arabic istijāba."
-      }
-    },
-    "explanations": {
-      "Halfway between Magrib and Fajr": {
-        "text": "Magrib kee Faajar gideh",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived from the loans; kee is Afar's and, gideh its between."
-      },
-      "Start of the last third of the night": {
-        "text": "Tultu layl kudu",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; kudu is Afar's beginning, riding the loaned label itself."
-      },
-      "20 mins before Fajr": {
-        "text": "Faajar horta 20 minit",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; horta is Afar's before, minit the loanword for minutes, digits Latin per R12."
-      },
-      "20 mins after Sunrise": {
-        "text": "Shuruk lakal 20 minit",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; lakal is Afar's after, digits Latin per R12."
-      },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Magrib horta 1 saacu (Jimmi kinni)",
-        "source": "derived",
-        "confidence": "low",
-        "note": "Derived; saacu is the hour loan, Jimmi Friday, kinni the only particle; a fuller modifier could not be certified, digits Latin per R12."
-      }
-    }
-  },
   "kr": {
     "names": {
       "Fajr": {
@@ -7590,207 +7182,615 @@
     },
     "notes": "2026-10-29: only the eleven prayer names are Maguindanao-sourced; the shipped UI copy is Tagalog-derived (Maguindanao speakers read Tagalog) and this record names no Tagalog source, so the copy stands at low confidence until a Maguindanao speaker pass replaces it."
   },
-  "mnk": {
+  "hil": {
     "names": {
       "Fajr": {
-        "text": "Faaja",
+        "text": "Fajr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic fajr in Mandinka's orthography, final vowel opened per the Mande convention; no Mandinka page printing the five names exists."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Sunrise": {
-        "text": "Suruqu",
-        "source": "loan",
+        "text": "Pagsikat sang adlaw",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic shurūq with the sh-to-s shift Mandinka's orthography carries."
+        "note": "Derived: the ordinary Hiligaynon phrase for the sun rising (adlaw the sun, pagsikat its rising), the ceb/ilo precedent; no table prints the row."
       },
       "Dhuhr": {
-        "text": "Zuhuru",
+        "text": "Dhuhr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ẓuhr, the regional z-form."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Asr": {
-        "text": "Asara",
+        "text": "Asr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿasr with the paragogic vowel."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Magrib": {
-        "text": "Magaribi",
+        "text": "Maghrib",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic maghrib on the regional Magariba pattern."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Isha": {
         "text": "Isha",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿishāʾ."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Midnight": {
-        "text": "Nisfu layl",
-        "source": "loan",
+        "text": "Tungang gab-i",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic niṣf al-layl; no Mandinka table prints the row."
+        "note": "Derived: tunga the half, gab-i the night; no table prints the row."
       },
       "Last Third": {
-        "text": "Tultu layl",
-        "source": "loan",
+        "text": "Katapusan nga ikatulo",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic thuluth al-layl."
+        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head."
       },
       "Suhoor": {
         "text": "Suhur",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic saḥūr."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Duha": {
-        "text": "Duhaa",
+        "text": "Duha",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ḍuḥā."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       },
       "Istijaba": {
-        "text": "Istijaaba",
+        "text": "Istijaba",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic istijāba."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it. The execution-time check ran 2026-10-31: Hiligaynon Wikipedia is an open test wiki in the Incubator (Wp/hil), so no Islam article exists to attest a row."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Magaribi ani Faaja cebing",
+        "text": "Taliwala sang Maghrib kag Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the loans; ani is Mandinka's and, cebing its between."
+        "note": "Derived: tunga the half, gab-i the night; no table prints the row."
       },
       "Start of the last third of the night": {
-        "text": "Tultu layl jii",
+        "text": "Pagsugod sang katapusan nga ikatulo sang gab-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; jii is Mandinka's first-turned-beginning, riding the loaned label itself."
+        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head."
       },
       "20 mins before Fajr": {
-        "text": "Faaja jii 20 miniti",
+        "text": "20 ka minuto antes sang Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; jii carries the before reading here, miniti the loanword for minutes, digits Latin per R12."
+        "note": "Derived from the loaned names and Hiligaynon number syntax, the ceb/ilo precedent."
       },
       "20 mins after Sunrise": {
-        "text": "Suruqu kono 20 miniti",
+        "text": "20 ka minuto kahuman sang pagsikat sang adlaw",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; kono is Mandinka's in-turned-after, digits Latin per R12."
+        "note": "Derived: the ordinary Hiligaynon phrase for the sun rising (adlaw the sun, pagsikat its rising), the ceb/ilo precedent; no table prints the row."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": "Magaribi jii 1 waati (Juma doo)",
+        "text": "1 ka oras antes sang Maghrib (Biyernes lang)",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; waati is the hour loan, Juma Friday, doo the only particle, digits Latin per R12."
+        "note": "Derived: tunga the half, gab-i the night; no table prints the row."
       }
     }
   },
-  "dje": {
+  "bcl": {
     "names": {
       "Fajr": {
-        "text": "Faaji",
+        "text": "Fajr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic fajr in Zarma's orthography; no Zarma page printing the five names exists, the incubator holding its main page alone."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Sunrise": {
-        "text": "Suruqu",
-        "source": "loan",
+        "text": "Pagsirang kan saldog",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic shurūq with the sh-to-s shift Zarma's orthography carries."
+        "note": "Derived: the Central Bikol phrase for the sun rising (saldog the sun, pagsirang its rising), the Mintz-Britanico dictionary register."
       },
       "Dhuhr": {
-        "text": "Zuhuru",
+        "text": "Dhuhr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ẓuhr, the regional z-form."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Asr": {
-        "text": "Asara",
+        "text": "Asr",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿasr with the paragogic vowel."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Magrib": {
-        "text": "Magaribi",
+        "text": "Maghrib",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic maghrib on the regional Magariba pattern."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Isha": {
         "text": "Isha",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ʿishāʾ."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Midnight": {
-        "text": "Nisfu layl",
-        "source": "loan",
+        "text": "Tangang banggi",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic niṣf al-layl; no Zarma table prints the row."
+        "note": "Derived: tangang the middle, banggi the night, the bcl.wikipedia register."
       },
       "Last Third": {
-        "text": "Tultu layl",
-        "source": "loan",
+        "text": "Huring ikatolo",
+        "source": "derived",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic thuluth al-layl."
+        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word."
       },
       "Suhoor": {
         "text": "Suhur",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic saḥūr."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Duha": {
-        "text": "Duhaa",
+        "text": "Duha",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic ḍuḥā."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       },
       "Istijaba": {
-        "text": "Istijaaba",
+        "text": "Istijaba",
         "source": "loan",
         "confidence": "low",
-        "note": "Loan per the naming rule: Arabic istijāba."
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Bikol prayer table exists to read. The bcl.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - pagpapangadye kan mga Muslim - which sets the register but prints no time row."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Magaribi nda Faaji cindi",
+        "text": "Tangâ kan Maghrib asg Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the loans; nda is Zarma's with-turned-and, cindi its between."
+        "note": "Derived: tangang the middle, banggi the night, the bcl.wikipedia register."
       },
       "Start of the last third of the night": {
-        "text": "Tultu layl cine",
+        "text": "Poon kan huring ikatolo kan banggi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; cine is Zarma's start, riding the loaned label itself."
+        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word."
       },
       "20 mins before Fajr": {
-        "text": "Faaji batoo 20 miniti",
+        "text": "20 minuto bago an Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; batoo carries the register's before reading, miniti the loanword for minutes, digits Latin per R12."
+        "note": "Derived from the loaned names and Bikol number syntax, the bcl.wikipedia register."
       },
       "20 mins after Sunrise": {
-        "text": "Suruqu banda 20 miniti",
+        "text": "20 minuto pakatapos kan pagsirang kan saldog",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; banda is Zarma's behind-turned-after, digits Latin per R12."
+        "note": "Derived: the Central Bikol phrase for the sun rising (saldog the sun, pagsirang its rising), the Mintz-Britanico dictionary register."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": "Magaribi batoo 1 waati (Aljumaa foo)",
+        "text": "1 oras bago an Maghrib (Biyernes sana)",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; waati is the hour loan, Aljumaa Friday, foo the one-turned-only, digits Latin per R12."
+        "note": "Derived: tangang the middle, banggi the night, the bcl.wikipedia register."
+      }
+    }
+  },
+  "war": {
+    "names": {
+      "Fajr": {
+        "text": "Fajr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Sunrise": {
+        "text": "Pagsikat han adlaw",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: the ordinary Waray phrase (adlaw the sun, pagsikat its rising), the ceb/ilo precedent."
+      },
+      "Dhuhr": {
+        "text": "Dhuhr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Asr": {
+        "text": "Asr",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Isha": {
+        "text": "Isha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Midnight": {
+        "text": "Tunga nga gab-i",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: tunga the half, gab-i the night."
+      },
+      "Last Third": {
+        "text": "Kataposan nga ikatulo",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: kataposan the last, ikatulo the third."
+      },
+      "Suhoor": {
+        "text": "Suhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic name as Philippine Islamic usage prints it; no Waray prayer table exists to read. The war.wikipedia Islam article (checked 2026-10-31) carries in-language Islamic prose - An Islam in usa nga monoteistico nga relihiyon - which sets the register but prints no time row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Butnga han Maghrib ngan Fajr",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: tunga the half, gab-i the night."
+      },
+      "Start of the last third of the night": {
+        "text": "Pagtikang han kataposan nga ikatulo han gab-i",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: kataposan the last, ikatulo the third."
+      },
+      "20 mins before Fajr": {
+        "text": "20 ka minuto ugsa han Fajr",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived from the loaned names and Waray number syntax."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 ka minuto katapos han pagsikat han adlaw",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: the ordinary Waray phrase (adlaw the sun, pagsikat its rising), the ceb/ilo precedent."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 ka oras ugsa han Maghrib (Biyernes la)",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: tunga the half, gab-i the night."
+      }
+    }
+  },
+  "mrw": {
+    "names": {
+      "Fajr": {
+        "text": "Subuh",
+        "source": "saromantang-vocab",
+        "confidence": "low",
+        "note": "The Saromantang Quran register the 5188 chain names: the Malay-world dawn name as the pondok corpus prints it."
+      },
+      "Sunrise": {
+        "text": "Syuruk",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world shuruk the pondok register shares; no Maranao table prints the row."
+      },
+      "Dhuhr": {
+        "text": "Luhur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world midday name, the mdh/McKaughan register."
+      },
+      "Asr": {
+        "text": "Asar",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world afternoon name."
+      },
+      "Magrib": {
+        "text": "Magrib",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world sunset name."
+      },
+      "Isha": {
+        "text": "Isya",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world night name."
+      },
+      "Midnight": {
+        "text": "Tengah kagabi-i",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: kagabi-i the Maranao night word (the McKaughan-Macaraya register) with tengah, the Malay-world centre word the pondok register shares; no Maranao table prints the row."
+      },
+      "Last Third": {
+        "text": "Katelo a kagabi-i",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the pre-dawn meal name as the pondok register prints it."
+      },
+      "Duha": {
+        "text": "Duha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic ad-duha; Maranao duha is also the numeral two, no conflict in the row's context."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Arabic istijaba; no Maranao table prints the row."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Sa gitna ng Magrib at Subuh",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: kagabi-i the Maranao night word (the McKaughan-Macaraya register) with tengah, the Malay-world centre word the pondok register shares; no Maranao table prints the row."
+      },
+      "Start of the last third of the night": {
+        "text": "Simula ng katatlong bahagi ng gabi",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line."
+      },
+      "20 mins before Fajr": {
+        "text": "20 minuto bago ang Subuh",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived on the mdh disclosed stand-in register (Tagalog structure, Maranao names), low confidence pending a speaker pass."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 minuto pagkatapos ng Syuruk",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Loan per the naming rule: the Malay-world shuruk the pondok register shares; no Maranao table prints the row."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 oras bago ang Magrib (Biyernes lamang)",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: kagabi-i the Maranao night word (the McKaughan-Macaraya register) with tengah, the Malay-world centre word the pondok register shares; no Maranao table prints the row."
+      }
+    }
+  },
+  "mfa": {
+    "names": {
+      "Fajr": {
+        "text": "Subuh",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Sunrise": {
+        "text": "Syuruk",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Dhuhr": {
+        "text": "Zohor",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Asr": {
+        "text": "Asar",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Magrib": {
+        "text": "Maghrib",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Isha": {
+        "text": "Isyak",
+        "source": "jakim-muis",
+        "confidence": "medium",
+        "note": "The JAKIM e-Solat/MUIS set the 5217 chain names (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak), corroborated by the kemenag convention as cross-check; no mfa table exists anywhere."
+      },
+      "Midnight": {
+        "text": "Tengah malam",
+        "source": "nearest-standard",
+        "confidence": "low",
+        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row."
+      },
+      "Last Third": {
+        "text": "Sepertiga malam",
+        "source": "nearest-standard",
+        "confidence": "low",
+        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard."
+      },
+      "Suhoor": {
+        "text": "Sahur",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule on the same Malay-world register; the ms row reads identically."
+      },
+      "Duha": {
+        "text": "Dhuha",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule on the same Malay-world register."
+      },
+      "Istijaba": {
+        "text": "Istijaba",
+        "source": "loan",
+        "confidence": "low",
+        "note": "Loan per the naming rule on the same Malay-world register."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "Pertengahan antara Maghrib dan Subuh",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row."
+      },
+      "Start of the last third of the night": {
+        "text": "Permulaan sepertiga akhir malam",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard."
+      },
+      "20 mins before Fajr": {
+        "text": "20 minit sebelum Subuh",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ms register with the Pattani vocabulary swaps (sembayang, awak, telepon), the sourcing record's nearest-standard basis."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 minit selepas Syuruk",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived over the same register the names ride; no table prints the row."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 jam sebelum Maghrib (hari Jumaat saja)",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row."
+      }
+    }
+  },
+  "ti": {
+    "names": {
+      "Fajr": {
+        "text": "ፈጅር",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am loan model the 5217 chain rules: the Ge'ez loan as Tigrinya orthography carries it (ጅ reads j); no Tigrinya prayer timetable exists to attest a form."
+      },
+      "Sunrise": {
+        "text": "ጸሓይ",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: the Tigrinya sun word itself, the am ፀሐይ pattern respelled."
+      },
+      "Dhuhr": {
+        "text": "ዙሓር",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am ዙህር respelled with the Tigrinya ሓ pharyngeal, the loan model."
+      },
+      "Asr": {
+        "text": "ዓስር",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am አስር in the Tigrinya ዓ form; the homograph with the numeral ten (ዓስር) recorded, no conflict in the row's context."
+      },
+      "Magrib": {
+        "text": "ምግሪብ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The Eritrean register's migrib form of the loan, the am model respelled."
+      },
+      "Isha": {
+        "text": "ኢሻ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am ኢሻ carried unchanged, the loan model."
+      },
+      "Midnight": {
+        "text": "ግማዕ ለይቲ",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: ግማዕ the half, ለይቲ the night, the am እኩለ ሌሊት pattern in Tigrinya vocabulary."
+      },
+      "Last Third": {
+        "text": "ወሲኽታን ሳልሳይ ለይቲ",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night."
+      },
+      "Suhoor": {
+        "text": "ሱሕር",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am ሱሑር respelled with the Tigrinya ሕ pharyngeal, the loan model."
+      },
+      "Duha": {
+        "text": "ዱሓ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am ዱሓ carried unchanged: ሓ is the Tigrinya pharyngeal itself."
+      },
+      "Istijaba": {
+        "text": "ኢስቲጃባ",
+        "source": "loan",
+        "confidence": "low",
+        "note": "The am ኢስቲጃባ carried unchanged, the loan model."
+      }
+    },
+    "explanations": {
+      "Halfway between Magrib and Fajr": {
+        "text": "ኣብ ማእከል ምግሪብን ፈጅርን",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: ግማዕ the half, ለይቲ the night, the am እኩለ ሌሊት pattern in Tigrinya vocabulary."
+      },
+      "Start of the last third of the night": {
+        "text": "ምብጻሕ ወሲኽታን ሳልሳይ ለይቲ",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night."
+      },
+      "20 mins before Fajr": {
+        "text": "20 ደቒቕ ቅድሚ ፈጅር",
+        "source": "derived",
+        "confidence": "low",
+        "note": "The am explanation model in standard Tigrinya vocabulary; the islamhouse ti library sets the register."
+      },
+      "20 mins after Sunrise": {
+        "text": "20 ደቒቕ ድሕሪ ምውጻእ ጸሓይ",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: the Tigrinya sun word itself, the am ፀሐይ pattern respelled."
+      },
+      "1 hour before Magrib (Fridays only)": {
+        "text": "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)",
+        "source": "derived",
+        "confidence": "low",
+        "note": "Derived: ግማዕ the half, ለይቲ the night, the am እኩለ ሌሊት pattern in Tigrinya vocabulary."
       }
     }
   }

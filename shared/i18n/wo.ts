@@ -187,6 +187,8 @@ export const wo = {
   'whatsNew.body.language': 'Ñu yokk ndimbal làkk yu bari',
   'whatsNew.title.moreLanguages': 'Làkk yu bari',
   'whatsNew.body.moreLanguages': 'Ñu yokk ndimbal làkk yu bari',
+  'whatsNew.title.languageWave': 'Làkk yu juroom benn yu bees',
+  'whatsNew.body.languageWave': 'Juroom benn làkk yokku, juroom benn làkk fal',
   'whatsNew.title.checkUpdates': 'Xool yees',
   'whatsNew.body.checkUpdates': 'Ñu yokk Xool yees',
   'whatsNew.title.whatsNew': 'Xëtu li bees',

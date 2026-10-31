@@ -6,21 +6,18 @@
  * glossary.
  */
 
-import { aa } from '@/shared/i18n/aa';
 import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
 import { az } from '@/shared/i18n/az';
 import { bal } from '@/shared/i18n/bal';
+import { bcl } from '@/shared/i18n/bcl';
 import { bm } from '@/shared/i18n/bm';
 import { bn } from '@/shared/i18n/bn';
 import { bs } from '@/shared/i18n/bs';
 import { bug } from '@/shared/i18n/bug';
-import { ce } from '@/shared/i18n/ce';
 import { ceb } from '@/shared/i18n/ceb';
 import { ckb } from '@/shared/i18n/ckb';
 import { de } from '@/shared/i18n/de';
-import { dje } from '@/shared/i18n/dje';
-import { dv } from '@/shared/i18n/dv';
 import { type Catalog, en } from '@/shared/i18n/en';
 import { es } from '@/shared/i18n/es';
 import { fa } from '@/shared/i18n/fa';
@@ -29,6 +26,7 @@ import { fr } from '@/shared/i18n/fr';
 import { gu } from '@/shared/i18n/gu';
 import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
+import { hil } from '@/shared/i18n/hil';
 import { id } from '@/shared/i18n/id';
 import { ilo } from '@/shared/i18n/ilo';
 import { it as itCatalog } from '@/shared/i18n/it';
@@ -43,10 +41,11 @@ import { ku } from '@/shared/i18n/ku';
 import { ky } from '@/shared/i18n/ky';
 import { mad } from '@/shared/i18n/mad';
 import { mdh } from '@/shared/i18n/mdh';
+import { mfa } from '@/shared/i18n/mfa';
 import { min } from '@/shared/i18n/min';
 import { ml } from '@/shared/i18n/ml';
-import { mnk } from '@/shared/i18n/mnk';
 import { mr } from '@/shared/i18n/mr';
+import { mrw } from '@/shared/i18n/mrw';
 import { ms } from '@/shared/i18n/ms';
 import { my } from '@/shared/i18n/my';
 import { nl } from '@/shared/i18n/nl';
@@ -69,6 +68,7 @@ import { ta } from '@/shared/i18n/ta';
 import { te } from '@/shared/i18n/te';
 import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
+import { ti } from '@/shared/i18n/ti';
 import { tk } from '@/shared/i18n/tk';
 import { tl } from '@/shared/i18n/tl';
 import { tr } from '@/shared/i18n/tr';
@@ -78,10 +78,10 @@ import { uk } from '@/shared/i18n/uk';
 import { ur } from '@/shared/i18n/ur';
 import { uz } from '@/shared/i18n/uz';
 import { vi } from '@/shared/i18n/vi';
+import { war } from '@/shared/i18n/war';
 import { wo } from '@/shared/i18n/wo';
 import { yo } from '@/shared/i18n/yo';
 import { zhHans } from '@/shared/i18n/zh-Hans';
-import { zhHant } from '@/shared/i18n/zh-Hant';
 
 const CATALOGS: Record<string, Catalog> = {
   ar,
@@ -108,7 +108,6 @@ const CATALOGS: Record<string, Catalog> = {
   ta,
   ml,
   'zh-Hans': zhHans,
-  'zh-Hant': zhHant,
   es,
   nl,
   kk,
@@ -135,7 +134,6 @@ const CATALOGS: Record<string, Catalog> = {
   su,
   my,
   tt,
-  ce,
   uk,
   qu,
   min,
@@ -152,15 +150,17 @@ const CATALOGS: Record<string, Catalog> = {
   skr,
   bal,
   kas,
-  dv,
-  aa,
   mdh,
   kr,
-  mnk,
-  dje,
+  hil,
+  bcl,
+  war,
+  mrw,
+  mfa,
+  ti,
 };
 const LOCALES = Object.keys(CATALOGS);
-const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas', 'dv']);
+const RTL = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas']);
 const BRAND = 'Athan';
 const TOKEN = /\{(\w+)\}/g;
 
@@ -259,19 +259,24 @@ const glossaryFor = (loc: string): GlossarySections | undefined =>
 const T410_TEN = ['id', 'ur', 'bn', 'fa', 'fr', 'tr', 'sw', 'ha', 'pt', 'uz'] as const;
 
 /** The ten locales T-419 ships next; the same bar covers their names and explanations */
-const T419_TEN = ['ps', 'zh-Hans', 'zh-Hant', 'ru', 'az', 'de', 'sq', 'bs', 'ta', 'ml'] as const;
+const T419_TEN = ['ps', 'zh-Hans', 'ru', 'az', 'de', 'sq', 'bs', 'ta', 'ml'] as const;
 
 /** The eight locales T-429 ships last; the same bar covers their names and explanations */
 const T429_EIGHT = ['es', 'nl', 'kk', 'ky', 'tg', 'tk', 'wo', 'mr'] as const;
 const T428_EIGHT = ['te', 'gu', 'kn', 'am', 'om', 'bm', 'tl', 'ff'] as const;
 const T427_EIGHT = ['pa-Arab', 'sd', 'ug', 'ckb', 'ku', 'yo', 'jv', 'su'] as const;
 
+/** T-537, the language wave, retired zh-Hant, dv, ce, aa, mnk and dje from the
+ * earlier waves' sets above: their glossary sections left with their catalogs */
+/** The six locales T-537 ships; the same bar covers their names and explanations */
+const T537_SIX = ['hil', 'bcl', 'war', 'mrw', 'mfa', 'ti'] as const;
+
 /** The eight locales T-454 ships; the same bar covers their names and explanations */
-const T454_EIGHT = ['my', 'tt', 'ce', 'uk', 'min', 'mad', 'bug', 'qu'] as const;
+const T454_EIGHT = ['my', 'tt', 'uk', 'min', 'mad', 'bug', 'qu'] as const;
 /** The eight locales T-452 ships; the same bar covers their names and explanations */
 const T452_EIGHT = ['ja', 'ko', 'it', 'pl', 'ro', 'ceb', 'ilo', 'vi'] as const;
 /** The nine locales T-453 ships; the same bar covers their names and explanations */
-const T453_NINE = ['skr', 'bal', 'kas', 'dv', 'aa', 'kr', 'mdh', 'mnk', 'dje'] as const;
+const T453_NINE = ['skr', 'bal', 'kas', 'kr', 'mdh'] as const;
 
 describe('the landed catalogs against the R2 gates', () => {
   it.each(LOCALES)('%s holds exactly the en key set', (loc) => {
@@ -336,7 +341,7 @@ describe('the landed catalogs against the R2 gates', () => {
     const mixedWords = (value: string) =>
       value.split(/[^\p{L}]+/u).filter((word) => /\p{Script=Latin}/u.test(word) && /\p{Script=Cyrillic}/u.test(word));
     const failures: string[] = [];
-    for (const loc of ['ru', 'kk', 'ky', 'tg', 'tt', 'ce', 'uk']) {
+    for (const loc of ['ru', 'kk', 'ky', 'tg', 'tt', 'uk']) {
       for (const [key, value] of Object.entries(CATALOGS[loc])) {
         const words = mixedWords(value);
         if (words.length) failures.push(`${loc}: ${key} carries ${words.join(', ')}`);
@@ -520,6 +525,28 @@ describe('the landed catalogs against the R2 gates', () => {
     }
     expect(failures).toEqual([]);
   });
+  it('sources every T-537 name and explanation slot with text, slug and confidence', () => {
+    const glossary = sourced as unknown as Record<
+      string,
+      { names: Record<string, Entry>; explanations: Record<string, Entry> } | undefined
+    >;
+    const failures: string[] = [];
+    for (const loc of T537_SIX) {
+      const sections = glossary[loc];
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const slots = [...Object.entries(sections.names), ...Object.entries(sections.explanations)];
+      for (const [slot, entry] of slots) {
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
   it('sources every T-453 name and explanation slot with text, slug and confidence', () => {
     const glossary = sourced as unknown as Record<
       string,

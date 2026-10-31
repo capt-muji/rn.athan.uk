@@ -187,6 +187,8 @@ export const kk = {
   'whatsNew.body.language': 'Қосымша тілдерге қолдау қосылды',
   'whatsNew.title.moreLanguages': 'Қосымша тілдер',
   'whatsNew.body.moreLanguages': 'Қосымша тілдерге қолдау қосылды',
+  'whatsNew.title.languageWave': 'Алты жаңа тіл',
+  'whatsNew.body.languageWave': 'Алты тіл қосылды, алты тіл алынды',
   'whatsNew.title.checkUpdates': 'Жаңартуларды тексеру',
   'whatsNew.body.checkUpdates': '«Жаңартуларды тексеру» опциясы қосылды',
   'whatsNew.title.whatsNew': 'Жаңалықтар парақшасы',

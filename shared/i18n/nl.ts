@@ -188,6 +188,8 @@ export const nl = {
   'whatsNew.body.language': 'Ondersteuning voor meer talen toegevoegd',
   'whatsNew.title.moreLanguages': 'Meer talen',
   'whatsNew.body.moreLanguages': 'Ondersteuning voor meer talen toegevoegd',
+  'whatsNew.title.languageWave': 'Zes nieuwe talen',
+  'whatsNew.body.languageWave': 'Zes talen erbij, zes talen weg',
   'whatsNew.title.checkUpdates': 'Controleren op updates',
   'whatsNew.body.checkUpdates': 'Optie Controleren op updates toegevoegd',
   'whatsNew.title.whatsNew': 'Pagina Wat is er nieuw',

@@ -76,7 +76,6 @@ describe('resolveInitialLocale', () => {
     ['su-ID', 'su', 'su'],
     ['my-MM', 'my', 'my'],
     ['tt-RU', 'tt', 'tt'],
-    ['ce-RU', 'ce', 'ce'],
     ['uk-UA', 'uk', 'uk'],
     ['qu-PE', 'qu', 'qu'],
     ['min-ID', 'min', 'min'],
@@ -97,29 +96,30 @@ describe('resolveInitialLocale', () => {
     ['ks-Arab-IN', 'ks', 'kas'],
     // Devanagari Kashmiri stays unshipped: a ks-Deva reader is not served Perso-Arabic copy
     ['ks-Deva-IN', 'ks', 'en'],
-    ['dv-MV', 'dv', 'dv'],
-    ['aa-DJ', 'aa', 'aa'],
-    ['aa-ET', 'aa', 'aa'],
     ['mdh-PH', 'mdh', 'mdh'],
+    ['hil-PH', 'hil', 'hil'],
+    ['bcl-PH', 'bcl', 'bcl'],
+    ['war-PH', 'war', 'war'],
+    ['mrw-PH', 'mrw', 'mrw'],
+    ['mfa-TH', 'mfa', 'mfa'],
+    ['ti-ER', 'ti', 'ti'],
+    ['ti-ET', 'ti', 'ti'],
     ['kr-NG', 'kr', 'kr'],
     ['kr-NE', 'kr', 'kr'],
-    ['mnk-GM', 'mnk', 'mnk'],
-    ['mnk-SN', 'mnk', 'mnk'],
-    ['dje-NE', 'dje', 'dje'],
     // Gurmukhi and India's Punjabi stay unshipped: a Gurmukhi reader is not served Shahmukhi
     ['pa-Guru-IN', 'pa', 'en'],
     ['pa-IN', 'pa', 'en'],
-    // Decision 9, plan T-419: the zh pair resolves by script subtag, then by the
-    // TW/HK/MO region list CLDR's likely-subtags answers, and bare zh reads
-    // Simplified (R4 A.4: a bare zh entry must never serve a Traditional reader)
+    // Decision 9, plan T-419, carried through the T-537 wave: the Traditional
+    // catalog retired, every zh tag - script-tagged, region-tagged or bare -
+    // reads Simplified, the ruling's cover
     ['zh-Hans', 'zh', 'zh-Hans'],
     ['zh-Hans-CN', 'zh', 'zh-Hans'],
     ['zh-Hans-SG', 'zh', 'zh-Hans'],
-    ['zh-Hant-TW', 'zh', 'zh-Hant'],
-    ['zh-Hant-HK', 'zh', 'zh-Hant'],
-    ['zh-TW', 'zh', 'zh-Hant'],
-    ['zh-HK', 'zh', 'zh-Hant'],
-    ['zh-MO', 'zh', 'zh-Hant'],
+    ['zh-Hant-TW', 'zh', 'zh-Hans'],
+    ['zh-Hant-HK', 'zh', 'zh-Hans'],
+    ['zh-TW', 'zh', 'zh-Hans'],
+    ['zh-HK', 'zh', 'zh-Hans'],
+    ['zh-MO', 'zh', 'zh-Hans'],
     ['zh-CN', 'zh', 'zh-Hans'],
     ['zh-SG', 'zh', 'zh-Hans'],
     ['zh', 'zh', 'zh-Hans'],
@@ -229,7 +229,7 @@ describe('chevronFor', () => {
     }
   });
 
-  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
+  it.each(['ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const)(
     'mirrors the chevron under %s, the later RTL locales',
     (locale) => {
       setActiveLocale(locale);
@@ -243,7 +243,7 @@ describe('chevronFor', () => {
 });
 
 describe('sentenceComma', () => {
-  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas', 'dv'] as const)(
+  it.each(['ar', 'ur', 'fa', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas'] as const)(
     'carries the Arabic comma under %s',
     (locale) => {
       setActiveLocale(locale);

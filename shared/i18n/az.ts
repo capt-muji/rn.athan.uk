@@ -187,6 +187,8 @@ export const az = {
   'whatsNew.body.language': 'Daha çox dil dəstəyi əlavə edildi',
   'whatsNew.title.moreLanguages': 'Daha çox dil',
   'whatsNew.body.moreLanguages': 'Daha çox dil dəstəyi əlavə edildi',
+  'whatsNew.title.languageWave': 'Altı yeni dil',
+  'whatsNew.body.languageWave': 'Altı dil əlavə edildi və altı dil çıxarıldı',
   'whatsNew.title.checkUpdates': 'Yeniləmələri yoxla',
   'whatsNew.body.checkUpdates': 'Yeniləmələri yoxla seçimi əlavə edildi',
   'whatsNew.title.whatsNew': 'Yeniliklər səhifəsi',

@@ -111,16 +111,13 @@ describe('typographyFor', () => {
         id !== 'skr' &&
         id !== 'bal' &&
         id !== 'kas' &&
-        id !== 'dv' &&
         id !== 'kr' &&
-        id !== 'mnk' &&
-        id !== 'dje' &&
         id !== 'yo' &&
+        id !== 'ti' &&
         id !== 'ta' &&
         id !== 'ml' &&
         id !== 'mr' &&
         id !== 'zh-Hans' &&
-        id !== 'zh-Hant' &&
         id !== 'bm' &&
         id !== 'ff' &&
         id !== 'my' &&
@@ -242,7 +239,7 @@ describe('typographyFor', () => {
   it('resolves zh-Hans to the SC subset pair with no script line box', () => {
     const ty = typographyFor('zh-Hans');
     expectScriptRecord(ty, 'NotoSansSC-Subset-Regular', 'NotoSansSC-Subset-Medium');
-    // The subset pairs carry the closed string set's whole 377-character census (the
+    // The subset pairs carry the closed string set's whole 378-character census (the
     // glyph lock, plan T-419 decision 8) and their own declared box already clears
     // their ink: hhea 1160/-288 with lineGap 0 and win 1160/288 against UPM 1000,
     // a 1.448em box the win ink matches exactly, both weights (this wave's own
@@ -251,8 +248,8 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
-  it('resolves bm, ff, kr, mnk and dje to the bundled Noto Sans pair with the measured script line box', () => {
-    for (const locale of ['bm', 'ff', 'kr', 'mnk', 'dje'] as const) {
+  it('resolves bm, ff and kr to the bundled Noto Sans pair with the measured script line box', () => {
+    for (const locale of ['bm', 'ff', 'kr'] as const) {
       const ty = typographyFor(locale);
       // No shipped face carries the African letters (ɛ ɔ ɲ for bm, ɓ ɗ ƴ for
       // ff, measured absent by codepoint in both weights of all twenty bundled
@@ -337,34 +334,34 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
-  it('resolves om, tl, aa and mdh to the Roboto identity record', () => {
-    // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries.
-    // Afar's is ASCII too, and Maguindanao's only non-ASCII character is the em dash
-    // beside the ñ its copy may ask for: measured with fontTools in both weights,
-    // Roboto carries every character of both locales' whole keyed surface (65 for
-    // Afar and 64 for Maguindanao, plan T-453 decision 10)
-    for (const locale of ['om', 'tl', 'aa', 'mdh'] as const) {
+  it('resolves om, tl and mdh to the Roboto identity record', () => {
+    // Oromo's orthography is ASCII and Tagalog needs only ñ, which Roboto carries,
+    // and Maguindanao's only non-ASCII character is the em dash beside the ñ its
+    // copy may ask for: measured with fontTools in both weights, Roboto carries
+    // every character of both locales' whole keyed surface (plan T-453 decision 10)
+    for (const locale of ['om', 'tl', 'mdh'] as const) {
       expectLatinRecord(typographyFor(locale));
     }
   });
 
-  it('resolves dv to the bundled Thaana pair with no script line box', () => {
-    // Plan T-453 decision 10: no bundled face carries a single Thaana codepoint, so the
-    // Noto Sans Thaana v3.001 pair is bundled; its hhea box is 1.493em (ascent 1069,
-    // descent -424, lineGap 0, UPM 1000, both weights) and equals its win ink
-    // (usWin 1069/424), while the block's glyphs run +751/-306, inside the box, so the
-    // box clears the ink and the font's own metrics serve - the Thai row-87 law
-    const ty = typographyFor('dv');
-    expectScriptRecord(ty, 'NotoSansThaana-Regular', 'NotoSansThaana-Medium');
-    expect(ty.scriptLineHeight).toBeUndefined();
+  it("resolves the language wave's Latin five to the Roboto identity record", () => {
+    // T-537: measured with fontTools in both weights, Roboto carries every
+    // character of hil, bcl, war, mrw and mfa's whole keyed surface (65, 67,
+    // 68, 67 and 65 distinct characters; mrw's ë is the KWF 2013 Ortograpiya
+    // schwa, bcl adds á â and war adds á), so all five take the LATIN record
+    for (const locale of ['hil', 'bcl', 'war', 'mrw', 'mfa'] as const) {
+      expectLatinRecord(typographyFor(locale));
+    }
   });
 
-  it('resolves zh-Hant to the TC subset pair with no script line box', () => {
-    const ty = typographyFor('zh-Hant');
-    expectScriptRecord(ty, 'NotoSansTC-Subset-Regular', 'NotoSansTC-Subset-Medium');
-    // The measured numbers match the SC pair's exactly (hhea 1160/-288, lineGap 0,
-    // win 1160/288, UPM 1000, both weights, 378 carried characters), so the same
-    // row-87 law serves: the font's own metrics, no script box
+  it('resolves ti to the shipped Ethiopic pair with no script line box', () => {
+    // T-537: no new font - measured with fontTools in both weights, the bundled
+    // Noto Sans Ethiopic v2.102 pair carries every character of ti's whole
+    // keyed surface, 184 distinct characters with every Ethiopic codepoint inside
+    // U+1200-137F, and the record's own measured box clears its ink, so the
+    // Thai row-87 law serves
+    const ty = typographyFor('ti');
+    expectScriptRecord(ty, 'NotoSansEthiopic-Regular', 'NotoSansEthiopic-Medium');
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 

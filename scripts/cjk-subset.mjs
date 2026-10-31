@@ -1,7 +1,8 @@
 // Cuts the CJK subset font pairs and regenerates the glyph lock (plan T-419
-// decision 8; ja and ko ride the same pipeline, plan T-452 decision 3).
+// decision 8; ja and ko ride the same pipeline, plan T-452 decision 3; the
+// Traditional pair left with its catalog in the T-537 language wave).
 //
-// The full Noto Sans SC, TC, JP and KR statics run near 10MB a weight, so the app bundles
+// The full Noto Sans SC, JP and KR statics run near 10MB a weight, so the app bundles
 // subsets cut over a CLOSED string set - every character of each CJK catalog, its
 // native-strings.json row, its widget-statics.json row, its endonym, and the What's
 // New keys that resolve through the catalog - and shared/__tests__/cjkSubset.test.ts
@@ -12,8 +13,6 @@
 // The full pairs never enter the repository (decision 8): fetch them outside first -
 //   curl -sSL -o <dir>/NotoSansSC-VF.ttf \
 //     https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf
-//   curl -sSL -o <dir>/NotoSansTC-VF.ttf \
-//     https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstc/NotoSansTC%5Bwght%5D.ttf
 //   curl -sSL -o <dir>/NotoSansJP-VF.ttf \
 //     https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf
 //   curl -sSL -o <dir>/NotoSansKR-VF.ttf \
@@ -81,8 +80,8 @@ const STATICS = JSON.parse(readFileSync(join(ROOT, 'shared/i18n/widget-statics.j
 const ENDONYMS = endonymOf();
 
 // The closed string set per locale, newline excepted (no glyph maps it)
-const LOCALES = ['zh-Hans', 'zh-Hant', 'ja', 'ko'];
-const EXPORT_NAMES = { 'zh-Hans': 'zhHans', 'zh-Hant': 'zhHant', ja: 'ja', ko: 'ko' };
+const LOCALES = ['zh-Hans', 'ja', 'ko'];
+const EXPORT_NAMES = { 'zh-Hans': 'zhHans', ja: 'ja', ko: 'ko' };
 const closedText = {};
 for (const locale of LOCALES) {
   const strings = [
@@ -156,11 +155,6 @@ const job = {
     text: closedText['zh-Hans'],
     out: join(ROOT, 'assets/fonts/NotoSansSC-Subset-{weight}.ttf'),
   },
-  TC: {
-    source: join(FONTS_DIR, 'NotoSansTC-VF.ttf'),
-    text: closedText['zh-Hant'],
-    out: join(ROOT, 'assets/fonts/NotoSansTC-Subset-{weight}.ttf'),
-  },
   JP: {
     source: join(FONTS_DIR, 'NotoSansJP-VF.ttf'),
     text: closedText.ja,
@@ -178,9 +172,8 @@ const measured = JSON.parse(execFileSync('python3', ['-c', PYTHON, jobFile], { e
 
 const lock = {
   _comment:
-    "The character set the four CJK subset pairs carry (plan T-419 decision 8, ja and ko added by plan T-452 decision 3): each subset is cut with fontTools over the closed string set - every character of its CJK catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the four curl lines).",
+    "The character set the three CJK subset pairs carry (plan T-419 decision 8, ja and ko added by plan T-452 decision 3, the Traditional pair retired with its catalog by plan T-537): each subset is cut with fontTools over the closed string set - every character of its CJK catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the three curl lines).",
   'zh-Hans': measured.SC.cmap.join(''),
-  'zh-Hant': measured.TC.cmap.join(''),
   ja: measured.JP.cmap.join(''),
   ko: measured.KR.cmap.join(''),
   files: Object.fromEntries(
@@ -198,7 +191,7 @@ const lock = {
 };
 writeFileSync(join(ROOT, 'shared/i18n/cjk-glyph-lock.json'), `${JSON.stringify(lock, null, 2)}\n`);
 
-const PAIR_OF = { 'zh-Hans': 'SC', 'zh-Hant': 'TC', ja: 'JP', ko: 'KR' };
+const PAIR_OF = { 'zh-Hans': 'SC', ja: 'JP', ko: 'KR' };
 for (const locale of LOCALES) {
   const pair = PAIR_OF[locale];
   const carried = measured[pair].cmap.join('');

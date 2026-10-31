@@ -185,6 +185,8 @@ export const fa = {
   'whatsNew.body.language': 'پشتیبانی از زبان‌های بیشتر افزوده شد',
   'whatsNew.title.moreLanguages': 'زبان‌های بیشتر',
   'whatsNew.body.moreLanguages': 'پشتیبانی از زبان‌های بیشتر افزوده شد',
+  'whatsNew.title.languageWave': 'شش زبان جدید',
+  'whatsNew.body.languageWave': 'شش زبان اضافه و شش زبان حذف شد',
   'whatsNew.title.checkUpdates': 'بررسی به‌روزرسانی‌ها',
   'whatsNew.body.checkUpdates': 'گزینه بررسی به‌روزرسانی‌ها افزوده شد',
   'whatsNew.title.whatsNew': 'صفحه تازه‌ها',

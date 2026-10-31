@@ -194,6 +194,8 @@ export const it = {
   'whatsNew.body.language': 'Aggiunto il supporto per più lingue',
   'whatsNew.title.moreLanguages': 'Più lingue',
   'whatsNew.body.moreLanguages': 'Aggiunto il supporto per più lingue',
+  'whatsNew.title.languageWave': 'Sei nuove lingue',
+  'whatsNew.body.languageWave': 'Aggiunte sei lingue e rimosse sei',
   'whatsNew.title.checkUpdates': 'Cerca aggiornamenti',
   'whatsNew.body.checkUpdates': 'Aggiunta l’opzione Cerca aggiornamenti',
   'whatsNew.title.whatsNew': 'Pagina Novità',
