@@ -177,13 +177,14 @@ export default function Index() {
   // either the synchronous cache bootstrap already hydrated the sequences
   // (first commit paints content) or the async sync atom left its loading
   // state. The perf mark keeps its content-only semantics; only the reveal
-  // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
+  // waits, and only in Ramadan mode, for the decoration sprites.
   //
   // Two paths (ledger #24 (git history)): cold launches (no cache at mount — fresh
   // install, upgrade wipe, year gap) hide the splash as soon as the spinner
   // frame commits instead of holding through the entire network fetch;
-  // warm launches keep the reveal-ready gate so the first revealed frame is
-  // complete (the 1.22.5 no-icon-pop-in fix). The snapshot is taken during
+  // warm launches lift at the content commit — the app straight from cache
+  // (owner order 2026-10-30), the Masjid icon's bitmap decoding behind the
+  // revealed frame. The snapshot is taken during
   // the first render only — sync completing later can never re-latch the gate.
   const waitingForData = isWaitingForData(sequenceReady, state);
   const coldLaunchRef = useRef(waitingForData);
