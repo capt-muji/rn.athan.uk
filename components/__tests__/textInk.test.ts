@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { REMINDER_CARD, SEGMENT_LABEL, STEPPER_INK } from '@/components/sheets/parts/dim';
+import { REMINDER_CARD, REMINDER_SWITCH, SEGMENT_LABEL, STEPPER_INK } from '@/components/sheets/parts/dim';
 import { COLORS } from '@/shared/constants';
 
 /**
@@ -440,6 +440,7 @@ describe('text ink', () => {
       ...stringsOf(REMINDER_CARD.title),
       ...stringsOf(REMINDER_CARD.hint),
       ...stringsOf(REMINDER_CARD.optionLabel),
+      ...stringsOf(REMINDER_SWITCH),
       ...stringsOf(SEGMENT_LABEL),
       ...stringsOf(STEPPER_INK),
     ];

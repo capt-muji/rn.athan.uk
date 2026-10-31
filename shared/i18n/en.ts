@@ -118,7 +118,7 @@ export const en = {
   'stepper.increase': 'Increase to {value} {unit}',
 
   'sound.title': 'Select Athan',
-  'sound.notificationSound': 'Notification sound',
+  'sound.notificationSound': 'Tap to select notification sound',
   'soundItem.athan': 'Athan {n}',
   'soundItem.preview': 'Preview {name}',
   'soundItem.stopPreview': 'Stop previewing {name}',
@@ -197,6 +197,7 @@ export const en = {
 
   'settings.language': 'Language',
   'language.changing': 'Setting {language} language',
+  'language.tapToSelect': 'Tap to select language',
   'channel.reminder': '{name} in {n}m Reminder',
   'whatsNew.title.language': 'Language',
   'whatsNew.body.language': 'Added support for more languages',

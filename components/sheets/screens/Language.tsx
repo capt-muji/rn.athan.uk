@@ -187,6 +187,7 @@ export default function BottomSheetLanguage() {
       suppressCloseHaptic
       onDismiss={handleDismiss}>
       <View style={styles.card}>
+        <Text style={styles.cardHint}>{t('language.tapToSelect')}</Text>
         <View testID={'language-list'} style={styles.listContainer}>
           {/* The purple seat, absolutely placed behind the rows it slides between */}
           <Animated.View testID={'language-seat'} style={[styles.seat, seatStyle]} />
@@ -219,6 +220,12 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: CARD_BORDER,
     padding: SPACING.lg,
+  },
+  // The sound sheet's own hint voice, mirrored above this list (owner order 2026-10-31)
+  cardHint: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    color: COLORS.text.sheetSubtitle,
   },
   listContainer: {
     marginTop: SPACING.md,

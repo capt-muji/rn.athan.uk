@@ -114,6 +114,17 @@ describe('the athan sheet, Friday 11 September 2026 at 14:00', () => {
     expect(screen.getAllByText(/^Athan \d+$/)).toHaveLength(ATHAN_AUDIOS.length);
   });
 
+  it('heads its list with the tap-to-select wording, the owner order of 2026-10-31', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setSoundListReady();
+
+    await render(<SoundSheet />);
+
+    const drawn = JSON.stringify(screen.toJSON());
+    expect(drawn.indexOf('Tap to select notification sound')).toBeLessThan(drawn.indexOf('Athan 1'));
+    expect(screen.getAllByText('Tap to select notification sound')).toHaveLength(1);
+  });
+
   it('carries the volume note below every athan row', async () => {
     showLondonDay('2026-09-11', '14:00');
     setSoundListReady();

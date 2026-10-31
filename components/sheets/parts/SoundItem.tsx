@@ -151,7 +151,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
-    paddingVertical: SPACING.sm,
+    // The language rows' own 48 carries these rows too (owner order 2026-10-31); the vertical
+    // padding is a hair, so the tall play column never stretches the row past it
+    minHeight: 48,
+    paddingVertical: SPACING.xxs,
     paddingStart: SPACING.md,
   },
   text: {

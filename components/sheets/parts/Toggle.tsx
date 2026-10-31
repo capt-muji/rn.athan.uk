@@ -4,6 +4,8 @@ import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withTiming
 import { ANIMATION, COLORS, RADIUS, SIZE } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 
+import { REMINDER_SWITCH } from './dim';
+
 interface ToggleProps {
   value: boolean;
   onToggle: () => void;
@@ -17,7 +19,7 @@ interface ToggleProps {
  *
  * Features:
  * - Animated thumb with smooth sliding transition
- * - Disabled state with reduced opacity
+ * - Disabled state carried by colour (dim.ts), not opacity
  *
  * @example
  * <Toggle value={isOn} onToggle={() => setIsOn(!isOn)} />
@@ -56,6 +58,11 @@ export default function Toggle({ value, onToggle, disabled, accessibilityLabel }
     onToggle();
   };
 
+  // The dim rides colour (owner order 2026-10-31): the track flattens the old whole-switch 0.2
+  // opacity over the locked card, and the thumb takes the sheet hint's ink, so the circle stops
+  // outshining the row it sits in
+  const dimmedTrack = disabled ? (value ? styles.trackOnDimmed : styles.trackOffDimmed) : null;
+
   return (
     <Pressable
       accessibilityRole={'switch'}
@@ -64,8 +71,8 @@ export default function Toggle({ value, onToggle, disabled, accessibilityLabel }
       accessibilityState={{ checked: value, disabled: disabled === true }}
       accessibilityLabel={accessibilityLabel}
       onPress={handlePress}
-      style={[styles.track, value && styles.trackOn, disabled && styles.disabled]}>
-      <Animated.View style={[styles.thumb, thumbStyle]} />
+      style={[styles.track, value && styles.trackOn, dimmedTrack]}>
+      <Animated.View style={[styles.thumb, thumbStyle, disabled && styles.thumbDimmed]} />
     </Pressable>
   );
 }
@@ -85,8 +92,16 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.interactive.active,
     borderColor: COLORS.interactive.activeBorder,
   },
-  disabled: {
-    opacity: 0.2,
+  trackOffDimmed: {
+    backgroundColor: REMINDER_SWITCH.track.off.background,
+    borderColor: REMINDER_SWITCH.track.off.border,
+  },
+  trackOnDimmed: {
+    backgroundColor: REMINDER_SWITCH.track.on.background,
+    borderColor: REMINDER_SWITCH.track.on.border,
+  },
+  thumbDimmed: {
+    backgroundColor: REMINDER_SWITCH.thumbDisabled,
   },
   thumb: {
     width: SIZE.toggle.dotSize,

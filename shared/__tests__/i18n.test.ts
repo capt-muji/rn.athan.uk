@@ -121,7 +121,9 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['reminder.unitMinutes', 'min'],
 
   ['sound.title', 'Select Athan'],
-  ['sound.notificationSound', 'Notification sound'],
+  // Owner order 2026-10-31: the list's heading became the tap-to-select instruction
+  ['sound.notificationSound', 'Tap to select notification sound'],
+  ['language.tapToSelect', 'Tap to select language'],
 
   ['colorPicker.label', 'Countdown bar color'],
   ['colorPicker.resetLabel', 'Reset to the default colour'],
