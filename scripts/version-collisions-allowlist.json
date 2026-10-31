@@ -254,5 +254,9 @@
   {
     "version": "2.42.14",
     "reason": "2026-10-31 the workflow's supervision order steps from uat's 2.42.13 while lane1/T-327's step-14 baseline commit already holds 2.42.14; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.42.15",
+    "reason": "2026-10-31 the supervision cascade rewrite steps from uat's 2.42.14 while lane1/T-327's step-16 close-out already holds 2.42.15; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

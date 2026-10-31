@@ -73,19 +73,15 @@ produced it. Everything else in `check:device` is build-agnostic.
 
 ## Supervision
 
-Every parent owns its children. No agent waits on a child's reply, ever.
-
-- While a child runs, its parent checks it every 60 seconds against
-  `~/.local/share/opencode/opencode.db`: `SELECT session_id, MAX(time_created) FROM
-  session_message WHERE session_id IN (...) GROUP BY session_id` is the liveness proof.
-- A child whose last message is older than its work can explain (a build ~15 min, a
-  capture cycle ~5 min) is investigated at once: read its session's last rows, the branch
-  it works, the board it reports to. A dead child is respawned from its ticket the same
-  minute; silence is never absorbed.
-- The lead arms a self-re-arming 60-second timer; every lane and executor checks its own
-  children the same way between steps, recursively to every depth.
-- A completion notification is a courtesy, never the mechanism (owner order 2026-10-31,
-  after a six-hour silent death).
+Every parent owns its children; no agent waits on a reply. While any descendant runs, the
+parent checks the session DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)`
+per `session_id` in `session_message`) every 60 seconds across the WHOLE subtree - its
+children, their children, to the leaves - matched by the work's name
+(`LIKE '%<ticket or step>%'`). Idle is legal only while some descendant is progressing:
+liveness is judged at the deepest active node of a chain. A chain whose every node is
+quiet past its work's explanation (a build ~15 min, a capture ~5 min) is walked to its
+deepest dead node and respawned from its ticket that same minute. Completion
+notifications are courtesy, never the mechanism (owner order 2026-10-31).
 
 ## Hard rules
 
