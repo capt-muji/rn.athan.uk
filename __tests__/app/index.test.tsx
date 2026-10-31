@@ -122,6 +122,15 @@ const UPDATE_PROMPT_TITLE = /^Update Available/;
 /** A frame and the macrotask after it, which is when the prompts and the overlay mount */
 const FIRST_FRAME_MS = 50;
 
+/** How long after mount the reveal gives up on a first frame that never comes */
+const DRAWN_BACKSTOP_MS = 2000;
+
+/** Fires the content root's layout event, which on device is the content's first drawn frame */
+const drawFirstContentFrame = () =>
+  fireEvent(screen.getByTestId('launch-content'), 'layout', {
+    nativeEvent: { layout: { x: 0, y: 0, width: 320, height: 692 } },
+  });
+
 /** How long after mount the notification set-up, the diagnostics and the update check wait */
 const SETTLING_WINDOW_MS = 1500;
 
@@ -369,29 +378,60 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
   });
 
-  it("lifts the splash over stored lists at the content commit, without waiting for the Masjid icon's async decode", async () => {
+  it("holds the splash past the content commit and lifts it on the first drawn frame, without waiting for the Masjid icon's async decode", async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Index />);
 
-    // No icon event ever fires: the bitmap decodes behind the revealed frame (owner order 2026-10-30)
+    // The commit is not the frame: Fabric's native mount burst trails it on a launch-busy phone
+    // (the 3T, 1-2s under load), and until the first frame draws the window background - the
+    // splash purple - shows through where content should be
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await drawFirstContentFrame();
+
+    // No icon event ever fires either: the bitmap decodes behind the revealed frame (owner order 2026-10-30)
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('lifts the splash anyway once the backstop passes with no first frame, so a tree that never lays out cannot strand the splash', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(DRAWN_BACKSTOP_MS - 1));
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await act(() => jest.advanceTimersByTime(1));
+
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the reveal at one once the first frame has drawn and the backstop passes later', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Index />);
+
+    await drawFirstContentFrame();
+    await act(() => jest.advanceTimersByTime(DRAWN_BACKSTOP_MS));
+
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 });
 
 describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () => {
-  it('holds the splash until the decorations have loaded', async () => {
+  it('holds the splash until the decorations have loaded, past the first drawn frame', async () => {
     showRamadanLists();
     await render(<Index />);
 
+    await drawFirstContentFrame();
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
 
     expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
   });
 
-  it('lifts the splash once the decorations have loaded', async () => {
+  it('lifts the splash once the decorations have loaded onto a drawn frame', async () => {
     showRamadanLists();
     await render(<Index />);
 
+    await drawFirstContentFrame();
     await act(() => markDecorationsLoaded());
 
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
@@ -404,28 +444,24 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
     await render(<Index />);
 
+    await drawFirstContentFrame();
+
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 
   // No day of 2027 is stored, so the failed download leaves nothing usable and sync fails
-  it('lifts the splash onto the error screen, without waiting for decorations that screen never draws', async () => {
+  it('lifts the splash onto the error screen on its first drawn frame, without waiting for decorations that screen never draws', async () => {
     showRamadanLists();
     jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
 
     await render(<Index />);
 
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await drawFirstContentFrame();
+
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
-  });
-
-  it('lifts the splash onto the error screen at its own commit, without waiting for any bitmap', async () => {
-    showRamadanLists();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
-
-    await render(<Index />);
-
-    await screen.findByText('Something went wrong.');
-    expect(SplashScreen.hideAsync).toHaveBeenCalled();
   });
 });
 
