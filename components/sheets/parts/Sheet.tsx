@@ -66,13 +66,6 @@ interface SheetProps {
   /** Use scrollable content area */
   scrollable?: boolean;
   /**
-   * Host a scrollable the caller brings. The children render bare — no content view of the sheet's
-   * own — so the caller's list registers with the sheet as its scrollable: a library content view
-   * writes the sheet's scrollable state itself, and an ancestor's write lands after the child's and
-   * overwrites it, leaving the list unable to scroll
-   */
-  hostsScrollable?: boolean;
-  /**
    * Holds the unified close haptic. A sheet that gives its own close feedback opts out, so a
    * close that carries nothing stays silent
    */
@@ -89,15 +82,6 @@ interface SheetProps {
    * such as a sensor subscription, which `onFirstPresent` would arm once and never again
    */
   onPresent?: () => void;
-  /**
-   * Content that stays above the scroll view, so a field in it never scrolls
-   * away; given one, the header is pinned with it and only the children scroll
-   */
-  pinned?: React.ReactNode;
-  /** How the sheet answers the keyboard: `interactive` moves it with the keyboard */
-  keyboardBehavior?: BottomSheetModalProps['keyboardBehavior'];
-  /** What the sheet does with the keyboard when the field blurs */
-  keyboardBlurBehavior?: BottomSheetModalProps['keyboardBlurBehavior'];
   /**
    * Bottom-sheet stack behavior when presented over another sheet. Default
    * 'switch' serializes: the lib waits for the previous sheet to unmount
@@ -152,12 +136,8 @@ export default function Sheet({
   contentCap,
   enableDynamicSizing = false,
   scrollable = true,
-  hostsScrollable = false,
   suppressCloseHaptic = false,
   stackBehavior,
-  pinned,
-  keyboardBehavior,
-  keyboardBlurBehavior,
 }: SheetProps) {
   const { bottom: safeBottom } = useSafeAreaInsets();
   const bottom = Platform.OS === 'android' ? 0 : safeBottom;
@@ -272,45 +252,6 @@ export default function Sheet({
     ? { contentContainerStyle: { paddingBottom: contentPadding }, showsVerticalScrollIndicator: false }
     : { style: { paddingBottom: contentPadding } };
 
-  const columnStyle = [bottomSheetStyles.column, styles.content];
-  const header = <Header title={title} subtitle={subtitle} icon={icon} />;
-
-  let body: React.ReactNode;
-  if (hostsScrollable) {
-    body = (
-      <>
-        <View style={columnStyle}>
-          {header}
-          {pinned}
-        </View>
-        {/* The sheet's own column keeps the horizontal inset and the home-indicator room the
-            content view carried, with the caller's list filling what is left */}
-        <View style={[columnStyle, styles.hostedContent, { paddingBottom: contentPadding }]}>{children}</View>
-      </>
-    );
-  } else if (pinned === undefined) {
-    body = (
-      <ContentWrapper {...contentStyle}>
-        <View style={columnStyle}>
-          {header}
-          {children}
-        </View>
-      </ContentWrapper>
-    );
-  } else {
-    body = (
-      <>
-        <View style={columnStyle}>
-          {header}
-          {pinned}
-        </View>
-        <ContentWrapper {...contentStyle}>
-          <View style={columnStyle}>{children}</View>
-        </ContentWrapper>
-      </>
-    );
-  }
-
   return (
     <BottomSheetModal
       ref={handleRef}
@@ -320,8 +261,6 @@ export default function Sheet({
       enablePanDownToClose
       animationConfigs={SHEET_ANIMATION_CONFIGS}
       stackBehavior={stackBehavior}
-      keyboardBehavior={keyboardBehavior}
-      keyboardBlurBehavior={keyboardBlurBehavior}
       enableDismissOnClose={false}
       onDismiss={handleClosed}
       onAnimate={handleAnimate}
@@ -334,7 +273,12 @@ export default function Sheet({
       backgroundComponent={renderSheetBackground}
       handleIndicatorStyle={bottomSheetStyles.indicator}
       backdropComponent={renderBackdrop}>
-      {body}
+      <ContentWrapper {...contentStyle}>
+        <View style={[bottomSheetStyles.column, styles.content]}>
+          <Header title={title} subtitle={subtitle} icon={icon} />
+          {children}
+        </View>
+      </ContentWrapper>
     </BottomSheetModal>
   );
 }
@@ -342,8 +286,5 @@ export default function Sheet({
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SPACING.xl,
-  },
-  hostedContent: {
-    flex: 1,
   },
 });
