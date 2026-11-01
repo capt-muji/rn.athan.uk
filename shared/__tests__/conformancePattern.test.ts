@@ -10,6 +10,7 @@
  */
 
 import catalogLock from '@/shared/i18n/catalog-lock.json';
+import type { Catalog } from '@/shared/i18n/en';
 import { catalogFor } from '@/shared/i18n/loader';
 import { LOCALE_IDS } from '@/shared/i18n/locale';
 import nativeStrings from '@/shared/i18n/native-strings.json';
@@ -84,8 +85,40 @@ describe('the conformance pattern, T-542', () => {
 
   it.each(LOCALE_IDS)('%s never repeats a title as its description', (locale) => {
     const catalog = catalogFor(locale);
-    expect(catalog['extras.explanation.midnight'].toLowerCase()).not.toBe(catalog['prayer.midnight'].toLowerCase());
-    expect(catalog['extras.explanation.last third'].toLowerCase()).not.toBe(catalog['prayer.last third'].toLowerCase());
+    const failures: string[] = [];
+    const pairs: Array<[explanation: keyof Catalog, title: keyof Catalog]> = [
+      ['extras.explanation.midnight', 'prayer.midnight'],
+      ['extras.explanation.last third', 'prayer.last third'],
+      ['extras.explanation.suhoor', 'prayer.suhoor'],
+      ['extras.explanation.duha', 'prayer.duha'],
+      ['extras.explanation.istijaba', 'prayer.istijaba'],
+    ];
+    for (const [explanationKey, titleKey] of pairs) {
+      if (catalog[explanationKey].toLowerCase() === catalog[titleKey].toLowerCase()) {
+        failures.push(`${explanationKey} repeats its title`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('registers every slug its rows cite', () => {
+    // The T-537 audit's other hole, the reviewer's find: three cited slugs
+    // resolved to no sourceSlugs entry. A cited slug with no registration
+    // reads as an authority nobody defined.
+    const registered = Object.keys(
+      (sourced as unknown as { _meta: { sourceSlugs: Record<string, string> } })._meta.sourceSlugs
+    );
+    const failures: string[] = [];
+    for (const locale of LOCALE_IDS) {
+      const sections = glossary[locale];
+      const slots = [...Object.values(sections?.names ?? {}), ...Object.values(sections?.explanations ?? {})];
+      for (const slot of slots) {
+        if (slot?.source && !registered.includes(slot.source)) {
+          failures.push(`${locale}: cites unregistered slug "${slot.source}"`);
+        }
+      }
+    }
+    expect(failures).toEqual([]);
   });
 
   it('pins the English description pattern literally', () => {

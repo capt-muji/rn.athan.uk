@@ -322,5 +322,9 @@
   {
     "version": "2.43.19",
     "reason": "2026-11-01 lane2/T-557's audit fix takes the single patch step above its own 2.43.18 while t538-line-box-3's advancing tip already holds 2.43.19; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.20",
+    "reason": "2026-11-01 lane3/T-542's step 3 (facfbcd8) took 2.43.20 over uat's 2.43.19 while t538-line-box-3's tip 952600fb already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
