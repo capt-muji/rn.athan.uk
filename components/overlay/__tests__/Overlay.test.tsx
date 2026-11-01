@@ -154,7 +154,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
   // [selected index, prayer, explanation]
   it.each([
-    [0, 'Midnight', 'Midnight'],
+    [0, 'Midnight', 'Halfway between Magrib and Fajr'],
     [4, 'Istijaba', '1 hour before Magrib (Fridays only)'],
   ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english) => {
     showLondonDay('2026-09-11', '14:00');
@@ -168,10 +168,8 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
     await act(() => openOverlay(ScheduleType.Extra, index));
 
-    // The short-noun rule (owner order 2026-10-31) made Midnight's title and
-    // explanation the same noun, so the box carries it twice
-    expect(screen.getAllByText(name).length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText(english).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(name)).toBeVisible();
+    expect(screen.getByText(english)).toBeVisible();
   });
 
   it('rides the explanation words on the reveal as a true opacity once the box opens', async () => {
@@ -191,9 +189,8 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     // and the colour never interpolates (T-490 revision 3, the owner's ordered
     // ramp) - while the placer itself still never fades, so no subtree opacity
     // holds text
-    // Title first, explanation second: the same noun twice under the short-noun rule
-    expect(StyleSheet.flatten(screen.getAllByText('Midnight')[0].props.style).opacity).toBe(1);
-    expect(StyleSheet.flatten(screen.getAllByText('Midnight')[1].props.style).opacity).toBe(1);
+    expect(StyleSheet.flatten(screen.getByText('Midnight').props.style).opacity).toBe(1);
+    expect(StyleSheet.flatten(screen.getByText('Halfway between Magrib and Fajr').props.style).opacity).toBe(1);
     const placer = screen.queryAllByTestId('overlay-infobox', { includeHiddenElements: true })[0];
     expect(StyleSheet.flatten(placer.props.style).opacity).toBeUndefined();
     // No band interpolation fires anywhere on this path: the words' colour is the

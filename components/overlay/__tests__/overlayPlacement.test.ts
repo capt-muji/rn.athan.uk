@@ -140,7 +140,14 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       { top: rowTop(4) + TIP_OVERLAP, transform: [{ translateY: '-100%' }] },
       '1 hour before Magrib (Fridays only)',
     ],
-    [4, 'Midnight', 0, 'top', { top: rowTop(0) + STYLES.prayer.height - TIP_OVERLAP }, 'Midnight'],
+    [
+      4,
+      'Midnight',
+      0,
+      'top',
+      { top: rowTop(0) + STYLES.prayer.height - TIP_OVERLAP },
+      'Halfway between Magrib and Fajr',
+    ],
   ])(
     'index %i is %s, drawn on row %i: the card explains it against that row',
     (index, english, _row, arrowPosition, anchor, explanation) => {

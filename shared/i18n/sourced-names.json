@@ -214,16 +214,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Midnight",
+        "text": "Halfway between Magrib and Fajr",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Last Third",
+        "text": "Start of the last third of the night",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minutes before Fajr",
@@ -316,16 +316,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نصف الليل",
+        "text": "نصف الليل بين المغرب والفجر",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "آخر ثلث",
+        "text": "عند بداية الثلث الأخير من الليل",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 دقيقة قبل الفجر",
@@ -418,16 +418,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah malam",
+        "text": "Tengah antara Maghrib dan Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from the sourced name set and standard Indonesian syntax (antara X dan Y). Meaning-safe; have a speaker polish.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Assembled from the sourced name set and standard Indonesian syntax (antara X dan Y). Meaning-safe; have a speaker polish. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sepertiga akhir",
+        "text": "Awal sepertiga malam terakhir",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from sepertiga akhir plus standard syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from sepertiga akhir plus standard syntax. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 menit sebelum Subuh",
@@ -520,16 +520,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نصف شب",
+        "text": "مغرب اور فجر کے درمیان آدھی رات",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from sourced names and al-azan's آدھی رات. Have a speaker polish the izafat.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Assembled from sourced names and al-azan's آدھی رات. Have a speaker polish the izafat. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "آخری تہائی",
+        "text": "رات کے آخری تہائی کا آغاز",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "فجر سے 20 منٹ پہلے",
@@ -622,16 +622,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "মধ্যরাত",
+        "text": "মাগরিব ও ফজরের মধ্যবর্তী সময়",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; মধ্যবর্তী is the standard Bengali for midway.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; মধ্যবর্তী is the standard Bengali for midway. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "শেষ তৃতীয়াংশ",
+        "text": "রাতের শেষ তৃতীয়াংশের শুরু",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ফজরের ২০ মিনিট পূর্বে",
@@ -724,16 +724,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Gece yarısı",
+        "text": "Akşam ile İmsak arasının ortası",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Diyanet's own names; verify with a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from Diyanet's own names; verify with a speaker. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Teheccüd",
+        "text": "Gecenin son üçte birinin başlangıcı",
         "source": "al-azan@d89b047",
         "confidence": "high",
-        "note": "al-azan's own hint string Teheccüd gecenin son üçte birlik kısmıdır attests every word of this.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "al-azan's own hint string Teheccüd gecenin son üçte birlik kısmıdır attests every word of this. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "İmsak'tan 20 dakika önce",
@@ -826,16 +826,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Minuit islamique",
+        "text": "À mi-chemin entre Maghrib et Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard French syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; standard French syntax. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Dernier tiers",
+        "text": "Début du dernier tiers de la nuit",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Dernier tiers.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from Dernier tiers. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 min avant le Fajr",
@@ -928,16 +928,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Mitternacht",
+        "text": "Genau zwischen Maghrib und Fadschr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; halbwegs zwischen is more colloquial. Confirm.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; halbwegs zwischen is more colloquial. Confirm. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Letztes Drittel",
+        "text": "Beginn des letzten Drittels der Nacht",
         "source": "tahajjud-de",
         "confidence": "high",
-        "note": "tahajjud.de prints Das letzte Drittel der Nacht beginnt and es ergibt sich der Beginn um (begin, last third, night each attested), the decision-11 independent confirmation; al-azan German hint string carries the same phrase.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "tahajjud.de prints Das letzte Drittel der Nacht beginnt and es ergibt sich der Beginn um (begin, last third, night each attested), the decision-11 independent confirmation; al-azan German hint string carries the same phrase. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 Min. vor dem Fadschr",
@@ -1030,16 +1030,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نیمه شب شرعی",
+        "text": "نیمه شب بین مغرب و صبح",
         "source": "derived",
         "confidence": "medium",
-        "note": "Assembled from the app's existing Arabic phrasing and the sourced Persian names. Confirm with a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Assembled from the app's existing Arabic phrasing and the sourced Persian names. Confirm with a speaker. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ثلث آخر شب",
+        "text": "شروع ثلث آخر شب",
         "source": "al-azan@d89b047",
         "confidence": "high",
-        "note": "Built from al-azan's attested ثلث آخر شب.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Built from al-azan's attested ثلث آخر شب. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "۲۰ دقیقه قبل از اذان صبح",
@@ -1132,16 +1132,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah malam",
+        "text": "Pertengahan antara Maghrib dan Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Malay syntax.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; standard Malay syntax. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sepertiga malam",
+        "text": "Permulaan sepertiga akhir malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; same caveat as the name.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; same caveat as the name. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -1234,16 +1234,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Katikati ya usiku",
+        "text": "Katikati ya Magharibi na Alfajiri",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; katikati ya X na Y is the standard construction.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; katikati ya X na Y is the standard construction. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Theluthi ya mwisho",
+        "text": "Mwanzo wa theluthi ya mwisho ya usiku",
         "source": "derived",
         "confidence": "high",
-        "note": "Assembled from al-azan's attested phrase plus mwanzo wa (start of).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Assembled from al-azan's attested phrase plus mwanzo wa (start of). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Dakika 20 kabla ya Alfajiri",
@@ -1336,16 +1336,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tsakar dare",
+        "text": "Tsakiyar Magriba da Asuba",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced bare names; tsakiya is the standard Hausa midpoint word. Speaker pass wanted.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced bare names; tsakiya is the standard Hausa midpoint word. Speaker pass wanted. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sulusin dare na ƙarshe",
+        "text": "Farawar sulusin dare na ƙarshe",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; farawa is beginning, in the construct form farawar before its possessive.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; farawa is beginning, in the construct form farawar before its possessive. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Minti 20 kafin Asuba",
@@ -1438,16 +1438,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Saqda dhexe",
+        "text": "Dhexdhexaadxada Maqrib iyo Subax",
         "source": null,
         "confidence": "low",
-        "note": "Needs the name set confirmed first.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Needs the name set confirmed first. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Seddexaad u dambeeya",
+        "text": "Bilowga seddexaadka u dambeeya habeenka",
         "source": null,
         "confidence": "low",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": null,
@@ -1540,16 +1540,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "د شپې نيمه",
+        "text": "د مغرب او صبح په منځ کې",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the swapped loans مغرب and صبح with standard Pashto syntax (د X او Y په منځ کې).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the swapped loans مغرب and صبح with standard Pashto syntax (د X او Y په منځ کې). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "تهجد",
+        "text": "د شپې د وروستۍ دريمې برخې پيل",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the loan تهجد row's concept and standard Pashto syntax; پيل is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the loan تهجد row's concept and standard Pashto syntax; پيل is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "له صبح ۲۰ دقيقې دمخه",
@@ -1642,16 +1642,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Nîveşev",
+        "text": "Nîvê di navbera Mexreb û Sibe de",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; di navbera ... de is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; di navbera ... de is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sêyema dawî ya şevê",
+        "text": "Destpêka sêyema dawî ya şevê",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; destpêk is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; destpêk is the start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 deqîqe berî Sibe",
@@ -1744,16 +1744,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Yarim kecha",
+        "text": "Shom va Bomdod o'rtasidagi yarim kecha",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; o'rtasida is between. Needs a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; o'rtasida is between. Needs a speaker. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Tahajjud",
+        "text": "Tungan so'nggi uchdan birining boshlanishi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; tunda (in the night), uchdan biri (one third). Needs a speaker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; tunda (in the night), uchdan biri (one third). Needs a speaker. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Bomdoddan 20 daqiqa oldin",
@@ -1846,16 +1846,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Gecə yarısı",
+        "text": "Məğrib ilə Sübh arasının ortası",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Məğrib and Sübh with the tr twin's construction (X ilə Y arasının ortası).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Məğrib and Sübh with the tr twin's construction (X ilə Y arasının ortası). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Gecənin son üçdə biri",
+        "text": "Gecənin son üçdə birinin başlanğıcı",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third label plus başlanğıcı (start).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the Last Third label plus başlanğıcı (start). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Sübh'dən 20 dəqiqə əvvəl",
@@ -1948,16 +1948,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "நள்ளிரவு",
+        "text": "மஃகிரிபுக்கும் ஃபஜ்ருக்கும் நடுவில்",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced மஃகிரிப் and ஃபஜ்ர் with standard Tamil syntax (X, Y நடுவில்).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced மஃகிரிப் and ஃபஜ்ர் with standard Tamil syntax (X, Y நடுவில்). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "தஹஜ்ஜுத்",
+        "text": "இரவின் கடைசி மூன்றில் ஒரு பங்கின் தொடக்கம்",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the loan தஹஜ்ஜுத் row's concept with standard Tamil fraction syntax; தொடக்கம் is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the loan தஹஜ்ஜுத் row's concept with standard Tamil fraction syntax; தொடக்கம் is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ஃபஜ்ருக்கு 20 நிமிடம் முன்பு",
@@ -2050,16 +2050,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "അർദ്ധരാത്രി",
+        "text": "മഗ്രിബിനും സുബഹിനും ഇടയിലുള്ള മധ്യം",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced മഗ്രിബ് and സുബഹ് with standard Malayalam syntax (X-ിനും Y-ിനും ഇടയിൽ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced മഗ്രിബ് and സുബഹ് with standard Malayalam syntax (X-ിനും Y-ിനും ഇടയിൽ). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "തഹജ്ജുദ്",
+        "text": "രാത്രിയുടെ അവസാന മൂന്നിലൊരു ഭാഗത്തിന്റെ തുടക്കം",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced തഹജ്ജുദ് row's concept with standard Malayalam fraction syntax; തുടക്കം is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced തഹജ്ജുദ് row's concept with standard Malayalam fraction syntax; തുടക്കം is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "സുബഹിന് 20 മിനിറ്റ് മുമ്പ്",
@@ -2152,16 +2152,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "आधी रात",
+        "text": "मग़रिब और फज्र के बीच का मध्य बिंदु",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; के बीच is between, मध्य बिंदु is midpoint.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; के बीच is between, मध्य बिंदु is midpoint. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "अंतिम तिहाई",
+        "text": "रात के अंतिम तिहाई की शुरुआत",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "फज्र से 20 मिनट पहले",
@@ -2254,16 +2254,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Исламская полночь",
+        "text": "Середина между Магрибом и Фаджром",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; instrumental case after между is standard Russian.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; instrumental case after между is standard Russian. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Последняя треть",
+        "text": "Начало последней трети ночи",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Последняя треть.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from Последняя треть. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "За 20 минут до Фаджра",
@@ -2356,16 +2356,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Medianoche",
+        "text": "Punto medio entre Magreb y Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; punto medio is midpoint.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; punto medio is midpoint. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Último tercio",
+        "text": "Inicio del último tercio de la noche",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minutos antes del Fajr",
@@ -2458,16 +2458,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "午夜",
+        "text": "昏礼与晨礼之间的中点",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced 昏礼 and 晨礼 with the standard 与...之间的中点 construction, the very form the research note constructed.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced 昏礼 and 晨礼 with the standard 与...之间的中点 construction, the very form the research note constructed. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "夜间后三分之一",
+        "text": "夜间最后三分之一的开始",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third row plus standard syntax; 开始 is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the Last Third row plus standard syntax; 开始 is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "晨礼前20分钟",
@@ -2560,16 +2560,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ponoć",
+        "text": "Sredina između Akšama i Sabaha",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Akšam and Sabah with standard Bosnian syntax (sredina između X i Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Akšam and Sabah with standard Bosnian syntax (sredina između X i Y). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Zadnja trećina noći",
+        "text": "Početak zadnje trećine noći",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third loan plus standard syntax; početak is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the Last Third loan plus standard syntax; početak is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuta prije Sabaha",
@@ -2662,16 +2662,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Mesnatë",
+        "text": "Në mes të Akshamit dhe Imsakut",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Akshami and Imsaku with standard Albanian syntax (në mes të X dhe Y); the anchors follow the Imsaku convention the row set carries.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Akshami and Imsaku with standard Albanian syntax (në mes të X dhe Y); the anchors follow the Imsaku convention the row set carries. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "E treta e fundit",
+        "text": "Fillimi i të tretës së fundit të natës",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the Last Third loan plus standard syntax; fillimi is start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the Last Third loan plus standard syntax; fillimi is start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuta para Imsakut",
@@ -2764,16 +2764,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "เที่ยงคืน",
+        "text": "กึ่งกลางระหว่างมัฆริบและซุบฮิ",
         "source": null,
         "confidence": "low",
-        "note": "Needs the extras set confirmed first.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Needs the extras set confirmed first. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ช่วงสุดท้าย",
+        "text": "จุดเริ่มต้นของช่วงสุดท้ายของคืน",
         "source": null,
         "confidence": "low",
-        "note": "Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ก่อนซุบฮิ 20 นาที",
@@ -2866,16 +2866,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Middernacht",
+        "text": "Halfweg tussen Maghrib en Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Dutch pattern.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; standard Dutch pattern. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Laatste derde",
+        "text": "Begin van het laatste derde deel van de nacht",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 min voor de Fajr",
@@ -2968,16 +2968,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Meia-noite",
+        "text": "A meio caminho entre Maghrib e Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; standard Portuguese syntax, the fr pattern's counterpart.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; standard Portuguese syntax, the fr pattern's counterpart. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Último terço",
+        "text": "Início do último terço da noite",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from Último terço.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from Último terço. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 min antes do Fajr",
@@ -3070,16 +3070,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Түн ортасы",
+        "text": "Ақшам мен Таң арасындағы орта",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Түннің соңғы үштігі",
+        "text": "Түннің соңғы үштігінің басталуы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Таңға 20 минут бұрын",
@@ -3172,16 +3172,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Түн ортосу",
+        "text": "Шам менен Багымдаттын ортосу",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Түндүн акыркы үчтүгү",
+        "text": "Түндүн акыркы үчтүгүнүн башталышы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Багымдаттан 20 мүнөт мурун",
@@ -3274,16 +3274,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Нисфи шаб",
+        "text": "Миёни Шом ва Бомдод",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Сеяки охири шаб",
+        "text": "Оғози сеяки охири шаб",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 дақиқа пеш аз Бомдод",
@@ -3376,16 +3376,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Gije ýarysy",
+        "text": "Agşam bilen Ertiriň arasy",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Gijäniň soňky üçden biri",
+        "text": "Gijäniň soňky üçden biriniň başy",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Ertirden 20 minut öň",
@@ -3478,16 +3478,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Diggu guddi",
+        "text": "Diggante Timis ak Fajar",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; diggante is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; diggante is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ñetteelu guddi",
+        "text": "Tàmbali ñetteelu guddi bi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; tàmbali is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; tàmbali is the start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 min laata Fajar",
@@ -3580,16 +3580,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "मध्यरात्र",
+        "text": "मगरीब आणि फजर यांच्यामधली वेळ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "रात्रीचा शेवटचा भाग",
+        "text": "रात्रीच्या शेवटच्या भागाची सुरुवात",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "फजरच्या 20 मिनिटे आधी",
@@ -3682,16 +3682,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "నడిరేయి",
+        "text": "మగ్రిబ్కు ఫజ్ర్కు మధ్యలో",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced మగ్రిబ్ and ఫజ్ర్ with standard Telugu syntax (X, Y మధ్యలో).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced మగ్రిబ్ and ఫజ్ర్ with standard Telugu syntax (X, Y మధ్యలో). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "తహజ్జుద్",
+        "text": "రాత్రి చివరి మూడవ వంతు ప్రారంభం",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; రాత్రి is night, చివరి is last, మూడవ వంతు is a third, ప్రారంభం is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; రాత్రి is night, చివరి is last, మూడవ వంతు is a third, ప్రారంభం is beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ఫజ్ర్కు 20 నిమిషాల ముందు",
@@ -3784,16 +3784,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "મધ્યરાત્રિ",
+        "text": "મગરિબ અને ફજર વચ્ચે",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced મગરિબ and ફજર with standard Gujarati syntax (X અને Y વચ્ચે).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced મગરિબ and ફજર with standard Gujarati syntax (X અને Y વચ્ચે). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "તહજ્જુદ",
+        "text": "રાતના છેલ્લા ત્રીજા ભાગની શરૂઆત",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; રાત is night, છેલ્લા is last, ત્રીજા ભાગ is third part, શરૂઆત is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; રાત is night, છેલ્લા is last, ત્રીજા ભાગ is third part, શરૂઆત is beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ફજરના 20 મિનિટ પહેલાં",
@@ -3886,16 +3886,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "ಮಧ್ಯರಾತ್ರಿ",
+        "text": "ಮಗ್ರಿಬ್ ಮತ್ತು ಫಜರ್ ನಡುವೆ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced ಮಗ್ರಿಬ್ and ಫಜರ್ with standard Kannada syntax (X ಮತ್ತು Y ನಡುವೆ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced ಮಗ್ರಿಬ್ and ಫಜರ್ with standard Kannada syntax (X ಮತ್ತು Y ನಡುವೆ). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ತಹಜ್ಜುದ್",
+        "text": "ರಾತ್ರಿಯ ಕೊನೆಯ ಮೂರನೇ ಒಂದು ಭಾಗದ ಆರಂಭ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ರಾತ್ರಿ is night, ಕೊನೆಯ is last, ಮೂರನೇ ಒಂದು ಭಾಗ is a third, ಆರಂಭ is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; ರಾತ್ರಿ is night, ಕೊನೆಯ is last, ಮೂರನೇ ಒಂದು ಭಾಗ is a third, ಆರಂಭ is beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ಫಜರ್‌ಗೆ 20 ನಿಮಿಷ ಮೊದಲು",
@@ -3988,16 +3988,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "እኩለ ሌሊት",
+        "text": "በመግሪብና በፈጅር መካከል",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced መግሪብ and ፈጅር with standard Amharic syntax (በXና በY መካከል).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced መግሪብ and ፈጅር with standard Amharic syntax (በXና በY መካከል). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ተሃጁድ",
+        "text": "የሌሊቱ የመጨረሻ ሶስተኛ መጀመሪያ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ሌሊት is night, መጨረሻ is last, ሶስተኛ is third, መጀመሪያ is beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; ሌሊት is night, መጨረሻ is last, ሶስተኛ is third, መጀመሪያ is beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ከፈጅር 20 ደቂቃ በፊት",
@@ -4090,16 +4090,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Walakkaa halkanii",
+        "text": "Gidduu Magribii fi Fajrii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Magribii and Fajrii with standard Oromo syntax (gidduu X fi Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Magribii and Fajrii with standard Oromo syntax (gidduu X fi Y). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sadaffaa halkanii",
+        "text": "Jalqaba sadaffaa halkanii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; jalqaba is beginning, sadaffaa is third, halkanii is of the night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; jalqaba is beginning, sadaffaa is third, halkanii is of the night. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Daqiiqaa 20 dura Fajrii",
@@ -4192,16 +4192,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "su cɛmancɛ",
+        "text": "Magribi ni fajiri cɛ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced fitiri/fajiri with standard Bambara syntax (X ni Y cɛ).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced fitiri/fajiri with standard Bambara syntax (X ni Y cɛ). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Tahajudi",
+        "text": "Su laban sɔrɔ fɔlɔ",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; su is night, laban is last, sɔrɔ is part, fɔlɔ is first/beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; su is night, laban is last, sɔrɔ is part, fɔlɔ is first/beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Fajiri 20 miniti ɲɛfɛ",
@@ -4294,16 +4294,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Hatinggabi",
+        "text": "Kalahati sa pagitan ng Maghrib at Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Maghrib and Fajr with standard Tagalog syntax (sa pagitan ng X at Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Maghrib and Fajr with standard Tagalog syntax (sa pagitan ng X at Y). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Huling ikatlo ng gabi",
+        "text": "Simula ng huling ikatlo ng gabi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; simula is start, huling ikatlo is last third, gabi is night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; simula is start, huling ikatlo is last third, gabi is night. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago ang Fajr",
@@ -4396,16 +4396,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "hakkunde jemma",
+        "text": "Hakkunde Magrib e Fajiri",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced Magrib (furura) and Fajiri with standard Fulfulde syntax (hakkunde X e Y).. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Magrib (furura) and Fajiri with standard Fulfulde syntax (hakkunde X e Y). Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "tataɓal jemma",
+        "text": "Fuɗɗoode tataɓal jemma",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; fuɗɗoode is beginning, tataɓal is third, jemma is night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; fuɗɗoode is beginning, tataɓal is third, jemma is night. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Minutooji 20 ado Fajiri",
@@ -4498,16 +4498,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "آدھی رات",
+        "text": "نماشاں تے سرگی دے وچکار",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names with Punjabi syntax; وچکار is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names with Punjabi syntax; وچکار is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "آخری تہائی",
+        "text": "رات دے آخری تہائی دا شروع",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; names the sourced Last Third row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; names the sourced Last Third row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "سرگی توں 20 منٹ پہلاں",
@@ -4600,16 +4600,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "اڌ رات",
+        "text": "مغرب ۽ فجر جي وچ ۾",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; وچ ۾ is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; وچ ۾ is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "رات جو آخري ٽيون",
+        "text": "رات جي آخري ٽئين حصي جي شروعات",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; names the sourced Last Third row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; names the sourced Last Third row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "فجر کان 20 منٽ اڳ",
@@ -4702,16 +4702,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "يېرىم كېچە",
+        "text": "شام بىلەن بامدات ئارىسىدا",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; ئارىسىدا is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; ئارىسىدا is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "كېچىنىڭ ئاخىرقى ئۈچى",
+        "text": "كېچىنىڭ ئاخىرقى ئۈچىنىڭ بېشى",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; بېشى is its beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; بېشى is its beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "بامداتتىن 20 مىنۇت بۇرۇن",
@@ -4804,16 +4804,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نیوەشەو",
+        "text": "لە نێوان مەغریب و بەیانی",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; لە نێوان is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; لە نێوان is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "سێیەکی کۆتایی شەو",
+        "text": "دەستپێکی سێیەکی کۆتایی شەو",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; دەستپێک is the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; دەستپێک is the start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 خولەک پێش بەیانی",
@@ -4906,16 +4906,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Àárín òru",
+        "text": "Àárín Magrib àti Àárọ̀",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; àárín is the middle.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; àárín is the middle. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Apá ìkẹyìn òru",
+        "text": "Ìbẹ̀rẹ̀ apá ìkẹyìn òru",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; ìbẹ̀rẹ̀ is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; ìbẹ̀rẹ̀ is the beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Ìṣẹ́jú 20 ṣáájú Àárọ̀",
@@ -5008,16 +5008,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah wengi",
+        "text": "Antarané Maghrib lan Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antarané is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; antarané is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Pungkasan wengi",
+        "text": "Wiwitan telung bagéyan pungkasan wengi",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; wiwitan is the beginning and telung bagéyan the three parts.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; wiwitan is the beginning and telung bagéyan the three parts. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 menit sadurungé Subuh",
@@ -5110,16 +5110,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah peuting",
+        "text": "Antara Magrib jeung Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antara ... jeung is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; antara ... jeung is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ahir peuting",
+        "text": "Mimiti sapartilu ahir peuting",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; mimiti is the beginning and sapartilu the third.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; mimiti is the beginning and sapartilu the third. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 menit saméméh Subuh",
@@ -5212,16 +5212,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "ညဉ့်အလယ်",
+        "text": "မဂ်ရိဗ်နှင့် ဖဂျရ်အကြား အလယ်",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; အကြား အလယ် is the middle of the span between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; အကြား အလယ် is the middle of the span between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ညဉ့်နောက်ဆုံးသုံးပုံ",
+        "text": "ညဉ့်နောက်ဆုံးသုံးပုံ အစပိုင်း",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; အစပိုင်း is the beginning part.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; အစပိုင်း is the beginning part. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ဖဂျရ်မတိုင်မီ 20 မိနစ်",
@@ -5314,16 +5314,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Төн уртасы",
+        "text": "Ахшам намазы белән Иртәнге намаз арасының уртасы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; белән is and, арасының уртасы the middle of the span.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; белән is and, арасының уртасы the middle of the span. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Төннең соңгы өчлеге",
+        "text": "Төннең соңгы өчлегенең башы",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; башы is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; башы is the beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Иртәнге намазга 20 минут кала",
@@ -5416,16 +5416,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Ісламська північ",
+        "text": "Посередині між Магрібом і Фаджром",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; посередині між is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; посередині між is halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Остання третина",
+        "text": "Початок останньої третини ночі",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived; початок is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; початок is the beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "За 20 хвилин до Фаджру",
@@ -5518,16 +5518,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tangah malam",
+        "text": "Di tangah antaro Magrib jo Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antaro ... jo is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; antaro ... jo is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Tigo paheuik tarakhia",
+        "text": "Mulo tigo paheuik tarakhia malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; mulo is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; mulo is the beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minik sabalun Subuh",
@@ -5620,16 +5620,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengnga bengi",
+        "text": "E tengnga antara Magreb ban Subuh",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; antara ... ban is between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; antara ... ban is between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ahir bengi tello' bhagi",
+        "text": "Onorna bengi tello' bhagi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; onorna is the beginning.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; onorna is the beginning. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 menit sabellunna Subuh",
@@ -5722,16 +5722,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengnga bessi",
+        "text": "Ri tengnga antamengi Magrib ri Subu'",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced names; antamengi is between, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; antamengi is between, recorded derivation. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Bessi tellu bageang",
+        "text": "Onronna bessi tellu bageang",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; onronna is the beginning, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; onronna is the beginning, recorded derivation. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 menit sabbela Subu'",
@@ -5824,16 +5824,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Chawpi tuta",
+        "text": "Chawpin Inti chinkaywan Fajrpa",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced names; chawpin is the middle of, -wan and, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; chawpin is the middle of, -wan and, recorded derivation. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Tuta qhipa kimsa ch'iqa",
+        "text": "Tuta qhipa kimsa ch'iqa qallariy",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; qallariy is the beginning, recorded derivation.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; qallariy is the beginning, recorded derivation. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Fajrman 20 minutu ñawpaq",
@@ -5926,16 +5926,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "真夜中",
+        "text": "マグリブとファジュルのちょうど真ん中",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; XとYのちょうど真ん中 is exactly halfway between X and Y.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; XとYのちょうど真ん中 is exactly halfway between X and Y. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "夜の最後の三分の一",
+        "text": "夜の最後の三分の一の始まり",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; の始まり is the start of.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; の始まり is the start of. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "ファジュルの20分前",
@@ -6028,16 +6028,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "자정",
+        "text": "마그립과 파즈르의 정가운데",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; X과 Y의 정가운데 is the middle point between X and Y, 과 the after-consonant linker.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; X과 Y의 정가운데 is the middle point between X and Y, 과 the after-consonant linker. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "밤의 마지막 3분의 1",
+        "text": "밤의 마지막 3분의 1의 시작",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; 의 시작 is the start of.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; 의 시작 is the start of. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "파즈르 20분 전",
@@ -6130,16 +6130,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Mezzanotte",
+        "text": "A metà tra Maghrib e Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; a metà tra X e Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; a metà tra X e Y is halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ultimo terzo della notte",
+        "text": "Inizio dell'ultimo terzo della notte",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; inizio is the start, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; inizio is the start, the rest the loan phrase in full. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuti prima di Fajr",
@@ -6232,16 +6232,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Północ",
+        "text": "W połowie między Maghrib a Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; w połowie między X a Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; w połowie między X a Y is halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ostatnia 1/3 nocy",
+        "text": "Początek ostatniej 1/3 nocy",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; początek is the start, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; początek is the start, the rest the loan phrase in full. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minut przed Fajr",
@@ -6334,16 +6334,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Miezul nopții",
+        "text": "La mijloc între Maghrib și Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; la mijloc între X și Y is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; la mijloc între X și Y is halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Ultima treime a nopții",
+        "text": "Începutul ultimei treimi a nopții",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; începutul is the start of, the rest the loan phrase in its inflected form.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; începutul is the start of, the rest the loan phrase in its inflected form. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 de minute înainte de Fajr",
@@ -6436,16 +6436,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tungang gabii",
+        "text": "Taliwala sa Maghrib ug Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; taliwala sa is halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; taliwala sa is halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Kataposang ikatulo",
+        "text": "Pagsugod sa kataposang ikatulo sa gabii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; pagsugod sa is the start of, and the phrase spells the loan in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; pagsugod sa is the start of, and the phrase spells the loan in full. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto sa wala pa ang Fajr",
@@ -6538,16 +6538,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengnga ti rabii",
+        "text": "Tengnga a pagbaetan ti Maghrib ken Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; tengnga a pagbaetan ti X ken Y is the middle point between X and Y.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; tengnga a pagbaetan ti X ken Y is the middle point between X and Y. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Maudi a maikatlo",
+        "text": "Rugian ti maudi a maikatlo ti rabii",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; rugian ti is the start of, and the phrase spells the loan in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; rugian ti is the start of, and the phrase spells the loan in full. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 a minuto sakbay ti Fajr",
@@ -6640,16 +6640,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Nửa đêm",
+        "text": "Đúng giữa Maghrib và Fajr",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; đúng giữa X và Y is exactly halfway between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; đúng giữa X và Y is exactly halfway between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "1/3 cuối của đêm",
+        "text": "Bắt đầu 1/3 cuối của đêm",
         "source": "derived",
         "confidence": "medium",
-        "note": "Derived from the sourced names; bắt đầu is the start of, the rest the loan phrase in full.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced names; bắt đầu is the start of, the rest the loan phrase in full. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Trước Fajr 20 phút",
@@ -6742,16 +6742,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "آدھی رات",
+        "text": "نِماشَاں اَتے دَھمِّی دے وچکار",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced نِماشَاں and دَھمِّی in Saraiki syntax: اَتے is and, دے وچکار between.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced نِماشَاں and دَھمِّی in Saraiki syntax: اَتے is and, دے وچکار between. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "رات دی آخری تہائی",
+        "text": "رات دی آخری تہائی دا آغاز",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; آغاز is the start, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; آغاز is the start, riding the loaned label itself. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "دَھمِّی توں 20 منٹ پہلے",
@@ -6844,16 +6844,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نصف شب",
+        "text": "نماشاں و فجر دا وچکار",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced نماشاں and فجر; و is and, وچکار between, the register's shared Perso-Arabic forms.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced نماشاں and فجر; و is and, وچکار between, the register's shared Perso-Arabic forms. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "آخری تہائی",
+        "text": "رات دی آخری تہائی دا آغاز",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; آغاز is the start, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; آغاز is the start, riding the loaned label itself. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "فجر 20 منٹ پہلے",
@@ -6946,16 +6946,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "نصف شب",
+        "text": "شام تہ صُبُح درمیان",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced شام and صُبُح; تہ is Kashmiri's and, درمیان the Perso-Arabic between the register shares.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced شام and صُبُح; تہ is Kashmiri's and, درمیان the Perso-Arabic between the register shares. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "آخری تہائی",
+        "text": "رات کی آخری تہائی کا آغاز",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; the register's Urdu-shaped construction in Kashmiri script, آغاز the start.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; the register's Urdu-shaped construction in Kashmiri script, آغاز the start. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "صُبُح 20 منٹ پہلے",
@@ -7048,16 +7048,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Nisfu layl",
+        "text": "Magaribi a Faaji dawu",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the loans; a is Kanuri's with, dawu its middle.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the loans; a is Kanuri's with, dawu its middle. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Tultu layl",
+        "text": "Tultu layl badi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; badi is Kanuri's beginning, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; badi is Kanuri's beginning, riding the loaned label itself. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "Faaji gaba 20 minti",
@@ -7150,16 +7150,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah malam",
+        "text": "Antara Magrib dan Subuh",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived from the sourced Magrib and Subuh; antara and dan are the Malay register the list itself rides.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived from the sourced Magrib and Subuh; antara and dan are the Malay register the list itself rides. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sepertiga malam",
+        "text": "Mula sa sepertiga malam",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived; mula is the register's start, sa the of-marker, riding the loaned label itself.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived; mula is the register's start, sa the of-marker, riding the loaned label itself. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -7253,16 +7253,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tungang gab-i",
+        "text": "Taliwala sang Maghrib kag Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Katapusan nga ikatulo",
+        "text": "Pagsugod sang katapusan nga ikatulo sang gab-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: katapusan the last, ikatulo the third; the full phrase katapusan nga ikatulo sang gab-i runs past the 24-char label budget, so the row carries the head. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto antes sang Fajr",
@@ -7355,16 +7355,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tangang banggi",
+        "text": "Sa kabangaan kan Magrib asin Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row. Description rule (owner order 2026-11-01, T-541): the owner's exact string Sa kabangaan kan Magrib asin Fajr replaces the pre-sweep Tangâ kan Maghrib asg Fajr (comment 5354 adjudicated asg not a Bikol word) - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Huring ikatolo",
+        "text": "Poon kan huring ikatolo kan banggi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: huring the last, ikatolo the third; the phrase fits the budget without the night word. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago an Fajr",
@@ -7458,16 +7458,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tunga nga gab-i",
+        "text": "Butnga han Maghrib ngan Fajr",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Kataposan nga ikatulo",
+        "text": "Pagtikang han kataposan nga ikatulo han gab-i",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: kataposan the last, ikatulo the third.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: kataposan the last, ikatulo the third. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 ka minuto ugsa han Fajr",
@@ -7560,16 +7560,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah kagabi-i",
+        "text": "Sa gitna ng Magrib at Subuh",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Katelo a kagabi-i",
+        "text": "Simula ng katatlong bahagi ng gabi",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: katelo the third (telo three on the ka- ordinal) with the genitive a over kagabi-i; the final-third phrase itself is unattested, so the last-third sense rides the explanation line. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minuto bago ang Subuh",
@@ -7663,16 +7663,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "Tengah malam",
+        "text": "Pertengahan antara Maghrib dan Subuh",
         "source": "derived",
         "confidence": "low",
-        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "Sepertiga malam",
+        "text": "Permulaan sepertiga akhir malam",
         "source": "derived",
         "confidence": "low",
-        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "The ms catalog's owner-ruled D81 shape over the nearest written standard. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 minit sebelum Subuh",
@@ -7765,16 +7765,16 @@
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
-        "text": "ግማዕ ለይቲ",
+        "text": "ኣብ ማእከል ምግሪብን ፈጅርን",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: the row reads midway between Maghrib and Fajr; no table prints the row. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "Start of the last third of the night": {
-        "text": "ወሲኽታን ሳልሳይ ለይቲ",
+        "text": "ምብጻሕ ወሲኽታን ሳልሳይ ለይቲ",
         "source": "derived",
         "confidence": "low",
-        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night.. Short-noun rule (owner order 2026-10-31, the 2.43.1 read): the explanation now carries the locale's own row noun - the label itself - never the long derivation this entry first recorded"
+        "note": "Derived: ወሲኽታን the last, ሳልሳይ the third, ለይቲ the night. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
       },
       "20 mins before Fajr": {
         "text": "20 ደቒቕ ቅድሚ ፈጅር",
