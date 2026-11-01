@@ -330,5 +330,17 @@
   {
     "version": "2.43.20",
     "reason": "2026-11-01 the T-538 step-3 atlas commit takes the single patch step from uat's 2.43.19 while the parallel t542-conformance branch already holds 2.43.20 through 2.43.22 unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.25",
+    "reason": "2026-11-01 the T-538 diag branches (t538-diag-c1/c2/c3, step 4) sit on the lane's rebased stamp 4f742f1d 2.43.25 while the parallel t561-show-progress branch holds e43e72c9 at the same number unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.26",
+    "reason": "2026-11-01 the T-538 diag branches (t538-diag-c1/c2/c3, step 4) sit on the lane's rebased stamp 1b4c8b6c 2.43.26 while the parallel t561-show-progress branch holds e07578c0 at the same number unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.28",
+    "reason": "2026-11-01 the T-538 diag branches t538-diag-c1/c2/c3 each stand as one internally-consistent commit off the lane tip 5010cae3 (2.43.27), and the discipline gate allows exactly one patch step per commit, so all three take 2.43.28; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

@@ -202,43 +202,39 @@ const LATIN: LocaleTypography = {
   wordFace: false,
 };
 
-// Simplified Chinese rides its own subset pair (plan T-419 decision 8): the full
-// statics run near 10MB a weight, so the bundled pair is cut over the closed
-// string set - every character of the zh-Hans catalog, its native-strings row,
-// its widget-statics row and its endonym, 378 characters, gated by the glyph
-// lock (shared/i18n/cjk-glyph-lock.json) - a fortieth of the bytes. This wave's
-// own measurement over the cut subsets (fontTools, both weights): hhea ascent
-// 1160, descent -288, lineGap 0 against UPM 1000, a 1.448em box the win ink
-// (1160/288) matches exactly, so the box clears the ink and no surface pins a
-// script box - the Thai row-87 law
+// Simplified Chinese under the C3 pair-drop (plan T-538): the zh-Hans subset
+// binaries leave the bundle entirely, so this record stops naming a pair - its
+// word surfaces ride the system default (Roboto primary, the Han glyphs through
+// the OS fallback chain: Noto Sans CJK on the 3T, Samsung's CJK face on the S23,
+// PingFang SC on the XS) at the system box, wordFace false. The founding record's
+// own tall-row read (Android stacks a fallback run's line spacing on top of any
+// pin) is the scored cost the sheet regression gates on glass; Android 9's
+// fallback chain carries no Medium, so medium-styled Han words snap to the
+// chain's nearest weight - the screen reads both
 const HANS: LocaleTypography = {
-  familyRegular: 'NotoSansSC-Subset-Regular',
-  familyMedium: 'NotoSansSC-Subset-Medium',
+  familyRegular: TEXT.family.regular,
+  familyMedium: TEXT.family.medium,
   familyDigits: TEXT.family.medium,
   familyRowTime: TEXT.family.regular,
   countdownSize: TEXT.sizeLarge,
   size: (n) => n,
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
-  wordFace: true,
+  wordFace: false,
 };
 
-// Japanese rides the same pipeline (plan T-452 decision 3): the cut pair carries
-// the closed string set whole, 321 characters, gated by the same glyph lock.
-// This wave's own measurement over the cut subsets (fontTools, both weights):
-// hhea ascent 1160, descent -288, lineGap 0 against UPM 1000, a 1.448em box the
-// win ink (1160/288) matches exactly, so the box clears the ink and no surface
-// pins a script box - the Thai row-87 law, the HANS pattern
+// Japanese rides the same C3 pair-drop (plan T-538): no bundled pair, the kana
+// through the OS fallback chain under the system box, the HANS pattern
 const JAPANESE: LocaleTypography = {
-  familyRegular: 'NotoSansJP-Subset-Regular',
-  familyMedium: 'NotoSansJP-Subset-Medium',
+  familyRegular: TEXT.family.regular,
+  familyMedium: TEXT.family.medium,
   familyDigits: TEXT.family.medium,
   familyRowTime: TEXT.family.regular,
   countdownSize: TEXT.sizeLarge,
   size: (n) => n,
   lineHeight: (n) => n,
   letterSpacing: (n) => n,
-  wordFace: true,
+  wordFace: false,
 };
 
 // Korean rides the KR twin of the same cut: 311 characters, the same measured
@@ -414,8 +410,8 @@ const RECORDS: Record<LocaleId, LocaleTypography> = {
   yo: YORUBA,
   jv: LATIN,
   su: LATIN,
-  // The CJK pair's own wave: ja and ko ride their cut subset pairs (plan
-  // T-452 decision 3), never the full statics
+  // ko rides its cut KR subset pair (plan T-452 decision 3) alone under the C3
+  // pair-drop (plan T-538); ja rides the fallback through the JAPANESE record
   ja: JAPANESE,
   ko: KOREAN,
   // Roboto carries every Italian and Polish character of both locales' whole

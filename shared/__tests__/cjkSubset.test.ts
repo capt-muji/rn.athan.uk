@@ -9,17 +9,21 @@
  * subsets miss fails here naming the character, and a byte the strings dropped
  * leaves a stale lock character named the same way, so the subsets and the strings
  * cannot drift apart silently. Regenerate with the command in the lock's _comment.
+ *
+ * Cut state C3 (T-538 step 4): the zh-Hans and ja pairs are dropped - their locales
+ * ride the OS fallback and the sheet regression is the pick rule's own gate on that
+ * cost - so this lock carries the ko pair alone and the files binding names exactly
+ * the KR pair. Nothing bundled carries either dropped endonym: the rows below prove
+ * the drop is real, not a lock that merely stopped looking.
  */
 
 import { createHash } from 'node:crypto';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 import lock from '@/shared/i18n/cjk-glyph-lock.json';
-import { ja } from '@/shared/i18n/ja';
 import { ko } from '@/shared/i18n/ko';
-import { zhHans } from '@/shared/i18n/zh-Hans';
 import { nativeLanguageName } from '@/shared/languageNames';
 
 const NATIVE = JSON.parse(readFileSync(join(__dirname, '..', 'i18n', 'native-strings.json'), 'utf8')) as Record<
@@ -35,7 +39,7 @@ const STATICS = JSON.parse(readFileSync(join(__dirname, '..', 'i18n', 'widget-st
   Record<string, string>
 >;
 
-const CATALOGS = { 'zh-Hans': zhHans, ja, ko } as const;
+const CATALOGS = { ko } as const;
 type CjkLocale = keyof typeof CATALOGS;
 
 /**
@@ -61,8 +65,32 @@ const closedChars = (locale: CjkLocale): Set<string> => {
 
 const codepointOf = (ch: string): string => `U+${ch.codePointAt(0)?.toString(16).toUpperCase().padStart(4, '0')}`;
 
+// The pair-drop shape (C3): the ko pair stays whole while the zh-Hans and ja pairs
+// leave the lock with their binaries - pure over the lock data so the probe row
+// below can corrupt a copy and redden the same code the committed lock runs
+const KR_FILES = ['NotoSansKR-Subset-Medium.ttf', 'NotoSansKR-Subset-Regular.ttf'];
+
+const pairDropFailures = (lockData: Record<string, unknown>): string[] => {
+  const rows: Array<string | null> = [];
+  for (const locale of ['zh-Hans', 'ja']) {
+    rows.push(rowWhen(locale in lockData, `${locale}: the lock still carries a dropped pair's character row`));
+  }
+  const files = Object.keys((lockData.files as Record<string, string>) ?? {}).sort();
+  for (const name of files) {
+    if (!KR_FILES.includes(name)) {
+      rows.push(`files: the dropped pair's binary ${name} is still bound`);
+    }
+  }
+  for (const name of KR_FILES) {
+    if (!files.includes(name)) {
+      rows.push(`files: the ko pair's ${name} lost its binding`);
+    }
+  }
+  return rowsOf(rows);
+};
+
 describe('the CJK glyph lock', () => {
-  it.each(['zh-Hans', 'ja', 'ko'] as const)('%s locks every character its closed string set carries', (locale) => {
+  it.each(['ko'] as const)('%s locks every character its closed string set carries', (locale) => {
     const locked = new Set(lock[locale].split(''));
     const failures: string[] = [];
     for (const ch of closedChars(locale)) {
@@ -73,7 +101,7 @@ describe('the CJK glyph lock', () => {
     expect(failures).toEqual([]);
   });
 
-  it.each(['zh-Hans', 'ja', 'ko'] as const)('%s keeps no character the strings have dropped', (locale) => {
+  it.each(['ko'] as const)('%s keeps no character the strings have dropped', (locale) => {
     const closed = closedChars(locale);
     const failures: string[] = [];
     for (const ch of lock[locale].split('')) {
@@ -104,6 +132,10 @@ describe('the CJK glyph lock', () => {
       expect(`${name}: ${digest}`).toBe(`${name}: ${files[name]}`);
     }
   });
+
+  it('carries no lock row or file binding for the dropped zh-Hans and ja pairs', () => {
+    expect(pairDropFailures(lock as Record<string, unknown>)).toEqual([]);
+  });
 });
 
 /**
@@ -121,10 +153,6 @@ const FONTS_DIR = join(__dirname, '..', '..', 'assets', 'fonts');
 type Script = 'SC' | 'JP' | 'KR';
 
 const SUBSET_FACES: ReadonlyArray<{ name: string; script: Script }> = [
-  { name: 'NotoSansSC-Subset-Regular.ttf', script: 'SC' },
-  { name: 'NotoSansSC-Subset-Medium.ttf', script: 'SC' },
-  { name: 'NotoSansJP-Subset-Regular.ttf', script: 'JP' },
-  { name: 'NotoSansJP-Subset-Medium.ttf', script: 'JP' },
   { name: 'NotoSansKR-Subset-Regular.ttf', script: 'KR' },
   { name: 'NotoSansKR-Subset-Medium.ttf', script: 'KR' },
 ];
@@ -136,6 +164,10 @@ const ENDONYM: Record<Script, readonly number[]> = {
   JP: [0x65e5, 0x672c, 0x8a9e],
   KR: [0xd55c, 0xad6d, 0xc5b4],
 };
+
+// The dropped pairs' endonyms: every bundled face must lack them, or the OS
+// fallback the C3 state promises is not what renders the sheet's rows
+const DROPPED_ENDONYMS = { SC: ENDONYM.SC, JP: ENDONYM.JP } as const;
 
 const DIGITS_AND_PERIOD: readonly number[] = [...'0123456789.'].map((ch) => ch.charCodeAt(0));
 
@@ -357,9 +389,21 @@ const integrityFailures = (
 
 describe('the CJK subsets pinned byte by byte', () => {
   it('spells each pinned endonym exactly as its language row renders it', () => {
-    expect(String.fromCodePoint(...ENDONYM.SC)).toBe(nativeLanguageName('zh-Hans'));
-    expect(String.fromCodePoint(...ENDONYM.JP)).toBe(nativeLanguageName('ja'));
     expect(String.fromCodePoint(...ENDONYM.KR)).toBe(nativeLanguageName('ko'));
+  });
+
+  it('no bundled face carries the dropped pairs endonyms', () => {
+    const rows: string[] = [];
+    for (const name of readdirSync(FONTS_DIR).filter((file) => file.endsWith('.ttf'))) {
+      const { view, tables } = readFace(name);
+      const resolve = glyphReader(view, cmapSubtables(view, tables));
+      for (const script of ['SC', 'JP'] as const) {
+        for (const cp of DROPPED_ENDONYMS[script]) {
+          if (resolve(cp) !== 0) rows.push(`${name}: still maps ${hex4(cp)} (${script} endonym)`);
+        }
+      }
+    }
+    expect(rows).toEqual([]);
   });
 
   it.each(FACE_ROWS)('%s carries the pinned three-way metrics', (name) => {
@@ -387,7 +431,7 @@ describe('the CJK subsets pinned byte by byte', () => {
   it('reddens on a shifted hhea ascent byte, naming the file and the property', () => {
     const probeDir = mkdtempSync(join(tmpdir(), 'cjk-subset-gate-'));
     try {
-      const probeName = 'NotoSansSC-Subset-Regular.ttf';
+      const probeName = 'NotoSansKR-Subset-Regular.ttf';
       writeFileSync(join(probeDir, probeName), readFileSync(join(FONTS_DIR, probeName)));
       const { view, tables } = readFace(probeName, probeDir);
       const ascent = PARITY_PINS[0];
@@ -407,10 +451,10 @@ describe('the CJK subsets pinned byte by byte', () => {
   it('reddens on a dropped endonym cmap mapping, naming the file and the codepoint', () => {
     const probeDir = mkdtempSync(join(tmpdir(), 'cjk-subset-gate-'));
     try {
-      const probeName = 'NotoSansJP-Subset-Regular.ttf';
+      const probeName = 'NotoSansKR-Subset-Medium.ttf';
       writeFileSync(join(probeDir, probeName), readFileSync(join(FONTS_DIR, probeName)));
       const { view, tables } = readFace(probeName, probeDir);
-      const dropped = 0x65e5;
+      const dropped = 0xd55c;
       const sub = windowsSubtable(cmapSubtables(view, tables)).at;
       const segCount = view.getUint16(sub + 6) / 2;
       const endCodes = sub + 14;
@@ -425,9 +469,24 @@ describe('the CJK subsets pinned byte by byte', () => {
       expect(seg).toBeGreaterThanOrEqual(0);
       view.setUint16(startCodes + seg * 2, dropped + 1);
       view.setUint16(endCodes + seg * 2, dropped + 1);
-      expect(integrityFailures(probeName, view, tables, 'JP')).toEqual([`${probeName}: cmap lacks U+65E5 (endonym)`]);
+      expect(integrityFailures(probeName, view, tables, 'KR')).toEqual([`${probeName}: cmap lacks U+D55C (endonym)`]);
     } finally {
       rmSync(probeDir, { recursive: true, force: true });
     }
+  });
+
+  it('reddens on a dropped pair creeping back into the lock, naming the row and the binary', () => {
+    const corrupted = {
+      ...(lock as Record<string, unknown>),
+      'zh-Hans': '一',
+      files: {
+        ...((lock as { files: Record<string, string> }).files ?? {}),
+        'NotoSansSC-Subset-Regular.ttf': 'deadbeef',
+      },
+    };
+    expect(pairDropFailures(corrupted)).toEqual([
+      "zh-Hans: the lock still carries a dropped pair's character row",
+      "files: the dropped pair's binary NotoSansSC-Subset-Regular.ttf is still bound",
+    ]);
   });
 });

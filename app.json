@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.43.27",
+    "version": "2.43.28",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -183,8 +183,6 @@
             "./assets/fonts/NotoSansTamil-Medium.ttf",
             "./assets/fonts/NotoSansMalayalam-Regular.ttf",
             "./assets/fonts/NotoSansMalayalam-Medium.ttf",
-            "./assets/fonts/NotoSansSC-Subset-Regular.ttf",
-            "./assets/fonts/NotoSansSC-Subset-Medium.ttf",
             "./assets/fonts/NotoSans-Regular.ttf",
             "./assets/fonts/NotoSans-Medium.ttf",
             "./assets/fonts/NotoSansTelugu-Regular.ttf",
@@ -197,8 +195,6 @@
             "./assets/fonts/NotoSansEthiopic-Medium.ttf",
             "./assets/fonts/NotoSansMyanmar-Regular.ttf",
             "./assets/fonts/NotoSansMyanmar-Medium.ttf",
-            "./assets/fonts/NotoSansJP-Subset-Regular.ttf",
-            "./assets/fonts/NotoSansJP-Subset-Medium.ttf",
             "./assets/fonts/NotoSansKR-Subset-Regular.ttf",
             "./assets/fonts/NotoSansKR-Subset-Medium.ttf"
           ]

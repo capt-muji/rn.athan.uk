@@ -8,6 +8,12 @@
  * 3T. This gate renders the sheet, reads each row's RESOLVED fontFamily, parses the named
  * bundled TTF's own cmap, and fails naming any endonym codepoint the face lacks, so a row
  * that would fall back on glass cannot pass here.
+ *
+ * Cut state C3 (T-538 step 4): the zh-Hans and ja pairs are dropped from the bundle, so
+ * their rows CANNOT resolve a bundled face - by design they ride the system default and
+ * their Han glyphs fall to the OS chain, the founding record's own tall-row cost the
+ * sheet regression reads on glass. The dropped rows are pinned to that state below
+ * (nothing bundled may creep back for them); every other row keeps the coverage law.
  */
 
 import { readFileSync } from 'node:fs';
@@ -97,6 +103,13 @@ const coverOf = (family: string): ((cp: number) => boolean) => {
 
 const codepointOf = (ch: string): string => `U+${ch.codePointAt(0)?.toString(16).toUpperCase().padStart(4, '0')}`;
 
+// The C3 pair-drop's two locales: their rows ride the system default (no bundled
+// pair exists to name), and the fallback cost is the pick rule's own screen read
+const DROPPED_ROWS: Record<string, string> = {
+  'zh-Hans': 'Roboto-Regular',
+  ja: 'Roboto-Regular',
+};
+
 interface ResolvedRowStyle {
   fontFamily?: unknown;
   lineHeight?: unknown;
@@ -126,7 +139,7 @@ const rowLabelStylesUnder = async (locale: LocaleId): Promise<Record<string, Res
 };
 
 describe("the language rows' face coverage", () => {
-  it('resolves every row to a bundled face that carries its whole endonym, so no label run falls back on glass', async () => {
+  it('resolves every carried row to a bundled face that carries its whole endonym, and the dropped rows to the system default', async () => {
     const styles = await rowLabelStylesUnder('en');
 
     const failures: string[] = [];
@@ -134,6 +147,13 @@ describe("the language rows' face coverage", () => {
       const family = styles[entry.id]?.fontFamily;
       if (typeof family !== 'string') {
         failures.push(`${entry.id}: the row resolves no fontFamily`);
+        continue;
+      }
+      const dropped = DROPPED_ROWS[entry.id];
+      if (dropped !== undefined) {
+        if (family !== dropped) {
+          failures.push(`${entry.id}: the dropped pair's row resolves ${family}, pinned the system default ${dropped}`);
+        }
         continue;
       }
       const covers = coverOf(family);

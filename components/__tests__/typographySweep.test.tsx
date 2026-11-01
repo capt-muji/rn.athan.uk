@@ -355,8 +355,8 @@ describe("the language rows' own faces and boxes", () => {
     ['አማርኛ', 'NotoSansEthiopic-Regular', 16],
     ['ไทย', 'NotoSansThai-Regular', 16],
     ['Yorùbá', 'NotoSans-Regular', 22],
-    ['日本語', 'NotoSansJP-Subset-Regular', 16],
-    ['简体中文', 'NotoSansSC-Subset-Regular', 16],
+    ['日本語', 'Roboto-Regular', 16],
+    ['简体中文', 'Roboto-Regular', 16],
     ['한국어', 'NotoSansKR-Subset-Regular', 16],
   ] as const)('%s rides its own record under en', async (name, family, box) => {
     const label = await languageRowLabelStyleUnder('en', name);

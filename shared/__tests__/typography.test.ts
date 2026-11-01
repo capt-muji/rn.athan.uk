@@ -236,15 +236,13 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight?.(15)).toBe(23);
   });
 
-  it('resolves zh-Hans to the SC subset pair with no script line box', () => {
+  it('resolves zh-Hans to the system default, no bundled pair and no word face', () => {
     const ty = typographyFor('zh-Hans');
-    expectScriptRecord(ty, 'NotoSansSC-Subset-Regular', 'NotoSansSC-Subset-Medium');
-    // The subset pairs carry the closed string set's whole 378-character census (the
-    // glyph lock, plan T-419 decision 8) and their own declared box already clears
-    // their ink: hhea 1160/-288 with lineGap 0 and win 1160/288 against UPM 1000,
-    // a 1.448em box the win ink matches exactly, both weights (this wave's own
-    // measurement over the bundled subsets), so no surface pins a script box -
-    // the Thai row-87 law
+    expectLatinRecord(ty);
+    // The C3 pair-drop (plan T-538): the zh-Hans subset binaries leave the bundle,
+    // so the record stops naming a pair and the Han glyphs ride the OS fallback
+    // chain under the system default's box - the founding record's own tall-row
+    // read is the scored cost the sheet regression gates
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
@@ -364,12 +362,12 @@ describe('typographyFor', () => {
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
-  it('resolves ja to the JP subset pair with no script line box', () => {
+  it('resolves ja to the system default, no bundled pair and no word face', () => {
     const ty = typographyFor('ja');
-    expectScriptRecord(ty, 'NotoSansJP-Subset-Regular', 'NotoSansJP-Subset-Medium');
-    // The JP subsets carry the closed string set's own census (the glyph lock,
-    // plan T-452 decision 3) and their measured box clears their ink, so no
-    // surface pins a script box - the Thai row-87 law, the numbers in the record
+    expectLatinRecord(ty);
+    // The C3 pair-drop (plan T-538): the ja subset binaries leave the bundle, so
+    // the record stops naming a pair and the kana ride the OS fallback chain -
+    // Android 9's chain carries no Medium, the scored cost the screen reads
     expect(ty.scriptLineHeight).toBeUndefined();
   });
 
