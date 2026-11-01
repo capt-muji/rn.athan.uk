@@ -63,14 +63,13 @@ export const CONTROL_WASH: Record<DimState, string> = {
   lockedOff: '#0c193c',
 };
 
-/** The reminder switch's own dim (owner order 2026-10-31, the 2.43.1 read): the circle reads
- * exactly as dark as its row's hint line - the hint's own locked solid - and the track flattens
- * the old whole-switch 0.2 opacity over the locked card #0c193b, so the thumb sits at its shade
- * with no opacity dragging it darker */
+/** The reminder switch's own dim (owner order 2026-11-01, the follow-up read): the thumb keeps
+ * the hint's locked solid and the track takes the segment pill's own locked pairs, so the thumb
+ * reads as a circle on it - the track it shared one ink with read as a single oval */
 export const REMINDER_SWITCH = {
   thumbDisabled: '#122246',
   track: {
-    off: { background: '#132145', border: '#0f1b40' },
-    on: { background: '#1a1853', border: '#1e1d59' },
+    off: { background: '#0c193c', border: '#0c193c' },
+    on: { background: '#141849', border: '#171a4d' },
   },
 };

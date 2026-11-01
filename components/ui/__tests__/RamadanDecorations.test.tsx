@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { london, onPlatform } from '@/__tests__/harness';
-import { decorationsEnabledAtom, decorationsLoadedAtom, decorationsOffSeasonAtom } from '@/stores/ui';
+import { decorationsEnabledAtom, decorationsLoadedAtom } from '@/stores/ui';
 
 import RamadanDecorations from '../RamadanDecorations';
 
@@ -64,10 +64,6 @@ const spriteNames = () =>
 const stoppedValueCount = (stopped: jest.SpiedFunction<typeof Reanimated.cancelAnimation>) =>
   new Set(stopped.mock.calls.map(([value]) => value)).size;
 
-afterEach(() => {
-  store.set(decorationsOffSeasonAtom, false);
-});
-
 describe("the Ramadan decorations at the edges of the 2027 season, 15 Sha'ban to 29 Ramadan", () => {
   it.each([
     // the moment in words, then as a London date and clock reading
@@ -98,27 +94,17 @@ describe("the Ramadan decorations at the edges of the 2027 season, 15 Sha'ban to
   });
 });
 
-describe('the Ramadan decorations under the off-season override, Friday 11 September 2026', () => {
-  it('draws nothing and arms no animation outside the season with the override off', async () => {
+// The seasonal gate is sole again (owner order 2026-11-01, the follow-up read): outside the
+// season nothing draws, whatever the master toggle says - the answer the pure gate always gave
+describe('the Ramadan decorations outside the season, Friday 11 September 2026', () => {
+  it('draws nothing and arms no animation outside the season', async () => {
     setClock('2026-09-11', '14:00');
-    store.set(decorationsOffSeasonAtom, false);
     const { armed } = watchAnimations();
 
     await render(<RamadanDecorations />);
 
     expect(screen.toJSON()).toBeNull();
     expect(armed).not.toHaveBeenCalled();
-  });
-
-  it('draws every sprite and arms its animations outside the season with the override on', async () => {
-    setClock('2026-09-11', '14:00');
-    store.set(decorationsOffSeasonAtom, true);
-    const { armed } = watchAnimations();
-
-    await render(<RamadanDecorations />);
-
-    expect(spriteNames()).toEqual(ALL_SPRITES);
-    expect(armed).toHaveBeenCalled();
   });
 });
 

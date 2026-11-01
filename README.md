@@ -20,7 +20,7 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 - Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
 - Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
 - Qibla compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for.
-- Settings: large overlay font, Hijri date, Arabic prayer names, seconds, seasonal decorations with an off-season show toggle, countdown bar, color picker, check for updates.
+- Settings: large overlay font, Hijri date, Arabic prayer names, seconds, seasonal decorations, countdown bar, color picker, check for updates.
 - Folding iPhone (Duo) support: held tall on the open inner display the app renders top-down across both panels with no letterbox, and there is no wide mode - the wide hold keeps the system's centered portrait frame.
 
 Prayer times come from [London Prayer Times](https://www.londonprayertimes.com/). Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).

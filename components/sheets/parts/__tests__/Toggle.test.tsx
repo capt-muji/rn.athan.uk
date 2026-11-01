@@ -11,6 +11,7 @@ import * as Reanimated from 'react-native-reanimated';
 import { ANIMATION, COLORS, SIZE } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 
+import { REMINDER_SWITCH, SEGMENT_PILL } from '../dim';
 import Toggle, { type ToggleHandle } from '../Toggle';
 
 /** The thumb has no role or text of its own: it is the one thing inside the switch */
@@ -196,22 +197,62 @@ describe('the reminder switch while the Athan is off', () => {
     expect(StyleSheet.flatten(screen.getByRole('switch').props.style).opacity).toBeUndefined();
   });
 
-  it('flattens its disabled off track over the locked card', async () => {
+  it("draws its disabled off track in the pill's locked-off solid", async () => {
     await render(<Toggle value={false} onToggle={jest.fn()} disabled />);
 
-    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#132145', borderColor: '#0f1b40' });
+    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#0c193c', borderColor: '#0c193c' });
   });
 
-  it('flattens its disabled on track the same way', async () => {
+  it("draws its disabled on track in the pill's locked-on pair", async () => {
     await render(<Toggle value onToggle={jest.fn()} disabled />);
 
-    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#1a1853', borderColor: '#1e1d59' });
+    expect(screen.getByRole('switch')).toHaveStyle({ backgroundColor: '#141849', borderColor: '#171a4d' });
   });
 
   it('keeps its thumb in the primary ink while its row can be used', async () => {
     await render(<Toggle value={false} onToggle={jest.fn()} />);
 
     expect(thumb()).toHaveStyle({ backgroundColor: COLORS.text.primary });
+  });
+});
+
+// Owner order 2026-11-01, the follow-up read: the thumb keeps its ink and the track darkens
+// under it, so the thumb reads as a circle on the track instead of the one oval they both
+// painted. Audited cold from the tokens, the same WCAG luminance the info card suite uses
+describe("the disabled track's tokens", () => {
+  /** Relative luminance of a #rrggbb solid, the repo's own WCAG formula */
+  const luminanceOf = (hex: string): number => {
+    const channel = (value: number) => {
+      const s = value / 255;
+      return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+    };
+    const n = Number.parseInt(hex.slice(1), 16);
+    return 0.2126 * channel((n >> 16) & 255) + 0.7152 * channel((n >> 8) & 255) + 0.0722 * channel(n & 255);
+  };
+
+  it('keeps the thumb at its locked ink, untouched', () => {
+    expect(REMINDER_SWITCH.thumbDisabled).toBe('#122246');
+  });
+
+  it("takes the segment pill's own locked solids, pair for pair, no new ink", () => {
+    expect(REMINDER_SWITCH.track.off).toEqual(SEGMENT_PILL.lockedOff);
+    expect(REMINDER_SWITCH.track.on).toEqual(SEGMENT_PILL.lockedOn);
+  });
+
+  it('darkens both track backgrounds under the thumb', () => {
+    const thumbLum = luminanceOf(REMINDER_SWITCH.thumbDisabled);
+
+    expect(luminanceOf(REMINDER_SWITCH.track.off.background)).toBeLessThan(thumbLum);
+    expect(luminanceOf(REMINDER_SWITCH.track.on.background)).toBeLessThan(thumbLum);
+  });
+
+  it('orders the three inks: off track darkest, then the on track, then the thumb', () => {
+    const offLum = luminanceOf(REMINDER_SWITCH.track.off.background);
+    const onLum = luminanceOf(REMINDER_SWITCH.track.on.background);
+    const thumbLum = luminanceOf(REMINDER_SWITCH.thumbDisabled);
+
+    expect(offLum).toBeLessThan(onLum);
+    expect(onLum).toBeLessThan(thumbLum);
   });
 });
 

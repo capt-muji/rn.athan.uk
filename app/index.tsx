@@ -31,7 +31,6 @@ import { syncLoadable } from '@/stores/sync';
 import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
-  decorationsOffSeasonAtom,
   masjidLoadedAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
@@ -95,11 +94,7 @@ export default function Index() {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
   // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
   // one screen whose Refresh can recover the app
-  // The off-season override lets the owner see the decorations outside Ramadan (T-541), so the
-  // splash's sprite wait follows the override exactly as it follows the season
-  const decorationsOffSeason = useAtomValue(decorationsOffSeasonAtom);
-  const decorationsExpected =
-    decorationsVisible(isRamadan(), decorationsOffSeason, decorationsEnabled) && state !== 'hasError';
+  const decorationsExpected = decorationsVisible(isRamadan(), decorationsEnabled) && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
   // The icon gate (T-541): the bitmap decodes behind the first drawn frame, so the reveal
   // waits for it - except on the error screen, whose own Refresh must not sit under a splash

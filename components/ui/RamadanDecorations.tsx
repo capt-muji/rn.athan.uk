@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { decorationsVisible, isRamadan } from '@/shared/time';
-import { decorationsEnabledAtom, decorationsOffSeasonAtom, markDecorationsLoaded } from '@/stores/ui';
+import { decorationsEnabledAtom, markDecorationsLoaded } from '@/stores/ui';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
@@ -253,15 +253,12 @@ export default function RamadanDecorations() {
   const moonGlowOpacity = useSharedValue(0);
 
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
-  // The owner's off-season override rides beside the season (T-541): the same
-  // decorations, shown outside Ramadan when the settings row says so
-  const offSeason = useAtomValue(decorationsOffSeasonAtom);
   // Invisible decorations must not run animations: the effect below arms ~13
   // infinite Reanimated loops that tick the UI thread at 60fps for ~10 months
   // a year while this component renders nothing (measured 93% main-thread CPU
   // idle on the 3T). Visibility re-evaluates on every render; the effect
   // re-arms when it flips true.
-  const visible = decorationsVisible(isRamadan(), offSeason, decorationsEnabled);
+  const visible = decorationsVisible(isRamadan(), decorationsEnabled);
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;

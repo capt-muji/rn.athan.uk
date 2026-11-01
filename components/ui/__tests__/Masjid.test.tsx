@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerDatetime } from '@/shared/time';
-import { decorationsEnabledAtom, decorationsOffSeasonAtom } from '@/stores/ui';
+import { decorationsEnabledAtom } from '@/stores/ui';
 
 import Masjid from '../Masjid';
 
@@ -22,15 +22,12 @@ describe('the mosque icon', () => {
   // 1448 falls in February 2027, and the settings sheet's toggle writes the preference through its atom: there is no
   // store setter for it
   it.each([
-    ['the Ramadan mosque', 'in Ramadan with decorations on', '2027-02-20', true, false, /\/masjid-ramadan\.png$/],
-    ['the plain mosque', 'in Ramadan with decorations turned off', '2027-02-20', false, false, /\/masjid\.png$/],
-    ['the plain mosque', 'outside Ramadan', '2026-09-11', true, false, /\/masjid\.png$/],
-    ['the Ramadan mosque', 'outside Ramadan with the override on', '2026-09-11', true, true, /\/masjid-ramadan\.png$/],
-    ['the plain mosque', 'outside Ramadan with the override off', '2026-09-11', true, false, /\/masjid\.png$/],
-  ])('draws %s %s', async (_art, _situation, date, decorationsOn, offSeason, file) => {
+    ['the Ramadan mosque', 'in Ramadan with decorations on', '2027-02-20', true, /\/masjid-ramadan\.png$/],
+    ['the plain mosque', 'in Ramadan with decorations turned off', '2027-02-20', false, /\/masjid\.png$/],
+    ['the plain mosque', 'outside Ramadan', '2026-09-11', true, /\/masjid\.png$/],
+  ])('draws %s %s', async (_art, _situation, date, decorationsOn, file) => {
     jest.useFakeTimers({ now: createPrayerDatetime(date, '12:00') });
     store.set(decorationsEnabledAtom, decorationsOn);
-    store.set(decorationsOffSeasonAtom, offSeason);
 
     await render(<Masjid />);
 

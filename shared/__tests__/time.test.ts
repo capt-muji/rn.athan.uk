@@ -484,16 +484,15 @@ describe('isRamadan', () => {
 });
 
 describe('decorationsVisible', () => {
-  // Owner order 2026-10-31 (the 2.43.1 read batch): a settings toggle shows the decorations
-  // outside Ramadan, default off, the seasonal gate intact when off
+  // The seasonal gate and the master toggle (owner order 2026-11-01, the follow-up read): the
+  // off-season override is gone, so the answer is exactly the gate that stood pre-2.43.4
   it.each([
-    ['in season, the override off, decorations on', true, false, true, true],
-    ['in season with decorations off', true, false, false, false],
-    ['outside the season with the override off', false, false, true, false],
-    ['outside the season with the override on', false, true, true, true],
-    ['outside the season with the override on but decorations off', false, true, false, false],
-  ])('shows the decorations %s', (_situation, season, offSeason, enabled, expected) => {
-    expect(decorationsVisible(season, offSeason, enabled)).toBe(expected);
+    ['in season with decorations on', true, true, true],
+    ['in season with decorations off', true, false, false],
+    ['outside the season with decorations on', false, true, false],
+    ['outside the season with decorations off', false, false, false],
+  ])('shows the decorations %s', (_situation, season, enabled, expected) => {
+    expect(decorationsVisible(season, enabled)).toBe(expected);
   });
 });
 
