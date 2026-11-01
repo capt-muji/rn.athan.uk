@@ -334,5 +334,21 @@
   {
     "version": "2.43.26",
     "reason": "2026-11-01 lane2/T-561's audit fix takes the single patch step above its own 2.43.25 while parked t538-line-box-3's replayed stamp 1b4c8b6c already holds 2.43.26 (the discipline gate holds every fix to the one patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.27",
+    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.28",
+    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.29",
+    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.30",
+    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
   }
 ]

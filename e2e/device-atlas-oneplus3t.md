@@ -55,6 +55,8 @@ long-press sheet (learned the hard way).
 | --- | --- | --- |
 | Settings (hex-nut) button | bottom-centre, ~ (540, 1830) | dev-client builds also show a blue circle FAB (dev menu) nearby; the FAB never renders on iOS 26.5 scene builds |
 | Prayer row's alert bell | (969, 1012) | one glyph run x 950-988 in the row band 970-1054, measured from pixels 2026-10-31 (Android 9's AX dump served neither bounds nor liveness for the RNGH Pressable hosts; the bell column x is shared by every row) |
+| Prayer row (overlay-open tap) | (540, 1012) | the row's own centre at the bell's y; the frame-audit and interleave drivers' overlay-open point |
+| Row-band swipe (the interleave) | (864, 700) to (216, 700), 150ms | T-565's tap-then-swipe proof: a leftward page turn across the rows, high enough to clear the countdown; y 700 crosses the list above the 1012 row band, both endpoints inside the pager's page |
 | Settings sheet: Athan row | (540, 851) | first row of the Prayer card, sheet open at its default snap |
 | Settings sheet scrolled to Other: Language row | (516, 1509) | Arabic face; row اللغة at [143,1480][890,1538], sheet scrolled until the أخرى section (measured 2026-10-19). Below the fold at the default snap, and Maestro cannot text-find it there: scroll first, then tap |
 | Language sheet: English row | (888, 1450) | second list row, right-aligned [825,1421][952,1479] under the RTL sheet; list at its top, Arabic face (measured 2026-10-19) |
