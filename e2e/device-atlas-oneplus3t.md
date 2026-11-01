@@ -60,6 +60,22 @@ long-press sheet (learned the hard way).
 | Language sheet: English row | (888, 1450) | second list row, right-aligned [825,1421][952,1479] under the RTL sheet; list at its top, Arabic face (measured 2026-10-19) |
 | Settings sheet scrolled to Other: Language / Help / What's new / Check for updates rows | (540, 1247) / (540, 1373) / (540, 1500) / (540, 1625) | English face after two `input swipe 540 1500 540 1000 400` flings at the default snap, centers from the live tree (re-measured 2026-10-27 when T-381 swapped What's New below Help and the update row settled last; row pitch ~127 px, so shift by the pitch for any deeper or shallower scroll); What's new hides on a silent release and every row below it moves up one pitch. The update row carries the download badge and the refresh ring in place of a chevron, and settles green after its one check per launch |
 
+## OEM settings: font scale, keyguard, wake (measured 2026-11-01, T-538 step 2)
+
+| Mechanic | Command / coordinates | Notes |
+| --- | --- | --- |
+| Font size steps | Settings > Display > Font size: radio row at scale 1.0 = Small (244,1758) 0.85 / Default (430,1758) 1.0 / Large (650,1758) 1.15 / Largest (836,1758) 1.3 | the only four stops (0.85 also cross-checked by setting it directly and reading the row summary as "Small"); `settings put system font_scale <v>` matches them exactly and applies live, verified by read-back per stop |
+| Keyguard (swipe-only, no PIN) | `wm dismiss-keyguard` | injected `input swipe` does NOT dismiss this keyguard, awake or freshly woken; only the shell command does |
+| Keep awake through a long protocol | `svc power stayon usb` | the panel sleeps mid-protocol otherwise (input to a dark screen is dropped silently); unset when the protocol ends |
+
+- The Font-size screen's radio row RE-LAYS-OUT at every scale change (row y moves
+  ~8-130px): never replay radio coordinates across a scale change - re-dump and tap
+  the live bounds, or set the value and read it back. At 1.15 the row sat at
+  y 1687-1813, at 1.0 at y 1695-1821.
+- The Font-size screen is reachable only through the Display list (the
+  Settings$FontSizeSettingsActivity component falls back to the Settings root);
+  the Display list needs 3+ flings at 1.0 to reach DISPLAY SIZE, two at 0.85.
+
 ## Known dialogs
 
 | Element | Tap point | Notes |
