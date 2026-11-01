@@ -93,9 +93,9 @@ const Toggle = forwardRef<ToggleHandle, ToggleProps>(
       transform: [{ translateX: translateX.value }],
     }));
 
-    // The dim rides colour (owner order 2026-10-31): the track flattens the old whole-switch 0.2
-    // opacity over the locked card, and the thumb takes the sheet hint's ink, so the circle stops
-    // outshining the row it sits in
+    // The dim rides colour (owner order 2026-10-31): the disabled track takes the segment
+    // pill's locked pairs and the thumb its locked ink, so the circle reads on the track
+    // instead of outshining the row it sits in
     const dimmedTrack = disabled ? (effective ? styles.trackOnDimmed : styles.trackOffDimmed) : null;
 
     return (

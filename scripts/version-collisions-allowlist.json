@@ -310,5 +310,9 @@
   {
     "version": "2.43.2",
     "reason": "2026-10-31 the T-538 reopen steps from uat's 2.43.1 while the parallel lane may hold the same number; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.13",
+    "reason": "2026-11-01 the T-538 parity-gate commit e37adfe9 on t538-line-box-3 took 2.43.13 under the lane-local rule while T-541's 9e7f18c6 already held it on uat; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
