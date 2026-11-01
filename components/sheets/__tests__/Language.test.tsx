@@ -196,13 +196,14 @@ describe("the row's line box", () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<LanguageSheet />);
 
-    // The CJK subsets carry a 1.448em line box and no bundled Latin face carries their
-    // endonyms at all: under the active record's face those rows fell back on glass, and
-    // Android stacks a fallback run's line spacing on top of any pin (T-538's 3T read), so
-    // each row's label rides its own record's face - which carries its endonym by census -
-    // at its own record's box (the pin, no script box needed at 14)
+    // The CJK rows under C3 (plan T-538) ride the system default through the LATIN
+    // record: the SC and JP subset binaries are gone from the bundle, so their rows'
+    // Han glyphs fall to the OS face under the system box - the founding record's
+    // own tall-row shape, the scored cost the sheet regression reads on glass. The
+    // index's Latin digits stay on the active face inside the row's absolute
+    // centered slot, so a device-side fallback cannot move the row's height
     expect(StyleSheet.flatten(screen.getByText('简体中文').props.style)).toMatchObject({
-      fontFamily: 'NotoSansSC-Subset-Regular',
+      fontFamily: 'Roboto-Regular',
       fontSize: ty.size(TEXT.sizeDetail),
       lineHeight: 16,
     });
