@@ -698,9 +698,11 @@ export const COLORS = {
     primary: DESIGN.bright,
     /** The header labels at home: the prayer name above the countdown and the location share this ink */
     labelHome: DESIGN.label,
-    /** The header labels while the overlay is open: the glow's blue family at the label's own muted
-     * class (hue 228, the ink the owner named blue), replacing the purple hint the old glow left */
-    labelOverlay: '#58628c',
+    /** The header labels while the overlay is open: the glow's own hue (247.3 - moved there 2026-10-31
+     *  without its label following, which read as grey) at the muted class's saturation, the lightness
+     *  solved at the 8-bit grid to hold the ink the labels shipped with, so their contrast never moves;
+     *  audited cold in the Countdown suite (owner order 2026-11-01) */
+    labelOverlay: '#645d94',
     /** Muted text over the screen gradient: every dimmed name, time and bell */
     muted: DESIGN.dim,
     /** The prayer row's time at rest: the same single dim ink (the quarter-step shade is gone) */

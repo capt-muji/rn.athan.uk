@@ -215,10 +215,11 @@ describe('the lettered countdown on the Standard schedule', () => {
         )
         .map((call) => call[0]);
 
-    // The owner's order: the overlay's two dim labels drop their purple hint for the glow's blue
-    // family - same muted class (sat 22.8, light 44.7), hue 235 to 228. No textShadow rides either
-    // label anywhere in the app; the timer's three shadow styles are the only ones and stay.
-    expect(COLORS.text.labelOverlay).toBe('#58628c');
+    // The owner's order (2026-11-01): the two dim labels take the glow's tint - the glow's
+    // exact hue, the muted class held (sat 22.81), the lightness solved to 47.3 at the 8-bit
+    // grid so the ink keeps the luminance it shipped with (hue 228.5 to 247.6). No textShadow
+    // rides either label; the timer's three shadow styles are the only ones and stay.
+    expect(COLORS.text.labelOverlay).toBe('#645d94');
     expect(COLORS.text.labelHome).not.toBe(COLORS.text.labelOverlay);
 
     expect(labelTween().at(-1)).toBe(0);
@@ -315,5 +316,69 @@ describe('the countdown before any list is on screen', () => {
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
+  });
+});
+
+// Owner order 2026-11-01: the overlay's dim labels read grey because their ink kept the hue the
+// glow carried before the 2026-10-31 order bent it to 247.3; the tint returns them to the glow's
+// family at the luminance the ink shipped with, so their contrast never moves. Audited cold from
+// the tokens, the same WCAG luminance the info card suite uses
+describe("the overlay label's tint, audited cold from the tokens", () => {
+  /** Relative luminance of a #rrggbb solid, the repo's own WCAG formula */
+  const luminanceOf = (hex: string): number => {
+    const channel = (value: number) => {
+      const s = value / 255;
+      return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+    };
+    const n = Number.parseInt(hex.slice(1), 16);
+    return 0.2126 * channel((n >> 16) & 255) + 0.7152 * channel((n >> 8) & 255) + 0.0722 * channel(n & 255);
+  };
+
+  const hslOf = (hex: string): { h: number; s: number } => {
+    const n = Number.parseInt(hex.slice(1), 16);
+    const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => v / 255);
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const delta = max - min;
+    const h = max === b ? 60 * (4 + (r - g) / delta) : max === g ? 60 * (2 + (b - r) / delta) : 60 * ((g - b) / delta);
+    const l = (max + min) / 2;
+    return { h: (h + 360) % 360, s: delta / (1 - Math.abs(2 * l - 1)) };
+  };
+
+  const contrastOf = (ink: string, solid: string): number => {
+    const [y1, y2] = [luminanceOf(ink), luminanceOf(solid)].sort((a, b) => b - a);
+    return (y1 + 0.05) / (y2 + 0.05);
+  };
+
+  /** The ink that ships at the branch point, the tint's contrast reference */
+  const SHIPPED_LABEL_OVERLAY = '#58628c';
+
+  it('keeps the glow token untouched, the one source of the hue', () => {
+    expect(COLORS.gradient.overlay.glow).toBe('#2514a0');
+  });
+
+  it("takes the glow's hue at the muted class, holding the shipped ink's luminance", () => {
+    const ink = hslOf(COLORS.text.labelOverlay);
+    const shipped = hslOf(SHIPPED_LABEL_OVERLAY);
+
+    expect(Math.abs(ink.h - hslOf(COLORS.gradient.overlay.glow).h)).toBeLessThanOrEqual(0.5);
+    expect(Math.abs(ink.s - shipped.s)).toBeLessThanOrEqual(0.0005);
+    expect(
+      Math.abs(luminanceOf(COLORS.text.labelOverlay) - luminanceOf(SHIPPED_LABEL_OVERLAY)) /
+        luminanceOf(SHIPPED_LABEL_OVERLAY)
+    ).toBeLessThanOrEqual(0.005);
+  });
+
+  it("holds the shipped ink's contrast against the veil's solids, clearing AA large text", () => {
+    // The veil's tokens are platform-shared and its gradient opaque when settled, so these two
+    // identities carry the number for the iPhone and the Android alike: top #110022 is the band
+    // both labels sit in, midpoint #080011 the veil token's own reference
+    for (const solid of ['#110022', '#080011']) {
+      const tinted = contrastOf(COLORS.text.labelOverlay, solid);
+      const shipped = contrastOf(SHIPPED_LABEL_OVERLAY, solid);
+
+      expect(Math.abs(tinted - shipped) / shipped).toBeLessThanOrEqual(0.005);
+      expect(tinted).toBeGreaterThanOrEqual(3);
+    }
   });
 });
