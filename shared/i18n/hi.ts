@@ -18,7 +18,7 @@ export const hi = {
   'prayer.midnight': 'आधी रात',
   'prayer.last third': 'अंतिम तिहाई',
   'prayer.suhoor': 'सहरी',
-  'prayer.duha': 'ज़ुहा',
+  'prayer.duha': 'जुहा',
   'prayer.istijaba': 'इस्तिजाबा',
   'settings.title': 'सेटिंग्स',
   'settings.showSeconds': 'सेकंड दिखाएँ',

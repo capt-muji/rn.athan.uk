@@ -137,7 +137,8 @@
       "mdh-vocab": "A Maguindanao vocabulary list in Latin orthography (the Wp/mdh incubator carries no prayer article)",
       "ikhlas-ms": "ikhlas.com's Malay-language ibadah pages (Malaysia), printing Sa'at al-Istijabah for the Friday hour of response",
       "islamhouse-th": "islamhouse.muslimthaipost.com Thai Islamic articles (the MuslimThaiPost publisher's islamhouse desk), printing อิฟตาร์ และ ซูฮูร์",
-      "th-islamic-prose": "Thai Islamic prose and teaching pages: tafsir pages printing อิสติญาบะฮฺ (and ซาอะตุลอิสติญาบะฮฺ) for the hour of response, and night-division posts printing เวลาหลังเที่ยงคืน and ช่วงที่ 3 ของคืน (ช่วงท้ายคืน)"
+      "th-islamic-prose": "Thai Islamic prose and teaching pages: tafsir pages printing อิสติญาบะฮฺ (and ซาอะตุลอิสติญาบะฮฺ) for the hour of response, and night-division posts printing เวลาหลังเที่ยงคืน and ช่วงที่ 3 ของคืน (ช่วงท้ายคืน)",
+      "nearest-standard": "the nearest written standard's catalog row, applied where no source in the locale itself prints the row (the mfa-over-ms ruling, T-537 comment 5187)"
     },
     "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. The seven slugs T-454 added are in the same position, registered for corroboration and cited by no entry and no note: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary and islamic-invitation-qu. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor. The T-452 wave names ko-play, it-wikipedia and vi-true-time in the notes of the rows they corroborate, while its ko-wikipedia, ceb-wikipedia and ilo-wikipedia were checked 2026-10-29 and no entry rests on one, so none of the three is registered.",
     "confidenceKey": {
@@ -272,7 +273,7 @@
         "text": "العصر",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "The ordinary Arabic table label (KMSH and Diyanet's Arabic column print it); صلاة العصر is the full form."
       },
       "Magrib": {
         "text": "المغرب",
@@ -284,7 +285,7 @@
         "text": "العشاء",
         "source": "existing-app-catalog",
         "confidence": "high",
-        "note": ""
+        "note": "The table label; صلاة العشاء is the full form. Mihrab prints the same row."
       },
       "Midnight": {
         "text": "نصف الليل",
@@ -2141,10 +2142,10 @@
         "note": "Mihrab prints सहरी. Hindi Ramadan calendars say सेहरी. Both are the Urdu-Hindi word for the meal."
       },
       "Duha": {
-        "text": "ज़ुहा",
+        "text": "जुहा",
         "source": "hi-wikipedia",
         "confidence": "medium",
-        "note": "The registered hi authority's नमाज़ के औक़ात article heads its section जुहा नमाज़ (इशराक,चाश्त,अवाबीन), the article's own nuqtaless style; respelled ज़ुहा in this catalog's register, which prints the Perso-Arabic z with its nukta (ज़ुहर). The earlier दुहा read the English spelling's d. चाश्त is the Persian synonym, not the row."
+        "note": "The registered hi authority's नमाज़ के औक़ात article heads its section जुहा नमाज़ (इशराक,चाश्त,अवाबीन); carried at the article's own bytes. This ticket's first pass respelled it ज़ुहा after this catalog's ज़ुहर register; the sweep withdraws the respell - Devanagari usage attests द-forms (mr दुहा) and ज-forms each at their own source's bytes, and the chain's bytes govern. चाश्त is the Persian synonym, not the row."
       },
       "Istijaba": {
         "text": "इस्तिजाबा",
@@ -3570,9 +3571,9 @@
       },
       "Duha": {
         "text": "दुहा",
-        "source": "loan",
-        "confidence": "low",
-        "note": "No Marathi source; the loan lands per plan T-429 decision 9."
+        "source": "mr-wikipedia",
+        "confidence": "medium",
+        "note": "mr.wikipedia's नमाज article lists दुहा among its namaz observances, and Marathi prayer-time app listings print दुहा (with दुहर for Dhuhr); the attestation upgrades the T-429 decision 9 loan, which guessed the same bytes."
       },
       "Istijaba": {
         "text": "इस्तिजाबा",
