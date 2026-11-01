@@ -9,7 +9,7 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { BackHandler, DeviceEventEmitter, Dimensions, StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedPagerPage, showLondonDay } from '@/__tests__/harness';
 import { buildCatcherRegions } from '@/components/overlay/catcherGeometry';
 import { perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
@@ -19,6 +19,12 @@ import { setMeasurementsList } from '@/stores/ui';
 
 import Overlay from '../Overlay';
 import OverlayInfoBox from '../OverlayInfoBox';
+
+// No pager is mounted here, so the page atom rests on Standard between tests and every
+// Extras case seeds the page its overlay's schedule lives on
+beforeEach(() => {
+  seedPagerPage(0);
+});
 
 // Opening and closing are measured for the device performance runs, which read the pairing of names
 jest.mock('@/shared/perf', () => ({ perfMark: jest.fn(), perfMeasure: jest.fn() }));
@@ -158,6 +164,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
     [4, 'Istijaba', '1 hour before Magrib (Fridays only)'],
   ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english) => {
     showLondonDay('2026-09-11', '14:00');
+    seedPagerPage(1);
     setMeasurementsList(LIST);
     await render(
       <>
@@ -174,6 +181,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
 
   it('rides the explanation words on the reveal as a true opacity once the box opens', async () => {
     showLondonDay('2026-09-11', '14:00');
+    seedPagerPage(1);
     setMeasurementsList(LIST);
     await render(
       <>
@@ -283,6 +291,7 @@ describe("Android's back button and the overlay", () => {
   // The catchers fire a haptic because a finger touched the screen; a back press did not
   it('closes without the tap haptic, which only a press on the screen earns', async () => {
     showLondonDay('2026-09-11', '14:00');
+    seedPagerPage(1);
     setMeasurementsList(LIST);
     await render(<Overlay />);
     await act(() => openOverlay(ScheduleType.Extra, 0));

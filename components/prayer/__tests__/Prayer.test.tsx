@@ -8,7 +8,7 @@ import { getDefaultStore } from 'jotai';
 import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedPagerPage, showLondonDay } from '@/__tests__/harness';
 import { COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
 import { overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
@@ -20,6 +20,12 @@ const FAJR = 0;
 const SUNRISE = 1;
 const DUHA = 3;
 const ISTIJABA = 4;
+
+// No pager is mounted here, so the page atom rests on Standard between tests and every
+// Extras case seeds the page its overlay's schedule lives on
+beforeEach(() => {
+  seedPagerPage(0);
+});
 
 describe('the Sunrise row before Fajr on Friday 11 September 2026 at 03:00', () => {
   it('names the prayer once, in one language', async () => {
@@ -57,6 +63,7 @@ describe("the row's own content box", () => {
 describe('the Duha row on Friday 11 September 2026 at 12:00', () => {
   it('opens the overlay on its own list and index when tapped', async () => {
     showLondonDay('2026-09-11', '12:00');
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={DUHA} />);
 
     await fireEvent.press(screen.getByText('Duha'));
@@ -70,6 +77,7 @@ describe('the Duha row on Friday 11 September 2026 at 12:00', () => {
 
   it('closes the overlay when tapped while the overlay shows it', async () => {
     showLondonDay('2026-09-11', '12:00');
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={DUHA} />);
     await act(() => openOverlay(ScheduleType.Extra, DUHA));
 
@@ -202,6 +210,7 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
 describe('the Istijaba row on Friday 11 September 2026 at 20:00, with Saturday not stored', () => {
   it('leaves the overlay closed when tapped, since no later Istijaba is held for it to show', async () => {
     showLondonDay('2026-09-11', '20:00', { '2026-09-12': 'not stored' });
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={ISTIJABA} />);
 
     await fireEvent.press(screen.getByText('Istijaba'));

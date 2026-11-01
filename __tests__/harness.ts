@@ -11,6 +11,7 @@ import { Platform } from 'react-native';
 
 import { type Breakage, london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { ScheduleType } from '@/shared/types';
+import { pagerPageAtom } from '@/stores/atoms/pager';
 import { setSequence } from '@/stores/schedule';
 import { countdownBarShownAtom, showTimePassedAtom } from '@/stores/ui';
 
@@ -63,6 +64,17 @@ export const onPlatform = (os: 'ios' | 'android', version?: number | string): vo
  */
 export const seedCountdownBarOn = (): void => {
   getDefaultStore().set(countdownBarShownAtom, true);
+};
+
+/**
+ * The page the pager is showing, for a suite that opens an overlay with no pager mounted: the
+ * overlay gate reads the atom, so a suite seeds the page its overlay's schedule lives on and rests
+ * it on Standard between tests
+ *
+ * @param position The pager position the overlay's schedule lives on, 0 Standard or 1 Extras
+ */
+export const seedPagerPage = (position: number): void => {
+  getDefaultStore().set(pagerPageAtom, position);
 };
 
 /**

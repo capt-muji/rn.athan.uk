@@ -22,6 +22,10 @@ const mockStoreSet = jest.fn();
 
 const mockOverlayAtomSymbol = Symbol('overlayAtom');
 const mockFadeSettledAtomSymbol = Symbol('overlayFadeSettledAtom');
+const mockPagerAtomSymbol = Symbol('pagerPageAtom');
+
+/** The pager's page, as the store mock answers it: 0 Standard, 1 Extras */
+let mockPagerPage = 0;
 
 jest.mock('jotai/vanilla', () => ({
   // atom stays real: shared/i18n/locale builds the remount version atom from it
@@ -53,6 +57,12 @@ jest.mock('@/stores/atoms/overlay', () => ({
   overlayFadeSettledAtom: mockFadeSettledAtomSymbol,
 }));
 
+jest.mock('@/stores/atoms/pager', () => ({
+  // pageSchedule stays real: the guard maps the position through the true mapping
+  ...jest.requireActual('@/stores/atoms/pager'),
+  pagerPageAtom: mockPagerAtomSymbol,
+}));
+
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
 const { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay } = require('../overlay');
 const { currentFadeGeneration } = require('@/stores/atoms/overlay');
@@ -71,9 +81,11 @@ beforeEach(() => {
   jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
   mockOverlayState = { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Standard };
+  mockPagerPage = 0;
 
   mockStoreGet.mockImplementation((atom: symbol) => {
     if (atom === mockOverlayAtomSymbol) return { ...mockOverlayState };
+    if (atom === mockPagerAtomSymbol) return mockPagerPage;
     return {};
   });
 });
@@ -140,6 +152,21 @@ describe('openOverlay', () => {
     openOverlay(ScheduleType.Standard, 3);
 
     expect(mockStoreSet).not.toHaveBeenCalled();
+  });
+
+  // A press whose page the pager no longer shows is a stale touch's echo, the
+  // owner's tap-then-swipe interleave: the open lands after the swipe settled,
+  // so the self-heal (which only closes an OPEN overlay) cannot see it and the
+  // open itself must be refused, exactly like a boundary-adjacent open
+  it('refuses a Standard open when the pager shows the Extras page', () => {
+    mockPagerPage = 1;
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
+    expect(mockArmOverlayBoundary).not.toHaveBeenCalled();
+    expect(mockWriteDisplayCountdown).not.toHaveBeenCalled();
   });
 });
 
