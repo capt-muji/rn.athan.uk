@@ -20,6 +20,7 @@ import {
   overlayAtom as overlayAtomImport,
   overlayFadeSettledAtom,
 } from '@/stores/atoms/overlay';
+import { pagerPageAtom, pageSchedule } from '@/stores/atoms/pager';
 import { armOverlayBoundary, clearOverlayBoundary, writeDisplayCountdown } from '@/stores/countdown';
 import { getNextBoundary } from '@/stores/schedule';
 
@@ -50,6 +51,11 @@ const openOverlay = (type: ScheduleType, index: number) => {
   const overlay = store.get(overlayAtom);
   if (overlay.isOn) return;
   if (!canOpenOverlay(type)) return;
+  // A press whose page the pager no longer shows is a stale touch's echo - the
+  // owner's tap-then-swipe interleave, where the open lands after the swipe
+  // settled and the self-heal (which only closes an OPEN overlay) cannot see
+  // it - refused like a boundary-adjacent open
+  if (pageSchedule(store.get(pagerPageAtom)) !== type) return;
 
   perfMark('overlay_open_start', { scheduleType: type });
   armOverlayBoundary(type);

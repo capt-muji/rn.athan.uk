@@ -14,6 +14,7 @@ import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { animationEpochOpen } from '@/stores/animationEpoch';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { pagerPageAtom } from '@/stores/atoms/pager';
 import { openOverlay } from '@/stores/overlay';
 
 import Navigation from '../../app/Navigation';
@@ -43,8 +44,14 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
-  // The locale cases mutate module state; every later assertion reads en. The epoch is
-  // module state too, so every pager case below rests the slide it starts
+  // The page atom is module state: a pager case that settles on Extras would otherwise bleed into a
+  // later case's pre-render open, so every test starts on the Standard page. The locale cases mutate
+  // module state too; every later assertion reads en. The epoch is module state as well, so every
+  // pager case below rests the slide it starts
+  beforeEach(() => {
+    getDefaultStore().set(pagerPageAtom, 0);
+  });
+
   afterEach(() => {
     setActiveLocale('en');
   });
@@ -133,7 +140,7 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(perfMeasure).toHaveBeenCalledWith('pager_page', 'pager_swipe_start', { position: 1 });
   });
 
-  // setCurrentPage is the dots' own animation trigger, so it stays at the snap - not gated
+  // The page atom's snap write is the dots' own animation trigger, so it stays at the snap - not gated
   // with the store write, which would blank the flip until the slide rested
   it('flips the dots the moment the snap names the page', async () => {
     showLondonDay('2026-09-11', '14:00');
@@ -170,6 +177,22 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
 
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+  });
+
+  // The owner's tap-then-swipe interleave: the press's open lands in JS after the pager's selected and
+  // idle events, so the self-heal (which only closes an OPEN overlay) never sees it and the pressed
+  // row's overlay stays on the page the swipe settled on. The open itself must be refused
+  it('leaves the overlay closed when a Standard row is pressed once the swipe settled on Extras', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+
+    await fireEvent.press(screen.getByText('Isha'));
+
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
   it('passes layoutDirection rtl to the pager under an RTL locale', async () => {

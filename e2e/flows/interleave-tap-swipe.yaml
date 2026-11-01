@@ -1,0 +1,24 @@
+appId: com.example.athan
+name: interleave-tap-swipe
+tags:
+  - baseline
+---
+# T-565 on-glass proof: the owner's tap-then-swipe interleave (tap the prayer
+# row, immediately swipe left across the row band), one attempt per run.
+# appId is the literal dev package id (maestro 2.10.0 no longer substitutes
+# ${APP_ID} from the environment, see overlay-x10.yaml), and the owner-named
+# production id may never be committed: a production-build run swaps this one
+# line in an uncommitted working copy. The flow is the interleave pair ALONE
+# so its sequencing is as tight as Maestro can drive it: the owning driver
+# force-stops, launches onto the Standard page and settles past startup first
+# (the e2e README's scripted-interaction rule), because a text wait here
+# would pin the flow to one language face and the owner's phone runs its own.
+# The tree read after each run is Maestro `hierarchy` (live tree), never an
+# Android 9 AX dump (stale; README Gotchas). PASS for the criterion: the
+# extras page's rows showing with no overlay hero time and no veil.
+- tapOn:
+    point: '540, 1012'
+- swipe:
+    start: '864, 700'
+    end: '216, 700'
+    duration: 150

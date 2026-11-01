@@ -5,7 +5,7 @@
 import { act, render, screen } from '@testing-library/react-native';
 import { Dimensions, StyleSheet } from 'react-native';
 
-import { showLondonDay } from '@/__tests__/harness';
+import { seedPagerPage, showLondonDay } from '@/__tests__/harness';
 import { COLORS, SIZE } from '@/shared/constants';
 import { DESIGN } from '@/shared/design';
 import { ScheduleType } from '@/shared/types';
@@ -31,6 +31,12 @@ jest.mock('@/components/ui', () => {
 });
 
 describe('the veil on Friday 11 September 2026 at 14:00', () => {
+  // No pager is mounted here, so the page atom rests on Standard between tests and the
+  // Extras cases seed the page their overlay's schedule lives on
+  beforeEach(() => {
+    seedPagerPage(0);
+  });
+
   it('stays out of sight while the overlay is closed', async () => {
     showLondonDay('2026-09-11', '14:00');
 
@@ -43,6 +49,7 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
     'comes into sight when the overlay opens on the %s list',
     async (type) => {
       showLondonDay('2026-09-11', '14:00');
+      if (type === ScheduleType.Extra) seedPagerPage(1);
       await render(<VeilBackdrop />);
 
       await act(() => openOverlay(type, 1));
@@ -57,6 +64,7 @@ describe('the veil on Friday 11 September 2026 at 14:00', () => {
     async (type) => {
       glowColors.length = 0;
       showLondonDay('2026-09-11', '14:00');
+      if (type === ScheduleType.Extra) seedPagerPage(1);
       await render(<VeilBackdrop />);
 
       await act(() => openOverlay(type, 1));

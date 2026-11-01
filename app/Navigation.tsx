@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { memo, useRef, useState } from 'react';
+import { memo, useRef } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -17,6 +17,7 @@ import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
 import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { pagerPageAtom, pageSchedule } from '@/stores/atoms/pager';
 import { toggleOverlay } from '@/stores/overlay';
 
 // Navigation re-renders on overlay toggles (scrollEnabled gate) — memoized so
@@ -28,7 +29,7 @@ export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
   // Derived from state, not an effect: a suspend-dropped write cannot strand
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const currentPage = useAtomValue(pagerPageAtom);
   const dot0OpacityStyle = useDerivedOpacity(currentPage === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
   const dot1OpacityStyle = useDerivedOpacity(currentPage === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
@@ -71,7 +72,7 @@ export default function Navigation() {
     // back to false. If the pager lands on the other schedule under an open
     // overlay, close the overlay instead of rendering it over the wrong page
     const overlay = getDefaultStore().get(overlayAtom);
-    const settledSchedule = position === 0 ? ScheduleType.Standard : ScheduleType.Extra;
+    const settledSchedule = pageSchedule(position);
     if (overlay.isOn && settledSchedule !== overlay.scheduleType) {
       // The close is a whole-overlay store batch and the snap still owes the
       // settle tail, so the write rides the slide's rest instead of landing
@@ -80,7 +81,9 @@ export default function Navigation() {
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });
-    setCurrentPage(position);
+    // The dots' animation trigger, kept at the snap - not gated with the
+    // self-heal's store write, which would blank the flip until the slide rested
+    getDefaultStore().set(pagerPageAtom, position);
   };
 
   return (

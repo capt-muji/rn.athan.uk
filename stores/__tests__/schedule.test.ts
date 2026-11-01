@@ -1043,6 +1043,10 @@ const isPassedNow = (type: ScheduleType, english: string, listDay: string): bool
 describe('on the real builder', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    // No pager is mounted in here, so the page atom rests on Standard: an
+    // Extras case that seeds it would otherwise refuse a later Standard open
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 0);
     // No component settles a fade in here, and a hold stamped by the previous
     // test could land age-zero on this test's own boundary tick once the clock
     // jumps: each store-level test starts hold-free, as the settled app is
@@ -2165,6 +2169,8 @@ describe('on the real builder', () => {
   it('R11: Istijaba tapped on a Friday with no readable time opens itself, since next Friday is not in the sequence', () => {
     storeDays(OCT_16_TO_20, { '2026-10-16': 'all' });
     launchAt('2026-10-16T12:00:00.000Z');
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 1);
 
     openOverlay(EXTRA, 4);
 
@@ -2175,6 +2181,8 @@ describe('on the real builder', () => {
   it('counts down to the next prayer when the overlay holds an index past the end of the list', () => {
     storeDays(OCT_16_TO_20);
     launchAt('2026-10-17T12:00:00.000Z');
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 1);
 
     openOverlay(EXTRA, 5);
 
