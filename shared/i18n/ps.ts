@@ -27,7 +27,7 @@ export const ps = {
   'settings.showTimePassed': 'تېر وخت وښایه',
   'settings.showDecorations': 'سینګار وښایه',
   'settings.countdownBar': 'د پرمختګ بار',
-  'settings.showCountdownBar': 'د پرمختګ بار وښایه',
+  'settings.showCountdownBar': 'پرمختګ وښایه',
   'settings.other': 'نور',
   'settings.whatsNew': 'نوي څه',
   'settings.help': 'مرسته',

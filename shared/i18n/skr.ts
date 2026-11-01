@@ -28,7 +28,7 @@ export const skr = {
   'settings.showTimePassed': 'لنگھیا ویلہا ݙکاؤ',
   'settings.showDecorations': 'سجاوٹ ݙکاؤ',
   'settings.countdownBar': 'پروگریس بار',
-  'settings.showCountdownBar': 'پروگریس بار ݙکاؤ',
+  'settings.showCountdownBar': 'پروگریس ݙکاؤ',
   'settings.other': 'ٻئے',
   'settings.whatsNew': 'نواں کیا ہے',
   'settings.help': 'مدد',

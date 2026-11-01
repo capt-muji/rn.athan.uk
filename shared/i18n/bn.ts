@@ -26,7 +26,7 @@ export const bn = {
   'settings.showTimePassed': 'অতীবাহিত সময় দেখান',
   'settings.showDecorations': 'সাজসজ্জা দেখান',
   'settings.countdownBar': 'অগ্রগতি বার',
-  'settings.showCountdownBar': 'অগ্রগতি বার দেখান',
+  'settings.showCountdownBar': 'অগ্রগতি দেখান',
   'settings.other': 'অন্যান্য',
   'settings.whatsNew': 'নতুন কী',
   'settings.help': 'সহায়তা',

@@ -33,7 +33,7 @@ export const mfa = {
   'settings.showTimePassed': 'Tunjuk masa yang dah lepas',
   'settings.showDecorations': 'Tunjuk hiasan',
   'settings.countdownBar': 'Bar kemajuan',
-  'settings.showCountdownBar': 'Tunjuk bar kemajuan',
+  'settings.showCountdownBar': 'Tunjuk kemajuan',
   'settings.other': 'Lain-lain',
   'settings.whatsNew': 'Apa yang baru',
   'settings.help': 'Bantuan',

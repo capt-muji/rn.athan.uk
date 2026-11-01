@@ -27,7 +27,7 @@ export const ff = {
   'settings.showTimePassed': 'Hollu waktu ɓennuɗo',
   'settings.showDecorations': 'Hollu cuɗinaali',
   'settings.countdownBar': 'Bar ɓamtaare',
-  'settings.showCountdownBar': 'Hollu bar ɓamtaare',
+  'settings.showCountdownBar': 'Hollu ɓamtaare',
   'settings.other': 'Goɗɗi',
   'settings.whatsNew': 'Kesum',
   'settings.help': 'Ballal',

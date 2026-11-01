@@ -27,7 +27,7 @@ export const jv = {
   'settings.showTimePassed': 'Tampilna wektu sing wis liwati',
   'settings.showDecorations': 'Tampilna hiasan',
   'settings.countdownBar': 'Bar kamajuan',
-  'settings.showCountdownBar': 'Tampilna bar kamajuan',
+  'settings.showCountdownBar': 'Tampilna kamajuan',
   'settings.other': 'Liyané',
   'settings.whatsNew': 'Apa sing anyar',
   'settings.help': 'Pitulungan',

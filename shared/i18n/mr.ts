@@ -27,7 +27,7 @@ export const mr = {
   'settings.showTimePassed': 'उलटलेला वेळ दाखवा',
   'settings.showDecorations': 'सजावट दाखवा',
   'settings.countdownBar': 'प्रगती पट्टी',
-  'settings.showCountdownBar': 'प्रगती पट्टी दाखवा',
+  'settings.showCountdownBar': 'प्रगती दाखवा',
   'settings.other': 'इतर',
   'settings.whatsNew': 'नवीन काय आहे',
   'settings.help': 'मदत',

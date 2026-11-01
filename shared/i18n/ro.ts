@@ -28,7 +28,7 @@ export const ro = {
   'settings.showTimePassed': 'Afișează timpul scurs',
   'settings.showDecorations': 'Afișează decorațiunile',
   'settings.countdownBar': 'Bara de progres',
-  'settings.showCountdownBar': 'Afișează bara de progres',
+  'settings.showCountdownBar': 'Afișează progresul',
   'settings.other': 'Altele',
   'settings.whatsNew': 'Ce este nou',
   'settings.help': 'Ajutor',

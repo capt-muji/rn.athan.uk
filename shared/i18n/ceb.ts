@@ -27,7 +27,7 @@ export const ceb = {
   'settings.showTimePassed': 'Ipakita ang panahon nga milabay',
   'settings.showDecorations': 'Ipakita ang mga dekorasyon',
   'settings.countdownBar': 'Bar sa pag-uswag',
-  'settings.showCountdownBar': 'Ipakita ang bar sa pag-uswag',
+  'settings.showCountdownBar': 'Ipakita ang pag-uswag',
   'settings.other': 'Lainlain',
   'settings.whatsNew': 'Unsa may bag-o',
   'settings.help': 'Tabang',

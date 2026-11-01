@@ -26,7 +26,7 @@ export const kk = {
   'settings.showTimePassed': 'Өткен уақытты көрсету',
   'settings.showDecorations': 'Әшекейлерді көрсету',
   'settings.countdownBar': 'Прогресс жолағы',
-  'settings.showCountdownBar': 'Прогресс жолағын көрсету',
+  'settings.showCountdownBar': 'Прогрессті көрсету',
   'settings.other': 'Басқа',
   'settings.whatsNew': 'Жаңалықтар',
   'settings.help': 'Көмек',

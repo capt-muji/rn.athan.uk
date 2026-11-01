@@ -25,7 +25,7 @@ export const ru = {
   'settings.showTimePassed': 'Показывать прошедшее время',
   'settings.showDecorations': 'Показывать украшения',
   'settings.countdownBar': 'Полоса прогресса',
-  'settings.showCountdownBar': 'Показывать полосу прогресса',
+  'settings.showCountdownBar': 'Показывать прогресс',
   'settings.other': 'Другое',
   'settings.whatsNew': 'Что нового',
   'settings.help': 'Справка',

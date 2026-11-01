@@ -27,7 +27,7 @@ export const kn = {
   'settings.showTimePassed': 'ಕಳೆದ ಸಮಯ ತೋರಿಸಿ',
   'settings.showDecorations': 'ಅಲಂಕಾರಗಳನ್ನು ತೋರಿಸಿ',
   'settings.countdownBar': 'ಪ್ರಗತಿ ಪಟ್ಟಿ',
-  'settings.showCountdownBar': 'ಪ್ರಗತಿ ಪಟ್ಟಿ ತೋರಿಸಿ',
+  'settings.showCountdownBar': 'ಪ್ರಗತಿ ತೋರಿಸಿ',
   'settings.other': 'ಇತರೆ',
   'settings.whatsNew': 'ಹೊಸದು',
   'settings.help': 'ಸಹಾಯ',

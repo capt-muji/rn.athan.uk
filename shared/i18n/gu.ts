@@ -27,7 +27,7 @@ export const gu = {
   'settings.showTimePassed': 'વીતેલો સમય દર્શાવો',
   'settings.showDecorations': 'સજાવટ દર્શાવો',
   'settings.countdownBar': 'પ્રગતિ બાર',
-  'settings.showCountdownBar': 'પ્રગતિ બાર દર્શાવો',
+  'settings.showCountdownBar': 'પ્રગતિ દર્શાવો',
   'settings.other': 'અન્ય',
   'settings.whatsNew': 'નવું શું છે',
   'settings.help': 'મદદ',

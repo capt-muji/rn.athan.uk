@@ -25,7 +25,7 @@ export const so = {
   'settings.showTimePassed': 'Muuji waqtii dhaafay',
   'settings.showDecorations': 'Muuji quruxinta',
   'settings.countdownBar': 'Shaxda horumarka',
-  'settings.showCountdownBar': 'Muuji shaxda horumarka',
+  'settings.showCountdownBar': 'Muuji horumarka',
   'settings.other': 'Kale',
   'settings.whatsNew': 'Maxay tahay cusub',
   'settings.help': 'Caawimo',

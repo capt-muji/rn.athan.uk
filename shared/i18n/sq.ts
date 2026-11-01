@@ -28,7 +28,7 @@ export const sq = {
   'settings.showTimePassed': 'Shfaq kohën e kaluar',
   'settings.showDecorations': 'Shfaq zbukurimet',
   'settings.countdownBar': 'Shiriti i përparimit',
-  'settings.showCountdownBar': 'Shfaq shiritin e përparimit',
+  'settings.showCountdownBar': 'Shfaq përparimin',
   'settings.other': 'Të tjera',
   'settings.whatsNew': "Ç'ka të re",
   'settings.help': 'Ndihmë',

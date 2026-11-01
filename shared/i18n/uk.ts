@@ -31,7 +31,7 @@ export const uk = {
   'settings.showTimePassed': 'Показувати минулий час',
   'settings.showDecorations': 'Показувати прикраси',
   'settings.countdownBar': 'Смуга прогресу',
-  'settings.showCountdownBar': 'Показувати смугу прогресу',
+  'settings.showCountdownBar': 'Показувати прогрес',
   'settings.other': 'Інше',
   'settings.whatsNew': 'Що нового',
   'settings.help': 'Довідка',

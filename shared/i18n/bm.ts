@@ -27,7 +27,7 @@ export const bm = {
   'settings.showTimePassed': 'Waati tɛmɛnen jira',
   'settings.showDecorations': 'Ɲɛɲɛgɛnw jira',
   'settings.countdownBar': 'Progresi bar',
-  'settings.showCountdownBar': 'Progresi bar jira',
+  'settings.showCountdownBar': 'Progresi jira',
   'settings.other': 'Dɔw',
   'settings.whatsNew': 'Kura',
   'settings.help': 'Dɛmɛ',

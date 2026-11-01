@@ -27,7 +27,7 @@ export const paArab = {
   'settings.showTimePassed': 'لنگھیا وقت دکھاؤ',
   'settings.showDecorations': 'سجاوٹ دکھاؤ',
   'settings.countdownBar': 'ترقی پٹی',
-  'settings.showCountdownBar': 'ترقی پٹی دکھاؤ',
+  'settings.showCountdownBar': 'ترقی دکھاؤ',
   'settings.other': 'ہور',
   'settings.whatsNew': 'نواں کیہ اے',
   'settings.help': 'مدد',

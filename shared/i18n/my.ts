@@ -29,7 +29,7 @@ export const my = {
   'settings.showTimePassed': 'ကျော်လွန်သွားသော အချိန် ပြရန်',
   'settings.showDecorations': 'အလှဆင်မှုများ ပြရန်',
   'settings.countdownBar': 'တိုးတက်မှု ဘား',
-  'settings.showCountdownBar': 'တိုးတက်မှု ဘား ပြရန်',
+  'settings.showCountdownBar': 'တိုးတက်မှု ပြရန်',
   'settings.other': 'အခြား',
   'settings.whatsNew': 'ဘာအသစ်ရှိလဲ',
   'settings.help': 'အကူအညီ',

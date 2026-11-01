@@ -32,7 +32,7 @@ export const mrw = {
   'settings.showTimePassed': 'Ipakita ang lumipas na oras',
   'settings.showDecorations': 'Ipakita ang dekorasyon',
   'settings.countdownBar': 'Bar ng progress',
-  'settings.showCountdownBar': 'Ipakita ang bar ng progress',
+  'settings.showCountdownBar': 'Ipakita ang progress',
   'settings.other': 'Iba pa',
   'settings.whatsNew': 'Anong bago',
   'settings.help': 'Tulong',

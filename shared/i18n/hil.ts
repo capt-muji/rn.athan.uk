@@ -30,7 +30,7 @@ export const hil = {
   'settings.showTimePassed': 'Ipakita ang nagligad nga oras',
   'settings.showDecorations': 'Ipakita ang mga dekorasyon',
   'settings.countdownBar': 'Bar sang pag-uswag',
-  'settings.showCountdownBar': 'Ipakita ang bar sang pag-uswag',
+  'settings.showCountdownBar': 'Ipakita ang pag-uswag',
   'settings.other': 'Iban pa',
   'settings.whatsNew': 'Ano may bag-o',
   'settings.help': 'Tabang',

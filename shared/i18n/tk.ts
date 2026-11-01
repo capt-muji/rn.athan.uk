@@ -27,7 +27,7 @@ export const tk = {
   'settings.showTimePassed': 'Geçen wagty görkez',
   'settings.showDecorations': 'Bezegleri görkez',
   'settings.countdownBar': 'Ösüş zolagy',
-  'settings.showCountdownBar': 'Ösüş zolagyny görkez',
+  'settings.showCountdownBar': 'Ösüşi görkez',
   'settings.other': 'Başga',
   'settings.whatsNew': 'Täzelikler',
   'settings.help': 'Kömek',

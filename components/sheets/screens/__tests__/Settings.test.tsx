@@ -77,7 +77,7 @@ const DISPLAY_TOGGLES = [
   ['Show hijri date', hijriDateEnabledAtom],
   ['Show seconds', showSecondsAtom],
   ['Show time passed', showTimePassedAtom],
-  ['Show progress bar', countdownBarShownAtom],
+  ['Show progress', countdownBarShownAtom],
 ] as const;
 
 /** Every row on, and the one under test off, so a row that shows or writes another row's preference cannot pass */
@@ -723,7 +723,7 @@ describe('every settings row label beside its trailing control', () => {
       'Show hijri date',
       'Show seconds',
       'Show time passed',
-      'Show progress bar',
+      'Show progress',
       'Progress color',
       'Language',
       'Help',
@@ -743,7 +743,7 @@ describe('every settings row label beside its trailing control', () => {
     try {
       await render(<SettingsSheet />);
 
-      for (const label of ['Mostra la barra di avanzamento', 'Colore della barra di avanzamento']) {
+      for (const label of ['Mostra avanzamento', 'Colore della barra di avanzamento']) {
         oneLineAndYielding(screen.getByText(label));
       }
     } finally {

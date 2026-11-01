@@ -28,7 +28,7 @@ export const am = {
   'settings.showTimePassed': 'ያለፈውን ጊዜ አሳይ',
   'settings.showDecorations': 'ማስዋቢያዎችን አሳይ',
   'settings.countdownBar': 'የእድገት አሞሌ',
-  'settings.showCountdownBar': 'የእድገት አሞሌ አሳይ',
+  'settings.showCountdownBar': 'እድገት አሳይ',
   'settings.other': 'ሌላ',
   'settings.whatsNew': 'አዲስ',
   'settings.help': 'እገዛ',

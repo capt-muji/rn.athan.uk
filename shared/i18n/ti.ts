@@ -31,7 +31,7 @@ export const ti = {
   'settings.showTimePassed': 'ዝሰጊሩ ግዜ ኣርኣዩ',
   'settings.showDecorations': 'ጌጣጌጥታት ኣርኣዩ',
   'settings.countdownBar': 'ናይ ድገት ኣሞሌ',
-  'settings.showCountdownBar': 'ናይ ድገት ኣሞሌ ኣርኣዩ',
+  'settings.showCountdownBar': 'ድገት ኣርኣዩ',
   'settings.other': 'ካልእ',
   'settings.whatsNew': 'ዝሓዱሽ',
   'settings.help': 'ሓገዝ',

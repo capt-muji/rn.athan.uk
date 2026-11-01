@@ -27,7 +27,7 @@ export const ilo = {
   'settings.showTimePassed': 'Ipakita ti panawen a nalabasan',
   'settings.showDecorations': 'Ipakita dagiti dekorasion',
   'settings.countdownBar': 'Barra ti panagrang-ay',
-  'settings.showCountdownBar': 'Ipakita ti barra ti panagrang-ay',
+  'settings.showCountdownBar': 'Ipakita ti panagrang-ay',
   'settings.other': 'Dadduma',
   'settings.whatsNew': 'Ania ti baro',
   'settings.help': 'Tulong',

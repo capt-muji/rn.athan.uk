@@ -27,7 +27,7 @@ export const om = {
   'settings.showTimePassed': 'Yeroo dabre agarsiisi',
   'settings.showDecorations': 'Faaya agarsiisi',
   'settings.countdownBar': 'Bar guddina',
-  'settings.showCountdownBar': 'Bar guddina agarsiisi',
+  'settings.showCountdownBar': 'Guddina agarsiisi',
   'settings.other': 'Kan biraa',
   'settings.whatsNew': 'Haaraa',
   'settings.help': 'Gargaarsa',

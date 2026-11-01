@@ -26,7 +26,7 @@ export const sw = {
   'settings.showTimePassed': 'Onyesha muda uliopita',
   'settings.showDecorations': 'Onyesha mapambo',
   'settings.countdownBar': 'Mstari wa Maendeleo',
-  'settings.showCountdownBar': 'Onyesha mstari wa maendeleo',
+  'settings.showCountdownBar': 'Onyesha maendeleo',
   'settings.other': 'Nyingine',
   'settings.whatsNew': 'Nini kipya',
   'settings.help': 'Msaada',

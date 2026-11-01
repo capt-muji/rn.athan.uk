@@ -26,7 +26,7 @@ export const bs = {
   'settings.showTimePassed': 'Prikaži proteklo vrijeme',
   'settings.showDecorations': 'Prikaži ukrase',
   'settings.countdownBar': 'Traka napretka',
-  'settings.showCountdownBar': 'Prikaži traku napretka',
+  'settings.showCountdownBar': 'Prikaži napredak',
   'settings.other': 'Ostalo',
   'settings.whatsNew': 'Novosti',
   'settings.help': 'Pomoć',

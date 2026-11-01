@@ -26,7 +26,7 @@ export const ha = {
   'settings.showTimePassed': 'Nuna lokacin da ya wuce',
   'settings.showDecorations': 'Nuna ƙawata',
   'settings.countdownBar': 'Layin Ci Gaba',
-  'settings.showCountdownBar': 'Nuna layin ci gaba',
+  'settings.showCountdownBar': 'Nuna ci gaba',
   'settings.other': 'Sauran',
   'settings.whatsNew': 'Sababbi',
   'settings.help': 'Taimako',

@@ -32,7 +32,7 @@ export const qu = {
   'settings.showTimePassed': 'Pasaq pachata qawachiy',
   'settings.showDecorations': 'Wallqanakunata qawachiy',
   'settings.countdownBar': 'Progreso siq\u2019i',
-  'settings.showCountdownBar': 'Progreso siq\u2019ita qawachiy',
+  'settings.showCountdownBar': 'Progresota qawachiy',
   'settings.other': 'Wakinkuna',
   'settings.whatsNew': 'Ima musuq',
   'settings.help': 'Yanapay',

@@ -32,7 +32,7 @@ export const tt = {
   'settings.showTimePassed': 'Узган вакытны күрсәтергә',
   'settings.showDecorations': 'Бизәкләрне күрсәтергә',
   'settings.countdownBar': 'Прогресс полосасы',
-  'settings.showCountdownBar': 'Прогресс полосасын күрсәтергә',
+  'settings.showCountdownBar': 'Прогрессны күрсәтергә',
   'settings.other': 'Башка',
   'settings.whatsNew': 'Нәрсә яңа',
   'settings.help': 'Ярдәм',

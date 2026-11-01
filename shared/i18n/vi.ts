@@ -29,7 +29,7 @@ export const vi = {
   'settings.showTimePassed': 'Hiện thời gian đã trôi qua',
   'settings.showDecorations': 'Hiện hiệu ứng trang trí',
   'settings.countdownBar': 'Thanh tiến trình',
-  'settings.showCountdownBar': 'Hiện thanh tiến trình',
+  'settings.showCountdownBar': 'Hiện tiến trình',
   'settings.other': 'Khác',
   'settings.whatsNew': 'Có gì mới',
   'settings.help': 'Trợ giúp',

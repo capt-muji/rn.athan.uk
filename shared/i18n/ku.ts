@@ -27,7 +27,7 @@ export const ku = {
   'settings.showTimePassed': 'Dema borî nîşan bide',
   'settings.showDecorations': 'Xemlan nîşan bide',
   'settings.countdownBar': 'Şerîta Pêşketinê',
-  'settings.showCountdownBar': 'Şerîta pêşketinê nîşan bide',
+  'settings.showCountdownBar': 'Pêşketinê nîşan bide',
   'settings.other': 'Yên din',
   'settings.whatsNew': 'Çi nû ye',
   'settings.help': 'Alîkarî',

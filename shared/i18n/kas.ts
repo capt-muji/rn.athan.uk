@@ -27,7 +27,7 @@ export const kas = {
   'settings.showTimePassed': 'گیرن وَقت ہٲویو',
   'settings.showDecorations': 'سَجاوت ہٲویو',
   'settings.countdownBar': 'پروگریس بار',
-  'settings.showCountdownBar': 'پروگریس بار ہٲویو',
+  'settings.showCountdownBar': 'پروگریس ہٲویو',
   'settings.other': 'بیٲتی',
   'settings.whatsNew': 'کیاہ نُو چُھہ',
   'settings.help': 'مَدَت',

@@ -27,7 +27,7 @@ export const ko = {
   'settings.showTimePassed': '경과 시간 표시',
   'settings.showDecorations': '장식 표시',
   'settings.countdownBar': '진행 바',
-  'settings.showCountdownBar': '진행 바 표시',
+  'settings.showCountdownBar': '진행 표시',
   'settings.other': '기타',
   'settings.whatsNew': '새로운 소식',
   'settings.help': '도움말',

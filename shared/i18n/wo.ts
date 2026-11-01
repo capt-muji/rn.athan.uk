@@ -27,7 +27,7 @@ export const wo = {
   'settings.showTimePassed': 'Wone waxtu bi jaar',
   'settings.showDecorations': 'Wone ay mbir yu rafet',
   'settings.countdownBar': 'Bàndu progres',
-  'settings.showCountdownBar': 'Wone bàndu progres',
+  'settings.showCountdownBar': 'Wone progres',
   'settings.other': 'Yeneen',
   'settings.whatsNew': 'Li bees',
   'settings.help': 'Ndimbal',

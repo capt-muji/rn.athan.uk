@@ -26,7 +26,7 @@ export const en = {
   'settings.showTimePassed': 'Show time passed',
   'settings.showDecorations': 'Show decorations',
   'settings.countdownBar': 'Progress Bar',
-  'settings.showCountdownBar': 'Show progress bar',
+  'settings.showCountdownBar': 'Show progress',
   'settings.other': 'Other',
   'settings.whatsNew': "What's new",
   'settings.help': 'Help',

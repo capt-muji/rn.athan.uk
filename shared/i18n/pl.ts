@@ -28,7 +28,7 @@ export const pl = {
   'settings.showTimePassed': 'Pokaż czas, który minął',
   'settings.showDecorations': 'Pokaż dekoracje',
   'settings.countdownBar': 'Pasek postępu',
-  'settings.showCountdownBar': 'Pokaż pasek postępu',
+  'settings.showCountdownBar': 'Pokaż postęp',
   'settings.other': 'Inne',
   'settings.whatsNew': 'Co nowego',
   'settings.help': 'Pomoc',

@@ -27,7 +27,7 @@ export const nl = {
   'settings.showTimePassed': 'Verstreken tijd tonen',
   'settings.showDecorations': 'Versieringen tonen',
   'settings.countdownBar': 'Voortgangsbalk',
-  'settings.showCountdownBar': 'Voortgangsbalk tonen',
+  'settings.showCountdownBar': 'Voortgang tonen',
   'settings.other': 'Overig',
   'settings.whatsNew': 'Wat is er nieuw',
   'settings.help': 'Help',

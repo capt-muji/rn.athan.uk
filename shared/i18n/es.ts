@@ -27,7 +27,7 @@ export const es = {
   'settings.showTimePassed': 'Mostrar el tiempo transcurrido',
   'settings.showDecorations': 'Mostrar decoraciones',
   'settings.countdownBar': 'Barra de progreso',
-  'settings.showCountdownBar': 'Mostrar la barra de progreso',
+  'settings.showCountdownBar': 'Mostrar progreso',
   'settings.other': 'Otros',
   'settings.whatsNew': 'Novedades',
   'settings.help': 'Ayuda',

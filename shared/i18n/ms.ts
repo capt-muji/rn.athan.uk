@@ -25,7 +25,7 @@ export const ms = {
   'settings.showTimePassed': 'Tunjukkan masa yang berlalu',
   'settings.showDecorations': 'Tunjukkan hiasan',
   'settings.countdownBar': 'Bar kemajuan',
-  'settings.showCountdownBar': 'Tunjukkan bar kemajuan',
+  'settings.showCountdownBar': 'Tunjukkan kemajuan',
   'settings.other': 'Lain-lain',
   'settings.whatsNew': 'Apa yang baharu',
   'settings.help': 'Bantuan',

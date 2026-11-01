@@ -30,7 +30,7 @@ export const war = {
   'settings.showTimePassed': 'Igpakita an naglabay nga oras',
   'settings.showDecorations': 'Igpakita an mga dekorasyon',
   'settings.countdownBar': 'Bar han pag-uswag',
-  'settings.showCountdownBar': 'Igpakita an bar han pag-uswag',
+  'settings.showCountdownBar': 'Igpakita an pag-uswag',
   'settings.other': 'Iba pa',
   'settings.whatsNew': 'Ano an bag-o',
   'settings.help': 'Bulig',

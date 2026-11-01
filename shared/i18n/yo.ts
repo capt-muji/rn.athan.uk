@@ -27,7 +27,7 @@ export const yo = {
   'settings.showTimePassed': 'Fi àkókò tí ó kọjá hàn',
   'settings.showDecorations': 'Fi ọ̀ṣọ́ hàn',
   'settings.countdownBar': 'Ìlà Ìlọsíwájú',
-  'settings.showCountdownBar': 'Fi ìlà ìlọsíwájú hàn',
+  'settings.showCountdownBar': 'Fi ìlọsíwájú hàn',
   'settings.other': 'Àwọn mìíràn',
   'settings.whatsNew': 'Ohun tuntun',
   'settings.help': 'Ìrànwọ́',

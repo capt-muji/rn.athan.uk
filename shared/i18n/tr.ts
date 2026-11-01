@@ -26,7 +26,7 @@ export const tr = {
   'settings.showTimePassed': 'Geçen süreyi göster',
   'settings.showDecorations': 'Süslemeleri göster',
   'settings.countdownBar': 'İlerleme Çubuğu',
-  'settings.showCountdownBar': 'İlerleme çubuğunu göster',
+  'settings.showCountdownBar': 'İlerlemeyi göster',
   'settings.other': 'Diğer',
   'settings.whatsNew': 'Yenilikler',
   'settings.help': 'Yardım',

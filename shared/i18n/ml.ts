@@ -28,7 +28,7 @@ export const ml = {
   'settings.showTimePassed': 'കഴിഞ്ഞ സമയം കാണിക്കുക',
   'settings.showDecorations': 'അലങ്കാരങ്ങൾ കാണിക്കുക',
   'settings.countdownBar': 'പുരോഗതി ബാർ',
-  'settings.showCountdownBar': 'പുരോഗതി ബാർ കാണിക്കുക',
+  'settings.showCountdownBar': 'പുരോഗതി കാണിക്കുക',
   'settings.other': 'മറ്റുള്ളവ',
   'settings.whatsNew': 'പുതിയത്',
   'settings.help': 'സഹായം',

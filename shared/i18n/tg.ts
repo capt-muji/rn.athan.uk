@@ -27,7 +27,7 @@ export const tg = {
   'settings.showTimePassed': 'Нишон додани вақти гузашта',
   'settings.showDecorations': 'Нишон додани ороишҳо',
   'settings.countdownBar': 'Хати пешрафт',
-  'settings.showCountdownBar': 'Нишон додани хати пешрафт',
+  'settings.showCountdownBar': 'Нишон додани пешрафт',
   'settings.other': 'Дигар',
   'settings.whatsNew': 'Навигариҳо',
   'settings.help': 'Кӯмак',

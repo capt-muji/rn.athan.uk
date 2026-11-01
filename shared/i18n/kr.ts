@@ -30,7 +30,7 @@ export const kr = {
   'settings.showTimePassed': 'Loktu kure bayanna',
   'settings.showDecorations': 'Decoraasiyon bayanna',
   'settings.countdownBar': 'Progres bar',
-  'settings.showCountdownBar': 'Progres bar bayanna',
+  'settings.showCountdownBar': 'Progres bayanna',
   'settings.other': 'Gade gade',
   'settings.whatsNew': 'Sabuwa',
   'settings.help': 'Madde',

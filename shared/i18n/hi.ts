@@ -25,7 +25,7 @@ export const hi = {
   'settings.showTimePassed': 'बीता समय दिखाएँ',
   'settings.showDecorations': 'सजावट दिखाएँ',
   'settings.countdownBar': 'प्रगति पट्टी',
-  'settings.showCountdownBar': 'प्रगति पट्टी दिखाएँ',
+  'settings.showCountdownBar': 'प्रगति दिखाएँ',
   'settings.other': 'अन्य',
   'settings.whatsNew': 'नया क्या है',
   'settings.help': 'सहायता',

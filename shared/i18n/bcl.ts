@@ -31,7 +31,7 @@ export const bcl = {
   'settings.showTimePassed': 'Ipahiling an nakaaging oras',
   'settings.showDecorations': 'Ipahiling an mga dekorasyon',
   'settings.countdownBar': 'Bar kan pag-uswag',
-  'settings.showCountdownBar': 'Ipahiling an bar kan pag-uswag',
+  'settings.showCountdownBar': 'Ipahiling an pag-uswag',
   'settings.other': 'Iba pa',
   'settings.whatsNew': 'Ano an bago',
   'settings.help': 'Tabang',

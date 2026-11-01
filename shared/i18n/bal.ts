@@ -27,7 +27,7 @@ export const bal = {
   'settings.showTimePassed': 'گوشتنگ وخت دِست کَن',
   'settings.showDecorations': 'آرایش دِست کَن',
   'settings.countdownBar': 'پروگریس بار',
-  'settings.showCountdownBar': 'پروگریس بار دِست کَن',
+  'settings.showCountdownBar': 'پروگریس دِست کَن',
   'settings.other': 'دِگہ',
   'settings.whatsNew': 'نوک چی بیت',
   'settings.help': 'مدد',

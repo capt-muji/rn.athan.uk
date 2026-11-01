@@ -26,7 +26,7 @@ export const az = {
   'settings.showTimePassed': 'Keçən vaxtı göstər',
   'settings.showDecorations': 'Bəzəkləri göstər',
   'settings.countdownBar': 'İrəliləyiş Zolağı',
-  'settings.showCountdownBar': 'İrəliləyiş zolağını göstər',
+  'settings.showCountdownBar': 'İrəliləyişi göstər',
   'settings.other': 'Digər',
   'settings.whatsNew': 'Yeniliklər',
   'settings.help': 'Kömək',

@@ -27,7 +27,7 @@ export const te = {
   'settings.showTimePassed': 'గడిచిన సమయం చూపించు',
   'settings.showDecorations': 'అలంకరణలు చూపించు',
   'settings.countdownBar': 'పురోగతి పట్టీ',
-  'settings.showCountdownBar': 'పురోగతి పట్టీ చూపించు',
+  'settings.showCountdownBar': 'పురోగతి చూపించు',
   'settings.other': 'ఇతరం',
   'settings.whatsNew': 'కొత్తవి',
   'settings.help': 'సహాయం',

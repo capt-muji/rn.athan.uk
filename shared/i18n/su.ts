@@ -27,7 +27,7 @@ export const su = {
   'settings.showTimePassed': 'Témbongkeun waktu nu geus kaliwat',
   'settings.showDecorations': 'Témbongkeun hiasan',
   'settings.countdownBar': 'Bar kamajuan',
-  'settings.showCountdownBar': 'Témbongkeun bar kamajuan',
+  'settings.showCountdownBar': 'Témbongkeun kamajuan',
   'settings.other': 'Lianna',
   'settings.whatsNew': 'Naon nu anyar',
   'settings.help': 'Pitulung',

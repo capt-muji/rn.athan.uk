@@ -26,7 +26,7 @@ export const ur = {
   'settings.showTimePassed': 'گزرا وقت دکھائیں',
   'settings.showDecorations': 'سجاوٹ دکھائیں',
   'settings.countdownBar': 'پروگریس بار',
-  'settings.showCountdownBar': 'پروگریس بار دکھائیں',
+  'settings.showCountdownBar': 'پروگریس دکھائیں',
   'settings.other': 'دیگر',
   'settings.whatsNew': 'نیا کیا ہے',
   'settings.help': 'مدد',

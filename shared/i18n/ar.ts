@@ -25,7 +25,7 @@ export const ar = {
   'settings.showTimePassed': 'إظهار الوقت المنقضي',
   'settings.showDecorations': 'إظهار الزخارف',
   'settings.countdownBar': 'شريط التقدم',
-  'settings.showCountdownBar': 'إظهار شريط التقدم',
+  'settings.showCountdownBar': 'إظهار التقدم',
   'settings.other': 'أخرى',
   'settings.whatsNew': 'ما الجديد',
   'settings.help': 'المساعدة',

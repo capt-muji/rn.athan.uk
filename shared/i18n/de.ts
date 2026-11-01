@@ -26,7 +26,7 @@ export const de = {
   'settings.showTimePassed': 'Vergangene Zeit anzeigen',
   'settings.showDecorations': 'Dekorationen anzeigen',
   'settings.countdownBar': 'Fortschrittsbalken',
-  'settings.showCountdownBar': 'Fortschrittsbalken anzeigen',
+  'settings.showCountdownBar': 'Fortschritt anzeigen',
   'settings.other': 'Sonstiges',
   'settings.whatsNew': 'Neuigkeiten',
   'settings.help': 'Hilfe',

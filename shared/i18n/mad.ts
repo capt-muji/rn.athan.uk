@@ -31,7 +31,7 @@ export const mad = {
   'settings.showTimePassed': 'Epataragi bakto sè la las',
   'settings.showDecorations': 'Epataragi paennèngan',
   'settings.countdownBar': 'Bâḍâna progres',
-  'settings.showCountdownBar': 'Epataragi bâḍâna progres',
+  'settings.showCountdownBar': 'Epataragi progres',
   'settings.other': 'Lè-lèna',
   'settings.whatsNew': 'Sapa sè anyar',
   'settings.help': 'Bântoan',

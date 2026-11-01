@@ -25,7 +25,7 @@ export const th = {
   'settings.showTimePassed': 'แสดงเวลาที่ผ่านไป',
   'settings.showDecorations': 'แสดงของตกแต่ง',
   'settings.countdownBar': 'แถบความคืบหน้า',
-  'settings.showCountdownBar': 'แสดงแถบความคืบหน้า',
+  'settings.showCountdownBar': 'แสดงความคืบหน้า',
   'settings.other': 'อื่น ๆ',
   'settings.whatsNew': 'มีอะไรใหม่',
   'settings.help': 'ช่วยเหลือ',

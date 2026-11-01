@@ -25,7 +25,7 @@ export const id = {
   'settings.showTimePassed': 'Tampilkan waktu berlalu',
   'settings.showDecorations': 'Tampilkan hiasan',
   'settings.countdownBar': 'Bilah Kemajuan',
-  'settings.showCountdownBar': 'Tampilkan bilah kemajuan',
+  'settings.showCountdownBar': 'Tampilkan kemajuan',
   'settings.other': 'Lainnya',
   'settings.whatsNew': 'Apa yang baru',
   'settings.help': 'Bantuan',

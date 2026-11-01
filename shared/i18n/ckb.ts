@@ -26,7 +26,7 @@ export const ckb = {
   'settings.showTimePassed': 'کاتی تێپەڕیو پیشان بدە',
   'settings.showDecorations': 'ڕازاندنەوەکان پیشان بدە',
   'settings.countdownBar': 'شریتی پێشکەوتن',
-  'settings.showCountdownBar': 'شریتی پێشکەوتن پیشان بدە',
+  'settings.showCountdownBar': 'پێشکەوتن پیشان بدە',
   'settings.other': 'هیتر',
   'settings.whatsNew': 'چی نوێیە',
   'settings.help': 'یارمەتی',

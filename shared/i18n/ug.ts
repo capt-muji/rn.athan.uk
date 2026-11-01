@@ -25,7 +25,7 @@ export const ug = {
   'settings.showTimePassed': 'ئۆتكەن ۋاقىتنى كۆرسەت',
   'settings.showDecorations': 'زىننەتلەرنى كۆرسەت',
   'settings.countdownBar': 'ئىلگىرىلەش بالدىقى',
-  'settings.showCountdownBar': 'ئىلگىرىلەش بالدىقىنى كۆرسەت',
+  'settings.showCountdownBar': 'ئىلگىرىلەشنى كۆرسەت',
   'settings.other': 'باشقا',
   'settings.whatsNew': 'يېڭىلىقلار',
   'settings.help': 'ياردەم',

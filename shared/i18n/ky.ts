@@ -27,7 +27,7 @@ export const ky = {
   'settings.showTimePassed': 'Өткөн убакытты көрсөтүү',
   'settings.showDecorations': 'Жасалгаларды көрсөтүү',
   'settings.countdownBar': 'Прогресс тилкеси',
-  'settings.showCountdownBar': 'Прогресс тилкесин көрсөтүү',
+  'settings.showCountdownBar': 'Прогрессти көрсөтүү',
   'settings.other': 'Башка',
   'settings.whatsNew': 'Жаңылыктар',
   'settings.help': 'Жардам',

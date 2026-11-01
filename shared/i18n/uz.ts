@@ -26,7 +26,7 @@ export const uz = {
   'settings.showTimePassed': "O'tgan vaqtni ko'rsatish",
   'settings.showDecorations': "Bezaklarni ko'rsatish",
   'settings.countdownBar': 'Taraqqiyot paneli',
-  'settings.showCountdownBar': "Taraqqiyot panelini ko'rsatish",
+  'settings.showCountdownBar': "Taraqqiyotni ko'rsatish",
   'settings.other': 'Boshqa',
   'settings.whatsNew': 'Yangi narsalar',
   'settings.help': 'Yordam',

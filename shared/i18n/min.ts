@@ -31,7 +31,7 @@ export const min = {
   'settings.showTimePassed': 'Tampilkan wakatu nan lah lia',
   'settings.showDecorations': 'Tampilkan hiasan',
   'settings.countdownBar': 'Bar kamajuan',
-  'settings.showCountdownBar': 'Tampilkan bar kamajuan',
+  'settings.showCountdownBar': 'Tampilkan kamajuan',
   'settings.other': 'Lainnyo',
   'settings.whatsNew': 'Apo nan baru',
   'settings.help': 'Bantuan',

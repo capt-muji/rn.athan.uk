@@ -28,7 +28,7 @@ export const ja = {
   'settings.showTimePassed': '経過時間を表示',
   'settings.showDecorations': '装飾を表示',
   'settings.countdownBar': 'プログレスバー',
-  'settings.showCountdownBar': 'プログレスバーを表示',
+  'settings.showCountdownBar': 'プログレスを表示',
   'settings.other': 'その他',
   'settings.whatsNew': '新着情報',
   'settings.help': 'ヘルプ',

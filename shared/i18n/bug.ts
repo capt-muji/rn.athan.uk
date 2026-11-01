@@ -30,7 +30,7 @@ export const bug = {
   'settings.showTimePassed': 'Taro wettu liaseng',
   'settings.showDecorations': 'Taro paennang',
   'settings.countdownBar': 'Baro progres',
-  'settings.showCountdownBar': 'Taro baro progres',
+  'settings.showCountdownBar': 'Taro progres',
   'settings.other': 'Lainna',
   'settings.whatsNew': 'Umba baru',
   'settings.help': 'Pitunangan',

@@ -27,7 +27,7 @@ export const tl = {
   'settings.showTimePassed': 'Ipakita ang lumipas na oras',
   'settings.showDecorations': 'Ipakita ang mga palamuti',
   'settings.countdownBar': 'Bar ng progress',
-  'settings.showCountdownBar': 'Ipakita ang bar ng progress',
+  'settings.showCountdownBar': 'Ipakita ang progress',
   'settings.other': 'Iba pa',
   'settings.whatsNew': 'Ano ang bago',
   'settings.help': 'Tulong',

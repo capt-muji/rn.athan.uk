@@ -26,7 +26,7 @@ export const sd = {
   'settings.showTimePassed': 'گذريل وقت ڏيکاريو',
   'settings.showDecorations': 'سنگار ڏيکاريو',
   'settings.countdownBar': 'ترقي پٽي',
-  'settings.showCountdownBar': 'ترقي پٽي ڏيکاريو',
+  'settings.showCountdownBar': 'ترقي ڏيکاريو',
   'settings.other': 'ٻيو',
   'settings.whatsNew': 'ڇا نئون آهي',
   'settings.help': 'مدد',

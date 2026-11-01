@@ -27,7 +27,7 @@ export const ta = {
   'settings.showTimePassed': 'கடந்த நேரத்தைக் காட்டு',
   'settings.showDecorations': 'அலங்காரங்களைக் காட்டு',
   'settings.countdownBar': 'முன்னேற்றப் பட்டை',
-  'settings.showCountdownBar': 'முன்னேற்றப் பட்டையைக் காட்டு',
+  'settings.showCountdownBar': 'முன்னேற்றத்தைக் காட்டு',
   'settings.other': 'மற்றவை',
   'settings.whatsNew': 'புதியவை',
   'settings.help': 'உதவி',

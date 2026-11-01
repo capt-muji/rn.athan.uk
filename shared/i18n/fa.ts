@@ -26,7 +26,7 @@ export const fa = {
   'settings.showTimePassed': 'نمایش زمان گذشته',
   'settings.showDecorations': 'نمایش تزئینات',
   'settings.countdownBar': 'نوار پیشرفت',
-  'settings.showCountdownBar': 'نمایش نوار پیشرفت',
+  'settings.showCountdownBar': 'نمایش پیشرفت',
   'settings.other': 'سایر',
   'settings.whatsNew': 'تازه‌ها',
   'settings.help': 'راهنما',

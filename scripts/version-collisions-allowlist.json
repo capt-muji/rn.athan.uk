@@ -326,5 +326,9 @@
   {
     "version": "2.43.20",
     "reason": "2026-11-01 lane3/T-542's step 3 (facfbcd8) took 2.43.20 over uat's 2.43.19 while t538-line-box-3's tip 952600fb already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.25",
+    "reason": "2026-11-01 lane2/T-561's show-progress shortening steps from uat's 2.43.24 while parked t538-line-box-3's replayed stamp 4f742f1d already holds 2.43.25 (the discipline gate holds every fix to the single patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
