@@ -1,52 +1,23 @@
-// Cuts the CJK subset font pairs and regenerates the glyph lock (plan T-419
-// decision 8; ja and ko ride the same pipeline, plan T-452 decision 3; the
-// Traditional pair left with its catalog in the T-537 language wave; the
-// candidate states are plan T-538's owner-ruled font lever).
+// Regenerates the ko glyph lock beside the shipped KR subset binaries (plan
+// T-419 decision 8; ja and ko rode the same pipeline, plan T-452 decision 3;
+// the Traditional pair left with its catalog in the T-537 language wave; the
+// zh-Hans and ja pairs were dropped for the OS system-font fallback by plan
+// T-538's owner-ruled C3, 2026-11-01).
 //
-// The full Noto Sans SC, JP and KR statics run near 10MB a weight, so the app bundles
-// subsets cut over a CLOSED string set - every character of each CJK catalog, its
-// native-strings.json row, its widget-statics.json row, its endonym, and the What's
-// New keys that resolve through the catalog - and shared/__tests__/cjkSubset.test.ts
-// recomputes that set from the committed files and diffs it against the lock this
-// script writes from the subsets' own cmaps, so any catalog byte the subsets miss
-// fails the suite naming the character.
+// The full Noto Sans KR statics run near 10MB a weight, so the app bundles a
+// subset cut over a CLOSED string set - every character of the ko catalog, its
+// native-strings.json row, its widget-statics.json row, its endonym, and the
+// What's New keys that resolve through the catalog - and
+// shared/__tests__/cjkSubset.test.ts recomputes that set from the committed
+// files and diffs it against the lock this script writes from the subset's own
+// cmap, so any catalog byte the subset misses fails the suite naming the
+// character.
 //
-// The full pairs never enter the repository (decision 8): fetch them outside first -
-//   curl -sSL -o <dir>/NotoSansSC-VF.ttf \
-//     https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf
-//   curl -sSL -o <dir>/NotoSansJP-VF.ttf \
-//     https://raw.githubusercontent.com/google/fonts/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf
+// The full pair never enters the repository (decision 8): fetch it outside first -
 //   curl -sSL -o <dir>/NotoSansKR-VF.ttf \
 //     https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf
-// and, for candidate C2's alternate static sources (IBM Plex Sans, SIL OFL 1.1 with
-// Reserved Font Name "Plex", so the cuts ship under this repo's own Athan names):
-//   curl -sSL -o <dir>/IBMPlexSansSC-Regular.ttf \
-//     https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans-sc/fonts/complete/ttf/unhinted/IBMPlexSansSC-Regular.ttf
-//   curl -sSL -o <dir>/IBMPlexSansSC-Medium.ttf \
-//     https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans-sc/fonts/complete/ttf/unhinted/IBMPlexSansSC-Medium.ttf
-//   curl -sSL -o <dir>/IBMPlexSansJP-Regular.ttf \
-//     https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans-jp/fonts/complete/ttf/unhinted/IBMPlexSansJP-Regular.ttf
-//   curl -sSL -o <dir>/IBMPlexSansJP-Medium.ttf \
-//     https://raw.githubusercontent.com/IBM/plex/master/packages/plex-sans-jp/fonts/complete/ttf/unhinted/IBMPlexSansJP-Medium.ttf
 // - then, from the repo root:
-//   node scripts/cjk-subset.mjs <dir> [c1|c2|c3]
-//
-// Candidate states (plan T-538, all behind the same cut pipeline and lock generation):
-//   (no argument) the shipped cut: all three pairs instanced from the Noto VFs.
-//   c1  the SC and JP pairs re-cut from the same VFs with their vertical metrics
-//       rewritten to Roboto's 1.172em box (hhea and typo 928/-244/0, win 928/244,
-//       fsSelection bit 6 kept and bit 7 clear, UPM 1000) and the non-ASCII
-//       glyph-ink assertion [-244, 928] over each pair's own closed set - the
-//       ASCII 'g' at -250 is exempt by Roboto's own precedent, and the cut fails
-//       naming any glyph that breaches. The KR pair is never re-cut: its committed
-//       binaries stay byte-identical and the lock keeps their hashes.
-//   c2  the SC and JP pairs cut from the IBM Plex Sans statics (both weights, no VF
-//       instancing) over the same closed sets, shipped as AthanSC-Subset and
-//       AthanJP-Subset with the name-table family IDs rewritten away from the
-//       Reserved Font Name at cut time. The KR pair is kept exactly as c1.
-//   c3  pair-drop: the SC and JP pairs leave the job, the lock and the bundled
-//       fonts; the lock keeps the ko set and the KR files binding, regenerated
-//       from the shipped KR binaries' own cmaps.
+//   node scripts/cjk-subset.mjs <dir>
 //
 // The closed set is read through @babel/parser (the catalog-lock.mjs precedent)
 // because the catalog and name modules use ESM export syntax Node cannot load.
@@ -58,10 +29,8 @@ import { parse } from '@babel/parser';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const FONTS_DIR = process.argv[2];
-if (!FONTS_DIR) throw new Error('usage: node scripts/cjk-subset.mjs <dir holding the full statics> [c1|c2|c3]');
-const CANDIDATE = process.argv[3] ?? 'shipped';
-if (!['shipped', 'c1', 'c2', 'c3'].includes(CANDIDATE)) {
-  throw new Error(`unknown candidate ${CANDIDATE}: usage: node scripts/cjk-subset.mjs <dir> [c1|c2|c3]`);
+if (!FONTS_DIR || process.argv.length > 3) {
+  throw new Error('usage: node scripts/cjk-subset.mjs <dir holding the full statics>');
 }
 
 /** The named export's object-literal values from a flat catalog module */
@@ -255,87 +224,19 @@ for pair, spec in job.items():
 print(json.dumps(answer))
 `;
 
-// Roboto's own box (hhea 928/-244 against UPM 1000, its 'g' inking to -250 beneath
-// it): the C1 rewrite carries it onto the SC and JP pairs' unchanged glyphs
-const ROBOTO_PARITY = { hhea: [928, -244, 0], typo: [928, -244, 0], win: [928, 244] };
-
-// The RFN-free identity the C2 cuts carry in their name tables, per pair and weight:
-// the RIBBI shape the instanced Noto subsets use (family 'X Medium', subfamily
-// 'Regular', the typographic IDs carrying the weight)
-const ATHAN = (script, weight) => {
-  const family = `Athan ${script} Subset`;
-  return {
-    family: weight === 'Medium' ? `${family} Medium` : family,
-    subfamily: 'Regular',
-    unique: `Athan;Athan${script}-Subset-${weight};1.000`,
-    full: `${family} ${weight}`,
-    postscript: `Athan${script}-Subset-${weight}`,
-    typoFamily: family,
-    typoSubfamily: weight,
-  };
-};
-
-const vfPair = (script, text) => ({
-  mode: 'vf',
-  source: join(FONTS_DIR, `NotoSans${script}-VF.ttf`),
-  text,
-  out: join(ROOT, 'assets/fonts', `NotoSans${script}-Subset-` + '{weight}.ttf'),
-});
 const keptKr = { mode: 'keep', out: join(ROOT, 'assets/fonts/NotoSansKR-Subset-{weight}.ttf') };
 
-const JOBS = {
-  shipped: {
-    SC: vfPair('SC', closedText['zh-Hans']),
-    JP: vfPair('JP', closedText.ja),
-    KR: vfPair('KR', closedText.ko),
-  },
-  c1: {
-    SC: { ...vfPair('SC', closedText['zh-Hans']), override: ROBOTO_PARITY, ink: [-244, 928] },
-    JP: { ...vfPair('JP', closedText.ja), override: ROBOTO_PARITY, ink: [-244, 928] },
-    KR: keptKr,
-  },
-  c2: {
-    SC: {
-      mode: 'plex',
-      sources: {
-        Regular: join(FONTS_DIR, 'IBMPlexSansSC-Regular.ttf'),
-        Medium: join(FONTS_DIR, 'IBMPlexSansSC-Medium.ttf'),
-      },
-      text: closedText['zh-Hans'],
-      out: join(ROOT, 'assets/fonts/AthanSC-Subset-{weight}.ttf'),
-      rename: { Regular: ATHAN('SC', 'Regular'), Medium: ATHAN('SC', 'Medium') },
-    },
-    JP: {
-      mode: 'plex',
-      sources: {
-        Regular: join(FONTS_DIR, 'IBMPlexSansJP-Regular.ttf'),
-        Medium: join(FONTS_DIR, 'IBMPlexSansJP-Medium.ttf'),
-      },
-      text: closedText.ja,
-      out: join(ROOT, 'assets/fonts/AthanJP-Subset-{weight}.ttf'),
-      rename: { Regular: ATHAN('JP', 'Regular'), Medium: ATHAN('JP', 'Medium') },
-    },
-    KR: keptKr,
-  },
-  c3: { KR: keptKr },
-};
-const job = JOBS[CANDIDATE];
-const jobFile = join(FONTS_DIR, `cjk-subset-job-${CANDIDATE}.json`);
+// The shipped truth since the owner's C3 ruling: the ko pair alone binds
+const job = { KR: keptKr };
+const jobFile = join(FONTS_DIR, 'cjk-subset-job.json');
 writeFileSync(jobFile, JSON.stringify(job));
 const measured = JSON.parse(execFileSync('python3', ['-c', PYTHON, jobFile], { encoding: 'utf8' }));
 
-const STATE_COMMENTS = {
-  shipped: '',
-  c1: ' Cut state C1 (plan T-538): the SC and JP pairs carry Roboto 1.172em-box metrics (hhea and typo 928/-244/0, win 928/244, fsSelection bit 6 kept bit 7 clear) over unchanged glyphs, cut with node scripts/cjk-subset.mjs <dir> c1; the KR pair is never re-cut, its binaries byte-identical to the shipped cut.',
-  c2: ' Cut state C2 (plan T-538): the SC and JP pairs are IBM Plex Sans statics subset over the same closed sets and renamed AthanSC-Subset / AthanJP-Subset away from the Reserved Font Name, cut with node scripts/cjk-subset.mjs <dir> c2; the KR pair is never re-cut, its binaries byte-identical to the shipped cut.',
-  c3: ' Cut state C3 (plan T-538): the zh-Hans and ja pairs are dropped and their locales ride the OS fallback; this lock carries the ko pair alone, regenerated with node scripts/cjk-subset.mjs <dir> c3.',
-};
-const PAIR_OF = { 'zh-Hans': 'SC', ja: 'JP', ko: 'KR' };
 const lock = {
   _comment:
-    "The character set the CJK subset pairs carry (plan T-419 decision 8, ja and ko added by plan T-452 decision 3, the Traditional pair retired with its catalog by plan T-537): each subset is cut with fontTools over the closed string set - every character of its CJK catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subsets' own cmaps, so shared/__tests__/cjkSubset.test.ts names any byte the subsets miss or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir> (see the script header for the curl lines)." +
-    STATE_COMMENTS[CANDIDATE],
+    "The character set the ko subset pair carries (plan T-419 decision 8, the Traditional pair retired with its catalog by plan T-537, the zh-Hans and ja pairs dropped for the OS system-font fallback by plan T-538's owner-ruled C3): the subset is cut with fontTools over the closed string set - every character of the ko catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subset's own cmap, so shared/__tests__/cjkSubset.test.ts names any byte the subset misses or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir>.",
 };
+const PAIR_OF = { 'zh-Hans': 'SC', ja: 'JP', ko: 'KR' };
 const boundFiles = [];
 for (const locale of LOCALES) {
   const pair = PAIR_OF[locale];
