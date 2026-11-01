@@ -1,5 +1,8 @@
 # OnePlus 3T device atlas (1080x1920, serial 3T_SERIAL, OxygenOS / Android 9)
 
+Density 420: dump and screencap pixels are dp x 2.625 (the language sheet's 16dp line pin
+reads 42px, 24dp reads 63px - the step-2 and step-3 reads agree).
+
 Every coordinate below was measured by reading a real screenshot during session 15 (2026-09-19)
 unless marked otherwise. Drives: `adb -s 3T_SERIAL shell input tap X Y`. Long-press is
 `input swipe X Y X Y <ms>`. Coordinates are pixels on the 1080x1920 panel.
@@ -60,6 +63,18 @@ long-press sheet (learned the hard way).
 | Language sheet: English row | (888, 1450) | second list row, right-aligned [825,1421][952,1479] under the RTL sheet; list at its top, Arabic face (measured 2026-10-19) |
 | Settings sheet scrolled to Other: Language / Help / What's new / Check for updates rows | (540, 1247) / (540, 1373) / (540, 1500) / (540, 1625) | English face after two `input swipe 540 1500 540 1000 400` flings at the default snap, centers from the live tree (re-measured 2026-10-27 when T-381 swapped What's New below Help and the update row settled last; row pitch ~127 px, so shift by the pitch for any deeper or shallower scroll); What's new hides on a silent release and every row below it moves up one pitch. The update row carries the download badge and the refresh ring in place of a chevron, and settles green after its one check per launch |
 
+## OEM settings: system locale (measured 2026-11-01, T-538 step 3)
+
+| Mechanic | Command / coordinates | Notes |
+|---|---|---|
+| Open the Languages list directly | `am start -a android.settings.LOCALE_SETTINGS` | lands on the "Languages" preference list; no Settings-root walk needed |
+| Add a language | 'Add a language' row (bottom of the list) > Search button [937,123][1064,249] > type ASCII (e.g. `chinese`) > tap the endonym row | ASCII search matches the endonym's English name too ('简体中文|Simplified Chinese'); tapping the language opens a REGION picker (中国/澳门/香港/新加坡...) - the region tap inserts the locale |
+| New locale lands LAST | drag its row handle (x~1006, the ImageView right edge zone) above row 1 | NO move-to-top prompt on Android 9; `input swipe 1006 <rowY> 1006 <targetY> 900` reorders live; verify with `getprop persist.sys.locale` |
+| Remove a locale | header overflow ('More options' [969,123][1064,249]) > Remove > tick the row's CheckBox > Remove > confirm dialog OK | rows show checkboxes in remove mode; row taps alone open no menu |
+
+Row positions move with every add/remove/reorder: find rows in the live tree (Maestro
+hierarchy serves these OEM screens), never by remembered coordinate.
+
 ## OEM settings: font scale, keyguard, wake (measured 2026-11-01, T-538 step 2)
 
 | Mechanic | Command / coordinates | Notes |
@@ -75,6 +90,18 @@ long-press sheet (learned the hard way).
 - The Font-size screen is reachable only through the Display list (the
   Settings$FontSizeSettingsActivity component falls back to the Settings root);
   the Display list needs 3+ flings at 1.0 to reach DISPLAY SIZE, two at 0.85.
+
+## Driver notes (T-538 step 3, 2026-11-01)
+
+- Maestro's `hierarchy` serves an EMPTY or partial tree right after a process relaunch
+  (a 1-byte dump and a 30-node launcher tree, both on fresh launches), and once served a
+  minute-old tree of a dead process: after any kill/relaunch, re-dump until the content
+  matches the expected screen (its language, its live countdown), and pair load-bearing
+  dumps with a same-moment screencap when in doubt.
+- Under the T-538 device licence one in-app language switch (zh-Hans) reverted to en
+  unattended within ~3 minutes, app foregrounded, no input, cause not established;
+  later switches held after a 15s settle before the kill. Verify the active language
+  from each read's own dump content rather than trusting the switch.
 
 ## Known dialogs
 

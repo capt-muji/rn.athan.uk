@@ -326,5 +326,9 @@
   {
     "version": "2.43.20",
     "reason": "2026-11-01 lane3/T-542's step 3 (facfbcd8) took 2.43.20 over uat's 2.43.19 while t538-line-box-3's tip 952600fb already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.20",
+    "reason": "2026-11-01 the T-538 step-3 atlas commit takes the single patch step from uat's 2.43.19 while the parallel t542-conformance branch already holds 2.43.20 through 2.43.22 unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
