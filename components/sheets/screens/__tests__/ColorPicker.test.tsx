@@ -26,7 +26,7 @@ const CUSTOM_COLOUR = '#ff3366';
 const store = getDefaultStore();
 
 /** Opens the picker the way a person does, by pressing the row */
-const openPicker = () => fireEvent.press(screen.getByText('Countdown bar color'));
+const openPicker = () => fireEvent.press(screen.getByText('Progress color'));
 
 const closeButton = () => screen.getByRole('button', { name: 'Cancel' });
 const doneButton = () => screen.getByRole('button', { name: 'Done' });
@@ -66,7 +66,7 @@ describe('the countdown bar colour row in the settings sheet', () => {
 
     try {
       await render(<ColorPickerSettings />);
-      await fireEvent.press(screen.getByText('لون شريط العد التنازلي'));
+      await fireEvent.press(screen.getByText('لون شريط التقدم'));
 
       const overlay = screen.getByTestId('picker-modal-root');
 
@@ -242,7 +242,7 @@ describe('the colour row label beside its chip, reset and chevron', () => {
     try {
       await render(<ColorPickerSettings />);
 
-      const label = screen.getByText('Colore della barra del conto alla rovescia');
+      const label = screen.getByText('Colore della barra di avanzamento');
 
       expect(label.props.numberOfLines).toBe(1);
       expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
@@ -282,7 +282,7 @@ describe('the colour row label beside its chip, reset and chevron', () => {
     try {
       await render(<ColorPickerSettings />);
 
-      const label = screen.getByText('لون شريط العد التنازلي');
+      const label = screen.getByText('لون شريط التقدم');
 
       expect(label.props.numberOfLines).toBe(1);
       expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);

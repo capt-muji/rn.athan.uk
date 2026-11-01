@@ -314,5 +314,9 @@
   {
     "version": "2.43.13",
     "reason": "2026-11-01 the T-538 parity-gate commit e37adfe9 on t538-line-box-3 took 2.43.13 under the lane-local rule while T-541's 9e7f18c6 already held it on uat; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.18",
+    "reason": "2026-11-01 lane2/T-557's progress-wording commit steps from uat's 2.43.17 while t538-line-box-3's tip already holds 2.43.18; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
