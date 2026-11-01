@@ -22,7 +22,7 @@ Start every response with `Audit session`. Run `date '+%H:%M:%S %d.%m.%Y'` befor
 
 1. Take the first row, in the order column, whose status is EXECUTED.
 2. If there is none but `git log --oneline origin/uat..uat` lists commits, those are unaudited commits from a plan left IN PROGRESS, NEEDS REPLAN or BLOCKED. Audit them against their plan's ticked steps only and leave the row's status alone. The executor carries on with its unfinished plan afterwards.
-3. If there is nothing to audit, tell the owner and end with the /handoff document.
+3. If there is nothing to audit, tell the owner and ask the owner to run /handoff.
 
 ## 3. Where to work
 

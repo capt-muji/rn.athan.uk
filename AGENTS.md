@@ -121,6 +121,9 @@ cadence 5-minute background checks, owner order 2026-10-31 later the same day).
   removing failing tests, no CI changes, no shell-script workarounds for blocked commands.
 - Upstream posts carry strict anonymity and the PR shape What, Why, How, Testing, with
   intent labels (`suggestion:`, `question:`, `nitpick:`) in review.
+- The /handoff document is owner-invoked only: agents never call `handoff_write` and never
+  produce a handoff document; context percentage is never a trigger for one. Ask the owner
+  to run /handoff.
 - Ask first: installing dependencies, deleting non-empty files, MMKV schema keys,
   notification scheduling logic, `app.json` and `eas.json`.
 - Before measuring anything, read `e2e/README.md`: its Gotchas section documents Metro's
