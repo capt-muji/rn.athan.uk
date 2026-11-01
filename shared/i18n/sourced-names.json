@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-452 closures (the CJK and Latin wave's katakana and hangul sets, the it pl ro vi transliterated sets with their own sunrise words, and the ceb and ilo loan-rule closures over the empty wikipedia checks) are recorded per plan doc T-452. The six T-537 closures (the language wave's loan-rule and nearest-standard sets, with the hil incubator check, the bcl and war wikipedia register checks, the mrw Saromantang/McKaughan register, the mfa JAKIM/MUIS five and the ti am-model respells) are recorded per the ticket's sourcing comments 5188 and 5217.",
+    "purpose": "Sourced religious-vocabulary catalog for the 11 prayer/time names and 5 explanation strings. Companion report: R6-PRAYER-NAME-CATALOG.md; the ten T-410 closures (pt fresh, ha and uz from live media, the loans) are recorded per plan doc T-410; the ten T-419 closures (the ps portal-loan swap, the az and ta Suhoor swaps, the census confirmations and the loans) are recorded per plan doc T-419. The eight T-428 closures (the Indic, Ethiopic and Sahel wave's fresh tables and loans) are recorded per plan doc T-428. The eight T-452 closures (the CJK and Latin wave's katakana and hangul sets, the it pl ro vi transliterated sets with their own sunrise words, and the ceb and ilo loan-rule closures over the empty wikipedia checks) are recorded per plan doc T-452. The six T-537 closures (the language wave's loan-rule and nearest-standard sets, with the hil incubator check, the bcl and war wikipedia register checks, the mrw Saromantang/McKaughan register, the mfa JAKIM/MUIS five and the ti am-model respells) are recorded per the ticket's sourcing comments 5188 and 5217. The sixteen T-542 closures (ms Istijabah, so Last Third and Istijaabo with its three derived descriptions, hi Zuha and Istijaba, th Midnight, Last Third, Suhoor and Istijaba, with the four restored night sentences sourced) are recorded per plan doc T-542.",
     "sourceSlugs": {
       "diyanet": "Diyanet Isleri Baskanligi, namazvakitleri.diyanet.gov.tr (tr-TR and en-US pages)",
       "kemenag": "Kementerian Agama RI schedule criteria and the Indonesian imsakiyah convention it defines (bimasislam.kemenag.go.id)",
@@ -134,7 +134,10 @@
       "dv-adhadhu": "adhadhu.com's Dhivehi news prayer table",
       "aa-islamhouse": "islamhouse.com's Afar section (Qafar af, articles and audio), the register the loans transliterate into",
       "kr-ajami": "The Kanuri Ajami corpus named in the scholarly record (no Kanuri timetable or page with the five names is fetchable)",
-      "mdh-vocab": "A Maguindanao vocabulary list in Latin orthography (the Wp/mdh incubator carries no prayer article)"
+      "mdh-vocab": "A Maguindanao vocabulary list in Latin orthography (the Wp/mdh incubator carries no prayer article)",
+      "ikhlas-ms": "ikhlas.com's Malay-language ibadah pages (Malaysia), printing Sa'at al-Istijabah for the Friday hour of response",
+      "islamhouse-th": "islamhouse.muslimthaipost.com Thai Islamic articles (the MuslimThaiPost publisher's islamhouse desk), printing อิฟตาร์ และ ซูฮูร์",
+      "th-islamic-prose": "Thai Islamic prose and teaching pages: tafsir pages printing อิสติญาบะฮฺ (and ซาอะตุลอิสติญาบะฮฺ) for the hour of response, and night-division posts printing เวลาหลังเที่ยงคืน and ช่วงที่ 3 ของคืน (ช่วงท้ายคืน)"
     },
     "unusedSlugNote": "hi-wikipedia, islamkavadam-ml, koran-nl and ps-wikipedia are registered and no entry names them or cites them, so nothing in this file rests on them. The seven slugs T-454 added are in the same position, registered for corroboration and cited by no entry and no note: my-aaitee, deen-for-muslimeen, namazvakti-tt, patettongenna, bug-wikipedia, bug-dictionary and islamic-invitation-qu. dateandtime-pt, frtjislam-ta, islamqa, muis, nl-usage, targumi-wolof, zaniary and yo-islamhouse are registered and no entry names one as its source, though the notes of entries credited to a stronger source cite them beside it. The generic slug wikipedia-<lang> resolves to the specific lang slugs that do carry entries. es-wikipedia and gebet each carry entries of their own: es Magrib, and the eight German rows from Fajr to Suhoor. The T-452 wave names ko-play, it-wikipedia and vi-true-time in the notes of the rows they corroborate, while its ko-wikipedia, ceb-wikipedia and ilo-wikipedia were checked 2026-10-29 and no entry rests on one, so none of the three is registered.",
     "confidenceKey": {
@@ -1124,10 +1127,10 @@
         "note": "JAKIM-family tables print Dhuha as its own row between Syuruk and Zohor (verified: mufti.pahang.gov.my). Malaysia and Indonesia are the two authorities that publish it."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Malaysian table or catalog found. Malay religious press says waktu mustajab (the accepted time) for the Friday hour. Recommend dropping the row or using Waktu mustajab after speaker review."
+        "text": "Istijabah",
+        "source": "ikhlas-ms",
+        "confidence": "medium",
+        "note": "No Malaysian timetable prints the row (JAKIM's tables stop at the five). The Malay religious press prints the noun with its final -ah (ikhlas.com's Malay page Sa'at al-Istijabah: Waktu Doa Paling Mudah Dimakbulkan, language ms); the catalog's earlier Istijaba read the English shape. waktu mustajab is the adjective use, not the row noun."
       }
     },
     "explanations": {
@@ -1412,10 +1415,10 @@
         "note": "The dictionary's primary midnight pair; carried in Somali religious prose and news; no Islamic-time table attestation found."
       },
       "Last Third": {
-        "text": null,
-        "source": null,
+        "text": "Seddexaad u dambeeya",
+        "source": "derived",
         "confidence": "low",
-        "note": "Not found. Somali religious audio uses Tahajjud. Needs a speaker."
+        "note": "No Somali prayer table prints the row; Somali religious audio favours Tahajjud. seddexaad, the ordinal third, is attested across Somali news prose (BBC Somali, SNTV, maalintiisa seddexaad); the phrase assembles it with u dambeeya per this record's own description form seddexaadka u dambeeya habeenka."
       },
       "Suhoor": {
         "text": "Sahri",
@@ -1430,42 +1433,42 @@
         "note": "Same Somali app listing shows Duha (Chast). Single app source."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "Istijaabo",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Somali source found. Recommend dropping the row for so."
+        "note": "The naming rule's Somali answer, the T-410 decision 5 precedent: Arabic istijaba takes the Somali -o noun ending. No Somali source prints it as a row."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
         "text": "Dhexdhexaadxada Maqrib iyo Subax",
-        "source": null,
+        "source": "derived",
         "confidence": "low",
-        "note": "Needs the name set confirmed first. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
+        "note": "T-541's restored midnight sentence; the source slot left empty then is closed here: dhexdhexaadxada midpoint, over the sourced Maqrib and Subax."
       },
       "Start of the last third of the night": {
         "text": "Bilowga seddexaadka u dambeeya habeenka",
-        "source": null,
+        "source": "derived",
         "confidence": "low",
-        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
+        "note": "T-541's restored last-third sentence; the source slot left empty then is closed here: bilowga start, over the seddexaadka u dambeeya habeenka third-of-the-night phrase."
       },
       "20 mins before Fajr": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "20 daqiiqo ka hor Subax",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "The suhoor sentence in standard Somali syntax: daqiiqo minute, ka hor before, over the sourced Fajr name Subax."
       },
       "20 mins after Sunrise": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "20 daqiiqo ka dib Waaberi",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "The duha sentence in standard Somali syntax: ka dib after, over the sourced Sunrise name Waaberi."
       },
       "1 hour before Magrib (Fridays only)": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": ""
+        "text": "1 saac ka hor Maqrib (Jimcaha oo kaliya)",
+        "source": "derived",
+        "confidence": "medium",
+        "note": "The istijaba sentence in standard Somali syntax: saac hour, Jimcaha oo kaliya Fridays only, over the sourced Magrib name Maqrib."
       }
     }
   },
@@ -2138,16 +2141,16 @@
         "note": "Mihrab prints सहरी. Hindi Ramadan calendars say सेहरी. Both are the Urdu-Hindi word for the meal."
       },
       "Duha": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Hindi authority or catalog found. Hindi religious pages say चाश्त (from Persian) or दुहा. Recommend keeping the transliteration or dropping."
+        "text": "ज़ुहा",
+        "source": "hi-wikipedia",
+        "confidence": "medium",
+        "note": "The registered hi authority's नमाज़ के औक़ात article heads its section जुहा नमाज़ (इशराक,चाश्त,अवाबीन), the article's own nuqtaless style; respelled ज़ुहा in this catalog's register, which prints the Perso-Arabic z with its nukta (ज़ुहर). The earlier दुहा read the English spelling's d. चाश्त is the Persian synonym, not the row."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
+        "text": "इस्तिजाबा",
+        "source": "loan",
         "confidence": "low",
-        "note": "No Hindi table or catalog found. Hindi describes it as जुमे की दुआ कबूल होने की घंटी. Recommend dropping the row for hi."
+        "note": "The naming rule's Devanagari answer in the catalog's register; no Hindi table prints it. The prior research note's gloss (जुमे की दुआ कबूल होने की घंटी) describes the concept, not a row label."
       }
     },
     "explanations": {
@@ -2732,22 +2735,22 @@
         "note": "whitechannel prints อีชาอฺ; muslimthaipost prints อิชา. The final อฺ (alif with nikhahit) is the hamza marker."
       },
       "Midnight": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Thai table row found. Thai says เที่ยงคืน. Needs a speaker."
+        "text": "เที่ยงคืน",
+        "source": "th-islamic-prose",
+        "confidence": "medium",
+        "note": "The locale's own midnight word, attested in Islamic night-division teaching (เวลาหลังเที่ยงคืนไม่เกินตีสาม). No Thai timetable carries the row."
       },
       "Last Third": {
-        "text": null,
-        "source": null,
+        "text": "ช่วงสุดท้าย",
+        "source": "derived",
         "confidence": "low",
-        "note": "No Thai source found. Thai Islamic audio uses Tahajjud (ตะฮัจญุด). Needs a speaker."
+        "note": "The owner-ruled D83 shortening. The longer attested form is ช่วงที่ 3 ของคืน (ช่วงท้ายคืน) in the same teaching prose; the D81 sibling ms Sepertiga malam rides the same ruling class."
       },
       "Suhoor": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "Thai Ramadan calendars say ซูฮูร or อาหารก่อนถือศีลอด. Needs a speaker."
+        "text": "ซูฮูร์",
+        "source": "islamhouse-th",
+        "confidence": "medium",
+        "note": "The MuslimThaiPost publisher's islamhouse desk prints ซูฮูร์ (อิฟตาร์ และ ซูฮูร์ คืออะไร?, ซูฮูร์ คือ อาหารก่อนถือศีลอด); the catalog's ซูฮูร lacked the closing thanthakhat. อาหารก่อนถือศีลอด is the description, not the row."
       },
       "Duha": {
         "text": "ดุฮา",
@@ -2756,24 +2759,24 @@
         "note": "Thai Islamic preachers teach ละหมาดดุฮา (Duha prayer), attested in sermon titles. Single-source-class evidence."
       },
       "Istijaba": {
-        "text": null,
-        "source": null,
-        "confidence": "low",
-        "note": "No Thai source found. Recommend dropping the row for th."
+        "text": "อิสติญาบะฮฺ",
+        "source": "th-islamic-prose",
+        "confidence": "medium",
+        "note": "Thai Islamic tafsir and teaching prose prints อิสติญาบะฮฺ and ซาอะตุลอิสติญาบะฮฺ for the hour of response; no Thai timetable carries the row. The catalog's อิสติญาบา matched only the construct form อิสติญาบาตุลลอฮฺ."
       }
     },
     "explanations": {
       "Halfway between Magrib and Fajr": {
         "text": "กึ่งกลางระหว่างมัฆริบและซุบฮิ",
-        "source": null,
+        "source": "derived",
         "confidence": "low",
-        "note": "Needs the extras set confirmed first. Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
+        "note": "T-541's restored midnight sentence; the source slot left empty then is closed here: กึ่งกลางระหว่าง halfway between, over the sourced มัฆริบ and ซุบฮิ."
       },
       "Start of the last third of the night": {
         "text": "จุดเริ่มต้นของช่วงสุดท้ายของคืน",
-        "source": null,
+        "source": "derived",
         "confidence": "low",
-        "note": "Description rule (owner order 2026-11-01, T-541): the long derivation restored as the operative description - the faithful translation of the English sentence, never a repeat of its title; the short-noun rule governs titles only"
+        "note": "T-541's restored last-third sentence; the source slot left empty then is closed here: จุดเริ่มต้นของ start of, over the D83 short form and ของคืน of the night."
       },
       "20 mins before Fajr": {
         "text": "ก่อนซุบฮิ 20 นาที",

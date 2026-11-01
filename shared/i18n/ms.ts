@@ -19,7 +19,7 @@ export const ms = {
   'prayer.last third': 'Sepertiga malam',
   'prayer.suhoor': 'Sahur',
   'prayer.duha': 'Dhuha',
-  'prayer.istijaba': 'Istijaba',
+  'prayer.istijaba': 'Istijabah',
   'settings.title': 'Tetapan',
   'settings.showSeconds': 'Tunjukkan saat',
   'settings.showTimePassed': 'Tunjukkan masa yang berlalu',

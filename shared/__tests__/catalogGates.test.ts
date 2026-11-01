@@ -373,6 +373,30 @@ describe('the landed catalogs against the R2 gates', () => {
     }
   );
 
+  it('leaves no slot unvouched while its catalog carries bytes (T-542 lockstep)', () => {
+    // The T-537 audit's hole: a record row whose text sat null while the catalog
+    // carried bytes read as sourced to every gate above, because compare() skips
+    // null text. Every slot of every locale must carry text, a slug and a
+    // confidence, and the text must be the catalog's own bytes.
+    const failures: string[] = [];
+    for (const loc of Object.keys(SHIPPED)) {
+      const sections = glossaryFor(loc);
+      if (!sections) {
+        failures.push(`${loc}: absent from the glossary`);
+        continue;
+      }
+      const compare = (key: string, slot: string, section: Record<string, Entry>) => {
+        const entry = section[slot];
+        if (!entry?.text || !entry.source || !entry.confidence) {
+          failures.push(`${loc}: ${slot} unsourced (catalog carries "${SHIPPED[loc][key as keyof Catalog]}")`);
+        }
+      };
+      for (const [key, slot] of GLOSSARY_NAMES) compare(key, slot, sections.names ?? {});
+      for (const [key, slot] of GLOSSARY_EXPLANATION_PAIRS) compare(key, slot, sections.explanations ?? {});
+    }
+    expect(failures).toEqual([]);
+  });
+
   it('sources every T-410 name and explanation slot with text, slug and confidence', () => {
     const glossary = sourced as unknown as Record<
       string,
