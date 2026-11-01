@@ -369,11 +369,12 @@ describe("the overlay label's tint, audited cold from the tokens", () => {
     ).toBeLessThanOrEqual(0.005);
   });
 
-  it("holds the shipped ink's contrast against the veil's solids, clearing AA large text", () => {
+  it("holds the shipped ink's contrast against the veil's own solids, clearing AA large text", () => {
     // The veil's tokens are platform-shared and its gradient opaque when settled, so these two
-    // identities carry the number for the iPhone and the Android alike: top #110022 is the band
-    // both labels sit in, midpoint #080011 the veil token's own reference
-    for (const solid of ['#110022', '#080011']) {
+    // identities carry the number for the iPhone and the Android alike: the gradient's start
+    // solid is the band both labels sit in, the veil token the flattened band the overlay
+    // family already carries. Both read from the tokens, so a veil change re-audits here
+    for (const solid of [COLORS.gradient.overlay.start, COLORS.gradient.overlay.veil]) {
       const tinted = contrastOf(COLORS.text.labelOverlay, solid);
       const shipped = contrastOf(SHIPPED_LABEL_OVERLAY, solid);
 
