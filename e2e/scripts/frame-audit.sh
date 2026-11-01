@@ -21,6 +21,13 @@
 #     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
 #     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
 #     boundary is near, so the default is mock-safe (README Gotchas).
+#   PRE_TAP2="540 1100" / PRE_SWIPE2="x1 y1 x2 y2 duration_ms"
+#     One further pre-interaction of the same shape as PRE_TAP/PRE_SWIPE,
+#     driven after it, waited the same PRE_TAP_WAIT, so the recorded
+#     interaction is the family's second run of that interaction inside one
+#     process — a force-stop between runs makes every run a first run, and
+#     the standing verdicts are second-run (_2026_10_31; overlay-open: open,
+#     close, then record the open).
 #   SWIPE="x1 y1 x2 y2 duration_ms"
 #     Records a swipe instead of a tap (the schedule pager's cadence). A
 #     swipe runs for its whole duration, so the SF stamp anchors on the
@@ -89,6 +96,14 @@ if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
 fi
 SWIPE=${SWIPE:-}
 PRE_SWIPE=${PRE_SWIPE:-}
+PRE_SWIPE2=${PRE_SWIPE2:-}
+PRE_TAP2=${PRE_TAP2:-}
+check_tap_shape() {
+  local parts
+  parts=(${=1})
+  local numeric=${#${(M)parts:#<->}}
+  (( ${#parts} == 2 )) && (( numeric == 2 ))
+}
 check_swipe_shape() {
   local parts
   parts=(${=1})
@@ -98,9 +113,15 @@ check_swipe_shape() {
   # and the prompt below asserts the number it was given
   (( ${#parts} == 5 )) && (( numeric == 5 ))
 }
-for v in "$SWIPE" "$PRE_SWIPE"; do
+for v in "${PRE_TAP:-}" "$PRE_TAP2"; do
+  if [[ -n $v ]] && ! check_tap_shape "$v"; then
+    echo "PRE_TAP/PRE_TAP2 must be 'x y' (got '$v')"
+    exit 1
+  fi
+done
+for v in "$SWIPE" "$PRE_SWIPE" "$PRE_SWIPE2"; do
   if [[ -n $v ]] && ! check_swipe_shape "$v"; then
-    echo "SWIPE/PRE_SWIPE must be 'x1 y1 x2 y2 duration_ms' (got '$v')"
+    echo "SWIPE/PRE_SWIPE/PRE_SWIPE2 must be 'x1 y1 x2 y2 duration_ms' (got '$v')"
     exit 1
   fi
 done
@@ -117,9 +138,19 @@ if [[ -n ${PRE_TAP:-} ]]; then
   echo "pre-tap at $PRE_TAP, waiting out the entrance (${PRE_TAP_WAIT}s)"
   sleep "$PRE_TAP_WAIT"
 fi
+if [[ -n ${PRE_TAP2:-} ]]; then
+  adb -s "$SERIAL" shell input tap ${=PRE_TAP2}
+  echo "second pre-tap at $PRE_TAP2, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
 if [[ -n $PRE_SWIPE ]]; then
   adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE}"
   echo "pre-swipe ${=PRE_SWIPE}, waiting out the settle (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n $PRE_SWIPE2 ]]; then
+  adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE2}"
+  echo "second pre-swipe ${=PRE_SWIPE2}, waiting out the settle (${PRE_TAP_WAIT}s)"
   sleep "$PRE_TAP_WAIT"
 fi
 
@@ -339,13 +370,14 @@ if [[ -n $SWIPE ]]; then
 else
   INTERACTION="a tap at ($TAPX,$TAPY)"
 fi
-[[ -n $PRE_SWIPE ]] && INTERACTION+=" (a preparatory swipe pre-advanced the pager before the recorded interaction)"
+[[ -n $PRE_SWIPE || -n $PRE_SWIPE2 ]] && INTERACTION+=" (a preparatory swipe pre-advanced the pager before the recorded interaction)"
 cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
 It is a labeled contact sheet of sequential frames from a prayer-times app
 recording (dark navy UI). The interaction was $INTERACTION${PRE_TAP:+,
-which followed a prior tap at ($PRE_TAP) whose transition is already settled}.
+which followed a prior tap at ($PRE_TAP) whose transition is already settled}${PRE_TAP2:+,
+itself preceded by a second pre-tap at ($PRE_TAP2), also settled}.
 For each frame report its state and mid-animation progress; then answer:
 (1) Which frames form the animation? (2) Does the animated element progress
 monotonically through intermediate sizes/opacities/positions, or snap between
