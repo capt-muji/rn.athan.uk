@@ -318,5 +318,9 @@
   {
     "version": "2.43.18",
     "reason": "2026-11-01 lane2/T-557's progress-wording commit steps from uat's 2.43.17 while t538-line-box-3's tip already holds 2.43.18; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.19",
+    "reason": "2026-11-01 lane2/T-557's audit fix takes the single patch step above its own 2.43.18 while t538-line-box-3's advancing tip already holds 2.43.19; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
