@@ -354,5 +354,9 @@
   {
     "version": "2.43.27",
     "reason": "2026-11-01 the parallel T-566 tint lane's 7dc97352 on t566-dim-tint took 2.43.27 under the one-patch-step rule while parked t538-line-box-3's replayed 5010cae3 already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.27",
+    "reason": "2026-11-01 lane2/T-566 dim-label tint takes the single patch step above uat 2.43.26 while parked t538-line-box-3 replayed stamp 5010cae already holds 2.43.27 (the discipline gate holds every fix to the one patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
