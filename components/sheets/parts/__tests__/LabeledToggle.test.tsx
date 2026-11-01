@@ -67,7 +67,7 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
 // The owner's general row rule (T-540, order 2026-10-31): a label that runs long ellipsizes at
 // one line and never displaces the control at its edge - the XS in Spanish pushed the control
 // out of the card. The worst real input is the longest string any shipped catalog carries for
-// a settings row (Italian, the countdown-bar row); the artificial one runs past every catalog
+// a settings row (Tamil, the update-check-failed row); the artificial one runs past every catalog
 const ROW_LABEL_ONE_LINE = (label: TestInstance) => {
   expect(label.props.numberOfLines).toBe(1);
   expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
@@ -77,9 +77,11 @@ const ROW_LABEL_ONE_LINE = (label: TestInstance) => {
 
 describe('a settings toggle row whose label runs long', () => {
   it('ellipsizes at one line with the longest string any shipped catalog carries', async () => {
-    await render(<LabeledToggle label='Mostra la barra del conto alla rovescia' value={false} onToggle={jest.fn()} />);
+    const longest = 'சரிபார்ப்பு தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்';
 
-    ROW_LABEL_ONE_LINE(screen.getByText('Mostra la barra del conto alla rovescia'));
+    await render(<LabeledToggle label={longest} value={false} onToggle={jest.fn()} />);
+
+    ROW_LABEL_ONE_LINE(screen.getByText(longest));
   });
 
   it('ellipsizes at one line with a string longer than any shipped catalog', async () => {
