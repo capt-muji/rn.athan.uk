@@ -355,7 +355,7 @@ const SYNONYM_GROUPS = [
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
-  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri'],
+  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
@@ -373,7 +373,20 @@ const SYNONYM_GROUPS = [
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
   // Cebuano gipatay (killed) is the same device-off class
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone', 'closed', 'close'],
+  [
+    'off',
+    'disable',
+    'disabled',
+    'deactivate',
+    'deactivated',
+    'dead',
+    'die',
+    'killed',
+    'gone',
+    'closed',
+    'close',
+    'passive',
+  ],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete'],
