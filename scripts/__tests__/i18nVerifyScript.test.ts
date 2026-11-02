@@ -279,13 +279,15 @@ describe('the loanword slot rule', () => {
 });
 
 describe('the engine behind an injected fetch (Google alone, owner order six)', () => {
-  it('builds the engine request URL with the locale and the encoded text, aliasing zh-Hans', () => {
+  it('builds the engine request URL with the locale and the encoded text, aliasing zh-Hans and Javanese', () => {
     expect(verify.gtxUrl('ar', 'hello world')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=ar&tl=en&dt=t&q=hello%20world'
     );
     expect(verify.gtxUrl('zh-Hans', '你好')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=%E4%BD%A0%E5%A5%BD'
     );
+    // Google serves Javanese under its old code jw
+    expect(verify.gtxUrl('jv', 'subuh')).toContain('sl=jw&');
   });
 
   it('extracts the engine body shape', () => {
@@ -462,6 +464,8 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Sunrise', both('Sunup', 'x'))).toBe('green');
     expect(verify.verdictOf('Sunrise', both('Shuruk', 'x'))).toBe('green');
     expect(verify.verdictOf('Asr', both('Asher', 'x'))).toBe('green');
+    // 'Sun' names the day and the star, never the event - a fragment of sunrise (bug's fill audit)
+    expect(verify.verdictOf('Sunrise', both('Sun', 'x'))).toBe('red');
   });
 
   it('the Malay loop lessons: the name variant, the postponing adverb, the dismay exclamation and the month spelling', () => {

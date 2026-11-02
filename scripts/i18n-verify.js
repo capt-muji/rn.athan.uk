@@ -46,7 +46,7 @@ const SITE_ENGINES = ['gtx'];
 const ROW_SLOTS = ['gtx', 'pending'];
 
 /** Engine language codes where they differ from the repo's locale ids */
-const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN' };
+const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN', jv: 'jw' };
 
 /** The eleven prayer.* keys, the owner's first priority */
 const PRAYER_KEYS = [
@@ -467,10 +467,14 @@ const cognateMatch = (a, b) => {
   return a.slice(0, 4) === b.slice(0, 4) || levenshtein(a, b) <= 2;
 };
 
-/** A non-stopword token that prefixes a longer one: app/application, or a short pair like Mon/M and Jun/June */
+/** A non-stopword token that prefixes a longer one: app/application, or a short pair like Mon/M and Jun/June.
+ * Owner order eleven: sun never abbreviates sunrise - it names the star and the day,
+ * so that one prefix pair is a fragment and fails */
+const NO_PREFIX_PAIRS = new Set(['sun>sunrise']);
 const prefixMatch = (shorter, longer) => {
   if (shorter.length >= longer.length || STOPWORDS.has(shorter)) return false;
   if (!longer.startsWith(shorter)) return false;
+  if (NO_PREFIX_PAIRS.has(`${shorter}>${longer}`)) return false;
   return shorter.length >= 3 || longer.length <= 4;
 };
 
