@@ -26,7 +26,7 @@
  * declarator is not PRAYER_LABELS, the name-independent rule the loader itself
  * uses (zh-Hans exports zhHans, pa-Arab exports paArab).
  */
-const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
+const { mkdirSync, readdirSync, readFileSync, writeFileSync } = require('node:fs');
 const { basename, join } = require('node:path');
 const { homedir } = require('node:os');
 const { parse } = require('@babel/parser');
@@ -403,7 +403,94 @@ const renderIndexHtml = (summaries) =>
   ].join('\n');
 
 const usageError = (message) =>
-  new Error(`i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--waves]`);
+  new Error(
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--waves] | --fill ar,so [--out DIR]`
+  );
+
+const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
+
+/**
+ * The judge fill: the LLM pass renders round-trips for the engine:none rows and writes
+ * <locale>.llm-fill.json; this merge turns them into engine:llm rows and refreshes the
+ * artifacts. The generator itself never invents a round-trip - it only merges what the
+ * judge supplied, and refuses both directions of mismatch.
+ */
+const fillLocales = (locales, { outDir, log, now }) => {
+  const written = [];
+  const fillErrors = [];
+  const summaries = [];
+
+  for (const locale of locales) {
+    const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
+    const fills = JSON.parse(readFileSync(join(outDir, `${locale}.llm-fill.json`), 'utf8'));
+    const fillByKey = new Map();
+    for (const fill of fills) {
+      if (fillByKey.has(fill.key)) fillErrors.push(`${locale}/${fill.key} is filled twice`);
+      fillByKey.set(fill.key, fill.roundtrip);
+    }
+    const rows = artifact.rows;
+    for (const key of fillByKey.keys()) {
+      const row = rows.find((r) => r.key === key);
+      if (row === undefined || row.engine !== 'none') {
+        fillErrors.push(`${locale}/${key} is not an engine:none row`);
+      }
+    }
+    for (const row of rows) {
+      if (row.engine === 'none' && !fillByKey.has(row.key)) {
+        fillErrors.push(`${locale}/${row.key} has no judge round-trip`);
+      }
+    }
+    if (fillErrors.some((message) => message.startsWith(`${locale}/`))) {
+      log(
+        `${locale}: fill refused, artifacts untouched (${fillErrors.filter((m) => m.startsWith(`${locale}/`)).length} errors)`
+      );
+      continue;
+    }
+
+    let filled = 0;
+    const merged = rows.map((row) => {
+      if (row.engine !== 'none') return row;
+      filled += 1;
+      return { ...row, engine: 'llm', roundtrip: fillByKey.get(row.key) };
+    });
+    const engineMix = {};
+    for (const row of merged) engineMix[row.engine] = (engineMix[row.engine] || 0) + 1;
+    writeFileSync(
+      join(outDir, `${locale}.json`),
+      `${JSON.stringify(buildLocaleJson(locale, merged, engineMix, now().toISOString()), null, 2)}\n`
+    );
+    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, merged));
+    written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
+    const mix = Object.entries(engineMix)
+      .map(([engine, count]) => `${engine}: ${count}`)
+      .join(', ');
+    log(`${locale}: filled ${filled} rows as engine:llm (${mix})`);
+    summaries.push({ locale, count: merged.length, engineMix, file: `${locale}.html` });
+  }
+
+  const indexSummaries = [];
+  for (const file of readdirSync(outDir)) {
+    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json')) continue;
+    const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
+    const known = summaries.find((summary) => summary.locale === data.locale);
+    indexSummaries.push(
+      known ?? { locale: data.locale, count: data.rowCount, engineMix: data.engineMix, file: `${data.locale}.html` }
+    );
+  }
+  const indexPath = join(outDir, 'index.html');
+  writeFileSync(indexPath, renderIndexHtml(indexSummaries));
+  written.push(indexPath);
+
+  return {
+    ok: fillErrors.length === 0,
+    locales,
+    written,
+    fillErrors,
+    shortfalls: [],
+    misses: [],
+    summaryFiles: written.map((file) => basename(file)),
+  };
+};
 
 /** The command line flow. Every effect (network, clock, stdout, files) rides on deps */
 const run = async (argv, deps = {}) => {
@@ -413,16 +500,37 @@ const run = async (argv, deps = {}) => {
   };
   const outFlag = flag('--out');
   const localesFlag = flag('--locales');
+  const fillFlag = flag('--fill');
   const waves = argv.includes('--waves');
-  if (!waves && (localesFlag === undefined || localesFlag.trim() === '')) {
+  if (!waves && localesFlag === undefined && fillFlag === undefined) {
     throw usageError('no locales named');
   }
-  const locales = waves
-    ? [...PILOT_WAVE]
-    : localesFlag
+  if (localesFlag !== undefined && localesFlag.trim() === '' && fillFlag === undefined) {
+    throw usageError('no locales named');
+  }
+  const locales = fillFlag
+    ? fillFlag
         .split(',')
         .map((loc) => loc.trim())
-        .filter(Boolean);
+        .filter(Boolean)
+    : waves
+      ? [...PILOT_WAVE]
+      : localesFlag
+          .split(',')
+          .map((loc) => loc.trim())
+          .filter(Boolean);
+
+  if (fillFlag !== undefined && locales.length === 0) {
+    throw usageError('no locales named');
+  }
+
+  if (fillFlag !== undefined) {
+    return fillLocales(locales, {
+      outDir: outFlag ?? defaultOutDir(deps),
+      log: deps.log ?? ((line) => process.stdout.write(`${line}\n`)),
+      now: deps.now ?? (() => new Date()),
+    });
+  }
 
   const readCatalogFile =
     deps.readCatalogFile ??
@@ -431,7 +539,7 @@ const run = async (argv, deps = {}) => {
       return parseCatalogSource(readFileSync(file, 'utf8'), `${locale}.ts`);
     });
   const log = deps.log ?? ((line) => process.stdout.write(`${line}\n`));
-  const outDir = outFlag ?? join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
+  const outDir = outFlag ?? defaultOutDir(deps);
 
   const en = await readCatalogFile('en');
   const expectedCount = Object.keys(en).length;
@@ -478,6 +586,7 @@ const run = async (argv, deps = {}) => {
     written,
     shortfalls,
     misses,
+    fillErrors: [],
     summaryFiles: written.map((file) => basename(file)),
   };
 };
@@ -516,5 +625,7 @@ module.exports = {
   renderLocaleHtml,
   buildLocaleJson,
   renderIndexHtml,
+  fillLocales,
+  defaultOutDir,
   run,
 };

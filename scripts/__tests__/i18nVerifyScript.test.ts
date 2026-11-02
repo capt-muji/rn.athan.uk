@@ -4,7 +4,7 @@
 // per-locale engine pre-flight, and the artifact shapes. Every network call goes
 // through an injected fetch returning fixtures: no test touches a real engine, and
 // no test reads the real clock (now is injected).
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -49,6 +49,7 @@ const verify = require('../i18n-verify.js') as {
     written: string[];
     shortfalls: Array<{ locale: string; count: number }>;
     misses: Array<{ locale: string; key: string }>;
+    fillErrors: string[];
   }>;
 };
 
@@ -513,5 +514,71 @@ describe('the command line flow', () => {
     expect(report.shortfalls).toEqual([{ locale: 'ar', count: 206 }]);
 
     await expect(verify.run(['--out', join(SCRATCH, 'cli-none')], deps)).rejects.toThrow('--locales');
+  });
+
+  describe('the judge fill (--fill)', () => {
+    const writeArtifact = (dir: string, locale: string) => {
+      const rows: Row[] = [
+        { key: 'prayer.fajr', en: 'Fajr', catalog: 't:fajr', roundtrip: 'Fajr', engine: 'mymemory', url: 'u' },
+        { key: 'prayer.asr', en: 'Asr', catalog: 't:asr', roundtrip: null, engine: 'none', url: 'u' },
+      ];
+      const data = {
+        locale,
+        generatedAt: '2026-11-02T00:00:00.000Z',
+        rowCount: 2,
+        engineMix: { mymemory: 1, none: 1 },
+        rows,
+      };
+      mkdirSync(dir, { recursive: true });
+      writeFileSync(join(dir, `${locale}.json`), JSON.stringify(data));
+      writeFileSync(join(dir, `${locale}.html`), '<html>stale</html>');
+      return data;
+    };
+
+    it('merges the judge round-trips into engine:llm rows and refreshes the artifacts', async () => {
+      const outDir = join(SCRATCH, 'fill-ok');
+      writeArtifact(outDir, 'ar');
+      writeFileSync(
+        join(outDir, 'ar.llm-fill.json'),
+        JSON.stringify([{ key: 'prayer.asr', roundtrip: 'The afternoon prayer' }])
+      );
+      const report = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(true);
+      const json = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const filled = json.rows.find((r: Row) => r.key === 'prayer.asr');
+      expect(filled.engine).toBe('llm');
+      expect(filled.roundtrip).toBe('The afternoon prayer');
+      expect(json.engineMix).toEqual({ mymemory: 1, llm: 1 });
+      expect(json.rows.every((r: Row) => r.roundtrip !== null)).toBe(true);
+      const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
+      expect(html).toContain('The afternoon prayer');
+      expect(html).not.toContain('stale');
+      const index = readFileSync(join(outDir, 'index.html'), 'utf8');
+      expect(index).toContain('llm: 1');
+    });
+
+    it('refuses a fill entry whose row is not engine:none', async () => {
+      const outDir = join(SCRATCH, 'fill-wrong-row');
+      writeArtifact(outDir, 'ar');
+      writeFileSync(
+        join(outDir, 'ar.llm-fill.json'),
+        JSON.stringify([
+          { key: 'prayer.asr', roundtrip: 'x' },
+          { key: 'prayer.fajr', roundtrip: 'y' },
+        ])
+      );
+      const report = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.fillErrors).toEqual(['ar/prayer.fajr is not an engine:none row']);
+    });
+
+    it('refuses to leave an engine:none row without a fill', async () => {
+      const outDir = join(SCRATCH, 'fill-gap');
+      writeArtifact(outDir, 'ar');
+      writeFileSync(join(outDir, 'ar.llm-fill.json'), JSON.stringify([]));
+      const report = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.fillErrors).toEqual(['ar/prayer.asr has no judge round-trip']);
+    });
   });
 });
