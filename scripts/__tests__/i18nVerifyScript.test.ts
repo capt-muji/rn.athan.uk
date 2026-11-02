@@ -432,6 +432,7 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Out of date', both('Not updated', 'x'))).toBe('green');
     expect(verify.verdictOf(' Oh no! ', both('Sorry!', 'x'))).toBe('green');
     expect(verify.verdictOf('Rabiʻ II', both('Spring of the other', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('zero', 'x'))).toBe('green');
     expect(verify.verdictOf('Each prayer now has 2 reminders', both('Every prayer now has two warnings', 'x'))).toBe(
       'green'
     );
@@ -854,6 +855,38 @@ describe('the command line flow', () => {
       expect(report.rulingErrors).toEqual([`ar/${red.key} carries no note`]);
       const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
       expect(after.judgeRuled ?? 0).toBe(0);
+    });
+
+    it('a standing ruling survives a resume while the engine still reads red, and drops once the engine carries', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-resume');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+
+      // The resume rebuilds every row from the resumed slots; the row still reads red
+      // (makeRed's engine text loses the meaning), so the ruling must restore its green
+      const resumed = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      expect(resumed.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.ruling).toBe('the engine misreads a correct catalog string');
+      expect(row.verdict).toBe('green');
+
+      // A ruling that no longer applies (the engine's own rendering carries) rides nothing
+      const greenArtifact = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const greenRow = greenArtifact.rows.find((r: Row) => r.key === 'settings.title');
+      greenRow.ruling = 'a ruling that no longer applies';
+      greenRow.verdict = 'green';
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(greenArtifact));
+      await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      const final = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const finalRow = final.rows.find((r: Row) => r.key === 'settings.title');
+      expect(finalRow.ruling).toBeUndefined();
+      expect(finalRow.verdict).toBe('green');
     });
 
     it('refuses a ruling on a row the engine did not read red, a missing note, and an unknown key', async () => {

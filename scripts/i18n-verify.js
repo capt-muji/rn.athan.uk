@@ -384,6 +384,8 @@ const SYNONYM_GROUPS = [
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],
   ['reset', 'restore', 'return'],
+  // Safar month and the Arabic word for zero share their spelling: the engine names the word itself
+  ['safar', 'zero'],
   ['done', 'completed', 'complete', 'finished'],
   ['default', 'original'],
 ];
@@ -677,6 +679,12 @@ const runLocale = async (locale, opts) => {
       if (resumedLlm) row.llm = resumedLlm;
     }
     row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null, opts.phase ?? 'one');
+    // A standing judge ruling survives the resume while the engine still reads the row red;
+    // an engine rendering that now carries the meaning stands on its own and drops the ruling
+    if (priorFresh?.ruling && row.verdict === 'red') {
+      row.ruling = priorFresh.ruling;
+      row.verdict = 'green';
+    }
     return row;
   });
 
