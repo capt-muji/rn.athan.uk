@@ -477,6 +477,14 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('off', both('die', 'x'))).toBe('green');
   });
 
+  it('the Somali ruling lessons: the athan word and the qibla word are transliterations', () => {
+    // Owner order twelve: athan is transliterated in every language - Azaan names the word itself,
+    // and Qibla's local spellings (Kiblat, Kıble...) name the same word
+    expect(verify.verdictOf('Athan', both('Azaan', 'x'))).toBe('green');
+    expect(verify.verdictOf('Qibla', both('Kiblat', 'x'))).toBe('green');
+    expect(verify.verdictOf('Qibla', both('Kıble', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
@@ -867,6 +875,17 @@ describe('the command line flow', () => {
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
     return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
+
+  it('the index rebuild survives a stray non-artifact json in the out dir', async () => {
+    const outDir = join(SCRATCH, 'cli-stray');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    writeFileSync(join(outDir, 'zzz-stray.json'), JSON.stringify({ not: 'an artifact' }));
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const html = readFileSync(join(outDir, 'index.html'), 'utf8');
+    expect(html).toContain('ar - Arabic');
+    expect(html).not.toContain('undefined');
+  });
 
   it('rejects a junk --pace value and threads a whole-number pace into the locale run', async () => {
     const outDir = join(SCRATCH, 'cli-pace');

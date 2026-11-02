@@ -356,7 +356,9 @@ const SYNONYM_GROUPS = [
   ['suhoor', 'sahur', 'suhur', 'sehri'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
   ['istijaba', 'istijabah', 'response'],
-  ['athan', 'adhan', 'azan', 'call'],
+  // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
+  // spelling of the same word (as Isak is of Isyak)
+  ['athan', 'adhan', 'azan', 'azaan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship'],
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning'],
@@ -406,6 +408,9 @@ const SYNONYM_GROUPS = [
   ['default', 'original'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
+  // Owner order twelve: Qibla is transliterated in every language; the local spellings
+  // name the same Arabic word the way even English does
+  ['qibla', 'kibla', 'kiblat', 'kible', 'qible', 'qiblah', 'kıble'],
 ];
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
@@ -1027,12 +1032,15 @@ const summaryOfArtifact = (data, names) => ({
   reference: data.reference === true,
 });
 
-/** The index always reads every artifact on disk, so a one-locale run erases nobody's card */
+/** The index always reads every artifact on disk, so a one-locale run erases nobody's card.
+ * A json file that is not a locale artifact (research side data, anything stray) is
+ * skipped by shape, not by name - the out dir is the owner's to read from. */
 const writeIndexFromDisk = (outDir, names) => {
   const summaries = [];
   for (const file of readdirSync(outDir)) {
     if (!file.endsWith('.json') || file.endsWith('.llm-fill.json') || file.endsWith('.judge-rulings.json')) continue;
     const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
+    if (!Array.isArray(data.rows) || typeof data.locale !== 'string') continue;
     summaries.push(summaryOfArtifact(data, names));
   }
   const indexPath = join(outDir, 'index.html');
