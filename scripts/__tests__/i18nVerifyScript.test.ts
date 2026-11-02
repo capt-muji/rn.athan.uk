@@ -510,6 +510,17 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('to refresh', both('to renew', 'x'))).toBe('green');
   });
 
+  it('the Amharic loop lessons: the cancel and reminder senses, gone and improve, the stale old, and the Qiʻdah spelling', () => {
+    expect(verify.verdictOf('Cancel', both('Delete', 'x'))).toBe('green');
+    expect(verify.verdictOf('Reminder {n}', both('note {n}', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both("It's gone", 'x'))).toBe('green');
+    expect(verify.verdictOf('Update', both('Improve', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('old', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulkida', 'x'))).toBe('green');
+    // the opposite phrase never crosses: up-to-date reading old stays red
+    expect(verify.verdictOf("You're up to date", both('old', 'x'))).toBe('red');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

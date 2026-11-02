@@ -361,7 +361,7 @@ const SYNONYM_GROUPS = [
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning'],
+  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note'],
   ['sound', 'audio', 'tone', 'voice'],
   ['silent', 'silence', 'mute', 'muted', 'dumb'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense
@@ -370,14 +370,14 @@ const SYNONYM_GROUPS = [
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
   // Cebuano gipatay (killed) is the same device-off class
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed'],
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone'],
   ['turn', 'switch'],
   ['open', 'launch'],
-  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut'],
+  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete'],
   ['allow', 'permit'],
   ['phone', 'device', 'mobile'],
   ['check', 'verify', 'checking'],
-  ['update', 'updates', 'upgrade', 'refresh'],
+  ['update', 'updates', 'upgrade', 'refresh', 'improve'],
   ['select', 'choose', 'pick'],
   ['find', 'locate', 'search', 'finder'],
   ['direction', 'heading', 'bearing'],
@@ -422,10 +422,13 @@ const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn'],
-  ['out of date', 'outdated', 'not updated', 'no updates', 'expired'],
+  // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
   ['dhuʻl hijjah', 'zulhijjah'],
+  // and Qiʻdah's own local spellings (the engine renders Zulkida)
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida'],
 ];
 
 const SYNONYM_INDEX = new Map();
