@@ -340,7 +340,8 @@ const STOPWORDS = new Set([
 
 /** Synonym groups for this app's UI vocabulary; members match each other pairwise */
 const SYNONYM_GROUPS = [
-  ['fajr', 'dawn', 'morning'],
+  // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
+  ['fajr', 'dawn', 'morning', 'sabah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
   ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
@@ -350,7 +351,7 @@ const SYNONYM_GROUPS = [
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
-  ['magrib', 'maghrib', 'sunset', 'evening'],
+  ['magrib', 'maghrib', 'sunset', 'evening', 'aksham'],
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
@@ -427,7 +428,7 @@ const PHRASE_SYNONYMS = [
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
-  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old'],
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
   ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj'],
