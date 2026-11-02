@@ -485,6 +485,15 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Qibla', both('Kıble', 'x'))).toBe('green');
   });
 
+  it('the Madurese loop lessons: the person-shifted update phrase, bisu as its own mute word, and the reset family', () => {
+    expect(verify.verdictOf("You're up to date", both('They have the most recent version', 'x'))).toBe('green');
+    expect(verify.verdictOf('silent', both('dumb', 'x'))).toBe('green');
+    expect(verify.verdictOf('unavailable', both("can't", 'x'))).toBe('green');
+    expect(verify.verdictOf('Reset to the default colour', both('Reverts to initial color', 'x'))).toBe('green');
+    expect(verify.verdictOf('Reset', both('Returned', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Layout', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

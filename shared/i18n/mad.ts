@@ -39,7 +39,7 @@ export const mad = {
   'settings.prayer': 'Sembahyang',
   'settings.changeAthan': 'Obâna azan',
   'settings.qibla': 'Kiblat',
-  'settings.display': 'Bânnya',
+  'settings.display': 'Tampilan',
   'settings.showHijriDate': 'Epataragi tangghâl Hijriah',
   'settings.whatsNewLabel': 'Sapa sè anyar',
   'settings.checkUpdates': 'Parèksâna pabhârhârân',

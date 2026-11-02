@@ -363,8 +363,9 @@ const SYNONYM_GROUPS = [
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning'],
   ['sound', 'audio', 'tone', 'voice'],
-  ['silent', 'silence', 'mute', 'muted'],
-  ['show', 'display', 'view', 'visible', 'appearance'],
+  ['silent', 'silence', 'mute', 'muted', 'dumb'],
+  // tampilan, the Malay family's display word, renders as layout - its own appearance sense
+  ['show', 'display', 'view', 'visible', 'appearance', 'layout'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb
@@ -389,11 +390,12 @@ const SYNONYM_GROUPS = [
   ['add', 'added'],
   ['minute', 'minutes', 'min', 'mins'],
   ['hour', 'hours', 'hrs'],
-  ['na', 'unavailable', 'none'],
+  // can't loses its apostrophe in normalisation, so the member is the bare form
+  ['na', 'unavailable', 'none', 'cant'],
   ['extra', 'overtime', 'additional'],
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],
-  ['reset', 'restore', 'return'],
+  ['reset', 'restore', 'return', 'reverts', 'returned'],
   // Safar month shares its spelling with the Arabic word for zero and for travel:
   // an engine naming either reads the word itself
   ['safar', 'zero', 'travel', 'journey'],
@@ -405,7 +407,7 @@ const SYNONYM_GROUPS = [
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
   ['done', 'completed', 'complete', 'finished'],
-  ['default', 'original'],
+  ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
   // Owner order twelve: Qibla is transliterated in every language; the local spellings
@@ -415,7 +417,7 @@ const SYNONYM_GROUPS = [
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
-  ['up to date', 'latest version', 'no new updates', 'no new update'],
+  ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn'],
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired'],
