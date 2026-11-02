@@ -22,7 +22,7 @@ interface LabeledToggleProps {
  * @example
  * <LabeledToggle label="Enable feature" value={enabled} onToggle={(next) => setEnabled(next)} />
  */
-const LabeledToggle = forwardRef<unknown, LabeledToggleProps>(({ label, value, onToggle }) => {
+const LabeledToggle = forwardRef<unknown, LabeledToggleProps>(({ label, value, onToggle }, _ref) => {
   // The one place both presses meet: the row's label routes through the switch's
   // own press, so the thumb flips, the haptic lands and the write settles
   // identically whichever was touched - the feedback rides the switch's own
