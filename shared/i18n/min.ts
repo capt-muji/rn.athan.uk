@@ -39,7 +39,7 @@ export const min = {
   'settings.prayer': 'Sumbayang',
   'settings.changeAthan': 'Ganti azan',
   'settings.qibla': 'Kiblat',
-  'settings.display': 'Tampek',
+  'settings.display': 'Tampilan',
   'settings.showHijriDate': 'Tanggal Hijriah tampil',
   'settings.whatsNewLabel': 'Apo nan baru',
   'settings.checkUpdates': 'Pareso pambaruan',
