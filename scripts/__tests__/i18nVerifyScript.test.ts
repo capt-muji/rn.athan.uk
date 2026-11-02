@@ -521,6 +521,17 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf("You're up to date", both('old', 'x'))).toBe('red');
   });
 
+  it('the Azerbaijani loop lessons: the name spellings, the UI senses and the exclamation', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zohr', 'x'))).toBe('green');
+    expect(verify.verdictOf('Settings', both('Adjustments', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Screen', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both('Closed', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('Ready', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('Trip', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhijja', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Wow!', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

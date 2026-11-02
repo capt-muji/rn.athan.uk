@@ -341,7 +341,7 @@ const STOPWORDS = new Set([
 /** Synonym groups for this app's UI vocabulary; members match each other pairwise */
 const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
-  ['dhuhr', 'noon', 'midday', 'zuhr'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq'],
@@ -364,13 +364,14 @@ const SYNONYM_GROUPS = [
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note'],
   ['sound', 'audio', 'tone', 'voice'],
   ['silent', 'silence', 'mute', 'muted', 'dumb'],
-  // tampilan, the Malay family's display word, renders as layout - its own appearance sense
-  ['show', 'display', 'view', 'visible', 'appearance', 'layout'],
+  // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
+  // Azerbaijani ekran is the display word and renders as screen, its own sense
+  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
   // Cebuano gipatay (killed) is the same device-off class
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone'],
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone', 'closed'],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete'],
@@ -399,16 +400,16 @@ const SYNONYM_GROUPS = [
   ['reset', 'restore', 'return', 'reverts', 'returned'],
   // Safar month shares its spelling with the Arabic word for zero and for travel:
   // an engine naming either reads the word itself
-  ['safar', 'zero', 'travel', 'journey'],
+  ['safar', 'zero', 'travel', 'journey', 'trip'],
   // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
   ['muharram', 'sacred', 'forbidden'],
   ['wrong', 'error', 'mistake', 'problem'],
   // agpabaro, the Philippine family's refresh word, renders as renew and renewal
   ['refresh', 'reload', 'load', 'renew', 'renewal'],
-  ['setting', 'settings', 'arrangement', 'arrangements'],
+  ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
-  ['done', 'completed', 'complete', 'finished'],
+  ['done', 'completed', 'complete', 'finished', 'ready'],
   ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
@@ -421,12 +422,12 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
   ['dhuʻl qiʻdah', 'zulkida', 'zulqida'],
 ];
