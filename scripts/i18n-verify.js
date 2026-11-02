@@ -350,8 +350,9 @@ const SYNONYM_GROUPS = [
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
   ['magrib', 'maghrib', 'sunset', 'evening'],
-  // al-isha is the Arabic word for the evening meal; the prayer name derives from it
-  ['isha', 'nightfall', 'dinner', 'supper'],
+  // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
+  // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
+  ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
   ['suhoor', 'sahur', 'suhur', 'sehri'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
   ['istijaba', 'istijabah', 'response'],
@@ -402,14 +403,19 @@ const SYNONYM_GROUPS = [
   ['turn', 'move', 'rotate'],
   ['done', 'completed', 'complete', 'finished'],
   ['default', 'original'],
+  // later~then~afterwards: the postponing adverb's own senses, the update button's word
+  ['later', 'then', 'afterwards'],
 ];
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'no new updates', 'no new update'],
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch'],
+  // every member is the dismay exclamation in its own register, Alamak's class
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn'],
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired'],
   ['rabiʻ ii', 'spring of the other'],
+  // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
+  ['dhuʻl hijjah', 'zulhijjah'],
 ];
 
 const SYNONYM_INDEX = new Map();
