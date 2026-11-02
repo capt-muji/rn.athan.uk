@@ -341,11 +341,12 @@ const STOPWORDS = new Set([
 /** Synonym groups for this app's UI vocabulary; members match each other pairwise */
 const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr'],
+  // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq'],
-  ['asr', 'afternoon', 'ashar', 'asher'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
@@ -355,13 +356,13 @@ const SYNONYM_GROUPS = [
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
   ['suhoor', 'sahur', 'suhur', 'sehri'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
-  ['istijaba', 'istijabah', 'response'],
+  ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note'],
+  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information'],
   ['sound', 'audio', 'tone', 'voice'],
   ['silent', 'silence', 'mute', 'muted', 'dumb'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
@@ -371,7 +372,7 @@ const SYNONYM_GROUPS = [
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
   // Cebuano gipatay (killed) is the same device-off class
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone', 'closed'],
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed', 'gone', 'closed', 'close'],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete'],
@@ -427,9 +428,9 @@ const PHRASE_SYNONYMS = [
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda'],
 ];
 
 const SYNONYM_INDEX = new Map();

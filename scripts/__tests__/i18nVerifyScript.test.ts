@@ -532,6 +532,16 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf(' Oh no! ', both('Wow!', 'x'))).toBe('green');
   });
 
+  it('the Baluchi loop lessons: the Arabic-root senses, the script echo pairs and the month spellings', () => {
+    expect(verify.verdictOf('Dhuhr', both('Lunch.', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('era;', 'x'))).toBe('green');
+    expect(verify.verdictOf('Istijaba', both('Answer', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both('close', 'x'))).toBe('green');
+    expect(verify.verdictOf('notification', both('information', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul Qaeda', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhajjah', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
