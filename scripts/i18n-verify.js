@@ -9,7 +9,7 @@
  * slot two sits empty - engine "pending" - until phase two adds the second site.
  *
  *   node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume]
- *                               --waves | --all | --fill ar,so
+ *                               [--pace ms] --waves | --all | --fill ar,so
  *
  * The verdict color reads at a glance; rows the engine refuses carry the judge
  * LLM's rendering in one cell marked engine:llm, never a site's rendering. Pages
@@ -578,10 +578,13 @@ const ENGINES = {
 const spotCheckUrl = (locale, text) =>
   `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
 
-/** One engine call with retry and backoff: the extracted text, or null when the budget is spent */
+/** One engine call with retry and backoff: the extracted text, or null when the budget is spent.
+ * Under a pace, every attempt - retries included - waits its gap first (owner order: a
+ * closed quota must never be hammered with quick retries; one request per gap). */
 const fetchWithRetry = async (engineName, locale, text, deps, attempts = 3) => {
   const engine = ENGINES[engineName];
   for (let attempt = 0; attempt < attempts; attempt++) {
+    if (deps.pace) await deps.sleep(deps.pace);
     try {
       const response = await deps.fetch(engine.url(locale, text));
       if (!response.ok) throw new Error(`http ${response.status}`);
@@ -669,14 +672,16 @@ const resumedLlmOf = (prior) => {
 /** One locale's artifacts: both engines' round-trips, the verdicts, and the gaps */
 const runLocale = async (locale, opts) => {
   const { en, catalog, outDir, fetch, sleep, now, resumeRows } = opts;
-  const deps = { fetch, sleep };
+  const deps = { fetch, sleep, pace: opts.pace };
   // Rows come from the English key set; a locale missing a key yields fewer rows,
   // and the shortfall fails the run against the English count
   const keys = orderedKeys(en).filter((key) => catalog[key] !== undefined);
   const probeText = catalog[PRAYER_KEYS[0]] ?? en[PRAYER_KEYS[0]];
   const live = opts.liveEngines ?? (await preFlight(SITE_ENGINES, locale, probeText, deps));
 
-  const rows = await mapPool(keys, opts.concurrency ?? 4, async (key) => {
+  // A paced run is serial by definition: the pool narrows to one worker so the
+  // per-attempt gap in fetchWithRetry is the only request rhythm
+  const rows = await mapPool(keys, opts.pace ? 1 : (opts.concurrency ?? 4), async (key) => {
     const prior = resumeRows?.get(key);
     // A resumed row is reusable only while its catalog string still matches
     const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
@@ -1007,7 +1012,7 @@ const renderIndexHtml = (summaries) => {
 
 const usageError = (message) =>
   new Error(
-    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] | --waves | --all | --fill ar,so [--out DIR]`
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
   );
 
 const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
@@ -1211,6 +1216,7 @@ const run = async (argv, deps = {}) => {
   const fillFlag = flag('--fill');
   const ruleFlag = flag('--rule');
   const phaseFlag = flag('--phase');
+  const paceFlag = flag('--pace');
   const waves = argv.includes('--waves');
   const all = argv.includes('--all');
   const resume = argv.includes('--resume');
@@ -1219,6 +1225,10 @@ const run = async (argv, deps = {}) => {
   }
   if (phaseFlag !== undefined && phaseFlag !== 'one' && phaseFlag !== 'two') {
     throw usageError(`--phase must be one or two, got ${phaseFlag}`);
+  }
+  const pace = paceFlag === undefined ? 0 : Number(paceFlag);
+  if (!Number.isInteger(pace) || pace < 0) {
+    throw usageError(`--pace must be a whole number of milliseconds, got ${paceFlag}`);
   }
   const phase = phaseFlag ?? 'one';
   const names = loadLanguageNames(deps);
@@ -1310,6 +1320,7 @@ const run = async (argv, deps = {}) => {
       label: languageLabel(locale, names),
       phase,
       rtl,
+      ...(pace > 0 ? { pace } : {}),
     });
     written.push(...result.files);
     const mix = Object.entries(result.engineMix)

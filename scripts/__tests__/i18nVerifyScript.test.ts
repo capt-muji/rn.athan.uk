@@ -116,6 +116,7 @@ interface LocaleOpts {
   label?: string;
   rtl?: Set<string>;
   phase?: string;
+  pace?: number;
 }
 interface LocaleResult {
   locale: string;
@@ -537,6 +538,61 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     expect(JSON.stringify(json)).not.toContain('mymemory');
   });
 
+  it('pacing holds one engine request per gap, never two in flight', async () => {
+    const events: string[] = [];
+    let inFlight = 0;
+    let maxInFlight = 0;
+    const out = await verify.runLocale('ar', {
+      en: realEn,
+      catalog,
+      outDir: join(SCRATCH, 'paced'),
+      fetch: async (url) => {
+        events.push('fetch');
+        inFlight += 1;
+        maxInFlight = Math.max(maxInFlight, inFlight);
+        const answer = await gtxFetch(url);
+        inFlight -= 1;
+        return answer;
+      },
+      sleep: async (ms) => {
+        events.push(`sleep:${ms}`);
+      },
+      now: fixedNow,
+      pace: 12000,
+    });
+    expect(out.engineMix.gtx).toBe(207);
+    expect(maxInFlight).toBe(1);
+    expect(events[0]).toBe('sleep:12000');
+    for (let i = 1; i < events.length; i += 1) {
+      if (events[i] === 'fetch') expect(events[i - 1]).toBe('sleep:12000');
+    }
+  });
+
+  it('a refused request waits its pace gap before the retry', async () => {
+    const events: string[] = [];
+    let call = 0;
+    const out = await verify.runLocale('ar', {
+      en: realEn,
+      catalog,
+      outDir: join(SCRATCH, 'paced-retry'),
+      fetch: async (url) => {
+        call += 1;
+        events.push(`fetch:${call}`);
+        if (call === 2) return res('blocked', false, 429);
+        return gtxFetch(url);
+      },
+      sleep: async (ms) => {
+        events.push(`sleep:${ms}`);
+      },
+      now: fixedNow,
+      pace: 5000,
+    });
+    expect(out.engineMix.gtx).toBe(207);
+    const secondRefusal = events.indexOf('fetch:2');
+    const retry = events.indexOf('fetch:3');
+    expect(events.slice(secondRefusal + 1, retry)).toEqual(['sleep:400', 'sleep:5000']);
+  });
+
   it('marks a slot miss when the engine refuses, and lists the row as a gap, gtx dead whole-locale', async () => {
     const out = await verify.runLocale('ar', {
       en: realEn,
@@ -799,7 +855,7 @@ export const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', '
 describe('the command line flow', () => {
   const readCatalogFile = async (locale: string) =>
     locale === 'en' ? realEn : { ...realEn, 'prayer.fajr': `t:${locale}` };
-  const baseDeps = (fetchFn: FetchFn) => ({
+  const baseDeps = (fetchFn: FetchFn): Partial<Deps> => ({
     fetch: fetchFn,
     sleep: noSleep,
     now: fixedNow,
@@ -811,6 +867,25 @@ describe('the command line flow', () => {
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
     return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
+
+  it('rejects a junk --pace value and threads a whole-number pace into the locale run', async () => {
+    const outDir = join(SCRATCH, 'cli-pace');
+    await expect(verify.run(['--locales', 'ar', '--out', outDir, '--pace', 'abc'], baseDeps(fetchOk))).rejects.toThrow(
+      /pace/
+    );
+    await expect(verify.run(['--locales', 'ar', '--out', outDir, '--pace', '-5'], baseDeps(fetchOk))).rejects.toThrow(
+      /pace/
+    );
+    const sleeps: number[] = [];
+    const deps = baseDeps(fetchOk);
+    deps.sleep = async (ms: number) => {
+      sleeps.push(ms);
+    };
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--pace', '9000'], deps);
+    expect(report.ok).toBe(true);
+    // the probe plus every row, one pace gap before each
+    expect(sleeps.filter((ms) => ms === 9000).length).toBe(208);
+  });
 
   it('runs the named locales, generates the English reference without a single fetch, and reports ok', async () => {
     const outDir = join(SCRATCH, 'cli-a');
@@ -1030,7 +1105,7 @@ describe('the command line flow', () => {
   it('defaults the out dir under the injected home and rejects an unknown locale', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--locales', 'ar'], deps);
-    expect(report.written).toContain(join(deps.home, 'athan-i18n-verify', 'index.html'));
+    expect(report.written).toContain(join(deps.home!, 'athan-i18n-verify', 'index.html'));
     await expect(verify.run(['--locales', 'xx'], deps)).rejects.toThrow('xx');
   });
 
