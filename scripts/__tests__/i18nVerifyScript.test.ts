@@ -333,9 +333,10 @@ describe('the engine behind an injected fetch (Google alone, owner order six)', 
 describe('the meaning heuristic behind the verdict colors', () => {
   it('keeps the true catches red while the owner-named ambiguities carry', () => {
     expect(verify.carriesMeaning('Dhuhr', 'Back')).toBe(false);
-    // The owner's own reading (order four): Morocco is al-Maghrib and dinner is al-isha -
-    // the engine names the word's own cognate, so these carry, they are not catalog bugs
-    expect(verify.carriesMeaning('Magrib', 'MOROCCO')).toBe(true);
+    // The owner's order ten: Morocco is a country, never the prayer - the round-trip
+    // that names it does not verify Magrib, in any language
+    expect(verify.carriesMeaning('Magrib', 'MOROCCO')).toBe(false);
+    // al-isha is the Arabic word for supper - the name derives from the meal
     expect(verify.carriesMeaning('Isha', 'Dinner')).toBe(true);
   });
 
@@ -425,7 +426,7 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
 
   it('the Arabic loop lessons: engine renderings that carry the meaning read green', () => {
     // المغرب is also the Arabic name of Morocco - the engine names the word's own cognate
-    expect(verify.verdictOf('Magrib', both('Morocco', 'x'))).toBe('green');
+    expect(verify.verdictOf('Magrib', both('Morocco', 'x'))).toBe('red');
     // The engine read the Somali spelling Maqrib as the word's evening sense
     expect(verify.verdictOf('Magrib', both('In the evening', 'x'))).toBe('green');
     // العشاء is the Arabic word for supper - the name derives from the meal
@@ -455,7 +456,10 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf(' Oh no! ', both('Ouch!', 'x'))).toBe('green');
     expect(verify.verdictOf(' Something went wrong. ', both('There is an error.', 'x'))).toBe('green');
     expect(verify.verdictOf(' Refresh ', both('Reload', 'x'))).toBe('green');
-    expect(verify.verdictOf('Sunrise', both('Rise', 'x'))).toBe('green');
+    // Owner order eleven: the round-trip must land on sunrise itself - 'Rise' is a fragment
+    expect(verify.verdictOf('Sunrise', both('Rise', 'x'))).toBe('red');
+    expect(verify.verdictOf('Sunrise', both('Sunup', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sunrise', both('Shuruk', 'x'))).toBe('green');
     expect(verify.verdictOf('Asr', both('Asher', 'x'))).toBe('green');
   });
 

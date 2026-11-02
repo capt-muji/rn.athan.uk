@@ -342,11 +342,14 @@ const STOPWORDS = new Set([
 const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
   ['dhuhr', 'noon', 'midday', 'zuhr'],
-  ['sunrise', 'rise', 'rising', 'sunup'],
+  // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
+  // never verifies it; the Shuruk family carries for the languages that transliterate
+  ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq'],
   ['asr', 'afternoon', 'ashar', 'asher'],
-  // Morocco is al-Maghrib in Arabic: an engine naming the country reads the name's own cognate;
-  // the word's plain sense is the evening, which an engine may render for the Somali spelling
-  ['magrib', 'maghrib', 'sunset', 'morocco', 'evening'],
+  // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
+  // never verifies the prayer: the word's plain evening sense is the only engine reading
+  // beyond the name itself that carries
+  ['magrib', 'maghrib', 'sunset', 'evening'],
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it
   ['isha', 'nightfall', 'dinner', 'supper'],
   ['suhoor', 'sahur', 'suhur', 'sehri'],
