@@ -953,26 +953,18 @@ const summaryOfArtifact = (data, names) => ({
 const fillLocales = async (locales, { outDir, log, now, names }) => {
   const written = [];
   const fillErrors = [];
+  const remainingGaps = [];
 
   for (const locale of locales) {
     const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
     const fills = JSON.parse(readFileSync(join(outDir, `${locale}.llm-fill.json`), 'utf8'));
+    const rows = artifact.rows;
+    const rowByKey = new Map(rows.map((row) => [row.key, row]));
     const fillByKey = new Map();
     for (const fill of fills) {
       if (fillByKey.has(fill.key)) fillErrors.push(`${locale}/${fill.key} is filled twice`);
+      if (!rowByKey.has(fill.key)) fillErrors.push(`${locale}/${fill.key} is not a row in the artifact`);
       fillByKey.set(fill.key, fill);
-    }
-    const rows = artifact.rows;
-    for (const fill of fills) {
-      const row = rows.find((candidate) => candidate.key === fill.key);
-      const bothMiss = row !== undefined && (row.sites ?? []).every((site) => site.roundtrip === null);
-      if (!bothMiss) fillErrors.push(`${locale}/${fill.key} is not a both-miss row`);
-    }
-    for (const row of rows) {
-      const bothMiss = (row.sites ?? []).every((site) => site.roundtrip === null);
-      if (bothMiss && row.llm === undefined && !fillByKey.has(row.key)) {
-        fillErrors.push(`${locale}/${row.key} has no judge round-trip`);
-      }
     }
     if (fillErrors.some((message) => message.startsWith(`${locale}/`))) {
       log(
@@ -982,10 +974,20 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
     }
 
     let filled = 0;
+    let superseded = 0;
     let doubted = 0;
     for (const row of rows) {
+      const bothMiss = (row.sites ?? []).every((site) => site.roundtrip === null);
       const fill = fillByKey.get(row.key);
-      if (fill === undefined) continue;
+      if (fill !== undefined && !bothMiss && row.llm === undefined) {
+        // The engine recovered this row since the judge pass - its rendering supersedes
+        superseded += 1;
+        continue;
+      }
+      if (fill === undefined) {
+        if (bothMiss && row.llm === undefined) remainingGaps.push({ locale, key: row.key });
+        continue;
+      }
       filled += 1;
       if (fill.doubt) doubted += 1;
       row.llm = { roundtrip: fill.roundtrip, ...(fill.doubt ? { doubt: fill.doubt } : {}) };
@@ -998,7 +1000,7 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
     );
     writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows));
     written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
-    log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted)`);
+    log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
   }
 
   const indexSummaries = [];
@@ -1011,7 +1013,15 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
   writeFileSync(indexPath, renderIndexHtml(indexSummaries));
   written.push(indexPath);
 
-  return { ok: fillErrors.length === 0, locales, written, shortfalls: [], misses: [], fillErrors };
+  return {
+    ok: fillErrors.length === 0,
+    locales,
+    written,
+    shortfalls: [],
+    misses: remainingGaps,
+    remainingGaps,
+    fillErrors,
+  };
 };
 
 /** The command line flow. Every effect (network, clock, stdout, files) rides on deps */

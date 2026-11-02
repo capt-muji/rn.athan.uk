@@ -788,19 +788,56 @@ describe('the command line flow', () => {
     expect(html).toContain('judge:');
   });
 
-  it('refuses a fill for a row an engine rendered, and a both-miss row left unfilled', async () => {
+  it('skips a fill whose row an engine has since rendered, refuses unknown keys, and lists unfilled both-miss rows as gaps', async () => {
     const outDir = join(SCRATCH, 'cli-fill-rules');
     await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
     const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
-    const good = before.rows[0];
-    writeFileSync(join(outDir, 'ar.llm-fill.json'), JSON.stringify([{ key: good.key, roundtrip: 'should refuse' }]));
+    const rendered = before.rows[0];
+    const dark = { ...before.rows[1] };
+    dark.sites = [
+      { engine: 'gtx', roundtrip: null },
+      { engine: 'mymemory', roundtrip: null },
+    ];
+    writeFileSync(join(outDir, 'ar.json'), JSON.stringify({ ...before, rows: [rendered, dark] }));
+    writeFileSync(
+      join(outDir, 'ar.llm-fill.json'),
+      JSON.stringify([
+        { key: rendered.key, roundtrip: 'stale entry the engine superseded' },
+        { key: 'unknown.key', roundtrip: 'typo guard' },
+      ])
+    );
     const refused = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
     expect(refused.ok).toBe(false);
-    expect(refused.fillErrors[0]).toContain('not a both-miss row');
+    expect(refused.fillErrors).toEqual(['ar/unknown.key is not a row in the artifact']);
+    const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    expect(after.rows[0].llm).toBeUndefined();
+    expect(after.rows[0].sites[0].roundtrip).not.toBeNull();
+  });
 
-    writeFileSync(join(outDir, 'ar.llm-fill.json'), '[]');
-    const empty = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
-    expect(empty.ok).toBe(true);
+  it('merges fresh fills for still-dark rows beside superseded ones without refusing', async () => {
+    const outDir = join(SCRATCH, 'cli-fill-mixed');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    const rendered = before.rows[0];
+    const dark = { ...before.rows[1] };
+    dark.sites = [
+      { engine: 'gtx', roundtrip: null },
+      { engine: 'mymemory', roundtrip: null },
+    ];
+    writeFileSync(join(outDir, 'ar.json'), JSON.stringify({ ...before, rows: [rendered, dark] }));
+    writeFileSync(
+      join(outDir, 'ar.llm-fill.json'),
+      JSON.stringify([
+        { key: rendered.key, roundtrip: 'stale' },
+        { key: dark.key, roundtrip: 'the judge rendering' },
+      ])
+    );
+    const report = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    expect(after.rows[0].llm).toBeUndefined();
+    expect(after.rows[1].llm?.roundtrip).toBe('the judge rendering');
+    expect(after.rows[1].verdict).toBe('amber');
   });
 
   it('marks a doubted judge fill amber even where both engines agree', async () => {
