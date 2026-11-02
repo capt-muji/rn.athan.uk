@@ -956,6 +956,19 @@ const summaryOfArtifact = (data, names) => ({
   reference: data.reference === true,
 });
 
+/** The index always reads every artifact on disk, so a one-locale run erases nobody's card */
+const writeIndexFromDisk = (outDir, names) => {
+  const summaries = [];
+  for (const file of readdirSync(outDir)) {
+    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json')) continue;
+    const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
+    summaries.push(summaryOfArtifact(data, names));
+  }
+  const indexPath = join(outDir, 'index.html');
+  writeFileSync(indexPath, renderIndexHtml(summaries));
+  return indexPath;
+};
+
 /**
  * The judge fill: the LLM pass renders round-trips for rows both engines refused and
  * writes <locale>.llm-fill.json; this merge carries them into llm-marked rows (never a
@@ -1016,14 +1029,7 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
     log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
   }
 
-  const indexSummaries = [];
-  for (const file of readdirSync(outDir)) {
-    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json')) continue;
-    const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
-    indexSummaries.push(summaryOfArtifact(data, names));
-  }
-  const indexPath = join(outDir, 'index.html');
-  writeFileSync(indexPath, renderIndexHtml(indexSummaries));
+  const indexPath = writeIndexFromDisk(outDir, names);
   written.push(indexPath);
 
   return {
@@ -1160,8 +1166,7 @@ const run = async (argv, deps = {}) => {
     });
   }
 
-  const indexPath = join(outDir, 'index.html');
-  writeFileSync(indexPath, renderIndexHtml(summaries));
+  const indexPath = writeIndexFromDisk(outDir, names);
   written.push(indexPath);
 
   if (shortfalls.length > 0) {

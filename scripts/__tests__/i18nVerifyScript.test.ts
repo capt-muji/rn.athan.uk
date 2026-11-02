@@ -740,6 +740,16 @@ describe('the command line flow', () => {
     expect(enHtml).toContain('reference');
   });
 
+  it("rebuilds the index from every artifact on disk, not only this run's locales", async () => {
+    const outDir = join(SCRATCH, 'cli-index');
+    await verify.run(['--locales', 'so', '--out', outDir], baseDeps(fetchOk));
+    // A later run touching only ar must not erase so's card from the index
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    const index = readFileSync(join(outDir, 'index.html'), 'utf8');
+    expect(index).toContain('so.html');
+    expect(index).toContain('ar.html');
+  });
+
   it('runs all 75 catalogs under --all, resolving codes from the language-name table', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--all', '--out', join(SCRATCH, 'cli-all')], deps);
