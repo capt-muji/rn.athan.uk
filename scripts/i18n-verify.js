@@ -386,6 +386,8 @@ const SYNONYM_GROUPS = [
     'closed',
     'close',
     'passive',
+    // German aus renders as out of - its own off sense
+    'out',
   ],
   ['turn', 'switch'],
   ['open', 'launch'],
