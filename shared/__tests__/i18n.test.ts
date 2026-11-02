@@ -173,7 +173,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['extras.explanation.last third', 'Start of the last third of the night'],
   ['extras.explanation.suhoor', '20 minutes before Fajr'],
   ['extras.explanation.duha', '20 minutes after Sunrise'],
-  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 
   ['duration.now', 'now'],
   ['channel.extras', 'Extra Times'],

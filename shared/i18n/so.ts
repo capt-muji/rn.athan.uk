@@ -161,7 +161,7 @@ export const so = {
   'extras.explanation.last third': 'Bilowga seddexaadka u dambeeya habeenka',
   'extras.explanation.suhoor': '20 daqiiqo ka hor Subax',
   'extras.explanation.duha': '20 daqiiqo ka dib Waaberi',
-  'extras.explanation.istijaba': '1 saac ka hor Maqrib (Jimcaha oo kaliya)',
+  'extras.explanation.istijaba': '1 saac ka hor Maqrib (Jimcaha oo kaliya) (saacadda ducooyinka la aqbalo)',
   'duration.now': 'hadda',
   'time.now': '{name} hadda',
   'time.ago': '{name} {duration} ka hor',

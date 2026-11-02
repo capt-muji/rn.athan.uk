@@ -169,7 +169,7 @@ export const hil = {
   'extras.explanation.last third': 'Pagsugod sang katapusan nga ikatulo sang gab-i',
   'extras.explanation.suhoor': '20 ka minuto antes sang Fajr',
   'extras.explanation.duha': '20 ka minuto kahuman sang pagsikat sang adlaw',
-  'extras.explanation.istijaba': '1 ka oras antes sang Maghrib (Biyernes lang)',
+  'extras.explanation.istijaba': '1 ka oras antes sang Maghrib (Biyernes lang) (oras sang pagtubag sang pangadyi)',
   'duration.now': 'yanda',
   'time.now': '{name} yanda',
   'time.ago': '{name} {duration} ang nagligad',

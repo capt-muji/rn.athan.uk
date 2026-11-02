@@ -159,7 +159,7 @@ export const sd = {
   'extras.explanation.last third': 'رات جي آخري ٽئين حصي جي شروعات',
   'extras.explanation.suhoor': 'فجر کان 20 منٽ اڳ',
   'extras.explanation.duha': 'سج اڀرڻ کان 20 منٽ پوءِ',
-  'extras.explanation.istijaba': 'مغرب کان 1 ڪلاڪ اڳ (رڳو جمعي جي ڏينهن)',
+  'extras.explanation.istijaba': 'مغرب کان 1 ڪلاڪ اڳ (رڳو جمعي جي ڏينهن) (دعائن قبول جو وقت)',
   'duration.now': 'هاڻي',
   'time.now': '{name} هاڻي',
   'time.ago': '{name} {duration} اڳ',

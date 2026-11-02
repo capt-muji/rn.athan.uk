@@ -158,7 +158,7 @@ export const ar = {
   'extras.explanation.last third': 'عند بداية الثلث الأخير من الليل',
   'extras.explanation.suhoor': '20 دقيقة قبل الفجر',
   'extras.explanation.duha': '20 دقيقة بعد الشروق',
-  'extras.explanation.istijaba': 'ساعة قبل المغرب (الجمعة فقط)',
+  'extras.explanation.istijaba': 'ساعة قبل المغرب (الجمعة فقط) (ساعة الإجابة)',
   'duration.now': 'الآن',
   'time.now': '{name} الآن',
   'time.ago': '{name} قبل {duration}',

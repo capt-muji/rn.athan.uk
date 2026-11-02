@@ -166,7 +166,7 @@ export const vi = {
   'extras.explanation.last third': 'Bắt đầu 1/3 cuối của đêm',
   'extras.explanation.suhoor': 'Trước Fajr 20 phút',
   'extras.explanation.duha': 'Sau Bình minh 20 phút',
-  'extras.explanation.istijaba': 'Trước Maghrib 1 giờ (chỉ thứ Sáu)',
+  'extras.explanation.istijaba': 'Trước Maghrib 1 giờ (chỉ thứ Sáu) (giờ được nhậm lời)',
   'duration.now': 'bây giờ',
   'time.now': '{name} bây giờ',
   'time.ago': '{name} {duration} trước',

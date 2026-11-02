@@ -166,7 +166,7 @@ export const min = {
   'extras.explanation.last third': 'Mulo tigo paheuik tarakhia malam',
   'extras.explanation.suhoor': '20 minik sabalun Subuh',
   'extras.explanation.duha': '20 minik sasudah matoari tabik',
-  'extras.explanation.istijaba': '1 jam sabalun Magrib (hanyo hari Jumaik)',
+  'extras.explanation.istijaba': '1 jam sabalun Magrib (hanyo hari Jumaik) (saat pangabulan doa)',
   'duration.now': 'kini',
   'time.now': '{name} kini',
   'time.ago': '{name} {duration} nan lia',

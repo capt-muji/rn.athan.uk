@@ -164,7 +164,7 @@ export const uz = {
   'extras.explanation.last third': "Tungan so'nggi uchdan birining boshlanishi",
   'extras.explanation.suhoor': 'Bomdoddan 20 daqiqa oldin',
   'extras.explanation.duha': 'Quyosh chiqqandan 20 daqiqa keyin',
-  'extras.explanation.istijaba': 'Shomdan 1 soat oldin (faqat juma kunlari)',
+  'extras.explanation.istijaba': 'Shomdan 1 soat oldin (faqat juma kunlari) (duolarning qabul boʻlish vaqti)',
   'duration.now': 'hozir',
   'time.now': '{name} hozir',
   'time.ago': '{name} {duration} oldin',

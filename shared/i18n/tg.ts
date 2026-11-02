@@ -162,7 +162,7 @@ export const tg = {
   'extras.explanation.last third': 'Оғози сеяки охири шаб',
   'extras.explanation.suhoor': '20 дақиқа пеш аз Бомдод',
   'extras.explanation.duha': '20 дақиқа пас аз тулӯи офтоб',
-  'extras.explanation.istijaba': '1 соат пеш аз Шом (танҳо ҷумъа)',
+  'extras.explanation.istijaba': '1 соат пеш аз Шом (танҳо ҷумъа) (вақти қабул шудани дуоҳо)',
   'duration.now': 'ҳозир',
   'time.now': '{name} ҳозир',
   'time.ago': '{name} {duration} пеш',

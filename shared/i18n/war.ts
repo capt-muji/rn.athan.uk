@@ -168,7 +168,7 @@ export const war = {
   'extras.explanation.last third': 'Pagtikang han kataposan nga ikatulo han gab-i',
   'extras.explanation.suhoor': '20 ka minuto ugsa han Fajr',
   'extras.explanation.duha': '20 ka minuto katapos han pagsikat han adlaw',
-  'extras.explanation.istijaba': '1 ka oras ugsa han Maghrib (Biyernes la)',
+  'extras.explanation.istijaba': '1 ka oras ugsa han Maghrib (Biyernes la) (oras hit pagbat-i)',
   'duration.now': 'yana',
   'time.now': '{name} yana',
   'time.ago': '{name} {duration} an naglabay',

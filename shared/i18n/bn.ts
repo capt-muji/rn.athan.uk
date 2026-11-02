@@ -159,7 +159,7 @@ export const bn = {
   'extras.explanation.last third': 'রাতের শেষ তৃতীয়াংশের শুরু',
   'extras.explanation.suhoor': 'ফজরের ২০ মিনিট পূর্বে',
   'extras.explanation.duha': 'সূর্যোদয়ের ২০ মিনিট পরে',
-  'extras.explanation.istijaba': 'মাগরিবের ১ ঘণ্টা আগে (শুধুমাত্র শুক্রবার)',
+  'extras.explanation.istijaba': 'মাগরিবের ১ ঘণ্টা আগে (শুধুমাত্র শুক্রবার) (দোয়া কবুলের সময়)',
   'duration.now': 'এখন',
   'time.now': '{name} এখন',
   'time.ago': '{name} {duration} আগে',

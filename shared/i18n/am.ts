@@ -159,7 +159,7 @@ export const am = {
   'extras.explanation.last third': 'የሌሊቱ የመጨረሻ ሶስተኛ መጀመሪያ',
   'extras.explanation.suhoor': 'ከፈጅር 20 ደቂቃ በፊት',
   'extras.explanation.duha': 'ከፀሐይ መውጣት 20 ደቂቃ በኋላ',
-  'extras.explanation.istijaba': 'ከመግሪብ 1 ሰዓት በፊት (ዓርብ ብቻ)',
+  'extras.explanation.istijaba': 'ከመግሪብ 1 ሰዓት በፊት (ዓርብ ብቻ) (የመልስ ሰዓት)',
   'duration.now': 'አሁን',
   'time.now': '{name} አሁን',
   'time.ago': '{name} {duration} በፊት',

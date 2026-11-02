@@ -169,7 +169,7 @@ export const qu = {
   'extras.explanation.last third': "Tuta qhipa kimsa ch'iqa qallariy",
   'extras.explanation.suhoor': 'Fajrman 20 minutu \u00f1awpaq',
   'extras.explanation.duha': 'Inti lluqsimuymanta 20 minutu qhipa',
-  'extras.explanation.istijaba': 'Inti chinkayman 1 ura \u00f1awpaq (viernesllallapunim)',
+  'extras.explanation.istijaba': 'Inti chinkayman 1 ura \u00f1awpaq (viernesllallapunim) (qatikunapa pachan)',
   'duration.now': 'kunan',
   'time.now': '{name} kunan',
   'time.ago': '{name} {duration} \u00f1awpaq',

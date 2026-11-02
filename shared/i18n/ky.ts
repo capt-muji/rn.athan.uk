@@ -162,7 +162,7 @@ export const ky = {
   'extras.explanation.last third': 'Түндүн акыркы үчтүгүнүн башталышы',
   'extras.explanation.suhoor': 'Багымдаттан 20 мүнөт мурун',
   'extras.explanation.duha': 'Күн чыккандан 20 мүнөт кийин',
-  'extras.explanation.istijaba': 'Шамга 1 саат мурун (жемешембиде гана)',
+  'extras.explanation.istijaba': 'Шамга 1 саат мурун (жемешембиде гана) (дуба кабыл болуучу убак)',
   'duration.now': 'азыр',
   'time.now': '{name} азыр',
   'time.ago': '{name} {duration} мурун',

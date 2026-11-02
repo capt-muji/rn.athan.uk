@@ -164,7 +164,7 @@ export const ro = {
   'extras.explanation.last third': 'Începutul ultimei treimi a nopții',
   'extras.explanation.suhoor': '20 de minute înainte de Fajr',
   'extras.explanation.duha': '20 de minute după Răsărit',
-  'extras.explanation.istijaba': 'Cu o oră înainte de Maghrib (doar vinerea)',
+  'extras.explanation.istijaba': 'Cu o oră înainte de Maghrib (doar vinerea) (ceasul împlinirii rugăciunilor)',
   'duration.now': 'acum',
   'time.now': '{name} chiar acum',
   'time.ago': '{name} {duration} în urmă',

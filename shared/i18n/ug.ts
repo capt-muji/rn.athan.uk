@@ -159,7 +159,7 @@ export const ug = {
   'extras.explanation.last third': 'كېچىنىڭ ئاخىرقى ئۈچىنىڭ بېشى',
   'extras.explanation.suhoor': 'بامداتتىن 20 مىنۇت بۇرۇن',
   'extras.explanation.duha': 'كۈن چىقىشتىن 20 مىنۇت كېيىن',
-  'extras.explanation.istijaba': 'شامدىن 1 سائەت بۇرۇن (پەقەت جۈمە كۈنى)',
+  'extras.explanation.istijaba': 'شامدىن 1 سائەت بۇرۇن (پەقەت جۈمە كۈنى) (دۇئا قوبۇل بولىدىغان ۋاقىت)',
   'duration.now': 'ھازىر',
   'time.now': '{name} ھازىر',
   'time.ago': '{name} {duration} بۇرۇن',

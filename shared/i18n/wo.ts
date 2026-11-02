@@ -161,7 +161,7 @@ export const wo = {
   'extras.explanation.last third': 'Tàmbali ñetteelu guddi bi',
   'extras.explanation.suhoor': '20 min laata Fajar',
   'extras.explanation.duha': '20 min ginaaw Suba',
-  'extras.explanation.istijaba': '1 waxtu laata Timis (juma rekk)',
+  'extras.explanation.istijaba': '1 waxtu laata Timis (juma rekk) (waxtu jaadu)',
   'duration.now': 'léegi',
   'time.now': '{name} léegi',
   'time.ago': '{name} {duration} ci ginnaaw',

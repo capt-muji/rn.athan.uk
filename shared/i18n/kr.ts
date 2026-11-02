@@ -163,7 +163,7 @@ export const kr = {
   'extras.explanation.last third': 'Tultu layl badi',
   'extras.explanation.suhoor': 'Faaji gaba 20 minti',
   'extras.explanation.duha': 'Shuruqu ngawo 20 minti',
-  'extras.explanation.istijaba': 'Magaribi gaba 1 goggo (Juma ro)',
+  'extras.explanation.istijaba': 'Magaribi gaba 1 goggo (Juma ro) (waqti jaabugui’a)',
   'duration.now': 'koyan',
   'time.now': '{name} koyan',
   'time.ago': '{name} {duration} kure',

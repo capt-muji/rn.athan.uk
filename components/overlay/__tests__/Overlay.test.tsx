@@ -161,7 +161,7 @@ describe('the overlay layer on Friday 11 September 2026 at 14:00', () => {
   // [selected index, prayer, explanation]
   it.each([
     [0, 'Midnight', 'Halfway between Magrib and Fajr'],
-    [4, 'Istijaba', '1 hour before Magrib (Fridays only)'],
+    [4, 'Istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
   ])('explains the Extras row at index %i, %s, when the overlay opens on it', async (index, name, english) => {
     showLondonDay('2026-09-11', '14:00');
     seedPagerPage(1);

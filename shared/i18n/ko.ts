@@ -161,7 +161,7 @@ export const ko = {
   'extras.explanation.last third': '밤의 마지막 3분의 1의 시작',
   'extras.explanation.suhoor': '파즈르 20분 전',
   'extras.explanation.duha': '일출 20분 후',
-  'extras.explanation.istijaba': '마그립 1시간 전 (금요일만)',
+  'extras.explanation.istijaba': '마그립 1시간 전 (금요일만) (기도가 응답되는 시간)',
   'duration.now': '지금',
   'time.now': '{name} 시간입니다',
   'time.ago': '{name} {duration} 전',

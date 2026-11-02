@@ -160,7 +160,7 @@ export const su = {
   'extras.explanation.last third': 'Mimiti sapartilu ahir peuting',
   'extras.explanation.suhoor': '20 menit saméméh Subuh',
   'extras.explanation.duha': '20 menit sanggeus panonpoé bijil',
-  'extras.explanation.istijaba': '1 jam saméméh Magrib (ukur poé Jumaah)',
+  'extras.explanation.istijaba': '1 jam saméméh Magrib (ukur poé Jumaah) (waktos ditampina doa)',
   'duration.now': 'ayeuna',
   'time.now': '{name} ayeuna',
   'time.ago': '{name} {duration} kamari',

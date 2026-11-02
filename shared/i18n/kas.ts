@@ -160,7 +160,7 @@ export const kas = {
   'extras.explanation.last third': 'رات کی آخری تہائی کا آغاز',
   'extras.explanation.suhoor': 'صُبُح 20 منٹ پہلے',
   'extras.explanation.duha': 'طلوع آفتاب 20 منٹ بعد',
-  'extras.explanation.istijaba': 'شام 1 گھنٹہ پہلے (صرف جمعہ)',
+  'extras.explanation.istijaba': 'شام 1 گھنٹہ پہلے (صرف جمعہ) (دُعائن قبول وَتھ)',
   'duration.now': 'وُنئ',
   'time.now': '{name} وُنئ',
   'time.ago': '{name} {duration} برونٹھ',

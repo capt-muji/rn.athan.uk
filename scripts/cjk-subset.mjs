@@ -23,7 +23,7 @@
 // because the catalog and name modules use ESM export syntax Node cannot load.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from '@babel/parser';
 
@@ -225,9 +225,13 @@ print(json.dumps(answer))
 `;
 
 const keptKr = { mode: 'keep', out: join(ROOT, 'assets/fonts/NotoSansKR-Subset-{weight}.ttf') };
+// A fetched VF in the statics dir means a re-cut: the catalog grew characters the
+// shipped pair lacks, so the pair is re-instantiated and re-subset from the full font
+const vfPath = join(FONTS_DIR, 'NotoSansKR-VF.ttf');
+const cutKr = existsSync(vfPath) ? { ...keptKr, mode: 'vf', source: vfPath, text: closedText.ko } : keptKr;
 
 // The shipped truth since the owner's C3 ruling: the ko pair alone binds
-const job = { KR: keptKr };
+const job = { KR: cutKr };
 const jobFile = join(FONTS_DIR, 'cjk-subset-job.json');
 writeFileSync(jobFile, JSON.stringify(job));
 const measured = JSON.parse(execFileSync('python3', ['-c', PYTHON, jobFile], { encoding: 'utf8' }));

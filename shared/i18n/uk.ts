@@ -168,7 +168,7 @@ export const uk = {
   'extras.explanation.last third': 'Початок останньої третини ночі',
   'extras.explanation.suhoor': 'За 20 хвилин до Фаджру',
   'extras.explanation.duha': 'Через 20 хвилин після сходу сонця',
-  'extras.explanation.istijaba': "За 1 годину до Магрібу (лише в п'ятницю)",
+  'extras.explanation.istijaba': "За 1 годину до Магрібу (лише в п'ятницю) (година прийняття молитви)",
   'duration.now': 'зараз',
   'time.now': '{name} зараз',
   'time.ago': '{name} {duration} тому',

@@ -160,7 +160,7 @@ export const mr = {
   'extras.explanation.last third': 'रात्रीच्या शेवटच्या भागाची सुरुवात',
   'extras.explanation.suhoor': 'फजरच्या 20 मिनिटे आधी',
   'extras.explanation.duha': 'सूर्योदयानंतर 20 मिनिटे',
-  'extras.explanation.istijaba': 'मगरीबच्या 1 तास आधी (फक्त शुक्रवारी)',
+  'extras.explanation.istijaba': 'मगरीबच्या 1 तास आधी (फक्त शुक्रवारी) (दुआ कबूल होण्याची वेळ)',
   'duration.now': 'आता',
   'time.now': '{name} आता',
   'time.ago': '{name} {duration} आधी',

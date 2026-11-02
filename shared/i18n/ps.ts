@@ -160,7 +160,7 @@ export const ps = {
   'extras.explanation.last third': 'د شپې د وروستۍ دريمې برخې پيل',
   'extras.explanation.suhoor': 'له صبح ۲۰ دقيقې دمخه',
   'extras.explanation.duha': 'له لمرختنې ۲۰ دقيقې وروسته',
-  'extras.explanation.istijaba': 'له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)',
+  'extras.explanation.istijaba': 'له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ) (د لمانځه د قبول وخت)',
   'duration.now': 'اوس',
   'time.now': '{name} اوس',
   'time.ago': '{name} {duration} دمخه',

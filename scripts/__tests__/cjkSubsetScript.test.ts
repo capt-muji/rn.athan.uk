@@ -11,7 +11,7 @@ const jobBlock = SOURCE.match(/const job = \{([\s\S]*?)\};/)?.[1] ?? '';
 
 describe('the subset script ships the pair-drop alone', () => {
   it('binds only the KR pair', () => {
-    expect(jobBlock).toContain('KR: keptKr');
+    expect(jobBlock).toContain('KR: cutKr');
   });
 
   it('carries no SC or JP job and no candidate modes', () => {

@@ -160,7 +160,7 @@ export const te = {
   'extras.explanation.last third': 'రాత్రి చివరి మూడవ వంతు ప్రారంభం',
   'extras.explanation.suhoor': 'ఫజ్ర్కు 20 నిమిషాల ముందు',
   'extras.explanation.duha': 'సూర్యోదయానికి 20 నిమిషాల తర్వాత',
-  'extras.explanation.istijaba': 'మగ్రిబ్కు 1 గంట ముందు (శుక్రవారం మాత్రమే)',
+  'extras.explanation.istijaba': 'మగ్రిబ్కు 1 గంట ముందు (శుక్రవారం మాత్రమే) (ప్రార్థన ఆమోదించే సమయం)',
   'duration.now': 'ఇప్పుడు',
   'time.now': '{name} ఇప్పుడు',
   'time.ago': '{name} {duration} క్రితం',

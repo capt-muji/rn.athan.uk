@@ -159,7 +159,7 @@ export const fa = {
   'extras.explanation.last third': 'شروع ثلث آخر شب',
   'extras.explanation.suhoor': '۲۰ دقیقه قبل از اذان صبح',
   'extras.explanation.duha': '۲۰ دقیقه بعد از طلوع آفتاب',
-  'extras.explanation.istijaba': 'یک ساعت قبل از اذان مغرب (فقط جمعه‌ها)',
+  'extras.explanation.istijaba': 'یک ساعت قبل از اذان مغرب (فقط جمعه‌ها) (ساعت قبول شدن دعاها)',
   'duration.now': 'اکنون',
   'time.now': '{name} اکنون',
   'time.ago': '{name} {duration} پیش',

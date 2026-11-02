@@ -170,7 +170,7 @@ export const tt = {
   'extras.explanation.last third': 'Төннең соңгы өчлегенең башы',
   'extras.explanation.suhoor': 'Иртәнге намазга 20 минут кала',
   'extras.explanation.duha': 'Кояш чыкканнан соң 20 минут',
-  'extras.explanation.istijaba': 'Ахшам намазга 1 сәгать кала (җомга көнне генә)',
+  'extras.explanation.istijaba': 'Ахшам намазга 1 сәгать кала (җомга көнне генә) (дога кабул ителү сәгате)',
   'duration.now': 'хәзер',
   'time.now': '{name} хәзер',
   'time.ago': '{name} {duration} элек',

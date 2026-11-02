@@ -162,7 +162,7 @@ export const ti = {
   'extras.explanation.last third': 'ምብጻሕ ወሲኽታን ሳልሳይ ለይቲ',
   'extras.explanation.suhoor': '20 ደቒቕ ቅድሚ ፈጅር',
   'extras.explanation.duha': '20 ደቒቕ ድሕሪ ምውጻእ ጸሓይ',
-  'extras.explanation.istijaba': '1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)',
+  'extras.explanation.istijaba': '1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ) (ሰዓቲ መልሲ)',
   'duration.now': 'ሕጂ',
   'time.now': '{name} ሕጂ',
   'time.ago': '{name} {duration} ቅድሚ',

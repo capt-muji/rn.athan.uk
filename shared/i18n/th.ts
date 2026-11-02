@@ -157,7 +157,7 @@ export const th = {
   'extras.explanation.last third': 'จุดเริ่มต้นของช่วงสุดท้ายของคืน',
   'extras.explanation.suhoor': 'ก่อนซุบฮิ 20 นาที',
   'extras.explanation.duha': 'หลังตะวันขึ้น 20 นาที',
-  'extras.explanation.istijaba': 'ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์)',
+  'extras.explanation.istijaba': 'ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์) (ชั่วโมงแห่งการตอบรับคำอธิษฐาน)',
   'duration.now': 'ตอนนี้',
   'time.now': '{name} ตอนนี้',
   'time.ago': '{name} {duration} ที่แล้ว',

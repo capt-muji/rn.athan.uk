@@ -160,7 +160,7 @@ export const bal = {
   'extras.explanation.last third': 'رات دی آخری تہائی دا آغاز',
   'extras.explanation.suhoor': 'فجر 20 منٹ پہلے',
   'extras.explanation.duha': 'طلوع آفتاب 20 منٹ بعد',
-  'extras.explanation.istijaba': 'نماشاں 1 گھنٹہ پہلے (صرف جمعہ)',
+  'extras.explanation.istijaba': 'نماشاں 1 گھنٹہ پہلے (صرف جمعہ) (دُعائن قبول ئے وخت)',
   'duration.now': 'ہن',
   'time.now': '{name} ہن',
   'time.ago': '{name} {duration} بِلَٹَں',

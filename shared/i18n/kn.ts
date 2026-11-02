@@ -160,7 +160,7 @@ export const kn = {
   'extras.explanation.last third': 'ರಾತ್ರಿಯ ಕೊನೆಯ ಮೂರನೇ ಒಂದು ಭಾಗದ ಆರಂಭ',
   'extras.explanation.suhoor': 'ಫಜರ್‌ಗೆ 20 ನಿಮಿಷ ಮೊದಲು',
   'extras.explanation.duha': 'ಸೂರ್ಯೋದಯದ 20 ನಿಮಿಷ ನಂತರ',
-  'extras.explanation.istijaba': 'ಮಗ್ರಿಬ್‌ಗೆ 1 ಗಂಟೆ ಮೊದಲು (ಶುಕ್ರವಾರ ಮಾತ್ರ)',
+  'extras.explanation.istijaba': 'ಮಗ್ರಿಬ್‌ಗೆ 1 ಗಂಟೆ ಮೊದಲು (ಶುಕ್ರವಾರ ಮಾತ್ರ) (ಪ್ರಾರ್ಥನೆ ನೆರವೇರುವ ಸಮಯ)',
   'duration.now': 'ಈಗ',
   'time.now': '{name} ಈಗ',
   'time.ago': '{name} {duration} ಹಿಂದೆ',

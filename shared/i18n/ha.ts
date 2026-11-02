@@ -162,7 +162,7 @@ export const ha = {
   'extras.explanation.last third': 'Farawar sulusin dare na ƙarshe',
   'extras.explanation.suhoor': 'Minti 20 kafin Asuba',
   'extras.explanation.duha': 'Minti 20 bayan Fitowar rana',
-  'extras.explanation.istijaba': "Sa'a 1 kafin Magriba (Juma'a kawai)",
+  'extras.explanation.istijaba': "Sa'a 1 kafin Magriba (Juma'a kawai) (lokacin karbar addu'a)",
   'duration.now': 'yanzu',
   'time.now': '{name} yanzu',
   'time.ago': '{name} {duration} da ya wuce',

@@ -167,7 +167,7 @@ export const it = {
   'extras.explanation.last third': "Inizio dell'ultimo terzo della notte",
   'extras.explanation.suhoor': '20 minuti prima di Fajr',
   'extras.explanation.duha': "20 minuti dopo l'Alba",
-  'extras.explanation.istijaba': '1 ora prima di Maghrib (solo il venerdì)',
+  'extras.explanation.istijaba': '1 ora prima di Maghrib (solo il venerdì) (l’ora dell’esaudimento)',
   'duration.now': 'adesso',
   'time.now': '{name} adesso',
   'time.ago': '{name} {duration} fa',
