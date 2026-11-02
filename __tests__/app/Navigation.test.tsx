@@ -167,16 +167,37 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
-  it('keeps an overlay open on the Standard list when a swipe settles back on the Standard page', async () => {
+  // Owner order 2026-11-02: the pager cannot be swiped while the overlay is open, so a
+  // slide resting under one began before the open landed - the tap-then-swipe interleave.
+  // The slide's rest closes the overlay wherever it settles, the same page included
+  it('closes an overlay open on the Standard list when a slide rests back on the Standard page', async () => {
     showLondonDay('2026-09-11', '14:00');
     openOverlay(ScheduleType.Standard, MAGRIB);
     await render(<Navigation />);
 
     await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
     await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 0 } });
-    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
-
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
+  });
+
+  // A fast fling can report its rest BEFORE its trailing selected: the press's open then
+  // lands on a pagerPageAtom the swipe has not rewritten yet, and the selected that follows
+  // has no later rest to ride - so the selected itself closes the overlay it lands under
+  it("closes an overlay that opened between the pager's rest and its trailing selected", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
   // The owner's tap-then-swipe interleave: the press's open lands in JS after the pager's selected and

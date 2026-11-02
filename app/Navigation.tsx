@@ -42,13 +42,15 @@ export default function Navigation() {
 
   const direction = localeDirection(currentLocaleId());
 
-  // A page-snap write gated behind the slide: released at the pager's rest
-  const gatedOverlayCloseRef = useRef<(() => void) | null>(null);
+  // The pager's own rest, tracked so a selected trailing it (a fast fling's event
+  // order) knows no later rest will carry its write
+  const pagerAtRestRef = useRef(true);
   const pagerEpochSlotRef = useRef<AnimationEpochSlot | null>(null);
 
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
     if (state === 'dragging' || state === 'settling') {
+      pagerAtRestRef.current = false;
       // The slide is an animation window: per-second writes stand down for it,
       // and the pager's own rest re-admits them. A later slide state beside a
       // live one replaces the slot, keeping the window unbroken
@@ -56,11 +58,13 @@ export default function Navigation() {
       pagerEpochSlotRef.current = openAnimationEpoch();
       perfMark('pager_swipe_start');
     } else if (state === 'idle') {
+      pagerAtRestRef.current = true;
       closeAnimationEpoch(pagerEpochSlotRef.current);
       pagerEpochSlotRef.current = null;
-      const gatedClose = gatedOverlayCloseRef.current;
-      gatedOverlayCloseRef.current = null;
-      gatedClose?.();
+      // The pager cannot be swiped while the overlay is open, so a slide resting
+      // under one began before the open landed - the tap-then-swipe interleave.
+      // Wherever it settles, the rest closes the overlay (owner order 2026-11-02)
+      toggleOverlay(false);
     }
   };
 
@@ -73,11 +77,11 @@ export default function Navigation() {
     // overlay, close the overlay instead of rendering it over the wrong page
     const overlay = getDefaultStore().get(overlayAtom);
     const settledSchedule = pageSchedule(position);
-    if (overlay.isOn && settledSchedule !== overlay.scheduleType) {
-      // The close is a whole-overlay store batch and the snap still owes the
-      // settle tail, so the write rides the slide's rest instead of landing
-      // inside it
-      gatedOverlayCloseRef.current = () => toggleOverlay(false);
+    if (overlay.isOn && settledSchedule !== overlay.scheduleType && pagerAtRestRef.current) {
+      // A selected trailing the pager's rest (a fast fling's event order) has no
+      // later rest to ride, so the close lands here; before the rest, the rest's
+      // own close above carries it, keeping the batch out of the settle tail
+      toggleOverlay(false);
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });

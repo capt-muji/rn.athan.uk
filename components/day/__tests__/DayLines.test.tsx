@@ -126,9 +126,10 @@ describe("the location label's ink", () => {
     expect(locationTween().at(-1)).toBe(1);
   });
 
-  it("rests its overlay face on the glow's tint, one token with the countdown's prayer name", () => {
-    // Owner order 2026-11-01: the location row and the prayer name share the overlay label
-    // token; the tint is audited cold in the Countdown suite and pinned here for this text
-    expect(COLORS.text.labelOverlay).toBe('#645d94');
+  it("rests its overlay face on the pulled-back tint, one token with the countdown's prayer name", () => {
+    // Owner order 2026-11-02: the location row and the prayer name share the overlay label
+    // token; the hint-of-both derivation is audited cold in the Countdown suite and pinned
+    // here for this text
+    expect(COLORS.text.labelOverlay).toBe('#585a99');
   });
 });
