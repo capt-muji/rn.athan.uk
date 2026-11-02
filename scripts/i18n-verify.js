@@ -1,30 +1,31 @@
 /**
- * The T-575 verification generator: renders each locale's catalog as a two-engine
- * round-trip comparison the owner reads at a glance (owner orders two and three,
- * 2026-11-02).
+ * The T-575 verification generator: renders each locale's catalog as a round-trip
+ * comparison the owner reads at a glance. Owner order six (2026-11-02) removed
+ * MyMemory entirely - not the second site, not a fallback, not a fetch - so the
+ * engine chain is Google's gtx endpoint alone and the generator never requests
+ * MyMemory again; any MyMemory renderings in existing artifacts are historical and
+ * a resume pass drops them (a resumed slot is adopted only when its engine still
+ * owns that slot). The two-slot row model stands: slot one is Google's round-trip,
+ * slot two sits empty - engine "pending" - until phase two adds the second site.
  *
  *   node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume]
  *                               --waves | --all | --fill ar,so
  *
- * Every row carries TWO independent round-trips - Google's gtx endpoint first,
- * MyMemory second - both shown side by side, and a verdict color: green when both
- * engines carry the English string's meaning, red when neither does, amber when a
- * slot is missing, the engines diverge, or the judge doubted the row. A row both
- * engines refuses carries the judge LLM's rendering in one cell marked engine:llm,
- * never a site's rendering, and reads amber. Pages carry the language name beside
- * the code everywhere (the full 74 + English, parsed out of shared/languageNames.ts),
- * modern CSS, and both spot-check links: Google's human page and the exact MyMemory
- * API request (MyMemory's human pages silently redirect rare languages to wrong
- * ones, so the honest link is the request itself). English generates as the
- * reference page: keys and English strings, no engines.
+ * The verdict color reads at a glance; rows the engine refuses carry the judge
+ * LLM's rendering in one cell marked engine:llm, never a site's rendering. Pages
+ * carry the language name beside the code everywhere (the full 74 + English,
+ * parsed out of shared/languageNames.ts), modern CSS, and Google's spot-check
+ * link. English generates as the reference page: keys and English strings, no
+ * engines.
  *
  * --resume reuses a slot's rendering only while the stored row's catalog text
- * matches the live catalog, refetches every missing slot, and recomputes verdicts -
- * the 31k-request wave rides repeated resume passes as keyless quotas reset. --fill
- * merges <locale>.llm-fill.json into both-miss rows (an optional doubt note rides
- * the row as amber) and refuses both directions of mismatch; the generator itself
- * never invents a rendering. The process exits non-zero listing any shortfall from
- * the English key count and any engine slot still missing without a judge fill.
+ * matches the live catalog, refetches every missing slot, and recomputes verdicts.
+ * --fill merges <locale>.llm-fill.json into unrendered rows (an optional doubt
+ * note rides the row as amber), refuses duplicates and unknown keys, skips entries
+ * the engine has since superseded, and lists still-unfilled rows as gaps; the
+ * generator itself never invents a rendering. The process exits non-zero listing
+ * any shortfall from the English key count and any engine slot still missing
+ * without a judge fill.
  *
  * CommonJS (the check-*.js precedent) so jest's unit transform loads it directly.
  * Catalogs parse with @babel/parser: the exported object literal whose declarator
@@ -38,8 +39,11 @@ const { parse } = require('@babel/parser');
 /** The pilot wave the owner reads personally (the owner's protocol, T-575) */
 const PILOT_WAVE = ['ar', 'so', 'id', 'ms', 'min', 'mad', 'bug', 'ceb', 'ilo'];
 
-/** The two comparison engines, Google first (owner order three, 2026-11-02) */
-const SITE_ENGINES = ['gtx', 'mymemory'];
+/** The engine chain: Google's gtx alone (owner order six, 2026-11-02: MyMemory is out) */
+const SITE_ENGINES = ['gtx'];
+
+/** The two-slot row model: slot one Google's, slot two pending phase two's second site */
+const ROW_SLOTS = ['gtx', 'pending'];
 
 /** Engine language codes where they differ from the repo's locale ids */
 const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN' };
@@ -486,9 +490,6 @@ const engineLocale = (locale) => LOCALE_ALIASES[locale] ?? locale;
 const gtxUrl = (locale, text) =>
   `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${engineLocale(locale)}&tl=en&dt=t&q=${encodeURIComponent(text)}`;
 
-const myMemoryUrl = (locale, text) =>
-  `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${encodeURIComponent(`${engineLocale(locale)}|en`)}`;
-
 const extractGtx = (body) => {
   try {
     const data = JSON.parse(body);
@@ -502,30 +503,13 @@ const extractGtx = (body) => {
   }
 };
 
-const extractMyMemory = (body) => {
-  try {
-    const text = JSON.parse(body)?.responseData?.translatedText;
-    return typeof text === 'string' && text.length > 0 ? text : null;
-  } catch {
-    return null;
-  }
-};
-
 const ENGINES = {
   gtx: { url: gtxUrl, extract: extractGtx },
-  mymemory: { url: myMemoryUrl, extract: extractMyMemory },
 };
 
-/** The Google human page - the owner's first spot-check link */
+/** The Google human page - the owner's spot-check link */
 const spotCheckUrl = (locale, text) =>
   `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
-
-/**
- * The MyMemory spot-check: the exact API request the generator made. MyMemory's human
- * pages silently redirect languages it lacks onto wrong ones (measured 2026-11-02:
- * Ilocano to Cebuano, Madurese to Maltese), so the honest second link is the request.
- */
-const myMemoryCheckUrl = (locale, text) => myMemoryUrl(locale, text);
 
 /** One engine call with retry and backoff: the extracted text, or null when the budget is spent */
 const fetchWithRetry = async (engineName, locale, text, deps, attempts = 3) => {
@@ -588,19 +572,23 @@ const buildRow = (locale, key, en, catalog) => ({
   key,
   en: en[key],
   catalog: catalog[key],
-  sites: SITE_ENGINES.map((engineName) => ({ engine: engineName, roundtrip: null })),
+  sites: ROW_SLOTS.map((engineName) => ({ engine: engineName, roundtrip: null })),
   url: spotCheckUrl(locale, catalog[key]),
-  url2: myMemoryCheckUrl(locale, catalog[key]),
   verdict: 'amber',
 });
 
-/** A resumed row's text for one slot, migrating the old single-round-trip shape */
+/**
+ * A resumed row's text for one slot, migrating the old single-round-trip shape.
+ * A slot adopts prior text only when the prior row's engine still owns the slot -
+ * historical MyMemory data never seeds the pending phase-two slot.
+ */
 const slotTextOf = (prior, slotIndex) => {
   if (!prior) return null;
+  const engineName = ROW_SLOTS[slotIndex];
   if (Array.isArray(prior.sites)) {
-    return prior.sites[slotIndex]?.roundtrip ?? null;
+    const site = prior.sites[slotIndex];
+    return site?.engine === engineName ? (site.roundtrip ?? null) : null;
   }
-  const engineName = SITE_ENGINES[slotIndex];
   return prior.engine === engineName && prior.roundtrip ? prior.roundtrip : null;
 };
 
@@ -626,13 +614,13 @@ const runLocale = async (locale, opts) => {
     // A resumed row is reusable only while its catalog string still matches
     const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
     const row = buildRow(locale, key, en, catalog);
-    for (let slotIndex = 0; slotIndex < SITE_ENGINES.length; slotIndex++) {
+    for (let slotIndex = 0; slotIndex < ROW_SLOTS.length; slotIndex++) {
       const resumedText = slotTextOf(priorFresh, slotIndex);
       if (resumedText !== null && resumedText !== '') {
         row.sites[slotIndex].roundtrip = resumedText;
         continue;
       }
-      const engineName = SITE_ENGINES[slotIndex];
+      const engineName = ROW_SLOTS[slotIndex];
       if (!live.includes(engineName)) continue;
       const roundtrip = await fetchWithRetry(engineName, locale, catalog[key], deps);
       if (slotAccepts(catalog[key], en[key], roundtrip)) {
@@ -649,15 +637,20 @@ const runLocale = async (locale, opts) => {
   });
 
   const counts = { green: 0, red: 0, amber: 0 };
-  const engineMix = { gtx: 0, mymemory: 0, miss: 0 };
+  const engineMix = { gtx: 0, miss: 0, pending: 0 };
   const misses = [];
   for (const row of rows) {
     counts[row.verdict] += 1;
     for (const site of row.sites) {
-      engineMix[site.roundtrip !== null ? site.engine : 'miss'] += 1;
+      if (site.roundtrip !== null) engineMix[site.engine] += 1;
+      // The pending phase-two slot is structural, not a failure
+      else if (site.engine === 'pending') engineMix.pending += 1;
+      else engineMix.miss += 1;
     }
     if (row.llm) engineMix.llm = (engineMix.llm ?? 0) + 1;
-    const missing = row.sites.filter((site) => site.roundtrip === null).map((site) => site.engine);
+    const missing = row.sites
+      .filter((site) => site.roundtrip === null && site.engine !== 'pending')
+      .map((site) => site.engine);
     if (missing.length > 0 && !row.llm) misses.push({ locale, key: row.key, missing });
   }
 
@@ -765,7 +758,9 @@ const renderRow = (locale, row) => {
       : row.sites
           .map((site) =>
             site.roundtrip === null
-              ? '        <td><span class="pill miss">miss</span></td>'
+              ? site.engine === 'pending'
+                ? '        <td class="pending"></td>'
+                : '        <td><span class="pill miss">miss</span></td>'
               : `        <td dir="ltr" lang="en">${escapeHtml(site.roundtrip)}</td>`
           )
           .join('\n');
@@ -776,7 +771,7 @@ const renderRow = (locale, row) => {
     `        <td dir="${dirFor(locale)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
     roundtripCells,
     `        <td><span class="v">${escapeHtml(row.verdict)}</span></td>`,
-    `        <td><a href="${escapeHtml(row.url)}">Google</a> <a href="${escapeHtml(row.url2)}">MyMemory</a></td>`,
+    `        <td><a href="${escapeHtml(row.url)}">Google</a></td>`,
     '      </tr>',
   ].join('\n');
 };
@@ -791,7 +786,7 @@ const renderSection = (locale, rows, section, title) => {
     `      <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span></div>`,
     '      <table>',
     '        <thead>',
-    '          <tr><th>key</th><th>our English</th><th>our language string</th><th>Google round-trip</th><th>MyMemory round-trip</th><th>verdict</th><th>check</th></tr>',
+    '          <tr><th>key</th><th>our English</th><th>our language string</th><th>Google round-trip</th><th>round-trip 2 (phase two)</th><th>verdict</th><th>check</th></tr>',
     '        </thead>',
     '        <tbody>',
     ...sectionRows.map((row) => renderRow(locale, row)),
@@ -822,7 +817,7 @@ const renderLocaleHtml = (locale, label, rows) => {
     '  <a class="back" href="index.html">&larr; all languages</a>',
     '  <header class="card">',
     `    <h1>${escapeHtml(label)}</h1>`,
-    `    <p class="muted">${rows.length} rows - Google and MyMemory round-trips side by side. Green: both engines carry the meaning. Red: neither does - follow the red. Amber: a slot is missing, the engines diverge, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
+    `    <p class="muted">${rows.length} rows - Google's round-trip per row in phase one; the second site's column joins in phase two. Green: the meaning survives. Red: it does not - follow the red. Amber: the engine did not render, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
     `    <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span><span class="chip n">${escapeHtml(mixLine)}</span></div>`,
     '  </header>',
     renderSection(locale, rows, 1, 'Section 1 - the eleven prayer.* names'),
@@ -909,11 +904,11 @@ const renderIndexHtml = (summaries) => {
     PAGE_SHELL_OPEN('Athan translation verification', INDEX_STYLE),
     '  <header class="card">',
     '    <h1>Athan translation verification</h1>',
-    '    <p class="muted">Every catalog against the English source, two independent round-trips per row: Google first, MyMemory second. Open a language and follow the red; amber rows wait on a re-run or the judge.</p>',
+    '    <p class="muted">Every catalog against the English source, one independent round-trip per row in phase one: Google alone. Open a language and follow the red; amber rows wait on a re-run or the judge. The second site joins in phase two.</p>',
     '    <div class="legend">',
-    '      <span><span class="dot" style="background:var(--green)"></span>green - both engines carry the meaning</span>',
-    '      <span><span class="dot" style="background:var(--red)"></span>red - neither engine carries it, check the string</span>',
-    '      <span><span class="dot" style="background:var(--amber)"></span>amber - missing data, diverging engines, or a doubted row</span>',
+    '      <span><span class="dot" style="background:var(--green)"></span>green - the round-trip carries the meaning</span>',
+    '      <span><span class="dot" style="background:var(--red)"></span>red - the round-trip loses it, check the string</span>',
+    '      <span><span class="dot" style="background:var(--amber)"></span>amber - not rendered, or a doubted row</span>',
     '    </div>',
     '  </header>',
     '  <div class="grid">',
@@ -1183,6 +1178,7 @@ if (require.main === module) {
 module.exports = {
   PILOT_WAVE,
   SITE_ENGINES,
+  ROW_SLOTS,
   LOCALE_ALIASES,
   PRAYER_KEYS,
   EXPLANATION_KEYS,
@@ -1198,11 +1194,8 @@ module.exports = {
   escapeHtml,
   dirFor,
   spotCheckUrl,
-  myMemoryCheckUrl,
   gtxUrl,
-  myMemoryUrl,
   extractGtx,
-  extractMyMemory,
   fetchWithRetry,
   preFlight,
   levenshtein,

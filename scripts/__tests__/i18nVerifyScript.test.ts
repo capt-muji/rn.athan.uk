@@ -1,9 +1,10 @@
 // The T-575 verification generator's own gates: the catalog and language-name parse
 // rules, the 11-5-191 row order with the category rank table, HTML escaping, the
-// loanword slot rule, the per-engine pre-flight, the meaning heuristic behind the
-// verdict colors, the two-engine row shape with resume and the judge fill, and the
-// v2 artifact shapes. Every network call goes through an injected fetch returning
-// fixtures: no test touches a real engine, and no test reads the real clock.
+// loanword slot rule, the single-engine pre-flight (MyMemory is out, owner order
+// six), the meaning heuristic behind the verdict colors, the two-slot row shape
+// with slot two pending phase two, resume and the judge fill. Every network call
+// goes through an injected fetch returning fixtures: no test touches a real
+// engine, and no test reads the real clock.
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -21,11 +22,8 @@ const verify = require('../i18n-verify.js') as {
   escapeHtml(value: string): string;
   dirFor(locale: string): string;
   spotCheckUrl(locale: string, text: string): string;
-  myMemoryCheckUrl(locale: string, text: string): string;
   gtxUrl(locale: string, text: string): string;
-  myMemoryUrl(locale: string, text: string): string;
   extractGtx(body: string): string | null;
-  extractMyMemory(body: string): string | null;
   fetchWithRetry(
     engine: string,
     locale: string,
@@ -94,7 +92,7 @@ interface Row {
   sites: Site[];
   llm?: { roundtrip: string; doubt?: string } | null;
   url: string;
-  url2: string;
+  url2?: string;
   verdict: string;
 }
 interface CountBag {
@@ -242,7 +240,7 @@ describe('the 11-5-191 row order', () => {
   });
 });
 
-describe('HTML escaping, direction and spot-check URLs', () => {
+describe('HTML escaping, direction and the spot-check link', () => {
   it('escapes script tags and quotes, and leaves RTL punctuation untouched', () => {
     expect(verify.escapeHtml(`<script>alert("x")</script> '؟ «hi»'`)).toBe(
       '&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt; &apos;؟ «hi»&apos;'
@@ -255,12 +253,9 @@ describe('HTML escaping, direction and spot-check URLs', () => {
     expect(verify.dirFor('so')).toBe('ltr');
   });
 
-  it('builds both spot-check links: the Google human page and the exact MyMemory API request', () => {
+  it('builds the Google spot-check link - the only site link (owner order six: MyMemory is out)', () => {
     expect(verify.spotCheckUrl('ms', 'saat lama')).toBe(
       'https://translate.google.com/?sl=ms&tl=en&text=saat%20lama&op=translate'
-    );
-    expect(verify.myMemoryCheckUrl('ms', 'saat lama')).toBe(
-      'https://api.mymemory.translated.net/get?q=saat%20lama&langpair=ms%7Cen'
     );
   });
 });
@@ -275,50 +270,40 @@ describe('the loanword slot rule', () => {
   });
 });
 
-describe('the engines behind an injected fetch', () => {
-  it('builds each engine request URL with the locale and the encoded text, aliasing zh-Hans', () => {
+describe('the engine behind an injected fetch (Google alone, owner order six)', () => {
+  it('builds the engine request URL with the locale and the encoded text, aliasing zh-Hans', () => {
     expect(verify.gtxUrl('ar', 'hello world')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=ar&tl=en&dt=t&q=hello%20world'
     );
     expect(verify.gtxUrl('zh-Hans', '你好')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=%E4%BD%A0%E5%A5%BD'
     );
-    expect(verify.myMemoryUrl('ar', 'hello world')).toBe(
-      'https://api.mymemory.translated.net/get?q=hello%20world&langpair=ar%7Cen'
-    );
-    expect(verify.myMemoryUrl('zh-Hans', '你好')).toBe(
-      'https://api.mymemory.translated.net/get?q=%E4%BD%A0%E5%A5%BD&langpair=zh-CN%7Cen'
-    );
   });
 
-  it('extracts each engine body shape', () => {
+  it('extracts the engine body shape', () => {
     expect(verify.extractGtx(JSON.stringify([[['The dawn', 'الفجر', null, null]], null, 'ar']))).toBe('The dawn');
     expect(verify.extractGtx('[]')).toBeNull();
-    expect(verify.extractMyMemory(JSON.stringify({ responseData: { translatedText: 'The dawn' } }))).toBe('The dawn');
-    expect(verify.extractMyMemory('not json')).toBeNull();
+    expect(verify.extractGtx('not json')).toBeNull();
   });
 
-  it('pre-flights one request per engine and lists only the engines that answer', async () => {
+  it('pre-flights exactly one request - the single engine in the chain', async () => {
     const calls: string[] = [];
     const fetchFn = async (url: string) => {
       calls.push(url);
-      if (url.includes('translate.googleapis.com')) return res('blocked', false, 429);
-      return res(JSON.stringify({ responseData: { translatedText: 'yes' } }));
+      return res(JSON.stringify([[[`en: ${url.length}`, 'x', null, null]]]));
     };
     const live = await verify.preFlight(verify.SITE_ENGINES, 'ar', 'الفجر', { fetch: fetchFn, sleep: noSleep });
-    expect(live).toEqual(['mymemory']);
-    expect(calls).toHaveLength(2);
+    expect(live).toEqual(['gtx']);
+    expect(calls).toHaveLength(1);
   });
 
   it('retries with backoff and gives up after the budget', async () => {
     let attempt = 0;
     const sleeps: number[] = [];
-    const out = await verify.fetchWithRetry('mymemory', 'ar', 'x', {
+    const out = await verify.fetchWithRetry('gtx', 'ar', 'x', {
       fetch: async () => {
         attempt += 1;
-        return attempt === 1
-          ? res('throttled', false, 429)
-          : res(JSON.stringify({ responseData: { translatedText: 'ok' } }));
+        return attempt === 1 ? res('throttled', false, 429) : res(JSON.stringify([[['ok', 'x', null, null]]]));
       },
       sleep: async (ms) => {
         sleeps.push(ms);
@@ -431,67 +416,65 @@ describe('the row verdict (order three: a pass rests on two engines agreeing)', 
   });
 });
 
-describe('the two-engine per-locale artifacts', () => {
+describe('the per-locale artifacts (Google alone; slot two sits empty for phase two)', () => {
   const catalog: Catalog = { ...realEn, 'prayer.fajr': 'الفجر' };
   const gtxBody = (text: string) => res(JSON.stringify([[[text, 'x', null, null]]]));
-  const mmBody = (text: string) => res(JSON.stringify({ responseData: { translatedText: text } }));
-  const bothLiveFetch: FetchFn = async (url) => {
+  const gtxFetch: FetchFn = async (url) => {
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
-    if (url.includes('translate.googleapis.com'))
-      return gtxBody(q === 'الفجر' ? 'The dawn prayer' : `g: ${q.slice(0, 6)}`);
-    return mmBody(q === 'الفجر' ? 'Al Fajr' : `m: ${q.slice(0, 6)}`);
+    return gtxBody(q === 'الفجر' ? 'The dawn prayer' : `g: ${q.slice(0, 6)}`);
   };
 
-  it('fetches both engines per row independently and records two slots and a verdict', async () => {
+  it('fetches exactly one request per row, renders slot one and leaves slot two empty', async () => {
+    let calls = 0;
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
       outDir: SCRATCH,
-      fetch: bothLiveFetch,
+      fetch: async (url) => {
+        calls += 1;
+        return gtxFetch(url);
+      },
       sleep: noSleep,
       now: fixedNow,
       label: 'ar - Arabic',
     });
     expect(out.count).toBe(207);
     expect(out.misses).toEqual([]);
+    // 207 rows plus the single pre-flight probe; slot two is never requested
+    expect(calls).toBe(208);
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
     expect(fajr?.sites).toEqual([
       { engine: 'gtx', roundtrip: 'The dawn prayer' },
-      { engine: 'mymemory', roundtrip: 'Al Fajr' },
+      { engine: 'pending', roundtrip: null },
     ]);
-    expect(fajr?.verdict).toBe('green');
-    // A loanword row round-trips to itself on both engines
-    const loan = out.rows.find((r) => r.key === 'prayer.asr');
-    expect(loan?.verdict).toBe('green');
 
     const json = JSON.parse(readFileSync(join(SCRATCH, 'ar.json'), 'utf8'));
     expect(json.languageName).toBe('ar - Arabic');
     expect(json.rowCount).toBe(207);
     expect(json.counts).toEqual(out.counts);
-    expect(json.rows[0].url2).toBe(verify.myMemoryCheckUrl('ar', 'الفجر'));
     expect(json.rows[0].sites).toHaveLength(2);
+    expect(json.rows[0].url2).toBeUndefined();
+    expect(JSON.stringify(json)).not.toContain('mymemory');
   });
 
-  it('marks a slot miss when its engine refuses, and lists the row as a gap, gtx dead whole-locale', async () => {
+  it('marks a slot miss when the engine refuses, and lists the row as a gap, gtx dead whole-locale', async () => {
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'gtx-dead'),
-      fetch: async (url) => {
-        if (url.includes('translate.googleapis.com')) return res('blocked', false, 429);
-        return mmBody('Al Fajr');
-      },
+      fetch: async () => res('blocked', false, 429),
       sleep: noSleep,
       now: fixedNow,
     });
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
     expect(fajr?.sites[0]).toEqual({ engine: 'gtx', roundtrip: null });
+    expect(fajr?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
     expect(fajr?.verdict).toBe('amber');
     expect(out.misses[0]).toEqual({ locale: 'ar', key: 'prayer.fajr', missing: ['gtx'] });
-    expect(out.engineMix).toEqual({ gtx: 0, mymemory: 207, miss: 207 });
+    expect(out.engineMix).toEqual({ gtx: 0, miss: 207, pending: 207 });
   });
 
-  it('reports a both-miss row as a judge-fill gap and never invents a rendering', async () => {
+  it('reports an unrendered row as a judge-fill gap and never invents a rendering', async () => {
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
@@ -503,87 +486,82 @@ describe('the two-engine per-locale artifacts', () => {
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
     expect(fajr?.sites).toEqual([
       { engine: 'gtx', roundtrip: null },
-      { engine: 'mymemory', roundtrip: null },
+      { engine: 'pending', roundtrip: null },
     ]);
     expect(fajr?.llm).toBeUndefined();
-    expect(out.misses[0]).toEqual({ locale: 'ar', key: 'prayer.fajr', missing: ['gtx', 'mymemory'] });
+    expect(out.misses[0]).toEqual({ locale: 'ar', key: 'prayer.fajr', missing: ['gtx'] });
     expect(out.counts).toEqual({ green: 0, red: 0, amber: 207 });
   });
 
-  it('reuses a resumed slot only while the catalog string is unchanged, and refetches the rest', async () => {
+  it('reuses a resumed gtx slot only while the catalog string is unchanged, and never adopts MyMemory history', async () => {
     const priorRow = (key: string, en: string, cat: string): Row => ({
       key,
       en,
       catalog: cat,
       sites: [
-        { engine: 'gtx', roundtrip: null },
-        { engine: 'mymemory', roundtrip: `old: ${cat.slice(0, 4)}` },
+        { engine: 'gtx', roundtrip: `old gtx: ${cat.slice(0, 4)}` },
+        { engine: 'mymemory', roundtrip: `old mm: ${cat.slice(0, 4)}` },
       ],
       url: 'u',
-      url2: 'u2',
       verdict: 'amber',
     });
     const resumeRows = new Map<string, Row>([
       ['prayer.fajr', priorRow('prayer.fajr', 'Fajr', 'الفجر')],
       ['prayer.sunrise', priorRow('prayer.sunrise', realEn['prayer.sunrise'], 'changed since then')],
     ]);
-    let myMemoryCalls = 0;
+    let calls = 0;
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'resume'),
       fetch: async (url) => {
-        if (url.includes('mymemory')) myMemoryCalls += 1;
-        return bothLiveFetch(url);
+        calls += 1;
+        return gtxFetch(url);
       },
       sleep: noSleep,
       now: fixedNow,
       resumeRows,
     });
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
-    expect(fajr?.sites[1].roundtrip).toBe('old: الفج');
-    // The stale row and every other row refetch MyMemory beside the pre-flight probe;
-    // the fresh fajr row reuses its resumed MyMemory slot
-    expect(myMemoryCalls).toBe(207);
+    expect(fajr?.sites[0].roundtrip).toBe('old gtx: الفج');
+    // The historical MyMemory slot is not carried into the pending slot two
+    expect(fajr?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
+    // One probe plus the 206 rows whose gtx slot was not resumed
+    expect(calls).toBe(207);
     const sunrise = out.rows.find((r) => r.key === 'prayer.sunrise');
-    expect(sunrise?.sites[1].roundtrip).toBe('m: Sunris');
+    expect(sunrise?.sites[0].roundtrip).toBe('g: Sunris');
   });
 
-  it('migrates an old single-round-trip artifact row into its engine slot on resume', async () => {
-    const resumeRows = new Map<string, Row>([
-      [
-        'prayer.fajr',
-        {
-          key: 'prayer.fajr',
-          en: 'Fajr',
-          catalog: 'الفجر',
-          sites: [
-            { engine: 'gtx', roundtrip: null },
-            { engine: 'mymemory', roundtrip: 'Al Fajr' },
-          ],
-          url: 'u',
-          url2: 'u2',
-          verdict: 'amber',
-        } as Row,
-      ],
-    ]);
-    const legacy = { ...resumeRows.get('prayer.fajr')!, sites: undefined, roundtrip: 'Al Fajr', engine: 'mymemory' };
-    // The legacy shape arrives from run()'s loader; simulate by hand here
+  it('migrates an old single-round-trip artifact row only when its engine is gtx', async () => {
+    const legacyGtx = { key: 'prayer.fajr', en: 'Fajr', catalog: 'الفجر', roundtrip: 'The dawn prayer', engine: 'gtx' };
+    const legacyMm = {
+      key: 'prayer.sunrise',
+      en: 'Sunrise',
+      catalog: 'Sunrise',
+      roundtrip: 'old mymemory text',
+      engine: 'mymemory',
+    };
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'legacy'),
       fetch: async (url) => {
-        if (url.includes('mymemory')) return mmBody('Al Fajr');
-        return gtxBody('The dawn prayer');
+        const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
+        return gtxBody(`fresh: ${q.slice(0, 4)}`);
       },
       sleep: noSleep,
       now: fixedNow,
-      resumeRows: new Map<string, Row>([['prayer.fajr', legacy as unknown as Row]]),
+      resumeRows: new Map<string, Row>([
+        ['prayer.fajr', legacyGtx as unknown as Row],
+        ['prayer.sunrise', legacyMm as unknown as Row],
+      ]),
     });
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
-    expect(fajr?.sites[1].roundtrip).toBe('Al Fajr');
-    expect(legacy).toBeTruthy();
+    expect(fajr?.sites[0].roundtrip).toBe('The dawn prayer');
+    // A legacy MyMemory rendering seeds nothing; the row refetches on gtx
+    const sunrise = out.rows.find((r) => r.key === 'prayer.sunrise');
+    expect(sunrise?.sites[0].roundtrip).toBe('fresh: Sunr');
+    expect(sunrise?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
   });
 });
 
@@ -595,11 +573,10 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
       catalog: 'الفجر',
       sites: [
         { engine: 'gtx', roundtrip: 'Fajr' },
-        { engine: 'mymemory', roundtrip: 'The dawn' },
+        { engine: 'pending', roundtrip: null },
       ],
       llm: null,
       url: 'https://translate.google.com/x',
-      url2: 'https://api.mymemory.translated.net/get?q=x',
       verdict: 'green',
     },
     {
@@ -608,11 +585,10 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
       catalog: 'الظهر',
       sites: [
         { engine: 'gtx', roundtrip: 'Back' },
-        { engine: 'mymemory', roundtrip: 'Back' },
+        { engine: 'pending', roundtrip: null },
       ],
       llm: null,
       url: 'u',
-      url2: 'u2',
       verdict: 'red',
     },
     {
@@ -621,16 +597,15 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
       catalog: 'العشاء',
       sites: [
         { engine: 'gtx', roundtrip: null },
-        { engine: 'mymemory', roundtrip: null },
+        { engine: 'pending', roundtrip: null },
       ],
       llm: { roundtrip: 'The night prayer', doubt: 'judge flagged the rendering' },
       url: 'u',
-      url2: 'u2',
       verdict: 'amber',
     },
   ];
 
-  it('renders the locale page with the label, both round-trips, verdict classes and both links', () => {
+  it('renders the locale page with the label, the Google round-trip, an empty second slot, verdict classes and the one link', () => {
     const html = verify.renderLocaleHtml('ar', 'ar - Arabic', rows);
     expect(html).toContain('<h1>ar - Arabic</h1>');
     expect(html).toContain('Athan translation verification - ar - Arabic');
@@ -639,16 +614,15 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
     expect(html).toContain('class="a"');
     expect(html).toContain('dir="rtl" lang="ar"');
     expect(html).toContain('Google round-trip');
-    expect(html).toContain('MyMemory round-trip');
+    expect(html).toContain('phase two');
     expect(html).toContain('href="https://translate.google.com/x"');
-    expect(html).toContain('href="https://api.mymemory.translated.net/get?q=x"');
+    expect(html).not.toContain('MyMemory');
+    expect(html).not.toContain('mymemory');
     // The llm fill shows once, marked, never as a site rendering, with its doubt
     expect((html.match(/The night prayer/g) ?? []).length).toBe(1);
     expect(html).toContain('llm');
     expect(html).toContain('judge flagged the rendering');
     expect(html).not.toContain('<script>');
-    // Escaping still holds on the styled page
-    expect(html).not.toContain('<td>&lt;script&gt;');
   });
 
   it('renders the English reference page with no engines and no verdicts', () => {
@@ -703,6 +677,7 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
     expect(html).toContain('37 amber');
     expect(html).toContain('follow the red');
     expect(html).toContain('reference');
+    expect(html).not.toContain('MyMemory');
   });
 });
 
@@ -719,9 +694,7 @@ describe('the command line flow', () => {
   });
   const fetchOk: FetchFn = async (url) => {
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
-    if (url.includes('translate.googleapis.com'))
-      return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
-    return res(JSON.stringify({ responseData: { translatedText: `m: ${q.slice(0, 6)}` } }));
+    return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
 
   it('runs the named locales, generates the English reference without a single fetch, and reports ok', async () => {
@@ -741,8 +714,8 @@ describe('the command line flow', () => {
       'en.json',
       'index.html',
     ]);
-    // 207 rows x 2 engines for ar plus one pre-flight probe per engine; en fetches nothing
-    expect(calls).toBe(416);
+    // 207 rows on the single engine plus one pre-flight probe; en fetches nothing
+    expect(calls).toBe(208);
     const enHtml = readFileSync(join(outDir, 'en.html'), 'utf8');
     expect(enHtml).toContain('reference');
   });
@@ -762,12 +735,12 @@ describe('the command line flow', () => {
     await expect(verify.run(['--locales', 'xx'], deps)).rejects.toThrow('xx');
   });
 
-  it('exits non-zero while a slot gap stands, and turns ok once the judge fills a both-miss row', async () => {
+  it('exits non-zero while a slot gap stands, and turns ok once the judge fills an unrendered row', async () => {
     const outDir = join(SCRATCH, 'cli-gap');
     const dead = baseDeps(async () => res('x', false, 429));
     const gap = await verify.run(['--locales', 'ar', '--out', outDir], dead);
     expect(gap.ok).toBe(false);
-    expect(gap.misses.every((m) => m.missing.length === 2)).toBe(true);
+    expect(gap.misses.every((m) => m.missing.length === 1 && m.missing[0] === 'gtx')).toBe(true);
 
     writeFileSync(
       join(outDir, 'ar.llm-fill.json'),
@@ -780,15 +753,13 @@ describe('the command line flow', () => {
     const filled = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
     expect(filled.ok).toBe(true);
     const json = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
-    expect(json.rows.every((r: Row) => r.llm !== undefined || (r.sites[0].roundtrip && r.sites[1].roundtrip))).toBe(
-      true
-    );
+    expect(json.rows.every((r: Row) => r.llm !== undefined || r.sites[0].roundtrip !== null)).toBe(true);
     expect(json.counts.amber).toBe(207);
     const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
     expect(html).toContain('judge:');
   });
 
-  it('skips a fill whose row an engine has since rendered, refuses unknown keys, and lists unfilled both-miss rows as gaps', async () => {
+  it('skips a fill whose row the engine has since rendered, refuses unknown keys, and lists unfilled rows as gaps', async () => {
     const outDir = join(SCRATCH, 'cli-fill-rules');
     await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
     const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
@@ -796,7 +767,7 @@ describe('the command line flow', () => {
     const dark = { ...before.rows[1] };
     dark.sites = [
       { engine: 'gtx', roundtrip: null },
-      { engine: 'mymemory', roundtrip: null },
+      { engine: 'pending', roundtrip: null },
     ];
     writeFileSync(join(outDir, 'ar.json'), JSON.stringify({ ...before, rows: [rendered, dark] }));
     writeFileSync(
@@ -822,7 +793,7 @@ describe('the command line flow', () => {
     const dark = { ...before.rows[1] };
     dark.sites = [
       { engine: 'gtx', roundtrip: null },
-      { engine: 'mymemory', roundtrip: null },
+      { engine: 'pending', roundtrip: null },
     ];
     writeFileSync(join(outDir, 'ar.json'), JSON.stringify({ ...before, rows: [rendered, dark] }));
     writeFileSync(
@@ -848,7 +819,7 @@ describe('the command line flow', () => {
     const key = artifact.rows[0].key;
     artifact.rows[0].sites = [
       { engine: 'gtx', roundtrip: null },
-      { engine: 'mymemory', roundtrip: null },
+      { engine: 'pending', roundtrip: null },
     ];
     writeFileSync(join(outDir, 'ar.json'), JSON.stringify(artifact));
     writeFileSync(
