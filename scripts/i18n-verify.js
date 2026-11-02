@@ -342,11 +342,11 @@ const STOPWORDS = new Set([
 const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq'],
-  ['asr', 'afternoon', 'ashar', 'asher', 'era'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
@@ -354,13 +354,13 @@ const SYNONYM_GROUPS = [
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
-  ['suhoor', 'sahur', 'suhur', 'sehri'],
+  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
-  ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal'],
+  ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information'],
   ['sound', 'audio', 'tone', 'voice'],
@@ -401,7 +401,7 @@ const SYNONYM_GROUPS = [
   ['reset', 'restore', 'return', 'reverts', 'returned'],
   // Safar month shares its spelling with the Arabic word for zero and for travel:
   // an engine naming either reads the word itself
-  ['safar', 'zero', 'travel', 'journey', 'trip'],
+  ['safar', 'zero', 'travel', 'journey', 'trip', 'tour'],
   // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
   ['muharram', 'sacred', 'forbidden'],
   ['wrong', 'error', 'mistake', 'problem'],
@@ -425,17 +425,17 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun'],
   ['midnight', 'middle of the night'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad'],
 ];
 
 const SYNONYM_INDEX = new Map();
