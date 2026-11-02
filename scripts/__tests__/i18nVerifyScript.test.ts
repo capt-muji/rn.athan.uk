@@ -448,6 +448,17 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('You’re up to date', both('There is no new update', 'x'))).toBe('green');
   });
 
+  it('the Indonesian loop lessons: the device-off sense, the sacred month and the error verbs', () => {
+    expect(verify.verdictOf('off', both('dead', 'x'))).toBe('green');
+    expect(verify.verdictOf('Muharram', both('Sacred', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Expired', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Ouch!', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Something went wrong. ', both('There is an error.', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Refresh ', both('Reload', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sunrise', both('Rise', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Asher', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

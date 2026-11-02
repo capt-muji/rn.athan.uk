@@ -342,7 +342,8 @@ const STOPWORDS = new Set([
 const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
   ['dhuhr', 'noon', 'midday', 'zuhr'],
-  ['asr', 'afternoon'],
+  ['sunrise', 'rise', 'rising', 'sunup'],
+  ['asr', 'afternoon', 'ashar', 'asher'],
   // Morocco is al-Maghrib in Arabic: an engine naming the country reads the name's own cognate;
   // the word's plain sense is the evening, which an engine may render for the Somali spelling
   ['magrib', 'maghrib', 'sunset', 'morocco', 'evening'],
@@ -359,7 +360,8 @@ const SYNONYM_GROUPS = [
   ['silent', 'silence', 'mute', 'muted'],
   ['show', 'display', 'view', 'visible', 'appearance'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated'],
+  // mati is Indonesian's standard device-off word; the engine renders its literal sense
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead'],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut'],
@@ -388,6 +390,10 @@ const SYNONYM_GROUPS = [
   // Safar month shares its spelling with the Arabic word for zero and for travel:
   // an engine naming either reads the word itself
   ['safar', 'zero', 'travel', 'journey'],
+  // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
+  ['muharram', 'sacred', 'forbidden'],
+  ['wrong', 'error', 'mistake', 'problem'],
+  ['refresh', 'reload', 'load'],
   ['setting', 'settings', 'arrangement', 'arrangements'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
@@ -398,8 +404,8 @@ const SYNONYM_GROUPS = [
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'no new updates', 'no new update'],
-  ['oh no', 'excuse me', 'unfortunately', 'sorry'],
-  ['out of date', 'outdated', 'not updated', 'no updates'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch'],
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired'],
   ['rabiʻ ii', 'spring of the other'],
 ];
 
