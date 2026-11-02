@@ -65,6 +65,18 @@ if (iosSuffix && config.ios?.bundleIdentifier) {
   if (!androidSuffix) config.name = `${config.name} ${nameSuffix}`;
 }
 
+// Local device builds export the dev client's launch target (EXPO_DEV_LAUNCH_URL, never
+// committed - it names this machine's address) so a cold tap opens straight into the app
+// instead of the launcher's server picker, falling back to the launcher when the server
+// cannot be reached (owner order 2026-11-02)
+const devLaunchUrl = process.env.EXPO_DEV_LAUNCH_URL;
+if (devLaunchUrl && config.plugins) {
+  config.plugins = [
+    ...config.plugins,
+    ['expo-dev-client', { launchMode: 'most-recent', defaultLaunchURL: devLaunchUrl }],
+  ];
+}
+
 // Feature-flag mirror of shared/flags.ts (importing TS files here would need
 // tsx; shared/__tests__/flags.test.ts pins the two in lockstep). Stripping
 // the plugin removes the widget extension from the native build entirely.
